@@ -111,7 +111,7 @@ Human Reasons
 
 ## Using the Dataset on Hugging Face
 
-We are releasing the files and the dataset on Hugging Face. You can use the Hugging Face model [google/functiongemma-270m-it](https://huggingface.co/google/functiongemma-270m-it) with the repo-level, directory-level, or source code file in these repos.
+We are releasing the index tool calling files and the [open-agent-tools dataset](https://huggingface.co/datasets/open-agent-tools/open-tools) on Hugging Face. You can use the Hugging Face model [google/functiongemma-270m-it](https://huggingface.co/google/functiongemma-270m-it) with the repo-level, directory-level, or source code file in these repos.
 
 The protocol allows you to leverage the small model with:
 
