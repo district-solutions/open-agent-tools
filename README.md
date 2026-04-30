@@ -36,8 +36,8 @@ The result is a **fast, high-quality tool-calling approach that hopefully runs o
 - [Open WebUI Tool Servers](https://github.com/open-webui/openapi-servers/)
 - [LiteLLM Tool Calling](https://docs.litellm.ai/docs/completion/function_call)
 - [LiteLLM Completion Function API](https://docs.litellm.ai/completion/input)
-- [vLLM Tool Calling SDK](https://docs.vllm.ai/en/stable/examples/online_serving/openai_chat_completion_client_with_tools/)
-- [vLLM Function Gemma Tool Calling](https://docs.vllm.ai/en/stable/features/tool_calling/?h=functiongemma#functiongemma-models-functiongemma)
+- [vLLM Tool Calling SDK](https://docs.vllm.ai/en/stable/features/tool_calling/)
+- [vLLM Tool Calling with OpenAI Completion Protocol](https://docs.vllm.ai/en/stable/examples/online_serving/openai_chat_completion_client_with_tools/)
 - [vLLM Function Gemma Tool Call Parser](https://docs.vllm.ai/en/stable/features/tool_calling/?h=functiongemma#functiongemma-models-functiongemma)
 
 ---
