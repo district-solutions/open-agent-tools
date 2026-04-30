@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/python/sglang/srt/disaggregation/nixl/conn.py
+
+Prompts
+
+```
+['create a NIXL KVManager for disaggregated KV cache transfer between prefill and decode workers', 'run KV cache transfer from prefill to decode worker using NIXL RDMA with NixlKVManager', 'build a NIXL KVSender to send KV cache chunks with transfer status polling', 'build a NIXL KVReceiver to receive KV cache chunks and track transfer completion', 'test the NIXL KVBootstrapServer for peer discovery and KV args registration']
+```
+
+Usage
+
+```
+{'create_NixlKVManager': 'create a NIXL KVManager for disaggregated KV cache transfer between prefill and decode workers', 'run_NixlKVManager_send_kvcache': 'run KV cache transfer from prefill to decode worker using NIXL RDMA with NixlKVManager', 'build_NixlKVSender': 'build a NIXL KVSender to send KV cache chunks with transfer status polling', 'build_NixlKVReceiver': 'build a NIXL KVReceiver to receive KV cache chunks and track transfer completion', 'test_NixlKVBootstrapServer': 'test the NIXL KVBootstrapServer for peer discovery and KV args registration'}
+```
+

@@ -1,0 +1,7 @@
+{
+    "create_BailingLinearMetadata": "create a BailingLinearMetadata instance with batch_size, q_lengths, and mamba cache indices for decode-only inference",
+    "build_prepare_decode": "build BailingLinearMetadata for CUDA graph decode-only path using query_start_loc, mamba_cache_indices, batch size, and seq_lens",
+    "build_prepare_mixed": "build BailingLinearMetadata for mixed prefill-and-decode batch using query_start_loc, mamba_cache_indices, and ForwardBatch",
+    "test_prepare_decode": "test prepare_decode returns BailingLinearMetadata with num_prefills=0 and num_prefill_tokens=0 for decode-only path",
+    "test_prepare_mixed": "test prepare_mixed delegates to prepare_decode when extend_num_tokens is None and computes prefill/decode counts otherwise"
+}

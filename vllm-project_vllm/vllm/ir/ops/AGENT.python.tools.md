@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: vllm-project/vllm
+- repo_uri: https://github.com/vllm-project/vllm
+
+## File: vllm-project_vllm/vllm/ir/ops/layernorm.py
+
+Prompts
+
+```
+['test the rms_norm function that performs weighted root-mean-square layer normalization on a tensor', 'run rms_norm with a tensor, optional weight, epsilon, and optional variance_size to apply RMS normalization', 'review the rms_norm function that converts input to float32, computes variance, applies rsqrt scaling, and optionally applies weight', 'summarize the rms_norm function that implements weighted root-mean-square layer normalization with dtype preservation']
+```
+
+Usage
+
+```
+{'test_rms_norm': 'test the rms_norm function that performs weighted root-mean-square layer normalization on a tensor', 'run_rms_norm': 'run rms_norm with a tensor, optional weight, epsilon, and optional variance_size to apply RMS normalization', 'review_rms_norm': 'review the rms_norm function that converts input to float32, computes variance, applies rsqrt scaling, and optionally applies weight', 'summarize_rms_norm': 'summarize the rms_norm function that implements weighted root-mean-square layer normalization with dtype preservation'}
+```
+

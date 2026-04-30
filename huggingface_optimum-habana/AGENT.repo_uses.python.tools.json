@@ -1,0 +1,1099 @@
+{
+  "huggingface_optimum-habana/conftest.py": {
+    "run_pytest_with_rebase": "run pytest with the --rebase flag to update baseline references from the current test run",
+    "run_pytest_with_device_context": "run pytest with the --device-context option to override auto-detected device for test baselines",
+    "use_baseline_fixture": "use the baseline fixture in a pytest test to assert values against stored baseline references",
+    "use_token_fixture": "use the token fixture in a pytest test to access a masked secret token value",
+    "walk_path_directory": "use the walk_path function to recursively iterate over a directory tree yielding paths subdirs and files"
+  },
+  "huggingface_optimum-habana/examples/gaudi_spawn.py": {
+    "run_gaudi_distributed_training": "run a distributed training script on HPUs using gaudi_spawn.py with --world_size and --use_mpi",
+    "run_gaudi_deepspeed_training": "run a multi-node DeepSpeed training script on HPUs using gaudi_spawn.py with --use_deepspeed and --hostfile",
+    "parse_args_gaudi_spawn": "parse command line arguments for the Habana Gaudi distributed training launch helper utility",
+    "main_gaudi_spawn": "run the main entry point that patches sys.argv and launches DistributedRunner for HPU training",
+    "configure_gaudi_spawn_args": "configure world_size, master_port, use_mpi, and use_deepspeed flags for gaudi_spawn.py distributed training"
+  },
+  "huggingface_optimum-habana/examples/audio-classification/run_audio_classification.py": {
+    "run_audio_classification_training": "run audio classification model training on Habana Gaudi using a HuggingFace dataset and wav2vec2",
+    "run_audio_classification_evaluation": "evaluate a trained audio classification model on a validation dataset using GaudiTrainer",
+    "run_audio_classification_with_json": "run audio classification training by passing a JSON file with all model and data arguments",
+    "random_subsample_audio": "randomly subsample an audio waveform to a target duration in seconds for data augmentation",
+    "load_and_validate_audio": "load an audio file via soundfile, downmix to mono, validate sample rate, and optionally subsample"
+  },
+  "huggingface_optimum-habana/examples/contrastive-image-text/clip_media_pipe.py": {
+    "create_clip_mediapipe": "create a ClipMediaPipe instance to build a media pipeline for CLIP image-text contrastive training on HPU",
+    "define_mediapipe_graph": "define the media pipe graph that decodes images and applies crop mirror normalization for CLIP",
+    "create_custom_reader": "create a read_image_text_from_dataset class to read image paths and text tokens from a CLIP dataset",
+    "implement_reader_iterator": "implement the iterator protocol on read_image_text_from_dataset to batch image paths with input IDs and attention masks",
+    "generate_reader_output_info": "generate output tensor info for the custom reader specifying batch size and text max length dimensions"
+  },
+  "huggingface_optimum-habana/examples/contrastive-image-text/habana_dataloader_trainer.py": {
+    "create_HabanaDataloaderTrainer": "create a HabanaDataloaderTrainer subclass of GaudiTrainer that uses MediaApiDataLoader for Habana media pipeline training",
+    "build_get_train_dataloader": "build a training dataloader using MediaApiDataLoader with Habana-specific sampler and collator configuration",
+    "build_get_eval_dataloader": "build an evaluation dataloader using MediaApiDataLoader with sequential or shard sampling for distributed runs",
+    "build_get_test_dataloader": "build a test dataloader using MediaApiDataLoader with the same batch size as evaluation",
+    "review_get_train_sampler": "review the _get_train_sampler method that returns RandomSampler, DistributedSampler, or LengthGroupedSampler based on world size and lazy mode"
+  },
+  "huggingface_optimum-habana/examples/contrastive-image-text/run_bridgetower.py": {
+    "run_bridgetower_training": "run the BridgeTower contrastive image-text model training script on Habana Gaudi hardware",
+    "create_transform_module": "create a PyTorch Transform module that resizes, crops, and normalizes images for BridgeTower",
+    "build_collate_fn": "build a collate function that stacks pixel values, input IDs, and attention masks for batch training",
+    "tokenize_captions": "tokenize image caption text into input IDs and attention masks with max length truncation",
+    "transform_images": "transform image data from bytes, paths, or PIL objects into normalized tensors for the model"
+  },
+  "huggingface_optimum-habana/examples/contrastive-image-text/run_clip.py": {
+    "train_clip_contrastive_model": "train a CLIP-like dual encoder model using GaudiTrainer on Habana Gaudi hardware",
+    "evaluate_clip_model": "evaluate a trained CLIP contrastive image-text model using GaudiTrainer on Habana hardware",
+    "freeze_vision_or_text_encoder": "freeze the vision model or text model parameters before training a CLIP model",
+    "configure_gaudi_training_args": "configure GaudiTrainingArguments and GaudiConfig for mixed-precision CLIP training on Habana",
+    "preprocess_clip_dataset": "preprocess image-caption datasets by tokenizing captions and applying image transformations for CLIP training"
+  },
+  "huggingface_optimum-habana/examples/image-classification/run_image_classification.py": {
+    "run_image_classification_training": "run a transformers model fine-tuned for image classification on Habana Gaudi accelerators using GaudiTrainer",
+    "run_image_classification_evaluation": "run evaluation of a fine-tuned image classification model on a validation dataset with accuracy metrics",
+    "create_data_training_arguments": "create a DataTrainingArguments dataclass to configure dataset name, train and validation directories, and train-val split ratio",
+    "create_model_arguments": "create a ModelArguments dataclass to configure the pretrained model path, config, revision, and token for image classification",
+    "create_gaudi_trainer": "create a GaudiTrainer instance with a model, GaudiConfig, training arguments, datasets, and a data collator function"
+  },
+  "huggingface_optimum-habana/examples/image-to-text/run_image2text_lora_finetune.py": {
+    "run_image2text_lora_finetune": "run LoRA fine-tuning for image-to-text vision-language models on Intel Gaudi accelerators using Optimum Habana",
+    "eval_image2text_model": "evaluate a fine-tuned image-to-text model on a test dataset using average normalized Levenshtein similarity",
+    "create_llava_data_collator": "create a data collator for LLaVA models that handles image and text batching with proper token masking",
+    "create_my_data_collator": "create a data collator for IDEFICS or MLLaMA models that masks image tokens and pad tokens in labels",
+    "find_all_linear_names": "find all linear layer names in a model suitable for LoRA target modules while excluding multimodal components"
+  },
+  "huggingface_optimum-habana/examples/image-to-text/run_pipeline.py": {
+    "run_image_to_text_pipeline": "run an image-to-text generation pipeline on HPU using a vision-language model like LLaVA or PaliGemma",
+    "run_distributed_inference": "run distributed image-to-text inference across multiple HPUs using DeepSpeed tensor parallelism",
+    "run_fp8_quantization": "run FP8 quantization on a vision-language model using neural compressor for HPU inference",
+    "run_benchmark_pipeline": "run a benchmark of the image-to-text pipeline measuring throughput and HPU memory usage",
+    "run_hpu_graphs": "run the image-to-text pipeline with HPU graphs enabled for optimized latency on Habana devices"
+  },
+  "huggingface_optimum-habana/examples/language-modeling/peft_poly_seq2seq_with_generate.py": {
+    "run_poly_seq2seq_training": "run poly tuning for sequence-to-sequence models on SuperGLUE tasks using GaudiSeq2SeqTrainer on HPU",
+    "create_poly_config": "create a PolyConfig with task type SEQ_2_SEQ_LM, rank, skills, and splits for PEFT poly tuning",
+    "build_superglue_dataset": "build a combined SuperGLUE dataset from boolq, multirc, rte, and wic tasks with tokenization and task IDs",
+    "generate_with_peft_model": "generate predictions from a PEFT poly-tuned seq2seq model using task_ids on HPU with torch.no_grad",
+    "configure_gaudi_trainer": "configure a GaudiSeq2SeqTrainer with fused Adam, fused clip norm, and PEFT model for HPU training"
+  },
+  "huggingface_optimum-habana/examples/language-modeling/run_clm.py": {
+    "run_clm_training": "run causal language model training on a text dataset using GaudiTrainer on Habana Gaudi accelerators",
+    "run_clm_evaluation": "evaluate a causal language model on a validation dataset and compute perplexity metrics",
+    "run_clm_streaming": "run causal language model training using streaming mode for large datasets without full download",
+    "run_clm_from_scratch": "train a new causal language model from scratch with custom config overrides on Habana hardware",
+    "run_clm_resume": "resume causal language model training from a checkpoint using the resume_from_checkpoint argument"
+  },
+  "huggingface_optimum-habana/examples/language-modeling/run_lora_clm.py": {
+    "run_lora_clm_training": "run LoRA fine-tuning of a causal language model on Intel Gaudi using Optimum Habana",
+    "run_adalora_finetuning": "run AdaLoRA fine-tuning of a causal LM on Gaudi with dynamic rank allocation",
+    "run_ia3_finetuning": "run IA3 parameter-efficient fine-tuning of a causal LM on Intel Gaudi hardware",
+    "create_prompts": "create instruction-input-response prompts from a dataset for language model fine-tuning",
+    "create_sql_prompts": "create text-to-SQL prompts from a dataset with question and context columns"
+  },
+  "huggingface_optimum-habana/examples/language-modeling/run_mlm.py": {
+    "run_mlm_training": "run masked language model training on Habana GAI using GaudiTrainer with BERT or RoBERTa",
+    "run_mlm_from_dataset": "run MLM training on a HuggingFace dataset with configurable validation split and streaming mode",
+    "run_mlm_from_file": "run MLM training on local CSV, JSON, or TXT files with line-by-line or continuous tokenization",
+    "run_mlm_eval": "run MLM evaluation to compute accuracy and perplexity metrics on a validation dataset",
+    "run_mlm_from_scratch": "run MLM training from scratch with custom model config overrides and tokenizer settings"
+  },
+  "huggingface_optimum-habana/examples/language-modeling/run_multitask_prompt_tuning.py": {
+    "run_multitask_prompt_tuning": "run multi-task prompt tuning on SST-2 and MNLI datasets using PEFT and GaudiSeq2SeqTrainer on Habana",
+    "create_multitask_prompt_tuning_config": "create a MultitaskPromptTuningConfig with TEXT initialization for sequence-to-sequence language model tasks",
+    "create_peft_model": "create a PEFT model from a pretrained Seq2Seq model using multitask prompt tuning configuration",
+    "build_dataset_collator": "build a data collator that tokenizes input-output pairs and masks padding tokens for Seq2Seq training",
+    "compute_f1_metrics": "compute F1 score metrics by comparing positive and negative token logits from model predictions"
+  },
+  "huggingface_optimum-habana/examples/language-modeling/run_prompt_tuning_clm.py": {
+    "run_prompt_tuning_clm": "run prompt tuning for causal language modeling on Habana Gaudi using PEFT",
+    "run_prefix_tuning_clm": "run prefix tuning for causal language modeling on Habana Gaudi using PEFT",
+    "run_p_tuning_clm": "run P tuning with an encoder for causal language modeling on Habana Gaudi",
+    "configure_gauditrainer_clm": "configure a GaudiTrainer with fused Adam and clip norm for causal LM training",
+    "preprocess_clm_dataset": "preprocess a dataset for causal language modeling by tokenizing inputs and labels"
+  },
+  "huggingface_optimum-habana/examples/protein-folding/run_esmfold.py": {
+    "run_esmfold_protein_folding_hpu": "run ESMFold protein folding inference on a Habana Gaudi HPU device using the facebook/esmfold_v1 model",
+    "convert_esmfold_outputs_to_pdb": "convert ESMFold model outputs including atom positions and masks into PDB format strings",
+    "tokenize_protein_sequence_esmfold": "tokenize a protein amino acid sequence using the facebook/esmfold_v1 tokenizer for inference input",
+    "time_habana_protein_folding_inference": "measure protein folding inference step duration on HPU using HabanaGenerationTime context manager",
+    "save_protein_structure_pdb_file": "save a predicted protein structure from ESMFold outputs to a PDB file on disk"
+  },
+  "huggingface_optimum-habana/examples/protein-folding/run_sequence_classification.py": {
+    "run_protein_sequence_classification": "run protein sequence classification training on Habana GAI using GaudiTrainer and a pretrained model",
+    "create_optimizer_differential_lr": "create an optimizer with differential learning rates for classifier head and backbone parameters",
+    "create_scheduler_lr": "create a learning rate scheduler from training arguments and an optimizer",
+    "compute_metrics_accuracy_mcc": "compute accuracy and Matthews correlation coefficient metrics from model predictions and labels",
+    "tokenize_protein_sequence": "tokenize a protein sequence string into input IDs and attention mask using a tokenizer"
+  },
+  "huggingface_optimum-habana/examples/protein-folding/run_zero_shot_eval.py": {
+    "run_zero_shot_protein_eval": "run zero-shot evaluation of the ProtST model for protein subcellular localization on Intel Gaudi",
+    "tokenize_protein_sequences": "tokenize protein sequences using the ESM-1b tokenizer with max length padding and truncation",
+    "embed_label_descriptions": "embed text label descriptions using the PubMedBERT text model and normalize the features",
+    "compute_zero_shot_accuracy": "compute zero-shot classification accuracy by matching protein features against label embeddings",
+    "wrap_models_in_hpu_graph": "wrap the protein and text models in HPU graphs for optimized inference on Intel Gaudi"
+  },
+  "huggingface_optimum-habana/examples/pytorch-image-models/inference.py": {
+    "run_timm_inference_gaudi2": "run a TIMM model inference on a dataset using Gaudi2 HPU device with graph mode",
+    "run_inference_mixed_precision": "run image classification inference with mixed precision AMP on HPU using float16 or bfloat16",
+    "run_inference_torchscript": "run a TIMM model inference with torchscript compilation for optimized performance on HPU",
+    "run_inference_torchcompile": "run a TIMM model inference with torch.compile inductor backend for optimized performance",
+    "save_results_csv_json_parquet": "save inference results to CSV, JSON, or Parquet format with top-k class predictions and probabilities"
+  },
+  "huggingface_optimum-habana/examples/pytorch-image-models/train_hpu_graph.py": {
+    "run_timm_training_hpu": "run a TIMM model training loop on Intel Gaudi2 HPU devices using the argparse CLI",
+    "run_train_one_epoch": "run one epoch of training with gradient accumulation, AMP, and EMA model updates",
+    "run_validate": "run validation on a TIMM model and return loss, top1, and top5 accuracy metrics",
+    "run_parse_args": "run argument parsing that loads YAML config files and merges with CLI overrides",
+    "run_cleanup": "run distributed process group cleanup after training completes"
+  },
+  "huggingface_optimum-habana/examples/pytorch-image-models/train_hpu_lazy.py": {
+    "run_timm_training_hpu": "run a pytorch timm model training script on Intel Gaudi2 HPU devices with lazy mode",
+    "run_train_one_epoch": "run one epoch of model training with gradient accumulation and HPU mark_step synchronization",
+    "run_validate_model": "run validation on a trained model and compute loss, top1, and top5 accuracy metrics",
+    "run_parse_args": "run the argument parser to load YAML config and CLI arguments for training setup",
+    "run_cleanup_distributed": "run cleanup to destroy the distributed process group after training completes"
+  },
+  "huggingface_optimum-habana/examples/question-answering/run_qa.py": {
+    "run_qa_finetune": "run a script to fine-tune a question answering model on HPU using Optimum Habana and the HuggingFace Trainer",
+    "run_qa_evaluate": "run evaluation on a fine-tuned question answering model using the SQuAD dataset and compute exact match and F1 metrics",
+    "run_qa_predict": "run predictions on a test dataset with a fine-tuned question answering model and save results to the output directory",
+    "create_ModelArguments": "create a ModelArguments dataclass to configure the pretrained model name, tokenizer, config, cache directory, and revision for QA fine-tuning",
+    "create_DataTrainingArguments": "create a DataTrainingArguments dataclass to configure dataset files, max sequence length, doc stride, and answer length for QA training"
+  },
+  "huggingface_optimum-habana/examples/question-answering/run_seq2seq_qa.py": {
+    "run_seq2seq_qa_finetune": "run a seq2seq model fine-tuning script for question answering on Habana Gaudi accelerators using the HuggingFace transformers library",
+    "run_seq2seq_qa_evaluate": "evaluate a fine-tuned seq2seq question answering model on a validation dataset using SQuAD metrics and beam search generation",
+    "run_seq2seq_qa_predict": "run predictions with a trained seq2seq question answering model on a test dataset and save results to the output directory",
+    "create_ModelArguments": "create a ModelArguments dataclass to configure the pretrained model name, tokenizer, cache directory, and revision for seq2seq QA fine-tuning",
+    "create_DataTrainingArguments": "create a DataTrainingArguments dataclass to configure dataset paths, column names, max sequence length, and preprocessing options for QA training"
+  },
+  "huggingface_optimum-habana/examples/question-answering/trainer_qa.py": {
+    "create_QuestionAnsweringTrainer": "create a QuestionAnsweringTrainer instance with eval_examples and a post_process_function for QA tasks",
+    "evaluate_QuestionAnsweringTrainer": "run evaluation on a QA dataset using QuestionAnsweringTrainer.evaluate with eval_examples and metric_key_prefix",
+    "predict_QuestionAnsweringTrainer": "run predictions on a QA dataset using QuestionAnsweringTrainer.predict and return a PredictionOutput",
+    "review_QuestionAnsweringTrainer_evaluate": "review the QuestionAnsweringTrainer evaluate method to understand post-processing and metric computation flow",
+    "refactor_QuestionAnsweringTrainer_predict": "refactor the QuestionAnsweringTrainer predict method to customize post-processing or metric key prefixing"
+  },
+  "huggingface_optimum-habana/examples/question-answering/trainer_seq2seq_qa.py": {
+    "create_QuestionAnsweringSeq2SeqTrainer": "create a QuestionAnsweringSeq2SeqTrainer instance with eval_examples and a post_process_function for QA tasks",
+    "evaluate_QuestionAnsweringSeq2SeqTrainer": "run evaluation on a QA dataset using QuestionAnsweringSeq2SeqTrainer with generation kwargs and compute metrics",
+    "predict_QuestionAnsweringSeq2SeqTrainer": "run predictions on a QA test dataset using QuestionAnsweringSeq2SeqTrainer and return a PredictionOutput",
+    "review_QuestionAnsweringSeq2SeqTrainer_evaluate": "review the QuestionAnsweringSeq2SeqTrainer evaluate method to understand how it handles generation kwargs and post processing",
+    "refactor_QuestionAnsweringSeq2SeqTrainer_predict": "refactor the QuestionAnsweringSeq2SeqTrainer predict method to support custom metric key prefixes and ignore keys"
+  },
+  "huggingface_optimum-habana/examples/question-answering/utils_qa.py": {
+    "postprocess_qa_predictions_start_end_logits": "postprocess question answering model predictions by converting start and end logits to answer text substrings",
+    "postprocess_qa_predictions_with_negative_examples": "postprocess question answering predictions supporting datasets with unanswerable questions and null answer scoring",
+    "postprocess_qa_predictions_beam_search": "postprocess question answering predictions from beam search models using top start and end log probabilities",
+    "postprocess_qa_predictions_save_json": "postprocess question answering predictions and save results as JSON files to an output directory",
+    "postprocess_qa_predictions_nbest": "postprocess question answering predictions and generate n-best candidate answers with probability scores"
+  },
+  "huggingface_optimum-habana/examples/speech-recognition/run_speech_recognition_ctc.py": {
+    "run_ctc_speech_recognition_training": "run a CTC-based speech recognition model fine-tuning on Habana Gaudi using GaudiTrainer and a Hugging Face dataset",
+    "create_vocabulary_from_dataset": "create a character-level vocabulary dictionary from a dataset's target text column for CTC tokenization",
+    "configure_data_collator_ctc_padding": "configure a dynamic padding data collator for CTC speech recognition inputs and labels with a processor",
+    "preprocess_audio_dataset_for_ctc": "preprocess an audio dataset by extracting features with a feature extractor and tokenizing target text labels",
+    "evaluate_speech_recognition_model": "evaluate a fine-tuned CTC speech recognition model using word error rate and character error rate metrics"
+  },
+  "huggingface_optimum-habana/examples/speech-recognition/run_speech_recognition_seq2seq.py": {
+    "run_speech_recognition_finetuning": "run the seq2seq speech recognition fine-tuning script on Habana Gaudi with a HuggingFace dataset",
+    "create_data_collator_speech_seq2seq": "create a DataCollatorSpeechSeq2SeqWithPadding to dynamically pad audio inputs and text labels for batch training",
+    "configure_model_arguments": "configure ModelArguments to set the pretrained model path, tokenizer, and feature extractor for speech recognition",
+    "configure_data_training_arguments": "configure DataTrainingArguments to set dataset name, audio column, max duration, and preprocessing options",
+    "prepare_audio_dataset": "prepare an audio dataset by resampling, converting to mono, and extracting features using the feature extractor"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/depth_to_image_generation.py": {
+    "run_depth_to_image_generation": "run depth-to-image generation using a stable diffusion model on Habana Gaudi HPU with a base image and text prompt",
+    "generate_images_with_gaudi_pipeline": "generate images from a base image and text prompt using GaudiStableDiffusionDepth2ImgPipeline with configurable schedulers",
+    "configure_diffusion_scheduler": "configure a diffusion scheduler (DDIM, Euler, or PNDM) for the depth-to-image generation pipeline",
+    "save_generated_images": "save generated PIL images to a specified output directory after running the depth-to-image pipeline",
+    "enable_hpu_optimization": "enable Habana HPU acceleration with HPU graphs and bf16 precision for faster depth-to-image generation"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/image_to_image_generation.py": {
+    "run_img2img_generation": "run stable diffusion image-to-image generation on HPU using a source image and text prompt",
+    "run_sdxl_img2img": "run SDXL image-to-image generation with dual prompts on Habana Gaudi accelerator",
+    "run_flux_img2img": "run FLUX image-to-image generation with strength control on Habana Gaudi accelerator",
+    "run_instruct_pix2pix": "run instruct pix2pix image-to-image generation with image guidance scale on HPU",
+    "run_img2img_profiling": "run stable diffusion image-to-image generation with profiling warmup and capture steps enabled"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/image_to_video_generation.py": {
+    "run_svd_image_to_video": "run stable video diffusion to generate a video from an input image on HPU",
+    "run_i2vgenxl_image_to_video": "run I2VGen-XL pipeline to generate a video from an input image with text prompts",
+    "run_cogvideox_image_to_video": "run CogVideoX image-to-video pipeline to generate a video from an input image on HPU",
+    "run_wan_image_to_video": "run Wan2.2 image-to-video pipeline to generate a video from an input image with distributed CFG",
+    "run_controlnet_image_to_video": "run stable video diffusion with ControlNet to generate a video guided by a control image"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/text_to_image_generation.py": {
+    "run_stable_diffusion_text_to_image": "run stable diffusion text-to-image generation on HPU with a prompt and save output images",
+    "run_sdxl_image_generation": "run SDXL text-to-image generation with HPU acceleration and optional second prompt",
+    "run_sd3_image_generation": "run SD3 text-to-image generation with up to three prompts and distributed CFG support",
+    "run_flux_image_generation": "run FLUX text-to-image generation on HPU with flow match euler scheduler",
+    "run_controlnet_image_generation": "run stable diffusion with ControlNet using a canny edge conditioning image"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/text_to_video_generation.py": {
+    "run_text_to_video_sd": "run the stable diffusion text-to-video pipeline on HPU to generate videos from text prompts",
+    "run_cogvideox_generation": "run the CogVideoX pipeline on HPU to generate videos from text prompts with tiling and slicing",
+    "run_wan_generation": "run the Wan pipeline on HPU to generate videos from text prompts with distributed CFG support",
+    "generate_video_from_prompt": "generate a video from a text prompt using the GaudiTextToVideoSDPipeline with custom inference steps",
+    "export_video_to_mp4": "export generated video frames to an MP4 file using the diffusers export_to_video utility"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/unconditional_image_generation.py": {
+    "run_unconditional_image_generation_gaudi": "run unconditional image generation using a DDPM model on Intel Gaudi HPU hardware",
+    "run_gaudi_ddim_scheduler": "run unconditional image generation using the Gaudi optimized DDIM scheduler instead of DDPM",
+    "run_bf16_image_generation": "run unconditional image generation with bf16 precision for improved performance on Gaudi",
+    "run_hpu_graphs_inference": "run unconditional image generation using HPU graphs for lower latency inference",
+    "save_generated_images": "run unconditional image generation and save the output images as jpg files to a directory"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/training/media_pipe_imgdir.py": {
+    "create_dataset_from_image_directory": "create a HuggingFace dataset from an image directory with a label.txt file using get_dataset_for_pipeline",
+    "build_sdxl_mediapipe_pipeline": "build an SDXL MediaPipe pipeline for image decoding, random flip, and normalization on HPU devices",
+    "create_media_api_dataloader": "create a PyTorch DataLoader wrapper around the SDXL MediaPipe pipeline for distributed training",
+    "implement_media_ext_reader_node": "implement a custom MediaPipe external reader node class extending media_ext_reader_op_impl for batched image and text reading",
+    "create_random_flip_function": "create a MediaPipe function node that generates random binary flip decisions for image augmentation"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/training/textual_inversion.py": {
+    "run_textual_inversion_training": "run textual inversion training for stable diffusion on Habana Gaudi using a CLI script",
+    "parse_textual_inversion_args": "parse command line arguments for stable diffusion textual inversion training hyperparameters",
+    "create_textual_inversion_dataset": "create a PyTorch dataset that loads images and generates templated captions for textual inversion",
+    "save_learned_embeddings": "save learned token embeddings to a bin or safetensors file during training",
+    "run_validation_inference": "run validation inference with GaudiStableDiffusionPipeline to generate images from a prompt"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/training/textual_inversion_sdxl.py": {
+    "run_textual_inversion_sdxl_training": "run textual inversion training for Stable Diffusion XL on Intel Gaudi using a folder of images",
+    "run_textual_inversion_with_validation": "run SDXL textual inversion training with periodic validation image generation and logging",
+    "run_textual_inversion_resume_checkpoint": "resume SDXL textual inversion training from a saved checkpoint directory",
+    "run_textual_inversion_push_hub": "run SDXL textual inversion training and push the learned embeddings to the Hugging Face Hub",
+    "run_textual_inversion_save_pipeline": "run SDXL textual inversion training and save the full pipeline with learned embeddings"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/training/train_controlnet.py": {
+    "run_controlnet_training": "run the ControlNet training script on Habana Gaudi with a pretrained Stable Diffusion model and dataset",
+    "run_validation": "run validation by generating images from prompts and conditioning images using the GaudiStableDiffusionControlNetPipeline",
+    "create_image_grid": "create a grid image from a list of PIL images arranged in specified rows and columns",
+    "create_train_dataset": "create a training dataset with image transforms, conditioning images, and tokenized captions for ControlNet training",
+    "save_model_card": "save a model card README with training details and example images to a Hugging Face Hub repo folder"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/training/train_dreambooth.py": {
+    "train_dreambooth_stable_diffusion": "run DreamBooth fine-tuning of a Stable Diffusion model on Habana Gaudi HPU with LoRA adapters",
+    "create_unet_adapter_config": "create a PEFT adapter config for the UNet supporting LoRA, LoHa, LoKr, OFT, or BOFT",
+    "create_text_encoder_adapter_config": "create a PEFT adapter config for the text encoder supporting LoRA, LoHa, LoKr, OFT, or BOFT",
+    "parse_args_dreambooth": "parse command-line arguments for DreamBooth training including adapter type, learning rate, and HPU options",
+    "dreambooth_dataset": "create a DreamBoothDataset to prepare instance and class images with tokenized prompts for fine-tuning"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/training/train_dreambooth_lora_flux.py": {
+    "run_flux_dreambooth_lora_training": "run FLUX LoRA DreamBooth training on HPU using a custom image dataset and pretrained model",
+    "configure_training_arguments": "configure training hyperparameters like learning rate, batch size, and resolution via argparse CLI",
+    "create_dreambooth_dataset": "create a DreamBoothDataset that computes T5 text embeddings and applies image transformations for training",
+    "pack_latents_for_flux": "pack latents by reshaping and permuting dimensions for FLUX transformer input",
+    "unpack_latents_from_flux": "unpack latents from FLUX transformer output back to the original spatial shape"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/training/train_dreambooth_lora_sd3.py": {
+    "run_sd3_dreambooth_lora_training": "run Stable Diffusion 3 DreamBooth LoRA fine-tuning on Habana Gaudi HPU using argparse CLI",
+    "configure_training_arguments": "configure training hyperparameters like learning rate, batch size, and checkpointing steps for SD3 LoRA training",
+    "encode_prompt_sd3": "encode text prompts using dual CLIP and T5 text encoders for Stable Diffusion 3",
+    "create_dreambooth_dataset": "create a DreamBoothDataset to preprocess instance and class images with resizing, cropping, and normalization",
+    "validate_sd3_lora_model": "run validation inference with the trained SD3 LoRA pipeline and log images to TensorBoard or W&B"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/training/train_dreambooth_lora_sdxl.py": {
+    "train_sdxl_dreambooth_lora": "train an SDXL model with LoRA DreamBooth fine-tuning on Habana Gaudi HPU using a custom image dataset",
+    "run_dreambooth_dataset": "create a DreamBoothDataset to prepare instance and class images with prompts for SDXL LoRA fine-tuning",
+    "encode_prompt_sdxl": "encode a text prompt into prompt embeddings and pooled embeddings using SDXL dual text encoders",
+    "parse_training_args": "parse command-line arguments for SDXL LoRA DreamBooth training including optimizer, scheduler, and HPU config options",
+    "save_model_card_hf": "generate and save a HuggingFace model card README with validation images and training metadata"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/training/train_text_to_image_sd3.py": {
+    "train_sd3_dreambooth": "run stable diffusion 3 dreambooth fine-tuning on habana gaudi for text-to-image generation",
+    "parse_training_args": "parse command line arguments for sd3 dreambooth training including model path dataset and optimizer settings",
+    "create_dreambooth_dataset": "create a dreambooth dataset class that prepares instance and class images with prompts for fine-tuning",
+    "encode_prompt_sd3": "encode text prompts using clip and t5 text encoders for stable diffusion 3 model",
+    "run_validation_inference": "run validation inference generating images with a prompt and logging to tensorboard or wandb",
+    "save_model_card_hub": "save a model card with training details and generated images for pushing to huggingface hub",
+    "collate_batch_examples": "collate training batch examples stacking pixel values and prompts with optional prior preservation",
+    "encode_prompt_t5": "encode prompts using the t5 text encoder with configurable max sequence length for sd3",
+    "encode_prompt_clip": "encode prompts using clip text encoders returning prompt embeddings and pooled prompt embeddings",
+    "load_text_encoders": "load three text encoders from a pretrained sd3 model path onto the accelerator device"
+  },
+  "huggingface_optimum-habana/examples/stable-diffusion/training/train_text_to_image_sdxl.py": {
+    "run_sdxl_finetuning": "run stable diffusion XL text-to-image fine-tuning on Intel Gaudi HPU with a custom dataset",
+    "encode_prompt_sdxl": "encode text prompts using dual CLIP text encoders for Stable Diffusion XL training",
+    "compute_vae_encodings": "compute VAE latent encodings from pixel values for diffusion model training",
+    "generate_timestep_weights": "generate biased timestep weights to focus diffusion training on specific timesteps",
+    "parse_args_sdxl_training": "parse command-line arguments for SDXL fine-tuning including dataset, scheduler, and HPU config"
+  },
+  "huggingface_optimum-habana/examples/summarization/run_summarization.py": {
+    "run_summarization_finetuning": "run a seq2seq summarization model fine-tuning script on Habana Gaudi with HuggingFace transformers",
+    "create_summarization_dataset": "create a summarization dataset from CSV or JSON files with text and summary columns",
+    "build_preprocess_function": "build a preprocessing function that tokenizes input text and target summaries for seq2seq training",
+    "evaluate_rouge_metrics": "evaluate summarization model predictions using ROUGE metrics with NLTK sentence tokenization",
+    "configure_gaudi_trainer": "configure a GaudiSeq2SeqTrainer with model, datasets, data collator, and ROUGE compute metrics"
+  },
+  "huggingface_optimum-habana/examples/table-detection/run_example.py": {
+    "run_table_detection": "run the table transformer model on an image to detect tables using HPU acceleration",
+    "run_table_detection_bf16": "run the table detection example with bf16 precision enabled for faster inference on HPU",
+    "run_table_detection_hpu_graphs": "run the table detection example with HPU graphs enabled for better latency",
+    "run_table_detection_custom_model": "run the table detection example with a custom model name or path via --model_name_or_path",
+    "run_table_detection_custom_image": "run the table detection example on a local image file specified by --filename"
+  },
+  "huggingface_optimum-habana/examples/text-classification/run_glue.py": {
+    "run_glue_finetuning": "run a GLUE benchmark text classification fine-tuning script on Habana Gaudi accelerators using GaudiTrainer",
+    "finetune_sequence_classification_habana": "finetune a pretrained sequence classification model on GLUE tasks with mixed precision on Gaudi hardware",
+    "train_text_classifier_glue": "train a text classifier on any GLUE task like SST-2, MNLI, or QNLI using Hugging Face transformers",
+    "evaluate_text_classification_model": "evaluate a fine-tuned text classification model on GLUE validation sets and compute accuracy or regression metrics",
+    "predict_text_classification": "run predictions on a test dataset and save classification results to a text file"
+  },
+  "huggingface_optimum-habana/examples/text-feature-extraction/run_feature_extraction.py": {
+    "run_text_feature_extraction": "run text feature extraction on a HuggingFace model using Intel Gaudi HPU hardware",
+    "run_similarity_scoring": "run cosine similarity scoring between a source sentence and comparison texts using embeddings",
+    "run_benchmark_inference": "run benchmarked inference iterations with warmup on an HPU-accelerated transformer model",
+    "refactor_average_pool": "refactor the average_pool function to compute attention-masked mean pooling over transformer hidden states",
+    "review_hpu_graph_wrapping": "review the use of HPU graph wrapping and bf16 autocast for optimized inference"
+  },
+  "huggingface_optimum-habana/examples/text-generation/model_adapter.py": {
+    "create_HabanaModelAdapter": "create a HabanaModelAdapter instance wrapping a HuggingFace causal LM for HPU-accelerated evaluation",
+    "run_model_call": "run a forward pass through the Habana model to get logits from input token IDs",
+    "generate_until": "generate text completions for a list of lm-eval harness instances using the Habana adapter",
+    "warm_up_model": "warm up the Habana model by running dummy inputs through all configured bucket sizes",
+    "find_bucket": "find the smallest bucket size greater than or equal to a given sequence length"
+  },
+  "huggingface_optimum-habana/examples/text-generation/run_generation.py": {
+    "run_text_generation_hpu": "run text generation inference on Habana Gaudi using a pre-trained model with configurable batch size and tokens",
+    "run_generation_with_flash_attention": "run text generation with Habana Flash Attention enabled for improved performance on HPU devices",
+    "run_generation_with_quantization": "run text generation using a quantized model loaded via AutoGPTQ, AutoAWQ, BnB NF4, or INC",
+    "run_generation_with_profiling": "run text generation with Habana profiling enabled to capture warmup and active steps for performance analysis",
+    "run_generation_with_dataset": "run text generation benchmark over a Hugging Face Hub dataset with configurable column and sample limits"
+  },
+  "huggingface_optimum-habana/examples/text-generation/run_lm_eval.py": {
+    "run_lm_eval_on_hpu": "run lm-eval benchmark tasks like hellaswag and lambada on an HPU device with a language model",
+    "run_lm_eval_with_fewshot": "run lm-eval with few-shot examples as multi-turn conversations using a chat template on HPU",
+    "run_lm_eval_with_quantization": "run lm-eval on a quantized model on HPU and save the quantized model with INC",
+    "setup_lm_eval_parser": "create an argparse parser for lm-eval with tasks, limits, buckets, and chat template options",
+    "review_LimitedSpawnPool": "review the LimitedSpawnPool function that creates a spawn-context multiprocessing pool sized for HPU multinode"
+  },
+  "huggingface_optimum-habana/examples/text-generation/utils.py": {
+    "initialize_model_hpu": "initialize a HuggingFace causal LM model for text generation on Intel Gaudi HPU with optional DeepSpeed or tensor parallelism",
+    "adjust_batch_size": "adjust a batch dictionary of input_ids and attention_mask tensors to a target sequence size by truncating or padding",
+    "compile_model_torch": "compile a model's transformer module with torch.compile using the hpu_backend for Gaudi acceleration",
+    "setup_quantization_fp8": "setup FP8 quantization on a model using neural_compressor with a JSON config for measure or quantize modes",
+    "setup_tokenizer_llama": "setup a tokenizer for a Llama model with proper pad, eos, and bos token configuration for generation"
+  },
+  "huggingface_optimum-habana/examples/text-generation/quantization_tools/pt2e.py": {
+    "prepare_pt2e_model_for_calibration": "prepare a llama model for PT2E quantization calibration by exporting and inserting observers",
+    "load_pt2e_quantized_model": "load a pre-quantized PT2E model from a .pt2 file for inference on HPU",
+    "save_pt2e_quantized_model": "convert a calibrated PT2E model and save it as a .pt2 file after calibration",
+    "configure_pt2e_quantization": "configure PT2E quantization with int8 or fp8 data types using the PT2EConfig dataclass",
+    "review_qdtype_dict": "review the qdtype_dict mapping quantization keys like int8 and fp8 to torch dtype values"
+  },
+  "huggingface_optimum-habana/examples/text-generation/quantization_tools/unify_measurements.py": {
+    "run_unify_measurements_cli": "run the unify_measurements CLI tool to merge measurement JSON files across GPU card groups into unified outputs",
+    "unify_measurements_function": "call unify_measurements to merge multiple measurement JSON files by taking per-tensor maximum values across a card group",
+    "find_measurement_path_function": "call find_measurement_path to locate a measurement JSON file matching a given card name and group size",
+    "parse_args_function": "call parse_args to build an argparse parser accepting measurements directory, card groups, and output path arguments",
+    "convert_measurements_to_npz": "run the script to convert unified measurement JSON files into numpy NPZ archives for quantization calibration"
+  },
+  "huggingface_optimum-habana/examples/translation/run_translation.py": {
+    "run_translation_finetuning": "run a script to fine-tune a seq2seq model for machine translation on Intel Gaudi HPU",
+    "run_translation_evaluation": "run evaluation of a fine-tuned translation model using sacrebleu BLEU score metrics",
+    "run_translation_prediction": "run prediction with a trained seq2seq translation model and save generated predictions to a file",
+    "create_preprocess_function": "create a preprocessing function that tokenizes source and target translation pairs with truncation and padding",
+    "create_compute_metrics": "create a compute_metrics function that decodes predictions and labels and computes sacrebleu BLEU score"
+  },
+  "huggingface_optimum-habana/examples/trl/ddpo.py": {
+    "run_ddpo_training": "run DDPO training for Stable Diffusion on Habana Gaudi HPU using GaudiDDPOTrainer",
+    "create_aesthetic_scorer": "create an aesthetic scorer function using CLIP and MLP to score generated images",
+    "build_gaudi_pipeline": "build a GaudiDefaultDDPOStableDiffusionPipeline with LoRA support and HPU graphs for image generation",
+    "review_aesthetic_scorer_class": "review the AestheticScorer class that predicts image aesthetic scores using CLIP embeddings and an MLP head",
+    "configure_script_arguments": "configure ScriptArguments dataclass to set DDPO training hyperparameters like learning rate, batch size, and bf16"
+  },
+  "huggingface_optimum-habana/examples/trl/dpo.py": {
+    "run_dpo_training_gaudi2": "run DPO training on a Llama model using GaudiDPOTrainer on Intel Gaudi2 hardware",
+    "configure_gaudidpoconfig": "configure GaudiDPOConfig with batch size, learning rate, and HPU graph settings for DPO training",
+    "load_stack_exchange_paired_dataset": "load and format the lvwerra stack-exchange-paired dataset with prompt, chosen, and rejected response columns",
+    "setup_lora_peft_config": "setup LoRA PEFT configuration with rank, alpha, and dropout for causal language model fine-tuning",
+    "configure_gaudi_config": "configure GaudiConfig with fused Adam optimizer and fused clip norm for Gaudi2 hardware acceleration"
+  },
+  "huggingface_optimum-habana/examples/trl/grpo.py": {
+    "run_grpo_training_habana": "run GRPO reinforcement learning training on a causal language model using Habana Gaudi hardware",
+    "create_format_reward_function": "create a reward function that checks if completions use thinking and answer XML tags",
+    "create_accuracy_reward_function": "create a reward function that verifies math answer accuracy using latex parsing and verification",
+    "create_make_conversation_function": "create a function that formats dataset examples into system and user conversation prompts",
+    "configure_script_arguments_grpo": "configure script arguments for GRPO training including model path, dataset, LoRA parameters, and reward model"
+  },
+  "huggingface_optimum-habana/examples/trl/ppo.py": {
+    "run_ppo_training_gaudi2": "run PPO reinforcement learning training on a causal LM model using Intel Gaudi2 hardware",
+    "build_dataset_for_ppo": "build a preprocessed dataset from stack-exchange-paired for PPO training with tokenized queries",
+    "configure_gaudi_ppo_trainer": "configure a GaudiPPOTrainer with LoRA, reward model, and Gaudi2 acceleration settings",
+    "create_ppo_config_gaudi": "create a GaudiPPOConfig with learning rate, batch size, KL control, and Habana settings",
+    "adapt_model_wrapper_gaudi": "adapt the PreTrainedModelWrapper to work with Gaudi2 by calling adapt_PreTrainedModelWrapper_to_gaudi"
+  },
+  "huggingface_optimum-habana/examples/trl/reward_modeling.py": {
+    "train_reward_model_gaudi": "train a reward model on Gaudi2 using GaudiRewardTrainer with LoRA fine-tuning on paired preference data",
+    "configure_gaudi_training_args": "create GaudiTrainingArguments with habana lazy mode, bf16, gradient accumulation, and deepspeed support",
+    "setup_lora_peft_config": "create a LoraConfig for sequence classification and wrap the model with get_peft_model for parameter-efficient fine-tuning",
+    "preprocess_reward_dataset": "tokenize paired responses into input_ids_j and input_ids_k columns using a batched preprocess function",
+    "compute_reward_accuracy_metric": "compute accuracy by comparing rewards_j vs rewards_k predictions using numpy argmax and the evaluate library"
+  },
+  "huggingface_optimum-habana/examples/trl/sft.py": {
+    "run_sft_llama2_gaudi2": "run supervised fine-tuning of Llama2-7b on Habana Gaudi2 using GaudiSFTTrainer with LoRA",
+    "create_datasets_stack_exchange": "create train and validation datasets from a HuggingFace dataset with streaming support",
+    "configure_lora_peft": "configure a LoRA PEFT adapter with custom rank, alpha, and dropout for causal LM",
+    "estimate_chars_token_ratio": "estimate the average characters per token ratio for a dataset using a tokenizer",
+    "evaluate_model_perplexity": "evaluate a fine-tuned model and compute perplexity from the evaluation loss"
+  },
+  "huggingface_optimum-habana/examples/video-classification/run_example.py": {
+    "run_video_classification_inference": "run video classification inference on one or more video files using a VideoMAE model on HPU",
+    "run_video_classification_with_bf16": "run video classification inference with bfloat16 precision for faster HPU performance",
+    "run_video_classification_with_hpu_graphs": "run video classification inference wrapped in HPU graphs for lower latency",
+    "run_video_classification_with_warmup": "run video classification inference with warmup epochs to get accurate timing measurements",
+    "run_video_classification_from_url": "run video classification inference on videos downloaded from HTTP URLs"
+  },
+  "huggingface_optimum-habana/examples/video-comprehension/run_example.py": {
+    "run_video_comprehension_inference": "run VideoLLaVa video comprehension inference on Habana Gaudi HPU with a video and prompt",
+    "run_video_llava_benchmark": "benchmark VideoLLaVa model inference throughput on HPU with warmup and multiple iterations",
+    "extract_video_frames_pyav": "extract specific frames from a video file using PyAV and return as RGB numpy arrays",
+    "run_video_llava_bf16": "run VideoLLaVa video comprehension inference in bf16 precision on Habana Gaudi HPU",
+    "run_video_llava_flash_attention": "run VideoLLaVa inference with Habana Flash Attention enabled to reduce memory consumption"
+  },
+  "huggingface_optimum-habana/examples/vision-language-modeling/run_lora_vlm.py": {
+    "run_lora_vlm_training": "run LoRA fine-tuning of a vision-language model like LLaVA on a VQA dataset using the CLI",
+    "detect_model_family": "detect the model family for a given HuggingFace model name or path using pattern matching",
+    "get_lora_config": "create a LoRA configuration tailored to a specific vision-language model family with target modules",
+    "configure_llava_lora_targets": "configure LoRA target modules to only include language-model linear layers for LLaVA models",
+    "multimodal_vqa_dataset": "create a multimodal VQA dataset that normalizes different dataset schemas to a common image-question-answer format"
+  },
+  "huggingface_optimum-habana/examples/visual-question-answering/run_openclip_vqa.py": {
+    "run_openclip_vqa_inference": "run zero-shot image classification using OpenCLIP on HPU with a pre-trained BiomedCLIP model",
+    "run_qa_function": "run visual question answering inference by computing image-text similarity logits with an OpenCLIP model",
+    "postprocess_results": "postprocess sorted indices and logits to produce top-K label probabilities for each image",
+    "plot_images_with_metadata": "plot images with their top-K classification probabilities as metadata using matplotlib",
+    "run_openclip_benchmark": "benchmark OpenCLIP inference throughput and latency on HPU with configurable warmup and iteration counts"
+  },
+  "huggingface_optimum-habana/optimum/habana/checkpoint_utils.py": {
+    "download_model_checkpoint": "download a HuggingFace model checkpoint to the local cache using get_repo_root",
+    "list_checkpoint_files": "list all checkpoint weight files for a downloaded model using get_checkpoint_files",
+    "write_deepspeed_json": "write a DeepSpeed-inference metadata JSON file using write_checkpoints_json",
+    "check_meta_device": "check if a model should be loaded on the meta device using model_on_meta",
+    "get_injection_policy": "get the DeepSpeed injection policy for a model config using get_ds_injection_policy"
+  },
+  "huggingface_optimum-habana/optimum/habana/AutoAWQ/gemm_hpu.py": {
+    "create_WQLinear_HPU": "create a WQLinear_HPU module for 4-bit quantized linear layers on Intel HPU devices",
+    "use_hpu_post_init": "run hpu_post_init on a model to preprocess all WQLinear_HPU submodules before inference",
+    "use_unpack_weight_and_zeros": "unpack AWQ quantized weights and zeros tensors and reverse their packing order",
+    "use_pack_tensor": "pack a tensor into a compressed int32 format by bits per value",
+    "use_WQLinear_HPU_from_linear": "create a WQLinear_HPU module from an existing nn.Linear layer for HPU inference"
+  },
+  "huggingface_optimum-habana/optimum/habana/accelerate/accelerator.py": {
+    "create_gaudi_accelerator": "create a GaudiAccelerator instance with mixed precision and fast_ddp distribution strategy",
+    "prepare_model_gaudi": "prepare a PyTorch model for Gaudi training with optional fast_ddp strategy",
+    "prepare_data_loader_gaudi": "prepare a PyTorch DataLoader for distributed Gaudi training with sequence parallelism support",
+    "patch_fp8_autowrap": "use the patch_apply_fp8_autowrap context manager to disable FP8 autowrap during DeepSpeed preparation",
+    "configure_fp8_recipe": "configure an FP8 recipe using GaudiTERecipeKwargs for Transformer Engine on Gaudi accelerators"
+  },
+  "huggingface_optimum-habana/optimum/habana/accelerate/utils/other.py": {
+    "compile_regions_model": "compile a PyTorch model using regional compilation to speed up cold start for LLMs and Transformers",
+    "compile_regions_deepspeed_model": "compile a DeepSpeed-wrapped PyTorch model using regional compilation with inplace module.compile",
+    "check_is_compiled_module": "check whether a PyTorch module was compiled with torch.compile and returns a boolean",
+    "check_has_compiled_regions": "check whether a PyTorch module has any submodules compiled with torch.compile",
+    "check_is_repeated_blocks": "check whether a PyTorch module is a ModuleList with all children of the same class"
+  },
+  "huggingface_optimum-habana/optimum/habana/accelerate/utils/transformer_engine.py": {
+    "convert_model_to_fp8": "convert a PyTorch model's linear layers to transformer_engine FP8 modules for HPU inference",
+    "check_fp8_availability": "check if the transformer_engine FP8 library is available on the current HPU system",
+    "create_fp8_recipe": "create a transformer_engine FP8 delayed scaling recipe with custom format and parameters",
+    "wrap_gradient_checkpointing_for_fp8": "wrap a model's gradient checkpointing function with transformer_engine activation checkpointing for FP8 training",
+    "check_transformer_engine_layers": "check whether a given model already contains transformer_engine FP8 linear layers"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/models/attention_processor.py": {
+    "build_GaudiFluxAttnProcessor2_0": "build a Flux attention processor using Gaudi fused SDPA and RMSNorm kernels for HPU inference",
+    "build_GaudiJointAttnProcessor2_0": "build a joint attention processor for SD3-like models using Gaudi fused SDPA and RMSNorm kernels",
+    "build_GaudiWanAttnProcessor": "build a Wan attention processor using Gaudi FusedSDPA and pairwise rotary position embedding on HPU",
+    "build_CogVideoXAttnProcessorGaudi": "build a CogVideoX attention processor with rotary embeddings and Gaudi fused scaled dot-product attention",
+    "build_ScaledDotProductAttention": "build a custom scaled dot-product attention module using HPU softmax_fp8 and batch matrix multiplication"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/models/controlnet_sdv.py": {
+    "create_ControlNetSDVModel": "create a ControlNetSDVModel instance with custom block channels and attention heads for video control",
+    "forward_ControlNetSDVModel": "run the ControlNetSDVModel forward pass with noisy video frames, timestep, and conditioning input",
+    "from_unet_ControlNetSDVModel": "build a ControlNetSDVModel from an existing UNetSpatioTemporalConditionModel by copying weights and config",
+    "create_ControlNetConditioningEmbeddingSVD": "create a ControlNetConditioningEmbeddingSVD module to encode image conditions into feature maps for SVD",
+    "zero_module": "initialize a PyTorch module's parameters to zero using the zero_module utility function"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/models/embeddings.py": {
+    "use_RotaryPosEmbedding_forward": "apply rotary positional embedding to input tensor using HPU-accelerated forward pass with frequency cis pairs",
+    "use_RotaryPosEmbedding_backward": "compute the backward gradient for rotary positional embedding on HPU using saved cos and sin tensors",
+    "create_rotary_embedding_layer": "create a custom PyTorch autograd Function that applies rotary positional embeddings via torch.ops.hpu on Habana devices",
+    "review_RotaryPosEmbedding_class": "review the RotaryPosEmbedding class and verify it correctly saves cos and sin tensors for the backward pass",
+    "test_RotaryPosEmbedding": "test the RotaryPosEmbedding forward and backward methods with sample input tensors and frequency cis pairs on HPU"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/models/unet_2d.py": {
+    "run_gaudi_unet_2d_forward": "run the gaudi_unet_2d_model_forward function to process a sample tensor through the 2D UNet on HPU",
+    "review_gaudi_unet_2d_forward": "review the gaudi_unet_2d_model_forward function and its HPU BF16 autocast patch for timestep embeddings",
+    "refactor_gaudi_unet_2d_forward": "refactor the gaudi_unet_2d_model_forward to support additional class conditioning types beyond timestep",
+    "summarize_gaudi_unet_2d_forward": "summarize the gaudi_unet_2d_model_forward function which performs a UNet2D forward pass with HPU-specific autocast disabled for time embeddings",
+    "test_gaudi_unet_2d_forward": "test the gaudi_unet_2d_model_forward function with a sample tensor and timestep input on an HPU device"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/models/unet_2d_condition.py": {
+    "run_gaudi_unet_forward": "run the HPU-optimized UNet2DConditionModel forward pass with sample, timestep, and encoder hidden states",
+    "patch_unet_forward_for_hpu": "patch a UNet2DConditionModel forward method to use gaudi_unet_2d_condition_model_forward for HPU inference",
+    "set_attn_processor_hpu": "set a custom attention processor on all UNet attention layers with optional ScaledDotProductAttention via PATCH_SDPA env var",
+    "set_default_attn_processor_hpu": "reset all UNet attention processors to the default AttnProcessor2_0 implementation for HPU",
+    "review_gaudi_unet_forward": "review the gaudi_unet_2d_condition_model_forward function for HPU-specific changes like mark_step and bf16 autocast workarounds"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/models/unet_spatio_temporal_condition_controlnet.py": {
+    "init_UNetSpatioTemporalConditionControlNetModel": "initialize a UNetSpatioTemporalConditionControlNetModel with custom block channels and attention heads for video generation",
+    "forward_UNetSpatioTemporalConditionControlNetModel": "run forward pass on noisy video frames through the spatio-temporal UNet ControlNet model with timestep and encoder states",
+    "configure_down_blocks": "configure the down block types for the spatio-temporal UNet ControlNet model using CrossAttnDownBlockSpatioTemporal blocks",
+    "configure_up_blocks": "configure the up block types for the spatio-temporal UNet ControlNet model using CrossAttnUpBlockSpatioTemporal blocks",
+    "enable_gradient_checkpointing": "enable gradient checkpointing on the UNetSpatioTemporalConditionControlNetModel to reduce memory usage during training"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/models/wan_transformer_3d.py": {
+    "run_wan_transformer_3d_forward": "run the WanTransformer3DModleForwardGaudi forward pass on Habana Gaudi hardware for video diffusion",
+    "review_wan_transformer_3d_forward": "review the WanTransformer3DModleForwardGaudi function for Habana Gaudi mark_step integration",
+    "refactor_wan_transformer_3d_forward": "refactor WanTransformer3DModleForwardGaudi to support a new patch size or tensor layout",
+    "summarize_wan_transformer_3d_forward": "summarize the WanTransformer3DModleForwardGaudi forward pass logic including patch embedding and transformer blocks",
+    "test_wan_transformer_3d_forward": "test the WanTransformer3DModleForwardGaudi function with gradient checkpointing and PEFT LoRA scaling"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/models/autoencoders/autoencoder_kl_cogvideox.py": {
+    "tiled_decode_gaudi": "decode a batch of latent vectors into video frames using a tiled VAE decoder optimized for Gaudi",
+    "run_tiled_decode": "run the Gaudi pipelined tiled decode on latent tensors to reconstruct video samples with reduced memory",
+    "CogVideoXCausalConv3dforwardGaudi": "forward pass through a CogVideoX causal 3D convolution layer with conv cache reuse on Gaudi",
+    "optimize_conv_cache": "optimize the CogVideoX causal conv3d forward pass by using copy_ instead of clone for the conv cache",
+    "review_tiled_decode": "review the tiled_decode_gaudi function for memory-efficient video decoding using overlapping tiles and blending"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/models/autoencoders/autoencoder_kl_wan.py": {
+    "optimize_WanAvgDown3DForwardGaudi": "optimize the WanAvgDown3DForwardGaudi function to fix G3 graph compiler issues using transpose instead of permute",
+    "optimize_WanDupUp3DForwardGaudi": "optimize the WanDupUp3DForwardGaudi function to fix G3 graph compiler issues using transpose instead of permute",
+    "add_mark_step_WanDecoder3dForwardGaudi": "add htcore mark_step calls to WanDecoder3dForwardGaudi for memory optimization on Habana Gaudi accelerators",
+    "add_mark_step_WanEncoder3dForwardGaudi": "add htcore mark_step calls to WanEncoder3dForwardGaudi to reduce graph build time in lazy mode",
+    "implement_feat_cache_autoencoder_kl_wan": "implement feature caching with CACHE_T temporal frames for chunked video encoding and decoding in Wan autoencoder"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/models/transformers/cogvideox_transformer_3d.py": {
+    "run_cogvideox_forward_gaudi": "run the cogvideoXTransformerForwardGaudi forward pass on a CogVideoX 3D transformer model with Habana Gaudi acceleration",
+    "review_cogvideox_forward_gaudi": "review the cogvideoXTransformerForwardGaudi function to understand how htcore.mark_step is inserted between transformer blocks for Gaudi graph optimization",
+    "refactor_cogvideox_forward_gaudi": "refactor the cogvideoXTransformerForwardGaudi function to support a new CogVideoX model variant with different patch sizes",
+    "summarize_cogvideox_forward_gaudi": "summarize the cogvideoXTransformerForwardGaudi function and its handling of time embeddings, patch embedding, and unpatchify for CogVideoX-2B and CogVideoX-5B",
+    "test_cogvideox_forward_gaudi": "test the cogvideoXTransformerForwardGaudi function with gradient checkpointing enabled and disabled to verify correct output shapes"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/models/transformers/transformer_qwenimage.py": {
+    "create_timestep_embeddings": "create sinusoidal timestep embeddings for diffusion models using get_timestep_embedding with configurable scale and period",
+    "apply_rotary_embeddings": "apply rotary position embeddings to query or key tensors using apply_rotary_emb_qwen with cos and sin frequencies",
+    "build_timestep_proj_module": "build a GaudiQwenTimestepProjEmbeddings module to project timesteps into embedding space for the Qwen image transformer",
+    "compute_video_rope_embeddings": "compute 3D rotary position embeddings for video frames using GaudiQwenEmbedRope with frame height and width dimensions",
+    "run_double_stream_attention": "run joint text-image attention using GaudiQwenDoubleStreamAttnProcessor2_0 to process image and text streams together"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/auto_pipeline.py": {
+    "load_gaudi_text2image_pipeline": "load a Gaudi-optimized text-to-image diffusion pipeline from a pretrained model using AutoPipelineForText2Image.from_pretrained",
+    "load_gaudi_inpainting_pipeline": "load a Gaudi-optimized inpainting diffusion pipeline from a pretrained model using AutoPipelineForInpainting.from_pretrained",
+    "convert_pipeline_to_gaudi_text2image": "convert an existing diffusion pipeline to a Gaudi-optimized text-to-image pipeline using AutoPipelineForText2Image.from_pipe",
+    "convert_pipeline_to_gaudi_inpainting": "convert an existing diffusion pipeline to a Gaudi-optimized inpainting pipeline using AutoPipelineForInpainting.from_pipe",
+    "review_gaudi_task_class_resolution": "review the _gaudi_get_task_class function that resolves Gaudi pipeline classes from model names using GAUDI_SUPPORTED_TASKS_MAPPINGS"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/pipeline_utils.py": {
+    "init_gaudi_diffusion_pipeline": "create a GaudiDiffusionPipeline with use_habana and gaudi_config for HPU-accelerated diffusion",
+    "load_gaudi_pipeline_from_pretrained": "load a GaudiDiffusionPipeline from a pretrained model path using from_pretrained",
+    "save_gaudi_pipeline_pretrained": "save a GaudiDiffusionPipeline and its Gaudi config to a directory with save_pretrained",
+    "save_gaudi_lora_weights": "save LoRA weights from a GaudiDiffusionPipeline by moving layers from HPU to CPU",
+    "register_gaudi_pipeline_modules": "register modules on a GaudiDiffusionPipeline with library and class metadata"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/cogvideox/pipeline_cogvideox.py": {
+    "build_cogvideox_pipeline": "build a GaudiCogVideoXPipeline for text-to-video generation on Intel Gaudi HPU accelerators",
+    "run_text_to_video": "run the GaudiCogVideoXPipeline call method to generate a video from a text prompt",
+    "prepare_latents": "prepare initial latent noise tensors for the CogVideoX diffusion pipeline with HPU support",
+    "capture_replay_hpu_graph": "capture and replay an HPU graph for the transformer forward pass to accelerate inference",
+    "transformer_hpu_forward": "run the transformer forward pass on HPU using either direct execution or HPU graph capture and replay"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/cogvideox/pipeline_cogvideox_image2video.py": {
+    "run_image_to_video_generation": "run the GaudiCogVideoXImageToVideoPipeline to generate a video from an input image and text prompt on HPU",
+    "configure_hpu_graph_capture": "configure HPU graph capture and replay in the capture_replay method to accelerate transformer forward passes",
+    "setup_gaudi_pipeline": "initialize a GaudiCogVideoXImageToVideoPipeline with tokenizer, text encoder, VAE, transformer, and scheduler components",
+    "apply_dynamic_cfg_guidance": "apply dynamic classifier-free guidance using cosine scheduling to adjust guidance scale during denoising steps",
+    "review_transformer_hpu_forward": "review the transformer_hpu method that routes through HPU graph capture or direct transformer forward pass"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/controlnet/pipeline_controlnet.py": {
+    "run_controlnet_image_generation": "run the GaudiStableDiffusionControlNetPipeline to generate images from a text prompt and control image on HPU",
+    "prepare_latents_for_diffusion": "prepare initial noise latents for the diffusion process with HPU-aware random generation",
+    "run_unet_forward_hpu": "run the UNet forward pass through the unet_hpu method with optional HPU graph capture and replay",
+    "run_controlnet_forward_hpu": "run the ControlNet forward pass through the controlnet_hpu method with optional HPU graph capture and replay",
+    "capture_unet_hpu_graph": "capture and cache the UNet computation graph for replay with updated inputs using unet_capture_replay"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/controlnet/pipeline_stable_video_diffusion_controlnet.py": {
+    "run_svd_controlnet_pipeline": "run the GaudiStableVideoDiffusionControlNetPipeline to generate a video from an image with ControlNet conditioning on HPU",
+    "encode_image_with_clip": "encode an input image into CLIP image embeddings using the pipeline _encode_image method",
+    "split_inputs_into_batches": "split latents, image embeddings, and ControlNet conditions into batches for HPU batched inference",
+    "capture_controlnet_hpu_graph": "capture and replay a cached HPU graph for the ControlNet model to accelerate inference",
+    "capture_unet_hpu_graph": "capture and replay a cached HPU graph for the UNet spatio-temporal model to accelerate inference"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/i2vgen_xl/pipeline_i2vgen_xl.py": {
+    "run_i2vgen_xl_pipeline": "run the GaudiI2VGenXLPipeline to generate a video from an image and text prompt on HPU",
+    "build_i2vgen_xl_pipeline": "build a GaudiI2VGenXLPipeline from pretrained weights with HPU graphs and bfloat16 support enabled",
+    "encode_image_embeddings": "encode an input image into CLIP embeddings using the _encode_image method of GaudiI2VGenXLPipeline",
+    "prepare_image_latents": "prepare image latents with frame position masks using prepare_image_latents for video generation",
+    "split_batch_tensors": "split and concatenate tensors into batches with padding using _split_and_cat_tensors for HPU batching"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion.py": {
+    "run_stable_diffusion_hpu": "run the GaudiStableDiffusionPipeline to generate images from text prompts on Habana HPU",
+    "review_batch_splitting": "review the _split_inputs_into_batches method that pads and splits latents and embeddings for HPU batching",
+    "test_retrieve_timesteps": "test the retrieve_timesteps function that sets and retrieves scheduler timesteps with custom timestep support",
+    "refactor_capture_replay": "refactor the capture_replay method that captures and replays HPU graphs for cached UNet forward passes",
+    "summarize_prepare_latents": "summarize the prepare_latents method that generates initial noise latents with HPU-aware random device selection"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion_depth2img.py": {
+    "run_depth2img_pipeline": "run the GaudiStableDiffusionDepth2ImgPipeline to generate images from a prompt and input image using HPU acceleration",
+    "prepare_depth_map": "prepare a depth map from an input image using the DPT depth estimator for depth-conditioned image generation",
+    "prepare_latents": "prepare initial latents from an input image by encoding through the VAE and adding noise at a given timestep",
+    "capture_replay_hpu_graph": "capture and replay an HPU graph for the UNet forward pass to accelerate inference on Habana processors",
+    "retrieve_timesteps": "retrieve and configure timesteps from a diffusion scheduler for a given number of inference steps"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion_image_variation.py": {
+    "run_stable_diffusion_image_variation": "run a stable diffusion image variation pipeline on HPU to generate images from input images",
+    "encode_image_with_clip": "encode an input image into embeddings using the CLIP vision image encoder on HPU",
+    "prepare_latents_for_generation": "prepare random latent variables scaled by the scheduler noise sigma for image generation",
+    "split_inputs_into_batches": "split latents and image embeddings into batches for HPU batched inference with padding support",
+    "capture_replay_unet_graph": "capture and replay a cached HPU graph for the UNet model to accelerate repeated inference"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion_img2img.py": {
+    "run_img2img_pipeline": "run the GaudiStableDiffusionImg2ImgPipeline to generate images from a prompt and input image on HPU",
+    "configure_gaudi_pipeline": "configure a GaudiStableDiffusionImg2ImgPipeline with Habana Gaudi settings including HPU graphs and bfloat16",
+    "batch_image_generation": "generate images in batches using the pipeline with custom batch size and num_images_per_prompt parameters",
+    "review_capture_replay": "review the capture_replay method that captures and replays HPU graphs for cached UNet inference",
+    "refactor_retrieve_timesteps": "refactor the retrieve_timesteps function to handle custom timestep schedules for the diffusion scheduler"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion_inpaint.py": {
+    "run_inpaint_pipeline": "run the GaudiStableDiffusionInpaintPipeline to inpaint masked regions of an image using a text prompt on HPU",
+    "split_inputs_into_batches": "split latents, prompt embeddings, mask, and masked image latents into batches for HPU batched inference",
+    "run_unet_hpu": "run the UNet forward pass on HPU using either HPU graph capture-replay or standard inference",
+    "capture_replay_hpu_graph": "capture a UNet computation graph on HPU, cache it, and replay with new inputs for faster inference",
+    "initialize_inpaint_pipeline": "initialize a GaudiStableDiffusionInpaintPipeline with VAE, text encoder, UNet, scheduler, and HPU graph settings"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion_instruct_pix2pix.py": {
+    "run_pix2pix_pipeline": "run the GaudiStableDiffusionInstructPix2PixPipeline to edit an image using a text instruction prompt on HPU",
+    "prepare_latents_for_generation": "create initial noise latents for image generation with HPU-aware torch.randn workaround",
+    "split_inputs_into_batches": "split latents, prompt embeds, and image latents into padded batches for HPU batched inference",
+    "capture_replay_hpu_graph": "capture and replay a cached HPU graph for the UNet forward pass to accelerate inference",
+    "configure_gaudi_pix2pix_pipeline": "initialize a GaudiStableDiffusionInstructPix2PixPipeline with Habana config, HPU graphs, and bf16 settings"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion_ldm3d.py": {
+    "run_ldm3d_pipeline": "run the GaudiStableDiffusionLDM3DPipeline to generate RGB images and depth maps from text prompts on HPU",
+    "prepare_latents": "create initial noise latents for Stable Diffusion LDM3D image generation with configurable shape and dtype",
+    "capture_replay_hpu_graph": "capture and replay HPU graphs for cached UNet forward passes to accelerate inference on Gaudi",
+    "unet_hpu_forward": "run the UNet forward pass on HPU with optional HPU graph capture and replay for denoising latents",
+    "review_ldm3d_output": "review the GaudiStableDiffusionLDM3DPipelineOutput dataclass that holds RGB images, depth maps, throughput, and NSFW detection"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion_upscale.py": {
+    "run_stable_diffusion_upscale": "run the GaudiStableDiffusionUpscalePipeline to upscale a low-res image using text-guided Stable Diffusion on HPU",
+    "prepare_latents_for_upscale": "prepare random noise latents scaled by the scheduler init noise sigma for image super-resolution",
+    "split_inputs_into_batches": "split latents, text embeddings, images, and noise levels into HPU-optimized batches with padding for the last batch",
+    "run_unet_on_hpu": "run the UNet forward pass on HPU with optional HPU graph capture and replay caching for faster inference",
+    "capture_replay_hpu_graph": "capture a UNet computation graph on HPU, cache it by input hash, and replay with new inputs for accelerated denoising"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion_3/pipeline_stable_diffusion_3.py": {
+    "run_sd3_image_generation": "run Stable Diffusion 3 image generation on Habana Gaudi HPU using GaudiStableDiffusion3Pipeline",
+    "build_sd3_pipeline": "build a GaudiStableDiffusion3Pipeline from pretrained model with HPU graphs and bfloat16 for image generation",
+    "test_distributed_cfg": "test distributed classifier-free guidance across multiple HPU devices for faster SD3 inference",
+    "review_hpu_graph_capture": "review the capture_replay method that captures and replays HPU graphs for transformer forward passes",
+    "refactor_batch_splitting": "refactor the _split_inputs_into_batches method to handle batching and padding of latents and prompt embeddings"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion_xl/pipeline_stable_diffusion_xl.py": {
+    "build_stable_diffusion_xl_pipeline": "build a GaudiStableDiffusionXLPipeline for text-to-image generation on Intel Gaudi HPU devices",
+    "run_text_to_image_generation": "run the GaudiStableDiffusionXLPipeline call method to generate images from text prompts with batching support",
+    "create_latents_for_generation": "create initial latent variables using prepare_latents for Stable Diffusion XL image generation",
+    "split_inputs_into_batches": "split prompt embeddings and latents into batches using _split_inputs_into_batches for HPU batched inference",
+    "capture_hpu_graph_for_unet": "capture and replay HPU graphs for the UNet forward pass using capture_replay to accelerate inference"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion_xl/pipeline_stable_diffusion_xl_img2img.py": {
+    "run_img2img_pipeline": "run the GaudiStableDiffusionXLImg2ImgPipeline to generate images from a prompt and input image on HPU",
+    "split_inputs_into_batches": "split latents and prompt embeddings into padded batches for HPU batched generation",
+    "run_unet_hpu_forward": "run the UNet forward pass on HPU using either direct inference or HPU graph capture and replay",
+    "capture_hpu_graph": "capture and cache an HPU graph for the UNet forward pass to accelerate repeated inference steps",
+    "initialize_pipeline": "initialize a GaudiStableDiffusionXLImg2ImgPipeline with VAE, text encoders, UNet, scheduler, and Gaudi config"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion_xl/pipeline_stable_diffusion_xl_inpaint.py": {
+    "run_sd_xl_inpaint_pipeline": "run GaudiStableDiffusionXLInpaintPipeline to inpaint masked regions of an image using a text prompt on HPU",
+    "create_inpaint_pipeline_from_pretrained": "create a GaudiStableDiffusionXLInpaintPipeline from a pretrained model like stabilityai/stable-diffusion-xl-base-1.0 with fp16",
+    "run_unet_hpu_forward": "run the unet_hpu method to perform a forward pass with HPU graph capture or direct inference",
+    "run_capture_replay_hpu_graph": "run the capture_replay method to capture and replay HPU graphs for cached UNet inference",
+    "split_and_cat_tensors": "split and concatenate tensors into batches with optional padding for classifier-free guidance"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/stable_diffusion_xl/pipeline_stable_diffusion_xl_mlperf.py": {
+    "run_stable_diffusion_xl_hpu_pipeline": "run the StableDiffusionXLPipeline_HPU to generate images from text prompts on Habana Gaudi accelerators",
+    "create_stable_diffusion_xl_hpu_pipeline": "create a StableDiffusionXLPipeline_HPU instance from pretrained model weights using from_pretrained for HPU inference",
+    "run_unet_denoising_step": "run a single UNet denoising step with classifier-free guidance and scheduler stepping in the HPU pipeline",
+    "split_inputs_into_batches": "split latents, prompt embeddings, and time IDs into batches for batched HPU inference with padding support",
+    "set_attn_processor_hpu": "set the attention processor on a UNet2DConditionModel to use HPU-optimized ScaledDotProductAttention or AttnProcessor2_0"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/text_to_video_synthesis/pipeline_text_to_video_synth.py": {
+    "run_text_to_video_generation": "run the GaudiTextToVideoSDPipeline to generate a video from a text prompt on HPU",
+    "prepare_latents_for_video": "prepare initial noise latents for video synthesis with a given batch size and frame count",
+    "split_inputs_into_batches": "split latents and prompt embeddings into batches for HPU batched inference processing",
+    "capture_replay_hpu_graph": "capture and replay an HPU graph for cached UNet forward passes to accelerate inference",
+    "run_unet_on_hpu": "run the UNet3DConditionModel forward pass on HPU with optional HPU graph capture and replay"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/wan/pipeline_wan.py": {
+    "build_gaudi_wan_pipeline": "build a GaudiWanPipeline from pretrained Wan2.2 model with habana and hpu_graphs enabled for video generation",
+    "run_gaudi_wan_video_generation": "run the GaudiWanPipeline to generate a video from a text prompt with guidance scale and frame count",
+    "prepare_latents_for_wan": "prepare latent tensors for the Wan pipeline with specified batch size, height, width, and frame count",
+    "configure_distributed_cfg": "configure distributed classifier-free guidance across multiple HPU devices for faster inference with Wan pipeline",
+    "review_gaudi_wan_init": "review the GaudiWanPipeline constructor to understand habana-specific initialization with transformer and VAE forward method patching"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/pipelines/wan/pipeline_wan_i2v.py": {
+    "generate_video_from_image": "generate a video from an input image using GaudiWanImageToVideoPipeline with Habana HPU acceleration",
+    "initialize_pipeline": "initialize a GaudiWanImageToVideoPipeline with a pretrained Wan2.2 model and HPU graph optimization",
+    "prepare_latents": "prepare latent variables and image conditions for the Wan image-to-video diffusion pipeline",
+    "configure_distributed_cfg": "configure distributed classifier-free guidance across multiple HPU devices for faster inference",
+    "encode_prompt_and_image": "encode text prompts and image embeddings using the UMT5 text encoder and CLIP image encoder"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/schedulers/scheduling_ddim.py": {
+    "create_gaudi_ddim_scheduler": "create a GaudiDDIMScheduler instance optimized for Gaudi with custom beta schedule and prediction type",
+    "run_ddim_step": "run a single DDIM denoising step using the GaudiDDIMScheduler to get the previous sample",
+    "add_noise_to_samples": "add Gaussian noise to original samples at specified timesteps using the GaudiDDIMScheduler",
+    "reset_timestep_params": "reset the timestep-dependent parameters in GaudiDDIMScheduler to reinitialize alpha and variance lists",
+    "roll_scheduler_params": "roll the time-dependent parameter tensors in GaudiDDIMScheduler to advance to the next timestep"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/schedulers/scheduling_euler_ancestral_discrete.py": {
+    "create_gaudi_euler_ancestral_scheduler": "create a GaudiEulerAncestralDiscreteScheduler instance with custom beta_start, beta_end, and prediction_type for HPU-optimized diffusion",
+    "reset_timestep_dependent_params": "reset the timestep-dependent sigma parameters in a GaudiEulerAncestralDiscreteScheduler to prepare for a new denoising run",
+    "get_params_sigma_values": "get the current sigma, sigma_up, and sigma_down parameters for a given timestep in the Euler ancestral scheduler",
+    "scale_model_input": "scale a diffusion model input sample by sigma using the GaudiEulerAncestralDiscreteScheduler before calling step",
+    "step_denoising": "perform one denoising step with the GaudiEulerAncestralDiscreteScheduler to predict the previous sample from model output and noise"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/schedulers/scheduling_euler_discrete.py": {
+    "create_gaudi_euler_scheduler": "create a GaudiEulerDiscreteScheduler instance with custom beta schedule and prediction type for HPU-optimized diffusion",
+    "reset_timestep_dependent_params": "reset the timestep-dependent sigma parameters in a GaudiEulerDiscreteScheduler to clear cached sigma lists",
+    "get_params_sigma": "get the current sigma and next sigma values from a GaudiEulerDiscreteScheduler for the active step index",
+    "roll_params_sigma": "roll the sigma parameter tensors forward by one step in a GaudiEulerDiscreteScheduler to advance timesteps",
+    "step_denoise_sample": "step a GaudiEulerDiscreteScheduler to predict the denoised sample from model output and current timestep"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/schedulers/scheduling_flow_mactch_euler_discrete.py": {
+    "create_gaudi_flow_match_scheduler": "create a GaudiFlowMatchEulerDiscreteScheduler instance for use with Gaudi lazy mode diffusion pipelines",
+    "use_index_for_timestep": "use the index_for_timestep method to find the position of a timestep in the schedule",
+    "override_flow_match_scheduler": "override the base FlowMatchEulerDiscreteScheduler with the Gaudi-specific version for lazy mode support",
+    "get_timestep_index": "get the index of a given timestep within the scheduler's timesteps array",
+    "handle_gaudi_lazy_mode": "handle Gaudi lazy mode by using the custom index_for_timestep override in the scheduler"
+  },
+  "huggingface_optimum-habana/optimum/habana/diffusers/utils/torch_utils.py": {
+    "apply_fourier_filter": "apply a fourier frequency-domain filter to a 4D tensor with a threshold and scale",
+    "review_gaudi_fourier_filter": "review the gaudi_fourier_filter function that performs FFT-based filtering on tensors for HPU compatibility",
+    "test_gaudi_fourier_filter": "test the gaudi_fourier_filter function with a sample tensor to verify FFT operations on CPU",
+    "refactor_gaudi_fourier_filter": "refactor the gaudi_fourier_filter to support additional frequency-domain mask shapes beyond rectangular",
+    "optimize_gaudi_fourier_filter": "optimize the gaudi_fourier_filter function to reduce CPU-HPU data transfer overhead"
+  },
+  "huggingface_optimum-habana/optimum/habana/distributed/contextparallel.py": {
+    "build_context_parallel_loss_function": "build a custom autograd function that gathers losses across a context parallel group using all_gather_into_tensor",
+    "create_fixed_cross_entropy": "create a cross-entropy loss function that applies context parallel gathering across sequence parallel ranks",
+    "create_causal_lm_context_parallel_loss": "create a causal LM loss function that shifts logits and labels and computes context parallel cross-entropy",
+    "review_context_parallel_backward": "review the backward pass of ContextParallelLossFunction that extracts the gradient slice for the current sequence parallel rank",
+    "refactor_for_causal_lm_loss": "refactor the ForCausalLMContextParallelLoss function to support a different ignore index or batch normalization strategy"
+  },
+  "huggingface_optimum-habana/optimum/habana/distributed/distributed_runner.py": {
+    "run_distributed_training_torch": "run a distributed training command on a single Gaudi node using torch.distributed with a specified world size",
+    "run_distributed_training_mpi": "run a distributed training command on a single Gaudi node using OpenMPI with process mapping by socket",
+    "run_distributed_training_deepspeed": "run a distributed training command on a single Gaudi node using DeepSpeed with a specified number of GPUs",
+    "run_multi_node_deepspeed": "run a multi-node distributed training command using DeepSpeed with a hostfile specifying node addresses and slots",
+    "run_single_card_inference": "run a single-card training or inference command optionally using DeepSpeed with one GPU"
+  },
+  "huggingface_optimum-habana/optimum/habana/distributed/fast_ddp.py": {
+    "all_reduce_gradients": "all-reduce gradients across processes for a PyTorch model on Habana Gaudi using fused buffers",
+    "run_all_reduce_with_hpu_graphs": "run all-reduce on model gradients with HPU graph recording enabled for packing and unpacking",
+    "run_all_reduce_without_hpu_graphs": "run all-reduce on model gradients without HPU graph recording for simpler execution",
+    "review_all_reduce_fusion_buffer": "review the all-reduce fusion buffer allocation and dtype handling for gradient reduction",
+    "refactor_all_reduce_gradient_packing": "refactor the gradient packing and unpacking logic to support a different fusion buffer dtype"
+  },
+  "huggingface_optimum-habana/optimum/habana/distributed/parallel_state.py": {
+    "initialize_model_parallel_groups": "initialize model parallel groups with tensor, pipeline, and sequence parallel sizes for distributed training on Habana Gaudi",
+    "check_parallel_initialization": "check if model parallel, sequence parallel, or data parallel groups are initialized before use",
+    "get_parallel_group": "get the tensor model parallel, pipeline model parallel, data parallel, or sequence parallel process group for the current rank",
+    "get_parallel_rank_and_world_size": "get the rank and world size for sequence parallel, sequence data parallel, or data parallel groups",
+    "set_training_or_eval_mode": "set the training mode flag to control behavior of sequence parallel rank and world size lookups"
+  },
+  "huggingface_optimum-habana/optimum/habana/distributed/serialization.py": {
+    "load_state_dict_from_checkpoint": "load a model state dict from a checkpoint path supporting safetensors, pth, and bin formats with lazy loading",
+    "load_state_dict_into_model": "load an adapted state dict into a torch model with optional tensor parallel sharding across ranks",
+    "register_adapter_for_architecture": "register a state dict adapter function to convert weights from a source format like hf to FMS format",
+    "list_sources_for_architecture": "list all registered weight source formats available for a given model architecture like llama",
+    "create_lazy_safetensors_dict": "create a LazySafetensorsDict that lazily loads tensors from safetensors files only when accessed by key"
+  },
+  "huggingface_optimum-habana/optimum/habana/distributed/strategy.py": {
+    "create_device_mover": "create a DeviceMover wrapper that moves a PyTorch module and its inputs to a specified device",
+    "build_uniform_model_parallel": "build a UniformModelParallelStrategy to distribute model layers evenly across multiple devices",
+    "build_tensor_parallel": "build a TensorParallelStrategy to apply tensor parallelism wrapping to a module using a process group",
+    "create_not_distributed": "create a NotDistributed strategy that returns modules unchanged without any distribution",
+    "distribute_layer": "distribute a model layer to a target device using a UniformModelParallelStrategy or TensorParallelStrategy"
+  },
+  "huggingface_optimum-habana/optimum/habana/distributed/tensorparallel.py": {
+    "apply_colwise_tp": "split a linear layer weight matrix column-wise across tensor parallel ranks for distributed inference",
+    "apply_rowwise_tp": "split a linear layer weight matrix row-wise across tensor parallel ranks for distributed training",
+    "apply_embedding_tp": "partition an embedding layer weight matrix across tensor parallel ranks for distributed model sharding",
+    "reduce_from_tensor_model_parallel_region": "all-reduce a tensor across the model parallel group to aggregate outputs from sharded layers",
+    "disable_compiler": "wrap a function with torch.compiler.disable to bypass torch.compile for accuracy-sensitive operations"
+  },
+  "huggingface_optimum-habana/optimum/habana/distributed/tp.py": {
+    "create_tp_module_subclass": "create a subclass of TPModule to enable tensor parallelism for a custom nn.Module",
+    "setup_tp_rank_world_size": "call setup_tp on a TPModule instance to set its rank and world size for tensor parallelism",
+    "import_weights_from_module": "call import_weights on a TPModule to shard and copy weights from a source nn.Module",
+    "list_colwise_param_names": "override colwise_param_names in a TPModule subclass to return weights that need column-wise tensor parallelism",
+    "list_rowwise_param_names": "override rowwise_param_names in a TPModule subclass to return weights that need row-wise tensor parallelism"
+  },
+  "huggingface_optimum-habana/optimum/habana/distributed/tp_wrapping.py": {
+    "apply_tensor_parallelism_to_model": "apply tensor parallelism to a PyTorch model recursively across all layers using a ProcessGroup",
+    "wrap_module_for_tp": "wrap a single model module for tensor parallelism using its to_tp method or TPGaudiLlama variants",
+    "convert_gaudi_llama_attention_to_tp": "convert a GaudiLlamaAttention module to a TPGaudiLlamaAttention module for tensor parallel execution",
+    "convert_gaudi_llama_mlp_to_tp": "convert a GaudiLlamaMLP module to a TPGaudiLlamaMLP module for tensor parallel execution",
+    "review_apply_tp_recursion": "review the apply_tp function to understand how it recursively wraps model children for tensor parallelism"
+  },
+  "huggingface_optimum-habana/optimum/habana/distributed/zero3_utils.py": {
+    "apply_zero3_leaf_promotion": "apply ZeRO-3 leaf promotion to a llama, mixtral, or qwen3_moe model for DeepSpeed optimization",
+    "review_zero3_leaf_promotion": "review the apply_zero3_leaf_promotion function to understand which model types are registered for ZeRO-3 leaf promotion",
+    "refactor_zero3_leaf_promotion": "refactor apply_zero3_leaf_promotion to add support for a new model type such as mistral or phi",
+    "test_zero3_leaf_promotion_llama": "test apply_zero3_leaf_promotion with a GaudiLlamaDecoderLayer model to verify ZeRO-3 leaf module registration",
+    "test_zero3_leaf_promotion_mixtral": "test apply_zero3_leaf_promotion with a GaudiMixtralSparseMoeBlock model to verify ZeRO-3 leaf module registration"
+  },
+  "huggingface_optimum-habana/optimum/habana/peft/layer.py": {
+    "run_adalora_forward": "run the GaudiAdaloraLayerSVDLinearForward function to apply Adalora SVD linear forward with BF16 batch_gemm fix on HPU",
+    "run_poly_forward": "run the GaudiPolyLayerLinearForward function to apply Poly LoRA forward with mixing weights and task routing on HPU",
+    "compute_query_states": "compute query states with rotary positional embeddings and past key value cache support for adaption prompts",
+    "run_adapted_attention_forward": "run the GaudiAdaptedAttentionPreAttnForward function to compute attention with adaption prompt output added to the model output",
+    "run_boft_forward": "run the GaudiBoftLinearForward function to apply Block Orthogonal Fine Tuning with butterfly rotation and scaling on HPU"
+  },
+  "huggingface_optimum-habana/optimum/habana/peft/peft_model.py": {
+    "review_gaudi_generate": "review the gaudi_generate function that overrides PEFT model generation for Gaudi hardware with prompt learning support",
+    "review_gaudi_prepare_inputs_for_generation": "review the gaudi_prepare_inputs_for_generation function that handles prompt tuning prefix tuning and cache formats for Gaudi",
+    "refactor_gaudi_generate": "refactor the gaudi_generate function to add proper error handling instead of a bare except clause",
+    "refactor_gaudi_prepare_inputs_for_generation": "refactor gaudi_prepare_inputs_for_generation to support additional PEFT types beyond POLY and PREFIX_TUNING",
+    "test_gaudi_prepare_inputs_for_generation": "test gaudi_prepare_inputs_for_generation with different transformers versions and cache formats for llama and mistral models"
+  },
+  "huggingface_optimum-habana/optimum/habana/sentence_transformers/modeling_utils.py": {
+    "adapt_sentence_transformers_to_gaudi": "call adapt_sentence_transformers_to_gaudi to replace SentenceTransformer methods with Gaudi-optimized equivalents",
+    "review_adapt_sentence_transformers_to_gaudi": "review adapt_sentence_transformers_to_gaudi to understand which SentenceTransformer methods are monkey-patched for Gaudi",
+    "summarize_adapt_sentence_transformers_to_gaudi": "summarize adapt_sentence_transformers_to_gaudi and list all patched methods like encode and tokenize",
+    "test_adapt_sentence_transformers_to_gaudi": "test adapt_sentence_transformers_to_gaudi by encoding sentences after patching and verifying output shape",
+    "refactor_adapt_sentence_transformers_to_gaudi": "refactor adapt_sentence_transformers_to_gaudi to add a new Gaudi-optimized method patch"
+  },
+  "huggingface_optimum-habana/optimum/habana/sentence_transformers/st_gaudi_data_collator.py": {
+    "create_sentence_transformers_data_collator": "create a data collator for SentenceTransformers that tokenizes features and pads to power-of-2 lengths for Gaudi",
+    "build_gaudi_optimized_batch": "build a batch dict from feature rows with tokenized inputs padded to power-of-2 sequence lengths",
+    "refactor_data_collator_for_gaudi": "refactor the SentenceTransformers data collator to add power-of-2 padding and Gaudi-specific tensor handling",
+    "test_st_gaudi_data_collator_call": "test the st_gaudi_data_collator_call function with sample feature dicts and verify batch output tensors",
+    "review_power_of_2_padding_logic": "review the power-of-2 padding logic in st_gaudi_data_collator_call that rounds sequence lengths up for Gaudi hardware"
+  },
+  "huggingface_optimum-habana/optimum/habana/sentence_transformers/st_gaudi_encoder.py": {
+    "encode_sentences_on_hpu": "encode a list of sentences into embeddings using a SentenceTransformer model on Habana Gaudi HPU",
+    "encode_with_prompt": "encode sentences with a custom prompt prefix prepended to each sentence before computing embeddings",
+    "encode_with_quantization": "encode sentences and quantize embeddings to int8, uint8, binary, or ubinary precision for smaller storage",
+    "encode_token_embeddings": "encode sentences and return token-level embeddings instead of pooled sentence embeddings",
+    "encode_normalized_embeddings": "encode sentences and normalize the output embeddings to unit length for dot-product similarity"
+  },
+  "huggingface_optimum-habana/optimum/habana/sentence_transformers/st_gaudi_trainer.py": {
+    "train_sentence_transformer_gaudi": "train a SentenceTransformer model on Intel Gaudi HPU using SentenceTransformerGaudiTrainer with Habana framework",
+    "create_gaudi_trainer_with_loss": "create a SentenceTransformerGaudiTrainer with a custom loss function like CoSENTLoss for sentence embedding training",
+    "evaluate_sentence_transformer_gaudi": "evaluate a trained SentenceTransformer model using SentenceTransformerGaudiTrainer with a custom SentenceEvaluator",
+    "configure_multi_dataset_batch_sampler": "configure a multi-dataset batch sampler using RoundRobinBatchSampler or ProportionalBatchSampler for training on multiple datasets",
+    "save_load_sentence_transformer_checkpoint": "save and load a SentenceTransformer model checkpoint using SentenceTransformerGaudiTrainer save and load methods"
+  },
+  "huggingface_optimum-habana/optimum/habana/sentence_transformers/st_gaudi_transformer.py": {
+    "save_sentence_transformer_model": "save a sentence transformer model and tokenizer to an output path with safe serialization",
+    "tokenize_texts_for_embedding": "tokenize a list of strings or text pairs into token ids for sentence transformer embedding",
+    "save_model_with_config": "save a pretrained model state dict to cpu and export the sentence bert config json",
+    "tokenize_text_pairs": "tokenize pairs of strings as two batches for sentence similarity or pairing tasks",
+    "tokenize_dict_texts": "tokenize a list of dicts mapping text keys to text values for named input handling"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/gaudi_configuration.py": {
+    "create_gaudi_config": "create a GaudiConfig instance with use_torch_autocast and use_fused_adam settings for HPU training",
+    "configure_autocast_ops": "configure bf16 and fp32 autocast operations lists in a GaudiConfig for mixed precision training",
+    "write_ops_to_files": "write bf16 and fp32 autocast operation lists from a GaudiConfig to separate text files",
+    "declare_autocast_ops": "declare autocast bf16 and fp32 ops by setting environment variables via GaudiConfig",
+    "review_gaudi_config": "review the GaudiConfig class and its autocast and fused optimizer configuration options"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/gradient_checkpointing.py": {
+    "use_gradient_checkpointing_hpu": "use the checkpoint function to enable gradient checkpointing for a model on HPU devices",
+    "create_CheckpointFunction_autograd": "create a custom autograd CheckpointFunction subclass to implement HPU-aware gradient checkpointing with mark_step",
+    "review_checkpoint_use_reentrant": "review the checkpoint function to understand why use_reentrant is forced to False on HPU",
+    "refactor_checkpoint_preserve_rng": "refactor the checkpoint function to customize RNG state preservation behavior for HPU training",
+    "test_CheckpointFunction_backward": "test the CheckpointFunction backward pass to verify htcore mark_step is called correctly"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/modeling_attn_mask_utils.py": {
+    "create_causal_mask_gaudi": "create a causal attention mask for Gaudi using GaudiAttentionMaskConverter._make_causal_mask with sliding window support",
+    "convert_2d_to_4d_mask": "convert a 2D attention mask to 4D using GaudiAttentionMaskConverter.to_4d for causal self-attention",
+    "prepare_4d_causal_attention_mask": "prepare a 4D causal attention mask using _gaudi_prepare_4d_causal_attention_mask for transformer layers on Gaudi",
+    "expand_mask_gaudi": "expand a 2D attention mask to 4D using GaudiAttentionMaskConverter._expand_mask with device-aware inverted fill",
+    "review_gaudi_attention_mask_converter": "review the GaudiAttentionMaskConverter class and its differences from the base AttentionMaskConverter in transformers"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/modeling_rope_utils.py": {
+    "create_gaudi_rotary_embedding": "create a GaudiRotaryEmbedding instance with a model config for HPU-accelerated rotary position embeddings",
+    "initialize_gaudi_rope_with_kwargs": "initialize GaudiRotaryEmbedding using dim, base, max_position_embeddings, and rope_type keyword arguments directly",
+    "forward_gaudi_rotary_embedding": "call forward on GaudiRotaryEmbedding with input tensor and sequence length to get cos and sin cached embeddings",
+    "set_cos_sin_cache": "call _set_cos_sin_cache on GaudiRotaryEmbedding to precompute and register cosine and sine caches for a given sequence length",
+    "dynamic_frequency_update": "call _dynamic_frequency_update on GaudiRotaryEmbedding to recompute inverse frequencies when sequence length grows beyond the cached limit"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/modeling_utils.py": {
+    "adapt_transformers_to_gaudi": "call adapt_transformers_to_gaudi to replace all transformers methods with Gaudi-optimized equivalents for HPU acceleration",
+    "register_gaudi_generation": "patch transformers generation mixin methods with GaudiGenerationMixin to enable lazy mode and HPU graphs support",
+    "optimize_llama_for_gaudi": "replace llama model classes with Gaudi-optimized versions including attention, MLP, decoder layer, and rotary embedding",
+    "optimize_qwen_for_gaudi": "replace qwen2 and qwen3 model classes with Gaudi-optimized versions including MoE variants and vision language models",
+    "enable_awq_quantization_gaudi": "patch AWQ quantizer with Gaudi-specific environment validation and weight loading hooks for HPU compatibility"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/trainer.py": {
+    "init_gauditrainer": "create a GaudiTrainer instance with a model, gaudi_config, and GaudiTrainingArguments for HPU training",
+    "train_gauditrainer": "train a transformers model on Habana Gaudi using GaudiTrainer.train() with optional checkpoint resuming",
+    "evaluate_gauditrainer": "evaluate a trained model on Habana Gaudi using GaudiTrainer.evaluate() with speed metrics tracking",
+    "predict_gauditrainer": "run inference predictions on a test dataset using GaudiTrainer.predict() with HPU graph acceleration",
+    "save_model_gauditrainer": "save a trained model checkpoint to disk using GaudiTrainer.save_model() with safetensors support"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/trainer_seq2seq.py": {
+    "create_GaudiSeq2SeqTrainer": "create a GaudiSeq2SeqTrainer instance with a model, gaudi_config, and training arguments for HPU-optimized Seq2Seq training",
+    "load_generation_config": "load a GaudiGenerationConfig from a file path, directory, or model ID string using GaudiSeq2SeqTrainer.load_generation_config",
+    "evaluate_with_generation": "run evaluation on a Seq2Seq model using GaudiSeq2SeqTrainer.evaluate with generation kwargs like max_length and num_beams",
+    "predict_with_generate": "run predictions on a test dataset using GaudiSeq2SeqTrainer.predict with generation-specific kwargs for HPU inference",
+    "prediction_step_generate": "perform a single prediction step using model.generate with HPU graphs, lazy mode, and synced GPUs via GaudiSeq2SeqTrainer.prediction_step"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/trainer_utils.py": {
+    "get_dtype_of_tensor": "get the dtype string from a PyTorch tensor, tuple of tensors, or dict of tensors",
+    "get_dtype_bfloat16_handling": "get the dtype from a bfloat16 tensor and return float32 for numpy compatibility",
+    "convert_numpy_array_dtype": "convert a numpy array or tuple of arrays to a target dtype string",
+    "convert_tuple_of_arrays": "convert a tuple of numpy arrays into a specified dtype recursively",
+    "review_get_dtype": "review the get_dtype function to understand how it extracts dtype from torch tensors and handles bfloat16"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/training_args_seq2seq.py": {
+    "create_seq2seq_training_args": "create a GaudiSeq2SeqTrainingArguments instance to configure seq2seq model training on Habana Gaudi",
+    "configure_predict_with_generate": "set predict_with_generate to calculate ROUGE and BLEU metrics during evaluation",
+    "set_generation_max_length": "set generation_max_length to control output sequence length during evaluation loops",
+    "set_generation_num_beams": "set generation_num_beams to control beam search width during evaluation loops",
+    "serialize_training_args_to_dict": "call to_dict on GaudiSeq2SeqTrainingArguments to serialize it including GaudiGenerationConfig as a dictionary"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/generation/stopping_criteria.py": {
+    "gaudi_MaxLengthCriteria_call": "patch MaxLengthCriteria.call to use token_idx for optimized Gaudi text generation stopping",
+    "gaudi_MaxTimeCriteria_call": "patch MaxTimeCriteria.call to stop Gaudi text generation after a maximum time limit",
+    "gaudi_EosTokenCriteria_call": "patch EosTokenCriteria.call to detect EOS tokens per sequence on Gaudi hardware",
+    "gaudi_StoppingCriteriaList_call": "patch StoppingCriteriaList.call to evaluate all stopping criteria with EOS-aware tensor output on Gaudi",
+    "needs_tensor_output": "check whether tensor output is needed based on ignore_eos and eos_token_id flags"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/generation/utils.py": {
+    "generate_text_hpu": "generate text sequences using a HPU-optimized model with lazy mode and HPU graphs for accelerated inference",
+    "run_beam_search_generation": "run beam search decoding on a HPU-optimized model with static shapes and bucketing support",
+    "run_contrastive_search": "run contrastive search generation with degeneration penalty and top-k candidate re-ranking on HPU",
+    "run_assisted_decoding": "run assisted decoding with a candidate generator to accelerate token generation on HPU",
+    "run_sample_generation": "run multinomial sampling or greedy search generation with HPU graphs and lazy mode optimizations"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/integrations/awq.py": {
+    "replace_linear_with_awq_hpu": "replace all nn.Linear modules in a model with WQLinear_HPU for HPU-optimized AWQ quantization",
+    "validate_awq_quantizer_environment": "validate that autoawq and accelerate are installed and the device_map does not include cpu or disk",
+    "process_model_before_weight_loading": "replace linear modules with AWQ quantized versions and apply quantization scales before loading model weights",
+    "post_init_awq_gemm_hpu_modules": "run post-init weight unpacking reordering and repacking for AWQ GEMM HPU layers in a model",
+    "parse_gaudi_awq_version": "parse a string like gemm gemv exllama or hpu into a GaudiAWQLinearVersion enum value"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/integrations/deepspeed.py": {
+    "create_GaudiTrainerDeepSpeedConfig": "create a GaudiTrainerDeepSpeedConfig instance from a DeepSpeed config file or dictionary for HPU training",
+    "review_GaudiTrainerDeepSpeedConfig_trainer_config_process": "review the GaudiTrainerDeepSpeedConfig trainer_config_process method to adjust config with TrainingArguments values",
+    "run_deepspeed_init": "run deepspeed_init to initialize a trainer model with DeepSpeed on HPU for training or inference",
+    "test_deepspeed_init_inference": "test the deepspeed_init function with inference mode enabled for ZeRO Stage 3",
+    "use_unwrap_deepspeed_model": "use unwrap_deepspeed_model to extract the underlying PyTorch module from a DeepSpeed wrapped model"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/integrations/finegrained_fp8.py": {
+    "create_GaudiFP8Linear": "create a GaudiFP8Linear layer with blockwise FP8 quantization for HPU inference",
+    "replace_with_fp8_linear": "replace all linear layers in a PyTorch model with GaudiFP8Linear modules",
+    "get_fp8_method": "get the FP8 quantization method from a model config or environment variable",
+    "dequant_block_fp8_weight_naive": "dequantize a blockwise FP8 weight tensor back to bfloat16 precision",
+    "pad_weight": "pad a weight tensor so its dimensions are multiples of a given block size"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/integrations/gaudi_fused_sdpa_attention.py": {
+    "run_gaudi_fused_sdpa_attention": "run the gaudi_fused_sdpa_attention_forward function with query, key, value tensors on a Habana Gaudi accelerator",
+    "review_fused_sdpa_forward": "review the gaudi_fused_sdpa_attention_forward function to understand how it wraps FusedSDPA.apply with softmax and recompute modes",
+    "refactor_attention_softmax_mode": "refactor the gaudi_fused_sdpa_attention_forward function to change the FLASH_ATTENTION_FAST_SOFTMAX environment variable logic",
+    "test_fused_sdpa_output_shape": "test the gaudi_fused_sdpa_attention_forward function to verify the output tensor shape matches the expected dimensions",
+    "summarize_recompute_mode_logic": "summarize the gaudi_fused_sdpa_attention_forward function recompute_mode logic that differs between first token and next token generation"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/loss/loss_rt_detr.py": {
+    "run_hungarian_matching_rt_detr": "run the RT-DETR Hungarian matcher to match predicted object boxes to ground truth targets",
+    "review_gaudi_RTDetrHungarianMatcher_forward": "review the gaudi_RTDetrHungarianMatcher_forward function that performs bipartite matching for RT-DETR object detection on Gaudi",
+    "refactor_focal_loss_matching": "refactor the gaudi_RTDetrHungarianMatcher_forward function to change the focal loss alpha and gamma parameters",
+    "test_hungarian_matcher_cost_matrix": "test the RT-DETR Hungarian matcher cost matrix computation combining classification, L1, and GIoU costs",
+    "summarize_gaudi_rt_detr_loss": "summarize the Habana Gaudi-optimized RT-DETR Hungarian matcher forward function for object detection matching"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/modeling_all_models.py": {
+    "create_kv_cache": "create a KVCache module to allocate and update key-value cache tensors for HPU inference",
+    "update_kv_cache": "update the KVCache with new key-value tensors using index-based or concatenation strategies",
+    "apply_fused_rope": "apply the HPU fused rotary positional embedding to query and key tensors for transformers",
+    "invert_attention_mask": "invert and extend an encoder attention mask tensor for HPU-compatible mixed precision computation",
+    "scoped_linear_all_reduce": "create a ScopedLinearAllReduce module to split DeepSpeed LinearAllReduce into forward, all_reduce, and post steps"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/albert/modeling_albert.py": {
+    "review_gaudi_albert_forward": "review the gaudi_albert_forward function for HPU mixed precision handling in the attention mask computation",
+    "refactor_gaudi_albert_forward": "refactor gaudi_albert_forward to support additional HPU-specific optimizations for the ALBERT model forward pass",
+    "test_gaudi_albert_forward": "test gaudi_albert_forward with input_ids and attention_mask tensors on a Gaudi HPU device",
+    "summarize_gaudi_albert_forward": "summarize how gaudi_albert_forward disables autocast for the extended attention mask on HPU",
+    "build_albert_hpu_inference": "build a script that patches gaudi_albert_forward onto an ALBERT model for HPU inference"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/baichuan/generation_utils.py": {
+    "build_chat_input_token_ids": "build chat input token ids from a list of messages using a model and tokenizer for Baichuan generation",
+    "create_text_iter_streamer": "create a TextIterStreamer that decodes generated tokens into streaming text output from a tokenizer",
+    "use_text_iter_streamer_put": "use the TextIterStreamer put method to feed generated token values into the streamer queue",
+    "use_text_iter_streamer_end": "use the TextIterStreamer end method to signal completion by putting None into the text queue",
+    "iterate_text_iter_streamer": "iterate over a TextIterStreamer instance to receive decoded text chunks as they are produced"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/baichuan/modeling_baichuan.py": {
+    "build_baichuan_causal_lm": "build a BaichuanForCausalLM model from pretrained weights using from_pretrained for HPU inference",
+    "run_baichuan_chat": "run the BaichuanForCausalLM chat method with a tokenizer and list of message dicts",
+    "create_alibi_tensor": "create an ALiBi positional bias tensor using gaudi_baichuan_build_alibi_tensor for the 13B model",
+    "review_kv_cache": "review the KVCache class allocate and update methods for key-value cache management during generation",
+    "refactor_attention_flash": "refactor the Attention class to toggle flash attention with use_flash_attention and fused SDPA kernels"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/baichuan/tokenization_baichuan.py": {
+    "create_BaichuanTokenizer": "create a BaichuanTokenizer instance from a SentencePiece vocab file with custom special tokens",
+    "tokenize_with_BaichuanTokenizer": "tokenize text into token IDs using the BaichuanTokenizer with bos and eos token options",
+    "convert_tokens_to_string": "convert a list of Baichuan token strings back into a decoded text string",
+    "build_inputs_with_special_tokens": "build input sequences with bos and eos special tokens for single or paired sequences",
+    "save_vocabulary": "save the Baichuan tokenizer vocabulary file to a specified directory"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/bart/modeling_bart.py": {
+    "review_gaudi_BartEncoder_forward": "review the gaudi_BartEncoder_forward function that runs the BART encoder with HPU mark_step optimizations",
+    "review_gaudi_BartDecoder_forward": "review the gaudi_BartDecoder_forward function that runs the BART decoder with cross-attention and HPU optimizations",
+    "review_gaudi_BartForConditionalGeneration_forward": "review the gaudi_BartForConditionalGeneration_forward function that computes logits and masked LM loss for BART generation",
+    "refactor_gaudi_BartAttention_forward": "refactor the gaudi_BartAttention_forward function to handle self-attention, cross-attention, and HPU token_idx bug workarounds",
+    "review_gaudi_BartLearnedPositionalEmbedding": "review the gaudi_BartLearnedPositionalEmbedding class that learns positional embeddings with a fixed offset for BART"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/bert/modeling_bert.py": {
+    "run_bert_forward_hpu": "run the BERT model forward pass on HPU with bf16 autocast support using gaudi_BertModel_forward",
+    "run_bert_sdpa_attention_hpu": "run the BERT SDPA self-attention forward pass using Habana FusedSDPA for fast softmax on HPU",
+    "review_gaudi_bert_forward": "review the gaudi_BertModel_forward function to understand HPU-specific changes for bf16 autocast and attention mask handling",
+    "review_fused_sdpa_attention": "review the gaudi_Bert_Sdpa_SelfAttention_forward function to understand how FusedSDPA replaces scaled_dot_product_attention on HPU",
+    "refactor_bert_attention_for_hpu": "refactor the BERT SDPA self-attention to use Habana FusedSDPA with fast softmax algorithm for inference on HPU"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/blip/modeling_blip.py": {
+    "generate_blip_caption_hpu": "generate image captions using BlipForConditionalGeneration with Habana Gaudi HPU graph acceleration",
+    "generate_blip_vqa_hpu": "generate visual question answering responses using BlipForQuestionAnswering with Habana Gaudi HPU graph acceleration",
+    "wrap_blip_vision_model_hpu_graph": "wrap the BLIP vision model in an HPU graph for optimized inference on Habana accelerators",
+    "wrap_blip_text_decoder_hpu_graph": "wrap the BLIP text decoder in an HPU graph for optimized text generation on Habana accelerators",
+    "wrap_blip_text_encoder_hpu_graph": "wrap the BLIP text encoder in an HPU graph for optimized question encoding on Habana accelerators"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/blip/modeling_blip_text.py": {
+    "run_blip_text_self_attention": "run the gaudi BlipTextSelfAttention forward pass with token_idx support for Habana Gaudi acceleration",
+    "run_blip_text_layer_forward": "run the gaudi BlipTextLayer forward pass with self-attention, cross-attention, and feed-forward chunking",
+    "run_blip_text_encoder_forward": "run the gaudi BlipTextEncoder forward pass through all hidden layers with optional gradient checkpointing",
+    "run_blip_text_model_forward": "run the gaudi BlipTextModel forward pass to get sequence and pooled outputs with cross-attention support",
+    "run_blip_text_lm_head_forward": "run the gaudi BlipTextLMHeadModel forward pass for next-token prediction with cross-entropy loss"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/bloom/modeling_bloom.py": {
+    "build_alibi_tensor": "build an ALiBi tensor for BLOOM attention using gaudi_bloom_build_alibi_tensor with attention mask and num heads",
+    "run_gaudi_bloom_attention_forward": "run the Gaudi-optimized BLOOM attention forward pass with hidden states, ALiBi tensor, and attention mask",
+    "run_gaudi_bloom_block_forward": "run the Gaudi-optimized BLOOM transformer block forward pass with layer norm, self attention, and MLP",
+    "run_gaudi_bloom_model_forward": "run the full Gaudi-optimized BLOOM model forward pass with input IDs, past key values, and attention mask",
+    "run_gaudi_bloom_for_causal_lm_forward": "run the Gaudi-optimized BLOOM causal LM forward pass to get logits and optional loss from labels"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/chatglm/modeling_chatglm.py": {
+    "build_chatglm_chat": "build a ChatGLM chatbot using ChatGLMForConditionalGeneration that supports multi-turn conversations with history",
+    "create_chatglm_sequence_classifier": "create a sequence classification model using ChatGLMForSequenceClassification for single or multi-label classification tasks",
+    "run_chatglm_stream_chat": "run streaming chat generation using stream_chat to yield responses token by token with past key values",
+    "refactor_chatglm_flash_attention": "refactor the CoreAttention forward method to toggle flash attention parameters like causal mask and fast softmax",
+    "review_chatglm_kv_cache": "review the KVCache and SelfAttention allocate_kv_cache methods for pre-allocating key-value cache memory on HPU"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/chatglm/tokenization_chatglm.py": {
+    "build_chat_input": "build chat input tokens from a query and history using ChatGLMTokenizer build_chat_input method",
+    "tokenize_text": "tokenize text into SentencePiece tokens using SPTokenizer tokenize method with special token support",
+    "encode_decode_tokens": "encode text to token IDs or decode token IDs back to text using SPTokenizer encode and decode",
+    "pad_encoded_inputs": "pad tokenized inputs on the left with attention mask and position IDs using ChatGLMTokenizer _pad method",
+    "build_single_message": "build token IDs for a single chat message with role metadata using ChatGLMTokenizer build_single_message"
+  },
+  "huggingface_optimum-habana/optimum/habana/transformers/models/clip/modeling_clip.py": {
+    "build_gaudi_clip_vision_model": "build a GaudiCLIPVisionModel to process pixel values on HPU with flash attention enabled",
+    "create_gaudi_clip_attention": "create a GaudiCLIPAttention module that uses FusedSDPA for accelerated attention on HPU devices",
+    "run_gaudi_clip_vision_transformer": "run the GaudiCLIPVisionTransformer forward pass with interpolated positional encoding and flash attention",
+    "refactor_gaudi_clip_encoder_layer": "refactor the GaudiCLIPEncoderLayer to toggle flash attention recompute during training",
+    "review_gaudi_clip_vision_embeddings": "review the GaudiCLIPVisionEmbeddings class for float8 dtype handling on HPU devices"
+  }
+}

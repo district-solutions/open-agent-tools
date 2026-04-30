@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: ggml-org/llama.cpp
+- repo_uri: https://github.com/ggml-org/llama.cpp
+
+## File: ggml-org_llama.cpp/scripts/hip/gcn-cdna-vgpr-check.py
+
+Prompts
+
+```
+['run the VGPR check script against a HIP compiler log file to detect functions exceeding 256 VGPRs', 'parse a HIP compiler log file and extract per-function VGPR usage and spill counts', 'review a log file for functions exceeding 256 total VGPRs (VGPRs plus spill) and flag new violations', 'summarize all functions in a log file that exceed 256 VGPRs, distinguishing ignored from new violations', 'test whether a HIP compiler log contains any new functions exceeding the 256 VGPR threshold']
+```
+
+Usage
+
+```
+{'run_vgpr_check': 'run the VGPR check script against a HIP compiler log file to detect functions exceeding 256 VGPRs', 'parse_log_file': 'parse a HIP compiler log file and extract per-function VGPR usage and spill counts', 'review_vgpr_usage': 'review a log file for functions exceeding 256 total VGPRs (VGPRs plus spill) and flag new violations', 'summarize_vgpr_violations': 'summarize all functions in a log file that exceed 256 VGPRs, distinguishing ignored from new violations', 'test_vgpr_threshold': 'test whether a HIP compiler log contains any new functions exceeding the 256 VGPR threshold'}
+```
+

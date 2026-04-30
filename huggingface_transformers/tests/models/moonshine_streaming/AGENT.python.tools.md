@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/moonshine_streaming/test_modeling_moonshine_streaming.py
+
+Prompts
+
+```
+['test the MoonshineStreamingModelTest class with model initialization, attention outputs, and hidden states', 'test the MoonshineStreamingConfig and MoonshineStreamingEncoderConfig classes for correct parameter handling', 'test the test_attention_outputs method to verify encoder, decoder, and cross-attention shapes and counts', 'test the integration tests for tiny, small, and medium model generation with single and batch audio inputs', 'test the test_resize_tokens_embeddings method to verify token embedding resizing and untied embedding behavior']
+```
+
+Usage
+
+```
+{'test_moonshine_streaming_model': 'test the MoonshineStreamingModelTest class with model initialization, attention outputs, and hidden states', 'test_moonshine_streaming_config': 'test the MoonshineStreamingConfig and MoonshineStreamingEncoderConfig classes for correct parameter handling', 'test_moonshine_streaming_attention': 'test the test_attention_outputs method to verify encoder, decoder, and cross-attention shapes and counts', 'test_moonshine_streaming_generation': 'test the integration tests for tiny, small, and medium model generation with single and batch audio inputs', 'test_moonshine_streaming_embeddings': 'test the test_resize_tokens_embeddings method to verify token embedding resizing and untied embedding behavior'}
+```
+

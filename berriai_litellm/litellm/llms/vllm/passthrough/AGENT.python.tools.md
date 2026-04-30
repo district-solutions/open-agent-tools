@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/vllm/passthrough/transformation.py
+
+Prompts
+
+```
+['test the is_streaming_request method to check if a request dict contains the stream key', 'build the get_complete_url method to construct a full VLLM API URL from api_base, endpoint, and query params', 'test the format_url method to append an endpoint and query parameters to a base URL', 'build the get_api_base method to retrieve the VLLM API base URL from parameter or VLLM_API_BASE environment variable', 'review the sign_request method to sign HTTP request headers for providers like Bedrock']
+```
+
+Usage
+
+```
+{'test_is_streaming_request': 'test the is_streaming_request method to check if a request dict contains the stream key', 'build_get_complete_url': 'build the get_complete_url method to construct a full VLLM API URL from api_base, endpoint, and query params', 'test_format_url': 'test the format_url method to append an endpoint and query parameters to a base URL', 'build_get_api_base': 'build the get_api_base method to retrieve the VLLM API base URL from parameter or VLLM_API_BASE environment variable', 'review_sign_request': 'review the sign_request method to sign HTTP request headers for providers like Bedrock'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/python/sglang/srt/entrypoints/anthropic/protocol.py
+
+Prompts
+
+```
+['create an AnthropicMessagesRequest with model, messages, and max_tokens for API calls', 'build an AnthropicTool definition with name, description, and input_schema for tool use', 'test an AnthropicContentBlock with type, text, and optional source for image or tool use content', 'summarize an AnthropicStreamEvent with type, delta, and usage for streaming response handling', 'review an AnthropicMessagesResponse with id, content blocks, and token usage for API response validation']
+```
+
+Usage
+
+```
+{'create_anthropic_messages_request': 'create an AnthropicMessagesRequest with model, messages, and max_tokens for API calls', 'build_anthropic_tool_definition': 'build an AnthropicTool definition with name, description, and input_schema for tool use', 'test_anthropic_content_block': 'test an AnthropicContentBlock with type, text, and optional source for image or tool use content', 'summarize_anthropic_stream_event': 'summarize an AnthropicStreamEvent with type, delta, and usage for streaming response handling', 'review_anthropic_messages_response': 'review an AnthropicMessagesResponse with id, content blocks, and token usage for API response validation'}
+```
+

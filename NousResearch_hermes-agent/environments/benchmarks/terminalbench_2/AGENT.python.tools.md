@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: NousResearch/hermes-agent
+- repo_uri: https://github.com/NousResearch/hermes-agent
+
+## File: NousResearch_hermes-agent/environments/benchmarks/terminalbench_2/terminalbench2_env.py
+
+Prompts
+
+```
+['run Terminal-Bench 2.0 evaluation on all tasks via the evaluate CLI subcommand', 'filter Terminal-Bench 2.0 evaluation to run only specific tasks by comma-separated task names', 'resolve the Docker image for a TB2 task using pre-built Hub image or Dockerfile fallback', 'run the Hermes agent loop on a TB2 task and verify with uploaded test suite', 'log Terminal-Bench 2.0 evaluation metrics including pass rates to Weights & Biases']
+```
+
+Usage
+
+```
+{'run_tb2_evaluation': 'run Terminal-Bench 2.0 evaluation on all tasks via the evaluate CLI subcommand', 'filter_tb2_tasks': 'filter Terminal-Bench 2.0 evaluation to run only specific tasks by comma-separated task names', 'resolve_docker_image': 'resolve the Docker image for a TB2 task using pre-built Hub image or Dockerfile fallback', 'run_agent_loop_and_verify': 'run the Hermes agent loop on a TB2 task and verify with uploaded test suite', 'log_tb2_metrics_wandb': 'log Terminal-Bench 2.0 evaluation metrics including pass rates to Weights & Biases'}
+```
+

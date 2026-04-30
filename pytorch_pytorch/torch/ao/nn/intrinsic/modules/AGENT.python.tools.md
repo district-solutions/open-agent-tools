@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pytorch/pytorch
+- repo_uri: https://github.com/pytorch/pytorch.git
+
+## File: pytorch_pytorch/torch/ao/nn/intrinsic/modules/fused.py
+
+Prompts
+
+```
+['create a ConvReLU2d fused module wrapping Conv2d and ReLU for quantization', 'build a ConvBnReLU3d fused module combining Conv3d, BatchNorm3d, and ReLU', 'test a LinearReLU fused module that stacks Linear and ReLU for quantization', 'refactor a ConvAddReLU2d fused module to apply Conv2d, add, then ReLU in sequence', 'review a ConvBn2d fused module that wraps Conv2d and BatchNorm2d for quantization']
+```
+
+Usage
+
+```
+{'create_ConvReLU2d': 'create a ConvReLU2d fused module wrapping Conv2d and ReLU for quantization', 'build_ConvBnReLU3d': 'build a ConvBnReLU3d fused module combining Conv3d, BatchNorm3d, and ReLU', 'test_LinearReLU': 'test a LinearReLU fused module that stacks Linear and ReLU for quantization', 'refactor_ConvAddReLU2d': 'refactor a ConvAddReLU2d fused module to apply Conv2d, add, then ReLU in sequence', 'review_ConvBn2d': 'review a ConvBn2d fused module that wraps Conv2d and BatchNorm2d for quantization'}
+```
+

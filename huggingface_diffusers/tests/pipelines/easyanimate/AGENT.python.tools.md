@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/diffusers
+- repo_uri: https://github.com/huggingface/diffusers
+
+## File: huggingface_diffusers/tests/pipelines/easyanimate/test_easyanimate.py
+
+Prompts
+
+```
+['run the EasyAnimatePipelineFastTests test_inference method to verify video generation output shape and values', 'run the EasyAnimatePipelineFastTests test_callback_inputs method to verify callback_on_step_end functionality with tensor inputs', 'run the EasyAnimatePipelineIntegrationTests test_EasyAnimate method to perform slow integration testing with a pretrained model', 'review the get_dummy_components method to understand how transformer, VAE, scheduler, and text encoder are configured for testing', 'review the get_dummy_inputs method to understand the prompt, generator, and inference parameters used for testing']
+```
+
+Usage
+
+```
+{'test_EasyAnimatePipelineFastTests_inference': 'run the EasyAnimatePipelineFastTests test_inference method to verify video generation output shape and values', 'test_EasyAnimatePipelineFastTests_callback_inputs': 'run the EasyAnimatePipelineFastTests test_callback_inputs method to verify callback_on_step_end functionality with tensor inputs', 'test_EasyAnimatePipelineIntegrationTests_EasyAnimate': 'run the EasyAnimatePipelineIntegrationTests test_EasyAnimate method to perform slow integration testing with a pretrained model', 'review_EasyAnimatePipelineFastTests_get_dummy_components': 'review the get_dummy_components method to understand how transformer, VAE, scheduler, and text encoder are configured for testing', 'review_EasyAnimatePipelineFastTests_get_dummy_inputs': 'review the get_dummy_inputs method to understand the prompt, generator, and inference parameters used for testing'}
+```
+

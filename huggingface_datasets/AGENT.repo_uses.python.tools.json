@@ -1,0 +1,828 @@
+{
+  "huggingface_datasets/benchmarks/benchmark_array_xd.py": {
+    "run_benchmark_array_xd": "run the benchmark_array_xd function to compare Array2D, nested sequence, and flattened sequence read/write performance",
+    "run_write_arrow": "run the write function to encode examples and write them to an Arrow file using ArrowWriter",
+    "run_read_unformatted": "run the read_unformated function to iterate over a dataset row by row without numpy formatting",
+    "run_read_batch_numpy": "run the read_batch_formatted_as_numpy function to read dataset rows in batches with numpy format",
+    "run_read_col_numpy": "run the read_col_formatted_as_numpy function to read all columns from a dataset with numpy format"
+  },
+  "huggingface_datasets/benchmarks/benchmark_getitem_100B.py": {
+    "run_benchmark_table_100B": "run the benchmark_table_100B function to benchmark dataset getitem access patterns on a 100B row dataset",
+    "create_generate_100B_dataset": "create a HuggingFace Dataset from a PyArrow table with a specified number of examples and chunk size",
+    "test_RandIter": "test the RandIter dataclass to generate random integer indices for random row access patterns",
+    "review_get_first_row": "review the get_first_row function that benchmarks accessing the first row of a dataset",
+    "summarize_get_batch_of_1024_random_rows": "summarize the get_batch_of_1024_random_rows function that benchmarks random row access using RandIter"
+  },
+  "huggingface_datasets/benchmarks/benchmark_indices_mapping.py": {
+    "run_benchmark_indices_mapping": "run the benchmark to measure performance of select, sort, shuffle, train_test_split, and shard on a HuggingFace dataset",
+    "benchmark_dataset_select": "benchmark the select operation on a HuggingFace dataset by selecting every other row",
+    "benchmark_dataset_sort": "benchmark the sort operation on a HuggingFace dataset by sorting on a numeric column",
+    "benchmark_dataset_shuffle": "benchmark the shuffle operation on a HuggingFace dataset by shuffling all rows",
+    "benchmark_dataset_shard": "benchmark the shard operation on a HuggingFace dataset by splitting into multiple shards"
+  },
+  "huggingface_datasets/benchmarks/benchmark_iterating.py": {
+    "run_benchmark_iterating": "run the benchmark_iterating function to measure dataset iteration speed across different read methods",
+    "run_read_benchmark": "run the read function to benchmark single example access on a HuggingFace dataset",
+    "run_read_batch_benchmark": "run the read_batch function to benchmark batched access on a HuggingFace dataset",
+    "run_read_formatted_benchmark": "run the read_formatted function to benchmark formatted single example access using numpy, pandas, torch, or tensorflow",
+    "run_read_formatted_batch_benchmark": "run the read_formatted_batch function to benchmark formatted batched access on a HuggingFace dataset"
+  },
+  "huggingface_datasets/benchmarks/benchmark_map_filter.py": {
+    "run_benchmark_map_filter": "run the benchmark_map_filter function to measure map and filter performance on a dataset",
+    "run_map_timed": "run the timed map function on a datasets Dataset with optional kwargs",
+    "run_filter_timed": "run the timed filter function on a datasets Dataset with optional kwargs",
+    "review_benchmark_map_filter": "review the benchmark_map_filter function and its map and filter timing configurations",
+    "refactor_benchmark_map_filter": "refactor the benchmark_map_filter function to add new map or filter benchmark scenarios"
+  },
+  "huggingface_datasets/benchmarks/format.py": {
+    "run_format_json_to_md": "run format_json_to_md to convert a JSON benchmark results file into a collapsible Markdown table",
+    "create_benchmark_md_table": "create a collapsible Markdown table from a JSON file containing benchmark metrics with new, old, and diff values",
+    "convert_json_benchmarks_to_markdown": "convert a JSON file of benchmark results into a formatted Markdown document with summary details",
+    "refactor_format_json_to_md": "refactor format_json_to_md to support additional metric value types or custom Markdown formatting",
+    "review_format_json_to_md": "review format_json_to_md to understand how it parses JSON benchmark data and generates Markdown tables"
+  },
+  "huggingface_datasets/benchmarks/utils.py": {
+    "generate_dummy_examples": "generate dummy examples from HuggingFace dataset features with random data for benchmarking",
+    "create_example_dataset": "create a HuggingFace dataset file from features with random dummy examples using ArrowWriter",
+    "measure_function_duration": "measure the execution duration of a function using a get_duration decorator",
+    "review_generate_examples": "review the generate_examples function to understand how it handles ArrayXD, Value, and Sequence features",
+    "refactor_generate_example_dataset": "refactor generate_example_dataset to support additional feature types or validation options"
+  },
+  "huggingface_datasets/src/datasets/arrow_dataset.py": {
+    "create_dataset_from_dict": "create a Dataset from a Python dictionary with column names as keys and lists as values",
+    "create_dataset_from_pandas": "create a Dataset from a pandas DataFrame with optional feature types and split name",
+    "map_transform_dataset": "apply a function to all examples in a Dataset and update the table with new columns",
+    "filter_dataset": "apply a filter function to keep only examples that match a condition in the Dataset",
+    "push_dataset_to_hub": "push a Dataset to the Hugging Face Hub as Parquet files with optional sharding"
+  },
+  "huggingface_datasets/src/datasets/arrow_reader.py": {
+    "build_read_instruction_from_spec": "build a ReadInstruction from a string spec like 'train[:33%]' to slice a dataset split",
+    "create_file_instructions_for_split": "create FileInstructions for a dataset split by calling make_file_instructions with split infos and a ReadInstruction",
+    "read_arrow_table_from_file": "read an Arrow table from a file using ArrowReader.read_table with optional in_memory flag",
+    "read_parquet_table_from_file": "read a Parquet table from a file using ParquetReader._get_table_from_filename with skip and take parameters",
+    "convert_instruction_to_absolute": "convert a ReadInstruction to absolute boundaries by calling to_absolute with a split name to length dict"
+  },
+  "huggingface_datasets/src/datasets/arrow_writer.py": {
+    "build_arrow_writer": "build a python module that uses ArrowWriter to write examples to an Arrow file with a given schema",
+    "build_parquet_writer": "build a python module that uses ParquetWriter to write dataset examples to a Parquet file with snappy compression",
+    "create_typed_sequence": "create a TypedSequence to convert a list of values into a PyArrow array with an inferred feature type",
+    "get_arrow_batch_size": "get the optimal Arrow writer batch size from dataset features to avoid buffer overflows",
+    "get_parquet_batch_size": "get the optimal Parquet writer batch size from data size to optimize row group access"
+  },
+  "huggingface_datasets/src/datasets/builder.py": {
+    "build_dataset_download_and_prepare": "build a python module to download and prepare a dataset using DatasetBuilder with arrow format",
+    "create_builder_config": "create a BuilderConfig subclass with custom name, version, and data_dir properties for a dataset",
+    "generate_dataset_split": "generate dataset splits by implementing _split_generators to return SplitGenerator objects with gen_kwargs",
+    "load_dataset_as_arrow": "load a prepared dataset as an Arrow Dataset using as_dataset with a specific split name",
+    "stream_iterable_dataset": "create a streaming IterableDataset using as_streaming_dataset to process data without downloading"
+  },
+  "huggingface_datasets/src/datasets/combine.py": {
+    "interleave_datasets_equal": "interleave multiple datasets by cycling through each source to alternate examples evenly",
+    "interleave_datasets_probabilities": "interleave datasets using weighted probabilities to sample examples from each source randomly",
+    "interleave_datasets_stopping_strategy": "interleave datasets with stopping strategy all_exhausted to include every sample from all sources",
+    "concatenate_datasets_vertical": "concatenate multiple datasets vertically along rows to stack them end to end",
+    "concatenate_datasets_horizontal": "concatenate multiple datasets horizontally along columns to join them side by side"
+  },
+  "huggingface_datasets/src/datasets/data_files.py": {
+    "sanitize_patterns": "sanitize user data_files input into a split name to list of patterns dictionary",
+    "resolve_pattern": "resolve a glob pattern like star star dot csv to matching file paths in a directory",
+    "get_data_patterns": "auto detect default train validation test split patterns from a dataset directory",
+    "DataFilesList_from_local_or_remote": "build a data files list from glob patterns with origin metadata for caching",
+    "DataFilesDict_from_local_or_remote": "build a split name to data files dictionary from patterns for a local or remote path"
+  },
+  "huggingface_datasets/src/datasets/dataset_dict.py": {
+    "map_dataset_dict": "map a function over all splits in a DatasetDict to transform examples in batches",
+    "filter_dataset_dict": "filter examples in a DatasetDict using a predicate function applied to all splits",
+    "shuffle_dataset_dict": "shuffle all splits in a DatasetDict with a configurable random seed",
+    "push_dataset_dict_to_hub": "push a DatasetDict to the Hugging Face Hub as a Parquet dataset with sharding",
+    "load_dataset_dict_from_disk": "load a previously saved DatasetDict from a local or remote filesystem path"
+  },
+  "huggingface_datasets/src/datasets/distributed.py": {
+    "split_dataset_by_node_map_style": "split a map-style Dataset into contiguous chunks for a specific node rank in a distributed training setup",
+    "split_dataset_by_node_iterable": "split an IterableDataset by evenly assigning shards or filtering examples for a specific node rank",
+    "split_dataset_for_distributed_training": "split a HuggingFace dataset across multiple nodes using rank and world_size for distributed model training",
+    "review_split_dataset_by_node": "review the split_dataset_by_node function to understand how it handles map-style versus iterable dataset splitting strategies",
+    "summarize_dataset_type_typing": "summarize the DatasetType TypeVar that constrains typing to Dataset or IterableDataset for the distributed module"
+  },
+  "huggingface_datasets/src/datasets/exceptions.py": {
+    "catch_DatasetsError": "catch the base DatasetsError exception to handle all dataset-related errors in a try block",
+    "catch_DatasetNotFoundError": "catch DatasetNotFoundError when a missing or unauthenticated private dataset is accessed",
+    "catch_DatasetGenerationCastError": "catch DatasetGenerationCastError when data files have mismatched columns during dataset generation",
+    "use_DatasetGenerationCastError_from_cast_error": "use the from_cast_error class method to build a DatasetGenerationCastError from a CastError with builder context",
+    "catch_ChecksumVerificationError": "catch ChecksumVerificationError to handle unexpected files, missing files, or non-matching checksums during download"
+  },
+  "huggingface_datasets/src/datasets/fingerprint.py": {
+    "enable_disable_caching": "disable dataset caching to force transforms to always recompute cache files in a temporary directory",
+    "generate_fingerprint": "generate a deterministic fingerprint hash for a dataset based on its current state and cache file timestamps",
+    "update_fingerprint": "update a dataset fingerprint by hashing a transform function and its arguments to produce a new fingerprint",
+    "fingerprint_transform_decorator": "decorate a dataset transform function to automatically update the dataset fingerprint after each transform call",
+    "format_kwargs_for_fingerprint": "format transform function kwargs into a fingerprint-ready dictionary by filtering defaults and handling randomized seeds"
+  },
+  "huggingface_datasets/src/datasets/hub.py": {
+    "delete_dataset_config_from_hub": "delete a dataset configuration from a data-only dataset on the Hugging Face Hub by repo_id and config_name",
+    "delete_dataset_config_and_update_readme": "delete a dataset config from the Hub including its data files and update the README dataset card",
+    "delete_legacy_dataset_files": "delete legacy dataset_infos.json and data files from a Hugging Face Hub dataset repository",
+    "review_delete_from_hub_function": "review the delete_from_hub function to understand how it removes data files and updates the dataset card on the Hub",
+    "refactor_delete_files_to_batch": "refactor the _delete_files function to batch delete data files instead of deleting them one by one"
+  },
+  "huggingface_datasets/src/datasets/info.py": {
+    "create_DatasetInfo": "create a DatasetInfo object with description, citation, homepage, license, and features for a dataset",
+    "write_DatasetInfo_to_directory": "write a DatasetInfo object as JSON files to a specified directory using write_to_directory",
+    "load_DatasetInfo_from_directory": "load a DatasetInfo object from a directory containing the dataset_info.json metadata file",
+    "merge_DatasetInfos": "merge multiple DatasetInfo objects into one by combining unique descriptions, citations, and homepages",
+    "write_DatasetInfosDict_to_directory": "write a DatasetInfosDict to a directory as JSON and update the README.md dataset card YAML"
+  },
+  "huggingface_datasets/src/datasets/inspect.py": {
+    "get_dataset_infos": "get the meta information about a dataset from the Hugging Face Hub as a dict mapping config names to DatasetInfo",
+    "get_dataset_config_names": "get the list of available config names for a particular dataset like nyu-mll/glue",
+    "get_dataset_default_config_name": "get the default config name for a dataset like openbookqa returning main",
+    "get_dataset_config_info": "get the DatasetInfo for a particular dataset config including splits and description",
+    "get_dataset_split_names": "get the list of available splits like train validation and test for a dataset"
+  },
+  "huggingface_datasets/src/datasets/iterable_dataset.py": {
+    "create_iterable_dataset_from_generator": "create an iterable dataset from a Python generator function that yields example dictionaries",
+    "load_iterable_dataset_from_parquet": "load an iterable dataset from one or more Parquet files with optional column selection and filters",
+    "map_transform_iterable_dataset": "apply a transformation function to all examples in an iterable dataset on the fly during iteration",
+    "shuffle_and_filter_iterable_dataset": "shuffle an iterable dataset with a buffer and filter examples using a predicate function",
+    "push_iterable_dataset_to_hub": "push an iterable dataset to the Hugging Face Hub as self-contained Parquet files with optional multiprocessing"
+  },
+  "huggingface_datasets/src/datasets/load.py": {
+    "load_dataset_from_hub": "load a dataset from the Hugging Face Hub by repository name and split using load_dataset",
+    "load_dataset_local": "load a local CSV or JSON dataset by specifying the builder name and data_files path",
+    "load_dataset_streaming": "load a dataset in streaming mode from the Hub to avoid downloading files upfront",
+    "load_dataset_builder_inspect": "load a dataset builder to inspect features, config, and data files without downloading data",
+    "load_from_disk_restore": "load a previously saved dataset or dataset dict from a local directory using load_from_disk"
+  },
+  "huggingface_datasets/src/datasets/naming.py": {
+    "build_camelcase_to_snakecase": "build a python module that converts a camelCase string to snake_case format",
+    "build_snakecase_to_camelcase": "build a python module that converts a snake_case string to CamelCase format",
+    "build_filename_prefix_for_split": "build a python module that generates a filename prefix from a dataset name and split",
+    "build_filepattern_for_dataset_split": "build a python module that generates a glob file pattern for a dataset split in a data directory",
+    "build_filenames_for_dataset_split": "build a python module that generates shard filenames for a dataset split with optional shard lengths"
+  },
+  "huggingface_datasets/src/datasets/search.py": {
+    "add_faiss_index": "add a faiss dense vector index to a dataset column for fast similarity retrieval",
+    "add_elasticsearch_index": "add an elasticsearch bm25 text index to a dataset column for fast text retrieval",
+    "search_index": "search a faiss or elasticsearch index on a dataset and return scores and indices",
+    "get_nearest_examples": "get the nearest examples and their scores from a dataset index given a query",
+    "save_and_load_faiss_index": "save a faiss index to disk or remote uri and load it back into a dataset"
+  },
+  "huggingface_datasets/src/datasets/splits.py": {
+    "create_split_generator": "create a SplitGenerator with name and gen_kwargs for a dataset builder split",
+    "build_split_dict": "build a SplitDict from a list of SplitInfo objects using from_split_dict",
+    "merge_dataset_splits": "merge two NamedSplit objects using the add operator to combine train and test splits",
+    "subsplit_by_percent": "subsplit a dataset split by percentage using datasets.percent slice notation",
+    "create_split_info": "create a SplitInfo dataclass with name, num_bytes, num_examples, and shard_lengths"
+  },
+  "huggingface_datasets/src/datasets/streaming.py": {
+    "extend_module_for_streaming": "extend a python module to support streaming by patching open and os.path functions with fsspec equivalents",
+    "extend_dataset_builder_for_streaming": "extend a dataset builder and its parent classes to support data streaming with fsspec",
+    "patch_submodule_for_remote_files": "patch a module submodule to use fsspec for opening and reading remote files in streaming fashion",
+    "wrap_auth_for_download_config": "wrap a function with authentication using download config token and storage options for remote access",
+    "review_streaming_patch_functions": "review the streaming module patching functions that replace os.path join dirname and exists with fsspec versions"
+  },
+  "huggingface_datasets/src/datasets/table.py": {
+    "create_InMemoryTable_from_pandas": "create an InMemoryTable from a pandas DataFrame using the from_pandas class method",
+    "create_MemoryMappedTable_from_file": "create a MemoryMappedTable from an Arrow file on disk using the from_file class method",
+    "concatenate_tables_vertically": "concatenate multiple Table objects along axis 0 using the concat_tables function",
+    "cast_table_to_features": "cast a PyArrow table to match a target Features schema using cast_table_to_features",
+    "slice_table_fast": "slice a Table using fast interpolation search with the fast_slice method"
+  },
+  "huggingface_datasets/src/datasets/commands/datasets_cli.py": {
+    "run_datasets_cli": "run the HuggingFace datasets CLI tool with a subcommand and optional arguments",
+    "run_environment_command": "run the environment subcommand to display the current datasets environment information",
+    "run_test_command": "run the test subcommand to execute dataset tests from the CLI",
+    "run_delete_from_hub_command": "run the delete-from-hub subcommand to delete a dataset from the HuggingFace Hub",
+    "parse_unknown_args": "parse unknown CLI arguments into a key-value dictionary by alternating pairs"
+  },
+  "huggingface_datasets/src/datasets/commands/delete_from_hub.py": {
+    "run_delete_from_hub_command": "run the DeleteFromHubCommand to delete a dataset config from the Hugging Face Hub",
+    "register_delete_from_hub_subcommand": "register the delete_from_hub subcommand with an argparse parser for CLI usage",
+    "create_delete_from_hub_command": "create a DeleteFromHubCommand instance with dataset_id, config_name, token, and revision",
+    "call_command_factory": "call _command_factory with argparse args to instantiate a DeleteFromHubCommand",
+    "delete_dataset_config_from_hub": "delete a specific dataset config from the Hugging Face Hub using the delete_from_hub function"
+  },
+  "huggingface_datasets/src/datasets/commands/env.py": {
+    "run_environment_command": "run the EnvironmentCommand to print system environment info including datasets version and platform details",
+    "register_env_subcommand": "register the env subcommand with an ArgumentParser to print relevant system environment info",
+    "format_dict_to_bullets": "use format_dict to convert a dictionary into a newline-separated bullet-point list string",
+    "create_env_command_via_factory": "use info_command_factory to create an EnvironmentCommand instance for the datasets CLI",
+    "review_environment_command_class": "review the EnvironmentCommand class and its run method that collects library version info"
+  },
+  "huggingface_datasets/src/datasets/commands/test.py": {
+    "run_test_command": "run the TestCommand to test dataset loading with a specified cache directory and data directory",
+    "test_all_configs": "test all dataset configurations by running TestCommand with the all_configs flag enabled",
+    "test_with_force_redownload": "run the TestCommand with force_redownload to re-download the dataset from scratch",
+    "test_with_save_infos": "run the TestCommand with save_infos to generate a dataset card README.md file",
+    "test_with_clear_cache": "run the TestCommand with clear_cache to remove cached files after each configuration test"
+  },
+  "huggingface_datasets/src/datasets/download/download_config.py": {
+    "create_download_config_with_cache_dir": "create a DownloadConfig instance with a custom cache directory for storing downloaded dataset files",
+    "create_download_config_with_force_download": "create a DownloadConfig that forces re-download of already cached files by setting force_download to True",
+    "create_download_config_with_extraction": "create a DownloadConfig that automatically extracts compressed zip or tar files after downloading them",
+    "copy_download_config": "call the copy method on a DownloadConfig instance to get a deep-copied independent configuration object",
+    "set_download_config_token": "set the token attribute on a DownloadConfig to auto-populate HuggingFace storage options with the auth token"
+  },
+  "huggingface_datasets/src/datasets/download/download_manager.py": {
+    "download_urls": "download files from URLs and return local cached paths using DownloadManager",
+    "extract_archives": "extract downloaded archive files and return the extracted directory paths",
+    "download_and_extract": "download URLs and extract archives in one step using DownloadManager",
+    "iter_archive": "iterate over files within a downloaded archive yielding path and file objects",
+    "get_recorded_checksums": "get the recorded sizes and checksums of all downloaded files"
+  },
+  "huggingface_datasets/src/datasets/download/streaming_download_manager.py": {
+    "download_streaming_urls": "normalize URLs for streaming data from remote files without actually downloading them",
+    "extract_archive_streaming": "add extraction protocol to URLs for streaming from compressed archives like zip files",
+    "download_and_extract_streaming": "combine download and extract in one step to prepare URLs for streaming data",
+    "iter_archive_files": "iterate over files within a tar or zip archive yielding file paths and binary objects",
+    "iter_files_from_paths": "iterate over file URL paths from a root directory or list of paths"
+  },
+  "huggingface_datasets/src/datasets/features/audio.py": {
+    "encode_audio_example": "encode an audio example from a path, bytes, or dict into a PyArrow-compatible dictionary format",
+    "decode_audio_example": "decode an audio file from a path or bytes into a torchcodec AudioDecoder object with configurable sampling rate",
+    "cast_audio_storage": "cast a PyArrow string, binary, or struct array into the Audio feature struct storage type",
+    "embed_audio_storage": "embed local or remote audio file bytes into a PyArrow struct array for dataset storage",
+    "encode_torchcodec_audio": "encode a torchcodec AudioDecoder object into a WAV bytes dictionary for PyArrow storage"
+  },
+  "huggingface_datasets/src/datasets/features/features.py": {
+    "build_features_schema": "build a Features object with Value and ClassLabel fields to define a dataset schema",
+    "create_classlabel_mapping": "create a ClassLabel feature with named classes for string to integer label conversion",
+    "cast_tensors_to_python": "cast numpy pytorch or tensorflow tensors to native python lists recursively",
+    "convert_arrow_to_features": "convert a pyarrow DataType to an equivalent datasets FeatureType using generate_from_arrow_type",
+    "encode_decode_examples": "encode or decode dataset examples using Features encode_example and decode_example methods"
+  },
+  "huggingface_datasets/src/datasets/features/image.py": {
+    "build_image_feature": "build a dataset column using the Image feature class to load and decode image files from paths",
+    "encode_image_example": "encode a PIL image or numpy array into an Arrow compatible dict with path and bytes fields",
+    "decode_image_example": "decode an Arrow stored image dict back into a PIL Image object with optional mode conversion",
+    "cast_image_storage": "cast a PyArrow string or binary array into the Image struct storage type with bytes and path fields",
+    "embed_image_storage": "embed local or remote image file bytes into a PyArrow struct array for self contained dataset storage"
+  },
+  "huggingface_datasets/src/datasets/features/nifti.py": {
+    "build_nifti_feature": "build a dataset column with the Nifti feature to load NIfTI neuroimaging files from paths",
+    "create_nifti_encode_example": "create a function call to encode_example that converts a NIfTI file path into an Arrow dict",
+    "test_nifti_decode_example": "test the decode_example method to load a NIfTI file from bytes or path into a nibabel image",
+    "refactor_nifti_cast_storage": "refactor the cast_storage method to handle additional PyArrow array types for NIfTI data",
+    "summarize_encode_nibabel_image": "summarize the encode_nibabel_image function that serializes a nibabel image to a path or bytes dict"
+  },
+  "huggingface_datasets/src/datasets/features/pdf.py": {
+    "create_Pdf_feature": "create a Pdf Feature to read pdf documents from a file path in a HuggingFace dataset",
+    "encode_example_Pdf": "encode a pdf file path or bytes into an Arrow-compatible dictionary using Pdf.encode_example",
+    "decode_example_Pdf": "decode a stored pdf dictionary back into a pdfplumber PDF object using Pdf.decode_example",
+    "cast_storage_Pdf": "cast a PyArrow string or binary array to the Pdf struct storage type using Pdf.cast_storage",
+    "encode_pdfplumber_pdf": "encode a pdfplumber PDF object into a path or bytes dictionary using encode_pdfplumber_pdf"
+  },
+  "huggingface_datasets/src/datasets/features/translation.py": {
+    "build_translation_feature": "build a Translation feature with fixed languages like en, fr, de for a HuggingFace dataset",
+    "build_translation_variable_languages_feature": "build a TranslationVariableLanguages feature with variable languages per example for a HuggingFace dataset",
+    "encode_translation_example": "encode a translation dictionary into sorted language and translation lists using TranslationVariableLanguages encode_example",
+    "flatten_translation_feature": "flatten a Translation feature into a dictionary of string Value features for each language",
+    "get_pyarrow_schema_for_translation": "get the PyArrow struct schema for a Translation feature by calling the Translation instance"
+  },
+  "huggingface_datasets/src/datasets/features/video.py": {
+    "create_video_feature": "create a Video feature to read video data from a file path in a HuggingFace dataset",
+    "encode_video_example": "encode a video file path or bytes into an Arrow-compatible dictionary with path and bytes fields",
+    "decode_video_example": "decode a stored video example into a torchcodec VideoDecoder object for frame access",
+    "cast_video_storage": "cast a PyArrow string or binary array into the Video struct storage type with bytes and path fields",
+    "embed_video_storage": "embed local or remote video file bytes into a PyArrow struct array by reading the files"
+  },
+  "huggingface_datasets/src/datasets/filesystems/compression.py": {
+    "read_compressed_file_with_cat": "read the contents of a compressed file using the cat method on GzipFileSystem",
+    "open_compressed_file_for_reading": "open a compressed file in binary read mode using the _open method on BaseCompressedFileFileSystem",
+    "strip_protocol_from_path": "strip the protocol prefix from a compressed file path using the _strip_protocol class method",
+    "get_directory_listing_for_compressed_file": "get the directory cache listing for a compressed file using the _get_dirs method",
+    "instantiate_compression_filesystem": "instantiate a GzipFileSystem or Bz2FileSystem subclass to read compressed files as a virtual filesystem"
+  },
+  "huggingface_datasets/src/datasets/formatting/formatting.py": {
+    "query_table_with_key": "query a pyarrow Table to extract a subtable by row index, slice, range, column name, or iterable of indices",
+    "format_table_with_formatter": "format a Table as a row, column, or batch using a Formatter like PythonFormatter or PandasFormatter",
+    "create_PythonFormatter_for_lazy_rows": "create a PythonFormatter with lazy=True to return LazyRow or LazyBatch that formats columns on demand",
+    "use_CustomFormatter_with_transform": "use a CustomFormatter with a transform callable to apply custom formatting to batches from a pyarrow table",
+    "create_LazyDict_for_on_demand_formatting": "create a LazyDict backed by a pyarrow Table that formats column values on-the-fly when accessed"
+  },
+  "huggingface_datasets/src/datasets/formatting/jax_formatter.py": {
+    "build_jax_formatter": "build a JaxFormatter instance to convert HuggingFace dataset rows into JAX arrays on a specified device",
+    "format_row_to_jax": "format a single PyArrow table row into a JAX array mapping using JaxFormatter format_row method",
+    "format_batch_to_jax": "format a PyArrow table batch into a dictionary of JAX arrays using JaxFormatter format_batch method",
+    "format_column_to_jax": "format a single PyArrow table column into a consolidated JAX array using JaxFormatter format_column method",
+    "tensorize_data_struct": "recursively tensorize a nested dictionary of numpy arrays and lists into JAX arrays using recursive_tensorize"
+  },
+  "huggingface_datasets/src/datasets/formatting/np_formatter.py": {
+    "format_row_numpy": "format a single row from a PyArrow table into a numpy-compatible mapping using NumpyFormatter",
+    "format_column_numpy": "format a column from a PyArrow table into a consolidated numpy array using NumpyFormatter",
+    "format_batch_numpy": "format a batch from a PyArrow table into a mapping of consolidated numpy arrays",
+    "recursive_tensorize": "recursively convert nested data structures including torch tensors and PIL images to numpy arrays",
+    "consolidate_numpy_arrays": "consolidate a list of same-shaped numpy arrays into a stacked array or object array"
+  },
+  "huggingface_datasets/src/datasets/formatting/polars_formatter.py": {
+    "extract_row_to_polars_dataframe": "extract a single row from a PyArrow table and return it as a Polars DataFrame using PolarsArrowExtractor",
+    "extract_column_to_polars_series": "extract a single column from a PyArrow table and return it as a Polars Series using PolarsArrowExtractor",
+    "extract_batch_to_polars_dataframe": "extract a full batch from a PyArrow table and return it as a Polars DataFrame using PolarsArrowExtractor",
+    "decode_polars_row_with_features": "decode a Polars DataFrame row using HuggingFace Features with PolarsFeaturesDecoder to transform nested column values",
+    "format_batch_with_polars_formatter": "format a PyArrow table batch into a decoded Polars DataFrame using PolarsFormatter with optional Features"
+  },
+  "huggingface_datasets/src/datasets/formatting/tf_formatter.py": {
+    "format_row_tf": "format a single row from a PyArrow table into TensorFlow tensors using TFFormatter",
+    "format_column_tf": "format a single column from a PyArrow table into a consolidated TensorFlow tensor",
+    "format_batch_tf": "format a batch from a PyArrow table into a dictionary of TensorFlow tensors",
+    "recursive_tensorize_tf": "recursively convert a nested dictionary of data into TensorFlow tensors using map_nested",
+    "consolidate_tf_tensors": "consolidate a list of TensorFlow tensors into a stacked or ragged tensor"
+  },
+  "huggingface_datasets/src/datasets/formatting/torch_formatter.py": {
+    "format_row_to_tensor": "format a single row from a pyarrow table into a mapping of torch tensors",
+    "format_column_to_tensor": "format a single column from a pyarrow table into a consolidated torch tensor",
+    "format_batch_to_tensor": "format a batch from a pyarrow table into a mapping of consolidated torch tensors",
+    "recursive_tensorize_dict": "recursively convert a nested dictionary of numpy arrays and lists into torch tensors",
+    "tensorize_single_value": "convert a single numpy value or PIL image into a torch tensor with default dtype"
+  },
+  "huggingface_datasets/src/datasets/io/abc.py": {
+    "build_dataset_reader_subclass": "build a python subclass of AbstractDatasetReader that implements the read method to load a custom data format into a Dataset",
+    "build_dataset_input_stream_subclass": "build a python subclass of AbstractDatasetInputStream that implements the read method to stream data into an IterableDataset",
+    "review_abstract_dataset_reader_init": "review the AbstractDatasetReader __init__ to understand how path_or_paths, split, features, cache_dir, streaming, and num_proc are initialized",
+    "review_abstract_dataset_input_stream_init": "review the AbstractDatasetInputStream __init__ to understand how features, cache_dir, streaming, and num_proc parameters are stored",
+    "refactor_dataset_reader_read_method": "refactor a custom AbstractDatasetReader subclass read method to return an IterableDatasetDict instead of a DatasetDict for streaming support"
+  },
+  "huggingface_datasets/src/datasets/io/csv.py": {
+    "read_csv_dataset": "create a CsvDatasetReader to load a CSV file into a HuggingFace Dataset with optional streaming mode",
+    "read_csv_dataset_multiprocess": "build a CsvDatasetReader that downloads and prepares CSV data using multiple worker processes for faster loading",
+    "write_dataset_to_csv": "create a CsvDatasetWriter to export a HuggingFace Dataset to a CSV file with configurable batch size",
+    "write_dataset_to_csv_multiprocess": "build a CsvDatasetWriter that writes a Dataset to CSV using multiprocessing for parallel batch processing",
+    "write_dataset_to_csv_remote": "create a CsvDatasetWriter that writes a Dataset to a remote CSV file using fsspec storage options"
+  },
+  "huggingface_datasets/src/datasets/io/generator.py": {
+    "create_generator_dataset_input_stream": "create a GeneratorDatasetInputStream from a generator function with optional features and cache directory",
+    "read_streaming_dataset": "read a streaming dataset from a GeneratorDatasetInputStream by setting streaming to true",
+    "read_map_style_dataset": "read a regular map-style dataset from a GeneratorDatasetInputStream with download and prepare",
+    "review_generator_dataset_init": "review the GeneratorDatasetInputStream init to understand how generator functions and gen_kwargs are passed to the builder",
+    "refactor_generator_dataset_read": "refactor the GeneratorDatasetInputStream read method to support custom download config or verification mode"
+  },
+  "huggingface_datasets/src/datasets/io/json.py": {
+    "read_json_dataset_streaming": "create a JsonDatasetReader to load a JSON file as a streaming dataset with a specified field path",
+    "read_json_dataset_map_style": "build a JsonDatasetReader to load JSON data files into a regular map-style dataset with custom features",
+    "write_dataset_to_json_file": "create a JsonDatasetWriter to export a HuggingFace Dataset to a JSON file with gzip compression",
+    "write_dataset_to_json_buffer": "build a JsonDatasetWriter to write a Dataset to a binary buffer in JSON lines format",
+    "write_dataset_json_multiprocess": "create a JsonDatasetWriter that uses multiprocessing to export a large Dataset to JSON in parallel"
+  },
+  "huggingface_datasets/src/datasets/io/parquet.py": {
+    "read_parquet_dataset": "create a ParquetDatasetReader to load a parquet file into a HuggingFace Dataset with streaming support",
+    "read_parquet_dataset_map_style": "build a ParquetDatasetReader to load parquet files as a regular map-style dataset with custom features",
+    "write_dataset_to_parquet": "create a ParquetDatasetWriter to save a HuggingFace Dataset to a parquet file with content-defined chunking",
+    "write_dataset_to_parquet_buffer": "build a ParquetDatasetWriter to write a dataset to a binary buffer instead of a file path",
+    "review_parquet_writer_compression": "review the ParquetDatasetWriter _write method to understand how snappy compression and PLAIN encoding are applied per column"
+  },
+  "huggingface_datasets/src/datasets/io/spark.py": {
+    "create_spark_dataset_reader": "create a SparkDatasetReader from a PySpark DataFrame with optional features and split configuration",
+    "read_spark_dataset_streaming": "read a Spark DataFrame as a streaming dataset using SparkDatasetReader with streaming enabled",
+    "read_spark_dataset_cached": "read a Spark DataFrame as a cached dataset using SparkDatasetReader with arrow file format",
+    "review_spark_dataset_reader_init": "review the SparkDatasetReader __init__ to understand parameters like cache_dir, working_dir, and file_format",
+    "refactor_spark_dataset_reader_read": "refactor the SparkDatasetReader read method to support additional download modes or file formats"
+  },
+  "huggingface_datasets/src/datasets/io/sql.py": {
+    "read_sql_to_dataset": "read a SQL query result from a database connection into a HuggingFace Dataset using SqlDatasetReader",
+    "write_dataset_to_sql": "write a HuggingFace Dataset to a SQL database table using SqlDatasetWriter with batched inserts",
+    "write_dataset_to_sql_multiprocess": "write a HuggingFace Dataset to a SQL table using multiple processes for parallel batched inserts",
+    "review_sql_dataset_reader": "review the SqlDatasetReader class that reads SQL query results into a HuggingFace Dataset via the Sql builder",
+    "review_sql_dataset_writer": "review the SqlDatasetWriter class that writes a HuggingFace Dataset to a SQL database table in configurable batch sizes"
+  },
+  "huggingface_datasets/src/datasets/io/text.py": {
+    "create_text_dataset_reader": "create a TextDatasetReader instance to load text files into a HuggingFace dataset with configurable split and features",
+    "read_text_dataset_streaming": "read text files as a streaming dataset by passing streaming=True to TextDatasetReader and calling read",
+    "read_text_dataset_map_style": "read text files as a map-style dataset by calling read on a TextDatasetReader with keep_in_memory enabled",
+    "review_text_dataset_reader_init": "review the TextDatasetReader __init__ to understand how path_or_paths, split, features, cache_dir, and num_proc are configured",
+    "refactor_text_dataset_reader_read": "refactor the TextDatasetReader read method to customize download_config, download_mode, or verification_mode parameters"
+  },
+  "huggingface_datasets/src/datasets/packaged_modules/cache/cache.py": {
+    "find_hash_in_cache": "find the latest cached dataset configuration by name and config kwargs in the cache directory",
+    "get_modification_time": "get the modification time of a cached dataset directory using pathlib",
+    "create_cache_builder": "create a Cache ArrowBasedBuilder instance to reload a dataset from the cache directory",
+    "generate_split_generators": "generate split generators for streaming cached Arrow files by dataset split name",
+    "generate_tables_from_cache": "stream PyArrow tables from cached Arrow IPC files and yield keyed record batches"
+  },
+  "huggingface_datasets/src/datasets/packaged_modules/csv/csv.py": {
+    "build_csv_dataset": "build a HuggingFace dataset from CSV files using the Csv ArrowBasedBuilder with custom features",
+    "configure_csv_reader": "configure CsvConfig to set separator, encoding, chunksize, and column names for reading CSV files",
+    "generate_csv_splits": "generate dataset splits from CSV data files by downloading, extracting, and iterating over files",
+    "cast_arrow_table": "cast a PyArrow table to match a configured features schema using _cast_table",
+    "read_csv_chunks": "read CSV files in chunks using pd.read_csv with iterator mode and convert to PyArrow tables"
+  },
+  "huggingface_datasets/src/datasets/packaged_modules/folder_based_builder/folder_based_builder.py": {
+    "count_path_segments": "create a function that counts the number of path segments in a file path string",
+    "FolderBasedBuilderConfig": "build a FolderBasedBuilderConfig dataclass with features, drop_labels, drop_metadata, and filters fields",
+    "_split_generators": "review the FolderBasedBuilder _split_generators method that analyzes data files and infers class labels from directory structure",
+    "_read_metadata": "summarize the FolderBasedBuilder _read_metadata method that streams CSV, JSONL, or Parquet metadata files into PyArrow tables",
+    "_generate_examples": "test the FolderBasedBuilder _generate_examples method that yields dataset samples from metadata files or folder structure with optional labels"
+  },
+  "huggingface_datasets/src/datasets/packaged_modules/hdf5/hdf5.py": {
+    "build_hdf5_dataset": "build a HuggingFace dataset from HDF5 files using the HDF5 ArrowBasedBuilder class",
+    "create_hdf5_config": "create an HDF5Config with custom batch_size and features for the HDF5 builder",
+    "infer_hdf5_features": "infer HuggingFace Features from an HDF5 file using _recursive_infer_features",
+    "convert_complex_to_nested": "convert a complex numpy array to a PyArrow StructArray with real and imag fields",
+    "load_hdf5_arrays": "load HDF5 datasets as PyArrow tables using _recursive_load_arrays with start and end indices"
+  },
+  "huggingface_datasets/src/datasets/packaged_modules/json/json.py": {
+    "build_json_dataset_builder": "build a Hugging Face datasets JSON builder that loads JSONL files into an Arrow table",
+    "configure_json_loader": "configure a JsonConfig with custom chunksize encoding and field selection for JSON loading",
+    "cast_arrow_table": "cast a PyArrow table to match Hugging Face dataset features schema with missing columns",
+    "parse_agent_traces": "parse agent trace lines to extract harness type and session ID from Claude Codex or PI traces",
+    "detect_agent_traces": "detect whether dataset features match known agent trace markers for Claude Code PI or Codex"
+  },
+  "huggingface_datasets/src/datasets/packaged_modules/lance/lance.py": {
+    "build_lance_config": "create a LanceConfig with custom features, columns, and batch_size for loading Lance datasets",
+    "resolve_dataset_uris": "resolve Lance dataset root URIs from a list of file paths inside _transactions or _versions directories",
+    "fix_hf_uri": "strip the revision tag from a Hugging Face hf:// URI so Lance can load it",
+    "fix_local_version_file": "replace a symlinked local _versions file with its real content to fix Lance loading",
+    "generate_tables_from_lance_fragments": "yield PyArrow tables keyed by fragment and batch index from Lance dataset fragments or LanceFileReaders"
+  },
+  "huggingface_datasets/src/datasets/packaged_modules/spark/spark.py": {
+    "build_spark_dataset": "build a HuggingFace Dataset from a PySpark DataFrame using the Spark dataset builder",
+    "create_spark_examples_iterable": "create a SparkExamplesIterable to iterate over PySpark DataFrame partitions with state tracking",
+    "refactor_spark_config": "refactor the SparkConfig dataclass to add custom features for the Spark dataset builder",
+    "review_spark_prepare_split": "review the Spark class _prepare_split method that writes Arrow or Parquet shards from a DataFrame",
+    "summarize_spark_repartition": "summarize the _repartition_df_if_needed method that repartitions a DataFrame based on max shard size"
+  },
+  "huggingface_datasets/src/datasets/packaged_modules/sql/sql.py": {
+    "build_sql_dataset": "build a HuggingFace dataset from a SQL query using the Sql ArrowBasedBuilder with a database connection",
+    "configure_sqlconfig": "create a SqlConfig dataclass with sql query string, database connection, chunksize, and parse_dates options",
+    "generate_sql_tables": "generate PyArrow tables from SQL query results by reading chunks via pandas read_sql",
+    "cast_sql_table": "cast a PyArrow table to match configured HuggingFace dataset features schema",
+    "create_sql_config_id": "create a deterministic config ID from SqlConfig kwargs by stringifying SQLAlchemy Selectable objects"
+  },
+  "huggingface_datasets/src/datasets/packaged_modules/webdataset/_tenbin.py": {
+    "save_numpy_arrays_to_ten_file": "save a list of numpy arrays to a .ten binary file using the tenbin save function",
+    "load_numpy_arrays_from_ten_file": "load numpy arrays from a .ten binary file using the tenbin load function",
+    "encode_numpy_arrays_to_buffer": "encode a list of numpy arrays into a single binary byte buffer using encode_buffer",
+    "decode_buffer_to_numpy_arrays": "decode a binary byte buffer back into a list of numpy arrays using decode_buffer",
+    "write_numpy_arrays_to_stream": "write a list of numpy arrays to a binary stream with magic bytes and padding using write"
+  },
+  "huggingface_datasets/src/datasets/packaged_modules/webdataset/webdataset.py": {
+    "build_webdataset_loader": "build a Hugging Face dataset loader that reads WebDataset TAR archives with automatic feature inference",
+    "review_WebDataset_class": "review the WebDataset GeneratorBasedBuilder class and its TAR archive parsing and feature inference logic",
+    "refactor_get_pipeline_from_tar": "refactor the _get_pipeline_from_tar method to handle additional archive formats beyond TAR",
+    "test_decoder_functions": "test the decoder functions like text_loads, npy_loads, and torch_loads with sample byte data",
+    "summarize_DECODES_dict": "summarize the DECODERS dictionary mapping file extensions to their corresponding decode functions"
+  },
+  "huggingface_datasets/src/datasets/parallel/parallel.py": {
+    "build_parallel_map": "build a python module that applies a function to iterable elements in parallel using multiprocessing.Pool",
+    "create_parallel_backend_context": "create a context manager that configures the joblib parallel backend for dataset loading",
+    "test_parallel_map_multiprocessing": "test the parallel_map function to verify it correctly splits work across multiple processes",
+    "refactor_map_with_joblib": "refactor the _map_with_joblib function to add tqdm progress bar support for joblib parallelization",
+    "review_parallel_backend_config": "review the ParallelBackendConfig class and how backend_name controls which parallel backend is used"
+  },
+  "huggingface_datasets/src/datasets/utils/_dataset_viewer.py": {
+    "get_parquet_files": "get the exported parquet files for a HuggingFace dataset using the datasets-server API",
+    "get_dataset_infos": "get the dataset information and features for a HuggingFace dataset using the datasets-server API",
+    "handle_dataset_viewer_error": "handle DatasetViewerError exceptions raised when accessing missing or unavailable datasets on HuggingFace",
+    "check_parquet_export_status": "check if a dataset parquet export is ready, not pending, and not failed before downloading",
+    "validate_dataset_revision": "validate that the dataset info or parquet export matches the expected commit hash revision"
+  },
+  "huggingface_datasets/src/datasets/utils/_dill.py": {
+    "dump_object_to_file": "use dump to pickle a Python object to a file with extended type support",
+    "dumps_object_to_bytes": "use dumps to serialize a Python object to bytes with consistent ordering",
+    "register_custom_pickler_reducer": "use pklregister to register a custom reducer function for a type with the Pickler dispatch table",
+    "pickle_torch_tensor": "use the Pickler class to serialize torch tensors by converting them to numpy arrays",
+    "pickle_code_object": "use save_code to pickle a CodeType object with normalized filename and line number for stable hashing"
+  },
+  "huggingface_datasets/src/datasets/utils/_filelock.py": {
+    "create_filelock_with_umask": "create a FileLock instance that respects the current umask for lock file permissions",
+    "hash_long_filename": "hash a filename that exceeds the maximum length to prevent filesystem errors",
+    "use_filelock_context_manager": "use FileLock as a context manager to safely lock a file during operations",
+    "review_filelock_class": "review the FileLock class to understand how it handles long paths and umask settings",
+    "test_hash_filename_if_too_long": "test the hash_filename_if_too_long method with paths exceeding the 255 character limit"
+  },
+  "huggingface_datasets/src/datasets/utils/deprecation_utils.py": {
+    "build_deprecated_decorator": "build a python decorator that marks a function or class as deprecated with a custom help message",
+    "create_deprecated_enum": "create a deprecated enum class that warns users when any member is accessed",
+    "refactor_function_with_deprecated": "refactor an existing function to emit a deprecation warning on first call using the deprecated decorator",
+    "review_onaccess_metaclass": "review the OnAccess metaclass that triggers a callback whenever an enum member is accessed",
+    "summarize_deprecation_warnings": "summarize how the deprecation module tracks emitted warnings to avoid duplicate FutureWarning messages"
+  },
+  "huggingface_datasets/src/datasets/utils/doc_utils.py": {
+    "create_decorator_shared_docstring": "create a decorator that shares a docstring from one function to another",
+    "use_is_documented_by_copy_doc": "use is_documented_by to copy a docstring from a source function to a target function",
+    "refactor_duplicate_docstrings": "refactor duplicate docstrings by using is_documented_by to share them across functions",
+    "review_is_documented_by_decorator": "review the is_documented_by decorator that copies __doc__ attributes between functions",
+    "test_is_documented_by": "test the is_documented_by decorator to verify it correctly copies docstrings to target functions"
+  },
+  "huggingface_datasets/src/datasets/utils/experimental.py": {
+    "create_experimental_decorator": "create a decorator that warns users a function is experimental and may have breaking changes",
+    "use_experimental_on_function": "use the experimental decorator on a function to emit a UserWarning when called",
+    "review_experimental_decorator": "review the experimental decorator to understand how it wraps functions with functools.wraps",
+    "refactor_experimental_warning_message": "refactor the experimental decorator to customize the warning message format",
+    "test_experimental_decorator": "test the experimental decorator by calling a decorated function and asserting a UserWarning is raised"
+  },
+  "huggingface_datasets/src/datasets/utils/extract.py": {
+    "extract_archive_with_manager": "use ExtractManager to extract a compressed archive file to a cached output directory",
+    "extract_archive_with_format": "use Extractor.extract to extract an archive to a given output path with a specified format",
+    "infer_extractor_format": "use Extractor.infer_extractor_format to detect the archive format of a file by reading its magic number",
+    "check_if_extractable": "use Extractor.is_extractable to check whether a given file path is a supported extractable archive",
+    "filter_safe_tar_members": "use TarExtractor.safemembers to filter tar archive members and block directory traversal attacks"
+  },
+  "huggingface_datasets/src/datasets/utils/file_utils.py": {
+    "cached_path_download_and_cache_remote_file": "download a remote file and cache it locally, returning the cached file path",
+    "xopen_open_remote_or_local_file": "open a local or remote file with automatic retry on connection errors",
+    "xPath_pathlib_extension_for_remote_urls": "use an extended pathlib Path that supports both local paths and remote URLs",
+    "ArchiveIterable_iterate_archive_files_from_url": "iterate over files inside a TAR or ZIP archive downloaded from a remote URL",
+    "get_from_cache_get_cached_file_by_url": "get a locally cached file by URL, downloading it if it is not already cached"
+  },
+  "huggingface_datasets/src/datasets/utils/info_utils.py": {
+    "verify_checksums": "verify that expected file checksums match recorded checksums and raise errors on mismatches",
+    "verify_splits": "verify that expected dataset splits match recorded splits and validate split sizes",
+    "get_size_checksum_dict": "compute the file size and optional sha256 checksum for a given file path",
+    "is_small_dataset": "check if a dataset size in bytes is smaller than the in memory max size config",
+    "use_verification_mode": "configure dataset verification using ALL_CHECKS, BASIC_CHECKS, or NO_CHECKS enum values"
+  },
+  "huggingface_datasets/src/datasets/utils/json.py": {
+    "encode_json_field": "encode a nested field in a dictionary or list to its JSON string representation using json_encode_field",
+    "decode_json_field": "decode a JSON string field back to a Python object using json_decode_field with a nested field path",
+    "find_mixed_struct_types": "find field paths where examples have mixed dictionary or list structures using find_mixed_struct_types_field_paths",
+    "encode_json_lines_batch": "encode specific nested fields in a JSON lines byte batch using json_encode_fields_in_json_lines",
+    "parse_pyarrow_json_error": "extract a JSON field path list from a PyArrow JSON error message string using get_json_field_path_from_pyarrow_json_error"
+  },
+  "huggingface_datasets/src/datasets/utils/logging.py": {
+    "set_verbosity_debug": "set the HuggingFace datasets library logging level to DEBUG to display all log information",
+    "set_verbosity_info": "set the HuggingFace datasets library logging level to INFO to display most logging information",
+    "get_verbosity": "get the current logging verbosity level for the HuggingFace datasets library root logger",
+    "get_logger": "get a named logger instance for use in HuggingFace dataset builders",
+    "disable_propagation": "disable log output propagation on the HuggingFace datasets library root logger"
+  },
+  "huggingface_datasets/src/datasets/utils/metadata.py": {
+    "split_yaml_from_readme": "extract the YAML metadata block from a README file's frontmatter and return the YAML and remaining content",
+    "create_MetadataConfigs_from_dataset_card_data": "create a MetadataConfigs object from a HuggingFace DatasetCardData by parsing the dataset_info field",
+    "convert_MetadataConfigs_to_dataset_card_data": "convert a MetadataConfigs object into the format needed for a HuggingFace DatasetCardData",
+    "validate_data_files_field": "validate that the data_files field in a metadata config is a string, list of strings, or list of split-path dicts",
+    "get_default_config_name": "get the default config name from a MetadataConfigs object by checking for a single config or default flag"
+  },
+  "huggingface_datasets/src/datasets/utils/patching.py": {
+    "patch_submodule_attribute": "create a patch_submodule instance to replace os.path.join with a custom function in a module",
+    "use_patch_as_context_manager": "use patch_submodule as a context manager to temporarily patch a submodule attribute and restore it on exit",
+    "start_stop_patch_manually": "call start and stop on a patch_submodule instance to manually activate and deactivate a patch",
+    "patch_builtin_function": "patch a builtin like open in a module object using patch_submodule",
+    "review_PatchedModuleObj": "review the _PatchedModuleObj class that wraps a module and exposes its public attributes as instance attributes"
+  },
+  "huggingface_datasets/src/datasets/utils/py_utils.py": {
+    "convert_file_size_string_to_bytes": "convert a file size string like '50MB' or '1MiB' to an integer number of bytes",
+    "format_bytes_as_human_readable": "format a byte count into a human readable string like '1.50 GiB' using size_str",
+    "apply_function_to_nested_data": "apply a function recursively to each element of a nested dict or list using map_nested",
+    "convert_dataclass_to_dict": "recursively convert a dataclass instance or dict to its dictionary representation using asdict",
+    "batch_iterable_into_chunks": "split an iterable into fixed-size batches using iter_batched with a specified batch size"
+  },
+  "huggingface_datasets/src/datasets/utils/stratify.py": {
+    "build_stratified_split": "build a python module that generates stratified train test split indices for labeled data",
+    "create_approximate_mode": "create a function that computes the approximate mode of a multivariate hypergeometric distribution",
+    "test_stratified_shuffle_split": "test the stratified_shuffle_split_generate_indices function with sample labels and verify class balance",
+    "refactor_approximate_mode": "refactor the approximate_mode function to support weighted class counts for stratified sampling",
+    "review_stratified_split_validation": "review the stratified_shuffle_split_generate_indices function and its input validation for minimum class counts"
+  },
+  "huggingface_datasets/src/datasets/utils/tf_utils.py": {
+    "create_tf_dataset_from_hf_dataset": "create a tf.data.Dataset from a HuggingFace Dataset using dataset_to_tf with collate function and batch size",
+    "create_multiprocess_tf_dataset": "create a multi-process tf.data.Dataset from a HuggingFace Dataset using multiprocess_dataset_to_tf with num workers",
+    "collate_features_for_tf_batch": "collate a list of sample dicts into a batched dict using minimal_tf_collate_fn for numpy and tensorflow tensors",
+    "collate_features_with_label_renaming": "collate features and rename label to labels using minimal_tf_collate_fn_with_renaming for tensorflow batch preparation",
+    "check_pyarrow_numeric_type": "check if a PyArrow type is numeric including integers floats and decimals using is_numeric_pa_type"
+  },
+  "huggingface_datasets/src/datasets/utils/tqdm.py": {
+    "disable_progress_bars": "disable progress bars globally in the datasets library by calling disable_progress_bars",
+    "enable_progress_bars": "enable progress bars globally in the datasets library by calling enable_progress_bars",
+    "are_progress_bars_disabled": "check whether progress bars are globally disabled by calling are_progress_bars_disabled",
+    "tqdm_class": "use the custom tqdm class to iterate with progress bars that respect global disable settings",
+    "is_progress_bar_enabled": "check if progress bars are currently enabled by calling is_progress_bar_enabled"
+  },
+  "huggingface_datasets/src/datasets/utils/track.py": {
+    "create_tracked_str": "create a tracked_str instance to track the origin of string values",
+    "set_origin_tracked_str": "set the origin of a tracked_str instance using the set_origin method",
+    "get_origin_tracked_str": "get the origin of a tracked_str instance using the get_origin method",
+    "create_tracked_list": "create a tracked_list instance that tracks the last item during iteration",
+    "create_tracked_iterable_from_generator": "create a TrackedIterableFromGenerator to wrap a generator function as a resettable iterable"
+  },
+  "huggingface_datasets/src/datasets/utils/version.py": {
+    "create_Version_instance": "create a Version instance from a version string like '1.0.0' with optional description",
+    "compare_Version_objects": "compare two Version objects using equality or less-than operators to check version ordering",
+    "parse_version_string_to_tuple": "parse a version string into a major minor patch tuple using the internal helper function",
+    "convert_version_tuple_to_string": "convert a version tuple back to a dotted string format like '2.1.3'",
+    "create_Version_from_dict": "create a Version instance from a dictionary containing version string and description fields"
+  },
+  "huggingface_datasets/tests/test_arrow_dataset.py": {
+    "test_Dataset_map": "test the Dataset.map method to transform examples with a picklable function using multiprocessing",
+    "test_Dataset_filter": "test the Dataset.filter method to keep examples matching a condition with batched processing",
+    "test_Dataset_select_shuffle_sort": "test the Dataset.select, shuffle, and sort methods for row selection and ordering operations",
+    "test_Dataset_train_test_split": "test the Dataset.train_test_split method to split data into train and test subsets with stratification",
+    "test_concatenate_datasets": "test the concatenate_datasets function to merge multiple datasets along axis 0 or axis 1"
+  },
+  "huggingface_datasets/tests/test_arrow_reader.py": {
+    "test_BasedReader_read": "test the BaseReader class by reading datasets from split instructions with a mock ReaderTest subclass",
+    "test_ArrowReader_read_table": "test the ArrowReader.read_table method to read an Arrow file into a PyArrow table with memory control",
+    "test_ArrowReader_read_files": "test the ArrowReader.read_files method to read Arrow files and return dataset kwargs with an arrow table",
+    "test_ReadInstruction_from_spec": "test the ReadInstruction.from_spec method to parse split instruction strings like train[:33%] into ReadInstruction objects",
+    "test_make_file_instructions": "test the make_file_instructions function to convert read instructions into per-file skip and take instructions for sharded datasets"
+  },
+  "huggingface_datasets/tests/test_arrow_writer.py": {
+    "write_arrow_records": "write individual records to an Arrow IPC stream using ArrowWriter with a schema",
+    "write_arrow_batches": "write batched records to an Arrow IPC stream using ArrowWriter write_batch method",
+    "write_parquet_records": "write individual records to a Parquet file using ParquetWriter with content-defined chunking",
+    "create_typed_sequence": "create a PyArrow array from a TypedSequence with automatic or explicit type inference",
+    "create_optimized_typed_sequence": "create a PyArrow array from an OptimizedTypedSequence that picks dtypes based on column name"
+  },
+  "huggingface_datasets/tests/test_builder.py": {
+    "build_generator_based_builder": "create a GeneratorBasedBuilder subclass that yields examples and calls download_and_prepare to build a dataset",
+    "build_arrow_based_builder": "create an ArrowBasedBuilder subclass that yields PyArrow tables and calls download_and_prepare to build a dataset",
+    "test_builder_config": "test a custom BuilderConfig subclass with extra parameters like content and times for dataset builder configuration",
+    "run_download_and_prepare": "run download_and_prepare on a DatasetBuilder to generate Arrow or Parquet files for dataset splits",
+    "test_as_streaming_dataset": "test as_streaming_dataset on a builder to return an IterableDatasetDict for memory-efficient streaming access"
+  },
+  "huggingface_datasets/tests/test_dataset_list.py": {
+    "create_dataset_from_list": "create a Dataset from a list of dictionaries using Dataset.from_list()",
+    "create_dataset_from_dict": "create a Dataset from a dictionary of column lists using Dataset.from_dict()",
+    "test_dataset_column_names": "test that a Dataset has the expected column names using column_names property",
+    "test_dataset_info_equivalence": "test that Dataset.from_list and Dataset.from_dict produce equivalent dataset info",
+    "test_dataset_uneven_records": "test how Dataset.from_list handles records with missing or uneven columns"
+  },
+  "huggingface_datasets/tests/test_download_manager.py": {
+    "test_download_manager_download": "test the DownloadManager.download method with str, list, dict, and nested dict URL inputs",
+    "test_download_manager_extract": "test the DownloadManager.extract method with str, list, and dict path inputs with extract_on_the_fly flag",
+    "test_download_manager_delete_extracted_files": "test the DownloadManager.delete_extracted_files method to remove previously extracted archive files from cache",
+    "test_iter_archive_path": "test the DownloadManager.iter_archive method to iterate over files inside tar and zip archives",
+    "test_iter_files": "test the DownloadManager.iter_files method to iterate over files in a directory while skipping hidden files"
+  },
+  "huggingface_datasets/tests/test_exceptions.py": {
+    "test_error_not_deprecated": "test that datasets exception classes like ChecksumVerificationError do not emit deprecation warnings when instantiated",
+    "review_datasets_exceptions": "review the datasets.exceptions module exception classes including ChecksumVerificationError and SplitsVerificationError",
+    "test_ChecksumVerificationError": "test that ChecksumVerificationError can be instantiated without triggering a deprecation warning",
+    "test_SplitsVerificationError": "test that SplitsVerificationError can be instantiated without triggering a deprecation warning",
+    "test_UnexpectedDownloadedFileError": "test that UnexpectedDownloadedFileError can be instantiated without triggering a deprecation warning"
+  },
+  "huggingface_datasets/tests/test_experimental.py": {
+    "test_experimental_decorator_warning": "test that the experimental decorator emits a warning when the decorated function is called",
+    "review_experimental_decorator_usage": "review how the experimental decorator from datasets.utils is used on functions",
+    "test_warning_catch_with_unittest": "test catching warnings in a unittest using warnings.catch_warnings and simplefilter",
+    "refactor_experimental_function": "refactor a function decorated with experimental to verify it still emits warnings correctly",
+    "summarize_experimental_test": "summarize the test_experimental_warning test case that validates the experimental decorator behavior"
+  },
+  "huggingface_datasets/tests/test_extract.py": {
+    "test_base_extractors": "test all compression extractors including 7z, bz2, gzip, lz4, tar, xz, zip, and zstd",
+    "test_extractor_infer_and_extract": "test Extractor.infer_extractor_format and Extractor.extract for all supported compression formats",
+    "test_tar_extract_insecure_files": "test TarExtractor.extract rejects insecure tar files with path traversal or symlinks",
+    "test_zip_extractor_is_extractable": "test ZipExtractor.is_extractable avoids false positives on non-zip files containing PK bytes",
+    "review_extractor_classes": "review Bzip2Extractor, GzipExtractor, Lz4Extractor, SevenZipExtractor, TarExtractor, XzExtractor, ZipExtractor, and ZstdExtractor classes"
+  },
+  "huggingface_datasets/tests/test_file_utils.py": {
+    "test_cached_path": "test the cached_path function to download and extract compressed files like gzip, xz, and zstd",
+    "test_xPath": "test the xPath class to handle path operations on URLs, zip archives, and local files",
+    "test_xopen": "test the xopen function to read files from local paths, HTTP URLs, and Google Drive links",
+    "test_xglob": "test the xglob function to find files matching glob patterns across local and remote filesystems",
+    "test_get_extraction_protocol": "test the _get_extraction_protocol function to detect compression formats like gzip and zip from URLs"
+  },
+  "huggingface_datasets/tests/test_filelock.py": {
+    "test_FileLock_long_path": "test that FileLock handles filenames longer than 255 characters by truncating the lock file name",
+    "test_FileLock_creation": "test creating a FileLock instance with a path and verify the lock file ends with .lock",
+    "test_FileLock_basename_length": "test that the FileLock basename does not exceed 255 characters even with very long input paths",
+    "review_FileLock_lock_file": "review the FileLock class lock_file property to understand how it handles long filenames",
+    "summarize_test_filelock": "summarize the test_filelock module which tests FileLock behavior with excessively long file paths"
+  },
+  "huggingface_datasets/tests/test_filesystem.py": {
+    "test_is_remote_filesystem": "test the is_remote_filesystem function to check if an fsspec filesystem is remote or local",
+    "test_compression_filesystems": "test compression filesystems like gzip, bz2, lz4, xz, and zstd by reading compressed files",
+    "test_fs_isfile": "test the fs.isfile method to verify file existence inside zip or gzip archives",
+    "test_mockfs_registry": "test that mock and bz2 protocols are registered in the fsspec registry",
+    "review_is_remote_filesystem": "review the is_remote_filesystem function that checks if an fsspec filesystem is a LocalFileSystem"
+  },
+  "huggingface_datasets/tests/test_fingerprint.py": {
+    "hash_object_with_Hasher": "use Hasher.hash to compute a stable fingerprint for any Python object like strings, classes, or functions",
+    "incremental_hash_with_Hasher": "use Hasher.update and Hasher.hexdigest to incrementally hash multiple objects into a single fingerprint",
+    "test_fingerprint_transform_decorator": "test the fingerprint_transform decorator on a Dataset subclass method to verify it generates unique fingerprints",
+    "test_Hasher_with_torch_tensors": "test Hasher.hash with torch tensors and generators to verify stable hashing across different values",
+    "manage_temp_cache_directory": "use _TempCacheDir or get_temporary_cache_files_directory to manage temporary cache files respecting the TMPDIR environment variable"
+  },
+  "huggingface_datasets/tests/test_formatting.py": {
+    "format_arrow_table_to_numpy": "use NumpyFormatter to format a PyArrow table row, column, or batch into numpy arrays",
+    "format_arrow_table_to_pandas": "use PandasFormatter to format a PyArrow table row, column, or batch into pandas DataFrames",
+    "query_table_by_index": "use query_table to retrieve rows from a PyArrow table by integer index, slice, range, or column name",
+    "extract_data_with_arrow_extractor": "use PythonArrowExtractor, NumpyArrowExtractor, or PandasArrowExtractor to extract row, column, or batch data from a PyArrow table",
+    "use_lazy_formatter": "use PythonFormatter with lazy=True to create LazyRow and LazyBatch objects for deferred data access"
+  },
+  "huggingface_datasets/tests/test_hub.py": {
+    "build_hf_dataset_url": "build a python module that generates a Hugging Face Hub dataset URL from a repo id, filename, and revision",
+    "test_hf_dataset_url": "test the hf_dataset_url function with various repo ids, filenames containing blanks, and revision parameters",
+    "test_delete_from_hub": "test the delete_from_hub function to verify it removes a dataset config and updates the README metadata",
+    "refactor_delete_from_hub": "refactor the delete_from_hub function to support deleting multiple dataset configs in a single commit",
+    "review_hf_dataset_url": "review the hf_dataset_url function to verify it correctly URL-encodes filenames and handles missing revisions"
+  },
+  "huggingface_datasets/tests/test_info.py": {
+    "test_DatasetInfosDict_from_directory": "test loading DatasetInfosDict from a directory with README.md and dataset_infos.json files",
+    "test_DatasetInfo_write_and_reload": "test writing a DatasetInfo to disk and reloading it from the same directory",
+    "test_DatasetInfo_to_yaml_dict": "test converting a DatasetInfo object into a YAML-serializable dictionary representation",
+    "test_DatasetInfosDict_write_and_reload": "test writing a DatasetInfosDict to disk and reloading it from the same directory",
+    "test_DatasetInfo_from_merge": "test merging a list of identical DatasetInfo objects into a single DatasetInfo"
+  },
+  "huggingface_datasets/tests/test_info_utils.py": {
+    "test_is_small_dataset": "test the is_small_dataset function with various dataset sizes and IN_MEMORY_MAX_SIZE configurations using pytest parametrization",
+    "review_is_small_dataset": "review the is_small_dataset utility to verify it correctly compares dataset size against the IN_MEMORY_MAX_SIZE config threshold",
+    "run_test_is_small_dataset": "run the parametrized test_is_small_dataset to validate behavior across None, small, and large dataset size inputs",
+    "refactor_test_is_small_dataset": "refactor the test_is_small_dataset parametrization to add edge cases for boundary values near IN_MEMORY_MAX_SIZE",
+    "summarize_is_small_dataset": "summarize the is_small_dataset function logic that returns true only when both dataset_size and IN_MEMORY_MAX_SIZE are set and dataset is smaller"
+  },
+  "huggingface_datasets/tests/test_inspect.py": {
+    "get_dataset_config_info": "get the config info and splits for a Hugging Face dataset by path and config name",
+    "get_dataset_config_names": "list all available config names for a Hugging Face dataset by its path",
+    "get_dataset_default_config_name": "get the default config name for a Hugging Face dataset by its path",
+    "get_dataset_infos": "get all dataset infos including configs and splits for a Hugging Face dataset",
+    "get_dataset_split_names": "get the split names for a specific config of a Hugging Face dataset"
+  },
+  "huggingface_datasets/tests/test_metadata_util.py": {
+    "test_metadata_configs_from_card_data": "test MetadataConfigs.from_dataset_card_data to parse metadata configs from a dataset card README",
+    "test_metadata_configs_default_config_name": "test MetadataConfigs.get_default_config_name to retrieve the default config name from parsed metadata",
+    "test_metadata_configs_from_parquet": "test MetadataConfigs._from_exported_parquet_files_and_dataset_infos to build metadata from parquet files and dataset infos",
+    "test_metadata_configs_incorrect_yaml": "test MetadataConfigs.from_dataset_card_data raises ValueError on incorrectly formatted metadata YAML",
+    "test_dedent_helper": "test the _dedent helper function to remove leading indentation from multi-line strings"
+  },
+  "huggingface_datasets/tests/test_offline_util.py": {
+    "test_offline_timeout": "test that fsspec_get raises RequestWouldHangIndefinitelyError when connection times out in offline mode",
+    "test_offline_connection_error": "test that fsspec_get raises ConnectError when connection fails in offline simulation mode",
+    "test_offline_hub_mode": "test that fsspec_head raises OfflineModeIsEnabled when HF_HUB_OFFLINE is set to 1",
+    "run_offline_integration_tests": "run the integration test suite for offline behavior of fsspec_get and fsspec_head utilities",
+    "review_offline_simulation": "review the offline simulation test functions that verify timeout and connection error handling"
+  },
+  "huggingface_datasets/tests/test_parallel.py": {
+    "test_parallel_backend_input": "test the parallel_backend context manager with spark backend and verify unsupported backends raise ValueError",
+    "test_parallel_backend_map_nested": "test map_nested with spark parallel backend across lists and nested dicts using parametrized num_proc values",
+    "review_parallel_backend_config": "review the ParallelBackendConfig class to understand how backend_name is set inside a parallel_backend context",
+    "review_map_nested": "review the map_nested utility to understand how it applies a function recursively over nested data structures",
+    "refactor_add_one": "refactor the add_one helper function to support a different picklable transformation for multiprocessing tests"
+  },
+  "huggingface_datasets/tests/test_patching.py": {
+    "test_patch_submodule_context": "test patching os.path.join in a module using patch_submodule as a context manager",
+    "test_patch_submodule_builtin": "test patching builtin open function in a module with patch_submodule",
+    "test_patch_submodule_missing": "test patching a nonexistent module attribute gracefully without raising errors",
+    "test_patch_submodule_start_stop": "test manually starting and stopping patch_submodule without using context manager syntax",
+    "test_patch_submodule_successive": "test applying multiple nested patch_submodule patches in different orders"
+  },
+  "huggingface_datasets/tests/test_py_utils.py": {
+    "test_map_nested": "test the map_nested function that applies a function to all leaves of a nested data structure with optional multiprocessing",
+    "test_zip_dict": "test the zip_dict function that zips multiple dictionaries together by matching keys into tuples",
+    "test_temporary_assignment": "test the temporary_assignment context manager that temporarily sets an object attribute and restores it on exit",
+    "test_temp_seed": "test the temp_seed context manager that temporarily sets random seeds for numpy, tensorflow, or pytorch",
+    "test_nested_data_structure_flatten": "test the NestedDataStructure class that flattens nested dicts and lists into a flat list of leaf values"
+  },
+  "huggingface_datasets/tests/test_search.py": {
+    "add_faiss_index_to_dataset": "add a FAISS vector index to a HuggingFace Dataset column for nearest-neighbor search",
+    "get_nearest_examples_from_dataset": "get the nearest examples from a Dataset using a FAISS or Elasticsearch index",
+    "add_faiss_index_from_external_arrays": "add a FAISS index to a Dataset using external numpy arrays as vectors",
+    "create_and_search_faiss_index": "create a FaissIndex, add vectors, and search for nearest neighbors by query vector",
+    "create_and_search_elasticsearch_index": "create an ElasticSearchIndex, add text documents, and search for matching documents"
+  },
+  "huggingface_datasets/tests/test_sharding_utils.py": {
+    "test_distribute_shards": "test the _distribute_shards function that distributes shard indices across a given number of parallel jobs",
+    "test_split_gen_kwargs": "test the _split_gen_kwargs function that splits generator kwargs into per-job shard groups",
+    "test_number_of_shards_in_gen_kwargs": "test the _number_of_shards_in_gen_kwargs function that counts shards in generator kwargs",
+    "review_distribute_shards": "review the _distribute_shards function to verify shard distribution logic across max_num_jobs workers",
+    "summarize_sharding_utils": "summarize the sharding utility functions for distributing and splitting dataset shards across parallel jobs"
+  },
+  "huggingface_datasets/tests/test_splits.py": {
+    "test_split_dict_yaml_roundtrip": "test that SplitDict can be serialized to a YAML list and reloaded with _from_yaml_list",
+    "test_split_dict_asdict_backward_compat": "test that asdict on SplitDict includes the deprecated dataset_name field for backward compatibility",
+    "test_split_train_inequality": "test that Split.TRAIN is not equal to inspect.Parameter.empty for doc default parameters",
+    "review_split_dict_yaml_methods": "review the SplitDict class _to_yaml_list and _from_yaml_list methods for serialization correctness",
+    "summarize_split_info_fields": "summarize the SplitInfo class fields including name, num_bytes, num_examples, and dataset_name"
+  },
+  "huggingface_datasets/tests/test_table.py": {
+    "create_InMemoryTable_from_pydict": "create an InMemoryTable from a Python dictionary using InMemoryTable.from_pydict",
+    "create_MemoryMappedTable_from_file": "create a MemoryMappedTable from an Arrow file using MemoryMappedTable.from_file",
+    "concatenate_tables_with_concat_tables": "concatenate multiple Arrow tables along axis 0 or 1 using concat_tables",
+    "cast_array_to_feature": "cast a PyArrow array to a dataset feature type using cast_array_to_feature",
+    "iterate_table_in_batches": "iterate over a Table in fixed-size batches using table_iter with batch_size"
+  },
+  "huggingface_datasets/tests/test_tqdm.py": {
+    "test_disable_progress_bars": "test that disable_progress_bars globally disables tqdm output in the datasets library",
+    "test_enable_progress_bars": "test that enable_progress_bars globally enables tqdm output in the datasets library",
+    "test_are_progress_bars_disabled": "test the are_progress_bars_disabled function to check current progress bar state",
+    "test_tqdm_with_env_override": "test that HF_DATASETS_DISABLE_PROGRESS_BARS env variable prevents enabling or disabling progress bars",
+    "test_tqdm_local_disable": "test that tqdm can be locally disabled with disable=True even when globally enabled"
+  },
+  "huggingface_datasets/tests/test_upstream_hub.py": {
+    "push_dataset_dict_to_hub": "push a DatasetDict to the Hugging Face Hub with token authentication and verify uploaded files",
+    "push_dataset_to_hub_with_config": "push a Dataset to the Hub under a named config and verify README metadata configs",
+    "push_iterable_dataset_to_hub": "push an IterableDatasetDict to the Hub and verify the resulting parquet shard files",
+    "load_dataset_from_hub": "load a dataset from the Hugging Face Hub with force redownload and verify features match",
+    "test_push_dataset_custom_features": "test pushing a Dataset with custom Audio or Image features and verify embed_external_files behavior"
+  },
+  "huggingface_datasets/tests/test_version.py": {
+    "test_version_equality": "test the Version class equality comparison against another Version or string version",
+    "test_version_hash": "test the Version class hash function returns matching hashes for equal versions",
+    "create_version_instance": "create a Version instance from a semantic version string like 1.0.0",
+    "compare_version_lt": "compare two Version instances using less than to determine ordering",
+    "review_version_from_dict": "review the Version from_dict class method that constructs a Version from a dictionary"
+  },
+  "huggingface_datasets/tests/utils.py": {
+    "simulate_offline_mode": "use the offline context manager to simulate connection failures or timeouts for network calls",
+    "parse_env_flag": "create a function that parses a boolean flag from an environment variable using strtobool",
+    "assert_arrow_memory_increases": "use the assert_arrow_memory_increases context manager to verify PyArrow memory allocation grows during a block",
+    "execute_subprocess_async": "run a subprocess command asynchronously and capture stdout and stderr with a configurable timeout",
+    "get_torch_dist_unique_port": "get a unique port number for torchrun that accounts for pytest-xdist worker id to avoid port conflicts"
+  },
+  "huggingface_datasets/utils/release.py": {
+    "run_pre_release": "run the pre-release version bump workflow by executing release.py with argparse",
+    "run_post_release": "run the post-release version bump to dev by executing release.py with --post_release",
+    "run_patch_release": "run a patch version bump by executing release.py with the --patch flag",
+    "update_version_in_file": "update the version string in a single file like setup.py using a regex pattern",
+    "get_version": "read and parse the current package version from the __init__ file"
+  }
+}

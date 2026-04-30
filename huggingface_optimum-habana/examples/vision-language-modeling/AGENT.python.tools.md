@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/optimum-habana
+- repo_uri: https://github.com/huggingface/optimum-habana
+
+## File: huggingface_optimum-habana/examples/vision-language-modeling/run_lora_vlm.py
+
+Prompts
+
+```
+['run LoRA fine-tuning of a vision-language model like LLaVA on a VQA dataset using the CLI', 'detect the model family for a given HuggingFace model name or path using pattern matching', 'create a LoRA configuration tailored to a specific vision-language model family with target modules', 'configure LoRA target modules to only include language-model linear layers for LLaVA models', 'create a multimodal VQA dataset that normalizes different dataset schemas to a common image-question-answer format']
+```
+
+Usage
+
+```
+{'run_lora_vlm_training': 'run LoRA fine-tuning of a vision-language model like LLaVA on a VQA dataset using the CLI', 'detect_model_family': 'detect the model family for a given HuggingFace model name or path using pattern matching', 'get_lora_config': 'create a LoRA configuration tailored to a specific vision-language model family with target modules', 'configure_llava_lora_targets': 'configure LoRA target modules to only include language-model linear layers for LLaVA models', 'multimodal_vqa_dataset': 'create a multimodal VQA dataset that normalizes different dataset schemas to a common image-question-answer format'}
+```
+

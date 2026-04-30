@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/quantization/ggml/test_ggml.py
+
+Prompts
+
+```
+['test GGUF model quantization types including Q4_0, Q5_0, Q8_0, Q2_K, Q4_K, and IQ variants with expected text output verification', 'test GGUF tokenizer interoperability by comparing encoded and decoded outputs between GGUF and original tokenizers on code and text datasets', 'test GGUF model inference across multiple architectures including Mistral, Qwen2, Llama3, Phi3, Bloom, T5, GPT2, Falcon, Mamba, Gemma2, and Deci with various quantization levels', 'test GGUF weight conversion accuracy by comparing state dicts between quantized GGUF models and original fp16 models using torch.testing.assert_close', 'test GGUF model serialization by saving and reloading a Q2_K quantized model and verifying generated text remains identical after round-trip']
+```
+
+Usage
+
+```
+{'test_gguf_quantization': 'test GGUF model quantization types including Q4_0, Q5_0, Q8_0, Q2_K, Q4_K, and IQ variants with expected text output verification', 'test_gguf_tokenization': 'test GGUF tokenizer interoperability by comparing encoded and decoded outputs between GGUF and original tokenizers on code and text datasets', 'test_gguf_model_inference': 'test GGUF model inference across multiple architectures including Mistral, Qwen2, Llama3, Phi3, Bloom, T5, GPT2, Falcon, Mamba, Gemma2, and Deci with various quantization levels', 'test_gguf_weights_conversion': 'test GGUF weight conversion accuracy by comparing state dicts between quantized GGUF models and original fp16 models using torch.testing.assert_close', 'test_gguf_serialization': 'test GGUF model serialization by saving and reloading a Q2_K quantized model and verifying generated text remains identical after round-trip'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/watsonx/embed/transformation.py
+
+Prompts
+
+```
+['transform an OpenAI-style embedding request into IBM WatsonX API format', 'build the complete WatsonX embeddings URL from api base, model, and optional params', 'convert a WatsonX embeddings HTTP response into a standardized OpenAI embedding response', 'map OpenAI embedding parameters to WatsonX-compatible parameters', 'list the supported OpenAI parameters for a given WatsonX embedding model']
+```
+
+Usage
+
+```
+{'transform_embedding_request': 'transform an OpenAI-style embedding request into IBM WatsonX API format', 'get_complete_url': 'build the complete WatsonX embeddings URL from api base, model, and optional params', 'transform_embedding_response': 'convert a WatsonX embeddings HTTP response into a standardized OpenAI embedding response', 'map_openai_params': 'map OpenAI embedding parameters to WatsonX-compatible parameters', 'get_supported_openai_params': 'list the supported OpenAI parameters for a given WatsonX embedding model'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/mimi/test_modeling_mimi.py
+
+Prompts
+
+```
+['test the MimiModel forward pass with input values and verify audio output shape', 'test MimiModel determinism by comparing two forward passes produce identical outputs', 'test MimiModel tuple and dict outputs are equivalent within tolerance', 'test MimiModel integration encode and decode with cache on real audio samples', 'test MimiModel streaming encode chunk-by-chunk with past key values and padding cache']
+```
+
+Usage
+
+```
+{'test_model_mimi_forward': 'test the MimiModel forward pass with input values and verify audio output shape', 'test_model_determinism': 'test MimiModel determinism by comparing two forward passes produce identical outputs', 'test_model_outputs_equivalence': 'test MimiModel tuple and dict outputs are equivalent within tolerance', 'test_integration_encode_decode': 'test MimiModel integration encode and decode with cache on real audio samples', 'test_streaming_encoder': 'test MimiModel streaming encode chunk-by-chunk with past key values and padding cache'}
+```
+

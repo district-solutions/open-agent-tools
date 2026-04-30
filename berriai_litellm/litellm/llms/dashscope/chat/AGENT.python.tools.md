@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/dashscope/chat/transformation.py
+
+Prompts
+
+```
+['build a DashScope chat config class that translates OpenAI chat completions to DashScope format', 'test the remove_cache_control_flag_from_messages_and_tools method preserves cache_control flags', 'run _transform_messages to convert OpenAI messages to DashScope format synchronously or asynchronously', 'create provider info by calling _get_openai_compatible_provider_info with optional api_base and api_key', 'review get_complete_url to build the full DashScope chat completions endpoint URL']
+```
+
+Usage
+
+```
+{'build_DashScopeChatConfig': 'build a DashScope chat config class that translates OpenAI chat completions to DashScope format', 'test_remove_cache_control': 'test the remove_cache_control_flag_from_messages_and_tools method preserves cache_control flags', 'run_transform_messages': 'run _transform_messages to convert OpenAI messages to DashScope format synchronously or asynchronously', 'create_get_provider_info': 'create provider info by calling _get_openai_compatible_provider_info with optional api_base and api_key', 'review_get_complete_url': 'review get_complete_url to build the full DashScope chat completions endpoint URL'}
+```
+

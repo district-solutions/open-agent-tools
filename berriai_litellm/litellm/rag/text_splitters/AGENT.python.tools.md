@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/rag/text_splitters/recursive_character_text_splitter.py
+
+Prompts
+
+```
+['create a RecursiveCharacterTextSplitter instance with custom chunk_size, chunk_overlap, and separators', 'split text into chunks using RecursiveCharacterTextSplitter with default separators', 'merge text splits into chunks respecting chunk_size and chunk_overlap limits', 'force split text into fixed-size chunks when no separator works', 'recursively split text by separators like newlines, spaces, and characters']
+```
+
+Usage
+
+```
+{'create_recursive_character_text_splitter': 'create a RecursiveCharacterTextSplitter instance with custom chunk_size, chunk_overlap, and separators', 'split_text_into_chunks': 'split text into chunks using RecursiveCharacterTextSplitter with default separators', 'merge_splits_respecting_overlap': 'merge text splits into chunks respecting chunk_size and chunk_overlap limits', 'force_split_text_by_size': 'force split text into fixed-size chunks when no separator works', 'recursively_split_text_by_separators': 'recursively split text by separators like newlines, spaces, and characters'}
+```
+

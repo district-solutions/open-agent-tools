@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/src/transformers/models/lilt/modeling_lilt.py
+
+Prompts
+
+```
+['build a LiLT model that combines text and layout embeddings for document understanding tasks', 'create a LiLT model for sequence classification with a classification head on top of pooled output', 'create a LiLT model for token classification using a linear layer on sequence output', 'create a LiLT model for question answering that predicts start and end token positions', 'test the LiLT encoder that stacks multiple transformer layers with self-attention and layout inputs']
+```
+
+Usage
+
+```
+{'build_lilt_model': 'build a LiLT model that combines text and layout embeddings for document understanding tasks', 'create_sequence_classification': 'create a LiLT model for sequence classification with a classification head on top of pooled output', 'create_token_classification': 'create a LiLT model for token classification using a linear layer on sequence output', 'create_question_answering': 'create a LiLT model for question answering that predicts start and end token positions', 'test_lilt_encoder': 'test the LiLT encoder that stacks multiple transformer layers with self-attention and layout inputs'}
+```
+

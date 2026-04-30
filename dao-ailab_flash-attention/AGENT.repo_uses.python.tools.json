@@ -1,0 +1,394 @@
+{
+  "dao-ailab_flash-attention/benchmarks/bench_sm90.py": {
+    "run_bench_fwd_bwd": "run the SM90 forward and backward benchmark for forward and backward passes across headdims 64, 96, 128",
+    "run_sweep_tiles": "run the SM90 forward benchmark sweeping tile sizes across multiple headdims and sequence lengths",
+    "run_sweep_rs_overlap": "run the SM90 forward benchmark sweeping register-spilling and intra-warp-group overlap combinations",
+    "run_compare_configs": "run the SM90 forward benchmark comparing old versus new tile configuration performance",
+    "run_sweep_bwd_opts": "run the SM90 backward benchmark sweeping optimization variants like V_in_regs and mma_dkv_is_rs"
+  },
+  "dao-ailab_flash-attention/benchmarks/benchmark_alibi.py": {
+    "benchmark_flash_attention_alibi": "benchmark flash attention with alibi bias across multiple configurations and attention implementations",
+    "generate_cos_sin_rotary_embeddings": "generate cosine and sine embeddings for rotary position encoding given sequence length and dimensions",
+    "create_attention_bias_from_alibi_slopes": "create attention bias matrix from ALiBi slopes for causal or non-causal attention",
+    "calculate_tflops_efficiency": "calculate TFLOPs/s efficiency for forward, backward, or combined forward-backward attention pass",
+    "run_pytorch_attention_baseline": "run a pure PyTorch attention baseline with optional causal masking and attention bias"
+  },
+  "dao-ailab_flash-attention/benchmarks/benchmark_attn.py": {
+    "run_benchmark_flash_attn": "run the benchmark_attn script to benchmark flash attention forward and backward passes across multiple backends",
+    "benchmark_attention_backends": "benchmark flash attention backends including FA2, FA3, FA4, cuDNN, and standard reference implementations",
+    "get_peak_device_flops": "get the peak BF16 TFLOPS for a CUDA device by querying the GPU name against known NVIDIA spec values",
+    "get_peak_device_bandwidth": "get the peak HBM bandwidth in bytes/sec for a CUDA device by matching the GPU name against known values",
+    "parse_attention_headdims": "parse comma-separated headdim specs supporting both single values like 128 and paired values like 192-128"
+  },
+  "dao-ailab_flash-attention/benchmarks/benchmark_causal.py": {
+    "benchmark_flash_attention_forward": "benchmark forward pass of flash attention qkvpacked function with causal masking",
+    "benchmark_flash_attention_forward_backward": "benchmark forward and backward timing of flash attention across batch sizes and sequence lengths",
+    "run_pytorch_profiler_flash_attention": "run pytorch profiler on flash attention qkvpacked function for forward pass analysis",
+    "compare_attention_implementations": "compare forward and backward timing of flash attention, flash2, and pytorch attention implementations",
+    "compute_attention_pytorch": "compute causal attention using pure pytorch with softmax, dropout, and baddbmm score computation"
+  },
+  "dao-ailab_flash-attention/benchmarks/benchmark_flash_attention.py": {
+    "benchmark_flash_attention": "benchmark FlashAttention 2 against PyTorch, Triton, and xFormers attention implementations across multiple batch sizes, sequence lengths, and head dimensions",
+    "calculate_flops_attention": "calculate FLOPs for attention forward, backward, or combined pass given batch size, sequence length, head dimension, number of heads, and causal flag",
+    "compute_attention_efficiency": "compute attention efficiency in TFLOPs/s from FLOPs count and measured execution time",
+    "measure_fwd_bwd_timing": "measure forward and backward pass timing for an attention function using repeated benchmark runs on CUDA",
+    "implement_pytorch_attention_baseline": "implement a PyTorch baseline attention function using qkv unpacking, baddbmm score computation, softmax, dropout, and einsum output"
+  },
+  "dao-ailab_flash-attention/benchmarks/benchmark_gemm.py": {
+    "benchmark_forward_matmul": "benchmark the forward pass of torch.matmul with cuBLAS backend using benchmark_forward",
+    "benchmark_forward_custom_fn": "benchmark the forward pass of an arbitrary function with benchmark_forward",
+    "benchmark_gemm_tflops": "run GEMM benchmarks across multiple k dimensions and measure TFLOPS performance",
+    "compare_benchmark_backends": "compare torch.utils.benchmark and triton.testing.do_bench timing results",
+    "benchmark_matmul_with_triton": "benchmark torch.matmul using triton.testing.do_bench with warmup and repetition"
+  },
+  "dao-ailab_flash-attention/benchmarks/clc_bench.py": {
+    "run_clc_benchmark": "run the CLC benchmark sweep for dense, varlen, and block-sparse flash attention configurations",
+    "generate_benchmark_cases": "generate benchmark test cases from dense, varlen, and block-sweep sweep configurations with optional case filter",
+    "profile_flash_attention_cases": "profile flash attention forward passes with CLC enabled and disabled to measure speedup and TFLOPS",
+    "compile_flash_attention_kernels": "compile flash attention CUDA kernels in parallel across multiple worker processes for each case and CLC setting",
+    "write_benchmark_results_csv": "write benchmark profile results to a CSV file with rounded float values and metadata for each test case"
+  },
+  "dao-ailab_flash-attention/benchmarks/tune_ex2_emu.py": {
+    "run_tune_ex2_emu_sweep": "run the tune_ex2_emu.py script to sweep _TUNING_CONFIG parameters for flash_fwd_sm100 and find the best config",
+    "test_parse_tuning_config": "test the parse_tuning_config function to extract _TUNING_CONFIG as a Python dict from source",
+    "test_run_benchmark": "test the run_benchmark function to execute a benchmark and return ms, tflops, mfu values",
+    "test_parse_headdim": "test the parse_headdim function to parse headdim specs like '128' or '192-128' into tuples",
+    "refactor_serialize_tuning_config": "refactor the serialize_tuning_config function to serialize _TUNING_CONFIG back to source code format"
+  },
+  "dao-ailab_flash-attention/hopper/benchmark_attn.py": {
+    "benchmark_flash_attention": "benchmark flash attention forward and backward pass across Flash2, Flash3, Triton, and CuDNN implementations",
+    "time_forward_pass": "time the forward pass of an attention function using do_bench with configurable repeats and warmup iterations",
+    "calculate_attention_flops": "calculate the FLOPs for a self-attention operation given batch, heads, sequence lengths, and head dimensions",
+    "setup_cudnn_sdpa": "setup a cuDNN SDPA graph for forward and backward execution with causal masking and sliding window support",
+    "convert_torch_to_cudnn_type": "convert a PyTorch dtype to the corresponding cuDNN data type enum value"
+  },
+  "dao-ailab_flash-attention/hopper/benchmark_flash_attention_fp8.py": {
+    "benchmark_flash_attention_fp8": "benchmark flash attention fp8 forward pass across Pytorch, Flash3, cuDNN and Triton implementations",
+    "run_cudnn_spda_setup": "run cudnn_spda_setup to build and execute a cuDNN FP8 scaled dot-product attention graph",
+    "test_attention_pytorch": "test the attention_pytorch function that computes softmax attention from a qkv tensor",
+    "calculate_flops": "calculate flops for forward, backward or combined attention modes given batch, seqlen, headdim and nheads",
+    "measure_efficiency": "measure efficiency in TFLOPs/s from flops count and measured execution time"
+  },
+  "dao-ailab_flash-attention/hopper/benchmark_split_kv.py": {
+    "benchmark_flash_attention_split_kv": "benchmark flash attention split-kv performance comparing FA2 and FA3 with kvcache on hopper architecture",
+    "timeit_benchmark_function": "timeit a callable function with warmup runs and pytorch benchmark timer for accurate GPU timing",
+    "round_up_to_power_of_2": "round up a number to the nearest power of two for block size calculations",
+    "test_flash_attn_split_kvs": "test flash attention split-kv numerical accuracy across different split counts with GQA and non-GQA modes",
+    "compare_flash_attn2_vs_flash_attn3": "compare flash attention 2 and flash attention 3 kvcache throughput with split-kv heuristics on hopper"
+  },
+  "dao-ailab_flash-attention/hopper/flash_attn_interface.py": {
+    "run_flash_attention": "run flash attention forward and backward pass with query, key, and value tensors using flash_attn_func",
+    "run_flash_attention_qkv_packed": "run flash attention with q, k, v packed into a single qkv tensor using flash_attn_qkvpacked_func",
+    "run_flash_attention_varlen": "run flash attention on variable-length sequences with cu_seqlens using flash_attn_varlen_func",
+    "run_flash_attention_with_kvcache": "run flash attention with pre-allocated kv cache for incremental decoding using flash_attn_with_kvcache",
+    "run_flash_attention_combine": "run flash attention forward combine operation on partial outputs and logsumexp values using flash_attn_combine"
+  },
+  "dao-ailab_flash-attention/hopper/generate_kernels.py": {
+    "generate_flash_attention_kernels": "generate flash attention CUDA kernel template instantiations for SM80, SM90 with configurable head dimensions and dtypes",
+    "run_generate_kernels_cli": "run generate_kernels.py to write kernel .cu files to an output directory via argparse",
+    "build_kernel_dataclass": "build a Kernel dataclass instance with sm, dtype, head_dim, direction and other flash attention configuration flags",
+    "get_all_kernels": "get all flash attention kernel configurations by iterating dtype, head_dim, split, paged_kv, softcap, packgqa, and sm combinations",
+    "batch_kernels_by_hdim": "batch kernel instantiations by head dimension grouping same-hdim and diff-hdim kernels into combined .cu files"
+  },
+  "dao-ailab_flash-attention/hopper/padding.py": {
+    "unpad_input_hidden_states": "unpad input hidden states using an attention mask and return flattened tensors with cumulative sequence lengths",
+    "pad_input_hidden_states": "pad flattened hidden states back to original batch and sequence length dimensions using indices",
+    "unpad_input_with_unused_mask": "unpad input hidden states combining attention mask and unused mask to include allocated but unused tokens",
+    "pad_input_from_indices": "pad unmasked hidden states back to (batch, seqlen, ...) shape using precomputed token indices",
+    "unpad_input_for_attention": "unpad transformer hidden states to remove masked tokens before efficient flash attention computation"
+  },
+  "dao-ailab_flash-attention/hopper/setup.py": {
+    "build_flash_attention_3": "build the flash_attn_3 CUDA extension with environment flags to disable backward, split, pagedkv, fp16, fp8, varlen, cluster, hdim, and sm80 features",
+    "build_flash_attention_3_rocm": "build flash_attn_3 using Triton ROCm backend by setting FLASH_ATTENTION_TRITON_AMD_ENABLE to TRUE instead of CUDA",
+    "build_flash_attention_3_offline": "build flash_attn_3 in offline mode by setting FLASH_ATTENTION_OFFLINE_BUILD to prevent any internet downloads during compilation",
+    "build_flash_attention_3_wheel": "build a wheel package for flash_attn_3 using CachedWheelsCommand that attempts to download a prebuilt wheel before falling back to source build",
+    "build_flash_attention_3_config": "build the flash_attn_config.py file with DISABLE_BACKWARD, DISABLE_SPLIT, DISABLE_PAGEDKV, DISABLE_FP16, DISABLE_FP8, and other feature flags"
+  },
+  "dao-ailab_flash-attention/hopper/test_attn_kvcache.py": {
+    "test_flash_attn_kvcache_nosplit": "test flash_attn_with_kvcache with bfloat16 inputs against a reference implementation under various GQA ratios and causal settings",
+    "test_flash_attn_kvcache_nosplit_fp8": "test flash_attn_with_kvcache with float8_e4m3fn inputs and descale parameters against a reference implementation",
+    "test_flash_attn_kvcache_output": "test flash_attn_with_kvcache output and LSE accuracy across different num_splits values with bfloat16 dtype",
+    "test_flash_attn_kvcache_output_fp8": "test flash_attn_with_kvcache output and LSE accuracy across different num_splits values with float8_e4m3fn dtype",
+    "attention_ref": "build a reference attention implementation supporting causal masking, window size, softcap, GQA, and dropout for validating flash attention"
+  },
+  "dao-ailab_flash-attention/hopper/test_flash_attn.py": {
+    "test_flash_attn_output": "test flash_attn_func with MHA/MQA/GQA variants, causal attention, softcap, local window, and multiple head dimensions",
+    "test_flash_attn_varlen_output": "test flash_attn_varlen_func with variable-length sequences, padding masks, and unused token masking",
+    "test_flash_attn_kvcache": "test flash_attn_with_kvcache with KV cache, paged KV, rotary embeddings, and append KV support",
+    "test_flash_attn_combine": "test flash_attn_combine to merge partial attention outputs and LSE values across multiple splits",
+    "test_flash3_bw_compatibility": "test backward compatibility of flash_attn_3 torch op schemas for fwd, bwd, fwd_combine, and get_scheduler_metadata"
+  },
+  "dao-ailab_flash-attention/hopper/test_flash_attn_bwd_determinism.py": {
+    "test_flash_attn_output": "test the flash attention forward and backward pass with deterministic mode enabled",
+    "test_flash_attn_varlen_output": "test the flash attention varlen forward and backward pass with padding masks and deterministic mode",
+    "run_flash_attn_backward_deterministic": "run the _flash_attn_backward kernel in deterministic mode and verify identical outputs across 1000 iterations",
+    "compare_flash_attn_against_pytorch_ref": "compare flash_attn_func output and gradients against a pure PyTorch attention reference implementation",
+    "test_flash_attn_with_mha_mqa_gqa_modes": "test flash attention backward determinism across MHA, MQA, and GQA attention patterns"
+  },
+  "dao-ailab_flash-attention/hopper/test_flash_attn_triton_amd.py": {
+    "test_flash_attn_output": "test the flash_attn_func forward and backward pass with MHA/MQA/GQA configurations",
+    "test_flash_attn_varlen_output": "test the flash_attn_varlen_func with variable-length sequences and padding masks",
+    "test_flash_attn_kvcache": "test the flash_attn_with_kvcache function with append KV, rotary embeddings, and paged KV cache",
+    "test_flash_attn_combine": "test the flash_attn_combine function for merging partial attention outputs from num_splits",
+    "test_flash3_bw_compatibility": "test backward compatibility of flash_attn_3 torch ops schemas for fwd, bwd, combine, and scheduler metadata"
+  },
+  "dao-ailab_flash-attention/hopper/test_kvcache.py": {
+    "benchmark_fa_kv": "benchmark the forward pass of a flash attention kv cache function with warmup and cuda synchronization",
+    "benchmark_fa_kv_old": "benchmark the forward pass of a flash attention kv cache function using PyTorch Timer",
+    "test_flash_attn_kvcache": "test flash attention with kv cache on big and small query batches with validation and timing comparison",
+    "run_flash_attn_benchmark": "run flash attention kv cache benchmark comparing fa3 and fa2 on large and small queries",
+    "validate_flash_attn_outputs": "validate flash attention fa3 and fa2 kv cache outputs for numerical agreement on big and small queries"
+  },
+  "dao-ailab_flash-attention/hopper/test_torch_compile_and_export.py": {
+    "create_model": "create a model and input tensor with configurable batch size, sequence length, embedding dim, and num heads",
+    "test_export_model": "test torch.compile and torch.export on an efficient multi-head attention model",
+    "test_compile_and_package_model": "test aoti compile and package loading for an efficient multi-head attention model",
+    "build_EfficienctMultiHeadAttention": "build an efficient multi-head attention module with optional flash attention integration",
+    "review_EfficienctMultiHeadAttention_forward": "review the forward method of the efficient multi-head attention module"
+  },
+  "dao-ailab_flash-attention/hopper/test_util.py": {
+    "test_generate_random_padding_mask": "test generate_random_padding_mask to create bool padding masks with full, random, or third modes",
+    "test_generate_qkv": "test generate_qkv to prepare unpacked, kvpacked, or qkvpacked query/key/value tensors with padding masks",
+    "build_construct_local_mask": "build a local attention mask with configurable window size, sink token length, and padding masks",
+    "build_construct_chunk_mask": "build a chunked attention mask that restricts attention to sliding windows of a given chunk size",
+    "test_attention_ref": "test attention_ref as a reference softmax attention implementation with causal, windowed, chunked, and dropout support"
+  },
+  "dao-ailab_flash-attention/training/run.py": {
+    "run_train_model": "run the training pipeline with a Hydra config to train a PyTorch Lightning model",
+    "run_eval_model": "run evaluation on a trained PyTorch Lightning model using a Hydra config",
+    "run_train_test": "run the training pipeline in train mode then evaluate on the test set",
+    "run_eval_checkpoint": "run evaluation with a Lightning or PyTorch checkpoint on val and test splits",
+    "run_print_config": "run the script with print_config enabled to pretty-print the Hydra DictConfig"
+  },
+  "dao-ailab_flash-attention/training/src/eval.py": {
+    "run_eval_pytorch": "run evaluation on a trained pytorch lightning model from checkpoint",
+    "run_eval_lightning": "run evaluation on a trained lightning model loaded from checkpoint",
+    "load_checkpoint": "load a pytorch model checkpoint and extract the state dict from nested keys",
+    "test_load_checkpoint": "test loading a pytorch model checkpoint from a file path or directory",
+    "review_eval": "review the evaluate function that runs validation and test on a trained model"
+  },
+  "dao-ailab_flash-attention/training/src/train.py": {
+    "run_train_pipeline": "run the PyTorch Lightning training pipeline with Hydra config for model training",
+    "resume_training_checkpoint": "resume training from the latest checkpoint file or autosave checkpoint",
+    "test_model_after_training": "test the trained model on the test set after training completes",
+    "configure_ddp_strategy": "configure DDP strategy automatically when training across multiple GPUs",
+    "finalize_training_resources": "finalize and clean up training resources including callbacks, loggers, and trainer"
+  },
+  "dao-ailab_flash-attention/training/src/callbacks/causality_monitor.py": {
+    "create_CausalityMonitor": "create a CausalityMonitor callback to track gradient leakage forward in time",
+    "test_CausalityMonitor": "test the CausalityMonitor callback for a language modeling task with post-embedding inputs",
+    "test_CausalityMonitor_input_dim": "test the CausalityMonitor callback with a custom input dimension for non-LM models",
+    "review_on_train_epoch_end": "review the on_train_epoch_end method that logs causality gradient statistics per timestep",
+    "summarize_CausalityMonitor": "summarize the CausalityMonitor callback that monitors dy[k]du[s] gradient leakage for k < s"
+  },
+  "dao-ailab_flash-attention/training/src/callbacks/ema.py": {
+    "create_ema_callback": "create an EMACallback with a decay value to maintain exponential moving averages of model parameters in PyTorch Lightning",
+    "test_ema_callback": "test the EMACallback to copy EMA shadow parameters to model weights before validation and restore after",
+    "refactor_ema_callback": "refactor the EMACallback to update EMA averages only after gradient accumulation batches complete",
+    "summarize_ema_callback": "summarize how the EMACallback saves and loads EMA state in PyTorch Lightning checkpoints",
+    "run_ema_update": "run the ExponentialMovingAverage.update method to apply exponential decay to model parameters"
+  },
+  "dao-ailab_flash-attention/training/src/callbacks/flop_count.py": {
+    "create_callback_flop_count": "create a PyTorch Lightning callback that counts model FLOPs using fvcore and deepspeed profilers",
+    "test_flop_count_profilers": "test the FlopCount callback with fvcore and deepspeed profilers on a LightningModule",
+    "run_flop_count_profile": "run the FlopCount callback to profile model MACs and activations at fit start",
+    "review_flop_count_callback": "review the FlopCount callback that logs GMACs and MActs to the trainer logger",
+    "refactor_flop_count_device": "refactor the FlopCount callback to support custom input size, dtype, and device arguments"
+  },
+  "dao-ailab_flash-attention/training/src/callbacks/gpu_affinity.py": {
+    "run_l2_promote": "run the l2_promote function to set CUDA L2 fetch granularity to 128 bytes on the current GPU device",
+    "run_set_affinity": "run the set_affinity function to bind PyTorch Lightning trainer processes to CPU sockets using socket_unique_continuous policy",
+    "create_gpu_affinity_callback": "create a PyTorch Lightning GpuAffinity callback that sets GPU thread affinity during trainer setup",
+    "review_gpu_affinity_callback": "review the GpuAffinity callback class and its setup method for integrating GPU affinity into a PyTorch Lightning training loop",
+    "test_set_affinity": "test the set_affinity function to verify CPU thread affinity is correctly assigned per local rank across multi-GPU nodes"
+  },
+  "dao-ailab_flash-attention/training/src/callbacks/loss_scale_monitor.py": {
+    "create_LossScaleMonitor": "create a pytorch lightning callback that monitors AMP loss scale during training",
+    "test_LossScaleMonitor": "test the LossScaleMonitor callback logs scaler scale and growth tracker metrics",
+    "refactor_LossScaleMonitor": "refactor the LossScaleMonitor callback to support additional precision plugin types",
+    "review_on_before_optimizer_step": "review the on_before_optimizer_step method that logs loss scale before optimizer step",
+    "summarize_LossScaleMonitor": "summarize the LossScaleMonitor callback that monitors fp16 AMP loss scale for DeepSpeed and native torch scalers"
+  },
+  "dao-ailab_flash-attention/training/src/callbacks/model_checkpoint.py": {
+    "create_model_checkpoint_mine": "create a PyTorch Lightning ModelCheckpointMine callback with fault_tolerant=True for auto-saving checkpoints on exceptions",
+    "test_model_checkpoint_mine": "test the ModelCheckpointMine callback saves an auto-save checkpoint when trainer raises an exception",
+    "review_model_checkpoint_mine": "review the ModelCheckpointMine class that extends pl.callbacks.model_checkpoint.ModelCheckpoint with fault-tolerant exception handling",
+    "refactor_model_checkpoint_mine": "refactor the ModelCheckpointMine class to add a teardown method that removes the auto-save checkpoint file",
+    "summarize_model_checkpoint_mine": "summarize the ModelCheckpointMine callback that auto-saves checkpoints on trainer exceptions for fault-tolerant training"
+  },
+  "dao-ailab_flash-attention/training/src/callbacks/norm_monitor.py": {
+    "create_norm_monitor": "create a PyTorch Lightning callback that monitors weight and gradient scales during training",
+    "test_norm_monitor_layer_norm": "test the NormMonitor callback with layer_norm_only enabled to track only layer norm and embedding parameters",
+    "review_norm_monitor_deep_speed": "review the NormMonitor callback's DeepSpeedStrategy handling and loss scale correction for gradient stats",
+    "summarize_norm_monitor_logging": "summarize how NormMonitor logs per-parameter max, mean, and total L1 norms for params and gradients",
+    "build_norm_monitor_callback": "build a PyTorch Lightning NormMonitor callback to log weight and gradient statistics at optimizer step"
+  },
+  "dao-ailab_flash-attention/training/src/callbacks/params_log.py": {
+    "create_ParamsLog_callback": "create a pytorch lightning ParamsLog callback to log model parameter counts during training",
+    "configure_ParamsLog_logging": "configure ParamsLog callback with total, trainable, and non-trainable parameter logging options",
+    "run_ParamsLog_on_fit_start": "run ParamsLog on_fit_start to log total, trainable, and non-trainable model parameters to the trainer logger",
+    "summarize_ParamsLog_usage": "summarize the ParamsLog pytorch lightning callback that logs model parameter statistics at fit start",
+    "review_ParamsLog_callback": "review the ParamsLog pytorch lightning callback for logging model parameter counts"
+  },
+  "dao-ailab_flash-attention/training/src/callbacks/speed_monitor.py": {
+    "create_speed_monitor_callback": "create a SpeedMonitor callback to track intra-step, inter-step, and epoch timing during training",
+    "monitor_train_batch_speed": "monitor the per-batch training speed with intra-step and inter-step timing metrics logged to the trainer",
+    "log_epoch_training_time": "log the total time taken per training epoch using the SpeedMonitor callback",
+    "configure_speed_monitor_verbose": "configure a SpeedMonitor callback with verbose mode enabled to print intra-step timing to the module",
+    "disable_inter_step_monitoring": "disable inter-step time monitoring in SpeedMonitor by setting inter_step_time to False"
+  },
+  "dao-ailab_flash-attention/training/src/callbacks/wandb_callbacks.py": {
+    "create_callback_watch_model": "create a PyTorch Lightning callback to watch model gradients and parameters in Weights & Biases",
+    "create_callback_upload_code": "create a PyTorch Lightning callback to upload code files as a Weights & Biases artifact",
+    "create_callback_upload_checkpoints": "create a PyTorch Lightning callback to upload model checkpoints as a Weights & Biases artifact",
+    "create_callback_log_confusion_matrix": "create a PyTorch Lightning callback to log a confusion matrix heatmap to Weights & Biases every validation epoch",
+    "create_callback_log_f1_prec_rec": "create a PyTorch Lightning callback to log F1, precision, and recall heatmaps to Weights & Biases every validation epoch"
+  },
+  "dao-ailab_flash-attention/training/src/datamodules/fault_tolerant_sampler.py": {
+    "create_random_fault_tolerant_sampler": "create a RandomFaultTolerantSampler instance for fault-tolerant random data sampling in PyTorch",
+    "build_fault_tolerant_distributed_sampler": "build a FaultTolerantDistributedSampler for fault-tolerant distributed data sampling across multiple GPUs",
+    "test_state_dict_serialization": "test the state_dict and load_state_dict methods for checkpointing and resuming sampler state",
+    "review_fault_tolerant_iteration": "review the __iter__ methods that resume sampling from the last checkpointed position after restart",
+    "summarize_sampler_capabilities": "summarize the fault-tolerant sampling capabilities for PyTorch DataLoader restart scenarios"
+  },
+  "dao-ailab_flash-attention/training/src/datamodules/imagenet.py": {
+    "build_imagenet_datamodule": "build an ImagenetDataModule LightningDataModule for training with configurable transforms and batch size",
+    "create_imagenet_dataloaders": "create train, val, and test DataLoaders from ImagenetDataModule with distributed sampler support",
+    "test_imagenet_normalization": "test the imagenet_normalization transform with ImageNet mean and std values",
+    "refactor_imagenet_datamodule_dtype": "refactor ImagenetDataModule to convert image tensors to float16 or bfloat16 dtype",
+    "review_imagenet21k_datamodule": "review Imagenet21kPDataModule that extends ImagenetDataModule with 10450 classes"
+  },
+  "dao-ailab_flash-attention/training/src/datamodules/language_modeling_hf.py": {
+    "build_lm_datamodule": "build an LMDataModule to tokenize and cache a HuggingFace dataset for language modeling training",
+    "create_shm_array": "create a SHMArray subclass to wrap numpy arrays backed by shared memory for efficient multi-process access",
+    "run_process_dataset": "run process_dataset to tokenize, concatenate, and cache HuggingFace dataset input_ids in shared memory or disk",
+    "test_load_datamodule_state": "test loading LMDataModule fault-tolerant state from a PyTorch Lightning checkpoint for resuming training",
+    "review_lm_data_loaders": "review LMDataModule train, val, and test dataloader methods with fault-tolerant distributed sampling support"
+  },
+  "dao-ailab_flash-attention/training/src/datamodules/datasets/detokenizer.py": {
+    "run_wikitext_detokenize": "run wikitext_detokenize to remove whitespace from whitespace-tokenized wikitext strings",
+    "build_dataset_detokenizer": "build a detokenizer registry mapping dataset names to their detokenization functions",
+    "refactor_wikitext_detokenize": "refactor wikitext_detokenize to support additional dataset-specific tokenization rules",
+    "review_DATASET_TOKENIZATION_REGISTRY": "review the DATASET_TOKENIZATION_REGISTRY mapping dataset names to detokenize functions",
+    "test_wikitext_detokenize": "test wikitext_detokenize with whitespace-tokenized input strings containing contractions and punctuation"
+  },
+  "dao-ailab_flash-attention/training/src/distributed/ddp_comm_hooks.py": {
+    "test_fp16_compress_hook": "test the fp16_compress_hook DDP communication hook that compresses gradients to fp16 and all-reduces them",
+    "refactor_fp16_compress_hook": "refactor the fp16_compress_hook to add a backoff strategy that resends with fp32 on inf/NaN",
+    "review_fp16_compress_hook": "review the fp16_compress_hook DDP hook for memory efficiency and numerical stability",
+    "create_ddp_comm_hook": "create a DDP communication hook that compresses gradient tensors before all-reduce",
+    "summarize_fp16_compress_hook": "summarize the fp16_compress_hook gradient compression approach using fp16 division and all-reduce"
+  },
+  "dao-ailab_flash-attention/training/src/metrics/accuracy.py": {
+    "create_AccuracyMine": "create an AccuracyMine instance that wraps torchmetrics.Accuracy for mixup-compatible targets",
+    "test_AccuracyMine_update": "test the AccuracyMine.update method with floating-point target tensors using argmax",
+    "test_AccuracyMine_update_int": "test the AccuracyMine.update method with integer target tensors without argmax conversion",
+    "review_AccuracyMine": "review the AccuracyMine class that extends torchmetrics.Accuracy to handle mixup targets",
+    "summarize_AccuracyMine_update": "summarize the AccuracyMine.update method that applies argmax to floating-point targets"
+  },
+  "dao-ailab_flash-attention/training/src/metrics/num_tokens.py": {
+    "create_class_num_tokens": "create a torchmetrics Metric subclass that tracks the total number of tokens seen across batches",
+    "test_num_tokens_update": "test the NumTokens.update method accumulates target tensor element count into a running total",
+    "test_num_tokens_compute": "test the NumTokens.compute method returns the accumulated token count as a tensor",
+    "refactor_num_tokens_reset": "refactor the NumTokens.reset method to preserve the accumulated count across epoch boundaries",
+    "review_num_tokens_forward": "review the NumTokens._forward_reduce_state_update method for correct single-call update-and-compute behavior"
+  },
+  "dao-ailab_flash-attention/training/src/metrics/perplexity.py": {
+    "create_perplexity_metric": "create a Perplexity metric instance for measuring language model prediction quality",
+    "update_perplexity_with_predictions": "update the Perplexity metric with model predictions and target tokens",
+    "compute_perplexity_score": "compute the final Perplexity score from accumulated log probabilities and token count",
+    "use_perplexity_with_ignore_index": "use the Perplexity metric with an ignore_index to skip masked tokens",
+    "test_perplexity_correctness": "test that Perplexity computes exp(average(nll)) instead of average(exp(nll))"
+  },
+  "dao-ailab_flash-attention/training/src/models/modules/seq_common.py": {
+    "build_pooling_function": "build a pooling function that supports MEAN, SUM, CLS, LAST, and FLATTEN modes with optional key padding masks",
+    "create_classification_head": "create a classification head with an MLP layer for sentence-level classification tasks",
+    "build_classification_head_dual": "build a dual-input classification head for NLI-style interaction between two hidden states",
+    "create_positional_encoding": "create a positional encoding module with sinusoidal encodings and dropout for transformer sequences",
+    "build_mlp_block": "build a multi-layer perceptron block with configurable hidden size, activation, and dropout"
+  },
+  "dao-ailab_flash-attention/training/src/optim/param_grouping.py": {
+    "group_optimizer_param_groups": "group model parameters into optimizer param groups with weight decay rules for biases and normalization layers",
+    "create_bias_weight_decay_config": "create optimizer param groups with configurable bias weight decay behavior for a PyTorch model",
+    "build_normalization_weight_decay_groups": "build optimizer param groups that skip normalization layers like LayerNorm and BatchNorm from weight decay",
+    "handle_special_param_hyperparameters": "handle parameters with special _optim attributes by creating dedicated optimizer param groups",
+    "review_param_grouping_function": "review the group_parameters_for_optimizer function that separates model params into decay and no_decay buckets"
+  },
+  "dao-ailab_flash-attention/training/src/optim/timm_lr_scheduler.py": {
+    "create_timm_cosine_scheduler": "create a TimmCosineLRScheduler that wraps timm's CosineLRScheduler for PyTorch Lightning compatibility",
+    "step_scheduler_epoch": "step the TimmCosineLRScheduler with optional epoch argument to update learning rate",
+    "step_scheduler_auto_epoch": "step the TimmCosineLRScheduler without epoch argument to auto-increment the internal epoch counter",
+    "resume_scheduler_from_epoch": "resume the TimmCosineLRScheduler by passing an explicit epoch to step for checkpoint recovery",
+    "build_cosine_lr_with_step_update": "build a TimmCosineLRScheduler configured for step-level updates via t_in_epochs=False"
+  },
+  "dao-ailab_flash-attention/training/src/tasks/seq.py": {
+    "create_SequenceModel": "create a SequenceModel LightningModule instance with a config and optional model config override",
+    "instantiate_datamodule": "instantiate a datamodule from hydra config and register a datamodule resolver in omegaconf",
+    "warmstart_model": "warmstart a SequenceModel by loading pretrained weights from a checkpoint path with optional post-processing",
+    "configure_optimizers": "configure optimizers with parameter grouping and optional learning rate scheduler for a SequenceModel",
+    "run_training_step": "run a training step on a SequenceModel that computes loss, updates metrics, and logs results"
+  },
+  "dao-ailab_flash-attention/training/src/utils/checkpoint.py": {
+    "load_checkpoint": "load a PyTorch model checkpoint from a file path or DeepSpeed checkpoint directory to a specified device",
+    "interpolate_pos_embedding": "interpolate a positional embedding tensor in a state dict to a new sequence length with optional interleave resizing",
+    "blockdiag_to_dense_mlp_bert": "convert block-diagonal BERT MLP weight tensors in a state dict to dense weight tensors",
+    "remove_model_prefix": "strip the 'model.' prefix from all keys in a nested state dict and return the flattened state dict",
+    "load_checkpoint_deepspeed": "load a DeepSpeed distributed model checkpoint by reading the latest tag and extracting the module state dict"
+  },
+  "dao-ailab_flash-attention/training/src/utils/ddp_zero1.py": {
+    "build_ddp_zero1_strategy": "build a DDP strategy class that shards optimizer states across GPUs for ZeroRedundancyOptimizer",
+    "create_get_zero_optimizer_state_dict_local": "create a function that extracts local optimizer state dict without GPU synchronization",
+    "test_optimizer_state": "test the optimizer_state method that returns sharded state dict for ZeroRedundancyOptimizer",
+    "review_save_checkpoint": "review the save_checkpoint method that splits model and optimizer states into separate files per rank",
+    "summarize_load_checkpoint": "summarize the load_checkpoint method that merges model states with per-rank optimizer states"
+  },
+  "dao-ailab_flash-attention/training/src/utils/ddp_zero2.py": {
+    "create_DDPStrategyZero2": "create a DDPStrategyZero2 instance for Apex DistributedFusedAdam with sharded optimizer state checkpointing",
+    "create_DistAdamNativeMixedPrecisionPlugin": "create a DistAdamNativeMixedPrecisionPlugin that skips scaler unscale for DistributedFusedAdam compatibility",
+    "save_checkpoint_DDPStrategyZero2": "save a distributed checkpoint with model states on root and per-rank optimizer state files",
+    "load_checkpoint_DDPStrategyZero2": "load a distributed checkpoint by merging per-rank optimizer states with global model states",
+    "clip_grad_by_norm_DistAdamNativeMixedPrecisionPlugin": "clip gradients by norm with scaled clip value for DistributedFusedAdam optimizer"
+  },
+  "dao-ailab_flash-attention/training/src/utils/distributed.py": {
+    "init_distributed": "initialize the distributed PyTorch backend with nccl or gloo based on the cuda flag",
+    "all_reduce_item": "all-reduce a scalar value across distributed workers using sum, mean, min, max, or product",
+    "sync_workers": "synchronize all distributed workers and yield the current worker rank via a context manager",
+    "get_rank": "get the current distributed worker rank or zero if distributed is not initialized",
+    "get_world_size": "get the total number of distributed workers or one if distributed is not initialized"
+  },
+  "dao-ailab_flash-attention/training/src/utils/ema.py": {
+    "create_ema_instance": "create an ExponentialMovingAverage instance to maintain moving averages of model parameters",
+    "update_ema_parameters": "update the exponential moving average shadow parameters after each optimizer step",
+    "copy_ema_to_model": "copy the averaged shadow parameters into the model parameters for inference",
+    "save_ema_state_dict": "save the ExponentialMovingAverage state including decay, num_updates, and shadow parameters",
+    "restore_ema_state_dict": "restore the ExponentialMovingAverage from a previously saved state dictionary"
+  },
+  "dao-ailab_flash-attention/training/src/utils/flops.py": {
+    "profile_deepspeed_model": "profile a PyTorch model using DeepSpeed's flops profiler to get MACs and parameter count",
+    "profile_fvcore_model": "profile a PyTorch model using fvcore's FlopCountAnalysis to get FLOPs and activation counts",
+    "test_profile_deepspeed": "test the profile_deepspeed function with a sample model and input tensor",
+    "test_profile_fvcore": "test the profile_fvcore function with a sample model and input tensor",
+    "refactor_profile_fvcore": "refactor the profile_fvcore function to support custom input shapes and device placement"
+  },
+  "dao-ailab_flash-attention/training/src/utils/gpu_affinity.py": {
+    "set_cpu_affinity_for_gpu": "set CPU affinity for a given GPU index using a specified mode",
+    "get_thread_siblings_list": "get thread siblings list for CPU cores from /sys/devices/system/cpu",
+    "get_gpu_cpu_affinity": "get the CPU core affinity list assigned to a specific GPU device",
+    "set_socket_unique_affinity": "set socket-unique CPU affinity with interleaved or continuous mode for multi-GPU",
+    "get_gpu_device_name": "get the name of an NVIDIA GPU device by its index"
+  },
+  "dao-ailab_flash-attention/training/src/utils/utils.py": {
+    "create_LoggingContext": "create a LoggingContext to temporarily change logging level and add handlers with automatic cleanup",
+    "get_logger": "get a multi-GPU-friendly logger that only logs from rank zero in distributed training",
+    "run_extras": "run extras to disable warnings, enforce experiment name, and set debugger-friendly config",
+    "summarize_print_config": "summarize a Hydra DictConfig by printing it as a rich tree to console and config_tree.txt",
+    "finish_training": "finish training by properly closing all loggers including clearing wandb runs"
+  },
+  "dao-ailab_flash-attention/training/tests/datamodules/test_language_modeling_hf.py": {
+    "test_lm_datamodule_wikitext2": "test LMDataModule with wikitext-2-raw-v1 dataset, batch size 7, max length 1024",
+    "test_lm_datamodule_wikitext103": "test LMDataModule with wikitext-103-raw-v1 dataset, batch size 7, max length 1024",
+    "test_lm_datamodule_openwebtext": "test LMDataModule with openwebtext dataset, batch size 8, max length 1024, add_eos True",
+    "test_lm_datamodule_lambada": "test LMDataModule with lambada dataset, batch size 8, max length 1024, add_eos True",
+    "test_lm_datamodule_the_pile": "test LMDataModule with the_pile dataset, batch size 8, max length 2048, use_shmem False"
+  }
+}

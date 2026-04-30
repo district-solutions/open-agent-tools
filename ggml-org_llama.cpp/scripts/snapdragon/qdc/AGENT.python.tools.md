@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: ggml-org/llama.cpp
+- repo_uri: https://github.com/ggml-org/llama.cpp
+
+## File: ggml-org_llama.cpp/scripts/snapdragon/qdc/run_qdc_jobs.py
+
+Prompts
+
+```
+['build a QDC artifact zip bundle with test scripts, model URL substitution, and requirements for Android Hexagon testing', 'run a QDC Appium job on an Android device to execute llama.cpp bench and backend-ops tests', 'wait for a QDC job to reach a terminal state with configurable timeout and polling', 'fetch QDC job log files, parse JUnit XML results, and extract pytest output from log files', 'write test results as a Markdown table with pass/fail icons and failure details to GITHUB_STEP_SUMMARY']
+```
+
+Usage
+
+```
+{'build_artifact_zip': 'build a QDC artifact zip bundle with test scripts, model URL substitution, and requirements for Android Hexagon testing', 'run_qdc_test_job': 'run a QDC Appium job on an Android device to execute llama.cpp bench and backend-ops tests', 'wait_for_job_completion': 'wait for a QDC job to reach a terminal state with configurable timeout and polling', 'fetch_and_parse_test_logs': 'fetch QDC job log files, parse JUnit XML results, and extract pytest output from log files', 'write_github_summary': 'write test results as a Markdown table with pass/fail icons and failure details to GITHUB_STEP_SUMMARY'}
+```
+

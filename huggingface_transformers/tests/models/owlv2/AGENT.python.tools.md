@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/owlv2/test_modeling_owlv2.py
+
+Prompts
+
+```
+['test the Owlv2VisionModel class with vision encoder forward pass and output shape assertions', 'test the Owlv2TextModel class with text encoder forward pass and output shape assertions', 'test the Owlv2Model class for zero-shot image-text matching with logits_per_image and logits_per_text', 'test the Owlv2ForObjectDetection class for object detection with pred_boxes and logits output shapes', 'run integration tests for Owlv2Model inference with pretrained google/owlv2-base-patch16 model']
+```
+
+Usage
+
+```
+{'test_Owlv2VisionModel': 'test the Owlv2VisionModel class with vision encoder forward pass and output shape assertions', 'test_Owlv2TextModel': 'test the Owlv2TextModel class with text encoder forward pass and output shape assertions', 'test_Owlv2Model': 'test the Owlv2Model class for zero-shot image-text matching with logits_per_image and logits_per_text', 'test_Owlv2ForObjectDetection': 'test the Owlv2ForObjectDetection class for object detection with pred_boxes and logits output shapes', 'test_Owlv2ModelIntegrationTest': 'run integration tests for Owlv2Model inference with pretrained google/owlv2-base-patch16 model'}
+```
+

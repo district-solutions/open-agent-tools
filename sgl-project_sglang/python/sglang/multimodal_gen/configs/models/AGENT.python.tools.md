@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/python/sglang/multimodal_gen/configs/models/base.py
+
+Prompts
+
+```
+['create an ArchConfig dataclass for model architecture configuration with stacked params mapping', 'create a ModelConfig dataclass that combines ArchConfig with sglang-diffusion-specific parameters', 'build an ArchConfig with dynamic extra attributes stored in a dictionary for flexible model config fields', 'refactor ModelConfig to update arch_config from a source model dictionary loaded from transformers or diffusers', 'review ModelConfig update_model_config to validate and apply source model dictionary fields with post_init hook']
+```
+
+Usage
+
+```
+{'create_ArchConfig': 'create an ArchConfig dataclass for model architecture configuration with stacked params mapping', 'create_ModelConfig': 'create a ModelConfig dataclass that combines ArchConfig with sglang-diffusion-specific parameters', 'build_ArchConfig_extra_attrs': 'build an ArchConfig with dynamic extra attributes stored in a dictionary for flexible model config fields', 'refactor_ModelConfig_update_model_arch': 'refactor ModelConfig to update arch_config from a source model dictionary loaded from transformers or diffusers', 'review_ModelConfig_update_model_config': 'review ModelConfig update_model_config to validate and apply source model dictionary fields with post_init hook'}
+```
+

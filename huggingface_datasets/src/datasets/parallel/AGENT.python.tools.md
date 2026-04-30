@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/datasets
+- repo_uri: https://github.com/huggingface/datasets
+
+## File: huggingface_datasets/src/datasets/parallel/parallel.py
+
+Prompts
+
+```
+['build a python module that applies a function to iterable elements in parallel using multiprocessing.Pool', 'create a context manager that configures the joblib parallel backend for dataset loading', 'test the parallel_map function to verify it correctly splits work across multiple processes', 'refactor the _map_with_joblib function to add tqdm progress bar support for joblib parallelization', 'review the ParallelBackendConfig class and how backend_name controls which parallel backend is used']
+```
+
+Usage
+
+```
+{'build_parallel_map': 'build a python module that applies a function to iterable elements in parallel using multiprocessing.Pool', 'create_parallel_backend_context': 'create a context manager that configures the joblib parallel backend for dataset loading', 'test_parallel_map_multiprocessing': 'test the parallel_map function to verify it correctly splits work across multiple processes', 'refactor_map_with_joblib': 'refactor the _map_with_joblib function to add tqdm progress bar support for joblib parallelization', 'review_parallel_backend_config': 'review the ParallelBackendConfig class and how backend_name controls which parallel backend is used'}
+```
+

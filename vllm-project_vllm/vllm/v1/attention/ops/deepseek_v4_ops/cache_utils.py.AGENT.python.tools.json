@@ -1,0 +1,7 @@
+{
+    "quantize_and_insert_k_cache": "quantize bf16 K tensor to UE8M0 FP8 and insert into the paged K cache for DeepSeekV4",
+    "dequantize_and_gather_k_cache": "gather and dequantize FP8 K values from the paged cache back to bf16 for sparse prefill",
+    "compute_global_topk_indices_and_lens": "map local topk indices to global KV cache slot IDs and count valid entries per token",
+    "combine_topk_swa_indices": "concatenate topk compressed indices with sliding window attention indices for sparse prefill",
+    "quantize_and_insert_k_kernel": "run the Triton kernel that quantizes a single token K vector and writes it into a paged cache block"
+}

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/accelerate
+- repo_uri: https://github.com/huggingface/accelerate.git
+
+## File: huggingface_accelerate/tests/fsdp/test_fsdp.py
+
+Prompts
+
+```
+['test the FSDPPluginIntegration class sharding strategy configuration for FSDP1 and FSDP2 versions', 'test the FSDPPluginIntegration class mixed precision policy setup with fp16 and bf16 dtypes', 'test the FSDPPluginIntegration class auto wrap policy configuration using transformer based and size based wrapping', 'test the FSDP2PluginIntegration class parameter mapping error handling for tied and non tied embedding cases', 'test the FSDP2PluginIntegration class uniform dtype upcast behavior when preparing models with mixed precision bf16 or fp16']
+```
+
+Usage
+
+```
+{'test_FSDPPluginIntegration_sharding_strategy': 'test the FSDPPluginIntegration class sharding strategy configuration for FSDP1 and FSDP2 versions', 'test_FSDPPluginIntegration_mixed_precision': 'test the FSDPPluginIntegration class mixed precision policy setup with fp16 and bf16 dtypes', 'test_FSDPPluginIntegration_auto_wrap_policy': 'test the FSDPPluginIntegration class auto wrap policy configuration using transformer based and size based wrapping', 'test_FSDP2PluginIntegration_param_mapping_error_handling': 'test the FSDP2PluginIntegration class parameter mapping error handling for tied and non tied embedding cases', 'test_FSDP2PluginIntegration_uniform_dtype_upcast': 'test the FSDP2PluginIntegration class uniform dtype upcast behavior when preparing models with mixed precision bf16 or fp16'}
+```
+

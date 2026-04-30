@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: NousResearch/hermes-agent
+- repo_uri: https://github.com/NousResearch/hermes-agent
+
+## File: NousResearch_hermes-agent/plugins/google_meet/audio_bridge.py
+
+Prompts
+
+```
+['create an AudioBridge instance and call setup to provision a virtual audio device for Chrome fake-mic input', 'call teardown on the AudioBridge instance to release the virtual audio device after the session ends', 'access the device_name property on AudioBridge to get the PulseAudio source name for Chrome env', 'access the write_target property on AudioBridge to get the null-sink name for writing PCM audio data', 'call chrome_fake_audio_flags with the bridge info dict to get Chrome launch flags for fake media stream', 'run the hermes meet setup command to check playwright, chromium, and google auth preflight status', 'run the hermes meet install command to install playwright, chromium, and optional realtime audio dependencies', 'run the hermes meet auth command to open a browser, sign into Google, and save session state', 'run the hermes meet join command to join a Google Meet URL in transcribe or realtime mode', 'run the hermes meet say command to speak text aloud in an active realtime Google Meet session', 'run a headless Google Meet bot that scrapes live captions and writes transcripts to files', 'create a JavaScript snippet that dispatches keyboard event to enable Google Meet captions', 'detect if the bot was admitted into a Google Meet call by probing DOM elements', 'detect if the bot was denied or removed from a Google Meet call', 'parse a duration string like 30m 2h or 90 seconds into float seconds', 'start a google meet bot subprocess for a given meet URL with optional realtime mode and guest name', 'check the current active google meet bot status including pid, alive state, and meeting details', 'read the transcript file from the active google meet bot and return caption lines', 'enqueue a text message to the active realtime google meet bot say queue for speech output', 'stop the active google meet bot subprocess by sending SIGTERM and falling back to SIGKILL', 'join a Google Meet call and start scraping live captions into a transcript file', 'check the current Meet session state including bot liveness and transcript progress', 'read the scraped transcript for the active Meet session with optional last N lines', 'leave the active Meet call cleanly and finalize the transcript file', 'speak text into the active Meet call using the realtime audio bridge']
+```
+
+Usage
+
+```
+{'setup_audio_bridge': 'create an AudioBridge instance and call setup to provision a virtual audio device for Chrome fake-mic input', 'teardown_audio_bridge': 'call teardown on the AudioBridge instance to release the virtual audio device after the session ends', 'get_device_name': 'access the device_name property on AudioBridge to get the PulseAudio source name for Chrome env', 'get_write_target': 'access the write_target property on AudioBridge to get the null-sink name for writing PCM audio data', 'get_chrome_flags': 'call chrome_fake_audio_flags with the bridge info dict to get Chrome launch flags for fake media stream'}
+```
+
+## File: NousResearch_hermes-agent/plugins/google_meet/cli.py
+
+Prompts
+
+```
+['create an AudioBridge instance and call setup to provision a virtual audio device for Chrome fake-mic input', 'call teardown on the AudioBridge instance to release the virtual audio device after the session ends', 'access the device_name property on AudioBridge to get the PulseAudio source name for Chrome env', 'access the write_target property on AudioBridge to get the null-sink name for writing PCM audio data', 'call chrome_fake_audio_flags with the bridge info dict to get Chrome launch flags for fake media stream', 'run the hermes meet setup command to check playwright, chromium, and google auth preflight status', 'run the hermes meet install command to install playwright, chromium, and optional realtime audio dependencies', 'run the hermes meet auth command to open a browser, sign into Google, and save session state', 'run the hermes meet join command to join a Google Meet URL in transcribe or realtime mode', 'run the hermes meet say command to speak text aloud in an active realtime Google Meet session', 'run a headless Google Meet bot that scrapes live captions and writes transcripts to files', 'create a JavaScript snippet that dispatches keyboard event to enable Google Meet captions', 'detect if the bot was admitted into a Google Meet call by probing DOM elements', 'detect if the bot was denied or removed from a Google Meet call', 'parse a duration string like 30m 2h or 90 seconds into float seconds', 'start a google meet bot subprocess for a given meet URL with optional realtime mode and guest name', 'check the current active google meet bot status including pid, alive state, and meeting details', 'read the transcript file from the active google meet bot and return caption lines', 'enqueue a text message to the active realtime google meet bot say queue for speech output', 'stop the active google meet bot subprocess by sending SIGTERM and falling back to SIGKILL', 'join a Google Meet call and start scraping live captions into a transcript file', 'check the current Meet session state including bot liveness and transcript progress', 'read the scraped transcript for the active Meet session with optional last N lines', 'leave the active Meet call cleanly and finalize the transcript file', 'speak text into the active Meet call using the realtime audio bridge']
+```
+
+Usage
+
+```
+{'run_meet_setup': 'run the hermes meet setup command to check playwright, chromium, and google auth preflight status', 'run_meet_install': 'run the hermes meet install command to install playwright, chromium, and optional realtime audio dependencies', 'run_meet_auth': 'run the hermes meet auth command to open a browser, sign into Google, and save session state', 'run_meet_join': 'run the hermes meet join command to join a Google Meet URL in transcribe or realtime mode', 'run_meet_say': 'run the hermes meet say command to speak text aloud in an active realtime Google Meet session'}
+```
+
+## File: NousResearch_hermes-agent/plugins/google_meet/meet_bot.py
+
+Prompts
+
+```
+['create an AudioBridge instance and call setup to provision a virtual audio device for Chrome fake-mic input', 'call teardown on the AudioBridge instance to release the virtual audio device after the session ends', 'access the device_name property on AudioBridge to get the PulseAudio source name for Chrome env', 'access the write_target property on AudioBridge to get the null-sink name for writing PCM audio data', 'call chrome_fake_audio_flags with the bridge info dict to get Chrome launch flags for fake media stream', 'run the hermes meet setup command to check playwright, chromium, and google auth preflight status', 'run the hermes meet install command to install playwright, chromium, and optional realtime audio dependencies', 'run the hermes meet auth command to open a browser, sign into Google, and save session state', 'run the hermes meet join command to join a Google Meet URL in transcribe or realtime mode', 'run the hermes meet say command to speak text aloud in an active realtime Google Meet session', 'run a headless Google Meet bot that scrapes live captions and writes transcripts to files', 'create a JavaScript snippet that dispatches keyboard event to enable Google Meet captions', 'detect if the bot was admitted into a Google Meet call by probing DOM elements', 'detect if the bot was denied or removed from a Google Meet call', 'parse a duration string like 30m 2h or 90 seconds into float seconds', 'start a google meet bot subprocess for a given meet URL with optional realtime mode and guest name', 'check the current active google meet bot status including pid, alive state, and meeting details', 'read the transcript file from the active google meet bot and return caption lines', 'enqueue a text message to the active realtime google meet bot say queue for speech output', 'stop the active google meet bot subprocess by sending SIGTERM and falling back to SIGKILL', 'join a Google Meet call and start scraping live captions into a transcript file', 'check the current Meet session state including bot liveness and transcript progress', 'read the scraped transcript for the active Meet session with optional last N lines', 'leave the active Meet call cleanly and finalize the transcript file', 'speak text into the active Meet call using the realtime audio bridge']
+```
+
+Usage
+
+```
+{'run_google_meet_bot': 'run a headless Google Meet bot that scrapes live captions and writes transcripts to files', 'enable_captions_js': 'create a JavaScript snippet that dispatches keyboard event to enable Google Meet captions', 'detect_admission_meeting': 'detect if the bot was admitted into a Google Meet call by probing DOM elements', 'detect_denied_meeting': 'detect if the bot was denied or removed from a Google Meet call', 'parse_duration_string': 'parse a duration string like 30m 2h or 90 seconds into float seconds'}
+```
+
+## File: NousResearch_hermes-agent/plugins/google_meet/process_manager.py
+
+Prompts
+
+```
+['create an AudioBridge instance and call setup to provision a virtual audio device for Chrome fake-mic input', 'call teardown on the AudioBridge instance to release the virtual audio device after the session ends', 'access the device_name property on AudioBridge to get the PulseAudio source name for Chrome env', 'access the write_target property on AudioBridge to get the null-sink name for writing PCM audio data', 'call chrome_fake_audio_flags with the bridge info dict to get Chrome launch flags for fake media stream', 'run the hermes meet setup command to check playwright, chromium, and google auth preflight status', 'run the hermes meet install command to install playwright, chromium, and optional realtime audio dependencies', 'run the hermes meet auth command to open a browser, sign into Google, and save session state', 'run the hermes meet join command to join a Google Meet URL in transcribe or realtime mode', 'run the hermes meet say command to speak text aloud in an active realtime Google Meet session', 'run a headless Google Meet bot that scrapes live captions and writes transcripts to files', 'create a JavaScript snippet that dispatches keyboard event to enable Google Meet captions', 'detect if the bot was admitted into a Google Meet call by probing DOM elements', 'detect if the bot was denied or removed from a Google Meet call', 'parse a duration string like 30m 2h or 90 seconds into float seconds', 'start a google meet bot subprocess for a given meet URL with optional realtime mode and guest name', 'check the current active google meet bot status including pid, alive state, and meeting details', 'read the transcript file from the active google meet bot and return caption lines', 'enqueue a text message to the active realtime google meet bot say queue for speech output', 'stop the active google meet bot subprocess by sending SIGTERM and falling back to SIGKILL', 'join a Google Meet call and start scraping live captions into a transcript file', 'check the current Meet session state including bot liveness and transcript progress', 'read the scraped transcript for the active Meet session with optional last N lines', 'leave the active Meet call cleanly and finalize the transcript file', 'speak text into the active Meet call using the realtime audio bridge']
+```
+
+Usage
+
+```
+{'start_google_meet_bot': 'start a google meet bot subprocess for a given meet URL with optional realtime mode and guest name', 'check_meeting_status': 'check the current active google meet bot status including pid, alive state, and meeting details', 'read_meeting_transcript': 'read the transcript file from the active google meet bot and return caption lines', 'enqueue_say_to_meeting': 'enqueue a text message to the active realtime google meet bot say queue for speech output', 'stop_google_meet_bot': 'stop the active google meet bot subprocess by sending SIGTERM and falling back to SIGKILL'}
+```
+
+## File: NousResearch_hermes-agent/plugins/google_meet/tools.py
+
+Prompts
+
+```
+['create an AudioBridge instance and call setup to provision a virtual audio device for Chrome fake-mic input', 'call teardown on the AudioBridge instance to release the virtual audio device after the session ends', 'access the device_name property on AudioBridge to get the PulseAudio source name for Chrome env', 'access the write_target property on AudioBridge to get the null-sink name for writing PCM audio data', 'call chrome_fake_audio_flags with the bridge info dict to get Chrome launch flags for fake media stream', 'run the hermes meet setup command to check playwright, chromium, and google auth preflight status', 'run the hermes meet install command to install playwright, chromium, and optional realtime audio dependencies', 'run the hermes meet auth command to open a browser, sign into Google, and save session state', 'run the hermes meet join command to join a Google Meet URL in transcribe or realtime mode', 'run the hermes meet say command to speak text aloud in an active realtime Google Meet session', 'run a headless Google Meet bot that scrapes live captions and writes transcripts to files', 'create a JavaScript snippet that dispatches keyboard event to enable Google Meet captions', 'detect if the bot was admitted into a Google Meet call by probing DOM elements', 'detect if the bot was denied or removed from a Google Meet call', 'parse a duration string like 30m 2h or 90 seconds into float seconds', 'start a google meet bot subprocess for a given meet URL with optional realtime mode and guest name', 'check the current active google meet bot status including pid, alive state, and meeting details', 'read the transcript file from the active google meet bot and return caption lines', 'enqueue a text message to the active realtime google meet bot say queue for speech output', 'stop the active google meet bot subprocess by sending SIGTERM and falling back to SIGKILL', 'join a Google Meet call and start scraping live captions into a transcript file', 'check the current Meet session state including bot liveness and transcript progress', 'read the scraped transcript for the active Meet session with optional last N lines', 'leave the active Meet call cleanly and finalize the transcript file', 'speak text into the active Meet call using the realtime audio bridge']
+```
+
+Usage
+
+```
+{'join_google_meet': 'join a Google Meet call and start scraping live captions into a transcript file', 'check_meet_status': 'check the current Meet session state including bot liveness and transcript progress', 'read_meet_transcript': 'read the scraped transcript for the active Meet session with optional last N lines', 'leave_google_meet': 'leave the active Meet call cleanly and finalize the transcript file', 'speak_in_meet': 'speak text into the active Meet call using the realtime audio bridge'}
+```
+

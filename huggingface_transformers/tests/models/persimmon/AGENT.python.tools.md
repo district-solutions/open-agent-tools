@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/persimmon/test_modeling_persimmon.py
+
+Prompts
+
+```
+['test the PersimmonModelTester class that extends CausalLMModelTester for Persimmon model testing', 'test the PersimmonModelTest class that runs integration tests for Persimmon causal language model variants', 'test the PersimmonIntegrationTest class by loading the 8b-chat model with 8-bit quantization and verifying logits', 'test the PersimmonIntegrationTest class by running greedy text generation on the 8b-chat model with 8-bit quantization', 'test that flash attention, eager, and sdpa padding tests are skipped due to key/query norm incompatibility with packing']
+```
+
+Usage
+
+```
+{'test_PersimmonModelTester': 'test the PersimmonModelTester class that extends CausalLMModelTester for Persimmon model testing', 'test_PersimmonModelTest': 'test the PersimmonModelTest class that runs integration tests for Persimmon causal language model variants', 'test_PersimmonIntegrationTest_logits': 'test the PersimmonIntegrationTest class by loading the 8b-chat model with 8-bit quantization and verifying logits', 'test_PersimmonIntegrationTest_generation': 'test the PersimmonIntegrationTest class by running greedy text generation on the 8b-chat model with 8-bit quantization', 'test_flash_attention_skips': 'test that flash attention, eager, and sdpa padding tests are skipped due to key/query norm incompatibility with packing'}
+```
+

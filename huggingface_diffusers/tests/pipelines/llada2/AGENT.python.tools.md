@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/diffusers
+- repo_uri: https://github.com/huggingface/diffusers
+
+## File: huggingface_diffusers/tests/pipelines/llada2/test_llada2.py
+
+Prompts
+
+```
+['run the LLaDA2Pipeline with input_ids and block refinement scheduler for text generation', 'test the LLaDA2Pipeline output_type parameter with seq and text modes', 'test the _prepare_input_ids method with tensor, prompt, and messages inputs', 'create an LLaDA2Pipeline instance using a dummy causal LM and BlockRefinementScheduler', 'review the LLaDA2PipelineTest class covering pipeline execution, output types, and input preparation']
+```
+
+Usage
+
+```
+{'run_LLADA2Pipeline': 'run the LLaDA2Pipeline with input_ids and block refinement scheduler for text generation', 'test_LLADA2Pipeline_output_types': 'test the LLaDA2Pipeline output_type parameter with seq and text modes', 'test_LLADA2Pipeline_prepare_input_ids': 'test the _prepare_input_ids method with tensor, prompt, and messages inputs', 'create_LLADA2Pipeline_with_dummy_model': 'create an LLaDA2Pipeline instance using a dummy causal LM and BlockRefinementScheduler', 'review_LLADA2Pipeline_test_suite': 'review the LLaDA2PipelineTest class covering pipeline execution, output types, and input preparation'}
+```
+

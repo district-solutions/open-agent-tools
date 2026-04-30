@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/rag/ingestion/base_ingestion.py
+
+Prompts
+
+```
+['run the BaseRAGIngestion ingest pipeline to upload, chunk, embed, and store a document in a vector store', 'run OCR on image or PDF file content to extract text using a vision model via LiteLLM', 'run the chunking step to split text into sized chunks using RecursiveCharacterTextSplitter', 'run embedding generation on text chunks using a configured embedding model via LiteLLM', 'run file upload to prepare content for ingestion from raw bytes, URL, or existing file ID']
+```
+
+Usage
+
+```
+{'run_BaseRAGIngestion_ingest': 'run the BaseRAGIngestion ingest pipeline to upload, chunk, embed, and store a document in a vector store', 'run_BaseRAGIngestion_ocr': 'run OCR on image or PDF file content to extract text using a vision model via LiteLLM', 'run_BaseRAGIngestion_chunk': 'run the chunking step to split text into sized chunks using RecursiveCharacterTextSplitter', 'run_BaseRAGIngestion_embed': 'run embedding generation on text chunks using a configured embedding model via LiteLLM', 'run_BaseRAGIngestion_upload': 'run file upload to prepare content for ingestion from raw bytes, URL, or existing file ID'}
+```
+

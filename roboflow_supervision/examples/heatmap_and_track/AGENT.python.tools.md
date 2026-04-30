@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: roboflow/supervision
+- repo_uri: https://github.com/roboflow/supervision
+
+## File: roboflow_supervision/examples/heatmap_and_track/script.py
+
+Prompts
+
+```
+['run heatmap and tracking on a video using YOLO detection and ByteTrack with configurable thresholds', 'create a HeatMapAnnotator with configurable position, opacity, radius, and hue range for overlaying heat maps on video frames', 'create a ByteTrack tracker with activation threshold, lost track buffer, and matching threshold for object tracking across frames', 'process video frames with YOLO person detection, tracking, heatmap annotation, and label annotation to produce an output video', 'download a sample people-walking video asset from Roboflow Supervision for testing heatmap and tracking pipelines']
+```
+
+Usage
+
+```
+{'run_heatmap_and_tracking': 'run heatmap and tracking on a video using YOLO detection and ByteTrack with configurable thresholds', 'create_heatmap_annotator': 'create a HeatMapAnnotator with configurable position, opacity, radius, and hue range for overlaying heat maps on video frames', 'create_byte_tracker': 'create a ByteTrack tracker with activation threshold, lost track buffer, and matching threshold for object tracking across frames', 'process_video_frames': 'process video frames with YOLO person detection, tracking, heatmap annotation, and label annotation to produce an output video', 'download_sample_video': 'download a sample people-walking video asset from Roboflow Supervision for testing heatmap and tracking pipelines'}
+```
+

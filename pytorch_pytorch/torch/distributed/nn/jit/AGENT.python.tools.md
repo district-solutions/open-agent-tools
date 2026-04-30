@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pytorch/pytorch
+- repo_uri: https://github.com/pytorch/pytorch.git
+
+## File: pytorch_pytorch/torch/distributed/nn/jit/instantiator.py
+
+Prompts
+
+```
+['instantiate a scriptable remote module from a @torch.jit.interface decorated class for distributed communication', 'instantiate a non-scriptable remote module template that accepts *args and **kwargs for distributed communication', 'extract argument names, type annotations, and return type from a @torch.jit.interface decorated class forward method', 'generate Python code from a remote module template, write it to disk, and dynamically import the resulting module', 'write text content to a file only if the content differs from the existing file contents']
+```
+
+Usage
+
+```
+{'instantiate_scriptable_remote_module': 'instantiate a scriptable remote module from a @torch.jit.interface decorated class for distributed communication', 'instantiate_non_scriptable_remote_module': 'instantiate a non-scriptable remote module template that accepts *args and **kwargs for distributed communication', 'get_arg_return_types_from_interface': 'extract argument names, type annotations, and return type from a @torch.jit.interface decorated class forward method', 'generate_remote_module_code': 'generate Python code from a remote module template, write it to disk, and dynamically import the resulting module', 'write_file_if_changed': 'write text content to a file only if the content differs from the existing file contents'}
+```
+

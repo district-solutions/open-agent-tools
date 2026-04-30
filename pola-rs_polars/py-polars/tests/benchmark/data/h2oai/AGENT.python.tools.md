@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pola-rs/polars
+- repo_uri: https://github.com/pola-rs/polars.git
+
+## File: pola-rs_polars/py-polars/tests/benchmark/data/h2oai/datagen_groupby.py
+
+Prompts
+
+```
+['generate group-by benchmark data with specified rows, groups, null ratio, and sort option', 'generate random group-by benchmark data with 10 million rows and 100 groups without nulls', 'generate sorted group-by benchmark data with 100 million rows, 10 groups, and 5 percent nulls', 'write generated group-by benchmark data to a CSV file with auto-generated filename', 'run the datagen_groupby CLI to generate benchmark data with specified rows, groups, null percentage, and sort flag']
+```
+
+Usage
+
+```
+{'generate_group_by_data': 'generate group-by benchmark data with specified rows, groups, null ratio, and sort option', 'generate_group_by_data_random': 'generate random group-by benchmark data with 10 million rows and 100 groups without nulls', 'generate_group_by_data_sorted': 'generate sorted group-by benchmark data with 100 million rows, 10 groups, and 5 percent nulls', 'write_data_csv': 'write generated group-by benchmark data to a CSV file with auto-generated filename', 'run_datagen_cli': 'run the datagen_groupby CLI to generate benchmark data with specified rows, groups, null percentage, and sort flag'}
+```
+

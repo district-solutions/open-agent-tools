@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/examples/profiler/nsys_profile_tools/gputrc2graph.py
+
+Prompts
+
+```
+['run the CLI to generate GPU kernel non-overlapped cycle analysis from nsys-rep files', 'generate a kernel summary CSV file from an nsys-rep trace file using nsys stats', 'compute non-overlapped elapsed GPU kernel times from a trace CSV file', 'generate HTML bar chart and CSV output from multiple nsys-rep trace files', 'create a stacked bar chart HTML visualization of GPU kernel elapsed times']
+```
+
+Usage
+
+```
+{'run_gputrc2graph_cli': 'run the CLI to generate GPU kernel non-overlapped cycle analysis from nsys-rep files', 'gen_sum_file_from_nsys_trace': 'generate a kernel summary CSV file from an nsys-rep trace file using nsys stats', 'compute_nonoverlapped_gpu_times': 'compute non-overlapped elapsed GPU kernel times from a trace CSV file', 'gen_graph_from_nsys_traces': 'generate HTML bar chart and CSV output from multiple nsys-rep trace files', 'create_html_bar_chart': 'create a stacked bar chart HTML visualization of GPU kernel elapsed times'}
+```
+

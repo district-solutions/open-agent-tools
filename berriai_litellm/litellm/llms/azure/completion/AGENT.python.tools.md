@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/azure/completion/handler.py
+
+Prompts
+
+```
+['create an Azure OpenAI text completion call with model, messages, api_key, api_base and optional streaming', 'create an async Azure OpenAI text completion call returning a ModelResponse object', 'create an Azure OpenAI streaming text completion returning a CustomStreamWrapper', 'create an async Azure OpenAI streaming text completion returning a CustomStreamWrapper', 'test the AzureTextCompletion.validate_environment method to build auth headers from api_key or azure_ad_token']
+```
+
+Usage
+
+```
+{'create_azure_text_completion': 'create an Azure OpenAI text completion call with model, messages, api_key, api_base and optional streaming', 'create_async_azure_completion': 'create an async Azure OpenAI text completion call returning a ModelResponse object', 'create_azure_streaming': 'create an Azure OpenAI streaming text completion returning a CustomStreamWrapper', 'create_async_azure_streaming': 'create an async Azure OpenAI streaming text completion returning a CustomStreamWrapper', 'test_azure_validate_environment': 'test the AzureTextCompletion.validate_environment method to build auth headers from api_key or azure_ad_token'}
+```
+

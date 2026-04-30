@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: scikit-learn/scikit-learn
+- repo_uri: https://github.com/scikit-learn/scikit-learn
+
+## File: scikit-learn_scikit-learn/examples/inspection/plot_permutation_importance_multicollinear.py
+
+Prompts
+
+```
+['compute permutation importance of features for a trained random forest classifier on breast cancer data', 'plot permutation importance of features as a horizontal boxplot on a given matplotlib axis', 'train a random forest classifier on breast cancer dataset and evaluate test accuracy', 'hierarchical cluster correlated features using spearman rank-order correlations and ward linkage', 'select one representative feature from each correlation cluster to reduce multicollinearity']
+```
+
+Usage
+
+```
+{'compute_permutation_importance': 'compute permutation importance of features for a trained random forest classifier on breast cancer data', 'plot_permutation_importance': 'plot permutation importance of features as a horizontal boxplot on a given matplotlib axis', 'train_random_forest_classifier': 'train a random forest classifier on breast cancer dataset and evaluate test accuracy', 'hierarchical_cluster_features': 'hierarchical cluster correlated features using spearman rank-order correlations and ward linkage', 'select_feature_subset': 'select one representative feature from each correlation cluster to reduce multicollinearity'}
+```
+

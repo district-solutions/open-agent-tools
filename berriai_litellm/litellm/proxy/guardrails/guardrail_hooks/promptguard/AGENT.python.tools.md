@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/proxy/guardrails/guardrail_hooks/promptguard/promptguard.py
+
+Prompts
+
+```
+['create a PromptGuardGuardrail instance with an API key to scan messages for prompt injection and PII', 'run apply_guardrail to scan structured messages or texts for threats before or after an LLM call', 'test the PromptGuardGuardrail class with request and response input types for pre_call and post_call hooks', 'review the get_config_model static method that returns the PromptGuardConfigModel type', 'summarize the _extract_texts_from_messages static method that extracts text from user-role messages only']
+```
+
+Usage
+
+```
+{'create_promptguard_guardrail': 'create a PromptGuardGuardrail instance with an API key to scan messages for prompt injection and PII', 'run_apply_guardrail': 'run apply_guardrail to scan structured messages or texts for threats before or after an LLM call', 'test_promptguard_guardrail': 'test the PromptGuardGuardrail class with request and response input types for pre_call and post_call hooks', 'review_get_config_model': 'review the get_config_model static method that returns the PromptGuardConfigModel type', 'summarize_extract_texts_from_messages': 'summarize the _extract_texts_from_messages static method that extracts text from user-role messages only'}
+```
+

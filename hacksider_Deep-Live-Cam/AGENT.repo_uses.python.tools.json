@@ -1,0 +1,161 @@
+{
+  "hacksider_Deep-Live-Cam/benchmark_pipeline.py": {
+    "run_benchmark_pipeline": "run the standalone pipeline benchmark that captures 200 webcam frames and measures per-stage face swap timing and effective FPS",
+    "test_face_swap_pipeline": "test the face swap pipeline by running 200 frames through detection, ONNX inference, and paste-back stages with per-stage timing",
+    "benchmark_face_detection": "benchmark face detection performance by running detection every 3rd frame with cached face tracking across 200 webcam frames",
+    "review_fast_paste_back": "review the _fast_paste_back face swap compositing function used in the benchmark pipeline for in-place frame modification",
+    "summarize_capture_thread": "summarize the capture thread implementation that reads webcam frames into a bounded queue with overflow handling"
+  },
+  "hacksider_Deep-Live-Cam/tkinter_fix.py": {
+    "review_apply_patch": "review the tkinter_fix.py apply_patch function that monkey patches tkinter.Tk.__init__ to define the missing ::tk::ScreenChanged Tcl procedure",
+    "create_tkinter_patch": "create a monkey patch for tkinter.Tk.__init__ that defines a missing ::tk::ScreenChanged procedure to fix Tk deprecation warnings",
+    "run_tkinter_fix": "run the tkinter_fix.py module to auto-apply the TkScreenChanged monkey patch on import",
+    "refactor_apply_patch": "refactor the apply_patch function in tkinter_fix.py to support custom Tcl procedure definitions beyond ::tk::ScreenChanged",
+    "test_apply_patch": "test the tkinter_fix.py apply_patch function to verify it patches tkinter.Tk.__init__ and defines ::tk::ScreenChanged"
+  },
+  "hacksider_Deep-Live-Cam/modules/capturer.py": {
+    "run_get_video_frame": "run the get_video_frame function to extract a specific frame from a video file by path and frame number",
+    "run_get_video_frame_total": "run the get_video_frame_total function to retrieve the total number of frames in a video file",
+    "test_get_video_frame": "test the get_video_frame function with a sample video path and frame number argument",
+    "test_get_video_frame_total": "test the get_video_frame_total function with a sample video path argument",
+    "summarize_capturer": "summarize the capturer module functions for extracting video frames and counting total frames"
+  },
+  "hacksider_Deep-Live-Cam/modules/cluster_analysis.py": {
+    "run_find_cluster_centroids": "run find_cluster_centroids to determine optimal face embedding clusters using the elbow method",
+    "create_find_closest_centroid": "create a call to find_closest_centroid that matches a normalized face embedding to the nearest cluster centroid",
+    "test_find_cluster_centroids": "test find_cluster_centroids with sample face embeddings and verify optimal k selection",
+    "refactor_find_closest_centroid": "refactor find_closest_centroid to support cosine similarity instead of dot product",
+    "review_find_cluster_centroids": "review find_cluster_centroids for edge cases when embeddings have fewer samples than max_k"
+  },
+  "hacksider_Deep-Live-Cam/modules/core.py": {
+    "run_face_swap": "run the Deep Live Cam face swap application with source image, target media, and output path arguments",
+    "parse_args_cli": "parse command line arguments for face swap including source, target, output, execution provider, and thread settings",
+    "start_video_processing": "start face swap processing on a target video with optional fps, audio, and frame preservation options",
+    "decode_execution_providers": "decode execution provider strings like cuda, coreml, or rocm into onnxruntime provider names",
+    "suggest_execution_threads": "suggest optimal execution thread count based on cpu count and selected execution provider"
+  },
+  "hacksider_Deep-Live-Cam/modules/face_analyser.py": {
+    "run_get_one_face": "run the get_one_face function to extract the leftmost face from a video frame",
+    "run_get_many_faces": "run the get_many_faces function to detect all faces in a video frame",
+    "run_get_unique_faces_from_target_video": "run get_unique_faces_from_target_video to extract and cluster face embeddings from a target video",
+    "run_get_unique_faces_from_target_image": "run get_unique_faces_from_target_image to extract unique faces from a target image",
+    "run_simplify_maps": "run simplify_maps to compress source-target face mappings into a single embedding-based map"
+  },
+  "hacksider_Deep-Live-Cam/modules/gettext.py": {
+    "create_language_manager": "create a LanguageManager instance to load and manage translation files for a given language code",
+    "load_language_file": "load a JSON translation file from the locales directory for a specified language code",
+    "get_translation_text": "get translated text from the loaded translations dictionary using a key and optional default fallback",
+    "test_language_manager": "test the LanguageManager class to verify translation loading and text retrieval works correctly",
+    "review_language_manager": "review the LanguageManager class and its methods for internationalization support"
+  },
+  "hacksider_Deep-Live-Cam/modules/gpu_processing.py": {
+    "run_gpu_gaussian_blur": "run gpu_gaussian_blur on a numpy image array with kernel size and sigma parameters",
+    "build_gpu_sharpen": "build unsharp-mask sharpening on an image array using gpu_sharpen with strength and sigma",
+    "create_gpu_add_weighted": "create a blended image result by adding two images with alpha, beta, and gamma weights via gpu_add_weighted",
+    "test_gpu_resize": "test gpu_resize on an image array with target dimensions and interpolation method",
+    "refactor_gpu_cvt_color": "refactor color space conversion on an image array using gpu_cvt_color with OpenCV color codes",
+    "review_gpu_flip": "review gpu_flip on an image array with horizontal, vertical, or both flip codes",
+    "summarize_is_gpu_accelerated": "summarize whether CUDA GPU acceleration is available via is_gpu_accelerated"
+  },
+  "hacksider_Deep-Live-Cam/modules/onnx_optimize.py": {
+    "optimize_for_coreml": "optimize an ONNX model for CoreML execution on Apple Silicon with optional fixed input shape",
+    "fold_shape_gather": "fold Shape and Gather node chains into constants using ONNX shape inference for known input dimensions",
+    "decompose_reflect_pad": "decompose reflect padding operations into Slice and Concat sequences that CoreML supports natively",
+    "decompose_split": "decompose two-way channel-wise Split operations into Slice pairs for CoreML compatibility",
+    "rewrite_scalar_gather": "rewrite scalar Gather indices to 1D tensors with Squeeze for CoreML EP compatibility"
+  },
+  "hacksider_Deep-Live-Cam/modules/platform_info.py": {
+    "run_print_banner": "run the platform_info module to print a one-line platform and accelerator summary banner",
+    "build_accelerator_label": "build a string label describing the detected hardware accelerator such as CUDA, CoreML, or CPU",
+    "test_camera_backends": "test the camera_backends function to get ordered OpenCV backend attempts for the current OS",
+    "summarize_platform_flags": "summarize the platform detection flags like IS_WINDOWS, IS_MACOS, IS_LINUX, and IS_APPLE_SILICON",
+    "review_onnx_providers": "review the ONNX execution providers detected on the current system including CUDA, CoreML, and DML"
+  },
+  "hacksider_Deep-Live-Cam/modules/predicter.py": {
+    "test_predict_frame": "test the predict_frame function to check if a video frame exceeds the NSFW probability threshold",
+    "test_predict_image": "test the predict_image function to check if an image file exceeds the NSFW probability threshold",
+    "test_predict_video": "test the predict_video function to check if any frame in a video exceeds the NSFW probability threshold",
+    "review_predict_frame": "review the predict_frame function that processes a single frame with optional color correction and NSFW detection",
+    "review_predict_video": "review the predict_video function that samples video frames at intervals and returns true if any exceed the NSFW threshold"
+  },
+  "hacksider_Deep-Live-Cam/modules/tkinter_fix.py": {
+    "apply_patch_tkinter": "apply a monkey patch to tkinter.Tk.__init__ to fix missing ::tk::ScreenChanged procedure",
+    "patch_tkinter_init": "patch tkinter.Tk initialization to define missing Tcl ScreenChanged command automatically",
+    "fix_tkinter_screenchanged": "fix missing ::tk::ScreenChanged Tcl procedure in tkinter by monkey patching Tk.__init__"
+  },
+  "hacksider_Deep-Live-Cam/modules/ui.py": {
+    "build_face_swap_ui": "build a customtkinter GUI for real-time face swap with webcam preview and source/target image selection",
+    "create_webcam_face_preview": "create a threaded webcam preview loop that runs face swap processing on each captured frame",
+    "run_face_swap_preview": "run a face swap preview on a target image or video using a selected source face",
+    "test_face_mapper": "test the source-to-target face mapper UI that manually assigns source faces to target faces",
+    "fetch_random_face": "fetch a random face image from thispersondoesnotexist.com and set it as the source face",
+    "summarize_ui_module": "summarize the ui module that provides a customtkinter interface for face swap operations",
+    "review_camera_detection": "review the cross-platform camera detection function that lists available cameras on Windows, Linux, and macOS"
+  },
+  "hacksider_Deep-Live-Cam/modules/utilities.py": {
+    "run_ffmpeg": "run ffmpeg with hardware acceleration and optimized settings using a list of arguments",
+    "create_video": "create a video from extracted frames with hardware-accelerated encoding and fallback to software",
+    "extract_frames": "extract frames from a video file into a temporary directory as numbered PNG images",
+    "detect_fps": "detect the frame rate of a video file using ffprobe and return it as a float",
+    "restore_audio": "restore audio from the original video into a processed video output file"
+  },
+  "hacksider_Deep-Live-Cam/modules/video_capture.py": {
+    "create_VideoCapturer": "create a VideoCapturer instance for a given camera device index",
+    "start_VideoCapturer": "start the VideoCapturer with custom width, height, and fps settings",
+    "read_VideoCapturer": "read frames from the VideoCapturer and return the latest frame",
+    "set_frame_callback_VideoCapturer": "set a frame callback on the VideoCapturer for real-time frame processing",
+    "release_VideoCapturer": "release the VideoCapturer and free camera resources"
+  },
+  "hacksider_Deep-Live-Cam/modules/processors/frame/_onnx_enhancer.py": {
+    "create_onnx_session": "create an ONNX Runtime session with optimized CUDA and CoreML provider configuration",
+    "build_provider_config": "build optimized ONNX execution provider config with CUDA and CoreML options",
+    "run_inference": "run ONNX model inference using IO binding for GPU-accelerated sessions",
+    "preprocess_face": "preprocess a face image crop into an ONNX input tensor normalized to [-1, 1]",
+    "enhance_face_onnx": "enhance a single face in a frame using an ONNX face restoration model with affine warping and feathered blending"
+  },
+  "hacksider_Deep-Live-Cam/modules/processors/frame/core.py": {
+    "build_load_frame_processor_module": "build a function that loads a frame processor module by name and validates it implements the required interface",
+    "create_get_frame_processors_modules": "create a function that loads and returns a list of frame processor modules from a list of processor names",
+    "run_multi_process_frame": "run frames in parallel using a thread pool executor with batched memory management",
+    "run_process_video_in_memory": "run in-memory video processing using FFmpeg pipes to eliminate disk I/O bottleneck",
+    "run_process_video": "run video processing with a tqdm progress bar over extracted frame paths using multi-process-frame"
+  },
+  "hacksider_Deep-Live-Cam/modules/processors/frame/face_enhancer.py": {
+    "get_face_enhancer": "get a GFPGAN ONNX Runtime inference session with optimized CUDA and CoreML providers",
+    "enhance_face": "enhance all detected faces in a video frame using GFPGAN with affine alignment and feathered blending",
+    "process_frame": "process a video frame to enhance faces, optionally using a source face reference",
+    "process_image": "process a single image file to enhance all detected faces and save the result",
+    "process_video": "process all frames of a video to enhance detected faces using batched frame processing"
+  },
+  "hacksider_Deep-Live-Cam/modules/processors/frame/face_enhancer_gpen256.py": {
+    "build_face_enhancer_load_model": "build a GPEN-BFR-256 face enhancer by loading the ONNX model from disk or downloading it automatically",
+    "enhance_face_restoration": "enhance a face in a frame using the GPEN-BFR-256 ONNX model at 256x256 resolution",
+    "process_image_enhancement": "process a single target image to detect and enhance the face, saving the result to an output path",
+    "process_video_faces": "process all extracted frames of a video to detect and enhance faces in each frame sequentially",
+    "test_pre_check_validation": "test pre_check and pre_start validation functions to verify model availability and target path validity"
+  },
+  "hacksider_Deep-Live-Cam/modules/processors/frame/face_enhancer_gpen512.py": {
+    "build_face_enhancer_onnx_session": "build an ONNX session for the GPEN-BFR-512 face enhancer model and warm it up",
+    "test_pre_check_model_download": "test pre_check downloads the GPEN-BFR-512.onnx model if missing",
+    "test_pre_start_target_validation": "test pre_start validates that target_path is an image or video file",
+    "review_enhance_face_restoration": "review enhance_face applies ONNX-based face restoration at 512x512 to a frame",
+    "summarize_process_frame_pipeline": "summarize process_frame detects a face in a frame and enhances it using the GPEN model"
+  },
+  "hacksider_Deep-Live-Cam/modules/processors/frame/face_masking.py": {
+    "apply_color_transfer": "apply color transfer from target to source image using LAB color space for face swapping",
+    "create_face_mask": "create a face mask from 106-point facial landmarks with padded convex hull and blurred edges",
+    "create_lower_mouth_mask": "create a lower mouth mask from landmark 52-71 with configurable expansion and chin bias",
+    "create_eyes_mask": "create an eyes mask using elliptical regions around landmark-based eye centers",
+    "create_eyebrows_mask": "create eyebrows mask with curved quadratic B\u00e9zier shapes and multi-stage feathering"
+  },
+  "hacksider_Deep-Live-Cam/modules/processors/frame/face_swapper.py": {
+    "run_pre_check": "run pre_check to download and verify the inswapper_128.onnx face swapper model",
+    "run_pre_start": "run pre_start to validate model files exist and load the face swapper successfully",
+    "swap_face_source_target": "swap a source face onto a target face within a frame using the loaded inswapper model",
+    "process_frames_video": "process a list of video frame paths and write swapped results back to each frame path",
+    "process_image_swap": "process a single target image by swapping a source face and saving the output image",
+    "create_face_mask": "create a feathered face mask covering the whole face area based on 106-point landmarks",
+    "apply_color_transfer": "apply LAB color transfer from a source image to a target image for color matching",
+    "create_lower_mouth_mask": "create a lower mouth mask from face landmarks for preserving original mouth area during face swap"
+  }
+}

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/sam3
+- repo_uri: https://github.com/facebookresearch/sam3
+
+## File: facebookresearch_sam3/sam3/train/optim/optimizer.py
+
+Prompts
+
+```
+['create an optimizer with schedulers and parameter groups from a model and hydra config', 'build a gradient clipper utility that clips gradient norms for DDP-compatible training', 'apply layer-wise learning rate decay to scheduler configs based on model layer IDs', 'validate that optimizer parameter groups are non-overlapping and cover all model parameters', 'filter parameter names using unix-style patterns or module class name matching']
+```
+
+Usage
+
+```
+{'create_optimizer': 'create an optimizer with schedulers and parameter groups from a model and hydra config', 'build_gradient_clipper': 'build a gradient clipper utility that clips gradient norms for DDP-compatible training', 'apply_layer_decay': 'apply layer-wise learning rate decay to scheduler configs based on model layer IDs', 'validate_param_groups': 'validate that optimizer parameter groups are non-overlapping and cover all model parameters', 'filter_parameter_names': 'filter parameter names using unix-style patterns or module class name matching'}
+```
+

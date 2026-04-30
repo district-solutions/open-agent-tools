@@ -1,0 +1,716 @@
+{
+  "huggingface_controlnetaux/setup.py": {
+    "build_controlnet_aux_package": "build the controlnet_aux Python package wheel and source distribution using setup.py",
+    "run_deps_table_update": "run the deps_table_update command to regenerate the dependency versions table file",
+    "review_deps_list_function": "review the deps_list function that returns dependency strings for given package names",
+    "review_depstableupdatecommand_class": "review the DepsTableUpdateCommand class that auto-generates the dependency versions table",
+    "summarize_setup_configuration": "summarize the setuptools configuration for the controlnet_aux package including dependencies and classifiers"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/processor.py": {
+    "create_processor_canny": "create a Processor instance with canny edge detection for an input image",
+    "create_processor_openpose": "create a Processor instance with openpose full body, hand, and face detection",
+    "create_processor_depth": "create a Processor instance with depth estimation using midas, zoe, or leres models",
+    "process_image_with_processor": "process a PIL Image or bytes input through a loaded Processor and return the result",
+    "load_processor_from_checkpoint": "load a checkpoint-based processor from lllyasviel/Annotators or instantiate a non-checkpoint processor"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/util.py": {
+    "convert_image_to_hwc3": "convert a grayscale or RGBA numpy array image to a 3-channel HWC format",
+    "generate_noise_disk": "generate a normalized noise disk array with given height, width, channels, and frequency",
+    "apply_nms_to_image": "apply non-maximum suppression with Gaussian blur and thresholding to a numpy array image",
+    "resize_image_to_resolution": "resize an input image to a target resolution while keeping aspect ratio and rounding to 64",
+    "clear_torch_gpu_cache": "clear the PyTorch CUDA cache and collect IPC resources when GPU is available"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/dwpose/util.py": {
+    "smart_resize_image": "resize a numpy image array to target dimensions using smart interpolation based on scale factor",
+    "smart_resize_k_image": "resize a numpy image array by fx and fy scale factors using smart interpolation",
+    "draw_bodypose_on_canvas": "draw body pose keypoints and limb connections on a canvas image using candidate and subset arrays",
+    "detect_hand_regions": "detect hand bounding box regions from body pose keypoints and subset for each person",
+    "detect_face_regions": "detect face bounding box regions from body pose keypoints using head and facial landmark positions"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/dwpose/wholebody.py": {
+    "build_wholebody_pose_estimator": "build a Wholebody instance with default YOLOX detector and DWpose estimator for human pose estimation",
+    "build_wholebody_custom_config": "build a Wholebody instance with custom detector and pose estimator config paths and checkpoint files",
+    "run_wholebody_inference": "run the Wholebody callable on an image to detect human keypoints and confidence scores",
+    "move_wholebody_to_device": "move the Wholebody detector and pose estimator models to a specified device like GPU",
+    "review_wholebody_keypoint_mapping": "review the Wholebody class to understand how MMPose keypoints are remapped to OpenPose format"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/leres/Resnet.py": {
+    "build_resnet18_feature_extractor": "build a ResNet-18 model using BasicBlock to extract multi-scale features from images",
+    "build_resnet50_feature_extractor": "build a ResNet-50 model using Bottleneck blocks to extract multi-scale features from images",
+    "build_resnet101_feature_extractor": "build a ResNet-101 model using Bottleneck blocks to extract multi-scale features from images",
+    "create_basicblock_module": "create a BasicBlock with two 3x3 convolutions and batch normalization for residual learning",
+    "create_bottleneck_module": "create a Bottleneck with 1x1, 3x3, 1x1 convolutions and batch normalization for residual learning"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/leres/Resnext_torch.py": {
+    "build_resnext101_model": "build a ResNeXt-101 32x8d model using the resnext101_32x8d factory function",
+    "create_resnet_backbone": "create a ResNet backbone that returns multi-scale feature maps from four stages",
+    "create_bottleneck_block": "create a Bottleneck residual block with 1x1, 3x3, and 1x1 convolutions",
+    "create_basicblock": "create a BasicBlock residual block with two 3x3 convolutions and a skip connection",
+    "review_conv_helpers": "review the conv3x3 and conv1x1 helper functions that create Conv2d layers"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/leres/depthmap.py": {
+    "run_estimateleres": "run the estimateleres function to generate a depth map prediction from an RGB image using a Leres model",
+    "run_estimateboost": "run the estimateboost function to generate a high-resolution depth map with local patch refinement and double estimation",
+    "run_calculateprocessingres": "run the calculateprocessingres function to compute the optimal processing resolution and patch scale for an input image",
+    "create_generatemask": "create a Gaussian blending mask for seamless patch merging using the generatemask function",
+    "run_generatepatchs": "run the generatepatchs function to extract adaptive local patches from an image based on gradient density for depth refinement"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/leres/multi_depth_model_woauxi.py": {
+    "build_RelDepthModel": "build a RelDepthModel instance with a resnet50 or resnext101 backbone for relative depth estimation",
+    "run_RelDepthModel_inference": "run inference on an RGB tensor using RelDepthModel to predict relative depth output",
+    "build_DepthModel": "build a DepthModel instance with a specified encoder for monocular depth prediction",
+    "run_DepthModel_forward": "run the DepthModel forward pass on an input tensor to get depth logits",
+    "review_RelDepthModel_inference": "review the RelDepthModel inference method to understand the no-grad depth prediction flow"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/leres/net_tools.py": {
+    "load_checkpoint_for_depth_model": "load a PyTorch checkpoint file into depth, shift, and focal model state dicts",
+    "get_function_by_name": "dynamically retrieve a function object by its dotted name from the current or a relative module",
+    "strip_prefix_from_state_dict": "remove a common prefix from all keys in a PyTorch state dict if every key has it",
+    "review_get_func": "review the get_func helper that resolves function names to callable objects via importlib",
+    "refactor_load_ckpt": "refactor load_ckpt to support additional model types beyond depth, shift, and focal"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/leres/network_auxi.py": {
+    "build_DepthNet": "build a DepthNet encoder with resnet50 backbone for monocular depth estimation",
+    "build_Decoder": "build a Decoder module that fuses multi-scale features into a depth map",
+    "build_FFM": "build a Feature Fusion Module to combine low-level and high-level features with upsampling",
+    "build_FTB": "build a Feature Transformation Block with residual convolution for feature processing",
+    "build_AO": "build an Adaptive Output module that produces single-channel depth predictions"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/pix2pix/models/base_model.py": {
+    "create_subclass_BaseModel": "create a subclass of BaseModel implementing set_input, forward, and optimize_parameters methods",
+    "save_networks_by_epoch": "save all network state dicts to disk using save_networks with the current epoch number",
+    "load_networks_by_epoch": "load all network state dicts from disk using load_networks with the given epoch suffix",
+    "update_learning_rate_schedulers": "update learning rates for all optimizers by stepping through each scheduler in the model",
+    "set_requires_grad_for_nets": "set requires_grad to true or false for all parameters in a list of networks"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/pix2pix/models/base_model_hg.py": {
+    "initialize_BaseModelHG": "initialize a BaseModelHG instance with training options including GPU IDs and checkpoint directory",
+    "save_network_BaseModelHG": "save a PyTorch network state dict to a .pth file using save_network helper method",
+    "load_network_BaseModelHG": "load a PyTorch network state dict from a .pth file using load_network helper method",
+    "set_input_BaseModelHG": "set the input data for the BaseModelHG instance using the set_input method",
+    "test_BaseModelHG": "run the BaseModelHG test method for inference without backpropagation"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/pix2pix/models/networks.py": {
+    "create_generator_network": "create a pix2pix generator network using define_G with resnet_9blocks or unet_256 architecture",
+    "create_discriminator_network": "create a PatchGAN or PixelGAN discriminator using define_D with n_layers configuration",
+    "build_gan_loss": "build a GAN loss function using GANLoss class with vanilla, lsgan, or wgangp mode",
+    "setup_lr_scheduler": "setup a learning rate scheduler using get_scheduler with linear, step, plateau, or cosine policy",
+    "calculate_gradient_penalty": "calculate the WGAN-GP gradient penalty using cal_gradient_penalty for discriminator training"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/pix2pix/models/pix2pix4depth_model.py": {
+    "build_pix2pix_depth_model": "build a pix2pix depth estimation model with UNet generator and PatchGAN discriminator",
+    "create_training_pipeline": "create a training pipeline that optimizes both generator and discriminator with GAN and L1 loss",
+    "run_forward_pass": "run a forward pass through the generator network to produce fake depth output images",
+    "refactor_set_input": "refactor the set_input method to preprocess and normalize outer and inner input tensors",
+    "review_backward_passes": "review the backward_D and backward_G methods for GAN discriminator and generator gradient computation"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/pix2pix/options/base_options.py": {
+    "create_BaseOptions_parser": "create a BaseOptions instance and call initialize to define CLI arguments for pix2pix training",
+    "gather_options_BaseOptions": "call gather_options on a BaseOptions subclass to parse and collect model-specific command line arguments",
+    "parse_BaseOptions": "call parse on a BaseOptions subclass to fully parse options, process suffix, and set GPU device IDs",
+    "print_options_BaseOptions": "call print_options on a BaseOptions instance to print and save parsed options to a text file",
+    "initialize_BaseOptions_arguments": "call initialize on a BaseOptions instance to add common training and test arguments to an argparse parser"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/pix2pix/options/test_options.py": {
+    "initialize_test_parser": "initialize an argparse parser with test-specific options like aspect_ratio, phase, eval mode, and num_test",
+    "parse_test_options": "parse command-line test options for the pix2pix4depth model with eval mode and num_test settings",
+    "configure_test_phase": "configure the test phase options with aspect ratio, eval mode, and number of test images",
+    "set_test_defaults": "set default test values including model pix2pix4depth and load_size matching crop_size",
+    "gather_test_options": "gather and parse all test options inherited from BaseOptions plus test-specific arguments"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/leres/pix2pix/util/util.py": {
+    "convert_tensor_to_numpy_image": "convert a PyTorch tensor into a numpy image array using tensor2im",
+    "diagnose_pytorch_network_gradients": "diagnose a PyTorch network by calculating the mean of average absolute gradients",
+    "save_numpy_image_to_disk": "save a numpy array as a 16-bit grayscale image to disk using save_image",
+    "print_numpy_array_statistics": "print the mean, min, max, median, and std statistics of a numpy array",
+    "create_directories_recursively": "create one or more directories recursively using mkdirs if they don't already exist"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/mediapipe_face/mediapipe_face_common.py": {
+    "generate_face_annotation": "generate a face mesh annotation image from an RGB numpy array using mediapipe face detection",
+    "draw_pupils_on_image": "draw colored pupil landmarks on a BGR image using a mediapipe landmark list and drawing spec",
+    "reverse_image_channels": "reverse the RGB and BGR channels of a numpy image array using slice indexing",
+    "review_generate_annotation": "review the generate_annotation function to understand face filtering and landmark drawing logic",
+    "refactor_draw_pupils": "refactor the draw_pupils function to support additional landmark visibility thresholds"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/midas/api.py": {
+    "load_midas_transform": "load a MiDaS image transform pipeline for a given model type like dpt_hybrid",
+    "load_model": "load a MiDaS depth estimation model and its transform by model type",
+    "midas_inference_init": "create a MiDaSInference module wrapping a loaded depth model for inference",
+    "midas_inference_forward": "run a forward pass on an input tensor through the MiDaS depth model",
+    "disabled_train": "disable model train mode changes by overwriting the train method"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/midas/utils.py": {
+    "read_pfm_file": "read a PFM file and return the image data array and scale value",
+    "write_pfm_file": "write a float32 numpy array to a PFM file with an optional scale",
+    "read_image_as_rgb": "read an image file and return an RGB numpy array normalized to 0-1",
+    "resize_image_for_network": "resize an image to network-compatible dimensions aligned to 32 pixel multiples",
+    "write_depth_map": "write a depth map to both PFM and PNG files with configurable bit depth"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/midas/midas/base_model.py": {
+    "load_model_from_file": "load a BaseModel from a file path using the load method",
+    "create_base_model_subclass": "create a subclass of BaseModel that inherits the load method for loading state dicts",
+    "review_BaseModel_load": "review the BaseModel load method that handles both plain and optimizer-wrapped state dicts",
+    "summarize_BaseModel": "summarize the BaseModel class that provides a load method for PyTorch model checkpoint loading",
+    "test_BaseModel_load": "test the BaseModel load method with a checkpoint file containing model state dict parameters"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/midas/midas/blocks.py": {
+    "build_encoder_with_vit_backbone": "build a MiDaS encoder using vitb16_384 backbone with pretrained weights and scratch layers",
+    "create_scratch_layers": "create scratch convolution layers mapping four input feature shapes to output feature dimensions",
+    "build_efficientnet_backbone": "build an EfficientNet-Lite3 pretrained backbone with four sequential layer groups for feature extraction",
+    "create_residual_conv_unit": "create a ResidualConvUnit module with two conv layers and ReLU activation for residual feature learning",
+    "build_feature_fusion_block": "build a FeatureFusionBlock_custom with configurable activation, batch norm, and expand options for feature fusion"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/midas/midas/dpt_depth.py": {
+    "create_DPTDepthModel": "create a DPTDepthModel instance with a pretrained ViT backbone for monocular depth estimation",
+    "create_DPT_model": "create a DPT model with a custom head and configurable ViT backbone architecture",
+    "run_DPTDepthModel_forward": "run a forward pass through DPTDepthModel to predict depth from an input image tensor",
+    "build_fusion_block": "build a FeatureFusionBlock_custom instance using _make_fusion_block with specified features and batch norm",
+    "review_DPT_forward": "review the DPT forward pass that fuses multi-scale ViT features through four refinement paths"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/midas/midas/midas_net.py": {
+    "create_MidasNet": "create a MidasNet model for monocular depth estimation with resnext101_wsl backbone",
+    "run_MidasNet_forward": "run the MidasNet forward pass on an input image tensor to predict depth",
+    "review_MidasNet_init": "review the MidasNet initialization with configurable features and non_negative output options",
+    "refactor_MidasNet_output_conv": "refactor the MidasNet output convolution layers to change the depth prediction head",
+    "summarize_MidasNet_forward": "summarize the MidasNet forward pass that extracts features through four encoder layers and refines them"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/midas/midas/midas_net_custom.py": {
+    "build_MidasNet_small": "build a MidasNet_small model for monocular depth estimation with an efficientnet_lite3 backbone",
+    "run_MidasNet_small_forward": "run a forward pass on an input image tensor through the MidasNet_small model to get depth output",
+    "create_MidasNet_small_with_weights": "create a MidasNet_small model loaded from a pretrained weight file path with custom feature count",
+    "fuse_model_quantization": "fuse Conv2d, BatchNorm2d, and ReLU modules in a PyTorch model for quantization-aware training optimization",
+    "review_MidasNet_small_architecture": "review the MidasNet_small class architecture including its four-cascade refinenet blocks and output convolution layers"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/midas/midas/transforms.py": {
+    "create_Resize_transform": "create a Resize transform that resamples images and disparity maps to a target width and height",
+    "create_NormalizeImage_transform": "create a NormalizeImage transform that normalizes image pixel values by a given mean and standard deviation",
+    "create_PrepareForNet_transform": "create a PrepareForNet transform that transposes and casts sample arrays for neural network input",
+    "use_apply_min_size": "use apply_min_size to resize a sample dict to ensure minimum dimensions while keeping aspect ratio",
+    "use_Resize_get_size": "use the Resize class get_size method to compute new dimensions respecting aspect ratio and resize method"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/midas/midas/vit.py": {
+    "create_vitl16_backbone": "create a pretrained ViT-L/16 backbone model with 384x384 resolution and configurable readout strategy",
+    "create_vitb16_backbone": "create a pretrained ViT-B/16 backbone model with 384x384 resolution for monocular depth estimation",
+    "create_deitb16_backbone": "create a pretrained DeiT-B/16 backbone model with 384x384 resolution and hook-based feature extraction",
+    "create_vitb_rn50_backbone": "create a pretrained ViT-B/RN50 hybrid backbone model combining ResNet50 and Vision Transformer features",
+    "run_forward_vit": "run forward pass through pretrained ViT backbone to extract multi-scale feature maps from input image"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/mlsd/utils.py": {
+    "pred_lines_detect_line_segments": "run pred_lines to detect straight line segments in an image using an M-LSD model",
+    "pred_squares_detect_rectangles": "run pred_squares to detect square and rectangular shapes in an image using an M-LSD model",
+    "deccode_output_score_and_ptss_decode_model_output": "run deccode_output_score_and_ptss to decode a model output tensor into points, scores, and displacement vectors",
+    "pred_lines_with_custom_thresholds": "run pred_lines with custom score and distance thresholds to filter detected line segments",
+    "pred_squares_with_custom_params": "run pred_squares with custom scoring parameters to tune square detection sensitivity and weighting"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/mlsd/models/mbv2_mlsd_large.py": {
+    "build_MobileV2_MLSD_Large": "build a MobileV2_MLSD_Large model instance for straight line detection using MobileNetV2 backbone",
+    "run_MobileNetV2_forward": "run the MobileNetV2 backbone forward pass to extract FPN features c1 through c5",
+    "create_BlockTypeA": "create a BlockTypeA module that concatenates two feature maps with optional bilinear upsampling",
+    "create_BlockTypeB": "create a BlockTypeB module with residual connection and two 3x3 convolutions",
+    "create_BlockTypeC": "create a BlockTypeC module with dilated convolution, regular convolution, and 1x1 output convolution"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/mlsd/models/mbv2_mlsd_tiny.py": {
+    "build_MobileV2_MLSD_Tiny": "build a MobileV2_MLSD_Tiny model instance for line segment detection on images",
+    "run_MobileNetV2_backbone": "run the MobileNetV2 backbone to extract FPN features c2, c3, c4 from input",
+    "create_BlockTypeA_fusion": "create a BlockTypeA module that fuses two feature maps with 1x1 convolutions and bilinear upsampling",
+    "create_BlockTypeB_residual": "create a BlockTypeB module with residual connection and two 3x3 convolution blocks",
+    "create_BlockTypeC_dilated": "create a BlockTypeC module with dilated convolution, regular convolution, and 1x1 output projection"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/NNET.py": {
+    "build_NNET_model": "build a python module to instantiate an NNET normal prediction model with encoder and decoder",
+    "run_NNET_forward": "run the NNET forward pass on an input image tensor to predict surface normals",
+    "test_NNET_get_1x_lr_params": "test the NNET get_1x_lr_params method to retrieve encoder parameters for differential learning rates",
+    "test_NNET_get_10x_lr_params": "test the NNET get_10x_lr_params method to retrieve decoder parameters for differential learning rates",
+    "review_NNET_forward": "review the NNET forward method that chains encoder features through the decoder for normal estimation"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/baseline.py": {
+    "build_NNET_model": "build a python module to create an NNET encoder-decoder model for surface normal estimation",
+    "run_NNET_forward": "run the NNET model forward pass on an input tensor to get normalized output",
+    "create_Encoder": "create an Encoder using pretrained EfficientNet-B5 backbone that extracts multi-scale features",
+    "create_Decoder": "create a Decoder with upsampling blocks that processes encoder features for 4-class output",
+    "test_NNET_parameters": "test the NNET model by getting encoder and decoder parameters with different learning rates"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/decoder.py": {
+    "build_Decoder_BN": "build a Decoder with BN architecture for multi-resolution surface normal prediction",
+    "build_Decoder_GN": "build a Decoder with GN architecture for multi-resolution surface normal prediction",
+    "run_Decoder_forward_test": "run the Decoder forward pass in test mode with encoder features",
+    "run_Decoder_forward_train": "run the Decoder forward pass in train mode with features and ground truth mask",
+    "review_Decoder_forward": "review the Decoder forward method for multi-resolution output generation"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/encoder.py": {
+    "build_encoder": "build a python module to create an Encoder that loads tf_efficientnet_b5_ap as a feature extractor",
+    "create_encoder_forward": "create a function that runs the Encoder forward pass to extract multi-scale features from input tensor x",
+    "test_Encoder": "test the Encoder class by instantiating it and verifying it loads the efficientnet base model correctly",
+    "refactor_Encoder_init": "refactor the Encoder __init__ to accept a configurable base model name instead of hardcoding tf_efficientnet_b5_ap",
+    "review_Encoder_forward": "review the Encoder forward method that iterates through model blocks to collect intermediate feature maps"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/submodules.py": {
+    "build_upsamplebn_module": "build a UpSampleBN module that upsamples and concatenates tensors with BatchNorm",
+    "build_upsamplegn_module": "build a UpSampleGN module that upsamples and concatenates tensors with GroupNorm and weight standardization",
+    "create_conv2d_with_weight_std": "create a Conv2d layer that applies weight standardization during the forward pass",
+    "summarize_norm_normalize": "summarize the norm_normalize function that normalizes normal vectors and applies ELU to kappa",
+    "review_sample_points": "review the sample_points function that performs uncertainty-guided importance sampling for training"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/caffe2_validate.py": {
+    "run_caffe2_validation": "run the caffe2 validation script to verify exported ONNX models against a dataset",
+    "run_main": "run the main function to validate a caffe2 model using init and predict protobuf files",
+    "test_accuracy_np": "test the accuracy_np function to compute top1 and top5 accuracy from numpy output and target arrays",
+    "review_main": "review the main function that loads caffe2 protobuf nets and runs inference over a data loader",
+    "summarize_accuracy_np": "summarize the accuracy_np function that calculates top1 and top5 classification accuracy using numpy argsort"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/onnx_optimize.py": {
+    "run_onnx_optimize": "run the ONNX optimizer script to prune nodes and fuse batchnorm layers into convolutions for a model file",
+    "run_traverse_graph": "run traverse_graph to recursively print all nodes and subgraphs in an ONNX model graph with node counts",
+    "optimize_onnx_model": "optimize an ONNX model by applying passes like fuse_bn_into_conv, eliminate_identity, and fuse_consecutive_transposes",
+    "review_traverse_graph": "review the traverse_graph function that recursively walks an ONNX graph and returns node count and printable node strings",
+    "summarize_onnx_optimize": "summarize the ONNX optimization script that loads a model, applies optimizer passes, and saves the optimized model"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/onnx_validate.py": {
+    "run_onnx_validation": "run ONNX model validation on a dataset to measure top-1 and top-5 accuracy",
+    "run_onnx_with_profiling": "run ONNX model inference with profiling enabled to capture performance metrics",
+    "run_onnx_optimized_export": "run ONNX validation and export the optimized graph to a file",
+    "run_onnx_with_tf_preprocessing": "run ONNX model validation using TensorFlow MNASNet preprocessing pipeline",
+    "summarize_accuracy_np": "summarize the accuracy_np function that computes top-1 and top-5 accuracy from numpy output arrays"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/utils.py": {
+    "create_AverageMeter": "create an AverageMeter instance to track running average of training loss values",
+    "update_AverageMeter": "update an AverageMeter with new batch values and count to compute running average",
+    "reset_AverageMeter": "reset an AverageMeter to clear all accumulated values and start fresh tracking",
+    "compute_accuracy_topk": "compute top-k classification accuracy from model output tensor and target labels",
+    "create_output_directory": "create an output directory with optional incremental naming if directory already exists"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/geffnet/config.py": {
+    "set_no_jit_context": "use the set_no_jit context manager to disable JIT optimization for model layers temporarily",
+    "set_exportable_context": "use the set_exportable context manager to enable ONNX export mode with Same padding",
+    "set_scriptable_context": "use the set_scriptable context manager to enable torch.jit.script compatibility for a model",
+    "set_layer_config_context": "use the set_layer_config context manager to set all layer config flags at once",
+    "layer_config_kwargs_helper": "use layer_config_kwargs to consume config kwargs and return a set_layer_config context manager"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/geffnet/conv2d_layers.py": {
+    "create_conv2d_same_layer": "create a Conv2dSame layer that applies TensorFlow SAME padding to a 2D convolution",
+    "build_mixed_conv2d": "build a MixedConv2d module that splits input channels across multiple kernel sizes",
+    "create_condconv2d_layer": "create a CondConv2d layer that generates per-sample kernel weights from routing weights",
+    "test_select_conv2d": "test the select_conv2d factory function to auto-select MixedConv, CondConv, or standard Conv2d",
+    "review_conv2d_same_function": "review the conv2d_same function that computes dynamic SAME padding and applies F.conv2d"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/geffnet/efficientnet_builder.py": {
+    "build_efficientnet_blocks": "build EfficientNet trunk blocks using EfficientNetBuilder with channel multiplier and drop connect rate",
+    "create_squeeze_excite_module": "create a SqueezeExcite module for channel attention with configurable se ratio and gate function",
+    "decode_architecture_definition": "decode an EfficientNet architecture definition string into block arguments with depth scaling",
+    "create_inverted_residual_block": "create an InvertedResidual block with optional SE, expansion ratio, and drop connect for mobile networks",
+    "initialize_weights_goog": "initialize model weights using Google Tensorflow style initialization for Conv2d and BatchNorm2d layers"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/geffnet/gen_efficientnet.py": {
+    "build_efficientnet_b0": "build a python module that creates an EfficientNet-B0 model for image classification",
+    "build_tf_efficientnet_b3": "build a python module that creates a TF EfficientNet-B3 pretrained model for image classification",
+    "build_mobilenetv2": "build a python module that creates a MobileNetV2 model with configurable channel multiplier",
+    "build_mixnet_s": "build a python module that creates a MixNet Small model for image classification",
+    "build_gen_efficientnet": "build a python module that creates a GenEfficientNet model with custom block arguments and channel multiplier"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/geffnet/helpers.py": {
+    "load_checkpoint_from_file": "load a PyTorch model checkpoint from a local file path using load_checkpoint",
+    "load_pretrained_weights_from_url": "load pretrained model weights from a URL using load_pretrained with automatic channel handling",
+    "load_checkpoint_with_module_prefix_stripping": "load a checkpoint and automatically strip module. prefixes from state dict keys",
+    "load_pretrained_with_filter_function": "load pretrained weights from a URL and apply a custom filter function to the state dict",
+    "load_pretrained_with_channel_mismatch_handling": "load pretrained weights that automatically handle input channel and classifier mismatches"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/geffnet/mobilenetv3.py": {
+    "build_mobilenetv3_large_100": "build a MobileNetV3 large 1.0 model for image classification with 1000 classes",
+    "build_mobilenetv3_small_100": "build a MobileNetV3 small 1.0 model for lightweight image classification tasks",
+    "build_tf_mobilenetv3_large_100": "build a TensorFlow compatible MobileNetV3 large 1.0 model with same padding",
+    "build_mobilenetv3_sequential": "build a MobileNetV3 model as a flat sequential layer stack for feature extraction",
+    "review_mobilenetv3_architecture": "review the MobileNetV3 class architecture including stem blocks, efficient head, and classifier"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/geffnet/model_factory.py": {
+    "create_efficientnet_model": "create an efficientnet_b0 model with 1000 output classes using create_model",
+    "create_mobilenetv3_model": "create a mobilenetv3_large_100 model with custom input channels using create_model",
+    "create_mnasnet_model": "create a mnasnet_100 model with pretrained weights using create_model",
+    "create_model_from_checkpoint": "create a tf_efficientnet_b4 model loaded from a local checkpoint path",
+    "create_lite_efficientnet": "create an efficientnet_lite0 model with a custom number of classes"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/geffnet/activations/activations.py": {
+    "build_swish_activation": "build a pytorch model layer using the Swish activation module with inplace option",
+    "create_mish_activation": "create a pytorch model layer using the Mish activation module for self-regularized non-monotonic activation",
+    "test_hard_swish_function": "test the hard_swish function on a pytorch tensor and verify output values",
+    "refactor_sigmoid_module": "refactor the Sigmoid nn.Module class to support custom inplace argument behavior",
+    "review_hard_sigmoid_function": "review the hard_sigmoid function implementation using F.relu6 and clamping operations"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/geffnet/activations/activations_jit.py": {
+    "build_swish_activation": "build a pytorch model layer using the SwishJit module as an activation function",
+    "build_mish_activation": "build a pytorch model layer using the MishJit module as an activation function",
+    "build_hard_sigmoid_activation": "build a pytorch model layer using the HardSigmoidJit module as an activation function",
+    "build_hard_swish_activation": "build a pytorch model layer using the HardSwishJit module as an activation function",
+    "test_jit_scripted_activations": "test the jit-scripted swish_jit, mish_jit, hard_sigmoid_jit, and hard_swish_jit functions with sample tensors"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/normalbae/nets/submodules/efficientnet_repo/geffnet/activations/activations_me.py": {
+    "create_swish_activation": "create a memory-efficient Swish activation function using SwishJitAutoFn for neural network layers",
+    "create_mish_activation": "create a memory-efficient Mish activation function using MishJitAutoFn for neural network layers",
+    "create_hard_sigmoid_activation": "create a memory-efficient HardSigmoid activation function using HardSigmoidJitAutoFn for neural network layers",
+    "create_hard_swish_activation": "create a memory-efficient HardSwish activation function using HardSwishJitAutoFn for neural network layers",
+    "review_activation_modules": "review the SwishMe, MishMe, HardSigmoidMe, and HardSwishMe nn.Module classes for activation usage"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/open_pose/body.py": {
+    "run_body_pose_detection": "run the Body class on an image to detect human body keypoints and poses",
+    "create_body_model": "create a Body instance by loading a pretrained body pose model from a model path file",
+    "move_body_model_to_device": "move the Body model to a specified device like cuda or cpu for inference",
+    "format_body_result": "format raw candidate and subset arrays into a list of BodyResult objects with keypoints",
+    "review_bodypose_model": "review the Body class and bodypose_model integration for open pose human keypoint detection"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/open_pose/face.py": {
+    "build_facenet_model": "build a FaceNet cascading heatmap model with VGG backbone and six CPM stages for face landmark detection",
+    "run_face_heatmap_inference": "run face heatmap inference on an image using the Face class with a pre-trained model path",
+    "compute_face_landmark_peaks": "compute face landmark peak coordinates from heatmaps using the compute_peaks_from_heatmaps method",
+    "review_facenet_forward_pass": "review the FaceNet forward pass that returns a list of heatmaps from six cascading stages",
+    "refactor_face_inference_size": "refactor the Face class to support configurable inference sizes of 368, 736, or 1312 pixels"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/open_pose/hand.py": {
+    "run_hand_pose_detection": "run hand pose estimation on an image using the Hand class and a pre-trained model",
+    "create_hand_estimator": "create a Hand object by loading a hand pose model from a .pth file path",
+    "test_hand_peaks": "test the Hand class by passing an OpenCV image and retrieving 21 hand keypoint coordinates",
+    "refactor_hand_call": "refactor the Hand __call__ method to support custom scale search values or threshold parameters",
+    "review_hand_heatmap": "review the Hand class heatmap averaging logic across multiple scale multipliers for pose detection"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/open_pose/model.py": {
+    "build_bodypose_model": "build a bodypose_model instance to detect 38 body keypoints and 19 affine fields from an image tensor",
+    "build_handpose_model": "build a handpose_model instance to detect 22 hand keypoints from an image tensor",
+    "run_bodypose_forward": "run the bodypose_model forward pass on an input tensor to get body pose heatmaps and PAFs",
+    "run_handpose_forward": "run the handpose_model forward pass on an input tensor to get hand pose heatmaps",
+    "review_make_layers": "review the make_layers function that constructs Conv2d and MaxPool2d layers from a block configuration dictionary"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/open_pose/util.py": {
+    "draw_bodypose": "draw body pose keypoints and limbs on a canvas image using normalized coordinates",
+    "draw_handpose": "draw hand pose keypoints and connections on a canvas image using normalized coordinates",
+    "draw_facepose": "draw face pose keypoints as white circles on a canvas image using normalized coordinates",
+    "smart_resize": "resize an image to target dimensions using INTER_AREA or INTER_LANCZOS4 interpolation",
+    "handDetect": "detect hands from body pose keypoints and calculate bounding boxes for each hand"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/pidi/model.py": {
+    "build_pidinet_model": "build a PiDiNet model for precise image edge detection using the pidinet factory function",
+    "run_edge_detection": "run edge detection on an input image tensor using a loaded PiDiNet model",
+    "create_pdc_block": "create a PDCBlock with configurable pattern difference convolution types like cd, ad, or rd",
+    "convert_pdc_to_vanilla": "convert CPDC, APDC, or RPDC blocks to equivalent vanilla convolution layers using PDCBlock_converted",
+    "configure_model_variant": "configure a PiDiNet model variant by selecting from predefined nets like carv4, c16, or a16"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/automatic_mask_generator.py": {
+    "generate_masks_from_image": "generate masks for an entire image using a SAM model with configurable point grid sampling and quality thresholds",
+    "initialize_mask_generator": "create a SamAutomaticMaskGenerator with a SAM model and custom parameters like points_per_side, pred_iou_thresh, and output_mode",
+    "postprocess_small_regions": "remove small disconnected regions and holes from mask data using a minimum area threshold and NMS filtering",
+    "process_crop_masks": "generate masks for a cropped region of an image with batched point prompt processing and duplicate removal",
+    "configure_output_mode": "set the mask output format to binary_mask, uncompressed_rle, or coco_rle when initializing the mask generator"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/build_sam.py": {
+    "build_sam_vit_h": "build a SAM model with ViT-Huge image encoder and optional checkpoint weights",
+    "build_sam_vit_l": "build a SAM model with ViT-Large image encoder and optional checkpoint weights",
+    "build_sam_vit_b": "build a SAM model with ViT-Base image encoder and optional checkpoint weights",
+    "build_sam_vit_t": "build a MobileSAM model with TinyViT image encoder and optional checkpoint weights",
+    "sam_model_registry": "lookup a SAM model builder function by key like vit_h, vit_l, vit_b, or vit_t"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/predictor.py": {
+    "predict_masks_with_box_prompt": "use SamPredictor to predict segmentation masks from a box prompt on a set image",
+    "predict_masks_with_point_prompt": "use SamPredictor to predict segmentation masks from point coordinates and labels on a set image",
+    "set_image_for_prediction": "use SamPredictor set_image to load an RGB numpy array and compute image embeddings",
+    "get_image_embedding": "use SamPredictor get_image_embedding to retrieve the 1xCxHxW feature tensor for the set image",
+    "reset_image_state": "use SamPredictor reset_image to clear the currently set image and its features"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/modeling/common.py": {
+    "create_mlp_block": "create an MLPBlock instance with specified embedding and hidden dimensions for a neural network",
+    "create_layer_norm_2d": "create a LayerNorm2d instance to normalize tensor features across spatial dimensions",
+    "run_mlp_forward": "run the MLPBlock forward pass on a PyTorch tensor to get transformed embeddings",
+    "run_layer_norm_forward": "run the LayerNorm2d forward pass on a tensor with shape batch channels height width",
+    "review_mlp_block_architecture": "review the MLPBlock class architecture with two linear layers and configurable activation function"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/modeling/image_encoder.py": {
+    "build_ImageEncoderViT": "build a Vision Transformer image encoder with patch embedding, positional embeddings, and transformer blocks",
+    "create_Block": "create a transformer block with window attention and residual propagation for ViT architectures",
+    "create_Attention": "create a multi-head attention module with optional relative positional embeddings",
+    "create_PatchEmbed": "create a patch embedding layer that converts images to patch embeddings using convolution",
+    "test_window_partition": "test the window partition function that splits tensors into non-overlapping windows with padding"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/modeling/mask_decoder.py": {
+    "build_mask_decoder": "build a MaskDecoder instance with a transformer module and configurable multimask output count",
+    "run_mask_decoder_forward": "run the MaskDecoder forward pass with image embeddings and prompt embeddings to predict masks",
+    "run_mask_decoder_predict_masks": "run the MaskDecoder predict_masks method to get raw mask predictions and IOU scores",
+    "build_mlp": "build an MLP module with configurable input hidden output dimensions and layer depth",
+    "review_mask_decoder_architecture": "review the MaskDecoder output upscaling and hypernetwork layers for mask prediction"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/modeling/prompt_encoder.py": {
+    "build_prompt_encoder": "build a PromptEncoder instance with embed_dim 256 and image embedding size 64x64",
+    "run_prompt_encoder_forward": "run the PromptEncoder forward pass with point coordinates and labels to get sparse embeddings",
+    "create_position_embedding_random": "create a PositionEmbeddingRandom module with 64 positional features for encoding coordinates",
+    "test_embed_points": "test the _embed_points method to encode point prompts with positive and negative labels",
+    "review_embed_boxes": "review the _embed_boxes method to encode box corner prompts using positional encoding"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/modeling/sam.py": {
+    "build_sam_model": "build a SAM model with image encoder, prompt encoder, and mask decoder components",
+    "run_sam_forward": "run the SAM forward pass to predict object masks from batched images and prompts",
+    "create_sam_preprocess": "create a function that normalizes pixel values and pads images to square input for SAM",
+    "refactor_sam_postprocess_masks": "refactor the postprocess_masks method to upscale masks to the original image size",
+    "review_sam_device_property": "review the Sam class device property that returns the current computation device"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/modeling/tiny_vit_sam.py": {
+    "build_tiny_vit_5m_model": "build a TinyViT 5M parameter model with 224x224 input resolution using tiny_vit_5m_224",
+    "build_tiny_vit_21m_model": "build a TinyViT 21M parameter model with 224x224 input resolution using tiny_vit_21m_224",
+    "create_tiny_vit_custom": "create a custom TinyViT model by instantiating TinyViT with custom embed_dims and depths",
+    "run_forward_features": "run forward_features on a TinyViT model to extract 256-channel feature maps from input images",
+    "fuse_conv_bn_layers": "fuse Conv2d_BN convolution and batch normalization layers into a single Conv2d for inference optimization"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/modeling/transformer.py": {
+    "build_TwoWayTransformer": "build a TwoWayTransformer decoder that attends to an input image using query point embeddings",
+    "create_TwoWayAttentionBlock": "create a TwoWayAttentionBlock with self-attention, cross-attention, and MLP layers for sparse and dense inputs",
+    "run_Attention_forward": "run the Attention layer forward pass with query, key, and value tensors for multi-head attention",
+    "review_TwoWayTransformer_forward": "review the TwoWayTransformer forward method that processes image embeddings and point embeddings through transformer blocks",
+    "refactor_Attention_separate_heads": "refactor the Attention _separate_heads method to reshape and transpose tensors for multi-head attention computation"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/utils/amg.py": {
+    "build_MaskData": "build a MaskData object to store and filter batched mask data with tensors and numpy arrays",
+    "generate_crop_boxes": "generate a list of crop boxes at multiple layers with configurable overlap ratio for image segmentation",
+    "calculate_stability_score": "calculate the stability score IoU between high and low thresholded binary masks for a batch",
+    "remove_small_regions": "remove small disconnected regions or holes from a binary mask using connected components analysis",
+    "batched_mask_to_box": "calculate bounding boxes in XYXY format around a batch of binary masks returning zero boxes for empty masks"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/utils/onnx.py": {
+    "build_sam_onnx_model": "build a SamOnnxModel wrapping a SAM model for ONNX export with configurable mask output",
+    "run_resize_longest_image_size": "run resize_longest_image_size to scale an image tensor so its longest side matches a target size",
+    "test_embed_points": "test the _embed_points method to encode point coordinates and labels into sparse embeddings",
+    "review_mask_postprocessing": "review the mask_postprocessing method that upscales and crops masks back to original image size",
+    "summarize_select_masks": "summarize the select_masks method that picks the best mask from multiple candidates using IOU scores"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/segment_anything/utils/transforms.py": {
+    "apply_image_resize": "resize a numpy image array to a target longest side length using ResizeLongestSide",
+    "apply_coords_resize": "resize 2D numpy coordinates to match the new image dimensions after resizing",
+    "apply_boxes_resize": "resize bounding box coordinates to match the new image dimensions after resizing",
+    "apply_image_torch_resize": "resize batched torch tensor images using bilinear interpolation to a target longest side",
+    "get_preprocess_shape_compute": "compute the output height and width given an input size and target long side length"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/teed/Fsmish.py": {
+    "run_smish_activation": "run the smish activation function on a PyTorch tensor element-wise",
+    "create_smish_layer": "create a custom PyTorch layer that applies the smish activation function",
+    "test_smish_output": "test the smish function output against expected values for a given input tensor",
+    "review_smish_implementation": "review the smish activation function implementation based on the Smish paper",
+    "refactor_smish_for_batch": "refactor the smish function to process batched tensor inputs efficiently"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/teed/Xsmish.py": {
+    "use_smish_activation": "create a pytorch nn module that applies the smish activation function to input tensors",
+    "review_Smish_class": "review the Smish class and its forward method for element-wise smish activation",
+    "test_Smish_forward": "test the Smish forward pass with random input tensors and verify output shape",
+    "refactor_Smish_init": "refactor the Smish class init to accept optional parameters for the activation",
+    "summarize_smish_formula": "summarize the smish activation formula x times tanh of softplus of x"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/teed/ted.py": {
+    "build_edge_detection_model": "build a TED model for tiny and efficient edge detection on images",
+    "run_ted_forward_pass": "run a forward pass through the TED model with a batch of input images",
+    "create_cofusion_layer": "create a CoFusion layer that fuses multi-scale features using attention mechanism",
+    "create_doublefusion_layer": "create a DoubleFusion layer that combines features using depthwise convolutions and pixel shuffle",
+    "test_dense_block": "test the _DenseBlock class with dense connections for feature extraction"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/tests/test_processor.py": {
+    "test_hed_processor": "test the Processor class with hed mode to process an image and return bytes",
+    "test_midas_processor": "test the Processor class with midas mode to process an image and return bytes",
+    "test_openpose_processor": "test the Processor class with openpose mode to process an image and return bytes",
+    "test_canny_processor": "test the Processor class with canny mode to process an image and return bytes",
+    "test_mediapipe_face_processor": "test the Processor class with mediapipe_face mode to process an image and return bytes"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/tests/test_processor_pytest.py": {
+    "test_processor_init": "test the Processor class initialization validates processor and params attributes for all 25 model types",
+    "test_processor_call": "test the Processor call method processes a PIL Image and returns a resized output image",
+    "test_processor_call_bytes": "test the Processor call method processes raw image bytes and returns bytes output with to_pil False",
+    "review_processor_fixture": "review the processor pytest fixture that parametrizes 25 ControlNet processor model types including openpose and depth",
+    "summarize_processor_tests": "summarize the pytest test suite covering Processor initialization, image processing, and byte processing for controlnet_aux"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/builder.py": {
+    "build_model_from_config": "build a zoedepth model from a config dict specifying model name and version",
+    "build_depth_model_for_inference": "build a DepthModel instance from config for monocular depth estimation inference",
+    "build_model_for_training": "build a zoedepth model from config for training on depth estimation datasets",
+    "review_build_model_function": "review the build_model function that dynamically imports and constructs zoedepth models",
+    "test_build_model_with_config": "test the build_model function with a sample config dict for model construction"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/depth_model.py": {
+    "run_depth_inference": "run depth model inference on a tensor with padding and flip augmentation enabled",
+    "run_pil_inference": "run depth model inference on a PIL image and return a numpy array output",
+    "run_flip_augmentation": "run depth model inference with horizontal flip augmentation to improve accuracy",
+    "run_padding_augmentation": "run depth model inference with padding augmentation to fix boundary artifacts",
+    "review_depth_model_class": "review the DepthModel class and its inference methods for zero-shot depth estimation"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/model_io.py": {
+    "load_state_dict": "load a state_dict into a PyTorch model handling DataParallel and DistributedDataParallel prefix mismatches",
+    "load_wts": "load model weights from a local checkpoint file path into a PyTorch model",
+    "load_state_dict_from_url": "load a model state_dict from a remote URL into a PyTorch model using torch.hub",
+    "load_state_from_resource": "load model weights from a URL or local path resource string prefixed with url:: or local::",
+    "review_model_io": "review the model_io module functions for loading PyTorch model state dicts from various sources"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas.py": {
+    "build_MidasCore": "build a MidasCore model from a pretrained MiDaS model type like DPT_BEiT_L_384",
+    "build_MidasCore_from_config": "build a MidasCore model by passing a config dictionary with model type and training options",
+    "create_Resize_transform": "create a Resize transform that resizes tensors to a target width and height with aspect ratio control",
+    "create_PrepForMidas_transform": "create a PrepForMidas transform that normalizes and resizes input tensors for MiDaS model inference",
+    "use_denormalize": "use the denormalize function to reverse ImageNet normalization on a torch tensor"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/hubconf.py": {
+    "build_DPT_BEiT_L_512": "build a MiDaS DPT_BEiT_L_512 pretrained model for monocular depth estimation with 512x512 input",
+    "build_DPT_Large": "build a MiDaS DPT-Large pretrained model for monocular depth estimation with vitl16_384 backbone",
+    "build_MiDaS": "build a MiDaS v2.1 pretrained model for monocular depth estimation using MidasNet architecture",
+    "build_MiDaS_small": "build a lightweight MiDaS v2.1 small model for depth estimation on resource-constrained devices",
+    "run_transforms": "run the transforms function to get prebuilt image preprocessing pipelines for various MiDaS model variants"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/base_model.py": {
+    "load_model_from_file": "load a BaseModel instance from a saved checkpoint file path using the load method",
+    "create_base_model_subclass": "create a subclass of BaseModel that inherits the load method for loading state dicts",
+    "review_BaseModel_load": "review the BaseModel load method to understand how it handles optimizer and model parameters",
+    "summarize_BaseModel": "summarize the BaseModel class that provides a load method for PyTorch model checkpoint loading",
+    "test_BaseModel_load": "test the BaseModel load method with a sample checkpoint file containing model state dict"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/blocks.py": {
+    "build_encoder_with_backbone": "build a pretrained encoder and scratch layer using _make_encoder with a specified backbone like vitb16_384",
+    "create_scratch_module": "create a scratch module with _make_scratch that maps input feature shapes to output feature dimensions",
+    "build_efficientnet_backbone": "build an efficientnet_lite3 pretrained backbone using _make_pretrained_efficientnet_lite3 for feature extraction",
+    "create_residual_conv_unit": "create a ResidualConvUnit module with two conv layers and ReLU activation for residual feature processing",
+    "build_feature_fusion_block": "build a FeatureFusionBlock_custom that fuses multi-scale features with residual units and bilinear interpolation"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/dpt_depth.py": {
+    "create_dpt_depth_model": "create a DPTDepthModel instance with a specified backbone and feature dimensions for monocular depth estimation",
+    "run_dpt_forward_pass": "run a forward pass through the DPT model to extract multi-scale feature layers from input images",
+    "build_fusion_block": "build a FeatureFusionBlock_custom with configurable features, batch norm, and activation for feature refinement",
+    "review_dpt_backbone_hooks": "review the DPT class hook configurations for BEiT, Swin, LeViT, and ViT backbone transformer architectures",
+    "refactor_dpt_depth_head": "refactor the DPTDepthModel head sequential layers to adjust output channels or add non-negative depth constraints"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/midas_net.py": {
+    "build_MidasNet": "build a MidasNet model for monocular depth estimation with resnext101_wsl backbone and feature fusion blocks",
+    "run_MidasNet_forward": "run the MidasNet forward pass on an input image tensor to produce a depth map",
+    "create_MidasNet_with_weights": "create a MidasNet instance loaded from a pretrained weights file path with configurable features",
+    "review_MidasNet_architecture": "review the MidasNet class architecture including pretrained encoder, scratch refinenet layers, and output convolution",
+    "refactor_MidasNet_non_negative": "refactor the MidasNet output convolution to toggle between non-negative ReLU activation and identity"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/midas_net_custom.py": {
+    "build_midasnet_small_model": "build a MidasNet_small model with efficientnet_lite3 backbone for monocular depth estimation",
+    "run_forward_pass_depth": "run a forward pass on the MidasNet_small model to predict depth from an input image tensor",
+    "fuse_model_quantization": "fuse Conv2d BatchNorm2d and ReLU layers in a PyTorch model for quantization optimization",
+    "review_midasnet_small_architecture": "review the MidasNet_small class architecture including FeatureFusionBlock layers and output convolution",
+    "refactor_midasnet_backbone": "refactor the MidasNet_small model to use a different backbone network for the encoder"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/model_loader.py": {
+    "load_midas_depth_model": "load a midas depth estimation model from a weight file for inference on a torch device",
+    "load_dpt_beit_model": "load a DPT BEiT large depth model with 512x512 resolution from a checkpoint file",
+    "load_dpt_swin_model": "load a DPT Swin Transformer depth model with 384x384 resolution from a checkpoint file",
+    "load_midas_v21_small": "load the midas v2.1 small efficientnet lite3 depth model for 256x256 inference",
+    "load_openvino_midas_model": "load an openvino optimized midas small depth model from an XML model file"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/transforms.py": {
+    "resize_sample_with_aspect_ratio": "create a Resize transform that resizes image samples while keeping aspect ratio and ensuring multiple of 32",
+    "apply_min_size_to_sample": "use apply_min_size to resize a sample dict to minimum dimensions while keeping aspect ratio",
+    "normalize_image_with_mean_std": "create a NormalizeImage transform that normalizes image pixels using given mean and standard deviation values",
+    "prepare_sample_for_network_input": "use PrepareForNet to transpose and convert sample image and mask arrays to contiguous float32 format",
+    "constrain_value_to_multiple_of": "use Resize constrain_to_multiple_of method to round a value to the nearest multiple with optional min and max bounds"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/backbones/beit.py": {
+    "create_beit_backbone": "create a BEiT backbone model with monkey-patched forward methods for arbitrary window size support",
+    "build_pretrained_beit_large_512": "build a pretrained BEiT-Large 512x512 backbone model for MiDaS depth estimation",
+    "build_pretrained_beit_large_384": "build a pretrained BEiT-Large 384x384 backbone model for MiDaS depth estimation",
+    "build_pretrained_beit_base_384": "build a pretrained BEiT-Base 384x384 backbone model for MiDaS depth estimation",
+    "run_beit_forward": "run the BEiT model forward pass on input tensor x using forward_features method"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/backbones/levit.py": {
+    "build_levit_backbone": "build a LeViT backbone model with forward hooks on specified block indices",
+    "run_forward_levit": "run a forward pass through the LeViT model and extract three post-processed activation layers",
+    "create_ConvTransposeNorm": "create a ConvTranspose2d and BatchNorm2d sequential module with optional weight fusion",
+    "build_stem_b4_transpose": "build a stem module using two ConvTransposeNorm layers with activation functions",
+    "create_pretrained_levit_384": "create a pretrained LeViT-384 model adapter wrapped as a backbone with hooks"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/backbones/next_vit.py": {
+    "create_next_vit_backbone": "create a NextViT backbone model with forward hooks registered at specified layer indices to capture intermediate activations",
+    "create_next_vit_large_6m": "create a pretrained NextViT-Large 6M model adapter wrapped as a backbone with configurable hook layers",
+    "run_forward_next_vit": "run a forward pass through the NextViT pretrained model using the default forward method",
+    "review_make_next_vit_backbone": "review the _make_next_vit_backbone function that registers forward hooks on model feature layers for activation extraction",
+    "refactor_next_vit_hooks": "refactor the NextViT backbone hook indices to target different intermediate layers for feature extraction"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/backbones/swin_common.py": {
+    "build_swin_backbone": "build a swin transformer backbone with forward hooks and activation post-processing modules",
+    "run_forward_swin": "run a forward pass through a pretrained swin transformer model using forward_default",
+    "review_make_swin_backbone": "review the _make_swin_backbone function that wraps a swin model with activation hooks",
+    "refactor_forward_swin": "refactor the forward_swin function to customize the forward pass delegation logic",
+    "summarize_swin_common": "summarize the swin_common module containing swin backbone wrapper and forward pass utilities"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/backbones/timm_adapter.py": {
+    "create_model_adapter_pretrained": "create a pretrained timm model using the adapter function that handles both old and new timm versions",
+    "create_model_adapter_no_pretrained": "create a non-pretrained timm model using the adapter function with pretrained set to false",
+    "create_model_adapter_with_kwargs": "create a timm model using the adapter function with additional keyword arguments passed through",
+    "review_timm_version_check": "review the timm version check logic that determines whether to use old or new timm API",
+    "refactor_create_model_adapter": "refactor the create_model_adapter function to support additional timm model configuration options"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/backbones/utils.py": {
+    "build_backbone_default": "build a ViT backbone with hooks and postprocess layers using make_backbone_default",
+    "create_slice_readout": "create a Slice module to skip the classifier token from ViT activations",
+    "create_add_readout": "create an AddReadout module to add the readout token to sequence features",
+    "create_project_readout": "create a ProjectReadout module to project concatenated readout and sequence features",
+    "get_drop_path": "get the drop_path attribute from a module handling different timm version attribute names"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/base_models/midas_repo/midas/backbones/vit.py": {
+    "create_vitl16_backbone": "create a pretrained ViT-L/16 backbone model with 384x384 resolution and configurable hooks",
+    "create_vitb16_backbone": "create a pretrained ViT-B/16 backbone model with 384x384 resolution and configurable hooks",
+    "create_vitb_rn50_backbone": "create a pretrained ViT-B/16 ResNet-50 hybrid backbone model with configurable ViT-only mode",
+    "review_forward_flex": "review the forward_flex function that handles ViT forward pass with interpolated position embeddings",
+    "refactor_resize_pos_embed": "refactor the _resize_pos_embed function to bilinearly interpolate position embeddings for variable input sizes"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/layers/attractor.py": {
+    "build_AttractorLayer": "build a python module that creates an AttractorLayer with configurable attractors and bin centers for depth estimation",
+    "build_AttractorLayerUnnormed": "build a python module that creates an AttractorLayerUnnormed with unbounded bin centers for depth estimation",
+    "run_exp_attractor": "run the exp_attractor function to compute exponential delta shifts for bin center attraction",
+    "run_inv_attractor": "run the inv_attractor function to compute inverse delta shifts for bin center attraction",
+    "review_AttractorLayer_forward": "review the AttractorLayer forward method that computes new normalized and scaled bin centers from features"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/layers/dist_layers.py": {
+    "create_log_binomial_layer": "create a LogBinomial nn.Module that computes log binomial distribution for NCHW probability tensors",
+    "create_conditional_log_binomial_layer": "create a ConditionalLogBinomial nn.Module that outputs conditional log binomial distribution from main and condition features",
+    "run_log_binom_function": "run the log_binom function to compute log(nCk) using Stirling approximation for tensors n and k",
+    "review_LogBinomial_forward": "review the LogBinomial forward method that computes log binomial distribution with temperature scaling",
+    "test_ConditionalLogBinomial_forward": "test the ConditionalLogBinomial forward pass that takes main feature and condition feature tensors"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/layers/localbins_layers.py": {
+    "create_seed_bin_regressor": "create a SeedBinRegressor that predicts bounded bin centers from input feature tensors for depth estimation",
+    "create_seed_bin_regressor_unnormed": "create a SeedBinRegressorUnnormed that predicts unbounded bin centers using a softplus activation for depth estimation",
+    "build_projector_mlp": "build a Projector MLP that projects input feature channels to output channels using 1x1 convolutions",
+    "create_linear_splitter": "create a LinearSplitter that subdivides previous bin widths by a split factor for refined depth binning",
+    "review_localbins_layers": "review the localbins_layers module containing SeedBinRegressor, SeedBinRegressorUnnormed, Projector, and LinearSplitter classes for ZoeDepth models"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/layers/patch_transformer.py": {
+    "build_PatchTransformerEncoder": "build a PatchTransformerEncoder with custom patch size, embedding dimension, and number of attention heads",
+    "run_forward_PatchTransformerEncoder": "run a forward pass on the PatchTransformerEncoder with an NCHW input tensor to get transformer embeddings",
+    "create_positional_encoding": "create 1D positional encodings using sin/cos functions for a given sequence length and embedding dimension",
+    "review_PatchTransformerEncoder_class_token": "review the PatchTransformerEncoder class to understand how the optional class token is padded into embeddings",
+    "test_PatchTransformerEncoder_transformer": "test the PatchTransformerEncoder transformer encoder layers with 4 layers and configurable feedforward dimension"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/zoedepth/zoedepth_v1.py": {
+    "build_zoedepth_model": "build a ZoeDepth model using ZoeDepth.build with pretrained weights for monocular depth estimation",
+    "build_zoedepth_from_config": "build a ZoeDepth model from a config dictionary using ZoeDepth.build_from_config",
+    "run_zoedepth_forward": "run forward pass on an image tensor through ZoeDepth to predict metric depth maps",
+    "get_zoedepth_lr_params": "get learning rate parameter groups for ZoeDepth optimizer using get_lr_params method",
+    "load_zoedepth_state_dict": "load a pretrained state dict into ZoeDepth using the overridden load_state_dict method"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/models/zoedepth_nk/zoedepth_nk_v1.py": {
+    "build_ZoeDepthNK_model": "build a ZoeDepthNK depth estimation model with a specified midas backbone and pretrained weights",
+    "build_ZoeDepthNK_from_config": "build a ZoeDepthNK model from a configuration dictionary with all hyperparameters",
+    "run_ZoeDepthNK_forward": "run forward pass on ZoeDepthNK model to predict metric depth and domain logits from an image",
+    "freeze_ZoeDepthNK_conf": "freeze parameters for a specific bin configuration in the ZoeDepthNK model",
+    "get_ZoeDepthNK_lr_params": "get learning rate parameter groups for ZoeDepthNK optimizer configuration with different lr factors"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/utils/arg_utils.py": {
+    "parse_unknown_args_to_dict": "parse a list of unknown CLI arguments into a dictionary with inferred types",
+    "infer_type_from_string": "infer and convert a string argument to int or float when possible",
+    "review_parse_unknown": "review the parse_unknown function that splits key=value args into a typed dictionary",
+    "refactor_infer_type": "refactor the infer_type function to support additional type conversions like bool",
+    "test_parse_unknown": "test the parse_unknown function with various CLI argument formats and edge cases"
+  },
+  "huggingface_controlnetaux/src/controlnet_aux/zoe/zoedepth/utils/config.py": {
+    "get_config_zoedepth": "get the ZoeDepth model config for training or inference mode with optional dataset and overwrite kwargs",
+    "get_model_config": "get the model config JSON file for a named model with optional version and inheritance support",
+    "flatten_config_dict": "flatten a nested config dictionary into a single level dict skipping specified keys",
+    "split_combined_args": "split combined double underscore arguments like __n_bins__lr=256;0.001 into individual key value pairs",
+    "change_dataset_config": "change the dataset in an existing config by updating it with the new dataset configuration"
+  },
+  "huggingface_controlnetaux/tests/test_controlnet_aux.py": {
+    "test_canny_detector": "run the test_canny function to test CannyDetector edge detection on an image",
+    "test_openpose_detector": "run the test_openpose function to test OpenposeDetector with body hand and face options",
+    "test_hed_detector": "run the test_hed function to test HEDdetector with safe and scribble modes",
+    "test_lineart_detector": "run the test_lineart function to test LineartDetector with coarse mode on an image",
+    "test_midas_detector": "run the test_midas function to test MidasDetector depth and normal estimation"
+  }
+}

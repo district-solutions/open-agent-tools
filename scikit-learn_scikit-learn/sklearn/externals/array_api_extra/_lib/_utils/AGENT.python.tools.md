@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: scikit-learn/scikit-learn
+- repo_uri: https://github.com/scikit-learn/scikit-learn
+
+## File: scikit-learn_scikit-learn/sklearn/externals/array_api_extra/_lib/_utils/_helpers.py
+
+Prompts
+
+```
+['test the in1d function that checks whether each element of one array is present in another array', 'create a function that computes complex mean by separating real and imaginary parts for Array API arrays', 'build a utility that ensures two inputs are both arrays, converting python scalars to matching dtypes', 'refactor the pickle_flatten function to extract specific object types from arbitrary nested containers using persistent_id hooks', 'summarize the jax_autojit decorator that wraps jax.jit to handle python scalars, non-array static arguments, and nested jax.Array objects']
+```
+
+Usage
+
+```
+{'test_in1d': 'test the in1d function that checks whether each element of one array is present in another array', 'create_function_mean': 'create a function that computes complex mean by separating real and imaginary parts for Array API arrays', 'build_asarrays_conversion': 'build a utility that ensures two inputs are both arrays, converting python scalars to matching dtypes', 'refactor_pickle_flatten': 'refactor the pickle_flatten function to extract specific object types from arbitrary nested containers using persistent_id hooks', 'summarize_jax_autojit': 'summarize the jax_autojit decorator that wraps jax.jit to handle python scalars, non-array static arguments, and nested jax.Array objects'}
+```
+

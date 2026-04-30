@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/trl
+- repo_uri: https://github.com/huggingface/trl.git
+
+## File: huggingface_trl/trl/extras/profiling.py
+
+Prompts
+
+```
+['create a ProfilingContext to time a code block and log execution metrics to W&B or MLflow', 'run a profiling context from a Trainer instance to automatically extract report_to, step, and main process settings', 'build a profiling decorator that times a method and logs execution time via profiling_context for Trainer objects', 'test a ProfilingContext with custom name, report_to, is_main_process, step, and metric_prefix parameters', 'review the profiling_decorator behavior for non-Trainer objects that have an accelerator attribute but no args']
+```
+
+Usage
+
+```
+{'create_ProfilingContext': 'create a ProfilingContext to time a code block and log execution metrics to W&B or MLflow', 'run_profiling_context_with_trainer': 'run a profiling context from a Trainer instance to automatically extract report_to, step, and main process settings', 'build_profiling_decorator': 'build a profiling decorator that times a method and logs execution time via profiling_context for Trainer objects', 'test_ProfilingContext_direct': 'test a ProfilingContext with custom name, report_to, is_main_process, step, and metric_prefix parameters', 'review_profiling_decorator_non_trainer': 'review the profiling_decorator behavior for non-Trainer objects that have an accelerator attribute but no args'}
+```
+

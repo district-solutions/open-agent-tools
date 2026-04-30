@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/jais2/test_modeling_jais2.py
+
+Prompts
+
+```
+['test the Jais2ModelTester class that configures Jais2Config with relu2 hidden activation', 'test the Jais2ModelTest class that validates Jais2Model and Jais2ForCausalLM model classes', 'test the Jais2IntegrationTest.test_model_logits method that verifies model logits against expected values', 'test the Jais2IntegrationTest.test_model_generation method that verifies text generation output from Jais2ForCausalLM', 'test the CausalLMModelTester base class that provides reusable causal language model test infrastructure']
+```
+
+Usage
+
+```
+{'test_jais2_model_tester': 'test the Jais2ModelTester class that configures Jais2Config with relu2 hidden activation', 'test_jais2_model_test': 'test the Jais2ModelTest class that validates Jais2Model and Jais2ForCausalLM model classes', 'test_jais2_model_logits': 'test the Jais2IntegrationTest.test_model_logits method that verifies model logits against expected values', 'test_jais2_model_generation': 'test the Jais2IntegrationTest.test_model_generation method that verifies text generation output from Jais2ForCausalLM', 'test_causal_lm_tester_base': 'test the CausalLMModelTester base class that provides reusable causal language model test infrastructure'}
+```
+

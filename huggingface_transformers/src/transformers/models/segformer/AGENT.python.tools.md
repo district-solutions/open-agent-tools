@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/src/transformers/models/segformer/convert_segformer_original_to_pytorch.py
+
+Prompts
+
+```
+['convert a SegFormer original PyTorch checkpoint to HuggingFace PyTorch model format for semantic segmentation or image classification', 'rename keys in a SegFormer state dict to match HuggingFace transformers model naming conventions', 'split combined key-value weights into separate key and value matrices in a SegFormer state dict', 'download and prepare a COCO validation image for SegFormer model conversion verification', 'run SegFormer checkpoint conversion from command line with model name, checkpoint path, and output folder arguments', 'create a SegformerImageProcessorPil instance for preprocessing images and segmentation maps for the Segformer model', 'run the SegformerImageProcessorPil preprocess method to resize, rescale, and normalize input images for model inference', 'test the SegformerImageProcessorPil reduce_label method that shifts label values by 1 and replaces 0 with 255 for segmentation maps', 'review the SegformerImageProcessorPil post_process_semantic_segmentation method that converts model logits into semantic segmentation maps', 'summarize the SegformerImageProcessorPil _preprocess_image_like_inputs method that handles both images and optional segmentation map preprocessing', 'create a SegformerImageProcessor instance for preprocessing images and segmentation maps for Segformer models', 'preprocess input images and optional segmentation maps into normalized pixel values and integer label tensors', 'reduce label values in segmentation maps by 1, replacing background label 0 with 255', 'post-process model logits into semantic segmentation maps resized to target image dimensions', 'resize images to a specified size and apply rescaling and normalization with ImageNet mean and standard deviation', 'build a SegFormer model for semantic segmentation on datasets like ADE20k or CityScapes', 'create a SegFormer model with an image classification head on top for ImageNet', 'run the SegFormer encoder to extract hierarchical feature maps from input images', 'build a SegFormer decode head that fuses multi-scale encoder features for dense prediction', 'test the efficient self-attention mechanism with sequence reduction for reduced compute']
+```
+
+Usage
+
+```
+{'convert_segformer_checkpoint': 'convert a SegFormer original PyTorch checkpoint to HuggingFace PyTorch model format for semantic segmentation or image classification', 'rename_keys_state_dict': 'rename keys in a SegFormer state dict to match HuggingFace transformers model naming conventions', 'read_in_k_v_state_dict': 'split combined key-value weights into separate key and value matrices in a SegFormer state dict', 'prepare_img': 'download and prepare a COCO validation image for SegFormer model conversion verification', 'convert_segformer_cli': 'run SegFormer checkpoint conversion from command line with model name, checkpoint path, and output folder arguments'}
+```
+
+## File: huggingface_transformers/src/transformers/models/segformer/image_processing_pil_segformer.py
+
+Prompts
+
+```
+['convert a SegFormer original PyTorch checkpoint to HuggingFace PyTorch model format for semantic segmentation or image classification', 'rename keys in a SegFormer state dict to match HuggingFace transformers model naming conventions', 'split combined key-value weights into separate key and value matrices in a SegFormer state dict', 'download and prepare a COCO validation image for SegFormer model conversion verification', 'run SegFormer checkpoint conversion from command line with model name, checkpoint path, and output folder arguments', 'create a SegformerImageProcessorPil instance for preprocessing images and segmentation maps for the Segformer model', 'run the SegformerImageProcessorPil preprocess method to resize, rescale, and normalize input images for model inference', 'test the SegformerImageProcessorPil reduce_label method that shifts label values by 1 and replaces 0 with 255 for segmentation maps', 'review the SegformerImageProcessorPil post_process_semantic_segmentation method that converts model logits into semantic segmentation maps', 'summarize the SegformerImageProcessorPil _preprocess_image_like_inputs method that handles both images and optional segmentation map preprocessing', 'create a SegformerImageProcessor instance for preprocessing images and segmentation maps for Segformer models', 'preprocess input images and optional segmentation maps into normalized pixel values and integer label tensors', 'reduce label values in segmentation maps by 1, replacing background label 0 with 255', 'post-process model logits into semantic segmentation maps resized to target image dimensions', 'resize images to a specified size and apply rescaling and normalization with ImageNet mean and standard deviation', 'build a SegFormer model for semantic segmentation on datasets like ADE20k or CityScapes', 'create a SegFormer model with an image classification head on top for ImageNet', 'run the SegFormer encoder to extract hierarchical feature maps from input images', 'build a SegFormer decode head that fuses multi-scale encoder features for dense prediction', 'test the efficient self-attention mechanism with sequence reduction for reduced compute']
+```
+
+Usage
+
+```
+{'create_SegformerImageProcessorPil': 'create a SegformerImageProcessorPil instance for preprocessing images and segmentation maps for the Segformer model', 'run_preprocess_images': 'run the SegformerImageProcessorPil preprocess method to resize, rescale, and normalize input images for model inference', 'test_reduce_label': 'test the SegformerImageProcessorPil reduce_label method that shifts label values by 1 and replaces 0 with 255 for segmentation maps', 'review_post_process_semantic_segmentation': 'review the SegformerImageProcessorPil post_process_semantic_segmentation method that converts model logits into semantic segmentation maps', 'summarize__preprocess_image_like_inputs': 'summarize the SegformerImageProcessorPil _preprocess_image_like_inputs method that handles both images and optional segmentation map preprocessing'}
+```
+
+## File: huggingface_transformers/src/transformers/models/segformer/image_processing_segformer.py
+
+Prompts
+
+```
+['convert a SegFormer original PyTorch checkpoint to HuggingFace PyTorch model format for semantic segmentation or image classification', 'rename keys in a SegFormer state dict to match HuggingFace transformers model naming conventions', 'split combined key-value weights into separate key and value matrices in a SegFormer state dict', 'download and prepare a COCO validation image for SegFormer model conversion verification', 'run SegFormer checkpoint conversion from command line with model name, checkpoint path, and output folder arguments', 'create a SegformerImageProcessorPil instance for preprocessing images and segmentation maps for the Segformer model', 'run the SegformerImageProcessorPil preprocess method to resize, rescale, and normalize input images for model inference', 'test the SegformerImageProcessorPil reduce_label method that shifts label values by 1 and replaces 0 with 255 for segmentation maps', 'review the SegformerImageProcessorPil post_process_semantic_segmentation method that converts model logits into semantic segmentation maps', 'summarize the SegformerImageProcessorPil _preprocess_image_like_inputs method that handles both images and optional segmentation map preprocessing', 'create a SegformerImageProcessor instance for preprocessing images and segmentation maps for Segformer models', 'preprocess input images and optional segmentation maps into normalized pixel values and integer label tensors', 'reduce label values in segmentation maps by 1, replacing background label 0 with 255', 'post-process model logits into semantic segmentation maps resized to target image dimensions', 'resize images to a specified size and apply rescaling and normalization with ImageNet mean and standard deviation', 'build a SegFormer model for semantic segmentation on datasets like ADE20k or CityScapes', 'create a SegFormer model with an image classification head on top for ImageNet', 'run the SegFormer encoder to extract hierarchical feature maps from input images', 'build a SegFormer decode head that fuses multi-scale encoder features for dense prediction', 'test the efficient self-attention mechanism with sequence reduction for reduced compute']
+```
+
+Usage
+
+```
+{'create_image_processor': 'create a SegformerImageProcessor instance for preprocessing images and segmentation maps for Segformer models', 'preprocess_images_segmentation_maps': 'preprocess input images and optional segmentation maps into normalized pixel values and integer label tensors', 'reduce_label_values': 'reduce label values in segmentation maps by 1, replacing background label 0 with 255', 'post_process_semantic_segmentation': 'post-process model logits into semantic segmentation maps resized to target image dimensions', 'resize_and_normalize_images': 'resize images to a specified size and apply rescaling and normalization with ImageNet mean and standard deviation'}
+```
+
+## File: huggingface_transformers/src/transformers/models/segformer/modeling_segformer.py
+
+Prompts
+
+```
+['convert a SegFormer original PyTorch checkpoint to HuggingFace PyTorch model format for semantic segmentation or image classification', 'rename keys in a SegFormer state dict to match HuggingFace transformers model naming conventions', 'split combined key-value weights into separate key and value matrices in a SegFormer state dict', 'download and prepare a COCO validation image for SegFormer model conversion verification', 'run SegFormer checkpoint conversion from command line with model name, checkpoint path, and output folder arguments', 'create a SegformerImageProcessorPil instance for preprocessing images and segmentation maps for the Segformer model', 'run the SegformerImageProcessorPil preprocess method to resize, rescale, and normalize input images for model inference', 'test the SegformerImageProcessorPil reduce_label method that shifts label values by 1 and replaces 0 with 255 for segmentation maps', 'review the SegformerImageProcessorPil post_process_semantic_segmentation method that converts model logits into semantic segmentation maps', 'summarize the SegformerImageProcessorPil _preprocess_image_like_inputs method that handles both images and optional segmentation map preprocessing', 'create a SegformerImageProcessor instance for preprocessing images and segmentation maps for Segformer models', 'preprocess input images and optional segmentation maps into normalized pixel values and integer label tensors', 'reduce label values in segmentation maps by 1, replacing background label 0 with 255', 'post-process model logits into semantic segmentation maps resized to target image dimensions', 'resize images to a specified size and apply rescaling and normalization with ImageNet mean and standard deviation', 'build a SegFormer model for semantic segmentation on datasets like ADE20k or CityScapes', 'create a SegFormer model with an image classification head on top for ImageNet', 'run the SegFormer encoder to extract hierarchical feature maps from input images', 'build a SegFormer decode head that fuses multi-scale encoder features for dense prediction', 'test the efficient self-attention mechanism with sequence reduction for reduced compute']
+```
+
+Usage
+
+```
+{'build_semantic_segmentation_model': 'build a SegFormer model for semantic segmentation on datasets like ADE20k or CityScapes', 'create_image_classification_head': 'create a SegFormer model with an image classification head on top for ImageNet', 'run_encoder_extract_features': 'run the SegFormer encoder to extract hierarchical feature maps from input images', 'build_decode_head_fuse_features': 'build a SegFormer decode head that fuses multi-scale encoder features for dense prediction', 'test_efficient_self_attention': 'test the efficient self-attention mechanism with sequence reduction for reduced compute'}
+```
+

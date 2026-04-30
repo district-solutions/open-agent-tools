@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/python/sglang/srt/debug_utils/comparator/aligner/token_aligner/entrypoint.py
+
+Prompts
+
+```
+['compute token alignment result from two directory pairs and polars dataframes in concat_steps or smart mode', 'build smart token alignment result by loading aux tensors, building sequence info, and computing alignment plan', 'load thd sequence lengths only for each side of a directory pair without full aux tensor loading', 'create a frozen dataclass result bundling token aligner mode, plan, and thd sequence lengths by step pair', 'test the token aligner mode literal type supporting concat_steps and smart alignment modes']
+```
+
+Usage
+
+```
+{'compute_token_aligner_result': 'compute token alignment result from two directory pairs and polars dataframes in concat_steps or smart mode', 'build_smart_token_aligner_result': 'build smart token alignment result by loading aux tensors, building sequence info, and computing alignment plan', 'load_thd_seq_lens_pair': 'load thd sequence lengths only for each side of a directory pair without full aux tensor loading', 'create_token_aligner_result': 'create a frozen dataclass result bundling token aligner mode, plan, and thd sequence lengths by step pair', 'test_token_aligner_mode': 'test the token aligner mode literal type supporting concat_steps and smart alignment modes'}
+```
+

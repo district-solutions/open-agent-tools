@@ -1,0 +1,7 @@
+{
+    "test_moe_align_block_size_compare_implementations": "test the moe_align_block_size CUDA kernel against the Triton reference implementation across various block sizes, token counts, and expert configurations",
+    "test_moe_align_block_size_v2_large_num_experts": "test the moe_align_block_size v2 CUDA kernel for configurations with more than 1024 experts against the Triton reference",
+    "build_moe_align_block_size_triton": "build a Triton JIT implementation of moe_align_block_size that counts tokens per expert, computes cumsum, pads block sizes, and sorts token IDs by expert",
+    "build_moe_align_block_size_stages": "build four Triton JIT kernel stages for moe_align_block_size: stage1 counts tokens per expert, stage2 computes prefix sum, stage3 calculates padded totals, stage4 sorts tokens into expert blocks",
+    "run_moe_align_block_size_test": "run parameterized pytest tests for moe_align_block_size comparing CUDA and Triton implementations with varying block_size, num_tokens, topk, and num_experts"
+}

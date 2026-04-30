@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/dinov2_with_registers/test_modeling_dinov2_with_registers.py
+
+Prompts
+
+```
+['test the Dinov2WithRegistersModel class for forward pass and output shape validation', 'test the Dinov2WithRegistersBackbone class for feature map extraction and configuration variants', 'test the Dinov2WithRegistersForImageClassification class for image classification with RGB and grayscale inputs', 'test Dinov2WithRegistersModel inference from pretrained facebook/dinov2-with-registers-base model', 'create a Dinov2WithRegistersModelTester config with pixel values, labels, and model configuration for unit testing']
+```
+
+Usage
+
+```
+{'test_Dinov2WithRegistersModel': 'test the Dinov2WithRegistersModel class for forward pass and output shape validation', 'test_Dinov2WithRegistersBackbone': 'test the Dinov2WithRegistersBackbone class for feature map extraction and configuration variants', 'test_Dinov2WithRegistersForImageClassification': 'test the Dinov2WithRegistersForImageClassification class for image classification with RGB and grayscale inputs', 'test_Dinov2WithRegistersModelIntegration': 'test Dinov2WithRegistersModel inference from pretrained facebook/dinov2-with-registers-base model', 'create_Dinov2WithRegistersModelTester': 'create a Dinov2WithRegistersModelTester config with pixel values, labels, and model configuration for unit testing'}
+```
+

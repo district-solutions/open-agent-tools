@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/python/sglang/srt/debug_utils/comparator/visualizer/figure.py
+
+Prompts
+
+```
+['generate a multi-panel comparison PNG figure from baseline and target torch tensors', 'build a list of visualization panels for baseline, target, and diff heatmap displays', 'create a frozen dataclass context holding baseline, target, diff tensors and a name string', 'create a frozen dataclass panel with a label, diff requirement flag, and draw callback', 'preprocess a torch tensor into a 2d representation for visualization panels']
+```
+
+Usage
+
+```
+{'generate_comparison_figure': 'generate a multi-panel comparison PNG figure from baseline and target torch tensors', 'build_panels': 'build a list of visualization panels for baseline, target, and diff heatmap displays', 'create_panel_context': 'create a frozen dataclass context holding baseline, target, diff tensors and a name string', 'create_panel': 'create a frozen dataclass panel with a label, diff requirement flag, and draw callback', 'preprocess_tensor': 'preprocess a torch tensor into a 2d representation for visualization panels'}
+```
+

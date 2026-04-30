@@ -1,0 +1,79 @@
+{
+  "huggingface_jat/data/to_hub.py": {
+    "push_rl_dataset_to_hub": "push a reinforcement learning dataset with observations actions and rewards to the Hugging Face hub",
+    "split_dataset_train_test": "split a dataset into train and test splits using a configurable test_split fraction",
+    "upload_compressed_npz_to_hub": "upload compressed NPZ files containing train and test data to a Hugging Face dataset repository",
+    "validate_dataset_dtypes": "validate that rewards are float32, images are uint8, discrete values are int64, and continuous values are float32",
+    "create_dataset_repo_pr": "create a pull request to add a new domain and task dataset to the jat-dataset repository"
+  },
+  "huggingface_jat/data/conceptual_captions/generate_conceptual_caption.py": {
+    "fetch_image_from_url": "fetch an image from a URL and return it as a PIL Image object",
+    "resize_image_to_max_352": "resize a PIL image so the larger dimension is at most 352 pixels and remove metadata",
+    "fetch_and_resize_image": "fetch an image from a URL, resize it, and return the result or None on error",
+    "process_batch_of_images": "process a batch of image URLs with multiprocessing and pair them with their captions",
+    "run_conceptual_captions_pipeline": "download the conceptual_captions dataset, fetch and resize images, and push the processed dataset to the Hugging Face Hub"
+  },
+  "huggingface_jat/data/envs/atari/create_atari_dataset.py": {
+    "create_atari_dataset": "create an Atari dataset by running a trained actor-critic policy and collecting episodes",
+    "push_to_hf": "push a local dataset folder to a Hugging Face Hub repository",
+    "run_atari_dataset_script": "run the script to generate an Atari dataset from a trained RL checkpoint",
+    "create_hf_repo": "create a public Hugging Face dataset repository using the HfApi",
+    "upload_dataset_to_hub": "upload a Hugging Face Dataset to a specific branch and config name on the Hub"
+  },
+  "huggingface_jat/data/envs/atari/generate_random_score.py": {
+    "run_generate_random_score": "run the script to generate random agent baseline scores for all Atari tasks using multiprocessing",
+    "run_generate_random_score_single_task": "run generate_random_score for a single Atari task to collect 100 episode random rewards",
+    "review_generate_random_score": "review the generate_random_score function that runs random actions in Atari envs and saves mean and std rewards",
+    "refactor_generate_random_score": "refactor generate_random_score to support a configurable number of episodes instead of the hardcoded 100",
+    "summarize_TASK_NAMES": "summarize the TASK_NAMES list containing 58 Atari game identifiers used for random score generation"
+  },
+  "huggingface_jat/data/envs/babyai/bot_agent.py": {
+    "create_BabyAIBot": "create a BabyAIBot instance with a BabyAI mission environment to solve tasks",
+    "run_BabyAIBot_replan": "run the BabyAIBot replan method to get the next suggested action for the mission",
+    "create_GoNextToSubgoal": "create a GoNextToSubgoal to navigate the agent to a target position or object",
+    "create_OpenSubgoal": "create an OpenSubgoal to open a door with optional key handling and drop logic",
+    "create_ExploreSubgoal": "create an ExploreSubgoal to explore unseen areas and unopened doors in the environment"
+  },
+  "huggingface_jat/data/envs/babyai/create_babyai_dataset.py": {
+    "create_babyai_dataset": "create a BabyAI dataset for a given task name and save it to disk and push to HuggingFace Hub",
+    "generate_episode": "generate a single episode of text observations, discrete observations, actions, and rewards from a BabyAI gym environment",
+    "reset_env_and_policy": "reset a BabyAI gym environment and initialize a BabyAIBot policy agent",
+    "call_with_timeout": "call a function with a configurable timeout duration using SIGALRM signals",
+    "run_babyai_dataset_cli": "run the CLI to generate a BabyAI dataset by passing task name and max episodes as arguments"
+  },
+  "huggingface_jat/data/envs/babyai/generate_random_score.py": {
+    "run_generate_random_score": "run generate_random_score to evaluate a random agent on a BabyAI Gymnasium environment for 1M timesteps",
+    "run_script_all_tasks": "run the script with 32 parallel workers to generate random agent scores for all BabyAI tasks",
+    "review_generate_random_score": "review the generate_random_score function that collects episode rewards and saves mean and std to JSON",
+    "refactor_generate_random_score": "refactor generate_random_score to support a configurable number of timesteps instead of the hardcoded 1 million",
+    "summarize_TASK_NAME_TO_ENV_NAME": "summarize the TASK_NAME_TO_ENV_NAME mapping of 40 BabyAI task names to Gymnasium environment identifiers"
+  },
+  "huggingface_jat/data/envs/metaworld/generate_dataset.py": {
+    "run_generate_dataset": "run the script to generate a metaworld dataset from a trained sample-factory checkpoint",
+    "create_dataset_from_checkpoint": "create a train and test dataset by running a loaded policy in a metaworld environment",
+    "make_custom_env_gymnasium": "create a gymnasium environment from a full environment name with an optional render mode",
+    "review_create_dataset": "review the create_dataset function that collects observations actions and rewards from a policy rollout",
+    "refactor_create_dataset_dataset_size": "refactor the create_dataset function to make the hardcoded dataset size configurable via arguments"
+  },
+  "huggingface_jat/data/envs/metaworld/generate_random_score.py": {
+    "run_generate_random_score": "run generate_random_score to evaluate a random agent on a metaworld task for 1M timesteps",
+    "run_metaworld_benchmark": "run the script to benchmark random agent scores across all 50 metaworld environments in parallel",
+    "generate_random_score_single_task": "generate random agent scores for a single metaworld task like metaworld-assembly and save to JSON",
+    "review_generate_random_score": "review the generate_random_score function that runs random actions in a gymnasium metaworld environment",
+    "summarize_metaworld_scores": "summarize the random agent mean and std rewards saved in the metaworld scores dictionary JSON file"
+  },
+  "huggingface_jat/data/envs/metaworld/push.py": {
+    "run_metaworld_push_evaluation": "run the metaworld push environment evaluation using sample_factory enjoy mode",
+    "create_custom_gymnasium_env": "create a custom gymnasium environment from a full env name with optional render mode",
+    "register_env_with_sample_factory": "register a custom environment factory function with sample_factory for evaluation",
+    "parse_sample_factory_args": "parse sample_factory CLI arguments in evaluation mode to get the config parser",
+    "run_enjoy_loop": "run the sample_factory enjoy loop with parsed config to evaluate a trained agent"
+  },
+  "huggingface_jat/data/envs/metaworld/train.py": {
+    "run_metaworld_rl_training": "run PPO RL training on a MetaWorld environment using sample-factory with default hyperparameters",
+    "create_custom_gym_env": "create a Gymnasium environment by name using make_custom_env with an optional render mode",
+    "override_ppo_defaults": "override argparse defaults with PPO hyperparameters like learning rate, batch size, and rollout length",
+    "register_custom_env": "register a custom environment factory function with sample-factory so it can be instantiated by name",
+    "run_rl_training_loop": "run the sample-factory RL training loop with a parsed config to train a PPO agent"
+  }
+}

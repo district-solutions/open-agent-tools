@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/src/transformers/models/gptj/modeling_gptj.py
+
+Prompts
+
+```
+['create a GPT-J causal language model for text generation with past key value caching', 'build a GPT-J sequence classification model to predict labels from input text sequences', 'test the GPT-J question answering model to extract start and end positions from context', 'run GPT-J forward pass using Flash Attention 2 for faster transformer inference', 'review the GPT-J rotary positional embedding application on query and key tensors']
+```
+
+Usage
+
+```
+{'create_gptj_causal_lm': 'create a GPT-J causal language model for text generation with past key value caching', 'build_gptj_sequence_classifier': 'build a GPT-J sequence classification model to predict labels from input text sequences', 'test_gptj_question_answering': 'test the GPT-J question answering model to extract start and end positions from context', 'run_gptj_flash_attention': 'run GPT-J forward pass using Flash Attention 2 for faster transformer inference', 'review_gptj_rotary_embeddings': 'review the GPT-J rotary positional embedding application on query and key tensors'}
+```
+

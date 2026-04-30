@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/integrations/azure_storage/azure_storage.py
+
+Prompts
+
+```
+['create an AzureBlobStorageLogger instance to asynchronously log LLM events to Azure Blob Storage', 'async_log_success_event logs a successful LLM call payload to the Azure Blob Storage queue', 'async_log_failure_event logs a failed LLM call payload to the Azure Blob Storage queue', 'async_send_batch flushes all queued log payloads from memory to Azure Blob Storage', 'async_upload_payload_to_azure_blob_storage uploads a single log payload to Azure Blob Storage via the 3-step REST API process']
+```
+
+Usage
+
+```
+{'create_azure_blob_storage_logger': 'create an AzureBlobStorageLogger instance to asynchronously log LLM events to Azure Blob Storage', 'async_log_success_event': 'async_log_success_event logs a successful LLM call payload to the Azure Blob Storage queue', 'async_log_failure_event': 'async_log_failure_event logs a failed LLM call payload to the Azure Blob Storage queue', 'async_send_batch': 'async_send_batch flushes all queued log payloads from memory to Azure Blob Storage', 'async_upload_payload_to_azure_blob_storage': 'async_upload_payload_to_azure_blob_storage uploads a single log payload to Azure Blob Storage via the 3-step REST API process'}
+```
+

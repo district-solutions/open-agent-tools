@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/quantization/quark_integration/test_quark.py
+
+Prompts
+
+```
+['test loading QUARK quantization config from a pretrained model using AutoConfig.from_pretrained', 'build a causal language model with QUARK quantization using AutoModelForCausalLM.from_pretrained', 'test memory footprint reduction of a QUARK-quantized model compared to the fp16 reference model', 'test that linear layers in a QUARK-quantized model are replaced with QParamsLinear instances', 'test generation quality of a QUARK-quantized model by comparing output sequences against expected outputs']
+```
+
+Usage
+
+```
+{'test_QUARK_config_load': 'test loading QUARK quantization config from a pretrained model using AutoConfig.from_pretrained', 'build_QUARK_quantized_model': 'build a causal language model with QUARK quantization using AutoModelForCausalLM.from_pretrained', 'test_memory_footprint_reduction': 'test memory footprint reduction of a QUARK-quantized model compared to the fp16 reference model', 'test_quantized_layer_replacement': 'test that linear layers in a QUARK-quantized model are replaced with QParamsLinear instances', 'test_generation_quality': 'test generation quality of a QUARK-quantized model by comparing output sequences against expected outputs'}
+```
+

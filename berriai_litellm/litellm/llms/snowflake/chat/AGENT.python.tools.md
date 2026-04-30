@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/snowflake/chat/transformation.py
+
+Prompts
+
+```
+['create a SnowflakeConfig instance to transform requests and responses between OpenAI and Snowflake Cortex LLM APIs', 'build a transformation of OpenAI tool definitions into Snowflake tool_spec format for cortex inference', 'build a transformation of OpenAI tool_choice strings or dicts into Snowflake object format', 'test the transform_response method that converts Snowflake API responses to OpenAI-compatible ModelResponse objects', "summarize the transform_request method that prepares OpenAI-format requests for Snowflake's cortex/inference:complete endpoint"]
+```
+
+Usage
+
+```
+{'create_snowflake_config': 'create a SnowflakeConfig instance to transform requests and responses between OpenAI and Snowflake Cortex LLM APIs', 'build_transform_tools': 'build a transformation of OpenAI tool definitions into Snowflake tool_spec format for cortex inference', 'build_transform_tool_choice': 'build a transformation of OpenAI tool_choice strings or dicts into Snowflake object format', 'test_transform_response': 'test the transform_response method that converts Snowflake API responses to OpenAI-compatible ModelResponse objects', 'summarize_transform_request': "summarize the transform_request method that prepares OpenAI-format requests for Snowflake's cortex/inference:complete endpoint"}
+```
+

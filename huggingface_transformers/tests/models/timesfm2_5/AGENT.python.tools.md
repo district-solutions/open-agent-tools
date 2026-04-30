@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/timesfm2_5/test_modeling_timesfm2_5.py
+
+Prompts
+
+```
+['test the TimesFm2_5ModelTest class that verifies TimesFm2_5ModelForPrediction model behavior', 'create a TimesFm2_5ModelForPrediction instance from a TimesFm2_5Config for time series forecasting', 'test that eager and SDPA attention implementations produce equivalent results for TimesFm2_5ModelForPrediction', 'test that flash_attention_2 implementation produces results equivalent to eager attention for TimesFm2_5ModelForPrediction', 'test that hidden states and attentions retain gradients for TimesFm2_5ModelForPrediction outputs', 'test inference on the pretrained google/timesfm-2.5-200m-transformers model with sinusoidal time series inputs', 'create a TimesFm2_5Config with patch_length, context_length, horizon_length, and quantile parameters for forecasting', 'test TimesFm2_5Config serialization and deserialization via ConfigTester common configuration tests']
+```
+
+Usage
+
+```
+{'test_modeling_timesfm2_5': 'test the TimesFm2_5ModelTest class that verifies TimesFm2_5ModelForPrediction model behavior', 'create_timesfm2_5_model': 'create a TimesFm2_5ModelForPrediction instance from a TimesFm2_5Config for time series forecasting', 'test_eager_sdpa_equivalence': 'test that eager and SDPA attention implementations produce equivalent results for TimesFm2_5ModelForPrediction', 'test_flash_attention_equivalence': 'test that flash_attention_2 implementation produces results equivalent to eager attention for TimesFm2_5ModelForPrediction', 'test_gradient_retention': 'test that hidden states and attentions retain gradients for TimesFm2_5ModelForPrediction outputs', 'test_timesfm2_5_integration': 'test inference on the pretrained google/timesfm-2.5-200m-transformers model with sinusoidal time series inputs', 'create_timesfm2_5_config': 'create a TimesFm2_5Config with patch_length, context_length, horizon_length, and quantile parameters for forecasting', 'test_timesfm2_5_config_common': 'test TimesFm2_5Config serialization and deserialization via ConfigTester common configuration tests'}
+```
+

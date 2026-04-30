@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: datalab-to/surya
+- repo_uri: https://github.com/datalab-to/surya
+
+## File: datalab-to_surya/surya/detection/model/encoderdecoder.py
+
+Prompts
+
+```
+['create an EfficientViTForSemanticSegmentation model for pixel-level classification with sigmoid output logits', 'build an EfficientViTForSemanticLayoutSegmentation model for layout-aware semantic segmentation tasks', 'run the EfficientViT encoder-decoder forward pass to produce segmentation logits from pixel values', 'configure a DecodeHead with MLP channel-unification, bilinear upsampling, and 1x1 classifier for multi-scale feature fusion', 'build an EfficientVitLargeBlock combining LiteMLA multi-scale linear attention with MBConv local feature extraction']
+```
+
+Usage
+
+```
+{'create_semantic_segmentation_model': 'create an EfficientViTForSemanticSegmentation model for pixel-level classification with sigmoid output logits', 'build_layout_segmentation_model': 'build an EfficientViTForSemanticLayoutSegmentation model for layout-aware semantic segmentation tasks', 'run_encoder_decoder_forward': 'run the EfficientViT encoder-decoder forward pass to produce segmentation logits from pixel values', 'configure_decode_head': 'configure a DecodeHead with MLP channel-unification, bilinear upsampling, and 1x1 classifier for multi-scale feature fusion', 'build_efficientvit_block': 'build an EfficientVitLargeBlock combining LiteMLA multi-scale linear attention with MBConv local feature extraction'}
+```
+

@@ -1,0 +1,874 @@
+{
+  "facebookresearch_detectron2/detectron2/checkpoint/c2_model_loading.py": {
+    "convert_basic_c2_names": "convert basic Caffe2 weight names to Detectron2 naming conventions for backbone models",
+    "convert_c2_detectron_names": "convert Caffe2 Detectron weight dict to Detectron2 weight dict with name mapping",
+    "align_and_update_state_dicts": "align and update model state dict with checkpoint state dict using heuristic name matching",
+    "summarize_convert_c2_detectron_names": "summarize how convert_c2_detectron_names maps Caffe2 blob names to Detectron2 module names",
+    "review_align_and_update_state_dicts": "review align_and_update_state_dicts and its suffix-based key matching strategy for loading pretrained weights"
+  },
+  "facebookresearch_detectron2/detectron2/checkpoint/catalog.py": {
+    "resolve_model_catalog_url": "resolve a model catalog URL by name using ModelCatalog.get to retrieve the S3 download URL",
+    "lookup_imagenet_pretrained_model": "lookup an ImageNet pretrained model URL from ModelCatalog.C2_IMAGENET_MODELS mappings",
+    "get_detectron_baseline_url": "get a Caffe2 Detectron baseline model URL from ModelCatalog.C2_DETECTRON_MODELS mappings",
+    "register_catalog_path_handler": "register ModelCatalogHandler with PathManager to resolve catalog:// prefixed paths",
+    "open_catalog_model_file": "open a model file from the catalog using catalog:// prefixed path via ModelCatalogHandler._open"
+  },
+  "facebookresearch_detectron2/detectron2/checkpoint/detection_checkpoint.py": {
+    "create_DetectionCheckpointer": "create a DetectionCheckpointer instance to handle model checkpoint loading and saving with distributed data parallel support",
+    "load_DetectionCheckpointer_checkpoint": "load a model checkpoint from a file path supporting Detectron2, Caffe2, and pycls checkpoint formats",
+    "handle_DistributedDataParallel_load": "handle distributed checkpoint loading by verifying file availability across all workers before loading",
+    "convert_legacy_Caffe2_checkpoint": "convert legacy Caffe2 or Detectron1 checkpoint state dicts using name-matching heuristics for model weight alignment",
+    "ignore_missing_pixel_mean_pixel_std": "ignore missing pixel_mean and pixel_std keys during checkpoint loading since they are initialized from config"
+  },
+  "facebookresearch_detectron2/detectron2/config/compat.py": {
+    "upgrade_config": "upgrade a detectron2 CfgNode config from an older version to a newer version",
+    "downgrade_config": "downgrade a detectron2 CfgNode config from a newer version to an older version",
+    "guess_version": "guess the config version from a partial detectron2 CfgNode missing the VERSION field",
+    "rename_config_keys": "rename nested config keys in a detectron2 CfgNode from old dot-notation paths to new ones",
+    "convert_config_v2": "convert a detectron2 config from v1 to v2 by renaming keys and migrating anchor generator settings"
+  },
+  "facebookresearch_detectron2/detectron2/config/config.py": {
+    "build_load_config_file": "load a YAML config file and merge it into a CfgNode with automatic version upgrading",
+    "create_get_default_cfg": "create a copy of the default detectron2 config using get_cfg",
+    "set_global_config_access": "set a global config copy accessible anywhere via global_cfg without passing it through code",
+    "build_configurable_init": "decorate a class __init__ with @configurable so it can be called with a CfgNode or regular arguments",
+    "test_configurable_function": "test the @configurable decorator on a standalone function with from_config argument translation"
+  },
+  "facebookresearch_detectron2/detectron2/config/instantiate.py": {
+    "dump_dataclass_dataclass_obj": "dump a dataclass instance into a dict with _target_ for later instantiation",
+    "instantiate_cfg_dict": "recursively instantiate objects from a dict using _target_ and keyword arguments",
+    "instantiate_omegaconf_list": "instantiate omegaconf ListConfig elements recursively preserving object references",
+    "instantiate_omegaconf_dictconfig": "convert a DictConfig backed by dataclasses to actual dataclass objects",
+    "instantiate_nested_target": "instantiate nested _target_ entries by resolving string class paths and calling cls(**kwargs)"
+  },
+  "facebookresearch_detectron2/detectron2/config/lazy.py": {
+    "create_LazyCall": "create a LazyCall wrapper around a callable to defer execution and return a config dict with keyword arguments",
+    "load_LazyConfig": "load a python or yaml config file with LazyConfig.load and return omegaconf DictConfig objects",
+    "save_LazyConfig": "save an omegaconf config object to a yaml file with LazyConfig.save, falling back to cloudpickle if needed",
+    "override_LazyConfig": "apply command-line style overrides in 'key=value' format to an omegaconf config object in-place",
+    "convert_LazyConfig": "convert an omegaconf config object into human-readable Python-like pseudo code with LazyConfig.to_py"
+  },
+  "facebookresearch_detectron2/detectron2/data/benchmark.py": {
+    "benchmark_ITERATOR": "benchmark an iterator for a specified number of iterations with warmup and time limits",
+    "test_DATALOADER_BENCHMARK_benchmark_dataset": "test the DataLoaderBenchmark benchmark_dataset method to measure raw dataset sampling speed",
+    "test_DATALOADER_BENCHMARK_benchmark_mapper": "test the DataLoaderBenchmark benchmark_mapper method to measure single-process mapper speed",
+    "test_DATALOADER_BENCHMARK_benchmark_workers": "test the DataLoaderBenchmark benchmark_workers method to compare dataloader performance across different num_workers values",
+    "test_DATALOADER_BENCHMARK_benchmark_IPC": "test the DataLoaderBenchmark benchmark_IPC method to measure IPC overhead with empty outputs"
+  },
+  "facebookresearch_detectron2/detectron2/data/build.py": {
+    "build_detection_train_loader": "build a dataloader for object detection training with configurable sampler, mapper, and aspect ratio grouping",
+    "build_detection_test_loader": "build a dataloader for object detection inference with configurable batch size, sampler, and mapper",
+    "get_detection_dataset_dicts": "load and prepare dataset dicts for instance detection or semantic segmentation from registered dataset names",
+    "build_batch_data_loader": "build a batched dataloader with aspect ratio grouping, configurable batch size, and worker seed reset",
+    "load_proposals_into_dataset": "load precomputed object proposals from a pickle file into dataset annotation records"
+  },
+  "facebookresearch_detectron2/detectron2/data/catalog.py": {
+    "register_dataset": "register a dataset function in DatasetCatalog with a name and callable that returns dataset samples",
+    "get_dataset_annotations": "get dataset annotations from DatasetCatalog by name, calling the registered function to return list of dicts",
+    "list_registered_datasets": "list all registered dataset names from DatasetCatalog",
+    "set_dataset_metadata": "set metadata attributes like thing_classes on a Metadata instance via MetadataCatalog.get",
+    "get_metadata_attribute": "get a metadata attribute from MetadataCatalog.get with a default fallback if the key does not exist"
+  },
+  "facebookresearch_detectron2/detectron2/data/common.py": {
+    "create_map_dataset": "create a MapDataset that applies a transformation function over elements in a dataset, skipping None results",
+    "build_dataset_from_list": "build a DatasetFromList from a Python list with optional copy and serialization for efficient multi-process data loading",
+    "convert_to_iterable_dataset": "convert a map-style dataset to an iterable-style dataset with sharding support across PyTorch DataLoader workers",
+    "group_by_aspect_ratio": "group dataset elements into batches by aspect ratio to reduce padding overhead during training",
+    "test_map_dataset": "test MapDataset with a map function that filters out invalid samples by returning None"
+  },
+  "facebookresearch_detectron2/detectron2/data/dataset_mapper.py": {
+    "create_DatasetMapper_from_config": "create a DatasetMapper from a Detectron2 config object for training data augmentation",
+    "test_DatasetMapper_call": "test the DatasetMapper __call__ method on a dataset dict to produce model-ready training tensors",
+    "refactor_DatasetMapper_transform_annotations": "refactor the DatasetMapper _transform_annotations method to support additional annotation types",
+    "review_DatasetMapper_from_config": "review the DatasetMapper from_config class method and its augmentation pipeline configuration",
+    "summarize_DatasetMapper_call": "summarize the DatasetMapper __call__ method and its image loading, augmentation, and tensor conversion pipeline"
+  },
+  "facebookresearch_detectron2/detectron2/data/detection_utils.py": {
+    "build_augmentation": "build image augmentation pipeline with resize and random flip from detectron2 config",
+    "read_image": "read an image file into numpy array with EXIF orientation handling and format conversion",
+    "annotations_to_instances": "convert dataset annotation dicts into detectron2 Instances object with boxes, classes, masks",
+    "transform_instance_annotations": "apply geometric transforms to bounding boxes, segmentation masks, and keypoints of an instance",
+    "filter_empty_instances": "filter out instances with empty or too-small bounding boxes and masks from an Instances object"
+  },
+  "facebookresearch_detectron2/detectron2/data/datasets/builtin.py": {
+    "register_all_coco": "register all COCO dataset splits including instance segmentation and panoptic segmentation variants",
+    "register_all_lvis": "register all LVIS dataset splits for instance segmentation across v1 and v0.5 versions",
+    "register_all_cityscapes": "register all Cityscapes dataset splits for instance segmentation and semantic segmentation tasks",
+    "register_all_cityscapes_panoptic": "register all Cityscapes panoptic segmentation dataset splits",
+    "register_all_pascal_voc": "register all PASCAL VOC 2007 and 2012 dataset splits for object detection and segmentation",
+    "register_all_ade20k": "register all ADE20K semantic segmentation dataset splits for training and validation"
+  },
+  "facebookresearch_detectron2/detectron2/data/datasets/cityscapes.py": {
+    "load_cityscapes_instances": "load cityscapes instance segmentation annotations from image and ground truth directories into Detectron2 format dicts",
+    "load_cityscapes_semantic": "load cityscapes semantic segmentation file paths and metadata from image and ground truth directories",
+    "_cityscapes_files_to_dict": "parse cityscapes annotation files into a single Detectron2 dataset dict with annotations and bounding boxes",
+    "_get_cityscapes_files": "scan cityscapes directory structure and return tuples of image, instance, label, and json file paths",
+    "test_cityscapes_loader": "test the cityscapes dataset loader module by loading instance or semantic annotations and visualizing results"
+  },
+  "facebookresearch_detectron2/detectron2/data/datasets/cityscapes_panoptic.py": {
+    "register_all_cityscapes_panoptic": "register all Cityscapes panoptic dataset splits (train, val) to Detectron2 DatasetCatalog with metadata",
+    "load_cityscapes_panoptic": "load Cityscapes panoptic dataset from image dir, ground truth dir, and JSON annotation file into Detectron2 standard format",
+    "get_cityscapes_panoptic_files": "scan image and annotation directories to build a list of image-file, label-file, and segments-info tuples",
+    "create_cityscapes_panoptic_dataset": "create a Detectron2 dataset for Cityscapes panoptic segmentation using registered catalog entries and metadata",
+    "convert_category_ids_panoptic": "convert Cityscapes panoptic category IDs from original dataset IDs to contiguous training IDs using thing and stuff mappings"
+  },
+  "facebookresearch_detectron2/detectron2/data/datasets/coco.py": {
+    "load_coco_json": "load a COCO-format JSON annotation file and convert it to Detectron2 dataset dicts",
+    "register_coco_instances": "register a COCO dataset instance with Detectron2 DatasetCatalog and MetadataCatalog",
+    "load_sem_seg": "load semantic segmentation ground truth and input image files matching by filename",
+    "convert_to_coco_json": "convert a Detectron2-registered dataset into COCO JSON format and save to a file",
+    "run_coco_loader": "run the COCO JSON dataset loader CLI to load annotations and visualize dataset samples"
+  },
+  "facebookresearch_detectron2/detectron2/data/datasets/coco_panoptic.py": {
+    "load_coco_panoptic_json": "load COCO panoptic annotations from JSON and return Detectron2 standard format dataset dicts",
+    "register_coco_panoptic": "register a standard COCO panoptic segmentation dataset with DatasetCatalog and MetadataCatalog",
+    "register_coco_panoptic_separated": "register a separated COCO panoptic dataset with both instance and semantic annotations",
+    "merge_to_panoptic": "merge detection and semantic segmentation dicts by file name into panoptic segmentation dicts",
+    "test_coco_panoptic_loader": "test the COCO panoptic dataset loader by loading annotations and visualizing samples"
+  },
+  "facebookresearch_detectron2/detectron2/data/datasets/lvis.py": {
+    "register_dataset_lvis_instances": "register a LVIS dataset in Detectron2 using json annotations and image root directory",
+    "load_lvis_json_annotations": "load LVIS json annotation file and return dataset records in Detectron2 standard format",
+    "get_lvis_instances_meta": "get LVIS dataset metadata including thing_classes for a given dataset version",
+    "visualize_lvis_dataset": "visualize LVIS dataset annotations by drawing bounding boxes and segmentations on images",
+    "test_lvis_dataset_loader": "test the LVIS json dataset loader by loading annotations and saving visualized images"
+  },
+  "facebookresearch_detectron2/detectron2/data/datasets/pascal_voc.py": {
+    "load_voc_instances": "load Pascal VOC detection annotations from a dataset directory into Detectron2 format dicts",
+    "register_pascal_voc": "register a Pascal VOC dataset split in Detectron2 DatasetCatalog with metadata",
+    "load_pascal_voc_train": "load Pascal VOC training instances from a directory with train split and default 20 class names",
+    "register_pascal_voc_split": "register a Pascal VOC dataset split with custom name, directory, split type, and year",
+    "load_pascal_voc_instances": "load Pascal VOC test or validation instances with a custom class names list"
+  },
+  "facebookresearch_detectron2/detectron2/data/samplers/distributed_sampler.py": {
+    "create_TrainingSampler": "create a TrainingSampler to produce an infinite stream of shuffled training indices across distributed workers",
+    "create_RandomSubsetTrainingSampler": "create a RandomSubsetTrainingSampler to sample a random subset of training indices for accuracy estimation",
+    "create_RepeatFactorTrainingSampler": "create a RepeatFactorTrainingSampler to handle class-imbalanced datasets with repeat factors based on category frequency",
+    "create_InferenceSampler": "create an InferenceSampler to split inference indices evenly across all distributed workers",
+    "build_repeat_factors_from_category_frequency": "build repeat factors from category frequency for class-imbalanced datasets like LVIS"
+  },
+  "facebookresearch_detectron2/detectron2/data/transforms/augmentation.py": {
+    "create_augmentation_subclass": "create a subclass of Augmentation that defines get_transform to generate a Transform for image data augmentation",
+    "build_augmentation_list": "build an AugmentationList to apply a sequence of augmentations in order to an AugInput object",
+    "create_aug_input": "create an AugInput object with an image ndarray and optional boxes and semantic segmentation mask",
+    "apply_augmentations": "apply a list of augmentations to an image or AugInput and return the transformed inputs and transforms",
+    "test_aug_input_transform": "test AugInput.transform to in-place transform image, boxes, and semantic segmentation with a Transform"
+  },
+  "facebookresearch_detectron2/detectron2/data/transforms/augmentation_impl.py": {
+    "build_augmentation_resize_shortest_edge": "build a data augmentation pipeline that resizes images while preserving aspect ratio with random short edge sampling",
+    "create_random_crop_augmentation": "create a random crop augmentation with relative, absolute, or relative_range crop types for image datasets",
+    "build_color_jitter_augmentations": "build color jitter augmentations including random brightness, contrast, and saturation transformations on RGB images",
+    "build_lighting_augmentation": "build AlexNet-style lighting augmentation with PCA-based color jitter on RGB images",
+    "create_min_iou_random_crop": "create a minimum IoU random crop augmentation that crops images while preserving bounding box overlap constraints"
+  },
+  "facebookresearch_detectron2/detectron2/data/transforms/transform.py": {
+    "create_resize_transform": "create a ResizeTransform to resize an image from original dimensions to a target size with bilinear interpolation",
+    "create_rotation_transform": "create a RotationTransform to rotate an image by a given angle around its center with expand",
+    "create_extent_transform": "create an ExtentTransform to extract and scale a subregion from a source image to a target output size",
+    "create_color_transform": "create a ColorTransform to apply a photometric operation to an image without changing coordinates",
+    "apply_rotated_box_transforms": "apply horizontal flip and resize transforms on rotated bounding boxes in x_center y_center width height angle format"
+  },
+  "facebookresearch_detectron2/detectron2/engine/defaults.py": {
+    "create_ddp_model": "create a DistributedDataParallel model from a torch.nn.Module for multi-GPU training",
+    "parse_training_arguments": "parse command line arguments for detectron2 training including config file, GPUs, and distributed settings",
+    "setup_training_environment": "setup detectron2 training environment with logger, config backup, seeding, and precision settings",
+    "create_prediction_pipeline": "create a DefaultPredictor that loads a model checkpoint and runs inference on a single image",
+    "build_training_loop": "build a DefaultTrainer with model, optimizer, dataloader, hooks, and checkpointing for standard training"
+  },
+  "facebookresearch_detectron2/detectron2/engine/hooks.py": {
+    "run_hook_eval_periodically": "run an evaluation function periodically during training with EvalHook",
+    "create_hook_custom_callbacks": "create a training hook with custom before and after step callbacks using CallbackHook",
+    "run_hook_profile_model": "run torch profiler during training iterations with TorchProfiler hook",
+    "run_hook_compute_precise_bn": "run precise batch norm statistics update hook on model during training",
+    "build_hook_checkpoint_best": "build a checkpoint hook that saves the best model weights based on a validation metric"
+  },
+  "facebookresearch_detectron2/detectron2/engine/launch.py": {
+    "run_launch_distributed_training": "run distributed training by launching multi-process workers across multiple GPUs and machines",
+    "run_launch_single_machine_training": "run single-machine multi-GPU training with auto-selected free port for distributed initialization",
+    "run_launch_multi_machine_training": "run multi-machine distributed training with TCP-based process group initialization",
+    "run_find_free_port": "find an available network port by binding to port 0 and retrieving the assigned port",
+    "run_distributed_worker_setup": "setup distributed worker process with NCCL or GLOO backend and local process group"
+  },
+  "facebookresearch_detectron2/detectron2/engine/train_loop.py": {
+    "build_hook_base": "build a HookBase subclass to register custom callbacks before and after each training step",
+    "create_trainer_base": "create a TrainerBase subclass with a custom run_step implementation for iterative training loops",
+    "create_simple_trainer": "create a SimpleTrainer instance with a model, data loader, and optimizer for standard single-cost training",
+    "create_amp_trainer": "create an AMPTrainer instance with automatic mixed precision using autocast and grad scaler",
+    "test_trainer_hooks": "test the TrainerBase register_hooks method to verify hooks execute in order during training"
+  },
+  "facebookresearch_detectron2/detectron2/evaluation/cityscapes_evaluation.py": {
+    "create_CityscapesInstanceEvaluator": "create a CityscapesInstanceEvaluator to evaluate instance segmentation results on the cityscapes dataset",
+    "create_CityscapesSemSegEvaluator": "create a CityscapesSemSegEvaluator to evaluate semantic segmentation results on the cityscapes dataset",
+    "test_CityscapesEvaluator_reset": "test the CityscapesEvaluator reset method to initialize a temporary working directory for evaluation",
+    "run_CityscapesInstanceEvaluator_evaluate": "run the CityscapesInstanceEvaluator evaluate method to compute AP and AP50 metrics using the cityscapes API",
+    "run_CityscapesSemSegEvaluator_evaluate": "run the CityscapesSemSegEvaluator evaluate method to compute IoU and iIoU metrics using the cityscapes API"
+  },
+  "facebookresearch_detectron2/detectron2/evaluation/coco_evaluation.py": {
+    "build_coco_evaluator": "build a COCOEvaluator instance to evaluate object detection, segmentation, or keypoint predictions on a dataset",
+    "test_evaluate_predictions": "test the _eval_predictions method to evaluate COCO-format predictions and compute AP metrics for bbox, segm, or keypoints tasks",
+    "test_evaluate_box_proposals": "test the _eval_box_proposals method to evaluate detection proposal recall metrics across area ranges and limits",
+    "summarize_coco_results": "summarize COCOeval results into per-category and overall AP, AP50, AP75, APs, APm, APl metrics for a given iou_type",
+    "test_instances_to_coco_json": "test the instances_to_coco_json function to convert Instances objects to COCO-format JSON annotations for evaluation"
+  },
+  "facebookresearch_detectron2/detectron2/evaluation/evaluator.py": {
+    "run_inference_on_dataset": "run inference on a model with a data loader and evaluator, benchmarking speed and returning evaluation results",
+    "create_dataset_evaluator": "create a custom DatasetEvaluator subclass that implements process and evaluate methods for a detection task",
+    "combine_evaluators": "combine multiple DatasetEvaluator instances into a single DatasetEvaluators wrapper for joint evaluation",
+    "use_inference_context": "use inference_context as a context manager to temporarily set a model to eval mode and restore training mode afterwards",
+    "benchmark_inference_speed": "benchmark model inference speed per iteration across devices with warmup, data loading, compute, and eval timing"
+  },
+  "facebookresearch_detectron2/detectron2/evaluation/fast_eval_api.py": {
+    "run_COCOeval_opt_evaluate": "run COCOeval_opt.evaluate() to perform per-image COCO evaluation using C++ backend for speed",
+    "accumulate_COCOeval_opt_results": "accumulate COCOeval_opt evaluation results into self.eval with C++-accelerated precision and recall",
+    "test_COCOeval_opt_class": "test the COCOeval_opt class that extends COCOeval with C++-accelerated evaluate and accumulate methods",
+    "review_COCOeval_opt_accumulate": "review the COCOeval_opt.accumulate() method that reshapes recall, precision, and scores from C++ results",
+    "summarize_COCOeval_opt_evaluate": "summarize the COCOeval_opt.evaluate() method that converts instances to C++ format and calls COCOevalEvaluateImages"
+  },
+  "facebookresearch_detectron2/detectron2/evaluation/lvis_evaluation.py": {
+    "create_lvis_evaluator": "create an LVISEvaluator instance to evaluate object detection and segmentation outputs on LVIS datasets",
+    "run_lvis_evaluation": "run LVIS AP evaluation on bbox or segm predictions and return per-category metrics like AP, AP50, APs, APm, APl",
+    "test_evaluate_box_proposals": "test box proposal recall evaluation with configurable IoU thresholds and area ranges on LVIS annotations",
+    "summarize_lvis_predictions": "summarize LVIS model predictions by processing inputs and outputs into LVIS-format result dictionaries",
+    "review_lvis_evaluator_reset": "review the LVISEvaluator reset method to clear accumulated predictions before a new evaluation run"
+  },
+  "facebookresearch_detectron2/detectron2/evaluation/panoptic_evaluation.py": {
+    "create_COCOPanopticEvaluator": "create a COCOPanopticEvaluator instance to evaluate panoptic quality metrics on COCO dataset predictions",
+    "test_COCOPanopticEvaluator_process": "test the COCOPanopticEvaluator process method to convert panoptic segmentation outputs into prediction records",
+    "test_COCOPanopticEvaluator_evaluate": "test the COCOPanopticEvaluator evaluate method to compute PQ, SQ, RQ metrics using PanopticAPI",
+    "run_panoptic_evaluation_cli": "run panoptic quality evaluation from CLI with ground truth and prediction JSON and directory arguments",
+    "summarize__print_panoptic_results": "summarize the _print_panoptic_results function that formats and logs PQ, SQ, RQ metrics in a table"
+  },
+  "facebookresearch_detectron2/detectron2/evaluation/pascal_voc_evaluation.py": {
+    "create_PascalVOCDetectionEvaluator": "create a PascalVOCDetectionEvaluator instance for evaluating VOC-style AP on a given dataset name",
+    "run_PascalVOCDetectionEvaluator_reset": "reset the PascalVOCDetectionEvaluator predictions before processing new model outputs",
+    "run_PascalVOCDetectionEvaluator_process": "process model outputs with the evaluator by passing inputs and outputs to accumulate predictions",
+    "run_PascalVOCDetectionEvaluator_evaluate": "evaluate accumulated predictions and return AP, AP50, AP75 metrics for bounding boxes",
+    "run_voc_eval": "run voc_eval to compute precision, recall, and AP for a given class using detection and annotation files"
+  },
+  "facebookresearch_detectron2/detectron2/evaluation/rotated_coco_evaluation.py": {
+    "test_RotatedCOCOeval_is_rotated": "test the RotatedCOCOeval.is_rotated method to detect 5-dim rotated bounding boxes",
+    "test_RotatedCOCOeval_boxlist_to_tensor": "test the RotatedCOCOeval.boxlist_to_tensor method to convert box lists to torch tensors with 5-dim support",
+    "test_RotatedCOCOeval_computeIoU": "test the RotatedCOCOeval.computeIoU method to compute IoU for rotated bounding boxes",
+    "build_RotatedCOCOEvaluator": "build a RotatedCOCOEvaluator instance to evaluate rotated bounding box detection using COCO metrics",
+    "test_RotatedCOCOEvaluator_process": "test the RotatedCOCOEvaluator.process method to convert model outputs to COCO-format predictions"
+  },
+  "facebookresearch_detectron2/detectron2/evaluation/sem_seg_evaluation.py": {
+    "create_SemSegEvaluator": "create a SemSegEvaluator instance for evaluating semantic segmentation metrics on a dataset",
+    "run_SemSegEvaluator_process": "run SemSegEvaluator process to accumulate confusion matrices from model inputs and outputs",
+    "run_SemSegEvaluator_evaluate": "run SemSegEvaluator evaluate to compute mIoU, accuracy, and boundary IoU metrics",
+    "use_load_image_into_numpy_array": "use load_image_into_numpy_array to load a semantic segmentation image file into a numpy array",
+    "use_SemSegEvaluator_encode_json_sem_seg": "use SemSegEvaluator encode_json_sem_seg to convert semantic segmentation masks to COCO RLE format"
+  },
+  "facebookresearch_detectron2/detectron2/evaluation/testing.py": {
+    "print_csv_format": "print evaluation results in CSV format for easy spreadsheet copy-pasting",
+    "verify_results": "verify evaluation results against expected thresholds and exit on failure",
+    "flatten_results_dict": "flatten a hierarchical results dictionary into a single-level key-slash-value dict",
+    "test_print_csv_format": "test the print_csv_format function with sample evaluation metrics",
+    "test_verify_results": "test the verify_results function with expected and actual evaluation results"
+  },
+  "facebookresearch_detectron2/detectron2/export/api.py": {
+    "export_caffe2_detection_model": "export a detectron2 PyTorch model to Caffe2 protobuf format using Caffe2Tracer",
+    "export_onnx_detection_model": "export a detectron2 PyTorch model to ONNX format using Caffe2Tracer",
+    "export_torchscript_detection_model": "export a detectron2 PyTorch model to TorchScript format using Caffe2Tracer",
+    "save_caffe2_protobuf_model": "save a Caffe2Model to protobuf files including model.pb, model_init.pb, and model.pbtxt",
+    "load_caffe2_protobuf_model": "load a Caffe2Model from saved protobuf files in a directory"
+  },
+  "facebookresearch_detectron2/detectron2/export/c10.py": {
+    "build_caffe2_rpn": "build a Caffe2-compatible RPN that generates object proposals using caffe2 ops like GenerateProposals and CollectRpnProposals",
+    "create_caffe2_roi_pooled_features": "create Caffe2-compatible ROI pooling that applies RoIAlign or RoIAlignRotated across FPN levels with DistributeFpnProposals and BatchPermutation",
+    "run_caffe2_fast_rcnn_inference": "run Caffe2 fast R-CNN inference that transforms bounding boxes, applies NMS, and returns ranked detection results per image",
+    "test_caffe2_instances_list": "test InstancesList tensor representation that converts between batched Caffe2 proposals and per-image detectron2 Instances",
+    "review_caffe2_mask_keypoint_inference": "review Caffe2 mask and keypoint R-CNN inference that applies sigmoid mask prediction and HeatmapMaxKeypoint ops on tensor-mode predictions"
+  },
+  "facebookresearch_detectron2/detectron2/export/caffe2_export.py": {
+    "export_onnx_model": "export a PyTorch model to ONNX format by tracing it with sample inputs",
+    "export_caffe2_detection_model": "export a caffe2-compatible Detectron2 model to caffe2 protobuf format via ONNX",
+    "run_and_save_graph": "run a caffe2 model on given inputs and save the computation graph with blob shapes",
+    "_assign_device_option": "assign GPU device options to ONNX-exported Caffe2 network operations",
+    "_op_stats": "generate operator statistics showing type counts from a Caffe2 net definition"
+  },
+  "facebookresearch_detectron2/detectron2/export/caffe2_inference.py": {
+    "create_ProtobufModel": "create a ProtobufModel wrapper around a caffe2 protobuf net to run inference with torch.Tensor inputs and outputs",
+    "run_ProtobufModel_forward": "run the ProtobufModel forward pass by feeding torch.Tensor inputs and returning tuple of torch.Tensor outputs",
+    "infer_ProtobufModel_output_devices": "infer the output device types (cpu or cuda) for each caffe2 network output blob from input tensor devices",
+    "create_ProtobufDetectionModel": "create a ProtobufDetectionModel that wraps ProtobufModel with batched input conversion and output format conversion for detection tasks",
+    "run_ProtobufDetectionModel_forward": "run the ProtobufDetectionModel forward pass with batched inputs to get converted detection results"
+  },
+  "facebookresearch_detectron2/detectron2/export/caffe2_modeling.py": {
+    "create_Caffe2MetaArch": "create a Caffe2-compatible meta architecture wrapper for a detectron2 model",
+    "build_Caffe2GeneralizedRCNN": "build a Caffe2-compatible GeneralizedRCNN wrapper with ROI heads patching for export",
+    "convert_batched_inputs_to_c2_format": "convert batched detectron2 inputs to Caffe2-style tuple of tensors format",
+    "assemble_rcnn_outputs_by_name": "assemble Caffe2 model tensor outputs into detectron2 Instances format",
+    "get_Caffe2_outputs_converter": "get an outputs converter function to transform Caffe2 results back to detectron2 format"
+  },
+  "facebookresearch_detectron2/detectron2/export/caffe2_patch.py": {
+    "patch_generalized_rcnn": "patch a generalized RCNN model to replace RPN and ROIPooler modules with Caffe2-compatible versions",
+    "patch_model_modules": "patch a PyTorch model to recursively replace target modules with Caffe2-compatible converters",
+    "mock_fastrcnn_outputs_inference": "mock FastRCNN output inference to use Caffe2-compatible inference during testing",
+    "mock_roi_heads_inference": "mock ROI head inference functions for keypoint, mask, and fast RCNN outputs using context managers",
+    "patch_roi_heads_caffe2": "patch ROI heads to use Caffe2-compatible inference for box predictor, keypoint, and mask heads"
+  },
+  "facebookresearch_detectron2/detectron2/export/flatten.py": {
+    "flatten_to_tuple": "flatten a hierarchical object into a tuple of tensors for PyTorch tracing and return a rebuild schema",
+    "create_TracingAdapter": "create a TracingAdapter wrapper that flattens model inputs/outputs so torch.jit.trace can handle rich data structures",
+    "build_Schema_flatten": "build a Schema subclass to define how to flatten and rebuild a custom object for PyTorch tracing",
+    "test_TensorWrapSchema": "test TensorWrapSchema flatten and rebuild for tensor wrapper objects like Boxes and ROIMasks",
+    "run_InstancesSchema": "run InstancesSchema to flatten Detectron2 Instances objects into tensor tuples for tracing"
+  },
+  "facebookresearch_detectron2/detectron2/export/shared.py": {
+    "build_construct_init_net_from_params": "build a Caffe2 init_net from a params dictionary with optional device options",
+    "refactor_remove_reshape_for_fc": "refactor a Caffe2 predict_net by removing unnecessary reshape ops before fully connected layers",
+    "optimize_fuse_copy_between_cpu_and_gpu": "optimize a Caffe2 predict_net by fusing redundant CPU-GPU copy operations",
+    "clean_remove_dead_end_ops": "clean a Caffe2 NetDef by removing dead-end operations with no consumers",
+    "transform_rename_op_input": "transform a Caffe2 predict_net by renaming an operator's input with automatic re-routing"
+  },
+  "facebookresearch_detectron2/detectron2/export/torchscript.py": {
+    "scripting_with_instances": "script a detectron2 model with Instances class attributes for torchscript export",
+    "export_torchscript_with_instances": "export a detectron2 model to torchscript format using static Instances field declarations",
+    "dump_torchscript_IR": "dump torchscript model IR, code, and graph files for debugging a scripted or traced module",
+    "freeze_training_mode": "freeze model training mode during torchscript compilation to ensure evaluation behavior",
+    "patch_instances": "patch the Instances class with static fields to enable torch.jit.script compatibility"
+  },
+  "facebookresearch_detectron2/detectron2/export/torchscript_patch.py": {
+    "patch_instances": "patch detectron2 Instances class with a statically-typed scriptable class for TorchScript compilation",
+    "patch_nonscriptable_classes": "patch ResNet and FPN backbone classes to use ModuleList for TorchScript compatibility",
+    "patch_builtin_len": "patch builtin len() function in detectron2 modules to use __len__ for tracing friendliness",
+    "freeze_training_mode": "freeze training mode annotations on a model's submodules to meta-compile away training codepaths",
+    "script_torchscript_model": "script a detectron2 model with TorchScript by applying instances, backbone, and training mode patches"
+  },
+  "facebookresearch_detectron2/detectron2/layers/aspp.py": {
+    "create_aspp_module": "create an ASPP module with 1x1 conv, atrous convs at multiple dilations, and global average pooling",
+    "build_aspp_depthwise": "build an ASPP module using DepthwiseSeparableConv2d for the atrous convolution branches",
+    "test_aspp_forward": "test the ASPP forward pass with a fixed input tensor and verify output channel dimensions",
+    "refactor_aspp_pooling": "refactor the ASPP pooling layer to use a fixed kernel size instead of adaptive global average pooling",
+    "review_aspp_dropout": "review the ASPP dropout application on the concatenated multi-scale feature output"
+  },
+  "facebookresearch_detectron2/detectron2/layers/batch_norm.py": {
+    "create_frozen_batch_norm_2d": "create a FrozenBatchNorm2d layer with fixed statistics for inference on pretrained backbone models",
+    "convert_module_to_frozen_batchnorm": "convert all BatchNorm and SyncBatchNorm layers in a module to FrozenBatchNorm2d for inference",
+    "convert_frozen_to_batchnorm": "convert FrozenBatchNorm2d layers back to BatchNorm2d for quantization compatibility",
+    "get_norm_layer_by_name": "get a normalization layer instance by string name such as BN, SyncBN, FrozenBN, GN, or LN",
+    "create_naive_sync_batch_norm": "create a NaiveSyncBatchNorm layer that correctly handles gradient computation across workers with different batch sizes"
+  },
+  "facebookresearch_detectron2/detectron2/layers/blocks.py": {
+    "create_CNNBlockBase": "create a CNNBlockBase subclass with in_channels, out_channels, and stride for NCHW tensor processing",
+    "build_DepthwiseSeparableConv2d": "build a DepthwiseSeparableConv2d module with depthwise and pointwise convolutions for efficient CNN layers",
+    "test_CNNBlockBase_freeze": "test the CNNBlockBase freeze method that sets requires_grad=False and converts BatchNorm to FrozenBatchNorm",
+    "review_DepthwiseSeparableConv2d_forward": "review the DepthwiseSeparableConv2d forward method that applies depthwise then pointwise convolution",
+    "summarize_CNNBlockBase_attributes": "summarize the CNNBlockBase attributes in_channels, out_channels, and stride used in CNN block specifications"
+  },
+  "facebookresearch_detectron2/detectron2/layers/deform_conv.py": {
+    "create_DeformConv": "create a DeformConv module for deformable convolution with configurable kernel size, stride, padding, and dilation",
+    "create_ModulatedDeformConv": "create a ModulatedDeformConv module with offset and mask inputs for modulated deformable convolution",
+    "run_deform_conv": "run deform_conv with input tensor, offset tensor, and weight tensor to perform deformable convolution on CUDA",
+    "run_modulated_deform_conv": "run modulated_deform_conv with input, offset, mask, weight, and optional bias for modulated deformable convolution",
+    "review_DeformConv_forward": "review the DeformConv forward method that applies deformable convolution with optional normalization and activation"
+  },
+  "facebookresearch_detectron2/detectron2/layers/losses.py": {
+    "run_diou_loss": "run diou_loss to compute Distance IoU loss between two sets of bounding boxes in XYXY format",
+    "run_ciou_loss": "run ciou_loss to compute Complete IoU loss including aspect ratio and distance penalties",
+    "test_diou_loss": "test diou_loss with matching boxes to verify it returns near-zero loss",
+    "refactor_diou_loss": "refactor diou_loss to support batched tensor inputs with arbitrary box dimensions",
+    "review_ciou_loss": "review ciou_loss for numerical stability with non-overlapping bounding boxes"
+  },
+  "facebookresearch_detectron2/detectron2/layers/mask_ops.py": {
+    "paste_masks_in_image": "paste a set of square masks into an image using bounding boxes and a threshold for binarization",
+    "paste_mask_in_image_old": "paste a single mask into an image using bilinear resizing via PIL and a threshold for binarization",
+    "pad_masks": "pad a tensor of square masks with a given number of cells on all sides and return the scale factor",
+    "scale_boxes": "scale bounding box coordinates by a factor while preserving their center positions",
+    "paste_masks_tensor_shape": "paste masks into an image when image_shape is provided as tensors instead of integers"
+  },
+  "facebookresearch_detectron2/detectron2/layers/nms.py": {
+    "run_batched_nms": "run batched non-maximum suppression on axis-aligned boxes with category indices and IoU threshold",
+    "run_nms_rotated": "run non-maximum suppression on rotated bounding boxes using intersection-over-union threshold",
+    "run_batched_nms_rotated": "run batched non-maximum suppression on rotated boxes with per-category filtering and IoU threshold",
+    "test_batched_nms": "test batched NMS with float conversion for fp16 compatibility on axis-aligned detection boxes",
+    "test_nms_rotated": "test rotated NMS on boxes in (x_center, y_center, width, height, angle_degrees) format"
+  },
+  "facebookresearch_detectron2/detectron2/layers/roi_align.py": {
+    "create_ROIAlign": "create a ROIAlign module with output size, spatial scale, sampling ratio, and alignment option",
+    "build_ROIAlign_forward": "build a ROIAlign forward pass that takes NCHW input tensors and Bx5 ROI boxes",
+    "test_ROIAlign_aligned": "test the ROIAlign class with aligned=True to verify correct pixel coordinate alignment",
+    "review_ROIAlign_repr": "review the ROIAlign __repr__ method that returns output_size, spatial_scale, sampling_ratio, and aligned",
+    "summarize_ROIAlign_dequantize": "summarize the ROIAlign forward method that dequantizes input tensors before roi_align operation"
+  },
+  "facebookresearch_detectron2/detectron2/layers/roi_align_rotated.py": {
+    "create_roi_align_rotated_module": "create a ROIAlignRotated module with output size, spatial scale, and sampling ratio parameters",
+    "run_roi_align_rotated_forward": "run ROIAlignRotated forward pass on NCHW images with Bx6 rotated bounding boxes",
+    "test_roi_align_rotated_autograd": "test ROIAlignRotated backward pass gradient computation for rotated ROI alignment",
+    "review_roi_align_rotated_continuous_coords": "review ROIAlignRotated continuous coordinate handling with floor and ceil pixel indexing",
+    "summarize_roi_align_rotated_dtype_casting": "summarize ROIAlignRotated float16 to float32 dtype casting behavior in forward pass"
+  },
+  "facebookresearch_detectron2/detectron2/layers/rotated_boxes.py": {
+    "run_pairwise_iou_rotated": "run pairwise_iou_rotated to compute IoU between two sets of rotated bounding boxes in (x_center, y_center, width, height, angle) format",
+    "test_pairwise_iou_rotated": "test pairwise_iou_rotated with two torch tensors of rotated boxes and verify the NxM IoU matrix output",
+    "refactor_pairwise_iou_rotated": "refactor pairwise_iou_rotated to support batched rotated box inputs with additional dimension handling",
+    "review_pairwise_iou_rotated": "review pairwise_iou_rotated for correctness and performance when computing IoU of rotated bounding boxes",
+    "summarize_pairwise_iou_rotated": "summarize pairwise_iou_rotated which computes intersection-over-union between sets of rotated boxes"
+  },
+  "facebookresearch_detectron2/detectron2/layers/wrappers.py": {
+    "build_cat_concatenate_tensors": "build a cat function that efficiently concatenates a list of tensors, avoiding a copy when the list has only one element",
+    "create_conv2d_with_norm_activation": "create a Conv2d class wrapping torch.nn.Conv2d to support empty inputs, norm layers, and activation functions",
+    "test_cross_entropy_empty_input": "test the cross_entropy wrapper that returns zero instead of nan when the target tensor is empty",
+    "refactor_shapes_to_tensor_traceable": "refactor shapes_to_tensor to convert a list of integer scalars or tensor scalars into a traceable and scriptable tensor vector",
+    "summarize_move_device_like_tracing": "summarize move_device_like, a tracing-friendly way to cast a tensor to another tensor's device"
+  },
+  "facebookresearch_detectron2/detectron2/model_zoo/model_zoo.py": {
+    "get_config_file": "get the local path to a Detectron2 model zoo config file by its relative config path",
+    "get_config": "get a Detectron2 config object for a model zoo model, optionally with trained weights set",
+    "get_checkpoint_url": "get the S3 download URL for a pretrained Detectron2 model given its config path",
+    "get": "get a fully built Detectron2 model from the model zoo with pretrained weights loaded",
+    "query_model_urls": "query the _ModelZooUrls class to look up pretrained model URLs by config path name"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/anchor_generator.py": {
+    "build_anchor_generator": "build an anchor generator from config and input shape using build_anchor_generator",
+    "create_default_anchors": "create default rectangular anchors for object detection feature maps with DefaultAnchorGenerator",
+    "create_rotated_anchors": "create rotated anchors for arbitrary-oriented scene text detection with RotatedAnchorGenerator",
+    "generate_cell_anchors": "generate cell anchor tensors for different sizes, aspect ratios, and angles centered at origin",
+    "broadcast_anchor_params": "broadcast anchor sizes and aspect ratios across multiple feature maps"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/box_regression.py": {
+    "build_box2box_transform": "build a Box2BoxTransform instance with custom weights and scale clamp for R-CNN box regression",
+    "create_box2box_transform_rotated": "create a Box2BoxTransformRotated instance for rotated R-CNN box regression with 5 deltas",
+    "create_box2box_transform_linear": "create a Box2BoxTransformLinear instance for FCOS-style linear box regression",
+    "test_apply_deltas": "test the Box2BoxTransform apply_deltas method to transform source boxes using regression deltas",
+    "test_get_deltas": "test the Box2BoxTransform get_deltas method to compute deltas from source to target boxes"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/matcher.py": {
+    "create_matcher_instance": "create a Matcher instance with thresholds and labels to stratify prediction quality levels",
+    "call_matcher_with_quality_matrix": "call the Matcher to assign ground-truth indices and labels to predictions from an MxN match quality matrix",
+    "set_low_quality_matches": "set low quality matches for predictions that have maximum overlap with any ground-truth element",
+    "match_predictions_to_ground_truth": "match predicted bounding boxes to ground-truth boxes using IoU-based quality thresholds",
+    "label_predictions_by_iou_thresholds": "label each prediction as positive, negative, or ignored based on IoU threshold ranges"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/mmdet_wrapper.py": {
+    "build_mmdet_backbone": "build an MMDetBackbone wrapper to use mmdetection backbones in detectron2 with configurable neck and output shapes",
+    "create_mmdet_detector": "create an MMDetDetector wrapper to run mmdetection detectors for detection and instance segmentation in detectron2",
+    "test_convert_mmdet_result": "test the _convert_mmdet_result function to convert mmdetection results into detectron2 Instances objects",
+    "summarize_parse_losses": "summarize the _parse_losses function that parses mmdetection loss dicts into log variables and metrics",
+    "refactor_to_container": "refactor the _to_container helper to convert omegaconf DictConfig objects to mmdet ConfigDict containers"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/poolers.py": {
+    "create_ROIPooler": "create a ROIPooler module that pools ROI features from multiple feature map levels",
+    "build_assign_boxes_to_levels": "build a function that assigns boxes to FPN feature map levels based on canonical box size",
+    "run_convert_boxes_to_pooler_format": "run conversion of box lists to pooler format tensor with batch index and coordinates",
+    "test_ROIPooler_forward": "test the ROIPooler forward pass that pools features from a list of feature maps given box lists",
+    "review_ROIPooler_init": "review the ROIPooler __init__ method that configures pooler type, scales, and output size"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/postprocessing.py": {
+    "rescale_detector_results": "rescale detector prediction boxes, masks, and keypoints to a target output resolution",
+    "resize_instance_predictions": "resize raw R-CNN detector output instances to a different image resolution",
+    "clip_boxes_to_image": "scale and clip predicted bounding boxes to fit within the target image boundaries",
+    "upsample_sem_seg_logits": "upsample semantic segmentation prediction logits to the original image resolution",
+    "convert_roi_masks_to_bitmasks": "convert ROI mask predictions to bitmasks at the desired output resolution"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/sampling.py": {
+    "test_subsample_labels": "test the subsample_labels function to randomly sample positive and negative label indices from a tensor",
+    "refactor_subsample_labels": "refactor the subsample_labels function to support configurable device placement for random permutation generation",
+    "review_subsample_labels": "review the subsample_labels function that selects balanced positive and negative samples for object detection training",
+    "summarize_subsample_labels": "summarize the subsample_labels function that returns balanced positive and negative index vectors from label tensors",
+    "create_subsample_labels_usage": "create example usage of subsample_labels to sample balanced foreground and background indices for ROI training"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/test_time_augmentation.py": {
+    "create_DatasetMapperTTA": "create a DatasetMapperTTA instance to generate augmented image dataset dicts for test-time augmentation",
+    "build_GeneralizedRCNNWithTTA": "build a GeneralizedRCNNWithTTA wrapper to run detection inference with test-time augmentation on a GeneralizedRCNN model",
+    "test_DatasetMapperTTA_call": "test the DatasetMapperTTA callable to produce resized and flipped image variants from a single input dataset dict",
+    "run_GeneralizedRCNNWithTTA_call": "run GeneralizedRCNNWithTTA inference on a batch of inputs to get merged detections with improved accuracy from TTA",
+    "review_GeneralizedRCNNWithTTA_merge_detections": "review the GeneralizedRCNNWithTTA._merge_detections method that combines all augmented box predictions using NMS"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/backbone/backbone.py": {
+    "create_Backbone_subclass": "create a Backbone subclass that implements forward to return a dict of feature name to tensor",
+    "test_Backbone_forward": "test the Backbone forward method returns a dict mapping feature names to tensors",
+    "review_Backbone_size_divisibility": "review the Backbone size_divisibility property that specifies required input dimension divisibility",
+    "review_Backbone_padding_constraints": "review the Backbone padding_constraints property that generalizes size_divisibility with square padding support",
+    "summarize_Backbone_output_shape": "summarize the Backbone output_shape method that returns a dict of feature names to ShapeSpec objects"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/backbone/build.py": {
+    "build_backbone": "build a backbone model from a detectron2 config object and optional input shape specification",
+    "create_BACKBONE_REGISTRY": "create a registry for registering backbone classes that extract feature maps from images",
+    "register_backbone": "register a backbone class with the BACKBONE_REGISTRY so it can be looked up by name",
+    "get_backbone": "get a registered backbone class from the BACKBONE_REGISTRY by its name string",
+    "build_backbone_from_cfg": "build a backbone instance from detectron2 CfgNode configuration and ShapeSpec input shape"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/backbone/fpn.py": {
+    "build_fpn_backbone": "build a Feature Pyramid Network backbone with ResNet bottom-up and configurable output channels",
+    "build_retinanet_fpn_backbone": "build a RetinaNet-compatible FPN backbone with P6 and P7 extra downsampled feature levels",
+    "create_fpn_pyramid_features": "create multi-scale pyramid features from ResNet backbone feature maps using top-down fusion",
+    "create_lastlevel_max_pool": "create a LastLevelMaxPool module that generates a downsampled P6 feature from P5 via max pooling",
+    "create_lastlevel_p6p7": "create a LastLevelP6P7 module that generates P6 and P7 convolutional layers from C5 feature maps"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/backbone/mvit.py": {
+    "create_mvit_backbone": "create an MViT backbone model with configurable image size, patch embedding, and depth parameters",
+    "build_multiscale_attention": "build a MultiScaleAttention block with qkv pooling, window attention, and relative positional embeddings",
+    "configure_multiscale_block": "configure a MultiScaleBlock with stochastic depth, MLP, and residual pooling for transformer layers",
+    "run_mvit_forward_pass": "run a forward pass through the MViT backbone to extract multi-scale feature maps from scale2 to scale5",
+    "initialize_mvit_weights": "initialize MViT model weights with trunc_normal_ for linear layers and constant scaling for layer normalization"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/backbone/regnet.py": {
+    "build_regnet_model": "build a RegNet backbone model with custom width, depth, and group width parameters",
+    "build_any_net_model": "build an AnyNet backbone model with configurable stem, blocks, stages, and normalization",
+    "create_res_basic_block": "create a residual basic block with optional 1x1 projection for dimension mismatch",
+    "create_res_bottleneck_block": "create a residual bottleneck block with 1x1-3x3-1x1 transformation and optional SE",
+    "generate_regnet_parameters": "generate per-stage widths and depths from RegNet parameterization w_a, w_0, w_m, depth"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/backbone/resnet.py": {
+    "build_resnet_backbone": "build a ResNet backbone from config and input shape with configurable depth and normalization",
+    "create_ResNet": "create a ResNet model with stem, stages, optional classification head, and feature output specification",
+    "create_BottleneckBlock": "create a bottleneck residual block with 1x1, 3x3, 1x1 conv layers and optional stride in 1x1 conv",
+    "create_BasicBlock": "create a basic residual block with two 3x3 conv layers and projection shortcut for ResNet-18 and ResNet-34",
+    "create_DeformBottleneckBlock": "create a deformable bottleneck block with modulated or standard deformable conv in the 3x3 layer"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/backbone/swin.py": {
+    "build_swin_transformer_backbone": "build a SwinTransformer backbone model with configurable depths, embed_dim, and num_heads for feature extraction",
+    "create_window_partition_function": "create a function that partitions an image tensor into non-overlapping windows for local attention computation",
+    "create_window_attention_module": "create a WindowAttention module with relative position bias for multi-head self-attention within a window",
+    "build_swin_transformer_blocks": "build SwinTransformerBlock layers with alternating shifted and non-shifted windows for hierarchical feature learning",
+    "test_patch_merging_downsample": "test the PatchMerging layer that downsamples features by concatenating neighboring 2x2 patches"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/backbone/utils.py": {
+    "build_window_partition": "partition a tensor into non-overlapping windows with padding support for vision transformer attention",
+    "build_window_unpartition": "unpartition windowed tensors back to original spatial dimensions removing padding",
+    "build_add_decomposed_rel_pos": "add decomposed relative positional embeddings to an attention map from mvitv2",
+    "build_get_abs_pos": "compute absolute positional embeddings and resize them to match input spatial dimensions",
+    "build_patch_embed": "create a patch embedding module that converts images to patch tokens using a 2d convolution"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/backbone/vit.py": {
+    "create_ViT_backbone": "create a Vision Transformer backbone with configurable depth, embed_dim, and window attention blocks",
+    "build_SimpleFeaturePyramid": "build a simple feature pyramid on top of a ViT backbone with configurable scale factors and output channels",
+    "create_ViT_block": "create a transformer block with window attention, relative positional embeddings, and residual conv block support",
+    "create_attention_block": "create a multi-head attention block with relative position embeddings and qkv projections",
+    "calculate_ViT_lr_decay": "calculate learning rate decay rate for ViT parameters based on layer id and base decay rate"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/meta_arch/build.py": {
+    "build_model": "build the whole detectron2 model architecture from a config object and return an nn.Module",
+    "register_meta_arch": "register a custom meta-architecture class with the META_ARCH_REGISTRY for model building",
+    "get_registered_meta_arch": "get a registered meta-architecture class from META_ARCH_REGISTRY by its name string",
+    "log_api_usage": "log api usage for a detectron2 meta-architecture module via _log_api_usage",
+    "setup_model_device": "move a built detectron2 model to the device specified in cfg.MODEL.DEVICE"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/meta_arch/dense_detector.py": {
+    "build_dense_detector": "build a DenseDetector instance with a backbone, head, pixel_mean, and pixel_std for dense object detection",
+    "run_dense_detector_forward": "run the DenseDetector forward method with batched image inputs for training or inference",
+    "preprocess_image_dense_detector": "preprocess a batch of images by normalizing with pixel_mean and pixel_std, then padding and batching into an ImageList",
+    "transpose_dense_predictions": "transpose dense per-level predictions from (N, Ai x K, H, W) to (N, HxWxAi, K) for dense detection models",
+    "visualize_training_dense_detector": "visualize ground truth bounding boxes and top predicted boxes side by side for a training batch"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/meta_arch/fcos.py": {
+    "create_fcos_model": "create an FCOS dense detector model with backbone, head, and inference parameters",
+    "build_fcos_head": "build an FCOS detection head with input shapes and convolution dimensions for centerness prediction",
+    "run_fcos_training": "run FCOS forward training with images, features, predictions, and ground-truth instances to compute losses",
+    "run_fcos_inference": "run FCOS forward inference on images and features to produce per-image detection instances",
+    "test_fcos_anchor_matching": "test FCOS anchor matching by matching ground-truth boxes to multi-level anchors with quality matrix"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/meta_arch/panoptic_fpn.py": {
+    "build_panoptic_fpn_model": "build a PanopticFPN meta-architecture model from a detectron2 config for panoptic segmentation",
+    "run_panoptic_fpn_inference": "run PanopticFPN inference on batched image inputs with optional postprocessing",
+    "combine_semantic_and_instance_outputs": "combine semantic segmentation results with instance detection outputs into panoptic segmentation",
+    "configure_panoptic_fpn_thresholds": "configure PanopticFPN with custom overlap, area, and score thresholds for combining outputs",
+    "test_panoptic_fpn_training": "test PanopticFPN forward pass in training mode with semantic and instance ground truth"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/meta_arch/rcnn.py": {
+    "build_generalized_rcnn": "build a GeneralizedRCNN model with backbone, proposal generator, and ROI heads from a config",
+    "create_proposal_network": "create a ProposalNetwork that predicts object proposals using backbone and proposal generator",
+    "run_rcnn_inference": "run inference on a GeneralizedRCNN model given a list of batched input dictionaries",
+    "preprocess_rcnn_images": "preprocess images by normalizing with pixel mean/std and batching into an ImageList",
+    "visualize_rcnn_training": "visualize training by overlaying ground truth and predicted proposals on images"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/meta_arch/retinanet.py": {
+    "build_reitanet_model": "build a RetinaNet object detection model from a detectron2 configuration",
+    "create_retinanet_head": "create a RetinaNetHead with classification and bounding-box regression subnets",
+    "run_loss_computation": "run focal classification loss and box regression loss for training RetinaNet",
+    "test_anchor_labeling": "test anchor labeling by matching anchors to ground truth instances via IoU",
+    "run_inference_single_image": "run single-image inference with score thresholding and NMS on RetinaNet predictions"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/meta_arch/semantic_seg.py": {
+    "build_sem_seg_head": "build a semantic segmentation head from a detectron2 config and backbone output shape",
+    "create_SemanticSegmentor": "create a semantic segmentor model with a backbone, segmentation head, and pixel normalization parameters",
+    "run_SemanticSegmentor_forward": "run the semantic segmentor forward pass on batched image inputs for training or inference",
+    "create_SemSegFPNHead": "create an FPN-based semantic segmentation head with configurable stride, channels, and normalization",
+    "run_SemSegFPNHead_losses": "run the FPN head loss computation using cross-entropy on predicted logits and ground truth targets"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/proposal_generator/build.py": {
+    "build_proposal_generator_rpn": "build a proposal generator using RPN from cfg and input_shape",
+    "build_proposal_generator_rrpn": "build a rotated RPN proposal generator from cfg and input_shape",
+    "build_proposal_generator_precomputed": "build a proposal generator returning None for PrecomputedProposals name",
+    "register_proposal_generator": "register a custom proposal generator class to PROPOSAL_GENERATOR_REGISTRY",
+    "get_proposal_generator": "get a registered proposal generator from PROPOSAL_GENERATOR_REGISTRY by name"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/proposal_generator/proposal_utils.py": {
+    "run_find_top_rpn_proposals": "run find_top_rpn_proposals to select top-k highest scoring RPN proposals per image and apply NMS",
+    "add_ground_truth_to_proposals": "add ground truth boxes to RPN proposals for all images in a batch",
+    "add_ground_truth_to_proposals_single_image": "augment per-image RPN proposals with ground truth boxes and high objectness logits",
+    "test_find_top_rpn_proposals": "test find_top_rpn_proposals with tensor proposals, logits, image sizes, and NMS threshold",
+    "review_add_ground_truth_to_proposals": "review add_ground_truth_to_proposals and its single-image variant for concatenating gt with proposals"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/proposal_generator/rpn.py": {
+    "build_rpn_head": "build an RPN head from config and input shape using the RPN_HEAD_REGISTRY",
+    "create_rpn_proposals": "create a Region Proposal Network that generates object proposals from feature maps and anchors",
+    "label_and_sample_anchors": "label and sample RPN anchors by matching them with ground truth instances",
+    "compute_rpn_losses": "compute RPN classification and localization losses from predictions and ground truth",
+    "predict_rpn_proposals": "predict RPN proposals by decoding anchor deltas, applying NMS, and filtering small boxes"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/proposal_generator/rrpn.py": {
+    "select_top_rrpn_proposals": "select top-k rotated region proposals from feature maps with NMS filtering",
+    "create_rrpn_model": "create a rotated region proposal network model from a detectron2 configuration",
+    "build_rrpn_from_config": "build an RRPN proposal generator from detectron2 config and input feature map shapes",
+    "label_rrpn_anchors": "label and sample rotated anchors against ground-truth instances for training",
+    "predict_rrpn_proposals": "predict rotated region proposals from anchor deltas and objectness logits"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/roi_heads/box_head.py": {
+    "build_box_head": "build a box head for ROI-based object detection from a detectron2 config and input shape",
+    "create_FastRCNNConvFCHead": "create a FastRCNNConvFCHead with configurable conv and fc layer dimensions for box prediction",
+    "register_box_head": "register a custom box head class with the ROI_BOX_HEAD_REGISTRY for detectron2",
+    "instantiate_from_config": "instantiate a box head from detectron2 config using the from_config class method",
+    "get_box_head_output_shape": "get the output feature shape of a box head via the output_shape property"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/roi_heads/cascade_rcnn.py": {
+    "build_cascade_roi_heads": "build a CascadeROIHeads module with multiple cascade stages for progressive box refinement in object detection",
+    "create_cascade_box_head": "create cascade box heads and predictors with stage-specific IoU thresholds and box regression weights",
+    "run_cascade_forward": "run the CascadeROIHeads forward pass for training with per-stage loss computation or inference with averaged scores",
+    "test_cascade_box_prediction": "test the _forward_box method that iterates through cascade stages and refines proposals using previous stage predictions",
+    "review_match_and_label": "review the _match_and_label_boxes method that matches proposals to ground truth using stage-specific IoU matchers"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/roi_heads/fast_rcnn.py": {
+    "run_fast_rcnn_inference": "run fast_rcnn_inference to filter detections by score threshold and apply NMS across a batch of images",
+    "test_FastRCNNOutputLayers": "test FastRCNNOutputLayers forward pass to compute classification scores and box regression deltas from per-region features",
+    "review_FastRCNNOutputLayers_losses": "review FastRCNNOutputLayers.losses to compute classification and box regression losses from predictions and ground-truth proposals",
+    "build_FastRCNNOutputLayers": "build FastRCNNOutputLayers with configurable box2box transform, num_classes, loss weights, and federated loss options",
+    "refactor_FastRCNNOutputLayers_inference": "refactor FastRCNNOutputLayers.inference to predict boxes and probabilities then run batched NMS inference per image"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/roi_heads/keypoint_head.py": {
+    "build_keypoint_head": "build a keypoint head from config and input shape using the ROI_KEYPOINT_HEAD_REGISTRY",
+    "compute_keypoint_rcnn_loss": "compute keypoint R-CNN loss from predicted logits, ground truth instances, and a normalizer",
+    "run_keypoint_rcnn_inference": "run keypoint R-CNN inference to post-process heatmap logits into per-instance (x, y, score) keypoints",
+    "create_BaseKeypointRCNNHead": "create a BaseKeypointRCNNHead subclass with configurable num_keypoints, loss_weight, and loss_normalizer",
+    "create_KRCNNConvDeconvUpsampleHead": "create a KRCNNConvDeconvUpsampleHead with conv layers, transpose conv, and bilinear upsampling for keypoint prediction"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/roi_heads/mask_head.py": {
+    "build_mask_head": "build a mask head from config and input shape using the ROI_MASK_HEAD_REGISTRY",
+    "create_mask_rcnn_loss": "compute the mask prediction loss for Mask R-CNN given predicted logits and ground-truth instances",
+    "create_mask_rcnn_inference": "convert mask logits to predicted foreground probability masks and attach them to instances",
+    "create_BaseMaskRCNNHead": "create a base Mask R-CNN head class with configurable loss weight and visualization period",
+    "create_MaskRCNNConvUpsampleHead": "create a mask head with conv layers and a ConvTranspose2d upsample layer for mask prediction"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/roi_heads/roi_heads.py": {
+    "build_roi_heads": "build ROIHeads from config and input shape using the ROI_HEADS_REGISTRY",
+    "create_function_select_foreground_proposals": "create a function that filters proposals to keep only foreground instances excluding background class",
+    "create_function_select_proposals_with_visible_keypoints": "create a function that filters proposals to keep only those with at least one visible keypoint inside the proposal box",
+    "test_ROIHeads_base_class": "test the base ROIHeads class that performs proposal matching, sampling, and per-region prediction",
+    "test_Res5ROIHeads": "test the Res5ROIHeads class that shares a Res5 block for box and mask head feature computation in C4-style R-CNN",
+    "test_StandardROIHeads": "test the StandardROIHeads class with independent box, mask, and keypoint heads each using its own pooler",
+    "review_ROIHeads_label_and_sample_proposals": "review the ROIHeads label_and_sample_proposals method that matches proposals to ground truth and samples training instances",
+    "review_StandardROIHeads_forward": "review the StandardROIHeads forward method that branches box, mask, and keypoint prediction logic for training and inference"
+  },
+  "facebookresearch_detectron2/detectron2/modeling/roi_heads/rotated_fast_rcnn.py": {
+    "build_rotated_fast_rcnn_output_layers": "build RotatedFastRCNNOutputLayers with config and input shape for rotated box regression",
+    "create_roi_heads_rroiheads": "create RROIHeads instance for detecting rotated bounding boxes with configurable box head",
+    "run_fast_rcnn_inference_rotated": "run fast_rcnn_inference_rotated on batched boxes, scores, and image shapes with score and NMS thresholds",
+    "run_fast_rcnn_inference_single_image_rotated": "run fast_rcnn_inference_single_image_rotated for single-image rotated box detection with NMS",
+    "test_rroiheads_label_and_sample_proposals": "test RROIHeads.label_and_sample_proposals to assign rotated ground-truth labels and sample proposals for training"
+  },
+  "facebookresearch_detectron2/detectron2/solver/build.py": {
+    "build_optimizer": "build an SGD optimizer from a detectron2 CfgNode config and a torch.nn.Module model",
+    "build_lr_scheduler": "build a learning rate scheduler (WarmupMultiStepLR, WarmupCosineLR, or WarmupStepWithFixedGammaLR) from config",
+    "maybe_add_gradient_clipping": "add gradient clipping to an optimizer based on detectron2 config options",
+    "get_default_optimizer_params": "get default optimizer parameter groups with support for weight decay normalization and bias overrides",
+    "reduce_param_groups": "reduce and merge parameter groups to minimize the number of groups for efficient multi-tensor optimizer use"
+  },
+  "facebookresearch_detectron2/detectron2/solver/lr_scheduler.py": {
+    "build_lr_multiplier_scheduler": "build a PyTorch LRMultiplier scheduler with fvcore ParamScheduler to multiply learning rates during training",
+    "create_warmup_param_scheduler": "create a WarmupParamScheduler that adds an initial warmup stage to any fvcore ParamScheduler",
+    "test_warmup_factor_at_iter": "test the _get_warmup_factor_at_iter function for linear and constant warmup methods",
+    "review_warmup_multistep_lr": "review the deprecated WarmupMultiStepLR class that combines warmup with multi-step learning rate decay",
+    "review_warmup_cosine_lr": "review the deprecated WarmupCosineLR class that combines warmup with cosine annealing learning rate schedule"
+  },
+  "facebookresearch_detectron2/detectron2/structures/boxes.py": {
+    "create_boxes_from_tensor": "create a Boxes object from a Nx4 torch.Tensor of (xmin, ymin, xmax, ymax) coordinates",
+    "compute_pairwise_iou": "compute pairwise IoU between all N x M pairs of boxes from two Boxes objects",
+    "convert_box_mode": "convert boxes between XYXY_ABS, XYWH_ABS, and XYWHA_ABS coordinate formats",
+    "clip_boxes_to_image": "clip a set of boxes to stay within image height and width boundaries",
+    "compute_pairwise_intersection": "compute intersection area between all N x M pairs of boxes from two Boxes objects"
+  },
+  "facebookresearch_detectron2/detectron2/structures/image_list.py": {
+    "create_image_list_from_tensors": "create an ImageList by padding a list of tensors to the same size with a given pad_value and size_divisibility",
+    "build_image_list_from_tensor_and_sizes": "build an ImageList from a padded tensor and a list of original image sizes as (h, w) tuples",
+    "get_image_list_length": "get the number of images in an ImageList using __len__",
+    "get_image_list_item": "access an individual image from an ImageList by index, returning it in its original size",
+    "move_image_list_to_device": "move an ImageList tensor to a different device or dtype using the to method"
+  },
+  "facebookresearch_detectron2/detectron2/structures/instances.py": {
+    "create_instances_object": "create an Instances object with image size and initial fields like boxes, masks, and labels",
+    "set_instances_field": "set a field on an Instances object such as gt_boxes or pred_classes with a tensor value",
+    "get_instances_field": "get a field from an Instances object by name, returning the stored tensor or value",
+    "filter_instances_by_index": "filter an Instances object using integer indices, slices, or boolean masks to select subsets",
+    "concatenate_instances_lists": "concatenate multiple Instances objects into a single Instances by stacking all fields along dimension 0",
+    "move_instances_to_device": "move all tensor fields in an Instances object to a specified device like cuda or cpu",
+    "check_instances_field_exists": "check whether a named field exists in an Instances object using the has method",
+    "remove_instances_field": "remove a named field from an Instances object to clean up unused data",
+    "get_all_instances_fields": "retrieve all fields from an Instances object as a dictionary mapping field names to values"
+  },
+  "facebookresearch_detectron2/detectron2/structures/keypoints.py": {
+    "create_class_keypoints": "create a Keypoints class instance from a tensor of shape (N, K, 3) with x, y, and visibility values",
+    "build_keypoints_to_heatmap": "build a heatmap from keypoint annotations and bounding boxes for training with SoftmaxWithLoss",
+    "run_heatmaps_to_keypoints": "run heatmaps_to_keypoints to extract predicted keypoint locations from predicted heatmap tensors",
+    "test_keypoints_cat": "test concatenating a list of Keypoints instances into a single Keypoints object",
+    "refactor_keypoints_to_heatmap": "refactor the _keypoints_to_heatmap function to encode keypoint coordinates into discrete heatmap labels"
+  },
+  "facebookresearch_detectron2/detectron2/structures/masks.py": {
+    "create_class_bitmasks": "create a BitMasks class instance from a 3D boolean tensor representing N segmentation masks",
+    "create_class_polygon_masks": "create a PolygonMasks class instance from a list of polygon coordinate arrays per image instance",
+    "convert_polygon_to_bitmask": "convert a list of polygon numpy arrays to a boolean bitmap mask of given height and width",
+    "rasterize_polygons_within_box": "rasterize polygon masks within a bounding box and resize to a square mask size tensor",
+    "crop_and_resize_bitmasks": "crop each bitmask by given boxes and resize results to a specified mask size"
+  },
+  "facebookresearch_detectron2/detectron2/structures/rotated_boxes.py": {
+    "create_RotatedBoxes": "create a RotatedBoxes object from a Nx5 tensor of (x_center, y_center, width, height, angle) boxes",
+    "compute_RotatedBoxes_area": "compute the area of all rotated boxes from a RotatedBoxes tensor",
+    "clip_RotatedBoxes": "clip near-horizontal rotated boxes to image boundaries in place",
+    "compute_rotated_IoU": "compute pairwise IoU between all N x M pairs of rotated boxes",
+    "scale_RotatedBoxes": "scale rotated boxes with different horizontal and vertical factors"
+  },
+  "facebookresearch_detectron2/detectron2/tracking/base_tracker.py": {
+    "build_tracker_head": "build a tracker head from a detectron2 CfgNode config by resolving TRACKER_NAME from the TRACKER_HEADS registry",
+    "create_base_tracker": "create a BaseTracker instance to manage per-object ID assignment across video frames",
+    "register_tracker_head": "register a custom tracker class with the TRACKER_HEADS_REGISTRY for detectron2 tracking",
+    "update_tracker_instances": "update tracker predictions by matching current frame instances to previous frame IDs",
+    "configure_tracker_from_config": "configure a tracker head by calling from_config with a detectron2 CfgNode configuration"
+  },
+  "facebookresearch_detectron2/detectron2/tracking/bbox_iou_tracker.py": {
+    "create_bbox_iou_tracker": "create a BBoxIOUTracker instance with video dimensions and IoU threshold for object tracking",
+    "build_tracker_from_config": "build a BBoxIOUTracker from a detectron2 CfgNode configuration file",
+    "run_tracker_update": "run the BBoxIOUTracker update method to assign IDs to current frame instances using IoU matching",
+    "test_merge_untracked_instances": "test the BBoxIOUTracker._merge_untracked_instances method to retain lost instances based on frame count and size thresholds",
+    "review_create_prediction_pairs": "review the BBoxIOUTracker._create_prediction_pairs method that pairs current and previous frame bboxes by IoU score"
+  },
+  "facebookresearch_detectron2/detectron2/tracking/hungarian_tracker.py": {
+    "create_base_hungarian_tracker": "create a BaseHungarianTracker instance for tracking objects across video frames with configurable parameters",
+    "build_cost_matrix": "build a cost matrix for matching current frame instances to previous frame instances using the Hungarian algorithm",
+    "run_tracker_update": "run the tracker update method to assign persistent IDs to detected instances across consecutive frames",
+    "process_matched_instances": "process matched instance indices to carry forward tracking IDs and increment ID periods",
+    "process_unmatched_previous_instances": "process unmatched previous instances by incrementing lost frame counts and filtering by size thresholds"
+  },
+  "facebookresearch_detectron2/detectron2/tracking/iou_weighted_hungarian_bbox_iou_tracker.py": {
+    "build_iou_weighted_tracker": "build an IOUWeightedHungarianBBoxIOUTracker instance with video dimensions and IoU threshold parameters",
+    "create_tracker_from_config": "create an IOUWeightedHungarianBBoxIOUTracker from a detectron2 CfgNode configuration object",
+    "assign_cost_matrix_values": "assign cost matrix values using IoU scores for bbox pairs in the Hungarian matching algorithm",
+    "register_tracker_head": "register IOUWeightedHungarianBBoxIOUTracker as a tracker head in the TRACKER_HEADS_REGISTRY",
+    "initialize_tracker_with_config": "initialize IOUWeightedHungarianBBoxIOUTracker with configurable parameters from a detectron2 config"
+  },
+  "facebookresearch_detectron2/detectron2/tracking/utils.py": {
+    "create_prediction_pairs": "create prediction pairs between current and previous frame bounding boxes using IoU threshold matching",
+    "test_create_prediction_pairs": "test the create_prediction_pairs function with Instances objects and an IoU matrix",
+    "review_create_prediction_pairs": "review the create_prediction_pairs function that pairs bounding boxes across video frames",
+    "summarize_create_prediction_pairs": "summarize the create_prediction_pairs function that matches bbox predictions by IoU threshold",
+    "refactor_create_prediction_pairs": "refactor the create_prediction_pairs function to filter bbox pairs by IoU threshold efficiently"
+  },
+  "facebookresearch_detectron2/detectron2/tracking/vanilla_hungarian_bbox_iou_tracker.py": {
+    "create_VanillaHungarianBBoxIOUTracker": "create a VanillaHungarianBBoxIOUTracker instance with video dimensions and IoU threshold for bounding box tracking",
+    "build_cost_matrix_VanillaHungarianBBoxIOUTracker": "build a cost matrix for Hungarian assignment using bounding box IoU between current and previous frame instances",
+    "assign_cost_matrix_values_VanillaHungarianBBoxIOUTracker": "assign cost matrix values for bounding box pairs with IoU above the tracking threshold",
+    "create_from_config_VanillaHungarianBBoxIOUTracker": "create a VanillaHungarianBBoxIOUTracker tracker from a D2 CfgNode configuration object",
+    "test_VanillaHungarianBBoxIOUTracker": "test the VanillaHungarianBBoxIOUTracker class that uses Hungarian algorithm with bounding box IoU as the matching metric"
+  },
+  "facebookresearch_detectron2/detectron2/utils/analysis.py": {
+    "analyze_model_flops": "analyze the FLOPs of a detectron2 model using operator-level flop counting with FlopCountAnalysis",
+    "count_model_activations": "count the activations of a detectron2 model per operator using activation_count_operators",
+    "count_model_flops_operators": "count the FLOPs per operator for a detectron2 model using flop_count_operators",
+    "find_unused_model_parameters": "find parameters in a detectron2 model that do not contribute to the loss using find_unused_parameters",
+    "analyze_model_parameters": "count and display the parameter count table for a detectron2 model using parameter_count and parameter_count_table"
+  },
+  "facebookresearch_detectron2/detectron2/utils/collect_env.py": {
+    "collect_env_info": "collect and display the full detectron2 environment info including PyTorch, CUDA, compilers, and GPU details",
+    "collect_torch_env": "collect and display the PyTorch environment information including version and build configuration",
+    "detect_compute_compatibility": "detect GPU architecture compatibility of a compiled shared object file using cuobjdump",
+    "test_nccl_ops": "test NCCL multi-GPU inter-process connectivity by spawning worker processes and running a distributed barrier",
+    "run_main": "run the collect_env entry point to print environment info, test GPU tensor transfers, and optionally test NCCL"
+  },
+  "facebookresearch_detectron2/detectron2/utils/colormap.py": {
+    "create_colormap_rgb": "create an Nx3 RGB colormap array with values in [0, 255] range",
+    "create_colormap_bgr": "create an Nx3 BGR colormap array with values in [0, 1] range",
+    "generate_random_color": "generate a single random color from the detectron2 colormap",
+    "generate_random_colors": "generate N unique random colors from the detectron2 colormap",
+    "run_colormap_preview": "run the colormap preview CLI to display all colors in a grid window"
+  },
+  "facebookresearch_detectron2/detectron2/utils/comm.py": {
+    "create_local_process_group": "create a local process group for processes on the same machine in distributed training",
+    "all_gather_picklable_data": "all_gather arbitrary picklable data across all distributed training processes using gloo backend",
+    "gather_data_to_destination_rank": "gather picklable data from all ranks to a single destination rank in distributed training",
+    "reduce_dict_metrics_average": "reduce scalar CUDA tensor metrics from all processes with optional averaging in distributed training",
+    "synchronize_distributed_processes": "synchronize all distributed training processes with an NCCL-aware barrier"
+  },
+  "facebookresearch_detectron2/detectron2/utils/develop.py": {
+    "create_dummy_class": "create a dummy class that raises ImportError when a dependency is unavailable",
+    "create_dummy_func": "create a dummy function that raises ImportError when a dependency is unavailable",
+    "test_create_dummy_class": "test the create_dummy_class function raises ImportError on attribute access and instantiation",
+    "test_create_dummy_func": "test the create_dummy_func function raises ImportError when called with missing dependency",
+    "refactor_create_dummy_func": "refactor create_dummy_func to support list or tuple of dependency names"
+  },
+  "facebookresearch_detectron2/detectron2/utils/env.py": {
+    "seed_all_rng": "seed all random number generators for torch, numpy, and python with an optional seed value",
+    "setup_environment": "setup the detectron2 computing environment by configuring libraries and loading a custom environment module",
+    "setup_custom_environment": "load and run a custom Python module or source file that provides a setup_environment callable",
+    "fixup_module_metadata": "fix module member metadata like __qualname__ and __module__ for sphinx documentation building",
+    "_import_file": "import a Python module from a file path using importlib and optionally register it in sys.modules"
+  },
+  "facebookresearch_detectron2/detectron2/utils/events.py": {
+    "create_event_storage": "create an EventStorage context manager to record and track training metrics like losses, learning rate, and timing",
+    "write_scalars_json": "write scalar metrics to a JSON file with one JSON object per line for easy parsing and post-training analysis",
+    "log_to_tensorboard": "log scalar metrics, images, and histograms to TensorBoard for real-time visualization during model training",
+    "print_common_metrics": "print common training metrics including losses, iteration time, ETA, memory usage, and learning rate to the terminal",
+    "record_histogram": "record a histogram from a PyTorch tensor and export it to TensorBoard for distribution visualization"
+  },
+  "facebookresearch_detectron2/detectron2/utils/logger.py": {
+    "setup_logger": "setup a detectron2 logger with colored stdout output and file logging to a specified output directory",
+    "log_first_n": "log a message only for the first n calls from the same caller or message key",
+    "log_every_n": "log a message once every n calls from the same caller location",
+    "log_every_n_seconds": "log a message no more than once every n seconds from the same caller location",
+    "create_small_table": "create a formatted pipe-style table string from a small dictionary of key-value pairs"
+  },
+  "facebookresearch_detectron2/detectron2/utils/memory.py": {
+    "retry_cuda_oom_decorator": "retry a stateless torch function automatically on CUDA OOM by clearing cache and falling back to CPU",
+    "ignore_cuda_oom_context": "create a context manager that silently ignores CUDA out-of-memory exceptions from pytorch",
+    "test_retry_cuda_oom": "test the retry_if_cuda_oom decorator handles CUDA OOM by retrying with empty_cache and CPU fallback",
+    "refactor_retry_cuda_oom": "refactor the retry_if_cuda_oom decorator to support nested tensor structures in arguments",
+    "review_cuda_oom_handling": "review the retry_if_cuda_oom decorator for stateless callable requirements and CPU fallback behavior"
+  },
+  "facebookresearch_detectron2/detectron2/utils/registry.py": {
+    "create_REGISTRY": "create a Registry instance to map string names to callable objects for custom modules",
+    "register_CLASS": "register a class or function in a Registry using the register decorator or method",
+    "get_REGISTRY_NAME": "get a registered object from a Registry by its string name",
+    "build_locate_string": "build a locate call to dynamically resolve an object from a module.submodule.class_name string",
+    "test_locate_object": "test locating a Python object like torch.optim.sgd.SGD using the locate utility function"
+  },
+  "facebookresearch_detectron2/detectron2/utils/testing.py": {
+    "build_model_no_weights": "build a detectron2 model from config path without loading any pretrained weights",
+    "create_random_boxes": "create a random Nx4 boxes tensor with coordinates below max_coord on a given device",
+    "test_get_sample_coco_image": "test the python function get_sample_coco_image that returns a sample COCO image as tensor or numpy array",
+    "test_assert_instances_allclose": "test the python function assert_instances_allclose that compares two Instances objects for field-level closeness",
+    "test_reload_script_model": "test the python function reload_script_model that saves and reloads a jit module via BytesIO buffer"
+  },
+  "facebookresearch_detectron2/detectron2/utils/torch_version_utils.py": {
+    "test_min_torch_version": "test the min_torch_version function to check if torch version meets a minimum requirement"
+  },
+  "facebookresearch_detectron2/detectron2/utils/tracing.py": {
+    "test_is_fx_tracing": "test the is_fx_tracing function to check if Torch FX symbolic tracing is active",
+    "test_is_fx_tracing_legacy": "test the is_fx_tracing_legacy function to detect legacy FX tracing mode",
+    "test_assert_fx_safe": "test the assert_fx_safe function for FX-tracing safe assertion checks",
+    "review_is_fx_tracing": "review the is_fx_tracing function that returns whether execution is in Torch FX tracing mode",
+    "review_assert_fx_safe": "review the assert_fx_safe function that provides an FX-tracing safe version of assert"
+  },
+  "facebookresearch_detectron2/detectron2/utils/video_visualizer.py": {
+    "draw_instance_predictions": "draw instance-level detection and segmentation predictions on video frames with persistent object colors",
+    "draw_sem_seg": "draw semantic segmentation overlays on video frames with optional area threshold filtering",
+    "draw_panoptic_seg_predictions": "draw panoptic segmentation predictions combining stuff and thing class masks on frames",
+    "assign_colors_to_instances": "assign persistent colors to detected instances across video frames using IOU-based matching heuristics",
+    "assign_colors_by_id": "assign consistent colors to tracked instances using explicit tracker IDs with color pool management"
+  },
+  "facebookresearch_detectron2/detectron2/utils/visualizer.py": {
+    "create_Visualizer_draw_instance_predictions": "create a Visualizer instance and draw instance detection prediction results with boxes, masks, and labels on an image",
+    "create_Visualizer_draw_sem_seg": "create a Visualizer and draw semantic segmentation predictions with category colors and labels on an image",
+    "create_Visualizer_draw_panoptic_seg": "create a Visualizer and draw panoptic segmentation results combining semantic and instance masks on an image",
+    "create_Visualizer_draw_dataset_dict": "create a Visualizer and draw dataset annotations including boxes, masks, keypoints, and segmentation from a dataset dictionary",
+    "create_Visualizer_overlay_instances": "create a Visualizer and overlay instance predictions with boxes, labels, masks, and keypoints on an image with customizable colors"
+  }
+}

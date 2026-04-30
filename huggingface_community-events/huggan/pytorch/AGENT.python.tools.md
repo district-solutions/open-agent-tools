@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/community-events
+- repo_uri: https://github.com/huggingface/community-events
+
+## File: huggingface_community-events/huggan/pytorch/huggan_mixin.py
+
+Prompts
+
+```
+['push a PyTorch model to the Hugging Face Hub using HugGANModelHubMixin', 'create a new Hugging Face repository for a PyTorch model with HugGANModelHubMixin', 'save a pretrained PyTorch model with configuration to a local directory', 'generate a default README model card for a HugGAN model repository', 'review the push_to_hub method in HugGANModelHubMixin for authentication and repo handling']
+```
+
+Usage
+
+```
+{'push_pytorch_model_to_hub': 'push a PyTorch model to the Hugging Face Hub using HugGANModelHubMixin', 'create_hf_repo_for_model': 'create a new Hugging Face repository for a PyTorch model with HugGANModelHubMixin', 'save_pretrained_model_with_config': 'save a pretrained PyTorch model with configuration to a local directory', 'generate_default_model_card': 'generate a default README model card for a HugGAN model repository', 'review_push_to_hub_method': 'review the push_to_hub method in HugGANModelHubMixin for authentication and repo handling'}
+```
+

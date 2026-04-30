@@ -1,0 +1,1613 @@
+{
+  "huggingface_text-generation-inference/update_doc.py": {
+    "update_tgi_docs": "run update_doc.py to regenerate the text-generation-launcher CLI, supported models, and OpenAPI documentation files",
+    "check_tgi_docs": "run update_doc.py with the --check flag to verify all documentation files are up to date",
+    "update_cli_docs": "run check_cli to regenerate the text-generation-launcher arguments markdown doc from the launcher help output",
+    "update_supported_models": "run check_supported_models to regenerate the supported models markdown doc from the ModelType enum in the server code",
+    "update_openapi": "run check_openapi to regenerate the OpenAPI JSON schema from text-generation-router and lint it with redocly"
+  },
+  "huggingface_text-generation-inference/backends/gaudi/server/text_generation_server/cache.py": {
+    "create_cache_instance": "create a Cache instance to store and manage Batch entries keyed by batch_id",
+    "pop_batch_from_cache": "pop a Batch entry from the Cache by its batch_id and return it",
+    "set_batch_in_cache": "set a Batch entry in the Cache using the entry's batch_id as the key",
+    "delete_batch_and_clear_gpu": "delete a Batch by batch_id from the Cache and clear CUDA memory if available",
+    "clear_all_cache_entries": "clear all entries from the Cache and free CUDA memory for each deleted batch"
+  },
+  "huggingface_text-generation-inference/backends/gaudi/server/text_generation_server/cli.py": {
+    "serve_text_generation_model": "run the text generation inference server with a specified model id and optional quantization settings",
+    "download_model_weights": "download model weights from the huggingface hub for a given model id and revision",
+    "quantize_model_gptq": "quantize a model using GPTQ 4-bit quantization and save the output to a directory",
+    "review_serve_command": "review the serve command to understand sharded deployment and LoRA adapter configuration options",
+    "review_quantization_enums": "review the Quantization, Dtype, and KVCacheDtype enums to understand supported quantization and precision options"
+  },
+  "huggingface_text-generation-inference/backends/gaudi/server/text_generation_server/server.py": {
+    "serve_text_generation_server": "start a gRPC text generation inference server on Intel Gaudi HPU with model loading and LoRA adapter support",
+    "implement_text_generation_service": "implement a gRPC servicer class with async methods for Info, Health, ServiceDiscovery, ClearCache, FilterBatch, Warmup, Prefill, and Decode",
+    "handle_graceful_shutdown": "create a SignalHandler class that catches SIGINT and SIGTERM signals to stop the server loop gracefully",
+    "run_warmup_with_paged_attention": "run model warmup with paged attention to determine max supported total tokens and max input tokens",
+    "process_prefill_and_decode_batches": "process prefill and decode batches through the model generate_token method and cache resulting batches"
+  },
+  "huggingface_text-generation-inference/backends/gaudi/server/text_generation_server/tracing.py": {
+    "setup_tracing": "setup OpenTelemetry tracing with an OTLP exporter and batch span processor for a named service",
+    "create_UDSOpenTelemetryAioServerInterceptor": "create a UDSOpenTelemetryAioServerInterceptor instance to intercept gRPC calls over Unix domain sockets with tracing",
+    "start_span_with_UDS_interceptor": "start a tracing span for a gRPC server handler call with unix transport attributes",
+    "review_UDSOpenTelemetryAioServerInterceptor": "review the UDSOpenTelemetryAioServerInterceptor class and its _start_span method for unix socket gRPC tracing support",
+    "refactor_setup_tracing": "refactor the setup_tracing function to support secure OTLP endpoints or additional span processors"
+  },
+  "huggingface_text-generation-inference/backends/gaudi/server/text_generation_server/adapters/config.py": {
+    "create_modulemap_dataclass": "create a ModuleMap dataclass instance with a module name and a dictionary of weight tensors",
+    "implement_adapterconfig_subclass": "implement a concrete subclass of AdapterConfig that overrides the map_weights_for_model abstract method",
+    "define_map_weights_for_model": "define the map_weights_for_model method to return a ModuleMap and a set of unused weight names",
+    "use_adapterconfig_base_class": "use AdapterConfig as an abstract base class to enforce a consistent adapter configuration interface",
+    "map_adapter_weights_to_modules": "map adapter weights to model modules using the map_weights_for_model method and return a ModuleMap"
+  },
+  "huggingface_text-generation-inference/backends/gaudi/server/text_generation_server/adapters/lora.py": {
+    "load_lora_config": "load a LoRA adapter configuration from a Hugging Face model ID using LoraConfig.load",
+    "prepare_lora_weights": "prepare and shard LoRA weights for a specific layer type across all model layers using LoraWeights.prepare_weights",
+    "shard_lora_weights": "shard LoRA A and B weight tensors across a distributed process group using shard_lora_weights",
+    "compute_scaling_factor": "compute the LoRA scaling factor from alpha and rank parameters using get_scaling_factor",
+    "load_batch_lora_weights": "load batch LoRA weights for a segment of adapters using BatchLoraWeights.load"
+  },
+  "huggingface_text-generation-inference/backends/gaudi/server/text_generation_server/adapters/weights.py": {
+    "create_adapter_batch_metadata": "create an AdapterBatchMetadata dataclass with adapter indices, adapter set, segments, and segment indices tensors",
+    "add_adapter_to_layer": "add an adapter with a given index and weights to a LayerAdapterWeights instance",
+    "remove_adapter_from_layer": "remove an adapter by index from a LayerAdapterWeights instance",
+    "get_batched_adapter_data": "get batched adapter weight data from LayerAdapterWeights by bucketing adapters by batch class type",
+    "create_adapter_batch_data_from_meta": "create an AdapterBatchData instance from AdapterBatchMetadata and a dictionary of LayerAdapterWeights"
+  },
+  "huggingface_text-generation-inference/backends/gaudi/server/text_generation_server/layers/bnb.py": {
+    "create_8bit_linear_layer": "create a Linear8bitLt layer from a weight tensor and optional bias for 8-bit quantized inference",
+    "create_4bit_linear_layer": "create a Linear4bit layer with fp4 or nf4 quantization from a weight tensor and bias",
+    "build_bnb_weight": "build a BNBWeight dataclass wrapping a torch.Tensor to produce an 8-bit linear layer via get_linear",
+    "build_fp4_weight": "build a BNBFP4Weight dataclass wrapping a torch.Tensor to produce an fp4 quantized 4-bit linear layer",
+    "build_nf4_weight": "build a BNBNF4Weight dataclass wrapping a torch.Tensor to produce an nf4 quantized 4-bit linear layer"
+  },
+  "huggingface_text-generation-inference/backends/gaudi/server/text_generation_server/layers/conv.py": {
+    "load_conv2d_with_weights": "load a Conv2d layer with weight and bias from checkpoint weights using init_empty_weights",
+    "load_conv2d_no_bias": "load a Conv2d layer with weight only and no bias from checkpoint weights",
+    "monkey_patch_conv2d_load": "monkey-patch torch.nn.Conv2d with a load classmethod to load layers from weights",
+    "review_conv_layer_loading": "review the Conv2d load and load_no_bias methods for correct weight and bias handling",
+    "refactor_conv2d_loading": "refactor the Conv2d load methods to support additional layer parameters like padding or dilation"
+  },
+  "huggingface_text-generation-inference/backends/gaudi/server/text_generation_server/layers/fp8.py": {
+    "build_fp8_linear_layer": "build an Fp8Linear module from FP8 quantized weights and scales for HPU inference",
+    "create_fp8_weight_loader": "create a HybridFP8UnquantLoader to load FP8 and unquantized weights from a checkpoint",
+    "quantize_tensor_to_fp8": "quantize a PyTorch tensor to FP8 format using the fp8_quantize function with a given scale",
+    "dequantize_block_fp8_weight": "dequantize a block-wise FP8 weight tensor back to bfloat16 using dequant_block_fp8_weight_naive",
+    "apply_fp8_gemm_on_hpu": "apply block-wise FP8 matrix multiplication on HPU using apply_block_fp8_linear_hpu_dynamic"
+  },
+  "huggingface_text-generation-inference/clients/python/tests/test_client.py": {
+    "test_Client_generate": "test the Client.generate method to generate text with max_new_tokens and decoder_input_details",
+    "test_Client_generate_stream": "test the Client.generate_stream method to stream generated text responses from the server",
+    "test_AsyncClient_generate": "test the AsyncClient.generate method to asynchronously generate text with best_of sampling",
+    "test_AsyncClient_generate_stream": "test the AsyncClient.generate_stream method to asynchronously stream generated text responses",
+    "test_error_handling": "test NotFoundError and ValidationError exceptions when the server is unreachable or parameters are invalid"
+  },
+  "huggingface_text-generation-inference/clients/python/tests/test_errors.py": {
+    "test_parse_error_generation": "test parse_error returns GenerationError for a 400 status code with error_type generation",
+    "test_parse_error_incomplete_generation": "test parse_error returns IncompleteGenerationError for a 400 status code with error_type incomplete_generation",
+    "test_parse_error_overloaded": "test parse_error returns OverloadedError for a 400 status code with error_type overloaded",
+    "test_parse_error_validation": "test parse_error returns ValidationError for a 400 status code with error_type validation",
+    "test_parse_error_status_mapping": "test parse_error returns ShardNotReadyError, ShardTimeoutError, NotFoundError, RateLimitExceededError, or UnknownError based on status code"
+  },
+  "huggingface_text-generation-inference/clients/python/tests/test_types.py": {
+    "test_parameters_validation": "test the Parameters class validation for best_of, temperature, top_k, top_p, and other fields",
+    "test_request_validation": "test the Request class validation for inputs, stream, and parameters combinations",
+    "validate_parameters_best_of": "validate that Parameters best_of requires do_sample and rejects zero or negative values",
+    "validate_parameters_temperature": "validate that Parameters temperature rejects zero and negative values",
+    "validate_request_stream_parameters": "validate that Request rejects combining stream with best_of parameters"
+  },
+  "huggingface_text-generation-inference/clients/python/text_generation/client.py": {
+    "generate_text_sync": "create a python client to generate text from a TGI instance using the synchronous generate method",
+    "stream_text_async": "build an async python client to stream generated tokens from a TGI instance using generate_stream",
+    "chat_completion_sync": "create a python client to send chat messages to a TGI instance using the synchronous chat method",
+    "completion_api_sync": "build a python client to call the OpenAI-compatible completions API on a TGI instance",
+    "chat_with_tools": "create a python client to use tool calling with the chat completions API on a TGI instance"
+  },
+  "huggingface_text-generation-inference/clients/python/text_generation/errors.py": {
+    "parse_error_from_status_code": "parse an HTTP status code and JSON payload into the appropriate text generation inference exception",
+    "handle_generation_error": "catch and handle a GenerationError exception when text generation fails on the server",
+    "handle_validation_error": "catch and handle a ValidationError exception when the request input is invalid",
+    "handle_overloaded_error": "catch and handle an OverloadedError exception when the inference server is overloaded",
+    "handle_rate_limit_error": "catch and handle a RateLimitExceededError exception when the API rate limit is exceeded"
+  },
+  "huggingface_text-generation-inference/clients/python/text_generation/inference_api.py": {
+    "create_InferenceAPIClient": "create an InferenceAPIClient for a HuggingFace model repo_id to generate text",
+    "create_InferenceAPIAsyncClient": "create an InferenceAPIAsyncClient for a HuggingFace model repo_id to generate text asynchronously",
+    "generate_text": "use InferenceAPIClient to generate text from a prompt and get the generated_text result",
+    "generate_stream": "use InferenceAPIClient to stream token-by-token text generation responses from a prompt",
+    "check_model_support": "check if a HuggingFace model repo_id is supported by text-generation-inference"
+  },
+  "huggingface_text-generation-inference/clients/python/text_generation/types.py": {
+    "create_chat_request": "create a ChatRequest with messages, model, temperature, and max_tokens for chat completion",
+    "create_completion_request": "create a CompletionRequest with a prompt, model, and sampling parameters for text generation",
+    "build_parameters_with_validators": "build a Parameters object with sampling settings like temperature, top_p, and repetition_penalty",
+    "create_request_with_streaming": "create a Request with inputs and stream flag to generate text with optional streaming",
+    "configure_grammar_constrained_generation": "configure a Grammar object with json or regex type to constrain model output format"
+  },
+  "huggingface_text-generation-inference/integration-tests/conftest.py": {
+    "run_tgi_integration_tests": "run pytest integration tests for text-generation-inference with --release --neuron or --gaudi flags",
+    "compare_tgi_responses_with_snapshot": "use the ResponseComparator syrupy extension to compare TGI API responses against JSON snapshots with configurable logprob tolerance",
+    "launch_tgi_server_in_docker": "use the docker_launcher fixture to start a text-generation-launcher container with custom model, quantization, and shard settings",
+    "launch_tgi_server_locally": "use the local_launcher fixture to start a text-generation-launcher subprocess with custom model, quantization, and shard settings",
+    "generate_batch_completions_async": "use the generate_load fixture to send concurrent async generation requests to the TGI client and collect responses"
+  },
+  "huggingface_text-generation-inference/integration-tests/fixtures/gaudi/service.py": {
+    "run_gaudi_launcher_fixture": "run the gaudi_launcher pytest fixture to start a TGI container for a model",
+    "test_container_health_check": "test the ContainerLauncherHandle health check method to verify a Docker container is running",
+    "create_test_client": "create a TestClient instance extending AsyncInferenceClient with a service name and base URL",
+    "stream_container_logs": "stream Docker container logs to stderr in a background thread during integration tests",
+    "generate_concurrent_load": "generate concurrent text generation load using asyncio gather with the gaudi_generate_load fixture"
+  },
+  "huggingface_text-generation-inference/integration-tests/fixtures/neuron/export_models.py": {
+    "export_neuron_models": "run the script to export all configured neuron models to the HuggingFace hub",
+    "export_single_neuron_model": "export a single neuron model for a given config using maybe_export_model",
+    "get_neuron_backend_hash": "compute a short hash from the neuron backend and Dockerfile git tree SHAs",
+    "get_neuron_model_name": "generate a unique neuron model name from a config name and backend hash",
+    "get_tgi_docker_image": "get the text-generation-inference Docker image from the environment or local Docker host"
+  },
+  "huggingface_text-generation-inference/integration-tests/fixtures/neuron/service.py": {
+    "launch_tgi_container": "launch a TGI docker container for a given model using the neuron_launcher pytest fixture",
+    "check_service_health": "check the health of a TGI service by calling the LauncherHandle health method with a timeout",
+    "run_parallel_generations": "run multiple async text generation requests in parallel using the neuron_generate_load fixture",
+    "get_tgi_image": "get the TGI docker image name from the environment or local docker images",
+    "create_test_client": "create a TestClient instance wrapping AsyncInferenceClient for a given service base URL"
+  },
+  "huggingface_text-generation-inference/integration-tests/gaudi/capture_expected_outputs.py": {
+    "run_capture_expected_outputs_test": "run the pytest test that captures expected greedy and batch outputs for TGI models with unknown outputs",
+    "review_test_capture_expected_outputs": "review the async test function that sends single and batch generation requests to TGI and saves results to JSON",
+    "refactor_test_config_fixture": "refactor the parametrized pytest fixture that filters TEST_CONFIGS for models with unknown expected outputs",
+    "review_tgi_service_fixture": "review the pytest fixture that launches a TGI service using the launcher context manager",
+    "run_gaudi_integration_tests": "run the Gaudi integration test suite to capture and persist expected model outputs for unknown configurations"
+  },
+  "huggingface_text-generation-inference/integration-tests/gaudi/test_gaudi_generate.py": {
+    "run_gaudi_tgi_integration_tests": "run pytest integration tests for TGI text generation models on Intel Gaudi hardware",
+    "configure_test_models": "configure TEST_CONFIGS dict with model IDs, expected outputs, and TGI args for Gaudi testing",
+    "test_single_request_inference": "test single async text generation request against a TGI model using greedy decoding",
+    "test_batch_requests_inference": "test multiple concurrent async text generation requests against a TGI model using batch decoding",
+    "parametrize_gaudi_model_tests": "parametrize pytest tests to run across all Gaudi model configs or only default ones"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_bloom_560m.py": {
+    "test_bloom_560m_basic_generation": "test the bloom-560m model generates 10 tokens with top_p sampling and a fixed seed",
+    "test_bloom_560m_all_params": "test the bloom-560m model with all generation parameters including repetition penalty, temperature, and watermark",
+    "test_bloom_560m_load": "test the bloom-560m model generates consistent responses across 4 parallel load requests",
+    "run_bloom_560m_fixture": "run the bloom-560m model launcher fixture with a single shard and health check",
+    "review_bloom_560m_tests": "review the bloom-560m integration test suite for text generation parameter coverage"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_bloom_560m_sharded.py": {
+    "test_bloom_560m_sharded_single_generation": "test the bloom-560m sharded model single text generation with max_new_tokens and top_p parameters",
+    "test_bloom_560m_sharded_load_generation": "test the bloom-560m sharded model load generation with multiple concurrent requests and validate responses",
+    "run_bloom_560m_sharded_health_check": "run a health check on the bloom-560m sharded model launcher with a 240 second timeout",
+    "create_bloom_560m_sharded_fixture": "create a pytest fixture that launches the bloom-560m model with 2 shards for integration testing",
+    "review_bloom_560m_sharded_response_snapshot": "review the bloom-560m sharded model generation response against a stored snapshot for validation"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_chat_llama.py": {
+    "test_flash_llama_chat": "run the flash llama chat integration test that sends a system and user message to TinyLlama and asserts the response",
+    "create_flash_llama_chat_handle_fixture": "create a pytest fixture that launches the TinyLlama-1.1B-Chat-v1.0 model with 2 shards and grammar support enabled",
+    "create_flash_llama_chat_fixture": "create a pytest fixture that waits for the flash llama chat server health check and returns the client",
+    "test_chat_with_messages": "test the chat endpoint by sending a system prompt and user question with max tokens and seed parameters",
+    "assert_chat_response_snapshot": "assert that the chat response matches an expected snapshot and verify the message content string"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_completion_prompts.py": {
+    "test_single_completion_prompt": "test a single prompt completion request against the TGI v1/completions endpoint",
+    "test_streaming_chat_with_usage": "test streaming chat completion with usage statistics via InferenceClient",
+    "test_batch_completion_prompts": "test sending multiple prompts at once to the TGI completions endpoint",
+    "test_streaming_batch_completions": "test streaming completions for multiple prompts using the OpenAI client",
+    "test_chat_streaming_usage_toggle": "test chat completion streaming with and without usage statistics via OpenAI and HuggingFace clients"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_compressed_tensors_w8a8_int.py": {
+    "test_compressed_tensors_w8a8_int": "test text generation with a w8a8 compressed-tensors quantized Llama model using max_new_tokens and decoder_input_details",
+    "test_compressed_tensors_w8a8_int_all_params": "test text generation with all parameters including temperature, top_p, top_k, repetition_penalty, and watermark on a quantized model",
+    "test_compressed_tensors_w8a8_int_load": "test concurrent load generation with multiple parallel requests against a w8a8 compressed-tensors quantized model",
+    "fixture_compressed_tensors_w8a8_int_handle": "launch a TGI server with the neuralmagic Llama-3.2-3B w8a8 quantized model using two shards and compressed-tensors quantization",
+    "fixture_compressed_tensors_w8a8_int_client": "get a healthy TGI client for the w8a8 compressed-tensors quantized model after waiting for server readiness"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_compressed_tensors_w8a8_int_dynamic_weight.py": {
+    "test_compressed_tensors_w8a8_int_dynamic_weight": "run the pytest integration test for the compressed-tensors w8a8 int dynamic weight quantized model",
+    "test_compressed_tensors_w8a8_int_dynamic_weight_all_params": "run the pytest integration test for the w8a8 model with all generation parameters like temperature and top_k",
+    "test_compressed_tensors_w8a8_int_dynamic_weight_load": "run the pytest load test for the w8a8 model generating multiple responses concurrently",
+    "compressed_tensors_w8a8_int_dynamic_weight_handle": "launch the Qwen2.5-1.5B-Instruct w8a8-int-dynamic-weight model server with compressed-tensors quantization and 2 shards",
+    "compressed_tensors_w8a8_int_dynamic_weight": "get the async client for the w8a8 quantized model after waiting for health check"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_compressed_tensors_w8an_fp.py": {
+    "test_compressed_tensors_w8an": "test the compressed tensors W8A FP8 quantized model generation with a simple prompt and max tokens",
+    "test_compressed_tensors_w8an_all_params": "test the compressed tensors W8A model generation with all parameters like temperature, top_k, and repetition penalty",
+    "test_compressed_tensors_w8an_load": "test the compressed tensors W8A model under load by generating multiple parallel responses",
+    "run_compressed_tensors_fixture": "run the compressed tensors W8A fixture that launches the Llama-3.2-1B-Instruct-FP8 model with two shards",
+    "review_compressed_tensors_w8an_tests": "review the pytest integration tests for compressed tensors W8A FP8 quantized text generation"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_compressed_tensors_wna16_int.py": {
+    "test_compressed_tensors_wna16_basic": "run the basic compressed tensors W4A16 quantized model generation test with max new tokens",
+    "test_compressed_tensors_wna16_all_params": "run the compressed tensors W4A16 test with all generation parameters like temperature and top_k",
+    "test_compressed_tensors_wna16_load": "run the compressed tensors W4A16 load test with multiple parallel generation requests",
+    "create_compressed_tensors_wna16_fixture": "create a pytest fixture that launches a quantized model server using compressed tensors and waits for health",
+    "review_compressed_tensors_wna16_tests": "review the compressed tensors W4A16 integration test suite for the gemma-2-2b quantized model"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_compressed_tensors_wna16_int_24.py": {
+    "test_compressed_tensors_wna16_int_24": "run the pytest test that generates text using the compressed-tensors W4A16 INT24 quantized Llama-3.1-8B model",
+    "test_compressed_tensors_wna16_int_24_all_params": "run the pytest test that generates text with all parameters like temperature, top_k, and repetition_penalty on the quantized model",
+    "test_compressed_tensors_wna16_int_24_load": "run the pytest load test that sends four concurrent generation requests to the compressed-tensors quantized model",
+    "create_compressed_tensors_wna16_int_24_handle": "create a pytest fixture that launches a TGI server with the danieldk/Llama-3.1-8B-w4a16-int-24 model using compressed-tensors quantization",
+    "create_compressed_tensors_wna16_int_24_client": "create a pytest fixture that waits for the quantized model server health check and returns the generation client"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_continue_final_message.py": {
+    "test_chat_completion_single_prompt": "test the TGI chat completions endpoint with a single user prompt and system message",
+    "test_chat_completion_continue_partial": "test the TGI chat completions endpoint by continuing from a partial assistant message",
+    "run_llama_integration_tests": "run the pytest integration tests for TinyLlama chat completion and message continuation",
+    "review_llama_continue_final_message_tests": "review the pytest fixtures and test functions for the TinyLlama continue final message integration tests",
+    "refactor_llama_completion_tests": "refactor the llama completion test functions to support a different model or endpoint"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_awq.py": {
+    "test_flash_llama_awq_basic": "test AWQ-quantized CodeLlama-7b model generation with flash attention and 10 max new tokens",
+    "test_flash_llama_awq_all_params": "test AWQ-quantized model generation with all sampling params like temperature top_p top_k and seed",
+    "test_flash_llama_awq_load": "test AWQ-quantized model concurrent load generation with 4 parallel requests and verify responses",
+    "run_flash_llama_awq_fixture": "run the flash_llama_awq fixture to launch an AWQ-quantized CodeLlama-7b model server and wait for health",
+    "review_flash_llama_awq_handle": "review the flash_llama_awq_handle fixture that launches the AWQ quantized model with num_shard and quantize params"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_awq_sharded.py": {
+    "test_flash_llama_awq_sharded": "test the flash llama AWQ sharded model by generating 10 tokens from a prompt",
+    "test_flash_llama_awq_load_sharded": "test the flash llama AWQ sharded model under load with 4 concurrent generation requests",
+    "run_flash_llama_awq_handle_sharded_fixture": "run the flash llama AWQ sharded launcher fixture with 2 shards and AWQ quantization",
+    "run_flash_llama_awq_sharded_fixture": "run the flash llama AWQ sharded client fixture after waiting for model health",
+    "test_awq_quantized_model_generation": "test AWQ quantized codellama model generation with decoder input details enabled"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_deepseek_v2.py": {
+    "test_flash_deepseek_v2_basic": "test the flash deepseek v2 model with a basic generate request and max new tokens",
+    "test_flash_deepseek_v2_all_params": "test the flash deepseek v2 model generate with all sampling parameters like temperature top p and top k",
+    "test_flash_deepseek_v2_load": "test the flash deepseek v2 model with a load test generating multiple responses and verifying determinism",
+    "create_flash_deepseek_v2_fixture": "create a pytest fixture that launches the deepseek v2 lite model with two shards and waits for health",
+    "review_flash_deepseek_v2_tests": "review the flash deepseek v2 integration test suite for release asyncio and private test markers"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_falcon.py": {
+    "test_flash_falcon_basic": "test the falcon-7b flash attention model with a basic text generation request and max_new_tokens",
+    "test_flash_falcon_all_params": "test the falcon-7b model generation with all parameters including temperature, top_p, top_k, and seed",
+    "test_flash_falcon_load": "test the falcon-7b model under load by sending multiple concurrent generation requests and verifying consistency",
+    "create_flash_falcon_fixture": "create a pytest fixture that launches the tiiuae/falcon-7b model with trust_remote_code enabled",
+    "create_flash_falcon_client": "create an async pytest fixture that waits for the falcon-7b model health check and returns the client"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_gemma.py": {
+    "test_flash_gemma_simple": "test the flash gemma model with a simple generate request using max_new_tokens and decoder_input_details",
+    "test_flash_gemma_all_params": "test the flash gemma model generate call with all sampling parameters like temperature top_p and top_k",
+    "test_flash_gemma_load": "test the flash gemma model under load by sending multiple identical requests and verifying deterministic responses",
+    "create_flash_gemma_handle_fixture": "create a pytest fixture that launches the google gemma-2b model with a single shard using the launcher",
+    "create_flash_gemma_client_fixture": "create a pytest fixture that waits for the flash gemma model health check and returns the client"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_gemma2.py": {
+    "test_flash_gemma2_single_generation": "test the flash gemma2 model by generating text with a prompt and max_new_tokens parameter",
+    "test_flash_gemma2_load": "test the flash gemma2 model under load by sending multiple concurrent generation requests",
+    "run_flash_gemma2_fixture": "run the flash gemma2 test fixture that launches the google gemma-2-9b-it model with 2 shards",
+    "review_flash_gemma2_test": "review the flash gemma2 integration test assertions for generated text and token count",
+    "summarize_flash_gemma2_tests": "summarize the flash gemma2 pytest integration tests for single and load generation scenarios"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_gemma3.py": {
+    "test_flash_gemma3_text_generation": "test the flash gemma3 model text generation with a prompt and max tokens",
+    "test_flash_gemma3_multimodal_chat": "test the flash gemma3 chat endpoint with an image URL and text prompt",
+    "test_flash_gemma3_long_context": "test the flash gemma3 model with a long input exceeding the context window",
+    "test_flash_gemma3_base64_image": "test the flash gemma3 chat endpoint with a base64 encoded image data URL",
+    "create_image_to_data_url": "create a function that converts a PIL image to a base64 data URL string"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_gemma_gptq.py": {
+    "test_flash_gemma_gptq_basic": "test the flash gemma gptq model by generating 10 tokens from a prompt",
+    "test_flash_gemma_gptq_all_params": "test the flash gemma gptq model with all generation parameters like temperature and top_k",
+    "test_flash_gemma_gptq_load": "test the flash gemma gptq model under load by generating 4 responses and comparing them",
+    "create_flash_gemma_gptq_fixture": "create a pytest fixture that launches the gemma 2b GPTQ quantized model with one shard",
+    "review_flash_gemma_gptq_health": "review the flash gemma gptq fixture that waits for model health before returning the client"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_gpt2.py": {
+    "test_flash_gpt2_generate": "test the flash GPT-2 model by generating text with max_new_tokens and decoder_input_details",
+    "test_flash_gpt2_load": "test the flash GPT-2 model under load by generating multiple responses and validating determinism",
+    "run_flash_gpt2_fixture": "run the flash_gpt2_handle fixture to launch the openai-community/gpt2 model with two shards",
+    "run_flash_gpt2_client": "run the flash_gpt2 fixture to wait for model health and return the inference client",
+    "review_test_flash_gpt2": "review the test_flash_gpt2 test to verify generated token count and response snapshot matching"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_grammar_llama.py": {
+    "test_flash_llama_grammar_basic": "test the flash llama grammar generation with a basic prompt and max new tokens",
+    "test_flash_llama_grammar_regex": "test regex constrained text generation using an IP address pattern with the flash llama model",
+    "test_flash_llama_grammar_json": "test JSON schema constrained text generation using a person schema with the flash llama model",
+    "test_flash_llama_grammar_load": "test parallel load generation with regex grammar constraints using four concurrent requests",
+    "test_flash_llama_grammar_single": "test single request generation with regex grammar constraints to verify consistent output"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_llama.py": {
+    "test_flash_llama_simple": "test the flash_llama simple generation with max_new_tokens and decoder_input_details parameters",
+    "test_flash_llama_all_params": "test the flash_llama generation with all parameters including temperature, top_p, top_k, and watermark",
+    "test_flash_llama_load": "test the flash_llama load generation with multiple concurrent requests for consistency",
+    "create_flash_llama_fixture": "create a pytest fixture that launches the huggyllama/llama-7b model with two shards",
+    "review_flash_llama_generate": "review the flash_llama generate API call with repetition_penalty, stop_sequences, and seed parameters"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_llama_exl2.py": {
+    "run_test_flash_llama_exl2": "run the pytest test that generates 10 tokens from a Llama-3-8B-Instruct EXL2 quantized model",
+    "run_test_flash_llama_exl2_all_params": "run the pytest test that generates text with all parameters like temperature, top_p, and repetition_penalty",
+    "run_test_flash_llama_exl2_load": "run the pytest load test that sends 4 concurrent generation requests to the EXL2 model",
+    "review_flash_llama_exl2_handle_fixture": "review the pytest fixture that launches a Llama-3-8B-Instruct model with EXL2 2.5bpw quantization",
+    "review_flash_llama_exl2_fixture": "review the async pytest fixture that waits for model health and returns the generation client"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_llama_fp8.py": {
+    "test_flash_llama_fp8_basic": "test the flash llama fp8 model with a basic generate request and max new tokens",
+    "test_flash_llama_fp8_all_params": "test the flash llama fp8 model generate with all parameters like temperature top k and top p",
+    "test_flash_llama_fp8_load": "test the flash llama fp8 model under load with multiple concurrent generate requests",
+    "create_flash_llama_fp8_fixture": "create a pytest fixture that launches the meta llama 3 8b model with fp8 quantization and two shards",
+    "review_flash_llama_fp8_tests": "review the flash llama fp8 integration tests to check response assertions and snapshot comparisons"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_llama_fp8_kv_cache.py": {
+    "test_flash_llama_fp8_kv_cache_basic": "test the flash llama fp8 kv cache model with a basic generation prompt and max new tokens",
+    "test_flash_llama_fp8_kv_cache_all_params": "test the flash llama fp8 kv cache model generation with all sampling parameters like temperature top k and top p",
+    "test_flash_llama_fp8_kv_cache_load": "test the flash llama fp8 kv cache model under concurrent load with multiple generation requests",
+    "run_flash_llama_fp8_kv_cache_fixture": "run the flash llama fp8 kv cache launcher fixture with the neuralmagic meta llama 3 8b instruct fp8 kv model",
+    "review_flash_llama_fp8_kv_cache_tests": "review the pytest integration tests for the flash attention llama fp8 kv cache model including basic param and load tests"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_llama_gptq.py": {
+    "test_flash_llama_gptq_basic": "test the flash llama gptq model by generating 10 tokens from a prompt",
+    "test_flash_llama_gptq_all_params": "test the flash llama gptq model with all generation parameters like temperature and top_k",
+    "test_flash_llama_gptq_load": "test the flash llama gptq model under load by generating 4 responses and verifying consistency",
+    "run_flash_llama_gptq_fixture": "run the flash llama gptq launcher fixture with 2 shards and gptq quantization",
+    "review_flash_llama_gptq_health": "review the flash llama gptq health check fixture that waits up to 300 seconds for readiness"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_llama_marlin.py": {
+    "test_flash_llama_marlin_basic": "run the pytest test that generates 10 tokens from a marlin-quantized Llama-2-7b-chat model",
+    "test_flash_llama_marlin_all_params": "run the pytest test that generates tokens with all sampling parameters like temperature, top_p, and top_k",
+    "test_flash_llama_marlin_load": "run the pytest load test that sends 4 concurrent generation requests and verifies deterministic output",
+    "review_flash_llama_marlin_handle_fixture": "review the pytest fixture that launches the neuralmagic/llama-2-7b-chat-marlin model with 2 shards and marlin quantization",
+    "review_flash_llama_marlin_fixture": "review the pytest fixture that waits for model health and returns the text-generation-inference client"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_llama_marlin_24.py": {
+    "run_test_flash_llama_marlin": "run the pytest integration test for flash llama marlin 2.4 quantized model generation",
+    "run_test_flash_llama_marlin24_all_params": "run the pytest test that validates all generation parameters for the marlin 2.4 model",
+    "run_test_flash_llama_marlin24_load": "run the pytest load test that sends 4 concurrent requests to the marlin 2.4 model",
+    "review_flash_llama_marlin24_handle_fixture": "review the pytest fixture that launches the Llama-2-7b-pruned2.4-Marlin_24 model with marlin quantization",
+    "review_flash_llama_marlin_fixture": "review the pytest fixture that performs a health check and returns the model client"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_llama_prefix.py": {
+    "test_flash_llama_load": "test the flash llama model by sending 100 prompts and verifying batch generation responses match expected outputs",
+    "run_flash_llama_integration_test": "run the integration test for Meta-Llama-3.1-8B-Instruct with flash attention using 2 shards",
+    "test_llama_batch_generation": "test batch text generation with multiple prompts using generate_multi and compare outputs to expected snapshots",
+    "create_flash_llama_fixture": "create a pytest fixture that launches Meta-Llama-3.1-8B-Instruct with 2 shards and waits for health",
+    "review_flash_llama_prefix_test": "review the flash llama prefix caching integration test that validates multi-prompt generation with exact output matching"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_llama_prefix_flashdecoding.py": {
+    "test_flashdecoding_llama": "run the flashdecoding integration test for Llama 3.1 8B Instruct with 2 shards",
+    "test_batched_generation": "test batched text generation with 120 prompts using generate_multi and flashdecoding attention",
+    "test_llama_health_check": "test the Llama model server health check with a 300 second timeout",
+    "test_multi_prompt_responses": "test that 120 diverse prompts return expected responses with max 10 new tokens",
+    "test_flash_llama_fixture": "test the flash_llama_fd fixture that launches Meta-Llama-3.1-8B-Instruct with flashdecoding"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_medusa.py": {
+    "test_flash_medusa_simple": "test the flash medusa model with a simple generation request and verify token count",
+    "test_flash_medusa_all_params": "test the flash medusa model with all generation parameters like temperature and top_k",
+    "test_flash_medusa_load": "test the flash medusa model under load with multiple concurrent generation requests",
+    "create_flash_medusa_fixture": "create a pytest fixture that launches the medusa-vicuna-7b model with two shards",
+    "review_flash_medusa_tests": "review the flash medusa integration tests for the text generation inference service"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_mistral.py": {
+    "test_flash_mistral_basic": "test the flash mistral model by generating 10 tokens from a prompt and verifying the response",
+    "test_flash_mistral_all_params": "test the flash mistral model generate call with all sampling parameters like temperature and top_k",
+    "test_flash_mistral_load": "test the flash mistral model under load by generating 4 responses and verifying consistency",
+    "create_flash_mistral_fixture": "create a pytest fixture that launches the mistralai Mistral-7B-Instruct-v0.1 model using the launcher",
+    "create_flash_mistral_client": "create an async pytest fixture that waits for the flash mistral model health check and returns the client"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_mixtral.py": {
+    "test_flash_mixtral_basic": "test the Mixtral-8x7B model with flash attention using basic generation parameters and max_new_tokens",
+    "test_flash_mixtral_all_params": "test the Mixtral-8x7B model with all generation parameters including temperature, top_p, top_k, and seed",
+    "test_flash_mixtral_load": "test the Mixtral-8x7B model under concurrent load by generating multiple responses simultaneously",
+    "create_flash_mixtral_fixture": "create a pytest fixture that launches the Mixtral-8x7B model with 8 shards and waits for health",
+    "run_flash_mixtral_integration_tests": "run the integration test suite for the Mixtral-8x7B flash attention model using pytest"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_mixtral_awq.py": {
+    "test_flash_mixtral_awq_basic": "test the flash mixtral awq model by generating 10 tokens from a prompt",
+    "test_flash_mixtral_awq_all_params": "test the flash mixtral awq model with all generation parameters like temperature and top_k",
+    "test_flash_mixtral_awq_load": "test the flash mixtral awq model under concurrent load with 4 simultaneous requests",
+    "run_flash_mixtral_awq_fixture": "run the flash mixtral awq launcher fixture with 2 shards for the casperhansen model",
+    "review_flash_mixtral_awq_tests": "review the flash mixtral awq integration tests for generation correctness and response snapshots"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_mixtral_gptq.py": {
+    "test_flash_mixtral_gptq_basic": "test the flash mixtral gptq model generates 10 tokens for a deep learning prompt",
+    "test_flash_mixtral_gptq_all_params": "test the flash mixtral gptq model with all generation parameters like temperature and top_k",
+    "test_flash_mixtral_gptq_load": "test the flash mixtral gptq model handles concurrent load with 4 parallel generation requests",
+    "review_flash_mixtral_gptq_fixture": "review the flash mixtral gptq launcher fixture that loads TheBloke Mixtral 8x7B GPTQ model with 2 shards",
+    "review_flash_mixtral_gptq_health": "review the async health check fixture that waits up to 300 seconds for the model server"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_neox.py": {
+    "run_test_flash_neox": "run the async test_flash_neox test to generate 10 tokens from the stablelm-tuned-alpha-3b model",
+    "run_test_flash_neox_load": "run the async test_flash_neox_load test to verify 4 concurrent generations produce identical outputs",
+    "create_fixture_flash_neox_handle": "create a pytest fixture that launches the stabilityai/stablelm-tuned-alpha-3b model with one shard",
+    "create_fixture_flash_neox": "create a pytest fixture that waits for model health and returns the TGI client",
+    "test_flash_neox_generate": "test the flash_neox client generate method with a user-assistant prompt and decoder input details"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_neox_sharded.py": {
+    "test_flash_neox_generate": "test the flash neox sharded model by generating 10 tokens from a prompt",
+    "test_flash_neox_load": "test the flash neox sharded model under load with 4 concurrent generation requests",
+    "run_flash_neox_sharded_fixture": "run the flash neox sharded fixture to launch the oasst pythia 12b model with 2 shards",
+    "run_flash_neox_health_check": "run the flash neox sharded health check fixture waiting up to 300 seconds",
+    "test_flash_neox_decoder_details": "test the flash neox model generation with decoder input details enabled"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_pali_gemma.py": {
+    "test_pali_gemma_single_image_qa": "test the flash_pali_gemma fixture to answer a question about a single image using the paligemma-3b-pt-224 model",
+    "test_pali_gemma_two_images_caption": "test the flash_pali_gemma fixture to generate a caption from two images using the paligemma-3b-pt-224 model",
+    "run_pali_gemma_integration_tests": "run the pytest integration tests for the flash PaliGemma model with release and private markers",
+    "review_pali_gemma_test_fixtures": "review the flash_pali_gemma_handle and flash_pali_gemma pytest fixtures that launch and health-check the model server",
+    "refactor_pali_gemma_test_assertions": "refactor the test_flash_pali_gemma test assertions to validate generated text and response snapshots"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_pali_gemma2.py": {
+    "test_flash_pali_gemma_image": "test the PaliGemma2 flash model with an image URL and verify generated text output",
+    "run_flash_pali_gemma_fixture": "run the flash_pali_gemma fixture to launch the google/paligemma2-3b-pt-224 model and wait for health",
+    "test_pali_gemma_handle": "test the flash_pali_gemma_handle fixture that launches the PaliGemma2 model using the launcher",
+    "run_pali_gemma_health_check": "run the health check on the flash_pali_gemma model with a 300 second timeout",
+    "test_image_generation_response": "test image generation with the PaliGemma2 model and assert the response matches the snapshot"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_phi.py": {
+    "test_flash_phi_basic": "test the flash phi model generates 10 tokens from a prompt using the text generation inference client",
+    "test_flash_phi_all_params": "test the flash phi model generation with all parameters including temperature top_p top_k and stop sequences",
+    "test_flash_phi_load": "test the flash phi model handles concurrent load by generating 4 identical responses from the same prompt",
+    "create_flash_phi_fixture": "create a pytest fixture that launches the microsoft phi-2 model with flash attention and one shard",
+    "create_flash_phi_client": "create a pytest fixture that waits for the flash phi model health check and returns the inference client"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_phi35_moe.py": {
+    "test_flash_phi35_moe_basic": "test the Phi-3.5-MoE model with flash attention using basic generation parameters",
+    "test_flash_phi35_moe_all_params": "test the Phi-3.5-MoE model with all generation parameters like temperature and top_k",
+    "test_flash_phi35_moe_load": "test the Phi-3.5-MoE model under load with multiple concurrent generation requests",
+    "create_flash_phi35_moe_fixture": "create a pytest fixture that launches the Phi-3.5-MoE model with 4 shards",
+    "review_flash_phi35_moe_tests": "review the integration tests for the Phi-3.5-MoE flash attention model"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_qwen2.py": {
+    "test_flash_qwen2_basic": "test the Qwen1.5-0.5B flash attention model with a basic generate request and max new tokens",
+    "test_flash_qwen2_all_params": "test the Qwen1.5 flash model generate with all parameters including temperature, top_p, top_k, and seed",
+    "test_flash_qwen2_load": "test the Qwen1.5 flash model under load by sending multiple concurrent generate requests",
+    "run_flash_qwen2_fixture": "run the flash_qwen2 fixture to launch the Qwen1.5-0.5B model and wait for health check",
+    "review_flash_qwen2_tests": "review the pytest integration tests for the Qwen1.5 flash attention model generate endpoint"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_qwen2_5_vl.py": {
+    "test_qwen2_5_vl_simple_chat": "test the Qwen2.5-VL-3B-Instruct model with a simple image description chat request",
+    "test_qwen2_5_vl_streaming_chat": "test the Qwen2.5-VL-3B-Instruct model with streaming image description chat responses",
+    "test_qwen2_5_vl_bay_image": "test the Qwen2.5-VL model by describing an image of the Statue of Liberty in New York Bay",
+    "test_qwen2_5_vl_inpaint_image": "test the Qwen2.5-VL model by describing an inpainting pipeline image from HuggingFace",
+    "launch_qwen2_5_vl_model": "launch the Qwen2.5-VL-3B-Instruct model using the TGI launcher fixture and wait for health"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_qwen2_vl.py": {
+    "test_flash_qwen2_vl_simple": "test the Qwen2-VL model with a non-streaming chat request using an image URL and text prompt",
+    "test_flash_qwen2_vl_simple_streaming": "test the Qwen2-VL model with a streaming chat request using an image URL and text prompt",
+    "test_flash_qwen2_vl_bay": "test the Qwen2-VL model with a chat request using a Statue of Liberty image URL",
+    "test_flash_qwen2_vl_inpaint": "test the Qwen2-VL model with a chat request using an inpainting pipeline image URL",
+    "create_flash_qwen2_fixture": "create a pytest fixture that launches the Qwen2-VL-7B-Instruct model and waits for health"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_santacoder.py": {
+    "test_flash_santacoder_generation": "test the bigcode/santacoder model by generating 10 tokens from a code prompt",
+    "test_flash_santacoder_load": "test the bigcode/santacoder model with 4 concurrent generation requests for consistency",
+    "run_santacoder_integration_tests": "run the pytest integration tests for the santacoder flash decoder model",
+    "review_santacoder_test_fixtures": "review the flash_santacoder_handle and flash_santacoder pytest fixtures for model launch and health checks",
+    "summarize_santacoder_test_suite": "summarize the santacoder integration test suite covering single and load generation tests"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_starcoder.py": {
+    "test_flash_starcoder_basic_generation": "test the flash starcoder model by generating 10 tokens from a code prompt",
+    "test_flash_starcoder_with_params": "test the flash starcoder model with temperature, top_p, and seed parameters for generation",
+    "test_flash_starcoder_load": "test the flash starcoder model with 4 concurrent generation requests for load testing",
+    "run_flash_starcoder_health_check": "run a health check on the flash starcoder model server with a 300 second timeout",
+    "launch_flash_starcoder_model": "launch the bigcode starcoder model with 2 shards using the TGI launcher fixture"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_starcoder2.py": {
+    "test_flash_starcoder2_basic_generation": "test the starcoder2-3b model generates exactly 10 tokens from a code prompt using flash attention",
+    "test_flash_starcoder2_default_params": "test the starcoder2-3b model with default generation params like temperature top_p and seed",
+    "test_flash_starcoder2_load": "test the starcoder2-3b model produces consistent responses across 4 concurrent load requests",
+    "review_flash_starcoder2_fixtures": "review the flash_starcoder2_handle and flash_starcoder2 pytest fixtures that launch and health-check the model",
+    "run_flash_starcoder2_integration_tests": "run the pytest integration test suite for the starcoder2-3b flash attention model with release and private markers"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_starcoder2_lora.py": {
+    "test_starcoder2_basic_generation": "test the starcoder2-3b model generates exactly 10 tokens from a code prompt using flash attention",
+    "test_starcoder2_default_params": "test the starcoder2 model with default generation parameters including temperature top_p and seed",
+    "test_starcoder2_load": "test the starcoder2 model handles concurrent load by generating 4 identical responses",
+    "test_starcoder2_lora_adapter": "test the starcoder2 model with a LoRA adapter via a POST request to the generate endpoint",
+    "test_starcoder2_fixture_health": "test the starcoder2 model launcher fixture waits for health check before returning the client"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_flash_starcoder_gptq.py": {
+    "test_flash_starcoder_gptq_generation": "test the starcoder gptq model by generating tokens from a python function signature prompt",
+    "test_flash_starcoder_gptq_load": "test the starcoder gptq model under load with four concurrent generation requests",
+    "run_flash_starcoder_gptq_fixture": "run the flash starcoder gptq test fixture that launches the model with two shards and gptq quantization",
+    "review_flash_starcoder_gptq_handle": "review the flash starcoder gptq handle fixture that launches the Narsil starcoder gptq model",
+    "summarize_flash_starcoder_gptq_tests": "summarize the integration tests for the starcoder gptq quantized model using the flash attention backend"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_grammar_llama.py": {
+    "test_grammar_constrained_json_generation": "test that a TinyLlama model generates valid JSON output constrained by a JSON schema grammar",
+    "run_llama_grammar_test": "run the async integration test for grammar-constrained text generation with a non-flash Llama model",
+    "create_json_schema_grammar_constraint": "create a JSON schema grammar constraint with properties like firstName, lastName, hobby, and numCats",
+    "launch_tinyllama_server_with_grammar": "launch a TinyLlama model server with grammar support enabled and flash attention disabled",
+    "generate_text_with_json_grammar": "generate text from a prompt using the async client with a JSON grammar constraint and fixed seed"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_grammar_response_format_llama.py": {
+    "test_grammar_response_format_llama_json": "test that TGI returns valid JSON responses constrained by a Pydantic schema using json_object, json, and json_schema response format types",
+    "test_grammar_response_format_llama_error_if_tools_not_installed": "test that TGI returns a 422 error when both grammar response_format and tools are specified together",
+    "run_llama_grammar_handle_fixture": "launch a TinyLlama model with grammar support enabled and flash attention disabled for integration testing",
+    "run_llama_grammar_fixture": "wait for the launched TinyLlama model to become healthy and return the API client",
+    "review_Weather_pydantic_model": "review the Weather Pydantic BaseModel with unit and temperature fields used as a JSON schema for structured output"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_idefics.py": {
+    "test_idefics_single_image_generation": "run the idefics single image generation test with a chicken image and max 10 tokens",
+    "test_idefics_two_images": "run the idefics two image generation test with chicken and cow beach images",
+    "test_idefics_load": "run the idefics load test generating 4 responses from the same image prompt",
+    "review_idefics_handle_fixture": "review the idefics handle fixture that launches the HuggingFaceM4 idefics-9b-instruct model with 2 shards",
+    "review_idefics_fixture": "review the async idefics fixture that waits for model health and returns the client"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_idefics2.py": {
+    "test_idefics2_simple_image_generation": "test the idefics2 model generates text from a single image input with max_new_tokens",
+    "test_idefics2_two_images": "test the idefics2 model generates text from two image inputs and answers a question",
+    "test_idefics2_all_params": "test the idefics2 generate endpoint with all parameters like temperature, top_p, and repetition_penalty",
+    "test_idefics2_load": "test the idefics2 model under concurrent load with multiple parallel generation requests",
+    "review_flash_idefics2_next_fixture": "review the flash_idefics2_next fixture that launches the HuggingFaceM4 idefics2-8b model and waits for health"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_idefics3.py": {
+    "test_idefics3_image_understanding": "run the pytest integration test that sends an image URL to the Idefics3-8B-Llama3 model and validates the generated text response",
+    "test_idefics3_fixture_health": "run the flash_idefics3_next fixture that launches the HuggingFaceM4/Idefics3-8B-Llama3 model and waits for health check",
+    "test_idefics3_generate_with_url": "run the async generate call on the Idefics3 client with an image URL and a text query to get a description",
+    "test_idefics3_response_snapshot": "run the Idefics3 test and compare the full response object against a stored snapshot for regression detection",
+    "test_idefics3_token_count": "run the Idefics3 test and assert that the number of generated tokens matches the expected count"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_json_schema_constrain.py": {
+    "test_json_schema_basic": "test basic JSON schema validation by sending a chat completion request with a person schema to TGI",
+    "test_json_schema_complex": "test complex JSON schema validation with nested objects and arrays using the TGI chat completions API",
+    "test_json_schema_stream": "test JSON schema validation with streaming responses by parsing SSE chunks from the TGI API",
+    "define_person_schema": "define a JSON schema for a person object with firstName, lastName, hobby, and numCats properties",
+    "define_complex_schema": "define a JSON schema with nested address objects and a hobbies array for complex validation testing"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_llava_next.py": {
+    "test_flash_llava_next_simple": "test the llava next model by generating a short story from an image with max 10 tokens",
+    "test_flash_llava_next_all_params": "test the llava next model generate endpoint with all parameters like temperature, top_k, and stop sequences",
+    "test_flash_llava_next_load": "test the llava next model under load by generating 4 identical responses from an image prompt",
+    "review_flash_llava_next_handle": "review the flash llava next launcher fixture that starts the llava v1.6 mistral 7b model with 4 shards",
+    "review_flash_llava_next_fixture": "review the async flash llava next fixture that waits for server health and returns the client"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_lora_mistral.py": {
+    "test_lora_mistral_base_generation": "test the Mistral-7B model with LoRA adapters by generating 10 tokens and verifying token count",
+    "test_lora_mistral_without_adapter": "test the Mistral-7B base model generates article classification output without any LoRA adapter applied",
+    "test_lora_mistral_with_dbpedia_adapter": "test the Mistral-7B model with the predibase/dbpedia LoRA adapter for article type classification",
+    "test_lora_mistral_with_customer_support_adapter": "test the Mistral-7B model with the predibase/customer_support LoRA adapter for customer support responses",
+    "test_lora_mistral_without_customer_support_adapter": "test the Mistral-7B base model response to a customer support prompt without the adapter applied"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_mamba.py": {
+    "test_mamba_basic_generation": "test the mamba model by generating text with a prompt and max_new_tokens parameter",
+    "test_mamba_all_params": "test the mamba model generation with all sampling parameters like temperature, top_p, and repetition_penalty",
+    "test_mamba_load": "test the mamba model under load by generating multiple responses and verifying consistency",
+    "run_mamba_fixture": "run the fused kernel mamba fixture to launch the state-spaces mamba-130m-hf model with one shard",
+    "review_mamba_health_check": "review the mamba client health check fixture that waits up to 300 seconds for readiness"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_mllama.py": {
+    "test_mllama_simple_chat": "test the mllama model with a simple chat request including an image URL and text prompt",
+    "test_mllama_concurrent_load": "test the mllama model with concurrent chat requests using asyncio gather for load testing",
+    "run_mllama_image_description": "run the mllama model to describe an image using a chat request with an image URL",
+    "review_mllama_fixture_setup": "review the mllama_handle and mllama pytest fixtures that launch the model and wait for health",
+    "refactor_mllama_chat_messages": "refactor the mllama chat messages to support different image URLs or text prompts"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_mt0_base.py": {
+    "test_mt0_base_basic_generation": "test the mt0-base model generates text with max_new_tokens, top_p, and seed parameters",
+    "test_mt0_base_all_params": "test the mt0-base model generation with all parameters including repetition_penalty, temperature, top_k, and watermark",
+    "test_mt0_base_load": "test the mt0-base model under load by generating multiple responses and verifying consistency",
+    "create_mt0_base_fixture": "create a pytest fixture that launches the bigscience mt0-base model and waits for health",
+    "review_mt0_base_tests": "review the mt0-base integration tests for generation parameters, load testing, and response snapshot assertions"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_neox.py": {
+    "run_test_neox": "run the async test_neox test to generate 10 tokens from the stablelm-tuned-alpha-3b NeoX model",
+    "run_test_neox_load": "run the async test_neox_load test to verify consistent text generation across 4 parallel requests",
+    "test_neox_fixture": "test the neox_handle fixture that launches the stabilityai/stablelm-tuned-alpha-3b model with one shard and no flash attention",
+    "test_neox_client_fixture": "test the neox fixture that waits for model health and returns the inference client",
+    "review_test_neox": "review the test_neox test to verify generated token count and response snapshot matching"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_neox_sharded.py": {
+    "test_neox_sharded_generation": "run the neox sharded model integration test that generates 10 tokens from a prompt",
+    "test_neox_load_consistency": "run the neox sharded load test that generates 4 responses and validates consistency",
+    "create_neox_sharded_fixture": "create a pytest fixture that launches the oasst-sft-1-pythia-12b model with 2 shards",
+    "review_test_neox": "review the test_neox function that validates generated token count and response snapshot",
+    "refactor_neox_sharded_handle": "refactor the neox_sharded_handle fixture to change shard count or flash attention settings"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_smolvlm.py": {
+    "test_smolvlm_image_query": "run the pytest integration test that queries the SmolVLM model with an image URL and validates the generated text response",
+    "test_smolvlm_generate_tokens": "run the pytest test that verifies the SmolVLM model generates exactly 8 tokens for a given image query",
+    "test_smolvlm_health_check": "run the pytest fixture that launches the SmolVLM-Instruct model and waits for its health endpoint to be ready",
+    "test_smolvlm_response_snapshot": "run the pytest test that compares the SmolVLM model response against a stored snapshot for regression validation",
+    "test_smolvlm_launcher_fixture": "run the pytest fixture that launches the HuggingFaceTB SmolVLM-Instruct model using the launcher context manager"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_t5_sharded.py": {
+    "test_t5_sharded_generation": "test the flan-t5-xxl model sharded across 4 GPUs with a single generation request and decoder input details",
+    "test_t5_sharded_load": "test the flan-t5-xxl sharded model under load by sending 4 concurrent generation requests and verifying consistent responses",
+    "run_t5_sharded_fixture": "run the t5_sharded_handle fixture to launch google/flan-t5-xxl with 4 shards for integration testing",
+    "run_t5_sharded_client": "run the t5_sharded fixture to wait for model health and return the TGI client for async generation calls",
+    "review_test_t5_sharded": "review the test_t5_sharded function that generates text with max_new_tokens and decoder_input_details flags"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_tools_llama.py": {
+    "test_tgi_tool_calling_nostream": "test non-streaming tool calling with Llama 3.1 via InferenceClient and a weather function schema",
+    "test_tgi_tool_calling_openai_stream": "test streaming tool calling with Llama 3.1 via the OpenAI-compatible TGI endpoint",
+    "test_tgi_tool_choice_auto": "test tool_choice auto mode where the model decides whether to call a tool or reply directly",
+    "test_tgi_tool_choice_specific": "test tool_choice with a specific function name to force the model to call that tool",
+    "test_tgi_tool_reply_response": "test sending a tool response back to the model and receiving a natural language answer"
+  },
+  "huggingface_text-generation-inference/integration-tests/models/test_transformers_olmo.py": {
+    "test_OLMo_simple_generation": "test the OLMo-7B model by generating text with a simple request and max 10 new tokens",
+    "test_OLMo_load_generation": "test the OLMo-7B model by generating 4 concurrent responses and verifying deterministic output",
+    "run_OLMo_integration_tests": "run the pytest integration test suite for the OLMo-7B-Instruct model with flash attention",
+    "test_OLMo_decoder_input_details": "test the OLMo-7B model generation with decoder input details enabled and verify token count",
+    "run_OLMo_health_check": "run a health check on the OLMo-7B model launcher before running integration tests"
+  },
+  "huggingface_text-generation-inference/load_tests/benchmarks.py": {
+    "run_tgi_benchmark": "run the TGI benchmark suite for a model using the CLI with --sha and --results-file",
+    "start_tgi_container": "start a TGI Docker container with TGIDockerRunner for a given model and GPU count",
+    "run_benchmark_container": "run a text-generation-inference-benchmark Docker container with BenchmarkRunner using custom parameters",
+    "build_results_dataframe": "build a pandas DataFrame from benchmark JSON result files using build_df",
+    "run_docker_container": "run a Docker container with GPU support, volume mounts, and log sentinel monitoring via run_docker"
+  },
+  "huggingface_text-generation-inference/server/bounds-from-nix.py": {
+    "run_bounds_from_nix": "run the script to generate poetry add commands from nix package versions",
+    "is_optional_check": "check if a poetry dependency entry is marked as optional using is_optional",
+    "generate_poetry_commands": "generate poetry add commands by comparing pyproject.toml dependencies against nix pip list output",
+    "skip_kernel_packages": "use the SKIP set to exclude attention-kernels marlin-kernels and moe-kernels from version pinning",
+    "parse_pyproject_dependencies": "parse pyproject.toml to iterate over poetry dependencies and their optional status"
+  },
+  "huggingface_text-generation-inference/server/tests/conftest.py": {
+    "create_default_pb_parameters_fixture": "create a pytest fixture that returns default NextTokenChooserParameters with temperature 1.0 and do_sample False",
+    "create_default_pb_stop_parameters_fixture": "create a pytest fixture that returns default StoppingCriteriaParameters with max_new_tokens set to 10"
+  },
+  "huggingface_text-generation-inference/server/tests/models/test_bloom.py": {
+    "test_BloomCausalLMBatch_from_pb": "test creating a BloomCausalLMBatch from a protobuf batch using the from_pb method",
+    "test_BloomCausalLMBatch_concatenate": "test concatenating multiple BloomCausalLMBatch instances into a single batch with proper key-value handling",
+    "test_BLOOMSharded_generate_token": "test generating tokens from a BLOOMSharded model using the generate_token method on a batch",
+    "test_BLOOMSharded_batch_type": "test that a BLOOMSharded model returns BloomCausalLMBatch as its batch_type",
+    "test_BloomCausalLMBatch_filter": "test filtering a BloomCausalLMBatch by request IDs to remove completed requests from the batch"
+  },
+  "huggingface_text-generation-inference/server/tests/models/test_causal_lm.py": {
+    "test_CausalLM_generate_token": "test the CausalLM generate_token method to produce the next token for a CausalLMBatch",
+    "test_CausalLMBatch_from_pb": "test building a CausalLMBatch from a protobuf batch using the from_pb class method",
+    "test_CausalLMBatch_concatenate": "test concatenating multiple CausalLMBatch instances into a single batch with merged past key values",
+    "test_CausalLM_generate_token_completion": "test running CausalLM generate_token in a loop until a request completes and returns generated text",
+    "test_CausalLMBatch_filter": "test filtering a CausalLMBatch to keep only specific request IDs after some requests finish"
+  },
+  "huggingface_text-generation-inference/server/tests/models/test_model.py": {
+    "test_decode_token_english": "test the Model.decode_token method with English text containing spaces and verify incremental decoding",
+    "test_decode_token_chinese_utf8": "test the Model.decode_token method with Chinese UTF-8 text and verify multi-byte character handling",
+    "create_test_model_fixture": "create a TestModel subclass of Model with a LLaMA-7B tokenizer for testing decode_token",
+    "run_streaming_decode_tests": "run the pytest test suite for streaming token decoding with English and Chinese text",
+    "review_decode_token_offsets": "review the Model.decode_token offset and token_offset tracking for incremental token-by-token decoding"
+  },
+  "huggingface_text-generation-inference/server/tests/models/test_santacoder.py": {
+    "test_santacoder_token_completion": "test the santacoder model token completion generation using CausalLM and CausalLMBatch",
+    "test_fim_santacoder_completion": "test the santacoder model fill-in-the-middle completion with prefix suffix and middle tokens",
+    "create_santacoder_causallm": "create a CausalLM instance for the bigcode santacoder model using the fallback method",
+    "create_pb_request": "create a protobuf Request object with input chunks and generation parameters for text completion",
+    "create_pb_batch": "create a protobuf Batch object containing one or more generation requests for batched inference"
+  },
+  "huggingface_text-generation-inference/server/tests/models/test_seq2seq_lm.py": {
+    "test_Seq2SeqLMBatch_from_pb": "test that Seq2SeqLMBatch.from_pb correctly creates a batch from a protobuf request with input tokenization",
+    "test_Seq2SeqLMBatch_concatenate": "test that Seq2SeqLMBatch.concatenate merges two batches and preserves past key values and hidden states",
+    "test_Seq2SeqLM_generate_token": "test that Seq2SeqLM.generate_token produces a single decoder token and returns the next batch state",
+    "test_Seq2SeqLM_generate_token_completion": "test that repeated generate_token calls complete a full seq2seq generation loop until the batch is exhausted",
+    "test_Seq2SeqLM_generate_token_completion_multi": "test that generate_token handles multiple requests with different max token limits and filters completed requests"
+  },
+  "huggingface_text-generation-inference/server/tests/utils/test_adapter.py": {
+    "test_parse_lora_adapters": "test the parse_lora_adapters function with empty, single, multiple, and invalid adapter string inputs",
+    "test_get_attn_weights": "test the get_attn_weights function to verify attention weight mapping for different transformer layer indices",
+    "test_get_mlp_weights": "test the get_mlp_weights function to verify MLP weight mapping with and without gate_up_proj",
+    "test_adapter_info_parsing": "test the AdapterInfo dataclass parsing for LoRA adapter id, path, and revision fields",
+    "test_lora_adapter_compatibility": "test the get_attn_weights and get_mlp_weights functions for llama and gemma model compatibility"
+  },
+  "huggingface_text-generation-inference/server/tests/utils/test_convert.py": {
+    "test_convert_files": "test the convert_files function by downloading bloom-560m weights and converting pytorch bin files to safetensors format",
+    "run_test_convert_files": "run the test_convert_files pytest to verify pytorch weight to safetensors conversion for bigscience/bloom-560m",
+    "review_test_convert_files": "review the test_convert_files function that validates weight_hub_files download and safetensors conversion pipeline",
+    "summarize_test_convert_files": "summarize the test_convert_files function that downloads pytorch weights and converts them to safetensors format",
+    "refactor_test_convert_files": "refactor the test_convert_files function to support additional model ids or weight file extensions"
+  },
+  "huggingface_text-generation-inference/server/tests/utils/test_hub.py": {
+    "test_weight_hub_files": "test the weight_hub_files function to list safetensors weight filenames for a Hugging Face model",
+    "test_download_weights": "test the download_weights function to download safetensors files from the Hugging Face Hub",
+    "test_weight_files": "test the weight_files function to resolve local cached weight file paths for a model",
+    "test_entry_not_found_error": "test that EntryNotFoundError is raised when no weight files match the given extension",
+    "test_revision_not_found_error": "test that RevisionNotFoundError is raised when an invalid model revision is specified"
+  },
+  "huggingface_text-generation-inference/server/tests/utils/test_layers.py": {
+    "test_TensorParallelEmbedding_single_rank": "test TensorParallelEmbedding forward pass with a single rank and verify output embeddings",
+    "test_TensorParallelEmbedding_multi_rank": "test TensorParallelEmbedding across two ranks and verify the combined output matches single rank",
+    "create_ProcessGroup_mock": "create a mock ProcessGroup class with rank and size methods for distributed testing",
+    "create_Weights_mock": "create a mock Weights class that shards embedding weights across process group ranks",
+    "test_Weights_get_partial_sharded": "test the Weights get_partial_sharded method to verify correct weight slicing per rank"
+  },
+  "huggingface_text-generation-inference/server/tests/utils/test_tokens.py": {
+    "test_stop_sequence_criteria": "test the StopSequenceCriteria class to check if generated text matches a stop sequence string",
+    "test_stopping_criteria": "test the StoppingCriteria class to detect stop sequences, EOS tokens, and max token limits",
+    "test_stopping_criteria_eos": "test the StoppingCriteria class to detect when an EOS token ends generation",
+    "test_stopping_criteria_max": "test the StoppingCriteria class to detect when max new tokens limit is reached",
+    "test_batch_top_tokens": "test the batch_top_tokens function to extract top-N token IDs and logprobs from a batch"
+  },
+  "huggingface_text-generation-inference/server/tests/utils/test_watermark.py": {
+    "test_seed_rng": "test the WatermarkLogitsProcessor _seed_rng method to seed a torch Generator from input token ids",
+    "test_get_greenlist_ids": "test the WatermarkLogitsProcessor _get_greenlist_ids method to get greenlisted token ids for watermarking",
+    "test_calc_greenlist_mask": "test the WatermarkLogitsProcessor _calc_greenlist_mask method to compute a boolean mask for greenlisted tokens",
+    "test_bias_greenlist_logits": "test the WatermarkLogitsProcessor _bias_greenlist_logits method to bias logits using a green tokens mask",
+    "test_call": "test the WatermarkLogitsProcessor call method to apply watermark bias to logits given input ids and scores"
+  },
+  "huggingface_text-generation-inference/server/tests/utils/test_weights.py": {
+    "test_weights_col_gptq": "test the MockWeights class to load GPTQ quantized column weights with qweight qzeros and scales tensors",
+    "test_weights_row_marlin": "test the MockWeights class to load Marlin quantized row weights with B and s scale tensors",
+    "test_multi_weights_col_exl2": "test that get_multi_weights_col raises a ValueError when used with the Exl2WeightsLoader quantization format",
+    "test_weights_col_packed_awq": "test the MockWeights class to load AWQ quantized column-packed weights with block sizes and gptq parameters",
+    "test_mockweights_get_tensor": "test the MockWeights mock class to retrieve raw tensors and verify shapes from a dummy file system"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/cache.py": {
+    "create_cache_instance": "create a Cache instance to store and manage Batch entries by batch_id",
+    "set_cache_entry": "set a Batch entry in the Cache using its batch_id as the key",
+    "pop_cache_entry": "pop and retrieve a Batch entry from the Cache by its batch_id",
+    "delete_cache_entry": "delete a Batch entry from the Cache and free CUDA memory if available",
+    "clear_all_cache": "clear all entries from the Cache and free CUDA memory for each removed entry"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/cli.py": {
+    "run_serve_command": "run the text generation server with a model id and optional quantization settings",
+    "run_download_weights_command": "download model weights from the Hugging Face hub for a given model id",
+    "run_quantize_command": "quantize a model using GPTQ 4-bit quantization and save to an output directory",
+    "review_serve_function": "review the serve function that starts the text generation server with sharding and LoRA support",
+    "review_quantization_enum": "review the Quantization enum that defines supported quantization methods like GPTQ, AWQ, and bitsandbytes"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/server.py": {
+    "run_text_generation_server": "run the gRPC text generation inference server with a specified model and optional LoRA adapters",
+    "start_TextGenerationService": "start a TextGenerationService gRPC servicer with a model, cache, and server URLs",
+    "handle_prefill_decode": "handle prefill and decode batch requests for token generation via the TextGenerationService",
+    "warmup_model": "warmup the model with a batch to compute max supported total tokens and allocate quantization buffers",
+    "handle_signals": "handle SIGINT and SIGTERM signals with the SignalHandler class for graceful server shutdown"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/tracing.py": {
+    "setup_tracing": "setup OpenTelemetry tracing with an OTLP endpoint and service name for distributed tracing",
+    "create_UDSOpenTelemetryAioServerInterceptor": "create a UDSOpenTelemetryAioServerInterceptor instance to intercept gRPC calls over Unix domain sockets",
+    "review_UDSOpenTelemetryAioServerInterceptor_start_span": "review the _start_span method that parses gRPC service and method names into span attributes",
+    "refactor_UDSOpenTelemetryAioServerInterceptor": "refactor the UDSOpenTelemetryAioServerInterceptor to add custom attributes to gRPC spans",
+    "run_setup_tracing": "run setup_tracing to configure a TracerProvider with a BatchSpanProcessor and OTLP exporter"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/adapters/config.py": {
+    "create_ModuleMap": "create a ModuleMap dataclass instance with a module name and a dictionary of weight tensors",
+    "create_AdapterConfig_subclass": "create a subclass of AdapterConfig that implements the map_weights_for_model abstract method",
+    "implement_map_weights_for_model": "implement the map_weights_for_model method to map adapter weights to a ModuleMap and unused weight names",
+    "review_AdapterConfig": "review the AdapterConfig abstract base class and its map_weights_for_model signature for correctness",
+    "refactor_ModuleMap": "refactor the ModuleMap dataclass to add validation for module_name or module_weights fields"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/adapters/lora.py": {
+    "load_lora_config": "load a LoRA adapter configuration from a Hugging Face model ID using LoraConfig.load",
+    "prepare_lora_weights": "prepare and shard LoRA weights for a specific layer type using LoraWeights.prepare_weights",
+    "shard_lora_weights": "shard LoRA A and B weight tensors across a distributed process group using shard_lora_weights",
+    "compute_scaling_factor": "compute the LoRA scaling factor from alpha and rank using get_scaling_factor",
+    "load_batch_lora_weights": "load batch LoRA weights for a segment using BatchLoraWeights.load"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/adapters/weights.py": {
+    "create_adapter_batch_metadata": "create an AdapterBatchMetadata dataclass with adapter_indices, adapter_set, adapter_segments, and segment_indices tensors",
+    "implement_adapter_weights_subclass": "implement a subclass of AdapterWeights abstract class with get_batch_types and speculative_tokens methods",
+    "implement_batch_adapter_weights_subclass": "implement a subclass of BatchAdapterWeights with has_adapter and load abstract methods",
+    "manage_layer_adapter_weights": "use LayerAdapterWeights to add, remove, and check adapter weights for a specific model layer",
+    "build_adapter_batch_data": "build an AdapterBatchData from batch metadata and layer weights using the from_meta static method"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/bnb.py": {
+    "create_8bit_linear_layer": "create a Linear8bitLt layer from a weight tensor and bias for 8-bit quantized inference",
+    "create_fp4_linear_layer": "create a Linear4bit layer with fp4 quantization from a weight tensor and bias",
+    "create_nf4_linear_layer": "create a Linear4bit layer with nf4 quantization from a weight tensor and bias",
+    "build_bnb_weight_wrapper": "build a BNBWeight dataclass to wrap a torch tensor and produce a Linear8bitLt layer via get_linear",
+    "run_8bit_matmul_forward": "run the forward pass of a Linear8bitLt layer on an input tensor using bnb.matmul"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/conv.py": {
+    "load_conv2d_with_weights": "load a Conv2d layer with weight and bias from a weights object using accelerate init_empty_weights",
+    "load_conv2d_no_bias": "load a Conv2d layer with only weight (no bias) from a weights object using accelerate init_empty_weights",
+    "monkey_patch_conv2d_load": "monkey-patch torch.nn.Conv2d with a load classmethod to load weights from a checkpoint",
+    "create_conv2d_from_checkpoint": "create a Conv2d layer from checkpoint tensors by calling torch.nn.Conv2d.load with prefix and weights",
+    "create_conv2d_no_bias_from_checkpoint": "create a Conv2d layer without bias from checkpoint tensors by calling torch.nn.Conv2d.load_no_bias"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/eetq.py": {
+    "create_EETQLinear_module": "create an EETQLinear module that quantizes weights to int8 and performs w8_a16_gemm matrix multiplication",
+    "create_EETQWeight_dataclass": "create an EETQWeight dataclass that wraps a torch.Tensor and returns an EETQLinear layer via get_linear",
+    "build_EETQ_quantized_layer": "build a quantized linear layer using EETQ that converts float16 weights to int8 with scale factors",
+    "test_EETQLinear_forward": "test the EETQLinear forward pass that runs w8_a16_gemm and adds an optional bias tensor",
+    "review_EETQWeight_get_linear": "review the EETQWeight get_linear method that instantiates an EETQLinear layer from weight and bias"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/exl2.py": {
+    "create_exl2_weight": "create an Exl2Weight dataclass instance with q_weight, q_scale, q_invperm, q_scale_max, and q_groups tensors",
+    "get_exl2_linear_layer": "call get_linear on an Exl2Weight instance with a bias tensor to return an ExllamaQuantLinear layer",
+    "load_exl2_weights": "use Exl2WeightsLoader get_weights to load exl2-quantized weight tensors from a Weights object by prefix",
+    "get_exl2_column_weights": "call get_weights_col on Exl2WeightsLoader to retrieve column weights for a given prefix",
+    "get_exl2_row_weights": "call get_weights_row on Exl2WeightsLoader to retrieve row weights for a given prefix"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/fp8.py": {
+    "build_fp8_linear_layer": "build a pytorch Fp8Linear module that performs FP8 quantized matrix multiplication with cutlass or torch._scaled_mm",
+    "create_fp8_quantize_function": "create a function that quantizes a float16 tensor to float8_e4m3fn and returns the quantized weight and inverse scale",
+    "create_hybrid_fp8_loader": "create a HybridFP8UnquantLoader to load FP8 or unquantized weights from a checkpoint with optional block-wise scaling",
+    "normalize_e4m3fn_for_rocm": "normalize e4m3fn float8 weights to e4m3fnuz format for ROCM hardware by fixing NaN bit patterns and doubling scales",
+    "get_fp8_linear_class": "get the best FP8 linear layer class for the current GPU, falling back to Marlin on unsupported hardware"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/layernorm.py": {
+    "load_layer_norm_with_bias": "load a LayerNorm layer with weight and bias tensors from a checkpoint using the monkey-patched load method",
+    "load_layer_norm_no_bias": "load a LayerNorm layer with only weight tensors and no bias from a checkpoint using the monkey-patched load_no_bias method",
+    "use_fastlayernorm_cuda": "use FastLayerNorm on CUDA to apply fused layer normalization with residual connection via dropout_layer_norm kernel",
+    "use_fastlayernorm_ipex": "use FastLayerNorm on IPEX to apply layer normalization with residual connection via Intel extension for PyTorch",
+    "use_fastrmsnorm": "use FastRMSNorm to apply RMS normalization with optional residual fusion supporting CUDA, ROCm, and IPEX backends"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/linear.py": {
+    "create_fastlinear_layer": "create a FastLinear torch module with weight and bias parameters for linear transformations",
+    "create_fastlinearrocm_layer": "create a FastLinearROCm module that uses optimized skinny GEMM operations on ROCm GPUs",
+    "load_fastlinear_weights": "load a FastLinear layer from checkpoint weights using a prefix path and bias flag",
+    "load_fastlinearrocm_weights": "load a FastLinearROCm layer from checkpoint weights using a prefix path and bias flag",
+    "get_linear_factory": "use get_linear to create the appropriate linear layer based on the system platform and weight type"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/lora.py": {
+    "create_lora_linear_layer": "create a LoraLinear module wrapping a base layer with LoRA adapter support for a process group",
+    "build_tensor_parallel_multi_adapter_linear": "build a TensorParallelMultiAdapterLinear layer that applies LoRA adapters across multiple named projection layers in tensor-parallel mode",
+    "build_tensor_parallel_adapter_row_linear": "build a TensorParallelAdapterRowLinear layer that applies LoRA adapters with row-wise sharding and all-reduce for tensor parallelism",
+    "review_forward_layer_type": "review the LoraLinear forward_layer_type method to understand SGMV and BGMV kernel selection for LoRA computation",
+    "refactor_collect_lora_a": "refactor the collect_lora_a method in LoraLinear subclasses to optimize all-gather or all-reduce communication patterns"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/medusa.py": {
+    "build_resblock": "build a ResBlock with FastLinear and SiLU activation for residual connections in a medusa head",
+    "create_medusa_model": "create a MedusaModel that stacks multiple MedusaHead instances for speculative decoding logits",
+    "create_medusa_head": "create a MedusaHead with stacked ResBlocks and a final FastLinear output layer",
+    "load_medusa_head_v1": "load a MedusaHeadV1 from safetensors weights using the static load method with config and prefix",
+    "implement_medusa_head_v2": "implement a MedusaHeadV2 with tensor-parallel linear layers and distributed all_gather for multi-GPU speculative decoding"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/mlp.py": {
+    "build_MLPSpeculatorHead": "build an MLP speculator head that combines an LM head with a speculator model for speculative decoding",
+    "create_MLPSpeculatorModel": "create an MLP speculator model with separate embedding, projection, head, and layer norm modules per prediction step",
+    "create_MLPSpeculatorModelTied": "create a tied-weight MLP speculator model that reuses the same embedding and projection layers across prediction steps",
+    "implement_MLPSpeculatorLayerNorm": "implement a custom L2 layer normalization module with learned weight and bias parameters for MLP speculator layers",
+    "use_simple_norm": "use the simple_norm function to apply L2 normalization scaled by inverse square root of 2 to a tensor"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/rotary.py": {
+    "create_PositionRotaryEmbedding_static": "create a PositionRotaryEmbedding using the static classmethod with config, dim, base, and device parameters",
+    "create_PositionRotaryEmbedding_load": "create a PositionRotaryEmbedding by loading inv_freq weights from a checkpoint using the load classmethod",
+    "apply_rotary_embedding_forward": "apply rotary position embeddings to query and key tensors using the forward method with cos and sin",
+    "create_YarnPositionRotaryEmbedding": "create a YarnPositionRotaryEmbedding with extrapolation and interpolation scaling for extended context lengths",
+    "create_DynamicPositionRotaryEmbedding": "create a DynamicPositionRotaryEmbedding that adjusts base frequency dynamically when sequence exceeds max position embeddings"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/speculative.py": {
+    "load_speculative_head": "load a SpeculativeHead from config and weights using the load static method",
+    "run_speculative_forward": "run the forward pass on a SpeculativeHead with a torch tensor input",
+    "create_speculative_head": "create a SpeculativeHead instance with an lm_head and optional speculator module",
+    "review_speculative_head_load": "review the SpeculativeHead load method to understand how it selects MLPSpeculator or MedusaHead",
+    "refactor_speculative_head_forward": "refactor the SpeculativeHead forward method to add custom logic before delegating to speculator or head"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/tensor_parallel.py": {
+    "build_layerconcat": "build a LayerConcat module to apply multiple layers and concatenate their outputs along a specified dimension",
+    "build_tensorparallelhead": "build a TensorParallelHead layer that gathers outputs across processes using all_gather for tensor-parallel LM heads",
+    "build_tensorparallelcolumnlinear": "build a TensorParallelColumnLinear layer to load sharded column weights for QKV or gate-up projections",
+    "build_tensorparallelrowlinear": "build a TensorParallelRowLinear layer that applies all_reduce across processes after a row-wise linear transformation",
+    "build_tensorparallelembedding": "build a TensorParallelEmbedding layer that shards token embeddings across processes and reduces outputs with all_reduce"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/attention/common.py": {
+    "create_Seqlen_instance": "create a Seqlen instance with input_lengths and cache_lengths tensors for attention layer sequence tracking",
+    "compute_cumulative_seqlen_k": "compute cumulative sequence lengths for keys by combining input and cache length tensors",
+    "initialize_Seqlen_with_defaults": "initialize a Seqlen object that auto-generates cu_seqlen_q and sets max_q to 1 when not provided",
+    "use_Seqlen_clamp": "call the clamp method on a Seqlen instance to return itself unchanged for flash decoding",
+    "review_Seqlen_class": "review the Seqlen dataclass that manages input_lengths, cache_lengths, cu_seqlen_q, cu_seqlen_k, max_q, and max_k for attention layers"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/attention/cuda.py": {
+    "paged_attention_decode": "run paged attention decoding with a KV cache, block tables, and softmax scale on CUDA",
+    "paged_attention_flashinfer": "run paged attention decoding using flashinfer with logits soft cap and KV scaling",
+    "paged_attention_flashdecoding": "run paged attention decoding using flashdecoding with variable length forward pass and windowing",
+    "attention_prefill": "run flash attention prefill with query, key, value tensors and a KV cache on CUDA",
+    "attention_flashinfer_prefill": "run flash attention prefill using flashinfer with causal masking and paged KV cache"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/attention/flash_attn_triton.py": {
+    "run_triton_attention": "run the triton_attention function to compute fused flash attention on Q, K, V tensors with causal masking",
+    "review_attn_fwd_kernel": "review the attn_fwd Triton kernel that implements the flash attention v2 forward pass with autotuning",
+    "review_attn_fwd_inner_loop": "review the _attn_fwd_inner kernel that loops over K/V blocks to accumulate attention scores",
+    "build_dropout_mask_kernel": "build a Triton kernel that generates a dropout mask using Philox RNG for attention layers",
+    "refactor_load_fn_kernel": "refactor the load_fn Triton kernel to handle boundary checks and padding when loading tensor blocks"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/attention/flashinfer.py": {
+    "create_prefill_with_paged_kv_state": "create a flashinfer prefill state with paged KV cache for a given CUDA device",
+    "create_prefill_state": "create a flashinfer prefill state using ragged KV cache for a given CUDA device",
+    "create_decode_state": "create a flashinfer decode state with paged KV cache for batch decoding on a device",
+    "create_decode_state_cuda_graphs": "create a flashinfer decode state configured for CUDA graph capture with pre-allocated buffers",
+    "unpad_2d_mask": "unpad a 2D attention mask tensor by sequence lengths and flatten into a packed tensor"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/attention/ipex.py": {
+    "run_attention_iex": "run the IPEX attention function with query key value tensors and a KV cache for variable length sequences",
+    "run_paged_attention_iex": "run the IPEX paged attention function with a query tensor KV cache and block tables for cached key-value attention",
+    "check_supports_windowing": "check the SUPPORTS_WINDOWING constant to see if sliding window attention is supported by the current IPEX backend",
+    "refactor_attention_flashdecoding": "refactor the attention function to support a new IPEX flash decoding backend with window size and softcap parameters",
+    "review_paged_attention_fp8": "review the paged_attention function to understand how FP8 KV cache dtypes are detected and passed to IPEX"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/attention/kv_cache.py": {
+    "create_kv_cache": "create a KVCache instance with num_blocks, num_heads, head_size, dtype and device for attention layers",
+    "store_kv_in_cache": "store key and value tensors into the KVCache at specified slots using the store method",
+    "load_kv_scales": "load FP8 key-value cache scales from a Weights object using get_kv_scales with a prefix",
+    "reshape_and_cache_paged": "reshape and cache key-value tensors into paged attention cache using paged_reshape_and_cache for CUDA, ROCm or IPEX",
+    "check_kv_cache_scaling": "check if a KVCache can be scaled by given KVScales using the can_scale method"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/attention/rocm.py": {
+    "build_paged_attention_rocm": "build a paged attention layer for ROCm GPUs using vLLM custom ops with KV cache support",
+    "create_attention_engine_rocm": "create a flash attention engine for ROCm using either CK composable kernels or triton backends",
+    "test_paged_attention_v1_v2": "test the paged attention V1 and V2 selection logic based on sequence length and partition count",
+    "review_custom_paged_attention_check": "review the ROCm custom paged attention eligibility check for MI250 and MI300 GPU architectures",
+    "refactor_attention_engine_selection": "refactor the attention engine selection between CK composable kernels and triton based on environment variables"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/awq/conversion_utils.py": {
+    "convert_awq_weights_to_gptq_format": "convert AWQ quantized model weights and zeros to GPTQ format using fast_awq_to_gptq",
+    "pack_4bit_tensor_to_32bit": "pack a 4-bit integer tensor into a 32-bit packed tensor using the pack function",
+    "unpack_32bit_tensor_to_4bit": "unpack a 32-bit packed tensor back into a 4-bit integer tensor using the unpack function",
+    "reorder_quantized_tensor_bits": "reorder the bit positions of a 4-bit quantized tensor using apply_order with AWQ_PACK_ORDER",
+    "reverse_awq_pack_order": "reverse the AWQ pack order on a quantized tensor using apply_order with REVERSE_AWQ_PACK_ORDER"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/awq/quantize/cuda.py": {
+    "create_WQLinear_module": "create a WQLinear module with 4-bit quantized weights, zeros, scales, and optional bias",
+    "run_WQLinear_forward": "run the WQLinear forward pass to perform quantized matrix multiplication using CUDA GEMM kernels",
+    "test_WQLinear_initialization": "test WQLinear initialization with 4-bit quantized weights and group size alignment",
+    "refactor_WQLinear_quantization": "refactor WQLinear to support additional bit widths beyond the current 4-bit limitation",
+    "review_WQLinear_cuda_kernel": "review WQLinear forward method that calls awq_inference_engine.gemm_forward_cuda for quantized inference"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/awq/quantize/ipex.py": {
+    "create_wqlinear_layer": "create a WQLinear 4-bit quantized linear layer using IPEX with AWQ_GEMM quantization method",
+    "run_wqlinear_forward": "run the WQLinear forward pass on an input tensor with INT4 weight-only quantization",
+    "review_wqlinear_init": "review the WQLinear class initialization that validates 4-bit quantization and group size alignment",
+    "refactor_wqlinear_forward": "refactor the WQLinear forward method to handle different input tensor shapes and output reshaping",
+    "test_wqlinear_quantization": "test the WQLinear layer with IPEX weight-only quantized linear using AWQ_GEMM quant method"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/compressed_tensors/loader.py": {
+    "build_compressed_tensors_loader": "build a CompressedTensorsLoader from a config dict containing quantization_config for loading compressed checkpoint weights",
+    "create_loader_for_quantization_group": "create a weights loader for a quantization group by calling _create_loader_for_group with format, group name, and scheme",
+    "get_weights_from_compressed_checkpoint": "get weights from a compressed checkpoint by calling get_weights with a Weights object and parameter prefix",
+    "lookup_loader_for_prefix": "lookup the appropriate weights loader for a given parameter prefix using _lookup_loader",
+    "get_col_packed_weights": "get column-packed weights from a compressed checkpoint using get_weights_col_packed with block sizes"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/compressed_tensors/w8a8_int.py": {
+    "create_W8A8IntLoader": "create a W8A8IntLoader to load w8a8 integer compressed-tensors weights with symmetric quantization args",
+    "build_Int8Weight_linear": "build an Int8Weight dataclass and call get_linear to produce a W8A8IntLinear layer with optional bias",
+    "create_W8A8IntLinear": "create a W8A8IntLinear module with transposed int8 weights and weight_scale for cutlass kernel inference",
+    "run_W8A8IntLinear_forward": "run the W8A8IntLinear forward pass to quantize input and compute scaled int8 matrix multiplication",
+    "review_W8A8IntLoader_get_weights": "review the W8A8IntLoader get_weights method to load int8 weight tensors and optional weight scales"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/compressed_tensors/w8an_fp.py": {
+    "create_w8a8_loader": "create a W8ANFpLoader instance with QuantizationArgs for W8A8 FP compressed-tensors weight loading",
+    "create_w8a16_loader": "create a W8ANFpLoader with 16-bit input activations to force W8A16 quantization mode",
+    "get_fp8_weights": "call get_weights on W8ANFpLoader to load an Fp8Weight with scales from a Weights object by prefix",
+    "get_col_packed_weights": "call get_weights_col_packed on W8ANFpLoader to load column-packed sharded FP8 weights with block sizes",
+    "get_multi_col_weights": "call get_multi_weights_col on W8ANFpLoader to concatenate FP8 weights from multiple prefixes along a dimension"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/compressed_tensors/wna16_int.py": {
+    "create_WNA16IntLoader": "create a WNA16IntLoader instance with QuantizationArgs to load W4A16 or W8A16 compressed tensor weights",
+    "get_weights_single_layer": "load and repack a single layer's quantized weights for GPTQ-Marlin kernel inference",
+    "get_weights_col_packed": "load column-packed quantized weights with specified block sizes for sharded model loading",
+    "get_multi_weights_col": "concatenate and repack quantized weights from multiple layer prefixes along a given dimension",
+    "get_weights_row": "load row-sharded quantized weights with support for tensor parallelism across multiple processes"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/compressed_tensors/wna16_int_24.py": {
+    "init_WNA16Int24Loader": "create a WNA16Int24Loader instance with QuantizationArgs to load W4A16 INT 2:4 sparsity checkpoints",
+    "get_weights": "get quantized weight_packed, meta, and scale_packed tensors for a layer prefix without tensor parallelism",
+    "get_weights_col_packed": "get column-packed sharded weights for a layer prefix using specified block sizes for tensor parallelism",
+    "get_multi_weights_col": "concatenate column-sharded weights from multiple layer prefixes along dimension 1 into a single GPTQMarlin24Weight",
+    "get_weights_row": "get row-sharded weights for a layer prefix with conditional scale packing based on group_size"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/gptq/custom_autotune.py": {
+    "create_autotune_decorator": "create a triton kernel autotuner decorator that benchmarks multiple configs and caches the fastest one",
+    "run_autotuner_class": "run the Autotuner class to benchmark and select the best kernel configuration for a triton JIT function",
+    "bench_kernel_config": "bench a triton kernel configuration using 40 repetitions and return median, 20th, and 80th percentile timings",
+    "prune_matmul_configs": "prune matmul kernel configurations by shrinking block sizes based on M, N, K dimensions to reduce tuning overhead",
+    "warmup_autotuned_kernel": "warmup an autotuned triton kernel by compiling all pruned configurations before the first real run"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/gptq/exllama.py": {
+    "build_ex4bitlinear_layer": "build a 4-bit quantized linear layer using Ex4bitLinear with GPTQ weights and optional bias",
+    "create_q4_matrix": "create a Q4Matrix handle from qweight, qzeros, scales, and g_idx using ext_make_q4",
+    "run_q4_matmul": "run matrix multiplication of a tensor against a Q4 quantized matrix using ext_q4_matmul",
+    "create_exllama_buffers": "create temporary exllama buffers for act-order reordering and cuBLAS dequantization with create_exllama_buffers",
+    "set_cuda_device": "set the global CUDA device for exllama kernel operations using set_device"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/gptq/exllamav2.py": {
+    "create_quantlinear_layer": "create a QuantLinear layer with Exl2Weight or GPTQWeight for 4-bit quantized inference",
+    "run_gemm_half_q_half": "run matrix multiplication of input tensor x with quantized q4 weights using ext_gemm_half_q_half",
+    "build_q_matrix": "build a Q matrix handle from Exl2Weight or GPTQWeight using ext_make_q_matrix for inference",
+    "create_exllama_buffers": "create exllama scratch space buffers and initialize all registered QuantLinear layers with temp_dq",
+    "make_group_map": "make a group mapping tensor from q_groups and num_qrows for EXL2 quantized weights"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/gptq/ipex.py": {
+    "create_quantlinear_layer": "create a QuantLinear layer from pre-quantized GPTQ weights, zeros, scales, and group index tensors",
+    "create_quantlinear_from_scratch": "create an empty QuantLinear layer with zero-initialized buffers using the new class method",
+    "pack_linear_to_gptq": "pack a full-precision nn.Linear layer into 4-bit GPTQ quantized format with scales and zeros",
+    "run_quantized_forward": "run inference through a GPTQ quantized linear layer preserving batch dimensions",
+    "review_quantlinear_implementation": "review the QuantLinear class and its IPEX weight-only quantization integration for GPTQ"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/gptq/quantize.py": {
+    "quantize_model_gptq": "quantize a HuggingFace causal LM to GPTQ format with specified bits and group size",
+    "run_sequential_quantization": "run sequential layer-by-layer GPTQ quantization on a model using calibration data from wikitext2",
+    "pack_quantized_model": "pack quantized weights into QuantLinear layers after GPTQ quantization is complete",
+    "get_calibration_loader": "get a calibration data loader for wikitext2, ptb, or c4 datasets for GPTQ quantization",
+    "find_quantizable_layers": "find all quantizable linear and conv layers in a PyTorch model recursively"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/gptq/triton.py": {
+    "build_quantized_linear_layer": "build a QuantLinear module with 4-bit GPTQ quantization for a given in/out feature size",
+    "run_quantized_matmul": "run the matmul248 function to compute a quantized matrix multiplication on GPU",
+    "pack_linear_weights": "pack a standard linear layer's weights into GPTQ quantized format using QuantLinear.pack",
+    "create_quantized_layer_from_scratch": "create an empty QuantLinear layer using the QuantLinear.new class method with specified bits and groupsize",
+    "review_triton_kernel": "review the matmul_248_kernel Triton JIT kernel for 2/4/8-bit quantized GEMM computation"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/gptq/utils.py": {
+    "compute_snr_error_mean": "compute the mean SNR error between two PyTorch tensors using torch_snr_error",
+    "compute_snr_error_sum": "compute the sum SNR error between two PyTorch tensors with reduction set to sum",
+    "compute_snr_error_none": "compute per-sample SNR error between two PyTorch tensors with reduction set to none",
+    "test_torch_snr_error": "test the torch_snr_error function with two matching shape PyTorch tensors",
+    "review_torch_snr_error": "review the torch_snr_error function for SNR error calculation between predicted and real tensors"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/marlin/fp8.py": {
+    "create_GPTQMarlinFP8Linear_from_unquant": "create a GPTQMarlinFP8Linear layer from unquantized weights using the from_unquant class method",
+    "create_GPTQMarlinFP8Linear_from_fp8": "create a GPTQMarlinFP8Linear layer from existing FP8 weights and scales using the from_fp8 class method",
+    "run_GPTQMarlinFP8Linear_forward": "run the forward pass of a GPTQMarlinFP8Linear layer on an input tensor to get quantized output",
+    "build_pack_fp8_as_int32": "build a packed int32 tensor from an FP8 tensor by repacking four uint8 values into each int32 element",
+    "repack_repack_fp8_for_marlin": "repack an FP8 weight tensor and its scales for use with the GPTQ-Marlin kernel format"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/marlin/gptq.py": {
+    "check_gptq_marlin_compatibility": "check if GPTQ or AWQ quantized model parameters are compatible with Marlin kernels on the current CUDA device",
+    "repack_gptq_weights_for_marlin": "repack GPTQ quantized weights into the Marlin kernel format for faster inference on CUDA",
+    "create_gptq_marlin_weights_loader": "create a weights loader that loads GPTQ or AWQ quantized weights and repacks them for Marlin kernels",
+    "build_gptq_marlin_linear_layer": "build a linear layer that uses repacked GPTQ Marlin weights for quantized matrix multiplication",
+    "convert_awq_zero_points_to_marlin": "convert AWQ packed zero points to the Marlin zero point format for quantized inference"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/marlin/marlin.py": {
+    "build_marlin_weights_loader": "build a MarlinWeightsLoader to load int4 quantized Marlin weights from a Weights object with a given prefix",
+    "build_marlin_linear_layer": "build a MarlinLinear nn.Module that performs quantized GEMM using the Marlin kernel on int32-packed weights",
+    "build_gptq_marlin_24_linear": "build a GPTQMarlin24Linear layer that performs 2:4 sparse quantized GEMM with 4-bit or 8-bit weights",
+    "create_marlin_weight": "create a MarlinWeight dataclass holding int32-packed weights and float16 scales for Marlin quantized linear layers",
+    "create_gptq_marlin_24_weight": "create a GPTQMarlin24Weight dataclass holding packed weights, sparsity metadata, and scales for 2:4 sparse quantization"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/marlin/util.py": {
+    "pack_quantized_weights": "pack quantized weight tensor columns into compact uint32 format for Marlin kernel compatibility",
+    "unpack_quantized_weights": "unpack packed quantized weight tensor columns back to their original expanded format",
+    "permute_scales_tensor": "permute a scales tensor using Marlin permutation for quantized model weight dequantization",
+    "compute_marlin_zero_points": "permute interleave and pack zero-point tensors for Marlin quantized model inference",
+    "check_marlin_kernel_support": "check if the current system has CUDA SM 8.0+ GPU and marlin kernels installed"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/moe/fp8.py": {
+    "build_FP8SparseMoELayer": "build an FP8 quantized sparse MoE layer with configurable expert count, topk routing, and grouped expert selection",
+    "run_FP8SparseMoELayer_forward": "run the FP8SparseMoELayer forward pass with input tensor and gating output to get MoE results",
+    "create_load_expert_weights": "create a function to load FP8 expert weights across all experts with per-expert quantization scales",
+    "refactor_load_expert_multi_weights_col": "refactor the column-wise multi-weight loading for gate and up projections across all MoE experts",
+    "review_load_expert_weights_row": "review the row-wise expert weight loading function that fetches down projection weights per expert"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/moe/fused_moe_ipex.py": {
+    "build_grouped_topk": "build a python module that runs grouped_topk to select top-k experts using group-aware gating scores",
+    "build_fused_topk": "build a python module that runs fused_topk to select top-k experts from softmax gating output",
+    "test_grouped_topk": "test the grouped_topk function with torch tensors for expert group masking and top-k selection",
+    "test_fused_topk": "test the fused_topk function with torch tensors for softmax gating and top-k expert selection",
+    "refactor_grouped_topk": "refactor the grouped_topk function to support a different expert grouping strategy or masking logic"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/moe/gptq_marlin.py": {
+    "build_GPTQMarlinSparseMoELayer": "build a GPTQMarlinSparseMoELayer with n_experts, topk, and weights for quantized MoE inference",
+    "run_fused_marlin_moe": "run the fused_marlin_moe function with hidden_states, w1, w2 weights and gating_output for MoE forward pass",
+    "check_can_use_marlin_moe_gemm": "check if marlin MoE GEMM is available given quant_method, quantize, and sym parameters",
+    "create_GPTQMarlinMoEWeight": "create a GPTQMarlinMoEWeight dataclass with qweight, qzeros, scales, g_idx, perm, and is_full_k tensors",
+    "review_pack_weight": "review the _pack_weight function that packs individual expert GPTQMarlinWeight into a shared MoE weight tensor"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/layers/moe/unquantized.py": {
+    "build_UnquantizedSparseMoELayer": "build a Mixture of Experts layer with configurable top-k gating and expert routing for an LLM model",
+    "run_fused_moe": "run a fused MoE forward pass using w1 and w2 weights with top-k expert selection and gating",
+    "create_load_expert_multi_weights_col": "create a function to load and stack gate and up projection weights for all experts into a single tensor",
+    "create_load_expert_weights_row": "create a function to load and stack down projection weights for all experts into a single tensor",
+    "review_UnquantizedSparseMoELayer_forward": "review the UnquantizedSparseMoELayer forward method to understand platform-specific MoE kernel dispatch for CUDA, ROCm, and IPEX"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/bloom.py": {
+    "create_bloom_causal_lm_batch": "create a BloomCausalLMBatch from a protobuf batch with keys_head_dim_last set to False",
+    "build_bloom_sharded_model": "build a BLOOMSharded model that extends CausalLM for distributed text generation inference",
+    "run_bloom_forward_pass": "run a forward pass on BLOOMSharded with input_ids attention_mask position_ids and past_key_values",
+    "review_bloom_batch_type": "review the BLOOMSharded batch_type property that returns BloomCausalLMBatch as the batch class",
+    "refactor_bloom_forward": "refactor the BLOOMSharded forward method to return logits speculative_logits and past_key_values"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/causal_lm.py": {
+    "create_causal_lm_batch": "create a CausalLMBatch from protobuf requests with tokenized inputs and next token choosers",
+    "filter_causal_lm_batch": "filter a CausalLMBatch to keep only specific request IDs and update tensors in place",
+    "concatenate_causal_lm_batches": "concatenate multiple CausalLMBatch instances into a single batch with padded attention masks and past key values",
+    "forward_causal_lm": "run a forward pass through a causal LM model with input IDs, attention mask, and past key values",
+    "generate_token_causal_lm": "generate the next token for a CausalLMBatch using logits sampling and stopping criteria evaluation"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/flash_causal_lm.py": {
+    "create_flash_causal_lm_batch": "create a FlashCausalLMBatch from protobuf batch requests using the from_pb class method with a tokenizer",
+    "generate_token_from_batch": "run the FlashCausalLM generate_token method to produce the next tokens for a prefill or decode batch",
+    "filter_flash_causal_lm_batch": "filter a FlashCausalLMBatch to keep only specific request IDs and rebuild tensors and block tables",
+    "concatenate_flash_causal_lm_batches": "concatenate multiple FlashCausalLMBatch instances into a single batch merging requests tensors and block tables",
+    "warmup_flash_causal_lm": "run the FlashCausalLM warmup method to initialize KV cache CUDA graphs and TunableOp for a target model"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/galactica.py": {
+    "create_split_marker_for_dna_sequence": "create a function that inserts split markers into DNA sequences wrapped in START_DNA and END_DNA tags",
+    "build_custom_sequence_tokenizer": "build a tokenizer that escapes custom sequences like DNA SMILES and AMINO for Galactica model input",
+    "test_escape_custom_split_sequence": "test the escape_custom_split_sequence function with text containing START_DNA and END_DNA special tokens",
+    "refactor_GalacticaCausalLMBatch_from_pb": "refactor the GalacticaCausalLMBatch from_pb method to support additional sequence types beyond DNA and SMILES",
+    "review_GalacticaCausalLMBatch_batch_parsing": "review the GalacticaCausalLMBatch class and how it parses protobuf batch requests into tokenized inputs"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/globals.py": {
+    "set_adapter_to_index": "set the global adapter to index mapping dictionary for the text generation server",
+    "get_adapter_to_index": "get the current global adapter to index mapping dictionary from the text generation server",
+    "configure_attention_backend": "configure the attention backend by setting the ATTENTION environment variable to flashinfer or flashdecoding",
+    "configure_prefix_caching": "enable or disable prefix caching by setting the PREFIX_CACHING environment variable before importing globals",
+    "configure_cuda_graphs": "configure CUDA graph batch sizes by setting the CUDA_GRAPHS environment variable to a comma separated list"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/idefics_causal_lm.py": {
+    "create_idefics_causal_lm_model": "create an IdeficsCausalLM instance to load a vision-language model for text generation with image support",
+    "build_idefics_batch_from_processor": "build an IdeficsCausalLMBatch from protobuf requests using an AutoProcessor to handle multimodal inputs",
+    "generate_token_idefics": "generate the next token for a batch of IdeficsCausalLM requests with vision and text inputs",
+    "filter_idefics_batch": "filter an IdeficsCausalLMBatch to remove completed requests and keep only active generations",
+    "concatenate_idefics_batches": "concatenate multiple IdeficsCausalLMBatch instances into a single batch for efficient processing"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/mamba.py": {
+    "create_mamba_inference_params": "create inference parameters with conv states and ssm states for a Mamba model batch",
+    "build_mambabatch_from_pb": "build a MambaBatch from a protobuf batch request with tokenized inputs and sampling parameters",
+    "filter_mambabatch": "filter a MambaBatch to keep only specific request IDs and update inference states accordingly",
+    "concatenate_mambabatches": "concatenate multiple MambaBatch instances into a single batch with merged inference parameters",
+    "generate_mamba_token": "generate the next token for a Mamba model batch using forward pass and token selection"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/metadata_kernels.py": {
+    "convert_block_tables_to_ragged": "convert block tables to ragged format compatible with FlashInfer using Triton or fallback Python",
+    "convert_block_tables_to_padded": "convert ragged block tables back to padded format using a Triton kernel",
+    "copy_next_input_ids_inplace": "copy next input token IDs into all_input_ids tensor in-place using a Triton kernel",
+    "prepare_position_slot_ids": "prepare position IDs and slot indices tensors for batched decoding using a Triton kernel",
+    "filter_slots": "filter slots tensor using cumulative slot offsets and start indices via a Triton kernel"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/mllama_causal_lm.py": {
+    "build_mllama_batch": "build a MllamaCausalLMBatch from protobuf requests using from_pb_processor with a tokenizer and processor",
+    "concatenate_mllama_batches": "concatenate multiple MllamaCausalLMBatch instances merging cross attention states and image indices",
+    "filter_mllama_batch": "filter a MllamaCausalLMBatch by request ids updating image indices and cross attention states",
+    "tokenize_mllama_inputs": "tokenize batched text and image inputs into input ids and image tensors for MllamaCausalLMBatch",
+    "forward_mllama_model": "run a forward pass on MllamaCausalLM with a batch supporting speculative decoding and CUDA graphs"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/model.py": {
+    "create_Model_subclass": "create a subclass of Model that implements the abstract batch_type and generate_token methods",
+    "implement_generate_token": "implement the generate_token method to return a tuple of generations and the next batch",
+    "use_decode_token": "use decode_token to extract new text from a list of input token IDs with prefix offsets",
+    "check_model_initialized": "check that all model parameters are initialized and not on the meta device",
+    "get_model_info": "get the InfoResponse property from a Model instance to retrieve dtype, device, and chunking settings"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/seq2seq_lm.py": {
+    "create_seq2seq_batch_from_pb": "create a Seq2SeqLMBatch from a protobuf Batch message with tokenizer and device parameters",
+    "filter_seq2seq_batch": "filter a Seq2SeqLMBatch to keep only requests matching the given request IDs list",
+    "concatenate_seq2seq_batches": "concatenate multiple Seq2SeqLMBatch instances into a single batch with padded tensors",
+    "generate_token_seq2seq": "generate the next token for a Seq2SeqLMBatch using forward pass and token selection",
+    "load_seq2seq_model": "load a Seq2SeqLM model with optional quantization and distributed setup from a model ID"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/transformers_flash_causal_lm.py": {
+    "create_TransformersFlashCausalLM": "create a TransformersFlashCausalLM instance to load a HuggingFace causal LM model with flash attention and KV cache support",
+    "build_tgi_flash_attention_forward": "build a custom flash attention forward function that stores KV cache and dispatches to paged or prefill attention",
+    "register_tgi_attention_function": "register the tgi flash attention function into Transformers ALL_ATTENTION_FUNCTIONS to enable tgi attention implementation",
+    "run_model_forward": "run the monkey-patched model forward pass with KV cache, block tables, and sequence length tracking for generation",
+    "configure_replicated_attention_models": "configure the REPLICATED_ATTENTION_MODELS list to skip head division for models like olmo2 and phi3"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/transformers_flash_vlm.py": {
+    "build_vlm_model": "build a TransformersFlashVlmCausalLM model to run vision-language models with flash attention and KV cache support",
+    "create_attention_forward": "create a custom tgi flash attention forward function that supports paged attention and SDPA for VLM inference",
+    "run_qwen2vl_positions": "run the Qwen2VL position IDs computation to handle 3D spatial positions for image tokens in the model",
+    "build_gemma3_attention_mask": "build a Gemma3 attention mask that combines causal masking with bidirectional attention for image tokens",
+    "create_llama4_vision_embeds": "create vision embeddings for Llama4 VLM by extracting image features and projecting them through the multi-modal projector"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/types.py": {
+    "create_batch_subclass": "create a subclass of Batch implementing to_pb, from_pb, filter, concatenate, and __len__ methods",
+    "create_generated_text": "create a GeneratedText dataclass with text, generated_tokens, finish_reason, and seed fields",
+    "create_tokens": "create a Tokens dataclass with token_ids, logprobs, texts, and is_special lists",
+    "concatenate_tokens": "concatenate two Tokens objects using the __add__ operator to merge their fields",
+    "create_generation": "create a Generation dataclass with request_id, tokens, generated_text, and top_tokens fields"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/vlm_causal_lm.py": {
+    "build_vlm_causal_lm": "build a vision language model server using VlmCausalLM to process image and text inputs for generation",
+    "create_vlm_batch": "create a VlmCausalLMBatch from protobuf requests with image inputs and tokenized text using from_pb_processor",
+    "encode_images_vlm": "encode images in a VlmCausalLMBatch by extracting pixel values and computing vision embeddings via encode_images",
+    "replace_image_tokens": "replace image placeholders with model-specific token strings using image_text_replacement for idefics, llava, qwen2, or llama4",
+    "calculate_image_grid": "calculate the any-resolution image grid shape for patch-based vision models using get_anyres_image_grid_shape"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/bloom_modeling.py": {
+    "build_alibi_tensor": "build an ALiBi tensor with linear attention biases for a given number of attention heads",
+    "create_causal_mask": "create a causal attention mask tensor for self-attention in the BLOOM transformer model",
+    "run_bloom_attention": "run the BLOOM attention mechanism with fused QKV projection and tensor parallelism support",
+    "run_bloom_mlp": "run the BLOOM MLP feed-forward layer with GELU activation and residual connection",
+    "run_bloom_causal_lm": "run the BLOOM causal language model for text generation with speculative decoding head outputs"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/clip.py": {
+    "build_clip_text_model": "build a CLIPTextModel to encode text inputs into embeddings using the CLIP text transformer",
+    "build_clip_vision_model": "build a CLIPVisionModel to encode image pixel values into embeddings using the CLIP vision transformer",
+    "build_clip_model": "build a CLIPModel to compute image-text similarity logits using both vision and text encoders",
+    "create_clip_attention_layer": "create a CLIPAttention layer with tensor-parallel QKV projections and output projection for multi-headed attention",
+    "create_clip_encoder": "create a CLIPEncoder with multiple CLIPEncoderLayer instances to process embedded sequences through self-attention and MLP layers"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_cohere_modeling.py": {
+    "build_cohere_flash_attention": "build a Cohere flash attention module with paged attention and KV cache support for tensor parallel inference",
+    "create_cohere_rotary_embedding": "create a Cohere rotary position embedding that applies RoPE to query and key tensors on CUDA ROCm or IPEX",
+    "create_cohere_layernorm": "create a Cohere layer normalization module with head-wise weight scaling and fused dropout layer norm on CUDA",
+    "run_cohere_causal_lm": "run the FlashCohereForCausalLM model forward pass with input IDs position IDs and KV cache to get logits",
+    "review_cohere_mlp": "review the CohereMLP class that fuses gate and up projections with a gated activation and down projection"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_dbrx_modeling.py": {
+    "build_DbrxConfig": "build a DbrxConfig with custom d_model, n_heads, n_layers, and attention and FFN sub-configs",
+    "create_DbrxAttentionConfig": "create a DbrxAttentionConfig to set kv_n_heads, rope_theta, and clip_qkv for DBRX attention layers",
+    "create_DbrxFFNConfig": "create a DbrxFFNConfig to configure moe_num_experts, moe_top_k, and ffn_hidden_size for DBRX MoE FFN",
+    "run_FlashDbrxForCausalLM": "run the FlashDbrxForCausalLM forward pass with input_ids, kv_cache, block_tables, and seqlen to get logits",
+    "review_BlockSparseMoE": "review the BlockSparseMoE class to understand fused MoE expert routing and tensor parallel weight loading"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_deepseek_v2_modeling.py": {
+    "build_DeepseekV2Config": "build a DeepseekV2Config with custom vocab size, hidden size, and MoE expert parameters",
+    "create_DeepseekV2Attention": "create a DeepseekV2Attention module with compressed KV LoRA projections and grouped query attention",
+    "run_DeepseekV2MoE": "run a DeepseekV2MoE forward pass with routed experts and shared expert outputs",
+    "test_FlashDeepseekV2ForCausalLM": "test the FlashDeepseekV2ForCausalLM model forward pass with KV cache and block tables",
+    "review_DeepseekV2Layer": "review the DeepseekV2Layer class to understand the residual connection and MoE vs MLP layer selection logic"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_deepseek_v3_modeling.py": {
+    "build_DeepseekV3Config": "build a DeepseekV3Config with custom vocab size hidden size and MoE expert parameters",
+    "create_FlashDeepseekV3ForCausalLM": "create a FlashDeepseekV3ForCausalLM model instance from a config and weights object",
+    "run_DeepseekV3Attention_forward": "run the DeepseekV3Attention forward pass with hidden states rotary embeddings and KV cache",
+    "test_DeepseekV3MoE_forward": "test the DeepseekV3MoE forward pass with gated routing and shared expert outputs",
+    "review_DeepseekV3Layer": "review the DeepseekV3Layer class combining attention MoE MLP and residual RMSNorm"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_gemma2_modeling.py": {
+    "build_gemma2_config": "build a Gemma2Config with custom vocab size hidden size and attention heads for model initialization",
+    "create_gemma2_rmsnorm": "create a Gemma2FastRMSNorm layer by loading weights from a checkpoint using the load class method",
+    "run_flash_gemma2_attention": "run the FlashGemma2Attention forward pass with hidden states rotary embeddings and kv cache for inference",
+    "build_gemma2_mlp": "build a Gemma2MLP with fused gate and up projections and a down projection for the feedforward layer",
+    "run_flash_gemma2_model": "run the FlashGemma2ForCausalLM forward pass with input ids and kv cache to generate logits for text generation"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_gemma3_modeling.py": {
+    "build_Gemma3FastRMSNorm": "build a Gemma3FastRMSNorm layer that loads weights and performs RMS normalization with residual connection support",
+    "create_FlashGemma3Attention": "create a FlashGemma3Attention module with GQA support, rotary embeddings, and paged attention for prefill and decode phases",
+    "build_FlashGemma3Layer": "build a FlashGemma3Layer with self-attention, MLP, and four RMSNorm layers for the Gemma 3 transformer architecture",
+    "create_FlashGemma3ForCausalLM": "create a FlashGemma3ForCausalLM model with token embeddings, transformer layers, and a speculative LM head for causal language modeling",
+    "build_Gemma3ForConditionalGeneration": "build a Gemma3ForConditionalGeneration multimodal model combining a vision tower, multimodal projector, and text model for vision-language generation"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_gemma_modeling.py": {
+    "build_GemmaConfig": "build a GemmaConfig with custom vocab size hidden size and attention heads for a Gemma model",
+    "create_GemmaFastRMSNorm": "create a GemmaFastRMSNorm layer that loads weights from a prefix and performs full precision normalization",
+    "run_FlashGemmaAttention": "run FlashGemmaAttention forward pass with query key value tensors and KV cache for prefill or decode",
+    "test_FlashGemmaLayer": "test FlashGemmaLayer forward pass with hidden states residual rotary embeddings and attention outputs",
+    "review_FlashGemmaForCausalLM": "review FlashGemmaForCausalLM forward pass that embeds inputs runs the model and returns logits and speculative logits"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_gpt2_modeling.py": {
+    "build_flash_gpt2_model": "build a flash attention GPT-2 model with tensor parallelism for distributed text generation inference",
+    "create_gpt2_attention_layer": "create a FlashGPT2Attention layer that uses paged attention for decode and flash attention for prefill phases",
+    "load_gpt2_qkv_weights": "load and shard GPT-2 query key value weights across tensor parallel ranks with GPTQ quantization support",
+    "create_gpt2_mlp": "create a GPT-2 MLP layer with configurable activation functions including gelu variants and tensor parallel projections",
+    "run_gpt2_causal_lm": "run a FlashGPT2ForCausalLM model to generate logits and speculative logits from input token IDs with KV cache"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_gptj_modeling.py": {
+    "build_flash_gptj_model": "build a FlashGPTJModel with tensor parallel embedding and transformer layers for GPT-J inference",
+    "build_flash_gptj_for_causal_lm": "build a FlashGPTJForCausalLM model with speculative decoding head for causal language generation",
+    "create_gptj_rotary_embedding": "create a GPTJRotary embedding that applies rotary position embeddings on CUDA ROCm or IPEX backends",
+    "create_flash_gptj_attention": "create a FlashGPTJAttention module with paged attention and KV cache for prefill and decode phases",
+    "create_gptj_mlp": "create a GPTJMLP feed-forward module with configurable activation functions and tensor parallel linear layers"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_llama_modeling.py": {
+    "build_flash_llama_model": "build a FlashLlamaForCausalLM model from config and weights for causal language generation",
+    "create_attention_layer": "create a FlashLlamaAttention layer with rotary embeddings and paged attention for a transformer block",
+    "run_moe_forward": "run a Phi3MoE mixture of experts forward pass with gating and expert selection",
+    "refactor_llama_mlp": "refactor the LlamaMLP class to support a new activation function or quantization mode",
+    "review_flash_llama_layer": "review the FlashLlamaLayer forward method to understand residual connections and attention flow"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_mistral_modeling.py": {
+    "build_mistral_config": "build a MistralConfig with custom vocab size hidden size and attention heads for model initialization",
+    "create_mistral_attention": "create a MistralAttention layer with tensor parallel QKV projections and rotary embeddings for grouped query attention",
+    "create_mistral_mlp": "create a MistralMLP with fused gate and up projections and a silu activation function",
+    "create_mistral_layer": "create a MistralLayer combining self attention MLP and RMS normalization with residual connections",
+    "run_flash_mistral_forward": "run FlashMistralForCausalLM forward pass with input ids kv cache and block tables to generate logits"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_mixtral_modeling.py": {
+    "build_MixtralConfig": "build a MixtralConfig with custom vocab size, hidden size, and number of experts for a MoE model",
+    "create_FlashMixtralForCausalLM": "create a FlashMixtralForCausalLM model instance with tensor parallel attention and sparse MoE layers",
+    "run_select_experts": "run the select_experts function to pick top-k experts from gate logits using softmax and topk",
+    "review_MixtralAttention_forward": "review the MixtralAttention forward pass that handles both flash attention prefill and paged attention decode",
+    "test_MixtralMoE": "test the MixtralMoE module that routes tokens through a gate and MoE layer with distributed all-reduce"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_neox_modeling.py": {
+    "build_flash_neox_attention": "build a FlashNeoxAttention module with rotary embeddings and paged attention for GPT-NeoX models",
+    "create_flash_mlp": "create a FlashMLP feed-forward module with configurable activation functions for GPT-NeoX layers",
+    "run_flash_neox_layer": "run a FlashNeoXLayer with parallel or sequential residual connections and layer normalization",
+    "build_flash_gpt_neox_model": "build a FlashGPTNeoXModel with tensor-parallel embeddings and stacked transformer layers for inference",
+    "run_flash_gpt_neox_for_causal_lm": "run FlashGPTNeoXForCausalLM to generate logits from input tokens using KV cache and speculative decoding"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_pali_gemma_modeling.py": {
+    "build_pali_gemma_model": "build a PaliGemmaForConditionalGeneration model by loading vision tower, text model, and multi-modal projector from weights",
+    "create_vision_embeds": "create vision embeddings from pixel values using the vision tower and multi-modal projector",
+    "merge_text_vision_embeds": "merge text input embeddings with vision embeddings by replacing image token positions with vision features",
+    "run_forward_pass": "run a forward pass through the text model with KV cache to produce logits and speculative logits",
+    "review_pali_gemma_initialization": "review the PaliGemmaForConditionalGeneration initialization to understand how vision and text configs are quantized and loaded"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_phi_modeling.py": {
+    "build_phi_config": "build a PhiConfig with custom vocab size hidden size and attention heads for the text generation server",
+    "create_flash_phi_attention": "create a FlashPhiAttention module with partial rotary embeddings and grouped query attention for Phi models",
+    "create_phi_mlp": "create a PhiMLP module with fc1 and fc2 projections using gelu activation and bias",
+    "build_flash_phi_model": "build a FlashPhiModel with tensor parallel embedding layers and residual layer normalization for inference",
+    "run_flash_phi_for_causal_lm": "run a FlashPhiForCausalLM model forward pass with KV cache and block tables for text generation"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_qwen2_modeling.py": {
+    "build_qwen2_causal_lm": "build a Qwen2ForCausalLM model with tensor parallel embedding, speculative head, and sliding window support",
+    "create_qwen2_attention": "create a Qwen2Attention layer with rotary embeddings, GQA support, and paged attention for prefill and decode",
+    "create_qwen2_mlp": "create a Qwen2MLP feed-forward layer with fused gate-up projection and configurable GELU activation",
+    "create_qwen2_layer": "create a Qwen2Layer transformer block with pre and post attention RMSNorm and residual connections",
+    "load_attention_qkv": "load QKV attention projections as tensor parallel columns with multi-adapter support and GQA fallback"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_rw_modeling.py": {
+    "build_RWConfig": "build a RWConfig instance to configure a Falcon RefinedWeb model with custom hidden size and attention heads",
+    "create_FlashRWForCausalLM": "create a FlashRWForCausalLM model from weights for causal language generation with paged attention and KV cache",
+    "review_FlashRWAttention": "review the FlashRWAttention class to understand how rotary embeddings and paged attention work in the prefill and decode phases",
+    "refactor_FlashRWLayer": "refactor the FlashRWLayer forward method to add custom residual connection logic or parallel attention behavior",
+    "summarize_FlashRWModel": "summarize the FlashRWModel architecture including word embeddings, stacked decoder layers, and the final layer norm"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_santacoder_modeling.py": {
+    "build_santacoder_causal_lm": "build a FlashSantacoderForCausalLM model from config and weights for causal language modeling",
+    "load_multi_mqa_weights": "load Multi-Query Attention weights with tensor parallelism and optional GPTQ quantization support",
+    "create_flash_mq_attention": "create a FlashMQAttention module that uses paged attention for decode and flash attention for prefill",
+    "review_transformer_block": "review the Block class combining FastLayerNorm, FlashMQAttention, and MLP in a transformer decoder layer",
+    "run_santacoder_model_forward": "run the FlashSantacoderModel forward pass with input_ids, position_ids, kv_cache, and block_tables"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/flash_starcoder2_modeling.py": {
+    "build_starcoder2_config": "build a Starcoder2Config with custom hidden size, attention heads, and sliding window parameters",
+    "create_starcoder2_attention": "create a Starcoder2Attention layer with GQA support, rotary embeddings, and paged attention for inference",
+    "run_starcoder2_layer": "run a Starcoder2Layer forward pass with residual connections, self-attention, and configurable MLP types",
+    "build_starcoder2_model": "build a Starcoder2Model with tensor-parallel embeddings, stacked transformer layers, and fused layernorm",
+    "run_flash_starcoder2_causal_lm": "run FlashStarcoder2ForCausalLM forward pass to generate logits with KV cache and speculative decoding head"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/idefics2.py": {
+    "build_idefics2_multimodal_model": "build a multimodal vision-language model using Idefics2ForConditionalGeneration with tensor parallel support",
+    "create_vision_embeddings_variable_resolution": "create vision embeddings that support variable resolution images using Idefics2VisionEmbeddings with NaViT approach",
+    "implement_perceiver_resampler": "implement a perceiver-based resampler to compress visual context using Idefics2PerceiverResampler with learnable latents",
+    "merge_vision_text_features": "merge vision embeddings with text embeddings using Idefics2ForConditionalGeneration._merge_input_ids_with_image_features",
+    "extract_vision_features": "extract image features from pixel values using Idefics2ForConditionalGeneration.get_vision_embeds with modality projection"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/idefics3.py": {
+    "build_idefics3_vision_embeddings": "build a PyTorch module to create variable-resolution SigLIP vision embeddings with patch and position embeddings",
+    "create_idefics3_vision_attention": "create a tensor-parallel vision attention layer with QKV projections and softmax attention for the Idefics3 model",
+    "create_idefics3_vision_transformer": "create a vision transformer with embeddings, encoder layers, and post-layernorm for processing pixel values in Idefics3",
+    "create_idefics3_connector": "create a modality connector with pixel shuffle and MLP projection to map vision features to text model dimensions",
+    "create_idefics3_conditional_generation": "create a conditional generation model that merges vision embeddings with text inputs and returns logits using a text model"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/idefics_config.py": {
+    "create_IdeficsConfig": "create an IdeficsConfig instance with custom hidden size and attention heads for the model",
+    "create_IdeficsVisionConfig": "create an IdeficsVisionConfig with custom embed dimension, image size, and patch size",
+    "create_IdeficsPerceiverConfig": "create an IdeficsPerceiverConfig to enable the resampler with custom latent count and depth",
+    "review_IdeficsConfig_to_dict": "review the IdeficsConfig to_dict method that serializes vision and perceiver configs into a dictionary",
+    "refactor_IdeficsConfig_freeze_layers": "refactor the IdeficsConfig freeze_text_layers and freeze_vision_layers settings to control which model layers are trainable"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/idefics_image_processing.py": {
+    "preprocess_images_idefics": "preprocess a batch of PIL images into normalized PyTorch tensors for Idefics model input",
+    "fetch_images_from_url": "fetch images from HTTP URLs or base64 data URIs and return PIL Image objects",
+    "convert_image_to_rgb": "convert a PIL image to RGB mode with proper alpha compositing on a white background",
+    "rescale_image_array": "rescale a numpy image array by multiplying pixel values with a given scale factor",
+    "normalize_image_array": "normalize a numpy image array using mean and standard deviation values"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/idefics_modeling.py": {
+    "build_vision_text_model": "build a IdeficsForVisionText2Text model for multimodal vision-to-text generation with tensor parallelism",
+    "create_decoder_with_vision": "create a IdeficsModel decoder that fuses image features via gated cross-attention layers",
+    "review_cross_attention_layer": "review the IdeficsGatedCrossAttentionLayer to understand how image hidden states are cross-attended with text",
+    "refactor_attention_with_rope": "refactor the IdeficsAttention class to customize rotary position embeddings or add QK layer norms",
+    "summarize_mlp_forward": "summarize the IdeficsMLP forward pass using gated gate-up projections and down projection"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/idefics_perceiver.py": {
+    "build_perceiver_resampler": "build a Perceiver Resampler that compresses context embeddings into a fixed number of latent embeddings",
+    "create_perceiver_attention": "create a Perceiver Cross-Attention module that lets latents attend to long-form context embeddings",
+    "create_mlp_block": "create an MLP block with layer norm, ReLU activation, and tensor-parallel linear projections",
+    "review_perceiver_resampler_forward": "review the IdeficsPerceiverResampler forward pass that repeats latents and feeds through attention and MLP blocks",
+    "refactor_perceiver_attention_qk_norms": "refactor the IdeficsPerceiverAttention to conditionally apply layer norms on query and key projections"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/idefics_processing.py": {
+    "use_idefics_processor_call": "process a list of text and image prompts into tokenized input_ids and pixel_values for the IDEFICS model",
+    "use_incremental_to_binary_attention_mask": "convert an incremental image attention mask tensor to a binary one-hot attention mask tensor",
+    "use_image_attention_mask_for_packed_input_ids": "generate image attention masks for packed input IDs by tracking image and EOD tokens per batch",
+    "use_is_image": "check if a string is a valid image URL or base64 data URI",
+    "use_idefics_processor_decode": "decode tokenized output IDs back to human-readable text using the IDEFICS processor"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/idefics_vision.py": {
+    "build_idefics_vision_transformer": "build a tensor-parallel IdeficsVisionTransformer from config and weights for vision encoding",
+    "create_vision_embeddings": "create IdeficsVisionEmbeddings that convert pixel values into patch and class embeddings with positional encoding",
+    "review_vision_attention": "review the IdeficsVisionAttention class for tensor-parallel multi-headed self-attention implementation",
+    "refactor_vision_encoder_layer": "refactor IdeficsVisionEncoderLayer to swap attention or MLP sub-layers",
+    "summarize_vision_model_output": "summarize the IdeficsVisionModelOutput dataclass fields including image embeddings and hidden states"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/llava_next.py": {
+    "build_llava_next_model": "build a LlavaNextForConditionalGeneration model with a vision tower, projector, and language model",
+    "calculate_anyres_image_grid_shape": "calculate the image patch grid shape for any resolution using get_anyres_image_grid_shape",
+    "unpad_image_tensor": "unpad a PyTorch tensor of a padded and resized image using unpad_image",
+    "extract_vision_embeds": "extract vision embeddings from pixel values using the get_vision_embeds method",
+    "merge_image_features_with_text": "merge image features with text input embeddings using _merge_input_ids_with_image_features"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/mamba_modeling.py": {
+    "build_mamba_model": "build a MambaModel with config and weights to run text generation inference",
+    "create_mamba_config": "create a MambaConfig with custom vocab size, model dimension, and number of layers",
+    "run_mamba_block_forward": "run the MambaBlock forward pass with hidden states and inference parameters",
+    "test_mamba_block_step": "test the MambaBlock step method for single token autoregressive inference",
+    "review_residual_block": "review the ResidualBlock combining MambaBlock with RMSNorm and residual connections"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/mllama.py": {
+    "build_mllama_vision_model": "build a MllamaVisionModel to process pixel values with aspect ratio embeddings and dual transformer encoders",
+    "implement_mllama_cross_attention": "implement MllamaTextCrossAttention for cross-attention between text and vision features using flash attention or ipex",
+    "create_mllama_conditional_generation": "create a MllamaForConditionalGeneration model combining vision encoding with FlashLlama text generation via cross-attention",
+    "implement_vision_encoder_layers": "implement MllamaVisionEncoderLayer with gated attention and feedforward for multimodal image feature extraction",
+    "prepare_attention_masks": "prepare aspect ratio and causal attention masks for Mllama vision and cross-attention processing"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/mpt_modeling.py": {
+    "build_mpt_causal_lm": "build an MPTForCausalLM model with tensor parallel layers and speculative decoding head for causal language modeling",
+    "build_mpt_model": "build an MPTModel transformer with token and position embeddings, MPTBlock layers, and attention bias support",
+    "implement_multihead_attention": "implement a MultiheadAttention module with flash triton or torch attention backends and optional QK layer normalization",
+    "implement_mpt_block": "implement an MPTBlock with layer normalization, multihead attention, and GELU MLP feed-forward network with residual connections",
+    "implement_scaled_attention": "implement scaled_multihead_dot_product_attention with causal masking, key padding, ALiBi bias, and past key-value caching"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/neox_modeling.py": {
+    "build_causal_mask": "build a causal attention mask tensor for self-attention using make_causal_mask with input shape and device",
+    "prepare_attention_mask": "prepare a combined attention mask by calling prepare_attn_mask with the attention mask and input shape",
+    "review_GPTNeoXAttention": "review the GPTNeoXAttention class to understand tensor-parallel QKV attention with rotary embeddings",
+    "review_GPTNeoXLayer": "review the GPTNeoXLayer class to understand the parallel and sequential residual connection patterns",
+    "review_GPTNeoxForCausalLM": "review the GPTNeoxForCausalLM class to understand the full causal language model with speculative decoding head"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/opt_modeling.py": {
+    "build_OPTForCausalLM": "build a tensor-parallel OPT causal language model with speculative decoding head support",
+    "create_OPTDecoderLayer": "create an OPT decoder layer with self-attention and feed-forward sub-layers using tensor parallelism",
+    "implement_OPTAttention": "implement multi-headed self-attention with tensor-parallel QKV projections and past key-value caching",
+    "review_OPTLearnedPositionalEmbedding": "review the OPT learned positional embedding module that computes positions from attention masks",
+    "refactor_make_causal_mask": "refactor the causal mask creation function to support past key-values length for incremental decoding"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/phi_modeling.py": {
+    "build_phi_causal_lm_model": "build a PhiForCausalLM model with tensor parallel embedding and speculative head for causal language modeling",
+    "create_phi_config": "create a PhiConfig with vocab size, embedding dimensions, number of layers, heads, and rotary embedding settings",
+    "implement_rotary_embedding": "implement a RotaryEmbedding class that applies rotary positional embeddings to query and key tensors in attention",
+    "build_phi_mha_layer": "build a PhiMHA multi-head attention layer with tensor parallel QKV projection and rotary embeddings",
+    "create_phi_transformer_block": "create a PhiBlock transformer block with layer norm, multi-head attention, and MLP with residual connections"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/qwen2_5_vl.py": {
+    "build_qwen2_5_vl_processor": "build a Qwen2.5-VL processor to tokenize text and process images and videos for the model",
+    "create_vision_config": "create a Qwen2_5_VLVisionConfig to set vision model hyperparameters like depth, hidden size, and patch size",
+    "create_model_config": "create a Qwen2_5_VLConfig to configure the model with vocab size, hidden size, and attention heads",
+    "review_vision_model_forward": "review the Qwen2_5VisionModel forward pass that applies patch embeddings, rotary position embeddings, and vision blocks",
+    "refactor_position_ids": "refactor the get_position_ids method to compute 3D M-RoPE position IDs for mixed vision and text segments"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/qwen2_vl.py": {
+    "build_qwen2vl_attention": "build a Qwen2VLAttention module using tensor parallel QKV linear layers and flash attention for vision transformer attention",
+    "build_qwen2visionmodel": "build a Qwen2VisionModel with 3D patch embedding, rotary positional embeddings, and vision transformer blocks for image feature extraction",
+    "build_qwen2vl_for_conditional_generation": "build a Qwen2VLForConditionalGeneration model combining vision encoder and Qwen2 text model for multimodal text generation",
+    "create_get_position_ids": "create position IDs for mixed vision-text segments using image grid dimensions and spatial merge size",
+    "create_get_vision_embeds": "create vision embeddings from pixel values using the visual model and image grid temporal-height-width tensor"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/siglip.py": {
+    "build_siglip_vision_transformer": "build a SiglipVisionTransformer model from a SiglipVisionConfig and weights for image feature extraction",
+    "create_siglip_attention": "create a SiglipAttention multi-headed attention layer with tensor parallel QKV projections for the SigLIP model",
+    "implement_siglip_encoder_layer": "implement a SiglipEncoderLayer with pre-layer-norm self-attention and MLP residual blocks for the SigLIP encoder",
+    "build_siglip_mlp": "build a SiglipMLP feed-forward network with tensor parallel fc1 and fc2 layers and configurable activation function",
+    "create_siglip_pooling_head": "create a SiglipMultiheadAttentionPoolingHead that uses a learnable probe token to pool encoder hidden states"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/t5_modeling.py": {
+    "build_t5_model": "build a tensor-parallel T5 model for conditional generation using T5ForConditionalGeneration",
+    "implement_t5_attention": "implement T5 self-attention with relative position bias using T5Attention",
+    "create_t5_ffn": "create a T5 feed-forward layer with gated activation using T5DenseGatedActDense",
+    "review_t5_layernorm": "review the T5LayerNorm RMS normalization implementation that scales without shifting",
+    "refactor_t5_block": "refactor the T5Block to add or modify self-attention and cross-attention layers"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/vlm.py": {
+    "load_text_model_for_vlm": "load a text model (llama, mistral, gemma, paligemma) for a vision-language model using prefix config and weights",
+    "load_vision_model_for_vlm": "load a vision model (clip or siglip) for a vision-language model using prefix config and weights",
+    "load_text_model_llama": "load a FlashLlamaForCausalLM text model for a VLM by passing a llama config and weights",
+    "load_text_model_gemma": "load a FlashGemmaForCausalLM text model for a VLM by passing a gemma config and weights",
+    "load_vision_model_siglip": "load a SiglipVisionTransformer vision model for a VLM by passing a siglip config and weights"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/gemma3/image_processing_gemma3.py": {
+    "create_gemma3_image_processor": "create a Gemma3ImageProcessor instance with custom resize, normalize, and pan_and_scan settings",
+    "preprocess_images_for_gemma3": "preprocess images for Gemma3 using resize, rescale, normalize, and pan_and_scan transformations",
+    "apply_pan_and_scan_cropping": "apply pan_and_scan cropping to split wide or tall images into multiple crops",
+    "configure_gemma3_normalization": "configure the Gemma3ImageProcessor with custom image_mean and image_std normalization values",
+    "review_gemma3_image_processor": "review the Gemma3ImageProcessor class and its preprocess method for image preprocessing logic"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/gemma3/processing_gemma3.py": {
+    "create_gemma3_processor": "create a Gemma3Processor instance with a custom image processor and tokenizer for multimodal processing",
+    "call_gemma3_processor": "call the Gemma3Processor with text and images to get tokenized input and image features as a BatchFeature",
+    "batch_decode_gemma3": "use Gemma3Processor batch_decode to decode a batch of token IDs back into text strings",
+    "decode_gemma3": "use Gemma3Processor decode to decode a single token ID sequence back into text",
+    "review_gemma3_processor_kwargs": "review the Gemma3ProcessorKwargs defaults for pan-and-scan image cropping settings and text padding options"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/models/custom_modeling/gemma3/utils.py": {
+    "validate_list_of_images": "check if a list contains valid images using is_valid_list_of_images",
+    "normalize_images_to_nested_list": "convert a single image or flat list of images into a nested list format",
+    "handle_batched_images": "pass through an already batched list of lists of images unchanged",
+    "convert_single_pil_image": "wrap a single PIL image in a double nested list for batch processing",
+    "convert_4d_array_images": "convert a 4D numpy array of images into a nested list structure"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/adapter.py": {
+    "parse_lora_adapters": "parse a comma-separated LoRA adapter string into a list of AdapterInfo objects with id, path, and revision",
+    "load_and_merge_adapters": "load and merge multiple LoRA adapters for a given model, returning the module map, config, weight names, and tokenizer",
+    "load_module_map": "load a single LoRA adapter's module map, config, weight names, and tokenizer from a local path or Hugging Face Hub",
+    "check_architectures": "check if a LoRA adapter's base model architecture is compatible with the target model architecture",
+    "build_layer_weight_lookup": "build a mapping of model layer identifiers to their weight tensor paths and objects for LoRA adapter application"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/chunks.py": {
+    "concat_text_chunks": "concatenate text from an iterable of InputChunk protobuf objects and return the text string",
+    "review_concat_text_chunks": "review the concat_text_chunks function that extracts text from protobuf InputChunk objects",
+    "test_concat_text_chunks": "test concat_text_chunks with a list of generate_pb2.InputChunk objects containing text chunks",
+    "refactor_concat_text_chunks": "refactor concat_text_chunks to support multiple text chunks instead of raising NotImplementedError",
+    "summarize_concat_text_chunks": "summarize how concat_text_chunks iterates over InputChunk protobufs to extract and return text"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/convert.py": {
+    "convert_pytorch_to_safetensors": "convert a PyTorch checkpoint file to safetensors format removing duplicate tensors",
+    "convert_multiple_pytorch_files": "convert multiple PyTorch checkpoint files to safetensors format in batch",
+    "remove_duplicate_tensor_names": "find and remove duplicate shared tensor names from a PyTorch state dict",
+    "review_convert_file_function": "review the convert_file function that transforms PyTorch weights to safetensors with deduplication",
+    "summarize_safetensors_conversion": "summarize the safetensors conversion utilities for PyTorch model weight files"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/dist.py": {
+    "initialize_torch_distributed": "initialize torch distributed process group with NCCL backend for multi-GPU tensor parallelism",
+    "create_FakeGroup": "create a FakeGroup process group mock for single-GPU or debug mode testing",
+    "create_FakeBarrier": "create a FakeBarrier no-op barrier for single-process distributed simulation",
+    "configure_MEMORY_FRACTION": "configure CUDA memory fraction via the CUDA_MEMORY_FRACTION environment variable",
+    "set_tensor_parallelism_env": "set RANK and WORLD_SIZE environment variables for tensor parallelism configuration"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/hub.py": {
+    "download_weights_safetensors": "download safetensors weight files from a Hugging Face model repo to the local cache",
+    "get_weight_hub_files": "get the list of weight filenames for a Hugging Face model from the hub",
+    "get_local_weight_files": "get local weight file paths for a model from the cache or a local directory",
+    "check_cache_for_file": "check if a specific file exists in the Hugging Face hub cache for a model revision",
+    "get_cached_revision_directory": "resolve the cached snapshot directory path for a given Hugging Face model and revision"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/import_utils.py": {
+    "check_ipex_available": "check if the intel_extension_for_pytorch package is installed using is_ipex_available",
+    "get_cuda_free_memory": "get the free CUDA GPU memory for a device with a given memory fraction",
+    "get_xpu_free_memory": "get the free XPU memory for a device respecting the XPU_MEMORY_FRACTION env var",
+    "get_cpu_free_memory": "get the available CPU memory divided by WORLD_SIZE using psutil",
+    "detect_system_and_bind_ops": "detect the hardware system and bind empty_cache synchronize and get_free_memory to the correct backend"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/kernels.py": {
+    "load_kernel_local": "load a kernel module from a local Python module by name using importlib",
+    "load_kernel_hub_fallback": "load a kernel from a Hugging Face Hub repo when the local module is not found",
+    "load_kernel_with_repo": "load a kernel by module name with a fallback repo_id for Hub kernels",
+    "review_load_kernel": "review the load_kernel function to understand its local-first Hub-fallback loading strategy",
+    "refactor_load_kernel": "refactor load_kernel to support additional fallback strategies beyond local and Hub"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/log.py": {
+    "log_once_message": "log a message once using lru_cache to avoid duplicate logging in a distributed setting",
+    "log_master_only": "log a message only on the master rank in a distributed text generation server",
+    "review_log_once": "review the log_once function to understand how it caches and conditionally logs messages",
+    "refactor_log_master": "refactor the log_master function to support a custom rank check instead of RANK equals zero",
+    "summarize_log_utils": "summarize the logging utility functions for distributed text generation server rank-based logging"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/logits_process.py": {
+    "create_staticwarper": "create a StaticWarper that applies temperature, top_k, top_p, and typical_p warping with CUDA graph replay for fast inference",
+    "use_static_warper_cache": "use the cached static_warper function to get a StaticWarper instance with lru_cache for repeated sampling parameters",
+    "create_heterogeneous_repetition_penalty": "create a HeterogeneousRepetitionPenaltyLogitsProcessor that applies per-sample repetition penalties to logits in a batch",
+    "create_heterogeneous_frequency_penalty": "create a HeterogeneousFrequencyPenaltyLogitsProcessor that applies per-sample OpenAI-style frequency penalties based on token occurrence rates",
+    "create_grammar_logit_processor": "create a GrammarLogitProcessor that constrains token generation using a regex-based FSM compiled via Outlines RegexGuide"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/peft.py": {
+    "download_and_merge_peft_model": "download a PEFT model, merge LoRA weights, and save the merged model with tokenizer to a directory",
+    "download_peft_model_only": "download a PEFT model for causal or seq2seq LM without merging weights",
+    "merge_lora_weights": "merge LoRA adapter weights into the base model and unload the PEFT wrapper",
+    "save_merged_model": "save a merged PEFT model, its config, and tokenizer to a local cache directory",
+    "load_peft_causal_or_seq2seq": "load a PEFT model trying causal LM first then falling back to seq2seq LM"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/prefill_chunking.py": {
+    "set_support_chunking": "set the global SUPPORT_CHUNKING flag to enable or disable prefill chunking",
+    "get_support_chunking": "get the current value of the SUPPORT_CHUNKING global flag",
+    "set_max_prefill_tokens": "set the global MAX_PREFILL_TOKENS value to configure the maximum prefill token limit",
+    "get_max_prefill_tokens": "get the current value of the MAX_PREFILL_TOKENS global configuration",
+    "review_prefill_chunking_module": "review the prefill_chunking module to understand the global chunking and token limit configuration"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/quantization.py": {
+    "get_loader_quantization": "get a weights loader for a model using gptq, awq, bitsandbytes, exl2, marlin, or fp8 quantization",
+    "get_quantizer_config": "get the quantizer config dataclass from a huggingface model id and revision",
+    "get_config_json": "download and parse a config json file from a local path or huggingface hub model",
+    "review_QuantizerConfig": "review the _QuantizerConfig dataclass fields including bits, groupsize, sym, desc_act, and quant_method",
+    "review_FP8QuantizerConfig": "review the _FP8QuantizerConfig dataclass and its activation_scale_ub field for fbgemm fp8 quantization"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/segments.py": {
+    "find_segments_adapter_indices": "find contiguous segments in a list of adapter indices and return segment boundaries with their values",
+    "create_segment_concat_builder": "create a SegmentConcatBuilder instance to accumulate and merge adapter segment tensors across multiple batches",
+    "concat_adapter_segments": "concat a batch of adapter segment tensors and indices into the builder, merging adjacent segments with the same adapter index",
+    "build_concatenated_segments": "build and return the final concatenated adapter segment tensor and merged segment indices from the builder",
+    "review_find_segments_logic": "review the find_segments function to understand how it detects value changes and computes segment boundaries using numpy diff"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/speculate.py": {
+    "set_speculate_value": "set the global speculate value to an integer for speculative decoding configuration",
+    "get_speculate_value": "get the current global speculate integer value for speculative decoding"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/tokens.py": {
+    "create_next_token_chooser": "create a NextTokenChooser with temperature, top_k, top_p, and repetition penalty parameters for text generation",
+    "create_heterogeneous_next_token_chooser": "create a HeterogeneousNextTokenChooser to handle batched requests with different sampling parameters per request",
+    "create_stopping_criteria": "create a StoppingCriteria with EOS token IDs, stop sequences, and max new tokens limits",
+    "create_n_gram_speculation": "create n-gram speculation tokens by finding matching sequences in input IDs for speculative decoding",
+    "batch_top_tokens": "find the top N most likely tokens and their logprobs for a batch of generations"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/weights.py": {
+    "create_weights_loader": "create a custom WeightsLoader subclass to load quantized tensors from Safetensors files with tensor parallelism support",
+    "load_unquantized_weights": "load unquantized Torch tensors from Safetensors files using DefaultWeightsLoader with UnquantizedWeight class",
+    "shard_packed_weights": "shard packed QKV or gate-up projection weights across tensor parallel ranks using get_packed_sharded",
+    "get_sharded_tensor": "get a sharded portion of a tensor along a specified dimension for distributed inference across GPU ranks",
+    "convert_blocks_to_sizes": "convert block counts or proportional ratios into concrete block sizes for splitting packed weight tensors"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/merges/strategies.py": {
+    "merge_adapters_linear": "merge multiple LoRA adapters using the linear merge strategy with custom weights",
+    "merge_adapters_ties": "merge multiple LoRA adapters using the TIES merge strategy with magnitude-based sparsification",
+    "merge_adapters_dare_linear": "merge multiple LoRA adapters using the DoReFa random pruning linear merge strategy",
+    "merge_adapters_dare_ties": "merge multiple LoRA adapters using the DoReFa random pruning TIES merge strategy",
+    "create_merge_strategy": "create a custom MergeStrategy subclass that implements the merge method for task tensors"
+  },
+  "huggingface_text-generation-inference/server/text_generation_server/utils/merges/utils.py": {
+    "prune_tensor_magnitude": "prune a pytorch tensor using magnitude-based pruning to retain the top-k largest values by density",
+    "prune_tensor_random": "prune a pytorch tensor using random bernoulli masking with an optional rescale to preserve expected value",
+    "prune_tensor_method": "prune a pytorch tensor by specifying magnitude or random method with a given density fraction",
+    "calculate_majority_sign_mask": "calculate a majority sign mask across stacked task tensors using total magnitude or frequency method",
+    "disjoint_merge_tensors": "merge multiple task tensors using a majority sign mask and normalize by the number of preserved parameters"
+  }
+}

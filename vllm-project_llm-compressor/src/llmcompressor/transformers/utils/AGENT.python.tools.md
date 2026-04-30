@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: vllm-project/llm-compressor
+- repo_uri: https://github.com/vllm-project/llm-compressor
+
+## File: vllm-project_llm-compressor/src/llmcompressor/transformers/utils/helpers.py
+
+Prompts
+
+```
+['test the is_model_ct_quantized_from_path function to check if a model path is compressed-tensors quantized', 'infer the recipe yaml path from a local model directory or Hugging Face model ID', 'download the recipe.yaml file from a Hugging Face model ID using the HF Hub API', 'resolve processor from model arguments by assigning tokenizer to processor when both are not set', 'check if a recipe.yaml file exists in a local model directory or file path']
+```
+
+Usage
+
+```
+{'test_is_model_ct_quantized_from_path': 'test the is_model_ct_quantized_from_path function to check if a model path is compressed-tensors quantized', 'infer_recipe_from_model_path': 'infer the recipe yaml path from a local model directory or Hugging Face model ID', 'download_recipe_from_huggingface': 'download the recipe.yaml file from a Hugging Face model ID using the HF Hub API', 'resolve_processor_from_model_args': 'resolve processor from model arguments by assigning tokenizer to processor when both are not set', 'check_recipe_in_local_model': 'check if a recipe.yaml file exists in a local model directory or file path'}
+```
+

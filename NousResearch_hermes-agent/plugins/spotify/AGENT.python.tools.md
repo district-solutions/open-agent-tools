@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: NousResearch/hermes-agent
+- repo_uri: https://github.com/NousResearch/hermes-agent
+
+## File: NousResearch_hermes-agent/plugins/spotify/client.py
+
+Prompts
+
+```
+['build a SpotifyClient instance to control playback and manage playlists via the Spotify Web API', 'create a new Spotify playlist with name, description, and add tracks by URI to it', 'run playback control commands including play, pause, skip, seek, volume, repeat, and shuffle', 'test searching Spotify for tracks, albums, artists, or playlists with query, limit, and market filters', "summarize the user's Spotify library including saved tracks, saved albums, playlists, and recently played"]
+```
+
+Usage
+
+```
+{'build_spotify_client': 'build a SpotifyClient instance to control playback and manage playlists via the Spotify Web API', 'create_playlist_with_items': 'create a new Spotify playlist with name, description, and add tracks by URI to it', 'run_spotify_playback_control': 'run playback control commands including play, pause, skip, seek, volume, repeat, and shuffle', 'test_spotify_search': 'test searching Spotify for tracks, albums, artists, or playlists with query, limit, and market filters', 'summarize_spotify_library': "summarize the user's Spotify library including saved tracks, saved albums, playlists, and recently played"}
+```
+

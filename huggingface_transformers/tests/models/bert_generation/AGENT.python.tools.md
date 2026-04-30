@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/bert_generation/test_modeling_bert_generation.py
+
+Prompts
+
+```
+['test the BertGenerationEncoder model class with encoder configuration and input tensors', 'test the BertGenerationDecoder model class as a causal language model with cross-attention', 'test the BertGenerationEncoder configured as a decoder with encoder hidden states and cross-attention', 'test the decoder model past key values caching with large input sequences for inference speed', 'test loading a pretrained BertGenerationEncoder model from the HuggingFace model hub']
+```
+
+Usage
+
+```
+{'test_BertGenerationEncoder': 'test the BertGenerationEncoder model class with encoder configuration and input tensors', 'test_BertGenerationDecoder': 'test the BertGenerationDecoder model class as a causal language model with cross-attention', 'test_BertGenerationEncoder_as_decoder': 'test the BertGenerationEncoder configured as a decoder with encoder hidden states and cross-attention', 'test_decoder_model_past_with_large_inputs': 'test the decoder model past key values caching with large input sequences for inference speed', 'test_BertGenerationEncoder_from_pretrained': 'test loading a pretrained BertGenerationEncoder model from the HuggingFace model hub'}
+```
+

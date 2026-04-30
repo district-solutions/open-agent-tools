@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/bitnet/test_modeling_bitnet.py
+
+Prompts
+
+```
+['test the BitNetModel forward pass with input_ids and attention_mask inputs', 'test the BitNetForCausalLM text generation with greedy decoding and max_new_tokens', 'create a BitNetConfig with vocab_size, hidden_size, num_hidden_layers, and attention head parameters', 'test the BitNetForCausalLM model logits against expected values from the microsoft/bitnet-b1.58-2B-4T checkpoint', 'test BitNetForCausalLM generation output matches expected text completion from chat template prompt']
+```
+
+Usage
+
+```
+{'test_bitnet_model_forward': 'test the BitNetModel forward pass with input_ids and attention_mask inputs', 'test_bitnet_causal_lm_generation': 'test the BitNetForCausalLM text generation with greedy decoding and max_new_tokens', 'create_bitnet_config': 'create a BitNetConfig with vocab_size, hidden_size, num_hidden_layers, and attention head parameters', 'test_bitnet_model_logits': 'test the BitNetForCausalLM model logits against expected values from the microsoft/bitnet-b1.58-2B-4T checkpoint', 'test_bitnet_generation_output': 'test BitNetForCausalLM generation output matches expected text completion from chat template prompt'}
+```
+

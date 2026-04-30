@@ -1,0 +1,1196 @@
+{
+  "vllm-project_llm-compressor/examples/autoround/ddp/ddp_qwen3_example.py": {
+    "run_ddp_quantization": "run AutoRound quantization with DDP on a Qwen3 model using torchrun with configurable scheme and iterations",
+    "create_autoround_recipe": "create an AutoRoundModifier recipe targeting Linear layers with a custom quantization scheme and iteration count",
+    "build_ddp_model_load": "build a distributed model loader using init_dist and load_offloaded_model for multi-GPU quantization",
+    "test_quantized_model": "test a quantized model by generating text samples and verifying output quality after calibration",
+    "summarize_quantization_args": "summarize the CLI arguments for the DDP AutoRound script including model, scheme, iters, and deterministic mode"
+  },
+  "vllm-project_llm-compressor/examples/awq/fp8_block_llama_example.py": {
+    "run_oneshot_quantization": "run oneshot quantization on a transformer model using AWQModifier with FP8_BLOCK scheme",
+    "create_awq_modifier": "create an AWQModifier with FP8_BLOCK quantization scheme targeting Linear layers",
+    "preprocess_dataset_chat": "preprocess a HuggingFace dataset by applying chat templates via tokenizer.apply_chat_template",
+    "tokenize_dataset_samples": "tokenize dataset samples with max length truncation and no padding",
+    "dispatch_model_offload": "dispatch a quantized model for GPU offloading inference"
+  },
+  "vllm-project_llm-compressor/examples/awq/fp8_dynamic_llama_example.py": {
+    "load_model_from_pretrained": "load a Hugging Face causal language model and tokenizer from a model ID string",
+    "load_dataset_from_huggingface": "load a Hugging Face dataset split and shuffle it with a fixed seed",
+    "create_awq_quantization_recipe": "create an AWQ quantization recipe with FP8_DYNAMIC scheme targeting Linear layers",
+    "run_oneshot_quantization": "run oneshot quantization on a model using a calibration dataset and quantization recipe",
+    "generate_text_with_quantized_model": "generate text from a quantized model and decode the output tokens"
+  },
+  "vllm-project_llm-compressor/examples/awq/llama_example.py": {
+    "create_awq_quantization_recipe": "create an AWQ quantization recipe using AWQModifier with W4A16_ASYM scheme on Linear targets",
+    "run_oneshot_quantization": "run oneshot quantization on a transformer model with a calibration dataset and AWQ recipe",
+    "test_dispatch_model_offload": "test dispatch_model to offload a quantized LLM for inference on available devices",
+    "build_load_causal_lm_model": "build a causal language model from pretrained weights using AutoModelForCausalLM",
+    "save_quantized_model_compressed": "save a quantized model and tokenizer to disk in compressed format using save_pretrained"
+  },
+  "vllm-project_llm-compressor/examples/awq/llama_example_ddp.py": {
+    "run_quantization_awq_ddp": "run AWQ quantization on a Llama 3 8B model using distributed data parallel with torchrun",
+    "create_awq_quantization_recipe": "create an AWQ quantization recipe with W4A16 asymmetric scheme targeting Linear layers",
+    "build_distributed_model_init": "build a distributed model init with offloaded device map for multi-GPU quantization",
+    "test_calibration_dataset_partition": "test calibration dataset partitioning with rank-aware split from ultrachat_200k",
+    "summarize_quantization_results": "summarize quantization results including elapsed time and peak GPU memory usage"
+  },
+  "vllm-project_llm-compressor/examples/awq/llama_example_with_masking.py": {
+    "build_awq_quantize_model": "build AWQ quantization with token masking to optimize assistant responses in instruction-tuned models",
+    "create_loss_mask_tokenizer": "create a loss mask that marks assistant response tokens and ignores user prompts during calibration",
+    "run_awq_oneshot_calibration": "run AWQ one-shot quantization calibration with loss masking on a dataset of conversation samples",
+    "configure_awq_modifier_recipe": "configure AWQModifier recipe with W4A16 asymmetric quantization targeting Linear layers",
+    "test_quantized_model_generation": "test quantized model generation by dispatching the model and decoding sample outputs"
+  },
+  "vllm-project_llm-compressor/examples/awq/qwen3-vl-30b-a3b-Instruct-example.py": {
+    "configure_awq_quantization": "configure AWQ W4A16 quantization with group_size=32 and MSE observer on a Qwen3-VL model",
+    "apply_oneshot_quantization": "apply one-shot AWQ quantization to a Qwen3-VL model using calibration dataset and data collator",
+    "preprocess_vision_language_dataset": "preprocess a vision-language dataset with chat template tokenization and pixel value handling",
+    "generate_text_after_quantization": "generate text from a quantized Qwen3-VL model using dispatch_model and model.generate",
+    "save_quantized_model": "save a quantized Qwen3-VL model and processor to disk in compressed-tensors format"
+  },
+  "vllm-project_llm-compressor/examples/awq/qwen3_coder_moe_example.py": {
+    "run_awq_quantization": "run AWQ quantization on a Qwen3 Coder MoE model using llmcompressor oneshot with W4A16 scheme",
+    "create_awq_recipe": "create an AWQ quantization recipe with AWQModifier targeting Linear layers while ignoring lm_head and gate layers",
+    "build_calibration_dataset": "build a calibration dataset from HuggingFace datasets by tokenizing chat messages with a tokenizer",
+    "test_quantized_model": "test a quantized LLM by generating text from a prompt after loading and dispatching the model",
+    "summarize_quantize_save": "summarize quantizing a transformer model with AWQ and saving the quantized model and tokenizer to disk"
+  },
+  "vllm-project_llm-compressor/examples/awq/qwen3_moe_example.py": {
+    "create_awq_quantization_recipe": "create an AWQ quantization recipe for a MoE model using W4A16 scheme with layer targets",
+    "run_oneshot_quantization": "run oneshot quantization on a transformer model with a calibration dataset and AWQ recipe",
+    "preprocess_chat_dataset": "preprocess a chat dataset by applying tokenizer chat templates to message examples",
+    "tokenize_calibration_samples": "tokenize calibration dataset samples with truncation and max sequence length constraints",
+    "save_quantized_model_compressed": "save a quantized transformer model and tokenizer to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/awq/qwen3_moe_example_ddp.py": {
+    "run_awq_quantization_ddp": "run AWQ quantization on a Qwen3 MoE model using distributed data parallel with torchrun",
+    "create_awq_quantization_recipe": "create an AWQ quantization recipe with W4A16 scheme and ignore specific MoE layers",
+    "load_offloaded_model_ddp": "load an offloaded LLM model initialized for distributed data parallel training",
+    "test_quantized_model_generation": "test a quantized model by generating text from a prompt to verify correctness",
+    "save_quantized_model_compressed": "save a quantized model and tokenizer to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/awq/qwen3_next_example.py": {
+    "create_awq_quantization_recipe": "create an AWQ quantization recipe for a transformer language model with W4A16 scheme",
+    "run_oneshot_quantization": "run oneshot quantization on a pretrained model using a calibration dataset and AWQ recipe",
+    "build_quantized_model_pipeline": "build a pipeline that loads a model, preprocesses a dataset, applies AWQ quantization, and saves the compressed model",
+    "configure_awq_modifier_targets": "configure AWQModifier to quantize Linear layers while ignoring lm_head and MLP gate layers",
+    "preprocess_dataset_for_quantization": "preprocess and tokenize a HuggingFace dataset for model quantization calibration"
+  },
+  "vllm-project_llm-compressor/examples/awq/w4a8_fp8_llama_example.py": {
+    "run_oneshot_quantize": "run oneshot to apply AWQ W4AFP8 quantization to a Llama model using calibration data",
+    "create_awq_modifier": "create an AWQModifier recipe with W4AFP8 scheme, Linear targets, and duo scaling enabled",
+    "preprocess_dataset": "preprocess a HuggingFace dataset by applying a chat template via the tokenizer",
+    "test_quantized_model": "test a quantized model by generating text from a prompt and decoding the output",
+    "save_quantized_model": "save a quantized model and tokenizer to disk in pack-quantized format for vLLM compatibility"
+  },
+  "vllm-project_llm-compressor/examples/big_models_with_sequential_onloading/llama3.3_70b.py": {
+    "run_oneshot_quantization": "run llmcompressor oneshot to quantize a large language model with GPTQ and SmoothQuant",
+    "create_smoothquant_modifier": "create a SmoothQuantModifier to make activations easier to quantize before GPTQ",
+    "create_gptq_modifier": "create a GPTQModifier to quantize model weights to int8 with static per-channel quantization",
+    "build_w8a8_quantization_recipe": "build a quantization recipe combining SmoothQuant and GPTQ for W8A8 int8 quantization",
+    "summarize_quantization_pipeline": "summarize the full quantization pipeline from dataset loading through model compression"
+  },
+  "vllm-project_llm-compressor/examples/big_models_with_sequential_onloading/llama3_8b_w8a8_distributed.py": {
+    "run_quantize_model_oneshot": "run W8A8 distributed quantization on a large language model using llmcompressor oneshot with calibration dataset",
+    "init_distributed_process_group": "init a distributed process group for multi-GPU quantization with torch.distributed and compressed_tensors",
+    "load_offloaded_model_ddp": "load a large causal language model with auto offloading for distributed DDP training",
+    "partition_calibration_dataset": "partition a HuggingFace dataset by rank for distributed calibration across multiple GPUs",
+    "generate_text_quantized_model": "generate text from a quantized model after dispatching offloaded layers to GPU memory"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_audio/qwen2_audio.py": {
+    "quantize_qwen2_audio_model": "quantize a Qwen2-Audio model using GPTQ W4A16 scheme with llmcompressor oneshot",
+    "preprocess_audio_dataset": "preprocess a multimodal audio dataset with chat template and audio tokenization",
+    "generate_audio_transcription": "generate audio transcription from a Qwen2-Audio model using processor and model.generate",
+    "save_quantized_model": "save a quantized Qwen2-Audio model and processor to disk with compression",
+    "configure_gptq_quantization": "configure GPTQ quantization with W4A16 scheme targeting Linear layers while ignoring lm_head"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_audio/whisper_example.py": {
+    "run_whisper_quantization": "run GPTQ W4A16 quantization on a Whisper large-v3 model using llmcompressor oneshot",
+    "load_whisper_model": "load a pretrained WhisperForConditionalGeneration model and WhisperProcessor from Hugging Face",
+    "preprocess_audio_dataset": "preprocess an audio transcription dataset with WhisperProcessor for GPTQ calibration",
+    "generate_transcription": "generate audio transcriptions from a quantized Whisper model using model.generate",
+    "save_quantized_model": "save a quantized Whisper model and processor to disk with compression enabled"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_vision/gemma4_example.py": {
+    "run_oneshot_quantization": "run oneshot quantization on a Gemma4 model using NVFP4 scheme and calibration dataset",
+    "create_quantization_recipe": "create a QuantizationModifier recipe targeting Linear layers with NVFP4 quantization scheme",
+    "build_calibration_dataset": "build a calibration dataset from a HuggingFace dataset for model quantization",
+    "run_model_generation": "run multimodal text generation from an image using a quantized Gemma4 model",
+    "save_quantized_model": "save a quantized model and processor to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_vision/idefics3_example.py": {
+    "run_oneshot_quantize_model": "run oneshot quantization on a multimodal vision-language model using GPTQ W4A16 scheme",
+    "create_GPTQModifier_recipe": "create a GPTQModifier recipe targeting Linear layers while ignoring lm_head and vision model components",
+    "build_data_collator_multimodal": "build a data collator that converts multimodal batch inputs into torch tensors",
+    "test_dispatch_model_offload": "test dispatch_model offloading for inference on quantized multimodal models",
+    "review_Idefics3ForConditionalGeneration_load": "review loading Idefics3ForConditionalGeneration from pretrained with auto dtype for vision-language tasks"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_vision/internvl3_example.py": {
+    "run_oneshot_quantization": "run oneshot GPTQ quantization on a multimodal InternVL3 model with FP8 scheme",
+    "create_gptq_modifier": "create a GPTQModifier recipe targeting Linear layers while ignoring lm_head and vision_tower",
+    "build_preprocess_tokenizer": "build a preprocess_and_tokenize function that applies chat templates and tokenizes multimodal examples",
+    "test_load_dataset_calibration": "test loading a calibration dataset from HuggingFace with shuffled samples",
+    "save_quantized_model": "save a quantized model and processor to disk with compression enabled"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_vision/llama4_example.py": {
+    "run_oneshot_quantization": "run GPTQ W4A16 quantization on a Llama4 vision model using llmcompressor oneshot",
+    "create_gptq_recipe": "create a GPTQModifier recipe targeting Linear layers with W4A16 scheme and ignore lists",
+    "build_multimodal_calibration_dataset": "build a multimodal calibration dataset from Hugging Face datasets with chat template preprocessing",
+    "create_data_collator": "create a data collator that handles pixel_values as bfloat16 tensors for multimodal calibration",
+    "test_quantized_model_save": "test saving a quantized Llama4 model and processor to disk with compression enabled"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_vision/mistral3_example.py": {
+    "build_quantize_mistral3_gptq": "build a quantization pipeline using GPTQModifier to compress a Mistral3 multimodal model to W4A16",
+    "run_oneshot_calibration": "run oneshot calibration on a Mistral3 model using Flickr30K dataset for GPTQ quantization",
+    "test_multimodal_generation": "test multimodal image-text generation with a quantized Mistral3 model and sample image",
+    "create_data_collator_dtype": "create a custom data collator that fixes pixel_values tensor dtype mismatch for model input",
+    "save_quantized_model_compressed": "save a quantized Mistral3 model and processor to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_vision/phi3_vision_example.py": {
+    "create_phi3_vision_quantized_model": "create a quantized Phi-3-vision model using GPTQ W4A16 oneshot compression",
+    "load_multimodal_model_processor": "load the Phi-3-vision-128k-instruct model and processor from Hugging Face with eager attention",
+    "preprocess_multimodal_dataset": "preprocess a Flickr30K dataset with chat templates and image-text pairs for calibration",
+    "run_gptq_quantization": "run GPTQ quantization on linear layers with sequential Phi3DecoderLayer targets",
+    "save_compressed_quantized_model": "save the quantized model and processor to disk with compression enabled"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_vision/pixtral_example.py": {
+    "run_oneshot_quantization": "run oneshot GPTQ quantization on a multimodal vision model with W4A16 scheme",
+    "create_gptq_recipe": "create a GPTQModifier recipe targeting Linear layers while ignoring lm_head and vision tower layers",
+    "test_quantized_model_generation": "test a quantized multimodal model by generating text descriptions from an image",
+    "build_data_collator": "build a data collator that patches pixel_values tensor dtype to match the model",
+    "save_compressed_model": "save a quantized model and processor to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_vision/qwen2_vl_example.py": {
+    "run_oneshot_quantization": "run oneshot GPTQ W4A16 quantization on a Qwen2-VL multimodal model with calibration data",
+    "preprocess_multimodal_dataset": "preprocess and tokenize a multimodal image-text dataset for model calibration",
+    "generate_vision_text_output": "generate text descriptions from images using a quantized Qwen2-VL model",
+    "build_gptq_quantization_recipe": "build a GPTQ quantization recipe targeting Linear layers while ignoring visual encoder and lm_head",
+    "save_quantized_model_compressed": "save a quantized Qwen2-VL model and processor to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_vision/qwen3_omni_example.py": {
+    "run_oneshot_quantization": "run oneshot quantization on a Qwen3-Omni model with GPTQ W4A16 recipe and Flickr30K calibration data",
+    "create_gptq_modifier": "create a GPTQModifier with W4A16 quantization scheme targeting Linear layers while ignoring lm_head and visual modules",
+    "apply_pos_embed_patch": "apply the fast_pos_embed_interpolate patch to fix accelerate offloading on Qwen3-Omni visual encoder",
+    "generate_multimodal_output": "generate text and audio output from a multimodal model given an image and prompt",
+    "save_compressed_model": "save a quantized model and processor to disk with compression enabled using modify_save_pretrained"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_vision/qwen3_vl_example.py": {
+    "run_oneshot_quantize_model": "run oneshot W4A16 quantization on a Qwen3-VL multimodal model using calibration dataset samples",
+    "create_awq_modifier_recipe": "create an AWQModifier recipe for W4A16 quantization ignoring lm_head and visual layers",
+    "build_preprocess_multimodal_dataset": "build a preprocessing function that tokenizes multimodal image-text dataset examples for Qwen3-VL",
+    "run_process_vision_info": "run process_vision_info to extract image and video inputs from Qwen multimodal message format",
+    "test_dispatch_model_offload": "test dispatch_model offload for running a quantized multimodal model on available devices"
+  },
+  "vllm-project_llm-compressor/examples/multimodal_vision/qwen_2_5_vl_example.py": {
+    "build_preprocess_multimodal_dataset": "preprocess and tokenize a multimodal image-text dataset for Qwen2.5-VL calibration",
+    "run_oneshot_gptq_quantization": "run oneshot GPTQ W4A16 quantization on a Qwen2.5-VL model with visual layers ignored",
+    "create_data_collator_multimodal": "create a data collator for batching multimodal calibration inputs for oneshot quantization",
+    "test_quantized_vision_model": "test a quantized Qwen2.5-VL model by generating text descriptions from image inputs",
+    "save_quantized_model_compressed": "save a quantized Qwen2.5-VL model and processor to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/quantization_attention/llama3_attention.py": {
+    "run_quantization_oneshot": "run post-training quantization on a transformer model using llmcompressor oneshot with a calibration dataset",
+    "create_quantization_recipe": "create a quantization recipe targeting specific transformer layers like LlamaAttention with 8-bit float tensor strategy",
+    "preprocess_cal_dataset": "preprocess and tokenize a HuggingFace dataset for model calibration with chat templates and truncation",
+    "test_quantized_model": "test a quantized language model by generating text samples and verifying output quality",
+    "save_quantized_model": "save a quantized transformer model and tokenizer to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/quantization_kv_cache/gemma2_fp8_kv_example.py": {
+    "load_quantization_model": "load a HuggingFace causal language model and tokenizer for FP8 quantization",
+    "quantize_model_fp8_kv_cache": "quantize a model weights, activations, and KV cache to FP8 using llmcompressor oneshot",
+    "preprocess_calibration_dataset": "preprocess and tokenize a HuggingFace dataset for model quantization calibration",
+    "generate_text_quantized_model": "generate text from a quantized model using dispatch_model and model.generate",
+    "save_quantized_model_compressed": "save a quantized model and tokenizer to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/quantization_kv_cache/llama3_fp8_head_kv_example.py": {
+    "run_quantization_oneshot": "run FP8 dynamic quantization on a transformer model using llmcompressor oneshot with a calibration dataset",
+    "create_quantization_modifier": "create a QuantizationModifier recipe targeting Linear layers with FP8_DYNAMIC scheme and FP8 KV cache per attention head",
+    "preprocess_chat_dataset": "preprocess a HuggingFace chat dataset by applying a tokenizer chat template to convert messages to text",
+    "tokenize_dataset_samples": "tokenize dataset samples with truncation and max sequence length for model calibration",
+    "generate_with_quantized_model": "generate text from a quantized transformer model using dispatch_model and model.generate"
+  },
+  "vllm-project_llm-compressor/examples/quantization_kv_cache/llama3_fp8_kv_example.py": {
+    "run_oneshot_quantization": "run oneshot quantization on a transformer model with fp8 weights, activations, and kv cache",
+    "run_dispatch_model": "run dispatch_model to offload a quantized llm for inference on available devices",
+    "create_load_model": "create and load a causal language model from pretrained huggingface checkpoint with auto dtype",
+    "create_load_tokenizer": "create and load a tokenizer from a pretrained huggingface model checkpoint",
+    "run_save_pretrained": "run save_pretrained to save a quantized model and tokenizer to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/quantization_kv_cache/phi3.5_fp8_kv_example.py": {
+    "run_oneshot_quantization": "run oneshot quantization on a causal LM model with fp8 weights, activations, and kv cache",
+    "load_model_from_pretrained": "load a causal language model from pretrained using AutoModelForCausalLM with auto dtype",
+    "quantize_model_fp8_kv_cache": "quantize model weights, activations, and kv cache to fp8 with per-tensor strategy",
+    "generate_text_with_quantized_model": "generate text from a quantized model using model.generate with max_new_tokens",
+    "save_quantized_model_compressed": "save a quantized model and tokenizer to disk with save_compressed enabled"
+  },
+  "vllm-project_llm-compressor/examples/quantization_non_uniform/quantization_int4_int8.py": {
+    "run_oneshot_quantization": "run oneshot quantization on a transformer model with a GPTQModifier recipe for mixed int4 and int8",
+    "build_load_model": "build a transformer causal language model from a pretrained HuggingFace checkpoint with auto dtype",
+    "test_load_dataset": "test loading a HuggingFace dataset split and shuffling calibration samples for quantization",
+    "create_preprocess_dataset": "create a dataset preprocessing pipeline that applies chat templates and tokenizes text samples",
+    "run_dispatch_model": "run dispatch_model to offload a quantized model for inference on available devices"
+  },
+  "vllm-project_llm-compressor/examples/quantization_non_uniform/quantization_multiple_modifiers.py": {
+    "run_quantization_gptq_awq": "run quantization on a causal LM model using GPTQ and AWQ modifiers with a calibration dataset",
+    "create_gptq_modifier_w8a8": "create a GPTQModifier targeting self attention projection layers with W8A8 quantization scheme",
+    "create_awq_modifier_w4a16": "create an AWQModifier targeting MLP projection layers with W4A16 quantization scheme and AWQMappings",
+    "run_oneshot_quantization": "run oneshot quantization with a recipe of multiple modifiers on a model using a calibration dataset",
+    "configure_quantization_recipe": "configure a quantization recipe combining GPTQ and AWQ modifiers for different transformer layers"
+  },
+  "vllm-project_llm-compressor/examples/quantization_non_uniform/quantization_nvfp4_fp8.py": {
+    "run_quantization_nvfp4_fp8": "run mixed-precision quantization with NVFP4 and FP8 dynamic schemes on a causal language model",
+    "create_quantization_recipe": "create a QuantizationModifier recipe with multiple config groups for NVFP4 and FP8_DYNAMIC quantization schemes",
+    "build_calibration_dataset": "build a calibration dataset from HuggingFace H4 ultrachat data with tokenized inputs for quantization",
+    "test_quantized_model_generation": "test a quantized model by generating text output from a prompt after dispatching the model",
+    "save_quantized_model_compressed": "save a quantized model and tokenizer to disk in compressed-tensors format with mixed-precision config"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a16/llama3_ddp_example.py": {
+    "run_quantization_ddp": "run W4A16 GPTQ quantization on Llama 3 8B model using distributed data parallel",
+    "create_gptq_modifier": "create a GPTQModifier with W4A16 quantization scheme targeting Linear layers",
+    "run_oneshot_quantization": "run oneshot quantization on a transformer model with a calibration dataset",
+    "build_ddp_model_load": "build a distributed model loader using init_dist and load_offloaded_model context manager",
+    "test_quantized_model_generation": "test the quantized model by generating text samples after quantization"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a16/llama3_example.py": {
+    "run_oneshot_quantization": "run oneshot quantization on a transformer model using GPTQ with W4A16 scheme",
+    "create_gptq_modifier": "create a GPTQModifier recipe targeting Linear layers with W4A16 quantization",
+    "preprocess_chat_dataset": "preprocess a chat dataset by applying a tokenizer chat template to message pairs",
+    "tokenize_dataset_samples": "tokenize dataset samples with truncation and max sequence length constraints",
+    "dispatch_and_generate": "dispatch an offloaded model and generate text completions from a prompt"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a16_fp4/mxfp4/llama3_example.py": {
+    "run_oneshot_quantization": "run oneshot quantization on a transformer model using MXFP4 GPTQ calibration",
+    "create_gptq_modifier": "create a GPTQModifier recipe targeting Linear layers with MXFP4A16 quantization scheme",
+    "build_preprocess_dataset": "build a dataset preprocessing pipeline applying chat templates to message examples",
+    "test_quantized_model": "test a quantized model by generating text from a prompt and decoding the output",
+    "save_compressed_model": "save a quantized model and tokenizer to disk with compression enabled"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a4_fp4/gemma4_example.py": {
+    "quantize_model_w4a4_fp4": "quantize a Gemma4 model to W4A4 FP4 using llmcompressor oneshot with NVFP4 scheme",
+    "configure_quantization_recipe": "configure a QuantizationModifier recipe targeting Linear layers with NVFP4 scheme and ignore lists",
+    "load_and_preprocess_calibration_data": "load calibration dataset and preprocess chat messages for model quantization",
+    "apply_oneshot_quantization": "apply oneshot quantization to a pretrained transformer model with calibration data and recipe",
+    "save_quantized_model": "save a quantized model and processor to disk in compressed-tensors format"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a4_fp4/llama3_example.py": {
+    "run_oneshot_quantization": "run oneshot to apply FP4 quantization to a causal language model using a calibration dataset",
+    "create_quantization_modifier": "create a QuantizationModifier targeting Linear layers with NVFP4 scheme and ignore lm_head",
+    "run_dispatch_model": "run dispatch_model to offload a quantized model for inference on available devices",
+    "create_model_from_pretrained": "create a causal language model from pretrained weights using AutoModelForCausalLM",
+    "save_quantized_model_pretrained": "save a quantized model and tokenizer to disk in compressed-tensors format"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a4_fp4/llama3_gptq_example.py": {
+    "run_oneshot_quantization": "run GPTQ quantization on a transformer model using llmcompressor oneshot with a calibration dataset",
+    "create_GPTQModifier_recipe": "create a GPTQModifier recipe with NVFP4 quantization args for weights and input activations on Linear layers",
+    "build_quantization_args": "build QuantizationArgs for 4-bit float weights with group size 16 and FP8 E4M3 scale dtype",
+    "test_dispatch_model_offload": "test model offloading with dispatch_model after quantization for inference",
+    "summarize_save_pretrained_compressed": "summarize how to save a quantized model and tokenizer to disk with save_compressed enabled"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a4_fp4/llama4_example.py": {
+    "create_quantization_recipe": "create an NVFP4 quantization recipe targeting Linear layers while ignoring lm_head, attention, and vision modules",
+    "run_oneshot_quantization": "run oneshot quantization on a Llama4 model with calibration dataset and sequential MLP targets",
+    "preprocess_chat_dataset": "preprocess a chat dataset using Llama4Processor apply_chat_template with tokenization and truncation",
+    "build_data_collator": "build a data collator that converts batched examples to tensors with bfloat16 pixel values",
+    "save_quantized_model": "save a quantized Llama4 model and processor to disk after oneshot calibration"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a4_fp4/qwen3_5_example.py": {
+    "create_quantization_recipe": "create a QuantizationModifier recipe targeting Linear layers with NVFP4 scheme and ignore patterns",
+    "run_oneshot_quantization": "run oneshot quantization on a Qwen3 MoE model with calibration dataset and custom data collator",
+    "preprocess_chat_dataset": "preprocess a chat dataset using apply_chat_template with tokenization and truncation",
+    "save_quantized_model": "save a quantized model and processor to disk in compressed-tensors format",
+    "save_mtp_tensors": "save MTP tensors from the original checkpoint into the quantized output directory"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a4_fp4/qwen3_6_example.py": {
+    "create_quantization_recipe": "create a QuantizationModifier recipe targeting Linear layers with NVFP4 scheme and ignore patterns",
+    "apply_oneshot_quantization": "apply oneshot quantization to a Qwen3 MoE model using calibration dataset and custom data collator",
+    "load_quantized_model": "load a Qwen3_5MoeForConditionalGeneration model with auto dtype from HuggingFace",
+    "save_quantized_model": "save a quantized model and processor to disk in compressed-tensors format",
+    "save_mtp_tensors": "save MTP tensors from the original model checkpoint into the quantized output directory"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a4_fp4/qwen3_next_example.py": {
+    "build_quantize_llm_w4a4_fp4": "build a quantization pipeline for Qwen3-Next using llmcompressor with NVFP4 weight and activation quantization",
+    "create_quantization_recipe": "create a QuantizationModifier recipe targeting Linear layers with NVFP4 scheme and ignore lm_head and gate layers",
+    "run_oneshot_quantization": "run oneshot quantization on a pretrained LLM using calibration dataset and custom quantization recipe",
+    "preprocess_chat_dataset": "preprocess a HuggingFace chat dataset by applying tokenizer templates and tokenizing with truncation",
+    "save_quantized_model": "save a quantized transformer model and tokenizer to disk in compressed-tensors format"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a4_fp4/qwen3_vl_moe_w4a4_fp4.py": {
+    "create_quantization_recipe": "create a QuantizationModifier recipe to quantize Linear layers with NVFP4 scheme while ignoring lm_head and visual layers",
+    "run_oneshot_quantization": "run oneshot quantization on a Qwen3-VL MoE model using calibration dataset and NVFP4 quantization scheme",
+    "preprocess_conversational_data": "preprocess conversational messages into tokenized input tensors with chat template for model calibration",
+    "build_data_collator": "build a data collator that converts batched calibration examples into tensors with bfloat16 pixel values",
+    "save_quantized_model": "save a quantized model and processor to disk in compressed-tensors format after oneshot calibration"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a4_fp4/qwen_30b_a3b.py": {
+    "quantize_model_w4a4_fp4": "quantize a Qwen3-30B-A3B model with NVFP4 weight and activation quantization using llmcompressor",
+    "configure_quantization_recipe": "configure a QuantizationModifier recipe targeting Linear layers with NVFP4 scheme and ignore lm_head",
+    "calibrate_moe_model": "calibrate a Mixture-of-Experts model by enabling moe_calibrate_all_experts in oneshot",
+    "generate_text_quantized_model": "generate text from a quantized model using dispatch_model and model.generate after quantization",
+    "save_quantized_model_compressed": "save a quantized model and tokenizer to disk in compressed-tensors format with save_compressed"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a4_fp4/trinity_large_nvfp4.py": {
+    "quantize_model_nvfp4": "quantize a large language model to NVFP4 format using llmcompressor oneshot with a QuantizationModifier recipe",
+    "load_quantized_model": "load a causal language model from HuggingFace with auto dtype and trust_remote_code enabled",
+    "calibrate_quantization": "calibrate model quantization using a tokenized dataset with specified number of samples and sequence length",
+    "generate_text_quantized": "generate text from a quantized model after dispatching it with offload support",
+    "save_quantized_model": "save a quantized model and tokenizer to disk in compressed-tensors format"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w4a8_fp8/llama3_example.py": {
+    "run_oneshot_quantization": "run the oneshot quantization API to apply W4AFP8 quantization to a Hugging Face causal language model",
+    "create_gptq_modifier": "create a GPTQModifier recipe targeting Linear layers with W4AFP8 quantization scheme and ignoring lm_head",
+    "preprocess_dataset": "preprocess a HuggingFace dataset by applying chat templates from a tokenizer to conversation messages",
+    "tokenize_dataset": "tokenize dataset samples with a tokenizer using truncation, max length, and no padding",
+    "save_quantized_model": "save a quantized model and tokenizer to disk in pack-quantized format for vLLM compatibility"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w8a8_int8/benchmark_smoothquant_ddp.py": {
+    "benchmark_smoothquant_ddp_main": "benchmark single-gpu vs multi-gpu DDP SmoothQuant calibration time with a given number of GPUs",
+    "run_smoothquant_gptq_quantization": "run SmoothQuant and GPTQ W8A8 quantization calibration on a HuggingFace causal language model",
+    "create_smoothquant_modifier": "create a SmoothQuantModifier with a configurable smoothing strength for activation-weight quantization",
+    "create_gptq_modifier": "create a GPTQModifier targeting Linear layers with W8A8 scheme and optional layer exclusions",
+    "run_oneshot_quantization": "run oneshot quantization on a model using a recipe of modifiers and a calibration dataset"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w8a8_int8/gemma2_example.py": {
+    "run_quantization_oneshot": "run W8A8 int8 quantization on a causal language model using llmcompressor oneshot",
+    "create_gptq_modifier": "create a GPTQModifier recipe targeting Linear layers with W8A8 quantization scheme",
+    "build_calibration_dataset": "build a tokenized calibration dataset from HuggingFace messages using a tokenizer",
+    "test_quantized_model": "test a quantized model by generating text samples with dispatch_model and model.generate",
+    "save_quantized_model": "save a quantized model and tokenizer to disk in compressed-tensors format"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w8a8_int8/llama3_example.py": {
+    "run_oneshot_quantization": "run oneshot to apply SmoothQuant and GPTQ W8A8 int8 quantization to a transformer model",
+    "create_smoothquant_modifier": "create a SmoothQuantModifier with a given smoothing strength to ease activation quantization",
+    "create_gptq_modifier": "create a GPTQModifier targeting Linear layers with W8A8 int8 scheme and ignoring lm_head",
+    "run_dispatch_model": "run dispatch_model to offload a quantized transformer model for inference",
+    "run_model_generate": "run model.generate with tokenized input to produce text output from a quantized model"
+  },
+  "vllm-project_llm-compressor/examples/quantization_w8a8_int8/smoothquant_ddp_example.py": {
+    "run_smoothquant_ddp_quantization": "run distributed W8A8 SmoothQuant + GPTQ quantization on a causal language model using torchrun",
+    "create_smoothquant_recipe": "create a quantization recipe with SmoothQuantModifier and GPTQModifier for W8A8 weight-activation quantization",
+    "build_ddp_calibration_dataset": "build a distributed calibration dataset with disjoint rank partitions for multi-GPU quantization",
+    "test_oneshot_quantization": "test the oneshot quantization pipeline with a model, dataset, and modifier recipe",
+    "summarize_quantization_results": "summarize quantization results including elapsed time and peak GPU memory usage per rank"
+  },
+  "vllm-project_llm-compressor/examples/quantizing_moe/deepseek_r1_example.py": {
+    "quantize_moe_model_gptq": "quantize a DeepSeek MoE model using GPTQ with W4A16 scheme and ignore MoE gate layers",
+    "load_llm_model_pretrained": "load a large language model from HuggingFace with AutoModelForCausalLM and apply BF16 dtype",
+    "calibrate_dataset_gptq": "calibrate a quantization model using ultrachat_200k dataset with GPTQ oneshot pipeline",
+    "preprocess_chat_dataset": "preprocess a chat dataset by applying tokenizer chat templates and tokenizing samples",
+    "save_quantized_model_compressed": "save a quantized language model and tokenizer to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/quantizing_moe/glm4_7_example.py": {
+    "run_oneshot_quantization": "run oneshot quantization on a GLM-4.7 MoE model using AWQModifier with W4A16 scheme",
+    "create_awq_modifier_recipe": "create an AWQModifier recipe targeting Linear layers with W4A16 quantization scheme and ignore patterns",
+    "preprocess_chat_dataset": "preprocess a chat dataset by applying a tokenizer chat template to convert messages to text",
+    "tokenize_calibration_dataset": "tokenize a calibration dataset with max sequence length truncation and no padding",
+    "save_quantized_model": "save a quantized model and tokenizer to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/quantizing_moe/glm5_example.py": {
+    "run_oneshot_quantization": "run oneshot quantization on a causal LM model with a calibration dataset and AWQ recipe",
+    "create_awq_modifier": "create an AWQModifier recipe targeting Linear layers with W4A16 scheme and ignore patterns",
+    "build_glm_moe_calibration": "build a CalibrationGlmMoeDsaMoE module to unpack fused MoE expert weights for quantization",
+    "test_preprocess_chat_dataset": "test preprocessing a chat dataset with tokenizer apply_chat_template for calibration",
+    "summarize_tokenize_calibration": "summarize tokenizing calibration samples with truncation and max sequence length"
+  },
+  "vllm-project_llm-compressor/examples/quantizing_moe/mixtral_example.py": {
+    "run_quantization_mixtral": "run FP8 quantization on a Mixtral MoE model using llmcompressor oneshot with calibration data",
+    "create_quantization_recipe": "create a QuantizationModifier recipe targeting Linear layers while ignoring MoE gate and lm_head",
+    "preprocess_chat_dataset": "preprocess a HuggingFace chat dataset by applying a tokenizer chat template",
+    "tokenize_calibration_dataset": "tokenize a calibration dataset with max sequence length truncation and no padding",
+    "save_quantized_model": "save a quantized model and tokenizer to disk in compressed format"
+  },
+  "vllm-project_llm-compressor/examples/quantizing_moe/qwen_example.py": {
+    "create_gptq_quantization_recipe": "create a GPTQModifier recipe to quantize Linear layers with FP8 scheme while ignoring MoE gate layers",
+    "run_oneshot_quantization": "run oneshot quantization on a Qwen MoE model using a calibration dataset and GPTQ recipe",
+    "test_dispatch_model_offload": "test dispatch_model to offload a quantized MoE model for inference",
+    "build_load_causal_lm_model": "build a causal language model from pretrained Qwen MoE weights with bfloat16 dtype",
+    "summarize_quantize_moe_pipeline": "summarize the full pipeline to quantize a Mixture of Experts model with GPTQ and save compressed output"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/logger.py": {
+    "configure_logger": "configure the llmcompressor logger with custom console and file logging settings via LoggerConfig",
+    "configure_distributed_logger": "configure the llmcompressor logger for distributed training with rank-aware log formatting",
+    "create_logger_config": "create a LoggerConfig dataclass instance to specify disabled, console_log_level, log_file, and log_file_level options",
+    "test_support_log_once": "test the support_log_once filter to ensure messages with log_once=True are logged only once",
+    "summarize_logger_module": "summarize the llmcompressor logger module that provides console and file logging with loguru"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/sentinel.py": {
+    "create_sentinel_value": "create a unique sentinel value with a name for identity comparison across the compression framework",
+    "create_sentinel_registry": "create sentinel values that are deduplicated via a module-name registry to ensure singletons",
+    "build_sentinel_pickle": "build a serializable sentinel value that supports pickle round-trip via __reduce__",
+    "test_sentinel_repr": "test the sentinel repr returns the sentinel name as a string representation",
+    "create_sentinel_pydantic": "create a sentinel value compatible with Pydantic core schema validation"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/args/dataset_arguments.py": {
+    "create_dataset_arguments": "create a DatasetArguments instance to configure HuggingFace dataset loading and calibration parameters",
+    "build_custom_dataset_loader": "build a CustomDatasetArguments instance to load and preprocess custom JSON or CSV datasets for model calibration",
+    "configure_dvc_dataset": "configure a DVCDatasetArguments instance to specify a DVC-managed data repository for calibration",
+    "test_is_dataset_provided": "test the is_dataset_provided method to check whether a dataset or dataset path is configured",
+    "summarize_calibration_pipeline_args": "summarize the sequential calibration pipeline arguments including targets, offload device, and prefetch settings"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/args/utils.py": {
+    "parse_args_model_dataset_recipe": "parse command-line arguments into ModelArguments, DatasetArguments, and RecipeArguments dataclasses",
+    "parse_args_with_output_dir": "parse configuration kwargs into structured argument objects with an output directory",
+    "parse_args_convert_recipe_args": "convert recipe arguments from list of strings to a dictionary of key-value pairs",
+    "parse_args_validate_deprecation": "validate deprecated arguments and emit warnings when remove_columns is provided",
+    "parse_args_resolve_processor": "resolve and assign a tokenizer to processor from model arguments silently"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/core/lifecycle.py": {
+    "create_CompressionLifecycle": "create a CompressionLifecycle instance to manage compression events during model training",
+    "run_CompressionLifecycle_initialize": "run the initialize method on CompressionLifecycle with a recipe to set up compression modifiers",
+    "run_CompressionLifecycle_event": "run the event method on CompressionLifecycle to handle batch start, loss calculated, or optim events",
+    "run_CompressionLifecycle_finalize": "run the finalize method on CompressionLifecycle to clean up and finalize all compression modifiers",
+    "run_CompressionLifecycle_reset": "run the reset method on CompressionLifecycle to finalize active modifiers and reset all lifecycle attributes"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/core/session.py": {
+    "create_CompressionSession": "create a CompressionSession to manage LLM compression lifecycle and state",
+    "initialize_CompressionSession": "initialize a CompressionSession with a recipe, model, optimizer, and training data",
+    "finalize_CompressionSession": "finalize a CompressionSession to run finalize methods for all modifiers",
+    "event_CompressionSession": "invoke an event on a CompressionSession with event type, batch data, and loss",
+    "reset_CompressionSession": "reset a CompressionSession to its initial state or to start a new stage"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/core/session_functions.py": {
+    "create_session": "create a new compression session using a context manager that yields the session and restores the previous session on exit",
+    "active_session": "get the currently active compression session for sparsification from thread-local storage",
+    "reset_session": "reset the currently active compression session to its initial state",
+    "LifecycleCallbacks_batch_start": "invoke a batch start lifecycle event on the active compression session with optional batch data",
+    "LifecycleCallbacks_loss_calculated": "invoke a loss calculated lifecycle event on the active compression session and log the loss value"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/core/state.py": {
+    "create_state": "create a State instance to hold model, optimizer, and compression data for LLM compression",
+    "update_state": "update the State with a model, optimizer, training data, and hardware configuration",
+    "check_compression_ready": "check if the State has both a model and optimizer set for compression",
+    "build_data_instance": "build a Data instance with training, validation, test, and calibration datasets",
+    "create_modified_state": "create a ModifiedState instance with a modified model, optimizer, loss, and modifier data"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/core/events/event.py": {
+    "create_event_instance": "create an Event instance with global_step, global_batch, and steps_per_epoch for tracking compression training progress",
+    "test_event_should_update": "test the Event.should_update method to determine if a modifier callback should trigger at the current global step",
+    "build_event_epoch_properties": "build epoch calculations from an Event instance using epoch, epoch_full, epoch_step, and epoch_batch properties",
+    "review_eventtype_enum": "review the EventType enum to identify available event types for training, batch, calibration, and optimization lifecycle hooks",
+    "refactor_event_new_instance": "refactor Event.new_instance to create a deep-copied clone with modified fields for a different training context"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/datasets/utils.py": {
+    "create_get_processed_dataset": "create a processed dataset dictionary with train and calibration splits from dataset arguments and a processor",
+    "build_calibration_dataloader": "build a torch DataLoader for one-shot calibration from dataset arguments and a processor",
+    "format_calibration_data": "format a tokenized dataset into a calibrated DataLoader with appropriate collation and batching",
+    "create_LLMcompressor_LengthAwareSampler": "create a LengthAwareSampler that orders dataset samples by descending sequence length for efficient batching",
+    "get_rank_partition": "get a distributed partitioned split string for splitting calibration data across multiple devices"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/entrypoints/oneshot.py": {
+    "run_oneshot_calibrate_model": "run oneshot calibration on a pretrained model with a compression recipe and calibration dataset",
+    "create_oneshot_class_instance": "create an Oneshot class instance to apply quantization or sparsification to a pretrained model",
+    "apply_recipe_modifiers_calibrate": "apply recipe modifiers to a model using a calibration dataloader via the Oneshot class",
+    "test_oneshot_with_moe_model": "test oneshot calibration on an MoE model with all experts calibrated",
+    "summarize_oneshot_pipeline_options": "summarize the available calibration pipeline options for oneshot model compression"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/entrypoints/utils.py": {
+    "run_pre_process": "run pre_process to prepare the model and processor for calibration with model and dataset arguments",
+    "run_post_process": "run post_process to save the compressed model and processor to the output directory",
+    "build_initialize_model_from_path": "build initialize_model_from_path to load a pretrained causal LM model from a given path with config and dtype",
+    "build_initialize_processor_from_path": "build initialize_processor_from_path to load a transformer processor from a model path with fast fallback",
+    "review_pre_process": "review pre_process to understand model initialization, processor loading, and save_pretrained patching for compression workflows"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/entrypoints/model_free/helpers.py": {
+    "run_gpu_if_available": "run gpu_if_available to get a torch device, falling back to GPU if available or CPU otherwise",
+    "build_match_names_set_eager": "build match_names_set_eager to group model tensor names into complete sets matching target patterns",
+    "test_invert_mapping": "test invert_mapping to reverse a key-value mapping, grouping keys by their shared values",
+    "build_build_weights_map": "build build_weights_map to resolve tensor names to absolute shard file paths from an index.json weight map",
+    "review_match_names_set_eager": "review match_names_set_eager to validate it raises on duplicate target matches before a full set is complete"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/entrypoints/model_free/lifecycle.py": {
+    "create_initialize_quantized_linear": "create a quantized linear module from a weight tensor and quantization scheme on a specified device",
+    "validate_weight_for_quantization": "validate that a weight tensor is 2D and compatible with the given quantization scheme",
+    "run_calibrate_global_scale": "calibrate global scale for a quantized linear module using observer-based statistics",
+    "run_calibrate_scale_zp": "calibrate scale and zero-point for a quantized linear module using observer-based statistics",
+    "summarize_lifecycle": "summarize the lifecycle functions for initializing and calibrating quantized linear modules in llmcompressor"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/entrypoints/model_free/microscale.py": {
+    "build_microscale_inverse_weight_maps": "build microscale inverse weight maps from a weight map, model files, and converters including partner shards",
+    "test_is_microscale_scheme": "test whether a quantization scheme uses TENSOR_GROUP strategy",
+    "get_fused_names": "get fused tensor name sets and unmatched names from a list of tensor names using default fused mappings",
+    "summarize_DEFAULT_FUSED_MAPPINGS": "summarize the default fused weight pattern mappings for attention q/k/v, mlp gate/up, and moe w1/w3",
+    "review_MicroscaleConverter": "review the MicroscaleConverter inner class that resolves fused tensor dependencies via regex pattern matching"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/entrypoints/model_free/process.py": {
+    "validate_file_quantizable_tensors": "validate that each quantizable tensor in a safetensors file can be quantized with a given scheme",
+    "process_file_quantize_compress": "quantize and compress tensors in a safetensors file using a standard quantization scheme",
+    "process_file_microscale_quantize": "quantize and compress tensors using a microscale scheme like NVFP4 or MXFP4 with fused module support",
+    "split_fused_moe_experts": "split fused MoE expert tensors from 3D tensors into individual 2D expert tensors",
+    "process_file_microscale_calibrate": "calibrate global scale across fused modules and compress with shared microscale quantization parameters"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/entrypoints/model_free/reindex_fused_weights.py": {
+    "run_reindex_fused_weights": "run reindex_fused_weights to consolidate fused gate_up and qkv modules into the same safetensors files",
+    "summarize_reindex_fused_weights": "summarize the reindex_fused_weights function that reindexes safetensors for microscale quantization schemes",
+    "review_parse_args": "review the parse_args function that builds an argparse parser for model_stub, save_directory, and num_workers",
+    "review_main": "review the main entrypoint function that parses CLI arguments and calls reindex_fused_weights",
+    "review_with_progress": "review the _with_progress helper that wraps a function call and updates a tqdm progress bar"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/entrypoints/model_free/save_utils.py": {
+    "update_config": "update the quantization config in a model's config.json file with a new quantization scheme and ignore list",
+    "create_or_update_quant_config": "create or update a QuantizationConfig from a converter, existing config, or from scratch based on a scheme",
+    "test_update_config": "test the update_config function with a save directory, scheme name, scheme, and ignore list",
+    "refactor_create_or_update_quant_config": "refactor create_or_update_quant_config to support additional compression formats beyond mixed_precision",
+    "review_update_config": "review the update_config function and its config.json write logic for correctness and edge cases"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/entrypoints/model_free/validate.py": {
+    "validate_scheme": "validate a quantization scheme for weights-only PTQ, ensuring dynamic activations and valid weight observer",
+    "validate_safetensors_index": "validate a safetensors index file for cross-shard fused weight detection in microscale quantization schemes",
+    "build_quantization_scheme": "build a quantization scheme from a preset name string and validate it for model-free PTQ usage",
+    "test_microscale_fused_weights": "test for cross-shard fused weight detection by analyzing safetensors index files",
+    "review_quantization_observer": "review a quantization scheme's weight observer and auto-override minmax or mse to static variants"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/afmoe.py": {
+    "create_CalibrationAfmoeMoE": "create a CalibrationAfmoeMoE calibration wrapper around an original AfmoeMoE module with config and calibrate_all_experts flag",
+    "run_CalibrationAfmoeMoE_forward": "run the forward pass of CalibrationAfmoeMoE with hidden_states tensor to get quantization-ready expert outputs",
+    "test_CalibrationAfmoeMoE_restore": "test the restore method of CalibrationAfmoeMoE to revert the calibration wrapper back to the original module",
+    "review_CalibrationAfmoeMoE": "review the CalibrationAfmoeMoE class that wraps AfmoeMoE for calibration with all-experts routing",
+    "summarize_CalibrationAfmoeMoE_register": "summarize how CalibrationAfmoeMoE is registered with MoECalibrationModule under the 'AfmoeMoE' key"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/deepseek_v3.py": {
+    "create_CalibrationDeepseekV3MoE": "create a CalibrationDeepseekV3MoE instance wrapping an original DeepseekV3MoE module for calibration",
+    "run_CalibrationDeepseekV3MoE_forward": "run the forward pass of CalibrationDeepseekV3MoE with hidden states tensor input",
+    "test_calibrate_all_experts_mode": "test CalibrationDeepseekV3MoE with calibrate_all_experts enabled to send all tokens to all experts",
+    "test_normal_moe_mode": "test CalibrationDeepseekV3MoE with calibrate_all_experts disabled for normal MoE token routing",
+    "register_CalibrationDeepseekV3MoE": "register CalibrationDeepseekV3MoE as a DeepseekV3MoE calibration module via MoECalibrationModule.register"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/fuse.py": {
+    "center_embeddings": "center the embedding weights by shifting each embedding to have a mean of zero",
+    "fuse_norm_linears": "fuse the scaling operation of a norm layer into subsequent linear layers",
+    "test_center_embeddings": "test center_embeddings shifts embedding weights to zero mean while preserving dtype",
+    "test_fuse_norm_linears": "test fuse_norm_linears multiplies linear weights by norm weights and resets norm to ones",
+    "review_fuse_norm_linears": "review fuse_norm_linears for transform invariance between norm and linear layers"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/gemma4.py": {
+    "create_SequentialGemma4TextExperts": "create a SequentialGemma4TextExperts calibration module that unpacks Gemma4MoE expert weights for quantization",
+    "build_Gemma4TextExpertsList": "build a Gemma4TextExpertsList that unpacks 3D expert tensors into individual nn.Linear modules for targeted quantization",
+    "run_SequentialsGemma4TextExperts_forward": "run the forward pass of SequentialGemma4TextExperts with hidden states, top-k indices, and top-k weights",
+    "test_MoECalibrationModule_registration": "test the MoECalibrationModule registration of SequentialGemma4TextExperts as Gemma4TextExperts",
+    "review_Gemma4TextExpertsList_unpacking": "review how Gemma4TextExpertsList unpacks packed expert weights into separate gate, up, and down projection layers"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/glm4_moe.py": {
+    "create_CalibrationGlm4MoeMoE": "create a CalibrationGlm4MoeMoE instance with an original module, config, and calibrate_all_experts flag",
+    "run_CalibrationGlm4MoeMoE_forward": "run the forward pass of CalibrationGlm4MoeMoE with hidden states tensor input",
+    "restore_CalibrationGlm4MoeMoE": "restore the original Glm4MoeMoE module after calibration context exits",
+    "register_CalibrationGlm4MoeMoE": "register CalibrationGlm4MoeMoE with MoECalibrationModule under the key Glm4MoeMoE",
+    "calibrate_Glm4MoeMoE_experts": "calibrate all experts in Glm4MoeMoE by sending all tokens to every expert for quantization stats"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/glm_moe_dsa.py": {
+    "create_CalibrationGlmMoeDsaMoE": "create a CalibrationGlmMoeDsaMoE instance for unpacking packed MoE expert weights during model calibration",
+    "calibrate_CalibrationGlmMoeDsaMoE_forward": "calibrate a GlmMoeDsaMoE model by running forward pass through unpacked sequential experts",
+    "route_CalibrationGlmMoeDsaMoE_route_tokens": "route tokens to top-k experts using group-score masking and normalized probability weighting",
+    "build_SequentialGlmMoeDsaExperts": "build a SequentialGlmMoeDsaExperts module that unpacks 3D packed expert weights into individual 2D MLP experts",
+    "register_CalibrationGlmMoeDsaMoE": "register CalibrationGlmMoeDsaMoE as a GlmMoeDsaMoE calibration module via MoECalibrationModule decorator"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/gpt_oss.py": {
+    "create_class_LinearExpert": "create a LinearExpert module with separate gate, up, and down projections for GPT-OSS MoE inference",
+    "build_class_LinearExperts": "build a LinearExperts container that runs multiple LinearExpert modules driven by router indices and routing weights",
+    "test_function_find_experts": "test the find_experts function to locate GPT-OSS MoE expert modules in a model",
+    "refactor_function_convert_model_for_quantization_gptoss": "refactor a GPT-OSS model by converting fused MoE expert blocks to separate LinearExperts for quantization",
+    "summarize_function_copy_from_fused_weights": "summarize how copy_from_fused_weights de-interleaves fused gate_up weights into separate gate and up projections"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/granite4.py": {
+    "create_GraniteMoeHybridParallelExpertsLinear": "create a GraniteMoeHybridParallelExpertsLinear module with num_experts, input_size, and output_size parameters for llm-compressor compatibility",
+    "build_from_3d_expert": "build a 2D Linear module from a 3D GraniteMoeHybridParallelExperts original module by reshaping its weights",
+    "convert_to_3d_expert": "convert quantized 2D weight parameters back to 3D expert shape for checkpoint saving",
+    "run_forward_expert_split": "run forward pass on expert inputs split by expert_size with per-expert linear computation",
+    "repr_GraniteMoeHybridParallelExpertsLinear": "repr the GraniteMoeHybridParallelExpertsLinear module showing 2D or 3D weight shape depending on is_2d state"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/llama4.py": {
+    "create_SequentialLlama4TextMoe": "create a SequentialLlama4TextMoe calibration module from an original Llama4TextMoe layer and config",
+    "build_SequentialLlama4TextExperts": "build a SequentialLlama4TextExperts module that unpacks packed expert weights into individual Llama4TextMLP modules",
+    "run_SequentialLlama4TextMoe_forward": "run the SequentialLlama4TextMoe forward pass with hidden states to compute expert outputs sequentially",
+    "test_SequentialLlama4TextMoe_calibration": "test the SequentialLlama4TextMoe calibration mode that sends all tokens to all experts to avoid NaNs",
+    "review_MoECalibrationModule_register": "review the MoECalibrationModule.register decorator that registers SequentialLlama4TextMoe for Llama4TextMoe"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/moe_context.py": {
+    "run_moe_calibration_context": "run MoE model calibration using moe_calibration_context to ensure all experts receive data during quantization",
+    "create_MoECalibrationModule_subclass": "create a MoECalibrationModule subclass to replace original MoE modules during calibration with custom expert handling",
+    "test_moe_calibration_context": "test the moe_calibration_context context manager with a PreTrainedModel and dataloader for all-expert calibration",
+    "refactor_MoECalibrationModule_restore": "refactor the MoECalibrationModule restore method to support non-permanent module restoration after calibration",
+    "review_moe_calibration_context": "review the moe_calibration_context function that scans and replaces MoE modules with calibration equivalents"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/offset_norm.py": {
+    "create_norm_calibration_context": "create a context manager that replaces offset-norm modules with standard-norm equivalents during calibration",
+    "test_CalibrationOffsetNorm": "test the CalibrationOffsetNorm class that converts offset-norm weights using 1 + weight transformation",
+    "refactor_CalibrationOffsetNorm_restore": "refactor the CalibrationOffsetNorm restore method to convert weights back from standard to offset convention",
+    "summarize_norm_calibration_context": "summarize the norm_calibration_context context manager that scans and replaces offset-norm modules in a model",
+    "build_GemmaRMSNorm_calibration": "build a calibration module for GemmaRMSNorm that handles offset normalization pattern for Gemma and Qwen3 architectures"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/qwen3_5_moe.py": {
+    "create_CalibrationQwen3_5MoeSparseMoeBlock": "create a CalibrationQwen3_5MoeSparseMoeBlock to unfuse 3D expert parameters into individual nn.Linear modules for quantization",
+    "run_CalibrationQwen3_5MoeSparseMoeBlock_forward": "run the forward pass of CalibrationQwen3_5MoeSparseMoeBlock to route tokens through all experts during calibration",
+    "build_SequentialQwen3_5MoeExperts": "build a SequentialQwen3_5MoeExperts module that unfuses fused expert tensors into separate Qwen3_5MoeMLP modules",
+    "test_CalibrationQwen3_5MoeSparseMoeBlock_restore": "test the restore method of CalibrationQwen3_5MoeSparseMoeBlock that returns the calibration module for persistent quantization",
+    "review_MoECalibrationModule_registration": "review the MoECalibrationModule.register decorator that registers CalibrationQwen3_5MoeSparseMoeBlock as Qwen3_5MoeSparseMoeBlock"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/qwen3_moe.py": {
+    "create_CalibrationQwen3MoeSparseMoeBlock": "create a calibration version of Qwen3MoeSparseMoeBlock that sends all tokens to all experts during calibration",
+    "run_CalibrationQwen3MoeSparseMoeBlock_forward": "run the forward pass of CalibrationQwen3MoeSparseMoeBlock with hidden states tensor input",
+    "restore_CalibrationQwen3MoeSparseMoeBlock": "restore the original Qwen3MoeSparseMoeBlock module from a calibration wrapper",
+    "register_CalibrationQwen3MoeSparseMoeBlock": "register CalibrationQwen3MoeSparseMoeBlock with MoECalibrationModule for Qwen3MoeSparseMoeBlock",
+    "calibrate_Qwen3MoeSparseMoeBlock_experts": "calibrate all experts in Qwen3MoeSparseMoeBlock by routing all tokens through every expert layer"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/qwen3_next_moe.py": {
+    "create_CalibrationQwen3NextSparseMoeBlock": "create a CalibrationQwen3NextSparseMoeBlock wrapping a Qwen3NextSparseMoeBlock for expert calibration",
+    "run_CalibrationQwen3NextSparseMoeBlock_forward": "run the forward pass of CalibrationQwen3NextSparseMoeBlock with hidden states tensor input",
+    "test_CalibrationQwen3NextSparseMoeBlock_restore": "test the restore method of CalibrationQwen3NextSparseMoeBlock returns the original module",
+    "review_CalibrationQwen3NextSparseMoeBlock_forward": "review the forward method of CalibrationQwen3NextSparseMoeBlock routing tokens across all experts",
+    "summarize_CalibrationQwen3NextSparseMoeBlock": "summarize the CalibrationQwen3NextSparseMoeBlock class that calibrates Qwen3Next MoE by sending all tokens to all experts"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/qwen3_vl_moe.py": {
+    "create_CalibrateQwen3VLMoeTextSparseMoeBlock": "create a calibration module for Qwen3VLMoeTextSparseMoeBlock that sends all tokens to all experts",
+    "build_SequentialsQwen3VLMoeTextExperts": "build a sequential expert module list by copying weights from original Qwen3VLMoeTextMLP layers",
+    "run_CalibrateQwen3VLMoeTextSparseMoeBlock_forward": "run the calibration forward pass on hidden states and return next states with router logits",
+    "restore_CalibrateQwen3VLMoeTextSparseMoeBlock": "restore the original Qwen3VLMoeTextSparseMoeBlock module from the calibration wrapper",
+    "register_CalibrateQwen3VLMoeTextSparseMoeBlock": "register the calibration class with MoECalibrationModule under the Qwen3VLMoeTextSparseMoeBlock name"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/deepseekv32/config.py": {
+    "create_config_deepseekv32": "create a ModelConfig instance with default hyperparameters for the deepseek_v32 model",
+    "create_config_custom_params": "create a ModelConfig instance with custom moe and mla hyperparameters for deepseek_v32",
+    "create_config_fp8_dtype": "create a ModelConfig instance configured for fp8 dtype and custom sequence length",
+    "create_config_yarn_ext": "create a ModelConfig instance with YARN rotary embedding scaling factors for extended context",
+    "summarize_model_config": "summarize the ModelConfig class attributes including moe, mla, yarn, and index hyperparameters"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/deepseekv32/kernel.py": {
+    "run_bf16_index": "run the bf16_index function to compute ReLU-weighted index scores between query and key tensors using einsum"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/deepseekv32/model.py": {
+    "create_model_deepseek_v32_causal_lm": "create a DeepSeek V3.2 causal language model with MLA attention and MoE feed-forward layers",
+    "build_transformer_deepseek_v32": "build a Transformer model with parallel embedding, RMSNorm, rotary embeddings, and stacked MoE blocks",
+    "run_mla_attention_with_indexer": "run Multi-Head Latent Attention with indexer-based sparse token selection for efficient decoding",
+    "build_moe_expert_routing": "build a Mixture-of-Experts module with gating, expert selection, and shared experts for sparse computation",
+    "test_rotary_positional_embeddings": "test rotary positional embedding application with precomputed complex frequency tensors"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modeling/patch/qwen3_omni_patch.py": {
+    "summarize_fast_pos_embed_interpolate": "summarize the fast_pos_embed_interpolate function that performs bilinear interpolation of positional embeddings for Qwen3-Omni models",
+    "review_fast_pos_embed_interpolate": "review the fast_pos_embed_interpolate function for bilinear interpolation of positional embeddings with spatial merge support",
+    "refactor_fast_pos_embed_interpolate": "refactor the fast_pos_embed_interpolate function to use get_execution_device for proper device handling of offloaded pos_embed",
+    "test_fast_pos_embed_interpolate": "test the fast_pos_embed_interpolate function with grid_thw tensor input and verify bilinear interpolation output shape",
+    "run_fast_pos_embed_interpolate": "run the fast_pos_embed_interpolate function on a Qwen3-Omni model to compute interpolated positional embeddings for variable grid sizes"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/factory.py": {
+    "create_modifier": "create a modifier instance by type name with keyword arguments and registry flags",
+    "register_modifier": "register a custom modifier class with the factory by type name for later instantiation",
+    "refresh_modifiers": "refresh the factory by reloading all modifier classes from the main and experimental packages",
+    "load_from_package": "load modifier classes from a given package path and return a mapping of name to class",
+    "review_modifier_factory": "review the ModifierFactory class and its registry-based modifier instantiation pattern"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/interface.py": {
+    "create_ModifierInterface_subclass": "create a subclass of ModifierInterface implementing its abstract lifecycle methods",
+    "test_initialized_property": "test the initialized property of a ModifierInterface subclass returns True after initialize is called",
+    "test_finalized_property": "test the finalized property of a ModifierInterface subclass returns True after finalize is called",
+    "run_initialize_modifier": "run initialize on a ModifierInterface subclass with a State object and optional kwargs",
+    "run_finalize_modifier": "run finalize on a ModifierInterface subclass with a State object and optional kwargs",
+    "run_update_event_modifier": "run update_event on a ModifierInterface subclass with a State and Event object"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/modifier.py": {
+    "create_modifier_subclass": "create a subclass of Modifier that implements on_initialize and on_update for model compression",
+    "initialize_modifier": "initialize a Modifier instance with a State object and trigger its lifecycle setup",
+    "update_modifier_event": "update a Modifier with an Event to trigger on_start, on_update, or on_end based on start/end steps",
+    "finalize_modifier": "finalize an initialized Modifier to clean up resources and mark it as finalized",
+    "check_modifier_lifecycle": "check whether a Modifier is initialized, finalized, started, or ended via lifecycle properties"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/autoround/base.py": {
+    "build_autoround_quantization": "build an AutoRoundModifier to quantize a PyTorch model using 4-bit weight quantization with group size 128",
+    "apply_autoround_quantization": "apply AutoRound quantization tuning on a decoding layer using calibrated input captures and SignSGD optimizer",
+    "suspend_model_offloading": "suspend model offloading temporarily during AutoRound tuning and restore it after quantization completes",
+    "map_quantization_config": "map a LLMCompressor QuantizationScheme to an AutoRound QuantizationScheme with matching bits, symmetry, and group size",
+    "unwrap_quantized_layers": "unwrap WrapperWALayer modules back to their original layers after AutoRound quantization tuning finishes"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/gptq/base.py": {
+    "build_gptq_quantize_model": "build a GPTQModifier to quantize model weights using hessian-based calibration and group-wise quantization",
+    "create_gptq_modifier_config": "create a GPTQModifier with configurable block_size, dampening_frac, actorder, and quantization config_groups",
+    "test_gptq_calibrate_module": "test the calibrate_module hook to accumulate hessian matrices from model input activations",
+    "refactor_gptq_compress_distributed": "refactor compress_modules to distribute hessian reduction and quantization across multiple GPU ranks",
+    "review_gptq_lifecycle_hooks": "review the GPTQModifier lifecycle hooks on_initialize, on_start, on_event, on_end, and on_finalize"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/gptq/gptq_quantize.py": {
+    "create_make_empty_hessian": "create an empty hessian tensor for a given PyTorch module with specified device",
+    "run_accumulate_hessian": "run hessian accumulation from input tensors on a module, returning updated hessian and sample count",
+    "quantize_weight_gptq": "quantize a module weight using the GPTQ algorithm with a preaccumulated hessian and blockwise updates",
+    "build_activation_ordering": "build permuted weight and hessian tensors ordered by greatest output activations",
+    "test_quantize_weight_strategies": "test the quantize_weight function with channel, group, tensor, and block quantization strategies"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/pruning/helpers.py": {
+    "create_custom_scheduler": "create a custom pruning scheduler from a calc expression string with math functions and settings",
+    "build_linear_scheduler": "build a linear pruning scheduler that ramps sparsity from init to final over a training range",
+    "build_cubic_scheduler": "build a cubic pruning scheduler using polynomial decay with exponent 3",
+    "build_multi_step_scheduler": "build a multi-step pruning scheduler that jumps to predefined sparsity levels at given indices",
+    "test_pruning_factory": "test the PruningSchedulerFactory registry and create_scheduler dispatch for registered and custom scheduler types"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/pruning/constant/base.py": {
+    "create_ConstantPruningModifier": "create a ConstantPruningModifier to apply constant magnitude-based pruning to specified model parameters",
+    "build_parameterized_layers": "build parameterized layers from a PyTorch model for a given list of target parameter names",
+    "add_mask": "add a persistent or hook-based mask to a parameterized layer for weight pruning",
+    "update_mask": "update a pruning mask by comparing parameter absolute values against an epsilon threshold",
+    "apply_masks": "apply stored pruning masks to model weights after each optimization step"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/pruning/magnitude/base.py": {
+    "create_magnitude_pruning_modifier": "create a MagnitudePruningModifier with target layers, init and final sparsity for structured weight pruning",
+    "build_pruning_scheduler": "build a pruning scheduler that interpolates sparsity from init to final value using a cubic schedule over training epochs",
+    "apply_magnitude_pruning_masks": "apply magnitude-based pruning masks to model parameters by removing weights with smallest absolute values",
+    "test_pruning_mask_creator": "test the pruning mask creator that generates binary masks based on weight magnitude scores and target sparsity",
+    "review_magnitude_pruning_lifecycle": "review the MagnitudePruningModifier lifecycle including on_initialize, on_start, on_update, and on_end hooks"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/pruning/sparsegpt/base.py": {
+    "create_SparseGPTModifier": "create a SparseGPTModifier to apply one-shot SparseGPT pruning to a PyTorch model with configurable sparsity and mask structure",
+    "run_calibrate_module": "run calibrate_module to accumulate the Hessian of input activations for a given PyTorch module during calibration",
+    "run_compress_modules": "run compress_modules to sparsify all calibrated modules using the accumulated Hessians and target sparsity",
+    "review_SparseGPTModifier_offload": "review SparseGPTModifier with offload_hessians enabled to reduce GPU memory usage at the cost of increased runtime",
+    "refactor_SparseGPTModifier_mask_structure": "refactor SparseGPTModifier to apply structured N:M mask structure instead of unstructured pruning"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/pruning/sparsegpt/sgpt_base.py": {
+    "create_SparsityModifierBase": "create a SparsityModifierBase subclass to implement oneshot sparsity pruning for a PyTorch model",
+    "run_SparsityModifierBase_calibrate_module": "run calibrate_module on a PyTorch layer to collect activation statistics during calibration",
+    "run_SparsityModifierBase_compress_modules": "run compress_modules to apply sparse masks to target layers after calibration",
+    "run_SparsityModifierBase_on_initialize": "run on_initialize to set up target layers and infer layer-wise sparsities from calibration data",
+    "run_SparsityModifierBase_infer_owl_layer_sparsity": "run _infer_owl_layer_sparsity to compute per-layer sparsity using the OWL profile algorithm"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/pruning/sparsegpt/sgpt_sparsify.py": {
+    "create_empty_hessian": "create an empty hessian tensor for a given neural network module",
+    "run_accumulate_hessian": "run accumulate_hessian to update the hessian matrix with new input samples",
+    "test_sparsify_weight": "test sparsify_weight to prune a module's weights to a target sparsity using SparseGPT",
+    "refactor_sparsify_weight": "refactor sparsify_weight to support N:M structured pruning with block-wise hessian inversion",
+    "review_accumulate_hessian": "review accumulate_hessian for handling Linear, Conv1D, and Conv2d input reshaping"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/pruning/utils/pytorch/layer_mask.py": {
+    "create_layer_mask": "create a LayerParamMasking instance and add a boolean mask buffer to a PyTorch parameterized layer",
+    "setup_mask_param": "setup a boolean mask tensor for a PyTorch parameter with shape and dtype validation",
+    "update_layer_mask": "update an existing layer mask buffer in-place with a new boolean tensor",
+    "apply_mask_weight_gradient": "apply a layer mask to weights and gradients during forward and backward passes",
+    "enable_disable_masks": "enable or disable all active layer masks on a LayerParamMasking instance"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/pruning/utils/pytorch/mask_factory.py": {
+    "create_mask_creator": "create a pruning mask creator using the PruningMaskFactory with a mask structure string like unstructured or channel",
+    "run_unstructured_pruning": "run unstructured pruning to create a boolean mask that zeros out the lowest-scoring individual elements based on sparsity",
+    "run_channel_pruning": "run channel pruning to mask out entire channels by aggregating scores across spatial dimensions and removing the lowest-scoring channels",
+    "run_filter_pruning": "run filter pruning to mask out entire filters by aggregating scores across input dimensions and removing the lowest-scoring filters",
+    "run_block_pruning": "run block pruning to mask out contiguous blocks of weights by unfolding tensor dimensions and removing the lowest-scoring blocks"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/pruning/wanda/base.py": {
+    "create_WandaPruningModifier": "create a WandaPruningModifier to apply one-shot WANDA pruning with configurable sparsity and mask structure",
+    "run_calibrate_module": "run calibrate_module to accumulate row scalars of module inputs during calibration",
+    "run_compress_modules": "run compress_modules to sparsify calibrated modules using accumulated row scalars",
+    "test_on_finalize": "test on_finalize to clean up calibration state and remove hooks after pruning",
+    "summarize_WandaPruningModifier": "summarize the WandaPruningModifier class that applies WANDA algorithm for model pruning"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/pruning/wanda/wanda_sparsify.py": {
+    "create_empty_row_scalars": "create an empty tensor of row scalars for a neural network module's weight columns",
+    "build_accumulate_row_scalars": "build accumulated row scalars from input tensors across dataset samples for WANDA pruning",
+    "run_sparsify_weight": "run WANDA sparsification on a module's weights given accumulated row scalars and target sparsity",
+    "test_make_empty_row_scalars": "test making an empty row scalars tensor for a linear module on a specific device",
+    "refactor_sparsify_weight": "refactor the sparsify_weight function to support structured N:M pruning with configurable prune_n and prune_m"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/quantization/calibration.py": {
+    "initialize_observer": "initialize observer module and attach it to a quantized torch.nn.Module for weight, input, or output calibration",
+    "update_weight_zp_scale": "update weight scale and zero point values on a module during quantization calibration by calling its attached observer",
+    "calibrate_input_hook": "register a forward hook that calibrates input activations by updating observer scales and zero points before QDQ",
+    "calibrate_output_hook": "register a forward hook that calibrates output activations and returns quantized output via observer scales and zero points",
+    "freeze_module_quantization": "freeze a module's quantization by removing all attached observers and setting quantization status to FROZEN"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/quantization/group_size_validation.py": {
+    "test_get_layers_indivisible_by_group_size": "test the get_layers_indivisible_by_group_size function to find model layers with weight columns not divisible by group_size",
+    "validate_group_size_divisibility": "validate group_size divisibility for quantized model layers and raise ValueError if any are indivisible",
+    "run_validate_with_bypass": "run validate_group_size_divisibility with bypass=True to skip indivisibility checks for runtimes that support non-divisible dimensions",
+    "review__layer_indivisible": "review the _layer_indivisible helper function that checks if a module's weight columns are not divisible by group_size",
+    "summarize_group_size_validation": "summarize the group_size_validation module's policy for GROUP and TENSOR_GROUP quantization strategies requiring column divisibility"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/quantization/quantization/base.py": {
+    "enable_ptq_qat_quantization": "enable post training quantization and quantization aware training for model modules using QuantizationModifier",
+    "calibrate_model_weights": "calibrate model weights and activations by running on_start and on_end lifecycle methods of QuantizationModifier",
+    "apply_quantization_schemes": "apply quantization schemes from config_groups to target modules like Linear layers in a PyTorch model",
+    "sync_activation_observers": "sync activation observer statistics across DDP ranks at epoch boundaries using QuantizationMixin",
+    "quantize_kv_cache": "quantize the kv cache of transformer models by specifying a kv_cache_scheme for q_proj and k_proj outputs"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/quantization/quantization/mixin.py": {
+    "build_quantization_mixin": "build a QuantizationMixin to attach quantization schemes, observers, and compression wrappers to a torch model",
+    "run_initialize_quantization": "run initialize_quantization on a torch model to attach schemes, observers, and disable quantization until calibration",
+    "run_start_calibration": "run start_calibration on a torch model to attach calibration hooks, apply calibration status, and enable quantization",
+    "run_end_calibration": "run end_calibration on a torch model to remove calibration hooks, freeze module quantization, and keep quantization enabled",
+    "run_sync_activation_observers": "run sync_activation_observers to all-reduce activation observer min/max values across DDP ranks and recompute scale and zero-point"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/transform/awq/base.py": {
+    "create_awq_modifier": "create an AWQModifier instance to smooth model weights and reduce quantization error",
+    "run_awq_smoothing": "run AWQ smoothing on a model using calibration data to compute optimal per-channel scales",
+    "build_awq_mappings": "build AWQ mappings from model architecture by inferring smooth and balance layers automatically",
+    "test_awq_grid_search": "test AWQ grid search to find best scaling factors that minimize quantization output error",
+    "review_awq_modifier": "review the AWQModifier class for applying activation-weighted quantization smoothing to transformer models"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/transform/awq/dynamic_mappings.py": {
+    "build_hybrid_attention_mappings": "build AWQ mappings for hybrid attention models like Qwen3Next and Qwen3.5 with full and linear attention layers",
+    "get_layer_mappings_from_model": "get AWQ layer mappings for a PyTorch model by checking dynamic registry, static registry, and default mappings",
+    "test_get_layer_mappings_from_model": "test get_layer_mappings_from_model with a Qwen3NextForCausalLM model to verify correct mapping selection",
+    "refactor_build_hybrid_attention_mappings": "refactor build_hybrid_attention_mappings to support additional hybrid attention architectures beyond Qwen3Next and Qwen3.5",
+    "review_AWQ_DYNAMIC_MAPPING_REGISTRY": "review the AWQ_DYNAMIC_MAPPING_REGISTRY to ensure all supported model classes are registered with correct mapping builders"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/transform/imatrix/base.py": {
+    "create_IMatrixGatherer": "create an IMatrixGatherer modifier to attach iMatrix observers for E[x\u00b2] calibration collection",
+    "run_IMatrixGatherer_calibrate": "run the IMatrixGatherer lifecycle to collect importance matrices during a calibration pass",
+    "test_IMatrixGatherer_lifecycle": "test the IMatrixGatherer on_initialize, on_event, on_end, and on_finalize lifecycle hooks",
+    "review_IMatrixGatherer_on_finalize": "review the IMatrixGatherer on_finalize method that cleans up importance tensors from checkpoints",
+    "summarize_IMatrixGatherer_usage": "summarize the IMatrixGatherer usage with QuantizationModifier or GPTQModifier in a compression recipe"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/transform/quip/base.py": {
+    "create_quip_modifier": "create a QuIPModifier to apply Hadamard-based rotation transforms for LLM quantization",
+    "build_transform_config": "build a QuIPModifier with custom rotation schemes, transform type, and block size for quantization",
+    "run_apply_transforms": "run QuIPModifier on a PyTorch model to apply input and output rotation transforms for quantization",
+    "test_quip_scheme_creation": "test QuIPModifier._create_v_scheme and _create_u_scheme to generate TransformScheme objects",
+    "review_quip_modifier": "review QuIPModifier lifecycle methods on_initialize, on_start, on_event, on_end, on_finalize"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/transform/smoothquant/base.py": {
+    "create_smoothquant_modifier": "create a SmoothQuantModifier with smoothing strength and calibration dataset for one-shot quantization",
+    "run_smoothquant_calibration": "run SmoothQuantModifier on a model with calibration data to collect activation ranges via forward hooks",
+    "resolve_smoothquant_mappings": "resolve SmoothQuant mappings from model architecture or user-specified regex patterns into SmoothQuantMapping objects",
+    "apply_smoothquant_smoothing": "apply SmoothQuant smoothing to activations and balance weights in-place after calibration completes",
+    "summarize_smoothquant_modifier": "summarize the SmoothQuantModifier class that implements channel-wise smoothing for easier quantization",
+    "review_smoothquant_mapping": "review the SmoothQuantMapping dataclass that stores activation-to-weight layer mappings for smoothing",
+    "review_smoothquant_scale": "review the SmoothQuantScale dataclass that tracks per-channel min and max values during calibration"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/transform/smoothquant/utils.py": {
+    "get_layer_mappings_from_architecture": "retrieve smoothquant layer mappings for a specified model architecture from the registry",
+    "summarize_MAPPINGS_REGISTRY": "summarize the smoothquant layer mapping registry containing architecture-to-mapping associations",
+    "summarize_DEFAULT_SMOOTHQUANT_MAPPINGS": "summarize the default smoothquant layer mappings for balance and smooth layer patterns",
+    "review_LayerMap": "review the LayerMap namedtuple defining balance_layers and smooth_layers for smoothquant",
+    "review_handle_mapping_resolution_errors": "review the handle_mapping_resolution_errors decorator for smoothquant mapping error handling"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/transform/spinquant/base.py": {
+    "create_SpinQuantModifier": "create a SpinQuantModifier to apply learned rotation transforms for LLM quantization",
+    "run_SpinQuantModifier_on_initialize": "run SpinQuantModifier on_initialize to infer mappings and create transform schemes for R1, R2, R3, R4",
+    "apply_SpinQuantModifier_on_start": "apply SpinQuantModifier on_start to center embeddings, fuse norms, and apply transform config to a model",
+    "build_SpinQuantRotation_enum": "build a SpinQuantRotation enum with R1, R2, R3, R4 rotation types for offline and online transforms",
+    "test_SpinQuantModifier_on_event": "test SpinQuantModifier on_event to handle calibration epoch start and end events"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/transform/spinquant/mappings.py": {
+    "create_SpinQuantMapping": "create a SpinQuantMapping instance with embedding, attention, and MLP layer patterns for quantization",
+    "build_default_mappings": "build default SpinQuantMapping with regex patterns for Llama model architecture layers",
+    "test_infer_mapping_from_model": "test infer_mapping_from_model to resolve a model architecture to its SpinQuantMapping",
+    "review_SPINQUANT_MAPPING_REGISTRY": "review the SPINQUANT_MAPPING_REGISTRY dictionary mapping model architectures to SpinQuantMapping",
+    "summarize_SpinQuantMapping": "summarize the SpinQuantMapping pydantic model fields and their roles in layer rotation mapping"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/transform/spinquant/norm_mappings.py": {
+    "create_NormMapping": "create a NormMapping instance with norm regex and linear layer regexes for SpinQuant",
+    "build_norm_mapping_registry": "build a NORM_MAPPING_REGISTRY mapping model architectures to norm-to-linear mappings",
+    "test_infer_norm_mapping": "test infer_norm_mapping_from_model with a PreTrainedModel to get norm mappings",
+    "refactor_NormMapping_validator": "refactor NormMapping to support additional field validators beyond linears casting",
+    "summarize_norm_mappings": "summarize how norm_mappings.py maps norm layers to subsequent linear layers in transformer models"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/utils/helpers.py": {
+    "update_fused_layer_weight_global_scales": "update fused layer weight global scales for NVFP4 quantization on qkv and gate_up_proj layers",
+    "test_update_fused_layer_weight_global_scales": "test the update_fused_layer_weight_global_scales function with a submodule containing q_proj, k_proj, and v_proj layers",
+    "review_update_fused_layer_weight_global_scales": "review the update_fused_layer_weight_global_scales function to ensure global scales are fused for tensor group quantized layers",
+    "refactor_update_fused_layer_weight_global_scales": "refactor the update_fused_layer_weight_global_scales function to support additional fused layer patterns",
+    "summarize_update_fused_layer_weight_global_scales": "summarize the update_fused_layer_weight_global_scales function that aligns global scales for fused attention and MLP layers"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/utils/hooks.py": {
+    "create_hooks_mixin": "create a HooksMixin instance to manage PyTorch hook registration, disabling, and removal on modules or parameters",
+    "register_hook_forward": "register a forward hook on a PyTorch module or parameter via HooksMixin with disable support",
+    "register_hook_query_key_value": "register a query, key, or value hook on a PyTorch module using compressed_tensors hook functions",
+    "disable_hooks_context": "disable all registered hooks across modifiers temporarily using the HooksMixin.disable_hooks context manager",
+    "remove_hooks": "remove all or specific registered hooks from a HooksMixin instance by calling remove_hooks on handles"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/modifiers/utils/pytorch_helpers.py": {
+    "run_apply_pad_mask_to_batch": "run apply_pad_mask_to_batch to zero out padding tokens from input_ids using the attention_mask in a batch",
+    "test_is_moe_model": "test is_moe_model to detect if a PyTorch model is a mixture of experts model by checking module names and config attributes",
+    "refactor_apply_pad_mask_to_batch": "refactor apply_pad_mask_to_batch to support additional tensor keys beyond input_ids and decoder_input_ids",
+    "review_is_moe_model": "review is_moe_model to verify MoE detection covers all transformer-based MoE architectures",
+    "create_apply_pad_mask_to_batch": "create a wrapper around apply_pad_mask_to_batch that processes a list of batches for GPTQ hessian calculation"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/observers/base.py": {
+    "create_observer_quantization": "create an Observer instance with quantization args to compute scales and zero points for tensor quantization",
+    "calculate_qparams_forward": "call observer forward with observed tensor to compute calibrated scale and zero point",
+    "compute_global_scale": "compute global scale from observed tensor for tensor-group quantization strategy",
+    "synchronize_ddp_observer": "synchronize accumulated min-max statistics across DDP ranks using observer all-reduce",
+    "recompute_qparams_synchronize": "recompute scale and zero point from globally reduced min-max statistics after DDP synchronization"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/observers/helpers.py": {
+    "flatten_for_calibration_weight": "flatten a weight tensor for calibration using tensor quantization strategy",
+    "flatten_for_calibration_activation": "flatten an activation tensor for calibration using group quantization strategy",
+    "flatten_for_calibration_attention": "flatten an attention tensor for calibration using attention head quantization strategy",
+    "flatten_for_calibration_block_weight": "flatten a weight tensor for calibration using block quantization with zero-padding",
+    "flatten_for_calibration_gidx_weight": "flatten a weight tensor for calibration with group quantization and g_idx reordering"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/observers/imatrix.py": {
+    "create_IMatrixMSEObserver": "create an IMatrixMSEObserver instance with custom maxshrink, patience, grid, norm, and strict parameters",
+    "attach_hook_accumulate": "attach a forward-pre hook to a Linear module to accumulate per-input-channel E[x\u00b2] importance data",
+    "detach_hook_compute": "detach the hook from a module, compute importance from accumulated sums, and clean up temporary tensors",
+    "get_min_max_quantize": "get optimal quantization min/max values using grid search with importance-weighted MSE error",
+    "grid_search_optimize": "run a grid search over scaled min/max candidates to minimize importance-weighted quantization error"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/observers/min_max.py": {
+    "create_MemorylessMinMaxObserver": "create a memoryless min-max observer that computes quantization parameters from the min/max of each observed value",
+    "create_StaticMinMaxObserver": "create a static min-max observer that tracks the global min/max across all observed values for quantization calibration",
+    "create_MinMaxObserver": "create a min-max observer using moving average to smooth quantization parameter estimation over observations",
+    "test_get_min_max": "test the _get_min_max helper function that computes per-channel min and max from an observed tensor",
+    "review_MemorylessMinMaxObserver_get_global_min_max": "review the MemorylessMinMaxObserver.get_global_min_max method for global scale calculation without state"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/observers/moving_base.py": {
+    "create_MovingAverageObserverBase": "create a MovingAverageObserverBase subclass that computes quantization parameters using moving average of min/max values",
+    "get_min_max_calculate": "get_min_max calculate moving average of min and max values from an observed tensor",
+    "get_global_min_max_calculate": "get_global_min_max calculate moving average of global min and max values for global scale calculation",
+    "synchronize_ddp_ranks": "synchronize moving-average min/max statistics across DDP ranks using all_reduce averaging",
+    "lerp_interpolate_tensors": "lerp linearly interpolate between two tensors using a weight factor without torch lerp_kernel"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/observers/mse.py": {
+    "create_MemorylessMSEObserver": "create a MemorylessMSEObserver to compute quantization parameters by minimizing mean-squared quantization error",
+    "create_MovingAverageMSEObserver": "create a MovingAverageMSEObserver to compute per-channel quantization min/max values via MSE grid search",
+    "run__grid_search_mse": "run _grid_search_mse to find optimal min/max ranges that minimize quantization error with early stopping",
+    "test_MemorylessMSEObserver_get_min_max": "test MemorylessMSEObserver.get_min_max method to return best min/max tuple from MSE-optimized grid search",
+    "test_MovingAverageMSEObserver_get_current_global_min_max": "test MovingAverageMSEObserver.get_current_global_min_max to optimize both min/max and global scale simultaneously"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pipelines/cache.py": {
+    "build_cache_empty": "build an empty intermediate values cache with a specified number of batches and offload device",
+    "create_cache_from_dataloader": "create a cache prepopulated with intermediate values from a PyTorch DataLoader",
+    "fetch_intermediate_values": "fetch offloaded intermediate values for a specific batch and optional input names",
+    "update_cache_batch": "update a cache batch with new intermediate values that are offloaded to the specified device",
+    "iterate_prefetch_batches": "iterate over cached batches with background prefetching to overlap H2D transfers with compute"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pipelines/registry.py": {
+    "create_CalibrationPipeline": "create a calibration pipeline instance from a list of modifiers and optional user specification",
+    "run_CalibrationPipeline": "run a calibration pipeline on a torch model with a dataloader and dataset arguments",
+    "test_infer_pipeline": "test the pipeline inference logic that selects datafree or sequential based on quantization modifiers",
+    "review_from_modifiers": "review the from_modifiers class method that resolves the best calibration pipeline from available modifiers",
+    "summarize_CalibrationPipeline": "summarize the abstract CalibrationPipeline class that standardizes model calibration workflows"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pipelines/basic/pipeline.py": {
+    "run_calibration_basic": "run calibration on a PyTorch model using the basic pipeline with a DataLoader",
+    "create_basic_pipeline": "create a BasicPipeline instance for model calibration with batch-based forward passes",
+    "test_basic_pipeline_call": "test the BasicPipeline __call__ method with a model, dataloader, and optional dataset args",
+    "run_calibration_with_loss_mask": "run calibration on a model with AWQ loss mask support enabled via dataset args",
+    "review_basic_pipeline": "review the BasicPipeline class that performs basic model calibration without propagating compression error"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pipelines/sequential/ast_helpers.py": {
+    "autowrap_forwards_modules": "autowrap the forward methods of a list of torch modules to remove untraceable code patterns",
+    "autowrap_forward_module": "autowrap the forward method of a single torch module to replace untraceable code with torch.fx wrappers",
+    "append_autowrap_source_on_fail": "append autowrapped source lines to exceptions when autowrapped forward code fails during execution",
+    "autowrap_forwards_ignore": "autowrap forward methods of modules while ignoring specified function names from wrapping",
+    "autowrap_forward_validate": "autowrap a module forward and raise ValueError when the module lacks an implemented forward method"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pipelines/sequential/helpers.py": {
+    "trace_subgraphs": "trace a pretrained model to produce executable subgraphs for sequential calibration",
+    "create_Subgraph": "create a dataclass specifying an executable subgraph of a model graph with input and consumed names",
+    "dispatch_for_sequential": "dispatch a model for sequential calibration with configurable onload and offload devices",
+    "handle_sequential_oom": "wrap a function to catch out-of-memory errors and suggest smaller sequential targets",
+    "partition_graph": "partition a traced model graph into a list of subgraphs for sequential execution"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pipelines/sequential/transformers_helpers.py": {
+    "symbolic_trace_model": "symbolic_trace a transformers PreTrainedModel and return a torch.fx GraphModule for analysis",
+    "check_if_model_supported": "check_if_model_supported a transformers PreTrainedModel and raise if the model type is not in the supported list",
+    "get_concrete_args": "get_concrete_args from a model forward signature by filtering out the specified input names",
+    "trace_model_with_hftracer": "trace a PreTrainedModel using HFTracer to record operations and handle data-dependent control flow",
+    "create_proxyable_cache_classes": "create proxyable cache classes for Cache, DynamicCache, and StaticCache to enable FX tracing of KV cache usage"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pipelines/sequential/ast_utils/auto_wrapper.py": {
+    "auto_wrap_untraceable_ast": "auto wrap untraceable code segments in an AST module by inserting wrapper function definitions",
+    "strip_forward_decorators": "strip decorators from a forward function that prevent recompilation while preserving can_return_tuple",
+    "wrap_if_with_dynamic_condition": "wrap an if statement whose condition cannot be statically evaluated into a torch.fx.wrap function",
+    "wrap_starred_tuple_unpacking": "wrap a tuple node containing starred unpacking elements into a traceable wrapper function",
+    "wrap_call_with_variadic_args": "wrap a function call with starred arguments or ignored function names into a torch.fx.wrap call"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pipelines/sequential/ast_utils/control_flow_analyzer.py": {
+    "test_control_flow_analyzer": "test the ControlFlowAnalyzer class to check if a code block can be safely wrapped into a function",
+    "build_code_wrappability_check": "build a check using ControlFlowAnalyzer.is_valid to determine if an AST node contains invalid control flow statements",
+    "refactor_ast_node": "refactor an AST node by using ControlFlowAnalyzer to validate it before extracting into a function",
+    "review_break_continue": "review code using ControlFlowAnalyzer to ensure break and continue statements are inside a For or While loop",
+    "summarize_await_yield": "summarize how ControlFlowAnalyzer validates await inside AsyncFunctionDef and yield inside FunctionDef contexts"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pipelines/sequential/ast_utils/name_analyzer.py": {
+    "analyze_code_unbound_assigned": "analyze ast code to find unbound, assigned, and conditionally assigned variable names",
+    "create_name_analyzer": "create a NameAnalyzer instance with a set of names to omit from analysis",
+    "review_NameAnalyzer": "review the NameAnalyzer class that determines unbound and assigned names in Python AST nodes",
+    "test_visit_If_conditionals": "test the visit_If method that splits assigned names across true and false branches",
+    "summarize_NameAnalyzer": "summarize how NameAnalyzer tracks unbound, assigned, and conditionally assigned names in Python code"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pytorch/model_load/helpers.py": {
+    "parse_dtype": "parse a string or torch.dtype argument and return the corresponding PyTorch dtype",
+    "get_session_model": "get the active PyTorch model from the current compression session",
+    "copy_python_files_from_model_cache": "copy Python files from a Hugging Face model cache directory to a save path"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pytorch/utils/helpers.py": {
+    "build_move_tensors_to_device": "move a tensor or nested collection of tensors to a specified device like cuda or cpu",
+    "create_convert_tensor_precision": "convert a tensor or nested collection of tensors to full or half precision",
+    "run_forward_pass_module": "run a forward pass through a pytorch module with tensor data handling features and labels",
+    "test_tensor_sparsity": "calculate the sparsity of a tensor as the fraction of zero values optionally over specified dimensions",
+    "review_quantized_layers": "find all quantized layers in a pytorch module by checking for quantization_scheme attributes"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pytorch/utils/sparsification.py": {
+    "create_ModuleSparsificationInfo": "create a ModuleSparsificationInfo instance from a torch module to analyze its sparsity",
+    "get_params_total": "get the total number of trainable parameters from a ModuleSparsificationInfo object",
+    "get_params_sparse": "get the total number of sparse zero-valued parameters from a ModuleSparsificationInfo object",
+    "get_params_sparse_percent": "get the percentage of sparsified parameters from a ModuleSparsificationInfo object",
+    "get_params_quantized": "get the number of parameters across quantized layers from a ModuleSparsificationInfo object"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pytorch/utils/sparsification_info/configs.py": {
+    "create_SparsificationSummaries_from_module": "create SparsificationSummaries from a PyTorch module to get quantized and pruned operation counts",
+    "create_SparsificationPruning_from_module": "create SparsificationPruning from a PyTorch module to get per-parameter zero-weight counts and percentages",
+    "create_SparsificationQuantization_from_module": "create SparsificationQuantization from a PyTorch module to get per-operation quantization status and precision info",
+    "summarize_SparsificationSummaries_loggable_items": "summarize SparsificationSummaries loggable items to yield operation counts, parameter counts, and pruning percentages",
+    "filter_SparsificationInfo_loggable_items": "filter SparsificationInfo loggable items by percentage-only or non-zero-only criteria"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pytorch/utils/sparsification_info/helpers.py": {
+    "get_leaf_operations": "get leaf operations from a PyTorch model, skipping Identity and unwrapping QuantWrapper modules",
+    "is_quantized": "test whether a PyTorch operation has a quantization scheme attribute",
+    "get_precision_information": "get precision info for a PyTorch operation, returning quantization scheme or weight bit count",
+    "get_leaf_operations_skip": "get leaf operations from a PyTorch model with custom operations to skip",
+    "get_leaf_operations_unwrap": "get leaf operations from a PyTorch model with custom operations to unwrap"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/pytorch/utils/sparsification_info/module_sparsification_info.py": {
+    "create_module_sparsification_info": "create a ModuleSparsificationInfo object from a torch.nn.Module using the from_module factory method",
+    "get_summary_info": "get sparsification summary info from a torch module via ModuleSparsificationInfo.from_module",
+    "get_pruning_info": "get pruning info for weights and masks from a torch module via ModuleSparsificationInfo",
+    "get_quantization_info": "get quantization info for a torch module via ModuleSparsificationInfo.from_module",
+    "iterate_loggable_items": "iterate loggable name-value pairs from ModuleSparsificationInfo for logging or debugging"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/recipe/recipe.py": {
+    "create_recipe_from_file": "create a Recipe instance from a YAML or JSON recipe file path",
+    "create_recipe_from_string": "create a Recipe instance from a YAML or JSON recipe string with a target stage",
+    "create_recipe_from_modifiers": "create a Recipe instance from a list of Modifier objects with a group name",
+    "create_recipe_from_dict": "create a Recipe instance from a dictionary containing stage and modifier definitions",
+    "generate_recipe_yaml": "generate a YAML string representation of a Recipe, optionally merging with an existing recipe file"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/recipe/utils.py": {
+    "parse_recipe_from_md": "parse a markdown recipe card and extract YAML front matter from a file",
+    "get_yaml_serializable_dict": "convert a list of llmcompressor modifiers into a YAML-serializable dictionary grouped by stage",
+    "filter_dict": "filter a recipe dictionary to only include keys matching a target stage name",
+    "append_recipe_dict": "merge two recipe dictionaries by renaming conflicting stage keys with numeric suffixes",
+    "load_json_or_yaml_string": "parse a JSON or YAML string into a dictionary for llmcompressor recipe content"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/compression/compressed_tensors_utils.py": {
+    "modify_save_pretrained": "modify a PreTrainedModel's save_pretrained method to support saving models in a compressed format",
+    "get_model_compressor": "get a ModelCompressor instance from a pretrained model with an optional quantization format override",
+    "update_and_save_recipe": "update and save a compression recipe file combining existing and current recipes into a save directory",
+    "test_modify_save_pretrained": "test the modify_save_pretrained function wraps save_pretrained with compression support",
+    "review_update_and_save_recipe": "review the update_and_save_recipe function that merges existing recipes with the active session recipe"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/compression/sparsity_helpers.py": {
+    "test_tensor_follows_mask_structure": "test the tensor_follows_mask_structure function to verify if a tensor follows a 2:4 sparsity mask pattern",
+    "infer_sparsity_structure_from_modifiers": "infer the sparsity structure string from a list of compression modifier instances",
+    "infer_sparsity_structure_from_model": "infer the sparsity structure of a PyTorch model by checking its linear layers for 2:4 sparsity patterns",
+    "infer_sparse_targets_and_ignores": "infer sparse compression target and ignore layer lists from a model given a sparsity structure and threshold",
+    "test_is_sparse_compression_target": "test the is_sparse_compression_target function to check if a module qualifies for sparse compression"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/data/base.py": {
+    "create_TextGenerationDataset": "create a TextGenerationDataset instance to load, preprocess, tokenize, and prepare a text dataset for fine-tuning",
+    "run_TextGenerationDataset_call": "run the TextGenerationDataset __call__ method to load and process a dataset with preprocessing, tokenization, and label generation",
+    "load_dataset_from_path": "load a dataset from Hugging Face or a local path using TextGenerationDataset.load_dataset with streaming and caching support",
+    "tokenize_dataset_with_processor": "tokenize dataset rows using the model processor with padding, truncation, and prompt separation via TextGenerationDataset.tokenize",
+    "add_labels_with_prompt_masking": "add labels to tokenized data and mask out prompt tokens and padding so they do not contribute to training loss"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/data/cnn_dailymail.py": {
+    "create_CNNDailyMailDataset": "create a CNNDailyMailDataset instance with dataset_args, split, and processor for CNN/DailyMail summarization",
+    "build_cnn_dataset_template": "build a text template from CNN article and highlights using the SAMPLE_TEMPLATE format string",
+    "test_CNNDailyMailDataset": "test the CNNDailyMailDataset class loads the cnn_dailymail dataset with config version 3.0.0",
+    "review_CNNDailyMailDataset": "review the CNNDailyMailDataset class and its dataset_template method for text generation formatting",
+    "summarize_CNNDailyMailDataset": "summarize how CNNDailyMailDataset formats article and highlights into a text generation sample"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/data/data_helpers.py": {
+    "get_raw_dataset": "load a raw Hugging Face dataset with optional cache directory and streaming mode",
+    "get_custom_datasets_from_path": "build a dictionary of custom dataset file paths from a directory containing json files",
+    "transform_dataset_keys": "rename dataset dict keys to train, val, or test when a unique match exists",
+    "create_raw_dataset": "create a raw dataset from Hugging Face using dataset_args with cache_dir and streaming options",
+    "test_custom_datasets": "test the custom dataset discovery from a directory structure with json files"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/data/evolcodealpaca.py": {
+    "create_evol_code_alpaca_dataset": "create an EvolCodeAlpacaDataset instance with dataset arguments, split, and processor",
+    "register_evolcodealpaca_dataset": "register EvolCodeAlpacaDataset as a named dataset under TextGenerationDataset with name evolcodealpaca",
+    "build_evol_alpaca_prompt": "build a prompt from the EVOL_ALPACA_TEMPLATE using an instruction string",
+    "test_dataset_template": "test the dataset_template method to format instruction and output into a text sample",
+    "review_evol_code_alpaca_dataset": "review the EvolCodeAlpacaDataset class and its dataset_template method for formatting programming task prompts"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/data/flickr_30k.py": {
+    "create_flickr30k_dataset": "create a Flickr30K dataset instance from lmms-lab/flickr30k with a specified split and processor",
+    "register_flickr_dataset": "register the Flickr30K class as a 'flickr' or 'flickr30k' dataset type with TextGenerationDataset",
+    "apply_flickr_chat_template": "apply a default <|user|>/<|assistant|> chat template to a tokenizer missing one",
+    "transform_flickr_sample": "transform a Flickr30K sample into a text-and-images dict with an image caption question",
+    "load_flickr_split": "load a train or test split of the Flickr30K multimodal dataset for text-generation training"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/data/gsm8k.py": {
+    "create_gsm8k_dataset": "create a GSM8KDataset instance for the Grade School Math 8k dataset with a given split and processor",
+    "test_gsm8k_template": "test the GSM8KDataset dataset_template method to format question and answer into a prompt",
+    "build_gsm8k_dataset_train": "build a GSM8KDataset instance using the openai/gsm8k huggingface dataset for the train split",
+    "review_gsm8k_dataset_init": "review the GSM8KDataset __init__ method that registers the dataset under the name gsm8k",
+    "summarize_gsm8k_dataset": "summarize the GSM8KDataset class that extends TextGenerationDataset for grade school math problems"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/data/open_platypus.py": {
+    "create_open_platypus_dataset": "create an OpenPlatypusDataset instance with dataset args, split, and processor for the garage-bAInd/Open-Platypus dataset",
+    "register_open_platypus_dataset": "register the OpenPlatypusDataset class as a text generation dataset named open_platypus",
+    "build_alpaca_prompt_input": "build an Alpaca-style prompt with instruction and input fields using the prompt_input template",
+    "build_alpaca_prompt_no_input": "build an Alpaca-style prompt with only an instruction field using the prompt_no_input template",
+    "run_dataset_template": "run dataset_template on a sample to produce text and prompt keys with formatted Alpaca output"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/data/peoples_speech.py": {
+    "create_peoples_speech_dataset": "create a PeoplesSpeech dataset from ML Commons People's Speech audio data with a specified processor",
+    "test_dataset_template": "test the PeoplesSpeech dataset_template method to format audio examples for Qwen2AudioProcessor or WhisperProcessor",
+    "refactor_filter_tokenizer_args": "refactor the filter_tokenizer_args method to remove non-tokenizer columns for WhisperProcessor datasets",
+    "review_tokenize_method": "review the tokenize method that processes audio data with WhisperProcessor or falls back to parent tokenize",
+    "summarize_peoples_speech_class": "summarize the PeoplesSpeech class for loading and preprocessing audio datasets with Whisper or Qwen2Audio models"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/data/ultrachat_200k.py": {
+    "create_ultrachat_dataset": "create an UltraChatDataset instance for loading the HuggingFaceH4/ultrachat_200k dataset with a given split and processor",
+    "build_chat_template": "build a default chat template for ultra chat 200k dataset with user, system, and assistant role tokens",
+    "test_dataset_template": "test the dataset_template method to prepend a system message when missing and apply the chat template",
+    "register_ultrachat_dataset": "register UltraChatDataset as a TextGenerationDataset subclass under the name ultrachat_200k",
+    "review_ultrachat_init": "review the UltraChatDataset __init__ method that sets dataset path, text column, and fallback chat template"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/tracing/debug.py": {
+    "trace_model_subgraphs": "trace a pre-trained model into subgraphs for debugging and compression analysis",
+    "parse_tracing_cli_args": "parse CLI arguments for model tracing with options for model id, class, modality, and targets",
+    "get_dataset_kwargs_by_modality": "get dataset configuration kwargs for text, vision, or audio modality with calibration splits",
+    "collate_sample_to_device": "collate a sample dictionary of values into torch tensors on a specified device",
+    "run_tracing_cli_entry": "run the CLI entry point to trace a model into subgraphs via argparse command line"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/transformers/utils/helpers.py": {
+    "test_is_model_ct_quantized_from_path": "test the is_model_ct_quantized_from_path function to check if a model path is compressed-tensors quantized",
+    "infer_recipe_from_model_path": "infer the recipe yaml path from a local model directory or Hugging Face model ID",
+    "download_recipe_from_huggingface": "download the recipe.yaml file from a Hugging Face model ID using the HF Hub API",
+    "resolve_processor_from_model_args": "resolve processor from model arguments by assigning tokenizer to processor when both are not set",
+    "check_recipe_in_local_model": "check if a recipe.yaml file exists in a local model directory or file path"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/utils/dev.py": {
+    "test_skip_weights_download": "test the context manager that initializes models without downloading weight files",
+    "test_skip_weights_initialize": "test the context manager that patches torch initialization functions to skip weight initialization",
+    "test_patch_transformers_logger_level": "test the context manager that suppresses transformers logger warnings during model loading",
+    "run_get_main_device": "run the function that detects and returns the main compute device including MPS, accelerator, or CPU",
+    "run_get_high_precision": "run the function that returns the appropriate high-precision dtype based on the main device"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/utils/dist.py": {
+    "run_greedy_bin_packing": "run greedy_bin_packing to distribute weighted items across bins with balanced weight distribution",
+    "test_greedy_bin_packing": "test greedy_bin_packing distributes items evenly across the specified number of bins",
+    "refactor_greedy_bin_packing": "refactor greedy_bin_packing to use a custom item weight function instead of uniform weights",
+    "run_wait_for_comms": "run wait_for_comms to block until all pending async distributed communication operations complete",
+    "test_wait_for_comms": "test wait_for_comms clears the pending comms list after all async operations finish"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/utils/helpers.py": {
+    "import_from_path": "import a Python module and class or function dynamically from a file path string",
+    "calibration_forward_context": "run calibration forward passes with gradient disabled, eval mode, and cache disabled",
+    "disable_quantization_context": "disable quantization temporarily during model forward passes and restore it afterward",
+    "eval_context": "temporarily set a PyTorch module to eval mode and restore training mode afterward",
+    "disable_lm_head": "disable the language model head by moving its weights to the meta device to save memory"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/utils/metric_logging.py": {
+    "test_CompressionLogger": "test the CompressionLogger class that logs compression metrics and GPU memory usage",
+    "review_CompressionLogger_set_results": "review the CompressionLogger.set_results method that sets name and loss for metric logging",
+    "summarize_CompressionLogger_context_manager": "summarize the CompressionLogger context manager that tracks elapsed time and logs metrics on exit",
+    "build_CompressionLogger_gpu_monitoring": "build a context-managed logger that tracks time, loss, and GPU accelerator memory usage for compression",
+    "run_CompressionLogger_module": "run the CompressionLogger with a torch.nn.Module to log compression performance metrics"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/utils/transformers.py": {
+    "untie_word_embeddings": "untie word embeddings of a transformers model by cloning weights and disabling tie_word_embeddings config",
+    "test_targets_embeddings": "test whether given named modules target the input or output word embeddings of a transformers model",
+    "get_embeddings": "get the input and output embedding modules from a transformers PreTrainedModel",
+    "refactor_untie_word_embeddings": "refactor untie_word_embeddings to support models with custom embedding retrieval",
+    "review_get_embeddings": "review get_embeddings to handle additional embedding retrieval exceptions"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/utils/pytorch/module.py": {
+    "build_parameterized_layers": "build ModelParameterizedLayer objects for model modules matching given target patterns and parameter names",
+    "expand_special_targets": "expand special target constants like __ALL_PRUNABLE__ to explicit class names with deprecation warnings",
+    "qat_active": "test if any layers in a PyTorch model have quantization enabled by checking for weight_fake_quant attributes",
+    "get_no_split_params": "get list of module class names that should not be split when sharding a Hugging Face Transformer model",
+    "infer_sequential_targets": "infer or validate sequential targets for layer-wise processing from a model or provided targets list"
+  },
+  "vllm-project_llm-compressor/src/llmcompressor/utils/pytorch/utils.py": {
+    "test_measure_accelerator_memory": "test the measure_accelerator_memory context manager to track peak GPU memory consumption",
+    "create_measure_accelerator_memory": "create a measure_accelerator_memory context manager instance for a specified device",
+    "build_measure_peak_memory": "build a memory profiling block using measure_accelerator_memory to measure peak memory usage",
+    "run_reset_peak_memory_stats": "run reset_peak_memory_stats to clear peak memory statistics before a new measurement",
+    "summarize_measure_cuda_memory": "summarize the deprecated measure_cuda_memory function that wraps measure_accelerator_memory"
+  }
+}

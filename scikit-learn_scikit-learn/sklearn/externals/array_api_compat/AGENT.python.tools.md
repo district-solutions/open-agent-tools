@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: scikit-learn/scikit-learn
+- repo_uri: https://github.com/scikit-learn/scikit-learn
+
+## File: scikit-learn_scikit-learn/sklearn/externals/array_api_compat/_internal.py
+
+Prompts
+
+```
+['create a decorator that automatically injects an array module as the xp keyword argument into wrapped functions', "build a function that imports and clones all public symbols from a module into the caller's globals dictionary", 'test that the get_xp decorator preserves the original function signature while hiding the xp parameter', 'refactor the get_xp decorator to generate default docstrings for wrapped functions when no docstring exists', 'summarize how clone_module imports module symbols using both exec import-star and dir iteration strategies']
+```
+
+Usage
+
+```
+{'create_get_xp_decorator': 'create a decorator that automatically injects an array module as the xp keyword argument into wrapped functions', 'build_clone_module_wrapper': "build a function that imports and clones all public symbols from a module into the caller's globals dictionary", 'test_get_xp_signature_preservation': 'test that the get_xp decorator preserves the original function signature while hiding the xp parameter', 'refactor_get_xp_docstring': 'refactor the get_xp decorator to generate default docstrings for wrapped functions when no docstring exists', 'summarize_clone_module_behavior': 'summarize how clone_module imports module symbols using both exec import-star and dir iteration strategies'}
+```
+

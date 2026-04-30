@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: huggingface/text-generation-inference
+- repo_uri: https://github.com/huggingface/text-generation-inference.git
+
+## File: huggingface_text-generation-inference/server/text_generation_server/layers/compressed_tensors/loader.py
+
+Prompts
+
+```
+['build a CompressedTensorsLoader from a config dict containing quantization_config for loading compressed checkpoint weights', 'create a weights loader for a quantization group by calling _create_loader_for_group with format, group name, and scheme', 'get weights from a compressed checkpoint by calling get_weights with a Weights object and parameter prefix', 'lookup the appropriate weights loader for a given parameter prefix using _lookup_loader', 'get column-packed weights from a compressed checkpoint using get_weights_col_packed with block sizes', 'create a W8A8IntLoader to load w8a8 integer compressed-tensors weights with symmetric quantization args', 'build an Int8Weight dataclass and call get_linear to produce a W8A8IntLinear layer with optional bias', 'create a W8A8IntLinear module with transposed int8 weights and weight_scale for cutlass kernel inference', 'run the W8A8IntLinear forward pass to quantize input and compute scaled int8 matrix multiplication', 'review the W8A8IntLoader get_weights method to load int8 weight tensors and optional weight scales', 'create a W8ANFpLoader instance with QuantizationArgs for W8A8 FP compressed-tensors weight loading', 'create a W8ANFpLoader with 16-bit input activations to force W8A16 quantization mode', 'call get_weights on W8ANFpLoader to load an Fp8Weight with scales from a Weights object by prefix', 'call get_multi_weights_col on W8ANFpLoader to concatenate FP8 weights from multiple prefixes along a dimension', 'create a WNA16IntLoader instance with QuantizationArgs to load W4A16 or W8A16 compressed tensor weights', "load and repack a single layer's quantized weights for GPTQ-Marlin kernel inference", 'load column-packed quantized weights with specified block sizes for sharded model loading', 'concatenate and repack quantized weights from multiple layer prefixes along a given dimension', 'load row-sharded quantized weights with support for tensor parallelism across multiple processes', 'create a WNA16Int24Loader instance with QuantizationArgs to load W4A16 INT 2:4 sparsity checkpoints', 'get quantized weight_packed, meta, and scale_packed tensors for a layer prefix without tensor parallelism']
+```
+
+Usage
+
+```
+{'build_compressed_tensors_loader': 'build a CompressedTensorsLoader from a config dict containing quantization_config for loading compressed checkpoint weights', 'create_loader_for_quantization_group': 'create a weights loader for a quantization group by calling _create_loader_for_group with format, group name, and scheme', 'get_weights_from_compressed_checkpoint': 'get weights from a compressed checkpoint by calling get_weights with a Weights object and parameter prefix', 'lookup_loader_for_prefix': 'lookup the appropriate weights loader for a given parameter prefix using _lookup_loader', 'get_col_packed_weights': 'get column-packed weights from a compressed checkpoint using get_weights_col_packed with block sizes'}
+```
+
+## File: huggingface_text-generation-inference/server/text_generation_server/layers/compressed_tensors/w8a8_int.py
+
+Prompts
+
+```
+['build a CompressedTensorsLoader from a config dict containing quantization_config for loading compressed checkpoint weights', 'create a weights loader for a quantization group by calling _create_loader_for_group with format, group name, and scheme', 'get weights from a compressed checkpoint by calling get_weights with a Weights object and parameter prefix', 'lookup the appropriate weights loader for a given parameter prefix using _lookup_loader', 'get column-packed weights from a compressed checkpoint using get_weights_col_packed with block sizes', 'create a W8A8IntLoader to load w8a8 integer compressed-tensors weights with symmetric quantization args', 'build an Int8Weight dataclass and call get_linear to produce a W8A8IntLinear layer with optional bias', 'create a W8A8IntLinear module with transposed int8 weights and weight_scale for cutlass kernel inference', 'run the W8A8IntLinear forward pass to quantize input and compute scaled int8 matrix multiplication', 'review the W8A8IntLoader get_weights method to load int8 weight tensors and optional weight scales', 'create a W8ANFpLoader instance with QuantizationArgs for W8A8 FP compressed-tensors weight loading', 'create a W8ANFpLoader with 16-bit input activations to force W8A16 quantization mode', 'call get_weights on W8ANFpLoader to load an Fp8Weight with scales from a Weights object by prefix', 'call get_multi_weights_col on W8ANFpLoader to concatenate FP8 weights from multiple prefixes along a dimension', 'create a WNA16IntLoader instance with QuantizationArgs to load W4A16 or W8A16 compressed tensor weights', "load and repack a single layer's quantized weights for GPTQ-Marlin kernel inference", 'load column-packed quantized weights with specified block sizes for sharded model loading', 'concatenate and repack quantized weights from multiple layer prefixes along a given dimension', 'load row-sharded quantized weights with support for tensor parallelism across multiple processes', 'create a WNA16Int24Loader instance with QuantizationArgs to load W4A16 INT 2:4 sparsity checkpoints', 'get quantized weight_packed, meta, and scale_packed tensors for a layer prefix without tensor parallelism']
+```
+
+Usage
+
+```
+{'create_W8A8IntLoader': 'create a W8A8IntLoader to load w8a8 integer compressed-tensors weights with symmetric quantization args', 'build_Int8Weight_linear': 'build an Int8Weight dataclass and call get_linear to produce a W8A8IntLinear layer with optional bias', 'create_W8A8IntLinear': 'create a W8A8IntLinear module with transposed int8 weights and weight_scale for cutlass kernel inference', 'run_W8A8IntLinear_forward': 'run the W8A8IntLinear forward pass to quantize input and compute scaled int8 matrix multiplication', 'review_W8A8IntLoader_get_weights': 'review the W8A8IntLoader get_weights method to load int8 weight tensors and optional weight scales'}
+```
+
+## File: huggingface_text-generation-inference/server/text_generation_server/layers/compressed_tensors/w8an_fp.py
+
+Prompts
+
+```
+['build a CompressedTensorsLoader from a config dict containing quantization_config for loading compressed checkpoint weights', 'create a weights loader for a quantization group by calling _create_loader_for_group with format, group name, and scheme', 'get weights from a compressed checkpoint by calling get_weights with a Weights object and parameter prefix', 'lookup the appropriate weights loader for a given parameter prefix using _lookup_loader', 'get column-packed weights from a compressed checkpoint using get_weights_col_packed with block sizes', 'create a W8A8IntLoader to load w8a8 integer compressed-tensors weights with symmetric quantization args', 'build an Int8Weight dataclass and call get_linear to produce a W8A8IntLinear layer with optional bias', 'create a W8A8IntLinear module with transposed int8 weights and weight_scale for cutlass kernel inference', 'run the W8A8IntLinear forward pass to quantize input and compute scaled int8 matrix multiplication', 'review the W8A8IntLoader get_weights method to load int8 weight tensors and optional weight scales', 'create a W8ANFpLoader instance with QuantizationArgs for W8A8 FP compressed-tensors weight loading', 'create a W8ANFpLoader with 16-bit input activations to force W8A16 quantization mode', 'call get_weights on W8ANFpLoader to load an Fp8Weight with scales from a Weights object by prefix', 'call get_multi_weights_col on W8ANFpLoader to concatenate FP8 weights from multiple prefixes along a dimension', 'create a WNA16IntLoader instance with QuantizationArgs to load W4A16 or W8A16 compressed tensor weights', "load and repack a single layer's quantized weights for GPTQ-Marlin kernel inference", 'load column-packed quantized weights with specified block sizes for sharded model loading', 'concatenate and repack quantized weights from multiple layer prefixes along a given dimension', 'load row-sharded quantized weights with support for tensor parallelism across multiple processes', 'create a WNA16Int24Loader instance with QuantizationArgs to load W4A16 INT 2:4 sparsity checkpoints', 'get quantized weight_packed, meta, and scale_packed tensors for a layer prefix without tensor parallelism']
+```
+
+Usage
+
+```
+{'create_w8a8_loader': 'create a W8ANFpLoader instance with QuantizationArgs for W8A8 FP compressed-tensors weight loading', 'create_w8a16_loader': 'create a W8ANFpLoader with 16-bit input activations to force W8A16 quantization mode', 'get_fp8_weights': 'call get_weights on W8ANFpLoader to load an Fp8Weight with scales from a Weights object by prefix', 'get_col_packed_weights': 'call get_weights_col_packed on W8ANFpLoader to load column-packed sharded FP8 weights with block sizes', 'get_multi_col_weights': 'call get_multi_weights_col on W8ANFpLoader to concatenate FP8 weights from multiple prefixes along a dimension'}
+```
+
+## File: huggingface_text-generation-inference/server/text_generation_server/layers/compressed_tensors/wna16_int.py
+
+Prompts
+
+```
+['build a CompressedTensorsLoader from a config dict containing quantization_config for loading compressed checkpoint weights', 'create a weights loader for a quantization group by calling _create_loader_for_group with format, group name, and scheme', 'get weights from a compressed checkpoint by calling get_weights with a Weights object and parameter prefix', 'lookup the appropriate weights loader for a given parameter prefix using _lookup_loader', 'get column-packed weights from a compressed checkpoint using get_weights_col_packed with block sizes', 'create a W8A8IntLoader to load w8a8 integer compressed-tensors weights with symmetric quantization args', 'build an Int8Weight dataclass and call get_linear to produce a W8A8IntLinear layer with optional bias', 'create a W8A8IntLinear module with transposed int8 weights and weight_scale for cutlass kernel inference', 'run the W8A8IntLinear forward pass to quantize input and compute scaled int8 matrix multiplication', 'review the W8A8IntLoader get_weights method to load int8 weight tensors and optional weight scales', 'create a W8ANFpLoader instance with QuantizationArgs for W8A8 FP compressed-tensors weight loading', 'create a W8ANFpLoader with 16-bit input activations to force W8A16 quantization mode', 'call get_weights on W8ANFpLoader to load an Fp8Weight with scales from a Weights object by prefix', 'call get_multi_weights_col on W8ANFpLoader to concatenate FP8 weights from multiple prefixes along a dimension', 'create a WNA16IntLoader instance with QuantizationArgs to load W4A16 or W8A16 compressed tensor weights', "load and repack a single layer's quantized weights for GPTQ-Marlin kernel inference", 'load column-packed quantized weights with specified block sizes for sharded model loading', 'concatenate and repack quantized weights from multiple layer prefixes along a given dimension', 'load row-sharded quantized weights with support for tensor parallelism across multiple processes', 'create a WNA16Int24Loader instance with QuantizationArgs to load W4A16 INT 2:4 sparsity checkpoints', 'get quantized weight_packed, meta, and scale_packed tensors for a layer prefix without tensor parallelism']
+```
+
+Usage
+
+```
+{'create_WNA16IntLoader': 'create a WNA16IntLoader instance with QuantizationArgs to load W4A16 or W8A16 compressed tensor weights', 'get_weights_single_layer': "load and repack a single layer's quantized weights for GPTQ-Marlin kernel inference", 'get_weights_col_packed': 'load column-packed quantized weights with specified block sizes for sharded model loading', 'get_multi_weights_col': 'concatenate and repack quantized weights from multiple layer prefixes along a given dimension', 'get_weights_row': 'load row-sharded quantized weights with support for tensor parallelism across multiple processes'}
+```
+
+## File: huggingface_text-generation-inference/server/text_generation_server/layers/compressed_tensors/wna16_int_24.py
+
+Prompts
+
+```
+['build a CompressedTensorsLoader from a config dict containing quantization_config for loading compressed checkpoint weights', 'create a weights loader for a quantization group by calling _create_loader_for_group with format, group name, and scheme', 'get weights from a compressed checkpoint by calling get_weights with a Weights object and parameter prefix', 'lookup the appropriate weights loader for a given parameter prefix using _lookup_loader', 'get column-packed weights from a compressed checkpoint using get_weights_col_packed with block sizes', 'create a W8A8IntLoader to load w8a8 integer compressed-tensors weights with symmetric quantization args', 'build an Int8Weight dataclass and call get_linear to produce a W8A8IntLinear layer with optional bias', 'create a W8A8IntLinear module with transposed int8 weights and weight_scale for cutlass kernel inference', 'run the W8A8IntLinear forward pass to quantize input and compute scaled int8 matrix multiplication', 'review the W8A8IntLoader get_weights method to load int8 weight tensors and optional weight scales', 'create a W8ANFpLoader instance with QuantizationArgs for W8A8 FP compressed-tensors weight loading', 'create a W8ANFpLoader with 16-bit input activations to force W8A16 quantization mode', 'call get_weights on W8ANFpLoader to load an Fp8Weight with scales from a Weights object by prefix', 'call get_multi_weights_col on W8ANFpLoader to concatenate FP8 weights from multiple prefixes along a dimension', 'create a WNA16IntLoader instance with QuantizationArgs to load W4A16 or W8A16 compressed tensor weights', "load and repack a single layer's quantized weights for GPTQ-Marlin kernel inference", 'load column-packed quantized weights with specified block sizes for sharded model loading', 'concatenate and repack quantized weights from multiple layer prefixes along a given dimension', 'load row-sharded quantized weights with support for tensor parallelism across multiple processes', 'create a WNA16Int24Loader instance with QuantizationArgs to load W4A16 INT 2:4 sparsity checkpoints', 'get quantized weight_packed, meta, and scale_packed tensors for a layer prefix without tensor parallelism']
+```
+
+Usage
+
+```
+{'init_WNA16Int24Loader': 'create a WNA16Int24Loader instance with QuantizationArgs to load W4A16 INT 2:4 sparsity checkpoints', 'get_weights': 'get quantized weight_packed, meta, and scale_packed tensors for a layer prefix without tensor parallelism', 'get_weights_col_packed': 'get column-packed sharded weights for a layer prefix using specified block sizes for tensor parallelism', 'get_multi_weights_col': 'concatenate column-sharded weights from multiple layer prefixes along dimension 1 into a single GPTQMarlin24Weight', 'get_weights_row': 'get row-sharded weights for a layer prefix with conditional scale packing based on group_size'}
+```
+

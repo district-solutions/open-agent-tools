@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/python/sglang/srt/connector/base_connector.py
+
+Prompts
+
+```
+['create a BaseConnector subclass that implements weight_iterator and pull_files for a remote storage backend', 'build a BaseKVConnector subclass implementing get, set, getstr, setstr, and list for a key-value store', 'build a BaseFileConnector subclass implementing glob to list remote files by pattern', 'test the BaseConnector close method cleans up the temporary local directory on exit', 'review the BaseConnector context manager support for safe resource cleanup on exit', 'create a RedisConnector instance from a Redis URL to store and retrieve PyTorch tensors', 'get a PyTorch tensor from Redis by key using the RedisConnector get method', 'set a PyTorch tensor into Redis by key using the RedisConnector set method', 'list all Redis keys matching a prefix pattern using the RedisConnector list method', 'pull model weight files from Redis storage to local disk using the RedisConnector pull_files method', 'create a RemoteInstanceConnector with a URL and CUDA device for distributed weight transfer', 'build a custom NCCL process group on a remote instance for model weight synchronization', 'test the RemoteInstanceConnector initialization with valid CUDA device and URL parameters', 'review the RemoteInstanceConnector class and its distributed process group initialization logic', 'summarize the RemoteInstanceConnector class and its role in remote distributed weight transfer', 'create an S3Connector instance to pull model weights from an S3 bucket into a local directory', 'build an S3Connector to pull safetensor files from S3 with allow and ignore patterns', 'test the S3Connector glob method to list remote files matching a pattern', 'review the S3Connector weight_iterator method that yields safetensor weights for model loading', 'refactor the S3Connector close method to properly clean up the boto3 client and base resources', 'create a function that parses a model name from a URL string by stripping the path prefix', 'test the parse_model_name function with various URL formats', 'create a function that pulls files from a database connector into a local directory', 'refactor the pull_files_from_db function to support allow and ignore file patterns', 'review the pull_files_from_db function for handling file listing and local directory creation']
+```
+
+Usage
+
+```
+{'create_BaseConnector': 'create a BaseConnector subclass that implements weight_iterator and pull_files for a remote storage backend', 'build_BaseKVConnector': 'build a BaseKVConnector subclass implementing get, set, getstr, setstr, and list for a key-value store', 'build_BaseFileConnector': 'build a BaseFileConnector subclass implementing glob to list remote files by pattern', 'test_BaseConnector_close': 'test the BaseConnector close method cleans up the temporary local directory on exit', 'review_BaseConnector_context_manager': 'review the BaseConnector context manager support for safe resource cleanup on exit'}
+```
+
+## File: sgl-project_sglang/python/sglang/srt/connector/redis.py
+
+Prompts
+
+```
+['create a BaseConnector subclass that implements weight_iterator and pull_files for a remote storage backend', 'build a BaseKVConnector subclass implementing get, set, getstr, setstr, and list for a key-value store', 'build a BaseFileConnector subclass implementing glob to list remote files by pattern', 'test the BaseConnector close method cleans up the temporary local directory on exit', 'review the BaseConnector context manager support for safe resource cleanup on exit', 'create a RedisConnector instance from a Redis URL to store and retrieve PyTorch tensors', 'get a PyTorch tensor from Redis by key using the RedisConnector get method', 'set a PyTorch tensor into Redis by key using the RedisConnector set method', 'list all Redis keys matching a prefix pattern using the RedisConnector list method', 'pull model weight files from Redis storage to local disk using the RedisConnector pull_files method', 'create a RemoteInstanceConnector with a URL and CUDA device for distributed weight transfer', 'build a custom NCCL process group on a remote instance for model weight synchronization', 'test the RemoteInstanceConnector initialization with valid CUDA device and URL parameters', 'review the RemoteInstanceConnector class and its distributed process group initialization logic', 'summarize the RemoteInstanceConnector class and its role in remote distributed weight transfer', 'create an S3Connector instance to pull model weights from an S3 bucket into a local directory', 'build an S3Connector to pull safetensor files from S3 with allow and ignore patterns', 'test the S3Connector glob method to list remote files matching a pattern', 'review the S3Connector weight_iterator method that yields safetensor weights for model loading', 'refactor the S3Connector close method to properly clean up the boto3 client and base resources', 'create a function that parses a model name from a URL string by stripping the path prefix', 'test the parse_model_name function with various URL formats', 'create a function that pulls files from a database connector into a local directory', 'refactor the pull_files_from_db function to support allow and ignore file patterns', 'review the pull_files_from_db function for handling file listing and local directory creation']
+```
+
+Usage
+
+```
+{'create_RedisConnector': 'create a RedisConnector instance from a Redis URL to store and retrieve PyTorch tensors', 'get_tensor_from_Redis': 'get a PyTorch tensor from Redis by key using the RedisConnector get method', 'set_tensor_to_Redis': 'set a PyTorch tensor into Redis by key using the RedisConnector set method', 'list_Redis_keys_by_prefix': 'list all Redis keys matching a prefix pattern using the RedisConnector list method', 'pull_model_files_from_Redis': 'pull model weight files from Redis storage to local disk using the RedisConnector pull_files method'}
+```
+
+## File: sgl-project_sglang/python/sglang/srt/connector/remote_instance.py
+
+Prompts
+
+```
+['create a BaseConnector subclass that implements weight_iterator and pull_files for a remote storage backend', 'build a BaseKVConnector subclass implementing get, set, getstr, setstr, and list for a key-value store', 'build a BaseFileConnector subclass implementing glob to list remote files by pattern', 'test the BaseConnector close method cleans up the temporary local directory on exit', 'review the BaseConnector context manager support for safe resource cleanup on exit', 'create a RedisConnector instance from a Redis URL to store and retrieve PyTorch tensors', 'get a PyTorch tensor from Redis by key using the RedisConnector get method', 'set a PyTorch tensor into Redis by key using the RedisConnector set method', 'list all Redis keys matching a prefix pattern using the RedisConnector list method', 'pull model weight files from Redis storage to local disk using the RedisConnector pull_files method', 'create a RemoteInstanceConnector with a URL and CUDA device for distributed weight transfer', 'build a custom NCCL process group on a remote instance for model weight synchronization', 'test the RemoteInstanceConnector initialization with valid CUDA device and URL parameters', 'review the RemoteInstanceConnector class and its distributed process group initialization logic', 'summarize the RemoteInstanceConnector class and its role in remote distributed weight transfer', 'create an S3Connector instance to pull model weights from an S3 bucket into a local directory', 'build an S3Connector to pull safetensor files from S3 with allow and ignore patterns', 'test the S3Connector glob method to list remote files matching a pattern', 'review the S3Connector weight_iterator method that yields safetensor weights for model loading', 'refactor the S3Connector close method to properly clean up the boto3 client and base resources', 'create a function that parses a model name from a URL string by stripping the path prefix', 'test the parse_model_name function with various URL formats', 'create a function that pulls files from a database connector into a local directory', 'refactor the pull_files_from_db function to support allow and ignore file patterns', 'review the pull_files_from_db function for handling file listing and local directory creation']
+```
+
+Usage
+
+```
+{'create_remote_instance_connector': 'create a RemoteInstanceConnector with a URL and CUDA device for distributed weight transfer', 'build_group_remote_instance': 'build a custom NCCL process group on a remote instance for model weight synchronization', 'test_remote_instance_connector': 'test the RemoteInstanceConnector initialization with valid CUDA device and URL parameters', 'review_remote_instance_connector': 'review the RemoteInstanceConnector class and its distributed process group initialization logic', 'summarize_remote_instance_connector': 'summarize the RemoteInstanceConnector class and its role in remote distributed weight transfer'}
+```
+
+## File: sgl-project_sglang/python/sglang/srt/connector/s3.py
+
+Prompts
+
+```
+['create a BaseConnector subclass that implements weight_iterator and pull_files for a remote storage backend', 'build a BaseKVConnector subclass implementing get, set, getstr, setstr, and list for a key-value store', 'build a BaseFileConnector subclass implementing glob to list remote files by pattern', 'test the BaseConnector close method cleans up the temporary local directory on exit', 'review the BaseConnector context manager support for safe resource cleanup on exit', 'create a RedisConnector instance from a Redis URL to store and retrieve PyTorch tensors', 'get a PyTorch tensor from Redis by key using the RedisConnector get method', 'set a PyTorch tensor into Redis by key using the RedisConnector set method', 'list all Redis keys matching a prefix pattern using the RedisConnector list method', 'pull model weight files from Redis storage to local disk using the RedisConnector pull_files method', 'create a RemoteInstanceConnector with a URL and CUDA device for distributed weight transfer', 'build a custom NCCL process group on a remote instance for model weight synchronization', 'test the RemoteInstanceConnector initialization with valid CUDA device and URL parameters', 'review the RemoteInstanceConnector class and its distributed process group initialization logic', 'summarize the RemoteInstanceConnector class and its role in remote distributed weight transfer', 'create an S3Connector instance to pull model weights from an S3 bucket into a local directory', 'build an S3Connector to pull safetensor files from S3 with allow and ignore patterns', 'test the S3Connector glob method to list remote files matching a pattern', 'review the S3Connector weight_iterator method that yields safetensor weights for model loading', 'refactor the S3Connector close method to properly clean up the boto3 client and base resources', 'create a function that parses a model name from a URL string by stripping the path prefix', 'test the parse_model_name function with various URL formats', 'create a function that pulls files from a database connector into a local directory', 'refactor the pull_files_from_db function to support allow and ignore file patterns', 'review the pull_files_from_db function for handling file listing and local directory creation']
+```
+
+Usage
+
+```
+{'create_S3Connector': 'create an S3Connector instance to pull model weights from an S3 bucket into a local directory', 'build_S3Connector_pull_files': 'build an S3Connector to pull safetensor files from S3 with allow and ignore patterns', 'test_S3Connector_glob': 'test the S3Connector glob method to list remote files matching a pattern', 'review_S3Connector_weight_iterator': 'review the S3Connector weight_iterator method that yields safetensor weights for model loading', 'refactor_S3Connector_close': 'refactor the S3Connector close method to properly clean up the boto3 client and base resources'}
+```
+
+## File: sgl-project_sglang/python/sglang/srt/connector/utils.py
+
+Prompts
+
+```
+['create a BaseConnector subclass that implements weight_iterator and pull_files for a remote storage backend', 'build a BaseKVConnector subclass implementing get, set, getstr, setstr, and list for a key-value store', 'build a BaseFileConnector subclass implementing glob to list remote files by pattern', 'test the BaseConnector close method cleans up the temporary local directory on exit', 'review the BaseConnector context manager support for safe resource cleanup on exit', 'create a RedisConnector instance from a Redis URL to store and retrieve PyTorch tensors', 'get a PyTorch tensor from Redis by key using the RedisConnector get method', 'set a PyTorch tensor into Redis by key using the RedisConnector set method', 'list all Redis keys matching a prefix pattern using the RedisConnector list method', 'pull model weight files from Redis storage to local disk using the RedisConnector pull_files method', 'create a RemoteInstanceConnector with a URL and CUDA device for distributed weight transfer', 'build a custom NCCL process group on a remote instance for model weight synchronization', 'test the RemoteInstanceConnector initialization with valid CUDA device and URL parameters', 'review the RemoteInstanceConnector class and its distributed process group initialization logic', 'summarize the RemoteInstanceConnector class and its role in remote distributed weight transfer', 'create an S3Connector instance to pull model weights from an S3 bucket into a local directory', 'build an S3Connector to pull safetensor files from S3 with allow and ignore patterns', 'test the S3Connector glob method to list remote files matching a pattern', 'review the S3Connector weight_iterator method that yields safetensor weights for model loading', 'refactor the S3Connector close method to properly clean up the boto3 client and base resources', 'create a function that parses a model name from a URL string by stripping the path prefix', 'test the parse_model_name function with various URL formats', 'create a function that pulls files from a database connector into a local directory', 'refactor the pull_files_from_db function to support allow and ignore file patterns', 'review the pull_files_from_db function for handling file listing and local directory creation']
+```
+
+Usage
+
+```
+{'create_function_parse_model_name': 'create a function that parses a model name from a URL string by stripping the path prefix', 'test_parse_model_name': 'test the parse_model_name function with various URL formats', 'create_function_pull_files_from_db': 'create a function that pulls files from a database connector into a local directory', 'refactor_pull_files_from_db': 'refactor the pull_files_from_db function to support allow and ignore file patterns', 'review_pull_files_from_db': 'review the pull_files_from_db function for handling file listing and local directory creation'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/diffusers
+- repo_uri: https://github.com/huggingface/diffusers
+
+## File: huggingface_diffusers/tests/pipelines/ddpm/test_ddpm.py
+
+Prompts
+
+```
+['test DDPMPipeline fast inference with a dummy UNet2DModel and DDPMScheduler on CPU', 'test DDPMPipeline inference using a DDPMScheduler with prediction type set to sample', 'test DDPMPipeline integration inference using the pretrained google/ddpm-cifar10-32 model', 'review the DDPMPipelineFastTests and DDPMPipelineIntegrationTests classes for test coverage and correctness', 'run the DDPM pipeline unit tests including fast inference and CIFAR-10 integration tests']
+```
+
+Usage
+
+```
+{'test_ddpm_fast_inference': 'test DDPMPipeline fast inference with a dummy UNet2DModel and DDPMScheduler on CPU', 'test_ddpm_predict_sample': 'test DDPMPipeline inference using a DDPMScheduler with prediction type set to sample', 'test_ddpm_cifar10_integration': 'test DDPMPipeline integration inference using the pretrained google/ddpm-cifar10-32 model', 'review_ddpm_pipeline_tests': 'review the DDPMPipelineFastTests and DDPMPipelineIntegrationTests classes for test coverage and correctness', 'run_ddpm_pipeline_tests': 'run the DDPM pipeline unit tests including fast inference and CIFAR-10 integration tests'}
+```
+

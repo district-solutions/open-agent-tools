@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/ernie4_5/test_modeling_ernie4_5.py
+
+Prompts
+
+```
+['test the Ernie4_5ModelTester class that extends CausalLMModelTester with Ernie4_5Model as base model', 'test the Ernie4_5ModelTest class that runs CausalLMModelTest with custom split percentages [0.5, 0.7, 0.8]', 'test the Ernie4_5IntegrationTest slow integration test for Ernie 4.5 0.3B model inference on cuda or xpu', 'test Ernie4_5ForCausalLM.generate with AutoTokenizer chat template and bfloat16 dtype on device_map auto', 'test torch compile for training with Ernie4_5ForCausalLM as the compile training class']
+```
+
+Usage
+
+```
+{'test_ernie4_5_model': 'test the Ernie4_5ModelTester class that extends CausalLMModelTester with Ernie4_5Model as base model', 'test_ernie4_5_model_suite': 'test the Ernie4_5ModelTest class that runs CausalLMModelTest with custom split percentages [0.5, 0.7, 0.8]', 'test_ernie4_5_integration': 'test the Ernie4_5IntegrationTest slow integration test for Ernie 4.5 0.3B model inference on cuda or xpu', 'test_ernie4_5_generate': 'test Ernie4_5ForCausalLM.generate with AutoTokenizer chat template and bfloat16 dtype on device_map auto', 'test_ernie4_5_compile_training': 'test torch compile for training with Ernie4_5ForCausalLM as the compile training class'}
+```
+

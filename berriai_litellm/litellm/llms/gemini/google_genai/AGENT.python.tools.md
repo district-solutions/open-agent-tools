@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/gemini/google_genai/transformation.py
+
+Prompts
+
+```
+['build a GoogleGenAIConfig instance to configure calling Google models in their native format', 'test the validate_environment method to verify API key and header setup for Gemini requests', 'run the sync_get_auth_token_and_url method to get authentication headers and API URL for Gemini', 'transform a generate content request into Google GenAI native format with model, contents, and config', 'convert citationSources in a Gemini response to snake_case citations field']
+```
+
+Usage
+
+```
+{'build_google_genai_config': 'build a GoogleGenAIConfig instance to configure calling Google models in their native format', 'test_validate_environment': 'test the validate_environment method to verify API key and header setup for Gemini requests', 'run_sync_get_auth_token_and_url': 'run the sync_get_auth_token_and_url method to get authentication headers and API URL for Gemini', 'transform_generate_content_request': 'transform a generate content request into Google GenAI native format with model, contents, and config', 'convert_citation_sources_to_citations': 'convert citationSources in a Gemini response to snake_case citations field'}
+```
+

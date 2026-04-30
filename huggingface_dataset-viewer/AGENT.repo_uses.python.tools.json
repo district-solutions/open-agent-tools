@@ -1,0 +1,1784 @@
+{
+  "huggingface_dataset-viewer/e2e/tests/conftest.py": {
+    "run_csv_path_fixture": "run the csv_path pytest fixture to create a temporary CSV dataset file with five columns",
+    "run_json_path_fixture": "run the json_path pytest fixture to create a temporary JSON dataset file from DATA_JSON",
+    "run_jsonl_path_fixture": "run the jsonl_path pytest fixture to create a temporary JSONL dataset file line by line",
+    "run_normal_user_public_dataset_fixture": "run the normal_user_public_dataset fixture to create a temporary HuggingFace dataset with CSV data",
+    "run_normal_user_images_public_dataset_fixture": "run the normal_user_images_public_dataset fixture to create a temporary HuggingFace dataset with image files and metadata"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_10_healthcheck.py": {
+    "test_healthcheck_endpoints": "test that the /healthcheck and /admin/healthcheck endpoints return 200 with ok in the response",
+    "test_hidden_endpoints": "test that the /, /metrics, and /admin/metrics endpoints return 404 Not Found",
+    "run_healthcheck_tests": "run the parametrized pytest tests to verify healthcheck endpoints are accessible and return ok",
+    "run_hidden_endpoint_tests": "run the parametrized pytest tests to verify root and metrics endpoints are hidden and return 404",
+    "review_healthcheck_test_coverage": "review the test file to ensure healthcheck and hidden endpoint tests cover all expected endpoints"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_11_api.py": {
+    "test_auth_public_datasets": "test public dataset access with token, cookie, and no authentication methods",
+    "test_auth_gated_datasets": "test gated dataset access requiring token authentication and rejecting unauthenticated requests",
+    "test_auth_private_datasets": "test private dataset access returning unauthenticated or not supported errors based on auth type",
+    "test_endpoint_coverage": "test all dataset viewer API endpoints including splits, first-rows, parquet, info, size, and statistics",
+    "test_enterprise_private_datasets": "test enterprise user and org private dataset access with expected error codes"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_12_splits.py": {
+    "test_splits_using_openapi": "test the splits endpoint using OpenAPI examples for various error scenarios like unauthenticated and missing parameters",
+    "test_splits_with_config_using_openapi": "test the splits endpoint with a specific config parameter and verify error handling",
+    "poll_splits_helper": "poll the splits endpoint for a dataset and optional config until a stable response is returned",
+    "post_refresh_helper": "post a refresh request for a dataset to trigger the worker to process its splits",
+    "get_openapi_body_example_helper": "get the expected OpenAPI response body example for a given endpoint, status code, and test name"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_13_first_rows.py": {
+    "test_first_rows_endpoint": "test the first rows endpoint with parametrized error cases for missing or empty parameters",
+    "test_first_rows_unauthenticated": "test the first rows endpoint returns 401 for an inexistent dataset without authentication",
+    "test_first_rows_missing_params": "test the first rows endpoint returns 422 when dataset, config, or split parameters are missing",
+    "test_first_rows_empty_params": "test the first rows endpoint returns 422 when dataset, config, or split parameters are empty strings",
+    "prepare_json_response": "prepare a JSON response by parsing response text and replacing the local URL with the production URL"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_14_statistics.py": {
+    "test_statistics_endpoint": "test the statistics endpoint for a JSONL dataset with multiple column types",
+    "test_string_label_column_statistics": "test the statistics endpoint validates string label column frequencies and unique counts",
+    "test_int_column_statistics": "test the statistics endpoint validates integer column histogram and mean values",
+    "test_float_column_statistics": "test the statistics endpoint validates float column histogram bin edges and standard deviation",
+    "test_bool_and_list_column_statistics": "test the statistics endpoint validates boolean frequencies and list column histogram data"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_20_api_healthcheck.py": {
+    "test_healthcheck": "test the API healthcheck endpoint by polling and asserting a 200 status code with ok in the response",
+    "run_test_healthcheck": "run the healthcheck test that polls the API URL and verifies the response contains ok",
+    "review_test_healthcheck": "review the test_healthcheck function that validates the API healthcheck endpoint returns a 200 status",
+    "summarize_test_healthcheck": "summarize the test_healthcheck function which polls the healthcheck endpoint and asserts success",
+    "refactor_test_healthcheck": "refactor the test_healthcheck function to support additional healthcheck response validation"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_21_api_metrics.py": {
+    "test_metrics_endpoint": "test the metrics endpoint returns HTTP 200 and valid Prometheus metrics",
+    "test_starlette_requests_total": "test that starlette_requests_total metric is recorded with a positive value",
+    "test_process_start_time_absent": "test that process_start_time_seconds metric is excluded in multiprocess mode",
+    "test_queue_jobs_not_in_api": "test that queue_jobs_total metric is absent from the public API metrics",
+    "test_responses_in_cache_not_in_api": "test that responses_in_cache_total metric is absent from the public API metrics"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_30_admin_healthcheck.py": {
+    "test_healthcheck": "test the admin healthcheck endpoint by polling and asserting a 200 status code with 'ok' in the response text"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_31_admin_metrics.py": {
+    "test_admin_metrics_endpoint": "test the admin metrics endpoint returns HTTP 200 with valid Prometheus metrics",
+    "verify_queue_jobs_metrics": "verify queue_jobs_total metrics exist for dataset-config-names, split-first-rows, and dataset-parquet queues",
+    "verify_worker_size_metrics": "verify worker_size_jobs_count metrics exist for light and medium worker sizes",
+    "verify_cache_metrics": "verify responses_in_cache_total metrics exist for dataset-config-names, split-first-rows, and dataset-parquet cache kinds",
+    "verify_disk_usage_metrics": "verify parquet_metadata_disk_usage metrics exist with total type label"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_40_rows_healthcheck.py": {
+    "test_healthcheck": "test the healthcheck endpoint by polling the rows service and asserting a 200 status code with ok in the response",
+    "run_test_healthcheck": "run the healthcheck test to verify the dataset viewer rows service is responding correctly",
+    "review_test_healthcheck": "review the test_healthcheck function that validates the rows service healthcheck endpoint returns ok",
+    "refactor_test_healthcheck": "refactor the test_healthcheck function to add additional assertions on the healthcheck response body",
+    "summarize_test_healthcheck": "summarize the test_healthcheck function that polls the rows service healthcheck endpoint and asserts success"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_41_rows_metrics.py": {
+    "test_metrics_endpoint": "test the rows service metrics endpoint returns HTTP 200 with valid Prometheus metrics",
+    "test_starlette_requests_total": "test the starlette_requests_total metric is recorded and has a positive value",
+    "test_process_start_time_absent": "test that process_start_time_seconds metric is excluded in multiprocess mode",
+    "test_queue_jobs_not_in_metrics": "test that queue_jobs_total metric is not exposed on the rows service endpoint",
+    "test_responses_in_cache_not_in_metrics": "test that responses_in_cache_total metric is not exposed on the rows service endpoint"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_50_search_healthcheck.py": {
+    "test_healthcheck": "test the search service healthcheck endpoint by polling and asserting a 200 status code with ok in the response",
+    "run_test_healthcheck": "run the healthcheck test that polls the search URL and verifies the endpoint returns a successful response",
+    "review_test_healthcheck": "review the test_healthcheck function that validates the search service healthcheck endpoint returns status 200 and contains ok"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_51_search_metrics.py": {
+    "test_metrics_endpoint": "test the metrics endpoint returns HTTP 200 and contains expected Prometheus metrics",
+    "test_starlette_requests_total_metric": "test the starlette_requests_total metric is recorded with a positive value after a GET request",
+    "test_process_start_time_excluded": "test the process_start_time_seconds metric is excluded in multiprocess mode",
+    "test_queue_jobs_total_not_in_search": "test the queue_jobs_total metric is not present for the search endpoint",
+    "test_responses_in_cache_not_in_search": "test the responses_in_cache_total metric is not present for the search endpoint"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_52_search.py": {
+    "test_search_endpoint": "test the search endpoint with a text query and verify returned rows and features",
+    "test_search_images_endpoint": "test the search endpoint for image datasets and verify signed image URLs are valid",
+    "test_search_audios_endpoint": "test the search endpoint for audio datasets and verify signed audio URLs are valid",
+    "test_search_pdfs_endpoint": "test the search endpoint for PDF datasets and verify signed PDF and thumbnail URLs",
+    "review_test_search_endpoint": "review the search endpoint test to verify row structure and feature schema assertions"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_53_filter.py": {
+    "test_filter_endpoint": "test the filter endpoint with where and orderby parameters to verify dataset row filtering and sorting",
+    "test_filter_endpoint_parameter_where": "test the filter endpoint where parameter with various SQL-like conditions including AND and OR operators",
+    "test_filter_endpoint_parameter_orderby": "test the filter endpoint orderby parameter to verify ascending and descending sort order on dataset columns",
+    "test_filter_images_endpoint": "test the filter endpoint for image datasets and verify signed URLs with expiration and signature parameters",
+    "test_filter_audios_endpoint": "test the filter endpoint for audio datasets and verify signed URLs with expiration and signature parameters",
+    "test_filter_pdfs_endpoint": "test the filter endpoint for PDF datasets and verify signed URLs for both documents and thumbnails"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_54_rows.py": {
+    "test_rows_endpoint": "test the rows endpoint to verify dataset rows and features are returned correctly with pagination",
+    "test_rows_images_endpoint": "test the rows endpoint for image datasets to verify signed URLs are valid and accessible",
+    "test_rows_audios_endpoint": "test the rows endpoint for audio datasets to verify signed audio URLs are valid and accessible",
+    "test_rows_pdfs_endpoint": "test the rows endpoint for PDF datasets to verify signed PDF and thumbnail URLs are valid",
+    "review_test_rows_endpoint": "review the test_rows_endpoint function to understand how dataset rows and features are validated"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_55_first_rows.py": {
+    "test_first_rows_images_endpoint": "test the first-rows endpoint to verify image URLs are signed with Expires, Signature, and Key-Pair-Id parameters",
+    "test_first_rows_audios_endpoint": "test the first-rows endpoint to verify audio URLs are signed with Expires, Signature, and Key-Pair-Id parameters",
+    "test_first_rows_pdfs_endpoint": "test the first-rows endpoint to verify PDF and thumbnail URLs are signed with Expires, Signature, and Key-Pair-Id parameters",
+    "review_test_first_rows_images_endpoint": "review the test_first_rows_images_endpoint function to understand how signed image URL assertions are validated",
+    "refactor_test_first_rows_pdfs_endpoint": "refactor the test_first_rows_pdfs_endpoint to add assertions for additional PDF metadata fields"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_60_worker_healthcheck.py": {
+    "test_worker_healthcheck": "test the worker healthcheck endpoint by polling the /healthcheck URL and asserting a 200 status code with 'ok' in the response text",
+    "run_test_worker_healthcheck": "run the test_worker_healthcheck function to verify the dataset viewer worker is responding to healthcheck requests",
+    "review_test_worker_healthcheck": "review the test_worker_healthcheck function that validates the worker healthcheck endpoint returns a 200 status and 'ok' response",
+    "refactor_test_worker_healthcheck": "refactor the test_worker_healthcheck function to add additional assertions or timeout handling for the healthcheck poll",
+    "summarize_test_worker_healthcheck": "summarize the test_worker_healthcheck function which polls the worker /healthcheck endpoint and asserts successful response"
+  },
+  "huggingface_dataset-viewer/e2e/tests/test_61_worker_metrics.py": {
+    "test_worker_metrics": "test the worker metrics endpoint to verify prometheus histogram metrics are exposed correctly",
+    "review_test_worker_metrics": "review the test_worker_metrics function that validates prometheus multiprocess metrics from the worker",
+    "run_test_worker_metrics": "run the worker metrics test to assert prometheus multiproc dir env var and histogram metrics exist",
+    "refactor_test_worker_metrics": "refactor the test_worker_metrics function to parse and validate additional prometheus metric types",
+    "summarize_test_worker_metrics": "summarize the test_worker_metrics function that checks worker endpoint returns valid prometheus metrics"
+  },
+  "huggingface_dataset-viewer/e2e/tests/utils.py": {
+    "poll_until_ready_and_assert": "poll an endpoint until it returns the expected status code and error code, then assert the response",
+    "post_refresh": "send a webhook POST request to trigger a dataset update event for the given dataset name",
+    "tmp_dataset": "create a temporary dataset on the Hugging Face Hub with uploaded files and auto-delete it after use",
+    "get_openapi_body_example": "extract a response body example from the OpenAPI spec file by path, status code, and example name",
+    "poll": "repeatedly GET an endpoint at intervals until it returns the expected HTTP status code or error field clears"
+  },
+  "huggingface_dataset-viewer/front/admin_ui/app.py": {
+    "run_gradio_admin_ui": "run the gradio admin UI app for the datasets server with demo.launch",
+    "review_healthcheck": "review the healthcheck function that pings the datasets server admin healthcheck endpoint",
+    "review_draw_graph": "review the draw_graph function that plots the processing graph using networkx and graphviz",
+    "review_fetch_home_dashboard": "review the fetch_home_dashboard function that fetches trending dataset coverage and builder stats",
+    "review_auth": "review the auth function that validates a Hugging Face token against the admin organization"
+  },
+  "huggingface_dataset-viewer/jobs/cache_maintenance/src/cache_maintenance/backfill.py": {
+    "backfill_all_datasets": "run backfill on all datasets in the database using parallel workers with progress logging",
+    "backfill_retryable_errors": "run backfill on datasets that have retryable errors using parallel workers",
+    "try_backfill_dataset": "attempt to backfill a single dataset and return statistics with error handling",
+    "backfill_datasets": "run parallel backfill on a set of datasets using a thread pool executor",
+    "BackfillStatistics_get_log": "summarize the backfill statistics including analyzed datasets, backfilled counts, and error rates"
+  },
+  "huggingface_dataset-viewer/jobs/cache_maintenance/src/cache_maintenance/cache_metrics.py": {
+    "run_collect_cache_metrics": "run the collect_cache_metrics function to update cache metrics in the database",
+    "test_collect_cache_metrics": "test the collect_cache_metrics function to verify cache metrics are updated correctly",
+    "refactor_collect_cache_metrics": "refactor collect_cache_metrics to batch delete obsolete metrics before upserting new ones",
+    "review_collect_cache_metrics": "review the collect_cache_metrics function for race conditions during metric updates",
+    "summarize_collect_cache_metrics": "summarize the collect_cache_metrics function that deletes obsolete and inserts new cache metrics"
+  },
+  "huggingface_dataset-viewer/jobs/cache_maintenance/src/cache_maintenance/config.py": {
+    "build_job_config_from_env": "build a python module that loads JobConfig from environment variables using JobConfig.from_env()",
+    "create_discussions_config_from_env": "create a DiscussionsConfig instance from environment variables using DiscussionsConfig.from_env()",
+    "create_directory_cleaning_config": "create a DirectoryCleaning config from env vars using DirectoryCleaning.from_env()",
+    "review_jobconfig_dataclass": "review the JobConfig dataclass fields and their default factory configurations",
+    "summarize_discussions_config": "summarize the DiscussionsConfig dataclass bot token and parquet revision settings"
+  },
+  "huggingface_dataset-viewer/jobs/cache_maintenance/src/cache_maintenance/discussions.py": {
+    "post_messages": "post messages in HuggingFace Hub discussions to notify users about parquet conversion",
+    "post_messages_on_parquet_conversion": "create Hub discussions for datasets recently converted to parquet format",
+    "create_discussion_description": "create a markdown discussion description with parquet links and bot name",
+    "create_link": "create a markdown link to a HuggingFace dataset commit or tree revision",
+    "limit_to_one_dataset_per_namespace": "filter a list of datasets to keep only one per namespace"
+  },
+  "huggingface_dataset-viewer/jobs/cache_maintenance/src/cache_maintenance/main.py": {
+    "run_cache_maintenance_job": "run the cache maintenance job that backfills datasets and collects metrics from environment config",
+    "backfill_all_datasets": "backfill all datasets in the cache using storage clients and HuggingFace endpoint credentials",
+    "backfill_retryable_errors": "backfill only the retryable errors in the cache using storage clients and HuggingFace credentials",
+    "collect_queue_and_cache_metrics": "collect queue metrics and worker size job counts from the MongoDB queue database",
+    "post_discussion_messages": "post messages to HuggingFace discussions using a bot token and parquet revision"
+  },
+  "huggingface_dataset-viewer/jobs/cache_maintenance/src/cache_maintenance/queue_metrics.py": {
+    "run_collect_queue_metrics": "run the collect_queue_metrics function to update queue metrics in the database",
+    "test_collect_queue_metrics": "test the collect_queue_metrics function to verify queue metrics are updated correctly",
+    "refactor_collect_queue_metrics": "refactor collect_queue_metrics to batch delete obsolete metrics before upserting new ones",
+    "review_collect_queue_metrics": "review the collect_queue_metrics function for race conditions during metric updates",
+    "summarize_collect_queue_metrics": "summarize the collect_queue_metrics function that deletes obsolete and inserts new queue metrics"
+  },
+  "huggingface_dataset-viewer/jobs/cache_maintenance/tests/conftest.py": {
+    "note": "This file is a pytest conftest.py containing only test fixtures (monkeypatch_session, job_config, cache_mongo_resource, queue_mongo_resource). No callable functions, classes, or APIs suitable for a simple argparse CLI module."
+  },
+  "huggingface_dataset-viewer/jobs/cache_maintenance/tests/test_backfill.py": {
+    "test_try_backfill_dataset": "test try_backfill_dataset with mocked backfill_dataset returning OperationsStatistics for various backfill outcomes",
+    "test_try_backfill_dataset_exception": "test try_backfill_dataset handles exceptions from backfill_dataset and reports error dataset count",
+    "test_backfill_datasets": "test backfill_datasets processes a set of dataset names and aggregates OperationsStatistics across all datasets",
+    "review_try_backfill_dataset": "review try_backfill_dataset function that wraps backfill_dataset and tracks analyzed and error dataset counts",
+    "review_backfill_datasets": "review backfill_datasets function that iterates over dataset names and accumulates operations statistics"
+  },
+  "huggingface_dataset-viewer/jobs/cache_maintenance/tests/test_collect_cache_metrics.py": {
+    "test_collect_cache_metrics": "test the collect_cache_metrics function with parametrized old_metrics scenarios using pytest",
+    "review_collect_cache_metrics": "review the collect_cache_metrics test that verifies CacheTotalMetricDocument updates after metrics collection",
+    "test_CacheTotalMetricDocument_save": "test saving CacheTotalMetricDocument instances with kind, http_status, error_code, and total fields",
+    "review_get_responses_count_by_kind_status_and_error_code": "review the mocked get_responses_count_by_kind_status_and_error_code used in cache metrics collection tests",
+    "test_CacheTotalMetricDocument_objects": "test querying CacheTotalMetricDocument objects to verify metrics match expected values"
+  },
+  "huggingface_dataset-viewer/jobs/cache_maintenance/tests/test_collect_queue_metrics.py": {
+    "test_collect_queue_metrics": "test the collect_queue_metrics function with parametrized old metrics to verify JobTotalMetricDocument updates",
+    "test_collect_worker_size_jobs_count": "test the collect_worker_size_jobs_count function with parametrized old metrics to verify WorkerSizeJobsCountDocument updates",
+    "review_MockQueue": "review the MockQueue class that overrides get_jobs_total_by_type_status_and_dataset_status and get_jobs_count_by_worker_size",
+    "run_test_collect_jobs_metrics": "run the parametrized test_collect_jobs_metrics test with pytest to validate queue metric collection",
+    "refactor_test_collect_worker_size_jobs_count": "refactor the test_collect_worker_size_jobs_count test to add new worker size parametrized cases"
+  },
+  "huggingface_dataset-viewer/jobs/cache_maintenance/tests/test_discussions.py": {
+    "test_limit_to_one_dataset_per_namespace": "test the limit_to_one_dataset_per_namespace function with various dataset list inputs to verify deduplication logic",
+    "test_create_link": "test the create_link function to verify it generates correct markdown links for HuggingFace dataset commits",
+    "test_post_messages_in_one_dataset": "test the post_messages function with a single dataset to verify discussion creation and comment posting",
+    "test_post_messages_with_two_datasets_in_one_namespace": "test post_messages with two datasets in one namespace to verify only one discussion is created",
+    "test_post_messages_for_outdated_response": "test post_messages with outdated cache responses to verify discussions are skipped for stale data"
+  },
+  "huggingface_dataset-viewer/jobs/cache_maintenance/tests/utils.py": {
+    "create_empty_hub_dataset_repo": "create a temporary dataset repository on the HuggingFace Hub with an optional prefix and gated access",
+    "delete_hub_dataset_repo": "delete a dataset repository from the HuggingFace Hub by its repo ID",
+    "TemporaryDataset_allocate_release": "allocate and release a temporary dataset resource on the HuggingFace Hub with gated or private settings",
+    "fetch_bot_discussion": "fetch the bot discussion details for a given dataset on the HuggingFace Hub",
+    "close_discussion": "close a discussion on a dataset by its discussion number on the HuggingFace Hub"
+  },
+  "huggingface_dataset-viewer/jobs/mongodb_migration/src/mongodb_migration/check.py": {
+    "get_random_oids": "sample random object IDs from a pymongo collection using an aggregation pipeline",
+    "get_random_documents": "fetch random mongoengine documents from a collection by sampling object IDs",
+    "check_documents": "validate a random sample of mongoengine documents including field loading and custom checks",
+    "review_check_documents": "review the check_documents function to validate mongoengine documents after a migration",
+    "test_get_random_oids": "test the get_random_oids function to sample random IDs from a pymongo collection"
+  },
+  "huggingface_dataset-viewer/jobs/mongodb_migration/src/mongodb_migration/collector.py": {
+    "get_migrations_list": "get the full list of MongoDB migrations from the MigrationsCollector class",
+    "review_migration_collector": "review the MigrationsCollector class and its registered migration versions",
+    "summarize_migration_order": "summarize the chronological order of MongoDB migrations in the collector",
+    "list_cache_migrations": "list all cache-related migrations registered in the MigrationsCollector",
+    "list_queue_migrations": "list all queue-related migrations registered in the MigrationsCollector"
+  },
+  "huggingface_dataset-viewer/jobs/mongodb_migration/src/mongodb_migration/config.py": {
+    "create_DatabaseMigrationsConfig_from_env": "create a DatabaseMigrationsConfig instance by reading MongoDB database and URL from environment variables",
+    "create_JobConfig_from_env": "create a JobConfig instance that aggregates cache, log, database migrations, and queue configs from env",
+    "build_DatabaseMigrationsConfig_with_defaults": "build a DatabaseMigrationsConfig dataclass with default MongoDB database name and localhost connection URL",
+    "build_JobConfig_with_nested_configs": "build a JobConfig dataclass with nested cache, log, database migrations, and queue configuration objects",
+    "review_config_dataclasses": "review the DatabaseMigrationsConfig and JobConfig frozen dataclasses and their from_env class methods"
+  },
+  "huggingface_dataset-viewer/jobs/mongodb_migration/src/mongodb_migration/database_migrations.py": {
+    "create_DatabaseMigration_document": "create a DatabaseMigration document with version and description fields to track executed migrations",
+    "query_DatabaseMigration_objects": "query DatabaseMigration objects to list all previously executed database migrations by version",
+    "drop_DatabaseMigration_collection": "drop the DatabaseMigration collection to clean the maintenance database for testing",
+    "implement_QuerySetManager_descriptor": "implement a QuerySetManager descriptor to provide typed QuerySet access on mongoengine Document subclasses",
+    "monkey_patch_QuerySet_class_getitem": "monkey patch QuerySet class_getitem to support generic type hints with mongo-types compatibility"
+  },
+  "huggingface_dataset-viewer/jobs/mongodb_migration/src/mongodb_migration/deletion_migrations.py": {
+    "create_CacheDeletionMigration": "create a CacheDeletionMigration to delete cache entries of a specific kind from MongoDB",
+    "create_QueueDeletionMigration": "create a QueueDeletionMigration to delete jobs of a specific type from the MongoDB queue",
+    "create_MigrationQueueDeleteTTLIndex": "create a MigrationQueueDeleteTTLIndex to delete a TTL index on a field in the jobs collection",
+    "create_MigrationDeleteIndex": "create a MigrationDeleteIndex to delete a named index from a specified MongoDB collection",
+    "create_MigrationRemoveFieldFromJob": "create a MigrationRemoveFieldFromJob to remove a specified field from all job documents"
+  },
+  "huggingface_dataset-viewer/jobs/mongodb_migration/src/mongodb_migration/main.py": {
+    "run_mongodb_migration_job": "run the mongodb migration job that connects to cache, queue, and migrations databases and executes pending migrations",
+    "review_run_job_function": "review the run_job function that initializes logging, connects to three MongoDB resources, and executes collected migrations",
+    "test_migrations_collector": "test the MigrationsCollector to verify it correctly discovers and returns all available migration classes",
+    "refactor_job_config": "refactor the JobConfig class to support additional environment variable configuration options for MongoDB connections",
+    "summarize_plan_execute": "summarize the Plan class execute method that runs collected migrations in order against the MongoDB databases"
+  },
+  "huggingface_dataset-viewer/jobs/mongodb_migration/src/mongodb_migration/plan.py": {
+    "execute_plan_migrations": "execute all pending MongoDB migrations using the Plan class with automatic rollback on failure",
+    "apply_plan_migrations": "apply pending MongoDB migrations by running up and validate methods on each migration",
+    "rollback_plan_migrations": "rollback executed MongoDB migrations in reverse order by calling down on each migration",
+    "get_planned_migrations": "get the list of pending MongoDB migrations that have not yet been applied to the database",
+    "get_saved_migrations_versions": "get the list of already applied MongoDB migration versions from the database"
+  },
+  "huggingface_dataset-viewer/jobs/mongodb_migration/src/mongodb_migration/renaming_migrations.py": {
+    "create_cache_renaming_migration": "create a CacheRenamingMigration to rename cache kind field from old to new value",
+    "run_cache_migration_up": "run the up method on CacheRenamingMigration to update cache kind entries in MongoDB",
+    "rollback_cache_migration_down": "run the down method on CacheRenamingMigration to rollback cache kind changes",
+    "create_queue_renaming_migration": "create a QueueRenamingMigration to rename job type and unicity_id fields in MongoDB",
+    "validate_migration_documents": "run validate on CacheRenamingMigration or QueueRenamingMigration to check modified documents"
+  },
+  "huggingface_dataset-viewer/jobs/mongodb_migration/src/mongodb_migration/migrations/_20230825170200_lock_add_ttl.py": {
+    "_comment": "Skipped: This is a MongoDB database migration file (adds/removes ttl field on locks collection). Per instructions: skip db migrations directories, alembic migration files, or orm migration files."
+  },
+  "huggingface_dataset-viewer/jobs/mongodb_migration/tests/test_deletion_migrations.py": {
+    "test_cache_deletion_migration": "test the CacheDeletionMigration class that removes cache entries by kind from MongoDB",
+    "test_queue_deletion_migration": "test the QueueDeletionMigration class that removes jobs by type from the MongoDB queue",
+    "test_queue_delete_jobs_by_status": "test the MigrationDeleteJobsByStatus class that deletes queue jobs matching specific statuses",
+    "test_queue_remove_field": "test the MigrationRemoveFieldFromJob class that removes a specified field from queue documents",
+    "test_cache_remove_field": "test the MigrationRemoveFieldFromCache class that removes a specified field from cache documents"
+  },
+  "huggingface_dataset-viewer/jobs/mongodb_migration/tests/test_resources.py": {
+    "test_cache_database": "test the MigrationsMongoResource by creating a mongo database alias and verifying it is available",
+    "test_MigrationsMongoResource_is_available": "test that a MigrationsMongoResource instance reports is_available after initialization",
+    "test_MigrationsMongoResource_release": "test that a MigrationsMongoResource can be released after use",
+    "test_MongoEngine_document_with_alias": "test a mongoengine Document using a MigrationsMongoResource db_alias in its meta configuration",
+    "test_MongoEngine_drop_collection": "test dropping a mongoengine Document collection after verifying it is empty"
+  },
+  "huggingface_dataset-viewer/libs/libapi/src/libapi/authentication.py": {
+    "auth_check_dataset": "check if a dataset is authorized for a request using an external authentication URL",
+    "get_jwt_token_from_request": "extract a JWT token from a Starlette request's authorization or x-api-key header",
+    "create_request_auth": "create an httpx Auth object that attaches authorization headers from a Starlette request",
+    "review_auth_check_flow": "review the auth_check function that validates JWT tokens and calls external auth services",
+    "refactor_request_auth_class": "refactor the RequestAuth class to support additional authentication header types"
+  },
+  "huggingface_dataset-viewer/libs/libapi/src/libapi/config.py": {
+    "create_UvicornConfig_from_env": "create a UvicornConfig instance from API_UVICORN_ environment variables for hostname, workers, and port",
+    "create_UvicornConfig_defaults": "create a UvicornConfig with default localhost hostname, 2 workers, and port 8000",
+    "create_ApiConfig_from_env": "create an ApiConfig instance from API_ environment variables including JWT settings and auth paths",
+    "create_ApiConfig_defaults": "create an ApiConfig with default EdDSA JWT algorithm and 0.2 second timeout",
+    "review_UvicornConfig_from_env": "review the UvicornConfig.from_env method that reads API_UVICORN_HOSTNAME, NUM_WORKERS, and PORT from environment"
+  },
+  "huggingface_dataset-viewer/libs/libapi/src/libapi/duckdb.py": {
+    "build_duckdb_index_file": "build a duckdb index file from parquet files for a HuggingFace dataset config and split",
+    "get_index_file_location_and_build_if_missing": "get the duckdb index file location and build it asynchronously if it does not exist yet",
+    "create_async_task": "create a fire-and-forget asyncio task from an awaitable with automatic error logging and cleanup",
+    "check_available_disk_space": "check if a directory has enough free disk space for a required number of bytes",
+    "get_cache_entry_from_parquet_metadata_job": "get the cache entry for a dataset config parquet metadata processing step from the cache"
+  },
+  "huggingface_dataset-viewer/libs/libapi/src/libapi/jwt_token.py": {
+    "create_algorithm": "create a JWT algorithm object from an algorithm name like RS256 or ES256",
+    "parse_jwt_public_key_json": "parse a JWK formatted JSON payload to extract and return a PEM public key",
+    "parse_jwt_public_key_pem": "parse and validate a PEM formatted public key string for JWT algorithm compatibility",
+    "get_jwt_public_keys": "fetch and compile JWT public keys from a URL and additional PEM keys into a list",
+    "validate_jwt": "validate a JWT token against public keys checking sub claim, permissions, and expiration"
+  },
+  "huggingface_dataset-viewer/libs/libapi/src/libapi/request.py": {
+    "get_request_parameter_length": "get the validated length query parameter from a Starlette request with max row limits",
+    "get_request_parameter_offset": "get the validated offset query parameter from a Starlette request for pagination",
+    "get_request_parameter": "get an optional or required query parameter from a Starlette request with a default value",
+    "test_get_request_parameter_length": "test the get_request_parameter_length function with invalid and out-of-range length values",
+    "refactor_get_request_parameter": "refactor get_request_parameter to support typed parameter extraction from Starlette requests"
+  },
+  "huggingface_dataset-viewer/libs/libapi/src/libapi/utils.py": {
+    "create_orjson_response": "create a starlette OrjsonResponse that renders content using orjson for fast JSON serialization",
+    "build_json_response_with_cache_headers": "build a JSON response with configurable cache control headers and optional error code and revision metadata",
+    "generate_json_error_response": "generate a JSON error response with a custom HTTP status code, error code header, and revision header",
+    "validate_parameters_are_non_empty_strings": "validate that all items in a list are non-empty strings using is_non_empty_string helper",
+    "convert_pyarrow_table_to_rows_list": "convert a pyarrow table to a list of RowItem dicts with row indices and truncated cell info"
+  },
+  "huggingface_dataset-viewer/libs/libapi/src/libapi/routes/metrics.py": {
+    "create_metrics_endpoint": "create a starlette endpoint that serves prometheus metrics with the correct content type header",
+    "build_prometheus_metrics_route": "build a prometheus metrics route that returns the latest metrics content from a prometheus instance",
+    "test_create_metrics_endpoint": "test the create_metrics_endpoint function to verify it returns a valid async endpoint handler",
+    "refactor_metrics_endpoint": "refactor the metrics endpoint to support custom prometheus metric filters or additional headers",
+    "review_create_metrics_endpoint": "review the create_metrics_endpoint function and its closure-based async handler pattern"
+  },
+  "huggingface_dataset-viewer/libs/libapi/tests/test_authentication.py": {
+    "test_auth_callback": "test the auth_callback function that simulates the HuggingFace Hub auth-check endpoint with various dataset access scenarios",
+    "test_get_jwt": "test the get_jwt helper function that creates RS256 encoded JWT tokens for a given dataset name",
+    "test_create_request": "test the create_request helper that builds a Starlette Request object from a mapping of header key-value pairs",
+    "test_external_auth_responses": "test the external auth check responses for HTTP status codes 200, 401, 403, 404, and 429",
+    "test_hf_timeout_seconds": "test the auth_check timeout behavior with configurable hf_timeout_seconds values including None and short timeouts"
+  },
+  "huggingface_dataset-viewer/libs/libapi/tests/test_duckdb.py": {
+    "test_check_available_disk_space": "test the check_available_disk_space function with a temp path and required space parameter",
+    "test_check_available_disk_space_nonexistent_subpath": "test the check_available_disk_space function with a nonexistent subpath to verify directory creation",
+    "review_check_available_disk_space_test": "review the test_check_available_disk_space parametrized test for edge case coverage",
+    "refactor_test_check_available_disk_space": "refactor the test_check_available_disk_space to add assertions for low disk space scenarios",
+    "summarize_test_duckdb": "summarize the test_duckdb module that tests disk space checking for DuckDB index operations"
+  },
+  "huggingface_dataset-viewer/libs/libapi/tests/test_jwt_token.py": {
+    "create_algorithm": "create a JWT algorithm instance for EdDSA, RS256, or HS256 signing schemes",
+    "parse_jwt_public_key_json": "parse a JWT public key from JSON payload format into PEM string",
+    "parse_jwt_public_key_pem": "parse and validate a JWT public key provided in PEM format",
+    "get_jwt_public_keys": "fetch and aggregate JWT public keys from a remote URL and additional environment keys",
+    "validate_jwt": "validate a JWT token signature, claims, permissions, and expiration for a given dataset"
+  },
+  "huggingface_dataset-viewer/libs/libapi/tests/test_request.py": {
+    "test_get_request_parameter": "test the get_request_parameter function to extract named query parameters from a Starlette request",
+    "test_get_request_parameter_raises": "test that get_request_parameter raises MissingRequiredParameterError when a required parameter is missing or empty",
+    "test_get_request_parameter_length": "test the get_request_parameter_length function to parse and validate the length query parameter",
+    "test_get_request_parameter_length_raises": "test that get_request_parameter_length raises InvalidParameterError for non-integer, negative, or oversized values",
+    "test_get_request_parameter_offset": "test the get_request_parameter_offset function to parse and validate the offset query parameter"
+  },
+  "huggingface_dataset-viewer/libs/libapi/tests/test_response.py": {
+    "test_create_response_basic": "test create_response function with a simple text dataset and verify features and rows output",
+    "test_create_response_row_idx": "test create_response with a custom row index column to verify row_idx values are used",
+    "test_create_response_image": "test create_response with an image dataset column and verify image src height and width",
+    "test_create_response_document": "test create_response with a PDF document dataset column and verify document and thumbnail storage",
+    "review_create_response": "review the create_response function tests covering text image and PDF dataset response generation"
+  },
+  "huggingface_dataset-viewer/libs/libapi/tests/test_utils.py": {
+    "test_get_cache_entry_success": "test that get_cache_entry_from_step returns a cache entry with HTTP 200 OK status",
+    "test_get_cache_entry_error": "test that get_cache_entry_from_step returns a cache entry with HTTP 500 internal server error status",
+    "test_get_cache_entry_no_cache": "test that get_cache_entry_from_step raises ResponseNotReadyError when no cache entry exists for the dataset",
+    "test_get_cache_entry_disabled_viewer": "test that get_cache_entry_from_step raises NotSupportedDisabledViewerError when the dataset viewer is disabled",
+    "test_get_cache_entry_blocked": "test that get_cache_entry_from_step raises DatasetInBlockListError when the dataset is in the blocked list"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/cloudfront.py": {
+    "create_cloudfront_signer": "create a CloudFrontSigner instance with a key pair id, PEM private key, and expiration seconds",
+    "sign_cloudfront_url": "sign a CloudFront URL with a canned policy that expires after the configured number of seconds",
+    "sign_cloudfront_url_with_expiry": "sign a CloudFront URL with a canned policy that expires at a specific datetime",
+    "get_cloudfront_signer_from_config": "get a CloudFrontSigner from a CloudFrontConfig or None if credentials are missing",
+    "handle_invalid_private_key": "handle an InvalidPrivateKeyError when loading a non-RSA or malformed PEM private key"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/config.py": {
+    "create_assets_config_from_env": "create an AssetsConfig instance by reading ASSETS_BASE_URL and ASSETS_STORAGE_ROOT from environment variables",
+    "create_s3_config_from_env": "create an S3Config instance by reading S3_ACCESS_KEY_ID and S3_REGION_NAME from environment variables",
+    "create_cache_config_from_env": "create a CacheConfig instance by reading CACHE_MONGO_DATABASE and CACHE_MONGO_URL from environment variables",
+    "create_common_config_from_env": "create a CommonConfig instance by reading COMMON_HF_ENDPOINT and COMMON_BLOCKED_DATASETS from environment variables",
+    "validate_storage_protocol": "validate a string with is_storage_protocol to check if it is a valid file or s3 storage protocol"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/croissant_utils.py": {
+    "escape_ids": "escape IDs and names in Croissant by replacing special characters and ensuring uniqueness against existing IDs",
+    "get_record_set": "get a unique record set name for a dataset config by prefixing with record_set_ when dataset and config names match",
+    "truncate_features_from_croissant_crumbs_response": "truncate features from a croissant crumbs response to avoid returning more than 1000 columns",
+    "escape_jsonpath_key": "escape single quotes and brackets in a feature name to produce a valid JSONPath key string",
+    "feature_to_croissant_field": "convert a Hugging Face Datasets feature like Value Image Audio or Video to a Croissant field dictionary"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/duckdb_utils.py": {
+    "get_indexable_columns": "get the list of indexable string columns from a HuggingFace dataset Features object",
+    "get_monolingual_stemmer": "get the appropriate DuckDB FTS stemmer for a dataset based on its language metadata",
+    "compute_transformed_data": "compute transformed data columns like string lengths, audio durations, video durations, and image dimensions from parquet files",
+    "create_index": "create a full-text search index in DuckDB using parallel tokenization with BM25 scoring and stopwords",
+    "duckdb_connect": "create an in-memory DuckDB connection with a database attached, FTS extension loaded, and external access disabled"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/exceptions.py": {
+    "create_custom_error": "create a CustomError exception with a message, HTTP status code, and error code for API responses",
+    "raise_cacheable_error": "raise a CacheableError subclass like DatasetNotFoundError or ConfigNotFoundError with an optional cause exception",
+    "convert_error_to_response": "call as_response on a CustomError to get a JSON-serializable error dict with optional cause details",
+    "handle_dataset_not_found": "raise DatasetNotFoundError when a requested dataset does not exist on the HuggingFace Hub",
+    "handle_split_not_found": "raise SplitNotFoundError when a requested dataset split does not exist"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/log.py": {
+    "init_logging_default": "init logging with default INFO level and standard format for the application",
+    "init_logging_debug": "init logging with DEBUG level to capture detailed diagnostic messages",
+    "init_logging_error": "init logging with ERROR level to capture only critical error messages",
+    "init_logging_warning": "init logging with WARNING level to capture warnings and above",
+    "init_logging_custom_format": "init logging with a custom level and formatted output including timestamp and logger name"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/operations.py": {
+    "get_dataset_info": "get dataset information from the HuggingFace Hub for a given dataset ID and endpoint",
+    "get_entity_info": "get entity information for a HuggingFace user or organization using the whoisthis API",
+    "get_latest_revision_or_raise": "get the latest supported dataset revision or raise an error if the dataset is not supported",
+    "delete_dataset": "delete a dataset and its associated cache entries using storage clients",
+    "backfill_dataset": "backfill a dataset by checking support, deleting if needed, and running backfill tasks"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/orchestrator.py": {
+    "backfill_dataset": "backfill a dataset by analyzing its state and creating jobs for all missing processing steps",
+    "remove_dataset": "remove a dataset by deleting its waiting jobs, cache entries, storage directories, and ref branches",
+    "finish_job": "finish a job by storing its result in the cache and triggering the next processing steps",
+    "set_revision": "set the current revision of a dataset and create jobs for every first processing step",
+    "smart_set_revision": "smart update a dataset revision by only updating cache and storage when only metadata files changed"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/parquet_utils.py": {
+    "check_parquet_export_partial": "check if a parquet file URL points to a partial dataset export by examining the split directory name",
+    "extract_split_from_parquet_url": "extract the split directory name from a parquet file URL stored in the Hugging Face Hub repository",
+    "compute_parquet_files_to_process": "compute the number of parquet files, bytes, and rows to process within a maximum size limit for indexing",
+    "truncate_binary_columns": "truncate binary columns in a PyArrow table to a specified maximum length and return the modified table",
+    "query_parquet_rows_with_rowsindex": "query rows from parquet files using the RowsIndex class with offset and length parameters for paginated access"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/processing_graph.py": {
+    "build_processing_graph": "build a ProcessingGraph from a specification mapping step names to their input types and dependencies",
+    "get_processing_step_by_name": "get a ProcessingStep by its name from the processing graph and return a copy",
+    "get_children_steps": "get the list of child processing steps that are triggered after a given step completes",
+    "get_ancestors_steps": "get all ancestor processing steps that directly or indirectly trigger a given step",
+    "parse_artifact_id": "parse an Artifact id string into its dataset, revision, config, split, and processing step name parts"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/prometheus.py": {
+    "use_step_profiler_context_manager": "use StepProfiler as a context manager to measure and report processing time of a method step to Prometheus",
+    "use_long_step_profiler": "use LongStepProfiler context manager to profile long-running method steps with custom histogram buckets",
+    "get_prometheus_latest_content": "call getLatestContent on a Prometheus instance to retrieve the current metrics as a UTF-8 string",
+    "update_queue_jobs_total_metric": "call update_queue_jobs_total to sync the QUEUE_JOBS_TOTAL gauge with the latest job metrics from the database",
+    "update_disk_usage_gauge": "call update_disk_gauge with a Gauge and directory path to report disk usage metrics to Prometheus"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/resources.py": {
+    "create_mongo_resource": "create a MongoResource dataclass to connect to a MongoDB database with a mongoengine alias",
+    "check_mongo_availability": "check if a MongoResource database connection is available using the is_available method",
+    "enable_change_stream_images": "enable pre and post images on a MongoDB collection using enable_pre_and_post_images",
+    "create_cache_mongo_resource": "create a CacheMongoResource dataclass to connect to the cache MongoDB database",
+    "create_queue_mongo_resource": "create a QueueMongoResource dataclass to connect to the queue MongoDB database"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/scripts.py": {
+    "run_cli_all_projects": "run the interactive multi-project CLI that executes shell commands across all monorepo projects",
+    "review_cli_all_projects": "review the cli_all_projects function that discovers projects via pyproject.toml and runs commands in each",
+    "refactor_cli_all_projects": "refactor cli_all_projects to support non-interactive command execution across monorepo project directories",
+    "test_cli_all_projects": "test the cli_all_projects function to verify it discovers all projects with pyproject.toml files",
+    "summarize_cli_all_projects": "summarize the cli_all_projects function that iterates over monorepo projects and runs subprocess commands"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/simple_cache.py": {
+    "upsert_response": "upsert a cached response entry into MongoDB with content, http status, and optional error code",
+    "get_response": "get a cached response entry by kind, dataset, config, and split from MongoDB",
+    "delete_response": "delete a cached response entry by kind, dataset, config, and split from MongoDB",
+    "get_cache_reports": "get paginated cache reports for a given kind using cursor-based pagination",
+    "get_response_metadata": "get metadata for a cached response including updated_at and failed_runs without content"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/state.py": {
+    "build_dataset_state": "build a DatasetState to get config names, config states, and artifact states for a dataset",
+    "build_cache_state": "build a CacheState to check if a cache entry exists, is successful, or needs retry",
+    "build_job_state": "build a JobState to check if a job is in process for a given dataset revision",
+    "build_split_state": "build a SplitState to get artifact states for all processing steps of a dataset split",
+    "build_first_steps_dataset_state": "build a FirstStepsDatasetState to get only the first processing step artifact states for a dataset"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/statistics_utils.py": {
+    "compute_numerical_statistics": "compute min, max, mean, median, std and histogram for a numerical column in a polars DataFrame",
+    "compute_categorical_statistics": "compute value counts and frequencies for a class label column using the ClassLabelColumn class",
+    "compute_histogram": "compute a histogram with bin edges for float or int column data using polars",
+    "compute_audio_video_statistics": "compute duration statistics for audio or video columns by reading parquet files and decoding media",
+    "compute_datetime_statistics": "compute min, max, mean, median, std and histogram for datetime columns by converting to timedelta seconds"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/storage.py": {
+    "init_cache_directory": "create a cache directory using init_dir with a custom appname for application-specific storage",
+    "init_parquet_metadata_dir": "initialize a parquet metadata cache directory at the default user cache location",
+    "init_duckdb_index_cache_dir": "initialize a duckdb index cache directory for dataset indexing operations",
+    "remove_directory": "remove a directory tree using remove_dir without raising errors if it does not exist",
+    "clean_expired_cache": "clean expired files from a cache directory using clean_dir with a time interval in seconds"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/storage_client.py": {
+    "create_storage_client_s3": "create a StorageClient instance with s3 protocol and S3Config for cloud storage",
+    "create_storage_client_file": "create a StorageClient instance with file protocol for local filesystem storage",
+    "delete_dataset_directory": "delete a dataset directory recursively using StorageClient delete_dataset_directory method",
+    "update_revision_directory": "rename a dataset revision directory using update_revision_of_dataset_revision_directory method",
+    "generate_object_path": "generate a URL-safe object path for a dataset asset using generate_object_path static method"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/url_preparator.py": {
+    "prepare_urls_in_first_rows": "prepare asset URLs in first rows data by setting revision and signing with CloudFront",
+    "get_asset_url_paths": "get all asset URL paths for Image Audio Video and Pdf features from a Features object",
+    "prepare_url": "prepare a single asset URL by replacing revision placeholders and signing with CloudFront",
+    "to_features_dict": "convert a list of feature items into a features dictionary mapping names to types",
+    "visit_feature_tree": "visit a nested feature tree and apply a function to each node with its path"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/utils.py": {
+    "serialize_and_truncate_object": "serialize a Python object as JSON and truncate to a maximum byte size while preserving UTF-8 boundaries",
+    "download_file_from_hub": "download a file from a HuggingFace Hub repository with automatic retry logic for transient errors",
+    "retry_with_backoff": "decorate a function to retry on exceptions with configurable sleep intervals between attempts",
+    "check_dataset_blocked": "check if a dataset is in a block list and raise an error if it matches using fnmatch patterns",
+    "identify_datetime_format": "identify the format string of a datetime string by matching against common datetime format patterns"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/queue/dataset_blockages.py": {
+    "block_dataset": "create a dataset blockage in the mongoDB database for a given dataset name",
+    "get_blocked_datasets": "return the list of all currently blocked datasets from the database",
+    "is_blocked": "check if a specific dataset is currently blocked and return a boolean",
+    "DatasetBlockageDocument": "create a mongoengine document to represent a dataset blockage with dataset and blocked_at fields",
+    "DATASET_BLOCKAGE_EXPIRE_AFTER_SECONDS": "review the constant that sets the 6 hour TTL expiration for dataset blockages"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/queue/jobs.py": {
+    "add_job_to_queue": "add a job to the queue with a type, dataset, revision, and difficulty level",
+    "start_next_waiting_job": "start the next waiting job from the queue by priority and creation date",
+    "finish_job_and_release_lock": "finish a started job, delete it from the queue, and release its lock",
+    "get_zombie_jobs": "get zombie jobs that have not sent heartbeats within a maximum time threshold",
+    "delete_dataset_waiting_jobs": "delete all waiting jobs for a given dataset and release their locks"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/queue/lock.py": {
+    "create_lock_context_manager": "create a MongoDB lock context manager with a key and owner to prevent concurrent access",
+    "acquire_lock_with_retry": "acquire a MongoDB lock with exponential backoff retry and raise TimeoutError on failure",
+    "release_lock_by_key": "release a MongoDB lock by setting the owner to None for a given key",
+    "lock_git_branch": "lock a git branch of a dataset on the hub for read/write operations using lock.git_branch",
+    "review_lock_document_schema": "review the Lock mongoengine Document schema with key, owner, ttl, and TTL indexes"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/queue/metrics.py": {
+    "increase_metric": "increase the job total metric count for a given dataset job type and status in MongoDB",
+    "decrease_metric": "decrease the job total metric count for a given job type and status in MongoDB",
+    "update_metrics_for_type": "update metrics by decreasing the previous status count and increasing the new status count for a job type",
+    "decrease_worker_size_metrics": "decrease the worker size jobs count metric by difficulty level in MongoDB",
+    "get_worker_size": "get the worker size category from a job difficulty value using the WorkerSizeJobsCountDocument class"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/queue/past_jobs.py": {
+    "create_past_job": "create a past job entry in MongoDB with dataset name, start time, and finish time",
+    "query_past_job_documents": "query PastJobDocument objects by dataset to sum durations and check rate limiting thresholds",
+    "configure_rate_limit_window": "configure the RATE_LIMIT_WINDOW_SECONDS constant to control how long past job records are retained",
+    "set_compute_multiplier": "set an ALLOWED_COMPUTE_MULTIPLIER for a dataset to allocate more compute time than the default threshold",
+    "define_past_job_document_schema": "define a mongoengine PastJobDocument schema with dataset, duration, and finished_at fields for job tracking"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/viewer_utils/asset.py": {
+    "create_image_file": "create a python module that saves a PIL Image to storage and returns an ImageSource with src, height, and width",
+    "create_audio_file": "create a python module that saves audio bytes to storage with optional format conversion using pydub and ffmpeg",
+    "create_pdf_file": "create a python module that saves a PDF file and generates a thumbnail image from its first page using fitz",
+    "create_video_file": "create a python module that saves video data from a URL path or raw bytes to storage and returns a VideoSource",
+    "replace_dataset_git_revision_placeholder": "create a python module that replaces the dataset_git_revision placeholder in a URL or object path with the actual revision string"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/viewer_utils/features.py": {
+    "create_image_asset": "create an image asset file from a PIL image or bytes for a dataset row",
+    "create_audio_asset": "create an audio asset file from bytes or a path for a dataset row",
+    "create_video_asset": "create a video asset file from bytes or a path for a dataset row",
+    "create_pdf_asset": "create a PDF asset file from bytes or a path for a dataset row",
+    "get_cell_value": "recursively resolve a dataset cell value by its field type including nested lists and dicts"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/viewer_utils/parquet_metadata.py": {
+    "create_parquet_metadata_directory": "create a directory structure for parquet metadata organized by dataset config and split",
+    "create_parquet_metadata_file": "create a parquet metadata file from pyarrow FileMetaData in the correct dataset directory",
+    "create_metadata_dir_with_permissions": "create a parquet metadata directory with 0o755 permissions for a given dataset config and split",
+    "overwrite_parquet_metadata_file": "overwrite an existing parquet metadata file or write a new one if it does not exist",
+    "get_metadata_subpath": "get the subpath string for a parquet metadata file under a dataset config and split"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/viewer_utils/rows.py": {
+    "transform_rows_post_process": "transform dataset rows by resolving cell values for images and audio using a storage client",
+    "transform_rows_handle_errors": "transform rows and handle PIL image errors with RowsPostProcessingError suggestions for corrupted images",
+    "create_first_rows_response": "create a SplitFirstRowsResponse with truncated rows that fit within max bytes and row number limits",
+    "create_first_rows_response_truncate": "create a first rows response that truncates large cells and skips image audio pdf and video columns",
+    "create_first_rows_response_validate": "create a first rows response that validates column count and raises TooManyColumnsError if exceeded"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/src/libcommon/viewer_utils/truncate_rows.py": {
+    "create_truncated_row_items": "create truncated row items from a list of rows with byte size limits and minimum row count",
+    "truncate_row_item": "truncate all cells in a single row item to a maximum byte size while preserving specified columns",
+    "truncate_row_items_cells": "truncate cells across multiple row items in reverse order until total size fits within byte limit",
+    "to_row_item": "convert a raw row dictionary into a RowItem with row index and empty truncated cells list",
+    "review_truncate_rows": "review the truncate_rows module functions for row truncation logic and byte size enforcement"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/conftest.py": {
+    "create_env_fixture": "create a pytest session fixture that returns an Env instance with variable expansion enabled",
+    "create_cache_mongo_host_fixture": "create a pytest session fixture that reads the CACHE_MONGO_URL environment variable and returns it",
+    "create_queue_mongo_resource_fixture": "create a pytest fixture that provides a QueueMongoResource context manager for the test queue database",
+    "create_cache_mongo_resource_fixture": "create a pytest fixture that provides a CacheMongoResource context manager for the test cache database",
+    "create_storage_client_fixture": "create a pytest session fixture that returns a file-based StorageClient with a temporary storage root"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_backfill.py": {
+    "test_dataset_backfill_initial_state": "test the initial backfill plan state for genealogy fan-in-out and parallel processing graphs",
+    "test_dataset_backfill_job_lifecycle": "test the full job creation and termination lifecycle across multiple processing graph topologies",
+    "test_dataset_backfill_outdated_by_parent": "test that child artifacts are marked outdated when their parent step is recomputed",
+    "test_dataset_backfill_delete_jobs": "test job deletion logic that keeps highest priority started jobs and removes waiting duplicates",
+    "test_dataset_backfill_multiple_revisions": "test that switching git revisions deletes old pending jobs and creates new ones for the revision"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_backfill_on_real_graph.py": {
+    "test_plan_job_creation_and_termination": "test the dataset backfill plan job creation and termination workflow with cache and queue status assertions",
+    "test_backfill_should_delete_inexistent_configs": "test that the backfill plan raises an error when child artifacts reference inexistent config names",
+    "test_backfill_should_delete_inexistent_splits": "test that the backfill plan raises an error when child artifacts reference inexistent split names",
+    "run_dataset_backfill_plan": "run the dataset backfill plan to create jobs for all dataset-level processing steps in the graph",
+    "assert_dataset_backfill_plan": "assert the dataset backfill plan state including config names, split names, cache status, and queue status"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_cloudfront.py": {
+    "test_cloudfront_sign_url": "test the CloudFrontSigner class to sign a URL with an expiration time and key pair",
+    "test_cloudfront_private_sign_url": "test the CloudFrontSigner _sign_url method to sign a URL with a specific date",
+    "test_cloudfront_invalid_key": "test that CloudFrontSigner raises InvalidPrivateKeyError when given an invalid RSA private key",
+    "review_cloudfront_signer_tests": "review the CloudFrontSigner test suite covering URL signing and invalid key handling",
+    "refactor_cloudfront_tests": "refactor the CloudFrontSigner tests to use different expiration times or key pair IDs"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_config.py": {
+    "test_log_config": "test the LogConfig class to verify its default logging level equals 20",
+    "review_LogConfig": "review the LogConfig dataclass that holds a logging level with a default of logging.INFO",
+    "summarize_test_log_config": "summarize the test_log_config function that asserts LogConfig default level is 20"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_croissant_utils.py": {
+    "test_escape_ids": "test the escape_ids function that sanitizes Croissant IDs by replacing special characters and ensuring uniqueness",
+    "test_escape_jsonpath_key": "test the escape_jsonpath_key function that escapes single quotes and brackets for valid JSONPath expressions",
+    "test_feature_to_croissant_field": "test the feature_to_croissant_field function that converts HuggingFace dataset features to Croissant field definitions",
+    "test_truncate_features_from_croissant_crumbs_response": "test the truncate_features_from_croissant_crumbs_response function that limits the number of columns in a Croissant crumbs response",
+    "refactor_feature_to_croissant_field": "refactor the feature_to_croissant_field function to support additional HuggingFace dataset feature types like Image or Audio"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_duckdb_utils.py": {
+    "test_compute_length_column": "test compute_length_column by creating a parquet file with a list column and verifying the computed length",
+    "run_test_list_of_json": "run the test_compute_length_column_for_list_of_json test using pytest to validate list length computation",
+    "create_parquet_from_dataset": "create a parquet file from a HuggingFace Dataset using from_dict and to_parquet for test data",
+    "review_compute_length_column": "review compute_length_column to understand how it computes lengths for list and string columns in parquet files",
+    "refactor_test_compute_length_column": "refactor test_compute_length_column_for_list_of_json to add additional test cases for string dtype length computation"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_integration_s3_cloudfront.py": {
+    "test_real_cloudfront": "test the real CloudFront integration by writing reading and deleting files via StorageClient with signed URLs",
+    "test_CloudFrontSigner_sign_url": "test the CloudFrontSigner class to sign a URL with an expiration timestamp and RSA private key",
+    "test_StorageClient_exists": "test the StorageClient exists method to check if a file or directory is present in S3 or local storage",
+    "test_StorageClient_delete_dataset_directory": "test the StorageClient delete_dataset_directory method to recursively remove a dataset directory from S3 storage",
+    "test_URLPreparator_prepare_url": "test the URLPreparator prepare_url method to replace revision placeholders and sign asset URLs with CloudFront"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_operations.py": {
+    "get_latest_dataset_revision_if_supported_or_raise": "get the latest git revision of a HuggingFace dataset or raise if unsupported",
+    "CustomHfApi_whoisthis": "check if a HuggingFace entity is a pro or enterprise user",
+    "update_dataset": "update a dataset by creating pending jobs in the processing queue",
+    "delete_dataset": "delete a dataset including its cached assets and pending queue jobs",
+    "backfill_dataset": "backfill missing processing jobs for a dataset with stale or incomplete cache entries"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_orchestrator.py": {
+    "create_after_job_plan": "create an AfterJobPlan to schedule downstream jobs after a processing step completes",
+    "run_after_job_plan": "run an AfterJobPlan to create or delete waiting jobs based on the processing graph",
+    "finish_job": "finish a job by caching the result and triggering dependent downstream jobs",
+    "check_pending_ancestor_jobs": "check if any ancestor jobs are still pending for a given processing step",
+    "remove_dataset_jobs_and_cache": "remove all pending jobs and cached responses for a dataset from the queue"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_orchestrator_smart_update.py": {
+    "test_smart_update_empty_cache": "test that get_smart_dataset_update_plan raises SmartUpdateImpossibleBecauseCacheIsEmpty when the cache is empty",
+    "test_smart_update_same_revision": "test that get_smart_dataset_update_plan returns no tasks when the cached revision matches the current revision",
+    "test_smart_update_revision_not_parent": "test that get_smart_dataset_update_plan raises SmartUpdateImpossibleBecauseCachedRevisionIsNotParentOfNewRevision when the cached revision is not a parent",
+    "test_smart_update_empty_commit": "test that an empty commit triggers an UpdateRevisionOfDatasetCacheEntriesTask to update cache entry revisions",
+    "test_smart_update_add_tag": "test that adding a tag to the dataset card triggers an UpdateRevisionOfDatasetCacheEntriesTask without full recomputation"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_parquet_utils.py": {
+    "test_rows_index_query": "test the RowsIndex class to query parquet files by offset and length using libviewer",
+    "test_rows_index_empty_dataset": "test the RowsIndex class handles empty parquet datasets and returns zero rows",
+    "test_rows_index_schema_mismatch": "test the RowsIndex class raises SchemaMismatchError when parquet files have inconsistent schemas",
+    "test_rows_index_too_big_rows": "test the RowsIndex class raises TooBigRows when rows exceed the max scan size limit",
+    "test_parquet_export_is_partial": "test the parquet_export_is_partial function to check if a parquet URL is a partial export"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_prometheus.py": {
+    "test_STEP_PROFILER": "test the StepProfiler context manager to measure code execution duration with Prometheus histogram metrics",
+    "test_LONG_STEP_PROFILER": "test the LongStepProfiler context manager to measure code execution duration with custom Prometheus buckets",
+    "test_NESTED_STEP_PROFILER": "test nested StepProfiler contexts to verify aggregated timing metrics across multiple steps",
+    "parse_metrics": "parse a raw Prometheus metrics text string into a dictionary mapping metric names to float values",
+    "create_key": "create a Prometheus histogram metric key string from a suffix, labels dict, and optional le bucket value",
+    "check_histogram_metric": "check that a Prometheus histogram metric has the expected event count, bucket values, and duration sum",
+    "test_CACHE_METRICS": "test the responses_in_cache_total Prometheus metric by inserting a cache metric document and calling update_responses_in_cache_total",
+    "test_QUEUE_METRICS": "test the queue_jobs_total Prometheus metric by inserting a job metric document and calling update_queue_jobs_total",
+    "test_WORKER_SIZE_JOBS_COUNT": "test the worker_size_jobs_count Prometheus metric by inserting a worker size document and calling update_worker_size_jobs_count",
+    "test_PROCESS_METRICS": "test that the process_start_time_seconds metric is present and positive in single-process mode or absent in multiprocess mode"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_resources.py": {
+    "test_MongoResource": "test MongoResource by creating a connection, checking availability, and releasing it",
+    "test_MongoResource_errors": "test MongoResource error handling for invalid hosts and server selection timeouts",
+    "test_CacheMongoResource": "test CacheMongoResource by creating a cache database connection and verifying availability",
+    "test_QueueMongoResource": "test QueueMongoResource by creating a queue database connection and verifying availability",
+    "test_MongoConnectionFailure": "test that MongoConnectionFailure is raised when a duplicate mongoengine alias connection fails"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_simple_cache.py": {
+    "test_upsert_response": "test upsert_response to insert or update a cached artifact in the MongoDB cache collection",
+    "test_get_response": "test get_response to retrieve a cached response with content by kind, dataset, config, and split",
+    "test_delete_dataset_responses": "test delete_dataset_responses to remove all cached responses for a given dataset across all kinds",
+    "test_get_cache_reports": "test get_cache_reports to fetch paginated cache reports filtered by kind with cursor-based pagination",
+    "test_get_previous_step_or_raise": "test get_previous_step_or_raise to fetch a previous step's cached response or raise CachedArtifactError on failure"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_state.py": {
+    "test_CacheState_exists": "test the CacheState class to check if a cache entry exists for a dataset config or split",
+    "test_CacheState_is_success": "test the CacheState class to verify if a cache entry has a successful HTTP status",
+    "test_ArtifactState": "test the ArtifactState class to inspect cache and job state for a processing step",
+    "test_SplitState": "test the SplitState class to inspect artifact states by step for a dataset split",
+    "test_DatasetState": "test the DatasetState class to inspect config states and artifact states for a full dataset"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_storage.py": {
+    "test_init_dir": "test the init_dir function that initializes a directory with optional appname for cache paths",
+    "test_remove_dir": "test the remove_dir function that safely removes a directory and all its contents",
+    "test_clean_dir": "test the clean_dir function that deletes expired cache files and empty directories by time interval",
+    "init_dir_with_appname": "create a cache directory using init_dir with an appname to get a user-specific cache path",
+    "remove_dir_safely": "remove a directory and all its contents using remove_dir without raising if the directory does not exist"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_url_preparator.py": {
+    "test_URLPreparator_prepare_urls": "test the URLPreparator class to prepare and sign asset URLs in first rows responses",
+    "test_get_asset_url_paths": "test the get_asset_url_paths function to extract asset URL paths from dataset features",
+    "test_to_features_dict": "test the to_features_dict function to convert a features list back to a Features dict",
+    "test_create_first_rows_response": "test the create_first_rows_response function to build truncated first rows with asset URL handling",
+    "test_URLPreparator_prepare_url": "test the URLPreparator prepare_url method to replace revision placeholders and sign asset URLs"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/test_utils.py": {
+    "test_inputs_to_string": "test the inputs_to_string function that converts dataset revision config split and prefix into a comma-separated string",
+    "test_is_image_url": "test the is_image_url function that checks if a given text string is a valid image URL ending in png or jpg",
+    "test_raise_if_blocked": "test the raise_if_blocked function that raises DatasetInBlockListError when a dataset name matches a blocklist pattern with wildcards",
+    "test_orjson_dumps": "test the orjson_dumps function that serializes Python objects including numpy arrays and pandas types to JSON bytes",
+    "test_serialize_and_truncate": "test the serialize_and_truncate function that serializes an object to JSON and truncates it to a specified maximum byte size"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/utils.py": {
+    "create_dataset_backfill_plan": "create a DatasetBackfillPlan from a ProcessingGraph for a given dataset and revision",
+    "create_smart_dataset_update_plan": "create a SmartDatasetUpdatePlan to compute update tasks when a dataset revision changes",
+    "put_cache_entries": "insert mock cache responses for dataset, config, or split processing steps",
+    "compute_all_processing_steps": "run all backfill tasks for a ProcessingGraph until completion by processing queued jobs",
+    "convert_artifact_id_to_job_info": "parse an artifact ID string and return a JobInfo object with dataset, config, split, and revision"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/fixtures/datasets.py": {
+    "create_dataset_fixture_with_value_type": "create a HuggingFace Dataset fixture from a pandas DataFrame with a specific dtype using the value helper",
+    "create_dataset_fixture_with_feature_type": "create a HuggingFace Dataset fixture from a dict with an optional FeatureType using the other helper",
+    "test_datasets_fixtures_pytest_fixture": "test all 35+ dataset fixture types returned by the datasets_fixtures pytest session fixture",
+    "review_dataset_fixture_audio_image_pdf": "review the dataset fixtures for Audio, Image, and Pdf feature types and their expected asset URL paths",
+    "summarize_datasets_fixtures_mapping": "summarize the datasets_fixtures mapping that covers null, bool, int, float, string, array, translation, audio, image, and pdf types"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/fixtures/fsspec.py": {
+    "create_MockFileSystem": "create a MockFileSystem instance with a local root directory for testing fsspec operations",
+    "create_TmpDirFileSystem": "create a TmpDirFileSystem subclass that uses a temporary directory as the mock root",
+    "test_mock_fsspec_fixture": "test fsspec code using the mock_fsspec pytest fixture to register mock and tmp protocols",
+    "test_mockfs_fixture": "test file operations using the mockfs pytest fixture that returns a MockFileSystem with a temp dir",
+    "test_tmpfs_fixture": "test file operations using the tmpfs pytest fixture that patches TmpDirFileSystem with a temp dir"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/queue/test_dataset_blockages.py": {
+    "test_block_dataset": "test the block_dataset function to block a dataset in the queue",
+    "test_get_blocked_datasets": "test the get_blocked_datasets function to retrieve all blocked datasets from the queue",
+    "test_is_blocked": "test the is_blocked function to check if a specific dataset is blocked",
+    "test_dataset_blockage_parametrized": "test the parametrized test_dataset_blockage function with multiple dataset input scenarios",
+    "run_test_dataset_blockages": "run the pytest test suite for dataset blockage queue operations"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/queue/test_jobs.py": {
+    "test_add_job": "test the Queue.add_job method to add jobs with type, dataset, revision, and difficulty",
+    "test_start_job": "test the Queue.start_job method to start the highest priority waiting job from the queue",
+    "test_finish_job": "test the Queue.finish_job method to mark a started job as finished and record past job metrics",
+    "test_delete_waiting_jobs": "test the Queue.delete_waiting_jobs_by_job_id method to remove specific waiting jobs by their job IDs",
+    "test_block_dataset": "test the block_dataset function to rate-limit a dataset and prevent its jobs from being started"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/queue/test_lock.py": {
+    "test_lock_context_manager": "test the lock context manager with multiprocessing pool to ensure concurrent jobs serialize correctly",
+    "test_lock_git_branch": "test the lock.git_branch context manager to ensure concurrent git branch writes are serialized",
+    "test_Lock_document": "test the Lock mongoengine document to verify lock key and owner fields are stored correctly",
+    "run_locked_increment": "run a locked increment operation using the lock context manager with a custom key and owner",
+    "run_git_branch_locked_increment": "run a git branch locked increment using lock.git_branch to serialize writes to a dataset branch"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/queue/test_past_jobs.py": {
+    "create_past_job": "create a past job record in MongoDB with a dataset name, start time, and finish time",
+    "test_create_past_job": "test the create_past_job function with various durations to verify correct duration storage",
+    "test_create_past_job_with_short_duration": "test that create_past_job skips recording jobs with duration below the minimum threshold",
+    "test_create_past_job_raises_if_timezone_unaware": "test that create_past_job raises TypeError when given a timezone-naive started_at datetime",
+    "test_block_datasets": "test that datasets exceeding the blockage threshold are correctly identified as blocked by get_blocked_datasets"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/viewer_utils/test_assets.py": {
+    "test_create_image_file": "test the create_image_file function to upload and verify a JPEG image asset in storage",
+    "test_create_audio_file": "test the create_audio_file function with WAV and Opus audio files for storage upload",
+    "test_create_pdf_file": "test the create_pdf_file function to upload a PDF and generate a thumbnail image",
+    "test_src_is_sanitized": "test that asset source URLs are sanitized to prevent XSS injection attacks",
+    "review_asset_creation_tests": "review the test suite for image, audio, and PDF asset creation functions"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/viewer_utils/test_features.py": {
+    "test_get_cell_value": "test get_cell_value to convert a dataset cell to a viewer-friendly value for a given feature type",
+    "test_to_features_list": "test to_features_list to convert a Features dict to an ordered list of feature items with indices",
+    "test_infer_audio_file_extension": "test infer_audio_file_extension to detect audio file format from raw bytes using magic number signatures",
+    "test_ogg_audio_with_s3": "test get_cell_value with OGG audio files stored in a mocked S3 bucket via moto",
+    "test_assert_output_has_valid_files": "test assert_output_has_valid_files to recursively verify that asset source URLs point to existing non-empty files"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/viewer_utils/test_rows.py": {
+    "test_create_first_rows_response": "test the create_first_rows_response function with various dataset fixtures to verify features and rows",
+    "test_create_first_rows_response_truncated": "test the create_first_rows_response function with different byte and row limits to verify truncation",
+    "test_create_first_rows_response_truncation_on_audio_or_image": "test the create_first_rows_response function with audio and image datasets to verify truncation behavior",
+    "review_create_first_rows_response": "review the create_first_rows_response function that generates first rows responses with truncation support",
+    "review_transform_rows": "review the transform_rows function that post-processes dataset rows with cell value transformations"
+  },
+  "huggingface_dataset-viewer/libs/libcommon/tests/viewer_utils/test_truncate_rows.py": {
+    "truncate_row_item": "truncate a single row item cell to a minimum byte size while keeping specified columns untruncated",
+    "truncate_row_items_cells": "truncate cells across multiple row items to fit within a maximum byte size limit",
+    "create_truncated_row_items": "create truncated row items by removing excess rows and truncating cells to fit a byte budget",
+    "test_truncate_row_item": "test the truncate_row_item function with parametrized cells and minimum byte size configurations",
+    "test_create_truncated_row_items": "test the create_truncated_row_items function with varying maximum byte size limits and expected row counts"
+  },
+  "huggingface_dataset-viewer/libs/libviewer/libviewer/cli.py": {
+    "run_cli_query_dataset": "run the cli to query a dataset with offset and limit options",
+    "run_cli_index_parquet": "run the cli to download and index parquet files from a dataset",
+    "run_cli_load_from_hub": "run the cli to load a dataset from the Hugging Face Hub",
+    "run_cli_load_from_cache": "run the cli to load a dataset from the local cache",
+    "review_cli_command_group": "review the cli command group that initializes dataset loading with revision and metadata options"
+  },
+  "huggingface_dataset-viewer/libs/libviewer/libviewer/dataset.py": {
+    "create_dataset_from_hub": "create a Dataset from a Hugging Face Hub repository using from_hub with repo name and token",
+    "create_dataset_from_cache": "create a Dataset from the local Hugging Face cache using from_cache with optional download flag",
+    "scan_dataset_sync": "run a synchronous scan on a Dataset with optional limit, offset, and scan size limit parameters",
+    "index_dataset_sync": "run a synchronous index operation on a Dataset with optional file list and max parallelism settings",
+    "review_dataset_class": "review the Dataset class that extends PyDataset to read parquet files with page pruning from Hub or cache"
+  },
+  "huggingface_dataset-viewer/libs/libviewer/libviewer/tests/test_dataset.py": {
+    "generate_sample_table": "generate a sample PyArrow Table with id, name, value, and category columns for testing",
+    "write_pyarrow_metadata_files": "extract parquet metadata from data files and write separate metadata files to a directory",
+    "write_partitioned_parquet_dataset": "split a PyArrow Table into partitioned parquet files with optional page index and metadata",
+    "test_sync_scan": "test the Dataset sync_scan method with various limit and offset combinations across partitions",
+    "dataset_sync_scan": "scan a partitioned parquet dataset with limit and offset to retrieve specific row batches"
+  },
+  "huggingface_dataset-viewer/services/admin/src/admin/app.py": {
+    "create_starlette_app": "create a Starlette app with CORS, GZip, and Prometheus middleware for the admin service",
+    "run_admin_server": "run the admin service on a configured host and port using uvicorn",
+    "create_healthcheck_endpoint": "create a healthcheck endpoint for ALB and Kubernetes liveness probes",
+    "create_pending_jobs_endpoint": "create an endpoint to list pending jobs in the processing queue",
+    "create_recreate_dataset_endpoint": "create a POST endpoint to recreate a dataset by re-queuing all its jobs"
+  },
+  "huggingface_dataset-viewer/services/admin/src/admin/config.py": {
+    "create_UvicornConfig_from_env": "create a UvicornConfig instance from environment variables using the from_env classmethod",
+    "create_AdminConfig_from_env": "create an AdminConfig instance from environment variables and a CommonConfig using from_env",
+    "create_AppConfig_from_env": "create an AppConfig instance that aggregates all sub-configs from environment variables",
+    "review_UvicornConfig_defaults": "review the UvicornConfig dataclass default values for hostname, num_workers, and port",
+    "review_AdminConfig_defaults": "review the AdminConfig dataclass default values for cache reports, auth URL, and timeout"
+  },
+  "huggingface_dataset-viewer/services/admin/src/admin/routes/blocked_datasets.py": {
+    "create_blocked_datasets_endpoint": "create a starlette endpoint that returns the list of blocked datasets after authentication",
+    "review_blocked_datasets_endpoint": "review the async blocked_datasets_endpoint function that handles auth and returns blocked datasets as JSON",
+    "refactor_blocked_datasets_endpoint": "refactor the blocked_datasets_endpoint to support a different authentication mechanism or response format",
+    "test_blocked_datasets_endpoint": "test the blocked_datasets_endpoint function to verify it returns blocked datasets after successful auth",
+    "summarize_blocked_datasets_endpoint": "summarize the blocked_datasets_endpoint factory function and its error handling for ApiError and unexpected exceptions"
+  },
+  "huggingface_dataset-viewer/services/admin/src/admin/routes/cache_reports.py": {
+    "create_cache_reports_endpoint": "create a starlette endpoint that returns cache reports for a given cache kind with cursor-based pagination",
+    "review_cache_reports_endpoint": "review the cache reports endpoint function and its error handling for invalid cursor and limit parameters",
+    "refactor_cache_reports_endpoint": "refactor the cache reports endpoint to support additional request parameters beyond cursor",
+    "test_cache_reports_endpoint": "test the cache reports endpoint with valid and invalid cursor values to verify error handling",
+    "summarize_cache_reports_endpoint": "summarize the cache reports endpoint that fetches cache reports with authentication and pagination support"
+  },
+  "huggingface_dataset-viewer/services/admin/src/admin/routes/cache_reports_with_content.py": {
+    "create_cache_reports_endpoint": "create a starlette endpoint that returns cache reports with content for a given cache kind",
+    "review_auth_check_integration": "review the cache reports endpoint and how it integrates auth_check for request authentication",
+    "refactor_error_handling": "refactor the cache reports endpoint to handle InvalidCursor and InvalidLimit exceptions with custom error messages",
+    "test_cursor_pagination": "test the cache reports endpoint with different cursor values to verify pagination behavior",
+    "summarize_endpoint_factory": "summarize the create_cache_reports_with_content_endpoint factory function and its configurable parameters"
+  },
+  "huggingface_dataset-viewer/services/admin/src/admin/routes/dataset_status.py": {
+    "create_dataset_status_endpoint": "create a starlette endpoint that returns cached responses and pending jobs for a dataset",
+    "build_dataset_status_response": "build a JSON response with cached responses and pending jobs for each processing step of a dataset",
+    "test_dataset_status_endpoint": "test the dataset status endpoint by sending a request with a dataset parameter and checking the response",
+    "refactor_dataset_status_endpoint": "refactor the dataset status endpoint to include assets, cached assets, metadata, parquet, and duckdb file information",
+    "review_auth_check_integration": "review the dataset status endpoint and how it integrates auth_check before returning dataset processing information"
+  },
+  "huggingface_dataset-viewer/services/admin/src/admin/routes/force_refresh.py": {
+    "create_force_refresh_endpoint": "create a force refresh endpoint that adds a job to the queue for a dataset with configurable priority and difficulty",
+    "review_force_refresh_endpoint": "review the force refresh endpoint function that validates parameters and queues a processing job for a dataset",
+    "build_force_refresh_endpoint": "build a starlette endpoint that accepts dataset config and split parameters to trigger a forced refresh job",
+    "test_force_refresh_endpoint": "test the force refresh endpoint by sending a request with dataset config split and priority parameters",
+    "refactor_force_refresh_endpoint": "refactor the force refresh endpoint to support additional input types or difficulty calculation strategies"
+  },
+  "huggingface_dataset-viewer/services/admin/src/admin/routes/metrics.py": {
+    "create_metrics_endpoint": "create a prometheus metrics endpoint that updates queue jobs, worker size, cache, and disk usage metrics",
+    "create_prometheus_metrics_response": "create an async endpoint that returns the latest prometheus metrics content with proper content type headers",
+    "update_queue_jobs_total": "update the prometheus metric tracking the total number of jobs in the queue",
+    "update_worker_size_jobs_count": "update the prometheus metric tracking the number of jobs per worker size",
+    "update_responses_in_cache_total": "update the prometheus metric tracking the total number of responses stored in cache"
+  },
+  "huggingface_dataset-viewer/services/admin/src/admin/routes/num_dataset_infos_by_builder_name.py": {
+    "create_endpoint": "create a starlette endpoint that counts dataset infos grouped by builder name like parquet csv and text",
+    "query_cached_responses": "query CachedResponseDocument objects to count dataset infos filtered by http status kind and builder name",
+    "add_auth_check": "add an auth check to the endpoint using external auth url organization and timeout parameters",
+    "handle_api_errors": "handle ApiError and UnexpectedApiError exceptions and return JSON error responses with a max age",
+    "return_json_response": "return a JSON ok response with dataset info counts for parquet csv text imagefolder and other builders"
+  },
+  "huggingface_dataset-viewer/services/admin/src/admin/routes/pending_jobs.py": {
+    "create_pending_jobs_endpoint": "create a starlette endpoint that returns pending jobs for all processing steps from the queue",
+    "review_pending_jobs_endpoint": "review the pending_jobs_endpoint function to understand how it authenticates requests and queries the job queue",
+    "refactor_pending_jobs_endpoint": "refactor the pending_jobs_endpoint to support filtering pending jobs by specific job types",
+    "test_pending_jobs_endpoint": "test the pending_jobs_endpoint by sending a request and verifying the returned pending job statuses",
+    "summarize_pending_jobs_endpoint": "summarize the pending_jobs_endpoint function that dumps pending job statuses grouped by processing step job type"
+  },
+  "huggingface_dataset-viewer/services/admin/src/admin/routes/recreate_dataset.py": {
+    "recreate_dataset": "delete a dataset and create backfill jobs to update it with a given priority",
+    "create_recreate_dataset_endpoint": "create a starlette endpoint that deletes and backfills a dataset via an HTTP request",
+    "review_recreate_dataset": "review the recreate_dataset function to understand how it deletes and updates a dataset",
+    "refactor_recreate_dataset_endpoint": "refactor the recreate_dataset_endpoint to support additional request parameters or auth methods",
+    "test_recreate_dataset": "test the recreate_dataset function to verify it deletes and backfills a dataset correctly"
+  },
+  "huggingface_dataset-viewer/services/admin/tests/test_app.py": {
+    "test_cors": "test the admin service CORS preflight request handling for origin, method, and header validation",
+    "test_get_healthcheck": "test the admin service healthcheck endpoint returns 200 with ok response text",
+    "test_metrics": "test the admin service metrics endpoint records and returns starlette request total metrics",
+    "test_pending_jobs": "test the admin service pending jobs endpoint returns waiting and started jobs for each processing step",
+    "test_blocked_datasets": "test the admin service blocked datasets endpoint returns an empty list of blocked datasets"
+  },
+  "huggingface_dataset-viewer/services/admin/tests/test_app_real.py": {
+    "test_force_refresh": "test the force-refresh admin endpoint for a dataset using the processing graph",
+    "create_real_monkeypatch_fixture": "create a pytest fixture that sets environment variables for cache and queue mongo databases",
+    "create_real_client_fixture": "create a pytest fixture that returns a TestClient for the admin app",
+    "create_real_app_config_fixture": "create a pytest fixture that loads and validates the AppConfig from environment variables",
+    "run_real_dataset_tests": "run the real dataset integration tests marked with the real_dataset marker"
+  },
+  "huggingface_dataset-viewer/services/admin/tests/test_authentication.py": {
+    "test_auth_check_no_args": "test that auth_check returns True when called with no arguments",
+    "test_auth_check_unreachable_service": "test that auth_check raises RuntimeError when the external auth service is unreachable",
+    "test_auth_check_http_status_codes": "test auth_check behavior for HTTP status codes 200, 401, 403, 404, and 429",
+    "test_auth_check_organization": "test auth_check with different organization names and expected error responses",
+    "create_request_helper": "create a Starlette Request object from a mapping of header key-value pairs"
+  },
+  "huggingface_dataset-viewer/services/admin/tests/utils.py": {
+    "test_request_callback_auth": "test the request_callback function to verify it returns 404 when an authorization header is present",
+    "test_request_callback_no_auth": "test the request_callback function to verify it returns 200 when no authorization header is present",
+    "review_request_callback": "review the request_callback mock function used for testing auth_check service token passing behavior",
+    "refactor_request_callback": "refactor the request_callback function to support additional HTTP status codes for different auth scenarios",
+    "summarize_request_callback": "summarize the request_callback function that returns mock httpx responses based on the presence of an authorization header"
+  },
+  "huggingface_dataset-viewer/services/admin/tests/fixtures/hub.py": {
+    "create_hf_dataset_repo": "create a HuggingFace dataset repo with optional private or gated settings using the HfApi",
+    "create_unique_repo_name": "create a unique timestamped repo name from a prefix and user string",
+    "cleanup_repo_fixture": "use the cleanup_repo pytest fixture to delete a HuggingFace dataset repo by id",
+    "temporary_repo_fixture": "use the temporary_repo context manager fixture to auto-cleanup a dataset repo after a test",
+    "hf_api_fixture": "use the hf_api pytest fixture to get an HfApi client pointing to the CI Hub endpoint"
+  },
+  "huggingface_dataset-viewer/services/admin/tests/routes/test_recreate_dataset.py": {
+    "test_recreate_dataset": "test the recreate_dataset function that deletes and re-queues a dataset with assets and cache",
+    "test_StorageClient_setup": "test StorageClient initialization with file protocol for assets and cached assets directories",
+    "test_Queue_add_job": "test adding a job to the Queue with dataset, revision, and difficulty parameters",
+    "test_upsert_response_cache": "test upsert_response to create cache entries for a dataset with config names",
+    "test_has_some_cache": "test has_some_cache to verify cache entries exist for a given dataset"
+  },
+  "huggingface_dataset-viewer/services/api/src/api/app.py": {
+    "run_starlette_app": "run the starlette app by calling start to launch uvicorn on the configured host and port",
+    "create_app_from_env": "create a starlette app by calling create_app to load config from environment variables",
+    "create_app_with_config": "create a starlette app with explicit app and endpoint config objects including middleware and routes",
+    "review_create_app_with_config": "review the create_app_with_config function to understand how middleware storage clients and routes are wired together",
+    "refactor_create_app": "refactor the create_app function to accept custom config classes instead of reading from environment variables"
+  },
+  "huggingface_dataset-viewer/services/api/src/api/config.py": {
+    "create_appconfig_from_env": "create an AppConfig instance from environment variables using AppConfig.from_env()",
+    "create_endpointconfig_from_env": "create an EndpointConfig instance from environment variables using EndpointConfig.from_env()",
+    "review_appconfig_dataclass": "review the AppConfig dataclass and its frozen fields for configuration management",
+    "review_endpointconfig_mapping": "review the EndpointConfig default mapping of endpoints to processing step names",
+    "summarize_processing_step_types": "summarize the ProcessingStepNameByInputType and ProcessingStepNameByInputTypeAndEndpoint type aliases"
+  },
+  "huggingface_dataset-viewer/services/api/src/api/routes/endpoint.py": {
+    "create_endpoint": "create an async Starlette endpoint that validates parameters, checks auth, and returns cached processing step results",
+    "review_EndpointsDefinition": "review the EndpointsDefinition class that maps endpoints to processing steps by input type using a ProcessingGraph",
+    "refactor_validate_parameters": "refactor validate_parameters to support additional input types beyond split, config, and dataset",
+    "test_get_input_types_by_priority": "test get_input_types_by_priority to return input types ordered by split, config, then dataset priority",
+    "summarize_OptInOutUrlsCountResponse": "summarize the OptInOutUrlsCountResponse TypedDict defining the schema for opt-in/out URL count responses"
+  },
+  "huggingface_dataset-viewer/services/api/tests/conftest.py": {
+    "setup_pytest_fixtures_for_api_tests": "create pytest fixtures to configure test environment variables and MongoDB resources for API tests",
+    "configure_app_config_fixture": "create a session-scoped fixture that loads AppConfig from environment variables for testing",
+    "configure_endpoint_config_fixture": "create a fixture that defines processing step names by input type and endpoint for tests",
+    "setup_mongo_cache_resource_fixture": "create an autouse fixture that manages CacheMongoResource lifecycle and cleans the cache database after each test",
+    "setup_mongo_queue_resource_fixture": "create an autouse fixture that manages QueueMongoResource lifecycle and cleans the queue database after each test"
+  },
+  "huggingface_dataset-viewer/services/api/tests/test_app.py": {
+    "test_cors": "test the CORS preflight request handling for the dataset viewer API endpoints",
+    "test_get_healthcheck": "test the healthcheck endpoint returns a 200 status code and ok response",
+    "test_get_endpoint": "test the dataset endpoint returns 422 when the dataset parameter is missing or empty",
+    "test_get_dataset_missing_parameter": "test the dataset endpoint returns 422 when the dataset parameter is None or empty string",
+    "test_get_split_missing_parameter": "test the split endpoint returns 422 when dataset, config, or split parameters are missing"
+  },
+  "huggingface_dataset-viewer/services/api/tests/routes/test_endpoint.py": {
+    "test_endpoints_definition": "test the EndpointsDefinition class to verify all API endpoint routes and their input types are correctly registered",
+    "test_endpoint_input_types": "test that endpoint definitions map correct input types like config dataset and split to each route",
+    "test_deprecated_endpoints_removed": "test that old deleted endpoints like /dataset-info and /config-names raise KeyError when accessed",
+    "review_EndpointsDefinition_step_by_input_type_and_endpoint": "review the EndpointsDefinition step_by_input_type_and_endpoint property to understand the endpoint routing structure",
+    "summarize_EndpointConfig_from_env": "summarize how EndpointConfig.from_env loads configuration from environment variables for the API endpoints"
+  },
+  "huggingface_dataset-viewer/services/rows/src/rows/app.py": {
+    "run_rows_service": "run the rows service by calling start which launches uvicorn with the create_app factory",
+    "create_starlette_app": "create a Starlette app with CORS, GZip, and Prometheus middleware using create_app",
+    "create_app_with_config": "create a Starlette app from an AppConfig instance using create_app_with_config",
+    "setup_rows_endpoint": "setup the /rows endpoint with storage clients, JWT auth, and parquet metadata support",
+    "configure_storage_clients": "configure cached and raw asset StorageClient instances with S3 config and URL preparation"
+  },
+  "huggingface_dataset-viewer/services/rows/src/rows/config.py": {
+    "create_appconfig_with_defaults": "create an AppConfig instance with all default sub-config values using the dataclass constructor",
+    "create_appconfig_from_env": "create an AppConfig instance by loading all sub-configs from environment variables using from_env",
+    "access_appconfig_subconfigs": "access individual sub-configs like api, cache, queue, s3, and rows_index on an AppConfig instance",
+    "review_appconfig_structure": "review the AppConfig frozen dataclass and its eleven sub-config fields and their default factories",
+    "refactor_appconfig_composition": "refactor AppConfig to add or remove sub-config fields or change how from_env initializes them"
+  },
+  "huggingface_dataset-viewer/services/rows/src/rows/routes/rows.py": {
+    "create_rows_endpoint": "create a starlette endpoint that serves dataset rows from parquet files with pagination and authentication",
+    "review_rows_endpoint_auth": "review the rows endpoint to understand how JWT authentication is checked before serving data",
+    "refactor_rows_index_caching": "refactor the get_rows_index lru_cache to support multiple dataset configs simultaneously",
+    "test_rows_query": "test the rows endpoint query logic that fetches paginated rows from a parquet-backed dataset",
+    "summarize_rows_error_handling": "summarize how the rows endpoint handles CachedArtifactError and TooBigRows exceptions"
+  },
+  "huggingface_dataset-viewer/services/rows/tests/test_app.py": {
+    "test_CORS_handling": "test the CORS preflight OPTIONS request handling for the rows service endpoints",
+    "test_healthcheck_endpoint": "test the healthcheck endpoint returns a 200 status code and ok response text",
+    "test_rows_missing_params": "test the rows endpoint returns 422 when required parameters dataset config and split are missing",
+    "test_metrics_endpoint": "test the metrics endpoint returns Prometheus-style metrics with positive values for request and processing time",
+    "test_parametrized_missing_params": "test the rows endpoint with parametrized missing parameter combinations using pytest fixtures"
+  },
+  "huggingface_dataset-viewer/services/search/src/search/app.py": {
+    "create_starlette_app": "create a Starlette app for the dataset search service reading config from environment variables",
+    "create_app_with_config": "create a Starlette app with a given AppConfig setting up middleware resources and routes",
+    "start_uvicorn_server": "start the uvicorn ASGI server running the search service on the configured host and port",
+    "review_create_app_with_config": "review the create_app_with_config function and its middleware resource and route setup",
+    "refactor_search_routes": "refactor the search and filter route creation to reduce duplicated endpoint parameters"
+  },
+  "huggingface_dataset-viewer/services/search/src/search/config.py": {
+    "create_DuckDbIndexConfig_from_env": "create a DuckDbIndexConfig instance from environment variables using the from_env class method",
+    "create_AppConfig_from_env": "create an AppConfig instance from environment variables using the from_env class method",
+    "review_DuckDbIndexConfig_defaults": "review the DuckDbIndexConfig default values for cache directory, clean cache probability, and expiration interval",
+    "review_AppConfig_subconfigs": "review the AppConfig dataclass and its eleven sub-config fields including api, cache, queue, and s3",
+    "refactor_DuckDbIndexConfig_env_prefix": "refactor the DuckDbIndexConfig from_env method to use a different environment variable prefix"
+  },
+  "huggingface_dataset-viewer/services/search/src/search/routes/filter.py": {
+    "create_filter_endpoint": "create a starlette endpoint that filters dataset rows by where and orderby query parameters",
+    "execute_filter_query": "execute a duckdb filter query on a parquet index file and return matching rows",
+    "validate_query_parameter": "validate a where or orderby SQL parameter against allowed symbols and patterns",
+    "build_sql_validation_patterns": "build regex patterns to validate SQL where and orderby clause parameters for safety",
+    "filter_dataset_rows": "filter dataset rows using duckdb with optional where clause, ordering, limit, and offset"
+  },
+  "huggingface_dataset-viewer/services/search/src/search/routes/search.py": {
+    "full_text_search": "run a BM25 full-text search query against a DuckDB index file and return matching rows as a PyArrow table",
+    "create_response": "create a paginated response from a PyArrow table with dataset features, row offsets, and total row counts",
+    "create_search_endpoint": "build a Starlette endpoint that performs full-text search on HuggingFace datasets using DuckDB FTS indexes",
+    "FTS_STAGE_TABLE_COMMAND": "review the SQL template that executes BM25 matching on a DuckDB full-text search index and filters non-null scores",
+    "JOIN_STAGE_AND_DATA_COMMAND": "review the SQL template that joins FTS stage results with dataset data ordered by relevance score descending"
+  },
+  "huggingface_dataset-viewer/services/search/tests/conftest.py": {
+    "review_pytest_fixtures": "review the pytest conftest fixtures for the dataset viewer search service test suite",
+    "summarize_test_config": "summarize the test configuration fixtures including mongo resources and environment patching",
+    "test_cache_mongo_resource": "test the cache mongo resource fixture that provides and cleans the cache database",
+    "test_queue_mongo_resource": "test the queue mongo resource fixture that provides and cleans the queue database",
+    "review_app_config_fixture": "review the app_config fixture that loads AppConfig from environment variables"
+  },
+  "huggingface_dataset-viewer/services/search/tests/test_app.py": {
+    "test_cors": "test the search service CORS preflight response headers for origin, method, and credentials",
+    "test_healthcheck": "test the search service healthcheck endpoint returns 200 status and ok response text",
+    "test_search_validation": "test the search endpoint returns 422 status when required parameters are missing",
+    "test_parametrized_search": "test the search endpoint returns 422 for various combinations of missing dataset, config, split, or query parameters",
+    "test_metrics": "test the metrics endpoint returns prometheus metrics including starlette requests and processing time"
+  },
+  "huggingface_dataset-viewer/services/search/tests/routes/test_filter.py": {
+    "test_validate_query_parameter": "test the validate_query_parameter function with where and orderby SQL filter expressions",
+    "test_validate_query_parameter_sql_injection": "test that validate_query_parameter raises InvalidParameterError on SQL injection attempts like semicolons or comments",
+    "test_validate_query_parameter_system_functions": "test that validate_query_parameter raises InvalidParameterError on dangerous system functions like getenv or version",
+    "test_execute_filter_query": "test the execute_filter_query function with various where clauses, orderby sorting, and column selections against a DuckDB index",
+    "test_create_response": "test the async create_response function that builds a paginated dataset viewer response from a PyArrow table"
+  },
+  "huggingface_dataset-viewer/services/search/tests/routes/test_search.py": {
+    "test_full_text_search": "test the full_text_search function with a DuckDB FTS index and verify paginated search results",
+    "test_get_download_folder": "test the get_download_folder function to verify it returns the correct index folder path",
+    "test_sql_injection_safety": "test that full_text_search safely handles SQL injection attempts in search queries",
+    "test_fts_index_creation": "test creating a DuckDB full-text search index from a pandas DataFrame with sample text data",
+    "test_search_pagination": "test full_text_search pagination by verifying offset and length parameters return correct subsets of results"
+  },
+  "huggingface_dataset-viewer/services/sse-api/src/sse_api/app.py": {
+    "create_starlette_app": "create a Starlette app with SSE hub-cache, healthcheck, and metrics routes using create_app",
+    "create_app_with_config": "create a Starlette app from an AppConfig instance with MongoDB cache watching and CORS middleware",
+    "run_sse_server": "run the SSE API server with uvicorn using environment-based UvicornConfig via the start function",
+    "configure_hub_cache_watcher": "configure a HubCacheWatcher to monitor MongoDB cache changes for the SSE hub-cache endpoint",
+    "setup_sse_middleware": "setup CORS and Prometheus middleware on the Starlette app for SSE streaming support"
+  },
+  "huggingface_dataset-viewer/services/sse-api/src/sse_api/config.py": {
+    "create_appconfig_from_env": "create an AppConfig instance by loading all sub-configs from environment variables",
+    "create_appconfig_with_defaults": "create an AppConfig instance using default values for all sub-configs",
+    "access_api_config": "access the ApiConfig sub-config from an AppConfig instance to get API settings",
+    "access_cache_config": "access the CacheConfig sub-config from an AppConfig instance to get cache settings",
+    "access_queue_config": "access the QueueConfig sub-config from an AppConfig instance to get queue settings"
+  },
+  "huggingface_dataset-viewer/services/sse-api/src/sse_api/watcher.py": {
+    "create_HubCacheWatcher": "create a HubCacheWatcher instance with a MongoDB client to watch dataset-hub-cache entries",
+    "start_watching_HubCacheWatcher": "start watching for dataset-hub-cache changes by calling start_watching on the HubCacheWatcher",
+    "subscribe_HubCacheWatcher": "subscribe to hub cache change notifications and receive a UUID and event object",
+    "unsubscribe_HubCacheWatcher": "unsubscribe from hub cache change notifications using the UUID returned by subscribe",
+    "wait_value_HubCacheChangedEvent": "await a HubCacheChangedEvent to receive the latest dataset hub cache change value"
+  },
+  "huggingface_dataset-viewer/services/sse-api/src/sse_api/routes/hub_cache.py": {
+    "create_hub_cache_endpoint": "create an SSE endpoint that streams hub cache updates to subscribed clients using a HubCacheWatcher",
+    "subscribe_to_hub_cache_events": "subscribe to hub cache events and receive real-time ServerSentEvent updates via an async generator",
+    "handle_sse_errors": "handle CancelledError and generic exceptions in an SSE async generator by yielding error events",
+    "run_hub_cache_initialization": "run full hub cache initialization on subscribe when the all query parameter is set to true",
+    "unsubscribe_from_hub_cache": "unsubscribe a client from hub cache events and clean up the initialization task on disconnect"
+  },
+  "huggingface_dataset-viewer/services/sse-api/tests/test_app.py": {
+    "test_sse_healthcheck": "test the SSE API healthcheck endpoint returns 200 ok using an async httpx client",
+    "test_sse_metrics": "test the SSE API metrics endpoint returns Prometheus-style metrics with request and processing time data",
+    "test_sse_hub_cache_updates": "test the SSE hub-cache endpoint streams only update events via server-sent events",
+    "test_sse_hub_cache_initialization": "test the SSE hub-cache endpoint with the all parameter to control initial event emission",
+    "test_sse_hub_cache_init_and_updates": "test the SSE hub-cache endpoint streams both initialization and update events concurrently"
+  },
+  "huggingface_dataset-viewer/services/webhook/src/webhook/app.py": {
+    "create_starlette_app": "create a Starlette app with CORS, gzip, and Prometheus middleware for the webhook service",
+    "create_app_with_config": "create a Starlette app from an AppConfig with MongoDB resources and webhook routes",
+    "run_webhook_server": "run the webhook service as a uvicorn server on a configured host and port",
+    "review_create_app_with_config": "review the create_app_with_config function to understand how storage clients and MongoDB resources are initialized",
+    "refactor_webhook_routes": "refactor the webhook route configuration to add new endpoints or modify existing ones"
+  },
+  "huggingface_dataset-viewer/services/webhook/src/webhook/config.py": {
+    "build_appconfig_from_env": "build an AppConfig instance by loading all sub-configs from environment variables",
+    "create_appconfig_with_defaults": "create an AppConfig with all sub-configs using their default factory values",
+    "review_appconfig_structure": "review the AppConfig dataclass fields and their default factory initializers",
+    "summarize_appconfig_from_env": "summarize how AppConfig.from_env aggregates CommonConfig, ApiConfig, and other sub-configs",
+    "test_appconfig_from_env": "test that AppConfig.from_env correctly loads all sub-configs from environment variables"
+  },
+  "huggingface_dataset-viewer/services/webhook/src/webhook/routes/webhook.py": {
+    "create_webhook_endpoint": "create a FastAPI endpoint that handles HuggingFace moon-landing webhook events for dataset add remove update and move",
+    "parse_payload": "parse and validate a moon-landing webhook v2 JSON payload against the JSON schema",
+    "process_payload_remove": "process a webhook remove event to delete a dataset including cache jobs and storage assets",
+    "process_payload_update": "process a webhook update event to smart update or delete and recreate a dataset revision",
+    "process_payload_add_move": "process a webhook add or move event to delete old contents and update a dataset"
+  },
+  "huggingface_dataset-viewer/services/webhook/tests/conftest.py": {
+    "run_pytest_webhook_tests": "run pytest tests for the webhook service using the conftest fixtures for mongo resources",
+    "review_app_config_fixture": "review the app_config fixture that loads AppConfig from environment variables and validates test databases",
+    "test_cache_mongo_resource_fixture": "test the autouse cache_mongo_resource fixture that provides and cleans the cache MongoDB database",
+    "test_queue_mongo_resource_fixture": "test the autouse queue_mongo_resource fixture that provides and cleans the queue MongoDB database",
+    "review_monkeypatch_session_fixture": "review the session-scoped monkeypatch fixture that sets environment variables for assets, mongo, and uvicorn config"
+  },
+  "huggingface_dataset-viewer/services/webhook/tests/test_app.py": {
+    "test_cors": "test the webhook CORS preflight OPTIONS response for allowed origin, headers, and methods",
+    "test_get_healthcheck": "test the healthcheck endpoint returns a 200 status code and the text ok",
+    "test_metrics": "test the metrics endpoint returns prometheus metrics with positive request and processing time values",
+    "review_test_cors": "review the test_cors function to verify CORS headers are validated correctly",
+    "refactor_test_metrics": "refactor the test_metrics function to parse and assert additional prometheus metric names"
+  },
+  "huggingface_dataset-viewer/services/webhook/tests/test_app_real.py": {
+    "test_webhook_untrusted": "test that posting to the webhook endpoint without a secret header returns a 400 status code",
+    "test_webhook_trusted": "test that posting to the webhook endpoint with a valid x-webhook-secret header returns a 200 status code",
+    "run_real_monkeypatch_fixture": "run the module-scoped pytest fixture that sets environment variables for cache, queue, and HuggingFace endpoint configuration",
+    "run_real_client_fixture": "run the module-scoped pytest fixture that creates a TestClient instance from the webhook app",
+    "run_real_app_config_fixture": "run the module-scoped pytest fixture that loads AppConfig from environment and validates test database and production hub settings"
+  },
+  "huggingface_dataset-viewer/services/webhook/tests/routes/test_webhook.py": {
+    "test_parse_payload": "test the parse_payload function with various webhook event payloads to validate JSON schema",
+    "test_process_payload": "test the process_payload function to verify delete_dataset and update_dataset are called correctly",
+    "test_parse_payload_invalid_event": "test parse_payload raises an exception when given an unrecognized webhook event type",
+    "test_process_payload_discussion_scope": "test process_payload skips processing when the webhook scope is discussion.comment",
+    "test_process_payload_move_event": "test process_payload handles move events by using the movedTo field as the new dataset name"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/config.py": {
+    "create_appconfig_from_env": "create an AppConfig instance by calling AppConfig.from_env to load all worker settings from environment variables",
+    "create_workerconfig_from_env": "create a WorkerConfig instance by calling WorkerConfig.from_env to load heartbeat and job duration settings from environment variables",
+    "create_firstrowsconfig_from_env": "create a FirstRowsConfig instance by calling FirstRowsConfig.from_env to load dataset preview row and column limits from environment variables",
+    "create_parquetandinfoconfig_from_env": "create a ParquetAndInfoConfig instance by calling ParquetAndInfoConfig.from_env to load parquet conversion settings from environment variables",
+    "create_presidioentitiesconfig_from_env": "create a PresidioEntitiesScanConfig instance by calling PresidioEntitiesScanConfig.from_env to load PII scanning limits from environment variables"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/executor.py": {
+    "run_WorkerExecutor_start": "run the WorkerExecutor to start the worker loop and web app with heartbeat monitoring",
+    "create_WorkerExecutor": "create a WorkerExecutor instance with app config, job runner factory, and state file path",
+    "test_every_async_function": "test the async every function that calls a callable at fixed or random intervals",
+    "review_WorkerExecutor_kill_zombies": "review the WorkerExecutor kill_zombies method that detects and marks jobs missing heartbeats as crashed",
+    "review_WorkerExecutor_kill_long_job": "review the WorkerExecutor kill_long_job method that stops jobs exceeding the maximum allowed duration"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_manager.py": {
+    "run_job_compute": "run a JobManager to execute a job runner compute and return a JobResult",
+    "process_job_with_lifecycle": "process a job through pre_compute, compute, and post_compute lifecycle hooks with error handling",
+    "create_job_manager": "create a JobManager instance with a JobInfo, AppConfig, and JobRunner for a specific processing step",
+    "set_job_crashed": "set a job as crashed with an error message and optional cause exception",
+    "set_job_exceeded_duration": "set a job as exceeded maximum duration with an error message and optional cause"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runner.py": {
+    "create_subclass_JobRunner": "create a subclass of JobRunner that implements get_job_type and compute methods",
+    "implement_compute_method": "implement the abstract compute method in a JobRunner subclass to return a JobResult",
+    "override_pre_compute_hook": "override the pre_compute hook method in a JobRunner subclass to run setup logic",
+    "override_post_compute_hook": "override the post_compute hook method in a JobRunner subclass to run cleanup logic",
+    "override_validate_method": "override the validate method in a JobRunner subclass to check dataset config and split existence"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runner_factory.py": {
+    "create_job_runner_from_factory": "create a JobRunnerFactory with app_config and cache paths then call create_job_runner with a JobInfo dict",
+    "implement_custom_job_runner_factory": "implement a subclass of BaseJobRunnerFactory that overrides _create_job_runner to return a custom JobRunner",
+    "add_new_job_type": "add a new job type to JobRunnerFactory by adding an if branch that instantiates the corresponding JobRunner class",
+    "review_job_runner_factory_dispatch": "review the JobRunnerFactory _create_job_runner method to understand which JobRunner class is returned for each job type",
+    "refactor_job_runner_factory_to_dict": "refactor JobRunnerFactory to use a dispatch dictionary instead of chained if statements for job type lookup"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/loop.py": {
+    "run_loop": "run the Loop worker to continuously process jobs from the queue until an uncaught exception",
+    "process_next_job": "process the next job from the queue by creating a job runner and running it via JobManager",
+    "has_resources": "check if the worker has sufficient memory and CPU resources to start a new job",
+    "has_memory": "check if the current RAM plus swap memory usage is below the configured maximum percentage threshold",
+    "has_cpu": "check if the current CPU load average is below the configured maximum percentage threshold"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/resources.py": {
+    "allocate_LibrariesResource": "create a LibrariesResource instance and call allocate to set the HF endpoint and disable download counts",
+    "release_LibrariesResource": "call release on a LibrariesResource to restore the previous HF endpoint and verbosity settings",
+    "configure_datasets_cache": "create a LibrariesResource with init_hf_datasets_cache to override the HF datasets cache directory",
+    "suppress_datasets_logs": "call allocate on LibrariesResource to set the datasets library log level to critical only",
+    "review_LibrariesResource_allocate": "review the LibrariesResource allocate method to understand how it configures the HF endpoint and download counts"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/start_web_app.py": {
+    "create_starlette_app_with_healthcheck_and_metrics": "create a Starlette app with healthcheck and metrics routes using the create_app factory function",
+    "run_uvicorn_server_from_env_config": "run a uvicorn server using UvicornConfig loaded from environment variables for host port and workers",
+    "healthcheck_endpoint_returns_ok": "call the healthcheck endpoint that returns a plain text ok response with no-store cache control",
+    "create_metrics_endpoint_for_prometheus": "create a metrics endpoint that returns the latest Prometheus metrics content with proper headers",
+    "review_create_app_routes": "review the create_app function and its Starlette routes for healthcheck and metrics endpoints"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/utils.py": {
+    "get_rows_from_dataset": "get rows from a HuggingFace dataset split in streaming or normal mode with a max row limit",
+    "get_rows_or_raise_with_fallback": "get rows from a dataset split trying streaming first then falling back to normal download mode",
+    "create_branch_on_hub": "create a new branch on a HuggingFace dataset repository using the HfApi client",
+    "check_config_and_split_exists": "check if a given config or split exists for a HuggingFace dataset using cached step responses",
+    "get_file_extension_recursive": "get the file extension of a filename handling double extensions like tar.gz and cleaning special characters"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/_job_runner_with_cache.py": {
+    "create_job_runner_with_cache": "create a JobRunnerWithCache instance with job_info, app_config, and a cache_directory Path",
+    "generate_cache_subdirectory": "generate a unique cache subdirectory name using get_cache_subdirectory with a configurable number of random digits",
+    "init_cache_before_compute": "call pre_compute to create a temporary cache directory before running a job",
+    "cleanup_cache_after_compute": "call post_compute to remove the temporary cache directory and free storage after a job finishes",
+    "review_job_runner_with_cache_class": "review the JobRunnerWithCache base class and its cache directory lifecycle management methods"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/_job_runner_with_datasets_cache.py": {
+    "create_JOB_RUNNER_WITH_DATASETS_CACHE": "create a JobRunnerWithDatasetsCache instance with job info, app config, and a datasets cache path",
+    "refactor_SET_DATASETS_CACHE": "refactor set_datasets_cache to support additional cache directories beyond datasets, hub, and xet",
+    "review_PRE_COMPUTE": "review the pre_compute method that sets the datasets cache to the job subdirectory before computation",
+    "review_POST_COMPUTE": "review the post_compute method that resets the datasets cache to the base directory after computation",
+    "test_SET_DATASETS_CACHE": "test set_datasets_cache to verify HF_DATASETS_CACHE, HF_HUB_CACHE, and HF_XET_CACHE are set correctly"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/config/config_job_runner.py": {
+    "create_ConfigJobRunner": "create a ConfigJobRunner instance from job_info and app_config to process dataset config jobs",
+    "validate_ConfigJobRunner": "validate a ConfigJobRunner to check if the specified config exists for the dataset",
+    "create_ConfigJobRunnerWithDatasetsCache": "create a ConfigJobRunnerWithDatasetsCache instance with job_info, app_config, and an hf_datasets_cache path",
+    "review_ConfigJobRunner_validate": "review the ConfigJobRunner validate method to understand how it checks config existence",
+    "refactor_ConfigJobRunner_init": "refactor the ConfigJobRunner init to add additional parameter validation beyond the config check"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/config/info.py": {
+    "compute_config_info_response": "compute the config-info response for a specific dataset and config from the cached previous step",
+    "run_ConfigInfoJobRunner_compute": "run the ConfigInfoJobRunner compute method to get a CompleteJobResult for a dataset config",
+    "get_ConfigInfoJobRunner_job_type": "get the job type string from ConfigInfoJobRunner which returns config-info",
+    "review_compute_config_info_response": "review the compute_config_info_response function to understand how it extracts dataset_info from the cache",
+    "test_ConfigInfoJobRunner": "test the ConfigInfoJobRunner class to verify it returns correct CompleteJobResult for a dataset config"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/config/is_valid.py": {
+    "compute_is_valid_response": "compute the config-is-valid response for a dataset config by checking split-level validity flags",
+    "run_ConfigIsValidJobRunner": "run the ConfigIsValidJobRunner to compute and return a JobResult for a dataset config",
+    "get_job_type_ConfigIsValidJobRunner": "get the job type string 'config-is-valid' from the ConfigIsValidJobRunner class",
+    "review_compute_is_valid_response": "review the compute_is_valid_response function to understand how it aggregates split validity flags",
+    "test_ConfigIsValidJobRunner_compute": "test the ConfigIsValidJobRunner compute method to verify it returns a valid JobResult"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/config/opt_in_out_urls_count.py": {
+    "compute_opt_in_out_urls_count_response": "compute the opt-in and opt-out URL counts for all splits of a dataset config",
+    "run_ConfigOptInOutUrlsCountJobRunner_compute": "run the ConfigOptInOutUrlsCountJobRunner compute method to aggregate URL counts across dataset splits",
+    "get_ConfigOptInOutUrlsCountJobRunner_job_type": "get the job type string 'config-opt-in-out-urls-count' from ConfigOptInOutUrlsCountJobRunner",
+    "review_compute_opt_in_out_urls_count_response": "review the compute_opt_in_out_urls_count_response function to understand how it aggregates split-level URL count responses",
+    "refactor_ConfigOptInOutUrlsCountJobRunner": "refactor the ConfigOptInOutUrlsCountJobRunner class to add custom error handling for missing split responses"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/config/parquet.py": {
+    "compute_parquet_response": "compute the parquet file list and features for a given dataset and config from the cached previous step",
+    "run_ConfigParquetJobRunner": "run the ConfigParquetJobRunner to compute and return a CompleteJobResult with parquet file info for a dataset config",
+    "get_job_type_ConfigParquetJobRunner": "get the job type string 'config-parquet' from the ConfigParquetJobRunner static method",
+    "review_compute_parquet_response": "review the compute_parquet_response function to understand how it filters and sorts parquet files by split and filename",
+    "refactor_ConfigParquetJobRunner": "refactor the ConfigParquetJobRunner compute method to add custom error handling around the parquet response computation"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/config/parquet_and_info.py": {
+    "convert_dataset_to_parquet": "convert a HuggingFace dataset config to parquet files and commit them to the Hub",
+    "copy_parquet_files": "copy existing parquet files from a dataset builder and generate commit operations",
+    "stream_convert_to_parquet": "stream convert a dataset to parquet files with a max size limit to avoid timeouts",
+    "fill_builder_info": "fill a dataset builder info by reading metadata from copied parquet files",
+    "create_commits": "create one or more commits on the HuggingFace Hub with batched file operations"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/config/parquet_metadata.py": {
+    "create_parquet_metadata_file_from_remote_parquet": "create a parquet metadata file from a remote parquet file item and return its metadata",
+    "compute_parquet_metadata_response": "compute the parquet metadata response for a dataset config by syncing the index and storing metadata files",
+    "run_ConfigParquetMetadataJobRunner_compute": "run the ConfigParquetMetadataJobRunner compute method to generate parquet metadata for a dataset config",
+    "review_ConfigParquetMetadataJobRunner": "review the ConfigParquetMetadataJobRunner class and its compute method for parquet metadata generation",
+    "refactor_compute_parquet_metadata_response": "refactor compute_parquet_metadata_response to support a different metadata storage backend"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/config/size.py": {
+    "compute_config_size_response": "compute the config-size response for a dataset and config by fetching parquet and info from the cache",
+    "run_config_size_job_runner": "run the ConfigSizeJobRunner to compute and return a CompleteJobResult for a dataset config",
+    "get_config_size_job_type": "get the job type string 'config-size' from the ConfigSizeJobRunner static method",
+    "review_compute_config_size_response": "review the compute_config_size_response function to understand how it aggregates split sizes and parquet file bytes",
+    "refactor_config_size_job_runner": "refactor the ConfigSizeJobRunner compute method to add custom error handling around the config size response"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/config/split_names.py": {
+    "get_split_names_streaming": "get the split names for a HuggingFace dataset config using streaming mode",
+    "get_split_names_cached": "get the split names for a HuggingFace dataset config from a cached config-info response",
+    "run_config_split_names_job": "run the config-split-names job to compute split names for a dataset and config",
+    "review_split_names_validation": "review the split names computation logic and its validation for too many splits",
+    "refactor_split_names_fallback": "refactor the compute method to change the fallback behavior from cached to streaming"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/compatible_libraries.py": {
+    "get_builder_configs": "get builder configs with simplified data file patterns for a huggingface dataset",
+    "simplify_data_files_patterns": "simplify glob patterns like train[-._ 0-9] to train_*.jsonl for a dataset",
+    "get_compatible_libraries_for_json": "generate pandas dask and polars loading code snippets for a json dataset",
+    "get_compatible_libraries_for_parquet": "generate pandas dask and polars loading code snippets for a parquet dataset",
+    "compute_compatible_libraries_response": "compute all compatible libraries and formats for a huggingface dataset"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/config_names.py": {
+    "compute_config_names_response": "create a function that retrieves all config names for a HuggingFace dataset and returns a sorted list with the default config first",
+    "get_dataset_config_names": "call get_dataset_config_names from the datasets library to fetch config names for a given dataset path and optional auth token",
+    "get_dataset_default_config_name": "call get_dataset_default_config_name from the datasets library to get the default config when a dataset has multiple configs",
+    "DatasetConfigNamesJobRunner_compute": "run the DatasetConfigNamesJobRunner compute method to get a CompleteJobResult with config names for a dataset using app configuration",
+    "DatasetConfigNamesJobRunner_get_job_type": "call get_job_type on DatasetConfigNamesJobRunner to return the string 'dataset-config-names' as the job type identifier"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/croissant_crumbs.py": {
+    "generate_croissant_crumbs_from_infos": "generate Croissant JSON-LD metadata crumbs from a list of dataset info mappings with config and split details",
+    "compute_croissant_crumbs_response": "compute the Croissant crumbs response for a Hugging Face dataset by fetching cached dataset-info step results",
+    "run_croissant_crumbs_job_runner": "run the DatasetCroissantCrumbsJobRunner to compute and return a CompleteJobResult with Croissant metadata crumbs",
+    "remove_none_values_from_dict": "remove None values from the first depth of a dictionary mapping before serializing to JSON-LD",
+    "review_croissant_crumbs_metadata": "review the Croissant crumbs JSON-LD metadata generation for fields, distributions, and record sets"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/filetypes.py": {
+    "compute_filetypes_response": "compute the filetypes response for a HuggingFace dataset including files inside zip archives",
+    "get_filetypes": "get a list of filetypes with counts from a list of HuggingFace repo sibling files",
+    "get_counter_from_archive": "get a counter of file extensions inside a zip archive on a HuggingFace dataset",
+    "get_filetypes_from_archives": "get filetypes with counts from multiple zip archives in a HuggingFace dataset",
+    "extension_to_filetype": "convert a file extension tuple and count into a Filetype object"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/hub_cache.py": {
+    "compute_hub_cache_response": "compute the dataset hub cache response for a given HuggingFace dataset name",
+    "create_DatasetHubCacheJobRunner": "create a DatasetHubCacheJobRunner instance to compute and return a dataset hub cache job result",
+    "get_job_type": "get the job type string 'dataset-hub-cache' from the DatasetHubCacheJobRunner class",
+    "review_compute_hub_cache_response": "review the compute_hub_cache_response function to understand how it aggregates preview, viewer, size, and modality data",
+    "refactor_DatasetHubCacheJobRunner": "refactor the DatasetHubCacheJobRunner compute method to add custom error handling or logging"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/info.py": {
+    "compute_dataset_info_response": "compute the dataset info response for a HuggingFace dataset and return config infos with progress",
+    "run_DatasetInfoJobRunner": "run the DatasetInfoJobRunner to compute dataset info for a given HuggingFace dataset",
+    "get_job_type_DatasetInfoJobRunner": "get the job type string from DatasetInfoJobRunner which returns dataset-info",
+    "review_compute_dataset_info_response": "review the compute_dataset_info_response function to understand how it aggregates config info from cache",
+    "refactor_DatasetInfoJobRunner": "refactor the DatasetInfoJobRunner compute method to handle additional error cases"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/is_valid.py": {
+    "compute_is_valid_response": "compute the dataset-is-valid response for a HuggingFace dataset and return validity flags and progress",
+    "run_DatasetIsValidJobRunner_compute": "run the DatasetIsValidJobRunner compute method to get a JobResult with dataset validity response",
+    "get_DatasetIsValidJobRunner_job_type": "get the job type string from DatasetIsValidJobRunner returning dataset-is-valid",
+    "review_compute_is_valid_response": "review the compute_is_valid_response function that checks preview, viewer, search, filter, and statistics validity",
+    "test_DatasetIsValidJobRunner": "test the DatasetIsValidJobRunner class to verify it returns correct JobResult for dataset validity"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/modalities.py": {
+    "detect_features_modalities": "detect modalities from a datasets.Features object by classifying column types into audio, image, text, tabular, timeseries, or document",
+    "detect_modalities_from_features": "detect dataset modalities from cached dataset-info step by parsing feature column types across all configs",
+    "detect_modalities_from_url_columns": "detect image modalities by checking if split-image-url-columns previous step found URL columns pointing to images",
+    "detect_modalities_from_filetypes": "detect dataset modalities from repository file extensions like image, audio, video, 3d, geospatial, text, and document types",
+    "compute_modalities_response": "compute the full dataset-modalities response by combining feature, URL column, and file type detection methods into a sorted modality list"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/opt_in_out_urls_count.py": {
+    "compute_opt_in_out_urls_count": "compute the opt-in and opt-out URL counts for a dataset by aggregating config-level results",
+    "run_dataset_opt_in_out_urls_count_job": "run the DatasetOptInOutUrlsCountJobRunner to compute URL opt-in/out counts for a dataset",
+    "get_job_type": "get the job type string for the dataset opt-in-out URLs count job runner",
+    "review_compute_opt_in_out_urls_count_response": "review the compute_opt_in_out_urls_count_response function to understand how it aggregates config-level URL counts",
+    "refactor_DatasetOptInOutUrlsCountJobRunner": "refactor the DatasetOptInOutUrlsCountJobRunner class to support a different aggregation strategy for URL counts"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/parquet.py": {
+    "compute_parquet_response": "compute the parquet file response for a HuggingFace dataset by aggregating config-level parquet info from cache",
+    "run_DatasetParquetJobRunner": "run the DatasetParquetJobRunner to compute and return a JobResult with parquet files for a dataset",
+    "get_job_type": "get the job type string 'dataset-parquet' from the DatasetParquetJobRunner class",
+    "aggregate_config_parquet_files": "aggregate parquet files across all configs of a dataset by fetching cached config-parquet responses",
+    "track_pending_failed_jobs": "track pending and failed config-parquet jobs when computing the dataset parquet response"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/presidio_entities_count.py": {
+    "compute_presidio_entities_count_response": "compute the presidio entities count response for a dataset by aggregating split-level PII scan results",
+    "run_DatasetPresidioEntitiesCountJobRunner": "run the dataset presidio entities count job runner to aggregate PII scan results across all splits",
+    "review_compute_presidio_entities_count_response": "review the compute_presidio_entities_count_response function to understand how it aggregates PII entity counts from split scans",
+    "refactor_DatasetPresidioEntitiesCountJobRunner": "refactor the DatasetPresidioEntitiesCountJobRunner class to support additional PII entity types in the aggregation logic",
+    "summarize_presidio_entities_count": "summarize the presidio entities count module that aggregates PII scan results across dataset splits"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/size.py": {
+    "compute_dataset_size_response": "compute the dataset size response for a HuggingFace dataset including config and split sizes",
+    "run_dataset_size_job": "run the DatasetSizeJobRunner to compute and return size metrics for a HuggingFace dataset",
+    "aggregate_config_sizes": "aggregate config size data across all configs to compute total dataset bytes and row counts",
+    "handle_pending_failed_jobs": "handle pending and failed config-size jobs when computing dataset size for incomplete pipelines",
+    "get_dataset_size_job_type": "get the job type string 'dataset-size' from the DatasetSizeJobRunner static method"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/dataset/split_names.py": {
+    "compute_dataset_split_names_response": "compute the dataset split names response for a given HuggingFace dataset by aggregating cached config split names",
+    "run_DatasetSplitNamesJobRunner": "run the dataset split names job runner to compute splits pending and failed configs for a dataset",
+    "get_job_type_DatasetSplitNamesJobRunner": "get the job type string 'dataset-split-names' from the DatasetSplitNamesJobRunner class",
+    "review_compute_dataset_split_names_response": "review the compute_dataset_split_names_response function to understand how it aggregates splits pending and failed configs",
+    "refactor_DatasetSplitNamesJobRunner": "refactor the DatasetSplitNamesJobRunner compute method to add custom error handling or logging"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/split/descriptive_statistics.py": {
+    "compute_descriptive_statistics": "compute descriptive statistics for a dataset split from parquet files and return per-column statistics",
+    "check_extension_feature": "check if a dataset feature is an arrow extension type like Array2D or Array3D",
+    "get_extension_features": "get the names of all arrow extension features from a dataset features dictionary",
+    "run_split_statistics_job": "run the split descriptive statistics job runner to compute column-level statistics for a dataset split",
+    "create_statistics_response": "create a SplitDescriptiveStatisticsResponse with num_examples, per-column statistics, and a partial flag"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/split/first_rows.py": {
+    "compute_first_rows_from_parquet": "compute the first rows of a dataset split from parquet files using RowsIndex and anyio",
+    "compute_first_rows_from_streaming": "compute the first rows of a dataset split using streaming mode from huggingface.co",
+    "run_split_first_rows_job": "run the SplitFirstRowsJobRunner to get first rows of a dataset split with parquet fallback to streaming",
+    "review_split_first_rows_fallback": "review the SplitFirstRowsJobRunner compute method that falls back from parquet to streaming on error",
+    "refactor_rows_content_retrieval": "refactor the get_rows_content inner function to change how rows are fetched from parquet or streaming"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/split/image_url_columns.py": {
+    "compute_image_url_columns": "compute image url columns for a huggingface dataset split by scanning first rows for image URLs",
+    "run_split_image_url_columns_job": "run the split image url columns job runner to detect image url columns in a dataset split",
+    "get_job_type": "get the job type string for the split image url columns job runner",
+    "refactor_compute_image_url_columns": "refactor compute_image_url_columns to support a configurable url column ratio threshold instead of the hardcoded 0.3",
+    "review_split_image_url_columns_job_runner": "review the SplitImageUrlColumnsJobRunner class and its compute method for handling dataset splits"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/split/is_valid.py": {
+    "compute_is_valid_response": "compute the split-is-valid response for a dataset config and split checking viewer preview search filter and statistics",
+    "run_SplitIsValidJobRunner_compute": "run the SplitIsValidJobRunner compute method to get a CompleteJobResult with the is-valid response for a dataset split",
+    "get_SplitIsValidJobRunner_job_type": "get the job type string from SplitIsValidJobRunner which returns split-is-valid for identifying the runner",
+    "check_dataset_split_validity": "check if a HuggingFace dataset split has valid viewer preview search filter and statistics artifacts using compute_is_valid_response",
+    "determine_indexable_columns_for_search": "determine if a dataset split supports search by checking indexable columns from parquet metadata features using get_indexable_columns"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/split/opt_in_out_urls_count.py": {
+    "compute_opt_in_out_urls_count_response": "compute the opt-in/opt-out URL counts for a dataset config split by fetching the previous scan step results",
+    "run_SplitOptInOutUrlsCountJobRunner": "run the split opt-in/out URLs count job runner to aggregate URL statistics for a dataset split",
+    "get_job_type_SplitOptInOutUrlsCountJobRunner": "get the job type string 'split-opt-in-out-urls-count' from the SplitOptInOutUrlsCountJobRunner class",
+    "review_compute_method": "review the compute method of SplitOptInOutUrlsCountJobRunner that returns a CompleteJobResult with URL count data",
+    "test_compute_opt_in_out_urls_count_response": "test the compute_opt_in_out_urls_count_response function with a dataset config and split to verify URL count aggregation"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/split/opt_in_out_urls_scan_from_streaming.py": {
+    "run_split_opt_in_out_urls_scan_job": "run the SplitOptInOutUrlsScanJobRunner to scan image URLs in a dataset split for opt-in/opt-out status",
+    "compute_opt_in_out_urls_scan_response": "compute the opt-in/opt-out URLs scan response for a specific dataset split using the spawning API",
+    "scan_urls_batched": "scan a list of image URLs in batches using opt_in_out_scan_urls with rate limiting and concurrency controls",
+    "check_spawning_api": "check image URLs against the spawning API to determine their opt-in/opt-out status",
+    "create_opt_url_objects": "create OptUrl objects from scanned URL indices with row and column metadata for the response"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/split/presidio_scan.py": {
+    "presidio_scan_entities": "scan dataset rows for PII entities using Presidio and return masked results",
+    "analyze": "analyze text batches for PII entities using a Presidio BatchAnalyzerEngine with caching",
+    "mask": "mask sensitive text by replacing characters with asterisks while preserving the first two characters",
+    "get_columns_with_strings": "get a list of column names that contain string data from dataset features",
+    "SplitPresidioEntitiesScanJobRunner": "run a split-level Presidio PII scan job on a HuggingFace dataset and return results"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/job_runners/split/split_job_runner.py": {
+    "create_SPLIT_JOB_RUNNER": "create a SplitJobRunner instance with job_info and app_config to validate a dataset split",
+    "validate_SPLIT_JOB_RUNNER": "validate that a dataset split exists by calling the SplitJobRunner validate method",
+    "create_SPLIT_JOB_RUNNER_WITH_DATASETS_CACHE": "create a SplitJobRunnerWithDatasetsCache instance with job_info, app_config, and an hf_datasets_cache path",
+    "create_SPLIT_JOB_RUNNER_WITH_CACHE": "create a SplitJobRunnerWithCache instance with job_info, app_config, and a cache_directory path",
+    "review_SPLIT_JOB_RUNNER_CLASSES": "review the SplitJobRunner class hierarchy and multiple inheritance patterns for cache support"
+  },
+  "huggingface_dataset-viewer/services/worker/src/worker/routes/metrics.py": {
+    "create_metrics_endpoint": "create a starlette endpoint that returns prometheus metrics in the latest content type format",
+    "build_metrics_route": "build a prometheus metrics endpoint for a starlette application using the create_metrics_endpoint factory",
+    "review_create_metrics_endpoint": "review the create_metrics_endpoint function to understand how it wraps prometheus metrics in a starlette response",
+    "refactor_metrics_endpoint": "refactor the metrics endpoint to add authentication or rate limiting before exposing prometheus data",
+    "test_create_metrics_endpoint": "test the create_metrics_endpoint function by calling it and verifying the returned response content type"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/conftest.py": {
+    "create_app_config_from_env": "create an AppConfig instance from environment variables using AppConfig.from_env()",
+    "setup_cache_mongo_resource": "setup a CacheMongoResource with a database name and mongo URL host",
+    "setup_queue_mongo_resource": "setup a QueueMongoResource with a database name and mongo URL host",
+    "init_libraries_resource": "init a LibrariesResource with an hf_endpoint, datasets cache path, and numba path",
+    "clean_cache_and_queue_databases": "clean the cache and queue MongoDB databases using _clean_cache_database and _clean_queue_database"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/test_executor.py": {
+    "test_executor_get_state": "test the WorkerExecutor get_state method to verify it returns the current worker state from the state file",
+    "test_executor_heartbeat": "test the WorkerExecutor heartbeat method to verify it updates the job's last heartbeat timestamp in the queue",
+    "test_executor_kill_zombies": "test the WorkerExecutor kill_zombies method to verify it deletes jobs that have stopped sending heartbeats",
+    "test_executor_start": "test the WorkerExecutor start method to verify it spawns a worker loop process and monitors heartbeats and zombies",
+    "test_executor_stops_on_long_job": "test the WorkerExecutor start method to verify it kills jobs that exceed the maximum allowed duration"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/test_job_manager.py": {
+    "test_DummyJobRunner": "test the DummyJobRunner class that returns a CompleteJobResult with a key value dictionary",
+    "test_test_check_type": "test the test_check_type function that validates JobManager raises ValueError for mismatched job types",
+    "test_test_run_job_and_finish": "test the test_run_job_and_finish function that runs a job through the queue and verifies cache entries",
+    "test_test_job_runner_set_crashed": "test the test_job_runner_set_crashed function that verifies crashed jobs update the cache with error status",
+    "test_DummyJobRunner_compute": "test the DummyJobRunner compute method that returns a CompleteJobResult with sample data"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/test_job_runner_factory.py": {
+    "create_JOB_RUNNER_FACTORY": "create a JobRunnerFactory instance with app config, cache paths, and storage client",
+    "test_create_job_runner": "test that JobRunnerFactory.create_job_runner returns the correct runner class for each job type",
+    "create_STORAGE_CLIENT": "create a StorageClient with file protocol, storage root path, and overwrite enabled",
+    "upsert_cached_RESPONSE": "upsert a cached response document into MongoDB with kind, dataset, content, and http status",
+    "run_JOB_RUNNER_TESTS": "run parametrized tests verifying job runner creation for dataset, config, and split levels"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/test_loop.py": {
+    "test_Loop_process_next_job": "test the Loop class process_next_job method with a DummyJobRunnerFactory and queued job",
+    "create_DummyJobRunner": "create a DummyJobRunner subclass that returns a CompleteJobResult with a key-value dictionary",
+    "create_DummyJobRunnerFactory": "create a DummyJobRunnerFactory that instantiates DummyJobRunner instances from JobInfo objects",
+    "run_loop_with_queued_job": "run a Loop instance that processes a queued dataset-config-names job and verifies completion",
+    "test_queue_add_and_check_job": "test adding a job to the Loop queue and checking its in-process status"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/test_resources.py": {
+    "test_libraries_parametrized": "test LibrariesResource with all combinations of init_hf_datasets_cache and numba_path parameters",
+    "test_libraries_context_manager": "test LibrariesResource used as a context manager that restores HF_ENDPOINT on exit",
+    "test_LIBRARIESRESOURCE_allocate": "test that LibrariesResource.allocate sets HF_ENDPOINT and disables HF_UPDATE_DOWNLOAD_COUNTS",
+    "test_LIBRARIESRESOURCE_release": "test that LibrariesResource.release restores the previous HF_ENDPOINT and verbosity settings",
+    "test_LIBRARIESRESOURCE_hf_datasets_cache": "test that LibrariesResource.hf_datasets_cache equals the provided init_hf_datasets_cache path"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/test_statistics_utils.py": {
+    "test_generate_bins": "test the generate_bins function with various min/max values and column types for histogram bin generation",
+    "test_float_statistics": "test FloatColumn.compute_statistics against expected numerical statistics for float columns including null and nan cases",
+    "test_int_statistics": "test IntColumn.compute_statistics against expected numerical statistics for integer columns including negative and large values",
+    "test_string_statistics": "test StringColumn.compute_statistics for both text and label string columns with null handling",
+    "test_class_label_statistics": "test ClassLabelColumn.compute_statistics for categorical columns with class label features and frequency distributions"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/test_utils.py": {
+    "test_get_file_extension": "test the get_file_extension function with various filenames to verify correct extension extraction",
+    "test_file_extension_dataclass": "test the FileExtension dataclass fields extension and uncompressed_extension for expected values",
+    "test_get_file_extension_double_ext": "test get_file_extension with double extensions like tar.gz to verify uncompressed_extension is set",
+    "test_get_file_extension_case_insensitive": "test get_file_extension with uppercase filenames like file.CSV to verify case-insensitive matching",
+    "test_get_file_extension_edge_cases": "test get_file_extension with edge cases like leading dots, no extension, and URL suffixes"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/fixtures/datasets.py": {
+    "create_value_dataset": "create a single-column HuggingFace Dataset from a pandas DataFrame with a specified dtype using value()",
+    "create_other_dataset": "create a single-column HuggingFace Dataset from a dict with an optional FeatureType using other()",
+    "get_test_datasets_fixture": "get a mapping of named test Datasets covering all HuggingFace feature types using the datasets fixture",
+    "test_duckdb_index_dataset": "test DuckDB full-text search indexing with the duckdb_index dataset containing text, audio, video, and image columns",
+    "test_descriptive_statistics_dataset": "test descriptive statistics computation with the descriptive_statistics dataset containing various numeric and string columns"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/fixtures/files.py": {
+    "create_csv_test_fixture": "create a pytest fixture that writes a CSV file with col_1, col_2, col_3 columns and returns the file path",
+    "create_jsonl_test_fixture": "create a pytest fixture that writes a JSONL file with sparse records and returns the file path",
+    "create_text_file_fixture": "create a pytest fixture that writes a plain text file and returns the file path",
+    "create_gz_file_fixture": "create a pytest fixture that writes a gzip-compressed text file and returns the file path",
+    "create_multi_config_dataset_fixture": "create a pytest fixture that generates 15 config CSV files and a README.md with YAML frontmatter listing all configs"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/fixtures/fsspec.py": {
+    "create_MockFileSystem": "create a MockFileSystem instance with a local root directory for testing fsspec operations",
+    "create_TmpDirFileSystem": "create a TmpDirFileSystem that uses a temporary directory as the root for mock file operations",
+    "test_mock_fsspec_fixture": "test code using the mock_fsspec pytest fixture to register mock and tmp filesystem protocols",
+    "test_mockfs_fixture": "test file operations using the mockfs pytest fixture that provides a MockFileSystem with a temp directory",
+    "test_tmpfs_fixture": "test file operations using the tmpfs pytest fixture that provides a TmpDirFileSystem with cleanup"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/fixtures/hub.py": {
+    "create_hub_dataset_repo": "create a huggingface hub dataset repo with optional files, datasets, or configs",
+    "delete_hub_dataset_repo": "delete a huggingface hub dataset repo by its repo id",
+    "create_parquet_and_info_response": "create a parquet and info response for a dataset with csv, audio, or big parquet type",
+    "create_first_rows_response": "create a first rows response with features and row data for a dataset",
+    "create_config_names_response": "create a config names response for a dataset with default or multiple configs"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/fixtures/statistics_dataset.py": {
+    "create_statistics_dataset": "create a huggingface Dataset with 20 rows of typed columns for testing statistics computation",
+    "create_string_text_dataset": "create a huggingface Dataset with long text and large_string columns for testing text statistics",
+    "create_audio_dataset": "create a huggingface Dataset with Audio features including null variants for testing audio statistics",
+    "create_datetime_dataset": "create a huggingface Dataset with datetime string and timestamp columns for testing datetime statistics",
+    "create_null_column": "create a list of None values with the specified number of samples for test fixtures"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/test__job_runner_with_cache.py": {
+    "test_get_cache_subdirectory": "test the parametrized cache subdirectory hash generation for different dataset config and split combinations",
+    "test_pre_compute_post_compute": "test the pre_compute and post_compute cache directory creation and cleanup lifecycle",
+    "test_DummyJobRunner_compute": "test the DummyJobRunner compute method that returns a CompleteJobResult with a sample column",
+    "test_get_job_runner_fixture": "test the get_job_runner pytest fixture that creates DummyJobRunner instances with job info params",
+    "test_assert_datasets_cache_path": "test the helper function that asserts a cache path exists or does not exist"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/test__job_runner_with_datasets_cache.py": {
+    "test_set_datasets_cache": "test that set_datasets_cache redirects HF_DATASETS_CACHE, HF_HUB_CACHE, and HF_XET_CACHE to a custom path",
+    "test_pre_compute_post_compute": "test that pre_compute creates a per-job cache subdirectory and post_compute cleans it up",
+    "assert_datasets_cache_path": "assert a datasets cache path exists or not and validate its datasets, hub, and xet subdirectories",
+    "DummyJobRunner_get_job_type": "get the job type string 'dummy-job-runner' from the DummyJobRunner test class",
+    "DummyJobRunner_compute": "compute and return a CompleteJobResult with a simple dictionary payload for testing"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/config/test_config_job_runner.py": {
+    "test_DummyConfigJobRunner_compute": "test the DummyConfigJobRunner compute method returns a CompleteJobResult with key value pair",
+    "test_test_failed_creation": "test that creating a DummyConfigJobRunner with a None config raises ParameterMissingError",
+    "test_test_creation_valid_config": "test that DummyConfigJobRunner validates successfully when the config exists in the cached config names",
+    "test_test_creation_invalid_config": "test that DummyConfigJobRunner raises ConfigNotFoundError when the config does not match cached config names",
+    "test_cache_mongo_resource_autouse_fixture": "test the autouse cache mongo resource fixture provides a CacheMongoResource for config job runner tests"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/config/test_info.py": {
+    "test_ConfigInfoJobRunner_compute": "test the ConfigInfoJobRunner compute method with valid upstream parquet and info cache responses",
+    "test_ConfigInfoJobRunner_error_handling": "test the ConfigInfoJobRunner compute method handles upstream NOT_FOUND and malformed cache responses",
+    "test_ConfigInfoJobRunner_not_found": "test the ConfigInfoJobRunner raises CachedArtifactNotFoundError when the upstream cache artifact does not exist",
+    "create_get_job_runner_fixture": "create a pytest fixture that returns a ConfigInfoJobRunner instance with mocked dataset-config-names cache",
+    "review_test_compute_parametrized": "review the parametrized test_compute function that validates ConfigInfoJobRunner behavior across multiple upstream scenarios"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/config/test_is_valid.py": {
+    "test_compute_ConfigIsValidJobRunner": "test the ConfigIsValidJobRunner compute method with various upstream responses and expected results",
+    "test_compute_raises_ConfigIsValidJobRunner": "test that ConfigIsValidJobRunner compute raises exceptions on bad format upstream responses",
+    "create_GetJobRunner_fixture": "create a pytest fixture that returns a ConfigIsValidJobRunner instance for a given dataset and config",
+    "create_UpstreamResponse_test_data": "create UpstreamResponse test data objects for config-split-names and split-is-valid cache entries",
+    "test_ConfigIsValidJobRunner_with_mongo": "test the ConfigIsValidJobRunner job runner with MongoDB cache and queue resources"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/config/test_opt_in_out_urls_count.py": {
+    "test_ConfigOptInOutUrlsCountJobRunner_compute": "test the ConfigOptInOutUrlsCountJobRunner compute method with parametrized split data and expected aggregation results",
+    "test_ConfigOptInOutUrlsCountJobRunner_doesnotexist": "test that ConfigOptInOutUrlsCountJobRunner raises CachedArtifactNotFoundError when the dataset does not exist",
+    "run_get_job_runner_fixture": "run the get_job_runner fixture to create a ConfigOptInOutUrlsCountJobRunner instance with upserted cache responses",
+    "test_upsert_response_dataset_config_names": "test upsert_response calls to insert dataset-config-names and config-split-names cache artifacts for the job runner",
+    "review_ConfigOptInOutUrlsCountJobRunner_lifecycle": "review the pre_compute compute and post_compute lifecycle methods of ConfigOptInOutUrlsCountJobRunner in test scenarios"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/config/test_parquet.py": {
+    "test_ConfigParquetJobRunner_compute": "test the ConfigParquetJobRunner compute method with parametrized upstream parquet file scenarios",
+    "test_ConfigParquetJobRunner_doesnotexist": "test the ConfigParquetJobRunner handles CachedArtifactNotFoundError when upstream data is missing",
+    "run_ConfigParquetJobRunner_pre_compute": "run the ConfigParquetJobRunner pre_compute step to validate upstream cache before computing",
+    "run_ConfigParquetJobRunner_post_compute": "run the ConfigParquetJobRunner post_compute step after computing parquet file responses",
+    "review_ConfigParquetJobRunner_fixture": "review the get_job_runner fixture that creates ConfigParquetJobRunner instances with mock data"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/config/test_parquet_and_info.py": {
+    "run_ConfigParquetAndInfoJobRunner": "run the ConfigParquetAndInfoJobRunner to convert a dataset config to parquet files and compute dataset info",
+    "test_stream_convert_to_parquet": "test the stream_convert_to_parquet function to convert a dataset builder to parquet with size limits",
+    "test_fill_builder_info": "test the fill_builder_info function to populate a dataset builder info from existing parquet files",
+    "test_parse_repo_filename": "test the parse_repo_filename function to extract config and split from a parquet file path",
+    "test_create_commits": "test the create_commits function to batch commit operations to a HuggingFace Hub repository"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/config/test_parquet_metadata.py": {
+    "test_ConfigParquetMetadataJobRunner": "test the ConfigParquetMetadataJobRunner job runner with parametrized upstream status and content scenarios",
+    "create_dummy_parquet_buffer": "create an in-memory Parquet buffer with a simple table using pyarrow for testing",
+    "test_parquet_metadata_with_features": "test the job runner with dataset features included in the upstream parquet response",
+    "test_parquet_metadata_error_handling": "test the job runner handles upstream status errors and format errors correctly",
+    "review_AuthenticatedHTTPFile": "review the AuthenticatedHTTPFile class that extends HTTPFile to verify Bearer token authorization headers"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/config/test_size.py": {
+    "test_ConfigSizeJobRunner_compute": "test ConfigSizeJobRunner.compute to calculate dataset config size from parquet files and dataset info",
+    "test_ConfigSizeJobRunner_partial": "test ConfigSizeJobRunner.compute with partial dataset info and estimated row counts",
+    "test_ConfigSizeJobRunner_errors": "test ConfigSizeJobRunner.compute raises CachedArtifactError or PreviousStepFormatError on bad upstream data",
+    "test_ConfigSizeJobRunner_notfound": "test ConfigSizeJobRunner.compute raises CachedArtifactNotFoundError when upstream artifact does not exist",
+    "test_ConfigSizeJobRunner_fixture": "test ConfigSizeJobRunner lifecycle using the get_job_runner fixture with pre_compute compute and post_compute"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/config/test_split_names.py": {
+    "test_compute_split_names_from_info_response": "test compute_split_names_from_info_response with various upstream statuses and malformed dataset info responses",
+    "test_ConfigSplitNamesJobRunner_compute": "test ConfigSplitNamesJobRunner compute method across public gated private and empty datasets with and without tokens",
+    "test_ConfigSplitNamesJobRunner_lifecycle": "test the pre_compute compute and post_compute lifecycle of ConfigSplitNamesJobRunner for a public CSV dataset",
+    "test_compute_split_names_cached_artifact_not_found": "test that compute_split_names_from_info_response raises CachedArtifactNotFoundError for non-existent datasets",
+    "test_compute_split_names_custom_error_response": "test that ConfigSplitNamesJobRunner compute raises CustomError with correct error code and cause for inaccessible datasets"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_compatible_libraries.py": {
+    "test_DatasetCompatibleLibrariesJobRunner_compute": "test the DatasetCompatibleLibrariesJobRunner compute method for parquet, webdataset, and lance datasets",
+    "test_DatasetCompatibleLibrariesJobRunner_compute_error": "test the DatasetCompatibleLibrariesJobRunner compute method raises CachedArtifactError on upstream failure",
+    "test_get_builder_configs": "test the get_builder_configs function to retrieve simplified data files for a dataset",
+    "test_get_compatible_library_for_builder": "test the get_compatible_library_for_builder mapping returns expected libraries like pandas or dask",
+    "test_get_compatible_libraries_for_json": "test the get_compatible_libraries_for_json function returns compatible libraries for a JSON dataset"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_config_names.py": {
+    "test_DatasetConfigNamesJobRunner_compute": "test the DatasetConfigNamesJobRunner compute method to verify it returns config names for a public CSV dataset",
+    "test_DatasetConfigNamesJobRunner_too_many_configs": "test the DatasetConfigNamesJobRunner compute method with a max config limit to verify DatasetWithTooManyConfigsError is raised",
+    "test_DatasetConfigNamesJobRunner_splits_response": "test the DatasetConfigNamesJobRunner compute method across public, gated, private, empty, and non-existent dataset types",
+    "create_get_job_runner_fixture": "create a pytest fixture that returns a DatasetConfigNamesJobRunner instance for a given dataset and app config",
+    "review_DatasetConfigNamesJobRunner_error_handling": "review the DatasetConfigNamesJobRunner test suite to verify CustomError handling for empty and inaccessible datasets"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_croissant_crumbs.py": {
+    "test_get_croissant_crumbs_from_dataset_infos": "test the get_croissant_crumbs_from_dataset_infos function with squad dataset info and verify recordSet structure",
+    "test_get_croissant_context_from_dataset_infos": "test the get_croissant_crumbs_from_dataset_infos function and assert the @context matches the expected v1 context",
+    "review_get_croissant_crumbs_from_dataset_infos": "review the get_croissant_crumbs_from_dataset_infos function that generates Croissant JSON-LD metadata crumbs from dataset infos",
+    "review_DatasetCroissantCrumbsJobRunner": "review the DatasetCroissantCrumbsJobRunner class that computes croissant crumbs responses for a Hugging Face dataset",
+    "summarize_compute_croissant_crumbs_response": "summarize the compute_croissant_crumbs_response function that retrieves cached dataset-info and generates croissant metadata parts"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_dataset_job_runner.py": {
+    "test_DummyDatasetJobRunner_failed_creation": "test that DummyDatasetJobRunner raises ParameterMissingError when dataset param is None",
+    "test_DummyDatasetJobRunner_success_creation": "test that DummyDatasetJobRunner creates successfully with valid dataset and revision params",
+    "test_DummyDatasetJobRunner_get_job_type": "test the DummyDatasetJobRunner get_job_type static method returns the job type string",
+    "test_DummyDatasetJobRunner_compute": "test the DummyDatasetJobRunner compute method returns a CompleteJobResult with key value dict",
+    "test_DatasetJobRunner_subclass": "test creating a subclass of DatasetJobRunner with custom get_job_type and compute methods"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_filetypes.py": {
+    "test_get_filetypes": "test the get_filetypes function with a list of RepoSibling files to verify extension counting",
+    "test_get_filetypes_from_archive": "test the get_filetypes_from_archives function with real HuggingFace datasets to verify archive inspection",
+    "test_compute_DatasetFiletypesJobRunner": "test the DatasetFiletypesJobRunner compute method end-to-end with real datasets and verify filetypes output",
+    "refactor_get_filetypes": "refactor the get_filetypes function to handle additional file extension patterns or compression formats",
+    "review_DatasetFiletypesJobRunner": "review the DatasetFiletypesJobRunner class and its compute method for dataset file type analysis"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_hub_cache.py": {
+    "test_DatasetHubCacheJobRunner_compute": "test the DatasetHubCacheJobRunner compute method with various upstream response combinations",
+    "run_compute_hub_cache_response": "run compute_hub_cache_response to aggregate dataset-is-valid, dataset-size, and modalities into a hub cache response",
+    "test_upsert_response": "test upsert_response to insert upstream cache entries for dataset-is-valid, dataset-size, and compatible-libraries",
+    "review_DatasetHubCacheJobRunner": "review the DatasetHubCacheJobRunner class and its compute method for aggregating dataset metadata from upstream steps",
+    "test_UpstreamResponse": "test UpstreamResponse fixture construction with different kinds like dataset-is-valid, dataset-size, and dataset-modalities"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_info.py": {
+    "test_DatasetInfoJobRunner_compute": "test the DatasetInfoJobRunner compute method with parametrized upstream responses and expected results",
+    "test_DatasetInfoJobRunner_doesnotexist": "test that DatasetInfoJobRunner raises CachedArtifactNotFoundError when the dataset does not exist",
+    "create_get_job_runner_fixture": "create a pytest fixture that returns a DatasetInfoJobRunner instance for a given dataset and app config",
+    "create_upstream_response_test_data": "create UpstreamResponse test data objects for dataset-config-names and config-info cache entries",
+    "create_expected_result_tuples": "create expected result tuples containing dataset_info content and progress values for test assertions"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_is_valid.py": {
+    "test_DatasetIsValidJobRunner_compute": "test the DatasetIsValidJobRunner compute method with various upstream cache responses for dataset validity",
+    "test_DatasetIsValidJobRunner_compute_raises": "test that DatasetIsValidJobRunner compute raises exceptions on bad format upstream responses",
+    "test_get_job_runner_fixture": "test the get_job_runner pytest fixture that creates a DatasetIsValidJobRunner instance with job info",
+    "test_UPSTREAM_RESPONSE_config_names": "test the upstream response fixtures that simulate dataset-config-names cache entries with valid and empty configs",
+    "test_UPSTREAM_RESPONSE_config_is_valid": "test the upstream response fixtures that simulate config-is-valid cache entries with mixed feature flags"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_modalities.py": {
+    "test_DatasetModalitiesJobRunner_compute": "test the DatasetModalitiesJobRunner compute method with various dataset modality upstream responses",
+    "test_DatasetModalitiesJobRunner_compute_error": "test the DatasetModalitiesJobRunner compute method raises PreviousStepFormatError on malformed upstream responses",
+    "run_test_modalities_detection": "run the parametrized test_compute to verify modality detection for text image tabular and timeseries datasets",
+    "create_upstream_response_fixture": "create an UpstreamResponse fixture with dataset-info kind and features for testing modality job runners",
+    "review_DatasetModalitiesJobRunner_lifecycle": "review the DatasetModalitiesJobRunner pre_compute compute and post_compute lifecycle methods in test_modalities"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_opt_in_out_urls_count.py": {
+    "test_DatasetOptInOutUrlsCountJobRunner_compute": "test the DatasetOptInOutUrlsCountJobRunner compute method with parametrized config names and upstream status scenarios",
+    "test_DatasetOptInOutUrlsCountJobRunner_doesnotexist": "test the DatasetOptInOutUrlsCountJobRunner raises CachedArtifactNotFoundError when the dataset does not exist",
+    "run_get_job_runner_fixture": "run the get_job_runner fixture to create a DatasetOptInOutUrlsCountJobRunner instance with job info and app config",
+    "test_upsert_response_dataset_config_names": "test upsert_response to insert dataset-config-names cache entries with config names and HTTP status",
+    "test_upsert_response_config_opt_in_out_urls_count": "test upsert_response to insert config-opt-in-out-urls-count cache entries with URL column stats and scan results"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_parquet.py": {
+    "test_DatasetParquetJobRunner_compute": "test the DatasetParquetJobRunner compute method with upstream responses for ok, status error, and format error scenarios",
+    "test_DatasetParquetJobRunner_doesnotexist": "test the DatasetParquetJobRunner compute method raises CachedArtifactNotFoundError when the dataset does not exist",
+    "create_get_job_runner_fixture": "create a pytest fixture that returns a DatasetParquetJobRunner instance for a given dataset and app config",
+    "test_upsert_response_cache": "test upserting mock upstream responses into the cache using UpstreamResponse and upsert_response utilities",
+    "review_DatasetParquetJobRunner_pre_post_compute": "review the DatasetParquetJobRunner pre_compute and post_compute lifecycle methods used in each test"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_presidio_entities_count.py": {
+    "test_compute_presidio_entities_count": "test the DatasetPresidioEntitiesCountJobRunner compute method with parametrized split names and upstream scan responses",
+    "test_doesnotexist_cached_artifact_not_found": "test that the job runner raises CachedArtifactNotFoundError when the dataset does not exist",
+    "create_job_runner_fixture": "create a pytest fixture that returns a DatasetPresidioEntitiesCountJobRunner for a given dataset and app config",
+    "review_presidio_scan_sample_response": "review the SAMPLE_RESPONSE PresidioEntitiesScanResponse data structure with entity counts and scanned rows",
+    "test_presidio_entities_count_full_scan_aggregation": "test the aggregation of PII entity counts across multiple splits for a full scan dataset"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_size.py": {
+    "test_DatasetSizeJobRunner_compute": "test the DatasetSizeJobRunner compute method with upstream config-size and dataset-config-names responses",
+    "test_DatasetSizeJobRunner_partial": "test the DatasetSizeJobRunner compute method with partial config-size responses using estimated_num_rows",
+    "test_DatasetSizeJobRunner_error_handling": "test the DatasetSizeJobRunner compute method for CachedArtifactError and PreviousStepFormatError exceptions",
+    "test_DatasetSizeJobRunner_missing_dataset": "test the DatasetSizeJobRunner compute method raises CachedArtifactNotFoundError for a non-existent dataset",
+    "test_DatasetSizeJobRunner_fixture": "test the get_job_runner fixture that creates a DatasetSizeJobRunner with job_info and app_config"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/dataset/test_split_names.py": {
+    "test_compute_progress": "test the DatasetSplitNamesJobRunner compute method with parametrized split names and expected progress values",
+    "test_compute_error": "test the DatasetSplitNamesJobRunner compute method handles internal server error responses from config-split-names",
+    "test_compute_format_error": "test the DatasetSplitNamesJobRunner compute method raises PreviousStepFormatError on malformed cached responses",
+    "test_doesnotexist": "test the DatasetSplitNamesJobRunner compute method raises CachedArtifactNotFoundError for missing datasets",
+    "test_get_job_runner_fixture": "test the get_job_runner pytest fixture creates a DatasetSplitNamesJobRunner with correct job info and config"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/split/test_descriptive_statistics.py": {
+    "test_descriptive_statistics_compute": "test the SplitDescriptiveStatisticsJobRunner compute method across multiple column types including string, numerical, audio, image, and datetime",
+    "test_descriptive_statistics_fixtures": "create pytest fixtures to instantiate SplitDescriptiveStatisticsJobRunner and ConfigParquetAndInfoJobRunner for testing descriptive statistics computation",
+    "test_descriptive_statistics_expected": "compute expected descriptive statistics for a dataset by iterating columns and calling count_expected_statistics helpers per column type",
+    "test_descriptive_statistics_audio_image": "test audio and image column statistics computation by generating expected numerical statistics for duration and width values",
+    "test_descriptive_statistics_datetime": "test datetime column statistics computation and validate std deviation string parsing for datetime columns"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/split/test_first_rows.py": {
+    "test_split_first_rows_job_runner_from_parquet": "test the SplitFirstRowsJobRunner compute method using parquet files with configurable row and column limits",
+    "test_split_first_rows_job_runner_streaming": "test the SplitFirstRowsJobRunner compute method using the streaming approach across public gated and private datasets",
+    "test_split_first_rows_job_runner_basic_compute": "test the SplitFirstRowsJobRunner pre_compute compute and post_compute lifecycle on a CSV dataset",
+    "test_split_first_rows_job_runner_long_column_name": "test the SplitFirstRowsJobRunner compute method raises TooLongColumnNameError when column names exceed the max length",
+    "test_split_first_rows_job_runner_error_handling": "test the SplitFirstRowsJobRunner handles TooBigContentError TooManyColumnsError and InfoError under various config limits"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/split/test_image_url_columns.py": {
+    "test_SplitImageUrlColumnsJobRunner_compute": "test the SplitImageUrlColumnsJobRunner compute method with various upstream first-rows content scenarios",
+    "test_SplitImageUrlColumnsJobRunner_compute_failed": "test the SplitImageUrlColumnsJobRunner compute method handles missing or failed upstream cache artifacts",
+    "review_get_job_runner_fixture": "review the get_job_runner pytest fixture that creates SplitImageUrlColumnsJobRunner instances with cached responses",
+    "test_image_url_columns_detection": "test image URL column detection logic against datasets with no string columns or no image URLs",
+    "refactor_test_compute_parametrized": "refactor the parametrized test_compute to add new upstream content scenarios for image URL column detection"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/split/test_is_valid.py": {
+    "test_split_is_valid_compute": "test the SplitIsValidJobRunner compute method with various upstream response combinations using pytest",
+    "test_split_is_valid_doesnotexist": "test the SplitIsValidJobRunner compute method with a non-existent dataset config and split",
+    "run_split_is_valid_tests": "run all pytest tests for the SplitIsValidJobRunner to validate viewer preview search filter and statistics flags",
+    "review_split_is_valid_test_compute": "review the parametrized test_compute function that validates SplitIsValidJobRunner against multiple upstream response scenarios",
+    "refactor_split_is_valid_test": "refactor the SplitIsValidJobRunner test fixtures to support additional upstream response kinds or expected outcomes"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/split/test_opt_in_out_urls_count.py": {
+    "test_split_opt_in_out_urls_count_compute": "test the SplitOptInOutUrlsCountJobRunner compute method with parametrized upstream cache scenarios",
+    "test_split_opt_in_out_urls_count_doesnotexist": "test that CachedArtifactNotFoundError is raised when upstream artifact does not exist",
+    "fixture_get_job_runner": "create a SplitOptInOutUrlsCountJobRunner instance with dataset-config-names and config-split-names cache entries",
+    "fixture_prepare_and_clean_mongo": "prepare and clean the MongoDB cache and queue resources before each test",
+    "test_split_opt_in_out_urls_count_format_error": "test that PreviousStepFormatError is raised when upstream content has an unexpected format"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/split/test_opt_in_out_urls_scan_from_streaming.py": {
+    "test_split_opt_in_out_urls_scan_compute": "test the SplitOptInOutUrlsScanJobRunner compute method with parametrized row limits and expected scan results",
+    "test_split_opt_in_out_urls_scan_failed": "test the SplitOptInOutUrlsScanJobRunner compute method error handling for missing datasets and upstream failures",
+    "test_split_opt_in_out_urls_scan_spawning_error": "test the SplitOptInOutUrlsScanJobRunner raises ExternalServerError when the spawning URL is invalid",
+    "create_mock_check_spawning": "create a mock async function that returns opt-in and opt-out status for a list of image URLs",
+    "create_get_job_runner_fixture": "create a pytest fixture that builds a SplitOptInOutUrlsScanJobRunner with cached config and split responses"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/split/test_presidio_scan.py": {
+    "test_presidio_scan_compute": "test the SplitPresidioEntitiesScanJobRunner compute method with parametrized datasets and row limits",
+    "test_presidio_scan_compute_failed": "test the SplitPresidioEntitiesScanJobRunner compute method for upstream failure and missing artifact scenarios",
+    "test_get_job_runner_fixture": "test the get_job_runner pytest fixture that creates a SplitPresidioEntitiesScanJobRunner instance",
+    "test_upsert_response_cache": "test upsert_response to seed dataset-config-names and config-split-names cache entries for PII scan tests",
+    "test_default_empty_response": "test the DEFAULT_EMPTY_RESPONSE structure that defines zero-count PII entity fields for empty scan results"
+  },
+  "huggingface_dataset-viewer/services/worker/tests/job_runners/split/test_split_job_runner.py": {
+    "test_DummySplitJobRunner": "test the DummySplitJobRunner class that extends SplitJobRunner and returns a CompleteJobResult",
+    "test_test_failed_creation": "test the test_failed_creation function that validates ParameterMissingError when config or split is None",
+    "test_test_creation": "test the test_creation function that validates SplitNotFoundError and ConfigNotFoundError exceptions",
+    "test_cache_mongo_resource_autouse": "test the cache_mongo_resource_autouse fixture that provides CacheMongoResource for split job runner tests",
+    "test_upsert_response": "test the upsert_response calls that insert dataset-config-names and config-split-names cache entries"
+  }
+}

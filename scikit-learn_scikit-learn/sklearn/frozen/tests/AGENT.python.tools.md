@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: scikit-learn/scikit-learn
+- repo_uri: https://github.com/scikit-learn/scikit-learn
+
+## File: scikit-learn_scikit-learn/sklearn/frozen/tests/test_frozen.py
+
+Prompts
+
+```
+['test that FrozenEstimator exposes all estimator methods and returns the same values as the original estimator', 'test that metadata routing works correctly with FrozenEstimator through pipeline predict calls', 'test that calling fit_transform and fit_predict on a FrozenEstimator does not call fit again', 'test that cloning a FrozenEstimator preserves the frozen state and references the same estimator', 'test that check_is_fitted raises NotFittedError on unfrozen estimators and passes on fitted ones']
+```
+
+Usage
+
+```
+{'test_frozen_methods': 'test that FrozenEstimator exposes all estimator methods and returns the same values as the original estimator', 'test_frozen_metadata_routing': 'test that metadata routing works correctly with FrozenEstimator through pipeline predict calls', 'test_composite_fit': 'test that calling fit_transform and fit_predict on a FrozenEstimator does not call fit again', 'test_clone_frozen': 'test that cloning a FrozenEstimator preserves the frozen state and references the same estimator', 'test_check_is_fitted': 'test that check_is_fitted raises NotFittedError on unfrozen estimators and passes on fitted ones'}
+```
+

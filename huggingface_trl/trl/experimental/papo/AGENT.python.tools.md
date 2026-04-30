@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/trl
+- repo_uri: https://github.com/huggingface/trl.git
+
+## File: huggingface_trl/trl/experimental/papo/papo_trainer.py
+
+Prompts
+
+```
+['create a PAPOTrainer instance for multimodal reasoning with GRPO or DAPO base loss', 'build a PAPOConfig with perception_loss_weight, mask_ratio, and mask_type for VLM fine-tuning', 'run PAPO training on a vision-language model with masked image perception loss', 'mask image pixel values using random, patch, or grid strategies for perception loss computation', 'compute the PAPO loss combining GRPO/DAPO loss, perception KL divergence, and double entropy regularization']
+```
+
+Usage
+
+```
+{'create_papo_trainer': 'create a PAPOTrainer instance for multimodal reasoning with GRPO or DAPO base loss', 'build_papo_config': 'build a PAPOConfig with perception_loss_weight, mask_ratio, and mask_type for VLM fine-tuning', 'run_papo_training': 'run PAPO training on a vision-language model with masked image perception loss', 'mask_image_pixels': 'mask image pixel values using random, patch, or grid strategies for perception loss computation', 'compute_papo_loss': 'compute the PAPO loss combining GRPO/DAPO loss, perception KL divergence, and double entropy regularization'}
+```
+

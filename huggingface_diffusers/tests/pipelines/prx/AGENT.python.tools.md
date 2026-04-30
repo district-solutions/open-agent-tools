@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/diffusers
+- repo_uri: https://github.com/huggingface/diffusers
+
+## File: huggingface_diffusers/tests/pipelines/prx/test_pipeline_prx.py
+
+Prompts
+
+```
+['test PRXPipeline inference by running dummy components through the pipeline and verifying output image shape', 'test PRXPipeline callback inputs by verifying callback_tensor_inputs are passed correctly on each step', 'test PRXPipeline attention slicing forward pass by comparing outputs with and without slicing enabled', 'test PRXPipeline with AutoencoderDC instead of AutoencoderKL and verify spatial compression ratio matches', 'create dummy PRX pipeline components including transformer, VAE, scheduler, text encoder, and tokenizer']
+```
+
+Usage
+
+```
+{'test_prx_pipeline_inference': 'test PRXPipeline inference by running dummy components through the pipeline and verifying output image shape', 'test_prx_pipeline_callback_inputs': 'test PRXPipeline callback inputs by verifying callback_tensor_inputs are passed correctly on each step', 'test_prx_pipeline_attention_slicing': 'test PRXPipeline attention slicing forward pass by comparing outputs with and without slicing enabled', 'test_prx_pipeline_with_autoencoder_dc': 'test PRXPipeline with AutoencoderDC instead of AutoencoderKL and verify spatial compression ratio matches', 'get_dummy_prx_components': 'create dummy PRX pipeline components including transformer, VAE, scheduler, text encoder, and tokenizer'}
+```
+

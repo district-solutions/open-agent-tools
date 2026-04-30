@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/falcon/test_modeling_falcon.py
+
+Prompts
+
+```
+['test the FalconModel class and its configuration using FalconModelTester', 'test FalconForCausalLM text generation with various configurations and models', 'test FalconForCausalLM generation with alibi attention mechanism and SDPA dispatch', 'test batched text generation with left-padding and 4-bit quantization', 'test that SDPA and eager attention paths produce matching outputs for Falcon']
+```
+
+Usage
+
+```
+{'test_model_falcon': 'test the FalconModel class and its configuration using FalconModelTester', 'test_falcon_language_generation': 'test FalconForCausalLM text generation with various configurations and models', 'test_falcon_generate_with_alibi': 'test FalconForCausalLM generation with alibi attention mechanism and SDPA dispatch', 'test_falcon_batched_generation': 'test batched text generation with left-padding and 4-bit quantization', 'test_falcon_sdpa_matches_eager': 'test that SDPA and eager attention paths produce matching outputs for Falcon'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pola-rs/polars
+- repo_uri: https://github.com/pola-rs/polars.git
+
+## File: pola-rs_polars/py-polars/src/polars/io/cloud/_utils.py
+
+Prompts
+
+```
+['create a NoPickleOption wrapper that does not pickle the wrapped value and unpickles to None', 'test the _get_path_scheme function that extracts the scheme from a URL-like path string', 'test the _is_aws_cloud function that detects AWS cloud schemes like s3, s3a, and amazonaws.com URLs', 'test the _is_azure_cloud function that detects Azure cloud schemes like az, azure, adl, abfs, abfss', 'test the _is_gcp_cloud function that detects GCP cloud schemes like gs, gcp, gcs']
+```
+
+Usage
+
+```
+{'create_NoPickleOption': 'create a NoPickleOption wrapper that does not pickle the wrapped value and unpickles to None', 'test_get_path_scheme': 'test the _get_path_scheme function that extracts the scheme from a URL-like path string', 'test_is_aws_cloud': 'test the _is_aws_cloud function that detects AWS cloud schemes like s3, s3a, and amazonaws.com URLs', 'test_is_azure_cloud': 'test the _is_azure_cloud function that detects Azure cloud schemes like az, azure, adl, abfs, abfss', 'test_is_gcp_cloud': 'test the _is_gcp_cloud function that detects GCP cloud schemes like gs, gcp, gcs'}
+```
+

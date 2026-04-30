@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/api-inference-community
+- repo_uri: https://github.com/huggingface/api-inference-community
+
+## File: huggingface_api-inference-community/docker_images/sklearn/app/main.py
+
+Prompts
+
+```
+['run the Starlette app serving sklearn inference pipelines for tabular and text classification tasks', 'get a pipeline instance by task name like tabular-classification or text-classification using get_pipeline', 'configure the ALLOWED_TASKS dictionary to map task names to their Pipeline class implementations', 'setup GZipMiddleware and optional CORSMiddleware for the Starlette app by setting DEBUG environment variable', 'review the startup_event function that configures uvicorn logging and initializes the pipeline on app startup']
+```
+
+Usage
+
+```
+{'run_starlette_app': 'run the Starlette app serving sklearn inference pipelines for tabular and text classification tasks', 'get_pipeline_by_task': 'get a pipeline instance by task name like tabular-classification or text-classification using get_pipeline', 'configure_allowed_tasks': 'configure the ALLOWED_TASKS dictionary to map task names to their Pipeline class implementations', 'setup_middleware': 'setup GZipMiddleware and optional CORSMiddleware for the Starlette app by setting DEBUG environment variable', 'review_startup_event': 'review the startup_event function that configures uvicorn logging and initializes the pipeline on app startup'}
+```
+

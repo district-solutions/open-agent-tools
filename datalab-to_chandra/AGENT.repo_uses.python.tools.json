@@ -1,0 +1,68 @@
+{
+  "datalab-to_chandra/chandra/input.py": {
+    "load_image_from_file": "load an image from a file path and resize if smaller than minimum dimension",
+    "load_pdf_pages_as_images": "load specific pages from a PDF file as resized RGB images",
+    "parse_page_range_string": "parse a comma-separated page range string like 1,3-5,7 into a sorted list of integers",
+    "load_file_as_images": "load a file as images auto-detecting whether it is a PDF or image",
+    "flatten_pdf_annotations": "flatten annotations and form fields on a PDF page before rendering"
+  },
+  "datalab-to_chandra/chandra/output.py": {
+    "parse_html": "parse HTML document with labeled div blocks, filtering headers, footers, and images",
+    "parse_markdown": "convert HTML document to Markdown with math delimiters, tables, and escaped special characters",
+    "parse_layout": "extract layout blocks from HTML with normalized bounding boxes and labels for each content block",
+    "parse_chunks": "convert HTML and image into structured chunks with bounding boxes, labels, and HTML content",
+    "extract_images": "extract cropped images from a document image using bounding boxes and HTML content labels"
+  },
+  "datalab-to_chandra/chandra/util.py": {
+    "draw_layout_image": "draw bounding boxes and labels on a PIL Image from a list of LayoutBlock objects"
+  },
+  "datalab-to_chandra/chandra/model/hf.py": {
+    "build_hf_model": "build a HuggingFace image-text-to-text model with bfloat16 precision and auto device mapping",
+    "run_hf_generate": "run HuggingFace model generation on a batch of image-text inputs with configurable max output tokens",
+    "test_process_batch_element": "test the process_batch_element function that converts BatchInputItem to chat template format with image and text content",
+    "refactor_generate_hf": "refactor the generate_hf function to support custom stop tokens and additional generation kwargs",
+    "review_load_model": "review the load_model function that loads a transformers AutoModelForImageTextToText with configurable attention implementation"
+  },
+  "datalab-to_chandra/chandra/model/util.py": {
+    "test_scale_to_fit": "test the scale_to_fit function to resize an image to fit within max and min pixel bounds on a grid",
+    "refactor_scale_to_fit": "refactor the scale_to_fit function to support custom aspect ratio preservation thresholds",
+    "test_detect_repeat_token": "test the detect_repeat_token function to identify excessive repeating sequences in predicted token output",
+    "refactor_detect_repeat_token": "refactor the detect_repeat_token function to support configurable repeat detection windows",
+    "review_scale_to_fit": "review the scale_to_fit function for edge cases with empty or invalid images"
+  },
+  "datalab-to_chandra/chandra/model/vllm.py": {
+    "run_generate_vllm": "run batch VLLM generation on a list of image-prompt items with retry and parallel execution",
+    "create_image_to_base64": "create a base64 string from a PIL Image for use in multimodal API calls",
+    "test_batch_input_item": "test the BatchInputItem schema for constructing batch input items with image, prompt, and prompt_type",
+    "review_generation_result": "review the GenerationResult schema for returning raw output, token count, and error status",
+    "build_vllm_parallel_batch": "build a parallel batch generation pipeline using ThreadPoolExecutor with configurable retries and temperature escalation"
+  },
+  "datalab-to_chandra/chandra/scripts/app.py": {
+    "run_ocr_layout": "run OCR layout detection on a PDF page image using the Chandra vision language model",
+    "load_model_inference": "load a Chandra inference model using huggingface transformers or vLLM server",
+    "get_page_image_from_pdf": "extract a single page image from a PDF file by page number",
+    "count_pdf_pages": "count the total number of pages in a PDF file",
+    "embed_images_in_markdown": "replace image filenames in markdown text with base64 data URLs"
+  },
+  "datalab-to_chandra/chandra/scripts/cli.py": {
+    "run_cli_ocr": "run the chandra CLI to perform OCR on images and PDFs from input path to output path",
+    "build_ocr_batch": "build a batch of OCR inference jobs using InferenceManager with vllm or hf method and configurable page range",
+    "get_supported_files": "get a list of supported image and PDF files from a given directory or single file path",
+    "save_merged_output": "save merged OCR results as markdown, HTML, metadata JSON, and extracted images to an output directory",
+    "test_cli_page_range": "test the chandra CLI with a page range option to process only specific pages of a multi-page PDF"
+  },
+  "datalab-to_chandra/chandra/scripts/screenshot_app.py": {
+    "run_screenshot_app_server": "run the Flask screenshot app server on 0.0.0.0:8503 to serve OCR visualization endpoints",
+    "process_document_for_ocr_layout": "process a document file to extract OCR layout blocks, markdown, and base64-encoded image with layout overlays",
+    "convert_pil_image_to_base64": "convert a PIL image to a base64 data URL string for embedding in HTML or JSON responses",
+    "get_ocr_block_color_palette": "get a color palette mapping for OCR layout block types like Section-Header, Table, Figure, and Equation",
+    "get_inference_model_instance": "get the lazy-loaded InferenceManager instance configured with vllm for OCR layout generation"
+  },
+  "datalab-to_chandra/chandra/scripts/vllm.py": {
+    "run_vllm_server": "run the vLLM server with default H100 GPU settings on port 8000",
+    "run_vllm_server_gpu": "run the vLLM server with a specific GPU type like a100 or l40s",
+    "run_vllm_server_mtp": "run the vLLM server with MTP speculative decoding enabled",
+    "run_vllm_server_gpu_mtp": "run the vLLM server with a specific GPU and MTP speculative decoding",
+    "test_get_gpu_settings": "test the get_gpu_settings function with different GPU types to verify batched tokens and sequence limits"
+  }
+}

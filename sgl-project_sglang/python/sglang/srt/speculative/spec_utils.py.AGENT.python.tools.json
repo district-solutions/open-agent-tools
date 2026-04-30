@@ -1,0 +1,12 @@
+{
+    "build_spec_need_hidden_states": "build a function that checks whether speculative decoding needs hidden states based on server args",
+    "create_extend_after_decode_spec_info": "create a triton kernel that computes spec info after decode phase for speculative generation",
+    "assign_draft_cache_locs": "assign draft cache locations by copying token indices from out_cache to request token pool",
+    "generate_draft_decode_kv_indices": "generate draft decode KV indices for tensor parallel speculative decoding with topk and page_size support",
+    "select_top_k_tokens": "select top-k tokens from speculative draft model scores across multiple decode steps",
+    "traverse_tree": "traverse a draft model token tree with DFS to generate grammar-aware logits masks for structured output",
+    "generate_token_bitmask": "generate a logit bitmask for structured output by traversing draft tokens against a grammar constraint",
+    "load_token_map": "load a hot token map from a local path or download it from HuggingFace or ModelScope",
+    "draft_tp_context": "create a context manager that patches the tensor parallel group for draft model execution",
+    "get_last_loc_large_page_size_large_top_k": "get last locations for token cache with large page size and top-k speculative decoding"
+}

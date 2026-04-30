@@ -1,0 +1,44 @@
+{
+  "facebookresearch_xformers/examples/llama_inference/generate.py": {
+    "build_fastgen_model": "build a FastGen instance from a Llama checkpoint directory with model args and device",
+    "run_generate_all": "run inference on a list of tokenized prompts and return generated token sequences with stats",
+    "run_main_cli": "run the Llama inference CLI with a checkpoint directory and optional interactive mode",
+    "test_get_prompts": "test the get_prompts function to yield prompts in interactive or default mode",
+    "review_fastgen_generate": "review the FastGen.generate_all method and its CUDA graph warmup and replay logic"
+  },
+  "facebookresearch_xformers/examples/llama_inference/model.py": {
+    "build_llama_transformer_model": "build a distributed Llama inference model with multi-process attention and feed-forward transformer blocks",
+    "create_function_make_cache": "create a KV cache for transformer layers with configurable length, device, dtype, and layer count",
+    "test_Transformer_forward": "test the Transformer forward pass with token values, sequence lengths, start positions, and KV cache",
+    "refactor_Attention_load_hook": "refactor the Attention module load hook to fuse wq, wk, wv weights from vanilla Llama checkpoints",
+    "summarize_cache_prefix": "summarize the cache_prefix function that takes a prefix view of a larger KV cache for smaller batch sizes"
+  },
+  "facebookresearch_xformers/examples/llama_inference/mp_utils.py": {
+    "initialize_model_parallelism": "initialize model parallelism with world size, local rank, GPU device, and random seed",
+    "get_world_size": "get the world size of the initialized model parallel process group",
+    "get_rank": "get the local rank of the current process in the model parallel group",
+    "all_gather_tensors": "all-gather tensors across all model parallel processes and concatenate along the last dimension",
+    "all_reduce_tensors": "all-reduce tensors across all model parallel processes using sum reduction"
+  },
+  "facebookresearch_xformers/examples/llama_inference/sample_utils.py": {
+    "sample_top_p": "sample top-p (nucleus) tokens from a probability distribution tensor given a threshold",
+    "filter_top_p_tokens": "filter a probability distribution to keep only tokens whose cumulative probability exceeds a threshold",
+    "renormalize_top_p_distribution": "renormalize a probability distribution after masking out low-probability tokens in top-p sampling",
+    "sort_and_cumsum_probs": "sort probability values in descending order and compute their cumulative sum for nucleus sampling",
+    "gather_next_token": "sample and gather the next token index from a filtered top-p probability distribution"
+  },
+  "facebookresearch_xformers/examples/llama_inference/stats.py": {
+    "create_stats_instance": "create a Stats instance to track generation phases and token throughput",
+    "build_phase_stats": "build a PhaseStats dataclass with name, token count, and elapsed time",
+    "test_phase_method": "test the Stats.phase method to start a named generation phase with token count",
+    "summarize_end_phase": "summarize the Stats.end_phase method to terminate a phase and record stats",
+    "review_phase_stats_show": "review the PhaseStats.show method to display tokens, time, and throughput"
+  },
+  "facebookresearch_xformers/examples/llama_inference/tokenizer.py": {
+    "create_tokenizer": "create a Tokenizer instance from a SentencePiece model file path",
+    "encode_text": "encode a string into a list of token IDs with optional bos and eos tokens",
+    "decode_tokens": "decode a list of token IDs back into a human-readable string",
+    "test_tokenizer_roundtrip": "test the Tokenizer encode and decode methods for roundtrip fidelity",
+    "review_tokenizer_methods": "review the Tokenizer class encode and decode methods for correctness"
+  }
+}

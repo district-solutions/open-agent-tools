@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: pytorch/pytorch
+- repo_uri: https://github.com/pytorch/pytorch.git
+
+## File: pytorch_pytorch/torch/ao/quantization/fx/_model_report/detector.py
+
+Prompts
+
+```
+['create a per channel detector to check if Linear or Conv layers can use per channel quantization', 'run a dynamic vs static detector to recommend quantization type based on activation data distribution', 'build an input weight equalization detector to check if equalization can reduce quantization error', 'test an outlier detector to flag significant outliers in activation data per channel', 'generate a valid quantization QConfig from detector recommendations for a given module', 'create a ModelReport instance with a GraphModule and a set of DetectorBase objects to diagnose quantization issues', 'build a prepared GraphModule by calling prepare_detailed_calibration to insert ModelReportObserver instances at detector-specified locations', 'test quantization configuration by calling generate_model_report with remove_inserted_observers to get per-detector diagnostic summaries', 'generate a QConfigMapping from detector suggestions by calling generate_qconfig_mapping after calibration and report generation', 'generate an EqualizationQConfigMapping from input-weight equalization detector suggestions by calling generate_equalization_mapping', 'create a ModelReportObserver instance to track activation ranges for dynamic vs static quantization analysis', 'run a forward pass through a ModelReportObserver to collect per-channel min, max, and percentile statistics', 'get the batch-to-epoch activation range ratio from a ModelReportObserver to assess quantization suitability', "reset a ModelReportObserver's tracked batch and epoch values for a new training epoch", 'review the ModelReportObserver class and its role in FX Graph Mode Quantization analysis', 'create a ModelReportVisualizer instance from generated quantization reports to visualize model statistics', 'get all unique module fully qualified names from the quantization reports', 'get all unique feature names from quantization reports, optionally filtering to plottable tensor features only', 'generate and print formatted tensor-level and channel-level tables from quantization reports with optional feature and module filters', 'generate a line plot of a single quantization feature across model modules with optional module filter']
+```
+
+Usage
+
+```
+{'create_per_channel_detector': 'create a per channel detector to check if Linear or Conv layers can use per channel quantization', 'run_dynamic_static_detector': 'run a dynamic vs static detector to recommend quantization type based on activation data distribution', 'build_input_weight_equalization_detector': 'build an input weight equalization detector to check if equalization can reduce quantization error', 'test_outlier_detector': 'test an outlier detector to flag significant outliers in activation data per channel', 'generate_quantization_qconfig': 'generate a valid quantization QConfig from detector recommendations for a given module'}
+```
+
+## File: pytorch_pytorch/torch/ao/quantization/fx/_model_report/model_report.py
+
+Prompts
+
+```
+['create a per channel detector to check if Linear or Conv layers can use per channel quantization', 'run a dynamic vs static detector to recommend quantization type based on activation data distribution', 'build an input weight equalization detector to check if equalization can reduce quantization error', 'test an outlier detector to flag significant outliers in activation data per channel', 'generate a valid quantization QConfig from detector recommendations for a given module', 'create a ModelReport instance with a GraphModule and a set of DetectorBase objects to diagnose quantization issues', 'build a prepared GraphModule by calling prepare_detailed_calibration to insert ModelReportObserver instances at detector-specified locations', 'test quantization configuration by calling generate_model_report with remove_inserted_observers to get per-detector diagnostic summaries', 'generate a QConfigMapping from detector suggestions by calling generate_qconfig_mapping after calibration and report generation', 'generate an EqualizationQConfigMapping from input-weight equalization detector suggestions by calling generate_equalization_mapping', 'create a ModelReportObserver instance to track activation ranges for dynamic vs static quantization analysis', 'run a forward pass through a ModelReportObserver to collect per-channel min, max, and percentile statistics', 'get the batch-to-epoch activation range ratio from a ModelReportObserver to assess quantization suitability', "reset a ModelReportObserver's tracked batch and epoch values for a new training epoch", 'review the ModelReportObserver class and its role in FX Graph Mode Quantization analysis', 'create a ModelReportVisualizer instance from generated quantization reports to visualize model statistics', 'get all unique module fully qualified names from the quantization reports', 'get all unique feature names from quantization reports, optionally filtering to plottable tensor features only', 'generate and print formatted tensor-level and channel-level tables from quantization reports with optional feature and module filters', 'generate a line plot of a single quantization feature across model modules with optional module filter']
+```
+
+Usage
+
+```
+{'create_model_report': 'create a ModelReport instance with a GraphModule and a set of DetectorBase objects to diagnose quantization issues', 'build_calibration_observers': 'build a prepared GraphModule by calling prepare_detailed_calibration to insert ModelReportObserver instances at detector-specified locations', 'test_quantization_report': 'test quantization configuration by calling generate_model_report with remove_inserted_observers to get per-detector diagnostic summaries', 'generate_qconfig_mapping': 'generate a QConfigMapping from detector suggestions by calling generate_qconfig_mapping after calibration and report generation', 'generate_equalization_mapping': 'generate an EqualizationQConfigMapping from input-weight equalization detector suggestions by calling generate_equalization_mapping'}
+```
+
+## File: pytorch_pytorch/torch/ao/quantization/fx/_model_report/model_report_observer.py
+
+Prompts
+
+```
+['create a per channel detector to check if Linear or Conv layers can use per channel quantization', 'run a dynamic vs static detector to recommend quantization type based on activation data distribution', 'build an input weight equalization detector to check if equalization can reduce quantization error', 'test an outlier detector to flag significant outliers in activation data per channel', 'generate a valid quantization QConfig from detector recommendations for a given module', 'create a ModelReport instance with a GraphModule and a set of DetectorBase objects to diagnose quantization issues', 'build a prepared GraphModule by calling prepare_detailed_calibration to insert ModelReportObserver instances at detector-specified locations', 'test quantization configuration by calling generate_model_report with remove_inserted_observers to get per-detector diagnostic summaries', 'generate a QConfigMapping from detector suggestions by calling generate_qconfig_mapping after calibration and report generation', 'generate an EqualizationQConfigMapping from input-weight equalization detector suggestions by calling generate_equalization_mapping', 'create a ModelReportObserver instance to track activation ranges for dynamic vs static quantization analysis', 'run a forward pass through a ModelReportObserver to collect per-channel min, max, and percentile statistics', 'get the batch-to-epoch activation range ratio from a ModelReportObserver to assess quantization suitability', "reset a ModelReportObserver's tracked batch and epoch values for a new training epoch", 'review the ModelReportObserver class and its role in FX Graph Mode Quantization analysis', 'create a ModelReportVisualizer instance from generated quantization reports to visualize model statistics', 'get all unique module fully qualified names from the quantization reports', 'get all unique feature names from quantization reports, optionally filtering to plottable tensor features only', 'generate and print formatted tensor-level and channel-level tables from quantization reports with optional feature and module filters', 'generate a line plot of a single quantization feature across model modules with optional module filter']
+```
+
+Usage
+
+```
+{'create_model_report_observer': 'create a ModelReportObserver instance to track activation ranges for dynamic vs static quantization analysis', 'run_observer_forward_pass': 'run a forward pass through a ModelReportObserver to collect per-channel min, max, and percentile statistics', 'get_batch_to_epoch_ratio': 'get the batch-to-epoch activation range ratio from a ModelReportObserver to assess quantization suitability', 'reset_observer_values': "reset a ModelReportObserver's tracked batch and epoch values for a new training epoch", 'review_model_report_observer': 'review the ModelReportObserver class and its role in FX Graph Mode Quantization analysis'}
+```
+
+## File: pytorch_pytorch/torch/ao/quantization/fx/_model_report/model_report_visualizer.py
+
+Prompts
+
+```
+['create a per channel detector to check if Linear or Conv layers can use per channel quantization', 'run a dynamic vs static detector to recommend quantization type based on activation data distribution', 'build an input weight equalization detector to check if equalization can reduce quantization error', 'test an outlier detector to flag significant outliers in activation data per channel', 'generate a valid quantization QConfig from detector recommendations for a given module', 'create a ModelReport instance with a GraphModule and a set of DetectorBase objects to diagnose quantization issues', 'build a prepared GraphModule by calling prepare_detailed_calibration to insert ModelReportObserver instances at detector-specified locations', 'test quantization configuration by calling generate_model_report with remove_inserted_observers to get per-detector diagnostic summaries', 'generate a QConfigMapping from detector suggestions by calling generate_qconfig_mapping after calibration and report generation', 'generate an EqualizationQConfigMapping from input-weight equalization detector suggestions by calling generate_equalization_mapping', 'create a ModelReportObserver instance to track activation ranges for dynamic vs static quantization analysis', 'run a forward pass through a ModelReportObserver to collect per-channel min, max, and percentile statistics', 'get the batch-to-epoch activation range ratio from a ModelReportObserver to assess quantization suitability', "reset a ModelReportObserver's tracked batch and epoch values for a new training epoch", 'review the ModelReportObserver class and its role in FX Graph Mode Quantization analysis', 'create a ModelReportVisualizer instance from generated quantization reports to visualize model statistics', 'get all unique module fully qualified names from the quantization reports', 'get all unique feature names from quantization reports, optionally filtering to plottable tensor features only', 'generate and print formatted tensor-level and channel-level tables from quantization reports with optional feature and module filters', 'generate a line plot of a single quantization feature across model modules with optional module filter']
+```
+
+Usage
+
+```
+{'create_model_report_visualizer': 'create a ModelReportVisualizer instance from generated quantization reports to visualize model statistics', 'get_all_unique_module_fqns': 'get all unique module fully qualified names from the quantization reports', 'get_all_unique_feature_names': 'get all unique feature names from quantization reports, optionally filtering to plottable tensor features only', 'generate_table_visualization': 'generate and print formatted tensor-level and channel-level tables from quantization reports with optional feature and module filters', 'generate_plot_visualization': 'generate a line plot of a single quantization feature across model modules with optional module filter'}
+```
+

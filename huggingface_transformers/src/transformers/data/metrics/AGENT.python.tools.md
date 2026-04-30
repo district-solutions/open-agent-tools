@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/src/transformers/data/metrics/squad_metrics.py
+
+Prompts
+
+```
+['test normalize_answer to lowercase text and remove punctuation, articles and extra whitespace', 'test compute_f1 to calculate F1 score between a gold answer and a predicted answer', 'test squad_evaluate to compute exact match and F1 scores for SQuAD predictions with optional no-answer threshold', 'create compute_predictions_logits to generate SQuAD span predictions from model logits and write them to JSON files', 'summarize compute_predictions_log_probs to generate SQuAD XLNet predictions from log probabilities and write them to JSON files']
+```
+
+Usage
+
+```
+{'test_normalize_answer': 'test normalize_answer to lowercase text and remove punctuation, articles and extra whitespace', 'test_compute_f1': 'test compute_f1 to calculate F1 score between a gold answer and a predicted answer', 'test_squad_evaluate': 'test squad_evaluate to compute exact match and F1 scores for SQuAD predictions with optional no-answer threshold', 'create_compute_predictions_logits': 'create compute_predictions_logits to generate SQuAD span predictions from model logits and write them to JSON files', 'summarize_compute_predictions_log_probs': 'summarize compute_predictions_log_probs to generate SQuAD XLNet predictions from log probabilities and write them to JSON files'}
+```
+

@@ -1,0 +1,145 @@
+{
+  "lsdefine_GenericAgent/TMWebDriver.py": {
+    "execute_js_code": "execute JavaScript code in a browser tab session via TMWebDriver with timeout and session selection",
+    "find_session_by_url": "find a browser tab session by URL pattern and return matching session ID and info",
+    "set_default_session": "set the default browser session to use for subsequent JS execution by URL pattern",
+    "navigate_to_url": "navigate the current browser tab to a specified URL using window.location.href",
+    "open_new_tab": "open a new browser tab with a specified URL using GM_openInTab"
+  },
+  "lsdefine_GenericAgent/agent_loop.py": {
+    "run_agent_loop": "run the agent loop with LLM client, system prompt, user input, handler, and tools schema to execute multi-turn agent conversations",
+    "test_base_handler_dispatch": "test the BaseHandler dispatch method that routes tool calls to do_{tool_name} handler methods with before/after callbacks",
+    "summarize_agent_runner_loop": "summarize the agent_runner_loop function that orchestrates multi-turn LLM interactions with tool execution and result accumulation",
+    "review_step_outcome": "review the StepOutcome dataclass that represents the result of a tool execution with data, next_prompt, and should_exit fields",
+    "create_pretty_json": "create a function that formats JSON data with pretty printing and special handling for script fields with semicolon-separated statements"
+  },
+  "lsdefine_GenericAgent/agentmain.py": {
+    "run_generic_agent_cli": "run the generic agent CLI with --input to send a prompt and get an LLM-powered response",
+    "run_generic_agent_task": "run the generic agent in one-shot task mode using --task with file-based input and output directories",
+    "run_generic_agent_reflect": "run the generic agent in reflect mode with --reflect to periodically trigger tasks from a monitoring script",
+    "run_generic_agent_interactive": "run the generic agent in interactive mode with stdin input and streaming output",
+    "run_generic_agent_background": "run the generic agent in background mode with --bg to launch as a subprocess and print its PID"
+  },
+  "lsdefine_GenericAgent/ga.py": {
+    "run_python_code": "run a Python code snippet with timeout, cwd, and optional stop signal support",
+    "run_bash_command": "run a bash or powershell command with streaming stdout and timeout enforcement",
+    "scan_web_page": "scan the current browser tab for simplified HTML content and list all open tabs",
+    "execute_browser_js": "execute JavaScript in the browser to fully control page interactions and capture results",
+    "read_file_content": "read a file starting from a given line with keyword search and line number display"
+  },
+  "lsdefine_GenericAgent/llmcore.py": {
+    "build_claude_session": "build a Claude LLM session using ClaudeSession with API key, base URL, model, and context window configuration",
+    "create_tool_client_chat": "create a ToolClient that builds protocol prompts with tool instructions and parses mixed LLM responses containing tool calls",
+    "run_native_claude_session": "run a NativeClaudeSession that calls Claude Code API with beta features, prompt caching, and interleaved thinking support",
+    "trim_messages_history": "trim LLM message history by compressing thinking and tool-use tags and removing old messages to fit context window",
+    "parse_claude_sse_response": "parse Claude Anthropic SSE streaming responses into text chunks and structured content blocks with tool use and thinking"
+  },
+  "lsdefine_GenericAgent/simphtml.py": {
+    "optimize_html_for_tokens": "optimize HTML by stripping unnecessary attributes and shortening long values to reduce token count",
+    "get_main_block": "extract the main content block from a webpage as text-only or HTML using a browser driver",
+    "get_html": "get optimized HTML from a browser driver with list truncation and character budget limits",
+    "find_changed_elements": "find DOM changes between two HTML snapshots and return the most significant change",
+    "execute_js_rich": "execute JavaScript in a browser driver and return results with transient text and DOM diff monitoring"
+  },
+  "lsdefine_GenericAgent/frontends/chatapp_common.py": {
+    "clean_reply_strip_llm_tags": "clean an LLM reply by stripping XML-style tags like thinking, summary, tool_use, and file_content",
+    "extract_files_from_reply": "extract file paths from a chat reply text by finding [FILE:filepath] markers",
+    "split_text_into_chunks": "split a long text into chunks at line breaks respecting a character limit",
+    "format_restore_conversation": "restore the most recent conversation history from log files in the temp directory",
+    "build_done_text_with_files": "build a final response text by cleaning the reply and appending generated file paths"
+  },
+  "lsdefine_GenericAgent/frontends/continue_cmd.py": {
+    "list_sessions": "list past model response sessions sorted newest first with optional PID exclusion",
+    "restore_session": "restore a past conversation session from a log file into an agent's backend history",
+    "reset_conversation": "abort current work and clear all frontend-visible conversation state for an agent",
+    "handle_continue_command": "dispatch /continue or /continue N slash commands to list or restore sessions",
+    "install_continue_handler": "monkey-patch a class _handle_slash_cmd method to handle /continue commands"
+  },
+  "lsdefine_GenericAgent/frontends/fsapp.py": {
+    "send_message": "send a text or interactive card message to a Feishu user or chat via open_id or chat_id",
+    "update_message": "update an existing Feishu message with new markdown card content using a message_id",
+    "handle_message": "handle an incoming Feishu message by parsing content, downloading media, and running the agent",
+    "handle_command": "process a Feishu slash command such as /stop, /new, /help, /status, /restore, or /continue",
+    "build_feishu_agent_server": "build a Feishu WebSocket agent server that receives messages and runs an AI agent in the background"
+  },
+  "lsdefine_GenericAgent/frontends/qtapp.py": {
+    "create_floating_button": "create a FloatingButton widget with animated glow, spring bounce, and hover effects that toggles a chat panel",
+    "build_chat_panel": "build a ChatPanel with tabbed interface (chat, history, SOP, settings), streaming responses, and session management",
+    "run_qtapp_main": "run the main entry point to launch the GenericAgent PySide6 desktop app with floating button and chat panel",
+    "test_md_to_html": "test the _md_to_html function to convert Markdown text including code blocks, headings, and lists to HTML",
+    "review_build_prompt_with_uploads": "review the _build_prompt_with_uploads function that attaches images, text files, and binaries to a chat prompt"
+  },
+  "lsdefine_GenericAgent/frontends/stapp.py": {
+    "init_agent": "init the GeneraticAgent and start its run loop in a daemon thread, returning the agent instance",
+    "render_sidebar_controls": "render the sidebar with LLM switching, abort, tool re-injection, desktop pet launch, and autonomous action toggle buttons",
+    "fold_turns_response": "fold multi-turn LLM output text into segments with extractable summary titles for collapsible display",
+    "render_segments_stream": "render fold and text segments as Streamlit expanders and markdown with optional cursor suffix",
+    "stream_agent_response": "stream agent backend responses for a given prompt, yielding partial text chunks via a display queue"
+  },
+  "lsdefine_GenericAgent/frontends/stapp2.py": {
+    "init": "initialize the GeneraticAgent, validate LLM client availability, and start the agent run thread",
+    "build_dynamic_font_css": "build a dynamic CSS block that scales the application font size by a percentage between 100% and 200%",
+    "render_sidebar": "render a Streamlit sidebar widget for selecting the active LLM backend and switching between available chains",
+    "start_agent_task": "start an agent task with a user prompt, initialize streaming state, and enqueue the task into the agent queue",
+    "render_streaming_area": "render a streaming chat area with a stop button, update partial response segments, and finalize when the agent finishes"
+  },
+  "lsdefine_GenericAgent/frontends/tgapp.py": {
+    "run_telegram_bot": "run the telegram bot application that streams LLM responses to allowed users via python-telegram-bot",
+    "handle_message_send_prompt": "handle incoming telegram messages by queuing prompts to the GeneraticAgent and streaming responses",
+    "abort_running_task": "abort the current GeneraticAgent task and cancel the active streaming response in telegram",
+    "switch_llm_model": "switch between available LLM models in the GeneraticAgent by index using the /llm command",
+    "stream_llm_response_with_files": "stream LLM responses to telegram with markdown-to-HTML conversion and auto-send attached files"
+  },
+  "lsdefine_GenericAgent/frontends/wechatapp.py": {
+    "login_wechat_bot_qr": "login to WeChat bot by scanning QR code generated from the ilinkai API",
+    "send_text_message_wechat": "send a text message to a WeChat user via the WxBotClient send_text method",
+    "send_media_file_wechat": "send an image, file, or video to a WeChat user via WxBotClient send_image, send_file, or send_video",
+    "poll_wechat_updates": "poll for incoming WeChat messages using WxBotClient get_updates method",
+    "run_wechat_bot_loop": "run the WxBotClient message listening loop with an on_message callback handler"
+  },
+  "lsdefine_GenericAgent/memory/L4_raw_sessions/compress_session.py": {
+    "compress_session_file": "compress a model_responses session file and output a timestamped compressed version",
+    "extract_session_history": "extract [USER]/[Agent] conversation history from a compressed L4 session file",
+    "batch_process_sessions": "batch compress, extract, archive, and clean up L4 raw session files",
+    "merge_history_blocks": "merge multiple sliding-window history blocks into one deduplicated conversation list",
+    "format_history_block": "format extracted history lines into the all_histories.txt block format"
+  },
+  "lsdefine_GenericAgent/memory/autonomous_operation_sop/helper.py": {
+    "get_todo": "get the current TODO.txt content from the autonomous task manager",
+    "get_history": "get the most recent history entries from the autonomous operation log",
+    "complete_task": "complete an autonomous task by saving a report and appending a history line",
+    "set_todo": "get the absolute path to the TODO.txt file for agent self-management",
+    "autonomous_task_module": "use the autonomous_task module to manage autonomous agent operation workflows"
+  },
+  "lsdefine_GenericAgent/memory/skill_search/skill_search/__main__.py": {
+    "run_skill_search_query": "run skill_search CLI to search for skills matching a query string like 'python testing'",
+    "run_skill_search_json_output": "run skill_search CLI with --json flag to get structured JSON output of search results",
+    "run_skill_search_category_filter": "run skill_search CLI with --category flag to limit results to a specific skill category",
+    "run_skill_search_env_detect": "run skill_search CLI with --env flag to detect and display the current environment info",
+    "run_skill_search_stats": "run skill_search CLI with --stats flag to display index statistics and category distribution"
+  },
+  "lsdefine_GenericAgent/memory/skill_search/skill_search/engine.py": {
+    "search_skill_search": "search for skills using a query string with optional category filter and top_k limit",
+    "detect_environment": "detect the current OS, shell, available runtimes and tools for skill matching",
+    "get_stats": "retrieve skill index statistics filtered by the current or provided environment",
+    "create_SkillIndex": "create a SkillIndex dataclass instance with metadata like name, category, tags, and quality scores",
+    "create_SearchResult": "create a SearchResult dataclass instance wrapping a SkillIndex with relevance and quality scores"
+  },
+  "lsdefine_GenericAgent/plugins/langfuse_tracing.py": {
+    "enable_langfuse_tracing": "enable Langfuse tracing for an agent by importing the module which self-activates if langfuse_config exists",
+    "wrap_llm_parser": "wrap an LLM SSE parser to extract token usage from Claude or OpenAI streaming responses",
+    "extract_usage_from_sse": "extract token usage details from SSE response buffer including input, output, and cached tokens",
+    "patch_tool_callbacks": "patch tool before and after callbacks to create Langfuse tool spans with input and output tracking",
+    "wrap_agent_runner_loop": "wrap the agent runner loop to create a top-level Langfuse agent observation for the entire task"
+  },
+  "lsdefine_GenericAgent/reflect/autonomous.py": {
+    "run_check_autonomous": "run the autonomous check function that returns a message when user has been away over 30 minutes"
+  },
+  "lsdefine_GenericAgent/reflect/scheduler.py": {
+    "run_scheduler_check": "run the scheduler check function to evaluate and trigger scheduled tasks based on cooldown and schedule rules",
+    "parse_cooldown_repeat": "parse a repeat frequency string like daily or every_6h into a cooldown timedelta value",
+    "find_last_run_task": "find the most recent execution timestamp for a given task id from done files",
+    "check_scheduled_tasks": "check scheduled tasks in the sche_tasks directory and return a trigger prompt if a task is due",
+    "review_scheduler_module": "review the scheduler module and its cooldown logic, schedule evaluation, and task triggering behavior"
+  }
+}

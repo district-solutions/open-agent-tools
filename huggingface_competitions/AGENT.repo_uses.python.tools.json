@@ -1,0 +1,114 @@
+{
+  "huggingface_competitions/competitions/api.py": {
+    "run_fastapi_evaluation_server": "run a FastAPI server that starts model evaluation and monitors background job processes",
+    "create_jobdb_sqlite": "create a SQLite-based JobDB class to track background job PIDs with add, delete, and query methods",
+    "build_background_runner": "build a BackgroundRunner that polls running jobs every 30 seconds and cleans up completed processes",
+    "test_process_status": "test the get_process_status function to check if a PID is running, zombie, or completed",
+    "review_kill_process": "review the kill_process_by_pid function that sends SIGTERM to terminate a process by its PID"
+  },
+  "huggingface_competitions/competitions/app.py": {
+    "run_fastapi_competition_app": "run a FastAPI server that hosts a Hugging Face competition platform with OAuth login and submission endpoints",
+    "fetch_leaderboard_public_or_private": "fetch the public or private leaderboard for a Hugging Face competition as a markdown table",
+    "submit_new_competition_entry": "submit a new competition entry by uploading a file or providing a Hugging Face Hub model ID",
+    "update_selected_submissions_for_team": "update which submissions a team has selected for final scoring by providing submission IDs",
+    "update_admin_competition_config": "update competition configuration settings like submission limits, end date, and scoring metric as an admin"
+  },
+  "huggingface_competitions/competitions/compute_metrics.py": {
+    "run_compute_metrics": "run compute_metrics to evaluate a competition submission against the solution using a specified metric",
+    "compute_custom_metric": "compute a custom metric by downloading metric.py from a HuggingFace competition dataset and calling its compute function",
+    "compute_sklearn_metric": "compute a sklearn metric by comparing public and private submission splits against the solution CSV",
+    "review_compute_metrics": "review the compute_metrics function to understand how it handles custom versus standard sklearn metrics",
+    "refactor_compute_metrics": "refactor compute_metrics to support additional metric types or change the public private split logic"
+  },
+  "huggingface_competitions/competitions/create.py": {
+    "create_competition": "create a Hugging Face competition by calling _create with token, organization, name, hardware, metric, and submission config parameters",
+    "check_user_can_create_competition": "check if a user can create a competition by calling check_if_user_can_create_competition with their Hugging Face token",
+    "create_readme_for_competition": "create a README BytesIO object for a competition space by calling _create_readme with the competition name",
+    "run_gradio_competition_creator": "run the Gradio Blocks UI for creating Hugging Face competitions by calling main and launching the demo",
+    "review_create_function": "review the _create function to understand how it creates dataset repos, uploads config files, and sets up competition spaces on Hugging Face"
+  },
+  "huggingface_competitions/competitions/download.py": {
+    "download_hf_repo_snapshot": "download all files from a Hugging Face Hub repository to a local snapshot folder",
+    "download_hf_repo_with_patterns": "download a Hugging Face repo snapshot filtering files by allow or ignore patterns",
+    "download_hf_repo_specific_revision": "download a Hugging Face repo snapshot at a specific branch tag or commit hash",
+    "download_hf_repo_local_only": "return the local cached snapshot folder path for a Hugging Face repo without downloading",
+    "download_hf_dataset_or_space": "download all files from a Hugging Face dataset or space repository to a local folder"
+  },
+  "huggingface_competitions/competitions/evaluate.py": {
+    "run_evaluation": "run the evaluation pipeline for a competition submission using a config JSON file",
+    "generate_submission_file": "generate a submission file by running script.py in a sandboxed subprocess with a time limit",
+    "upload_submission_file": "upload a generated submission file to the Hugging Face competition repository",
+    "review_run_function": "review the run function that orchestrates submission evaluation including requirements installation and metric computation",
+    "refactor_generate_submission_file": "refactor generate_submission_file to support additional sandbox execution options or file upload formats"
+  },
+  "huggingface_competitions/competitions/info.py": {
+    "create_competition_info": "create a CompetitionInfo dataclass that downloads and parses competition config and markdown files from Hugging Face Hub",
+    "build_competition_properties": "build a CompetitionInfo instance to access properties like submission_limit, end_date, competition_type, and scoring_metric",
+    "update_competition_info": "update competition config and markdown files on Hugging Face Hub by calling update_competition_info with new config and markdowns",
+    "review_competition_properties": "review the CompetitionInfo class properties to inspect submission_columns, dataset_description, rules, and hardware configuration",
+    "test_competition_info_init": "test the CompetitionInfo initialization by passing a competition_id and autotrain_token to download competition files"
+  },
+  "huggingface_competitions/competitions/leaderboard.py": {
+    "create_leaderboard_class": "create a Leaderboard dataclass with end_date, scoring_metric, competition_id, and token fields",
+    "fetch_public_leaderboard": "fetch the public leaderboard as a ranked DataFrame from a Hugging Face competition dataset",
+    "fetch_private_leaderboard": "fetch the private leaderboard with private scores as a ranked DataFrame from a competition",
+    "process_public_submissions": "process public leaderboard submissions by filtering successful ones before the end date and selecting best per user",
+    "process_private_submissions": "process private leaderboard submissions by selecting based on private scores and handling selected submission limits"
+  },
+  "huggingface_competitions/competitions/oauth.py": {
+    "attach_oauth_to_fastapi_app": "attach OAuth authentication routes and session middleware to a FastAPI application for Hugging Face login",
+    "add_oauth_routes": "add OAuth login callback and logout routes to a FastAPI app using Hugging Face as the provider",
+    "generate_redirect_uri": "generate an OAuth redirect URI that preserves the target URL from query parameters",
+    "redirect_to_target": "redirect a FastAPI request to a target URL specified in query parameters or a default path",
+    "review_oauth_middleware": "review the OAuth session middleware configuration including secret key hashing and cookie settings"
+  },
+  "huggingface_competitions/competitions/params.py": {
+    "create_eval_params": "create an EvalParams instance with competition id, type, metric, token, team, and submission details",
+    "save_eval_params": "save EvalParams to a params.json file in the specified output directory",
+    "build_eval_params_model": "build a pydantic EvalParams model with all required competition and submission fields",
+    "review_eval_params": "review the EvalParams class fields including competition_id, metric, submission_cols, and time_limit",
+    "summarize_eval_params": "summarize the EvalParams pydantic model structure and its save method for competition parameters"
+  },
+  "huggingface_competitions/competitions/runner.py": {
+    "run_job_runner_loop": "run the JobRunner main loop to process pending submissions for a competition",
+    "get_pending_submissions": "get pending submissions from the competition dataset repo as a sorted DataFrame",
+    "run_local_evaluation": "run a local evaluation for a team submission using the competition parameters",
+    "create_hf_space_for_submission": "create a Hugging Face space with Dockerfile and params secret for a script submission",
+    "mark_submission_failed": "mark a team submission as failed by updating its status in the dataset repo"
+  },
+  "huggingface_competitions/competitions/submissions.py": {
+    "create_new_submission": "create a new competition submission by uploading a file and recording submission metadata for a team",
+    "get_my_submissions": "get all submissions for the current user's team as a pandas DataFrame with public scores",
+    "update_selected_submissions": "update which submissions are selected for a team by providing a list of submission IDs",
+    "check_submission_allowed": "check if a team is allowed to submit based on daily submission limits and competition end date",
+    "create_team": "create a new team for a user and initialize team metadata and submission tracking files on Hugging Face Hub"
+  },
+  "huggingface_competitions/competitions/utils.py": {
+    "get_token_information": "get user information from Hugging Face Hub using a provided authentication token",
+    "authenticate_user_request": "authenticate a FastAPI request by verifying a bearer token, environment token, or session OAuth token",
+    "run_evaluation": "run a competition evaluation subprocess with the given parameters and optionally wait for completion",
+    "create_monitor_decorator": "create a decorator that wraps evaluation functions with error handling and automatic submission status updates",
+    "update_submission_score": "update a competition submission public and private scores on the Hugging Face Hub dataset"
+  },
+  "huggingface_competitions/competitions/cli/create.py": {
+    "create_competition_ui": "launch the Gradio UI to create a new Hugging Face competition",
+    "register_create_subcommand": "register the create subcommand with an argparse parser for competition creation",
+    "run_create_command": "run the CreateCompetitionAppCommand to start the competition creation UI",
+    "refactor_create_command_factory": "refactor the create_command_factory to accept additional arguments for competition setup",
+    "review_CreateCompetitionAppCommand": "review the CreateCompetitionAppCommand class and its run method for launching the competition UI"
+  },
+  "huggingface_competitions/competitions/cli/run.py": {
+    "run_competitions_app": "run the competitions app on host 0.0.0.0 and port 7860 using uvicorn",
+    "run_app_custom_host_port": "run the competitions app on a custom host and port using the run subcommand",
+    "register_run_subcommand": "register the run subcommand with host and port arguments on an argparse parser",
+    "create_run_command_instance": "create a RunCompetitionsAppCommand instance from parsed CLI arguments using the factory function",
+    "run_competitions_app_on_port": "run the competitions app on a specific port by passing the --port argument"
+  },
+  "huggingface_competitions/competitions/cli/submit.py": {
+    "submit_competition_file": "submit a local file to a HuggingFace competition using competition_id and token",
+    "submit_competition_hub_repo": "submit a HuggingFace hub repo to a competition with an optional comment",
+    "register_submit_subcommand": "register the submit subcommand parser with competition_id submission comment and token arguments",
+    "run_submit_command": "run the SubmitCompetitionAppCommand to POST a submission to the competition API endpoint",
+    "submit_commands_factory": "create a SubmitCompetitionAppCommand instance from argparse args for competition submission"
+  }
+}

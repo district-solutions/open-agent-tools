@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/sambanova/embedding/transformation.py
+
+Prompts
+
+```
+['build a SambaNova embedding URL by appending /embeddings to a base API endpoint', 'validate environment headers for SambaNova embedding requests with API key fallback', 'transform an OpenAI-compatible embedding request into SambaNova API format', 'transform a raw SambaNova HTTP response into a structured EmbeddingResponse object', 'get a SambaNovaError exception class for a given error message and status code']
+```
+
+Usage
+
+```
+{'build_get_complete_url': 'build a SambaNova embedding URL by appending /embeddings to a base API endpoint', 'validate_environment_headers': 'validate environment headers for SambaNova embedding requests with API key fallback', 'transform_embedding_request': 'transform an OpenAI-compatible embedding request into SambaNova API format', 'transform_embedding_response': 'transform a raw SambaNova HTTP response into a structured EmbeddingResponse object', 'get_error_class': 'get a SambaNovaError exception class for a given error message and status code'}
+```
+

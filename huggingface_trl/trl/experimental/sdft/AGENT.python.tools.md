@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/trl
+- repo_uri: https://github.com/huggingface/trl.git
+
+## File: huggingface_trl/trl/experimental/sdft/sdft_trainer.py
+
+Prompts
+
+```
+['create an SDFTTrainer instance with a model path, SDFTConfig, and train dataset for on-policy self-distillation', 'build student and teacher contexts from prompts and privileged context using DemonstrationTeacherContextBuilder', 'generate completion IDs and masks from prompts using the model with configurable temperature and sampling parameters', 'compute SDFT self-distillation loss with optional token skipping and gradient accumulation scaling', 'build a buffered training batch with prompts, completions, teacher inputs, and old per-token logps for PPO-style updates']
+```
+
+Usage
+
+```
+{'create_sdft_trainer': 'create an SDFTTrainer instance with a model path, SDFTConfig, and train dataset for on-policy self-distillation', 'build_teacher_context': 'build student and teacher contexts from prompts and privileged context using DemonstrationTeacherContextBuilder', 'generate_completion_ids': 'generate completion IDs and masks from prompts using the model with configurable temperature and sampling parameters', 'compute_self_distillation_loss': 'compute SDFT self-distillation loss with optional token skipping and gradient accumulation scaling', 'build_buffered_batch': 'build a buffered training batch with prompts, completions, teacher inputs, and old per-token logps for PPO-style updates'}
+```
+

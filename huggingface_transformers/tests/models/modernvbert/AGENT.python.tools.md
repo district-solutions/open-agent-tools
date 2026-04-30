@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/modernvbert/test_modeling_modernvbert.py
+
+Prompts
+
+```
+['test the ModernVBertModel forward pass with pixel values and input ids', 'test ModernVBertForMaskedLM masked language modeling with token labels', 'test ModernVBertForSequenceClassification with sequence labels and batch inputs', 'test ModernVBertForTokenClassification with token-level labels', 'test resizing token embeddings with larger and smaller vocab sizes including pad_to_multiple_of']
+```
+
+Usage
+
+```
+{'test_modernvbert_model': 'test the ModernVBertModel forward pass with pixel values and input ids', 'test_modernvbert_masked_lm': 'test ModernVBertForMaskedLM masked language modeling with token labels', 'test_modernvbert_sequence_classification': 'test ModernVBertForSequenceClassification with sequence labels and batch inputs', 'test_modernvbert_token_classification': 'test ModernVBertForTokenClassification with token-level labels', 'test_resize_tokens_embeddings': 'test resizing token embeddings with larger and smaller vocab sizes including pad_to_multiple_of'}
+```
+

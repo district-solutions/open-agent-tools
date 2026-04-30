@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/jina_ai/rerank/transformation.py
+
+Prompts
+
+```
+['build a Jina AI rerank config that transforms Cohere rerank parameters to Jina AI format', 'transform a rerank request by prepending the model name to optional rerank parameters', "transform a Jina AI rerank response into LiteLLM's expected RerankResponse format", 'validate the Jina AI environment by checking api_key and returning required HTTP headers', "calculate the rerank cost by multiplying total tokens by the model's input cost per token"]
+```
+
+Usage
+
+```
+{'build_rerank_config': 'build a Jina AI rerank config that transforms Cohere rerank parameters to Jina AI format', 'transform_rerank_request': 'transform a rerank request by prepending the model name to optional rerank parameters', 'transform_rerank_response': "transform a Jina AI rerank response into LiteLLM's expected RerankResponse format", 'validate_environment': 'validate the Jina AI environment by checking api_key and returning required HTTP headers', 'calculate_rerank_cost': "calculate the rerank cost by multiplying total tokens by the model's input cost per token"}
+```
+

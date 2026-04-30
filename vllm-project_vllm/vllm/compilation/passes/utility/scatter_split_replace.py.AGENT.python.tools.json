@@ -1,0 +1,7 @@
+{
+    "refactor_ScatterSplitReplacementPass": "refactor the ScatterSplitReplacementPass to replace slice_scatter and split_with_sizes nodes with getitem calls when the inplace tensor has no other users",
+    "summarize_ScatterSplitReplacementPass_call": "summarize the ScatterSplitReplacementPass.__call__ method that matches rotary_embedding patterns in torch.fx graphs and eliminates redundant scatter+split operations",
+    "test_ScatterSplitReplacementPass": "test the ScatterSplitReplacementPass by verifying it correctly replaces getitem+slice_scatter+split node sequences with single getitem nodes in a functionalized torch.fx graph",
+    "review_ScatterSplitReplacementPass": "review the ScatterSplitReplacementPass class that optimizes qkv split+rotary_embedding subpatterns by removing redundant slice_scatter and split_with_sizes nodes before defunctionalization",
+    "build_ScatterSplitReplacementPass_target_ops": "build the target_ops list in ScatterSplitReplacementPass that includes torch.ops._C.rotary_embedding.default and optionally torch.ops.vllm.rocm_aiter_triton_rotary_embedding.default for ROCm"
+}

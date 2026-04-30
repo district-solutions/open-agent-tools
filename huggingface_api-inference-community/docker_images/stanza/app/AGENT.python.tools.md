@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/api-inference-community
+- repo_uri: https://github.com/huggingface/api-inference-community
+
+## File: huggingface_api-inference-community/docker_images/stanza/app/main.py
+
+Prompts
+
+```
+['run the stanza token classification inference server using uvicorn with the Starlette app', 'configure the ALLOWED_TASKS dictionary to map task names to their pipeline classes', 'call get_pipeline to instantiate the cached pipeline based on TASK and MODEL_ID environment variables', 'setup Starlette routes for status check GET and pipeline inference POST endpoints', 'configure GZipMiddleware and optional CORSMiddleware for the Starlette application']
+```
+
+Usage
+
+```
+{'run_stanza_inference_server': 'run the stanza token classification inference server using uvicorn with the Starlette app', 'configure_allowed_tasks': 'configure the ALLOWED_TASKS dictionary to map task names to their pipeline classes', 'get_pipeline_function': 'call get_pipeline to instantiate the cached pipeline based on TASK and MODEL_ID environment variables', 'setup_starlette_routes': 'setup Starlette routes for status check GET and pipeline inference POST endpoints', 'configure_middleware': 'configure GZipMiddleware and optional CORSMiddleware for the Starlette application'}
+```
+

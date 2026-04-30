@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: NousResearch/hermes-agent
+- repo_uri: https://github.com/NousResearch/hermes-agent
+
+## File: NousResearch_hermes-agent/optional-skills/mcp/fastmcp/scripts/scaffold_fastmcp.py
+
+Prompts
+
+```
+['list all available FastMCP server template names via --list flag', 'run scaffold_fastmcp.py to generate an API wrapper FastMCP server from the api_wrapper template', 'run scaffold_fastmcp.py to generate a SQLite database FastMCP server from the database_server template', 'run scaffold_fastmcp.py to generate a file processing FastMCP server from the file_processor template', 'render a FastMCP template with a custom server name replacing the __SERVER_NAME__ placeholder']
+```
+
+Usage
+
+```
+{'list_templates': 'list all available FastMCP server template names via --list flag', 'run_scaffold_api_wrapper': 'run scaffold_fastmcp.py to generate an API wrapper FastMCP server from the api_wrapper template', 'run_scaffold_database_server': 'run scaffold_fastmcp.py to generate a SQLite database FastMCP server from the database_server template', 'run_scaffold_file_processor': 'run scaffold_fastmcp.py to generate a file processing FastMCP server from the file_processor template', 'render_template': 'render a FastMCP template with a custom server name replacing the __SERVER_NAME__ placeholder'}
+```
+

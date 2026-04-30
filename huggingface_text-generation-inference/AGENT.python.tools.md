@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/text-generation-inference
+- repo_uri: https://github.com/huggingface/text-generation-inference.git
+
+## File: huggingface_text-generation-inference/update_doc.py
+
+Prompts
+
+```
+['run update_doc.py to regenerate the text-generation-launcher CLI, supported models, and OpenAPI documentation files', 'run update_doc.py with the --check flag to verify all documentation files are up to date', 'run check_cli to regenerate the text-generation-launcher arguments markdown doc from the launcher help output', 'run check_supported_models to regenerate the supported models markdown doc from the ModelType enum in the server code', 'run check_openapi to regenerate the OpenAPI JSON schema from text-generation-router and lint it with redocly']
+```
+
+Usage
+
+```
+{'update_tgi_docs': 'run update_doc.py to regenerate the text-generation-launcher CLI, supported models, and OpenAPI documentation files', 'check_tgi_docs': 'run update_doc.py with the --check flag to verify all documentation files are up to date', 'update_cli_docs': 'run check_cli to regenerate the text-generation-launcher arguments markdown doc from the launcher help output', 'update_supported_models': 'run check_supported_models to regenerate the supported models markdown doc from the ModelType enum in the server code', 'update_openapi': 'run check_openapi to regenerate the OpenAPI JSON schema from text-generation-router and lint it with redocly'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/upernet/test_modeling_upernet.py
+
+Prompts
+
+```
+['test UperNetForSemanticSegmentation model inference with pixel values and verify output logits shape', 'create a UperNetConfig with ConvNext backbone config and semantic segmentation head parameters', 'test UperNet model hidden states output across backbone stages with output_hidden_states enabled', 'test UperNet model with timm and HuggingFace backbone selection including resnet18 configurations', 'test UperNetForSemanticSegmentation inference with pretrained openmmlab models on ADE20k images']
+```
+
+Usage
+
+```
+{'test_upernet_semantic_segmentation': 'test UperNetForSemanticSegmentation model inference with pixel values and verify output logits shape', 'create_upernet_config': 'create a UperNetConfig with ConvNext backbone config and semantic segmentation head parameters', 'test_upernet_hidden_states': 'test UperNet model hidden states output across backbone stages with output_hidden_states enabled', 'test_upernet_backbone_selection': 'test UperNet model with timm and HuggingFace backbone selection including resnet18 configurations', 'test_upernet_integration_inference': 'test UperNetForSemanticSegmentation inference with pretrained openmmlab models on ADE20k images'}
+```
+

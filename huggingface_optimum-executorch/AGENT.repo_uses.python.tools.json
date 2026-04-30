@@ -1,0 +1,492 @@
+{
+  "huggingface_optimum-executorch/install_dev.py": {
+    "run_install_dev": "run the install_dev script to install optimum-executorch in dev mode with nightly dependencies",
+    "run_install_dev_skip_torch": "run the install_dev script with --skip_override_torch to skip nightly torch dependency installation",
+    "install_torch_nightly_deps": "install nightly executorch, torch, torchvision, torchaudio, and torchao packages from the PyTorch CPU nightly index",
+    "install_dep_from_source": "install transformers and pytorch-tokenizers from their pinned git source commits",
+    "review_install_dev": "review the install_dev script to understand the dependency installation order and nightly version pins"
+  },
+  "huggingface_optimum-executorch/optimum/commands/export/executorch.py": {
+    "export_model_to_executorch": "export a HuggingFace model to ExecuTorch format using the optimum cli with the executorch command",
+    "parse_args_executorch": "add argparse arguments for exporting a model to ExecuTorch including model path task recipe and quantization options",
+    "run_executorch_export": "run the ExecuTorch export command to convert a model with xnnpack recipe and optional quantization settings",
+    "configure_executorch_quantization": "configure decoder and encoder linear layer quantization with 4-bit or 8-bit weights for ExecuTorch export",
+    "validate_executorch_export_args": "validate ExecuTorch export arguments including device compatibility for packing formats and fpa4w quantization"
+  },
+  "huggingface_optimum-executorch/optimum/executorch/modeling.py": {
+    "load_executorch_causal_lm": "load a pre-exported ExecuTorch causal language model from a HuggingFace repo or local path using ExecuTorchModelForCausalLM.from_pretrained",
+    "generate_causal_lm_tokens": "generate text tokens from a prompt using ExecuTorchModelForCausalLM.generate with echo and max_seq_len options",
+    "run_seq2seq_generation": "run sequence-to-sequence text generation with ExecuTorchModelForSeq2SeqLM.generate using encoder and decoder models",
+    "run_object_detection": "run object detection inference on pixel values using ExecuTorchModelForObjectDetection.forward to get logits and bounding boxes",
+    "transcribe_speech": "transcribe audio input features to text using ExecuTorchModelForSpeechSeq2Seq.transcribe with a tokenizer and max sequence length"
+  },
+  "huggingface_optimum-executorch/optimum/executorch/stats.py": {
+    "create_stats_instance": "create a Stats instance to track LLM execution latency timestamps",
+    "track_model_load_time": "call on_model_load_start and on_model_load_end to measure model loading duration",
+    "track_inference_timing": "use on_inference_start and on_inference_end to measure total inference time",
+    "track_sampling_time": "use on_sampling_begin and on_sampling_end to aggregate sampling time across tokens",
+    "export_stats_to_json": "call to_json or to_json_string to export stats as a JSON dictionary or string"
+  },
+  "huggingface_optimum-executorch/optimum/executorch/attentions/custom_kv_cache.py": {
+    "create_ETCustomStaticCache": "create an ETCustomStaticCache instance with a model config, batch size, and device for ExecutorTorch inference",
+    "update_ETCustomStaticCache": "update the ETCustomStaticCache with new key and value states for a given layer index",
+    "create_ETCustomHybridCache": "create an ETCustomHybridCache instance with sliding window and global layer support for ExecutorTorch",
+    "update_ETCustomHybridCache": "update the ETCustomHybridCache with new key and value states using CustomKVCache or CustomRingKVCache",
+    "replace_with_et_custom_kv_cache": "replace all KV caches in a torch module with ETCustomStaticCache or ETCustomHybridCache in place"
+  },
+  "huggingface_optimum-executorch/optimum/executorch/attentions/custom_sdpa.py": {
+    "run_custom_sdpa_with_start_pos": "run custom SDPA attention forward pass with start position for ExecuTorch LLM inference",
+    "run_sdpa_mask_passthrough": "run the SDPA mask passthrough function to skip attention mask creation for ExecuTorch export",
+    "run_get_custom_sdpa_for_ring_kv_cache": "run the ring KV cache custom SDPA factory to get a forward function for sliding window attention",
+    "review_custom_sdpa_with_start_pos_forward": "review the custom SDPA forward function that handles causal and sliding window attention modes",
+    "review_get_custom_sdpa_for_ring_kv_cache": "review the ring KV cache SDPA factory that creates causal masks for ring buffer attention"
+  },
+  "huggingface_optimum-executorch/optimum/executorch/attentions/whisper_attention.py": {
+    "init_WhisperCrossAttention": "create a WhisperCrossAttention module with embed_dim, num_heads, dropout, and layer_idx parameters",
+    "forward_WhisperCrossAttention": "run cross attention forward pass with hidden_states, key_value_states, and EncoderDecoderCache",
+    "review_WhisperCrossAttention_torch_cond": "review the WhisperCrossAttention forward method that uses torch.cond for traceable cache branching",
+    "refactor_WhisperCrossAttention_cache": "refactor the WhisperCrossAttention to use cached key-value states via executorch update_cross_attn_cache",
+    "summarize_WhisperCrossAttention": "summarize the WhisperCrossAttention class that implements export-friendly multi-headed cross attention for Whisper"
+  },
+  "huggingface_optimum-executorch/optimum/executorch/passes/remove_padding_idx_embedding_pass.py": {
+    "create_RemovePaddingIdxEmbeddingPass": "create a RemovePaddingIdxEmbeddingPass instance to remove padding_idx from embedding operators in an ExecuTorch graph module",
+    "run_RemovePaddingIdxEmbeddingPass_call": "run the RemovePaddingIdxEmbeddingPass call method on a torch.fx GraphModule to strip padding_idx from embedding nodes",
+    "refactor_graphmodule_embedding_padding": "refactor a torch.fx GraphModule by applying RemovePaddingIdxEmbeddingPass to remove padding_idx arguments from aten.embedding.default calls",
+    "review_RemovePaddingIdxEmbeddingPass": "review the RemovePaddingIdxEmbeddingPass class to understand how it transforms aten.embedding.default nodes by removing the padding_idx argument",
+    "summarize_RemovePaddingIdxEmbeddingPass": "summarize the RemovePaddingIdxEmbeddingPass ExportPass that iterates over graph nodes and removes padding_idx from embedding operator calls"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/__main__.py": {
+    "export_model_to_executorch": "export a Hugging Face model to ExecuTorch format using main_export with a specified task and recipe",
+    "run_executorch_cli_export": "run the ExecuTorch exporter CLI to convert a model from the command line using main",
+    "export_llama_to_xnnpack": "export a Llama model for text generation to ExecuTorch using the xnnpack recipe",
+    "export_local_model_to_executorch": "export a local model directory to ExecuTorch format with a custom output path and recipe",
+    "discover_and_export_task": "discover available tasks and export a model for a specific task like text-generation to ExecuTorch"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/convert.py": {
+    "export_model_to_executorch": "export a PyTorch model to ExecuTorch format using a specified recipe like xnnpack",
+    "discover_recipes": "discover and import all registered ExecuTorch export recipes dynamically",
+    "register_custom_sdpa_attention": "register the custom_sdpa attention interface for ExecuTorch model export",
+    "register_custom_sdpa_mask": "register the custom_sdpa attention mask interface for ExecuTorch model export",
+    "save_executorch_program": "save an ExecuTorch program to a .pte file in the output directory"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/integrations.py": {
+    "export_causal_lm_for_executorch": "export a causal LM model to ExecuTorch using CausalLMExportableModule with custom KV cache and SDPA",
+    "export_multimodal_model_for_executorch": "export a multimodal audio or vision model to ExecuTorch using MultiModalTextToTextExportableModule",
+    "export_object_detection_for_executorch": "export an object detection model to ExecuTorch using ObjectDetectionExportableModule with image size config",
+    "export_seq2seq_model_for_executorch": "export a seq2seq model like T5 or Whisper to ExecuTorch using Seq2SeqLMExportableModule",
+    "export_vision_encoder_for_executorch": "export a vision encoder-only model to ExecuTorch using VisionEncoderExportableModule"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/quantization.py": {
+    "quantize_model_4w": "quantize a pytorch model linear layers with 4-bit weight-only quantization using group size 32",
+    "quantize_model_8w": "quantize a pytorch model linear layers with 8-bit weight-only quantization using per-axis granularity",
+    "quantize_model_8da4w": "quantize a pytorch model with 8-bit dynamic activation and 4-bit weight quantization on linear layers",
+    "quantize_model_embedding": "quantize a pytorch model embedding layers with 4-bit or 8-bit weight-only quantization",
+    "quantize_model_fallback": "quantize a pytorch model with a primary group quantization config and a fallback per-axis config for incompatible layers"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/recipe_registry.py": {
+    "register_recipe_decorator": "register a new ExecuTorch export recipe using the register_recipe decorator under a custom name",
+    "discover_recipes": "dynamically discover and import all recipe modules in the optimum executorch recipes package",
+    "use_recipe_registry": "access the recipe_registry dictionary to list all registered ExecuTorch export recipes",
+    "create_custom_recipe": "create a custom recipe function and register it with the register_recipe decorator for model export",
+    "review_recipe_registry": "review the recipe_registry module to understand how ExecuTorch recipes are registered and discovered"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/task_registry.py": {
+    "register_task_decorator": "register a new task function using the register_task decorator with a custom task name",
+    "discover_tasks_dynamically": "discover and dynamically import all task modules in the executorch tasks package",
+    "list_registered_tasks": "list all registered tasks in the task_registry dictionary",
+    "create_task_module": "create a new task module in the tasks directory and register it with register_task",
+    "review_task_registry": "review the task_registry module to understand how tasks are registered and discovered"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/utils.py": {
+    "save_config_to_constant_methods": "create a metadata dictionary from a HuggingFace PretrainedConfig for ExecuTorch constant methods",
+    "apply_chat_template_with_fallback": "apply a chat template to a conversation with fallback support for external processors",
+    "verify_eos_tokens_in_pretrained_tokenizer": "verify that model EOS token IDs are present in a HuggingFace tokenizer",
+    "process_conversation_inputs": "process multimodal conversation inputs including audio for GraniteSpeechProcessor or standard processors",
+    "review_utils_functions": "review the ExecuTorch exporter utility functions for config handling and conversation processing"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/recipes/coreml.py": {
+    "export_model_to_executorch_coreml": "export a PyTorch causal LM model to ExecuTorch with CoreML backend delegation",
+    "lower_exported_programs_to_executorch": "lower exported programs to ExecuTorch using CoreMLPartitioner and CoreMLBackend compile specs",
+    "get_coreml_recipe_kwargs": "get CoreML recipe kwargs mapping dtype and compute unit strings to precision and compute enums",
+    "make_coreml_recipe": "create and register a CoreML recipe function with a given name and kwargs",
+    "register_coreml_backend_recipes": "register all CoreML backend recipes for fp16 and fp32 across cpu gpu ne and all compute units"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/recipes/cuda-windows.py": {
+    "export_pytorch_model_to_executorch_cuda_windows": "export a PyTorch model to ExecuTorch with CUDA backend delegation for Windows using the cuda-windows recipe",
+    "run_cuda_windows_recipe_for_causal_lm": "run the cuda-windows recipe to export a CausalLMExportableModule to an ExecuTorch .pte file on Windows",
+    "build_executorch_program_with_cuda_delegation": "build an ExecuTorch program with CUDA backend delegation from a MaskedLM or Seq2SeqLM exportable module on Windows",
+    "review_cuda_windows_export_for_multimodal_model": "review the cuda-windows export recipe for a MultiModalTextToTextExportableModule to generate multiple ExecuTorch programs",
+    "test_export_to_executorch_with_cuda_windows": "test the export_to_executorch_with_cuda_windows function with a model using flash_attention instead of custom_sdpa"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/recipes/cuda.py": {
+    "export_model_cuda": "export a PyTorch causal language model to ExecuTorch with CUDA backend delegation",
+    "lower_to_executorch": "lower exported PyTorch programs to ExecuTorch using the CUDA partitioner and compile specs",
+    "export_seq2seq_cuda": "export a seq2seq language model to ExecuTorch with CUDA backend for encoder-decoder models",
+    "export_multimodal_cuda": "export a multimodal text-to-text model to ExecuTorch with CUDA backend delegation",
+    "export_gemma3_cuda": "export a Gemma3 model to ExecuTorch with CUDA backend and triton kernel mode disabled"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/recipes/metal.py": {
+    "export_model_to_metal_backend": "export a PyTorch model to ExecuTorch with Metal backend delegation for Apple Silicon",
+    "check_metal_backend_availability": "check if the ExecuTorch Metal backend is available by inspecting METAL_BACKEND_AVAILABLE",
+    "lower_exported_programs_to_executorch": "lower exported PyTorch programs to ExecuTorch format using MetalPartitioner and MetalBackend",
+    "review_metal_export_recipe": "review the metal recipe export function for supported model types and custom SDPA limitations",
+    "summarize_executorch_version_check": "summarize how EXECUTORCH_VERSION and METAL_BACKEND_AVAILABLE guard conditional imports for Metal support"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/recipes/portable.py": {
+    "export_model_to_executorch_portable": "export a PyTorch model to ExecuTorch using the portable recipe with portable kernels",
+    "lower_exported_programs_to_executorch": "lower exported PyTorch programs to an ExecuTorch program using to_edge_transform_and_lower",
+    "apply_remove_padding_idx_embedding_pass": "apply the RemovePaddingIdxEmbeddingPass transform pass when lowering a model to ExecuTorch",
+    "validate_custom_sdpa_in_graph": "validate that the custom_sdpa operator is present in the exported program graph",
+    "register_portable_recipe": "register the portable recipe in the recipe registry for exporting models to ExecuTorch"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/recipes/xnnpack.py": {
+    "export_model_to_executorch_xnnpack": "export a PyTorch model to ExecuTorch with XNNPACK backend delegation using the xnnpack recipe",
+    "lower_exported_programs_to_executorch": "lower exported PyTorch programs to ExecuTorch format using XnnpackPartitioner and memory planning passes",
+    "register_xnnpack_recipe": "register the xnnpack recipe in the recipe registry for exporting models to ExecuTorch",
+    "check_custom_sdpa_in_graph": "verify that the custom_sdpa operator is present in the exported program graph nodes",
+    "unwrap_tensor_subclass_model": "unwrap tensor subclass from a model for compatibility with older PyTorch versions below 2.10.0"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/tasks/asr.py": {
+    "load_seq2seq_speech_model": "load a speech seq2seq model like whisper-tiny using AutoModelForSpeechSeq2Seq for automatic speech recognition",
+    "quantize_decoder_linear": "quantize the decoder linear layers of a speech seq2seq model with 4-bit or 8-bit weight quantization",
+    "quantize_encoder_linear": "quantize the encoder linear layers of a speech seq2seq model with a separate quantization config",
+    "quantize_decoder_embedding": "quantize the decoder embedding layers of a speech seq2seq model with 4-bit or 8-bit weight quantization",
+    "export_asr_model": "export a speech recognition model to a Seq2SeqLMExportableModule ready for ExecuTorch lowering"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/tasks/causal_lm.py": {
+    "load_causal_lm_model": "load a causal language model from a Hugging Face repo path for text generation export to ExecuTorch",
+    "load_causal_lm_with_dtype": "load a causal LM model with float16 dtype to reduce memory usage before exporting",
+    "load_causal_lm_with_gguf": "load a causal LM model from a GGUF file for dequantized export to ExecuTorch",
+    "load_causal_lm_with_quantization": "load a causal LM model with qlinear and qembedding quantization configs for export",
+    "load_causal_lm_with_custom_sdpa": "load a causal LM model using custom SDPA attention and KV cache for export"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/tasks/image_classification.py": {
+    "load_image_classification_model_hub": "load a pretrained image classification model from Hugging Face Hub and wrap it for ExecuTorch export",
+    "load_image_classification_model_local": "load a local image classification model from disk path and prepare it for ExecuTorch lowering",
+    "register_image_classification_task": "register an image classification model loading function under the task name image-classification using the register_task decorator",
+    "create_vision_encoder_exportable_module": "create a VisionEncoderExportableModule instance wrapping an eager model for exporting and lowering to ExecuTorch",
+    "configure_image_classification_model_loading": "load an image classification model with additional configuration options passed as kwargs to from_pretrained"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/tasks/masked_lm.py": {
+    "load_masked_lm_model": "load a masked language model from Hugging Face for the fill-mask task and wrap it in MaskedLMExportableModule",
+    "load_masked_lm_model_quantized": "load a masked language model with 4-bit or 8-bit linear quantization for ExecuTorch export",
+    "export_masked_lm_for_executorch": "export a BERT-style masked LM to ExecuTorch using the fill-mask task loader",
+    "quantize_masked_lm_model": "quantize a masked language model's linear and embedding layers before wrapping for ExecuTorch export",
+    "register_fill_mask_task": "register a fill-mask task function using the register_task decorator in the task registry"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/tasks/multimodal_text_to_text.py": {
+    "load_multimodal_model": "load a multimodal text-to-text model from Hugging Face for image or audio to text generation",
+    "export_image_text_model": "export an image-text-to-text model like google/gemma-3-4b-it to ExecuTorch format",
+    "quantize_decoder_linears": "quantize the decoder linear layers of a multimodal model using a qlinear config",
+    "quantize_encoder_embeddings": "quantize the encoder embedding layers of a multimodal model with a specified group size",
+    "configure_generation_cache": "configure a multimodal model with static KV cache and a maximum sequence length for generation"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/tasks/object_detection.py": {
+    "load_object_detection_model_hub": "load a pretrained object detection model from Hugging Face Hub and wrap it for ExecuTorch export",
+    "load_object_detection_model_local": "load a local object detection model from disk path and prepare it for ExecuTorch lowering",
+    "load_object_detection_with_image_size": "load an object detection model with a required image_size parameter for export to ExecuTorch",
+    "load_object_detection_with_channels": "load an object detection model with custom num_channels configuration for export",
+    "register_object_detection_task": "register an object detection model loading function under the task name object-detection using the register_task decorator"
+  },
+  "huggingface_optimum-executorch/optimum/exporters/executorch/tasks/seq2seq_lm.py": {
+    "load_seq2seq_model_t5": "load a T5 seq2seq language model from google-t5/t5-small for text2text generation using AutoModelForSeq2SeqLM",
+    "load_seq2seq_model_custom_path": "load a seq2seq language model from a local model folder path for conditional text generation",
+    "load_seq2seq_model_custom_seq_len": "load a seq2seq model with custom max_hidden_seq_len and max_seq_len kwargs for export to ExecuTorch",
+    "export_seq2seq_to_executorch": "create a Seq2SeqLMExportableModule from a pretrained seq2seq model ready for lowering to ExecuTorch",
+    "register_seq2seq_task": "register a text2text-generation task using the register_task decorator for dynamic task discovery"
+  },
+  "huggingface_optimum-executorch/tests/utils.py": {
+    "check_causal_lm_perplexity": "check the perplexity of generated tokens from a causal language model against a threshold",
+    "check_multimodal_perplexity": "check the perplexity of generated tokens from a multimodal model using a conversation input",
+    "compare_eager_exported_outputs": "recursively compare eager mode outputs with exported model outputs using tolerance thresholds",
+    "test_causal_lm_quality": "test a causal LM output quality by loading a pretrained model and computing perplexity",
+    "test_multimodal_quality": "test a multimodal model output quality by processing conversation inputs and computing perplexity"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_albert.py": {
+    "run_albert_export_to_executorch": "run the test_albert_export_to_executorch test to export an ALBERT model to ExecuTorch format using optimum-cli",
+    "run_albert_fill_mask_test": "run the test_albert_fill_mask test to verify ALBERT fill-mask inference with the xnnpack recipe",
+    "run_albert_fill_mask_portable_test": "run the test_albert_fill_mask_portable test to verify ALBERT fill-mask inference with the portable recipe",
+    "test_albert_fill_mask_helper": "test the _helper_albert_fill_mask method to load an ALBERT model and run fill-mask inference via ExecuTorch",
+    "review_executormodelintegrationtest_class": "review the ExecuTorchModelIntegrationTest class and its methods for ALBERT model export and fill-mask inference testing"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_bert.py": {
+    "export_bert_to_executorch": "run optimum-cli to export a bert-base-uncased model to ExecuTorch format using the xnnpack recipe",
+    "export_bert_quantized": "run optimum-cli to export a quantized bert model to ExecuTorch with 8da4w linear quantization",
+    "test_bert_fill_mask_xnnpack": "run the fill-mask test for bert using the xnnpack recipe with ExecuTorchModelForMaskedLM",
+    "test_bert_fill_mask_portable": "run the fill-mask test for bert using the portable recipe with ExecuTorchModelForMaskedLM",
+    "run_bert_inference_helper": "run the helper method to load bert via ExecuTorchModelForMaskedLM and perform fill-mask inference"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_codegen.py": {
+    "test_codegen_text_generation": "test the CodeGen-350M-mono model text generation with ExecuTorch 8da4w quantization and xnnpack recipe",
+    "run_codegen_integration_test": "run the ExecuTorchModelIntegrationTest to validate CodeGen causal LM output quality on ExecuTorch",
+    "test_executorch_model_from_pretrained": "test loading a CodeGen model via ExecuTorchModelForCausalLM.from_pretrained with quantization settings",
+    "test_text_generation_method": "test the text_generation method on an ExecuTorch causal LM model with a prompt and max sequence length",
+    "test_causal_lm_output_quality": "test causal LM output quality by comparing generated tokens against the original model using check_causal_lm_output_quality"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_common.py": {
+    "run_export_cli_help": "run the optimum-cli export executorch command with the help flag to verify it works",
+    "test_load_cached_model_from_hub": "test loading a cached ExecuTorch model from the HuggingFace Hub using from_pretrained with a recipe",
+    "test_load_et_model_from_hub": "test loading an ExecuTorch model from the HuggingFace Hub by revision including subfolder revisions",
+    "test_export_and_load_local": "test exporting a model to a local directory with main_export then loading it with from_pretrained",
+    "test_find_files_matching_pattern": "test finding .pte files matching a pattern on the HuggingFace Hub or a local directory"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_cvt.py": {
+    "test_cvt_export_to_executorch": "test exporting the microsoft/cvt-13 model to ExecuTorch format using optimum-cli with the xnnpack recipe",
+    "test_cvt_image_classification": "test CVT image classification inference using the ExecuTorch xnnpack recipe and compare outputs with eager PyTorch",
+    "test_cvt_image_classification_portable": "test CVT image classification inference using the ExecuTorch portable recipe and compare outputs with eager PyTorch",
+    "run_helper_cvt_image_classification": "run the helper method to load a CVT model via ExecuTorchModelForImageClassification and validate forward pass outputs",
+    "review_ExecuTorchModelIntegrationTest": "review the ExecuTorchModelIntegrationTest class and its methods for testing CVT model export and inference"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_deit.py": {
+    "test_deit_export_to_executorch": "run the test_deit_export_to_executorch test to export a DeiT model to ExecuTorch format using optimum-cli",
+    "test_deit_image_classification_xnnpack": "run the test_deit_image_classification test to verify DeiT image classification with the xnnpack recipe",
+    "test_deit_image_classification_portable": "run the test_deit_image_classification_portable test to verify DeiT image classification with the portable recipe",
+    "run_helper_deit_image_classification": "run the helper_deit_image_classification method to load a DeiT model via ExecuTorchModelForImageClassification and compare outputs",
+    "review_ExecuTorchModelIntegrationTest": "review the ExecuTorchModelIntegrationTest class and its test methods for DeiT model export and inference validation"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_detr.py": {
+    "test_detr_export_to_executorch": "test exporting a detr-resnet-50 model to ExecuTorch format using optimum-cli and the xnnpack recipe",
+    "test_detr_object_detection": "test object detection with a detr-resnet-50 model lowered to ExecuTorch using the xnnpack recipe",
+    "test_detr_object_detection_portable": "test object detection with a detr-resnet-50 model lowered to ExecuTorch using the portable recipe",
+    "run_helper_detr_object_detection": "run the helper to load a detr model via ExecuTorchModelForObjectDetection and compare outputs against eager PyTorch",
+    "review ExecuTorchModelIntegrationTest": "review the ExecuTorchModelIntegrationTest class and its methods for testing DETR object detection model export and inference"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_distilbert.py": {
+    "run_distilbert_export_test": "run the test that exports distilbert-base-uncased to an ExecuTorch .pte model via optimum-cli",
+    "run_distilbert_fill_mask_test": "run the fill-mask inference test for distilbert using the xnnpack ExecuTorch recipe",
+    "run_distilbert_fill_mask_portable_test": "run the fill-mask inference test for distilbert using the portable ExecuTorch recipe",
+    "test_executormodel_integration": "test the ExecuTorchModelForMaskedLM integration by loading distilbert and running masked language model inference",
+    "review_distilbert_executormodel_tests": "review the distilbert ExecuTorch integration test class and its fill-mask test methods"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_dit.py": {
+    "run_dit_export_to_executorch": "run the test_dit_export_to_executorch test to export a DIT model to ExecuTorch format using optimum-cli",
+    "run_dit_image_classification_test": "run the test_dit_image_classification test to verify DIT model image classification with the xnnpack recipe",
+    "run_dit_image_classification_portable_test": "run the test_dit_image_classification_portable test to verify DIT model image classification with the portable recipe",
+    "test_helper_dit_image_classification": "test the _helper_dit_image_classification method to compare eager model outputs with ExecuTorch model outputs",
+    "review_executormodelintegrationtest_class": "review the ExecuTorchModelIntegrationTest class and its methods for testing DIT model export and inference"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_efficientnet.py": {
+    "test_efficientnet_export_cli": "run the optimum-cli to export an efficientnet model to executorch format with xnnpack recipe",
+    "test_efficientnet_image_classification_xnnpack": "test efficientnet image classification using the xnnpack recipe and compare outputs with eager pytorch",
+    "test_efficientnet_image_classification_portable": "test efficientnet image classification using the portable recipe and compare outputs with eager pytorch",
+    "run_helper_efficientnet_classification": "run the helper method to load an efficientnet model and verify executorch forward pass outputs",
+    "review_integration_test_class": "review the ExecuTorchModelIntegrationTest class and its test methods for efficientnet model validation"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_focalnet.py": {
+    "export_focalnet_to_executorch": "run optimum-cli to export a focalnet model to executorch format with xnnpack recipe",
+    "test_focalnet_image_classification_xnnpack": "test focalnet image classification by comparing eager pytorch output against executorch xnnpack output",
+    "test_focalnet_image_classification_portable": "test focalnet image classification by comparing eager pytorch output against executorch portable output",
+    "load_focalnet_executorch_model": "load a focalnet model from huggingface and lower it to executorch using ExecuTorchModelForImageClassification",
+    "compare_eager_vs_executorch_outputs": "compare eager pytorch model logits against executorch model forward pass outputs using check_close_recursively"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_gemma.py": {
+    "export_gemma_to_executorch": "run optimum-cli to export a Gemma model to ExecuTorch format with xnnpack recipe and quantization",
+    "load_gemma_executorch_model": "load a Gemma model from HuggingFace using ExecuTorchModelForCausalLM.from_pretrained with custom_sdpa and quantization",
+    "generate_text_gemma_executorch": "generate text with a loaded ExecuTorch Gemma model using the text_generation method and a tokenizer",
+    "load_gemma_portable_executorch": "load a Gemma model using ExecuTorchModelForCausalLM.from_pretrained with the portable recipe for text generation",
+    "test_gemma_executorch_integration": "run the ExecuTorchModelIntegrationTest suite to verify Gemma model export and text generation with ExecuTorch"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_gemma2.py": {
+    "run_gemma2_export_to_executorch": "run the test to export a gemma-2 model to ExecuTorch format using the xnnpack recipe",
+    "run_gemma2_text_generation_custom_sdpa": "run the test for gemma-2 text generation with custom sdpa and 8da4w linear quantization",
+    "run_gemma2_text_generation_portable": "run the test for gemma-2 text generation using the portable ExecuTorch recipe",
+    "test_ExecuTorchModelIntegrationTest": "test the ExecuTorchModelIntegrationTest class to verify gemma-2 model export and text generation",
+    "review_ExecuTorchModelIntegrationTest": "review the ExecuTorchModelIntegrationTest class and its gemma-2 model export and generation test methods"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_gemma3.py": {
+    "run_gemma3_export_to_executorch": "run the test_gemma3_export_to_executorch test to export a Gemma 3 model to ExecuTorch PTE format",
+    "run_gemma3_text_generation": "run the test_gemma3_text_generation test to verify text generation with the xnnpack recipe",
+    "run_gemma3_text_generation_portable": "run the test_gemma3_text_generation_portable test to verify text generation with the portable recipe",
+    "run_gemma3_multimodal_vision": "run the test_gemma3_image_vision_with_custom_sdpa_kv_cache_8da4w_8we test for multimodal image-to-text generation",
+    "run_gemma3_270m_text_generation": "run the test_gemma3_270m_text_generation_with_custom_sdpa_8da4w_8we test for the smaller 270M Gemma 3 model"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_glm.py": {
+    "run_glm_edge_text_generation": "run the GLM edge 1.5b chat model text generation test with ExecuTorch and custom SDPA attention",
+    "test_executorch_causal_lm_loading": "test loading ExecuTorchModelForCausalLM from pretrained with xnnpack recipe and 8da4w quantization",
+    "test_custom_kv_cache_generation": "test text generation with custom KV cache and 8-bit weight quantization on the GLM model",
+    "test_causal_lm_output_quality": "test the causal LM output quality check using check_causal_lm_output_quality on generated tokens",
+    "review_executorch_integration_test": "review the ExecuTorchModelIntegrationTest class and its GLM text generation integration test method"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_gpt2.py": {
+    "run_gpt2sw3_text_generation_test": "run the integration test for gpt-sw3-126m text generation with custom sdpa and kv cache quantization",
+    "test_executorch_model_from_pretrained": "test loading a gpt-sw3 model via ExecuTorchModelForCausalLM.from_pretrained with xnnpack recipe and 8da4w quantization",
+    "test_text_generation_with_kv_cache": "test text generation using model.text_generation with a tokenizer prompt and max sequence length of 64",
+    "test_causal_lm_output_quality": "test the causal LM output quality by checking generated tokens against the original model using check_causal_lm_output_quality",
+    "test_executorch_module_instance": "test that the loaded model is an ExecuTorchModelForCausalLM and its inner model is an ExecuTorchModule"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_gptj.py": {
+    "test_gptj_text_generation_with_8da4w_8we": "test GPT-J text generation with 8da4w quantization and 8w embeddings using ExecuTorch",
+    "run ExecuTorchModelForCausalLM_from_pretrained": "run ExecuTorchModelForCausalLM.from_pretrained to load a GPT-J model with xnnpack recipe and quantization settings",
+    "run model_text_generation": "run model.text_generation to generate text from a prompt with a tokenizer and max sequence length",
+    "run check_causal_lm_output_quality": "run check_causal_lm_output_quality to validate generated tokens against a reference model",
+    "test ExecuTorchModelIntegrationTest": "test the ExecuTorchModelIntegrationTest class to verify GPT-J model integration with ExecuTorch quantization"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_gptneox.py": {
+    "run_gptneox_integration_test": "run the ExecuTorchModelIntegrationTest to validate GPT-NeoX text generation with quantization",
+    "test_text_generation_8da4w_8w": "test GPT-NeoX text generation with 8da4w linear and 8w embedding quantization",
+    "test_custom_sdpa_kv_cache": "test text generation using custom SDPA attention and custom KV cache on ExecuTorch",
+    "review_ExecuTorchModelIntegrationTest": "review the ExecuTorchModelIntegrationTest class and its GPT-NeoX integration test methods",
+    "test_check_causal_lm_output_quality": "test the check_causal_lm_output_quality function to validate generated token quality"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_gptneoxjapanese.py": {
+    "test_gptneoxjapanese_text_generation": "run the gptneoxjapanese text generation integration test with 8da4w 8w quantization using xnnpack recipe",
+    "run_executorch_causal_lm_test": "run the ExecuTorchModelForCausalLM integration test for the abeja gpt-neox-japanese-2.7b model",
+    "test_text_generation_quality": "test causal LM output quality by comparing generated tokens against the reference model",
+    "review_executorch_model_integration": "review the ExecuTorchModelIntegrationTest class and its gptneoxjapanese text generation test method",
+    "test_quantized_model_inference": "test quantized model inference with 8da4w linear and 8w embedding quantization on ExecuTorch"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_granite.py": {
+    "run_granite_text_generation_test": "run the granite text generation integration test with custom sdpa and kv cache quantization",
+    "test_executorch_model_for_causal_lm": "test ExecuTorchModelForCausalLM from_pretrained with xnnpack recipe and 8da4w 8w quantization settings",
+    "test_text_generation_method": "test the text_generation method on an ExecuTorchModelForCausalLM with a prompt and max sequence length",
+    "test_causal_lm_output_quality": "test causal LM output quality by checking generated tokens against the original model",
+    "test_custom_sdpa_kv_cache": "test granite model text generation using custom_sdpa attention implementation and custom kv cache"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_granite_speech.py": {
+    "test_granite_speech_multimodal_generation": "test the granite speech model multimodal audio to text generation with ExecuTorch quantized model",
+    "run_audio_transcription_test": "run the granite speech audio transcription test using ExecuTorchModelForMultiModalToText with custom SDPA KV cache",
+    "test_multimodal_output_quality": "test multimodal output quality using check_multimodal_output_quality with a perplexity threshold",
+    "load_quantized_granite_speech_model": "load a quantized granite speech model using ExecuTorchModelForMultiModalToText with 8da4w linear and 4w embedding quantization",
+    "generate_text_from_audio_conversation": "generate text from an audio conversation using the granite speech model text_generation method"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_llama.py": {
+    "export_llama_to_executorch": "run optimum-cli to export a Llama model to ExecuTorch PTE format with xnnpack recipe and quantization",
+    "test_llama_custom_sdpa_generation": "test Llama text generation using ExecuTorch with custom SDPA and 8da4w linear quantization",
+    "test_llama_custom_kv_cache_generation": "test Llama text generation using ExecuTorch with custom SDPA and custom KV cache enabled",
+    "test_llama_portable_generation": "test Llama text generation using ExecuTorch with the portable recipe for cross-platform compatibility",
+    "check_causal_lm_output_quality": "check the output quality of a causal language model by comparing generated tokens against a reference"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_mistral.py": {
+    "run_mistral_executorch_test": "run the integration test for Mistral text generation with ExecuTorch quantization and custom SDPA",
+    "test_text_generation_8da4w": "test Mistral text generation with 8da4w linear and 8w embedding quantization via ExecuTorch",
+    "test_custom_kv_cache": "test the custom KV cache implementation for ExecuTorchModelForCausalLM with the Ministral model",
+    "review_integration_test": "review the ExecuTorchModelIntegrationTest class and its Mistral text generation test method",
+    "summarize_test_mistral": "summarize the Mistral ExecuTorch integration test for quantized causal language model text generation"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_mobilevit.py": {
+    "test_mobilevit_export_to_executorch": "run the test that exports apple/mobilevit-xx-small to an ExecuTorch .pte file using optimum-cli",
+    "test_mobilevit_image_classification_xnnpack": "run the test that loads apple/mobilevit-xx-small via ExecuTorchModelForImageClassification with the xnnpack recipe and compares outputs",
+    "test_mobilevit_image_classification_portable": "run the test that loads apple/mobilevit-xx-small via ExecuTorchModelForImageClassification with the portable recipe and compares outputs",
+    "review_helper_mobilevit_image_classification": "review the helper method that loads a MobileViT model, runs inference via ExecuTorch, and validates logits against eager PyTorch",
+    "refactor_executormodelintegrationtest": "refactor the ExecuTorchModelIntegrationTest class to add new MobileViT model variants or recipes"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_mobilevit2.py": {
+    "test_mobilevit2_export_to_executorch": "run the test that exports apple/mobilevitv2-1.0-imagenet1k-256 to an ExecuTorch .pte file via optimum-cli",
+    "test_mobilevit2_image_classification_xnnpack": "run the test that loads mobilevitv2 via ExecuTorchModelForImageClassification with the xnnpack recipe and compares outputs",
+    "test_mobilevit2_image_classification_portable": "run the test that loads mobilevitv2 via ExecuTorchModelForImageClassification with the portable recipe and compares outputs",
+    "test_helper_mobilevit2_image_classification": "run the helper method that loads a pretrained model, runs inference, and validates logits against eager PyTorch",
+    "review_mobilevit2_integration_tests": "review the ExecuTorchModelIntegrationTest class and its methods for mobilevitv2 image classification testing"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_olmo.py": {
+    "run_olmo_export_to_executorch": "run the optimum-cli to export an OLMo model to ExecuTorch format with xnnpack recipe",
+    "run_olmo_text_generation_xnnpack": "run text generation with the OLMo model using the xnnpack ExecuTorch recipe",
+    "run_olmo_text_generation_custom_sdpa": "run text generation with OLMo using custom SDPA and 8da4w linear quantization",
+    "run_olmo_text_generation_kv_cache": "run text generation with OLMo using custom SDPA and a custom KV cache",
+    "run_olmo_text_generation_portable": "run text generation with the OLMo model using the portable ExecuTorch recipe"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_phi.py": {
+    "run_phi_executorch_text_generation_test": "run the phi model text generation integration test with custom sdpa and kv cache quantization",
+    "test_executorch_model_from_pretrained": "test loading a phi model via ExecuTorchModelForCausalLM.from_pretrained with xnnpack recipe and 8da4w quantization",
+    "test_text_generation_with_quantization": "test text generation on a quantized ExecuTorch causal LM model with a prompt and max sequence length",
+    "test_causal_lm_output_quality": "test the causal LM output quality by checking generated tokens against the original model",
+    "review_executorch_integration_test": "review the ExecuTorchModelIntegrationTest class and its phi text generation test method"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_phi4.py": {
+    "run_phi4_text_generation_xnnpack": "run phi4-mini-instruct text generation with xnnpack recipe and 8da4w quantization using custom sdpa and kv cache",
+    "run_phi4_text_generation_quantized_pte": "run phi4-mini-instruct text generation from a pre-quantized PTE file on the hub with xnnpack recipe",
+    "run_phi4_text_generation_portable": "run phi4-mini-instruct text generation with the portable recipe for ExecuTorchModelForCausalLM",
+    "test_phi4_custom_sdpa_kv_cache": "test phi4-mini-instruct model with custom sdpa attention and custom kv cache for 8-bit quantization",
+    "test_phi4_quantized_ckp_export": "test phi4-mini-instruct model export with quantized checkpoint using xnnpack recipe and rope scaling config"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_pvt.py": {
+    "test_pvt_export_to_executorch": "run the test_pvt_export_to_executorch test to export a PVT model to ExecuTorch via optimum-cli",
+    "test_pvt_image_classification": "run the test_pvt_image_classification test to validate PVT image classification with the xnnpack recipe",
+    "test_pvt_image_classification_portable": "run the test_pvt_image_classification_portable test to validate PVT image classification with the portable recipe",
+    "run_helper_pvt_image_classification": "run the helper method to load a PVT model, lower it to ExecuTorch, and compare outputs",
+    "review_executormodelintegrationtest": "review the ExecuTorchModelIntegrationTest class and its test methods for PVT model validation"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_qwen2.py": {
+    "export_qwen2_5_to_executorch": "run optimum-cli to export Qwen2.5-0.5B model to ExecuTorch format with xnnpack recipe",
+    "load_qwen2_5_executorch_model": "load a Qwen2.5-0.5B model from HuggingFace using ExecuTorchModelForCausalLM with a specified recipe",
+    "generate_text_with_qwen2_5": "run text generation with Qwen2.5-0.5B ExecuTorch model using a prompt and max sequence length",
+    "test_qwen2_5_portable_recipe": "run text generation test with Qwen2.5-0.5B using the portable ExecuTorch recipe",
+    "test_qwen2_5_custom_sdpa": "run text generation test with Qwen2.5-0.5B using custom SDPA attention implementation"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_qwen3.py": {
+    "run_qwen3_export_to_executorch": "run the test to export Qwen3-0.6B to ExecuTorch using the xnnpack recipe via optimum-cli",
+    "run_qwen3_text_generation": "run the test for Qwen3 text generation using the xnnpack recipe with ExecuTorchModelForCausalLM",
+    "run_qwen3_text_generation_portable": "run the test for Qwen3 text generation using the portable recipe with ExecuTorch",
+    "run_qwen3_custom_sdpa_generation": "run the test for Qwen3 text generation with custom SDPA attention implementation",
+    "run_qwen3_kv_cache_quantized": "run the test for Qwen3 text generation with custom KV cache and 8da4w linear quantization"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_qwen3_embedding.py": {
+    "run_qwen3_embedding_xnnpack_test": "run the qwen3 embedding text generation test with xnnpack recipe custom sdpa and kv cache",
+    "run_qwen3_embedding_portable_test": "run the qwen3 embedding text generation test with the portable recipe",
+    "test_executorch_causal_lm_from_pretrained": "test loading a qwen3 embedding model via executorchmodelforcausallm from_pretrained with quantization settings",
+    "test_text_generation_with_custom_kv_cache": "test text generation using a custom kv cache and 8da4w 8w quantization on qwen3 embedding",
+    "test_causal_lm_output_quality": "test causal lm output quality by comparing generated tokens against the reference model"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_roberta.py": {
+    "test_roberta_export_to_executorch": "test exporting a xlm-roberta-base model to ExecuTorch format using the optimum-cli export command",
+    "test_roberta_fill_mask": "test fill-mask inference on a xlm-roberta-base model loaded via ExecuTorchModelForMaskedLM with the xnnpack recipe",
+    "test_roberta_fill_mask_portable": "test fill-mask inference on a xlm-roberta-base model loaded via ExecuTorchModelForMaskedLM with the portable recipe",
+    "run_helper_roberta_fill_mask": "run the helper method that loads a RoBERTa model, tokenizes input text, and validates fill-mask predictions",
+    "review_ExecuTorchModelIntegrationTest": "review the ExecuTorchModelIntegrationTest class and its integration test methods for RoBERTa fill-mask tasks"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_smollm.py": {
+    "test_smollm_export_to_executorch": "run the test to export SmolLM2-135M to ExecuTorch format using the xnnpack recipe via optimum-cli",
+    "test_smollm_text_generation": "run the test for SmolLM2-135M text generation using the xnnpack ExecuTorch recipe",
+    "test_smollm_text_generation_portable": "run the test for SmolLM2-135M text generation using the portable ExecuTorch recipe",
+    "test_smollm_text_generation_with_custom_sdpa": "run the test for SmolLM2-135M text generation with custom SDPA attention implementation",
+    "test_smollm_text_generation_with_custom_sdpa_8da4w_8we": "run the test for SmolLM2-135M text generation with 8da4w linear and 8w embedding quantization"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_smollm3.py": {
+    "run_smollm3_text_generation_xnnpack": "run text generation with SmolLM3-3B using ExecuTorch XNNPack recipe and 8-bit quantization",
+    "run_smollm3_text_generation_portable": "run text generation with SmolLM3-3B using the ExecuTorch portable recipe",
+    "test_executorch_model_integration": "test the ExecuTorchModelForCausalLM integration with SmolLM3-3B model for text generation",
+    "test_custom_sdpa_kv_cache": "test SmolLM3-3B text generation with custom SDPA attention and custom KV cache enabled",
+    "check_causal_lm_output_quality": "check the output quality of a causal language model by comparing generated tokens"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_starcoder2.py": {
+    "test_starcoder2_text_generation": "run the starcoder2 text generation integration test with custom sdpa and kv cache quantization",
+    "run_executorch_causal_lm": "run text generation with ExecuTorchModelForCausalLM using the xnnpack recipe and 8da4w quantization",
+    "test_custom_sdpa_kv_cache": "test starcoder2-3b model with custom sdpa attention and custom kv cache enabled",
+    "check_causal_lm_output_quality": "check the output quality of generated causal LM tokens against the reference model",
+    "load_executorch_model_from_pretrained": "load a starcoder2 model from pretrained using ExecuTorchModelForCausalLM with quantization settings"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_swin.py": {
+    "run_swin_export_to_executorch": "run the test_swin_export_to_executorch test to export a Swin model to ExecuTorch via optimum-cli",
+    "run_swin_image_classification_xnnpack": "run the test_swin_image_classification test to verify Swin image classification with the xnnpack recipe",
+    "run_swin_image_classification_portable": "run the test_swin_image_classification_portable test to verify Swin image classification with the portable recipe",
+    "review_helper_swin_image_classification": "review the _helper_swin_image_classification method that loads a Swin ExecuTorch model and compares outputs against eager PyTorch",
+    "test_swin_executorch_integration": "test the ExecuTorchModelIntegrationTest class to validate Swin model export and inference on ExecuTorch"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_t5.py": {
+    "export_t5_to_executorch": "export a t5-small model to ExecuTorch format using optimum-cli with the xnnpack recipe",
+    "run_t5_translation": "run English to German translation using flan-t5-small loaded via ExecuTorchModelForSeq2SeqLM",
+    "run_t5_summarization": "run text summarization using t5-small loaded via ExecuTorchModelForSeq2SeqLM with the xnnpack recipe",
+    "load_t5_model": "load a pretrained T5 model for text2text generation using ExecuTorchModelForSeq2SeqLM.from_pretrained",
+    "test_t5_portable_recipe": "test T5 translation and summarization using the portable recipe with executorch version 0.7.0 or higher"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_vit.py": {
+    "test_vit_export_to_executorch": "run the test_vit_export_to_executorch method to export a ViT model to ExecuTorch format using optimum-cli",
+    "test_vit_image_classification": "run the test_vit_image_classification method to test ViT image classification with the xnnpack recipe",
+    "test_vit_image_classification_portable": "run the test_vit_image_classification_portable method to test ViT image classification with the portable recipe",
+    "test_vit_image_classification_coreml_fp32_cpu": "run the test_vit_image_classification_coreml_fp32_cpu method to test ViT image classification with coreml_fp32_cpu recipe on MacOS",
+    "test_helper_vit_image_classification": "run the _helper_vit_image_classification method to load a ViT model and compare eager and ExecuTorch outputs"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_voxtral.py": {
+    "test_voxtral_audio_text_generation_exported_program": "test Voxtral audio-to-text generation using load_multimodal_text_to_text_model with custom SDPA and KV cache via ExportedProgram",
+    "test_voxtral_split_prefill_generation": "test Voxtral audio-to-text generation with split prefill processing metadata tokens audio embeddings and prompt embeddings separately",
+    "test_voxtral_pte_multimodal_generation": "test Voxtral multimodal text generation using ExecuTorchModelForMultiModalToText with xnnpack recipe and custom quantization settings",
+    "test_voxtral_export_cuda_recipe": "test exporting Voxtral model to ExecuTorch CUDA recipe using optimum-cli with bfloat16 dtype and max sequence length",
+    "test_voxtral_export_metal_recipe": "test exporting Voxtral model to ExecuTorch Metal recipe using optimum-cli for MPS backend with bfloat16 dtype"
+  },
+  "huggingface_optimum-executorch/tests/models/test_modeling_whisper.py": {
+    "test_whisper_export_to_executorch": "run the test_whisper_export_to_executorch method to export whisper-tiny to ExecuTorch via optimum-cli and verify transcription",
+    "test_test_whisper_transcription": "run the _test_whisper_transcription method to transcribe audio from the librispeech dataset using a loaded ExecuTorch model",
+    "test_helper_whisper_transcription": "run the _helper_whisper_transcription method to load a whisper-tiny model with a given recipe and test transcription",
+    "test_whisper_transcription": "run the test_whisper_transcription method to test whisper-tiny transcription using the xnnpack recipe",
+    "test_whisper_large_v3_turbo_export_bfloat16": "run the test_whisper_large_v3_turbo_export_bfloat16 method to export whisper-large-v3-turbo with bfloat16 and verify file size"
+  }
+}

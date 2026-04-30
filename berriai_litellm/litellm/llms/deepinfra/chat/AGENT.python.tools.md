@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/deepinfra/chat/transformation.py
+
+Prompts
+
+```
+['create a DeepInfraConfig instance with custom parameters like max_tokens, temperature, and tools', 'build a list of supported OpenAI parameters for a DeepInfra model including reasoning_effort when applicable', 'map OpenAI parameters to DeepInfra-compatible format with tool_choice validation and max_completion_tokens translation', 'transform tool message content from array format to string format for DeepInfra API compatibility', 'transform chat messages for DeepInfra compatibility handling both sync and async message transformations']
+```
+
+Usage
+
+```
+{'create_deepinfra_config': 'create a DeepInfraConfig instance with custom parameters like max_tokens, temperature, and tools', 'build_supported_openai_params': 'build a list of supported OpenAI parameters for a DeepInfra model including reasoning_effort when applicable', 'map_openai_params': 'map OpenAI parameters to DeepInfra-compatible format with tool_choice validation and max_completion_tokens translation', 'transform_tool_message_content': 'transform tool message content from array format to string format for DeepInfra API compatibility', 'transform_messages': 'transform chat messages for DeepInfra compatibility handling both sync and async message transformations'}
+```
+

@@ -1,0 +1,65 @@
+{
+  "huggingface_speechbox/setup.py": {
+    "run_deps_table_update": "run python setup.py deps_table_update to regenerate the dependency versions table",
+    "build_wheel": "run python setup.py bdist_wheel to build a wheel distribution for the speechbox package",
+    "build_source_distribution": "run python setup.py sdist to build a source distribution tarball for the speechbox package",
+    "deps_list_function": "call deps_list with package names to get their versioned dependency strings from the deps table",
+    "review_deps_dict": "review the deps dictionary to check versioned dependency mappings for the speechbox package"
+  },
+  "huggingface_speechbox/examples/restore.py": {
+    "restore_punctuation_from_audio": "restore punctuation to transcribed audio text using a whisper model and PunctuationRestorer",
+    "load_punctuation_restorer_model": "load a PunctuationRestorer model from a pretrained checkpoint like openai/whisper-tiny.en",
+    "map_restore_over_dataset": "map the restore function over a HuggingFace dataset to batch process audio transcripts",
+    "export_transcripts_to_csv": "export original and restored transcripts with probabilities to a CSV file",
+    "upload_transcripts_to_hf_hub": "upload a transcripts CSV file to a HuggingFace Hub dataset repository"
+  },
+  "huggingface_speechbox/src/speechbox/diarize.py": {
+    "build_asr_diarization_pipeline": "build a speaker diarization pipeline using ASRDiarizationPipeline.from_pretrained with whisper and pyannote models",
+    "run_speaker_transcription": "run the ASRDiarizationPipeline on an audio file to get speaker-labeled transcriptions with timestamps",
+    "transcribe_audio_with_speakers": "transcribe audio and group consecutive utterances by speaker using the group_by_speaker parameter",
+    "preprocess_audio_input": "preprocess audio inputs from file paths bytes or numpy arrays for ASR and diarization",
+    "configure_asr_diarization_kwargs": "configure ASR and diarization parameters using asr_ and diarization_ prefixed keyword arguments"
+  },
+  "huggingface_speechbox/src/speechbox/restore.py": {
+    "restore_punctuation_audio_transcript": "restore punctuation and capitalization in a speech transcript using a Whisper model and audio input",
+    "load_punctuation_restorer_pretrained": "load a PunctuationRestorer from a pretrained Whisper model checkpoint path",
+    "set_language_punctuation_restorer": "set the language for the PunctuationRestorer model using forced decoder IDs",
+    "get_punctuation_tokens": "get the list of punctuation token IDs from the Whisper tokenizer",
+    "convert_words_to_tokens": "convert a list of words into their corresponding Whisper tokenizer token IDs"
+  },
+  "huggingface_speechbox/src/speechbox/utils/dummy_transformers_and_accelerate_and_scipy_objects.py": {
+    "init_PunctuationRestorer": "instantiate a PunctuationRestorer object that requires transformers accelerate and scipy backends",
+    "from_config_PunctuationRestorer": "create a PunctuationRestorer from a configuration using the from_config class method",
+    "from_pretrained_PunctuationRestorer": "load a pretrained PunctuationRestorer model using the from_pretrained class method",
+    "review_PunctuationRestorer": "review the PunctuationRestorer dummy class and its backend requirements for transformers accelerate and scipy",
+    "summarize_PunctuationRestorer": "summarize the PunctuationRestorer class structure and its three class methods for model loading"
+  },
+  "huggingface_speechbox/src/speechbox/utils/dummy_transformers_and_torchaudio_and_pyannote_objects.py": {
+    "init_ASRDiarizationPipeline": "initialize an ASRDiarizationPipeline instance that requires transformers, torchaudio, and pyannote.audio backends",
+    "from_config_ASRDiarizationPipeline": "create an ASRDiarizationPipeline from a configuration file using the from_config class method",
+    "from_pretrained_ASRDiarizationPipeline": "load a pretrained ASRDiarizationPipeline model using the from_pretrained class method",
+    "review_ASRDiarizationPipeline": "review the ASRDiarizationPipeline class that acts as a dummy object requiring multiple audio backends",
+    "summarize_ASRDiarizationPipeline": "summarize the ASRDiarizationPipeline stub class that validates transformers, torchaudio, and pyannote.audio dependencies"
+  },
+  "huggingface_speechbox/src/speechbox/utils/dummy_transformers_objects.py": {
+    "init_PunctuationRestorer": "instantiate a PunctuationRestorer object that requires the transformers backend to be available",
+    "from_config_PunctuationRestorer": "create a PunctuationRestorer from a config using the from_config class method",
+    "from_pretrained_PunctuationRestorer": "load a pretrained PunctuationRestorer model using the from_pretrained class method",
+    "review_PunctuationRestorer": "review the PunctuationRestorer dummy class and its transformers backend dependency",
+    "summarize_PunctuationRestorer": "summarize the PunctuationRestorer class structure and its three available methods"
+  },
+  "huggingface_speechbox/src/speechbox/utils/import_utils.py": {
+    "check_transformers_available": "check if the transformers library is available in the current python environment",
+    "check_torchaudio_available": "check if the torchaudio library is available in the current python environment",
+    "requires_backends_validate": "validate that required backend libraries like scipy or accelerate are installed before use",
+    "create_dummyobject_metaclass": "create a metaclass that raises ImportError when a missing backend dependency is accessed",
+    "review_backends_mapping": "review the BACKENDS_MAPPING OrderedDict to see which optional backends are registered and their error messages"
+  },
+  "huggingface_speechbox/utils/check_dummies.py": {
+    "run_check_dummies": "run the check_dummies script to verify dummy files are up to date with the main init",
+    "run_check_dummies_overwrite": "run the check_dummies script with fix_and_overwrite to update stale dummy files automatically",
+    "create_dummy_object": "create a dummy class constant or function stub for a given name and backend",
+    "create_dummy_files": "create the content of all dummy files from backend-specific objects parsed from init",
+    "read_init": "read the speechbox init file and extract backend-specific objects grouped by availability checks"
+  }
+}

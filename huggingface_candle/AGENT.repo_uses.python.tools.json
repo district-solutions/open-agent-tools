@@ -1,0 +1,142 @@
+{
+  "huggingface_candle/candle-examples/examples/marian-mt/python/convert_slow_tokenizer.py": {
+    "convert_slow_tokenizer_to_fast": "convert a Marian MT slow tokenizer to a fast tokenizer using MarianConverter",
+    "create_marian_converter": "create a MarianConverter instance from a slow tokenizer with a specific sentencepiece index",
+    "build_vocab_from_proto": "build a vocabulary list from protobuf sentencepiece pieces using the vocab method",
+    "save_fast_tokenizer": "save a converted fast Marian tokenizer to a JSON file on disk",
+    "load_marian_tokenizer": "load a Helsinki-NLP Marian MT slow tokenizer from a pretrained model using AutoTokenizer"
+  },
+  "huggingface_candle/candle-examples/examples/reinforcement-learning/atari_wrappers.py": {
+    "wrap_deepmind": "wrap a gymnasium Atari environment with DeepMind-style preprocessing wrappers including frame skipping and reward clipping",
+    "make_env": "create a factory thunk that builds a single wrapped Atari environment with a given seed and rank",
+    "make": "create a vectorized subprocess environment for parallel Atari training with a specified number of processes",
+    "SubprocVecEnv": "build a vectorized environment that runs multiple gym environments in separate subprocesses for parallel sampling",
+    "FrameStack": "create a gymnasium wrapper that stacks k consecutive frames across the channel axis for temporal observation"
+  },
+  "huggingface_candle/candle-examples/examples/yolo-v3/extract-weights.py": {
+    "run_extract_yolo_weights": "run the script to extract YOLO-v3 model weights and save them as a numpy archive file",
+    "review_remove_prefix": "review the remove_prefix function that strips a given prefix from a string if it starts with that prefix",
+    "refactor_remove_prefix": "refactor the remove_prefix function to use str.removeprefix or a more readable string slicing approach",
+    "summarize_weight_extraction": "summarize the script that converts a PyTorch model state dict into a numpy savez archive",
+    "test_remove_prefix": "test the remove_prefix function with strings that have and do not have the specified prefix"
+  },
+  "huggingface_candle/candle-pyo3/e5.py": {
+    "run_bert_inference": "run a BERT model forward pass on tokenized sentences using candle tensors",
+    "quantize_tensors": "quantize model tensors to q4k, q5_0, or q8_0 formats for compression",
+    "save_gguf_model": "save quantized tensors and config to a GGUF file for efficient storage",
+    "load_gguf_model": "load a GGUF model file and reconstruct the BertModel with quantized weights",
+    "compare_model_outputs": "compare candle model output against HuggingFace reference using L1 loss"
+  },
+  "huggingface_candle/candle-pyo3/quant-llama.py": {
+    "run_quantized_llama_inference": "run quantized llama model inference from a GGUF or GGML weight file with greedy sampling",
+    "load_gguf_model": "load a GGUF model file and extract tensors, metadata, and vocabulary using candle utils",
+    "load_ggml_model": "load a GGML model file and extract tensors, hyperparameters, and vocabulary using candle utils",
+    "rename_gguf_tensors": "rename GGUF tensor names to match llama.cpp naming convention using gguf_rename function",
+    "build_quantized_llama_model": "build a QuantizedLlama model instance from hyperparameters and tensor dictionary for inference"
+  },
+  "huggingface_candle/candle-pyo3/stub.py": {
+    "generate_pyi_stubs": "run stub.py to generate .pyi type stub files for the candle Python bindings module",
+    "check_stubs_outdated": "run stub.py with --check flag to verify existing stub files are up to date",
+    "generate_init_py": "generate __init__.py files that re-export all public members from the candle module",
+    "extract_additional_types": "extract class types from a module to use as additional type hints for stub generation",
+    "format_with_black": "format generated stub content using black with Python 3.5 target and 119 character line length"
+  },
+  "huggingface_candle/candle-pyo3/py_src/candle/models/bert.py": {
+    "build_bert_model": "build a BERT model with custom config for sequence classification using candle tensors",
+    "create_bert_embeddings": "create word position and token type embeddings for input sequences using BertEmbeddings",
+    "test_bert_encoder": "test the BertEncoder forward pass with attention mask on hidden states",
+    "refactor_bert_self_attention": "refactor BertSelfAttention to support cross-attention with separate key value inputs",
+    "review_bert_layer": "review the BertLayer class combining attention intermediate and output sublayers"
+  },
+  "huggingface_candle/candle-pyo3/py_src/candle/models/llama.py": {
+    "build_quantized_llama_model": "build a quantized LLaMA model using QuantizedLlama class with hyperparameters and quantized tensors",
+    "create_llama_layer": "create a QuantizedLayer transformer block with attention weights and feed-forward network tensors",
+    "run_llama_forward_pass": "run a forward pass through QuantizedLlama model with token tensor and position index",
+    "precompute_rotary_embeddings": "precompute frequency cosines and sines for rotary positional embeddings using precompute_freqs_cis",
+    "apply_rms_norm": "apply RMS normalization to a tensor using the RmsNorm module with quantized weight"
+  },
+  "huggingface_candle/candle-pyo3/py_src/candle/nn/container.py": {
+    "create_sequential_model": "create a Sequential container that chains modules in order and forwards input through each module",
+    "build_module_list": "build a ModuleList to hold and register submodules in an indexed list",
+    "create_module_dict": "create a ModuleDict to hold and register submodules in an ordered dictionary",
+    "extend_sequential_with_modules": "extend a Sequential container by appending modules from another Sequential or iterable",
+    "update_module_dict": "update a ModuleDict with key-value pairs of string names and module instances"
+  },
+  "huggingface_candle/candle-pyo3/py_src/candle/nn/linear.py": {
+    "create_identity_module": "create an Identity module that passes input tensors through unchanged",
+    "create_linear_layer": "create a Linear layer with specified in_features and out_features for neural networks",
+    "build_linear_without_bias": "build a Linear layer with bias set to False for custom neural network architectures",
+    "test_linear_forward": "test the Linear forward method with a 2D or 3D input tensor",
+    "review_linear_quantized": "review the Linear forward method QTensor quantized matmul implementation"
+  },
+  "huggingface_candle/candle-pyo3/py_src/candle/nn/module.py": {
+    "create_neural_network_module": "create a subclass of candle.nn.Module and override the forward method to define a neural network layer",
+    "add_child_module": "add a child module to a candle.nn.Module instance using add_module with a name and module argument",
+    "save_state_dict": "save the full state of a candle.nn.Module including parameters and buffers to an OrderedDict via state_dict",
+    "load_state_dict": "load parameters and buffers from a state_dict into a candle.nn.Module using load_state_dict with strict mode",
+    "move_module_to_device": "move all parameters and buffers of a candle.nn.Module to cuda or cpu using the to method"
+  },
+  "huggingface_candle/candle-pyo3/py_src/candle/nn/normalization.py": {
+    "create_layernorm_instance": "create a LayerNorm module with a specified normalized_shape and default epsilon value",
+    "create_layernorm_no_bias": "create a LayerNorm module with bias disabled for a given normalized shape",
+    "forward_layernorm": "run the forward pass of a LayerNorm module on an input Tensor",
+    "review_layernorm_forward": "review the LayerNorm forward method to understand the normalization computation steps",
+    "refactor_layernorm_eps": "refactor the LayerNorm class to support a custom epsilon value for numerical stability"
+  },
+  "huggingface_candle/candle-pyo3/py_src/candle/nn/sparse.py": {
+    "create_embedding_layer": "create an Embedding layer with num_embeddings and embedding_dim parameters for word lookup",
+    "initialize_embedding_weights": "initialize embedding weights using candle.randn with shape num_embeddings by embedding_dim",
+    "forward_embedding_lookup": "forward pass indexes through Embedding to retrieve corresponding embedding vectors",
+    "reshape_embedding_output": "reshape embedding output to match input shape with appended embedding dimension",
+    "index_select_embeddings": "use index_select on embedding weights to retrieve embeddings by index tensor"
+  },
+  "huggingface_candle/candle-pyo3/tests/bindings/test_linear.py": {
+    "test_linear_construction": "test that a Linear layer can be constructed with input and output dimensions",
+    "test_linear_forward_singular": "test the Linear layer forward pass with a singular 2D input tensor",
+    "test_linear_forward_batched": "test the Linear layer forward pass with a batched 3D input tensor",
+    "test_quantized_linear_forward_singular": "test a quantized Linear layer forward pass with q4_0 quantization on a singular input",
+    "test_quantized_linear_forward_batched": "test a quantized Linear layer forward pass with q4_0 quantization on a batched input"
+  },
+  "huggingface_candle/candle-pyo3/tests/bindings/test_module.py": {
+    "create_candle_module_subclass": "create a candle.nn.Module subclass that registers tensors and Linear submodules as buffers",
+    "test_module_state_dict": "test that a candle Module can dump and load its state_dict with named tensors",
+    "test_module_quantized_tensors": "test loading quantized Q4_0 tensors into a candle Module via load_state_dict",
+    "test_module_device_transfer": "test moving a candle Module to CUDA and back to CPU with cuda and cpu methods",
+    "test_module_error_handling": "test that load_state_dict raises RuntimeError on shape mismatch or missing keys"
+  },
+  "huggingface_candle/candle-pyo3/tests/bindings/test_testing.py": {
+    "test_assert_equal_tensors": "test that two candle Tensors are exactly equal using assert_equal across multiple dtypes",
+    "test_assert_almost_equal_with_atol": "test that two candle Tensors are approximately equal using assert_almost_equal with absolute tolerance atol",
+    "test_assert_almost_equal_with_rtol": "test that two candle Tensors are approximately equal using assert_almost_equal with relative tolerance rtol",
+    "test_tensor_dtype_conversion": "test creating a candle Tensor and converting it to different dtypes like f32 f64 or u32",
+    "test_assertion_raises_on_mismatch": "test that assert_equal raises an AssertionError when comparing two different candle Tensors"
+  },
+  "huggingface_candle/candle-pyo3/tests/native/test_shape.py": {
+    "test_tensor_shape_validation": "test that candle tensors return correct absolute shapes when created with rand function",
+    "test_tensor_reshape_inferred_dim": "test that candle tensor reshape correctly infers dimensions when using negative one",
+    "test_rand_overflow_error": "test that creating a candle tensor with negative dimensions raises an OverflowError",
+    "test_rand_type_error": "test that creating a candle tensor with non-integer arguments raises a TypeError",
+    "test_reshape_value_error": "test that reshaping a candle tensor with invalid dimensions raises a ValueError"
+  },
+  "huggingface_candle/candle-pyo3/tests/native/test_tensor.py": {
+    "create_tensor_from_data": "create a candle Tensor from a scalar, list, or nested list of numbers",
+    "quantize_tensor_ggml": "quantize a candle Tensor to a GGML format like q4_0, q8_0, or q4k",
+    "slice_and_index_tensor": "index and slice a candle Tensor using integers, slices, ellipsis, or another Tensor",
+    "perform_tensor_arithmetic": "add, subtract, multiply, or divide candle Tensors with scalar or broadcasting support",
+    "move_tensor_device_dtype": "move a candle Tensor to a different device or cast it to a different dtype using to"
+  },
+  "huggingface_candle/candle-pyo3/tests/native/test_utils.py": {
+    "test_safetensors_roundtrip": "test that saving and loading tensors via safetensors preserves values, shapes, and dtypes",
+    "test_gguf_roundtrip": "test that saving and loading quantized tensors via gguf preserves values, shapes, and metadata",
+    "run_save_safetensors": "run save_safetensors to write a dictionary of candle tensors to a safetensors file",
+    "run_load_safetensors": "run load_safetensors to read tensors from a safetensors file and verify their properties",
+    "run_save_gguf": "run save_gguf to write quantized tensors and metadata to a gguf file"
+  },
+  "huggingface_candle/candle-wasm-examples/quant-qwen3/serve.py": {
+    "serve_qwen3_wasm_model": "serve a Qwen3 GGUF model via HTTP server for WASM inference with automatic downloads",
+    "download_model_with_progress": "download a GGUF model file from HuggingFace Hub with progress bar and resume support",
+    "find_or_download_model": "find a cached Qwen3 model or download it from HuggingFace based on quantization type",
+    "find_or_download_tokenizer": "find or download tokenizer.json and config.json files for Qwen3 model from HuggingFace",
+    "list_available_models": "list all available Qwen3 model configurations with size and quantization details"
+  }
+}

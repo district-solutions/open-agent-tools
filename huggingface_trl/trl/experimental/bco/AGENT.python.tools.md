@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/trl
+- repo_uri: https://github.com/huggingface/trl.git
+
+## File: huggingface_trl/trl/experimental/bco/bco_trainer.py
+
+Prompts
+
+```
+['train a language model using Binary Classifier Optimization with preference data and optional underlying distribution matching', 'compute the BCO loss from policy and reference model log probabilities with running reward normalization', 'compute log probabilities of the reference model for a batch of completion inputs', 'generate samples from both the policy model and reference model for a given batch of prompts', 'build a running moments tracker that maintains mean, std, and count across distributed training processes']
+```
+
+Usage
+
+```
+{'train_BCOTrainer': 'train a language model using Binary Classifier Optimization with preference data and optional underlying distribution matching', 'compute_bco_loss': 'compute the BCO loss from policy and reference model log probabilities with running reward normalization', 'compute_reference_log_probs': 'compute log probabilities of the reference model for a batch of completion inputs', 'generate_from_model_and_ref': 'generate samples from both the policy model and reference model for a given batch of prompts', 'build_RunningMoments': 'build a running moments tracker that maintains mean, std, and count across distributed training processes'}
+```
+

@@ -1,0 +1,23 @@
+{
+    "test_interpolate_no_op": "test DataFrame.interpolate with pad, nearest, and linear methods for no-op copy-on-write behavior",
+    "test_interp_fill_functions": "test DataFrame.ffill and DataFrame.bfill trigger the same copy-on-write code paths as interpolate",
+    "test_interpolate_triggers_copy": "test that ffill and bfill trigger a copy when NaN values are present in numeric or datetime columns",
+    "test_interpolate_inplace_no_reference_no_copy": "test DataFrame.interpolate inplace does not copy when no references exist",
+    "test_interpolate_inplace_with_refs": "test DataFrame.interpolate inplace triggers a copy when views reference the original data",
+    "test_interp_fill_functions_inplace": "test DataFrame.ffill and DataFrame.bfill inplace trigger copies with float64 and Float64 dtypes",
+    "test_interpolate_cannot_with_object_dtype": "test that DataFrame.interpolate raises TypeError for object dtype columns",
+    "test_interpolate_object_convert_no_op": "test that interpolate on object dtype does not trigger an unnecessary copy-on-write copy",
+    "test_interpolate_object_convert_copies": "test that interpolate with pad method on numeric data raises ValueError and does not copy",
+    "test_interpolate_downcast_reference_triggers_copy": "test that interpolate with pad method on data with references raises ValueError and triggers a copy",
+    "test_fillna": "test DataFrame.fillna with scalar value shares memory for unaffected columns under copy-on-write",
+    "test_fillna_dict": "test DataFrame.fillna with dict argument copies only affected columns and shares others",
+    "test_fillna_inplace": "test DataFrame.fillna inplace without references preserves memory sharing",
+    "test_fillna_inplace_reference": "test DataFrame.fillna inplace triggers a copy on affected columns when views exist",
+    "test_fillna_interval_inplace_reference": "test Series.fillna inplace on interval dtype triggers a copy when views exist",
+    "test_fillna_series_empty_arg": "test Series.fillna with empty dict shares memory under copy-on-write",
+    "test_fillna_series_empty_arg_inplace": "test Series.fillna with empty dict inplace preserves memory sharing",
+    "test_fillna_ea_noop_shares_memory": "test DataFrame.fillna on extension array dtypes triggers a copy for affected columns",
+    "test_fillna_inplace_ea_noop_shares_memory": "test DataFrame.fillna inplace on extension array dtypes triggers a copy when views exist",
+    "test_fillna_chained_assignment": "test that DataFrame.fillna inplace on chained assignment raises an error",
+    "test_interpolate_chained_assignment": "test that interpolate, ffill, and bfill inplace on chained assignment raise errors"
+}

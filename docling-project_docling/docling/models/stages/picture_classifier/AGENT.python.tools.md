@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: docling-project/docling
+- repo_uri: https://github.com/docling-project/docling
+
+## File: docling-project_docling/docling/models/stages/picture_classifier/document_picture_classifier.py
+
+Prompts
+
+```
+['create a DocumentPictureClassifier instance to classify pictures in documents with configurable options', 'run the DocumentPictureClassifier __call__ method to process a batch of picture elements and add classification annotations', 'test the DocumentPictureClassifier is_processable method to check if a given element is a processable PictureItem', 'build DocumentPictureClassifierOptions to configure the picture classifier engine, model spec, and accelerator settings', 'review the DocumentPictureClassifier class and its methods for enriching document pictures with predicted classifications']
+```
+
+Usage
+
+```
+{'create_DocumentPictureClassifier': 'create a DocumentPictureClassifier instance to classify pictures in documents with configurable options', 'run_DocumentPictureClassifier_call': 'run the DocumentPictureClassifier __call__ method to process a batch of picture elements and add classification annotations', 'test_DocumentPictureClassifier_is_processable': 'test the DocumentPictureClassifier is_processable method to check if a given element is a processable PictureItem', 'build_DocumentPictureClassifierOptions': 'build DocumentPictureClassifierOptions to configure the picture classifier engine, model spec, and accelerator settings', 'review_DocumentPictureClassifier': 'review the DocumentPictureClassifier class and its methods for enriching document pictures with predicted classifications'}
+```
+

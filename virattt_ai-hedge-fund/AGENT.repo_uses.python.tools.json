@@ -1,0 +1,342 @@
+{
+  "virattt_ai-hedge-fund/src/backtester.py": {
+    "run_backtest": "run the backtest simulation with graceful KeyboardInterrupt handling and partial result reporting",
+    "create_backtest_engine": "create a BacktestEngine instance with agent, tickers, dates, capital, model, analysts, and margin parameters",
+    "parse_cli_inputs": "parse CLI inputs for backtesting with configurable description, tickers, months back, graph, and reasoning flags",
+    "summarize_performance_metrics": "summarize the PerformanceMetrics returned by a completed backtest run",
+    "get_portfolio_values": "retrieve portfolio values from a backtest to display initial, final, and total return on interruption"
+  },
+  "virattt_ai-hedge-fund/src/main.py": {
+    "run_hedge_fund": "run the hedge fund trading system with tickers, date range, portfolio, and optional analyst selection",
+    "create_workflow": "build a langgraph StateGraph workflow with selected analyst nodes, risk management, and portfolio management",
+    "parse_hedge_fund_response": "parse a JSON string response from the hedge fund into a dictionary with error handling",
+    "parse_cli_inputs": "parse command-line arguments for the hedge fund including tickers, dates, model, and analysts",
+    "print_trading_output": "print formatted trading decisions and analyst signals from the hedge fund result"
+  },
+  "virattt_ai-hedge-fund/src/agents/aswath_damodaran.py": {
+    "create_damodaran_signal_model": "create a Pydantic model with bullish/bearish/neutral signal, confidence score, and reasoning text",
+    "run_damodaran_agent_analysis": "run an equity analysis agent that fetches financial metrics, computes intrinsic value, and generates trading signals for multiple tickers",
+    "analyze_growth_and_reinvestment": "analyze revenue CAGR, FCFF growth, and ROIC efficiency to score a company's growth and reinvestment quality",
+    "analyze_risk_profile": "evaluate beta, debt-to-equity ratio, and interest coverage to score a company's financial risk",
+    "calculate_intrinsic_value_dcf": "calculate intrinsic per-share value using FCFF DCF with linear growth fade and terminal value",
+    "analyze_relative_valuation": "compare TTM P/E against 5-year historical median to determine if a stock is cheap or expensive",
+    "estimate_cost_of_equity": "estimate cost of equity using CAPM with risk-free rate and equity risk premium",
+    "generate_damodaran_output": "generate a Damodaran-style LLM narrative with signal, confidence, and reasoning from analysis data"
+  },
+  "virattt_ai-hedge-fund/src/agents/ben_graham.py": {
+    "run_ben_graham_agent": "run the ben_graham_agent function to analyze stocks using Benjamin Graham's value-investing principles",
+    "analyze_earnings_stability": "analyze earnings stability by checking multi-year EPS positivity and growth trends",
+    "analyze_financial_strength": "analyze financial strength by evaluating current ratio, debt ratio, and dividend record",
+    "analyze_valuation_graham": "analyze Graham valuation using net-current-asset value and Graham Number margin of safety",
+    "create_ben_graham_signal": "create a BenGrahamSignal Pydantic model with bullish, bearish, or neutral signal, confidence, and reasoning"
+  },
+  "virattt_ai-hedge-fund/src/agents/bill_ackman.py": {
+    "run_bill_ackman_agent": "run the Bill Ackman stock analysis agent to generate bullish, bearish, or neutral signals for a list of tickers",
+    "analyze_business_quality": "analyze a company's business quality by evaluating revenue growth, operating margins, free cash flow consistency, and return on equity",
+    "analyze_financial_discipline": "evaluate a company's financial discipline by checking debt-to-equity trends, dividend history, and share buyback activity",
+    "analyze_activism_potential": "assess activism potential by identifying companies with healthy revenue growth but subpar operating margins",
+    "generate_ackman_output": "generate a Bill Ackman-style investment signal with bullish, bearish, or neutral recommendation, confidence score, and reasoning"
+  },
+  "virattt_ai-hedge-fund/src/agents/cathie_wood.py": {
+    "run_cathie_wood_agent": "run the cathie_wood_agent to analyze stocks using Cathie Wood's investing principles and LLM reasoning",
+    "analyze_disruptive_potential": "analyze whether a company has disruptive products, technology, or business model using financial metrics",
+    "analyze_innovation_growth": "evaluate a company's commitment to innovation and potential for exponential growth from financial data",
+    "analyze_cathie_wood_valuation": "calculate intrinsic value using Cathie Wood's growth-biased DCF approach with high growth assumptions",
+    "create_cathie_wood_signal": "create a CathieWoodSignal pydantic model with bullish, bearish, or neutral investment recommendations"
+  },
+  "virattt_ai-hedge-fund/src/agents/charlie_munger.py": {
+    "run_charlie_munger_agent": "run the charlie_munger_agent function to analyze stocks using Charlie Munger's investing principles and mental models",
+    "analyze_moat_strength": "analyze a company's competitive advantage using ROIC consistency, pricing power, capital intensity, and intangible assets",
+    "analyze_management_quality": "evaluate management quality using capital allocation, insider transactions, debt levels, and share count trends",
+    "calculate_munger_valuation": "calculate intrinsic value using normalized free cash flow and fair price margins of safety",
+    "generate_munger_output": "generate a bullish, bearish, or neutral investment signal with confidence and reasoning from analysis facts"
+  },
+  "virattt_ai-hedge-fund/src/agents/fundamentals.py": {
+    "run_fundamentals_analyst_agent": "run the fundamentals_analyst_agent to analyze financial metrics and generate bullish, bearish, or neutral trading signals for multiple tickers",
+    "analyze_profitability_metrics": "analyze profitability by scoring return_on_equity, net_margin, and operating_margin against thresholds to produce a bullish, bearish, or neutral signal",
+    "analyze_growth_metrics": "analyze growth by scoring revenue_growth, earnings_growth, and book_value_growth against 10% thresholds to produce a growth signal",
+    "analyze_financial_health": "analyze financial health by evaluating current_ratio, debt_to_equity, and free_cash_flow_per_share against earnings_per_share for a health signal",
+    "analyze_valuation_ratios": "analyze valuation by scoring price_to_earnings_ratio, price_to_book_ratio, and price_to_sales_ratio against thresholds to produce a price_ratios signal"
+  },
+  "virattt_ai-hedge-fund/src/agents/growth_agent.py": {
+    "run_growth_analyst_agent": "run growth analysis across stock tickers and return bullish, bearish, or neutral investment signals",
+    "analyze_growth_trends": "analyze historical revenue, EPS, and free cash flow growth trends using linear regression scoring",
+    "analyze_valuation": "analyze growth-oriented valuation using PEG ratio and price-to-sales ratio scoring",
+    "analyze_insider_conviction": "analyze insider trading activity by computing buy-to-sell net flow ratio and conviction score",
+    "check_financial_health": "check company financial health using debt-to-equity ratio and current ratio scoring"
+  },
+  "virattt_ai-hedge-fund/src/agents/michael_burry.py": {
+    "run_michael_burry_agent": "run the Michael Burry agent to analyze stocks using deep-value, contrarian framework",
+    "analyze_value_metrics": "analyze stock value using free cash flow yield and EV/EBIT ratio",
+    "analyze_balance_sheet": "analyze balance sheet leverage and liquidity for a stock ticker",
+    "analyze_insider_activity": "analyze net insider buying or selling activity over the last 12 months",
+    "analyze_contrarian_sentiment": "analyze contrarian opportunity from negative press sentiment count"
+  },
+  "virattt_ai-hedge-fund/src/agents/mohnish_pabrai.py": {
+    "run_mohnish_pabrai_agent": "run the mohnish_pabrai_agent function to evaluate stocks using Pabrai's downside protection and FCF yield checklist",
+    "analyze_downside_protection": "analyze downside protection by scoring balance-sheet strength, liquidity, leverage, and free cash flow stability",
+    "analyze_pabrai_valuation": "analyze Pabrai valuation by computing normalized free cash flow yield and asset-light capex intensity",
+    "analyze_double_potential": "analyze double potential by scoring revenue growth, FCF growth, and high FCF yield compounding runway",
+    "create_mohnish_pabrai_signal": "create a MohnishPabraiSignal Pydantic model with bullish/bearish/neutral signal, confidence score, and reasoning text"
+  },
+  "virattt_ai-hedge-fund/src/agents/nassim_taleb.py": {
+    "run_nassim_taleb_agent": "run the nassim taleb agent to analyze stocks using antifragility, tail risk, and convexity principles",
+    "analyze_tail_risk": "analyze tail risk by assessing fat tails, skewness, tail ratio, and max drawdown from price data",
+    "analyze_antifragility": "analyze antifragility by evaluating low debt, high cash, and stable margins for a company",
+    "analyze_convexity": "analyze convexity by measuring R&D optionality, upside-downside ratio, and cash optionality",
+    "generate_taleb_output": "generate a bullish, bearish, or neutral signal from the LLM using Taleb's decision framework"
+  },
+  "virattt_ai-hedge-fund/src/agents/news_sentiment.py": {
+    "run_news_sentiment_agent": "run the news_sentiment_agent to analyze news sentiment for a list of tickers and generate bullish/bearish/neutral trading signals",
+    "build_sentiment_confidence_score": "build a confidence score using _calculate_confidence_score by combining LLM classification confidence with signal proportion",
+    "create_sentiment_model": "create a Sentiment Pydantic model instance with a sentiment label (positive/negative/neutral) and a confidence score from 0 to 100",
+    "test_get_company_news": "test the get_company_news API function to fetch up to 100 recent news articles for a given ticker and end date",
+    "summarize_call_llm": "summarize how call_llm is used to classify missing sentiment in news articles by prompting an LLM with headline and ticker context"
+  },
+  "virattt_ai-hedge-fund/src/agents/peter_lynch.py": {
+    "run_peter_lynch_agent": "run the peter_lynch_agent to analyze stocks using Peter Lynch's investing principles and return a bullish/bearish/neutral signal",
+    "analyze_lynch_growth": "analyze revenue and EPS growth trends from financial line items to score a company's growth potential",
+    "analyze_lynch_fundamentals": "evaluate debt-to-equity ratio, operating margin, and free cash flow from financial line items",
+    "analyze_lynch_valuation": "calculate P/E and PEG ratios from market cap and financial line items to assess growth at a reasonable price",
+    "generate_lynch_output": "generate a Peter Lynch-style investment signal with signal, confidence, and reasoning from analysis data"
+  },
+  "virattt_ai-hedge-fund/src/agents/phil_fisher.py": {
+    "analyze_fisher_growth_quality": "analyze a company's revenue and EPS growth using annualized CAGR and R&D spending ratios",
+    "analyze_margins_stability": "evaluate operating and gross margin consistency and volatility across multiple financial periods",
+    "analyze_fisher_valuation": "assess stock valuation using P/E and P/FCF ratios with Phil Fisher's quality-focused approach",
+    "create_PhilFisherSignal": "create a PhilFisherSignal model instance with a bullish/bearish/neutral signal, confidence score, and reasoning",
+    "run_phil_fisher_agent": "run the Phil Fisher agent to analyze stocks using growth, margins, management, valuation, insider, and sentiment factors"
+  },
+  "virattt_ai-hedge-fund/src/agents/portfolio_manager.py": {
+    "run_portfolio_management_agent": "run the portfolio management agent to make final trading decisions and generate orders for multiple tickers",
+    "compute_allowed_actions": "compute allowed trading actions and max quantities for each ticker based on portfolio state and current prices",
+    "generate_trading_decision": "generate LLM-driven trading decisions for tickers with deterministic constraints and analyst signals",
+    "create_PortfolioDecision": "create a portfolio decision model with action, quantity, confidence, and reasoning fields for a single ticker",
+    "create_PortfolioManagerOutput": "create a portfolio manager output model containing a dictionary of ticker-to-decision mappings"
+  },
+  "virattt_ai-hedge-fund/src/agents/rakesh_jhunjhunwala.py": {
+    "run_rakesh_jhunjhunwala_agent": "run stock analysis using Rakesh Jhunjhunwala's investment principles and LLM reasoning",
+    "analyze_rakesh_jhunjhunwala_style": "analyze stocks in Rakesh Jhunjhunwala's investment style with profitability, growth, balance sheet, cash flow, and management scores",
+    "calculate_intrinsic_value": "calculate intrinsic value using discounted cash flow with quality-based discount rates and terminal multiples",
+    "generate_jhunjhunwala_output": "generate a bullish, bearish, or neutral investment signal with confidence and reasoning via LLM",
+    "assess_quality_metrics": "assess company quality on a 0-1 scale based on ROE, debt levels, and growth consistency"
+  },
+  "virattt_ai-hedge-fund/src/agents/risk_manager.py": {
+    "run_risk_management_agent": "run the risk management agent to calculate volatility- and correlation-adjusted position limits for portfolio tickers",
+    "calculate_volatility_metrics": "calculate daily, annualized volatility and volatility percentile from a price DataFrame",
+    "calculate_volatility_adjusted_limit": "calculate a position limit percentage based on annualized volatility with bounds between 5% and 25%",
+    "calculate_correlation_multiplier": "map average correlation between tickers to a risk adjustment multiplier between 0.70 and 1.10",
+    "summarize_risk_analysis": "summarize risk analysis output including remaining position limits, current prices, and volatility metrics for each ticker"
+  },
+  "virattt_ai-hedge-fund/src/agents/sentiment.py": {
+    "run_sentiment_analyst_agent": "run the sentiment_analyst_agent function to analyze market sentiment and generate trading signals for multiple tickers",
+    "create_insider_trades_analysis": "create insider trading signal analysis by fetching and evaluating transaction shares for bullish or bearish patterns",
+    "fetch_company_news_sentiment": "fetch company news and derive bullish, bearish, or neutral sentiment signals from each article",
+    "combine_weighted_signals": "combine insider trading and news sentiment signals with configurable weights to produce an overall bullish, bearish, or neutral signal",
+    "calculate_sentiment_confidence": "calculate a confidence percentage based on the proportion of the dominant weighted signal against total weighted signals"
+  },
+  "virattt_ai-hedge-fund/src/agents/stanley_druckenmiller.py": {
+    "run_stanley_druckenmiller_agent": "run the stanley_druckenmiller_agent function to analyze stocks using Druckenmiller's investing principles",
+    "analyze_growth_and_momentum": "analyze revenue growth, EPS growth, and price momentum from financial line items and price data",
+    "analyze_druckenmiller_valuation": "perform Druckenmiller-style valuation using P/E, P/FCF, EV/EBIT, and EV/EBITDA metrics",
+    "analyze_risk_reward": "assess risk via debt-to-equity ratio and price volatility to evaluate asymmetric risk-reward opportunities",
+    "create_StanleyDruckenmillerSignal": "create a StanleyDruckenmillerSignal Pydantic model with signal, confidence, and reasoning fields"
+  },
+  "virattt_ai-hedge-fund/src/agents/technicals.py": {
+    "build_technical_analysis": "build a technical analysis system that combines trend following, mean reversion, momentum, volatility, and statistical arbitrage signals for multiple tickers",
+    "calculate_rsi": "calculate the relative strength index for a given price DataFrame with a configurable period",
+    "calculate_hurst_exponent": "calculate the Hurst exponent to determine if a price series is mean reverting, random walk, or trending",
+    "combine_signals_weighted": "combine multiple trading signals using a weighted ensemble approach to produce a single bullish, bearish, or neutral signal",
+    "calculate_adx": "calculate the Average Directional Index with +DI and -DI indicators to measure trend strength from OHLC price data"
+  },
+  "virattt_ai-hedge-fund/src/agents/valuation.py": {
+    "run_valuation_analyst_agent": "run the valuation analyst agent across multiple tickers to generate bullish, bearish, or neutral investment signals",
+    "calculate_owner_earnings_value": "calculate the intrinsic value using Buffett's owner earnings method with margin of safety and multi-year discounted cash flows",
+    "calculate_dcf_scenarios": "calculate discounted cash flow valuations under bear, base, and bull scenarios with probability-weighted expected value",
+    "calculate_wacc": "calculate the weighted average cost of equity and debt using CAPM, interest coverage, and a corporate tax shield",
+    "calculate_residual_income_value": "calculate intrinsic value using the residual income model based on book value, cost of equity, and future residual earnings"
+  },
+  "virattt_ai-hedge-fund/src/agents/warren_buffett.py": {
+    "run_warren_buffett_agent": "run the warren_buffett_agent function to analyze stocks using Buffett's principles and LLM reasoning",
+    "analyze_fundamentals": "analyze company fundamentals based on ROE, debt-to-equity, operating margin, and current ratio thresholds",
+    "calculate_intrinsic_value": "calculate intrinsic value using a three-stage DCF model with owner earnings and conservative assumptions",
+    "analyze_moat": "evaluate whether a company has a durable competitive advantage using ROE consistency and margin stability",
+    "create_WarrenBuffettSignal": "create a WarrenBuffettSignal Pydantic model with bullish, bearish, or neutral signal and confidence score"
+  },
+  "virattt_ai-hedge-fund/src/backtesting/benchmarks.py": {
+    "build_benchmark_calculator": "build a python class that computes simple buy-and-hold return percentage for a stock ticker over a date range",
+    "run_get_return_pct": "run the BenchmarkCalculator.get_return_pct method to compute buy-and-hold return percentage for a ticker from start_date to end_date"
+  },
+  "virattt_ai-hedge-fund/src/backtesting/controller.py": {
+    "run_agent_trading": "run the AgentController.run_agent method to invoke a trading agent with tickers, dates, and portfolio snapshot",
+    "test_agent_output_normalization": "test the AgentController.run_agent method to verify it normalizes agent decisions and analyst signals",
+    "review_agent_controller": "review the AgentController class and its run_agent method for output normalization and error handling",
+    "summarize_agent_decisions": "summarize how AgentController.run_agent normalizes action and quantity fields per ticker",
+    "test_portfolio_snapshot_handling": "test how AgentController.run_agent converts Portfolio objects to PortfolioSnapshot dicts before passing to the agent"
+  },
+  "virattt_ai-hedge-fund/src/backtesting/engine.py": {
+    "create_BacktestEngine": "create a BacktestEngine instance with agent, tickers, dates, capital, and model configuration",
+    "run_BacktestEngine_backtest": "run a backtest loop that orchestrates agent decisions, trade execution, and performance metrics",
+    "get_BacktestEngine_portfolio_values": "get the portfolio values recorded during a backtest as a sequence of date-value points",
+    "build_BacktestEngine_day_rows": "build daily summary rows showing agent decisions, executed trades, and portfolio state",
+    "compute_BacktestEngine_exposures": "compute portfolio exposures including long, short, gross, net exposure and long/short ratio"
+  },
+  "virattt_ai-hedge-fund/src/backtesting/metrics.py": {
+    "create_PerformanceMetricsCalculator": "create a PerformanceMetricsCalculator instance with custom annual trading days and risk-free rate",
+    "compute_metrics": "compute sharpe ratio, sortino ratio, and max drawdown from portfolio value time series data",
+    "update_metrics": "update an existing performance metrics dictionary with computed sharpe, sortino, and drawdown values",
+    "test_PerformanceMetricsCalculator": "test the PerformanceMetricsCalculator with empty and minimal portfolio value sequences",
+    "review_compute_metrics": "review the compute_metrics method for edge cases like missing columns and insufficient return data"
+  },
+  "virattt_ai-hedge-fund/src/backtesting/output.py": {
+    "create_OutputBuilder": "create an OutputBuilder instance with an optional initial capital value for backtesting",
+    "build_day_rows": "build daily backtest output rows for tickers with agent decisions, portfolio positions, and performance metrics",
+    "print_rows": "print formatted backtest result rows to stdout",
+    "review_OutputBuilder": "review the OutputBuilder class that builds daily output rows and prints backtest results",
+    "summarize_build_day_rows": "summarize the build_day_rows method that generates per-ticker and summary rows for backtesting"
+  },
+  "virattt_ai-hedge-fund/src/backtesting/portfolio.py": {
+    "build_portfolio": "build a Portfolio instance with tickers, initial cash, and margin requirement for backtesting",
+    "test_apply_long_buy": "test the Portfolio.apply_long_buy method to buy shares with cost basis tracking",
+    "test_apply_long_sell": "test the Portfolio.apply_long_sell method to sell long shares and calculate realized gains",
+    "test_apply_short_open": "test the Portfolio.apply_short_open method to open short positions with margin tracking",
+    "test_apply_short_cover": "test the Portfolio.apply_short_cover method to close short positions and calculate realized gains"
+  },
+  "virattt_ai-hedge-fund/src/backtesting/trader.py": {
+    "execute_trade_buy": "execute a trade to buy shares of a ticker using the TradeExecutor class with a portfolio",
+    "execute_trade_sell": "execute a trade to sell shares of a ticker using the TradeExecutor class with a portfolio",
+    "execute_trade_short": "execute a trade to open a short position on a ticker using the TradeExecutor class with a portfolio",
+    "execute_trade_cover": "execute a trade to cover a short position on a ticker using the TradeExecutor class with a portfolio",
+    "execute_trade_hold": "execute a hold action with the TradeExecutor class to skip trading for a ticker"
+  },
+  "virattt_ai-hedge-fund/src/backtesting/valuation.py": {
+    "calculate_portfolio_value": "calculate total portfolio value from cash, long positions, and short positions using current market prices",
+    "compute_exposures": "compute long, short, gross, net exposures and long/short ratio for a portfolio given current prices",
+    "compute_portfolio_summary": "compute portfolio summary including total value, return percentage, cash balance, and performance metrics"
+  },
+  "virattt_ai-hedge-fund/src/cli/input.py": {
+    "build_cli_ticker_parser": "build a CLI argument parser that adds common flags for tickers, analysts, ollama, and model selection",
+    "create_date_args_parser": "create an argparse parser with default start and end date arguments for a given months-back window",
+    "run_ticker_parsing": "run the parse_tickers function to convert a comma-separated ticker string into a list of stripped ticker symbols",
+    "run_analyst_selection": "run the select_analysts function to interactively or flag-based select AI analysts from a predefined order",
+    "run_model_selection": "run the select_model function to interactively select an LLM model from Ollama or cloud providers",
+    "run_date_resolution": "run the resolve_dates function to resolve start and end dates with defaults based on months back",
+    "run_cli_inputs_parser": "run the parse_cli_inputs function to parse full CLI arguments with interactive prompts for tickers, analysts, model, and dates"
+  },
+  "virattt_ai-hedge-fund/src/data/cache.py": {
+    "create_cache_instance": "create a Cache instance to store in-memory API responses for financial data",
+    "build_get_cache": "build a call to get_cache to retrieve the global Cache singleton instance",
+    "test_set_prices": "test set_prices to append new price data to the cache for a given ticker",
+    "review_get_financial_metrics": "review get_financial_metrics to retrieve cached financial metrics for a ticker",
+    "summarize_merge_data": "summarize _merge_data to deduplicate and merge new data into existing cached lists"
+  },
+  "virattt_ai-hedge-fund/src/graph/state.py": {
+    "build_agent_state_typedict": "build an AgentState TypedDict with annotated messages, data, and metadata fields for LangGraph state management",
+    "create_merge_dicts_function": "create a merge_dicts function that merges two dictionaries using the spread operator for LangGraph state updates",
+    "test_show_agent_reasoning": "test the show_agent_reasoning function that converts outputs to JSON-serializable format and pretty-prints them",
+    "summarize_convert_to_serializable": "summarize the convert_to_serializable helper that recursively converts Pandas objects, custom objects, and nested structures to JSON-serializable dicts",
+    "refactor_agent_state_annotations": "refactor the AgentState TypedDict to use operator.add for messages and merge_dicts for data and metadata fields"
+  },
+  "virattt_ai-hedge-fund/src/llm/models.py": {
+    "build_llm_model_instance": "build an LLM model instance from a JSON file path containing model configurations",
+    "create_model_provider_enum": "create a ModelProvider enum with supported LLM providers like OpenAI, Anthropic, Groq, and Ollama",
+    "test_get_model_info": "test the get_model_info function to retrieve model details by model name and provider",
+    "run_get_model": "run the get_model function to instantiate a LangChain chat model for a given provider and model name",
+    "summarize_llm_model_class": "summarize the LLMModel class and its helper methods like has_json_mode, is_deepseek, is_gemini"
+  },
+  "virattt_ai-hedge-fund/src/tools/api.py": {
+    "fetch_historical_prices": "fetch historical daily price data for a stock ticker between two dates",
+    "fetch_financial_metrics": "fetch financial metrics for a stock ticker with a report period end date and limit",
+    "fetch_company_news": "fetch paginated company news articles for a stock ticker within a date range",
+    "fetch_insider_trades": "fetch paginated insider trades for a stock ticker within a filing date range",
+    "fetch_market_cap": "fetch the market cap for a stock ticker on a given end date"
+  },
+  "virattt_ai-hedge-fund/src/utils/analysts.py": {
+    "get_analyst_nodes": "get analyst nodes mapping keys to agent function tuples from the analysts configuration module",
+    "get_agents_list": "get a sorted list of analyst agent metadata including display name, description, and investing style",
+    "create_analyst_config": "create analyst configuration entries with display name, description, investing style, and agent function references",
+    "summarize_analyst_order": "summarize the ordered list of analyst display names and keys derived from the analysts configuration",
+    "review_analyst_config": "review the analysts configuration module that defines 17 investment analyst agents with their styles and ordering"
+  },
+  "virattt_ai-hedge-fund/src/utils/api_key.py": {
+    "run_get_api_key_from_state": "run the get_api_key_from_state function to retrieve an API key from a state object with nested metadata and request",
+    "refactor_get_api_key_from_state": "refactor the get_api_key_from_state function to handle missing api_keys gracefully and return a default value",
+    "review_get_api_key_from_state": "review the get_api_key_from_state function for null safety and edge cases with nested dictionary access",
+    "summarize_get_api_key_from_state": "summarize the get_api_key_from_state function that extracts an API key from a state object's metadata request",
+    "test_get_api_key_from_state": "test the get_api_key_from_state function with valid state, missing metadata, and absent api_keys"
+  },
+  "virattt_ai-hedge-fund/src/utils/display.py": {
+    "sort_agent_signals": "sort agent signals list into a consistent predefined order based on ANALYST_ORDER",
+    "print_trading_output": "print formatted trading results with colored agent analysis and decision tables for multiple tickers",
+    "print_backtest_results": "print backtest results with colored portfolio summary and ticker-level trade tables",
+    "format_backtest_row": "format a backtest row with colored action, price, shares, and performance metrics",
+    "summarize_display": "summarize the display module's four functions for formatting and printing trading and backtest output"
+  },
+  "virattt_ai-hedge-fund/src/utils/docker.py": {
+    "ensure_ollama_model": "ensure the Ollama model is available at the target Ollama endpoint by checking availability and downloading if needed",
+    "test_ollama_available": "test if the Ollama service is available at the given URL endpoint",
+    "get_available_ollama_models": "get a list of available Ollama models from the Docker Ollama container",
+    "download_ollama_model": "download an Ollama model to the Docker container with progress monitoring and timeout",
+    "delete_ollama_model": "delete an Ollama model from the Docker Ollama container by name"
+  },
+  "virattt_ai-hedge-fund/src/utils/llm.py": {
+    "call_llm": "call the LLM with a prompt and Pydantic model, returning structured output with retry logic",
+    "create_default_response": "create a safe default Pydantic model response based on field types when LLM calls fail",
+    "extract_json_from_response": "extract JSON data from markdown-formatted LLM response content",
+    "get_agent_model_config": "get agent-specific LLM model configuration with fallback to global defaults",
+    "call_llm_with_retries": "call the LLM with automatic retries and error handling for robust API usage"
+  },
+  "virattt_ai-hedge-fund/src/utils/ollama.py": {
+    "run_ensure_ollama_and_model": "run ensure_ollama_and_model to install Ollama, start the server, and download the specified model if needed",
+    "test_is_ollama_installed": "test is_ollama_installed to check if the Ollama CLI is available on the current system",
+    "run_start_ollama_server": "run start_ollama_server to launch the Ollama server process and wait until it becomes available",
+    "run_download_model": "run download_model to pull a named Ollama model from the registry with progress bar output",
+    "run_delete_model": "run delete_model to remove a locally downloaded Ollama model using the CLI rm command"
+  },
+  "virattt_ai-hedge-fund/src/utils/progress.py": {
+    "create_agent_progress_tracker": "create an AgentProgress instance to track and display progress of multiple agents in a rich terminal table",
+    "run_agent_status_updates": "run agent status updates with agent name, ticker, status text, and optional analysis via update_status",
+    "register_status_handler": "register a callback handler that receives agent name, ticker, status, analysis, and timestamp on each update",
+    "get_all_agent_status": "get all agent statuses as a dictionary with ticker, status, and display name for each agent",
+    "start_stop_progress_display": "start and stop the live rich progress display with refresh_per_second=4 for agent status updates"
+  },
+  "virattt_ai-hedge-fund/src/utils/visualize.py": {
+    "save_graph_as_png": "save a langgraph CompiledGraph as a PNG image file using Mermaid draw API",
+    "create_save_graph_png_default": "create a PNG graph output file with default name graph.png when output path is empty",
+    "create_save_graph_png_custom_path": "create a PNG graph output file at a custom file path for a langgraph CompiledGraph",
+    "test_save_graph_as_png": "test save_graph_as_png with a mock CompiledGraph and verify PNG file is written",
+    "refactor_save_graph_as_png": "refactor save_graph_as_png to support custom MermaidDrawMethod parameter"
+  },
+  "virattt_ai-hedge-fund/v2/data/client.py": {
+    "create_fdclient": "create an FDClient instance to fetch financial data from the Financial Datasets API",
+    "fetch_prices": "fetch OHLC price bars for a ticker between a start date and end date with configurable interval",
+    "fetch_financial_metrics": "fetch financial metrics for a ticker up to a given end date with period and limit options",
+    "fetch_company_news": "fetch company news articles for a ticker within a date range with a configurable limit",
+    "fetch_insider_trades": "fetch insider trades for a ticker within a filing date range with a configurable limit",
+    "get_market_cap": "get market cap for a ticker from company facts or financial metrics as a fallback",
+    "fetch_earnings": "fetch quarterly and annual earnings data for a ticker",
+    "fetch_company_facts": "fetch company metadata including name, sector, and market cap for a ticker"
+  },
+  "virattt_ai-hedge-fund/v2/data/protocol.py": {
+    "build_dataclient_get_prices": "build a data provider class implementing DataClient protocol with get_prices to fetch stock price data",
+    "build_dataclient_get_financial_metrics": "build a data provider class implementing DataClient protocol with get_financial_metrics to retrieve company financial data",
+    "build_dataclient_get_news": "build a data provider class implementing DataClient protocol with get_news to fetch company news articles",
+    "build_dataclient_get_insider_trades": "build a data provider class implementing DataClient protocol with get_insider_trades to retrieve insider trading records",
+    "build_dataclient_get_company_facts": "build a data provider class implementing DataClient protocol with get_company_facts to fetch company factual data"
+  },
+  "virattt_ai-hedge-fund/v2/data/test_client.py": {
+    "test_FDClient_get_prices": "test the FDClient.get_prices method to retrieve price bars for a ticker over a date range",
+    "test_FDClient_get_financial_metrics": "test the FDClient.get_financial_metrics method to retrieve TTM financial metrics for a ticker",
+    "test_FDClient_get_earnings": "test the FDClient.get_earnings method to retrieve earnings data including quarterly results for a ticker",
+    "test_FDClient_get_news": "test the FDClient.get_news method to retrieve recent news articles for a ticker",
+    "test_FDClient_get_insider_trades": "test the FDClient.get_insider_trades method to retrieve insider trading records for a ticker",
+    "test_FDClient_get_company_facts": "test the FDClient.get_company_facts method to retrieve company sector and exchange information"
+  },
+  "virattt_ai-hedge-fund/v2/signals/base.py": {
+    "create_BaseSignal_subclass": "create a subclass of BaseSignal that implements the abstract name and compute methods for a new quantitative signal",
+    "test_compute_rsi": "test the _compute_rsi static method that calculates the latest RSI value from a pandas price series",
+    "refactor_normalize_to_signal": "refactor the _normalize_to_signal static method to clamp raw float values into a configurable low-high range",
+    "summarize_sigmoid": "summarize the _sigmoid static method that maps unbounded float values into the -1 to +1 range via scaled tanh",
+    "review_safe_float": "review the _safe_float static method that converts values to float while handling NaN, None, and infinity"
+  }
+}

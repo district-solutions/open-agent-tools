@@ -1,0 +1,499 @@
+{
+  "roboflow_supervision/examples/compact_mask/benchmark.py": {
+    "run_benchmark_main": "run the CompactMask benchmark suite that compares dense and compact mask performance across multiple scenarios",
+    "run_scenario_benchmark": "run a single benchmark scenario with specified objects, resolution, fill fraction, and polygon vertex count",
+    "summarize_benchmark_results": "summarize benchmark results as a rich console table showing memory ratios and per-operation speedups",
+    "save_results_csv": "save benchmark results to a CSV file with scenario metadata, memory footprints, and speedup columns",
+    "create_synthetic_detections": "create synthetic detection data with random polygon masks given object count, image dimensions, and fill fraction"
+  },
+  "roboflow_supervision/examples/count_people_in_zone/inference_example.py": {
+    "run_count_people_in_zone": "run the inference_example.py to count people in polygon zones from a video using a Roboflow YOLO model",
+    "build_polygon_zones_from_config": "build polygon zone configurations from a JSON file containing polygon coordinates",
+    "detect_objects_in_frame": "detect people in a video frame using a Roboflow Inference model with configurable confidence and IoU thresholds",
+    "annotate_frame_with_zones": "annotate a video frame with polygon zone boundaries and bounding boxes for detected people",
+    "create_video_sink_output": "create a video sink to write annotated frames to an output video file"
+  },
+  "roboflow_supervision/examples/count_people_in_zone/ultralytics_example.py": {
+    "run_main_people_counting": "run the main function to count people in polygon zones using YOLO on a video",
+    "load_zones_config": "load polygon zone configurations from a JSON file into a list of NumPy arrays",
+    "initiate_annotators": "initiate polygon zones and annotators with optimal line thickness and text scale for a given resolution",
+    "detect_people": "detect people in a video frame using a YOLO model with configurable confidence and IoU thresholds",
+    "annotate_frame": "annotate a video frame with zone boundaries and bounding boxes for detections in each zone"
+  },
+  "roboflow_supervision/examples/heatmap_and_track/script.py": {
+    "run_heatmap_and_tracking": "run heatmap and tracking on a video using YOLO detection and ByteTrack with configurable thresholds",
+    "create_heatmap_annotator": "create a HeatMapAnnotator with configurable position, opacity, radius, and hue range for overlaying heat maps on video frames",
+    "create_byte_tracker": "create a ByteTrack tracker with activation threshold, lost track buffer, and matching threshold for object tracking across frames",
+    "process_video_frames": "process video frames with YOLO person detection, tracking, heatmap annotation, and label annotation to produce an output video",
+    "download_sample_video": "download a sample people-walking video asset from Roboflow Supervision for testing heatmap and tracking pipelines"
+  },
+  "roboflow_supervision/examples/speed_estimation/inference_example.py": {
+    "run_speed_estimation": "run vehicle speed estimation on a video using YOLOv8 detection, ByteTrack tracking, and perspective transform",
+    "create_view_transformer": "create a ViewTransformer that converts real-world coordinates to image plane coordinates via perspective transform",
+    "test_polygon_zone_filtering": "test filtering detections within a polygon zone using PolygonZone.trigger on Detections objects",
+    "build_byte_tracker": "build a ByteTrack tracker to maintain object identities across video frames with configurable confidence threshold",
+    "summarize_annotation_pipeline": "summarize the annotation pipeline using BoxAnnotator, LabelAnnotator, and TraceAnnotator on video frames"
+  },
+  "roboflow_supervision/examples/speed_estimation/ultralytics_example.py": {
+    "run_speed_estimation": "run vehicle speed estimation on a video using YOLO detection, ByteTrack tracking, and perspective-transformed coordinate analysis",
+    "create_view_transformer": "create a ViewTransformer class that applies perspective transform to map source video coordinates to a target plane",
+    "build_polygon_zone_filter": "build a PolygonZone filter to restrict detections to a defined region of interest in the video frame",
+    "create_byte_track_tracker": "create a ByteTrack tracker to assign persistent IDs to detected objects across video frames",
+    "annotate_video_frame": "annotate a video frame with bounding boxes, labels, and motion traces using BoxAnnotator, LabelAnnotator, and TraceAnnotator"
+  },
+  "roboflow_supervision/examples/speed_estimation/yolo_nas_example.py": {
+    "run_speed_estimation": "run vehicle speed estimation using YOLO-NAS and supervision with configurable confidence and IOU thresholds",
+    "create_view_transformer": "create a ViewTransformer instance that applies perspective transform from source to target coordinate space",
+    "transform_coordinates": "transform detection anchor coordinates from camera view to a bird's-eye view coordinate system",
+    "build_byte_track_tracker": "build a ByteTrack tracker with frame rate and confidence threshold for vehicle tracking across video frames",
+    "annotate_video_frame": "annotate video frames with bounding boxes, labels, and motion traces for detected vehicles"
+  },
+  "roboflow_supervision/examples/time_in_zone/inference_stream_example.py": {
+    "run_inference_stream_time_in_zone": "run an RTSP inference pipeline that tracks objects and calculates dwell time in polygon zones",
+    "create_custom_sink_zone_monitoring": "create a CustomSink class that processes video frames with polygon zone detection and object tracking",
+    "build_inference_pipeline_rtsp": "build an InferencePipeline from RTSP URL with a prediction callback for real-time object detection",
+    "test_polygon_zone_triggering": "test PolygonZone triggering against detections to filter objects within defined polygon regions",
+    "review_on_prediction_annotation": "review the on_prediction method that annotates frames with FPS, zone polygons, color labels, and dwell time"
+  },
+  "roboflow_supervision/examples/time_in_zone/rfdetr_file_example.py": {
+    "run_time_in_zone_detection": "run RF-DETR object detection with dwell time tracking in polygon zones on a video file",
+    "load_rfdetr_model": "load an RF-DETR model (nano, small, medium, base, large) for a specified device and resolution",
+    "adjust_inference_resolution": "adjust an input resolution to the nearest valid value for the chosen RF-DETR model size",
+    "create_polygon_zones": "create polygon-based zones for tracking object dwell time in video frames",
+    "annotate_video_with_detections": "annotate video frames with detection colors, labels, and zone dwell times using ByteTrack"
+  },
+  "roboflow_supervision/examples/time_in_zone/rfdetr_naive_stream_example.py": {
+    "run_rfdetr_naive_stream": "run RTSP video stream inference with RF-DETR model to calculate object dwell time in configurable zones",
+    "load_rfdetr_model": "load an RF-DETR model (nano, small, medium, base, or large) for a specified device and resolution",
+    "adjust_model_resolution": "adjust input resolution to the nearest multiple of 32 or 56 based on the RF-DETR model size",
+    "create_polygon_zones": "create polygon-based detection zones from a JSON configuration file for tracking object dwell time",
+    "track_detections_with_bytetrack": "track object detections across video frames using ByteTrack with configurable matching threshold"
+  },
+  "roboflow_supervision/examples/time_in_zone/rfdetr_stream_example.py": {
+    "run_rfdetr_stream": "run an RTSP stream inference pipeline with RF-DETR model to track detections in configurable zones with dwell time",
+    "build_model_rfdetr": "build an RF-DETR detection model from a checkpoint size string and device type with adjusted resolution",
+    "create_custom_sink": "create a CustomSink that monitors polygon zones, tracks objects with ByteTrack, and annotates dwell time on video frames",
+    "adjust_resolution_for_model": "adjust a video resolution to the nearest valid dimension for the specified RF-DETR model size",
+    "summarize_main_entry": "summarize the main entry point that initializes an inference pipeline from an RTSP URL with zone-based time-in-zone tracking"
+  },
+  "roboflow_supervision/examples/time_in_zone/ultralytics_stream_example.py": {
+    "run_ultralytics_stream_example": "run the ultralytics stream example to calculate detection dwell time in zones using an RTSP stream",
+    "create_CustomSink": "create a CustomSink instance that tracks objects through zones and annotates video frames with dwell times",
+    "build_inference_pipeline": "build an inference pipeline from RTSP URL with YOLO detection and custom zone-based dwell time annotation",
+    "test_main_function": "test the main function that starts an RTSP video inference pipeline with configurable model and zones",
+    "review_on_prediction_method": "review the CustomSink.on_prediction method that processes detections, tracks objects, and annotates zones with elapsed time"
+  },
+  "roboflow_supervision/examples/time_in_zone/scripts/draw_zones.py": {
+    "run_draw_zones": "run the interactive polygon drawing tool on an image or video to create zone annotations",
+    "create_resolve_source": "create a function that loads an image or extracts the first frame from a video file",
+    "save_polygons_to_json": "save drawn polygon coordinates to a JSON configuration file",
+    "test_close_and_finalize_polygon": "test closing and finalizing the current polygon with a filled shape",
+    "review_redraw_polygons": "review the function that redraws all finalized polygon outlines on the image"
+  },
+  "roboflow_supervision/examples/time_in_zone/scripts/stream_from_file.py": {
+    "run_rtsp_server_from_video_directory": "run the RTSP server to stream video files from a given directory using ffmpeg",
+    "create_server_config_file": "create an RTSP server YAML configuration file in a temporary directory",
+    "find_video_files_in_directory": "find video files in a directory matching mp4 and webm formats with a limit",
+    "stream_videos_to_rtsp_urls": "stream multiple video files concurrently to RTSP URLs using background threads",
+    "stream_video_to_url": "stream a single video file to an RTSP URL using ffmpeg in a background thread"
+  },
+  "roboflow_supervision/examples/time_in_zone/utils/general.py": {
+    "create_function_load_zones_config": "create a function that loads polygon zone configurations from a JSON file into a list of NumPy arrays",
+    "test_function_find_in_list": "test the find_in_list function that checks if elements of a NumPy array are present in a given list",
+    "build_function_get_stream_frames_generator": "build a generator function that yields video frames from an RTSP stream URL"
+  },
+  "roboflow_supervision/examples/time_in_zone/utils/timers.py": {
+    "create_FPSBasedTimer": "create an FPSBasedTimer instance to track object detection durations based on frame rate",
+    "create_ClockBasedTimer": "create a ClockBasedTimer instance to track object detection durations based on system clock",
+    "run_FPSBasedTimer_tick": "run the FPSBasedTimer tick method to compute time durations for tracked detections",
+    "run_ClockBasedTimer_tick": "run the ClockBasedTimer tick method to compute time durations for tracked detections",
+    "review_FPSBasedTimer": "review the FPSBasedTimer class and its tick method for calculating time-based durations"
+  },
+  "roboflow_supervision/examples/traffic_analysis/inference_example.py": {
+    "run_traffic_analysis": "run traffic flow analysis on a drone video using Roboflow inference and ByteTrack tracking",
+    "create_polygon_zones": "create polygon zones from lists of numpy arrays for vehicle in and out detection regions",
+    "build_video_processor": "build a video processor that runs object detection, tracking, and zone-based counting on video frames",
+    "manage_detections": "manage tracker-to-zone mapping and count vehicles entering and exiting defined polygon zones",
+    "annotate_video_frames": "annotate video frames with bounding boxes, traces, labels, and zone crossing counts"
+  },
+  "roboflow_supervision/examples/traffic_analysis/ultralytics_example.py": {
+    "run_traffic_analysis": "run traffic flow analysis on a video using YOLO detection, ByteTrack tracking, and polygon zone counting",
+    "create_polygon_zones": "create polygon zones from numpy arrays for detecting objects entering or exiting defined areas",
+    "build_video_processor": "build a video processor that annotates frames with bounding boxes, traces, and labels while tracking objects across zones",
+    "manage_detections": "manage detection counts by tracking objects entering and exiting polygon zones with unique tracker IDs",
+    "annotate_video_frames": "annotate video frames with polygon zones, bounding boxes, traces, and zone crossing counts"
+  },
+  "roboflow_supervision/src/supervision/annotators/base.py": {
+    "review_BaseAnnotator": "review the python class BaseAnnotator and its abstract annotate method for subclassing patterns",
+    "create_BaseAnnotator_subclass": "create a subclass of BaseAnnotator that implements the annotate method for drawing detection boxes on scenes"
+  },
+  "roboflow_supervision/src/supervision/annotators/core.py": {
+    "create_BoxAnnotator": "create a BoxAnnotator to draw bounding boxes on an image using provided object detections",
+    "create_LabelAnnotator": "create a LabelAnnotator to draw text labels with colored backgrounds on detected objects in an image",
+    "create_MaskAnnotator": "create a MaskAnnotator to draw semi-transparent colored mask overlays on detected objects",
+    "create_TraceAnnotator": "create a TraceAnnotator to draw smooth trace paths showing object movement across video frames",
+    "create_ComparisonAnnotator": "create a ComparisonAnnotator to highlight differences between two sets of object detections with colored overlays"
+  },
+  "roboflow_supervision/src/supervision/annotators/utils.py": {
+    "test_resolve_color": "test the resolve_color function to map detection indices to colors using index, class, or track strategies",
+    "build_snap_boxes": "build bounding boxes snapped into frame boundaries so they are fully contained within a given resolution",
+    "create_trace_tracking": "create a Trace object to record and retrieve detection anchor coordinates across frames by tracker id",
+    "test_wrap_text": "test the wrap_text function to wrap text to a specified maximum line length respecting existing newlines",
+    "review_hex_rgba_conversion": "review the hex_to_rgba and rgba_to_hex functions for converting between hex color strings and RGBA tuples"
+  },
+  "roboflow_supervision/src/supervision/assets/downloader.py": {
+    "test_download_assets": "test the download_assets function to download media assets by name or enum value",
+    "test_is_md5_hash_matching": "test the is_md5_hash_matching function to verify file integrity against an expected MD5 hash",
+    "review_download_assets": "review the download_assets function that downloads media assets with progress bar and corruption detection",
+    "summarize_is_md5_hash_matching": "summarize the is_md5_hash_matching function that computes and compares MD5 hashes for file integrity",
+    "refactor_download_assets": "refactor the download_assets function to support custom download URLs and retry logic"
+  },
+  "roboflow_supervision/src/supervision/assets/list.py": {
+    "list_video_asset_filenames": "list all video asset filenames from VideoAssets enum members",
+    "list_image_asset_filenames": "list all image asset filenames from ImageAssets enum members",
+    "lookup_media_asset_url": "lookup the full URL and md5 hash for a media asset by filename from MEDIA_ASSETS",
+    "access_video_asset_properties": "access the filename and md5 hash of a VideoAssets enum member like VEHICLES",
+    "access_image_asset_properties": "access the filename and md5 hash of an ImageAssets enum member like SOCCER"
+  },
+  "roboflow_supervision/src/supervision/classification/core.py": {
+    "create_classifications_from_clip": "create a Classifications instance from an OpenAI CLIP inference result tensor",
+    "create_classifications_from_ultralytics": "create a Classifications instance from an Ultralytics YOLO classification inference result",
+    "create_classifications_from_timm": "create a Classifications instance from a timm model inference result tensor",
+    "get_top_k_classifications": "get the top k class IDs and confidences from a Classifications object ordered by descending confidence",
+    "build_classifications_dataclass": "build a Classifications dataclass with class_id and optional confidence numpy arrays"
+  },
+  "roboflow_supervision/src/supervision/dataset/core.py": {
+    "create_detection_dataset_from_yolo": "create a DetectionDataset from YOLO formatted images, annotations, and data YAML file",
+    "create_detection_dataset_from_pascal_voc": "create a DetectionDataset from PASCAL VOC formatted images and XML annotation files",
+    "create_detection_dataset_from_coco": "create a DetectionDataset from COCO formatted images and JSON annotation file",
+    "split_detection_dataset": "split a DetectionDataset into training and testing subsets with a given ratio",
+    "merge_detection_datasets": "merge multiple DetectionDataset objects into a single unified dataset",
+    "export_detection_dataset_to_yolo": "export a DetectionDataset to YOLO format with optional images and data YAML",
+    "export_detection_dataset_to_coco": "export a DetectionDataset to COCO format with optional images and annotation JSON",
+    "export_detection_dataset_to_pascal_voc": "export a DetectionDataset to PASCAL VOC format with optional images and XML annotations",
+    "create_classification_dataset_from_folder": "create a ClassificationDataset from a multi-class folder structure",
+    "export_classification_dataset_to_folder": "export a ClassificationDataset to a multi-class folder structure"
+  },
+  "roboflow_supervision/src/supervision/dataset/utils.py": {
+    "build_class_index_mapping": "build a class index mapping from source classes to target classes for remapping detection IDs",
+    "approximate_mask_with_polygons": "approximate a binary segmentation mask with simplified polygons filtered by area",
+    "map_detections_class_id": "map detection class IDs from a source index scheme to a target index scheme",
+    "train_test_split": "split a list of data items into training and test sets with configurable ratio",
+    "merge_class_lists": "merge multiple class lists into a single sorted list of unique class names"
+  },
+  "roboflow_supervision/src/supervision/dataset/formats/coco.py": {
+    "load_coco_annotations": "load COCO annotations from a JSON file and convert them to Detections objects with optional masks",
+    "save_coco_annotations": "save a DetectionDataset to COCO format JSON annotations file with configurable mask approximation",
+    "coco_annotations_to_detections": "convert COCO annotation dictionaries for an image into Detections objects with optional masks",
+    "detections_to_coco_annotations": "convert Detections objects into COCO-formatted annotation dictionaries with polygon or RLE segmentation",
+    "get_coco_class_index_mapping": "generate a mapping from sequential class indices to original COCO category ids from an annotations file"
+  },
+  "roboflow_supervision/src/supervision/dataset/formats/pascal_voc.py": {
+    "build_detections_to_pascal_voc": "build a function that converts Detections objects to Pascal VOC XML format for export",
+    "create_load_pascal_voc_annotations": "create a function that loads PASCAL VOC XML annotations and returns image paths with Detections instances",
+    "create_object_to_pascal_voc": "create a function that builds a Pascal VOC XML object element from xyxy coordinates and an optional polygon",
+    "summarize_detections_from_xml_obj": "summarize the function that converts Pascal VOC XML objects to Detections instances",
+    "review_parse_polygon_points": "review the function that parses polygon coordinate elements from Pascal VOC XML into numpy arrays"
+  },
+  "roboflow_supervision/src/supervision/dataset/formats/yolo.py": {
+    "load_yolo_annotations": "load YOLO annotations from image and annotation directories with optional mask support and OBB format",
+    "save_yolo_annotations": "save a DetectionDataset as YOLO-format annotation text files to a specified directory",
+    "yolo_annotations_to_detections": "convert YOLO annotation lines into Detections objects with optional masks and oriented bounding boxes",
+    "detections_to_yolo_annotations": "convert Detections objects into YOLO-format annotation strings with optional polygon approximation from masks",
+    "save_data_yaml": "save a data.yaml file containing number of classes and class names for YOLO dataset configuration"
+  },
+  "roboflow_supervision/src/supervision/detection/compact_mask.py": {
+    "create_compact_mask_from_dense": "create a CompactMask from dense (N,H,W) boolean masks and xyxy bounding boxes for memory-efficient storage",
+    "build_compact_mask_rle_encode": "build a run-length encoded int32 array from a 2D boolean mask in row-major order",
+    "test_compact_mask_to_dense": "test the CompactMask class by converting compact RLE storage back to a dense (N,H,W) boolean array",
+    "refactor_compact_mask_repack": "refactor a CompactMask to re-encode all masks using tight bounding boxes that minimize crop area",
+    "review_compact_mask_merge": "review the CompactMask.merge static method that concatenates multiple CompactMask objects into one"
+  },
+  "roboflow_supervision/src/supervision/detection/core.py": {
+    "create_detections_from_ultralytics": "create a Detections object from Ultralytics YOLOv8 inference results with bounding boxes and masks",
+    "create_detections_from_inference": "create a Detections object from Roboflow API inference results including bounding boxes and class IDs",
+    "merge_detections_objects": "merge a list of Detections objects into a single Detections object combining all bounding boxes",
+    "run_nms_on_detections": "run non-maximum suppression on Detections with configurable IoU threshold and class-agnostic mode",
+    "create_detections_from_vlm": "create a Detections object from Vision Language Model results like PaliGemma or Gemini 2.5"
+  },
+  "roboflow_supervision/src/supervision/detection/line_zone.py": {
+    "create_line_zone": "create a LineZone to count objects crossing a predefined line between two Points",
+    "run_line_zone_trigger": "run LineZone.trigger to detect which detections crossed the line in the current frame",
+    "build_line_zone_annotator": "build a LineZoneAnnotator to draw the line and in/out counts on a video frame",
+    "build_line_zone_annotator_multiclass": "build a LineZoneAnnotatorMulticlass to draw a table of per-class crossing counts for multiple line zones",
+    "test_line_zone_crossing": "test LineZone crossing detection with tracker_id-based object tracking across frames"
+  },
+  "roboflow_supervision/src/supervision/detection/vlm.py": {
+    "parse_paligemma_bounding_boxes": "parse bounding boxes from PaliGemma VLM output and scale to specified resolution with optional class filtering",
+    "parse_florence_2_detection_results": "parse Florence 2 multi-task VLM results including bounding boxes, labels, masks, and oriented bounding boxes",
+    "parse_gemini_2_5_bounding_boxes_with_masks": "parse Google Gemini 2.5 VLM output extracting bounding boxes, class labels, confidence scores, and base64-encoded segmentation masks",
+    "parse_deepseek_vl_2_bounding_boxes": "parse DeepSeek-VL2 text output with ref and det tags to extract bounding boxes and class labels",
+    "validate_vlm_parameters": "validate VLM enum value, result type, and keyword arguments against required and allowed parameter lists"
+  },
+  "roboflow_supervision/src/supervision/detection/tools/csv_sink.py": {
+    "create_csv_sink": "create a CSVSink instance to save detection data to a CSV file with bounding box coordinates and custom fields",
+    "append_detections_to_csv": "append detection data with custom metadata to an open CSV sink file",
+    "parse_detection_data": "parse detection objects and custom data into per-detection row dictionaries for CSV serialization",
+    "parse_field_names": "parse detection and custom data fields into a sorted CSV header list with base detection columns",
+    "open_csv_sink": "open a CSVSink instance to write detection data to a CSV file with automatic directory creation"
+  },
+  "roboflow_supervision/src/supervision/detection/tools/inference_slicer.py": {
+    "build_tiled_inference_pipeline": "build a tiled inference pipeline on large images using InferenceSlicer with a YOLO callback and 640-pixel slices",
+    "run_parallel_slice_inference": "run parallel slice inference on large images using InferenceSlicer with ThreadPoolExecutor for concurrent processing",
+    "merge_overlapping_detections": "merge overlapping detections from tiled inference using InferenceSlicer with NON_MAX_SUPPRESSION overlap filter",
+    "move_detection_coordinates": "move detection bounding boxes and masks by an offset to reposition them in the full image coordinate system",
+    "generate_image_slice_offsets": "generate overlapping image slice offsets as bounding boxes for tiled inference on a given image resolution"
+  },
+  "roboflow_supervision/src/supervision/detection/tools/json_sink.py": {
+    "create_JSONSink": "create a JSONSink instance to save detection data to a JSON file",
+    "open_JSONSink_file": "open a JSONSink file for writing detection data with automatic directory creation",
+    "append_detections_JSONSink": "append detection data with optional custom data to a JSONSink instance",
+    "write_and_close_JSONSink": "write accumulated detection data to JSON and close the file",
+    "parse_detection_data_JSONSink": "parse detection and custom data into per-detection row dictionaries with bounding box coordinates"
+  },
+  "roboflow_supervision/src/supervision/detection/tools/polygon_zone.py": {
+    "create_PolygonZone": "create a PolygonZone from a numpy array of polygon coordinates to define a detection zone",
+    "trigger_PolygonZone": "trigger a PolygonZone with Detections to determine which detections fall within the zone",
+    "create_PolygonZoneAnnotator": "create a PolygonZoneAnnotator to annotate a frame with polygon zone outline and detection count",
+    "annotate_PolygonZoneAnnotator": "annotate an image scene with a PolygonZoneAnnotator drawing the zone polygon and object count",
+    "set_PolygonZone_anchors": "set custom triggering_anchors on a PolygonZone to use different bounding box positions for zone detection"
+  },
+  "roboflow_supervision/src/supervision/detection/tools/smoother.py": {
+    "create_DetectionsSmoother": "create a DetectionsSmoother instance with configurable history length for video tracking",
+    "update_with_detections": "update the smoother with new detections and return smoothed results across frames",
+    "get_track": "get the smoothed detection for a specific track ID averaged over its history",
+    "get_smoothed_detections": "get all smoothed detections merged from every tracked object's history",
+    "build_video_tracking_pipeline": "build a video tracking pipeline using DetectionsSmoother with ByteTrack and YOLO"
+  },
+  "roboflow_supervision/src/supervision/detection/tools/transformers.py": {
+    "create_process_transformers_detection_result": "create a processed detection result dictionary from transformers post_process or post_process_detection output with boxes, labels, and scores",
+    "process_transformers_v4_segmentation_result": "process transformers v4 segmentation results from post_process_panoptic, post_process_segmentation, or post_process_instance into masks and bounding boxes",
+    "process_transformers_v5_segmentation_result": "process transformers v5 segmentation results from post_process_semantic_segmentation, post_process_instance_segmentation, or post_process_panoptic_segmentation",
+    "process_transformers_v5_semantic_or_instance_segmentation_result": "process transformers v5 semantic or instance segmentation results from segments_info and segmentation dictionary into masks and class IDs",
+    "process_transformers_v4_panoptic_segmentation_result": "process transformers v4 panoptic segmentation results from png_string and segments_info into label masks and class IDs",
+    "convert_png_string_to_segmentation_array": "convert a PNG byte string from panoptic segmentation into a label mask numpy array",
+    "append_class_names_to_data": "append class names to a data dictionary by mapping class IDs through an id2label dictionary"
+  },
+  "roboflow_supervision/src/supervision/detection/utils/boxes.py": {
+    "create_clip_boxes": "clip bounding box coordinates to fit within a frame resolution using xyxy format and resolution_wh tuple",
+    "create_pad_boxes": "pad bounding box coordinates by adding px and py pixel values to expand box boundaries",
+    "create_denormalize_boxes": "convert normalized bounding box coordinates to absolute pixel coordinates given resolution and normalization factor",
+    "create_move_boxes": "reposition bounding boxes by applying an offset array with dx and dy translation values",
+    "create_scale_boxes": "scale bounding box dimensions by a factor while keeping centers fixed"
+  },
+  "roboflow_supervision/src/supervision/detection/utils/converters.py": {
+    "convert_xywh_to_xyxy": "convert bounding box coordinates from xywh format (x, y, width, height) to xyxy format (x_min, y_min, x_max, y_max)",
+    "convert_xyxy_to_xywh": "convert bounding box coordinates from xyxy format (x_min, y_min, x_max, y_max) to xywh format (x, y, width, height)",
+    "generate_mask_from_polygon": "generate a binary mask from a polygon given vertices and image resolution width and height",
+    "convert_mask_to_rle": "convert a binary mask to a COCO run-length encoding list of integers or compressed string",
+    "convert_mask_to_polygons": "convert a binary mask to a list of polygons with at least three points"
+  },
+  "roboflow_supervision/src/supervision/detection/utils/internal.py": {
+    "process_roboflow_result": "process a roboflow prediction result dict into numpy arrays of bounding boxes, masks, and class data",
+    "extract_ultralytics_masks": "extract and resize segmentation masks from ultralytics YOLOv8 inference results to original image shape",
+    "merge_data": "merge data payloads from a list of detection dictionaries by concatenating numpy arrays and lists",
+    "merge_metadata": "merge metadata dictionaries from multiple detections, raising on conflicting values for the same key",
+    "get_data_item": "retrieve a subset of a detection data dictionary by integer index, slice, list, or boolean mask"
+  },
+  "roboflow_supervision/src/supervision/detection/utils/iou_and_nms.py": {
+    "compute_box_iou": "compute the IoU or IOS overlap metric between two bounding boxes",
+    "compute_box_iou_batch": "compute pairwise IoU matrix between batches of ground truth and detection bounding boxes",
+    "perform_mask_non_max_suppression": "perform non-maximum suppression on segmentation predictions to filter overlapping masks",
+    "perform_mask_non_max_merge": "perform non-maximum merging on segmentation predictions to group overlapping masks",
+    "perform_box_non_max_suppression": "perform non-maximum suppression on bounding box detection predictions to filter overlaps"
+  },
+  "roboflow_supervision/src/supervision/detection/utils/masks.py": {
+    "move_masks": "move binary masks in a 3D array by a specified (x, y) offset and resolution",
+    "calculate_masks_centroids": "calculate the centroid coordinates of binary masks in a tensor",
+    "contains_holes": "check if a 2D binary mask contains holes enclosed by foreground pixels",
+    "contains_multiple_segments": "check if a 2D binary mask contains multiple unconnected foreground segments",
+    "filter_segments_by_distance": "filter mask segments keeping the largest component and nearby ones within a distance threshold"
+  },
+  "roboflow_supervision/src/supervision/detection/utils/polygons.py": {
+    "filter_polygons_by_area": "filter a list of polygons by minimum and maximum area thresholds using cv2.contourArea",
+    "approximate_polygon": "approximate a polygon by reducing points with Ramer-Douglas-Peucker algorithm while preserving shape",
+    "test_filter_polygons_by_area": "test filter_polygons_by_area with polygons of varying areas and min/max area constraints",
+    "test_approximate_polygon": "test approximate_polygon with different percentage values and epsilon_step parameters",
+    "refactor_approximate_polygon": "refactor approximate_polygon to support configurable minimum point count instead of hardcoded 3"
+  },
+  "roboflow_supervision/src/supervision/detection/utils/vlms.py": {
+    "calculate_edit_distance": "calculate the edit distance between two strings using Levenshtein distance algorithm",
+    "test_edit_distance": "test the edit_distance function with case_sensitive and case_insensitive comparisons",
+    "fuzzy_match_candidates": "fuzzy match a query string against a list of candidates returning the first match index",
+    "fuzzy_match_with_threshold": "fuzzy match candidates with a maximum edit distance threshold to find close matches",
+    "review_edit_distance": "review the edit_distance function that computes minimum single-character edits between strings"
+  },
+  "roboflow_supervision/src/supervision/draw/color.py": {
+    "create_color_from_hex": "create a Color instance from a hex string like '#ff0000' or '#f00'",
+    "build_color_palette_from_matplotlib": "build a ColorPalette instance from a Matplotlib palette name and color count",
+    "get_color_by_index_from_palette": "get a color at a given index from a ColorPalette with automatic wrapping",
+    "convert_color_to_bgr_tuple": "convert a Color object or RGB tuple to a BGR tuple for OpenCV compatibility",
+    "create_color_from_rgb_tuple": "create a Color instance from an RGB tuple with value range validation"
+  },
+  "roboflow_supervision/src/supervision/draw/utils.py": {
+    "draw_line": "draw a line on an image scene between two points with specified color and thickness",
+    "draw_rectangle": "draw a rectangle border on an image scene with specified color and thickness",
+    "draw_filled_rectangle": "draw a filled rectangle with optional opacity on an image scene",
+    "draw_text": "draw text with optional background rectangle on an image scene",
+    "calculate_optimal_text_scale": "calculate optimal font scale for text rendering based on image resolution"
+  },
+  "roboflow_supervision/src/supervision/geometry/core.py": {
+    "create_point_2d": "create a Point dataclass instance with x and y float coordinates in 2D space",
+    "build_vector_magnitude": "build a Vector from two Points and calculate its magnitude and center properties",
+    "test_vector_cross_product": "test the Vector cross_product method to determine if a point lies left, right, or collinear to the vector",
+    "create_rect_from_xyxy": "create a Rect from an xyxy tuple and compute its top_left, bottom_right points and padded dimensions",
+    "list_position_anchor_values": "list all Position enum values representing anchor point positions like CENTER, TOP_LEFT, BOTTOM_RIGHT"
+  },
+  "roboflow_supervision/src/supervision/geometry/utils.py": {
+    "summarize_get_polygon_center": "summarize the python function get_polygon_center that calculates the center of a polygon from vertices",
+    "test_get_polygon_center": "test the python function get_polygon_center with a square polygon array",
+    "review_get_polygon_center": "review the python function get_polygon_center and its centroid calculation algorithm",
+    "refactor_get_polygon_center": "refactor the python function get_polygon_center to support non-convex polygons",
+    "create_function_get_polygon_center": "create a function that calls get_polygon_center to compute polygon centroids from a list of polygon vertex arrays"
+  },
+  "roboflow_supervision/src/supervision/key_points/annotators.py": {
+    "create_vertex_annotator": "create a VertexAnnotator to draw colored circles at skeleton keypoint locations on an image",
+    "create_edge_annotator": "create an EdgeAnnotator to draw lines connecting skeleton keypoints into a skeleton structure on an image",
+    "create_vertex_label_annotator": "create a VertexLabelAnnotator to draw labeled text boxes at each skeleton keypoint on an image",
+    "test_vertex_label_smart_position": "test VertexLabelAnnotator with smart_position to automatically spread out overlapping keypoint labels",
+    "review_vertex_label_colors": "review VertexLabelAnnotator per-keypoint color customization using a list of Color objects"
+  },
+  "roboflow_supervision/src/supervision/key_points/core.py": {
+    "create_keypoints_from_ultralytics": "create a KeyPoints object from Ultralytics YOLO pose inference results",
+    "create_keypoints_from_mediapipe": "create a KeyPoints object from MediaPipe pose or face landmark detection results",
+    "create_keypoints_from_inference": "create a KeyPoints object from Roboflow Inference API pose prediction results",
+    "convert_keypoints_to_detections": "convert a KeyPoints object to Detections with bounding boxes computed from keypoint coordinates",
+    "filter_keypoints_by_index": "filter and slice a KeyPoints object using integer, boolean mask, or 2D index indexing"
+  },
+  "roboflow_supervision/src/supervision/metrics/detection.py": {
+    "create_ConfusionMatrix_from_detections": "create a ConfusionMatrix from predicted and ground-truth Detections objects with configurable confidence and IoU thresholds",
+    "build_ConfusionMatrix_benchmark": "build a ConfusionMatrix by running a model callback over a DetectionDataset and evaluating predictions",
+    "plot_ConfusionMatrix": "plot a ConfusionMatrix visualization with optional normalization, custom classes, and save to file",
+    "create_MeanAveragePrecision_from_detections": "create MeanAveragePrecision metrics (mAP50, mAP75, mAP50-95) from predicted and ground-truth Detections objects",
+    "run_MeanAveragePrecision_benchmark": "run MeanAveragePrecision benchmark by evaluating a model callback over a DetectionDataset"
+  },
+  "roboflow_supervision/src/supervision/metrics/f1_score.py": {
+    "create_f1_score_metric": "create an F1Score metric to evaluate object detection model predictions against ground truth detections",
+    "run_f1_score_update_compute": "run F1Score metric by updating with predictions and targets then computing the result",
+    "test_f1_score_with_masks": "test the F1Score metric with metric_target set to MetricTarget.MASKS for segmentation evaluation",
+    "summarize_f1_score_result": "summarize the F1ScoreResult object by accessing f1_50 and f1_75 properties",
+    "review_f1_score_result_plot": "review the F1ScoreResult by calling plot() to visualize F1 scores by object size"
+  },
+  "roboflow_supervision/src/supervision/metrics/mean_average_precision.py": {
+    "create_metric_evaluate_detections": "create a MeanAveragePrecision metric to evaluate object detection predictions against ground truth targets",
+    "compute_map_result": "compute MeanAveragePrecisionResult with map50, map75, and map50_95 scores from prediction and target detections",
+    "build_coco_evaluation_dataset": "build an EvaluationDataset from COCO-format ground truth annotations for object detection evaluation",
+    "run_coco_evaluator": "run COCOEvaluator to compute precision, recall, and IoU metrics between targets and predictions",
+    "configure_evaluation_parameters": "configure COCOEvaluatorParameters with IoU thresholds, recall thresholds, and area ranges for mAP computation"
+  },
+  "roboflow_supervision/src/supervision/metrics/mean_average_recall.py": {
+    "create_MeanAverageRecall": "create a MeanAverageRecall metric instance to evaluate object detection performance",
+    "run_MeanAverageRecall_update_compute": "run MeanAverageRecall update with predictions and targets then compute mAR results",
+    "test_MeanAverageRecallResult_to_pandas": "test MeanAverageRecallResult conversion to pandas DataFrame for reporting",
+    "review_MeanAverageRecallResult_plot": "review MeanAverageRecallResult bar plot visualization of mAR by object size",
+    "summarize_MeanAverageRecall_reset": "summarize MeanAverageRecall reset method to clear stored predictions and targets"
+  },
+  "roboflow_supervision/src/supervision/metrics/precision.py": {
+    "create_precision_metric": "create a Precision metric instance to evaluate object detection model predictions against ground truth targets",
+    "test_precision_update_compute": "test the Precision metric by updating with predictions and targets detections then computing precision scores at IoU thresholds",
+    "review_precision_reset": "review the Precision metric reset method that clears stored predictions and targets for reuse",
+    "summarize_precision_result_properties": "summarize the PrecisionResult dataclass properties including precision_at_50, precision_at_75, precision_scores and per-class precision",
+    "run_precision_plot": "run the PrecisionResult plot method to visualize precision scores by object size category as a bar chart"
+  },
+  "roboflow_supervision/src/supervision/metrics/recall.py": {
+    "create_recall_metric": "create a recall metric to evaluate object detection model predictions against ground truth targets",
+    "test_recall_update_compute": "test the Recall class update and compute methods with predictions and targets Detections",
+    "review_recall_class": "review the Recall class and its IoU-based matching logic for box, mask, and oriented bounding box metrics",
+    "summarize_recall_result": "summarize the RecallResult dataclass including recall_at_50, recall_at_75, and per-class recall scores",
+    "run_recall_plot": "run the RecallResult plot method to visualize recall scores by object size category"
+  },
+  "roboflow_supervision/src/supervision/metrics/utils/object_size.py": {
+    "create_object_size_category_enum": "create the ObjectSizeCategory enum with SMALL, MEDIUM, LARGE categories based on pixel area thresholds",
+    "classify_bbox_size": "classify bounding boxes as small, medium, or large based on area using get_bbox_size_category",
+    "classify_mask_size": "classify detection masks as small, medium, or large based on pixel count using get_mask_size_category",
+    "classify_obb_size": "classify oriented bounding boxes as small, medium, or large using the shoelace formula for area in get_obb_size_category",
+    "classify_detection_size": "classify a Detections object by size category using get_detection_size_category with boxes, masks, or oriented bounding boxes"
+  },
+  "roboflow_supervision/src/supervision/tracker/byte_tracker/core.py": {
+    "create_byte_track_tracker": "create a ByteTrack tracker instance with custom confidence and matching thresholds for object tracking",
+    "run_byte_track_update": "run ByteTrack update_with_detections to assign persistent tracker IDs to object detections",
+    "run_byte_track_reset": "run ByteTrack reset to clear all tracked, lost, and removed tracks between video sequences",
+    "review_joint_tracks": "review the joint_tracks function that merges two track lists without duplicate internal IDs",
+    "review_remove_duplicate_tracks": "review the remove_duplicate_tracks function that eliminates overlapping tracks between tracked and lost lists"
+  },
+  "roboflow_supervision/src/supervision/tracker/byte_tracker/kalman_filter.py": {
+    "create_kalman_filter_track": "create a KalmanFilter instance and initiate a new track from an initial bounding box measurement",
+    "run_kalman_filter_prediction": "run the Kalman filter prediction step to forecast the next state mean and covariance",
+    "run_kalman_filter_correction": "run the Kalman filter update step to correct predicted state with a new measurement",
+    "project_state_to_measurement": "project the Kalman filter state distribution to measurement space for comparison with observations",
+    "predict_multiple_states": "run the vectorized multi_predict step to forecast states and covariances for multiple tracks at once"
+  },
+  "roboflow_supervision/src/supervision/tracker/byte_tracker/matching.py": {
+    "run_linear_assignment": "run linear assignment on a cost matrix with a threshold to get matched and unmatched indices",
+    "build_iou_distance_matrix": "build an IoU-based distance cost matrix between two sets of tracks or bounding boxes",
+    "fuse_detection_scores": "fuse detection scores into a cost matrix by multiplying IoU similarity with detection confidence",
+    "test_indices_to_matches": "test indices_to_matches to filter matched pairs from a cost matrix using a threshold",
+    "review_linear_assignment": "review linear_assignment to understand how scipy's linear_sum_assignment is used with threshold filtering"
+  },
+  "roboflow_supervision/src/supervision/tracker/byte_tracker/single_object_track.py": {
+    "create_STrack": "create an STrack object for single-object tracking with bounding box, score, and Kalman filter",
+    "build_STrack_multi_predict": "build multi-object prediction by calling STrack.multi_predict on a list of tracks with shared Kalman filter",
+    "activate_STrack": "activate a new STrack tracklet with Kalman filter initialization and frame ID assignment",
+    "update_STrack": "update an existing STrack track with new detection data and Kalman filter measurement update",
+    "convert_STrack_bounding_box": "convert STrack bounding box between TLWH, TLBR, and XYAH coordinate formats"
+  },
+  "roboflow_supervision/src/supervision/tracker/byte_tracker/utils.py": {
+    "create_id_counter": "create an IdCounter instance with a custom starting ID for tracking object identifiers",
+    "test_id_counter_reset": "test the IdCounter reset method to verify it resets the internal counter to the initial start_id",
+    "run_id_counter_new_id": "run the IdCounter new_id method to retrieve and increment the next available ID",
+    "refactor_id_counter_no_id": "refactor the IdCounter NO_ID property to use a different sentinel value for invalid IDs",
+    "review_id_counter": "review the IdCounter class and its initialization, reset, new_id, and NO_ID property implementations"
+  },
+  "roboflow_supervision/src/supervision/utils/conversion.py": {
+    "convert_pil_to_cv2": "convert a PIL image to OpenCV numpy array with RGB to BGR color space conversion",
+    "convert_cv2_to_pil": "convert an OpenCV numpy array to PIL Image with BGR to RGB color space conversion",
+    "batch_convert_images_to_cv2": "convert a list of PIL and OpenCV images to a list of OpenCV numpy arrays",
+    "decorate_annotator_with_cv2_conversion": "decorate a class method annotator to accept both PIL images and OpenCV arrays and convert automatically",
+    "decorate_standalone_function_with_cv2_conversion": "decorate a standalone image processing function to accept both PIL images and OpenCV arrays and convert automatically"
+  },
+  "roboflow_supervision/src/supervision/utils/file.py": {
+    "list_files_with_extensions": "list files in a directory filtered by specified file extensions like txt and md",
+    "read_txt_file": "read a text file and return a list of stripped lines, optionally skipping empty lines",
+    "save_json_file": "save a dictionary to a JSON file with numpy array serialization support",
+    "read_json_file": "read a JSON file and return its contents as a dictionary",
+    "save_yaml_file": "save a dictionary to a YAML file with sorted keys disabled"
+  },
+  "roboflow_supervision/src/supervision/utils/image.py": {
+    "create_tiles_from_images": "create a tile mosaic from a list of images with optional grid size and titles",
+    "crop_image_by_coordinates": "crop an image using xyxy bounding box coordinates",
+    "resize_image_to_resolution": "resize an image to a target width and height with optional aspect ratio preservation",
+    "save_images_to_directory": "save multiple images to a directory using the ImageSink context manager",
+    "tint_image_with_color": "tint an image with a solid color overlay at a given opacity"
+  },
+  "roboflow_supervision/src/supervision/utils/internal.py": {
+    "create_classproperty_decorator": "create a classproperty decorator that combines classmethod and property for class-level attribute access",
+    "build_deprecated_parameter_decorator": "build a deprecated_parameter decorator to mark function parameters as deprecated with automatic warning and value mapping",
+    "test_warn_deprecated": "test the warn_deprecated function to issue custom deprecation warnings with SupervisionWarnings category",
+    "refactor_get_instance_variables": "refactor get_instance_variables to extract public non-callable instance fields excluding properties",
+    "summarize_supervision_warnings": "summarize the SupervisionWarnings class and warn_deprecated function for controlling deprecation warning visibility"
+  },
+  "roboflow_supervision/src/supervision/utils/iterables.py": {
+    "create_batches_create_batches": "create batches from a sequence by splitting it into chunks of a specified batch size",
+    "fill_fill": "fill a list with padding elements until it reaches a desired size",
+    "find_duplicates_find_duplicates": "find all duplicate elements in a list and return them as a list"
+  },
+  "roboflow_supervision/src/supervision/utils/notebook.py": {
+    "plot_image_single": "plot a single numpy or PIL image using matplotlib with configurable size and colormap",
+    "plot_images_grid": "plot multiple numpy or PIL images in a configurable grid layout with optional titles",
+    "test_plot_image": "test the plot_image function with a numpy array and custom size parameters",
+    "test_plot_images_grid": "test the plot_images_grid function with mixed PIL and numpy images in a grid",
+    "refactor_plot_images_grid": "refactor the plot_images_grid function to support dynamic grid sizing based on image count"
+  },
+  "roboflow_supervision/src/supervision/utils/video.py": {
+    "create_VideoInfo": "create a VideoInfo object from a video file path to get width, height, fps and total frame count",
+    "create_VideoSink": "create a VideoSink context manager to write video frames to an output file using OpenCV",
+    "run_process_video": "run process_video to asynchronously process video frames with a callback function using a threaded pipeline",
+    "run_get_video_frames_generator": "run get_video_frames_generator to yield video frames with optional stride, start, end and iterative seek options",
+    "create_FPSMonitor": "create an FPSMonitor to benchmark latency by tracking timestamps and computing average frames per second"
+  }
+}

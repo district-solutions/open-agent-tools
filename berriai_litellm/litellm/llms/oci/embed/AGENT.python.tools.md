@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/oci/embed/transformation.py
+
+Prompts
+
+```
+['build an OCI embedding config that transforms OpenAI-style embedding requests to OCI Cohere format', 'validate OCI credentials including user, fingerprint, tenancy, compartment ID, and key for embedding requests', 'transform an embedding request with text inputs, serving mode, and input type to OCI embedText API format', 'transform an OCI embedding response with embeddings, model ID, and token counts to OpenAI EmbeddingResponse format', 'get the OCIError exception class for embedding API errors with message, status code, and headers']
+```
+
+Usage
+
+```
+{'build_oci_embedding_config': 'build an OCI embedding config that transforms OpenAI-style embedding requests to OCI Cohere format', 'validate_oci_credentials': 'validate OCI credentials including user, fingerprint, tenancy, compartment ID, and key for embedding requests', 'transform_embedding_request': 'transform an embedding request with text inputs, serving mode, and input type to OCI embedText API format', 'transform_embedding_response': 'transform an OCI embedding response with embeddings, model ID, and token counts to OpenAI EmbeddingResponse format', 'get_error_class': 'get the OCIError exception class for embedding API errors with message, status code, and headers'}
+```
+

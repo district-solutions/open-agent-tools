@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/fireworks_ai/embed/fireworks_ai_transformation.py
+
+Prompts
+
+```
+['test the get_supported_openai_params method returns dimensions for nomic-ai models', 'test the map_openai_params method maps supported params to optional_params dict', 'test the is_fireworks_embedding_model method checks if a model is in fireworks_ai_embedding_models', 'review the FireworksAIEmbeddingConfig class and its openai param mapping behavior', 'summarize the FireworksAIEmbeddingConfig class and its three methods']
+```
+
+Usage
+
+```
+{'test_get_supported_openai_params': 'test the get_supported_openai_params method returns dimensions for nomic-ai models', 'test_map_openai_params': 'test the map_openai_params method maps supported params to optional_params dict', 'test_is_fireworks_embedding_model': 'test the is_fireworks_embedding_model method checks if a model is in fireworks_ai_embedding_models', 'review_fireworks_ai_embedding_config': 'review the FireworksAIEmbeddingConfig class and its openai param mapping behavior', 'summarize_fireworks_ai_transformation': 'summarize the FireworksAIEmbeddingConfig class and its three methods'}
+```
+

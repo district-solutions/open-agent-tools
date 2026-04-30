@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/hunyuan_v1_moe/test_modeling_hunyuan_v1_moe.py
+
+Prompts
+
+```
+['test the HunYuanMoEV1Model class and its base model integration with the transformer framework', 'test the HunYuanMoEV1ForCausalLM model generation with the tencent/Hunyuan-A13B-Instruct model', 'test torch compile integration for HunYuanMoEV1 model forward pass and output generation', 'test model generation with static cache from input embeddings for HunYuanMoEV1', 'test that pipeline tests are correctly skipped for unsupported HunYuanMoEV1 model architecture']
+```
+
+Usage
+
+```
+{'test_hunyuan_moe_model': 'test the HunYuanMoEV1Model class and its base model integration with the transformer framework', 'test_model_generation': 'test the HunYuanMoEV1ForCausalLM model generation with the tencent/Hunyuan-A13B-Instruct model', 'test_generate_compilation': 'test torch compile integration for HunYuanMoEV1 model forward pass and output generation', 'test_static_cache_generation': 'test model generation with static cache from input embeddings for HunYuanMoEV1', 'test_pipeline_skipping': 'test that pipeline tests are correctly skipped for unsupported HunYuanMoEV1 model architecture'}
+```
+

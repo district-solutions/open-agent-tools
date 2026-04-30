@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/optimum-habana
+- repo_uri: https://github.com/huggingface/optimum-habana
+
+## File: huggingface_optimum-habana/examples/gaudi_spawn.py
+
+Prompts
+
+```
+['run a distributed training script on HPUs using gaudi_spawn.py with --world_size and --use_mpi', 'run a multi-node DeepSpeed training script on HPUs using gaudi_spawn.py with --use_deepspeed and --hostfile', 'parse command line arguments for the Habana Gaudi distributed training launch helper utility', 'run the main entry point that patches sys.argv and launches DistributedRunner for HPU training', 'configure world_size, master_port, use_mpi, and use_deepspeed flags for gaudi_spawn.py distributed training']
+```
+
+Usage
+
+```
+{'run_gaudi_distributed_training': 'run a distributed training script on HPUs using gaudi_spawn.py with --world_size and --use_mpi', 'run_gaudi_deepspeed_training': 'run a multi-node DeepSpeed training script on HPUs using gaudi_spawn.py with --use_deepspeed and --hostfile', 'parse_args_gaudi_spawn': 'parse command line arguments for the Habana Gaudi distributed training launch helper utility', 'main_gaudi_spawn': 'run the main entry point that patches sys.argv and launches DistributedRunner for HPU training', 'configure_gaudi_spawn_args': 'configure world_size, master_port, use_mpi, and use_deepspeed flags for gaudi_spawn.py distributed training'}
+```
+

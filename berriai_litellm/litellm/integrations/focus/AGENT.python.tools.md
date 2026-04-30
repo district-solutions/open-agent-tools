@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/integrations/focus/transformer.py
+
+Prompts
+
+```
+['transform LiteLLM DB rows into Focus-compatible normalized schema using polars DataFrame', 'build a polars expression that produces a JSON Tags string per row from metadata columns', 'test the FocusTransformer class transforms polars DataFrames into the Focus normalized schema', 'refactor the FocusTransformer to support additional metadata tag keys beyond the predefined set', 'review the _build_tags_expr function that constructs polars struct expressions for JSON serialization']
+```
+
+Usage
+
+```
+{'transform_FOCUS_DATA': 'transform LiteLLM DB rows into Focus-compatible normalized schema using polars DataFrame', 'build_TAGS_EXPR': 'build a polars expression that produces a JSON Tags string per row from metadata columns', 'test_FOCUS_TRANSFORMER': 'test the FocusTransformer class transforms polars DataFrames into the Focus normalized schema', 'refactor_FOCUS_TRANSFORMER': 'refactor the FocusTransformer to support additional metadata tag keys beyond the predefined set', 'review_BUILD_TAGS_EXPR': 'review the _build_tags_expr function that constructs polars struct expressions for JSON serialization'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/bedrock/chat/mantle/transformation.py
+
+Prompts
+
+```
+['build a URL for the bedrock-mantle endpoint using the AWS region from optional params', 'transform an OpenAI-format chat request into a bedrock-mantle Anthropic Messages API request', 'async transform a chat request for bedrock-mantle with document URL to base64 conversion', 'create an AmazonMantleConfig instance for bedrock-mantle endpoint configuration', 'review the AmazonMantleConfig class methods for building and transforming bedrock-mantle requests']
+```
+
+Usage
+
+```
+{'build_get_complete_url': 'build a URL for the bedrock-mantle endpoint using the AWS region from optional params', 'transform_request_bedrock_mantle': 'transform an OpenAI-format chat request into a bedrock-mantle Anthropic Messages API request', 'async_transform_request_bedrock_mantle': 'async transform a chat request for bedrock-mantle with document URL to base64 conversion', 'create_amazon_mantle_config': 'create an AmazonMantleConfig instance for bedrock-mantle endpoint configuration', 'review_amazon_mantle_config_methods': 'review the AmazonMantleConfig class methods for building and transforming bedrock-mantle requests'}
+```
+

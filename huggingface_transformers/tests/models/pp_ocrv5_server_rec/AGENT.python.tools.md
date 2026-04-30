@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/pp_ocrv5_server_rec/test_modeling_pp_ocrv5_server_rec.py
+
+Prompts
+
+```
+['test the PPOCRV5ServerRecForTextRecognition model forward pass with pixel values input', 'test the PPOCRV5ServerRec model hidden states output with output_hidden_states flag enabled', 'test the PPOCRV5ServerRec model inference with float32 float16 and bfloat16 dtypes', 'test the PPOCRV5ServerRecConfig configuration common properties and defaults', 'test the PPOCRV5ServerRec model text recognition inference on a real image URL']
+```
+
+Usage
+
+```
+{'test_model_pp_forward': 'test the PPOCRV5ServerRecForTextRecognition model forward pass with pixel values input', 'test_model_hidden_states': 'test the PPOCRV5ServerRec model hidden states output with output_hidden_states flag enabled', 'test_model_inference_dtypes': 'test the PPOCRV5ServerRec model inference with float32 float16 and bfloat16 dtypes', 'test_model_config': 'test the PPOCRV5ServerRecConfig configuration common properties and defaults', 'test_model_text_recognition': 'test the PPOCRV5ServerRec model text recognition inference on a real image URL'}
+```
+

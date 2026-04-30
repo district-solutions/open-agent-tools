@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/perplexity/cost_calculator.py
+
+Prompts
+
+```
+['calculate perplexity API cost from model name and usage block with prompt and completion tokens', 'add citation token cost to prompt cost when citation_tokens and citation_cost_per_token are present in usage', 'add reasoning token cost to completion cost from reasoning_tokens or completion_tokens_details', 'add web search request cost to completion cost using web_search_requests and search cost per query', 'use pre-calculated total_cost from usage.cost dict instead of manual token-based cost calculation']
+```
+
+Usage
+
+```
+{'calculate_cost_per_token': 'calculate perplexity API cost from model name and usage block with prompt and completion tokens', 'calculate_citation_token_cost': 'add citation token cost to prompt cost when citation_tokens and citation_cost_per_token are present in usage', 'calculate_reasoning_token_cost': 'add reasoning token cost to completion cost from reasoning_tokens or completion_tokens_details', 'calculate_search_query_cost': 'add web search request cost to completion cost using web_search_requests and search cost per query', 'use_pre_calculated_cost': 'use pre-calculated total_cost from usage.cost dict instead of manual token-based cost calculation'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/diffusers
+- repo_uri: https://github.com/huggingface/diffusers
+
+## File: huggingface_diffusers/tests/pipelines/nucleusmoe_image/test_nucleusmoe_image.py
+
+Prompts
+
+```
+['test the NucleusMoEImagePipeline inference by running get_dummy_components and get_dummy_inputs to generate an image', 'test the NucleusMoEImagePipeline true classifier-free guidance with guidance_scale 4.0 and negative prompt', 'test the NucleusMoEImagePipeline by encoding prompts and passing prompt_embeds directly to the pipeline', 'test the NucleusMoEImagePipeline attention slicing forward pass with different slice sizes to verify output consistency', 'test the NucleusMoEImagePipeline encode_prompt method works in isolation by comparing outputs with and without text encoders']
+```
+
+Usage
+
+```
+{'test_nucleusmoe_inference': 'test the NucleusMoEImagePipeline inference by running get_dummy_components and get_dummy_inputs to generate an image', 'test_nucleusmoe_cfg': 'test the NucleusMoEImagePipeline true classifier-free guidance with guidance_scale 4.0 and negative prompt', 'test_nucleusmoe_prompt_embeds': 'test the NucleusMoEImagePipeline by encoding prompts and passing prompt_embeds directly to the pipeline', 'test_nucleusmoe_attention_slicing': 'test the NucleusMoEImagePipeline attention slicing forward pass with different slice sizes to verify output consistency', 'test_nucleusmoe_encode_prompt_isolation': 'test the NucleusMoEImagePipeline encode_prompt method works in isolation by comparing outputs with and without text encoders'}
+```
+

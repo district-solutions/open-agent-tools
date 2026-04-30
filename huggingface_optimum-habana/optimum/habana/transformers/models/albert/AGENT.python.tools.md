@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/optimum-habana
+- repo_uri: https://github.com/huggingface/optimum-habana
+
+## File: huggingface_optimum-habana/optimum/habana/transformers/models/albert/modeling_albert.py
+
+Prompts
+
+```
+['review the gaudi_albert_forward function for HPU mixed precision handling in the attention mask computation', 'refactor gaudi_albert_forward to support additional HPU-specific optimizations for the ALBERT model forward pass', 'test gaudi_albert_forward with input_ids and attention_mask tensors on a Gaudi HPU device', 'summarize how gaudi_albert_forward disables autocast for the extended attention mask on HPU', 'build a script that patches gaudi_albert_forward onto an ALBERT model for HPU inference']
+```
+
+Usage
+
+```
+{'review_gaudi_albert_forward': 'review the gaudi_albert_forward function for HPU mixed precision handling in the attention mask computation', 'refactor_gaudi_albert_forward': 'refactor gaudi_albert_forward to support additional HPU-specific optimizations for the ALBERT model forward pass', 'test_gaudi_albert_forward': 'test gaudi_albert_forward with input_ids and attention_mask tensors on a Gaudi HPU device', 'summarize_gaudi_albert_forward': 'summarize how gaudi_albert_forward disables autocast for the extended attention mask on HPU', 'build_albert_hpu_inference': 'build a script that patches gaudi_albert_forward onto an ALBERT model for HPU inference'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/cvt/test_modeling_cvt.py
+
+Prompts
+
+```
+['test the CvtModelTester.prepare_config_and_inputs method to generate config, pixel values, and labels for CvT model testing', 'test the CvtModelTest.test_model method to verify CvtModel forward pass with generated inputs', 'test the CvtModelTest.test_for_image_classification method to verify CvtForImageClassification logits output shape', 'test the CvtModelTest.test_hidden_states_output method to verify hidden states output across CvT model layers', 'run the CvtModelIntegrationTest.test_inference_image_classification_head method to test pretrained microsoft/cvt-13 inference on a test image']
+```
+
+Usage
+
+```
+{'test_cvtprepare_config_and_inputs': 'test the CvtModelTester.prepare_config_and_inputs method to generate config, pixel values, and labels for CvT model testing', 'test_CvtModelTest_model': 'test the CvtModelTest.test_model method to verify CvtModel forward pass with generated inputs', 'test_CvtModelTest_image_classification': 'test the CvtModelTest.test_for_image_classification method to verify CvtForImageClassification logits output shape', 'test_CvtModelTest_hidden_states': 'test the CvtModelTest.test_hidden_states_output method to verify hidden states output across CvT model layers', 'run_CvtModelIntegrationTest_inference': 'run the CvtModelIntegrationTest.test_inference_image_classification_head method to test pretrained microsoft/cvt-13 inference on a test image'}
+```
+

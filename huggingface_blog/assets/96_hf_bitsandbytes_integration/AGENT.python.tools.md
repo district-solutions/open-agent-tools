@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/blog
+- repo_uri: https://github.com/huggingface/blog.git
+
+## File: huggingface_blog/assets/96_hf_bitsandbytes_integration/example.py
+
+Prompts
+
+```
+['run the bitsandbytes example to quantize an fp16 model to int8 and compare memory footprint', 'get the memory footprint of a PyTorch model by summing parameter element counts times element sizes', 'build a PyTorch Sequential model with Linear layers cast to float16 precision', 'create an int8 quantized model using bitsandbytes Linear8bitLt layers with has_fp16_weights set to False', 'compare the memory footprint of an fp16 model versus its int8 quantized counterpart']
+```
+
+Usage
+
+```
+{'run_model_quantization_demo': 'run the bitsandbytes example to quantize an fp16 model to int8 and compare memory footprint', 'get_model_memory_footprint': 'get the memory footprint of a PyTorch model by summing parameter element counts times element sizes', 'build_fp16_sequential_model': 'build a PyTorch Sequential model with Linear layers cast to float16 precision', 'create_int8_model_with_linear8bitlt': 'create an int8 quantized model using bitsandbytes Linear8bitLt layers with has_fp16_weights set to False', 'compare_fp16_int8_memory': 'compare the memory footprint of an fp16 model versus its int8 quantized counterpart'}
+```
+

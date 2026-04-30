@@ -1,0 +1,33 @@
+# Agent Python Tools
+
+- repo: lsdefine/GenericAgent
+- repo_uri: https://github.com/lsdefine/GenericAgent
+
+## File: lsdefine_GenericAgent/reflect/autonomous.py
+
+Prompts
+
+```
+['run the autonomous check function that returns a message when user has been away over 30 minutes', 'run the scheduler check function to evaluate and trigger scheduled tasks based on cooldown and schedule rules', 'parse a repeat frequency string like daily or every_6h into a cooldown timedelta value', 'find the most recent execution timestamp for a given task id from done files', 'check scheduled tasks in the sche_tasks directory and return a trigger prompt if a task is due', 'review the scheduler module and its cooldown logic, schedule evaluation, and task triggering behavior']
+```
+
+Usage
+
+```
+{'run_check_autonomous': 'run the autonomous check function that returns a message when user has been away over 30 minutes'}
+```
+
+## File: lsdefine_GenericAgent/reflect/scheduler.py
+
+Prompts
+
+```
+['run the autonomous check function that returns a message when user has been away over 30 minutes', 'run the scheduler check function to evaluate and trigger scheduled tasks based on cooldown and schedule rules', 'parse a repeat frequency string like daily or every_6h into a cooldown timedelta value', 'find the most recent execution timestamp for a given task id from done files', 'check scheduled tasks in the sche_tasks directory and return a trigger prompt if a task is due', 'review the scheduler module and its cooldown logic, schedule evaluation, and task triggering behavior']
+```
+
+Usage
+
+```
+{'run_scheduler_check': 'run the scheduler check function to evaluate and trigger scheduled tasks based on cooldown and schedule rules', 'parse_cooldown_repeat': 'parse a repeat frequency string like daily or every_6h into a cooldown timedelta value', 'find_last_run_task': 'find the most recent execution timestamp for a given task id from done files', 'check_scheduled_tasks': 'check scheduled tasks in the sche_tasks directory and return a trigger prompt if a task is due', 'review_scheduler_module': 'review the scheduler module and its cooldown logic, schedule evaluation, and task triggering behavior'}
+```
+

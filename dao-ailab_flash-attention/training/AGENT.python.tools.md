@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: dao-ailab/flash-attention
+- repo_uri: https://github.com/dao-ailab/flash-attention
+
+## File: dao-ailab_flash-attention/training/run.py
+
+Prompts
+
+```
+['run the training pipeline with a Hydra config to train a PyTorch Lightning model', 'run evaluation on a trained PyTorch Lightning model using a Hydra config', 'run the training pipeline in train mode then evaluate on the test set', 'run evaluation with a Lightning or PyTorch checkpoint on val and test splits', 'run the script with print_config enabled to pretty-print the Hydra DictConfig']
+```
+
+Usage
+
+```
+{'run_train_model': 'run the training pipeline with a Hydra config to train a PyTorch Lightning model', 'run_eval_model': 'run evaluation on a trained PyTorch Lightning model using a Hydra config', 'run_train_test': 'run the training pipeline in train mode then evaluate on the test set', 'run_eval_checkpoint': 'run evaluation with a Lightning or PyTorch checkpoint on val and test splits', 'run_print_config': 'run the script with print_config enabled to pretty-print the Hydra DictConfig'}
+```
+

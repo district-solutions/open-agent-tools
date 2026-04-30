@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/switch_transformers/test_modeling_switch_transformers.py
+
+Prompts
+
+```
+['test the SwitchTransformersModel class with encoder-decoder forward pass and attention masks', 'test SwitchTransformersForConditionalGeneration with labels, router logits, and hidden states output', 'test SwitchTransformersTop1Router load balancing loss and z loss equivalency against original implementation', 'test SwitchTransformersModel decoder with past key values caching and attention mask compatibility', 'test SwitchTransformersSparseMLP token dropping behavior with zero expert capacity']
+```
+
+Usage
+
+```
+{'test_SwitchTransformersModel': 'test the SwitchTransformersModel class with encoder-decoder forward pass and attention masks', 'test_SwitchTransformersForConditionalGeneration': 'test SwitchTransformersForConditionalGeneration with labels, router logits, and hidden states output', 'test_SwitchTransformersRouter': 'test SwitchTransformersTop1Router load balancing loss and z loss equivalency against original implementation', 'test_SwitchTransformersDecoderPast': 'test SwitchTransformersModel decoder with past key values caching and attention mask compatibility', 'test_SwitchTransformersSparseMLP': 'test SwitchTransformersSparseMLP token dropping behavior with zero expert capacity'}
+```
+

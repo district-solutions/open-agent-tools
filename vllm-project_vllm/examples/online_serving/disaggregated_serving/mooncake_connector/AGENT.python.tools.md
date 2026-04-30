@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: vllm-project/vllm
+- repo_uri: https://github.com/vllm-project/vllm
+
+## File: vllm-project_vllm/examples/online_serving/disaggregated_serving/mooncake_connector/mooncake_connector_proxy.py
+
+Prompts
+
+```
+['run the mooncake connector proxy server as a FastAPI service with prefill and decode backends', 'build a disaggregated prefill-proxy that routes requests across prefiller and decoder services with round-robin load balancing', 'create an httpx async client pool for prefiller and decoder services with unlimited connections and no timeout', 'stream token responses from the decode service while fetching KV cache from a remote prefiller bootstrap endpoint', 'test prefiller service readiness by polling /health and querying bootstrap /query for data-parallel engine IDs']
+```
+
+Usage
+
+```
+{'run_mooncake_proxy_server': 'run the mooncake connector proxy server as a FastAPI service with prefill and decode backends', 'build_disagg_prefill_proxy': 'build a disaggregated prefill-proxy that routes requests across prefiller and decoder services with round-robin load balancing', 'create_http_client_pool': 'create an httpx async client pool for prefiller and decoder services with unlimited connections and no timeout', 'stream_decode_response': 'stream token responses from the decode service while fetching KV cache from a remote prefiller bootstrap endpoint', 'test_prefill_health_check': 'test prefiller service readiness by polling /health and querying bootstrap /query for data-parallel engine IDs'}
+```
+

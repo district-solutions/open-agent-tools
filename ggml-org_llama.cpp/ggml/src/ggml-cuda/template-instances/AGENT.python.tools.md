@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: ggml-org/llama.cpp
+- repo_uri: https://github.com/ggml-org/llama.cpp
+
+## File: ggml-org_llama.cpp/ggml/src/ggml-cuda/template-instances/generate_cu_files.py
+
+Prompts
+
+```
+['run the script to generate CUDA template instance files for fattn-tile, fattn-vec, fattn-mma, mmq, and mmq', 'generate fattn-tile CUDA instance files for each head_size_kq from HEAD_SIZES_KQ with corresponding head_size_v', 'generate fattn-vec CUDA instance files for all type_k and type_v combinations from TYPES_KV', 'generate fattn-mma-f16 CUDA instance files for ncols, ncols2, and head_size combinations with filtering rules', 'generate mmq CUDA instance files for each quantization type in TYPES_MMQ', 'generate mmf CUDA instance files for ncols values from 1 to 16', 'use get_short_name to convert GGML_TYPE_ prefixed quant names to lowercase short names']
+```
+
+Usage
+
+```
+{'run_generate_cuda_templates': 'run the script to generate CUDA template instance files for fattn-tile, fattn-vec, fattn-mma, mmq, and mmq', 'generate_fattn_tile_instances': 'generate fattn-tile CUDA instance files for each head_size_kq from HEAD_SIZES_KQ with corresponding head_size_v', 'generate_fattn_vec_instances': 'generate fattn-vec CUDA instance files for all type_k and type_v combinations from TYPES_KV', 'generate_fattn_mma_instances': 'generate fattn-mma-f16 CUDA instance files for ncols, ncols2, and head_size combinations with filtering rules', 'generate_mmq_instances': 'generate mmq CUDA instance files for each quantization type in TYPES_MMQ', 'generate_mmf_instances': 'generate mmf CUDA instance files for ncols values from 1 to 16', 'use_get_short_name': 'use get_short_name to convert GGML_TYPE_ prefixed quant names to lowercase short names'}
+```
+

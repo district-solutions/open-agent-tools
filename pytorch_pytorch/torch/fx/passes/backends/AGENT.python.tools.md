@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pytorch/pytorch
+- repo_uri: https://github.com/pytorch/pytorch.git
+
+## File: pytorch_pytorch/torch/fx/passes/backends/cudagraphs.py
+
+Prompts
+
+```
+['partition an FX graph into sub-GraphModules that can run under CUDA graphs', 'test the CudaGraphsSupport.is_node_supported method to check if an FX node is supported for CUDA graphs', 'build a CapabilityBasedPartitioner with CudaGraphsSupport to identify CUDA-compatible subgraphs', 'run FakeTensorProp propagation on an FX graph module to infer tensor metadata for CUDA graph partitioning', 'review the CudaGraphsSupport class that filters FX nodes based on CUDA tensor device requirements']
+```
+
+Usage
+
+```
+{'partition_cudagraphs': 'partition an FX graph into sub-GraphModules that can run under CUDA graphs', 'test_CudaGraphsSupport_is_node_supported': 'test the CudaGraphsSupport.is_node_supported method to check if an FX node is supported for CUDA graphs', 'build_cudagraphs_partitioner': 'build a CapabilityBasedPartitioner with CudaGraphsSupport to identify CUDA-compatible subgraphs', 'run_fake_tensor_propagation': 'run FakeTensorProp propagation on an FX graph module to infer tensor metadata for CUDA graph partitioning', 'review_CudaGraphsSupport': 'review the CudaGraphsSupport class that filters FX nodes based on CUDA tensor device requirements'}
+```
+

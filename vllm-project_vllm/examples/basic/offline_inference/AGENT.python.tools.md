@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: vllm-project/vllm
+- repo_uri: https://github.com/vllm-project/vllm
+
+## File: vllm-project_vllm/examples/basic/offline_inference/chat.py
+
+Prompts
+
+```
+['create a vLLM LLM client with CLI args and run single conversation chat inference', 'create sampling parameters with max_tokens, temperature, top_p, and top_k for vLLM inference', 'create an argparse parser with engine args, sampling params, and chat template path for vLLM CLI', 'test batch chat inference with multiple conversations and tqdm progress bar', 'run vLLM chat inference with a custom chat template loaded from a file', 'run offline inference classification on text prompts using vLLM with pooling runner', 'create an LLM instance with pooling runner for text classification using vLLM', 'classify text prompts and return class probabilities using llm.classify()', 'parse CLI arguments for vLLM classification with model and pooling runner defaults', 'print classification outputs with class probabilities and probability size from vLLM', 'run the vllm embed script to generate embeddings for a list of text prompts using an LLM with pooling runner', 'create an LLM instance with pooling runner to generate text embeddings from a list of prompts', 'build a CLI argument parser with vllm engine args and default model intfloat/e5-small with pooling runner', 'test the LLM embed method that takes a list of prompts and returns a list of EmbeddingRequestOutputs', 'print generated embedding outputs for each prompt using the print_embeddings utility function', 'create a CLI argument parser with engine args and sampling parameters for vLLM offline inference', 'create a main function that initializes an LLM, configures sampling params, and generates text from prompts', 'create an LLM instance and call generate with a list of prompts and sampling parameters to produce text outputs', 'create an LLM engine with EngineArgs CLI arguments and a default model for offline text generation', 'run offline inference to score a query against a list of documents using the BAAI/bge-reranker-v2-m3 model', 'create an LLM instance with runner=pooling for cross-encoder reranking models', 'build CLI argument parser with vLLM engine defaults and model scoring options', 'test the LLM.score method that returns a list of ScoringRequestOutputs for query-document pairs', 'review the main function that generates and prints reranking scores for query-document pairs']
+```
+
+Usage
+
+```
+{'create_llm_chat_client': 'create a vLLM LLM client with CLI args and run single conversation chat inference', 'create_sampling_params': 'create sampling parameters with max_tokens, temperature, top_p, and top_k for vLLM inference', 'create_parser_cli_args': 'create an argparse parser with engine args, sampling params, and chat template path for vLLM CLI', 'test_batch_chat_inference': 'test batch chat inference with multiple conversations and tqdm progress bar', 'run_custom_chat_template': 'run vLLM chat inference with a custom chat template loaded from a file'}
+```
+
+## File: vllm-project_vllm/examples/basic/offline_inference/classify.py
+
+Prompts
+
+```
+['create a vLLM LLM client with CLI args and run single conversation chat inference', 'create sampling parameters with max_tokens, temperature, top_p, and top_k for vLLM inference', 'create an argparse parser with engine args, sampling params, and chat template path for vLLM CLI', 'test batch chat inference with multiple conversations and tqdm progress bar', 'run vLLM chat inference with a custom chat template loaded from a file', 'run offline inference classification on text prompts using vLLM with pooling runner', 'create an LLM instance with pooling runner for text classification using vLLM', 'classify text prompts and return class probabilities using llm.classify()', 'parse CLI arguments for vLLM classification with model and pooling runner defaults', 'print classification outputs with class probabilities and probability size from vLLM', 'run the vllm embed script to generate embeddings for a list of text prompts using an LLM with pooling runner', 'create an LLM instance with pooling runner to generate text embeddings from a list of prompts', 'build a CLI argument parser with vllm engine args and default model intfloat/e5-small with pooling runner', 'test the LLM embed method that takes a list of prompts and returns a list of EmbeddingRequestOutputs', 'print generated embedding outputs for each prompt using the print_embeddings utility function', 'create a CLI argument parser with engine args and sampling parameters for vLLM offline inference', 'create a main function that initializes an LLM, configures sampling params, and generates text from prompts', 'create an LLM instance and call generate with a list of prompts and sampling parameters to produce text outputs', 'create an LLM engine with EngineArgs CLI arguments and a default model for offline text generation', 'run offline inference to score a query against a list of documents using the BAAI/bge-reranker-v2-m3 model', 'create an LLM instance with runner=pooling for cross-encoder reranking models', 'build CLI argument parser with vLLM engine defaults and model scoring options', 'test the LLM.score method that returns a list of ScoringRequestOutputs for query-document pairs', 'review the main function that generates and prints reranking scores for query-document pairs']
+```
+
+Usage
+
+```
+{'run_llm_classification': 'run offline inference classification on text prompts using vLLM with pooling runner', 'create_llm_classification_model': 'create an LLM instance with pooling runner for text classification using vLLM', 'classify_text_prompts': 'classify text prompts and return class probabilities using llm.classify()', 'parse_vllm_classification_args': 'parse CLI arguments for vLLM classification with model and pooling runner defaults', 'print_classification_outputs': 'print classification outputs with class probabilities and probability size from vLLM'}
+```
+
+## File: vllm-project_vllm/examples/basic/offline_inference/embed.py
+
+Prompts
+
+```
+['create a vLLM LLM client with CLI args and run single conversation chat inference', 'create sampling parameters with max_tokens, temperature, top_p, and top_k for vLLM inference', 'create an argparse parser with engine args, sampling params, and chat template path for vLLM CLI', 'test batch chat inference with multiple conversations and tqdm progress bar', 'run vLLM chat inference with a custom chat template loaded from a file', 'run offline inference classification on text prompts using vLLM with pooling runner', 'create an LLM instance with pooling runner for text classification using vLLM', 'classify text prompts and return class probabilities using llm.classify()', 'parse CLI arguments for vLLM classification with model and pooling runner defaults', 'print classification outputs with class probabilities and probability size from vLLM', 'run the vllm embed script to generate embeddings for a list of text prompts using an LLM with pooling runner', 'create an LLM instance with pooling runner to generate text embeddings from a list of prompts', 'build a CLI argument parser with vllm engine args and default model intfloat/e5-small with pooling runner', 'test the LLM embed method that takes a list of prompts and returns a list of EmbeddingRequestOutputs', 'print generated embedding outputs for each prompt using the print_embeddings utility function', 'create a CLI argument parser with engine args and sampling parameters for vLLM offline inference', 'create a main function that initializes an LLM, configures sampling params, and generates text from prompts', 'create an LLM instance and call generate with a list of prompts and sampling parameters to produce text outputs', 'create an LLM engine with EngineArgs CLI arguments and a default model for offline text generation', 'run offline inference to score a query against a list of documents using the BAAI/bge-reranker-v2-m3 model', 'create an LLM instance with runner=pooling for cross-encoder reranking models', 'build CLI argument parser with vLLM engine defaults and model scoring options', 'test the LLM.score method that returns a list of ScoringRequestOutputs for query-document pairs', 'review the main function that generates and prints reranking scores for query-document pairs']
+```
+
+Usage
+
+```
+{'run_embed_generate_embeddings': 'run the vllm embed script to generate embeddings for a list of text prompts using an LLM with pooling runner', 'create_llm_embed_model': 'create an LLM instance with pooling runner to generate text embeddings from a list of prompts', 'build_cli_parse_args': 'build a CLI argument parser with vllm engine args and default model intfloat/e5-small with pooling runner', 'test_llm_embed_method': 'test the LLM embed method that takes a list of prompts and returns a list of EmbeddingRequestOutputs', 'print_embeddings_output': 'print generated embedding outputs for each prompt using the print_embeddings utility function'}
+```
+
+## File: vllm-project_vllm/examples/basic/offline_inference/generate.py
+
+Prompts
+
+```
+['create a vLLM LLM client with CLI args and run single conversation chat inference', 'create sampling parameters with max_tokens, temperature, top_p, and top_k for vLLM inference', 'create an argparse parser with engine args, sampling params, and chat template path for vLLM CLI', 'test batch chat inference with multiple conversations and tqdm progress bar', 'run vLLM chat inference with a custom chat template loaded from a file', 'run offline inference classification on text prompts using vLLM with pooling runner', 'create an LLM instance with pooling runner for text classification using vLLM', 'classify text prompts and return class probabilities using llm.classify()', 'parse CLI arguments for vLLM classification with model and pooling runner defaults', 'print classification outputs with class probabilities and probability size from vLLM', 'run the vllm embed script to generate embeddings for a list of text prompts using an LLM with pooling runner', 'create an LLM instance with pooling runner to generate text embeddings from a list of prompts', 'build a CLI argument parser with vllm engine args and default model intfloat/e5-small with pooling runner', 'test the LLM embed method that takes a list of prompts and returns a list of EmbeddingRequestOutputs', 'print generated embedding outputs for each prompt using the print_embeddings utility function', 'create a CLI argument parser with engine args and sampling parameters for vLLM offline inference', 'create a main function that initializes an LLM, configures sampling params, and generates text from prompts', 'create an LLM instance and call generate with a list of prompts and sampling parameters to produce text outputs', 'create an LLM engine with EngineArgs CLI arguments and a default model for offline text generation', 'run offline inference to score a query against a list of documents using the BAAI/bge-reranker-v2-m3 model', 'create an LLM instance with runner=pooling for cross-encoder reranking models', 'build CLI argument parser with vLLM engine defaults and model scoring options', 'test the LLM.score method that returns a list of ScoringRequestOutputs for query-document pairs', 'review the main function that generates and prints reranking scores for query-document pairs']
+```
+
+Usage
+
+```
+{'create_parser': 'create a CLI argument parser with engine args and sampling parameters for vLLM offline inference', 'create_main_inference': 'create a main function that initializes an LLM, configures sampling params, and generates text from prompts', 'create_llm_generate': 'create an LLM instance and call generate with a list of prompts and sampling parameters to produce text outputs', 'create_sampling_params': 'create sampling parameters from LLM defaults and override max_tokens, temperature, top_p, and top_k', 'create_llm_engine': 'create an LLM engine with EngineArgs CLI arguments and a default model for offline text generation'}
+```
+
+## File: vllm-project_vllm/examples/basic/offline_inference/score.py
+
+Prompts
+
+```
+['create a vLLM LLM client with CLI args and run single conversation chat inference', 'create sampling parameters with max_tokens, temperature, top_p, and top_k for vLLM inference', 'create an argparse parser with engine args, sampling params, and chat template path for vLLM CLI', 'test batch chat inference with multiple conversations and tqdm progress bar', 'run vLLM chat inference with a custom chat template loaded from a file', 'run offline inference classification on text prompts using vLLM with pooling runner', 'create an LLM instance with pooling runner for text classification using vLLM', 'classify text prompts and return class probabilities using llm.classify()', 'parse CLI arguments for vLLM classification with model and pooling runner defaults', 'print classification outputs with class probabilities and probability size from vLLM', 'run the vllm embed script to generate embeddings for a list of text prompts using an LLM with pooling runner', 'create an LLM instance with pooling runner to generate text embeddings from a list of prompts', 'build a CLI argument parser with vllm engine args and default model intfloat/e5-small with pooling runner', 'test the LLM embed method that takes a list of prompts and returns a list of EmbeddingRequestOutputs', 'print generated embedding outputs for each prompt using the print_embeddings utility function', 'create a CLI argument parser with engine args and sampling parameters for vLLM offline inference', 'create a main function that initializes an LLM, configures sampling params, and generates text from prompts', 'create an LLM instance and call generate with a list of prompts and sampling parameters to produce text outputs', 'create an LLM engine with EngineArgs CLI arguments and a default model for offline text generation', 'run offline inference to score a query against a list of documents using the BAAI/bge-reranker-v2-m3 model', 'create an LLM instance with runner=pooling for cross-encoder reranking models', 'build CLI argument parser with vLLM engine defaults and model scoring options', 'test the LLM.score method that returns a list of ScoringRequestOutputs for query-document pairs', 'review the main function that generates and prints reranking scores for query-document pairs']
+```
+
+Usage
+
+```
+{'run_score_query_documents': 'run offline inference to score a query against a list of documents using the BAAI/bge-reranker-v2-m3 model', 'create_llm_pooling_runner': 'create an LLM instance with runner=pooling for cross-encoder reranking models', 'build_cli_score_args': 'build CLI argument parser with vLLM engine defaults and model scoring options', 'test_llm_score_method': 'test the LLM.score method that returns a list of ScoringRequestOutputs for query-document pairs', 'review_main_score_function': 'review the main function that generates and prints reranking scores for query-document pairs'}
+```
+

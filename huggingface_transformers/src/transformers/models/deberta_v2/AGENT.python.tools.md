@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/src/transformers/models/deberta_v2/modeling_deberta_v2.py
+
+Prompts
+
+```
+['create a DeBERTa-v2 base model for feature extraction and sequence encoding', 'build a DeBERTa-v2 masked language model for token prediction and fill-mask tasks', 'classify sequences using a DeBERTa-v2 sequence classifier with configurable labels', 'extract question answering spans using a DeBERTa-v2 model with start and end logits', 'tag tokens with labels using a DeBERTa-v2 token classifier for NER tasks']
+```
+
+Usage
+
+```
+{'create_deberta_v2_model': 'create a DeBERTa-v2 base model for feature extraction and sequence encoding', 'build_masked_lm_deberta': 'build a DeBERTa-v2 masked language model for token prediction and fill-mask tasks', 'classify_sequence_deberta': 'classify sequences using a DeBERTa-v2 sequence classifier with configurable labels', 'extract_spans_deberta': 'extract question answering spans using a DeBERTa-v2 model with start and end logits', 'tag_tokens_deberta': 'tag tokens with labels using a DeBERTa-v2 token classifier for NER tasks'}
+```
+

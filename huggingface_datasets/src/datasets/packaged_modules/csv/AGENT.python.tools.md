@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/datasets
+- repo_uri: https://github.com/huggingface/datasets
+
+## File: huggingface_datasets/src/datasets/packaged_modules/csv/csv.py
+
+Prompts
+
+```
+['build a HuggingFace dataset from CSV files using the Csv ArrowBasedBuilder with custom features', 'configure CsvConfig to set separator, encoding, chunksize, and column names for reading CSV files', 'generate dataset splits from CSV data files by downloading, extracting, and iterating over files', 'cast a PyArrow table to match a configured features schema using _cast_table', 'read CSV files in chunks using pd.read_csv with iterator mode and convert to PyArrow tables']
+```
+
+Usage
+
+```
+{'build_csv_dataset': 'build a HuggingFace dataset from CSV files using the Csv ArrowBasedBuilder with custom features', 'configure_csv_reader': 'configure CsvConfig to set separator, encoding, chunksize, and column names for reading CSV files', 'generate_csv_splits': 'generate dataset splits from CSV data files by downloading, extracting, and iterating over files', 'cast_arrow_table': 'cast a PyArrow table to match a configured features schema using _cast_table', 'read_csv_chunks': 'read CSV files in chunks using pd.read_csv with iterator mode and convert to PyArrow tables'}
+```
+

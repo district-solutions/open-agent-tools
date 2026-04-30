@@ -1,0 +1,191 @@
+{
+  "lucidrains_x-transformers/train_belief_state.py": {
+    "build_belief_state_model": "build a bidirectional transformer model using BeliefStateWrapper with forward and backward decoders",
+    "create_text_dataset": "create a TextSamplerDataset that randomly samples sequences from text data for language modeling",
+    "train_model_gradient_accumulation": "train a belief state transformer with gradient accumulation and periodic validation",
+    "generate_text_forward": "generate text forward from prompt tokens using model.generate_with_suffix_cond with cache_kv enabled",
+    "generate_text_backward": "generate text backward from prompt tokens using decode_backwards flag and reverse the output"
+  },
+  "lucidrains_x-transformers/train_copy.py": {
+    "build_xtransformer_model": "build an XTransformer model with encoder-decoder architecture and tied token embeddings",
+    "create_data_iterator": "create a data iterator that yields source sequences, target sequences, and source masks",
+    "run_training_loop": "run a training loop that computes loss, backpropagates, and steps the optimizer",
+    "test_model_generate": "test the XTransformer model.generate method for autoregressive sequence generation",
+    "review_loss_computation": "review the forward pass loss computation with source, target, and mask inputs"
+  },
+  "lucidrains_x-transformers/train_entropy_tokenizer.py": {
+    "build_model_transformer_wrapper": "build a GPT-like decoder model using TransformerWrapper with configurable dimensions and rotary position embeddings",
+    "create_entropy_based_tokenizer": "create an EntropyBasedTokenizer that segments sequences by entropy threshold on a decoder model",
+    "wrap_model_autoregressive": "wrap a TransformerWrapper model with AutoregressiveWrapper for autoregressive generation and loss computation",
+    "train_model_gradient_accumulation": "train the autoregressive model with gradient accumulation, gradient clipping, and periodic validation",
+    "decode_tokens_to_string": "decode token IDs to human-readable strings by mapping integer values to ASCII characters"
+  },
+  "lucidrains_x-transformers/train_enwik8.py": {
+    "train_gpt_decoder": "train a GPT-like autoregressive decoder model on the enwik8 text dataset with configurable hyperparameters",
+    "build_transformer_model": "build a TransformerWrapper with Decoder attention layers for autoregressive text generation",
+    "create_text_dataset": "create a TextSamplerDataset that samples random sequences from text data for training and validation",
+    "generate_text_samples": "generate text samples from the trained model using autoregressive decoding with KV caching",
+    "run_training_loop": "run the training loop with gradient accumulation, validation, and periodic text generation"
+  },
+  "lucidrains_x-transformers/train_free.py": {
+    "create_model_free_transformer": "create a FreeTransformer model with num_tokens, dim, heads, and latent_bits for autoregressive generation with KL regularization",
+    "run_training_loop": "run a training loop with gradient accumulation, Adam optimizer, and periodic validation on enwik8 text data",
+    "generate_text_samples": "generate text samples from the FreeTransformer model using prompts, sequence length, and latent indices",
+    "build_text_sampler_dataset": "build a TextSamplerDataset that yields random subsequences from a tensor of byte data for sequence modeling",
+    "decode_token_sequences": "decode integer token sequences into readable ASCII strings for model output inspection"
+  },
+  "lucidrains_x-transformers/train_gpt_vae.py": {
+    "create_GPTVAE_model": "create a GPTVAE model with configurable tokens, sequence length, dimensions, and VAE KL loss weight",
+    "train_GPTVAE_model": "train a GPTVAE model on enwik8 text data with gradient accumulation and Adam optimizer",
+    "generate_text_GPTVAE": "generate text from a GPTVAE model using prompts and latent vectors with KV caching",
+    "build_TextSamplerDataset": "build a PyTorch Dataset that samples random subsequences from text data for training",
+    "decode_tokens_GPTVAE": "decode token IDs to readable ASCII text strings for GPTVAE model output"
+  },
+  "lucidrains_x-transformers/train_length_extrapolate.py": {
+    "build_decoder_model": "build a GPT-like autoregressive decoder model using TransformerWrapper and AutoregressiveWrapper from x-transformers",
+    "create_text_dataset": "create a TextSamplerDataset that samples random sequences of a given length from a tensor of byte data",
+    "train_language_model": "train a language model with gradient accumulation, mixed precision via accelerate, and configurable learning rate",
+    "validate_length_extrapolation": "validate model loss across multiple sequence lengths to test length extrapolation capability",
+    "generate_text_samples": "generate autoregressive text samples from the trained decoder model using kv-caching"
+  },
+  "lucidrains_x-transformers/train_parity.py": {
+    "run_parity_training": "run the parity-check training script with curriculum learning on a TransformerWrapper model",
+    "create_data_generator": "create a data generator that yields random binary sequences with cumulative-sum parity labels",
+    "build_transformer_model": "build a TransformerWrapper model with Decoder layers and optional GRU hybrid attention",
+    "test_model_generalization": "test the trained model's generalization across multiple sequence lengths",
+    "refactor_curriculum_learning": "refactor the curriculum learning loop to increment sequence length based on loss threshold criteria"
+  },
+  "lucidrains_x-transformers/train_self_masked_repr.py": {
+    "run_train_self_masked_repr": "run self-masked representation training on enwik8 text data with autoregressive transformer and teacher-student distillation",
+    "create_self_distilled_training": "create a SelfDistilledTraining wrapper for reverse KL divergence student-teacher distillation with masked autoregressive inputs",
+    "build_self_masked_rep_training": "build a SelfMaskedRepTraining wrapper for cosine similarity representation loss with student prediction heads and teacher targets",
+    "test_text_sampler_dataset": "test the TextSamplerDataset class that samples random sequences from preloaded text data for transformer training",
+    "review_train_function": "review the train function that orchestrates student-teacher SSL training with gradient accumulation, validation, and text generation"
+  },
+  "lucidrains_x-transformers/train_with_muon.py": {
+    "build_model_transformer": "build a GPT-like decoder model using TransformerWrapper with Decoder attention layers and rotary position embeddings",
+    "create_dataset_text_sampler": "create a TextSamplerDataset that samples random sequences from tensor data for language model training",
+    "run_training_loop": "run a training loop with gradient accumulation, MuonAdamAtan2 optimizer, and gradient clipping on the autoregressive model",
+    "test_validation_loss": "test the model on validation data by computing validation loss without gradient tracking",
+    "generate_text_sample": "generate text samples from the trained autoregressive model using prompts with KV caching"
+  },
+  "lucidrains_x-transformers/tests/test_external.py": {
+    "test_flash_pack_seq": "test the flash_pack_seq feature of Attend, Attention, and AttentionLayers against standard padding baselines",
+    "test_Attend_flash_pack_seq": "test the Attend class with flash_pack_seq=True and flash=False for causal and non-causal attention",
+    "test_Attention_flash_pack_seq": "test the Attention class with flash_pack_seq=True for self-attention and cross-attention modes",
+    "test_AttentionLayers_flash_pack_seq": "test the AttentionLayers class with attn_flash_pack_seq=True and cross_attend=True",
+    "test_flash_attention_equivalence": "test numerical equivalence between standard padding and flash_pack_seq block masking implementations"
+  },
+  "lucidrains_x-transformers/tests/test_x_transformers.py": {
+    "test_xtransformer_bilingual_translation": "test the XTransformer class for encoder-decoder bilingual translation with tied embeddings",
+    "test_transformerwrapper_kv_cache_inference": "test the TransformerWrapper class with KV cache for efficient autoregressive generation",
+    "test_decoder_cross_attention_with_context": "test the Decoder class with cross-attention and external key-value projections",
+    "test_continuous_wrapper_autoregressive_generation": "test the ContinuousTransformerWrapper with continuous autoregressive sequence generation",
+    "test_neo_mlp_deep_residual_network": "test the NeoMLP class for deep residual multilayer perceptron forward pass"
+  },
+  "lucidrains_x-transformers/x_transformers/attend.py": {
+    "build_Attend_module": "build a torch.nn.Module that computes scaled dot-product attention with optional flash attention, causal masking, and dropout",
+    "create_flash_attention": "create a flash attention path using torch scaled_dot_product_attention with configurable SDP backends and packed sequence support",
+    "test_selective_attention": "test selective attention that prevents each token from being attended to by future tokens using a learned gate",
+    "refactor_sparse_topk_attention": "refactor sparse top-k attention to keep only the top-k attention logits before softmax with optional straight-through estimator",
+    "review_Intermediates_dataclass": "review the Intermediates dataclass that stores qk similarities, pre and post softmax attention, values, cached kv pairs, and log probs"
+  },
+  "lucidrains_x-transformers/x_transformers/autoregressive_wrapper.py": {
+    "generate_text": "generate text from an autoregressive transformer model using top-k or top-p filtering with optional eos token stopping",
+    "beam_search_decode": "run beam search decoding on an autoregressive transformer with configurable beam width and stochastic sampling",
+    "train_autoregressive_model": "train an autoregressive transformer with cross-entropy loss, optional MLM masking, z-loss, and looped exit gate training",
+    "filter_logits_top_k": "filter transformer logits by keeping only the top-k highest-scoring tokens and setting others to negative infinity",
+    "contrastive_decode": "apply contrastive decoding by combining expert and amateur model logits to improve generation quality"
+  },
+  "lucidrains_x-transformers/x_transformers/belief_state_wrapper.py": {
+    "build_BeliefStateWrapper": "build a BeliefStateWrapper wrapping forward and backward TransformerWrappers for bidirectional language modeling",
+    "create_flip_variable_length": "create a flip function that reverses tensors along a dimension with variable sequence lengths per batch",
+    "test_detach_multiple": "test the DetachMultiple autograd Function that detaches tensors while preserving gradient flow",
+    "run_BeliefStateWrapper_forward": "run the BeliefStateWrapper forward method to compute belief state loss over forward-backward token pairs",
+    "generate_BeliefStateWrapper_suffix": "generate sequences from BeliefStateWrapper with suffix conditioning and optional backward decoding"
+  },
+  "lucidrains_x-transformers/x_transformers/continuous.py": {
+    "build_continuous_transformer_wrapper": "build a ContinuousTransformerWrapper with AttentionLayers, probabilistic output for mean and variance prediction",
+    "create_autoregressive_wrapper": "create a ContinuousAutoregressiveWrapper to generate continuous sequences autoregressively with KV caching",
+    "test_gaussian_nll_loss": "test the GaussianNLL loss function for computing negative log-likelihood on mean and variance predictions",
+    "run_forward_rollout": "run forward_rollout on ContinuousAutoregressiveWrapper with multiple rollout steps for world model training",
+    "sample_from_mean_variance": "sample from a mean and variance distribution using sample_from_mean with configurable temperature"
+  },
+  "lucidrains_x-transformers/x_transformers/dpo.py": {
+    "create_DPO": "create a DPO module from a TransformerWrapper model with configurable beta and pad_id for direct preference optimization training",
+    "run_DPO_forward": "run DPO forward pass with preferred and unpreferred sequences, prompt mask, and optional sequence masks to compute DPO loss",
+    "build_DPO_with_frozen_ref": "build a DPO instance that deep-copies the policy model as a frozen reference model for stable log-probability baselines",
+    "test_masked_mean": "test masked_mean to compute mean log-probabilities over non-masked positions with automatic mask length adjustment",
+    "review_log_prob_from_model": "review log_prob_from_model_and_seq to extract per-token log probabilities from model logits given an input sequence"
+  },
+  "lucidrains_x-transformers/x_transformers/entropy_based_tokenizer.py": {
+    "build_entropy_based_tokenizer": "build an entropy-based tokenizer that segments sequences into variable-sized tokens using an entropy threshold",
+    "calculate_entropy_from_logits": "calculate entropy from model logits by computing softmax probabilities and their negative entropy sum",
+    "segment_sequence_by_entropy": "segment a sequence into variable-sized tokens based on entropy threshold boundaries",
+    "run_entropy_tokenization": "run entropy-based tokenization on a sequence with optional max token size and variable length support",
+    "review_entropy_based_tokenizer_class": "review the EntropyBasedTokenizer class and its forward method for sequence segmentation"
+  },
+  "lucidrains_x-transformers/x_transformers/free_transformer.py": {
+    "create_free_transformer": "create a FreeTransformer model with specified token count, dimension, and latent bits",
+    "build_binary_mapper": "build a BinaryMapper that converts logits to discrete one-hot latent codes with KL regularization",
+    "encode_to_latents": "encode decoder head embeddings into binary latent codes via cross-attention encoder",
+    "generate_text": "generate text autoregressively from the FreeTransformer with optional conditioning latents and KV caching",
+    "train_free_transformer": "train the FreeTransformer by computing autoregressive loss plus KL auxiliary loss on input sequences"
+  },
+  "lucidrains_x-transformers/x_transformers/gpt_vae.py": {
+    "build_gpt_vae_model": "build a GPT VAE model that encodes sequences into latent distributions and autoregressively decodes them",
+    "encode_sequences_to_latents": "encode token sequences into variational latent representations using the GPT VAE encoder",
+    "generate_sequences_with_latents": "generate autoregressive token sequences conditioned on learned latent vectors",
+    "compute_vae_training_loss": "compute combined autoregressive and KL divergence loss for GPT VAE training",
+    "review_gpt_vae_class": "review the GPTVAE class that applies CVAE and DETR design from ACT to a GPT transformer"
+  },
+  "lucidrains_x-transformers/x_transformers/multi_input.py": {
+    "create_multi_input_transformer": "create a MultiInputTransformerWrapper with multiple token embeddings and attention layers for multimodal input",
+    "build_multi_input_forward_pass": "build a forward pass through MultiInputTransformerWrapper with a dict of token tensors and optional masks",
+    "test_multi_input_embeddings": "test MultiInputTransformerWrapper to return only embeddings without logits projection",
+    "refactor_multi_input_memory_tokens": "refactor MultiInputTransformerWrapper to use memory tokens interspersed at regular intervals in decoder mode",
+    "review_multi_input_gradient_fraction": "review MultiInputTransformerWrapper emb_frac_gradient parameter for gradient scaling from embedding layers"
+  },
+  "lucidrains_x-transformers/x_transformers/neo_mlp.py": {
+    "build_neomlp_model": "build a NeoMLP model with input, hidden, and output dimensions using self-attention message passing",
+    "create_random_fourier_embed": "create a RandomFourierEmbed layer that projects continuous inputs via random Fourier features",
+    "run_neomlp_forward": "run a forward pass on NeoMLP with input tensor and optional return_embeds flag",
+    "configure_neomlp_encoder": "configure NeoMLP with custom encoder kwargs for attention heads and dimension",
+    "test_neomlp_batch_inference": "test NeoMLP inference on batched and unbatched input tensors with embedded representations"
+  },
+  "lucidrains_x-transformers/x_transformers/nonautoregressive_wrapper.py": {
+    "build_nonautoregressive_wrapper": "build a NonAutoregressiveWrapper to train a transformer with non-autoregressive masked language modeling",
+    "generate_text_nonautoregressive": "generate text sequences using NonAutoregressiveWrapper.generate with iterative mask-unmask sampling",
+    "train_generator_critic_losses": "train generator and critic losses with NonAutoregressiveWrapper.forward using token critic scoring",
+    "create_self_critic_module": "create a SelfCritic module that scores sequence quality via embedded logits for non-autoregressive generation",
+    "sample_gumbel_with_noise": "sample from logits using gumbel_sample with temperature annealing and gumbel noise for discrete sampling"
+  },
+  "lucidrains_x-transformers/x_transformers/up_wrapper.py": {
+    "create_SyntheticDataGenerator": "create a synthetic data generator using LSTM or GRU to produce token sequences from seed and condition inputs",
+    "build_UniversalPretrainWrapper": "build a universal pretrain wrapper that generates enriched training data for a TransformerWrapper model",
+    "run_random_sequences": "run random sequence generation with configurable mix of random and constant samples",
+    "test_SyntheticDataGenerator_generate": "test the SyntheticDataGenerator generate method for autoregressive token sequence synthesis",
+    "review_UniversalPretrainWrapper_forward": "review the UniversalPretrainWrapper forward method that implements algorithm 1 for Turing machine data enrichment"
+  },
+  "lucidrains_x-transformers/x_transformers/x_transformers.py": {
+    "build_transformer_decoder": "build a causal transformer decoder with rotary embeddings and flash attention for language modeling",
+    "create_transformer_wrapper": "create a transformer wrapper with token embeddings positional encodings and configurable attention layers",
+    "build_encoder_cross_attender": "build a bidirectional encoder with cross-attention for sequence-to-sequence translation tasks",
+    "create_attention_module": "create a multi-head attention module with flash attention qk normalization and relative positional bias",
+    "build_xtransformer": "build an xtransformer with separate encoder and decoder for machine translation"
+  },
+  "lucidrains_x-transformers/x_transformers/xl_autoregressive_wrapper.py": {
+    "build_xl_autoregressive_wrapper": "build an XLAutoregressiveWrapper to wrap a transformer net for long-sequence training and generation",
+    "generate_text_with_xl_wrapper": "generate autoregressive text sequences with start tokens, eos token, and top-k filtering",
+    "train_transformer_with_xl_wrapper": "train a transformer with chunked forward pass, segment memory, and weighted cross-entropy loss",
+    "configure_xl_wrapper_loss": "configure XLAutoregressiveWrapper with custom ignore_index and pad_value for sequence labeling",
+    "sample_with_temperature_filtering": "sample from filtered logits with temperature scaling and top_k or top_p filtering"
+  },
+  "lucidrains_x-transformers/x_transformers/xval.py": {
+    "create_xval_transformer": "create an XValTransformerWrapper for mixed discrete-token and continuous-number autoregressive generation",
+    "build_autoregressive_wrapper": "build an XValAutoregressiveWrapper to wrap an XValTransformer for autoregressive token and number generation",
+    "run_forward_pass": "run a forward pass on XValTransformerWrapper with discrete token ids and continuous numerical values",
+    "generate_sequence": "generate autoregressive sequences with XValAutoregressiveWrapper using top_k or top_p filtering and temperature sampling",
+    "compute_loss": "compute combined cross-entropy and numerical MSE loss with XValAutoregressiveWrapper forward pass"
+  }
+}

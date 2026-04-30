@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/pegasus/test_modeling_pegasus.py
+
+Prompts
+
+```
+['create a PegasusModelTester with custom config parameters like batch_size, seq_length, and vocab_size', 'test the PegasusModelTester prepare_config_and_inputs method returns valid config and inputs dict', 'test decoder model past key values with large inputs using create_and_check_decoder_model_past_large_inputs', 'test PegasusStandaloneDecoderModelTester decoder model past with attention mask support', 'test PegasusXSUMIntegrationTest generate summaries on google/pegasus-xsum checkpoint']
+```
+
+Usage
+
+```
+{'create_pegasus_model_tester': 'create a PegasusModelTester with custom config parameters like batch_size, seq_length, and vocab_size', 'test_pegasus_encoder_decoder_model': 'test the PegasusModelTester prepare_config_and_inputs method returns valid config and inputs dict', 'test_pegasus_decoder_past_large_inputs': 'test decoder model past key values with large inputs using create_and_check_decoder_model_past_large_inputs', 'test_pegasus_standalone_decoder': 'test PegasusStandaloneDecoderModelTester decoder model past with attention mask support', 'test_pegasus_integration_xsum_summary': 'test PegasusXSUMIntegrationTest generate summaries on google/pegasus-xsum checkpoint'}
+```
+

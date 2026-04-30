@@ -1,0 +1,924 @@
+{
+  "docling-project_docling/docling/document_converter.py": {
+    "convert_document_pdf": "convert a local PDF file to DoclingDocument using the DocumentConverter class",
+    "convert_document_batch": "convert multiple documents from file paths, URLs, or DocumentStreams in batch mode",
+    "convert_string_markdown": "convert a markdown or HTML string to a DoclingDocument using the convert_string method",
+    "create_converter_allowed_formats": "create a DocumentConverter that only allows specified input formats like PDF and DOCX",
+    "run_converter_with_custom_options": "run conversion with customized pipeline options for a specific input format"
+  },
+  "docling-project_docling/docling/document_extractor.py": {
+    "create_document_extractor": "create a DocumentExtractor instance to extract structured data from PDF and image documents using a VLM pipeline",
+    "extract_document": "extract structured content from a single PDF or image file using a DocumentExtractor with an extraction template",
+    "extract_all_documents": "extract structured content from multiple PDF or image files in batch using DocumentExtractor.extract_all",
+    "configure_extraction_formats": "configure allowed input formats and per-format extraction options when initializing a DocumentExtractor",
+    "reuse_cached_pipelines": "reuse cached extraction pipelines across documents by hashing pipeline options for efficient batch extraction"
+  },
+  "docling-project_docling/docling/backend/abstract_backend.py": {
+    "build_document_backend": "build a document backend class that extends AbstractDocumentBackend to parse document formats",
+    "test_is_valid": "test the is_valid method to check if a document backend instance is valid",
+    "test_supported_formats": "test the supported_formats class method to get supported input formats",
+    "test_supports_pagination": "test the supports_pagination class method to check pagination support",
+    "run_convert": "run the convert method on a DeclarativeDocumentBackend to produce a DoclingDocument"
+  },
+  "docling-project_docling/docling/backend/asciidoc_backend.py": {
+    "convert_asciidoc_to_docling_document": "convert an AsciiDoc file into a structured DoclingDocument with headings, lists, tables, and images",
+    "parse_asciidoc_section_headers": "parse AsciiDoc section headers with multiple levels and build a hierarchical parent-child structure",
+    "parse_asciidoc_list_items": "parse AsciiDoc list items with nested indentation levels and bullet or numbered markers",
+    "parse_asciidoc_tables": "parse AsciiDoc table blocks delimited by |=== markers into a grid-based TableData structure",
+    "parse_asciidoc_images_with_captions": "parse AsciiDoc image macros with optional dimensions, paths, and multiline captions"
+  },
+  "docling-project_docling/docling/backend/csv_backend.py": {
+    "build_csv_backend_convert": "build a CsvDocumentBackend instance to convert a CSV file into a DoclingDocument with table structure",
+    "create_csv_dialect_detection": "create CSV dialect detection using csv.Sniffer to auto-detect delimiters like comma, semicolon, tab, pipe, or colon",
+    "test_csv_backend_is_valid": "test the CsvDocumentBackend.is_valid method to verify the backend loaded the CSV content successfully",
+    "review_csv_backend_convert": "review the CsvDocumentBackend.convert method that parses CSV data into a structured DoclingDocument with TableData",
+    "summarize_csv_backend_supported_formats": "summarize the CsvDocumentBackend.supported_formats class method that returns the set of supported InputFormat values"
+  },
+  "docling-project_docling/docling/backend/docling_parse_backend.py": {
+    "create_DoclingParseDocumentBackend": "create a DoclingParseDocumentBackend to load and parse a PDF document using docling-parse",
+    "build_DoclingParsePageBackend": "build a DoclingParsePageBackend to extract text, images, and layout from a single PDF page",
+    "run_get_segmented_page": "run get_segmented_page on a DoclingParsePageBackend to retrieve a SegmentedPdfPage with text cells and layout data",
+    "test_get_text_in_rect": "test get_text_in_rect on a DoclingParsePageBackend to extract text within a given bounding box region",
+    "review_get_page_image": "review get_page_image on a DoclingParsePageBackend to render a cropped, scaled PIL Image of a PDF page"
+  },
+  "docling-project_docling/docling/backend/html_backend.py": {
+    "convert_html_to_docling_document": "convert HTML content or file into a structured DoclingDocument with headings, tables, and lists",
+    "create_html_backend_instance": "create an HTMLDocumentBackend instance from an HTML file or BytesIO stream for document parsing",
+    "build_table_row_col_counts": "build row and column counts from an HTML table tag including colspan and rowspan handling",
+    "extract_text_from_element": "extract concatenated text from a BeautifulSoup PageElement including p, li, th, and td tags",
+    "clean_unicode_characters": "clean unicode characters from HTML text replacing special quotes dashes and non-breaking spaces"
+  },
+  "docling-project_docling/docling/backend/image_backend.py": {
+    "create_image_backend": "create an ImageDocumentBackend to parse multi-page TIFF or single-frame image files",
+    "load_page_image": "load a page from an image document and return an _ImagePageBackend instance",
+    "get_page_image_crop_scale": "get a page image with optional cropbox and scale from _ImagePageBackend",
+    "get_bitmap_rects": "get bitmap bounding boxes for a raw image page at a given scale",
+    "get_segmented_page": "get an empty segmented page with proper dimensions for a raw image"
+  },
+  "docling-project_docling/docling/backend/managed_pdfium_backend.py": {
+    "create_managed_pdfium_document_backend": "create a ManagedPdfiumDocumentBackend instance with an InputDocument, path_or_stream, and PdfBackendOptions",
+    "create_managed_pdfium_page_backend": "create a ManagedPdfiumPageBackend instance for managing PDF page lifecycle with PDFium",
+    "test_unload_document_backend": "test the unload method of ManagedPdfiumDocumentBackend to close native document resources",
+    "test_unload_page_backend": "test the unload method of ManagedPdfiumPageBackend to close native page resources",
+    "review_close_native_methods": "review the abstract _close_native_document and _close_native_page methods for resource cleanup"
+  },
+  "docling-project_docling/docling/backend/md_backend.py": {
+    "build_convert_markdown_to_docling": "convert a markdown file or BytesIO stream into a DoclingDocument using MarkdownDocumentBackend",
+    "create_parse_markdown_ast": "parse markdown text into an abstract syntax tree using marko Markdown parser and iterate elements",
+    "test_table_parsing": "test that markdown tables with pipe delimiters are parsed into DoclingDocument TableData structures",
+    "review_html_block_delegation": "review how MarkdownDocumentBackend delegates HTML blocks to HTMLDocumentBackend for conversion",
+    "summarize_heading_list_processing": "summarize how MarkdownDocumentBackend handles headings, list items, and formatted text in markdown"
+  },
+  "docling-project_docling/docling/backend/mets_gbs_backend.py": {
+    "build_mets_gbs_backend": "build a METS GBS document backend that parses gzipped tar archives containing Google Books XML metadata and OCR data",
+    "create_mets_gbs_page_backend": "create a METS GBS page backend that retrieves text cells, bitmap rects, and page images from a segmented PDF page",
+    "load_mets_gbs_document": "load a METS GBS document from a gzipped tar file and extract page map with image and OCR file references",
+    "parse_mets_gbs_page": "parse a single page from a METS GBS archive by extracting image and OCR XML to build segmented page with text cells",
+    "test_mets_gbs_validation": "test METS GBS document backend validation by checking root METS element has PROFILE attribute set to gbs"
+  },
+  "docling-project_docling/docling/backend/msexcel_backend.py": {
+    "convert_excel_to_docling_document": "convert an Excel workbook into a DoclingDocument with tables, images, and provenance metadata",
+    "find_tables_in_sheet": "find all compact rectangular data tables in an Excel worksheet using flood fill connectivity detection",
+    "find_images_in_sheet": "extract embedded images from an Excel worksheet and attach them as picture items with bounding box provenance",
+    "find_true_data_bounds": "compute the minimal bounding rectangle covering all non-empty cells and merged ranges in a worksheet",
+    "find_table_bounds": "determine table boundaries using BFS flood fill with configurable gap tolerance for connected cell regions"
+  },
+  "docling-project_docling/docling/backend/mspowerpoint_backend.py": {
+    "convert_pptx_to_docling_document": "convert a PowerPoint PPTX file into a structured DoclingDocument with text, tables, and images",
+    "parse_bullet_list_from_pptx_paragraphs": "parse bullet and numbered list markers from PowerPoint paragraph properties and text body styles",
+    "extract_tables_from_pptx_shapes": "extract table data with row and column spans from PowerPoint slide shapes into Docling TableData",
+    "add_pictures_from_pptx_shapes": "extract images from PowerPoint slide shapes and add them as ImageRef objects to the document",
+    "handle_notes_slide_content": "extract notes text from PowerPoint notes slides and add them as furniture text elements to the document"
+  },
+  "docling-project_docling/docling/backend/msword_backend.py": {
+    "convert_msword_to_docling": "convert a DOCX file to a structured DoclingDocument with headings, lists, tables, and images",
+    "parse_docx_tables_with_spans": "parse DOCX tables with merged cells and column spans into a DoclingTableData structure",
+    "extract_docx_equations_as_latex": "extract OOXML equations from DOCX paragraphs and convert them to LaTeX with inline markers",
+    "build_docx_list_items_with_hierarchy": "build nested list items from DOCX numbered and bulleted lists with proper indentation levels",
+    "add_docx_comments_to_document": "add reviewer comments from DOCX comment ranges to a DoclingDocument with author and timestamp metadata"
+  },
+  "docling-project_docling/docling/backend/noop_backend.py": {
+    "create_noop_backend": "create a NoOpBackend instance to validate input file or BytesIO stream existence",
+    "test_is_valid": "test the NoOpBackend.is_valid method to check if input document is valid",
+    "test_supports_pagination": "test the NoOpBackend.supports_pagination method to confirm pagination is not supported",
+    "build_supported_formats": "build a set of supported input formats from NoOpBackend.supported_formats",
+    "review_init_validation": "review the NoOpBackend.__init__ validation logic for BytesIO and Path inputs"
+  },
+  "docling-project_docling/docling/backend/pdf_backend.py": {
+    "create_PdfDocumentBackend": "create a PdfDocumentBackend instance from an InputDocument and path_or_stream with PdfBackendOptions",
+    "test_PdfDocumentBackend_supported_formats": "test that PdfDocumentBackend.supported_formats returns InputFormat.PDF",
+    "test_PdfDocumentBackend_supports_pagination": "test that PdfDocumentBackend.supports_pagination returns True",
+    "run_PdfDocumentBackend_load_page": "run PdfDocumentBackend.load_page to get a PdfPageBackend for a given page number",
+    "run_PdfPageBackend_get_text_in_rect": "run PdfPageBackend.get_text_in_rect to extract text within a BoundingBox region",
+    "run_PdfPageBackend_get_segmented_page": "run PdfPageBackend.get_segmented_page to get a SegmentedPdfPage with layout info",
+    "run_PdfPageBackend_get_text_cells": "run PdfPageBackend.get_text_cells to iterate over TextCell objects for the page",
+    "run_PdfPageBackend_get_bitmap_rects": "run PdfPageBackend.get_bitmap_rects to find bitmap/image bounding boxes on the page",
+    "run_PdfPageBackend_get_page_image": "run PdfPageBackend.get_page_image to render the page as a PIL Image with optional cropbox",
+    "run_PdfPageBackend_get_size": "run PdfPageBackend.get_size to get the page dimensions as a Size object",
+    "run_PdfPageBackend_is_valid": "run PdfPageBackend.is_valid to check if the page backend is in a valid state",
+    "run_PdfPageBackend_unload": "run PdfPageBackend.unload to release resources held by the page backend"
+  },
+  "docling-project_docling/docling/backend/pypdfium2_backend.py": {
+    "create_pdf_page_geometry": "create PdfPageGeometry from a pypdfium2 PdfPage with crop box, media box, and rotation support",
+    "build_pdf_document_backend": "build a PyPdfiumDocumentBackend to load and manage a PDF document with password support",
+    "test_pdf_page_backend": "test a PyPdfiumPageBackend to extract text cells, bitmap rects, and segmented pages from a PDF page",
+    "run_pdf_page_image_render": "run page image rendering from a PDF page with configurable scale and cropbox parameters",
+    "summarize_text_cells_extraction": "summarize text cell extraction from a PDF page with horizontal cell merging and row grouping"
+  },
+  "docling-project_docling/docling/backend/webvtt_backend.py": {
+    "build_webvtt_backend_convert": "build a WebVTT document backend that converts .vtt subtitle files into DoclingDocument objects",
+    "test_webvtt_backend_is_valid": "test the WebVTT backend is_valid method to verify WebVTT file signature",
+    "review_webvtt_backend_convert": "review the WebVTT backend convert method that parses cue blocks and builds a structured document",
+    "summarize_annotated_text_dataclass": "summarize the AnnotatedText dataclass that holds text, voice, and formatting metadata",
+    "review_webvtt_backend_supported_formats": "review the WebVTT backend supported_formats class method that returns InputFormat.VTT"
+  },
+  "docling-project_docling/docling/backend/docx/drawingml/utils.py": {
+    "test_get_libreoffice_cmd": "test the get_libreoffice_cmd function to detect and validate LibreOffice installation",
+    "build_docx_to_pdf_converter": "build a DOCX to PDF converter using LibreOffice headless mode",
+    "crop_image_whitespace": "crop whitespace from a PIL image using background color detection and padding",
+    "run_docx_drawing_to_image": "run DOCX drawing extraction to convert document drawings into a cropped PIL image",
+    "refactor_get_pil_from_dml_docx": "refactor get_pil_from_dml_docx to support additional PDF rendering scales"
+  },
+  "docling-project_docling/docling/backend/docx/latex/omml.py": {
+    "create_load_omml_from_stream": "load OMML XML from a file stream and yield LaTeX string conversions for each oMath element",
+    "create_load_omml_from_string": "load OMML XML from a string and yield LaTeX string conversions for each oMath element",
+    "build_omml_to_latex_converter": "build an oMath2Latex converter that transforms Office Math Markup Language elements into LaTeX notation",
+    "test_escape_latex_function": "test the escape_latex function that escapes special LaTeX characters in strings",
+    "review_oMath2Latex_methods": "review the oMath2Latex class methods for converting subscripts, superscripts, fractions, radicals, matrices, and n-ary operators to LaTeX"
+  },
+  "docling-project_docling/docling/backend/json/docling_json_backend.py": {
+    "create_DoclingJSONBackend": "create a DoclingJSONBackend instance from a JSON file path or BytesIO stream containing Docling JSON",
+    "test_is_valid": "test whether a DoclingJSONBackend instance holds valid DoclingDocument data",
+    "run_convert": "run DoclingJSONBackend.convert() to parse and return a DoclingDocument from JSON input",
+    "test_supported_formats": "test that DoclingJSONBackend.supported_formats returns JSON_DOCLING input format",
+    "test_supports_pagination": "test that DoclingJSONBackend.supports_pagination returns False"
+  },
+  "docling-project_docling/docling/backend/latex/backend.py": {
+    "convert_latex_document": "convert a LaTeX file into a DoclingDocument with structured text, tables, and math content",
+    "parse_latex_nodes": "parse LaTeX source into AST nodes using LatexWalker with tolerant parsing and fallback extraction",
+    "validate_latex_content": "validate whether a LaTeX document contains non-empty, processable content",
+    "process_latex_macros": "extract and process custom LaTeX macros and their argument definitions from document nodes",
+    "test_latex_backend": "test the LatexDocumentBackend supports pagination and correctly identifies LaTeX input format"
+  },
+  "docling-project_docling/docling/backend/latex/engines/base.py": {
+    "test_RenderEngine_is_available": "test the RenderEngine.is_available abstract method",
+    "test_RenderEngine_render": "test the RenderEngine.render abstract method"
+  },
+  "docling-project_docling/docling/backend/latex/libraries/base.py": {
+    "review_LibraryHandler": "review the abstract base class LibraryHandler for defining LaTeX library handler interfaces",
+    "build_LibraryHandler": "build a Python class that inherits from LibraryHandler and implements environments, macros, and handle_environment",
+    "test_LibraryHandler": "test the LibraryHandler abstract base class enforces implementation of environments, macros, and handle_environment",
+    "summarize_LibraryHandler": "summarize the LibraryHandler abstract base class and its three required members",
+    "refactor_LibraryHandler": "refactor the LibraryHandler abstract base class to add a handle_macro method for macro processing"
+  },
+  "docling-project_docling/docling/backend/latex/utils/encoding.py": {
+    "build_decode_latex_content": "build a function that decodes LaTeX content from a file path or BytesIO stream using utf-8, latin-1, or cp1252 encoding",
+    "create_decode_latex_path": "create a call to decode_latex_content with a Path object pointing to a .tex file",
+    "create_decode_latex_stream": "create a call to decode_latex_content with a BytesIO object containing raw LaTeX bytes",
+    "test_decode_latex_content": "test decode_latex_content with utf-8 encoded, latin-1 encoded, and cp1252 encoded LaTeX inputs",
+    "review_decode_latex_content": "review decode_latex_content for encoding fallback behavior and error handling on missing files"
+  },
+  "docling-project_docling/docling/backend/latex/utils/table.py": {
+    "parse_table_latex_environment": "parse a LaTeX table environment node into a TableData object with proper cell spans",
+    "process_table_macro_node": "process a LaTeX macro node for table elements like \\, multicolumn, multirow, and & cell breaks",
+    "build_table_from_latex": "build a TableData structure from a LaTeX table environment with multicolumn and multirow support",
+    "create_table_cells_with_spans": "create TableCell objects with row_span and col_span attributes from parsed LaTeX table nodes",
+    "review_table_helper_mixin": "review the TableHelperMixin class and its LaTeX table parsing capabilities"
+  },
+  "docling-project_docling/docling/backend/xml/jats_backend.py": {
+    "build_jats_xml_parser": "build a JATS XML parser backend that converts Journal Article Tag Suite XML into DoclingDocument format",
+    "create_jats_backend_convert": "create a JatsDocumentBackend instance and call convert to parse a JATS XML file into a structured document",
+    "test_parse_table_data": "test the parse_table_data static method to extract table data from HTML-tagged table content",
+    "refactor_parse_metadata": "refactor the _parse_metadata method to extract title, authors, and abstract from JATS XML metadata",
+    "review_parse_element_citation": "review the _parse_element_citation method to parse JATS element-citation nodes into formatted citation strings"
+  },
+  "docling-project_docling/docling/backend/xml/uspto_backend.py": {
+    "build_uspto_patent_backend": "build a PatentUsptoDocumentBackend to parse USPTO patent XML files into a DoclingDocument",
+    "create_patent_ice_parser": "create a PatentUsptoIce parser instance to parse USPTO patent grant or application XML v4 documents",
+    "parse_patent_grant_v2": "parse a PatentUsptoGrantV2 XML document from 2002-2004 into a structured DoclingDocument",
+    "parse_patent_grant_aps": "parse a PatentUsptoGrantAps text patent document from 1976-2001 into a DoclingDocument",
+    "parse_xml_table": "parse an XML table string into a TableData object with TableCell entries and column spans"
+  },
+  "docling-project_docling/docling/backend/xml/xbrl_backend.py": {
+    "create_xbrl_backend": "create an XBRL document backend from a file path and taxonomy directory options",
+    "convert_xbrl_to_docling": "convert an XBRL instance document to a DoclingDocument with key-value pairs and hierarchy",
+    "test_xbrl_backend_valid": "test whether an XBRL document backend loaded a valid XBRL instance file",
+    "summarize_xbrl_supported_formats": "summarize the input formats supported by the XBRL document backend",
+    "run_xbrl_backend_unload": "run the XBRL backend unload method to close and release model resources"
+  },
+  "docling-project_docling/docling/cli/main.py": {
+    "convert_pdf_to_markdown": "run docling to convert PDF files to markdown format with OCR and table extraction",
+    "convert_pdf_to_json": "run docling to convert PDF files to JSON format with embedded images and layout data",
+    "convert_pdf_to_html": "run docling to convert PDF files to HTML format with optional split-page view and layout visualization",
+    "convert_audio_to_transcript": "run docling to transcribe audio files using Whisper models with configurable model size",
+    "convert_pdf_with_vlm": "run docling to convert PDF files using a vision-language model preset for document understanding",
+    "show_docling_version": "show docling version information including core, IBM models, parse, and platform details",
+    "show_external_plugins": "list available third-party OCR, layout, and table plugin engines for docling",
+    "export_documents_with_profiling": "export converted documents with profiling summary showing timing statistics per pipeline stage"
+  },
+  "docling-project_docling/docling/cli/models.py": {
+    "download_models_cli": "download Docling models to a local directory using the CLI download command",
+    "download_models_all": "download all available Docling models to a specified output directory using the --all flag",
+    "download_models_selective": "download specific Docling models (layout, tableformer, rapidocr) to a local directory",
+    "download_hf_models": "download models from HuggingFace repositories to a local directory using the download-hf-repo command",
+    "list_available_models": "list all available Docling model identifiers from the _AvailableModels enum"
+  },
+  "docling-project_docling/docling/datamodel/accelerator_options.py": {
+    "create_accelerator_options": "create AcceleratorOptions with custom num_threads, device, and cuda_use_flash_attention2 settings",
+    "build_accelerator_device_enum": "build an AcceleratorDevice enum value for cpu, cuda, mps, xpu, or auto device selection",
+    "validate_device_option": "validate a device string against allowed options like auto, cpu, cuda, cuda:0, mps, xpu",
+    "configure_envvar_fallback": "configure AcceleratorOptions to fall back to OMP_NUM_THREADS when DOCLING_NUM_THREADS is unset",
+    "set_cuda_flash_attention": "set cuda_use_flash_attention2 to True to enable Flash Attention 2 on compatible NVIDIA GPUs"
+  },
+  "docling-project_docling/docling/datamodel/base_models.py": {
+    "create_conversion_status_enum": "create the ConversionStatus enum with pending, started, failure, success, partial_success, and skipped states",
+    "build_input_format_mapping": "build the InputFormat enum and FormatToExtensions mapping for supported document file formats",
+    "test_page_confidence_scores": "test the PageConfidenceScores class with parse, layout, table, and OCR score fields and computed mean and low grades",
+    "summarize_confidence_report": "summarize the ConfidenceReport class that aggregates per-page confidence scores across all document pages",
+    "review_page_model": "review the Page model with image caching, text cell access, and page image retrieval with scale and cropbox support"
+  },
+  "docling-project_docling/docling/datamodel/document.py": {
+    "save_conversion_result_to_zip": "save a ConversionAssets object to a ZIP archive with version, status, errors, pages, timings, confidence, and document JSON files",
+    "load_conversion_result_from_zip": "load a ConversionAssets object from a previously saved ZIP archive containing version, status, errors, pages, timings, confidence, and document JSON files",
+    "create_input_document_from_path": "create an InputDocument from a file path with format detection, file hashing, and backend initialization for document conversion",
+    "create_input_document_from_stream": "create an InputDocument from a BytesIO stream with filename, format detection, and backend initialization for document conversion",
+    "get_docling_version_info": "get a DoclingVersion object containing versions of docling, docling-core, docling-ibm-models, docling-parse, platform, and Python implementation details"
+  },
+  "docling-project_docling/docling/datamodel/kserve_transport_utils.py": {
+    "run_resolve_kserve_transport_base_url": "run resolve_kserve_transport_base_url to prepend http:// to host:port URLs for HTTP transport",
+    "test_resolve_kserve_transport_base_url": "test resolve_kserve_transport_base_url with HTTP transport and plain host:port input",
+    "test_resolve_kserve_transport_base_url_grpc": "test resolve_kserve_transport_base_url with gRPC transport passes URL through unchanged",
+    "test_resolve_kserve_transport_base_url_full_url": "test resolve_kserve_transport_base_url with HTTP transport and full http(s) URL already present",
+    "refactor_resolve_kserve_transport_base_url": "refactor resolve_kserve_transport_base_url to support additional transport protocols beyond HTTP and gRPC"
+  },
+  "docling-project_docling/docling/datamodel/kserve_v2_options.py": {
+    "build_kserve_config": "build a KserveV2OptionsMixin instance to connect to a KServe v2 inference server with gRPC transport",
+    "create_grpc_connection": "create a KserveV2OptionsMixin config with gRPC transport, TLS enabled, and custom metadata for authentication",
+    "create_http_connection": "create a KserveV2OptionsMixin config with HTTP transport, custom headers, and a model name for JSON REST inference",
+    "test_validation": "test KserveV2OptionsMixin field validation for transport literal values, timeout float, and grpc_max_message_bytes minimum",
+    "review_mixin_fields": "review the KserveV2OptionsMixin class fields including url, model_name, transport, headers, grpc_metadata, and timeout"
+  },
+  "docling-project_docling/docling/datamodel/layout_model_specs.py": {
+    "create_layout_model_config": "create a LayoutModelConfig with name, repo_id, revision, model_path, and supported_devices for a HuggingFace layout model",
+    "build_layout_model_type_enum": "build a LayoutModelType enum value like docling_layout_heron or docling_layout_egret_large",
+    "access_default_layout_model": "access the default DOCLING_LAYOUT_V2 layout model configuration constant",
+    "access_heron_layout_model": "access the DOCLING_LAYOUT_HERON layout model configuration constant from HuggingFace",
+    "get_model_repo_folder": "get the sanitized model_repo_folder string from a LayoutModelConfig by replacing slashes in repo_id"
+  },
+  "docling-project_docling/docling/datamodel/picture_classification_options.py": {
+    "create_document_picture_classifier_options": "create DocumentPictureClassifierOptions instance for configuring picture classification in document processing pipelines",
+    "register_preset_document_picture_classifier": "register IMAGE_CLASSIFICATION_DOCUMENT_FIGURE preset as a named option for DocumentPictureClassifierOptions",
+    "configure_model_spec_picture_classifier": "configure ImageClassificationModelSpec for document picture classification with engine-specific overrides",
+    "get_repo_id_picture_classifier": "get the model repository ID from DocumentPictureClassifierOptions for the selected engine type",
+    "get_revision_picture_classifier": "get the model revision string from DocumentPictureClassifierOptions for the selected engine type"
+  },
+  "docling-project_docling/docling/datamodel/pipeline_options.py": {
+    "create_pdf_pipeline_options": "create PdfPipelineOptions with OCR enabled, Tesseract engine, and table structure extraction for scanned documents",
+    "create_vlm_pipeline_options": "create VlmPipelineOptions using granite_docling preset with VLM-based document understanding and page image generation",
+    "configure_ocr_engine": "configure RapidOcrOptions with ONNXRuntime backend and Chinese language for multilingual text recognition",
+    "enable_picture_description": "enable picture description using PictureDescriptionVlmEngineOptions with smolvlm preset for image captioning",
+    "build_conversion_pipeline": "build ConvertPipelineOptions with picture classification and chart extraction for document analysis workflows"
+  },
+  "docling-project_docling/docling/datamodel/pipeline_options_asr_model.py": {
+    "create_inline_asr_options": "create an InlineAsrOptions instance with a HuggingFace Whisper model repo_id and custom temperature",
+    "build_mlx_whisper_options": "build an InlineAsrMlxWhisperOptions instance for Apple Silicon with transcribe task and language",
+    "build_native_whisper_options": "build an InlineAsrNativeWhisperOptions instance with language code and word timestamps enabled",
+    "test_asr_framework_enum": "test the InferenceAsrFramework enum to get MLX or WHISPER framework values",
+    "run_asr_with_options": "run automatic speech recognition using configured InlineAsrOptions with timestamps and device support"
+  },
+  "docling-project_docling/docling/datamodel/pipeline_options_vlm_model.py": {
+    "create_InlineVlmOptions": "create an InlineVlmOptions instance with a HuggingFace model repo_id and inference framework",
+    "create_ApiVlmOptions": "create an ApiVlmOptions instance with an API endpoint URL and response format",
+    "build_prompt_VlmOptions": "build a prompt string from a BaseVlmOptions instance and a SegmentedPage",
+    "create_ResponseFormat": "create a ResponseFormat enum value for VLM output format selection",
+    "create_InferenceFramework": "create an InferenceFramework enum value for selecting transformers, mlx, or vllm"
+  },
+  "docling-project_docling/docling/datamodel/settings.py": {
+    "create_settings_app": "create an AppSettings instance with env-prefixed configuration via DOCLING_ environment variables",
+    "build_document_limits": "build a DocumentLimits object to restrict max pages, max file size, and page range for document processing",
+    "configure_batch_concurrency": "configure BatchConcurrencySettings with doc/page batch sizes and concurrency levels for parallel processing",
+    "enable_debug_visualization": "enable DebugSettings options for visualizing cells, OCR, layout, and profiling pipeline timings",
+    "check_compile_model": "check whether torch model compilation is enabled via default_compile_model()"
+  },
+  "docling-project_docling/docling/datamodel/stage_model_specs.py": {
+    "create_preset_from_model_spec": "create a VlmModelSpec with engine-specific overrides for repo_id and revision",
+    "build_preset_from_stage_model": "build a StageModelPreset combining a VlmModelSpec with default engine and scale settings",
+    "run_preset_via_mixin": "run from_preset on a stage options class to instantiate options from a registered preset",
+    "list_registered_presets": "list all registered preset IDs and preset info for a stage options class",
+    "get_engine_config_from_spec": "get engine-specific model config from a VlmModelSpec for a given engine type"
+  },
+  "docling-project_docling/docling/datamodel/service/options.py": {
+    "build_convert_documents_options": "build a ConvertDocumentsOptions instance to configure document conversion with OCR, table structure, and VLM pipeline settings",
+    "create_picture_description_local": "create a PictureDescriptionLocal config for running a local Hugging Face vision-language model to describe images in documents",
+    "create_picture_description_api": "create a PictureDescriptionApi config to call an OpenAI-compatible API endpoint for describing images in documents",
+    "create_vlm_pipeline_model": "create a VlmModelLocal or VlmModelApi config for a VLM pipeline that converts document pages to docling format",
+    "validate_document_conversion_options": "validate ConvertDocumentsOptions to enforce mutually exclusive preset and custom config fields and deprecated field warnings"
+  },
+  "docling-project_docling/docling/datamodel/service/requests.py": {
+    "create_ConvertDocumentsRequest": "create a ConvertDocumentsRequest with file sources, conversion options, and an in-body target",
+    "create_SourceRequestItem": "create a source request item from a file path, HTTP URL, or S3 bucket coordinates",
+    "create_BaseChunkDocumentsRequest": "create a chunk documents request with conversion options, sources, and output target",
+    "create_GenericChunkDocumentsRequest": "create a generic chunk documents request with typed chunking options",
+    "run_make_request_model": "run make_request_model to dynamically create and cache a typed chunk documents request class"
+  },
+  "docling-project_docling/docling/datamodel/service/sources.py": {
+    "create_http_source": "create an HttpSource model with an HTTP URL and optional headers for fetching remote documents",
+    "create_file_source": "create a FileSource model with a base64-encoded file string and filename for local document processing",
+    "build_document_stream": "build a DocumentStream from a FileSource by decoding its base64 content into a BytesIO stream",
+    "create_s3_coordinates": "create S3Coordinates with endpoint, access key, secret key, and bucket for accessing S3-stored documents",
+    "test_file_source_to_document_stream": "test FileSource.to_document_stream converts base64 content to a valid DocumentStream object"
+  },
+  "docling-project_docling/docling/experimental/datamodel/threaded_layout_vlm_pipeline_options.py": {
+    "create_threaded_layout_vlm_pipeline_options": "create ThreadedLayoutVlmPipelineOptions with custom images_scale, vlm_options, and layout_options",
+    "build_threaded_layout_vlm_pipeline": "build a ThreadedLayoutVlmPipelineOptions instance with DOCTAGS response format for layout+VLM processing",
+    "test_validate_response_format": "test the validate_response_format method raises ValueError when response format is not DOCTAGS",
+    "run_threaded_layout_pipeline": "run a threaded layout+VLM pipeline with configurable batch sizes and queue max size",
+    "review_threaded_layout_vlm_pipeline_options": "review ThreadedLayoutVlmPipelineOptions class and its threading, batching, and VLM configuration fields"
+  },
+  "docling-project_docling/docling/experimental/models/table_crops_layout_model.py": {
+    "create_TableCropsLayoutModel": "create a TableCropsLayoutModel instance that treats full pages as table clusters",
+    "run_predict_layout": "run layout prediction on a sequence of pages, marking each page as a table cluster",
+    "build_build_page_clusters": "build page clusters from page size bounding boxes labeled as TABLE",
+    "test_get_options_type": "test the get_options_type classmethod returns TableCropsLayoutOptions type",
+    "review_update_confidence": "review the confidence update method that sets layout and OCR scores for pages"
+  },
+  "docling-project_docling/docling/experimental/pipeline/threaded_layout_vlm_pipeline.py": {
+    "create_ThreadedLayoutVlmPipeline": "create a threaded layout+VLM pipeline that combines layout detection with VLM processing for document conversion",
+    "run_pipeline_document_conversion": "run the threaded pipeline to convert PDF pages through layout detection and VLM model stages",
+    "build_document_from_vlm_predictions": "build a DoclingDocument from VLM DOCTAGS predictions with optional picture image extraction",
+    "configure_vlm_prompt_with_layout_info": "configure a layout-aware VLM prompt that injects layout element bounding box annotations into the prompt",
+    "assemble_document_from_doctags": "assemble a final document by converting DOCTAGS response format into a structured DoclingDocument"
+  },
+  "docling-project_docling/docling/models/base_layout_model.py": {
+    "create_BaseLayoutModel": "create a layout model class that implements BaseLayoutModel to produce page layout predictions",
+    "run_BaseLayoutModel_call": "run a BaseLayoutModel instance to attach layout predictions to a batch of pages",
+    "build_BaseLayoutModel_predict_layout": "build a BaseLayoutModel.predict_layout method that returns LayoutPrediction sequences for given pages",
+    "test_BaseLayoutModel_get_options_type": "test the BaseLayoutModel.get_options_type class method to verify it returns BaseLayoutOptions type",
+    "review_BaseLayoutModel": "review the BaseLayoutModel abstract class interface for layout model implementations"
+  },
+  "docling-project_docling/docling/models/base_model.py": {
+    "create_basepage_model": "create a page model subclass that processes batches of document pages and returns updated pages",
+    "build_vlm_process_images": "build a vision-language model that processes image batches with prompts and returns predictions",
+    "test_vlm_page_model": "test a VLM page model that extracts images from pages, processes them, and attaches results",
+    "summarize_enrichment_model": "summarize an enrichment model that prepares and processes document elements in batches",
+    "run_image_enrichment_model": "run an item-and-image enrichment model that crops page images for document elements"
+  },
+  "docling-project_docling/docling/models/base_ocr_model.py": {
+    "build_ocr_rects": "build OCR rectangles for a page by computing optimal bounding boxes based on bitmap coverage",
+    "filter_ocr_cells": "filter OCR cells by dropping any cells that overlap with existing programmatic text cells",
+    "post_process_cells": "post-process OCR cells and update the page with combined OCR and programmatic cells",
+    "combine_cells": "combine existing programmatic cells with OCR cells while filtering overlaps and re-indexing",
+    "draw_ocr_rects_and_cells": "draw OCR rectangles and cells onto a page image for debugging and visualization"
+  },
+  "docling-project_docling/docling/models/base_table_model.py": {
+    "create_BaseTableStructureModel": "create a subclass of BaseTableStructureModel to implement table structure prediction for document pages",
+    "build_predict_tables": "build a predict_tables method that produces TableStructurePrediction sequences from a ConversionResult and page batch",
+    "test_get_options_type": "test the get_options_type class method returns the correct BaseTableStructureOptions type",
+    "run_BaseTableStructureModel_call": "run the __call__ method to apply table structure predictions to a batch of document pages",
+    "review_BaseTableStructureModel": "review the BaseTableStructureModel abstract base class interface for table structure prediction"
+  },
+  "docling-project_docling/docling/models/picture_description_base_model.py": {
+    "create_PictureDescriptionBaseModel": "create a picture description model with enabled options, batch size, scale, and accelerator settings",
+    "run_PictureDescriptionBaseModel_call": "run the picture description model on a batch of picture items to generate image descriptions",
+    "test_PictureDescriptionBaseModel_is_processable": "test whether a document element is a processable picture item for description",
+    "review__passes_classification": "review the picture classification pass logic that filters images by allow and deny label sets",
+    "summarize__meets_confidence": "summarize the confidence threshold check that determines if a prediction meets minimum confidence"
+  },
+  "docling-project_docling/docling/models/extraction/nuextract_transformers_model.py": {
+    "create_nuextract_model": "create a NuExtractTransformersModel instance for document extraction using vision-language model inference",
+    "run_vlm_inference": "run batched vision-language model inference on document images with templated prompts",
+    "process_vision_messages": "process vision information from messages and examples for batched VLM input",
+    "build_document_extractor": "build a document extraction pipeline using NuExtractTransformersModel with accelerator options",
+    "test_vlm_prediction": "test VLM prediction output by decoding generated tokens into structured results"
+  },
+  "docling-project_docling/docling/models/factories/base_factory.py": {
+    "create_instance_basefactory": "create an instance of a model class from the BaseFactory using a BaseOptions object",
+    "register_model_class": "register a model class with the BaseFactory by providing the class, plugin name, and module name",
+    "load_from_plugins_basefactory": "load and register model classes from setuptools plugins into the BaseFactory",
+    "get_enum_registered_kinds": "get an enum of all registered model kinds from the BaseFactory",
+    "create_options_by_kind": "create a BaseOptions instance from the BaseFactory by specifying the kind string"
+  },
+  "docling-project_docling/docling/models/inference_engines/common/hf_vision_base.py": {
+    "build_hf_vision_model_mixin": "build a HuggingFace vision model mixin that initializes model config, accelerator options, and artifacts path for vision inference",
+    "create_resolve_model_folder": "create a function that resolves a model folder from local artifacts path or downloads from HuggingFace Hub",
+    "test_load_preprocessor": "test loading a HuggingFace AutoImageProcessor from a model folder containing preprocessor_config.json",
+    "refactor_load_label_mapping": "refactor loading label mappings from a HuggingFace AutoConfig id2label into a dictionary of int-to-string",
+    "summarize_as_float_as_int": "summarize utility functions that convert scalar-like numpy arrays, torch tensors, and numeric values to float or int"
+  },
+  "docling-project_docling/docling/models/inference_engines/common/kserve_v2_client_base.py": {
+    "create_kserve_v2_client": "create a KServe v2 client that implements the KserveV2Client protocol for transport-agnostic model inference",
+    "get_model_metadata": "get the model metadata from a KServe v2 server to resolve tensor names and schemas",
+    "run_infer": "run model inference with numpy array inputs and return outputs keyed by tensor name",
+    "test_kserve_v2_client": "test a KServe v2 client implementation of the KserveV2Client protocol",
+    "review_kserve_v2_client": "review the KserveV2Client protocol class and its methods for transport-agnostic inference"
+  },
+  "docling-project_docling/docling/models/inference_engines/common/kserve_v2_grpc.py": {
+    "build_grpc_client": "build a KServe v2 gRPC client to connect to a model serving endpoint with TLS support and custom metadata headers",
+    "test_resolve_grpc_endpoint": "test the gRPC endpoint resolver that validates host:port strings and rejects URLs with schemes",
+    "create_encode_contents": "create a function that encodes numpy arrays into KServe v2 gRPC tensor contents for float, int, uint, bool dtypes",
+    "run_inference": "run model inference via KServe v2 gRPC with input tensors, output names, and optional request parameters",
+    "summarize_get_model_metadata": "summarize the model metadata retrieval that returns input and output tensor specifications from a KServe endpoint"
+  },
+  "docling-project_docling/docling/models/inference_engines/common/kserve_v2_http.py": {
+    "build_kserve_inference_client": "build a synchronous Python client for KServe v2 REST inference endpoints that sends numpy arrays and receives numpy arrays",
+    "run_inference_request": "run an inference request against a KServe v2 endpoint with input tensors and return decoded numpy output arrays",
+    "get_model_metadata": "get model metadata from a KServe v2 endpoint including input and output schema information",
+    "encode_input_tensor": "encode a numpy array into KServe v2 JSON input tensor format with name, shape, datatype, and flattened data",
+    "decode_output_tensor": "decode a KServe v2 JSON output tensor response back into a numpy array with the original shape and dtype"
+  },
+  "docling-project_docling/docling/models/inference_engines/common/kserve_v2_utils.py": {
+    "encode_bytes_element": "encode a scalar value to the KServe Triton BYTES wire format",
+    "encode_bytes_tensor": "encode a numpy BYTES tensor as a length-prefixed byte stream",
+    "decode_bytes_tensor": "decode a length-prefixed BYTES payload to a numpy object array",
+    "review_encode_bytes_tensor": "review the encode_bytes_tensor function for length-prefixed byte stream encoding",
+    "review_decode_bytes_tensor": "review the decode_bytes_tensor function for length-prefixed byte stream decoding"
+  },
+  "docling-project_docling/docling/models/inference_engines/image_classification/api_kserve_v2_engine.py": {
+    "create_api_kserve_v2_engine": "create a KServe v2 remote image-classification engine with options, model config, and accelerator settings",
+    "initialize_api_kserve_v2_engine": "initialize the KServe v2 image-classification engine to load preprocessor, labels, and remote client",
+    "run_predict_batch": "run inference on a batch of images against a KServe v2 endpoint and return classification outputs",
+    "close_api_kserve_v2_engine": "close the KServe v2 image-classification engine and release the remote client connection",
+    "review_resolve_tensor_names": "review the method that resolves input and output tensor names from KServe v2 model metadata"
+  },
+  "docling-project_docling/docling/models/inference_engines/image_classification/base.py": {
+    "create_BaseImageClassificationEngineOptions": "create image classification engine options with engine type and top_k prediction limit",
+    "build_ImageClassificationEngineInput": "build image classification input with a PIL image and optional metadata dictionary",
+    "run_BaseImageClassificationEngine_predict": "run single image classification prediction on a BaseImageClassificationEngine instance",
+    "run_BaseImageClassificationEngine_predict_batch": "run batch image classification predictions on a BaseImageClassificationEngine instance",
+    "get_BaseImageClassificationEngine_get_label_mapping": "get label mapping dictionary from a BaseImageClassificationEngine instance"
+  },
+  "docling-project_docling/docling/models/inference_engines/image_classification/factory.py": {
+    "create_image_classification_engine_onnx": "create an ONNX Runtime image classification engine with accelerator options and artifacts path",
+    "create_image_classification_engine_transformers": "create a Transformers-based image classification engine with model spec and accelerator options",
+    "create_image_classification_engine_kserve": "create an API Kserve V2 image classification engine with remote services enabled",
+    "build_image_classification_engine_pipeline": "build an image classification engine pipeline by selecting the appropriate engine type and options",
+    "test_image_classification_engine_factory": "test the image classification engine factory to verify correct engine type dispatch"
+  },
+  "docling-project_docling/docling/models/inference_engines/image_classification/onnxruntime_engine.py": {
+    "create_OnnxRuntimeImageClassificationEngine": "create an ONNX Runtime image classification engine with configurable options and accelerator settings",
+    "initialize_OnnxRuntimeImageClassificationEngine": "initialize the ONNX Runtime image classification engine session and preprocessor",
+    "run_predict_batch": "run batch inference on a list of image inputs using the ONNX Runtime image classification engine",
+    "resolve_model_artifacts": "resolve the ONNX model file path from artifacts directory or HuggingFace download",
+    "resolve_providers": "resolve ONNX Runtime execution providers such as CPU or CUDA based on accelerator options"
+  },
+  "docling-project_docling/docling/models/inference_engines/image_classification/transformers_engine.py": {
+    "create_transformers_image_classification_engine": "create a TransformersImageClassificationEngine instance with options and accelerator settings for image classification",
+    "initialize_transformers_image_classification_engine": "initialize the TransformersImageClassificationEngine to load the PyTorch model and preprocessor",
+    "run_predict_batch_on_images": "run predict_batch on a list of ImageClassificationEngineInput objects to get classification results",
+    "resolve_device_for_inference": "resolve the PyTorch device from accelerator options for CPU, CUDA, or MPS",
+    "resolve_torch_dtype_for_model": "resolve the PyTorch dtype from options or model config for float32, float16, or bfloat16"
+  },
+  "docling-project_docling/docling/models/inference_engines/object_detection/api_kserve_v2_engine.py": {
+    "initialize_object_detection_engine": "initialize the KServe v2 object-detection engine with preprocessor, labels, and remote client",
+    "run_batch_inference": "run batch inference on a list of images against a KServe v2-compatible object-detection endpoint",
+    "resolve_tensor_names": "resolve tensor names for inputs and outputs from KServe v2 model metadata",
+    "close_engine_connection": "close the KServe v2 client connection and release resources",
+    "build_remote_detection_engine": "build a KServe v2 object-detection engine with HTTP or gRPC transport for remote inference"
+  },
+  "docling-project_docling/docling/models/inference_engines/object_detection/base.py": {
+    "check_engine_is_remote": "check if an object detection engine type is a remote API variant using ObjectDetectionEngineType.is_remote_variant",
+    "create_engine_options": "create object detection engine options with a specified engine type and confidence score threshold",
+    "run_object_detection": "run object detection inference on a PIL image using an ObjectDetectionEngineInput and engine instance",
+    "resolve_engine_options_from_dict": "resolve engine options from a dictionary by looking up the engine type in the options registry",
+    "get_label_mapping": "get the label mapping dictionary that maps integer label IDs to human-readable label names"
+  },
+  "docling-project_docling/docling/models/inference_engines/object_detection/factory.py": {
+    "create_object_detection_engine_onnx": "create an ONNX Runtime object detection engine with accelerator options and model artifacts path",
+    "create_object_detection_engine_transformers": "create a Transformers-based object detection engine with model spec and accelerator configuration",
+    "create_object_detection_engine_kserve": "create an API KServe V2 remote object detection engine with remote services enabled",
+    "create_object_detection_engine": "create an object detection engine by engine type, options, model spec, and accelerator settings",
+    "review_create_object_detection_engine": "review the create_object_detection_engine factory function and its engine type dispatch logic"
+  },
+  "docling-project_docling/docling/models/inference_engines/object_detection/onnxruntime_engine.py": {
+    "create_onnx_object_detection_engine": "create an OnnxRuntimeObjectDetectionEngine instance with options, accelerator_options, and model_config for RT-DETR object detection",
+    "initialize_onnx_engine": "initialize the OnnxRuntimeObjectDetectionEngine session, preprocessor, label mapping, and ONNX runtime providers",
+    "run_onnx_inference_batch": "run ONNX inference on a batch of images using OnnxRuntimeObjectDetectionEngine.predict_batch and return detection outputs with labels, boxes, and scores",
+    "resolve_onnx_model_artifacts": "resolve ONNX model artifacts returning the model folder and model path from artifacts_path or HuggingFace download",
+    "resolve_onnx_providers": "resolve ONNX Runtime execution providers from accelerator options, defaulting to CPU or CUDA depending on device"
+  },
+  "docling-project_docling/docling/models/inference_engines/object_detection/transformers_engine.py": {
+    "create_transformers_engine": "create a TransformersObjectDetectionEngine with options, model config, and accelerator options",
+    "initialize_transformers_engine": "initialize the TransformersObjectDetectionEngine to load the model on the target device",
+    "run_transformers_predict_batch": "run predict_batch on the TransformersObjectDetectionEngine with a list of ObjectDetectionEngineInput items",
+    "resolve_transformers_device": "resolve the PyTorch device for the TransformersObjectDetectionEngine from accelerator options",
+    "resolve_transformers_dtype": "resolve the PyTorch dtype for the TransformersObjectDetectionEngine from options or model config"
+  },
+  "docling-project_docling/docling/models/inference_engines/vlm/_utils.py": {
+    "normalize_image_to_pil": "normalize an image to RGB PIL Image from a numpy array or PIL Image input",
+    "preprocess_image_batch": "preprocess a batch of images to RGB PIL Images from mixed numpy array and PIL Image inputs",
+    "extract_generation_stoppers": "extract and instantiate GenerationStopper instances from a generation configuration dictionary",
+    "resolve_model_artifacts_path": "resolve the path to model artifacts, downloading from HuggingFace if not found locally",
+    "format_prompt_for_vlm": "format a prompt string for a VLM model according to a specified prompt style and processor"
+  },
+  "docling-project_docling/docling/models/inference_engines/vlm/api_openai_compatible_engine.py": {
+    "create_api_vlm_engine": "create an ApiVlmEngine instance with enable_remote_services, ApiVlmEngineOptions, and optional EngineModelConfig",
+    "run_vlm_inference_batch": "run VLM inference on a batch of image inputs using concurrent API requests with ThreadPoolExecutor",
+    "initialize_vlm_engine": "initialize the ApiVlmEngine by validating the API URL and setting the initialized flag",
+    "cleanup_vlm_engine": "cleanup the ApiVlmEngine runtime resources for remote API services",
+    "summarize_api_vlm_engine": "summarize the ApiVlmEngine class that supports OpenAI-compatible, Ollama, LM Studio, and OpenAI endpoints"
+  },
+  "docling-project_docling/docling/models/inference_engines/vlm/auto_inline_engine.py": {
+    "create_auto_inline_engine": "create an AutoInlineVlmEngine instance that auto-selects the best local VLM engine based on platform and hardware",
+    "build_vlm_inference_pipeline": "build a VLM inference pipeline using AutoInlineVlmEngine to delegate to MLX, vLLM, or Transformers based on device availability",
+    "run_batch_inference": "run batch inference on a list of VlmEngineInput objects using the auto-selected engine's predict_batch method",
+    "test_auto_engine_selection": "test the auto engine selection logic that picks MLX on macOS with MPS, vLLM on CUDA with prefer_vllm, or Transformers as fallback",
+    "review_auto_inline_engine_cleanup": "review the AutoInlineVlmEngine cleanup method that releases resources of the delegated actual engine"
+  },
+  "docling-project_docling/docling/models/inference_engines/vlm/base.py": {
+    "create_vlm_engine_input": "create a VlmEngineInput with a PIL image, text prompt, and generation parameters for VLM inference",
+    "run_vlm_engine_predict": "run a VlmEngine to predict text output from an image and prompt via predict or __call__",
+    "build_vlm_engine_options": "build engine options by subclassing BaseVlmEngineOptions with a Literal engine_type for automatic registration",
+    "test_vlm_engine_type": "test if a VlmEngineType is an API or inline variant using is_api_variant and is_inline_variant",
+    "summarize_vlm_engine_output": "summarize a VlmEngineOutput containing generated text, stop reason, and engine metadata"
+  },
+  "docling-project_docling/docling/models/inference_engines/vlm/factory.py": {
+    "create_vlm_engine_auto_inline": "create a VLM inference engine using the AutoInline engine type with model spec and accelerator options",
+    "create_vlm_engine_transformers": "create a VLM inference engine using the Transformers backend with model config and artifacts path",
+    "create_vlm_engine_mlx": "create a VLM inference engine using the MLX backend with model config and artifacts path",
+    "create_vlm_engine_vllm": "create a VLM inference engine using the VLLM backend with model config and accelerator options",
+    "create_vlm_engine_api": "create a VLM inference engine using an API variant with OpenAI-compatible parameters and remote services"
+  },
+  "docling-project_docling/docling/models/inference_engines/vlm/mlx_engine.py": {
+    "create_mlx_vlm_engine": "create an MlxVlmEngine instance with options, artifacts_path, and optional model_config for Apple Silicon VLM inference",
+    "initialize_mlx_model": "initialize the MLX VLM engine by loading the model and processor from a HuggingFace repository",
+    "run_predict_batch": "run predict_batch on a list of VlmEngineInput objects to generate text outputs from images using the MLX model",
+    "load_model_for_repo": "load an MLX model and processor from a HuggingFace repository ID with a specified revision",
+    "cleanup_mlx_resources": "cleanup MLX model resources by deleting the vlm_model and processor instances"
+  },
+  "docling-project_docling/docling/models/inference_engines/vlm/transformers_engine.py": {
+    "create_transformers_vlm_engine": "create a TransformersVlmEngine instance with options, accelerator options, and model config for VLM inference",
+    "run_transformers_vlm_predict_batch": "run batch inference on a list of VlmEngineInput images and return generated text outputs",
+    "build_transformers_vlm_load_model": "build and load a HuggingFace model from a repository with specified revision and model type",
+    "test_transformers_vlm_initialize": "test initializing the TransformersVlmEngine with device detection and model loading",
+    "summarize_transformers_vlm_cleanup": "summarize cleaning up TransformersVlmEngine model resources and freeing GPU memory"
+  },
+  "docling-project_docling/docling/models/inference_engines/vlm/vllm_engine.py": {
+    "create_vllm_vlm_engine": "create a VllmVlmEngine instance with VllmVlmEngineOptions, AcceleratorOptions, and model artifacts path for high-throughput VLM inference",
+    "run_vllm_engine_predict": "run batched VLM inference on multiple image-prompt pairs using the vLLM engine's predict_batch method",
+    "build_vllm_engine_initialize": "build and initialize the vLLM engine with a model repo_id, revision, and extra config for engine and sampling parameters",
+    "test_vllm_engine_cleanup": "test the vLLM engine cleanup method to release LLM and processor resources",
+    "summarize_vllm_engine_options": "summarize VllmVlmEngineOptions including trust_remote_code, cudagraph_mode, and gpu_memory_utilization settings"
+  },
+  "docling-project_docling/docling/models/plugins/defaults.py": {
+    "build_ocr_engines": "build a pipeline with OCR engines including Tesseract, EasyOCR, and OcrAutoModel for document image recognition",
+    "create_picture_descriptions": "create image descriptions using VLM engine, legacy transformers, or API-based picture description models",
+    "build_layout_engines": "build a document layout analysis pipeline with object detection, layout model, or table crops layout model",
+    "build_table_structure_engines": "build a table structure extraction pipeline with TableStructureModel, V2, or Granite Vision model",
+    "summarize_defaults_plugins": "summarize the docling model plugins defaults module that provides engine factories for OCR, layout, tables, and picture descriptions"
+  },
+  "docling-project_docling/docling/models/stages/chart_extraction/granite_vision.py": {
+    "run_chartextraction_granite_vision": "run ChartExtractionModelGraniteVision to convert bar, pie, and line chart images into CSV table data",
+    "run_chartextraction_granite_vision_v4": "run ChartExtractionModelGraniteVisionV4 to extract chart CSV, summary text, or Python code from chart images",
+    "build_dataframe_to_tabledata": "build a function that converts a pandas DataFrame into a TableData object with inferred headers and row/column metadata",
+    "test_extract_csv_to_dataframe": "test the _extract_csv_to_dataframe method to parse CSV content from model-generated text into a pandas DataFrame",
+    "review_is_processable": "review the is_processable method that checks if a PictureItem is a supported chart type (bar_chart, pie_chart, line_chart)"
+  },
+  "docling-project_docling/docling/models/stages/code_formula/code_formula_model.py": {
+    "create_CodeFormulaModelOptions": "create CodeFormulaModelOptions config with code and formula enrichment enabled",
+    "create_CodeFormulaModel": "create CodeFormulaModel with enabled flag, artifacts path, options, and accelerator options",
+    "test_is_processable": "test CodeFormulaModel.is_processable to check if a document element can be processed",
+    "run_CodeFormulaModel_call": "run CodeFormulaModel.__call__ to process a batch of code and formula elements and enrich them",
+    "summarize_extract_code_language": "summarize CodeFormulaModel._extract_code_language to parse language tags from code output strings"
+  },
+  "docling-project_docling/docling/models/stages/code_formula/code_formula_vlm_model.py": {
+    "create_CodeFormulaVlmModel": "create a CodeFormulaVlmModel stage with options and accelerator for code and formula extraction",
+    "test_is_processable": "test if a document element is a code block or formula that can be processed",
+    "run_CodeFormulaVlmModel_call": "run the model on a batch of code and formula elements to extract text content",
+    "refactor__extract_code_language": "refactor the code language extraction to parse language tags from model output",
+    "summarize__post_process": "summarize the post-processing that removes unwanted tokens from model outputs"
+  },
+  "docling-project_docling/docling/models/stages/layout/layout_model.py": {
+    "create_layout_model": "create a LayoutModel instance to run document layout prediction on pages with accelerator options",
+    "run_predict_layout": "run layout prediction on a sequence of document pages and return layout predictions with clusters",
+    "download_layout_models": "download layout model artifacts from Hugging Face Hub to a local directory",
+    "get_layout_options_type": "get the LayoutOptions type class used to configure the layout model",
+    "draw_layout_clusters": "draw clusters and cells side by side for debugging layout prediction results"
+  },
+  "docling-project_docling/docling/models/stages/layout/layout_object_detection_model.py": {
+    "create_layout_object_detection_model": "create a LayoutObjectDetectionModel instance with artifacts path, accelerator options, and layout detection options",
+    "run_predict_layout": "run predict_layout on a ConversionResult and sequence of Page objects to produce LayoutPrediction results",
+    "build_label_map": "build a label map mapping engine label IDs to DocItemLabel enum values from the object detection engine",
+    "convert_predictions_to_clusters": "convert object detection engine output predictions to a list of Cluster objects with scaled bounding boxes",
+    "get_options_type": "get the LayoutObjectDetectionOptions class type used by the LayoutObjectDetectionModel"
+  },
+  "docling-project_docling/docling/models/stages/ocr/auto_ocr_model.py": {
+    "create_OcrAutoModel": "create an OcrAutoModel instance that auto-selects an OCR engine from ocrmac, rapidocr, or easyocr",
+    "run_OcrAutoModel_call": "run the OcrAutoModel to process a batch of pages through the auto-selected OCR engine",
+    "build_OcrAutoModel_with_options": "build an OcrAutoModel with OcrAutoOptions for bitmap area threshold and force full page OCR settings",
+    "test_OcrAutoModel_get_options_type": "test the OcrAutoModel.get_options_type class method returns OcrAutoOptions",
+    "review_OcrAutoModel_engine_selection": "review the OcrAutoModel engine selection priority: ocrmac on darwin, rapidocr with onnxruntime, easyocr, rapidocr with torch"
+  },
+  "docling-project_docling/docling/models/stages/ocr/easyocr_model.py": {
+    "create_easyocr_model": "create an EasyOcrModel instance with enabled flag, artifacts path, options, and accelerator options",
+    "download_ocr_models": "download EasyOCR detection and recognition models to a local directory with optional progress display",
+    "run_ocr_on_pages": "run OCR on a batch of pages to extract text cells with bounding boxes and confidence scores",
+    "get_options_type": "get the EasyOcrOptions type class for pipeline configuration validation",
+    "test_easyocr_integration": "test EasyOCR integration with GPU detection, MPS warning suppression, and confidence threshold filtering"
+  },
+  "docling-project_docling/docling/models/stages/ocr/kserve_v2_ocr_model.py": {
+    "create_KserveV2OcrModel": "create a KserveV2OcrModel instance with enabled flag, options, and accelerator options for remote OCR inference",
+    "initialize_KserveV2OcrModel_client": "initialize the KServe v2 client with HTTP or gRPC transport for remote document OCR",
+    "preprocess_KserveV2OcrModel_image": "preprocess a PIL image into a numpy array with shape (1, H, W, C) for KServe v2 OCR inference",
+    "run_KserveV2OcrModel_call": "run the KServe v2 OCR model on a batch of pages to extract text cells with bounding boxes and confidence scores",
+    "close_KserveV2OcrModel_connection": "close the KServe v2 client connection and release resources"
+  },
+  "docling-project_docling/docling/models/stages/ocr/ocr_mac_model.py": {
+    "create_ocr_mac_model": "create an OcrMacModel instance for macOS document OCR with enabled flag, artifacts path, options, and accelerator options",
+    "run_ocr_on_pages": "run OCR on a batch of Page objects using OcrMacModel and yield pages with detected text cells",
+    "get_ocr_rects": "get OCR region-of-interest rectangles for a given Page to limit OCR processing areas",
+    "post_process_cells": "post-process OCR-detected text cells by deduplicating and merging overlapping cells for a Page",
+    "get_options_type": "get the OcrMacOptions type class for configuring OCR recognition, framework, and language preferences"
+  },
+  "docling-project_docling/docling/models/stages/ocr/rapid_ocr_model.py": {
+    "download_rapidocr_models": "download RapidOCR model files for a specified backend, language, and local directory",
+    "create_rapidocr_model": "create a RapidOcrModel instance with enabled flag, artifacts path, options, and accelerator options",
+    "run_rapidocr_ocr": "run RapidOCR on a batch of document pages to extract text cells with bounding boxes and confidence scores",
+    "get_rapidocr_options_type": "get the RapidOcrOptions type class for the RapidOcrModel",
+    "resolve_rapidocr_language": "resolve a list of language strings to either 'english' or the default 'chinese' language key"
+  },
+  "docling-project_docling/docling/models/stages/ocr/tesseract_ocr_cli_model.py": {
+    "run_tesseract_ocr": "run tesseract CLI OCR on document pages and return extracted text cells with bounding boxes",
+    "create_ocr_cli_model": "create a TesseractOcrCliModel instance with enabled flag, artifacts path, and TesseractCliOcrOptions",
+    "test_tesseract_version": "test tesseract CLI availability by retrieving its name and version string",
+    "run_orientation_detection": "run tesseract OSD mode to detect document orientation and script language",
+    "review_ocr_pipeline": "review the TesseractOcrCliModel __call__ method that processes page batches with OCR rectangles and post-processing"
+  },
+  "docling-project_docling/docling/models/stages/ocr/tesseract_ocr_model.py": {
+    "create_tesseract_ocr_model": "create a TesseractOcrModel instance with enabled flag, artifacts path, options, and accelerator options",
+    "run_ocr_on_pages": "run OCR on a batch of pages using TesseractOcrModel to extract text cells with bounding boxes",
+    "detect_orientation_script": "detect document orientation and script using OSD reader for auto language detection",
+    "extract_text_cells": "extract text cells with confidence scores and bounding rectangles from OCR image regions",
+    "post_process_ocr_cells": "post-process extracted OCR text cells and attach them to a conversion result page"
+  },
+  "docling-project_docling/docling/models/stages/page_assemble/page_assemble_model.py": {
+    "create_page_assemble_model": "create a PageAssembleModel instance that assembles page elements from layout clusters into a structured document",
+    "sanitize_text_lines": "sanitize text lines by removing hyphenation breaks, normalizing quotes, and expanding Unicode ligatures to ASCII equivalents",
+    "match_hyperlink_bbox": "match a hyperlink URI to a layout cluster bounding box based on spatial overlap coverage threshold",
+    "build_page_assembled_unit": "build an AssembledUnit from layout clusters containing text, tables, figures, and container elements",
+    "run_page_assemble_pipeline": "run the page assemble pipeline on a conversion result to produce structured page output with headers and body elements"
+  },
+  "docling-project_docling/docling/models/stages/page_preprocessing/page_preprocessing_model.py": {
+    "create_page_preprocessing_options": "create a PagePreprocessingOptions instance with configurable images_scale and skip_cell_extraction flag",
+    "build_page_preprocessing_model": "build a PagePreprocessingModel that preprocesses PDF pages with image scaling and cell extraction",
+    "run_page_batch_processing": "run PagePreprocessingModel.__call__ to process a batch of ConversionResult pages with image generation and cell parsing",
+    "test_rate_text_quality": "test the rate_text_quality method that scores PDF text cells by detecting glyph artifacts and fragmented words",
+    "review_populate_page_images": "review the _populate_page_images method that generates and caches page images at a specified scale"
+  },
+  "docling-project_docling/docling/models/stages/picture_classifier/document_picture_classifier.py": {
+    "create_DocumentPictureClassifier": "create a DocumentPictureClassifier instance to classify pictures in documents with configurable options",
+    "run_DocumentPictureClassifier_call": "run the DocumentPictureClassifier __call__ method to process a batch of picture elements and add classification annotations",
+    "test_DocumentPictureClassifier_is_processable": "test the DocumentPictureClassifier is_processable method to check if a given element is a processable PictureItem",
+    "build_DocumentPictureClassifierOptions": "build DocumentPictureClassifierOptions to configure the picture classifier engine, model spec, and accelerator settings",
+    "review_DocumentPictureClassifier": "review the DocumentPictureClassifier class and its methods for enriching document pictures with predicted classifications"
+  },
+  "docling-project_docling/docling/models/stages/picture_description/picture_description_api_model.py": {
+    "create_picture_description_api_model": "create a PictureDescriptionApiModel instance with enabled flag and remote services allowed",
+    "get_options_type_api_model": "get the options type class for PictureDescriptionApiModel returning PictureDescriptionApiOptions",
+    "run_picture_description_api": "run picture description on images via remote API using ThreadPoolExecutor with configurable concurrency",
+    "configure_picture_description_options": "configure PictureDescriptionApiOptions with url, prompt, timeout, headers, and params for image annotation",
+    "test_picture_description_api_model": "test PictureDescriptionApiModel raises OperationNotAllowed when remote services are disabled but model is enabled"
+  },
+  "docling-project_docling/docling/models/stages/picture_description/picture_description_vlm_engine_model.py": {
+    "create_stage_picture_description_vlm": "create a PictureDescriptionVlmEngineModel stage with VLM engine options and accelerator options for generating image descriptions",
+    "test_get_options_type": "test the PictureDescriptionVlmEngineModel.get_options_type class method returns PictureDescriptionVlmEngineOptions",
+    "run_annotate_images": "run _annotate_images on a batch of PIL images to generate description text using the VLM engine",
+    "build_vlm_engine": "build a VLM engine instance using create_vlm_engine with engine options, model spec, and accelerator options",
+    "review_cleanup_engine": "review the __del__ method that cleans up VLM engine resources by calling engine.cleanup()"
+  },
+  "docling-project_docling/docling/models/stages/picture_description/picture_description_vlm_model.py": {
+    "create_picture_description_model": "create a PictureDescriptionVlmModel instance to generate image descriptions using a Hugging Face vision-language model",
+    "configure_vlm_accelerator": "configure AcceleratorOptions to control CUDA flash attention and device selection for the VLM model",
+    "download_vlm_model": "download a Hugging Face vision-language model to a local artifacts directory for offline picture description",
+    "generate_image_descriptions": "generate text descriptions for a batch of images using a configured PictureDescriptionVlmModel with a custom prompt",
+    "set_vlm_generation_config": "set generation configuration parameters such as max_new_tokens and temperature for the VLM image description model"
+  },
+  "docling-project_docling/docling/models/stages/table_structure/table_structure_model.py": {
+    "run_table_structure_prediction": "run table structure prediction on document pages using TableFormer model",
+    "create_table_structure_model": "create a TableStructureModel instance with enabled flag, artifacts path, and accelerator options",
+    "download_tableformer_models": "download TableFormer model artifacts from HuggingFace hub to a local directory",
+    "test_table_structure_model": "test the TableStructureModel class and its prediction pipeline on document pages",
+    "review_table_structure_model": "review the TableStructureModel class and its table detection and cell matching logic"
+  },
+  "docling-project_docling/docling/models/stages/table_structure/table_structure_model_granite_vision.py": {
+    "parse_otsl_output": "parse VLM OTSL text output into structured table data with rows, columns, and cell metadata",
+    "create_GraniteVisionTableStructureModel": "create a GraniteVisionTableStructureModel instance for table structure detection using ibm-granite vision model",
+    "download_GraniteVisionTableStructureModel": "download the ibm-granite/granite-4.0-3b-vision model artifacts from HuggingFace Hub",
+    "run_GraniteVisionTableStructureModel_predict_tables": "run table structure prediction on conversion result pages using the granite vision model",
+    "build_GraniteVisionTableStructureModel": "build a GraniteVisionTableStructureModel with accelerator options and artifacts path for GPU or CPU inference"
+  },
+  "docling-project_docling/docling/models/stages/table_structure/table_structure_model_v2.py": {
+    "download_models": "download the TableFormerV2 model from HuggingFace to a local directory",
+    "predict_tables": "predict table structures on document pages using the TableFormerV2 model",
+    "build_table_cells": "build table cell structures from an OTSL sequence and predicted bounding boxes",
+    "decode_otsl_sequence": "decode token IDs into an OTSL tag sequence for table structure parsing",
+    "match_text": "match text from page text cells to table cell bounding boxes by overlap"
+  },
+  "docling-project_docling/docling/models/stages/vlm_convert/vlm_convert_model.py": {
+    "create_vlm_convert_model": "create a VlmConvertModel instance to convert document pages using a vision-language model engine",
+    "run_vlm_convert_model_call": "run the VlmConvertModel __call__ method to process a batch of document pages through VLM inference",
+    "run_process_images": "run the process_images method to generate VLM predictions from a batch of raw PIL images",
+    "build_vlm_engine": "build a VLM engine via create_vlm_engine factory with configurable runtime backend and accelerator options",
+    "review_vlm_convert_model_cleanup": "review the VlmConvertModel cleanup behavior and resource management on deletion"
+  },
+  "docling-project_docling/docling/models/utils/generation_utils.py": {
+    "create_GenerationStopper": "create a GenerationStopper subclass that implements should_stop to detect repetitive document tag patterns",
+    "build_DocTagsRepetitionStopper": "build a DocTagsRepetitionStopper to detect consecutive identical tag blocks with regular coordinate progression",
+    "test_HFStoppingCriteriaWrapper": "test the HFStoppingCriteriaWrapper adapter that wraps a GenerationStopper for HuggingFace Transformers generation",
+    "run_DocTagsRepetitionStopper": "run a DocTagsRepetitionStopper on decoded text to detect repetitive layout output during generation",
+    "review_GenerationStopper": "review the GenerationStopper base interface with should_stop and lookback_tokens methods for custom stopping logic"
+  },
+  "docling-project_docling/docling/models/utils/hf_model_download.py": {
+    "download_hf_model": "download a Hugging Face model snapshot by repo_id to a local directory with optional force and revision parameters",
+    "run_download_hf_model": "run download_hf_model to fetch a Hugging Face model repository and return the local download path",
+    "create_download_models_mixin": "create an instance of HuggingFaceModelDownloadMixin and call download_models to download a Hugging Face model",
+    "refactor_download_hf_model": "refactor download_hf_model to add support for filtering specific files during Hugging Face model download",
+    "review_HuggingFaceModelDownloadMixin": "review HuggingFaceModelDownloadMixin.download_models and its wrapper around download_hf_model"
+  },
+  "docling-project_docling/docling/models/vlm_pipeline_models/api_vlm_model.py": {
+    "create_api_vlm_model": "create an ApiVlmModel instance with enabled flag, remote services flag, and ApiVlmOptions for remote VLM inference",
+    "run_api_vlm_model": "run ApiVlmModel on a ConversionResult and page batch to extract VLM predictions from document pages",
+    "run_process_images": "run ApiVlmModel.process_images with a batch of images and prompts to return VlmPrediction results via threaded concurrency",
+    "review_api_vlm_model": "review ApiVlmModel.__init__ to verify it raises OperationNotAllowed when remote services are disabled but model is enabled",
+    "summarize_process_images": "summarize ApiVlmModel.process_images which converts numpy arrays to PIL images and calls remote VLM API with streaming or non-streaming fallback"
+  },
+  "docling-project_docling/docling/models/vlm_pipeline_models/hf_transformers_model.py": {
+    "create_hf_transformers_vlm_model": "create a HuggingFaceTransformersVlmModel instance with enabled flag, artifacts path, accelerator options, and VLM options",
+    "run_vlm_page_inference": "run VLM inference on a batch of pages by calling the model with a conversion result and page iterable",
+    "run_vlm_batch_inference": "run batched VLM inference on a list of images and prompts yielding VlmPrediction objects",
+    "build_vlm_prompt": "build a formatted prompt for a document page using the model's prompt formulation method",
+    "load_hf_vlm_model": "load a HuggingFace transformers VLM model with device selection, quantization, and flash attention support"
+  },
+  "docling-project_docling/docling/models/vlm_pipeline_models/mlx_model.py": {
+    "create_class_huggingfacemlxmodel": "create an instance of HuggingFaceMlxModel to run MLX-based vision-language model inference on document pages",
+    "run_method_call": "run the HuggingFaceMlxModel __call__ method to process a batch of document pages and attach VLM predictions",
+    "run_method_process_images": "run the process_images method to generate VLM predictions from raw images and prompts using the MLX model",
+    "test_method_init_validation": "test HuggingFaceMlxModel __init__ to validate mlx-vlm import and model artifact path resolution",
+    "review_method_stopping_criteria": "review the process_images method's custom stopping criteria support for GenerationStopper and stop string handling"
+  },
+  "docling-project_docling/docling/models/vlm_pipeline_models/vllm_model.py": {
+    "create_vllm_vlm_model": "create a vllm vlm model instance to process document pages with vision-language inference",
+    "run_vlm_inference": "run vllm vlm inference on a batch of document pages to generate text predictions",
+    "process_vlm_images": "process a batch of images with prompts through vllm and yield vlm predictions",
+    "build_vllm_sampling_params": "build vllm sampling parameters with temperature, max tokens, and stop strings for generation",
+    "configure_vllm_engine": "configure vllm engine with model path, device, quantization, and parallelism settings"
+  },
+  "docling-project_docling/docling/pipeline/asr_pipeline.py": {
+    "run_asr_pipeline_native_whisper": "run the AsrPipeline with InlineAsrNativeWhisperOptions to transcribe audio files using OpenAI Whisper",
+    "run_asr_pipeline_mlx_whisper": "run the AsrPipeline with InlineAsrMlxWhisperOptions to transcribe audio files using MLX Whisper on Apple Silicon",
+    "build_conversation_items": "build _ConversationItem objects with start_time, end_time, speaker, and text for ASR transcript segments",
+    "build_conversation_words": "build _ConversationWord objects with start_time, end_time, and text for word-level ASR timestamps",
+    "process_conversation": "process a list of _ConversationItem objects and add them as text entries with timestamps to a DoclingDocument"
+  },
+  "docling-project_docling/docling/pipeline/base_extraction_pipeline.py": {
+    "run_BaseExtractionPipeline_execute": "run the BaseExtractionPipeline execute method to extract data from an InputDocument and return an ExtractionResult",
+    "create_BaseExtractionPipeline_instance": "create a BaseExtractionPipeline instance with PipelineOptions to configure artifacts path and model loading",
+    "build_BaseExtractionPipeline_subclass": "build a subclass of BaseExtractionPipeline implementing _extract_data and _determine_status abstract methods",
+    "review_BaseExtractionPipeline_get_default_options": "review the BaseExtractionPipeline get_default_options class method to retrieve default PipelineOptions",
+    "test_BaseExtractionPipeline_error_handling": "test the BaseExtractionPipeline execute method error handling with raises_on_error flag enabled"
+  },
+  "docling-project_docling/docling/pipeline/base_pipeline.py": {
+    "run_pipeline_convert_document": "run the ConvertPipeline to convert a document and extract structured content using enrichment models",
+    "build_paginated_pdf_pipeline": "build a PaginatedPipeline to process multi-page PDF documents with page-level batching",
+    "create_pipeline_options": "create pipeline options with chart extraction, picture description, and classification settings",
+    "test_backend_support": "test whether a document backend is supported by the pipeline before conversion",
+    "summarize_conversion_result": "summarize the conversion result including status, pages, and any errors encountered"
+  },
+  "docling-project_docling/docling/pipeline/extraction_vlm_pipeline.py": {
+    "build_extraction_vlm_pipeline": "build an ExtractionVlmPipeline instance with VlmExtractionPipelineOptions to extract structured data from PDF documents using a VLM model",
+    "run_extract_data": "run the _extract_data method on an ExtractionResult to extract structured JSON data from document pages using a VLM model",
+    "run_determine_status": "run the _determine_status method on an ExtractionResult to determine if extraction succeeded, partially succeeded, or failed",
+    "run_get_images_from_input": "run the _get_images_from_input method on an InputDocument to extract page images from a PDF document backend",
+    "run_get_default_options": "run the get_default_options class method to create default VlmExtractionPipelineOptions for initializing the pipeline"
+  },
+  "docling-project_docling/docling/pipeline/legacy_standard_pdf_pipeline.py": {
+    "create_pipeline": "create a LegacyStandardPdfPipeline instance with PdfPipelineOptions for PDF document conversion",
+    "download_models": "download ML models required by LegacyStandardPdfPipeline from HuggingFace to a local directory",
+    "get_default_options": "get default PdfPipelineOptions for configuring a LegacyStandardPdfPipeline instance",
+    "get_ocr_model": "get an OCR model instance configured with PdfPipelineOptions for PDF text extraction",
+    "check_backend_support": "check if a given document backend is supported by LegacyStandardPdfPipeline"
+  },
+  "docling-project_docling/docling/pipeline/simple_pipeline.py": {
+    "create_simple_pipeline": "create a SimplePipeline instance with ConvertPipelineOptions for declarative document backends",
+    "build_document": "build a DoclingDocument from a DeclarativeDocumentBackend without page-level pipeline processing",
+    "test_is_backend_supported": "test if a backend is supported by checking it is an instance of DeclarativeDocumentBackend",
+    "review_get_default_options": "review the get_default_options class method that returns a default ConvertPipelineOptions instance",
+    "summarize_determine_status": "summarize the _determine_status method that returns ConversionStatus.SUCCESS"
+  },
+  "docling-project_docling/docling/pipeline/standard_pdf_pipeline.py": {
+    "build_pdf_pipeline_convert": "build a StandardPdfPipeline to convert PDF documents with multi-threaded stage parallelism",
+    "create_pipeline_options": "create ThreadedPdfPipelineOptions with custom OCR, layout, and table structure settings",
+    "test_backend_supported": "test whether a PDF backend is supported by StandardPdfPipeline",
+    "run_pipeline_execute": "run StandardPdfPipeline execute to process a PDF document and return conversion results",
+    "summarize_processing_result": "summarize ProcessingResult to check success count, failure count, and page outcomes"
+  },
+  "docling-project_docling/docling/pipeline/vlm_pipeline.py": {
+    "build_vlm_pipeline": "build a VlmPipeline instance with VlmConvertOptions to convert PDF documents using vision-language models",
+    "create_default_pipeline_options": "create default VlmPipelineOptions by calling VlmPipeline.get_default_options() for VLM document conversion",
+    "test_backend_supported": "test whether a backend is supported by VlmPipeline using is_backend_supported() for PDF documents",
+    "run_assemble_document": "run _assemble_document to convert VLM predictions into a DoclingDocument from doctags or markdown",
+    "summarize_parse_deepseekocr": "summarize _parse_deepseekocr_markdown to parse DeepSeek OCR markdown output with bounding box labels into a document"
+  },
+  "docling-project_docling/docling/service_client/client.py": {
+    "create_convert_document": "create a conversion job for a document source and return the conversion result with options",
+    "run_convert_all_documents": "run batch conversion on multiple document sources with concurrency control and error handling",
+    "submit_and_retrieve_many_tasks": "submit many conversion items with controlled in-flight concurrency and retrieve responses",
+    "submit_async_conversion_job": "submit an async conversion job for a document source and return a job handle for polling",
+    "test_service_health": "test the docling service health endpoint and return the health check response"
+  },
+  "docling-project_docling/docling/service_client/job.py": {
+    "create_conversion_job": "create a ConversionJob handle for an asynchronous docling-serve conversion task using a task_id and handlers",
+    "poll_conversion_status": "poll a ConversionJob for its current task status response with an optional wait interval",
+    "watch_conversion_progress": "watch a ConversionJob iterator that yields TaskStatusResponse updates until completion",
+    "wait_for_conversion_result": "wait for a ConversionJob to finish and fetch the final result with an optional timeout",
+    "check_conversion_done": "check if a ConversionJob is done by inspecting its done property and terminal task status"
+  },
+  "docling-project_docling/docling/service_client/watchers.py": {
+    "create_PollingWatcher": "create a PollingWatcher that polls task status with server-side wait and client-side interval cadence",
+    "create_WebSocketWatcher": "create a WebSocketWatcher that streams task status updates via WebSocket with HTTP polling fallback",
+    "test_is_terminal_task_status": "test the is_terminal_task_status function to check if a task status is success or failure",
+    "review_StatusWatcher": "review the StatusWatcher Protocol defining iter_updates and wait_for_terminal method signatures",
+    "summarize_PollingWatcher_iter_updates": "summarize the PollingWatcher.iter_updates method that yields status updates until terminal or timeout"
+  },
+  "docling-project_docling/docling/utils/accelerator_utils.py": {
+    "run_decide_device_auto": "run decide_device with AUTO to select the best available accelerator device on the system",
+    "test_decide_device_cuda": "test decide_device with a CUDA device string and verify it returns the correct cuda index",
+    "refactor_decide_device_fallback": "refactor decide_device to fall back to CPU when the requested device is unavailable",
+    "review_decide_device_supported": "review decide_device with supported_devices filter to restrict available accelerator options",
+    "summarize_decide_device_mps": "summarize decide_device behavior when MPS is requested but not available on the system"
+  },
+  "docling-project_docling/docling/utils/api_image_request.py": {
+    "run_api_image_request": "run api_image_request to send an image and prompt to an OpenAI-compatible vision API and get generated text back",
+    "run_api_image_request_streaming": "run api_image_request_streaming to send an image and prompt via SSE streaming to an OpenAI-compatible vision API",
+    "test_extract_text_from_tool_arguments": "test the _extract_text_from_tool_arguments function that extracts text from JSON-encoded tool call arguments",
+    "test_extract_generated_text": "test the _extract_generated_text function that extracts generated text from an OpenAI chat message including tool calls",
+    "test_map_stop_reason": "test the _map_stop_reason function that maps API finish_reason strings to VlmStopReason enum values"
+  },
+  "docling-project_docling/docling/utils/deepseekocr_utils.py": {
+    "parse_deepseekocr_markdown": "parse DeepSeek OCR annotated markdown content with bounding box coordinates into a DoclingDocument",
+    "build_docling_from_annotated_markdown": "build a DoclingDocument from DeepSeek OCR markdown with label and bbox annotations for tables, figures, and text",
+    "create_parsed_document_with_tables": "create a DoclingDocument by parsing annotated markdown that includes HTML table content with colspan and rowspan support",
+    "summarize_deepseekocr_format": "summarize the DeepSeek OCR markdown format with label[[x1, y1, x2, y2]] bounding box annotation syntax",
+    "test_parse_tables_from_html": "test parsing HTML table content with colspan and rowspan attributes into TableData structures"
+  },
+  "docling-project_docling/docling/utils/export.py": {
+    "build_multimodal_pages": "build multimodal page representations from a docling ConversionResult with segments, cells, markdown, and document tokens",
+    "export_page_segments": "export page segments with bounding boxes, labels, and text from a converted document result",
+    "export_page_cells": "export page cells with normalized bounding boxes, OCR flags, and confidence scores",
+    "export_markdown": "export document content as markdown text from a converted legacy document",
+    "export_document_tokens": "export document content as document token format from a converted legacy document"
+  },
+  "docling-project_docling/docling/utils/glm_utils.py": {
+    "convert_glm_to_docling_document": "convert a GLM-format document dictionary into a DoclingDocument with pages, text, tables, and figures",
+    "resolve_item_from_path": "resolve a document item from a reference path string in a GLM document structure",
+    "flatten_table_grid": "flatten and deduplicate table grid objects by unique span sets",
+    "add_child_elements_to_container": "add child elements like list items, headings, and text to a container element",
+    "update_name_label_with_properties": "update paragraph labels using semantic properties from a DataFrame with confidence filtering"
+  },
+  "docling-project_docling/docling/utils/layout_postprocessor.py": {
+    "build_LayoutPostprocessor": "build a LayoutPostprocessor to clean up layout clusters and assign text cells to detected document regions",
+    "test_SpatialClusterIndex": "test the SpatialClusterIndex class that indexes document clusters using R-tree and interval trees for fast overlap queries",
+    "refactor_UnionFind": "refactor the UnionFind class to group overlapping clusters efficiently with path compression and union by rank",
+    "summarize_SpatialClusterIndex_find_candidates": "summarize the SpatialClusterIndex.find_candidates method that finds potential overlapping cluster IDs for a bounding box",
+    "review_LayoutPostprocessor_postprocess": "review the LayoutPostprocessor.postprocess method that runs the main pipeline to clean clusters, assign cells, and return final results"
+  },
+  "docling-project_docling/docling/utils/model_downloader.py": {
+    "download_models": "download docling ML models to a local directory with configurable model selection and force/progress options",
+    "download_layout_model": "download the layout model for document structure analysis using LayoutModel.download_models",
+    "download_table_structure_models": "download TableFormer and TableFormerV2 models for table structure extraction",
+    "download_ocr_models": "download RapidOCR and EasyOCR models for Chinese and English text recognition",
+    "download_vlm_models": "download vision-language models including SmolVlm, GraniteDocling, and SmolDocling for picture description"
+  },
+  "docling-project_docling/docling/utils/ocr_utils.py": {
+    "map_tesseract_script": "map a tesseract script name to its canonical form, converting Katakana and Hiragana to Japanese, Han to HanS, and Korean to Hangul",
+    "parse_tesseract_orientation": "parse a tesseract orientation string (0, 90, 180, 270) and convert it to a counterclockwise bounding rectangle angle in [0, 360)",
+    "tesseract_box_to_bounding_rectangle": "convert a tesseract bounding box to a BoundingRectangle with rotation, scaling, and optional offset applied"
+  },
+  "docling-project_docling/docling/utils/orientation.py": {
+    "run_rotate_bounding_box": "run rotate_bounding_box to rotate a BoundingBox by 90 degrees and return a BoundingRectangle",
+    "test_rotate_bounding_box": "test rotate_bounding_box with angle 180 and image size (1920, 1080) to verify correct corner transformation",
+    "refactor_rotate_bounding_box": "refactor rotate_bounding_box to support arbitrary rotation angles beyond 0, 90, 180, 270 degrees",
+    "review_rotate_bounding_box": "review rotate_bounding_box for coordinate system correctness when converting between TOPLEFT and BOTTOMLEFT origins",
+    "summarize_rotate_bounding_box": "summarize rotate_bounding_box which transforms a bounding box by specified 90-degree increments and returns a rotated BoundingRectangle"
+  },
+  "docling-project_docling/docling/utils/profiling.py": {
+    "create_profiling_item": "create a ProfilingItem to record timing data with scope, count, and timestamp lists for pipeline profiling",
+    "run_profiling_item_stats": "run statistical analysis on a ProfilingItem using total, avg, std, mean, and percentile methods",
+    "build_time_recorder": "build a TimeRecorder context manager to measure elapsed time for code blocks during document conversion",
+    "test_profiling_scope": "test the ProfilingScope enum to select between PAGE and DOCUMENT timing granularity",
+    "summarize_time_recorder_usage": "summarize how TimeRecorder records per-operation timings and start timestamps in a ConversionResult"
+  },
+  "docling-project_docling/docling/utils/utils.py": {
+    "create_file_hash": "create a SHA-256 hash of a file given a Path or BytesIO stream",
+    "create_hash": "create a SHA-256 hash of a UTF-8 encoded string",
+    "download_url_with_progress": "download a URL with an optional progress bar and return its contents as a BytesIO buffer",
+    "chunkify_list": "chunk a list into sublists of a specified size using an iterator",
+    "chunkify_iterator": "chunk an arbitrary iterable into sublists of a specified size"
+  },
+  "docling-project_docling/docling/utils/visualization.py": {
+    "draw_clusters": "draw clusters with colored bounding boxes and labels on a PIL image at given scale",
+    "test_draw_clusters": "test draw_clusters renders cluster rectangles and labels on a PIL Image without errors",
+    "refactor_draw_clusters": "refactor draw_clusters to accept an optional font_path parameter for custom font support",
+    "review_draw_clusters": "review draw_clusters for correct coordinate scaling and RGBA color handling",
+    "summarize_draw_clusters": "summarize draw_clusters which draws labeled cluster bounding boxes on a PIL image"
+  }
+}

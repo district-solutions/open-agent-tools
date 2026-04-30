@@ -1,0 +1,781 @@
+{
+  "huggingface_trl/examples/datasets/deepmath_103k.py": {
+    "run_process_example": "run the process_example function to transform a math question into a conversational prompt with solution",
+    "build_dataset_deepmath": "build a processed DeepMath-103K dataset from the zwhe99 source with conversational format and prompt-only structure",
+    "create_script_arguments": "create ScriptArguments dataclass for CLI options including push_to_hub, repo_id, and dataset_num_proc",
+    "test_train_test_split": "test splitting the processed dataset into 95% train and 5% test with seed 42",
+    "summarize_model_card": "summarize the ModelCard metadata for the DeepMath-103K dataset with trl tags and data structure"
+  },
+  "huggingface_trl/examples/datasets/hh-rlhf-helpful-base.py": {
+    "run_hh_rlhf_dataset_pipeline": "run the HH-RLHF helpful-base dataset processing script to extract dialogues and push to HF Hub",
+    "build_extract_dialogue": "build a function that extracts prompt, chosen, and rejected fields from HH-RLHF dialogue examples",
+    "test_common_start": "test the common_start function that finds the shared prefix between two dialogue strings",
+    "summarize_script_arguments": "summarize the ScriptArguments dataclass with push_to_hub, repo_id, and dataset_num_proc fields",
+    "refactor_extract_dialogue": "refactor the extract_dialogue function to support custom role delimiters in dialogue parsing"
+  },
+  "huggingface_trl/examples/datasets/llava_instruct_mix.py": {
+    "run_llava_instruct_mix": "run the script to process LLaVA instruct mix dataset from theblackcat102 into conversational format",
+    "process_example_messages": "process an example by converting conversations field into structured messages with roles and image references",
+    "filter_long_examples": "filter out dataset examples where total message content length exceeds 1000 characters",
+    "split_prompt_completion": "split messages into prompt and completion with the last message as the model response",
+    "push_dataset_to_hub": "push the processed dataset and model card to a Hugging Face Hub repository"
+  },
+  "huggingface_trl/examples/datasets/lm-human-preferences-descriptiveness.py": {
+    "run_dataset_processing": "run the script to process OpenAI's LM-Human-Preferences descriptiveness dataset into prompt-chosen-rejected format",
+    "filter_samples_not_all_same": "filter dataset rows where all four samples are identical using the samples_not_all_same predicate",
+    "map_to_prompt_completion": "map raw dataset examples to prompt-chosen-rejected pairs using GPT-2 tokenizer decoding",
+    "create_script_arguments": "create a ScriptArguments dataclass with push_to_hub, repo_id, and dataset_num_proc CLI options",
+    "push_dataset_to_hub": "push the processed dataset and model card to a Hugging Face Hub repository"
+  },
+  "huggingface_trl/examples/datasets/lm-human-preferences-sentiment.py": {
+    "run_script_transform_dataset": "run the script to transform OpenAI LM-Human-Preferences sentiment data into prompt/chosen/rejected format",
+    "create_dataclass_arguments": "create a dataclass with CLI arguments for push_to_hub, repo_id, and dataset_num_proc",
+    "test_function_to_prompt_completion": "test the to_prompt_completion function that converts query and samples into prompt/chosen/rejected pairs",
+    "build_dataset_push_hub": "build and push the processed preference dataset to a Hugging Face Hub repository",
+    "review_model_card_generation": "review the ModelCard generation for the LM-Human-Preferences-Sentiment dataset"
+  },
+  "huggingface_trl/examples/datasets/math_shepherd.py": {
+    "build_math_shepherd_dataset": "build a processed Math-Shepherd dataset for stepwise supervision training with TRL",
+    "create_script_arguments": "create ScriptArguments dataclass with push_to_hub, repo_id, and dataset_num_proc fields",
+    "process_example": "process a Math-Shepherd example by splitting inputs into prompt, completions, and correctness labels",
+    "run_dataset_processing": "run dataset processing to map, split, and optionally push Math-Shepherd to Hugging Face Hub",
+    "generate_model_card": "generate a ModelCard for the Math-Shepherd dataset with summary, data structure, and generation script info"
+  },
+  "huggingface_trl/examples/datasets/prm800k.py": {
+    "run_process_batch": "run the PRM800K dataset processing script to transform raw JSONL data into stepwise supervision format",
+    "process_example": "process a single PRM800K example into prompt, completions, and labels for stepwise supervision",
+    "run_process_example": "run the PRM800K example processor to convert raw step-level data into training-ready format",
+    "run_script_arguments": "run the PRM800K dataset generation script with configurable push_to_hub and dataset_num_proc arguments",
+    "run_load_dataset": "run the PRM800K dataset loader to fetch and map training and test JSONL files from OpenAI's repo"
+  },
+  "huggingface_trl/examples/datasets/rlaif-v.py": {
+    "run_script_process_dataset": "run the script to process the RLAIF-V dataset into conversational preference format",
+    "create_function_to_conversational": "create a function that converts RLAIF-V dataset examples into conversational format with prompt, images, chosen, and rejected fields",
+    "run_script_push_to_hub": "run the script to push the processed RLAIF-V dataset to the Hugging Face Hub",
+    "create_class_script_arguments": "create a dataclass for script arguments with push_to_hub, repo_id, and dataset_num_proc options",
+    "create_model_card_rlaif_v": "create a model card for the RLAIF-V dataset with summary, data structure, and generation script metadata"
+  },
+  "huggingface_trl/examples/datasets/tldr.py": {
+    "run_tldr_dataset_script": "run the tldr dataset script to convert Reddit posts into prompt-completion format for TRL training",
+    "create_script_arguments": "create ScriptArguments dataclass with push_to_hub, repo_id, and dataset_num_proc fields for CLI configuration",
+    "summarize_tldr_dataset": "summarize the tldr dataset by mapping Reddit posts to prompt-completion pairs using to_prompt_completion",
+    "test_to_prompt_completion": "test the to_prompt_completion function that formats Reddit posts into prompt and completion fields",
+    "review_script_arguments": "review the ScriptArguments dataclass used to parse CLI arguments for dataset processing"
+  },
+  "huggingface_trl/examples/datasets/tldr_preference.py": {
+    "build_tldr_preference_dataset": "build a preference dataset from openai/summarize_from_feedback for TL;DR summarization tasks",
+    "run_tldr_preference_script": "run the tldr_preference script to transform and push a preference dataset to the Hugging Face Hub",
+    "test_to_preference_function": "test the to_preference function that converts feedback examples into prompt, chosen, and rejected fields",
+    "summarize_script_arguments": "summarize the ScriptArguments dataclass with push_to_hub, repo_id, and dataset_num_proc fields",
+    "review_model_card": "review the ModelCard metadata for the TL;DR preference dataset generated by this script"
+  },
+  "huggingface_trl/examples/datasets/ultrafeedback-prompt.py": {
+    "build_ultrafeedback_prompt_dataset": "build a script to process the UltraFeedback dataset into prompt-only conversational format",
+    "create_script_arguments": "create a ScriptArguments dataclass with push_to_hub, repo_id, and dataset_num_proc fields",
+    "run_transform_unpaired_preference": "run to_unpaired_preference to convert UltraFeedback instructions into unpaired prompt format",
+    "run_filter_long_prompts": "run drop_long_prompt to filter out prompts longer than 512 characters",
+    "run_push_to_hub": "run the script with push_to_hub to upload the processed dataset to the Hugging Face Hub"
+  },
+  "huggingface_trl/examples/datasets/ultrafeedback.py": {
+    "run_ultrafeedback_dataset_pipeline": "run the ultrafeedback script to convert UltraFeedback dataset into unpaired preference format for alignment",
+    "create_ScriptArguments_dataclass": "create ScriptArguments dataclass with model_name, aspect, push_to_hub, repo_id, and dataset_num_proc fields",
+    "run_to_unpaired_preference": "run to_unpaired_preference to transform UltraFeedback examples into prompt-completion-label pairs for a given model and aspect",
+    "run_dataset_filter_transform_split": "run dataset filter, map, and train_test_split to prepare UltraFeedback data for fine-tuning",
+    "push_to_huggingface_hub": "push the processed dataset and model card to a Hugging Face Hub repository"
+  },
+  "huggingface_trl/examples/scripts/async_grpo.py": {
+    "run_async_grpo_training": "run async GRPO training on GSM8K dataset with Qwen3-0.6B model and accuracy reward",
+    "create_async_grpo_config": "create AsyncGRPOConfig with batch size, learning rate, max steps, and vLLM server settings for async rollout",
+    "build_async_grpo_trainer": "build AsyncGRPOTrainer with model, config, dataset, and accuracy_reward function for reinforcement learning",
+    "format_gsm8k_sample": "format GSM8K dataset samples into prompt and solution fields for GRPO training",
+    "apply_accuracy_reward": "apply accuracy_reward function to verify model completions against ground truth solutions using math verification"
+  },
+  "huggingface_trl/examples/scripts/bco.py": {
+    "run_bco_training": "run BCO training on a causal language model using the ultrafeedback dataset with full training",
+    "run_bco_qlora": "run BCO training with QLoRA on a causal language model using 4-bit quantization and PEFT",
+    "embed_prompt": "embed prompt input tokens using mean pooling, normalization, and layer normalization from nomic embed model",
+    "train_bco_model": "train a model with BCOTrainer using embedding function, reference model, and tokenizer for preference alignment",
+    "save_bco_model": "save a trained BCO-aligned model to an output directory and optionally push to the Hugging Face Hub"
+  },
+  "huggingface_trl/examples/scripts/grpo_2048.py": {
+    "run_grpo_training_2048": "run GRPO training on a Qwen model to play the 2048 game using a custom environment",
+    "create_game2048_environment": "create a Game2048Env class implementing a 2048 game environment with move and reset methods",
+    "build_reward_function": "build a reward_score function that returns the score from each 2048 game environment instance",
+    "configure_grpo_trainer": "configure a GRPOTrainer with GRPOConfig, LoRA PEFT, and a custom 2048 environment factory",
+    "test_game2048_move": "test the Game2048Env move method with directions up, down, left, right and verify board state changes"
+  },
+  "huggingface_trl/examples/scripts/grpo_agent.py": {
+    "run_grpo_training": "run GRPO training on a language model with SQL tool-use rewards for BioGRID database queries",
+    "create_query_reward_function": "create a reward function that penalizes excessive SQL queries and rewards WHERE clause usage with evidence matching",
+    "create_correctness_reward_function": "create a reward function that checks for correctly formatted *yes* or *no* answers in model completions",
+    "create_structure_reward_function": "create a reward function that encourages proper tool-call and response sequences in agent completions",
+    "build_grpo_trainer_agent": "build a GRPO trainer with custom SQL database tool and multi-function reward pipeline for agent fine-tuning"
+  },
+  "huggingface_trl/examples/scripts/grpo_vlm.py": {
+    "run_grpo_vlm_training": "run GRPO training on a vision-language model using TrlParser with model and dataset arguments",
+    "train_grpo_trainer_vlm": "train a vision-language model with GRPOTrainer using think_format_reward and accuracy_reward reward functions",
+    "configure_grpo_training_args": "configure GRPO training arguments with GRPOConfig including learning rate, batch size, and output directory",
+    "setup_peft_lora_vlm": "setup PEFT LoRA configuration for a vision-language model with get_peft_config and target modules",
+    "quantize_model_kbit": "quantize a model with 4-bit or 8-bit precision using get_quantization_config and get_kbit_device_map"
+  },
+  "huggingface_trl/examples/scripts/gspo.py": {
+    "run_gspo_grpo_training": "run gspo GRPO training on Qwen3-0.6B with deepspeed zero3 and peft",
+    "create_grpo_trainer": "create a GRPOTrainer with model, reward functions, and datasets for math reasoning",
+    "load_dataset_numina_math": "load the AI-MO/NuminaMath-TIR dataset for train and eval splits",
+    "build_conversation_prompt": "build a conversation prompt with system instruction and user problem for math tasks",
+    "get_peft_config_lora": "get a PEFT LoRA config targeting q_proj and v_proj modules for parameter-efficient training"
+  },
+  "huggingface_trl/examples/scripts/gspo_vlm.py": {
+    "run_gspo_vlm_training": "run GRPO training on a multimodal vision-language model using Qwen2.5-VL with PEFT and DeepSpeed",
+    "build_grpo_trainer_vlm": "build a GRPOTrainer with accuracy and think format rewards for vision-language model fine-tuning",
+    "create_multimodal_dataset_pipeline": "create a dataset pipeline that loads, filters, and converts images for vision-language training",
+    "test_grpo_reward_functions": "test GRPO reward functions including think_format_reward and accuracy_reward on generated completions",
+    "run_peft_quantized_training": "run fine-tuning with PEFT LoRA and 4/8-bit quantization on a vision-language model"
+  },
+  "huggingface_trl/examples/scripts/mpo_vlm.py": {
+    "run_train_vlm_dpo": "run DPO training on a vision-language model with multi-objective loss using a HuggingFace dataset",
+    "build_vlm_model_load": "build a vision-language model from pretrained weights with optional 4/8-bit quantization and PEFT",
+    "create_dpo_trainer": "create a DPO trainer with a model, datasets, and LoRA config for aligning vision-language models",
+    "test_dataset_load_rgb": "test loading a dataset and converting images to RGB mode for vision-language training",
+    "summarize_mpo_loss_config": "summarize multi-objective loss configuration with sigmoid, bco_pair, and sft loss types and weights"
+  },
+  "huggingface_trl/examples/scripts/online_dpo_vlm.py": {
+    "run_online_dpo_training_vlm": "run online DPO training on a vision-language model with LoRA fine-tuning and deepspeed zero3",
+    "build_reward_funcs_vlm": "build reward functions using think_format_reward and accuracy_reward for vision-language model evaluation",
+    "create_online_dpo_trainer": "create an OnlineDPOTrainer with a VLM model, reward functions, and multimodal dataset",
+    "test_multimodal_dataset_filtering": "test filtering and converting multimodal dataset images to RGB format for training",
+    "review_log_completions_callback": "review adding LogCompletionsCallback to an OnlineDPOTrainer for generation logging during training"
+  },
+  "huggingface_trl/examples/scripts/rloo.py": {
+    "run_rloo_training": "run RLOO reinforcement learning on a math dataset with vLLM and LoRA",
+    "configure_rloo_training": "configure RLOO training args with vLLM colocate mode and gradient accumulation",
+    "train_rloo_trainer": "train an RLOO trainer with accuracy and think format reward functions",
+    "save_and_push_model": "save and push a trained RLOO model to the Hugging Face Hub",
+    "build_math_dataset_conversation": "build a math dataset conversation with system prompt and problem formatting"
+  },
+  "huggingface_trl/examples/scripts/rloo_vlm.py": {
+    "run_rloo_vlm_training": "run RLOO reinforcement learning training on a vision-language model with multimodal dataset and reward functions",
+    "configure_rloo_trainer": "configure an RLOOTrainer with a model, reward functions, and train/eval datasets for multimodal RLHF",
+    "build_multimodal_dataset": "build a multimodal dataset from HuggingFace with image filtering, RGB conversion, and conversation formatting",
+    "quantize_model_peft": "quantize a vision-language model and configure PEFT/LoRA for efficient fine-tuning",
+    "save_push_trained_model": "save a trained RLOO model to disk and optionally push it to a HuggingFace hub repository"
+  },
+  "huggingface_trl/examples/scripts/sft_nemotron_3.py": {
+    "run_sft_nemotron_3_fine_tuning": "run the SFT fine-tuning script for NVIDIA Nemotron 3 models with LoRA and deepspeed",
+    "build_trl_parser_cli": "build a CLI argument parser with TrlParser for ScriptArguments, SFTConfig, and ModelConfig",
+    "create_sft_trainer_with_peft": "create an SFTTrainer with PEFT/LoRA configuration for fine-tuning a causal language model",
+    "merge_thinking_tags_in_dataset": "merge thinking tags into message content using <think> and </think> tags in a dataset",
+    "load_model_with_attn_implementation": "load a causal language model with custom revision, attention implementation, and dtype"
+  },
+  "huggingface_trl/examples/scripts/sft_tiny_aya_tool_calling.py": {
+    "create_conversation_sample": "create a conversation dict with user prompt, assistant tool_calls, and tool schemas from a raw dataset sample",
+    "run_sft_train_aya_tool_calling": "run supervised fine-tuning on CohereLabs/tiny-aya-global with QLoRA to teach tool calling using the SimpleToolCalling dataset",
+    "build_tool_schemas": "build tool schema definitions for search_knowledge_base and search_google functions with parameter specs",
+    "train_model_with_lora": "train a causal language model with LoRA and 4-bit quantization using SFTTrainer on tool-calling conversations",
+    "configure_sft_training": "configure SFT training with a custom Jinja2 chat template that serializes tool schemas into the system preamble"
+  },
+  "huggingface_trl/examples/scripts/sft_video_llm.py": {
+    "run_sft_video_llm_training": "run supervised fine-tuning of a video-language model on a dataset of video QA pairs with LoRA",
+    "download_video": "download a video from a URL to a local cache directory with chunked streaming",
+    "prepare_dataset": "prepare a dataset example by downloading video and formatting messages for video-language model training",
+    "build_collate_fn": "build a collate function that batches video and text inputs with masked visual tokens for SFT training",
+    "configure_peft_video_llm": "configure LoRA PEFT with 4-bit quantization on a vision-language model for efficient fine-tuning"
+  },
+  "huggingface_trl/examples/scripts/sft_vlm_gemma3.py": {
+    "run_sft_trainer_vlm_gemma3": "run SFT training of a Gemma 3 vision-language model on single-image or multi-image datasets using TRL",
+    "create_process_vision_info": "create a function that extracts RGB images from multi-modal message dicts containing image byte payloads",
+    "create_format_data": "create a function that formats dataset samples with questions, contexts, outputs, and image paths into structured message lists",
+    "build_prepare_dataset": "build a dataset preparation function that downloads zip files from a Hugging Face dataset repo and maps them into formatted message samples",
+    "run_sft_trainer_peft_gemma3": "run supervised fine-tuning of a Gemma 3 model with PEFT LoRA on multi-image benchmark datasets"
+  },
+  "huggingface_trl/examples/scripts/nemo_gym/train_multi_environment.py": {
+    "run_multi_environment_training": "run multi-environment GRPO training on NeMo Gym agents via CLI with config YAML file",
+    "build_neMo_gym_grpo_config": "build a NeMoGymGRPOConfig dataclass extending GRPOConfig with agent_servers and request_timeout fields",
+    "get_agent_servers": "get agent server URLs from a NeMo Gym head server's global config YAML endpoint",
+    "call_nemo_gym_agents": "call NeMo Gym agents asynchronously with prompts, agent servers, and generation parameters",
+    "load_dataset_from_jsonl": "load a JSONL dataset file into a Hugging Face Dataset with prompt index and metadata fields"
+  },
+  "huggingface_trl/examples/scripts/openenv/browsergym.py": {
+    "run_grpo_training_browsergym_vlm": "run GRPO training with BrowserGym VLM environment for vision language models",
+    "configure_grpo_trainer_browsergym": "configure GRPOTrainer with multimodal BrowserGym environment and reward function",
+    "create_browsergym_vlm_env": "create BrowserGymVLMEnv class with click, fill, scroll, send_keys, and noop actions",
+    "parse_cli_arguments_browsergym": "parse CLI arguments for model id, vllm mode, learning rate, and dataset size",
+    "compute_reward_from_environments": "compute reward scores from completed BrowserGym training environments"
+  },
+  "huggingface_trl/examples/scripts/openenv/browsergym_llm.py": {
+    "run_GRPO_training_BrowserGym": "run GRPO training with BrowserGym environment using vLLM for text-only LLM fine-tuning",
+    "parse_BrowserGym_args": "parse command-line arguments for BrowserGym GRPO training including model, benchmark, and vLLM settings",
+    "build_BrowserGymLLM_env": "build a BrowserGymLLMEnv class that wraps BrowserGym actions like click, fill, send_keys, scroll, and noop",
+    "compute_reward_completion": "compute reward completion by returning the final environment reward as a binary success score",
+    "create_GRPO_trainer": "create a GRPO trainer with BrowserGym environment factory, reward functions, and vLLM-backed rollout generation"
+  },
+  "huggingface_trl/examples/scripts/openenv/carla.py": {
+    "run_grpo_training_carla": "run GRPO training with CARLA environment for autonomous vehicle emergency driving scenario",
+    "create_carla_grpo_env": "create a CarlaGRPOEnv instance with environment URLs for GRPO training loop",
+    "build_carla_observation_description": "build a text description from CARLA observation including speed, nearby actors, and collision status",
+    "test_carla_environment_actions": "test CARLA environment actions like observe, emergency_stop, and lane_change in simulation",
+    "summarize_reward_function": "summarize the reward function that extracts per-environment rewards from GRPO training environments"
+  },
+  "huggingface_trl/examples/scripts/openenv/carla_vlm.py": {
+    "run_grpo_vlm_training": "run GRPO VLM training with a CARLA autonomous driving environment using HuggingFace TRL",
+    "create_carla_grpo_env": "create a CarlaGRPOEnv instance that wraps a CARLA server for vision-language model tool use",
+    "build_multimodal_observation": "build a multimodal observation from a CARLA scene with camera image and text description",
+    "run_carla_tools": "run CARLA driving tools like observe, emergency_stop, and lane_change within a GRPO training loop",
+    "configure_grpo_trainer": "configure a GRPOTrainer with CARLA environment, reward function, and tracking for VLM fine-tuning"
+  },
+  "huggingface_trl/examples/scripts/openenv/carla_vlm_gemma.py": {
+    "run_grpo_training_carla_vlm": "run GRPO training of a Gemma VLM on a CARLA autonomous driving environment with tool calling",
+    "run_grpo_training_with_lora": "run GRPO training of a Gemma VLM on CARLA with LoRA for memory-efficient training",
+    "run_grpo_training_custom_model": "run GRPO training of a custom VLM model on CARLA with specified env server URLs",
+    "run_grpo_training_with_logging": "run GRPO training of a Gemma VLM on CARLA with trackio or wandb logging backend",
+    "run_grpo_training_custom_hyperparams": "run GRPO training of a Gemma VLM on CARLA with custom learning rate and batch size"
+  },
+  "huggingface_trl/examples/scripts/openenv/catch.py": {
+    "run_grpo_training_catch": "run GRPO training with OpenSpiel Catch environment and vLLM for an AI agent that catches falling balls",
+    "start_env_server": "start a FastAPI server for the OpenSpiel Catch environment on a specified host and port",
+    "parse_args": "parse command-line arguments for GRPO training including env mode, model, dataset size, and vLLM settings",
+    "reward_from_env": "compute rewards for GRPO training by returning max(env.reward, 0.0) when episodes are done",
+    "build_catchenv_class": "build a CatchEnv class that wraps the OpenSpiel environment with reset, move, and stay methods for GRPO training"
+  },
+  "huggingface_trl/examples/scripts/openenv/echo.py": {
+    "run_grpo_training_echo_env": "run GRPO training with the OpenEnv Echo environment using a specified model and environment host",
+    "parse_cli_arguments_echo": "parse command-line arguments for model name and environment host URL",
+    "define_reward_function_echo": "define a reward function that extracts rewards from environment instances",
+    "create_echo_tool_env_class": "create an EchoToolEnv class wrapping EchoEnv with reset and echo methods",
+    "train_grpo_trainer_with_env": "train a GRPOTrainer with a custom environment factory and reward function"
+  },
+  "huggingface_trl/examples/scripts/openenv/multi_env.py": {
+    "run_multi_env_grpo_training": "run multi-environment GRPO training with Wordle and Catch environments using GRPOTrainer and environment_factory",
+    "create_multienv_wrapper": "create a MultiEnv class that wraps Wordle and Catch environments with reset, guess, move, and stay methods",
+    "define_wordle_reward_function": "define a wordle_reward function that extracts per-environment rewards for samples active in the Wordle environment",
+    "define_catch_reward_function": "define a catch_reward function that clamps Catch rewards to [0, 1] for GRPO advantage estimation",
+    "format_catch_observation": "format a flat 50-float Catch observation into a readable text description with ball and paddle positions"
+  },
+  "huggingface_trl/examples/scripts/openenv/sudoku.py": {
+    "run_sudoku_grpo_training": "run GRPO training for Sudoku solving with vLLM colocated mode and easy difficulty",
+    "build_sudoku_env_class": "build a SudokuEnv class that wraps TextArenaEnv with reset, place, and hint formatting for puzzle solving",
+    "parse_sudoku_board": "parse a Sudoku board string into a 9x9 grid with zero-filled empty cells",
+    "extract_board_hints": "extract empty cells with valid candidate numbers sorted by difficulty for Sudoku hints",
+    "run_sudoku_with_lora": "run GRPO training with LoRA PEFT for memory-efficient Sudoku puzzle solving"
+  },
+  "huggingface_trl/examples/scripts/openenv/wordle.py": {
+    "run_grpo_wordle_training": "run GRPO training for Wordle using the TextArena OpenEnv environment and vLLM",
+    "parse_wordle_training_args": "parse command-line arguments for GRPO Wordle training including model, environment URL, and vLLM mode",
+    "create_wordle_reward_function": "create a reward function that extracts per-environment rewards from a list of Wordle environments",
+    "build_wordle_environment_factory": "build a Wordle environment factory wrapping TextArenaEnv with reset and guess methods",
+    "train_grpo_wordle_model": "train a language model on Wordle using GRPOTrainer with vLLM and trackio logging"
+  },
+  "huggingface_trl/examples/scripts/ppo/ppo.py": {
+    "run_ppo_training": "run PPO reinforcement learning training on a causal language model with reward and value models",
+    "create_ppo_trainer": "create a PPOTrainer with policy, reference, reward, and value models for RLHF fine-tuning",
+    "build_ppo_config": "build a PPOConfig with training hyperparameters like batch size, epochs, and mini-batches",
+    "test_load_dataset": "test loading a HuggingFace dataset and splitting it into train and eval sets for PPO training",
+    "summarize_ppo_script": "summarize the PPO training script that loads models, tokenizes data, and runs reinforcement learning"
+  },
+  "huggingface_trl/examples/scripts/ppo/ppo_tldr.py": {
+    "run_ppo_trainer": "run PPO reinforcement learning training on a causal language model with reward and value models",
+    "build_ppo_trainer": "build a PPOTrainer with policy, reference, reward, and value models for preference optimization",
+    "prepare_dataset_tokenize": "prepare a dataset by tokenizing prompts and filtering sequences by maximum length",
+    "load_quantized_model": "load a quantized causal language model with PEFT configuration and device mapping",
+    "parse_cli_arguments": "parse CLI arguments into ScriptArguments, PPOConfig, and ModelConfig dataclasses"
+  },
+  "huggingface_trl/trl/chat_template_utils.py": {
+    "clone_chat_template": "clone a chat template from a source tokenizer to a target model and tokenizer, resizing embeddings accordingly",
+    "add_response_schema": "add a response schema to a tokenizer or processor based on its chat template for structured parsing",
+    "supports_tool_calling": "test whether a tokenizer or processor chat template supports full tool-calling conversations",
+    "get_training_chat_template": "get a training-compatible chat template with prefix-preservation and generation markers for a tokenizer",
+    "parse_response": "parse a token sequence into structured response dictionaries with fallback to plain text decoding"
+  },
+  "huggingface_trl/trl/data_utils.py": {
+    "build_prepare_multimodal_messages": "build a multimodal message converter that injects images into conversational message blocks",
+    "create_apply_chat_template": "create a chat template renderer that applies tokenizer templates to conversational dataset examples",
+    "test_pack_dataset": "test the dataset sequence packer that chunks sequences using bfd, bfd_split, or wrapped strategies",
+    "refactor_extract_prompt": "refactor the preference dataset prompt extractor that finds the longest common prefix between chosen and rejected completions",
+    "summarize_convert_to_chatml": "summarize the conversational format converter that transforms from/value fields into ChatML role/content format"
+  },
+  "huggingface_trl/trl/import_utils.py": {
+    "test_is_package_available": "test the _is_package_available function to check if a Python package exists and optionally return its version",
+    "test_is_deepspeed_available": "test the is_deepspeed_available function to check if deepspeed is installed",
+    "test_is_vllm_available": "test the is_vllm_available function to check vLLM availability with version range validation",
+    "test_is_liger_kernel_available": "test the is_liger_kernel_available function to check liger_kernel availability with minimum version check",
+    "test_suppress_experimental_warning": "test the suppress_experimental_warning function to suppress TRLExperimentalWarning messages"
+  },
+  "huggingface_trl/trl/cli/accelerate_config.py": {
+    "resolve_accelerate_config_argument": "resolve the --accelerate_config CLI argument into an accelerate --config_file path",
+    "test_resolve_accelerate_config_argument": "test the resolve_accelerate_config_argument function with a filesystem path argument",
+    "test_resolve_accelerate_config_bundled": "test the resolve_accelerate_config_argument function with a bundled trl config name",
+    "test_resolve_accelerate_config_missing": "test the resolve_accelerate_config_argument function raises ValueError for invalid config",
+    "test_resolve_accelerate_config_no_flag": "test the resolve_accelerate_config_argument function returns args unchanged when no flag is present"
+  },
+  "huggingface_trl/trl/cli/accelerate_launcher.py": {
+    "run_launch_training_script": "run the launch_training_script function to launch a TRL training script through accelerate launch",
+    "test_launch_training_script": "test the launch_training_script function with script_name, launch_args, and training_script_args",
+    "refactor_launch_training_script": "refactor the launch_training_script function to support custom launch_command_fn and launch_parser_fn",
+    "review_launch_training_script": "review the launch_training_script function that resolves training scripts from trl.scripts package",
+    "summarize_launch_training_script": "summarize the launch_training_script function that parses accelerate launch arguments and executes training"
+  },
+  "huggingface_trl/trl/cli/commands/base.py": {
+    "create_command_subclass": "create a Command subclass with register and run methods for a TRL CLI subcommand",
+    "build_command_context": "build a CommandContext with argv list to pass to CLI command run methods",
+    "run_command_execute": "run a Command subclass by calling register to add a subparser and run with args and context",
+    "test_command_context_argv_after": "test the CommandContext.argv_after method to extract tokens after a subcommand token",
+    "review_command_base_class": "review the Command base class for abstract register and run methods in TRL CLI"
+  },
+  "huggingface_trl/trl/cli/commands/env.py": {
+    "run_env_command": "run the CLI env command to print TRL environment information",
+    "create_env_command": "create an EnvCommand instance that registers an 'env' CLI subparser",
+    "review_env_command": "review the EnvCommand class and its run method that prints environment info",
+    "test_env_command": "test the EnvCommand.run method with a Namespace and CommandContext",
+    "summarize_print_env": "summarize the print_env function from trl.scripts.env that prints environment details"
+  },
+  "huggingface_trl/trl/cli/commands/skills.py": {
+    "run_skills_cli": "run the TRL CLI skills command to manage agent skills",
+    "register_skills_subcommands": "register the skills CLI subcommand with an argparse subparser",
+    "create_skills_command": "create a SkillsCommand instance that manages TRL agent skills via CLI",
+    "run_skills_subcommand": "run a registered skills subcommand function from argparse args",
+    "print_skills_help": "print help text for the TRL CLI skills command"
+  },
+  "huggingface_trl/trl/cli/commands/training.py": {
+    "run_training_command": "run the TrainingCommand CLI to launch a training script with accelerate",
+    "create_training_command": "create a TrainingCommand instance for a named training subcommand like dpo",
+    "register_training_command": "register a TrainingCommand with argparse subparsers",
+    "build_training_args": "build training script arguments by parsing CLI args and accelerate config",
+    "subtract_subsequence": "subtract an ordered subsequence from a list of strings"
+  },
+  "huggingface_trl/trl/cli/commands/vllm_serve.py": {
+    "run_vllm_serve_cli": "run the vLLM serve CLI command to serve a TRL model with vLLM",
+    "create_vllm_serve_command": "create a VllmServeCommand instance and register it with argparse subparsers",
+    "build_vllm_serve_parser": "build an argparse parser for vLLM serve script arguments using TrlParser",
+    "test_weight_sync_extension": "test the WeightSyncWorkerExtension for synchronizing model weights between client and server workers",
+    "review_vllm_serve_main": "review the vllm_serve main function that starts the uvicorn server with weight sync endpoints"
+  },
+  "huggingface_trl/trl/experimental/merge_model_callback.py": {
+    "create_merge_config_linear": "create a linear merge configuration for two models with specified weights using MergeConfig",
+    "create_merge_config_ties": "create a TIES merge configuration for two models with density parameters using MergeConfig",
+    "create_merge_config_slerp": "create a SLERP merge configuration for spherical linear interpolation of two models",
+    "merge_models": "merge two models using mergekit with a MergeConfiguration and output path",
+    "upload_model_to_hf": "upload a merged model folder to a Hugging Face Hub repository"
+  },
+  "huggingface_trl/trl/experimental/utils.py": {
+    "create_DPODataCollatorWithPadding": "create a DPO data collator that pads tokenized inputs to the maximum batch length for DPO training",
+    "create_DataCollatorForChatML": "create a ChatML data collator that formats message lists into padded input_ids, attention_mask, and labels for chat models",
+    "create_create_reference_model": "create a static frozen reference copy of a model with optional shared layers for DPO or KTO training",
+    "create_prepare_peft_model": "prepare a model for PEFT training by enabling gradient checkpointing, handling QLoRA, and wrapping with get_peft_model",
+    "create_truncate_dataset": "truncate sequences in a dataset to a specified maximum length using PyArrow batch operations"
+  },
+  "huggingface_trl/trl/experimental/async_grpo/async_grpo_trainer.py": {
+    "train_async_grpo_model": "train a language model using asynchronous group relative policy optimization with vLLM rollout worker",
+    "create_async_grpo_trainer": "create an AsyncGRPOTrainer instance with model, reward functions, and training dataset for RLHF fine-tuning",
+    "build_rollout_queue_dataset": "build a RolloutQueueDataset that pulls rollout samples from a queue with staleness checking",
+    "compute_grpo_loss": "compute the GRPO loss with clipped ratios, advantages, and completion masks for policy optimization",
+    "sync_model_weights": "sync model weights from the training process to the vLLM rollout worker with pause-resume lifecycle",
+    "test_async_grpo_trainer": "test the AsyncGRPOTrainer with injected rollout worker stub and mock datasets",
+    "review_async_grpo_trainer": "review the AsyncGRPOTrainer class and its asynchronous training loop with vLLM integration",
+    "summarize_grpo_trainer": "summarize the AsyncGRPOTrainer's capabilities for asynchronous group relative policy optimization"
+  },
+  "huggingface_trl/trl/experimental/async_grpo/async_rollout_worker.py": {
+    "create_async_rollout_worker": "create an AsyncRolloutWorker instance with a model name, dataset, reward functions, and vLLM server URL for async GRPO rollout",
+    "start_async_worker": "start the AsyncRolloutWorker in a daemon thread to begin generating and scoring rollout groups asynchronously",
+    "stop_async_worker": "stop the AsyncRolloutWorker by signaling the async event loop to shut down its generate and score loops",
+    "send_model_weights": "send updated model weights to the vLLM inference server via NCCL weight transfer and HTTP update endpoint",
+    "score_rollout_group": "score a rollout group by computing rewards from multiple reward functions and producing RolloutSample objects with advantages"
+  },
+  "huggingface_trl/trl/experimental/bco/bco_trainer.py": {
+    "train_BCOTrainer": "train a language model using Binary Classifier Optimization with preference data and optional underlying distribution matching",
+    "compute_bco_loss": "compute the BCO loss from policy and reference model log probabilities with running reward normalization",
+    "compute_reference_log_probs": "compute log probabilities of the reference model for a batch of completion inputs",
+    "generate_from_model_and_ref": "generate samples from both the policy model and reference model for a given batch of prompts",
+    "build_RunningMoments": "build a running moments tracker that maintains mean, std, and count across distributed training processes"
+  },
+  "huggingface_trl/trl/experimental/bema_for_ref_model/callback.py": {
+    "create_BEMACallback": "create a BEMA callback for HuggingFace Trainer with bias-corrected exponential moving average weight smoothing",
+    "build_CallbackHandlerWithRefModel": "build a callback handler that passes a reference model to all registered callbacks during training",
+    "test_BEMACallback_on_step_end": "test the BEMACallback on_step_end method to update model weights with BEMA smoothing at specified intervals",
+    "refactor_BEMACallback_update_ref_model": "refactor the BEMACallback to update a reference model with BEMA weights, supporting PEFT base models",
+    "review_BEMACallback_update_model_with_bema_weights": "review the BEMACallback _update_model_with_bema_weights helper to apply filtered BEMA state dict to a model"
+  },
+  "huggingface_trl/trl/experimental/cpo/cpo_trainer.py": {
+    "create_cpo_trainer": "create a CPOTrainer instance to fine-tune a causal language model with contrastive preference optimization",
+    "build_cpo_loss": "build the CPO loss computation supporting sigmoid hinge ipo and simpo loss types with label smoothing",
+    "tokenize_cpo_dataset": "tokenize a CPO dataset row by building prompt chosen and rejected sequences with BOS and EOS tokens",
+    "generate_model_output": "generate samples from a CPO-trained model during evaluation using beam search with pad token handling",
+    "compute_batch_metrics": "compute batch loss metrics including chosen rejected rewards margins and log probabilities for training"
+  },
+  "huggingface_trl/trl/experimental/distillation/distillation.py": {
+    "run_distillation_training": "run full off-policy distillation training from a teacher model to a smaller student model using command-line args",
+    "run_mixed_policy_distillation": "run mixed on/off-policy distillation training with configurable lambda and beta weights",
+    "run_lora_distillation": "run distillation training with LoRA parameter-efficient fine-tuning on the student model",
+    "build_distillation_parser": "build an argparse parser for the distillation training script with model, dataset, and training config",
+    "train_distillation_model": "train a student model via knowledge distillation from a teacher model with optional eval and logging"
+  },
+  "huggingface_trl/trl/experimental/distillation/distillation_trainer.py": {
+    "train_distillation_model": "train a student language model via knowledge distillation from a teacher model using generalized JSD loss",
+    "compute_jsd_divergence_loss": "compute the generalized Jensen-Shannon Divergence loss between student and teacher model log-probabilities",
+    "generate_student_completions": "generate on-policy completions from the student model using vLLM or model.generate() for distillation training",
+    "build_teacher_request_inputs": "trim padded batch tensors into per-sample sequences for teacher-server logprob requests",
+    "log_training_completions": "log prompt-completion samples to console, wandb, and trackio during distillation training"
+  },
+  "huggingface_trl/trl/experimental/dppo/dppo_trainer.py": {
+    "create_DPPOTrainer": "create a DPPOTrainer instance with a model, reward functions, and DPPOConfig for divergence proximal policy optimization",
+    "run_DPPOTrainer_train": "run the DPPOTrainer training loop to fine-tune a language model using divergence-based trust regions",
+    "compute_DPPOTrainer_divergence_mask": "compute a per-token trust-region mask based on binary_tv, binary_kl, topk_tv, or topk_kl divergence type",
+    "compute_DPPOTrainer_loss": "compute the DPPO policy loss with KL regularization and divergence masking over a batch of completions",
+    "generate_DPPOTrainer_completions": "generate model completions with tool call support and extract per-token logprobs for policy optimization"
+  },
+  "huggingface_trl/trl/experimental/gkd/gkd_trainer.py": {
+    "create_gkd_trainer": "create a GKDTrainer instance to perform generalized knowledge distillation between a student and teacher language model",
+    "compute_gkd_loss": "compute the generalized Jensen-Shannon Divergence loss between student and teacher model logits",
+    "train_gkd_model": "train a student language model using on-policy distillation from a teacher model with self-generated mistakes",
+    "generate_on_policy_responses": "generate on-policy responses from a student or teacher model for knowledge distillation training",
+    "review_gkd_trainer": "review the GKDTrainer class for knowledge distillation with on-policy learning and self-generated mistakes"
+  },
+  "huggingface_trl/trl/experimental/gold/gold_trainer.py": {
+    "create_gold_trainer": "create a GOLDTrainer instance for on-policy logit distillation with a student and teacher model",
+    "build_teacher_inputs_from_texts": "build teacher input tensors from prompt and completion text strings using a tokenizer",
+    "compute_uld_loss": "compute the Universal Logit Distillation loss between student and teacher model logits",
+    "compute_generalized_jsd_loss": "compute the generalized Jensen-Shannon Divergence loss for knowledge distillation",
+    "print_prompt_completions_sample": "print a formatted table of prompt-completion samples for monitoring training outputs"
+  },
+  "huggingface_trl/trl/experimental/grpo_with_replay_buffer/grpo_with_replay_buffer_trainer.py": {
+    "create_replay_buffer": "create a ReplayBuffer with a max_size to store and sample previously seen rollouts by score",
+    "sample_from_replay_buffer": "sample groups from the replay buffer weighted by normalized scores with replacement support",
+    "update_replay_buffer": "update the replay buffer with groups that have reward variance (std > 0) for later reuse",
+    "update_with_replay_buffer": "update current batch data with samples from replay buffer replacing groups with zero variance",
+    "generate_and_score_completions": "generate completions from prompts, compute per-token log probabilities, rewards, and advantages for GRPO training"
+  },
+  "huggingface_trl/trl/experimental/gspo_token/grpo_trainer.py": {
+    "train_GRPOTrainer": "train a language model using the GSPO-token GRPOTrainer with importance sampling and entropy regularization",
+    "compute_GRPO_loss": "compute the GSPO-token per-token loss with sequence-level importance sampling and entropy masking",
+    "build_GRPO_inputs": "build the inputs dictionary with prompt_ids, completion_ids, advantages, and reference log probabilities for GRPO training",
+    "configure_importance_sampling": "configure the importance sampling level as token, sequence, or sequence_token for GSPO-token gradient estimation",
+    "log_GRPO_metrics": "log GRPO training metrics including KL divergence, entropy, and clipped probability ratio statistics"
+  },
+  "huggingface_trl/trl/experimental/kto/kto_trainer.py": {
+    "build_kto_trainer": "build a KTO trainer to align a causal language model using KTO loss with chosen and rejected completions",
+    "train_model_kto": "train a language model with KTO alignment using a dataset of desirable and undesirable responses",
+    "compute_kto_loss": "compute the KTO loss for a batch of policy and reference model log probabilities",
+    "tokenize_kto_dataset": "tokenize a KTO-specific dataset with prompts and completions into separate prompt and answer token ids",
+    "prepare_kto_dataset": "prepare a KTO dataset by extracting prompts, applying chat templates, tokenizing, and computing KL mismatch pairs"
+  },
+  "huggingface_trl/trl/experimental/minillm/minillm_trainer.py": {
+    "create_minillm_trainer": "create a MiniLLMTrainer instance for knowledge distillation between a student and teacher language model",
+    "train_student_model": "train a student language model using knowledge distillation from a teacher model with MiniLLMTrainer",
+    "compute_kd_loss": "compute the knowledge distillation loss using single-step decomposition with KL divergence between student and teacher log probabilities",
+    "compute_advantage": "compute the reverse KL divergence advantage for distillation with optional gamma-weighted length normalization",
+    "run_distillation_training": "run knowledge distillation training combining GRPO verifiable reward loss with teacher-student KL divergence loss"
+  },
+  "huggingface_trl/trl/experimental/nash_md/nash_md_trainer.py": {
+    "create_nash_md_trainer": "create a NashMDTrainer with a model, reference model, reward function, and NashMDConfig for RLHF training",
+    "build_geometric_mixture_wrapper": "build a GeometricMixtureWrapper that samples from logits of a model and reference model geometric mixture",
+    "run_training_step": "run the NashMDTrainer training step to compute loss from model and mixture completions with rewards",
+    "compute_nash_md_losses": "compute Nash-MD losses from model logprobs, reference logprobs, and sigmoid probabilities",
+    "log_training_statistics": "log NashMD training statistics including KL divergence, entropy, rewards, margins, and accuracies"
+  },
+  "huggingface_trl/trl/experimental/online_dpo/online_dpo_trainer.py": {
+    "train_online_dpo_model": "train a language model using Online DPO with custom reward functions and vLLM generation",
+    "generate_completions_vllm": "generate completions using vLLM with server or colocate mode for fast online sampling",
+    "calculate_rewards": "calculate rewards from multiple reward functions including model-based and custom callable rewards",
+    "configure_online_dpo_trainer": "configure an OnlineDPOTrainer with PEFT, gradient checkpointing, and distributed training support",
+    "sync_model_weights_vllm": "sync trained model weights to vLLM with FSDP and DeepSpeed ZeRO-3 parameter gathering support"
+  },
+  "huggingface_trl/trl/experimental/openenv/utils.py": {
+    "build_base_generation_kwargs": "build generation kwargs dict from trainer config with overrides for temperature, top_k, and max_tokens",
+    "build_colocate_sampling_params": "build vLLM SamplingParams for colocate mode with structured output regex and per-token logprobs",
+    "generate_rollout_completions": "generate rollout completions from text prompts using vLLM in server or colocate mode",
+    "build_server_generation_kwargs": "build generation kwargs dict for vLLM server mode from trainer config with optional overrides",
+    "generate_rollout_completions_colocate": "generate rollout completions in colocate mode with tensor parallel gathering and sleep mode support"
+  },
+  "huggingface_trl/trl/experimental/orpo/orpo_trainer.py": {
+    "create_ORPOTrainer": "create an ORPOTrainer to fine-tune a causal language model with preference optimization without a reference model",
+    "build_tokenized_answer": "build tokenized prompt and answer pairs with proper tokenizer handling for merged token edge cases",
+    "compute_odds_ratio_loss": "compute ORPO's odds ratio loss from policy chosen and rejected log probabilities for preference optimization",
+    "run_concatenated_forward": "run a concatenated forward pass on chosen and rejected inputs to avoid redundant forward computations",
+    "generate_from_model": "generate samples from the fine-tuned model using greedy or sampling decoding with prompt inputs"
+  },
+  "huggingface_trl/trl/experimental/papo/papo_trainer.py": {
+    "create_papo_trainer": "create a PAPOTrainer instance for multimodal reasoning with GRPO or DAPO base loss",
+    "build_papo_config": "build a PAPOConfig with perception_loss_weight, mask_ratio, and mask_type for VLM fine-tuning",
+    "run_papo_training": "run PAPO training on a vision-language model with masked image perception loss",
+    "mask_image_pixels": "mask image pixel values using random, patch, or grid strategies for perception loss computation",
+    "compute_papo_loss": "compute the PAPO loss combining GRPO/DAPO loss, perception KL divergence, and double entropy regularization"
+  },
+  "huggingface_trl/trl/experimental/ppo/modeling_value_head.py": {
+    "create_autocausal_lm_value_head": "create an autoregressive causal language model with a value head for PPO training",
+    "create_seq2seq_value_head": "create a seq2seq model with a value head for PPO training on encoder-decoder architectures",
+    "build_pretrained_model_wrapper": "build a wrapper around a pretrained transformer model to expose a uniform PyTorch module interface",
+    "test_value_head_forward": "test the value head forward pass to return scalar values for each output token",
+    "review_reward_modeling_adapter": "review the reward modeling adapter loading and scoring for PPO reward computation"
+  },
+  "huggingface_trl/trl/experimental/ppo/ppo_trainer.py": {
+    "build_PPOTrainer": "build a PPO trainer for fine-tuning language models from human preferences with policy and value models",
+    "train_PPOTrainer": "train the PPO trainer to optimize policy with KL-regularized rewards and advantage estimation",
+    "generate_completions_PPOTrainer": "generate model completions from the evaluation dataset and log scores to W&B or Comet",
+    "truncate_response": "truncate a response tensor at the first occurrence of a stop token and fill the rest with pad tokens",
+    "masked_whiten": "whiten reward values using masked mean and variance for advantage normalization in PPO training"
+  },
+  "huggingface_trl/trl/experimental/prm/prm_trainer.py": {
+    "create_PRMTrainer": "create a PRMTrainer instance for process reward modeling with a token classification model",
+    "test_compute_accuracy": "test the compute_accuracy function that evaluates predictions against labels",
+    "run_PRMTrainer_tokenize": "run PRMTrainer.tokenize_row to tokenize prompts and completions into input_ids and labels",
+    "build_PRM_training_pipeline": "build a process reward modeling training pipeline using PRMTrainer with datasets and config",
+    "review_PRMTrainer_checkpoint": "review the PRMTrainer._save_checkpoint method that saves model card with checkpoint"
+  },
+  "huggingface_trl/trl/experimental/sdft/sdft_trainer.py": {
+    "create_sdft_trainer": "create an SDFTTrainer instance with a model path, SDFTConfig, and train dataset for on-policy self-distillation",
+    "build_teacher_context": "build student and teacher contexts from prompts and privileged context using DemonstrationTeacherContextBuilder",
+    "generate_completion_ids": "generate completion IDs and masks from prompts using the model with configurable temperature and sampling parameters",
+    "compute_self_distillation_loss": "compute SDFT self-distillation loss with optional token skipping and gradient accumulation scaling",
+    "build_buffered_batch": "build a buffered training batch with prompts, completions, teacher inputs, and old per-token logps for PPO-style updates"
+  },
+  "huggingface_trl/trl/experimental/sdpo/sdpo_trainer.py": {
+    "create_sdpo_trainer": "create an SDPOTrainer instance with reward functions, model, and training dataset for self-distillation policy optimization",
+    "build_teacher_context": "build teacher contexts from successful rollouts by filtering high-reward completions and formatting reprompt messages",
+    "run_self_distillation_loss": "run SDPO self-distillation loss computation with hybrid or distillation-only policy loss modes",
+    "sync_ema_teacher_model": "synchronize an EMA teacher model with the student model at a configurable update rate each training step",
+    "test_successful_rollout_mining": "test successful rollout mining by gathering rewards across processes and selecting rollouts above the success threshold"
+  },
+  "huggingface_trl/trl/experimental/self_distillation/base_self_distillation_trainer.py": {
+    "create_self_distillation_trainer": "create a BaseSelfDistillationTrainer with a model path, reward functions, and a train dataset for online self-distillation",
+    "build_vllm_generation": "build a VLLMGeneration instance for accelerated rollout generation using vLLM with configurable tensor parallelism",
+    "configure_reward_functions": "configure multiple reward functions with associated processing classes and weighted reward aggregation",
+    "prepare_peft_model": "prepare a PEFT model with LoRA or other parameter-efficient fine-tuning configuration for self-distillation training",
+    "run_training_step": "run a training step with buffered generation batches and online rollout for self-distillation optimization"
+  },
+  "huggingface_trl/trl/experimental/self_distillation/online_rollout_mixin.py": {
+    "build_online_rollout_batch": "build an online rollout batch by generating completions from prompts and scoring them with reward functions",
+    "generate_text_with_vllm": "generate text completions from prompts using vLLM with weight syncing and prompt deduplication",
+    "generate_text_with_transformers": "generate text completions from left-padded prompts using HuggingFace Transformers with EOS masking",
+    "calculate_reward_scores": "calculate reward scores for generated completions using neural reward models or custom reward functions",
+    "compute_policy_loss": "compute the SDPO policy loss using clipped importance sampling with grouped advantages",
+    "record_reward_diagnostics": "record reward diagnostics including mean, std, min, max, and flat-group detection warnings",
+    "summarize_online_rollout_mixin": "summarize the OnlineRolloutMixin class that provides generation, reward scoring, and policy-loss utilities for self-distillation trainers"
+  },
+  "huggingface_trl/trl/experimental/self_distillation/peft_adapter_ema_callback.py": {
+    "create_PEFTAdapterEMACallback": "create a PEFT adapter EMA callback that maintains an exponential moving average of adapter weights for self-distillation teacher models",
+    "initialize_teacher_adapter": "initialize a zero-weighted PEFT teacher adapter from the student adapter configuration and state dict",
+    "update_teacher_weights": "update teacher adapter shadow weights via exponential moving average at each training step end",
+    "apply_teacher_weights": "apply EMA shadow weights to the teacher PEFT adapter so it can be used as a distillation target",
+    "get_student_state_dict": "get the student PEFT adapter state dict with proper accelerator unwrapping for distributed training"
+  },
+  "huggingface_trl/trl/experimental/self_distillation/teacher_context.py": {
+    "extract_last_user_text": "extract the text content from the last user message in a conversational prompt list",
+    "create_tokenized_prompt_batch": "create a TokenizedPromptBatch dataclass with prompt_ids and prompt_mask tensors",
+    "build_prompt_tokenizer": "build a PromptTokenizer instance from a trainer to tokenize prompt inputs consistently",
+    "apply_prompt_template": "apply a chat template to a list of prompts using the trainer's processing class",
+    "tokenize_prompts": "tokenize a list of prompts into padded prompt_ids and prompt_mask tensors"
+  },
+  "huggingface_trl/trl/experimental/ssd/ssd_trainer.py": {
+    "create_ssd_trainer": "create an SSDTrainer instance to fine-tune a language model using embarrassingly simple self-distillation with cross-entropy loss",
+    "generate_completion_ids": "generate model completions from a list of prompts at a configured training-time temperature using transformers or vLLM",
+    "build_buffered_batch": "build a buffered training batch by generating completions from prompts and tokenizing them for the forward pass",
+    "compute_loss_ssd": "compute standard cross-entropy loss on generated completions conditioned on prompts without any reward model or verifier",
+    "configure_generation_kwargs": "configure generation parameters including temperature, top_p, top_k, min_p, and repetition_penalty for self-distillation sampling"
+  },
+  "huggingface_trl/trl/experimental/tpo/tpo.py": {
+    "build_triple_preference_from_ultrafeedback": "build a triple-preference dataset from raw UltraFeedback completions sorted by overall_score",
+    "to_conversational": "wrap standard-format triple-preference data into conversational message format for chat template application",
+    "train_TPOTrainer": "train a causal language model using Triple Preference Optimization with chosen, rejected, and reference completions",
+    "configure_TPOConfig": "configure TPO training with beta, tpo_alpha, loss_type, and tpo_l_gamma hyperparameters",
+    "run_TPO_training_cli": "run TPO training via CLI with dataset, model, batch size, learning rate, and output directory arguments"
+  },
+  "huggingface_trl/trl/experimental/tpo/tpo_trainer.py": {
+    "build_tpo_trainer": "build a TPO trainer for triple preference optimization on a causal language model with chosen, rejected, and reference completions",
+    "create_data_collator_triple_preference": "create a data collator that batches prompt, chosen, rejected, and reference token sequences with dynamic padding and completion masks",
+    "run_tpo_training": "run triple preference optimization training with sigmoid, hinge, ipo, or tpo-l loss types on a preference dataset",
+    "extract_triple_prompt": "extract the shared prompt prefix from chosen and rejected completions and strip it from the reference gold completion",
+    "evaluate_tpo_model": "evaluate a TPO-trained model computing token accuracy, reward margins, and log probabilities on a triple-preference dataset"
+  },
+  "huggingface_trl/trl/experimental/xpo/xpo_trainer.py": {
+    "create_xpo_trainer": "create an XPOTrainer instance for Exploratory Preference Optimization with a model, reward function, and training config",
+    "train_model_xpo": "train a causal language model using XPO with preference optimization and implicit Q*-approximation",
+    "generate_completions_xpo": "generate completions from both the policy model and reference model for a given prompt batch",
+    "compute_xpo_loss": "compute the combined DPO and XPO loss using log-ratio differences and alpha-weighted logprobs",
+    "log_xpo_statistics": "log training statistics including DPO loss, XPO loss, KL divergence, entropy, and reward margins"
+  },
+  "huggingface_trl/trl/extras/profiling.py": {
+    "create_ProfilingContext": "create a ProfilingContext to time a code block and log execution metrics to W&B or MLflow",
+    "run_profiling_context_with_trainer": "run a profiling context from a Trainer instance to automatically extract report_to, step, and main process settings",
+    "build_profiling_decorator": "build a profiling decorator that times a method and logs execution time via profiling_context for Trainer objects",
+    "test_ProfilingContext_direct": "test a ProfilingContext with custom name, report_to, is_main_process, step, and metric_prefix parameters",
+    "review_profiling_decorator_non_trainer": "review the profiling_decorator behavior for non-Trainer objects that have an accelerator attribute but no args"
+  },
+  "huggingface_trl/trl/generation/vllm_client.py": {
+    "build_vllm_client": "build a vLLM client to generate text completions from a running vLLM server",
+    "generate_text_completions": "generate text completions for a list of prompts with configurable sampling parameters",
+    "generate_chat_completions": "generate chat completions from message lists with tool calling and structured output support",
+    "update_model_weights": "update model weights in a distributed vLLM server by initializing a communicator and broadcasting parameters",
+    "compute_sequence_logprobs": "compute per-token logprobs for existing sequences for knowledge distillation evaluation"
+  },
+  "huggingface_trl/trl/generation/vllm_generation.py": {
+    "run_generate_completions": "run vLLM-based text generation with tokenized prompts and optional multi-modal images",
+    "sync_model_weights": "sync trained model weights from FSDP or DeepSpeed to the vLLM engine",
+    "extract_logprob_values": "extract logprobs and token IDs sorted by probability rank from vLLM generation outputs",
+    "empty_torch_device_cache": "empty the cache of the available torch device including CUDA, XPU, MLU, and NPU",
+    "init_vllm_generation_backend": "initialize a vLLM generation backend in server or colocate mode for distributed training"
+  },
+  "huggingface_trl/trl/models/activation_offloading.py": {
+    "create_context_manager_offload_activations": "create a context manager that offloads activation tensors to CPU during forward pass and restores them during backward pass",
+    "get_context_manager_activation_offloading": "get an activation offloading context manager for a model with automatic output head detection and exclusion",
+    "update_model_params_offload_activations": "update the parameter storage pointers in an OffloadActivations manager to filter out model parameters during offloading",
+    "create_no_op_manager": "create a no-op saved tensors hook manager to disable activation offloading for a local region of code",
+    "get_unique_tensor_key": "get a unique key for a tensor based on its storage pointer and dtype for storage deduplication"
+  },
+  "huggingface_trl/trl/models/utils.py": {
+    "unwrap_model_for_generation": "unwrap a distributed model for generation with optional DeepSpeed ZeRO-3 parameter gathering and generation config override",
+    "prepare_deepspeed": "prepare a model for DeepSpeed inference by initializing it with ZeRO optimization configuration from the accelerator",
+    "prepare_fsdp": "prepare a model for FSDP inference by wrapping it with FSDP version 1 or 2 sharding policy from the accelerator",
+    "disable_gradient_checkpointing": "temporarily disable gradient checkpointing on a pretrained model and restore it afterward",
+    "create_reference_model": "create a frozen reference model for KL-divergence regularization during RLHF training"
+  },
+  "huggingface_trl/trl/rewards/accuracy_rewards.py": {
+    "create_accuracy_reward": "create a reward function that checks if model completions match ground truth solutions using math verification",
+    "test_accuracy_reward": "test the accuracy_reward function with latex boxed answers and fractional solutions",
+    "run_reasoning_accuracy_reward": "run reasoning_accuracy_reward to extract final answers after reasoning delimiters like <think> and verify against solutions",
+    "build_reward_evaluator": "build a reward evaluation pipeline using accuracy_reward and reasoning_accuracy_reward for math problem grading",
+    "review_accuracy_rewards": "review the accuracy_rewards module for math verification with latex parsing and timeout handling in worker threads"
+  },
+  "huggingface_trl/trl/rewards/format_rewards.py": {
+    "test_think_format_reward": "test the think_format_reward function that evaluates if reasoning text is enclosed within <think> and </think> tags",
+    "summarize_think_format_reward": "summarize the think_format_reward function that checks completion format and returns 1.0 or 0.0 rewards",
+    "review_think_format_reward": "review the think_format_reward function that validates <think>...</think> tag enclosure in model completions",
+    "refactor_think_format_reward": "refactor the think_format_reward function to support configurable opening and closing tag delimiters",
+    "create_think_format_reward": "create a reward function that validates reasoning text is properly enclosed within <think> and </think> tags for RLHF training"
+  },
+  "huggingface_trl/trl/rewards/other_rewards.py": {
+    "create_get_soft_overlong_punishment": "create a reward function that penalizes overlong completions using the DAPO paper formula"
+  },
+  "huggingface_trl/trl/scripts/_hf_argparser.py": {
+    "create_HfArgumentParser": "create an HfArgumentParser from dataclass types to parse command-line arguments into typed instances",
+    "parse_args_into_dataclasses": "parse command-line args into dataclass instances with support for .args files and flags",
+    "parse_dict": "parse a dictionary into dataclass instances without using argparse",
+    "parse_json_file": "parse a JSON file into dataclass instances without using argparse",
+    "HfArg": "create a concise dataclass field with aliases, help text, and defaults for HfArgumentParser"
+  },
+  "huggingface_trl/trl/scripts/dpo.py": {
+    "run_dpo_training": "run DPO training on a preference dataset with a causal language model using the trl dpo script",
+    "run_dpo_lora": "run DPO training with LoRA adapters on a preference dataset using PEFT configuration",
+    "run_dpo_quantized": "run DPO training with 4-bit or 8-bit quantized model on a preference dataset",
+    "build_dpo_cli_parser": "build an argparse CLI parser for DPO training with model, dataset, and training configuration arguments",
+    "run_dpo_with_custom_dataset": "run DPO training with a custom dataset loaded via the datasets library streaming mode"
+  },
+  "huggingface_trl/trl/scripts/env.py": {
+    "run_print_env": "run the print_env function to print the full TRL environment diagnostics report",
+    "summarize_print_env": "summarize the print_env function that collects platform, Python, PyTorch, and package versions",
+    "review_print_env": "review the print_env function that gathers and prints system and dependency information for issue reporting"
+  },
+  "huggingface_trl/trl/scripts/grpo.py": {
+    "run_grpo_training": "run GRPO training on a language model with reward functions and a dataset",
+    "build_grpo_trainer": "build a GRPO trainer with reward functions, model, and dataset for RLHF fine-tuning",
+    "create_reward_functions": "create reward functions from a registry including accuracy, reasoning, and format rewards",
+    "configure_grpo_parser": "configure an argparse parser for GRPO training with script, model, and dataset arguments",
+    "save_grpo_model": "save and optionally push a trained GRPO model to the Hugging Face Hub"
+  },
+  "huggingface_trl/trl/scripts/kto.py": {
+    "run_kto_training": "run KTO training on a causal language model with a specified dataset and output directory",
+    "run_kto_qlora": "run KTO training with QLoRA using 4-bit quantization and LoRA adapters on a causal language model",
+    "build_kto_parser": "build an argparse parser for the KTO training script with TRL dataclass configuration arguments",
+    "run_kto_with_peft": "run KTO training with PEFT configuration targeting all linear modules for parameter-efficient fine-tuning",
+    "run_kto_push_hub": "run KTO training and push the trained model to the Hugging Face Hub with a specified dataset name"
+  },
+  "huggingface_trl/trl/scripts/reward.py": {
+    "run_reward_training": "run reward model training with a specified dataset and model configuration",
+    "build_reward_trainer": "build a RewardTrainer instance with model, datasets, and PEFT configuration for reward modeling",
+    "create_reward_parser": "create an argparse parser for the reward training CLI with dataclass argument types",
+    "load_reward_dataset": "load a dataset for reward training from HuggingFace Hub or a local dataset mixture",
+    "save_reward_model": "save a trained reward model to disk and optionally push it to the HuggingFace Hub"
+  },
+  "huggingface_trl/trl/scripts/rloo.py": {
+    "run_rloo_training": "run the RLOO training script with a model, reward functions, and dataset for reinforcement learning",
+    "configure_rloo_reward_funcs": "configure reward functions including accuracy, reasoning accuracy, think format, and overlong punishment rewards",
+    "build_rloo_trainer": "build an RLOO trainer with a pretrained model, reward funcs, train/eval datasets, and PEFT config",
+    "parse_rloo_cli_args": "parse command-line arguments for the RLOO training script using TrlParser with dataclass configs",
+    "load_rloo_dataset": "load a dataset for RLOO training from Hugging Face Hub or local datasets with train/test splits"
+  },
+  "huggingface_trl/trl/scripts/sft.py": {
+    "run_sft_training": "run supervised fine-tuning on a causal language model with a HuggingFace dataset",
+    "run_lora_fine_tuning": "run LoRA fine-tuning on a causal language model with quantization and PEFT",
+    "run_image_text_training": "run supervised fine-tuning on an image-to-text model architecture",
+    "build_sft_trainer": "build an SFTTrainer with a model, training args, train and eval datasets, and optional PEFT config",
+    "create_parser_sft": "create an argparse parser for the SFT training script with dataclass-based CLI arguments"
+  },
+  "huggingface_trl/trl/scripts/utils.py": {
+    "create_dataset_config": "create a DatasetConfig dataclass to specify path, split, columns, and data_files for a HuggingFace dataset",
+    "create_dataset_mixture_config": "create a DatasetMixtureConfig dataclass to combine multiple DatasetConfig entries with streaming and test split options",
+    "parse_cli_args_config": "parse command-line arguments and YAML config file into dataclass instances using TrlParser with environment variable support",
+    "load_dataset_mixture": "load and concatenate multiple datasets from DatasetMixtureConfig with optional column selection and train/test splitting",
+    "get_git_commit_hash": "get the git commit hash for a given Python package by locating its repository root and running git rev-parse"
+  },
+  "huggingface_trl/trl/scripts/vllm_serve.py": {
+    "run_vllm_server": "run a FastAPI server backed by vLLM for LLM inference with tensor and data parallelism",
+    "generate_text_completions": "generate text completions from prompts via a /generate/ POST endpoint with sampling parameters",
+    "compute_sequence_logprobs": "compute teacher logprobs for existing token sequences via a /get_sequence_logprobs/ POST endpoint",
+    "sync_model_weights": "synchronize model weights between a training client and vLLM server workers via NCCL communicator",
+    "chat_with_messages": "generate chat completions from message lists via a /chat/ POST endpoint with chat template support"
+  },
+  "huggingface_trl/trl/skills/cli.py": {
+    "build_skills_list_cli": "build a CLI that lists available TRL skills for installation using add_skills_subcommands",
+    "create_skills_install_command": "create a CLI command to install a TRL skill to an AI agent directory with --target and --scope",
+    "run_skills_uninstall_command": "run a CLI command to uninstall a TRL skill from an AI agent directory",
+    "test_skills_list_installed": "test listing installed skills in a specific target directory using the skills list command",
+    "summarize_skills_resolve_target": "summarize how resolve_target_path converts agent names and scopes to filesystem paths"
+  },
+  "huggingface_trl/trl/skills/skills.py": {
+    "list_skills": "list skills installed in TRL, an agent directory, or a custom path",
+    "install_skill": "install a TRL skill to an agent directory like claude or codex with global or project scope",
+    "uninstall_skill": "uninstall a skill from an agent directory or custom path by skill name",
+    "resolve_target_path": "resolve an agent name with scope or a custom path string to a concrete filesystem directory",
+    "list_agent_names": "list the supported agent names like claude, codex, and opencode"
+  },
+  "huggingface_trl/trl/trainer/base_trainer.py": {
+    "create_model_card": "create a model card with model name, dataset name, and tags for a trained model"
+  },
+  "huggingface_trl/trl/trainer/callbacks.py": {
+    "create_callback_sync_ref_model": "create a SyncRefModelCallback to synchronize a reference model with alpha mixing at configurable step intervals",
+    "create_callback_rich_progress": "create a RichProgressCallback to display training and evaluation progress using Rich console panels and tables",
+    "create_callback_log_completions": "create a LogCompletionsCallback to generate and log model completions to Weights & Biases or Comet at configurable frequency",
+    "create_callback_weave": "create a WeaveCallback to log model predictions and scored evaluations to W&B Weave with optional custom scorers",
+    "create_callback_bema": "create a BEMACallback to maintain Bias-Corrected Exponential Moving Average model weights and save the BEMA model at training end"
+  },
+  "huggingface_trl/trl/trainer/dpo_trainer.py": {
+    "create_dpo_trainer": "create a DPOTrainer instance for Direct Preference Optimization training with a pretrained model and preference dataset",
+    "build_preference_data_collator": "build a DataCollatorForPreference that pads chosen and rejected sequences into batched tensors with completion masks",
+    "build_vision_preference_collator": "build a DataCollatorForVisionPreference that tokenizes and processes multimodal images with text for vision-language preference training",
+    "compute_dpo_loss": "compute DPO loss using multiple loss types including sigmoid, hinge, ipo, aot, apo_zero, and discopop with reference model log probabilities",
+    "precompute_reference_logps": "precompute reference model log probabilities for chosen and rejected responses and cache them for efficient DPO training"
+  },
+  "huggingface_trl/trl/trainer/grpo_trainer.py": {
+    "create_grpo_trainer": "create a GRPOTrainer instance with a model, reward functions, and training dataset for RLHF fine-tuning",
+    "configure_grpo_training": "configure GRPO training with GRPOConfig specifying temperature, epsilon, beta, and loss type parameters",
+    "run_grpo_training_loop": "run the GRPO training loop that generates completions, computes rewards, and updates the policy model",
+    "calculate_group_rewards": "calculate group-relative rewards from multiple reward functions and normalize advantages per prompt group",
+    "compute_grpo_loss": "compute the GRPO loss with clipped probability ratios, KL divergence penalty, and reference model logprobs"
+  },
+  "huggingface_trl/trl/trainer/reward_trainer.py": {
+    "create_reward_trainer": "create a RewardTrainer to train a sequence classification reward model on preference data with chosen and rejected examples",
+    "build_data_collator_preference": "build a DataCollatorForPreference that pads chosen and rejected token sequences into a single batch with attention masks",
+    "train_reward_model": "train a reward model using preference data with margin-based loss and accuracy tracking on chosen versus rejected outputs",
+    "test_reward_trainer_evaluation": "test the RewardTrainer evaluation loop that gathers rewards, computes accuracy, and logs min mean max reward metrics",
+    "refactor_reward_trainer_peft": "refactor the RewardTrainer to wrap a model with PEFT configuration including trainable tokens and lm_head modules"
+  },
+  "huggingface_trl/trl/trainer/rloo_trainer.py": {
+    "create_rloo_trainer": "create an RLOOTrainer instance with a model, reward functions, and training dataset for RLHF fine-tuning",
+    "train_model_rloo": "train a language model using the RLOO reinforcement learning algorithm with custom reward functions",
+    "generate_completions": "generate text completions from prompts using vLLM or transformers with configurable sampling parameters",
+    "calculate_rewards": "compute per-token rewards from multiple reward functions including model-based and custom callable rewards",
+    "compute_loss_rloo": "compute the RLOO clipped surrogate loss with advantage normalization and entropy regularization"
+  },
+  "huggingface_trl/trl/trainer/sft_trainer.py": {
+    "create_sft_trainer": "create an SFTTrainer to fine-tune a language model with a training dataset and configuration",
+    "build_data_collator_language_modeling": "build a DataCollatorForLanguageModeling to dynamically pad and batch language modeling sequences",
+    "build_data_collator_vision_language_modeling": "build a DataCollatorForVisionLanguageModeling to batch vision-language inputs with on-the-fly image processing",
+    "run_dft_loss": "run DFT loss computation for supervised fine-tuning with reinforcement learning reward rectification",
+    "test_sft_dataset_preparation": "test SFTTrainer dataset preparation including tokenization, chat template application, and sequence packing"
+  },
+  "huggingface_trl/trl/trainer/utils.py": {
+    "build_pad_tensors": "build a function that pads a list of tensors to the same shape along the first dimension with configurable padding side",
+    "create_sampler_repeat": "create a RepeatSampler that repeats dataset indices with configurable mini_repeat_count, batch_size, and repeat_count",
+    "test_flush_left_mask": "test the flush_left function that shifts non-zero elements in a binary mask and corresponding tensors to the left",
+    "refactor_chunked_logprobs": "refactor the model to use chunked log-prob computation via _ChunkedLogProbFunction for memory-efficient training",
+    "summarize_model_card": "summarize how generate_model_card creates a HuggingFace ModelCard from template with trainer metadata and tracking URLs"
+  }
+}

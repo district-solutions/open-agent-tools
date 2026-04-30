@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/trl
+- repo_uri: https://github.com/huggingface/trl.git
+
+## File: huggingface_trl/trl/experimental/sdpo/sdpo_trainer.py
+
+Prompts
+
+```
+['create an SDPOTrainer instance with reward functions, model, and training dataset for self-distillation policy optimization', 'build teacher contexts from successful rollouts by filtering high-reward completions and formatting reprompt messages', 'run SDPO self-distillation loss computation with hybrid or distillation-only policy loss modes', 'synchronize an EMA teacher model with the student model at a configurable update rate each training step', 'test successful rollout mining by gathering rewards across processes and selecting rollouts above the success threshold']
+```
+
+Usage
+
+```
+{'create_sdpo_trainer': 'create an SDPOTrainer instance with reward functions, model, and training dataset for self-distillation policy optimization', 'build_teacher_context': 'build teacher contexts from successful rollouts by filtering high-reward completions and formatting reprompt messages', 'run_self_distillation_loss': 'run SDPO self-distillation loss computation with hybrid or distillation-only policy loss modes', 'sync_ema_teacher_model': 'synchronize an EMA teacher model with the student model at a configurable update rate each training step', 'test_successful_rollout_mining': 'test successful rollout mining by gathering rewards across processes and selecting rollouts above the success threshold'}
+```
+

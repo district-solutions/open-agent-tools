@@ -1,0 +1,446 @@
+{
+  "unslothai_unsloth/unsloth/chat_templates.py": {
+    "build_get_chat_template": "build a tokenizer with a custom Jinja chat template and system message for LLM conversations",
+    "create_construct_chat_template": "create a custom Ollama modelfile and HuggingFace Jinja chat template from a prompt template with {INPUT} and {OUTPUT} placeholders",
+    "apply_chat_template_to_dataset": "apply a constructed chat template to a dataset of conversations for supervised fine-tuning",
+    "convert_dataset_to_sharegpt": "convert a dataset with multiple columns into ShareGPT format with merged instruction and output fields",
+    "test_chat_template_equivalence": "test that a custom chat template produces identical output to the reference tokenizer's apply_chat_template"
+  },
+  "unslothai_unsloth/unsloth/device_type.py": {
+    "test_is_hip": "test the is_hip function to check if the current PyTorch build uses HIP",
+    "test_get_device_type": "test the get_device_type function to detect the available GPU device type",
+    "test_get_device_count": "test the get_device_count function to count available GPU devices",
+    "test_DEVICE_TYPE": "test the DEVICE_TYPE constant to verify the detected device type string",
+    "test_ALLOW_BITSANDBYTES": "test the ALLOW_BITSANDBYTES flag to check 4-bit quantization support on the current hardware"
+  },
+  "unslothai_unsloth/unsloth/import_fixes.py": {
+    "create_Version": "create a version comparator that parses version strings and raises errors for invalid formats",
+    "run_fix_xformers_performance_issue": "run a patch that fixes xformers performance issues by replacing num_splits_key=-1 with num_splits_key=None",
+    "run_fix_vllm_aimv2_issue": "run a patch that fixes vLLM aimv2 config conflict by unregistering the duplicate aimv2 model type",
+    "run_patch_enable_input_require_grads": "run a patch that fixes transformers PreTrainedModel.enable_input_require_grads for vision model compatibility",
+    "run_fix_vllm_pdl_blackwell": "run a patch that disables PDL on Blackwell SM100 GPUs to fix vLLM CUDA graph capture failures"
+  },
+  "unslothai_unsloth/unsloth/save.py": {
+    "save_unsloth_model": "save a trained unsloth model with merged LoRA weights to float16 or 4bit format locally or push to HuggingFace Hub",
+    "convert_to_gguf": "convert a finetuned HuggingFace model to GGUF format with optional quantization for llama.cpp compatibility",
+    "push_to_huggingface_repo": "create a HuggingFace Hub repository with auto-generated model card and upload a finetuned model",
+    "patch_saving_functions": "patch a model instance with unsloth-specific save and push methods for LoRA, GGUF, and TorchAO workflows",
+    "save_lora_to_ggml": "convert saved LoRA adapters to GGML format using llama.cpp for use as inference adapters"
+  },
+  "unslothai_unsloth/unsloth/tokenizer_utils.py": {
+    "load_correct_tokenizer": "load a Hugging Face tokenizer and fix chat template compatibility for generation",
+    "fix_sentencepiece_tokenizer": "fix a sentencepiece tokenizer by remapping token strings in the protobuf model file",
+    "check_tokenizer": "check a tokenizer for out-of-bounds token IDs and repair or reload it if needed",
+    "fix_sentencepiece_gguf": "extend a sentencepiece tokenizer.model with user-defined tokens from added_tokens.json for GGUF export",
+    "patch_sft_trainer_tokenizer": "patch TRL SFTTrainer DPOTrainer and KTOTrainer with tokenizer fixes and untrained token handling"
+  },
+  "unslothai_unsloth/unsloth/trainer.py": {
+    "create_unsloth_trainer": "create an UnslothTrainer instance with custom embedding learning rate for efficient LLM fine-tuning",
+    "run_unsloth_train": "run the unsloth_train function to train a model with optimized gradient accumulation",
+    "build_training_arguments": "build UnslothTrainingArguments with embedding_learning_rate for separate embedding and parameter optimization",
+    "patch_trl_trainer": "patch TRL trainer classes for backwards-compatible parameter passing and auto sample packing",
+    "create_vision_data_collator": "create an UnslothVisionDataCollator for vision-language model training data preparation"
+  },
+  "unslothai_unsloth/unsloth/dataprep/raw_text.py": {
+    "build_raw_text_dataset": "build a RawTextDataLoader to load text files and create tokenized datasets for causal language modeling",
+    "create_causal_dataset": "create a causal language modeling dataset from tokenized text chunks with input_ids, attention_mask, and labels",
+    "test_chunk_text": "test the smart_chunk_text method to split text into overlapping tokenized chunks with configurable stride",
+    "review_clean_text": "review the TextPreprocessor clean_text method to remove unwanted characters and normalize whitespace",
+    "summarize_validate_dataset": "summarize the TextPreprocessor validate_dataset method to check for empty samples, repeated content, and encoding issues"
+  },
+  "unslothai_unsloth/unsloth/dataprep/synthetic.py": {
+    "create_SyntheticDataKit": "create a SyntheticDataKit instance to load a language model with vLLM for synthetic data generation",
+    "build_SyntheticDataKit_from_pretrained": "build a SyntheticDataKit instance from pretrained model using from_pretrained factory method",
+    "run_SyntheticDataKit_prepare_qa_generation": "run qa generation preparation that creates output directories and writes synthetic data config yaml",
+    "run_SyntheticDataKit_chunk_data": "run data chunking that splits a text file into token-sized chunks based on max_seq_length",
+    "test_SyntheticDataKit_check_vllm_status": "test the vLLM server status by checking the http://localhost:8000/metrics endpoint"
+  },
+  "unslothai_unsloth/unsloth/kernels/cross_entropy_loss.py": {
+    "run_fast_cross_entropy_loss": "run fast_cross_entropy_loss with logits, labels, and optional logit_softcapping and logit_scaling parameters",
+    "create_Fast_CrossEntropyLoss": "create a Fast_CrossEntropyLoss autograd function with forward and backward passes for GPU-accelerated cross entropy",
+    "patch_loss_functions": "patch_loss_functions to replace transformer cross entropy losses with the optimized Triton-based implementation",
+    "run_chunked_cross_entropy_forward": "run chunked cross entropy forward for large vocabularies exceeding 65536 by dividing into blocks",
+    "run_cross_entropy_backward": "run cross entropy backward to compute gradients of logits with softmax and logsumexp reduction"
+  },
+  "unslothai_unsloth/unsloth/kernels/fast_lora.py": {
+    "run_apply_lora_mlp_swiglu": "run LoRA MLP forward pass with SwiGLU activation function for transformer feed-forward layers",
+    "run_apply_lora_qkv": "run LoRA QKV projection forward pass computing query, key, and value matrices for attention",
+    "run_apply_lora_mlp_geglu_exact": "run LoRA MLP forward pass with exact GeGLU activation for transformer feed-forward layers",
+    "run_fast_lora_forward": "run fast LoRA forward pass with support for merged adapters, multiple active adapters, and DoRA",
+    "run_apply_lora_o": "run LoRA output projection forward pass for transformer attention output layer"
+  },
+  "unslothai_unsloth/unsloth/kernels/flex_attention.py": {
+    "create_flex_attention_causal_mask": "create a causal attention mask for flex attention with a configurable maximum sequence length",
+    "create_flex_attention_sliding_window_mask": "create a sliding window causal attention mask for flex attention with configurable window size and sequence length",
+    "flex_attention": "build a flex attention function with a given query-pre-attention scalar and tanh logit softcap value",
+    "slow_attention_softcapping": "run a compiled slow-path attention with logit softcapping using query, key, value tensors and causal mask",
+    "slow_inference_attention_softcapping": "run an inference-time attention with logit softcapping using in-place tanh for memory efficiency"
+  },
+  "unslothai_unsloth/unsloth/kernels/fp8.py": {
+    "test_fbgemm_gpu_compatibility": "test if the current GPU supports FBGEMM blockwise FP8 matmul operations",
+    "run_fp8_block_quantized_matmul": "run block-wise quantized FP8 matrix multiplication with activation and weight tensors",
+    "quantize_activation_to_fp8": "quantize an activation tensor to FP8 format and return the quantized values with scales",
+    "dequantize_fp8_weight": "dequantize a block-quantized or row-quantized FP8 weight tensor back to bfloat16",
+    "patch_fp8_linear_forward": "patch FP8 linear layer forward methods to use optimized Unsloth FP8 kernels"
+  },
+  "unslothai_unsloth/unsloth/kernels/geglu.py": {
+    "run_geglu_exact_forward": "run the exact GELU forward kernel on gate and up tensors using erf-based activation",
+    "run_geglu_exact_backward": "run the exact GELU backward kernel to compute gradients for gate and up tensors",
+    "run_geglu_approx_forward": "run the approximate GELU forward kernel on gate and up tensors using tanh-based activation",
+    "run_geglu_approx_backward": "run the approximate GELU backward kernel to compute gradients using tanh approximation",
+    "configure_geglu_block_size": "configure the BLOCK_SIZE constant for Triton kernel block size and INT32 safety buffer"
+  },
+  "unslothai_unsloth/unsloth/kernels/layernorm.py": {
+    "run_fast_layernorm": "run fast_layernorm to apply Triton-accelerated layer normalization to a PyTorch LayerNorm module",
+    "build_Fast_Layernorm": "build a Fast_Layernorm autograd function with custom forward and backward Triton kernels for layer norm",
+    "review_layernorm_forward": "review the layernorm_forward Triton JIT kernel that computes mean, variance, and normalized output",
+    "review_layernorm_backward": "review the layernorm_backward Triton JIT kernel that computes gradients for weight, bias, and input",
+    "test_layernorm": "test the layernorm implementation against PyTorch's LayerNorm with random inputs and gradient checks"
+  },
+  "unslothai_unsloth/unsloth/kernels/rms_layernorm.py": {
+    "build_fast_rms_layernorm_forward_backward": "build a Triton-based RMS layernorm forward and backward kernel for GPU acceleration",
+    "create_Fast_RMS_Layernorm_autograd_function": "create a torch.autograd.Function that performs fast RMS layernorm with optional GEMMA mode",
+    "test_fast_rms_layernorm_correctness": "test the fast_rms_layernorm function against the reference LlamaRMSNorm implementation",
+    "patch_rms_layernorm_transformers": "patch transformers LlamaRMSNorm and MllamaTextRMSNorm with Unsloth fast implementations",
+    "run_unsloth_layernorm_testing_suite": "run the testing_suite_layernorm with multiple dimensions, dtypes, sequence lengths, and random states"
+  },
+  "unslothai_unsloth/unsloth/kernels/rope_embedding.py": {
+    "apply_fast_rope_embedding": "apply fast RoPE embedding to Q and K tensors using cos and sin with optional rope indices",
+    "run_fast_rope_embedding_qk": "run triton kernel for RoPE embedding on both Q and K with backward pass support",
+    "create_slow_rope_embedding": "create slow CPU-compatible RoPE embedding with position_ids for rotary positional encoding",
+    "run_inplace_rope_embedding": "run inplace RoPE embedding on Q and K tensors with position_ids mapping",
+    "test_fast_rope_embedding_class": "test Fast_RoPE_Embedding autograd function for forward and backward RoPE computation"
+  },
+  "unslothai_unsloth/unsloth/kernels/swiglu.py": {
+    "run_swiglu_fg_kernel": "run the swiglu_fg_kernel function to compute the SwiGLU forward pass given tensors e and g",
+    "run_swiglu_DWf_DW_dfg_kernel": "run the swiglu_DWf_DW_dfg_kernel function to compute SwiGLU backward pass gradients for DW, e, and g",
+    "review_fg_kernel": "review the _fg_kernel Triton JIT kernel that implements the SwiGLU forward computation h = e * sigmoid(e) * g",
+    "review_DWf_DW_dfg_kernel": "review the _DWf_DW_dfg_kernel Triton JIT kernel that computes SwiGLU backward pass derivatives for DW, e, and g",
+    "summarize_swiglu_constants": "summarize the module-level constants BLOCK_SIZE and INT32_SAFETY_BUFFER used for Triton kernel grid configuration"
+  },
+  "unslothai_unsloth/unsloth/kernels/utils.py": {
+    "run_fast_dequantize": "run fast_dequantize to dequantize 4-bit or FP8 weight tensors using bitsandbytes CUDA streams",
+    "run_fast_gemv": "run fast_gemv for fast matrix-vector multiplication where sequence length equals 1 on quantized weights",
+    "run_fast_linear_forward": "run fast_linear_forward to perform linear projection with optional LoRA weight injection for inference",
+    "run_matmul_lora": "run matmul_lora to compute matrix multiplication with LoRA adapter weights applied to dequantized base weights",
+    "run_get_lora_parameters": "run get_lora_parameters to extract base weight, quant state, LoRA A and B matrices, and scaling factor from a projection module"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/autotune_cache.py": {
+    "get_or_autotune_moe_kernels": "get or autotune MoE kernel configurations for given model parameters, returning forward and backward configs",
+    "load_cached_config": "load cached MoE kernel configuration from disk for a given cache key, validating device capability",
+    "save_cached_config": "save MoE kernel configurations to disk cache with timestamp, device capability, and metadata",
+    "clear_cache": "clear all in-memory MoE kernel configuration caches and autotune completion markers",
+    "is_autotuning_completed": "check whether autotuning has already been completed for a given cache key"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/benchmark/benchmark_fused_moe.py": {
+    "run_benchmark_forward": "benchmark the forward pass of a fused MoE model against a reference implementation",
+    "run_benchmark_backward": "benchmark the backward pass of a fused MoE model against a reference implementation",
+    "setup_model": "setup reference and Triton-fused MoE models for Qwen3 or Llama4 configurations",
+    "run_benchmark": "run forward or backward benchmark comparing reference and fused MoE kernel implementations",
+    "benchmark_cli": "benchmark fused MoE kernels via CLI with autotuning for Qwen3 or Llama4 models"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/benchmark/utils.py": {
+    "create_kernel_configs": "create kernel configs for grouped gemm forward, dW, and dX modes with block size and warp parameters",
+    "post_process_results": "post process kernel benchmark results into a sorted pandas dataframe with speedup ordering",
+    "save_results": "save kernel benchmark results dataframe to timestamped csv file in mode-specific directory",
+    "get_autotuner": "get autotuned grouped gemm kernel function for forward, dW, dX, or backward mode",
+    "postprocess_autotune_results": "postprocess autotune results by printing cache entries and saving best configs to json"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/grouped_gemm/interface.py": {
+    "run_grouped_gemm": "run grouped MoE GEMM with forward and backward passes using torch tensors and expert routing config",
+    "create_grouped_gemm_autograd": "create a torch.autograd.Function for grouped GEMM with configurable forward and backward kernel params",
+    "run_grouped_gemm_forward": "run grouped GEMM forward pass for MoE MLP with optional token permutation and TMA acceleration",
+    "run_grouped_gemm_dX": "run grouped GEMM backward pass to compute input gradients dX with expert routing and permutation support",
+    "run_grouped_gemm_dW": "run grouped GEMM backward pass to compute weight gradients dW with expert routing and permutation support"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/grouped_gemm/kernels/autotuning.py": {
+    "build_get_forward_configs": "build triton kernel configs for grouped GEMM forward pass with block sizes, TMA options, warps, stages, and CTAs",
+    "build_get_dX_kernel_configs": "build triton kernel configs for grouped GEMM dX backward pass with block sizes, TMA options, warps, stages, and CTAs",
+    "build_get_dW_kernel_configs": "build triton kernel configs for grouped GEMM dW backward pass with block sizes, TMA options, warps, stages, and CTAs",
+    "test_prune_kernel_configs_fwd": "test pruning forward kernel configs using SMEM capacity, block size, and permute criteria",
+    "test_prune_dX_configs": "test pruning dX backward kernel configs using SMEM capacity, block size, and permute criteria",
+    "test_prune_kernel_configs_backward_dW": "test pruning dW backward kernel configs using SMEM capacity, block size, and permute criteria",
+    "summarize_estimate_smem_reqs": "summarize estimating shared memory requirements for a given block size, num_stages, and dtype",
+    "review_common_prune_criteria": "review the common pruning criteria for triton kernel configs including SMEM capacity and block size heuristics"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/grouped_gemm/kernels/tuning.py": {
+    "get_device_properties": "get the GPU device properties including number of SMs, registers, shared memory, and warp size",
+    "get_kernel_configs": "get autotuning kernel configurations for forward and backward passes with block sizes, warps, and stages",
+    "KernelResult_to_dataframe": "convert a list of kernel tuning results into a sorted pandas DataFrame by speedup or other metrics",
+    "KernelResult_to_csv": "write a list of kernel tuning results to a CSV file sorted by speedup",
+    "KernelResult_print_table": "print the top N kernel tuning results as a formatted table sorted by speedup"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/grouped_gemm/reference/moe_block.py": {
+    "create_Qwen3MoeFusedGroupedGEMMBlock": "create a Qwen3MoeFusedGroupedGEMMBlock with config, gate, gate_up_proj, and down_proj tensors for fused MoE inference",
+    "build_from_hf_moe_block": "build a Qwen3MoeFusedGroupedGEMMBlock from a Hugging Face Qwen3MoeSparseMoeBlock using from_hf factory method",
+    "run_forward_pass": "run a forward pass through the fused MoE block that applies grouped GEMM with router gating and top-k expert selection",
+    "configure_kernel_tuning": "configure kernel tuning with autotune or explicit KernelConfigForward, KernelConfigBackward_dW, and KernelConfigBackward_dX settings",
+    "apply_permute_unpermute": "apply permute and unpermute operations to reorder tokens between token order and expert order in grouped GEMM"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/grouped_gemm/reference/moe_ops.py": {
+    "create_permute_tokens": "permute token hidden states by expert using gather indices for grouped GEMM ordering",
+    "create_unpermute_tokens": "unpermute grouped GEMM outputs back to original token order using scatter indices",
+    "calculate_topk_experts": "calculate top-k expert routing weights and IDs with softmax or sigmoid activation and renormalization",
+    "get_routing_indices": "get per-expert token counts and sorted gather indices for routing tokens to experts",
+    "run_torch_grouped_gemm": "run grouped matrix multiplication across expert weights with dynamic per-expert token counts"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/grouped_gemm/reference/layers/llama4_moe.py": {
+    "build_Llama4GroupedGemmTextMoe": "build a Llama4MoE block with torch-native grouped gemm for expert computation",
+    "create_Llama4TritonTextMoe": "create a Llama4MoE block with triton grouped gemm for optimized expert computation",
+    "test_Llama4MoeResult": "test the Llama4MoResult dataclass that holds intermediate MoE layer tensors and routing data",
+    "review_Llama4GroupedGemmTextMoe_forward": "review the forward method of Llama4GroupedGemmTextMoe that runs router, permute, grouped gemm, and unpermute",
+    "summarize_Llama4TritonTextMoe_forward": "summarize the forward method of Llama4TritonTextMoe that uses triton grouped gemm with kernel configs"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/grouped_gemm/reference/layers/qwen3_moe.py": {
+    "create_Qwen3MoeGroupedGEMMBlock": "create a Qwen3MoeGroupedGEMMBlock from a HuggingFace Qwen3MoeSparseMoeBlock using from_hf",
+    "create_Qwen3MoeFusedGroupedGEMMBlock": "create a fused Qwen3MoeFusedGroupedGEMMBlock with triton kernels and optional autotuning",
+    "run_Qwen3Moe_forward": "run the Qwen3MoeGroupedGEMMBlock forward pass on hidden states and return expert routing results",
+    "extract_HF_weights": "extract and stack HuggingFace MoE expert weights into gate, gate_up_proj, and down_proj tensors",
+    "run_router": "run the MoE router to compute routing weights and select top-k experts for each token"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/tests/common.py": {
+    "test_make_inputs": "test the make_inputs function to generate random CUDA tensors for MoE kernel testing with configurable shapes and dtypes",
+    "test_assert_close": "test the assert_close function to compare reference and Triton kernel outputs with relative error tolerance thresholds",
+    "test_get_kernel_test_configs": "test the get_kernel_test_configs function to generate pruned forward and backward kernel configurations for MoE GEMM testing",
+    "test_remove_feature_flags": "test the remove_feature_flags function to prune kernel configs by disabling permute, TMA load, and TMA store features",
+    "test_dataclass_configs": "test the DataConfig, ModelConfig, and GroupedGEMMTestConfig dataclasses for constructing MoE model and kernel test parameters"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/tests/moe_utils.py": {
+    "rebind_experts_to_shared_buffer": "rebind expert weights to shared buffers in a Qwen3 MoE block for memory-efficient weight sharing",
+    "run_forward_backward": "run forward and backward passes on a Qwen3 MoE block and return ForwardResult and BackwardResult dataclasses",
+    "test_grouped_gemm_gradients": "test grouped GEMM MoE implementation gradients against reference Qwen3MoeSparseMoeBlock gradients",
+    "test_grouped_gemm_forward": "test grouped GEMM MoE forward pass outputs against reference Qwen3MoeSparseMoeBlock forward pass outputs",
+    "create_fused_grouped_gemm_block": "create a Qwen3MoeFusedGroupedGEMMBlock with triton grouped gemm kernels for debugging and intermediate result inspection"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/tests/test_grouped_gemm.py": {
+    "test_grouped_gemm_forward": "test the grouped_gemm_forward function for MoE MLP expert routing with configurable kernel params",
+    "test_grouped_gemm_backward_dX": "test the grouped_gemm_backward_dX function computing input gradients for expert routing",
+    "test_grouped_gemm_backward_dW": "test the grouped_gemm_backward_dW function computing weight gradients for expert routing",
+    "test_grouped_gemm_forward_autotune": "test grouped GEMM forward kernel with autotuning for optimal block sizes and warps",
+    "test_grouped_gemm_backward_autograd": "test grouped GEMM backward passes via PyTorch autograd interface with permute and unpermute"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/tests/test_llama4_moe.py": {
+    "test_llama4_ref": "test the Llama4 MoE model against HF reference, grouped GEMM, and Triton implementations with forward and backward pass verification",
+    "test_llama4_ref_overlap_router_shared": "test the Llama4 MoE model with overlap_router_shared enabled to validate shared router weights in grouped GEMM and Triton kernels",
+    "test_llama4_ref_permute_y": "test the Llama4 MoE model with permute_y enabled to validate tensor permutation in Triton grouped GEMM kernels",
+    "test_llama4_ref_autotune": "test the Llama4 MoE model with autotuning enabled to validate Triton kernel autotuning for grouped GEMM operations",
+    "test_llama4_ref_backward": "test the Llama4 MoE model backward pass to verify gradient computation matches HF reference for grouped GEMM and Triton implementations"
+  },
+  "unslothai_unsloth/unsloth/kernels/moe/tests/test_qwen3_moe.py": {
+    "test_qwen3_moe_block": "test the Qwen3 MoE block forward and backward passes against HF and torch grouped GEMM references",
+    "test_qwen3_moe_permute_x": "test the Qwen3 MoE fused grouped GEMM block with permute_x enabled",
+    "test_qwen3_moe_permute_y": "test the Qwen3 MoE fused grouped GEMM block with permute_y enabled",
+    "test_qwen3_moe_autotune": "test the Qwen3 MoE fused grouped GEMM block with autotuning enabled",
+    "run_forward_backward_qwen3_moe": "run forward and backward passes on Qwen3 MoE block with grouped GEMM kernels"
+  },
+  "unslothai_unsloth/unsloth/models/_utils.py": {
+    "build_unsloth_compile_transformers": "build a script to compile and optimize transformer models using unsloth_compile_transformers with SDPA and attention compilation enabled",
+    "create_prepare_model_for_kbit_training": "create a function that prepares a model for k-bit training with gradient checkpointing and reentrant mode enabled",
+    "test_patch_gradient_accumulation_fix": "test the patch_gradient_accumulation_fix function to fix gradient accumulation and loss scaling issues in HuggingFace Trainer",
+    "refactor_patch_tokenizer": "refactor the patch_tokenizer function to add unsloth version metadata to the model config after patching",
+    "summarize_get_model_param_count": "summarize the get_model_param_count function that calculates total or trainable-only parameter counts for quantized models"
+  },
+  "unslothai_unsloth/unsloth/models/cohere.py": {
+    "run_CohereAttention_fast_forward": "run fast forward pass for Cohere attention with causal masking and kv cache support",
+    "run_CohereDecoderLayer_fast_forward": "run fast forward pass for Cohere decoder layer with optional cached inference path",
+    "run_CohereAttention_fast_forward_inference": "run inference forward pass for Cohere attention with paged kv cache and rotary embedding",
+    "run_CohereModel_fast_forward_inference": "run inference forward pass for full Cohere model with layered kv cache management",
+    "build_FastCohereModel_pre_patch": "build FastCohereModel pre_patch to monkey-patch transformers Cohere modules with optimized forward methods"
+  },
+  "unslothai_unsloth/unsloth/models/falcon_h1.py": {
+    "build_falcon_h1_model": "build a fast inference-capable FalconH1 model using Unsloth's FastFalconH1Model from_pretrained method",
+    "run_falcon_h1_attention": "run optimized FalconH1 attention forward pass with configurable attention backend and KV cache support",
+    "run_falcon_h1_inference": "run fast FalconH1 inference with KV cache and prefill support for autoregressive token generation",
+    "patch_falcon_h1_decoder": "patch FalconH1 decoder layer with fast RMS layernorm, Mamba integration, and grouped query attention",
+    "prepare_falcon_h1_generation": "prepare fast inputs for FalconH1 generation with hybrid Mamba-attention cache and position ID handling"
+  },
+  "unslothai_unsloth/unsloth/models/gemma.py": {
+    "run_fast_geglu_inference": "run fast GEGLU inference on a Gemma MLP module using optimized linear forward passes and tanh-approximate GELU activation",
+    "run_gemma_decoder_layer_fast_forward": "run fast forward pass on a Gemma decoder layer with optional KV cache for accelerated generation",
+    "run_gemma_model_fast_forward_inference": "run fast inference pass through the full Gemma model with KV cache, device sharding, and scaled hidden states",
+    "build_gemma_fixed_rotary_embedding": "build a fixed Rotary Embedding module for Gemma with dynamic sequence length expansion and multi-GPU cos/sin caching",
+    "patch_gemma_model_with_fast_forward": "patch a Gemma model and tokenizer with Unsloth fast forward methods, LoRA parameter freezing, and RMSNorm fixes"
+  },
+  "unslothai_unsloth/unsloth/models/gemma2.py": {
+    "run_attention_gemma2": "run fast forward attention with logit softcapping and sliding window support for Gemma2",
+    "build_inference_gemma2": "build fast inference pipeline for Gemma2 decoder with paged KV cache and rotary embedding",
+    "test_decoder_layer": "test the Gemma2 decoder layer fast forward pass with RMS layernorm and GEGLU MLP",
+    "patch_gemma2_model": "patch the Gemma2 model and attention modules with Unsloth fast forward implementations",
+    "summarize_inference": "summarize Gemma2 model inference with past key values, position IDs, and sliding window attention"
+  },
+  "unslothai_unsloth/unsloth/models/glm4_moe.py": {
+    "build_fast_glm4_model": "build a FastGLM47Model with grouped GEMM optimization for GLM-4.7 Flash MoE Lite inference",
+    "load_glm4_moe_model": "load a GLM-4.7 Flash model from pretrained with 4-bit quantization and sequential device mapping",
+    "patch_moe_forward": "patch Glm4MoeLiteMoE forward with grouped GEMM optimized fast forward pass",
+    "run_moe_expert_inference": "run optimized MoE expert inference using grouped GEMM with sigmoid router and shared expert",
+    "optimize_decoder_layer": "optimize decoder layer forward with fast RMS layernorm and fused SwiGLU MLP"
+  },
+  "unslothai_unsloth/unsloth/models/granite.py": {
+    "create_fast_granite_model": "create a fast Granite causal language model with optimized attention and reduced VRAM usage",
+    "run_granite_attention_forward": "run optimized Granite attention with grouped query attention, RoPE embeddings, and variable-length sequence support",
+    "run_granite_decoder_layer_forward": "run Granite decoder layer with residual multiplier scaling and fused RMS layernorm inference",
+    "patch_granite_model": "patch Granite model classes with fast forward passes and inference-optimized KV cache management",
+    "run_granite_inference": "run fast Granite inference with paged KV cache, RoPE embedding, and grouped query attention"
+  },
+  "unslothai_unsloth/unsloth/models/llama.py": {
+    "build_load_llama_model": "load a Llama-based language model with Unsloth optimizations and 4-bit quantization",
+    "create_peft_lora_adapters": "add LoRA adapters to a loaded Llama model for efficient fine-tuning",
+    "run_fast_inference_mode": "switch a patched model to inference mode for fast generation",
+    "run_training_mode": "switch a model to training mode with gradient checkpointing enabled",
+    "review_fast_llama_model_class": "review the FastLlamaModel class and its methods for loading, patching, and optimizing Llama models"
+  },
+  "unslothai_unsloth/unsloth/models/loader.py": {
+    "build_fast_language_model": "build a quantized LLM using FastLanguageModel.from_pretrained with 4bit QLoRA loading and gradient checkpointing",
+    "create_fast_model_vision": "create a vision-language model using FastVisionModel.from_pretrained for multimodal image-text generation",
+    "create_fast_model_text": "create a text-only embedding model using FastTextModel.from_pretrained with optional 4bit quantization",
+    "run_fast_inference_vllm": "run fast vLLM inference with FastLanguageModel.from_pretrained using fast_inference and gpu_memory_utilization",
+    "refactor_peft_lora": "refactor a PEFT LoRA adapter into a trained model using FastModel.from_pretrained with is_peft detection and PeftModel merging"
+  },
+  "unslothai_unsloth/unsloth/models/loader_utils.py": {
+    "create_get_model_name": "create a model name resolver that maps 4bit and fp8 quantized models to their Unsloth equivalents",
+    "run_prepare_device_map": "run distributed device map preparation for multi-GPU inference with CUDA or XPU device selection",
+    "test_is_distributed": "test whether the current process is running in a distributed PyTorch environment",
+    "build_offline_quantize_to_fp8": "build an offline fp8 quantizer that converts a HuggingFace model to fp8 using torchao and saves it locally",
+    "summarize_get_fp8_mode_and_check_settings": "summarize fp8 loading compatibility checks for H100 GPUs, torch, torchao, and fbgemm versions"
+  },
+  "unslothai_unsloth/unsloth/models/mistral.py": {
+    "create_fast_mistral_model": "create a fast Mistral causal language model with optimized attention and reduced VRAM usage",
+    "run_mistral_attention_forward": "run optimized Mistral attention with dynamic RoPE, sliding window, and variable-length sequence support",
+    "patch_mistral_nemo_attention": "patch Mistral Nemo attention for asymmetric head dimensions like 5120 to 4096",
+    "load_mistral_pretrained": "load a pretrained Mistral model from HuggingFace with 4-bit quantization and sequential device mapping",
+    "run_mistral_causal_lm_forward": "run fast Mistral causal LM forward pass with fused cross-entropy loss and sliding window attention"
+  },
+  "unslothai_unsloth/unsloth/models/qwen2.py": {
+    "create_FastQwen2Model": "create a FastQwen2Model instance from pretrained Qwen2-7B with 4-bit quantization",
+    "build_FastQwen2Model_pre_patch": "build FastQwen2Model patches Qwen2Attention, Qwen2DecoderLayer, and Qwen2Model with fast forward methods",
+    "run_from_pretrained": "run from_pretrained to load a Qwen2 model with configurable max_seq_length, dtype, and device_map",
+    "refactor_Qwen2Attention_forward": "refactor Qwen2Attention forward to use LlamaAttention_fast_forward for faster inference",
+    "review_FastQwen2Model": "review FastQwen2Model class that extends FastLlamaModel to patch Qwen2 transformers for optimized training and inference"
+  },
+  "unslothai_unsloth/unsloth/models/qwen3.py": {
+    "create_fast_qwen3_model": "create a fast Qwen3 model using FastQwen3Model.from_pretrained with KV cache optimization",
+    "run_qwen3_attention_forward": "run Qwen3Attention_fast_forward with hidden states, causal mask, and KV cache for training",
+    "run_qwen3_inference": "run Qwen3Attention_fast_forward_inference with KV cache for fast autoregressive generation",
+    "patch_qwen3_attention": "patch Qwen3Attention, Qwen3SdpaAttention, and Qwen3FlashAttention2 with fast forward methods",
+    "apply_qwen3_rope_embedding": "apply fast RMS layernorm and rotary position embedding to Q, K, V tensors in Qwen3 attention"
+  },
+  "unslothai_unsloth/unsloth/models/qwen3_moe.py": {
+    "build_fast_qwen3_moe_model": "build a fast Qwen3-MoE model using FastQwen3MoeModel.from_pretrained with 4-bit quantization and custom max sequence length",
+    "create_sparse_moe_block_forward": "create a fast forward pass for Qwen3MoeSparseMoeBlock with top-k expert routing and weighted expert aggregation",
+    "run_decoder_layer_fast_forward": "run optimized Qwen3MoeDecoderLayer forward pass with fast RMS layernorm and sparse MoE router MLP inference",
+    "test_model_patching": "test FastQwen3MoeModel.pre_patch to patch Qwen3MoeAttention, SparseMoeBlock, MLP, and DecoderLayer with fast forward methods",
+    "refactor_moe_expert_routing": "refactor MoE expert routing to use one-hot expert masks and index_add for efficient weighted expert computation"
+  },
+  "unslothai_unsloth/unsloth/models/rl.py": {
+    "patch_fast_rl_trainers": "patch TRL RL trainers with Unsloth optimizations for vLLM and PEFT support",
+    "create_vllm_sampling_params": "create vLLM SamplingParams with extra _set_kwargs attribute for Unsloth compatibility",
+    "patch_rl_model_generation": "patch FastLanguageModel for inference mode switching and gradient-safe generate cloning during TRL training",
+    "patch_trl_grpo_trainer": "patch GRPO trainer with Unsloth-specific defaults, mixed precision handling, and chunked logit computation",
+    "patch_trl_sft_trainer": "patch SFT trainer with Unsloth padding side, data collator fixes, and max_seq_length synchronization"
+  },
+  "unslothai_unsloth/unsloth/models/rl_replacements.py": {
+    "fix_sft_trainer_untrained_tokens": "fix untrained tokens in SFT trainer by calling fix_untrained_tokens on the model and tokenizer",
+    "patch_grpo_trainer_compute_loss": "patch GRPO trainer compute_loss to handle mixed precision and efficient log probability computation",
+    "patch_grpo_trainer_generate_and_score": "patch GRPO trainer _generate_and_score_completions to fix special tokens and left-pad prompts",
+    "patch_grpo_trainer_prepare_inputs": "patch GRPO trainer _prepare_inputs to add mixed precision autocast support",
+    "patch_openenv_vllm_reload_weights": "patch TRL openenv generate_rollout_completions to remove reload_weights and fix wake_up calls"
+  },
+  "unslothai_unsloth/unsloth/models/sentence_transformer.py": {
+    "build_sentence_transformer_model": "build a sentence transformer model using FastSentenceTransformer.from_pretrained with 16-bit loading and torch.compile optimization",
+    "create_peft_lora_model": "create a LoRA PEFT model on a SentenceTransformer with r=16 target_modules query key value dense and lora_alpha=16",
+    "save_model_gguf": "save a SentenceTransformer model to GGUF format with fast_quantized quantization method and custom tokenizer",
+    "push_model_hf_hub_gguf": "push a SentenceTransformer model to Hugging Face Hub as GGUF with q4_k_m quantization and private repo",
+    "save_model_torchao": "save a SentenceTransformer model with TorchAO quantization and push to Hugging Face Hub"
+  },
+  "unslothai_unsloth/unsloth/models/vision.py": {
+    "build_FastBaseModel_from_pretrained": "build a fast vision model from pretrained weights with Unsloth patching and 4bit quantization",
+    "create_FastBaseModel_get_peft_model": "create LoRA adapters on a vision model for parameter-efficient fine-tuning",
+    "test_FastBaseModel_for_inference": "test switching a vision model to inference mode with gradient checkpointing disabled",
+    "refactor_FastBaseModel_for_training": "refactor a vision model to training mode with gradient checkpointing enabled",
+    "review_FastBaseModel_post_patch_model": "review post-loading patches applied to a vision model for distributed training support"
+  },
+  "unslothai_unsloth/unsloth/optimizers/q_galore_adamw.py": {
+    "build_optimizer_q_galore_adamw8bit": "build an AdamW optimizer with 8-bit states, GaLore low-rank gradient projection, and INT8 weight quantization",
+    "create_param_groups_q_galore": "create parameter groups for QGaLoreAdamW8bit by partitioning model weights into GaLore and non-GaLore groups",
+    "init_weight_quantization_q_galore": "initialize INT8 weight quantization tags on model parameters for memory-efficient training",
+    "install_weight_quant_hooks": "install forward pre-hooks on model modules to dequantize INT8 weights before each forward pass",
+    "run_optimizer_step_q_galore": "run a single optimization step with GaLore projection, 8-bit Adam update, and optional weight quantization"
+  },
+  "unslothai_unsloth/unsloth/optimizers/q_galore_projector.py": {
+    "create_GaLoreProjector": "create a GaLoreProjector instance with configurable rank, quantization, and adaptive scheduling parameters",
+    "run_project_gradient": "run the GaLoreProjector.project method to project a full-rank gradient into a low-rank subspace",
+    "run_project_back": "run the GaLoreProjector.project_back method to project a low-rank gradient back to full rank",
+    "test_quantize_tensor": "test the _quantize function to asymmetric min-max quantize a float tensor to uint8 with configurable bit-width",
+    "test_quantize_stochastic": "test the _quantize_stochastic function to quantize a float tensor using probabilistic stochastic rounding"
+  },
+  "unslothai_unsloth/unsloth/registry/_deepseek.py": {
+    "register_deepseek_models": "register all DeepSeek V3 and R1 models in the Unsloth model registry",
+    "register_deepseek_v3_models": "register DeepSeek V3 models with BF16 quantization support in the Unsloth registry",
+    "register_deepseek_r1_models": "register DeepSeek R1 models with BF16 and GGUF quantization support in the Unsloth registry",
+    "register_deepseek_r1_distill_llama_models": "register DeepSeek R1 Distill Llama models with 8B and 70B sizes in the Unsloth registry",
+    "register_deepseek_r1_distill_qwen_models": "register DeepSeek R1 Distill Qwen models with 1.5B, 7B, 14B, and 32B sizes in the Unsloth registry"
+  },
+  "unslothai_unsloth/unsloth/registry/_gemma.py": {
+    "register_gemma_3_base_models": "register Gemma 3 base models with Unsloth registry supporting 1, 4, 12, and 27B sizes",
+    "register_gemma_3_instruct_models": "register Gemma 3 instruct models with Unsloth registry supporting 1, 4, 12, and 27B sizes",
+    "register_gemma_models": "register all Gemma 3 base and instruct models into the Unsloth model registry",
+    "construct_model_name": "construct a model name key in the format base-version-sizeB for Gemma models",
+    "test_gemma_registry": "test registered Gemma models by iterating MODEL_REGISTRY and validating each model info entry"
+  },
+  "unslothai_unsloth/unsloth/registry/_llama.py": {
+    "register_llama_models": "register all Llama 3.1 and 3.2 models including base, instruct, and vision variants",
+    "register_llama_3_1_models": "register Llama 3.1 base and instruct models with 8B size and supported quantization types",
+    "register_llama_3_2_models": "register Llama 3.2 base and instruct models with 1B and 3B sizes",
+    "register_llama_3_2_vision_models": "register Llama 3.2 vision models with 11B and 90B multimodal support",
+    "run_main_script": "run the script to validate registered Llama models against the model registry"
+  },
+  "unslothai_unsloth/unsloth/registry/_mistral.py": {
+    "register_mistral_small_models": "register Mistral Small 2503 and 2501 base and instruct models into the Unsloth registry",
+    "register_mistral_models": "register all Mistral models including Small variants into the Unsloth model registry",
+    "construct_model_name": "construct a Mistral Small model name key with version, size, quant type, and instruct tag",
+    "MistralSmallModelInfo": "define a ModelInfo subclass for Mistral Small with custom model name construction logic",
+    "run_main_validation": "run the registry validation script to verify all registered Mistral models are valid"
+  },
+  "unslothai_unsloth/unsloth/registry/_phi.py": {
+    "register_phi_4_models": "register Microsoft Phi-4 base models into the Unsloth model registry",
+    "register_phi_4_instruct_models": "register Microsoft Phi-4 instruct models into the Unsloth model registry",
+    "register_phi_models": "register all Microsoft Phi-4 models including base and instruct variants into the Unsloth model registry",
+    "construct_model_name": "construct a model name key from base name, version, size, quantization type, and instruct tag for Phi models",
+    "run_phi_registry_validation": "run the Unsloth Phi model registry validation script to check all registered Phi model entries"
+  },
+  "unslothai_unsloth/unsloth/registry/_qwen.py": {
+    "register_qwen_models": "register all Qwen model families including Qwen2.5, Qwen2.5 VL, QwQ, and QVQ Preview",
+    "register_qwen_2_5_models": "register Qwen2.5 language models with 3B and 7B sizes and supported quantization types",
+    "register_qwen_2_5_vl_models": "register Qwen2.5 vision-language models with 3B, 7B, 32B, and 72B sizes",
+    "register_qwen_qwq_models": "register QwQ reasoning models and QVQ Preview vision models from the Qwen organization",
+    "run_main_validation": "run the module as a script to validate all registered Qwen model entries in the model registry"
+  },
+  "unslothai_unsloth/unsloth/registry/registry.py": {
+    "register_model": "register a model in the MODEL_REGISTRY with org, base_name, version, size, and quant_type",
+    "register_models": "register multiple model variants from a ModelMeta including sizes, instruct_tags, and quant_types",
+    "check_model_info": "check Hugging Face model metadata for a given model_id and return model info or warning",
+    "construct_model_name": "construct a full model name from base_name, version, size, quant_type, and instruct_tag",
+    "build_model_info": "build a ModelInfo dataclass instance with org, base_name, version, size, and optional metadata"
+  },
+  "unslothai_unsloth/unsloth/utils/attention_dispatch.py": {
+    "select_attention_backend": "select an attention backend based on availability and priority order",
+    "run_attention": "run attention using config and context info with Q, K, V tensors",
+    "create_AttnetionConfig": "create an AttentionConfig dataclass with backend, head counts, and backend-specific kwargs",
+    "create_AttnetionContext": "create an AttentionContext dataclass with batch, sequence, and mask metadata",
+    "build_attention_backend": "build an attention pipeline using FlashAttention, xFormers, or SDPA backends"
+  },
+  "unslothai_unsloth/unsloth/utils/hf_hub.py": {
+    "run_formatted_int": "run formatted_int to convert a numeric value into a human-readable string with K, M, or B suffix",
+    "get_model_info": "get model info from the Hugging Face Hub for a specific model_id with optional properties",
+    "list_models": "list models from the Hugging Face Hub filtered by author, search query, sort order, and limit",
+    "test_formatted_int": "test formatted_int with values under 1000, under 1 million, under 1 billion, and over 1 billion",
+    "test_list_models": "test list_models with author unsloth, sort by downloads, limit 10, and search query"
+  },
+  "unslothai_unsloth/unsloth/utils/packing.py": {
+    "configure_sample_packing": "configure an SFTConfig to enable packed, padding-free training batches",
+    "enable_sample_packing": "enable runtime packed batch support on an existing Unsloth model and trainer",
+    "build_xformers_block_causal_mask": "build an xFormers block-diagonal causal attention mask from packed sequence lengths",
+    "build_sdpa_packed_attention_mask": "build a scaled-dot-product attention mask for packed sequences with optional sliding window",
+    "mask_packed_sequence_boundaries": "mask final tokens of packed samples in shift_labels so cross-entropy ignores boundaries"
+  }
+}

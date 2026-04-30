@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/src/transformers/models/distilbert/modeling_distilbert.py
+
+Prompts
+
+```
+['create a DistilBertModel instance for extracting contextual embeddings from input text sequences', 'build a DistilBertForMaskedLM model to predict masked tokens in a sequence using cross-entropy loss', 'run a DistilBertForSequenceClassification model for GLUE tasks with configurable num_labels and problem_type', 'test a DistilBertForQuestionAnswering model that outputs start and end logits for span extraction', 'review a DistilBertForTokenClassification model for token-level labeling such as NER with configurable num_labels']
+```
+
+Usage
+
+```
+{'create_distilbert_model': 'create a DistilBertModel instance for extracting contextual embeddings from input text sequences', 'build_masked_lm': 'build a DistilBertForMaskedLM model to predict masked tokens in a sequence using cross-entropy loss', 'run_sequence_classifier': 'run a DistilBertForSequenceClassification model for GLUE tasks with configurable num_labels and problem_type', 'test_question_answering': 'test a DistilBertForQuestionAnswering model that outputs start and end logits for span extraction', 'review_token_classifier': 'review a DistilBertForTokenClassification model for token-level labeling such as NER with configurable num_labels'}
+```
+

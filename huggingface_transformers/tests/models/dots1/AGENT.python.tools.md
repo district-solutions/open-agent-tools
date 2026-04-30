@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/dots1/test_modeling_dots1.py
+
+Prompts
+
+```
+['test the Dots1ModelTest class that validates the Dots1 causal language model using Dots1ModelTester', 'build a Dots1ModelTester with configurable routed experts, shared experts, and top-k groups for model testing', 'run the Dots1IntegrationTest slow test to verify greedy generation on a pretrained Dots1ForCausalLM model', 'review the Dots1ModelTester class that extends CausalLMModelTester with MoE-specific parameters', 'test the test_model_15b_a2b_generation method that loads a pretrained Dots1 model and verifies greedy text completion output']
+```
+
+Usage
+
+```
+{'test_dots1_model': 'test the Dots1ModelTest class that validates the Dots1 causal language model using Dots1ModelTester', 'build_dots1_model_tester': 'build a Dots1ModelTester with configurable routed experts, shared experts, and top-k groups for model testing', 'run_dots1_integration_test': 'run the Dots1IntegrationTest slow test to verify greedy generation on a pretrained Dots1ForCausalLM model', 'review_dots1_model_tester': 'review the Dots1ModelTester class that extends CausalLMModelTester with MoE-specific parameters', 'test_model_generation': 'test the test_model_15b_a2b_generation method that loads a pretrained Dots1 model and verifies greedy text completion output'}
+```
+

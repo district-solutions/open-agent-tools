@@ -1,0 +1,205 @@
+{
+  "huggingface_chug/src/chug/loader.py": {
+    "create_loader_wds": "create a webdataset dataloader from config with task pipeline, seed, and distributed settings",
+    "create_loader_hf": "create a HuggingFace dataset dataloader from config with task pipeline and streaming support",
+    "create_loader": "create a dataloader for training or validation that auto-selects wds or hf format",
+    "validate_cfgs": "validate data and task configuration objects to ensure required processing functions are set",
+    "review_loader": "review the loader module to understand how wds and hf dataloaders are created from config"
+  },
+  "huggingface_chug/src/chug/common/collate.py": {
+    "collate_batch": "collate a batch of dictionary samples using the customized collate function that skips double underscore keys",
+    "collate_dictionary_samples": "collate a list of dictionary samples where keys starting with underscore are not tensorized",
+    "collate_sequence_batch": "collate a batch of sequence elements ensuring all elements have equal size",
+    "collate_namedtuple_batch": "collate a batch of namedtuple elements by recursively collating each field",
+    "collate_mapping_batch": "collate a batch of mapping objects that excludes keys starting with double underscores"
+  },
+  "huggingface_chug/src/chug/common/config.py": {
+    "create_image_input_cfg": "create an ImageInputCfg dataclass to configure image size, mode, mean, std, and fill color",
+    "build_image_aug_cfg": "build an ImageAugCfg using clip, imagenet, or simclr factory methods for augmentation defaults",
+    "create_preprocess_cfg": "create a PreprocessCfg combining ImageInputCfg and ImageAugCfg for vision preprocessing configuration",
+    "split_data_sources": "split a colon-delimited source string into SourceSpec objects with sampling weights and num samples",
+    "convert_source_to_shard_spec": "convert a source string or SourceSpec list into a ShardSpec with expanded URLs and weights"
+  },
+  "huggingface_chug/src/chug/common/random.py": {
+    "seed_worker_function": "seed Python random and numpy modules using PyTorch initial seed for a dataloader worker",
+    "get_pytorch_worker_seed_function": "get a PyTorch dataloader worker seed with optional increment value for spacing across iterations",
+    "review_seed_worker": "review the seed_worker function to understand how it seeds random and numpy from PyTorch",
+    "refactor_get_pytorch_worker_seed": "refactor get_pytorch_worker_seed to support a custom seed generation strategy",
+    "test_get_pytorch_worker_seed": "test the get_pytorch_worker_seed function with different increment and initial_seed values"
+  },
+  "huggingface_chug/src/chug/common/types.py": {
+    "create_sharedcount": "create a SharedCount instance to track a shared epoch counter across multiprocessing workers",
+    "create_loaderbundle": "create a LoaderBundle wrapping a DataLoader with optional DistributedSampler and shared interval counter",
+    "set_loaderbundle_interval": "set the interval on a LoaderBundle to update its sampler epoch and shared counter",
+    "create_shardspec": "create a ShardSpec with URLs and optional weights and sizes that validates shard counts",
+    "create_imagefeatureinfo": "create an ImageFeatureInfo dataclass to describe image feature output name, input keys, and color mode"
+  },
+  "huggingface_chug/src/chug/common/urls.py": {
+    "expand_urls_with_weights": "expand a colon-separated URL string into a list with optional per-URL weights",
+    "expand_urls_without_weights": "expand a colon-separated URL string into a flat list of resolved URLs",
+    "envsubst_substitute_variables": "substitute dollar-brace environment variable references in a string using WDS_ or CHUG_ prefixes",
+    "envlookup_resolve_env": "resolve an environment variable by name using WDS_ or CHUG_ prefixes",
+    "expand_urls_brace_expansion": "expand URLs with brace expansion patterns like s3://bucket/file-{1..10}.shard"
+  },
+  "huggingface_chug/src/chug/doc/doc_processor.py": {
+    "get_next_valid_page_index": "find the next document page index that contains non-empty text from a list of page annotations",
+    "create_DocProcessor": "create a DocProcessor instance to process documents with OCR annotations for reading tasks",
+    "call_DocProcessor": "process a sample dict by decoding page annotations and images and returning the decoded output",
+    "expand_anno_DocProcessor": "expand a single annotation dict into a list of per-page annotation dicts for multiple pages",
+    "squeeze_anno_DocProcessor": "squeeze a single-page annotation dict by extracting the first element from list-valued fields"
+  },
+  "huggingface_chug/src/chug/hfds/collate.py": {
+    "create_HfCollate_with_pipeline": "create an HfCollate instance with a list of pipeline functions for use as a DataLoader collate_fn",
+    "use_invoke_pipeline_stage": "use invoke to call a pipeline stage that accepts an IterableDataset, list, or callable",
+    "flatten_bytes_nested_dicts": "use flatten_bytes to replace nested dicts containing a bytes key with the raw bytes value",
+    "configure_HfCollate_custom_collate": "configure HfCollate with a custom collate function and disable automatic collation",
+    "debug_HfCollate_batch_processing": "enable debug mode on HfCollate to print batch item types and tensor shapes during processing"
+  },
+  "huggingface_chug/src/chug/hfds/loader.py": {
+    "create_hf_loader": "create a PyTorch DataLoader from a HuggingFace dataset source with a specified split and batch size",
+    "create_hf_streaming_loader": "create a streaming DataLoader from a HuggingFace dataset with shuffling and distributed node splitting",
+    "create_hf_loader_with_pipeline": "create a HuggingFace dataset loader that applies a task pipeline for collation before batching",
+    "create_hf_distributed_loader": "create a distributed DataLoader using DistributedSampler for multi-GPU training on a HuggingFace dataset",
+    "disable_decode_hf_dataset": "disable automatic decoding of Image and Audio columns in a HuggingFace dataset to reduce memory usage"
+  },
+  "huggingface_chug/src/chug/hfds/wrappers.py": {
+    "create_safe_dataset": "create a SafeDataset wrapper that retries up to 10 times on corrupt data items",
+    "create_wrapped_iterable_dataset": "create a WrappedIterableDataset that sets epoch on the underlying dataset during iteration",
+    "review_safe_dataset_getitem": "review the SafeDataset __getitem__ method and its retry logic for handling exceptions",
+    "refactor_wrapped_iterable_dataset_set_interval_count": "refactor the set_interval_count method to support a new shared counter type",
+    "test_safe_dataset_retry": "test the SafeDataset retry mechanism by passing a dataset that raises exceptions on access"
+  },
+  "huggingface_chug/src/chug/image/build_transforms_doc.py": {
+    "build_basic_doc_transforms": "build a basic document image transform pipeline using torchvision with resize, crop, and normalization",
+    "build_better_doc_transforms": "build an enhanced document image transform pipeline with bitmap, erosion, dilation, shear, elastic, and blur augmentations",
+    "build_nougat_doc_transforms": "build a Nougat-style document image transform pipeline using albumentations with grid distortion, compression, and noise augmentations",
+    "review_build_transforms_doc_basic": "review the build_transforms_doc_basic function to understand the basic torchvision transform pipeline for document images",
+    "refactor_build_transforms_doc_better": "refactor the build_transforms_doc_better function to merge default augmentation parameters with a custom aug_cfg"
+  },
+  "huggingface_chug/src/chug/image/build_transforms_image.py": {
+    "build_image_transforms_timm_training": "build image transforms using timm create_transform for training with augmentation and normalization",
+    "build_image_transforms_timm_inference": "build image transforms using timm create_transform for inference with center crop and resize",
+    "build_image_transforms_basic_training": "build image transforms using torchvision for training with random resized crop and color jitter",
+    "build_image_transforms_basic_inference": "build image transforms using torchvision for inference with resize and center crop",
+    "build_image_transforms_basic_longest_resize": "build image transforms using torchvision with longest edge resize and border crop mode"
+  },
+  "huggingface_chug/src/chug/image/transforms_alb.py": {
+    "create_albwrapper_transform": "create an AlbWrapper to apply an Albumentations transform pipeline to an image",
+    "build_erosionalb_augmentation": "build an ErosionAlb transform that applies morphological erosion with a random elliptical kernel",
+    "build_dilationalb_augmentation": "build a DilationAlb transform that applies morphological dilation with a random elliptical kernel",
+    "create_bitmapalb_threshold": "create a BitmapAlb transform that binarizes pixel values below a specified threshold",
+    "build_cropmargincv2_cropper": "build a CropMarginCv2 callable that crops image margins around non-background content"
+  },
+  "huggingface_chug/src/chug/image/transforms_factory.py": {
+    "build_image_transforms": "build image transforms from an ImageInputCfg with optional augmentation config and normalization settings",
+    "create_image_preprocessor": "create a composed image preprocessor from an ImageInputCfg with optional augmentation and normalization",
+    "review_build_image_transforms": "review the build_image_transforms function to understand how it dispatches to registered transform factory types",
+    "review_create_image_preprocessor": "review the create_image_preprocessor function to understand how it wraps build_image_transforms with composed mode",
+    "refactor_transform_factories": "refactor the _transform_factories registry to add a new transform type like image_custom or doc_custom"
+  },
+  "huggingface_chug/src/chug/image/transforms_torch.py": {
+    "apply_align_long_axis": "create a transform that rotates an image 90 degrees to align its long axis with the target input size",
+    "apply_bitmap_threshold": "build a transform that applies a lookup table threshold to convert pixel values below a cutoff to zero",
+    "apply_erosion_filter": "create a transform that applies morphological erosion using min pooling on tensors or min filter on PIL images",
+    "apply_dilation_filter": "build a transform that applies morphological dilation using max pooling on tensors or max filter on PIL images",
+    "crop_margin_around_content": "create a transform that crops a PIL image to the bounding rectangle of non-background content using a gray threshold"
+  },
+  "huggingface_chug/src/chug/task_pipeline/pipeline_doc_read.py": {
+    "build_task_pipeline_doc_read": "build a webdataset pipeline for document reading tasks using DataTaskDocReadCfg with image and text feature processing",
+    "create_DataTaskDocReadCfg": "create a DataTaskDocReadCfg dataclass to configure document reading pipeline parameters like page sampling and render DPI",
+    "review_DataTaskDocReadCfg": "review the DataTaskDocReadCfg dataclass fields including image_input_feat, text_input_feat, page_sampling, and render_dpi settings",
+    "refactor_build_task_pipeline_doc_read": "refactor build_task_pipeline_doc_read to customize DocReadProcessor parameters or add new pipeline stages for document processing",
+    "summarize_build_task_pipeline_doc_read": "summarize how build_task_pipeline_doc_read constructs a webdataset map pipeline with optional tuple output conversion"
+  },
+  "huggingface_chug/src/chug/task_pipeline/pipeline_doc_vqa.py": {
+    "build_task_pipeline_doc_vqa": "build a webdataset pipeline for document VQA tasks using a DataTaskDocVqaCfg configuration object",
+    "create_datataskdocvqa_cfg": "create a DataTaskDocVqaCfg dataclass to configure document VQA features, prefixes, suffixes, and render DPI",
+    "filter_missing_samples": "filter webdataset samples to keep only those with question, answer, and image keys present",
+    "review_datataskdocvqa_cfg": "review the DataTaskDocVqaCfg dataclass attributes including answer_feat, question_feat, question_prefix, and render_dpi settings",
+    "refactor_build_task_pipeline_doc_vqa": "refactor build_task_pipeline_doc_vqa to support custom output tuple formatting or additional processing stages"
+  },
+  "huggingface_chug/src/chug/task_pipeline/pipeline_factory.py": {
+    "create_task_pipeline_doc_read": "create a task pipeline for document reading using DataTaskDocReadCfg and the factory function",
+    "create_task_pipeline_doc_vqa": "create a task pipeline for document visual question answering using DataTaskDocVqaCfg",
+    "create_task_pipeline_image_text": "create a task pipeline for image text extraction using DataTaskImageTextCfg",
+    "create_task_pipeline_manual": "create a manual task pipeline using DataTaskManualCfg and the factory function",
+    "create_task_pipeline_generic": "create a task pipeline by passing any DataTaskCfg subclass to create_task_pipeline"
+  },
+  "huggingface_chug/src/chug/task_pipeline/pipeline_gtparse.py": {
+    "build_task_pipeline_gtparse": "build a webdataset pipeline for dual image and text input using a DataTaskImageTextCfg configuration object",
+    "filter_no_caption_or_no_image": "filter webdataset samples to keep only those containing both an image key and a text caption key",
+    "DataTaskImageTextCfg": "create a dataclass configuration for image and text input features with default image and ground truth keys",
+    "review_build_task_pipeline_gtparse": "review the build_task_pipeline_gtparse function to understand how it constructs webdataset map, rename, and to_tuple stages",
+    "refactor_filter_no_caption_or_no_image": "refactor the filter_no_caption_or_no_image function to support additional key types beyond image and text"
+  },
+  "huggingface_chug/src/chug/task_pipeline/pipeline_image_text.py": {
+    "build_task_pipeline_image_text": "build a webdataset pipeline for dual image and text input using a DataTaskImageTextCfg configuration object",
+    "filter_incomplete_samples": "filter webdataset samples to keep only those containing both image and text keys",
+    "createDataTaskImageTextCfg": "create a DataTaskImageTextCfg dataclass with image and text feature info for configuring image-text pipelines",
+    "review_filter_incomplete": "review the filter_incomplete function that checks samples for both image and text keys",
+    "refactor_build_task_pipeline_image_text": "refactor build_task_pipeline_image_text to add support for caption target tasks in the pipeline"
+  },
+  "huggingface_chug/src/chug/task_pipeline/pipeline_manual.py": {
+    "build_task_pipeline_manual": "build a webdataset pipeline using a custom decode and process function from a DataTaskManualCfg",
+    "create_DataTaskManualCfg": "create a DataTaskManualCfg dataclass instance extending DataTaskCfg for manual pipeline configuration",
+    "review_build_task_pipeline_manual": "review the build_task_pipeline_manual function to understand how it wraps decode_and_process_fn with error handling",
+    "refactor_build_task_pipeline_manual": "refactor build_task_pipeline_manual to support additional pipeline stages beyond the single wds.map call",
+    "summarize_DataTaskManualCfg": "summarize the DataTaskManualCfg dataclass and its inheritance from DataTaskCfg"
+  },
+  "huggingface_chug/src/chug/text/tokenization.py": {
+    "create_text_preprocessor": "create a text preprocessor function from a HuggingFace tokenizer with configurable max length and prompt end token",
+    "prepare_text_input": "prepare text input and target tensors for training by tokenizing text and masking prompt tokens",
+    "tokenize_text": "tokenize a string into padded and truncated token IDs using a HuggingFace tokenizer",
+    "convert_text_input_to_target": "convert tokenized input IDs to target labels by masking padding and prompt tokens with ignore ID",
+    "find_prompt_end_position": "find the last occurrence position of a prompt end token ID in a token tensor"
+  },
+  "huggingface_chug/src/chug/wds/dataset_info.py": {
+    "get_dataset_size": "get the total sample size and number of shards from a webdataset shard list using sizes.json or __len__ files",
+    "review_get_dataset_size": "review the get_dataset_size function to understand how it expands shard URLs and reads size metadata files",
+    "refactor_get_dataset_size": "refactor get_dataset_size to support additional size metadata file formats beyond sizes.json and __len__",
+    "test_get_dataset_size": "test the get_dataset_size function with a sample shard list pointing to a directory containing sizes.json",
+    "summarize_get_dataset_size": "summarize the get_dataset_size function which returns total sample count and shard count from webdataset metadata"
+  },
+  "huggingface_chug/src/chug/wds/decode.py": {
+    "decode_pdf_pages": "decode PDF bytes into PIL images using fitz or pypdfium2 with configurable page indices and render DPI",
+    "decode_image_pages": "decode multi-page image files like TIFF into a list of PIL images with optional random page sampling",
+    "create_DecodeDoc": "create a DecodeDoc instance for webdataset-based PDF and TIFF decoding with configurable imagespec and page sampling strategy",
+    "DecodeDoc_call": "call a DecodeDoc instance with a key and data bytes to decode PDF or TIFF pages into numpy arrays or torch tensors",
+    "create_image_decoder": "create a webdataset image decoder with optional PDF and TIFF document support using a configurable image mode and handler"
+  },
+  "huggingface_chug/src/chug/wds/filters.py": {
+    "create_detshuffle_v2": "create a deterministic shuffle pipeline stage with configurable buffer size and seed for webdataset",
+    "use_map_v2": "use map_v2 to apply a function to webdataset samples while preserving the sample key",
+    "use_map_expand_maybe": "use map_expand_maybe to map over single or sequence samples in a webdataset pipeline",
+    "use_map_expand_always": "use map_expand_always to flatten and map over nested sequence samples in a webdataset pipeline",
+    "use_flatten_nested": "use flatten_nested to merge nested dictionary fields into the top level of webdataset samples"
+  },
+  "huggingface_chug/src/chug/wds/helpers.py": {
+    "extract_directory_from_url": "extract the directory path from a URL using urlparse and os.path.dirname",
+    "expand_urls_with_weights": "expand brace-notation URLs into a flat list with optional per-shard sampling weights",
+    "create_error_handler_log_and_continue": "create an error handler that logs a warning for webdataset errors and returns True to continue processing",
+    "create_error_handler_dump_and_reraise": "create an error handler that dumps the full traceback and re-raises the webdataset exception",
+    "get_error_handler_by_name": "get a webdataset error handler function by name from the registered handlers dictionary"
+  },
+  "huggingface_chug/src/chug/wds/loader.py": {
+    "create_webdataset_loader": "create a webdataset loader from shard URLs with a task pipeline for training",
+    "create_loader_resampled_shards": "create a webdataset loader that resamples shards with replacement during training",
+    "create_loader_distributed_training": "create a webdataset loader configured for distributed training with multiple workers and GPUs",
+    "create_loader_eval": "create a webdataset loader for evaluation with a specified batch size and sample count",
+    "create_loader_shuffle": "create a webdataset loader with sample-level shuffling using a configurable shuffle buffer size"
+  },
+  "huggingface_chug/src/chug/wds/pipeline.py": {
+    "build_webdataset_pipeline": "build a webdataset data pipeline with shard specs and a task-specific processing pipeline",
+    "build_training_pipeline_with_shuffle": "build a training data pipeline with deterministic sample shuffling and per-worker shard splitting",
+    "build_resampled_pipeline": "build a data pipeline that resamples shards with replacement using configurable weights",
+    "build_batched_pipeline": "build a batched data pipeline with custom collation and optional batch-level processing",
+    "review_build_data_pipeline": "review the build_data_pipeline function to understand shard splitting, shuffling, and batching logic"
+  },
+  "huggingface_chug/src/chug/wds/tariterators.py": {
+    "create_function_base_plus_ext": "create a function that splits a file path into its base name and extension using regex",
+    "create_function_group_by_keys_nothrow": "create a function that groups key value pairs from an iterator into samples without throwing on duplicate suffixes",
+    "create_function_tarfile_samples_nothrow": "create a function that opens URLs expands tar files and groups contents into samples without throwing errors",
+    "create_pipelinefilter_tarfile_to_samples_nothrow": "create a pipelinefilter wrapped version of tarfile_samples_nothrow for use in webdataset pipelines",
+    "review_group_by_keys_nothrow": "review the group_by_keys_nothrow function to understand how it handles duplicate suffixes across tar files"
+  }
+}

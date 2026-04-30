@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: vllm-project/vllm
+- repo_uri: https://github.com/vllm-project/vllm
+
+## File: vllm-project_vllm/vllm/third_party/pynvml.py
+
+Prompts
+
+```
+['create a script that monitors GPU temperature, memory usage, and utilization via NVML', 'summarize how to initialize and shutdown the NVML library using nvmlInit and nvmlShutdown', 'review the pynvml device functions for retrieving GPU info, memory, and clock data', 'test the NVML event system for detecting ECC errors and performance state changes', 'build a tool that queries vGPU instances, license status, and utilization metrics']
+```
+
+Usage
+
+```
+{'create_gpu_monitor': 'create a script that monitors GPU temperature, memory usage, and utilization via NVML', 'summarize_nvml_init': 'summarize how to initialize and shutdown the NVML library using nvmlInit and nvmlShutdown', 'review_device_functions': 'review the pynvml device functions for retrieving GPU info, memory, and clock data', 'test_event_system': 'test the NVML event system for detecting ECC errors and performance state changes', 'build_vgpu_manager': 'build a tool that queries vGPU instances, license status, and utilization metrics'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/bertweet/test_tokenization_bertweet.py
+
+Prompts
+
+```
+['test the BertweetTokenizationTest class that extends TokenizerTesterMixin and unittest.TestCase for bertweet tokenizer validation', 'create a BertweetTokenizer instance from pretrained model vinai/bertweet-base or from local vocab and merges files', 'test the full tokenizer pipeline by tokenizing input text and converting tokens to BPE IDs', 'test the get_input_output_texts method that returns expected input and output text pairs for bertweet tokenization', 'test the get_tokenizer factory method that returns a BertweetTokenizer configured with special tokens map']
+```
+
+Usage
+
+```
+{'test_BertweetTokenizationTest': 'test the BertweetTokenizationTest class that extends TokenizerTesterMixin and unittest.TestCase for bertweet tokenizer validation', 'create_BertweetTokenizer': 'create a BertweetTokenizer instance from pretrained model vinai/bertweet-base or from local vocab and merges files', 'test_full_tokenizer': 'test the full tokenizer pipeline by tokenizing input text and converting tokens to BPE IDs', 'test_get_input_output_texts': 'test the get_input_output_texts method that returns expected input and output text pairs for bertweet tokenization', 'test_get_tokenizer': 'test the get_tokenizer factory method that returns a BertweetTokenizer configured with special tokens map'}
+```
+

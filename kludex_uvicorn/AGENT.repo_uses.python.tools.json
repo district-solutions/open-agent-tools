@@ -1,0 +1,167 @@
+{
+  "kludex_uvicorn/uvicorn/_compat.py": {
+    "run_asyncio_main": "run an asyncio coroutine using uvicorn's cross-version asyncio_run with debug and loop_factory support",
+    "test_asyncio_run": "test uvicorn's asyncio_run raises RuntimeError when called from a running event loop",
+    "refactor_asyncio_run": "refactor uvicorn's asyncio_run to use asyncio.Runner for Python 3.11+ compatibility",
+    "review_asyncio_run": "review uvicorn's asyncio_run shutdown sequence that cancels tasks and shuts down async generators",
+    "summarize_iscoroutinefunction": "summarize uvicorn's iscoroutinefunction that imports from inspect on Python 3.14+ and asyncio otherwise"
+  },
+  "kludex_uvicorn/uvicorn/_subprocess.py": {
+    "build_subprocess_spawn": "build a uvicorn subprocess using spawn context with config, target callable, and sockets",
+    "create_subprocess_started": "create a child process entry point that reopens stdin, configures logging, and runs the target with sockets",
+    "run_get_subprocess": "run uvicorn get_subprocess to instantiate an unstarted SpawnProcess with config, target, and sockets",
+    "review_subprocess_cleanup": "review the uvicorn subprocess module for stdin handling and KeyboardInterrupt suppression",
+    "summarize_subprocess_flow": "summarize the uvicorn subprocess module that wraps multiprocessing spawn for child process startup"
+  },
+  "kludex_uvicorn/uvicorn/config.py": {
+    "build_config_asgi_server": "build a uvicorn Config to run an ASGI application with SSL on a custom host and port",
+    "create_ssl_context": "create an SSL context from certfile, keyfile, password, and cipher configuration for secure connections",
+    "run_config_load": "run config.load to resolve ASGI app, protocol classes, lifespan handler, and wrap with middleware",
+    "test_config_bind_socket": "test config.bind_socket to create and bind a TCP or Unix domain socket for the server",
+    "review_config_configure_logging": "review config.configure_logging to set up logging with dict, JSON, YAML, or file-based config"
+  },
+  "kludex_uvicorn/uvicorn/importer.py": {
+    "create_import_from_string": "create a function to import a module attribute from a string like 'uvicorn.main:app'",
+    "run_import_from_string": "run import_from_string to dynamically resolve 'uvicorn.config:Config' and return the Config class",
+    "test_import_from_string": "test import_from_string with a valid module:attribute string and verify it returns the correct object",
+    "review_import_from_string": "review the import_from_string function for error handling and edge cases like missing modules or attributes",
+    "summarize_import_from_string": "summarize the import_from_string utility that parses '<module>:<attribute>' strings and dynamically imports Python objects"
+  },
+  "kludex_uvicorn/uvicorn/logging.py": {
+    "create_ColourizedFormatter": "create a ColourizedFormatter that outputs log levels with appropriate terminal colors",
+    "build_DefaultFormatter": "build a DefaultFormatter for colorized logging that detects tty on stderr",
+    "test_AccessFormatter": "test the AccessFormatter that colorizes HTTP access logs with status code colors",
+    "refactor_formatMessage": "refactor the formatMessage method to use color messages from extra dict",
+    "review_get_status_code": "review the get_status_code method that applies color to HTTP status codes"
+  },
+  "kludex_uvicorn/uvicorn/main.py": {
+    "run_uvicorn_server": "run a uvicorn ASGI server with app import string, host, port, and SSL certificate options",
+    "run_uvicorn_reload": "run uvicorn with auto-reload enabled and custom reload directory paths",
+    "run_uvicorn_multiprocess": "run uvicorn with multiple worker processes for production deployment",
+    "run_uvicorn_websocket": "run uvicorn with WebSocket protocol, max message size, and ping interval settings",
+    "run_uvicorn_logging": "run uvicorn with custom logging config file, log level, and colorized output"
+  },
+  "kludex_uvicorn/uvicorn/server.py": {
+    "run_server": "run a uvicorn ASGI server with a Config object to start an async HTTP server",
+    "create_server": "create a uvicorn Server instance from a Config to manage the server lifecycle",
+    "build_server_state": "build a ServerState object to track total requests, connections, tasks, and default headers",
+    "test_server_shutdown": "test the uvicorn Server graceful shutdown with configurable timeout and connection draining",
+    "review_server_lifecycle": "review the uvicorn Server startup, main loop, and shutdown lifecycle management"
+  },
+  "kludex_uvicorn/uvicorn/workers.py": {
+    "run_UvicornWorker": "run a Gunicorn worker with Uvicorn to serve an ASGI application on configured sockets",
+    "build_UvicornH11Worker": "build a Gunicorn worker subclass that uses the asyncio loop and h11 HTTP implementation for ASGI apps",
+    "configure_UvicornWorker_SSL": "configure UvicornWorker with SSL options including keyfile, certfile, and cipher settings for secure connections",
+    "configure_UvicornWorker_logging": "configure UvicornWorker to redirect uvicorn error and access log handlers to Gunicorn's logging system",
+    "handle_UvicornWorker_signals": "handle Gunicorn and Uvicorn signals including SIGUSR1 for worker reload and SIGQUIT for graceful shutdown"
+  },
+  "kludex_uvicorn/uvicorn/loops/asyncio.py": {
+    "create_asyncio_loop_factory": "create an asyncio event loop factory that returns ProactorEventLoop on Windows or SelectorEventLoop otherwise",
+    "summarize_asyncio_loop_factory": "summarize the asyncio_loop_factory function that selects the appropriate asyncio event loop class based on platform"
+  },
+  "kludex_uvicorn/uvicorn/loops/uvloop.py": {
+    "create_uvloop_loop_factory": "create a uvloop event loop factory function that returns uvloop.new_event_loop",
+    "run_uvloop_loop_factory": "run the uvloop_loop_factory to get a callable that creates uvloop event loops",
+    "test_uvloop_loop_factory": "test the uvloop_loop_factory returns a callable that creates asyncio.AbstractEventLoop instances",
+    "summarize_uvloop_loop_factory": "summarize the uvloop_loop_factory function that wraps uvloop.new_event_loop as a factory",
+    "review_uvloop_loop_factory": "review the uvloop_loop_factory function for subprocess support and event loop creation"
+  },
+  "kludex_uvicorn/uvicorn/middleware/message_logger.py": {
+    "create_message_with_placeholders": "create an ASGI message with body-type content replaced by placeholders to avoid logging sensitive data",
+    "test_message_with_placeholders": "test the message_with_placeholders function with body, bytes, text, and headers attributes",
+    "review_message_with_placeholders": "review the message_with_placeholders function that sanitizes ASGI messages for logging",
+    "create_message_logger_middleware": "create a MessageLoggerMiddleware wrapping an ASGI app to log receive, send, started, and completed events",
+    "summarize_message_logger_middleware": "summarize the MessageLoggerMiddleware class that instruments ASGI receive/send with trace-level logging"
+  },
+  "kludex_uvicorn/uvicorn/middleware/proxy_headers.py": {
+    "create_ProxyHeadersMiddleware": "create a ProxyHeadersMiddleware instance to handle X-Forwarded-Proto and X-Forwarded-For headers from trusted proxies",
+    "configure_trusted_hosts": "configure _TrustedHosts with a list of trusted IP addresses, CIDR networks, or wildcard to enable proxy header processing",
+    "parse_host_port": "parse a forwarded host value string into a tuple of host and port supporting IPv4, IPv6, and bracketed IPv6 formats",
+    "check_trusted_host": "check if a client host string is in the trusted hosts set using IP address, CIDR network, or literal matching",
+    "extract_client_address": "extract the trusted client address from an X-Forwarded-For header by finding the first untrusted host in the forwarded list"
+  },
+  "kludex_uvicorn/uvicorn/middleware/wsgi.py": {
+    "build_environ": "build a WSGI environ dict from an ASGI HTTP scope, request message, and body stream",
+    "create_wsgi_middleware": "create a WSGI middleware that wraps a WSGI app for use in an ASGI server",
+    "create_wsgi_responder": "create a WSGI responder that bridges ASGI requests to a WSGI application via thread pool",
+    "run_wsgi_app": "run a WSGI application in a thread pool executor and stream response chunks back over ASGI",
+    "review_wsgi_middleware": "review the WSGI middleware for deprecated native uvicorn implementation and a2wsgi migration"
+  },
+  "kludex_uvicorn/uvicorn/protocols/utils.py": {
+    "build_get_remote_addr": "build a function that extracts the remote client address from an asyncio transport",
+    "create_get_local_addr": "create a function that extracts the local server address from an asyncio transport",
+    "test_is_ssl": "test whether an asyncio transport is using SSL by checking its sslcontext",
+    "review_get_client_addr": "review the function that extracts a client address string from a WWWScope",
+    "summarize_get_path_with_query_string": "summarize the function that reconstructs a URL path with its query string from a WWWScope"
+  },
+  "kludex_uvicorn/uvicorn/protocols/http/flow_control.py": {
+    "create_FlowControl": "create a FlowControl instance with an asyncio transport to manage read and write pausing",
+    "test_FlowControl_drain": "test the FlowControl drain method waits for the writable event before returning",
+    "refactor_FlowControl_pause_resume": "refactor the FlowControl pause_reading and resume_reading methods to toggle transport state",
+    "review_FlowControl_flow_control": "review the FlowControl class and its pause_writing, resume_writing, and drain methods for correctness",
+    "summarize_service_unavailable": "summarize the service_unavailable ASGI app that sends a 503 response with body 'Service Unavailable'"
+  },
+  "kludex_uvicorn/uvicorn/protocols/http/h11_impl.py": {
+    "build_http_server_protocol": "build an HTTP/1.1 server protocol using H11Protocol to handle ASGI requests over asyncio transports",
+    "create_request_response_cycle": "create a RequestResponseCycle to manage the full lifecycle of an HTTP request and response in uvicorn",
+    "test_h11_websocket_upgrade": "test H11Protocol websocket upgrade handling by verifying _should_upgrade and handle_websocket_upgrade methods",
+    "refactor_h11_keepalive_timeout": "refactor H11Protocol keep-alive timeout management to support configurable timeout periods",
+    "review_h11_protocol_error_handling": "review H11Protocol error handling for invalid HTTP requests, connection loss, and 400 response generation"
+  },
+  "kludex_uvicorn/uvicorn/protocols/http/httptools_impl.py": {
+    "build_http_protocol": "build an HTTP protocol using HttpToolsProtocol to handle ASGI requests with httptools parser",
+    "create_request_cycle": "create a RequestResponseCycle to manage an ASGI HTTP request-response lifecycle",
+    "test_websocket_upgrade": "test websocket upgrade handling in HttpToolsProtocol when upgrade header is present",
+    "refactor_status_line": "refactor _get_status_line to generate HTTP status response lines from status codes",
+    "review_send_method": "review the RequestResponseCycle.send method for ASGI message handling and response writing"
+  },
+  "kludex_uvicorn/uvicorn/protocols/websockets/websockets_impl.py": {
+    "build_websocket_server": "build a uvicorn websocket server using WebSocketProtocol with ASGI app and server state configuration",
+    "create_websocket_handler": "create a websocket handler that processes ASGI receive and send events for text and binary messages",
+    "test_websocket_protocol": "test the WebSocketProtocol class connection lifecycle including handshake, send, receive, and close events",
+    "refactor_websocket_protocol": "refactor the WebSocketProtocol class to support custom subprotocol negotiation and extra response headers",
+    "review_websocket_shutdown": "review the WebSocketProtocol shutdown method for graceful connection closing and server state cleanup"
+  },
+  "kludex_uvicorn/uvicorn/protocols/websockets/websockets_sansio_impl.py": {
+    "build_websocket_server": "build a uvicorn websocket server using WebSocketsSansIOProtocol to handle WebSocket connections with ASGI",
+    "create_websocket_handler": "create a WebSocket handler that accepts connections and sends text or binary messages via the send method",
+    "test_websocket_keepalive": "test the WebSocket keepalive ping and pong mechanism with configurable interval and timeout",
+    "refactor_websocket_close": "refactor the WebSocket close handling to support clean shutdown with custom close codes and reasons",
+    "review_websocket_asgi": "review the WebSocketsSansIOProtocol ASGI integration for handling receive, send, and disconnect events"
+  },
+  "kludex_uvicorn/uvicorn/protocols/websockets/wsproto_impl.py": {
+    "create_WSProtocol": "create a WSProtocol instance to handle WebSocket connections with uvicorn config and server state",
+    "run_ASGI_websocket": "run an ASGI application over a WebSocket connection using WSProtocol scope, receive, and send",
+    "handle_websocket_events": "handle WebSocket events including connect, text message, binary message, close, and ping",
+    "send_websocket_messages": "send WebSocket messages including accept, text, binary, close, and HTTP response to clients",
+    "receive_websocket_messages": "receive WebSocket events from the client queue with automatic backpressure flow control"
+  },
+  "kludex_uvicorn/uvicorn/supervisors/basereload.py": {
+    "create_BaseReload": "create a uvicorn reloader instance with BaseReload using a Config, target callable, and list of sockets",
+    "run_BaseReload": "run the uvicorn BaseReload reloader loop that detects file changes and restarts the subprocess",
+    "review_BaseReload_startup": "review the BaseReload startup method that registers signal handlers and spawns the child subprocess",
+    "refactor_BaseReload_restart": "refactor the BaseReload restart method to terminate and restart the child process on file changes",
+    "summarize_BaseReload_shutdown": "summarize the BaseReload shutdown method that terminates the subprocess and closes sockets"
+  },
+  "kludex_uvicorn/uvicorn/supervisors/multiprocess.py": {
+    "run_multiprocess_server": "run uvicorn with multiple worker processes using the Multiprocess class and config",
+    "create_process_instance": "create a Process instance to manage a single uvicorn worker subprocess with sockets",
+    "test_process_health": "test if a uvicorn worker process is alive by sending ping and checking pong response",
+    "review_signal_handlers": "review Multiprocess signal handlers for SIGINT, SIGTERM, SIGHUP, SIGTTIN, and SIGTTOU",
+    "summarize_process_lifecycle": "summarize the process lifecycle including start, terminate, kill, and join operations"
+  },
+  "kludex_uvicorn/uvicorn/supervisors/statreload.py": {
+    "build_statreload_reloader": "build a StatReload instance that watches Python files and restarts uvicorn on changes",
+    "create_statreload_check_restart": "create a StatReload instance and check if any Python file has been modified since last check",
+    "test_statreload_iter_py_files": "test the StatReload iter_py_files method to yield all Python files in reload directories",
+    "review_statrestart_restart": "review the StatReload restart method that clears mtimes cache and triggers a parent restart",
+    "summarize_statreload_should_restart": "summarize the StatReload should_restart method that detects file modifications via mtime comparison"
+  },
+  "kludex_uvicorn/uvicorn/supervisors/watchfilesreload.py": {
+    "create_FileFilter": "create a FileFilter instance that filters file paths based on uvicorn config include and exclude patterns",
+    "run_WatchFilesReload": "run a WatchFilesReload reloader that monitors directories for file changes and triggers restarts",
+    "review_FileFilter_call": "review the FileFilter.__call__ method that returns True if a path matches include patterns and not exclude patterns",
+    "review_WatchFilesReload_should_restart": "review the WatchFilesReload.should_restart method that checks for file changes and returns filtered paths",
+    "build_WatchFilesReload_config": "build a WatchFilesReload instance with a uvicorn Config, target callable, and list of sockets for file watching"
+  }
+}

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/helium/test_modeling_helium.py
+
+Prompts
+
+```
+['test the HeliumModelTest class for PyTorch Helium model unit tests with stateful and split configurations', 'test the HeliumModelTester class that provides base model class configuration for HeliumModel', 'test the HeliumIntegrationTest slow integration test for the helium-1-preview model', 'test the model_2b method that loads kyutai/helium-1-preview, tokenizes input, generates text, and verifies output', 'run HeliumModel.generate with tokenized input to produce text output from the helium causal language model']
+```
+
+Usage
+
+```
+{'test_HeliumModelTest': 'test the HeliumModelTest class for PyTorch Helium model unit tests with stateful and split configurations', 'test_HeliumModelTester': 'test the HeliumModelTester class that provides base model class configuration for HeliumModel', 'test_HeliumIntegrationTest': 'test the HeliumIntegrationTest slow integration test for the helium-1-preview model', 'test_model_2b': 'test the model_2b method that loads kyutai/helium-1-preview, tokenizes input, generates text, and verifies output', 'run_HeliumModel_generate': 'run HeliumModel.generate with tokenized input to produce text output from the helium causal language model'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: NousResearch/hermes-agent
+- repo_uri: https://github.com/NousResearch/hermes-agent
+
+## File: NousResearch_hermes-agent/tests/hermes_state/test_resolve_resume_session_id.py
+
+Prompts
+
+```
+['test resolve_resume_session_id redirects from empty parent session to descendant with messages', 'test resolve_resume_session_id returns self when session already has messages', 'test resolve_resume_session_id returns self when no descendant has messages', 'test resolve_resume_session_id returns self for isolated session with no parent', 'test resolve_resume_session_id walks from middle of chain to find message-bearing descendant']
+```
+
+Usage
+
+```
+{'test_resolve_resume_session_id_redirects_from_empty_head': 'test resolve_resume_session_id redirects from empty parent session to descendant with messages', 'test_resolve_resume_session_id_returns_self_when_has_messages': 'test resolve_resume_session_id returns self when session already has messages', 'test_resolve_resume_session_id_returns_self_when_no_descendant_has_messages': 'test resolve_resume_session_id returns self when no descendant has messages', 'test_resolve_resume_session_id_returns_self_for_isolated_session': 'test resolve_resume_session_id returns self for isolated session with no parent', 'test_resolve_resume_session_id_walks_from_middle_of_chain': 'test resolve_resume_session_id walks from middle of chain to find message-bearing descendant'}
+```
+

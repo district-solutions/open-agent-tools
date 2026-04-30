@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pytorch/pytorch
+- repo_uri: https://github.com/pytorch/pytorch.git
+
+## File: pytorch_pytorch/torch/amp/autocast_mode.py
+
+Prompts
+
+```
+['create a torch.autocast context manager for CUDA mixed-precision forward passes', 'build a @torch.autocast decorator on a model forward method for automatic mixed precision', "test torch.autocast with device_type='cpu' and dtype=torch.bfloat16 for CPU inference", 'refactor nested autocast regions with enabled=False to force explicit dtype in a subregion', 'summarize autocast state by checking torch.is_autocast_enabled and torch.get_autocast_gpu_dtype']
+```
+
+Usage
+
+```
+{'create_autocast_context_manager': 'create a torch.autocast context manager for CUDA mixed-precision forward passes', 'build_autocast_decorator': 'build a @torch.autocast decorator on a model forward method for automatic mixed precision', 'test_autocast_cpu_bfloat16': "test torch.autocast with device_type='cpu' and dtype=torch.bfloat16 for CPU inference", 'refactor_autocast_nesting': 'refactor nested autocast regions with enabled=False to force explicit dtype in a subregion', 'summarize_autocast_state': 'summarize autocast state by checking torch.is_autocast_enabled and torch.get_autocast_gpu_dtype'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/diffusers
+- repo_uri: https://github.com/huggingface/diffusers
+
+## File: huggingface_diffusers/tests/quantization/gguf/test_gguf.py
+
+Prompts
+
+```
+['test GGUFLinear forward_cuda against forward_native for Q4_0 and Q4_K quantization types', 'test that GGUF quantized model parameters have correct quant_type and uint8 dtype', 'test GGUF quantized model memory footprint stays under expected GB threshold during inference', 'test dequantize method converts all GGUFLinear layers back to standard nn.Linear modules', 'test FluxPipeline inference with GGUF quantized transformer and validate output pixel values']
+```
+
+Usage
+
+```
+{'test_GGUFLinear_cuda_kernels': 'test GGUFLinear forward_cuda against forward_native for Q4_0 and Q4_K quantization types', 'test_GGUFSingleFileTesterMixin_gguf_parameters': 'test that GGUF quantized model parameters have correct quant_type and uint8 dtype', 'test_GGUFSingleFileTesterMixin_memory_usage': 'test GGUF quantized model memory footprint stays under expected GB threshold during inference', 'test_GGUFSingleFileTesterMixin_dequantize': 'test dequantize method converts all GGUFLinear layers back to standard nn.Linear modules', 'test_FluxGGUFSingleFileTests_pipeline_inference': 'test FluxPipeline inference with GGUF quantized transformer and validate output pixel values'}
+```
+

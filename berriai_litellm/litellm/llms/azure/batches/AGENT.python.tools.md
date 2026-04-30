@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/azure/batches/handler.py
+
+Prompts
+
+```
+['create a batch job using Azure OpenAI batches API with async or sync client', 'retrieve a batch job status and details from Azure OpenAI batches API', 'cancel a pending batch job in Azure OpenAI batches API', 'list all batch jobs with optional pagination using Azure OpenAI batches API', 'review the AzureBatchesAPI class for async and sync batch operation support']
+```
+
+Usage
+
+```
+{'create_batch': 'create a batch job using Azure OpenAI batches API with async or sync client', 'retrieve_batch': 'retrieve a batch job status and details from Azure OpenAI batches API', 'cancel_batch': 'cancel a pending batch job in Azure OpenAI batches API', 'list_batches': 'list all batch jobs with optional pagination using Azure OpenAI batches API', 'review_azure_batches_api': 'review the AzureBatchesAPI class for async and sync batch operation support'}
+```
+

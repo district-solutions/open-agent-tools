@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/litellm_proxy/image_edit/transformation.py
+
+Prompts
+
+```
+['build a LiteLLMProxyImageEditConfig instance to configure image edit requests routed through LiteLLM Proxy', 'test the LiteLLMProxyImageEditConfig.validate_environment method with a model string and optional API key', 'test the LiteLLMProxyImageEditConfig.get_complete_url method with a model string and API base URL', 'create a call to validate_environment that injects a Bearer token Authorization header into the request headers dict', 'create a call to get_complete_url that returns the full image edit endpoint URL from a base API URL']
+```
+
+Usage
+
+```
+{'build_LiteLLMProxyImageEditConfig': 'build a LiteLLMProxyImageEditConfig instance to configure image edit requests routed through LiteLLM Proxy', 'test_validate_environment': 'test the LiteLLMProxyImageEditConfig.validate_environment method with a model string and optional API key', 'test_get_complete_url': 'test the LiteLLMProxyImageEditConfig.get_complete_url method with a model string and API base URL', 'create_validate_environment': 'create a call to validate_environment that injects a Bearer token Authorization header into the request headers dict', 'create_get_complete_url': 'create a call to get_complete_url that returns the full image edit endpoint URL from a base API URL'}
+```
+

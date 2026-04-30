@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/vllm/common_utils.py
+
+Prompts
+
+```
+['build a function that validates VLLM environment by setting x-api-key header from api_key parameter', 'create a function that retrieves VLLM API base URL from environment variable VLLM_API_BASE', 'test the get_models method that fetches available models from VLLM /v1/models endpoint', 'refactor the get_error_class method to return VLLMError with status_code, message, and headers', 'review the VLLMModelInfo class and its methods for validating environment, getting API base, and fetching models']
+```
+
+Usage
+
+```
+{'build_validate_environment': 'build a function that validates VLLM environment by setting x-api-key header from api_key parameter', 'create_get_api_base': 'create a function that retrieves VLLM API base URL from environment variable VLLM_API_BASE', 'test_get_models': 'test the get_models method that fetches available models from VLLM /v1/models endpoint', 'refactor_get_error_class': 'refactor the get_error_class method to return VLLMError with status_code, message, and headers', 'review_VLLMModelInfo': 'review the VLLMModelInfo class and its methods for validating environment, getting API base, and fetching models'}
+```
+

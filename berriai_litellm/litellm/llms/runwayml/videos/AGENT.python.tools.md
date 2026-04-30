@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/runwayml/videos/transformation.py
+
+Prompts
+
+```
+['create a RunwayML video generation task by transforming an image-to-video request with prompt and model parameters', 'transform a RunwayML image-to-video API response into an OpenAI-compatible VideoObject with status and output URL', 'download video content from a RunwayML task output URL after extracting the CloudFront link from the task response', 'retrieve a RunwayML video generation task status by querying the tasks endpoint with the task ID', 'map OpenAI-style video creation parameters to RunwayML format including prompt, ratio, and duration conversions']
+```
+
+Usage
+
+```
+{'create_video_generate_task': 'create a RunwayML video generation task by transforming an image-to-video request with prompt and model parameters', 'transform_video_create_response': 'transform a RunwayML image-to-video API response into an OpenAI-compatible VideoObject with status and output URL', 'run_video_download': 'download video content from a RunwayML task output URL after extracting the CloudFront link from the task response', 'retrieve_video_status': 'retrieve a RunwayML video generation task status by querying the tasks endpoint with the task ID', 'map_openai_params_to_runway': 'map OpenAI-style video creation parameters to RunwayML format including prompt, ratio, and duration conversions'}
+```
+

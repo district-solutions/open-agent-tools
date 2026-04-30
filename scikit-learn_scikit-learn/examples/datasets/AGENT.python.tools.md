@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: scikit-learn/scikit-learn
+- repo_uri: https://github.com/scikit-learn/scikit-learn
+
+## File: scikit-learn_scikit-learn/examples/datasets/plot_random_multilabel_dataset.py
+
+Prompts
+
+```
+['create a plot of randomly generated multilabel classification dataset with matplotlib scatter', 'run the plot_2d function to generate and visualize a 2D multilabel classification scatter plot', 'generate multilabel classification data using sklearn.datasets.make_multilabel_classification', 'build a 2D scatter plot showing multilabel dataset samples colored by class label combination', 'summarize class probabilities and feature distributions from a multilabel classification dataset']
+```
+
+Usage
+
+```
+{'create_plot_multilabel_dataset': 'create a plot of randomly generated multilabel classification dataset with matplotlib scatter', 'run_plot_2d_multilabel': 'run the plot_2d function to generate and visualize a 2D multilabel classification scatter plot', 'generate_multilabel_classification_data': 'generate multilabel classification data using sklearn.datasets.make_multilabel_classification', 'build_multilabel_scatter_plot': 'build a 2D scatter plot showing multilabel dataset samples colored by class label combination', 'summarize_multilabel_distribution': 'summarize class probabilities and feature distributions from a multilabel classification dataset'}
+```
+

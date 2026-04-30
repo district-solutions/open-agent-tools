@@ -1,0 +1,13 @@
+{
+    "normalize_split_default": "normalize a torch.split node in an FX graph by converting split_size to explicit split_sections",
+    "normalize_cat_default": "normalize a torch.cat node in an FX graph by ensuring dim is properly resolved and example_value metadata is present",
+    "normalize_stack_default": "normalize a torch.stack node in an FX graph by resolving dim and validating example_value metadata",
+    "merge_splits": "merge two consecutive split operations into a single split by combining their split sections",
+    "simplify_split_cat": "simplify a split-then-cat pattern by removing or merging the split node based on user input ranges",
+    "merge_split_squeeze": "replace split-then-getitem-then-squeeze patterns with torch.unbind for optimization",
+    "merge_unbind_stack": "merge unbind-then-stack/cat patterns by applying transform parameters like movedim and flatten",
+    "merge_getitem_cat": "merge consecutive getitem indices into a single split section when feeding into a cat node",
+    "merge_stack_tanh_unbind": "merge stack-tanh-unbind patterns by replacing unbind with split and consolidating indices",
+    "SplitCatSimplifier.simplify": "simplify split-cat patterns by analyzing user inputs, computing transform params, and replacing nodes",
+    "UnbindCatRemover.remove_unbind": "remove unbind nodes by treating them as size-one splits and applying SplitCatSimplifier logic"
+}

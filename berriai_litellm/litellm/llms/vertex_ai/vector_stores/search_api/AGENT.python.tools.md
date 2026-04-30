@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/vertex_ai/vector_stores/search_api/transformation.py
+
+Prompts
+
+```
+['build the complete Vertex AI Search API URL from project, location, collection, and datastore IDs', 'transform a vector store search query into a Vertex AI RAG API request with URL and body', 'transform a Vertex AI Search API response into a standard vector store search result format', 'get authentication credentials and authorization headers for Vertex AI Search API access', 'calculate the cost of a vector store search operation using model pricing info']
+```
+
+Usage
+
+```
+{'build_vertex_search_endpoint': 'build the complete Vertex AI Search API URL from project, location, collection, and datastore IDs', 'transform_search_vector_store_request': 'transform a vector store search query into a Vertex AI RAG API request with URL and body', 'transform_search_vector_store_response': 'transform a Vertex AI Search API response into a standard vector store search result format', 'get_auth_credentials': 'get authentication credentials and authorization headers for Vertex AI Search API access', 'calculate_vector_store_cost': 'calculate the cost of a vector store search operation using model pricing info'}
+```
+

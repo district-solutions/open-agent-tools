@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pytorch/pytorch
+- repo_uri: https://github.com/pytorch/pytorch.git
+
+## File: pytorch_pytorch/torch/nn/attention/bias.py
+
+Prompts
+
+```
+['create an upper-left triangular causal bias using causal_upper_left with query and key-value sequence lengths', 'create a lower-right triangular causal bias using causal_lower_right with query and key-value sequence lengths', 'test the CausalBias class with a specified variant and sequence lengths for use in scaled_dot_product_attention', 'review the CausalVariant enum that defines UPPER_LEFT and LOWER_RIGHT causal attention bias types', 'summarize how CausalBias._dispatch routes between flash attention, efficient attention, and materialized bias kernels']
+```
+
+Usage
+
+```
+{'create_causal_upper_left': 'create an upper-left triangular causal bias using causal_upper_left with query and key-value sequence lengths', 'create_causal_lower_right': 'create a lower-right triangular causal bias using causal_lower_right with query and key-value sequence lengths', 'test_CausalBias': 'test the CausalBias class with a specified variant and sequence lengths for use in scaled_dot_product_attention', 'review_CausalVariant': 'review the CausalVariant enum that defines UPPER_LEFT and LOWER_RIGHT causal attention bias types', 'summarize_CausalBias_dispatch': 'summarize how CausalBias._dispatch routes between flash attention, efficient attention, and materialized bias kernels'}
+```
+

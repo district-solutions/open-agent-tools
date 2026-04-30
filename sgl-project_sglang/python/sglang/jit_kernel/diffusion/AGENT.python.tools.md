@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/python/sglang/jit_kernel/diffusion/qknorm_rope.py
+
+Prompts
+
+```
+['build a JIT-compiled QKNorm+RoPE CUDA kernel module for diffusion models with configurable head_dim and rope_dim', 'test the fused_inplace_qknorm_rope function that applies quantization-aware normalization and rotary positional embeddings in-place to query and key tensors', 'test can_use_fused_inplace_qknorm_rope to check if JIT fused QKNorm+RoPE is supported for given head_dim, rope_dim, is_neox, and dtype parameters', 'run fused_inplace_qknorm_rope to apply layer normalization and RoPE encoding in-place to q and k tensors using cos_sin_cache and positions', 'review the fused_inplace_qknorm_rope function registered as a custom op that mutates q and k tensors with QKNorm+RoPE kernel']
+```
+
+Usage
+
+```
+{'build_jit_qknorm_rope_module': 'build a JIT-compiled QKNorm+RoPE CUDA kernel module for diffusion models with configurable head_dim and rope_dim', 'test_fused_inplace_qknorm_rope': 'test the fused_inplace_qknorm_rope function that applies quantization-aware normalization and rotary positional embeddings in-place to query and key tensors', 'test_can_use_fused_inplace_qknorm_rope': 'test can_use_fused_inplace_qknorm_rope to check if JIT fused QKNorm+RoPE is supported for given head_dim, rope_dim, is_neox, and dtype parameters', 'run_fused_inplace_qknorm_rope': 'run fused_inplace_qknorm_rope to apply layer normalization and RoPE encoding in-place to q and k tensors using cos_sin_cache and positions', 'review_register_custom_op': 'review the fused_inplace_qknorm_rope function registered as a custom op that mutates q and k tensors with QKNorm+RoPE kernel'}
+```
+

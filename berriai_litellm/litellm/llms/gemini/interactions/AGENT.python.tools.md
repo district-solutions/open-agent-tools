@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/gemini/interactions/transformation.py
+
+Prompts
+
+```
+['build a request body for creating a Google AI Studio interaction with model, agent, input, and optional generation config', 'create an InteractionsAPIResponse object from a raw httpx response with headers and hidden params', 'test the transform_streaming_response method that parses SSE streaming chunks into InteractionsAPIStreamingResponse objects', 'review the transform_delete_interaction_request method that builds DELETE URLs for interaction IDs with API key validation', 'summarize the transform_cancel_interaction_request and transform_cancel_interaction_response methods for POST :cancel endpoints']
+```
+
+Usage
+
+```
+{'build_gemini_interaction_request': 'build a request body for creating a Google AI Studio interaction with model, agent, input, and optional generation config', 'create_gemini_interaction_response': 'create an InteractionsAPIResponse object from a raw httpx response with headers and hidden params', 'test_streaming_chunk_parser': 'test the transform_streaming_response method that parses SSE streaming chunks into InteractionsAPIStreamingResponse objects', 'review_delete_interaction_url': 'review the transform_delete_interaction_request method that builds DELETE URLs for interaction IDs with API key validation', 'summarize_cancel_interaction_api': 'summarize the transform_cancel_interaction_request and transform_cancel_interaction_response methods for POST :cancel endpoints'}
+```
+

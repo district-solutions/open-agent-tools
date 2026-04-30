@@ -1,0 +1,336 @@
+{
+  "TauricResearch_TradingAgents/tradingagents/agents/schemas.py": {
+    "create_research_plan": "create a ResearchPlan Pydantic model with recommendation, rationale, and strategic actions fields",
+    "render_research_plan": "render a ResearchPlan instance to markdown for storage and trader prompt context",
+    "create_trader_proposal": "create a TraderProposal Pydantic model with action, reasoning, entry price, stop loss, and sizing",
+    "render_trader_proposal": "render a TraderProposal instance to markdown with transaction details and final proposal line",
+    "create_portfolio_decision": "create a PortfolioDecision Pydantic model with rating, summary, thesis, price target, and time horizon"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/analysts/fundamentals_analyst.py": {
+    "create_fundamentals_analyst": "create a fundamentals analyst agent node that analyzes company financials using an LLM",
+    "build_instrument_context": "build instrument context for a given company of interest in the trading agent state",
+    "get_fundamentals": "get comprehensive company fundamental analysis including profile and financial history",
+    "get_balance_sheet": "get balance sheet data for a company at a specified date",
+    "get_income_statement": "get income statement data for a company at a specified date"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/analysts/market_analyst.py": {
+    "create_market_analyst": "create a market analyst agent node that selects financial indicators and generates a detailed market report using an LLM",
+    "run_market_analyst_node": "run the market analyst node with a state containing trade_date, company_of_interest, and messages to produce a market report",
+    "build_instrument_context": "build an instrument context string from a company name to provide trading context to the market analyst",
+    "test_get_stock_data": "test the get_stock_data tool that retrieves stock data CSV for indicator generation",
+    "test_get_indicators": "test the get_indicators tool that computes technical indicators like SMA, EMA, RSI, MACD, Bollinger Bands, and ATR"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/analysts/news_analyst.py": {
+    "create_news_analyst": "create a news analyst agent node that analyzes recent news and trends for trading decisions",
+    "build_instrument_context": "build instrument context for a company of interest to provide trading-related background",
+    "get_news": "get company-specific or targeted news using query, start_date, and end_date parameters",
+    "get_global_news": "get broader macroeconomic news using current date, look_back_days, and limit parameters",
+    "create_news_analyst_chain": "create a langchain prompt chain that binds tools to an LLM for news analysis"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/analysts/social_media_analyst.py": {
+    "create_social_media_analyst": "create a social media analyst agent node that analyzes company news and sentiment using an LLM and the get_news tool",
+    "build_social_media_node": "build a social media analyst agent node from a LangChain LLM that returns a sentiment report for a given company",
+    "run_social_media_analysis": "run the social media analyst agent on a company to produce a sentiment report with news and public opinion analysis",
+    "test_social_media_analyst": "test the social media analyst agent node with sample state containing trade date, company name, and messages",
+    "review_social_media_agent": "review the social media analyst agent to verify it uses get_news tool and appends a Markdown table to the report"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/managers/portfolio_manager.py": {
+    "create_portfolio_manager": "create a portfolio manager node that synthesizes risk analysts debate and returns final trading decision",
+    "build_instrument_context": "build instrument context string from a company of interest name for the portfolio manager prompt",
+    "get_language_instruction": "get language instruction suffix appended to the portfolio manager prompt for output formatting",
+    "run_portfolio_manager_node": "run the portfolio manager node with state containing reports, plans, and debate history to produce a trade decision",
+    "review_portfolio_manager_output": "review the portfolio manager output containing rating, executive summary, and investment thesis from analyst debate"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/managers/research_manager.py": {
+    "create_research_manager": "create a research manager node that evaluates bull and bear debate and produces a definitive investment decision",
+    "build_instrument_context": "build instrument context string from a company name for the research manager prompt",
+    "run_research_manager_node": "run the research manager node with market, sentiment, news, and fundamentals reports to produce an investment plan",
+    "summarize_debate_history": "summarize the key points from bull and bear analyst debate history in the research manager",
+    "review_research_manager_output": "review the research manager output containing judge decision and detailed investment plan with recommendation rationale"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/researchers/bear_researcher.py": {
+    "create_bear_researcher": "create a bear analyst agent node that argues against investing in a stock using LLM-driven debate",
+    "build_bear_debate_argument": "build a bear research argument by combining market, sentiment, news, and fundamentals reports into a counter-bull case",
+    "retrieve_past_research_memories": "retrieve past research memories to inform the bear analyst's current argument with lessons from similar situations",
+    "update_debate_state": "update the investment debate state with the new bear argument, history, and round counter after each bear turn",
+    "refute_bull_claims": "refute bull analyst claims by analyzing their latest argument and presenting risk-focused counterpoints with supporting data"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/researchers/bull_researcher.py": {
+    "create_bull_researcher": "create a bull analyst node function that takes an LLM and memory to generate evidence-based investment arguments",
+    "build_bull_debate_argument": "build a bull analyst argument by combining market research, sentiment, news, and fundamentals reports with debate history",
+    "refute_bear_argument": "refute a bear analyst's argument using market data, company fundamentals, and past lessons from similar situations",
+    "retrieve_past_recommendations": "retrieve past recommendations from memory to inform current bull analysis and avoid repeating past mistakes",
+    "update_debate_state": "update the investment debate state with the new bull argument, incremented round count, and extended conversation history"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/risk_mgmt/aggressive_debator.py": {
+    "create_aggressive_debator": "create an aggressive risk analyst node that debates high-reward investment strategies against conservative and neutral viewpoints",
+    "run_aggressive_debator_node": "run the aggressive debator node with LLM, market reports, sentiment data, and trader investment plan to generate a high-risk perspective argument",
+    "build_risk_debate_state": "build a risk debate state object tracking conversation history, speaker turns, and responses from aggressive, conservative, and neutral analysts",
+    "review_aggressive_debator_prompt": "review the aggressive debator prompt that instructs the LLM to champion high-reward opportunities and counter conservative and neutral analyst arguments",
+    "summarize_debate_state_update": "summarize how the aggressive debator updates risk debate state including history, latest speaker, response count, and current arguments from all three analyst roles"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/risk_mgmt/conservative_debator.py": {
+    "create_conservative_debator": "create a conservative risk analyst node that debates low-risk investment strategies against aggressive and neutral viewpoints",
+    "run_conservative_debator_node": "run the conservative debator node with LLM, market reports, sentiment data, and trader investment plan to generate a cautious perspective argument",
+    "build_risk_debate_state": "build a risk debate state object tracking conversation history, speaker turns, and responses from aggressive, conservative, and neutral analysts",
+    "review_conservative_debator_prompt": "review the conservative debator prompt that instructs the LLM to challenge high-risk strategies and emphasize asset protection and risk mitigation",
+    "summarize_debate_state_update": "summarize how the conservative debator updates risk debate state including history, latest speaker, response count, and current arguments from all three analyst roles"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/risk_mgmt/neutral_debator.py": {
+    "create_neutral_debator": "create a neutral risk analyst node that debates balanced investment strategies against aggressive and conservative viewpoints",
+    "run_neutral_debator_node": "run the neutral debator node with LLM, market reports, sentiment data, and trader investment plan to generate a balanced perspective argument",
+    "build_risk_debate_state": "build a risk debate state object tracking conversation history, speaker turns, and responses from aggressive, conservative, and neutral analysts",
+    "review_neutral_debator_prompt": "review the neutral debator prompt that instructs the LLM to challenge both aggressive and conservative arguments and advocate for moderate risk strategies",
+    "summarize_debate_state_update": "summarize how the neutral debator updates risk debate state including history, latest speaker, response count, and current arguments from all three analyst roles"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/trader/trader.py": {
+    "create_trader": "create a trader agent node from an LLM and memory instance for making buy/sell/hold decisions",
+    "build_instrument_context": "build instrument context for a company to enrich the trader's market analysis",
+    "trader_node": "run the trader node that evaluates reports and returns a buy/sell/hold recommendation via LLM",
+    "create_trader_with_partial": "create a functools.partial trader node pre-bound with the name 'Trader' for graph execution",
+    "test_trader_investment_plan": "test the trader agent returns trader_investment_plan with a FINAL TRANSACTION PROPOSAL in its output"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/utils/agent_utils.py": {
+    "build_instrument_context": "build instrument context string for a stock ticker to preserve exchange-qualified identifiers",
+    "create_msg_delete": "create a message deletion function that clears chat history and adds a placeholder for Anthropic compatibility",
+    "get_language_instruction": "get language instruction string for configuring agent output language",
+    "get_stock_data": "get stock data for a given ticker symbol",
+    "get_indicators": "get technical indicators for a given stock ticker"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/utils/core_stock_tools.py": {
+    "run_get_stock_data": "run the get_stock_data tool to retrieve OHLCV stock price data for a given ticker symbol and date range",
+    "test_get_stock_data": "test the get_stock_data tool with AAPL symbol, start date 2024-01-01 and end date 2024-12-31",
+    "refactor_get_stock_data": "refactor the get_stock_data tool to support additional date formats beyond yyyy-mm-dd",
+    "review_get_stock_data": "review the get_stock_data tool and its route_to_vendor call for error handling and edge cases",
+    "summarize_get_stock_data": "summarize the get_stock_data tool that retrieves stock price data via the core_stock_apis vendor"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/utils/fundamental_data_tools.py": {
+    "summarize_get_fundamentals": "summarize the get_fundamentals tool that retrieves comprehensive fundamental data for a ticker symbol",
+    "run_get_balance_sheet": "run the get_balance_sheet tool to retrieve annual or quarterly balance sheet data for a ticker",
+    "run_get_cashflow": "run the get_cashflow tool to retrieve annual or quarterly cash flow statement data for a ticker",
+    "run_get_income_statement": "run the get_income_statement tool to retrieve annual or quarterly income statement data for a ticker",
+    "review_route_to_vendor": "review the route_to_vendor function that dispatches fundamental data tool calls to the configured vendor"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/utils/memory.py": {
+    "build_FinancialSituationMemory": "build a FinancialSituationMemory instance to store and retrieve financial situations using BM25 similarity matching",
+    "create_add_situations": "create a FinancialSituationMemory and add tuples of financial situations with corresponding advice recommendations",
+    "test_get_memories": "test the get_memories method to find matching financial situations and return ranked recommendations by similarity",
+    "refactor_clear": "refactor the clear method to reset stored documents, recommendations, and the BM25 index",
+    "review_FinancialSituationMemory": "review the FinancialSituationMemory class and its BM25-based lexical similarity retrieval for financial advice"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/utils/news_data_tools.py": {
+    "get_news": "retrieve news data for a given ticker symbol within a date range",
+    "get_global_news": "retrieve global news articles for a specified number of days with a result limit",
+    "get_insider_transactions": "retrieve insider transaction information for a given company ticker symbol"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/utils/rating.py": {
+    "parse_rating_from_text": "parse a 5-tier investment rating from prose text using the parse_rating function",
+    "parse_rating_with_default": "parse a rating from text and return a custom default when no rating is found",
+    "use_ratings_5_tier": "use the RATINGS_5_TIER tuple to iterate over the canonical buy overweight hold underweight sell scale",
+    "validate_rating_label": "validate that extracted text matches a valid 5-tier rating using the parse_rating two-pass strategy",
+    "extract_rating_from_markdown": "extract a rating from markdown-formatted text that may contain bold wrappers around the rating word"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/utils/structured.py": {
+    "bind_structured_output": "bind an LLM to a Pydantic schema for structured output with automatic fallback to free text",
+    "invoke_structured_call": "invoke a structured LLM call and render the result to markdown with free-text fallback on failure",
+    "create_structured_agent": "create an agent that uses structured output binding for typed Pydantic responses from an LLM",
+    "build_fallback_pattern": "build a graceful fallback pattern that retries a failed structured LLM call as plain free text",
+    "review_structured_output": "review the structured output binding and invocation pattern for agent reliability and error handling"
+  },
+  "TauricResearch_TradingAgents/tradingagents/agents/utils/technical_indicators_tools.py": {
+    "run_get_indicators": "run the get_indicators tool to retrieve a technical indicator for a given ticker symbol and date",
+    "test_get_indicators": "test the get_indicators tool with a ticker symbol, indicator name, current date, and look back days",
+    "refactor_get_indicators": "refactor the get_indicators tool to handle multiple comma-separated technical indicators",
+    "review_get_indicators": "review the get_indicators tool that routes requests to the technical_indicators vendor",
+    "summarize_get_indicators": "summarize the get_indicators tool that returns formatted dataframe results for a ticker symbol and indicator"
+  },
+  "TauricResearch_TradingAgents/tradingagents/dataflows/alpha_vantage_common.py": {
+    "build_get_api_key": "build a function that retrieves the Alpha Vantage API key from environment variables",
+    "create_format_datetime_for_api": "create a function that converts various date formats to YYYYMMDDTHHMM format for the Alpha Vantage API",
+    "test_alpha_vantage_rate_limit_error": "test the AlphaVantageRateLimitError exception class raised when API rate limits are exceeded",
+    "review_make_api_request": "review the _make_api_request function that handles Alpha Vantage API requests and rate limit detection",
+    "refactor_filter_csv_by_date_range": "refactor the _filter_csv_by_date_range function to filter CSV data within a specified date range"
+  },
+  "TauricResearch_TradingAgents/tradingagents/dataflows/alpha_vantage_fundamentals.py": {
+    "retrieve_company_overview": "retrieve comprehensive fundamental data and financial ratios for a given ticker symbol",
+    "fetch_balance_sheet": "fetch quarterly or annual balance sheet data for a company ticker with optional date filtering",
+    "fetch_cash_flow_data": "fetch quarterly or annual cash flow statement data for a company ticker with optional date filtering",
+    "fetch_income_statement": "fetch quarterly or annual income statement data for a company ticker with optional date filtering",
+    "filter_reports_by_date": "filter annual and quarterly financial reports to exclude entries after a specified cutoff date"
+  },
+  "TauricResearch_TradingAgents/tradingagents/dataflows/alpha_vantage_indicator.py": {
+    "run_indicator_get_sma": "run the get_indicator function to retrieve 50-day SMA values for a stock symbol over a date range",
+    "run_indicator_get_rsi": "run the get_indicator function to retrieve RSI values for a stock symbol over a date range",
+    "run_indicator_get_macd": "run the get_indicator function to retrieve MACD, MACD Signal, and MACD Histogram values for a stock symbol",
+    "run_indicator_get_bollinger": "run the get_indicator function to retrieve Bollinger Band values (upper, middle, lower) for a stock symbol",
+    "run_indicator_get_atr": "run the get_indicator function to retrieve ATR volatility values for a stock symbol over a date range"
+  },
+  "TauricResearch_TradingAgents/tradingagents/dataflows/alpha_vantage_news.py": {
+    "run_get_news": "run get_news to fetch market news and sentiment data for a specific ticker symbol within a date range",
+    "run_get_global_news": "run get_global_news to fetch broad market news and sentiment without ticker filtering",
+    "run_get_insider_transactions": "run get_insider_transactions to fetch insider trading activity for a given stock symbol",
+    "review_get_news": "review the get_news function that queries Alpha Vantage NEWS_SENTIMENT endpoint for ticker-specific news",
+    "summarize_get_global_news": "summarize the get_global_news function that retrieves global financial market news over a lookback period"
+  },
+  "TauricResearch_TradingAgents/tradingagents/dataflows/alpha_vantage_stock.py": {
+    "retrieve_stock_ohlcv": "retrieve daily OHLCV stock data for a symbol filtered by date range",
+    "fetch_adjusted_close_data": "fetch adjusted close values and split/dividend events for a given stock symbol",
+    "get_historical_stock_csv": "get historical stock CSV data from Alpha Vantage TIME_SERIES_DAILY_ADJUSTED API",
+    "query_stock_date_range": "query stock data within a specific start and end date range",
+    "pull_stock_time_series": "pull daily adjusted time series data for an equity symbol from Alpha Vantage"
+  },
+  "TauricResearch_TradingAgents/tradingagents/dataflows/config.py": {
+    "initialize_config": "initialize the tradingagents config with default values from default_config.DEFAULT_CONFIG",
+    "set_config": "set custom config values by passing a dictionary to override default tradingagents config",
+    "get_config": "get a copy of the current tradingagents configuration dictionary",
+    "build_config_get": "build a script that retrieves the default tradingagents configuration using get_config",
+    "refactor_config_set": "refactor the set_config function to validate config dictionary keys before updating"
+  },
+  "TauricResearch_TradingAgents/tradingagents/dataflows/interface.py": {
+    "run_route_to_vendor": "run route_to_vendor with method and arguments to fetch stock data from configured vendor",
+    "get_stock_data_yfinance": "get stock OHLCV data using yfinance vendor for a given ticker symbol",
+    "get_indicators_alpha_vantage": "get technical analysis indicators using alpha_vantage vendor for a stock ticker",
+    "get_fundamentals_yfinance": "get company fundamentals using yfinance vendor for a stock ticker",
+    "get_news_alpha_vantage": "get company news articles using alpha_vantage vendor for a stock ticker",
+    "get_balance_sheet_yfinance": "get balance sheet data using yfinance vendor for a stock ticker",
+    "get_cashflow_alpha_vantage": "get cash flow statement using alpha_vantage vendor for a stock ticker",
+    "get_insider_transactions_yfinance": "get insider transaction records using yfinance vendor for a stock ticker",
+    "get_global_news_alpha_vantage": "get global financial news using alpha_vantage vendor",
+    "get_income_statement_yfinance": "get income statement data using yfinance vendor for a stock ticker",
+    "review_get_vendor": "review get_vendor function that returns configured vendor for a data category",
+    "review_get_category_for_method": "review get_category_for_method function that maps a method to its category",
+    "review_route_to_vendor": "review route_to_vendor function with vendor fallback and rate limit handling"
+  },
+  "TauricResearch_TradingAgents/tradingagents/dataflows/stockstats_utils.py": {
+    "run_stockstats_indicator": "run the get_stock_stats method to retrieve a quantitative stock indicator value for a given ticker and date",
+    "load_ohlcv_data": "load historical OHLCV stock data with caching and look-ahead bias filtering for a given symbol and date",
+    "filter_financials_by_date": "filter financial statement columns to drop any fiscal periods that occur after a given cutoff date",
+    "retry_yfinance_calls": "retry yfinance API calls with exponential backoff on rate limit errors up to three times",
+    "clean_stock_dataframe": "clean and normalize a stock price DataFrame by parsing dates, coercing types, and filling missing values"
+  },
+  "TauricResearch_TradingAgents/tradingagents/dataflows/utils.py": {
+    "save_output_dataframe": "save a pandas DataFrame to a CSV file at the specified path with a tag label",
+    "get_current_date": "get today's date as a YYYY-MM-DD formatted string",
+    "decorate_all_methods": "apply a decorator function to all callable methods in a Python class",
+    "get_next_weekday": "get the next weekday from a given date, skipping weekends"
+  },
+  "TauricResearch_TradingAgents/tradingagents/dataflows/y_finance.py": {
+    "summarize_get_YFin_data_online": "summarize historical OHLCV stock data for AAPL from 2024-01-01 to 2024-12-31",
+    "run_get_stock_stats_indicators_window": "run RSI indicator analysis for TSLA over the last 30 days ending 2024-06-15",
+    "summarize_get_fundamentals": "summarize company fundamentals for MSFT including PE ratio and market cap",
+    "summarize_get_income_statement": "summarize quarterly income statement data for GOOGL",
+    "summarize_get_balance_sheet": "summarize annual balance sheet data for AMZN"
+  },
+  "TauricResearch_TradingAgents/tradingagents/dataflows/yfinance_news.py": {
+    "retrieve_ticker_news": "retrieve news for a stock ticker between two dates using yfinance",
+    "fetch_global_market_news": "fetch global market and macroeconomic news using yfinance search",
+    "extract_article_data": "extract structured article data from yfinance news format with nested content handling",
+    "summarize_ticker_news": "summarize news articles for a specific stock ticker within a date range",
+    "review_global_news": "review global market news articles with deduplication and date filtering"
+  },
+  "TauricResearch_TradingAgents/tradingagents/graph/checkpointer.py": {
+    "get_checkpointer": "create a SqliteSaver checkpointer context manager for a given ticker and data directory",
+    "has_checkpoint": "check if a resumable checkpoint exists for a specific ticker and date combination",
+    "checkpoint_step": "retrieve the latest checkpoint step number for a given ticker and date",
+    "clear_checkpoint": "remove the checkpoint data for a specific ticker and date from the SQLite database",
+    "clear_all_checkpoints": "delete all per-ticker checkpoint database files from the checkpoints directory"
+  },
+  "TauricResearch_TradingAgents/tradingagents/graph/conditional_logic.py": {
+    "build_ConditionalLogic": "build a ConditionalLogic instance to handle graph flow routing with configurable debate and risk discussion rounds",
+    "create_should_continue_market": "create a should_continue_market call that returns the next graph node based on whether the last message has tool calls",
+    "create_should_continue_social": "create a should_continue_social call that routes to tools_social or Msg Clear Social based on tool call presence",
+    "create_should_continue_debate": "create a should_continue_debate call that alternates between Bull and Bear Researchers and ends at Research Manager",
+    "create_should_continue_risk_analysis": "create a should_continue_risk_analysis call that cycles through Aggressive, Conservative, and Neutral Analysts before returning to Portfolio Manager"
+  },
+  "TauricResearch_TradingAgents/tradingagents/graph/propagation.py": {
+    "create_initial_state": "create an initial agent graph state for a given company name and trade date",
+    "build_graph_args": "build invocation arguments for the agent graph with optional callbacks and recursion limit",
+    "test_create_initial_state": "test the create_initial_state method returns a dict with company_of_interest and trade_date keys",
+    "test_get_graph_args": "test the get_graph_args method returns stream_mode values and config with recursion_limit",
+    "review_propagator_class": "review the Propagator class and its methods for state initialization and graph argument construction"
+  },
+  "TauricResearch_TradingAgents/tradingagents/graph/reflection.py": {
+    "create_class_reflector": "create a Reflector instance with a quick_thinking_llm to handle reflection on trading decisions",
+    "review_method_reflect_bull_researcher": "review the Reflector reflect_bull_researcher method that analyzes bull researcher debate history and updates memory",
+    "review_method_reflect_bear_researcher": "review the Reflector reflect_bear_researcher method that analyzes bear researcher debate history and updates memory",
+    "review_method_reflect_trader": "review the Reflector reflect_trader method that evaluates trader investment plans and updates memory",
+    "review_method_reflect_portfolio_manager": "review the Reflector reflect_portfolio_manager method that analyzes portfolio manager decisions and updates memory"
+  },
+  "TauricResearch_TradingAgents/tradingagents/graph/setup.py": {
+    "build_graph_setup": "build a GraphSetup instance with LLMs, tool nodes, memories, and conditional logic for agent workflow configuration",
+    "create_setup_graph": "create a compiled LangGraph workflow graph with selected analysts, researchers, debators, and portfolio manager nodes",
+    "select_analysts_workflow": "select market, social, news, and fundamentals analysts to build a sequential analysis pipeline in the agent graph",
+    "configure_debate_loop": "configure bull and bear researcher debate loop with conditional edges routing to research manager or back to opponent",
+    "run_risk_analysis_chain": "run sequential risk analysis through aggressive, neutral, and conservative analyst nodes before portfolio manager decision"
+  },
+  "TauricResearch_TradingAgents/tradingagents/graph/signal_processing.py": {
+    "create_SignalProcessor": "create a SignalProcessor instance with a quick_thinking_llm to process trading signals",
+    "process_signal_extract_rating": "process a full trading signal text and extract the core investment rating",
+    "test_SignalProcessor_process_signal": "test the SignalProcessor process_signal method with sample analyst report text",
+    "refactor_SignalProcessor_process_signal": "refactor the SignalProcessor process_signal method to support additional rating categories",
+    "review_SignalProcessor": "review the SignalProcessor class for extracting trading decisions from analyst reports"
+  },
+  "TauricResearch_TradingAgents/tradingagents/graph/trading_graph.py": {
+    "create_trading_agents_graph": "create a TradingAgentsGraph instance with selected analysts, debug mode, and custom config",
+    "run_trading_analysis": "run the trading agents graph for a company on a specific trade date and return the final decision",
+    "reflect_on_decisions": "reflect on trading decisions and update agent memories based on returns and losses",
+    "process_trade_signal": "process a full trade signal to extract the core investment decision",
+    "log_trading_state": "log the final trading graph state to a JSON file organized by ticker and date"
+  },
+  "TauricResearch_TradingAgents/tradingagents/llm_clients/anthropic_client.py": {
+    "create_anthropic_client": "create an AnthropicClient instance with a Claude model name and optional base URL",
+    "build_llm_instance": "build a configured ChatAnthropic LLM instance with passthrough kwargs like timeout and max_tokens",
+    "test_validate_model": "test the validate_model method to verify an Anthropic model name is valid",
+    "review_normalized_invoke": "review the NormalizedChatAnthropic invoke method that normalizes content blocks to strings",
+    "summarize_passthrough_kwargs": "summarize the _PASSTHROUGH_KWARGS tuple containing timeout, max_retries, api_key, and other config options"
+  },
+  "TauricResearch_TradingAgents/tradingagents/llm_clients/azure_client.py": {
+    "create_azure_openai_client": "create an AzureOpenAIClient instance with a model name and optional base URL for Azure OpenAI deployments",
+    "build_azure_llm_instance": "build a configured AzureChatOpenAI LLM instance via get_llm with passthrough kwargs for timeout and retries",
+    "test_azure_model_validation": "test the AzureOpenAIClient validate_model method which accepts any deployed model name",
+    "review_normalized_azure_invoke": "review the NormalizedAzureChatOpenAI invoke method that normalizes content output from Azure Chat OpenAI",
+    "summarize_azure_client_config": "summarize the AzureOpenAIClient initialization and environment variable requirements for Azure OpenAI access"
+  },
+  "TauricResearch_TradingAgents/tradingagents/llm_clients/base_client.py": {
+    "normalize_content": "normalize LLM response content by extracting text blocks and joining them into a plain string",
+    "build_llm_client": "build an LLM client subclass that implements get_llm and validate_model abstract methods",
+    "test_validate_model": "test that validate_model returns True for supported models and False otherwise",
+    "review_warn_if_unknown_model": "review warn_if_unknown_model to emit a RuntimeWarning when the model is not in the provider's known list",
+    "get_provider_name": "get the provider name from the client instance for use in warning messages"
+  },
+  "TauricResearch_TradingAgents/tradingagents/llm_clients/factory.py": {
+    "create_llm_client_openai": "create an OpenAI LLM client with model gpt-4 and base URL",
+    "create_llm_client_anthropic": "create an Anthropic LLM client with model claude-sonnet-4-20250514",
+    "create_llm_client_google": "create a Google LLM client with model gemini-2.0-flash",
+    "create_llm_client_azure": "create an Azure OpenAI LLM client with model and base URL",
+    "create_llm_client_openrouter": "create an OpenRouter LLM client using the OpenAI-compatible API"
+  },
+  "TauricResearch_TradingAgents/tradingagents/llm_clients/google_client.py": {
+    "create_google_client": "create a GoogleClient instance with a Gemini model name and optional base URL",
+    "build_llm_instance": "build a configured ChatGoogleGenerativeAI instance with api key, timeout, and retries",
+    "test_validate_model": "test the GoogleClient validate_model method for a given Gemini model string",
+    "review_normalized_invoke": "review the NormalizedChatGoogleGenerativeAI invoke method that normalizes Gemini 3 block content to string",
+    "summarize_thinking_mapping": "summarize how GoogleClient maps thinking_level to thinking_level or thinking_budget based on Gemini model version"
+  },
+  "TauricResearch_TradingAgents/tradingagents/llm_clients/model_catalog.py": {
+    "build_get_model_options": "build a function call to get_model_options for a provider and mode returning a list of model tuples",
+    "create_get_known_models": "create a function call to get_known_models that returns a dict of provider to sorted model name lists",
+    "run_get_model_options_openai": "run get_model_options with provider 'openai' and mode 'quick' to retrieve available OpenAI model choices",
+    "summarize_get_known_models": "summarize the output of get_known_models for all supported LLM providers and their available model names",
+    "test_get_model_options_anthropic": "test get_model_options with provider 'anthropic' and mode 'deep' to verify returned model tuples"
+  },
+  "TauricResearch_TradingAgents/tradingagents/llm_clients/openai_client.py": {
+    "create_openai_client": "create an OpenAIClient instance with a model name and optional provider for OpenAI, Ollama, or OpenRouter",
+    "build_llm_instance": "build a configured ChatOpenAI LLM instance with provider-specific base URL and API key from environment variables",
+    "test_validate_model": "test the OpenAIClient validate_model method to check if a model string is valid for the given provider",
+    "run_invoke_normalized": "run a chat completion via NormalizedChatOpenAI that normalizes Responses API output blocks into a single string",
+    "review_openai_client": "review the OpenAIClient class that supports multiple LLM providers with Responses API for native OpenAI models"
+  },
+  "TauricResearch_TradingAgents/tradingagents/llm_clients/validators.py": {
+    "test_validate_model": "test the validate_model function to check if a model name is valid for a given provider",
+    "build_validate_model_ollama": "build a validator call that accepts any model name for the ollama provider",
+    "build_validate_model_openrouter": "build a validator call that accepts any model name for the openrouter provider",
+    "build_validate_model_known": "build a validator call that checks a model name against the known models for a provider",
+    "review_validate_model": "review the validate_model function to understand how it validates model names per provider"
+  }
+}

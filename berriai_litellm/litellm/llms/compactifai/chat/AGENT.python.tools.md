@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/compactifai/chat/transformation.py
+
+Prompts
+
+```
+['create a CompactifAIChatConfig class that extends OpenAIGPTConfig for chat completion transformation', 'build API base URL and dynamic API key for CompactifAI provider from optional parameters or environment secrets', 'transform a CompactifAI HTTP response into a LiteLLM ModelResponse with logging and optional JSON mode handling', 'test the get_error_class method returns OpenAIError for CompactifAI error responses', 'summarize the CompactifAIChatConfig class and its three methods for OpenAI-compatible chat transformation']
+```
+
+Usage
+
+```
+{'create_CompactifAIChatConfig': 'create a CompactifAIChatConfig class that extends OpenAIGPTConfig for chat completion transformation', 'build_provider_info': 'build API base URL and dynamic API key for CompactifAI provider from optional parameters or environment secrets', 'transform_response': 'transform a CompactifAI HTTP response into a LiteLLM ModelResponse with logging and optional JSON mode handling', 'test_get_error_class': 'test the get_error_class method returns OpenAIError for CompactifAI error responses', 'summarize_CompactifAIChatConfig': 'summarize the CompactifAIChatConfig class and its three methods for OpenAI-compatible chat transformation'}
+```
+

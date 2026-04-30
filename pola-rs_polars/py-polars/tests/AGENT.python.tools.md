@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pola-rs/polars
+- repo_uri: https://github.com/pola-rs/polars.git
+
+## File: pola-rs_polars/py-polars/tests/conftest.py
+
+Prompts
+
+```
+['test the pytest --cloud-distributed option that enables distributed engine queries', 'patch polars LazyFrame.collect to execute queries via polars_cloud distributed engine with timeout', 'patch polars scan_parquet scan_csv scan_ipc scan_ndjson to convert IO streams to temporary files for cloud execution', 'patch polars read_parquet read_csv read_ipc read_ndjson to handle IO stream sources in cloud-distributed mode', 'patch polars LazyFrame sink_parquet sink_csv sink_ipc sink_ndjson to route sinks through polars_cloud distributed queries']
+```
+
+Usage
+
+```
+{'test_cloud_distributed_option': 'test the pytest --cloud-distributed option that enables distributed engine queries', 'patch_cloud_collect': 'patch polars LazyFrame.collect to execute queries via polars_cloud distributed engine with timeout', 'patch_cloud_scan': 'patch polars scan_parquet scan_csv scan_ipc scan_ndjson to convert IO streams to temporary files for cloud execution', 'patch_cloud_read': 'patch polars read_parquet read_csv read_ipc read_ndjson to handle IO stream sources in cloud-distributed mode', 'patch_cloud_sink': 'patch polars LazyFrame sink_parquet sink_csv sink_ipc sink_ndjson to route sinks through polars_cloud distributed queries'}
+```
+

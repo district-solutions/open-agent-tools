@@ -1,0 +1,33 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/src/transformers/models/pp_ocrv5_mobile_det/modeling_pp_ocrv5_mobile_det.py
+
+Prompts
+
+```
+['create a PPOCRV5MobileDetForObjectDetection model for binary text segmentation map generation', 'build a PPOCRV5MobileDetNeck neck network to fuse multi-scale backbone feature maps with residual squeeze-excitation layers', 'run a forward pass on PPOCRV5MobileDetModel to generate feature maps from input pixel values', 'test the PPOCRV5MobileDetSqueezeExcitationModule channel-wise recalibration with clamped activation', 'review the PPOCRV5MobileDetHead transposed convolution upsampling for probability map generation']
+```
+
+Usage
+
+```
+{'create_text_detection_model': 'create a PPOCRV5MobileDetForObjectDetection model for binary text segmentation map generation', 'build_text_feature_fusion': 'build a PPOCRV5MobileDetNeck neck network to fuse multi-scale backbone feature maps with residual squeeze-excitation layers', 'run_text_segmentation_forward': 'run a forward pass on PPOCRV5MobileDetModel to generate feature maps from input pixel values', 'test_squeeze_excitation_module': 'test the PPOCRV5MobileDetSqueezeExcitationModule channel-wise recalibration with clamped activation', 'review_head_upsampling': 'review the PPOCRV5MobileDetHead transposed convolution upsampling for probability map generation'}
+```
+
+## File: huggingface_transformers/src/transformers/models/pp_ocrv5_mobile_det/modular_pp_ocrv5_mobile_det.py
+
+Prompts
+
+```
+['create a PPOCRV5MobileDetForObjectDetection model for binary text segmentation map generation', 'build a PPOCRV5MobileDetNeck neck network to fuse multi-scale backbone feature maps with residual squeeze-excitation layers', 'run a forward pass on PPOCRV5MobileDetModel to generate feature maps from input pixel values', 'test the PPOCRV5MobileDetSqueezeExcitationModule channel-wise recalibration with clamped activation', 'review the PPOCRV5MobileDetHead transposed convolution upsampling for probability map generation']
+```
+
+Usage
+
+```
+{'create_text_detection_model': 'create a PPOCRV5MobileDetForObjectDetection model for binary text segmentation map generation', 'build_text_feature_fusion': 'build a PPOCRV5MobileDetNeck neck network to fuse multi-scale backbone feature maps with residual squeeze-excitation layers', 'run_text_segmentation_forward': 'run a forward pass on PPOCRV5MobileDetModel to generate feature maps from input pixel values', 'test_squeeze_excitation_module': 'test the PPOCRV5MobileDetSqueezeExcitationModule channel-wise recalibration with clamped activation', 'review_head_upsampling': 'review the PPOCRV5MobileDetHead transposed convolution upsampling for probability map generation'}
+```
+

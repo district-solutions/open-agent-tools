@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/python/sglang/srt/layers/quantization/modelslim/modelslim.py
+
+Prompts
+
+```
+['create a ModelSlimConfig from a quantization config dict for NPU-specific W4A4 or W8A8 quantization', 'build a ModelSlimLinearMethod to handle weight creation and forward apply for quantized linear layers on NPU', 'build a ModelSlimFusedMoEMethod to handle weight creation and forward apply for quantized MoE layers on NPU', 'get the quant method for a given layer and prefix using ModelSlimConfig.get_quant_method', 'test whether a layer should be skipped from quantization using ModelSlimConfig.is_layer_skipped']
+```
+
+Usage
+
+```
+{'create_modelslim_config': 'create a ModelSlimConfig from a quantization config dict for NPU-specific W4A4 or W8A8 quantization', 'build_modelslim_linear_method': 'build a ModelSlimLinearMethod to handle weight creation and forward apply for quantized linear layers on NPU', 'build_modelslim_moe_method': 'build a ModelSlimFusedMoEMethod to handle weight creation and forward apply for quantized MoE layers on NPU', 'get_modelslim_quant_method': 'get the quant method for a given layer and prefix using ModelSlimConfig.get_quant_method', 'test_modelslim_is_layer_skipped': 'test whether a layer should be skipped from quantization using ModelSlimConfig.is_layer_skipped'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pola-rs/polars
+- repo_uri: https://github.com/pola-rs/polars.git
+
+## File: pola-rs_polars/py-polars/src/polars/_utils/parse/expr.py
+
+Prompts
+
+```
+['parse a string, list, or Expr into a PyExpr expression with optional structify and dtype', 'parse multiple positional and keyword inputs into a list of PyExpr expressions', 'parse a column name or Expr into a polars Selector with strict mode', 'parse a collection of column names or selectors into a combined polars Selector', 'parse predicates and constraints into a single AND-reduced PyExpr expression']
+```
+
+Usage
+
+```
+{'parse_into_expression': 'parse a string, list, or Expr into a PyExpr expression with optional structify and dtype', 'parse_into_list_of_expressions': 'parse multiple positional and keyword inputs into a list of PyExpr expressions', 'parse_into_selector': 'parse a column name or Expr into a polars Selector with strict mode', 'parse_list_into_selector': 'parse a collection of column names or selectors into a combined polars Selector', 'parse_predicates_constraints_into_expression': 'parse predicates and constraints into a single AND-reduced PyExpr expression'}
+```
+

@@ -1,0 +1,226 @@
+{
+  "tanishqkumar_ssd/ssd/config.py": {
+    "create_config_speculative_decoding": "create a Config instance with speculative decoding enabled using a target and draft model",
+    "create_config_eagle3_draft": "create a Config instance with EAGLE3 draft model support and auto-selected layers",
+    "create_config_async_speculative": "create a Config instance with async speculative decoding and custom fan-out list",
+    "build_config_compute_max_blocks": "build a Config instance and compute the max_blocks property from model length and kv cache block size",
+    "review_config_post_init_validation": "review the Config __post_init__ validation logic for model paths, GPU count, and batch token constraints"
+  },
+  "tanishqkumar_ssd/ssd/engine/block_manager.py": {
+    "create_block_manager": "create a BlockManager instance with num_blocks, block_size, and optional draft and speculation parameters",
+    "test_can_allocate": "test whether a Sequence can allocate enough free blocks in the BlockManager",
+    "build_allocate_sequence": "build and allocate block tables for a Sequence with hash-based caching",
+    "refactor_deallocate_sequence": "refactor deallocation of a Sequence's block table with reference counting",
+    "review_may_append": "review the may_append method that allocates additional blocks for a Sequence"
+  },
+  "tanishqkumar_ssd/ssd/engine/draft_runner.py": {
+    "create_draft_config": "create a draft config from the main config without instantiating DraftRunner",
+    "run_draft_async_prefill": "run the draft model prefill pass in async mode with received input tensors and eagle activations",
+    "build_tree_batch": "build a tree decode batch from spec request results with glue decode input ids",
+    "decode_tree": "decode the speculation tree by running K sequential tree decode steps",
+    "populate_tree_cache": "populate the tensor-backed tree cache with decoded tokens logits and activations"
+  },
+  "tanishqkumar_ssd/ssd/engine/llm_engine.py": {
+    "create_llm_engine": "create an LLM engine instance with a model name and configuration kwargs for GPU-based inference",
+    "generate_text": "generate text outputs from a list of string or integer prompt sequences using sampling parameters",
+    "add_request": "add a single request to the scheduler with a prompt string or token list and sampling parameters",
+    "run_inference_step": "run a single inference step that schedules sequences and executes prefill or decode",
+    "log_metrics": "log final prefill and decode throughput metrics along with speculative decoding acceptance rates"
+  },
+  "tanishqkumar_ssd/ssd/engine/model_runner.py": {
+    "create_model_runner": "create a ModelRunner instance to run SSD speculative decoding on a target or draft LLM model",
+    "run_model_inference": "run the ModelRunner with sequences for prefill or decode steps and return sampled token IDs",
+    "allocate_kv_cache": "allocate GPU KV cache for the model based on free memory and block configuration",
+    "setup_model_and_cudagraphs": "setup and warmup the target or draft model with CUDA graphs for accelerated inference",
+    "run_model_with_eagle": "run model inference with EAGLE3 speculative decoding using hidden states for draft conditioning"
+  },
+  "tanishqkumar_ssd/ssd/engine/scheduler.py": {
+    "create_scheduler": "create a Scheduler instance with a Config object to manage sequence scheduling for speculative decoding",
+    "schedule_sequences": "schedule waiting and running sequences for prefill and decode phases with block allocation checks",
+    "preempt_sequences": "preempt running sequences by deallocating their KV cache blocks and moving them back to the waiting queue",
+    "postprocess_sequences": "postprocess scheduled sequences by appending generated tokens and updating KV cache block hashes",
+    "postprocess_speculate": "postprocess speculative decoding results by rolling back KV caches, updating metadata, and handling EAGLE activations"
+  },
+  "tanishqkumar_ssd/ssd/engine/sequence.py": {
+    "create_sequence": "create a Sequence object initialized with token IDs and sampling parameters",
+    "test_sequence_is_finished": "test the Sequence class is_finished property that checks if status equals FINISHED",
+    "build_sequence_clone_spec": "build a cloned Sequence with identical state for speculative decoding using clone_spec",
+    "run_sequence_append_token": "run sequence.append_token to append a token ID and update last_token and num_tokens",
+    "review_sequence_properties": "review the Sequence class properties including num_completion_tokens, prompt_token_ids, and completion_token_ids"
+  },
+  "tanishqkumar_ssd/ssd/engine/speculator_async.py": {
+    "create_SpeculatorAsync": "create a SpeculatorAsync instance with lookahead, device, async_fan_out, max_blocks, vocab_size, draft_dtype, kvcache_block_size, max_model_len, async_pg, draft_runner_rank, tokenizer, and verbose parameters",
+    "run_prefill": "run the prefill method on a list of Sequence objects with a VerifyResult to send command, metadata, input_ids, and optional eagle_acts to the draft runner rank",
+    "run_speculate": "run the speculate method on a list of Sequence objects with a VerifyResult to append recovery tokens, send speculation requests, and return speculations with logits and cache hits",
+    "build_speculation_request": "build a speculation request by filling handshake buffers with sequence cache keys, token counts, temperatures, block tables, and optional eagle activations then receive fused response and logits",
+    "alloc_handshake_buffers": "allocate and initialize handshake send/recv buffers for a given batch size including cmd, metadata, cache keys, token counts, temperatures, block tables, fused response, logits, and extend counts tensors"
+  },
+  "tanishqkumar_ssd/ssd/engine/speculator_sync.py": {
+    "create_speculator_sync": "create a SpeculatorSync instance with lookahead, device, and draft_model_runner for synchronous speculation",
+    "run_speculate": "run the speculate method to generate k speculative tokens using the draft model",
+    "run_prefill": "run the prefill method to initialize the draft model with prompt sequences",
+    "review_speculate": "review the speculate method that generates speculative tokens via draft model forward passes",
+    "review_prefill": "review the prefill method that runs the draft model on prompt sequences for synchronization"
+  },
+  "tanishqkumar_ssd/ssd/engine/step.py": {
+    "create_InferenceStep": "create an InferenceStep abstract base class with decode and prefill methods for sequence inference",
+    "build_AutoRegressiveStep": "build an AutoRegressiveStep that runs model inference with prefill and decode on sequence batches",
+    "run_SpecDecodeStep_prefill": "run SpecDecodeStep prefill with speculator and verifier for speculative decoding initialization",
+    "test_SpecDecodeStep_decode": "test SpecDecodeStep decode that speculates, verifies, and postprocesses sequence tokens",
+    "refactor_InferenceStep": "refactor InferenceStep to support additional inference step implementations beyond autoregressive and speculative decoding"
+  },
+  "tanishqkumar_ssd/ssd/engine/verifier.py": {
+    "create_verifier": "create a Verifier instance with lookahead, device, and target ModelRunner for speculative decoding verification",
+    "run_prefill": "run prefill on a list of Sequences to initialize recovery tokens and optionally capture Eagle hidden states",
+    "run_verify": "run verification of speculative tokens against the target model to produce accepted suffixes and recovery tokens",
+    "test_verify_eagle": "test the verify method with eagle mode enabled to include hidden state tracking for speculative decoding",
+    "review_verify_metrics": "review the verify method to understand how it tracks target verify times, cache hits, and accepted suffix lengths"
+  },
+  "tanishqkumar_ssd/ssd/engine/helpers/cudagraph_helpers.py": {
+    "run_verify_cudagraph": "run the CUDA graph for speculative verify step with input ids, positions, and graph vars",
+    "run_decode_cudagraph": "run the CUDA graph for decode step with optional hidden states for EAGLE draft models",
+    "run_fi_tree_decode_cudagraph": "run the FI tree decode CUDA graph with precomputed KV metadata and packed attention masks",
+    "capture_cudagraph": "capture CUDA graphs for decode with power-of-two bucket sizing for large batch sizes",
+    "capture_fi_tree_decode_cudagraph": "capture CUDA graphs for FI tree decode with fake plan setup and logits computation"
+  },
+  "tanishqkumar_ssd/ssd/engine/helpers/mask_helpers.py": {
+    "build_get_custom_mask": "build a causal attention mask for SSD decoding using get_custom_mask with context lengths, step, K, and cache hits",
+    "create_get_mask_iter_i": "create an iteration-specific attention mask tensor given prefix length, K, and F parameters",
+    "run_flat_blocks_after_cat": "run flat_blocks_after_cat to concatenate variable-length prefix blocks with a constant block into a flat boolean tensor",
+    "create_get_custom_mask_vectorized": "create a vectorized causal mask for batch sizes greater than 8 using hit/miss glue mask fixup",
+    "create_get_custom_mask_cached": "create a cached causal mask using precomputed glue, diagonal, and ones components for batch sizes up to 8"
+  },
+  "tanishqkumar_ssd/ssd/engine/helpers/runner_helpers.py": {
+    "build_prepare_prefill_payload": "build a prefill payload with input ids, eagle activations, device, max blocks, and draft block tables",
+    "create_prepare_decode_tensors_from_seqs": "create decode tensors from sequences with block size, draft flag, verify mode, and k parameter",
+    "build_prepare_block_tables_from_seqs": "build padded block tables tensor from sequences with optional draft flag",
+    "create_prepare_prefill_tensors_from_seqs": "create prefill tensors from sequences with block size, draft flag, and skip first token option",
+    "test_prepare_decode_tensors_from_seqs": "test decode tensor preparation for normal decoding and verify paths with k parameter"
+  },
+  "tanishqkumar_ssd/ssd/engine/helpers/speculate_types.py": {
+    "create_SpeculateResult": "create a SpeculateResult dataclass with speculation tokens, logits, and optional cache hits",
+    "create_VerifyResult": "create a VerifyResult dataclass with new suffixes, recovery tokens, and optional eagle actions",
+    "implement_SpeculatorBase_prefill": "implement the SpeculatorBase prefill method to generate speculative tokens from sequences",
+    "implement_SpeculatorBase_speculate": "implement the SpeculatorBase speculate method to produce speculation results given sequences",
+    "implement_VerifierBase_verify": "implement the VerifierBase verify method to validate speculative tokens against the target model"
+  },
+  "tanishqkumar_ssd/ssd/layers/activation.py": {
+    "create_SiluAndMul": "create a SiluAndMul module that splits input tensor, applies SiLU to first half, and multiplies by second half",
+    "build_SiluAndMul_forward": "build a forward pass for SiluAndMul that chunks input along last dimension and returns F.silu(x) * y",
+    "test_SiluAndMul": "test the SiluAndMul module with a tensor of even last-dimension size to verify chunk and multiply behavior",
+    "review_SiluAndMul": "review the SiluAndMul class that extends nn.Module with a torch-compiled forward method",
+    "refactor_SiluAndMul": "refactor the SiluAndMul forward method to support tensors with odd last-dimension size"
+  },
+  "tanishqkumar_ssd/ssd/layers/attention.py": {
+    "create_class_attention": "create an Attention module with num_heads, head_dim, scale, and num_kv_heads for SSD inference",
+    "run_method_attention_forward": "run the Attention forward method with q, k, v tensors to compute attention output",
+    "build_function_store_kvcache": "build a function to store key-value cache tensors into slot-mapped cache buffers via Triton kernel",
+    "test_class_attention_speculate": "test the Attention class with speculate and draft_async flags enabled for tree-decode paths",
+    "review_function_store_kvcache_kernel": "review the store_kvcache_kernel Triton JIT kernel that writes key and value tensors into cache slots"
+  },
+  "tanishqkumar_ssd/ssd/layers/embed_head.py": {
+    "create_VocabParallelEmbedding": "create a VocabParallelEmbedding module with num_embeddings, embedding_dim, and tp_size for tensor parallel embedding lookup",
+    "build_ParallelLMHead": "build a ParallelLMHead layer that computes logits from hidden states with tensor parallel gather across ranks",
+    "test_VocabParallelEmbedding_forward": "test the VocabParallelEmbedding forward pass with token indices and verify output embedding dimensions",
+    "review_ParallelLMHead_forward": "review the ParallelLMHead forward method handling prefill, decode, and multi-query decode paths with tensor parallel",
+    "refactor_weight_loader": "refactor the weight_loader method to shard and copy loaded weights across tensor parallel partitions"
+  },
+  "tanishqkumar_ssd/ssd/layers/layernorm.py": {
+    "create_class_RMSHeadNorm": "create an RMSHeadNorm layer with hidden_size and eps for RMS normalization on PyTorch tensors",
+    "build_class_RMSDNorm": "build an RMSDNorm layer with hidden_size and eps for RMS normalization specialized to shape D",
+    "test_method_rms_forward": "test the RMSHeadNorm rms_forward method that applies RMS normalization to a tensor",
+    "test_method_add_rms_forward": "test the RMSHeadNorm add_rms_forward method that adds residual then applies RMS normalization",
+    "review_class_RMSDNorm": "review the RMSDNorm class and its norm_forward method that applies RMS normalization with torch.compile"
+  },
+  "tanishqkumar_ssd/ssd/layers/linear.py": {
+    "create_class_ReplicatedLinear": "create a ReplicatedLinear module that replicates weights across all TP ranks for inference",
+    "create_class_ColumnParallelLinear": "create a ColumnParallelLinear module that shards output dimensions across TP ranks",
+    "create_class_QKVParallelLinear": "create a QKVParallelLinear module that shards Q, K, V projections across TP ranks for attention",
+    "create_class_RowParallelLinear": "create a RowParallelLinear module that shards input dimensions and all-reduces outputs across TP ranks",
+    "create_class_MergedColumnParallelLinear": "create a MergedColumnParallelLinear module that merges multiple output shards into one column-parallel layer"
+  },
+  "tanishqkumar_ssd/ssd/layers/rotary_embedding.py": {
+    "build_rotary_embedding_module": "build a RotaryEmbedding module with head_size, rotary_dim, max_position_embeddings, and base parameters",
+    "create_apply_rotary_emb": "create a function to apply rotary embeddings to query and key tensors using cos and sin tensors",
+    "test_rotary_embedding_forward": "test the RotaryEmbedding forward method with positions, query, and key tensors",
+    "create_get_rope_cache": "create a cached get_rope function that returns a RotaryEmbedding instance with given parameters",
+    "review_apply_rotary_emb": "review the apply_rotary_emb function that splits tensors, applies cos/sin rotation, and recombines"
+  },
+  "tanishqkumar_ssd/ssd/layers/sampler.py": {
+    "create_Sampler": "create a Sampler module with configurable sampler_x and async_fan_out parameters for Gumbel-softmax token sampling",
+    "run_Sampler_forward": "run the Sampler forward pass on logits and temperatures tensor to sample tokens with optional Gumbel-softmax rescaling",
+    "test_Sampler_greedy_path": "test the Sampler zero-temperature fast path that returns greedy argmax tokens without sampling",
+    "test_Sampler_tree_rescaling": "test the Sampler with is_tree enabled to apply sampler_x rescaling via async_spec_helpers",
+    "run_profile_sampler": "run the profile_sampler function to benchmark Sampler throughput on batch and vocab sized tensors"
+  },
+  "tanishqkumar_ssd/ssd/models/eagle3_draft_llama3.py": {
+    "create_Eagle3DraftForCausalLM": "create an Eagle3DraftForCausalLM model with draft speculative decoding and Eagle3 attention layers",
+    "build_Eagle3DecoderLayer": "build an Eagle3DecoderLayer with Eagle3Attention and LlamaMLP conditioned on target hidden states",
+    "build_Eagle3Attention": "build an Eagle3Attention module with QKV parallel linear projection and Eagle speculative attention",
+    "run_Eagle3DraftModel_forward": "run the Eagle3DraftModel forward pass with input ids, projected hidden states, and positions",
+    "compute_Eagle3DraftForCausalLM_logits": "compute full vocab logits from draft hidden states using d2t index mapping"
+  },
+  "tanishqkumar_ssd/ssd/models/llama3.py": {
+    "build_LlamaForCausalLM": "build a LlamaForCausalLM model from a LlamaConfig with optional speculative decoding and tensor parallelism",
+    "create_LlamaDecoderLayer": "create a LlamaDecoderLayer with attention, MLP, and RMS norm configured from a LlamaConfig",
+    "build_LlamaAttention": "build a LlamaAttention module with QKV projection, rotary embeddings, and multi-head attention",
+    "create_LlamaMLP": "create a LlamaMLP with merged gate-up projection, SiLU activation, and row-parallel down projection",
+    "build_LlamaModel": "build a LlamaModel with token embeddings, stacked decoder layers, and final RMS normalization"
+  },
+  "tanishqkumar_ssd/ssd/models/qwen3.py": {
+    "create_Qwen3ForCausalLM": "create a Qwen3ForCausalLM model with draft speculation and tensor parallelism support",
+    "build_Qwen3DecoderLayer": "build a Qwen3DecoderLayer with attention, MLP, and residual normalization for transformer inference",
+    "test_Qwen3Attention": "test Qwen3Attention with query-key-value projection, rotary embeddings, and RMS normalization",
+    "refactor_Qwen3MLP": "refactor Qwen3MLP to use merged gate-up projection with SiLU activation and row-parallel down projection",
+    "run_Qwen3Model": "run Qwen3Model forward pass with token embeddings, stacked decoder layers, and RMS output normalization"
+  },
+  "tanishqkumar_ssd/ssd/utils/context.py": {
+    "get_context": "get the global Context object containing KV cache and sequence metadata",
+    "set_context_prefill": "set the global Context for prefill phase with cu_seqlens_q, cu_seqlens_k, and max sequence lengths",
+    "set_context_decode": "set the global Context for decode phase with slot_mapping, context_lens, and block_tables",
+    "reset_context": "reset the global Context to default values with all fields cleared",
+    "check_is_prefill": "check the is_prefill flag on the global Context to determine inference phase"
+  },
+  "tanishqkumar_ssd/ssd/utils/loader.py": {
+    "load_model_eagle_from_path": "load an EAGLE3 draft model from a path with optional target model for embedding weights",
+    "load_model_safetensors_from_path": "load a standard model from safetensors files in a given path",
+    "load_eagle_model_with_packed_modules": "load an EAGLE3 draft model with packed module mappings for quantized weights",
+    "load_embedding_from_target_model": "load embedding weights from a target model path into a draft model",
+    "load_safetensors_model_with_packed_modules": "load model weights from safetensors files with packed module name remapping"
+  },
+  "tanishqkumar_ssd/ssd/utils/misc.py": {
+    "build_infer_model_family": "build a function to infer if a model is Llama or Qwen based on its path name",
+    "create_decode_tokens": "create a function that decodes a list of token IDs into readable strings using a tokenizer",
+    "test_infer_model_family": "test the infer_model_family function with Llama and Qwen model paths",
+    "test_decode_tokens": "test the decode_tokens function with token IDs and an AutoTokenizer instance",
+    "refactor_infer_model_family": "refactor the infer_model_family function to support additional model families beyond Llama and Qwen"
+  },
+  "tanishqkumar_ssd/ssd/utils/verify.py": {
+    "verify_speculative_decoding": "verify speculative-decoding acceptance using greedy argmax and p/q-ratio acceptance with recovery sampling",
+    "run_greedy_verification": "run greedy verification by comparing draft tokens against target model argmax predictions",
+    "test_ratio_acceptance": "test ratio-based token acceptance with softmax probabilities and random thresholding",
+    "build_recovery_distribution": "build adjusted max(0, p-q) recovery distribution for rejected draft tokens",
+    "test_async_cache_handling": "test async speculative decoding with cache-hit filtering and sampler_x rescaling"
+  },
+  "tanishqkumar_ssd/ssd/utils/async_helpers/async_spec_helpers.py": {
+    "compute_megaspec_lookahead": "compute the megaspec lookahead length given MQ_LEN and speculative K",
+    "build_glue_decode_input_ids": "build flat glue decode input ids tensor from draft tokens and recovery tokens",
+    "get_forked_recovery_tokens_from_logits": "get forked recovery token indices from logits using cache hit status and fan-out config",
+    "apply_sampler_x_rescaling": "apply sampler_x rescaling to top-F probabilities and renormalize the distribution",
+    "test_async_spec_helpers": "test the async_spec_helpers module for speculative decoding utility functions"
+  },
+  "tanishqkumar_ssd/ssd/utils/async_helpers/nccl_pack.py": {
+    "build_concat_int64": "build a function that concatenates multiple torch tensors into a single flat int64 payload",
+    "test_send_int64": "test sending multiple int64 tensors as one fused payload via NCCL distributed send",
+    "test_recv_int64": "test receiving a fused int64 payload of known length via NCCL distributed recv",
+    "refactor_concat_int64": "refactor the concat_int64 function to handle mixed dtype tensors with None values",
+    "review_send_int64": "review the send_int64 function and its usage with torch.distributed groups"
+  },
+  "tanishqkumar_ssd/ssd/utils/async_helpers/tests.py": {
+    "test_prepare_last_consistency_test": "test KV cache block consistency across fork groups using branch block table and kv cache tensors",
+    "review_logits_out_glue_decode_sanity_test": "review glue decode logits against out logits with cache hit filtering and tolerance-based mismatch detection",
+    "test_logits_alignment_sanity_test": "test that logits are identical across all F branches for each (b, k) pair and distinct across different (b, k) pairs",
+    "build_get_conditioning_tensor_test": "build a conditioning tensor from kv cache and block table given a context length with full and partial block handling",
+    "test_get_forked_recovery_tokens_from_logits": "test forked recovery token extraction from logits for speculative decoding with async fan out branches"
+  }
+}

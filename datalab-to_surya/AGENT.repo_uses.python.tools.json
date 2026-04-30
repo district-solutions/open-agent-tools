@@ -1,0 +1,502 @@
+{
+  "datalab-to_surya/benchmark/recognition.py": {
+    "run_benchmark_recognition": "run the Surya OCR recognition benchmark CLI to evaluate model performance on images",
+    "run_benchmark_tesseract": "run the OCR benchmark with tesseract comparison enabled for accuracy evaluation",
+    "run_benchmark_textract": "run the OCR benchmark with textract comparison enabled for accuracy evaluation",
+    "run_benchmark_languages": "run the OCR recognition benchmark filtered to a comma-separated list of languages",
+    "normalize_text": "normalize OCR text by removing HTML tags, LaTeX commands, standardizing bullets, and lowercasing"
+  },
+  "datalab-to_surya/benchmark/texify.py": {
+    "run_benchmark_texify": "run the texify benchmark CLI to evaluate OCR accuracy on math equation images",
+    "run_benchmark_line_mode": "run texify benchmark in line mode to process images with per-line bounding boxes",
+    "run_benchmark_max_rows": "run texify benchmark on a subset of dataset rows for quick evaluation",
+    "score_text_predictions": "score texify predictions against reference equations using normalized Levenshtein distance",
+    "inference_texify_images": "run texify inference on a dataset of images to predict LaTeX equation text"
+  },
+  "datalab-to_surya/benchmark/utils/bbox.py": {
+    "create_function_get_pdf_lines": "create a function that extracts line bounding boxes from a PDF and rescales them to image coordinates",
+    "create_function_merge_boxes": "create a function that merges two bounding boxes into a single encompassing box",
+    "create_function_join_lines": "create a function that joins vertically aligned bounding boxes within a maximum gap threshold",
+    "test_function_get_pdf_lines": "test the get_pdf_lines function extracts and rescales PDF line bounding boxes correctly",
+    "test_function_join_lines": "test the join_lines function merges vertically aligned boxes within the gap threshold"
+  },
+  "datalab-to_surya/benchmark/utils/metrics.py": {
+    "calculate_precision_recall": "calculate precision and recall for bounding box predictions against reference boxes with configurable IoU threshold",
+    "calculate_mean_coverage": "calculate mean coverage score between predicted and reference bounding boxes",
+    "match_bounding_boxes": "match predicted bounding boxes to reference boxes using IoU-based greedy assignment",
+    "calculate_iou": "calculate intersection-over-union between two bounding boxes for overlap measurement",
+    "calculate_rank_accuracy": "calculate rank accuracy between predicted and reference bounding box scores"
+  },
+  "datalab-to_surya/benchmark/utils/scoring.py": {
+    "test_overlap_score": "test the overlap_score function that computes fuzzy line-level matching between predicted and reference text lines",
+    "test_overlap_score_exact": "test the overlap_score_exact function that computes exact-pair fuzzy matching between predicted and reference text lines",
+    "refactor_overlap_score": "refactor the overlap_score function to support configurable score_cutoff and weight normalization",
+    "review_overlap_score": "review the overlap_score function for handling empty input lists and edge cases",
+    "summarize_overlap_score_exact": "summarize the overlap_score_exact function and its use of rapidfuzz ratio scoring with line-length weighting"
+  },
+  "datalab-to_surya/benchmark/utils/tatr.py": {
+    "load_table_transformer_model": "load the microsoft table transformer model for structure recognition",
+    "run_batch_inference_on_images": "run batch inference on PIL images to detect table rows and columns",
+    "transform_image_to_tensor": "transform a PIL image into a normalized torch tensor for model input",
+    "convert_model_outputs_to_objects": "convert model logits and bounding boxes into structured row and column objects",
+    "rescale_predicted_bounding_boxes": "rescale normalized bounding boxes to original image dimensions"
+  },
+  "datalab-to_surya/benchmark/utils/tesseract.py": {
+    "run_tesseract_ocr": "run tesseract_ocr on an image with bounding boxes and language to extract text lines",
+    "run_tesseract_ocr_parallel": "run tesseract_ocr_parallel on multiple images with bounding boxes and languages for batch OCR",
+    "run_tesseract_bboxes": "run tesseract_bboxes on an image to detect bounding boxes for text regions",
+    "run_tesseract_parallel": "run tesseract_parallel on multiple images to detect bounding boxes in parallel",
+    "summarize_surya_lang_to_tesseract": "summarize surya_lang_to_tesseract that maps a surya language code to a tesseract language code"
+  },
+  "datalab-to_surya/benchmark/utils/textract.py": {
+    "run_textract_ocr": "run textract_ocr to extract text lines from a single image using a Textractor instance",
+    "run_textract_ocr_parallel": "run textract_ocr_parallel to extract text from multiple images in parallel with ThreadPoolExecutor",
+    "test_textract_ocr": "test textract_ocr with a single image and verify it returns a list of text lines",
+    "test_textract_ocr_parallel": "test textract_ocr_parallel with multiple images and verify parallel execution returns results for each image",
+    "review_textract_ocr": "review textract_ocr to handle image OCR with fallback to None on exception and traceback logging"
+  },
+  "datalab-to_surya/benchmark/utils/verify_benchmark_scores.py": {
+    "run_verify_benchmark_scores_cli": "run the CLI to verify benchmark scores from a JSON file for a given benchmark type",
+    "test_verify_det": "test the verify_det function to validate detection metrics precision and recall thresholds",
+    "test_verify_rec": "test the verify_rec function to validate recognition average score threshold",
+    "test_verify_layout": "test the verify_layout function to validate layout metrics precision and recall thresholds",
+    "test_verify_order": "test the verify_order function to validate ordering mean accuracy threshold",
+    "test_verify_table_rec": "test the verify_table_rec function to validate table recognition row and column IoU thresholds",
+    "test_verify_texify": "test the verify_texify function to validate texify edit distance threshold"
+  },
+  "datalab-to_surya/surya/logging.py": {
+    "configure_logging": "configure the surya logger with a stream handler, formatter, and log level from settings",
+    "get_logger": "get the surya logger instance for use throughout the application",
+    "test_configure_logging": "test the configure_logging function sets up the logger with correct handler and formatter",
+    "test_get_logger": "test the get_logger function returns a logger instance named surya",
+    "refactor_configure_logging": "refactor configure_logging to accept custom handler and formatter parameters"
+  },
+  "datalab-to_surya/surya/models.py": {
+    "build_load_predictors": "build a function call to load all surya predictors including layout, detection, recognition, ocr_error, and table_rec",
+    "create_layout_predictor": "create a layout predictor using the surya foundation model checkpoint for document layout analysis",
+    "create_detection_predictor": "create a text detection predictor with optional device and dtype configuration for OCR text regions",
+    "create_recognition_predictor": "create an OCR recognition predictor using the surya foundation model for text content extraction",
+    "create_table_recognizer": "create a table recognition predictor with optional device and dtype for table structure extraction"
+  },
+  "datalab-to_surya/surya/settings.py": {
+    "create_settings_instance": "create a Settings instance from pydantic_settings that auto-loads from local.env and environment variables",
+    "get_torch_device_model": "get the detected torch device model string (cpu, cuda, mps, or xla) from the Settings class",
+    "configure_model_dtype": "configure the model data type (float32, float16, or bfloat16) based on the detected torch device",
+    "set_detector_thresholds": "set text detection thresholds including text threshold and blank threshold for the OCR pipeline",
+    "configure_ocr_models": "configure OCR model checkpoints, batch sizes, and render fonts for text recognition and layout analysis"
+  },
+  "datalab-to_surya/surya/common/load.py": {
+    "create_modelloader": "create a ModelLoader instance with an optional checkpoint path string",
+    "build_modelloader_model": "build a model from the ModelLoader using a torch device and dtype",
+    "test_modelloader_processor": "test the ModelLoader processor method with a device and dtype",
+    "refactor_modelloader_model": "refactor the ModelLoader model method to accept attention_implementation parameter",
+    "review_modelloader": "review the ModelLoader class and its model and processor methods"
+  },
+  "datalab-to_surya/surya/common/polygon.py": {
+    "create_PolygonBox_bbox": "create a PolygonBox from a bounding box [x_min, y_min, x_max, y_max]",
+    "create_PolygonBox_polygon": "create a PolygonBox from a list of four corner coordinates",
+    "test_PolygonBox_intersection_pct": "test the PolygonBox intersection_pct method to compute overlap percentage between two boxes",
+    "refactor_PolygonBox_merge": "refactor the PolygonBox merge method to combine two boxes into a single bounding polygon",
+    "review_PolygonBox_rescale": "review the PolygonBox rescale method for scaling polygon coordinates between processor and image sizes"
+  },
+  "datalab-to_surya/surya/common/predictor.py": {
+    "create_BasePredictor": "create a BasePredictor instance with a checkpoint path, device, and dtype for model inference",
+    "run_BasePredictor_to": "run BasePredictor.to to move the loaded model to a different device or dtype",
+    "build_BasePredictor_get_batch_size": "build a call to BasePredictor.get_batch_size to retrieve the appropriate batch size for the current device",
+    "test_BasePredictor_pad_to_batch_size": "test BasePredictor.pad_to_batch_size to pad a tensor up to a target batch size with zeros",
+    "review_BasePredictor_disable_tqdm": "review BasePredictor.disable_tqdm property to toggle tqdm progress bar output on or off"
+  },
+  "datalab-to_surya/surya/common/s3.py": {
+    "download_file_from_s3": "download a file from a remote URL to a local path with progress bar and error handling",
+    "download_directory_from_s3": "download a directory of files from S3 using a manifest and parallel workers with retry logic",
+    "create_s3_downloader_mixin": "create an S3DownloaderMixin class that loads models from s3:// paths with automatic caching and retries",
+    "test_check_manifest": "test the check_manifest function to verify a local directory contains all files listed in manifest.json",
+    "review_join_urls": "review the join_urls function that safely concatenates two URL strings without double slashes"
+  },
+  "datalab-to_surya/surya/common/util.py": {
+    "clean_boxes": "clean a list of PolygonBox objects by removing zero-area and contained boxes",
+    "rescale_bbox": "rescale a bounding box from processor dimensions to actual image dimensions",
+    "expand_bbox": "expand a bounding box by a given factor on all sides",
+    "get_top_scripts": "get the top detected writing scripts from a text string",
+    "pad_to_batch_size": "pad a torch tensor to a target batch size with zeros"
+  },
+  "datalab-to_surya/surya/common/xla.py": {
+    "build_get_nearest_pad": "build a padding utility that rounds up a length to the nearest multiple for XLA tensor alignment",
+    "create_get_compile_args": "create a function that returns XLA compilation backend arguments when XLA is enabled",
+    "test_get_nearest_pad": "test get_nearest_pad returns the smallest multiple of pad_multiple greater than or equal to length",
+    "run_mark_step": "run mark_step to signal the end of an XLA computation step for synchronization",
+    "review_get_compile_args": "review get_compile_args returns an empty dict when XLA is disabled and openxla backend when enabled"
+  },
+  "datalab-to_surya/surya/common/adetr/decoder.py": {
+    "create_surya_adetr_decoder_model": "create a SuryaADETRDecoderModel transformer decoder with embedder, config, and optional static cache",
+    "build_cross_attention_module": "build a SuryaADETRDecoderSdpaCrossAttention module for multi-headed cross-attention with GQA support",
+    "build_self_attention_module": "build a SuryaADETRDecoderSdpaAttention module with rotary embeddings and static or dynamic KV cache",
+    "build_decoder_layer": "build a SuryaADETRDecoderLayer with optional cross-attention, temporal attention, and MLP blocks",
+    "test_rotary_embedding": "test SuryaADETRDecoderRotaryEmbedding forward pass to generate cos and sin position embeddings"
+  },
+  "datalab-to_surya/surya/common/donut/encoder.py": {
+    "build_donut_swin_encoder": "build a DonutSwinEncoder that processes image patches through stacked stages with shifted window attention",
+    "create_donut_swin_embeddings": "create DonutSwinEmbeddings to convert pixel values into patch embeddings with position encoding support",
+    "test_window_partition": "test the window_partition function that splits 2D feature maps into fixed-size windows for local attention",
+    "refactor_donut_swin_attention": "refactor DonutSwinSelfAttention to use grouped query attention with configurable kv_heads for efficiency",
+    "summarize_donut_swin_stage": "summarize the DonutSwinStage class that combines transformer blocks with patch merging for hierarchical feature extraction"
+  },
+  "datalab-to_surya/surya/common/donut/processor.py": {
+    "create_surya_image_processor": "create a SuryaEncoderImageProcessor to preprocess images for transformer-based document recognition",
+    "process_inner_images": "process a list of numpy RGB images by resizing, padding, rescaling, and normalizing them for model input",
+    "pad_image_to_max_size": "pad a numpy image to a target size with centered whitespace padding for batch processing",
+    "align_long_axis_image": "rotate a numpy image 90 degrees if its aspect ratio is inverted relative to the target output dimensions",
+    "normalize_image_values": "normalize a numpy image array using custom mean and standard deviation values per channel"
+  },
+  "datalab-to_surya/surya/common/surya/flash_attn_utils.py": {
+    "run_flash_attn_prefill": "run flash attention during the prefill stage with query, key, value states and attention mask",
+    "run_flash_attn_decode": "run flash attention during the decode stage using key-value cache with left padding and sequence lengths",
+    "run_get_unpad_data": "run utility to compute indices, cumulative sequence lengths, and max sequence length from an attention mask",
+    "run_upad_input": "run utility to unpad query, key, and value tensors for flash attention using attention mask indices",
+    "review_flash_attn_utils": "review the flash attention wrapper module for prefill and decode stages with kv-cache support"
+  },
+  "datalab-to_surya/surya/common/surya/processor/tokenizer.py": {
+    "build_trie_math_tokens": "build a trie from math token to id mapping for greedy longest-match encoding",
+    "create_token_regex": "create a regex pattern from a list of tokens sorted longest-first for greedy matching",
+    "encode_greedy_math": "encode a math string using greedy longest-match against a trie of LaTeX math tokens",
+    "decode_token_ids": "decode a list of absolute token ids back to text with latex escape fixup",
+    "tokenize_ocr_text": "tokenize ocr text with tasks and return input ids using the surya ocr tokenizer"
+  },
+  "datalab-to_surya/surya/debug/draw.py": {
+    "build_draw_bboxes_on_image": "build a function to draw bounding boxes on a PIL image with optional labels and colors",
+    "create_draw_polys_on_image": "create a function to draw polygon outlines on a PIL image with labeled annotations",
+    "test_draw_bboxes_on_image": "test the draw_bboxes_on_image function to render bbox outlines on an image",
+    "refactor_draw_polys_on_image": "refactor the draw_polys_on_image function to support custom box padding and label offsets",
+    "review_draw_bboxes_on_image": "review the draw_bboxes_on_image function and its polygon conversion logic"
+  },
+  "datalab-to_surya/surya/debug/fonts.py": {
+    "get_font_path": "get the font path for OCR recognition rendering using default or language-specific settings",
+    "get_font_path_langs": "get a language-specific font path when a single language is provided in the langs list",
+    "get_font_path_download": "auto-download a missing font file from the configured remote URL base path",
+    "get_font_path_default": "get the default recognition render font path from settings.RECOGNITION_RENDER_FONTS all key",
+    "get_font_path_directory": "create the parent directory for a font file if it does not already exist"
+  },
+  "datalab-to_surya/surya/debug/render_html.py": {
+    "render_text_as_html": "render bounding boxes and text as an HTML overlay for image visualization with katex math support"
+  },
+  "datalab-to_surya/surya/debug/text.py": {
+    "strip_html_tags": "strip HTML tags from a string and return plain text content",
+    "get_text_size": "get the pixel width and height of text rendered with a given PIL font",
+    "render_text": "render text centered inside a bounding box on a PIL ImageDraw with auto-scaling font size",
+    "draw_text_with_playwright": "draw text into bounding boxes on an image using a headless Playwright browser screenshot",
+    "draw_text_on_image": "draw multiple texts into bounding boxes on a new PIL image with font auto-sizing and optional Playwright rendering"
+  },
+  "datalab-to_surya/surya/detection/heatmap.py": {
+    "run_detect_boxes": "run detect_boxes on a text map to extract bounding boxes and confidences using dynamic thresholds",
+    "create_get_detected_boxes": "create get_detected_boxes to convert a text map into a list of PolygonBox objects with confidences",
+    "build_get_and_clean_boxes": "build get_and_clean_boxes to rescale, clip, and filter detected boxes to image bounds",
+    "summarize_parallel_get_boxes": "summarize parallel_get_boxes to produce a TextDetectionResult from heatmap and affinity map predictions",
+    "refactor_get_dynamic_thresholds": "refactor get_dynamic_thresholds to adapt text detection thresholds based on pixel intensity distribution"
+  },
+  "datalab-to_surya/surya/detection/loader.py": {
+    "create_detection_model_loader": "create a DetectionModelLoader instance with an optional checkpoint path for loading a detection model",
+    "build_detection_model": "build an EfficientViTForSemanticSegmentation detection model from a pretrained checkpoint on a specified device and dtype",
+    "compile_detection_model": "compile a detection model with torch.compile for accelerated inference on the target device",
+    "load_image_processor": "load a SegformerImageProcessor from a pretrained checkpoint for preprocessing images before detection",
+    "test_detection_loader": "test the DetectionModelLoader class and its model and processor methods with configurable device and dtype"
+  },
+  "datalab-to_surya/surya/detection/parallel.py": {
+    "create_FakeFuture": "create a FakeFuture instance that wraps a function and executes it synchronously",
+    "test_FakeFuture_result": "test the FakeFuture.result method returns the result of the wrapped function",
+    "create_FakeExecutor": "create a FakeExecutor instance that acts as a synchronous context manager",
+    "test_FakeExecutor_submit": "test the FakeExecutor.submit method returns a FakeFuture with the function result",
+    "review_FakeExecutor_context_manager": "review the FakeExecutor class as a context manager that replaces concurrent.futures.Executor"
+  },
+  "datalab-to_surya/surya/detection/processor.py": {
+    "create_SegformerImageProcessor": "create a SegformerImageProcessor instance with custom resize size and resampling filter",
+    "build_image_preprocess": "build an image preprocessing pipeline that resizes, rescales, and normalizes images for Segformer",
+    "test_preprocess_batch": "test the preprocess method with a batch of images and return numpy tensors",
+    "refactor_from_dict": "refactor SegformerImageProcessor.from_dict to load processor config from a JSON dictionary",
+    "summarize_processor_call": "summarize the SegformerImageProcessor.__call__ method for batch image preprocessing"
+  },
+  "datalab-to_surya/surya/detection/util.py": {
+    "calculate_get_total_splits": "calculate the number of image splits needed based on image size and chunk height",
+    "split_image_into_chunks": "split a PIL image into vertically stacked chunks exceeding the detector height limit",
+    "test_get_total_splits": "test the get_total_splits function with various image sizes and chunk heights",
+    "refactor_split_image": "refactor the split_image function to support configurable padding color and centering",
+    "review_split_image": "review the split_image function for edge cases with non-divisible image heights"
+  },
+  "datalab-to_surya/surya/detection/model/encoderdecoder.py": {
+    "create_semantic_segmentation_model": "create an EfficientViTForSemanticSegmentation model for pixel-level classification with sigmoid output logits",
+    "build_layout_segmentation_model": "build an EfficientViTForSemanticLayoutSegmentation model for layout-aware semantic segmentation tasks",
+    "run_encoder_decoder_forward": "run the EfficientViT encoder-decoder forward pass to produce segmentation logits from pixel values",
+    "configure_decode_head": "configure a DecodeHead with MLP channel-unification, bilinear upsampling, and 1x1 classifier for multi-scale feature fusion",
+    "build_efficientvit_block": "build an EfficientVitLargeBlock combining LiteMLA multi-scale linear attention with MBConv local feature extraction"
+  },
+  "datalab-to_surya/surya/foundation/loader.py": {
+    "create_FoundationModelLoader": "create a FoundationModelLoader instance with an optional checkpoint path",
+    "build_model_load_foundation": "build a SuryaModel from a checkpoint with device, dtype, and attention implementation options",
+    "build_processor_load_foundation": "build a SuryaOCRProcessor with tokenizer and config from a foundation model checkpoint",
+    "compile_model_foundation": "compile a foundation model's vision encoder and decoder with torch.compile for performance",
+    "test_model_load_foundation": "test loading a foundation model with flash attention or SDPA on cuda, xla, or cpu"
+  },
+  "datalab-to_surya/surya/foundation/util.py": {
+    "test_detect_repeat_token": "test the detect_repeat_token function that detects repeated token sequences in predicted token lists",
+    "run_prediction_to_polygon_batch": "run prediction_to_polygon_batch to convert model predictions into scaled polygon coordinates for batched images",
+    "review_detect_repeat_token": "review the detect_repeat_token function that identifies token repetition patterns in generated sequences",
+    "refactor_prediction_to_polygon_batch": "refactor the prediction_to_polygon_batch function to support custom skew thresholds and scaling parameters",
+    "summarize_detect_repeat_token": "summarize the detect_repeat_token utility that flags repeated token outputs in prediction sequences"
+  },
+  "datalab-to_surya/surya/foundation/cache/dynamic_ops.py": {
+    "create_cache_dynamic_ops": "create a DynamicOpsCache instance with config, batch size, max cache length, text sliding window, device, and dtype",
+    "build_update_kv_cache": "build KV cache updates for prefill and decode phases using the DynamicOpsCache.update method with key and value states",
+    "test_sliding_window_text": "test the sliding window behavior where image tokens stay in cache and text tokens are rotated out during decode",
+    "review_attention_mask_update": "review the prefill and decode attention mask update logic that manages cache-aware attention masks per batch",
+    "summarize_continuous_batching": "summarize how continuous batching and merge index handling work across text token counts and cache slots"
+  },
+  "datalab-to_surya/surya/foundation/cache/static_ops.py": {
+    "create_static_ops_cache": "create a StaticOpsCache instance with config, batch size, max cache length, sliding window, device, and dtype",
+    "update_cache_states": "update key and value cache states for a given layer using prefill or decode mode",
+    "build_sliding_window_cache": "build a KV cache with sliding window that keeps image tokens and pops text tokens",
+    "manage_attention_mask": "manage attention mask for cache alignment during prefill and decode updates",
+    "roll_decode_cache": "roll decode cache by valid tokens and insert new key and value states at the end"
+  },
+  "datalab-to_surya/surya/input/load.py": {
+    "load_pdf_from_path": "load a PDF file and return page images with names and optional page range and DPI",
+    "load_image_from_path": "load a single image file and return it as an RGB image with its name",
+    "load_from_file_auto_detect": "load a file by auto-detecting whether it is a PDF or image and return images with names",
+    "load_from_folder_batch": "load all images and PDFs from a folder and return combined images with names",
+    "load_lang_file_by_names": "load a language mapping JSON file and return language codes for given names"
+  },
+  "datalab-to_surya/surya/input/processing.py": {
+    "convert_images_to_rgb": "convert a list of PIL images to RGB mode, converting any non-RGB images",
+    "open_pdf_document": "open a PDF file and return a pypdfium2 document object for page extraction",
+    "extract_page_images": "extract images from specified pages of a PDF document at a given DPI",
+    "slice_bboxes_from_image": "slice rectangular regions from a numpy image array using bounding box coordinates",
+    "slice_polys_from_image": "slice polygonal regions from a numpy image array and pad outside areas with a fill value"
+  },
+  "datalab-to_surya/surya/ocr_error/loader.py": {
+    "create_ocerror_model_loader": "create an OCRErrorModelLoader instance with an optional checkpoint path for loading the OCR error detection model",
+    "build_distilbert_model": "build a DistilBertForSequenceClassification model from a checkpoint with configurable device and dtype",
+    "run_ocr_error_detection": "run OCR error detection on a list of text strings using the loaded model and tokenizer",
+    "build_tokenizer_processor": "build a DistilBertTokenizer processor from a checkpoint for encoding text inputs",
+    "load_model_config": "load a DistilBertConfig from a checkpoint to inspect model architecture before loading the full model"
+  },
+  "datalab-to_surya/surya/ocr_error/tokenizer.py": {
+    "create_tokenizer_load_vocab": "create a vocabulary dictionary from a vocab.txt file using load_vocab",
+    "create_tokenizer_whitespace_tokenize": "create whitespace-separated tokens from text using whitespace_tokenize",
+    "build_tokenizer_distilbert": "build a DistilBertTokenizer instance from a vocab file with configurable special tokens",
+    "create_tokenizer_basic": "create a BasicTokenizer for lowercasing, punctuation splitting, and Chinese character handling",
+    "create_tokenizer_wordpiece": "create a WordpieceTokenizer for greedy subword tokenization using a vocab dictionary"
+  },
+  "datalab-to_surya/surya/ocr_error/model/config.py": {
+    "create_DistilBertConfig": "create a DistilBertConfig instance with custom dim, n_layers, and n_heads for the OCR error model",
+    "build_DistilBertOnnxConfig": "build a DistilBertOnnxConfig to define ONNX input schemas for batch and sequence axes",
+    "test_ID2LABEL": "test the ID2LABEL mapping that converts 0 to 'good' and 1 to 'bad' for OCR error classification",
+    "refactor_DistilBertConfig": "refactor the DistilBertConfig class to support additional dropout parameters for fine-tuning",
+    "review_DistilBertOnnxConfig_inputs": "review the DistilBertOnnxConfig inputs property that returns dynamic axis mappings for ONNX export"
+  },
+  "datalab-to_surya/surya/ocr_error/model/encoder.py": {
+    "build_distilbert_model": "build a DistilBertModel with DistilBertConfig for sequence encoding",
+    "create_sequence_classifier": "create a DistilBertForSequenceClassification model for OCR error classification",
+    "run_transformer_encoder": "run the Transformer encoder with attention masks and head masks for hidden state extraction",
+    "test_multi_head_attention": "test MultiHeadSelfAttention with query, key, value tensors and causal masking",
+    "refactor_flash_attention": "refactor DistilBertFlashAttention2 to use flash attention for padded sequence handling"
+  },
+  "datalab-to_surya/surya/recognition/postprocessing.py": {
+    "truncate_repetitions": "truncate repeated trailing substrings from a text string with a minimum repetition length",
+    "extract_tags": "extract tag names from a list of proposed HTML-like tag strings",
+    "cleanup_math": "cleanup math blocks by stripping inner HTML tags while preserving LaTeX math markup",
+    "fix_unbalanced_tags": "fix unbalanced HTML-like tags in a list of TextChar objects by appending missing closing tags",
+    "tag_pattern": "match HTML-like opening and closing tags with an optional self-closing slash"
+  },
+  "datalab-to_surya/surya/recognition/schema.py": {
+    "create_BaseChar": "create a BaseChar with text, confidence, and polygon bounding box coordinates",
+    "create_TextChar": "create a TextChar with text, confidence, and bbox_valid flag for individual character recognition",
+    "create_TextWord": "create a TextWord with text, confidence, and bbox_valid flag for word-level recognition",
+    "create_TextLine": "create a TextLine with text, confidence, a list of TextChar objects, and optional TextWord list",
+    "create_OCRResult": "create an OCRResult containing a list of TextLine objects and image bounding box coordinates"
+  },
+  "datalab-to_surya/surya/recognition/util.py": {
+    "unwrap_math_text": "unwrap math tags from a short string and return the inner text content",
+    "filter_blacklist_tags_chars": "filter blacklisted HTML tags from a list of text characters and return cleaned characters",
+    "clean_math_tags_html": "clean math tags from HTML by stripping unwanted inner tags and removing orphan closing tags",
+    "sort_text_lines_reading_order": "sort a list of text lines or dicts in reading order by vertical grouping then horizontal position",
+    "build_words_from_chars": "build a list of text words from a list of text characters using bounding box merging and line fitting"
+  },
+  "datalab-to_surya/surya/scripts/config.py": {
+    "create_CLILoader": "create a CLILoader instance to load images from a file or folder with page range and output directory options",
+    "run_CLILoader_load": "run CLILoader.load to load images from a file or folder with optional high-resolution support",
+    "build_CLILoader_common_options": "build a Click command decorator with common options: input_path, output_dir, page_range, images, and debug flags",
+    "test_CLILoader_parse_range_str": "test CLILoader.parse_range_str to parse comma-separated page ranges like '0,5-10,20' into a sorted deduplicated list of integers",
+    "review_CLILoader": "review the CLILoader class that loads images from files or folders and prepares them for Surya document processing"
+  },
+  "datalab-to_surya/surya/scripts/detect_layout.py": {
+    "run_detect_layout_cli": "run detect_layout_cli to detect layout of PDFs or images from an input file or folder",
+    "run_layout_predictor": "run LayoutPredictor on a list of images to produce layout bounding box predictions",
+    "run_foundation_predictor": "run FoundationPredictor with a layout model checkpoint to build the inference backbone",
+    "draw_polys_on_image": "draw polys on image with layout bounding box polygons and labels for visualization",
+    "save_layout_predictions_json": "save layout predictions grouped by page into a results.json file"
+  },
+  "datalab-to_surya/surya/scripts/detect_text.py": {
+    "run_detect_text_cli": "run detect_text_cli to detect bounding boxes in PDF or image files using the Surya detection model",
+    "run_detection_predictor": "run DetectionPredictor to generate text bounding box predictions on a list of images",
+    "run_cliloader": "run CLILoader to load images from a file or folder and configure detection output settings",
+    "run_draw_polys_on_image": "run draw_polys_on_image to draw detected bounding box polygons onto an image for visualization",
+    "run_cliloader_parse_range_str": "run CLILoader.parse_range_str to parse a comma-separated page range string into a sorted list of page numbers"
+  },
+  "datalab-to_surya/surya/scripts/finetune_ocr.py": {
+    "run_finetune_ocr": "run the finetune_ocr script to train a Surya OCR model on an OCR dataset via CLI",
+    "build_model_processor": "build a SuryaModel and SuryaOCRProcessor from a pretrained checkpoint path",
+    "create_ocr_dataset": "create a SuryaOCRDataset wrapping a HuggingFace dataset with image preprocessing and script detection",
+    "create_data_collator": "create a SuryaOCRDataCollator that pads batches and masks special tokens for OCR label generation",
+    "test_training_arguments": "test the SuryaOCRTrainingArguments dataclass with custom training configuration options"
+  },
+  "datalab-to_surya/surya/scripts/ocr_latex.py": {
+    "run_ocr_latex_cli": "run the ocr_latex_cli to extract LaTeX equations from images using Surya predictors",
+    "create_foundation_predictor": "create a FoundationPredictor instance as the base model for OCR tasks",
+    "create_recognition_predictor": "create a RecognitionPredictor with a FoundationPredictor for LaTeX equation recognition",
+    "build_ocr_predictions": "build LaTeX predictions from images using texify_predictor with bounding boxes and task names",
+    "save_ocr_results_json": "save OCR LaTeX results as a JSON file with equation text and page numbers"
+  },
+  "datalab-to_surya/surya/scripts/ocr_text.py": {
+    "run_ocr_text_cli": "run the ocr_text_cli function to extract text from images using Surya OCR with configurable task name and math recognition",
+    "run_ocr_with_boxes": "run ocr_text_cli with task_name ocr_with_boxes to perform OCR text extraction with bounding box annotations on input images",
+    "run_ocr_disable_math": "run ocr_text_cli with disable_math flag to perform OCR text recognition without math formula detection",
+    "run_ocr_save_images": "run ocr_text_cli to perform OCR and save annotated images with predicted text drawn on bounding boxes",
+    "run_ocr_output_json": "run ocr_text_cli to perform OCR and output structured results.json with page numbers and text line predictions per image"
+  },
+  "datalab-to_surya/surya/scripts/run_streamlit_app.py": {
+    "run_streamlit_app_cli": "run the streamlit_app_cli function to launch the OCR streamlit app in headless mode"
+  },
+  "datalab-to_surya/surya/scripts/run_texify_app.py": {
+    "run_texify_app_cli": "run the texify_app_cli function to start the Streamlit texify app in headless mode",
+    "build_streamlit_texify_app": "build a Streamlit app by running texify_app_cli which launches texify_app.py via streamlit run",
+    "test_texify_app_cli": "test the texify_app_cli function to verify it launches the Streamlit texify app correctly",
+    "refactor_texify_app_cli": "refactor the texify_app_cli function to support custom streamlit arguments and environment variables",
+    "review_texify_app_cli": "review the texify_app_cli function and its subprocess call to streamlit run"
+  },
+  "datalab-to_surya/surya/scripts/streamlit_app.py": {
+    "run_text_detection": "run text detection on an image and return detected text polygons with bounding boxes",
+    "run_ocr": "run OCR on an image with optional math recognition and word-level bounding boxes",
+    "run_layout_detection": "run layout analysis on an image and return detected layout regions with labels",
+    "run_table_recognition": "run table recognition on an image and return detected table cells with row and column structures",
+    "test_ocr_errors": "test a PDF file for garbled or bad OCR text by sampling text and classifying quality"
+  },
+  "datalab-to_surya/surya/scripts/table_recognition.py": {
+    "run_table_recognition_cli": "run the table_recognition_cli command to detect tables in PDF or image files and output results as JSON",
+    "run_skip_table_detection": "run table_recognition_cli with --skip_table_detection flag to process already-cropped table images",
+    "build_table_predictions_json": "build a JSON output of detected table structures including rows, columns, and cells per page",
+    "test_layout_predictor_integration": "test the layout_predictor integration with TableRecPredictor for end-to-end table recognition",
+    "review_draw_bboxes_on_image": "review the draw_bboxes_on_image usage for visualizing detected table rows, columns, and cells"
+  },
+  "datalab-to_surya/surya/scripts/texify_app.py": {
+    "summarize_replace_fences": "summarize the python function replace_fences that converts MathML tags to LaTeX math delimiters",
+    "run_load_predictor": "run the python function load_predictor to initialize a Surya RecognitionPredictor with a FoundationPredictor",
+    "run_inference": "run the python function inference to perform LaTeX OCR on a cropped region of a PIL image using a bounding box",
+    "run_get_page_image": "run the python function get_page_image to extract an RGB PIL image from a PDF page by number and DPI",
+    "run_page_counter": "run the python function page_counter to count the total number of pages in a PDF file"
+  },
+  "datalab-to_surya/surya/table_rec/loader.py": {
+    "build_table_rec_model": "build a table recognition model using TableRecModelLoader with custom checkpoint, device, and dtype",
+    "create_model_loader": "create a TableRecModelLoader instance to load Surya table recognition model from a checkpoint",
+    "load_model_inference": "load a compiled table recognition model on cpu or cuda device with float32 or float16 dtype",
+    "create_table_rec_processor": "create a SuryaTableRecProcessor with token pad, eos, bos, and query end ids from checkpoint",
+    "review_table_rec_model": "review the TableRecModelLoader class and its model and processor methods for table recognition"
+  },
+  "datalab-to_surya/surya/table_rec/processor.py": {
+    "create_SuryaTableRecProcessor": "create a SuryaTableRecProcessor instance from a model checkpoint path for table recognition",
+    "build_processor_call": "build model input tensors by calling the processor with images, query items, and optional columns",
+    "test_resize_polygon": "test resizing and clipping a polygon from an original image size to a fixed box dimension",
+    "refactor_processor_call": "refactor the processor __call__ to support batch encoding of images with polygon query items",
+    "review_SuryaTableRecProcessor": "review the SuryaTableRecProcessor class and its image processing, label shaping, and tensor encoding pipeline"
+  },
+  "datalab-to_surya/surya/table_rec/schema.py": {
+    "create_table_cell": "create a TableCell with polygon box, row/col IDs, colspan, rowspan, merge flags, and text lines",
+    "create_table_row": "create a TableRow with polygon box geometry, row ID, and header flag",
+    "create_table_col": "create a TableCol with polygon box geometry, column ID, and header flag",
+    "build_table_result": "build a TableResult containing cells, unmerged cells, rows, columns, and image bounding box",
+    "review_table_cell_label": "review the TableCell label property that formats cell ID with rowspan and colspan"
+  },
+  "datalab-to_surya/surya/table_rec/shaper.py": {
+    "convert_polygons_to_bboxes": "convert polygon coordinates to bounding boxes with center, width, height, and skew values",
+    "convert_bbox_to_polygon": "convert a bounding box vector back to four corner polygon coordinates with skew reconstruction",
+    "dict_to_labels": "convert label component dictionaries to numeric vectors for model input with validation and clipping",
+    "component_idx": "get the start and end index range for a box property key in the label vector",
+    "component_idx_dict": "build a dictionary mapping each box property key to its index range in the label vector"
+  },
+  "datalab-to_surya/surya/table_rec/model/config.py": {
+    "create_SuryaTableRecConfig": "create a SuryaTableRecConfig for a vision-encoder-decoder table recognition model",
+    "build_DonutSwinTableRecConfig": "build a DonutSwinTableRecConfig with custom image size and embedding dimensions",
+    "create_SuryaTableRecDecoderConfig": "create a SuryaTableRecDecoderConfig with custom attention layers and token IDs",
+    "create_TableRecModelOutput": "create a TableRecModelOutput with box property logits and hidden states",
+    "summarize_BOX_PROPERTIES": "summarize the BOX_PROPERTIES list defining bbox, category, merges, colspan, and is_header"
+  },
+  "datalab-to_surya/surya/table_rec/model/decoder.py": {
+    "create_LabelEmbedding": "create a LabelEmbedding module that converts table box tensors into combined bbox and property embeddings",
+    "build_SuryaTableRecDecoder": "build a SuryaTableRecDecoder model with label embeddings, box property heads, and pre-output normalization",
+    "test_LabelEmbedding_forward": "test the LabelEmbedding forward method with box tensors to verify embedding concatenation",
+    "refactor_SuryaTableRecDecoder_forward": "refactor the SuryaTableRecDecoder forward method to support table recognition with bbox sigmoid outputs",
+    "review_SuryaTableRecDecoder": "review the SuryaTableRecDecoder class with box property heads and decoder model integration"
+  },
+  "datalab-to_surya/surya/table_rec/model/encoder.py": {
+    "create_DonutSwinModel": "create a DonutSwinModel instance with a config, optional pooling layer, and mask token support",
+    "run_DonutSwinModel_forward": "run the DonutSwinModel forward pass on pixel values with optional masked positions and head mask",
+    "get_DonutSwinModel_embeddings": "get the input patch embeddings from a DonutSwinModel instance",
+    "refactor_DonutSwinModel_prune_heads": "refactor the DonutSwinModel to prune attention heads by layer and head indices",
+    "review_DonutSwinModel": "review the DonutSwinModel class that extends DonutSwinPreTrainedModel for table recognition encoding"
+  },
+  "datalab-to_surya/surya/table_rec/model/encoderdecoder.py": {
+    "create_model_encoder_decoder": "create a TableRecEncoderDecoderModel instance with a VisionEncoderDecoderConfig for table recognition",
+    "run_model_forward": "run the TableRecEncoderDecoderModel forward pass with decoder input ids and encoder outputs to get box property logits",
+    "test_model_forward": "test the TableRecEncoderDecoderModel forward method returns a TableRecOutput with box_property_logits and decoder_hidden_states",
+    "review_model_encoder_decoder": "review the TableRecEncoderDecoderModel class and its encoder decoder architecture with DonutSwinModel and SuryaTableRecDecoder",
+    "summarize_model_table_rec": "summarize the TableRecEncoderDecoderModel class that combines a vision encoder and table recognition decoder for layout analysis"
+  },
+  "datalab-to_surya/tests/conftest.py": {
+    "test_detection_predictor": "test the DetectionPredictor fixture that loads a session-scoped OCR text detection model",
+    "test_recognition_predictor": "test the RecognitionPredictor fixture that loads a session-scoped OCR text recognition model",
+    "test_layout_predictor": "test the LayoutPredictor fixture that loads a session-scoped document layout analysis model",
+    "test_ocr_error_predictor": "test the OCRErrorPredictor fixture that loads a session-scoped OCR error detection model",
+    "test_table_rec_predictor": "test the TableRecPredictor fixture that loads a session-scoped table recognition model",
+    "test_test_image": "test the test_image fixture that generates a 1024x1024 RGB image with sample text for OCR testing",
+    "test_test_image_tall": "test the test_image_tall fixture that generates a 4096x4096 RGB image with sample text for tall document testing",
+    "test_test_image_latex": "test the test_image_latex fixture that loads a LaTeX-rendered test image from the assets directory"
+  },
+  "datalab-to_surya/tests/test_detection.py": {
+    "test_detection": "test the detection_predictor on a single image and verify it returns 4 bounding boxes with image_bbox [0, 0, 1024, 1024]",
+    "test_detection_chunking": "test the detection_predictor on a tall image and verify it returns at least 3 bounding boxes with correct polygon coordinates",
+    "run_detection_predictor": "run the detection_predictor on a list of images and inspect the results for image_bbox and bboxes attributes",
+    "review_detection_results": "review the detection results structure including image_bbox, bboxes list, and polygon coordinates for each bounding box",
+    "verify_bbox_assertions": "verify detection assertions on image_bbox dimensions and bounding box count for standard and chunked images"
+  },
+  "datalab-to_surya/tests/test_foundation.py": {
+    "test_FoundationPredictor_flash_attention_2": "test FoundationPredictor with flash_attention_2 attention implementation"
+  },
+  "datalab-to_surya/tests/test_latex_ocr.py": {
+    "test_latex_ocr": "test the LaTeX OCR recognition predictor on a math image and verify the output starts with <math> and ends with </math>"
+  },
+  "datalab-to_surya/tests/test_layout.py": {
+    "test_layout_topk": "test the LayoutPredictor top-k confidence scores for detected layout boxes on a test image",
+    "test_layout_bboxes": "test that LayoutPredictor returns correct bounding box labels like SectionHeader and Text",
+    "test_layout_image_bbox": "test that LayoutPredictor reports the correct image bounding box dimensions",
+    "test_layout_results_length": "test that LayoutPredictor returns one result per input image",
+    "test_layout_topk_count": "test that each detected layout box contains 5 top-k confidence entries"
+  },
+  "datalab-to_surya/tests/test_ocr_errors.py": {
+    "test_ocr_error_predictor_garbled_text": "test the ocr_error_predictor with garbled non-English text and assert it returns 'bad'",
+    "test_ocr_error_predictor_good_text": "test the ocr_error_predictor with clean English text and assert it returns 'good'",
+    "run_ocr_error_predictor": "run the ocr_error_predictor on a list of text strings and inspect the labels",
+    "test_ocr_error_predictor_mixed_text": "test the ocr_error_predictor with mixed quality text and verify label predictions",
+    "review_ocr_error_predictor": "review the ocr_error_predictor API that takes text list and returns results with labels"
+  },
+  "datalab-to_surya/tests/test_recognition.py": {
+    "test_recognition": "test the recognition_predictor to extract text lines from an image using detection_predictor",
+    "test_recognition_input_text": "test the recognition_predictor with optional input_text parameter for performance validation",
+    "test_recognition_drop_repeats": "test the recognition_predictor with drop_repeated_text flag to filter duplicate text regions",
+    "test_recognition_clean_math": "test the clean_math_tags utility to remove malformed math tags and br elements from math markup",
+    "test_recognition_clean_math_preserve_text": "test the clean_math_tags utility preserves regular text with inline math and unknown tags unchanged"
+  },
+  "datalab-to_surya/tests/test_table_rec.py": {
+    "test_table_rec": "test the table_rec_predictor on a generated table image and verify cell detection",
+    "draw_table": "draw a table image from 2D data with configurable cell width and height",
+    "test_FUNCTION": "test the table_rec_predictor with a synthetic table image and assert cell grid detection",
+    "create_function_draw_table": "create a function that draws a grid table image from 2D data using PIL",
+    "build_restapi_hello": "build a python module to run a fastapi server that responds to http://0.0.0.0:23233/hello with the word 'hello'"
+  }
+}

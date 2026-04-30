@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/huggingface/chat/transformation.py
+
+Prompts
+
+```
+['build a chat completion URL by appending /v1/chat/completions to a model URL', 'validate environment headers and api_key for HuggingFace chat API requests', 'get the complete API URL for HuggingFace chat completion with provider-specific routing', 'transform chat completion request with model mapping and message transformation for HuggingFace', 'get the HuggingFaceError class for a given error message and status code']
+```
+
+Usage
+
+```
+{'build_chat_completion_url': 'build a chat completion URL by appending /v1/chat/completions to a model URL', 'validate_environment': 'validate environment headers and api_key for HuggingFace chat API requests', 'get_complete_url': 'get the complete API URL for HuggingFace chat completion with provider-specific routing', 'transform_request': 'transform chat completion request with model mapping and message transformation for HuggingFace', 'get_error_class': 'get the HuggingFaceError class for a given error message and status code'}
+```
+

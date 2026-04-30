@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: lsdefine/GenericAgent
+- repo_uri: https://github.com/lsdefine/GenericAgent
+
+## File: lsdefine_GenericAgent/memory/L4_raw_sessions/compress_session.py
+
+Prompts
+
+```
+['compress a model_responses session file and output a timestamped compressed version', 'extract [USER]/[Agent] conversation history from a compressed L4 session file', 'batch compress, extract, archive, and clean up L4 raw session files', 'merge multiple sliding-window history blocks into one deduplicated conversation list', 'format extracted history lines into the all_histories.txt block format']
+```
+
+Usage
+
+```
+{'compress_session_file': 'compress a model_responses session file and output a timestamped compressed version', 'extract_session_history': 'extract [USER]/[Agent] conversation history from a compressed L4 session file', 'batch_process_sessions': 'batch compress, extract, archive, and clean up L4 raw session files', 'merge_history_blocks': 'merge multiple sliding-window history blocks into one deduplicated conversation list', 'format_history_block': 'format extracted history lines into the all_histories.txt block format'}
+```
+

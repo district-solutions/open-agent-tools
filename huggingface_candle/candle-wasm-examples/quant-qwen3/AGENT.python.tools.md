@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/candle
+- repo_uri: https://github.com/huggingface/candle
+
+## File: huggingface_candle/candle-wasm-examples/quant-qwen3/serve.py
+
+Prompts
+
+```
+['serve a Qwen3 GGUF model via HTTP server for WASM inference with automatic downloads', 'download a GGUF model file from HuggingFace Hub with progress bar and resume support', 'find a cached Qwen3 model or download it from HuggingFace based on quantization type', 'find or download tokenizer.json and config.json files for Qwen3 model from HuggingFace', 'list all available Qwen3 model configurations with size and quantization details']
+```
+
+Usage
+
+```
+{'serve_qwen3_wasm_model': 'serve a Qwen3 GGUF model via HTTP server for WASM inference with automatic downloads', 'download_model_with_progress': 'download a GGUF model file from HuggingFace Hub with progress bar and resume support', 'find_or_download_model': 'find a cached Qwen3 model or download it from HuggingFace based on quantization type', 'find_or_download_tokenizer': 'find or download tokenizer.json and config.json files for Qwen3 model from HuggingFace', 'list_available_models': 'list all available Qwen3 model configurations with size and quantization details'}
+```
+

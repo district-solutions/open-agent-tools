@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/azure_ai/embed/handler.py
+
+Prompts
+
+```
+["create embeddings for mixed text and image inputs using Azure AI's embedding API", 'run async text embeddings via the OpenAI-compatible /v1/embeddings route on Azure AI', "run image embeddings by posting image data to Azure AI's /images/embeddings endpoint", 'combine and order text and image embedding results back to original input order', 'transform input into separate image and text embedding requests using Azure AI Cohere config']
+```
+
+Usage
+
+```
+{'create_azure_ai_embeddings': "create embeddings for mixed text and image inputs using Azure AI's embedding API", 'run_async_text_embeddings': 'run async text embeddings via the OpenAI-compatible /v1/embeddings route on Azure AI', 'run_image_embeddings': "run image embeddings by posting image data to Azure AI's /images/embeddings endpoint", 'combine_mixed_embedding_responses': 'combine and order text and image embedding results back to original input order', 'transform_request_cohere_format': 'transform input into separate image and text embedding requests using Azure AI Cohere config'}
+```
+

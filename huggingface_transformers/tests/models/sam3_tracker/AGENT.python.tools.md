@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/sam3_tracker/test_modeling_sam3_tracker.py
+
+Prompts
+
+```
+['test the Sam3TrackerModel forward pass with pixel values and verify output shapes', 'test mask generation with a single input point and multimask output', 'test mask generation with batched images and multiple input points', 'test mask generation from batched input bounding boxes on multiple images', 'test mask refinement using existing points and masks as input']
+```
+
+Usage
+
+```
+{'test_sam3_tracker_model_forward_pass': 'test the Sam3TrackerModel forward pass with pixel values and verify output shapes', 'test_sam3_tracker_mask_generation_one_point': 'test mask generation with a single input point and multimask output', 'test_sam3_tracker_mask_generation_batched': 'test mask generation with batched images and multiple input points', 'test_sam3_tracker_mask_generation_with_boxes': 'test mask generation from batched input bounding boxes on multiple images', 'test_sam3_tracker_mask_refinement': 'test mask refinement using existing points and masks as input'}
+```
+

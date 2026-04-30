@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/trl
+- repo_uri: https://github.com/huggingface/trl.git
+
+## File: huggingface_trl/trl/experimental/bema_for_ref_model/callback.py
+
+Prompts
+
+```
+['create a BEMA callback for HuggingFace Trainer with bias-corrected exponential moving average weight smoothing', 'build a callback handler that passes a reference model to all registered callbacks during training', 'test the BEMACallback on_step_end method to update model weights with BEMA smoothing at specified intervals', 'refactor the BEMACallback to update a reference model with BEMA weights, supporting PEFT base models', 'review the BEMACallback _update_model_with_bema_weights helper to apply filtered BEMA state dict to a model']
+```
+
+Usage
+
+```
+{'create_BEMACallback': 'create a BEMA callback for HuggingFace Trainer with bias-corrected exponential moving average weight smoothing', 'build_CallbackHandlerWithRefModel': 'build a callback handler that passes a reference model to all registered callbacks during training', 'test_BEMACallback_on_step_end': 'test the BEMACallback on_step_end method to update model weights with BEMA smoothing at specified intervals', 'refactor_BEMACallback_update_ref_model': 'refactor the BEMACallback to update a reference model with BEMA weights, supporting PEFT base models', 'review_BEMACallback_update_model_with_bema_weights': 'review the BEMACallback _update_model_with_bema_weights helper to apply filtered BEMA state dict to a model'}
+```
+

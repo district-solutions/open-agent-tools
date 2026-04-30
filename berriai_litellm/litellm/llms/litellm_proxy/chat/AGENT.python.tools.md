@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/litellm_proxy/chat/transformation.py
+
+Prompts
+
+```
+['build OpenAI chat completion params list for a given model using LiteLLMProxyChatConfig', 'create a mapping of OpenAI params to optional params with special handling for thinking parameter', 'test retrieving and prefixing model names with litellm_proxy/ from the proxy API', 'run extraction of custom_llm_provider, api_base, and api_key for litellm proxy routing', 'transform chat completion request by passing through model, messages, and optional params unchanged']
+```
+
+Usage
+
+```
+{'build_LiteLLMProxyChatConfig_get_supported_openai_params': 'build OpenAI chat completion params list for a given model using LiteLLMProxyChatConfig', 'create_LiteLLMProxyChatConfig_map_openai_params': 'create a mapping of OpenAI params to optional params with special handling for thinking parameter', 'test_LiteLLMProxyChatConfig_get_models': 'test retrieving and prefixing model names with litellm_proxy/ from the proxy API', 'run_LiteLLMProxyChatConfig_litellm_proxy_get_custom_llm_provider_info': 'run extraction of custom_llm_provider, api_base, and api_key for litellm proxy routing', 'transform_LiteLLMProxyChatConfig_transform_request': 'transform chat completion request by passing through model, messages, and optional params unchanged'}
+```
+

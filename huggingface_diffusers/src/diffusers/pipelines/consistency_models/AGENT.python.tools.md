@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/diffusers
+- repo_uri: https://github.com/huggingface/diffusers
+
+## File: huggingface_diffusers/src/diffusers/pipelines/consistency_models/pipeline_consistency_models.py
+
+Prompts
+
+```
+['load a consistency model pipeline and generate images with one-step or multi-step sampling', 'generate class-conditional images using the consistency model pipeline with a specific class label', 'prepare random noise latents scaled by the scheduler init noise sigma for image generation', 'postprocess a tensor sample by denormalizing and converting to PIL, numpy, or PyTorch format', 'prepare class labels as a tensor for class-conditional consistency model inference']
+```
+
+Usage
+
+```
+{'generate_images_consistency_model': 'load a consistency model pipeline and generate images with one-step or multi-step sampling', 'generate_class_conditional_images': 'generate class-conditional images using the consistency model pipeline with a specific class label', 'prepare_latents': 'prepare random noise latents scaled by the scheduler init noise sigma for image generation', 'postprocess_image': 'postprocess a tensor sample by denormalizing and converting to PIL, numpy, or PyTorch format', 'prepare_class_labels': 'prepare class labels as a tensor for class-conditional consistency model inference'}
+```
+

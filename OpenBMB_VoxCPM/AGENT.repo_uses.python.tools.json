@@ -1,0 +1,243 @@
+{
+  "OpenBMB_VoxCPM/app.py": {
+    "run_demo": "run the VoxCPM2 speech generation Gradio demo server on a configurable port",
+    "create_demo_interface": "create a Gradio interface for VoxCPM2 voice design, cloning, and speech generation",
+    "generate_tts_audio": "generate TTS audio from text with optional voice cloning and control instructions",
+    "prompt_wav_recognition": "transcribe reference audio to text using the SenseVoiceSmall ASR model",
+    "get_or_load_voxcpm": "load the VoxCPM2 model from HuggingFace or a local path on demand"
+  },
+  "OpenBMB_VoxCPM/app_old.py": {
+    "run_demo_gradio_tts_server": "run a Gradio demo server for VoxCPM text-to-speech synthesis on localhost:7860",
+    "create_gradio_tts_interface": "create a Gradio UI interface for VoxCPM text-to-speech with prompt audio, text input, and audio output",
+    "build_voxcpm_demo_instance": "build a VoxCPMDemo instance that initializes ASR and TTS models for voice synthesis",
+    "generate_tts_audio_voxcpm": "generate TTS audio from text with optional prompt audio for voice cloning using VoxCPM",
+    "recognize_prompt_wav_text": "recognize speech-to-text from a prompt WAV file using the SenseVoiceSmall ASR model"
+  },
+  "OpenBMB_VoxCPM/lora_ft_webui.py": {
+    "run_training": "run VoxCPM LoRA training with pretrained model path, train manifest, and LoRA hyperparameters",
+    "run_inference": "run VoxCPM inference to generate audio from text with optional voice cloning and LoRA checkpoint",
+    "scan_lora_checkpoints": "scan the lora directory for LoRA checkpoint directories containing lora_weights.safetensors",
+    "load_model": "load a VoxCPM model with optional LoRA weights for inference or hot-swapping",
+    "recognize_audio": "recognize speech from an audio file using the SenseVoiceSmall ASR model"
+  },
+  "OpenBMB_VoxCPM/scripts/test_pick_runtime_dtype.py": {
+    "test_pick_runtime_dtype": "test pick_runtime_dtype for MPS low-precision dtype forcing and VOXCPM_MPS_DTYPE override behavior",
+    "test_get_dtype": "test get_dtype parses every valid dtype override string correctly",
+    "test_override_sanity": "test that 'half' is removed from _VALID_DTYPE_OVERRIDES and _LOW_PRECISION_DTYPES",
+    "test_pick_runtime_dtype_cuda_cpu": "test pick_runtime_dtype passes through bfloat16 and float32 unchanged on CUDA and CPU",
+    "test_pick_runtime_dtype_mps_fp32": "test pick_runtime_dtype forces float32 for low-precision dtypes on MPS backend"
+  },
+  "OpenBMB_VoxCPM/scripts/test_voxcpm_ft_infer.py": {
+    "synthesize_speech_from_text": "synthesize speech from text using a finetuned VoxCPM checkpoint directory",
+    "clone_voice_with_reference_audio": "clone a voice using reference audio and transcript for voice cloning inference",
+    "configure_diffusion_inference_steps": "configure diffusion inference timesteps and CFG scale for audio generation quality",
+    "run_cli_inference_test": "run the VoxCPM finetune inference CLI with text, checkpoint, and output arguments",
+    "save_generated_audio_to_wav": "save generated audio numpy array to a WAV file using soundfile"
+  },
+  "OpenBMB_VoxCPM/scripts/test_voxcpm_lora_infer.py": {
+    "test_voxcpm_lora_inference": "test the VoxCPM LoRA inference script by synthesizing audio from text with a LoRA checkpoint",
+    "test_voice_cloning_with_lora": "test voice cloning by providing reference audio and prompt text with LoRA inference",
+    "test_lora_disable_enable": "test disabling and re-enabling LoRA weights during VoxCPM audio synthesis",
+    "test_lora_unload_reload": "test unloading and hot-reloading LoRA weights on a running VoxCPM model",
+    "test_cfg_timestep_parameters": "test VoxCPM LoRA inference with custom CFG scale, diffusion timesteps, and max generation length"
+  },
+  "OpenBMB_VoxCPM/scripts/train_voxcpm_finetune.py": {
+    "train_run_finetune": "run the VoxCPM model finetuning with pretrained weights, training manifest, and validation manifest",
+    "validate_model": "validate the VoxCPM model on a validation dataset and generate sample audio for TensorBoard logging",
+    "generate_sample_audio": "generate sample audio from the VoxCPM model using validation text prompts and log mel spectrograms to TensorBoard",
+    "save_checkpoint": "save model optimizer scheduler and training state checkpoint with LoRA or full finetune strategies",
+    "load_checkpoint": "load the latest checkpoint including model weights optimizer state scheduler and resume step number"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/cli.py": {
+    "design_voxcpm2_voice": "design speech with VoxCPM2 voice design command using text and optional control instruction",
+    "clone_voice_with_reference": "clone a voice using reference audio and generate speech from provided text",
+    "batch_generate_speech": "batch-generate speech files from a text input file with one text per line",
+    "load_voxcpm_model": "load a VoxCPM model from local path or Hugging Face Hub with optional LoRA weights",
+    "detect_model_architecture": "detect the VoxCPM model architecture from a local config or Hugging Face model id"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/core.py": {
+    "create_VoxCPM_from_pretrained": "create a VoxCPM TTS pipeline instance from a Hugging Face Hub model id with optional denoiser and LoRA support",
+    "create_VoxCPM_from_local": "create a VoxCPM TTS pipeline instance from a local model directory with configurable device and optimization",
+    "generate_speech_text": "generate a numpy waveform array from input text using the VoxCPM TTS pipeline",
+    "generate_streaming_speech": "generate streaming audio chunks from input text using the VoxCPM TTS pipeline",
+    "load_VoxCPM_lora_weights": "load LoRA fine-tuning weights into a VoxCPM model for voice cloning or custom synthesis"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/zipenhancer.py": {
+    "create_zipenhancer_instance": "create a ZipEnhancer instance with a custom ModelScope model path for audio denoising",
+    "run_zipenhancer_enhance": "run ZipEnhancer enhance to denoise an input audio file and save to an output path",
+    "run_zipenhancer_enhance_temp": "run ZipEnhancer enhance with auto-generated temporary output file and loudness normalization enabled",
+    "refactor_zipenhancer_normalize_loudness": "refactor ZipEnhancer._normalize_loudness to use adjustable target loudness level instead of fixed -20 dB",
+    "review_zipenhancer_enhance": "review ZipEnhancer.enhance and its temporary file cleanup behavior on processing failure"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/model/utils.py": {
+    "create_mask_multichar_chinese_tokens": "create a tokenizer wrapper that splits multi-character Chinese tokens into individual characters",
+    "build_get_dtype": "build a function that converts dtype string names like bfloat16 or float32 to torch dtype objects",
+    "test_auto_select_device": "test the auto_select_device function that selects cuda, mps, or cpu based on availability",
+    "build_resolve_runtime_device": "build a function that resolves the runtime device with auto fallback and explicit validation",
+    "run_next_and_close": "run a helper that advances a generator and explicitly closes it to avoid deferred cleanup"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/model/voxcpm.py": {
+    "build_voxcpm_model_from_local": "build a VoxCPMModel instance from a local checkpoint directory with optional optimization and LoRA",
+    "create_voxcpm_generate_speech": "create a VoxCPMModel and generate speech audio from target text with optional prompt audio",
+    "run_voxcpm_generate_streaming": "run VoxCPMModel streaming speech generation yielding audio chunks for real-time playback",
+    "test_voxcpm_generate_prompt_cache": "test VoxCPMModel generation with a pre-built prompt cache for fast multi-turn speech synthesis",
+    "refactor_voxcpm_load_lora_weights": "refactor VoxCPMModel to load LoRA weights from a checkpoint file after torch.compile wrapping"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/model/voxcpm2.py": {
+    "create_voxcpm_model": "create a VoxCPM2Model from local checkpoint directory with optional optimization and LoRA config",
+    "generate_speech_text": "generate speech audio from target text using VoxCPM2Model with optional reference audio for voice cloning",
+    "generate_streaming_audio": "generate streaming audio chunks from text using VoxCPM2Model generate_streaming method",
+    "build_prompt_cache": "build a prompt cache for subsequent audio generation with reference or prompt audio",
+    "load_lora_weights": "load LoRA weights from safetensors or checkpoint file into VoxCPM2Model"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/modules/audiovae/audio_vae.py": {
+    "create_AudioVAE": "create an AudioVAE model with default or custom AudioVAEConfig for causal audio encoding and decoding",
+    "build_AudioVAEConfig": "build an AudioVAEConfig with encoder_dim, encoder_rates, latent_dim, decoder_dim, decoder_rates, and sample_rate parameters",
+    "encode_audio": "encode audio data tensor with sample rate into latent representation using AudioVAE.encode",
+    "decode_audio": "decode latent tensor back into audio waveform using AudioVAE.decode",
+    "preprocess_audio": "preprocess audio data by right-padding to hop_length multiples using AudioVAE.preprocess"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/modules/audiovae/audio_vae_v2.py": {
+    "create_audio_vae_model": "create an AudioVAE model with causal encoder-decoder for audio waveform compression",
+    "encode_audio_waveform": "encode audio waveform tensor into latent representation using the causal encoder",
+    "decode_latent_to_audio": "decode latent tensor back to audio waveform with optional sample rate conditioning",
+    "streaming_decode_audio": "streaming decode audio chunks statefully without redundant overlap decoding",
+    "configure_sample_rate_conditioning": "configure sample rate conditioning with scale-bias or add embedding for multi-rate audio"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/modules/layers/lora.py": {
+    "create_LoRALinear": "create a LoRALinear module wrapping an nn.Linear with rank and alpha parameters",
+    "apply_lora_to_modules": "apply LoRA injection to all named linear modules matching target submodule names in a PyTorch model",
+    "reset_LoRA_parameters": "reset LoRA A and B matrices to their initial random state",
+    "toggle_LoRA_enabled": "enable or disable LoRA contribution in a LoRALinear forward pass",
+    "get_parent_module": "retrieve the parent module of a named submodule in a PyTorch module tree"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/modules/layers/scalar_quantization_layer.py": {
+    "create_ScalarQuantizationLayer": "create a ScalarQuantizationLayer with in_dim, out_dim, latent_dim, and scale parameters",
+    "forward_ScalarQuantizationLayer": "forward a hidden tensor through ScalarQuantizationLayer with quantization applied",
+    "train_mode_ScalarQuantizationLayer": "test ScalarQuantizationLayer in training mode with straight-through quantization gradient",
+    "eval_mode_ScalarQuantizationLayer": "test ScalarQuantizationLayer in eval mode with deterministic quantization output",
+    "configure_ScalarQuantizationLayer": "configure ScalarQuantizationLayer with custom latent_dim and scale quantization levels"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/modules/locdit/local_dit.py": {
+    "create_SinusoidalPosEmb": "create a SinusoidalPosEmb module with even dimension for diffusion timestep encoding",
+    "build_TimestepEmbedding": "build a TimestepEmbedding layer with linear projections and SiLU activation for time embedding",
+    "test_VoxCPMLocDiT_forward": "test the VoxCPMLocDiT forward pass with input tensors, timestep, and condition tensors",
+    "refactor_VoxCPMLocDiT": "refactor the VoxCPMLocDiT model to use a different config or channel dimension",
+    "review_VoxCPMLocDiT": "review the VoxCPMLocDiT diffusion model with Transformer backbone architecture"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/modules/locdit/local_dit_v2.py": {
+    "create_SinusoidalPosEmb": "create a sinusoidal positional embedding module for diffusion timestep encoding",
+    "build_TimestepEmbedding": "build a two-layer timestep embedding MLP with SiLU activation",
+    "create_VoxCPMLocDiT": "create a local diffusion transformer model with MiniCPM4 backbone for voxel generation",
+    "test_VoxCPMLocDiT_forward": "test the VoxCPMLocDiT forward pass with input tensor, hidden embedding, timestep, condition, and delta time",
+    "review_SinusoidalPosEmb_forward": "review the SinusoidalPosEmb forward method for generating positional encodings from scalar timesteps"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/modules/locdit/unified_cfm.py": {
+    "create_CfmConfig": "create a CfmConfig instance with solver, t_scheduler, and cfg rate parameters for CFM inference",
+    "build_UnifiedCFM": "build a UnifiedCFM module with in_channels, CfmConfig params, and VoxCPMLocDiT estimator for diffusion sampling",
+    "run_UnifiedCFM_forward": "run UnifiedCFM forward inference with mu tensor, timestep count, patch size, and conditioning tensor",
+    "test_UnifiedCFM_compute_loss": "test UnifiedCFM compute_loss to calculate training loss with optional target mask and adaptive weighting",
+    "summarize_UnifiedCFM_solve_euler": "summarize UnifiedCFM solve_euler method that performs Euler integration with classifier-free guidance"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/modules/locenc/local_encoder.py": {
+    "create_VoxCPMLocEnc": "create a VoxCPMLocEnc module with MiniCPM4Config and input_dim 64 for encoding local voxel sequences",
+    "build_VoxCPMLocEnc_forward": "build a forward pass through VoxCPMLocEnc that projects input [B,T,P,D] through in_proj, prepends special tokens, and returns [B,T,hidden_size] via MiniCPMModel encoder",
+    "test_VoxCPMLocEnc_special_token": "test VoxCPMLocEnc special token parameter initialized as trainable [1,1,1,hidden_size] and expanded across batch and time dimensions",
+    "refactor_VoxCPMLocEnc_in_proj": "refactor VoxCPMLocEnc in_proj linear layer to map input_dim to config.hidden_size with bias enabled",
+    "review_VoxCPMLocEnc_rearrange": "review VoxCPMLocEnc einops rearrange operations that flatten batch-time dimensions for encoder and restore them after cls_output extraction"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/modules/minicpm4/cache.py": {
+    "create_static_kv_cache": "create a StaticKVCache instance with num_layers, num_kv_heads, dim_kv_head, batch_size, device, dtype, and max_length",
+    "get_layer_cache": "get the key and value cache tensors for a specific layer index from a StaticKVCache instance",
+    "step_cache": "step the StaticKVCache forward by one token position and return the current cache index",
+    "fill_caches": "fill the StaticKVCache with existing key-value tensors from a list of layer cache pairs",
+    "test_cache_full": "test that StaticKVCache raises ValueError when current_length reaches max_length during step"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/modules/minicpm4/model.py": {
+    "build_minicpm_model": "build a MiniCPM4 model by instantiating MiniCPMModel with a MiniCPM4Config for transformer inference",
+    "create_rms_layernorm": "create an RMS normalization layer using MiniCPMRMSNorm with a given hidden size and epsilon",
+    "test_apply_rotary_pos_emb": "test the apply_rotary_pos_emb function to apply rotary position embeddings to query and key tensors",
+    "refactor_minicpm_attention": "refactor MiniCPMAttention to support grouped query attention with kv caching for autoregressive decoding",
+    "summarize_minicpm_decoder_layer": "summarize the MiniCPMDecoderLayer forward and forward_step methods for prefill and decode phases"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/training/accelerator.py": {
+    "create_Accelerator": "create a distributed training Accelerator with AMP and seed initialization for multi-GPU PyTorch training",
+    "build_prepare_model": "build a method that moves a PyTorch model to the correct device and wraps it in DistributedDataParallel for multi-GPU training",
+    "test_prepare_dataloader": "test the Accelerator prepare_dataloader method that creates a DataLoader with DistributedSampler for multi-GPU data loading",
+    "refactor_backward_step": "refactor the Accelerator backward and step methods to handle AMP gradient scaling and optimizer stepping",
+    "summarize_Accelerator_no_sync": "summarize the Accelerator no_sync context manager that skips gradient synchronization during gradient accumulation"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/training/config.py": {
+    "load_yaml_config": "load a YAML configuration file and return it as a dictionary for argbind usage",
+    "parse_args_with_config": "parse CLI arguments and merge them with YAML configuration file values",
+    "create_yaml_config_loader": "create a function that loads YAML config files and validates they contain top-level mappings",
+    "build_argbind_config_parser": "build a config parser that unifies CLI arguments with YAML configuration using argbind.scope",
+    "test_parse_args_with_config": "test the parse_args_with_config function with and without a YAML config path argument"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/training/data.py": {
+    "build_audio_text_datasets": "build a function to load and prepare audio-text datasets from JSON manifests with column renaming and audio casting",
+    "compute_sample_lengths": "compute estimated sequence lengths for dataset samples after VAE encoding and packing",
+    "create_HFVoxCPMDataset": "create a PyTorch dataset wrapper that converts HuggingFace datasets into batched audio-text tensors with padding",
+    "create_BatchProcessor": "create a batch processor that applies AudioFeatureProcessingPacker to move tensors to device and pack audio-text batches",
+    "build_dataloader": "build a PyTorch DataLoader with Accelerator integration for distributed training with padding-based collation"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/training/packers.py": {
+    "create_AudioFeatureProcessingPacker": "create an AudioFeatureProcessingPacker instance to pack audio and text tokens for VoxCPM training",
+    "encode_audio_waveform": "encode a raw audio waveform into latent features using an AudioVAE encoder",
+    "process_tts_data": "process TTS audio and text tokens into a packed multimodal representation with masks",
+    "process_tts_data_with_ref": "build a training sequence with reference audio prepended and target audio for loss computation",
+    "pack_audio_text_batch": "pack a batch of audio tokens, text tokens, and task IDs into padded multimodal tensors for training"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/training/tracker.py": {
+    "create_TrainingTracker": "create a TrainingTracker instance with a TensorBoard writer and a log file path",
+    "test_TrainingTracker_log_metrics": "test the TrainingTracker.log_metrics method to log metrics with step and interval timing",
+    "refactor_TrainingTracker_print": "refactor the TrainingTracker.print method to support stdout and stderr output",
+    "review_TrainingTracker_state_dict": "review the TrainingTracker state_dict and load_state_dict methods for checkpoint save/restore",
+    "summarize_TrainingTracker_live": "summarize the TrainingTracker.live context manager for parity with minicpm-audio code"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/training/validate.py": {
+    "validate_training_manifest": "validate a JSONL training manifest file checking audio files, text content, and required columns",
+    "check_audio_file": "check if an audio file exists and matches the expected sample rate",
+    "get_audio_duration": "get the duration in seconds of an audio file using soundfile",
+    "print_validation_report": "print a human-readable validation report with statistics and errors to stderr",
+    "create_validation_result": "create a ValidationResult dataclass to hold total samples, errors, warnings, and audio duration statistics"
+  },
+  "OpenBMB_VoxCPM/src/voxcpm/utils/text_normalize.py": {
+    "test_contains_chinese": "test the contains_chinese function to detect if a string contains chinese characters",
+    "test_split_paragraph": "test the split_paragraph function to split text into utterances by punctuation with configurable max token length",
+    "test_clean_text": "test the clean_text function to remove markdown syntax, emojis, and normalize whitespace",
+    "test_replace_corner_mark": "test the replace_corner_mark function to replace special symbols like squared and square root with chinese text",
+    "create_text_normalizer": "create a TextNormalizer instance and normalize mixed-language text with automatic language detection"
+  },
+  "OpenBMB_VoxCPM/tests/test_cli.py": {
+    "build_parser_cli": "build the argparse parser for the voxcpm CLI with design, clone, and batch subcommands",
+    "load_model_voxcpm": "load a VoxCPM model from a local path or Hugging Face Hub with device and optimization options",
+    "detect_model_architecture": "detect the VoxCPM model architecture from a local config.json or Hugging Face model ID string",
+    "run_main_design": "run the voxcpm CLI design subcommand to generate speech from text with an optional control prompt",
+    "run_main_clone": "run the voxcpm CLI clone subcommand to clone a voice from prompt audio with a transcript file",
+    "run_main_batch": "run the voxcpm CLI batch subcommand to generate speech from a text file with control prompts",
+    "validate_clone_args": "validate clone subcommand arguments requiring prompt audio with transcript or reference audio",
+    "validate_design_args": "validate design subcommand arguments rejecting prompt and reference audio inputs"
+  },
+  "OpenBMB_VoxCPM/tests/test_lora_checkpoint_loading.py": {
+    "test_load_lora_weights_accepts_tensor_only_legacy_checkpoints": "test the VoxCPMModel and VoxCPM2Model load_lora_weights method with tensor-only legacy checkpoints",
+    "test_load_lora_weights_rejects_malicious_pickle_payloads": "test the VoxCPMModel and VoxCPM2Model load_lora_weights method rejects malicious pickle payloads",
+    "review_bootstrap_repo_modules": "review the bootstrap_repo_modules function that mocks dependencies for testing VoxCPM modules",
+    "review_load_lora_weights": "review the load_lora_weights class method on VoxCPMModel and VoxCPM2Model for loading LoRA checkpoints safely",
+    "test_load_lora_weights_loads_state_dict": "test the load_lora_weights method loads only state_dict keys and skips non-tensor entries"
+  },
+  "OpenBMB_VoxCPM/tests/test_model_utils.py": {
+    "test_resolve_runtime_device": "test the resolve_runtime_device function to select GPU device with auto fallback logic",
+    "test_mask_multichar_chinese_tokens": "test the mask_multichar_chinese_tokens function to wrap a tokenizer for Chinese character splitting",
+    "test_get_dtype": "test the get_dtype function to map dtype string names to torch dtype objects",
+    "test_auto_select_device": "test the auto_select_device function to pick mps, cuda, or cpu based on availability",
+    "test_next_and_close": "test the next_and_close function to safely advance a generator and close it"
+  },
+  "OpenBMB_VoxCPM/tests/test_validate.py": {
+    "validate_training_manifest": "run the voxcpm cli validate command to check a JSONL training manifest for errors and missing audio files",
+    "validate_manifest_function": "call validate_manifest to validate a JSONL manifest file and get a ValidationResult with errors and warnings",
+    "check_audio_file": "use _check_audio_file to verify an audio file exists and matches the expected sample rate",
+    "validation_result_is_valid": "check the ValidationResult is_valid property to determine if the manifest passed all validation checks",
+    "print_validation_report": "call print_validation_report to display a formatted summary of validation errors, warnings, and statistics to stderr"
+  }
+}

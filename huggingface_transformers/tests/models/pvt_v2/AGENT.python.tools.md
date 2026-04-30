@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/pvt_v2/test_modeling_pvt_v2.py
+
+Prompts
+
+```
+['test the PvtV2Model class for image classification and feature extraction capabilities', 'test the PvtV2Config class to verify hidden_sizes and num_encoder_block attributes', 'test the PvtV2Backbone class with out_features and out_indices configuration options', 'run inference on PvtV2ForImageClassification using a pretrained model and image processor', 'test PvtV2Model hidden_states output to verify layer count and tensor shapes']
+```
+
+Usage
+
+```
+{'test_PvtV2Model': 'test the PvtV2Model class for image classification and feature extraction capabilities', 'test_PvtV2Config': 'test the PvtV2Config class to verify hidden_sizes and num_encoder_block attributes', 'test_PvtV2Backbone': 'test the PvtV2Backbone class with out_features and out_indices configuration options', 'run_PvtV2_inference': 'run inference on PvtV2ForImageClassification using a pretrained model and image processor', 'test_PvtV2_hidden_states': 'test PvtV2Model hidden_states output to verify layer count and tensor shapes'}
+```
+

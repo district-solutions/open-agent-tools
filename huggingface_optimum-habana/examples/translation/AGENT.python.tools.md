@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/optimum-habana
+- repo_uri: https://github.com/huggingface/optimum-habana
+
+## File: huggingface_optimum-habana/examples/translation/run_translation.py
+
+Prompts
+
+```
+['run a script to fine-tune a seq2seq model for machine translation on Intel Gaudi HPU', 'run evaluation of a fine-tuned translation model using sacrebleu BLEU score metrics', 'run prediction with a trained seq2seq translation model and save generated predictions to a file', 'create a preprocessing function that tokenizes source and target translation pairs with truncation and padding', 'create a compute_metrics function that decodes predictions and labels and computes sacrebleu BLEU score']
+```
+
+Usage
+
+```
+{'run_translation_finetuning': 'run a script to fine-tune a seq2seq model for machine translation on Intel Gaudi HPU', 'run_translation_evaluation': 'run evaluation of a fine-tuned translation model using sacrebleu BLEU score metrics', 'run_translation_prediction': 'run prediction with a trained seq2seq translation model and save generated predictions to a file', 'create_preprocess_function': 'create a preprocessing function that tokenizes source and target translation pairs with truncation and padding', 'create_compute_metrics': 'create a compute_metrics function that decodes predictions and labels and computes sacrebleu BLEU score'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/python/sglang/multimodal_gen/csrc/attn/vmoba_attn/vmoba/vmoba.py
+
+Prompts
+
+```
+['build a MOBA attention module that splits KV into chunks and selects top-k relevant chunks per query head', 'run the moba_attn_varlen function with query, key, value tensors, cu_seqlens, max_seqlen, chunk_size, and topk', 'test the moba attention speed against flash attention using the test_attn_varlen_moba_speed function', 'calculate chunk boundaries from cumulative sequence lengths and a given moba chunk size', 'process input tensor for MOBA attention by reshaping patches according to patch resolution and chunk size', 'test the threshold-based chunk selection logic with query_head, block, overall, or head_global modes']
+```
+
+Usage
+
+```
+{'build_moba_attn': 'build a MOBA attention module that splits KV into chunks and selects top-k relevant chunks per query head', 'run_moba_attn_varlen': 'run the moba_attn_varlen function with query, key, value tensors, cu_seqlens, max_seqlen, chunk_size, and topk', 'test_attn_speed': 'test the moba attention speed against flash attention using the test_attn_varlen_moba_speed function', 'calc_moba_chunks': 'calculate chunk boundaries from cumulative sequence lengths and a given moba chunk size', 'process_moba_input': 'process input tensor for MOBA attention by reshaping patches according to patch resolution and chunk size', 'test_threshold_selection': 'test the threshold-based chunk selection logic with query_head, block, overall, or head_global modes'}
+```
+

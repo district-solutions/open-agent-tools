@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/proxy/vector_store_endpoints/utils.py
+
+Prompts
+
+```
+['check if a user has read or write permission for a specific vector store index by name', 'test if a user is allowed to call vector store endpoints based on role, metadata, and request path', 'refactor the function that checks permissions for vector store file operations by method and path matching', 'review the permission checking logic that validates allowed_vector_store_indexes from key and team metadata', 'summarize how the endpoint permission checker determines read or write access from request method and url path']
+```
+
+Usage
+
+```
+{'check_vector_store_permission': 'check if a user has read or write permission for a specific vector store index by name', 'test_is_allowed_to_call_vector_store_endpoint': 'test if a user is allowed to call vector store endpoints based on role, metadata, and request path', 'refactor_is_allowed_to_call_vector_store_files_endpoint': 'refactor the function that checks permissions for vector store file operations by method and path matching', 'review_check_vector_store_permission': 'review the permission checking logic that validates allowed_vector_store_indexes from key and team metadata', 'summarize_is_allowed_to_call_vector_store_endpoint': 'summarize how the endpoint permission checker determines read or write access from request method and url path'}
+```
+

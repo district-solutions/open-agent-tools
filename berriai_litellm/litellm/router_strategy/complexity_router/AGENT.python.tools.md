@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/router_strategy/complexity_router/complexity_router.py
+
+Prompts
+
+```
+['create a ComplexityRouter instance to classify and route LLM requests by complexity tier', 'classify a prompt by complexity using weighted scoring across token count, code presence, and reasoning markers', 'get the model name configured for a given complexity tier like SIMPLE, MEDIUM, COMPLEX, or REASONING', 'run the async pre-routing hook to automatically route LLM requests to appropriate models based on prompt complexity', 'build a DimensionScore object representing a scored dimension with name, score value, and optional signal string']
+```
+
+Usage
+
+```
+{'create_complexity_router': 'create a ComplexityRouter instance to classify and route LLM requests by complexity tier', 'classify_prompt_complexity': 'classify a prompt by complexity using weighted scoring across token count, code presence, and reasoning markers', 'get_model_for_tier': 'get the model name configured for a given complexity tier like SIMPLE, MEDIUM, COMPLEX, or REASONING', 'run_pre_routing_hook': 'run the async pre-routing hook to automatically route LLM requests to appropriate models based on prompt complexity', 'build_dimension_score': 'build a DimensionScore object representing a scored dimension with name, score value, and optional signal string'}
+```
+

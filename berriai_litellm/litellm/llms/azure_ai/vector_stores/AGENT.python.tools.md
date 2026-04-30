@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/azure_ai/vector_stores/transformation.py
+
+Prompts
+
+```
+['build an AzureAIVectorStoreConfig instance to configure vector store operations with Azure AI Search', 'get the Azure AI Search API endpoints for read and write operations on vector store indexes', 'validate the Azure AI Search environment and return configured request headers with Content-Type', 'get the complete Azure AI Search endpoint URL from api_base or azure_search_service_name', 'transform a text query into an Azure AI Search vector search request with generated embeddings and nearest-neighbor query', 'transform an Azure AI Search API response into a standard VectorStoreSearchResponse with scores and metadata']
+```
+
+Usage
+
+```
+{'build_azure_ai_vector_store_config': 'build an AzureAIVectorStoreConfig instance to configure vector store operations with Azure AI Search', 'get_azure_ai_search_endpoints': 'get the Azure AI Search API endpoints for read and write operations on vector store indexes', 'validate_azure_ai_search_environment': 'validate the Azure AI Search environment and return configured request headers with Content-Type', 'get_azure_ai_search_url': 'get the complete Azure AI Search endpoint URL from api_base or azure_search_service_name', 'transform_azure_ai_vector_store_search_request': 'transform a text query into an Azure AI Search vector search request with generated embeddings and nearest-neighbor query', 'transform_azure_ai_vector_store_search_response': 'transform an Azure AI Search API response into a standard VectorStoreSearchResponse with scores and metadata'}
+```
+

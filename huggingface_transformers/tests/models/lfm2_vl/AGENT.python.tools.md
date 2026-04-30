@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/lfm2_vl/test_modeling_lfm2_vl.py
+
+Prompts
+
+```
+['test the Lfm2VlModelTester.get_config method to verify it returns a valid Lfm2VlConfig instance', 'test the Lfm2VlModelTester.prepare_config_and_inputs method to verify it produces correct dummy pixel_values and spatial_shapes tensors', 'test the Lfm2VlModelTester.prepare_config_and_inputs_for_common method to verify it assembles input_ids attention_mask and pixel_values for common model testing', 'test the Lfm2VlModelTest.test_config method to verify Lfm2VlConfig common properties like image_token_id and projector_hidden_size', 'test the Lfm2VlModelTest.test_attention_outputs method which is skipped due to Lfm2 backbone alternating attention and conv layers', 'test the Lfm2VlForConditionalGenerationIntegrationTest.test_integration_test method to verify LFM2-VL-1.6B generates expected text for a cat and dog image', 'test the Lfm2VlForConditionalGenerationIntegrationTest.test_integration_test_batched method to verify batched image-text generation with LFM2-VL-450M', 'test the Lfm2_5VlForConditionalGenerationIntegrationTest.test_integration_test method to verify LFM2.5-VL-1.6B generates expected text for a cat image', 'test the Lfm2_5VlForConditionalGenerationIntegrationTest.test_integration_test_high_resolution method to verify high-resolution image handling with LFM2.5-VL-1.6B', 'test the Lfm2_5VlForConditionalGenerationIntegrationTest.test_integration_test_batched method to verify batched generation with LFM2.5-VL-1.6B']
+```
+
+Usage
+
+```
+{'test_Lfm2VlModelTester_get_config': 'test the Lfm2VlModelTester.get_config method to verify it returns a valid Lfm2VlConfig instance', 'test_Lfm2VlModelTester_prepare_config_and_inputs': 'test the Lfm2VlModelTester.prepare_config_and_inputs method to verify it produces correct dummy pixel_values and spatial_shapes tensors', 'test_Lfm2VlModelTester_prepare_config_and_inputs_for_common': 'test the Lfm2VlModelTester.prepare_config_and_inputs_for_common method to verify it assembles input_ids attention_mask and pixel_values for common model testing', 'test_Lfm2VlModelTest_test_config': 'test the Lfm2VlModelTest.test_config method to verify Lfm2VlConfig common properties like image_token_id and projector_hidden_size', 'test_Lfm2VlModelTest_test_attention_outputs': 'test the Lfm2VlModelTest.test_attention_outputs method which is skipped due to Lfm2 backbone alternating attention and conv layers', 'test_Lfm2VlForConditionalGenerationIntegrationTest_test_integration_test': 'test the Lfm2VlForConditionalGenerationIntegrationTest.test_integration_test method to verify LFM2-VL-1.6B generates expected text for a cat and dog image', 'test_Lfm2VlForConditionalGenerationIntegrationTest_test_integration_test_batched': 'test the Lfm2VlForConditionalGenerationIntegrationTest.test_integration_test_batched method to verify batched image-text generation with LFM2-VL-450M', 'test_Lfm2_5VlForConditionalGenerationIntegrationTest_test_integration_test': 'test the Lfm2_5VlForConditionalGenerationIntegrationTest.test_integration_test method to verify LFM2.5-VL-1.6B generates expected text for a cat image', 'test_Lfm2_5VlForConditionalGenerationIntegrationTest_test_integration_test_high_resolution': 'test the Lfm2_5VlForConditionalGenerationIntegrationTest.test_integration_test_high_resolution method to verify high-resolution image handling with LFM2.5-VL-1.6B', 'test_Lfm2_5VlForConditionalGenerationIntegrationTest_test_integration_test_batched': 'test the Lfm2_5VlForConditionalGenerationIntegrationTest.test_integration_test_batched method to verify batched generation with LFM2.5-VL-1.6B'}
+```
+

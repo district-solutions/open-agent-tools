@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/vertex_ai/videos/transformation.py
+
+Prompts
+
+```
+['build a Vertex AI Veo video generation request by transforming OpenAI-style parameters to Veo format', 'transform a Veo API long-running operation response into a VideoObject with processing status', 'extract the model name from a Vertex AI operation name string', 'transform a video status retrieval request to poll a Veo operation via fetchPredictOperation', 'transform a completed Veo operation response by extracting and decoding base64 video data to bytes']
+```
+
+Usage
+
+```
+{'build_vertex_ai_video_request': 'build a Vertex AI Veo video generation request by transforming OpenAI-style parameters to Veo format', 'transform_video_creation_response': 'transform a Veo API long-running operation response into a VideoObject with processing status', 'extract_model_from_operation_name': 'extract the model name from a Vertex AI operation name string', 'transform_video_status_retrieve_request': 'transform a video status retrieval request to poll a Veo operation via fetchPredictOperation', 'transform_video_content_response': 'transform a completed Veo operation response by extracting and decoding base64 video data to bytes'}
+```
+

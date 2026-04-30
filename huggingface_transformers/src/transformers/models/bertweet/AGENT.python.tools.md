@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/src/transformers/models/bertweet/tokenization_bertweet.py
+
+Prompts
+
+```
+['create a BertweetTokenizer instance with vocab and merges files for tweet tokenization', 'build BPE tokenization on a string token using the BertweetTokenizer bpe method with bigram merging', 'tokenize raw tweet text with optional normalization into BPE subword tokens', 'normalize a raw tweet by replacing handles, URLs, emojis, and special punctuation', 'convert a sequence of BPE tokens back into a readable string by joining and stripping merge markers']
+```
+
+Usage
+
+```
+{'create_bertweet_tokenizer': 'create a BertweetTokenizer instance with vocab and merges files for tweet tokenization', 'build_bpe_token': 'build BPE tokenization on a string token using the BertweetTokenizer bpe method with bigram merging', 'tokenize_tweet_text': 'tokenize raw tweet text with optional normalization into BPE subword tokens', 'normalize_tweet': 'normalize a raw tweet by replacing handles, URLs, emojis, and special punctuation', 'convert_tokens_to_string': 'convert a sequence of BPE tokens back into a readable string by joining and stripping merge markers'}
+```
+

@@ -1,0 +1,669 @@
+{
+  "ggml-org_llama.cpp/convert_hf_to_gguf.py": {
+    "convert_hf_model_to_gguf": "convert a huggingface model directory to GGUF format with specified output type like f16 or q8_0",
+    "export_model_vocab_only": "export only the tokenizer vocabulary from a huggingface model directory to a GGUF vocab file",
+    "export_mmproj_for_vision_model": "export the multimodal projector weights from a vision-language model to GGUF format",
+    "print_supported_models": "print the list of all supported model architectures for HF-to-GGUF conversion",
+    "convert_remote_hf_model": "convert a huggingface model repository from remote using its model ID without downloading locally"
+  },
+  "ggml-org_llama.cpp/convert_hf_to_gguf_update.py": {
+    "download_hf_tokenizers": "download tokenizer models from Huggingface repositories for specified list of LLM models",
+    "update_get_vocab_base_pre": "update convert_hf_to_gguf.py with generated get_vocab_base_pre function containing pre-tokenizer hashes",
+    "generate_tokenizer_tests": "generate vocab test input and output files for each tokenizer model using standard test strings",
+    "compute_tokenizer_hash": "compute sha256 hash of tokenizer encoding for a model to identify its BPE pre-tokenizer uniquely",
+    "check_missing_hashes": "check which models are missing pre-tokenizer hashes in convert_hf_to_gguf.py without downloading"
+  },
+  "ggml-org_llama.cpp/convert_llama_ggml_to_gguf.py": {
+    "convert_ggml_to_gguf": "convert a legacy GGML model file to GGUF format using command-line arguments",
+    "run_ggml_conversion_with_metadata": "run GGML to GGUF conversion with HuggingFace metadata directory for vocab override",
+    "parse_ggml_model_hyperparameters": "parse GGML model hyperparameters including n_vocab, n_embd, n_head, n_layer, and ftype",
+    "convert_ggml_with_gqa_and_eps": "convert a GGML model specifying grouped-query attention factor and RMS norm epsilon",
+    "load_ggml_tensor_metadata": "load tensor metadata including name, dimensions, dtype, and byte offset from a GGML file"
+  },
+  "ggml-org_llama.cpp/convert_lora_to_gguf.py": {
+    "convert_lora_adapter_to_gguf": "convert a Hugging Face PEFT LoRA adapter to a GGUF file with specified output format",
+    "run_lora_conversion_cli": "run the CLI to convert a LoRA adapter from safetensors or bin to GGUF format",
+    "build_lora_gguf_with_base_model": "build a GGUF LoRA adapter using a local base model directory or Hugging Face model ID",
+    "test_lora_conversion_dry_run": "test a LoRA to GGUF conversion with dry-run mode to preview without writing files",
+    "review_lora_tensor_operations": "review the LoraTorchTensor class that wraps LoRA A and B tensors for shape manipulation"
+  },
+  "ggml-org_llama.cpp/examples/convert_legacy_llama.py": {
+    "convert_llama_model_to_gguf": "convert a LLaMA model from PyTorch or safetensors format to a GGUF compatible file",
+    "extract_vocab_only_from_model": "extract only the vocabulary from a LLaMA model and write it to a GGUF file",
+    "load_model_from_any_format": "load a LLaMA model from PyTorch, safetensors, or GGML format with lazy tensor loading",
+    "quantize_model_to_q8_0": "quantize a LLaMA model tensor from F32 to Q8_0 format using block quantization",
+    "merge_sharded_model_tensors": "merge sharded model tensors from multiple files into a single lazy model"
+  },
+  "ggml-org_llama.cpp/examples/json_schema_pydantic_example.py": {
+    "create_chat_completion_with_json_schema": "create a chat completion using an OpenAI-compatible endpoint with JSON schema validation via Pydantic response_model",
+    "build_pydantic_model_for_structured_output": "build a Pydantic BaseModel with constrained fields to enforce structured JSON output from an LLM",
+    "validate_llm_response_with_type_adapter": "validate LLM JSON response content against a Pydantic TypeAdapter schema and return typed model instance",
+    "create_recursive_pydantic_summary_model": "create a recursive Pydantic model that references itself for nested hierarchical summaries",
+    "inject_json_schema_into_system_message": "inject a Pydantic-generated JSON schema into a system message to guide LLM structured output"
+  },
+  "ggml-org_llama.cpp/examples/json_schema_to_grammar.py": {
+    "build_grammar_from_json_schema": "build a GBNF grammar from a JSON schema file for use with llama-cli",
+    "run_schema_converter_cli": "run the json_schema_to_grammar CLI tool to convert a JSON schema into a GBNF grammar",
+    "generate_grammar_with_refs": "generate a GBNF grammar that resolves $ref fields and fetches remote schemas via --allow-fetch",
+    "create_grammar_with_custom_prop_order": "create a GBNF grammar with custom property ordering using --prop-order",
+    "generate_grammar_with_pattern": "generate a GBNF grammar from a JSON schema containing regex patterns with --dotall and --raw-pattern"
+  },
+  "ggml-org_llama.cpp/examples/pydantic_models_to_grammar.py": {
+    "generate_gbnf_grammar_and_documentation": "generate GBNF grammar and documentation from a list of Pydantic models for llm output parsing",
+    "generate_gbnf_grammar_and_documentation_from_dictionaries": "generate GBNF grammar and documentation from a list of dictionaries representing model structures",
+    "generate_gbnf_grammar_from_pydantic_models": "generate GBNF grammar rules from a list of Pydantic BaseModel subclasses",
+    "create_dynamic_model_from_function": "create a dynamic Pydantic model class from a function's type hints and docstring",
+    "convert_dictionary_to_pydantic_model": "convert a JSON schema dictionary into a Pydantic BaseModel class"
+  },
+  "ggml-org_llama.cpp/examples/pydantic_models_to_grammar_examples.py": {
+    "run_example_rce": "run the example_rce function to test LLM calling a Python function via pydantic models and GBNF grammar",
+    "run_example_calculator": "run the example_calculator function to have LLM perform math operations using Calculator pydantic tool",
+    "run_example_struct": "run the example_struct function to extract structured Book data from unstructured text using pydantic models",
+    "run_example_concurrent": "run the example_concurrent function to test parallel function calling with multiple pydantic tools",
+    "create_gbnf_grammar": "create GBNF grammar and documentation from a list of pydantic model classes for LLM function calling"
+  },
+  "ggml-org_llama.cpp/examples/model-conversion/scripts/causal/compare-logits.py": {
+    "run_compare_logits": "run the compare-logits script to compare PyTorch and llama.cpp model logits",
+    "test_quick_logits_check": "test the quick_logits_check function to validate PyTorch and llama.cpp logits files match",
+    "review_main": "review the main function that orchestrates token comparison and logits validation",
+    "summarize_quick_logits_check": "summarize the quick_logits_check function that loads float32 binaries and computes max absolute difference",
+    "test_compare_tokens": "test the compare_tokens utility function to verify token consistency between PyTorch and llama.cpp outputs"
+  },
+  "ggml-org_llama.cpp/examples/model-conversion/scripts/causal/run-org-model.py": {
+    "run_model_inference": "run the causal language model inference script with a model path and optional prompt file",
+    "load_model_and_tokenizer": "load a causal language model and tokenizer from a model path with auto device selection",
+    "test_model_logits": "test the model by running inference and printing top 5 predicted token logits",
+    "enable_torch_debugging": "enable torch debugging hooks on all leaf modules of a model for inspection",
+    "summarize_model_config": "summarize a model's configuration including vocab size, hidden size, and layer count"
+  },
+  "ggml-org_llama.cpp/examples/model-conversion/scripts/embedding/run-original-model.py": {
+    "run_embedding_model": "run the original embedding model with a specified model path and prompts file",
+    "load_model_and_tokenizer": "load a transformer model and tokenizer with auto device detection for cuda, mps, or cpu",
+    "use_sentence_transformers": "use sentence-transformers to apply all pooling and normalization layers to generate embeddings",
+    "get_prompt_from_file": "read prompts from a file with one prompt per line for batch embedding generation",
+    "save_embedding_output": "save flattened embeddings and token IDs to output files with a model name suffix"
+  },
+  "ggml-org_llama.cpp/examples/model-conversion/scripts/utils/check-nmse.py": {
+    "calculate_nmse": "calculate the normalized mean squared error between two numpy arrays of model logits",
+    "load_logits": "load model logits from .npy, .bin, or text files into a numpy float32 array",
+    "interpret_nmse": "interpret an NMSE value and return a human-readable quality description with emoji",
+    "run_nmse_check": "run the check-nmse CLI tool to compare pytorch and llamacpp model conversion logits",
+    "validate_model_conversion": "validate a model conversion by comparing reference and test logits with NMSE threshold"
+  },
+  "ggml-org_llama.cpp/examples/model-conversion/scripts/utils/common.py": {
+    "summarize_tensor": "summarize a torch tensor by printing its shape, first and last values, and sum in llama.cpp debug format",
+    "save_output_data": "save model output data, tokens, and prompt to binary and text files in a specified output directory",
+    "compare_tokens": "compare token arrays from two model outputs and report mismatches with position details",
+    "setup_rope_debug": "monkey-patch a transformer model's RoPE function to log input and output tensor activations for debugging",
+    "exit_with_warning": "exit with a message and print a transformers version mismatch warning if the model config requires a different version"
+  },
+  "ggml-org_llama.cpp/examples/model-conversion/scripts/utils/compare_tokens.py": {
+    "run_compare_tokens_cli": "run the compare_tokens CLI to compare tokens between two models",
+    "run_compare_tokens_verbose": "run compare_tokens with verbose flag to print prompts from both models",
+    "run_compare_tokens_with_suffix": "run compare_tokens with a type suffix like -embeddings for token comparison",
+    "run_compare_tokens_custom_data_dir": "run compare_tokens specifying a custom data directory for token files",
+    "run_compare_tokens_shell_exit_code": "run compare_tokens and check exit code for success or failure in shell scripts"
+  },
+  "ggml-org_llama.cpp/examples/model-conversion/scripts/utils/hf-add-model-to-collection.py": {
+    "add_model_to_collection": "add a model to a Hugging Face collection given the collection slug and model ID",
+    "authenticate_hf_api": "authenticate with Hugging Face API using the HF_TOKEN environment variable",
+    "verify_model_exists": "verify a model exists on Hugging Face before adding it to a collection",
+    "add_collection_item": "add a model item with an optional note to an existing Hugging Face collection",
+    "run_cli_add_model": "run the CLI to add a model to a Hugging Face collection via --collection and --model arguments"
+  },
+  "ggml-org_llama.cpp/examples/model-conversion/scripts/utils/hf-create-collection.py": {
+    "create_collection_hf": "create a Hugging Face collection with a title, description, namespace, and optional private flag",
+    "create_private_collection": "create a private Hugging Face collection for a specific namespace using argparse CLI",
+    "create_collection_slug_only": "create a Hugging Face collection and return only the collection slug for scripting",
+    "run_collection_cli": "run the hf-create-collection CLI with --name, --description, --namespace, and --private flags",
+    "review_create_collection": "review the create_collection function that authenticates via HF_TOKEN and calls HfApi.create_collection"
+  },
+  "ggml-org_llama.cpp/examples/model-conversion/scripts/utils/hf-create-model.py": {
+    "run_hf_create_model_repo": "run the hf-create-model script to create a new Hugging Face model repository with a GGUF suffix",
+    "create_hf_model_with_model_card": "create a Hugging Face model repository with an auto-generated model card from a causal template",
+    "create_private_hf_model": "create a private Hugging Face model repository for a namespace and model name",
+    "dry_run_hf_model_creation": "dry-run the hf-create-model script to preview repository ID and model card content without creating the repo",
+    "create_embedding_model_card": "create a Hugging Face model repository using the embedding model card template instead of causal"
+  },
+  "ggml-org_llama.cpp/examples/model-conversion/scripts/utils/hf-upload-gguf-model.py": {
+    "upload_gguf_file": "upload a GGUF model file to a Hugging Face repository using the upload_gguf_file function",
+    "run_hf_upload_cli": "run the hf-upload-gguf-model CLI to upload a GGUF file to a Hugging Face model repo",
+    "run_hf_upload_cli_custom_name": "run the hf-upload-gguf-model CLI with a custom output name for the uploaded GGUF file",
+    "test_upload_gguf_file": "test the upload_gguf_file function with a local GGUF path and a valid repo ID",
+    "review_hf_upload_script": "review the hf-upload-gguf-model Python script for error handling and CLI argument parsing"
+  },
+  "ggml-org_llama.cpp/examples/model-conversion/scripts/utils/inspect-org-model.py": {
+    "list_tensors_model_path": "list all tensor names in a safetensors model directory at the given model path",
+    "list_tensors_short_model_path": "list unique tensor patterns with layer numbers replaced by # in a safetensors model",
+    "inspect_tensor_model_path_tensor_name": "inspect a specific tensor's name, shape, dtype, and values from a safetensors model",
+    "get_tensor_metadata_model_path": "get dtype, shape, and size metadata for all tensors in a safetensors model directory",
+    "find_tensor_file_model_path_tensor_name": "find which safetensors file contains a given tensor in a model directory"
+  },
+  "ggml-org_llama.cpp/examples/model-conversion/scripts/utils/semantic_check.py": {
+    "test_semantic_check_cli": "test the semantic_check.py CLI by running it with --model-path, --python-embeddings, and --cpp-embeddings arguments",
+    "test_cosine_similarity": "test the cosine_similarity function to compute cosine similarity between two numpy arrays",
+    "test_load_embeddings_from_file": "test the load_embeddings_from_file function to load per-token or pooled embeddings from a binary file",
+    "test_single_prompt_similarity": "test the test_single_prompt_similarity function to compare Python and llama.cpp embedding vectors for a prompt",
+    "run_semantic_check_with_prompts_file": "run the semantic_check.py CLI with --prompts-file to compare embeddings using prompts from a file"
+  },
+  "ggml-org_llama.cpp/ggml/src/ggml-cuda/template-instances/generate_cu_files.py": {
+    "run_generate_cuda_templates": "run the script to generate CUDA template instance files for fattn-tile, fattn-vec, fattn-mma, mmq, and mmq",
+    "generate_fattn_tile_instances": "generate fattn-tile CUDA instance files for each head_size_kq from HEAD_SIZES_KQ with corresponding head_size_v",
+    "generate_fattn_vec_instances": "generate fattn-vec CUDA instance files for all type_k and type_v combinations from TYPES_KV",
+    "generate_fattn_mma_instances": "generate fattn-mma-f16 CUDA instance files for ncols, ncols2, and head_size combinations with filtering rules",
+    "generate_mmq_instances": "generate mmq CUDA instance files for each quantization type in TYPES_MMQ",
+    "generate_mmf_instances": "generate mmf CUDA instance files for ncols values from 1 to 16",
+    "use_get_short_name": "use get_short_name to convert GGML_TYPE_ prefixed quant names to lowercase short names"
+  },
+  "ggml-org_llama.cpp/ggml/src/ggml-virtgpu/regenerate_remoting.py": {
+    "regenerate_remoting_codebase": "run the regenerate_remoting.py script to regenerate GGML virtgpu remoting header files from YAML config",
+    "create_remoting_generator": "create a RemotingCodebaseGenerator instance with a custom YAML config path for GGML remoting code generation",
+    "build_backend_dispatch_table": "build the backend dispatch table header with function declarations and enum mappings for GGML remoting",
+    "get_enabled_functions": "get all enabled GGML remoting functions with their enum names, backend/frontend function names, and metadata",
+    "generate_backend_header": "generate the apir_backend.gen.h header file with enum definitions and dispatch command name function"
+  },
+  "ggml-org_llama.cpp/ggml/src/ggml-webgpu/wgsl-shaders/embed_wgsl.py": {
+    "run_embed_wgsl": "run embed_wgsl.py to embed all .wgsl shader files from input_dir into a C++ output file",
+    "build_shader_embedder": "build a C++ header with embedded WGSL shader strings using embed_wgsl.py with --input_dir and --output_file",
+    "test_expand_includes": "test the expand_includes function to recursively resolve #include directives in WGSL shader code",
+    "refactor_chunk_shader": "refactor the chunk_shader function to split large shader code into chunks under a given max length",
+    "review_write_shader": "review the write_shader function that generates C++ code for embedding WGSL shaders as raw string literals"
+  },
+  "ggml-org_llama.cpp/gguf-py/examples/reader.py": {
+    "read_gguf_file": "run the reader.py script to parse and display key-value pairs and tensor metadata from a GGUF model file",
+    "read_gguf_tensors": "read a GGUF file and list all tensors with their shapes, element counts, and quantization types",
+    "read_gguf_metadata": "read a GGUF file and extract all key-value metadata fields in a columnized format",
+    "review_reader_script": "review the reader.py CLI script that parses GGUF files and prints model metadata and tensor info",
+    "summarize_gguf_file": "summarize a GGUF file by listing its key-value pairs and tensor dimensions with quantization types"
+  },
+  "ggml-org_llama.cpp/gguf-py/examples/writer.py": {
+    "create_gguf_writer": "create a GGUFWriter instance to write a GGUF model file with a specified architecture",
+    "add_tensor_to_gguf": "add numpy tensors to a GGUFWriter for model weight data",
+    "write_gguf_header_kv_tensors": "write GGUF header, key-value metadata, and tensor data to file",
+    "add_uint32_float32_metadata": "add uint32 and float32 key-value metadata to a GGUF file",
+    "close_gguf_writer": "close the GGUFWriter to finalize and flush the output file"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/constants.py": {
+    "create_gguf_metadata_keys": "create GGUF metadata keys using Keys.General, Keys.LLM, Keys.Attention, Keys.Rope, Keys.Tokenizer namespace constants",
+    "build_model_arch_lookup": "build a mapping from MODEL_ARCH IntEnum values to their string names using MODEL_ARCH_NAMES dictionary",
+    "test_gguf_value_type_detection": "test GGUFValueType.get_type to detect Python value types and return corresponding GGUF value type enum",
+    "review_model_tensor_names": "review MODEL_TENSOR IntEnum and TENSOR_NAMES dict for correct tensor name mappings per block ID",
+    "summarize_quantization_types": "summarize GGMLQuantizationType enum and GGML_QUANT_SIZES dict for all supported quantization formats"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/gguf_reader.py": {
+    "create_gguf_reader": "create a GGUFReader instance to parse a GGUF file and access its metadata and tensors",
+    "read_gguf_metadata": "read key-value metadata fields from a GGUF file using get_field method",
+    "read_gguf_tensor_data": "read tensor data from a GGUF file including shape, quantization type, and numpy array contents",
+    "extract_gguf_field_contents": "extract contents from a ReaderField with support for strings, scalars, and arrays",
+    "parse_gguf_file_structure": "parse a GGUF file header to validate magic number, version, byte order, and alignment"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/gguf_writer.py": {
+    "build_gguf_model_file": "build a GGUF model file from numpy tensors with key-value metadata and sharding support",
+    "create_gguf_writer_instance": "create a GGUFWriter instance to write GGUF format files with configurable sharding and temp file options",
+    "add_tensor_info_and_data": "add tensor info and write tensor data to a GGUF file with dtype mapping and endianness handling",
+    "add_llm_metadata_properties": "add LLM model metadata properties like architecture, context length, attention heads, and rope parameters",
+    "calculate_parameter_count": "calculate total, shared, and expert parameter counts from tensor metadata including LoRA and MoE support"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/lazy.py": {
+    "create_LazyNumpyTensor": "create a lazy numpy tensor that defers computation until values are needed",
+    "build_LazyBase_from_eager": "build a lazy tensor wrapper from an existing eager numpy array",
+    "test_LazyBase_to_eager": "test evaluating a lazy tensor graph to produce eager numpy data",
+    "refactor_LazyMeta_ops": "refactor the lazy tensor metaclass to support additional binary operators",
+    "summarize_LazyNumpyTensor_astype": "summarize the lazy tensor astype method for deferred dtype conversion"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/metadata.py": {
+    "build_load_metadata": "build a Metadata object by loading model card, config, and generation config from a model directory",
+    "create_parse_model_id": "create a function to parse a HuggingFace model ID into org, basename, finetune, version, and size label components",
+    "test_metadata_heuristics": "test the Metadata.apply_metadata_heuristic function to populate fields from model card and config data",
+    "review_set_gguf_meta_model": "review the Metadata.set_gguf_meta_model method that writes sampling, authorship, and model metadata to a GGUF writer",
+    "summarize_load_model_card": "summarize how Metadata.load_model_card extracts YAML frontmatter from a README.md model card"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/quants.py": {
+    "quantize_numpy_array": "quantize a numpy array to a GGML quantization type like Q4_0, Q8_0, or Q5_K",
+    "dequantize_quantized_data": "dequantize quantized numpy data back to float32 for a given GGML quantization type",
+    "convert_quant_shape_to_byte_shape": "convert a quantized tensor shape to its byte storage shape for a given quantization type",
+    "convert_byte_shape_to_quant_shape": "convert a byte storage shape back to the original quantized tensor shape",
+    "dequantize_blocks_Q4_K": "dequantize Q4_K blocks from GGUF format back to float32 values"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/tensor_mapping.py": {
+    "create_tensor_name_map": "create a TensorNameMap instance for a given model architecture and number of blocks",
+    "lookup_tensor_name": "lookup the normalized tensor name for a model-specific key string using get_name",
+    "lookup_tensor_type": "lookup the MODEL_TENSOR enum type for a model-specific key string using get_type",
+    "resolve_tensor_with_suffix": "resolve a tensor mapping by matching a key with optional suffix stripping via get_type_and_name",
+    "check_tensor_key_exists": "check whether a raw tensor key string exists in the mapping using the contains operator"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/utility.py": {
+    "build_fill_templated_filename": "build a function to fill templated placeholders like {ftype} in a GGUF output filename with the model type",
+    "create_model_weight_count_rounded_notation": "create a function to convert large parameter counts into human-readable notation like 7B or 1.5T",
+    "build_naming_convention": "build a function that generates standardized GGUF filenames following the ggml-org naming convention",
+    "test_SafetensorRemote_get_list_tensors_hf_model": "test the SafetensorRemote class method that lists all tensors from a Hugging Face model repository",
+    "summarize_SafetensorsLocal": "summarize the SafetensorsLocal class that reads safetensor files from the local filesystem with memory-mapped tensor access"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/vocab.py": {
+    "create_class_SpecialVocab": "create a SpecialVocab instance to load tokenizer merges, special token IDs, and chat templates from a tokenizer directory",
+    "build_class_BpeVocab": "build a BpeVocab instance from GPT-2 BPE tokenizer files (vocab.json or tokenizer.json) for GGUF conversion",
+    "build_class_SentencePieceVocab": "build a SentencePieceVocab instance from a tokenizer.model file using sentencepiece for GGUF vocab export",
+    "build_class_MistralVocab": "build a MistralVocab instance from mistral-common tokenizer files supporting SentencePiece and Tekkenizer backends",
+    "create_class_SpecialVocab_add_to_gguf": "call SpecialVocab.add_to_gguf to write merges, special token IDs, add_special_token flags, and chat template to a GGUFWriter"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/scripts/gguf_convert_endian.py": {
+    "convert_gguf_endian": "convert a GGUF model file from one byte order to another using the gguf_convert_endian script",
+    "run_gguf_byteswap_dry_run": "run a dry run of gguf_convert_endian to check tensor compatibility without modifying the file",
+    "convert_gguf_to_native_endian": "convert a GGUF file to native host byte order for immediate loading on the current machine",
+    "convert_gguf_to_big_endian": "convert a GGUF file to big-endian byte order for cross-platform compatibility",
+    "convert_gguf_to_little_endian": "convert a GGUF file to little-endian byte order for x86/arm platform compatibility"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/scripts/gguf_dump.py": {
+    "run_gguf_dump_metadata": "run the gguf_dump script to dump GGUF file metadata in human-readable text format",
+    "run_gguf_dump_json": "run the gguf_dump script to dump GGUF file metadata as JSON output",
+    "run_gguf_dump_markdown": "run the gguf_dump script to dump GGUF file metadata as a formatted markdown document",
+    "run_gguf_dump_data_offset": "run the gguf_dump script to print the data offset of a GGUF file",
+    "run_gguf_dump_data_alignment": "run the gguf_dump script to print the data alignment of a GGUF file"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/scripts/gguf_editor_gui.py": {
+    "run_gguf_editor_gui": "run the GGUF Editor GUI application optionally loading a model file at startup via command line argument",
+    "open_gguf_file": "open a GGUF file and display its metadata and tensor information in the editor interface",
+    "edit_tokenizer_data": "edit tokenizer data including tokens, token types, and scores with filtering and pagination support",
+    "edit_array_metadata": "edit array-valued metadata fields with filtering, pagination, and bulk edit capabilities for enum types",
+    "add_metadata_entry": "add a new metadata key-value pair with automatic type conversion for supported GGUF value types"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/scripts/gguf_hash.py": {
+    "run_gguf_hash_cli": "run the gguf_hash CLI to compute SHA1, SHA256, and UUID5 hashes of a GGUF model file",
+    "compute_layer_hashes": "compute per-tensor SHA1 and SHA256 hashes for each layer in a GGUF file",
+    "compute_file_hashes": "compute overall SHA1 and SHA256 hashes for an entire GGUF model file",
+    "compute_uuid5_hash": "compute a UUID5 hash derived from SHA1 of all tensor data in a GGUF file",
+    "run_gguf_hash_no_layer": "run gguf_hash CLI with --no-layer flag to skip per-tensor hash output"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/scripts/gguf_new_metadata.py": {
+    "run_gguf_copy_with_new_metadata": "run the gguf_new_metadata script to copy a GGUF model file with new metadata values",
+    "run_gguf_set_chat_template": "run the gguf_new_metadata script to set a chat template on a GGUF model from a jinja file",
+    "run_gguf_update_special_token": "run the gguf_new_metadata script to update special token IDs in a GGUF model",
+    "run_gguf_remove_metadata": "run the gguf_new_metadata script to remove specified metadata keys from a GGUF model",
+    "run_gguf_update_model_name": "run the gguf_new_metadata script to update the general name and description of a GGUF model"
+  },
+  "ggml-org_llama.cpp/gguf-py/gguf/scripts/gguf_set_metadata.py": {
+    "run_gguf_set_metadata": "run the gguf_set_metadata CLI to set a metadata key-value pair in a GGUF model file",
+    "test_gguf_set_metadata_dry_run": "test the gguf_set_metadata CLI with --dry-run to preview metadata changes without modifying the file",
+    "refactor_set_metadata_force": "refactor the set_metadata function to support --force flag for changing GGUF metadata without confirmation prompt",
+    "review_minimal_example": "review the minimal_example function that demonstrates setting tokenizer.ggml.bos_token_id via GGUFReader field parts",
+    "summarize_main_cli": "summarize the main CLI entry point that parses model filename, key, value, and flags for GGUF metadata modification"
+  },
+  "ggml-org_llama.cpp/gguf-py/tests/test_metadata.py": {
+    "test_id_to_title": "test the gguf.Metadata.id_to_title method converts model IDs to readable titles",
+    "test_get_model_id_components": "test the gguf.Metadata.get_model_id_components method parses model IDs into organization, basename, finetune, version, and size label",
+    "test_apply_metadata_heuristic_from_model_card": "test the gguf.Metadata.apply_metadata_heuristic method extracts metadata from HuggingFace model card dictionaries",
+    "test_apply_metadata_heuristic_from_hf_parameters": "test the gguf.Metadata.apply_metadata_heuristic method infers metadata from HF parameters dict",
+    "test_apply_metadata_heuristic_from_model_dir": "test the gguf.Metadata.apply_metadata_heuristic method infers metadata from a model directory path"
+  },
+  "ggml-org_llama.cpp/gguf-py/tests/test_quants.py": {
+    "test_QUANTIZATION_PYTHON_AGAINST_C": "test the Python (de)quantization implementations match the C libggml reference implementation",
+    "test_QUANTIZE_CHUNK_C_BINDING": "test the ggml_quantize_chunk C binding for quantizing float tensors to various quantization types",
+    "test_DEQUANTIZE_ROW_C_BINDING": "test the dequantize_row C bindings for converting quantized tensors back to float32",
+    "test_COMPARE_TENSORS_BITWISE": "test the compare_tensors function for bitwise comparison of quantized tensor blocks",
+    "test_GGMLQUANTS_CLASS_INTERFACE": "test the GGMLQuants class interface for loading libggml and performing quantize and dequantize operations"
+  },
+  "ggml-org_llama.cpp/scripts/compare-llama-bench.py": {
+    "compare_llama_bench_commits": "compare llama-bench performance between two git commits using a SQLite database input file",
+    "compare_test_backend_ops": "compare test-backend-ops FLOPS and bandwidth metrics between two git commits",
+    "generate_performance_plot": "generate a performance comparison plot from llama-bench data across varying n_depth values",
+    "build_comparison_table": "build a formatted comparison table from JSON, JSONL, or CSV llama-bench data files",
+    "check_python_dependencies": "check if all required Python libraries (GitPython, tabulate) are installed"
+  },
+  "ggml-org_llama.cpp/scripts/compare-logprobs.py": {
+    "dump_logprobs_from_endpoint": "dump logprobs from an OpenAI-compatible endpoint into a JSON log file",
+    "compare_logprobs_between_engines": "compare logprobs from two dumped inference engine outputs and generate a markdown report",
+    "fetch_remote_corpus_for_prompt": "fetch a remote corpus file and extract words for use as prompt tokens",
+    "parse_dump_pattern_string": "parse a comma-separated pattern string into alternating get/skip word count tuples",
+    "extract_token_logprob_from_response": "extract the token and logprob from an OpenAI-compatible completion response"
+  },
+  "ggml-org_llama.cpp/scripts/create_ops_docs.py": {
+    "run_create_ops_docs": "run the script to parse GGML backend CSV files and generate an ops.md documentation table",
+    "build_ops_markdown_table": "build a markdown table of GGML operations and their backend support status from CSV files",
+    "test_backend_support_status": "test the backend support status for a specific GGML operation across all backends",
+    "summarize_operation_support": "summarize whether a GGML operation is fully supported, partially supported, or unsupported",
+    "review_docs_generator_class": "review the DocsGenerator class that parses CSV files and generates GGML ops documentation"
+  },
+  "ggml-org_llama.cpp/scripts/fetch_server_test_models.py": {
+    "run_fetch_server_test_models": "run the script to fetch all HuggingFace models used in server tests via llama-cli",
+    "collect_hf_model_test_parameters": "collect HuggingFace model references from pytest parametrize decorators in a test file",
+    "create_HuggingFaceModel": "create a HuggingFaceModel instance with hf_repo and optional hf_file fields",
+    "test_collect_hf_model_test_parameters": "test collecting HuggingFace model parameters from a pytest test file using AST parsing",
+    "review_HuggingFaceModel": "review the HuggingFaceModel Pydantic class with frozen config and hf_repo, hf_file fields"
+  },
+  "ggml-org_llama.cpp/scripts/gen-unicode-data.py": {
+    "generate_unicode_data_cpp": "generate a C++ unicode-data.cpp file with codepoint flags, whitespace sets, and NFD mappings from Unicode UCD data",
+    "build_unicode_category_flags": "build a codepoint flag lookup table mapping Unicode categories to bitmask flags for regex character classes",
+    "build_unicode_case_tables": "build lowercase and uppercase conversion tables from Unicode Data for codepoint pairs",
+    "build_unicode_nfd_ranges": "build normalized form decomposition (NFD) range tables for codepoint normalization lookups",
+    "run_unicode_data_generation": "run the script to download Unicode data and output generated C++ source code to stdout"
+  },
+  "ggml-org_llama.cpp/scripts/get_chat_template.py": {
+    "run_get_chat_template": "run the get_chat_template function to fetch a Jinja chat template from a HuggingFace model by model_id",
+    "run_get_chat_template_variant": "run get_chat_template with a specific variant name to select a multi-variant chat template from a HuggingFace model",
+    "run_main_cli": "run the main CLI entry point to fetch and print a chat template given a model_id and optional variant as command-line arguments",
+    "review_get_chat_template": "review the get_chat_template function for handling both single and multiple chat template variants with fallback to default",
+    "summarize_main": "summarize the main CLI function that parses model_id and optional variant arguments and outputs the fetched chat template"
+  },
+  "ggml-org_llama.cpp/scripts/server-bench.py": {
+    "test_server_bench": "test the server-bench module to benchmark the throughput of the llama.cpp HTTP server",
+    "run_benchmark_mmlu": "run the server-bench benchmark with MMLU dataset prompts and save results to an sqlite database",
+    "run_benchmark_synthetic": "run the server-bench benchmark with synthetic random prompts of configurable length range",
+    "run_benchmark_external": "run the server-bench benchmark against an existing HTTP server at a specified address",
+    "run_benchmark_parallel": "run the server-bench benchmark with configurable parallel workers and prompt prediction limits"
+  },
+  "ggml-org_llama.cpp/scripts/server-test-function-call.py": {
+    "test_server_tool_calling": "test the llama-server tool-calling capability via chat completions endpoint on localhost:8080",
+    "test_chat_completion_streaming": "test the chat_completion function with streaming mode enabled to parse SSE tool calls",
+    "test_agentic_loop_tool_calls": "test the run_agentic_loop function to drive multi-turn tool-call execution with mock responses",
+    "test_ecommerce_multi_step_workflow": "test the Azzoo e-commerce multi-step workflow that searches products, fetches details, and retrieves reviews",
+    "test_fitness_bmi_exercises": "test the fitness use case that calculates BMI and retrieves beginner chest exercise recommendations"
+  },
+  "ggml-org_llama.cpp/scripts/server-test-model.py": {
+    "test_chat_non_streaming": "test the llama-server chat endpoint with a non-streaming query asking for the capital of France",
+    "test_chat_streaming": "test the llama-server chat endpoint with a streaming query asking for the capital of France",
+    "test_tool_call_non_streaming": "test the llama-server tool calling endpoint with a non-streaming weather query",
+    "test_tool_call_streaming": "test the llama-server tool calling endpoint with a streaming weather query",
+    "run_query_custom": "run a custom chat completion query against the llama-server with messages, tools, and streaming options"
+  },
+  "ggml-org_llama.cpp/scripts/server-test-parallel-tc.py": {
+    "test_parallel_tool_calls": "test the parallel tool-calling capability of a llama-server chat completions endpoint against six predefined test scenarios",
+    "test_parallel_multi_file_read": "test that a model emits four parallel read_file tool calls for distinct config file paths in a single turn",
+    "test_parallel_trip_planning": "test that a model calls three different tools (search_flights, search_hotels, search_restaurants) in parallel in one turn",
+    "test_parallel_language_toolkit": "test that a model calls translate_text, get_definition, and get_synonyms in parallel for a single word",
+    "test_parallel_portfolio_check": "test that a model emits five parallel get_stock_quote calls for different tickers in one turn"
+  },
+  "ggml-org_llama.cpp/scripts/server-test-structured.py": {
+    "test_structured_output_capability": "test the llama-server structured-output capability via chat completions endpoint on localhost:8080",
+    "test_chat_completion_streaming": "test the chat_completion function with streaming mode enabled to parse SSE responses and tool calls",
+    "test_tool_call_loop_execution": "test the run_tool_loop function to drive multi-turn tool-call execution with mock tool responses",
+    "test_book_metadata_extraction": "test the book metadata extraction test case with json_schema response_format applied always",
+    "test_laptop_comparison_workflow": "test the after_tools workflow that searches products, fetches details, then produces a structured comparison"
+  },
+  "ggml-org_llama.cpp/scripts/tool_bench.py": {
+    "run_tool_bench_llama_server": "run tool call benchmarks on llama-server with a HuggingFace GGUF model at multiple temperatures",
+    "run_tool_bench_ollama": "run tool call benchmarks on ollama with a specified model tag at multiple temperatures",
+    "run_tool_bench_compare": "run tool call benchmarks comparing current llama-server against a baseline binary",
+    "plot_benchmark_heatmap": "plot benchmark results from JSONL files as a success rate heatmap",
+    "plot_benchmark_filtered": "plot benchmark results from JSONL files filtered by test regex and server regex"
+  },
+  "ggml-org_llama.cpp/scripts/verify-checksum-models.py": {
+    "run_verify_checksum_models": "run the script to verify SHA256 checksums of llama.cpp model files against SHA256SUMS",
+    "test_sha256sum_function": "test the sha256sum function that computes SHA256 hash of a file using 16 MB buffered reads",
+    "review_sha256sum_function": "review the sha256sum function that reads a file in binary mode and returns its hex SHA256 digest",
+    "summarize_verify_checksum_models": "summarize how the script reads SHA256SUMS and verifies each model file integrity",
+    "refactor_sha256sum_function": "refactor the sha256sum function to accept a custom block size parameter"
+  },
+  "ggml-org_llama.cpp/scripts/hip/gcn-cdna-vgpr-check.py": {
+    "run_vgpr_check": "run the VGPR check script against a HIP compiler log file to detect functions exceeding 256 VGPRs",
+    "parse_log_file": "parse a HIP compiler log file and extract per-function VGPR usage and spill counts",
+    "review_vgpr_usage": "review a log file for functions exceeding 256 total VGPRs (VGPRs plus spill) and flag new violations",
+    "summarize_vgpr_violations": "summarize all functions in a log file that exceed 256 VGPRs, distinguishing ignored from new violations",
+    "test_vgpr_threshold": "test whether a HIP compiler log contains any new functions exceeding the 256 VGPR threshold"
+  },
+  "ggml-org_llama.cpp/scripts/jinja/jinja-tester.py": {
+    "format_template_content": "format a Jinja template string with proper indentation using Jinja2's lexer",
+    "test_jinja_template_render": "test rendering a Jinja template file with a JSON context string via CLI",
+    "test_jinja_template_format": "test formatting a Jinja template file via CLI with the --action format flag",
+    "review_JinjaTester": "review the JinjaTester GUI class that provides an interactive Jinja template tester with template and JSON editors",
+    "review_CodeEditor": "review the CodeEditor class that extends QPlainTextEdit with line numbers and syntax highlighting"
+  },
+  "ggml-org_llama.cpp/scripts/snapdragon/ggml-hexagon-profile.py": {
+    "parse_log_profile": "parse a hexagon op profile log file and extract operation metrics like usec, cycles, and pmu values",
+    "generate_profile_report": "generate a formatted markdown report of top N grouped operations sorted by max usec or cycles",
+    "summarize_hexagon_profile": "summarize hexagon Snapdragon profile data grouped by op name, dims, and dtypes with statistics",
+    "sort_profile_by_pmu": "sort hexagon profile operations by PMU counter values using a specified PMU index",
+    "run_profile_report_cli": "run the ggml-hexagon-profile CLI tool to post-process and display op profile info from a log file"
+  },
+  "ggml-org_llama.cpp/scripts/snapdragon/qdc/run_qdc_jobs.py": {
+    "build_artifact_zip": "build a QDC artifact zip bundle with test scripts, model URL substitution, and requirements for Android Hexagon testing",
+    "run_qdc_test_job": "run a QDC Appium job on an Android device to execute llama.cpp bench and backend-ops tests",
+    "wait_for_job_completion": "wait for a QDC job to reach a terminal state with configurable timeout and polling",
+    "fetch_and_parse_test_logs": "fetch QDC job log files, parse JUnit XML results, and extract pytest output from log files",
+    "write_github_summary": "write test results as a Markdown table with pass/fail icons and failure details to GITHUB_STEP_SUMMARY"
+  },
+  "ggml-org_llama.cpp/scripts/snapdragon/qdc/tests/run_backend_ops_posix.py": {
+    "test_backend_ops_htp0": "test the backend_ops_htp0 function to run test-backend-ops on HTP0 backend with mxfp4, fp16, or q4_0 type_a",
+    "run_test_backend_ops_posix": "run the test-backend-ops posix script via pytest to execute on-device HTP0 backend tests",
+    "install_backend_ops_bundle": "install the test-backend-ops bundle to the device before running backend operations tests",
+    "run_adb_test_command": "run the test-backend-ops adb command with GGML_HEXAGON environment variables on the HTP0 backend",
+    "write_qdc_test_log": "write the test-backend-ops stdout output to a qdc log file for test result tracking"
+  },
+  "ggml-org_llama.cpp/scripts/snapdragon/qdc/tests/run_bench_tests_posix.py": {
+    "test_llama_completion": "test llama-completion on CPU, GPU, and NPU backends with the installed GGUF model",
+    "test_llama_bench": "test llama-bench performance on CPU, GPU, and NPU backends with the installed GGUF model",
+    "install_fixture": "run the session-scoped install fixture to push llama-cli binary and download the GGUF model",
+    "run_bench_tests_posix": "run all bench and completion tests on CPU, GPU, and NPU backends via pytest",
+    "generate_junit_results": "run the test suite and generate JUnit XML results for the bench and completion tests"
+  },
+  "ggml-org_llama.cpp/scripts/snapdragon/qdc/tests/utils.py": {
+    "run_adb_command": "run an adb shell command on the Android device and return the exit code and output",
+    "write_qdc_log": "write a log file to the QDC logs directory on the Android device",
+    "push_bundle_if_needed": "push the llama_cpp_bundle to the Android device if a check binary is missing",
+    "create_appium_options": "create AppiumOptions configured for UiAutomator2 Android device automation",
+    "get_device_paths": "get on-device paths for bundle, logs, libraries, and binaries"
+  },
+  "ggml-org_llama.cpp/tests/test-tokenizer-random.py": {
+    "test_compare_tokenizers": "test the compare_tokenizers function to compare libllama tokenizer against HuggingFace AutoTokenizer",
+    "test_TokenizerGroundtruth": "test the TokenizerGroundtruth class that wraps HuggingFace AutoTokenizer as ground truth reference",
+    "test_TokenizerLlamaCpp": "test the TokenizerLlamaCpp class that wraps libllama C library via CFFI for tokenizer encode and decode",
+    "test_generator_unicodes": "test the generator_unicodes function that yields all valid unicode characters up to 0x30000",
+    "test_main_cli": "test the main CLI entry point that accepts vocab_file and dir_tokenizer arguments to run tokenizer comparison"
+  },
+  "ggml-org_llama.cpp/tools/mtmd/legacy-models/convert_image_encoder_to_gguf.py": {
+    "convert_clip_model_to_gguf": "convert a Hugging Face CLIP model directory to GGUF format with text and vision encoders",
+    "convert_text_only_encoder": "convert a CLIP model to GGUF text-only encoder for text encoding tasks",
+    "convert_vision_only_encoder": "convert a CLIP model to GGUF vision-only encoder for image encoding tasks",
+    "convert_llava_projector_to_gguf": "convert a CLIP model with LLaVA projector to GGUF multimodal projector format",
+    "convert_siglip_model_to_gguf": "convert a SigLIP vision model to GGUF format with custom image normalization"
+  },
+  "ggml-org_llama.cpp/tools/mtmd/legacy-models/glmedge-convert-image-encoder-to-gguf.py": {
+    "convert_siglip_vision_to_gguf": "convert a SigLIP vision model from HuggingFace to GGUF format for use with llama.cpp",
+    "build_text_only_gguf_model": "build a text-only GGUF model by passing --text-only flag to exclude vision encoder tensors",
+    "build_vision_only_gguf_model": "build a vision-only GGUF model by passing --vision-only flag to exclude text encoder tensors",
+    "run_llava_projector_conversion": "run the script with --llava-projector to extract and save an image encoder for LLaVA models",
+    "convert_with_custom_image_normalization": "convert the model using custom image mean and standard deviation values for normalization"
+  },
+  "ggml-org_llama.cpp/tools/mtmd/legacy-models/llava_surgery_v2.py": {
+    "run_extract_llava_projector": "run the llava_surgery_v2 script to extract LLaVA projector tensors from a model directory into llava.projector",
+    "clean_vision_tower_from_checkpoint": "clean vision tower tensors from a LLaVA checkpoint and save them to llava.clip file",
+    "load_model_from_file": "load a PyTorch or safetensors model checkpoint file and return its tensors with file type",
+    "save_model_to_file": "save a model dictionary to a PyTorch .bin or safetensors .safetensors file",
+    "find_relevant_checkpoints": "find checkpoint paths containing newline and projector tensors from a list of model shards"
+  },
+  "ggml-org_llama.cpp/tools/mtmd/legacy-models/minicpmv-convert-image-encoder-to-gguf.py": {
+    "build_minicpmv_gguf": "build a GGUF image encoder from MiniCPM-V model weights using the minicpmv-convert-image-encoder-to-gguf script",
+    "convert_vision_only": "convert a MiniCPM-V vision encoder to GGUF format with vision-only output using the --vision-only flag",
+    "convert_text_only": "convert a MiniCPM-V text encoder to GGUF format with text-only output using the --text-only flag",
+    "extract_minicpmv_projector": "extract and convert a MiniCPM-V projector to GGUF mmproj format using the --minicpmv-projector flag",
+    "convert_siglip_vision": "convert a SigLIP vision transformer model to GGUF format for use with llama.cpp"
+  },
+  "ggml-org_llama.cpp/tools/mtmd/tests/test-deepseek-ocr.py": {
+    "test_run_mtmd_deepseek_ocr": "test the run_mtmd_deepseek_ocr function to run llama.cpp mtmd-cli inference on an image and return OCR output",
+    "test_compute_embedding_similarity": "test the compute_embedding_similarity function to compute cosine similarity between two texts using an embedding model",
+    "test_read_expected_output": "test the read_expected_output function to read expected OCR output from a reference file",
+    "test_deepseek_ocr_comparison": "test the DeepSeek-OCR comparison pipeline that runs llama.cpp inference and compares results with HuggingFace reference using embedding similarity",
+    "review_test_deepseek_ocr_cli": "review the test-deepseek-ocr.py CLI module that compares llama.cpp mtmd-cli output with HuggingFace reference using configurable thresholds"
+  },
+  "ggml-org_llama.cpp/tools/server/bench/bench.py": {
+    "run_bench_server": "run the bench.py CLI to benchmark a llama.cpp server with k6 and generate metrics",
+    "test_server_startup": "test the server startup and readiness check via is_server_listening and is_server_ready functions",
+    "summarize_bench_results": "summarize k6 benchmark results into JSON and GitHub env files with rounded metrics",
+    "build_prometheus_plots": "build matplotlib plots from Prometheus metrics for prompt and token processing times",
+    "review_bench_cli": "review the bench.py CLI module with argparse for configurable llama.cpp server benchmarking"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/utils.py": {
+    "test_llama_server": "test the ServerProcess class by starting and stopping a llama.cpp server with configurable model options",
+    "run_streaming_chat_completion": "run a streaming chat completion request against the llama.cpp server and accumulate response chunks",
+    "test_embedding_server": "test the ServerPreset.bert_bge_small preset for running an embedding-enabled server instance",
+    "parallel_test_requests": "run multiple server test functions in parallel using parallel_function_calls with ThreadPoolExecutor",
+    "download_model_file": "download a model file from a URL to a local path using download_file with wget"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_basic.py": {
+    "test_server_health": "test the server /health endpoint returns status 200 after starting the server",
+    "test_server_props": "test the server /props endpoint returns model path, total slots, and default generation settings",
+    "test_server_models": "test the server /models endpoint returns model data with correct id and aliases",
+    "test_server_slots": "test the server /slots endpoint returns slot info when enabled and error when disabled",
+    "test_completion_with_split_model": "test the server /completion endpoint generates text from a split GGUF model loaded from Hugging Face"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_chat_completion.py": {
+    "test_chat_completion": "test the chat completion endpoint with system and user prompts and verify response format and token usage",
+    "test_chat_completion_stream": "test the chat completion streaming endpoint and verify delta content, completion id consistency, and finish reasons",
+    "test_completion_with_response_format": "test the chat completion endpoint with structured response formats including json_object, json_schema, and invalid schemas",
+    "test_chat_template": "test applying chat templates like llama3 and command-r to messages and verify the generated prompt format",
+    "test_logprobs": "test the chat completion endpoint with logprobs enabled and verify per-token log probabilities and top logprobs"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_compat_anthropic.py": {
+    "test_anthropic_messages_basic": "test the Anthropic messages endpoint returns correct response format with type, content, and usage fields",
+    "test_anthropic_messages_streaming": "test streaming messages endpoint returns proper event sequence including message_start, content_block_delta, and message_stop events",
+    "test_anthropic_tool_use_basic": "test the Anthropic tool use endpoint accepts tool definitions and returns tool_use content blocks",
+    "test_anthropic_vision_base64_with_multimodal_model": "test vision API accepts base64-encoded images in Anthropic format and returns text responses from multimodal models",
+    "test_anthropic_thinking_with_reasoning_model": "test extended thinking parameter returns thinking and text content blocks with signature for reasoning models"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_compat_oai_responses.py": {
+    "test_responses_with_openai_library": "test the OpenAI responses API client with a non-streaming request to the llama.cpp server",
+    "test_responses_stream_with_openai_library": "test the OpenAI responses API client with a streaming request and verify streamed event types",
+    "create_server_fixture": "create a pytest fixture that initializes a ServerProcess with the tinyllama2 preset",
+    "test_openai_responses_create": "test client.responses.create with model, input messages, max_output_tokens, and temperature parameters",
+    "test_streaming_response_events": "test streaming response events including response.created, response.output_text.delta, and response.completed"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_completion.py": {
+    "test_completion": "test the /completion endpoint with a prompt string and n_predict to verify response content, timings, and tokens",
+    "test_completion_stream": "test streaming responses from the /completion endpoint with stream=true and verify stop markers and generated content",
+    "test_completion_with_openai_library": "test the /v1 completions API using the OpenAI Python client library with model davinci-002",
+    "test_completion_parallel_slots": "test concurrent /completion requests across multiple server slots and verify slot busy status",
+    "test_n_probs": "test the /completion endpoint with n_probs to verify top-k token probabilities and logprobs in the response"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_ctx_shift.py": {
+    "test_ctx_shift_enabled": "test the llama.cpp server context shift feature when enabled with a short prompt",
+    "test_ctx_shift_disabled_short_prompt": "test the llama.cpp server context shift disabled with a short prompt and varying n_predict values",
+    "test_ctx_shift_disabled_long_prompt": "test the llama.cpp server rejects a prompt exceeding the available context size",
+    "test_ctx_shift_disabled_stream": "test the llama.cpp server streaming completions with context shift disabled",
+    "test_server_preset_tinyllama2": "test the ServerPreset.tinyllama2 fixture configuration for n_ctx n_slots and n_predict"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_embedding.py": {
+    "test_embedding_single": "test the /v1/embeddings endpoint with a single text input and last pooling",
+    "test_embedding_multiple": "test the /v1/embeddings endpoint with multiple text inputs and last pooling",
+    "test_embedding_pooling_modes": "test the /v1/embeddings endpoint with mean, last, and none pooling strategies",
+    "test_embedding_openai_library": "test the /v1/embeddings endpoint using the OpenAI Python client library",
+    "test_embedding_base64_encoding": "test the /v1/embeddings endpoint with base64 encoding format for embedding output"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_ignore_eos.py": {
+    "test_ignore_eos_populates_logit_bias": "test the /completion endpoint with ignore_eos=true to verify EOG logit biases are populated",
+    "test_ignore_eos_false_no_logit_bias": "test the /completion endpoint with ignore_eos=false to verify no EOG logit biases are added",
+    "test_server_preset_tinyllama2": "test the ServerPreset.tinyllama2 fixture creates a server instance for testing",
+    "test_server_make_request_completion": "test the server make_request POST /completion with ignore_eos and temperature parameters",
+    "test_server_start": "test the server start method initializes the llama.cpp server for integration testing"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_infill.py": {
+    "test_infill_without_input_extra": "test the /infill endpoint without input_extra to generate code completions from prefix and prompt",
+    "test_infill_with_input_extra": "test the /infill endpoint with input_extra context files to generate code completions from prefix and prompt",
+    "test_invalid_input_extra_req": "test the /infill endpoint rejects invalid input_extra payloads with 400 error responses",
+    "test_with_qwen_model": "test the /infill endpoint with a Qwen2.5-Coder model to verify code generation accuracy",
+    "test_infill_endpoint": "test the POST /infill API endpoint with input_prefix, prompt, and input_suffix parameters"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_kv_keep_only_active.py": {
+    "test_clear_and_restore": "test the kv cache idle slot clearing and cache-ram restore behavior when launching a new slot",
+    "test_disabled_with_flag": "test the kv cache idle slot feature is disabled when no_cache_idle_slots flag is set",
+    "create_LogReader": "create a LogReader class that reads incremental log content from a file path with position tracking",
+    "create_server_fixture": "create a pytest fixture that configures and starts a tinyllama2 server with cache-ram and kv_unified settings",
+    "test_slot_kv_management": "test that idle slot KV cache is cleared on launch and restored from cache-ram on re-request"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_lora.py": {
+    "test_lora": "test lora adapter scaling by sending POST to /lora-adapters and /completion endpoints with scale 0.0 or 1.0",
+    "test_lora_per_request": "test per-request lora scaling by sending parallel POST /completion requests with different lora scales",
+    "test_with_big_model": "test lora adapters on a large 8B model by configuring ServerProcess with Llama-3.1-8B and abliteration LoRA",
+    "create_server_fixture": "create a pytest fixture that initializes ServerPreset.stories15m_moe and downloads a LoRA file from HuggingFace",
+    "configure_lora_scale": "configure lora adapter scale via POST /lora-adapters with id and scale parameters for global or per-request application"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_proxy.py": {
+    "test_mcp_proxy_disabled": "test the cors-proxy endpoint returns 404 when webui_mcp_proxy is disabled",
+    "test_mcp_proxy_enabled": "test the cors-proxy endpoint forwards requests to external URLs when webui_mcp_proxy is enabled",
+    "test_mcp_proxy_internal": "test the cors-proxy endpoint forwards requests to internal server endpoints like /models",
+    "test_cors_proxy_status_codes": "test the cors-proxy endpoint returns correct HTTP status codes for enabled and disabled proxy modes",
+    "test_cors_proxy_response_content": "test the cors-proxy endpoint returns expected response content such as Example Domain or data field"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_rerank.py": {
+    "test_rerank": "test the /rerank endpoint with query and documents to verify relevance scores and result ordering",
+    "test_rerank_tei_format": "test the /rerank endpoint with texts parameter in TEI format and verify score ordering",
+    "test_invalid_rerank_req": "test the /rerank endpoint rejects invalid documents payloads with 400 error response",
+    "test_rerank_usage": "test the /rerank endpoint returns correct prompt_tokens usage count for given documents",
+    "test_rerank_top_n": "test the /rerank endpoint respects top_n parameter to limit number of returned results"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_router.py": {
+    "test_router_props": "test the router props endpoint returns role, max_instances, models_autoload, and build_info",
+    "test_router_chat_completion_stream": "test streaming chat completion with valid and invalid model names",
+    "test_router_unload_model": "test loading and unloading a model via the router models endpoint",
+    "test_router_models_max_evicts_lru": "test router evicts least-recently-used model when max instances reached",
+    "test_router_no_models_autoload": "test router rejects chat requests when models_autoload is disabled",
+    "test_router_api_key_required": "test router requires valid Bearer API key for authenticated requests"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_security.py": {
+    "test_access_public_endpoint": "test the server returns 200 for public endpoints /health and /models without authentication",
+    "test_access_static_assets_without_api_key": "test static web UI assets like /, /bundle.js, /bundle.css are accessible without API key",
+    "test_incorrect_api_key": "test the server rejects requests with missing or invalid API keys with 401 authentication_error",
+    "test_correct_api_key": "test the server accepts requests with valid Bearer token or X-Api-Key header and returns content",
+    "test_cors_options": "test the server handles CORS OPTIONS preflight requests with correct Access-Control-Allow headers"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_sleep.py": {
+    "test_server_sleep": "test the server sleep functionality by verifying endpoints stay responsive after idle timeout",
+    "test_server_wake_from_sleep": "test waking up a sleeping server by sending a POST /completion request with a prompt",
+    "test_server_health_after_sleep": "test that GET /health and GET /props endpoints return 200 after server goes to sleep",
+    "create_server_with_preset": "create a test server instance using ServerPreset.tinyllama2() with configurable idle sleep settings",
+    "configure_server_idle_timeout": "configure the server sleep_idle_seconds property and start it for integration testing"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_slot_save.py": {
+    "test_slot_save_restore": "test the slot save and restore API by saving a slot's KV cache and restoring it to another slot",
+    "test_slot_erase": "test the slot erase API by clearing a slot's cached state and verifying tokens are re-processed",
+    "create_server_tinyllama2": "create a test server using the tinyllama2 preset with slot save path and temperature configured",
+    "save_slot_cache": "save the KV cache state of a slot to a binary file via the /slots/{id}?action=save endpoint",
+    "restore_slot_cache": "restore a previously saved KV cache file into a target slot via the /slots/{id}?action=restore endpoint",
+    "erase_slot_cache": "erase a slot's cached state via the /slots/{id}?action=erase endpoint to force full re-processing"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_speculative.py": {
+    "test_with_and_without_draft": "test speculative decoding by comparing completion results with and without a draft model",
+    "test_different_draft_min_draft_max": "test speculative decoding with various draft_min and draft_max parameter combinations",
+    "test_slot_ctx_not_exceeded": "test speculative decoding when context length is near the slot limit",
+    "test_with_ctx_shift": "test speculative decoding with context shifting enabled and long prompts",
+    "test_multi_requests_parallel": "test speculative decoding handling multiple parallel requests with configurable slots"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_template.py": {
+    "test_reasoning": "test the reasoning tag behavior (on, auto, off) across multiple jinja chat templates via the /apply-template endpoint",
+    "test_date_inside_prompt": "test that date formatting tokens are correctly rendered inside generated prompts for llama and fireworks templates",
+    "test_add_generation_prompt": "test the add_generation_prompt flag controls whether assistant header tokens appear in the generated prompt",
+    "create_server_fixture": "create a test server fixture using ServerPreset.tinyllama2 with model alias and slot configuration",
+    "test_tools_parameter": "test the /apply-template endpoint with tools set to None, empty list, or a list containing TEST_TOOL"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_tokenize.py": {
+    "test_tokenize_detokenize": "test the /tokenize and /detokenize API endpoints round-trip encode and decode text content",
+    "test_tokenize_with_bos": "test the /tokenize API endpoint with add_special flag to prepend BOS token",
+    "test_tokenize_with_pieces": "test the /tokenize API endpoint with with_pieces flag to return token IDs and text pieces"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_tool_call.py": {
+    "test_tool_completion_with_required_tool": "test tool completion with required tool call using chat completions API and verify tool call response",
+    "test_tool_completion_without_tool_call": "test tool completion without tool call when no tools or tool_choice is none and verify no tool_calls in response",
+    "test_weather_tool_call": "test weather tool call with get_current_weather function and verify location argument contains Istanbul",
+    "test_calc_result_with_tool_messages": "test calculator tool result with pre-populated tool messages and verify computed y coordinate value",
+    "test_hello_world_with_python_tool": "test hello world with python tool call and verify generated code prints hello world"
+  },
+  "ggml-org_llama.cpp/tools/server/tests/unit/test_vision_api.py": {
+    "test_models_supports_multimodal_capability": "test the /models endpoint returns completion and multimodal capabilities",
+    "test_v1_models_supports_multimodal_capability": "test the /v1/models endpoint returns completion and multimodal capabilities",
+    "test_vision_chat_completion": "test vision chat completion with image URLs and base64 encoded images",
+    "test_vision_completion": "test vision completion with base64 image data and multimodal markers",
+    "test_vision_embeddings": "test vision embeddings with multimodal image data and text-only prompts"
+  },
+  "ggml-org_llama.cpp/tools/tts/convert_pt_to_hf.py": {
+    "convert_pt_model_to_hf": "convert a PyTorch .pt WavTokenizer model to HuggingFace safetensors format",
+    "flatten_state_dict_keys": "flatten a nested PyTorch state_dict into a flat dictionary with renamed keys",
+    "rename_norm_weights_for_gguf": "rename norm.scale.weight and norm.shift.weight to norm.weight and norm.bias for GGUF compatibility",
+    "generate_hf_config_json": "generate a HuggingFace config.json with WavTokenizerDec architecture parameters",
+    "save_safetensors_with_index": "save a flattened state_dict as safetensors with index.json and weight_map metadata"
+  },
+  "ggml-org_llama.cpp/tools/tts/tts-outetts.py": {
+    "run_tts_text_to_audio": "run the TTS CLI to convert text to audio via LLM and decoder server endpoints",
+    "create_embd_to_audio": "create audio waveform from spectrogram embeddings using STFT overlap-add synthesis",
+    "build_save_wav": "build a WAV file from audio data with RIFF header and 16-bit PCM encoding",
+    "test_process_text": "test text preprocessing that normalizes, cleans, and tokenizes input text into word list",
+    "summarize_fill_hann_window": "summarize Hann window generation for STFT/ISTFT audio processing with periodic option"
+  }
+}

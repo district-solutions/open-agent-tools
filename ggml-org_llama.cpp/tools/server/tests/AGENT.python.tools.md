@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: ggml-org/llama.cpp
+- repo_uri: https://github.com/ggml-org/llama.cpp
+
+## File: ggml-org_llama.cpp/tools/server/tests/utils.py
+
+Prompts
+
+```
+['test the ServerProcess class by starting and stopping a llama.cpp server with configurable model options', 'run a streaming chat completion request against the llama.cpp server and accumulate response chunks', 'test the ServerPreset.bert_bge_small preset for running an embedding-enabled server instance', 'run multiple server test functions in parallel using parallel_function_calls with ThreadPoolExecutor', 'download a model file from a URL to a local path using download_file with wget']
+```
+
+Usage
+
+```
+{'test_llama_server': 'test the ServerProcess class by starting and stopping a llama.cpp server with configurable model options', 'run_streaming_chat_completion': 'run a streaming chat completion request against the llama.cpp server and accumulate response chunks', 'test_embedding_server': 'test the ServerPreset.bert_bge_small preset for running an embedding-enabled server instance', 'parallel_test_requests': 'run multiple server test functions in parallel using parallel_function_calls with ThreadPoolExecutor', 'download_model_file': 'download a model file from a URL to a local path using download_file with wget'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pytorch/pytorch
+- repo_uri: https://github.com/pytorch/pytorch.git
+
+## File: pytorch_pytorch/torch/distributed/_shard/sharding_plan/api.py
+
+Prompts
+
+```
+['create a ShardingPlan dataclass that describes how to shard a module across hosts with plan, output_plan, and return_local_tensor', 'build a ShardingPlan plan dict mapping parameter names to ShardingSpec objects for direct parameter sharding', 'build a ShardingPlan output_plan dict specifying the output layout of modules producing ShardedTensors', 'build a ShardingPlan return_local_tensor list to convert sharded module outputs back to local tensors', 'build a ShardingPlanner subclass that implements build_plan to define how to shard a module across ranks']
+```
+
+Usage
+
+```
+{'create_ShardingPlan': 'create a ShardingPlan dataclass that describes how to shard a module across hosts with plan, output_plan, and return_local_tensor', 'build_ShardingPlan_plan': 'build a ShardingPlan plan dict mapping parameter names to ShardingSpec objects for direct parameter sharding', 'build_ShardingPlan_output_plan': 'build a ShardingPlan output_plan dict specifying the output layout of modules producing ShardedTensors', 'build_ShardingPlan_return_local_tensor': 'build a ShardingPlan return_local_tensor list to convert sharded module outputs back to local tensors', 'build_ShardingPlanner_build_plan': 'build a ShardingPlanner subclass that implements build_plan to define how to shard a module across ranks'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/examples/pytorch/token-classification/run_ner.py
+
+Prompts
+
+```
+['fine-tune a transformer model for named entity recognition token classification on a custom dataset', 'load a dataset for token classification from the HuggingFace Hub or local CSV/JSON files', 'tokenize text input and align label IDs with subword tokens for NER training', 'compute seqeval precision, recall, F1, and accuracy metrics for token classification predictions', 'train a token classification model using the HuggingFace Trainer with configurable dataset and model arguments']
+```
+
+Usage
+
+```
+{'fine_tune_ner_model': 'fine-tune a transformer model for named entity recognition token classification on a custom dataset', 'load_token_classification_dataset': 'load a dataset for token classification from the HuggingFace Hub or local CSV/JSON files', 'tokenize_and_align_labels': 'tokenize text input and align label IDs with subword tokens for NER training', 'compute_seqeval_metrics': 'compute seqeval precision, recall, F1, and accuracy metrics for token classification predictions', 'train_token_classifier': 'train a token classification model using the HuggingFace Trainer with configurable dataset and model arguments'}
+```
+

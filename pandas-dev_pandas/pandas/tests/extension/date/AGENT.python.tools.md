@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pandas-dev/pandas
+- repo_uri: https://github.com/pandas-dev/pandas.git
+
+## File: pandas-dev_pandas/pandas/tests/extension/date/array.py
+
+Prompts
+
+```
+['create a pandas extension dtype for datetime.date values using DateDtype', 'build a DateArray from a list of datetime.date objects or numpy arrays of year month day components', 'test the DateArray isna method to identify missing date values stored as dt.date.min', 'review the DateDtype construct_from_string class method for validating string construction', 'summarize the DateArray copy and view methods for creating shallow or deep copies of the array']
+```
+
+Usage
+
+```
+{'create_DateDtype': 'create a pandas extension dtype for datetime.date values using DateDtype', 'build_DateArray': 'build a DateArray from a list of datetime.date objects or numpy arrays of year month day components', 'test_DateArray_isna': 'test the DateArray isna method to identify missing date values stored as dt.date.min', 'review_DateArray_construct_from_string': 'review the DateDtype construct_from_string class method for validating string construction', 'summarize_DateArray_copy_view': 'summarize the DateArray copy and view methods for creating shallow or deep copies of the array'}
+```
+

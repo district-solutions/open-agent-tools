@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/agents-course
+- repo_uri: https://github.com/huggingface/agents-course
+
+## File: huggingface_agents-course/scripts/translation.py
+
+Prompts
+
+```
+['translate all markdown files in a directory to a target language using an LLM', 'translate markdown files using a custom model and Hugging Face InferenceClient', 'translate markdown files using a custom prompt function for the LLM', 'translate markdown files from a custom input directory to a target language', 'review the auto_translate function that recursively translates markdown files using streaming LLM inference']
+```
+
+Usage
+
+```
+{'translate_mdx_files': 'translate all markdown files in a directory to a target language using an LLM', 'translate_with_custom_model': 'translate markdown files using a custom model and Hugging Face InferenceClient', 'translate_with_custom_prompt': 'translate markdown files using a custom prompt function for the LLM', 'translate_with_custom_input_dir': 'translate markdown files from a custom input directory to a target language', 'review_auto_translate': 'review the auto_translate function that recursively translates markdown files using streaming LLM inference'}
+```
+

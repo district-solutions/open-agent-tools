@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: NousResearch/hermes-agent
+- repo_uri: https://github.com/NousResearch/hermes-agent
+
+## File: NousResearch_hermes-agent/tests/e2e/matrix_xsign_bootstrap/test_bootstrap.py
+
+Prompts
+
+```
+['run the end-to-end test suite for Matrix cross-signing auto-bootstrap against a Continuwuity homeserver', 'test that Matrix cross-signing bootstrap publishes unpadded base64 keyids for master and self-signing keys', 'test that a second startup with the same crypto store skips cross-signing bootstrap', 'test that setting MATRIX_RECOVERY_KEY env var skips fresh bootstrap and verifies via recovery key', 'register a fresh bot user on the Matrix homeserver using a registration token with fallback support']
+```
+
+Usage
+
+```
+{'run_matrix_cross_signing_e2e_tests': 'run the end-to-end test suite for Matrix cross-signing auto-bootstrap against a Continuwuity homeserver', 'test_bootstrap_publishes_unpadded_keys': 'test that Matrix cross-signing bootstrap publishes unpadded base64 keyids for master and self-signing keys', 'test_second_startup_skips_bootstrap': 'test that a second startup with the same crypto store skips cross-signing bootstrap', 'test_recovery_key_path_takes_precedence': 'test that setting MATRIX_RECOVERY_KEY env var skips fresh bootstrap and verifies via recovery key', 'register_matrix_bot': 'register a fresh bot user on the Matrix homeserver using a registration token with fallback support'}
+```
+

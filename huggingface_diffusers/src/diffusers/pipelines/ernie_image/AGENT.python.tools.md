@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/diffusers
+- repo_uri: https://github.com/huggingface/diffusers
+
+## File: huggingface_diffusers/src/diffusers/pipelines/ernie_image/pipeline_ernie_image.py
+
+Prompts
+
+```
+['generate images from text prompts using the ErnieImagePipeline with classifier-free guidance and flow matching', 'enhance a short text prompt using the PE model to rewrite it with resolution-aware details', 'encode text prompts into hidden state embeddings using the text encoder model', 'patchify latent tensors from 32 channels to 128 channels using 2x2 spatial patching', 'pad a list of text hidden state tensors to a uniform batch tensor with length tracking']
+```
+
+Usage
+
+```
+{'generate_images_with_ernie_pipeline': 'generate images from text prompts using the ErnieImagePipeline with classifier-free guidance and flow matching', 'enhance_prompt_with_pe_model': 'enhance a short text prompt using the PE model to rewrite it with resolution-aware details', 'encode_prompt_to_embeddings': 'encode text prompts into hidden state embeddings using the text encoder model', 'patchify_latents_for_transformer': 'patchify latent tensors from 32 channels to 128 channels using 2x2 spatial patching', 'pad_text_embeddings_for_batch': 'pad a list of text hidden state tensors to a uniform batch tensor with length tracking'}
+```
+

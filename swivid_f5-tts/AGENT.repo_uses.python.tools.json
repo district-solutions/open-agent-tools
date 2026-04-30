@@ -1,0 +1,375 @@
+{
+  "swivid_f5-tts/src/f5_tts/api.py": {
+    "create_F5TTS_instance": "create an F5TTS instance with a specified model name, checkpoint file, and target device",
+    "run_infer_generate_speech": "run inference to generate speech from a reference audio file and target text with configurable seed",
+    "test_transcribe_extract_text": "test the transcribe method to extract text from a reference audio file with optional language",
+    "export_wav_save_audio": "export generated WAV audio to a file with optional silence removal",
+    "export_spectrogram_save_image": "export a spectrogram visualization to a PNG image file"
+  },
+  "swivid_f5-tts/src/f5_tts/socket_server.py": {
+    "run_socket_server_tts": "run the F5-TTS socket server on host 0.0.0.0 port 9998 with reference audio and text",
+    "create_tts_streaming_processor": "create a TTSStreamingProcessor with model checkpoint, vocab, reference audio, and reference text",
+    "build_tts_streaming_output": "build a TTS streaming pipeline that generates audio chunks and writes them to output.wav",
+    "test_audio_file_writer_thread": "test the AudioFileWriterThread that queues and writes audio chunks to a WAV file",
+    "review_start_server": "review the start_server function that binds a TCP socket and handles client connections"
+  },
+  "swivid_f5-tts/src/f5_tts/eval/ecapa_tdnn.py": {
+    "build_ecapa_tdnn_model": "build an ECAPA-TDNN model for speaker similarity evaluation with custom embedding dimensions",
+    "create_ecapa_tdnn_small": "create an ECAPA-TDNN SMALL model with 256-dim speaker embeddings for voice comparison",
+    "test_attentive_stats_pooling": "test the attentive stats pooling layer that computes weighted mean and standard deviation of features",
+    "refactor_se_res2block": "refactor the SE-Res2Block module to support custom bottleneck dimensions and residual connections",
+    "review_res2conv1d_relu_bn": "review the Res2Conv1dReluBn block that splits channels and applies multi-scale convolutions"
+  },
+  "swivid_f5-tts/src/f5_tts/eval/eval_librispeech_test_clean.py": {
+    "run_eval_wer": "run the eval_librispeech_test_clean module with eval_task=wer to compute word error rate on generated audio",
+    "run_eval_sim": "run the eval_librispeech_test_clean module with eval_task=sim to compute similarity scores on generated audio",
+    "parse_gpu_nums": "parse the gpu_nums argument string into a list of GPU indices for multiprocessing",
+    "get_args": "get CLI arguments for the evaluation including eval_task, lang, gen_wav_dir, librispeech path, and gpu_nums",
+    "run_eval_multiprocessing": "run the evaluation across multiple GPUs using multiprocessing pool to compute WER or similarity metrics"
+  },
+  "swivid_f5-tts/src/f5_tts/eval/eval_seedtts_testset.py": {
+    "run_eval_wer": "run the Seed-TTS evaluation script to compute WER metrics on generated speech audio",
+    "run_eval_similarity": "run the Seed-TTS evaluation script to compute similarity metrics on generated speech audio",
+    "build_eval_command": "build a command-line evaluation run with specified language, GPU count, and generated wav directory",
+    "test_parse_gpu_nums": "test the gpu_nums parser with numeric string input and bracketed GPU list input",
+    "review_main_pipeline": "review the main evaluation pipeline that splits test data across GPUs and aggregates WER or similarity results"
+  },
+  "swivid_f5-tts/src/f5_tts/eval/utils_eval.py": {
+    "get_seedtts_testset_metainfo": "parse a Seed-TTS metalst file and return a list of (utt, prompt_text, prompt_wav, gt_text, gt_wav) tuples",
+    "get_inference_prompt": "generate inference prompts from metainfo with audio resampling, mel spectrogram extraction, and bucketed batching",
+    "get_seed_tts_test": "build a GPU-partitioned test set from generated WAV files and a Seed-TTS metalst for evaluation",
+    "run_asr_wer": "run automatic speech recognition WER evaluation on generated audio using funasr for Chinese or faster-whisper for English",
+    "run_sim": "compute speaker similarity scores between generated and reference audio using ECAPA-TDNN with WAVLM features"
+  },
+  "swivid_f5-tts/src/f5_tts/infer/infer_gradio.py": {
+    "run_gradio_tts_demo": "run the F5-TTS Gradio demo app with CLI options for port, host, and share flag",
+    "synthesize_speech_audio": "synthesize speech audio from reference audio and text using the F5-TTS model with configurable seed and speed",
+    "generate_multistyle_speech": "generate multi-style speech with multiple voice types and emotion labels in a single generation",
+    "build_voice_chat_interface": "build an interactive voice chat interface that records audio, generates AI text responses, and synthesizes TTS audio",
+    "parse_speechtype_segments": "parse text with embedded speech type tags like {Regular} or {\"name\": str, \"seed\": int} into structured segments"
+  },
+  "swivid_f5-tts/src/f5_tts/infer/utils_infer.py": {
+    "create_function_load_vocoder": "load a vocoder model (vocos or bigvgan) from huggingface or local path for audio generation",
+    "create_function_load_model": "load a CFM TTS model checkpoint with tokenizer and configuration for inference",
+    "create_function_infer_process": "generate speech audio from reference audio and target text using the loaded TTS model",
+    "create_function_transcribe": "transcribe reference audio to text using whisper-large-v3-turbo automatic speech recognition",
+    "create_function_chunk_text": "split long text into smaller sentence-based chunks for batched TTS inference"
+  },
+  "swivid_f5-tts/src/f5_tts/model/cfm.py": {
+    "build_cfm_model": "build a CFM model with a transformer backbone for conditional flow matching TTS",
+    "sample_audio_cfm": "sample audio from a CFM model using text conditioning and neural ODE sampling",
+    "train_cfm_model": "train a CFM model with flow matching loss and classifier-free guidance",
+    "configure_cfm_sampling": "configure CFM sampling with steps, CFG strength, and EPSS timestep pruning",
+    "get_cfm_device": "get the device a CFM model is running on for inference placement"
+  },
+  "swivid_f5-tts/src/f5_tts/model/dataset.py": {
+    "create_HFDataset": "create an HFDataset from a HuggingFace dataset for TTS training with resampling and mel spectrogram extraction",
+    "create_CustomDataset": "create a CustomDataset from local audio files with optional preprocessed mel spectrograms and duration filtering",
+    "build_DynamicBatchSampler": "build a DynamicBatchSampler that groups samples by audio length to minimize padding within each batch",
+    "load_dataset": "load a TTS dataset from disk or HuggingFace with configurable tokenizer, audio type, and mel spec settings",
+    "collate_fn": "collate a batch of mel spectrograms and texts with zero-padding and length tensors for DataLoader"
+  },
+  "swivid_f5-tts/src/f5_tts/model/modules.py": {
+    "create_mel_spec_extractor": "create a MelSpec module that converts raw waveform to mel spectrogram using vocos or bigvgan backend",
+    "build_attention_processor": "build an AttnProcessor that runs scaled dot-product attention with optional flash-attn backend and rotary position embeddings",
+    "create_joint_attention": "create a JointAttnProcessor for multimodal DiT that performs joint attention between audio and text sequences",
+    "build_dit_block": "build a DiTBlock with AdaLayerNorm modulation, attention, and feedforward layers for diffusion transformer",
+    "create_mm_dit_block": "create an MMDiTBlock that processes both noised audio input and text context with joint attention and separate feedforward paths"
+  },
+  "swivid_f5-tts/src/f5_tts/model/trainer.py": {
+    "create_trainer_instance": "create a Trainer instance with a CFM model, learning rate, and checkpoint path for TTS training",
+    "run_training_loop": "run the training loop with a dataset, epochs, batch size, and gradient accumulation for TTS model",
+    "save_model_checkpoint": "save a model checkpoint with optimizer state, EMA state, and scheduler state to disk",
+    "load_model_checkpoint": "load a model checkpoint from disk including model weights, optimizer, EMA, and scheduler state",
+    "log_training_samples": "log generated audio samples during training by running inference and saving WAV files to disk"
+  },
+  "swivid_f5-tts/src/f5_tts/model/utils.py": {
+    "create_seed_everything": "seed random, torch, and cuda reproducibly with a single seed value",
+    "build_tokenizer_from_vocab": "build a character or pinyin tokenizer from a vocab.txt file for a given dataset",
+    "convert_char_to_pinyin": "convert a list of Chinese text strings to pinyin using g2p with tone and polyphone support",
+    "test_tensor_mask_helpers": "test tensor mask utilities including lens_to_mask, mask_from_start_end_indices, and maybe_masked_mean",
+    "summarize_get_epss_timesteps": "summarize the empirically pruned diffusion sampling timestep generator for various step counts"
+  },
+  "swivid_f5-tts/src/f5_tts/model/backbones/dit.py": {
+    "create_dit_model": "create a DiT model with configurable depth, heads, and text embedding for audio generation",
+    "build_text_embedding": "build a TextEmbedding module with positional encoding and optional ConvNeXtV2 blocks for text processing",
+    "configure_cfg_inference": "configure DiT for classifier-free guidance inference by packing conditional and unconditional branches",
+    "cache_text_embeddings": "cache text conditional and unconditional embeddings in DiT for repeated inference without recomputation",
+    "apply_input_embedding": "apply InputEmbedding to combine noised audio, conditioning audio, and text embeddings with position encoding"
+  },
+  "swivid_f5-tts/src/f5_tts/model/backbones/mmdit.py": {
+    "create_mmdit_model": "create an MMDiT transformer model with configurable depth, heads, and dimension for audio generation",
+    "build_text_embedding": "build a TextEmbedding module that converts token sequences into dimensioned embeddings with sinusoidal position encoding",
+    "create_audio_embedding": "create an AudioEmbedding module that concatenates noised audio and conditioned audio with convolutional position embedding",
+    "run_mmdit_forward": "run an MMDiT forward pass with noisy audio, masked condition, text tokens, and timestep for diffusion inference",
+    "test_mmdit_cache": "test MMDiT caching of text condition and uncondition embeddings via thread-local storage for inference reuse"
+  },
+  "swivid_f5-tts/src/f5_tts/model/backbones/unett.py": {
+    "create_unett_model": "create a UNetT transformer model with specified dimensions, depth, and skip connection type",
+    "build_text_embedding": "build a TextEmbedding module that converts text token indices into contextual embeddings with optional convnextv2 blocks",
+    "create_input_embedding": "create an InputEmbedding module that concatenates noised audio, conditioning audio, and text embeddings into a unified representation",
+    "run_unett_forward": "run the UNetT forward pass with noisy audio, masked conditioning audio, text tokens, and timestep for diffusion denoising",
+    "test_cfg_inference": "test UNetT classifier-free guidance inference by packing conditioned and unconditioned inputs for parallel forward pass"
+  },
+  "swivid_f5-tts/src/f5_tts/runtime/triton_trtllm/benchmark.py": {
+    "run_benchmark_cli": "run the F5-TTS benchmark CLI to measure RTF on a dataset split with a specified batch size",
+    "build_vocos_tensorrt_engine": "build a VocosTensorRT class that decodes mel spectrograms to waveform using a TensorRT engine",
+    "test_load_vocoder": "test the load_vocoder function to initialize Vocos or VocosTensorRT vocoder from local or huggingface",
+    "review_data_collator": "review the data_collator function that preprocesses audio-text batches into padded mel and text sequences",
+    "summarize_init_distributed": "summarize the init_distributed function that sets up NCCL process group for multi-GPU inference"
+  },
+  "swivid_f5-tts/src/f5_tts/runtime/triton_trtllm/client_grpc.py": {
+    "run_client_grpc": "run the F5-TTS gRPC client to send audio inference requests to a Triton server",
+    "test_send": "test the send function that loads audio and sends inference requests to Triton",
+    "test_load_manifests": "test the load_manifests function that parses manifest files with audio paths and text",
+    "test_write_triton_stats": "test the write_triton_stats function that parses and writes Triton inference statistics",
+    "test_split_data": "test the split_data function that divides a list into k approximately equal chunks"
+  },
+  "swivid_f5-tts/src/f5_tts/runtime/triton_trtllm/client_http.py": {
+    "run_client_http_cli": "run the HTTP client CLI to send a TTS inference request to a Triton server and save output audio",
+    "create_function_prepare_request": "create a function that builds a JSON request payload with waveform, lengths, and text inputs for Triton inference",
+    "create_function_load_audio": "create a function that loads a WAV file and resamples it to 24000 Hz using scipy",
+    "create_function_get_args": "create a function that parses CLI arguments for server URL, reference audio, reference text, target text, model name, and output path",
+    "test_client_http_inference": "test the HTTP inference client by sending a reference audio and target text to a Triton F5-TTS model server"
+  },
+  "swivid_f5-tts/src/f5_tts/runtime/triton_trtllm/model_repo_f5_tts/f5_tts/1/f5_tts_trtllm.py": {
+    "build_f5_tts_inference_engine": "build a F5TTS inference engine from a TensorRT-LLM serialized engine file for audio generation",
+    "create_text_embedding": "create a TextEmbedding module that converts text tokens into embeddings with rotary position encodings",
+    "run_f5_tts_sampling": "run the F5TTS sample method to generate mel spectrograms from text and reference audio conditioning",
+    "test_remove_tensor_padding": "test the remove_tensor_padding function to strip padded tokens from batched audio tensors",
+    "summarize_precompute_freqs_cis": "summarize the precompute_freqs_cis function that computes rotary embedding frequencies for positional encoding"
+  },
+  "swivid_f5-tts/src/f5_tts/runtime/triton_trtllm/model_repo_f5_tts/f5_tts/1/model.py": {
+    "create_get_tokenizer": "create a tokenizer that loads a vocab file and returns a char-to-index map with vocab size",
+    "build_convert_char_to_pinyin": "build a function that converts Chinese text to pinyin using rjieba segmentation and polyphone handling",
+    "test_list_str_to_idx": "test the function that converts a list of character strings to padded index tensors using a vocab map",
+    "review_tritonpythonmodel_initialize": "review the TritonPythonModel initialize method that loads the F5TTS model, tokenizer, resampler, and vocoder",
+    "summarize_tritonpythonmodel_execute": "summarize the TritonPythonModel execute method that processes audio inference requests with mel spectrogram extraction and vocoder synthesis"
+  },
+  "swivid_f5-tts/src/f5_tts/runtime/triton_trtllm/patch/f5tts/model.py": {
+    "build_F5TTS_model": "build an F5TTS model with a PretrainedConfig for TensorRT-LLM inference",
+    "create_InputEmbedding": "create an InputEmbedding module that projects concatenated audio and text features",
+    "run_F5TTS_forward": "run the F5TTS forward pass to denoise noisy input audio conditioned on text",
+    "build_F5TTS_prepare_inputs": "build Tensor input definitions for F5TTS with configurable batch size and sequence length",
+    "review_F5TTS_forward": "review the F5TTS forward method that applies DiT transformer blocks with RoPE embeddings"
+  },
+  "swivid_f5-tts/src/f5_tts/runtime/triton_trtllm/patch/f5tts/modules.py": {
+    "build_DiTBlock": "build a DiT transformer block with adaptive layer norm, attention, and feed-forward layers",
+    "create_Attention": "create a multi-head attention module with rotary position embeddings and TRT plugin support",
+    "create_AdaLayerNormZero": "create adaptive layer normalization conditioned on a timestep embedding for diffusion models",
+    "run_apply_rotary_pos_emb_3dim": "run rotary positional embedding application on 3D tensors with optional input padding removal",
+    "review_AttnProcessor": "review the attention processor that handles TRT bert_attention plugin and manual attention fallback"
+  },
+  "swivid_f5-tts/src/f5_tts/runtime/triton_trtllm/scripts/conv_stft.py": {
+    "create_stft_instance": "create an STFT module with configurable window length, hop, FFT length, and window type",
+    "transform_audio_to_stft": "transform audio tensor to STFT domain returning magnitude and phase or real and imaginary components",
+    "inverse_stft_to_audio": "inverse STFT from magnitude and phase tensors to reconstruct original audio waveform",
+    "check_perfect_reconstruction": "check if STFT parameters obey the constants overlap-add (COLA) condition for perfect reconstruction",
+    "forward_audio_roundtrip": "forward audio through STFT transform and inverse to reconstruct the original waveform"
+  },
+  "swivid_f5-tts/src/f5_tts/runtime/triton_trtllm/scripts/convert_checkpoint.py": {
+    "convert_pytorch_checkpoint_to_trtllm": "convert a PyTorch F5-TTS checkpoint to TensorRT-LLM format with tensor parallelism support",
+    "run_checkpoint_conversion_cli": "run the convert_checkpoint CLI to convert F5-TTS model weights for TensorRT-LLM inference",
+    "split_q_weights_for_tensor_parallelism": "split Q attention weights across tensor parallel ranks for distributed inference",
+    "save_trtllm_config_and_weights": "save TensorRT-LLM config.json and rank-specific safetensors checkpoint files",
+    "parallelize_checkpoint_conversion": "parallelize checkpoint conversion across multiple workers using ThreadPoolExecutor"
+  },
+  "swivid_f5-tts/src/f5_tts/runtime/triton_trtllm/scripts/export_vocoder_to_onnx.py": {
+    "export_vocos_vocoder_to_onnx": "export the Vocos vocoder model to an ONNX file with dynamic batch and input length axes",
+    "load_vocoder_from_huggingface": "load the Vocos vocoder model from Hugging Face hub or a local path into PyTorch",
+    "create_istft_head_module": "create an ISTFT head module that converts mel spectrograms to real/imaginary STFT components",
+    "build_vocos_vocoder_wrapper": "build a VocosVocoder wrapper module that adapts Vocos head for ONNX export with ISTFT support",
+    "run_onnx_export_cli": "run the CLI script to export a vocoder to ONNX with --vocoder and --output-path arguments"
+  },
+  "swivid_f5-tts/src/f5_tts/train/finetune_cli.py": {
+    "run_finetune_training": "run finetune training on F5-TTS v1 Base model with a custom dataset and learning rate",
+    "run_e2_tts_training": "run E2-TTS Base model training with UNetT transformer and custom dataset",
+    "run_training_with_wandb": "run TTS model training with wandb or tensorboard logger for experiment tracking",
+    "run_custom_tokenizer_training": "run TTS training with a custom tokenizer vocab file for specialized text encoding",
+    "run_batch_size_config": "run TTS training with configurable batch size type frame or sample and per-gpu batch size"
+  },
+  "swivid_f5-tts/src/f5_tts/train/finetune_gradio.py": {
+    "run_finetune_gradio_app": "run the F5-TTS finetune Gradio web UI app on a specified port and host with optional sharing and API access",
+    "start_f5_tts_training": "start training an F5-TTS model with specified dataset, hyperparameters, batch size, epochs, and tokenizer settings",
+    "prune_f5_tts_checkpoint": "prune an F5-TTS checkpoint file to remove optimizer state and reduce model size for inference or finetuning",
+    "extend_f5_tts_vocabulary": "extend an F5-TTS model vocabulary with new symbols and create a new expanded checkpoint for new language support",
+    "generate_f5_tts_inference": "generate speech from text using an F5-TTS model with reference audio, inference steps, speed, and seed settings"
+  },
+  "swivid_f5-tts/src/f5_tts/train/datasets/prepare_csv_wavs.py": {
+    "run_prepare_csv_wavs": "run the CLI script to prepare a CSV audio-text dataset into an Arrow format with durations and vocab",
+    "create_dataset_prepare_csv_wavs": "create a prepared dataset from a CSV file with absolute audio paths and text using parallel workers",
+    "test_prepare_csv_wavs_dir": "test the prepare_csv_wavs_dir function to process audio files and extract durations with fallback methods",
+    "refactor_batch_convert_texts": "refactor the batch_convert_texts function to convert Chinese characters to pinyin in configurable batches",
+    "review_save_prepped_dataset": "review the save_prepped_dataset function that writes Arrow files, duration JSON, and vocab files"
+  },
+  "swivid_f5-tts/src/f5_tts/train/datasets/prepare_emilia.py": {
+    "run_prepare_emilia": "run the Emilia dataset preparation script to preprocess ZH and EN audio samples",
+    "build_emilia_dataset": "build a preprocessed Emilia dataset with arrow format, duration json, and vocab map",
+    "deal_with_audio_dir": "deal with an audio directory by filtering bad cases and converting text to pinyin",
+    "test_deal_with_audio_dir": "test the deal_with_audio_dir function with a given audio directory path",
+    "refactor_main": "refactor the main function to accept configuration parameters instead of globals"
+  },
+  "swivid_f5-tts/src/f5_tts/train/datasets/prepare_emilia_v2.py": {
+    "run_prepare_emilia_dataset": "run the Emilia dataset preparation script to process audio files and generate training data",
+    "process_audio_directory": "process an audio directory to extract text, durations, and vocabulary from JSON metadata files",
+    "build_dataset_with_arrow": "build an Arrow dataset from processed audio entries with text and duration metadata",
+    "generate_vocab_file": "generate a sorted vocabulary text file from unique characters found in audio transcriptions",
+    "export_duration_statistics": "export duration statistics as a JSON file containing all audio clip durations"
+  },
+  "swivid_f5-tts/src/f5_tts/train/datasets/prepare_libritts.py": {
+    "run_prepare_libritts": "run the script to preprocess LibriTTS audio dataset into arrow format with duration and vocab files",
+    "create_function_deal_with_audio_dir": "create a function that processes an audio directory, filtering clips by duration and extracting text transcripts",
+    "create_function_main": "create the main function that orchestrates parallel processing of LibriTTS subsets and saves results to disk",
+    "test_deal_with_audio_dir": "test the deal_with_audio_dir function with a directory of wav files and normalized text transcripts",
+    "run_prepare_libritts_filter": "run the script to preprocess LibriTTS audio clips filtering out segments shorter than 0.4s or longer than 30s"
+  },
+  "swivid_f5-tts/src/f5_tts/train/datasets/prepare_wenetspeech4tts.py": {
+    "prepare_wenetspeech4tts_dataset": "run the WenetSpeech4TTS dataset preparation script to preprocess audio and text into arrow format",
+    "process_sub_path_files": "process a sub-directory of text and wav files to extract audio paths, texts, and durations",
+    "convert_text_to_pinyin": "convert Chinese characters to pinyin with optional polyphone resolution using convert_char_to_pinyin",
+    "save_arrow_dataset": "save preprocessed dataset records to an arrow file using Dataset.from_dict and save_to_disk",
+    "generate_duration_json": "create a duration.json file containing a list of all audio durations for DynamicBatchSampler usage",
+    "build_vocab_file": "generate a sorted vocab.txt tokenizer file from all unique characters in the processed text"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/activations.py": {
+    "create_Snake_activation": "create a Snake activation module with in_features and optional alpha parameter",
+    "test_Snake_forward": "test the Snake activation forward pass with a tensor input of shape B,C,T",
+    "create_SnakeBeta_activation": "create a SnakeBeta activation module with separate alpha and beta trainable parameters",
+    "test_SnakeBeta_forward": "test the SnakeBeta activation forward pass with a tensor input of shape B,C,T",
+    "create_Snake_logscale": "create a Snake activation module with alpha_logscale enabled for log-scale alpha initialization"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/bigvgan.py": {
+    "load_hparams_from_json": "load hyperparameters from a JSON config file into an AttrDict object",
+    "create_bigvgan_model": "create a BigVGAN neural vocoder model with configurable upsampling and AMP residual blocks",
+    "build_ampblock1": "build an AMPBlock1 residual block with dual conv layers and Snake/SnakeBeta activations",
+    "build_ampblock2": "build an AMPBlock2 residual block with single conv layers and Snake/SnakeBeta activations",
+    "run_bigvgan_inference": "run BigVGAN forward pass to generate audio waveforms from mel spectrogram inputs"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/discriminators.py": {
+    "build_multi_period_discriminator": "build a MultiPeriodDiscriminator that applies period-based 2D convolution to real and generated audio for GAN training",
+    "build_multi_resolution_discriminator": "build a MultiResolutionDiscriminator that evaluates real and generated audio at multiple STFT resolutions",
+    "build_multi_band_discriminator": "build a MultiBandDiscriminator that splits audio into frequency bands and processes each with a separate convolutional network",
+    "build_multi_scale_cqt_discriminator": "build a MultiScaleSubbandCQTDiscriminator that uses constant-Q transforms across multiple scales for audio discrimination",
+    "build_combined_discriminator": "build a CombinedDiscriminator that chains multiple discriminator architectures into a single forward pass"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/env.py": {
+    "create_AttrDict": "create an AttrDict instance from a JSON config to access keys as attributes",
+    "build_env_config": "build the environment by copying a config file to a checkpoint directory",
+    "test_AttrDict": "test the AttrDict class converts dict keys to accessible attributes",
+    "refactor_build_env": "refactor the build_env function to support conditional overwrite of existing configs",
+    "review_AttrDict": "review the AttrDict class that extends dict with attribute-style access"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/inference.py": {
+    "run_inference_generate_wav": "run BigVGAN inference to generate wav audio from input wav files using a checkpoint model",
+    "run_inference_with_cuda_kernel": "run BigVGAN inference with CUDA kernel optimization enabled for faster audio generation",
+    "run_inference_custom_dirs": "run BigVGAN inference with custom input wav directory and output directory paths",
+    "run_inference_from_checkpoint": "run BigVGAN inference loading a trained checkpoint and config.json to synthesize mel-based audio",
+    "run_main_entry_point": "run the BigVGAN inference CLI entry point with required checkpoint file argument"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/inference_e2e.py": {
+    "run_inference_e2e": "run the BigVGAN inference script to generate WAV audio files from mel spectrogram inputs",
+    "load_checkpoint": "load a BigVGAN generator checkpoint file and return the state dictionary on the specified device",
+    "scan_checkpoint": "scan a checkpoint directory for the latest checkpoint file matching a given prefix",
+    "run_main_cli": "run the BigVGAN inference CLI with input mel directory, output directory, and checkpoint file arguments",
+    "test_inference": "test the BigVGAN inference function that converts mel spectrograms to waveform audio output"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/loss.py": {
+    "create_MultiScaleMelSpectrogramLoss": "create a multi-scale mel spectrogram loss module with configurable mel bins and window lengths",
+    "test_MultiScaleMelSpectrogramLoss_forward": "test the MultiScaleMelSpectrogramLoss forward pass between estimate and reference audio tensors",
+    "create_MultiScaleMelSpectrogramLoss_mel_spectrogram": "create mel spectrograms from audio waveforms using configurable STFT parameters and mel filters",
+    "create_feature_loss": "create feature matching loss between discriminator real and generated feature map lists",
+    "create_discriminator_loss": "create discriminator loss comparing real and generated discriminator outputs with per-scale losses",
+    "create_generator_loss": "create generator loss measuring how convincing generated outputs are to discriminator outputs"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/meldataset.py": {
+    "create_mel_spectrogram": "create a mel spectrogram from an audio waveform using configurable STFT parameters",
+    "compute_dynamic_range_compression": "compute dynamic range compression on audio magnitudes using logarithmic scaling",
+    "build_mel_dataset": "build a PyTorch MelDataset that loads, resamples, and chunks audio files for BigVGAN training",
+    "get_dataset_filelist": "get training, validation, and unseen validation file lists from text index files",
+    "generate_mel_spectrogram_with_hparams": "generate a mel spectrogram from a waveform using a hyperparameters object"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/train.py": {
+    "run_bigvgan_training": "run BigVGAN audio waveform generation model training with configurable discriminators and loss functions",
+    "run_bigvgan_evaluation": "run BigVGAN evaluation from checkpoint and exit without training",
+    "run_bigvgan_distributed_training": "run BigVGAN distributed multi-GPU training with DistributedDataParallel and checkpoint resumption",
+    "run_bigvgan_fine_tuning": "run BigVGAN fine-tuning on a custom dataset with unseen validation speakers for evaluation",
+    "run_bigvgan_resume_training": "run BigVGAN training resuming from latest checkpoint with generator and discriminator optimizer states"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/utils.py": {
+    "plot_spectrogram": "plot a spectrogram matrix as an image figure with colorbar using matplotlib",
+    "plot_spectrogram_clipped": "plot a clipped spectrogram with a custom maximum display value",
+    "load_checkpoint": "load a torch model checkpoint from a file path onto a specified device",
+    "save_checkpoint": "save a model object as a torch checkpoint to a file path",
+    "scan_checkpoint": "scan a checkpoint directory for the latest checkpoint file by prefix pattern"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/alias_free_activation/cuda/activation1d.py": {
+    "create_Activation1d": "create an Activation1d module with activation function, upsampling ratio, and downsampling ratio",
+    "use_FusedAntiAliasActivation": "use FusedAntiAliasActivation with input tensors, up/down filters, and alpha/beta parameters",
+    "configure_Activation1d_fused": "configure Activation1d to use fused CUDA kernel for upsampling, activation, and downsampling",
+    "configure_Activation1d_unfused": "configure Activation1d to use PyTorch-based upsampling, activation, and downsampling without fused kernel",
+    "handle_Snake_activation": "handle Snake activation parameters using alpha data for both alpha and beta in Activation1d"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/alias_free_activation/cuda/load.py": {
+    "build_anti_alias_activation_cuda": "build the anti-alias activation CUDA extension kernel using PyTorch cpp_extension",
+    "run_load_cuda_extension": "run the load function to compile and return the anti-alias activation CUDA module",
+    "test_get_cuda_bare_metal_version": "test the _get_cuda_bare_metal_version function to query nvcc for the installed CUDA version",
+    "review_load_cuda_extension": "review the load function that compiles fused anti-alias activation CUDA kernels",
+    "summarize_load_cuda_extension": "summarize the load function that builds and loads the BigVGAN anti-alias activation CUDA extension"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/alias_free_activation/torch/act.py": {
+    "create_Activation1d": "create a 1D activation module that upsamples, applies an activation, and downsamples a tensor",
+    "build_Activation1d_upsample": "build an Activation1d instance with custom up_ratio and up_kernel_size for alias-free activation",
+    "build_Activation1d_downsample": "build an Activation1d instance with custom down_ratio and down_kernel_size for alias-free activation",
+    "test_Activation1d_forward": "test the Activation1d forward pass with a [B,C,T] input tensor through upsample-activate-downsample",
+    "review_Activation1d": "review the Activation1d class that wraps an activation function with alias-free resampling"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/alias_free_activation/torch/filter.py": {
+    "create_filter_kaiser_sinc_1d": "create a 1D Kaiser-windowed sinc low-pass filter tensor with given cutoff, half_width, and kernel_size",
+    "build_low_pass_filter_1d_module": "build a PyTorch nn.Module 1D low-pass filter that applies convolution with Kaiser-sinc filter and configurable stride and padding",
+    "test_sinc_function": "test the sinc function that computes sin(pi*x)/(pi*x) with a fallback for PyTorch versions without torch.sinc",
+    "review_low_pass_filter_1d_forward": "review the forward pass of LowPassFilter1d that pads input and runs grouped 1D convolution with the registered filter",
+    "summarize_kaiser_sinc_filter_parameters": "summarize how cutoff, half_width, and kernel_size parameters shape the Kaiser-windowed sinc filter in kaiser_sinc_filter1d"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/alias_free_activation/torch/resample.py": {
+    "create_UpSample1d": "create a 1D upsampling module that applies low-pass filtering and transposed convolution with configurable ratio and kernel size",
+    "build_UpSample1d_forward": "build an UpSample1d instance and forward a [B,C,T] tensor through it to upsample by the configured ratio",
+    "create_DownSample1d": "create a 1D downsampling module that applies low-pass filtering before downsampling with configurable ratio and kernel size",
+    "build_DownSample1d_forward": "build a DownSample1d instance and forward a [B,C,T] tensor through it to downsample by the configured ratio",
+    "review_UpSample1d_DownSample1d": "review the UpSample1d and DownSample1d classes that perform alias-free 1D resampling for BigVGAN"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/demo/app.py": {
+    "run_bigvgan_demo": "run the BigVGAN Gradio demo app that serves a web UI for neural audio vocoder inference",
+    "inference_bigvgan_audio": "inference audio waveform from input audio using a selected BigVGAN model to generate output audio and mel spectrogram",
+    "load_bigvgan_model": "load a pretrained BigVGAN model from HuggingFace hub and remove weight normalization for inference",
+    "compute_mel_spectrogram": "compute mel spectrogram from audio waveform using the BigVGAN mel spectrogram extractor",
+    "plot_mel_spectrogram": "plot a mel spectrogram visualization from numpy array for display in the Gradio demo UI"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/filelists/LibriTTS/parse_libritts.py": {
+    "build_get_wav_and_text_filelist": "build a function to collect wav paths and normalized text transcriptions from LibriTTS data directories",
+    "create_write_filelist": "create a function that writes pipe-delimited wav-text pairs to a filelist text file",
+    "run_parse_libritts": "run the LibriTTS filelist generator to produce dev, test, train, and val filelists",
+    "test_get_wav_and_text_filelist": "test get_wav_and_text_filelist with a subsample of dev-clean LibriTTS data",
+    "refactor_write_filelist": "refactor write_filelist to support custom delimiters and batch writing"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/tests/test_activation.py": {
+    "test_load_fused_kernels": "test the fused CUDA kernel loading for BigVGAN anti-activation modules",
+    "test_anti_alias_activation": "test the fused vs pure PyTorch anti-alias activation outputs for numerical equivalence",
+    "create_Activation1d_fused": "create an Activation1d wrapper with Snake activation using fused CUDA kernels",
+    "create_Activation1d_torch": "create an Activation1d wrapper with Snake activation using pure PyTorch implementation",
+    "run_test_activation": "run the BigVGAN activation test suite to verify fused kernel correctness"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/tests/test_activation_snake_beta.py": {
+    "test_load_fused_kernels": "test the fused CUDA kernel loading for BigVGAN anti-alias activation",
+    "test_anti_alias_activation": "test the fused vs. pure PyTorch SnakeBeta activation outputs for numerical equivalence",
+    "create_activation1d_fused": "create an Activation1d wrapper with SnakeBeta activation using fused CUDA kernels",
+    "create_activation1d_torch": "create an Activation1d wrapper with SnakeBeta activation using pure PyTorch implementation",
+    "load_cuda_kernels": "load the fused CUDA kernels from alias_free_activation.cuda before running activation tests"
+  },
+  "swivid_f5-tts/src/third_party/BigVGAN/tests/test_cuda_vs_torch_model.py": {
+    "test_cuda_kernel_correctness": "test the CUDA fused BigVGAN kernel against plain PyTorch inference using a checkpoint file",
+    "benchmark_bigvgan_performance": "benchmark BigVGAN inference speed and VRAM usage comparing CUDA kernel vs plain PyTorch",
+    "generate_soundwave_example": "generate a synthetic chirp soundwave with modulated frequency sweep at a given sampling rate",
+    "compute_mel_spectrogram": "compute mel spectrogram from audio tensor using BigVGAN config parameters",
+    "load_bigvgan_checkpoint": "load a BigVGAN checkpoint file and return its state dictionary for a given device"
+  }
+}

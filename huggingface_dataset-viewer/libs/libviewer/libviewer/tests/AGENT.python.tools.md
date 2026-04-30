@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/dataset-viewer
+- repo_uri: https://github.com/huggingface/dataset-viewer
+
+## File: huggingface_dataset-viewer/libs/libviewer/libviewer/tests/test_dataset.py
+
+Prompts
+
+```
+['generate a sample PyArrow Table with id, name, value, and category columns for testing', 'extract parquet metadata from data files and write separate metadata files to a directory', 'split a PyArrow Table into partitioned parquet files with optional page index and metadata', 'test the Dataset sync_scan method with various limit and offset combinations across partitions', 'scan a partitioned parquet dataset with limit and offset to retrieve specific row batches']
+```
+
+Usage
+
+```
+{'generate_sample_table': 'generate a sample PyArrow Table with id, name, value, and category columns for testing', 'write_pyarrow_metadata_files': 'extract parquet metadata from data files and write separate metadata files to a directory', 'write_partitioned_parquet_dataset': 'split a PyArrow Table into partitioned parquet files with optional page index and metadata', 'test_sync_scan': 'test the Dataset sync_scan method with various limit and offset combinations across partitions', 'dataset_sync_scan': 'scan a partitioned parquet dataset with limit and offset to retrieve specific row batches'}
+```
+

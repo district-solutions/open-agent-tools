@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/diffusers
+- repo_uri: https://github.com/huggingface/diffusers
+
+## File: huggingface_diffusers/tests/pipelines/consisid/test_consisid.py
+
+Prompts
+
+```
+['run the ConsisIDPipelineFastTests unit tests for the ConsisID video generation pipeline', 'test ConsisIDPipeline inference by running dummy components through the pipeline and checking output shape', 'test the callback_on_step_end mechanism to verify allowed tensor inputs during inference', 'test attention slicing forward pass to ensure slicing does not affect inference results', 'run the slow integration test loading BestWishYsh/ConsisID-preview and generating a video from a prompt and image']
+```
+
+Usage
+
+```
+{'run_consisid_pipeline_fast_tests': 'run the ConsisIDPipelineFastTests unit tests for the ConsisID video generation pipeline', 'test_consisid_inference': 'test ConsisIDPipeline inference by running dummy components through the pipeline and checking output shape', 'test_consisid_callback_inputs': 'test the callback_on_step_end mechanism to verify allowed tensor inputs during inference', 'test_consisid_attention_slicing': 'test attention slicing forward pass to ensure slicing does not affect inference results', 'test_consisid_integration': 'run the slow integration test loading BestWishYsh/ConsisID-preview and generating a video from a prompt and image'}
+```
+

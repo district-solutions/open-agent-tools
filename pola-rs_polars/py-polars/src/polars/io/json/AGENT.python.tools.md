@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pola-rs/polars
+- repo_uri: https://github.com/pola-rs/polars.git
+
+## File: pola-rs_polars/py-polars/src/polars/io/json/read.py
+
+Prompts
+
+```
+['read a JSON file from disk path into a polars DataFrame', 'read a JSON string from a StringIO buffer into a polars DataFrame', 'read a JSON file into a DataFrame with an explicit schema dict specifying column dtypes', 'read a JSON file into a DataFrame with schema_overrides to override inferred column types', 'read a JSON file into a DataFrame with a custom infer_schema_length for schema inference']
+```
+
+Usage
+
+```
+{'read_json_file': 'read a JSON file from disk path into a polars DataFrame', 'read_json_stringio': 'read a JSON string from a StringIO buffer into a polars DataFrame', 'read_json_with_schema': 'read a JSON file into a DataFrame with an explicit schema dict specifying column dtypes', 'read_json_schema_overrides': 'read a JSON file into a DataFrame with schema_overrides to override inferred column types', 'read_json_infer_schema': 'read a JSON file into a DataFrame with a custom infer_schema_length for schema inference'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/exa_ai/search/transformation.py
+
+Prompts
+
+```
+['build an ExaAISearchConfig instance to validate environment and prepare API headers for Exa AI search', 'create validated API headers with Exa AI key and content-type for search requests', 'test transforming a search query and optional params into Exa AI API request format', 'run transforming an Exa AI HTTP response into a unified LiteLLM SearchResponse', 'review building the complete Exa AI search endpoint URL from api base and optional parameters']
+```
+
+Usage
+
+```
+{'build_exaai_search_config': 'build an ExaAISearchConfig instance to validate environment and prepare API headers for Exa AI search', 'create_validate_environment': 'create validated API headers with Exa AI key and content-type for search requests', 'test_transform_search_request': 'test transforming a search query and optional params into Exa AI API request format', 'run_transform_search_response': 'run transforming an Exa AI HTTP response into a unified LiteLLM SearchResponse', 'review_get_complete_url': 'review building the complete Exa AI search endpoint URL from api base and optional parameters'}
+```
+

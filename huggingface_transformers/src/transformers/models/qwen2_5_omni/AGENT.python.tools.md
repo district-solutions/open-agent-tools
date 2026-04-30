@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/src/transformers/models/qwen2_5_omni/configuration_qwen2_5_omni.py
+
+Prompts
+
+```
+['create a Qwen2_5OmniConfig instance with thinker, talker, and token2wav sub-configs for the full omni model', 'build a Qwen2_5OmniThinkerConfig that composes audio, vision, and text encoder configurations for the multimodal thinker model', 'configure a Qwen2_5OmniVisionEncoderConfig with depth 32, hidden size 3584, and window size 112 for the vision backbone', 'configure a Qwen2_5OmniAudioEncoderConfig with 32 encoder layers, 1280 model dimension, and 128 mel bins for audio processing', 'configure a Qwen2_5OmniTalkerConfig with TTS token IDs, codec parameters, and transformer settings for speech generation', 'generate text response and audio waveform from multimodal inputs using Qwen2_5OmniForConditionalGeneration', 'build a Qwen2_5OmniThinkerForConditionalGeneration model that takes text, audio, image, video inputs and predicts text tokens', 'build a Qwen2_5OmniTalkerForConditionalGeneration model that takes thinker hidden states and predicts speech tokens', 'generate mel spectrogram from speech tokens using Qwen2_5OmniToken2WavDiTModel with Runge-Kutta 4 ODE sampling', 'synthesize audio waveform from mel spectrogram using Qwen2_5OmniToken2WavBigVGANModel BigVGAN vocoder', 'build a Qwen2.5Omni multimodal model that processes audio, image, video, and text inputs', 'generate text responses from multimodal inputs using the Qwen2.5OmniThinker model', 'generate speech audio output from thinker hidden states using the Qwen2.5OmniTalker model', 'convert speech codec tokens to mel spectrogram and then to audio waveform using Token2Wav', 'calculate 3D rotary position embeddings for multimodal inputs with images, videos, and audio', 'call the Qwen2_5OmniProcessor to tokenize text, images, videos, and audio inputs for multimodal processing', 'replace multimodal special tokens in text with placeholder tokens expanded to the correct sequence lengths', "post-process generated model outputs to decode text or audio modalities from the model's generate function", 'split token index arrays into chunks based on token value ranges for temporal video chunking', 'build a Qwen2_5OmniProcessor instance with image processor, video processor, feature extractor, and tokenizer components']
+```
+
+Usage
+
+```
+{'create_qwen2_5_omni_config': 'create a Qwen2_5OmniConfig instance with thinker, talker, and token2wav sub-configs for the full omni model', 'build_qwen2_5_omni_thinker_config': 'build a Qwen2_5OmniThinkerConfig that composes audio, vision, and text encoder configurations for the multimodal thinker model', 'configure_qwen2_5_omni_vision_encoder': 'configure a Qwen2_5OmniVisionEncoderConfig with depth 32, hidden size 3584, and window size 112 for the vision backbone', 'configure_qwen2_5_omni_audio_encoder': 'configure a Qwen2_5OmniAudioEncoderConfig with 32 encoder layers, 1280 model dimension, and 128 mel bins for audio processing', 'configure_qwen2_5_omni_talker_config': 'configure a Qwen2_5OmniTalkerConfig with TTS token IDs, codec parameters, and transformer settings for speech generation'}
+```
+
+## File: huggingface_transformers/src/transformers/models/qwen2_5_omni/modeling_qwen2_5_omni.py
+
+Prompts
+
+```
+['create a Qwen2_5OmniConfig instance with thinker, talker, and token2wav sub-configs for the full omni model', 'build a Qwen2_5OmniThinkerConfig that composes audio, vision, and text encoder configurations for the multimodal thinker model', 'configure a Qwen2_5OmniVisionEncoderConfig with depth 32, hidden size 3584, and window size 112 for the vision backbone', 'configure a Qwen2_5OmniAudioEncoderConfig with 32 encoder layers, 1280 model dimension, and 128 mel bins for audio processing', 'configure a Qwen2_5OmniTalkerConfig with TTS token IDs, codec parameters, and transformer settings for speech generation', 'generate text response and audio waveform from multimodal inputs using Qwen2_5OmniForConditionalGeneration', 'build a Qwen2_5OmniThinkerForConditionalGeneration model that takes text, audio, image, video inputs and predicts text tokens', 'build a Qwen2_5OmniTalkerForConditionalGeneration model that takes thinker hidden states and predicts speech tokens', 'generate mel spectrogram from speech tokens using Qwen2_5OmniToken2WavDiTModel with Runge-Kutta 4 ODE sampling', 'synthesize audio waveform from mel spectrogram using Qwen2_5OmniToken2WavBigVGANModel BigVGAN vocoder', 'build a Qwen2.5Omni multimodal model that processes audio, image, video, and text inputs', 'generate text responses from multimodal inputs using the Qwen2.5OmniThinker model', 'generate speech audio output from thinker hidden states using the Qwen2.5OmniTalker model', 'convert speech codec tokens to mel spectrogram and then to audio waveform using Token2Wav', 'calculate 3D rotary position embeddings for multimodal inputs with images, videos, and audio', 'call the Qwen2_5OmniProcessor to tokenize text, images, videos, and audio inputs for multimodal processing', 'replace multimodal special tokens in text with placeholder tokens expanded to the correct sequence lengths', "post-process generated model outputs to decode text or audio modalities from the model's generate function", 'split token index arrays into chunks based on token value ranges for temporal video chunking', 'build a Qwen2_5OmniProcessor instance with image processor, video processor, feature extractor, and tokenizer components']
+```
+
+Usage
+
+```
+{'generate_multimodal_text_and_audio': 'generate text response and audio waveform from multimodal inputs using Qwen2_5OmniForConditionalGeneration', 'build_thinker_text_model': 'build a Qwen2_5OmniThinkerForConditionalGeneration model that takes text, audio, image, video inputs and predicts text tokens', 'build_talker_speech_model': 'build a Qwen2_5OmniTalkerForConditionalGeneration model that takes thinker hidden states and predicts speech tokens', 'generate_mel_spectrogram_with_dit': 'generate mel spectrogram from speech tokens using Qwen2_5OmniToken2WavDiTModel with Runge-Kutta 4 ODE sampling', 'synthesize_waveform_from_mel': 'synthesize audio waveform from mel spectrogram using Qwen2_5OmniToken2WavBigVGANModel BigVGAN vocoder'}
+```
+
+## File: huggingface_transformers/src/transformers/models/qwen2_5_omni/modular_qwen2_5_omni.py
+
+Prompts
+
+```
+['create a Qwen2_5OmniConfig instance with thinker, talker, and token2wav sub-configs for the full omni model', 'build a Qwen2_5OmniThinkerConfig that composes audio, vision, and text encoder configurations for the multimodal thinker model', 'configure a Qwen2_5OmniVisionEncoderConfig with depth 32, hidden size 3584, and window size 112 for the vision backbone', 'configure a Qwen2_5OmniAudioEncoderConfig with 32 encoder layers, 1280 model dimension, and 128 mel bins for audio processing', 'configure a Qwen2_5OmniTalkerConfig with TTS token IDs, codec parameters, and transformer settings for speech generation', 'generate text response and audio waveform from multimodal inputs using Qwen2_5OmniForConditionalGeneration', 'build a Qwen2_5OmniThinkerForConditionalGeneration model that takes text, audio, image, video inputs and predicts text tokens', 'build a Qwen2_5OmniTalkerForConditionalGeneration model that takes thinker hidden states and predicts speech tokens', 'generate mel spectrogram from speech tokens using Qwen2_5OmniToken2WavDiTModel with Runge-Kutta 4 ODE sampling', 'synthesize audio waveform from mel spectrogram using Qwen2_5OmniToken2WavBigVGANModel BigVGAN vocoder', 'build a Qwen2.5Omni multimodal model that processes audio, image, video, and text inputs', 'generate text responses from multimodal inputs using the Qwen2.5OmniThinker model', 'generate speech audio output from thinker hidden states using the Qwen2.5OmniTalker model', 'convert speech codec tokens to mel spectrogram and then to audio waveform using Token2Wav', 'calculate 3D rotary position embeddings for multimodal inputs with images, videos, and audio', 'call the Qwen2_5OmniProcessor to tokenize text, images, videos, and audio inputs for multimodal processing', 'replace multimodal special tokens in text with placeholder tokens expanded to the correct sequence lengths', "post-process generated model outputs to decode text or audio modalities from the model's generate function", 'split token index arrays into chunks based on token value ranges for temporal video chunking', 'build a Qwen2_5OmniProcessor instance with image processor, video processor, feature extractor, and tokenizer components']
+```
+
+Usage
+
+```
+{'build_qwen2_5_omni_model': 'build a Qwen2.5Omni multimodal model that processes audio, image, video, and text inputs', 'generate_text_response': 'generate text responses from multimodal inputs using the Qwen2.5OmniThinker model', 'generate_speech_audio': 'generate speech audio output from thinker hidden states using the Qwen2.5OmniTalker model', 'convert_tokens_to_waveform': 'convert speech codec tokens to mel spectrogram and then to audio waveform using Token2Wav', 'calculate_mrope_position_ids': 'calculate 3D rotary position embeddings for multimodal inputs with images, videos, and audio'}
+```
+
+## File: huggingface_transformers/src/transformers/models/qwen2_5_omni/processing_qwen2_5_omni.py
+
+Prompts
+
+```
+['create a Qwen2_5OmniConfig instance with thinker, talker, and token2wav sub-configs for the full omni model', 'build a Qwen2_5OmniThinkerConfig that composes audio, vision, and text encoder configurations for the multimodal thinker model', 'configure a Qwen2_5OmniVisionEncoderConfig with depth 32, hidden size 3584, and window size 112 for the vision backbone', 'configure a Qwen2_5OmniAudioEncoderConfig with 32 encoder layers, 1280 model dimension, and 128 mel bins for audio processing', 'configure a Qwen2_5OmniTalkerConfig with TTS token IDs, codec parameters, and transformer settings for speech generation', 'generate text response and audio waveform from multimodal inputs using Qwen2_5OmniForConditionalGeneration', 'build a Qwen2_5OmniThinkerForConditionalGeneration model that takes text, audio, image, video inputs and predicts text tokens', 'build a Qwen2_5OmniTalkerForConditionalGeneration model that takes thinker hidden states and predicts speech tokens', 'generate mel spectrogram from speech tokens using Qwen2_5OmniToken2WavDiTModel with Runge-Kutta 4 ODE sampling', 'synthesize audio waveform from mel spectrogram using Qwen2_5OmniToken2WavBigVGANModel BigVGAN vocoder', 'build a Qwen2.5Omni multimodal model that processes audio, image, video, and text inputs', 'generate text responses from multimodal inputs using the Qwen2.5OmniThinker model', 'generate speech audio output from thinker hidden states using the Qwen2.5OmniTalker model', 'convert speech codec tokens to mel spectrogram and then to audio waveform using Token2Wav', 'calculate 3D rotary position embeddings for multimodal inputs with images, videos, and audio', 'call the Qwen2_5OmniProcessor to tokenize text, images, videos, and audio inputs for multimodal processing', 'replace multimodal special tokens in text with placeholder tokens expanded to the correct sequence lengths', "post-process generated model outputs to decode text or audio modalities from the model's generate function", 'split token index arrays into chunks based on token value ranges for temporal video chunking', 'build a Qwen2_5OmniProcessor instance with image processor, video processor, feature extractor, and tokenizer components']
+```
+
+Usage
+
+```
+{'call_qwen2_5_omni_processor': 'call the Qwen2_5OmniProcessor to tokenize text, images, videos, and audio inputs for multimodal processing', 'replace_multimodal_special_tokens': 'replace multimodal special tokens in text with placeholder tokens expanded to the correct sequence lengths', 'post_process_multimodal_output': "post-process generated model outputs to decode text or audio modalities from the model's generate function", 'get_chunked_index': 'split token index arrays into chunks based on token value ranges for temporal video chunking', 'build_qwen2_5_omni_processor': 'build a Qwen2_5OmniProcessor instance with image processor, video processor, feature extractor, and tokenizer components'}
+```
+

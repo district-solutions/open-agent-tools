@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: vllm-project/vllm
+- repo_uri: https://github.com/vllm-project/vllm
+
+## File: vllm-project_vllm/vllm/compilation/passes/ir/lowering_pass.py
+
+Prompts
+
+```
+['create a VllmIRLoweringPass instance with a VllmConfig to lower vLLM IR ops to their implementations', 'run the VllmIRLoweringPass on an fx.Graph to lower all vLLM IR nodes to concrete implementations', 'get the default OpOverload from an OpOverloadPacket or return the OpOverload unchanged', 'get the IrOp registry entry from an fx.Node if it represents a vLLM IR operation', 'build a cache key uuid string from IR op priorities and implementation provider uuids']
+```
+
+Usage
+
+```
+{'create_VllmIRLoweringPass': 'create a VllmIRLoweringPass instance with a VllmConfig to lower vLLM IR ops to their implementations', 'run_VllmIRLoweringPass': 'run the VllmIRLoweringPass on an fx.Graph to lower all vLLM IR nodes to concrete implementations', 'get_default_overload': 'get the default OpOverload from an OpOverloadPacket or return the OpOverload unchanged', 'get_ir_op': 'get the IrOp registry entry from an fx.Node if it represents a vLLM IR operation', 'build_VllmIRLoweringPass_uuid': 'build a cache key uuid string from IR op priorities and implementation provider uuids'}
+```
+

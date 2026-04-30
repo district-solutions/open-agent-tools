@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/src/transformers/models/musicflamingo/convert_musicflamingo_to_hf.py
+
+Prompts
+
+```
+['run the CLI to convert MusicFlamingo source weights to Hugging Face format with --src_dir and --dst_dir', 'create a MusicFlamingo processor with Whisper feature extractor and Qwen2 tokenizer from source llm directory', 'merge and shard weights from llm, sound_tower, and sound_mm_projector into a single Hugging Face model', 'push the converted MusicFlamingo processor and model to a Hugging Face Hub repository', 'resolve a component directory to find its safetensors index or single weight file for loading', 'create a MusicFlamingoForConditionalGeneration model from a configuration for audio-text conditional generation', 'generate a text description of an audio track using MusicFlamingoForConditionalGeneration with input audio features and tokens', 'extract audio embeddings from log mel spectrograms using get_audio_features with input features and masks', 'build 2D axial rotary time embeddings for window and time dimensions using MusicFlamingoRotaryEmbedding with timestamps', 'project audio encoder features to the LLM embedding space using MusicFlamingoMultiModalProjector', 'create a MusicFlamingoConfig with audio and text sub-configs for multimodal audio-text modeling', 'build a MusicFlamingoProcessor wrapping a feature extractor and tokenizer with audio BOS/EOS tokens', 'build a MusicFlamingoForConditionalGeneration model from a MusicFlamingoConfig configuration', 'get audio embeddings from mel spectrogram input features using the audio tower and multi-modal projector', 'generate a text description of an audio track using MusicFlamingoForConditionalGeneration.generate with audio and text inputs', 'create a MusicFlamingoProcessor wrapping a WhisperFeatureExtractor and Qwen2TokenizerFast for audio-text modeling', 'process text with <sound> placeholders and audio waveforms to produce tokenized input_ids and audio features', 'expand <sound> placeholders in text with audio_bos_token, repeated audio_token, and audio_eos_token based on audio frame counts', 'generate training labels by cloning input_ids and masking audio tokens and pad tokens with -100', 'get the combined list of model input names from tokenizer and feature extractor including input_features_mask']
+```
+
+Usage
+
+```
+{'run_convert_musicflamingo_cli': 'run the CLI to convert MusicFlamingo source weights to Hugging Face format with --src_dir and --dst_dir', 'create_processor_from_checkpoint': 'create a MusicFlamingo processor with Whisper feature extractor and Qwen2 tokenizer from source llm directory', 'merge_model_weights_to_shards': 'merge and shard weights from llm, sound_tower, and sound_mm_projector into a single Hugging Face model', 'push_converted_model_to_hub': 'push the converted MusicFlamingo processor and model to a Hugging Face Hub repository', 'resolve_safetensors_component': 'resolve a component directory to find its safetensors index or single weight file for loading'}
+```
+
+## File: huggingface_transformers/src/transformers/models/musicflamingo/modeling_musicflamingo.py
+
+Prompts
+
+```
+['run the CLI to convert MusicFlamingo source weights to Hugging Face format with --src_dir and --dst_dir', 'create a MusicFlamingo processor with Whisper feature extractor and Qwen2 tokenizer from source llm directory', 'merge and shard weights from llm, sound_tower, and sound_mm_projector into a single Hugging Face model', 'push the converted MusicFlamingo processor and model to a Hugging Face Hub repository', 'resolve a component directory to find its safetensors index or single weight file for loading', 'create a MusicFlamingoForConditionalGeneration model from a configuration for audio-text conditional generation', 'generate a text description of an audio track using MusicFlamingoForConditionalGeneration with input audio features and tokens', 'extract audio embeddings from log mel spectrograms using get_audio_features with input features and masks', 'build 2D axial rotary time embeddings for window and time dimensions using MusicFlamingoRotaryEmbedding with timestamps', 'project audio encoder features to the LLM embedding space using MusicFlamingoMultiModalProjector', 'create a MusicFlamingoConfig with audio and text sub-configs for multimodal audio-text modeling', 'build a MusicFlamingoProcessor wrapping a feature extractor and tokenizer with audio BOS/EOS tokens', 'build a MusicFlamingoForConditionalGeneration model from a MusicFlamingoConfig configuration', 'get audio embeddings from mel spectrogram input features using the audio tower and multi-modal projector', 'generate a text description of an audio track using MusicFlamingoForConditionalGeneration.generate with audio and text inputs', 'create a MusicFlamingoProcessor wrapping a WhisperFeatureExtractor and Qwen2TokenizerFast for audio-text modeling', 'process text with <sound> placeholders and audio waveforms to produce tokenized input_ids and audio features', 'expand <sound> placeholders in text with audio_bos_token, repeated audio_token, and audio_eos_token based on audio frame counts', 'generate training labels by cloning input_ids and masking audio tokens and pad tokens with -100', 'get the combined list of model input names from tokenizer and feature extractor including input_features_mask']
+```
+
+Usage
+
+```
+{'create_musicflamingo_model': 'create a MusicFlamingoForConditionalGeneration model from a configuration for audio-text conditional generation', 'generate_audio_description': 'generate a text description of an audio track using MusicFlamingoForConditionalGeneration with input audio features and tokens', 'extract_audio_embeddings': 'extract audio embeddings from log mel spectrograms using get_audio_features with input features and masks', 'build_rotary_embeddings': 'build 2D axial rotary time embeddings for window and time dimensions using MusicFlamingoRotaryEmbedding with timestamps', 'project_audio_to_text_space': 'project audio encoder features to the LLM embedding space using MusicFlamingoMultiModalProjector'}
+```
+
+## File: huggingface_transformers/src/transformers/models/musicflamingo/modular_musicflamingo.py
+
+Prompts
+
+```
+['run the CLI to convert MusicFlamingo source weights to Hugging Face format with --src_dir and --dst_dir', 'create a MusicFlamingo processor with Whisper feature extractor and Qwen2 tokenizer from source llm directory', 'merge and shard weights from llm, sound_tower, and sound_mm_projector into a single Hugging Face model', 'push the converted MusicFlamingo processor and model to a Hugging Face Hub repository', 'resolve a component directory to find its safetensors index or single weight file for loading', 'create a MusicFlamingoForConditionalGeneration model from a configuration for audio-text conditional generation', 'generate a text description of an audio track using MusicFlamingoForConditionalGeneration with input audio features and tokens', 'extract audio embeddings from log mel spectrograms using get_audio_features with input features and masks', 'build 2D axial rotary time embeddings for window and time dimensions using MusicFlamingoRotaryEmbedding with timestamps', 'project audio encoder features to the LLM embedding space using MusicFlamingoMultiModalProjector', 'create a MusicFlamingoConfig with audio and text sub-configs for multimodal audio-text modeling', 'build a MusicFlamingoProcessor wrapping a feature extractor and tokenizer with audio BOS/EOS tokens', 'build a MusicFlamingoForConditionalGeneration model from a MusicFlamingoConfig configuration', 'get audio embeddings from mel spectrogram input features using the audio tower and multi-modal projector', 'generate a text description of an audio track using MusicFlamingoForConditionalGeneration.generate with audio and text inputs', 'create a MusicFlamingoProcessor wrapping a WhisperFeatureExtractor and Qwen2TokenizerFast for audio-text modeling', 'process text with <sound> placeholders and audio waveforms to produce tokenized input_ids and audio features', 'expand <sound> placeholders in text with audio_bos_token, repeated audio_token, and audio_eos_token based on audio frame counts', 'generate training labels by cloning input_ids and masking audio tokens and pad tokens with -100', 'get the combined list of model input names from tokenizer and feature extractor including input_features_mask']
+```
+
+Usage
+
+```
+{'create_musicflamingo_config': 'create a MusicFlamingoConfig with audio and text sub-configs for multimodal audio-text modeling', 'build_musicflamingo_processor': 'build a MusicFlamingoProcessor wrapping a feature extractor and tokenizer with audio BOS/EOS tokens', 'build_musicflamingo_model': 'build a MusicFlamingoForConditionalGeneration model from a MusicFlamingoConfig configuration', 'get_audio_features': 'get audio embeddings from mel spectrogram input features using the audio tower and multi-modal projector', 'generate_music_description': 'generate a text description of an audio track using MusicFlamingoForConditionalGeneration.generate with audio and text inputs'}
+```
+
+## File: huggingface_transformers/src/transformers/models/musicflamingo/processing_musicflamingo.py
+
+Prompts
+
+```
+['run the CLI to convert MusicFlamingo source weights to Hugging Face format with --src_dir and --dst_dir', 'create a MusicFlamingo processor with Whisper feature extractor and Qwen2 tokenizer from source llm directory', 'merge and shard weights from llm, sound_tower, and sound_mm_projector into a single Hugging Face model', 'push the converted MusicFlamingo processor and model to a Hugging Face Hub repository', 'resolve a component directory to find its safetensors index or single weight file for loading', 'create a MusicFlamingoForConditionalGeneration model from a configuration for audio-text conditional generation', 'generate a text description of an audio track using MusicFlamingoForConditionalGeneration with input audio features and tokens', 'extract audio embeddings from log mel spectrograms using get_audio_features with input features and masks', 'build 2D axial rotary time embeddings for window and time dimensions using MusicFlamingoRotaryEmbedding with timestamps', 'project audio encoder features to the LLM embedding space using MusicFlamingoMultiModalProjector', 'create a MusicFlamingoConfig with audio and text sub-configs for multimodal audio-text modeling', 'build a MusicFlamingoProcessor wrapping a feature extractor and tokenizer with audio BOS/EOS tokens', 'build a MusicFlamingoForConditionalGeneration model from a MusicFlamingoConfig configuration', 'get audio embeddings from mel spectrogram input features using the audio tower and multi-modal projector', 'generate a text description of an audio track using MusicFlamingoForConditionalGeneration.generate with audio and text inputs', 'create a MusicFlamingoProcessor wrapping a WhisperFeatureExtractor and Qwen2TokenizerFast for audio-text modeling', 'process text with <sound> placeholders and audio waveforms to produce tokenized input_ids and audio features', 'expand <sound> placeholders in text with audio_bos_token, repeated audio_token, and audio_eos_token based on audio frame counts', 'generate training labels by cloning input_ids and masking audio tokens and pad tokens with -100', 'get the combined list of model input names from tokenizer and feature extractor including input_features_mask']
+```
+
+Usage
+
+```
+{'create_musicflamingo_processor': 'create a MusicFlamingoProcessor wrapping a WhisperFeatureExtractor and Qwen2TokenizerFast for audio-text modeling', 'process_text_and_audio': 'process text with <sound> placeholders and audio waveforms to produce tokenized input_ids and audio features', 'expand_audio_tokens': 'expand <sound> placeholders in text with audio_bos_token, repeated audio_token, and audio_eos_token based on audio frame counts', 'generate_training_labels': 'generate training labels by cloning input_ids and masking audio tokens and pad tokens with -100', 'get_model_input_names': 'get the combined list of model input names from tokenizer and feature extractor including input_features_mask'}
+```
+

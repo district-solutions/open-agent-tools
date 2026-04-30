@@ -1,0 +1,892 @@
+{
+  "facebookresearch_sam3/sam3/logger.py": {
+    "create_logger_get_logger": "create a colored command-line logger using get_logger with a custom name and log level",
+    "build_colored_formatter": "build a ColoredFormatter that outputs colored log messages per level for CLI use",
+    "test_COLORMED_FORMATTER": "test the ColoredFormatter class formats log records with ANSI colors per level",
+    "review_GET_LOGGER": "review the get_logger function configures a logger with colored stream handler",
+    "summarize_LOG_LEVELS": "summarize the LOG_LEVELS dictionary mapping string names to logging constants"
+  },
+  "facebookresearch_sam3/sam3/model_builder.py": {
+    "build_sam3_image_model": "build a SAM3 image segmentation model with optional checkpoint loading and instance interactivity",
+    "build_sam3_video_model": "build a SAM3 dense video tracking model with detector and tracker components",
+    "build_sam3_multiplex_video_model": "build a SAM3 multiplex video tracking model supporting multiple objects per bucket",
+    "build_sam3_multiplex_video_predictor": "build a fully-initialized SAM3.1 multiplex video predictor with session management API",
+    "build_sam3_predictor": "build a SAM3 video predictor for either sam3 or sam3.1 version with unified handle_request API"
+  },
+  "facebookresearch_sam3/sam3/visualization_utils.py": {
+    "create_function_render_masklet_frame": "render masklets and bounding boxes on a single image frame with configurable overlay alpha",
+    "create_function_save_masklet_video": "save a video with masklet overlays rendered on each frame and re-encoded via ffmpeg",
+    "create_function_visualize_formatted_frame_output": "visualize up to three sets of segmentation masks on a video frame with optional prompt annotations",
+    "create_function_convert_coco_to_masklet_format": "convert COCO format annotations to the masklet format expected by render_masklet_frame",
+    "create_function_get_all_annotations_for_frame": "retrieve a frame image and its associated masks and noun phrases from a dataset annotation dataframe"
+  },
+  "facebookresearch_sam3/sam3/agent/agent_core.py": {
+    "run_agent_inference": "run the SAM3 agent inference loop to segment objects in an image given an initial text prompt",
+    "save_debug_messages": "save conversation messages to a debug jsonl file when debug mode is enabled",
+    "count_images": "count the total number of image content items in a list of conversation messages",
+    "cleanup_debug_files": "remove debug jsonl file and debug folder after successful agent execution",
+    "prune_messages": "prune conversation messages to keep only the first two messages and the latest tool call segment"
+  },
+  "facebookresearch_sam3/sam3/agent/client_llm.py": {
+    "run_send_generate_request": "run send_generate_request to send multimodal messages to an OpenAI-compatible LLM API endpoint",
+    "run_send_direct_request": "run send_direct_request to perform local vLLM inference on a list of multimodal messages",
+    "create_get_image_base64_and_mime": "create a base64-encoded image string and MIME type from an image file path",
+    "test_send_generate_request": "test send_generate_request with image-containing messages against a server URL",
+    "test_send_direct_request": "test send_direct_request with a vLLM instance and sampling params for local inference"
+  },
+  "facebookresearch_sam3/sam3/agent/client_sam3.py": {
+    "run_sam3_inference": "run SAM 3 image inference with a processor, image path, and text prompt to get normalized boxes, masks, and scores",
+    "call_sam_service": "call the SAM 3 service with an image and text prompt to produce sorted JSON results and a visualization image",
+    "remove_overlapping_masks": "remove overlapping masks from SAM 3 inference outputs to deduplicate predictions",
+    "visualize_sam3_results": "visualize SAM 3 inference results by rendering bounding boxes and masks onto the original image",
+    "normalize_sam3_boxes": "normalize SAM 3 predicted bounding boxes from pixel coordinates to [0, 1] range and convert to xywh format"
+  },
+  "facebookresearch_sam3/sam3/agent/inference.py": {
+    "run_single_image_inference": "run single image inference with SAM 3 agent using an image path, text prompt, LLM config, and callbacks for LLM generation and SAM service calls"
+  },
+  "facebookresearch_sam3/sam3/agent/viz.py": {
+    "visualize_full_scene_masks": "visualize all predicted masks on an image from a result JSON without zoom-in",
+    "visualize_single_mask_zoom_in": "visualize a single mask with zoom-in view and overlay using the computed color",
+    "visualize_masks_with_custom_alpha": "visualize segmentation masks with a custom transparency alpha value",
+    "visualize_masks_with_label_mode": "visualize segmentation masks with a specified label mode and font size",
+    "visualize_masks_pair_output": "visualize a mask instance pair returning both zoomed overlay and full-scene render"
+  },
+  "facebookresearch_sam3/sam3/agent/helpers/boxes.py": {
+    "convert_box_mode": "convert boxes between XYXY_ABS, XYWH_ABS, and XYWHA_ABS coordinate formats",
+    "create_boxes_object": "create a Boxes object from a list of (x1, y1, x2, y2) coordinates for batched box operations",
+    "compute_pairwise_iou": "compute pairwise intersection-over-union between all N x M pairs of boxes",
+    "clip_boxes_to_image": "clip boxes to image boundaries and filter nonempty boxes by area threshold",
+    "compute_point_box_distances": "compute pairwise distances from N points to M boxes represented as distances to each edge"
+  },
+  "facebookresearch_sam3/sam3/agent/helpers/color_map.py": {
+    "build_colormap_array": "build a numpy array of 25 bright segmentation mask colors in BGR or RGB format",
+    "create_random_color": "create a single random color from 25 predefined bright colors for visualization",
+    "generate_random_colors": "generate N unique random colors from the colormap palette for segmentation tasks",
+    "test_colormap_bgr": "test the colormap function returns BGR colors by default with maximum=255",
+    "review_random_colors": "review the random_colors function samples N distinct colors without replacement"
+  },
+  "facebookresearch_sam3/sam3/agent/helpers/keypoints.py": {
+    "create_keypoints_instance": "create a Keypoints instance from a tensor of shape (N, K, 3) with x, y coordinates and visibility flags",
+    "build_keypoints_heatmap": "build keypoint annotations into a heatmap using boxes and heatmap size for training labels",
+    "convert_heatmaps_to_keypoints": "convert predicted heatmaps back to continuous keypoint coordinates with x, y, logit, and score",
+    "concatenate_keypoints_lists": "concatenate a list of Keypoints objects into a single Keypoints tensor",
+    "index_keypoints_by_slice": "index a Keypoints object by integer, slice, or boolean tensor to select subsets"
+  },
+  "facebookresearch_sam3/sam3/agent/helpers/mask_overlap_removal.py": {
+    "compute_mask_intersection": "compute the intersection count between two sets of boolean masks using block-wise batching",
+    "calculate_mask_iom": "calculate the intersection-over-min-area overlap metric between two sets of boolean masks",
+    "remove_overlapping_masks": "remove overlapping masks from a sample dict using greedy score-based filtering with IoM threshold",
+    "decode_single_mask": "decode a single mask from array or RLE representation into a 2D boolean numpy array",
+    "decode_masks_to_torch": "decode a list of masks into a stacked boolean torch tensor of shape (N, H, W)"
+  },
+  "facebookresearch_sam3/sam3/agent/helpers/masks.py": {
+    "create_BitMasks": "create a BitMasks object from a tensor of segmentation masks representing N instances in an image",
+    "build_PolygonMasks": "build a PolygonMasks object from a list of polygon coordinate arrays per instance",
+    "convert_polygon_masks_to_bitmasks": "convert polygon masks to bitmap masks using BitMasks.from_polygon_masks with given image height and width",
+    "crop_and_resize_bitmasks": "crop and resize bitmask instances to a fixed square size using bounding box coordinates",
+    "rasterize_polygons_within_box": "rasterize polygon coordinates into a resized binary mask tensor cropped to a bounding box"
+  },
+  "facebookresearch_sam3/sam3/agent/helpers/memory.py": {
+    "run_retry_if_cuda_oom": "run the retry_if_cuda_oom decorator on a stateless torch function to automatically retry on CUDA OOM"
+  },
+  "facebookresearch_sam3/sam3/agent/helpers/rle.py": {
+    "encode_masks_rle": "encode a batch of torch boolean masks (N, H, W) in RLE format using GPU-accelerated computation",
+    "robust_rle_encode_masks": "encode masks in RLE format with automatic GPU-to-CPU fallback on runtime errors",
+    "convert_annotation_rle": "convert polygon or uncompressed RLE segmentation annotations to standard RLE format"
+  },
+  "facebookresearch_sam3/sam3/agent/helpers/roi_align.py": {
+    "create_roi_align_module": "create a ROIAlign nn.Module wrapper with configurable output size, spatial scale, sampling ratio, and alignment",
+    "build_roi_align_forward": "build a forward pass for ROIAlign that accepts NCHW images and Bx5 ROIs with automatic dequantization",
+    "test_roi_align_repr": "test the ROIAlign __repr__ method returns a formatted string with all constructor parameters",
+    "review_roi_align_version_check": "review the ROIAlign constructor's torchvision version check requiring version >= 0.7",
+    "summarize_roi_align_aligned_behavior": "summarize how ROIAlign aligned=True shifts ROIs by -0.5 before calling torchvision roi_align for correct pixel alignment"
+  },
+  "facebookresearch_sam3/sam3/agent/helpers/rotated_boxes.py": {
+    "create_RotatedBoxes": "create a RotatedBoxes object from a Nx5 tensor with (x_center, y_center, width, height, angle) format",
+    "compute_pairwise_iou_rotated": "compute pairwise IoU matrix between two sets of rotated boxes in (x_center, y_center, width, height, angle) format",
+    "clip_rotated_boxes": "clip near-horizontal rotated boxes to image boundaries while preserving angle and dimensions",
+    "scale_rotated_boxes": "scale rotated boxes with independent x and y factors approximating parallelogram back to rotated rectangle",
+    "cat_rotated_boxes": "concatenate a list of RotatedBoxes objects into a single RotatedBoxes without shared storage"
+  },
+  "facebookresearch_sam3/sam3/agent/helpers/som_utils.py": {
+    "create_color_from_hex": "create a Color instance from a hex string like '#ff00ff' using Color.from_hex",
+    "build_color_palette_from_hex_list": "build a ColorPalette from a list of hex color strings using ColorPalette.from_hex",
+    "get_farthest_color_from_image_array": "get the farthest color from a numpy image array using ColorPalette.find_farthest_color",
+    "draw_mask_with_rle_on_ax": "draw a segmentation mask from an RLE-encoded mask on a matplotlib axes using draw_mask",
+    "convert_rgb_to_hex": "convert an RGB tuple like (255, 0, 255) to a hex color string using rgb_to_hex"
+  },
+  "facebookresearch_sam3/sam3/agent/helpers/visualizer.py": {
+    "create_visualizer_draw_instance_predictions": "create a visualizer to draw instance detection predictions with boxes, masks, and labels on an image",
+    "build_visualizer_draw_sem_seg": "build a visualizer to draw semantic segmentation masks with category labels on an image",
+    "test_visualizer_draw_panoptic_seg": "test the visualizer draw_panoptic_seg method to render panoptic segmentation with instance and stuff masks",
+    "refactor_visualizer_overlay_instances": "refactor the Visualizer overlay_instances method to draw boxes, masks, and keypoints with assigned colors",
+    "summarize_visualizer_draw_dataset_dict": "summarize the Visualizer draw_dataset_dict method that renders Detectron2 dataset format annotations"
+  },
+  "facebookresearch_sam3/sam3/agent/helpers/zoom_in.py": {
+    "build_render_zoom_in": "build a two-panel visualization with a cropped original view and a zoomed-in mask overlay from a PIL image and COCO RLE segmentation",
+    "create_render_zoom_in_with_box": "create a zoom-in visualization that draws a bounding box around the segmented object on the cropped original panel",
+    "create_render_zoom_in_with_text": "create a zoom-in visualization that draws the object label text near the bounding box on the cropped panel",
+    "create_render_zoom_in_with_holes": "create a zoom-in visualization that renders mask holes with configurable alpha transparency on the zoomed-in panel",
+    "create_color_palette_farthest": "create a color palette from a cropped image region and find the farthest contrasting color for mask overlay"
+  },
+  "facebookresearch_sam3/sam3/eval/cgf1_eval.py": {
+    "build_cgf1_evaluator": "build a CGF1Evaluator instance to evaluate segmentation predictions against COCO ground truth files",
+    "run_cgf1_evaluation": "run cgF1 evaluation on a predictions JSON file using the CGF1Evaluator.evaluate method",
+    "create_cococustom": "create a COCOCustom instance for fast loading and indexing of COCO dataset annotations",
+    "compute_iou_matching": "compute IoU between predictions and ground truth using Hungarian algorithm matching in CGF1Eval",
+    "summarize_cgf1_metrics": "summarize cgF1 evaluation results including precision, recall, F1, IL_FPR, and IL_MCC metrics"
+  },
+  "facebookresearch_sam3/sam3/eval/coco_eval.py": {
+    "create_coco_evaluator": "create a CocoEvaluator instance for distributed COCO evaluation with bbox and segmentation metrics",
+    "run_coco_evaluation": "run online COCO evaluation on model predictions by calling update with postprocessed results per image",
+    "summarize_coco_metrics": "summarize accumulated COCO evaluation results into AP and AR statistics across IoU thresholds and area ranges",
+    "prepare_segmentation_predictions": "prepare model predictions into COCO segmentation format with RLE-encoded masks and area values",
+    "synchronize_distributed_eval": "synchronize COCO evaluation state across distributed processes and gather predictions via filesystem or collective ops"
+  },
+  "facebookresearch_sam3/sam3/eval/coco_eval_offline.py": {
+    "run_coco_eval_offline": "run COCO mAP evaluation on a dumped predictions file with ground truth annotations",
+    "test_coco_evaluator_offline": "test the CocoEvaluatorOfflineWithPredFileEvaluators class with gt_path, iou_type, and positive_split options",
+    "review_cocoevalcustom": "review the COCOevalCustom class that extends COCOeval with positive split evaluation support",
+    "summarize_convert_to_xywh": "summarize the convert_to_xywh function that converts bounding boxes from xyxy to xywh format",
+    "refactor_heap_element": "refactor the HeapElement class used as a utility for heap operations with custom score comparator"
+  },
+  "facebookresearch_sam3/sam3/eval/coco_reindex.py": {
+    "build_reindex_coco_json": "build a function to convert 0-indexed COCO JSON files to 1-indexed and save to a temporary location",
+    "test_reindex_coco_function": "test the reindex_coco_to_temp function with a sample COCO JSON file containing images, categories, and annotations",
+    "run_coco_reindex_validation": "run the reindex_coco_to_temp function to validate and convert a COCO JSON file from 0-indexed to 1-indexed",
+    "review_coco_id_mapping": "review the reindex_coco_to_temp function to ensure image_id and category_id references are updated consistently in annotations",
+    "summarize_coco_reindex": "summarize the reindex_coco_to_temp function that converts COCO JSON data from 0-indexed to 1-indexed IDs"
+  },
+  "facebookresearch_sam3/sam3/eval/coco_writer.py": {
+    "create_PredictionDumper": "create a PredictionDumper to collect and dump COCO-format predictions from a model in distributed training",
+    "build_coco_predictions": "build COCO-format detection predictions from model outputs with bounding boxes and scores",
+    "build_coco_segmentation": "build COCO-format segmentation predictions with RLE-encoded masks from model outputs",
+    "run_gather_and_merge": "run gather_and_merge_predictions to collect and merge top detections per image across distributed processes",
+    "summarize_synchronize": "summarize synchronized predictions across all processes and compute evaluation metrics"
+  },
+  "facebookresearch_sam3/sam3/eval/conversion_util.py": {
+    "convert_ytbvis_to_cocovid_gt": "convert YouTube VIS dataset annotations to COCO-style video instance segmentation format",
+    "convert_ytbvis_to_cocovid_pred": "convert YouTubeVIS predictions to COCO format with video_id preservation"
+  },
+  "facebookresearch_sam3/sam3/eval/demo_eval.py": {
+    "create_DemoEval": "create a DemoEval instance for thresholded COCO-style segmentation or bbox evaluation with a configurable IoU threshold",
+    "run_DemoEval_evaluateImg": "run evaluateImg on a DemoEval to compute per-image TP/FP/FN, precision, recall, F1, and image-level metrics",
+    "summarize_DemoEval": "summarize DemoEval results by accumulating per-image metrics and printing CGF1, precision, recall, F1, J, F, J&F scores",
+    "build_DemoEvaluator": "build a DemoEvaluator wrapping multiple COCO ground truths and predictions for bbox and segmentation demo evaluation",
+    "test_DemoEvaluator_select_best_scoring": "test select_best_scoring on DemoEvaluator to pick the best oracle scoring across multiple ground truth matches per image"
+  },
+  "facebookresearch_sam3/sam3/eval/postprocessors.py": {
+    "build_postprocess_image": "build a PostProcessImage module to convert model outputs into COCO API format with boxes, scores, labels, and masks",
+    "create_postprocess_video": "create a PostProcessAPIVideo module to convert video model outputs into YT-VIS API format with tracklet predictions",
+    "run_postprocess_tracking": "run PostProcessTracking to convert model outputs to COCO API format with per-frame object tracking results",
+    "test_postprocess_counting": "test PostProcessCounting to count detected objects per image by thresholding prediction scores",
+    "refactor_postprocess_null": "refactor PostProcessNullOp as a no-op postprocessor that passes find_stages through unchanged"
+  },
+  "facebookresearch_sam3/sam3/eval/saco_veval_eval.py": {
+    "run_saco_veval_all": "run video grounding evaluation for all saco_veval datasets using ground truth and prediction directories",
+    "run_saco_veval_one": "run video grounding evaluation for a single dataset using ground truth annotation and prediction file paths",
+    "create_veval_evaluator": "create a VEvalEvaluator instance with ground truth annotation file and output result file paths",
+    "run_veval_eval": "run the VEvalEvaluator to compute mAP, phrase AP, TETA, HOTA, and cgF1 metrics and save results to JSON",
+    "summarize_saco_veval_eval": "summarize the saco_veval_eval module that provides CLI subcommands for video grounding metric evaluation"
+  },
+  "facebookresearch_sam3/sam3/eval/saco_veval_evaluators.py": {
+    "build_ytvis_map_evaluator": "build a YTVISPredFileEvaluator to evaluate class mAP for YT-VIS prediction files",
+    "run_video_phrase_ap_evaluation": "run video phrase AP evaluation with YT-VIS format prediction and ground truth files",
+    "run_video_demo_f1_evaluation": "run video demo F1 evaluation with CG-F1, IL_MCC, and positive micro F1 metrics",
+    "evaluate_teta_tracking_metric": "evaluate TETA tracking metric with NMS filtering and COCO-vid conversion",
+    "evaluate_video_hota_metrics": "evaluate video phrase HOTA with DetA, AssA, DetRe, DetPr, AssRe, AssPr, LocA, OWTA metrics"
+  },
+  "facebookresearch_sam3/sam3/eval/ytvis_coco_wrapper.py": {
+    "create_class_ytvis": "create a YTVIS class instance to read YT-VIS video annotations from a COCO-format JSON file",
+    "build_ytvis_index": "build a YTVIS index that renames video keys to image keys and normalizes annotations for COCO compatibility",
+    "test_ytvis_load_res": "test the YTVIS.loadRes method to load prediction results with tracklet bboxes or segmentations",
+    "review_ytvis_get_ann_ids": "review the YTVIS.getAnnIds method that filters annotations by average area across videos",
+    "summarize_ytvis_create_index": "summarize how YTVIS.createIndex adapts YT-VIS annotations to COCO format by mapping videos to images"
+  },
+  "facebookresearch_sam3/sam3/eval/ytvis_eval.py": {
+    "create_YTVISeval": "create a COCOeval subclass that computes IoU between tracklets and masklets for video object segmentation evaluation",
+    "create_YTVISResultsWriter": "create a YTVISResultsWriter that gathers and dumps predictions in YT-VIS format across distributed processes",
+    "create_YTVISResultsWriter_compute_synced": "create and run compute_synced on a YTVISResultsWriter to synchronize predictions across GPUs, dump results, and evaluate",
+    "create_YTVISResultsWriter_update": "create a YTVISResultsWriter and call update with postprocessor results to accumulate predictions for evaluation",
+    "create_YTVISeval_computeIoU": "create a YTVISeval and use computeIoU to compute IoU between predicted and ground truth tracklets or masklets"
+  },
+  "facebookresearch_sam3/sam3/eval/hota_eval_toolkit/run_ytvis_eval.py": {
+    "run_ytvis_eval": "run YouTubeVIS tracking evaluation with HOTA metrics using JSON ground truth and tracker data",
+    "test_run_ytvis_eval": "test the YouTubeVIS evaluation function with custom GT and tracker JSON objects",
+    "run_ytvis_cli_eval": "run YouTubeVIS eval from CLI with --TRACKERS_TO_EVAL and --METRICS HOTA arguments",
+    "summarize_run_ytvis_eval": "summarize the YouTubeVIS evaluation function that merges eval, dataset, and metrics configs",
+    "review_run_ytvis_eval": "review the YouTubeVIS eval function that parses CLI args and runs trackeval Evaluator"
+  },
+  "facebookresearch_sam3/sam3/eval/hota_eval_toolkit/trackeval/_timing.py": {
+    "time_decorator": "apply the @time decorator to functions to enable performance timing and accumulate per-method durations"
+  },
+  "facebookresearch_sam3/sam3/eval/hota_eval_toolkit/trackeval/eval.py": {
+    "create_evaluator": "create an Evaluator instance with custom config to evaluate tracking metrics on datasets",
+    "run_evaluator_evaluate": "run the Evaluator.evaluate method to evaluate multiple trackers on multiple datasets using specified metrics",
+    "get_default_eval_config": "get the default Evaluator config dict with parallelism, error handling, and output options",
+    "eval_single_sequence": "evaluate a single tracking sequence using eval_sequence with dataset, tracker, and metrics",
+    "combine_evaluation_results": "combine per-sequence evaluation results into class-averaged, detection-averaged, and super-class summaries"
+  },
+  "facebookresearch_sam3/sam3/eval/hota_eval_toolkit/trackeval/utils.py": {
+    "build_init_config": "initialize a config dictionary with default values and optionally print the configuration",
+    "run_update_config": "run argparse-based CLI argument parsing to update a config dictionary from command-line flags",
+    "create_write_summary_results": "create a function that writes tracking evaluation summary results to a space-delimited text file",
+    "create_write_detailed_results": "create a function that writes per-sequence tracking evaluation details to a CSV file",
+    "test_load_detail": "test loading detailed tracker evaluation results from a CSV file into a nested dictionary"
+  },
+  "facebookresearch_sam3/sam3/eval/hota_eval_toolkit/trackeval/datasets/_base_dataset.py": {
+    "load_tracking_data_from_text": "load raw tracking data from a CSV or text file with auto-detected dialect and timestep grouping",
+    "calculate_box_ious": "calculate IoU or IoA between two arrays of bounding boxes in xywh or x0y0x1y1 format",
+    "calculate_mask_ious": "calculate IoU or IoA between two arrays of segmentation masks using pycocotools RLE encoding",
+    "get_raw_sequence_data": "get raw sequence data for a tracker and ground-truth on a single sequence including similarity scores",
+    "check_unique_ids": "check that tracker and ground-truth IDs are unique per timestep and raise on duplicates"
+  },
+  "facebookresearch_sam3/sam3/eval/hota_eval_toolkit/trackeval/datasets/tao_ow.py": {
+    "create_tao_ow_dataset": "create a TAO_OW dataset instance for open-world tracking evaluation with custom config",
+    "get_default_dataset_config": "get the default dataset configuration for TAO_OW tracking evaluation",
+    "load_raw_file": "load raw ground truth or tracker annotation data for a TAO sequence in TAO format",
+    "preprocess_sequence_data": "preprocess a raw annotated sequence for a single class ready for HOTA evaluation",
+    "calculate_similarities": "calculate IoU similarity scores between ground truth and tracker bounding boxes",
+    "merge_categories": "merge TAO categories that share a merged tag into a single category",
+    "filter_gt_data": "filter ground truth data by known, unknown, or distractor subset for open-world tracking",
+    "limit_detections_per_image": "limit the number of tracker detections per image to a maximum count"
+  },
+  "facebookresearch_sam3/sam3/eval/hota_eval_toolkit/trackeval/datasets/youtube_vis.py": {
+    "create_youtubevis_dataset": "create a YouTubeVIS dataset instance for video object tracking evaluation with configurable GT and tracker JSON objects",
+    "run_youtubevis_iou_evaluation": "run YouTubeVIS tracking evaluation with configurable IOU type for segmentation or bounding box metrics",
+    "build_preprocessed_sequence_data": "build preprocessed sequence data for a single class filtering detections and relabeling track IDs contiguously",
+    "load_raw_tracking_file": "load raw tracking file for a YouTubeVIS sequence extracting detections, IDs, and classes per timestep",
+    "prepare_gt_annotations": "prepare ground truth annotations by RLE encoding segmentations and computing average track areas"
+  },
+  "facebookresearch_sam3/sam3/eval/hota_eval_toolkit/trackeval/metrics/_base_metric.py": {
+    "build_metric_class": "build a python class that extends _BaseMetric to implement a tracking evaluation metric",
+    "run_eval_sequence": "run the eval_sequence method to evaluate tracking data for a single sequence",
+    "combine_sequences": "combine sequence results via sum or weighted average using combine_sequences",
+    "print_table": "print a formatted results table for all sequences and a combined summary row",
+    "summarize_results": "summarize final tracker results by extracting summary fields from combined sequence results"
+  },
+  "facebookresearch_sam3/sam3/eval/hota_eval_toolkit/trackeval/metrics/count.py": {
+    "create_Count_metric": "create a Count metric instance to tally tracker and ground truth detections and IDs",
+    "run_eval_sequence": "run eval_sequence on a Count metric to get detection, ID, and frame counts for one sequence",
+    "combine_sequences_Count": "combine sequences using Count metric to sum detections and IDs across all sequences",
+    "combine_classes_class_averaged_Count": "combine classes class-averaged using Count metric to average detection counts across classes",
+    "combine_classes_det_averaged_Count": "combine classes detection-averaged using Count metric to sum detection counts across classes"
+  },
+  "facebookresearch_sam3/sam3/eval/hota_eval_toolkit/trackeval/metrics/hota.py": {
+    "eval_sequence_hota_metrics": "eval the HOTA metrics for a single tracking sequence given gt and tracker detection data",
+    "combine_sequences_hota_metrics": "combine HOTA metrics across multiple sequences into aggregated results",
+    "combine_classes_det_averaged": "combine HOTA metrics across all classes by averaging over detection values",
+    "compute_final_fields_hota": "compute derived sub-metric fields like DetRe, DetPr, DetA, HOTA, and OWTA from raw counts",
+    "plot_single_tracker_results_hota": "plot HOTA metric results as curves over alpha thresholds for a tracker and class"
+  },
+  "facebookresearch_sam3/sam3/eval/teta_eval_toolkit/_timing.py": {
+    "summarize_time": "summarize the python decorator function time that wraps functions with performance timing using perf_counter",
+    "run_time_decorator": "run the time decorator on a function to measure and print its execution time in seconds",
+    "build_timing_summary": "build a timing summary by setting DO_TIMING to true and calling timed methods to accumulate elapsed time in timer_dict",
+    "refactor_time_printing": "refactor the time decorator to customize progress printing behavior with DISPLAY_LESS_PROGRESS flag",
+    "test_time_accumulation": "test the time decorator accumulative timing by calling Evaluator.evaluate to print final timing analysis"
+  },
+  "facebookresearch_sam3/sam3/eval/teta_eval_toolkit/config.py": {
+    "run_teta_eval_parse_configs": "run the teta evaluation toolkit by parsing command line arguments into eval, dataset, and metrics configs",
+    "create_get_default_eval_config": "create a dict of default evaluation config values including parallelism, error handling, and output settings",
+    "create_get_default_dataset_config": "create a dict of default dataset config values including ground truth folder, trackers folder, and split settings",
+    "test_init_config": "test the init_config function to fill missing keys in a partial config with default values",
+    "refactor_update_config": "refactor the update_config function to update a config dict from command line argparse arguments"
+  },
+  "facebookresearch_sam3/sam3/eval/teta_eval_toolkit/eval.py": {
+    "build_evaluator_instance": "build an Evaluator instance to evaluate metrics on tracking datasets",
+    "run_evaluate_datasets": "run the Evaluator.evaluate method to evaluate metrics across multiple datasets and trackers",
+    "run_evaluate_tracker": "run the Evaluator.evaluate_tracker method to evaluate a single tracker across all sequences",
+    "run_eval_sequence": "run the eval_sequence function to evaluate a single sequence against a tracker and metrics",
+    "run_combine_classes": "run the class and super-category combination logic in evaluate_tracker to aggregate results"
+  },
+  "facebookresearch_sam3/sam3/eval/teta_eval_toolkit/utils.py": {
+    "validate_metrics_list": "validate a list of metric objects ensuring all metric names and fields are unique",
+    "get_track_id_str": "get the track ID string key from an annotation dict supporting track_id, instance_id, or scalabel_id",
+    "TrackEvalException": "create a custom exception class for catching expected errors in track evaluation code"
+  },
+  "facebookresearch_sam3/sam3/eval/teta_eval_toolkit/datasets/_base_dataset.py": {
+    "build_base_dataset_subclass": "build a subclass of _BaseDataset implementing _load_raw_file, get_preprocessed_seq_data, and _calculate_similarities for a new evaluation dataset",
+    "create_load_simple_text_file": "create a function that loads CSV or text detection files with auto-dialect detection, timestep grouping, and crowd-ignore filtering",
+    "calculate_mask_ious": "calculate IoU or IoA between two sets of segmentation masks using pycocotools RLE encoding or raw numpy arrays",
+    "calculate_box_ious": "calculate IoU or IoA between two sets of 2D bounding boxes supporting xywh and x0y0x1y1 formats",
+    "calculate_euclidean_similarity": "calculate euclidean distance-based similarity between sets of 2D or 3D point detections with configurable zero_distance threshold"
+  },
+  "facebookresearch_sam3/sam3/eval/teta_eval_toolkit/datasets/coco.py": {
+    "create_COCO_dataset": "create a COCO dataset instance for tracking evaluation from ground truth and tracker JSON files",
+    "run_get_preprocessed_seq_data": "run get_preprocessed_seq_data to preprocess tracking data for a sequence and class with IoU thresholds",
+    "build_load_raw_file": "build raw tracking or ground truth file data into timestep-aligned detections, IDs, and classes",
+    "test_calculate_similarities": "test compute similarity scores between ground truth and tracker detections using masks or bounding boxes",
+    "review_make_tk_ids_unique": "review make track IDs unique across videos to avoid ID collisions in multi-video annotation sets"
+  },
+  "facebookresearch_sam3/sam3/eval/teta_eval_toolkit/datasets/tao.py": {
+    "create_TAO_dataset": "create a TAO dataset instance for video object tracking evaluation with ground truth and tracker JSON files",
+    "run_tao_preprocessed_seq_data": "run TAO preprocessed sequence data evaluation for a specific class with optional assignment thresholds",
+    "load_raw_tao_file": "load raw TAO tracking data for a sequence in ground truth or tracker format",
+    "merge_tao_categories": "merge TAO dataset categories marked with a merged tag across annotations",
+    "make_tao_track_ids_unique": "make track IDs unique across the whole annotation set for TAO evaluation"
+  },
+  "facebookresearch_sam3/sam3/eval/teta_eval_toolkit/metrics/_base_metric.py": {
+    "eval_sequence_metric": "eval a tracking sequence and compute metric results from raw data",
+    "combine_sequences_metrics": "combine per-sequence metric results into aggregated results across all sequences",
+    "print_table_results": "print a formatted results table for a tracker across all sequences and classes",
+    "summary_results_tracker": "return a simple summary dictionary of final results for a tracker from combined sequence data",
+    "detailed_results_tracker": "return detailed per-sequence results with array labels and AUC fields for a tracker"
+  },
+  "facebookresearch_sam3/sam3/eval/teta_eval_toolkit/metrics/teta.py": {
+    "create_TETA_metric": "create a TETA metric instance for evaluating track accuracy with configurable exhaustive mode",
+    "run_eval_sequence": "run TETA metric evaluation on a single tracking sequence across all IoU thresholds",
+    "compute_global_alignment_score": "compute global alignment score between ground truth and predicted track IDs",
+    "combine_sequences": "combine TETA metric results across multiple evaluation sequences into aggregated scores",
+    "compute_matches": "compute optimal ground-truth to track matches using Hungarian algorithm at each IoU threshold"
+  },
+  "facebookresearch_sam3/sam3/model/act_ckpt_utils.py": {
+    "create_activation_ckpt_wrapper": "create an activation checkpointing wrapper for a PyTorch module to reduce memory usage during training",
+    "enable_activation_checkpointing": "enable activation checkpointing on a PyTorch module by wrapping it with act_ckpt_enable=True",
+    "disable_activation_checkpointing": "disable activation checkpointing on a wrapped module by passing act_ckpt_enable=False",
+    "create_clone_output_wrapper": "create a clone output wrapper for a function to clone CUDA tensors and prevent in-place operation errors",
+    "prevent_inplace_errors": "prevent in-place operation errors with torch.compile by wrapping functions with clone_output_wrapper"
+  },
+  "facebookresearch_sam3/sam3/model/box_ops.py": {
+    "build_box_cxcywh_to_xyxy": "build a function that converts bounding boxes from center-x,center-y,width,height format to x0,y0,x1,y1 format",
+    "create_masks_to_boxes": "create a function that computes bounding boxes in xyxy format from binary segmentation masks",
+    "test_box_iou": "test the batched box_iou function that computes intersection-over-union between two sets of boxes",
+    "refactor_generalized_box_iou": "refactor the generalized_box_iou function to compute generalized IoU for bounding box regression training",
+    "summarize_box_xywh_inter_union": "summarize the box_xywh_inter_union function that computes intersection and union for boxes in xywh format"
+  },
+  "facebookresearch_sam3/sam3/model/data_misc.py": {
+    "create_class_nested_tensor": "create a NestedTensor class that wraps tensors and masks with device transfer and cloning support",
+    "register_pytree_node_nested_tensor": "register NestedTensor as a pytree node for tree_map traversal in PyTorch",
+    "build_function_interpolate": "build an interpolate function with support for empty channel sizes in PyTorch tensors",
+    "create_dataclass_batched_find_target": "create a BatchedFindTarget dataclass with box, segment, and semantic segment fields for find stage targets",
+    "convert_my_tensors_dataclass": "convert MyTensor fields in a dataclass to torch tensors with proper stacking and dtype casting"
+  },
+  "facebookresearch_sam3/sam3/model/decoder.py": {
+    "build_TransformerDecoder": "build a TransformerDecoder module with box refinement, presence tokens, and configurable decoder layers",
+    "create_TransformerDecoderLayer": "create a TransformerDecoderLayer with self-attention, cross-attention, and feed-forward network blocks",
+    "create_SimpleRoPEAttention": "create a SimpleRoPEAttention module with rotary position encoding and flash attention support",
+    "create_DecoupledTransformerDecoderLayerv2": "create a DecoupledTransformerDecoderLayerv2 with separate self and cross attention projections using RoPE",
+    "run_functional_attention": "run functional attention with rotary position encoding, flash attention, and configurable head dimensions"
+  },
+  "facebookresearch_sam3/sam3/model/edt.py": {
+    "run_edt_triton": "run the edt_triton function to compute the Euclidean Distance Transform on a batch of binary images",
+    "build_edt_triton": "build a function that computes the Euclidean Distance Transform of binary images using a Triton O(N^2) algorithm",
+    "test_edt_triton": "test the edt_triton function with a batch of binary image tensors on CUDA",
+    "review_edt_kernel": "review the edt_kernel Triton JIT implementation of the 1D Euclidean Distance Transform parabola envelope algorithm",
+    "summarize_edt_triton": "summarize the edt_triton function and its two-pass horizontal-vertical EDT computation pipeline"
+  },
+  "facebookresearch_sam3/sam3/model/encoder.py": {
+    "create_TransformerEncoderLayer": "create a transformer encoder layer with self-attention, cross-attention, and configurable pre-norm or post-norm architecture",
+    "build_TransformerEncoder": "build a transformer encoder that stacks multiple encoder layers to process multi-level features with optional activation checkpointing",
+    "build_TransformerEncoderFusion": "build a transformer encoder that fuses text and image features with optional torch.compile for performance",
+    "test_pool_text_feat": "test the pool_text_feat function that mean-pools prompt embeddings with optional mask-aware pooling",
+    "refactor_TransformerEncoderLayer_forward": "refactor the TransformerEncoderLayer forward method to support divide-and-conquer attention on half the queries"
+  },
+  "facebookresearch_sam3/sam3/model/geometry_encoders.py": {
+    "create_class_Prompt": "create a Prompt object to store and manipulate geometric prompts with box, point, and mask embeddings",
+    "build_class_SequenceGeometryEncoder": "build a SequenceGeometryEncoder to encode geometric prompts with configurable box and point encoding strategies",
+    "use_class_FusedMaskEncoder": "use a FusedMaskEncoder to fuse backbone image features with downsampled mask features and position encoding",
+    "run_function_concat_padded_sequences": "run concat_padded_sequences to concatenate two right-padded sequences while preserving right-padding",
+    "test_function_is_right_padded": "test is_right_padded to verify whether a padding mask has padding on the right side"
+  },
+  "facebookresearch_sam3/sam3/model/io_utils.py": {
+    "build_load_resource_video_frames": "build a function that loads video frames or images as normalized float16 tensors for model input",
+    "create_load_video_frames_cv2": "create a function that loads video frames from a file using OpenCV and returns a normalized tensor",
+    "create_async_image_frame_loader": "create a class that loads image folder frames asynchronously without blocking the main thread",
+    "create_async_video_file_loader_torchcodec": "create a class that loads video frames asynchronously using TorchCodec with optional GPU acceleration",
+    "create_fifo_lock": "create a FIFO-ordered lock class that ensures fair lock acquisition across concurrent threads"
+  },
+  "facebookresearch_sam3/sam3/model/maskformer_segmentation.py": {
+    "create_class_mask_predictor": "create a MaskPredictor module that generates mask predictions from object queries and pixel embeddings",
+    "build_class_segmentation_head": "build a SegmentationHead with pixel decoder and mask predictor for instance segmentation",
+    "build_class_pixel_decoder": "build a PixelDecoder that upsamples backbone features through FPN-style fusion stages",
+    "create_class_universal_segmentation_head": "create a UniversalSegmentationHead that performs semantic, instance segmentation and presence detection",
+    "create_class_linear_presence_head": "create a LinearPresenceHead that outputs presence logits for object queries"
+  },
+  "facebookresearch_sam3/sam3/model/memory.py": {
+    "build_SimpleMaskDownSampler": "build a SimpleMaskDownSampler to progressively downsample binary masks with configurable stride and channel expansion",
+    "create_CXBlock": "create a ConvNeXt-style CXBlock with depthwise convolution, pointwise convolutions, and stochastic depth",
+    "build_SimpleFuser": "build a SimpleFuser that stacks multiple CXBlock layers to fuse visual features with downsampled masks",
+    "create_SimpleMaskEncoder": "create a SimpleMaskEncoder that encodes masks, fuses them with pixel features, and returns vision features with positional encoding",
+    "summarize_memory_module": "summarize the memory encoding pipeline using SimpleMaskDownSampler, CXBlock, SimpleFuser, and SimpleMaskEncoder"
+  },
+  "facebookresearch_sam3/sam3/model/model_misc.py": {
+    "create_multihead_attention": "create a multi-head attention module with configurable heads, embed dim, and attention type",
+    "build_mlp": "build a multi-layer perceptron with configurable layers, hidden dim, dropout, and optional residual connections",
+    "run_multi_head_attention_forward": "run multi-head attention forward pass with vanilla, xformer, or sparse attention types",
+    "create_dot_product_scoring": "create a dot-product scoring module that projects queries and prompts to a shared projection space",
+    "summarize_sam3_output": "summarize the SAM3Output class that provides iterable output with all steps, last step per stage, or flattened modes"
+  },
+  "facebookresearch_sam3/sam3/model/multiplex_mask_decoder.py": {
+    "create_MultiplexMaskDecoder": "create a MultiplexMaskDecoder with transformer dim, transformer module, and multiplex count for multi-mask prediction",
+    "run_MultiplexMaskDecoder_forward": "run the MultiplexMaskDecoder forward pass with image embeddings and positional encoding to predict masks",
+    "build_MLP_predictor": "build an MLP predictor with configurable input, hidden, output dimensions and ReLU activations",
+    "test_MultiplexMaskDecoder_predict_masks": "test the MultiplexMaskDecoder predict_masks method with image embeddings and high resolution features",
+    "review_MultiplexMaskDecoder_dynamic_multimask": "review the MultiplexMaskDecoder dynamic multimask fallback logic that selects masks based on stability scores"
+  },
+  "facebookresearch_sam3/sam3/model/multiplex_utils.py": {
+    "create_multiplexstate": "create a MultiplexState with bucket assignments, device, dtype, and allowed bucket capacity for tensor multiplexing",
+    "build_multiplexcontroller": "build a MultiplexController module to manage multiplex state across training and evaluation modes",
+    "run_multiplexstate_mux": "run the MultiplexState mux method to convert tensors from data space to multiplex space",
+    "run_multiplexstate_demux": "run the MultiplexState demux method to convert tensors from multiplex space back to data space",
+    "add_multiplexstate_objects": "add objects to MultiplexState by filling empty slots or creating new buckets as needed",
+    "remove_multiplexstate_objects": "remove objects from MultiplexState by marking them as removed and cleaning up empty buckets",
+    "get_multiplexstate_valid_mask": "get the valid object mask tensor from MultiplexState indicating which bucket slots are occupied"
+  },
+  "facebookresearch_sam3/sam3/model/necks.py": {
+    "create_Sam3DualViTDetNeck": "create a Sam3DualViTDetNeck with a trunk, position encoding, d_model, and optional SAM2 neck clone",
+    "build_Sam3TriViTDetNeck": "build a Sam3TriViTDetNeck with three output heads for SAM3, interactive, and propagation modes",
+    "run_Sam3DualViTDetNeck_forward": "run the Sam3DualViTDetNeck forward pass on a tensor list and return SAM3 and SAM2 feature outputs",
+    "run_Sam3TriViTDetNeck_forward": "run the Sam3TriViTDetNeck forward pass with selective SAM3, interactive, and propagation output flags",
+    "review_Sam3DualViTDetNeck_init": "review the Sam3DualViTDetNeck __init__ that builds SimpleFPN conv layers from scale factors 4.0, 2.0, 1.0, 0.5"
+  },
+  "facebookresearch_sam3/sam3/model/position_encoding.py": {
+    "create_position_embedding_sine": "create a PositionEmbeddingSine module with configurable num_pos_feats and temperature for image position encoding",
+    "build_position_encoding_grid": "build sine-based position encodings for a 2D tensor input using the forward method",
+    "encode_boxes_positions": "encode bounding box positions (x, y, w, h) into position embeddings using encode_boxes",
+    "encode_points_positions": "encode point positions (x, y) with labels into position embeddings using encode_points",
+    "test_cache_behavior": "test the PositionEmbeddingSine cache behavior for repeated forward calls with matching spatial dimensions"
+  },
+  "facebookresearch_sam3/sam3/model/sam1_task_predictor.py": {
+    "create_sam3_interactive_image_predictor": "create a SAM3InteractiveImagePredictor instance with a Sam3TrackerBase model and mask processing parameters",
+    "set_image_predictor": "set an image on the SAM3InteractiveImagePredictor to compute embeddings for mask prediction",
+    "predict_sam3_masks": "predict segmentation masks from point, box, or mask prompts using the SAM3InteractiveImagePredictor",
+    "predict_batch_sam3_masks": "predict segmentation masks for a batch of images using batched point, box, and mask prompts",
+    "get_image_embedding": "retrieve the computed image embedding tensor from the SAM3InteractiveImagePredictor"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_base_predictor.py": {
+    "build_start_session": "start a new inference session on a video directory or path with optional session ID",
+    "add_prompt_video_frame": "add text, point, or bounding box prompts to a specific frame in a video session",
+    "propagate_in_video": "propagate added prompts forward and backward across all video frames to get segmentation outputs",
+    "remove_object_tracking": "remove an object from tracking in an active video inference session",
+    "close_session_cleanup": "close a video inference session and optionally run garbage collection"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_image.py": {
+    "run_Sam3Image_forward": "run the Sam3Image forward method to perform image segmentation with box prompts",
+    "build_Sam3Image_forward_grounding": "build the forward_grounding pipeline that encodes prompts, runs encoder and decoder, and produces segmentation outputs",
+    "test_Sam3ImageOnVideoMultiGPU_forward_video_grounding_multigpu": "test the forward_video_grounding_multigpu method for distributed multi-GPU video frame detection",
+    "refactor_Sam3Image_predict_inst": "refactor the predict_inst method to generate instance segmentation masks from interactive inference state",
+    "summarize_Sam3Image__update_scores_and_boxes": "summarize the _update_scores_and_boxes method that computes prediction logits, boxes, and masks from transformer decoder outputs"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_image_processor.py": {
+    "create_Sam3Processor": "create a Sam3Processor instance with a model, resolution, device, and confidence threshold for SAM3 image grounding",
+    "run_set_image": "run set_image on a PIL image or tensor to extract backbone features and prepare inference state",
+    "run_set_text_prompt": "run set_text_prompt with a text string to perform zero-shot object detection on a previously set image",
+    "run_add_geometric_prompt": "run add_geometric_prompt with a [center_x, center_y, width, height] box and positive label to detect objects at a location",
+    "run_set_image_batch": "run set_image_batch on a list of PIL images to process multiple images and extract backbone features",
+    "run_reset_all_prompts": "run reset_all_prompts to clear all prompts, masks, boxes, and scores from the inference state",
+    "run_set_confidence_threshold": "run set_confidence_threshold to filter detection results by a new probability threshold"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_multiplex_base.py": {
+    "build_Sam3MultiplexTrackerPredictor": "build a SAM3 multiplex tracker predictor from config file and checkpoint with Hydra overrides",
+    "create_Sam3MultiplexBase": "create a SAM3 multiplex base tracker with detector and tracker for multi-GPU video object tracking",
+    "run_det_track_one_frame": "run detection and tracking for one video frame with distributed backbone and mask propagation",
+    "associate_det_trk": "associate detections with existing tracklets using IoU-based matching across video frames",
+    "process_hotstart_gpu": "process hotstart heuristics on GPU to remove or suppress unmatched or duplicated objects"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_multiplex_detector.py": {
+    "run_Sam3MultiplexImageBase_forward": "run Sam3MultiplexImageBase forward on a BatchedDatapoint for per-frame video detection",
+    "build_Sam3MultiplexDetector_multigpu": "build a multi-GPU distributed video grounding pipeline with Sam3MultiplexDetector and async all-gather",
+    "run_Sam3MultiplexDetector_forward_video_grounding_batched_multigpu": "run batched multi-GPU video grounding with configurable batch size and NMS thresholds",
+    "batch_Sam3MultiplexImageBase_find_inputs": "batch multiple FindStage objects into a single batched FindStage for chunked video processing",
+    "batch_Sam3MultiplexImageBase_geometric_prompts": "batch multiple Prompt objects into a single batched Prompt with seq-first batch-second tensor convention"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_multiplex_detector_utils.py": {
+    "run_nms_masks": "run non-maximum suppression on predicted segmentation masks with configurable IoU or IoM threshold",
+    "build_batched_mask_iou": "build batched pairwise intersection-over-union matrix for binary segmentation masks",
+    "build_batched_mask_iom": "build batched pairwise intersection-over-minimum matrix for binary segmentation masks",
+    "test_generic_nms_cpu": "test CPU-based generic non-maximum suppression on pairwise IoU matrix",
+    "summarize_perf_mask_iou": "summarize the performance-optimized pairwise IoU computation between predicted and ground truth masks",
+    "review_perf_mask_iom": "review the performance-optimized pairwise IoM computation between predicted and ground truth masks",
+    "refactor_nms_masks_core": "refactor the core NMS implementation to support both single-frame and batched inputs",
+    "create_batched_generic_nms_mask": "create batched NMS using vectorized operations with score sorting and upper-triangular suppression"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_multiplex_tracking.py": {
+    "create_Sam3MultiplexTracking": "create a Sam3MultiplexTracking model instance with video tracking and text/box prompt support for object segmentation",
+    "run_Sam3MultiplexTracking_propagate_in_video": "run propagate_in_video on a Sam3MultiplexTracking model to segment and track objects across all frames of a video",
+    "run_Sam3MultiplexTracking_add_prompt": "add a text or box prompt to a Sam3MultiplexTracking model on a specific frame for object grounding",
+    "create_Sam3MultiplexTrackingProd": "create a Sam3MultiplexTrackingProd model instance that processes videos in batches with generator state persistence",
+    "create_Sam3MultiplexTrackingWithInteractivity": "create a Sam3MultiplexTrackingWithInteractivity model instance supporting add remove and refine object actions with partial propagation"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_tracker_base.py": {
+    "build_Sam3TrackerBase": "build a Sam3TrackerBase video object tracking model with backbone, transformer, and memory encoder components",
+    "create_forward_tracking": "create forward video tracking on each frame processing conditioning frames and tracking remaining frames",
+    "run_track_step": "run a single tracking step fusing visual features with memory and running SAM segmentation heads",
+    "forward_SAM_heads": "forward SAM prompt encoders and mask heads for segmentation given point or mask prompts",
+    "concat_points": "concatenate new click points and labels to existing point inputs for interactive segmentation"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_tracker_utils.py": {
+    "sample_box_points": "sample noised top-left and bottom-right box corner coordinates from binary masks with configurable noise",
+    "mask_to_box": "compute bounding box coordinates from a binary mask tensor as [x_min, y_min, x_max, y_max]",
+    "sample_random_points_from_errors": "sample random points with labels from false positive and false negative error regions between ground-truth and predicted masks",
+    "get_best_gt_match_from_multimasks": "select the best mask from multimask predictions by matching against ground-truth masks using IoU scoring",
+    "fill_holes_in_mask_scores": "fill small holes and remove sprinkles in mask score tensors using connected component analysis"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_tracking_predictor.py": {
+    "create_Sam3TrackerPredictor": "create a Sam3TrackerPredictor instance for multi-object video tracking with configurable memory and point prompt settings",
+    "init_tracking_state": "init an inference state for video tracking with optional video path loading and CPU offloading options",
+    "add_new_points_or_box": "add click points or bounding box prompts to a frame for object segmentation and tracking",
+    "add_new_mask": "add a mask prompt to a frame for object segmentation without point inputs",
+    "propagate_in_video": "propagate tracking across all video frames from a starting frame with optional reverse direction and progress bar"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_video_base.py": {
+    "run_Sam3VideoBase": "run video object tracking inference using Sam3VideoBase with detector, tracker, and distributed GPU support",
+    "build_Sam3VideoBase_outputs": "build output masks and scores for each tracked object from SAM3 video tracking propagation results",
+    "associate_Sam3VideoBase_det_trk": "associate detector masks with existing track masks using IoU-based matching and threshold heuristics",
+    "update_Sam3VideoBase_masklet_confirmation": "update masklet confirmation status tracking which objects are confirmed or unconfirmed across frames",
+    "process_Sam3VideoBase_hotstart": "process hotstart heuristics to remove unmatched or overlapping objects during the initial tracking period"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_video_inference.py": {
+    "create_Sam3VideoInference": "create a Sam3VideoInference model instance for video object segmentation and tracking",
+    "run_Sam3VideoInference_propagate_in_video": "run video propagation on a Sam3VideoInference model to segment and track objects across all frames",
+    "add_Sam3VideoInference_prompt": "add a text or box prompt to a Sam3VideoInference model on a specific frame for object grounding",
+    "init_Sam3VideoInference_state": "initialize inference state from a video or image resource path for Sam3VideoInference",
+    "create_Sam3VideoInferenceWithInstanceInteractivity": "create a Sam3VideoInferenceWithInstanceInteractivity model for interactive object tracking with point refinement",
+    "run_Sam3VideoInference_warm_up_compilation": "run warm-up compilation on a Sam3VideoInference model to cache torch.compile traces before inference",
+    "run_Sam3VideoInference_reset_state": "reset a Sam3VideoInference inference state to its initial empty configuration",
+    "run_Sam3VideoInference_remove_object": "remove an object from a Sam3VideoInferenceWithInstanceInteractivity tracker state by object id"
+  },
+  "facebookresearch_sam3/sam3/model/sam3_video_predictor.py": {
+    "create_Sam3VideoPredictor": "create a Sam3VideoPredictor instance with a checkpoint path for video object segmentation",
+    "create_Sam3VideoPredictorMultiGPU": "create a Sam3VideoPredictorMultiGPU instance distributing inference across multiple GPUs",
+    "remove_object_Sam3VideoPredictor": "remove an object from tracking in a Sam3VideoPredictor session by session and object ID",
+    "handle_request_Sam3VideoPredictorMultiGPU": "handle an inference request on a Sam3VideoPredictorMultiGPU instance synchronously",
+    "shutdown_Sam3VideoPredictorMultiGPU": "shutdown all worker processes and destroy the NCCL process group on a Sam3VideoPredictorMultiGPU"
+  },
+  "facebookresearch_sam3/sam3/model/text_encoder_ve.py": {
+    "create_class_TextTransformer": "create a text transformer that encodes tokenized text into pooled embeddings with causal masking",
+    "create_class_VETextEncoder": "create a vision-language text encoder that resizes transformer hidden states to a target model dimension",
+    "create_class_Transformer": "create a transformer with residual attention blocks and optional gradient checkpointing",
+    "create_class_ResidualAttentionBlock": "create a residual attention block with multihead attention, layer scale, and MLP feedforward",
+    "build_function_text_global_pool": "build a text global pooling function supporting first, last, argmax, and no-pool strategies"
+  },
+  "facebookresearch_sam3/sam3/model/tokenizer_ve.py": {
+    "create_tokenizer_ve": "create a SimpleTokenizer instance with a BPE path and custom context length for CLIP-style text tokenization",
+    "call_tokenizer_encode": "call the SimpleTokenizer to encode a text string into a list of BPE token IDs",
+    "call_tokenizer_decode": "call the SimpleTokenizer to decode a list of BPE token IDs back into a text string",
+    "call_tokenizer_call": "call the SimpleTokenizer with a string or list of strings to get a padded torch.LongTensor of tokens",
+    "build_text_clean_fn": "build a text cleaning function from get_clean_fn using type canonicalize, lower, or whitespace"
+  },
+  "facebookresearch_sam3/sam3/model/video_tracking_multiplex.py": {
+    "build_video_tracking_multiplex_model": "build a VideoTrackingMultiplex model with backbone, transformer, and multiplex controller for multi-object video tracking",
+    "create_dynamic_video_tracking_model": "create a VideoTrackingDynamicMultiplex model that supports adding new objects during video tracking",
+    "run_video_tracking_forward": "run the forward method on a BatchedDatapoint to compute video tracking outputs across frames",
+    "track_single_frame_step": "track a single frame using track_step with point inputs, mask inputs, and previous memory state",
+    "add_new_objects_to_tracking": "add new object masks to an existing tracking state with add_new_masks_to_existing_state during dynamic tracking"
+  },
+  "facebookresearch_sam3/sam3/model/video_tracking_multiplex_demo.py": {
+    "create_video_tracking_multiplex_demo": "create a VideoTrackingMultiplexDemo instance for multi-object video tracking with point and mask interaction support",
+    "run_video_tracking_propagation": "run propagate_in_video to track objects across all frames starting from annotated keyframes",
+    "add_new_points_tracking": "add_new_points to annotate objects with click coordinates and labels on a specific video frame",
+    "add_new_masks_tracking": "add_new_masks to annotate objects with segmentation masks on a specific video frame",
+    "remove_tracking_object": "remove a tracked object from the multiplex tracking state and update remaining object indices"
+  },
+  "facebookresearch_sam3/sam3/model/vitdet.py": {
+    "create_vit_backbone": "create a ViT backbone model for object detection with configurable depth, embed dim, and window attention",
+    "build_attention_block": "build a multi-head attention block with relative positional embeddings and 2D rotary position embeddings",
+    "build_transformer_block": "build a transformer block with window attention, layer normalization, and stochastic depth",
+    "create_mlp_layer": "create an MLP layer for Vision Transformer with configurable hidden features and dropout",
+    "compute_rotary_embeddings": "compute 2D rotary position embedding frequencies for query and key tensors in attention"
+  },
+  "facebookresearch_sam3/sam3/model/vl_combiner.py": {
+    "build_sam3vl_backbone": "build a SAM3VLBackbone combining a vision backbone and a text encoder with activation checkpointing",
+    "run_sam3vl_forward": "run the SAM3VLBackbone forward pass with image samples and text captions to get vision and language features",
+    "build_sam3vl_backbone_tri": "build a SAM3VLBackboneTri with triple-head vision support for sam3, interactive, and propagation outputs",
+    "run_vision_only_forward": "run the VisionOnly forward pass with image samples to extract vision features and positional encodings",
+    "run_trihead_vision_only_forward": "run the TriHeadVisionOnly forward pass with conditional sam3, interactive, and propagation output flags"
+  },
+  "facebookresearch_sam3/sam3/model/utils/misc.py": {
+    "copy_data_to_device": "copy nested data structures including tensors, dicts, lists, dataclasses, and named tuples to a specified torch device",
+    "test_copy_data_to_device": "test copy_data_to_device handles named tuples, lists, tuples, default dicts, mappings, dataclasses, and _CopyableData protocols",
+    "test_is_named_tuple": "test _is_named_tuple correctly identifies named tuples by checking tuple type, _asdict, and _fields attributes",
+    "test_copyable_data_protocol": "test _CopyableData protocol detection for objects with a to method accepting torch.device arguments",
+    "summarize_copy_data_to_device": "summarize how copy_data_to_device recursively moves data to a torch device across nested containers and custom objects"
+  },
+  "facebookresearch_sam3/sam3/model/utils/sam1_utils.py": {
+    "create_sam2_transforms": "create a SAM2Transforms instance for image preprocessing with configurable resolution and mask threshold",
+    "transform_image_coords": "transform absolute image coordinates to normalized SAM2 model coordinates using SAM2Transforms",
+    "transform_image_boxes": "transform bounding box coordinates to normalized SAM2 model coordinates using SAM2Transforms",
+    "postprocess_segmentation_masks": "postprocess SAM2 output masks by filling holes and removing sprinkles then resize to original image dimensions",
+    "build_image_batch_transform": "build a batch of preprocessed images by converting PIL images to normalized tensors resized to model resolution"
+  },
+  "facebookresearch_sam3/sam3/model/utils/sam2_utils.py": {
+    "load_video_frames_from_jpg_images": "load video frames from a directory of JPEG files resized to a given image size with optional async loading",
+    "load_video_frames_from_video_file": "load video frames from an MP4 video file using decord resized to a target image size",
+    "load_video_frames": "load video frames from either an MP4 file or a JPEG image directory with normalization and device placement",
+    "create_async_video_frame_loader": "create an async video frame loader that loads frames lazily in a background thread without blocking",
+    "load_img_as_tensor": "load a single image as a normalized PyTorch tensor resized to a target image size"
+  },
+  "facebookresearch_sam3/sam3/perflib/associate_det_trk.py": {
+    "associate_det_trk": "associate detection masks with track masks using Hungarian matching and IoU thresholds",
+    "test_associate_det_trk_empty_inputs": "test associate_det_trk handles empty detection and track mask tensors correctly",
+    "review_associate_det_trk_resize": "review associate_det_trk bilinear resize logic for mismatched detection and track mask dimensions",
+    "summarize_associate_det_trk": "summarize associate_det_trk Hungarian matching and many-to-one detection association strategy",
+    "refactor_associate_det_trk": "refactor associate_det_trk to reduce GPU-to-CPU data transfers during IoU computation"
+  },
+  "facebookresearch_sam3/sam3/perflib/compile.py": {
+    "build_compile_wrapper": "build a compiled function wrapper with recursive_contiguous inputs and recursive_clone outputs for CUDA graph compatibility",
+    "create_recursive_contiguous": "create a recursive function that makes all nested torch.Tensor objects contiguous across dicts, lists, tuples, and NestedTensors",
+    "test_shape_logging_wrapper": "test a shape logging wrapper that prints new input tensor shapes for a wrapped function only once per unique shape combination",
+    "refactor_clone_output_wrapper": "refactor a decorator that clones CUDA output tensors to avoid in-place operations using tree_map_only traversal",
+    "summarize_recursive_fn_factory": "summarize a factory that builds recursive functions traversing dicts, lists, tuples, NestedTensors, tensors, and trivial types"
+  },
+  "facebookresearch_sam3/sam3/perflib/connected_components.py": {
+    "run_connected_components": "run connected components labeling on a batch of 2D boolean tensors and return dense labels with component sizes",
+    "run_connected_components_cpu": "run connected components labeling on CPU using scikit-image for batched 2D tensors",
+    "run_connected_components_cpu_single": "run connected components labeling on a single 2D tensor and return labels with pixel-wise component counts",
+    "build_connected_components_labels": "build dense connected component labels and per-pixel size counts from a binary mask tensor",
+    "test_connected_components_cuda": "test connected components on CUDA using cc_torch backend or triton fallback when cc_torch is unavailable"
+  },
+  "facebookresearch_sam3/sam3/perflib/fa3.py": {
+    "call_flash_attn_func": "call flash_attn_func with query, key, and value tensors to perform flash attention",
+    "call_flash_attn_func_op": "call flash_attn_func_op custom op with q, k, v tensors for flash attention computation",
+    "run_flash_attention_with_float8": "run flash attention using float8_e4m3fn quantization on input tensors",
+    "register_fake_impl_flash_attn": "register a fake tensor implementation for the flash attention custom op",
+    "build_flash_attention_module": "build a flash attention module wrapping flash_attn_interface with torch custom op dispatch"
+  },
+  "facebookresearch_sam3/sam3/perflib/fused.py": {
+    "run_function_addmm_act": "run the addmm_act function to perform fused addmm with relu or gelu activation on a linear layer",
+    "test_function_addmm_act": "test the addmm_act function with relu activation and a torch.nn.Linear layer",
+    "test_function_addmm_act_gelu": "test the addmm_act function with gelu activation and a torch.nn.Linear layer",
+    "review_function_addmm_act": "review the addmm_act function that fuses matrix multiplication and bias add with activation",
+    "summarize_function_addmm_act": "summarize the addmm_act function that combines linear layer matmul, bias add, and activation in one fused op"
+  },
+  "facebookresearch_sam3/sam3/perflib/iou.py": {
+    "test_pairwise_iou": "test the pairwise_iou function that computes IoU between predicted and ground truth binary masks",
+    "refactor_pairwise_iou": "refactor pairwise_iou to support custom epsilon and clamp-based division for zero-union cases",
+    "review_pairwise_iom": "review the pairwise_iom function that computes IoU using min area instead of union",
+    "summarize_pairwise_iou": "summarize the pairwise_iou function that computes intersection over union between N predicted and M ground truth masks",
+    "build_pairwise_iou_batch": "build a batched IoU computation using matrix multiplication over flattened binary masks"
+  },
+  "facebookresearch_sam3/sam3/perflib/masks_ops.py": {
+    "create_masks_to_boxes": "convert binary segmentation masks to bounding boxes using masks_to_boxes",
+    "create_mask_iou": "compute intersection-over-union between predicted and ground truth masks using mask_iou",
+    "test_masks_to_boxes": "test masks_to_boxes with empty masks and single object mask tensors",
+    "test_mask_iou": "test mask_iou with matching predicted and ground truth mask pairs",
+    "refactor_mask_iou": "refactor mask_iou to support non-square mask dimensions"
+  },
+  "facebookresearch_sam3/sam3/perflib/nms.py": {
+    "run_nms_masks": "run non-maximum suppression on segmentation masks given predicted probabilities and binary masks",
+    "run_generic_nms": "run generic non-maximum suppression using a pairwise IoU matrix and detection scores",
+    "run_generic_nms_cpu": "run generic non-maximum suppression on CPU using numpy-based pairwise IoU filtering",
+    "test_generic_nms_cuda": "test generic NMS with CUDA backend when torch_generic_nms is available",
+    "test_generic_nms_triton_fallback": "test generic NMS falling back to triton implementation when torch_generic_nms is unavailable"
+  },
+  "facebookresearch_sam3/sam3/perflib/tests/tests.py": {
+    "test_masks_to_boxes": "test the masks_to_boxes function that converts binary mask tensors to bounding box coordinates",
+    "test_masks_to_boxes_dtypes": "test masks_to_boxes with float16, float32, and float64 mask tensor dtypes",
+    "test_masks_to_boxes_multiframe": "test masks_to_boxes with a multi-frame TIFF mask image containing 7 segmentation masks",
+    "test_masks_to_boxes_output_dtype": "test masks_to_boxes returns a float tensor with shape (N, 4) bounding boxes",
+    "test_masks_to_boxes_expected_values": "test masks_to_boxes produces expected bounding box coordinates from mask image assets"
+  },
+  "facebookresearch_sam3/sam3/perflib/triton/connected_components.py": {
+    "run_connected_components_triton": "run connected components labeling on a batch of 2D integer tensors using Triton GPU kernels",
+    "test_find_disjoint_set": "test the find function that traverses parent pointers to locate the root of a disjoint-set element",
+    "test_union_disjoint_set": "test the union function that merges two disjoint sets using atomic min with retry logic",
+    "test_local_prop_kernel": "test the local propagation kernel that merges 8-connected neighbor pixels with the same value",
+    "test_pointer_jump_kernel": "test the pointer jumping kernel that converges all labels to their root using double buffering"
+  },
+  "facebookresearch_sam3/sam3/perflib/triton/nms.py": {
+    "run_nms_triton": "run non-maximum suppression on bounding boxes using a Triton GPU kernel with pairwise IoU matrix and scores",
+    "create_nms_suppression_kernel": "create a Triton JIT kernel that sequentially suppresses overlapping bounding boxes based on IoU threshold",
+    "build_nms_suppression": "build an NMS suppression pipeline that sorts boxes by score and blocks high-IoU overlapping detections",
+    "test_nms_triton": "test the nms_triton function with pairwise IoU tensor, scores tensor, and IoU threshold to verify kept box indices",
+    "review_nms_suppression_kernel": "review the _nms_suppression_kernel Triton kernel for sequential suppression and debug barrier usage"
+  },
+  "facebookresearch_sam3/sam3/sam/common.py": {
+    "create_MLPBlock": "create an MLPBlock neural network layer with specified embedding dimension, MLP dimension, and activation function",
+    "build_MLPBlock_forward": "build an MLPBlock forward pass that applies linear, activation, and linear transformations to an input tensor",
+    "create_LayerNorm2d": "create a LayerNorm2d layer that normalizes 2D image tensors per channel with learnable weight and bias",
+    "build_LayerNorm2d_forward": "build a LayerNorm2d forward pass that computes channel-wise mean and variance for normalization",
+    "review_MLPBlock_LayerNorm2d": "review the MLPBlock and LayerNorm2d PyTorch modules for correct dimension handling and numerical stability"
+  },
+  "facebookresearch_sam3/sam3/sam/mask_decoder.py": {
+    "create_mask_decoder": "create a MaskDecoder module that predicts segmentation masks from image and prompt embeddings using a transformer architecture",
+    "build_mlp_predictor": "build a multi-layer perceptron module with configurable layers, ReLU activations, and optional sigmoid output",
+    "run_mask_prediction": "run mask prediction from image embeddings and sparse prompt embeddings using the MaskDecoder forward method",
+    "test_dynamic_multimask": "test dynamic multimask selection via stability scores to fall back to best multimask output when single mask stability is low",
+    "review_mask_decoder_forward": "review the MaskDecoder forward method that selects output masks based on multimask output mode and stability thresholds"
+  },
+  "facebookresearch_sam3/sam3/sam/prompt_encoder.py": {
+    "create_prompt_encoder": "create a PromptEncoder to encode point, box, and mask prompts for SAM's mask decoder",
+    "embed_points_prompt_encoder": "embed point prompts with coordinates and labels into sparse embeddings using PromptEncoder._embed_points",
+    "embed_boxes_prompt_encoder": "embed box prompts into sparse embeddings using PromptEncoder._embed_boxes",
+    "embed_masks_prompt_encoder": "embed input masks into dense embeddings using PromptEncoder._embed_masks",
+    "generate_positional_encoding": "generate random spatial positional encodings for a grid using PositionEmbeddingRandom"
+  },
+  "facebookresearch_sam3/sam3/sam/rope.py": {
+    "build_compute_axial_cis": "build axial rotary position embeddings (cis frequencies) for a 2D grid of given dimensions",
+    "create_apply_rotary_enc": "create a function to apply rotary embeddings to query and key tensors for attention",
+    "create_apply_rotary_enc_real": "create a function to apply rotary embeddings using real/imaginary components without complex numbers",
+    "create_VisionRotaryEmbeddingVE": "create a vision rotary embedding module for 2D positional encoding in vision transformers",
+    "test_rotate_half": "test the rotate_half helper that rotates half the dimensions of an embedding tensor"
+  },
+  "facebookresearch_sam3/sam3/sam/transformer.py": {
+    "create_TwoWayTransformer": "create a TwoWayTransformer that attends to image embeddings using point queries with configurable depth and attention heads",
+    "build_TwoWayAttentionBlock": "build a TwoWayAttentionBlock with self-attention, cross-attention, and MLP layers for sparse token-image interaction",
+    "create_Attention": "create an Attention layer with downsampled internal dimensions and optional flash attention 3 support",
+    "create_RoPEAttention": "create a RoPEAttention layer with rotary position encoding applied to queries and keys before scaled dot-product attention",
+    "run_TwoWayTransformer_forward": "run the TwoWayTransformer forward pass to process point embeddings against image embeddings and return attended representations"
+  },
+  "facebookresearch_sam3/sam3/train/masks_ops.py": {
+    "build_instance_masks_to_semantic_masks": "build a function that converts instance masks to semantic masks by unioning per-image instance masks",
+    "test_mask_intersection_vectorized": "test the mask_intersection_vectorized function for computing mask intersections via matrix multiplication",
+    "refactor_mask_iom": "refactor the mask_iom function to compute intersection-over-minimum-area metric for mask pairs",
+    "run_rle_encode": "run the rle_encode function to encode binary masks into COCO-compatible RLE format on GPU",
+    "summarize_compute_boundary": "summarize the compute_boundary function that extracts 1-pixel-wide boundaries from segmentation masks"
+  },
+  "facebookresearch_sam3/sam3/train/matcher.py": {
+    "build_HungarianMatcher": "build a HungarianMatcher to compute 1-to-1 assignment between prediction boxes and ground truth boxes using classification, L1 bbox, and GIoU costs",
+    "create_BinaryHungarianMatcherV2": "create a BinaryHungarianMatcherV2 for efficient binary classification matching with optional focal loss and valid prediction filtering",
+    "test_BinaryOneToManyMatcher": "test the BinaryOneToManyMatcher to perform greedy many-to-one matching between predictions and targets using top-k and threshold selection",
+    "refactor_HungarianMatcher": "refactor the HungarianMatcher forward method to support multi-hot positive maps and focal loss cost computation",
+    "summarize__do_matching": "summarize the _do_matching helper function that solves the linear sum assignment problem with optional repetition and cost filtering"
+  },
+  "facebookresearch_sam3/sam3/train/nms_helper.py": {
+    "build_process_track_level_nms": "build a function to apply track-level NMS to video detection groups with a given IoU threshold",
+    "create_process_frame_level_nms": "create a function to apply frame-level NMS across all tracks in video detection groups",
+    "test_apply_track_nms": "test the track-level NMS function that keeps top-scoring tracks and suppresses overlapping ones",
+    "refactor_compute_track_iou_matrix": "refactor the track-level IoU matrix computation to support both Numba-optimized and pure Python fallback",
+    "summarize_compute_frame_ious": "summarize the frame-level IoU computation function with Numba acceleration and pure Python fallback"
+  },
+  "facebookresearch_sam3/sam3/train/train.py": {
+    "run_train_job": "run the SAM3 training job with a Hydra config file on local or SLURM cluster",
+    "launch_submitit_cluster": "launch distributed training jobs on a SLURM cluster via Submitit with configurable partitions",
+    "build_job_array": "build a SLURM job array of multiple training tasks with individual configs and ports",
+    "run_single_node": "run single-node multi-GPU training with spawn-based multiprocessing for CUDA compatibility",
+    "summarize_submitit_runner": "summarize the SubmititRunner class that wraps trainer instantiation and SLURM job execution"
+  },
+  "facebookresearch_sam3/sam3/train/trainer.py": {
+    "create_trainer_instance": "create a Trainer instance with data, model, logging, checkpoint configs and max epochs for DDP training",
+    "run_training_loop": "run the full training loop across epochs with optional validation at configured frequency",
+    "run_validation_epoch": "run a validation epoch over the val dataset and log losses, meters, and timing stats",
+    "save_checkpoint": "save a model checkpoint with optimizer state, epoch, loss, and best meter values to disk",
+    "load_checkpoint": "load a checkpoint to resume training from a saved epoch with optimizer and scaler state"
+  },
+  "facebookresearch_sam3/sam3/train/data/coco_json_loaders.py": {
+    "build_coco_from_json": "build a COCO training API instance from a JSON annotation file with configurable prompts and negative examples",
+    "create_load_coco_group_by_image": "create a function that loads a COCO JSON file and groups annotations by image ID",
+    "convert_boxlist_to_normalized_tensor": "convert a list of bounding boxes to a normalized PyTorch tensor with values in [0, 1]",
+    "build_sam3_eval_api": "build a SAM3 evaluation API instance for loading noun phrase queries from a JSON annotation file",
+    "build_sam3_veval_api": "build a SAM3 video evaluation API instance for loading noun phrase queries from a video JSON annotation file"
+  },
+  "facebookresearch_sam3/sam3/train/data/collator.py": {
+    "collate_fn_api": "collate a batch of Datapoint objects into a BatchedDatapoint with padded inputs and targets for SAM3 training",
+    "collate_fn_api_with_chunking": "collate a batch of Datapoint objects into chunked BatchedDatapoint batches for parallel processing",
+    "convert_my_tensors": "convert MyTensor fields in a dataclass object to torch.Tensor with proper dtype and stacking",
+    "packed_to_padded_naive": "convert a packed tensor of bounding boxes to a padded tensor given per-sample box counts",
+    "pad_tensor_list_to_longest": "pad a list of torch.Tensor objects in-place to equal length along a specified dimension"
+  },
+  "facebookresearch_sam3/sam3/train/data/sam3_image_dataset.py": {
+    "create_Sam3ImageDataset": "create a Sam3ImageDataset instance with image folder, annotation file, transforms, and training mode",
+    "build_CustomCocoDetectionAPI": "build a CustomCocoDetectionAPI dataset loader from COCO JSON annotations with optional segmentation loading",
+    "test_load_datapoint": "test loading a datapoint from the dataset by index with image loading and query parsing",
+    "refactor_load_queries": "refactor load_queries to transform raw PIL images and COCO annotations into a structured Datapoint with FindQueryLoaded objects",
+    "review_set_sharded_annotation_file": "review set_sharded_annotation_file to initialize the COCO annotation loader and filter dataset IDs"
+  },
+  "facebookresearch_sam3/sam3/train/data/sam3_video_dataset.py": {
+    "create_VideoGroundingDataset": "create a VideoGroundingDataset instance for video grounding with configurable frame sampling and query limits",
+    "sample_stage_ids_frames": "sample a subset of stage ids from video queries with configurable stride for training frame subsampling",
+    "filter_query_and_annotations": "filter video queries and annotations to keep only selected stages and optionally remap stage ids",
+    "tile_single_image_video": "tile a single image and its queries into multiple stages to simulate video frames for training",
+    "subsample_find_queries": "subsample find queries per frame to keep at most max_query_num queries and avoid OOM errors"
+  },
+  "facebookresearch_sam3/sam3/train/data/torch_dataset.py": {
+    "create_torch_dataset": "create a TorchDataset wrapping a PyTorch Dataset with batch_size, num_workers, and distributed sampler enabled",
+    "build_data_loader": "build a DataLoader from a TorchDataset instance for a given training epoch with shuffling and pin_memory",
+    "configure_distributed_sampler": "configure a TorchDataset with DistributedSampler for multi-GPU training with epoch-based shuffling",
+    "test_torch_dataset_get_loader": "test the TorchDataset.get_loader method returns a DataLoader with correct batch_size and num_workers",
+    "review_torch_dataset_init": "review the TorchDataset __init__ parameters and assert that dataset is not an IterableDataset"
+  },
+  "facebookresearch_sam3/sam3/train/loss/loss_fns.py": {
+    "build_dice_loss": "build a dice loss function for segmentation masks with GPU OOM fallback to CPU",
+    "create_sigmoid_focal_loss": "create a sigmoid focal loss with triton acceleration and alpha/gamma weighting for class imbalance",
+    "test_IABCEMdetr": "test the IABCEMdetr class for classification loss with presence scores, padded queries, and weak loss modes",
+    "review_Masks_criterion": "review the Masks class that computes sampled focal loss and dice loss for instance segmentation masks",
+    "summarize_SemanticSegCriterion": "summarize the SemanticSegCriterion class for semantic segmentation with focal loss and presence head support"
+  },
+  "facebookresearch_sam3/sam3/train/loss/mask_sampling.py": {
+    "build_point_sample": "sample feature map values at normalized point coordinates using bilinear interpolation",
+    "create_uncertain_point_coords": "sample uncertain points from logits using an uncertainty function with oversampling and importance sampling",
+    "calculate_mask_uncertainty": "calculate uncertainty scores as L1 distance from zero for class-agnostic predicted mask logits",
+    "test_point_sample": "test the point_sample function with feature tensors and normalized 2D point coordinates",
+    "review_uncertain_point_coords": "review get_uncertain_point_coords_with_randomness for sampling mask prediction points by uncertainty"
+  },
+  "facebookresearch_sam3/sam3/train/loss/sam3_loss.py": {
+    "create_Sam3LossWrapper": "create a Sam3LossWrapper instance with loss functions, matchers, and normalization settings for SAM3 training",
+    "compute_Sam3LossWrapper_loss": "compute the total loss for SAM3 find stages by iterating over outputs and targets with auxiliary and first-stage losses",
+    "create_DummyLoss": "create a DummyLoss module that returns zero as a placeholder for evaluation",
+    "run_Sam3LossWrapper_forward": "run the Sam3LossWrapper forward pass to aggregate losses across all find stages with optional semantic segmentation loss",
+    "normalize_Sam3LossWrapper_boxes": "normalize the number of valid target boxes for loss scaling using global, local, or none normalization modes"
+  },
+  "facebookresearch_sam3/sam3/train/loss/sigmoid_focal_loss.py": {
+    "create_sigmoid_focal_loss": "create a Triton-accelerated sigmoid focal loss using SigmoidFocalLoss.autograd.Function for element-wise per-element loss output",
+    "run_sigmoid_focal_loss_reduce": "run a memory-efficient sigmoid focal loss with sum reduction using SigmoidFocalLossReduced.autograd.Function for scalar loss output",
+    "compute_inner_focal_loss_fwd": "compute the numerically stable inner forward focal loss with alpha and gamma modulation via _inner_focal_loss_fwd",
+    "compute_inner_focal_loss_bwd": "compute the gradient of the focal loss with respect to inputs via _inner_focal_loss_bwd for backpropagation",
+    "launch_focal_loss_kernels": "launch Triton forward and backward kernels for sigmoid focal loss with configurable BLOCK_SIZE grid execution"
+  },
+  "facebookresearch_sam3/sam3/train/optim/optimizer.py": {
+    "create_optimizer": "create an optimizer with schedulers and parameter groups from a model and hydra config",
+    "build_gradient_clipper": "build a gradient clipper utility that clips gradient norms for DDP-compatible training",
+    "apply_layer_decay": "apply layer-wise learning rate decay to scheduler configs based on model layer IDs",
+    "validate_param_groups": "validate that optimizer parameter groups are non-overlapping and cover all model parameters",
+    "filter_parameter_names": "filter parameter names using unix-style patterns or module class name matching"
+  },
+  "facebookresearch_sam3/sam3/train/transforms/basic.py": {
+    "create_transform_random_crop": "create a RandomCrop transform that crops images to a specified size while adjusting bounding boxes and masks",
+    "build_transform_random_resize": "build a RandomResize transform that randomly rescales images from a set of sizes with optional max size constraint",
+    "test_transform_normalize": "test the Normalize transform that converts bounding boxes to center-x-y-wh format and normalizes image pixel values",
+    "refactor_transform_compose": "refactor the Compose class to chain multiple image and target transforms into a single pipeline",
+    "review_transform_random_horizontal_flip": "review the RandomHorizontalFlip transform that flips images and adjusts bounding boxes, masks, and text directions"
+  },
+  "facebookresearch_sam3/sam3/train/transforms/basic_for_api.py": {
+    "create_transforms_pipeline": "create a data augmentation pipeline using RandomResizeAPI, RandomSizeCropAPI, and NormalizeAPI for SAM3 training",
+    "build_random_size_crop": "build a RandomSizeCropAPI transform that crops images while respecting bounding boxes and input points",
+    "run_random_horizontal_flip": "run RandomHorizontalFlip with consistent_transform to apply the same flip across all frames in a video",
+    "test_large_scale_jitter": "test LargeScaleJitter transform with configurable scale range, aspect ratio, and crop size for data augmentation",
+    "summarize_normalize_api": "summarize NormalizeAPI which converts bounding boxes to center-x-y-wh format and normalizes coordinates"
+  },
+  "facebookresearch_sam3/sam3/train/transforms/filter_query_transforms.py": {
+    "filter_find_queries_by_text": "filter find queries in a datapoint by excluding specific query text keys",
+    "keep_max_num_find_queries": "keep at most N find queries per datapoint, optionally retaining positive queries",
+    "filter_datapoint_queries": "filter and remap find queries, objects, and images in a SAM3 datapoint",
+    "transform_text_query_to_visual": "transform text-based find queries into visual queries using bounding box prompts",
+    "add_prefix_suffix_to_find_text": "add prefix or suffix strings to find query text with optional conditional filtering"
+  },
+  "facebookresearch_sam3/sam3/train/transforms/point_sampling.py": {
+    "sample_points_from_rle": "sample points from a COCO RLE-encoded mask using centered, random_mask, or random_box mode",
+    "sample_points_from_mask": "sample points from a binary mask using centered, random_mask, or random_box sampling mode",
+    "center_positive_sample": "sample points farthest from mask edges and each other using distance transform",
+    "uniform_positive_sample": "sample positive points uniformly from a binary mask at integer pixel coordinates",
+    "noise_box": "add Gaussian noise to an annotation box while clamping to image bounds and minimum area"
+  },
+  "facebookresearch_sam3/sam3/train/utils/checkpoint_utils.py": {
+    "load_checkpoint": "load a PyTorch checkpoint from a list of paths with optional recursive key selection and CPU mapping",
+    "load_checkpoint_and_apply_kernels": "load a checkpoint and apply preprocessing kernels like include or exclude patterns to the state dict",
+    "load_state_dict_into_model": "load a state dict into a PyTorch model with optional kernel preprocessing and strict mismatch handling",
+    "exclude_params_matching_unix_pattern": "filter a model state dict to remove parameters matching given unix glob patterns",
+    "CkptExcludeKernel": "create a checkpoint kernel that removes state dict keys matching configurable unix glob patterns"
+  },
+  "facebookresearch_sam3/sam3/train/utils/distributed.py": {
+    "build_all_reduce_sum": "build a distributed all-reduce sum operation across all GPU ranks for aggregating tensor values",
+    "create_all_gather_picklable": "create an all-gather call to collect arbitrary picklable data from all distributed ranks into a single list",
+    "test_gather_layer_backward": "test the GatherLayer autograd function that gathers tensors from all workers with full backward propagation support",
+    "refactor_init_distributed_model": "refactor the init_distributed_data_parallel_model function to wrap a PyTorch model for DDP with configurable GPU or CPU device",
+    "review_broadcast_object": "review the broadcast_object function that serializes and broadcasts Python objects from a source rank to all workers via disk or memory"
+  },
+  "facebookresearch_sam3/sam3/train/utils/logger.py": {
+    "create_tensorboard_logger": "create a TensorBoard logger that writes scalar metrics to a specified log directory during training",
+    "log_scalar_metrics": "log scalar training metrics to TensorBoard with a tag name and global step value",
+    "log_multiple_metrics": "log multiple scalar metrics to TensorBoard in a single call using a dictionary payload and step",
+    "setup_logging": "setup distributed training logging with console and file handlers filtered by process rank",
+    "log_hyperparameters": "log hyperparameters and corresponding meter values to TensorBoard for experiment tracking"
+  },
+  "facebookresearch_sam3/sam3/train/utils/train_utils.py": {
+    "build_setup_distributed_backend": "build a distributed training setup by initializing torch.distributed with a configurable timeout and backend",
+    "create_register_omegaconf_resolvers": "create a module to register Hydra/OmegaConf resolvers for arithmetic, type conversion, and config merging operations",
+    "test_set_seeds": "test the deterministic seeding of Python random, NumPy, and PyTorch across distributed GPU ranks",
+    "refactor_average_meter": "refactor the AverageMeter class to compute and store running averages and current values for training metrics",
+    "review_progress_meter": "review the ProgressMeter class that displays training progress with multiple meters and batch formatting"
+  }
+}

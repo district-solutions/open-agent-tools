@@ -1,0 +1,7 @@
+{
+    "create_GroqChatConfig": "create a GroqChatConfig instance with parameters like frequency_penalty, max_tokens, tools, and response_format for Groq API calls",
+    "build_Groq_params": "build OpenAI-compatible params for Groq using GroqChatConfig.map_openai_params with JSON schema workaround for models without native structured outputs",
+    "transform_Groq_messages": "transform chat messages with GroqChatConfig._transform_messages to strip null function_call from assistant messages before sending to Groq",
+    "test_Groq_fake_stream": "test whether to fake streaming via GroqChatConfig._should_fake_stream when response_format is set since Groq does not support it while streaming",
+    "review_GroqStreamingHandler": "review GroqChatCompletionStreamingHandler.chunk_parser that maps Groq's reasoning field to LiteLLM's reasoning_content in streaming chunks"
+}

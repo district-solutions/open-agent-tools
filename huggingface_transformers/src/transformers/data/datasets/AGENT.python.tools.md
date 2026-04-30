@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/src/transformers/data/datasets/glue.py
+
+Prompts
+
+```
+['create GlueDataTrainingArguments with task name, data directory, max sequence length, and cache overwrite flag', 'build a GlueDataset from training arguments and tokenizer to load GLUE benchmark features with caching', 'test GlueDataset with train, dev, and test split modes to load corresponding examples', 'refactor GlueDataset to use cached features file with file lock for distributed training safety', 'review GlueDataTrainingArguments __post_init__ to normalize task name to lowercase']
+```
+
+Usage
+
+```
+{'create_GlueDataTrainingArguments': 'create GlueDataTrainingArguments with task name, data directory, max sequence length, and cache overwrite flag', 'build_GlueDataset': 'build a GlueDataset from training arguments and tokenizer to load GLUE benchmark features with caching', 'test_GlueDataset_split': 'test GlueDataset with train, dev, and test split modes to load corresponding examples', 'refactor_GlueDataset_cache': 'refactor GlueDataset to use cached features file with file lock for distributed training safety', 'review_GlueDataTrainingArguments_post_init': 'review GlueDataTrainingArguments __post_init__ to normalize task name to lowercase'}
+```
+

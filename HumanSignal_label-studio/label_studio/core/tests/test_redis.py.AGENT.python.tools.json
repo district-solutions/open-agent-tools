@@ -1,0 +1,7 @@
+{
+    "test_is_job_on_worker_does_not_call_get_job_ids": "test is_job_on_worker avoids calling StartedJobRegistry.get_job_ids and uses Redis ZSCORE instead",
+    "test_is_job_on_worker_none_short_circuits": "test is_job_on_worker returns False without touching Redis when job_id is None",
+    "test_is_job_on_worker_thread_safe": "test is_job_on_worker is safe from non-main thread signal errors by using ZSCORE membership check",
+    "test_is_job_on_worker_uses_zscore": "test is_job_on_worker calls Redis connection.zscore with the correct registry key and encoded job id",
+    "test_is_job_on_worker_thread_execution": "test is_job_on_worker executed in a background thread without raising signal-related exceptions"
+}

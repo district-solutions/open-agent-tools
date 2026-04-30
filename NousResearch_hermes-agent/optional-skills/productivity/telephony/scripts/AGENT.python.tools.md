@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: NousResearch/hermes-agent
+- repo_uri: https://github.com/NousResearch/hermes-agent
+
+## File: NousResearch_hermes-agent/optional-skills/productivity/telephony/scripts/telephony.py
+
+Prompts
+
+```
+['save Twilio account credentials and optional phone number to ~/.hermes/.env', 'search for available Twilio phone numbers by country, area code, or pattern', 'buy a Twilio phone number and optionally save it as the default', 'send an SMS or MMS message via Twilio to a given phone number', 'place an outbound AI voice call via Bland.ai or Vapi with a task prompt']
+```
+
+Usage
+
+```
+{'save_twilio_credentials': 'save Twilio account credentials and optional phone number to ~/.hermes/.env', 'search_twilio_phone_numbers': 'search for available Twilio phone numbers by country, area code, or pattern', 'buy_twilio_phone_number': 'buy a Twilio phone number and optionally save it as the default', 'send_twilio_sms': 'send an SMS or MMS message via Twilio to a given phone number', 'make_ai_voice_call': 'place an outbound AI voice call via Bland.ai or Vapi with a task prompt'}
+```
+

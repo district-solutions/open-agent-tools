@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/detectron2
+- repo_uri: https://github.com/facebookresearch/detectron2.git
+
+## File: facebookresearch_detectron2/detectron2/model_zoo/model_zoo.py
+
+Prompts
+
+```
+['get the local path to a Detectron2 model zoo config file by its relative config path', 'get a Detectron2 config object for a model zoo model, optionally with trained weights set', 'get the S3 download URL for a pretrained Detectron2 model given its config path', 'get a fully built Detectron2 model from the model zoo with pretrained weights loaded', 'query the _ModelZooUrls class to look up pretrained model URLs by config path name']
+```
+
+Usage
+
+```
+{'get_config_file': 'get the local path to a Detectron2 model zoo config file by its relative config path', 'get_config': 'get a Detectron2 config object for a model zoo model, optionally with trained weights set', 'get_checkpoint_url': 'get the S3 download URL for a pretrained Detectron2 model given its config path', 'get': 'get a fully built Detectron2 model from the model zoo with pretrained weights loaded', 'query_model_urls': 'query the _ModelZooUrls class to look up pretrained model URLs by config path name'}
+```
+

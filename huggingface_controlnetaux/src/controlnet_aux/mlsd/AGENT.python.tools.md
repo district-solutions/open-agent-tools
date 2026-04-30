@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/controlnetaux
+- repo_uri: https://github.com/huggingface/controlnet_aux
+
+## File: huggingface_controlnetaux/src/controlnet_aux/mlsd/utils.py
+
+Prompts
+
+```
+['run pred_lines to detect straight line segments in an image using an M-LSD model', 'run pred_squares to detect square and rectangular shapes in an image using an M-LSD model', 'run deccode_output_score_and_ptss to decode a model output tensor into points, scores, and displacement vectors', 'run pred_lines with custom score and distance thresholds to filter detected line segments', 'run pred_squares with custom scoring parameters to tune square detection sensitivity and weighting']
+```
+
+Usage
+
+```
+{'pred_lines_detect_line_segments': 'run pred_lines to detect straight line segments in an image using an M-LSD model', 'pred_squares_detect_rectangles': 'run pred_squares to detect square and rectangular shapes in an image using an M-LSD model', 'deccode_output_score_and_ptss_decode_model_output': 'run deccode_output_score_and_ptss to decode a model output tensor into points, scores, and displacement vectors', 'pred_lines_with_custom_thresholds': 'run pred_lines with custom score and distance thresholds to filter detected line segments', 'pred_squares_with_custom_params': 'run pred_squares with custom scoring parameters to tune square detection sensitivity and weighting'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/proxy/guardrails/guardrail_hooks/crowdstrike_aidr/crowdstrike_aidr.py
+
+Prompts
+
+```
+['create a CrowdStrikeAIDRHandler instance with guardrail name, API key, and API base URL', 'apply the CrowdStrikeAIDR guardrail to an incoming request and return transformed inputs', 'apply the CrowdStrikeAIDR guardrail to an LLM response and return transformed output texts', 'build a guardrail input dict for a request from structured messages or texts', 'build a guardrail input dict for a response from choices and input messages']
+```
+
+Usage
+
+```
+{'create_CrowdStrikeAIDRHandler': 'create a CrowdStrikeAIDRHandler instance with guardrail name, API key, and API base URL', 'run_apply_guardrail_request': 'apply the CrowdStrikeAIDR guardrail to an incoming request and return transformed inputs', 'run_apply_guardrail_response': 'apply the CrowdStrikeAIDR guardrail to an LLM response and return transformed output texts', 'build_guard_input_request': 'build a guardrail input dict for a request from structured messages or texts', 'build_guard_input_response': 'build a guardrail input dict for a response from choices and input messages'}
+```
+

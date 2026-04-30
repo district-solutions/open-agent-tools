@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/olmo/test_modeling_olmo.py
+
+Prompts
+
+```
+['test the OlmoModel forward pass with input_ids and attention_mask and verify output shapes', 'test the OlmoForCausalLM model for text generation with greedy decoding and max_new_tokens', 'test the OlmoConfig class for valid configuration parameters and default values', 'test the GPTNeoXTokenizerFast encode and decode round-trip with special tokens and bytefallback', 'test exporting OlmoForCausalLM with TorchExportableModuleForDecoderOnlyLM and static cache generation']
+```
+
+Usage
+
+```
+{'test_OLMo_model_inference': 'test the OlmoModel forward pass with input_ids and attention_mask and verify output shapes', 'test_OLMo_causal_lm_generation': 'test the OlmoForCausalLM model for text generation with greedy decoding and max_new_tokens', 'test_OLMo_config_validation': 'test the OlmoConfig class for valid configuration parameters and default values', 'test_OLMo_tokenizer_encode_decode': 'test the GPTNeoXTokenizerFast encode and decode round-trip with special tokens and bytefallback', 'test_OLMo_torch_export_static_cache': 'test exporting OlmoForCausalLM with TorchExportableModuleForDecoderOnlyLM and static cache generation'}
+```
+

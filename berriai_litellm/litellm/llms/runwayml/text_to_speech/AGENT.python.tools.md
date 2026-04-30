@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/runwayml/text_to_speech/transformation.py
+
+Prompts
+
+```
+['create a RunwayML TTS request that dispatches text-to-speech with model, input text, and voice mapping', 'map OpenAI TTS parameters like voice to RunwayML format with preset ID voice objects', 'build a RunwayML TTS request body with model, promptText, and voice configuration from OpenAI params', 'run sync response transformation that polls RunwayML task until completion and downloads audio', 'test environment validation that sets Bearer auth and X-Runway-Version headers for RunwayML API']
+```
+
+Usage
+
+```
+{'create_dispatch_text_to_speech': 'create a RunwayML TTS request that dispatches text-to-speech with model, input text, and voice mapping', 'map_openai_params': 'map OpenAI TTS parameters like voice to RunwayML format with preset ID voice objects', 'build_transform_text_to_speech_request': 'build a RunwayML TTS request body with model, promptText, and voice configuration from OpenAI params', 'run_transform_text_to_speech_response': 'run sync response transformation that polls RunwayML task until completion and downloads audio', 'test_validate_environment': 'test environment validation that sets Bearer auth and X-Runway-Version headers for RunwayML API'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pytorch/pytorch
+- repo_uri: https://github.com/pytorch/pytorch.git
+
+## File: pytorch_pytorch/torch/onnx/_internal/fx/analysis/unsupported_nodes.py
+
+Prompts
+
+```
+['analyze the module for unsupported FX nodes and return a mapping of unsupported operations', 'lint the graph and emit diagnostics if unsupported FX nodes are found', 'create an UnsupportedFxNodesAnalysisResult with unsupported operation to target mapping', 'build an UnsupportedFxNodesAnalysis instance to detect unsupported FX nodes in an ONNX graph', 'test the unsupported node detection logic for call_function nodes in an FX graph']
+```
+
+Usage
+
+```
+{'analyze_unsupported_fx_nodes': 'analyze the module for unsupported FX nodes and return a mapping of unsupported operations', 'lint_unsupported_nodes': 'lint the graph and emit diagnostics if unsupported FX nodes are found', 'create_unsupported_nodes_result': 'create an UnsupportedFxNodesAnalysisResult with unsupported operation to target mapping', 'build_unsupported_analysis': 'build an UnsupportedFxNodesAnalysis instance to detect unsupported FX nodes in an ONNX graph', 'test_unsupported_node_detection': 'test the unsupported node detection logic for call_function nodes in an FX graph'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/diffusers
+- repo_uri: https://github.com/huggingface/diffusers
+
+## File: huggingface_diffusers/tests/pipelines/pixart_alpha/test_pixart.py
+
+Prompts
+
+```
+['run the fast unit tests for PixArtAlphaPipeline with dummy components and small model sizes', 'run the slow integration tests for PixArtAlphaPipeline using pretrained checkpoints from HuggingFace Hub', 'test the PixArtTransformer2DModel with tiny random T5 text encoder and DDIM scheduler for text to image generation', 'test PixArtAlphaPipeline inference on CPU with dummy inputs and verify output image shape and pixel values', 'test PixArtAlphaPipeline with and without resolution binning to verify different output results for non-square images']
+```
+
+Usage
+
+```
+{'run_PixArtAlphaPipelineFastTests': 'run the fast unit tests for PixArtAlphaPipeline with dummy components and small model sizes', 'run_PixArtAlphaPipelineIntegrationTests': 'run the slow integration tests for PixArtAlphaPipeline using pretrained checkpoints from HuggingFace Hub', 'test_PixArtTransformer2DModel': 'test the PixArtTransformer2DModel with tiny random T5 text encoder and DDIM scheduler for text to image generation', 'test_PixArtAlphaPipeline_inference': 'test PixArtAlphaPipeline inference on CPU with dummy inputs and verify output image shape and pixel values', 'test_PixArtAlphaPipeline_resolution_binning': 'test PixArtAlphaPipeline with and without resolution binning to verify different output results for non-square images'}
+```
+

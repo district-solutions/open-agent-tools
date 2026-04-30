@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/vertex_ai/vector_stores/rag_api/transformation.py
+
+Prompts
+
+```
+['build a Vertex AI RAG search request by transforming query and corpus ID into the API request body', 'create a Vertex AI RAG corpus with a display name and optional metadata labels', 'get Vertex AI authentication credentials with Bearer token headers for RAG API calls', 'transform a Vertex AI RAG API search response into standard LiteLLM vector store search results', 'transform a Vertex AI RAG corpus creation response into a standard LiteLLM vector store create response']
+```
+
+Usage
+
+```
+{'build_vertex_rag_search_request': 'build a Vertex AI RAG search request by transforming query and corpus ID into the API request body', 'create_vertex_rag_corpus': 'create a Vertex AI RAG corpus with a display name and optional metadata labels', 'get_vertex_rag_auth_credentials': 'get Vertex AI authentication credentials with Bearer token headers for RAG API calls', 'transform_vertex_rag_search_response': 'transform a Vertex AI RAG API search response into standard LiteLLM vector store search results', 'transform_vertex_rag_create_response': 'transform a Vertex AI RAG corpus creation response into a standard LiteLLM vector store create response'}
+```
+

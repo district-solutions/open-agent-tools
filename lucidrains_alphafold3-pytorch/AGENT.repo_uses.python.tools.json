@@ -1,0 +1,232 @@
+{
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/alphafold3.py": {
+    "build_alphafold3_model": "build an Alphafold3 model with specified atom input dimensions, MSA modules, and diffusion parameters",
+    "sample_atom_positions": "sample atom 3D coordinates from the ElucidatedAtomDiffusion model using a noise schedule and preconditioned network",
+    "compute_confidence_scores": "compute pLDDT, pTM, and iPTM confidence scores from the ConfidenceHead logits for predicted structures",
+    "predict_distogram_logits": "predict pairwise distance distribution logits from the DistogramHead using pairwise representations",
+    "select_best_model": "select the best model from a set of sampled structures using weighted lDDT and global PDE scoring"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/app.py": {
+    "run_alphafold3_cli": "run the alphafold3 CLI with a checkpoint file to launch the gradio web UI",
+    "run_fold_protein": "run protein structure prediction with alphafold3 given protein sequence entities",
+    "run_fold_complex": "run alphafold3 structure prediction for a complex of protein, DNA, RNA, ligands, and ions",
+    "build_gradio_app": "build a gradio web UI for interactive alphafold3 structure prediction with molecule type selection",
+    "delete_cache_files": "delete cached prediction output files for a given gradio session hash"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/attention.py": {
+    "build_attention_module": "build a multi-head attention module with configurable heads, dim_head, dropout, and gate output",
+    "create_local_windowed_attention": "create local windowed attention with radius-1 windowing and optional memory key-values",
+    "test_full_pairwise_repr_to_windowed": "test converting a full pairwise representation to a windowed representation for atom attention",
+    "refactor_attn_bias_to_windowed": "refactor a full attention bias matrix into a local windowed attention bias",
+    "summarize_attend_forward": "summarize the Attend module forward method that performs scaled dot-product attention with optional softclamp and masking"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/cli.py": {
+    "run_cli_predict_structure": "run the CLI to predict protein structure from a checkpoint and protein sequence",
+    "run_cli_predict_rna_structure": "run the CLI to predict single-stranded RNA structure from checkpoint and RNA sequence",
+    "run_cli_predict_dna_structure": "run the CLI to predict single-stranded DNA structure from checkpoint and DNA sequence",
+    "run_cli_predict_multimolecule": "run the CLI to predict structure from protein, RNA, and DNA sequences with custom sampling steps",
+    "run_cli_save_output": "run the CLI to predict structure and save the mmCIF output to a specified file path"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/configs.py": {
+    "create_alphafold3_from_yaml": "create an Alphafold3 model instance from a YAML config file path and optional dotpath",
+    "create_trainer_from_yaml": "create a Trainer instance from a YAML config file with model, dataset, and fabric arguments",
+    "create_trainer_from_conductor_yaml": "create a multi-stage Trainer from a conductor YAML config with training order and nested checkpoints",
+    "build_alphafold3_config": "build an Alphafold3Config Pydantic model with dimension, bin, and loss weight parameters",
+    "build_trainer_config": "build a TrainerConfig Pydantic model with training steps, batch size, checkpoint, and dataset settings",
+    "build_conductor_config": "build a ConductorConfig Pydantic model with multiple trainer configs and a validated training order",
+    "build_weighted_pdb_sampler_config": "build a WeightedPDBSamplerConfig with chain and interface mapping file paths",
+    "build_dataset_config": "build a DatasetConfig specifying pdb or atom dataset type with train and validation folders",
+    "run_yaml_config_to_dict": "run a YAML config file path and return its parsed dictionary contents",
+    "run_safe_deep_get": "run safe nested dictionary access via dotpath notation with a default fallback value"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/inputs.py": {
+    "convert_pdb_input_to_atom_input": "convert a PDBInput object with mmCIF filepath to a MoleculeInput then AtomInput",
+    "build_batched_atom_input_from_list": "build a BatchedAtomInput by collating a list of AtomInput objects with padding and windowing",
+    "create_alphafold3_input_from_sequences": "create an Alphafold3Input from protein, DNA, RNA sequences and ligand SMILES strings",
+    "load_msa_features_from_directory": "load multiple sequence alignment features from an MSA directory for each chain of a biomolecule",
+    "sample_pdb_structures_from_dataset": "sample PDB mmCIF structures from a PDBDataset with optional weighted sampling and cropping"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/life.py": {
+    "create_mol_from_smile": "create an RDKit molecule from a SMILES string with generated 3D conformation",
+    "build_mol_from_mmcif": "build an RDKit molecule from a template mmCIF file with atom positions and bond information",
+    "test_reverse_complement": "test the reverse complement of a DNA or RNA nucleic acid sequence",
+    "generate_conformation_mol": "generate a 3D conformation for an RDKit molecule by adding hydrogens, embedding, and removing hydrogens",
+    "run_is_unique_check": "run an uniqueness check on an array to verify all elements are distinct"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/nlm.py": {
+    "create_rinalmo_embeddings": "create a RiNALMoWrapper to generate nucleotide embeddings from residue index sequences",
+    "remove_nlms_decorator": "apply the remove_nlms decorator to temporarily detach NLM modules during model inference",
+    "lookup_nlm_registry": "look up an NLM embedding class from the NLMRegistry by variant name",
+    "get_rinalmo_constants": "get RNA and DNA residue constants and restype mappings for nucleotide processing",
+    "encode_nucleotide_sequences": "encode nucleotide residue indices into RiNALMo embeddings via the wrapper forward pass"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/plm.py": {
+    "create_esm_wrapper": "create an ESM wrapper to generate protein language model embeddings from amino acid residue indices",
+    "create_prostt5_wrapper": "create a ProstT5 wrapper to generate protein language model embeddings using T5 encoder",
+    "run_remove_plms_decorator": "run the remove_plms decorator to temporarily remove and restore PLMs during model inference",
+    "build_plm_registry": "build a PLM registry mapping embedding type names to their factory functions",
+    "test_plm_embeddings": "test PLM embedding generation for batches of protein sequences using ESM or ProstT5 wrappers"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/tensor_typing.py": {
+    "test_tensor_typing_package_available": "test the package_available function to check if a Python package is installed in the environment",
+    "create_typecheck_decorator": "create a typecheck decorator that conditionally applies beartype and jaxtyping based on the TYPECHECK environment variable",
+    "build_torch_typing_abstract_dtype": "build a TorchTyping abstract dtype wrapper that maps jaxtyping shape annotations to PyTorch Tensor types",
+    "run_checkpoint_function": "run the checkpoint function that wraps either DeepSpeed or PyTorch non-reentrant gradient checkpointing",
+    "test_beartype_isinstance": "test the beartype_isinstance function that conditionally uses beartype's is_bearable or always returns True"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/trainer.py": {
+    "build_trainer": "build an Alphafold3 trainer with EMA, gradient accumulation, and distributed training via Lightning Fabric",
+    "train_model": "train an Alphafold3 model with custom optimizer, learning rate scheduler, and gradient clipping",
+    "save_checkpoint": "save a training checkpoint with model, optimizer, scheduler states and step count to a folder",
+    "load_checkpoint": "load a training checkpoint from a file or directory, restoring model, optimizer, and scheduler state",
+    "validate_model": "validate an Alphafold3 model on a validation dataset using the EMA model with loss breakdown logging"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/common/biomolecule.py": {
+    "create_biomolecule_from_mmcif": "create a Biomolecule object from an mmCIF string given a file ID and optional chain filters",
+    "convert_biomolecule_to_mmcif": "convert a Biomolecule instance back to a valid mmCIF string with optional gapless polymer sequencing",
+    "crop_biomolecule_contiguously": "crop a Biomolecule to contiguous polymer residues using per-chain contiguous crop masks",
+    "crop_biomolecule_spatially": "crop a Biomolecule to residues near a reference atom within a specified distance threshold",
+    "merge_two_biomolecules": "merge two Biomolecule instances by concatenating their atom positions, masks, and metadata arrays"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/common/mmcif_metadata.py": {
+    "add_metadata_to_mmcif": "add AlphaFold metadata including license, citation, model info, and pLDDT metrics to an mmCIF dictionary",
+    "create_mmcif_metadata": "create mmCIF metadata dictionary with ModelCIF conformation, authors, and software version from an existing cif mapping",
+    "run_mmcif_metadata_pipeline": "run mmCIF metadata insertion with coevolution MSA, template search, and modeling protocol steps",
+    "summarize_mmcif_metadata": "summarize the mmCIF metadata module that adds AlphaFold3 model metadata to mmCIF files",
+    "review_mmcif_metadata": "review the add_metadata_to_mmcif function that enriches mmCIF data with ModelCIF-compliant metadata fields"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/data/data_pipeline.py": {
+    "build_make_sequence_features": "build a function that constructs a feature dictionary from a protein sequence string and description",
+    "build_make_mmcif_features": "build a function that extracts structural features from an mmCIF object and returns a biomolecule assembly",
+    "build_make_msa_features": "build a function that constructs MSA feature dictionaries from multiple sequence alignments per chain",
+    "build_make_template_features": "build a function that extracts template features by aligning PDB templates to query sequences with kalign",
+    "build_merge_chain_features": "build a function that merges MSA chain features from multiple chains with optional paired MSA concatenation"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/data/kalign.py": {
+    "build_kalign_aligner": "build a Kalign aligner instance to align biological sequences using the Kalign binary",
+    "create_a3m_output": "create an A3M-formatted string from a list of biological sequences",
+    "test_kalign_align": "test the Kalign align method to align multiple sequences and return A3M output",
+    "run_template_realignment": "run template-to-query realignment using Kalign with old mapping and minimum fraction matching",
+    "summarize_kalign_wrapper": "summarize the Kalign Python wrapper class and its sequence alignment capabilities"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/data/mmcif_parsing.py": {
+    "create_parse_mmcif": "parse an mmCIF file and return a MmcifObject with structure, sequences, and metadata",
+    "parse_mmcif_string": "parse an mmCIF string by file id and return a ParsingResult with MmcifObject and errors",
+    "filter_mmcif_object": "filter an MmcifObject by removing specified atoms, residues, and chains from the structure",
+    "extract_mmcif_loop": "extract mmCIF loop data by prefix from parsed info as a list of dictionaries",
+    "apply_assembly_transformations": "apply crystallographic assembly transformations to a Biomolecule using rotation and translation matrices"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/data/mmcif_writing.py": {
+    "write_mmcif_from_filepath_and_id": "write an input mmCIF file to an output mmCIF filepath using sampled coordinates",
+    "write_mmcif": "write a BioPython Structure object to an mmCIF file via an intermediate Biomolecule object",
+    "write_mmcif_sampled_coords": "write mmCIF output with sampled atom positions and B-factors replacing original coordinates",
+    "write_mmcif_gapless_seq": "write mmCIF with gapless poly-sequence and original atom names preserved",
+    "write_mmcif_no_metadata": "write mmCIF without alphafold metadata and without inserting original atom names"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/data/msa_pairing.py": {
+    "create_paired_features": "create paired MSA features across multiple protein chains by aligning sequences based on species and similarity",
+    "pair_sequences": "pair MSA sequence indices across chains by matching species and sorting by sequence similarity",
+    "merge_homomers_dense_msa": "merge identical protein chains into a single dense MSA by concatenating features along the residue dimension",
+    "merge_features_from_multiple_chains": "merge MSA features from multiple chains by concatenating or block-diagonalizing based on pairing flag",
+    "concatenate_paired_and_unpaired_features": "concatenate paired and unpaired MSA features into a single unified MSA per chain"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/data/msa_parsing.py": {
+    "parse_a3m": "parse an a3m alignment file string into an Msa object with sequences, deletion matrix, and descriptions",
+    "parse_fasta": "parse a FASTA string into a tuple of sequences and sequence descriptions",
+    "get_identifiers": "extract species identifiers from MSA sequence descriptions using UniProt or tab-separated formats",
+    "create Msa truncate": "create an Msa object and truncate it to a maximum number of sequences",
+    "is_gzip_file": "check whether a file is gzip compressed by reading its first two bytes"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/data/template_parsing.py": {
+    "build_parse_m8_templates": "parse an M8 BLAST output file and return a list of template Biomolecule objects filtered by identity and length",
+    "build_parse_hhr_templates": "parse an HHR HHsearch output file and return a list of template Biomolecule objects filtered by identity and alignment length",
+    "build_extract_template_features": "extract template features including distogram, backbone frames, unit vectors, and residue types from a template Biomolecule aligned to a query sequence",
+    "build_extract_template_hmm_range": "extract the start and end indices of a template HMM range string",
+    "review_query_to_template_align_error": "review the QueryToTemplateAlignError exception class for query-to-template alignment failures"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/data/weighted_pdb_sampler.py": {
+    "build_weighted_pdb_sampler": "build a WeightedPDBSampler that loads chain and interface mapping CSVs and samples PDB IDs with weighted batches",
+    "compute_chain_weights": "compute chain weights from a Polars DataFrame of chain mappings using molecule type, cluster sizes, and alpha/beta factors",
+    "compute_interface_weights": "compute interface weights from a Polars DataFrame of interface mappings using molecule type pairs and cluster sizes",
+    "sample_weighted_pdb_batches": "sample weighted PDB ID batches from a WeightedPDBSampler using per-item probability distribution",
+    "cluster_based_sample_weighted_pdb": "cluster-based sample PDB ID batches from a WeightedPDBSampler by selecting clusters then sampling within each cluster"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/utils/data_utils.py": {
+    "test_is_polymer": "test the is_polymer function to check if a residue chemical type is polymeric",
+    "test_get_residue_molecule_type": "test the get_residue_molecule_type function to determine residue molecule type from chemical type",
+    "build_one_hot_tensor": "build a one-hot encoded tensor from index values using make_one_hot",
+    "build_one_hot_numpy": "build a one-hot encoded numpy array from index values using make_one_hot_np",
+    "test_extract_mmcif_metadata": "test the extract_mmcif_metadata_field function to extract mmCIF metadata like resolution or release date"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/utils/model_utils.py": {
+    "create_function_distance_to_dgram": "convert distance tensor to discrete bins for distance labels and pae labels",
+    "create_function_lens_to_mask": "convert a tensor of lengths to a boolean mask tensor",
+    "create_function_batch_repeat_interleave": "batch repeat and interleave a sequence of features using length indices",
+    "create_class_rigid_from_3_points": "compute a rigid transformation (rotation and translation) from three reference points",
+    "create_class_express_coordinates_in_frame": "express coordinates in a given frame defined by three points"
+  },
+  "lucidrains_alphafold3-pytorch/alphafold3_pytorch/utils/utils.py": {
+    "test_exists": "test the exists function to check if a value is not None",
+    "test_default": "test the default function to return a default value when input is None",
+    "test_np_mode": "test the np_mode function to find the mode of a 1D NumPy array",
+    "test_get_gpu_type": "test the get_gpu_type function to detect the type of GPU available",
+    "create_function_first": "create a function that returns the first element of an iterable"
+  },
+  "lucidrains_alphafold3-pytorch/scripts/cluster_pdb_test_mmcifs.py": {
+    "run_cluster_pdb_test_mmcifs_cli": "run the AlphaFold 3 PDB test mmCIF clustering pipeline via CLI with mmcif_dir and output_dir arguments",
+    "filter_to_low_homology_sequences": "filter evaluation chains to low homology by comparing against train and val reference sets using MMseqs2",
+    "filter_chains_by_sequence_names": "filter chain sequences in parallel using sequence names and optional interface chain IDs with similarity thresholds",
+    "filter_structure_chain_sequences": "filter chain sequences within a single structure for novel polymers and ligands based on similarity thresholds",
+    "cluster_sequences_using_mmseqs2": "cluster protein, nucleic acid, or peptide chains using MMseqs2 at specified sequence identity thresholds"
+  },
+  "lucidrains_alphafold3-pytorch/scripts/cluster_pdb_train_mmcifs.py": {
+    "run_cluster_pdb_train_mmcifs_cli": "run the cluster_pdb_train_mmcifs script to cluster AlphaFold 3 PDB training dataset mmCIF files by chain and interface",
+    "parse_chain_sequences_from_mmcif": "parse chain sequences and structural interfaces from an mmCIF file using BioPython NeighborSearch",
+    "cluster_sequences_using_mmseqs2": "cluster protein, nucleic acid, or peptide sequences using MMseqs2 with configurable sequence identity and coverage thresholds",
+    "cluster_ligands_by_ccd_code": "cluster ligands by their CCD codes so that only identical small molecules share a cluster",
+    "cluster_interfaces": "cluster protein-nucleic acid-peptide-ligand interfaces by joining the cluster IDs of their constituent chains"
+  },
+  "lucidrains_alphafold3-pytorch/scripts/cluster_pdb_val_mmcifs.py": {
+    "run_cluster_pdb_val_mmcifs": "run the AlphaFold 3 PDB validation dataset clustering pipeline via argparse CLI with mmCIF input and output directories",
+    "filter_to_low_homology_sequences": "filter PDB chain sequences to retain only low homology polymers and novel ligands against a reference training set",
+    "cluster_sequences_using_mmseqs2": "cluster protein, nucleic acid, and peptide sequences by MMseqs2 at configurable sequence identity thresholds",
+    "cluster_interfaces": "cluster multimeric interfaces by combining the cluster IDs of the two interacting chains",
+    "subsample_interface_clusters": "subsample interface clusters by type with configurable per-type limits for protein-protein, protein-ligand, and other interface categories"
+  },
+  "lucidrains_alphafold3-pytorch/scripts/filter_pdb_test_mmcifs.py": {
+    "run_filter_pdb_test_mmcifs_cli": "run the CLI script to filter mmCIF files for the AlphaFold 3 PDB evaluation dataset",
+    "filter_experiment_type": "filter an mmCIF object based on experiment type, returning true if it passes the criteria",
+    "prefilter_target": "pre-filter an mmCIF target by release date, experiment type, resolution, and token count",
+    "filter_structure_with_timeout": "filter a single mmCIF structure file with a timeout and write the filtered output",
+    "filter_structure": "filter a single mmCIF structure file with error handling and cleanup on failure"
+  },
+  "lucidrains_alphafold3-pytorch/scripts/filter_pdb_train_mmcifs.py": {
+    "filter_pdb_train_mmcifs": "run the script to filter mmCIF files and curate the AlphaFold 3 PDB training dataset",
+    "filter_structure_with_timeout": "filter a single mmCIF structure file with a timeout constraint and write the filtered output",
+    "remove_clashing_chains": "remove clashing protein chains from a bioassembly where >30% of atoms are within 1.7 A of another chain",
+    "remove_hydrogens": "remove hydrogen atoms and optionally water residues from a protein structure mmCIF object",
+    "filter_large_ca_distances": "filter out protein chains with consecutive C-alpha atoms more than 10 A apart"
+  },
+  "lucidrains_alphafold3-pytorch/scripts/filter_pdb_val_mmcifs.py": {
+    "run_filter_pdb_val_mmcifs": "run the CLI script to filter mmCIF assembly files into a curated PDB validation dataset",
+    "filter_num_tokens": "filter an mmCIF object based on a maximum token count threshold",
+    "filter_num_chains": "filter an mmCIF object based on a maximum number of chains threshold",
+    "prefilter_target": "pre-filter an mmCIF target by release date, token count, chain count, and resolution",
+    "filter_structure_with_timeout": "filter a single mmCIF structure file with timeout and save the filtered output",
+    "filter_structure": "filter a single mmCIF structure file with error handling and cleanup on failure"
+  },
+  "lucidrains_alphafold3-pytorch/scripts/reduce_uniprot_ids_to_pdb.py": {
+    "filter_pdb_lines": "filter PDB entries from a compressed .dat.gz file and write them to an output file",
+    "run_reduce_uniprot_script": "run the script to extract uniprot-to-pdb id mappings from idmapping.dat.gz",
+    "test_filter_pdb_lines": "test the filter_pdb_lines function with a sample .dat.gz input file",
+    "refactor_filter_pdb_lines": "refactor filter_pdb_lines to support custom tab-delimited field filtering",
+    "summarize_filter_pdb_lines": "summarize the filter_pdb_lines function that extracts PDB lines from gzipped dat files"
+  },
+  "lucidrains_alphafold3-pytorch/scripts/reduce_uniprot_predictions_to_pdb.py": {
+    "build_filter_pdb_files": "build a pipeline that filters UniProt prediction archives by PDB association and extracts them with updated release dates",
+    "create_process_archive": "create a function that extracts a gzip archive and updates its PDB revision date from associated mmCIF metadata",
+    "test_filter_pdb_files": "test the filter_pdb_files function with sample archive and PDB directories and a UniProt-to-PDB mapping file",
+    "run_process_archive_with_timeout": "run process_archive_with_timeout to extract and annotate a single UniProt prediction archive with a timeout",
+    "summarize_filter_pdb_files": "summarize how filter_pdb_files reads a TSV mapping, filters archives by PDB association, and extracts them in parallel"
+  }
+}

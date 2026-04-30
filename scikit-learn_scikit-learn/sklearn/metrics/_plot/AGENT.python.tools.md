@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: scikit-learn/scikit-learn
+- repo_uri: https://github.com/scikit-learn/scikit-learn
+
+## File: scikit-learn_scikit-learn/sklearn/metrics/_plot/confusion_matrix.py
+
+Prompts
+
+```
+['create a ConfusionMatrixDisplay visualization from a confusion matrix array and display labels', 'plot a confusion matrix visualization with configurable colormap, values, and axis labels', 'build a confusion matrix plot from a fitted estimator, input data, and true labels', 'create a confusion matrix plot from true labels and predicted labels with optional normalization', 'review the ConfusionMatrixDisplay class and its methods for visualizing classification model performance', 'create a DetCurveDisplay object to visualize detection error tradeoff curves from false positive and false negative rates', 'plot a DET curve from a fitted classifier estimator and test data using from_estimator', 'plot a DET curve from true labels and predicted scores using from_predictions', 'visualize a DET curve with custom axes, labels, and matplotlib styling options', 'compute false positive rates and false negative rates at different thresholds using det_curve', 'create a PrecisionRecallDisplay visualization from precision and recall arrays with average precision', 'plot a precision-recall curve with step-wise style, chance level line, and despine option', 'review the PrecisionRecallDisplay class and its methods for evaluating binary classifier performance', 'create a PredictionErrorDisplay to visualize regression model prediction errors with true and predicted values', 'build a PredictionErrorDisplay from a fitted regressor and data to plot residuals vs predicted values', 'build a PredictionErrorDisplay from true and predicted targets with optional subsampling and random state', 'test the PredictionErrorDisplay.plot method to generate actual_vs_predicted or residual_vs_predicted scatter plots', 'review the PredictionErrorDisplay class that visualizes regression prediction errors using matplotlib scatter plots', 'create a RocCurveDisplay object from computed FPR and TPR arrays with ROC AUC score', 'plot a ROC curve from a fitted classifier estimator and test data', 'plot a ROC curve given true labels and predicted probability scores', 'plot multi-fold ROC curves from cross-validation results with return_estimator and return_indices', 'plot a ROC curve with chance level line and despine styling options']
+```
+
+Usage
+
+```
+{'create_ConfusionMatrixDisplay': 'create a ConfusionMatrixDisplay visualization from a confusion matrix array and display labels', 'plot_ConfusionMatrixDisplay': 'plot a confusion matrix visualization with configurable colormap, values, and axis labels', 'build_from_estimator': 'build a confusion matrix plot from a fitted estimator, input data, and true labels', 'create_from_predictions': 'create a confusion matrix plot from true labels and predicted labels with optional normalization', 'review_ConfusionMatrixDisplay': 'review the ConfusionMatrixDisplay class and its methods for visualizing classification model performance'}
+```
+
+## File: scikit-learn_scikit-learn/sklearn/metrics/_plot/det_curve.py
+
+Prompts
+
+```
+['create a ConfusionMatrixDisplay visualization from a confusion matrix array and display labels', 'plot a confusion matrix visualization with configurable colormap, values, and axis labels', 'build a confusion matrix plot from a fitted estimator, input data, and true labels', 'create a confusion matrix plot from true labels and predicted labels with optional normalization', 'review the ConfusionMatrixDisplay class and its methods for visualizing classification model performance', 'create a DetCurveDisplay object to visualize detection error tradeoff curves from false positive and false negative rates', 'plot a DET curve from a fitted classifier estimator and test data using from_estimator', 'plot a DET curve from true labels and predicted scores using from_predictions', 'visualize a DET curve with custom axes, labels, and matplotlib styling options', 'compute false positive rates and false negative rates at different thresholds using det_curve', 'create a PrecisionRecallDisplay visualization from precision and recall arrays with average precision', 'plot a precision-recall curve with step-wise style, chance level line, and despine option', 'review the PrecisionRecallDisplay class and its methods for evaluating binary classifier performance', 'create a PredictionErrorDisplay to visualize regression model prediction errors with true and predicted values', 'build a PredictionErrorDisplay from a fitted regressor and data to plot residuals vs predicted values', 'build a PredictionErrorDisplay from true and predicted targets with optional subsampling and random state', 'test the PredictionErrorDisplay.plot method to generate actual_vs_predicted or residual_vs_predicted scatter plots', 'review the PredictionErrorDisplay class that visualizes regression prediction errors using matplotlib scatter plots', 'create a RocCurveDisplay object from computed FPR and TPR arrays with ROC AUC score', 'plot a ROC curve from a fitted classifier estimator and test data', 'plot a ROC curve given true labels and predicted probability scores', 'plot multi-fold ROC curves from cross-validation results with return_estimator and return_indices', 'plot a ROC curve with chance level line and despine styling options']
+```
+
+Usage
+
+```
+{'create_det_curve_display': 'create a DetCurveDisplay object to visualize detection error tradeoff curves from false positive and false negative rates', 'plot_det_curve_estimator': 'plot a DET curve from a fitted classifier estimator and test data using from_estimator', 'plot_det_curve_predictions': 'plot a DET curve from true labels and predicted scores using from_predictions', 'visualize_det_curve': 'visualize a DET curve with custom axes, labels, and matplotlib styling options', 'compute_det_curve_metrics': 'compute false positive rates and false negative rates at different thresholds using det_curve'}
+```
+
+## File: scikit-learn_scikit-learn/sklearn/metrics/_plot/precision_recall_curve.py
+
+Prompts
+
+```
+['create a ConfusionMatrixDisplay visualization from a confusion matrix array and display labels', 'plot a confusion matrix visualization with configurable colormap, values, and axis labels', 'build a confusion matrix plot from a fitted estimator, input data, and true labels', 'create a confusion matrix plot from true labels and predicted labels with optional normalization', 'review the ConfusionMatrixDisplay class and its methods for visualizing classification model performance', 'create a DetCurveDisplay object to visualize detection error tradeoff curves from false positive and false negative rates', 'plot a DET curve from a fitted classifier estimator and test data using from_estimator', 'plot a DET curve from true labels and predicted scores using from_predictions', 'visualize a DET curve with custom axes, labels, and matplotlib styling options', 'compute false positive rates and false negative rates at different thresholds using det_curve', 'create a PrecisionRecallDisplay visualization from precision and recall arrays with average precision', 'plot a precision-recall curve with step-wise style, chance level line, and despine option', 'review the PrecisionRecallDisplay class and its methods for evaluating binary classifier performance', 'create a PredictionErrorDisplay to visualize regression model prediction errors with true and predicted values', 'build a PredictionErrorDisplay from a fitted regressor and data to plot residuals vs predicted values', 'build a PredictionErrorDisplay from true and predicted targets with optional subsampling and random state', 'test the PredictionErrorDisplay.plot method to generate actual_vs_predicted or residual_vs_predicted scatter plots', 'review the PredictionErrorDisplay class that visualizes regression prediction errors using matplotlib scatter plots', 'create a RocCurveDisplay object from computed FPR and TPR arrays with ROC AUC score', 'plot a ROC curve from a fitted classifier estimator and test data', 'plot a ROC curve given true labels and predicted probability scores', 'plot multi-fold ROC curves from cross-validation results with return_estimator and return_indices', 'plot a ROC curve with chance level line and despine styling options']
+```
+
+Usage
+
+```
+{'create_PrecisionRecallDisplay': 'create a PrecisionRecallDisplay visualization from precision and recall arrays with average precision', 'plot_PrecisionRecallDisplay': 'plot a precision-recall curve with step-wise style, chance level line, and despine option', 'build_from_estimator': 'build a precision-recall plot from a fitted classifier, input data, and true labels', 'create_from_predictions': 'create a precision-recall plot from true labels and predicted probabilities with sample weights', 'review_PrecisionRecallDisplay': 'review the PrecisionRecallDisplay class and its methods for evaluating binary classifier performance'}
+```
+
+## File: scikit-learn_scikit-learn/sklearn/metrics/_plot/regression.py
+
+Prompts
+
+```
+['create a ConfusionMatrixDisplay visualization from a confusion matrix array and display labels', 'plot a confusion matrix visualization with configurable colormap, values, and axis labels', 'build a confusion matrix plot from a fitted estimator, input data, and true labels', 'create a confusion matrix plot from true labels and predicted labels with optional normalization', 'review the ConfusionMatrixDisplay class and its methods for visualizing classification model performance', 'create a DetCurveDisplay object to visualize detection error tradeoff curves from false positive and false negative rates', 'plot a DET curve from a fitted classifier estimator and test data using from_estimator', 'plot a DET curve from true labels and predicted scores using from_predictions', 'visualize a DET curve with custom axes, labels, and matplotlib styling options', 'compute false positive rates and false negative rates at different thresholds using det_curve', 'create a PrecisionRecallDisplay visualization from precision and recall arrays with average precision', 'plot a precision-recall curve with step-wise style, chance level line, and despine option', 'review the PrecisionRecallDisplay class and its methods for evaluating binary classifier performance', 'create a PredictionErrorDisplay to visualize regression model prediction errors with true and predicted values', 'build a PredictionErrorDisplay from a fitted regressor and data to plot residuals vs predicted values', 'build a PredictionErrorDisplay from true and predicted targets with optional subsampling and random state', 'test the PredictionErrorDisplay.plot method to generate actual_vs_predicted or residual_vs_predicted scatter plots', 'review the PredictionErrorDisplay class that visualizes regression prediction errors using matplotlib scatter plots', 'create a RocCurveDisplay object from computed FPR and TPR arrays with ROC AUC score', 'plot a ROC curve from a fitted classifier estimator and test data', 'plot a ROC curve given true labels and predicted probability scores', 'plot multi-fold ROC curves from cross-validation results with return_estimator and return_indices', 'plot a ROC curve with chance level line and despine styling options']
+```
+
+Usage
+
+```
+{'create_PredictionErrorDisplay': 'create a PredictionErrorDisplay to visualize regression model prediction errors with true and predicted values', 'build_PredictionErrorDisplay_from_estimator': 'build a PredictionErrorDisplay from a fitted regressor and data to plot residuals vs predicted values', 'build_PredictionErrorDisplay_from_predictions': 'build a PredictionErrorDisplay from true and predicted targets with optional subsampling and random state', 'test_PredictionErrorDisplay_plot': 'test the PredictionErrorDisplay.plot method to generate actual_vs_predicted or residual_vs_predicted scatter plots', 'review_PredictionErrorDisplay': 'review the PredictionErrorDisplay class that visualizes regression prediction errors using matplotlib scatter plots'}
+```
+
+## File: scikit-learn_scikit-learn/sklearn/metrics/_plot/roc_curve.py
+
+Prompts
+
+```
+['create a ConfusionMatrixDisplay visualization from a confusion matrix array and display labels', 'plot a confusion matrix visualization with configurable colormap, values, and axis labels', 'build a confusion matrix plot from a fitted estimator, input data, and true labels', 'create a confusion matrix plot from true labels and predicted labels with optional normalization', 'review the ConfusionMatrixDisplay class and its methods for visualizing classification model performance', 'create a DetCurveDisplay object to visualize detection error tradeoff curves from false positive and false negative rates', 'plot a DET curve from a fitted classifier estimator and test data using from_estimator', 'plot a DET curve from true labels and predicted scores using from_predictions', 'visualize a DET curve with custom axes, labels, and matplotlib styling options', 'compute false positive rates and false negative rates at different thresholds using det_curve', 'create a PrecisionRecallDisplay visualization from precision and recall arrays with average precision', 'plot a precision-recall curve with step-wise style, chance level line, and despine option', 'review the PrecisionRecallDisplay class and its methods for evaluating binary classifier performance', 'create a PredictionErrorDisplay to visualize regression model prediction errors with true and predicted values', 'build a PredictionErrorDisplay from a fitted regressor and data to plot residuals vs predicted values', 'build a PredictionErrorDisplay from true and predicted targets with optional subsampling and random state', 'test the PredictionErrorDisplay.plot method to generate actual_vs_predicted or residual_vs_predicted scatter plots', 'review the PredictionErrorDisplay class that visualizes regression prediction errors using matplotlib scatter plots', 'create a RocCurveDisplay object from computed FPR and TPR arrays with ROC AUC score', 'plot a ROC curve from a fitted classifier estimator and test data', 'plot a ROC curve given true labels and predicted probability scores', 'plot multi-fold ROC curves from cross-validation results with return_estimator and return_indices', 'plot a ROC curve with chance level line and despine styling options']
+```
+
+Usage
+
+```
+{'create_roc_curve_display': 'create a RocCurveDisplay object from computed FPR and TPR arrays with ROC AUC score', 'plot_roc_curve_from_estimator': 'plot a ROC curve from a fitted classifier estimator and test data', 'plot_roc_curve_from_predictions': 'plot a ROC curve given true labels and predicted probability scores', 'plot_multi_fold_roc_from_cv_results': 'plot multi-fold ROC curves from cross-validation results with return_estimator and return_indices', 'plot_roc_with_chance_level_and_despine': 'plot a ROC curve with chance level line and despine styling options'}
+```
+

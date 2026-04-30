@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/types/responses/main.py
+
+Prompts
+
+```
+['create an OutputFunctionToolCall with arguments, call_id, name, id, and status for a function tool call', 'create an OutputImageGenerationCall with id, status, and result for an image generation call', 'create an OutputCodeInterpreterCall with id, code, status, and outputs for code interpreter execution', 'build OutputCodeInterpreterCallLog entries from stdout and stderr content dictionaries', 'create a GenericResponseOutputItem with type, id, status, role, and content for a response output item']
+```
+
+Usage
+
+```
+{'create_OutputFunctionToolCall': 'create an OutputFunctionToolCall with arguments, call_id, name, id, and status for a function tool call', 'create_OutputImageGenerationCall': 'create an OutputImageGenerationCall with id, status, and result for an image generation call', 'create_OutputCodeInterpreterCall': 'create an OutputCodeInterpreterCall with id, code, status, and outputs for code interpreter execution', 'build_OutputCodeInterpreterCallLog': 'build OutputCodeInterpreterCallLog entries from stdout and stderr content dictionaries', 'create_GenericResponseOutputItem': 'create a GenericResponseOutputItem with type, id, status, role, and content for a response output item'}
+```
+

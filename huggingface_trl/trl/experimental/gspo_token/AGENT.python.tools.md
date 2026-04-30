@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/trl
+- repo_uri: https://github.com/huggingface/trl.git
+
+## File: huggingface_trl/trl/experimental/gspo_token/grpo_trainer.py
+
+Prompts
+
+```
+['train a language model using the GSPO-token GRPOTrainer with importance sampling and entropy regularization', 'compute the GSPO-token per-token loss with sequence-level importance sampling and entropy masking', 'build the inputs dictionary with prompt_ids, completion_ids, advantages, and reference log probabilities for GRPO training', 'configure the importance sampling level as token, sequence, or sequence_token for GSPO-token gradient estimation', 'log GRPO training metrics including KL divergence, entropy, and clipped probability ratio statistics']
+```
+
+Usage
+
+```
+{'train_GRPOTrainer': 'train a language model using the GSPO-token GRPOTrainer with importance sampling and entropy regularization', 'compute_GRPO_loss': 'compute the GSPO-token per-token loss with sequence-level importance sampling and entropy masking', 'build_GRPO_inputs': 'build the inputs dictionary with prompt_ids, completion_ids, advantages, and reference log probabilities for GRPO training', 'configure_importance_sampling': 'configure the importance sampling level as token, sequence, or sequence_token for GSPO-token gradient estimation', 'log_GRPO_metrics': 'log GRPO training metrics including KL divergence, entropy, and clipped probability ratio statistics'}
+```
+

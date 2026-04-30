@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/proxy/guardrails/guardrail_hooks/javelin/javelin.py
+
+Prompts
+
+```
+['create a JavelinGuardrail instance with api_key, api_base, and guardrail_name to initialize the guardrail', 'run the async_pre_call_hook to intercept requests and block violations detected by Javelin guardrails', 'call the javelin_guard method to send a request to the Javelin API and receive assessment results', 'get the JavelinGuardrailConfigModel class for validating guardrail configuration parameters', 'review the JavelinGuardrail class and its pre_call_hook logic for request rejection and assessment processing']
+```
+
+Usage
+
+```
+{'create_javelin_guardrail': 'create a JavelinGuardrail instance with api_key, api_base, and guardrail_name to initialize the guardrail', 'run_javelin_guard_pre_call': 'run the async_pre_call_hook to intercept requests and block violations detected by Javelin guardrails', 'call_javelin_guard_api': 'call the javelin_guard method to send a request to the Javelin API and receive assessment results', 'get_javelin_config_model': 'get the JavelinGuardrailConfigModel class for validating guardrail configuration parameters', 'review_javelin_guardrail': 'review the JavelinGuardrail class and its pre_call_hook logic for request rejection and assessment processing'}
+```
+

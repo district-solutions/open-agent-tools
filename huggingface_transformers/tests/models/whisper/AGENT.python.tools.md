@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/whisper/test_tokenization_whisper.py
+
+Prompts
+
+```
+['test the WhisperTokenizer.decode method with skip_special_tokens and output_offsets parameters', 'test the WhisperTokenizer.encode method with multilingual text and language-specific tokens', 'test the _combine_tokens_into_words function that groups tokens into words with indices', 'test the _find_longest_common_sequence function that merges overlapping token sequences', 'test the WhisperTokenizer.set_prefix_tokens method to configure language and task prefix tokens']
+```
+
+Usage
+
+```
+{'test_whisper_tokenizer_decode': 'test the WhisperTokenizer.decode method with skip_special_tokens and output_offsets parameters', 'test_whisper_tokenizer_encode': 'test the WhisperTokenizer.encode method with multilingual text and language-specific tokens', 'test_combine_tokens_into_words': 'test the _combine_tokens_into_words function that groups tokens into words with indices', 'test_find_longest_common_subsequence': 'test the _find_longest_common_sequence function that merges overlapping token sequences', 'test_whisper_prefix_tokens': 'test the WhisperTokenizer.set_prefix_tokens method to configure language and task prefix tokens'}
+```
+

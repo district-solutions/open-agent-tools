@@ -1,0 +1,1234 @@
+{
+  "huggingface_api-inference-community/build_docker.py": {
+    "build_docker_image_for_framework": "build a docker image for a specific ML framework and push it to the container registry",
+    "build_all_framework_images": "build and push docker images for all available ML frameworks in the docker_images directory",
+    "build_gpu_variant": "build a GPU variant of a framework docker image using the --gpu flag",
+    "run_subprocess_command": "run a shell command via subprocess and exit on failure using the run helper function",
+    "output_build_tags_to_file": "write framework build tags to an output file using the --out argument"
+  },
+  "huggingface_api-inference-community/manage.py": {
+    "start_local_inference": "start a local model inference server using uvicorn on port 8000 for a given Hugging Face model",
+    "run_docker_inference": "run a Docker container for model inference with optional GPU support for a Hugging Face model",
+    "show_available_frameworks": "show all available Docker frameworks and their supported pipeline tasks from the docker_images directory",
+    "create_docker_image": "create a Docker image with a random tag for a given framework from the docker_images directory",
+    "resolve_model_task_framework": "resolve the task and framework for a Hugging Face model by querying the Hugging Face Hub API"
+  },
+  "huggingface_api-inference-community/api_inference_community/hub.py": {
+    "hub_model_info": "get Hugging Face Hub model info with offline cache support for a given repo and revision",
+    "cached_revision_path": "resolve the local cache snapshot path for a specific repo revision by following refs",
+    "build_offline_model_info": "rebuild partial model info from cached README and sibling files when offline",
+    "build_offline_siblings": "walk a local repo directory and build a list of sibling file dicts with relative paths and sizes",
+    "cached_model_info": "load cached model info from a JSON file or rebuild it from local cache files"
+  },
+  "huggingface_api-inference-community/api_inference_community/normalizers.py": {
+    "build_speaker_diarization_normalizer": "build a python module that normalizes speaker diarization tensor outputs into sorted speaker segments with timestamps",
+    "create_speaker_segment_parser": "create a function that parses a torch tensor of speaker labels into start and end time segments per speaker",
+    "refactor_speaker_diarization_normalize": "refactor speaker_diarization_normalize to support additional tensor formats or output schemas",
+    "review_speaker_diarization_normalize": "review speaker_diarization_normalize for correctness when handling edge cases like empty tensors or mismatched classnames",
+    "test_speaker_diarization_normalize": "test speaker_diarization_normalize with a sample torch tensor, sampling rate, and list of speaker class names"
+  },
+  "huggingface_api-inference-community/api_inference_community/routes.py": {
+    "check_client_connection": "check if an HTTP client has disconnected by inspecting active TCP connections with psutil",
+    "handle_pipeline_request": "handle an incoming inference request by validating the task, normalizing the payload, and calling the pipeline",
+    "invoke_pipeline_with_params": "invoke a pipeline with inputs and parameters, capture warnings, and return the appropriate response",
+    "compute_inference_metrics": "compute inference metrics like audio length, image count, or character count based on the task type",
+    "count_input_characters": "recursively count the total number of characters in string, list, tuple, or dict inputs"
+  },
+  "huggingface_api-inference-community/api_inference_community/validation.py": {
+    "normalize_payload_audio_image_text_tensor": "normalize a raw payload for audio, image, text, or tensor inference tasks by task type",
+    "check_params_validate_generation": "validate generation parameters like temperature and top_k against a specific pipeline task",
+    "check_inputs_validate_pipeline": "validate inputs against a specific Hugging Face pipeline task like question answering or text generation",
+    "ffmpeg_read_audio_bytes": "read audio bytes into a numpy float32 array using ffmpeg with a given sampling rate",
+    "normalize_payload_tensor_decode": "decode a base64-encoded PyTorch tensor from a JSON payload with shape and dtype parameters"
+  },
+  "huggingface_api-inference-community/docker_images/adapter_transformers/app/main.py": {
+    "build_starlette_app": "build a Starlette app with gzip middleware and optional CORS for HuggingFace inference",
+    "create_get_pipeline": "create a cached function that returns the correct pipeline based on TASK and MODEL_ID env vars",
+    "add_allowed_task": "add a new task to ALLOWED_TASKS by mapping a task string to its Pipeline class",
+    "configure_middleware": "configure gzip and CORS middleware for the Starlette app based on DEBUG environment variable",
+    "setup_startup_event": "setup an async startup event that configures uvicorn logging and initializes the pipeline"
+  },
+  "huggingface_api-inference-community/docker_images/adapter_transformers/tests/test_api_question_answering.py": {
+    "test_question_answering_simple": "test the question answering API endpoint with a question and context input",
+    "test_question_answering_malformed": "test the question answering API endpoint returns 400 for malformed binary input",
+    "test_question_answering_response_schema": "test the question answering API response contains answer, start, end, and score keys",
+    "test_question_answering_inputs_wrapper": "test the question answering API accepts inputs wrapped in an inputs key",
+    "test_question_answering_direct_inputs": "test the question answering API accepts question and context as direct JSON keys"
+  },
+  "huggingface_api-inference-community/docker_images/adapter_transformers/tests/test_api_summarization.py": {
+    "test_summarization_api_simple": "test the summarization API endpoint with valid text input and verify summary_text in response",
+    "test_summarization_api_malformed": "test the summarization API endpoint with malformed binary input and verify 400 error response",
+    "test_summarization_setup_teardown": "test the SummarizationTestCase setUp and tearDown methods that manage MODEL_ID and TASK environment variables",
+    "review_summarization_testcase": "review the SummarizationTestCase class and its skipIf decorator that conditionally enables tests based on ALLOWED_TASKS",
+    "refactor_summarization_tests": "refactor the SummarizationTestCase test methods to add additional input validation or edge case scenarios"
+  },
+  "huggingface_api-inference-community/docker_images/adapter_transformers/tests/test_api_text_classification.py": {
+    "test_text_classification_simple": "test the text classification API endpoint with a simple input string and verify label score output",
+    "test_text_classification_malformed_input": "test the text classification API returns a 400 error for malformed UTF-8 input bytes",
+    "test_text_classification_json_inputs": "test the text classification API accepts JSON dict inputs with an inputs key and returns predictions",
+    "test_text_classification_string_inputs": "test the text classification API accepts plain string inputs and returns a list of label score pairs",
+    "review_text_classification_testcase": "review the TextClassificationTestCase class that sets up and tears down environment variables for model testing"
+  },
+  "huggingface_api-inference-community/docker_images/adapter_transformers/tests/test_api_text_generation.py": {
+    "test_text_generation_simple": "test the TextGenerationTestCase to verify simple text generation returns a list with generated_text",
+    "test_text_generation_malformed": "test the TextGenerationTestCase to verify malformed input returns a 400 error response",
+    "test_text_generation_setup": "test the TextGenerationTestCase setUp method to verify MODEL_ID and TASK environment variables are set",
+    "test_text_generation_teardown": "test the TextGenerationTestCase tearDown method to verify environment variables are restored after each test",
+    "test_text_generation_pipeline_cache": "test the TextGenerationTestCase setUpClass method to verify the pipeline cache is cleared before tests"
+  },
+  "huggingface_api-inference-community/docker_images/adapter_transformers/tests/test_api_token_classification.py": {
+    "test_token_classification_simple": "test the token classification API endpoint with a simple text input string",
+    "test_token_classification_malformed": "test the token classification API endpoint with malformed UTF-8 binary data",
+    "test_token_classification_json_input": "test the token classification API by posting a JSON object with an inputs key",
+    "test_token_classification_raw_input": "test the token classification API by posting a raw string as the request body",
+    "test_token_classification_response_schema": "test that the token classification API response contains entity_group, word, start, end, and score keys"
+  },
+  "huggingface_api-inference-community/docker_images/adapter_transformers/tests/test_docker_build.py": {
+    "test_docker_build": "test that the docker image builds successfully by running docker build in the project directory",
+    "use_cd_context_manager": "use the cd context manager to temporarily change the working directory and restore it afterward",
+    "review_cd_class": "review the cd class which implements a context manager for changing the current working directory",
+    "refactor_cd_class": "refactor the cd context manager to support async context manager protocol with __aenter__ and __aexit__",
+    "summarize_dockerbuildtestcase": "summarize the DockerBuildTestCase class that verifies docker image builds via subprocess"
+  },
+  "huggingface_api-inference-community/docker_images/allennlp/app/main.py": {
+    "run_starlette_app": "run the starlette app that serves an allennlp question answering inference endpoint",
+    "build_pipeline_getter": "build a cached pipeline getter function that loads a model from environment variables",
+    "create_allowed_tasks_dict": "create a dictionary mapping task names to pipeline classes for supported inference tasks",
+    "configure_cors_middleware": "configure cors middleware on the starlette app when debug mode is enabled",
+    "setup_startup_event": "setup an async startup event that initializes logging and loads the inference pipeline"
+  },
+  "huggingface_api-inference-community/docker_images/allennlp/tests/test_api.py": {
+    "test_pipeline_tasks_enabled": "test that at least one pipeline task is enabled in the AllenNLP inference server",
+    "test_unsupported_tasks_raise_error": "test that requesting an unsupported task raises an EnvironmentError via get_pipeline",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for the Hugging Face inference API",
+    "refactor_test_unsupported_tasks": "refactor test_unsupported_tasks to add additional task types to the ALL_TASKS set",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping task names to model IDs for pipeline testing"
+  },
+  "huggingface_api-inference-community/docker_images/allennlp/tests/test_api_question_answering.py": {
+    "test_question_answering_simple": "test the question answering API with a valid question and context input",
+    "test_question_answering_malformed": "test the question answering API returns 400 for malformed binary input",
+    "review_QuestionAnsweringTestCase": "review the QuestionAnsweringTestCase class and its setUp and tearDown environment methods",
+    "refactor_test_simple": "refactor the test_simple method to support additional question answering input formats",
+    "summarize_QuestionAnsweringTestCase": "summarize the QuestionAnsweringTestCase class that tests the HuggingFace question answering API endpoint"
+  },
+  "huggingface_api-inference-community/docker_images/allennlp/tests/test_docker_build.py": {
+    "build_docker_image": "run docker build in the project root directory using subprocess",
+    "test_docker_build": "test that the docker image builds successfully from the project root",
+    "create_cd_context_manager": "create a context manager that changes the working directory and restores it on exit",
+    "run_subprocess_check_output": "run a shell command via subprocess.check_output and capture its output",
+    "test_DockerBuildTestCase": "run the DockerBuildTestCase unittest to verify docker image builds correctly"
+  },
+  "huggingface_api-inference-community/docker_images/asteroid/app/main.py": {
+    "run_starlette_audio_inference_app": "run the starlette app that serves audio source separation and audio to audio inference endpoints",
+    "create_pipeline_for_task": "create a pipeline instance by setting the TASK and MODEL_ID environment variables and calling get_pipeline",
+    "add_allowed_audio_task": "add a new audio task to the ALLOWED_TASKS dictionary mapping task names to pipeline classes",
+    "configure_cors_middleware": "configure the starlette app to enable CORS middleware by setting the DEBUG environment variable to 1",
+    "review_startup_event": "review the startup_event function that configures uvicorn logging and initializes the pipeline on app startup"
+  },
+  "huggingface_api-inference-community/docker_images/asteroid/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test that the pipeline has at least one task enabled using PipelineTestCase",
+    "test_unsupported_tasks_raise_error": "test that get_pipeline raises EnvironmentError for unsupported tasks",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for HuggingFace pipeline validation",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping audio tasks to HuggingFace model IDs",
+    "refactor_get_pipeline_call": "refactor the get_pipeline call to support additional task types from ALL_TASKS"
+  },
+  "huggingface_api-inference-community/docker_images/asteroid/tests/test_api_audio_source_separation.py": {
+    "test_audio_source_separation_simple": "test the audio source separation API with a FLAC audio file and verify the response",
+    "test_audio_source_separation_malformed": "test the audio source separation API with a malformed audio file and verify error handling",
+    "test_audio_source_separation_dual_channel": "test the audio source separation API with a dual channel OGG audio file",
+    "test_audio_source_separation_webm": "test the audio source separation API with a WebM audio file and verify the response",
+    "read_audio_sample": "read an audio sample file from the samples directory and return its binary payload"
+  },
+  "huggingface_api-inference-community/docker_images/asteroid/tests/test_api_audio_to_audio.py": {
+    "test_audio_to_audio_simple": "test the audio-to-audio API endpoint by sending a FLAC audio file and verifying the JSON response",
+    "test_audio_to_audio_malformed": "test the audio-to-audio API endpoint by sending a malformed FLAC file and verifying the 400 error response",
+    "test_audio_to_audio_dual_channel": "test the audio-to-audio API endpoint by sending a dual-channel OGG audio file and verifying the JSON response",
+    "test_audio_to_audio_webm": "test the audio-to-audio API endpoint by sending a WebM audio file and verifying the JSON response",
+    "review_AudioToAudioTestCase": "review the AudioToAudioTestCase class and its setUp and tearDown methods for environment variable management"
+  },
+  "huggingface_api-inference-community/docker_images/asteroid/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project root directory",
+    "test_docker_build": "test that the docker image can be built successfully using unittest",
+    "create_cd_context_manager": "create a context manager that temporarily changes the working directory and restores it on exit",
+    "refactor_cd_class": "refactor the cd context manager class to support additional path resolution options",
+    "review_docker_build_test": "review the DockerBuildTestCase class and its test_can_build_docker_image method"
+  },
+  "huggingface_api-inference-community/docker_images/bertopic/app/main.py": {
+    "build_starlette_app": "build a Starlette app with gzip middleware and optional CORS for a Hugging Face inference pipeline",
+    "create_get_pipeline": "create a cached function that reads TASK and MODEL_ID env vars and returns the matching pipeline instance",
+    "run_startup_event": "run an async startup event that configures uvicorn logging and pre-initializes the inference pipeline",
+    "review_allowed_tasks": "review the ALLOWED_TASKS dictionary mapping task names like text-classification to their pipeline classes",
+    "refactor_routes": "refactor the Starlette routes to add new endpoints for the pipeline_route POST handler"
+  },
+  "huggingface_api-inference-community/docker_images/bertopic/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test that the BERTopic pipeline has at least one task enabled via ALLOWED_TASKS",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise an EnvironmentError when calling get_pipeline",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for the BERTopic inference API",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping text-classification to BERTopic model IDs",
+    "summarize_ALL_TASKS": "summarize the ALL_TASKS set containing all Hugging Face pipeline task types"
+  },
+  "huggingface_api-inference-community/docker_images/bertopic/tests/test_api_text_classification.py": {
+    "test_text_classification_simple": "test the text classification API endpoint with a simple input sentence and verify label score output",
+    "test_text_classification_malformed_input": "test the text classification API endpoint with malformed binary data and verify a 400 error response",
+    "test_text_classification_parameterized_models": "test the text classification API against multiple parameterized model IDs using parameterized_class decorator",
+    "test_text_classification_json_and_raw_input": "test the text classification API with both JSON dict and raw string input formats",
+    "test_text_classification_env_setup_teardown": "test the text classification API with proper MODEL_ID and TASK environment variable setup and teardown"
+  },
+  "huggingface_api-inference-community/docker_images/bertopic/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project root directory",
+    "create_cd_context_manager": "create a context manager that temporarily changes the working directory and restores it on exit",
+    "test_docker_build": "test that the docker image can be built successfully from the project directory",
+    "review_cd_class": "review the cd context manager class that handles temporary directory changes with path expansion",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building docker images with custom build arguments"
+  },
+  "huggingface_api-inference-community/docker_images/common/app/main.py": {
+    "register_pipeline_task": "add a new pipeline class to the ALLOWED_TASKS dictionary for a supported task",
+    "get_pipeline": "call get_pipeline to instantiate and cache the pipeline for the current TASK and MODEL_ID environment variables",
+    "configure_starlette_routes": "modify the routes list to add custom endpoints alongside the existing status_ok and pipeline_route handlers",
+    "enable_cors_middleware": "set the DEBUG environment variable to 1 to enable CORS middleware on the Starlette app",
+    "customize_startup_event": "extend the startup_event async function to add custom initialization logic before the pipeline loads"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test that at least one HuggingFace inference task is enabled in ALLOWED_TASKS",
+    "test_unsupported_tasks_raise_error": "test that calling get_pipeline with an unsupported task raises an EnvironmentError",
+    "run_pipeline_test_case": "run the PipelineTestCase unittest class to validate all allowed and unsupported HuggingFace tasks",
+    "review_pipeline_test_case": "review the PipelineTestCase class and its test methods for HuggingFace inference task validation",
+    "summarize_all_tasks_set": "summarize the ALL_TASKS set containing all known HuggingFace inference task types"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_audio_classification.py": {
+    "test_audio_classification_simple": "test the audio classification API with a simple FLAC audio file and verify label score response",
+    "test_audio_classification_malformed": "test the audio classification API with a malformed audio file and verify it returns a 400 error",
+    "test_audio_classification_dual_channel": "test the audio classification API with a dual channel OGG audio file and verify label score response",
+    "test_audio_classification_webm": "test the audio classification API with a WEBM audio file and verify label score response",
+    "review_audio_classification_testcase": "review the AudioClassificationTestCase class and its setUp tearDown methods for test environment setup"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_audio_to_audio.py": {
+    "test_audio_to_audio_simple": "test the audio-to-audio API endpoint by sending a FLAC audio file and verifying the JSON response",
+    "test_malformed_audio_handling": "test the audio-to-audio API returns a 400 error when given a malformed soundfile",
+    "test_dual_channel_audio": "test the audio-to-audio API endpoint by sending a dual-channel OGG audio file and verifying the response",
+    "test_webm_audio_processing": "test the audio-to-audio API endpoint by sending a WebM audio file and verifying the JSON response",
+    "read_audio_sample_file": "read an audio sample file from the tests samples directory and return its raw bytes"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_automatic_speech_recognition.py": {
+    "test_simple_asr": "test the automatic speech recognition API with a simple FLAC audio file",
+    "test_malformed_audio_asr": "test the ASR API returns a 400 error for malformed audio files",
+    "test_dual_channel_asr": "test the ASR API with a dual channel OGG audio file",
+    "test_webm_asr": "test the ASR API with a WebM audio file",
+    "read_audio_sample": "read an audio sample file from the samples directory and return its bytes"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_feature_extraction.py": {
+    "test_feature_extraction_simple": "test the feature extraction API endpoint with a simple sentence input and verify it returns a list of floats",
+    "test_feature_extraction_malformed": "test the feature extraction API endpoint with malformed UTF-8 bytes and verify it returns a 400 error",
+    "test_feature_extraction_json_input": "test the feature extraction API by sending a JSON payload with an inputs key containing a sentence",
+    "test_feature_extraction_raw_input": "test the feature extraction API by sending a raw string input and verify it returns a list of floats",
+    "review_feature_extraction_testcase": "review the FeatureExtractionTestCase class that sets up and tears down environment variables for model ID and task"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_image_classification.py": {
+    "test_image_classification_simple": "test the image classification API endpoint by posting a JPEG image and validating the response",
+    "test_image_classification_different_resolution": "test the image classification API with a different resolution image to verify consistent results",
+    "read_sample_image": "read a binary image file from the samples directory and return its bytes payload",
+    "setup_image_classification_test": "set up the test environment by configuring MODEL_ID and TASK environment variables for image classification",
+    "teardown_image_classification_test": "restore original environment variables after running image classification tests"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_image_to_image.py": {
+    "test_image_to_image_simple": "test the image-to-image API endpoint by sending a base64 encoded RGB image with a prompt parameter",
+    "test_image_to_image_malformed_input": "test the image-to-image API endpoint by sending malformed binary input and verifying a 400 error response",
+    "test_ImageToImageTestCase_setUp": "test the ImageToImageTestCase setUp method that configures MODEL_ID and TASK environment variables for image-to-image",
+    "test_ImageToImageTestCase_tearDown": "test the ImageToImageTestCase tearDown method that restores or removes MODEL_ID and TASK environment variables",
+    "test_ImageToImageTestCase_setUpClass": "test the ImageToImageTestCase setUpClass method that clears the get_pipeline cache before running tests"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_question_answering.py": {
+    "test_question_answering_simple": "test the question answering API by sending a question and context and verifying the response contains answer, start, end, and score",
+    "test_question_answering_malformed": "test the question answering API by sending malformed input and verifying it returns a 400 error response",
+    "test_question_answering_inputs_wrapped": "test the question answering API by sending inputs wrapped in an inputs key and verifying the response structure",
+    "test_question_answering_inputs_direct": "test the question answering API by sending question and context directly as JSON and verifying the response structure",
+    "review_question_answering_test_case": "review the QuestionAnsweringTestCase class that tests the HuggingFace question answering endpoint with valid and invalid inputs"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_sentence_similarity.py": {
+    "test_sentence_similarity_simple": "test the sentence similarity API by sending a source sentence and list of candidate sentences",
+    "test_sentence_similarity_missing_input": "test the sentence similarity API returns 400 when the sentences input field is missing",
+    "test_sentence_similarity_malformed_input": "test the sentence similarity API returns 400 when malformed UTF-8 bytes are sent as input",
+    "review_SentenceSimilarityTestCase": "review the SentenceSimilarityTestCase class that validates the sentence-similarity endpoint with multiple test scenarios",
+    "summarize_sentence_similarity_tests": "summarize the test suite covering happy path, missing input, and malformed input for sentence similarity"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_speech_segmentation.py": {
+    "test_speech_segmentation_flac": "test the speech segmentation API with a FLAC audio file and verify segment class start and end values",
+    "test_speech_segmentation_malformed": "test the speech segmentation API with a malformed audio file and verify it returns a 400 error",
+    "test_speech_segmentation_dual_channel": "test the speech segmentation API with a dual channel OGG audio file and verify segment output",
+    "test_speech_segmentation_webm": "test the speech segmentation API with a WebM audio file and verify segment class start and end values",
+    "review_speech_segmentation_testcase": "review the SpeechSegmentationTestCase class and its setUp tearDown methods for environment variable management"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_summarization.py": {
+    "test_summarization_single_input": "test the summarization API endpoint with a single text input and verify summary_text in response",
+    "review_summarization_test_case": "review the SummarizationTestCase class that parameterizes tests across multiple summarization models",
+    "summarize_summarization_test_setup": "summarize the setUp and tearDown methods that manage MODEL_ID and TASK environment variables",
+    "test_summarization_skip_condition": "test the skipIf decorator that skips summarization tests when the task is not in ALLOWED_TASKS",
+    "review_parameterized_class_usage": "review the parameterized_class decorator that generates test instances for each TESTABLE_MODELS summarization model"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_tabular_classification.py": {
+    "test_tabular_classification_simple": "test the tabular classification API endpoint with sample input data and verify response",
+    "test_tabular_classification_malformed_input": "test the tabular classification API rejects malformed binary input with a 400 error",
+    "test_tabular_classification_missing_columns": "test the tabular classification API returns 400 error when input data has missing columns",
+    "review_TabularClassificationTestCase": "review the TabularClassificationTestCase class and its setUp tearDown lifecycle methods for test setup",
+    "refactor_test_simple": "refactor the test_simple method to add actual tabular data rows for the classification model"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_tabular_regression.py": {
+    "test_tabular_regression_simple": "test the tabular regression API endpoint with valid input data and verify it returns a list response",
+    "test_tabular_regression_malformed_input": "test the tabular regression API endpoint with malformed input and verify it returns a 400 error",
+    "test_tabular_regression_missing_columns": "test the tabular regression API endpoint with missing columns and verify it returns a 400 error",
+    "review_TabularRegressionTestCase": "review the TabularRegressionTestCase class that sets up and tears down environment variables for tabular regression model testing",
+    "test_TabularRegressionTestCase_setup": "test the TabularRegressionTestCase setUp method that configures MODEL_ID and TASK environment variables for the tabular regression pipeline"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_text2text_generation.py": {
+    "test_text2text_generation_simple": "test the text2text generation API endpoint with a simple English input sentence",
+    "run_TextToSpeechTestCase": "run the TextToSpeechTestCase unittest class to validate text2text generation responses",
+    "review_TextToSpeechTestCase_setUp": "review the setUp method that configures MODEL_ID and TASK environment variables for testing",
+    "refactor_TextToSpeechTestCase_test_simple": "refactor the test_simple method to add additional assertions for the generated text output",
+    "test_TextToSpeechTestCase_tearDown": "test the tearDown method that restores original environment variables after each test"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_text_classification.py": {
+    "test_text_classification_simple": "test the text classification API endpoint with a simple input sentence",
+    "test_text_classification_malformed_input": "test the text classification API endpoint with malformed binary input data",
+    "test_text_classification_json_inputs": "test the text classification API by sending inputs as a JSON object",
+    "test_text_classification_raw_inputs": "test the text classification API by sending inputs as a raw string",
+    "review_text_classification_testcase": "review the TextClassificationTestCase class and its setUp and tearDown methods"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_text_to_image.py": {
+    "test_text_to_image_simple": "test the text-to-image API by sending a simple text prompt and verifying the image response",
+    "test_text_to_image_malformed_input": "test the text-to-image API by sending malformed UTF-8 bytes and verifying a 400 error response",
+    "test_TextToImageTestCase_setUp": "test the TextToImageTestCase setUp method that configures MODEL_ID and TASK environment variables",
+    "test_TextToImageTestCase_setUpClass": "test the TextToImageTestCase setUpClass method that clears the get_pipeline cache before running tests",
+    "test_TextToImageTestCase_tearDown": "test the TextToImageTestCase tearDown method that restores original environment variables after each test"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_text_to_speech.py": {
+    "test_text_to_speech_simple": "test the text-to-speech API endpoint with a simple text input and validate audio output",
+    "test_text_to_speech_malformed_input": "test the text-to-speech API endpoint with malformed UTF-8 input and verify 400 error response",
+    "test_TextToSpeechTestCase": "test the TextToSpeechTestCase class to validate text-to-speech API responses and error handling",
+    "review_TextToSpeechTestCase": "review the TextToSpeechTestCase class and its test methods for text-to-speech API validation",
+    "refactor_TextToSpeechTestCase": "refactor the TextToSpeechTestCase class to add new test cases for edge cases or additional validation"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_api_token_classification.py": {
+    "test_token_classification_simple": "test the token classification API endpoint with a simple text input for named entity recognition",
+    "test_token_classification_malformed": "test the token classification API endpoint with malformed binary data to verify error handling",
+    "review_TokenClassificationTestCase": "review the TokenClassificationTestCase class that tests the HuggingFace token classification inference API endpoint",
+    "test_token_classification_json_input": "test the token classification API by sending JSON input and verifying entity group response fields",
+    "test_token_classification_raw_input": "test the token classification API by sending raw string input and verifying entity group response fields"
+  },
+  "huggingface_api-inference-community/docker_images/common/tests/test_docker_build.py": {
+    "build_docker_image": "run the docker build test case to build a docker image from the project directory",
+    "test_docker_build": "test that the docker image can be built successfully using the DockerBuildTestCase",
+    "use_cd_context_manager": "use the cd context manager to temporarily change the current working directory",
+    "refactor_cd_class": "refactor the cd context manager class to support additional path resolution options",
+    "review_docker_build_test": "review the DockerBuildTestCase class and its test_can_build_docker_image method"
+  },
+  "huggingface_api-inference-community/docker_images/diffusers/app/healthchecks.py": {
+    "run_healthcheck_metrics_server": "run the starlette healthcheck sidecar app that exposes metrics on all routes",
+    "compute_app_metrics": "compute and return current connection count and application status as prometheus metrics",
+    "check_app_status": "check if the main ASGI app is ok, busy, or error by sending a timed HTTP request",
+    "count_established_connections": "count the number of established TCP connections to a given app port",
+    "find_gunicorn_process": "find the gunicorn process listening on a specified port using psutil network connections"
+  },
+  "huggingface_api-inference-community/docker_images/diffusers/app/idle.py": {
+    "run_live_check_loop": "run the async live_check_loop to monitor request activity and self-terminate the worker after idle timeout",
+    "use_request_witnesses_context_manager": "use the request_witnesses context manager to track request start and end timestamps for idle monitoring",
+    "configure_idle_timeout": "configure the IDLE_TIMEOUT environment variable to set how long the worker waits before self-terminating",
+    "enable_unload_idle": "enable the UNLOAD_IDLE environment variable to activate idle worker unloading behavior",
+    "review_live_check_loop": "review the live_check_loop function to understand how it checks LAST_START and LAST_END timestamps before sending SIGTERM"
+  },
+  "huggingface_api-inference-community/docker_images/diffusers/app/main.py": {
+    "run_starlette_diffusers_app": "run the starlette app that serves text-to-image and image-to-image diffusers pipelines via HTTP",
+    "get_pipeline_by_task": "get a cached diffusers pipeline instance for a given TASK and MODEL_ID environment variable",
+    "configure_allowed_tasks": "configure the ALLOWED_TASKS dictionary to map task names to their corresponding pipeline classes",
+    "setup_startup_event": "setup the async startup event that initializes logging, idle check loop, and pipeline loading",
+    "reset_logging_debug": "reset logging to debug level with timestamp and message format using force mode"
+  },
+  "huggingface_api-inference-community/docker_images/diffusers/app/timing.py": {
+    "create_timing_decorator": "create a timing decorator that logs function execution time in seconds",
+    "use_timing_on_function": "use the timing decorator on a function to measure its execution duration",
+    "refactor_function_with_timing": "refactor a slow function by adding the timing decorator to log execution time",
+    "review_timing_decorator": "review the timing decorator that wraps functions and logs execution duration via debug logging",
+    "summarize_timing_module": "summarize the timing module that provides a decorator to measure and log function execution time"
+  },
+  "huggingface_api-inference-community/docker_images/diffusers/app/validation.py": {
+    "str_to_bool_convert": "convert a string like true yes or 1 to a boolean match result using str_to_bool",
+    "test_str_to_bool": "test the str_to_bool function with various string inputs like true yes 1 and false",
+    "refactor_str_to_bool": "refactor str_to_bool to return a proper boolean instead of a regex match object",
+    "review_str_to_bool": "review the str_to_bool function and its regex pattern for edge cases and correctness",
+    "summarize_str_to_bool": "summarize the str_to_bool utility function that matches string representations of boolean values"
+  },
+  "huggingface_api-inference-community/docker_images/diffusers/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test the PipelineTestCase to verify at least one task is enabled in ALLOWED_TASKS",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise EnvironmentError when calling get_pipeline",
+    "review_TESTABLE_MODELS": "review the TESTABLE_MODELS dictionary mapping diffusers pipeline tasks to test model IDs",
+    "review_ALL_TASKS": "review the ALL_TASKS set containing all Hugging Face inference task names",
+    "run_PipelineTestCase": "run the PipelineTestCase unittest class to validate diffusers pipeline task support"
+  },
+  "huggingface_api-inference-community/docker_images/diffusers/tests/test_api_image_to_image.py": {
+    "test_image_to_image_simple": "test the image-to-image API endpoint by sending a base64 encoded JPEG image with a prompt parameter",
+    "test_image_to_image_malformed_input": "test the image-to-image API endpoint by sending malformed binary data and verifying a 400 error response",
+    "test_image_to_image_parameterized_models": "test the image-to-image API against all parameterized models listed in TESTABLE_MODELS for the image-to-image task",
+    "review_ImageToImageTestCase": "review the ImageToImageTestCase class that sets up and tears down MODEL_ID and TASK environment variables for each test",
+    "test_image_to_image_pipeline_cache": "test the image-to-image pipeline by clearing the get_pipeline cache before running parameterized model tests"
+  },
+  "huggingface_api-inference-community/docker_images/diffusers/tests/test_api_text_to_image.py": {
+    "run_text_to_image_tests": "run the TextToImageTestCase test suite to validate the text-to-image API endpoint",
+    "test_simple_text_to_image": "test the text-to-image API by sending a prompt and verifying a valid image response",
+    "test_malformed_input_handling": "test that the text-to-image API returns a 400 error for malformed binary input",
+    "review_TextToImageTestCase": "review the TextToImageTestCase class to understand the parameterized test setup for diffusers models",
+    "summarize_text_to_image_test": "summarize the text-to-image test file covering simple prompt and malformed input test cases"
+  },
+  "huggingface_api-inference-community/docker_images/diffusers/tests/test_docker_build.py": {
+    "build_docker_image": "run the docker build test that builds a docker image from the diffusers directory",
+    "test_docker_build": "test that the docker image can be built successfully using the DockerBuildTestCase",
+    "use_cd_context_manager": "use the cd context manager to temporarily change the working directory in a with block",
+    "review_cd_class": "review the cd context manager class that saves and restores the current working directory",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building docker images from a configurable path"
+  },
+  "huggingface_api-inference-community/docker_images/doctr/app/main.py": {
+    "run_starlette_app": "run the starlette app with gzip middleware and optional cors for object detection inference",
+    "build_pipeline_from_env": "build a cached pipeline instance from the TASK and MODEL_ID environment variables",
+    "create_allowed_tasks_mapping": "create a dictionary mapping task names to pipeline classes for supported inference tasks",
+    "configure_startup_event": "configure the startup event to set up uvicorn logging and initialize the pipeline",
+    "review_starlette_routes": "review the starlette routes that handle status ok and pipeline post requests"
+  },
+  "huggingface_api-inference-community/docker_images/doctr/tests/test_api.py": {
+    "run_PipelineTestCase": "run the PipelineTestCase unittest class to validate allowed tasks and unsupported task handling",
+    "test_test_has_at_least_one_task_enabled": "test that at least one pipeline task is enabled in ALLOWED_TASKS",
+    "test_test_unsupported_tasks": "test that unsupported tasks raise an EnvironmentError when calling get_pipeline",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for correctness and coverage",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping task names to model IDs for testing"
+  },
+  "huggingface_api-inference-community/docker_images/doctr/tests/test_api_object_detection.py": {
+    "test_object_detection_api": "test the object detection API by sending an image and verifying the response contains labels, scores, and bounding boxes",
+    "run_object_detection_test": "run the ObjectDetectionTestCase to validate the object detection endpoint returns correct JSON response format",
+    "review_object_detection_testcase": "review the ObjectDetectionTestCase class that tests object detection with parameterized model IDs and sample images",
+    "create_object_detection_test": "create a test that reads an image file and posts it to the object detection API endpoint",
+    "refactor_object_detection_testcase": "refactor the ObjectDetectionTestCase to add new test cases for different image formats or edge cases"
+  },
+  "huggingface_api-inference-community/docker_images/doctr/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project root directory",
+    "test_docker_build": "test that the docker image can be built successfully from the project directory",
+    "create_cd_context_manager": "create a context manager that temporarily changes the working directory and restores it on exit",
+    "refactor_cd_class": "refactor the cd context manager class to support additional path resolution features",
+    "review_docker_build_test": "review the DockerBuildTestCase class and its test_can_build_docker_image method for correctness"
+  },
+  "huggingface_api-inference-community/docker_images/espnet/app/main.py": {
+    "run_starlette_app": "run the Starlette app with gzip middleware and optional CORS for ESPnet inference",
+    "get_pipeline": "get a cached pipeline instance by reading TASK and MODEL_ID environment variables",
+    "configure_allowed_tasks": "configure the ALLOWED_TASKS dict to map task names to pipeline classes",
+    "setup_startup_event": "setup the async startup event to configure logging and initialize the pipeline",
+    "add_cors_middleware": "add CORS middleware to the Starlette app when DEBUG environment variable is set"
+  },
+  "huggingface_api-inference-community/docker_images/espnet/tests/test_api.py": {
+    "test_pipeline_tasks_enabled": "test that the ESPnet pipeline has at least one task enabled using PipelineTestCase",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise an EnvironmentError when calling get_pipeline",
+    "run_pipeline_unit_tests": "run the unittest test suite for the ESPnet HuggingFace inference API pipelines",
+    "review_PipelineTestCase": "review the PipelineTestCase class to verify ESPnet allowed tasks and unsupported task handling",
+    "refactor_TESTABLE_MODELS": "refactor the TESTABLE_MODELS dictionary to add or update ESPnet model mappings for speech tasks"
+  },
+  "huggingface_api-inference-community/docker_images/espnet/tests/test_api_automatic_speech_recognition.py": {
+    "test_asr_flac_audio": "test the automatic speech recognition API with a FLAC audio file and verify text output",
+    "test_asr_malformed_audio": "test the ASR API error handling by sending a malformed FLAC audio file",
+    "test_asr_dual_channel_audio": "test the automatic speech recognition API with a dual channel OGG audio file",
+    "test_asr_webm_audio": "test the automatic speech recognition API with a WebM audio file and verify text output",
+    "read_audio_sample": "read an audio sample file from the samples directory and return its raw bytes"
+  },
+  "huggingface_api-inference-community/docker_images/espnet/tests/test_api_text_to_speech.py": {
+    "test_text_to_speech_simple": "test the TextToSpeechTestCase to verify the TTS API returns valid audio/flac output for text input",
+    "test_text_to_speech_malformed_input": "test the TextToSpeechTestCase to verify the TTS API returns a 400 error for malformed binary input",
+    "run_text_to_speech_tests": "run the TextToSpeechTestCase unittest suite to validate the ESPNet text-to-speech API endpoint",
+    "review_text_to_speech_testcase": "review the TextToSpeechTestCase class and its test methods for the ESPNet TTS API",
+    "refactor_text_to_speech_testcase": "refactor the TextToSpeechTestCase to add additional test cases for edge cases or new TTS features"
+  },
+  "huggingface_api-inference-community/docker_images/espnet/tests/test_docker_build.py": {
+    "run_docker_build_test": "run the DockerBuildTestCase to verify the docker image builds successfully",
+    "use_cd_context_manager": "use the cd context manager to temporarily change the working directory in a with block",
+    "test_docker_image_build": "test that a docker image can be built from the project root directory",
+    "review_cd_class": "review the cd context manager class that handles directory changes with automatic restoration",
+    "refactor_cd_class": "refactor the cd context manager to support additional path resolution or error handling"
+  },
+  "huggingface_api-inference-community/docker_images/fairseq/app/main.py": {
+    "build_starlette_app": "build a Starlette app with gzip middleware and optional CORS for the fairseq inference server",
+    "create_get_pipeline": "create a cached pipeline factory that reads TASK and MODEL_ID env vars to instantiate the correct pipeline",
+    "run_startup_event": "run the async startup event to configure uvicorn logging and initialize the inference pipeline",
+    "refactor_allowed_tasks": "refactor the ALLOWED_TASKS dictionary to add new pipeline types like automatic speech recognition",
+    "review_routes": "review the Starlette routes that handle GET status checks and POST pipeline inference requests"
+  },
+  "huggingface_api-inference-community/docker_images/fairseq/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test the PipelineTestCase to verify at least one task is enabled in ALLOWED_TASKS",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise EnvironmentError when calling get_pipeline",
+    "run_pipeline_unit_tests": "run the unittest TestCase class PipelineTestCase for the fairseq inference API",
+    "review_TESTABLE_MODELS": "review the TESTABLE_MODELS dictionary mapping task types to Hugging Face model IDs",
+    "review_ALL_TASKS": "review the ALL_TASKS set containing text-to-speech and audio-to-audio task types"
+  },
+  "huggingface_api-inference-community/docker_images/fairseq/tests/test_api_audio_to_audio.py": {
+    "test_audio_to_audio_simple": "test the audio-to-audio API by sending a valid FLAC file and verifying the JSON response",
+    "test_audio_to_audio_malformed": "test the audio-to-audio API by sending a malformed FLAC file and verifying a 400 error",
+    "review_AudioToAudioTestCase": "review the AudioToAudioTestCase class and its setUp, tearDown, and test methods for the audio-to-audio API",
+    "refactor_AudioToAudioTestCase_read": "refactor the AudioToAudioTestCase read method to support additional audio file formats beyond FLAC",
+    "summarize_AudioToAudioTestCase": "summarize the AudioToAudioTestCase class that tests the fairseq audio-to-audio inference endpoint"
+  },
+  "huggingface_api-inference-community/docker_images/fairseq/tests/test_api_text_to_speech.py": {
+    "test_text_to_speech_simple": "test the TextToSpeechTestCase test_simple method to verify TTS returns audio/flac response",
+    "test_text_to_speech_malformed_input": "test the TextToSpeechTestCase test_malformed_input method to verify 400 status on invalid UTF-8",
+    "run_text_to_speech_tests": "run the TextToSpeechTestCase unittest class to validate the fairseq text-to-speech API endpoint",
+    "review_text_to_speech_testcase": "review the TextToSpeechTestCase class setup, teardown, and test methods for correctness",
+    "refactor_text_to_speech_tests": "refactor the TextToSpeechTestCase to parameterize test inputs and expected responses"
+  },
+  "huggingface_api-inference-community/docker_images/fairseq/tests/test_docker_build.py": {
+    "run_docker_build_test": "run the unittest test case that builds a docker image from the fairseq directory",
+    "test_docker_image_build": "test that the docker image can be built successfully from the fairseq project root",
+    "use_cd_context_manager": "use the cd context manager to temporarily change the working directory in a with block",
+    "review_cd_class": "review the cd context manager class that saves and restores the current working directory",
+    "summarize_docker_build_testcase": "summarize the DockerBuildTestCase class that verifies docker build works from the project directory"
+  },
+  "huggingface_api-inference-community/docker_images/fastai/app/main.py": {
+    "build_starlette_app": "build a Starlette app with gzip middleware and optional CORS for Hugging Face inference",
+    "create_get_pipeline": "create a cached function that returns a pipeline instance based on TASK and MODEL_ID env vars",
+    "review_allowed_tasks": "review the ALLOWED_TASKS dictionary mapping task names to Pipeline class types",
+    "refactor_startup_event": "refactor the startup_event to configure uvicorn logging and initialize the pipeline on app start",
+    "test_routes": "test the Starlette routes that handle GET status checks and POST pipeline inference requests"
+  },
+  "huggingface_api-inference-community/docker_images/fastai/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test the PipelineTestCase to verify at least one task is enabled in ALLOWED_TASKS",
+    "test_unsupported_tasks_raise_error": "test that calling get_pipeline with an unsupported task raises an EnvironmentError",
+    "run_pipeline_unit_tests": "run the PipelineTestCase unit tests for the fastai HuggingFace inference API docker image",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for the fastai inference API",
+    "refactor_test_unsupported_tasks": "refactor the test_unsupported_tasks method to use a different assertion or error handling approach"
+  },
+  "huggingface_api-inference-community/docker_images/fastai/tests/test_api_image_classification.py": {
+    "test_image_classification_simple": "test the ImageClassificationTestCase to verify simple image classification returns label and score",
+    "test_image_classification_different_resolution": "test the ImageClassificationTestCase to verify classification works with different resolution images",
+    "review_ImageClassificationTestCase": "review the ImageClassificationTestCase class and its parameterized test setup for image classification",
+    "refactor_ImageClassificationTestCase": "refactor the ImageClassificationTestCase to add new test cases for edge cases",
+    "summarize_ImageClassificationTestCase": "summarize the ImageClassificationTestCase class that tests image classification API endpoints"
+  },
+  "huggingface_api-inference-community/docker_images/fastai/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project root directory",
+    "test_docker_build": "test that the docker image builds successfully using unittest and subprocess",
+    "use_cd_context_manager": "use the cd context manager to temporarily change the working directory in a with block",
+    "create_cd_context_manager": "create a context manager class that changes directories and restores the original path on exit",
+    "run_subprocess_docker_build": "run a docker build command via subprocess.check_output from within a changed directory"
+  },
+  "huggingface_api-inference-community/docker_images/fasttext/app/main.py": {
+    "run_starlette_app": "run the Starlette app with gzip and optional cors middleware for fasttext inference",
+    "get_pipeline": "get the cached pipeline instance for the task specified in the TASK environment variable",
+    "configure_allowed_tasks": "configure the ALLOWED_TASKS dictionary to map task names to their pipeline classes",
+    "setup_startup_event": "setup the startup event handler to configure uvicorn logging and initialize the pipeline",
+    "define_routes": "define Starlette routes for status ok checks and post requests to the pipeline route"
+  },
+  "huggingface_api-inference-community/docker_images/fasttext/tests/test_api.py": {
+    "test_PipelineTestCase_has_at_least_one_task_enabled": "test the PipelineTestCase to verify at least one task is enabled in ALLOWED_TASKS",
+    "test_PipelineTestCase_unsupported_tasks": "test that unsupported tasks raise EnvironmentError when calling get_pipeline",
+    "review_TESTABLE_MODELS": "review the TESTABLE_MODELS dictionary mapping task types to fasttext model IDs for testing",
+    "review_ALL_TASKS": "review the ALL_TASKS set containing all HuggingFace pipeline task types",
+    "test_PipelineTestCase": "test the PipelineTestCase class to validate fasttext inference pipeline task support"
+  },
+  "huggingface_api-inference-community/docker_images/fasttext/tests/test_api_feature_extraction.py": {
+    "test_feature_extraction_simple": "test the feature extraction API with a valid sentence input and verify it returns a list of floats",
+    "test_feature_extraction_malformed": "test the feature extraction API with malformed UTF-8 bytes and verify it returns a 400 error",
+    "run_feature_extraction_tests": "run the FeatureExtractionTestCase unit tests to validate the fasttext feature-extraction endpoint behavior",
+    "review_feature_extraction_test_setup": "review the FeatureExtractionTestCase setUp and tearDown methods that manage MODEL_ID and TASK environment variables",
+    "test_feature_extraction_json_and_raw": "test the feature extraction endpoint with both JSON dict and raw string input formats"
+  },
+  "huggingface_api-inference-community/docker_images/fasttext/tests/test_api_text_classification.py": {
+    "test_text_classification_simple": "test the TextClassificationTestCase to verify single word text classification returns label and score",
+    "test_text_classification_malformed": "test the TextClassificationTestCase to verify malformed UTF-8 input returns a 400 error",
+    "test_text_classification_multiple_words": "test the TextClassificationTestCase to verify multi-word input handling for language identification models",
+    "review_text_classification_test_setup": "review the TextClassificationTestCase setUp and tearDown methods for environment variable management",
+    "refactor_text_classification_parameterized": "refactor the TextClassificationTestCase parameterized class decorator to support additional testable models"
+  },
+  "huggingface_api-inference-community/docker_images/fasttext/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project directory",
+    "test_docker_build": "test that the docker image builds successfully using the DockerBuildTestCase class",
+    "use_cd_context_manager": "use the cd context manager to temporarily change the working directory",
+    "review_cd_class": "review the cd context manager class that saves and restores the current working directory",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building docker images with custom build arguments"
+  },
+  "huggingface_api-inference-community/docker_images/flair/app/main.py": {
+    "build_starlette_app": "build a Starlette app with GET and POST routes for a HuggingFace inference pipeline",
+    "create_get_pipeline": "create a cached function that returns a pipeline instance based on TASK and MODEL_ID environment variables",
+    "configure_allowed_tasks": "configure the ALLOWED_TASKS dictionary to map task names to their corresponding Pipeline classes",
+    "setup_cors_middleware": "setup CORS middleware on the Starlette app when DEBUG environment variable is set to 1",
+    "review_startup_event": "review the startup_event async function that configures uvicorn logging and attaches get_pipeline to the app"
+  },
+  "huggingface_api-inference-community/docker_images/flair/tests/test_api.py": {
+    "test_pipeline_tasks_enabled": "test that at least one pipeline task is enabled in the Flair inference docker image",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise an EnvironmentError when calling get_pipeline in the Flair module",
+    "run_PipelineTestCase": "run the PipelineTestCase unittest class to validate allowed and unsupported tasks for the Flair inference API",
+    "review_TESTABLE_MODELS": "review the TESTABLE_MODELS dictionary mapping token-classification tasks to Flair model IDs for testing",
+    "review_ALL_TASKS": "review the ALL_TASKS set listing all HuggingFace inference tasks used to identify unsupported ones"
+  },
+  "huggingface_api-inference-community/docker_images/flair/tests/test_api_token_classification.py": {
+    "test_token_classification_simple": "test the token classification API with a simple sentence input and verify entity group output",
+    "test_token_classification_malformed_input": "test the token classification API with malformed UTF-8 bytes and verify a 400 error response",
+    "run_token_classification_tests": "run the parameterized token classification test suite against all testable Flair models",
+    "review_token_classification_testcase": "review the TokenClassificationTestCase class that tests entity extraction with entity_group, word, start, end, and score fields",
+    "refactor_token_classification_testcase": "refactor the TokenClassificationTestCase to add new test cases for edge cases in token classification"
+  },
+  "huggingface_api-inference-community/docker_images/flair/tests/test_docker_build.py": {
+    "test_docker_build": "test that the flair docker image builds successfully using docker build",
+    "test_cd_context_manager": "test the cd context manager for changing the current working directory",
+    "run_docker_build_test": "run the DockerBuildTestCase to verify the docker image can be built",
+    "review_cd_class": "review the cd context manager class that changes and restores the working directory",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building with custom docker build arguments"
+  },
+  "huggingface_api-inference-community/docker_images/k2/app/common.py": {
+    "get_hfconfig": "get the HuggingFace model config for a given model ID and config section name",
+    "model_from_hfconfig": "build an OfflineAsr instance by downloading model files from a HuggingFace repo using its config",
+    "transcribe_batch_from_tensor": "transcribe a single audio tensor batch using an existing OfflineAsr model",
+    "OfflineAsr_init": "create an OfflineAsr instance with a neural model file, BPE or token file, and decoding method",
+    "OfflineAsr_decode_waves": "decode a list of audio wave tensors into transcribed text strings using an OfflineAsr model"
+  },
+  "huggingface_api-inference-community/docker_images/k2/app/decode.py": {
+    "run_greedy_search_decode": "run an RNN-T model with greedy search to decode audio features into token IDs",
+    "run_modified_beam_search_decode": "run an RNN-T model with modified beam search to decode audio features into token IDs",
+    "run_model_inference": "run a sherpa RNN-T conformer model encoder on batched padded feature tensors",
+    "review_greedy_search_function": "review the run_model_and_do_greedy_search function for RNN-T decoding with greedy search",
+    "review_beam_search_function": "review the run_model_and_do_modified_beam_search function for RNN-T decoding with beam search"
+  },
+  "huggingface_api-inference-community/docker_images/k2/app/main.py": {
+    "run_starlette_inference_app": "run the starlette app that serves HuggingFace model inference via POST requests",
+    "build_pipeline_from_env": "build a cached pipeline instance using the TASK and MODEL_ID environment variables",
+    "create_allowed_tasks_registry": "create a dictionary mapping task names like automatic-speech-recognition to their pipeline classes",
+    "configure_gzip_cors_middleware": "configure gzip compression and optional CORS middleware for the starlette application",
+    "review_startup_event": "review the async startup event that initializes logging and preloads the pipeline"
+  },
+  "huggingface_api-inference-community/docker_images/k2/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test the PipelineTestCase to verify at least one task is enabled in ALLOWED_TASKS",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise an EnvironmentError when calling get_pipeline",
+    "run_pipeline_unit_tests": "run the unittest test suite for the k2 automatic speech recognition pipeline",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for the k2 inference API",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping tasks to model IDs for speech recognition"
+  },
+  "huggingface_api-inference-community/docker_images/k2/tests/test_api_automatic_speech_recognition.py": {
+    "test_simple_asr": "test the automatic speech recognition API with a simple FLAC audio file",
+    "test_malformed_audio_asr": "test the ASR API returns a 400 error for malformed audio files",
+    "test_dual_channel_asr": "test the ASR API handles dual channel OGG audio files correctly",
+    "test_webm_asr": "test the ASR API processes WebM audio files and returns transcribed text",
+    "read_audio_sample": "read an audio sample file from the samples directory and return its bytes"
+  },
+  "huggingface_api-inference-community/docker_images/k2/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project root directory",
+    "test_docker_build": "test that the docker image builds successfully using unittest and subprocess",
+    "create_cd_context_manager": "create a context manager that temporarily changes the working directory and restores it on exit",
+    "review_cd_class": "review the cd context manager class that handles directory changes with os.getcwd and os.chdir",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building docker images with custom build arguments"
+  },
+  "huggingface_api-inference-community/docker_images/latent-to-image/app/healthchecks.py": {
+    "run_healthcheck_metrics_server": "run the starlette healthcheck metrics server that exposes app status and connection metrics",
+    "compute_app_metrics": "compute and update global metrics by counting connections and checking app status with timeout",
+    "count_established_connections": "count the current established TCP connections to a given app port and return prometheus metrics",
+    "check_app_status_with_timeout": "check if the main ASGI app is ok, busy, or error by sending a request with a 0.5 second timeout",
+    "find_gunicorn_process_by_port": "find the gunicorn process listening on a given port by scanning network connections with psutil"
+  },
+  "huggingface_api-inference-community/docker_images/latent-to-image/app/idle.py": {
+    "run_live_check_loop": "run the async live check loop that monitors request activity and terminates the worker on idle timeout",
+    "use_request_witnesses_context_manager": "use the request_witnesses context manager to track request start and end timestamps for idle monitoring",
+    "configure_idle_timeout": "configure the idle timeout duration by setting the IDLE_TIMEOUT environment variable before importing",
+    "enable_unload_idle": "enable automatic worker unloading on idle by setting the UNLOAD_IDLE environment variable to true",
+    "review_live_check_loop": "review the live_check_loop function to understand how it checks LAST_START and LAST_END timestamps for activity"
+  },
+  "huggingface_api-inference-community/docker_images/latent-to-image/app/main.py": {
+    "run_starlette_app": "run the starlette app that serves the latent-to-image pipeline via HTTP routes",
+    "get_pipeline": "get the cached pipeline instance for the configured TASK and MODEL_ID environment variables",
+    "configure_allowed_tasks": "configure the ALLOWED_TASKS dictionary to map task names to their pipeline classes",
+    "setup_middleware": "setup gzip and optional CORS middleware for the starlette application",
+    "reset_logging": "reset logging to debug level with timestamp and message format"
+  },
+  "huggingface_api-inference-community/docker_images/latent-to-image/app/timing.py": {
+    "create_timing_decorator": "create a timing decorator that logs function execution time in seconds",
+    "use_timing_on_slow_function": "use the timing decorator on a slow function to measure its execution duration",
+    "wrap_function_with_timing": "wrap any function with the timing decorator to log how long it takes to execute",
+    "review_timing_decorator": "review the timing decorator that logs function name and execution time via debug logging",
+    "refactor_timing_to_add_metrics": "refactor the timing decorator to support custom metrics collection beyond basic timing"
+  },
+  "huggingface_api-inference-community/docker_images/latent-to-image/app/validation.py": {
+    "test_str_to_bool": "test the str_to_bool function with strings like true, yes, and 1",
+    "refactor_str_to_bool": "refactor str_to_bool to return a boolean instead of a regex match object",
+    "review_str_to_bool": "review the str_to_bool function for edge cases and input validation",
+    "summarize_str_to_bool": "summarize the str_to_bool function that matches true, yes, or 1 strings",
+    "create_str_to_bool_wrapper": "create a wrapper function around str_to_bool that handles None and empty input"
+  },
+  "huggingface_api-inference-community/docker_images/latent-to-image/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test that the latent-to-image pipeline has at least one task enabled using PipelineTestCase",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise EnvironmentError when calling get_pipeline with invalid TASK env var",
+    "review_PipelineTestCase": "review the PipelineTestCase class that validates allowed tasks and unsupported task handling for latent-to-image",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping latent-to-image task to stable-diffusion-v1-5 model",
+    "refactor_PipelineTestCase_test_unsupported_tasks": "refactor test_unsupported_tasks to add additional task validation or custom error assertions"
+  },
+  "huggingface_api-inference-community/docker_images/latent-to-image/tests/test_api_latent_to_image.py": {
+    "test_latent_to_image_simple": "test the latent-to-image API by sending a base64-encoded PyTorch tensor and verifying the image response",
+    "test_latent_to_image_malformed_input": "test the latent-to-image API error handling by sending malformed base64 input and verifying a 400 response",
+    "test_TextToImageTestCase_setUp": "test the TextToImageTestCase setUp method that configures MODEL_ID and TASK environment variables for the app",
+    "test_TextToImageTestCase_setUpClass": "test the TextToImageTestCase setUpClass method that clears the get_pipeline cache before running tests",
+    "test_TextToImageTestCase_tearDown": "test the TextToImageTestCase tearDown method that restores original environment variables after each test"
+  },
+  "huggingface_api-inference-community/docker_images/latent-to-image/tests/test_docker_build.py": {
+    "use_cd_context_manager": "create a function that uses the cd context manager to temporarily change the working directory",
+    "run_docker_build_test": "run the DockerBuildTestCase to verify that the docker image can be built",
+    "test_docker_image_build": "test that running docker build in the project directory succeeds without errors",
+    "review_cd_class": "review the cd context manager class that changes and restores the working directory",
+    "summarize_docker_build_test": "summarize the DockerBuildTestCase class and its test_can_build_docker_image method"
+  },
+  "huggingface_api-inference-community/docker_images/mindspore/app/main.py": {
+    "run_starlette_app": "run the starlette app serving image classification inference via uvicorn",
+    "get_pipeline": "get the cached pipeline instance for the configured task and model id",
+    "configure_allowed_tasks": "configure the allowed tasks dictionary to map task names to pipeline classes",
+    "setup_middleware": "setup gzip and optional cors middleware for the starlette application",
+    "startup_event": "run the startup event that configures uvicorn logging and initializes the pipeline"
+  },
+  "huggingface_api-inference-community/docker_images/mindspore/app/pipelines/image_classification.py": {
+    "run_image_classification_pipeline": "run the ImageClassificationPipeline with a PIL image to get top 5 predicted class labels and scores",
+    "load_model_config_from_hf": "load a MindSpore model and its config from a HuggingFace model ID using snapshot_download",
+    "load_transform_func": "load a dataset transform function like mnist or cifar10 from a config dictionary",
+    "load_config_json": "load and parse a JSON configuration file and return the resulting dictionary",
+    "review_allowed_models": "review the ALLOWED_MODEL dictionary mapping LeNet5, ResNet50, and MobileNetV2 to their model constructors"
+  },
+  "huggingface_api-inference-community/docker_images/mindspore/tests/test_api.py": {
+    "run_PipelineTestCase": "run the PipelineTestCase unittest class to verify allowed tasks and unsupported task handling",
+    "test_PipelineTestCase_has_at_least_one_task_enabled": "test that at least one task is enabled in ALLOWED_TASKS using unittest",
+    "test_PipelineTestCase_unsupported_tasks": "test that unsupported tasks raise EnvironmentError when passed to get_pipeline",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for HuggingFace MindSpore pipeline validation",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping task names to model IDs for image classification"
+  },
+  "huggingface_api-inference-community/docker_images/mindspore/tests/test_api_image_classification.py": {
+    "test_image_classification_simple": "test the image classification API by sending a JPEG image and verifying the response contains label and score fields",
+    "test_image_classification_different_resolution": "test the image classification API with a different resolution image to verify consistent label and score output",
+    "read_sample_image": "read a sample image file from the samples directory and return its binary payload for API testing",
+    "setup_image_classification_test": "set up the test environment by configuring MODEL_ID and TASK environment variables for image classification",
+    "teardown_image_classification_test": "restore previous environment variables or delete MODEL_ID and TASK after running image classification tests"
+  },
+  "huggingface_api-inference-community/docker_images/mindspore/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project root directory",
+    "test_docker_build": "test that the docker image builds successfully using unittest and subprocess",
+    "create_cd_context_manager": "create a context manager that changes the working directory and restores it on exit",
+    "review_cd_class": "review the cd context manager class that handles temporary directory changes with os.chdir",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building docker images with custom build arguments"
+  },
+  "huggingface_api-inference-community/docker_images/nemo/app/main.py": {
+    "run_starlette_app": "run the starlette app with gzip middleware and optional cors for pipeline inference",
+    "get_pipeline": "get a cached pipeline instance by task name and model id from environment variables",
+    "configure_allowed_tasks": "configure the allowed tasks dictionary to map task names to pipeline classes",
+    "setup_startup_event": "setup the startup event to configure uvicorn logging and initialize the pipeline",
+    "add_cors_middleware": "add cors middleware to the starlette app when debug mode is enabled"
+  },
+  "huggingface_api-inference-community/docker_images/nemo/app/pipelines/automatic_speech_recognition.py": {
+    "build_asr_pipeline": "build a python module to create an automatic speech recognition pipeline using a NeMo ASR model from Hugging Face",
+    "run_asr_transcription": "run the AutomaticSpeechRecognitionPipeline to transcribe raw audio waveform data into text using a NeMo model",
+    "review_asr_model_loading": "review the AutomaticSpeechRecognitionPipeline class to understand how it loads and freezes a NeMo ASR model from a Hugging Face repo",
+    "refactor_audio_processing": "refactor the process_audio_file method to convert stereo audio to monochannel using librosa",
+    "summarize_asr_call_method": "summarize the __call__ method that transcribes audio by writing a temporary WAV file and calling the NeMo model transcribe function"
+  },
+  "huggingface_api-inference-community/docker_images/nemo/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test that the pipeline has at least one allowed task enabled using PipelineTestCase",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise an EnvironmentError when calling get_pipeline",
+    "run_pipeline_test_suite": "run the unittest test suite for Hugging Face inference pipeline validation",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for pipeline validation logic",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping tasks to model IDs"
+  },
+  "huggingface_api-inference-community/docker_images/nemo/tests/test_api_automatic_speech_recognition.py": {
+    "test_simple_asr": "test the automatic speech recognition API with a simple FLAC audio file",
+    "test_malformed_audio_asr": "test the ASR API returns 400 error for malformed audio files",
+    "test_dual_channel_asr": "test the ASR API handles dual channel OGG audio files correctly",
+    "test_webm_asr": "test the ASR API processes WebM audio files and returns transcribed text",
+    "review_asr_test_class": "review the AutomaticSpeecRecognitionTestCase class and its test methods for ASR API coverage"
+  },
+  "huggingface_api-inference-community/docker_images/nemo/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project directory",
+    "test_docker_build": "test that the docker image can be built successfully from the project root",
+    "cd_context_manager": "use the cd context manager to temporarily change the working directory",
+    "review_cd_class": "review the cd class context manager that changes and restores the working directory",
+    "run_docker_build_test": "run the DockerBuildTestCase to verify the docker image builds without errors"
+  },
+  "huggingface_api-inference-community/docker_images/open_clip/app/main.py": {
+    "run_starlette_app": "run the starlette app for zero-shot image classification inference via uvicorn",
+    "get_pipeline": "get the cached pipeline instance for the configured task and model id",
+    "configure_allowed_tasks": "configure the allowed tasks dictionary to map task names to pipeline classes",
+    "setup_middleware": "setup gzip and optional cors middleware for the starlette application",
+    "startup_event": "run the startup event to configure logging and initialize the pipeline"
+  },
+  "huggingface_api-inference-community/docker_images/open_clip/tests/test_api.py": {
+    "test_PipelineTestCase_has_at_least_one_task_enabled": "test the PipelineTestCase to verify at least one task is enabled in ALLOWED_TASKS",
+    "test_PipelineTestCase_unsupported_tasks": "test the PipelineTestCase to verify unsupported tasks raise EnvironmentError when calling get_pipeline",
+    "run_PipelineTestCase": "run the PipelineTestCase unittest class to validate all pipeline task tests pass",
+    "review_TESTABLE_MODELS": "review the TESTABLE_MODELS dictionary containing zero-shot-image-classification model IDs for the OpenCLIP pipeline",
+    "review_ALL_TASKS": "review the ALL_TASKS set listing all Hugging Face pipeline task names for validation"
+  },
+  "huggingface_api-inference-community/docker_images/open_clip/tests/test_api_zero_shot_image_classification.py": {
+    "test_zero_shot_classification_simple": "test the zero-shot image classification endpoint with a plane image and candidate labels",
+    "test_zero_shot_classification_different_resolution": "test the zero-shot image classification endpoint with a different resolution plane image",
+    "review_ZeroShotImageClassificationTestCase": "review the ZeroShotImageClassificationTestCase class for parameterized model testing and environment setup",
+    "refactor_read_helper": "refactor the read helper method to support additional image file formats from the samples directory",
+    "summarize_test_lifecycle": "summarize the setUp and tearDown methods that manage MODEL_ID and TASK environment variables"
+  },
+  "huggingface_api-inference-community/docker_images/open_clip/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project root directory",
+    "test_docker_build": "test that the docker image builds successfully using the DockerBuildTestCase unittest",
+    "use_cd_context_manager": "use the cd context manager to temporarily change the working directory in a with block",
+    "review_cd_class": "review the cd context manager class that saves and restores the current working directory",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building docker images with custom build arguments"
+  },
+  "huggingface_api-inference-community/docker_images/paddlenlp/app/main.py": {
+    "run_starlette_app": "run the Starlette app serving NLP inference pipelines via POST requests",
+    "get_pipeline": "get the cached pipeline instance for the TASK and MODEL_ID environment variables",
+    "configure_allowed_tasks": "configure the ALLOWED_TASKS dict to map task names to Pipeline classes",
+    "setup_middleware": "setup GZip and optional CORS middleware for the Starlette application",
+    "review_startup_event": "review the startup_event function that initializes logging and the pipeline"
+  },
+  "huggingface_api-inference-community/docker_images/paddlenlp/tests/test_api.py": {
+    "test_pipeline_tasks_enabled": "test that the PaddleNLP pipeline has at least one allowed task enabled",
+    "test_unsupported_tasks_error": "test that unsupported tasks raise an EnvironmentError when calling get_pipeline",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for PaddleNLP inference pipelines",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping pipeline tasks to PaddleCI tiny random models",
+    "refactor_ALL_TASKS": "refactor the ALL_TASKS set to remove duplicate task entries like feature-extraction and text-classification"
+  },
+  "huggingface_api-inference-community/docker_images/paddlenlp/tests/test_api_conversational.py": {
+    "test_conversational_api_simple": "test the conversational API endpoint with a two-round dialogue and validate response structure",
+    "test_conversational_multi_turn": "test multi-turn conversation by sending follow-up inputs with past_user_inputs and generated_responses history",
+    "test_conversational_response_structure": "test that the conversational API response contains generated_text, conversation, past_user_inputs, and generated_responses keys",
+    "review_conversational_test_case": "review the ConversationalTestCase class that parameterizes tests across multiple conversational models",
+    "test_conversational_parameterized_models": "test the conversational endpoint across all parameterized TESTABLE_MODELS for the conversational task"
+  },
+  "huggingface_api-inference-community/docker_images/paddlenlp/tests/test_api_fill_mask.py": {
+    "test_fill_mask_simple": "test the fill-mask API endpoint with a Chinese sentence containing a MASK token",
+    "test_fill_mask_malformed_input": "test the fill-mask API returns 400 when input lacks a MASK token",
+    "test_fill_mask_parameterized_models": "test the fill-mask API across multiple parameterized model IDs using parameterized_class",
+    "review_fill_mask_test_case": "review the FillMaskTestCase class that validates the fill-mask NLP task endpoint responses",
+    "refactor_fill_mask_test_setup": "refactor the FillMaskTestCase setUp and tearDown methods to manage MODEL_ID and TASK environment variables"
+  },
+  "huggingface_api-inference-community/docker_images/paddlenlp/tests/test_api_summarization.py": {
+    "test_summarization_single_input": "test the summarization API endpoint by sending a single text input and verifying the response contains summary_text",
+    "run_summarization_test_case": "run the parameterized SummarizationTestCase class to test summarization across multiple PaddleNLP models",
+    "review_summarization_test_setup": "review the setUp method that configures MODEL_ID and TASK environment variables for summarization tests",
+    "refactor_summarization_test_tear_down": "refactor the tearDown method to restore original environment variables after each summarization test",
+    "summarize_summarization_test_class": "summarize the SummarizationTestCase class that validates the summarization endpoint returns a list with summary_text keys"
+  },
+  "huggingface_api-inference-community/docker_images/paddlenlp/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project root directory",
+    "test_docker_build": "test that the docker image builds successfully using unittest and subprocess",
+    "create_cd_context_manager": "create a context manager that changes the working directory and restores it on exit",
+    "review_cd_class": "review the cd context manager class that uses os.chdir to switch directories temporarily",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building docker images with custom build arguments"
+  },
+  "huggingface_api-inference-community/docker_images/peft/app/idle.py": {
+    "run_live_check_loop": "run the async live check loop that monitors request activity and sends SIGTERM if idle",
+    "use_request_witnesses_context_manager": "use the request_witnesses context manager to track request start and end timestamps",
+    "review_live_check_loop": "review the live_check_loop function that aborts the worker process after exceeding the idle timeout",
+    "refactor_request_witnesses": "refactor the request_witnesses context manager to support custom timestamp tracking logic",
+    "summarize_idle_module": "summarize the idle module that manages GPU model unloading based on request activity timeouts"
+  },
+  "huggingface_api-inference-community/docker_images/peft/app/main.py": {
+    "run_starlette_inference_server": "run a Starlette server that serves Hugging Face PEFT model inference via POST routes",
+    "create_pipeline_from_env": "create a cached pipeline instance using TASK and MODEL_ID environment variables",
+    "configure_allowed_tasks": "configure the ALLOWED_TASKS dictionary to map task names to Pipeline classes",
+    "setup_startup_event": "setup an async startup event that initializes logging and starts the idle check loop",
+    "reset_logging_config": "reset the Python logging configuration to DEBUG level with timestamp format"
+  },
+  "huggingface_api-inference-community/docker_images/peft/app/timing.py": {
+    "create_function_timing": "create a decorator that logs the execution time of any wrapped function",
+    "refactor_function_with_timing": "refactor a slow function by adding the timing decorator to measure its execution time",
+    "review_timing_decorator": "review the timing decorator that wraps functions and logs execution duration via debug logging",
+    "summarize_timing": "summarize the timing decorator that measures and logs how long a function takes to execute",
+    "test_timing_decorator": "test the timing decorator by wrapping a function and verifying it logs execution time"
+  },
+  "huggingface_api-inference-community/docker_images/peft/tests/test_api.py": {
+    "test_PipelineTestCase_test_has_at_least_one_task_enabled": "test that the PEFT pipeline has at least one allowed task implemented",
+    "test_PipelineTestCase_test_unsupported_tasks": "test that unsupported tasks raise an EnvironmentError when calling get_pipeline",
+    "review_PipelineTestCase": "review the PipelineTestCase class that validates PEFT allowed tasks and unsupported task handling",
+    "run_PipelineTestCase": "run the unittest PipelineTestCase to verify PEFT pipeline task configuration",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping pipeline tasks to test model IDs"
+  },
+  "huggingface_api-inference-community/docker_images/peft/tests/test_api_text_generation.py": {
+    "run_text_generation_tests": "run the TextGenerationTestCase unittest to verify text generation API endpoints return correct responses",
+    "test_simple_text_generation": "test the text generation API with simple input strings in both JSON dict and raw formats",
+    "test_malformed_input_handling": "test that the text generation API returns a 400 error for malformed UTF-8 input bytes",
+    "review_text_generation_test_setup": "review the TextGenerationTestCase setUp and tearDown methods that manage MODEL_ID and TASK environment variables",
+    "review_skipif_decorator": "review the skipIf decorator that conditionally skips tests when text-generation is not in ALLOWED_TASKS"
+  },
+  "huggingface_api-inference-community/docker_images/pyannote_audio/app/main.py": {
+    "run_starlette_app": "run the starlette app with gzip middleware and optional cors for speech recognition inference",
+    "build_pipeline_from_env": "build a cached pipeline instance using the TASK and MODEL_ID environment variables",
+    "create_allowed_tasks_dict": "create a dictionary mapping task names like automatic-speech-recognition to their pipeline classes",
+    "configure_startup_event": "configure the startup event to initialize logging and eagerly load the pipeline",
+    "review_starlette_routes": "review the starlette routes that handle get status checks and post pipeline requests"
+  },
+  "huggingface_api-inference-community/docker_images/pyannote_audio/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test that the pyannote audio pipeline has at least one task enabled in ALLOWED_TASKS",
+    "test_unsupported_tasks_raise_error": "test that calling get_pipeline with an unsupported task raises an EnvironmentError",
+    "review_PipelineTestCase": "review the PipelineTestCase class that validates allowed and unsupported Hugging Face tasks",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping task names to pyannote model IDs",
+    "summarize_ALL_TASKS": "summarize the ALL_TASKS set containing all Hugging Face inference task types"
+  },
+  "huggingface_api-inference-community/docker_images/pyannote_audio/tests/test_api_automatic_speech_recognition.py": {
+    "test_simple_asr_flac": "test the automatic speech recognition API by sending a FLAC audio file and verifying the text response",
+    "test_malformed_audio_handling": "test that the ASR API returns a 400 error with a malformed soundfile message for bad audio",
+    "test_dual_channel_ogg_asr": "test the ASR API by sending a dual-channel OGG audio file and verifying the text response",
+    "test_webm_audio_asr": "test the ASR API by sending a WebM audio file and verifying the text response",
+    "read_audio_sample": "read an audio sample file from the samples directory and return its raw bytes payload"
+  },
+  "huggingface_api-inference-community/docker_images/sentence_transformers/app/main.py": {
+    "build_starlette_app": "build a Starlette app with gzip middleware and optional CORS for sentence transformer inference",
+    "create_get_pipeline": "create a cached pipeline factory that instantiates the correct pipeline class from the TASK environment variable",
+    "configure_allowed_tasks": "configure the ALLOWED_TASKS dictionary to map task names to their corresponding Pipeline subclasses",
+    "setup_startup_event": "setup an async startup event that configures uvicorn logging and initializes the inference pipeline",
+    "define_routes": "define Starlette routes with a GET status endpoint and a POST pipeline inference endpoint"
+  },
+  "huggingface_api-inference-community/docker_images/sentence_transformers/tests/test_api.py": {
+    "test_pipeline_tasks_enabled": "test that at least one pipeline task is enabled in the sentence transformers API",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise an EnvironmentError when calling get_pipeline",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for the sentence transformers API",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping pipeline tasks to model IDs",
+    "refactor_PipelineTestCase_test_unsupported_tasks": "refactor the test_unsupported_tasks method to add additional task validation checks"
+  },
+  "huggingface_api-inference-community/docker_images/sentence_transformers/tests/test_api_feature_extraction.py": {
+    "test_feature_extraction_simple": "test the feature extraction API endpoint with a valid sentence input and verify float embeddings",
+    "test_feature_extraction_malformed": "test the feature extraction API endpoint with malformed UTF-8 bytes and verify a 400 error response",
+    "test_feature_extraction_json_input": "test the feature extraction API by sending a JSON payload with an inputs key",
+    "test_feature_extraction_raw_input": "test the feature extraction API by sending raw text as the request body",
+    "review_feature_extraction_testcase": "review the FeatureExtractionTestCase class that sets up and tears down environment variables for model testing"
+  },
+  "huggingface_api-inference-community/docker_images/sentence_transformers/tests/test_api_sentence_similarity.py": {
+    "test_sentence_similarity_simple": "test the sentence similarity API by sending a source sentence and list of sentences and verifying float scores",
+    "test_sentence_similarity_missing_input": "test the sentence similarity API returns 400 when the sentences input field is missing",
+    "test_sentence_similarity_malformed_input": "test the sentence similarity API returns 400 when malformed binary data is sent as input",
+    "review_SentenceSimilarityTestCase": "review the SentenceSimilarityTestCase class that parameterizes tests across multiple sentence similarity models",
+    "test_sentence_similarity_two_formats": "test the sentence similarity API accepts inputs both nested under an inputs key and as a flat JSON body"
+  },
+  "huggingface_api-inference-community/docker_images/sentence_transformers/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project directory",
+    "test_docker_build": "test that the docker image builds successfully using the DockerBuildTestCase",
+    "use_cd_context_manager": "use the cd context manager to temporarily change the working directory",
+    "review_cd_class": "review the cd class context manager for changing directories safely",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building docker images with custom arguments"
+  },
+  "huggingface_api-inference-community/docker_images/setfit/app/main.py": {
+    "run_starlette_app": "run the Starlette app with gzip middleware and optional CORS for inference pipeline routing",
+    "get_pipeline": "get the cached inference pipeline instance for the TASK environment variable and model ID",
+    "get_model_id": "get the model ID from the MODEL_ID env var or resolve the cached revision path offline",
+    "configure_allowed_tasks": "configure the ALLOWED_TASKS dictionary to map task names to Pipeline class types",
+    "setup_startup_event": "setup the async startup event to configure logging and eagerly initialize the pipeline"
+  },
+  "huggingface_api-inference-community/docker_images/setfit/tests/test_api.py": {
+    "test_PipelineTestCase_has_at_least_one_task_enabled": "test the PipelineTestCase to verify at least one ML task is enabled in ALLOWED_TASKS",
+    "test_PipelineTestCase_unsupported_tasks": "test the PipelineTestCase to verify unsupported tasks raise an EnvironmentError when calling get_pipeline",
+    "review_PipelineTestCase": "review the PipelineTestCase class that validates allowed and unsupported ML pipeline tasks",
+    "run_PipelineTestCase_tests": "run the PipelineTestCase unittest suite to validate the setfit inference API pipeline configuration",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary mapping text-classification to a setfit MiniLM model ID"
+  },
+  "huggingface_api-inference-community/docker_images/setfit/tests/test_api_text_classification.py": {
+    "test_text_classification_simple": "test the text classification API endpoint with a simple input sentence",
+    "test_text_classification_malformed": "test the text classification API endpoint with malformed UTF-8 input bytes",
+    "test_TextClassificationTestCase": "test the TextClassificationTestCase class to verify text classification API responses",
+    "review_TextClassificationTestCase": "review the TextClassificationTestCase class and its test methods for text classification",
+    "refactor_TextClassificationTestCase": "refactor the TextClassificationTestCase class to add additional test cases for edge cases"
+  },
+  "huggingface_api-inference-community/docker_images/setfit/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build from the project root directory",
+    "test_docker_build": "test that the docker image builds successfully using unittest and subprocess",
+    "use_cd_context_manager": "use the cd context manager to temporarily change the working directory in a with block",
+    "review_cd_class": "review the cd class that implements __enter__ and __exit__ for directory switching",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building docker images with custom build arguments"
+  },
+  "huggingface_api-inference-community/docker_images/sklearn/app/main.py": {
+    "run_starlette_app": "run the Starlette app serving sklearn inference pipelines for tabular and text classification tasks",
+    "get_pipeline_by_task": "get a pipeline instance by task name like tabular-classification or text-classification using get_pipeline",
+    "configure_allowed_tasks": "configure the ALLOWED_TASKS dictionary to map task names to their Pipeline class implementations",
+    "setup_middleware": "setup GZipMiddleware and optional CORSMiddleware for the Starlette app by setting DEBUG environment variable",
+    "review_startup_event": "review the startup_event function that configures uvicorn logging and initializes the pipeline on app startup"
+  },
+  "huggingface_api-inference-community/docker_images/sklearn/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test that the sklearn pipeline has at least one task enabled using PipelineTestCase",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise EnvironmentError when calling get_pipeline with an invalid task",
+    "review_TESTABLE_MODELS": "review the TESTABLE_MODELS dictionary containing sklearn model IDs for tabular classification, regression, and text classification",
+    "review_TEST_CASES": "review the TEST_CASES dictionary mapping model IDs to their input output and configuration metadata",
+    "summarize_ALL_TASKS": "summarize the ALL_TASKS set listing all Hugging Face task types including tabular classification and text generation"
+  },
+  "huggingface_api-inference-community/docker_images/sklearn/tests/test_api_tabular_classification.py": {
+    "test_tabular_classification_success": "test the tabular classification API endpoint returns 200 status code with correct predictions",
+    "test_wrong_sklearn_version_warning": "test the tabular classification API raises unpickle estimator warnings for old sklearn models",
+    "test_cannot_load_model": "test the tabular classification API returns 400 error when model cannot be loaded",
+    "test_extra_columns_warning": "test the tabular classification API warns about unexpected or missing input columns",
+    "test_malformed_input": "test the tabular classification API returns 400 error for malformed non-JSON input data"
+  },
+  "huggingface_api-inference-community/docker_images/sklearn/tests/test_api_tabular_regression.py": {
+    "test_tabular_regression_success": "test the TabularRegressionTestCase to verify successful 200 response code for tabular regression predictions",
+    "test_wrong_sklearn_version_warning": "test the TabularRegressionTestCase to verify warnings are raised when using an old sklearn version",
+    "test_cannot_load_model": "test the TabularRegressionTestCase to verify error handling when a model cannot be loaded on the current sklearn version",
+    "test_extra_columns_warning": "test the TabularRegressionTestCase to verify warnings are raised for extra or missing columns in input data",
+    "test_malformed_input": "test the TabularRegressionTestCase to verify proper 400 error response when malformed input is sent to the API"
+  },
+  "huggingface_api-inference-community/docker_images/sklearn/tests/test_api_text_classification.py": {
+    "test_text_classification_success": "test the TextClassificationTestCase to verify a 200 response with label and score keys for text classification",
+    "test_wrong_sklearn_version_warning": "test the TextClassificationTestCase to verify a 400 response with unpickle estimator warnings for old sklearn models",
+    "test_cannot_load_model": "test the TextClassificationTestCase to verify a 400 error when a model cannot be loaded on the current sklearn version",
+    "test_malformed_input": "test the TextClassificationTestCase to verify a 400 response when sending malformed binary data to the inference API",
+    "review_text_classification_test_setup": "review the TextClassificationTestCase setUp and tearDown methods that manage MODEL_ID and TASK environment variables for parameterized tests"
+  },
+  "huggingface_api-inference-community/docker_images/sklearn/tests/test_docker_build.py": {
+    "build_docker_image_sklearn": "run docker build command to build the sklearn docker image from the project directory",
+    "test_docker_build": "run the unittest test case that verifies the sklearn docker image builds successfully",
+    "use_cd_context_manager": "use the cd context manager to temporarily change the working directory in a with block",
+    "review_cd_class": "review the cd context manager class that saves and restores the current working directory",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building docker images with custom build arguments"
+  },
+  "huggingface_api-inference-community/docker_images/sklearn/tests/generators/generate.py": {
+    "run_generate_test_artifacts": "run the script with a sklearn version argument to train models and push them to Hugging Face Hub",
+    "push_repo_to_hf_hub": "push a local sklearn model repository folder to the skops-tests org on Hugging Face Hub",
+    "create_repos_with_and_without_config": "create Hugging Face Hub repos for a trained estimator with and without a config file",
+    "get_tabular_classifiers": "yield sklearn tabular classifier pipelines like logistic regression and histogram gradient boosting",
+    "save_sample_and_predict": "save model input samples as JSON and write model predictions to output JSON files"
+  },
+  "huggingface_api-inference-community/docker_images/spacy/app/main.py": {
+    "run_spacy_inference_server": "run a starlette server for spaCy NLP inference with gzip and optional CORS middleware",
+    "get_pipeline_task": "get a cached NLP pipeline instance by task name and model ID from environment variables",
+    "add_allowed_task": "add a new NLP task to the ALLOWED_TASKS dictionary mapping task names to pipeline classes",
+    "configure_cors_middleware": "configure CORS middleware on the starlette app by setting the DEBUG environment variable to 1",
+    "review_startup_event": "review the startup event that configures uvicorn logging and initializes the NLP pipeline"
+  },
+  "huggingface_api-inference-community/docker_images/spacy/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test the PipelineTestCase to verify at least one spaCy pipeline task is enabled",
+    "test_unsupported_tasks_raise_error": "test that calling get_pipeline with an unsupported task raises an EnvironmentError",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for spaCy pipeline validation",
+    "refactor_TESTABLE_MODELS": "refactor the TESTABLE_MODELS dictionary to add or remove spaCy model mappings for tasks",
+    "summarize_ALL_TASKS": "summarize the ALL_TASKS set containing all supported HuggingFace inference task types"
+  },
+  "huggingface_api-inference-community/docker_images/spacy/tests/test_api_sentence_similarity.py": {
+    "test_sentence_similarity_simple": "test the sentence similarity API by sending a source sentence and list of sentences to get similarity scores",
+    "test_sentence_similarity_missing_input": "test the sentence similarity API returns 400 when the sentences list is missing from the input",
+    "test_sentence_similarity_malformed_input": "test the sentence similarity API returns 400 when malformed binary data is sent as input",
+    "review_SentenceSimilarityTestCase": "review the SentenceSimilarityTestCase class that tests the sentence-similarity endpoint with setup and teardown for model environment variables",
+    "summarize_test_api_sentence_similarity": "summarize the test suite for the sentence-similarity API covering simple usage, missing inputs, and malformed input scenarios"
+  },
+  "huggingface_api-inference-community/docker_images/spacy/tests/test_api_text_classification.py": {
+    "test_text_classification_simple": "test the text classification API endpoint with a simple sentence input and verify label and score output",
+    "test_text_classification_malformed_input": "test the text classification API endpoint with malformed UTF-8 bytes and verify a 400 error response",
+    "test_text_classification_json_input": "test the text classification API by sending a JSON object with an inputs key containing the text",
+    "test_text_classification_plain_input": "test the text classification API by sending a plain string directly as the request body",
+    "review_text_classification_test_setup": "review the TextClassificationTestCase setUp and tearDown methods that manage MODEL_ID and TASK environment variables"
+  },
+  "huggingface_api-inference-community/docker_images/spacy/tests/test_api_token_classification.py": {
+    "test_token_classification_simple": "test the token classification API endpoint with a simple text input string",
+    "test_token_classification_malformed_input": "test the token classification API endpoint with malformed UTF-8 byte input",
+    "test_token_classification_json_input": "test the token classification API by sending a JSON payload with an inputs key",
+    "test_token_classification_plain_input": "test the token classification API by sending a plain string as the request body",
+    "review_token_classification_test_case": "review the TokenClassificationTestCase class that sets up and tears down environment variables for testing"
+  },
+  "huggingface_api-inference-community/docker_images/spacy/tests/test_docker_build.py": {
+    "build_docker_image_spacy": "run docker build in the spacy project root directory to create a docker image",
+    "test_docker_build": "test that the spacy docker image can be built successfully using unittest",
+    "create_cd_context_manager": "create a context manager that changes the working directory and restores it on exit",
+    "use_cd_context_manager": "use the cd context manager to temporarily switch directories inside a with block",
+    "review_cd_class": "review the cd class that implements __enter__ and __exit__ for directory switching"
+  },
+  "huggingface_api-inference-community/docker_images/span_marker/app/main.py": {
+    "run_starlette_app": "run the starlette app with gzip middleware and optional cors for token classification inference",
+    "get_pipeline": "get a cached pipeline instance for the task and model id from environment variables",
+    "configure_allowed_tasks": "configure the allowed tasks dictionary to map task names to pipeline classes",
+    "setup_startup_event": "setup the startup event to configure uvicorn logging and initialize the pipeline",
+    "configure_middleware": "configure gzip and optional cors middleware for the starlette application based on debug mode"
+  },
+  "huggingface_api-inference-community/docker_images/span_marker/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test that the span marker pipeline has at least one task enabled using PipelineTestCase",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise an EnvironmentError when calling get_pipeline",
+    "run_pipeline_test_case": "run the PipelineTestCase unittest class to validate allowed and unsupported tasks for the span marker model",
+    "review_testable_models_dict": "review the TESTABLE_MODELS dictionary mapping token classification to the span marker bert tiny model",
+    "refactor_all_tasks_set": "refactor the ALL_TASKS set to add or remove supported HuggingFace inference tasks"
+  },
+  "huggingface_api-inference-community/docker_images/span_marker/tests/test_api_token_classification.py": {
+    "test_token_classification_simple": "test the token classification API endpoint with a simple text input string",
+    "test_token_classification_malformed": "test the token classification API endpoint with malformed UTF-8 binary data",
+    "test_token_classification_json_input": "test the token classification API by sending JSON input with an inputs key",
+    "test_token_classification_raw_input": "test the token classification API by sending raw string input directly",
+    "test_token_classification_response_schema": "test that the token classification response contains entity_group, word, start, end, and score keys"
+  },
+  "huggingface_api-inference-community/docker_images/span_marker/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project root directory",
+    "test_docker_build": "test that the docker image builds successfully using the DockerBuildTestCase class",
+    "use_cd_context_manager": "use the cd context manager to temporarily change the working directory in a with block",
+    "review_cd_class": "review the cd context manager class that saves and restores the current working directory",
+    "refactor_cd_class": "refactor the cd context manager to support additional path expansion or error handling"
+  },
+  "huggingface_api-inference-community/docker_images/speechbrain/app/common.py": {
+    "get_model_type": "get the SpeechBrain model type for a HuggingFace model by reading its config",
+    "get_vocoder_model_id": "get the vocoder model ID associated with a SpeechBrain model from its config",
+    "list_model_types": "list all available SpeechBrain model types like ENCODERASR, WHISPERASR, and TACOTRON2",
+    "review_ModelType": "review the ModelType enum to understand SpeechBrain model categories like ASR and TTS",
+    "refactor_get_type": "refactor get_type to cache HfApi model_info calls and reduce redundant API requests"
+  },
+  "huggingface_api-inference-community/docker_images/speechbrain/app/main.py": {
+    "run_starlette_app": "run the Starlette app that serves audio and speech inference pipelines via HTTP routes",
+    "get_pipeline": "get a cached Pipeline instance by reading TASK and MODEL_ID environment variables",
+    "configure_allowed_tasks": "configure the ALLOWED_TASKS dict to map task names to SpeechBrain pipeline classes",
+    "setup_cors_middleware": "setup CORS middleware on the Starlette app when DEBUG environment variable is set to 1",
+    "startup_event": "run the async startup event that configures uvicorn logging and initializes the pipeline"
+  },
+  "huggingface_api-inference-community/docker_images/speechbrain/app/pipelines/audio_to_audio.py": {
+    "run_audio_source_separation": "run audio source separation on a waveform using SepformerSeparation model",
+    "run_speech_enhancement": "run speech enhancement on a waveform using SpectralMaskEnhancement or WaveformEnhancement model",
+    "create_audio_pipeline": "create an AudioToAudioPipeline instance from a Hugging Face model ID",
+    "review_separate_method": "review the separate method that normalizes and transposes separated audio sources",
+    "test_enhance_method": "test the enhance method that processes audio through the enhancement model"
+  },
+  "huggingface_api-inference-community/docker_images/speechbrain/tests/test_api.py": {
+    "test_pipeline_allowed_tasks": "test that the speechbrain pipeline has at least one allowed task enabled",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise an EnvironmentError when calling get_pipeline",
+    "review_TESTABLE_MODELS": "review the TESTABLE_MODELS dictionary mapping task types to speechbrain model IDs",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for speechbrain API validation",
+    "summarize_ALL_TASKS": "summarize the ALL_TASKS set containing all possible speechbrain pipeline task types"
+  },
+  "huggingface_api-inference-community/docker_images/speechbrain/tests/test_api_audio_classification.py": {
+    "test_audio_classification_simple": "test the audio classification API with a simple FLAC audio file and verify label score output",
+    "test_audio_classification_malformed": "test the audio classification API with malformed audio and verify it returns a 400 error",
+    "test_audio_classification_dual_channel": "test the audio classification API with a dual channel OGG audio file and verify label score output",
+    "test_audio_classification_webm": "test the audio classification API with a WebM audio file and verify label score output",
+    "read_audio_sample": "read an audio sample file from the samples directory and return its raw bytes payload"
+  },
+  "huggingface_api-inference-community/docker_images/speechbrain/tests/test_api_audio_to_audio.py": {
+    "test_audio_to_audio_simple": "test the audio-to-audio API with a FLAC audio file and verify the response",
+    "test_audio_to_audio_malformed": "test the audio-to-audio API with malformed audio and verify it returns a 400 error",
+    "test_audio_to_audio_dual_channel": "test the audio-to-audio API with a dual channel OGG audio file",
+    "test_audio_to_audio_webm": "test the audio-to-audio API with a WebM audio file and verify the response",
+    "read_audio_sample": "read an audio sample file from the samples directory and return its raw bytes"
+  },
+  "huggingface_api-inference-community/docker_images/speechbrain/tests/test_api_automatic_speech_recognition.py": {
+    "test_asr_simple_flac": "test the automatic speech recognition API with a simple FLAC audio file and verify text output",
+    "test_asr_malformed_audio": "test the automatic speech recognition API with malformed audio and verify it returns a 400 error",
+    "test_asr_dual_channel_ogg": "test the automatic speech recognition API with a dual channel OGG audio file and verify text output",
+    "test_asr_webm_audio": "test the automatic speech recognition API with a WebM audio file and verify text output",
+    "review_asr_test_class": "review the AutomaticSpeecRecognitionTestCase class and its parameterized test setup for speech recognition models"
+  },
+  "huggingface_api-inference-community/docker_images/speechbrain/tests/test_api_text2text_generation.py": {
+    "test_text2text_generation_api": "test the text2text-generation API endpoint by sending text input and verifying phoneme output",
+    "run_parameterized_test_class": "run the parameterized TextToSpeechTestCase class against multiple text2text-generation models",
+    "test_simple_endpoint": "test the simple text2text-generation endpoint with an English sentence and assert phoneme results",
+    "setup_test_environment": "set up the test environment by configuring MODEL_ID and TASK environment variables",
+    "clear_pipeline_cache": "clear the get_pipeline cache before running the test class to ensure fresh model loading"
+  },
+  "huggingface_api-inference-community/docker_images/speechbrain/tests/test_api_text_to_speech.py": {
+    "test_text_to_speech_simple": "test the TextToSpeechTestCase to send text input and verify audio/flac response with valid audio shape",
+    "test_text_to_speech_malformed_input": "test the TextToSpeechTestCase to send malformed bytes and verify a 400 error with UTF-8 decode message",
+    "run_text_to_speech_tests": "run the parameterized TextToSpeechTestCase tests against all speechbrain text-to-speech models in TESTABLE_MODELS",
+    "review_text_to_speech_test_setup": "review the TextToSpeechTestCase setUp and tearDown methods that manage MODEL_ID and TASK environment variables",
+    "refactor_text_to_speech_test_validation": "refactor the test_simple method to use ffmpeg_read for validating the audio response content and shape"
+  },
+  "huggingface_api-inference-community/docker_images/speechbrain/tests/test_docker_build.py": {
+    "build_docker_image": "run docker build from the project root directory using the cd context manager",
+    "test_docker_build": "test that the docker image builds successfully from the speechbrain project directory",
+    "create_cd_context_manager": "create a context manager that temporarily changes the working directory and restores it on exit",
+    "refactor_cd_class": "refactor the cd context manager to support additional path normalization options",
+    "review_docker_build_test": "review the DockerBuildTestCase class and its test_can_build_docker_image method for correctness"
+  },
+  "huggingface_api-inference-community/docker_images/stanza/app/main.py": {
+    "run_stanza_inference_server": "run the stanza token classification inference server using uvicorn with the Starlette app",
+    "configure_allowed_tasks": "configure the ALLOWED_TASKS dictionary to map task names to their pipeline classes",
+    "get_pipeline_function": "call get_pipeline to instantiate the cached pipeline based on TASK and MODEL_ID environment variables",
+    "setup_starlette_routes": "setup Starlette routes for status check GET and pipeline inference POST endpoints",
+    "configure_middleware": "configure GZipMiddleware and optional CORSMiddleware for the Starlette application"
+  },
+  "huggingface_api-inference-community/docker_images/stanza/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test that the Stanza pipeline has at least one task enabled via ALLOWED_TASKS",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise an EnvironmentError when calling get_pipeline",
+    "run_pipeline_test_case": "run the PipelineTestCase unittest to validate Stanza inference pipeline task support",
+    "review_testable_models": "review the TESTABLE_MODELS dictionary containing token-classification examples for English and Turkish Stanza models",
+    "review_all_tasks": "review the ALL_TASKS set listing all supported HuggingFace inference task types"
+  },
+  "huggingface_api-inference-community/docker_images/stanza/tests/test_api_token_classification.py": {
+    "test_token_classification_simple": "test the token classification API endpoint with valid text inputs and verify entity group responses",
+    "test_token_classification_malformed": "test the token classification API endpoint with malformed UTF-8 input and verify 400 error response",
+    "test_token_classification_json_input": "test the token classification API by sending JSON inputs and checking entity group word start end score keys",
+    "test_token_classification_direct_input": "test the token classification API by sending raw text input and verifying the response structure",
+    "review_token_classification_testcase": "review the TokenClassificationTestCase class and its parameterized test setup for token classification models"
+  },
+  "huggingface_api-inference-community/docker_images/stanza/tests/test_docker_build.py": {
+    "build_docker_image": "build a docker image by running docker build in the project directory",
+    "test_docker_build": "test that the docker image builds successfully using unittest",
+    "create_cd_context_manager": "create a context manager that temporarily changes the working directory and restores it on exit",
+    "review_cd_class": "review the cd context manager class for safe directory change and restoration",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building docker images from a configurable path"
+  },
+  "huggingface_api-inference-community/docker_images/timm/app/main.py": {
+    "build_starlette_app": "build a Starlette app with gzip middleware and CORS support for image classification inference",
+    "create_pipeline_route": "create POST and GET routes for the image classification pipeline using api_inference_community",
+    "run_get_pipeline": "run the cached get_pipeline function to instantiate an image classification pipeline from environment variables",
+    "refactor_allowed_tasks": "refactor the ALLOWED_TASKS dictionary to register additional pipeline types for new inference tasks",
+    "review_startup_event": "review the startup_event async handler that configures uvicorn logging and initializes the pipeline"
+  },
+  "huggingface_api-inference-community/docker_images/timm/tests/test_api.py": {
+    "test_pipeline_has_task_enabled": "test the PipelineTestCase to verify at least one task is enabled in ALLOWED_TASKS",
+    "test_unsupported_tasks_raise_error": "test that unsupported tasks raise EnvironmentError when calling get_pipeline",
+    "review_PipelineTestCase": "review the PipelineTestCase class and its test methods for Hugging Face inference pipeline validation",
+    "summarize_TESTABLE_MODELS": "summarize the TESTABLE_MODELS dictionary containing image-classification model IDs for testing",
+    "refactor_PipelineTestCase_test_unsupported_tasks": "refactor test_unsupported_tasks to add additional unsupported task scenarios"
+  },
+  "huggingface_api-inference-community/docker_images/timm/tests/test_api_image_classification.py": {
+    "test_image_classification_simple": "test the image classification API endpoint with a sample JPEG image and validate the response",
+    "test_image_classification_different_resolution": "test the image classification API with a different resolution image to verify robustness",
+    "read_sample_image": "read a sample image file from the samples directory and return its binary payload",
+    "setup_image_classification_test": "set environment variables for model ID and task to configure the image classification pipeline",
+    "teardown_image_classification_test": "restore original environment variables after running image classification tests"
+  },
+  "huggingface_api-inference-community/docker_images/timm/tests/test_docker_build.py": {
+    "test_docker_image_build": "test that the docker image builds successfully from the project root directory",
+    "run_cd_context_manager": "run a block of code in a different working directory using the cd context manager",
+    "review_cd_class": "review the cd context manager class that temporarily changes the current working directory",
+    "refactor_docker_build_test": "refactor the DockerBuildTestCase to support building docker images with custom build arguments",
+    "summarize_docker_build_testcase": "summarize the DockerBuildTestCase class and its test_can_build_docker_image method"
+  },
+  "huggingface_api-inference-community/scripts/export_tasks.py": {
+    "run_export_tasks": "run the script to export a library to supported tasks mapping in JSON format",
+    "traverse_global_assignments": "traverse all global assignments in a Python file and apply a handler callback to each",
+    "extract_tasks": "extract supported task keys from an ALLOWED_TASKS variable in a library's source code",
+    "summarize_lib_to_task_map": "summarize the library to task mapping defaultdict that stores each library's supported tasks",
+    "review_traverse_global_assignments": "review the traverse_global_assignments function that parses AST and handles both annotated and plain assignments"
+  },
+  "huggingface_api-inference-community/tests/test_audio.py": {
+    "test_normalize_payload_audio": "test normalize_payload_audio with a FLAC file at 16000Hz sampling rate",
+    "test_normalize_audio_different_sampling": "test normalize_payload_audio with a FLAC file at 48000Hz sampling rate",
+    "test_malformed_audio_handling": "test that normalize_payload_audio raises ValueError on malformed audio input",
+    "test_ffmpeg_convert_flac": "test ffmpeg_convert to encode a waveform array back to FLAC bytes",
+    "test_ffmpeg_convert_wav": "test ffmpeg_convert to encode a waveform array back to WAV bytes"
+  },
+  "huggingface_api-inference-community/tests/test_dockers.py": {
+    "create_docker_image": "create a docker image for a given ML framework by building from the docker_images directory",
+    "test_framework_docker": "test a framework docker container by sending various HTTP requests to validate inference endpoints",
+    "test_framework_invalid": "test that a framework docker container returns error codes for invalid task and model inputs",
+    "test_framework_batch": "run a batch inference test on a framework docker container using a HuggingFace dataset",
+    "use_docker_popen": "use the DockerPopen context manager to run and auto-terminate a docker container process"
+  },
+  "huggingface_api-inference-community/tests/test_hub.py": {
+    "test_hub_model_info_offline": "test the hub_model_info function by downloading a model snapshot and querying it in offline mode",
+    "test_hub_model_info_online": "test the hub_model_info function against the Hugging Face Hub API in online mode",
+    "test_hub_model_info_peft_model": "test the hub_model_info function with a PEFT model and verify library name and pipeline tag",
+    "review_HubTestCase": "review the HubTestCase class and its test methods for offline and online model info retrieval",
+    "summarize_hub_model_info_tests": "summarize the test cases that validate hub_model_info returns correct ModelInfo attributes in offline and online modes"
+  },
+  "huggingface_api-inference-community/tests/test_image.py": {
+    "test_normalize_payload_image_original": "test the normalize_payload_image function with a 300x200 plane.jpg sample image file",
+    "test_normalize_payload_image_secondary": "test the normalize_payload_image function with a 2560x1440 plane2.jpg sample image file",
+    "run_validation_test_case": "run the ValidationTestCase unittest to verify image payload normalization returns correct PIL images",
+    "review_validation_test_case": "review the ValidationTestCase class and its test methods for image normalization validation",
+    "refactor_validation_test_case": "refactor the ValidationTestCase to add additional image format tests for normalize_payload_image"
+  },
+  "huggingface_api-inference-community/tests/test_nlp.py": {
+    "test_normalize_payload_nlp_question_answering": "test normalize_payload_nlp with question-answering inputs including question and context",
+    "test_normalize_payload_nlp_sentence_similarity": "test normalize_payload_nlp with sentence-similarity inputs including source sentence and sentences list",
+    "test_normalize_payload_nlp_table_question_answering": "test normalize_payload_nlp with table-question-answering inputs including query and table data",
+    "test_normalize_payload_nlp_summarization_params": "test normalize_payload_nlp with summarization parameters like min_length and max_length",
+    "test_normalize_payload_nlp_text_generation_params": "test normalize_payload_nlp with text-generation parameters like top_k, top_p, and temperature"
+  },
+  "huggingface_api-inference-community/tests/test_normalizers.py": {
+    "test_speaker_diarization_normalize": "test the speaker_diarization_normalize function with a torch tensor, sample rate, and speaker labels",
+    "test_speaker_diarization_dummy": "test speaker_diarization_normalize with an all-zero tensor to verify it returns an empty list",
+    "test_speaker_diarization_3_speakers": "test speaker_diarization_normalize with 3 speakers and verify ValueError on mismatched speaker count",
+    "run_NormalizersTestCase": "run the NormalizersTestCase unit tests to validate speaker diarization normalization logic",
+    "review_speaker_diarization_normalize": "review the speaker_diarization_normalize function for correct handling of multi-speaker torch tensors"
+  },
+  "huggingface_api-inference-community/tests/test_routes.py": {
+    "test_pipeline_route_text_classification": "test the pipeline_route handler with a text classification task and verify JSON response",
+    "test_pipeline_route_invalid_task": "test the pipeline_route handler returns 400 when given an unrecognized task name",
+    "test_pipeline_route_tts_audio_formats": "test the pipeline_route handler for text-to-speech with flac, wav, and ogg audio output formats",
+    "test_pipeline_route_audio_to_audio": "test the pipeline_route handler for audio-to-audio tasks with label metadata in the JSON response",
+    "test_pipeline_route_image_classification": "test the pipeline_route handler for image classification by posting raw image bytes and verifying results"
+  }
+}

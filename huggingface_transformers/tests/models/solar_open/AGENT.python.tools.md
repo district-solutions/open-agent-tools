@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/solar_open/test_modeling_solar_open.py
+
+Prompts
+
+```
+['test SolarOpenConfig overrides partial_rotary_factor to 1.0 and rope_theta to 1_000_000 when rope_parameters is partially initialized', 'test SolarOpenForCausalLM batch generation with dummy bf16 model on CUDA and XPU devices', 'create a SolarOpenModelTester instance with configurable MoE parameters like n_routed_experts and moe_intermediate_size', 'test SolarOpenModelTest verifies model initialization with split percentages 0.5, 0.85, and 0.9 for offloading', 'run SolarOpenIntegrationTest batch generation sanity check with SSON9/solar-open-tiny-dummy model using eager experts implementation']
+```
+
+Usage
+
+```
+{'test_rope_parameters_partially_initialized': 'test SolarOpenConfig overrides partial_rotary_factor to 1.0 and rope_theta to 1_000_000 when rope_parameters is partially initialized', 'test_batch_generation_dummy_bf16': 'test SolarOpenForCausalLM batch generation with dummy bf16 model on CUDA and XPU devices', 'create_SolarOpenModelTester': 'create a SolarOpenModelTester instance with configurable MoE parameters like n_routed_experts and moe_intermediate_size', 'test_model_initialization': 'test SolarOpenModelTest verifies model initialization with split percentages 0.5, 0.85, and 0.9 for offloading', 'run_integration_test': 'run SolarOpenIntegrationTest batch generation sanity check with SSON9/solar-open-tiny-dummy model using eager experts implementation'}
+```
+

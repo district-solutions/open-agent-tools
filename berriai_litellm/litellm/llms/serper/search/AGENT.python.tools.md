@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/serper/search/transformation.py
+
+Prompts
+
+```
+['build a call to SerperSearchConfig.ui_friendly_name to get the UI name string for Serper', 'test SerperSearchConfig.validate_environment to validate the SERPER_API_KEY and return headers dict', 'build a Serper API endpoint URL using SerperSearchConfig.get_complete_url with optional api_base override', 'run SerperSearchConfig.transform_search_request to convert a query string and optional params into Serper API request format', 'refactor SerperSearchConfig.transform_search_response to map raw Serper HTTP response into unified SearchResponse format']
+```
+
+Usage
+
+```
+{'build_SerperSearchConfig_ui_friendly_name': 'build a call to SerperSearchConfig.ui_friendly_name to get the UI name string for Serper', 'test_validate_environment': 'test SerperSearchConfig.validate_environment to validate the SERPER_API_KEY and return headers dict', 'build_get_complete_url': 'build a Serper API endpoint URL using SerperSearchConfig.get_complete_url with optional api_base override', 'run_transform_search_request': 'run SerperSearchConfig.transform_search_request to convert a query string and optional params into Serper API request format', 'refactor_transform_search_response': 'refactor SerperSearchConfig.transform_search_response to map raw Serper HTTP response into unified SearchResponse format'}
+```
+

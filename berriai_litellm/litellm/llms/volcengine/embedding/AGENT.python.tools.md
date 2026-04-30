@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/volcengine/embedding/transformation.py
+
+Prompts
+
+```
+['build the VolcEngineEmbeddingConfig.get_complete_url method to construct the full API endpoint URL for embedding calls', 'create a VolcEngineEmbeddingConfig.transform_embedding_request to convert OpenAI embedding input into Volcengine request format', 'test the VolcEngineEmbeddingConfig.map_openai_params method to map OpenAI embedding parameters to Volcengine format', 'summarize the VolcEngineEmbeddingConfig.transform_embedding_response method that converts Volcengine API responses to EmbeddingResponse format', 'review the VolcEngineEmbeddingConfig.validate_environment method that checks for required API key and returns authenticated headers']
+```
+
+Usage
+
+```
+{'build_get_complete_url': 'build the VolcEngineEmbeddingConfig.get_complete_url method to construct the full API endpoint URL for embedding calls', 'create_transform_embedding_request': 'create a VolcEngineEmbeddingConfig.transform_embedding_request to convert OpenAI embedding input into Volcengine request format', 'test_map_openai_params': 'test the VolcEngineEmbeddingConfig.map_openai_params method to map OpenAI embedding parameters to Volcengine format', 'summarize_transform_embedding_response': 'summarize the VolcEngineEmbeddingConfig.transform_embedding_response method that converts Volcengine API responses to EmbeddingResponse format', 'review_validate_environment': 'review the VolcEngineEmbeddingConfig.validate_environment method that checks for required API key and returns authenticated headers'}
+```
+

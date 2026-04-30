@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/types/proxy/guardrails/guardrail_hooks/openai/openai_moderation.py
+
+Prompts
+
+```
+['create an OpenAI Moderation guardrail config model with api_key and api_base settings', 'test the get_user_prompt method that extracts the last consecutive block of user messages from a conversation', 'run the async_make_request method to scan input text via the OpenAI Moderation API for harmful content', 'build an OpenAI Moderation guardrail instance with guardrail_name, api_key, and model configuration', 'review the get_config_model static method that returns the OpenAIModerationGuardrailConfigModel pydantic model']
+```
+
+Usage
+
+```
+{'create_openai_moderation_guardrail_config': 'create an OpenAI Moderation guardrail config model with api_key and api_base settings', 'test_get_user_prompt': 'test the get_user_prompt method that extracts the last consecutive block of user messages from a conversation', 'run_async_make_request': 'run the async_make_request method to scan input text via the OpenAI Moderation API for harmful content', 'build_openai_moderation_guardrail': 'build an OpenAI Moderation guardrail instance with guardrail_name, api_key, and model configuration', 'review_get_config_model': 'review the get_config_model static method that returns the OpenAIModerationGuardrailConfigModel pydantic model'}
+```
+

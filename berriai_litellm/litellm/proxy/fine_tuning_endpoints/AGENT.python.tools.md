@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/proxy/fine_tuning_endpoints/endpoints.py
+
+Prompts
+
+```
+['create a fine-tuning job from a given dataset with model, training file, and hyperparameters', 'retrieve a fine-tuning job by its ID and optional custom_llm_provider', 'list fine-tuning jobs for the organization with optional provider and model name filters', 'cancel a running fine-tuning job by its ID', 'set the fine-tuning configuration with provider settings and environment variable resolution']
+```
+
+Usage
+
+```
+{'create_fine_tuning_job': 'create a fine-tuning job from a given dataset with model, training file, and hyperparameters', 'retrieve_fine_tuning_job': 'retrieve a fine-tuning job by its ID and optional custom_llm_provider', 'list_fine_tuning_jobs': 'list fine-tuning jobs for the organization with optional provider and model name filters', 'cancel_fine_tuning_job': 'cancel a running fine-tuning job by its ID', 'set_fine_tuning_config': 'set the fine-tuning configuration with provider settings and environment variable resolution'}
+```
+

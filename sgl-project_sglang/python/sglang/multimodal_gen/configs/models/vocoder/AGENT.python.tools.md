@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/python/sglang/multimodal_gen/configs/models/vocoder/base.py
+
+Prompts
+
+```
+['create a VocoderArchConfig with custom in_channels, hidden_channels, and out_channels values', 'build a VocoderConfig instance with a VocoderArchConfig for vocoder model setup', 'create a VocoderConfig from argparse CLI arguments using from_cli_args', 'test the VocoderArchConfig default values for in_channels, hidden_channels, and out_channels', 'review the VocoderConfig dataclass and its from_cli_args method for CLI argument parsing']
+```
+
+Usage
+
+```
+{'create_VocoderArchConfig': 'create a VocoderArchConfig with custom in_channels, hidden_channels, and out_channels values', 'build_VocoderConfig': 'build a VocoderConfig instance with a VocoderArchConfig for vocoder model setup', 'create_from_cli_args': 'create a VocoderConfig from argparse CLI arguments using from_cli_args', 'test_VocoderArchConfig_defaults': 'test the VocoderArchConfig default values for in_channels, hidden_channels, and out_channels', 'review_VocoderConfig': 'review the VocoderConfig dataclass and its from_cli_args method for CLI argument parsing'}
+```
+

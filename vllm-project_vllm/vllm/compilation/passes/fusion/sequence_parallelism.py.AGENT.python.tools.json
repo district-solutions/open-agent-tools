@@ -1,0 +1,7 @@
+{
+    "calculate_SP_threshold": "calculate the minimum token threshold for applying sequence parallelism given hidden_size, tp_size, and element_size",
+    "create_sequence_parallelism_pass": "create a SequenceParallelismPass that transforms AllReduce+RMSNorm patterns into ReduceScatter+RMSNorm+AllGather for sequence parallelism",
+    "register_all_reduce_rmsnorm_pattern": "register a FirstAllReduceRMSNormPattern that replaces all_reduce followed by rms_norm with reduce_scatter, rms_norm, and all_gather",
+    "register_fused_rmsnorm_pattern": "register a MiddleAllReduceRMSNormPattern that handles fused add rms_norm with all_reduce in the middle of a computation",
+    "test_fp8_quant_pattern": "test a FirstAllReduceRMSNormStaticFP8Pattern that handles rms_norm followed by static fp8 quantization with sequence parallelism"
+}

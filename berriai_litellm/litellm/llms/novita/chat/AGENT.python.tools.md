@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/novita/chat/transformation.py
+
+Prompts
+
+```
+['validate the NovitaConfig environment by setting API key and headers for a chat completion call', 'create a NovitaConfig instance to configure OpenAI-compatible chat completions for Novita AI', 'build request headers with Bearer token and X-Novita-Source for Novita AI API calls', 'test the validate_environment method with a valid API key and mock chat parameters', 'review the validate_environment method to ensure API key validation and header injection work correctly']
+```
+
+Usage
+
+```
+{'validate_NovitaConfig_environment': 'validate the NovitaConfig environment by setting API key and headers for a chat completion call', 'create_NovitaConfig_instance': 'create a NovitaConfig instance to configure OpenAI-compatible chat completions for Novita AI', 'build_NovitaConfig_headers': 'build request headers with Bearer token and X-Novita-Source for Novita AI API calls', 'test_NovitaConfig_validate_environment': 'test the validate_environment method with a valid API key and mock chat parameters', 'review_NovitaConfig_validate_environment': 'review the validate_environment method to ensure API key validation and header injection work correctly'}
+```
+

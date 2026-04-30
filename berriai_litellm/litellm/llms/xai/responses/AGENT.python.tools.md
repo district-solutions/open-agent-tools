@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/xai/responses/transformation.py
+
+Prompts
+
+```
+['transform a web_search tool to XAI format by removing unsupported parameters and adding domain filters', 'transform an x_search tool to XAI format with allowed handles, date ranges, and media understanding flags', 'map OpenAI params to XAI Responses API format by dropping unsupported fields and transforming tools', 'validate the XAI API environment by checking for a valid XAI_API_KEY and setting authorization headers', 'build the complete XAI Responses API endpoint URL from api_base, environment variables, or defaults']
+```
+
+Usage
+
+```
+{'transform_XAIResponsesAPIConfig_web_search_tool': 'transform a web_search tool to XAI format by removing unsupported parameters and adding domain filters', 'transform_XAIResponsesAPIConfig_x_search_tool': 'transform an x_search tool to XAI format with allowed handles, date ranges, and media understanding flags', 'map_openai_params_XAIResponsesAPIConfig': 'map OpenAI params to XAI Responses API format by dropping unsupported fields and transforming tools', 'validate_environment_XAIResponsesAPIConfig': 'validate the XAI API environment by checking for a valid XAI_API_KEY and setting authorization headers', 'get_complete_url_XAIResponsesAPIConfig': 'build the complete XAI Responses API endpoint URL from api_base, environment variables, or defaults'}
+```
+

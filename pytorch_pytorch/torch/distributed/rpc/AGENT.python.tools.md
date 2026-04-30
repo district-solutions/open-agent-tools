@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: pytorch/pytorch
+- repo_uri: https://github.com/pytorch/pytorch.git
+
+## File: pytorch_pytorch/torch/distributed/rpc/api.py
+
+Prompts
+
+```
+['shutdown the distributed RPC agent gracefully and wait for all workers to complete', 'run a synchronous RPC call to execute a function on a remote worker and return the result', 'run an asynchronous RPC call to execute a function on a remote worker and return a Future', 'create a remote RRef by running a function on a destination worker and returning a reference to the result', 'get the WorkerInfo object for a named worker or the current worker', 'register a new RPC backend with construct and init handlers', 'test if a named RPC backend is registered in BackendType', 'construct RPC backend options for the TENSORPIPE backend with timeout and init method', 'initialize an RPC backend agent with store, name, rank, and world size', 'summarize the BackendType enum and its registered RPC backends', 'create the async_execution decorator that wraps a function to return a torch.futures.Future for async RPC execution', 'build a function using rpc_async and Future.then to chain remote calls across workers asynchronously', 'test combining @staticmethod as the outer decorator with @async_execution as the inner decorator on a class method', 'refactor a class method to use @classmethod as the outer decorator and @async_execution as the inner decorator', 'summarize combining @torch.jit.script as the outer decorator with @async_execution for TorchScript async RPC functions', 'serialize a Python object into binary string and tensor table for distributed RPC', 'deserialize binary string and tensor table back into the original Python object', 'run a Python UDF function with args and kwargs from C++ and wrap exceptions', 'handle a RemoteException by re-raising the original exception on the caller side', 'start an autograd RecordFunction for profiling an RPC call between workers', 'create TensorPipeRpcBackendOptions with custom num_worker_threads, rpc_timeout, and init_method for distributed RPC', 'set device mapping between RPC caller and callee workers using TensorPipeRpcBackendOptions.set_device_map', 'set local CUDA devices used by TensorPipe RPC agent for stream synchronization', 'test _to_device_map function that converts device map dict with int/str/torch.device keys to torch.device mappings', 'test _to_device_list function that converts a list of device types to torch.device objects']
+```
+
+Usage
+
+```
+{'shutdown_rpc_agent': 'shutdown the distributed RPC agent gracefully and wait for all workers to complete', 'run_rpc_sync_call': 'run a synchronous RPC call to execute a function on a remote worker and return the result', 'run_rpc_async_call': 'run an asynchronous RPC call to execute a function on a remote worker and return a Future', 'create_remote_rref': 'create a remote RRef by running a function on a destination worker and returning a reference to the result', 'get_worker_info': 'get the WorkerInfo object for a named worker or the current worker'}
+```
+
+## File: pytorch_pytorch/torch/distributed/rpc/backend_registry.py
+
+Prompts
+
+```
+['shutdown the distributed RPC agent gracefully and wait for all workers to complete', 'run a synchronous RPC call to execute a function on a remote worker and return the result', 'run an asynchronous RPC call to execute a function on a remote worker and return a Future', 'create a remote RRef by running a function on a destination worker and returning a reference to the result', 'get the WorkerInfo object for a named worker or the current worker', 'register a new RPC backend with construct and init handlers', 'test if a named RPC backend is registered in BackendType', 'construct RPC backend options for the TENSORPIPE backend with timeout and init method', 'initialize an RPC backend agent with store, name, rank, and world size', 'summarize the BackendType enum and its registered RPC backends', 'create the async_execution decorator that wraps a function to return a torch.futures.Future for async RPC execution', 'build a function using rpc_async and Future.then to chain remote calls across workers asynchronously', 'test combining @staticmethod as the outer decorator with @async_execution as the inner decorator on a class method', 'refactor a class method to use @classmethod as the outer decorator and @async_execution as the inner decorator', 'summarize combining @torch.jit.script as the outer decorator with @async_execution for TorchScript async RPC functions', 'serialize a Python object into binary string and tensor table for distributed RPC', 'deserialize binary string and tensor table back into the original Python object', 'run a Python UDF function with args and kwargs from C++ and wrap exceptions', 'handle a RemoteException by re-raising the original exception on the caller side', 'start an autograd RecordFunction for profiling an RPC call between workers', 'create TensorPipeRpcBackendOptions with custom num_worker_threads, rpc_timeout, and init_method for distributed RPC', 'set device mapping between RPC caller and callee workers using TensorPipeRpcBackendOptions.set_device_map', 'set local CUDA devices used by TensorPipe RPC agent for stream synchronization', 'test _to_device_map function that converts device map dict with int/str/torch.device keys to torch.device mappings', 'test _to_device_list function that converts a list of device types to torch.device objects']
+```
+
+Usage
+
+```
+{'register_backend_tensorpipe': 'register a new RPC backend with construct and init handlers', 'test_backend_registered': 'test if a named RPC backend is registered in BackendType', 'construct_rpc_backend_options_tensorpipe': 'construct RPC backend options for the TENSORPIPE backend with timeout and init method', 'init_backend_tensorpipe': 'initialize an RPC backend agent with store, name, rank, and world size', 'summarize_BackendType': 'summarize the BackendType enum and its registered RPC backends'}
+```
+
+## File: pytorch_pytorch/torch/distributed/rpc/functions.py
+
+Prompts
+
+```
+['shutdown the distributed RPC agent gracefully and wait for all workers to complete', 'run a synchronous RPC call to execute a function on a remote worker and return the result', 'run an asynchronous RPC call to execute a function on a remote worker and return a Future', 'create a remote RRef by running a function on a destination worker and returning a reference to the result', 'get the WorkerInfo object for a named worker or the current worker', 'register a new RPC backend with construct and init handlers', 'test if a named RPC backend is registered in BackendType', 'construct RPC backend options for the TENSORPIPE backend with timeout and init method', 'initialize an RPC backend agent with store, name, rank, and world size', 'summarize the BackendType enum and its registered RPC backends', 'create the async_execution decorator that wraps a function to return a torch.futures.Future for async RPC execution', 'build a function using rpc_async and Future.then to chain remote calls across workers asynchronously', 'test combining @staticmethod as the outer decorator with @async_execution as the inner decorator on a class method', 'refactor a class method to use @classmethod as the outer decorator and @async_execution as the inner decorator', 'summarize combining @torch.jit.script as the outer decorator with @async_execution for TorchScript async RPC functions', 'serialize a Python object into binary string and tensor table for distributed RPC', 'deserialize binary string and tensor table back into the original Python object', 'run a Python UDF function with args and kwargs from C++ and wrap exceptions', 'handle a RemoteException by re-raising the original exception on the caller side', 'start an autograd RecordFunction for profiling an RPC call between workers', 'create TensorPipeRpcBackendOptions with custom num_worker_threads, rpc_timeout, and init_method for distributed RPC', 'set device mapping between RPC caller and callee workers using TensorPipeRpcBackendOptions.set_device_map', 'set local CUDA devices used by TensorPipe RPC agent for stream synchronization', 'test _to_device_map function that converts device map dict with int/str/torch.device keys to torch.device mappings', 'test _to_device_list function that converts a list of device types to torch.device objects']
+```
+
+Usage
+
+```
+{'create_async_execution_decorator': 'create the async_execution decorator that wraps a function to return a torch.futures.Future for async RPC execution', 'build_chained_async_rpc': 'build a function using rpc_async and Future.then to chain remote calls across workers asynchronously', 'test_static_method_async': 'test combining @staticmethod as the outer decorator with @async_execution as the inner decorator on a class method', 'refactor_classmethod_async': 'refactor a class method to use @classmethod as the outer decorator and @async_execution as the inner decorator', 'summarize_torchscript_async': 'summarize combining @torch.jit.script as the outer decorator with @async_execution for TorchScript async RPC functions'}
+```
+
+## File: pytorch_pytorch/torch/distributed/rpc/internal.py
+
+Prompts
+
+```
+['shutdown the distributed RPC agent gracefully and wait for all workers to complete', 'run a synchronous RPC call to execute a function on a remote worker and return the result', 'run an asynchronous RPC call to execute a function on a remote worker and return a Future', 'create a remote RRef by running a function on a destination worker and returning a reference to the result', 'get the WorkerInfo object for a named worker or the current worker', 'register a new RPC backend with construct and init handlers', 'test if a named RPC backend is registered in BackendType', 'construct RPC backend options for the TENSORPIPE backend with timeout and init method', 'initialize an RPC backend agent with store, name, rank, and world size', 'summarize the BackendType enum and its registered RPC backends', 'create the async_execution decorator that wraps a function to return a torch.futures.Future for async RPC execution', 'build a function using rpc_async and Future.then to chain remote calls across workers asynchronously', 'test combining @staticmethod as the outer decorator with @async_execution as the inner decorator on a class method', 'refactor a class method to use @classmethod as the outer decorator and @async_execution as the inner decorator', 'summarize combining @torch.jit.script as the outer decorator with @async_execution for TorchScript async RPC functions', 'serialize a Python object into binary string and tensor table for distributed RPC', 'deserialize binary string and tensor table back into the original Python object', 'run a Python UDF function with args and kwargs from C++ and wrap exceptions', 'handle a RemoteException by re-raising the original exception on the caller side', 'start an autograd RecordFunction for profiling an RPC call between workers', 'create TensorPipeRpcBackendOptions with custom num_worker_threads, rpc_timeout, and init_method for distributed RPC', 'set device mapping between RPC caller and callee workers using TensorPipeRpcBackendOptions.set_device_map', 'set local CUDA devices used by TensorPipe RPC agent for stream synchronization', 'test _to_device_map function that converts device map dict with int/str/torch.device keys to torch.device mappings', 'test _to_device_list function that converts a list of device types to torch.device objects']
+```
+
+Usage
+
+```
+{'serialize_rpc_data': 'serialize a Python object into binary string and tensor table for distributed RPC', 'deserialize_rpc_data': 'deserialize binary string and tensor table back into the original Python object', 'run_python_udf': 'run a Python UDF function with args and kwargs from C++ and wrap exceptions', 'handle_remote_exception': 'handle a RemoteException by re-raising the original exception on the caller side', 'start_rpc_profiling': 'start an autograd RecordFunction for profiling an RPC call between workers'}
+```
+
+## File: pytorch_pytorch/torch/distributed/rpc/options.py
+
+Prompts
+
+```
+['shutdown the distributed RPC agent gracefully and wait for all workers to complete', 'run a synchronous RPC call to execute a function on a remote worker and return the result', 'run an asynchronous RPC call to execute a function on a remote worker and return a Future', 'create a remote RRef by running a function on a destination worker and returning a reference to the result', 'get the WorkerInfo object for a named worker or the current worker', 'register a new RPC backend with construct and init handlers', 'test if a named RPC backend is registered in BackendType', 'construct RPC backend options for the TENSORPIPE backend with timeout and init method', 'initialize an RPC backend agent with store, name, rank, and world size', 'summarize the BackendType enum and its registered RPC backends', 'create the async_execution decorator that wraps a function to return a torch.futures.Future for async RPC execution', 'build a function using rpc_async and Future.then to chain remote calls across workers asynchronously', 'test combining @staticmethod as the outer decorator with @async_execution as the inner decorator on a class method', 'refactor a class method to use @classmethod as the outer decorator and @async_execution as the inner decorator', 'summarize combining @torch.jit.script as the outer decorator with @async_execution for TorchScript async RPC functions', 'serialize a Python object into binary string and tensor table for distributed RPC', 'deserialize binary string and tensor table back into the original Python object', 'run a Python UDF function with args and kwargs from C++ and wrap exceptions', 'handle a RemoteException by re-raising the original exception on the caller side', 'start an autograd RecordFunction for profiling an RPC call between workers', 'create TensorPipeRpcBackendOptions with custom num_worker_threads, rpc_timeout, and init_method for distributed RPC', 'set device mapping between RPC caller and callee workers using TensorPipeRpcBackendOptions.set_device_map', 'set local CUDA devices used by TensorPipe RPC agent for stream synchronization', 'test _to_device_map function that converts device map dict with int/str/torch.device keys to torch.device mappings', 'test _to_device_list function that converts a list of device types to torch.device objects']
+```
+
+Usage
+
+```
+{'create_TensorPipeRpcBackendOptions': 'create TensorPipeRpcBackendOptions with custom num_worker_threads, rpc_timeout, and init_method for distributed RPC', 'set_device_map': 'set device mapping between RPC caller and callee workers using TensorPipeRpcBackendOptions.set_device_map', 'set_devices': 'set local CUDA devices used by TensorPipe RPC agent for stream synchronization', 'test_to_device_map': 'test _to_device_map function that converts device map dict with int/str/torch.device keys to torch.device mappings', 'test_to_device_list': 'test _to_device_list function that converts a list of device types to torch.device objects'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/datasets
+- repo_uri: https://github.com/huggingface/datasets
+
+## File: huggingface_datasets/src/datasets/packaged_modules/json/json.py
+
+Prompts
+
+```
+['build a Hugging Face datasets JSON builder that loads JSONL files into an Arrow table', 'configure a JsonConfig with custom chunksize encoding and field selection for JSON loading', 'cast a PyArrow table to match Hugging Face dataset features schema with missing columns', 'parse agent trace lines to extract harness type and session ID from Claude Codex or PI traces', 'detect whether dataset features match known agent trace markers for Claude Code PI or Codex']
+```
+
+Usage
+
+```
+{'build_json_dataset_builder': 'build a Hugging Face datasets JSON builder that loads JSONL files into an Arrow table', 'configure_json_loader': 'configure a JsonConfig with custom chunksize encoding and field selection for JSON loading', 'cast_arrow_table': 'cast a PyArrow table to match Hugging Face dataset features schema with missing columns', 'parse_agent_traces': 'parse agent trace lines to extract harness type and session ID from Claude Codex or PI traces', 'detect_agent_traces': 'detect whether dataset features match known agent trace markers for Claude Code PI or Codex'}
+```
+

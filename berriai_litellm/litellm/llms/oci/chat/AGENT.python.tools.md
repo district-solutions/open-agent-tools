@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/oci/chat/transformation.py
+
+Prompts
+
+```
+['create an OCIChatConfig instance and call sign_request to authenticate OCI GenAI API requests with SDK signer or manual credentials', 'build a function that adapts OpenAI-format chat messages to OCI generic API format with text and image support', 'create a function that adapts OpenAI-format chat messages to Cohere API format with chat history and tool call support', 'test OCIStreamWrapper chunk_creator to parse and convert OCI streaming response chunks into ModelResponseStream objects', 'build a function that adapts OpenAI-format tool definitions to OCI API standard format for function calling']
+```
+
+Usage
+
+```
+{'create_OCIChatConfig_sign_request': 'create an OCIChatConfig instance and call sign_request to authenticate OCI GenAI API requests with SDK signer or manual credentials', 'build_adapt_messages_to_generic_oci_standard': 'build a function that adapts OpenAI-format chat messages to OCI generic API format with text and image support', 'create_adapt_messages_to_cohere_standard': 'create a function that adapts OpenAI-format chat messages to Cohere API format with chat history and tool call support', 'test_OCIStreamWrapper_chunk_creator': 'test OCIStreamWrapper chunk_creator to parse and convert OCI streaming response chunks into ModelResponseStream objects', 'build_adapt_tool_definition_to_oci_standard': 'build a function that adapts OpenAI-format tool definitions to OCI API standard format for function calling'}
+```
+

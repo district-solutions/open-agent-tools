@@ -1,0 +1,33 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/src/transformers/models/lfm2/modeling_lfm2.py
+
+Prompts
+
+```
+['create an LFM2 model using Lfm2Config and Lfm2Model for efficient long-context language modeling with linear attention', 'build an LFM2 causal language model using Lfm2ForCausalLM for autoregressive text generation with rotary embeddings', 'test the Lfm2DecoderLayer that alternates between full attention and short convolution blocks based on layer types', 'review the Lfm2ShortConv module that implements causal 1D convolution with CUDA kernel optimization for fast inference', 'summarize the Lfm2Attention class that uses QK layer normalization and rotary position embeddings for multi-headed attention']
+```
+
+Usage
+
+```
+{'create_lfm2_model': 'create an LFM2 model using Lfm2Config and Lfm2Model for efficient long-context language modeling with linear attention', 'build_lfm2_causal_lm': 'build an LFM2 causal language model using Lfm2ForCausalLM for autoregressive text generation with rotary embeddings', 'test_lfm2_decoder_layer': 'test the Lfm2DecoderLayer that alternates between full attention and short convolution blocks based on layer types', 'review_lfm2_short_conv': 'review the Lfm2ShortConv module that implements causal 1D convolution with CUDA kernel optimization for fast inference', 'summarize_lfm2_attention': 'summarize the Lfm2Attention class that uses QK layer normalization and rotary position embeddings for multi-headed attention'}
+```
+
+## File: huggingface_transformers/src/transformers/models/lfm2/modular_lfm2.py
+
+Prompts
+
+```
+['create an LFM2 model using Lfm2Config and Lfm2Model for efficient long-context language modeling with linear attention', 'build an LFM2 causal language model using Lfm2ForCausalLM for autoregressive text generation with rotary embeddings', 'test the Lfm2DecoderLayer that alternates between full attention and short convolution blocks based on layer types', 'review the Lfm2ShortConv module that implements causal 1D convolution with CUDA kernel optimization for fast inference', 'summarize the Lfm2Attention class that uses QK layer normalization and rotary position embeddings for multi-headed attention']
+```
+
+Usage
+
+```
+{'create_lfm2_model': 'create an LFM2 model using the Lfm2Config configuration and Lfm2Model class for efficient long-context language modeling', 'build_lfm2_causal_lm': 'build an LFM2 causal language model using Lfm2ForCausalLM for autoregressive text generation with linear attention', 'test_lfm2_decoder_layer': 'test the Lfm2DecoderLayer that alternates between full attention and short convolution blocks based on layer types', 'review_lfm2_short_conv': 'review the Lfm2ShortConv module that implements causal 1D convolution with CUDA kernel optimization for fast inference', 'summarize_lfm2_attention': 'summarize the Lfm2Attention class that extends LlamaAttention with QK layer normalization and rotary embeddings for linear attention'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: pandas-dev/pandas
+- repo_uri: https://github.com/pandas-dev/pandas.git
+
+## File: pandas-dev_pandas/pandas/tests/construction/test_extract_array.py
+
+Prompts
+
+```
+['test the extract_array function with extract_numpy and extract_range parameters on a RangeIndex', 'test extract_array with extract_numpy=False and extract_range=True on a RangeIndex', 'test extract_array with extract_numpy=True and extract_range=False on a RangeIndex', 'test extract_array on a RangeIndex to verify numpy extraction and index preservation behavior', 'test extract_array returns the original Index when extract_numpy=False and extract_range=False']
+```
+
+Usage
+
+```
+{'test_extract_array': 'test the extract_array function with extract_numpy and extract_range parameters on a RangeIndex', 'test_extract_array_numpy_false': 'test extract_array with extract_numpy=False and extract_range=True on a RangeIndex', 'test_extract_array_numpy_true': 'test extract_array with extract_numpy=True and extract_range=False on a RangeIndex', 'test_extract_array_rangeindex': 'test extract_array on a RangeIndex to verify numpy extraction and index preservation behavior', 'test_extract_array_index_equal': 'test extract_array returns the original Index when extract_numpy=False and extract_range=False'}
+```
+

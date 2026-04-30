@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/recraft/image_generation/transformation.py
+
+Prompts
+
+```
+['build a RecraftImageGenerationConfig class to handle image generation API configuration for the Recraft provider', 'test the get_supported_openai_params method that returns supported OpenAI image generation parameters for Recraft', 'review the map_openai_params method that maps OpenAI image generation params to Recraft-compatible params', 'summarize the transform_image_generation_request method that converts a prompt and params into a Recraft request body', 'create a transform_image_generation_response method that converts a Recraft API response into a LiteLLM ImageResponse object']
+```
+
+Usage
+
+```
+{'build_recraft_image_generation_config': 'build a RecraftImageGenerationConfig class to handle image generation API configuration for the Recraft provider', 'test_get_supported_openai_params': 'test the get_supported_openai_params method that returns supported OpenAI image generation parameters for Recraft', 'review_map_openai_params': 'review the map_openai_params method that maps OpenAI image generation params to Recraft-compatible params', 'summarize_transform_image_generation_request': 'summarize the transform_image_generation_request method that converts a prompt and params into a Recraft request body', 'create_transform_image_generation_response': 'create a transform_image_generation_response method that converts a Recraft API response into a LiteLLM ImageResponse object'}
+```
+

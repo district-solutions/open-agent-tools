@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: huggingface/controlnetaux
+- repo_uri: https://github.com/huggingface/controlnet_aux
+
+## File: huggingface_controlnetaux/src/controlnet_aux/open_pose/body.py
+
+Prompts
+
+```
+['run the Body class on an image to detect human body keypoints and poses', 'create a Body instance by loading a pretrained body pose model from a model path file', 'move the Body model to a specified device like cuda or cpu for inference', 'format raw candidate and subset arrays into a list of BodyResult objects with keypoints', 'review the Body class and bodypose_model integration for open pose human keypoint detection', 'build a FaceNet cascading heatmap model with VGG backbone and six CPM stages for face landmark detection', 'run face heatmap inference on an image using the Face class with a pre-trained model path', 'compute face landmark peak coordinates from heatmaps using the compute_peaks_from_heatmaps method', 'review the FaceNet forward pass that returns a list of heatmaps from six cascading stages', 'refactor the Face class to support configurable inference sizes of 368, 736, or 1312 pixels', 'run hand pose estimation on an image using the Hand class and a pre-trained model', 'create a Hand object by loading a hand pose model from a .pth file path', 'test the Hand class by passing an OpenCV image and retrieving 21 hand keypoint coordinates', 'refactor the Hand __call__ method to support custom scale search values or threshold parameters', 'review the Hand class heatmap averaging logic across multiple scale multipliers for pose detection', 'build a bodypose_model instance to detect 38 body keypoints and 19 affine fields from an image tensor', 'build a handpose_model instance to detect 22 hand keypoints from an image tensor', 'run the bodypose_model forward pass on an input tensor to get body pose heatmaps and PAFs', 'run the handpose_model forward pass on an input tensor to get hand pose heatmaps', 'review the make_layers function that constructs Conv2d and MaxPool2d layers from a block configuration dictionary', 'draw body pose keypoints and limbs on a canvas image using normalized coordinates', 'draw hand pose keypoints and connections on a canvas image using normalized coordinates', 'draw face pose keypoints as white circles on a canvas image using normalized coordinates', 'resize an image to target dimensions using INTER_AREA or INTER_LANCZOS4 interpolation', 'detect hands from body pose keypoints and calculate bounding boxes for each hand']
+```
+
+Usage
+
+```
+{'run_body_pose_detection': 'run the Body class on an image to detect human body keypoints and poses', 'create_body_model': 'create a Body instance by loading a pretrained body pose model from a model path file', 'move_body_model_to_device': 'move the Body model to a specified device like cuda or cpu for inference', 'format_body_result': 'format raw candidate and subset arrays into a list of BodyResult objects with keypoints', 'review_bodypose_model': 'review the Body class and bodypose_model integration for open pose human keypoint detection'}
+```
+
+## File: huggingface_controlnetaux/src/controlnet_aux/open_pose/face.py
+
+Prompts
+
+```
+['run the Body class on an image to detect human body keypoints and poses', 'create a Body instance by loading a pretrained body pose model from a model path file', 'move the Body model to a specified device like cuda or cpu for inference', 'format raw candidate and subset arrays into a list of BodyResult objects with keypoints', 'review the Body class and bodypose_model integration for open pose human keypoint detection', 'build a FaceNet cascading heatmap model with VGG backbone and six CPM stages for face landmark detection', 'run face heatmap inference on an image using the Face class with a pre-trained model path', 'compute face landmark peak coordinates from heatmaps using the compute_peaks_from_heatmaps method', 'review the FaceNet forward pass that returns a list of heatmaps from six cascading stages', 'refactor the Face class to support configurable inference sizes of 368, 736, or 1312 pixels', 'run hand pose estimation on an image using the Hand class and a pre-trained model', 'create a Hand object by loading a hand pose model from a .pth file path', 'test the Hand class by passing an OpenCV image and retrieving 21 hand keypoint coordinates', 'refactor the Hand __call__ method to support custom scale search values or threshold parameters', 'review the Hand class heatmap averaging logic across multiple scale multipliers for pose detection', 'build a bodypose_model instance to detect 38 body keypoints and 19 affine fields from an image tensor', 'build a handpose_model instance to detect 22 hand keypoints from an image tensor', 'run the bodypose_model forward pass on an input tensor to get body pose heatmaps and PAFs', 'run the handpose_model forward pass on an input tensor to get hand pose heatmaps', 'review the make_layers function that constructs Conv2d and MaxPool2d layers from a block configuration dictionary', 'draw body pose keypoints and limbs on a canvas image using normalized coordinates', 'draw hand pose keypoints and connections on a canvas image using normalized coordinates', 'draw face pose keypoints as white circles on a canvas image using normalized coordinates', 'resize an image to target dimensions using INTER_AREA or INTER_LANCZOS4 interpolation', 'detect hands from body pose keypoints and calculate bounding boxes for each hand']
+```
+
+Usage
+
+```
+{'build_facenet_model': 'build a FaceNet cascading heatmap model with VGG backbone and six CPM stages for face landmark detection', 'run_face_heatmap_inference': 'run face heatmap inference on an image using the Face class with a pre-trained model path', 'compute_face_landmark_peaks': 'compute face landmark peak coordinates from heatmaps using the compute_peaks_from_heatmaps method', 'review_facenet_forward_pass': 'review the FaceNet forward pass that returns a list of heatmaps from six cascading stages', 'refactor_face_inference_size': 'refactor the Face class to support configurable inference sizes of 368, 736, or 1312 pixels'}
+```
+
+## File: huggingface_controlnetaux/src/controlnet_aux/open_pose/hand.py
+
+Prompts
+
+```
+['run the Body class on an image to detect human body keypoints and poses', 'create a Body instance by loading a pretrained body pose model from a model path file', 'move the Body model to a specified device like cuda or cpu for inference', 'format raw candidate and subset arrays into a list of BodyResult objects with keypoints', 'review the Body class and bodypose_model integration for open pose human keypoint detection', 'build a FaceNet cascading heatmap model with VGG backbone and six CPM stages for face landmark detection', 'run face heatmap inference on an image using the Face class with a pre-trained model path', 'compute face landmark peak coordinates from heatmaps using the compute_peaks_from_heatmaps method', 'review the FaceNet forward pass that returns a list of heatmaps from six cascading stages', 'refactor the Face class to support configurable inference sizes of 368, 736, or 1312 pixels', 'run hand pose estimation on an image using the Hand class and a pre-trained model', 'create a Hand object by loading a hand pose model from a .pth file path', 'test the Hand class by passing an OpenCV image and retrieving 21 hand keypoint coordinates', 'refactor the Hand __call__ method to support custom scale search values or threshold parameters', 'review the Hand class heatmap averaging logic across multiple scale multipliers for pose detection', 'build a bodypose_model instance to detect 38 body keypoints and 19 affine fields from an image tensor', 'build a handpose_model instance to detect 22 hand keypoints from an image tensor', 'run the bodypose_model forward pass on an input tensor to get body pose heatmaps and PAFs', 'run the handpose_model forward pass on an input tensor to get hand pose heatmaps', 'review the make_layers function that constructs Conv2d and MaxPool2d layers from a block configuration dictionary', 'draw body pose keypoints and limbs on a canvas image using normalized coordinates', 'draw hand pose keypoints and connections on a canvas image using normalized coordinates', 'draw face pose keypoints as white circles on a canvas image using normalized coordinates', 'resize an image to target dimensions using INTER_AREA or INTER_LANCZOS4 interpolation', 'detect hands from body pose keypoints and calculate bounding boxes for each hand']
+```
+
+Usage
+
+```
+{'run_hand_pose_detection': 'run hand pose estimation on an image using the Hand class and a pre-trained model', 'create_hand_estimator': 'create a Hand object by loading a hand pose model from a .pth file path', 'test_hand_peaks': 'test the Hand class by passing an OpenCV image and retrieving 21 hand keypoint coordinates', 'refactor_hand_call': 'refactor the Hand __call__ method to support custom scale search values or threshold parameters', 'review_hand_heatmap': 'review the Hand class heatmap averaging logic across multiple scale multipliers for pose detection'}
+```
+
+## File: huggingface_controlnetaux/src/controlnet_aux/open_pose/model.py
+
+Prompts
+
+```
+['run the Body class on an image to detect human body keypoints and poses', 'create a Body instance by loading a pretrained body pose model from a model path file', 'move the Body model to a specified device like cuda or cpu for inference', 'format raw candidate and subset arrays into a list of BodyResult objects with keypoints', 'review the Body class and bodypose_model integration for open pose human keypoint detection', 'build a FaceNet cascading heatmap model with VGG backbone and six CPM stages for face landmark detection', 'run face heatmap inference on an image using the Face class with a pre-trained model path', 'compute face landmark peak coordinates from heatmaps using the compute_peaks_from_heatmaps method', 'review the FaceNet forward pass that returns a list of heatmaps from six cascading stages', 'refactor the Face class to support configurable inference sizes of 368, 736, or 1312 pixels', 'run hand pose estimation on an image using the Hand class and a pre-trained model', 'create a Hand object by loading a hand pose model from a .pth file path', 'test the Hand class by passing an OpenCV image and retrieving 21 hand keypoint coordinates', 'refactor the Hand __call__ method to support custom scale search values or threshold parameters', 'review the Hand class heatmap averaging logic across multiple scale multipliers for pose detection', 'build a bodypose_model instance to detect 38 body keypoints and 19 affine fields from an image tensor', 'build a handpose_model instance to detect 22 hand keypoints from an image tensor', 'run the bodypose_model forward pass on an input tensor to get body pose heatmaps and PAFs', 'run the handpose_model forward pass on an input tensor to get hand pose heatmaps', 'review the make_layers function that constructs Conv2d and MaxPool2d layers from a block configuration dictionary', 'draw body pose keypoints and limbs on a canvas image using normalized coordinates', 'draw hand pose keypoints and connections on a canvas image using normalized coordinates', 'draw face pose keypoints as white circles on a canvas image using normalized coordinates', 'resize an image to target dimensions using INTER_AREA or INTER_LANCZOS4 interpolation', 'detect hands from body pose keypoints and calculate bounding boxes for each hand']
+```
+
+Usage
+
+```
+{'build_bodypose_model': 'build a bodypose_model instance to detect 38 body keypoints and 19 affine fields from an image tensor', 'build_handpose_model': 'build a handpose_model instance to detect 22 hand keypoints from an image tensor', 'run_bodypose_forward': 'run the bodypose_model forward pass on an input tensor to get body pose heatmaps and PAFs', 'run_handpose_forward': 'run the handpose_model forward pass on an input tensor to get hand pose heatmaps', 'review_make_layers': 'review the make_layers function that constructs Conv2d and MaxPool2d layers from a block configuration dictionary'}
+```
+
+## File: huggingface_controlnetaux/src/controlnet_aux/open_pose/util.py
+
+Prompts
+
+```
+['run the Body class on an image to detect human body keypoints and poses', 'create a Body instance by loading a pretrained body pose model from a model path file', 'move the Body model to a specified device like cuda or cpu for inference', 'format raw candidate and subset arrays into a list of BodyResult objects with keypoints', 'review the Body class and bodypose_model integration for open pose human keypoint detection', 'build a FaceNet cascading heatmap model with VGG backbone and six CPM stages for face landmark detection', 'run face heatmap inference on an image using the Face class with a pre-trained model path', 'compute face landmark peak coordinates from heatmaps using the compute_peaks_from_heatmaps method', 'review the FaceNet forward pass that returns a list of heatmaps from six cascading stages', 'refactor the Face class to support configurable inference sizes of 368, 736, or 1312 pixels', 'run hand pose estimation on an image using the Hand class and a pre-trained model', 'create a Hand object by loading a hand pose model from a .pth file path', 'test the Hand class by passing an OpenCV image and retrieving 21 hand keypoint coordinates', 'refactor the Hand __call__ method to support custom scale search values or threshold parameters', 'review the Hand class heatmap averaging logic across multiple scale multipliers for pose detection', 'build a bodypose_model instance to detect 38 body keypoints and 19 affine fields from an image tensor', 'build a handpose_model instance to detect 22 hand keypoints from an image tensor', 'run the bodypose_model forward pass on an input tensor to get body pose heatmaps and PAFs', 'run the handpose_model forward pass on an input tensor to get hand pose heatmaps', 'review the make_layers function that constructs Conv2d and MaxPool2d layers from a block configuration dictionary', 'draw body pose keypoints and limbs on a canvas image using normalized coordinates', 'draw hand pose keypoints and connections on a canvas image using normalized coordinates', 'draw face pose keypoints as white circles on a canvas image using normalized coordinates', 'resize an image to target dimensions using INTER_AREA or INTER_LANCZOS4 interpolation', 'detect hands from body pose keypoints and calculate bounding boxes for each hand']
+```
+
+Usage
+
+```
+{'draw_bodypose': 'draw body pose keypoints and limbs on a canvas image using normalized coordinates', 'draw_handpose': 'draw hand pose keypoints and connections on a canvas image using normalized coordinates', 'draw_facepose': 'draw face pose keypoints as white circles on a canvas image using normalized coordinates', 'smart_resize': 'resize an image to target dimensions using INTER_AREA or INTER_LANCZOS4 interpolation', 'handDetect': 'detect hands from body pose keypoints and calculate bounding boxes for each hand'}
+```
+

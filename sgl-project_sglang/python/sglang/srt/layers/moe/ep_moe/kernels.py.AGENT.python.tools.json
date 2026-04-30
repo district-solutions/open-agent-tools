@@ -1,0 +1,7 @@
+{
+    "run_moe_ep_deepgemm_preprocess": "run moe_ep_deepgemm_preprocess to sort topk_ids, compute src2dst mapping and FP8-quantize hidden states for grouped GEMM",
+    "run_ep_scatter": "run ep_scatter to scatter expert-received tokens and scales into per-expert output tensors using Triton kernels",
+    "run_ep_gather": "run ep_gather to gather expert outputs back to token order using topk_ids, weights and input indices",
+    "run_silu_and_mul_masked_post_quant_fwd": "run silu_and_mul_masked_post_quant_fwd to fuse SiLU activation, element-wise multiply and per-token-group FP8 quantization",
+    "run_silu_and_mul_masked_post_per_tensor_quant_fwd": "run silu_and_mul_masked_post_per_tensor_quant_fwd to fuse SiLU, multiply and per-tensor FP8 quantization on masked expert tokens"
+}

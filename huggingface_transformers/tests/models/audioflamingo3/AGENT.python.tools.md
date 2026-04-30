@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/audioflamingo3/test_processing_audioflamingo3.py
+
+Prompts
+
+```
+['test the AudioFlamingo3Processor save and load pretrained models with tokenizer and feature extractor', 'test the AudioFlamingo3Processor tokenizer integration with slow and fast tokenizers produce identical outputs', 'test the AudioFlamingo3Processor chat template formatting with audio and text conversation inputs', 'test the AudioFlamingo3Processor apply_transcription_request helper generates correct input_ids and input_features', 'test the AudioFlamingo3Processor apply_chat_template with audio modalities and pytorch tensors']
+```
+
+Usage
+
+```
+{'test_audioflamingo3_processor_save_load': 'test the AudioFlamingo3Processor save and load pretrained models with tokenizer and feature extractor', 'test_audioflamingo3_tokenizer_integration': 'test the AudioFlamingo3Processor tokenizer integration with slow and fast tokenizers produce identical outputs', 'test_audioflamingo3_chat_template': 'test the AudioFlamingo3Processor chat template formatting with audio and text conversation inputs', 'test_audioflamingo3_transcription_request': 'test the AudioFlamingo3Processor apply_transcription_request helper generates correct input_ids and input_features', 'test_audioflamingo3_apply_chat_template_audio': 'test the AudioFlamingo3Processor apply_chat_template with audio modalities and pytorch tensors'}
+```
+

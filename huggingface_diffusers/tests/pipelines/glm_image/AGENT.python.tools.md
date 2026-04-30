@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/diffusers
+- repo_uri: https://github.com/huggingface/diffusers
+
+## File: huggingface_diffusers/tests/pipelines/glm_image/test_glm_image.py
+
+Prompts
+
+```
+['run the GlmImagePipeline to generate an image from a text prompt using dummy components', 'test the GlmImagePipeline with multiple prompts to verify batch image generation works correctly', 'test the GlmImagePipeline to generate multiple images per single prompt using num_images_per_prompt', 'test the GlmImagePipeline by generating prior tokens and using them directly to skip AR generation', 'test the GlmImagePipeline check_inputs method to verify it rejects invalid prompt and embed combinations']
+```
+
+Usage
+
+```
+{'run_glm_image_pipeline_inference': 'run the GlmImagePipeline to generate an image from a text prompt using dummy components', 'test_glm_image_batch_processing': 'test the GlmImagePipeline with multiple prompts to verify batch image generation works correctly', 'test_glm_image_num_images_per_prompt': 'test the GlmImagePipeline to generate multiple images per single prompt using num_images_per_prompt', 'test_glm_image_prior_token_ids': 'test the GlmImagePipeline by generating prior tokens and using them directly to skip AR generation', 'test_glm_image_input_validation': 'test the GlmImagePipeline check_inputs method to verify it rejects invalid prompt and embed combinations'}
+```
+

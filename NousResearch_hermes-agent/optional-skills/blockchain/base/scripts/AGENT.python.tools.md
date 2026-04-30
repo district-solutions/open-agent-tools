@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: NousResearch/hermes-agent
+- repo_uri: https://github.com/NousResearch/hermes-agent
+
+## File: NousResearch_hermes-agent/optional-skills/blockchain/base/scripts/base_client.py
+
+Prompts
+
+```
+['run the stats command to get Base network block, gas, chain ID, and ETH price', 'run the wallet command to retrieve ETH balance and ERC-20 token holdings with USD values for an address', 'run the tx command to fetch full transaction details by hash including fees and token transfers', 'run the gas command to analyze gas trends and estimate costs for common operations on Base', 'run the contract command to inspect an address for contract type, ERC interfaces, and proxy detection', 'run the whales command to scan the latest block for large ETH transfers above a threshold', 'run the price command to look up a token price by contract address or known symbol', 'run the token command to get ERC-20 token metadata, total supply, price, and market cap', 'run the rpc_batch function to send multiple JSON-RPC calls to Base in a single batched request']
+```
+
+Usage
+
+```
+{'run_cmd_stats': 'run the stats command to get Base network block, gas, chain ID, and ETH price', 'run_cmd_wallet': 'run the wallet command to retrieve ETH balance and ERC-20 token holdings with USD values for an address', 'run_cmd_tx': 'run the tx command to fetch full transaction details by hash including fees and token transfers', 'run_cmd_gas': 'run the gas command to analyze gas trends and estimate costs for common operations on Base', 'run_cmd_contract': 'run the contract command to inspect an address for contract type, ERC interfaces, and proxy detection', 'run_cmd_whales': 'run the whales command to scan the latest block for large ETH transfers above a threshold', 'run_cmd_price': 'run the price command to look up a token price by contract address or known symbol', 'run_cmd_token': 'run the token command to get ERC-20 token metadata, total supply, price, and market cap', 'run_rpc_batch': 'run the rpc_batch function to send multiple JSON-RPC calls to Base in a single batched request'}
+```
+

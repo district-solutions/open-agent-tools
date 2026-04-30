@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/amazon_nova/cost_calculation.py
+
+Prompts
+
+```
+['calculate the cost per token for an Amazon Nova model given usage data', 'test the cost_per_token function with sample Amazon Nova model usage data', 'refactor the cost_per_token function to support additional Amazon Nova model variants', 'review the cost_per_token function for correctness with prompt caching cost logic', 'summarize how the cost_per_token function calculates costs for Amazon Nova models']
+```
+
+Usage
+
+```
+{'calculate_cost_per_token': 'calculate the cost per token for an Amazon Nova model given usage data', 'test_cost_per_token': 'test the cost_per_token function with sample Amazon Nova model usage data', 'refactor_cost_per_token': 'refactor the cost_per_token function to support additional Amazon Nova model variants', 'review_cost_per_token': 'review the cost_per_token function for correctness with prompt caching cost logic', 'summarize_cost_per_token': 'summarize how the cost_per_token function calculates costs for Amazon Nova models'}
+```
+

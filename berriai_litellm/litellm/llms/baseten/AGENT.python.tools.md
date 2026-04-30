@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/baseten/chat.py
+
+Prompts
+
+```
+['create a BasetenConfig instance with OpenAI-compatible parameters like max_tokens, seed, and temperature', 'test the is_dedicated_deployment method to check if a model string is an 8-digit alphanumeric code', 'build the get_api_base_for_model call to return the correct API base URL for a given baseten model', 'review the get_supported_openai_params method to list all supported OpenAI parameters for baseten models', 'run the map_openai_params method to map OpenAI-compatible parameters into the optional_params dict']
+```
+
+Usage
+
+```
+{'create_BasetenConfig': 'create a BasetenConfig instance with OpenAI-compatible parameters like max_tokens, seed, and temperature', 'test_is_dedicated_deployment': 'test the is_dedicated_deployment method to check if a model string is an 8-digit alphanumeric code', 'build_get_api_base_for_model': 'build the get_api_base_for_model call to return the correct API base URL for a given baseten model', 'review_get_supported_openai_params': 'review the get_supported_openai_params method to list all supported OpenAI parameters for baseten models', 'run_map_openai_params': 'run the map_openai_params method to map OpenAI-compatible parameters into the optional_params dict'}
+```
+

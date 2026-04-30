@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: scikit-learn/scikit-learn
+- repo_uri: https://github.com/scikit-learn/scikit-learn
+
+## File: scikit-learn_scikit-learn/sklearn/frozen/_frozen.py
+
+Prompts
+
+```
+['create a FrozenEstimator that wraps a fitted estimator to prevent re-fitting in a pipeline', 'build predictions using a FrozenEstimator that delegates predict to the wrapped fitted estimator', 'test that calling fit on a FrozenEstimator is a no-op and returns self without refitting', "review FrozenEstimator.set_params to verify it only accepts 'estimator' key and rejects inner params", 'summarize FrozenEstimator.get_params which returns a dict containing only the wrapped estimator']
+```
+
+Usage
+
+```
+{'create_FrozenEstimator': 'create a FrozenEstimator that wraps a fitted estimator to prevent re-fitting in a pipeline', 'build_frozen_predict': 'build predictions using a FrozenEstimator that delegates predict to the wrapped fitted estimator', 'test_FrozenEstimator_fit': 'test that calling fit on a FrozenEstimator is a no-op and returns self without refitting', 'review_FrozenEstimator_set_params': "review FrozenEstimator.set_params to verify it only accepts 'estimator' key and rejects inner params", 'summarize_FrozenEstimator_get_params': 'summarize FrozenEstimator.get_params which returns a dict containing only the wrapped estimator'}
+```
+

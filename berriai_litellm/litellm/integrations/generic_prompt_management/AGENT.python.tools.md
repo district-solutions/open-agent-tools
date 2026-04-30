@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/integrations/generic_prompt_management/generic_prompt_manager.py
+
+Prompts
+
+```
+['create a GenericPromptManager instance to fetch prompts from any API implementing the /beta/litellm_prompt_management endpoint', 'fetch a prompt template from a remote API using prompt_id and parse the JSON response', 'compile a prompt template by fetching from API, applying variables, and caching the result', 'apply key-value variables to a prompt template using {variable} string substitution syntax', 'get a processed chat completion prompt with resolved model, messages, and parameters from a managed prompt']
+```
+
+Usage
+
+```
+{'create_generic_prompt_manager': 'create a GenericPromptManager instance to fetch prompts from any API implementing the /beta/litellm_prompt_management endpoint', 'fetch_prompt_from_api': 'fetch a prompt template from a remote API using prompt_id and parse the JSON response', 'compile_prompt_helper': 'compile a prompt template by fetching from API, applying variables, and caching the result', 'apply_variables': 'apply key-value variables to a prompt template using {variable} string substitution syntax', 'get_chat_completion_prompt': 'get a processed chat completion prompt with resolved model, messages, and parameters from a managed prompt'}
+```
+

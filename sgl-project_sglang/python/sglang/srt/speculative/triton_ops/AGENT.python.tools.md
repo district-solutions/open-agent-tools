@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/python/sglang/srt/speculative/triton_ops/fused_kv_materialize.py
+
+Prompts
+
+```
+['build a fused Triton kernel that applies RMSNorm and Neox-style RoPE to KV cache tensors', 'create a function that fuses RMSNorm and RoPE on K/V tensors and returns materialized K and V outputs', 'create a helper class that batched-projects KV weights then fuses RMSNorm and RoPE per layer', 'run the materialize method to project, normalize, rotate, and write KV cache across all transformer layers', 'review the fused KV materialization pipeline combining cuBLAS projection, RMSNorm, and RoPE in a single Triton kernel']
+```
+
+Usage
+
+```
+{'build_fused_norm_rope_kernel': 'build a fused Triton kernel that applies RMSNorm and Neox-style RoPE to KV cache tensors', 'create_fused_norm_rope': 'create a function that fuses RMSNorm and RoPE on K/V tensors and returns materialized K and V outputs', 'create_fused_kv_materialize_helper': 'create a helper class that batched-projects KV weights then fuses RMSNorm and RoPE per layer', 'run_materialize': 'run the materialize method to project, normalize, rotate, and write KV cache across all transformer layers', 'review_fused_kv_materialize': 'review the fused KV materialization pipeline combining cuBLAS projection, RMSNorm, and RoPE in a single Triton kernel'}
+```
+

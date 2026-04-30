@@ -1,0 +1,156 @@
+{
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/cextension.py": {
+    "get_cuda_bnb_library_path": "get the disk path to the CUDA BNB native library for given CUDA specs",
+    "load_native_library": "load the bitsandbytes native library (CUDA, ROCm, XPU, or CPU) and return the library handler",
+    "create_bnbnative_library": "create a BNBNativeLibrary wrapper around a ctypes CDLL for accessing native bitsandbytes functions",
+    "create_cuda_bnbnative_library": "create a CudaBNBNativeLibrary wrapper with get_context and cget_managed_ptr void pointer return types",
+    "handle_library_error": "generate detailed error diagnostics when bitsandbytes native library fails to load"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/cuda_specs.py": {
+    "get_cuda_specs": "get CUDA or HIP specifications including compute capability and version tuple",
+    "get_compute_capabilities": "get a sorted list of GPU compute capabilities for all available CUDA devices",
+    "get_rocm_gpu_arch": "get the ROCm GPU architecture string such as gfx900 or gfx1030",
+    "get_cuda_version_string": "get the CUDA or HIP version as a compact string like 118 for 11.8",
+    "test_cuda_available": "test whether CUDA is available and retrieve full GPU specifications"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/functional.py": {
+    "quantize_4bit": "quantize a tensor using 4-bit quantization with nf4 or fp4 data types",
+    "dequantize_4bit": "dequantize a packed 4-bit quantized tensor back to floating point",
+    "quantize_blockwise": "quantize a tensor in blocks of values using blockwise quantization",
+    "dequantize_blockwise": "dequantize a blockwise quantized tensor using absmax scaling",
+    "igemm": "perform integer matrix multiplication using cuBLAS with int8 tensors"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/utils.py": {
+    "create_OutlierTracer": "create an OutlierTracer singleton instance and initialize it with a PyTorch model to register forward pre-hooks on Linear layers",
+    "find_outlier_dims": "find outlier dimensions in a weight tensor using z-score thresholding or top-k selection",
+    "replace_linear": "replace all Linear modules in a PyTorch model with a custom replacement module recursively",
+    "pack_dict_to_tensor": "pack a Python dictionary into a torch tensor for storing quant_state items in a state_dict",
+    "unpack_tensor_to_dict": "unpack a torch tensor back into a Python dictionary by decoding bytes and parsing JSON"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/autograd/_functions.py": {
+    "build_matmul_8bit_lt": "build 8-bit low-memory matrix multiplication with quantization and custom bias using MatMul8bitLt",
+    "build_matmul_4bit": "build 4-bit matrix multiplication with dequantization and bias using MatMul4Bit autograd function",
+    "build_matmul_8bit_fp": "build fast 8-bit fp matrix multiplication optimized for CPU and XPU devices",
+    "build_matmul_dispatcher": "build a matmul dispatcher that selects 8bitLt or 8bitFp backend based on device type and training mode",
+    "build_matmul_4bit_dispatcher": "build a matmul_4bit dispatcher that picks gemv_4bit or MatMul4Bit based on input shape and device"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/backends/utils.py": {
+    "create_quantization_tables": "create NF4 and FP4 quantization lookup tables for 4-bit weight quantization in bitsandbytes",
+    "test_triton_available": "test whether the triton library is installed and available for GPU kernel execution",
+    "build_gaudi_version_check": "build a check that returns the installed Gaudi SW version from the habana-torch-plugin package",
+    "summarize_get_gaudi_sw_version": "summarize the get_gaudi_sw_version function that detects Gaudi hardware software version",
+    "review_quantization_code": "review the CODE dictionary mapping nf4 and fp4 quantization names to their lookup tensors"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/backends/default/ops.py": {
+    "quantize_4bit_tensor": "quantize a torch tensor to 4-bit nf4 or fp4 format using blockwise quantization",
+    "dequantize_4bit_tensor": "dequantize a 4-bit packed tensor back to its original float dtype",
+    "run_int8_scaled_mm": "run int8 matrix multiply with row and column stats dequantization and optional bias",
+    "quantize_int8_vectorwise": "quantize a float tensor to int8 with per-row scaling and optional outlier column handling",
+    "run_optimizer_update_32bit": "run a 32-bit optimizer update for adam, lion, momentum, rmsprop, adagrad, or ademamix"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/backends/triton/kernels_4bit.py": {
+    "quantize_4bit_blockwise_triton": "quantize a PyTorch tensor blockwise to FP4 or NF4 format using Triton kernels",
+    "dequantize_4bit_impl": "dequantize FP4 or NF4 quantized tensor data back to floating point using Triton",
+    "dequantize_4bit_impl_passing_code": "dequantize quantized tensor data using a custom codebook tensor with Triton kernels",
+    "quantize_4bit_blockwise_kernel": "quantize a tensor to 4-bit indices using a codebook-based binary search approach",
+    "dequantize_fp4_kernel": "dequantize FP4 packed uint8 data to floating point using a Triton tree kernel"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/backends/triton/kernels_8bit_quant.py": {
+    "dequant_8bit_blockwise": "dequantize a quantized 8-bit tensor back to full precision using Triton kernels",
+    "quantize_blockwise_triton": "quantize a float tensor to 8-bit using blockwise quantization with a Triton kernel",
+    "quantize_8bit_blockwise_kernel_util": "quantize normalized values to 8-bit indices using binary search over a codebook",
+    "dequant_8bit_blockwise_kernel_util": "dequantize 8-bit indices back to float values using a codebook and absmax scales",
+    "dequant_8bit_kernel": "launch a Triton kernel to dequantize 8-bit tensors in split blocks"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/backends/triton/kernels_optim.py": {
+    "create_optimizer_update_32bit": "create a 32-bit optimizer update using Triton kernels for Adam, AdEMAMix, Momentum, RMSprop, Adagrad, and Lion",
+    "create_optimizer_update_8bit_blockwise": "create an 8-bit blockwise optimizer update using Triton kernels with dequantization and requantization for Adam, AdEMAMix, Momentum, RMSprop, Adagrad, and Lion",
+    "create_optimizer_update_8bit_pytorch": "create a pure PyTorch 8-bit blockwise optimizer update with blockwise dequantization, 32-bit computation, and requantization for Adam, AdEMAMix, Momentum, RMSprop, Adagrad, and Lion",
+    "create_optimizer_update_8bit_triton_quant": "create an 8-bit blockwise optimizer update using PyTorch computation with Triton-based quantization and dequantization for Adam, AdEMAMix, Momentum, RMSprop, Adagrad, and Lion",
+    "summarize_optimizer_kernels": "summarize the Triton kernel functions for 1-state and 2-state 8-bit blockwise optimizer updates supporting Momentum, RMSprop, Adagrad, Lion, Adam, and AdEMAMix"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/backends/triton/ops.py": {
+    "quantize_blockwise": "quantize a float32 tensor to 8-bit using blockwise quantization with a codebook and blocksize",
+    "dequantize_blockwise": "dequantize 8-bit blockwise quantized data back to float using absmax, codebook, and blocksize",
+    "quantize_4bit": "quantize a 16/32-bit float tensor to 4-bit blockwise with nf4 or fp4 quantization type",
+    "dequantize_4bit": "dequantize 4-bit blockwise quantized data back to float using absmax, codebook, and blocksize",
+    "optimizer_update_8bit_blockwise": "perform 8-bit blockwise optimizer update for adam with quantized state tensors and absmax values"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/diagnostics/cuda.py": {
+    "build_find_cuda_libraries": "build a function to find CUDA libraries in a given path list by scanning for matching library patterns",
+    "create_find_cudart_libraries": "create a function to search for CUDA runtime libraries across environment variables with priority ordering",
+    "test_print_diagnostics": "test the diagnostics function that prints PyTorch CUDA or ROCm version and compute capability information",
+    "run_print_runtime_diagnostics": "run the runtime diagnostics function that checks for duplicate or missing CUDA/ROCm runtime files in environment paths",
+    "review_is_relevant_candidate_env_var": "review the function that filters environment variables to identify relevant CUDA library path candidates"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/diagnostics/main.py": {
+    "run_main_diagnostics": "run the main diagnostics function to check bitsandbytes installation and CUDA availability",
+    "test_sanity_check": "test the sanity check that validates bitsandbytes Adam optimizer works on CUDA tensors",
+    "show_environment_info": "show environment information including platform, Python, PyTorch, and related package versions",
+    "get_package_version": "get the installed version of a Python package by name, returning 'not found' if unavailable",
+    "run_cuda_diagnostics": "run CUDA diagnostics by retrieving CUDA specs and printing GPU compatibility information"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/diagnostics/utils.py": {
+    "create_print_header": "create a formatted header line with customizable width and filler characters",
+    "create_print_dedented": "create a function that prints text with leading whitespace removed from each line",
+    "test_print_header": "test the print_header function with various text, width, and filler arguments",
+    "test_print_dedented": "test the print_dedented function with multi-line indented text blocks",
+    "summarize_utils": "summarize the diagnostics utility functions for printing formatted headers and dedented text"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/nn/modules.py": {
+    "create_QuantizedLinearLayer": "create a 4-bit quantized linear layer using Linear4bit for QLoRA finetuning",
+    "create_Int8LinearLayer": "create an 8-bit linear layer using Linear8bitLt for LLM.int8() quantization",
+    "create_QuantizedEmbedding": "create a 4-bit quantized embedding layer using Embedding4bit for memory-efficient NLP models",
+    "create_StableEmbeddingLayer": "create a stable embedding layer with 32-bit optimizer states and layer normalization",
+    "quantize_model_weights": "quantize model weights by loading state dict into Linear4bit and calling .to(device)"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/nn/parametrize.py": {
+    "create_parametrize_4bit": "create a 4-bit quantized PyTorch module parameter with automatic dequantization via parametrization",
+    "replace_param_4bit_prequantized": "replace an existing module parameter with a pre-quantized 4-bit parameter and its quantization state",
+    "replace_param_4bit": "replace a module parameter with a 4-bit quantized version using nf4 or fp4 quantization format",
+    "build_quantized_state_dict": "build a state dict that includes quantization state for saving and loading 4-bit quantized parameters",
+    "test_parametrization_hooks": "test parametrization hooks that enable caching and disable cache for dequantization during forward passes"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/optim/ademamix.py": {
+    "create_optimizer_ademamix": "create an AdEMAMix optimizer for PyTorch model parameters with configurable learning rate and betas",
+    "create_optimizer_ademamix_8bit": "create an 8-bit quantized AdEMAMix optimizer to reduce memory usage for large models",
+    "create_optimizer_paged_ademamix_8bit": "create a paged 8-bit AdEMAMix optimizer for GPU memory-efficient training of large models",
+    "create_optimizer_paged_ademamix_32bit": "create a paged 32-bit AdEMAMix optimizer with virtual memory swapping for large models",
+    "create_reference_ademamix": "create a reference AdEMAMix optimizer for verifying bitsandbytes implementation correctness"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/optim/lars.py": {
+    "create_optimizer_lars": "create a LARS optimizer for PyTorch model parameters with momentum and weight decay",
+    "create_optimizer_lars8bit": "create an 8-bit LARS optimizer to reduce memory usage for large model parameters",
+    "create_optimizer_lars32bit": "create a 32-bit LARS optimizer with explicit precision for model training",
+    "create_optimizer_pytorchlars": "create a pure PyTorch LARS optimizer with layer-wise adaptive rate scaling",
+    "configure_lars_max_unorm": "configure LARS optimizer with custom max_unorm for gradient norm clipping"
+  },
+  "bitsandbytes-foundation_bitsandbytes/bitsandbytes/optim/optimizer.py": {
+    "create_8bit_optimizer": "create an 8-bit Adam optimizer for memory-efficient deep learning training",
+    "override_optimizer_config": "override optimizer hyperparameters like optim_bits or betas for specific model parameters",
+    "register_model_parameters": "register model parameters with the global optimizer manager before moving to GPU",
+    "build_paged_optimizer": "build a paged 8-bit optimizer to reduce GPU memory usage for large models",
+    "save_load_optimizer_state": "save and load optimizer state with FSDP-compatible quantization state wrapping"
+  },
+  "bitsandbytes-foundation_bitsandbytes/examples/cpu/cpu_training.py": {
+    "run_cpu_training": "run end-to-end CPU finetuning of a causal language model using bitsandbytes optimizers",
+    "run_compare_optimizers": "run comparison of bitsandbytes AdamW against torch AdamW on CPU to verify numerical correctness",
+    "run_trainer_mode": "run CPU finetuning of a language model using HuggingFace Trainer with bitsandbytes optimizer",
+    "create_optimizer_factory": "create a bitsandbytes optimizer factory supporting adamw, sgd, lion, rmsprop, adagrad, lamb, and lars",
+    "prepare_alpaca_dataset": "prepare and tokenize an Alpaca-formatted dataset with a transformer tokenizer for causal language modeling"
+  },
+  "bitsandbytes-foundation_bitsandbytes/examples/xpu/benchmark_paged_memory.py": {
+    "run_benchmark_paged_memory": "run the paged optimizer memory benchmark to compare GPU memory usage across AdamW variants",
+    "create_model_llama": "create a LLaMA model from config with configurable hidden size, layers, and device",
+    "measure_training_memory": "measure peak GPU memory usage during training with a specified optimizer class",
+    "test_optimizer_memory_savings": "test GPU memory savings of paged optimizers versus non-paged optimizers",
+    "summarize_benchmark_results": "summarize benchmark results comparing peak memory and optimizer state distribution across AdamW variants"
+  },
+  "bitsandbytes-foundation_bitsandbytes/examples/xpu/paged_xpu_training.py": {
+    "run_training_paged_optimizer": "run single-step training with a bitsandbytes paged optimizer on XPU device",
+    "compare_paged_vs_nonpaged": "compare paged_adamw against standard adamw optimizer loss curves",
+    "run_trainer_mode": "run training using HuggingFace Trainer with a bitsandbytes paged optimizer",
+    "create_bnb_optimizer": "create a bitsandbytes optimizer by name such as paged_adamw8bit or paged_lion32bit",
+    "prepare_alpaca_dataset": "prepare and tokenize a subset of the Alpaca dataset for causal language model training"
+  }
+}

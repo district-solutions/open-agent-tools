@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/llms/bedrock/chat/invoke_agent/transformation.py
+
+Prompts
+
+```
+['build a Bedrock Invoke Agent request by transforming messages into the AWS API format with agent ID and alias', 'parse AWS event stream data from Bedrock Invoke Agent responses into structured event objects', 'extract the final text response content from parsed AWS event stream chunk events', 'extract token usage information (input and output tokens) from Bedrock Invoke Agent trace events', 'build a LiteLLM ModelResponse object from extracted content, usage info, and model metadata']
+```
+
+Usage
+
+```
+{'build_bedrock_invoke_agent_request': 'build a Bedrock Invoke Agent request by transforming messages into the AWS API format with agent ID and alias', 'parse_aws_event_stream': 'parse AWS event stream data from Bedrock Invoke Agent responses into structured event objects', 'extract_response_content': 'extract the final text response content from parsed AWS event stream chunk events', 'extract_usage_info': 'extract token usage information (input and output tokens) from Bedrock Invoke Agent trace events', 'build_model_response': 'build a LiteLLM ModelResponse object from extracted content, usage info, and model metadata'}
+```
+

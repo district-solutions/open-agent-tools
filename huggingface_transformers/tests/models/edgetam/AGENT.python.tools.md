@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/edgetam/test_modeling_edgetam.py
+
+Prompts
+
+```
+['test the EdgeTamModel class with config and pixel values for mask generation inference', 'test loading the EdgeTAM model from pretrained weights on HuggingFace Hub', 'test mask generation inference using a single point prompt with multimask output', 'test batched image and point inference with multiple prompts per image', 'test iterative mask refinement using existing points and generated masks as input']
+```
+
+Usage
+
+```
+{'test_model_edge_tam': 'test the EdgeTamModel class with config and pixel values for mask generation inference', 'test_model_from_pretrained': 'test loading the EdgeTAM model from pretrained weights on HuggingFace Hub', 'test_inference_mask_generation_one_point': 'test mask generation inference using a single point prompt with multimask output', 'test_inference_mask_generation_batched': 'test batched image and point inference with multiple prompts per image', 'test_inference_mask_generation_from_existing': 'test iterative mask refinement using existing points and generated masks as input'}
+```
+

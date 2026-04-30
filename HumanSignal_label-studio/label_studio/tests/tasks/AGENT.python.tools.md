@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: HumanSignal/label-studio
+- repo_uri: https://github.com/HumanSignal/label-studio
+
+## File: HumanSignal_label-studio/label_studio/tests/tasks/test_functions.py
+
+Prompts
+
+```
+['test the export_project function that generates a project export file in JSON format', 'test the memory_limit decorator that constrains process memory via RLIMIT_AS', 'test the generate_export_file fixture that mocks DataExport.generate_export_file', 'test export_project raises an exception when the project ID does not exist', 'test the ExportDataSerializer that serializes project tasks with key frame interpolation settings']
+```
+
+Usage
+
+```
+{'test_export_project': 'test the export_project function that generates a project export file in JSON format', 'test_memory_limit_decorator': 'test the memory_limit decorator that constrains process memory via RLIMIT_AS', 'test_generate_export_file_fixture': 'test the generate_export_file fixture that mocks DataExport.generate_export_file', 'test_project_does_not_exist': 'test export_project raises an exception when the project ID does not exist', 'test_export_data_serializer': 'test the ExportDataSerializer that serializes project tasks with key frame interpolation settings'}
+```
+

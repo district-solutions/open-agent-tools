@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/litellm/litellm_core_utils/audio_utils/utils.py
+
+Prompts
+
+```
+['build a function that processes audio files from paths, bytes, tuples, or file-like objects into structured data', 'create a function that computes a SHA-256 hash of audio file content for cache key generation', 'test the process_audio_file function with bytes, file paths, tuples, and file-like objects', 'review the calculate_request_duration function that extracts audio duration using soundfile', 'summarize the get_audio_file_for_health_check function that returns an audio file for health checks']
+```
+
+Usage
+
+```
+{'build_audio_file_processor': 'build a function that processes audio files from paths, bytes, tuples, or file-like objects into structured data', 'create_audio_file_hash': 'create a function that computes a SHA-256 hash of audio file content for cache key generation', 'test_process_audio_file': 'test the process_audio_file function with bytes, file paths, tuples, and file-like objects', 'review_get_audio_duration': 'review the calculate_request_duration function that extracts audio duration using soundfile', 'summarize_audio_health_check': 'summarize the get_audio_file_for_health_check function that returns an audio file for health checks'}
+```
+

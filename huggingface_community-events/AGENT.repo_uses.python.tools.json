@@ -1,0 +1,142 @@
+{
+  "huggingface_community-events/huggan/pytorch/huggan_mixin.py": {
+    "push_pytorch_model_to_hub": "push a PyTorch model to the Hugging Face Hub using HugGANModelHubMixin",
+    "create_hf_repo_for_model": "create a new Hugging Face repository for a PyTorch model with HugGANModelHubMixin",
+    "save_pretrained_model_with_config": "save a pretrained PyTorch model with configuration to a local directory",
+    "generate_default_model_card": "generate a default README model card for a HugGAN model repository",
+    "review_push_to_hub_method": "review the push_to_hub method in HugGANModelHubMixin for authentication and repo handling"
+  },
+  "huggingface_community-events/huggan/pytorch/cyclegan/modeling_cyclegan.py": {
+    "build_generator_resnet": "build a GeneratorResNet model with a given input shape and number of residual blocks for CycleGAN image translation",
+    "build_discriminator": "build a PatchGAN Discriminator model with a specified number of channels for CycleGAN adversarial training",
+    "build_residual_block": "build a ResidualBlock with two convolution layers and instance normalization for use in the generator network",
+    "run_generator_forward": "run a forward pass through the GeneratorResNet model to translate an input image to the target domain",
+    "run_discriminator_forward": "run a forward pass through the Discriminator model to produce a real or fake prediction for an image"
+  },
+  "huggingface_community-events/huggan/pytorch/cyclegan/train.py": {
+    "run_cyclegan_training": "run cyclegan training on a dataset using the argparse CLI with configurable epochs and batch size",
+    "run_training_with_mixed_precision": "run cyclegan training with fp16 or bf16 mixed precision for faster GPU training",
+    "run_training_resume_checkpoint": "resume cyclegan training from a saved checkpoint at a specific epoch",
+    "run_training_push_to_hub": "run cyclegan training and push the trained generator model to the HuggingFace hub",
+    "run_training_cpu_mode": "run cyclegan training on CPU instead of GPU for testing or limited hardware"
+  },
+  "huggingface_community-events/huggan/pytorch/cyclegan/utils.py": {
+    "create_replay_buffer": "create a ReplayBuffer with a specified max size for storing GAN training samples",
+    "push_and_pop_replay_buffer": "push new data into the ReplayBuffer and pop either new or cached samples randomly",
+    "create_lambda_lr_scheduler": "create a LambdaLR scheduler with n_epochs, offset, and decay_start_epoch parameters",
+    "compute_lr_step": "compute the learning rate multiplier for a given epoch using the LambdaLR step method",
+    "review_replay_buffer_class": "review the ReplayBuffer class and its push_and_pop method for GAN training usage"
+  },
+  "huggingface_community-events/huggan/pytorch/dcgan/modeling_dcgan.py": {
+    "create_generator": "create a Generator instance with custom latent dimension and hidden size for image generation",
+    "create_discriminator": "create a Discriminator instance with custom channel count and hidden size for image classification",
+    "generate_images_from_noise": "generate 64x64 pixel images from random noise tensors using the Generator forward pass",
+    "discriminate_real_fake_images": "discriminate real versus fake images by passing pixel values through the Discriminator forward pass",
+    "review_dcgan_architecture": "review the DCGAN Generator and Discriminator architecture layers and hyperparameters"
+  },
+  "huggingface_community-events/huggan/pytorch/dcgan/train.py": {
+    "run_dcgan_training": "run the DCGAN training script with configurable dataset, batch size, and epochs via argparse CLI",
+    "train_generator_discriminator": "train a generator and discriminator network using adversarial loss with Adam optimizer and mixed precision",
+    "calculate_fid_metric": "calculate the Fr\u00e9chet Inception Distance metric between real and generated images using InceptionV3",
+    "initialize_dcgan_weights": "initialize generator and discriminator Conv and BatchNorm layer weights with normal distribution",
+    "push_dcgan_to_hub": "push the trained DCGAN generator model to the HuggingFace hub with an organization name"
+  },
+  "huggingface_community-events/huggan/pytorch/lightweight_gan/cli.py": {
+    "run_train_gan_from_folder": "run a lightweight GAN training from a folder of images with configurable hyperparameters",
+    "generate_images_from_trained_gan": "generate sample images from a trained lightweight GAN model checkpoint",
+    "generate_interpolation_gan": "generate interpolation images between latent vectors using a trained GAN model",
+    "show_gan_training_progress": "show the current training progress of a lightweight GAN model with sample images",
+    "set_random_seed_for_reproducibility": "set a random seed for PyTorch, NumPy, and Python to ensure reproducible results"
+  },
+  "huggingface_community-events/huggan/pytorch/lightweight_gan/diff_augment.py": {
+    "apply_diff_augment": "apply differential augmentation to a batch of image tensors using specified augmentation types",
+    "apply_rand_brightness": "apply random brightness perturbation to a batch of image tensors",
+    "apply_rand_translation": "apply random spatial translation to a batch of image tensors with configurable ratio",
+    "apply_rand_cutout": "apply random cutout augmentation to a batch of image tensors with configurable ratio",
+    "apply_rand_offset": "apply random horizontal and vertical offset to a batch of image tensors using torch roll"
+  },
+  "huggingface_community-events/huggan/pytorch/lightweight_gan/lightweight_gan.py": {
+    "train_lightweight_gan": "train a LightweightGAN model using the Trainer class with a HuggingFace dataset and configurable hyperparameters",
+    "generate_images_gan": "generate images from a trained LightweightGAN using the Trainer generate method with default or EMA variants",
+    "calculate_fid_score": "calculate the FID score for a trained GAN by comparing generated images against real dataset images",
+    "create_generator_discriminator": "create a Generator and Discriminator network for the LightweightGAN with configurable attention layers and frequency channel attention",
+    "save_load_gan_checkpoint": "save and load LightweightGAN model checkpoints using the Trainer save and load methods for resuming training"
+  },
+  "huggingface_community-events/huggan/pytorch/metrics/fid_score.py": {
+    "calculate_activation_statistics": "calculate the mean and covariance of model activation features for a batch of images",
+    "calculate_frechet_distance": "compute the Frechet distance between two multivariate Gaussian distributions given their means and covariances",
+    "calculate_fretchet": "calculate the Fr\u00e9chet Inception Distance between real and fake images using a pretrained model",
+    "review_fid_score": "review the fid_score module to verify the Frechet distance calculation handles singular covariance matrices",
+    "refactor_calculate_fretchet": "refactor calculate_fretchet to support batched processing of large image datasets"
+  },
+  "huggingface_community-events/huggan/pytorch/metrics/inception.py": {
+    "build_InceptionV3_model": "build a pretrained InceptionV3 model to extract feature maps from input images for FID computation",
+    "run_InceptionV3_forward": "run the InceptionV3 forward pass on a batch of images to get feature vectors",
+    "create_fid_inception_v3": "create a FID-specific InceptionV3 model with patched blocks matching TensorFlow weights",
+    "review_FIDInceptionA_forward": "review the FIDInceptionA forward method that patches average pooling to exclude padded zeros",
+    "summarize_FIDInceptionE_2": "summarize the FIDInceptionE_2 class that uses max pooling instead of average pooling"
+  },
+  "huggingface_community-events/huggan/pytorch/pix2pix/modeling_pix2pix.py": {
+    "build_generator_unet": "build a pix2pix GeneratorUNet model with configurable input and output channels for image-to-image translation",
+    "build_discriminator": "build a pix2pix Discriminator model that takes paired images and outputs real/fake predictions",
+    "create_unet_down_block": "create a UNetDown downsampling block with optional instance normalization and dropout for the encoder",
+    "create_unet_up_block": "create a UNetUp upsampling block with skip connection concatenation for the decoder",
+    "test_weights_init_normal": "test the weights_init_normal function to initialize Conv and BatchNorm2d layer weights with normal distribution"
+  },
+  "huggingface_community-events/huggan/pytorch/pix2pix/train.py": {
+    "run_pix2pix_training": "run the pix2pix GAN training script with argparse CLI options for dataset, epochs, and batch size",
+    "run_training_with_hub_push": "run pix2pix training and push the generator model to HuggingFace Hub after each epoch",
+    "run_training_with_mixed_precision": "run pix2pix training with fp16 or bf16 mixed precision using the accelerate library",
+    "run_training_from_checkpoint": "resume pix2pix training from a saved generator and discriminator checkpoint at a given epoch",
+    "review_weights_init_normal": "review the weights_init_normal function that initializes Conv and BatchNorm2d layers with normal distribution"
+  },
+  "huggingface_community-events/huggan/tensorflow/dcgan/train.py": {
+    "run_dcgan_training": "run the DCGAN training script with argparse to train a generator and discriminator on a dataset",
+    "create_generator_model": "create a Keras Sequential generator model with Conv2DTranspose layers for image generation",
+    "create_discriminator_model": "create a Keras Sequential discriminator model with Conv2D layers for image classification",
+    "preprocess_images_for_tf": "preprocess a HuggingFace dataset by normalizing pixel values and converting to a TensorFlow dataset",
+    "generate_and_save_images": "generate sample images from the trained generator model and save them as PNG files"
+  },
+  "huggingface_community-events/huggan/utils/hub.py": {
+    "get_full_repo_name_with_org": "get the full Hugging Face repo name using a model ID and organization",
+    "get_full_repo_name_with_user": "get the full Hugging Face repo name using a model ID and the current authenticated user",
+    "get_full_repo_name_with_token": "get the full Hugging Face repo name using a model ID and an explicit auth token",
+    "refactor_get_full_repo_name": "refactor get_full_repo_name to support additional Hugging Face entity types beyond models",
+    "review_get_full_repo_name": "review get_full_repo_name to verify it handles missing tokens and organizations gracefully"
+  },
+  "huggingface_community-events/huggan/utils/push_to_hub_example.py": {
+    "run_upload_dataset": "run the script to upload a CycleGAN dataset to the Hugging Face Hub",
+    "run_upload_custom_dataset": "run the script with a custom dataset name using the --dataset argument",
+    "run_upload_default_dataset": "run the script to upload the default apple2orange dataset to the Hub",
+    "summarize_upload_dataset": "summarize the upload_dataset function that loads and pushes a CycleGAN dataset to the Hub",
+    "review_available_datasets": "review the list of available CycleGAN datasets supported by the upload script"
+  },
+  "huggingface_community-events/jax-controlnet-sprint/dataset_tools/coyo_1m_dataset_preprocess.py": {
+    "run_dataset_preprocess": "run the coyo 1M dataset preprocessing script to download images and generate canny edge conditioning images",
+    "filter_dataset_function": "filter a HuggingFace dataset by clip similarity, watermark score, and aesthetic score thresholds",
+    "preprocess_and_save_images": "preprocess dataset examples by downloading images, applying canny edge detection, and saving metadata to JSONL",
+    "parse_args_preprocessing": "parse command line arguments for train data directory, cache directory, max samples, and number of processors",
+    "estimate_filter_ratio": "estimate the dataset filter ratio using a sample of 20000 examples to calculate required max training samples"
+  },
+  "huggingface_community-events/jax-controlnet-sprint/training_scripts/train_controlnet_flax.py": {
+    "run_train_controlnet": "run the ControlNet training script with JAX/Flax for Stable Diffusion using argparse CLI",
+    "run_validation": "run validation on the trained ControlNet model using the FlaxStableDiffusionControlNetPipeline",
+    "run_dataset_preprocessing": "run dataset preprocessing to tokenize captions and transform images for ControlNet training",
+    "run_gradient_accumulation": "run training with gradient accumulation steps using JAX pmap and optax optimizer",
+    "run_model_export": "run the final model export and push trained ControlNet weights to Hugging Face Hub"
+  },
+  "huggingface_community-events/whisper-fine-tuning-event/run_eval_whisper_streaming.py": {
+    "run_whisper_streaming_eval": "run a streaming WER evaluation of a Whisper ASR model on a Hugging Face dataset",
+    "get_text_from_sample": "extract transcript text from a dataset sample by checking multiple column names",
+    "normalise_batch_text": "normalize a batch of text using the Whisper BasicTextNormalizer for consistent scoring",
+    "filter_target_text": "filter out empty or ignored text segments from the dataset before evaluation",
+    "yield_audio_reference_pairs": "yield audio and normalized reference pairs from a dataset for streaming inference"
+  },
+  "huggingface_community-events/whisper-fine-tuning-event/run_speech_recognition_seq2seq_streaming.py": {
+    "run_whisper_finetuning": "run the Whisper seq2seq speech recognition fine-tuning script with streaming dataset mode",
+    "load_streaming_dataset": "load a HuggingFace dataset in streaming mode with optional split interleaving",
+    "configure_model_arguments": "configure model arguments including model path, tokenizer, and feature extractor settings",
+    "configure_data_training_arguments": "configure data training arguments including dataset name, audio column, and duration filters",
+    "create_data_collator": "create a dynamic padding data collator for speech seq2seq model inputs and labels"
+  }
+}

@@ -1,0 +1,1196 @@
+{
+  "huggingface_accelerate/benchmarks/big_model_inference/big_model_inference.py": {
+    "run_big_model_inference_benchmark": "run a benchmark that loads a large model and times text generation across multiple prompts",
+    "run_model_loading_with_disk_offload": "run the big model inference benchmark with disk offloading enabled for memory constrained setups",
+    "run_causal_model_generation_benchmark": "run a generation benchmark on a causal language model like gpt-j-6b or opt-30b",
+    "run_seq2seq_model_generation_benchmark": "run a generation benchmark on a seq2seq model like T0pp using device map auto",
+    "review_parse_args_default_models": "review the parse_args function that resolves default model configs from the DEFAULT_MODELS dictionary"
+  },
+  "huggingface_accelerate/benchmarks/big_model_inference/measures_util.py": {
+    "start_measure": "create a function that starts measuring CPU and GPU memory and elapsed time for benchmarking",
+    "end_measure": "create a function that ends measurement and returns delta CPU GPU memory and time in MiB",
+    "log_measures": "create a function that prints benchmark results including time GPU peak memory and CPU RAM",
+    "build_PeakCPUMemory": "build a PeakCPUMemory class that tracks peak CPU RSS memory using a background daemon thread",
+    "review_PeakCPUMemory": "review the PeakCPUMemory class start and stop methods for threaded peak CPU memory monitoring"
+  },
+  "huggingface_accelerate/benchmarks/fp8/ms_amp/ddp.py": {
+    "run_train_baseline": "run the train_baseline function to train a BERT model using raw MS-AMP with DDP",
+    "run_train_integration": "run the train_integration function to train a BERT model using Accelerate FP8 with MS-AMP",
+    "test_ddp_fp8_benchmark": "test that Accelerate FP8 DDP training matches raw MS-AMP baseline accuracy and F1 scores",
+    "review_train_baseline": "review the train_baseline function that wraps a model with msamp.initialize and DDP",
+    "review_train_integration": "review the train_integration function that uses FP8RecipeKwargs with Accelerator for MS-AMP training"
+  },
+  "huggingface_accelerate/benchmarks/fp8/ms_amp/distrib_deepspeed.py": {
+    "run_train_baseline": "run the train_baseline function to train a BERT model using raw MS-AMP with DeepSpeed ZeRO optimization",
+    "run_train_integration": "run the train_integration function to train a BERT model using Accelerate with DeepSpeedPlugin and MS-AMP enabled",
+    "run_comparison_benchmark": "run the main block to compare baseline MS-AMP training results against Accelerate integration across ZeRO stages and opt levels",
+    "review_train_baseline": "review the train_baseline function that initializes MS-AMP DeepSpeed training with configurable zero_stage and opt_level parameters",
+    "review_train_integration": "review the train_integration function that uses Accelerator with DeepSpeedPlugin for fp8 mixed precision training"
+  },
+  "huggingface_accelerate/benchmarks/fp8/ms_amp/fp8_utils.py": {
+    "get_dataloaders": "create train and eval dataloaders for the MRPC GLUE dataset with FP8-compatible padding",
+    "get_training_utilities": "build a model, optimizer, dataloaders, and LR scheduler for MRPC sequence classification training",
+    "get_named_parameters": "extract named parameters from a parallel-wrapped HuggingFace Accelerate model",
+    "evaluate_model": "run model evaluation on a dataloader with bfloat16 autocast and multi-process metric gathering",
+    "review_evaluate_model": "review the evaluate_model function to understand bfloat16 autocast and gather_for_metrics usage"
+  },
+  "huggingface_accelerate/benchmarks/fp8/ms_amp/non_distributed.py": {
+    "run_train_baseline": "run the train_baseline function to train a BERT model using raw MS-AMP with opt_level O2",
+    "run_train_integration": "run the train_integration function to train a BERT model using Accelerate with FP8 MS-AMP backend",
+    "run_non_distributed_benchmark": "run the non_distributed benchmark script to compare Accelerate FP8 performance against raw MS-AMP on single GPU",
+    "review_train_baseline": "review the train_baseline function that initializes MS-AMP and trains a model with gradient scaling",
+    "review_train_integration": "review the train_integration function that uses Accelerator with FP8RecipeKwargs for mixed precision training"
+  },
+  "huggingface_accelerate/benchmarks/fp8/torchao/ddp.py": {
+    "run_train_baseline": "run the baseline DDP training with raw torchao FP8 conversion on a BERT model",
+    "run_train_integration": "run the accelerate integration DDP training with FP8 mixed precision on a BERT model",
+    "test_evaluate_model": "test the evaluate_model function that computes accuracy and F1 metrics on a dataloader",
+    "refactor_filter_linear_layers": "refactor the filter_linear_layers function to customize which linear layers are excluded from FP8 conversion",
+    "review_train_baseline": "review the train_baseline function that wraps a model with DDP and torchao float8 training"
+  },
+  "huggingface_accelerate/benchmarks/fp8/torchao/distrib_deepspeed.py": {
+    "run_train_baseline": "run the train_baseline function to train a BERT model with raw torchao float8 and DeepSpeed",
+    "run_train_integration": "run the train_integration function to train a BERT model using accelerate with fp8 mixed precision and DeepSpeed",
+    "run_distrib_deepspeed_benchmark": "run the distrib_deepspeed script to benchmark accelerate against raw torchao across DeepSpeed ZERO stages 1, 2, and 3",
+    "review_filter_linear_layers": "review the filter_linear_layers function that filters linear layers by feature divisibility and skips first and last layers",
+    "test_train_baseline": "test the train_baseline function to verify float8 training with DeepSpeed initialization and model evaluation"
+  },
+  "huggingface_accelerate/benchmarks/fp8/torchao/fp8_utils.py": {
+    "get_dataloaders": "create train and eval dataloaders for the MRPC GLUE dataset using a given model name and batch size",
+    "get_training_utilities": "build a complete training setup with model, optimizer, dataloaders, and LR scheduler for MRPC classification",
+    "get_named_parameters": "extract a dictionary of named parameters from a model wrapped in parallel training wrappers",
+    "evaluate_model": "run a model evaluation loop over a dataloader and compute metrics with multi-process gathering support",
+    "refactor_get_training_utilities": "refactor get_training_utilities to support a custom dataset or different optimizer configuration"
+  },
+  "huggingface_accelerate/benchmarks/fp8/torchao/fsdp.py": {
+    "run_FSDP_fp8_benchmark": "run the FSDP fp8 benchmark comparing raw torchao baseline against accelerate integration",
+    "test_filter_linear_layers": "test the filter_linear_layers function that filters linear layers by feature alignment and first/last layer exclusion",
+    "test_evaluate_model": "test the evaluate_model function that runs a model on a dataloader and computes evaluation metrics",
+    "test_train_baseline": "test the train_baseline function that trains a BERT model with raw torchao FSDP and fp8 conversion",
+    "test_train_integration": "test the train_integration function that trains a BERT model using accelerate with FSDP plugin and AORecipeKwargs"
+  },
+  "huggingface_accelerate/benchmarks/fp8/torchao/non_distributed.py": {
+    "run_train_baseline": "run the train_baseline function to train a BERT model with raw torchao FP8 conversion",
+    "run_train_integration": "run the train_integration function to train a BERT model using accelerate with FP8 mixed precision",
+    "run_evaluate_model": "run the evaluate_model function to compute accuracy and F1 metrics on a validation dataloader",
+    "test_filter_linear_layers": "test the filter_linear_layers function to skip first and last linear layers for FP8 stability",
+    "run_benchmark_comparison": "run the main block to compare baseline torchao FP8 training results against accelerate FP8 integration"
+  },
+  "huggingface_accelerate/benchmarks/fp8/transformer_engine/ddp.py": {
+    "run_train_baseline": "run the baseline DDP training with raw Transformer Engine FP8 autocast and bfloat16 mixed precision",
+    "run_train_integration": "run the DDP training integration test using Accelerator with FP8RecipeKwargs and mixed precision fp8",
+    "test_train_baseline": "test the baseline training function that converts a model to Transformer Engine and wraps it in DDP",
+    "test_train_integration": "test the integration training function that uses Accelerator prepare with FP8 recipe kwargs handlers",
+    "run_ddp_benchmark": "run the DDP benchmark comparing baseline raw Transformer Engine training against Accelerator FP8 integration training"
+  },
+  "huggingface_accelerate/benchmarks/fp8/transformer_engine/distrib_deepspeed.py": {
+    "run_train_baseline": "run the baseline DeepSpeed FP8 training loop for a given ZERO stage",
+    "run_train_integration": "run the Accelerate DeepSpeed FP8 integration training loop for a given ZERO stage",
+    "run_distrib_deepspeed_benchmark": "run the distributed DeepSpeed FP8 benchmark comparing baseline and Accelerate across ZERO stages 1, 2, and 3",
+    "review_train_baseline": "review the train_baseline function that converts a model to Transformer Engine and trains with raw DeepSpeed",
+    "review_train_integration": "review the train_integration function that trains a model using Accelerator with FP8 mixed precision and DeepSpeed plugin"
+  },
+  "huggingface_accelerate/benchmarks/fp8/transformer_engine/fp8_utils.py": {
+    "get_dataloaders": "create train and eval dataloaders for the MRPC GLUE dataset with FP8-compatible padding",
+    "get_training_utilities": "build a model, optimizer, dataloaders, and LR scheduler for MRPC sequence classification training",
+    "get_named_parameters": "extract named parameters from a model wrapped in DataParallel or DDP",
+    "evaluate_model": "run a model in eval mode over a dataloader and compute metrics with multi-process gathering",
+    "refactor_get_dataloaders": "refactor get_dataloaders to support a different GLUE task or custom tokenizer settings"
+  },
+  "huggingface_accelerate/benchmarks/fp8/transformer_engine/fsdp.py": {
+    "run_train_baseline": "run the baseline FSDP training with raw Transformer Engine FP8 autocast on a BERT model",
+    "run_train_integration": "run the accelerate integration FSDP training with FP8 recipe kwargs on a BERT model",
+    "run_fsdp_benchmark": "run the full FSDP benchmark comparing baseline raw TE training against accelerate integration training",
+    "review_train_baseline": "review the train_baseline function that converts a model to TE and wraps it with FSDP",
+    "review_train_integration": "review the train_integration function that uses Accelerator with FSDPPlugin and FP8RecipeKwargs for training"
+  },
+  "huggingface_accelerate/benchmarks/fp8/transformer_engine/non_distributed.py": {
+    "run_train_baseline": "run the train_baseline function to train a BERT model using raw Transformer Engine with FP8 precision",
+    "run_train_integration": "run the train_integration function to train a BERT model using Accelerate with FP8 precision",
+    "run_non_distributed_benchmark": "run the non_distributed benchmark script to verify Accelerate FP8 parity with raw Transformer Engine",
+    "review_train_baseline": "review the train_baseline function that converts a model to Transformer Engine and trains with FP8 autocast",
+    "review_train_integration": "review the train_integration function that uses Accelerator with FP8RecipeKwargs for FP8 training"
+  },
+  "huggingface_accelerate/benchmarks/fsdp2/main.py": {
+    "run_train_function": "run the train function to perform a training loop with model, optimizer, dataloader, and accelerator",
+    "run_evaluate_function": "run the evaluate function to train a model and report loss and peak memory usage",
+    "run_main_benchmark": "run the main FSDP2 benchmark comparing optimizer placement strategies with Accelerate",
+    "review_train_function": "review the train function that iterates over batches calling zero_grad, forward, backward, and step",
+    "review_evaluate_function": "review the evaluate function that initializes components via init_fn, trains, and prints memory stats"
+  },
+  "huggingface_accelerate/benchmarks/fsdp2/measure_utils.py": {
+    "create_memory_tracker": "create a MemoryTracker instance to monitor GPU and CPU memory usage for a PyTorch device",
+    "start_memory_tracking": "start the MemoryTracker to begin collecting allocated, reserved, and virtual memory data in a background thread",
+    "stop_memory_tracking": "stop the MemoryTracker and save memory usage data as JSON and optional snapshot pickle files",
+    "get_peak_allocated_memory": "get the peak allocated memory value in megabytes from the MemoryTracker after stopping tracking",
+    "get_peak_reserved_memory": "get the peak reserved memory value in megabytes from the MemoryTracker after stopping tracking"
+  },
+  "huggingface_accelerate/benchmarks/fsdp2/utils.py": {
+    "prepare_torch_fsdp2": "prepare a PyTorch model with FSDP2 fully_shard and mixed precision for benchmarking",
+    "prepare_accelerate_fsdp2": "prepare an Accelerate model with FSDP2 plugin for distributed training benchmarking",
+    "get_named_parameters": "get a dictionary mapping model parameter names to their data pointers or tensors",
+    "replace_optimizer_params": "replace optimizer parameters with empty tensors before applying fully_shard to the model",
+    "swap_back_optimizer_params": "swap optimizer parameters back to sharded ones after fully_shard is applied"
+  },
+  "huggingface_accelerate/benchmarks/fsdp2/visualize.py": {
+    "run_visualize_memory_comparison": "run the script to generate allocated and reserved memory comparison plots from JSON data",
+    "run_filter_data": "run filter_data to remove low-memory data points below a threshold in the first partition",
+    "run_compare_memory_usage": "run compare_memory_usage to generate matplotlib figures comparing allocated and reserved memory across datasets",
+    "review_parse_args": "review parse_args to understand the CLI arguments for directory, memory threshold, and filter partition",
+    "refactor_compare_memory_usage": "refactor compare_memory_usage to support a dynamic number of datasets beyond the hardcoded four colors"
+  },
+  "huggingface_accelerate/examples/complete_cv_example.py": {
+    "run_complete_cv_training": "run the complete_cv_example.py script to train a ResNet50 on the Oxford-IIT Pet Dataset with Accelerate",
+    "create_accelerator_training": "create an Accelerator instance with mixed precision, CPU/GPU support, and stateful dataloader configuration",
+    "build_pets_dataset": "build a PetsDataset PyTorch Dataset that loads images from filenames and extracts labels from file names",
+    "test_checkpoint_resume": "test resuming training from a checkpoint folder with epoch or step-based checkpointing strategies",
+    "refactor_training_loop": "refactor the training loop to support multi-GPU, TPU, fp16, and fp32 modes via Accelerate"
+  },
+  "huggingface_accelerate/examples/complete_nlp_example.py": {
+    "run_train_bert_nlp": "run training of a BERT model on the GLUE MRPC dataset using HuggingFace Accelerate",
+    "create_accelerator_mixed_precision": "create an Accelerator instance with mixed precision fp16, bf16, or fp8 support",
+    "build_dataloader_gradient_accumulation": "build DataLoader with gradient accumulation for large batch sizes on GPU",
+    "test_checkpoint_resume_training": "test checkpointing and resuming training from step or epoch checkpoints",
+    "review_evaluate_model_metrics": "review model evaluation with accuracy and F1 metrics on the GLUE MRPC benchmark"
+  },
+  "huggingface_accelerate/examples/cv_example.py": {
+    "run_train_resnet50_pets": "run the cv_example script to train a ResNet50 model on the Oxford-IIT Pet Dataset using Accelerate",
+    "create_accelerator_training": "create an Accelerator instance with mixed precision and CPU/GPU/TPU support for distributed training",
+    "build_pets_dataset": "build a PyTorch Dataset class that loads JPEG images and extracts labels from filenames",
+    "test_distributed_training": "test the training script across single GPU, multi-GPU, and TPU configurations",
+    "run_mixed_precision_training": "run the training script with fp16 or bf16 mixed precision via --mixed_precision argument"
+  },
+  "huggingface_accelerate/examples/finetune_lm_tpu.py": {
+    "run_finetune_lm_tpu": "run a python module to fine-tune a causal language model on a TPU using FSDPv2 and PEFT LoRA",
+    "create_format_dolly": "create a function that formats Dolly dataset examples using the tokenizer's chat template",
+    "build_lora_config_peft": "build a PEFT LoRA configuration with r=32, alpha=128, dropout=0.05 targeting q_proj and k_proj modules",
+    "train_model_sft_tpu": "train a model with SFTTrainer on TPU using FSDPv2 full_shard with gradient checkpointing disabled",
+    "setup_fsdp_training_args": "setup FSDP training arguments with xla_fsdp_v2 enabled and transformer layer wrapping for TPU sharding"
+  },
+  "huggingface_accelerate/examples/multigpu_remote_launcher.py": {
+    "run_multigpu_training": "run multi-GPU distributed training on a remote Runhouse cluster with mixed precision support",
+    "create_runhouse_cluster": "create a Runhouse GPU cluster with specified instance type and provider for remote execution",
+    "launch_remote_function": "launch a remote Runhouse function on a GPU cluster with dependencies and streaming logs",
+    "configure_distributed_training": "configure distributed multi-GPU training with world size, master address, and mixed precision args",
+    "setup_training_environment": "setup a distributed training environment with patch_environment and PrepareForLaunch for torch multiprocessing"
+  },
+  "huggingface_accelerate/examples/nlp_example.py": {
+    "create_training_pipeline": "create a training pipeline that runs bert-base-cased on GLUE MRPC with accelerate",
+    "create_dataloaders_glue": "create train and eval dataloaders from the glue mrpc dataset with bert tokenizer",
+    "run_training_with_accelerator": "run distributed training with accelerate supporting cpu gpu tpu and mixed precision",
+    "run_gradient_accumulation": "run gradient accumulation when batch size exceeds max gpu batch size",
+    "test_eval_with_gather_for_metrics": "test model evaluation using accelerator gather_for_metrics for distributed aggregation"
+  },
+  "huggingface_accelerate/examples/alst_ulysses_sequence_parallelism/sp-alst.py": {
+    "create_sequence_parallelism_config": "create a DeepSpeedSequenceParallelConfig with variable sequence length and SDPA attention implementation",
+    "build_accelerator_with_parallelism": "build an Accelerator instance configured with DeepSpeed sequence parallelism backend",
+    "run_training_loop_with_sp_aggregation": "run a training loop with differentiable weighted per-shard loss aggregation across distributed ranks",
+    "prepare_model_optimizer_dataloader": "prepare a model, optimizer, and dataloader for distributed sequence parallel training",
+    "aggregate_distributed_training_losses": "aggregate distributed training losses using all_gather across sequence parallel device groups"
+  },
+  "huggingface_accelerate/examples/by_feature/automatic_gradient_accumulation.py": {
+    "create_function_get_dataloaders": "create dataloaders for the glue MRPC dataset with bert-base-cased tokenizer and accelerator-aware collation",
+    "build_training_loop_accelerate": "build a training loop using accelerate with automatic gradient accumulation and find_executable_batch_size",
+    "run_gradient_accumulation": "run automatic gradient accumulation by setting accelerator.gradient_accumulation_steps based on batch size reduction",
+    "test_find_executable_batch_size": "test find_executable_batch_size decorator to retry training with halved batch size on OOM",
+    "summarize_accelerator_setup": "summarize accelerate setup with mixed precision, cpu mode, and gradient accumulation for distributed training"
+  },
+  "huggingface_accelerate/examples/by_feature/checkpointing.py": {
+    "train_bert_with_checkpointing": "train a BERT model on GLUE MRPC with periodic step or epoch checkpointing via accelerate",
+    "resume_training_from_checkpoint": "resume training from a saved checkpoint folder with accelerated load_state and automatic epoch/step recovery",
+    "build_dataloaders_for_glue": "build train and eval DataLoaders for the GLUE MRPC dataset with tokenizer-based collation and mixed-precision padding",
+    "run_accelerator_with_stateful_dataloader": "run distributed training with a stateful dataloader for resumable checkpoint recovery across restarts",
+    "save_training_states_with_accelerator": "save model, optimizer, scheduler, and seed states using accelerator.save_state at configurable intervals"
+  },
+  "huggingface_accelerate/examples/by_feature/cross_validation.py": {
+    "build_cross_validation_training": "build a cross-validation training script that trains BERT on GLUE MRPC using StratifiedKFold folds with Accelerate",
+    "create_fold_dataloaders": "create fold dataloaders by selecting train and validation indices from a dataset and tokenizing with a BERT tokenizer",
+    "run_stratified_kfold_split": "run stratified k-fold cross-validation splits on a dataset by label distribution with configurable number of folds",
+    "test_accelerator_training_loop": "test the accelerator training loop with gradient accumulation, learning rate scheduling, and metric gathering across multiple folds",
+    "summarize_cli_arguments": "summarize the CLI arguments including mixed precision mode, CPU flag, and number of k-fold splits for the training script"
+  },
+  "huggingface_accelerate/examples/by_feature/ddp_comm_hook.py": {
+    "run_ddp_comm_hook_training": "run ddp communication hook training with fp16 hook on GLUE MRPC dataset",
+    "create_ddp_comm_wrapper_bf16": "create ddp communication wrapper with bf16 precision for distributed training",
+    "build_ddp_kwargs_hook": "build DistributedDataParallelKwargs with custom ddp communication hook and wrapper",
+    "test_ddp_comm_hook_power_sgd": "test ddp communication hook with power_sgd for gradient compression",
+    "run_mixed_precision_training": "run mixed precision training with bf16 on bert-base-cased for sequence classification"
+  },
+  "huggingface_accelerate/examples/by_feature/deepspeed_with_config_support.py": {
+    "run_finetune_causal_lm": "run fine-tuning of a causal language model on a dataset using DeepSpeed with Accelerator",
+    "run_evaluate_model": "run evaluation of a fine-tuned causal language model and return perplexity and eval loss",
+    "run_parse_cli_args": "run parsing of command-line arguments for dataset, model, training hyperparameters, and output configuration",
+    "run_resume_training": "run resuming training from a checkpoint by loading accelerator state and skipping initial batches",
+    "run_save_best_model": "run saving the best model checkpoint during training based on lowest perplexity metric"
+  },
+  "huggingface_accelerate/examples/by_feature/early_stopping.py": {
+    "build_early_stopping_callback": "build an EarlyStoppingCallback class that monitors eval loss and stops training after patience epochs without improvement",
+    "create_dataloaders_glue_mrpc": "create train and eval DataLoaders for the GLUE MRPC dataset with bert-base-cased tokenizer and accelerator-aware collation",
+    "run_training_accelerate": "run a distributed training loop with Accelerator that supports CPU, GPU, TPU, and mixed-precision modes",
+    "test_early_stopping_trigger": "test early stopping by checking eval loss against lowest loss and triggering accelerator stop after patience threshold",
+    "review_training_function": "review the training_function that prepares model, optimizer, scheduler, and dataloaders with Accelerator for sequence classification"
+  },
+  "huggingface_accelerate/examples/by_feature/fsdp_with_peak_mem_tracking.py": {
+    "run_fsdp_training_with_memory_tracking": "run an FSDP training script that tracks peak GPU and CPU memory usage during training and evaluation",
+    "create_class_TorchTracemalloc": "create a TorchTracemalloc context manager that tracks peak GPU and CPU memory usage across CUDA, XPU, and NPU devices",
+    "create_function_b2mb": "create a b2mb function that converts bytes to megabytes for memory usage reporting",
+    "build_training_function": "build a training function that trains a BERT model on GLUE MRPC using Accelerate with FSDP, checkpointing, and gradient accumulation",
+    "review_class_TorchTracemalloc": "review the TorchTracemalloc class and its peak monitoring thread that tracks memory usage across multiple accelerator backends"
+  },
+  "huggingface_accelerate/examples/by_feature/gradient_accumulation.py": {
+    "build_gradient_accumulation_training": "build a training script that uses Accelerate to train BERT on GLUE MRPC with configurable gradient accumulation steps",
+    "create_dataloaders_glue_mrpc": "create train and eval DataLoaders for the GLUE MRPC dataset using bert-base-cased tokenizer and accelerator-aware collation",
+    "run_training_gradient_accumulation": "run the training function with Accelerator configured for gradient accumulation and mixed precision support",
+    "test_accelerate_accumulate_context": "test the accelerator.accumulate context manager for performing gradient accumulation during model training loops",
+    "review_accelerator_setup_distributed": "review the Accelerator setup for distributed training with CPU, GPU, TPU, and mixed precision configuration options"
+  },
+  "huggingface_accelerate/examples/by_feature/gradient_accumulation_for_autoregressive_models.py": {
+    "run_gradient_accumulation_training": "run gradient accumulation training on a causal language model with variable-size samples",
+    "create_dataloaders_wikitext": "create train and eval dataloaders for wikitext with a tokenizer and custom collate function",
+    "test_gradient_accumulation_steps": "test gradient accumulation with configurable steps per optimizer update",
+    "review_training_function": "review the training function that handles distributed gradient accumulation and evaluation",
+    "summarize_accelerator_setup": "summarize the accelerate setup for mixed precision, multi-device, and TPU training"
+  },
+  "huggingface_accelerate/examples/by_feature/local_sgd.py": {
+    "run_training_local_sgd": "run local SGD training on GLUE MRPC with BERT using Accelerate and configurable gradient accumulation",
+    "create_dataloaders_glue": "create train and eval DataLoaders for the GLUE MRPC dataset with bert-base-cased tokenizer",
+    "setup_accelerator_local_sgd": "setup an Accelerator with gradient accumulation and wrap training with LocalSGD context manager",
+    "configure_mixed_precision_training": "configure mixed-precision training with fp16, bf16, or fp8 using Accelerate command-line arguments",
+    "evaluate_model_mrpc": "evaluate a trained BERT model on GLUE MRPC and compute accuracy and F1 metrics"
+  },
+  "huggingface_accelerate/examples/by_feature/megatron_lm_gpt_pretraining.py": {
+    "run_megatron_lm_gpt_pretraining": "run megatron-lm gpt pretraining script with accelerate for distributed causal language modeling",
+    "build_megatron_lm_training_pipeline": "build a megatron-lm training pipeline with accelerate handling tensor and pipeline parallelism",
+    "test_checkpoint_resume_megatron": "test resuming megatron-lm training from a checkpoint with accelerator.load_state",
+    "refactor_dataset_preprocessing": "refactor dataset preprocessing to tokenize and group texts into block-sized chunks for training",
+    "review_megatron_scheduler_setup": "review megatron-lm dummy scheduler setup with MegatronLMDummyScheduler instead of standard schedulers"
+  },
+  "huggingface_accelerate/examples/by_feature/memory.py": {
+    "run_memory_safe_training": "run a memory-safe training script that prevents OOM errors using find_executable_batch_size decorator",
+    "build_dataloaders_glue_mrpc": "build train and eval DataLoaders for the GLUE MRPC dataset with bert-base-cased tokenizer and adaptive padding",
+    "test_find_executable_batch_size": "test the find_executable_batch_size decorator that auto-adjusts batch size when GPU OOM occurs",
+    "refactor_training_loop_accelerator": "refactor a PyTorch training loop to use Accelerator for distributed, mixed-precision, and TPU support",
+    "review_training_function": "review the training_function that trains bert-base-cased on GLUE MRPC with automatic batch size recovery"
+  },
+  "huggingface_accelerate/examples/by_feature/multi_process_metrics.py": {
+    "create_training_script": "create a distributed training script that calculates metrics correctly across multiple GPUs using Accelerate",
+    "build_dataloaders_glue": "build train and eval DataLoaders for the GLUE MRPC dataset with bert-base-cased tokenizer and smart padding",
+    "run_distributed_metrics": "run distributed model evaluation with proper prediction gathering and truncation to avoid duplicate samples",
+    "test_training_function": "test the training function with mocked dataloaders and configurable hyperparameters including learning rate and batch size",
+    "refactor_collate_padding": "refactor the collate function to pad sequences to longest length with TPUs fixed-length and mixed-precision multiple-of alignment"
+  },
+  "huggingface_accelerate/examples/by_feature/profiler.py": {
+    "run_profiler_training": "run the profiler to train BERT on GLUE MRPC with CPU/GPU/TPU profiling support",
+    "create_profile_kwargs": "create ProfileKwargs with record_shapes, profile_memory, with_flops, and output_trace_dir options",
+    "build_accelerator_with_profile": "build an Accelerator instance configured with ProfileKwargs for torch profiling",
+    "get_dataloaders_glue_mrpc": "get train and eval DataLoaders for the GLUE MRPC dataset with bert-base-cased tokenizer",
+    "profile_training_loop": "profile the training loop using accelerator.profile() context manager and print key_averages"
+  },
+  "huggingface_accelerate/examples/by_feature/schedule_free.py": {
+    "run_schedule_free_training": "run a training script using HuggingFace Accelerate with the schedulefree AdamWScheduleFree optimizer",
+    "build_dataloaders_glue_mrpc": "build train and eval DataLoaders for the GLUE MRPC dataset with bert-base-cased tokenizer and collation",
+    "create_accelerator_training": "create an Accelerator instance and prepare model, optimizer, and dataloaders for distributed training",
+    "test_schedulefree_optimizer": "test the schedulefree AdamWScheduleFree optimizer with warmup steps on a BERT classification model",
+    "run_mixed_precision_training": "run training with configurable mixed precision modes including fp16, bf16, and fp8"
+  },
+  "huggingface_accelerate/examples/by_feature/tracking.py": {
+    "run_training_tracking": "run the HuggingFace Accelerate training script with experiment tracking enabled on GLUE MRPC",
+    "create_dataloaders_glue": "create train and eval DataLoaders for the GLUE MRPC dataset with bert-base-cased tokenizer",
+    "build_accelerator_trackers": "build an Accelerator instance with all experiment trackers initialized for logging metrics",
+    "test_gradient_accumulation": "test gradient accumulation logic that adjusts batch size when exceeding MAX_GPU_BATCH_SIZE",
+    "review_training_function": "review the training_function that trains BERT on GLUE MRPC with mixed precision and distributed support"
+  },
+  "huggingface_accelerate/examples/inference/distributed/distributed_image_generation.py": {
+    "run_distributed_image_generation": "run distributed image generation using a diffusion pipeline with accelerate across multiple GPUs",
+    "run_distributed_image_generation_low_mem": "run distributed image generation with low memory mode enabled for large models like SD3",
+    "run_distributed_image_generation_custom_ckpt": "run distributed image generation with a custom checkpoint ID and specified batch size",
+    "run_distributed_image_generation_custom_params": "run distributed image generation with custom inference steps, guidance scale, and dtype settings",
+    "build_get_batches": "build a function that splits a list of items into evenly sized batches for iteration"
+  },
+  "huggingface_accelerate/examples/inference/distributed/distributed_speech_generation.py": {
+    "run_distributed_speech_generation": "run distributed speech generation using the VITS model with accelerate for multi-GPU inference",
+    "create_dataloader": "create a dataloader that preprocesses text samples and batches them with proper padding for distributed inference",
+    "load_pokemon_data": "load pokemon description text data from the svjack/pokemon-blip-captions-en-zh dataset with configurable split and max length",
+    "save_distributed_results": "save generated audio waveforms to wav files with corresponding json metadata using a background thread pool",
+    "filter_existing_files": "filter out already-processed items by checking existing wav files in the output directory"
+  },
+  "huggingface_accelerate/examples/inference/distributed/florence2.py": {
+    "run_distributed_image_captioning": "run distributed image captioning with Florence-2 model on a webdataset using accelerate launch",
+    "create_webdataset_pipeline": "create a webdataset pipeline that decodes PIL images, preprocesses them with a Florence-2 processor, and batches for inference",
+    "test_exists_filter": "test the ExistsFilter class that skips already-processed images by checking output directory hashes",
+    "refactor_preprocess_fn": "refactor the preprocess_fn to accept a custom prompt and return input_ids, pixel_values, image, img_hash, and original_caption",
+    "summarize_collate_fn": "summarize the collate_fn that stacks input_ids and pixel_values tensors and collects images, hashes, and captions into a batch dict"
+  },
+  "huggingface_accelerate/examples/inference/distributed/llava_next_video.py": {
+    "run_distributed_video_inference": "run distributed video inference with LLaVA-NeXT-Video model using accelerate launch",
+    "process_videos_batch": "process a batch of video files and prepare inputs for the LLaVA-NeXT-Video model",
+    "read_video_frames_pyav": "read and decode specific video frames from a PyAV container into a numpy array",
+    "save_inference_results": "save inference results including prompts, video paths, and generated text to JSON files",
+    "split_batches_between_processes": "split a batch of video inputs across distributed processes for parallel inference"
+  },
+  "huggingface_accelerate/examples/torch_native_parallelism/fsdp2_fp8.py": {
+    "train_model_fsdp2_fp8": "train a causal language model with FP8 precision using FSDP2 and torchao Float8LinearConfig",
+    "configure_fsdp2_plugin": "configure FullyShardedDataParallelPlugin with FSDP version 2, transformer-based wrap policy, and mixed precision",
+    "setup_torch_dynamo_compilation": "setup TorchDynamoPlugin with inductor backend and regional compilation for faster model compilation",
+    "create_float8_linear_config": "create Float8LinearConfig with FSDP float8 all-gather enabled for parameter gathering in FP8",
+    "run_training_loop_accelerator": "run a distributed training loop with Accelerator managing backward pass, optimizer step, and metrics logging"
+  },
+  "huggingface_accelerate/examples/torch_native_parallelism/nd_parallel.py": {
+    "run_nd_parallel_training": "run distributed LLM training with ND parallelism using accelerate's ParallelismConfig and FSDP2",
+    "build_parallelism_config": "build a ParallelismConfig with data parallel, tensor parallel, and context parallel shard sizes",
+    "configure_fsdp2_plugin": "configure a FullyShardedDataParallelPlugin with transformer-based auto wrap policy for model sharding",
+    "train_causal_lm_model": "train a causal language model with mixed precision bf16 and distributed data loading",
+    "run_with_tensor_parallel": "run training with tensor parallelism enabled and auto TP plan across device mesh"
+  },
+  "huggingface_accelerate/examples/torch_native_parallelism/nd_parallel_trainer.py": {
+    "run_nd_parallel_trainer": "run the nd_parallel_trainer script to train a causal language model with torch native 2D parallelism",
+    "build_parallelism_config": "build a ParallelismConfig to configure tensor parallelism and device mesh for multi-device training",
+    "build_device_mesh": "build a device mesh from ParallelismConfig for a specified accelerator type like gpu",
+    "create_trainer_train": "create a Trainer with TrainingArguments, model, tokenizer, and dataset then run training",
+    "parse_args_cli": "parse command-line arguments for sequence length, checkpoint frequency, model name, save directory, and device type"
+  },
+  "huggingface_accelerate/examples/torch_native_parallelism/utils.py": {
+    "create_dataset_tiny_stories": "create a packed TinyStories dataset with tokenized sequences and position ids for causal language modeling",
+    "calculate_model_flops_per_token": "calculate the estimated FLOPs per token for a causal language model given its config and sequence length",
+    "create_collate_fn_batching": "create a collate function that batches input_ids and shift_labels into tensors for training",
+    "track_training_performance": "track training performance metrics including tokens per second, steps per second, and TFLOPS with warmup handling",
+    "setup_tokenizer_padding": "setup a Hugging Face tokenizer with proper padding token fallback to eos token",
+    "monitor_gpu_memory_usage": "monitor GPU memory usage including active, allocated, and reserved memory in gigabytes"
+  },
+  "huggingface_accelerate/manim_animations/big_model_inference/stage_1.py": {
+    "run_stage1_animation": "run the manim Stage1 scene to render the big model inference stage 1 animation video",
+    "review_Stage1_construct": "review the Stage1 class construct method that animates loading an empty model skeleton into CPU memory",
+    "summarize_Stage1_scene": "summarize the Stage1 Manim scene that visualizes model memory allocation across CPU and GPU",
+    "refactor_Stage1_construct": "refactor the Stage1 construct method to support configurable memory block counts for CPU and GPU",
+    "test_Stage1_rendering": "test the Stage1 scene rendering to verify CPU GPU and model rectangles animate correctly"
+  },
+  "huggingface_accelerate/manim_animations/big_model_inference/stage_2.py": {
+    "render_stage2_scene": "render the Stage2 Manim scene that animates loading a model checkpoint shard into CPU memory",
+    "review_stage2_construct": "review the Stage2 construct method that builds CPU, GPU, model, and checkpoint visual elements",
+    "summarize_stage2_animation": "summarize the Stage2 animation sequence showing checkpoint weights moving from loaded checkpoint to CPU memory blocks",
+    "refactor_stage2_layout": "refactor the Stage2 scene to adjust the positioning of CPU, GPU, and model memory block groups",
+    "modify_stage2_checkpoint_animation": "modify the Stage2 checkpoint loading animation to change the GrowFromCenter and MoveToTarget animation timings"
+  },
+  "huggingface_accelerate/manim_animations/big_model_inference/stage_3.py": {
+    "run_stage3_animation": "run the manim Stage3 scene that animates checkpoint weight storage and garbage collection",
+    "review_stage3_construct": "review the Stage3 construct method that builds CPU, GPU, model, and disk visualization elements",
+    "summarize_stage3_scene": "summarize the Stage3 Manim scene showing how model weights are stored as np.memmaps on disk",
+    "refactor_stage3_animations": "refactor the Stage3 scene to adjust animation timing for checkpoint fade-out and disk write sequences",
+    "build_stage3_viz": "build a manim animation visualizing big model inference checkpoint loading and memory garbage collection"
+  },
+  "huggingface_accelerate/manim_animations/big_model_inference/stage_4.py": {
+    "run_Stage4_scene": "run the Stage4 Manim scene to animate big model weight offloading from disk to CPU",
+    "review_Stage4_construct": "review the Stage4 construct method that builds CPU, GPU, model, and disk visual elements",
+    "summarize_Stage4_class": "summarize the Stage4 Scene class that demonstrates weight transfer hooks from CPU to GPU",
+    "build_memory_layout_animation": "build a Manim animation showing CPU, GPU, model, and disk memory rectangles arranged in columns",
+    "create_arrow_hook_animation": "create red arrows next to model weights to visualize hooks for CPU to GPU transfer"
+  },
+  "huggingface_accelerate/manim_animations/big_model_inference/stage_5.py": {
+    "render_stage5_scene": "render the Stage5 manim scene that animates big model inference with CPU GPU memory offloading",
+    "create_memory_offloading_animation": "create a manim animation showing model weights moving between CPU and GPU during inference",
+    "build_cpu_gpu_visualization": "build a manim scene visualizing CPU GPU and disk memory blocks for model inference",
+    "animate_input_through_model": "animate a red input square passing through model layers with weight offloading between CPU and GPU",
+    "review_stage5_construct": "review the Stage5 construct method that demonstrates inference on models too large for GPU memory"
+  },
+  "huggingface_accelerate/manim_animations/dataloaders/stage_0.py": {
+    "render_stage0_scene": "render the Stage0 Manim scene that displays the distributed training title slide with mascot and text",
+    "review_stage0_construct": "review the Stage0 construct method to understand how the mascot image and title paragraph are positioned",
+    "refactor_stage0_text": "refactor the Stage0 construct method to change the title text or font styling",
+    "modify_stage0_mascot": "modify the Stage0 scene to replace the mascot image or adjust its scale and position",
+    "summarize_stage0_scene": "summarize the Stage0 Manim scene that introduces distributed training with Hugging Face Accelerate and PyTorch DataLoaders"
+  },
+  "huggingface_accelerate/manim_animations/dataloaders/stage_1.py": {
+    "render_stage01_scene": "render the Stage01 Manim scene that displays the mascot image and title text about distributed training",
+    "review_stage01_construct": "review the Stage01 construct method that positions an ImageMobject mascot and Paragraph text on screen",
+    "summarize_stage01_scene": "summarize the Stage01 Manim scene showing the intro slide for the Hugging Face Accelerate dataloaders animation",
+    "refactor_stage01_text": "refactor the Stage01 construct method to change the title text or font styling",
+    "modify_stage01_mascot": "modify the Stage01 scene to adjust the mascot image path scale or position"
+  },
+  "huggingface_accelerate/manim_animations/dataloaders/stage_2.py": {
+    "run_stage2_animation": "run the manim Stage2 scene to render the dataloader multi-GPU animation video",
+    "review_stage2_construct": "review the Stage2 construct method that animates dataset distribution across four GPUs",
+    "summarize_stage2_scene": "summarize the Stage2 manim scene explaining why identical data across GPUs is undesirable",
+    "refactor_stage2_gpu_layout": "refactor the Stage2 scene to adjust the GPU rectangle positions and labels",
+    "create_stage2_variant": "create a variant of the Stage2 scene that demonstrates distributed sampler behavior"
+  },
+  "huggingface_accelerate/manim_animations/dataloaders/stage_3.py": {
+    "review_Stage3_scene": "review the Stage3 Manim scene that explains Accelerate sampler wrapper methods for distributed data loading",
+    "summarize_Stage3_construct": "summarize the Stage3 construct method that displays text about IterableDatasetShard BatchSamplerShard and DataLoaderDispatcher",
+    "run_Stage3_animation": "run the Stage3 Manim animation scene showing Accelerate dataloader sharding strategies",
+    "refactor_Stage3_markup_text": "refactor the Stage3 scene to update the MarkupText content about sampler wrapper methods",
+    "build_Stage3_slide": "build a Manim presentation slide explaining Accelerate dataset sharding and batch splitting approaches"
+  },
+  "huggingface_accelerate/manim_animations/dataloaders/stage_4.py": {
+    "render_stage4_scene": "render the Stage4 manim scene that explains batch_size and global_batch_size definitions",
+    "review_stage4_construct": "review the Stage4 construct method that animates batch_size and global_batch_size educational text",
+    "summarize_stage4_scene": "summarize the Stage4 manim scene explaining the difference between batch_size and global_batch_size",
+    "refactor_step_text": "refactor the Stage4 MarkupText steps to change the batch_size explanation content",
+    "test_stage4_animation": "test the Stage4 manim scene renders correctly with all four text steps"
+  },
+  "huggingface_accelerate/manim_animations/dataloaders/stage_5.py": {
+    "review_Stage5_scene": "review the Stage5 Manim scene that visualizes HuggingFace Accelerate dataloader distribution across GPUs",
+    "summarize_Stage5_construct": "summarize the Stage5 construct method that animates dataset splicing across four GPU samplers",
+    "review_dataset_visualization": "review the Stage5 scene dataset visualization using colored rectangles arranged in columns",
+    "summarize_sampler_animation": "summarize the sampler and GPU output animation sequence in the Stage5 Manim scene",
+    "review_gpu_dataflow_animation": "review the Stage5 scene animation showing data movement from samplers to GPU outputs"
+  },
+  "huggingface_accelerate/manim_animations/dataloaders/stage_6.py": {
+    "run_stage6_scene": "run the manim Stage6 scene to animate dataloader shuffling across 4 GPUs",
+    "review_stage6_construct": "review the Stage6 construct method that animates dataset items moving to samplers then shuffled to GPUs",
+    "summarize_stage6_animations": "summarize the Stage6 scene animations showing how mini-batch output order is modified during shuffling",
+    "refactor_sampler_positioning": "refactor the Stage6 sampler GPU positioning logic to support a dynamic number of GPUs",
+    "create_stage6_variant": "create a variant of the Stage6 scene that animates dataloader shuffling for a different number of GPUs"
+  },
+  "huggingface_accelerate/manim_animations/dataloaders/stage_7.py": {
+    "review_Stage7_construct": "review the Stage7 Scene class construct method that animates DataLoaderDispatcher behavior across GPUs",
+    "summarize_Stage7_scene": "summarize the Stage7 Manim scene that visualizes dataset sampling and GPU distribution",
+    "refactor_Stage7_animations": "refactor the Stage7 construct method to parameterize the number of GPUs and dataset rows",
+    "build_manim_animation_dataloader_dispatcher": "build a manim animation scene showing how DataLoaderDispatcher collects samples from GPU 0 and distributes to other GPUs",
+    "test_Stage7_rendering": "test the Stage7 Manim scene rendering to verify dataset-to-GPU animation sequences play correctly"
+  },
+  "huggingface_accelerate/src/accelerate/accelerator.py": {
+    "create_accelerator_prepare": "create an Accelerator instance and prepare a model, optimizer, dataloader, and scheduler for distributed training",
+    "run_accelerate_backward": "run accelerator.backward to scale gradients with gradient accumulation and mixed precision support",
+    "save_accelerator_state": "save the current state of the model, optimizer, scaler, and RNG generators to a checkpoint directory",
+    "load_accelerator_state": "load the model, optimizer, scaler, and RNG states from a previously saved checkpoint directory",
+    "init_trackers_log": "init experiment trackers and log training metrics like loss and accuracy to wandb or tensorboard"
+  },
+  "huggingface_accelerate/src/accelerate/big_modeling.py": {
+    "build_model_cpu_offload": "build a model with full CPU offload so all parameters are offloaded to CPU and loaded on GPU during forward pass",
+    "build_model_disk_offload": "build a model with disk offload so all parameters are stored as memory-mapped arrays on disk and loaded on demand",
+    "create_empty_model_init": "create an empty model using meta device initialization to avoid allocating RAM for large models",
+    "dispatch_model_device_map": "dispatch a model across multiple devices using a device map to spread layers across GPUs, CPU, and disk",
+    "load_checkpoint_and_dispatch": "load a checkpoint into a model and automatically dispatch weights to the right devices based on a device map"
+  },
+  "huggingface_accelerate/src/accelerate/checkpointing.py": {
+    "save_checkpoint_accelerator_state": "save the states of models, optimizers, schedulers, dataloaders, scaler, and RNG generators to a directory",
+    "load_checkpoint_accelerator_state": "load model, optimizer, scheduler, dataloader, scaler, and RNG states from a checkpoint directory",
+    "save_custom_state": "save the state of a custom object to a checkpoint directory with a given index",
+    "load_custom_state": "load the state of a custom object from a checkpoint directory with a given index",
+    "save_dataloader_sampler_state": "save the sampler state of a dataloader including IterableDatasetShard and stateful dataloader states"
+  },
+  "huggingface_accelerate/src/accelerate/data_loader.py": {
+    "build_prepare_data_loader": "build a distributed data loader by wrapping a PyTorch DataLoader with prepare_data_loader for multi-GPU training",
+    "create_skip_first_batches": "create a data loader wrapper that skips the first N batches using skip_first_batches for checkpoint resume",
+    "create_seedable_random_sampler": "create a reproducible random sampler with SeedableRandomSampler that resets its seed per epoch for distributed training",
+    "build_data_loader_shard": "build a sharded data loader with DataLoaderShard that yields a portion of batches for each process in distributed training",
+    "build_data_loader_dispatcher": "build a dispatcher data loader with DataLoaderDispatcher that fetches and broadcasts batches from process 0 to all processes"
+  },
+  "huggingface_accelerate/src/accelerate/hooks.py": {
+    "attach_align_device_hook": "attach AlignDevicesHook to all submodules of a model with optional offloading and execution device configuration",
+    "add_hook_to_module": "add a ModelHook to a PyTorch module to intercept and modify its forward pass behavior",
+    "attach_align_device_hook_on_blocks": "attach AlignDevicesHook to model blocks with per-block execution device and offload configuration",
+    "remove_hook_from_module": "remove a ModelHook from a PyTorch module and restore its original forward method",
+    "layerwise_casting_hook": "cast module weights between storage and compute dtypes to reduce memory footprint during inference"
+  },
+  "huggingface_accelerate/src/accelerate/inference.py": {
+    "build_pippy_pipeline_inference": "build a pipeline-parallel inference wrapper for a PyTorch model using HuggingFace Accelerate's prepare_pippy function",
+    "generate_device_map_split": "generate a device map that splits a model across multiple GPUs for PiPPy pipeline parallelism",
+    "find_pippy_batch_size": "find the batch size from model args or kwargs for PiPPy pipeline parallel inference",
+    "build_pipeline_schedule": "build a ScheduleGPipe pipeline stage from a model, split points, and example inputs for distributed inference",
+    "run_pippy_forward": "run a model forward pass with pipeline parallel execution across multiple GPUs using PiPPy"
+  },
+  "huggingface_accelerate/src/accelerate/launchers.py": {
+    "test_launch": "test the python function launchers.test_launch to verify PartialState can be initialized",
+    "run_notebook_launcher_tpu": "run the python function notebook_launcher to launch training on TPU cores in Colab or Kaggle",
+    "run_notebook_launcher_multi_gpu": "run the python function notebook_launcher to launch distributed multi-GPU training from a Jupyter notebook",
+    "run_notebook_launcher_cpu": "run the python function notebook_launcher to launch single-process CPU or GPU training from a notebook",
+    "run_debug_launcher": "run the python function debug_launcher to launch a training function using multiple CPU processes for debugging"
+  },
+  "huggingface_accelerate/src/accelerate/local_sgd.py": {
+    "create_local_sgd_context": "create a LocalSGD context manager to run local SGD with periodic model parameter averaging across GPUs",
+    "run_local_sgd_step": "run a LocalSGD step that increments the step counter and synchronizes model parameters at intervals",
+    "build_local_sgd_instance": "build a LocalSGD instance with an accelerator, model, and number of local steps before synchronization",
+    "test_local_sgd_sync": "test the LocalSGD _sync_and_avg_model_params method that averages model weights across all devices",
+    "review_local_sgd_class": "review the LocalSGD class that supports local SGD on multi-GPU setups without DeepSpeed or MegatronLM"
+  },
+  "huggingface_accelerate/src/accelerate/logging.py": {
+    "create_get_logger": "create a multiprocessing-aware logger with get_logger using a module name and optional log level",
+    "log_main_process_only": "log a message only on the main process using MultiProcessAdapter.log with main_process_only=True",
+    "log_all_processes": "log a message across all processes using MultiProcessAdapter.log with main_process_only=False",
+    "log_in_order": "log messages in order across all processes using MultiProcessAdapter.log with in_order=True",
+    "warn_once": "emit a warning message only once across multiple calls using MultiProcessAdapter.warning_once"
+  },
+  "huggingface_accelerate/src/accelerate/optimizer.py": {
+    "create_AcceleratedOptimizer": "create an AcceleratedOptimizer wrapper around a torch optimizer with device placement and optional mixed-precision scaler",
+    "test_AcceleratedOptimizer_step": "test the AcceleratedOptimizer.step method to conditionally perform optimizer step based on gradient synchronization state",
+    "refactor_AcceleratedOptimizer_zero_grad": "refactor the AcceleratedOptimizer.zero_grad method to skip gradient zeroing when gradients should not synchronize during accumulation",
+    "review_move_to_device": "review the move_to_device function to recursively move optimizer state tensors, dicts, and nested structures to a target device",
+    "summarize_AcceleratedOptimizer_state_dict": "summarize the AcceleratedOptimizer.state_dict and load_state_dict methods for serializing and restoring optimizer state with XLA device placement"
+  },
+  "huggingface_accelerate/src/accelerate/parallelism_config.py": {
+    "create_ParallelismConfig": "create a ParallelismConfig to configure data, tensor, context, and sequence parallelism for distributed training",
+    "build_device_mesh": "build a device mesh from a ParallelismConfig for torch distributed with configurable dp, tp, cp, and sp dimensions",
+    "get_device_mesh": "get a cached device mesh from a ParallelismConfig, creating it lazily if not yet built",
+    "validate_ParallelismConfig": "validate a ParallelismConfig against an Accelerator to ensure sizes match num_processes and distributed type is compatible",
+    "to_json_ParallelismConfig": "serialize a ParallelismConfig to JSON, excluding non-serializable fields like device_mesh"
+  },
+  "huggingface_accelerate/src/accelerate/scheduler.py": {
+    "create_AcceleratedScheduler": "create an AcceleratedScheduler wrapping a torch lr_scheduler with optimizers and step_with_optimizer control",
+    "step_AcceleratedScheduler": "step an AcceleratedScheduler only when optimizer steps succeed, handling gradient accumulation and multi-process scaling",
+    "get_last_lr_AcceleratedScheduler": "get the last learning rates from an AcceleratedScheduler by delegating to the wrapped scheduler",
+    "save_load_AcceleratedScheduler_state": "save and load the state of an AcceleratedScheduler using state_dict and load_state_dict passthroughs",
+    "get_lr_AcceleratedScheduler": "get current learning rates from an AcceleratedScheduler via the get_lr passthrough to the wrapped scheduler"
+  },
+  "huggingface_accelerate/src/accelerate/state.py": {
+    "create_PartialState": "create a PartialState singleton to query distributed training environment info like process index and device",
+    "build_AcceleratorState": "build an AcceleratorState singleton with mixed precision, deepspeed, and fsdp plugin configuration",
+    "test_PartialState_split": "test the PartialState split_between_processes method to split inputs across distributed processes with optional padding",
+    "review_PartialState_decorators": "review the PartialState decorator methods on_main_process, on_local_main_process, and on_process for conditional execution",
+    "summarize_GradientState": "summarize the GradientState singleton that tracks gradient synchronization and dataloader references for accumulation"
+  },
+  "huggingface_accelerate/src/accelerate/tracking.py": {
+    "create_tracker_initialize": "initialize a TensorBoardTracker to log training metrics and hyperparameters to TensorBoard",
+    "build_tracker_wandb": "build a WandBTracker to log metrics, images, and tables to Weights & Biases",
+    "test_tracker_filter": "test the filter_trackers function to validate available loggers and filter unsupported types",
+    "run_tracker_log": "run a GeneralTracker log method to store key-value metric pairs with optional step numbers",
+    "summarize_tracker_finish": "summarize the GeneralTracker.finish method to close and finalize all tracking sessions"
+  },
+  "huggingface_accelerate/src/accelerate/commands/env.py": {
+    "build_env_command_parser": "build an argparse parser for the accelerate env command with optional subparsers and config_file argument",
+    "run_env_command": "run the accelerate env command to gather system info, pytorch accelerator type, and config details",
+    "test_env_command_parser": "test the env_command_parser function returns a valid argparse.ArgumentParser with config_file argument",
+    "review_env_command": "review the env_command function that collects platform, pytorch, and hardware accelerator information",
+    "summarize_main": "summarize the main entry point that parses arguments and invokes env_command for CLI usage"
+  },
+  "huggingface_accelerate/src/accelerate/commands/estimate.py": {
+    "create_empty_model": "create an empty model from a Hugging Face Hub name on the meta device for memory estimation",
+    "run_estimate_command": "run the estimate command to print a memory usage table for a model across multiple dtypes",
+    "test_verify_on_hub": "test the verify_on_hub function to check if a model repo exists or is gated on Hugging Face Hub",
+    "summarize_estimate_training_usage": "summarize the estimate_training_usage function to calculate training memory for a given model byte size",
+    "create_ascii_table": "create an ascii table with headers rows and title from lists of string values"
+  },
+  "huggingface_accelerate/src/accelerate/commands/launch.py": {
+    "run_distributed_gpu_training": "run a python training script across multiple GPUs using accelerate launch with multi_gpu flag",
+    "launch_deepspeed_training": "launch a distributed training job with DeepSpeed ZeRO optimization and multi-node support",
+    "launch_tpu_training": "launch a training script on Google TPU using torch_xla multiprocessing or TPU pod cluster",
+    "launch_fsdp_training": "launch a distributed training job with Fully Sharded Data Parallelism for large model training",
+    "launch_megatron_training": "launch a distributed training job with Megatron-LM tensor and pipeline parallelism"
+  },
+  "huggingface_accelerate/src/accelerate/commands/merge.py": {
+    "merge_FSDP_checkpoints": "merge FSDP sharded checkpoint weights into a single combined checkpoint saved to an output path",
+    "run_merge_weights_cli": "run the merge-weights CLI command to merge FSDP checkpoints from a directory to an output path",
+    "build_merge_command_parser": "build an argument parser for the merge-weights CLI with checkpoint directory and output path arguments",
+    "run_merge_command": "run the merge command function to merge sharded FSDP weights using checkpoint directory and output path",
+    "run_main_entry_point": "run the main entry point to parse CLI arguments and execute the FSDP weight merge pipeline"
+  },
+  "huggingface_accelerate/src/accelerate/commands/test.py": {
+    "build_test_command_parser": "build an argparse parser for the accelerate test command with optional subparsers and config_file argument",
+    "test_run_accelerate_test": "test the accelerate test command by running the distributed training test script via accelerate-launch",
+    "test_run_with_config_file": "test the accelerate test command with a custom config file path for distributed training validation",
+    "run_test_command_cli": "run the accelerate test command CLI entry point to validate distributed training setup",
+    "review_test_command_flow": "review the test_command function that launches the test_script.py subprocess via accelerate-launch"
+  },
+  "huggingface_accelerate/src/accelerate/commands/to_fsdp2.py": {
+    "convert_config_to_fsdp2": "convert an accelerate FSDP1 YAML config dictionary to FSDP2 format with updated argument names and values",
+    "to_fsdp2_command": "run the CLI command to convert a YAML accelerate config from FSDP1 to FSDP2 with overwrite or output file options",
+    "to_fsdp2_command_parser": "build a CLI argument parser for the to-fsdp2 subcommand with config_file, overwrite, and output_file arguments",
+    "load_config": "load and parse a YAML accelerate configuration file into a Python dictionary",
+    "convert_config_to_fsdp2_skip": "convert an accelerate config to FSDP2 while skipping removed and not-yet-implemented FSDP arguments"
+  },
+  "huggingface_accelerate/src/accelerate/commands/tpu.py": {
+    "build_tpu_command_parser": "build an argparse parser for the accelerate tpu-config command with TPU name, zone, and command arguments",
+    "run_tpu_command_launcher": "run commands across TPU VMs via gcloud ssh with optional accelerate installation and config file defaults",
+    "run_tpu_main_entrypoint": "run the accelerate tpu-config CLI entrypoint that parses arguments and launches TPU commands",
+    "test_tpu_command_parser": "test the tpu_command_parser function to verify it creates a valid argparse parser with all expected arguments",
+    "review_tpu_command_launcher": "review the tpu_command_launcher function that builds and executes gcloud commands on TPU pods"
+  },
+  "huggingface_accelerate/src/accelerate/commands/utils.py": {
+    "create_custom_argument_parser": "create a CustomArgumentParser that accepts both dash and underscore option strings for CLI arguments",
+    "create_custom_argument_group": "create a CustomArgumentGroup that wraps argparse argument groups with dash-underscore support",
+    "create_store_action": "create a _StoreAction that tracks non-default argument values in a namespace set",
+    "create_store_true_action": "create a _StoreTrueAction that sets a boolean flag and tracks it as non-default",
+    "test_custom_argument_parser": "test CustomArgumentParser with store_true action to verify dash-underscore option aliasing"
+  },
+  "huggingface_accelerate/src/accelerate/commands/config/cluster.py": {
+    "create_cluster_config": "create a cluster configuration by running the interactive accelerate cluster config wizard"
+  },
+  "huggingface_accelerate/src/accelerate/commands/config/config.py": {
+    "run_config_command": "run the accelerate config command to interactively create and save a default_config.yaml for your training system",
+    "build_config_parser": "build an argparse subparser for the accelerate config command with a --config_file option",
+    "create_config_file": "create an accelerate configuration file by answering prompts about compute environment and cluster settings",
+    "summarize_get_user_input": "summarize the get_user_input function that prompts for compute environment and returns a config object",
+    "review_config_command": "review the config_command function that saves the interactive config to YAML or JSON"
+  },
+  "huggingface_accelerate/src/accelerate/commands/config/config_args.py": {
+    "load_config_from_file": "load an accelerate config from a JSON or YAML file and return the appropriate config object",
+    "create_ClusterConfig": "create a ClusterConfig dataclass instance for local or cluster-based distributed training settings",
+    "create_SageMakerConfig": "create a SageMakerConfig dataclass instance for Amazon SageMaker distributed training settings",
+    "convert_config_to_dict": "convert a BaseConfig instance to a dictionary with enums serialized to strings",
+    "save_config_to_json_file": "save a BaseConfig instance to a JSON configuration file with sorted keys and indentation"
+  },
+  "huggingface_accelerate/src/accelerate/commands/config/default.py": {
+    "create_default_accelerate_config": "create a default accelerate config file for local machine with GPU detection and mixed precision support",
+    "run_accelerate_default_command": "run the accelerate default config command with custom mixed precision and save location arguments",
+    "build_accelerate_config_parser": "build an argparse subparser for the accelerate default config CLI with config_file and mixed_precision options",
+    "test_write_basic_config": "test the write_basic_config function with different mixed precision values and custom save locations",
+    "review_default_config_command": "review the default_config_command function that calls write_basic_config and prints the saved config path"
+  },
+  "huggingface_accelerate/src/accelerate/commands/config/sagemaker.py": {
+    "create_sagemaker_iam_role": "create an IAM role for SageMaker with appropriate trust policy and permissions",
+    "get_sagemaker_config": "get interactive SageMaker configuration input for AWS credentials, region, and training settings",
+    "get_iam_role_arn": "get the ARN of an existing IAM role by name",
+    "configure_sagemaker_training": "configure SageMaker training job with distributed mode, EC2 instance type, and mixed precision",
+    "optimize_with_torch_dynamo": "optimize a training script with torch dynamo and configurable compilation options"
+  },
+  "huggingface_accelerate/src/accelerate/commands/config/update.py": {
+    "update_config": "update an existing accelerate config file with the latest defaults while maintaining the old configuration",
+    "update_config_command": "run the accelerate config update command to refresh a config file with new defaults",
+    "update_command_parser": "build an argparse subcommand parser for the accelerate config update CLI command",
+    "summarize_update_config": "summarize the update_config function that loads, refreshes, and writes back an accelerate config file",
+    "review_update_config_file": "review the accelerate config update module for maintaining backward compatibility with existing configs"
+  },
+  "huggingface_accelerate/src/accelerate/commands/menu/cursor.py": {
+    "hide_cursor_terminal": "hide the terminal cursor on Windows and Linux platforms",
+    "show_cursor_terminal": "show the terminal cursor on Windows and Linux platforms",
+    "hide_cursor_context_manager": "use the hide context manager to temporarily hide the terminal cursor",
+    "create_CursorInfo_structure": "create a CursorInfo ctypes structure for Windows console cursor info",
+    "review_cursor_cross_platform": "review the cross-platform cursor show and hide utility functions"
+  },
+  "huggingface_accelerate/src/accelerate/commands/menu/helpers.py": {
+    "create_forceWrite": "forceWrite content to stdout with an optional end string and flush immediately",
+    "writeColor": "writeColor content with ANSI color code and optional end string to terminal",
+    "reset_cursor": "reset_cursor move terminal cursor to the beginning of the current line",
+    "move_cursor": "move_cursor num_lines and direction string to reposition terminal cursor",
+    "clear_line": "clear_line clear the current terminal line with spaces and reset cursor position"
+  },
+  "huggingface_accelerate/src/accelerate/commands/menu/input.py": {
+    "create_key_decorator": "create a key decorator that marks functions with key codes for input handling",
+    "build_key_handler_metaclass": "build a KeyHandler metaclass that maps key codes to handler methods on classes",
+    "register_class_with_keys": "register a class with the KeyHandler metaclass to enable key-based input dispatching",
+    "handle_user_input_keys": "handle user input by matching pressed keys to registered handler functions in a class",
+    "mark_multiple_key_handlers": "mark a function with multiple key codes so it responds to several key presses"
+  },
+  "huggingface_accelerate/src/accelerate/commands/menu/keymap.py": {
+    "get_raw_chars_read_keyboard": "get raw characters from stdin using platform-specific raw input mode",
+    "get_character_parse_keycode": "get a character from the keyboard and return its normalized key code",
+    "build_keymap_lookup": "build a keymap dictionary mapping named keys like up, down, tab, esc to their integer codes",
+    "test_arrow_key_detection": "test arrow key detection by parsing escape sequences into normalized arrow codes",
+    "refactor_get_raw_chars_windows": "refactor get_raw_chars to handle Windows msvcrt prefix byte sequences for special keys"
+  },
+  "huggingface_accelerate/src/accelerate/commands/menu/selection_menu.py": {
+    "create_BulletMenu": "create a BulletMenu with a prompt string and a list of choices for interactive CLI selection",
+    "run_BulletMenu": "run a BulletMenu instance to display an interactive selection menu and return the chosen index",
+    "move_up_BulletMenu": "move the BulletMenu cursor up one position in the choice list",
+    "move_down_BulletMenu": "move the BulletMenu cursor down one position in the choice list",
+    "select_row_BulletMenu": "select a specific row in the BulletMenu by pressing a number key"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/examples.py": {
+    "extract_function_contents_by_name": "extract a named function's source lines from a list of code lines by function name",
+    "clean_lines_remove_comments": "clean a list of code lines by removing comment lines and blank lines",
+    "compare_against_test": "compare a feature example script against a complete example script to find missing implementations",
+    "test_compare_against_test": "test the compare_against_test function to verify feature examples are implemented in complete examples",
+    "review_get_function_contents_by_name": "review the get_function_contents_by_name function that extracts function source code from segmented lines"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/testing.py": {
+    "test_get_backend": "test the get_backend function to detect the current hardware accelerator backend and device count",
+    "build_get_launch_command": "build a subprocess launch command list for accelerate with kwargs like num_processes and device_count",
+    "run_execute_subprocess_async": "run an async subprocess command with streaming stdout/stderr and timeout handling",
+    "test_AccelerateTestCase": "test the AccelerateTestCase class that resets AcceleratorState singleton after every test method",
+    "test_assert_exception": "test the assert_exception context manager to verify expected exception classes and messages are raised"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/training.py": {
+    "create_RegressionDataset": "create a RegressionDataset with custom slope, intercept, length, and seed for synthetic linear data generation",
+    "create_RegressionModel": "create a RegressionModel as a PyTorch module with learnable parameters a and b for linear regression",
+    "test_mocked_dataloaders": "test mocked_dataloaders to build train and eval DataLoaders from MRPC dataset with BERT tokenizer",
+    "test_mocked_dataloaders_for_autoregressive_models": "test mocked_dataloaders_for_autoregressive_models to build dataloaders for autoregressive language models with SmolLM tokenizer",
+    "review_RegressionModel_forward": "review RegressionModel forward method that computes x * a + b with dtype logging on first batch"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/test_ddp_comm_hook.py": {
+    "test_ddp_comm_hook": "test the DDP communication hook with various hook types, wrappers, and state options",
+    "test_power_sgd_hook": "test POWER_SGD comm hook with NO wrapper and matrix_approximation_rank state option",
+    "test_batched_power_sgd_hook": "test BATCHED_POWER_SGD comm hook with NO, FP16, and BF16 wrappers",
+    "test_fp16_comm_hook": "test FP16 comm hook with NO wrapper for gradient communication compression",
+    "test_bf16_comm_hook": "test BF16 comm hook with NO wrapper for gradient communication compression"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/test_distributed_data_loop.py": {
+    "test_default_ensures_even_batch_sizes": "test that even_batches ensures uniform batch sizes across distributed processes",
+    "test_can_disable_even_batches": "test disabling even_batches to allow different batch sizes per process",
+    "test_can_join_uneven_inputs": "test joining uneven inputs with accelerator.join_uneven_inputs for DDP models",
+    "test_stateful_dataloader": "test stateful dataloader save and resume with load_state_dict for iterable and map-style datasets",
+    "test_pickle_accelerator": "test pickling and unpickling an Accelerator while preserving its state"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/test_merge_weights.py": {
+    "test_merge_fsdp_weights_safetensors": "test merging FSDP sharded model weights into a single safetensors file",
+    "test_merge_fsdp_weights_pytorch": "test merging FSDP sharded model weights into a single pytorch bin file",
+    "test_merge_weights_command_safetensors": "test the merge CLI command to merge FSDP weights into safetensors format",
+    "test_merge_weights_command_pytorch": "test the merge CLI command to merge FSDP weights into pytorch bin format",
+    "test_save_fsdp_model": "test saving an FSDP model's sharded weights to disk for later merging"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/test_notebook.py": {
+    "test_notebook_launcher": "test the notebook_launcher function to launch a callable in distributed processes from a notebook",
+    "test_notebook_launcher_rdzv": "test the notebook_launcher with static and c10d rendezvous backends for multi-process distributed execution",
+    "test_notebook_launcher_fault_tolerant": "test the notebook_launcher with max_restarts for fault-tolerant multi-process execution with retry logic",
+    "test_notebook_launcher_monitoring": "test the notebook_launcher with monitor_interval to detect and fail fast on process errors",
+    "test_notebook_launcher_partialstate": "test the PartialState class to initialize and query distributed process state in notebook environments"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/test_ops.py": {
+    "test_gather": "test the gather function to collect tensors from all distributed processes into a single tensor",
+    "test_gather_object": "test the gather_object function to collect Python objects from all distributed processes",
+    "test_gather_non_contiguous": "test the gather function with non-contiguous tensors without raising errors",
+    "test_broadcast": "test the broadcast function to distribute a tensor from one process to all other processes",
+    "test_reduce_sum": "test the reduce function with sum operation across two distributed processes"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/test_script.py": {
+    "test_training_distributed_reproducibility": "test distributed training reproducibility with Accelerator across CPU and GPU setups using seedable samplers",
+    "test_dataloader_preparation": "test DataLoader preparation with Accelerator including shuffled, split, and dispatch batch configurations",
+    "test_split_between_processes": "test splitting lists, tensors, dicts, and datasets evenly across multiple distributed processes",
+    "test_rng_state_synchronization": "test random number generator state synchronization across CPU, CUDA, XPU, and generator contexts",
+    "test_process_execution_decorators": "test process execution decorators and main_process_first context manager for multi-process orchestration"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/test_sync.py": {
+    "test_noop_sync": "test the accelerator.no_sync context manager on a single CPU or GPU where it acts as a noop",
+    "test_distributed_sync": "test the accelerator.no_sync context manager in a distributed multi-GPU training setup",
+    "test_distributed_sync_multiple_fwd": "test accelerator.no_sync with multiple forward passes followed by multiple backward passes",
+    "test_gradient_accumulation": "test the accelerator.accumulate context manager with configurable split_batches, dispatch_batches, and sync_each_batch options",
+    "test_gradient_accumulation_with_opt_and_scheduler": "test gradient accumulation with optimizer and scheduler steps aligned across distributed processes"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/external_deps/test_checkpointing.py": {
+    "test_checkpointing_training": "test the python module to train a BERT model on GLUE MRPC with checkpointing support",
+    "run_resume_checkpoint": "run the training script resuming from a saved checkpoint folder with epoch state",
+    "create_dataloaders_mrpc": "create train and eval DataLoaders for the GLUE MRPC dataset with tokenizer padding",
+    "test_evaluation_loop": "test the evaluation loop that computes accuracy on a validation set with distributed gathering",
+    "run_partial_training": "run the training script stopping after a specified number of epochs for partial training"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/external_deps/test_ds_alst_ulysses_sp.py": {
+    "create_parallelism_config": "create a ParallelismConfig with DeepSpeed sequence parallel backend and Ulysses SP handler",
+    "test_sequence_parallel_training": "test ALST/Ulysses sequence parallel training loop with DeepSpeed SP across multiple ranks",
+    "configure_accelerator_sp": "configure Accelerator with DeepSpeedSequenceParallelConfig for variable sequence length attention",
+    "aggregate_sp_loss": "aggregate sequence parallel loss across ranks with weighted token normalization",
+    "prepare_model_training": "prepare model, optimizer, and dataloader with Accelerator for sequence parallel distributed training"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/external_deps/test_ds_multiple_model.py": {
+    "test_single_model_training": "test single model training with DeepSpeed ZeRO-2 for training and ZeRO-3 for inference noise injection",
+    "test_multiple_model_training": "test two models training simultaneously with separate DeepSpeed ZeRO-2 and ZeRO-3 plugins",
+    "create_dataloaders_glue": "create train and eval dataloaders from the glue MRPC dataset with tokenizer-based batching",
+    "build_noise_model": "build a NoiseModel torch module that scales loss by a learnable noise factor parameter",
+    "run_deepspeed_accelerator": "run Accelerator with multiple DeepSpeed plugins for switching between ZeRO-2 and ZeRO-3 contexts"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/external_deps/test_metrics.py": {
+    "test_test_mrpc": "test the MRPC distributed metrics comparison with configurable dispatch_batches and split_batches options",
+    "test_test_torch_metrics": "test torch metrics gathering with configurable accelerator, sample count, and batch configuration",
+    "test_test_gather_for_metrics_with_iterable_dataset": "test gather_for_metrics with a tensor-based iterable dataset and verify no warning logs are emitted",
+    "test_test_gather_for_metrics_with_non_tensor_objects_iterable_dataset": "test gather_for_metrics with non-tensor iterable dataset and verify correct aggregation size",
+    "test_test_gather_for_metrics_drop_last": "test that drop_last dataloader configuration correctly filters incomplete batches across processes"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/external_deps/test_peak_memory_usage.py": {
+    "test_peak_memory_usage": "test the python script to track peak GPU memory usage during training with configurable upper bound",
+    "run_training_memory_tracking": "run the training script with TorchTracemalloc to monitor peak memory consumption per epoch",
+    "build_dataloaders_glue": "build train and validation dataloaders from the glue MRPC dataset with tokenizer and collate function",
+    "create_context_memory_tracker": "create a TorchTracemalloc context manager that tracks peak and delta memory across CUDA, XPU, NPU, and other accelerators",
+    "summarize_memory_utilization": "summarize per-epoch peak memory utilization and write results to a JSON output file"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/external_deps/test_performance.py": {
+    "run_test_performance_training": "run the performance training script to train a BERT model on the GLUE MRPC dataset with configurable epochs",
+    "create_dataloaders_glue": "create train and eval DataLoaders for the GLUE MRPC dataset with tokenization and collation",
+    "test_training_function": "test the training function with configurable learning rate, batch size, epochs, and seed",
+    "review_training_performance": "review the training performance by tracking accuracy across epochs and validating against a lower bound",
+    "build_model_sequence_classification": "build a sequence classification model with Accelerator, optimizer, and linear decay scheduler for distributed training"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/external_deps/test_pippy.py": {
+    "test_pippy_bert": "test pippy pipeline parallel inference on a BERT masked language model with batch size 2",
+    "test_pippy_gpt2": "test pippy pipeline parallel inference on a GPT-2 sequence classification model with batch size 2",
+    "test_pippy_prepare": "test prepare_pippy splits a transformer model across multiple GPU processes for pipeline parallel inference",
+    "test_pippy_get_model_data": "test get_model_and_data_for_text creates a transformer model and generates trace and inference input tensors",
+    "test_pippy_distributed": "test pippy integration runs distributed inference across multi-GPU processes with output only on the last process"
+  },
+  "huggingface_accelerate/src/accelerate/test_utils/scripts/external_deps/test_zero3_integration.py": {
+    "test_init_torch_dist_then_launch_deepspeed": "test the init_torch_dist_then_launch_deepspeed function initializes torch distributed process group and launches deepspeed with zero stage 3",
+    "test_main": "test the main function that calls init_torch_dist_then_launch_deepspeed to run deepspeed zero3 integration",
+    "review_init_torch_dist_then_launch_deepspeed": "review the init_torch_dist_then_launch_deepspeed function that configures deepspeed zero optimization stage 3 with auto batch sizes",
+    "summarize_test_zero3_integration": "summarize the test_zero3_integration module that tests deepspeed zero3 integration with a tiny gpt2 model",
+    "test_deepspeed_config": "test the deepspeed configuration with zero_optimization stage 3 and auto train batch sizes"
+  },
+  "huggingface_accelerate/src/accelerate/utils/ao.py": {
+    "find_first_last_linear_layers": "find the first and last linear layer names in a PyTorch model for FP8 stability",
+    "filter_linear_layers": "filter linear layers by feature divisibility and exclusion list for FP8 conversion",
+    "filter_first_and_last_linear_layers": "filter all linear layers except the first and last for FP8 training stability",
+    "has_ao_layers": "check if a PyTorch model contains torchao Float8Linear layers",
+    "convert_model_to_fp8_ao": "convert nn.Linear layers to torchao Float8Linear layers inplace with optional config and filter"
+  },
+  "huggingface_accelerate/src/accelerate/utils/bnb.py": {
+    "load_and_quantize_model": "load and quantize a torch model using bitsandbytes 4-bit or 8-bit configuration with device map dispatch",
+    "get_quantized_model_device_map": "get an auto-generated device map for a quantized model distributing submodules across available GPUs",
+    "replace_with_bnb_layers": "replace all torch.nn.Linear layers in a model with bitsandbytes 8-bit or 4-bit quantized linear layers",
+    "get_keys_to_not_convert": "get a list of module keys to keep in full precision such as lm_head or tied weights for numerical stability",
+    "has_4bit_bnb_layers": "check if a model contains any bitsandbytes 4-bit or 8-bit quantized linear layers"
+  },
+  "huggingface_accelerate/src/accelerate/utils/dataclasses.py": {
+    "create_DistributedDataParallelKwargs": "create DistributedDataParallelKwargs to customize torch.nn.parallel.DistributedDataParallel wrapper arguments",
+    "build_ProfileKwargs_profiler": "build ProfileKwargs to configure torch.profiler with activities, schedule, and memory profiling options",
+    "configure_FullyShardedDataParallelPlugin": "configure FullyShardedDataParallelPlugin with sharding strategy, mixed precision, and auto wrap policy",
+    "create_DeepSpeedPlugin_integration": "create DeepSpeedPlugin to integrate DeepSpeed with ZeRO stage, offload, and gradient clipping settings",
+    "create_BnbQuantizationConfig": "create BnbQuantizationConfig to enable bitsandbytes 4bit or 8bit quantization with double quantization support"
+  },
+  "huggingface_accelerate/src/accelerate/utils/deepspeed.py": {
+    "create_map_pytorch_optim_to_deepspeed": "create a DeepSpeed CPU optimizer from a PyTorch optimizer, selecting the appropriate DeepSpeed backend",
+    "get_active_deepspeed_plugin": "retrieve the currently active DeepSpeedPlugin from an Accelerate state object",
+    "build_hf_deepspeed_config": "build an HfDeepSpeedConfig object from a JSON file or dict and query nested config values like zero stage",
+    "wrap_deepspeed_engine": "wrap a DeepSpeed engine with DeepSpeedEngineWrapper to integrate backward and gradient norm into a conventional training loop",
+    "create_dummy_optimizer": "create a DummyOptimizer or DummyScheduler for training loops when optimizer or scheduler config is specified in the DeepSpeed config file"
+  },
+  "huggingface_accelerate/src/accelerate/utils/environment.py": {
+    "test_get_current_device_type": "test the python function get_current_device_type to determine device and distributed type without initializing CUDA",
+    "build_get_gpu_info": "build a call to get_gpu_info that retrieves GPU names and count using nvidia-smi without initializing torch CUDA",
+    "test_check_cuda_fp8_capability": "test the python function check_cuda_fp8_capability to verify if the current GPU supports FP8 compute",
+    "create_purge_accelerate_environment": "create a decorator using purge_accelerate_environment to clean up ACCELERATE_ env vars after test functions",
+    "test_set_numa_affinity": "test the python function set_numa_affinity to assign a process to a specific NUMA node on CUDA systems"
+  },
+  "huggingface_accelerate/src/accelerate/utils/fsdp_utils.py": {
+    "save_fsdp_model": "save a PyTorch model to disk using FSDP state dict type with full, local, or sharded checkpoint formats",
+    "load_fsdp_model": "load a PyTorch model from FSDP checkpoint files with full, local, or sharded state dict support",
+    "merge_fsdp_weights": "merge sharded FSDP model checkpoints into a single safetensors or pytorch_model.bin file on CPU",
+    "save_fsdp_optimizer": "save FSDP optimizer state to disk in full or sharded distributed checkpoint format",
+    "fsdp2_prepare_model": "prepare a PyTorch model for FSDP2 by wrapping with fully_shard and handling meta device loading"
+  },
+  "huggingface_accelerate/src/accelerate/utils/imports.py": {
+    "test_is_cuda_available": "test if CUDA is available via an NVML-based check without triggering the drivers",
+    "test_is_torch_xla_available": "test if Torch XLA is available and optionally check for TPU or GPU device type",
+    "test_is_transformers_available": "test if the transformers package is installed and importable",
+    "test_is_bf16_available": "test if bf16 is supported across CUDA, MLU, XPU, MPS, and TPU backends",
+    "create_torchao_required_decorator": "create a decorator that raises ImportError when torchao is not installed before calling the decorated function"
+  },
+  "huggingface_accelerate/src/accelerate/utils/launch.py": {
+    "run_prepare_simple_launcher_cmd_env": "run prepare_simple_launcher_cmd_env to build command list and environment for launching a distributed training script",
+    "run_prepare_multi_gpu_env": "run prepare_multi_gpu_env to build environment variables for multi-GPU distributed training",
+    "run_prepare_deepspeed_cmd_env": "run prepare_deepspeed_cmd_env to build command list and environment for launching DeepSpeed distributed training",
+    "run_prepare_sagemager_args_inputs": "run prepare_sagemager_args_inputs to build SageMaker training job configuration from args and config",
+    "test_PrepareForLaunch": "test the PrepareForLaunch class to prepare a function for distributed launch with GPU or CPU process groups"
+  },
+  "huggingface_accelerate/src/accelerate/utils/megatron_lm.py": {
+    "initialize_megatron_setup": "initialize Megatron-LM distributed training setup with accelerator and optional extra arguments",
+    "build_megatron_engine": "build a MegatronEngine wrapper that manages model, optimizer, scheduler, and training loop for Megatron-LM",
+    "prepare_model_optimizer_scheduler": "prepare and configure a Megatron-LM model, optimizer, and learning rate scheduler with the accelerator",
+    "run_megatron_train_eval_step": "run a Megatron-LM training or evaluation step with batch data, micro-batching, and pipeline parallelism",
+    "save_megatron_checkpoint": "save or load a Megatron-LM training checkpoint including iteration, optimizer state, and floating point operation count"
+  },
+  "huggingface_accelerate/src/accelerate/utils/memory.py": {
+    "clear_device_cache": "clear the torch device cache by calling empty_cache on the available accelerator backend",
+    "release_memory": "release memory from torch tensors by setting them to None and clearing the device cache",
+    "should_reduce_batch_size": "check if a runtime exception indicates an out-of-memory error on CUDA, XPU, CPU, or HPU",
+    "find_executable_batch_size": "find the largest batch size that fits in memory by wrapping a function with an auto-reducing decorator",
+    "run_find_executable_batch_size": "run a training function with automatic batch size reduction on out-of-memory exceptions"
+  },
+  "huggingface_accelerate/src/accelerate/utils/modeling.py": {
+    "build_infer_auto_device_map": "build an auto device map for a PyTorch model that balances parameters across available GPUs, CPU, and disk",
+    "create_load_checkpoint_in_model": "create a checkpoint loader that loads sharded or full model checkpoints into a PyTorch model with device map and offloading support",
+    "test_set_module_tensor_to_device": "test setting a specific tensor of a PyTorch module to a given device with dtype conversion and tied parameter handling",
+    "refactor_find_tied_parameters": "refactor finding tied parameters in a PyTorch model by comparing parameter identity across all named parameters",
+    "summarize_get_balanced_memory": "summarize computing a balanced per-GPU memory budget for distributing a model across multiple devices without exceeding limits"
+  },
+  "huggingface_accelerate/src/accelerate/utils/offload.py": {
+    "offload_state_dict": "offload a PyTorch state dict to memory-mapped .dat files with an index.json manifest",
+    "load_offloaded_weight": "load a memory-mapped weight tensor from disk back into a PyTorch tensor",
+    "build_offloaded_weights_loader": "build an OffloadedWeightsLoader to lazily load weights from disk or safetensors files",
+    "extract_submodules_state_dict": "extract a subset of state dict entries matching a list of submodule names",
+    "create_prefixed_dataset": "create a PrefixedDataset to access mapping keys with a string prefix prepended"
+  },
+  "huggingface_accelerate/src/accelerate/utils/operations.py": {
+    "build_send_to_device": "build a function that recursively sends nested tensors in lists, tuples, or dicts to a given device",
+    "create_gather_tensors": "create a function that recursively gathers tensors from all distributed devices into a single structure",
+    "test_broadcast_operation": "test the broadcast function that recursively broadcasts tensors from one process to all others",
+    "refactor_reduce_across_processes": "refactor the reduce function to recursively reduce tensors across all processes with mean, sum, or none reduction",
+    "review_pad_across_processes": "review the pad_across_processes function that recursively pads tensors from all devices to the same size for safe gathering"
+  },
+  "huggingface_accelerate/src/accelerate/utils/other.py": {
+    "build_compile_regions": "build a torch model with regional compilation targeting repeated blocks to reduce cold-start overhead",
+    "create_extract_model_from_parallel": "create a function that extracts an unwrapped PyTorch model from distributed containers like DDP, FSDP, or DeepSpeed",
+    "test_is_compiled_module": "test whether a PyTorch module was compiled with torch.compile()",
+    "run_save_with_safetensors": "run saving of model weights using safetensors format with distributed-awareness and duplicate removal",
+    "load_weights_safe": "load PyTorch weights safely using weights_only mode with numpy array support"
+  },
+  "huggingface_accelerate/src/accelerate/utils/random.py": {
+    "set_seed_reproducible_training": "set seed for reproducible behavior across random, numpy, and torch with optional device-specific and deterministic modes",
+    "synchronize_rng_state_torch": "synchronize the torch RNG state across distributed devices by broadcasting from device 0",
+    "synchronize_rng_state_cuda": "synchronize the CUDA RNG state across distributed GPUs by broadcasting from device 0",
+    "synchronize_rng_states_multiple": "synchronize multiple RNG states in a list across distributed devices using a single call",
+    "synchronize_rng_state_xla": "synchronize the XLA RNG state across TPU workers using collective broadcast and mark_step"
+  },
+  "huggingface_accelerate/src/accelerate/utils/torch_xla.py": {
+    "install_xla": "install torch_xla wheels in Google Colab based on the current torch version",
+    "install_xla_upgrade": "upgrade torch and install the latest torch_xla wheels in Google Colab",
+    "install_xla_colab_check": "check if running in Google Colab before installing torch_xla",
+    "install_xla_version_detection": "detect the current torch version and construct the matching torch_xla wheel URL",
+    "install_xla_runtime_error": "raise a runtime error when install_xla is called outside of Google Colab"
+  },
+  "huggingface_accelerate/src/accelerate/utils/tqdm.py": {
+    "create_tqdm_progress_bar": "create a tqdm progress bar wrapper that displays only on the main process in distributed training",
+    "test_tqdm_main_process_only": "test the tqdm wrapper to ensure progress bars are hidden on non-main processes",
+    "refactor_tqdm_disable_override": "refactor the tqdm wrapper to respect explicit disable kwarg over main_process_only",
+    "review_tqdm_import_check": "review the tqdm wrapper for proper import availability and error handling",
+    "summarize_tqdm_distributed_behavior": "summarize how the tqdm wrapper suppresses output on non-main distributed processes"
+  },
+  "huggingface_accelerate/src/accelerate/utils/transformer_engine.py": {
+    "convert_model": "convert a pytorch model's linear and layernorm layers to transformer_engine equivalents recursively",
+    "has_transformer_engine_layers": "check whether a given pytorch model contains any transformer_engine layers",
+    "contextual_fp8_autocast": "wrap a model's forward method with fp8 autocast that respects training and eval mode",
+    "apply_fp8_autowrap": "apply fp8 autocast context manager to a model's forward method using an fp8 recipe handler",
+    "convert_model_reverse": "convert a model's transformer_engine linear and layernorm layers back to standard pytorch nn.Linear and nn.LayerNorm"
+  },
+  "huggingface_accelerate/src/accelerate/utils/versions.py": {
+    "test_compare_versions": "test the compare_versions function to compare a library version against a requirement using an operation",
+    "test_is_torch_version": "test the is_torch_version function to compare the current PyTorch version against a reference version",
+    "build_check_torch_version": "build a check to verify the current PyTorch version satisfies a version constraint like '>=\"2.0.0\"'",
+    "test_version_comparison": "test version comparison using operators like '>=' or '<=' against any installed library name",
+    "build_version_requirement_check": "build a version requirement check for any installed Python library using string operators"
+  },
+  "huggingface_accelerate/tests/test_accelerator.py": {
+    "test_accelerator_prepare_components": "test that Accelerator.prepare correctly wraps model, optimizer, scheduler, and dataloaders for distributed training",
+    "test_accelerator_save_load_state": "test saving and loading full training state including model weights, optimizer, and scheduler with safetensors",
+    "test_accelerator_save_model_sharded": "test saving a model as sharded checkpoint files with a configurable max shard size limit",
+    "test_accelerator_unwrap_model": "test unwrapping a prepared model to retrieve the original module after mixed precision or distributed wrapping",
+    "test_accelerator_free_memory": "test freeing memory by dereferencing all prepared components and clearing internal accelerator references"
+  },
+  "huggingface_accelerate/tests/test_big_modeling.py": {
+    "test_init_empty_weights": "test the init_empty_weights context manager that initializes model parameters on the meta device",
+    "test_cpu_offload": "test the cpu_offload function that offloads model weights to CPU and loads them during forward pass",
+    "test_disk_offload": "test the disk_offload function that offloads model weights to disk for memory efficient inference",
+    "test_dispatch_model": "test the dispatch_model function that distributes model layers across multiple devices using a device map",
+    "test_load_checkpoint_and_dispatch": "test the load_checkpoint_and_dispatch function that loads model weights from a checkpoint and dispatches across devices"
+  },
+  "huggingface_accelerate/tests/test_cli.py": {
+    "run_accelerate_launch_command": "run the accelerate launch command with a config file and Python training script",
+    "validate_launch_command_args": "validate launch command arguments by merging CLI args with config file defaults",
+    "estimate_model_memory_usage": "estimate the memory usage of a HuggingFace model for different precision dtypes",
+    "configure_tpu_ssh_command": "configure and launch a gcloud SSH command to run scripts on a TPU VM",
+    "convert_config_to_fsdp2": "convert an existing accelerate config file to use FSDP version 2"
+  },
+  "huggingface_accelerate/tests/test_compile.py": {
+    "test_compile_regions": "test that compile_regions compiles transformer layers and lm_head as separate optimized modules",
+    "test_extract_model_keep_torch_compile": "test extract_model_from_parallel with keep_torch_compile true preserves the original compiled model reference",
+    "test_extract_model_remove_torch_compile": "test extract_model_from_parallel with keep_torch_compile false returns the unwrapped original model",
+    "test_regional_compilation_cold_start": "test that regional compilation has a faster cold start than full model compilation",
+    "test_regional_compilation_inference_speedup": "test that regional compilation inference speedup is similar to full compilation speedup"
+  },
+  "huggingface_accelerate/tests/test_cpu.py": {
+    "test_cpu_with_debug_launcher": "test the MultiCPUTester class to run test_script.main via debug_launcher on CPU",
+    "test_ops_with_debug_launcher": "test the MultiCPUTester class to run test_ops.main via debug_launcher on CPU",
+    "run_debug_launcher_with_test_script": "run debug_launcher with test_script.main to launch a multi-process CPU test",
+    "run_debug_launcher_with_test_ops": "run debug_launcher with test_ops.main to launch a multi-process CPU operations test",
+    "review_MultiCPUTester": "review the MultiCPUTester unittest class and its CPU test methods"
+  },
+  "huggingface_accelerate/tests/test_data_loader.py": {
+    "test_batch_sampler_shards": "test the BatchSamplerShard class to verify correct shard distribution across multiple processes",
+    "test_iterable_dataset_shards": "test the IterableDatasetShard class to verify correct sharding of iterable datasets across processes",
+    "test_skip_data_loader": "test the SkipDataLoader class to verify it correctly skips the specified number of batches",
+    "test_dataloader_state_dict": "test the DataLoaderShard state_dict and load_state_dict methods for checkpointing and resuming data loading",
+    "test_prepare_data_loader": "test the prepare_data_loader function to verify it correctly wraps a DataLoader for distributed training"
+  },
+  "huggingface_accelerate/tests/test_dataclasses.py": {
+    "test_ParallelismConfig_get_mesh": "test ParallelismConfig _get_mesh method with various dp_replicate, dp_shard, tp, and cp size combinations",
+    "test_ParallelismConfig_build_device_mesh": "test ParallelismConfig build_device_mesh method creates correct mesh shape and dimension names for different parallelism configs",
+    "test_ParallelismConfig_from_env": "test ParallelismConfig initialization from PARALLELISM_CONFIG environment variables for dp_replicate, dp_shard, tp, and cp sizes",
+    "test_cp_torch_handler": "test TorchContextParallelConfig handler with allgather and alltoall cp_comm_strategy settings via ParallelismConfig",
+    "test_sp_deepspeed_handler": "test DeepSpeedSequenceParallelConfig handler with ParallelismConfig for sequence parallelism with deepspeed backend"
+  },
+  "huggingface_accelerate/tests/test_examples.py": {
+    "test_checkpointing_by_epoch": "run the test_checkpointing_by_epoch test to verify epoch-based checkpoint saving and directory creation",
+    "test_checkpointing_by_steps": "run the test_checkpointing_by_steps test to verify step-based checkpoint saving and directory creation",
+    "test_load_states_by_epoch": "run the test_load_states_by_epoch test to verify resuming training from an epoch checkpoint",
+    "test_load_states_by_steps": "run the test_load_states_by_steps test to verify resuming training from a step checkpoint",
+    "test_one_complete_example": "run the one_complete_example method to compare a complete example script against all by_feature scripts"
+  },
+  "huggingface_accelerate/tests/test_fp8.py": {
+    "test_fp8_te_model_single_gpu": "run the test suite to prepare a Transformer Engine FP8 model on a single GPU",
+    "test_fp8_te_model_from_config": "run the test suite to prepare a Transformer Engine FP8 model using a YAML config file",
+    "test_fp8_te_model_mxfp8": "run the test suite to prepare a Transformer Engine FP8 model with MXFP8 block scaling enabled",
+    "test_fp8_ao_model_single_gpu": "run the test suite to prepare a TorchAO FP8 model on a single accelerator",
+    "test_fp8_ao_model_deepspeed": "run the test suite to prepare a TorchAO FP8 model with DeepSpeed across multiple GPUs"
+  },
+  "huggingface_accelerate/tests/test_grad_sync.py": {
+    "test_gradient_sync_cpu_noop": "test gradient synchronization on CPU with a single process using debug_launcher",
+    "test_gradient_sync_cpu_multi": "test gradient synchronization on CPU with multiple processes using debug_launcher",
+    "test_gradient_sync_gpu": "test gradient synchronization on GPU devices by running test_sync main function",
+    "test_gradient_sync_gpu_multi": "test gradient synchronization across multiple GPU devices using subprocess launch command",
+    "review_SyncScheduler": "review the SyncScheduler test class and its gradient sync test methods for Accelerate"
+  },
+  "huggingface_accelerate/tests/test_hooks.py": {
+    "add_hook_to_module": "add a ModelHook to a PyTorch module to intercept pre_forward and post_forward calls",
+    "remove_hook_from_module": "remove the attached hook from a PyTorch module and restore its original forward method",
+    "attach_align_device_hook": "attach an AlignDevicesHook to all submodules of a model for CPU offloading with a weights map",
+    "AlignDevicesHook": "create an AlignDevicesHook to move a module to a specific execution device and offload parameters to CPU",
+    "CpuOffload": "create a CpuOffload hook that moves a model to CPU and back to GPU during forward passes"
+  },
+  "huggingface_accelerate/tests/test_imports.py": {
+    "run_import_time": "run a python import command with timing and capture the stderr output",
+    "convert_list_to_string": "convert a list of import path data into a readable arrow-separated string format",
+    "test_import_speed": "test the accelerate base import speed against a raw pytorch import baseline",
+    "test_cli_import_speed": "test the accelerate CLI command parser import speed against a pytorch baseline",
+    "test_lazy_import": "test that transformer_engine is lazy-loaded and not eagerly imported with accelerate"
+  },
+  "huggingface_accelerate/tests/test_kwargs_handlers.py": {
+    "test_kwargs_handler_to_kwargs": "test the KwargsHandler to_kwargs method that returns a dict of non-default attribute values",
+    "test_grad_scaler_kwargs_fp16": "test GradScalerKwargs to configure init_scale and growth_factor for fp16 mixed precision training",
+    "test_ddp_kwargs_bucket_cap": "test DistributedDataParallelKwargs to set bucket_cap_mb and find_unused_parameters on a prepared model",
+    "test_autocast_kwargs_disabled": "test AutocastKwargs to temporarily disable autocast and perform float32 matrix multiplication inside fp16 context",
+    "test_profile_kwargs_schedule": "test ProfileKwargs to configure CPU profiling with a custom wait-warmup-active schedule and trace callback"
+  },
+  "huggingface_accelerate/tests/test_launch.py": {
+    "test_prepare_multi_gpu_env_auto_port": "test the prepare_multi_gpu_env function to verify auto port selection when main_process_port is zero",
+    "run_test_auto_port_selection": "run the TestPrepareMultiGpuEnv test class to validate multi-GPU environment preparation with automatic port assignment",
+    "review_test_prepare_multi_gpu_env": "review the TestPrepareMultiGpuEnv test class and its auto port selection test method",
+    "refactor_test_auto_port_selection": "refactor the test_auto_port_selection method to add assertions for multi-machine scenarios",
+    "summarize_test_prepare_multi_gpu_env": "summarize the TestPrepareMultiGpuEnv unittest class that tests accelerate multi-GPU environment preparation"
+  },
+  "huggingface_accelerate/tests/test_load_checkpoint_and_dispatch_with_broadcast.py": {
+    "run_load_checkpoint_and_dispatch_fsdp2": "run the load_checkpoint_and_dispatch_fsdp2 test with torchrun on multi GPU devices",
+    "run_load_checkpoint_and_dispatch_ddp": "run the load_checkpoint_and_dispatch_ddp test with torchrun on multi GPU devices",
+    "run_load_checkpoint_and_dispatch_no_broadcast": "run the load_checkpoint_and_dispatch_no_broadcast_from_rank0 test with torchrun on multi GPU devices",
+    "test_manage_process_group": "test the manage_process_group decorator that initializes and destroys distributed process groups",
+    "review_TestLoadCheckpointAndDispatchWithBroadcast": "review the TestLoadCheckpointAndDispatchWithBroadcast class that tests checkpoint loading with broadcast across FSDP2, DDP, and no-broadcast scenarios"
+  },
+  "huggingface_accelerate/tests/test_logging.py": {
+    "test_log_stack": "test the accelerate logger stack trace accuracy by logging a warning message and verifying the recorded line number",
+    "test_custom_stacklevel": "test that a custom logger adapter with stacklevel 3 correctly logs the user callsite line number",
+    "review_CustomLogger": "review the CustomLogger class that wraps a logger adapter and sets a custom stacklevel for log messages",
+    "refactor_current_lineno": "refactor the current_lineno helper function that uses inspect to return the caller frame line number",
+    "summarize_accelerator_fixture": "summarize the accelerator pytest fixture that creates an Accelerator instance and resets state on teardown"
+  },
+  "huggingface_accelerate/tests/test_memory_utils.py": {
+    "test_find_executable_batch_size_decorator": "test the find_executable_batch_size decorator that auto-reduces batch size on OOM errors",
+    "test_release_memory_function": "test the release_memory function that frees GPU memory held by a PyTorch model",
+    "test_memorytest_class": "test the MemoryTest unittest class covering batch size and memory release scenarios",
+    "refactor_find_executable_batch_size": "refactor the find_executable_batch_size decorator to support custom batch size reduction strategies",
+    "review_modelfortest_class": "review the ModelForTest PyTorch module class used as a test fixture for memory tests"
+  },
+  "huggingface_accelerate/tests/test_metrics.py": {
+    "test_metric_cpu_noop": "test the MetricTester class by running metrics on CPU with a single process using debug_launcher",
+    "test_metric_cpu_multi": "test the MetricTester class by running metrics on CPU with multiple processes using debug_launcher",
+    "test_metric_accelerator": "test the MetricTester class by running metrics with a single accelerator device",
+    "test_metric_accelerator_multi": "test the MetricTester class by running metrics across multiple accelerator devices via subprocess",
+    "review_MetricTester": "review the MetricTester unittest class and its setUp method that loads external test_metrics dependencies"
+  },
+  "huggingface_accelerate/tests/test_modeling_utils.py": {
+    "infer_auto_device_map": "infer an automatic device map for a PyTorch model given max memory per device",
+    "load_checkpoint_in_model": "load a checkpoint into a model with a custom device map and optional disk offloading",
+    "set_module_tensor_to_device": "move a specific model tensor to a target device like cpu, gpu, or meta",
+    "find_tied_parameters": "find all groups of tied parameters shared across modules in a PyTorch model",
+    "compute_module_sizes": "compute the memory size in bytes of each module and parameter in a PyTorch model"
+  },
+  "huggingface_accelerate/tests/test_multidevice.py": {
+    "test_multi_device": "test multi-device training by running a distributed script across available GPU devices",
+    "test_pad_across_processes": "test tensor padding across distributed processes using Accelerator pad_across_processes method",
+    "test_distributed_data_loop": "test distributed data loading when batch size does not evenly divide dataset size",
+    "test_dispatch_model_device_map": "test dispatching model layers to specific devices using a device_map dictionary",
+    "test_prepare_model_after_dispatch": "test that preparing a dispatched model raises a ValueError exception"
+  },
+  "huggingface_accelerate/tests/test_offload.py": {
+    "test_offload_state_dict": "test offloading a PyTorch model state dict to disk using offload_state_dict",
+    "test_offload_weight": "test saving and loading a single weight tensor with offload_weight and load_offloaded_weight",
+    "test_OffloadedWeightsLoader": "test OffloadedWeightsLoader that merges CPU state dict with disk-offloaded weights",
+    "test_extract_submodules_state_dict": "test extracting specific submodule entries from a state dict using extract_submodules_state_dict",
+    "review_OffloadTester": "review the OffloadTester test class that validates weight offloading utilities from accelerate"
+  },
+  "huggingface_accelerate/tests/test_optimizer.py": {
+    "test_accelerated_optimizer_pickling": "test that an accelerated optimizer can be pickled and unpickled on CPU",
+    "test_step_was_skipped_fp16": "test that optimizer step_was_skipped returns True when gradients contain NaN values in fp16 mode",
+    "test_accelerator_prepare_optimizer": "test preparing a PyTorch SGD optimizer with Accelerator for distributed training",
+    "test_accelerator_backward_with_fp16": "test running accelerator backward pass with fp16 mixed precision and gradient overflow detection",
+    "review_optimizer_step_skip_logic": "review the step_was_skipped property behavior across multiple optimizer steps with NaN and valid gradients"
+  },
+  "huggingface_accelerate/tests/test_quantization.py": {
+    "test_BnbQuantizationConfig_validation": "test that BnbQuantizationConfig raises ValueError when both load_in_8bit and load_in_4bit are set to True",
+    "test_8bit_quantization_empty_model": "test 8-bit quantization of a Bloom model loaded from empty weights using init_empty_weights and load_and_quantize_model",
+    "test_4bit_quantization_empty_model": "test 4-bit quantization of a Bloom model loaded from empty weights using BnbQuantizationConfig with load_in_4bit",
+    "test_quantized_model_memory_footprint": "test that an 8-bit or 4-bit quantized model has a smaller memory footprint than its fp16 counterpart",
+    "test_quantized_model_serialization": "test saving and reloading an 8-bit quantized model with sharded state dict using accelerate save_model"
+  },
+  "huggingface_accelerate/tests/test_sagemaker.py": {
+    "test_convert_nargs_to_dict": "test that _convert_nargs_to_dict converts training script args to a typed dictionary",
+    "test_convert_nargs_validation": "test that _convert_nargs_to_dict raises ValueError on invalid flag-only arguments",
+    "review_SageMakerLaunch_test_args_convert": "review the SageMakerLaunch test_args_convert method for argument conversion assertions",
+    "refactor_MockLaunchConfig": "refactor the MockLaunchConfig dataclass to add new SageMaker training script arguments",
+    "summarize_SageMakerLaunch": "summarize the SageMakerLaunch test class and its argument conversion test cases"
+  },
+  "huggingface_accelerate/tests/test_scheduler.py": {
+    "test_one_cycle_scheduler": "test OneCycleLR scheduler stepping behavior with Accelerator across single and multi process setups",
+    "test_lambda_scheduler": "test LambdaLR scheduler learning rate values with Accelerator under step with optimizer and split batches",
+    "test_gradient_accumulation_scheduler": "test gradient accumulation plugin with linear warmup scheduler across different accumulation step counts",
+    "test_scheduler_multiprocess": "test LambdaLR and OneCycleLR schedulers with Accelerator in multi process mode using debug_launcher",
+    "review_scheduler_tester_class": "review the SchedulerTester class test methods for single and multi process scheduler behavior"
+  },
+  "huggingface_accelerate/tests/test_state_checkpointing.py": {
+    "test_checkpoint_resume_training": "test resuming training from a saved checkpoint folder with model and optimizer state",
+    "test_checkpoint_save_limit": "test that checkpoint save limit correctly deletes old checkpoints when total limit is reached",
+    "test_checkpoint_scheduler_state": "test saving and loading learning rate scheduler state alongside model and optimizer",
+    "test_checkpoint_map_location": "test loading checkpoints to cpu or on_device with the map_location parameter",
+    "test_checkpoint_automatic_loading": "test automatic checkpoint loading without specifying a path using automatic checkpoint naming"
+  },
+  "huggingface_accelerate/tests/test_tpu.py": {
+    "test_MultiTPUTester_test_tpu": "test the MultiTPUTester class to run TPU distributed tests using xla_spawn with 8 cores",
+    "run_MultiTPUTester": "run the MultiTPUTester unittest class to execute TPU-based distributed training tests",
+    "review_MultiTPUTester": "review the MultiTPUTester class and its test_tpu method for TPU test configuration",
+    "test_execute_subprocess_async": "test the execute_subprocess_async utility to run a command in a subprocess asynchronously",
+    "test_path_in_accelerate_package": "test the path_in_accelerate_package utility to resolve paths within the accelerate package"
+  },
+  "huggingface_accelerate/tests/test_tracking.py": {
+    "test_tensorboard_tracking": "test the TensorBoardTrackingTest class to verify TensorBoard tracker init, log, and tensor logging with Accelerator",
+    "test_mlflow_tracking": "test the MLflowTrackingTest class to verify MLflow metrics, figure, and artifact logging with Accelerator",
+    "test_custom_tracker": "test the MyCustomTracker class to verify a custom GeneralTracker subclass that writes logs to CSV",
+    "test_tracker_deferred_init": "test the TrackerDeferredInitializationTest class to verify all trackers defer PartialState access until Accelerator configures distributed",
+    "test_clearml_tracking": "test the ClearMLTest class to verify ClearML config logging, metrics, images, and table logging with Accelerator"
+  },
+  "huggingface_accelerate/tests/test_utils.py": {
+    "send_to_device": "send a PyTorch tensor or nested data structure to a specified device like GPU or CPU",
+    "extract_model_from_parallel": "extract the original model from a DataParallel or FSDP wrapper for inference or saving",
+    "patch_environment": "temporarily set environment variables within a context block and restore them on exit",
+    "concatenate": "concatenate multiple batches of tensors, dicts, or tuples along a specified dimension",
+    "pad_input_tensors": "pad input tensors so their batch size is divisible by the number of processes"
+  },
+  "huggingface_accelerate/tests/xla_spawn.py": {
+    "run_tpu_training_script": "run a training script on TPU cores using xla_spawn launcher with specified number of cores",
+    "parse_args_tpu_launcher": "parse command line arguments for TPU distributed training including num_cores and training script path",
+    "spawn_xla_multiprocessing": "spawn multiple distributed processes for TPU training using torch_xla xmp spawn",
+    "review_parse_args": "review the parse_args function that handles num_cores and training script arguments for TPU launch",
+    "refactor_main": "refactor the main function to improve how training scripts are imported and spawned on TPU cores"
+  },
+  "huggingface_accelerate/tests/deepspeed/test_alst_ulysses_sp.py": {
+    "test_deepspeed_alst_ulysses_sp": "test the DeepSpeedALSTUlyssesSPTest class to run DeepSpeed ALST Ulysses sequence parallel tests with Zero stage 2 or 3",
+    "run_accelerate_launch_deepspeed": "run accelerate launch with deepspeed zero stage and bf16 mixed precision for sequence parallel training",
+    "execute_subprocess_async_cmd": "execute an accelerate launch subprocess command asynchronously with environment variable patches for OMP threads",
+    "review_DeepSpeedALSTUlyssesSPTest": "review the DeepSpeedALSTUlyssesSPTest class and its parameterized test methods for DeepSpeed integration",
+    "summarize_test_deepspeed_alst_ulysses_sp": "summarize the test_deepspeed_alst_ulysses_sp method that runs parameterized DeepSpeed Zero stage tests"
+  },
+  "huggingface_accelerate/tests/deepspeed/test_deepspeed.py": {
+    "test_deepspeed_plugin_config": "test the DeepSpeedPlugin class with ZeRO stage 2 and 3 configuration options",
+    "test_accelerator_deepspeed_integration": "test the Accelerator class integration with DeepSpeed plugin and mixed precision settings",
+    "test_prepare_deepspeed_model": "test preparing a model with DeepSpeed optimizer and scheduler wrappers",
+    "test_deepspeed_checkpointing": "test saving and loading DeepSpeed ZeRO stage 3 checkpoints with 16bit weights",
+    "test_deepspeed_moe_model": "test preparing a Qwen MoE model with DeepSpeed ZeRO-3 leaf module configuration"
+  },
+  "huggingface_accelerate/tests/deepspeed/test_deepspeed_gradient_accumulation.py": {
+    "test_gradient_accumulation_boundary": "test that gradient accumulation boundaries are automatically handled by DeepSpeed integration with four micro steps",
+    "test_clip_grad_norm_deepspeed": "test that clip_grad_norm returns the gradient norm value when using DeepSpeed with ZeRO stage 2",
+    "test_backward_sync_gradients": "test that Accelerator backward passes sync_gradients correctly to the DeepSpeed wrapper during accumulation steps",
+    "review_DeepSpeedGradientAccumulationTest": "review the DeepSpeedGradientAccumulationTest class and its three test methods for gradient accumulation behavior with DeepSpeed",
+    "refactor_DeepSpeedPlugin": "refactor the DeepSpeedPlugin configuration to adjust gradient accumulation steps, zero stage, or offload device settings"
+  },
+  "huggingface_accelerate/tests/deepspeed/test_deepspeed_multiple_model.py": {
+    "test_select_deepspeed_plugin": "test selecting between zero2 and zero3 DeepSpeed plugins on an Accelerator instance",
+    "test_config_reference_update": "test that transformers deepspeed config weakref updates when switching between DeepSpeed plugins",
+    "test_prepare_multiple_models_zero3": "test preparing multiple models with zero3 inference plugin and verify warning on tied engine",
+    "test_train_multiple_models": "test training multiple models simultaneously using DeepSpeed zero2 and zero3 plugins on multi-device",
+    "review_DeepSpeedConfigIntegration": "review the DeepSpeedConfigIntegration test class for multiple DeepSpeed plugin configuration and selection patterns"
+  },
+  "huggingface_accelerate/tests/fsdp/test_fsdp.py": {
+    "test_FSDPPluginIntegration_sharding_strategy": "test the FSDPPluginIntegration class sharding strategy configuration for FSDP1 and FSDP2 versions",
+    "test_FSDPPluginIntegration_mixed_precision": "test the FSDPPluginIntegration class mixed precision policy setup with fp16 and bf16 dtypes",
+    "test_FSDPPluginIntegration_auto_wrap_policy": "test the FSDPPluginIntegration class auto wrap policy configuration using transformer based and size based wrapping",
+    "test_FSDP2PluginIntegration_param_mapping_error_handling": "test the FSDP2PluginIntegration class parameter mapping error handling for tied and non tied embedding cases",
+    "test_FSDP2PluginIntegration_uniform_dtype_upcast": "test the FSDP2PluginIntegration class uniform dtype upcast behavior when preparing models with mixed precision bf16 or fp16"
+  },
+  "huggingface_accelerate/tests/tp/fsdp2_tp_preparation.py": {
+    "run_fsdp2_tp_preparation": "run the FSDP2 with tensor parallelism preparation script for Qwen3-0.6B model",
+    "build_simple_dataloader": "build a simple wikitext dataloader with tokenization and padding for sequence length 64",
+    "create_LmHeadWrapper": "create a PyTorch module wrapper that wraps an lm_head layer for FSDP compatibility",
+    "review_FullyShardedDataParallelPlugin": "review the FSDP2 plugin configuration with transformer-based auto wrap policy and sharded state dict",
+    "test_accelerator_prepare": "test the accelerator prepare function with model, optimizer, and dataloader under FSDP2 and TP"
+  },
+  "huggingface_accelerate/tests/tp/test_tp.py": {
+    "run_TPIntegrationTest": "run the TPIntegrationTest class to test tensor parallelism with TinyLlama model",
+    "test_working_of_tp": "test tensor parallelism by launching test_performance.py with tp_size 2 and auto tp_plan",
+    "test_working_of_tp_and_fsdp": "test tensor parallelism combined with FSDP using fsdp2_tp_preparation.py and its config",
+    "review_TPIntegrationTest": "review the TPIntegrationTest class for tensor parallelism integration test setup and decorators",
+    "summarize_test_working_of_tp": "summarize the test_working_of_tp method that runs TP tests with get_launch_command and patch_environment"
+  }
+}

@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: huggingface/chug
+- repo_uri: https://github.com/huggingface/chug
+
+## File: huggingface_chug/src/chug/common/collate.py
+
+Prompts
+
+```
+['collate a batch of dictionary samples using the customized collate function that skips double underscore keys', 'collate a list of dictionary samples where keys starting with underscore are not tensorized', 'collate a batch of sequence elements ensuring all elements have equal size', 'collate a batch of namedtuple elements by recursively collating each field', 'collate a batch of mapping objects that excludes keys starting with double underscores', 'create an ImageInputCfg dataclass to configure image size, mode, mean, std, and fill color', 'build an ImageAugCfg using clip, imagenet, or simclr factory methods for augmentation defaults', 'create a PreprocessCfg combining ImageInputCfg and ImageAugCfg for vision preprocessing configuration', 'split a colon-delimited source string into SourceSpec objects with sampling weights and num samples', 'convert a source string or SourceSpec list into a ShardSpec with expanded URLs and weights', 'seed Python random and numpy modules using PyTorch initial seed for a dataloader worker', 'get a PyTorch dataloader worker seed with optional increment value for spacing across iterations', 'review the seed_worker function to understand how it seeds random and numpy from PyTorch', 'refactor get_pytorch_worker_seed to support a custom seed generation strategy', 'test the get_pytorch_worker_seed function with different increment and initial_seed values', 'create a SharedCount instance to track a shared epoch counter across multiprocessing workers', 'create a LoaderBundle wrapping a DataLoader with optional DistributedSampler and shared interval counter', 'set the interval on a LoaderBundle to update its sampler epoch and shared counter', 'create a ShardSpec with URLs and optional weights and sizes that validates shard counts', 'create an ImageFeatureInfo dataclass to describe image feature output name, input keys, and color mode', 'expand a colon-separated URL string into a list with optional per-URL weights', 'expand a colon-separated URL string into a flat list of resolved URLs', 'substitute dollar-brace environment variable references in a string using WDS_ or CHUG_ prefixes', 'resolve an environment variable by name using WDS_ or CHUG_ prefixes', 'expand URLs with brace expansion patterns like s3://bucket/file-{1..10}.shard']
+```
+
+Usage
+
+```
+{'collate_batch': 'collate a batch of dictionary samples using the customized collate function that skips double underscore keys', 'collate_dictionary_samples': 'collate a list of dictionary samples where keys starting with underscore are not tensorized', 'collate_sequence_batch': 'collate a batch of sequence elements ensuring all elements have equal size', 'collate_namedtuple_batch': 'collate a batch of namedtuple elements by recursively collating each field', 'collate_mapping_batch': 'collate a batch of mapping objects that excludes keys starting with double underscores'}
+```
+
+## File: huggingface_chug/src/chug/common/config.py
+
+Prompts
+
+```
+['collate a batch of dictionary samples using the customized collate function that skips double underscore keys', 'collate a list of dictionary samples where keys starting with underscore are not tensorized', 'collate a batch of sequence elements ensuring all elements have equal size', 'collate a batch of namedtuple elements by recursively collating each field', 'collate a batch of mapping objects that excludes keys starting with double underscores', 'create an ImageInputCfg dataclass to configure image size, mode, mean, std, and fill color', 'build an ImageAugCfg using clip, imagenet, or simclr factory methods for augmentation defaults', 'create a PreprocessCfg combining ImageInputCfg and ImageAugCfg for vision preprocessing configuration', 'split a colon-delimited source string into SourceSpec objects with sampling weights and num samples', 'convert a source string or SourceSpec list into a ShardSpec with expanded URLs and weights', 'seed Python random and numpy modules using PyTorch initial seed for a dataloader worker', 'get a PyTorch dataloader worker seed with optional increment value for spacing across iterations', 'review the seed_worker function to understand how it seeds random and numpy from PyTorch', 'refactor get_pytorch_worker_seed to support a custom seed generation strategy', 'test the get_pytorch_worker_seed function with different increment and initial_seed values', 'create a SharedCount instance to track a shared epoch counter across multiprocessing workers', 'create a LoaderBundle wrapping a DataLoader with optional DistributedSampler and shared interval counter', 'set the interval on a LoaderBundle to update its sampler epoch and shared counter', 'create a ShardSpec with URLs and optional weights and sizes that validates shard counts', 'create an ImageFeatureInfo dataclass to describe image feature output name, input keys, and color mode', 'expand a colon-separated URL string into a list with optional per-URL weights', 'expand a colon-separated URL string into a flat list of resolved URLs', 'substitute dollar-brace environment variable references in a string using WDS_ or CHUG_ prefixes', 'resolve an environment variable by name using WDS_ or CHUG_ prefixes', 'expand URLs with brace expansion patterns like s3://bucket/file-{1..10}.shard']
+```
+
+Usage
+
+```
+{'create_image_input_cfg': 'create an ImageInputCfg dataclass to configure image size, mode, mean, std, and fill color', 'build_image_aug_cfg': 'build an ImageAugCfg using clip, imagenet, or simclr factory methods for augmentation defaults', 'create_preprocess_cfg': 'create a PreprocessCfg combining ImageInputCfg and ImageAugCfg for vision preprocessing configuration', 'split_data_sources': 'split a colon-delimited source string into SourceSpec objects with sampling weights and num samples', 'convert_source_to_shard_spec': 'convert a source string or SourceSpec list into a ShardSpec with expanded URLs and weights'}
+```
+
+## File: huggingface_chug/src/chug/common/random.py
+
+Prompts
+
+```
+['collate a batch of dictionary samples using the customized collate function that skips double underscore keys', 'collate a list of dictionary samples where keys starting with underscore are not tensorized', 'collate a batch of sequence elements ensuring all elements have equal size', 'collate a batch of namedtuple elements by recursively collating each field', 'collate a batch of mapping objects that excludes keys starting with double underscores', 'create an ImageInputCfg dataclass to configure image size, mode, mean, std, and fill color', 'build an ImageAugCfg using clip, imagenet, or simclr factory methods for augmentation defaults', 'create a PreprocessCfg combining ImageInputCfg and ImageAugCfg for vision preprocessing configuration', 'split a colon-delimited source string into SourceSpec objects with sampling weights and num samples', 'convert a source string or SourceSpec list into a ShardSpec with expanded URLs and weights', 'seed Python random and numpy modules using PyTorch initial seed for a dataloader worker', 'get a PyTorch dataloader worker seed with optional increment value for spacing across iterations', 'review the seed_worker function to understand how it seeds random and numpy from PyTorch', 'refactor get_pytorch_worker_seed to support a custom seed generation strategy', 'test the get_pytorch_worker_seed function with different increment and initial_seed values', 'create a SharedCount instance to track a shared epoch counter across multiprocessing workers', 'create a LoaderBundle wrapping a DataLoader with optional DistributedSampler and shared interval counter', 'set the interval on a LoaderBundle to update its sampler epoch and shared counter', 'create a ShardSpec with URLs and optional weights and sizes that validates shard counts', 'create an ImageFeatureInfo dataclass to describe image feature output name, input keys, and color mode', 'expand a colon-separated URL string into a list with optional per-URL weights', 'expand a colon-separated URL string into a flat list of resolved URLs', 'substitute dollar-brace environment variable references in a string using WDS_ or CHUG_ prefixes', 'resolve an environment variable by name using WDS_ or CHUG_ prefixes', 'expand URLs with brace expansion patterns like s3://bucket/file-{1..10}.shard']
+```
+
+Usage
+
+```
+{'seed_worker_function': 'seed Python random and numpy modules using PyTorch initial seed for a dataloader worker', 'get_pytorch_worker_seed_function': 'get a PyTorch dataloader worker seed with optional increment value for spacing across iterations', 'review_seed_worker': 'review the seed_worker function to understand how it seeds random and numpy from PyTorch', 'refactor_get_pytorch_worker_seed': 'refactor get_pytorch_worker_seed to support a custom seed generation strategy', 'test_get_pytorch_worker_seed': 'test the get_pytorch_worker_seed function with different increment and initial_seed values'}
+```
+
+## File: huggingface_chug/src/chug/common/types.py
+
+Prompts
+
+```
+['collate a batch of dictionary samples using the customized collate function that skips double underscore keys', 'collate a list of dictionary samples where keys starting with underscore are not tensorized', 'collate a batch of sequence elements ensuring all elements have equal size', 'collate a batch of namedtuple elements by recursively collating each field', 'collate a batch of mapping objects that excludes keys starting with double underscores', 'create an ImageInputCfg dataclass to configure image size, mode, mean, std, and fill color', 'build an ImageAugCfg using clip, imagenet, or simclr factory methods for augmentation defaults', 'create a PreprocessCfg combining ImageInputCfg and ImageAugCfg for vision preprocessing configuration', 'split a colon-delimited source string into SourceSpec objects with sampling weights and num samples', 'convert a source string or SourceSpec list into a ShardSpec with expanded URLs and weights', 'seed Python random and numpy modules using PyTorch initial seed for a dataloader worker', 'get a PyTorch dataloader worker seed with optional increment value for spacing across iterations', 'review the seed_worker function to understand how it seeds random and numpy from PyTorch', 'refactor get_pytorch_worker_seed to support a custom seed generation strategy', 'test the get_pytorch_worker_seed function with different increment and initial_seed values', 'create a SharedCount instance to track a shared epoch counter across multiprocessing workers', 'create a LoaderBundle wrapping a DataLoader with optional DistributedSampler and shared interval counter', 'set the interval on a LoaderBundle to update its sampler epoch and shared counter', 'create a ShardSpec with URLs and optional weights and sizes that validates shard counts', 'create an ImageFeatureInfo dataclass to describe image feature output name, input keys, and color mode', 'expand a colon-separated URL string into a list with optional per-URL weights', 'expand a colon-separated URL string into a flat list of resolved URLs', 'substitute dollar-brace environment variable references in a string using WDS_ or CHUG_ prefixes', 'resolve an environment variable by name using WDS_ or CHUG_ prefixes', 'expand URLs with brace expansion patterns like s3://bucket/file-{1..10}.shard']
+```
+
+Usage
+
+```
+{'create_sharedcount': 'create a SharedCount instance to track a shared epoch counter across multiprocessing workers', 'create_loaderbundle': 'create a LoaderBundle wrapping a DataLoader with optional DistributedSampler and shared interval counter', 'set_loaderbundle_interval': 'set the interval on a LoaderBundle to update its sampler epoch and shared counter', 'create_shardspec': 'create a ShardSpec with URLs and optional weights and sizes that validates shard counts', 'create_imagefeatureinfo': 'create an ImageFeatureInfo dataclass to describe image feature output name, input keys, and color mode'}
+```
+
+## File: huggingface_chug/src/chug/common/urls.py
+
+Prompts
+
+```
+['collate a batch of dictionary samples using the customized collate function that skips double underscore keys', 'collate a list of dictionary samples where keys starting with underscore are not tensorized', 'collate a batch of sequence elements ensuring all elements have equal size', 'collate a batch of namedtuple elements by recursively collating each field', 'collate a batch of mapping objects that excludes keys starting with double underscores', 'create an ImageInputCfg dataclass to configure image size, mode, mean, std, and fill color', 'build an ImageAugCfg using clip, imagenet, or simclr factory methods for augmentation defaults', 'create a PreprocessCfg combining ImageInputCfg and ImageAugCfg for vision preprocessing configuration', 'split a colon-delimited source string into SourceSpec objects with sampling weights and num samples', 'convert a source string or SourceSpec list into a ShardSpec with expanded URLs and weights', 'seed Python random and numpy modules using PyTorch initial seed for a dataloader worker', 'get a PyTorch dataloader worker seed with optional increment value for spacing across iterations', 'review the seed_worker function to understand how it seeds random and numpy from PyTorch', 'refactor get_pytorch_worker_seed to support a custom seed generation strategy', 'test the get_pytorch_worker_seed function with different increment and initial_seed values', 'create a SharedCount instance to track a shared epoch counter across multiprocessing workers', 'create a LoaderBundle wrapping a DataLoader with optional DistributedSampler and shared interval counter', 'set the interval on a LoaderBundle to update its sampler epoch and shared counter', 'create a ShardSpec with URLs and optional weights and sizes that validates shard counts', 'create an ImageFeatureInfo dataclass to describe image feature output name, input keys, and color mode', 'expand a colon-separated URL string into a list with optional per-URL weights', 'expand a colon-separated URL string into a flat list of resolved URLs', 'substitute dollar-brace environment variable references in a string using WDS_ or CHUG_ prefixes', 'resolve an environment variable by name using WDS_ or CHUG_ prefixes', 'expand URLs with brace expansion patterns like s3://bucket/file-{1..10}.shard']
+```
+
+Usage
+
+```
+{'expand_urls_with_weights': 'expand a colon-separated URL string into a list with optional per-URL weights', 'expand_urls_without_weights': 'expand a colon-separated URL string into a flat list of resolved URLs', 'envsubst_substitute_variables': 'substitute dollar-brace environment variable references in a string using WDS_ or CHUG_ prefixes', 'envlookup_resolve_env': 'resolve an environment variable by name using WDS_ or CHUG_ prefixes', 'expand_urls_brace_expansion': 'expand URLs with brace expansion patterns like s3://bucket/file-{1..10}.shard'}
+```
+
