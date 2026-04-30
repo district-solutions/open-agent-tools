@@ -2,7 +2,7 @@
 
 A repo for those trying to power up small-to-large models with a tool-calling prompt index we're calling the [OpenAgent Tools Protocol (OATs)](https://openagent.tools).
 
-![OpenAgent Tools - Intro Tool Calling Pipeline for Powering Up Small AI Models](https://raw.githubusercontent.com/district-solutions/open-agent-tools/main/docs/open-agent-tools-intro-tool-calling-pipeline-for-powering-up-small-ai-models.jpg)
+![OpenAgent Tools - Intro Tool Calling Pipeline for Powering Up Small AI Models](https://raw.githubusercontent.com/district-solutions/open-agent-tools/refs/heads/main/docs/open-agent-tools-intro-tool-calling-pipeline-for-powering-up-small-ai-models.jpg)
 
 ## The Problem
 
