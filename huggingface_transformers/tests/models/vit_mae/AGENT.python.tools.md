@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/vit_mae/test_modeling_vit_mae.py
+
+Prompts
+
+```
+['run the ViTMAEModelTester to prepare config and inputs for ViTMAE model testing', 'test the ViTMAEModel class by running forward pass and verifying output tensor shapes', 'test the ViTMAEForPreTraining model by running forward pass and checking logits shape', 'test saving and loading a ViTMAE model to and from a temporary directory', 'test ViTMAE inference with a pretrained model and a sample image using ViTImageProcessorPil']
+```
+
+Usage
+
+```
+{'run_ViTMAEModelTester': 'run the ViTMAEModelTester to prepare config and inputs for ViTMAE model testing', 'test_ViTMAEModel': 'test the ViTMAEModel class by running forward pass and verifying output tensor shapes', 'test_ViTMAEForPreTraining': 'test the ViTMAEForPreTraining model by running forward pass and checking logits shape', 'test_save_load_ViTMAE': 'test saving and loading a ViTMAE model to and from a temporary directory', 'test_ViTMAE_integration_inference': 'test ViTMAE inference with a pretrained model and a sample image using ViTImageProcessorPil'}
+```
+

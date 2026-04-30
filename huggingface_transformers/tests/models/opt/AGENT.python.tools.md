@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/opt/test_modeling_opt.py
+
+Prompts
+
+```
+['test the OPTModelTester class by preparing an OPTConfig and input dictionary for model testing', 'test the OPTModel decoder past key values with large inputs to verify caching behavior', 'test the OPTForSequenceClassification model with single and multi label classification tasks', 'test the OPTForCausalLM model generation in FP16 precision with beam search and sampling', 'test batched text generation with the OPT model using padded and non padded inputs']
+```
+
+Usage
+
+```
+{'test_OPTModelTester_config': 'test the OPTModelTester class by preparing an OPTConfig and input dictionary for model testing', 'test_OPTModel_past_key_values': 'test the OPTModel decoder past key values with large inputs to verify caching behavior', 'test_OPT_sequence_classification': 'test the OPTForSequenceClassification model with single and multi label classification tasks', 'test_OPT_generation_fp16': 'test the OPTForCausalLM model generation in FP16 precision with beam search and sampling', 'test_OPT_batched_generation': 'test batched text generation with the OPT model using padded and non padded inputs'}
+```
+

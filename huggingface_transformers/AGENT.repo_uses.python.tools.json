@@ -8726,6 +8726,20 @@
     "build_seq2seq_model": "build a PPFormulaNetModel combining vision encoder and text decoder for image-to-formula sequence-to-sequence generation",
     "test_attention_mechanism": "test PPFormulaNetVisionAttention with relative positional embeddings and window partitioning for efficient visual attention"
   },
+  "huggingface_transformers/src/transformers/models/pp_formulanet/modular_pp_formulanet.py": {
+    "build_formula_recognition_model": "build a PPFormulaNetForConditionalGeneration model to recognize mathematical formulas from images",
+    "create_processor_for_images": "create a PPFormulaNetProcessor to preprocess images for formula recognition",
+    "run_conditional_generation": "run PPFormulaNetForConditionalGeneration forward pass with pixel values to generate formula logits",
+    "review_vision_model_encoder": "review the PPFormulaNetVisionModel encoder that extracts features from input images",
+    "test_config_initialization": "test PPFormulaNetConfig initialization with custom vision and text sub-configs"
+  },
+  "huggingface_transformers/src/transformers/models/pp_formulanet/processing_pp_formulanet.py": {
+    "create_PPFormulaNetProcessor": "create a PPFormulaNetProcessor instance with an image processor and tokenizer for formula image processing",
+    "call_PPFormulaNetProcessor": "call the PPFormulaNetProcessor with images to get pixel values as a BatchFeature for model input",
+    "post_process_generation": "post process generated formula text by removing Chinese wrapping, fixing unicode, and normalizing spaces",
+    "normalize_latex_spaces": "normalize LaTeX formula text by removing unnecessary spaces between non-letter and letter characters",
+    "post_process_model_outputs": "post process model generation outputs by decoding tokens and applying text normalization to each generated formula"
+  },
   "huggingface_transformers/src/transformers/models/pp_lcnet/configuration_pp_lcnet.py": {
     "create_PPLCNetConfig": "create a PPLCNetConfig instance with custom scale, block_configs, and stem_channels parameters",
     "build_PPLCNetConfig_default": "build a PPLCNetConfig using default block configs with scale 1.0 and hardswish activation",
@@ -12835,12 +12849,26 @@
     "test_vlm_image_token_mismatch": "test that a VLM raises ValueError when pixel_values batch size mismatches image tokens in input_ids",
     "test_vlm_pipeline_mapping": "test pipeline model mapping for feature-extraction and image-text-to-text tasks"
   },
+  "huggingface_transformers/tests/generation/test_candidate_generator.py": {
+    "test_AssistantToTargetTranslator": "test the AssistantToTargetTranslator class that maps assistant model tokens to target model tokens",
+    "test_AssistantVocabTranslatorCache": "test the AssistantVocabTranslatorCache class that caches and reuses translator instances for tokenizer pairs",
+    "test_UniversalSpeculativeDecodingGenerator": "test the UniversalSpeculativeDecodingGenerator class that generates candidate tokens for speculative decoding",
+    "run_get_target_ids": "run get_target_ids to translate assistant candidate token IDs to target model token IDs",
+    "run_get_target_logits": "run get_target_logits to convert assistant model logits to target model logits with vocabulary mapping"
+  },
   "huggingface_transformers/tests/generation/test_configuration_utils.py": {
     "test_save_load_config": "test the GenerationConfig save_pretrained and from_pretrained methods for serialization and deserialization",
     "test_validate": "test the GenerationConfig validate method for detecting invalid parameter combinations and logging warnings",
     "test_from_model_config": "test the GenerationConfig.from_model_config method to load generation parameters from a model config",
     "test_update": "test the GenerationConfig update method for modifying attributes and returning unused kwargs",
     "test_serialize_generation": "test the GenerationConfig serialization of logits processors and warpers including temperature, top_p, top_k, min_p, and typical_p"
+  },
+  "huggingface_transformers/tests/generation/test_continuous_batching.py": {
+    "test_continuous_batching_parity": "test that continuous batching generation produces identical outputs to regular model generate",
+    "test_continuous_batching_config_combinations": "test continuous batching with all combinations of block sharing, cuda graphs, and compile configs",
+    "test_continuous_batching_streaming": "test streaming and non-streaming request behavior with the continuous batching manager",
+    "test_continuous_batching_block_sharing": "test prefix block sharing for full attention and hybrid sliding window models",
+    "test_paged_attention_memory_prediction": "test that PagedAttentionMemoryHandler memory footprint predictions match actual GPU allocations"
   },
   "huggingface_transformers/tests/generation/test_flash_attention_parity.py": {
     "test_flash_attention_parity": "test the FlashAttentionParityTest class to verify logits, text output, and latency parity across flash attention versions 2, 3, and 4",
@@ -12849,12 +12877,33 @@
     "test_benchmark_generation": "test the _benchmark_generation method to measure average GPU latency of model generation over multiple runs",
     "review_flash_attention_parity": "review the FlashAttentionParityTest class and its parity checks comparing flash attention implementations on Llama-3.2-1B-Instruct"
   },
+  "huggingface_transformers/tests/generation/test_logits_process.py": {
+    "test_LogitsProcessorList": "test the LogitsProcessorList class that chains multiple logits processors together in sequence",
+    "test_RepetitionPenaltyLogitsProcessor": "test the RepetitionPenaltyLogitsProcessor to penalize repeated tokens during text generation",
+    "test_TopPLogitsWarper": "test the TopPLogitsWarper to filter tokens using nucleus sampling with a probability threshold",
+    "test_TopKLogitsWarper": "test the TopKLogitsWarper to keep only the top k most likely tokens during generation",
+    "test_TemperatureLogitsWarper": "test the TemperatureLogitsWarper to sharpen or smooth the token probability distribution"
+  },
   "huggingface_transformers/tests/generation/test_paged_attention.py": {
     "test_batch_generation_with_paged_attention": "test batch generation with paged attention across eager, sdpa, flash_attention_2, and flex attention implementations",
     "test_generate_batch_consistency": "test generate_batch produces consistent outputs for multiple attention implementations with continuous batching config",
     "test_generate_batch_with_sampling": "test generate_batch with sampling enabled verifies all requests complete and produce non-empty outputs",
     "create_continuous_batching_config": "create a ContinuousBatchingConfig with num_blocks, block_size, and max_batch_tokens parameters",
     "run_generate_batch": "run generate_batch on a causal LM model with batch inputs, generation config, and continuous batching config"
+  },
+  "huggingface_transformers/tests/generation/test_stopping_criteria.py": {
+    "test_MaxLengthCriteria": "test MaxLengthCriteria to stop generation when sequence reaches a specified maximum length",
+    "test_StopStringCriteria": "test StopStringCriteria to stop generation when a specific stop string is detected in output",
+    "test_StoppingCriteriaList": "test StoppingCriteriaList to combine multiple stopping criteria and trigger when any one is satisfied",
+    "test_EosTokenCriteria": "test EosTokenCriteria to stop generation per batch item when the EOS token is generated",
+    "test_validate_stopping_criteria": "test validate_stopping_criteria to check criteria and auto-add defaults when the list is empty"
+  },
+  "huggingface_transformers/tests/generation/test_streamers.py": {
+    "test_TextStreamer_stdout": "test TextStreamer prints generated text to stdout matching non-streaming model output",
+    "test_TextIteratorStreamer_iteration": "test TextIteratorStreamer iterates over generated text tokens in a separate thread",
+    "test_TextStreamer_skip_prompt": "test TextStreamer with skip_prompt to exclude the input prompt from output",
+    "test_TextStreamer_decode_kwargs": "test TextStreamer with skip_special_tokens decode kwargs to filter special tokens",
+    "test_AsyncTextIteratorStreamer_async_iteration": "test AsyncTextIteratorStreamer async iteration over generated text tokens in a thread"
   },
   "huggingface_transformers/tests/generation/test_utils.py": {
     "test_greedy_generate": "test the greedy generation method in GenerationTesterMixin for decoder-only and encoder-decoder models",
@@ -12876,6 +12925,13 @@
     "test_aimv2_multimodal_model": "test the Aimv2Model multimodal forward pass with text and image inputs and verify cross-modal logits",
     "test_aimv2_sdpa_attention": "test that SDPA and eager attention implementations produce matching inference results for Aimv2Model",
     "test_aimv2_vision_integration": "run slow inference tests against the pretrained apple/aimv2-large-patch14-224 vision model"
+  },
+  "huggingface_transformers/tests/models/arcee/test_modeling_arcee.py": {
+    "test_arcee_mlp_relu_squared": "test that ArceeMLP uses ReLU squared activation instead of SiLU in the model layers",
+    "test_arcee_model_from_pretrained": "test that ArceeForCausalLM can be instantiated from an ArceeConfig object",
+    "test_arcee_model_generation": "test text generation with ArceeForCausalLM using model generate method with max new tokens",
+    "test_arcee_model_flash_attn": "test text generation with ArceeForCausalLM using flash attention 2 implementation for long context",
+    "review_arcee_model_tester": "review the ArceeModelTester class that extends CausalLMModelTester with ArceeModel as the base model class"
   },
   "huggingface_transformers/tests/models/aria/test_image_processing_aria.py": {
     "test_AriaImageProcessingTester": "test the AriaImageProcessingTester class that prepares image processor configurations and test inputs",
@@ -12953,6 +13009,13 @@
     "test_bart_decoder_past_key_values": "test BartDecoder caching of past key values for efficient autoregressive generation",
     "test_bart_encoder_decoder_standalone": "test saving and loading encoder and decoder components independently from BartModel"
   },
+  "huggingface_transformers/tests/models/bartpho/test_tokenization_bartpho.py": {
+    "test_BartphoTokenizer_tokenize": "test the BartphoTokenizer tokenize method with mixed English and Vietnamese text",
+    "test_BartphoTokenizer_convert_tokens_to_ids": "test the BartphoTokenizer convert_tokens_to_ids method with BPE tokens and unknown tokens",
+    "test_BartphoTokenizer_full_tokenizer": "test the full BartphoTokenizer pipeline with a temporary monolingual vocab file",
+    "create_BartphoTokenizer_with_vocab": "create a BartphoTokenizer instance using a SentencePiece BPE model and monolingual vocab file",
+    "review_BartphoTokenizerTest_class": "review the BartphoTokenizerTest class that extends TokenizerTesterMixin for Vietnamese BART tokenization tests"
+  },
   "huggingface_transformers/tests/models/beit/test_image_processing_beit.py": {
     "test_image_processor_properties": "test the BeitImageProcessingTest class verifies image processor has all expected attributes like do_resize, size, crop_size, and normalization settings",
     "test_image_processor_from_dict_with_kwargs": "test loading an image processor from a dictionary with optional kwargs overriding size, crop_size, and do_reduce_labels",
@@ -12981,12 +13044,26 @@
     "test_get_input_output_texts": "test the get_input_output_texts method that returns expected input and output text pairs for bertweet tokenization",
     "test_get_tokenizer": "test the get_tokenizer factory method that returns a BertweetTokenizer configured with special tokens map"
   },
+  "huggingface_transformers/tests/models/biogpt/test_modeling_biogpt.py": {
+    "test_biogpt_model_forward": "test the BioGptModel forward pass with input_ids and attention mask to verify output shapes",
+    "test_biogpt_past_key_values": "test the BioGptModel past key values caching produces matching outputs without recomputation",
+    "test_biogpt_gradient_checkpointing": "test the BioGptForCausalLM gradient checkpointing enables correct forward and backward passes",
+    "test_biogpt_token_classification": "test the BioGptForTokenClassification model outputs logits with the correct batch and label shape",
+    "test_biogpt_sequence_classification": "test the BioGptForSequenceClassification model for single label and multi label classification tasks"
+  },
   "huggingface_transformers/tests/models/biogpt/test_tokenization_biogpt.py": {
     "test_full_tokenizer": "test the BioGptTokenizer full tokenization pipeline with vocab and merges files",
     "test_sequence_builders": "test the BioGptTokenizer sequence builders for encoding sentences and pairs with special tokens",
     "create_BioGptTokenizer": "create a BioGptTokenizer instance from vocab and merges files for subword tokenization",
     "test_tokenize_input": "test tokenizing the input text 'lower' into BPE tokens ['low', 'er</w>']",
     "test_convert_tokens_to_ids": "test converting BPE tokens to their corresponding integer IDs"
+  },
+  "huggingface_transformers/tests/models/bit/test_image_processing_bit.py": {
+    "test_BIT_image_processor_properties": "test the BitImageProcessingTest class to verify image processor properties like do_resize and do_normalize",
+    "test_BIT_image_processor_from_dict": "test the BitImageProcessingTest from_dict method with custom size and crop_size kwargs",
+    "create_BIT_image_processing_tester": "create a BitImageProcessingTester instance with custom batch size, image mean, and image std parameters",
+    "prepare_BIT_image_processor_dict": "prepare an image processor configuration dictionary with resize, crop, and normalize settings for BIT model",
+    "prepare_BIT_image_inputs": "prepare test image inputs for BIT image processing with configurable resolution and torchify options"
   },
   "huggingface_transformers/tests/models/bit/test_modeling_bit.py": {
     "test_bit_model": "test the BitModel class forward pass and verify last_hidden_state output shape",
@@ -13009,12 +13086,26 @@
     "test_generate_fp16": "test BlenderbotForConditionalGeneration with FP16 mixed precision inference",
     "test_decoder_attention_mask_past": "test BlenderbotDecoder with partial attention masks and cached key-values"
   },
+  "huggingface_transformers/tests/models/blenderbot/test_tokenization_blenderbot.py": {
+    "test_BlenderbotTokenizationTest": "test the BlenderbotTokenizationTest class to verify BlenderbotTokenizer integration with HuggingFace Transformers",
+    "run_BlenderbotTokenizationTest": "run the BlenderbotTokenizationTest suite to validate tokenization of facebook/blenderbot-3B model",
+    "review_BlenderbotTokenizationTest": "review the BlenderbotTokenizationTest class to understand expected token IDs and decoded text for Blenderbot",
+    "test_test_pretokenized_inputs": "test the pretokenized inputs method to understand why byte-level tokenizers skip pretokenization tests",
+    "summarize_BlenderbotTokenizationTest": "summarize the BlenderbotTokenizationTest class attributes including from_pretrained_id and tokenizer_class configuration"
+  },
   "huggingface_transformers/tests/models/blenderbot_small/test_modeling_blenderbot_small.py": {
     "test_blenderbot_small_model": "test the BlenderbotSmallModel test suite for encoder-decoder functionality and generation",
     "test_blenderbot_small_decoder": "test the BlenderbotSmallDecoder standalone decoder model with past key values and attention masks",
     "test_blenderbot_small_90m_generation": "test the BlenderbotSmall 90M model integration for text generation from long and short inputs",
     "create_blenderbot_small_inputs_dict": "create an input dictionary with input_ids, decoder_input_ids, and attention masks for BlenderbotSmall model forward passes",
     "test_encoder_decoder_standalone": "test the encoder and decoder components of BlenderbotSmall can be saved, loaded, and run independently"
+  },
+  "huggingface_transformers/tests/models/blenderbot_small/test_tokenization_blenderbot_small.py": {
+    "test_blenderbot_small_tokenizer_bpe": "test the BlenderbotSmallTokenizer by creating vocab and merges files and verifying BPE tokenization of text",
+    "test_blenderbot_small_special_tokens": "test the BlenderbotSmallTokenizer special token handling by encoding and decoding text with a pretrained model",
+    "test_blenderbot_small_empty_word": "test the BlenderbotSmallTokenizer encoding of single punctuation tokens against full sentence encoding",
+    "review_blenderbot_small_tokenizer_class": "review the BlenderbotSmallTokenizerTest class and its test methods for tokenizer validation patterns",
+    "run_blenderbot_small_tokenizer_tests": "run the unittest test suite for BlenderbotSmallTokenizer including BPE, special tokens, and empty word tests"
   },
   "huggingface_transformers/tests/models/blip/test_modeling_blip_text.py": {
     "test_model_blip_text": "test the BlipTextModel forward pass with input_ids and attention_mask inputs",
@@ -13029,6 +13120,20 @@
     "test_setup_image_processor": "test the _setup_image_processor method returns a ViT image processor from hf-internal-testing/tiny-random-ViTModel",
     "test_prepare_processor_dict": "test the prepare_processor_dict static method returns a dict with num_query_tokens set to 1",
     "test_processor_mixin_inheritance": "test the Blip2ProcessorTest class inherits ProcessorTesterMixin and runs common processor tests"
+  },
+  "huggingface_transformers/tests/models/bloom/test_modeling_bloom.py": {
+    "test_bloom_past_key_values": "test the BloomModel past key-value caching by verifying outputs match with and without cached states",
+    "test_bloom_attention_mask_past": "test the BloomModel attention mask handling with past key-values across masked and unmasked sequences",
+    "test_bloom_lm_head_model": "test the BloomForCausalLM loss and logits shape for a causal language modeling head",
+    "test_bloom_weight_initialization": "test the BloomModel weight initialization standard deviation and mean for projection layers",
+    "test_bloom_integration_generation": "test text generation with the bigscience bloom-560m model using greedy decoding and batch inputs"
+  },
+  "huggingface_transformers/tests/models/bloom/test_tokenization_bloom.py": {
+    "test_bloom_tokenizer_encodings": "test the bloom tokenizer by encoding sample sentences and verifying token IDs match expected values",
+    "test_bloom_tokenizer_padding": "test the bloom tokenizer padding behavior with max_length parameter and verify ValueError when pad_token is None",
+    "test_bloom_tokenizer_xnli": "test the bloom tokenizer by encoding multilingual text from the facebook xnli dataset and verifying roundtrip decoding",
+    "test_bloom_tokenizer_save_load": "test saving and loading the bloom tokenizer from pretrained bigscience tokenizer model",
+    "review_bloom_tokenization_test": "review the BloomTokenizationTest class to understand tokenizer test patterns including encoding, padding, and dataset integration tests"
   },
   "huggingface_transformers/tests/models/blt/test_modeling_blt.py": {
     "test_blt_model_generation": "test the BltModelTest class generates text from a causal language model using greedy and beam search decoding",
@@ -13302,6 +13407,13 @@
     "test_Csm_generate_integration": "test the CSM 1b model integration generate against expected output tokens",
     "test_Csm_generate_no_audio": "test the CSM 1b model integration generate without audio input against expected tokens"
   },
+  "huggingface_transformers/tests/models/csm/test_processing_csm.py": {
+    "test_CsmProcessor_apply_chat_template": "test CsmProcessor apply_chat_template with text and audio content messages",
+    "test_CsmProcessor_from_pretrained": "test loading CsmProcessor from pretrained model and verify chat template persistence",
+    "test_CsmProcessor_audio_token_expansion": "test that CsmProcessor correctly expands audio input values into audio tokens",
+    "test_CsmProcessor_chat_template_validation": "test CsmProcessor chat template raises error when messages lack required audio content",
+    "test_CsmProcessor_batch_processing": "test CsmProcessor batch chat template application with padding and truncation kwargs"
+  },
   "huggingface_transformers/tests/models/cvt/test_modeling_cvt.py": {
     "test_cvtprepare_config_and_inputs": "test the CvtModelTester.prepare_config_and_inputs method to generate config, pixel values, and labels for CvT model testing",
     "test_CvtModelTest_model": "test the CvtModelTest.test_model method to verify CvtModel forward pass with generated inputs",
@@ -13393,6 +13505,13 @@
     "test_model_outputs_equivalence": "test tuple and dict model output equivalence across all Deformable DETR model classes",
     "test_inference_object_detection": "run inference on DeformableDetrForObjectDetection with image preprocessing and post-processing for object detection"
   },
+  "huggingface_transformers/tests/models/deit/test_image_processing_deit.py": {
+    "test_deit_image_processor_properties": "test DeiT image processor has do_resize, size, do_center_crop, do_normalize properties",
+    "test_deit_image_processor_from_dict": "test DeiT image processor from_dict method with size and crop_size kwargs",
+    "run_deit_image_processing_tests": "run DeiT image processing test suite with torch and vision requirements",
+    "create_deit_image_processing_tester": "create DeiTImageProcessingTester with batch_size, num_channels, image_size, and normalization parameters",
+    "review_deit_image_processing_test": "review DeiTImageProcessingTest class for image processor configuration and validation tests"
+  },
   "huggingface_transformers/tests/models/deit/test_modeling_deit.py": {
     "test_model_deit": "test the DeiTModel class for forward pass and hidden state shape verification",
     "test_for_masked_image_modeling": "test DeiTForMaskedImageModeling for reconstruction output shape on color and greyscale images",
@@ -13479,6 +13598,20 @@
     "test_flash_attn_2_inference_equivalence": "test FlashAttention-2 inference equivalence by comparing model outputs with and without flash attention implementation",
     "test_config": "test the DistilBertConfig class and verify common configuration attributes are correctly initialized"
   },
+  "huggingface_transformers/tests/models/distilbert/test_tokenization_distilbert.py": {
+    "test_DistilBertTokenizationTest": "test the DistilBertTokenizationTest class that validates DistilBertTokenizer using the distilbert-base-uncased pretrained model",
+    "review_DistilBertTokenizationTest_setUpClass": "review the setUpClass method that loads AutoTokenizer from pretrained and saves it to a temp directory",
+    "test_DistilBertTokenizer": "test the DistilBertTokenizer class by running the inherited BertTokenizationTest suite with distilbert-base-uncased",
+    "review_AutoTokenizer_from_pretrained": "review how AutoTokenizer.from_pretrained loads the distilbert-base-uncased tokenizer and saves it via save_pretrained",
+    "summarize_DistilBertTokenizationTest": "summarize the DistilBertTokenizationTest subclass that configures tokenizer_class and from_pretrained_id for DistilBERT tokenization tests"
+  },
+  "huggingface_transformers/tests/models/dit/test_modeling_dit.py": {
+    "test_DiT_image_classification": "run the DiT integration test for image classification on the RVL-CDIP dataset",
+    "review_DiTIntegrationTest": "review the DiTIntegrationTest class that validates DiT model output shape and logits",
+    "summarize_test_for_image_classification": "summarize the test_for_image_classification method that loads a pretrained DiT model and runs inference",
+    "test_AutoModelForImageClassification_DiT": "test the AutoModelForImageClassification with the microsoft/dit-base-finetuned-rvlcdip pretrained model",
+    "test_AutoImageProcessor_DiT": "test the AutoImageProcessor with the microsoft/dit-base-finetuned-rvlcdip pretrained image processor"
+  },
   "huggingface_transformers/tests/models/doge/test_modeling_doge.py": {
     "test_model_doge": "test the DogeModel forward pass and verify output shape matches expected dimensions",
     "test_model_as_decoder": "test DogeModel used as a decoder with cross-attention and encoder hidden states",
@@ -13503,12 +13636,33 @@
     "review_dots1_model_tester": "review the Dots1ModelTester class that extends CausalLMModelTester with MoE-specific parameters",
     "test_model_generation": "test the test_model_15b_a2b_generation method that loads a pretrained Dots1 model and verifies greedy text completion output"
   },
+  "huggingface_transformers/tests/models/dpr/test_modeling_dpr.py": {
+    "test_DPRContextEncoder": "test the DPRContextEncoder model by running create_and_check_context_encoder with config and inputs",
+    "test_DPRQuestionEncoder": "test the DPRQuestionEncoder model by running create_and_check_question_encoder with config and inputs",
+    "test_DPRReader": "test the DPRReader model by running create_and_check_reader with config and inputs",
+    "run_DPRModelTester": "run the DPRModelTester to prepare config and inputs for DPR model testing",
+    "test_DPRModelIntegration": "test DPR model inference using the integration test for question encoder and reader"
+  },
   "huggingface_transformers/tests/models/dpt/test_image_processing_dpt.py": {
     "test_DPTImageProcessingTest": "test the DPTImageProcessingTest class for image processing unit tests",
     "create_DPTImageProcessingTester": "create a DPTImageProcessingTester instance with configurable image processor parameters",
     "test_padding": "test image padding with size_divisor for torch and numpy backends",
     "test_call_segmentation_maps": "test calling image processor with segmentation maps for batched and unbatched inputs",
     "test_reduce_labels": "test reducing label values by subtracting 1 when do_reduce_labels is enabled"
+  },
+  "huggingface_transformers/tests/models/dpt/test_modeling_dpt.py": {
+    "test_DPTModelTester_create_and_check_model": "test the DPTModel forward pass by creating a model and verifying last_hidden_state output shape",
+    "test_DPTModelTester_create_and_check_for_depth_estimation": "test the DPTForDepthEstimation model by running a forward pass and verifying predicted_depth output shape",
+    "test_DPTModelTester_create_and_check_for_semantic_segmentation": "test the DPTForSemanticSegmentation model by running a forward pass with labels and verifying logits output shape",
+    "run_DPTModelTest_test_backbone_selection": "run tests that validate both timm and HuggingFace backbone initialization with custom out_indices for DPT models",
+    "run_DPTModelIntegrationTest_test_inference_depth_estimation": "run inference with a pretrained Intel/dpt-large model on a sample image and verify predicted depth values"
+  },
+  "huggingface_transformers/tests/models/dpt/test_modeling_dpt_auto_backbone.py": {
+    "test_DPTModelTester_prepare_config_and_inputs": "test DPTModelTester to prepare config and inputs for DPT depth estimation model testing",
+    "test_DPTModelTester_create_and_check_for_depth_estimation": "test DPTModelTester create_and_check_for_depth_estimation to verify predicted depth output shape matches expected dimensions",
+    "test_DPTModelTest_test_for_depth_estimation": "test DPTModelTest test_for_depth_estimation to run a forward pass and validate depth estimation output",
+    "test_DPTModelIntegrationTest_test_inference_depth_estimation_dinov2": "test DPTModelIntegrationTest inference with facebook/dpt-dinov2-small-kitti pretrained model and verify predicted depth values",
+    "test_DPTModelIntegrationTest_test_inference_depth_estimation_swinv2": "test DPTModelIntegrationTest inference with Intel/dpt-swinv2-tiny-256 pretrained model and verify predicted depth output shape"
   },
   "huggingface_transformers/tests/models/dpt/test_modeling_dpt_hybrid.py": {
     "test_DPTForDepthEstimation_inference": "test the DPTForDepthEstimation model for depth estimation inference on input images",
@@ -13537,6 +13691,20 @@
     "test_get_num_vision_tokens": "test Emu3Processor._get_num_multimodal_tokens to compute num_image_tokens and num_image_patches for varying image sizes",
     "setup_emu3_tokenizer": "setup an Emu3 tokenizer with extra special tokens for image, boi, eoi, image_wrapper, and eof tokens",
     "prepare_emu3_chat_template": "prepare an Emu3 chat template that renders all images first then text with generation markers for assistant responses"
+  },
+  "huggingface_transformers/tests/models/encodec/test_feature_extraction_encodec.py": {
+    "test_EncodecFeatureExtractor_call": "test the EncodecFeatureExtractor call method with single and batched audio inputs",
+    "test_EncodecFeatureExtractor_padding_truncation": "test the EncodecFeatureExtractor truncation and padding behavior with chunk length settings",
+    "test_EncodecFeatureExtractor_stereo": "test the EncodecFeatureExtractor with stereo audio input and channel handling",
+    "test_EncodecFeatureExtractor_double_precision": "test the EncodecFeatureExtractor pad method with double precision float64 inputs",
+    "test_EncodecFeatureExtractor_integration": "test the EncodecFeatureExtractor integration with real audio samples from a dataset"
+  },
+  "huggingface_transformers/tests/models/encodec/test_modeling_encodec.py": {
+    "test_EncodecModelTester": "test the EncodecModelTester class to generate configs and inputs for Encodec model unit tests",
+    "test_EncodecModelTest": "test the EncodecModelTest class to run forward pass, determinism, and chunking tests for EncodecModel",
+    "test_EncodecIntegrationTest": "test the EncodecIntegrationTest class to verify encoder codes and decoder outputs against expected values",
+    "run_prepare_inputs_dict": "run prepare_inputs_dict to build an input dictionary with input_values for Encodec model testing",
+    "compute_rmse_audio": "compute the RMSE between two audio tensors by normalizing and comparing their values"
   },
   "huggingface_transformers/tests/models/ernie4_5/test_modeling_ernie4_5.py": {
     "test_ernie4_5_model": "test the Ernie4_5ModelTester class that extends CausalLMModelTester with Ernie4_5Model as base model",
@@ -13908,6 +14076,13 @@
     "test_higgs_audio_v2_voice_cloning": "test the HiggsAudioV2ForConditionalGenerationIntegrationTest class validates zero-shot voice cloning with reference audio",
     "test_higgs_audio_v2_multi_speaker": "test the HiggsAudioV2ForConditionalGenerationIntegrationTest class validates multi-speaker dialogue generation with speaker tags"
   },
+  "huggingface_transformers/tests/models/hubert/test_modeling_hubert.py": {
+    "test_HubertModelTester_create_and_check_model": "test the HubertModelTester create_and_check_model method to validate model forward pass output shape",
+    "test_HubertModelTester_check_ctc_loss": "test the HubertModelTester check_ctc_loss method to verify CTC loss sum and mean reduction",
+    "test_HubertModelTester_check_ctc_training": "test the HubertModelTester check_ctc_training method with frozen feature encoder and backward pass",
+    "test_HubertModelIntegrationTest_inference_ctc_batched": "test the integration test for batched CTC automatic speech recognition with pretrained HubertForCTC model",
+    "test_HubertUtilsTest_compute_mask_indices": "test the _compute_mask_indices utility function to verify mask probability and overlap behavior"
+  },
   "huggingface_transformers/tests/models/hunyuan_v1_moe/test_modeling_hunyuan_v1_moe.py": {
     "test_hunyuan_moe_model": "test the HunYuanMoEV1Model class and its base model integration with the transformer framework",
     "test_model_generation": "test the HunYuanMoEV1ForCausalLM model generation with the tencent/Hunyuan-A13B-Instruct model",
@@ -14076,6 +14251,20 @@
     "test_model_integration_single": "test LasrForCTC model integration on single audio sample with expected token and transcript outputs",
     "test_model_integration_batched": "test LasrForCTC model integration on batched audio samples with expected token and transcript outputs"
   },
+  "huggingface_transformers/tests/models/layoutlmv2/test_image_processing_layoutlmv2.py": {
+    "test_image_processor_properties": "test that LayoutLMv2 image processor has do_resize, size, and apply_ocr properties",
+    "test_image_processor_from_dict_with_kwargs": "test creating a LayoutLMv2 image processor from a config dict with override kwargs",
+    "test_layoutlmv2_integration_test": "test LayoutLMv2 image processing with OCR on a DocVQA dataset image and verify words and boxes",
+    "test_backends_equivalence": "test that LayoutLMv2 image processing produces equivalent pixel values across different backends",
+    "test_can_compile_torchvision_backend": "test that the LayoutLMv2 torchvision image processor can be compiled with torch.compile"
+  },
+  "huggingface_transformers/tests/models/layoutlmv2/test_modeling_layoutlmv2.py": {
+    "test_LayoutLMv2ModelTester_prepare_config_and_inputs": "test the LayoutLMv2ModelTester to prepare config and inputs for model testing",
+    "test_LayoutLMv2ModelTester_create_and_check_model": "test the LayoutLMv2ModelTester to create and check the base LayoutLMv2 model output shapes",
+    "test_LayoutLMv2ModelTester_create_and_check_for_sequence_classification": "test the LayoutLMv2ModelTester to create and check sequence classification model outputs",
+    "test_LayoutLMv2ModelTester_create_and_check_for_token_classification": "test the LayoutLMv2ModelTester to create and check token classification model outputs",
+    "test_LayoutLMv2ModelTester_create_and_check_for_question_answering": "test the LayoutLMv2ModelTester to create and check question answering model outputs"
+  },
   "huggingface_transformers/tests/models/layoutlmv2/test_processing_layoutlmv2.py": {
     "test_processor_save_load_pretrained_additional_features": "test LayoutLMv2Processor save and load with pretrained additional features including slow and fast tokenizers",
     "test_processor_case_1_ocr": "test LayoutLMv2Processor with apply_ocr=True for document image classification and token classification",
@@ -14117,6 +14306,34 @@
     "test_full_tokenizer": "test LayoutLMv3 tokenizer BPE tokenization with a minimal vocabulary fixture for words and boxes",
     "test_padding": "test LayoutLMv3 tokenizer padding behavior comparing slow and fast tokenizers with words and bounding boxes",
     "test_layoutlmv3_integration_test": "test LayoutLMv3 tokenizer all three use cases: document classification, token classification with labels, and visual question answering"
+  },
+  "huggingface_transformers/tests/models/layoutxlm/test_processing_layoutxlm.py": {
+    "test_LayoutXLMProcessor_document_classification": "test LayoutXLMProcessor for document image classification with OCR enabled on single and batched images",
+    "test_LayoutXLMProcessor_token_classification": "test LayoutXLMProcessor for token classification with word labels and bounding boxes on document images",
+    "test_LayoutXLMProcessor_visual_question_answering": "test LayoutXLMProcessor for visual question answering with questions paired against document images",
+    "test_LayoutXLMProcessor_overflowing_tokens": "test LayoutXLMProcessor handling of overflowing tokens with truncation and stride on long sequences",
+    "test_LayoutXLMProcessor_save_load_pretrained": "test saving and loading LayoutXLMProcessor with additional tokenizer and image processor features"
+  },
+  "huggingface_transformers/tests/models/layoutxlm/test_tokenization_layoutxlm.py": {
+    "test_layoutxlm_tokenizer_basic_encoding": "test the LayoutXLMTokenizer by encoding words with bounding boxes into token IDs",
+    "test_layoutxlm_batch_encoding": "test batch encoding multiple document sequences with boxes using batch_encode_plus",
+    "test_layoutxlm_padding_truncation": "test padding and truncation of LayoutXLM tokenized sequences to a fixed max length",
+    "test_layoutxlm_special_tokens": "test adding and removing special tokens like cls and sep in LayoutXLM tokenizer",
+    "test_layoutxlm_qa_pair_encoding": "test encoding a question-answer pair with boxes for document visual question answering"
+  },
+  "huggingface_transformers/tests/models/led/test_modeling_led.py": {
+    "test_LEDModelTester_config": "test the LEDModelTester class by preparing config and inputs for LED model testing",
+    "run_LEDModelTest_attention_outputs": "run the LEDModelTest test_attention_outputs method to verify encoder decoder and cross attention shapes",
+    "test_LEDModelIntegrationTests_inference": "test LED model inference using pretrained allenai/led-base-16384 checkpoint with expected output slices",
+    "create_prepare_led_inputs_dict": "create an input dictionary with input_ids decoder_input_ids and attention masks for LED model forward pass",
+    "run_LEDModelTest_global_attention": "run the global attention test to verify encoder_global_attentions shape with specified global attention tokens"
+  },
+  "huggingface_transformers/tests/models/levit/test_image_processing_levit.py": {
+    "test_LevitImageProcessingTester_prepare_processor_dict": "test LevitImageProcessingTester to prepare an image processor configuration dictionary with resize, crop, and normalize settings",
+    "test_LevitImageProcessingTester_prepare_image_inputs": "test LevitImageProcessingTester to prepare batch image inputs with configurable resolution and tensor format",
+    "test_LevitImageProcessingTester_expected_output_shape": "test LevitImageProcessingTester to compute the expected output image shape from crop size and channel count",
+    "test_LevitImageProcessingTest_processor_properties": "test LevitImageProcessingTest to verify the image processor has all required properties like image_mean and do_resize",
+    "test_LevitImageProcessingTest_from_dict_with_kwargs": "test LevitImageProcessingTest to verify from_dict creates a processor and allows size and crop_size kwargs overrides"
   },
   "huggingface_transformers/tests/models/levit/test_modeling_levit.py": {
     "test_LevitModel_forward": "test the LevitModel forward pass with pixel values and verify output shape",
@@ -14230,6 +14447,13 @@
     "test_LongT5_generate_cache": "test LongT5ForConditionalGeneration generation with and without past key value caching produces identical outputs",
     "test_LongT5_summarization": "test LongT5ForConditionalGeneration summarization on a long medical article using a pretrained model"
   },
+  "huggingface_transformers/tests/models/luke/test_modeling_luke.py": {
+    "test_luke_model": "test the LukeModel base architecture with input tokens and entity IDs to verify hidden state shapes",
+    "test_luke_masked_lm": "test LukeForMaskedLM to predict masked tokens and entity labels using input and entity IDs",
+    "test_luke_entity_classification": "test LukeForEntityClassification to classify entities using entity IDs and attention masks",
+    "test_luke_entity_span_classification": "test LukeForEntitySpanClassification with entity start and end positions to classify entity spans",
+    "test_luke_integration_inference": "run inference with a pretrained LUKE model using LukeTokenizer and entity spans on input text"
+  },
   "huggingface_transformers/tests/models/luke/test_tokenization_luke.py": {
     "test_luke_tokenizer_sequence_builders": "test the LukeTokenizer build_inputs_with_special_tokens method for single and pair sequences",
     "test_luke_tokenizer_padding_entity_inputs": "test the LukeTokenizer padding and entity_spans handling for batch inputs with entity spans",
@@ -14250,6 +14474,13 @@
     "test_M2M100ForConditionalGeneration": "test M2M100ForConditionalGeneration for conditional text generation with beam search and fp16 support",
     "test_decoder_past_key_values": "test the M2M100Decoder past key values caching mechanism for efficient autoregressive decoding with large inputs",
     "test_encoder_decoder_standalone": "test saving and loading M2M100 encoder and decoder components independently from the combined model"
+  },
+  "huggingface_transformers/tests/models/m2m_100/test_tokenization_m2m_100.py": {
+    "test_m2m100_tokenizer_full_tokenization": "test the M2M100 tokenizer by tokenizing text and converting tokens to and from ids",
+    "test_m2m100_tokenizer_integration": "test the M2M100 tokenizer integration with the facebook/m2m100_418M pretrained model",
+    "test_m2m100_language_code_handling": "test that the M2M100 tokenizer correctly handles language codes for source and target languages",
+    "test_m2m100_batch_encoding": "test batch encoding with the M2M100 tokenizer using batch_encode_plus with padding",
+    "test_m2m100_translation_inputs": "test building translation inputs with the M2M100 tokenizer for source to target language pairs"
   },
   "huggingface_transformers/tests/models/mamba/test_modeling_mamba.py": {
     "test_mamba_model": "test the MambaModel forward pass and verify output shape and hidden states",
@@ -14566,12 +14797,54 @@
     "test_processor_input_keys": "test the processor handles tasks_input_ids, classes_input_ids, pixel_values, and pixel_mask input keys",
     "test_post_process_scores_and_boxes": "test post_process_grounded_object_detection returns correct box shapes, scores, and text labels per image"
   },
+  "huggingface_transformers/tests/models/oneformer/test_image_processing_oneformer.py": {
+    "test_oneformer_image_processor": "run the OneFormerImageProcessingTest suite to verify image processing and segmentation functionality",
+    "test_binary_mask_to_rle": "test the binary_mask_to_rle function that converts a binary mask numpy array to run-length encoding",
+    "test_post_process_semantic_segmentation": "test post_process_semantic_segmentation to verify it returns correct segmentation shapes from OneFormer model outputs",
+    "test_post_process_instance_segmentation": "test post_process_instance_segmentation to verify it returns segmentation maps and segments_info with correct shapes",
+    "test_post_process_panoptic_segmentation": "test post_process_panoptic_segmentation to verify it returns segmentation maps and segments_info for panoptic tasks"
+  },
+  "huggingface_transformers/tests/models/oneformer/test_modeling_oneformer.py": {
+    "test_oneformer_model_forward": "test the OneFormerModel forward pass with pixel values and task inputs",
+    "test_oneformer_universal_segmentation": "test the OneFormerForUniversalSegmentation model with mask labels and class labels",
+    "test_oneformer_training": "test the OneFormerForUniversalSegmentation training loop with loss backward pass",
+    "test_oneformer_hidden_states": "test the OneFormerModel output hidden states from encoder and pixel decoder",
+    "test_oneformer_backbone_selection": "test the OneFormer model with timm or HuggingFace backbone selection"
+  },
+  "huggingface_transformers/tests/models/oneformer/test_processing_oneformer.py": {
+    "prepare_metadata": "load class metadata from a HuggingFace Hub dataset JSON file into a dictionary with class names and thing IDs",
+    "OneFormerProcessorTester_prepare_processor_dict": "create a processor dictionary with image processor and CLIPTokenizer for OneFormer model testing",
+    "OneFormerProcessorTester_get_expected_values": "compute expected height, width, and sequence length for OneFormer processor image inputs",
+    "OneFormerProcessorTester_get_fake_oneformer_outputs": "generate fake OneFormerForUniversalSegmentationOutput tensors with random class and mask query logits",
+    "test_binary_mask_to_rle": "test the binary_mask_to_rle function by converting a numpy binary mask to run-length encoding"
+  },
+  "huggingface_transformers/tests/models/openai/test_modeling_openai.py": {
+    "test_openai_gpt_model": "test the OpenAIGPTModel by running forward pass and verifying last hidden state shape",
+    "test_openai_gpt_lm_head_model": "test the OpenAIGPTLMHeadModel by running forward pass with labels and checking loss and logits shape",
+    "test_openai_gpt_double_heads_model": "test the OpenAIGPTDoubleHeadsModel by running forward pass with labels and checking loss and logits shape",
+    "test_openai_gpt_sequence_classification": "test the OpenAIGPTForSequenceClassification model by running forward pass and verifying logits shape",
+    "test_openai_gpt_lm_generation": "test language generation with OpenAIGPTLMHeadModel using greedy decoding and verify output token ids"
+  },
+  "huggingface_transformers/tests/models/opt/test_modeling_opt.py": {
+    "test_OPTModelTester_config": "test the OPTModelTester class by preparing an OPTConfig and input dictionary for model testing",
+    "test_OPTModel_past_key_values": "test the OPTModel decoder past key values with large inputs to verify caching behavior",
+    "test_OPT_sequence_classification": "test the OPTForSequenceClassification model with single and multi label classification tasks",
+    "test_OPT_generation_fp16": "test the OPTForCausalLM model generation in FP16 precision with beam search and sampling",
+    "test_OPT_batched_generation": "test batched text generation with the OPT model using padded and non padded inputs"
+  },
   "huggingface_transformers/tests/models/ovis2/test_modeling_ovis2.py": {
     "test_ovis2_model_forward_pass": "test the Ovis2ModelTest class for forward pass, inputs_embeds, and mixin behaviors",
     "test_ovis2_integration": "run slow integration tests for Ovis2ForConditionalGeneration with single and multi-image inputs",
     "test_ovis2_batch_generation": "test batch generation with Ovis2ForConditionalGeneration using different image resolutions",
     "build_ovis2_model_tester": "build an Ovis2VisionText2TextModelTester config with dummy pixel values and input ids for unit testing",
     "test_ovis2_processor_pipeline": "test the AutoProcessor pipeline with Ovis2ForConditionalGeneration using chat template and image inputs"
+  },
+  "huggingface_transformers/tests/models/owlv2/test_image_processing_owlv2.py": {
+    "test_owlv2_image_processor_properties": "test that Owlv2ImageProcessor has do_resize, size, do_normalize, image_mean, and image_std attributes",
+    "test_owlv2_image_processor_from_dict": "test creating Owlv2ImageProcessor from a config dictionary with override kwargs for size",
+    "test_owlv2_image_processor_integration": "test processing a COCO image through Owlv2ImageProcessor and verify the output pixel value mean",
+    "test_owlv2_grounded_object_detection": "test grounded object detection with Owlv2ForObjectDetection model using AutoProcessor on single and batch images",
+    "review_owlv2_image_processing_tester": "review the Owlv2ImageProcessingTester class that configures batch size, image size, normalization, and resize parameters"
   },
   "huggingface_transformers/tests/models/owlv2/test_modeling_owlv2.py": {
     "test_Owlv2VisionModel": "test the Owlv2VisionModel class with vision encoder forward pass and output shape assertions",
@@ -14706,12 +14979,26 @@
     "test_phimoe_instruct_generation": "test autoregressive generation with chat template on microsoft/Phi-3.5-MoE-instruct model",
     "test_phimoe_static_cache": "test streaming token generation using PhimoeMiniWithStaticCache with StaticCache for microsoft/Phi-3.5-MoE-instruct"
   },
+  "huggingface_transformers/tests/models/phobert/test_tokenization_phobert.py": {
+    "test_PhubertTokenizationTest": "test the PhobertTokenizationTest class to verify PhoBERT BPE tokenizer works with Vietnamese text",
+    "run_test_full_tokenizer": "run the test_full_tokenizer method to verify BPE tokenization of Vietnamese text into subword tokens",
+    "test_PhubertTokenizer_tokenize": "test the PhobertTokenizer tokenize method to split Vietnamese text into BPE subword tokens",
+    "test_PhubertTokenizer_convert_tokens_to_ids": "test the PhobertTokenizer convert_tokens_to_ids method to map BPE tokens to integer IDs",
+    "test_PhubertTokenizer_from_pretrained": "test loading a PhobertTokenizer from pretrained weights using from_pretrained with vocab and merges files"
+  },
   "huggingface_transformers/tests/models/pi0/test_processing_pi0.py": {
     "test_PI0Processor": "test the PI0Processor class with image processor and tokenizer setup for multi-camera vision-language processing",
     "test_image_processor_defaults": "test that PI0Processor image processor outputs match the raw image processor outputs pixel-wise",
     "test_single_camera_output_is_5d": "test that PI0Processor produces 5D pixel_values output for a single camera input",
     "test_multi_camera_padding_and_masks": "test that PI0Processor correctly pads multi-camera inputs and generates pixel_attention_mask",
     "test_newline_normalization": "test that PI0Processor normalizes trailing newlines in text input consistently"
+  },
+  "huggingface_transformers/tests/models/pix2struct/test_image_processing_pix2struct.py": {
+    "run_pix2struct_image_processing_tests": "run the Pix2StructImageProcessingTest suite to verify image processor backends produce equivalent flattened_patches output",
+    "test_pix2struct_backend_equivalence": "test that all Pix2Struct image processing backends produce equivalent flattened_patches for single and batched images",
+    "test_pix2struct_call_pil": "test the Pix2Struct image processor with PIL image inputs across multiple max_patch sizes in batched and unbatched modes",
+    "test_pix2struct_call_vqa": "test the Pix2Struct image processor in VQA mode requiring header_text and verifying correct output tensor shapes",
+    "test_pix2struct_compile_torchvision": "test that the Pix2Struct torchvision backend can be compiled with torch.compile and produces equivalent output"
   },
   "huggingface_transformers/tests/models/pix2struct/test_modeling_pix2struct.py": {
     "test_Pix2StructVisionModel": "test the Pix2StructVisionModel class with flattened patches and configuration to verify forward pass shapes",
@@ -14836,12 +15123,26 @@
     "test_model_config": "test the PPOCRV5ServerRecConfig configuration common properties and defaults",
     "test_model_text_recognition": "test the PPOCRV5ServerRec model text recognition inference on a real image URL"
   },
+  "huggingface_transformers/tests/models/prophetnet/test_modeling_prophetnet.py": {
+    "test_ProphetNetModel": "test the ProphetNetModel forward pass with input_ids and decoder_input_ids to verify encoder and decoder output shapes",
+    "test_ProphetNetForConditionalGeneration": "test ProphetNetForConditionalGeneration with labels to verify logits shape and scalar loss output",
+    "test_ProphetNetForCausalLM": "test ProphetNetForCausalLM decoder-only causal language model generation with past key value states",
+    "test_ProphetNetDecoder_past_key_values": "test ProphetNetDecoder past key value caching produces identical outputs to full sequence forward pass",
+    "test_ProphetNet_attention_outputs": "test ProphetNetModel encoder decoder and cross attention output shapes when output_attentions is enabled"
+  },
   "huggingface_transformers/tests/models/prophetnet/test_tokenization_prophetnet.py": {
     "test_full_tokenizer": "test the ProphetNetTokenizer tokenizes input text and converts tokens to IDs correctly",
     "create_tokenizer_basic": "create a ProphetNetTokenizer from a vocab file and tokenize input strings",
     "test_basic_tokenizer_lower": "test BasicTokenizer lowercases text and handles whitespace and special characters",
     "test_wordpiece_tokenizer": "test WordpieceTokenizer splits words into subword pieces using a vocab dictionary",
     "test_prepare_batch": "test the ProphetNetTokenizer encodes a batch of source texts into padded input IDs with attention masks"
+  },
+  "huggingface_transformers/tests/models/pvt/test_image_processing_pvt.py": {
+    "test_pvt_image_processor_properties": "test PvtImageProcessingTest to verify image processor has image_mean, image_std, do_normalize, do_resize, and size attributes",
+    "test_pvt_image_processor_from_dict_with_kwargs": "test PvtImageProcessingTest from_dict factory method with size kwarg override to produce correct dimensions",
+    "create_pvt_image_processing_tester": "create a PvtImageProcessingTester instance with custom batch_size, num_channels, image_size, and normalization parameters",
+    "prepare_pvt_image_processor_dict": "prepare an image processor config dict with image_mean, image_std, do_normalize, do_resize, and size keys",
+    "prepare_pvt_image_inputs": "prepare test image inputs with configurable batch_size, resolution range, and numpy or torch tensor output"
   },
   "huggingface_transformers/tests/models/pvt/test_modeling_pvt.py": {
     "test_PvtModel": "test the PvtModel class for forward pass and hidden state output verification",
@@ -14956,6 +15257,27 @@
     "test_RagTestMixin_check_model_with_end2end_retriever": "test the RagTestMixin check_model_with_end2end_retriever method to verify RAG model with DPR context encoder for training",
     "test_RagModelIntegrationTests_test_rag_sequence_inference": "test the RagModelIntegrationTests test_rag_sequence_inference method to verify RAG sequence model forward pass and loss computation with real pretrained models"
   },
+  "huggingface_transformers/tests/models/rag/test_retrieval_rag.py": {
+    "test_RagRetriever_retrieve": "test RagRetriever retrieve method to fetch top-k documents by inner product similarity",
+    "test_RagRetriever_save_and_load": "test RagRetriever save_pretrained and from_pretrained roundtrip for canonical HF index retriever",
+    "test_CustomHFIndex_retrieve": "test CustomHFIndex retriever to retrieve documents using a custom in-memory FAISS index",
+    "test_CustomHFIndex_from_disk": "test CustomHFIndex retriever to retrieve documents loaded from a disk-saved FAISS index",
+    "test_RagRetriever_call_with_tensors": "test RagRetriever call method returning context input ids and attention masks as torch tensors"
+  },
+  "huggingface_transformers/tests/models/rag/test_tokenization_rag.py": {
+    "test_RagTokenizer_save_load": "test saving and loading RagTokenizer with DPR and BART tokenizer configs",
+    "test_RagTokenizer_pretrained_token_nq": "test tokenizing question strings with the pretrained facebook rag-token-nq tokenizer",
+    "test_RagTokenizer_pretrained_sequence_nq": "test tokenizing question strings with the pretrained facebook rag-sequence-nq tokenizer",
+    "create_RagTokenizer_from_components": "create a RagTokenizer by combining a DPRQuestionEncoderTokenizer and a RobertaTokenizer",
+    "review_RagTokenizerTest": "review the RagTokenizerTest class to understand how RAG tokenizer save load and pretrained tests work"
+  },
+  "huggingface_transformers/tests/models/reformer/test_modeling_reformer.py": {
+    "test_reformer_local_attn_model": "run the ReformerLocalAttnModelTest suite to test Reformer model with local attention layers",
+    "test_reformer_lsh_attn_model": "run the ReformerLSHAttnModelTest suite to test Reformer model with LSH attention layers",
+    "test_reformer_integration": "run the ReformerIntegrationTests to verify layer activations and gradients against expected outputs",
+    "test_reformer_model_tester": "use ReformerModelTester to create config and input tensors for testing Reformer variants",
+    "test_reformer_tester_mixin": "use ReformerTesterMixin to share common test methods across local and LSH attention test classes"
+  },
   "huggingface_transformers/tests/models/regnet/test_modeling_regnet.py": {
     "test_modeling_regnet": "test the RegNetModelTest class to verify RegNetModel and RegNetForImageClassification forward passes and output shapes",
     "test_hidden_states_output": "test the RegNetModel hidden states output for basic and bottleneck layer types across all model classes",
@@ -14976,6 +15298,13 @@
     "test_ResNetForImageClassification": "test the ResNetForImageClassification class to verify logits output shape for image classification",
     "test_hidden_states_output": "test hidden states output for both basic and bottleneck layer types across all ResNet model classes",
     "test_inference_image_classification_head": "test ResNetForImageClassification inference on a sample COCO image with pretrained microsoft/resnet-50 weights"
+  },
+  "huggingface_transformers/tests/models/roberta_prelayernorm/test_modeling_roberta_prelayernorm.py": {
+    "test_RobertaPreLayerNormModelTester_prepare_config_and_inputs": "test the RobertaPreLayerNormModelTester to prepare config and input tensors for all model variants",
+    "test_RobertaPreLayerNormModelTester_create_and_check_model": "test the base RobertaPreLayerNormModel output shapes for last hidden state and pooler output",
+    "test_RobertaPreLayerNormModelTester_create_and_check_for_masked_lm": "test the RobertaPreLayerNormForMaskedLM model forward pass and verify logits shape",
+    "test_RobertaPreLayerNormModelTester_create_and_check_for_causal_lm": "test the RobertaPreLayerNormForCausalLM decoder model forward pass with labels and attention mask",
+    "test_RobertaPreLayerNormModelTester_create_and_check_decoder_model_past_large_inputs": "test the decoder past key values cache mechanism with large hypothetical inputs"
   },
   "huggingface_transformers/tests/models/roc_bert/test_modeling_roc_bert.py": {
     "test_roc_bert_model": "test the RoCBertModel class for basic forward pass with input_ids, shape_ids, and pronunciation_ids",
@@ -15011,6 +15340,20 @@
     "test_image_processor_from_dict_with_kwargs": "test loading a Sam image processor from a config dict and overriding parameters like size via kwargs",
     "test_call_segmentation_maps": "test calling the Sam image processor with segmentation maps on single and batched inputs to verify pixel_values and labels shapes",
     "test_backends_equivalence": "test that multiple Sam image processing backends produce equivalent pixel_values and segmentation labels within tolerance"
+  },
+  "huggingface_transformers/tests/models/sam/test_modeling_sam.py": {
+    "run_SamModelIntegrationTest": "run the SAM model integration tests for mask generation with points and boxes",
+    "test_SamModelTest": "test the SAM model class for attention outputs and image feature extraction",
+    "test_SamVisionModelTest": "test the SAM vision encoder model for attention outputs and embeddings",
+    "review_SamModelTester": "review the SamModelTester class that generates configs and dummy inputs for SAM model tests",
+    "review_SamVisionModelTester": "review the SamVisionModelTester class that creates SamVisionConfig and pixel value tensors"
+  },
+  "huggingface_transformers/tests/models/sam/test_processing_sam.py": {
+    "test_sam_processor_no_masks": "test SamProcessor image processing without segmentation masks and verify pixel value shapes",
+    "test_sam_processor_with_masks": "test SamProcessor image processing with segmentation maps and verify label output shapes",
+    "test_post_process_masks": "test post_process_masks method to resize dummy masks back to original image dimensions",
+    "test_mask_to_rle_encoding": "test the _mask_to_rle function for run-length encoding of binary mask tensors",
+    "review_sam_processor_test": "review the SamProcessorTest class and its test methods for image processing and mask handling"
   },
   "huggingface_transformers/tests/models/sam2/test_modeling_sam2.py": {
     "test_Sam2VisionModel": "test the Sam2VisionModel class with config and pixel value inputs for vision encoder inference",
@@ -15079,6 +15422,13 @@
     "test_enro_tokenizer_prepare_batch": "test batch encoding with source and target texts, truncation, and decoder input IDs",
     "test_int_remove_extra_whitespaces": "test that the tokenizer removes extra whitespaces and handles sentencepiece whitespace tokens",
     "test_special_tokens_strip": "test that special tokens are properly stripped of surrounding whitespace during tokenization"
+  },
+  "huggingface_transformers/tests/models/seamless_m4t_v2/test_modeling_seamless_m4t_v2.py": {
+    "run_seamless_m4t_v2_tests": "run the SeamlessM4Tv2 model unit tests for speech and text input modalities",
+    "test_seamless_m4t_v2_generation": "test the SeamlessM4Tv2 generation capabilities for speech-to-speech and text-to-text tasks",
+    "test_seamless_m4t_v2_model_tester": "test the SeamlessM4Tv2ModelTester helper class that prepares configs and inputs for model testing",
+    "test_seamless_m4t_v2_integration": "test the SeamlessM4Tv2 integration tests with the pretrained facebook/seamless-m4t-v2-large model",
+    "test_seamless_m4t_v2_attention_outputs": "test the SeamlessM4Tv2 attention output shapes for encoder, decoder, and cross-attention layers"
   },
   "huggingface_transformers/tests/models/seed_oss/test_modeling_seed_oss.py": {
     "test_seed_oss_model_tester": "test the SeedOssModelTester class that configures model parameters with zero dropout for TP backward compatibility",
@@ -15195,6 +15545,13 @@
     "test_tokenizer": "test the Speech2TextProcessor encodes text input identically to the standalone tokenizer",
     "test_tokenizer_decode": "test the Speech2TextProcessor batch decodes predicted token ids identically to the standalone tokenizer"
   },
+  "huggingface_transformers/tests/models/speech_to_text/test_tokenization_speech_to_text.py": {
+    "test_tokenizer_convert_token_and_id": "test Speech2TextTokenizer _convert_token_to_id and _convert_id_to_token methods with pad token",
+    "test_tokenizer_get_vocab": "test Speech2TextTokenizer get_vocab method returns correct special tokens and vocab size",
+    "test_tokenizer_full_tokenize": "test Speech2TextTokenizer tokenize method on English text with sentencepiece subword tokenization",
+    "test_tokenizer_multilingual_decode": "test Speech2TextTokenizer decode method ignores language code special tokens in output",
+    "test_tokenizer_tgt_lang_setter": "test Speech2TextTokenizer tgt_lang setter updates prefix_tokens for French and Spanish"
+  },
   "huggingface_transformers/tests/models/speecht5/test_feature_extraction_speecht5.py": {
     "create_feature_extractor": "create a SpeechT5FeatureExtractor with custom mel-bins, hop-length, and normalization settings",
     "test_feature_extraction_call": "test the SpeechT5FeatureExtractor call method with batched and unbatched numpy audio inputs",
@@ -15259,6 +15616,13 @@
     "test_model_hidden_states_output": "test SuperPointForKeypointDetection hidden states output across encoder layers",
     "test_model_batching_equivalence": "test SuperPointForKeypointDetection batching equivalence with stable topk indices",
     "test_model_from_pretrained": "test loading SuperPointForKeypointDetection from magic-leap-community/superpoint pretrained model"
+  },
+  "huggingface_transformers/tests/models/swiftformer/test_modeling_swiftformer.py": {
+    "test_swiftformer_model": "test the SwiftFormerModel by creating a config and running a forward pass with pixel values",
+    "test_swiftformer_image_classification": "test SwiftFormerForImageClassification by passing pixel values and labels and verifying logits shape",
+    "test_swiftformer_hidden_states": "test SwiftFormerModel hidden states output by enabling output_hidden_states and verifying 8 stage shapes",
+    "test_swiftformer_from_pretrained": "test loading SwiftFormerModel from pretrained checkpoint MBZUAI/swiftformer-xs and verify model is not None",
+    "test_swiftformer_integration_inference": "test end-to-end image classification inference using SwiftFormerForImageClassification with a COCO cat image"
   },
   "huggingface_transformers/tests/models/swin2sr/test_modeling_swin2sr.py": {
     "test_swin2sr_model_forward": "test the Swin2SRModel forward pass and verify output shape matches expected dimensions",
@@ -15353,6 +15717,20 @@
     "test_image_processor_properties": "test the TimmWrapperImageProcessor has data_config, val_transforms, and train_transforms attributes",
     "test_image_processor_call_numpy": "test the TimmWrapperImageProcessor processes single and batch numpy images into pixel values with shape (1,3,224,224)",
     "test_image_processor_call_pil": "test the TimmWrapperImageProcessor processes single and batch PIL images into pixel values with shape (1,3,224,224)"
+  },
+  "huggingface_transformers/tests/models/tvp/test_image_processing_tvp.py": {
+    "test_TvpImageProcessingTester_prepare_processor_dict": "test TvpImageProcessingTester to prepare an image processor configuration dictionary with normalization and padding settings",
+    "test_TvpImageProcessingTester_get_expected_values": "test TvpImageProcessingTester to compute expected output height and width for batched or single video inputs",
+    "test_TvpImageProcessingTester_prepare_video_inputs": "test TvpImageProcessingTester to generate dummy video inputs as PIL images, numpy arrays, or PyTorch tensors",
+    "test_TvpImageProcessingTest_call_pil": "test TvpImageProcessingTest to process single and batched PIL video inputs and verify output tensor shapes",
+    "test_TvpImageProcessingTest_backends_equivalence": "test TvpImageProcessingTest to verify PIL and torchvision backends produce equivalent encoded video pixel values"
+  },
+  "huggingface_transformers/tests/models/tvp/test_modeling_tvp.py": {
+    "test_TVPModelTester_prepare_config_and_inputs": "test TVPModelTester to prepare config and inputs for TVP model testing",
+    "test_TVPModelTester_get_config": "test TVPModelTester get_config method to create TvpConfig with ResNet backbone",
+    "test_TVPModelTest_backbone_selection": "test TVPModelTest backbone selection with timm and HF backbone configs",
+    "test_TvpModelIntegrationTests_inference_no_head": "test TvpModel integration inference without head using pretrained tiny-random-tvp model",
+    "test_TvpModelIntegrationTests_interpolate_inference": "test TvpModel integration inference with interpolated positional encoding for non-square images"
   },
   "huggingface_transformers/tests/models/udop/test_modeling_udop.py": {
     "test_udop_model_forward": "test the UdopModel forward pass with input_ids, bbox, and decoder_input_ids tensors",
@@ -15477,6 +15855,27 @@
     "test_visualbert_multiple_choice": "test VisualBertForMultipleChoice on VCR task producing logits over answer choices",
     "test_visualbert_flickr_alignment": "test VisualBertForRegionToPhraseAlignment on Flickr30k region-to-phrase alignment task"
   },
+  "huggingface_transformers/tests/models/vit/test_image_processing_vit.py": {
+    "test_ViTImageProcessingTester_prepare_dict": "test ViTImageProcessingTester to prepare an image processor configuration dictionary with normalization and resize settings",
+    "test_ViTImageProcessingTester_expected_shape": "test ViTImageProcessingTester expected_output_image_shape method to return the correct channel height and width tuple",
+    "test_ViTImageProcessingTester_prepare_inputs": "test ViTImageProcessingTester prepare_image_inputs method to generate test image batches with optional numpy or torch conversion",
+    "test_ViTImageProcessingTest_properties": "test ViTImageProcessingTest to verify image processor instances have image_mean image_std do_normalize do_resize and size attributes",
+    "test_ViTImageProcessingTest_from_dict_kwargs": "test ViTImageProcessingTest from_dict method to create an image processor from a config dict with optional size override kwargs"
+  },
+  "huggingface_transformers/tests/models/vit/test_modeling_vit.py": {
+    "run_ViTModelTester_create_and_check_model": "run ViTModelTester to create and check ViTModel output shape for batched pixel values",
+    "run_ViTModelTester_create_and_check_for_image_classification": "run ViTModelTester to create and check ViTForImageClassification logits shape for labeled images",
+    "run_ViTModelTester_create_and_check_for_masked_image_modeling": "run ViTModelTester to create and check ViTForMaskedImageModeling reconstruction shape for pixel inputs",
+    "test_ViTModelTest_test_model": "test ViTModel forward pass by preparing config and inputs via ViTModelTester",
+    "test_ViTModelIntegrationTest_test_inference_image_classification_head": "test ViTForImageClassification inference using pretrained google/vit-base-patch16-224 model on a sample image"
+  },
+  "huggingface_transformers/tests/models/vit_mae/test_modeling_vit_mae.py": {
+    "run_ViTMAEModelTester": "run the ViTMAEModelTester to prepare config and inputs for ViTMAE model testing",
+    "test_ViTMAEModel": "test the ViTMAEModel class by running forward pass and verifying output tensor shapes",
+    "test_ViTMAEForPreTraining": "test the ViTMAEForPreTraining model by running forward pass and checking logits shape",
+    "test_save_load_ViTMAE": "test saving and loading a ViTMAE model to and from a temporary directory",
+    "test_ViTMAE_integration_inference": "test ViTMAE inference with a pretrained model and a sample image using ViTImageProcessorPil"
+  },
   "huggingface_transformers/tests/models/vitdet/test_modeling_vitdet.py": {
     "test_VitDetModel_forward": "test the VitDetModel forward pass with config, pixel values, and labels",
     "test_VitDetBackbone_forward": "test the VitDetBackbone forward pass and verify feature maps and channels",
@@ -15530,12 +15929,26 @@
     "test_mask_indices_computation": "test _compute_mask_indices utility for generating masked time indices in wav2vec2 pretraining",
     "test_wav2vec2_with_language_model": "test Wav2Vec2ForCTC batch decoding with language model using pyctcdecode and torchaudio"
   },
+  "huggingface_transformers/tests/models/wav2vec2/test_processing_wav2vec2.py": {
+    "test_Wav2Vec2Processor_feature_extractor": "test that Wav2Vec2Processor produces the same output as the standalone feature extractor for raw audio",
+    "test_Wav2Vec2Processor_model_input_names": "test that Wav2Vec2Processor returns all expected model input names when processing text and audio together",
+    "setup_Wav2Vec2_feature_extractor": "setup a Wav2Vec2 feature extractor with sampling rate 16000 and normalization enabled",
+    "setup_Wav2Vec2_tokenizer": "setup a Wav2Vec2 tokenizer with a custom vocabulary and special tokens like pad and unk",
+    "review_Wav2Vec2ProcessorTest_class": "review the Wav2Vec2ProcessorTest class to understand how audio and text inputs are processed together"
+  },
   "huggingface_transformers/tests/models/wav2vec2/test_tokenization_wav2vec2.py": {
     "test_tokenizer_decode": "test the Wav2Vec2CTCTokenizer decode method to convert token IDs back to readable text strings",
     "test_word_delimiter_round_trip": "test the Wav2Vec2CTCTokenizer word delimiter round trip by saving and reloading the tokenizer",
     "test_tokenizer_add_tokens": "test adding new tokens to the Wav2Vec2CTCTokenizer vocabulary and verifying encoded output",
     "test_offsets": "test the Wav2Vec2CTCTokenizer offset tracking for character and word boundaries during decode",
     "test_nested_vocab": "test the Wav2Vec2CTCTokenizer nested vocabulary support for switching between language-specific vocabularies"
+  },
+  "huggingface_transformers/tests/models/wav2vec2_conformer/test_modeling_wav2vec2_conformer.py": {
+    "test_Wav2Vec2ConformerModelTester": "test the Wav2Vec2Conformer model by creating config and inputs then checking output shapes",
+    "test_Wav2Vec2ConformerModelTest": "run the full Wav2Vec2Conformer model test suite including CTC, sequence classification, and XVector tests",
+    "test_Wav2Vec2ConformerUtilsTest": "test utility functions like compute_mask_indices and sample_negative_indices for the Wav2Vec2Conformer model",
+    "test_Wav2Vec2ConformerModelIntegrationTest": "run slow integration tests with pretrained Wav2Vec2Conformer models on LibriSpeech samples",
+    "test_ctc_training": "test CTC training by freezing the feature encoder and verifying loss is not infinite"
   },
   "huggingface_transformers/tests/models/wav2vec2_phoneme/test_tokenization_wav2vec2_phoneme.py": {
     "test_phonemize": "test the Wav2Vec2PhonemeCTCTokenizer phonemize method to convert English text to phonemes",
@@ -15557,6 +15970,13 @@
     "test_combine_tokens_into_words": "test the _combine_tokens_into_words function that groups tokens into words with indices",
     "test_find_longest_common_subsequence": "test the _find_longest_common_sequence function that merges overlapping token sequences",
     "test_whisper_prefix_tokens": "test the WhisperTokenizer.set_prefix_tokens method to configure language and task prefix tokens"
+  },
+  "huggingface_transformers/tests/models/x_clip/test_modeling_x_clip.py": {
+    "test_XCLIPVisionModelTester": "test the XCLIPVisionModelTester class that prepares config and pixel values for XCLIP vision model tests",
+    "test_XCLIPTextModelTester": "test the XCLIPTextModelTester class that prepares config and input IDs for XCLIP text model tests",
+    "test_XCLIPModelTester": "test the XCLIPModelTester class that prepares combined text and vision inputs for the full XCLIP model",
+    "run_XCLIPModelIntegrationTest": "run the XCLIPModelIntegrationTest to verify inference with pretrained microsoft/xclip-base-patch32 model and video inputs",
+    "test_XCLIPModelTest": "test the XCLIPModelTest class that validates the full XCLIP model including config loading and logits output shapes"
   },
   "huggingface_transformers/tests/models/xglm/test_modeling_xglm.py": {
     "test_xglm_model": "test the XGLMModel forward pass and verify output shapes match expected batch and sequence dimensions",
@@ -15665,12 +16085,33 @@
     "test_delete_adapter": "test deleting PEFT adapters including edge cases with multiple adapters and error handling",
     "test_hotswap_different_adapter_name_raises": "test PEFT hotswap requires existing adapter with matching name before loading new weights"
   },
+  "huggingface_transformers/tests/pipelines/test_pipelines_any_to_any.py": {
+    "test_any_to_any_pipeline": "test the AnyToAnyPipeline with multimodal inputs including images, videos, and audio using the pipeline function",
+    "run_pipeline_test_single_batched": "run the pipeline test with single and batched examples to verify output structure and generated text",
+    "test_text_only_generation": "test text-only generation with gemma-3n model using the any-to-any pipeline and chat messages",
+    "test_audio_input_processing": "test audio input processing by passing audio files to the any-to-any pipeline and verifying generated text output",
+    "test_image_generation": "test image generation using the any-to-any pipeline with Janus-Pro model and generation mode set to image"
+  },
+  "huggingface_transformers/tests/pipelines/test_pipelines_audio_classification.py": {
+    "run_audio_classification_pipeline_test": "run the audio classification pipeline test with a small wav2vec2 model and numpy audio input",
+    "test_audio_classification_fp16": "test the audio classification pipeline with float16 dtype on a small wav2vec2 model",
+    "test_audio_classification_large_model": "test the audio classification pipeline with a large superb wav2vec2 model on real speech data",
+    "test_audio_classification_top_k_none": "test that top_k=None returns all labels from the audio classification pipeline model",
+    "test_audio_classification_top_k_capping": "test that top_k greater than label count is capped to the number of labels"
+  },
   "huggingface_transformers/tests/pipelines/test_pipelines_automatic_speech_recognition.py": {
     "test_asr_pipeline_defaults": "test the AutomaticSpeechRecognitionPipeline with default model loading via pipeline function",
     "test_asr_chunking_and_timestamps": "test the AutomaticSpeechRecognitionPipeline chunking with char and word level timestamps",
     "test_whisper_translation": "test Whisper automatic speech recognition pipeline for language translation with generate_kwargs",
     "test_chunk_iterator": "test the chunk_iter function for splitting audio inputs into strided chunks",
     "test_chunk_bytes_iter": "test the chunk_bytes_iter utility for streaming byte-level audio chunking with stride support"
+  },
+  "huggingface_transformers/tests/pipelines/test_pipelines_common.py": {
+    "run_pipeline_text_classification": "run a text classification pipeline using the transformers pipeline function with a pretrained model",
+    "register_custom_pipeline": "register a custom pipeline class with PIPELINE_REGISTRY for a new task type",
+    "test_pipeline_padding": "test the _pad utility function to pad tensor inputs for batched pipeline processing",
+    "create_custom_pipeline_class": "create a custom pipeline class by extending Pipeline with preprocess forward and postprocess methods",
+    "test_pipeline_device_dtype": "test pipeline device assignment and dtype handling across torch accelerator configurations"
   },
   "huggingface_transformers/tests/pipelines/test_pipelines_depth_estimation.py": {
     "create_depth_estimation_pipeline": "create a DepthEstimationPipeline with a model and optional processor for depth estimation",
@@ -15693,6 +16134,34 @@
     "get_test_pipeline": "get a FeatureExtractionPipeline instance with model, tokenizer, and dtype configuration for testing",
     "run_pipeline_test": "run the FeatureExtractionPipeline with example inputs and verify output shapes for single and batch inputs"
   },
+  "huggingface_transformers/tests/pipelines/test_pipelines_fill_mask.py": {
+    "test_fill_mask_pipeline_small_model": "test the FillMaskPipeline with a small DistilRoBERTa model on single mask inputs",
+    "test_fill_mask_pipeline_targets": "test the FillMaskPipeline by providing a targets list to filter candidate token predictions",
+    "test_fill_mask_pipeline_multiple_masks": "test the FillMaskPipeline with multiple mask tokens in a single input sentence",
+    "test_fill_mask_pipeline_top_k": "test the FillMaskPipeline top_k parameter to limit the number of returned predictions",
+    "test_fill_mask_pipeline_fp16_casting": "test the FillMaskPipeline with FP16 model casting to verify float32 postprocessing"
+  },
+  "huggingface_transformers/tests/pipelines/test_pipelines_image_classification.py": {
+    "run_image_classification_pipeline": "run an image classification pipeline using a pretrained ViT model on a single image URL",
+    "test_image_classification_batch": "test the image classification pipeline with a batch of images including URLs and PIL images",
+    "test_float16_image_classification": "test the image classification pipeline with torch float16 dtype for faster inference",
+    "test_multilabel_classification": "test multi-label image classification by setting problem_type to multi_label_classification on the model config",
+    "test_sigmoid_function": "test the image classification pipeline with sigmoid function applied instead of softmax"
+  },
+  "huggingface_transformers/tests/pipelines/test_pipelines_image_feature_extraction.py": {
+    "run_image_feature_extraction_pipeline": "run the image feature extraction pipeline on a PIL image using a tiny ViT model",
+    "test_image_feature_extraction_with_pooling": "test the image feature extraction pipeline with pool=True to get pooled features from a model with a pooler",
+    "test_image_processor_kwargs": "test passing image processor kwargs like image_mean and image_std to the feature extraction pipeline",
+    "test_return_tensors": "test that the image feature extraction pipeline returns torch tensors when return_tensors=True",
+    "run_batch_feature_extraction": "run the image feature extraction pipeline on a list of images and verify batch output length"
+  },
+  "huggingface_transformers/tests/pipelines/test_pipelines_image_segmentation.py": {
+    "run_image_segmentation_pipeline_tests": "run the ImageSegmentationPipelineTests suite to verify image segmentation pipeline behavior across models",
+    "test_panoptic_segmentation_with_detr": "test panoptic image segmentation using the tiny detr mobilenet model with threshold parameters",
+    "test_semantic_segmentation_with_beit": "test semantic segmentation using the tiny beit pipeline model and validate mask outputs",
+    "test_maskformer_instance_segmentation": "test instance segmentation with maskformer swin base model on ade20k dataset images",
+    "test_oneformer_multitask_segmentation": "test oneformer model across panoptic, instance, and semantic subtasks with threshold filtering"
+  },
   "huggingface_transformers/tests/pipelines/test_pipelines_image_text_to_text.py": {
     "test_image_text_to_text_pipeline": "test the ImageTextToTextPipeline class with image and text inputs for generation",
     "create_pipeline_image_text_to_text": "create an image-text-to-text pipeline using the pipeline function with a model name",
@@ -15713,6 +16182,13 @@
     "test_small_model_pt": "test the small model pipeline with facebook/sam-vit-huge on a COCO image and verify mask shapes and scores",
     "test_threshold": "test the mask generation pipeline with a custom pred_iou_thresh parameter to filter output masks",
     "hash_image_mask": "hash a PIL Image mask using MD5 and return a short hex digest for test comparison"
+  },
+  "huggingface_transformers/tests/pipelines/test_pipelines_object_detection.py": {
+    "run_object_detection_pipeline": "run an object detection pipeline on an image using the DETR ResNet-50 model",
+    "test_object_detection_with_threshold": "test the object detection pipeline by filtering results with a confidence threshold",
+    "create_object_detection_pipeline": "create an object detection pipeline using AutoModelForObjectDetection and AutoImageProcessor from a pretrained model",
+    "run_batch_object_detection": "run batch object detection on multiple images including URLs and PIL Image objects",
+    "test_layoutlm_object_detection": "test object detection on document images using a LayoutLMv3 fine-tuned model"
   },
   "huggingface_transformers/tests/pipelines/test_pipelines_table_question_answering.py": {
     "test_TQAPipelineTests_small_model": "test the TableQuestionAnsweringPipeline with a small Tapas model loaded from pretrained weights",
@@ -15742,6 +16218,13 @@
     "test_pipeline_forward_model_kwargs": "test forward model kwargs with vits model ensuring generate kwargs raise ValueError for forward-only models",
     "test_pipeline_generative_model_kwargs": "test generative model kwargs with musicgen ensuring generate_kwargs override forward_params for do_sample and max_new_tokens"
   },
+  "huggingface_transformers/tests/pipelines/test_pipelines_token_classification.py": {
+    "run_token_classification_pipeline": "run a token classification pipeline to extract named entities from text using a pretrained NER model",
+    "test_aggregation_strategies": "test all aggregation strategies including simple, first, max, and average on token classification outputs",
+    "test_chunking_with_stride": "test chunking long sentences into smaller segments with a configurable stride for token classification",
+    "test_pre_tokenized_inputs": "test the pipeline with pre-tokenized word lists using the is_split_into_words flag",
+    "test_argument_handler": "test the TokenClassificationArgumentHandler for parsing inputs, offset mappings, and error cases"
+  },
   "huggingface_transformers/tests/pipelines/test_pipelines_video_classification.py": {
     "create_video_classification_pipeline": "create a video classification pipeline using pipeline with model and feature_extractor for video input",
     "run_video_classification_top_k": "run video classification on a local video file path and return top_k predicted labels with confidence scores",
@@ -15755,6 +16238,13 @@
     "test_truncation_zero_shot": "test truncation behavior of zero-shot classifier on long repeated input text",
     "test_small_model_zero_shot_pt": "test small model zero-shot classification with float32 dtype and verify predicted labels and scores",
     "test_small_model_zero_shot_fp16": "test small model zero-shot classification with float16 dtype and verify predicted labels and scores"
+  },
+  "huggingface_transformers/tests/pipelines/test_pipelines_zero_shot_audio_classification.py": {
+    "build_zero_shot_audio_classifier": "build a zero-shot audio classification pipeline using the CLAP model from HuggingFace transformers",
+    "test_small_model_float32": "test the zero-shot audio classification pipeline with a tiny CLAP model in float32 precision",
+    "test_small_model_float16": "test the zero-shot audio classification pipeline with a tiny CLAP model in float16 precision",
+    "test_large_model_batched": "test the zero-shot audio classification pipeline with the full CLAP model using batched audio inputs",
+    "run_zero_shot_audio_inference": "run zero-shot audio classification inference with candidate labels on audio data from a HuggingFace dataset"
   },
   "huggingface_transformers/tests/pipelines/test_pipelines_zero_shot_image_classification.py": {
     "test_zero_shot_image_pipeline": "test the zero-shot image classification pipeline with a tiny-random-clip model and candidate labels",
@@ -15777,12 +16267,54 @@
     "test_raise_if_non_quantized": "test that AutoModelForCausalLM raises ValueError when loading a non-quantized model with AQLM quantization config",
     "test_quantized_model_compile": "test torch.compile integration with AQLM quantized model using StaticCache for KV caching"
   },
+  "huggingface_transformers/tests/quantization/autoawq/test_awq.py": {
+    "test_AwqConfig_wrong_backend": "test that AwqConfig raises ValueError when passed an invalid backend string",
+    "test_AwqConfig_to_dict": "test that AwqConfig to_dict method returns a dict matching the config attributes",
+    "test_AwqConfig_from_dict": "test that AwqConfig from_dict method creates a config object from a dictionary",
+    "test_quantized_model_conversion": "test that replace_with_awq_linear converts all Linear layers to BaseQuantLinear modules",
+    "test_quantized_model_generate": "test that an AWQ quantized model generates correct text output from input prompts"
+  },
+  "huggingface_transformers/tests/quantization/autoround/test_auto_round.py": {
+    "test_autoround_quantized_model": "test that a pre-quantized AutoRound model generates correct text output",
+    "test_autoround_non_quantized_error": "test that loading a non-quantized model with AutoRoundConfig raises a ValueError",
+    "test_autoround_bf16_backend": "test loading a quantized model with bfloat16 dtype and triton backend",
+    "test_autoround_save_and_reload": "test saving and reloading a quantized model preserves generation output",
+    "quantize_with_mixed_bits": "quantize a model with per-layer mixed bit configuration using AutoRound"
+  },
+  "huggingface_transformers/tests/quantization/bitnet_integration/test_bitnet.py": {
+    "test_bitnet_quant_config": "test that BitNetQuantConfig serializes to a dict with matching attribute values",
+    "test_pack_unpack_weights": "test packing ternary weights into uint8 and unpacking back to original values",
+    "test_replace_with_bitnet_linear": "test replacing all nn.Linear layers in a model with BitLinear layers",
+    "test_bitlinear_activation_quant": "test that BitLinear activation_quant quantizes input tensor and returns correct scale",
+    "test_bitnet_model_serialization": "test saving and reloading a quantized BitNet model produces identical logits"
+  },
+  "huggingface_transformers/tests/quantization/bnb/test_4bit.py": {
+    "run_4bit_quantization_tests": "run the bnb 4-bit quantization test suite for transformers models using pytest",
+    "test_quantization_memory_footprint": "test that 4-bit quantized models achieve expected memory reduction compared to fp16",
+    "test_bitsandbytes_config": "test BitsAndBytesConfig serialization and deserialization for 4-bit quantization settings",
+    "test_4bit_model_serialization": "test saving and loading a 4-bit quantized model with nf4 or fp4 quant types",
+    "test_4bit_pipeline_inference": "test text generation pipeline inference using a 4-bit quantized model"
+  },
   "huggingface_transformers/tests/quantization/bnb/test_mixed_int8.py": {
     "test_mixed_int8_quantization": "test 8-bit quantization of causal language models using BitsAndBytesConfig with load_in_8bit",
     "test_model_serialization": "test saving and loading 8-bit quantized models with quantization_config preserved",
     "test_multi_gpu_device_map": "test loading quantized models across multiple GPUs with custom device_map assignments",
     "test_cpu_gpu_offload": "test loading quantized models with CPU and disk offload using llm_int8_enable_fp32_cpu_offload",
     "test_lora_training": "test training quantized models with LoRA adapters on frozen INT8 parameters"
+  },
+  "huggingface_transformers/tests/quantization/compressed_tensors_integration/test_compressed_models.py": {
+    "test_compressed_uncompressed_model_shapes": "test that compressed and uncompressed model weights match within tolerance",
+    "test_no_warnings_for_all_models": "test that loading compressed tensor models produces no missing or unexpected key warnings",
+    "test_default_run_compressed_true": "test that models loaded by default keep linear modules in compressed quantization state",
+    "test_default_run_compressed_false": "test that run_compressed=False decompresses all modules so none stay in compressed state",
+    "test_run_compressed_outputs_match": "test that model generation output is identical whether run_compressed is true or false"
+  },
+  "huggingface_transformers/tests/quantization/compressed_tensors_integration/test_compressed_tensors.py": {
+    "test_compressed_tensors_config_args": "test CompressedTensorsConfig constructor rejects invalid quantization scheme arguments and accepts valid config groups",
+    "test_config_to_from_dict": "test CompressedTensorsConfig serialization roundtrip using to_dict and from_dict methods",
+    "test_quantized_model_w4a16": "test loading a W4A16 quantized TinyLlama model and verify perplexity stays under threshold",
+    "test_quantized_model_fp8": "test loading an FP8 quantized TinyLlama model and verify perplexity stays under threshold",
+    "test_quantized_model_int8": "test loading a W8A8 quantized TinyLlama model and verify perplexity stays under threshold"
   },
   "huggingface_transformers/tests/quantization/eetq_integration/test_eetq.py": {
     "test_eetq_config_to_dict": "test the EetqConfig to_dict method converts config object to matching dictionary",
@@ -15791,12 +16323,26 @@
     "test_quantized_model_generation": "test the quantized EETQ model generates expected text output from input tokens",
     "test_save_pretrained_quantized_model": "test saving and loading a quantized EETQ model preserves generation output"
   },
+  "huggingface_transformers/tests/quantization/fbgemm_fp8/test_fbgemm_fp8.py": {
+    "test_FbgemmFp8Config_to_dict": "test that FbgemmFp8Config converts to a dict with matching attribute values",
+    "test_FbgemmFp8Config_from_dict": "test that FbgemmFp8Config creates a config object from a dictionary",
+    "test_replace_with_fbgemm_fp8_linear": "test replacing all Linear layers with FbgemmFp8Linear quantized modules",
+    "test_load_quantized_model": "test loading a pretrained causal LM model with FbgemmFp8Config quantization",
+    "test_save_and_reload_quantized_model": "test saving a quantized model and reloading it for inference"
+  },
   "huggingface_transformers/tests/quantization/finegrained_fp8/test_fp8.py": {
     "create_finegrained_fp8_config": "create a FineGrainedFP8Config quantization configuration with custom weight_block_size and modules_to_not_convert",
     "test_quantized_model_conversion": "test converting a model's Linear layers to FP8Linear modules using replace_with_fp8_linear",
     "test_quantized_model_generation": "test generating text from a FineGrainedFP8-quantized causal language model",
     "test_dequantized_model": "test loading and generating text from a pre-quantized FP8 model with dequantize enabled",
     "test_fp8_linear_forward": "test FP8Linear forward pass preserves input and output tensor shapes"
+  },
+  "huggingface_transformers/tests/quantization/fouroversix_integration/test_fouroversix.py": {
+    "test_FourOverSixConfig_to_dict": "test FourOverSixConfig serialization by converting a config object to a dictionary and verifying all keys match",
+    "test_FourOverSixConfig_from_dict": "test FourOverSixConfig deserialization by creating a config from a dictionary with scale_rule and quant_method",
+    "test_quantized_model_generate": "test a quantized Llama model by generating text tokens using the fouroversix quantization config",
+    "test_save_and_load_quantized_model": "test saving and reloading a quantized model to verify generation output remains consistent after persistence",
+    "test_quantized_model_multi_accelerator": "test a quantized model across multiple GPU accelerators with custom memory limits per device"
   },
   "huggingface_transformers/tests/quantization/fp_quant_integration/test_fp_quant.py": {
     "create_FPQuantConfig_from_dict": "create an FPQuantConfig object from a dictionary with modules_to_not_convert and quant_method keys",
@@ -15826,6 +16372,20 @@
     "test_quantized_model_generation": "test the quantized model generates expected text output from input tokens",
     "test_quantized_model_save_load": "test saving and loading a quantized model preserves generation accuracy"
   },
+  "huggingface_transformers/tests/quantization/hqq/test_hqq.py": {
+    "create_HQQConfig_quantization": "create an HqqConfig with nbits and group_size to quantize a model",
+    "build_HQQLLMRunner_quantized_model": "build an HQQLLMRunner to load a quantized LLM model with HQQ config",
+    "test_check_hqqlayer_outputs": "test an HQQ layer by dequantizing weights and verifying output shape and dtype",
+    "test_check_forward_pass": "test a model forward pass and verify output logits shape matches batch and context size",
+    "run_HQQ_serialization_save_load": "run HQQ model serialization by saving and reloading a quantized model and comparing logits"
+  },
+  "huggingface_transformers/tests/quantization/metal/test_metal.py": {
+    "create_MetalConfig": "create a MetalConfig with custom bits, group_size, and modules_to_not_convert for quantization",
+    "test_MetalHfQuantizer_validate_environment": "test MetalHfQuantizer validate_environment to check MPS availability and kernel requirements",
+    "run_affine_quantize_dequantize_roundtrip": "run an affine quantize then dequantize roundtrip test on a random weight tensor",
+    "test_MetalLinear_forward": "test MetalLinear forward pass with prequantized uint32 weights or fallback float weights",
+    "test_replace_with_metal_linear": "test replacing all nn.Linear modules with MetalLinear in a model with exclusion support"
+  },
   "huggingface_transformers/tests/quantization/mxfp4/test_mxfp4.py": {
     "create_mxfp4_config": "create an Mxfp4Config with modules_to_not_convert and dequantize options for quantization",
     "test_quantizer_validation": "test Mxfp4HfQuantizer environment validation with torch, triton, and accelerator checks",
@@ -15846,6 +16406,20 @@
     "test_memory_footprint_reduction": "test memory footprint reduction of a QUARK-quantized model compared to the fp16 reference model",
     "test_quantized_layer_replacement": "test that linear layers in a QUARK-quantized model are replaced with QParamsLinear instances",
     "test_generation_quality": "test generation quality of a QUARK-quantized model by comparing output sequences against expected outputs"
+  },
+  "huggingface_transformers/tests/quantization/sinq/test_sinq.py": {
+    "create_SinqConfig": "create a SinqConfig with custom nbits, group_size, tiling_mode, and method parameters",
+    "test_SinqConfig_default_values": "test that SinqConfig defaults to 4-bit quantization with group size 64 and 1D tiling",
+    "load_quantized_model_with_SinqConfig": "load a causal LM model quantized with SinqConfig and bfloat16 dtype",
+    "save_and_reload_quantized_model": "save a SINQ quantized model to disk and reload it for inference",
+    "verify_SinqLinear_conversion": "verify that Linear modules were converted to SINQLinear and lm_head was excluded"
+  },
+  "huggingface_transformers/tests/quantization/spqr_integration/test_spqr.py": {
+    "load_spqr_quantized_model": "load a SPQR quantized causal LM model from a HuggingFace hub repository",
+    "convert_linear_to_spqr": "replace torch.nn.Linear layers with SPQR QuantizedLinear using replace_with_spqr_linear",
+    "create_spqr_config_from_dict": "create a SpQRConfig object from a dictionary with beta1, beta2, and bits keys",
+    "generate_text_with_quantized_model": "generate text tokens using a SPQR quantized model with AutoModelForCausalLM",
+    "setup_static_cache_for_compiled_generation": "set up a StaticCache and torch.compile for optimized token-by-token generation"
   },
   "huggingface_transformers/tests/quantization/torchao_integration/test_torchao.py": {
     "test_torchao_config_serialization": "test the TorchAoConfig class to verify to_dict, repr, and JSON serialization methods work correctly",
@@ -15896,12 +16470,40 @@
     "preprocess_glue_dataset": "preprocess GLUE dataset by tokenizing sentences with padding and truncation to max sequence length",
     "compute_glue_metrics": "compute GLUE evaluation metrics including accuracy, combined score, or MSE depending on task type"
   },
+  "huggingface_transformers/tests/tokenization/test_tokenization_fast.py": {
+    "create_PreTrainedTokenizerFast_from_backend": "create a PreTrainedTokenizerFast from a tokenizers backend Tokenizer with special tokens",
+    "load_PreTrainedTokenizerFast_from_pretrained": "load a PreTrainedTokenizerFast from a saved directory using from_pretrained",
+    "save_PreTrainedTokenizerFast_to_disk": "save a PreTrainedTokenizerFast to a directory using save_pretrained",
+    "train_tokenizer_from_iterator": "train a new BPE tokenizer from a text iterator with a given vocab size",
+    "patch_mistral_regex_tokenizer": "call _patch_mistral_regex on a backend tokenizer to fix regex for non-Mistral models"
+  },
+  "huggingface_transformers/tests/tokenization/test_tokenization_utils.py": {
+    "test_batch_encoding_convert_to_tensors": "test BatchEncoding.convert_to_tensors to convert inputs and labels to numpy or pytorch tensors with batch axis",
+    "test_tokenizer_pad_features": "test tokenizer.pad to pad a list of tokenized features to equal length with numpy or torch tensors",
+    "test_tokenizer_decode_skip_special": "test tokenizer.decode to convert token IDs back to text with or without skipping special tokens",
+    "test_apply_chat_template": "test apply_chat_template and encode_message_with_chat_template to encode multi-turn chat conversations into token IDs",
+    "test_add_special_tokens_multimodal": "test _set_model_specific_special_tokens and add_tokens to register custom multimodal special tokens like image tokens on a tokenizer"
+  },
   "huggingface_transformers/tests/trainer/test_data_collator.py": {
     "create_collator_default": "create a default data collator that batches dict features and converts lists and arrays to tensors",
     "create_collator_padding": "create a DataCollatorWithPadding that pads sequences to the same length within a batch using a tokenizer",
     "create_collator_seq2seq": "create a DataCollatorForSeq2Seq that pads both input sequences and labels for encoder-decoder models",
     "create_collator_mlm": "create a DataCollatorForLanguageModeling that masks tokens for masked language modeling or shifts labels for causal language modeling",
     "create_collator_token_classification": "create a DataCollatorForTokenClassification that pads input_ids and labels using -100 as the default label padding value"
+  },
+  "huggingface_transformers/tests/trainer/test_trainer.py": {
+    "test_mixed_precision_training": "test the Trainer with FP16 BF16 and TF32 mixed precision training arguments",
+    "test_gradient_accumulation": "test gradient accumulation steps by comparing grad norms between large batch and GAS runs",
+    "test_gradient_checkpointing": "test gradient checkpointing by verifying model weights update during training",
+    "test_neftune_noise_injection": "test NEFTune noise injection on model embeddings during training",
+    "test_early_stopping_callback": "test early stopping callback that halts training before max epochs"
+  },
+  "huggingface_transformers/tests/trainer/test_trainer_accelerator.py": {
+    "test_accelerator_config_from_dict": "test passing accelerator config as a dict to TrainingArguments and verify Trainer initializes with split_batches and dispatch_batches",
+    "test_accelerator_config_from_dataclass": "test passing an AcceleratorConfig dataclass instance to TrainingArguments and verify Trainer uses the configured batch settings",
+    "test_accelerator_config_from_json_file": "test loading accelerator config from a JSON file path and verify Trainer applies the settings correctly",
+    "test_accelerator_config_partial_override": "test passing a partial accelerator config dict and verify unspecified settings fall back to defaults",
+    "test_accelerator_gradient_accumulation_kwargs": "test configuring gradient accumulation via accelerator_config gradient_accumulation_kwargs and verify Trainer gradient_state plugin_kwargs"
   },
   "huggingface_transformers/tests/trainer/test_trainer_callback.py": {
     "test_trainer_callbacks": "test the trainer callback system including registration, event firing, and state persistence",
@@ -15960,6 +16562,27 @@
     "test_preprocess_logits_for_metrics": "test preprocess_logits_for_metrics callback to modify logits before metric computation during evaluation",
     "test_trainer_eval_multiple": "test Trainer.evaluate with multiple named datasets to return separate loss metrics per dataset"
   },
+  "huggingface_transformers/tests/trainer/test_trainer_hyperparameter.py": {
+    "run_hyperparameter_search_optuna": "run hyperparameter search on a Trainer using Optuna with a custom model_init and hp_space",
+    "run_hyperparameter_search_multi_objective": "run multi-objective hyperparameter search with Optuna using compute_objective to return multiple metrics",
+    "run_hyperparameter_search_full_eval": "run hyperparameter search with fp16_full_eval enabled for mixed precision evaluation",
+    "run_hyperparameter_search_wandb": "run hyperparameter search using W&B sweeps with a custom hp_space and model_init",
+    "test_hyperparameter_search_backends": "test that ALL_HYPERPARAMETER_SEARCH_BACKENDS keys match the HPSearchBackend enum values"
+  },
+  "huggingface_transformers/tests/trainer/test_trainer_optimizers.py": {
+    "train_with_custom_optimizer": "create a Trainer with a custom SGD optimizer and LambdaLR scheduler passed as a tuple",
+    "train_with_named_optimizer": "train a Llama model using the galore_adamw optimizer with attention and mlp target modules",
+    "check_target_module_exists": "check if a regex pattern like .*attn.* matches a given model module name",
+    "inspect_optimizer_groups": "get the optimizer parameter groups and learning rates from a Trainer after creating the optimizer",
+    "detect_optimizer_factory": "use is_optimizer_factory to distinguish a factory class from a standard torch.optim.Optimizer subclass"
+  },
+  "huggingface_transformers/tests/trainer/test_trainer_seq2seq.py": {
+    "test_finetune_bert2bert": "test finetuning a BERT-to-BERT encoder-decoder model on the CNN/DailyMail summarization dataset with Seq2SeqTrainer",
+    "test_return_sequences": "test that Seq2SeqTrainer returns the correct number of generated sequences when num_return_sequences is greater than 1",
+    "test_bad_generation_config_fail_early": "test that Seq2SeqTrainer raises a ValueError when given an incompatible generation config like top_p with do_sample disabled",
+    "test_run_seq2seq_no_dist": "test running the seq2seq translation example script in non-distributed mode and verify BLEU metrics are logged",
+    "test_run_seq2seq_ddp": "test running the seq2seq translation example script in distributed DDP mode and verify BLEU metrics are logged"
+  },
   "huggingface_transformers/tests/trainer/test_training_args.py": {
     "test_default_output_dir": "test TrainingArguments defaults output_dir to 'trainer_output' when not specified",
     "test_custom_output_dir": "test TrainingArguments respects a custom output_dir when specified",
@@ -15974,12 +16597,26 @@
     "create_regression_dataset": "create a RegressionDataset with configurable length, seed, and label_names for synthetic regression data",
     "test_store_loss_callback": "test the StoreLossCallback to capture loss values logged during Trainer training"
   },
+  "huggingface_transformers/tests/trainer/distributed/test_trainer_distributed.py": {
+    "check_training": "test distributed training with a specific model dtype like bf16 using accelerate launch",
+    "check_mixed_precision": "test mixed-precision training where the model is fp32 but compute runs in bf16 or fp16",
+    "check_gradient_accumulation": "test distributed training with gradient accumulation steps to verify correct behavior",
+    "check_resume": "test that training can resume from a checkpoint with consistent learning rates across runs",
+    "check_eval": "test that distributed evaluation produces a finite eval loss metric in the output file"
+  },
   "huggingface_transformers/tests/trainer/distributed/test_trainer_distributed_ddp.py": {
     "test_DDPCommandsMixin_get_torchrun_cmd": "test the DDPCommandsMixin.get_torchrun_cmd method to build torchrun distributed launch commands",
     "test_DDPCommandsMixin_get_accelerate_cmd": "test the DDPCommandsMixin.get_accelerate_cmd method to build accelerate launch distributed commands",
     "test_TestTrainerDistributedDDP_test_loss_averaging": "test the test_loss_averaging method to verify DDP loss averaging across single-GPU and multi-GPU runs",
     "test_TestTrainerDistributedDDP_test_torchrun_accelerate_env_parity": "test the test_torchrun_accelerate_env_parity method to verify torchrun and accelerate produce identical distributed environment variables",
     "test_TestTrainerDistributedDDPCommon_test_training": "test the TestTrainerDistributedDDPCommon.test_training method to run DDP training with pure dtype configurations"
+  },
+  "huggingface_transformers/tests/trainer/distributed/test_trainer_distributed_deepspeed.py": {
+    "run_DeepSpeedCommandsMixin_get_torchrun_cmd": "run torchrun command with nproc_per_node and master port for distributed DeepSpeed training",
+    "run_DeepSpeedCommandsMixin_get_accelerate_cmd": "run accelerate launch command with config file and script args for DeepSpeed distributed tests",
+    "test_TestTrainerIntegrationDeepSpeed_basic_training": "test single GPU DeepSpeed trainer integration with ZeRO-2 or ZeRO-3 config and mixed precision",
+    "test_TestNonTrainerIntegrationDeepSpeed_init_zero3": "test DeepSpeed ZeRO-3 model initialization with fp16 or bf16 dtype and verify parameter dtypes",
+    "test_TestDeepSpeedModelZoo_zero_to_fp32": "test many model architectures with DeepSpeed fp16 training and recover FP32 weights from ZeRO checkpoint"
   },
   "huggingface_transformers/tests/trainer/distributed/test_trainer_distributed_fsdp.py": {
     "test_FSDPConfig_accelerate_fsdp_config": "test the FSDP config parsing for accelerate with sharding strategy and dtype parameters",
@@ -15999,6 +16636,13 @@
     "build_regression_model": "build a RegressionModel with learnable parameters a and b for linear regression",
     "test_trainer_with_iterable_dataset": "test the Trainer with a finite iterable dataset and multiple label names",
     "configure_training_args": "configure TrainingArguments with per_device_train_batch_size=1 and max_steps=1"
+  },
+  "huggingface_transformers/tests/trainer/distributed/scripts/eval_ddp.py": {
+    "run_ddp_eval_ordering_test": "run the distributed eval ordering test script via torchrun to verify sample ordering",
+    "create_DummyDataset": "create a DummyDataset that returns sequential integers from zero to a given length",
+    "create_DummyDataCollator": "create a DummyDataCollator that converts features into input_ids and labels tensors",
+    "build_DummyModel": "build a minimal DummyModel with a linear layer for DDP compatibility testing",
+    "test_Trainer_evaluate_with_compute_metrics": "test Trainer evaluate and predict methods with a compute_metrics callback under DDP"
   },
   "huggingface_transformers/tests/trainer/distributed/scripts/fsdp_generate.py": {
     "test_fsdp_generate": "test the fsdp_generate function that runs a GPT-2 model with FullyShardedDataParallel and generate",
@@ -16020,6 +16664,13 @@
     "test_DummyDataset": "test the DummyDataset class that generates random values using random, numpy, and torch",
     "test_DummyModel": "test the DummyModel class that gathers tensors from all GPUs and asserts they differ across ranks",
     "test_run_distributed_training": "test running distributed training with set_seed, Trainer, and dataloader_num_workers > 0"
+  },
+  "huggingface_transformers/tests/utils/test_activations.py": {
+    "test_get_activation": "test the get_activation function with all supported activation names like gelu, relu, and mish",
+    "test_gelu_versions": "test that gelu_python matches the torch builtin gelu but differs from gelu_new",
+    "test_gelu_10_clipping": "test that gelu_10 activation clips output values at a maximum of 10.0",
+    "test_activation_distinct_objects": "test that each get_activation call returns a distinct object instance",
+    "review_get_activation_supported_names": "review the get_activation function to verify all supported activation names including gelu variants and mish"
   },
   "huggingface_transformers/tests/utils/test_add_new_model_like.py": {
     "create_model_like_llama": "create a new model by copying the Llama model structure without tokenizers",
@@ -16090,6 +16741,13 @@
     "test_config_save_pretrained_validation": "test that saving a config with non-default generation kwargs like min_length raises ValueError",
     "test_config_from_pretrained_versioning": "test loading configs with version-aware file selection and cached fallback when internet is unavailable"
   },
+  "huggingface_transformers/tests/utils/test_convert_slow_tokenizer.py": {
+    "test_spm_converter_bytefallback_warning": "test that SpmConverter emits a warning when converting a sentencepiece tokenizer with byte fallback enabled",
+    "run_SpmConverter": "run SpmConverter on a tokenizer with a vocab_file to convert it to a fast tokenizer",
+    "review_FakeOriginalTokenizer": "review the FakeOriginalTokenizer dataclass that holds a vocab_file string for test fixtures",
+    "test_convert_slow_tokenizer": "test the ConvertSlowTokenizerTest suite to verify warning behavior when converting sentencepiece models",
+    "summarize_spm_converter_warnings": "summarize the warning messages produced by SpmConverter when byte fallback is used in sentencepiece models"
+  },
   "huggingface_transformers/tests/utils/test_core_model_loading.py": {
     "test_build_glob_alternation": "test the build_glob_alternation function to create regex alternation from glob patterns",
     "test_weight_converter": "test the WeightConverter class to merge, concatenate, and chunk weight tensors during model loading",
@@ -16100,12 +16758,33 @@
     "test_conv3d_linear_conversion": "test Conv3dToLinear and LinearToConv3d operations to convert between 3D conv and linear weight shapes",
     "test_register_checkpoint_conversion_mapping": "test register_checkpoint_conversion_mapping to register and retrieve checkpoint weight conversion mappings"
   },
+  "huggingface_transformers/tests/utils/test_deprecation.py": {
+    "test_deprecate_kwarg_rename": "test the deprecate_kwarg decorator to rename a deprecated keyword argument to a new name",
+    "test_deprecate_kwarg_multiple": "test stacking multiple deprecate_kwarg decorators to rename several deprecated keyword arguments at once",
+    "test_deprecate_kwarg_warnings": "test that deprecate_kwarg raises FutureWarning when the deprecated argument is used with a future version",
+    "test_deprecate_kwarg_raises": "test that deprecate_kwarg raises ValueError when both deprecated and new names are passed with raise_if_both_names",
+    "test_deprecate_kwarg_compile_safe": "test that deprecate_kwarg decorated functions work correctly with torch.compile fullgraph mode"
+  },
   "huggingface_transformers/tests/utils/test_doc_samples.py": {
     "test_modeling_examples": "test the modeling doc examples in src/transformers by running doctests on files containing 'modeling'",
     "test_tokenization_examples": "test the tokenization doc examples in src/transformers by running doctests on files containing 'tokenization'",
     "test_configuration_examples": "test the configuration doc examples in src/transformers by running doctests on files containing 'configuration'",
     "test_remaining_examples": "test remaining doc examples in src/transformers excluding configuration, modeling, and tokenization files",
     "test_doc_sources": "test doc source files in docs/source directory by running doctests on all modules"
+  },
+  "huggingface_transformers/tests/utils/test_dynamic_module_utils.py": {
+    "test_get_imports_parsing": "test that get_imports correctly parses imports from top-level, nested, and try-except blocks in Python files",
+    "test_get_cached_module_file_content_hash": "test that get_cached_module_file uses basename and content hash for local cache key generation",
+    "test_get_cached_module_file_relative_imports": "test that get_cached_module_file includes relative import sources when computing the cache key",
+    "test_get_cached_module_file_hash_stability": "test that get_cached_module_file keeps the hash stable across different directory basenames with identical content",
+    "review_get_imports_edge_cases": "review how get_imports handles deeply nested imports, multiple except clauses, and generic except blocks"
+  },
+  "huggingface_transformers/tests/utils/test_expectations.py": {
+    "create_expectations_instance": "create an Expectations object with a dictionary mapping device tuples to expected values",
+    "find_expectation_for_device": "find the matching expectation value for a given device property tuple like cuda or rocm",
+    "test_expectations_class": "test the Expectations class to verify correct device-specific expectation matching behavior",
+    "review_expectations_test": "review the ExpectationsTest unit test to understand device fallback matching logic",
+    "summarize_expectations_usage": "summarize how Expectations maps device properties to expected test values with default fallback"
   },
   "huggingface_transformers/tests/utils/test_feature_extraction_utils.py": {
     "test_batch_feature_basic_access": "test BatchFeature basic dict and attribute access with no tensor conversion",
@@ -16114,12 +16793,40 @@
     "test_batch_feature_error_handling": "test BatchFeature error handling for ragged tensors and numpy arrays with mismatched shapes",
     "test_batch_feature_skip_conversion": "test BatchFeature skip_tensor_conversion parameter to preserve metadata fields during tensor conversion"
   },
+  "huggingface_transformers/tests/utils/test_file_utils.py": {
+    "test_ContextManagers": "test the ContextManagers utility by wrapping multiple context managers into a single with block",
+    "test_find_labels": "test the find_labels utility to discover label argument names for a transformers model class",
+    "test_is_torch_available": "test the is_torch_available utility to check if PyTorch is installed in the environment",
+    "test_TestImportMechanisms": "test that the transformers module spec is available for dynamic importlib loading",
+    "test_context_managers_nested": "test nested context managers by chaining multiple contexts with ContextManagers for ordered entry and exit"
+  },
   "huggingface_transformers/tests/utils/test_fusion_mapping.py": {
     "test_register_fusion_patches": "test register_fusion_patches applies Conv3d-to-Linear fusion on a PreTrainedModel with matching fusion config",
     "test_fusion_skips_no_match": "test register_fusion_patches skips registration when no model modules match the fusion config patterns",
     "test_fusion_raises_conflicts": "test register_fusion_patches raises ValueError when conversion mapping source patterns conflict with existing mappings",
     "test_from_pretrained_serialized_fusion": "test from_pretrained reuses a serialized fusion_config to apply runtime fusion on model reload",
     "review_fusion_mapping_module": "review the transformers.fusion_mapping module for runtime Conv3d-to-Linear fusion patch registration and weight conversion"
+  },
+  "huggingface_transformers/tests/utils/test_generic.py": {
+    "flatten_dict": "flatten a nested dictionary into dot-separated keys for config task specific params",
+    "retry_decorator": "create a function decorated with retry that retries on ValueError with exponential backoff",
+    "to_py_obj": "convert a torch tensor or numpy array to a native Python list",
+    "can_return_tuple": "decorate a model forward method to return a tuple or ModelOutput based on config",
+    "filter_out_non_signature_kwargs": "create a function that filters out unexpected keyword arguments with a warning"
+  },
+  "huggingface_transformers/tests/utils/test_hf_argparser.py": {
+    "build_dataclass_cli_parser": "build a python module using HfArgumentParser to create a CLI from a dataclass with int, float, str, and bool fields",
+    "parse_args_into_dataclasses": "parse command line arguments into dataclass instances using HfArgumentParser with enum and list type fields",
+    "parse_dict_to_dataclass": "parse a dictionary into a dataclass instance using HfArgumentParser.parse_dict with extra key validation",
+    "parse_json_yaml_to_dataclass": "parse a JSON or YAML config file into a dataclass using HfArgumentParser.parse_json_file or parse_yaml_file",
+    "build_training_args_cli": "build a CLI parser for HuggingFace TrainingArguments with accelerator config parsed from JSON string via HfArgumentParser"
+  },
+  "huggingface_transformers/tests/utils/test_hub_utils.py": {
+    "test_cached_file": "test the cached_file function to download and cache a config file from a HuggingFace model repo",
+    "test_has_file": "test the has_file function to check if a weights file exists in a HuggingFace model repo",
+    "test_list_repo_templates": "test the list_repo_templates function to list repo templates in offline mode",
+    "test_cached_file_errors": "test the cached_file function error handling for invalid model identifiers and missing files",
+    "test_cached_file_gated_repo": "test the cached_file function behavior when accessing a gated repository without authentication"
   },
   "huggingface_transformers/tests/utils/test_image_processing_utils.py": {
     "test_get_size_dict": "test the get_size_dict utility function to parse image size specifications into normalized dicts",
@@ -16140,6 +16847,27 @@
     "test_image_load": "test the load_image function to load images from URLs, local paths, base64 strings, and RGBA/LA/L mode PIL images",
     "test_channel_dimension": "test get_image_size, infer_channel_dimension_format, and get_channel_dimension_axis to detect channel dimension in numpy arrays",
     "test_image_to_pil": "test the to_pil_image method to convert numpy arrays and torch tensors back to PIL images with channel reordering and rescaling"
+  },
+  "huggingface_transformers/tests/utils/test_import_structure.py": {
+    "test_import_structure_definition": "test the define_import_structure function by verifying backend-conditional module exports match expected frozenset keys",
+    "test_model_import_equivalence": "test that each model architecture __all__ exports match the register definitions in import structure",
+    "test_import_spread": "test spread_import_structure flattens nested import structures into dotted module paths grouped by backend",
+    "test_backend_specification": "test Backend parsing extracts package name, version comparison operator, and version string from spec",
+    "fetch_all_from_file": "create a function that parses the __all__ variable from Python file content supporting single and multi line definitions"
+  },
+  "huggingface_transformers/tests/utils/test_import_utils.py": {
+    "test_clear_import_cache": "test the clear_import_cache function by verifying transformers modules are removed from sys.modules",
+    "run_clear_import_cache": "run clear_import_cache to remove all transformers modules from the Python import cache",
+    "review_test_clear_import_cache": "review the test_clear_import_cache function that validates import cache clearing behavior",
+    "summarize_clear_import_cache": "summarize how clear_import_cache removes transformers modules from sys.modules and allows reimport",
+    "refactor_test_clear_import_cache": "refactor test_clear_import_cache to add additional assertions for edge cases in module clearing"
+  },
+  "huggingface_transformers/tests/utils/test_logging.py": {
+    "test_set_verbosity_level": "test setting transformers logging verbosity to error, warning, info, or debug levels",
+    "test_logger_integration": "test that transformers logger captures warning messages when verbosity allows it",
+    "test_env_override_verbosity": "test overriding transformers verbosity via the TRANSFORMERS_VERBOSITY environment variable",
+    "test_advisory_warnings": "test logger warning_advice method respects the TRANSFORMERS_NO_ADVISORY_WARNINGS env var",
+    "test_progress_bar_toggle": "test disabling and enabling progress bars with disable_progress_bar and enable_progress_bar"
   },
   "huggingface_transformers/tests/utils/test_masking_utils.py": {
     "create_causal_mask_packed_sequences": "create a causal attention mask for packed sequences using position_ids and LlamaConfig with sdpa implementation",
@@ -16183,12 +16911,40 @@
     "get_network_debug_report": "get the collected network debug report as a dictionary with request entries and timing",
     "format_network_debug_report": "format the network debug report into a human-readable summary string with slowest requests"
   },
+  "huggingface_transformers/tests/utils/test_offline.py": {
+    "test_offline_mode_bert_loading": "test that BertConfig, BertModel, BertTokenizer, and pipeline load from cache in offline mode",
+    "test_offline_mode_no_internet": "test that transformers load from cache when socket is mocked to simulate no internet",
+    "test_offline_mode_sharded_checkpoint": "test that sharded checkpoint models load from cache with TRANSFORMERS_OFFLINE env var set",
+    "test_offline_mode_pipeline_exception": "test that pipeline raises an error when auto-inferring task in offline mode",
+    "test_is_offline_mode": "test that is_offline_mode respects both HF_HUB_OFFLINE and TRANSFORMERS_OFFLINE environment variables"
+  },
+  "huggingface_transformers/tests/utils/test_skip_decorators.py": {
+    "test_skip_decorator_stacking": "test that skip decorators stack correctly in unittest and pytest test methods",
+    "test_slow_decorator_with_parameterized": "test that the slow decorator works with parameterized expand when placed after it",
+    "test_slow_decorator_with_pytest_parametrize": "test that the slow decorator works with pytest mark parametrize in any order",
+    "review_SkipTester_class": "review the SkipTester unittest class that validates decorator stacking order for skip decorators",
+    "run_skip_decorator_tests": "run the skip decorator test suite with RUN_SLOW env variable set to 1 or 0"
+  },
   "huggingface_transformers/tests/utils/test_tokenization_utils.py": {
     "test_cached_files_are_used_when_internet_is_down": "test the BertTokenizer caching behavior when HTTP requests fail with 500 errors",
     "test_push_to_hub": "test pushing a BertTokenizer with custom vocab to a Hugging Face Hub repo",
     "test_push_to_hub_chat_templates": "test saving and reloading tokenizer chat templates (string and dict) to Hugging Face Hub",
     "test_push_to_hub_dynamic_tokenizer": "test pushing a dynamically registered CustomTokenizer to Hugging Face Hub",
     "test_trie": "test the Trie class for adding strings and splitting text by trie-matched tokens"
+  },
+  "huggingface_transformers/tests/utils/test_versions_utils.py": {
+    "test_require_version_core": "test require_version_core to validate numpy package version constraints like lt, le, eq, ne, ge, gt",
+    "test_require_version_python": "test require_version to check that the current python version meets a minimum requirement",
+    "test_import_error_on_version_conflict": "test that require_version_core raises ImportError when an unmet version requirement is detected",
+    "test_package_not_found_error": "test that require_version_core raises PackageNotFoundError when a missing distribution is required",
+    "test_bogus_requirement_format": "test that require_version_core raises ValueError on invalid pip requirement format strings"
+  },
+  "huggingface_transformers/tests/utils/test_video_utils.py": {
+    "test_make_batched_videos": "test make_batched_videos converts PIL images, numpy arrays, and torch tensors into a normalized list of batched videos",
+    "test_group_and_reorder_videos": "test group_videos_by_shape and reorder_videos to group videos by frame size and number of frames then restore original order",
+    "test_base_video_processor_resize": "test BaseVideoProcessor resize method to resize a 4D video tensor to a specified size",
+    "test_base_video_processor_normalize": "test BaseVideoProcessor normalize method to normalize video tensor values using mean and standard deviation",
+    "test_load_video": "test load_video to load videos from URLs or local files with configurable backends, frame count, and fps"
   },
   "huggingface_transformers/tests/utils/import_structures/import_structure_raw_register.py": {
     "test_requires_decorator_class": "test the @requires decorator with no arguments applied to a Python class",

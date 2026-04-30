@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/roberta_prelayernorm/test_modeling_roberta_prelayernorm.py
+
+Prompts
+
+```
+['test the RobertaPreLayerNormModelTester to prepare config and input tensors for all model variants', 'test the base RobertaPreLayerNormModel output shapes for last hidden state and pooler output', 'test the RobertaPreLayerNormForMaskedLM model forward pass and verify logits shape', 'test the RobertaPreLayerNormForCausalLM decoder model forward pass with labels and attention mask', 'test the decoder past key values cache mechanism with large hypothetical inputs']
+```
+
+Usage
+
+```
+{'test_RobertaPreLayerNormModelTester_prepare_config_and_inputs': 'test the RobertaPreLayerNormModelTester to prepare config and input tensors for all model variants', 'test_RobertaPreLayerNormModelTester_create_and_check_model': 'test the base RobertaPreLayerNormModel output shapes for last hidden state and pooler output', 'test_RobertaPreLayerNormModelTester_create_and_check_for_masked_lm': 'test the RobertaPreLayerNormForMaskedLM model forward pass and verify logits shape', 'test_RobertaPreLayerNormModelTester_create_and_check_for_causal_lm': 'test the RobertaPreLayerNormForCausalLM decoder model forward pass with labels and attention mask', 'test_RobertaPreLayerNormModelTester_create_and_check_decoder_model_past_large_inputs': 'test the decoder past key values cache mechanism with large hypothetical inputs'}
+```
+

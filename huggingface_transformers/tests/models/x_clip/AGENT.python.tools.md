@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/x_clip/test_modeling_x_clip.py
+
+Prompts
+
+```
+['test the XCLIPVisionModelTester class that prepares config and pixel values for XCLIP vision model tests', 'test the XCLIPTextModelTester class that prepares config and input IDs for XCLIP text model tests', 'test the XCLIPModelTester class that prepares combined text and vision inputs for the full XCLIP model', 'run the XCLIPModelIntegrationTest to verify inference with pretrained microsoft/xclip-base-patch32 model and video inputs', 'test the XCLIPModelTest class that validates the full XCLIP model including config loading and logits output shapes']
+```
+
+Usage
+
+```
+{'test_XCLIPVisionModelTester': 'test the XCLIPVisionModelTester class that prepares config and pixel values for XCLIP vision model tests', 'test_XCLIPTextModelTester': 'test the XCLIPTextModelTester class that prepares config and input IDs for XCLIP text model tests', 'test_XCLIPModelTester': 'test the XCLIPModelTester class that prepares combined text and vision inputs for the full XCLIP model', 'run_XCLIPModelIntegrationTest': 'run the XCLIPModelIntegrationTest to verify inference with pretrained microsoft/xclip-base-patch32 model and video inputs', 'test_XCLIPModelTest': 'test the XCLIPModelTest class that validates the full XCLIP model including config loading and logits output shapes'}
+```
+
