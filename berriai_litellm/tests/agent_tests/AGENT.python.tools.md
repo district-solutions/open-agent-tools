@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/tests/agent_tests/test_a2a_agent.py
+
+Prompts
+
+```
+['test the non-streaming A2A message sending using litellm a2a_protocol asend_message function', 'test the streaming A2A message sending using litellm a2a_protocol asend_message_streaming function', 'create a mock A2A JSON-RPC response object with text payload and model_dump method', 'create a mock A2A streaming chunk with text content and progress state', 'create a mock A2A client with send_message and send_message_streaming methods']
+```
+
+Usage
+
+```
+{'test_a2a_non_streaming': 'test the non-streaming A2A message sending using litellm a2a_protocol asend_message function', 'test_a2a_streaming': 'test the streaming A2A message sending using litellm a2a_protocol asend_message_streaming function', 'create_MockA2AResponse': 'create a mock A2A JSON-RPC response object with text payload and model_dump method', 'create_MockA2AStreamingChunk': 'create a mock A2A streaming chunk with text content and progress state', 'create_MockA2AClient': 'create a mock A2A client with send_message and send_message_streaming methods'}
+```
+

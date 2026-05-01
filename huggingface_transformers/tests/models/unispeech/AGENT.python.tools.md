@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/unispeech/test_modeling_unispeech.py
+
+Prompts
+
+```
+['test the UniSpeechModel forward pass with input values and attention mask to verify output shape', 'test the UniSpeechForCTC model CTC loss computation with sum and mean reduction modes', 'test the UniSpeechForSequenceClassification model loss computation with and without attention masking', 'test batch inference equivalence by comparing batched outputs against individual sample outputs', 'test the UniSpeechForPreTraining model inference with a pretrained checkpoint and verify cosine similarity']
+```
+
+Usage
+
+```
+{'test_unispeech_model': 'test the UniSpeechModel forward pass with input values and attention mask to verify output shape', 'test_unispeech_ctc_loss': 'test the UniSpeechForCTC model CTC loss computation with sum and mean reduction modes', 'test_unispeech_seq_classification': 'test the UniSpeechForSequenceClassification model loss computation with and without attention masking', 'test_unispeech_batch_inference': 'test batch inference equivalence by comparing batched outputs against individual sample outputs', 'test_unispeech_pretraining_integration': 'test the UniSpeechForPreTraining model inference with a pretrained checkpoint and verify cosine similarity'}
+```
+

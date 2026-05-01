@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/exaone4/test_modeling_exaone4.py
+
+Prompts
+
+```
+['test the Exaone4ForCausalLM model logits by running a forward pass with input token IDs', 'test Exaone4ForCausalLM greedy text generation using eager attention implementation with max new tokens', 'test Exaone4ForCausalLM greedy text generation using SDPA attention implementation with max new tokens', 'test Exaone4ForCausalLM long context generation using flash attention 2 with repeated input tokens', 'test Exaone4ForCausalLM static cache export and generation using TorchExportableModuleWithStaticCache']
+```
+
+Usage
+
+```
+{'test_exaone4_model_logits': 'test the Exaone4ForCausalLM model logits by running a forward pass with input token IDs', 'test_exaone4_generation_eager': 'test Exaone4ForCausalLM greedy text generation using eager attention implementation with max new tokens', 'test_exaone4_generation_sdpa': 'test Exaone4ForCausalLM greedy text generation using SDPA attention implementation with max new tokens', 'test_exaone4_flash_attention': 'test Exaone4ForCausalLM long context generation using flash attention 2 with repeated input tokens', 'test_exaone4_static_cache_export': 'test Exaone4ForCausalLM static cache export and generation using TorchExportableModuleWithStaticCache'}
+```
+

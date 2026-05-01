@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/cookbook/litellm_proxy_server/braintrust_prompt_wrapper_server.py
+
+Prompts
+
+```
+['run a FastAPI server that wraps Braintrust prompts for LiteLLM prompt management', 'transform a Braintrust API response into LiteLLM prompt management format with messages and params', 'transform a single Braintrust message dict into LiteLLM message format with role and content', 'fetch a prompt from Braintrust API by prompt ID and return transformed LiteLLM format', 'check the health status of the Braintrust prompt wrapper server']
+```
+
+Usage
+
+```
+{'run_braintrust_prompt_wrapper_server': 'run a FastAPI server that wraps Braintrust prompts for LiteLLM prompt management', 'transform_braintrust_response': 'transform a Braintrust API response into LiteLLM prompt management format with messages and params', 'transform_braintrust_message': 'transform a single Braintrust message dict into LiteLLM message format with role and content', 'fetch_prompt_from_braintrust': 'fetch a prompt from Braintrust API by prompt ID and return transformed LiteLLM format', 'health_check_braintrust_wrapper': 'check the health status of the Braintrust prompt wrapper server'}
+```
+

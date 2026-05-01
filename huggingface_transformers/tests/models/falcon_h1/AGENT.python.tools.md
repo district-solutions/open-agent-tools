@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/falcon_h1/test_modeling_falcon_h1.py
+
+Prompts
+
+```
+['create test inputs and FalconH1Config for FalconH1 model testing with Mamba SSM parameters', 'build a FalconH1Config with attention layer indices and Mamba hyperparameters for model instantiation', 'test the FalconH1Model forward pass and verify last hidden state output shape', 'test the FalconH1ForCausalLM forward pass and verify logits output shape matches vocab size', 'run an integration test that generates text with the pretrained Falcon-H1-1-5B-Deep-Instruct model']
+```
+
+Usage
+
+```
+{'test_FalconH1ModelTester_prepare_config_and_inputs': 'create test inputs and FalconH1Config for FalconH1 model testing with Mamba SSM parameters', 'test_FalconH1ModelTester_get_config': 'build a FalconH1Config with attention layer indices and Mamba hyperparameters for model instantiation', 'test_FalconH1ModelTester_create_and_check_model': 'test the FalconH1Model forward pass and verify last hidden state output shape', 'test_FalconH1ModelTester_create_and_check_for_causal_lm': 'test the FalconH1ForCausalLM forward pass and verify logits output shape matches vocab size', 'test_FalconH1ModelIntegrationTest_test_falcon_h1_hard': 'run an integration test that generates text with the pretrained Falcon-H1-1-5B-Deep-Instruct model'}
+```
+

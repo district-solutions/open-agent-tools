@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/time_series_transformer/test_modeling_time_series_transformer.py
+
+Prompts
+
+```
+['test that TimeSeriesTransformer encoder and decoder can be saved and loaded independently', 'test create_network_inputs with different prediction lengths and lag sequences for time series', 'test encoder, decoder, and cross attention outputs shape and layer count for the model', 'run inference with a pretrained TimeSeriesTransformer model on tourism monthly batch data', 'test sequence to sequence generation using model generate method with parallel samples']
+```
+
+Usage
+
+```
+{'test_encoder_decoder_standalone': 'test that TimeSeriesTransformer encoder and decoder can be saved and loaded independently', 'test_create_network_inputs_lags': 'test create_network_inputs with different prediction lengths and lag sequences for time series', 'test_attention_outputs': 'test encoder, decoder, and cross attention outputs shape and layer count for the model', 'test_inference_integration': 'run inference with a pretrained TimeSeriesTransformer model on tourism monthly batch data', 'test_seq_to_seq_generation': 'test sequence to sequence generation using model generate method with parallel samples'}
+```
+

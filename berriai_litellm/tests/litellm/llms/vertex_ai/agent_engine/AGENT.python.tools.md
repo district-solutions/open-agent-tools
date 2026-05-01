@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/tests/litellm/llms/vertex_ai/agent_engine/test_transformation.py
+
+Prompts
+
+```
+['test that transform_request formats messages into Vertex Agent Engine payload with user_id', 'test that transform_request includes session_id in the Vertex Agent Engine payload', 'test that chunk_parser extracts text and usage metadata from Vertex Agent Engine response', 'test that chunk_parser handles intermediate chunks without a finish_reason field', 'run pytest on the Vertex AI Agent Engine transformation and chunk parser tests']
+```
+
+Usage
+
+```
+{'test_transform_request_basic': 'test that transform_request formats messages into Vertex Agent Engine payload with user_id', 'test_transform_request_with_session_id': 'test that transform_request includes session_id in the Vertex Agent Engine payload', 'test_chunk_parser_with_text_content': 'test that chunk_parser extracts text and usage metadata from Vertex Agent Engine response', 'test_chunk_parser_without_finish_reason': 'test that chunk_parser handles intermediate chunks without a finish_reason field', 'run_vertex_agent_engine_transformation_tests': 'run pytest on the Vertex AI Agent Engine transformation and chunk parser tests'}
+```
+

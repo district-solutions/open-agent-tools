@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: sgl-project/sglang
+- repo_uri: https://github.com/sgl-project/sglang
+
+## File: sgl-project_sglang/python/sglang/srt/hardware_backend/musa/kernels/topk.py
+
+Prompts
+
+```
+['run topk_softmax to compute top-k softmax weights and expert indices for MoE routing from gating logits', 'run topk_sigmoid to compute top-k sigmoid weights and expert indices for MoE routing from gating logits', 'run topk_softmax with moe_softcapping to apply tanh softcapping to gating logits before softmax normalization', 'run topk_softmax with correction_bias to add per-expert bias correction to gating logits before routing', 'run topk_sigmoid with renormalize to renormalize top-k weights so they sum to one after selection']
+```
+
+Usage
+
+```
+{'run_topk_softmax_for_moe_routing': 'run topk_softmax to compute top-k softmax weights and expert indices for MoE routing from gating logits', 'run_topk_sigmoid_for_moe_routing': 'run topk_sigmoid to compute top-k sigmoid weights and expert indices for MoE routing from gating logits', 'run_topk_softmax_with_softcapping': 'run topk_softmax with moe_softcapping to apply tanh softcapping to gating logits before softmax normalization', 'run_topk_softmax_with_correction_bias': 'run topk_softmax with correction_bias to add per-expert bias correction to gating logits before routing', 'run_topk_sigmoid_with_renormalize': 'run topk_sigmoid with renormalize to renormalize top-k weights so they sum to one after selection'}
+```
+

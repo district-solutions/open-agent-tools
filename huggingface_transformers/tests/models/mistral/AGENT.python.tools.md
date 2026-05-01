@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/mistral/test_modeling_mistral.py
+
+Prompts
+
+```
+['test the MistralForCausalLM model by running input tokens through and verifying output logits match expected values', 'test text generation with MistralForCausalLM using BitsAndBytes 4-bit quantization and greedy decoding', 'test generation beyond the sliding window using DynamicCache with flash attention or SDPA implementations', 'test speculative decoding with an assistant model for faster text generation using MistralForCausalLM', 'test 4D custom attention masks with shared prefix inputs using MistralForCausalLM forward passes']
+```
+
+Usage
+
+```
+{'test_mistral_7b_logits': 'test the MistralForCausalLM model by running input tokens through and verifying output logits match expected values', 'test_mistral_7b_generation': 'test text generation with MistralForCausalLM using BitsAndBytes 4-bit quantization and greedy decoding', 'test_mistral_sliding_window': 'test generation beyond the sliding window using DynamicCache with flash attention or SDPA implementations', 'test_mistral_speculative_generation': 'test speculative decoding with an assistant model for faster text generation using MistralForCausalLM', 'test_mistral_stacked_causal_mask': 'test 4D custom attention masks with shared prefix inputs using MistralForCausalLM forward passes'}
+```
+

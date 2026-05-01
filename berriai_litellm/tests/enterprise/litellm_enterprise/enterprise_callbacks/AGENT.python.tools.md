@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/tests/enterprise/litellm_enterprise/enterprise_callbacks/test_prometheus_logging_callbacks.py
+
+Prompts
+
+```
+['test the PrometheusLogger async_log_success_event method to verify all token, spend, and latency metrics are incremented correctly', 'test the PrometheusLogger async_log_failure_event method to verify failed request metrics and deployment partial outage state are set', 'test the _increment_token_metrics method to verify input, output, and total token counters are incremented with correct labels', 'test the _set_latency_metrics method to verify time to first token, API latency, and total request latency metrics are set correctly', 'test the get_custom_labels_from_metadata function to verify custom Prometheus labels are extracted from top-level and nested metadata fields']
+```
+
+Usage
+
+```
+{'test_prometheus_logger_success_event': 'test the PrometheusLogger async_log_success_event method to verify all token, spend, and latency metrics are incremented correctly', 'test_prometheus_logger_failure_event': 'test the PrometheusLogger async_log_failure_event method to verify failed request metrics and deployment partial outage state are set', 'test_increment_token_metrics': 'test the _increment_token_metrics method to verify input, output, and total token counters are incremented with correct labels', 'test_set_latency_metrics': 'test the _set_latency_metrics method to verify time to first token, API latency, and total request latency metrics are set correctly', 'test_get_custom_labels_from_metadata': 'test the get_custom_labels_from_metadata function to verify custom Prometheus labels are extracted from top-level and nested metadata fields'}
+```
+

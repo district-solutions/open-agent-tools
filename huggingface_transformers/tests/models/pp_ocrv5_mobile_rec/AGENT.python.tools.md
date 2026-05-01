@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/pp_ocrv5_mobile_rec/test_modeling_pp_ocrv5_mobile_rec.py
+
+Prompts
+
+```
+['test the PPOCRV5MobileRecModelTester get_config method to generate a PPOCRV5MobileRecConfig with backbone and attention parameters', 'test the PPOCRV5MobileRecModelTester prepare_config_and_inputs method to create pixel values tensor and model config', 'test the PPOCRV5MobileRecModelTest test_forward_signature method to verify model forward accepts pixel_values argument', 'test the PPOCRV5MobileRecModelTest test_hidden_states_output method to verify backbone and head hidden states are returned', 'test the PPOCRV5MobileRecModelIntegrationTest test_inference_text_recognition_head method to run text recognition inference on an image']
+```
+
+Usage
+
+```
+{'test_PPOCRV5MobileRecModelTester_get_config': 'test the PPOCRV5MobileRecModelTester get_config method to generate a PPOCRV5MobileRecConfig with backbone and attention parameters', 'test_PPOCRV5MobileRecModelTester_prepare_config_and_inputs': 'test the PPOCRV5MobileRecModelTester prepare_config_and_inputs method to create pixel values tensor and model config', 'test_PPOCRV5MobileRecModelTest_test_forward_signature': 'test the PPOCRV5MobileRecModelTest test_forward_signature method to verify model forward accepts pixel_values argument', 'test_PPOCRV5MobileRecModelTest_test_hidden_states_output': 'test the PPOCRV5MobileRecModelTest test_hidden_states_output method to verify backbone and head hidden states are returned', 'test_PPOCRV5MobileRecModelIntegrationTest_test_inference_text_recognition_head': 'test the PPOCRV5MobileRecModelIntegrationTest test_inference_text_recognition_head method to run text recognition inference on an image'}
+```
+

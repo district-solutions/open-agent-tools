@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/rt_detr_v2/test_modeling_rt_detr_v2.py
+
+Prompts
+
+```
+['run the RTDetrV2ModelTest suite to verify model forward pass and output shapes', 'test the RTDetrV2Model attention outputs including encoder, decoder, and cross attentions', 'test the RTDetrV2Model hidden states output for both encoder and decoder layers', 'test RTDetrV2 backbone selection with timm and pretrained HuggingFace backbone configs', 'run the RTDetrV2 integration test with the PekingU checkpoint for object detection inference']
+```
+
+Usage
+
+```
+{'run_rt_detr_v2_model_tests': 'run the RTDetrV2ModelTest suite to verify model forward pass and output shapes', 'test_rt_detr_v2_attention_outputs': 'test the RTDetrV2Model attention outputs including encoder, decoder, and cross attentions', 'test_rt_detr_v2_hidden_states': 'test the RTDetrV2Model hidden states output for both encoder and decoder layers', 'test_rt_detr_v2_backbone_selection': 'test RTDetrV2 backbone selection with timm and pretrained HuggingFace backbone configs', 'run_rt_detr_v2_integration_test': 'run the RTDetrV2 integration test with the PekingU checkpoint for object detection inference'}
+```
+

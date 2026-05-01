@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/recurrent_gemma/test_modeling_recurrent_gemma.py
+
+Prompts
+
+```
+['test the RecurrentGemmaModel using RecurrentGemmaModelTester with recurrent and attention block types', 'run integration tests for RecurrentGemma 2B model using AutoModelForCausalLM and AutoTokenizer', 'generate text with RecurrentGemma model using greedy decoding and max_new_tokens parameter', 'load RecurrentGemma 2B model with 8-bit quantization using BitsAndBytesConfig', 'test long context generation with RecurrentGemma model using float16 dtype and left padding']
+```
+
+Usage
+
+```
+{'test_recurrentgemma_model': 'test the RecurrentGemmaModel using RecurrentGemmaModelTester with recurrent and attention block types', 'run_recurrentgemma_integration_tests': 'run integration tests for RecurrentGemma 2B model using AutoModelForCausalLM and AutoTokenizer', 'generate_text_with_recurrentgemma': 'generate text with RecurrentGemma model using greedy decoding and max_new_tokens parameter', 'load_recurrentgemma_8bit': 'load RecurrentGemma 2B model with 8-bit quantization using BitsAndBytesConfig', 'test_long_context_generation': 'test long context generation with RecurrentGemma model using float16 dtype and left padding'}
+```
+

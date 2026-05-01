@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/tests/litellm/llms/vertex_ai/test_gemini_batch_embeddings.py
+
+Prompts
+
+```
+['test gemini batch embeddings include auth header when using custom api base', 'test gemini batch embeddings properly merge extra headers into the request', 'test transforming openai style input to gemini embed content format with multimodal support', 'test processing gemini embed content api response into embedding response object', 'test filtering unsupported parameters like max tokens from gemini embedding requests']
+```
+
+Usage
+
+```
+{'test_gemini_batch_embeddings_auth_header': 'test gemini batch embeddings include auth header when using custom api base', 'test_gemini_batch_embeddings_extra_headers': 'test gemini batch embeddings properly merge extra headers into the request', 'test_transform_openai_input_gemini_embed_content': 'test transforming openai style input to gemini embed content format with multimodal support', 'test_process_embed_content_response': 'test processing gemini embed content api response into embedding response object', 'test_filter_embed_params': 'test filtering unsupported parameters like max tokens from gemini embedding requests'}
+```
+

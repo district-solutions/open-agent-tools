@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/dbrx/test_modeling_dbrx.py
+
+Prompts
+
+```
+['test the DbrxModelTester class to configure DBRX model with MoE and attention parameters', 'run the DbrxModelTest suite to verify DBRX causal language model behavior', 'test the DbrxModelIntegrationTest to validate DBRX model logits against expected values', 'review the DbrxModelTester config_args property that returns FFN and attention configuration arguments', 'test loading a pretrained DBRX model using DbrxModel.from_pretrained with a tiny checkpoint']
+```
+
+Usage
+
+```
+{'test_DbrxModelTester': 'test the DbrxModelTester class to configure DBRX model with MoE and attention parameters', 'run_DbrxModelTest': 'run the DbrxModelTest suite to verify DBRX causal language model behavior', 'test_DbrxModelIntegrationTest': 'test the DbrxModelIntegrationTest to validate DBRX model logits against expected values', 'review_DbrxModelTester_config_args': 'review the DbrxModelTester config_args property that returns FFN and attention configuration arguments', 'test_DbrxModelTest_from_pretrained': 'test loading a pretrained DBRX model using DbrxModel.from_pretrained with a tiny checkpoint'}
+```
+

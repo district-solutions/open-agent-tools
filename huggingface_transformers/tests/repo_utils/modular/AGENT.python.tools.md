@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/repo_utils/modular/test_conversion_order.py
+
+Prompts
+
+```
+['run the unittest that verifies model conversion priority order for modular transformers', 'test the appear_after helper function to check model ordering in a priority list', 'review the ConversionOrderTest class and its test_conversion_order test method', 'refactor the appear_after function to support additional priority list validation logic', 'summarize the FILES_TO_PARSE list of modular model files used in conversion order tests']
+```
+
+Usage
+
+```
+{'test_conversion_order': 'run the unittest that verifies model conversion priority order for modular transformers', 'test_appear_after': 'test the appear_after helper function to check model ordering in a priority list', 'review_conversion_order_test': 'review the ConversionOrderTest class and its test_conversion_order test method', 'refactor_appear_after': 'refactor the appear_after function to support additional priority list validation logic', 'summarize_files_to_parse': 'summarize the FILES_TO_PARSE list of modular model files used in conversion order tests'}
+```
+

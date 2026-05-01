@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/zamba2/test_modeling_zamba2.py
+
+Prompts
+
+```
+['run the Zamba2ModelTester to prepare config and inputs for Zamba2 model testing', 'test the Zamba2ForCausalLM model with input IDs and attention mask for causal language modeling', 'test the Zamba2ForSequenceClassification model with sequence labels for text classification', 'test the Zamba2 decoder model past key values with large inputs and cache', 'run the Zamba2 integration test to generate text and verify logits from a pretrained model']
+```
+
+Usage
+
+```
+{'run_Zamba2ModelTester': 'run the Zamba2ModelTester to prepare config and inputs for Zamba2 model testing', 'test_Zamba2ForCausalLM': 'test the Zamba2ForCausalLM model with input IDs and attention mask for causal language modeling', 'test_Zamba2ForSequenceClassification': 'test the Zamba2ForSequenceClassification model with sequence labels for text classification', 'test_Zamba2Model_past_key_values': 'test the Zamba2 decoder model past key values with large inputs and cache', 'run_Zamba2ModelIntegrationTest': 'run the Zamba2 integration test to generate text and verify logits from a pretrained model'}
+```
+

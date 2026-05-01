@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/cookbook/mock_guardrail_server/mock_bedrock_guardrail_server.py
+
+Prompts
+
+```
+['run a FastAPI server that mimics the AWS Bedrock Guardrail API on localhost port 8080', 'test the check_blocked_words function to detect offensive words in text input', 'test the check_pii function to detect and anonymize email, phone, SSN, and credit card patterns', 'test the beta LiteLLM basic guardrail endpoint that blocks text containing forbidden keywords', 'update the mock guardrail configuration via the config update endpoint with a new bearer token']
+```
+
+Usage
+
+```
+{'run_mock_bedrock_guardrail_server': 'run a FastAPI server that mimics the AWS Bedrock Guardrail API on localhost port 8080', 'test_check_blocked_words': 'test the check_blocked_words function to detect offensive words in text input', 'test_check_pii': 'test the check_pii function to detect and anonymize email, phone, SSN, and credit card patterns', 'test_beta_litellm_basic_guardrail_api': 'test the beta LiteLLM basic guardrail endpoint that blocks text containing forbidden keywords', 'update_guardrail_config': 'update the mock guardrail configuration via the config update endpoint with a new bearer token'}
+```
+

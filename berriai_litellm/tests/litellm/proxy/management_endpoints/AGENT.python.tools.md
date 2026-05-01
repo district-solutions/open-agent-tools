@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/tests/litellm/proxy/management_endpoints/test_common_utils.py
+
+Prompts
+
+```
+['test the _has_non_empty_value helper to verify it correctly identifies empty values like None, empty lists, and blank strings', 'test that _update_metadata_fields skips premium user checks when premium fields like policies or guardrails are empty', 'test that an empty policies list does not trigger a premium user check during team metadata updates', 'test that a non-empty policies list correctly triggers a premium user check during team metadata updates', 'test that a realistic UI payload with all empty premium fields does not return a 403 error']
+```
+
+Usage
+
+```
+{'test_has_non_empty_value': 'test the _has_non_empty_value helper to verify it correctly identifies empty values like None, empty lists, and blank strings', 'test_update_metadata_fields_premium_check': 'test that _update_metadata_fields skips premium user checks when premium fields like policies or guardrails are empty', 'test_empty_policies_skips_premium_check': 'test that an empty policies list does not trigger a premium user check during team metadata updates', 'test_non_empty_policies_triggers_premium_check': 'test that a non-empty policies list correctly triggers a premium user check during team metadata updates', 'test_full_ui_payload_empty_premium_fields': 'test that a realistic UI payload with all empty premium fields does not return a 403 error'}
+```
+

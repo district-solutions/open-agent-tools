@@ -5814,6 +5814,13 @@
     "run_forward_decode_attention": "run forward decode attention pass with kv cache, local attention, and speculative decoding cascade support",
     "review_musa_flash_attention_class": "review the MusaFlashAttentionBackend class and its extend and decode forward methods for MUSA devices"
   },
+  "sgl-project_sglang/python/sglang/srt/hardware_backend/musa/kernels/topk.py": {
+    "run_topk_softmax_for_moe_routing": "run topk_softmax to compute top-k softmax weights and expert indices for MoE routing from gating logits",
+    "run_topk_sigmoid_for_moe_routing": "run topk_sigmoid to compute top-k sigmoid weights and expert indices for MoE routing from gating logits",
+    "run_topk_softmax_with_softcapping": "run topk_softmax with moe_softcapping to apply tanh softcapping to gating logits before softmax normalization",
+    "run_topk_softmax_with_correction_bias": "run topk_softmax with correction_bias to add per-expert bias correction to gating logits before routing",
+    "run_topk_sigmoid_with_renormalize": "run topk_sigmoid with renormalize to renormalize top-k weights so they sum to one after selection"
+  },
   "sgl-project_sglang/python/sglang/srt/hardware_backend/musa/layers/utils/cp_utils.py": {
     "review_musa_cp_attn_forward_extend": "review the musa_cp_attn_forward_extend function that splits query tensors for context-parallel attention",
     "summarize_musa_cp_attn_forward_extend": "summarize the musa_cp_attn_forward_extend function used for zigzag context-parallel attention on MUSA devices",
@@ -8685,6 +8692,13 @@
     "process_mm_data_async": "process audio data asynchronously with MiDashengLMMultimodalProcessor.process_mm_data_async returning MultimodalProcessorOutput",
     "configure_audio_special_tokens": "configure audio special tokens including audio_bos, AUDIO, and audio_eos token IDs for MiDashengLM tokenizer",
     "set_audio_length_from_features": "set audio_length attribute on mm_items from ret audio_length or input_values tensor shape in process_mm_data_async"
+  },
+  "sgl-project_sglang/python/sglang/srt/multimodal/processors/mimo_v2.py": {
+    "build_MiMoProcessor": "build a MiMoProcessor instance with custom tokenizer and vision audio token IDs for multimodal processing",
+    "build_MiMoV2Processor": "build a MiMoV2Processor from hf_config and server_args to handle image video and audio inputs",
+    "process_MiMoProcessor_process": "process a list of Content items with text image video and audio into a MiMoInputSample",
+    "process_MiMoV2Processor_process_mm_data": "process multimodal data with images videos and audios into input_ids and grid tensors for the model",
+    "process_MiMoProcessor_preprocess_audio": "preprocess an audio file string or bytes into a mel spectrogram tensor and token length"
   },
   "sgl-project_sglang/python/sglang/srt/multimodal/processors/nano_nemotron_vl.py": {
     "build_NanoNemotronVLImageProcessor": "build a NanoNemotronVLImageProcessor instance with hf_config, server_args, and image processor for multimodal tokenization",

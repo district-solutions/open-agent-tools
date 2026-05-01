@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/ernie4_5_moe/test_modeling_ernie4_5_moe.py
+
+Prompts
+
+```
+['test that flash attention 2 and eager attention produce equivalent logits for the Ernie4.5 MoE model', 'test the MoE load balancing loss computation with attention masking and padding tokens', 'test the load balancing loss function with synthetic router logits and attention masks', 'test text generation with the 21B A3B Ernie4.5 MoE model using 4-bit quantization', 'test text generation with the small MoE model and verify expected output tokens']
+```
+
+Usage
+
+```
+{'test_flash_attn_2_equivalence': 'test that flash attention 2 and eager attention produce equivalent logits for the Ernie4.5 MoE model', 'test_load_balancing_loss': 'test the MoE load balancing loss computation with attention masking and padding tokens', 'test_load_balancing_loss_func': 'test the load balancing loss function with synthetic router logits and attention masks', 'test_model_21b_a3b_generation': 'test text generation with the 21B A3B Ernie4.5 MoE model using 4-bit quantization', 'test_shortened_model_generation': 'test text generation with the small MoE model and verify expected output tokens'}
+```
+

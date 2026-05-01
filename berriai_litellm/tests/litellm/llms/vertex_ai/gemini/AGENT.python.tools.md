@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/tests/litellm/llms/vertex_ai/gemini/test_transformation.py
+
+Prompts
+
+```
+['test that _transform_request_body passes Vertex AI labels from optional_params into the request body', 'test that _transform_request_body maps OpenAI metadata to Vertex AI labels in the request body', 'test that _transform_request_body prefers Vertex AI labels over OpenAI metadata when both are provided', 'test that _transform_request_body supports imageConfig with aspectRatio for gemini-2.5-flash-image model', 'test that VertexGeminiConfig._map_function converts snake_case google_search tool to camelCase googleSearch']
+```
+
+Usage
+
+```
+{'test_transform_request_body_labels': 'test that _transform_request_body passes Vertex AI labels from optional_params into the request body', 'test_transform_request_body_metadata': 'test that _transform_request_body maps OpenAI metadata to Vertex AI labels in the request body', 'test_transform_request_body_labels_and_metadata': 'test that _transform_request_body prefers Vertex AI labels over OpenAI metadata when both are provided', 'test_transform_request_body_image_config': 'test that _transform_request_body supports imageConfig with aspectRatio for gemini-2.5-flash-image model', 'test_map_function_google_search': 'test that VertexGeminiConfig._map_function converts snake_case google_search tool to camelCase googleSearch'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/tests/litellm/proxy/_experimental/mcp_server/test_discoverable_endpoints.py
+
+Prompts
+
+```
+['test the MCP OAuth authorize endpoint that redirects to the provider with response_type code and PKCE parameters', 'test the MCP OAuth token endpoint that exchanges an authorization code for an access token with PKCE support', 'test the dynamic client registration endpoint that returns dummy credentials or forwards to a remote OAuth provider', 'test the OAuth protected resource endpoint that returns MCP resource URLs in standard or legacy patterns', 'test the utility function that resolves the request base URL by respecting X-Forwarded-Proto X-Forwarded-Host and X-Forwarded-Port headers']
+```
+
+Usage
+
+```
+{'test_authorize_endpoint': 'test the MCP OAuth authorize endpoint that redirects to the provider with response_type code and PKCE parameters', 'test_token_endpoint': 'test the MCP OAuth token endpoint that exchanges an authorization code for an access token with PKCE support', 'test_register_client': 'test the dynamic client registration endpoint that returns dummy credentials or forwards to a remote OAuth provider', 'test_oauth_protected_resource': 'test the OAuth protected resource endpoint that returns MCP resource URLs in standard or legacy patterns', 'test_get_request_base_url': 'test the utility function that resolves the request base URL by respecting X-Forwarded-Proto X-Forwarded-Host and X-Forwarded-Port headers'}
+```
+

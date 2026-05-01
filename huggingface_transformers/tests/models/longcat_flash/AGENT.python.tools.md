@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/longcat_flash/test_modeling_longcat_flash.py
+
+Prompts
+
+```
+['create a LongcatFlashModelTester instance with custom batch size, seq length, and MOE expert config', 'build a LongcatFlashConfig with LoRA-compressed attention heads, MOE routing, and RoPE dimensions via get_config', 'test the LongcatFlashModel by running create_and_check_model to validate last hidden state output shapes', 'test the LongcatFlashForCausalLM by running create_and_check_for_causal_lm to validate logits output shapes', 'review the past key values cache shapes for generation using _check_past_key_values_for_generate']
+```
+
+Usage
+
+```
+{'create_LongcatFlashModelTester': 'create a LongcatFlashModelTester instance with custom batch size, seq length, and MOE expert config', 'build_LongcatFlashConfig': 'build a LongcatFlashConfig with LoRA-compressed attention heads, MOE routing, and RoPE dimensions via get_config', 'test_LongcatFlashModel': 'test the LongcatFlashModel by running create_and_check_model to validate last hidden state output shapes', 'test_LongcatFlashForCausalLM': 'test the LongcatFlashForCausalLM by running create_and_check_for_causal_lm to validate logits output shapes', 'review_past_key_values': 'review the past key values cache shapes for generation using _check_past_key_values_for_generate'}
+```
+

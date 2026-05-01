@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/cookbook/codellama-server/main.py
+
+Prompts
+
+```
+['run a flask server on port 4000 that proxies chat completions through litellm using CodeLlama-34b-Instruct', 'send a POST request to /chat/completions with a prompt to get an AI code completion response', 'send a POST request to /get_models to retrieve the list of models supported by litellm', 'use the data_generator function to yield SSE-formatted chunks from a streaming litellm completion response', 'review the api_completion route that handles POST requests and proxies them to litellm completion with a system prompt']
+```
+
+Usage
+
+```
+{'run_codellama_server': 'run a flask server on port 4000 that proxies chat completions through litellm using CodeLlama-34b-Instruct', 'call_chat_completions_endpoint': 'send a POST request to /chat/completions with a prompt to get an AI code completion response', 'list_supported_models': 'send a POST request to /get_models to retrieve the list of models supported by litellm', 'stream_completion_responses': 'use the data_generator function to yield SSE-formatted chunks from a streaming litellm completion response', 'review_api_completion_route': 'review the api_completion route that handles POST requests and proxies them to litellm completion with a system prompt'}
+```
+

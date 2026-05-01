@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/vipllava/test_modeling_vipllava.py
+
+Prompts
+
+```
+['test the VipLlavaConfig class with custom text and vision configuration parameters', 'test VipLlavaModel forward pass with pixel values and input IDs tensors', 'test VipLlavaForConditionalGeneration with single or list of vision feature layer indices', 'test VipLlavaModel raises ValueError when image features and image tokens do not match', 'test VipLlavaForConditionalGeneration integration with 4bit quantization to generate image descriptions']
+```
+
+Usage
+
+```
+{'test_vipllava_config': 'test the VipLlavaConfig class with custom text and vision configuration parameters', 'test_vipllava_model_forward': 'test VipLlavaModel forward pass with pixel values and input IDs tensors', 'test_vipllava_vision_feature_layers': 'test VipLlavaForConditionalGeneration with single or list of vision feature layer indices', 'test_vipllava_image_token_mismatch': 'test VipLlavaModel raises ValueError when image features and image tokens do not match', 'test_vipllava_integration_generation': 'test VipLlavaForConditionalGeneration integration with 4bit quantization to generate image descriptions'}
+```
+

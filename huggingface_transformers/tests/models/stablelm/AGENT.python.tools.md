@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: huggingface/transformers
+- repo_uri: https://github.com/huggingface/transformers.git
+
+## File: huggingface_transformers/tests/models/stablelm/test_modeling_stablelm.py
+
+Prompts
+
+```
+['test the StableLmForCausalLM model logits output against expected values for the stablelm-3b-4e1t checkpoint', 'test text generation with StableLmForCausalLM using the stablelm-3b-4e1t model and verify the completion output', 'test the StableLmForCausalLM model logits output against expected values for the tiny-random-stablelm-2 checkpoint', 'test text generation with StableLmForCausalLM using the tiny-random-stablelm-2 model and verify the completion output', 'test StableLmForCausalLM generation with 4-bit quantization and flash attention on a long prompt input']
+```
+
+Usage
+
+```
+{'test_stablelm_logits': 'test the StableLmForCausalLM model logits output against expected values for the stablelm-3b-4e1t checkpoint', 'test_stablelm_generation': 'test text generation with StableLmForCausalLM using the stablelm-3b-4e1t model and verify the completion output', 'test_stablelm2_logits': 'test the StableLmForCausalLM model logits output against expected values for the tiny-random-stablelm-2 checkpoint', 'test_stablelm2_generation': 'test text generation with StableLmForCausalLM using the tiny-random-stablelm-2 model and verify the completion output', 'test_stablelm_4bit_long_prompt': 'test StableLmForCausalLM generation with 4-bit quantization and flash attention on a long prompt input'}
+```
+

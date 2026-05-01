@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: berriai/litellm
+- repo_uri: https://github.com/berriai/litellm
+
+## File: berriai_litellm/enterprise/litellm_enterprise/proxy/management_endpoints/key_management_endpoints.py
+
+Prompts
+
+```
+['apply enterprise key management parameters to a GenerateKeyRequest using team metadata and organization id', 'set the key duration on a GenerateKeyRequest based on team metadata for team member keys', 'attach the team organization id to a GenerateKeyRequest from the team table', 'review the add_team_member_key_duration function to verify it only applies duration for team member keys', 'refactor apply_enterprise_key_management_params to support additional enterprise key management parameters']
+```
+
+Usage
+
+```
+{'apply_enterprise_key_management_params': 'apply enterprise key management parameters to a GenerateKeyRequest using team metadata and organization id', 'add_team_member_key_duration': 'set the key duration on a GenerateKeyRequest based on team metadata for team member keys', 'add_team_organization_id': 'attach the team organization id to a GenerateKeyRequest from the team table', 'review_add_team_member_key_duration': 'review the add_team_member_key_duration function to verify it only applies duration for team member keys', 'refactor_apply_enterprise_key_management_params': 'refactor apply_enterprise_key_management_params to support additional enterprise key management parameters'}
+```
+
