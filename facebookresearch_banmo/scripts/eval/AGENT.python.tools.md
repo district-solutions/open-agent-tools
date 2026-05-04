@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/banmo
+- repo_uri: https://github.com/facebookresearch/banmo
+
+## File: facebookresearch_banmo/scripts/eval/eval_root.py
+
+Prompts
+
+```
+['run eval_root.py with two camera directories and a cap frame to export aligned camera meshes as OBJ', 'run umeyama_alignment on two point matrices to compute rotation, translation, and scale via SVD', 'run main to load root camera poses from two directories, align via Sim3, and export combined camera mesh', 'refactor umeyama_alignment to support batched point matrices instead of single mxn arrays', 'review main to replace sys.argv parsing with argparse for safer CLI argument handling']
+```
+
+Usage
+
+```
+{'run_eval_root': 'run eval_root.py with two camera directories and a cap frame to export aligned camera meshes as OBJ', 'run_umeyama_alignment': 'run umeyama_alignment on two point matrices to compute rotation, translation, and scale via SVD', 'run_main': 'run main to load root camera poses from two directories, align via Sim3, and export combined camera mesh', 'refactor_umeyama_alignment': 'refactor umeyama_alignment to support batched point matrices instead of single mxn arrays', 'review_main': 'review main to replace sys.argv parsing with argparse for safer CLI argument handling'}
+```
+

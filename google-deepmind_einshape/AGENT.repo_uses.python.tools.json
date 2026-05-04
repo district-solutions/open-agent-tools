@@ -1,0 +1,107 @@
+{
+  "google-deepmind_einshape/einshape/src/abstract_ops.py": {
+    "create_reshape_op": "create a Reshape dataclass instance with a target shape to reshape a tensor without reordering elements",
+    "create_transpose_op": "create a Transpose dataclass instance with a permutation list to reorder tensor axes",
+    "create_broadcast_op": "create a Broadcast dataclass instance with axis_sizes dict to insert new axes into a tensor shape",
+    "review_reshape_transform_shape": "review the Reshape class transform_shape method which returns the target shape ignoring input shape",
+    "review_transpose_transform_shape": "review the Transpose class transform_shape method which permutes input shape dimensions by the perm list"
+  },
+  "google-deepmind_einshape/einshape/src/backend.py": {
+    "create_backend_subclass": "create a subclass of Backend that implements reshape, transpose, and broadcast methods",
+    "run_einshape_exec": "run the exec method on a Backend instance with an equation string and tensor value",
+    "implement_reshape_method": "implement the abstract reshape method in a Backend subclass to handle Reshape operations",
+    "implement_transpose_method": "implement the abstract transpose method in a Backend subclass to handle Transpose operations",
+    "override_preprocess_hook": "override the _preprocess method in a Backend subclass to add backend-specific optimization"
+  },
+  "google-deepmind_einshape/einshape/src/engine.py": {
+    "generate_ops_compile_equation": "generate reshape and transpose ops from an einshape equation and input tensor shape",
+    "generate_ops_with_index_sizes": "generate ops from a shape equation with explicit index size hints for ungrouping dimensions",
+    "generate_ops_wildcard": "generate ops from an einshape equation using the ellipsis wildcard to match arbitrary trailing dimensions",
+    "generate_ops_broadcast": "generate ops that broadcast new axes into the output shape using index size hints",
+    "generate_ops_transpose": "generate ops to transpose tensor axes by reordering indices in the einshape equation RHS"
+  },
+  "google-deepmind_einshape/einshape/src/optimizer.py": {
+    "optimize_shape_ops": "optimize a sequence of abstract ShapeOps by eliding intermediate and noop reshapes",
+    "elide_intermediate_reshapes": "elide contiguous reshape operations from a sequence of shaping ops",
+    "elide_noop_reshapes": "elide reshape operations that produce no change to the input shape",
+    "are_contiguous_reshapes": "check if a sequence of ops are all contiguous Reshape instances",
+    "is_noop_reshape": "check if a reshape operation is a no-op given a static input shape"
+  },
+  "google-deepmind_einshape/einshape/src/jax/jax_ops.py": {
+    "reshape_tensor_with_einshape": "reshape a JAX ndarray using an einshape equation string to regroup and reorder dimensions",
+    "transpose_tensor_with_einshape": "transpose a JAX tensor by specifying axis permutation in an einshape equation",
+    "broadcast_tensor_with_einshape": "broadcast a JAX tensor to a new shape using an einshape equation with index sizes",
+    "reshape_with_index_sizes": "reshape a JAX tensor with an einshape equation and explicit index size keyword arguments",
+    "convert_and_reshape": "convert a tensor-like object to a JAX ndarray and reshape it via an einshape equation"
+  },
+  "google-deepmind_einshape/einshape/src/numpy/numpy_ops.py": {
+    "reshape_numpy_array_with_einshape": "use einshape to reshape a numpy array according to a shape equation string",
+    "transpose_numpy_array_with_einshape": "use einshape to transpose a numpy array by reordering indices in the equation",
+    "broadcast_numpy_array_with_einshape": "use einshape to broadcast a numpy array to a larger shape via the equation",
+    "review_NumpyBackend_reshape": "review the _NumpyBackend reshape method that delegates to np.reshape with an op shape",
+    "review_NumpyBackend_broadcast": "review the _NumpyBackend broadcast method that uses np.expand_dims and np.broadcast_to"
+  },
+  "google-deepmind_einshape/einshape/src/tensorflow/preprocessing.py": {
+    "create_tile_op": "create a Tile shape op that tiles tensor axes by given multiples",
+    "check_tile_is_static": "check if a Tile op has all integer multiples for static shape inference",
+    "transform_shape_with_tile": "transform an input shape by multiplying each dimension with its tile multiple",
+    "execute_tile_on_backend": "execute a Tile op on a TensorFlow backend to tile a tensor",
+    "preprocess_broadcast_ops": "preprocess a sequence of shape ops replacing Broadcast ops with Tile and Reshape for TensorFlow"
+  },
+  "google-deepmind_einshape/einshape/src/tensorflow/tf_ops.py": {
+    "use_einshape_reshape_tensor": "use einshape to reshape a TensorFlow tensor according to a shape equation string",
+    "use_einshape_transpose_tensor": "use einshape to transpose a TensorFlow tensor by reordering its index dimensions",
+    "use_einshape_tile_tensor": "use einshape to tile a TensorFlow tensor along specified axes via the Tile preprocessing op",
+    "use_tfbackend_exec": "use the _TFBackend exec method to run einshape operations on a TensorFlow tensor",
+    "use_preprocess_broadcast_ops": "use the TensorFlow preprocessing function to replace Broadcast ops with Tile and Reshape ops"
+  },
+  "google-deepmind_einshape/einshape/tests/abstract_ops_test.py": {
+    "test_reshape_transform": "test the Reshape class transform_shape method to reshape a tensor to a new shape",
+    "test_transpose_transform": "test the Transpose class transform_shape method to reorder tensor axes using a permutation",
+    "test_broadcast_transform": "test the Broadcast class transform_shape method to insert new axes into a tensor shape",
+    "run_abstract_ops_test": "run the absltest suite for einshape abstract_ops to verify reshape, transpose, and broadcast",
+    "review_shapeop_classes": "review the Reshape, Transpose, and Broadcast ShapeOp subclasses and their transform_shape methods"
+  },
+  "google-deepmind_einshape/einshape/tests/engine_test.py": {
+    "generate_reshape_noop": "generate reshape ops for a no-op einshape equation like 'i->i' with a given input shape",
+    "generate_transpose_ops": "generate transpose ops to reorder tensor axes using an einshape equation like 'ij->ji'",
+    "generate_nchw_transpose": "generate ops to convert NHWC tensor layout to NCHW using the einshape engine",
+    "generate_squeeze_expand": "generate ops to squeeze unit dimensions or expand dims using einshape equations like 'j1k->jk'",
+    "generate_broadcast_tile": "generate broadcast ops to tile a tensor along new axes using an einshape equation like 'j->nj'"
+  },
+  "google-deepmind_einshape/einshape/tests/optimizer_test.py": {
+    "test_optimizer_redundant_reshape": "test that the optimizer skips redundant consecutive reshape operations on a given input shape",
+    "test_optimizer_nonredundant_reshape": "test that the optimizer retains non-redundant reshape operations separated by a transpose",
+    "test_optimizer_noop_reshape": "test that the optimizer removes a no-op reshape when the target shape matches the input shape",
+    "test_optimizer_noop_after_transpose": "test that the optimizer skips a no-op reshape that follows a transpose operation",
+    "test_optimizer_noop_after_broadcast": "test that the optimizer skips a no-op reshape that follows a broadcast operation"
+  },
+  "google-deepmind_einshape/einshape/tests/jax/jax_ops_test.py": {
+    "test_EngineTest_test_common": "test the EngineTest.test_common method that runs parameterized einshape test cases against expected outputs",
+    "test_EngineTest_test_accepts_python_list": "test the EngineTest.test_accepts_python_list method that verifies einshape accepts Python lists as input",
+    "run_EngineTest": "run the EngineTest test class using absltest to validate all einshape JAX operations",
+    "review_EngineTest_test_common": "review the EngineTest.test_common method to understand how parameterized test cases drive einshape validation",
+    "summarize_EngineTest": "summarize the EngineTest class and its two test methods for JAX einshape operations"
+  },
+  "google-deepmind_einshape/einshape/tests/numpy/numpy_ops_test.py": {
+    "test_einshape_common": "test the numpy einshape engine with parameterized test cases using equations and index sizes",
+    "test_einshape_python_list": "test that numpy einshape accepts a Python list input and reshapes it correctly",
+    "run_engine_tests": "run the absltest suite for the einshape numpy engine test cases",
+    "review_EngineTest": "review the EngineTest class and its parameterized test methods for the einshape numpy engine",
+    "summarize_numpy_ops_einshape": "summarize how numpy_ops.einshape reshapes arrays using Einstein summation-style equations"
+  },
+  "google-deepmind_einshape/einshape/tests/tensorflow/preprocessing_test.py": {
+    "test_preprocessing_reshapes_and_transposes": "test that Reshape and Transpose ops are preserved unchanged by preprocessing.preprocess",
+    "test_broadcast_expands_to_tile": "test that Broadcast ops expand to a Tile followed by a Reshape operation",
+    "test_broadcast_trailing_dimension": "test that broadcasting a trailing dimension generates an initial Reshape before Tile",
+    "test_broadcast_multiple_dimensions": "test that broadcasting multiple dimensions groups and tiles them correctly",
+    "run_preprocessing_test_suite": "run the absltest suite for TensorFlow preprocessing einshape ops"
+  },
+  "google-deepmind_einshape/einshape/tests/tensorflow/tf_ops_test.py": {
+    "test_einshape_simple_reshape": "test einshape to reshape a 1D TensorFlow tensor into a 2D column vector using the i->i1 equation",
+    "test_einshape_simple_transpose": "test einshape to transpose a 2D TensorFlow tensor using the ij->ji equation notation",
+    "test_einshape_ungroup": "test einshape to ungroup a flat tensor into a 2D shape using the (ij)->ij equation with a size hint",
+    "test_einshape_group": "test einshape to group a 2D tensor into a flat 1D tensor using the ij->(ij) equation",
+    "test_einshape_tile": "test einshape to tile a 1D tensor along a new dimension using the j->nj equation with a size hint"
+  }
+}

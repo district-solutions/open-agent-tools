@@ -1,0 +1,93 @@
+{
+  "facebookresearch_drtk/drtk/edge_grad_estimator.py": {
+    "build_differentiable_rasterized_image": "build a module that uses edge_grad_estimator to make a rasterized image differentiable at visibility discontinuities for gradient-based optimization",
+    "create_edge_gradient_backward_hook": "create a backward hook on v_pix_img to examine the generated image space during edge gradient estimation",
+    "test_edge_grad_estimator_ref": "test the Python reference implementation of edge_grad_estimator against the CUDA kernel for correctness",
+    "refactor_EdgeGradEstimatorFunction_backward": "refactor the EdgeGradEstimatorFunction backward pass to support custom gradient clamping strategies for nearly-coplanar triangles",
+    "summarize_get_dp_dr": "summarize the get_dp_dr function that computes the derivative of edge position with respect to fragment position"
+  },
+  "facebookresearch_drtk/drtk/grid_scatter.py": {
+    "build_grid_scatter": "build a python module to scatter tensor values onto a 2D grid using bilinear interpolation",
+    "build_grid_scatter_bicubic": "build a python module to scatter tensor values onto a 2D grid using bicubic interpolation",
+    "create_grid_scatter_ref": "create a reference implementation of grid scatter using PyTorch autograd and grid_sample",
+    "test_grid_scatter_padding": "test the grid_scatter function with zeros border and reflection padding modes",
+    "review_gridscatterref_autograd": "review the GridScatterRef autograd function forward and backward pass implementation"
+  },
+  "facebookresearch_drtk/drtk/interpolate.py": {
+    "interpolate_vertex_attributes": "interpolate vertex attributes across fragments using barycentric coordinates and face vertex indices",
+    "interpolate_ref_pure_pytorch": "run a pure PyTorch reference implementation of vertex attribute interpolation for testing",
+    "test_interpolate_cuda_vs_ref": "test the CUDA interpolate function against the pure PyTorch reference implementation",
+    "review_interpolate_barycentric": "review the interpolate function to understand barycentric coordinate interpolation logic",
+    "summarize_interpolate_module": "summarize the drtk interpolate module for differentiable vertex attribute interpolation"
+  },
+  "facebookresearch_drtk/drtk/mipmap_grid_sample.py": {
+    "build_mipmap_grid_sample": "build a python module to sample a mipmap pyramid texture using grid coordinates with anisotropic filtering",
+    "create_mipmap_grid_sample_ref": "create a reference implementation that samples mipmap textures using bilinear interpolation and gradient-based level selection",
+    "test_mipmap_selection": "test the mipmap level selection logic that computes LOD indices from max and min gradient magnitudes",
+    "refactor_compute_grad_magnitude": "refactor the gradient magnitude computation to calculate Px and Py from the UV Jacobian tensor",
+    "review_combine_sampled_mipmaps": "review the mipmap combination function that linearly interpolates between two nearest sampled mipmap levels"
+  },
+  "facebookresearch_drtk/drtk/msi.py": {
+    "render_msi": "render a Multi-Sphere Image from ray origins, directions, and texture using bilinear and cubic sampling",
+    "render_msi_with_custom_radius": "render an MSI with custom min and max inverse sphere radius parameters",
+    "render_msi_with_early_termination": "render an MSI with a custom stop threshold for early ray termination",
+    "render_msi_with_substeps": "render an MSI with a custom sub-step count for layer subsampling rate",
+    "review_msi_function": "review the msi function signature and docstring for Multi-Sphere Image rendering parameters"
+  },
+  "facebookresearch_drtk/drtk/rasterize.py": {
+    "rasterize_mesh_triangles": "rasterize a mesh defined by vertex positions and face indices into a triangle index image",
+    "rasterize_wireframe_mode": "rasterize a mesh in wireframe mode using edge visibility bit fields in face indices",
+    "rasterize_with_depth_image": "rasterize a mesh and return both triangle indices and a non-differentiable depth image",
+    "rasterize_batched_meshes": "rasterize a batch of meshes with shape N x V x 3 vertices and N x F x 3 faces",
+    "rasterize_single_mesh": "rasterize a single mesh with 2D face indices of shape F x 3 automatically expanded to batch"
+  },
+  "facebookresearch_drtk/drtk/render.py": {
+    "render_depth_and_barycentric": "render depth and barycentric coordinates from a mesh given vertex positions and triangle indices",
+    "render_reference_implementation": "run the double precision reference rendering implementation to compute depth and barycentric coordinates",
+    "index_tensor_with_indices": "index a tensor along a dimension using another tensor of indices and reshape to target shape",
+    "get_cached_coordinate_grid": "get a cached coordinate grid tensor for a given width and height on a specified device",
+    "review_render_functions": "review the render and render_ref functions to compare CUDA extension output against the double precision reference"
+  },
+  "facebookresearch_drtk/drtk/screen_space_uv_derivative.py": {
+    "compute_uv_derivative": "compute per-pixel UV derivative Jacobian matrices from mesh vertices, texture coordinates, and camera parameters",
+    "compute_inverse_jacobian": "compute the inverse Jacobian of texture coordinates with respect to pixel-space position using screen_space_uv_derivative",
+    "compute_uv_grad_with_distortion": "compute UV derivatives with optional camera distortion mode and distortion coefficients for accurate pixel-space gradients",
+    "review_screen_space_uv_derivative": "review the screen_space_uv_derivative function to understand how it computes 2x2 Jacobian matrices for UV gradients",
+    "test_screen_space_uv_derivative": "test the screen_space_uv_derivative function with mesh vertices, face indices, barycentric coordinates, and camera parameters"
+  },
+  "facebookresearch_drtk/drtk/transform.py": {
+    "project_3d_vertices_to_image_plane": "build a python module to project 3D vertex positions onto the camera image plane using intrinsic and extrinsic matrices",
+    "project_vertices_with_camera_coords": "build a python module to project 3D vertices to pixel space and return camera-space coordinates for rendering",
+    "transform_with_distortion": "build a python module to project 3D vertices with lens distortion coefficients and field of view parameters",
+    "transform_with_extrinsic_matrix": "build a python module to project 3D vertices using a camera extrinsic Rt matrix instead of separate campos and camrot",
+    "transform_with_intrinsic_matrix": "build a python module to project 3D vertices using a full 3x3 intrinsic K matrix instead of separate focal and principal point"
+  },
+  "facebookresearch_drtk/drtk/utils/geometry.py": {
+    "compute_face_dpdt": "build a python module to compute the transposed Jacobian matrix for mesh triangles given vertex positions and UV coordinates",
+    "aggregate_face_attributes_to_vertices": "create a function that sums face attributes across all faces for each vertex using scatter add",
+    "compute_face_info": "build a python module to compute face normals, edges, and areas from vertex positions and face indices",
+    "compute_vertex_binormals": "create a function that computes normalized vertex binormals from mesh vertex positions and UV texture coordinates",
+    "compute_vertex_normals": "build a python module to compute vertex normals by averaging face normals for each vertex in a mesh"
+  },
+  "facebookresearch_drtk/drtk/utils/indexing.py": {
+    "index_tensor_along_dim": "index a PyTorch tensor along a given dimension using an index tensor to replace the shape",
+    "review_index_function": "review the index function that indexes a tensor along a dimension with an index tensor",
+    "test_index_tensor": "test the index function with a tensor of shape [8, 7306, 3] and index tensor [11000, 3]",
+    "summarize_index_function": "summarize the index function that uses index_select and reshape to index tensors along a dimension",
+    "refactor_index_function": "refactor the index function to support additional tensor indexing operations beyond index_select"
+  },
+  "facebookresearch_drtk/drtk/utils/load_torch_ops.py": {
+    "load_torch_ops": "load a PyTorch C++ extension module by its name using importlib and th.ops.load_library",
+    "load_torch_ops_sphinx_safe": "load a PyTorch extension module that silently skips ImportError when running inside Sphinx documentation builds",
+    "load_torch_ops_import_error": "load a PyTorch extension module and re-raise ImportError if not running in a Sphinx environment",
+    "review_load_torch_ops": "review the load_torch_ops function to understand how it imports and loads PyTorch C++ extension libraries",
+    "summarize_load_torch_ops": "summarize the load_torch_ops function which loads PyTorch ops from a named extension module with Sphinx-safe error handling"
+  },
+  "facebookresearch_drtk/drtk/utils/projection.py": {
+    "project_points": "project 3D world-space vertices to pixel-space with optional camera distortion models",
+    "project_pinhole": "project camera-space points to pixel-space using pinhole camera intrinsics",
+    "project_pinhole_distort_rt": "project camera-space points to distorted pixel-space using radial-tangential distortion model",
+    "project_fisheye_distort": "project camera-space points to distorted pixel-space using the fisheye distortion model",
+    "estimate_fisheye_fov": "estimate the maximum field of view from fisheye distortion coefficients"
+  }
+}

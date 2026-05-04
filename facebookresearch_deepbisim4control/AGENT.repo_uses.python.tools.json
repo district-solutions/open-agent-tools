@@ -1,0 +1,282 @@
+{
+  "facebookresearch_deepbisim4control/CARLA_0.9.6/PythonAPI/carla/agents/navigation/carla_env.py": {
+    "create_carla_env": "create a CarlaEnv instance with render display, weather changes, and multiple camera sensors",
+    "run_carla_step": "run a single simulation step in CarlaEnv by applying a steer and throttle brake action",
+    "reset_carla_env": "reset the CarlaEnv to spawn a new vehicle and clear previous actors and sensors",
+    "configure_weather": "configure dynamic weather in CarlaEnv using the Weather class with sun and storm parameters",
+    "use_sync_mode": "use CarlaSyncMode as a context manager to synchronize sensor data across simulation ticks"
+  },
+  "facebookresearch_deepbisim4control/CARLA_0.9.8/PythonAPI/carla/agents/navigation/carla_env.py": {
+    "create_CarlaEnv": "create a CarlaEnv instance to set up a CARLA driving simulation environment with configurable cameras and weather",
+    "run_CarlaEnv_step": "run a single simulation step in CarlaEnv by applying a steer and throttle brake action",
+    "create_CarlaSyncMode": "create a CarlaSyncMode context manager to synchronize sensor data from multiple CARLA cameras",
+    "run_RoamingAgentModified": "run a RoamingAgentModified agent step to compute vehicle control with hazard detection and traffic light awareness",
+    "create_Weather": "create a Weather object to dynamically change sun position and storm conditions in the CARLA world"
+  },
+  "facebookresearch_deepbisim4control/agent/baseline_agent.py": {
+    "create_BaselineAgent": "create a BaselineAgent with SAC, transition model, and configurable decoder types for RL training",
+    "run_select_action": "run the BaselineAgent select_action method to get a deterministic action from an observation",
+    "run_sample_action": "run the BaselineAgent sample_action method to sample a stochastic action from the policy",
+    "run_update": "run the BaselineAgent update method to perform one training step using a replay buffer sample",
+    "run_save_load": "run the BaselineAgent save and load methods to persist and restore actor, critic, and decoder weights"
+  },
+  "facebookresearch_deepbisim4control/agent/bisim_agent.py": {
+    "create_BisimAgent": "create a BisimAgent instance with observation shape, action shape, device, and transition model type",
+    "select_action_BisimAgent": "select a greedy action from the actor policy given an observation tensor",
+    "sample_action_BisimAgent": "sample a stochastic action from the actor policy given an observation tensor",
+    "update_BisimAgent": "run one training step updating critic, encoder, transition model, and actor from replay buffer",
+    "save_load_BisimAgent": "save or load BisimAgent model checkpoints for actor, critic, and reward decoder"
+  },
+  "facebookresearch_deepbisim4control/agent/deepmdp_agent.py": {
+    "create_DeepMDPAgent": "create a DeepMDPAgent instance with pixel encoder, transition model, and SAC-based actor-critic networks",
+    "select_action_DeepMDPAgent": "select a deterministic action from the agent given an observation tensor input",
+    "update_DeepMDPAgent": "update the agent by sampling from replay buffer and updating critic, actor, transition, and decoder",
+    "save_DeepMDPAgent": "save the actor, critic, and decoder model state dicts to disk at a given step",
+    "load_DeepMDPAgent": "load the actor, critic, and decoder model state dicts from disk for a given step"
+  },
+  "facebookresearch_deepbisim4control/distractors/n_body_problem.py": {
+    "create_planets_simulation": "create a Planets instance with N bodies in 2D space that attract via gravity",
+    "step_planets_simulation": "step the Planets simulation forward by one dt using scipy odeint integration",
+    "animate_planets_simulation": "animate the Planets simulation and save the output as a GIF file",
+    "create_electrons_simulation": "create an Electrons instance with N bodies that repel each other via a 1/r law",
+    "create_ideal_gas_simulation": "create an IdealGas instance with N non-interacting bodies bouncing in a box"
+  },
+  "facebookresearch_deepbisim4control/dmc2gym/natural_imgsource.py": {
+    "create_fixed_color_image_source": "create a FixedColorSource that returns a solid color RGB image of a given shape",
+    "create_random_color_image_source": "create a RandomColorSource that generates a random solid color image and resets color each episode",
+    "create_noise_image_source": "create a NoiseSource that generates Gaussian noise images with configurable strength for a given shape",
+    "create_random_image_source": "create a RandomImageSource that loads images from a file list and returns random frames on each call",
+    "create_random_video_source": "create a RandomVideoSource that loads video frames from files and returns sequential frames on each call"
+  },
+  "facebookresearch_deepbisim4control/dmc2gym/wrappers.py": {
+    "create_DMCWrapper_env": "create a DMCWrapper Gym environment from a DeepMind Control Suite domain and task name",
+    "run_DMCWrapper_step": "run a step on the DMCWrapper environment with a normalized action and collect reward",
+    "reset_DMCWrapper": "reset the DMCWrapper environment and return the initial observation",
+    "render_DMCWrapper_rgb": "render the DMCWrapper environment as an RGB array with configurable height, width, and camera",
+    "convert_spec_to_box": "convert a DeepMind env observation or action spec into a Gym Box space"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/acrobot.py": {
+    "create_acrobot_swingup_env": "create a dm_control Acrobot swingup environment with smooth reward and default time limit",
+    "create_acrobot_swingup_sparse_env": "create a dm_control Acrobot swingup environment with sparse indicator reward for benchmarking",
+    "review_Physics_orientations": "review the Physics class orientations method that returns sines and cosines of pole angles",
+    "test_Balance_get_observation": "test the Balance task get_observation method to verify pole orientation and angular velocity output",
+    "run_Balance_get_reward": "run the Balance task get_reward method to compute sparse or smooth reward from physics state"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/ball_in_cup.py": {
+    "create_ball_in_cup_environment": "create a Ball-in-Cup reinforcement learning environment using the catch function with a custom time limit",
+    "run_ball_in_cup_task": "run the Ball-in-Cup catch task by calling SUITE to get the benchmarking easy environment",
+    "review_physics_ball_to_target": "review the Physics class ball_to_target method that returns the vector from ball to target site",
+    "test_physics_in_target": "test the Physics class in_target method to check if the ball is inside the target zone",
+    "summarize_ballincup_task": "summarize the BallInCup task class including initialize_episode, get_observation, and get_reward methods"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/base.py": {
+    "create_Task_subclass": "create a subclass of Task to define a new continuous control task for dm_control",
+    "review_Task_before_step": "review the Task before_step method that sets MuJoCo actuator control signals from actions",
+    "test_Task_action_spec": "test the Task action_spec method to verify it returns a BoundedArraySpec for physics actuators",
+    "build_Task_visualize_reward": "build a Task subclass that enables visualize_reward to color geometries by reward value",
+    "summarize_Task_initialize_episode": "summarize the Task initialize_episode method that resets geom colors at episode start"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/cartpole.py": {
+    "create_balance_env": "create a cartpole balance environment with smooth rewards and a default 10 second time limit",
+    "create_balance_sparse_env": "create a cartpole balance environment with sparse rewards for benchmarking pole balancing tasks",
+    "create_swingup_env": "create a cartpole swing-up environment starting the pole upside down with smooth rewards",
+    "create_multi_pole_env": "create a cartpole environment with two or three poles chained together for harder control",
+    "run_make_model": "run the model generator to produce an MJCF XML string for a cart with N poles"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/cheetah.py": {
+    "run_cheetah_environment": "run the cheetah benchmarking task by calling run() to create a dm_control Environment",
+    "get_cheetah_model_and_assets": "get the cheetah MuJoCo model XML string and assets dict via get_model_and_assets()",
+    "get_cheetah_physics_speed": "get the horizontal speed of the Cheetah by calling Physics.speed() on the physics object",
+    "get_cheetah_observation": "get an observation dict with position and velocity from Cheetah.get_observation(physics)",
+    "get_cheetah_reward": "get the running reward for the Cheetah agent via Cheetah.get_reward(physics) using speed tolerance"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/explore.py": {
+    "run_dm_control_explorer": "run the DM Control Suite environment explorer with an interactive viewer",
+    "run_explorer_with_environment": "run the explorer for a specific domain.task environment like walker.walk",
+    "run_explorer_with_action_noise": "run the explorer with Gaussian action noise applied to environment actions",
+    "run_explorer_without_timeout": "run the explorer with no episode time limit for unlimited interaction",
+    "run_explorer_visualize_reward": "run the explorer with reward visualization coloring geoms by reward value"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/finger.py": {
+    "create_spin_environment": "create a dm_control Spin environment for the Finger domain to train a spinning policy",
+    "create_turn_easy_environment": "create an easy Turn environment with a large target radius for the Finger domain",
+    "create_turn_hard_environment": "create a hard Turn environment with a small target radius for the Finger domain",
+    "review_physics_class": "review the Physics class methods for touch sensors, hinge velocity, tip position, and target distance",
+    "run_set_random_joint_angles": "run the helper function to set random collision-free joint angles for the Finger physics model"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/fish.py": {
+    "create_fish_upright_env": "create a dm_control Fish Upright environment to train an agent to keep the fish torso upright",
+    "create_fish_swim_env": "create a dm_control Fish Swim environment to train an agent to swim toward a target",
+    "review_physics_upright": "review the Physics class upright method that returns the torso z-axis projection for uprightness",
+    "review_physics_mouth_to_target": "review the Physics class mouth_to_target method that computes the vector from mouth to target",
+    "review_swim_get_reward": "review the Swim task get_reward method that combines target proximity and uprightness into a smooth reward"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/hopper.py": {
+    "create_hopper_stand_env": "create a Hopper stand environment that balances upright using the stand function",
+    "create_hopper_hop_env": "create a Hopper hop environment that hops forward using the hop function",
+    "get_hopper_model_assets": "get the Hopper MuJoCo model XML string and assets dictionary via get_model_and_assets",
+    "review_physics_class": "review the Physics class methods height, speed, and touch for Hopper sensor data",
+    "review_hopper_task_class": "review the Hopper task class get_observation and get_reward methods for RL training"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/humanoid.py": {
+    "create_stand_task": "create a humanoid stand task environment with a 25 second time limit",
+    "create_walk_task": "create a humanoid walk task environment targeting 1 m/s horizontal speed",
+    "create_run_task": "create a humanoid run task environment targeting 10 m/s horizontal speed",
+    "create_run_pure_state_task": "create a humanoid run task with pure MuJoCo state observations",
+    "review_physics_class": "review the Physics class methods for torso upright, head height, and center of mass"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/humanoid_CMU.py": {
+    "create_stand_task": "create a humanoid CMU stand task environment with a 20 second time limit",
+    "create_run_task": "create a humanoid CMU run task environment targeting a speed of 10 m/s",
+    "get_physics_head_height": "get the head height of the humanoid CMU from the physics simulation",
+    "get_physics_extremities": "get end effector positions in the egocentric frame from the physics simulation",
+    "get_humanoid_observation": "get an egocentric observation dict with joint angles, extremities, and velocity"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/lqr.py": {
+    "create_lqr_2_1_environment": "create an LQR environment with 2 bodies and 1 actuator using lqr_2_1",
+    "create_lqr_6_2_environment": "create an LQR environment with 6 bodies and 2 actuators using lqr_6_2",
+    "build_lqr_model_xml": "build an MJCF XML model string for a spring-damper system using get_model_and_assets",
+    "run_lqr_reward_calculation": "run the LQRLevel get_reward method to compute quadratic state and control reward",
+    "test_lqr_termination": "test the LQRLevel get_termination method to check if state norm is below epsilon"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/lqr_solver.py": {
+    "solve_lqr_optimal_policy": "solve the LQR problem for a dm_control environment and return the optimal policy matrix and convergence rate",
+    "solve_dare_iteratively": "solve the discrete-time algebraic Riccati equation by iteration given transition and cost matrices",
+    "compute_lqr_gain_matrix": "compute the optimal linear feedback gain matrix K for a dm_control LQR environment",
+    "check_lqr_stability": "check if a controlled LQR system is stable by computing the maximum eigenvalue of the closed-loop matrix",
+    "run_lqr_solver": "run the LQR solver on a dm_control MuJoCo environment to get the value function Hessian and policy"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/manipulator.py": {
+    "create_environment_bring_ball": "create a DM Control environment for the manipulator bring task with the ball prop",
+    "create_environment_insert_peg": "create a DM Control environment for the manipulator insert task with the peg prop",
+    "build_model_make_model": "build a MuJoCo model XML string and assets dict for the manipulator domain with peg or ball props",
+    "review_physics_class": "review the Physics class methods for bounded joint positions, joint velocities, body 2D pose, and site distance",
+    "refactor_bring_task": "refactor the Bring task class to customize reward shaping for peg grasping or ball proximity"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/pendulum.py": {
+    "create_pendulum_environment": "create a pendulum swingup environment by calling swingup with a custom time_limit and random seed",
+    "get_pole_vertical": "get the vertical z component of the pole frame using Physics.pole_vertical method",
+    "get_angular_velocity": "get the angular velocity of the pendulum pole using Physics.angular_velocity method",
+    "get_observation": "get an observation dict with pole orientation and angular velocity using SwingUp.get_observation",
+    "get_reward": "get the swingup reward based on pole vertical tolerance using SwingUp.get_reward"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/point_mass.py": {
+    "create_easy_point_mass_env": "create a point_mass easy task environment with no randomized actuator gains",
+    "create_hard_point_mass_env": "create a point_mass hard task environment with randomized actuator gains",
+    "run_point_mass_physics": "run the Physics class to compute the vector and distance from mass to target",
+    "review_PointMass_get_reward": "review the PointMass get_reward method that computes smooth reward based on target proximity and control magnitude",
+    "summarize_PointMass_initialize_episode": "summarize the PointMass initialize_episode method that randomizes joints and optionally actuator gains"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/quadruped.py": {
+    "create_quadruped_walk_task": "create a dm_control Environment for the quadruped walk task using the walk function",
+    "create_quadruped_run_task": "create a dm_control Environment for the quadruped run task using the run function",
+    "create_quadruped_escape_task": "create a dm_control Environment for the quadruped escape task with terrain and rangefinders",
+    "create_quadruped_fetch_task": "create a dm_control Environment for the quadruped fetch task with walls and a ball",
+    "build_quadruped_model_xml": "build a MuJoCo model XML string for the quadruped with optional terrain, rangefinders, or walls"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/reacher.py": {
+    "build_reacher_easy_env": "build a dm_control Reacher easy environment with a 0.05 target tolerance and randomized target",
+    "build_reacher_hard_env": "build a dm_control Reacher hard environment with a 0.015 target tolerance and randomized target",
+    "create_physics_finger_to_target": "create a Physics method that returns the vector from the finger to the target in global coordinates",
+    "create_reacher_task": "create a Reacher task with a given target size tolerance and optional random seed",
+    "review_reacher_get_observation": "review the Reacher get_observation method that returns position, to_target vector, and velocity"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/stacker.py": {
+    "create_stack_2_environment": "create a dm_control stacker environment with 2 boxes and a 10 second time limit",
+    "create_stack_4_environment": "create a dm_control stacker environment with 4 boxes for a harder stacking task",
+    "build_make_model": "build a MuJoCo XML model string and assets dict for a given number of boxes",
+    "review_Physics_class": "review the Physics class methods for bounded joint positions, velocities, and site distance calculations",
+    "review_Stack_class": "review the Stack task class for episode initialization, observation, and reward logic"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/swimmer.py": {
+    "create_swimmer_env": "create a swimmer control environment with a configurable number of links using the swimmer function",
+    "create_swimmer6_env": "create a 6-link swimmer benchmarking environment using the swimmer6 function",
+    "create_swimmer15_env": "create a 15-link swimmer benchmarking environment using the swimmer15 function",
+    "get_model_and_assets": "get the MuJoCo model XML string and assets dict for a swimmer with a given number of joints",
+    "review_physics_class": "review the Physics class methods for nose_to_target, body_velocities, and joints computations"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/walker.py": {
+    "create_stand_task": "create a DM Control walker stand task environment with a 25 second time limit",
+    "create_walk_task": "create a DM Control walker walk task environment targeting 1 meter per second speed",
+    "create_run_task": "create a DM Control walker run task environment targeting 8 meters per second speed",
+    "review_Physics_class": "review the Physics class methods for torso height, upright angle, and horizontal velocity",
+    "review_PlanarWalker_class": "review the PlanarWalker task class get_observation and get_reward reward shaping logic"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/tests/domains_test.py": {
+    "test_dm_control_suite_domains": "test all dm_control suite domains to verify tasks conform to observation and action specifications",
+    "test_environment_determinism": "test that identical seeds and actions produce identical trajectories across dm_control environments",
+    "test_visualize_reward": "test that reward visualization correctly blends material colors based on reward values in dm_control tasks",
+    "test_observation_memory_isolation": "test that consecutive observation arrays in dm_control environments do not share memory",
+    "test_initial_state_randomization": "test that consecutive resets produce different initial states in dm_control suite environments"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/tests/loader_test.py": {
+    "test_load_without_kwargs": "test the LoaderTest to load a cartpole swingup environment without any task kwargs",
+    "test_load_with_kwargs": "test the LoaderTest to load a cartpole swingup environment with custom time_limit and random kwargs",
+    "test_suite_constants": "test the LoaderConstantsTest to verify suite BENCHMARKING, EASY, HARD, and EXTRA constants are non-empty",
+    "run_loader_tests": "run the absltest main to execute all dm_control suite loader test cases",
+    "review_loader_test_classes": "review the LoaderTest and LoaderConstantsTest classes to understand dm_control suite loading patterns"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/tests/lqr_test.py": {
+    "test_lqr_optimal_policy": "test the LQR optimal policy for lqr_2_1 and lqr_6_2 environments using lqr_solver.solve",
+    "test_lqr_optimal_policy_no_scipy": "test the LQR optimal policy using the non-scipy DARE solver code path",
+    "assertPolicyisOptimal": "assert the LQR policy is optimal by comparing measured total loss against analytical expected cost",
+    "run_lqr_test_suite": "run the LQR domain test suite using absltest.main for all parameterized test cases",
+    "review_LqrTest_class": "review the LqrTest class and its parameterized test methods for LQR domain validation"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/utils/parse_amc.py": {
+    "convert_amc_to_mujoco": "convert an AMC motion capture file to MuJoCo qpos and qvel values with resampling",
+    "parse_amc_file": "parse an AMC motion capture file and return frame values as numpy arrays",
+    "create_amcvals2qpos_transformer": "create an Amcvals2qpos callable to convert AMC frame values to MuJoCo qpos format",
+    "convert_euler_to_quaternion": "convert euler angles in degrees to a quaternion using zyx rotation order",
+    "compute_quaternion_difference": "compute the quaternion difference between a source and target quaternion using MuJoCo bindings"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/utils/parse_amc_test.py": {
+    "test_parse_amc_convert": "test the parse_amc.convert function to verify qpos and qvel array shapes for a humanoid AMC clip",
+    "run_parse_amc_test": "run the ParseAMCTest unit test suite to validate AMC motion capture data parsing and conversion",
+    "test_different_timesteps": "test parse_amc.convert with a smaller timestep to verify doubled frame count in parsed data",
+    "review_ParseAMCTest_class": "review the ParseAMCTest class and its test_sizes_of_parsed_data method for AMC parsing assertions",
+    "summarize_parse_amc_convert_usage": "summarize how parse_amc.convert is called with an AMC file path, physics model, and control timestep"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/utils/randomizers.py": {
+    "random_limited_quaternion": "generate a random quaternion limited to a specified rotation angle using a random state and limit",
+    "randomize_limited_and_rotational_joints": "randomize the positions of all joints in a MuJoCo physics body including hinges sliders balls and free joints",
+    "test_random_limited_quaternion": "test the random_limited_quaternion function by generating quaternions with various angle limits and verifying norms",
+    "test_randomize_limited_and_rotational_joints": "test the randomize_limited_and_rotational_joints function on a MuJoCo physics model with mixed joint types",
+    "refactor_randomize_limited_and_rotational_joints": "refactor the randomize_limited_and_rotational_joints function to support additional joint types or custom randomization distributions"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/utils/randomizers_test.py": {
+    "test_randomize_limited_and_rotational_joints": "test randomize_limited_and_rotational_joints to verify MuJoCo joint positions are randomized within expected bounds",
+    "run_randomizers_test": "run the randomizers test suite to validate joint randomization for hinge, slide, ball, and free joint types",
+    "review_randomize_unlimited_joints_test": "review the RandomizeUnlimitedJointsTest class to understand how limited and rotational joint randomization is tested",
+    "test_joint_limit_respect": "test that limited hinge and slide joints respect their configured range constraints during randomization",
+    "test_ball_joint_limits": "test that limited ball joints respect angular range constraints using quaternion rotation verification"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/wrappers/action_noise.py": {
+    "create_action_noise_wrapper": "create a Wrapper instance to add Gaussian noise to a dm_control environment's actions",
+    "run_noisy_step": "run a step on the wrapped environment that applies clipped Gaussian noise to the action",
+    "reset_wrapped_env": "reset the underlying dm_control environment through the action noise wrapper",
+    "review_wrapper_bounds_check": "review the Wrapper init to understand how it validates finite action bounds",
+    "summarize_noise_scale": "summarize how the Wrapper computes noise standard deviation as a fraction of the action range"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/wrappers/action_noise_test.py": {
+    "run_action_noise_tests": "run the absltest suite to test the action noise wrapper step and clipping behavior",
+    "test_action_noise_step": "test the action noise wrapper step method with parameterized lower upper bounds and noise scale",
+    "test_action_clipping": "test that noisy actions are clipped to stay within the bounded action spec limits",
+    "test_non_finite_bounds_error": "test that the action noise wrapper raises a ValueError when action bounds contain inf or nan",
+    "test_wrapper_passthrough": "test that the action noise wrapper correctly passes through reset observation_spec and action_spec calls"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/wrappers/pixels.py": {
+    "create_pixel_wrapper": "create a Wrapper instance that adds rendered pixel observations to a dm_control environment",
+    "build_pixels_only_env": "build a pixel-only environment by wrapping a control env with pixels_only set to True",
+    "test_wrapper_reset_step": "test the Wrapper reset and step methods to verify pixel observations are added to time steps",
+    "review_wrapper_observation_spec": "review the Wrapper observation_spec method to understand how pixel specs are constructed from env physics",
+    "refactor_wrapper_render_kwargs": "refactor the Wrapper to pass custom render_kwargs to the mujoco Physics render method"
+  },
+  "facebookresearch_deepbisim4control/local_dm_control_suite/wrappers/pixels_test.py": {
+    "test_pixels_wrapper_dict_observation": "test the pixels.Wrapper with a cartpole swingup environment using dict observations",
+    "test_pixels_wrapper_array_observation": "test the pixels.Wrapper with a FakeArrayObservationEnvironment using single array observations",
+    "test_pixels_only_mode": "test the pixels.Wrapper in pixels_only mode to verify only pixel keys remain",
+    "test_pixels_wrapper_render_kwargs": "test the pixels.Wrapper with custom render_kwargs for width and height",
+    "test_fake_array_observation_environment": "test the FakeArrayObservationEnvironment mock class for dm_env observation specs"
+  }
+}

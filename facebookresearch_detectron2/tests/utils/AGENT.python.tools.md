@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/detectron2
+- repo_uri: https://github.com/facebookresearch/detectron2.git
+
+## File: facebookresearch_detectron2/tests/utils/test_tensorboardx.py
+
+Prompts
+
+```
+['test that TensorboardXWriter creates no files when closed without any scalar writes', 'test that TensorboardXWriter creates files after writing a single scalar value', 'run the unittest suite for TensorboardXWriter to verify file creation behavior', 'review the TestTensorboardXWriter class and its two test methods for coverage gaps', 'refactor the TestTensorboardXWriter class name to fix the capitalization TODO comment']
+```
+
+Usage
+
+```
+{'test_TensorboardXWriter_no_files_created': 'test that TensorboardXWriter creates no files when closed without any scalar writes', 'test_TensorboardXWriter_single_write': 'test that TensorboardXWriter creates files after writing a single scalar value', 'run_TensorboardXWriter_tests': 'run the unittest suite for TensorboardXWriter to verify file creation behavior', 'review_TestTensorboardXWriter_class': 'review the TestTensorboardXWriter class and its two test methods for coverage gaps', 'refactor_TestTensorboardXWriter_capitalization': 'refactor the TestTensorboardXWriter class name to fix the capitalization TODO comment'}
+```
+

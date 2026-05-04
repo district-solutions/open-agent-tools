@@ -1,46 +1,4 @@
 {
-  "lsdefine_GenericAgent/TMWebDriver.py": {
-    "execute_js_code": "execute JavaScript code in a browser tab session via TMWebDriver with timeout and session selection",
-    "find_session_by_url": "find a browser tab session by URL pattern and return matching session ID and info",
-    "set_default_session": "set the default browser session to use for subsequent JS execution by URL pattern",
-    "navigate_to_url": "navigate the current browser tab to a specified URL using window.location.href",
-    "open_new_tab": "open a new browser tab with a specified URL using GM_openInTab"
-  },
-  "lsdefine_GenericAgent/agent_loop.py": {
-    "run_agent_loop": "run the agent loop with LLM client, system prompt, user input, handler, and tools schema to execute multi-turn agent conversations",
-    "test_base_handler_dispatch": "test the BaseHandler dispatch method that routes tool calls to do_{tool_name} handler methods with before/after callbacks",
-    "summarize_agent_runner_loop": "summarize the agent_runner_loop function that orchestrates multi-turn LLM interactions with tool execution and result accumulation",
-    "review_step_outcome": "review the StepOutcome dataclass that represents the result of a tool execution with data, next_prompt, and should_exit fields",
-    "create_pretty_json": "create a function that formats JSON data with pretty printing and special handling for script fields with semicolon-separated statements"
-  },
-  "lsdefine_GenericAgent/agentmain.py": {
-    "run_generic_agent_cli": "run the generic agent CLI with --input to send a prompt and get an LLM-powered response",
-    "run_generic_agent_task": "run the generic agent in one-shot task mode using --task with file-based input and output directories",
-    "run_generic_agent_reflect": "run the generic agent in reflect mode with --reflect to periodically trigger tasks from a monitoring script",
-    "run_generic_agent_interactive": "run the generic agent in interactive mode with stdin input and streaming output",
-    "run_generic_agent_background": "run the generic agent in background mode with --bg to launch as a subprocess and print its PID"
-  },
-  "lsdefine_GenericAgent/ga.py": {
-    "run_python_code": "run a Python code snippet with timeout, cwd, and optional stop signal support",
-    "run_bash_command": "run a bash or powershell command with streaming stdout and timeout enforcement",
-    "scan_web_page": "scan the current browser tab for simplified HTML content and list all open tabs",
-    "execute_browser_js": "execute JavaScript in the browser to fully control page interactions and capture results",
-    "read_file_content": "read a file starting from a given line with keyword search and line number display"
-  },
-  "lsdefine_GenericAgent/llmcore.py": {
-    "build_claude_session": "build a Claude LLM session using ClaudeSession with API key, base URL, model, and context window configuration",
-    "create_tool_client_chat": "create a ToolClient that builds protocol prompts with tool instructions and parses mixed LLM responses containing tool calls",
-    "run_native_claude_session": "run a NativeClaudeSession that calls Claude Code API with beta features, prompt caching, and interleaved thinking support",
-    "trim_messages_history": "trim LLM message history by compressing thinking and tool-use tags and removing old messages to fit context window",
-    "parse_claude_sse_response": "parse Claude Anthropic SSE streaming responses into text chunks and structured content blocks with tool use and thinking"
-  },
-  "lsdefine_GenericAgent/simphtml.py": {
-    "optimize_html_for_tokens": "optimize HTML by stripping unnecessary attributes and shortening long values to reduce token count",
-    "get_main_block": "extract the main content block from a webpage as text-only or HTML using a browser driver",
-    "get_html": "get optimized HTML from a browser driver with list truncation and character budget limits",
-    "find_changed_elements": "find DOM changes between two HTML snapshots and return the most significant change",
-    "execute_js_rich": "execute JavaScript in a browser driver and return results with transient text and DOM diff monitoring"
-  },
   "lsdefine_GenericAgent/frontends/chatapp_common.py": {
     "clean_reply_strip_llm_tags": "clean an LLM reply by stripping XML-style tags like thinking, summary, tool_use, and file_content",
     "extract_files_from_reply": "extract file paths from a chat reply text by finding [FILE:filepath] markers",
@@ -96,6 +54,48 @@
     "send_media_file_wechat": "send an image, file, or video to a WeChat user via WxBotClient send_image, send_file, or send_video",
     "poll_wechat_updates": "poll for incoming WeChat messages using WxBotClient get_updates method",
     "run_wechat_bot_loop": "run the WxBotClient message listening loop with an on_message callback handler"
+  },
+  "lsdefine_GenericAgent/memory/adb_ui.py": {
+    "dump_android_ui_hierarchy": "dump the Android UI hierarchy via uiautomator2 or native adb fallback and parse nodes",
+    "filter_ui_nodes_by_keyword": "filter Android UI nodes by keyword using the ui function with keyword parameter",
+    "get_clickable_ui_nodes": "get only clickable Android UI nodes using ui with clickable_only parameter",
+    "tap_screen_coordinates": "tap screen coordinates on connected Android device via adb input tap command",
+    "parse_xml_ui_string": "parse Android UI XML hierarchy string into structured node list with bounds and properties"
+  },
+  "lsdefine_GenericAgent/memory/keychain.py": {
+    "create_keys_set": "create a secret keychain entry using keys.set('api_key', 'sk-abc123') to store a secret value",
+    "create_keys_set_from_file": "create a secret keychain entry from a file using keys.set('token', file='/path/to/token.txt')",
+    "retrieve_keys_use": "retrieve a stored secret using keys.api_key.use() to get the raw value without printing",
+    "list_keys_ls": "list all stored secret names using keys.ls() which returns a list of key names",
+    "review_SecretStr": "review the SecretStr class that wraps secrets with masked repr and a .use() method to retrieve the raw value"
+  },
+  "lsdefine_GenericAgent/memory/ljqCtrl.py": {
+    "click_screen_coordinates": "click the screen at physical coordinates x, y with a mouse click action",
+    "press_keyboard_shortcut": "press a keyboard shortcut like ctrl+v or alt+f4 using virtual key codes",
+    "find_block_on_screen": "find a UI block template image on screen and return center position and match confidence",
+    "grab_window_screenshot": "grab a DPI-safe PIL Image screenshot of a window by its hwnd",
+    "move_cursor_to_position": "move the mouse cursor to a logical coordinate position with DPI scaling applied"
+  },
+  "lsdefine_GenericAgent/memory/ocr_utils.py": {
+    "run_ocr_image_file": "run OCR on a PIL Image object or image file path and return recognized text with bounding boxes",
+    "run_ocr_screen_region": "run OCR on a screen region by pixel coordinates and return recognized text lines",
+    "run_ocr_window_by_hwnd": "run OCR on a specific window using its handle, supporting remote desktop disconnected scenarios",
+    "test_ocr_rapid_engine": "test the internal rapid OCR engine with a PIL Image and return structured text with confidence scores",
+    "summarize_ocr_utils_cli": "summarize the CLI usage of ocr_utils by running the __main__ block to OCR a screen region"
+  },
+  "lsdefine_GenericAgent/memory/procmem_scanner.py": {
+    "scan_process_memory": "scan a Windows process memory for YARA pattern matches and return hex context around each hit",
+    "build_yara_rule": "build a YARA rule from a hex or ASCII pattern string for process memory scanning",
+    "format_llm_context": "format matched memory bytes into structured JSON with hex, ASCII, and address context for LLM consumption",
+    "test_process_scanner": "test the procmem_scanner module by scanning a target process memory region with a given pattern",
+    "review_memory_scanning": "review the procmem_scanner module and its Windows kernel32 API integration for memory scanning"
+  },
+  "lsdefine_GenericAgent/memory/ui_detect.py": {
+    "run_ui_detect_cli": "run the ui_detect CLI to detect UI elements in a screenshot image using YOLO",
+    "run_ui_detect_with_ocr": "run the ui_detect CLI to detect UI elements and recognize text via OCR in a screenshot",
+    "run_ui_detect_save_visualization": "run the ui_detect CLI to detect UI elements and save a visualized output image with bounding boxes",
+    "run_ui_detect_export_json": "run the ui_detect CLI to detect UI elements and export results as a JSON file",
+    "run_ui_detect_custom_threshold": "run the ui_detect CLI with a custom confidence threshold for UI element detection"
   },
   "lsdefine_GenericAgent/memory/L4_raw_sessions/compress_session.py": {
     "compress_session_file": "compress a model_responses session file and output a timestamped compressed version",

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dpr-scale
+- repo_uri: https://github.com/facebookresearch/dpr-scale
+
+## File: facebookresearch_dpr-scale/dpr_scale/transforms/tests/test_transforms.py
+
+Prompts
+
+```
+['test the BertTransform class to tokenize text into input_ids tensors with special tokens', 'test the HFTransform class to tokenize text into input_ids tensors using HuggingFace transformers', 'test the DPRTransform class to transform queries and contexts with positive and negative sampling', 'create a minimal BERT model with a tiny config and save it to a directory', 'test the DPRTransform class at various batch sizes to verify query and context tensor outputs']
+```
+
+Usage
+
+```
+{'test_BertTransform': 'test the BertTransform class to tokenize text into input_ids tensors with special tokens', 'test_HFTransform': 'test the HFTransform class to tokenize text into input_ids tensors using HuggingFace transformers', 'test_DPRTransform': 'test the DPRTransform class to transform queries and contexts with positive and negative sampling', 'create_bert_tiny': 'create a minimal BERT model with a tiny config and save it to a directory', 'test_DPRTransform_batch_sizes': 'test the DPRTransform class at various batch sizes to verify query and context tensor outputs'}
+```
+

@@ -1,0 +1,219 @@
+{
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/async_connection.py": {
+    "create_async_connection": "create an AsyncConnection to a dm_env_rpc server using an existing gRPC async channel",
+    "send_request_to_server": "send a dm_env_rpc Request message to the server and await the corresponding Response",
+    "close_async_connection": "close the AsyncConnection stream when the dm_env_rpc server connection is no longer needed",
+    "use_async_connection_context_manager": "use AsyncConnection as a context manager to automatically close the connection on exit",
+    "create_secure_channel_and_connect": "create a secure async gRPC channel and connect to a dm_env_rpc server in one call"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/async_connection_test.py": {
+    "test_async_connection_create": "test the AsyncConnection class by sending a CreateWorldRequest and verifying the response",
+    "test_async_connection_error": "test that AsyncConnection raises DmEnvRpcError when the server returns an error response",
+    "test_async_connection_extension": "test sending an extension request packed in an Any protobuf and verifying the response",
+    "test_async_connection_incorrect_response": "test that AsyncConnection raises ValueError when receiving an unexpected response message type",
+    "test_async_connection_metadata": "test that AsyncConnection passes metadata to the gRPC stub Process call"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/connection.py": {
+    "create_connection_to_dm_env_rpc_server": "create a Connection instance with a gRPC channel to interact with a dm_env_rpc server",
+    "send_request_to_dm_env_rpc_server": "send a dm_env_rpc Request message to the server and receive the corresponding Response",
+    "create_secure_channel_and_connect": "create a secure gRPC channel with unbounded message lengths and connect to a dm_env_rpc server",
+    "close_connection_to_dm_env_rpc_server": "close the Connection and its underlying gRPC stream when no longer needed",
+    "use_connection_as_context_manager": "use Connection as a context manager to automatically close the connection on exit"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/connection_test.py": {
+    "test_Connection_send": "test the Connection class send method by creating a mock channel and sending a CreateWorldRequest",
+    "test_Connection_close": "test that sending a request after calling close on Connection raises a ValueError",
+    "test_Connection_error": "test that Connection.send raises DmEnvRpcError when the server returns an error response",
+    "test_create_secure_channel_and_connect": "test create_secure_channel_and_connect to verify it creates a gRPC secure channel and waits for readiness",
+    "test_Connection_extension": "test sending a packed Any protobuf extension request through Connection and verifying the response"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/dm_env_adaptor.py": {
+    "create_world_dm_env_rpc": "create a new dm_env_rpc world on the server with the provided settings and return the world name",
+    "join_world_dm_env_adaptor": "join an existing dm_env_rpc world and return a DmEnvAdaptor instance for interacting with the environment",
+    "create_and_join_world_dm_env_rpc": "create a new dm_env_rpc world and immediately join it, returning the DmEnvAdaptor and world name",
+    "reset_dm_env_adaptor": "reset the remote dm_env_rpc environment to its initial state and return the first time step",
+    "step_dm_env_adaptor": "step the remote dm_env_rpc environment with the given actions and return the resulting time step"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/dm_env_adaptor_test.py": {
+    "test_dm_env_adaptor_step": "test the DmEnvAdaptor step method to verify it sends correct StepRequest and returns proper timestep",
+    "test_dm_env_adaptor_reset": "test the DmEnvAdaptor reset method to verify it handles spec changes and returns FIRST timestep",
+    "test_create_and_join_world": "test the create_and_join_world helper to verify world creation and joining with settings",
+    "test_nested_tensor_specs": "test the DmEnvAdaptor nested tensor handling to verify flat and nested spec conversion",
+    "test_auto_observations_flags": "test the AutoObservations flags to verify reward and discount observation request behavior"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/dm_env_flatten_utils.py": {
+    "flatten_dict": "flatten a nested dictionary into a flat dictionary using a separator to join keys",
+    "flatten_dict_strict": "flatten a nested dictionary with strict mode to reject keys containing the separator",
+    "unflatten_dict": "unflatten a flat dictionary into a nested dictionary by splitting keys on a separator",
+    "flatten_and_unflatten_roundtrip": "flatten a nested dictionary and unflatten it back to verify the roundtrip works",
+    "unflatten_dict_conflict_detection": "unflatten a dictionary and detect conflicts where a key is assigned both a leaf and nested value"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/dm_env_flatten_utils_test.py": {
+    "flatten_nested_dict": "flatten a nested dictionary into dot-separated keys using flatten_dict with a separator",
+    "unflatten_dot_separated_dict": "unflatten a dot-separated key dictionary back into nested structure using unflatten_dict",
+    "test_flatten_unflatten_roundtrip": "test that flatten_dict and unflatten_dict are inverse operations producing the original dict",
+    "flatten_dict_non_strict_mode": "flatten a dictionary with keys containing the separator by setting strict to False",
+    "unflatten_dict_custom_separator": "unflatten a dictionary using a custom separator like double colon instead of dot"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/dm_env_rpc_test.py": {
+    "test_tensor_setting_data": "test setting float array data on a dm_env_rpc_pb2 Tensor protobuf message",
+    "test_tensor_which_oneof": "test using WhichOneof to check which payload field is set on a Tensor",
+    "test_tensor_wrong_type": "test that setting wrong type data on a Tensor raises a TypeError",
+    "test_tensor_spec_setup": "test creating and configuring a TensorSpec with name, shape, min, max, and dtype",
+    "test_join_world_response": "test setting shape and dtype on a JoinWorldResponse action spec"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/dm_env_utils.py": {
+    "convert_tensor_spec_to_dm_env_spec": "convert a dm_env_rpc TensorSpec protobuf to a dm_env specs.Array spec",
+    "convert_dm_env_spec_to_tensor_spec": "convert a dm_env specs.Array to a dm_env_rpc TensorSpec protobuf",
+    "get_dm_env_specs_from_manager": "get a dict of dm_env specs from a SpecManager instance",
+    "review_tensor_spec_to_dm_env_spec": "review tensor_spec_to_dm_env_spec to understand how it maps protobuf specs to dm_env types",
+    "refactor_dm_env_spec_to_tensor_spec": "refactor dm_env_spec_to_tensor_spec to handle additional dm_env spec subclasses"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/dm_env_utils_test.py": {
+    "test_tensor_spec_to_dm_env_spec": "test converting a dm_env_rpc TensorSpec protobuf to a dm_env Array or BoundedArray spec",
+    "test_dm_env_spec_to_tensor_spec": "test converting a dm_env DiscreteArray or BoundedArray spec to a TensorSpec protobuf",
+    "test_dm_env_spec_from_manager": "test building a dict of dm_env specs from a SpecManager instance",
+    "test_tensor_spec_bounds_validation": "test that TensorSpec bounds with mismatched types raise a ValueError",
+    "test_tensor_spec_string_bounds_error": "test that setting numeric bounds on a STRING dtype TensorSpec raises an error"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/error.py": {
+    "create_DmEnvRpcError_from_status_proto": "create a DmEnvRpcError instance by passing a google.rpc.Status protobuf message to the constructor",
+    "review_DmEnvRpcError_code_property": "review the DmEnvRpcError class and access its code property to get the error status code as an integer",
+    "review_DmEnvRpcError_message_property": "review the DmEnvRpcError class and access its message property to get the human-readable error string",
+    "review_DmEnvRpcError_details_property": "review the DmEnvRpcError class and access its details property to iterate over any_pb2.Any detail messages",
+    "test_DmEnvRpcError_pickle_roundtrip": "test that a DmEnvRpcError can be pickled and unpickled correctly using its __reduce__ method"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/error_test.py": {
+    "test_DmEnvRpcError_simple": "test that DmEnvRpcError correctly exposes code and message attributes from a Status protobuf",
+    "test_DmEnvRpcError_pickle": "test that DmEnvRpcError can be pickled and unpickled while preserving code and message",
+    "test_DmEnvRpcError_repr": "test that repr of DmEnvRpcError includes both the message and error code",
+    "create_DmEnvRpcError_from_status": "create a DmEnvRpcError exception from a google.rpc Status protobuf with a code and message",
+    "run_error_test_suite": "run the absltest suite for dm_env_rpc.v1.error to validate DmEnvRpcError behavior"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/message_utils.py": {
+    "pack_rpc_request": "pack a dm_env_rpc request message into a wire-ready format wrapping extensions in any_pb2.Any",
+    "unpack_rpc_request": "unpack a dm_env_rpc request message extracting extension types from any_pb2.Any wrappers",
+    "pack_rpc_response": "pack a dm_env_rpc response message into a wire-ready format wrapping extensions in any_pb2.Any",
+    "unpack_rpc_response": "unpack a dm_env_rpc response message extracting extension types from any_pb2.Any wrappers",
+    "pack_environment_request": "construct an EnvironmentRequest containing a dm_env_rpc request message and return the field name used"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/message_utils_test.py": {
+    "pack_environment_request": "pack a CreateWorldRequest into an EnvironmentRequest with the correct oneof field name",
+    "unpack_environment_response": "unpack an EnvironmentResponse and extract the expected response message by field name",
+    "pack_rpc_request": "pack a native or extension RPC request into a wire-ready DmEnvRpcRequest message",
+    "pack_rpc_response": "pack a native or extension RPC response into a wire-ready DmEnvRpcResponse message",
+    "unpack_rpc_request": "unpack a DmEnvRpcRequest and unwrap extension messages given known extension types"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/spec_manager.py": {
+    "build_spec_manager": "build a SpecManager from a dict mapping UIDs to dm_env_rpc TensorSpecs",
+    "unpack_tensors": "unpack a UID-keyed dm_env_rpc tensor map to a name-keyed Python dict with scalars and arrays",
+    "pack_tensors": "pack a name-keyed Python dict of scalars and arrays into a UID-keyed dm_env_rpc tensor map",
+    "lookup_name_to_uid": "look up the integer UID for a given tensor spec name string",
+    "lookup_uid_to_spec": "look up the TensorSpec proto for a given integer UID"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/spec_manager_test.py": {
+    "test_SpecManager_pack": "test the SpecManager pack method to convert name-keyed dicts to UID-keyed dm_env_rpc tensors",
+    "test_SpecManager_unpack": "test the SpecManager unpack method to convert UID-keyed dm_env_rpc tensors to name-keyed dicts",
+    "test_SpecManager_name_to_uid": "test the SpecManager name_to_uid method to resolve a tensor spec name to its UID",
+    "test_SpecManager_variable_shape": "test the SpecManager pack method with variable shape specs using -1 dimensions",
+    "test_SpecManager_constructor": "test the SpecManager constructor to detect duplicate names and invalid multi-variable shapes"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/tensor_spec_utils.py": {
+    "get_bounds_from_tensor_spec": "get the inclusive min and max bounds from a dm_env_rpc TensorSpec proto",
+    "set_bounds_on_tensor_spec": "set the inclusive min and max bounds on a dm_env_rpc TensorSpec proto",
+    "get_numpy_range_info": "get the finfo or iinfo range info for a given numpy dtype",
+    "validate_bound_for_dtype": "validate whether a scalar or array is a valid bound for a given numpy dtype",
+    "create_bounds_dataclass": "create a Bounds dataclass instance with min and max values for a generic type"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/tensor_spec_utils_test.py": {
+    "get_np_range_info": "get the min and max range info for a numpy dtype like float32 or uint32",
+    "get_tensor_spec_bounds": "get the inclusive min and max bounds from a dm_env_rpc TensorSpec protobuf message",
+    "set_tensor_spec_bounds": "set the minimum and maximum bounds on a dm_env_rpc TensorSpec protobuf message",
+    "validate_bound_for_dtype": "validate whether a scalar or array value is safely castable to a given numpy dtype",
+    "create_bounds_dataclass": "create a Bounds dataclass instance with min and max values for a tensor spec"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/tensor_utils.py": {
+    "pack_tensor": "create a dm_env_rpc Tensor proto from a NumPy array or scalar value with optional dtype and compression",
+    "unpack_tensor": "convert a dm_env_rpc Tensor proto back into a NumPy array or scalar with the correct shape",
+    "get_packer": "retrieve the Packer instance that handles conversion for a given NumPy dtype",
+    "np_type_to_data_type": "convert a NumPy dtype to its corresponding dm_env_rpc DataType enum value",
+    "data_type_to_np_type": "convert a dm_env_rpc DataType enum to its corresponding NumPy dtype"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/tensor_utils_benchmark.py": {
+    "run_tensor_pack_benchmark": "run the micro-benchmark to measure pack_tensor performance across numpy dtypes",
+    "run_tensor_unpack_benchmark": "run the micro-benchmark to measure unpack_tensor performance across numpy dtypes",
+    "run_benchmark_with_repeats": "run the benchmark suite with a custom number of repeats via the repeats flag",
+    "review_AbstractBenchmark_class": "review the AbstractBenchmark base class that defines the run setup and statement interface",
+    "review_PackBenchmark_class": "review the PackBenchmark class that benchmarks packing numpy arrays to Tensor protos"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/tensor_utils_test.py": {
+    "pack_numpy_array_to_tensor_proto": "pack a numpy array or scalar into a dm_env_rpc Tensor protobuf message",
+    "unpack_tensor_proto_to_numpy_array": "unpack a dm_env_rpc Tensor protobuf message back into a numpy array or scalar",
+    "get_packer_for_numpy_dtype": "get a Packer instance for a given numpy dtype to manually pack or unpack proto payloads",
+    "get_tensor_type_from_proto": "get the numpy dtype corresponding to a dm_env_rpc Tensor protobuf message",
+    "convert_data_type_to_numpy_type": "convert a dm_env_rpc DataType enum value to its corresponding numpy dtype"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/compliance/create_destroy_world.py": {
+    "create_world": "create a world with given settings by sending a CreateWorldRequest via the dm_env_rpc connection",
+    "destroy_world": "destroy a world by sending a DestroyWorldRequest with the world name via the dm_env_rpc connection",
+    "test_create_destroy_world": "test that a world can be created with required settings and then destroyed without error",
+    "test_invalid_settings": "test that creating a world with invalid settings raises a DmEnvRpcError exception",
+    "test_unique_world_name": "test that two worlds created with the same settings receive unique world names"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/compliance/join_leave_world.py": {
+    "test_join_world_compliance": "test that a client can successfully join a dm_env_rpc world with valid settings",
+    "test_leave_world_compliance": "test that a client can leave a joined world or leave without having joined",
+    "test_join_world_error_handling": "test that joining with an invalid world name or invalid settings raises DmEnvRpcError",
+    "test_action_observation_specs": "test that action and observation specs have unique names and consistent tensor shapes",
+    "test_rejoin_world_after_leaving": "test that a client can rejoin a world after leaving it successfully"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/compliance/reset.py": {
+    "reset_environment_via_rpc": "send a ResetRequest to the dm_env_rpc connection and return the environment specs",
+    "test_reset_resends_specs": "test that calling reset after join_world returns the same specs as joining",
+    "test_cannot_reset_without_join": "test that calling reset without joining a world raises a DmEnvRpcError",
+    "test_multiple_resets": "test that calling reset multiple times returns consistent specs equal to join_world specs",
+    "extend_reset_compliance_tests": "subclass the Reset abstract base class to implement custom dm_env_rpc reset compliance tests"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/compliance/reset_world.py": {
+    "test_reset_invalid_world": "test that ResetWorld raises DmEnvRpcError when called with an invalid world name",
+    "test_reset_world_not_joined": "test that ResetWorld succeeds on a world the client is not currently joined to",
+    "test_reset_world_when_joined": "test that ResetWorld succeeds when the client is already joined to the target world",
+    "create_reset_world_compliance_test": "create a subclass of ResetWorld to test dm_env_rpc server compliance for world reset behavior",
+    "review_reset_world_base_class": "review the ResetWorld abstract base class and its join, reset, and leave world methods"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/compliance/step.py": {
+    "test_Step_class_compliance": "test the Step base class to verify dm_env_rpc server step compliance for observations and actions",
+    "test_observation_request_handling": "test that requested observations are returned and invalid observation UIDs raise errors",
+    "test_action_validation": "test that actions with wrong types, shapes, or out-of-range values raise DmEnvRpcError",
+    "test_broadcastable_actions": "test that scalar values can be broadcast to match action tensor shapes",
+    "test_variable_dimension_tensors": "test that single variable dimension tensors are accepted but multiple variable dimensions are rejected"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/extensions/properties.py": {
+    "read_property_value": "read a property value by key from a dm_env_rpc server using PropertiesExtension",
+    "write_property_value": "write a scalar or numpy array value to a property on a dm_env_rpc server",
+    "list_property_specs": "list all available property specs under a given key path via PropertiesExtension",
+    "get_property_spec_dict": "get a dictionary mapping property keys to PropertySpec objects for a given key path",
+    "inspect_property_spec": "inspect a PropertySpec to check its key, readable, writable, listable, and description attributes"
+  },
+  "google-deepmind_dmenvrpc/dm_env_rpc/v1/extensions/properties_test.py": {
+    "test_properties_extension_read": "test the PropertiesExtension class to read a property value by key using bracket notation",
+    "test_properties_extension_write": "test the PropertiesExtension class to write a property value by key and verify it was set",
+    "test_properties_extension_specs": "test the PropertiesExtension specs method to list all available property specs at root or under a key",
+    "test_property_spec_attributes": "test the PropertySpec class attributes including readable, writable, listable, spec, and description",
+    "test_properties_error_handling": "test the PropertiesExtension error handling for invalid keys, bad arguments, and permission denied scenarios"
+  },
+  "google-deepmind_dmenvrpc/examples/catch_environment.py": {
+    "run_catch_grpc_server": "run the CatchEnvironmentService gRPC server to serve a Catch game environment over dm_env_rpc",
+    "create_catch_game": "create a CatchGame instance with specified rows, columns, and a random seed for the ball position",
+    "step_catch_environment": "step the Catch game environment by sending a paddle action via the gRPC step message",
+    "reset_catch_world": "reset the Catch game world with an optional seed setting via the gRPC reset message",
+    "join_catch_world": "join the Catch game world and receive action and observation specs via the gRPC join message"
+  },
+  "google-deepmind_dmenvrpc/examples/catch_test.py": {
+    "test_catchgame_draw_board": "test the CatchGame class draw_board method to verify initial board state and shape",
+    "test_catchgame_update_action": "test the CatchGame update method to verify ball drops and paddle moves on action",
+    "test_catchgame_termination_reward": "test the CatchGame has_terminated and reward methods to verify game end conditions",
+    "test_server_connection_grpc": "test the ServerConnection class to start a gRPC server with CatchEnvironmentService and create a channel",
+    "test_dmenv_adaptor_integration": "test the DmEnvAdaptor wrapping an RPC connection to provide a dm_env compatible interface"
+  }
+}

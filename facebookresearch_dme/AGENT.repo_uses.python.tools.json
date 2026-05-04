@@ -1,0 +1,79 @@
+{
+  "facebookresearch_dme/dme/args.py": {
+    "parse_dme_training_args": "parse command line arguments for the DME model training experiment configuration",
+    "get_available_embeddings": "get a list of available pre-trained embeddings with their file paths and dimensions",
+    "preprocess_args": "preprocess the args namespace to set up cache paths, checkpoint paths, and resolve embeddings",
+    "configure_optimizer_and_lr": "configure the optimizer type, learning rate, and learning rate scheduling parameters",
+    "set_embedder_config": "set embedder parameters including attention type, dropout, projection size, and embedding mix mode"
+  },
+  "facebookresearch_dme/dme/embedders.py": {
+    "load_cached_pretrained_embeddings": "load pretrained word embeddings from a text file and cache them as a pickle for fast reuse",
+    "match_pretrained_embeddings": "match pretrained embeddings to a vocabulary index by exact or lowercase word key lookup",
+    "normalize_embeddings": "normalize embeddings by subtracting the mean of matched indices and zero out unmatched indices",
+    "get_embeds_vocab": "build a cached vocabulary set from multiple embedding file paths with specified dimensions",
+    "SingleEmbedder": "create a single PyTorch embedding layer initialized with pretrained word vectors and frozen weights"
+  },
+  "facebookresearch_dme/dme/encoders.py": {
+    "build_sentencoder": "build a SentEncoder with args and logger to encode sentences using a bidirectional LSTM",
+    "create_get_embedder": "create an embedder by calling get_embedder with args specifying mixmode as cat or proj_sum",
+    "run_sentencoder_forward": "run the SentEncoder forward pass with words tensor and sequence lengths to get encoded representations",
+    "review_sentencoder_rnn": "review the SentEncoder class to understand how it uses packed sequences with a bidirectional LSTM",
+    "refactor_get_embedder_mixmode": "refactor get_embedder to support additional mixmode options beyond cat and proj_sum"
+  },
+  "facebookresearch_dme/dme/logger.py": {
+    "create_logger_with_file_and_console_handlers": "create a logger that writes debug logs to a file and info logs to the console",
+    "create_log_formatter_with_elapsed_time": "create a LogFormatter that prefixes log messages with level, timestamp, and elapsed time",
+    "reset_logger_elapsed_time": "reset the logger elapsed time by calling the reset_time method on the logger object",
+    "format_log_message_with_multiline_support": "format a log message that replaces newlines with indented lines to align with the prefix",
+    "configure_logger_debug_and_info_levels": "configure a logger with debug level for file output and info level for console output"
+  },
+  "facebookresearch_dme/dme/datasets/img_cap_retrieval.py": {
+    "create_ImageCaptionDataset": "create an ImageCaptionDataset from a pickle file with image features and captions for training",
+    "build_ImageCaptionDataset_splits": "build train, validation, and test splits of ImageCaptionDataset using the splits class method",
+    "run_ImageCaptionDataset_get_dataloader": "run get_dataloader on an ImageCaptionDataset instance to get a PyTorch DataLoader with batching",
+    "review_ImageCaptionDataset_collate_fn": "review the collate_fn method that sorts captions by length and pads them for batching",
+    "test_ImageCaptionDataset_getitem": "test the __getitem__ method to retrieve image features, raw images, and captions by index"
+  },
+  "facebookresearch_dme/dme/datasets/nli.py": {
+    "create_SNLI_splits": "create SNLI dataset splits using SNLIDataset.splits with text and label fields",
+    "create_MultiNLI_splits": "create MultiNLI dataset splits using MultiNLIDataset.splits with text and label fields",
+    "create_AllNLI_combined_splits": "create combined SNLI and MultiNLI dataset splits using AllNLIDataset.splits",
+    "get_NLI_fields": "get NLI dataset field definitions using NLIDataset.get_fields with text and label fields",
+    "sort_NLI_examples": "sort NLI dataset examples by premise and hypothesis length using NLIDataset.sort_key"
+  },
+  "facebookresearch_dme/dme/datasets/sst.py": {
+    "create_sst2_dataset_splits": "create SST2Dataset splits for train, validation, and test using torchtext TabularDataset",
+    "use_sst2_sort_key": "use the SST2Dataset sort_key method to sort examples by text length",
+    "load_sst2_jsonl": "load SST-2 sentiment dataset from JSONL files using the splits class method",
+    "configure_sst2_fields": "configure text and label fields for the SST2Dataset splits method",
+    "review_sst2dataset_class": "review the SST2Dataset class extending torchtext TabularDataset for sentiment classification"
+  },
+  "facebookresearch_dme/dme/tasks/base.py": {
+    "get_optimizer_scheduler": "create an Adam or SGD optimizer with a ReduceLROnPlateau scheduler from args and model parameters",
+    "count_param_num": "count the total number of trainable parameters in a PyTorch neural network module",
+    "get_lr": "retrieve the current learning rate from a PyTorch optimizer's first parameter group",
+    "nn_init": "initialize all weights and biases of a PyTorch module using xavier, kaiming, or orthogonal methods",
+    "normf": "normalize a PyTorch tensor along a specified dimension using Lp norm with keepdim expansion"
+  },
+  "facebookresearch_dme/dme/tasks/img_cap_retrieval.py": {
+    "build_ImageCaptionRetrievalTask": "build a task that trains an image caption retrieval model using visual sentence embedding loss",
+    "run_VseLoss": "run the visual sentence embedding loss computation between normalized image and caption feature tensors",
+    "create_ImageCaptionRetrievalModel": "create a PyTorch model with caption and image encoders for image caption retrieval",
+    "test_ImageCaptionRetrievalRanker": "test the ranker to compute recall at 1, 5, 10 and mean reciprocal rank for image to caption retrieval",
+    "review_CaptionEncoder": "review the caption encoder that uses SentEncoder and applies L2 normalization to caption features"
+  },
+  "facebookresearch_dme/dme/tasks/nli.py": {
+    "build_nli_model": "build a LanguageInferenceModel with a SentEncoder and multi-layer classifier for natural language inference",
+    "run_nli_evaluation": "run the NaturalLanguageInferenceTask evaluate method to compute accuracy and loss on a data split",
+    "create_nli_task": "create a NaturalLanguageInferenceTask instance with args and logger to set up training for NLI",
+    "review_nli_forward": "review the LanguageInferenceModel forward pass that concatenates premise and hypothesis encodings with difference and product features",
+    "test_nli_batch_forward": "test the NaturalLanguageInferenceTask batch_forward method to compute cross-entropy loss and track training accuracy"
+  },
+  "facebookresearch_dme/dme/tasks/text_classification.py": {
+    "build_text_classification_model": "build a TextClassificationModel with a SentEncoder and multi-layer classifier for text classification",
+    "run_text_classification_task": "run a TextClassificationTask to train a model using cross entropy loss and batch forward passes",
+    "evaluate_text_classification": "evaluate the TextClassificationTask model on a data iterator and report accuracy and loss stats",
+    "review_batch_forward": "review the batch_forward method to compute loss and track correct predictions per batch",
+    "refactor_classifier_head": "refactor the TextClassificationModel classifier head to adjust fc_dim or dropout for better performance"
+  }
+}

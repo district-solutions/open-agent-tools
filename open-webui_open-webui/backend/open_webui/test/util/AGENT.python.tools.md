@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: open-webui/open-webui
+- repo_uri: https://github.com/open-webui/open-webui
+
+## File: open-webui_open-webui/backend/open_webui/test/util/test_redis.py
+
+Prompts
+
+```
+['test the parse_redis_service_url function to extract username, password, service, port, and db from a Redis URL string', 'test the get_sentinels_from_env function to parse comma-separated sentinel hosts and port into a list of host-port tuples', 'test the SentinelRedisProxy class for synchronous Redis operations with Sentinel failover retry support', 'test the SentinelRedisProxy class for asynchronous Redis operations with Sentinel failover retry support', 'test the get_redis_connection function to create Redis or Sentinel-backed connections with optional async mode']
+```
+
+Usage
+
+```
+{'test_parse_redis_service_url': 'test the parse_redis_service_url function to extract username, password, service, port, and db from a Redis URL string', 'test_get_sentinels_from_env': 'test the get_sentinels_from_env function to parse comma-separated sentinel hosts and port into a list of host-port tuples', 'test_sentinel_redis_proxy_sync': 'test the SentinelRedisProxy class for synchronous Redis operations with Sentinel failover retry support', 'test_sentinel_redis_proxy_async': 'test the SentinelRedisProxy class for asynchronous Redis operations with Sentinel failover retry support', 'test_get_redis_connection': 'test the get_redis_connection function to create Redis or Sentinel-backed connections with optional async mode'}
+```
+

@@ -1,0 +1,44 @@
+{
+  "facebookresearch_deepsdf/deep_sdf/data.py": {
+    "get_instance_filenames": "get instance filenames from a data source and split configuration dictionary",
+    "find_mesh_in_directory": "find the single OBJ mesh file in a shape directory and raise on zero or multiple",
+    "remove_nans": "remove rows with NaN values in the fourth column of a PyTorch tensor",
+    "unpack_sdf_samples": "unpack and randomly subsample positive and negative SDF samples from an NPZ file",
+    "SDFSamples": "create a PyTorch Dataset that yields subsampled SDF samples from NPZ files on disk or in RAM"
+  },
+  "facebookresearch_deepsdf/deep_sdf/mesh.py": {
+    "create_mesh_from_decoder": "create a 3D mesh from a DeepSDF decoder and latent vector, saving the result as a PLY file",
+    "convert_sdf_samples_to_ply": "convert a 3D SDF tensor into a PLY mesh file using marching cubes and save to disk",
+    "review_create_mesh": "review the create_mesh function that samples an N x N x N voxel grid and decodes SDF values in batches",
+    "review_convert_sdf_samples_to_ply": "review the convert_sdf_samples_to_ply function that uses marching_cubes_lewiner to extract mesh vertices and faces",
+    "refactor_create_mesh_batching": "refactor the create_mesh function to adjust the max_batch parameter for GPU memory constraints"
+  },
+  "facebookresearch_deepsdf/deep_sdf/utils.py": {
+    "add_common_args": "add debug, quiet, and log arguments to an argparse ArgumentParser for DeepSDF CLI tools",
+    "configure_logging": "configure the root logger with debug, quiet, or info level and optional file output",
+    "decode_sdf": "decode signed distance field values from a decoder network given latent vectors and query points",
+    "review_add_common_args": "review the add_common_args function to see what CLI arguments it adds to an ArgumentParser",
+    "summarize_decode_sdf": "summarize the decode_sdf function that concatenates latent vectors with queries before passing to a decoder"
+  },
+  "facebookresearch_deepsdf/deep_sdf/workspace.py": {
+    "load_experiment_specifications": "load experiment specifications from a specs.json file in the given experiment directory",
+    "load_decoder": "load a trained decoder model and its epoch from a checkpoint in the experiment directory",
+    "build_decoder": "build a new decoder network from experiment specifications using the specified architecture and code length",
+    "load_latent_vectors": "load latent code vectors from a checkpoint file for the given experiment directory",
+    "get_evaluation_dir": "get or create the evaluation output directory path for a specific checkpoint in the experiment"
+  },
+  "facebookresearch_deepsdf/deep_sdf/metrics/chamfer.py": {
+    "compute_chamfer_distance": "compute the symmetric chamfer distance between ground truth points and a generated mesh",
+    "compute_chamfer_with_custom_samples": "compute chamfer distance using a custom number of mesh surface samples",
+    "compute_chamfer_with_kdtree": "compute chamfer distance using KDTree nearest neighbor queries in both directions",
+    "review_chamfer_function": "review the compute_trimesh_chamfer function and its use of scipy KDTree for nearest neighbor search",
+    "summarize_chamfer_metrics": "summarize the chamfer distance computation method that samples a mesh surface and compares to ground truth points"
+  },
+  "facebookresearch_deepsdf/networks/deep_sdf_decoder.py": {
+    "build_decoder_network": "build a Deep SDF Decoder neural network with configurable latent size and layer dimensions",
+    "create_decoder_with_weight_norm": "create a Decoder with weight normalization applied to specified layers",
+    "run_decoder_forward_pass": "run a forward pass through the Decoder with an input tensor of shape N x (L+3)",
+    "review_decoder_initialization": "review the Decoder class initialization to understand layer dimension computation and normalization setup",
+    "test_decoder_with_latent_dropout": "test the Decoder forward pass with latent dropout enabled for regularization"
+  }
+}

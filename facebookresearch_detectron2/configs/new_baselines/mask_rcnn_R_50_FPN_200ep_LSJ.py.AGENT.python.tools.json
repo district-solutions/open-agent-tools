@@ -1,0 +1,16 @@
+{
+    "summary": "Detectron2 config that extends mask_rcnn_R_50_FPN_100ep_LSJ to 200 epochs by doubling max_iter and adjusting lr_multiplier scheduler milestones",
+    "note": "This is a configuration override file with no callable functions, classes, or methods. It imports config objects (dataloader, lr_multiplier, model, optimizer, train) from mask_rcnn_R_50_FPN_100ep_LSJ and mutates train.max_iter and lr_multiplier.scheduler attributes. No CLI-invocable code exists.",
+    "config_objects_imported": [
+        "dataloader",
+        "lr_multiplier",
+        "model",
+        "optimizer",
+        "train"
+    ],
+    "config_modifications": [
+        "train.max_iter *= 2  (100ep -> 200ep)",
+        "lr_multiplier.scheduler.milestones doubled",
+        "lr_multiplier.scheduler.num_updates set to train.max_iter"
+    ]
+}

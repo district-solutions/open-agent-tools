@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/habitat-sim
+- repo_uri: https://github.com/facebookresearch/habitat-sim
+
+## File: facebookresearch_habitat-sim/src/deps/assimp/test/other/streamload.py
+
+Prompts
+
+```
+['run the streamload test to verify assimp importer cleanup across all model directories', 'run process_dir on a directory to test batch loading model files forward and in reverse', 'test that the assimp importer does proper cleanup by loading files twice in a single instance', 'review the process_dir function that recursively collects model files and invokes testbatchload via subprocess', 'refactor process_dir to support custom file extension filters or exclude patterns beyond settings.exclude_extensions']
+```
+
+Usage
+
+```
+{'run_streamload_test': 'run the streamload test to verify assimp importer cleanup across all model directories', 'run_process_dir': 'run process_dir on a directory to test batch loading model files forward and in reverse', 'test_assimp_importer_cleanup': 'test that the assimp importer does proper cleanup by loading files twice in a single instance', 'review_process_dir': 'review the process_dir function that recursively collects model files and invokes testbatchload via subprocess', 'refactor_process_dir': 'refactor process_dir to support custom file extension filters or exclude patterns beyond settings.exclude_extensions'}
+```
+

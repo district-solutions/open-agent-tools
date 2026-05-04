@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/actionengine
+- repo_uri: https://github.com/google-deepmind/actionengine
+
+## File: google-deepmind_actionengine/third_party/abseil-cpp/absl/abseil.podspec.gen.py
+
+Prompts
+
+```
+['run the script with a version flag to generate an abseil CocoaPods podspec from BUILD.bazel files', 'parse a bazel XML rule element into a Rule namedtuple with normalized paths and dependencies', 'recursively collect all cc_library rules from BUILD.bazel files under a given root directory', 'normalize bazel label paths by stripping leading slashes and replacing colons with forward slashes', 'build a nested dictionary tree of bazel rules organized by their podspec subspec hierarchy']
+```
+
+Usage
+
+```
+{'generate_podspec_from_bazel': 'run the script with a version flag to generate an abseil CocoaPods podspec from BUILD.bazel files', 'parse_bazel_xml_rule': 'parse a bazel XML rule element into a Rule namedtuple with normalized paths and dependencies', 'collect_cc_library_rules': 'recursively collect all cc_library rules from BUILD.bazel files under a given root directory', 'normalize_bazel_paths': 'normalize bazel label paths by stripping leading slashes and replacing colons with forward slashes', 'build_rule_directory_tree': 'build a nested dictionary tree of bazel rules organized by their podspec subspec hierarchy'}
+```
+

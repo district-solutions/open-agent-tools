@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/ego4d
+- repo_uri: https://github.com/facebookresearch/ego4d
+
+## File: facebookresearch_ego4d/ego4d/internal/colmap/preprocess.py
+
+Prompts
+
+```
+['run the COLMAP preprocessing pipeline to download videos, extract frames, and generate a COLMAP reconstruction script', 'produce a COLMAP shell script that extracts features, matches, and maps 3D structure from extracted video frames', 'extract frames from an ARIA VRS video file using the vrs binary with optional time range filtering', 'create a video file from a set of presentation timestamps by extracting, rotating, and encoding frames with a specified codec', 'download video files and timesync metadata from S3 paths into a local output directory organized by device ID']
+```
+
+Usage
+
+```
+{'run_COLMAP_preprocess': 'run the COLMAP preprocessing pipeline to download videos, extract frames, and generate a COLMAP reconstruction script', 'produce_COLMAP_script': 'produce a COLMAP shell script that extracts features, matches, and maps 3D structure from extracted video frames', 'extract_ARIA_frames': 'extract frames from an ARIA VRS video file using the vrs binary with optional time range filtering', 'create_video_from_pts': 'create a video file from a set of presentation timestamps by extracting, rotating, and encoding frames with a specified codec', 'download_S3_streams': 'download video files and timesync metadata from S3 paths into a local output directory organized by device ID'}
+```
+

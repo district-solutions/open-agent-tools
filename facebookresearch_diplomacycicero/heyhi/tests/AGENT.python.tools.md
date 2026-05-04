@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/heyhi/tests/test_conf.py
+
+Prompts
+
+```
+['load a prototxt config file with scalar overrides and include resolution using heyhi.conf.load_root_proto_message', 'load a protobuf message from a prototxt file with optional overrides and a specific msg_class', 'load a prototxt config file as a frozen immutable config using heyhi.conf.load_config', 'check if a config field is set, get its value, or set it using dot-notation paths', 'apply scalar overrides to an existing frozen config and return a new frozen config']
+```
+
+Usage
+
+```
+{'load_root_proto_message': 'load a prototxt config file with scalar overrides and include resolution using heyhi.conf.load_root_proto_message', 'load_proto_message': 'load a protobuf message from a prototxt file with optional overrides and a specific msg_class', 'load_config': 'load a prototxt config file as a frozen immutable config using heyhi.conf.load_config', 'conf_is_set_conf_get_conf_set': 'check if a config field is set, get its value, or set it using dot-notation paths', 'conf_with_overrides': 'apply scalar overrides to an existing frozen config and return a new frozen config'}
+```
+

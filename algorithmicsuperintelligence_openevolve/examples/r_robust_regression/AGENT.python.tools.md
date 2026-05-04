@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: algorithmicsuperintelligence/openevolve
+- repo_uri: https://github.com/algorithmicsuperintelligence/openevolve
+
+## File: algorithmicsuperintelligence_openevolve/examples/r_robust_regression/evaluator.py
+
+Prompts
+
+```
+['run the evaluator on an R robust regression program file to measure accuracy and outlier robustness', 'generate synthetic regression data with configurable outlier fraction and noise levels for testing', 'test the evaluate async function by passing an R script path and checking returned metrics', 'review the generate_regression_data function to understand how synthetic data with outliers is created', 'summarize how the evaluator scores R programs across MSE, MAE, R-squared, and outlier robustness']
+```
+
+Usage
+
+```
+{'run_evaluate_r_program': 'run the evaluator on an R robust regression program file to measure accuracy and outlier robustness', 'generate_regression_data_with_outliers': 'generate synthetic regression data with configurable outlier fraction and noise levels for testing', 'test_evaluate_function': 'test the evaluate async function by passing an R script path and checking returned metrics', 'review_generate_regression_data': 'review the generate_regression_data function to understand how synthetic data with outliers is created', 'summarize_evaluation_scoring': 'summarize how the evaluator scores R programs across MSE, MAE, R-squared, and outlier robustness'}
+```
+

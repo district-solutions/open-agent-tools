@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: google-deepmind/dks
+- repo_uri: https://github.com/google-deepmind/dks
+
+## File: google-deepmind_dks/tests/test_activation_transform.py
+
+Prompts
+
+```
+['test the activation transform module to verify correct DKS and TAS transformation parameters for softplus, tanh, relu, and leaky_relu', 'test transformed activation function values using the numpy framework module with high precision assertions', 'test transformed activation function values using the JAX framework module with jnp arrays', 'test transformed activation function values using the PyTorch framework module with torch tensors', 'test transformed activation function values using the TensorFlow framework module with tf tensors', 'test the per_location_normalization function using the JAX backend with various shapes and homog modes', 'test the per_location_normalization function using the PyTorch backend with various shapes and homog modes', 'test the per_location_normalization function using the TensorFlow backend with various shapes and homog modes', 'run the per location normalization test across a framework module with custom conversion functions', 'review the DataPreprocessingTest class and its test methods for data preprocessing across JAX, PyTorch, and TensorFlow', 'test the ModifiedResNet model can be instantiated and applied with parameterized depth, shortcut weight, activation, and resnet v2 configs', 'run the absltest suite for the Haiku modified ResNet example model using absltest.main', 'test the ModifiedResNet forward pass using Haiku transform_with_state and verify output logits shape', 'test the ModifiedResNet with parameterized configs including depth 50, 101, 152 and activations tanh, relu, leaky_relu', 'review the ModifiedResNetTest class and its parameterized test method for model instantiation and apply', 'run the absltest suite to test parameter sampling functions across JAX, TensorFlow, and PyTorch frameworks', 'test the JAX scaled_uniform_orthogonal function for empirical q value preservation with random vectors', 'test the TensorFlow stateless_scaled_uniform_orthogonal function for norm preservation across spatial dimensions', 'test the PyTorch scaled_uniform_orthogonal_ in-place function for orthogonal weight initialization correctness', 'review the ParameterSamplingFunctionTest class and its parameterized test methods for each framework']
+```
+
+Usage
+
+```
+{'test_activation_transform_parameters': 'test the activation transform module to verify correct DKS and TAS transformation parameters for softplus, tanh, relu, and leaky_relu', 'test_activation_values_numpy': 'test transformed activation function values using the numpy framework module with high precision assertions', 'test_activation_values_jax': 'test transformed activation function values using the JAX framework module with jnp arrays', 'test_activation_values_pytorch': 'test transformed activation function values using the PyTorch framework module with torch tensors', 'test_activation_values_tensorflow': 'test transformed activation function values using the TensorFlow framework module with tf tensors'}
+```
+
+## File: google-deepmind_dks/tests/test_data_preprocessing.py
+
+Prompts
+
+```
+['test the activation transform module to verify correct DKS and TAS transformation parameters for softplus, tanh, relu, and leaky_relu', 'test transformed activation function values using the numpy framework module with high precision assertions', 'test transformed activation function values using the JAX framework module with jnp arrays', 'test transformed activation function values using the PyTorch framework module with torch tensors', 'test transformed activation function values using the TensorFlow framework module with tf tensors', 'test the per_location_normalization function using the JAX backend with various shapes and homog modes', 'test the per_location_normalization function using the PyTorch backend with various shapes and homog modes', 'test the per_location_normalization function using the TensorFlow backend with various shapes and homog modes', 'run the per location normalization test across a framework module with custom conversion functions', 'review the DataPreprocessingTest class and its test methods for data preprocessing across JAX, PyTorch, and TensorFlow', 'test the ModifiedResNet model can be instantiated and applied with parameterized depth, shortcut weight, activation, and resnet v2 configs', 'run the absltest suite for the Haiku modified ResNet example model using absltest.main', 'test the ModifiedResNet forward pass using Haiku transform_with_state and verify output logits shape', 'test the ModifiedResNet with parameterized configs including depth 50, 101, 152 and activations tanh, relu, leaky_relu', 'review the ModifiedResNetTest class and its parameterized test method for model instantiation and apply', 'run the absltest suite to test parameter sampling functions across JAX, TensorFlow, and PyTorch frameworks', 'test the JAX scaled_uniform_orthogonal function for empirical q value preservation with random vectors', 'test the TensorFlow stateless_scaled_uniform_orthogonal function for norm preservation across spatial dimensions', 'test the PyTorch scaled_uniform_orthogonal_ in-place function for orthogonal weight initialization correctness', 'review the ParameterSamplingFunctionTest class and its parameterized test methods for each framework']
+```
+
+Usage
+
+```
+{'test_per_location_normalization_jax': 'test the per_location_normalization function using the JAX backend with various shapes and homog modes', 'test_per_location_normalization_pytorch': 'test the per_location_normalization function using the PyTorch backend with various shapes and homog modes', 'test_per_location_normalization_tensorflow': 'test the per_location_normalization function using the TensorFlow backend with various shapes and homog modes', 'run_pln_test': 'run the per location normalization test across a framework module with custom conversion functions', 'review_DataPreprocessingTest': 'review the DataPreprocessingTest class and its test methods for data preprocessing across JAX, PyTorch, and TensorFlow'}
+```
+
+## File: google-deepmind_dks/tests/test_haiku_modified_resnet.py
+
+Prompts
+
+```
+['test the activation transform module to verify correct DKS and TAS transformation parameters for softplus, tanh, relu, and leaky_relu', 'test transformed activation function values using the numpy framework module with high precision assertions', 'test transformed activation function values using the JAX framework module with jnp arrays', 'test transformed activation function values using the PyTorch framework module with torch tensors', 'test transformed activation function values using the TensorFlow framework module with tf tensors', 'test the per_location_normalization function using the JAX backend with various shapes and homog modes', 'test the per_location_normalization function using the PyTorch backend with various shapes and homog modes', 'test the per_location_normalization function using the TensorFlow backend with various shapes and homog modes', 'run the per location normalization test across a framework module with custom conversion functions', 'review the DataPreprocessingTest class and its test methods for data preprocessing across JAX, PyTorch, and TensorFlow', 'test the ModifiedResNet model can be instantiated and applied with parameterized depth, shortcut weight, activation, and resnet v2 configs', 'run the absltest suite for the Haiku modified ResNet example model using absltest.main', 'test the ModifiedResNet forward pass using Haiku transform_with_state and verify output logits shape', 'test the ModifiedResNet with parameterized configs including depth 50, 101, 152 and activations tanh, relu, leaky_relu', 'review the ModifiedResNetTest class and its parameterized test method for model instantiation and apply', 'run the absltest suite to test parameter sampling functions across JAX, TensorFlow, and PyTorch frameworks', 'test the JAX scaled_uniform_orthogonal function for empirical q value preservation with random vectors', 'test the TensorFlow stateless_scaled_uniform_orthogonal function for norm preservation across spatial dimensions', 'test the PyTorch scaled_uniform_orthogonal_ in-place function for orthogonal weight initialization correctness', 'review the ParameterSamplingFunctionTest class and its parameterized test methods for each framework']
+```
+
+Usage
+
+```
+{'test_ModifiedResNet_instantiation_and_apply': 'test the ModifiedResNet model can be instantiated and applied with parameterized depth, shortcut weight, activation, and resnet v2 configs', 'run_ModifiedResNet_test_suite': 'run the absltest suite for the Haiku modified ResNet example model using absltest.main', 'test_ResNet_forward_pass': 'test the ModifiedResNet forward pass using Haiku transform_with_state and verify output logits shape', 'test_ResNet_parameterized_configs': 'test the ModifiedResNet with parameterized configs including depth 50, 101, 152 and activations tanh, relu, leaky_relu', 'review_ModifiedResNetTest': 'review the ModifiedResNetTest class and its parameterized test method for model instantiation and apply'}
+```
+
+## File: google-deepmind_dks/tests/test_parameter_sampling_functions.py
+
+Prompts
+
+```
+['test the activation transform module to verify correct DKS and TAS transformation parameters for softplus, tanh, relu, and leaky_relu', 'test transformed activation function values using the numpy framework module with high precision assertions', 'test transformed activation function values using the JAX framework module with jnp arrays', 'test transformed activation function values using the PyTorch framework module with torch tensors', 'test transformed activation function values using the TensorFlow framework module with tf tensors', 'test the per_location_normalization function using the JAX backend with various shapes and homog modes', 'test the per_location_normalization function using the PyTorch backend with various shapes and homog modes', 'test the per_location_normalization function using the TensorFlow backend with various shapes and homog modes', 'run the per location normalization test across a framework module with custom conversion functions', 'review the DataPreprocessingTest class and its test methods for data preprocessing across JAX, PyTorch, and TensorFlow', 'test the ModifiedResNet model can be instantiated and applied with parameterized depth, shortcut weight, activation, and resnet v2 configs', 'run the absltest suite for the Haiku modified ResNet example model using absltest.main', 'test the ModifiedResNet forward pass using Haiku transform_with_state and verify output logits shape', 'test the ModifiedResNet with parameterized configs including depth 50, 101, 152 and activations tanh, relu, leaky_relu', 'review the ModifiedResNetTest class and its parameterized test method for model instantiation and apply', 'run the absltest suite to test parameter sampling functions across JAX, TensorFlow, and PyTorch frameworks', 'test the JAX scaled_uniform_orthogonal function for empirical q value preservation with random vectors', 'test the TensorFlow stateless_scaled_uniform_orthogonal function for norm preservation across spatial dimensions', 'test the PyTorch scaled_uniform_orthogonal_ in-place function for orthogonal weight initialization correctness', 'review the ParameterSamplingFunctionTest class and its parameterized test methods for each framework']
+```
+
+Usage
+
+```
+{'run_parameter_sampling_tests': 'run the absltest suite to test parameter sampling functions across JAX, TensorFlow, and PyTorch frameworks', 'test_jax_scaled_uniform_orthogonal': 'test the JAX scaled_uniform_orthogonal function for empirical q value preservation with random vectors', 'test_tensorflow_stateless_scaled_uniform_orthogonal': 'test the TensorFlow stateless_scaled_uniform_orthogonal function for norm preservation across spatial dimensions', 'test_pytorch_scaled_uniform_orthogonal': 'test the PyTorch scaled_uniform_orthogonal_ in-place function for orthogonal weight initialization correctness', 'review_parametersamplingfunctiontest_class': 'review the ParameterSamplingFunctionTest class and its parameterized test methods for each framework'}
+```
+

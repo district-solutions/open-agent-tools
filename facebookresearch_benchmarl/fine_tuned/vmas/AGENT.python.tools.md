@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/benchmarl
+- repo_uri: https://github.com/facebookresearch/benchmarl
+
+## File: facebookresearch_benchmarl/fine_tuned/vmas/vmas_run.py
+
+Prompts
+
+```
+['run a BenchMARL experiment with VMAS tasks using Hydra configuration for algorithm and task selection', 'create an Experiment object from a Hydra DictConfig and task name using load_experiment_from_hydra', 'run the loaded Experiment object by calling its run method to execute the multi-agent training loop', 'get the selected task and algorithm names from HydraConfig runtime choices during experiment execution', 'print the loaded Hydra configuration as YAML using OmegaConf.to_yaml for debugging and verification']
+```
+
+Usage
+
+```
+{'run_hydra_experiment': 'run a BenchMARL experiment with VMAS tasks using Hydra configuration for algorithm and task selection', 'load_experiment_from_hydra': 'create an Experiment object from a Hydra DictConfig and task name using load_experiment_from_hydra', 'run_experiment_method': 'run the loaded Experiment object by calling its run method to execute the multi-agent training loop', 'get_hydra_runtime_choices': 'get the selected task and algorithm names from HydraConfig runtime choices during experiment execution', 'print_omegaconf_yaml': 'print the loaded Hydra configuration as YAML using OmegaConf.to_yaml for debugging and verification'}
+```
+

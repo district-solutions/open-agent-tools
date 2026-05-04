@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/depthcontrast
+- repo_uri: https://github.com/facebookresearch/depthcontrast
+
+## File: facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/roi_heads/target_assigner/proposal_target_layer.py
+
+Prompts
+
+```
+['build a ProposalTargetLayer module to sample ROIs and assign ground truth targets for RCNN training', 'run the ProposalTargetLayer forward pass to compute regression masks and classification labels from batch ROIs', 'sample ROIs for RCNN by computing 3D IoU overlaps between proposals and ground truth boxes', 'subsample ROIs into foreground and background categories using configurable IoU thresholds and ratios', 'get the maximum 3D IoU overlap between ROIs and ground truth boxes grouped by matching class labels']
+```
+
+Usage
+
+```
+{'build_roi_target_layer': 'build a ProposalTargetLayer module to sample ROIs and assign ground truth targets for RCNN training', 'run_forward_propagation': 'run the ProposalTargetLayer forward pass to compute regression masks and classification labels from batch ROIs', 'sample_rois_for_rcnn': 'sample ROIs for RCNN by computing 3D IoU overlaps between proposals and ground truth boxes', 'subsample_rois': 'subsample ROIs into foreground and background categories using configurable IoU thresholds and ratios', 'get_max_iou_with_same_class': 'get the maximum 3D IoU overlap between ROIs and ground truth boxes grouped by matching class labels'}
+```
+

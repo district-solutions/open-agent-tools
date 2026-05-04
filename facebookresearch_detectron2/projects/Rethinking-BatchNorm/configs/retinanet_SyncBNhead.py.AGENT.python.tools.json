@@ -1,0 +1,22 @@
+{
+    "summary": "This is a Detectron2 configuration file for training RetinaNet with Synchronized BatchNorm on the head. It contains only module-level variable assignments — no functions, classes, or callable APIs.",
+    "description": "Configures a RetinaNet model with SyncBatchNorm2d on the head, COCO dataloader, SGD optimizer (lr=0.01), 3x learning rate schedule, and 270k training iterations starting from an ImageNet-pretrained R-50 checkpoint.",
+    "imports": [
+        "detectron2.model_zoo.get_config",
+        "torch.nn"
+    ],
+    "config_variables": [
+        "model — RetinaNet model with backbone frozen at stage 2, head norm set to SyncBatchNorm2d",
+        "dataloader — COCO dataset dataloader configuration",
+        "lr_multiplier — 3x learning rate schedule for COCO",
+        "optimizer — SGD optimizer with learning rate 0.01",
+        "train — training config with R-50 ImageNet pretrained checkpoint and 270000 max iterations"
+    ],
+    "examples": {
+        "review_retinanet_syncbn_config": "review the python config file that sets up RetinaNet with SyncBatchNorm2d on the head for COCO training",
+        "summarize_retinanet_config": "summarize the python config file that configures RetinaNet with SGD optimizer and 270k training iterations",
+        "create_retinanet_syncbn_config": "create a python config file that configures RetinaNet with SyncBatchNorm2d on the head using get_config",
+        "build_retinanet_training_config": "build a python config that sets RetinaNet backbone freeze_at=2 with an R-50 ImageNet pretrained checkpoint",
+        "refactor_retinanet_optimizer": "refactor the python config to change the SGD optimizer learning rate from 0.01 to a different value"
+    }
+}

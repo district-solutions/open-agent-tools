@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dinov3
+- repo_uri: https://github.com/facebookresearch/dinov3
+
+## File: facebookresearch_dinov3/dinov3/thirdparty/CLIP/clip/simple_tokenizer.py
+
+Prompts
+
+```
+['create a SimpleTokenizer and encode text into BPE token IDs for CLIP model input', 'use SimpleTokenizer decode method to convert BPE token IDs back into readable text', 'apply the BPE algorithm to a single token using SimpleTokenizer bpe method with caching', 'use basic_clean function to fix text encoding and unescape HTML entities from input text', 'use whitespace_clean function to collapse multiple whitespace characters into single spaces']
+```
+
+Usage
+
+```
+{'encode_text_to_bpe_tokens': 'create a SimpleTokenizer and encode text into BPE token IDs for CLIP model input', 'decode_bpe_tokens_to_text': 'use SimpleTokenizer decode method to convert BPE token IDs back into readable text', 'apply_bpe_tokenization': 'apply the BPE algorithm to a single token using SimpleTokenizer bpe method with caching', 'clean_text_with_basic_clean': 'use basic_clean function to fix text encoding and unescape HTML entities from input text', 'normalize_whitespace_with_whitespace_clean': 'use whitespace_clean function to collapse multiple whitespace characters into single spaces'}
+```
+

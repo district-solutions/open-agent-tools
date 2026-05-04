@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/actionengine
+- repo_uri: https://github.com/google-deepmind/actionengine
+
+## File: google-deepmind_actionengine/third_party/libdatachannel/deps/json/tools/serve_header/serve_header.py
+
+Prompts
+
+```
+['run the serve_header HTTPS server on port 8443 to serve amalgamated nlohmann json.hpp headers', 'run the serve_header server with a custom make command using the --make flag', 'review the WorkTrees class that scans directories and monitors file system events for nlohmann json project roots', 'review the HeaderRequestHandler class that serves amalgamated json.hpp headers with injected build count and time', 'review the DirectoryEventBucket class that debounces directory creation events before triggering a scan callback']
+```
+
+Usage
+
+```
+{'run_serve_header_server': 'run the serve_header HTTPS server on port 8443 to serve amalgamated nlohmann json.hpp headers', 'run_serve_header_with_make': 'run the serve_header server with a custom make command using the --make flag', 'review_WorkTrees_class': 'review the WorkTrees class that scans directories and monitors file system events for nlohmann json project roots', 'review_HeaderRequestHandler_class': 'review the HeaderRequestHandler class that serves amalgamated json.hpp headers with injected build count and time', 'review_DirectoryEventBucket_class': 'review the DirectoryEventBucket class that debounces directory creation events before triggering a scan callback'}
+```
+

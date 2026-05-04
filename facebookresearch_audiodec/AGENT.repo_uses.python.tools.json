@@ -1,0 +1,198 @@
+{
+  "facebookresearch_audiodec/bin/stream.py": {
+    "create_audio_codec_subclass": "create a subclass of AudioCodec that implements _load_encoder and _load_decoder abstract methods",
+    "load_transmitter_encoder": "load a transmitter encoder model from a checkpoint file onto the specified device",
+    "load_receiver_models": "load both receiver encoder and decoder models from checkpoint files for audio decoding",
+    "create_audio_codec_streamer_subclass": "create a subclass of AudioCodecStreamer that implements _encode and _decode abstract methods for streaming",
+    "run_audio_stream": "run the AudioCodecStreamer to stream audio from input device to output device with encoder and decoder processing"
+  },
+  "facebookresearch_audiodec/bin/test.py": {
+    "run_testGEN_inference": "run the TestGEN class to encode and decode audio utterances and save output WAV files",
+    "implement_TestGEN_subclass": "implement a TestGEN subclass with load_encoder, load_decoder, encode, and decode methods",
+    "save_wav_with_TestGEN": "use the TestGEN _save_wav method to write audio data as a PCM_16 WAV file",
+    "load_config_with_TestGEN": "use the TestGEN _load_config method to load a config.yml from a checkpoint directory",
+    "review_TestGEN_abstract_methods": "review the TestGEN abstract class and its required initial_folder, load_dataset, encode, and decode methods"
+  },
+  "facebookresearch_audiodec/bin/train.py": {
+    "run_train_gan": "run the TrainGAN training loop with optional adversarial training phase and checkpoint saving",
+    "review_TrainGAN_init": "review the TrainGAN class __init__ method that sets up logging, seeds, config, and device",
+    "review_TrainGAN_run": "review the TrainGAN run method that executes training and saves checkpoints",
+    "review_TrainGAN_abstract_methods": "review the TrainGAN abstract methods for initialize_data_loader, define_model, define_trainer, initialize_model, define_criterion",
+    "summarize_TrainGAN": "summarize the TrainGAN abstract base class used as a training template for GAN models"
+  },
+  "facebookresearch_audiodec/bin/utils.py": {
+    "load_config_from_checkpoint": "load a YAML config file from the same directory as a given checkpoint path",
+    "load_config_with_custom_name": "load a YAML config with a custom filename from a checkpoint's directory",
+    "review_load_config": "review the load_config function to understand how it resolves config paths relative to checkpoints",
+    "refactor_load_config": "refactor load_config to add validation for missing config files or invalid YAML",
+    "summarize_load_config": "summarize the load_config utility that reads YAML config files alongside model checkpoints"
+  },
+  "facebookresearch_audiodec/dataloader/utils.py": {
+    "find_wav_files_recursively": "find all wav files recursively in a directory using a glob query pattern",
+    "find_files_exclude_root": "find files matching a query pattern and exclude the root directory path from results",
+    "load_and_split_files": "load sorted files from a data path and split them across multiple cores for parallel processing",
+    "load_files_custom_query": "load files matching a custom glob query from a directory and divide them into chunks",
+    "review_find_files": "review the find_files function that recursively walks directories and filters filenames by glob pattern"
+  },
+  "facebookresearch_audiodec/layers/activation_function.py": {
+    "get_activation_ReLU": "get a ReLU activation module by calling get_activation with the string ReLU",
+    "get_activation_GELU": "get a GELU activation module by calling get_activation with the string GELU and optional params",
+    "get_activation_with_params": "get an activation module with custom parameters by passing nonlinear_activation_params as a dict",
+    "get_activation_list_supported": "list supported activation functions by checking which names exist on torch.nn",
+    "review_get_activation": "review the get_activation function to understand how it dynamically instantiates torch.nn activation modules"
+  },
+  "facebookresearch_audiodec/layers/conv_layer.py": {
+    "build_causal_conv1d_layer": "build a CausalConv1d layer with 64 in/out channels and kernel size 3 for audio processing",
+    "build_noncausal_conv1d_layer": "build a NonCausalConv1d layer with 128 channels and kernel size 5 for bidirectional audio features",
+    "build_causal_conv_transpose1d_layer": "build a CausalConvTranspose1d layer with 64 to 128 channels and stride 2 for upsampling",
+    "build_noncausal_conv2d_layer": "build a NonCausalConv2d layer with 32 channels and 3x3 kernel for 2D feature extraction",
+    "build_conv1d1x1_layer": "build a Conv1d1x1 layer with 64 to 128 channels for channel-wise feature transformation"
+  },
+  "facebookresearch_audiodec/layers/vq_module.py": {
+    "build_VectorQuantize": "build a VectorQuantize module with a given embedding dimension and codebook size for vector quantization",
+    "build_ResidualVQ": "build a ResidualVQ module with multiple quantizer layers for residual vector quantization",
+    "test_VectorQuantize_forward": "test the VectorQuantize forward pass to get quantized output, loss, and perplexity values",
+    "test_ResidualVQ_forward_index": "test the ResidualVQ forward_index method to get quantized output and discrete token indices",
+    "test_ResidualVQ_lookup": "test the ResidualVQ lookup method to reconstruct quantized output from stored token indices"
+  },
+  "facebookresearch_audiodec/losses/adversarial_loss.py": {
+    "create_generator_adversarial_loss_mse": "create a GeneratorAdversarialLoss module with MSE loss type for GAN generator training",
+    "create_generator_adversarial_loss_hinge": "create a GeneratorAdversarialLoss module with hinge loss type for GAN generator training",
+    "calculate_generator_adversarial_loss": "calculate the generator adversarial loss from discriminator outputs using the forward method",
+    "create_discriminator_adversarial_loss_mse": "create a DiscriminatorAdversarialLoss module with MSE loss type for GAN discriminator training",
+    "calculate_discriminator_adversarial_loss": "calculate the discriminator real and fake loss from groundtruth and generator outputs"
+  },
+  "facebookresearch_audiodec/losses/feat_match_loss.py": {
+    "create_feature_match_loss": "create a FeatureMatchLoss module to compute L1-based feature matching loss between generator and ground truth discriminator features",
+    "use_feature_match_loss_forward": "use the forward method to calculate feature matching loss from generator and ground truth discriminator output lists",
+    "configure_average_by_layers": "configure FeatureMatchLoss to average the loss across discriminator layers by setting average_by_layers to True",
+    "configure_average_by_discriminators": "configure FeatureMatchLoss to average the loss across multiple discriminators by setting average_by_discriminators to True",
+    "configure_include_final_outputs": "configure FeatureMatchLoss to include final discriminator outputs in the loss calculation by setting include_final_outputs to True"
+  },
+  "facebookresearch_audiodec/losses/mel_loss.py": {
+    "build_mel_spectrogram": "build a MelSpectrogram module to convert audio waveform tensors into log Mel-spectrograms",
+    "create_multi_mel_loss": "create a MultiMelSpectrogramLoss module to compute multi-resolution L1 Mel-spectrogram loss between generated and ground truth audio",
+    "test_mel_spectrogram_forward": "test the MelSpectrogram forward pass with a batch of waveform tensors and verify output shape",
+    "refactor_mel_spectrogram_log_base": "refactor the MelSpectrogram class to support a custom log base for Mel-spectrogram computation",
+    "review_multi_mel_loss_forward": "review the MultiMelSpectrogramLoss forward method that averages L1 loss across multiple Mel-spectrogram resolutions"
+  },
+  "facebookresearch_audiodec/losses/stft_loss.py": {
+    "build_stft_magnitude_spectrogram": "build a python module that performs STFT on an audio signal and returns the magnitude spectrogram",
+    "create_spectral_convergence_loss": "create a SpectralConvergenceLoss module to compute normalized Frobenius norm between predicted and ground truth magnitude spectrograms",
+    "create_log_stft_magnitude_loss": "create a LogSTFTMagnitudeLoss module to compute L1 loss between log magnitude spectrograms of predicted and ground truth signals",
+    "build_stft_loss": "build an STFTLoss module that computes both spectral convergence and log magnitude loss for audio signals",
+    "create_multi_resolution_stft_loss": "create a MultiResolutionSTFTLoss module that averages STFT losses across multiple FFT resolutions for audio quality evaluation"
+  },
+  "facebookresearch_audiodec/losses/waveform_loss.py": {
+    "create_WaveformShapeLoss": "create a WaveformShapeLoss module with a specified window length for L1 loss on waveform envelopes",
+    "use_WaveformShapeLoss_forward": "use WaveformShapeLoss forward pass to compute L1 loss between generated and ground truth waveform tensors",
+    "create_MultiWindowShapeLoss": "create a MultiWindowShapeLoss module with multiple window lengths for multi-scale waveform shape loss",
+    "use_MultiWindowShapeLoss_forward": "use MultiWindowShapeLoss forward pass to compute averaged L1 loss across multiple window scales",
+    "review_WaveformShapeLoss_MaxPool1d": "review WaveformShapeLoss to understand how MaxPool1d is used to extract waveform envelope before L1 loss"
+  },
+  "facebookresearch_audiodec/models/utils.py": {
+    "check_mode_validation": "check if a given mode supports a specific method by validating against allowed stream modes",
+    "test_check_mode": "test the check_mode function with causal mode and a method name to verify it passes",
+    "review_check_mode": "review the check_mode utility function and its assertion-based validation logic",
+    "refactor_check_mode": "refactor the check_mode function to return a boolean instead of raising an assertion error",
+    "summarize_check_mode": "summarize the check_mode function which validates streaming mode support for a given method"
+  },
+  "facebookresearch_audiodec/models/autoencoder/AudioDec.py": {
+    "build_audiodec_generator": "build an AudioDec Generator with encoder, projector, quantizer, and decoder for audio codec",
+    "run_generator_forward": "run the Generator forward pass to encode, quantize, and decode audio input",
+    "build_streaming_generator": "build a StreamGenerator for causal streaming audio encoding and decoding",
+    "test_stream_encode_decode": "test the StreamGenerator encode, quantize, lookup, and decode pipeline step by step",
+    "review_weight_norm": "review the Generator apply_weight_norm and remove_weight_norm methods for conv layers"
+  },
+  "facebookresearch_audiodec/models/autoencoder/modules/decoder.py": {
+    "build_decoder_block": "build a DecoderBlock with upsampling conv transpose and residual units for audio decoding",
+    "build_decoder": "build a Decoder module with multi-stage upsampling blocks to reconstruct audio from latent codes",
+    "build_activate_decoder": "build an ActivateDecoder with ELU activations between blocks and Tanh output for audio reconstruction",
+    "run_decoder_forward": "run the Decoder forward pass to transform latent codes into reconstructed audio waveforms",
+    "run_decoder_inference": "run the Decoder decode method for streaming inference with causal convolutions on latent codes"
+  },
+  "facebookresearch_audiodec/models/autoencoder/modules/encoder.py": {
+    "build_encoder_block": "build an EncoderBlock with residual units and downsampling convolution for audio encoding",
+    "build_encoder": "build an Encoder with multiple EncoderBlocks for hierarchical audio feature extraction and downsampling",
+    "build_activate_encoder": "build an ActivateEncoder that applies a nonlinear activation on top of the Encoder output",
+    "run_encoder_forward": "run the Encoder forward pass to encode input audio through convolutional blocks",
+    "run_encoder_inference": "run the Encoder encode method for inference-mode audio encoding with causal or noncausal processing"
+  },
+  "facebookresearch_audiodec/models/autoencoder/modules/projector.py": {
+    "create_Projector_causal_conv1d": "create a causal Projector module with conv1d to project input channels to a target code dimension",
+    "create_Projector_noncausal_conv1d_bn": "create a noncausal Projector module with conv1d_bn that adds BatchNorm1d after the convolution layer",
+    "run_Projector_forward": "run the forward pass of a Projector module on a tensor to project features to code dimension",
+    "run_Projector_encode": "run the encode method of a Projector module to perform inference-mode encoding with mode validation",
+    "review_Projector_init": "review the Projector constructor to understand supported modes and model types for audio feature projection"
+  },
+  "facebookresearch_audiodec/models/autoencoder/modules/quantizer.py": {
+    "build_quantizer_residual_vq": "build a Quantizer with ResidualVQ codebook using code_dim, codebook_num, and codebook_size parameters",
+    "run_quantizer_forward": "run the Quantizer forward pass on latent tensor z to get quantized output, VQ loss, and perplexity",
+    "run_quantizer_inference": "run the Quantizer inference method on latent tensor z to get quantized output and discrete indices",
+    "run_quantizer_encode": "run the Quantizer encode method on latent tensor z to get quantized output and flattened indices",
+    "run_quantizer_decode": "run the Quantizer decode method on discrete indices to reconstruct the original latent tensor"
+  },
+  "facebookresearch_audiodec/models/autoencoder/modules/residual_unit.py": {
+    "create_noncausal_residual_unit": "create a NonCausalResidualUnit with specified in_channels, out_channels, kernel_size, and ELU activation",
+    "build_causal_residual_unit": "build a CausalResidualUnit with causal convolution for streaming audio inference support",
+    "run_noncausal_residual_forward": "run the forward pass of NonCausalResidualUnit on a torch tensor input",
+    "run_causal_residual_inference": "run the inference method of CausalResidualUnit for streaming audio processing",
+    "review_residual_unit_classes": "review the NonCausalResidualUnit and CausalResidualUnit classes for audio autoencoder residual connections"
+  },
+  "facebookresearch_audiodec/models/vocoder/HiFiGAN.py": {
+    "build_hifigan_generator": "build a HiFiGAN causal generator with upsampling scales and residual blocks for vocoder synthesis",
+    "build_stream_generator": "build a HiFiGAN streaming generator with step-by-step decode and buffer reset for real-time inference",
+    "build_discriminator": "build a HiFiGAN multi-scale and multi-period discriminator for adversarial training of vocoder models",
+    "run_generator_forward": "run the HiFiGAN generator forward pass to synthesize waveform from mel-spectrogram input tensor",
+    "test_discriminator_forward": "test the HiFiGAN discriminator forward pass on audio waveform tensor for adversarial loss"
+  },
+  "facebookresearch_audiodec/models/vocoder/UnivNet.py": {
+    "build_univnet_discriminator": "build a UnivNet multi-resolution spectral and multi-period discriminator for adversarial vocoder training",
+    "run_discriminator_forward": "run the UnivNet discriminator forward pass on an audio waveform tensor to get outputs",
+    "build_discriminator_with_custom_fft": "build a UnivNet discriminator with custom FFT sizes, hop sizes, and window lengths",
+    "build_discriminator_with_flat_channel": "build a UnivNet discriminator with flat channel mode to flatten multi-channel input",
+    "test_discriminator_mrsd_mpd": "test the UnivNet discriminator combining multi-resolution spectral and multi-period discriminator outputs"
+  },
+  "facebookresearch_audiodec/models/vocoder/modules/discriminator.py": {
+    "build_HiFiGANPeriodDiscriminator": "build a HiFiGAN period discriminator with custom period and kernel sizes for audio GAN training",
+    "build_HiFiGANMultiPeriodDiscriminator": "build a multi-period discriminator with periods 2,3,5,7,11 for HiFiGAN vocoder adversarial training",
+    "build_HiFiGANScaleDiscriminator": "build a HiFiGAN scale discriminator with configurable downsampling scales and group convolutions",
+    "build_HiFiGANMultiScaleDiscriminator": "build a multi-scale discriminator that applies AvgPool1d downsampling across multiple scale levels",
+    "build_UnivNetMultiResolutionSpectralDiscriminator": "build a multi-resolution spectral discriminator with FFT sizes 1024,2048,512 for UnivNet vocoder training"
+  },
+  "facebookresearch_audiodec/models/vocoder/modules/multi_fusion.py": {
+    "build_multi_receptive_field_module": "build a MultiReceptiveField module with custom kernel sizes and dilations for HiFiGAN vocoder",
+    "run_multi_receptive_field_forward": "run forward propagation through a MultiReceptiveField module on an input tensor",
+    "run_multi_receptive_field_inference": "run inference through a MultiReceptiveField module averaging outputs from multiple residual blocks",
+    "build_multi_group_conv1d_module": "build a MultiGroupConv1d module with configurable groups for multi-group convolution in vocoder",
+    "run_multi_group_conv1d_forward": "run forward propagation through a MultiGroupConv1d module on an input tensor"
+  },
+  "facebookresearch_audiodec/models/vocoder/modules/residual_block.py": {
+    "build_hifigan_residual_block": "build a HiFiGANResidualBlock with custom kernel size, channels, and dilation factors for audio vocoding",
+    "create_residual_block_with_additional_convs": "create a HiFiGANResidualBlock with additional convolution layers enabled for deeper feature extraction",
+    "run_forward_pass_residual_block": "run a forward pass through a HiFiGANResidualBlock with a batch of audio feature tensors",
+    "run_inference_residual_block": "run inference through a HiFiGANResidualBlock using causal convolution for real-time audio generation",
+    "review_hifigan_residual_block_architecture": "review the HiFiGANResidualBlock class and its causal convolution layers with residual skip connections"
+  },
+  "facebookresearch_audiodec/trainer/trainerGAN.py": {
+    "run_GAN_training": "run the TrainerGAN training loop for generator and discriminator models with tensorboard logging",
+    "save_GAN_checkpoint": "save a GAN training checkpoint with generator and discriminator model states and optimizer states",
+    "load_GAN_checkpoint": "load a GAN training checkpoint to restore generator and discriminator models and training state",
+    "compute_adversarial_loss": "compute the adversarial loss with optional feature matching loss for the GAN generator",
+    "compute_discriminator_loss": "compute the discriminator loss combining real and fake prediction losses for the GAN discriminator",
+    "compute_metric_loss": "compute metric losses including mel spectrogram, multi-resolution STFT, and waveform shape losses",
+    "update_generator": "update the GAN generator model parameters using gradient descent with optional gradient clipping",
+    "update_discriminator": "update the GAN discriminator model parameters using gradient descent with optional gradient clipping",
+    "run_VQGAN_training": "run the TrainerVQGAN training loop with vector quantization loss and perplexity tracking",
+    "compute_VQ_loss": "compute and record the vector quantization loss with configurable lambda weighting for VQGAN training",
+    "record_perplexity": "record perplexity metrics for vector quantization codebook usage during VQGAN training",
+    "evaluate_GAN_model": "run evaluation on the development dataset and log averaged loss metrics to tensorboard"
+  },
+  "facebookresearch_audiodec/utils/audiodec.py": {
+    "build_audiodec_codec": "build an AudioDec codec instance with custom tx and rx devices and receptive length",
+    "build_audiodec_streamer": "build an AudioDecStreamer for real-time audio encoding and decoding with custom audio devices",
+    "run_assign_model": "run assign_model to get sample rate and checkpoint paths for a pretrained model like vctk_v1",
+    "review_audiodec_load_encoder": "review the AudioDec class _load_encoder method to understand how symAudioDec checkpoints are loaded",
+    "review_audiodec_load_decoder": "review the AudioDec class _load_decoder method to understand how symAudioDec or HiFiGAN decoders are loaded"
+  }
+}

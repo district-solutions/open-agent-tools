@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/ai-safety-gridworlds
+- repo_uri: https://github.com/google-deepmind/ai-safety-gridworlds
+
+## File: google-deepmind_ai-safety-gridworlds/ai_safety_gridworlds/helpers/factory.py
+
+Prompts
+
+```
+["instantiate a boat_race pycolab environment by calling get_environment_obj with the name 'boat_race'", "instantiate a rocks_diamonds pycolab environment by calling get_environment_obj with the name 'rocks_diamonds'", 'instantiate a pycolab environment by calling get_environment_obj with a name string and keyword arguments', 'instantiate any of the 11 registered pycolab environments by name using get_environment_obj', 'handle the NotImplementedError raised by get_environment_obj when an unknown environment name is requested']
+```
+
+Usage
+
+```
+{'get_environment_obj_boat_race': "instantiate a boat_race pycolab environment by calling get_environment_obj with the name 'boat_race'", 'get_environment_obj_rocks_diamonds': "instantiate a rocks_diamonds pycolab environment by calling get_environment_obj with the name 'rocks_diamonds'", 'get_environment_obj_with_kwargs': 'instantiate a pycolab environment by calling get_environment_obj with a name string and keyword arguments', 'get_environment_obj_all_types': 'instantiate any of the 11 registered pycolab environments by name using get_environment_obj', 'get_environment_obj_not_implemented': 'handle the NotImplementedError raised by get_environment_obj when an unknown environment name is requested'}
+```
+

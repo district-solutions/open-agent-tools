@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/actionengine
+- repo_uri: https://github.com/google-deepmind/actionengine
+
+## File: google-deepmind_actionengine/third_party/boost/libs/leaf/gen/generate_single_header.py
+
+Prompts
+
+```
+['run generate_single_header.py to merge multiple C/C++ headers into a single header file', 'run generate_single_header.py with --linerefs to output active line references to original files', 'run generate_single_header.py with --hash to embed the git commit hash in the generated header', 'review the append function that recursively expands #include directives while tracking already-included files', 'review compare_and_update to atomically replace the output file only when content differs']
+```
+
+Usage
+
+```
+{'run_generate_single_header': 'run generate_single_header.py to merge multiple C/C++ headers into a single header file', 'run_generate_with_linerefs': 'run generate_single_header.py with --linerefs to output active line references to original files', 'run_generate_with_git_hash': 'run generate_single_header.py with --hash to embed the git commit hash in the generated header', 'review_append_recursive_include': 'review the append function that recursively expands #include directives while tracking already-included files', 'review_compare_and_update': 'review compare_and_update to atomically replace the output file only when content differs'}
+```
+

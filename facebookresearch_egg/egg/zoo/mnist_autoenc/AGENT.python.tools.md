@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/egg
+- repo_uri: https://github.com/facebookresearch/egg
+
+## File: facebookresearch_egg/egg/zoo/mnist_autoenc/train.py
+
+Prompts
+
+```
+['run the MNIST autoencoder training with EGG framework using command line arguments for epochs and vocab size', 'build a Sender neural network that encodes 784-pixel MNIST images into log-probabilities over a vocabulary', 'build a Receiver neural network that decodes 400-dimensional embeddings back into 784-pixel reconstructed images', 'test the binary cross-entropy loss function that compares original MNIST images with reconstructed receiver output', 'review the SymbolGameGS setup that wraps Sender and Receiver agents with Gumbel-Softmax for differentiable communication']
+```
+
+Usage
+
+```
+{'run_mnist_autoencoder_training': 'run the MNIST autoencoder training with EGG framework using command line arguments for epochs and vocab size', 'build_sender_network': 'build a Sender neural network that encodes 784-pixel MNIST images into log-probabilities over a vocabulary', 'build_receiver_network': 'build a Receiver neural network that decodes 400-dimensional embeddings back into 784-pixel reconstructed images', 'test_loss_function': 'test the binary cross-entropy loss function that compares original MNIST images with reconstructed receiver output', 'review_symbolgamegs_setup': 'review the SymbolGameGS setup that wraps Sender and Receiver agents with Gumbel-Softmax for differentiable communication'}
+```
+

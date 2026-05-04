@@ -1,0 +1,499 @@
+{
+  "google-deepmind_androidenv/android_env/env_interface.py": {
+    "implement_android_env_interface": "implement a subclass of AndroidEnvInterface that provides action_spec, observation_spec, reset, step, and close methods",
+    "get_action_spec": "call action_spec on an AndroidEnv instance to get the dictionary of action specifications",
+    "get_observation_spec": "call observation_spec on an AndroidEnv instance to get the dictionary of observation specifications",
+    "reset_episode": "call reset on an AndroidEnv instance to reset the current episode and get the initial TimeStep",
+    "execute_adb_call": "call execute_adb_call with an AdbRequest protobuf to execute an ADB command on the Android device"
+  },
+  "google-deepmind_androidenv/android_env/environment.py": {
+    "reset_AndroidEnv": "reset the AndroidEnv RL environment to start a new episode",
+    "step_AndroidEnv": "take a step in the AndroidEnv environment with a given action dictionary",
+    "close_AndroidEnv": "close the AndroidEnv and clean up running processes and threads",
+    "load_state_AndroidEnv": "load a saved simulator state into the AndroidEnv from a LoadStateRequest",
+    "save_state_AndroidEnv": "save the current AndroidEnv simulator state to a SaveStateRequest"
+  },
+  "google-deepmind_androidenv/android_env/environment_test.py": {
+    "test_androidenv_action_and_observation_specs": "test the AndroidEnv class to verify action_spec and observation_spec return correct dm_env specs",
+    "test_androidenv_reset_and_step": "test the AndroidEnv reset and step methods to verify TimeStep returns and observation handling",
+    "test_androidenv_adb_call": "test the AndroidEnv execute_adb_call method to verify it forwards AdbRequest to the coordinator",
+    "test_androidenv_load_state": "test the AndroidEnv load_state method to verify it delegates to simulator and restarts task manager",
+    "test_androidenv_save_state": "test the AndroidEnv save_state method to verify it delegates to the simulator correctly"
+  },
+  "google-deepmind_androidenv/android_env/loader.py": {
+    "load_android_env": "load an AndroidEnv instance from an AndroidEnvConfig with emulator or fake simulator",
+    "load_task_from_proto": "load a Task protobuf from a filesystem path using FilesystemTaskConfig",
+    "expand_emulator_paths": "expand user directory paths in emulator launcher and adb controller config",
+    "create_android_env_with_emulator": "create an AndroidEnv instance using an EmulatorConfig with AVD and SDK paths",
+    "create_android_env_with_fake_simulator": "create an AndroidEnv instance using a FakeSimulatorConfig for testing without real hardware"
+  },
+  "google-deepmind_androidenv/android_env/loader_test.py": {
+    "test_load_emulator": "test the LoaderTest.test_load_emulator method to verify emulator config loading with AVD and ADB settings",
+    "test_load_fake_simulator": "test the LoaderTest.test_load_fake_simulator method to verify fake simulator config loading with screen dimensions",
+    "test_task": "test the LoaderTest.test_task method to verify task protobuf parsing from YAML task definition files",
+    "run_loader_tests": "run the LoaderTest test suite using absltest to validate all loader loading scenarios",
+    "review_loader_test": "review the LoaderTest class to understand how loader.load integrates with coordinator, simulator, and task manager components"
+  },
+  "google-deepmind_androidenv/android_env/components/action_fns.py": {
+    "send_action_to_simulator": "send a touch or key action to an Android simulator with screen dimensions and finger count",
+    "prepare_touch_action": "convert an AndroidEnv action dict into simulator-ready touch event tuples with pixel coordinates",
+    "split_touch_action": "split a multitouch action dict into a list of single-touch action dicts for each finger",
+    "lift_all_fingers_action": "create a lift action dict that lifts all fingers at position zero for the given finger count",
+    "review_action_fns": "review the action_fns module functions for converting actions between AndroidEnv and simulator formats"
+  },
+  "google-deepmind_androidenv/android_env/components/action_fns_test.py": {
+    "test_send_action_to_simulator_missing_action_type": "test that send_action_to_simulator raises KeyError when action is missing action_type field",
+    "test_send_action_to_simulator_sendactionerror": "test that send_action_to_simulator returns False when simulator raises SendActionError",
+    "test_send_action_to_simulator_touch_success_one_finger": "test send_action_to_simulator with a single finger touch action on an 800x600 screen",
+    "test_send_action_to_simulator_touch_success_multiple_finger": "test send_action_to_simulator with a three finger touch and lift combined action",
+    "test_lift_all_fingers_action": "test lift_all_fingers_action returns correct action dict for one or two fingers"
+  },
+  "google-deepmind_androidenv/android_env/components/adb_call_parser.py": {
+    "install_apk": "build a python module to install an Android APK on a connected device using the AdbCallParser class",
+    "start_activity": "create a python script to start a specific Android activity on a connected device via AdbCallParser",
+    "tap_screen": "build a python module to tap the Android device screen at given x and y coordinates using AdbCallParser",
+    "input_text": "create a python script to type text input on an Android device using the AdbCallParser input_text method",
+    "force_stop_app": "build a python module to force stop a running Android application by package name using AdbCallParser"
+  },
+  "google-deepmind_androidenv/android_env/components/adb_call_parser_test.py": {
+    "install_apk": "install an APK on an Android device from a filesystem path or binary blob using adb",
+    "start_activity": "start an Android activity by its full class name with optional force stop and extra args",
+    "tap_and_press_button": "simulate a tap at coordinates or press a hardware button like HOME, BACK, or ENTER",
+    "manage_settings": "get, put, delete, reset, or list Android system, secure, or global settings via adb shell",
+    "list_packages_and_features": "list installed packages, device features, or shared libraries using the Android package manager"
+  },
+  "google-deepmind_androidenv/android_env/components/adb_controller.py": {
+    "init_adb_server": "initialize the adb server daemon on a given port before launching the simulator",
+    "execute_adb_command": "execute an adb command with retry logic and automatic server restart on failure",
+    "get_command_prefix": "get the adb command prefix list with optional device name and server port arguments",
+    "restart_adb_server": "kill and restart the adb server daemon and verify connected devices",
+    "create_adb_controller": "create an AdbController instance with config to manage adb communication with an Android device"
+  },
+  "google-deepmind_androidenv/android_env/components/adb_controller_test.py": {
+    "test_adb_controller_init_server": "test the AdbController init_server method to verify adb devices command execution with timeout",
+    "test_adb_controller_restart_server": "test the AdbController restart_server behavior when an adb command fails and retries after server restart",
+    "test_adb_controller_invalid_command": "test the AdbController execute_command method to verify it raises AdbControllerError on invalid commands",
+    "test_adb_controller_env_vars": "test the AdbController initialization to verify it deletes or retains ANDROID_HOME and ANDROID_ADB_SERVER_PORT env vars",
+    "test_adb_controller_avoid_recursion": "test the AdbController to verify it raises AdbControllerError and avoids infinite recursion on persistent failures"
+  },
+  "google-deepmind_androidenv/android_env/components/adb_log_stream.py": {
+    "create_adb_log_stream": "create an AdbLogStream instance with an adb command prefix list to manage emulator logcat output",
+    "get_stream_output_adb_logcat": "call get_stream_output on AdbLogStream to yield logcat lines as a generator from the emulator",
+    "stop_adb_log_stream": "call stop_stream on AdbLogStream to kill the running adb logcat subprocess",
+    "set_log_filters_adb": "call set_log_filters on AdbLogStream to filter which logcat tags are captured from the emulator",
+    "pause_resume_adb_log_stream": "call pause_stream or resume_stream on AdbLogStream to control whether log lines are yielded"
+  },
+  "google-deepmind_androidenv/android_env/components/adb_log_stream_test.py": {
+    "test_AdbLogStream_get_stream_output": "test the AdbLogStream class get_stream_output method with mocked subprocess Popen",
+    "test_AdbLogStream_stop_stream_before_get": "test calling stop_stream before get_stream_output does not raise an exception",
+    "review_AdbLogStreamTest": "review the AdbLogStreamTest class and its test methods for adb log streaming",
+    "summarize_FakeAdbSubprocess": "summarize the FakeAdbSubprocess helper class used for mocking adb subprocess behavior",
+    "refactor_AdbLogStreamTest": "refactor the AdbLogStreamTest class to add additional edge case tests for log filtering"
+  },
+  "google-deepmind_androidenv/android_env/components/app_screen_checker.py": {
+    "build_tree_from_dumpsys_output": "build a tree structure from adb dumpsys string output by parsing indentation-based hierarchy",
+    "matches_path": "test if dumpsys activity output matches an expected view hierarchy path using regex patterns",
+    "AppScreenChecker_matches_current_app_screen": "check if the current Android app screen matches an expected screen by verifying activity and view hierarchy",
+    "AppScreenChecker_wait_for_app_screen": "wait for an expected Android app screen to appear with a configurable timeout in seconds",
+    "DumpsysNode_find_child": "find a child node in a dumpsys tree that matches a given predicate function"
+  },
+  "google-deepmind_androidenv/android_env/components/app_screen_checker_test.py": {
+    "build_tree_from_dumpsys_output": "build a tree from Android dumpsys output by parsing indented text into a hierarchical node structure",
+    "test_build_tree_from_dumpsys_output": "test that build_tree_from_dumpsys_output correctly parses an indented hierarchy into a rooted tree with children",
+    "test_matches_path": "test that matches_path finds a regex-defined path within a dumpsys view hierarchy tree",
+    "test_wait_for_app_screen_zero_timeout": "test that AppScreenChecker raises WaitForAppScreenError when timeout is zero seconds",
+    "test_wait_for_app_screen_successful": "test that AppScreenChecker returns successfully when the expected activity matches the current activity"
+  },
+  "google-deepmind_androidenv/android_env/components/coordinator.py": {
+    "create_coordinator_instance": "create a Coordinator instance with a simulator, task manager, and device settings to manage AndroidEnv interaction",
+    "execute_adb_call": "execute an ADB call by passing an AdbRequest protobuf to the coordinator and receive an AdbResponse",
+    "run_rl_reset": "run an RL episode reset that relaunches the simulator if needed and returns a dm_env TimeStep",
+    "run_rl_step": "run an RL step by executing an agent action on the simulator and returning observation and reward",
+    "get_action_spec": "get the action specification dictionary defining valid RL actions including finger count and key events"
+  },
+  "google-deepmind_androidenv/android_env/components/coordinator_test.py": {
+    "test_coordinator_rl_reset": "test the Coordinator class rl_reset method to verify relaunch count stats are zero on clean reset",
+    "test_coordinator_rl_step_touch": "test the Coordinator rl_step method with a TOUCH action and verify the simulator receives correct touch coordinates",
+    "test_coordinator_multitouch": "test the Coordinator rl_step method with multi-finger touch actions using three simultaneous finger inputs",
+    "test_coordinator_adb_call": "test the Coordinator execute_adb_call method to verify ADB force stop requests are parsed and returned correctly",
+    "test_coordinator_error_handling": "test the Coordinator rl_step method to verify it returns truncation with None observation when SendActionError occurs"
+  },
+  "google-deepmind_androidenv/android_env/components/device_settings.py": {
+    "build_devicesettings_update": "build a python module that uses DeviceSettings.update to configure an Android device with a DeviceSettingsConfig",
+    "create_devicesettings_orientation": "create a function that calls DeviceSettings.get_orientation to retrieve the current device orientation as a one-hot numpy array",
+    "test_devicesettings_screen_size": "test the DeviceSettings class by calling screen_width and screen_height after update to verify pixel dimensions",
+    "refactor_devicesettings_bars": "refactor the DeviceSettings._set_status_navigation_bars method to support custom policy_control values for immersive mode",
+    "review_devicesettings_class": "review the DeviceSettings class and its lazy AdbCallParser initialization pattern using a mock placeholder sentinel"
+  },
+  "google-deepmind_androidenv/android_env/components/device_settings_test.py": {
+    "test_screen_size_before_update": "test DeviceSettings returns zero screen dimensions before calling update method",
+    "test_screen_size_after_update": "test DeviceSettings returns correct screen height and width after calling update",
+    "test_update_parameterized": "test DeviceSettings update applies correct adb shell commands for show_touches pointer_location and bar visibility settings",
+    "test_get_orientation_bad_response": "test DeviceSettings get_orientation returns zero array when adb command returns empty response",
+    "test_get_orientation_success": "test DeviceSettings get_orientation returns correct quaternion array and is idempotent on repeated calls"
+  },
+  "google-deepmind_androidenv/android_env/components/dumpsys_thread.py": {
+    "create_dumpsys_thread": "create a DumpsysThread instance with an AppScreenChecker to monitor Android app screen state asynchronously",
+    "check_user_exited": "call check_user_exited on DumpsysThread to detect if the user has left the expected app screen",
+    "configure_check_frequency": "configure DumpsysThread with a custom check_frequency to control how often dumpsys is called per loop iteration",
+    "set_max_failed_activity": "set max_failed_current_activity on DumpsysThread to define consecutive failures before declaring user exit",
+    "review_dumpsys_thread": "review the DumpsysThread class that runs async adb dumpsys checks via ThreadPoolExecutor to monitor Android screen state"
+  },
+  "google-deepmind_androidenv/android_env/components/dumpsys_thread_test.py": {
+    "test_dumpsys_thread_unexpected_activity": "test DumpsysThread detects when user exits to an unexpected activity on Android",
+    "test_dumpsys_thread_unexpected_view_hierarchy": "test DumpsysThread detects when user exits due to an unexpected view hierarchy",
+    "test_dumpsys_thread_success": "test DumpsysThread returns false when the current app screen matches expectations",
+    "test_dumpsys_thread_check_frequency": "test DumpsysThread throttles expensive dumpsys checks using the check_frequency parameter",
+    "review_dumpsys_thread_check_user_exited": "review the DumpsysThread check_user_exited method that returns whether the user exited the expected screen"
+  },
+  "google-deepmind_androidenv/android_env/components/errors.py": {
+    "create_AndroidEnvError": "create a custom exception by subclassing AndroidEnvError with a unique ERROR_CODE value",
+    "raise_ReadObservationError": "raise ReadObservationError when the environment cannot obtain an observation from a simulator",
+    "raise_CoordinatorError": "raise CoordinatorError when the Coordinator encounters an unrecoverable issue during execution",
+    "raise_TooManyRestartsError": "raise TooManyRestartsError when restart attempts exceed the maximum allowed restart tries",
+    "from_code": "call from_code with an integer error code and message string to get the matching AndroidEnvError instance"
+  },
+  "google-deepmind_androidenv/android_env/components/errors_test.py": {
+    "test_error_codes": "test that each AndroidEnv error class has the correct ERROR_CODE integer value",
+    "test_error_codes_unique": "test that all AndroidEnv error codes are unique across the error classes",
+    "test_all_errors_are_androidenv_errors": "test that every error subclass is an instance of AndroidEnvError base class",
+    "test_from_code_unsupported_code": "test that from_code returns None for unsupported or out-of-range error codes",
+    "test_from_code": "test that from_code constructs the correct error instance with the given message for known codes"
+  },
+  "google-deepmind_androidenv/android_env/components/log_stream.py": {
+    "create_log_stream_subclass": "create a subclass of LogStream that implements _get_stream_output and stop_stream methods",
+    "pause_log_stream": "pause the LogStream instance so no log lines are yielded until resumed",
+    "resume_log_stream": "resume the LogStream instance so log lines are yielded again",
+    "set_log_filters": "set log filters on the LogStream instance by passing a sequence of filter strings",
+    "get_stream_output": "get the generator of log lines from a LogStream subclass instance"
+  },
+  "google-deepmind_androidenv/android_env/components/log_stream_test.py": {
+    "test_FakeLogStream_get_stream_output": "test the FakeLogStream class to verify it yields expected log lines from _get_stream_output",
+    "test_FakeLogStream_set_log_filters": "test the FakeLogStream class to verify set_log_filters filters lines by filter name",
+    "test_FakeLogStream_pause_resume_stream": "test the FakeLogStream class to verify pause_stream yields no lines and resume_stream restores output",
+    "review_LogStreamTest_test_get_stream_output": "review the LogStreamTest test_get_stream_output method that validates unfiltered log stream output",
+    "review_LogStreamTest_test_set_log_filters": "review the LogStreamTest test_set_log_filters method that validates filtered log stream output"
+  },
+  "google-deepmind_androidenv/android_env/components/logcat_thread.py": {
+    "create_logcat_thread": "create a LogcatThread instance that reads Android log entries in a separate daemon thread",
+    "add_event_listener": "add an EventListener with a regexp pattern and handler function to the LogcatThread",
+    "remove_event_listener": "remove a registered EventListener handler from the LogcatThread listeners dictionary",
+    "pause_resume_logcat": "pause and resume the LogcatThread log stream processing and restart the thread if dead",
+    "kill_logcat_thread": "kill the LogcatThread by setting the stop flag and joining the thread with a timeout"
+  },
+  "google-deepmind_androidenv/android_env/components/logcat_thread_test.py": {
+    "test_logcat_thread_set_filters": "test that LogcatThread applies log filters correctly when initialized with a LogParsingConfig",
+    "test_logcat_thread_kill": "test that calling kill on LogcatThread stops the underlying log stream and joins the thread",
+    "test_logcat_thread_listeners": "test that EventListener callbacks fire when log messages match a registered regex pattern",
+    "test_logcat_thread_resume_recreates": "test that resume recreates the daemon thread after kill stops it",
+    "test_fake_log_stream": "test the FakeLogStream helper class that wraps FakeStream to simulate ADB log output for unit tests"
+  },
+  "google-deepmind_androidenv/android_env/components/pixel_fns.py": {
+    "convert_touch_to_pixel": "convert a normalized touch position to pixel coordinates on an Android screen",
+    "transpose_image_frame": "transpose an image frame from HWC to WHC shape using numpy",
+    "orient_pixels_by_rotation": "rotate screen pixels to portrait or landscape orientation using rot90",
+    "normalize_int_to_float": "normalize integer array values to floats between 0 and 1 using dm_env specs",
+    "review_pixel_fns": "review the pixel utility functions for touch mapping, rotation, and normalization"
+  },
+  "google-deepmind_androidenv/android_env/components/pixel_fns_test.py": {
+    "test_touch_position_to_pixel_position": "test the touch_position_to_pixel_position function that maps normalized touch coordinates to pixel positions",
+    "test_transpose_pixels": "test the transpose_pixels function that converts image shape from HWC to WHC and vice versa",
+    "test_orient_pixels": "test the orient_pixels function that rotates screen pixels by 0, 90, 180, or 270 degrees",
+    "test_convert_int_to_float": "test the convert_int_to_float function that normalizes integer arrays to float values between 0 and 1",
+    "test_convert_int_to_float_bounded": "test the convert_int_to_float function with a BoundedArray spec to normalize using custom min and max bounds"
+  },
+  "google-deepmind_androidenv/android_env/components/setup_step_interpreter.py": {
+    "interpret_setup_steps": "interpret a sequence of SetupStep protobufs to execute ADB commands and sleep steps on an Android device",
+    "process_step_command": "process a single SetupStep command with retry logic and success condition checks for Android setup",
+    "execute_step_cmd": "execute a step command of type sleep or adb_request against an Android device via ADB",
+    "check_success_wait_for_app_screen": "check success by waiting for a specific app screen to appear on the Android device within a timeout",
+    "check_install_package": "check if an Android package is installed by querying the package manager via ADB with a timeout"
+  },
+  "google-deepmind_androidenv/android_env/components/setup_step_interpreter_test.py": {
+    "test_setup_step_interpreter_empty_steps": "test the SetupStepInterpreter class by interpreting an empty list of setup steps without crashing",
+    "test_setup_step_interpreter_install_apk": "test the SetupStepInterpreter to install an APK from a filesystem path via adb_request",
+    "test_setup_step_interpreter_force_stop": "test the SetupStepInterpreter to force stop an Android app package by its name",
+    "test_setup_step_interpreter_start_activity": "test the SetupStepInterpreter to start an Android activity with extra arguments via adb_request",
+    "test_setup_step_interpreter_check_install": "test the SetupStepInterpreter to check if a package is installed with retry logic and timeout"
+  },
+  "google-deepmind_androidenv/android_env/components/specs.py": {
+    "build_action_spec_single_finger": "build a python module that creates a default single-finger action spec for AndroidEnv with touch and lift actions",
+    "build_action_spec_multi_finger": "build a python module that creates a multi-finger action spec with keyboard key event support for AndroidEnv",
+    "build_observation_spec": "build a python module that creates an observation spec with pixel, timedelta, and orientation arrays for a given screen size",
+    "review_base_action_spec": "review the base_action_spec function to understand how it constructs discrete and bounded action arrays for virtual fingers",
+    "review_base_observation_spec": "review the base_observation_spec function to understand how it defines pixel, timedelta, and orientation observation arrays"
+  },
+  "google-deepmind_androidenv/android_env/components/specs_test.py": {
+    "test_base_action_spec": "test the base action spec with single finger touch position and action type",
+    "test_base_action_spec_with_key_events": "test the base action spec with key events enabled to include keycode",
+    "test_base_action_spec_multitouch": "test the base action spec with three fingers for multitouch support",
+    "test_base_observation_spec": "test the base observation spec with various screen heights and widths",
+    "run_specs_test_suite": "run the absltest suite to validate all specs test cases"
+  },
+  "google-deepmind_androidenv/android_env/components/task_manager.py": {
+    "create_task_manager": "create a TaskManager instance with a task proto and optional config for RL task management",
+    "start_task_manager": "start the TaskManager with an adb call parser factory and log stream to begin task processing",
+    "reset_task": "reset the TaskManager task for a new episode run by interpreting reset steps and clearing state",
+    "rl_step": "perform one RL step with the TaskManager to get reward, extras, and the next timestep transition",
+    "get_task_stats": "get the TaskManager stats dictionary including episode steps, reset counts, and setup interpreter stats"
+  },
+  "google-deepmind_androidenv/android_env/components/task_manager_test.py": {
+    "test_TaskManager_start": "test that TaskManager.start initializes logcat thread, dumpsys thread, and setup step interpreter",
+    "test_TaskManager_setup_task": "test that TaskManager.setup_task calls the setup step interpreter with task setup steps",
+    "test_TaskManager_rl_step_reward": "test that TaskManager.rl_step returns correct reward parsed from logcat regex patterns",
+    "test_TaskManager_rl_step_extras": "test that TaskManager.rl_step parses and returns extras from logcat including JSON format extras",
+    "test_TaskManager_episode_end": "test that TaskManager.rl_step detects episode end via logcat regex and returns a terminal timestep"
+  },
+  "google-deepmind_androidenv/android_env/components/simulators/base_simulator.py": {
+    "build_android_simulator_subclass": "build a python module that subclasses BaseSimulator to create a custom Android simulator implementation",
+    "create_interaction_thread": "create an InteractionThread that captures screenshots at a configurable rate in a background thread",
+    "send_touch_events": "send touch events with x, y coordinates and finger identifiers to the Android simulator",
+    "get_screenshot_sync_async": "get a screenshot from the simulator in sync mode or async mode via the interaction thread",
+    "launch_and_close_simulator": "launch an Android simulator with error logging and close it to free resources"
+  },
+  "google-deepmind_androidenv/android_env/components/simulators/base_simulator_test.py": {
+    "test_FakeSimulator_launch": "test that FakeSimulator launches without crashing using FakeSimulatorConfig",
+    "test_FakeSimulator_launch_close": "test that FakeSimulator launches and closes without crashing",
+    "test_FakeSimulator_get_screenshot": "test that FakeSimulator returns a screenshot with the correct shape dimensions",
+    "test_FakeSimulator_print_logs_on_exception": "test that FakeSimulator calls get_logs when launch raises a SimulatorError",
+    "test_FakeSimulator_interaction_thread_relaunch": "test that relaunching FakeSimulator stops and joins the previous InteractionThread"
+  },
+  "google-deepmind_androidenv/android_env/components/simulators/emulator/emulator_launcher.py": {
+    "launch_android_emulator": "launch an Android emulator process with custom GPU mode, headless mode, and snapshot configuration",
+    "shutdown_emulator_gracefully": "shut down the emulator process with a 30-second timeout before force killing it",
+    "cleanup_emulator_resources": "clean up the emulator launcher temporary directory and close the emulator process",
+    "get_emulator_logfile_path": "get the file path where the emulator stdout and stderr output is logged",
+    "configure_emulator_environment": "configure Android SDK, AVD, KVM device, and ADB port environment variables for the emulator"
+  },
+  "google-deepmind_androidenv/android_env/components/simulators/emulator/emulator_launcher_test.py": {
+    "test_EmulatorLauncher_launch": "test the EmulatorLauncher class to verify it launches an emulator process with correct command args and environment variables",
+    "test_EmulatorLauncher_grpc_port": "test the EmulatorLauncher class to verify it passes the grpc port flag when grpc_port is configured",
+    "test_EmulatorLauncher_snapshot": "test the EmulatorLauncher class to verify it passes snapshot and migration feature flags when a snapshot name is set",
+    "test_EmulatorLauncher_network_restrict": "test the EmulatorLauncher class to verify it passes network and wifi restriction options when restrict_network is enabled",
+    "review_EmulatorLauncherTest": "review the EmulatorLauncherTest class and its parameterized test cases for emulator launch configuration validation"
+  },
+  "google-deepmind_androidenv/android_env/components/simulators/emulator/emulator_simulator.py": {
+    "create_emulator_simulator": "create an EmulatorSimulator instance with an EmulatorConfig to control an Android emulator",
+    "send_touch_events": "send touch events to the emulator screen with x, y coordinates and finger identifiers",
+    "send_key_events": "send keyboard events to the emulator using XKB keycodes and event types",
+    "save_load_emulator_state": "save and load emulator snapshots using the snapshot service stub by snapshot name",
+    "get_emulator_screenshot": "get a screenshot from the emulator as a numpy RGBA array via gRPC"
+  },
+  "google-deepmind_androidenv/android_env/components/simulators/emulator/emulator_simulator_test.py": {
+    "test_emulator_simulator_launch": "test the EmulatorSimulator launch method to verify adb server initializes before emulator process starts",
+    "test_emulator_screenshot": "test the EmulatorSimulator get_screenshot method to verify it returns an RGB image with correct dimensions",
+    "test_emulator_touch_input": "test the EmulatorSimulator send_touch method to verify multi-touch events are sent via gRPC stub",
+    "test_emulator_key_input": "test the EmulatorSimulator send_key method to verify keyboard events with keydown keyup and keypress types",
+    "test_emulator_state_save_load": "test the EmulatorSimulator save_state and load_state methods to verify snapshot save and load via gRPC"
+  },
+  "google-deepmind_androidenv/android_env/components/simulators/fake/fake_simulator.py": {
+    "create_fakesimulator": "create a FakeSimulator instance with a FakeSimulatorConfig to test AndroidEnv without a real device",
+    "create_fakeadbcontroller": "create a FakeAdbController that returns fake output for adb shell service check and dumpsys commands",
+    "create_fakelogstream": "create a FakeLogStream wrapping a FakeStream to simulate ADB log output with reward and episode end messages",
+    "test_fakesimulator_screenshot": "test the FakeSimulator _get_screenshot_impl method to return a random RGB numpy array matching screen dimensions",
+    "test_fakestream_iterator": "test the FakeStream iterator that yields weighted random log lines until kill is called"
+  },
+  "google-deepmind_androidenv/android_env/components/simulators/fake/fake_simulator_test.py": {
+    "test_FakeSimulator_device_name": "test the FakeSimulator returns adb_device_name equal to fake_simulator",
+    "test_FakeSimulator_launch_close": "test the FakeSimulator launches and closes without crashing",
+    "test_FakeSimulator_get_screenshot": "test the FakeSimulator get_screenshot returns a 320x480x3 uint8 numpy array",
+    "test_FakeSimulator_log_stream": "test the FakeSimulator create_log_stream yields reward and episode end log lines",
+    "test_FakeSimulator_adb_output": "test the FakeSimulator adb_controller executes shell commands like dumpsys input and service check"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/a11y_grpc_wrapper.py": {
+    "create_A11yGrpcWrapper": "create an A11yGrpcWrapper instance wrapping an AndroidEnv to receive accessibility events over gRPC",
+    "build_A11yGrpcWrapper_with_install": "build an A11yGrpcWrapper that auto-installs the accessibility forwarder APK and starts the service",
+    "reset_A11yGrpcWrapper": "reset the A11yGrpcWrapper environment and reconfigure gRPC if the AVD was relaunched",
+    "step_A11yGrpcWrapper": "step the A11yGrpcWrapper environment with an action and optional wait time for a11y info",
+    "task_extras_A11yGrpcWrapper": "retrieve accumulated accessibility task extras from the wrapper with optional latest-only filtering"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/a11y_grpc_wrapper_test.py": {
+    "test_A11yGrpcWrapper_server": "test the A11yGrpcWrapper by connecting a gRPC client and sending accessibility forest messages",
+    "test_A11yGrpcWrapper_fetch_task_extras": "test the _fetch_task_extras method to verify it collects accessibility forests and events from the servicer",
+    "test_A11yGrpcWrapper_enable_networking": "test the A11yGrpcWrapper networking recovery when the accessibility forwarder logs exceptions and retries reconnection",
+    "test_A11yGrpcWrapper_extras_accumulate": "test that task extras accumulate correctly between reset and step calls without being lost",
+    "test_A11yGrpcWrapper_apk_install_and_start": "test the A11yGrpcWrapper APK installation and service start flags to verify correct ADB call counts"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/base_wrapper.py": {
+    "create_custom_wrapper": "create a custom AndroidEnv wrapper by subclassing BaseWrapper and overriding _process_action and _process_timestep",
+    "reset_wrapped_env": "reset a wrapped AndroidEnv instance and get the initial timestep from the underlying environment",
+    "step_wrapped_env": "step a wrapped AndroidEnv with an action that gets processed before being forwarded to the underlying env",
+    "save_load_state": "save and load the state of a wrapped AndroidEnv using protobuf SaveStateRequest and LoadStateRequest",
+    "get_raw_env": "get the unwrapped raw AndroidEnv interface by accessing the raw_env property on a wrapped instance"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/base_wrapper_test.py": {
+    "test_base_function_forwarding": "test that BaseWrapper correctly forwards reset, step, observation_spec, action_spec, load_state, save_state, and close to the wrapped environment",
+    "test_multiple_wrappers": "test that chaining multiple BaseWrapper instances correctly propagates close calls through the wrapper chain to the base environment",
+    "test_raw_env": "test that accessing raw_env on a doubly-wrapped environment returns the original unwrapped base environment",
+    "test_stats": "test that BaseWrapper forwards the stats method call to the underlying environment and returns its stats dictionary",
+    "test_wrapped_stats": "test that multiple custom wrappers each returning _wrapper_stats merge their stats with the base environment stats into a single dictionary"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/discrete_action_wrapper.py": {
+    "create_discrete_action_wrapper": "create a DiscreteActionWrapper instance wrapping an AndroidEnv with a 10x10 action grid",
+    "build_discrete_action_space": "build a discrete action space by wrapping AndroidEnv with configurable grid size and noise parameters",
+    "test_step_with_action_id": "test the DiscreteActionWrapper step method by passing a discrete action_id dictionary",
+    "review_num_actions_property": "review the num_actions property to understand redundant versus non-redundant action space sizing",
+    "refactor_get_touch_position": "refactor the _get_touch_position method to adjust noise clipping or grid coordinate mapping"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/discrete_action_wrapper_test.py": {
+    "test_discrete_action_wrapper_num_actions": "test the DiscreteActionWrapper num_actions property with redundant actions enabled on a 3x3 grid",
+    "test_discrete_action_wrapper_non_redundant": "test the DiscreteActionWrapper num_actions property with redundant actions disabled on a 3x3 grid",
+    "test_discrete_action_wrapper_reset": "test the DiscreteActionWrapper reset method delegates to the underlying base environment",
+    "test_discrete_action_wrapper_step_no_noise": "test the DiscreteActionWrapper step method with no noise and redundant actions on a 4x3 grid",
+    "test_discrete_action_wrapper_step_with_noise": "test the DiscreteActionWrapper step method with noise enabled on a 4x3 grid"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/flat_interface_wrapper.py": {
+    "wrap_android_env_flat_interface": "wrap an AndroidEnv environment with FlatInterfaceWrapper to flatten observations and actions for discrete agents",
+    "extract_screen_pixels": "create a function that extracts screen pixels from an observation array by removing the previous action layer",
+    "get_no_action_observation_spec": "build a function that creates an observation spec without the action layer from a BoundedArray spec",
+    "process_timestep_flat_obs": "refactor a dm_env TimeStep to keep only pixel observations by removing nested structure",
+    "get_flat_action_spec": "summarize the action spec by returning a flat BoundedArray instead of a nested dictionary"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/flat_interface_wrapper_test.py": {
+    "test_flat_interface_wrapper_reset": "test the FlatInterfaceWrapper reset method returns the expected timestep observation",
+    "test_flat_interface_wrapper_step": "test the FlatInterfaceWrapper step method forwards action_id to the base environment",
+    "test_flat_interface_wrapper_observation_spec": "test the FlatInterfaceWrapper observation_spec returns the expected BoundedArray spec",
+    "test_flat_interface_wrapper_action_spec": "test the FlatInterfaceWrapper action_spec returns a scalar int32 DiscreteArray",
+    "test_flat_interface_wrapper_bad_action_spec": "test the FlatInterfaceWrapper raises AssertionError when base env has multiple action keys"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/float_pixels_wrapper.py": {
+    "create_FloatPixelsWrapper": "create a FloatPixelsWrapper that wraps an AndroidEnv and converts integer pixels to float32",
+    "build_FloatPixelsWrapper_reset": "build a FloatPixelsWrapper and call reset to get the initial timestep with float pixels",
+    "test_FloatPixelsWrapper_step": "test the FloatPixelsWrapper step method to verify pixel conversion returns float32 values",
+    "review_FloatPixelsWrapper_observation_spec": "review the FloatPixelsWrapper observation_spec method to confirm it returns a BoundedArray with float32 dtype",
+    "refactor_FloatPixelsWrapper_process_observation": "refactor the FloatPixelsWrapper _process_observation method to support additional observation keys beyond pixels"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/float_pixels_wrapper_test.py": {
+    "test_FloatPixelsWrapper_spec": "test that FloatPixelsWrapper converts uint8 pixel specs to bounded float32 specs",
+    "test_FloatPixelsWrapper_step": "test that FloatPixelsWrapper normalizes uint8 pixel observations to float32 on step",
+    "test_FloatPixelsWrapper_reset": "test that FloatPixelsWrapper normalizes uint8 pixel observations to float32 on reset",
+    "test_FloatPixelsWrapper_already_float": "test that FloatPixelsWrapper passes through unchanged when pixels are already float",
+    "test_FloatPixelsWrapperTest_class": "test the FloatPixelsWrapperTest class covering spec, step, reset, and passthrough scenarios"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/gym_wrapper.py": {
+    "create_gym_wrapper": "create a GymInterfaceWrapper to wrap an AndroidEnv with an OpenAI Gym interface",
+    "convert_dm_env_spec_to_gym_space": "convert a dm_env spec to an OpenAI Gym space using _spec_to_space",
+    "render_gym_environment": "render the GymInterfaceWrapper environment as an rgb_array using the render method",
+    "reset_gym_environment": "reset the GymInterfaceWrapper environment and return the initial observation",
+    "step_gym_environment": "take a step in the GymInterfaceWrapper environment with an action dict"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/gym_wrapper_test.py": {
+    "test_GymInterfaceWrapper_render": "test the GymInterfaceWrapper render method returns an rgb_array image from the observation",
+    "test_GymInterfaceWrapper_render_error": "test the GymInterfaceWrapper render method raises ValueError when mode is human",
+    "test_GymInterfaceWrapper_reset": "test the GymInterfaceWrapper reset method calls base env reset and returns observation",
+    "test_GymInterfaceWrapper_step": "test the GymInterfaceWrapper step method calls base env step and returns observation",
+    "test_GymInterfaceWrapper_spec_to_space": "test the GymInterfaceWrapper spec_to_space method converts dm_env specs to gym spaces"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/image_rescale_wrapper.py": {
+    "build_image_rescale_wrapper": "build an AndroidEnv wrapper that rescales observation pixels using configurable zoom factors",
+    "create_grayscale_observation_wrapper": "create an ImageRescaleWrapper with grayscale mode enabled to convert RGB observations to single channel",
+    "test_resize_image_array": "test the _resize_image_array method to verify PIL-based resizing of numpy arrays",
+    "refactor_process_pixels": "refactor the _process_pixels method to support additional color space conversions beyond grayscale",
+    "review_observation_spec": "review the observation_spec method to verify output shape calculation with zoom factors"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/image_rescale_wrapper_test.py": {
+    "test_ImageRescaleWrapper_grayscale": "test the ImageRescaleWrapper with grayscale mode and custom zoom factors on a mocked AndroidEnv",
+    "test_ImageRescaleWrapper_full_channels": "test the ImageRescaleWrapper with full RGB channels and asymmetric zoom factors on a mocked AndroidEnv",
+    "test_ImageRescaleWrapper_list_zoom": "test the ImageRescaleWrapper with list-style zoom factors instead of tuple on a mocked AndroidEnv",
+    "review_ImageRescaleWrapperTest": "review the ImageRescaleWrapperTest class and its three test methods for coverage and correctness",
+    "summarize_simple_spec_helper": "summarize the _simple_spec helper function that creates a 300x300x3 BoundedArray spec for testing"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/last_action_wrapper.py": {
+    "build_last_action_wrapper": "build a LastActionWrapper around an AndroidEnvInterface to extend observations with the last action taken",
+    "create_last_action_layer": "create a last action layer by converting touch positions to pixel coordinates with a white pixel marker",
+    "test_process_observation": "test the _process_observation method to verify last action data is added to the observation dictionary",
+    "review_observation_spec": "review the observation_spec method to understand how pixel channels are extended with last action data",
+    "refactor_concat_to_pixels": "refactor the LastActionWrapper to toggle between concatenating last action to pixels or passing as separate observation"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/last_action_wrapper_test.py": {
+    "test_last_action_wrapper_concat_to_pixels": "test the LastActionWrapper with concat_to_pixels mode to verify touch action layer is appended to observation pixels",
+    "test_last_action_wrapper_no_concat": "test the LastActionWrapper without concat_to_pixels to verify last_action is a separate observation key",
+    "test_last_action_wrapper_lift_action": "test the LastActionWrapper to verify lift actions produce a zeroed last action layer in observations",
+    "test_last_action_wrapper_edge_positions": "test the LastActionWrapper to verify touch actions at screen edges map to correct pixel coordinates",
+    "test_last_action_wrapper_observation_spec": "test the LastActionWrapper observation_spec to verify pixel shape changes from 3 to 4 channels when concat is enabled"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/rate_limit_wrapper.py": {
+    "create_ratelimitwrapper_before_sleep": "create a RateLimitWrapper that sleeps before calling step on the underlying Android environment at a specified rate",
+    "create_ratelimitwrapper_after_sleep": "create a RateLimitWrapper that sleeps after calling step on the underlying Android environment at a specified rate",
+    "create_ratelimitwrapper_after_with_repeat": "create a RateLimitWrapper using AFTER_WITH_REPEAT sleep type that takes two steps per interaction with accumulated rewards",
+    "review_ratelimitwrapper_sleep_type_enum": "review the SleepType enum with BEFORE, AFTER, and AFTER_WITH_REPEAT options for controlling wrapper sleep behavior",
+    "test_ratelimitwrapper_step_method": "test the step method that maintains steady interaction rate by sleeping between environment steps based on sleep type"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/rate_limit_wrapper_test.py": {
+    "test_rate_limit_wrapper_disabled": "test the RateLimitWrapper with zero or negative rate to verify no sleep is called",
+    "test_rate_limit_wrapper_enabled": "test the RateLimitWrapper with a positive rate to verify sleep is called between steps",
+    "test_rate_limit_wrapper_sleep_before": "test the RateLimitWrapper with sleep type BEFORE to verify sleep occurs before step",
+    "test_rate_limit_wrapper_sleep_after": "test the RateLimitWrapper with sleep type AFTER to verify sleep occurs after step",
+    "test_rate_limit_wrapper_after_with_repeat": "test the RateLimitWrapper with AFTER_WITH_REPEAT to verify double step with accumulated rewards"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/tap_action_wrapper.py": {
+    "create_tap_action_wrapper": "create a TapActionWrapper instance wrapping an AndroidEnv with configurable tap duration and touch_only mode",
+    "build_tap_action_sequence": "build a sequence of touch and lift actions from a single tap action using _process_action",
+    "run_tap_action_step": "run a step in the wrapped environment that executes multiple touch frames followed by a lift action",
+    "review_action_spec": "review the action_spec method to see how touch_only mode restricts action types to discrete touch only",
+    "summarize_tap_wrapper_stats": "summarize the environment stats including env_steps tracked by the TapActionWrapper"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/tap_action_wrapper_test.py": {
+    "test_TapActionWrapper_process_action_repeat": "test the TapActionWrapper _process_action method with a REPEAT action type",
+    "test_TapActionWrapper_process_action_lift": "test the TapActionWrapper _process_action method with a LIFT action type",
+    "test_TapActionWrapper_process_action_touch": "test the TapActionWrapper _process_action method with a TOUCH action that auto-appends LIFT",
+    "test_TapActionWrapper_step": "test the TapActionWrapper step method to verify it calls base env step num_frames plus one times",
+    "test_TapActionWrapper_stats": "test the TapActionWrapper stats method to verify it returns env_steps alongside base env stats"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/a11y/a11y_events.py": {
+    "package_events_to_task_extras": "package a list of accessibility EventRequest protobufs into a numpy array for AndroidEnv task extras",
+    "extract_events_from_task_extras": "extract all accessibility events from AndroidEnv task extras and return them as a list of dictionaries",
+    "keep_latest_event_only": "keep only the most recent accessibility event in task extras by removing all earlier events",
+    "review_extract_events_from_task_extras": "review the extract_events_from_task_extras function to understand how it unpacks EventRequest and Any protobuf types",
+    "refactor_keep_latest_event_only": "refactor keep_latest_event_only to return a value instead of mutating task_extras in place"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/a11y/a11y_events_test.py": {
+    "test_extract_events_from_task_extras": "test extract_events_from_task_extras to extract accessibility events from task extras dict",
+    "test_keep_latest_event_only": "test keep_latest_event_only to retain only the latest event in task extras",
+    "test_event_request_helper": "test the _event_request helper that builds an EventRequest protobuf from a dict",
+    "test_event_request_as_any_helper": "test the _event_request_as_any helper that packs an EventRequest into a protobuf Any",
+    "test_a11y_events_test_suite": "test the A11yEventsTest suite covering event extraction and latest-only filtering"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/a11y/a11y_forests.py": {
+    "package_forests_to_task_extras": "package a list of AndroidAccessibilityForest protobufs into a numpy array for task extras",
+    "task_extras_has_forests": "check if task extras contain accessibility tree forest data as a numpy array",
+    "convert_to_forest": "convert a protobuf Any or AndroidAccessibilityForest object into an AndroidAccessibilityForest instance",
+    "extract_forests_from_task_extras": "extract all accessibility forests from AndroidEnv task extras and return them as a list",
+    "keep_latest_forest_only": "remove all but the last accessibility forest from task extras to keep only the latest"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/a11y/a11y_forests_test.py": {
+    "test_extract_forests_from_task_extras": "test extract_forests_from_task_extras with parameterized cases including empty, mixed, and packed Any protobuf inputs",
+    "test_keep_latest_forest_only": "test keep_latest_forest_only to verify only the last accessibility forest is retained in task extras",
+    "run_A11YForestsTest": "run the A11YForestsTest parameterized test suite using absltest to validate a11y_forests extraction and filtering logic",
+    "review_convert_to_forest": "review convert_to_forest which unpacks protobuf Any messages or returns AndroidAccessibilityForest instances directly",
+    "review_task_extras_has_forests": "review task_extras_has_forests which validates that task extras contain a 1D numpy array of accessibility forest protobufs"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/a11y/a11y_servicer.py": {
+    "create_a11y_servicer": "create an A11yServicer instance to handle Android accessibility gRPC requests with optional latest_forest_only mode",
+    "review_bidi_stream": "review the A11yServicer Bidi method that processes bidirectional gRPC streams for events and accessibility forests",
+    "gather_forests": "gather and clear the buffered Android accessibility forests from the A11yServicer instance",
+    "gather_events": "gather and clear the buffered accessibility events from the A11yServicer instance",
+    "pause_and_resume": "pause the A11yServicer to stop receiving events and forests then resume after environment reset"
+  },
+  "google-deepmind_androidenv/android_env/wrappers/a11y/a11y_servicer_test.py": {
+    "test_send_forest": "test that SendForest accepts accessibility forest protobufs and stores them in the servicer queue",
+    "test_bidi_forests_and_events": "test the bidirectional Bidi gRPC stream that accepts both forest and event ClientToServer messages",
+    "test_send_forest_latest_only": "test SendForest with latest_forest_only flag so only the most recent forest is retained",
+    "test_send_event": "test that SendEvent accepts EventRequest protobufs with arbitrary string key-value event data",
+    "test_pause_and_clear": "test that pause_and_clear stops receiving new events and forests and clears existing buffers"
+  },
+  "google-deepmind_androidenv/examples/run_acme_agent.py": {
+    "run_dqn_agent_on_android_env": "run a DQN agent on AndroidEnv using acme EnvironmentLoop for a specified number of episodes",
+    "apply_wrappers_to_environment": "apply discrete action, image rescale, float pixels, and single precision wrappers to an environment",
+    "configure_android_emulator": "configure an Android emulator with AVD name, SDK root, and ADB path via config classes",
+    "create_dqn_agent": "create a DQN agent with an Atari network for a given environment spec and action count",
+    "run_acme_environment_loop": "run an acme EnvironmentLoop with a DQN agent over a configured AndroidEnv for N episodes"
+  },
+  "google-deepmind_androidenv/examples/run_random_agent.py": {
+    "run_random_agent": "run an AndroidEnv agent that takes random actions for a specified number of steps",
+    "create_android_env_config": "create an AndroidEnvConfig with emulator launcher and ADB controller settings",
+    "load_android_env": "load an AndroidEnv using loader.load with a config and use it as a context manager",
+    "get_random_action": "generate a random action dict matching the environment action spec using numpy",
+    "reset_and_step_env": "reset the environment and step through it with actions to collect rewards"
+  }
+}

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/habitat-lab
+- repo_uri: https://github.com/facebookresearch/habitat-lab
+
+## File: facebookresearch_habitat-lab/examples/hitl/minimal/minimal.py
+
+Prompts
+
+```
+['run the minimal HITL app that loads and steps a Habitat environment with a fixed overhead camera', 'create a subclass of AppState that implements sim_update to step the environment and set camera transforms', 'review the sim_update method that computes actions, steps the environment, and sets the 3D viewport camera', 'build a Hydra-configured main entry point that launches hitl_main with an AppStateMinimal factory function', 'test the ESC key detection logic that sets application_exit to end the HITL simulation']
+```
+
+Usage
+
+```
+{'run_minimal_HITL_app': 'run the minimal HITL app that loads and steps a Habitat environment with a fixed overhead camera', 'create_AppStateMinimal_subclass': 'create a subclass of AppState that implements sim_update to step the environment and set camera transforms', 'review_sim_update_method': 'review the sim_update method that computes actions, steps the environment, and sets the 3D viewport camera', 'build_HITL_main_entry': 'build a Hydra-configured main entry point that launches hitl_main with an AppStateMinimal factory function', 'test_key_input_handling': 'test the ESC key detection logic that sets application_exit to end the HITL simulation'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/actionengine
+- repo_uri: https://github.com/google-deepmind/actionengine
+
+## File: google-deepmind_actionengine/third_party/boost/libs/geometry/doc/make_qbk.py
+
+Prompts
+
+```
+['run make_qbk.py to convert Boost.Geometry Doxygen XML output into QuickBook qbk documentation files', 'run the call_doxygen function to invoke Doxygen and generate XML documentation in the doxy directory', 'run group_to_quickbook to convert a Doxygen group section like area or buffer into a qbk file', 'run strategy_to_quickbook to convert a namespaced strategy section like area::cartesian into a qbk file', 'run remove_all_files to recursively clean a directory of generated Doxygen intermediate XML and HTML files']
+```
+
+Usage
+
+```
+{'run_doxygen_to_qbk': 'run make_qbk.py to convert Boost.Geometry Doxygen XML output into QuickBook qbk documentation files', 'run_call_doxygen': 'run the call_doxygen function to invoke Doxygen and generate XML documentation in the doxy directory', 'run_group_to_quickbook': 'run group_to_quickbook to convert a Doxygen group section like area or buffer into a qbk file', 'run_strategy_to_quickbook': 'run strategy_to_quickbook to convert a namespaced strategy section like area::cartesian into a qbk file', 'run_remove_all_files': 'run remove_all_files to recursively clean a directory of generated Doxygen intermediate XML and HTML files'}
+```
+

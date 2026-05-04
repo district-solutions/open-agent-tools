@@ -1,0 +1,20 @@
+{
+    "summary": "This file is a pure configuration module (no functions, classes, or callable APIs). It defines dataset settings for MMDetection using the PASCAL VOC 2007+2012 dataset.",
+    "config_variables": [
+        "dataset_type = 'VOCDataset'",
+        "data_root = 'data/VOCdevkit/'",
+        "img_norm_cfg — image normalization parameters (mean, std, to_rgb)",
+        "train_pipeline — list of preprocessing transforms for training (LoadImageFromFile, LoadAnnotations, Resize, RandomFlip, Normalize, Pad, DefaultFormatBundle, Collect)",
+        "test_pipeline — list of preprocessing transforms for testing (LoadImageFromFile, MultiScaleFlipAug with Resize, RandomFlip, Normalize, Pad, ImageToTensor, Collect)",
+        "data — dict with samples_per_gpu, workers_per_gpu, train/val/test dataset configs using RepeatDataset (3x) for training and VOC2007 test split for val/test",
+        "evaluation — dict with interval=1 and metric='mAP'"
+    ],
+    "use_cases": [
+        "Configure MMDetection training on PASCAL VOC 2007+2012 combined dataset",
+        "Set up image normalization with ImageNet-style mean/std values",
+        "Define training data augmentation pipeline with resize, flip, and padding",
+        "Define test-time augmentation pipeline with MultiScaleFlipAug",
+        "Configure evaluation to compute mAP every training interval"
+    ],
+    "note": "No callable functions, classes, or APIs exist in this file. It is a configuration-only module intended to be imported by MMDetection's config system."
+}

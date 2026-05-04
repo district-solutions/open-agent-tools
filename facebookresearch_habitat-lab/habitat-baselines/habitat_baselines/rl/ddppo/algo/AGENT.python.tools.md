@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/habitat-lab
+- repo_uri: https://github.com/facebookresearch/habitat-lab
+
+## File: facebookresearch_habitat-lab/habitat-baselines/habitat_baselines/rl/ddppo/algo/ddppo.py
+
+Prompts
+
+```
+['build a python module that recursively applies a function to nested dicts, lists, and tuples', 'create a function that converts CPU torch tensors to numpy arrays recursively in nested structures', 'create a function that converts numpy arrays to torch CPU tensors recursively in nested structures', 'test the distributed_var_mean function to compute mean and variance across multiple distributed workers', 'review the DDPPO class that extends PPO with decentralized distributed training via the DecentralizedDistributedMixin']
+```
+
+Usage
+
+```
+{'build_recursive_apply': 'build a python module that recursively applies a function to nested dicts, lists, and tuples', 'create_cpu_to_numpy': 'create a function that converts CPU torch tensors to numpy arrays recursively in nested structures', 'create_numpy_to_cpu': 'create a function that converts numpy arrays to torch CPU tensors recursively in nested structures', 'test_distributed_var_mean': 'test the distributed_var_mean function to compute mean and variance across multiple distributed workers', 'review_DDPPO': 'review the DDPPO class that extends PPO with decentralized distributed training via the DecentralizedDistributedMixin'}
+```
+

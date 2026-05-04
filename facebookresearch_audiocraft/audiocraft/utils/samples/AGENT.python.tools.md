@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/audiocraft
+- repo_uri: https://github.com/facebookresearch/audiocraft.git
+
+## File: facebookresearch_audiocraft/audiocraft/utils/samples/manager.py
+
+Prompts
+
+```
+['create a SampleManager instance to manage audio sample storage and retrieval for a dora experiment', 'add a single audio sample with optional prompt and conditioning metadata to the experiment sample store', 'add a batch of audio samples with prompts and ground truth references to the experiment', 'retrieve filtered audio samples from the experiment by epoch and prompt or conditioning criteria', 'get matched audio samples across multiple dora experiments grouped by stable or unstable sample identifiers']
+```
+
+Usage
+
+```
+{'create_SampleManager': 'create a SampleManager instance to manage audio sample storage and retrieval for a dora experiment', 'add_sample_SampleManager': 'add a single audio sample with optional prompt and conditioning metadata to the experiment sample store', 'add_samples_SampleManager': 'add a batch of audio samples with prompts and ground truth references to the experiment', 'get_samples_SampleManager': 'retrieve filtered audio samples from the experiment by epoch and prompt or conditioning criteria', 'get_samples_for_xps': 'get matched audio samples across multiple dora experiments grouped by stable or unstable sample identifiers'}
+```
+

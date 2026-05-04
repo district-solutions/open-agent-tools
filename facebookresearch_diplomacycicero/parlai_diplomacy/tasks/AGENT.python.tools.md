@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/parlai_diplomacy/tasks/base_diplomacy_agent.py
+
+Prompts
+
+```
+['build a ParlAI Diplomacy teacher subclass that inherits BaseDiplomacyTeacher for custom game data loading', 'create command line arguments for the Diplomacy teacher including chunk size and player rating options', 'test loading Diplomacy game examples from a specific chunk index and validate the returned data', 'refactor the example tuple generation method to support new output types like dialogue or order prediction', 'review the player metadata extraction logic including ratings and chattiness for Diplomacy games']
+```
+
+Usage
+
+```
+{'build_BaseDiplomacyTeacher': 'build a ParlAI Diplomacy teacher subclass that inherits BaseDiplomacyTeacher for custom game data loading', 'create_add_cmdline_args': 'create command line arguments for the Diplomacy teacher including chunk size and player rating options', 'test_load_from_chunk': 'test loading Diplomacy game examples from a specific chunk index and validate the returned data', 'refactor_generate_example_tuples': 'refactor the example tuple generation method to support new output types like dialogue or order prediction', 'review_get_player_metadata': 'review the player metadata extraction logic including ratings and chattiness for Diplomacy games'}
+```
+

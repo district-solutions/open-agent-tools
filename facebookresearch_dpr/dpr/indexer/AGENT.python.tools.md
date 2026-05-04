@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dpr
+- repo_uri: https://github.com/facebookresearch/dpr
+
+## File: facebookresearch_dpr/dpr/indexer/faiss_indexers.py
+
+Prompts
+
+```
+['create a DenseFlatIndexer to build a FAISS flat inner product index from dense vectors', 'index a list of document id and vector tuples using DenseFlatIndexer index_data method', 'search for top-k nearest neighbor documents using DenseFlatIndexer search_knn with query vectors', 'serialize a DenseIndexer to disk and deserialize it back to restore the FAISS index and metadata', 'create a DenseHNSWFlatIndexer to build an efficient HNSW index with dot product to L2 conversion']
+```
+
+Usage
+
+```
+{'create_flat_index_for_dense_vectors': 'create a DenseFlatIndexer to build a FAISS flat inner product index from dense vectors', 'index_documents_with_flat_indexer': 'index a list of document id and vector tuples using DenseFlatIndexer index_data method', 'search_knn_with_flat_indexer': 'search for top-k nearest neighbor documents using DenseFlatIndexer search_knn with query vectors', 'serialize_and_deserialize_faiss_index': 'serialize a DenseIndexer to disk and deserialize it back to restore the FAISS index and metadata', 'create_hnsw_index_for_retrieval': 'create a DenseHNSWFlatIndexer to build an efficient HNSW index with dot product to L2 conversion'}
+```
+

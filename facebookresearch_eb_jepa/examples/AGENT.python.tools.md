@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eb/jepa
+- repo_uri: https://github.com/facebookresearch/eb_jepa
+
+## File: facebookresearch_eb_jepa/examples/launch_sbatch.py
+
+Prompts
+
+```
+['launch a single SLURM training job for an EB-JEPA example with a given config file and overrides', 'launch a parameter sweep across multiple jobs using submitit with optional wandb sweep integration', 'run an EB-JEPA experiment by dynamically importing the example module and passing a config', 'create a submitit AutoExecutor with standard SLURM parameters including memory, CPUs, and GPU settings', 'create a wandb sweep configuration from a parameter grid with a specified metric and method']
+```
+
+Usage
+
+```
+{'launch_single_job': 'launch a single SLURM training job for an EB-JEPA example with a given config file and overrides', 'launch_sweep': 'launch a parameter sweep across multiple jobs using submitit with optional wandb sweep integration', 'run_experiment': 'run an EB-JEPA experiment by dynamically importing the example module and passing a config', 'make_executor': 'create a submitit AutoExecutor with standard SLURM parameters including memory, CPUs, and GPU settings', 'create_wandb_sweep_config': 'create a wandb sweep configuration from a parameter grid with a specified metric and method'}
+```
+

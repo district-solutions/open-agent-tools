@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/assemblyhands-toolkit
+- repo_uri: https://github.com/facebookresearch/assemblyhands-toolkit
+
+## File: facebookresearch_assemblyhands-toolkit/src/dataset/AssemblyHands-Ego/dataset.py
+
+Prompts
+
+```
+['create a Dataset instance to load AssemblyHands-Ego annotations for train, val, or test mode', 'load a cropped image from a bounding box and transform joint coordinates accordingly', 'augment a hand image with corresponding joint coordinates and validity masks', 'evaluate 3D hand pose predictions computing MPJPE, MRRPE, and handedness accuracy metrics', 'visualize ground truth 2D and 3D hand keypoints on sample images from the dataset']
+```
+
+Usage
+
+```
+{'create_Dataset_for_assemblyhands_ego': 'create a Dataset instance to load AssemblyHands-Ego annotations for train, val, or test mode', 'load_crop_img_from_bbox': 'load a cropped image from a bounding box and transform joint coordinates accordingly', 'augment_hand_image_and_joints': 'augment a hand image with corresponding joint coordinates and validity masks', 'evaluate_3d_hand_pose_predictions': 'evaluate 3D hand pose predictions computing MPJPE, MRRPE, and handedness accuracy metrics', 'visualize_ground_truth_keypoints': 'visualize ground truth 2D and 3D hand keypoints on sample images from the dataset'}
+```
+

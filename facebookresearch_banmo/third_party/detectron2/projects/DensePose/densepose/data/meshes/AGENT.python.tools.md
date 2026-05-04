@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/banmo
+- repo_uri: https://github.com/facebookresearch/banmo
+
+## File: facebookresearch_banmo/third_party/detectron2/projects/DensePose/densepose/data/meshes/catalog.py
+
+Prompts
+
+```
+['register a MeshInfo entry into the global MeshCatalog with an optional base path for file paths', 'register multiple MeshInfo entries into the global MeshCatalog by iterating over an iterable of mesh info objects', 'get the integer mesh ID for a given shape name from the MeshCatalog using get_mesh_id', 'get the string mesh name for a given integer mesh ID from the MeshCatalog using get_mesh_name', 'create a MeshInfo dataclass instance with a name, data path, and optional geodists, symmetry, and texcoords paths']
+```
+
+Usage
+
+```
+{'register_mesh': 'register a MeshInfo entry into the global MeshCatalog with an optional base path for file paths', 'register_meshes': 'register multiple MeshInfo entries into the global MeshCatalog by iterating over an iterable of mesh info objects', 'get_mesh_id': 'get the integer mesh ID for a given shape name from the MeshCatalog using get_mesh_id', 'get_mesh_name': 'get the string mesh name for a given integer mesh ID from the MeshCatalog using get_mesh_name', 'create_MeshInfo': 'create a MeshInfo dataclass instance with a name, data path, and optional geodists, symmetry, and texcoords paths'}
+```
+

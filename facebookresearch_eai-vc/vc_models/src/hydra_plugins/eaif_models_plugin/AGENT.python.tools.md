@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eai-vc
+- repo_uri: https://github.com/facebookresearch/eai-vc
+
+## File: facebookresearch_eai-vc/vc_models/src/hydra_plugins/eaif_models_plugin/eaif_models_plugin.py
+
+Prompts
+
+```
+['build a Hydra SearchPathPlugin that prepends a package config path for vc_models', 'create a VcModelsPlugin class that extends SearchPathPlugin to register custom config paths', 'review the VcModelsPlugin manipulate_search_path method that prepends pkg://vc_models/conf to the search path', 'test the VcModelsPlugin class to verify it correctly prepends the vc_models config search path', 'refactor the VcModelsPlugin to change the provider name or config path for a different package']
+```
+
+Usage
+
+```
+{'build_hydra_search_path_plugin': 'build a Hydra SearchPathPlugin that prepends a package config path for vc_models', 'create_VcModelsPlugin_class': 'create a VcModelsPlugin class that extends SearchPathPlugin to register custom config paths', 'review_VcModelsPlugin_manipulate_search_path': 'review the VcModelsPlugin manipulate_search_path method that prepends pkg://vc_models/conf to the search path', 'test_VcModelsPlugin_registration': 'test the VcModelsPlugin class to verify it correctly prepends the vc_models config search path', 'refactor_VcModelsPlugin_provider': 'refactor the VcModelsPlugin to change the provider name or config path for a different package'}
+```
+

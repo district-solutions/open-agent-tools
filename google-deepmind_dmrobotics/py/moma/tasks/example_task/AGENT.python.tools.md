@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: google-deepmind/dmrobotics
+- repo_uri: https://github.com/google-deepmind/dm_robotics
+
+## File: google-deepmind_dmrobotics/py/moma/tasks/example_task/example_task.py
+
+Prompts
+
+```
+['build a dm_env environment for a two-robot task where the agent controls joint actions to bring robot TCPs close together', 'create an ArmJointActionSpace for joint space control of a robot arm using the parent action spec and effector prefix', 'create a GripperActionSpace for a robot gripper and wrap it in a FixedActionSpace to disable agent control', 'add an L2Reward preprocessor that rewards the agent for minimizing distance between robot0 and robot1 TCP positions', 'add a MaxStepsTermination preprocessor to end episodes after a fixed number of steps', 'test the ExampleTaskTest class to verify environment stepping with a zero action', 'run the absltest main to execute all tests in the ExampleTaskTest class', 'review the ExampleTaskTest class and its test_environment_stepping method for correctness', 'summarize the test_environment_stepping method that builds an environment and steps with a zero action', 'refactor the ExampleTaskTest class to add additional test cases for environment stepping', 'run a MoMa task environment with a random agent for 100 steps using absl app', 'build a RandomAgent that emits uniform random actions within a BoundedArray action spec', 'create a MuJoCo rendering observer with custom camera distance, lookat, elevation, and azimuth config', 'run the environment loop with an agent and rendering observers for a specified number of max steps', 'generate a clipped random action from a BoundedArray spec using the RandomAgent step method', 'build a BaseTask with two Sawyer robots, props, and initializers for a handshake simulation', 'build a Sawyer robot with a Robotiq 2F85 gripper, FTS300 wrist sensor, and arm effector', 'compose robots and props into a MuJoCo arena by attaching arms and adding free entities', 'populate task components with constant pose initializers to position two robots in the scene', 'build an empty MuJoCo arena with custom timestep, gravity, and visualization settings']
+```
+
+Usage
+
+```
+{'build_task_environment': 'build a dm_env environment for a two-robot task where the agent controls joint actions to bring robot TCPs close together', 'create_arm_joint_action_space': 'create an ArmJointActionSpace for joint space control of a robot arm using the parent action spec and effector prefix', 'create_gripper_action_space': 'create a GripperActionSpace for a robot gripper and wrap it in a FixedActionSpace to disable agent control', 'add_l2_reward_preprocessor': 'add an L2Reward preprocessor that rewards the agent for minimizing distance between robot0 and robot1 TCP positions', 'add_max_steps_termination': 'add a MaxStepsTermination preprocessor to end episodes after a fixed number of steps'}
+```
+
+## File: google-deepmind_dmrobotics/py/moma/tasks/example_task/example_task_test.py
+
+Prompts
+
+```
+['build a dm_env environment for a two-robot task where the agent controls joint actions to bring robot TCPs close together', 'create an ArmJointActionSpace for joint space control of a robot arm using the parent action spec and effector prefix', 'create a GripperActionSpace for a robot gripper and wrap it in a FixedActionSpace to disable agent control', 'add an L2Reward preprocessor that rewards the agent for minimizing distance between robot0 and robot1 TCP positions', 'add a MaxStepsTermination preprocessor to end episodes after a fixed number of steps', 'test the ExampleTaskTest class to verify environment stepping with a zero action', 'run the absltest main to execute all tests in the ExampleTaskTest class', 'review the ExampleTaskTest class and its test_environment_stepping method for correctness', 'summarize the test_environment_stepping method that builds an environment and steps with a zero action', 'refactor the ExampleTaskTest class to add additional test cases for environment stepping', 'run a MoMa task environment with a random agent for 100 steps using absl app', 'build a RandomAgent that emits uniform random actions within a BoundedArray action spec', 'create a MuJoCo rendering observer with custom camera distance, lookat, elevation, and azimuth config', 'run the environment loop with an agent and rendering observers for a specified number of max steps', 'generate a clipped random action from a BoundedArray spec using the RandomAgent step method', 'build a BaseTask with two Sawyer robots, props, and initializers for a handshake simulation', 'build a Sawyer robot with a Robotiq 2F85 gripper, FTS300 wrist sensor, and arm effector', 'compose robots and props into a MuJoCo arena by attaching arms and adding free entities', 'populate task components with constant pose initializers to position two robots in the scene', 'build an empty MuJoCo arena with custom timestep, gravity, and visualization settings']
+```
+
+Usage
+
+```
+{'test_environment_stepping': 'test the ExampleTaskTest class to verify environment stepping with a zero action', 'run_example_task_test': 'run the absltest main to execute all tests in the ExampleTaskTest class', 'review_ExampleTaskTest': 'review the ExampleTaskTest class and its test_environment_stepping method for correctness', 'summarize_test_environment_stepping': 'summarize the test_environment_stepping method that builds an environment and steps with a zero action', 'refactor_ExampleTaskTest': 'refactor the ExampleTaskTest class to add additional test cases for environment stepping'}
+```
+
+## File: google-deepmind_dmrobotics/py/moma/tasks/example_task/run.py
+
+Prompts
+
+```
+['build a dm_env environment for a two-robot task where the agent controls joint actions to bring robot TCPs close together', 'create an ArmJointActionSpace for joint space control of a robot arm using the parent action spec and effector prefix', 'create a GripperActionSpace for a robot gripper and wrap it in a FixedActionSpace to disable agent control', 'add an L2Reward preprocessor that rewards the agent for minimizing distance between robot0 and robot1 TCP positions', 'add a MaxStepsTermination preprocessor to end episodes after a fixed number of steps', 'test the ExampleTaskTest class to verify environment stepping with a zero action', 'run the absltest main to execute all tests in the ExampleTaskTest class', 'review the ExampleTaskTest class and its test_environment_stepping method for correctness', 'summarize the test_environment_stepping method that builds an environment and steps with a zero action', 'refactor the ExampleTaskTest class to add additional test cases for environment stepping', 'run a MoMa task environment with a random agent for 100 steps using absl app', 'build a RandomAgent that emits uniform random actions within a BoundedArray action spec', 'create a MuJoCo rendering observer with custom camera distance, lookat, elevation, and azimuth config', 'run the environment loop with an agent and rendering observers for a specified number of max steps', 'generate a clipped random action from a BoundedArray spec using the RandomAgent step method', 'build a BaseTask with two Sawyer robots, props, and initializers for a handshake simulation', 'build a Sawyer robot with a Robotiq 2F85 gripper, FTS300 wrist sensor, and arm effector', 'compose robots and props into a MuJoCo arena by attaching arms and adding free entities', 'populate task components with constant pose initializers to position two robots in the scene', 'build an empty MuJoCo arena with custom timestep, gravity, and visualization settings']
+```
+
+Usage
+
+```
+{'run_task_environment': 'run a MoMa task environment with a random agent for 100 steps using absl app', 'build_random_agent': 'build a RandomAgent that emits uniform random actions within a BoundedArray action spec', 'create_rendering_observer': 'create a MuJoCo rendering observer with custom camera distance, lookat, elevation, and azimuth config', 'run_environment_loop': 'run the environment loop with an agent and rendering observers for a specified number of max steps', 'generate_random_action': 'generate a clipped random action from a BoundedArray spec using the RandomAgent step method'}
+```
+
+## File: google-deepmind_dmrobotics/py/moma/tasks/example_task/task_builder.py
+
+Prompts
+
+```
+['build a dm_env environment for a two-robot task where the agent controls joint actions to bring robot TCPs close together', 'create an ArmJointActionSpace for joint space control of a robot arm using the parent action spec and effector prefix', 'create a GripperActionSpace for a robot gripper and wrap it in a FixedActionSpace to disable agent control', 'add an L2Reward preprocessor that rewards the agent for minimizing distance between robot0 and robot1 TCP positions', 'add a MaxStepsTermination preprocessor to end episodes after a fixed number of steps', 'test the ExampleTaskTest class to verify environment stepping with a zero action', 'run the absltest main to execute all tests in the ExampleTaskTest class', 'review the ExampleTaskTest class and its test_environment_stepping method for correctness', 'summarize the test_environment_stepping method that builds an environment and steps with a zero action', 'refactor the ExampleTaskTest class to add additional test cases for environment stepping', 'run a MoMa task environment with a random agent for 100 steps using absl app', 'build a RandomAgent that emits uniform random actions within a BoundedArray action spec', 'create a MuJoCo rendering observer with custom camera distance, lookat, elevation, and azimuth config', 'run the environment loop with an agent and rendering observers for a specified number of max steps', 'generate a clipped random action from a BoundedArray spec using the RandomAgent step method', 'build a BaseTask with two Sawyer robots, props, and initializers for a handshake simulation', 'build a Sawyer robot with a Robotiq 2F85 gripper, FTS300 wrist sensor, and arm effector', 'compose robots and props into a MuJoCo arena by attaching arms and adding free entities', 'populate task components with constant pose initializers to position two robots in the scene', 'build an empty MuJoCo arena with custom timestep, gravity, and visualization settings']
+```
+
+Usage
+
+```
+{'build_task': 'build a BaseTask with two Sawyer robots, props, and initializers for a handshake simulation', 'build_sawyer_robot': 'build a Sawyer robot with a Robotiq 2F85 gripper, FTS300 wrist sensor, and arm effector', 'compose_entities': 'compose robots and props into a MuJoCo arena by attaching arms and adding free entities', 'populate_scene_initializers': 'populate task components with constant pose initializers to position two robots in the scene', 'build_arena': 'build an empty MuJoCo arena with custom timestep, gravity, and visualization settings'}
+```
+

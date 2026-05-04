@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/agem
+- repo_uri: https://github.com/facebookresearch/agem
+
+## File: facebookresearch_agem/model/model.py
+
+Prompts
+
+```
+['create a Model instance with placeholders for continual learning using EWC, A-GEM, MAS, PI, or PNN importance methods', 'review the Model constructor to understand how it sets up TensorFlow placeholders and network architecture for incremental learning', 'build Fisher information computation operations for EWC and M-EWC synaptic consolidation methods', 'create stochastic GEM operations that project gradients to avoid catastrophic forgetting on previous tasks', 'run task_updates to compute and store importance scores like Fisher, Hebbian, or path integral after each task completes']
+```
+
+Usage
+
+```
+{'create_Model': 'create a Model instance with placeholders for continual learning using EWC, A-GEM, MAS, PI, or PNN importance methods', 'review_Model_init': 'review the Model constructor to understand how it sets up TensorFlow placeholders and network architecture for incremental learning', 'build_fisher_ops': 'build Fisher information computation operations for EWC and M-EWC synaptic consolidation methods', 'create_stochastic_gem_ops': 'create stochastic GEM operations that project gradients to avoid catastrophic forgetting on previous tasks', 'run_task_updates': 'run task_updates to compute and store importance scores like Fisher, Hebbian, or path integral after each task completes'}
+```
+

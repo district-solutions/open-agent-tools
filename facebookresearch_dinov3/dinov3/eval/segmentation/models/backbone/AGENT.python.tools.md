@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dinov3
+- repo_uri: https://github.com/facebookresearch/dinov3
+
+## File: facebookresearch_dinov3/dinov3/eval/segmentation/models/backbone/dinov3_adapter.py
+
+Prompts
+
+```
+['build a DINOv3_Adapter backbone with frozen ViT and deformable attention for segmentation', 'create a SpatialPriorModule CNN stem to extract multi-scale spatial features from images', 'test the InteractionBlockWithCls layer that fuses ViT tokens with CNN features via deformable attention', 'review the ConvFFN module combining linear layers with depthwise convolution for feature processing', 'refactor the DropPath stochastic depth regularization to adjust dropout probability for residual blocks']
+```
+
+Usage
+
+```
+{'build_DINOv3_Adapter': 'build a DINOv3_Adapter backbone with frozen ViT and deformable attention for segmentation', 'create_SpatialPriorModule': 'create a SpatialPriorModule CNN stem to extract multi-scale spatial features from images', 'test_InteractionBlockWithCls': 'test the InteractionBlockWithCls layer that fuses ViT tokens with CNN features via deformable attention', 'review_ConvFFN': 'review the ConvFFN module combining linear layers with depthwise convolution for feature processing', 'refactor_DropPath': 'refactor the DropPath stochastic depth regularization to adjust dropout probability for residual blocks'}
+```
+

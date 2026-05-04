@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/parlai_diplomacy/agents/marginal_likelihood/agents.py
+
+Prompts
+
+```
+['build a PyTorch criterion module that computes marginal log likelihood loss over multiple positive labels', 'create a ParlAI BART classifier agent registered as bart_marginal_likelihood for multilabel classification tasks', 'review the _set_label_vec method that converts label lists into torch LongTensor vectors using class_dict', 'review the _get_label_tensor method that converts label index vectors into a binary mask tensor', 'review the load method that loads model and optimizer state dicts from a checkpoint file with ValueError handling']
+```
+
+Usage
+
+```
+{'build_MarginalLikelihoodCriterion': 'build a PyTorch criterion module that computes marginal log likelihood loss over multiple positive labels', 'create_BartMarginalClassifierAgent': 'create a ParlAI BART classifier agent registered as bart_marginal_likelihood for multilabel classification tasks', 'review_BartMarginalClassifierAgent_set_label_vec': 'review the _set_label_vec method that converts label lists into torch LongTensor vectors using class_dict', 'review_BartMarginalClassifierAgent_get_label_tensor': 'review the _get_label_tensor method that converts label index vectors into a binary mask tensor', 'review_BartMarginalClassifierAgent_load': 'review the load method that loads model and optimizer state dicts from a checkpoint file with ValueError handling'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/ai4animationpy
+- repo_uri: https://github.com/facebookresearch/ai4animationpy
+
+## File: facebookresearch_ai4animationpy/Demos/AI/Autoencoder/Program.py
+
+Prompts
+
+```
+['run the autoencoder training loop for 150 epochs on motion capture data with cosine annealing', 'create a motion dataset with RootModule, MotionModule, and MirrorModule preprocessing pipelines', 'build an autoencoder model with configurable feature, hidden, and latent dimensions for motion data', 'extract training features including bone transforms, axis directions, and velocities from motion batches', 'render an actor in the scene by decoding latent features into positions, rotations, and velocities']
+```
+
+Usage
+
+```
+{'run_autoencoder_training': 'run the autoencoder training loop for 150 epochs on motion capture data with cosine annealing', 'create_dataset_with_modules': 'create a motion dataset with RootModule, MotionModule, and MirrorModule preprocessing pipelines', 'build_autoencoder_model': 'build an autoencoder model with configurable feature, hidden, and latent dimensions for motion data', 'extract_training_features': 'extract training features including bone transforms, axis directions, and velocities from motion batches', 'render_actor_from_latent': 'render an actor in the scene by decoding latent features into positions, rotations, and velocities'}
+```
+

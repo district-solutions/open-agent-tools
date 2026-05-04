@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/banmo
+- repo_uri: https://github.com/facebookresearch/banmo
+
+## File: facebookresearch_banmo/third_party/detectron2/projects/TensorMask/tensormask/layers/swap_align2nat.py
+
+Prompts
+
+```
+['build a PyTorch module using SwapAlign2Nat to transform mask representations from aligned to natural format', 'create a SwapAlign2Nat layer with a custom lambda_val ratio and pad_val for mask transformation', 'run the swap_align2nat function on an input tensor with lambda and padding parameters', 'review the _SwapAlign2Nat backward pass that computes gradients via the C extension swap_align2nat_backward', 'test the SwapAlign2Nat __repr__ method to verify it outputs lambda_val and pad_val parameters']
+```
+
+Usage
+
+```
+{'build_swap_align2nat_module': 'build a PyTorch module using SwapAlign2Nat to transform mask representations from aligned to natural format', 'create_swap_align2nat_layer': 'create a SwapAlign2Nat layer with a custom lambda_val ratio and pad_val for mask transformation', 'run_swap_align2nat_forward': 'run the swap_align2nat function on an input tensor with lambda and padding parameters', 'review_SwapAlign2Nat_backward': 'review the _SwapAlign2Nat backward pass that computes gradients via the C extension swap_align2nat_backward', 'test_SwapAlign2Nat_repr': 'test the SwapAlign2Nat __repr__ method to verify it outputs lambda_val and pad_val parameters'}
+```
+

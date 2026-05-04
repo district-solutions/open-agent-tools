@@ -1,0 +1,359 @@
+{
+  "facebookresearch_efm3d/data/dataverse_url_parser.py": {
+    "parse_dataverse_urls_to_yaml": "parse dataverse URLs from a JSON config file and generate YAML files for training, validation, and combined datasets",
+    "download_wds_files_for_sequences": "download WebDataset tar files for specified sequences from dataverse URLs to a local output directory",
+    "split_sequences_by_ratio": "split sequence data into train and validation sets using a specified ratio and random seed for reproducibility",
+    "split_sequences_by_json": "split sequence data into train and validation sets based on sequence names defined in a JSON file",
+    "extract_urls_from_tars_info": "extract download URLs from a dictionary of tar file information organized by sequence names"
+  },
+  "facebookresearch_efm3d/efm3d/aria/camera.py": {
+    "build_aria_fisheye_camera": "build a python module to create an ARIA fisheye624 camera calibration using get_aria_camera with custom params and resolution",
+    "project_3d_to_2d": "create a function that projects 3D points into 2D pixel coordinates using CameraTW.project and returns validity masks",
+    "unproject_2d_to_3d_rays": "create a function that unprojects 2D pixel coordinates into normalized 3D rays using CameraTW.unproject",
+    "scale_camera_parameters": "build a python module to scale camera intrinsic parameters to a new image size using CameraTW.scale_to_size",
+    "resize_images_to_camera": "create a function that resizes a batch of images to match CameraTW dimensions using scale_image_to_cam with bilinear interpolation"
+  },
+  "facebookresearch_efm3d/efm3d/aria/obb.py": {
+    "create_ObbTW_from_lmc": "create an ObbTW oriented 3D bounding box from 3D box, 2D projections, pose, and semantic IDs",
+    "compute_obb_iou3d": "compute the 3D intersection over union between two batches of oriented bounding boxes using voxel sampling",
+    "project_bb3d_onto_image": "project 3D oriented bounding box corners into a 2D image plane given a camera and world-to-rig pose",
+    "transform_obbs": "transform padded oriented bounding boxes from world coordinates to another coordinate system using a SE3 transform",
+    "filter_obbs_by_sem_id": "filter an ObbTW collection to keep only bounding boxes matching specified semantic class IDs"
+  },
+  "facebookresearch_efm3d/efm3d/aria/pose.py": {
+    "create_PoseTW_from_Rt": "create a PoseTW object from a rotation matrix and translation vector using PoseTW.from_Rt",
+    "compose_PoseTW_transforms": "compose two SE3 poses together using PoseTW.compose or the matmul operator to chain transforms",
+    "interpolate_PoseTW_poses": "interpolate poses at arbitrary timestamps using PoseTW.interpolate with times and interp_times tensors",
+    "align_PoseTW_trajectories": "align two PoseTW trajectories using Horn method via PoseTW.align to compute relative SE3 transform",
+    "transform_points_with_PoseTW": "transform 3D points using PoseTW.transform or the multiply operator to apply SE3 pose to point clouds"
+  },
+  "facebookresearch_efm3d/efm3d/aria/projection_utils.py": {
+    "project_3d_points_to_2d_fisheye": "project 3D points to 2D image coordinates using the Fisheye624 camera model with radial tangential and thin prism distortion",
+    "unproject_2d_pixels_to_3d_rays_fisheye": "unproject 2D pixel coordinates to 3D rays using the Fisheye624 camera model with Newton method optimization",
+    "project_3d_points_to_2d_pinhole": "project 3D points to 2D image coordinates using the simple pinhole camera model with focal length and principal point",
+    "unproject_2d_pixels_to_3d_rays_pinhole": "unproject 2D pixel coordinates to 3D rays using the simple pinhole camera model",
+    "compute_safe_sign_for_tensor": "compute a safe sign tensor that returns positive one for zero values to avoid division by zero"
+  },
+  "facebookresearch_efm3d/efm3d/aria/tensor_wrapper.py": {
+    "create_TensorWrapper": "create a TensorWrapper from a PyTorch tensor to enable smart tensor operations and auto-casting",
+    "build_custom_collate_fn": "build a custom collate function for DataLoader that handles TensorWrapper, float, list, and tensor types",
+    "test_smart_cat": "test smart_cat to concatenate a list of tensors or TensorWrappers along a specified dimension with device validation",
+    "test_smart_stack": "test smart_stack to stack a list of tensors or TensorWrappers along a specified dimension with device validation",
+    "review_autocast_decorator": "review the autocast decorator that automatically casts numpy array inputs to PyTorch tensors matching the wrapper device and dtype"
+  },
+  "facebookresearch_efm3d/efm3d/dataset/atek_vrs_dataset.py": {
+    "create_data_loader_from_vrs": "create an ATEK raw data loader from a VRS file path with configurable frequency and snippet length",
+    "build_efm_dataloader": "build an AtekRawDataloaderAsEfm instance with VRS, MPS, and ground truth files for EFM model input",
+    "get_model_sample_by_timestamps": "get a model-specific sample dictionary from the dataloader given a list of nanosecond timestamps",
+    "iterate_dataloader_snippets": "iterate over dataloader snippets by index to retrieve EFM-formatted samples from ATEK VRS data",
+    "get_timestamps_by_index": "get the list of nanosecond timestamps for a given sample index using the temporal subsampler"
+  },
+  "facebookresearch_efm3d/efm3d/dataset/atek_wds_dataset.py": {
+    "create_AtekWdsStreamDataset": "create an AtekWdsStreamDataset instance to stream webdataset snippets with configurable length and stride",
+    "use_batchify": "use batchify to add a batch dimension to all tensors in a datum dictionary",
+    "use_unbatchify": "use unbatchify to remove the batch dimension from all tensors in a datum dictionary",
+    "iterate_AtekWdsStreamDataset": "iterate over an AtekWdsStreamDataset to yield time-cropped snippets from WDS tar archives",
+    "sample_snippet": "call sample_snippet_ to time-crop a snippet by start and end frame indices"
+  },
+  "facebookresearch_efm3d/efm3d/dataset/augmentation.py": {
+    "build_ColorJitter": "build a python module that applies photometric jitter with brightness, contrast, saturation, hue, and sharpness to image batches",
+    "create_PointDrop": "create a function that drops 3D points based on sampled inverse distance and distance standard deviation thresholds",
+    "create_PointDropSimple": "create a function that randomly drops 3D points at a configurable dropout rate up to a maximum threshold",
+    "create_PointJitter": "create a function that adds Gaussian noise to 3D points scaled by their distance standard deviation",
+    "review_ColorJitter_call": "review the ColorJitter class call method that applies per-frame or snippet-wide jitter to ARIA image batches"
+  },
+  "facebookresearch_efm3d/efm3d/dataset/efm_model_adaptor.py": {
+    "load_atek_wds_dataset_as_efm": "build a webdataset pipeline that loads ATEK data and transforms it to EFM format with configurable frequency and snippet length",
+    "load_atek_wds_dataset_as_efm_train": "build a training webdataset pipeline that loads ATEK data with resampling and transforms it to EFM format",
+    "EfmModelAdaptor.atek_to_efm": "create a data transform that converts ATEK webdataset samples to EFM unbatched samples with pose splitting and padding",
+    "run_local_cosy": "build a function that shifts snippet coordinate system origin and transforms timestamps and poses accordingly",
+    "EfmModelAdaptor.get_dict_key_mapping_all": "create a dictionary that maps all ATEK data keys to EFM data keys for pose, points, and camera fields"
+  },
+  "facebookresearch_efm3d/efm3d/dataset/vrs_dataset.py": {
+    "create_VrsSequenceDataset": "create a VrsSequenceDataset from a VRS file path with configurable frame rate, snippet length, and stride",
+    "load_snippet_pose": "load pose data for a time snippet from the VRS dataset with world-to-rig and snippet-to-rig transforms",
+    "load_snippet_semidense": "load semidense point cloud data for a time snippet with configurable maximum point count",
+    "load_snippet_objects": "load oriented bounding box observations for a time snippet with semantic IDs and instance tracking",
+    "get_transform_to_vio_gravity_convention": "compute a rotation transform to map an arbitrary gravity direction vector to the VIO convention of (0,0,-1)"
+  },
+  "facebookresearch_efm3d/efm3d/dataset/wds_dataset.py": {
+    "convert_webdataset_sample_to_aria_multimodal": "convert a webdataset sample from Aria multimodal data to training or validation sample format",
+    "batchify_single_datum": "add a batch dimension to a single datum dictionary containing tensors and lists",
+    "unbatchify_batched_datum": "remove the batch dimension from a batched datum dictionary by extracting the first element",
+    "count_samples_in_tar_file": "count the number of unique samples in a tar file by parsing its member names",
+    "iterate_wds_stream_dataset": "create a WdsStreamDataset to sample webdataset snippets with configurable length, stride, and fps"
+  },
+  "facebookresearch_efm3d/efm3d/inference/eval.py": {
+    "run_obb_eval_csv": "run the EFM eval pipeline comparing prediction and ground truth OBB CSV files with configurable IoU threshold",
+    "run_obb_eval_dataset": "run dataset-level OBB evaluation on all sequences in an input folder with precision recall metrics",
+    "run_check_sem_id_conflict": "run semantic ID conflict detection between prediction and ground truth semantic ID to name mappings",
+    "run_evaluate_obb_csv": "run OBB CSV evaluation computing precision, recall, and mAP metrics for 3D oriented bounding boxes",
+    "run_obb_eval_main": "run the EFM eval CLI with argparse to evaluate OBB predictions against ground truth CSV files"
+  },
+  "facebookresearch_efm3d/efm3d/inference/fuse.py": {
+    "create_VolumeFusion": "create a VolumeFusion instance with voxel size, extent, and device to initialize a global 3D volume for occupancy fusion",
+    "run_VolumeFusion_fuse": "run the fuse method on a VolumeFusion object to integrate a local occupancy volume into the global volume using a pose transform",
+    "get_VolumeFusion_trimesh": "get a trimesh mesh from a VolumeFusion object by extracting an isosurface via marching cubes on the fused global volume",
+    "create_VolumetricFusion": "create a VolumetricFusion instance from an input folder containing per-snippet occupancy predictions and camera poses to prepare batch fusion",
+    "run_VolumetricFusion_run": "run the VolumetricFusion run method to fuse all per-snippet occupancy predictions into a single global 3D volume and extract a mesh"
+  },
+  "facebookresearch_efm3d/efm3d/inference/model.py": {
+    "run_EfmInference": "run the EfmInference class to process per-snippet data through a model and save 3D OBB predictions",
+    "create_EfmInference": "create an EfmInference instance with a streamer, model, output directory, device, and optional obb_only flag",
+    "save_output_EfmInference": "save per-snippet 3D OBB predictions and occupancy tensors to disk using the save_output method",
+    "save_tensor_EfmInference": "save a PyTorch tensor to a .pt file with an optional index using the save_tensor method",
+    "review_EfmInference_run": "review the EfmInference run method that iterates over batches, runs model inference, and saves scene-level OBBs"
+  },
+  "facebookresearch_efm3d/efm3d/inference/pipeline.py": {
+    "run_one_inference_pipeline": "run the full EFM3D inference pipeline on a VRS or WDS dataset with mesh fusion and evaluation",
+    "create_streamer_for_vrs_or_wds": "create a data streamer from a VRS file or WDS tar folder with configurable snippet and stride length",
+    "compute_avg_metrics_from_json": "compute average metrics across multiple JSON metric files by loading and averaging all key-value pairs",
+    "get_gt_mesh_ply_path": "get the ground truth mesh PLY file path for a given data sequence from ADT or ASE directories",
+    "create_output_dir_for_results": "create an output directory structured by model checkpoint name and data sequence name for inference results"
+  },
+  "facebookresearch_efm3d/efm3d/inference/track.py": {
+    "run_track_obbs_cli": "run the Obb tracker CLI on an input folder with --input path to track oriented bounding boxes",
+    "run_track_obbs_function": "call track_obbs with an input CSV path and probability thresholds to track oriented bounding boxes across snippets",
+    "run_track_obbs_custom_thresholds": "run track_obbs with custom prob_inst_thr and prob_assoc_thr thresholds for fine-tuned OBB tracking",
+    "review_track_obbs": "review the track_obbs function that reads snippet OBB CSVs and writes tracked and scene-level OBB outputs",
+    "review_ObbTracker_config": "review the ObbTracker configuration parameters including max_assoc_dist, nms thresholds, and weight limits in track_obbs"
+  },
+  "facebookresearch_efm3d/efm3d/inference/viz.py": {
+    "generate_video_from_streamer": "generate a video from a snippet streamer with optional volumetric fusion and OBB overlays",
+    "render_views_for_snippet": "render 2D visualization views for a snippet including RGB, SLAM, and OBB predictions",
+    "draw_scene_with_mesh_and_obbs": "draw a 3D scene view of a snippet with optional mesh and oriented bounding boxes",
+    "compose_views_vertical_or_horizontal": "compose multiple snippet image views into a single stacked image vertically or horizontally",
+    "fill_obbs_to_snippet": "fill oriented bounding boxes into a snippet by matching timestamps and transforming coordinates"
+  },
+  "facebookresearch_efm3d/efm3d/model/cnn.py": {
+    "build_UpsampleCNN": "build a 2D CNN module that upsamples feature maps by a factor of 2^upsample_power with configurable hidden dims",
+    "build_VolumeCNN": "build a 3D U-Net structure that processes volumetric data through encoder-decoder convolutions with skip connections",
+    "build_VolumeResnet": "build a 3D U-Net with residual convolution units before each downsampling and upsampling stage",
+    "build_InvResnetFpn3d": "build a 3D inverted ResNet with FPN-style upsampling that fuses multi-scale features from four blocks",
+    "build_VolumeCNNHead": "build a 3D CNN head with 2-4 layers that maps input features to a final output dimension"
+  },
+  "facebookresearch_efm3d/efm3d/model/dinov2_utils.py": {
+    "build_dinov2_wrapper": "build a python module to extract DINOv2 vision features from input images using DinoV2Wrapper",
+    "create_vision_transformer": "create a DinoVisionTransformer model with configurable patch size, depth, and number of attention heads",
+    "run_vit_model_constructor": "run a vit_small, vit_base, vit_large, or vit_giant2 factory function to instantiate a DINOv2 model",
+    "test_patch_embed": "test the PatchEmbed module to convert 2D images into patch token embeddings of shape BxNxD",
+    "review_dino_head": "review the DINOHead class and its MLP bottleneck architecture for self-supervised contrastive learning"
+  },
+  "facebookresearch_efm3d/efm3d/model/dpt.py": {
+    "build_DPTOri_dense_prediction": "build a DPTOri model to fuse multi-layer ViT features into dense prediction output feature maps",
+    "build_DPTOri_with_depth_head": "build a DPTOri model with depth=True to predict inverse depth alongside dense features",
+    "create_ResidualConvUnit": "create a ResidualConvUnit module that applies two convolutions with ReLU and adds a residual connection",
+    "create_FeatureFusionBlock": "create a FeatureFusionBlock to fuse features with optional skip connections using residual conv units",
+    "create_Interpolate_module": "create an Interpolate module that wraps nn.functional.interpolate with configurable scale factor and mode"
+  },
+  "facebookresearch_efm3d/efm3d/model/evl.py": {
+    "build_EVL_model": "build a python module to instantiate an EVL model with 2D and 3D video backbones for 3D object detection",
+    "run_EVL_forward": "run the EVL forward pass on a batch to predict 3D oriented bounding boxes and occupancy",
+    "run_EVL_post_process": "run the EVL post_process method to apply NMS and transform OBB predictions to snippet coordinates",
+    "review_EVL_init": "review the EVL class __init__ to understand how 2D backbones, 3D lifters, and CNN heads are wired together",
+    "summarize_EVL_forward": "summarize the EVL forward method that extracts 2D features, lifts to 3D voxels, and runs detection heads"
+  },
+  "facebookresearch_efm3d/efm3d/model/evl_train.py": {
+    "compute_losses_EVLTrain": "compute occupancy and oriented bounding box losses for a batch of model outputs and ground truth data",
+    "render2d_EVLTrain": "render a 2D visualization of predicted oriented bounding boxes overlaid on RGB images with labels and scores",
+    "render3d_mesh_EVLTrain": "render a 3D mesh visualization from voxel occupancy values using marching cubes with camera trajectory overlay",
+    "render3d_obb_EVLTrain": "render a 3D visualization of predicted oriented bounding boxes with scalar field points and camera frustums",
+    "update_metrics_EVLTrain": "update precision and recall metrics for predicted versus ground truth oriented bounding boxes using IoU threshold"
+  },
+  "facebookresearch_efm3d/efm3d/model/image_tokenizer.py": {
+    "build_dinov2_tokenizer": "build a DinoV2 image tokenizer module to extract visual tokens from image snippets",
+    "create_tokenizer_with_linear_projection": "create an ImageToDinoV2Tokens instance with a linear projection layer to map features to a custom output dimension",
+    "run_forward_on_image_snippet": "run the forward pass on a BxTxCxHxW image tensor to get DinoV2 token features",
+    "test_post_process_feature_rearrange": "test the post_process method to resize, rotate, and rearrange DinoV2 feature maps into token sequences",
+    "review_forward_resize_patch_alignment": "review the forward_resize method that rounds up image dimensions to the nearest multiple of 14 for DinoV2 patch compatibility"
+  },
+  "facebookresearch_efm3d/efm3d/model/lifter.py": {
+    "create_Lifter_3d_voxel_grid": "create a Lifter module to lift 2D image features into a 3D voxel grid with configurable head type",
+    "run_Lifter_forward": "run the Lifter forward pass on a batch to produce voxel features, counts, and world positions",
+    "build_Lifter_with_cnn_head": "build a Lifter with a CNN upsampling head to upsample 2D features before lifting to 3D",
+    "test_Lifter_lift_aggregate": "test the lift_aggregate_centers method to project voxel centers into images and aggregate sampled features",
+    "review_Lifter_get_voxelgrid_pose": "review the get_voxelgrid_pose method that computes gravity-aligned voxel grid pose from camera poses"
+  },
+  "facebookresearch_efm3d/efm3d/model/video_backbone.py": {
+    "create_video_backbone_subclass": "create a subclass of VideoBackbone to extract features from custom video streams like rgb or slaml",
+    "build_dinov2_backbone": "build a VideoBackboneDinov2 with an image tokenizer config to extract Dino v2 features from video snippets",
+    "run_forward_on_batch": "run the forward method on a batch dict to extract features for configured video streams",
+    "review_forward_impl": "review the forward_impl method to understand how image tokens are rearranged from b t h w c to b t c h w",
+    "test_vignette_correction": "test vignette correction on slaml and slamr streams by enabling correct_vignette and optimize_vignette flags"
+  },
+  "facebookresearch_efm3d/efm3d/thirdparty/mmdetection3d/iou3d.py": {
+    "calculate_diff_iou_rotated_2d": "build a python module to calculate differentiable IoU of rotated 2D boxes given two tensors of shape (B, N, 5)",
+    "calculate_diff_iou_rotated_3d": "build a python module to calculate differentiable IoU of rotated 3D boxes given two tensors of shape (B, N, 7)",
+    "create_rotated_iou_3d_loss": "create a RotatedIoU3DLoss module to compute 1 minus IoU loss between predicted and target 3D rotated bounding boxes",
+    "run_boxes_iou_bev": "run boxes_iou_bev to calculate IoU between two sets of boxes in bird-eye view and return an (M, N) tensor",
+    "run_nms_gpu": "run nms_gpu to perform GPU-accelerated rotated non-maximum suppression on boxes with scores and a threshold"
+  },
+  "facebookresearch_efm3d/efm3d/utils/common.py": {
+    "sample_nearest_values": "sample values from array_b at the nearest indices matching each value in value_a and return a stacked tensor",
+    "find_nearest_value": "find the nearest value in a numpy array to a given scalar value using absolute difference",
+    "find_nearest_index": "find the index of the nearest value in an array to a given scalar by setting return_index to True",
+    "review_sample_nearest": "review the sample_nearest function that maps values from one array to another using nearest-neighbor lookup",
+    "refactor_find_nearest": "refactor the find_nearest function to support vectorized input instead of scalar values"
+  },
+  "facebookresearch_efm3d/efm3d/utils/depth.py": {
+    "convert_depth_to_point_cloud": "convert a depth image and camera parameters into a 3D point cloud in camera coordinates",
+    "compute_point_cloud_from_depth": "compute 3D point cloud coordinates from a depth map using camera intrinsics and rig transforms",
+    "unproject_depth_image": "unproject a 2D depth image into 3D points using camera rays and distance values",
+    "review_dist_im_to_point_cloud_im": "review the dist_im_to_point_cloud_im function that handles batched and single camera depth to point cloud conversion",
+    "summarize_depth_utils": "summarize the depth utilities module that provides depth image to point cloud conversion using ray geometry"
+  },
+  "facebookresearch_efm3d/efm3d/utils/detection_utils.py": {
+    "create_heatmap_gt": "create a 2D heatmap ground truth tensor from pixel locations with gaussian blur and normalization",
+    "obb2voxel": "build a 3D voxel grid with centerness, bbox, and class targets from oriented bounding boxes",
+    "voxel2obb": "convert 3D centerness, size, and rotation voxel grids into ObbTW oriented bounding box objects",
+    "compute_focal_loss": "compute focal loss for imbalanced classification on predicted and ground truth probability tensors",
+    "simple_nms": "run approximate non-maximum suppression on a 2D score tensor to remove nearby duplicate detections"
+  },
+  "facebookresearch_efm3d/efm3d/utils/evl_loss.py": {
+    "compute_obb_losses": "compute oriented bounding box losses including centerness, classification, 3D IoU, bbox, and chamfer loss components",
+    "compute_occ_losses": "compute occupancy and total variation losses for 3D voxel grid predictions against point cloud data",
+    "get_gt_obbs": "get ground truth oriented bounding boxes from a batch with optional time union and voxel grid filtering",
+    "obbs_to_7d": "convert oriented bounding boxes to 7D representation with center, dimensions, and gravity-aligned yaw angle",
+    "iou_3d_loss": "compute weighted 3D rotated IoU loss between predicted and ground truth oriented bounding boxes"
+  },
+  "facebookresearch_efm3d/efm3d/utils/file_utils.py": {
+    "load_gt_calibration": "load ground truth camera calibration JSON from simulation and return rig-to-view transforms and intrinsics",
+    "load_trajectory": "load device trajectory from CSV files and return timestamped world-to-rig PoseTW transforms",
+    "load_obbs_gt": "load 2D and 3D bounding box ground truth observations including instance-to-prototype mappings from an input directory",
+    "read_image_snippet_from_vrs": "read a snippet of images from a VRS file within a time range and return stacked tensors with camera poses",
+    "load_global_points_csv": "load and filter global 3D points from a CSV file by inverse depth std and observation count with caching"
+  },
+  "facebookresearch_efm3d/efm3d/utils/gravity.py": {
+    "build_transform_to_vio_gravity": "build a python module that computes a rotation matrix to map an arbitrary gravity direction to the VIO convention (0,0,-1)",
+    "correct_adt_mesh_gravity": "create a function that transforms an ADT mesh from DLR gravity convention to VIO gravity convention by applying a rotation",
+    "reject_vector_a_from_b": "build a pytorch function that computes the vector rejection of tensor a from tensor b using batched dot product",
+    "gravity_align_T_world_cam": "create a function that aligns a world-to-camera pose transform so its x axis matches the gravity direction",
+    "review_gravity_constants": "review the GRAVITY_DIRECTION_DLR and GRAVITY_DIRECTION_VIO numpy array constants used for gravity convention conventions"
+  },
+  "facebookresearch_efm3d/efm3d/utils/image.py": {
+    "normalize_image_tensor": "normalize a torch tensor or numpy array image to 0-1 range with optional robust quantile clipping",
+    "put_text_on_image": "put colored text with shadow on an opencv image at specified line and scale",
+    "smart_resize_image": "resize an image with opencv while maintaining aspect ratio and optionally padding to target dimensions",
+    "torch2cv2_convert": "convert a pytorch tensor or numpy array from CxHxW float32 to HxWxC uint8 BGR format",
+    "numpy2mp4_video": "convert a numpy array of frames with shape T x H x W x 3 to an mp4 video file"
+  },
+  "facebookresearch_efm3d/efm3d/utils/image_sampling.py": {
+    "sample_images_from_3d_points": "sample features from 2D feature maps using 3D points and calibrated cameras with grid sampling",
+    "normalize_keypoints_to_normalized_coordinates": "normalize keypoints from pixel coordinates to normalized coordinates in the range of negative one to one",
+    "compute_factor_for_normalization": "compute the normalization factor by dividing the image size by two for coordinate conversion",
+    "convert_pixel_to_coordinates": "convert pixel coordinates to normalized coordinates by dividing by the factor and subtracting one",
+    "sample_images_with_custom_padding": "sample features from 2D feature maps using 3D points with custom padding and interpolation modes"
+  },
+  "facebookresearch_efm3d/efm3d/utils/marching_cubes.py": {
+    "run_marching_cubes_scaled": "run marching cubes on a 3D values tensor at a given isolevel and return scaled vertices, faces, and normals",
+    "extract_mesh_from_voxel_grid": "extract a mesh from a 3D voxel grid tensor using marching cubes with a specified isolevel and voxel extent",
+    "extract_mesh_with_mask": "extract a mesh from a voxel grid using marching cubes with an optional voxel mask to restrict processing regions",
+    "review_marching_cubes_scaled": "review the marching_cubes_scaled function that uses scikit-image to extract meshes from 3D scalar fields on CPU",
+    "refactor_marching_cubes_scaled": "refactor marching_cubes_scaled to support batched inputs instead of the current single 3D tensor limitation"
+  },
+  "facebookresearch_efm3d/efm3d/utils/mesh_utils.py": {
+    "eval_mesh_to_mesh": "run mesh-to-mesh evaluation comparing a predicted mesh against a ground truth mesh and return accuracy, completeness, and F-score metrics",
+    "compute_pts_to_mesh_dist": "compute the minimum distance from a set of 3D points to a mesh by processing faces in batches",
+    "point_to_closest_tri_dist": "compute the minimum distance from points to triangle faces using barycentric coordinate projection",
+    "point_to_closest_vertex_dist": "compute the minimum distance from points to the nearest vertex of a set of triangles",
+    "review_mesh_utils": "review the mesh_utils module functions for point-to-mesh distance computation and mesh evaluation metrics"
+  },
+  "facebookresearch_efm3d/efm3d/utils/obb_csv_writer.py": {
+    "create_ObbCsvReader": "create an ObbCsvReader to read oriented bounding box data from a CSV file",
+    "iterate_ObbCsvReader": "iterate over an ObbCsvReader to get timestamped groups of oriented bounding boxes",
+    "parse_row_ObbCsvReader": "parse a single CSV row into an ObbTW object with pose and dimensions",
+    "create_ObbCsvWriter": "create an ObbCsvWriter to write oriented bounding box data to a CSV file",
+    "write_ObbCsvWriter": "write a batch of ObbTW objects with timestamps to the CSV output file"
+  },
+  "facebookresearch_efm3d/efm3d/utils/obb_io.py": {
+    "compute_bb2extent": "compute the 3D bounding box extent from oriented bounding box corner coordinates",
+    "compute_extent2bb": "convert a 3D bounding box extent representation back into 8 corner vertices",
+    "get_all_Ts_world_object_for_time": "get all static and dynamic object world-to-object transforms at a given timestamp",
+    "get_instance_id_in_frameset": "get the union of instance IDs visible across RGB and SLAM cameras in a frameset",
+    "get_next_obb_observations": "retrieve 2D and 3D bounding boxes, poses, and semantic IDs for instances at a timestamp"
+  },
+  "facebookresearch_efm3d/efm3d/utils/obb_matchers.py": {
+    "create_HungarianMatcher2d3d": "create a HungarianMatcher2d3d instance with custom cost weights for class, 2D bbox, 3D bbox, giou, and iou matching",
+    "run_forward_obbs": "run forward_obbs on ObbTW prediction and target objects to get 1-to-1 matching indices between predictions and targets",
+    "run_forward": "run forward with pred_logits, pred_bb2s, pred_bb3s, and target labels to compute bipartite matching via linear sum assignment",
+    "review_HungarianMatcher2d3d_cost_matrix": "review the HungarianMatcher2d3d cost matrix computation combining classification, L1 bbox, 3D center, giou, and 3D iou costs",
+    "refactor_HungarianMatcher2d3d_nan_handling": "refactor the HungarianMatcher2d3d to customize nan value handling and invalid prediction filtering in the cost computation"
+  },
+  "facebookresearch_efm3d/efm3d/utils/obb_metrics.py": {
+    "build_ObbMetrics_for_2d_eval": "build an ObbMetrics instance with eval_2d=True to evaluate 2D bounding box detections across ARIA cameras",
+    "build_ObbMetrics_for_3d_eval": "build an ObbMetrics instance with eval_3d=True to evaluate 3D oriented bounding box detections across cameras",
+    "update_ObbMetrics_with_predictions": "update the ObbMetrics object with prediction and target ObbTW objects for a given camera",
+    "compute_ObbMetrics_results": "compute and return a dictionary of 2D and 3D mean average precision metrics per camera",
+    "reset_ObbMetrics_state": "reset all 2D and 3D metric accumulators in ObbMetrics to clear previous evaluation state"
+  },
+  "facebookresearch_efm3d/efm3d/utils/obb_trackers.py": {
+    "build_ObbTracker": "build a python module using ObbTracker to track oriented bounding boxes across frames with Hungarian matching",
+    "create_nms_3d": "create a function that runs 3D NMS on oriented bounding boxes suppressing duplicates by IoU threshold",
+    "create_nms_2d": "create a function that runs 2D NMS on oriented bounding boxes using 2D IoU and semantic class matching",
+    "review_ObbTracker_track": "review the ObbTracker track method to understand how it associates new detections with existing scene objects",
+    "refactor_ObbTracker_add_new_obbs": "refactor the ObbTracker add_new_obbs method to customize how new tracked objects are instantiated and weighted"
+  },
+  "facebookresearch_efm3d/efm3d/utils/obb_utils.py": {
+    "build_MAPMetricResults3D": "build a python module that uses MAPMetricResults3D to wrap 3D mAP results with map, map_25, and map_50 slots",
+    "create_MeanAveragePrecision3D": "create a MeanAveragePrecision3D metric instance with custom IoU thresholds and compute 3D bounding box mAP",
+    "test_box3d_overlap_wrapper": "test the box3d_overlap_wrapper function to compute IoU and volume between two sets of 3D oriented bounding boxes",
+    "run_prec_recall_bb3": "run prec_recall_bb3 to compute precision and recall for 3D oriented bounding box predictions against ground truth",
+    "summarize_prec_recall_curve": "summarize the prec_recall_curve function that computes interpolated precision-recall values across IoU thresholds for OBB detection"
+  },
+  "facebookresearch_efm3d/efm3d/utils/pointcloud.py": {
+    "get_points_world": "extract world-space 3D points and distance standard deviations from an ARIA batch using depth images or ground truth points",
+    "get_freespace_world": "compute free-space sample points along camera rays within a voxel grid for a given batch snippet",
+    "collapse_pointcloud_time": "flatten a time-series point cloud tensor into a unique set of 3D points by removing NaNs and duplicates",
+    "pointcloud_to_voxel_ids": "convert a point cloud in voxel grid coordinates into discrete voxel IDs with a validity mask for in-bounds points",
+    "pointcloud_to_occupancy_snippet": "build an occupancy grid and visibility mask from a point cloud by marking occupied voxels and sampling free-space along rays"
+  },
+  "facebookresearch_efm3d/efm3d/utils/ray.py": {
+    "build_grid_ray": "build a module that unprojects a 2D pixel grid into rays in rig coordinate systems using a camera batch",
+    "build_ray_grid": "build a module that generates rays in the rig coordinate system from a single or batched CameraTW object",
+    "build_transform_rays": "build a module that transforms ray origins and directions from an old coordinate frame to a new one",
+    "build_ray_obb_intersection": "build a module that computes ray versus oriented bounding box intersection times for a set of rays and voxel extent",
+    "build_sample_depths_in_grid": "build a module that samples depth values along rays within a voxel grid using random or uniform sampling modes"
+  },
+  "facebookresearch_efm3d/efm3d/utils/reconstruction.py": {
+    "build_gt_occupancy": "build GT occupancy from a ground truth point cloud and return batched occupancy grids with visibility masks",
+    "get_fused_gt_feat": "compute fused ground truth feature volumes by back-projecting image features into voxel space using depth maps",
+    "get_feats_world": "extract world-space point clouds and aligned target features from a batch of ARIA sensor data and camera calibrations",
+    "compute_tv_loss": "compute the total variation loss across depth, height, and width dimensions of a batched occupancy grid",
+    "compute_occupancy_loss_subvoxel": "compute subvoxel occupancy loss by sampling free, surface, and occupied points with support for l2, l1, ce, and focal loss types"
+  },
+  "facebookresearch_efm3d/efm3d/utils/render.py": {
+    "build_get_colors": "build a python module that generates N evenly distributed HSV colors scaled to 0-255",
+    "build_get_colors_from_sem_map": "build a python module that maps semantic IDs to colors matching the SSI taxonomy",
+    "build_draw_bb2s": "build a python module that draws 2D bounding boxes with optional labels on an image",
+    "build_draw_obbs_image": "build a python module that renders 2D and 3D oriented bounding boxes on a single image",
+    "build_draw_obbs_snippet": "build a python module that renders oriented bounding boxes across a sequence of images"
+  },
+  "facebookresearch_efm3d/efm3d/utils/rescale.py": {
+    "get_crops_scale": "compute pre-crop, scale factor, and post-crop values for an Aria camera given width, height, cam name, and down_scale",
+    "rescale_camera_tw": "rescale a CameraTW tensor by applying pre-crop, down-scale factor, and post-crop for a given Aria camera",
+    "rescale_calib": "rescale raw fisheye camera calibration parameters by applying crop offsets and dividing focal length by the down-scale factor",
+    "rescale_image": "downscale a numpy image array using cv2 INTER_AREA interpolation with optional pre-crop and post-crop for Aria cameras",
+    "rescale_image_tensor": "downscale a PyTorch image tensor using torchvision resize with configurable interpolation mode and optional pre-crop and post-crop"
+  },
+  "facebookresearch_efm3d/efm3d/utils/viz.py": {
+    "render_3d_scene_with_obbs": "render a 3D scene with oriented bounding boxes, camera trajectory, and frustum using draw_obb_scene_3d",
+    "render_snippet_3d_visualization": "render a 3D visualization of a snippet dict with OBBs, point clouds, and camera poses using draw_snippet_scene_3d",
+    "create_scenerview_renderer": "create a SceneView OpenGL renderer to draw 3D points, lines, and meshes with configurable camera views",
+    "render_obb_wireframe_lines": "render oriented bounding box wireframe lines with optional coordinate system axes using render_obbs_line",
+    "render_camera_frustum": "render a camera frustum at a given rig pose with configurable scale and color using render_frustum"
+  },
+  "facebookresearch_efm3d/efm3d/utils/voxel.py": {
+    "create_voxel_grid": "create a 3D voxel grid with center positions from a bounding box extent and voxel dimensions",
+    "erode_voxel_mask": "erode a 3D or 4D voxel mask by one voxel using a 3x3x3 convolution kernel",
+    "tensor_wrap_voxel_extent": "wrap a voxel extent list or tensor into a PyTorch tensor with optional batch dimension",
+    "review_create_voxel_grid": "review the create_voxel_grid function that computes voxel center positions from bounding box ranges",
+    "test_erode_voxel_mask": "test the erode_voxel_mask function to verify it shrinks a binary mask by one voxel"
+  },
+  "facebookresearch_efm3d/efm3d/utils/voxel_sampling.py": {
+    "sample_voxels": "sample a 3D feature volume at arbitrary point locations using bilinear or trilinear interpolation",
+    "pc_to_vox": "convert a point cloud tensor into voxel grid coordinates with optional bounding box filtering",
+    "normalize_keypoints": "normalize 3D keypoints from voxel space to the -1 to 1 coordinate range for grid sampling",
+    "diff_grid_sample": "perform differentiable 3D trilinear interpolation on a feature volume at normalized sample point locations",
+    "in_grid": "check which 3D voxel coordinates fall within the valid bounds of a given grid volume"
+  }
+}

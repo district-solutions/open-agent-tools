@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/flsim
+- repo_uri: https://github.com/facebookresearch/flsim
+
+## File: facebookresearch_flsim/flsim/utils/distributed/fl_distributed.py
+
+Prompts
+
+```
+['setup distributed training for a given world size with optional CUDA support using FLDistributedUtils', 'perform an async all-reduce sum or broadcast operation on a list of PyTorch tensors across workers', "synchronize a PyTorch model's state dict across distributed workers using a specified operation type", 'initialize the distributed process group with a given rank, world size, and init method for FL training', 'calculate the optimal number of processes and workers for distributed training based on available GPUs or CPUs']
+```
+
+Usage
+
+```
+{'setup_distributed_training': 'setup distributed training for a given world size with optional CUDA support using FLDistributedUtils', 'distributed_operation': 'perform an async all-reduce sum or broadcast operation on a list of PyTorch tensors across workers', 'synchronize_model_across_workers': "synchronize a PyTorch model's state dict across distributed workers using a specified operation type", 'dist_init': 'initialize the distributed process group with a given rank, world size, and init method for FL training', 'calc_num_processes_and_workers': 'calculate the optimal number of processes and workers for distributed training based on available GPUs or CPUs'}
+```
+

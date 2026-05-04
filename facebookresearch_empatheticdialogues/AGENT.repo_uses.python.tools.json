@@ -1,0 +1,72 @@
+{
+  "facebookresearch_empatheticdialogues/empchat/bert_local.py": {
+    "build_BertAdapter": "build a BertAdapter module with two BERT wrappers for context and candidate encoding",
+    "create_BertAdapter_init": "create a BertAdapter instance with opt config and dictionary to initialize dual BERT models",
+    "run_BertAdapter_forward": "run the BertAdapter forward pass to encode context and candidate token sequences into embeddings",
+    "review_BertAdapter_embedding_reset": "review the BertAdapter init method that resets unused token embeddings with random normal values",
+    "summarize_BertAdapter_normalization": "summarize the BertAdapter forward method that optionally L2 normalizes context and candidate embeddings"
+  },
+  "facebookresearch_empatheticdialogues/empchat/models.py": {
+    "create_model": "create a BertAdapter or TransformerAdapter model from an options object and dictionary words",
+    "load_model": "load a saved model checkpoint along with its word dictionary from a file path",
+    "save_model": "save a model state dict, word dictionary, options, and optimizer state to a file",
+    "load_embeddings": "load pre-trained word embeddings from a text file into a model's embedding table",
+    "score_candidates": "score candidate responses against context embeddings using dot product and return top-k matches"
+  },
+  "facebookresearch_empatheticdialogues/empchat/transformer_local.py": {
+    "create_positional_embeddings": "create sinusoidal position codes for a given number of positions and embedding dimension",
+    "build_transformer_model": "build a TransformerModel with configurable heads, layers, dimension, and vocabulary size for sequence encoding",
+    "run_multihead_attention": "run multi-head self-attention on a batched sequence tensor with a padding mask",
+    "build_transformer_ffn": "build a TransformerFFN feed-forward network with configurable hidden dimension and dropout",
+    "run_transformer_adapter": "run a TransformerAdapter to encode context and candidate sequences using shared embeddings and dual transformers"
+  },
+  "facebookresearch_empatheticdialogues/empchat/util.py": {
+    "build_argparse_parser": "build an argparse parser with 40+ arguments for BERT and transformer dialogue model training",
+    "create_opt_from_args": "create training options by parsing CLI args or using defaults with get_opt",
+    "set_model_defaults": "set default model directory, name, log file, and model file paths for a training run",
+    "configure_logger": "configure a logger that writes to console and an optional log file with config details",
+    "review_util_functions": "review the util module functions get_opt, get_parser, set_defaults, and get_logger"
+  },
+  "facebookresearch_empatheticdialogues/empchat/datasets/dailydialog.py": {
+    "create_DDDataset": "create a DDDataset PyTorch dataset from DailyDialog data with configurable max length and history length",
+    "read_dailydialog_data": "read DailyDialog conversation and emotion files into a pandas DataFrame with context and emotion labels",
+    "test_getmode": "test the getmode function to find the most frequent elements in an array of strings",
+    "refactor_multifeel_to_one": "refactor the multifeel_to_one function to resolve multiple emotions into a single emotion label",
+    "summarize_sentence_to_tensor": "summarize the sentence_to_tensor function that converts text to a PyTorch LongTensor using a dictionary"
+  },
+  "facebookresearch_empatheticdialogues/empchat/datasets/empchat.py": {
+    "create_EmpDataset": "create an EmpDataset from a CSV split file with dictionary, max length, and history length parameters",
+    "run_txt2vec": "run txt2vec to convert text to token IDs using a BERT tokenizer or ParlAI dictionary",
+    "run_sentence_to_tensor": "run sentence_to_tensor to convert a sentence string into a PyTorch LongTensor with optional max length",
+    "get_EmpDataset_item": "get a data item by index from an EmpDataset instance returning context, label, and emotion tensor",
+    "get_EmpDataset_id": "get the topic and utterance ID tuple for a given index in the EmpDataset"
+  },
+  "facebookresearch_empatheticdialogues/empchat/datasets/loader.py": {
+    "build_dictionary": "build a word dictionary from a reddit folder with special tokens and a max word limit",
+    "build_bert_dictionary": "build a BERT tokenizer dictionary from pretrained bert-base-cased with fastText token mappings",
+    "TrainEnvironment_build_train_dataloader": "build a PyTorch DataLoader for training on the empchat or reddit dataset for a given epoch",
+    "TrainEnvironment_build_valid_dataloader": "build a PyTorch DataLoader for validation or testing on dailydialog, empchat, or reddit datasets",
+    "pad": "pad a list of 1D or 2D PyTorch tensors to uniform size with a specified padding value"
+  },
+  "facebookresearch_empatheticdialogues/empchat/datasets/parlai_dictionary.py": {
+    "create_ParlAIDictionary_from_file": "create a ParlAIDictionary instance by loading a tab-separated dictionary file from disk",
+    "convert_txt2vec": "convert a text string into a list of token index integers using the dictionary",
+    "convert_vec2txt": "convert a list of token index integers back into a readable text string",
+    "convert_to_reddit_style": "convert a ParlAIDictionary into a reddit-style dictionary with words, iwords, and wordcounts keys",
+    "create_from_reddit_style": "create a ParlAIDictionary instance from an existing reddit-style dictionary structure"
+  },
+  "facebookresearch_empatheticdialogues/empchat/datasets/reddit.py": {
+    "create_reddit_dataset": "create a RedditDataset instance to load Reddit comment chunks from a PyTorch binary file",
+    "load_reddit_chunk": "load a specific Reddit data chunk by chunk ID from a folder of preprocessed binary files",
+    "get_reddit_comment_pair": "get a context and response comment pair from the Reddit dataset using index-based access",
+    "filter_reddit_comments": "filter Reddit comments by removing deleted, long, or blank sentences during dataset initialization",
+    "extract_comment_words": "extract word tokens for a Reddit comment at a given index with optional BERT tokenization support"
+  },
+  "facebookresearch_empatheticdialogues/empchat/datasets/tokens.py": {
+    "tokenize_text": "tokenize a text string by splitting on punctuation and returning a list of tokens",
+    "get_bert_token_mapping": "get a BERT token mapping OrderedDict for special tokens and optional label sets",
+    "get_bert_token_mapping_with_labels": "get a BERT token mapping that includes fastText labels mapped to unused BERT tokens",
+    "tokenize_with_custom_separator": "tokenize text using a custom separator instead of the default space character",
+    "review_token_constants": "review the special token constants like UNK_TOKEN, PAD_TOKEN, and BERT_ID"
+  }
+}

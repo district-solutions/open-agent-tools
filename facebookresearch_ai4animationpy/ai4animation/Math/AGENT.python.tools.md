@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/ai4animationpy
+- repo_uri: https://github.com/facebookresearch/ai4animationpy
+
+## File: facebookresearch_ai4animationpy/ai4animation/Math/Quaternion.py
+
+Prompts
+
+```
+['create a quaternion from x, y, z, w values using the Create function', 'build a quaternion from Euler angles (roll, pitch, yaw) using the Euler function', 'multiply two quaternions or rotate a vector by a quaternion using Multiply', 'convert a quaternion to a 3x3 rotation matrix using the ToMatrix function', 'create a quaternion from an angle and rotation axis using the AngleAxis function', 'build a python module that creates a 3x3 rotation matrix from Euler angles in degrees', 'create a function that builds a rotation matrix around the X, Y, or Z axis from an angle', 'test the Angle function to compute the angle in degrees between two rotation matrices', 'refactor the Interpolate function to smoothly blend between two rotation matrices with a weight', 'summarize the Normalize function that orthonormalizes a rotation matrix using the Look method', 'create a NumPy or PyTorch tensor using Create with a specified backend and float32 dtype', 'build an identity matrix of any dimension using Eye with NumPy or PyTorch backend support', 'test the Normalize function to normalize vectors along the last axis with zero-safe division', 'refactor matrix multiplication code to use MatMul for backend-agnostic NumPy or PyTorch support', 'summarize the Gaussian function that applies exponential decay weighting along a specified tensor axis', 'build a python module that creates a 4x4 transformation matrix from translation and rotation tensors using TR', 'build a python module that creates a 4x4 transformation matrix combining translation, rotation, and scale using TRS', 'create a 4x4 identity transformation matrix with optional batch shape using the Identity function', 'test the GetPosition and SetPosition functions to read and write translation values in a transform tensor', 'test the Inverse and Multiply functions to invert a transform and chain two transforms together', 'create a 3D vector from x, y, z values using the Create function', 'normalize a 3D vector to unit length using the Normalize function', 'spherically interpolate between two 3D vectors using the Slerp function', 'compute the signed angle between two 3D vectors around a given axis', 'transform a 3D direction vector between coordinate spaces using DirectionFrom and DirectionTo']
+```
+
+Usage
+
+```
+{'create_quaternion_from_values': 'create a quaternion from x, y, z, w values using the Create function', 'build_euler_to_quaternion': 'build a quaternion from Euler angles (roll, pitch, yaw) using the Euler function', 'multiply_quaternions_and_vectors': 'multiply two quaternions or rotate a vector by a quaternion using Multiply', 'convert_quaternion_to_rotation_matrix': 'convert a quaternion to a 3x3 rotation matrix using the ToMatrix function', 'create_quaternion_from_angle_axis': 'create a quaternion from an angle and rotation axis using the AngleAxis function'}
+```
+
+## File: facebookresearch_ai4animationpy/ai4animation/Math/Rotation.py
+
+Prompts
+
+```
+['create a quaternion from x, y, z, w values using the Create function', 'build a quaternion from Euler angles (roll, pitch, yaw) using the Euler function', 'multiply two quaternions or rotate a vector by a quaternion using Multiply', 'convert a quaternion to a 3x3 rotation matrix using the ToMatrix function', 'create a quaternion from an angle and rotation axis using the AngleAxis function', 'build a python module that creates a 3x3 rotation matrix from Euler angles in degrees', 'create a function that builds a rotation matrix around the X, Y, or Z axis from an angle', 'test the Angle function to compute the angle in degrees between two rotation matrices', 'refactor the Interpolate function to smoothly blend between two rotation matrices with a weight', 'summarize the Normalize function that orthonormalizes a rotation matrix using the Look method', 'create a NumPy or PyTorch tensor using Create with a specified backend and float32 dtype', 'build an identity matrix of any dimension using Eye with NumPy or PyTorch backend support', 'test the Normalize function to normalize vectors along the last axis with zero-safe division', 'refactor matrix multiplication code to use MatMul for backend-agnostic NumPy or PyTorch support', 'summarize the Gaussian function that applies exponential decay weighting along a specified tensor axis', 'build a python module that creates a 4x4 transformation matrix from translation and rotation tensors using TR', 'build a python module that creates a 4x4 transformation matrix combining translation, rotation, and scale using TRS', 'create a 4x4 identity transformation matrix with optional batch shape using the Identity function', 'test the GetPosition and SetPosition functions to read and write translation values in a transform tensor', 'test the Inverse and Multiply functions to invert a transform and chain two transforms together', 'create a 3D vector from x, y, z values using the Create function', 'normalize a 3D vector to unit length using the Normalize function', 'spherically interpolate between two 3D vectors using the Slerp function', 'compute the signed angle between two 3D vectors around a given axis', 'transform a 3D direction vector between coordinate spaces using DirectionFrom and DirectionTo']
+```
+
+Usage
+
+```
+{'build_rotation_matrix_from_euler_angles': 'build a python module that creates a 3x3 rotation matrix from Euler angles in degrees', 'create_axis_rotation_matrix': 'create a function that builds a rotation matrix around the X, Y, or Z axis from an angle', 'test_rotation_angle_between_transforms': 'test the Angle function to compute the angle in degrees between two rotation matrices', 'refactor_rotation_interpolation': 'refactor the Interpolate function to smoothly blend between two rotation matrices with a weight', 'summarize_rotation_normalize': 'summarize the Normalize function that orthonormalizes a rotation matrix using the Look method'}
+```
+
+## File: facebookresearch_ai4animationpy/ai4animation/Math/Tensor.py
+
+Prompts
+
+```
+['create a quaternion from x, y, z, w values using the Create function', 'build a quaternion from Euler angles (roll, pitch, yaw) using the Euler function', 'multiply two quaternions or rotate a vector by a quaternion using Multiply', 'convert a quaternion to a 3x3 rotation matrix using the ToMatrix function', 'create a quaternion from an angle and rotation axis using the AngleAxis function', 'build a python module that creates a 3x3 rotation matrix from Euler angles in degrees', 'create a function that builds a rotation matrix around the X, Y, or Z axis from an angle', 'test the Angle function to compute the angle in degrees between two rotation matrices', 'refactor the Interpolate function to smoothly blend between two rotation matrices with a weight', 'summarize the Normalize function that orthonormalizes a rotation matrix using the Look method', 'create a NumPy or PyTorch tensor using Create with a specified backend and float32 dtype', 'build an identity matrix of any dimension using Eye with NumPy or PyTorch backend support', 'test the Normalize function to normalize vectors along the last axis with zero-safe division', 'refactor matrix multiplication code to use MatMul for backend-agnostic NumPy or PyTorch support', 'summarize the Gaussian function that applies exponential decay weighting along a specified tensor axis', 'build a python module that creates a 4x4 transformation matrix from translation and rotation tensors using TR', 'build a python module that creates a 4x4 transformation matrix combining translation, rotation, and scale using TRS', 'create a 4x4 identity transformation matrix with optional batch shape using the Identity function', 'test the GetPosition and SetPosition functions to read and write translation values in a transform tensor', 'test the Inverse and Multiply functions to invert a transform and chain two transforms together', 'create a 3D vector from x, y, z values using the Create function', 'normalize a 3D vector to unit length using the Normalize function', 'spherically interpolate between two 3D vectors using the Slerp function', 'compute the signed angle between two 3D vectors around a given axis', 'transform a 3D direction vector between coordinate spaces using DirectionFrom and DirectionTo']
+```
+
+Usage
+
+```
+{'create_tensor_backend_agnostic': 'create a NumPy or PyTorch tensor using Create with a specified backend and float32 dtype', 'build_identity_matrix': 'build an identity matrix of any dimension using Eye with NumPy or PyTorch backend support', 'test_normalize_vectors': 'test the Normalize function to normalize vectors along the last axis with zero-safe division', 'refactor_matmul_backend': 'refactor matrix multiplication code to use MatMul for backend-agnostic NumPy or PyTorch support', 'summarize_gaussian_weighting': 'summarize the Gaussian function that applies exponential decay weighting along a specified tensor axis'}
+```
+
+## File: facebookresearch_ai4animationpy/ai4animation/Math/Transform.py
+
+Prompts
+
+```
+['create a quaternion from x, y, z, w values using the Create function', 'build a quaternion from Euler angles (roll, pitch, yaw) using the Euler function', 'multiply two quaternions or rotate a vector by a quaternion using Multiply', 'convert a quaternion to a 3x3 rotation matrix using the ToMatrix function', 'create a quaternion from an angle and rotation axis using the AngleAxis function', 'build a python module that creates a 3x3 rotation matrix from Euler angles in degrees', 'create a function that builds a rotation matrix around the X, Y, or Z axis from an angle', 'test the Angle function to compute the angle in degrees between two rotation matrices', 'refactor the Interpolate function to smoothly blend between two rotation matrices with a weight', 'summarize the Normalize function that orthonormalizes a rotation matrix using the Look method', 'create a NumPy or PyTorch tensor using Create with a specified backend and float32 dtype', 'build an identity matrix of any dimension using Eye with NumPy or PyTorch backend support', 'test the Normalize function to normalize vectors along the last axis with zero-safe division', 'refactor matrix multiplication code to use MatMul for backend-agnostic NumPy or PyTorch support', 'summarize the Gaussian function that applies exponential decay weighting along a specified tensor axis', 'build a python module that creates a 4x4 transformation matrix from translation and rotation tensors using TR', 'build a python module that creates a 4x4 transformation matrix combining translation, rotation, and scale using TRS', 'create a 4x4 identity transformation matrix with optional batch shape using the Identity function', 'test the GetPosition and SetPosition functions to read and write translation values in a transform tensor', 'test the Inverse and Multiply functions to invert a transform and chain two transforms together', 'create a 3D vector from x, y, z values using the Create function', 'normalize a 3D vector to unit length using the Normalize function', 'spherically interpolate between two 3D vectors using the Slerp function', 'compute the signed angle between two 3D vectors around a given axis', 'transform a 3D direction vector between coordinate spaces using DirectionFrom and DirectionTo']
+```
+
+Usage
+
+```
+{'build_transform_matrix_tr': 'build a python module that creates a 4x4 transformation matrix from translation and rotation tensors using TR', 'build_transform_matrix_trs': 'build a python module that creates a 4x4 transformation matrix combining translation, rotation, and scale using TRS', 'create_identity_transform': 'create a 4x4 identity transformation matrix with optional batch shape using the Identity function', 'test_get_set_position': 'test the GetPosition and SetPosition functions to read and write translation values in a transform tensor', 'test_inverse_multiply': 'test the Inverse and Multiply functions to invert a transform and chain two transforms together'}
+```
+
+## File: facebookresearch_ai4animationpy/ai4animation/Math/Vector3.py
+
+Prompts
+
+```
+['create a quaternion from x, y, z, w values using the Create function', 'build a quaternion from Euler angles (roll, pitch, yaw) using the Euler function', 'multiply two quaternions or rotate a vector by a quaternion using Multiply', 'convert a quaternion to a 3x3 rotation matrix using the ToMatrix function', 'create a quaternion from an angle and rotation axis using the AngleAxis function', 'build a python module that creates a 3x3 rotation matrix from Euler angles in degrees', 'create a function that builds a rotation matrix around the X, Y, or Z axis from an angle', 'test the Angle function to compute the angle in degrees between two rotation matrices', 'refactor the Interpolate function to smoothly blend between two rotation matrices with a weight', 'summarize the Normalize function that orthonormalizes a rotation matrix using the Look method', 'create a NumPy or PyTorch tensor using Create with a specified backend and float32 dtype', 'build an identity matrix of any dimension using Eye with NumPy or PyTorch backend support', 'test the Normalize function to normalize vectors along the last axis with zero-safe division', 'refactor matrix multiplication code to use MatMul for backend-agnostic NumPy or PyTorch support', 'summarize the Gaussian function that applies exponential decay weighting along a specified tensor axis', 'build a python module that creates a 4x4 transformation matrix from translation and rotation tensors using TR', 'build a python module that creates a 4x4 transformation matrix combining translation, rotation, and scale using TRS', 'create a 4x4 identity transformation matrix with optional batch shape using the Identity function', 'test the GetPosition and SetPosition functions to read and write translation values in a transform tensor', 'test the Inverse and Multiply functions to invert a transform and chain two transforms together', 'create a 3D vector from x, y, z values using the Create function', 'normalize a 3D vector to unit length using the Normalize function', 'spherically interpolate between two 3D vectors using the Slerp function', 'compute the signed angle between two 3D vectors around a given axis', 'transform a 3D direction vector between coordinate spaces using DirectionFrom and DirectionTo']
+```
+
+Usage
+
+```
+{'create_vector3': 'create a 3D vector from x, y, z values using the Create function', 'normalize_vector3': 'normalize a 3D vector to unit length using the Normalize function', 'slerp_vector3': 'spherically interpolate between two 3D vectors using the Slerp function', 'signed_angle_vector3': 'compute the signed angle between two 3D vectors around a given axis', 'transform_direction': 'transform a 3D direction vector between coordinate spaces using DirectionFrom and DirectionTo'}
+```
+

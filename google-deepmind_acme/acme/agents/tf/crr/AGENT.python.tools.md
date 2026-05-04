@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/acme
+- repo_uri: https://github.com/google-deepmind/acme
+
+## File: google-deepmind_acme/acme/agents/tf/crr/recurrent_learning.py
+
+Prompts
+
+```
+['build a recurrent CRR learner with policy and critic networks for reinforcement learning', 'create an RCRRLearner instance with checkpointing enabled to save model weights periodically', 'run a single learning step on the RCRRLearner to update policy and critic networks', 'review the RCRRLearner step method to understand critic and policy loss computation', 'summarize the RCRRLearner class architecture including target networks and distributed training support']
+```
+
+Usage
+
+```
+{'build_rcrr_learner': 'build a recurrent CRR learner with policy and critic networks for reinforcement learning', 'create_rcrr_learner_with_checkpointing': 'create an RCRRLearner instance with checkpointing enabled to save model weights periodically', 'run_rcrr_learner_step': 'run a single learning step on the RCRRLearner to update policy and critic networks', 'review_rcrr_learner_step_method': 'review the RCRRLearner step method to understand critic and policy loss computation', 'summarize_rcrr_learner_architecture': 'summarize the RCRRLearner class architecture including target networks and distributed training support'}
+```
+

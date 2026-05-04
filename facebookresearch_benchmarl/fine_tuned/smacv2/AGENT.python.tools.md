@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/benchmarl
+- repo_uri: https://github.com/facebookresearch/benchmarl
+
+## File: facebookresearch_benchmarl/fine_tuned/smacv2/smacv2_run.py
+
+Prompts
+
+```
+['run a BenchMARL SMACv2 experiment using Hydra config with the hydra_experiment function', 'run the hydra_experiment entry point via python smacv2_run.py with Hydra CLI overrides', 'load an Experiment object from a Hydra DictConfig using load_experiment_from_hydra', 'review the hydra_experiment function that loads and runs a BenchMARL experiment from Hydra config', 'summarize the hydra_experiment function that prints config and runs a BenchMARL experiment']
+```
+
+Usage
+
+```
+{'run_hydra_experiment': 'run a BenchMARL SMACv2 experiment using Hydra config with the hydra_experiment function', 'run_experiment_from_cli': 'run the hydra_experiment entry point via python smacv2_run.py with Hydra CLI overrides', 'load_experiment_from_hydra': 'load an Experiment object from a Hydra DictConfig using load_experiment_from_hydra', 'review_hydra_experiment': 'review the hydra_experiment function that loads and runs a BenchMARL experiment from Hydra config', 'summarize_hydra_experiment': 'summarize the hydra_experiment function that prints config and runs a BenchMARL experiment'}
+```
+

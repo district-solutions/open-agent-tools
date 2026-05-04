@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/grpc/tools/distrib/python/make_grpcio_tools.py
+
+Prompts
+
+```
+['run the make_grpcio_tools script to copy protobuf sources and generate protoc dependency files', 'run protobuf_submodule_commit_hash to get the git commit hash of the protobuf submodule HEAD', 'run bazel_query with a target string to query Bazel dependencies via bazel_deps.sh', 'run get_deps to gather protobuf CC and proto file dependencies and return formatted deps content', 'run long_path to convert a file path to Windows long-path format with the \\\\?\\ prefix']
+```
+
+Usage
+
+```
+{'run_make_grpcio_tools': 'run the make_grpcio_tools script to copy protobuf sources and generate protoc dependency files', 'run_protobuf_submodule_commit_hash': 'run protobuf_submodule_commit_hash to get the git commit hash of the protobuf submodule HEAD', 'run_bazel_query': 'run bazel_query with a target string to query Bazel dependencies via bazel_deps.sh', 'run_get_deps': 'run get_deps to gather protobuf CC and proto file dependencies and return formatted deps content', 'run_long_path': 'run long_path to convert a file path to Windows long-path format with the \\\\?\\ prefix'}
+```
+

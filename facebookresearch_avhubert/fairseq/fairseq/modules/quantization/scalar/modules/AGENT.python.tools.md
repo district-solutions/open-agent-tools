@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: facebookresearch/avhubert
+- repo_uri: https://github.com/facebookresearch/av_hubert
+
+## File: facebookresearch_avhubert/fairseq/fairseq/modules/quantization/scalar/modules/qact.py
+
+Prompts
+
+```
+["create an ActivationQuantizer to apply fake scalar quantization to a PyTorch module's post-activations", 'register a forward hook on a PyTorch module to quantize activations using histogram or tensor method', 'quantize neural network activations using the straight-through estimator with configurable bit width', 'remove the registered forward hook from a module by calling handle.remove() on the ActivationQuantizer', 'configure quantization parameters including bits, method, update_step, and clamp_threshold for activation quantization', 'create an IntConv2d layer with 8-bit histogram quantization noise for a PyTorch convolutional neural network', 'build a quantized Conv2d module using IntConv2d with configurable bits, noise probability, and quantization method', 'test the IntConv2d forward pass to verify quantized weight computation and straight-through estimator behavior', 'review the IntConv2d class to understand how emulate_int quantizes weights with scale and zero_point parameters', 'refactor the IntConv2d update_step logic to control how often scale and zero_point are recomputed during training', 'create an IntEmbedding layer with 10000 tokens and 512 dimensional embeddings using 8-bit quantization', 'build a quantized embedding module that injects quantization noise with probability p during training', 'test the IntEmbedding forward pass by passing input indices and verifying quantized output shape', 'review the IntEmbedding class and its support for tensor, histogram, and channel quantization methods', 'refactor the IntEmbedding module to recompute scale and zero_point every N forward iterations', 'create an IntLinear layer with 256 input and 128 output features using 8-bit histogram quantization', 'build an IntLinear module using channel-wise quantization method with 4-bit precision for feature compression', 'test the IntLinear forward pass with a random input tensor in training mode to verify quantization noise', 'review the IntLinear reset_parameters method to understand Xavier uniform weight initialization and bias zeroing', 'summarize the IntLinear class quantization approach using straight-through estimator and emulate_int for weight quantization']
+```
+
+Usage
+
+```
+{'create_activation_quantizer': "create an ActivationQuantizer to apply fake scalar quantization to a PyTorch module's post-activations", 'register_quantization_hook': 'register a forward hook on a PyTorch module to quantize activations using histogram or tensor method', 'quantize_activations_with_ste': 'quantize neural network activations using the straight-through estimator with configurable bit width', 'remove_quantization_hook': 'remove the registered forward hook from a module by calling handle.remove() on the ActivationQuantizer', 'configure_quantization_parameters': 'configure quantization parameters including bits, method, update_step, and clamp_threshold for activation quantization'}
+```
+
+## File: facebookresearch_avhubert/fairseq/fairseq/modules/quantization/scalar/modules/qconv.py
+
+Prompts
+
+```
+["create an ActivationQuantizer to apply fake scalar quantization to a PyTorch module's post-activations", 'register a forward hook on a PyTorch module to quantize activations using histogram or tensor method', 'quantize neural network activations using the straight-through estimator with configurable bit width', 'remove the registered forward hook from a module by calling handle.remove() on the ActivationQuantizer', 'configure quantization parameters including bits, method, update_step, and clamp_threshold for activation quantization', 'create an IntConv2d layer with 8-bit histogram quantization noise for a PyTorch convolutional neural network', 'build a quantized Conv2d module using IntConv2d with configurable bits, noise probability, and quantization method', 'test the IntConv2d forward pass to verify quantized weight computation and straight-through estimator behavior', 'review the IntConv2d class to understand how emulate_int quantizes weights with scale and zero_point parameters', 'refactor the IntConv2d update_step logic to control how often scale and zero_point are recomputed during training', 'create an IntEmbedding layer with 10000 tokens and 512 dimensional embeddings using 8-bit quantization', 'build a quantized embedding module that injects quantization noise with probability p during training', 'test the IntEmbedding forward pass by passing input indices and verifying quantized output shape', 'review the IntEmbedding class and its support for tensor, histogram, and channel quantization methods', 'refactor the IntEmbedding module to recompute scale and zero_point every N forward iterations', 'create an IntLinear layer with 256 input and 128 output features using 8-bit histogram quantization', 'build an IntLinear module using channel-wise quantization method with 4-bit precision for feature compression', 'test the IntLinear forward pass with a random input tensor in training mode to verify quantization noise', 'review the IntLinear reset_parameters method to understand Xavier uniform weight initialization and bias zeroing', 'summarize the IntLinear class quantization approach using straight-through estimator and emulate_int for weight quantization']
+```
+
+Usage
+
+```
+{'create_IntConv2d_layer': 'create an IntConv2d layer with 8-bit histogram quantization noise for a PyTorch convolutional neural network', 'build_quantized_conv2d': 'build a quantized Conv2d module using IntConv2d with configurable bits, noise probability, and quantization method', 'test_IntConv2d_forward': 'test the IntConv2d forward pass to verify quantized weight computation and straight-through estimator behavior', 'review_IntConv2d_quantization': 'review the IntConv2d class to understand how emulate_int quantizes weights with scale and zero_point parameters', 'refactor_IntConv2d_update_step': 'refactor the IntConv2d update_step logic to control how often scale and zero_point are recomputed during training'}
+```
+
+## File: facebookresearch_avhubert/fairseq/fairseq/modules/quantization/scalar/modules/qemb.py
+
+Prompts
+
+```
+["create an ActivationQuantizer to apply fake scalar quantization to a PyTorch module's post-activations", 'register a forward hook on a PyTorch module to quantize activations using histogram or tensor method', 'quantize neural network activations using the straight-through estimator with configurable bit width', 'remove the registered forward hook from a module by calling handle.remove() on the ActivationQuantizer', 'configure quantization parameters including bits, method, update_step, and clamp_threshold for activation quantization', 'create an IntConv2d layer with 8-bit histogram quantization noise for a PyTorch convolutional neural network', 'build a quantized Conv2d module using IntConv2d with configurable bits, noise probability, and quantization method', 'test the IntConv2d forward pass to verify quantized weight computation and straight-through estimator behavior', 'review the IntConv2d class to understand how emulate_int quantizes weights with scale and zero_point parameters', 'refactor the IntConv2d update_step logic to control how often scale and zero_point are recomputed during training', 'create an IntEmbedding layer with 10000 tokens and 512 dimensional embeddings using 8-bit quantization', 'build a quantized embedding module that injects quantization noise with probability p during training', 'test the IntEmbedding forward pass by passing input indices and verifying quantized output shape', 'review the IntEmbedding class and its support for tensor, histogram, and channel quantization methods', 'refactor the IntEmbedding module to recompute scale and zero_point every N forward iterations', 'create an IntLinear layer with 256 input and 128 output features using 8-bit histogram quantization', 'build an IntLinear module using channel-wise quantization method with 4-bit precision for feature compression', 'test the IntLinear forward pass with a random input tensor in training mode to verify quantization noise', 'review the IntLinear reset_parameters method to understand Xavier uniform weight initialization and bias zeroing', 'summarize the IntLinear class quantization approach using straight-through estimator and emulate_int for weight quantization']
+```
+
+Usage
+
+```
+{'create_quantized_embedding_layer': 'create an IntEmbedding layer with 10000 tokens and 512 dimensional embeddings using 8-bit quantization', 'build_embedding_with_quant_noise': 'build a quantized embedding module that injects quantization noise with probability p during training', 'test_intembedding_forward_pass': 'test the IntEmbedding forward pass by passing input indices and verifying quantized output shape', 'review_intembedding_quantization_methods': 'review the IntEmbedding class and its support for tensor, histogram, and channel quantization methods', 'refactor_intembedding_update_step': 'refactor the IntEmbedding module to recompute scale and zero_point every N forward iterations'}
+```
+
+## File: facebookresearch_avhubert/fairseq/fairseq/modules/quantization/scalar/modules/qlinear.py
+
+Prompts
+
+```
+["create an ActivationQuantizer to apply fake scalar quantization to a PyTorch module's post-activations", 'register a forward hook on a PyTorch module to quantize activations using histogram or tensor method', 'quantize neural network activations using the straight-through estimator with configurable bit width', 'remove the registered forward hook from a module by calling handle.remove() on the ActivationQuantizer', 'configure quantization parameters including bits, method, update_step, and clamp_threshold for activation quantization', 'create an IntConv2d layer with 8-bit histogram quantization noise for a PyTorch convolutional neural network', 'build a quantized Conv2d module using IntConv2d with configurable bits, noise probability, and quantization method', 'test the IntConv2d forward pass to verify quantized weight computation and straight-through estimator behavior', 'review the IntConv2d class to understand how emulate_int quantizes weights with scale and zero_point parameters', 'refactor the IntConv2d update_step logic to control how often scale and zero_point are recomputed during training', 'create an IntEmbedding layer with 10000 tokens and 512 dimensional embeddings using 8-bit quantization', 'build a quantized embedding module that injects quantization noise with probability p during training', 'test the IntEmbedding forward pass by passing input indices and verifying quantized output shape', 'review the IntEmbedding class and its support for tensor, histogram, and channel quantization methods', 'refactor the IntEmbedding module to recompute scale and zero_point every N forward iterations', 'create an IntLinear layer with 256 input and 128 output features using 8-bit histogram quantization', 'build an IntLinear module using channel-wise quantization method with 4-bit precision for feature compression', 'test the IntLinear forward pass with a random input tensor in training mode to verify quantization noise', 'review the IntLinear reset_parameters method to understand Xavier uniform weight initialization and bias zeroing', 'summarize the IntLinear class quantization approach using straight-through estimator and emulate_int for weight quantization']
+```
+
+Usage
+
+```
+{'create_IntLinear_layer': 'create an IntLinear layer with 256 input and 128 output features using 8-bit histogram quantization', 'build_IntLinear_with_channel_quant': 'build an IntLinear module using channel-wise quantization method with 4-bit precision for feature compression', 'test_IntLinear_forward_pass': 'test the IntLinear forward pass with a random input tensor in training mode to verify quantization noise', 'review_IntLinear_reset_parameters': 'review the IntLinear reset_parameters method to understand Xavier uniform weight initialization and bias zeroing', 'summarize_IntLinear_quantization': 'summarize the IntLinear class quantization approach using straight-through estimator and emulate_int for weight quantization'}
+```
+

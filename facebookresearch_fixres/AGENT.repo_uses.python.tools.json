@@ -1,0 +1,164 @@
+{
+  "facebookresearch_fixres/imnet_evaluate/Res.py": {
+    "build_resnet50_model": "build a ResNet-50 model using the resnet50 function with pretrained weights from ImageNet",
+    "build_resnet18_model": "build a ResNet-18 model using the resnet18 function with the BasicBlock architecture",
+    "build_resnext_model": "build a ResNeXt-50 32x4d model using the resnext50_32x4d function with grouped convolutions",
+    "review_resnet_class": "review the ResNet class to understand the _make_layer method and forward pass architecture",
+    "build_custom_resnet": "build a custom ResNet model by passing a block type and layer configuration to the ResNet class"
+  },
+  "facebookresearch_fixres/imnet_evaluate/pnasnet.py": {
+    "build_pnasnet5large_model": "build a PNASNet-5 Large model for ImageNet classification with 1000 classes",
+    "build_pnasnet5large_pretrained": "build a PNASNet-5 Large model loaded with pretrained ImageNet weights",
+    "create_separable_conv2d": "create a depthwise separable convolution layer with configurable kernel size and stride",
+    "create_factorized_reduction": "create a factorized reduction cell that halves spatial dimensions via dual-path average pooling",
+    "create_branch_separables": "create a branch with two stacked separable convolutions and batch normalization layers"
+  },
+  "facebookresearch_fixres/imnet_evaluate/resnext_wsl.py": {
+    "build_resnext101_32x8d_wsl_model": "build a ResNeXt-101 32x8 model pre-trained on weakly-supervised ImageNet data",
+    "build_resnext101_32x16d_wsl_model": "build a ResNeXt-101 32x16 model pre-trained on weakly-supervised ImageNet data",
+    "build_resnext101_32x32d_wsl_model": "build a ResNeXt-101 32x32 model pre-trained on weakly-supervised ImageNet data",
+    "build_resnext101_32x48d_wsl_model": "build a ResNeXt-101 32x48 model pre-trained on weakly-supervised ImageNet data",
+    "review_resnext_helper": "review the _resnext helper that constructs a ResNet and loads pretrained weights from URL"
+  },
+  "facebookresearch_fixres/imnet_evaluate/samplers.py": {
+    "create_RASampler_for_distributed_training": "create a RASampler instance for distributed training with repeated augmentations and configurable shuffle",
+    "use_RASampler_shuffler_generator": "use the RASampler shuffler method to generate repeated indices with optional shuffling per epoch",
+    "iterate_RASampler_indices": "iterate over RASampler to get subsampled indices for a specific rank in distributed training",
+    "set_RASampler_epoch": "set the epoch on a RASampler instance to control shuffling behavior for the current training epoch",
+    "collate_batch_with_list_collate": "collate a batch of variable-sized inputs into lists instead of stacked tensors using list_collate"
+  },
+  "facebookresearch_fixres/imnet_evaluate/train.py": {
+    "run_Trainer_evaluation": "run the Trainer to evaluate a pretrained model on ImageNet validation set and return top1 and top5 accuracy",
+    "create_TrainerState_checkpoint": "create a TrainerState checkpoint by saving the model state dict to a file for later resumption",
+    "load_TrainerState_from_checkpoint": "load a TrainerState from an existing checkpoint file to resume model evaluation",
+    "compute_accuracy_sp_topk": "compute the precision at k for specified topk values given model output and target labels",
+    "track_HistoryMeter_metrics": "track running average metrics with full precision summation using HistoryMeter to avoid floating point errors"
+  },
+  "facebookresearch_fixres/imnet_evaluate/transforms.py": {
+    "build_image_transform_pipeline": "build a train and validation image transform pipeline with random crop, flip, and normalization for ImageNet",
+    "create_resize_class": "create a custom Resize class that resizes images to a target size based on the largest or smallest side",
+    "test_resize_target_size": "test the Resize.target_size static method to compute target dimensions for a given width, height, and size",
+    "refactor_get_transforms_backbone": "refactor get_transforms to support additional backbone-specific mean and std normalization values",
+    "review_resize_largest_mode": "review the Resize class largest mode logic that resizes without cropping to maintain aspect ratio"
+  },
+  "facebookresearch_fixres/imnet_extract/Res.py": {
+    "build_resnet50_model": "build a ResNet-50 model with pretrained ImageNet weights for image classification",
+    "build_resnet18_model": "build a lightweight ResNet-18 model using BasicBlock for fast inference",
+    "build_resnext50_model": "build a ResNeXt-50 32x4d model with grouped convolutions for improved accuracy",
+    "review_resnet_forward": "review the ResNet forward pass that returns both class logits and flattened features",
+    "refactor_resnet_num_classes": "refactor the ResNet model to change num_classes for a custom classification task"
+  },
+  "facebookresearch_fixres/imnet_extract/pnasnet.py": {
+    "build_pnasnet5large_model": "build a PNASNet5Large model with a custom number of classes for image classification",
+    "load_pretrained_pnasnet5large": "load a pretrained PNASNet5Large model from ImageNet weights using the pnasnet5large factory function",
+    "extract_features_pnasnet5large": "extract feature representations from input images using the PNASNet5Large features method",
+    "review_cell_forward": "review the CellBase cell_forward method to understand how PNASNet cells combine left and right inputs",
+    "refactor_factorized_reduction": "refactor the FactorizedReduction module to use a different spatial reduction strategy"
+  },
+  "facebookresearch_fixres/imnet_extract/resnext_wsl.py": {
+    "build_resnext101_32x8d_wsl_model": "build a ResNeXt-101 32x8 model pre-trained on weakly-supervised ImageNet data",
+    "build_resnext101_32x16d_wsl_model": "build a ResNeXt-101 32x16 model pre-trained on weakly-supervised ImageNet data",
+    "build_resnext101_32x32d_wsl_model": "build a ResNeXt-101 32x32 model pre-trained on weakly-supervised ImageNet data",
+    "build_resnext101_32x48d_wsl_model": "build a ResNeXt-101 32x48 model pre-trained on weakly-supervised ImageNet data",
+    "summarize_resnext_model_urls": "summarize the model_urls dictionary mapping ResNeXt-101 variants to their PyTorch download URLs"
+  },
+  "facebookresearch_fixres/imnet_extract/samplers.py": {
+    "create_RASampler_for_distributed_training": "create a RASampler instance for distributed training with repeated augmentations across multiple GPU replicas",
+    "use_RASampler_shuffler_for_repeated_indices": "use the RASampler shuffler method to generate repeated shuffled indices for data augmentation",
+    "iterate_RASampler_for_epoch_indices": "iterate over a RASampler to get subsampled indices for the current rank in distributed training",
+    "set_RASampler_epoch": "set the epoch on a RASampler instance to control shuffling behavior for the current training epoch",
+    "collate_batch_with_list_collate": "collate a batch of variable-sized tensors into a list using the list_collate function"
+  },
+  "facebookresearch_fixres/imnet_extract/train.py": {
+    "run_Trainer": "run the Trainer to extract embeddings and softmax probabilities from an ImageNet dataset using a pretrained model",
+    "save_TrainerState": "save the TrainerState model checkpoint to a file for later resumption of feature extraction",
+    "load_TrainerState": "load a TrainerState checkpoint from a file to resume feature extraction with the saved model",
+    "checkpoint_Trainer": "checkpoint the Trainer to save state and handle job preemption in a distributed cluster environment",
+    "convert_conv_numpy_tensor": "convert a CUDA tensor to a numpy array for saving extracted embeddings and labels to disk"
+  },
+  "facebookresearch_fixres/imnet_extract/transforms.py": {
+    "build_transforms_for_training": "build a torchvision transform pipeline for training with random resized crop and horizontal flip",
+    "build_transforms_for_validation": "build a torchvision transform pipeline for validation with center crop and normalization",
+    "create_resize_with_largest": "create a custom Resize transform that resizes to a common largest side without cropping",
+    "refactor_get_transforms_backbone": "refactor get_transforms to use different normalization mean and std for pnasnet5large or nasnetamobile backbones",
+    "test_resize_target_size": "test the Resize.target_size static method to compute correct target dimensions for given width height and size"
+  },
+  "facebookresearch_fixres/imnet_finetune/Res.py": {
+    "build_resnet50_model": "build a ResNet-50 model with pretrained ImageNet weights for image classification",
+    "build_resnet18_model": "build a lightweight ResNet-18 model using BasicBlock for fast inference",
+    "build_resnext50_model": "build a ResNeXt-50 32x4d model with grouped convolutions for improved accuracy",
+    "build_custom_resnet": "build a custom ResNet model with configurable num_classes for transfer learning",
+    "review_resnet_architecture": "review the ResNet class and Bottleneck block for residual connection design"
+  },
+  "facebookresearch_fixres/imnet_finetune/pnasnet.py": {
+    "build_pnasnet5large_model": "build a PNASNet-5 Large model for ImageNet classification with 1000 classes",
+    "build_pnasnet5large_pretrained": "build a PNASNet-5 Large model loaded with pretrained ImageNet weights",
+    "create_separable_conv2d": "create a depthwise separable convolution layer with configurable kernel size and stride",
+    "create_factorized_reduction": "create a factorized reduction cell that halves spatial dimensions via dual-path pooling",
+    "create_branch_separables": "create a branch with two stacked separable convolutions and batch normalization",
+    "create_cell_stem0": "create a CellStem0 module that processes the initial stem features with comb operations",
+    "create_cell_normal": "create a normal Cell module with five combination iterations for feature extraction",
+    "create_cell_reduction": "create a reduction Cell module that downsamples spatial dimensions by stride 2",
+    "create_maxpool_with_padding": "create a MaxPool layer with optional zero padding for edge alignment",
+    "create_relucov_bn": "create a ReluConvBn module combining ReLU, Conv2d, and BatchNorm2d layers",
+    "run_pnasnet_forward": "run a forward pass through PNASNet-5 Large to get classification logits",
+    "run_pnasnet_features": "run the features method to extract feature maps before the final classifier",
+    "run_pnasnet_logits": "run the logits method to apply pooling, dropout, and linear classification on features",
+    "review_cellbase_forward": "review the CellBase cell_forward method that combines five operation iterations",
+    "review_pnasnet_architecture": "review the PNASNet-5 Large architecture with 12 cells and three reduction stages",
+    "summarize_pnasnet5large": "summarize the PNASNet-5 Large model architecture and pretrained settings for ImageNet",
+    "summarize_separable_conv": "summarize the SeparableConv2d implementation using depthwise and pointwise convolutions",
+    "summarize_factorized_reduction": "summarize the FactorizedReduction cell with dual-path average pooling and concatenation",
+    "test_pnasnet_forward_pass": "test the PNASNet-5 Large forward pass with a sample input tensor",
+    "test_cell_stem0_forward": "test the CellStem0 forward pass with left input features"
+  },
+  "facebookresearch_fixres/imnet_finetune/resnext_wsl.py": {
+    "build_resnext101_32x8d_wsl_model": "build a ResNeXt-101 32x8 model pre-trained on weakly-supervised ImageNet data",
+    "build_resnext101_32x16d_wsl_model": "build a ResNeXt-101 32x16 model pre-trained on weakly-supervised ImageNet data",
+    "build_resnext101_32x32d_wsl_model": "build a ResNeXt-101 32x32 model pre-trained on weakly-supervised ImageNet data",
+    "build_resnext101_32x48d_wsl_model": "build a ResNeXt-101 32x48 model pre-trained on weakly-supervised ImageNet data",
+    "review_resnext_helper": "review the _resnext helper that constructs a ResNet and loads pretrained weights from URL"
+  },
+  "facebookresearch_fixres/imnet_finetune/samplers.py": {
+    "create_RASampler_for_distributed_training": "create a RASampler instance for distributed training with repeated augmentations across multiple GPU replicas",
+    "use_RASampler_shuffler_for_repeated_indices": "use the RASampler shuffler method to generate repeated shuffled indices for data augmentation",
+    "iterate_RASampler_for_epoch_indices": "iterate over a RASampler to get subsampled indices for the current rank in distributed training",
+    "set_RASampler_epoch": "set the epoch on a RASampler instance to control shuffling behavior for the current training epoch",
+    "use_list_collate_for_variable_sized_inputs": "use the list_collate function to collate batches of variable-sized tensors instead of stacking them"
+  },
+  "facebookresearch_fixres/imnet_finetune/train.py": {
+    "run_trainer_finetune": "run the Trainer to fine-tune a pretrained model on ImageNet and return final accuracy",
+    "create_trainer_state": "create a TrainerState object to hold model, optimizer, and lr_scheduler state for checkpointing",
+    "save_trainer_state": "save the TrainerState including model, optimizer, and lr_scheduler state dicts to a file",
+    "load_trainer_state": "load a TrainerState from a checkpoint file using a default TrainerState to restore state dicts",
+    "checkpoint_trainer": "checkpoint the current training state and optionally remove the initialization file"
+  },
+  "facebookresearch_fixres/imnet_finetune/transforms.py": {
+    "create_resize_transform": "create a custom Resize transform that resizes images to a common largest side without cropping",
+    "build_get_transforms": "build train and validation image transforms with RandomResizedCrop, ColorJitter, and normalization for ImageNet fine-tuning",
+    "test_resize_target_size": "test the Resize.target_size static method to compute target dimensions based on width, height, and largest flag",
+    "refactor_get_transforms_backbone": "refactor get_transforms to support custom backbone normalization for pnasnet5large and nasnetamobile models",
+    "review_resize_call": "review the Resize class __call__ method to understand how it computes target size and applies torchvision resizing"
+  },
+  "facebookresearch_fixres/imnet_resnet50_scratch/samplers.py": {
+    "create_RASampler_for_distributed_training": "create a RASampler instance for distributed training with repeated augmentations and configurable shuffle",
+    "use_RASampler_shuffler_generator": "use the RASampler shuffler method to generate repeated shuffled indices for a dataset",
+    "iterate_RASampler_indices": "iterate over a RASampler to get subsampled indices for the current rank in distributed training",
+    "set_RASampler_epoch": "set the epoch on a RASampler instance to control shuffling behavior per training epoch",
+    "collate_batch_with_list_collate": "collate a batch of variable-sized inputs into lists instead of stacked tensors using list_collate"
+  },
+  "facebookresearch_fixres/imnet_resnet50_scratch/train.py": {
+    "run_resnet50_training": "run the Trainer to train a ResNet50 model on ImageNet from scratch using distributed data parallel",
+    "create_trainer_state_checkpoint": "create a TrainerState checkpoint by calling save to persist model, optimizer, and lr scheduler state",
+    "load_trainer_state_from_checkpoint": "load a TrainerState from a checkpoint file using the load class method to resume training",
+    "setup_distributed_process_group": "setup a distributed process group with CUDA device and init_process_group for multi-GPU training",
+    "evaluate_resnet50_model": "evaluate the trained ResNet50 model on the validation set and return accuracy and loss"
+  },
+  "facebookresearch_fixres/imnet_resnet50_scratch/transforms.py": {
+    "build_train_val_transforms": "build a train and validation image transform pipeline with random crop, flip, and normalization for ImageNet",
+    "create_resize_class": "create a custom Resize class that resizes images by the largest side without cropping",
+    "test_resize_target_size": "test the Resize.target_size static method to compute target dimensions from width, height, and size",
+    "refactor_get_transforms_backbone": "refactor get_transforms to support custom backbone normalization for pnasnet5large or nasnetamobile",
+    "summarize_transforms_list": "summarize the available transform kinds listed in transforms_list as torch and full"
+  }
+}

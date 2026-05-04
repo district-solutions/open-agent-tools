@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diffq
+- repo_uri: https://github.com/facebookresearch/diffq
+
+## File: facebookresearch_diffq/examples/fairseq/fairseq/model_parallel/megatron_trainer.py
+
+Prompts
+
+```
+['create a MegatronTrainer instance with FairseqConfig, task, model, and criterion for model parallel training', 'clip gradient norms across model parallel groups using MegatronTrainer clip_grad_norm method', 'save training checkpoint with CUDA RNG tracker states using MegatronTrainer save_checkpoint method', 'load a training checkpoint and restore CUDA RNG tracker states using MegatronTrainer load_checkpoint method', 'review the MegatronTrainer class for model parallel with data parallel training across multiple GPUs']
+```
+
+Usage
+
+```
+{'create_MegatronTrainer': 'create a MegatronTrainer instance with FairseqConfig, task, model, and criterion for model parallel training', 'clip_grad_norm_MegatronTrainer': 'clip gradient norms across model parallel groups using MegatronTrainer clip_grad_norm method', 'save_checkpoint_MegatronTrainer': 'save training checkpoint with CUDA RNG tracker states using MegatronTrainer save_checkpoint method', 'load_checkpoint_MegatronTrainer': 'load a training checkpoint and restore CUDA RNG tracker states using MegatronTrainer load_checkpoint method', 'review_MegatronTrainer': 'review the MegatronTrainer class for model parallel with data parallel training across multiple GPUs'}
+```
+

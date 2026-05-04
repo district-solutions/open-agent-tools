@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/docagent
+- repo_uri: https://github.com/facebookresearch/docagent
+
+## File: facebookresearch_docagent/data/raw_test_repo_simple/inner/inner_functions.py
+
+Prompts
+
+```
+['run inner_function to return a greeting message from an inner function', 'run get_random_quote to fetch a predefined inspirational quote string', 'run generate_timestamp to get a static timestamp string for testing', 'run get_system_status to retrieve a static system operational status message', 'run fetch_user_message to get a predefined user notification message']
+```
+
+Usage
+
+```
+{'run_inner_function': 'run inner_function to return a greeting message from an inner function', 'run_get_random_quote': 'run get_random_quote to fetch a predefined inspirational quote string', 'run_generate_timestamp': 'run generate_timestamp to get a static timestamp string for testing', 'run_get_system_status': 'run get_system_status to retrieve a static system operational status message', 'run_fetch_user_message': 'run fetch_user_message to get a predefined user notification message'}
+```
+

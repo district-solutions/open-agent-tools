@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/buffer/setup.py
+
+Prompts
+
+```
+['run python3 setup.py build develop to build and install the buffer package with C++ extensions', 'run pip install . to install the buffer package and its torch dependency', 'review the custom build_ext class that runs make develop before building extensions', 'refactor the build_ext class to change the make develop command or add additional build steps', 'run the buffer package test suite configured in setup.test_suite via setup.py']
+```
+
+Usage
+
+```
+{'build_buffer_package': 'run python3 setup.py build develop to build and install the buffer package with C++ extensions', 'install_buffer_pip': 'run pip install . to install the buffer package and its torch dependency', 'review_build_ext_class': 'review the custom build_ext class that runs make develop before building extensions', 'refactor_build_ext_class': 'refactor the build_ext class to change the make develop command or add additional build steps', 'test_buffer_package': 'run the buffer package test suite configured in setup.test_suite via setup.py'}
+```
+

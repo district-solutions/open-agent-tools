@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dlrm
+- repo_uri: https://github.com/facebookresearch/dlrm
+
+## File: facebookresearch_dlrm/torchrec_dlrm/scripts/materialize_synthetic_multihot_dataset.py
+
+Prompts
+
+```
+['run the script to materialize synthetic multi-hot dataset from Criteo binary npy files into npz format', 'run the script with pareto distribution type to generate multi-hot sparse dataset for all days', 'run the script with copy labels and dense flag to include labels and dense data in output', 'run the script in distributed mode across multiple GPUs using NCCL backend for parallel dataset generation', 'review the parse_args function to understand CLI arguments for multi-hot dataset materialization including embedding sizes and distribution type']
+```
+
+Usage
+
+```
+{'run_materialize_multihot_dataset': 'run the script to materialize synthetic multi-hot dataset from Criteo binary npy files into npz format', 'run_multihot_with_pareto_distribution': 'run the script with pareto distribution type to generate multi-hot sparse dataset for all days', 'run_multihot_with_copy_labels': 'run the script with copy labels and dense flag to include labels and dense data in output', 'run_distributed_multihot_materialization': 'run the script in distributed mode across multiple GPUs using NCCL backend for parallel dataset generation', 'review_parse_args_multihot': 'review the parse_args function to understand CLI arguments for multi-hot dataset materialization including embedding sizes and distribution type'}
+```
+

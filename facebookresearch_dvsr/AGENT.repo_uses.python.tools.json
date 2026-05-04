@@ -1,0 +1,184 @@
+{
+  "facebookresearch_dvsr/apis/inference.py": {
+    "run_video_inference_sliding_window": "run video inference on a directory using the sliding window framework with a specified window size",
+    "run_video_inference_recurrent": "run video inference on a directory using the recurrent framework without a sliding window",
+    "run_video_inference_segmented": "run video inference on long sequences by splitting them into segments with a max sequence length",
+    "pad_sequence_tensor": "pad a tensor sequence by flipping edge frames for sliding window inference with a given window size",
+    "review_video_inference": "review the video inference function to understand how it handles sliding window versus recurrent frameworks"
+  },
+  "facebookresearch_dvsr/apis/test.py": {
+    "test_model_single_gpu": "test a PyTorch model on a single GPU using single_gpu_test with a data loader",
+    "test_model_multi_gpu": "test a PyTorch model across multiple GPUs using multi_gpu_test with gpu or cpu result collection",
+    "collect_results_cpu": "collect distributed test results from multiple GPUs to CPU using pickle files in a temp directory",
+    "collect_results_gpu": "collect distributed test results from multiple GPUs using GPU tensor communication and all_gather",
+    "review_test_module": "review the test module functions for single and multi GPU model evaluation and result collection"
+  },
+  "facebookresearch_dvsr/apis/train.py": {
+    "train_model_distributed": "train a PyTorch model using distributed training with config, dataset, and validation hooks",
+    "train_model_non_distributed": "train a PyTorch model using single GPU training with config, dataset, and evaluation",
+    "init_random_seed": "initialize a random seed and broadcast it across all distributed training processes",
+    "set_random_seed": "set random seed for Python, NumPy, PyTorch, and CUDA for reproducible training",
+    "dist_train_with_hooks": "run distributed training with custom hooks, visualization, and checkpoint resume support"
+  },
+  "facebookresearch_dvsr/datasets/builder.py": {
+    "build_dataset_from_cfg": "build a dataset from a config dict using build_dataset with type and default_args",
+    "build_dataloader_for_training": "build a PyTorch DataLoader with distributed sampling and configurable batch size and workers",
+    "create_distributed_sampler": "create a DistributedSampler that shuffles dataset indices across GPU replicas with seed synchronization",
+    "review_distributed_sampler_init": "review the DistributedSampler class __init__ to understand num_samples_per_replica calculation and seed sync",
+    "test_worker_init_fn": "test the worker_init_fn to verify each DataLoader worker gets a unique random seed"
+  },
+  "facebookresearch_dvsr/datasets/custom_rgbd_mf.py": {
+    "create_CustomRGBDMultiFrameDataset": "create a CustomRGBDMultiFrameDataset instance with pipeline, guide_folder, gt_folder, split_file, and frame config",
+    "review_get_cont_sub_sequence": "review the get_cont_sub_sequence method to extract sliding window sub-sequences from a sequence list",
+    "review_get_cont_sub_sequence_from_lists": "review the get_cont_sub_sequence_from_lists method to extract sub-sequences from a list of sequences",
+    "test_load_annotations": "test the load_annotations method to parse split files and build gt_path and guide_path lists",
+    "summarize_evaluate": "summarize the evaluate method to compute averaged evaluation metrics from model test results"
+  },
+  "facebookresearch_dvsr/datasets/dtof_simulator.py": {
+    "build_dtofsimulator_peak": "build a DToFSimulator in peak mode to generate synthetic dToF depth maps from ground truth depth and guide images",
+    "build_dtofsimulator_mpeak": "build a DToFSimulator in mpeak mode to generate compressed multi-peak dToF histograms from depth and guide images",
+    "build_dtofsimulator_rebin": "build a DToFSimulator in rebin mode to compress precomputed histograms into multi-peak representations",
+    "create_dtof_hist": "create a full dToF histogram from depth and guide image using weighted bincount per spatial block",
+    "create_rebin_hist": "create a compressed histogram by rebinning based on uniform intervals and local peak detection"
+  },
+  "facebookresearch_dvsr/datasets/formating.py": {
+    "convert_numpy_to_torch_tensor": "create a function that converts numpy arrays, ints, floats, or sequences to torch.Tensor objects",
+    "convert_dict_values_to_tensor": "build a ToTensor pipeline class that converts specified dict keys to torch tensors in a data loader",
+    "convert_image_to_tensor": "create an ImageToTensor pipeline that converts numpy images to float32 tensors with channel-first layout",
+    "convert_frames_to_tensor": "build a FramesToTensor pipeline that stacks a list of frame images into a single tensor along dim 0",
+    "collect_pipeline_data": "create a Collect pipeline that gathers specified keys and metadata into a DataContainer for model input"
+  },
+  "facebookresearch_dvsr/model/base.py": {
+    "create_subclass_of_base_model": "create a subclass of BaseModel that implements init_weights, forward_train, forward_test, and train_step",
+    "run_forward_pass": "run a forward pass on a BaseModel subclass with images and labels in training or test mode",
+    "review_parse_losses": "review the parse_losses method that aggregates a dict of loss tensors into a total loss and log variables",
+    "test_val_step": "test the val_step method that runs forward_test on a data batch and returns the output",
+    "refactor_train_step": "refactor a BaseModel subclass train_step to process a data batch with an optimizer"
+  },
+  "facebookresearch_dvsr/model/basic_restorer.py": {
+    "build_BasicRestorer": "build a BasicRestorer model with a generator config and pixel loss for depth restoration",
+    "run_forward_train": "run the training forward pass with lq depth, guide RGB, and ground truth tensors",
+    "run_forward_test": "run the test forward pass to generate restored depth output from lq and guide inputs",
+    "run_train_step": "run a single training step with a data batch and optimizer for backpropagation",
+    "run_evaluate": "run evaluation to compute MAE between model output and ground truth depth maps"
+  },
+  "facebookresearch_dvsr/model/builder.py": {
+    "build_model_from_cfg": "build a model from a config dict using build_model with optional train and test config",
+    "build_backbone_from_cfg": "build a backbone network from a config dict using build_backbone",
+    "build_component_from_cfg": "build a model component from a config dict using build_component",
+    "build_loss_from_cfg": "build a loss module from a config dict using build_loss",
+    "build_sequential_modules": "build a Sequential of modules from a list of config dicts using build"
+  },
+  "facebookresearch_dvsr/model/dvsr.py": {
+    "build_dvsr_model": "build a DVSR model instance with configurable mid_channels, num_blocks, and scale parameters",
+    "run_dvsr_forward": "run the DVSR forward pass with lqs tensor and RGB guidance to predict depth maps",
+    "run_hg_forward": "run a single stage forward pass of DVSR for depth and confidence prediction",
+    "test_compute_flow": "test the SPyNet-based optical flow computation between consecutive guide frames",
+    "review_propagate": "review the DVSR propagate method for bidirectional feature propagation across video frames"
+  },
+  "facebookresearch_dvsr/model/hvsr.py": {
+    "build_dtof_histogram": "build a python module that converts a predicted depth map into a dToF sensor histogram using dtof_hist_torch",
+    "compute_histogram_matching_error": "compute the histogram matching error between input CDFs and predicted depth using get_inp_error",
+    "generate_positional_encoding": "generate positional encoding tensors for batched video frames using get_pos_encoding with batch size and pitch",
+    "create_hvsr_model": "create an HVSR model instance with configurable mid_channels, num_blocks, scale, and dToF sensor arguments",
+    "run_hvsr_forward": "run the HVSR forward pass on low quality histogram sequences and RGB guidance to predict depth maps"
+  },
+  "facebookresearch_dvsr/model/common/conv.py": {
+    "build_ResidualBlockNoBN": "build a ResidualBlockNoBN module with 64 mid channels and res_scale 1.0 for image super-resolution",
+    "build_ResidualBlocksWithInputConv": "build a ResidualBlocksWithInputConv module with 3 input channels and 30 residual blocks for feature extraction",
+    "test_make_layer": "test the make_layer function by stacking 5 ResidualBlockNoBN blocks into an nn.Sequential module",
+    "test_default_init_weights": "test the default_init_weights function on a Conv2d module with a scale factor of 0.1",
+    "review_ResidualBlockNoBN_init_weights": "review the ResidualBlockNoBN init_weights method that applies scaled kaiming initialization with 0.1 scale"
+  },
+  "facebookresearch_dvsr/model/common/downsample.py": {
+    "run_pixel_unshuffle": "run pixel_unshuffle on a PyTorch tensor with a given scale factor to down-sample spatially",
+    "test_pixel_unshuffle": "test pixel_unshuffle with a tensor whose height and width are divisible by the scale factor",
+    "review_pixel_unshuffle": "review pixel_unshuffle to understand how it reshapes and permutes tensor dimensions for downsampling",
+    "refactor_pixel_unshuffle": "refactor pixel_unshuffle to use torch.nn.PixelUnshuffle instead of manual view and permute operations",
+    "summarize_pixel_unshuffle": "summarize pixel_unshuffle which performs spatial-to-channel downsampling by rearranging tensor elements"
+  },
+  "facebookresearch_dvsr/model/common/flow_warp.py": {
+    "build_flow_warp": "build a python module to warp an image or feature map using optical flow with bilinear interpolation",
+    "build_SPyNet": "build a python module to create an SPyNet optical flow estimation network with optional pretrained weights",
+    "test_SPyNet_compute_flow": "test the SPyNet compute_flow method to estimate optical flow between reference and supporting images",
+    "review_SPyNetBasicModule": "review the SPyNetBasicModule class that refines flow using a 5-layer convolutional network with 8 input channels",
+    "summarize_flow_warp_grid_sample": "summarize the flow_warp function that uses F.grid_sample to warp tensors based on pixel-level flow offsets"
+  },
+  "facebookresearch_dvsr/model/common/model_utils.py": {
+    "set_requires_grad": "freeze or unfreeze PyTorch network parameters by setting requires_grad on all modules in a list",
+    "extract_bbox_patch": "extract image patches from torch or numpy arrays using bounding box coordinates in top-left-height-width format",
+    "scale_bbox": "enlarge bounding boxes to a target size while keeping the original box centered within the new box",
+    "extract_around_bbox": "extract scaled image patches around bounding boxes by combining bbox scaling and patch extraction in one call",
+    "review_model_utils": "review the model_utils module containing PyTorch and numpy helper functions for bounding box and network parameter manipulation"
+  },
+  "facebookresearch_dvsr/model/common/second_order_deform.py": {
+    "build_second_order_deformable_alignment_module": "build a SecondOrderDeformableAlignment module with specified in_channels, out_channels, and kernel_size for video super-resolution",
+    "create_deformable_alignment_with_custom_magnitude": "create a SecondOrderDeformableAlignment instance with a custom max_residue_magnitude parameter for offset control",
+    "test_forward_pass_deformable_alignment": "test the forward pass of SecondOrderDeformableAlignment with anchor features, extra features, and optical flow tensors",
+    "review_init_offset_zero_initialization": "review the init_offset method that zero-initializes the last conv layer in conv_offset",
+    "refactor_conv_offset_sequential_network": "refactor the conv_offset sequential network to add or remove Conv2d and LeakyReLU layers"
+  },
+  "facebookresearch_dvsr/model/common/upsample.py": {
+    "build_pixel_shuffle_upsampler": "build a PixelShufflePack module to upsample feature maps by a given scale factor using pixel shuffle",
+    "create_upsample_conv_layer": "create a Conv2d layer that expands channels before pixel shuffle upsampling with configurable kernel size",
+    "test_pixel_shuffle_forward": "test the PixelShufflePack forward pass with an input tensor of shape n c h w",
+    "review_pixel_shuffle_init_weights": "review the PixelShufflePack init_weights method and its use of default_init_weights for weight initialization",
+    "refactor_pixel_shuffle_scale_factor": "refactor the PixelShufflePack to support dynamic scale factors at runtime instead of init time"
+  },
+  "facebookresearch_dvsr/model/losses/pixelwise_loss.py": {
+    "build_L1Loss_module": "build a PyTorch module that computes L1 loss between predicted and target tensors with configurable reduction",
+    "build_MSELoss_module": "build a PyTorch module that computes MSE loss between predicted and target tensors with configurable reduction",
+    "build_CharbonnierLoss_module": "build a PyTorch module that computes Charbonnier loss as a differentiable variant of L1 loss",
+    "build_MaskedTVLoss_module": "build a PyTorch module that computes masked total variation loss using horizontal and vertical gradients",
+    "test_l1_loss_function": "test the l1_loss function that returns element-wise L1 loss between two tensors"
+  },
+  "facebookresearch_dvsr/model/losses/utils.py": {
+    "reduce_loss_tensor": "reduce a PyTorch loss tensor using mean, sum, or none reduction strategy",
+    "mask_reduce_loss_with_weight": "apply element-wise weight to a loss tensor and reduce with mean or sum",
+    "mask_reduce_loss_sample_wise": "compute sample-wise mean of a weighted loss tensor across spatial dimensions",
+    "create_masked_loss_decorator": "create a masked version of an element-wise loss function with weight and reduction support",
+    "use_masked_loss_l1": "decorate an L1 loss function with the masked_loss decorator to support masking and reduction"
+  },
+  "facebookresearch_dvsr/train_scripts/train_run.py": {
+    "run_training": "run the training script with a config file path and optional work directory",
+    "resume_training": "resume training from a checkpoint file using the --resume-from flag",
+    "distributed_training": "launch distributed training with pytorch slurm or mpi launcher options",
+    "override_config": "override config settings at runtime using --cfg-options key value pairs",
+    "autoscale_lr": "automatically scale the learning rate based on the number of GPUs"
+  },
+  "facebookresearch_dvsr/utils/cli.py": {
+    "run_modify_args": "run modify_args to normalize command line arguments by replacing underscores with hyphens",
+    "test_modify_args": "test modify_args to verify it converts underscored CLI flags to hyphenated ones with deprecation warnings",
+    "refactor_modify_args": "refactor modify_args to support additional argument normalization patterns beyond underscore to hyphen replacement",
+    "review_modify_args": "review modify_args to understand how it iterates sys.argv and issues DeprecationWarning for legacy flags",
+    "summarize_modify_args": "summarize modify_args which patches sys.argv in place to replace underscores with hyphens in CLI arguments"
+  },
+  "facebookresearch_dvsr/utils/collect_env.py": {
+    "run_collect_env": "run the python module to collect and print the current running environment information",
+    "collect_environment_info": "create a function that collects the running environment info including MMEditing version and git hash",
+    "summarize_collect_env": "summarize the collect_env function which gathers environment details from mmcv and mmseg",
+    "review_collect_env": "review the collect_env function to understand how it extends mmcv base environment collection",
+    "test_collect_env": "test the collect_env function to verify it returns a dictionary with environment key-value pairs"
+  },
+  "facebookresearch_dvsr/utils/eval_hook.py": {
+    "create_EvalIterHook": "create a non-distributed evaluation hook that runs single GPU tests at fixed iteration intervals",
+    "create_DistEvalIterHook": "create a distributed evaluation hook that runs multi GPU tests across processes at fixed intervals",
+    "review_EvalIterHook_after_train_iter": "review the EvalIterHook after_train_iter method that triggers single_gpu_test on the runner model",
+    "review_DistEvalIterHook_after_train_iter": "review the DistEvalIterHook after_train_iter method that triggers multi_gpu_test with GPU result collection",
+    "summarize_EvalIterHook_evaluate": "summarize the EvalIterHook evaluate method that logs dataset evaluation results to the runner log buffer"
+  },
+  "facebookresearch_dvsr/utils/logger.py": {
+    "get_root_logger_default": "get the root logger with default INFO level and no file output",
+    "get_root_logger_with_file": "get the root logger and write logs to a specified file path",
+    "get_root_logger_custom_level": "get the root logger with a custom log level like DEBUG or WARNING",
+    "review_get_root_logger": "review the get_root_logger function to understand how it wraps mmcv get_logger",
+    "summarize_get_root_logger": "summarize the get_root_logger function and its StreamHandler and FileHandler behavior"
+  },
+  "facebookresearch_dvsr/utils/setup_env.py": {
+    "setup_multiprocessing_fork": "setup multi-processing start method to fork for faster PyTorch training on Linux",
+    "setup_opencv_threads": "disable OpenCV multithreading by setting thread count to zero via config",
+    "setup_omp_threads": "set OMP_NUM_THREADS environment variable to 1 to avoid system overload during training",
+    "setup_mkl_threads": "set MKL_NUM_THREADS environment variable to 1 to prevent system overload with multiple workers",
+    "review_setup_multi_processes": "review the setup_multi_processes function to understand how it configures multiprocessing and thread environment variables"
+  }
+}

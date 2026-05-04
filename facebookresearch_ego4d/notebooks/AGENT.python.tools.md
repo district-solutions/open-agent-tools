@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/ego4d
+- repo_uri: https://github.com/facebookresearch/ego4d
+
+## File: facebookresearch_ego4d/notebooks/nb_video_utils.py
+
+Prompts
+
+```
+['use _get_frames to extract specific video frames by index from an av container with optional audio', 'use _get_frames_pts to yield video and audio frames matching a set of presentation timestamps', 'use pts_to_time_seconds to convert presentation timestamp values to time in seconds using a time base fraction', 'use pts_difference_per_frame to calculate the PTS difference per frame given FPS and time base', 'use frame_index_to_pts to convert a zero-based frame index to its corresponding presentation timestamp']
+```
+
+Usage
+
+```
+{'extract_video_frames_by_index': 'use _get_frames to extract specific video frames by index from an av container with optional audio', 'extract_frames_by_pts': 'use _get_frames_pts to yield video and audio frames matching a set of presentation timestamps', 'convert_pts_to_seconds': 'use pts_to_time_seconds to convert presentation timestamp values to time in seconds using a time base fraction', 'compute_pts_per_frame': 'use pts_difference_per_frame to calculate the PTS difference per frame given FPS and time base', 'convert_frame_index_to_pts': 'use frame_index_to_pts to convert a zero-based frame index to its corresponding presentation timestamp'}
+```
+

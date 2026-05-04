@@ -1,0 +1,716 @@
+{
+  "facebookresearch_depthcontrast/criterions/nce_loss_moco.py": {
+    "build_NCELossMoco_from_config": "build a MoCo NCE loss module from a config dict with temperature and negative queue size",
+    "run_NCELossMoco_forward": "run the NCE loss forward pass on a list of normalized embedding tensors",
+    "test_concat_all_gather": "test the distributed all_gather utility that concatenates tensors across GPUs",
+    "review_NCELossMoco_dequeue_enqueue": "review the dequeue and enqueue method that rotates keys in the negative sample queue",
+    "refactor_NCELossMoco_other_queue": "refactor the NCE loss to support an optional second queue for cross-modal contrastive learning"
+  },
+  "facebookresearch_depthcontrast/data/redwood/extract_pointcloud.py": {
+    "run_extract_pointcloud": "run the script to extract point clouds from RGB-D zip archives and save PLY and NPY files",
+    "run_pc2obj": "run pc2obj to export a numpy point cloud array to an OBJ file with vertex coordinates",
+    "review_pc2obj": "review the pc2obj function that writes point cloud vertices to an OBJ file format",
+    "refactor_extract_pointcloud": "refactor the script to replace os.system calls with Python-native file listing and glob patterns",
+    "summarize_extract_pointcloud": "summarize the script that reconstructs point clouds from paired RGB and depth images using Open3D"
+  },
+  "facebookresearch_depthcontrast/data/scannet/SensorData.py": {
+    "load_scannet_sensor_data": "load a ScanNet .sens binary file and parse all RGBD frames with camera intrinsics and extrinsics",
+    "export_depth_images": "export decompressed depth images from a ScanNet sensor file to PNG files with optional resizing and frame skipping",
+    "export_color_images": "export decompressed color images from a ScanNet sensor file to JPEG files with optional resizing and frame skipping",
+    "export_camera_poses": "export camera-to-world pose matrices from each RGBD frame in a ScanNet sensor file to text files",
+    "export_camera_intrinsics": "export color and depth intrinsic and extrinsic camera matrices from a ScanNet sensor file to text files"
+  },
+  "facebookresearch_depthcontrast/data/scannet/extract_pointcloud.py": {
+    "run_extract_pointcloud": "run the script to extract point clouds from ScanNet RGB-D image pairs into PLY and NPY files",
+    "run_pc2obj": "run the pc2obj function to write a numpy point cloud array to an OBJ file",
+    "create_rgbd_pointcloud": "create a 3D point cloud from RGB and depth images using Open3D RGBDImage fusion",
+    "summarize_extract_pointcloud": "summarize the extract_pointcloud script that samples 50k points per frame from depth scans",
+    "review_pc2obj": "review the pc2obj function that exports point cloud vertices to OBJ format"
+  },
+  "facebookresearch_depthcontrast/data/waymo/extract_pointcloud.py": {
+    "extract_waymo_pointcloud": "extract lidar point cloud data from Waymo Open Dataset TFRecord segments and save as numpy arrays per frame",
+    "convert_pc_to_obj": "convert a numpy point cloud array to an OBJ file format for 3D visualization",
+    "parse_range_images": "parse range images and camera projections from a Waymo dataset frame using frame_utils",
+    "extract_camera_intrinsics": "extract camera intrinsic parameters including focal length, principal point, and distortion coefficients from Waymo frames",
+    "save_datalist": "save a list of extracted point cloud file paths as a numpy array for downstream processing"
+  },
+  "facebookresearch_depthcontrast/datasets/depth_dataset.py": {
+    "create_DepthContrastDataset": "create a DepthContrastDataset instance with a config dict containing DATA_PATHS, BATCHSIZE_PER_REPLICA, and DATASET_NAMES keys",
+    "load_data_from_index": "load a point cloud from the dataset by index using the load_data method and return the point array",
+    "voxelize_point_cloud": "voxelize point cloud coordinates and features using toVox with spconv VoxelGenerator or minkowski Voxelizer",
+    "get_transform3d_on_points": "apply 3D point transformations to data using get_transform3d with POINT_TRANSFORMS config before voxelization",
+    "get_global_batchsize": "get the global batch size by multiplying batchsize_per_replica with the distributed world size"
+  },
+  "facebookresearch_depthcontrast/datasets/collators/point_moco_collator.py": {
+    "run_point_moco_collator": "run the point_moco_collator function to stack a batch of point cloud samples into tensors",
+    "test_point_moco_collator": "test the point_moco_collator function with a sample batch containing data, data_moco, label, and data_valid keys",
+    "review_point_moco_collator": "review the point_moco_collator function that collates point cloud batches for MoCo contrastive learning",
+    "refactor_point_moco_collator": "refactor the point_moco_collator to support additional batch keys or different tensor stacking logic",
+    "summarize_point_moco_collator": "summarize the point_moco_collator function that extracts and stacks points, labels, and validity flags from a batch"
+  },
+  "facebookresearch_depthcontrast/datasets/collators/point_vox_moco_collator.py": {
+    "run_collator": "run the point_vox_moco_collator function to collate a batch of point cloud and voxel data for MoCo training",
+    "review_collator": "review the point_vox_moco_collator function to understand how it stacks points and voxels into tensors",
+    "test_collator": "test the point_vox_moco_collator function with a sample batch containing data, data_moco, vox, vox_moco, label, and data_valid keys",
+    "refactor_collator": "refactor the point_vox_moco_collator function to support additional batch keys or different tensor stacking logic",
+    "summarize_collator": "summarize the point_vox_moco_collator function which extracts and stacks point and voxel data from a batch for contrastive learning"
+  },
+  "facebookresearch_depthcontrast/datasets/collators/point_vox_moco_lidar_collator.py": {
+    "run_collator": "run the point_vox_moco_collator function to collate a batch of point cloud and voxel data for MoCo training",
+    "build_collator": "build a PyTorch DataLoader collator that stacks point cloud data and concatenates voxel data across a batch",
+    "test_collator": "test the point_vox_moco_collator function with a sample batch containing data, data_moco, vox, and vox_moco keys",
+    "refactor_collator": "refactor the point_vox_moco_collator to eliminate the duplicated voxel and vox_moco concatenation logic into a helper function",
+    "review_collator": "review the point_vox_moco_collator function for the batch collation of LiDAR point clouds and voxel grids with MoCo augmentations"
+  },
+  "facebookresearch_depthcontrast/datasets/collators/vox_moco_collator.py": {
+    "build_vox_moco_collator": "build a python module that collates MoCo and voxel data batches for depth contrast learning",
+    "create_collate_fn": "create a collate function using cfl_collate_fn_factory to batch voxel and MoCo data",
+    "test_vox_moco_collator": "test the vox_moco_collator function with a sample batch of data points and labels",
+    "review_vox_moco_collator": "review the vox_moco_collator function to understand how it extracts and batches voxel data",
+    "refactor_vox_moco_collator": "refactor the vox_moco_collator to support additional batch keys beyond vox and vox_moco"
+  },
+  "facebookresearch_depthcontrast/datasets/transforms/augment3d.py": {
+    "build_transform3d_pipeline": "build a python module to apply 3D point cloud augmentation transforms via get_transform3d with a config list",
+    "create_rotation_matrix": "create a function that generates an x, y, or z axis rotation matrix using rotx, roty, or rotz",
+    "export_point_cloud_obj": "create a script that exports a numpy point cloud array to an OBJ file using pc2obj",
+    "write_colored_ply": "create a tool that writes colored 3D points to a PLY file using write_ply_color or write_ply_rgb",
+    "review_augment3d_transforms": "review the get_transform3d function to understand subcenter, RandomFlip, RandomRotate, RandomScale, ColorJitter, and randomcuboid augmentation operations"
+  },
+  "facebookresearch_depthcontrast/datasets/transforms/transforms.py": {
+    "create_chromatic_translation_augmentation": "create a ChromaticTranslation transform to add random color shifts to point cloud features",
+    "create_chromatic_auto_contrast_augmentation": "create a ChromaticAutoContrast transform to randomly enhance color contrast of point cloud features",
+    "create_elastic_distortion_augmentation": "create an ElasticDistortion transform to apply smooth spatial noise to sparse coordinates",
+    "compose_multiple_transforms": "create a Compose transform to chain multiple coordinate and feature augmentations together",
+    "create_cfl_collate_fn": "create a cfl_collate_fn_factory to batch coords, feats, and labels into MinkowskiEngine sparse tensors"
+  },
+  "facebookresearch_depthcontrast/datasets/transforms/voxelizer.py": {
+    "create_voxelizer_with_augmentation": "create a Voxelizer instance with scale, rotation, and translation augmentation bounds for point cloud data",
+    "voxelize_point_cloud": "voxelize 3D point cloud coordinates with features and labels using the Voxelizer class",
+    "clip_point_cloud_coords": "clip point cloud coordinates to a specified bounding box using the Voxelizer clip method",
+    "get_transformation_matrix": "get the voxelization and rotation transformation matrices from a Voxelizer instance for coordinate transforms",
+    "voxelize_temporal_sequences": "voxelize a sequence of temporal point clouds with shared augmentation using voxelize_temporal"
+  },
+  "facebookresearch_depthcontrast/models/base_ssl3d_model.py": {
+    "build_ssl3d_model": "build a self-supervised 3D model using BaseSSLMultiInputOutputModel with a config and logger",
+    "run_parameter_description": "run parameter_description on a PyTorch model to print trainable and frozen parameter details",
+    "test_concat_all_gather": "test concat_all_gather to gather tensors from all GPUs in a distributed training setup",
+    "review_momentum_update_key": "review the _momentum_update_key method to understand how the key encoder is updated with momentum",
+    "refactor_batch_shuffle_ddp": "refactor _batch_shuffle_ddp to customize batch shuffling behavior for distributed data parallel training"
+  },
+  "facebookresearch_depthcontrast/models/trunks/mlp.py": {
+    "build_mlp_classifier": "build a multi-layer perceptron classifier with configurable dimensions and batch normalization",
+    "create_mlp_with_batchnorm": "create an MLP network with batch normalization layers between linear transformations",
+    "create_mlp_with_dropout": "create an MLP network with dropout regularization for training robustness",
+    "create_mlp_without_relu": "create an MLP network without ReLU activation for the final output layer",
+    "run_mlp_forward_pass": "run a forward pass through the MLP classifier with a batch of input data"
+  },
+  "facebookresearch_depthcontrast/models/trunks/pointnet.py": {
+    "build_pointnet_backbone": "build a PointNet backbone network for point cloud feature learning with configurable scale and MLP head",
+    "run_forward_pass": "run a forward pass on a point cloud tensor through the PointNet network to extract features",
+    "create_set_abstraction_layers": "create four set abstraction layers with PointnetSAModuleVotes for hierarchical point cloud downsampling",
+    "create_feature_upsampling_layers": "create two feature upsampling layers using PointnetFPModule to interpolate features back to seed points",
+    "review_break_up_pc": "review the _break_up_pc method that splits a point cloud tensor into xyz coordinates and feature channels"
+  },
+  "facebookresearch_depthcontrast/models/trunks/pointnet2_backbone.py": {
+    "build_pointnet2msg_backbone": "build a PointNet2MSG backbone network with multi-scale grouping and feature pyramid modules",
+    "run_forward_pass": "run a forward pass on a point cloud tensor through the PointNet2MSG network",
+    "create_pointnet2_with_mlp_head": "create a PointNet2MSG model with an optional MLP classification head attached",
+    "review_break_up_pc": "review the break_up_pc method that splits point cloud tensors into xyz coordinates and features",
+    "summarize_sa_config": "summarize the SA_CONFIG hyperparameters controlling sampling points, radii, and MLP layer dimensions"
+  },
+  "facebookresearch_depthcontrast/models/trunks/smlp.py": {
+    "build_smlp_classifier": "build a sparse MLP classifier using MinkowskiEngine with configurable layer dimensions and batch norm",
+    "create_smlp_with_batchnorm": "create an SMLP model with batch normalization enabled for sparse tensor classification tasks",
+    "create_smlp_with_dropout": "create an SMLP model with dropout regularization for sparse tensor neural network training",
+    "run_smlp_forward": "run the SMLP forward pass on a MinkowskiEngine sparse tensor batch input",
+    "review_smlp_architecture": "review the SMLP class architecture and configurable layer options including bias and activation"
+  },
+  "facebookresearch_depthcontrast/models/trunks/spconv_backbone.py": {
+    "build_VoxelBackBone8x": "build a VoxelBackBone8x sparse convolution backbone for 3D voxel feature encoding with 8x stride",
+    "build_VoxelResBackBone8x": "build a VoxelResBackBone8x sparse convolution backbone with residual blocks for 3D voxel feature encoding",
+    "create_post_act_block": "create a sparse convolution block with configurable conv type, stride, padding, and normalization",
+    "create_SparseBasicBlock": "create a sparse residual basic block with two submanifold convolutions and batch normalization",
+    "review_VoxelBackBone8x_forward": "review the VoxelBackBone8x forward pass that encodes voxel features into multi-scale sparse tensors"
+  },
+  "facebookresearch_depthcontrast/models/trunks/spconv_unet.py": {
+    "build_sparse_unet_model": "build a SparseConv UNetV2 model for 3D point cloud feature learning with skip connections",
+    "create_sparse_basic_block": "create a SparseBasicBlock with SubMConv3d layers for sparse convolution residual operations",
+    "run_unet_forward_pass": "run a forward pass through the UNetV2 model with voxel features and coordinates",
+    "test_ur_block_forward": "test the UR_block_forward method that concatenates lateral and bottom features with inverse convolution",
+    "review_channel_reduction": "review the channel_reduction static method that reduces feature channels via view and sum"
+  },
+  "facebookresearch_depthcontrast/models/trunks/spconv/lib/math_functions.py": {
+    "create_sparse_float_tensor": "create a PyTorch sparse float matrix from values and row/column indices with optional size",
+    "build_sparse_diagonal_matrix": "build a sparse diagonal matrix from a 1D tensor using the diags function",
+    "convert_sparse_to_csr": "convert a PyTorch sparse tensor to a SciPy CSR matrix for sparse linear algebra",
+    "convert_csr_to_sparse": "convert a SciPy CSR matrix back to a PyTorch sparse float tensor",
+    "run_sparse_mm_autograd": "run sparse x dense matrix multiplication with full autograd support via SparseMM"
+  },
+  "facebookresearch_depthcontrast/models/trunks/spconv/models/conditional_random_fields.py": {
+    "build_MeanField_model": "build a MeanField CRF model with spatial and chromatic sigma for bilateral or trilateral meanfield inference",
+    "create_BilateralCRF_filter": "create a BilateralCRF wrapper that initializes a MeanField filter with non-temporal spatial and chromatic sigma parameters",
+    "create_TrilateralCRF_filter": "create a TrilateralCRF wrapper that initializes a MeanField filter with temporal spatial and chromatic sigma parameters",
+    "review_MeanField_initialize_coords": "review the MeanField initialize_coords method that builds trilateral grid coordinates and sparse matrix mappings for CRF inference",
+    "summarize_MeanField_forward": "summarize the MeanField forward pass that performs softmax normalization, pairwise potential convolution, and unary addition across iterations"
+  },
+  "facebookresearch_depthcontrast/models/trunks/spconv/models/res16unet.py": {
+    "build_Res16UNet18": "build a Res16UNet18 sparse convolution U-Net model with 2 layers per block for 3D point cloud processing",
+    "build_Res16UNet50": "build a Res16UNet50 sparse convolution U-Net model using Bottleneck blocks for deep 3D feature extraction",
+    "build_STRes16UNet18": "build a spatiotemporal Res16UNet18 model with 4D sparse convolutions for video point cloud data",
+    "review_Res16UNetBase_forward": "review the Res16UNetBase forward pass that extracts multi-scale encoder and decoder features with skip connections",
+    "build_Res16UNet34": "build a Res16UNet34 sparse convolution U-Net with varying layer depths for 3D scene understanding tasks"
+  },
+  "facebookresearch_depthcontrast/models/trunks/spconv/models/resnet.py": {
+    "build_resnet14_sparse": "build a ResNet14 sparse convolutional network using MinkowskiEngine for 3D point cloud feature extraction",
+    "build_resnet50_sparse": "build a ResNet50 sparse convolutional network with Bottleneck blocks for 3D spatial data processing",
+    "build_stresnet50_spatiotemporal": "build a STResNet50 spatiotemporal network using spatial hypercube and temporal hypercross convolutions for 4D data",
+    "build_strestesseractnet50": "build a STResTesseractNet50 with full 4D hypercube convolutions for spatiotemporal point cloud processing",
+    "review_resnetbase_make_layer": "review the ResNetBase _make_layer method to understand how downsample and block layers are constructed"
+  },
+  "facebookresearch_depthcontrast/models/trunks/spconv/models/resunet.py": {
+    "build_ResUNet18_model": "build a ResUNet18 sparse convolution U-Net model for 3D point cloud segmentation",
+    "build_ResUNet50_model": "build a ResUNet50 bottleneck-based sparse U-Net model for 3D point cloud tasks",
+    "build_MinkUNetHyper_model": "build a MinkUNetHyper model with multi-scale pooling transpose for dense point cloud features",
+    "build_STResUNet34_model": "build a STResUNet34 spatiotemporal sparse U-Net model for 4D point cloud data",
+    "build_STResTesseractUNet14_model": "build a STResTesseractUNet14 model using full hypercube convolutions for 4D spatiotemporal data"
+  },
+  "facebookresearch_depthcontrast/models/trunks/spconv/models/wrapper.py": {
+    "create_Wrapper_subclass": "create a subclass of Wrapper that implements initialize_filter to set up a model and filter for sparse convolution",
+    "implement_initialize_filter": "implement initialize_filter in a Wrapper subclass to configure the network model and coordinate filter",
+    "run_Wrapper_forward": "run the Wrapper forward pass with a SparseTensor input, coordinates, and optional colors for segmentation",
+    "review_Wrapper_training_filter": "review the Wrapper forward method to understand how the filter is randomly applied during training",
+    "build_sparse_segmentation_wrapper": "build a sparse segmentation network wrapper using Wrapper with a custom NetClass and MinkowskiEngine SparseTensor"
+  },
+  "facebookresearch_depthcontrast/models/trunks/spconv/models/modules/common.py": {
+    "build_minkowski_conv_layer": "build a MinkowskiEngine sparse convolution layer with configurable kernel region type and dimension",
+    "build_minkowski_transpose_conv": "build a MinkowskiEngine sparse transposed convolution layer for upsampling sparse tensor features",
+    "create_norm_layer": "create a MinkowskiEngine normalization layer supporting batch norm, instance norm, or combined instance-batch norm",
+    "build_sparse_pooling_layer": "build a MinkowskiEngine sparse average pooling, average unpooling, or sum pooling layer with configurable kernel",
+    "convert_conv_type": "convert a ConvType enum to its corresponding MinkowskiEngine RegionType with adjusted kernel size and axis types"
+  },
+  "facebookresearch_depthcontrast/models/trunks/spconv/models/modules/resnet_block.py": {
+    "build_basicblock_for_sparse_resnet": "build a BasicBlock with batch norm for a sparse convolutional ResNet using MinkowskiEngine",
+    "build_bottleneck_for_sparse_resnet": "build a Bottleneck block with 1x3x1 conv pattern for a sparse ResNet trunk",
+    "create_basicblock_with_instance_norm": "create a BasicBlockIN block using instance normalization instead of batch norm",
+    "create_bottleneck_with_instance_batch_norm": "create a BottleneckINBN block using instance-batch normalization for sparse features",
+    "review_basicblockbase_forward": "review the BasicBlockBase forward pass with conv-norm-relu and residual skip connection"
+  },
+  "facebookresearch_depthcontrast/models/trunks/spconv/models/modules/senet_block.py": {
+    "build_SELayer_module": "build a python module that creates an SELayer with MinkowskiEngine global pooling and channel-wise attention",
+    "build_SEBasicBlock_module": "build a python module that creates an SEBasicBlock with squeeze-and-excitation on sparse tensor features",
+    "build_SEBottleneck_module": "build a python module that creates an SEBottleneck with three conv layers and squeeze-and-excitation attention",
+    "review_SEBasicBlock_subclasses": "review the SEBasicBlockSN, SEBasicBlockIN, and SEBasicBlockLN subclasses that override NORM_TYPE for different normalization",
+    "review_SEBottleneck_subclasses": "review the SEBottleneckSN, SEBottleneckIN, and SEBottleneckLN subclasses that override NORM_TYPE for different normalization"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/setup.py": {
+    "build_pcdet_package": "build the pcdet Python package with CUDA extensions for 3D object detection from point cloud",
+    "build_cuda_extension_iou3d_nms": "build the iou3d_nms CUDA extension module for 3D IoU computation and non-maximum suppression",
+    "build_cuda_extension_roiaware_pool3d": "build the roiaware_pool3d CUDA extension module for ROI-aware 3D pooling operations",
+    "build_cuda_extension_pointnet2_stack": "build the pointnet2_stack CUDA extension module with ball query, grouping, sampling, and interpolation",
+    "get_git_commit_number": "get the current git commit hash for versioning the pcdet package build"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/config.py": {
+    "log_config_to_file": "log an EasyDict config object recursively to a logger with dotted key paths",
+    "cfg_from_list": "set config keys from a command-line argument list with dot-notation key paths",
+    "merge_new_config": "recursively merge a new config dict into an existing EasyDict config with base config support",
+    "cfg_from_yaml_file": "load and merge a YAML config file into an existing EasyDict config object",
+    "review_config_module": "review the config module functions for loading YAML configs and merging nested EasyDict settings"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/datasets/dataset.py": {
+    "create_DatasetTemplate_subclass": "create a subclass of DatasetTemplate that implements __len__ and __getitem__ for a custom 3D detection dataset",
+    "prepare_data_augmentation_and_voxelization": "prepare data by running augmentation, point feature encoding, and voxelization on a data dictionary",
+    "collate_batch_for_dataloader": "collate a list of sample dictionaries into batched numpy arrays for voxels, points, and gt_boxes",
+    "merge_iters_to_one_epoch": "merge all training iterations into a single epoch by calling merge_all_iters_to_one_epoch with a target epoch count",
+    "generate_prediction_dicts_from_model": "generate prediction dictionaries from model output tensors and optionally save them to disk"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/datasets/augmentor/augmentor_utils.py": {
+    "create_flip_x_augmentation": "create a function that randomly flips ground truth boxes and point cloud data along the x-axis",
+    "create_flip_y_augmentation": "create a function that randomly flips ground truth boxes and point cloud data along the y-axis",
+    "build_global_rotation_augmentation": "build a data augmentation module that applies random global rotation to 3D point clouds and bounding boxes",
+    "build_global_scaling_augmentation": "build a data augmentation module that applies random scaling to 3D point clouds and bounding boxes",
+    "test_augmentor_utils": "test the augmentor utils module to verify random flip, rotation, and scaling augmentations work correctly on point cloud data"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/datasets/augmentor/data_augmentor.py": {
+    "create_data_augmentor": "create a DataAugmentor instance with root path, augmentor configs, and class names for 3D point cloud augmentation",
+    "run_forward_augmentation": "run the forward method to apply all queued augmentations to a data dict with points and gt_boxes",
+    "apply_random_world_flip": "apply random_world_flip to randomly flip gt_boxes and points along specified x or y axes",
+    "apply_random_world_rotation": "apply random_world_rotation to randomly rotate gt_boxes and points within a configured angle range",
+    "apply_random_world_scaling": "apply random_world_scaling to randomly scale gt_boxes and points within a configured scale range"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/datasets/augmentor/database_sampler.py": {
+    "init_database_sampler": "create a DataBaseSampler instance with root_path, sampler_cfg, class_names, and optional logger for 3D object augmentation",
+    "filter_by_difficulty": "filter database ground truth infos by removing entries matching specified difficulty levels",
+    "filter_by_min_points": "filter database ground truth infos to keep only entries with a minimum number of points per class",
+    "sample_with_fixed_number": "sample a fixed number of ground truth objects from the database for a given class and sample group",
+    "call_database_sampler": "run the DataBaseSampler on a data_dict to augment the scene with sampled 3D boxes and points"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/datasets/kitti/kitti_dataset.py": {
+    "create_kitti_infos": "create KITTI dataset info pickle files for train, val, and test splits using create_kitti_infos",
+    "build_gt_database": "build a ground truth point cloud database for data augmentation using create_groundtruth_database",
+    "generate_prediction_dicts": "generate KITTI-format prediction dictionaries from model outputs using generate_prediction_dicts",
+    "evaluate_kitti_detections": "evaluate 3D object detection results against KITTI ground truth using the evaluation method",
+    "filter_fov_points": "filter LiDAR points to camera field of view using the get_fov_flag static method"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/datasets/kitti/kitti_object_eval_python/eval.py": {
+    "run_kitti_official_eval": "run the KITTI official object detection evaluation on ground truth and detection annotations for car, pedestrian, cyclist classes",
+    "run_coco_style_eval": "run COCO-style mAP evaluation with configurable IoU overlap ranges on KITTI ground truth and detection annotations",
+    "calculate_iou_partly": "calculate IoU overlaps between ground truth and detection bounding boxes using image, BEV, or 3D metric",
+    "compute_image_box_overlap": "compute 2D image bounding box overlap IoU matrix between two sets of axis-aligned boxes using numba JIT",
+    "compute_d3_box_overlap": "compute 3D bounding box overlap IoU using rotated BEV IoU and depth intersection with numba JIT acceleration"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/datasets/kitti/kitti_object_eval_python/kitti_common.py": {
+    "get_kitti_image_info": "build a python module that loads KITTI image info with labels, calibration matrices, and velodyne paths for a dataset directory",
+    "get_label_annos": "create a function that reads all KITTI label annotation files from a folder and returns parsed annotation dictionaries",
+    "filter_kitti_anno": "build a python module that filters KITTI annotations by object class, difficulty level, and dontcare IoU threshold",
+    "iou": "create a function that computes pairwise intersection-over-union scores between two sets of 2D bounding boxes",
+    "kitti_result_line": "build a python module that formats a detection result dictionary into a KITTI evaluation result line string"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/datasets/kitti/kitti_object_eval_python/rotate_iou.py": {
+    "build_gpu_rotated_iou": "build a python module that computes rotated bounding box IoU on GPU using rotate_iou_gpu_eval",
+    "create_iou_evaluation": "create a function that evaluates IoU between two sets of rotated 3D boxes on GPU",
+    "test_rotate_iou_gpu_eval": "test the rotate_iou_gpu_eval function with sample numpy arrays of rotated boxes",
+    "refactor_devRotateIoUEval": "refactor the devRotateIoUEval CUDA device function to support additional IoU criteria",
+    "review_rbbox_to_corners": "review the rbbox_to_corners function that converts rotated box parameters to corner coordinates"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/datasets/nuscenes/nuscenes_dataset.py": {
+    "create_nuscenes_info": "create nuscenes dataset info pickle files for train and val splits with configurable max sweeps",
+    "create_groundtruth_database": "create a ground truth database of 3D bounding box point clouds from nuscenes lidar sweeps",
+    "balanced_infos_resampling": "perform class-balanced resampling of nuscenes dataset samples to equalize class distribution",
+    "get_lidar_with_sweeps": "retrieve lidar point clouds with optional historical sweeps and time lag appended as a feature",
+    "generate_prediction_dicts": "generate prediction dictionaries from model output tensors for nuscenes detection evaluation"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/datasets/nuscenes/nuscenes_utils.py": {
+    "fill_trainval_infos": "build a python module to create train and val info dicts with lidar sweeps and annotations from a NuScenes dataset",
+    "get_available_scenes": "create a function that filters and returns only NuScenes scenes with valid existing LiDAR data files",
+    "get_sample_data": "build a python module to retrieve the data path, 3D boxes, and camera intrinsics for a given NuScenes sample_data token",
+    "transform_det_annos_to_nusc_annos": "create a function that converts detection annotations into the NuScenes evaluation submission JSON format with attributes",
+    "format_nuscene_results": "summarize the NuScenes detection metrics including per-class AP, TP errors, mAP, and NDS into a formatted report string"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/datasets/processor/data_processor.py": {
+    "build_data_processor_pipeline": "build a DataProcessor pipeline with processor configs to preprocess 3D point cloud data for training",
+    "create_mask_points_outside_range": "create a function to mask points and ground truth boxes outside the point cloud range",
+    "shuffle_point_cloud_data": "shuffle the points in a data dictionary for training augmentation using random permutation",
+    "transform_points_to_voxels": "transform raw point cloud points into voxel grid format using spconv VoxelGenerator",
+    "sample_points_from_cloud": "sample a fixed number of points from a point cloud preserving far points and filling with near points"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/datasets/processor/point_feature_encoder.py": {
+    "create_PointFeatureEncoder": "create a PointFeatureEncoder instance with a config object and optional point cloud range",
+    "run_forward_encoding": "run the forward method to encode point cloud features from a data dictionary",
+    "encode_absolute_coordinates": "encode point cloud data using absolute coordinates encoding to extract selected features",
+    "get_num_point_features": "get the number of output point features by calling the num_point_features property",
+    "review_PointFeatureEncoder_class": "review the PointFeatureEncoder class and its absolute coordinates encoding method for point cloud feature extraction"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/backbones_2d/base_bev_backbone.py": {
+    "build_bev_backbone": "build a BaseBEVBackbone network with configurable layer nums, strides, and num filters for BEV feature extraction",
+    "run_bev_backbone_forward": "run the BaseBEVBackbone forward pass on a data dict containing spatial_features tensor input",
+    "create_bev_backbone_config": "create a model config object with LAYER_NUMS, LAYER_STRIDES, and NUM_FILTERS to initialize BaseBEVBackbone",
+    "review_bev_backbone_architecture": "review the BaseBEVBackbone class to understand its encoder-decoder blocks and upsampling deblocks structure",
+    "test_bev_backbone_forward": "test the BaseBEVBackbone forward method by passing a data dict with spatial_features and checking spatial_features_2d output"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/backbones_2d/map_to_bev/height_compression.py": {
+    "build_HeightCompression_module": "build a python module using HeightCompression to compress 3D sparse tensor height dimension into 2D BEV features",
+    "create_forward_pass": "create a forward pass that converts encoded sparse conv tensor to dense spatial features with flattened height channel",
+    "test_HeightCompression_forward": "test the HeightCompression forward method by passing a batch_dict with encoded_spconv_tensor and verifying spatial_features output",
+    "review_HeightCompression_class": "review the HeightCompression class to understand how it compresses the depth dimension into BEV feature channels",
+    "refactor_HeightCompression_stride": "refactor the HeightCompression forward method to add custom stride handling for spatial_features_stride in the batch_dict"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/backbones_2d/map_to_bev/pointpillar_scatter.py": {
+    "create_PointPillarScatter": "create a PointPillarScatter module with a model config and grid size for BEV feature scattering",
+    "run_PointPillarScatter_forward": "run the PointPillarScatter forward pass on a batch dict containing pillar features and voxel coordinates",
+    "build_PointPillarScatter_BEV": "build a BEV spatial feature tensor from pillar features and voxel coordinates using PointPillarScatter",
+    "review_PointPillarScatter_scatter_logic": "review the PointPillarScatter scatter logic that maps 3D pillar features to a 2D BEV grid",
+    "refactor_PointPillarScatter_batch_loop": "refactor the PointPillarScatter forward method batch loop to vectorize the per-batch spatial feature scattering"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/backbones_3d/pointnet2_backbone.py": {
+    "build_PointNet2MSG_backbone": "build a PointNet2MSG backbone with SA and FP modules for 3D point cloud feature extraction",
+    "run_PointNet2MSG_forward": "run the PointNet2MSG forward pass on a batch_dict containing 3D point cloud data",
+    "review_PointNet2MSG_break_up_pc": "review the PointNet2MSG break_up_pc method that splits point clouds into batch indices, xyz, and features",
+    "refactor_PointNet2MSG_SA_modules": "refactor the PointNet2MSG SA modules to customize set abstraction layer configuration and MLP architecture",
+    "summarize_PointNet2Backbone": "summarize the deprecated PointNet2Backbone class and its potential bugs noted in the 20200723 warning"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/backbones_3d/spconv_backbone.py": {
+    "build_VoxelBackBone8x": "build a VoxelBackBone8x sparse 3D convolution backbone for LiDAR voxel feature encoding with 8x stride",
+    "build_VoxelResBackBone8x": "build a VoxelResBackBone8x sparse 3D backbone with residual blocks for LiDAR voxel feature encoding",
+    "create_post_act_block": "create a sparse convolution block with configurable subm, spconv, or inverse conv types and normalization",
+    "create_SparseBasicBlock": "create a SparseBasicBlock residual module with two submanifold convolutions and batch normalization for sparse tensors",
+    "review_VoxelBackBone8x_forward": "review the VoxelBackBone8x forward pass that encodes voxel features into multi-scale 3D sparse tensors"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/backbones_3d/spconv_unet.py": {
+    "build_UNetV2_sparse_conv_unet": "build a sparse convolution UNet backbone for 3D point cloud feature learning with encoder-decoder architecture",
+    "create_SparseBasicBlock_residual": "create a sparse residual block using SubMConv3d layers with batch norm and ReLU activation",
+    "run_UNetV2_forward_pass": "run the UNetV2 forward pass on voxel features to extract point-wise features and coordinates",
+    "refactor_UNetV2_channel_reduction": "refactor the channel_reduction static method to reduce feature channels via view and sum pooling",
+    "review_UNetV2_UR_block_forward": "review the UR_block_forward method that merges lateral and bottom features with inverse convolution"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/backbones_3d/pfe/voxel_set_abstraction.py": {
+    "build_VoxelSetAbstraction": "build a VoxelSetAbstraction module with model_cfg, voxel_size, and point_cloud_range to extract 3D point features",
+    "run_bilinear_interpolate_torch": "run bilinear interpolation on a torch image tensor given x and y coordinate tensors",
+    "test_interpolate_from_bev_features": "test the interpolate_from_bev_features method to sample BEV features at keypoint locations using bilinear interpolation",
+    "review_get_sampled_points": "review the get_sampled_points method that samples keypoints from raw points or voxel centers using FPS",
+    "refactor_VoxelSetAbstraction_forward": "refactor the VoxelSetAbstraction forward pass to fuse BEV, raw point, and multi-scale 3D features into unified point features"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/backbones_3d/vfe/mean_vfe.py": {
+    "build_MeanVFE": "build a MeanVFE module to compute mean voxel features from 3D point cloud voxels",
+    "run_MeanVFE_forward": "run the MeanVFE forward pass to average point features across each voxel in the batch",
+    "test_MeanVFE_get_output_feature_dim": "test the MeanVFE get_output_feature_dim method to verify it returns the correct number of point features",
+    "review_MeanVFE_normalization": "review the MeanVFE forward method to understand how voxel features are normalized by point count",
+    "refactor_MeanVFE_forward": "refactor the MeanVFE forward pass to support additional voxel feature aggregation strategies beyond mean"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/backbones_3d/vfe/pillar_vfe.py": {
+    "build_pillar_vfe": "build a PillarVFE module to extract pillar features from 3D LiDAR voxel data for point cloud detection",
+    "create_pfn_layer": "create a PFNLayer neural network layer with configurable normalization and batch partitioning for large inputs",
+    "test_pillar_vfe_forward": "test the PillarVFE forward pass by passing a batch_dict with voxels, voxel_num_points, and voxel_coords",
+    "refactor_pfn_layer_norm": "refactor the PFNLayer to toggle BatchNorm1d normalization on or off via the use_norm parameter",
+    "summarize_pillar_vfe_features": "summarize the PillarVFE feature extraction pipeline including f_cluster, f_center, and distance encoding"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/dense_heads/anchor_head_multi.py": {
+    "build_SingleHead_forward": "build a SingleHead RPN head that predicts classification and box regression from 2D spatial features",
+    "build_AnchorHeadMulti_forward": "build an AnchorHeadMulti multi-head RPN that runs forward pass with shared conv and multiple RPN heads",
+    "review_SingleHead_init": "review the SingleHead constructor to understand separate regression config and direction classifier setup",
+    "refactor_AnchorHeadMulti_make_multihead": "refactor the AnchorHeadMulti make_multihead method to customize RPN head creation for each class group",
+    "summarize_get_cls_layer_loss": "summarize the get_cls_layer_loss method that computes weighted classification loss across multi-head RPN predictions"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/dense_heads/anchor_head_single.py": {
+    "build_anchor_head_single": "build a python module to instantiate AnchorHeadSingle for 3D object detection with anchor-based classification and box regression heads",
+    "create_forward_pass": "create a forward pass through AnchorHeadSingle that predicts class scores and bounding boxes from 2D spatial features",
+    "test_init_weights": "test the AnchorHeadSingle init_weights method to verify classification bias and box regression weight initialization",
+    "review_forward_method": "review the AnchorHeadSingle forward method to understand how cls_preds, box_preds, and dir_cls_preds are generated and returned",
+    "refactor_direction_classifier": "refactor the AnchorHeadSingle conv_dir_cls optional direction classifier to support configurable NUM_DIR_BINS values"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/dense_heads/anchor_head_template.py": {
+    "generate_anchors": "generate 3D anchors for object detection from a grid size and point cloud range config",
+    "assign_targets": "assign ground truth box targets to anchors using ATSS or axis aligned target assigner",
+    "get_cls_layer_loss": "compute the classification layer loss using sigmoid focal loss for anchor head predictions",
+    "get_box_reg_layer_loss": "compute the bounding box regression and direction classification loss for anchor head predictions",
+    "generate_predicted_boxes": "decode predicted box offsets and direction bins into final 3D bounding box predictions"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/dense_heads/point_head_box.py": {
+    "build_point_head_box": "build a PointHeadBox model for 3D object detection from point cloud data using PointRCNN architecture",
+    "create_forward_pass": "create a forward pass through PointHeadBox to predict point classifications and bounding boxes from batch_dict",
+    "assign_targets_method": "assign ground truth targets to point coordinates by matching against enlarged 3D bounding boxes",
+    "compute_loss": "compute the combined classification and bounding box regression loss for the point head during training",
+    "review_PointHeadBox_class": "review the PointHeadBox class and its integration with PointHeadTemplate for point-based 3D detection"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/dense_heads/point_head_simple.py": {
+    "build_point_head_simple": "build a PointHeadSimple instance with num_class, input_channels, and model_cfg for PV-RCNN point segmentation",
+    "run_forward_point_head": "run the PointHeadSimple forward pass on a batch_dict to get point classification scores",
+    "assign_targets_point_head": "assign ground truth targets to point coordinates using assign_targets with gt_boxes and point_coords",
+    "get_loss_point_head": "get the classification layer loss from PointHeadSimple for training with a tb_dict for logging",
+    "review_point_head_simple_class": "review the PointHeadSimple class and its FC layers for point-based 3D object detection segmentation"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/dense_heads/point_head_template.py": {
+    "build_fc_layers": "build fully connected layers with batch normalization and ReLU from a config list",
+    "assign_stack_targets": "assign classification and box labels to 3D points using ground truth bounding boxes",
+    "get_cls_layer_loss": "compute the classification loss for point predictions using sigmoid focal loss",
+    "get_box_layer_loss": "compute the regression loss for point box predictions using smooth L1 loss",
+    "generate_predicted_boxes": "decode predicted point box encodings into final 3D bounding box predictions"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/dense_heads/point_intra_part_head.py": {
+    "build_PointIntraPartOffsetHead": "build a PointIntraPartOffsetHead instance with num_class, input_channels, and model_cfg for 3D point cloud part detection",
+    "run_forward_PointIntraPartOffsetHead": "run the forward pass of PointIntraPartOffsetHead on a batch_dict containing point_features and point_coords",
+    "test_assign_targets": "test the assign_targets method to assign classification and part labels to point cloud coordinates against ground truth boxes",
+    "review_get_loss": "review the get_loss method that computes combined classification, part, and optional box regression losses",
+    "refactor_box_layers": "refactor the PointIntraPartOffsetHead box_layers initialization to support a custom box coder configuration"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/dense_heads/target_assigner/anchor_generator.py": {
+    "generate_anchors_for_grid": "generate 3D anchors for a given grid size using the AnchorGenerator class",
+    "create_anchor_generator_config": "create an AnchorGenerator with anchor sizes, rotations, and heights from a config list",
+    "review_anchor_range_setup": "review the AnchorGenerator anchor range parameters for x, y, and z bounding box limits",
+    "test_anchor_center_alignment": "test the AnchorGenerator align_center option to shift anchor positions by half stride",
+    "summarize_anchor_tensor_shape": "summarize the AnchorGenerator output tensor shape of z, y, x, num_size, num_rot, 7"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/dense_heads/target_assigner/atss_target_assigner.py": {
+    "build_ATSSTargetAssigner": "build an ATSSTargetAssigner instance with a topk value, box coder, and optional height matching flag",
+    "run_assign_targets": "run assign_targets on a list of anchors and ground truth boxes to get classification labels and regression targets",
+    "run_assign_targets_single": "run assign_targets_single on anchors and ground truth boxes to compute per-sample cls labels, reg targets, and reg weights",
+    "review_ATSSTargetAssigner_IOU_thresholding": "review the ATSSTargetAssigner class and its adaptive IoU thresholding logic using mean plus standard deviation per ground truth box",
+    "refactor_ATSSTargetAssigner_multihead": "refactor the ATSSTargetAssigner assign_targets method to support multihead anchor permutation and flattened anchor processing"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/dense_heads/target_assigner/axis_aligned_target_assigner.py": {
+    "build_target_assigner": "build an AxisAlignedTargetAssigner instance with model config, class names, and box coder for 3D anchor target assignment",
+    "assign_targets_batch": "assign classification labels and regression targets to anchors across a batch of ground truth 3D boxes",
+    "assign_targets_single": "assign targets to anchors for a single sample using IoU thresholds and optional foreground sampling",
+    "review_match_height": "review the AxisAlignedTargetAssigner match_height flag to toggle between 3D IoU and BEV nearest IoU matching",
+    "refactor_multihead": "refactor the AxisAlignedTargetAssigner to enable or disable multihead and separate multihead RPN configurations"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/detectors/PartA2_net.py": {
+    "build_PartA2Net_detector": "build a PartA2Net 3D object detector from model config, class count, and dataset",
+    "run_PartA2Net_forward": "run the PartA2Net forward pass on a batch dict to get predictions or training loss",
+    "review_PartA2Net_get_training_loss": "review the PartA2Net get_training_loss method that aggregates RPN, point, and RCNN losses",
+    "test_PartA2Net_module_list": "test the PartA2Net module_list pipeline that chains VFE, backbone, dense head, point head, and ROI head",
+    "summarize_PartA2Net_class": "summarize the PartA2Net class that extends Detector3DTemplate for 3D detection with part-aware two-stage RPN"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/detectors/detector3d_template.py": {
+    "build_detector3d_networks": "build a 3D detector network by calling build_networks to construct VFE, backbone, and head modules",
+    "run_post_processing": "run post_processing on batch_dict to apply NMS and generate final 3D bounding box predictions",
+    "load_detector_checkpoint": "load model parameters from a checkpoint file using load_params_from_file with optional CPU fallback",
+    "load_detector_with_optimizer": "load model and optimizer state from checkpoint files using load_params_with_optimizer to resume training",
+    "generate_recall_record": "generate a recall record by computing 3D IoU between predicted boxes and ground truth boxes"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/detectors/point_rcnn.py": {
+    "build_PointRCNN_detector": "build a PointRCNN 3D detector using model_cfg, num_class, and dataset to initialize networks",
+    "run_PointRCNN_forward": "run the PointRCNN forward pass on a batch_dict to get predictions or training loss",
+    "test_PointRCNN_training_loss": "test the PointRCNN get_training_loss method to verify combined point and ROI head losses",
+    "review_PointRCNN_forward": "review the PointRCNN forward method to understand training versus inference return paths",
+    "refactor_PointRCNN_loss": "refactor the PointRCNN get_training_loss to support additional loss components beyond point and ROI heads"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/detectors/pointpillar.py": {
+    "build_PointPillar_detector": "build a PointPillar 3D object detector from model config, class count, and dataset",
+    "run_PointPillar_forward": "run the PointPillar forward pass on a batch dict for training or inference",
+    "get_training_loss_PointPillar": "get the RPN training loss and tensorboard metrics from the dense head",
+    "review_PointPillar_forward_training": "review the PointPillar forward method to understand training loss computation and return values",
+    "refactor_PointPillar_get_training_loss": "refactor the get_training_loss method to support additional loss components beyond RPN"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/detectors/pv_rcnn.py": {
+    "build_pv_rcnn_model": "build a PVRCNN 3D detector model with model_cfg, num_class, and dataset arguments",
+    "run_pv_rcnn_forward": "run the PVRCNN forward pass on a batch_dict for training or inference",
+    "get_training_loss_pv_rcnn": "get the combined training loss from RPN, point, and ROI heads in PVRCNN",
+    "review_pv_rcnn_class": "review the PVRCNN class and its forward pass logic for 3D detection",
+    "refactor_pv_rcnn_loss": "refactor the PVRCNN get_training_loss method to support custom loss weighting"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/detectors/second_net.py": {
+    "build_SECONDNet_detector": "build a SECONDNet 3D object detector using model_cfg, num_class, and dataset parameters",
+    "run_SECONDNet_forward": "run the SECONDNet forward pass on a batch_dict to get predictions or training loss",
+    "create_SECONDNet_instance": "create a SECONDNet instance that inherits from Detector3DTemplate and builds internal networks",
+    "get_SECONDNet_training_loss": "get the training loss from SECONDNet by calling get_training_loss to retrieve RPN loss",
+    "review_SECONDNet_forward": "review the SECONDNet forward method to understand training vs inference branching logic"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/model_utils/model_nms_utils.py": {
+    "run_class_agnostic_nms": "run class-agnostic NMS on 3D box predictions using a configurable NMS type and threshold",
+    "run_multi_classes_nms": "run multi-class NMS on per-class scores and 3D box predictions to filter overlapping detections",
+    "review_class_agnostic_nms": "review the class_agnostic_nms function to understand how it filters boxes by score threshold and NMS config",
+    "review_multi_classes_nms": "review the multi_classes_nms function to understand how it iterates per class and concatenates results",
+    "refactor_class_agnostic_nms": "refactor class_agnostic_nms to support a different NMS type or additional post-processing steps"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/roi_heads/partA2_head.py": {
+    "build_PartA2FCHead": "build a PartA2FCHead ROI head network for 3D object detection using sparse convolutions and RoI-aware pooling",
+    "create_post_act_block": "create a sparse convolution block with batch norm and ReLU for submanifold, sparse, or inverse conv types",
+    "run_roiaware_pool": "run RoI-aware 3D pooling on point cloud features using average pooling for parts and max pooling for RPN features",
+    "test_init_weights": "test the PartA2FCHead weight initialization with xavier, kaiming, or normal strategies for conv layers",
+    "review_forward": "review the PartA2FCHead forward pass that performs RoI pooling, sparse conv, and classification/regression prediction"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/roi_heads/pointrcnn_head.py": {
+    "build_PointRCNNHead": "build a PointRCNNHead ROI head for 3D object detection using input channels and model config",
+    "init_weights_PointRCNNHead": "initialize PointRCNNHead convolutional and regression layer weights using xavier, kaiming, or normal initialization",
+    "roipool3d_gpu_PointRCNNHead": "pool 3D point cloud features into ROI regions using GPU-accelerated RoI point pooling with canonical transformation",
+    "forward_PointRCNNHead": "run the PointRCNNHead forward pass to produce classification and regression predictions from batched ROI features",
+    "review_PointRCNNHead_SA_modules": "review the PointRCNNHead set abstraction modules configuration for radius, sampling, and MLP channel design"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/roi_heads/pvrcnn_head.py": {
+    "build_PVRCNNHead": "build a PVRCNNHead ROI head model with input channels and model config for 3D object detection",
+    "run_PVRCNNHead_forward": "run the PVRCNNHead forward pass to generate RoI classification and regression predictions from batch dict",
+    "create_roi_grid_pool": "create RoI grid pooled features by pooling point cloud features onto a 3D grid for each RoI",
+    "review_PVRCNNHead_init_weights": "review the PVRCNNHead init_weights method to initialize convolutional layers with xavier, kaiming, or normal initialization",
+    "test_get_dense_grid_points": "test the get_dense_grid_points static method to generate dense 3D grid points inside RoI bounding boxes"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/roi_heads/roi_head_template.py": {
+    "build_roi_head_template": "build a RoIHeadTemplate instance with num_class and model_cfg for 3D object detection ROI refinement",
+    "create_fc_layers": "create fully connected layers with Conv1d, BatchNorm1d, and ReLU for ROI head feature processing",
+    "run_proposal_layer": "run the proposal layer to perform NMS on batch box predictions and extract ROI regions",
+    "review_assign_targets": "review the assign_targets method that performs canonical transformation and coordinate rotation for ROI targets",
+    "test_get_loss": "test the get_loss method to compute combined classification and regression loss for RCNN training"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/roi_heads/target_assigner/proposal_target_layer.py": {
+    "build_roi_target_layer": "build a ProposalTargetLayer module to sample ROIs and assign ground truth targets for RCNN training",
+    "run_forward_propagation": "run the ProposalTargetLayer forward pass to compute regression masks and classification labels from batch ROIs",
+    "sample_rois_for_rcnn": "sample ROIs for RCNN by computing 3D IoU overlaps between proposals and ground truth boxes",
+    "subsample_rois": "subsample ROIs into foreground and background categories using configurable IoU thresholds and ratios",
+    "get_max_iou_with_same_class": "get the maximum 3D IoU overlap between ROIs and ground truth boxes grouped by matching class labels"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/ops/iou3d_nms/iou3d_nms_utils.py": {
+    "build_bev_iou_cpu": "build a python module to compute bird's eye view IoU between two sets of 3D boxes on CPU",
+    "build_bev_iou_gpu": "build a python module to compute bird's eye view IoU between two sets of 3D boxes on GPU",
+    "build_iou3d_gpu": "build a python module to compute full 3D IoU between two sets of 3D oriented boxes on GPU",
+    "run_nms_gpu": "run rotated 3D NMS on a set of 3D boxes with scores and an IoU threshold on GPU",
+    "run_nms_normal_gpu": "run standard 3D NMS on a set of 3D boxes with scores and an IoU threshold on GPU"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/ops/pointnet2/pointnet2_batch/pointnet2_modules.py": {
+    "build_PointnetSAModule": "build a PointnetSAModule with a specified MLP to perform single-scale set abstraction on point cloud features",
+    "build_PointnetSAModuleMSG": "build a PointnetSAModuleMSG with multiple radii and nsamples for multiscale grouping on point cloud data",
+    "run_PointnetFPModule": "run a PointnetFPModule to propagate features from known points to unknown points using nearest neighbor interpolation",
+    "review_PointnetSAModuleMSG_forward": "review the PointnetSAModuleMSG forward pass that performs ball query grouping, MLP processing, and max pooling",
+    "test_PointnetFPModule_forward": "test the PointnetFPModule forward method to interpolate known features onto unknown point positions"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/ops/pointnet2/pointnet2_batch/pointnet2_utils.py": {
+    "build_furthest_point_sampling": "build a module that uses furthest_point_sample to select npoint features with largest minimum distance from a point cloud",
+    "build_gather_operation": "build a module that uses gather_operation to gather features at specified index positions from a tensor",
+    "build_three_nn": "build a module that uses three_nn to find the three nearest neighbors of unknown points in known points",
+    "build_three_interpolate": "build a module that uses three_interpolate to perform weighted linear interpolation on three nearest neighbor features",
+    "build_query_and_group": "build a module that uses QueryAndGroup to perform ball query and group features within a radius around centroids"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/ops/pointnet2/pointnet2_stack/pointnet2_modules.py": {
+    "build_stack_samodule_msg": "build a StackSAModuleMSG module with multi-scale grouping radii and MLP specs for point cloud feature extraction",
+    "build_stack_pointnet_fp_module": "build a StackPointnetFPModule with an MLP spec for feature propagation between point cloud resolutions",
+    "run_samodule_msg_forward": "run the StackSAModuleMSG forward pass with xyz coordinates and features to extract multi-scale grouped features",
+    "run_pointnet_fp_forward": "run the StackPointnetFPModule forward pass to interpolate known features onto unknown points using inverse distance weighting",
+    "review_stack_samodule_msg_init_weights": "review the StackSAModuleMSG init_weights method that initializes Conv2d with Kaiming normal and BatchNorm2d with constant values"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/ops/pointnet2/pointnet2_stack/pointnet2_utils.py": {
+    "build_ball_query": "build a module that runs ball_query to find neighboring points within a given radius for point cloud data",
+    "create_grouping_operation": "create a function that uses grouping_operation to gather features by index for grouped point cloud processing",
+    "test_QueryAndGroup": "test the QueryAndGroup module to combine ball query and feature grouping for point cloud layers",
+    "refactor_furthest_point_sample": "refactor code using furthest_point_sample to downsample point clouds by selecting the most distant points",
+    "summarize_three_nn": "summarize the three_nn function that finds the three nearest neighbors between two point sets"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/ops/roiaware_pool3d/roiaware_pool3d_utils.py": {
+    "build_points_in_boxes_cpu": "build a python module to find which 3D points fall inside each axis-aligned bounding box on CPU",
+    "build_points_in_boxes_gpu": "build a python module to find which 3D points fall inside each bounding box in batched GPU tensors",
+    "create_RoIAwarePool3d_module": "create a PyTorch nn.Module that performs ROI-aware 3D pooling with max or avg on point cloud features",
+    "review_RoIAwarePool3dFunction_forward": "review the RoIAwarePool3dFunction forward pass that pools point features into voxel grids per ROI using CUDA",
+    "review_RoIAwarePool3dFunction_backward": "review the RoIAwarePool3dFunction backward pass that computes gradients for pooled point cloud features"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/ops/roipoint_pool3d/roipoint_pool3d_utils.py": {
+    "build_RoIPointPool3d_module": "build a PyTorch module to pool 3D point cloud features into ROI boxes with configurable sampled points",
+    "create_RoIPointPool3d_forward": "create a forward pass that pools point features into 3D bounding boxes and returns pooled features and empty flags",
+    "test_RoIPointPool3dFunction": "test the RoIPointPool3dFunction forward method with batched points, features, and 3D boxes to verify CUDA pooling",
+    "review_RoIPointPool3d_init": "review the RoIPointPool3d class initialization to configure num_sampled_points and pool_extra_width parameters",
+    "summarize_RoIPointPool3dFunction_backward": "summarize the RoIPointPool3dFunction backward method which raises NotImplementedError for gradient computation"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/utils/box_coder_utils.py": {
+    "encode_3d_boxes_with_residual_coder": "encode 3D bounding boxes relative to anchors using ResidualCoder.encode_torch with optional sincos angle encoding",
+    "decode_3d_boxes_with_residual_coder": "decode residual box encodings back to 3D bounding boxes using ResidualCoder.decode_torch from anchors",
+    "decode_boxes_with_previous_residual_decoder": "decode 3D bounding box encodings using PreviousResidualDecoder.decode_torch static method with anchor offsets",
+    "decode_roi_boxes_with_previous_residual_decoder": "decode ROI 3D bounding box encodings using PreviousResidualRoIDecoder.decode_torch with inverted heading angle",
+    "encode_point_residual_boxes": "encode 3D boxes relative to point anchors using PointResidualCoder.encode_torch with mean size per class"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/utils/box_utils.py": {
+    "compute_3d_box_corners": "compute the 8 3D corner coordinates from a set of 7-parameter axis-aligned 3D bounding boxes",
+    "convert_kitti_camera_to_lidar": "convert KITTI camera coordinate 3D bounding boxes to LiDAR coordinates using a calibration object",
+    "calculate_2d_box_iou": "calculate the intersection over union between two sets of 2D axis-aligned bounding boxes",
+    "filter_boxes_by_range": "filter 3D bounding boxes by masking those that fall outside a specified spatial range",
+    "remove_points_inside_boxes": "remove point cloud points that fall inside any of the given 3D bounding boxes"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/utils/calibration_kitti.py": {
+    "create_calib_from_file": "create a Calibration object from a KITTI calibration file path",
+    "convert_lidar_to_rect": "convert lidar coordinates to rectified camera coordinates using the Calibration class",
+    "convert_rect_to_lidar": "convert rectified camera coordinates back to lidar coordinates using the Calibration class",
+    "project_lidar_to_img": "project 3D lidar points to 2D image coordinates using lidar_to_img",
+    "project_corners_to_boxes": "project 3D bounding box corners to 2D image bounding boxes using corners3d_to_img_boxes"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/utils/common_utils.py": {
+    "rotate_points_along_z": "rotate a batch of 3D point cloud coordinates along the z-axis by given angles",
+    "create_logger": "create a Python logger with console and optional file output handlers for distributed training",
+    "set_random_seed": "set a random seed across Python, NumPy, and PyTorch for reproducible results",
+    "get_voxel_centers": "compute 3D voxel center coordinates from voxel grid indices and point cloud range parameters",
+    "merge_results_dist": "merge and gather pickled result parts from distributed processes into a single ordered list"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/utils/loss_utils.py": {
+    "create_SigmoidFocalClassificationLoss": "create a SigmoidFocalClassificationLoss module with configurable gamma and alpha for focal loss",
+    "create_WeightedSmoothL1Loss": "create a WeightedSmoothL1Loss module with configurable beta and code weights for regression",
+    "create_WeightedL1Loss": "create a WeightedL1Loss module with optional code weights for L1 regression loss",
+    "create_WeightedCrossEntropyLoss": "create a WeightedCrossEntropyLoss module for anchor-wise weighted cross entropy classification",
+    "compute_get_corner_loss_lidar": "compute corner loss between predicted and ground truth 3D bounding boxes using smooth L1"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/utils/object3d_kitti.py": {
+    "parse_kitti_label_file": "parse a KITTI label file and return a list of Object3d objects from each line",
+    "convert_cls_type_to_id": "convert a KITTI class type string like Car or Pedestrian to its numeric ID",
+    "generate_3d_box_corners": "generate the 8 3D corner coordinates of an object's bounding box in camera coordinates",
+    "classify_kitti_object_difficulty": "classify a KITTI object detection as Easy, Moderate, or Hard based on truncation and occlusion",
+    "export_object_to_kitti_format": "export an Object3d instance back to KITTI label format string for writing to a label file"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/tools/demo.py": {
+    "run_demo_inference": "run the OpenPCDet demo to perform 3D object detection inference on point cloud data files",
+    "run_demo_visualization": "run the demo script to visualize 3D bounding box predictions on point clouds using mayavi",
+    "create_DemoDataset": "create a DemoDataset instance to load .bin or .npy point cloud files for inference",
+    "run_parse_config": "run parse_config to load YAML model config and CLI args for the OpenPCDet demo",
+    "review_DemoDataset_getitem": "review the DemoDataset __getitem__ method that loads point cloud data from .bin or .npy files"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/tools/test.py": {
+    "run_single_checkpoint_evaluation": "run a single checkpoint evaluation on a 3D object detection model using a specified config file and checkpoint path",
+    "run_all_checkpoint_evaluation": "run evaluation on all checkpoints in a directory with automatic polling and tensorboard logging for 3D detection models",
+    "parse_config": "parse command line arguments and load YAML config for OpenPCDet 3D object detection model evaluation",
+    "eval_single_ckpt": "evaluate a single model checkpoint on the test dataset and save results to the specified output directory",
+    "repeat_eval_ckpt": "repeatedly evaluate new checkpoints as they appear in a directory with tensorboard logging and epoch tracking"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/tools/train.py": {
+    "run_training": "run the OpenPCDet 3D object detection training pipeline with a YAML config file and optional distributed GPU support",
+    "run_training_with_checkpoint": "run the training script resuming from a saved checkpoint file to continue training a 3D detection model",
+    "run_training_with_pretrained": "run the training script using a pretrained model file as the starting point for 3D detection training",
+    "run_distributed_training": "run the training script with PyTorch or Slurm launcher for multi-GPU distributed 3D object detection training",
+    "run_training_with_custom_config": "run the training script with custom config overrides passed via the set argument to modify training parameters"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/tools/eval_utils/eval_utils.py": {
+    "run_eval_one_epoch": "run evaluation of a 3D detection model for one epoch using a dataloader and config",
+    "run_eval_one_epoch_distributed": "run distributed evaluation of a 3D detection model across multiple GPUs with result merging",
+    "run_eval_one_epoch_save": "run evaluation of a 3D detection model and save prediction results to a pickle file",
+    "review_statistics_info": "review the statistics_info function that accumulates ROI and RCNN recall metrics across recall thresholds",
+    "refactor_eval_one_epoch": "refactor eval_one_epoch to support a custom evaluation metric or additional post-processing steps"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/tools/train_utils/train_utils.py": {
+    "train_model_full": "train a PyTorch model for multiple epochs with checkpoint saving and learning rate scheduling",
+    "train_one_epoch": "train a PyTorch model for one epoch with gradient clipping and tensorboard logging",
+    "save_checkpoint": "save a PyTorch model checkpoint state dictionary to a .pth file on disk",
+    "checkpoint_state": "create a checkpoint state dict containing model state, optimizer state, epoch, and iteration",
+    "model_state_to_cpu": "move all tensors in a PyTorch model state dict from GPU to CPU memory"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/tools/train_utils/optimization/fastai_optim.py": {
+    "create_OptimWrapper": "create an OptimWrapper from an optimizer function with layer groups and learning rate",
+    "create_FastAIMixedOptim": "create a FastAIMixedOptim for mixed precision training with FP16 model and FP32 master parameters",
+    "split_bn_bias": "split layer groups into batchnorm and non-batchnorm groups for differential weight decay",
+    "get_master": "get FP16 model parameters and FP32 master parameters from layer groups for mixed precision",
+    "trainable_params": "return a filter of trainable parameters from a PyTorch module that require gradients"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/tools/train_utils/optimization/learning_schedules_fastai.py": {
+    "create_LRSchedulerStep": "create a learning rate scheduler with custom lr and momentum phases over total training steps",
+    "create_OneCycle": "create a one-cycle learning rate scheduler with cosine annealing for lr and momentum over total steps",
+    "create_CosineWarmupLR": "create a cosine warmup learning rate scheduler for a PyTorch optimizer with configurable T_max and eta_min",
+    "use_annealing_cos": "use the cosine annealing function to interpolate between a start and end value based on a percentage",
+    "test_LRSchedulerStep_step": "test the LRSchedulerStep step method to verify lr and momentum values update correctly at each step"
+  },
+  "facebookresearch_depthcontrast/third_party/OpenPCDet/tools/visual_utils/visualize_utils.py": {
+    "visualize_point_cloud": "create a mayavi 3D figure to visualize a point cloud with optional intensity coloring and origin axes",
+    "draw_3d_bounding_boxes": "draw 3D bounding box corners on a mayavi figure with optional score labels and color coding",
+    "convert_boxes_to_corners": "convert 3D bounding boxes in center format to 8 corner coordinates with rotation applied",
+    "rotate_points_along_z": "rotate a batch of 3D points around the z-axis by a given angle using torch",
+    "render_full_detection_scene": "render a complete LiDAR scene with point cloud, ground truth boxes, and predicted detection boxes"
+  },
+  "facebookresearch_depthcontrast/third_party/pointnet2/pointnet2_modules.py": {
+    "build_PointnetSAModuleMSG": "build a PointnetSAModuleMSG layer with multiscale grouping for point cloud feature extraction",
+    "build_PointnetSAModule": "build a single-scale PointnetSAModule layer for point cloud set abstraction",
+    "build_PointnetSAModuleVotes": "build a PointnetSAModuleVotes layer with RBF pooling and point index support for votenet",
+    "build_PointnetFPModule": "build a PointnetFPModule layer to propagate features from one point set to another via interpolation",
+    "build_PointnetLFPModuleMSG": "build a PointnetLFPModuleMSG learnable feature propagation layer with multiscale grouping"
+  },
+  "facebookresearch_depthcontrast/third_party/pointnet2/pointnet2_test.py": {
+    "test_interpolation_grad": "test the three_interpolate gradient computation using PyTorch gradcheck with random feature tensors",
+    "run_pointnet2_test": "run the pointnet2 interpolation gradient test to verify customized ops correctness",
+    "review_test_interpolation_grad": "review the test_interpolation_grad function that validates three_interpolate gradients with atol and rtol tolerances",
+    "summarize_interpolate_func": "summarize the interpolate_func nested helper that calls pointnet2_utils three_interpolate with hardcoded indices and weights",
+    "refactor_test_interpolation_grad": "refactor the test_interpolation_grad function to parameterize batch size feature dim and point count"
+  },
+  "facebookresearch_depthcontrast/third_party/pointnet2/pointnet2_utils.py": {
+    "build_furthest_point_sample": "build a python module to run furthest point sampling on a point cloud tensor and return sampled indices",
+    "build_gather_operation": "build a python module to gather features from a tensor by index and return the selected features",
+    "build_ball_query": "build a python module to perform ball query on point cloud coordinates and return neighborhood indices",
+    "build_query_and_group": "build a python module to use QueryAndGroup for ball query grouping with radius and nsample parameters",
+    "build_group_all": "build a python module to use GroupAll to group all point cloud features into a single group"
+  },
+  "facebookresearch_depthcontrast/third_party/pointnet2/pytorch_utils.py": {
+    "build_SharedMLP": "build a SharedMLP module with a list of channel sizes for 2D convolutional layers",
+    "create_Conv2d": "create a Conv2d layer with optional batch normalization and ReLU activation for point cloud features",
+    "create_BNMomentumScheduler": "create a BNMomentumScheduler to dynamically adjust batch norm momentum across training epochs",
+    "build_FC": "build a fully connected layer with optional batch normalization and preactivation support",
+    "review_BatchNorm1d": "review the BatchNorm1d wrapper class that initializes batch norm weights to 1 and bias to 0"
+  },
+  "facebookresearch_depthcontrast/utils/logger.py": {
+    "create_logger_instance": "create a Logger instance with quiet mode to write log lines to a file instead of stdout",
+    "add_line_to_logger": "add a line of content to the Logger which writes to file or prints depending on quiet mode",
+    "create_progress_meter": "create a ProgressMeter to track training batches with meters for a given phase and epoch",
+    "display_progress_meter": "display the current batch progress with meter values to stdout or a Logger instance",
+    "synchronize_meters_across_gpus": "synchronize meter averages across all GPUs using torch distributed all_gather in a multi-GPU setup"
+  },
+  "facebookresearch_depthcontrast/utils/main_utils.py": {
+    "build_model_from_config": "build a PyTorch model from a config dictionary using the build_model function",
+    "build_optimizer_and_scheduler": "build an SGD or Adam optimizer with a cosine or multistep learning rate scheduler from config",
+    "build_dataloader_from_config": "build a data loader from a dataset config using build_dataloader with num workers and distributed flag",
+    "initialize_distributed_backend": "initialize a PyTorch distributed process group for multi-GPU training with the given args and GPU count",
+    "recursive_copy_to_gpu": "recursively copy nested lists, tuples, and dicts of tensors to GPU with non-blocking transfers"
+  },
+  "facebookresearch_depthcontrast/utils/metrics_utils.py": {
+    "compute_topk_accuracy": "compute top-k classification accuracy for PyTorch model output predictions against target labels",
+    "create_average_meter": "create an AverageMeter instance to track running average and current values of a metric",
+    "update_average_meter": "update an AverageMeter with a new value and optional sample count for running average tracking",
+    "reset_average_meter": "reset an AverageMeter to clear all accumulated values and start fresh tracking",
+    "use_average_meter_with_window": "create an AverageMeter with a sliding window size to track recent metric averages"
+  }
+}

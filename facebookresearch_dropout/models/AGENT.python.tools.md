@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dropout
+- repo_uri: https://github.com/facebookresearch/dropout
+
+## File: facebookresearch_dropout/models/convnext.py
+
+Prompts
+
+```
+['build a ConvNeXt model with custom depths and dims for image classification', 'run forward_features on a ConvNeXt model to extract pooled feature vectors', 'create a ConvNeXt variant like tiny, small, base, or large using factory functions', 'update the drop path rate dynamically on a trained ConvNeXt model', 'review the ConvNeXt Block forward pass with depthwise conv and MLP', 'build an MLP-Mixer vision model with configurable patch size, blocks, and embedding dimensions', 'create a MixerBlock residual layer with token mixing and channel MLPs for vision tasks', 'build a Mixer-B/16 pretrained model with ImageNet-1k weights for image classification', 'review the MlpMixer forward_features method that patches input, applies blocks, and pools tokens', 'refactor the checkpoint_filter_fn to remap Facebook ResMlp state dict keys to timm format', 'build a swin_tiny SwinTransformer model with default patch_size 4 and window_size 7', 'build a swin_small SwinTransformer model with depths (2, 2, 18, 2) for classification', 'build a swin_femto SwinTransformer model with embed_dim 40 for lightweight inference', 'update the drop_path stochastic depth rate on an existing SwinTransformer model', 'update the dropout rate on all nn.Dropout modules in a SwinTransformer model', 'reset the classification head of a SwinTransformer to a new number of classes', 'enable gradient checkpointing on all BasicLayer blocks of a SwinTransformer model', 'get the set of parameter names that should be excluded from weight decay', 'run forward_features on a SwinTransformer to extract patch-level feature representations', 'partition a feature tensor into non-overlapping windows using window_partition for attention', 'build a VisionTransformer base model with 768 embed dim and 12 layers using vit_base factory', 'build a VisionTransformer large model with 1024 embed dim and 24 layers using vit_large factory']
+```
+
+Usage
+
+```
+{'build_convnext_model': 'build a ConvNeXt model with custom depths and dims for image classification', 'run_forward_features': 'run forward_features on a ConvNeXt model to extract pooled feature vectors', 'create_convnext_variant': 'create a ConvNeXt variant like tiny, small, base, or large using factory functions', 'update_drop_path': 'update the drop path rate dynamically on a trained ConvNeXt model', 'review_block_forward': 'review the ConvNeXt Block forward pass with depthwise conv and MLP'}
+```
+
+## File: facebookresearch_dropout/models/mlp_mixer.py
+
+Prompts
+
+```
+['build a ConvNeXt model with custom depths and dims for image classification', 'run forward_features on a ConvNeXt model to extract pooled feature vectors', 'create a ConvNeXt variant like tiny, small, base, or large using factory functions', 'update the drop path rate dynamically on a trained ConvNeXt model', 'review the ConvNeXt Block forward pass with depthwise conv and MLP', 'build an MLP-Mixer vision model with configurable patch size, blocks, and embedding dimensions', 'create a MixerBlock residual layer with token mixing and channel MLPs for vision tasks', 'build a Mixer-B/16 pretrained model with ImageNet-1k weights for image classification', 'review the MlpMixer forward_features method that patches input, applies blocks, and pools tokens', 'refactor the checkpoint_filter_fn to remap Facebook ResMlp state dict keys to timm format', 'build a swin_tiny SwinTransformer model with default patch_size 4 and window_size 7', 'build a swin_small SwinTransformer model with depths (2, 2, 18, 2) for classification', 'build a swin_femto SwinTransformer model with embed_dim 40 for lightweight inference', 'update the drop_path stochastic depth rate on an existing SwinTransformer model', 'update the dropout rate on all nn.Dropout modules in a SwinTransformer model', 'reset the classification head of a SwinTransformer to a new number of classes', 'enable gradient checkpointing on all BasicLayer blocks of a SwinTransformer model', 'get the set of parameter names that should be excluded from weight decay', 'run forward_features on a SwinTransformer to extract patch-level feature representations', 'partition a feature tensor into non-overlapping windows using window_partition for attention', 'build a VisionTransformer base model with 768 embed dim and 12 layers using vit_base factory', 'build a VisionTransformer large model with 1024 embed dim and 24 layers using vit_large factory']
+```
+
+Usage
+
+```
+{'build_MlpMixer_model': 'build an MLP-Mixer vision model with configurable patch size, blocks, and embedding dimensions', 'create_MixerBlock_residual': 'create a MixerBlock residual layer with token mixing and channel MLPs for vision tasks', 'build_mixer_b16_pretrained': 'build a Mixer-B/16 pretrained model with ImageNet-1k weights for image classification', 'review_MlpMixer_forward_features': 'review the MlpMixer forward_features method that patches input, applies blocks, and pools tokens', 'refactor_checkpoint_filter_fn': 'refactor the checkpoint_filter_fn to remap Facebook ResMlp state dict keys to timm format'}
+```
+
+## File: facebookresearch_dropout/models/swin_transformer.py
+
+Prompts
+
+```
+['build a ConvNeXt model with custom depths and dims for image classification', 'run forward_features on a ConvNeXt model to extract pooled feature vectors', 'create a ConvNeXt variant like tiny, small, base, or large using factory functions', 'update the drop path rate dynamically on a trained ConvNeXt model', 'review the ConvNeXt Block forward pass with depthwise conv and MLP', 'build an MLP-Mixer vision model with configurable patch size, blocks, and embedding dimensions', 'create a MixerBlock residual layer with token mixing and channel MLPs for vision tasks', 'build a Mixer-B/16 pretrained model with ImageNet-1k weights for image classification', 'review the MlpMixer forward_features method that patches input, applies blocks, and pools tokens', 'refactor the checkpoint_filter_fn to remap Facebook ResMlp state dict keys to timm format', 'build a swin_tiny SwinTransformer model with default patch_size 4 and window_size 7', 'build a swin_small SwinTransformer model with depths (2, 2, 18, 2) for classification', 'build a swin_femto SwinTransformer model with embed_dim 40 for lightweight inference', 'update the drop_path stochastic depth rate on an existing SwinTransformer model', 'update the dropout rate on all nn.Dropout modules in a SwinTransformer model', 'reset the classification head of a SwinTransformer to a new number of classes', 'enable gradient checkpointing on all BasicLayer blocks of a SwinTransformer model', 'get the set of parameter names that should be excluded from weight decay', 'run forward_features on a SwinTransformer to extract patch-level feature representations', 'partition a feature tensor into non-overlapping windows using window_partition for attention', 'build a VisionTransformer base model with 768 embed dim and 12 layers using vit_base factory', 'build a VisionTransformer large model with 1024 embed dim and 24 layers using vit_large factory']
+```
+
+Usage
+
+```
+{'build_swin_tiny_model': 'build a swin_tiny SwinTransformer model with default patch_size 4 and window_size 7', 'build_swin_small_model': 'build a swin_small SwinTransformer model with depths (2, 2, 18, 2) for classification', 'build_swin_femto_model': 'build a swin_femto SwinTransformer model with embed_dim 40 for lightweight inference', 'update_drop_path_rate': 'update the drop_path stochastic depth rate on an existing SwinTransformer model', 'update_dropout_rate': 'update the dropout rate on all nn.Dropout modules in a SwinTransformer model', 'reset_classifier_head': 'reset the classification head of a SwinTransformer to a new number of classes', 'enable_grad_checkpointing': 'enable gradient checkpointing on all BasicLayer blocks of a SwinTransformer model', 'get_no_weight_decay_params': 'get the set of parameter names that should be excluded from weight decay', 'forward_features_swin': 'run forward_features on a SwinTransformer to extract patch-level feature representations', 'partition_windows': 'partition a feature tensor into non-overlapping windows using window_partition for attention'}
+```
+
+## File: facebookresearch_dropout/models/vision_transformer.py
+
+Prompts
+
+```
+['build a ConvNeXt model with custom depths and dims for image classification', 'run forward_features on a ConvNeXt model to extract pooled feature vectors', 'create a ConvNeXt variant like tiny, small, base, or large using factory functions', 'update the drop path rate dynamically on a trained ConvNeXt model', 'review the ConvNeXt Block forward pass with depthwise conv and MLP', 'build an MLP-Mixer vision model with configurable patch size, blocks, and embedding dimensions', 'create a MixerBlock residual layer with token mixing and channel MLPs for vision tasks', 'build a Mixer-B/16 pretrained model with ImageNet-1k weights for image classification', 'review the MlpMixer forward_features method that patches input, applies blocks, and pools tokens', 'refactor the checkpoint_filter_fn to remap Facebook ResMlp state dict keys to timm format', 'build a swin_tiny SwinTransformer model with default patch_size 4 and window_size 7', 'build a swin_small SwinTransformer model with depths (2, 2, 18, 2) for classification', 'build a swin_femto SwinTransformer model with embed_dim 40 for lightweight inference', 'update the drop_path stochastic depth rate on an existing SwinTransformer model', 'update the dropout rate on all nn.Dropout modules in a SwinTransformer model', 'reset the classification head of a SwinTransformer to a new number of classes', 'enable gradient checkpointing on all BasicLayer blocks of a SwinTransformer model', 'get the set of parameter names that should be excluded from weight decay', 'run forward_features on a SwinTransformer to extract patch-level feature representations', 'partition a feature tensor into non-overlapping windows using window_partition for attention', 'build a VisionTransformer base model with 768 embed dim and 12 layers using vit_base factory', 'build a VisionTransformer large model with 1024 embed dim and 24 layers using vit_large factory']
+```
+
+Usage
+
+```
+{'build_vit_base_model': 'build a VisionTransformer base model with 768 embed dim and 12 layers using vit_base factory', 'build_vit_large_model': 'build a VisionTransformer large model with 1024 embed dim and 24 layers using vit_large factory', 'update_dropout_rate': 'update the dropout rate on all Dropout modules in a VisionTransformer model at runtime', 'update_drop_path_rate': 'update the drop path stochastic depth rate across all blocks in a VisionTransformer model', 'reset_classifier_head': 'reset the classifier head of a VisionTransformer to a new number of output classes'}
+```
+

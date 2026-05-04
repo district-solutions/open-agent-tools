@@ -1,0 +1,156 @@
+{
+  "facebookresearch_glore/data/image_iterator.py": {
+    "create_ImageListIter_dataset": "create an ImageListIter dataset from a text file listing image paths and labels",
+    "use_get_image_method": "use the get_image method to load a single image by index with optional transforms",
+    "iterate_ImageListIter_with_getitem": "iterate over an ImageListIter dataset using getitem to retrieve image and label pairs",
+    "parse_image_list_with_get_video_list": "parse a text file of image paths and labels into a structured list using _get_video_list",
+    "configure_ImageListIter_force_color": "configure an ImageListIter to load images in grayscale instead of color mode"
+  },
+  "facebookresearch_glore/data/image_transforms.py": {
+    "build_image_transform_pipeline": "build a Compose pipeline with CenterCrop, RandomHorizontalFlip, and ToTensor transforms for image augmentation",
+    "create_crop_and_scale_transform": "create a CropScale transform that randomly crops and resizes images to a target size",
+    "create_color_augmentation_transform": "create a RandomHLS transform to randomly jitter hue, lightness, and saturation channels of an image",
+    "create_tensor_conversion_transform": "create a ToTensor transform that converts a numpy array to a normalized PyTorch tensor",
+    "create_random_flip_transform": "create a RandomHorizontalFlip transform that flips images horizontally with 50 percent probability"
+  },
+  "facebookresearch_glore/data/iterator_factory.py": {
+    "create_kinetics_data_iterators": "create train and val video iterators for the Kinetics dataset with configurable clip length and sampling intervals",
+    "create_data_loaders": "create PyTorch DataLoader instances for train and val sets from a named dataset like Kinetics",
+    "review_get_kinetics": "review the get_kinetics function to understand video sampling, augmentation transforms, and normalization configuration",
+    "review_creat": "review the creat factory function that builds DataLoaders for a given dataset name and batch size",
+    "refactor_get_kinetics": "refactor the get_kinetics function to support additional datasets beyond Kinetics with custom video transforms"
+  },
+  "facebookresearch_glore/data/video_iterator.py": {
+    "create_video_class": "create a Video instance to open a video file and extract frames by index",
+    "open_video_file": "open a video file with the Video class using cv2 VideoCapture and validate the path",
+    "extract_frames_by_index": "extract specific frames from an opened video by providing a list of frame indices",
+    "count_video_frames": "count the total number of frames in an opened video using cv2 CAP_PROP_FRAME_COUNT",
+    "create_videoiter_dataset": "create a VideoIter PyTorch Dataset from a video prefix directory and a text list file"
+  },
+  "facebookresearch_glore/data/video_sampler.py": {
+    "create_random_video_frame_sampler": "create a RandomSampling instance to randomly sample N video frames from a clip with configurable interval and speed",
+    "run_random_sampling_on_clip": "run the RandomSampling sampling method on a video clip with a given range_max to get sampled frame indices",
+    "create_evenly_spaced_video_frame_sampler": "create an EvenlySampling instance to evenly sample N frames across multiple clips with a fixed interval",
+    "run_evenly_sampling_on_clip": "run the EvenlySampling sampling method on a video clip with range_max, v_id, and copy_id to get evenly spaced frame indices",
+    "review_video_sampler_classes": "review the RandomSampling and EvenlySampling classes to understand their frame sampling strategies and parameters"
+  },
+  "facebookresearch_glore/dataset/config.py": {
+    "get_config_ucf101": "get the dataset config with num_classes for the UCF101 action recognition dataset",
+    "get_config_hmdb51": "get the dataset config with num_classes for the HMDB51 action recognition dataset",
+    "get_config_kinetics": "get the dataset config with num_classes for the Kinetics action recognition dataset",
+    "test_get_config": "test the get_config function by calling it with UCF101, HMDB51, and Kinetics dataset names",
+    "review_get_config": "review the get_config function to understand supported datasets and their class counts"
+  },
+  "facebookresearch_glore/dataset/HMDB51/scripts/convert_videos.py": {
+    "run_convert_videos": "run the script to resize all videos in a directory to 360px using ffmpeg",
+    "run_exe_cmd": "run a shell command via subprocess and return output or skip if output exists",
+    "run_convert_video_wrapper": "run batch video conversion commands in parallel using joblib with 24 workers",
+    "review_exe_cmd": "review the exe_cmd function that executes shell commands with escape handling and existence checks",
+    "review_convert_video_wrapper": "review the convert_video_wrapper function that builds and executes ffmpeg commands for video lists"
+  },
+  "facebookresearch_glore/dataset/Kinetics/scripts/convert_videos.py": {
+    "run_convert_videos": "run the script to convert MP4 videos to AVI format using ffmpeg with parallel processing",
+    "run_exe_cmd": "run a shell command and return output or skip if the destination file already exists",
+    "run_convert_video_wapper": "run batch video conversion on a list of videos using an ffmpeg command format string",
+    "run_read_video_list": "run a scan of subdirectories to collect all MP4 video file paths from a root folder",
+    "run_main": "run the main block to convert Kinetics dataset videos from source to destination with optional shuffling"
+  },
+  "facebookresearch_glore/dataset/Kinetics/scripts/remove_spaces.py": {
+    "run_rename_folder_name": "run the script to rename Kinetics dataset folders by replacing spaces with underscores",
+    "run_remove_spaces_script": "run the remove_spaces script to rename train and val folder names using CSV lists",
+    "create_move_function": "create a function that moves a source file or directory to a destination with logging",
+    "create_rename_folder_name": "create a function that reads a CSV and renames folders by replacing spaces with underscores",
+    "test_rename_folder_name": "test the rename_folder_name function with a CSV file and root folder path"
+  },
+  "facebookresearch_glore/network/config.py": {
+    "get_config": "get the MXNet default mean and std preprocessing config for a named network",
+    "build_get_config": "build a python module that returns MXNet default mean and std values for image preprocessing",
+    "test_get_config": "test the get_config function to verify it returns correct mean and std values",
+    "refactor_get_config": "refactor the get_config function to support custom mean and std values via kwargs",
+    "review_get_config": "review the get_config function and its MXNet default preprocessing configuration values"
+  },
+  "facebookresearch_glore/network/global_reasoning_unit.py": {
+    "build_GloRe_Unit_2D": "build a GloRe_Unit_2D module with 32 input channels and 16 mid channels for 2D spatial reasoning",
+    "build_GloRe_Unit_3D": "build a GloRe_Unit_3D module with 32 input channels and 16 mid channels for 3D volumetric reasoning",
+    "build_GCN": "build a single-layer GCN graph convolution unit with specified state and node dimensions",
+    "run_GloRe_Unit_1D": "run a GloRe_Unit_1D forward pass on 1D tensor data with 32 input channels",
+    "review_GloRe_Unit": "review the GloRe_Unit base class projection and reverse projection graph reasoning logic"
+  },
+  "facebookresearch_glore/network/initializer.py": {
+    "init_xavier_weights": "initialize a PyTorch neural network's weights using Xavier uniform initialization for Conv, Linear, and BatchNorm layers",
+    "load_state_dict_strict": "load a PyTorch model's state dictionary from a pre-trained checkpoint with strict or partial matching",
+    "load_2d_to_3d_inflation": "transfer 2D convolutional weights to a 3D network using temporal inflation to fill the new time dimension",
+    "load_2d_to_3d_random": "transfer 2D convolutional weights to a 3D network using random filling with alternating positive and negative values",
+    "review_initializer_usage": "review the initializer module to understand how xavier, state dict loading, and 2D to 3D weight transfer work"
+  },
+  "facebookresearch_glore/network/resnet101_3d_gcn_x5.py": {
+    "build_RESNET101_3D_GCN_X5": "build a 3D ResNet-101 GCN network with GloRe units for video action classification",
+    "create_RESIDUAL_BLOCK": "create a 3D residual block with batch norm, ReLU, and optional skip connection adapter",
+    "create_BN_AC_CONV3D": "create a 3D convolution layer with batch normalization and ReLU activation",
+    "create_BN_AC_CONV2D": "create a 2D convolution layer with batch normalization and ReLU activation",
+    "run_RESNET101_3D_GCN_X5_forward": "run a forward pass through the 3D ResNet-101 GCN network on video tensor input"
+  },
+  "facebookresearch_glore/network/resnet50_3d_gcn_x5.py": {
+    "build_resnet50_3d_gcn_x5": "build a 3D ResNet-50 GCN network with GloRe units for video action recognition",
+    "create_bn_ac_conv2d": "create a 2D convolution block with batch normalization and ReLU activation",
+    "create_bn_ac_conv3d": "create a 3D convolution block with batch normalization and ReLU activation",
+    "create_residual_block": "create a residual block with optional 3D temporal convolution and skip connection",
+    "test_resnet50_3d_gcn_x5": "test the ResNet50 3D GCN network by running a forward pass on sample data"
+  },
+  "facebookresearch_glore/network/symbol_builder.py": {
+    "build_resnet50_3d_gcn_x5": "build a RESNET50_3D_GCN_X5 network model using get_symbol with num_classes parameter",
+    "build_resnet101_3d_gcn_x5": "build a RESNET101_3D_GCN_X5 network model using get_symbol with num_classes parameter",
+    "run_get_symbol": "run get_symbol to instantiate a named 3D GCN ResNet network and return the network and config",
+    "test_get_symbol_with_print_net": "test get_symbol with print_net=True to log the network architecture to debug output",
+    "review_get_symbol_kwargs": "review get_symbol to understand how kwargs are passed to the underlying ResNet model constructors"
+  },
+  "facebookresearch_glore/script/generate_testing_list.py": {
+    "duplicate_cache_by_video_length": "duplicate video cache entries by splitting each video into clips of a specified length",
+    "duplicate_cache_by_fixed_times": "duplicate video cache entries a fixed number of times for testing purposes",
+    "create_testing_list_from_cache": "create a testing list file by duplicating cached video entries based on clip length",
+    "generate_video_clip_list": "generate a list of video clips by splitting videos into segments of a given frame count",
+    "duplicate_video_entries_for_testing": "duplicate video cache entries a specified number of times to create a testing dataset"
+  },
+  "facebookresearch_glore/test/test-single-clip.py": {
+    "run_video_evaluation": "run the single clip evaluation script on the Kinetics dataset with a pretrained ResNet50 3D model",
+    "run_evaluation_with_custom_model": "run the evaluation script with a custom model checkpoint path and GPU configuration",
+    "run_evaluation_with_batch_size": "run the video classification evaluation with a specified batch size and frame interval",
+    "review_autofill_function": "review the autofill function that extracts model prefix and epoch from the model subpath argument",
+    "review_set_logger_function": "review the set_logger function that configures file and stream logging handlers with debug mode"
+  },
+  "facebookresearch_glore/train/callback.py": {
+    "create_callback_header": "create a Callback instance with a header that prints epoch, batch, and learning rate info",
+    "run_speedmonitor": "run a SpeedMonitor callback to log training speed in samples or iterations per second",
+    "run_metricprinter": "run a MetricPrinter callback to log training metrics like accuracy values with epoch and batch info",
+    "create_callbacklist": "create a CallbackList that chains multiple callbacks like SpeedMonitor and MetricPrinter together",
+    "test_callback_classes": "test the Callback, SpeedMonitor, MetricPrinter, and CallbackList classes using the built-in main block"
+  },
+  "facebookresearch_glore/train/custom_optim.py": {
+    "create_SGD_optimizer": "create a custom SGD optimizer with momentum, weight decay, and Nesterov support for PyTorch models",
+    "run_SGD_step_with_visiable": "run a single optimization step updating only parameter groups whose names appear in the visiable list",
+    "build_SGD_with_nesterov_momentum": "build an SGD optimizer with Nesterov momentum enabled for faster convergence on deep learning models",
+    "test_SGD_weight_decay": "test the SGD optimizer with weight decay applied as an L2 penalty during parameter updates",
+    "review_SGD_step_closure": "review the SGD step method that optionally accepts a closure to reevaluate the model and return loss"
+  },
+  "facebookresearch_glore/train/lr_scheduler.py": {
+    "create_LRScheduler": "create a base LRScheduler with a step counter and base learning rate",
+    "create_MultiFactorScheduler": "create a MultiFactorScheduler with steps, base_lr, and factor to reduce learning rate over time",
+    "run_MultiFactorScheduler_update": "run the MultiFactorScheduler update method to advance the step counter and compute the new learning rate",
+    "test_MultiFactorScheduler_get_lr": "test the MultiFactorScheduler get_lr method to retrieve the current normalized learning rate",
+    "review_LRScheduler_update": "review the LRScheduler update method which raises NotImplementedError and must be overridden by subclasses"
+  },
+  "facebookresearch_glore/train/metric.py": {
+    "create_accuracy_metric": "create an Accuracy metric instance to compute top-k classification accuracy from predictions and labels",
+    "create_loss_metric": "create a Loss metric instance to track and aggregate loss values during training",
+    "create_metric_list": "create a MetricList to aggregate multiple EvalMetric instances like Accuracy and Loss together",
+    "update_metric_with_preds": "update an EvalMetric with prediction tensors, label tensors, and loss tensors to accumulate results",
+    "get_metric_name_value": "get the name-value pairs from an EvalMetric with an optional prefix for logging output"
+  },
+  "facebookresearch_glore/train/model.py": {
+    "create_static_model": "create a static_model instance wrapping a PyTorch network with an optional criterion and model_prefix",
+    "load_state_dict": "load a state dict into the model using strict or partial matching with shape validation",
+    "save_checkpoint": "save a model checkpoint with optional optimizer state to a path derived from the model prefix and epoch",
+    "load_checkpoint": "load a model checkpoint from disk and optionally resume the optimizer state for a given epoch",
+    "fit_model": "fit the model by running a training loop with callbacks, evaluation, precise batchnorm, and periodic checkpointing"
+  }
+}

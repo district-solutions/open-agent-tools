@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/detic
+- repo_uri: https://github.com/facebookresearch/detic
+
+## File: facebookresearch_detic/detic/evaluation/oideval.py
+
+Prompts
+
+```
+['run OpenImages dataset evaluation on detection results using OIDEval with bbox or segm IoU type', 'run the OIDEvaluator dataset evaluator for detectron2 models on OpenImages with distributed support', 'run predictions evaluation on OpenImages dataset computing AP50 and AP50_expand metrics', 'compute average precision from precision and recall numpy arrays using VOCdevkit definition', 'run per-image evaluation for a single image and category using Google-style IoU matching']
+```
+
+Usage
+
+```
+{'run_OIDEval': 'run OpenImages dataset evaluation on detection results using OIDEval with bbox or segm IoU type', 'run_OIDEvaluator': 'run the OIDEvaluator dataset evaluator for detectron2 models on OpenImages with distributed support', 'run_evaluate_predictions_on_oid': 'run predictions evaluation on OpenImages dataset computing AP50 and AP50_expand metrics', 'compute_compute_average_precision': 'compute average precision from precision and recall numpy arrays using VOCdevkit definition', 'run_OIDEval_evaluate_img_google': 'run per-image evaluation for a single image and category using Google-style IoU matching'}
+```
+

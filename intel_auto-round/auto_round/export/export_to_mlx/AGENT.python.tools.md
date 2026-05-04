@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: intel/auto-round
+- repo_uri: https://github.com/intel/auto-round
+
+## File: intel_auto-round/auto_round/export/export_to_mlx/export.py
+
+Prompts
+
+```
+['save a quantized PyTorch model to MLX-compatible format for mlx-lm inference on Apple Silicon', 'pack a single quantized layer into MLX uint32 packed format with scales and biases', 'build the quantization dictionary for an MLX config.json with mixed-bit per-layer overrides', 'pack integer weights into uint32 tensors using MLX contiguous bit stream packing format', 'create an MLXPackedLayer module holding uint32 packed weights, float16 scales, and biases']
+```
+
+Usage
+
+```
+{'save_quantized_model_as_mlx': 'save a quantized PyTorch model to MLX-compatible format for mlx-lm inference on Apple Silicon', 'pack_layer_for_mlx': 'pack a single quantized layer into MLX uint32 packed format with scales and biases', 'build_mlx_quantization_config': 'build the quantization dictionary for an MLX config.json with mixed-bit per-layer overrides', 'pack_weight_mlx': 'pack integer weights into uint32 tensors using MLX contiguous bit stream packing format', 'create_mlx_packed_layer': 'create an MLXPackedLayer module holding uint32 packed weights, float16 scales, and biases'}
+```
+

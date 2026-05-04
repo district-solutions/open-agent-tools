@@ -1,0 +1,135 @@
+{
+  "facebookresearch_agrol/data_loaders/dataloader.py": {
+    "create_TrainDataset": "create a TrainDataset for motion data with normalization and random cropping to a fixed input length",
+    "create_TestDataset": "create a TestDataset from motion info dictionaries containing rotations, sparse features, body params, and head motion",
+    "run_load_data": "run load_data to collect and normalize motion sequences for a given dataset split and path",
+    "run_get_motion": "run get_motion to extract rotation and sparse feature lists from a list of motion dictionaries",
+    "build_get_dataloader": "build a PyTorch DataLoader with shuffle and drop_last settings based on the train or test split"
+  },
+  "facebookresearch_agrol/diffusion/diffusion_model.py": {
+    "create_DiffusionModel": "create a DiffusionModel instance by passing kwargs to GaussianDiffusion for motion diffusion training",
+    "run_masked_l2": "run masked_l2 to compute the mean L2 norm loss between two tensors reshaped to 6D vectors",
+    "run_training_losses": "run training_losses to compute MSE or KL loss terms for a diffusion model given x_start and timestep t",
+    "review_DiffusionModel_training_losses": "review the DiffusionModel training_losses method to understand how it handles MSE, KL, and rescaled loss types",
+    "refactor_masked_l2": "refactor the masked_l2 method to support configurable vector dimensions instead of hardcoded 6D reshaping"
+  },
+  "facebookresearch_agrol/diffusion/fp16_util.py": {
+    "create_MixedPrecisionTrainer": "create a MixedPrecisionTrainer to train a PyTorch model using FP16 mixed precision",
+    "convert_module_to_f16": "convert a PyTorch Conv1d, Conv2d, or Conv3d module's weights and biases to float16",
+    "convert_module_to_f32": "convert a PyTorch Conv1d, Conv2d, or Conv3d module's weights and biases back to float32",
+    "make_master_params": "make full-precision master parameters from grouped model parameters for mixed precision training",
+    "check_overflow": "check if a gradient or parameter value is infinite or NaN during training"
+  },
+  "facebookresearch_agrol/diffusion/gaussian_diffusion.py": {
+    "create_GaussianDiffusion": "create a GaussianDiffusion instance with a beta schedule, model mean type, and loss type for diffusion training",
+    "run_p_sample_loop": "run the DDPM sampling loop to generate denoised samples from random noise using a trained model",
+    "run_ddim_sample_loop": "run the DDIM sampling loop to generate samples faster with deterministic or stochastic denoising steps",
+    "run_plms_sample_loop": "run the PLMS sampling loop to generate samples using pseudo linear multistep for fewer model evaluations",
+    "create_beta_schedule": "create a linear or cosine beta schedule for the diffusion process with a given number of timesteps"
+  },
+  "facebookresearch_agrol/diffusion/logger.py": {
+    "configure_logger": "configure a logger to write key-value diagnostics to stdout, log, csv, or json output formats",
+    "logkv_and_dumpkvs": "log key-value pairs with logkv then flush all diagnostics to output files using dumpkvs",
+    "log_messages": "write log messages at debug, info, warn, or error levels to configured output formats",
+    "profile_function": "profile a function with the profile decorator to measure and log its execution time",
+    "scoped_configure": "use scoped_configure context manager to temporarily switch logger directory and output formats"
+  },
+  "facebookresearch_agrol/diffusion/losses.py": {
+    "compute_normal_kl_divergence": "compute the KL divergence between two Gaussian distributions using mean and log variance tensors",
+    "approximate_standard_normal_cdf": "approximate the cumulative distribution function of the standard normal distribution for a tensor of values",
+    "compute_discretized_gaussian_log_likelihood": "compute the log-likelihood of a Gaussian distribution discretizing to a given image tensor",
+    "review_normal_kl": "review the normal_kl function to understand how it broadcasts shapes and computes KL divergence",
+    "refactor_discretized_gaussian_log_likelihood": "refactor the discretized_gaussian_log_likelihood function to support a different pixel value range"
+  },
+  "facebookresearch_agrol/diffusion/resample.py": {
+    "create_schedule_sampler": "create a named schedule sampler using create_named_schedule_sampler with name and diffusion object",
+    "sample_timesteps": "sample weighted timesteps for a diffusion batch using ScheduleSampler sample method",
+    "build_uniform_sampler": "build a UniformSampler that returns equal weights for all diffusion timesteps",
+    "update_loss_weights": "update loss-aware sampler weights using LossAwareSampler update_with_local_losses with timesteps and losses",
+    "create_loss_second_moment_resampler": "create a LossSecondMomentResampler that resamples timesteps based on the second moment of historical losses"
+  },
+  "facebookresearch_agrol/diffusion/respace.py": {
+    "create_spaced_diffusion": "create a SpacedDiffusion process that skips steps in a base diffusion using selected timesteps",
+    "compute_space_timesteps": "compute a set of strided timesteps from an original diffusion process given section counts",
+    "use_ddim_timesteps": "use space_timesteps with a ddimN string to get DDIM-style fixed striding for N steps",
+    "run_training_losses": "run training_losses on a SpacedDiffusion model with wrapped timestep mapping for sparse data",
+    "compute_p_mean_variance": "compute the posterior mean and variance for a model using SpacedDiffusion with wrapped timesteps"
+  },
+  "facebookresearch_agrol/model/meta_model.py": {
+    "build_MetaModel": "build a MetaModel PyTorch module with configurable latent dimension, num_layers, and sparse_dim for motion diffusion",
+    "run_MetaModel_forward": "run the MetaModel forward pass with input features, timesteps, and sparse embeddings to get output predictions",
+    "create_TimestepEmbeding": "create a TimestepEmbeding module that generates sinusoidal positional encodings for diffusion timestep embeddings",
+    "test_mask_cond_sparse": "test the MetaModel mask_cond_sparse method to conditionally zero out sparse embeddings during training",
+    "review_MetaModel_architecture": "review the MetaModel architecture combining DiffMLP backbone with input sparse and output linear processing layers"
+  },
+  "facebookresearch_agrol/model/networks.py": {
+    "build_diffmlp_network": "build a DiffMLP network with configurable latent dimension, sequence length, and number of layers for motion processing",
+    "build_puremlp_network": "build a PureMLP network with custom input and output dimensions for direct motion feature transformation",
+    "create_mlpblock_layer": "create an MLPblock layer with optional embedding support and configurable dimension and sequence parameters",
+    "create_basemlp_stack": "create a BaseMLP stack of MLPblock layers with configurable depth and embedding support",
+    "review_diffmlp_forward": "review the DiffMLP forward pass that processes motion input with embedding through the motion MLP"
+  },
+  "facebookresearch_agrol/runner/train_mlp.py": {
+    "run_train_step": "run a single training step for an MLP model with motion input and target data",
+    "run_update_lr_multistep": "run a multistep learning rate update that switches between max and min LR based on iteration",
+    "create_train_step": "create a training step function that computes L2 loss between predicted and target motion data",
+    "create_update_lr_multistep": "create a multistep LR scheduler that anneals from max_lr to min_lr after a set number of steps",
+    "refactor_train_step": "refactor the train_step function to support custom loss functions beyond L2 norm"
+  },
+  "facebookresearch_agrol/runner/training_loop.py": {
+    "run_TrainLoop_training": "run the TrainLoop class to train a diffusion model over multiple epochs with checkpoint saving",
+    "run_TrainLoop_forward_backward": "run the TrainLoop forward_backward method to compute diffusion training losses and perform backpropagation",
+    "create_TrainLoop_instance": "create a TrainLoop instance with model, diffusion, data loader, and training hyperparameters",
+    "parse_resume_step_from_filename": "parse the resume step number from a model checkpoint filename like model000123.pt",
+    "log_loss_dict_quantiles": "log loss dictionary values and their quantile breakdowns across diffusion timesteps"
+  },
+  "facebookresearch_agrol/utils/dist_util.py": {
+    "setup_dist": "setup a distributed process group for multi-GPU PyTorch training with a specified device",
+    "get_device": "get the current CUDA or CPU device for torch.distributed training",
+    "load_state_dict": "load a PyTorch model state dict file from disk without redundant fetches across ranks",
+    "sync_params": "synchronize a sequence of PyTorch tensors across distributed ranks from rank 0",
+    "find_free_port": "find an available free TCP port on the local machine for distributed training"
+  },
+  "facebookresearch_agrol/utils/metrics.py": {
+    "compute_mpjpe": "compute the mean per-joint position error between predicted and ground truth 3D pose positions",
+    "compute_mpjre": "compute the mean per-joint rotation error between predicted and ground truth joint angles with pi wrapping",
+    "compute_mpjve": "compute the mean per-joint velocity error between predicted and ground truth pose velocities scaled by fps",
+    "compute_jitter": "compute the predicted or ground truth position jitter using a fourth-order finite difference filter scaled by fps cubed",
+    "get_metric_function": "look up and return a metric function by name from the metric_funcs_dict registry"
+  },
+  "facebookresearch_agrol/utils/model_util.py": {
+    "create_model_and_diffusion": "create a MetaModel and Gaussian diffusion scheduler from an args config object",
+    "load_model_wo_clip": "load a model's state dict while skipping CLIP model keys and stripping module prefixes",
+    "get_model_args": "extract model initialization arguments from an args config into a dictionary",
+    "create_gaussian_diffusion": "create a SpacedDiffusion scheduler with configurable noise schedule, steps, and beta settings",
+    "review_model_util": "review the model utility functions for loading state dicts and creating diffusion schedulers"
+  },
+  "facebookresearch_agrol/utils/parser_util.py": {
+    "build_train_args_parser": "build an argparse parser with base, data, model, diffusion, and training options for motion diffusion model training",
+    "build_sample_args_parser": "build an argparse parser with base and sampling options that loads model args from a checkpoint file",
+    "build_evaluation_args_parser": "build an argparse parser with base and evaluation options that loads model args from a checkpoint file",
+    "create_add_model_options": "create argument group options for model architecture including layers, latent dimension, and motion feature dimensions",
+    "create_add_diffusion_options": "create argument group options for diffusion process including noise schedule, diffusion steps, and sigma values"
+  },
+  "facebookresearch_agrol/utils/rotation_conversions.py": {
+    "convert_quaternion_to_matrix": "convert quaternions with real part first to 3x3 rotation matrices using PyTorch tensors",
+    "convert_matrix_to_quaternion": "convert 3x3 rotation matrices to quaternions with real part first using PyTorch tensors",
+    "convert_euler_angles_to_matrix": "convert Euler angles in radians to rotation matrices using a specified XYZ convention string",
+    "convert_axis_angle_to_matrix": "convert axis-angle rotation vectors to 3x3 rotation matrices using PyTorch tensors",
+    "convert_6d_to_rotation_matrix": "convert 6D rotation representation to 3x3 rotation matrices using Gram-Schmidt orthogonalisation"
+  },
+  "facebookresearch_agrol/utils/utils_transform.py": {
+    "convert_rotation_matrix_to_sixd": "convert a batch of Nx3x3 rotation matrices to 6D rotation representation",
+    "convert_angle_axis_to_sixd": "convert angle axis rotation vectors to 6D rotation representation",
+    "convert_sixd_to_rotation_matrix": "convert 6D rotation vectors back to Nx3x3 rotation matrices",
+    "convert_sixd_to_angle_axis": "convert 6D rotation vectors to angle axis representation with optional batch support",
+    "convert_sixd_to_quaternion": "convert 6D rotation vectors to quaternion representation using tgm conversion"
+  },
+  "facebookresearch_agrol/utils/utils_visualize.py": {
+    "generate_checkerboard_mesh": "generate a checkerboard mesh in the x-y plane with configurable square size and dimensions",
+    "save_body_pose_animation": "save a body pose animation as a DIVX video file from mesh vertices and a body model",
+    "create_checkerboard_instance": "create a CheckerBoard instance with custom white and black color tuples for mesh generation",
+    "render_body_mesh_frames": "render body mesh frames with applied rotation and scale transforms using MeshViewer offscreen rendering",
+    "review_CheckerBoard_gen_checker_xy": "review the CheckerBoard class gen_checker_xy static method that generates trimesh meshes from grid coordinates"
+  }
+}

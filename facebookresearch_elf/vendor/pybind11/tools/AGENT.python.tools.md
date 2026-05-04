@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/elf
+- repo_uri: https://github.com/facebookresearch/elf
+
+## File: facebookresearch_elf/vendor/pybind11/tools/mkdoc.py
+
+Prompts
+
+```
+['run mkdoc.py on C++ header files to extract Doxygen comments into a C docstring file for pybind11', 'process a raw Doxygen comment string and convert it to Markdown with proper formatting', 'sanitize a C++ symbol name by replacing operators and special characters for use as a C variable name', 'recursively extract documentation from clang AST nodes matching classes, structs, enums, functions, and methods', 'spawn parallel threads to process multiple C++ header files concurrently using a semaphore-limited thread pool']
+```
+
+Usage
+
+```
+{'extract_cpp_docstrings': 'run mkdoc.py on C++ header files to extract Doxygen comments into a C docstring file for pybind11', 'process_doxygen_comment': 'process a raw Doxygen comment string and convert it to Markdown with proper formatting', 'sanitize_cpp_name': 'sanitize a C++ symbol name by replacing operators and special characters for use as a C variable name', 'extract_ast_nodes': 'recursively extract documentation from clang AST nodes matching classes, structs, enums, functions, and methods', 'run_parallel_extraction': 'spawn parallel threads to process multiple C++ header files concurrently using a semaphore-limited thread pool'}
+```
+

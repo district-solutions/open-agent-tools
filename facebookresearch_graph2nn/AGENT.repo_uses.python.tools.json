@@ -1,0 +1,191 @@
+{
+  "facebookresearch_graph2nn/pycls/config.py": {
+    "configure_model_options": "set cfg.MODEL.TYPE, cfg.MODEL.DEPTH, and cfg.MODEL.NUM_CLASSES to configure the neural network model architecture",
+    "configure_resnet_options": "set cfg.RESNET.NUM_GROUPS and cfg.RESNET.WIDTH_PER_GROUP to switch between ResNet and ResNeXt variants",
+    "configure_efficientnet_options": "set cfg.EFFICIENT_NET.DEPTHS, cfg.EFFICIENT_NET.WIDTHS, and cfg.EFFICIENT_NET.STRIDES to define EfficientNet stage parameters",
+    "configure_rgraph_options": "set cfg.RGRAPH.DIM_LIST, cfg.RGRAPH.GROUP_NUM, and cfg.RGRAPH.MESSAGE_TYPE to configure relational graph neural network options",
+    "assert_cfg": "call assert_cfg() to validate config invariants like batch size divisibility and supported train/test splits"
+  },
+  "facebookresearch_graph2nn/pycls/datasets/load_graph.py": {
+    "generate_ws_graph": "generate a Watts-Strogatz small-world graph with n nodes, given sparsity and rewiring probability",
+    "load_graph_from_txt": "load an adjacency matrix from a text file into a NetworkX directed or undirected graph",
+    "compute_graph_stats": "compute the clustering coefficient and average shortest path length of a NetworkX graph",
+    "plot_networkx_graph": "visualize a NetworkX graph using spring or circular layout and save as a PNG image",
+    "generate_connected_ws_graph": "generate a guaranteed-connected Watts-Strogatz small-world graph by retrying until connectivity is achieved"
+  },
+  "facebookresearch_graph2nn/pycls/datasets/loader.py": {
+    "construct_train_loader": "construct a PyTorch training data loader for cifar10 or imagenet datasets with shuffling and drop_last enabled",
+    "construct_test_loader": "construct a PyTorch test data loader for cifar10 or imagenet datasets without shuffling or dropping the last batch",
+    "construct_loader_internal": "construct a PyTorch DataLoader for a named dataset with configurable batch size, shuffle, sampler, and drop_last options",
+    "shuffle_loader": "shuffle a PyTorch data loader by setting the epoch on its DistributedSampler for epoch-based randomization",
+    "dataset_catalog": "review the dataset catalog mapping cifar10 and imagenet dataset names to their respective PyTorch dataset classes"
+  },
+  "facebookresearch_graph2nn/pycls/datasets/paths.py": {
+    "check_has_data_path": "check if a dataset name like cifar10 has a registered data path",
+    "get_data_path_for_dataset": "get the file system data path for a dataset like imagenet",
+    "set_data_path_for_dataset": "set a custom data path for a dataset name in the paths registry",
+    "review_paths_module": "review the dataset paths module to understand default data directory and registered paths",
+    "summarize_paths_functions": "summarize the has_data_path, get_data_path, and set_data_path functions and their usage"
+  },
+  "facebookresearch_graph2nn/pycls/datasets/transforms.py": {
+    "create_random_crop": "create a function that randomly crops an image to a specified size with optional zero padding",
+    "create_horizontal_flip": "create a function that horizontally flips an image with a given probability for data augmentation",
+    "create_color_normalization": "create a function that normalizes image channels using provided mean and standard deviation values",
+    "create_random_sized_crop": "create a function that performs random sized cropping and resizes the result to a target size",
+    "create_lighting_augmentation": "create a function that applies PCA-based lighting augmentation to an image using eigenvalues and eigenvectors"
+  },
+  "facebookresearch_graph2nn/pycls/models/cnn.py": {
+    "build_CNN_model": "build a CNN model with configurable stages, stem, and head for cifar10 or imagenet datasets",
+    "create_ConvTalkTransform": "create a ConvTalkTransform module that uses TalkConv2d with relational graph convolution and batch norm",
+    "create_CNNStage": "create a CNNStage with multiple transformation blocks using a configurable transformation function name",
+    "create_CNNStem": "create a CNNStem module with conv, batch norm, relu, and optional max pooling for cifar10 or imagenet",
+    "get_trans_fun": "get a transformation function class by name such as convbasic_transform or convtalk_transform"
+  },
+  "facebookresearch_graph2nn/pycls/models/efficientnet.py": {
+    "build_efficientnet_model": "build an EfficientNet model for ImageNet classification using configurable stages, heads, and activation functions",
+    "create_mbconv_block": "create an MBConv mobile inverted bottleneck block with SE attention and depthwise convolution",
+    "create_mbtalkconv_block": "create an MBTalkConv block that replaces standard convolutions with graph-based TalkConv2d layers",
+    "create_efficientnet_head": "create a ConvHead, LinearHead, or SimpleHead classification head for the EfficientNet model",
+    "apply_drop_connect": "apply drop connect regularization to skip connections using TensorFlow or PyTorch implementation"
+  },
+  "facebookresearch_graph2nn/pycls/models/losses.py": {
+    "get_loss_fun": "get the configured loss function instance and move it to the CUDA device",
+    "review_get_loss_fun": "review the get_loss_fun function to understand how it retrieves and returns the configured loss",
+    "refactor_get_loss_fun": "refactor get_loss_fun to support additional loss functions beyond cross entropy",
+    "summarize_LOSS_FUNS": "summarize the _LOSS_FUNS dictionary mapping loss names to PyTorch loss classes",
+    "test_get_loss_fun": "test the get_loss_fun function with different cfg.MODEL.LOSS_FUN config values"
+  },
+  "facebookresearch_graph2nn/pycls/models/mlp.py": {
+    "build_MLPNet": "build an MLPNet model for CIFAR-10 classification using the configured transformation function and layer depth",
+    "create_LinearTransform": "create a LinearTransform module with a linear layer, batch norm, and ReLU for MLP stages",
+    "create_TalkLinearTransform": "create a TalkLinearTransform module using relational graph-based linear transformation with configurable message passing",
+    "create_MLPStage": "create an MLPStage with multiple transformation blocks using the configured transformation function type",
+    "get_trans_fun": "get a transformation function class by name from the supported transform registry"
+  },
+  "facebookresearch_graph2nn/pycls/models/mobilenet.py": {
+    "build_mobilenetv1_model": "build a MobileNetV1 model with configurable num_classes for image classification",
+    "run_mobilenetv1_forward": "run a forward pass through MobileNetV1 with an input tensor to get class logits",
+    "review_mobilenetv1_init": "review the MobileNetV1 constructor to understand depthwise separable conv and TalkConv2d integration",
+    "refactor_mobilenetv1_conv_dw": "refactor the conv_dw depthwise separable conv block to swap TalkConv2d for standard Conv2d",
+    "summarize_mobilenetv1_architecture": "summarize the MobileNetV1 architecture with its 14-layer conv stack and global average pooling"
+  },
+  "facebookresearch_graph2nn/pycls/models/model_builder.py": {
+    "build_model": "build a PyTorch model from config using resnet, mlpnet, cnn, mobilenet, efficientnet, or vgg with GPU support",
+    "build_model_stats_flops": "build a model and compute its FLOPs count using the configured model type from pycls config",
+    "build_model_stats_params": "build a model and compute its parameter count using the configured model type from pycls config",
+    "review_MODEL_TYPES": "review the supported model types registry mapping resnet, mlpnet, cnn, mobilenet, efficientnet, and vgg to their classes",
+    "refactor_build_model_ddp": "refactor the build_model function to support custom device placement or alternative distributed training strategies"
+  },
+  "facebookresearch_graph2nn/pycls/models/optimizer.py": {
+    "construct_optimizer": "build a pytorch SGD optimizer from a model using config-based learning rate, momentum, and weight decay settings",
+    "get_epoch_lr": "retrieve the learning rate for a given training epoch based on the configured lr policy schedule",
+    "set_lr": "set the learning rate for all parameter groups in an existing pytorch optimizer to a new value",
+    "review_construct_optimizer": "review the construct_optimizer function to understand how SGD is configured with momentum and nesterov options",
+    "refactor_set_lr": "refactor the set_lr function to support per-parameter-group learning rate scheduling"
+  },
+  "facebookresearch_graph2nn/pycls/models/relation_graph.py": {
+    "generate_graph_edge_index": "generate an edge index for a barabasi albert or watts strogatz graph with configurable sparsity and seed",
+    "create_talklinear_layer": "create a TalkLinear layer where neurons communicate according to a relational graph structure with configurable message type",
+    "create_talkconv2d_layer": "create a TalkConv2d layer that applies graph-structured weight masking to convolutional filters with configurable sparsity",
+    "build_symmetric_linear": "build a SymLinear layer that enforces symmetric weight matrices by summing weight with its transpose",
+    "create_sparse_linear": "create a SparseLinear layer that applies a boolean mask to zero out specified weight connections based on edge index"
+  },
+  "facebookresearch_graph2nn/pycls/models/resnet.py": {
+    "build_resnet_model": "build a ResNet model for ImageNet or CIFAR-10 classification using configurable depth and dataset",
+    "create_resblock": "create a ResBlock residual block with skip connection projection and configurable transformation function",
+    "create_resstage": "create a ResStage with multiple residual blocks and optional 1x1 transformation additions",
+    "review_talkbottlenecktransform": "review the TalkBottleneckTransform class that adds relational graph TalkConv2d to the bottleneck pattern",
+    "refactor_get_trans_fun": "refactor get_trans_fun to support additional transformation function names beyond the six registered types"
+  },
+  "facebookresearch_graph2nn/pycls/models/vgg.py": {
+    "build_vgg_model": "build a VGG model with configurable num_classes for image classification using pycls config",
+    "run_vgg_forward": "run the VGG forward pass on an input tensor through conv bn blocks and pooling layers",
+    "create_conv_bn_block": "create a conv bn block with optional stem flag using convbasic or convtalk transform",
+    "review_vgg_architecture": "review the VGG model architecture with four max pooling stages and adaptive average pooling",
+    "test_vgg_init_weights": "test the VGG model initialization by applying nu.init_weights to all modules"
+  },
+  "facebookresearch_graph2nn/pycls/utils/checkpoint.py": {
+    "save_checkpoint": "save a pytorch model and optimizer state dict to a checkpoint file at the current epoch",
+    "load_checkpoint": "load a pytorch model and optimizer state dict from a checkpoint file and return the saved epoch",
+    "get_checkpoint_last": "get the file path of the most recently saved checkpoint in the checkpoints directory",
+    "has_checkpoint": "check if any checkpoint files exist in the configured checkpoints directory",
+    "is_checkpoint_epoch": "determine if a checkpoint should be saved at the current epoch based on the configured checkpoint period"
+  },
+  "facebookresearch_graph2nn/pycls/utils/distributed.py": {
+    "init_distributed_process_group": "initialize a torch distributed process group with a given rank and world size for multi-GPU training",
+    "destroy_distributed_process_group": "destroy the default torch distributed process group after multi-GPU training is complete",
+    "check_master_process": "check if the current process is the master process responsible for logging and checkpointing",
+    "scaled_all_reduce_tensors": "perform a scaled all-reduce operation on tensors across GPUs and scale by inverse process group size",
+    "review_distributed_helpers": "review the distributed helpers module for multi-GPU training utilities including process group management and tensor reduction"
+  },
+  "facebookresearch_graph2nn/pycls/utils/error_handler.py": {
+    "create_ErrorHandler": "create an ErrorHandler instance with a shared error queue to listen for child process errors",
+    "add_child_process": "add a child process PID to the ErrorHandler so it can be terminated on error",
+    "raise_ChildException": "raise a ChildException to wrap and propagate a traceback from a child process to the parent",
+    "listen_for_errors": "start a daemon thread that listens on the error queue and triggers SIGUSR1 when an error arrives",
+    "handle_signal_SIGUSR1": "handle a SIGUSR1 signal by killing all registered child processes and raising the child exception"
+  },
+  "facebookresearch_graph2nn/pycls/utils/logging.py": {
+    "setup_logging": "setup logging to write to stdout or a file for the master process only",
+    "log_json_stats": "log training stats as JSON with optional TensorBoard writer and epoch result file output",
+    "load_json_stats": "load and parse JSON stats lines from a training log file into a list of dicts",
+    "parse_json_stats": "parse loaded log stats to extract values for a specific row type and key",
+    "get_log_files": "get all log files and their names from a directory of trained model subdirectories"
+  },
+  "facebookresearch_graph2nn/pycls/utils/lr_policy.py": {
+    "get_epoch_lr": "get the learning rate for a given epoch using the configured policy with linear warmup support",
+    "get_lr_fun": "get the learning rate policy function by name from the configured OPTIM.LR_POLICY setting",
+    "lr_fun_steps": "compute the learning rate using a step decay schedule based on configured step boundaries and multiplier",
+    "lr_fun_exp": "compute the learning rate using an exponential decay schedule with a configurable gamma factor",
+    "lr_fun_cos": "compute the learning rate using a cosine annealing schedule from base_lr down to zero over max epochs"
+  },
+  "facebookresearch_graph2nn/pycls/utils/meters.py": {
+    "create_scalarmeter": "create a ScalarMeter with a window size to track scalar values over a rolling window",
+    "use_scalarmeter_add_value": "add a value to a ScalarMeter and compute its window median, average, or global average",
+    "create_trainmeter": "create a TrainMeter to measure training stats like loss, top1/top5 error, and learning rate",
+    "use_trainmeter_update_stats": "update training stats with top1 error, top5 error, loss, learning rate, and minibatch size",
+    "create_testmeter": "create a TestMeter to measure testing stats including top1/top5 error and minimum error tracking"
+  },
+  "facebookresearch_graph2nn/pycls/utils/metrics.py": {
+    "compute_topk_accuracies": "compute top-k accuracy percentages from model predictions and ground truth labels",
+    "compute_topk_errors": "compute top-k error percentages from model predictions and ground truth labels",
+    "count_model_parameters": "count the total number of parameters in a PyTorch model including scaled layers",
+    "count_model_flops": "count the total floating point operations for a PyTorch model on cifar10 or imagenet",
+    "measure_model_ops_params": "measure FLOPs and parameter counts by monkey-patching model forward passes with dummy input"
+  },
+  "facebookresearch_graph2nn/pycls/utils/multiprocessing.py": {
+    "run_multi_proc_run": "run a function across multiple processes with error handling and process group initialization",
+    "run_run_child_process": "run a function from a child process with distributed process group setup and teardown",
+    "get_gpu_memory_map": "get the current GPU memory usage in MB for all available GPUs via nvidia-smi",
+    "auto_select_gpu": "auto select an available GPU based on memory usage probability and a configurable threshold",
+    "test_multi_proc_run": "test the multi_proc_run function to verify it spawns and joins multiple subprocesses correctly"
+  },
+  "facebookresearch_graph2nn/pycls/utils/net.py": {
+    "init_weights": "init weights of a PyTorch model using ResNet style initialization for Conv2d, Linear, and BatchNorm layers",
+    "compute_precise_bn_stats": "compute precise batch normalization statistics on training data by accumulating mean and variance across minibatches",
+    "get_flat_weights": "get all model weights as a single flat vector by concatenating parameter tensors into one column vector",
+    "set_flat_weights": "set all model weights from a single flat vector by copying values back into each parameter tensor",
+    "model2adj": "extract model weights and masks as a dictionary of numpy arrays for Linear, Conv2d, and custom layer types"
+  },
+  "facebookresearch_graph2nn/pycls/utils/plotting.py": {
+    "plot_error_curves_plotly": "plot training and test error curves using plotly and save the interactive chart to an HTML file",
+    "plot_error_curves_pyplot": "plot training and test error curves using matplotlib and optionally save the static chart to a file",
+    "get_plot_colors": "generate a list of distinct colors for plotting with support for pyplot or plotly color formats",
+    "prepare_plot_data": "load JSON log files and extract epoch and metric data for training and test phases",
+    "review_plotting_module": "review the plotting module functions for generating error curve visualizations from training logs"
+  },
+  "facebookresearch_graph2nn/pycls/utils/timer.py": {
+    "create_timer_instance": "create a Timer instance to measure elapsed time between tic and toc calls",
+    "start_timer_with_tic": "start the timer by calling tic on a Timer instance to record the start time",
+    "stop_timer_with_toc": "stop the timer by calling toc to compute elapsed time and update average time",
+    "reset_timer_state": "reset all accumulated timing data including total time, calls, and average time to zero",
+    "measure_code_execution_time": "measure code execution time by calling tic before and toc after the code block"
+  },
+  "facebookresearch_graph2nn/tools/train_net.py": {
+    "train_classification_model": "train a classification model using a config file with multi-GPU support and automatic checkpointing",
+    "run_train_epoch": "run one epoch of training with forward pass, loss computation, backward pass, and parameter updates",
+    "evaluate_model": "evaluate the model on the test set and compute top-1 and top-5 error rates",
+    "auto_match_model_flops": "automatically adjust model dimensions to match a target FLOP or parameter count baseline",
+    "log_model_info": "log model architecture, parameter count, FLOP count, and node count to console and tensorboard"
+  }
+}

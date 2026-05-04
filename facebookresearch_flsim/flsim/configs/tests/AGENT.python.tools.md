@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/flsim
+- repo_uri: https://github.com/facebookresearch/flsim
+
+## File: facebookresearch_flsim/flsim/configs/tests/test_config_validation.py
+
+Prompts
+
+```
+['test that Hydra throws InstantiationException when config has MISSING required fields', 'run Hydra compose with trainer and staleness_weight config overrides to build a config object', 'instantiate a Hydra trainer config with a DummyAlphabetFLModel and cuda_enabled flag', 'assert that an InstantiationException is raised when instantiating a config with missing fields', 'review the TestConfigValidation class and its test for Hydra config missing field validation']
+```
+
+Usage
+
+```
+{'test_config_validation_missing_field': 'test that Hydra throws InstantiationException when config has MISSING required fields', 'run_hydra_compose_with_overrides': 'run Hydra compose with trainer and staleness_weight config overrides to build a config object', 'instantiate_trainer_with_model': 'instantiate a Hydra trainer config with a DummyAlphabetFLModel and cuda_enabled flag', 'assert_raises_instantiation_error': 'assert that an InstantiationException is raised when instantiating a config with missing fields', 'review_test_config_validation_class': 'review the TestConfigValidation class and its test for Hydra config missing field validation'}
+```
+

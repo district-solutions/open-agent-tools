@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/banmo
+- repo_uri: https://github.com/facebookresearch/banmo
+
+## File: facebookresearch_banmo/third_party/detectron2/projects/PointRend/train_net.py
+
+Prompts
+
+```
+['run the PointRend training script with a config file and optional command line arguments', 'run the PointRend model evaluation only mode using a config file and pre-trained weights', 'build semantic segmentation training augmentations including resize, crop, color augmentation, and random flip', 'build an evaluator for LVIS, COCO, semantic segmentation, or Cityscapes datasets by dataset name', 'build a training data loader with optional semantic segmentation augmentations for the given config']
+```
+
+Usage
+
+```
+{'run_PointRend_training': 'run the PointRend training script with a config file and optional command line arguments', 'run_PointRend_evaluation': 'run the PointRend model evaluation only mode using a config file and pre-trained weights', 'build_sem_seg_train_aug': 'build semantic segmentation training augmentations including resize, crop, color augmentation, and random flip', 'build_Trainer_evaluator': 'build an evaluator for LVIS, COCO, semantic segmentation, or Cityscapes datasets by dataset name', 'build_Trainer_train_loader': 'build a training data loader with optional semantic segmentation augmentations for the given config'}
+```
+

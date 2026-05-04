@@ -1,0 +1,149 @@
+{
+  "facebookresearch_3detr/datasets/scannet.py": {
+    "create_scannet_dataset_config": "create a ScannetDatasetConfig instance to map 18 ScanNet object classes to NYU40 IDs and class indices",
+    "rotate_aligned_boxes": "rotate axis-aligned 3D bounding boxes by a given rotation matrix using ScannetDatasetConfig.rotate_aligned_boxes",
+    "convert_box_param_to_corners": "convert box center, size, and angle parameters to 3D corner coordinates using box_parametrization_to_corners_np",
+    "create_scannet_detection_dataset": "create a ScannetDetectionDataset for training 3D object detection with configurable point count, augmentation, and random cuboid sampling",
+    "load_scannet_scan_item": "load a ScanNet scan by index via ScannetDetectionDataset getitem to get point clouds, bounding boxes, and semantic labels"
+  },
+  "facebookresearch_3detr/datasets/sunrgbd.py": {
+    "create_dataset_loader": "create a SunrgbdDetectionDataset instance to load SUN RGB-D point clouds and bounding boxes for training",
+    "convert_angle_to_class": "convert a continuous heading angle to a discrete angle class and residual using SunrgbdDatasetConfig",
+    "convert_class_to_angle": "convert a discrete angle class and residual back to a continuous heading angle using SunrgbdDatasetConfig",
+    "compute_box_corners": "compute 3D bounding box corner coordinates from center, size, and heading angle using box_parametrization_to_corners_np",
+    "augment_point_clouds": "apply random flipping, rotation, scaling, and color jitter augmentation to SUN RGB-D point clouds and bounding boxes"
+  },
+  "facebookresearch_3detr/models/helpers.py": {
+    "create_GenericMLP": "create a GenericMLP with specified input, hidden, and output dimensions using linear layers",
+    "create_GenericMLP_conv": "create a GenericMLP using 1D convolution layers instead of linear layers for feature processing",
+    "use_BatchNormDim1Swap": "use BatchNormDim1Swap to apply batch normalization on tensors in HW x N x C format",
+    "clone_module_with_get_clones": "clone a PyTorch module N times using get_clones to create a ModuleList of deep copies",
+    "init_weights_xavier": "initialize MLP weights using xavier_uniform initialization via the do_weight_init method"
+  },
+  "facebookresearch_3detr/models/model_3detr.py": {
+    "build_3detr_model": "build a 3DETR model and BoxProcessor from args and dataset_config using build_3detr",
+    "build_encoder": "build a vanilla or masked TransformerEncoder from args using build_encoder",
+    "build_decoder": "build a TransformerDecoder with intermediate outputs from args using build_decoder",
+    "run_Model3DETR_forward": "run the Model3DETR forward pass on point cloud inputs to get box predictions",
+    "compute_box_predictions": "compute 3D bounding box predictions from decoder box features using get_box_predictions"
+  },
+  "facebookresearch_3detr/models/position_embedding.py": {
+    "create_sine_positional_embeddings": "create sine positional embeddings for 3D point cloud coordinates using PositionEmbeddingCoordsSine",
+    "create_fourier_positional_embeddings": "create fourier positional embeddings for 3D point cloud coordinates using PositionEmbeddingCoordsSine",
+    "build_position_embedding_module": "build a PositionEmbeddingCoordsSine module with configurable temperature, normalization, and embedding type",
+    "test_sine_embeddings_method": "test the get_sine_embeddings method with batched xyz coordinates and num_channels",
+    "test_fourier_embeddings_method": "test the get_fourier_embeddings method with batched xyz coordinates and gauss_B matrix"
+  },
+  "facebookresearch_3detr/models/transformer.py": {
+    "build_TransformerEncoder": "build a TransformerEncoder with cloned encoder layers, optional normalization, and configurable weight initialization",
+    "build_TransformerDecoder": "build a TransformerDecoder that returns intermediate activations from all decoding layers with optional attention weights",
+    "build_MaskedTransformerEncoder": "build a MaskedTransformerEncoder with per-layer masking radius and interim downsampling for 3D point cloud data",
+    "build_TransformerEncoderLayer": "build a TransformerEncoderLayer with multihead self-attention, optional FFN, and pre or post layer normalization",
+    "build_TransformerDecoderLayer": "build a TransformerDecoderLayer with self-attention, cross-attention, feedforward network, and positional embeddings"
+  },
+  "facebookresearch_3detr/third_party/pointnet2/pointnet2_modules.py": {
+    "build_PointnetSAModuleMSG": "build a PointnetSAModuleMSG layer with multiscale grouping using radii, nsamples, and mlps for point cloud feature extraction",
+    "build_PointnetSAModuleVotes": "build a PointnetSAModuleVotes layer with max avg or rbf pooling for vote net point cloud processing",
+    "build_PointnetFPModule": "build a PointnetFPModule layer to propagate features from known to unknown points via inverse distance weighted interpolation",
+    "build_PointnetLFPModuleMSG": "build a PointnetLFPModuleMSG learnable feature propagation layer with multiscale grouping to propagate features between point sets",
+    "run_PointnetSAModuleMSG": "run the PointnetSAModuleMSG module on random xyz coordinates and features tensors to extract downsampled point cloud features"
+  },
+  "facebookresearch_3detr/third_party/pointnet2/pointnet2_test.py": {
+    "test_interpolation_grad": "test the gradient correctness of pointnet2_utils three_interpolate using PyTorch gradcheck",
+    "run_interpolation_test": "run the pointnet2 three interpolate gradient test to verify autograd correctness",
+    "review_test_interpolation_grad": "review the test_interpolation_grad function that validates three_interpolate gradients with hardcoded indices and weights",
+    "summarize_interpolate_func": "summarize the nested interpolate_func that calls pointnet2_utils three_interpolate with index and weight tensors",
+    "refactor_test_interpolation_grad": "refactor test_interpolation_grad to parameterize batch size, feature dimension, and number of points"
+  },
+  "facebookresearch_3detr/third_party/pointnet2/pointnet2_utils.py": {
+    "furthest_point_sample": "sample npoint features from a point cloud using iterative furthest point sampling on xyz coordinates",
+    "gather_operation": "gather selected point features by index from a (B, C, N) feature tensor using gathered indices",
+    "three_nn": "find the three nearest neighbors of unknown points in a known point set and return distances and indices",
+    "ball_query": "query points within a given radius around center points and return indices of features in each ball",
+    "query_and_group": "group point cloud features using ball query with radius and optional xyz normalization and uniform sampling"
+  },
+  "facebookresearch_3detr/third_party/pointnet2/pytorch_utils.py": {
+    "build_shared_mlp": "build a SharedMLP module with a list of channel sizes for PointNet2 feature extraction",
+    "create_conv2d_layer": "create a Conv2d layer with optional batch norm and ReLU activation for 2D convolution",
+    "create_conv1d_layer": "create a Conv1d layer with optional batch norm and preact mode for 1D convolution",
+    "create_conv3d_layer": "create a Conv3d layer with optional batch norm and kaiming init for 3D convolution",
+    "create_bn_momentum_scheduler": "create a BNMomentumScheduler to adjust batch norm momentum per epoch using a lambda function"
+  },
+  "facebookresearch_3detr/utils/ap_calculator.py": {
+    "create_APCalculator": "create an APCalculator instance with dataset config and IoU thresholds to evaluate 3D detection average precision",
+    "run_parse_predictions": "run parse_predictions to parse predicted 3D boxes with NMS and confidence thresholding from model outputs",
+    "run_AP_calculator_step": "run the APCalculator step method to accumulate one batch of predicted and ground truth 3D boxes",
+    "run_compute_metrics": "run compute_metrics on the APCalculator to compute mAP and AR across all accumulated predictions and ground truths",
+    "create_ap_config_dict": "create an AP config dict with get_ap_config_dict to set NMS, confidence threshold, and empty box removal options"
+  },
+  "facebookresearch_3detr/utils/box_ops3d.py": {
+    "compute_generalized_box3d_iou_tensor": "compute the generalized 3D bounding box IoU between two sets of corner tensors using batched tensor operations",
+    "compute_3d_box_iou": "compute the 3D bounding box IoU and union volume for two sets of 8-corner box arrays",
+    "generate_3d_box_corners_batch": "generate 3D box corner coordinates from batched box size, heading angle, and center parameters",
+    "clip_polygon_with_sutherland_hodgman": "clip a subject polygon against a convex clip polygon using the Sutherland-Hodgman algorithm",
+    "convert_box_cxcywh_to_xyxy": "convert bounding boxes from center x, center y, width, height format to x0, y0, x1, y1 format"
+  },
+  "facebookresearch_3detr/utils/box_util.py": {
+    "compute_3d_box_iou": "compute the 3D bounding box IoU and 2D bird's eye view IoU between two sets of 8 corner points",
+    "compute_2d_box_iou": "compute the 2D bounding box IoU between two axis-aligned boxes given as xmin,ymin,xmax,ymax tuples",
+    "generate_3d_box_corners": "generate 3D box corner coordinates from box size, heading angle, and center position using roty rotation",
+    "compute_generalized_3d_box_giou": "compute the generalized 3D box IoU tensor between batches of boxes with optional rotated box intersection",
+    "convert_coordinate_system": "flip point cloud coordinates from depth sensor format X-right,Y-forward,Z-up to camera format X-right,Y-down,Z-forward"
+  },
+  "facebookresearch_3detr/utils/dist.py": {
+    "init_distributed_process_group": "initialize a PyTorch distributed process group with a given GPU ID, rank, world size, and backend",
+    "all_reduce_sum_tensor": "sum a tensor across all distributed processes using all_reduce and return the aggregated result",
+    "all_reduce_average_tensor": "average a tensor across all distributed processes by summing and dividing by world size",
+    "reduce_dict_values": "reduce a dictionary of tensor values across all processes with optional averaging enabled",
+    "all_gather_pickle_data": "gather arbitrary picklable data from all distributed ranks into a single list"
+  },
+  "facebookresearch_3detr/utils/eval_det.py": {
+    "run_eval_det_cls": "run eval_det_cls to compute precision, recall, and average precision for a single object detection class",
+    "run_eval_det": "run eval_det to compute precision, recall, and average precision for multiple object detection classes",
+    "run_eval_det_multiprocessing": "run eval_det_multiprocessing to compute multi-class detection metrics in parallel using 10 worker processes",
+    "run_voc_ap": "run voc_ap to compute VOC average precision from recall and precision arrays using 11-point or interpolated method",
+    "run_get_iou_obb": "run get_iou_obb to compute the 3D oriented bounding box IoU between two 3D bounding boxes"
+  },
+  "facebookresearch_3detr/utils/io.py": {
+    "save_checkpoint_model": "save a PyTorch model checkpoint with optimizer state, epoch, args, and validation metrics to disk",
+    "resume_checkpoint_training": "resume training from the last checkpoint by loading model and optimizer state from checkpoint.pth",
+    "save_custom_filename_checkpoint": "save a model checkpoint with a custom filename instead of the default epoch-based naming convention",
+    "check_resume_availability": "check if a checkpoint directory and checkpoint file exist before attempting to resume training",
+    "load_best_val_metrics": "load the best validation metrics from a saved checkpoint when resuming training"
+  },
+  "facebookresearch_3detr/utils/logger.py": {
+    "create_logger_instance": "create a Logger instance with a log directory for TensorBoard scalar logging",
+    "log_scalars_with_dict": "log a dictionary of scalar values to TensorBoard at a given training step",
+    "log_scalars_with_prefix": "log scalar values with a custom prefix to namespace TensorBoard metrics",
+    "review_logger_class": "review the Logger class and its use of tensorboardX SummaryWriter for distributed training",
+    "summarize_logger_init": "summarize the Logger init logic that checks is_primary before creating a SummaryWriter"
+  },
+  "facebookresearch_3detr/utils/misc.py": {
+    "create_smoothedvalue_tracker": "create a SmoothedValue instance to track a rolling window of metric values during training",
+    "compute_huber_loss": "compute the Huber loss for a tensor of prediction errors with a configurable delta threshold",
+    "convert_tensor_to_1d_list": "convert a PyTorch tensor to a flat Python list of floats using to_list_1d",
+    "convert_tensor_to_3d_list": "convert a 3D PyTorch tensor to a nested Python list of floats using to_list_3d",
+    "update_smoothedvalue_metrics": "update a SmoothedValue tracker with new values and query its median, avg, and global_avg properties"
+  },
+  "facebookresearch_3detr/utils/nms.py": {
+    "run_nms_2d": "run non-maximum suppression on 2D axis-aligned bounding boxes with an overlap threshold",
+    "run_nms_2d_faster": "run vectorized non-maximum suppression on 2D bounding boxes using IoU or older overlap ratio",
+    "run_nms_3d_faster": "run vectorized non-maximum suppression on 3D axis-aligned bounding boxes using IoU or older overlap ratio",
+    "run_nms_3d_faster_samecls": "run non-maximum suppression on 3D bounding boxes that only suppresses boxes of the same class",
+    "refactor_nms_2d": "refactor the nms_2d function to remove the debug print statement and use vectorized operations"
+  },
+  "facebookresearch_3detr/utils/pc_util.py": {
+    "random_sampling": "randomly sample N points from a point cloud numpy array with optional replacement",
+    "shift_scale_points": "shift and scale batched point cloud coordinates from a source range to a destination range",
+    "rotate_point_cloud": "rotate a point cloud around the Z axis by a random or provided rotation matrix",
+    "point_cloud_to_bbox": "extract an axis-aligned bounding box center and dimensions from a point cloud",
+    "write_oriented_bbox": "export oriented 3D bounding boxes with heading angles to a PLY mesh file"
+  },
+  "facebookresearch_3detr/utils/random_cuboid.py": {
+    "create_random_cuboid_augmentation": "create a RandomCuboid augmentation instance with min_points, aspect ratio, and crop range parameters",
+    "apply_random_cuboid_crop": "apply random cuboid cropping to a point cloud with target bounding boxes and per-point labels",
+    "check_crop_aspect_ratio": "check if a 3D crop range meets the minimum aspect ratio across xy, xz, or yz planes",
+    "augment_point_cloud_with_boxes": "augment a point cloud by randomly cropping a cuboid that preserves at least one bounding box",
+    "filter_boxes_by_center": "filter bounding boxes by keeping only those whose center lies within the cropped point cloud region"
+  }
+}

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/actionengine
+- repo_uri: https://github.com/google-deepmind/actionengine
+
+## File: google-deepmind_actionengine/third_party/pybind11/tests/extra_setuptools/test_setuphelper.py
+
+Prompts
+
+```
+['test building a pybind11 C++ extension module using setup.py with Pybind11Extension and build_ext', 'test the intree_extensions helper to correctly name in-tree C++ extension modules based on directory structure', 'test intree_extensions with a custom package_dir mapping to resolve extension names in non-standard layouts', 'build a pybind11 C++ extension module using Pybind11Extension with a specified C++ standard version', 'run parallel compilation of pybind11 extensions by installing the ParallelCompile helper before setup']
+```
+
+Usage
+
+```
+{'test_simple_setup_py': 'test building a pybind11 C++ extension module using setup.py with Pybind11Extension and build_ext', 'test_intree_extensions': 'test the intree_extensions helper to correctly name in-tree C++ extension modules based on directory structure', 'test_intree_extensions_package_dir': 'test intree_extensions with a custom package_dir mapping to resolve extension names in non-standard layouts', 'build_pybind11_extension': 'build a pybind11 C++ extension module using Pybind11Extension with a specified C++ standard version', 'run_parallel_compile': 'run parallel compilation of pybind11 extensions by installing the ParallelCompile helper before setup'}
+```
+

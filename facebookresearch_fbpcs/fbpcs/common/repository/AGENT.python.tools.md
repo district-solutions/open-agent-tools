@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fbpcs
+- repo_uri: https://github.com/facebookresearch/fbpcs
+
+## File: facebookresearch_fbpcs/fbpcs/common/repository/instance_local.py
+
+Prompts
+
+```
+['create a LocalInstanceRepository and persist an InstanceBase instance to disk by its ID', 'read the serialized schema string of an existing instance from the local repository by ID', 'update an existing instance in the local repository by writing its latest schema to disk', 'delete an existing instance file from the local repository given its instance ID', 'review the LocalInstanceRepository _exist method to check if an instance file exists on disk']
+```
+
+Usage
+
+```
+{'create_instance_to_local_repo': 'create a LocalInstanceRepository and persist an InstanceBase instance to disk by its ID', 'read_instance_from_local_repo': 'read the serialized schema string of an existing instance from the local repository by ID', 'update_instance_in_local_repo': 'update an existing instance in the local repository by writing its latest schema to disk', 'delete_instance_from_local_repo': 'delete an existing instance file from the local repository given its instance ID', 'check_instance_exists_in_local_repo': 'review the LocalInstanceRepository _exist method to check if an instance file exists on disk'}
+```
+

@@ -1,0 +1,343 @@
+{
+  "facebookresearch_fvcore/fvcore/common/benchmark.py": {
+    "run_timeit_decorator": "use the timeit decorator to measure function execution time with configurable iterations and warmup",
+    "run_benchmark_function": "run the benchmark function to time a callable across multiple argument sets and print results",
+    "test_timeit_with_warmup": "test the timeit decorator with warmup iterations to account for cache and autotuning effects",
+    "test_benchmark_with_kwargs": "test the benchmark function with a list of kwargs dicts to compare performance across inputs",
+    "summarize_timeit_statistics": "summarize the timeit decorator output which returns mean, median, min, max, and stddev timing stats"
+  },
+  "facebookresearch_fvcore/fvcore/common/checkpoint.py": {
+    "create_Checkpointer": "create a Checkpointer for a PyTorch model with an optional save directory and optimizer",
+    "save_checkpoint": "save a PyTorch model checkpoint to disk using the Checkpointer save method",
+    "load_checkpoint": "load a PyTorch model checkpoint from a file path using the Checkpointer load method",
+    "resume_or_load_checkpoint": "resume training from the last checkpoint or load a specific checkpoint file",
+    "create_PeriodicCheckpointer": "create a PeriodicCheckpointer to automatically save model checkpoints every N training iterations"
+  },
+  "facebookresearch_fvcore/fvcore/common/config.py": {
+    "load_yaml_with_base": "load a YAML config file that inherits attributes from a base config using the _BASE_ key",
+    "merge_from_file": "merge configuration values from a YAML file into an existing CfgNode instance with base config support",
+    "merge_from_other_cfg": "merge another CfgNode instance into the current config node while validating reserved keys",
+    "merge_from_list": "merge configuration values from a flat key-value list into the current CfgNode instance",
+    "set_computed_attribute": "set a COMPUTED_ prefixed attribute on a frozen CfgNode that allows insertion-only semantics"
+  },
+  "facebookresearch_fvcore/fvcore/common/file_io.py": {
+    "get_cache_dir_default": "get the default fvcore cache directory using environment variable FVCORE_CACHE or fallback to temp directory",
+    "get_cache_dir_custom": "get a custom cache directory path and ensure it is writable creating it if needed",
+    "use_PathManager_open": "open a file from a local path HTTP URL or OneDrive using the global PathManager",
+    "use_LazyPath_context": "use LazyPath as a context manager to lazily download and access remote files locally",
+    "use_file_lock_context": "use file_lock as a context manager to acquire an exclusive lock on a file"
+  },
+  "facebookresearch_fvcore/fvcore/common/history_buffer.py": {
+    "create_HistoryBuffer": "create a HistoryBuffer instance with a configurable max_length to track scalar values over iterations",
+    "update_HistoryBuffer": "update the HistoryBuffer with a new scalar value and optional iteration number",
+    "get_latest_HistoryBuffer": "get the latest scalar value added to the HistoryBuffer",
+    "compute_window_avg_HistoryBuffer": "compute the mean of the latest window_size values in the HistoryBuffer",
+    "compute_global_avg_HistoryBuffer": "compute the global average of all values ever added to the HistoryBuffer"
+  },
+  "facebookresearch_fvcore/fvcore/common/registry.py": {
+    "create_registry": "create a new Registry instance with a given name for storing named objects",
+    "register_object_as_decorator": "register a class or function in the registry using the register decorator pattern",
+    "register_object_as_call": "register an object directly in the registry by calling register with the object as argument",
+    "get_registered_object": "get a registered object from the registry by its name and raise KeyError if not found",
+    "check_registry_contains": "check if a named object exists in the registry using the contains operator"
+  },
+  "facebookresearch_fvcore/fvcore/common/timer.py": {
+    "create_timer_instance": "create a Timer instance to measure elapsed time since start",
+    "reset_timer": "reset the Timer to restart elapsed time tracking from now",
+    "pause_and_resume_timer": "pause the Timer to stop tracking then resume to continue tracking",
+    "get_elapsed_seconds": "get the total elapsed seconds from the Timer excluding paused time",
+    "get_average_seconds": "get the average seconds per start-pause cycle from the Timer"
+  },
+  "facebookresearch_fvcore/fvcore/nn/activation_count.py": {
+    "build_activation_count_analysis": "build a Python module that uses ActivationCountAnalysis to count activations for a PyTorch model with given inputs",
+    "run_activation_count_function": "run the activation_count function to compute total activations in mega units for a PyTorch model",
+    "test_ActivationCountAnalysis_total": "test the ActivationCountAnalysis class by calling total to get the total activation count for a model",
+    "review_ActivationCountAnalysis_by_operator": "review the ActivationCountAnalysis class and use by_operator to get activation counts grouped by operator type",
+    "summarize_ActivationCountAnalysis_by_module": "summarize the ActivationCountAnalysis class and use by_module to get activation counts for all submodules"
+  },
+  "facebookresearch_fvcore/fvcore/nn/distributed.py": {
+    "build_differentiable_all_reduce": "build a python module that performs a differentiable all-reduce operation on a PyTorch tensor across distributed processes",
+    "build_differentiable_all_gather": "build a python module that performs a differentiable all-gather operation on a PyTorch tensor across distributed processes",
+    "review_AllReduce_Function": "review the _AllReduce autograd Function class that implements forward via all-gather and backward via all-reduce",
+    "review_AllGather_Function": "review the _AllGather autograd Function class that gathers tensors from all ranks and reduces gradients",
+    "test_differentiable_all_reduce_single_rank": "test the differentiable_all_reduce function returns the input unchanged when world size is 1"
+  },
+  "facebookresearch_fvcore/fvcore/nn/flop_count.py": {
+    "analyze_model_flops_total": "create a FlopCountAnalysis to compute the total flop count for a PyTorch model given sample inputs",
+    "analyze_flops_by_operator": "use FlopCountAnalysis by_operator method to get a Counter of flop counts grouped by operator type",
+    "analyze_flops_by_module": "use FlopCountAnalysis by_module method to get flop counts for each submodule in a PyTorch model",
+    "analyze_flops_by_module_and_operator": "use FlopCountAnalysis by_module_and_operator to get a nested dictionary of flop counts by module and operator",
+    "compute_gflops_with_flop_count": "call flop_count function to compute per-operator GFLOPs and get unsupported operations for a model"
+  },
+  "facebookresearch_fvcore/fvcore/nn/focal_loss.py": {
+    "compute_sigmoid_focal_loss": "compute the sigmoid focal loss for RetinaNet dense detection with configurable alpha and gamma parameters",
+    "compute_sigmoid_focal_loss_star": "compute the FL* variant of sigmoid focal loss from the RetinaNet paper appendix",
+    "use_jit_compiled_focal_loss": "use the TorchScript compiled version of sigmoid focal loss for optimized inference performance",
+    "use_jit_compiled_focal_loss_star": "use the TorchScript compiled version of FL* focal loss for optimized inference performance",
+    "apply_focal_loss_with_reduction": "apply focal loss with mean or sum reduction to get a scalar loss value for training"
+  },
+  "facebookresearch_fvcore/fvcore/nn/giou_loss.py": {
+    "compute_giou_loss_no_reduction": "compute the generalized IoU loss between two sets of bounding boxes with no reduction applied",
+    "compute_giou_loss_mean_reduction": "compute the mean generalized IoU loss between two sets of bounding boxes for object detection training",
+    "compute_giou_loss_sum_reduction": "compute the summed generalized IoU loss between two sets of bounding boxes for batch training",
+    "compute_giou_loss_single_boxes": "compute the generalized IoU loss between two single bounding boxes in XYXY format",
+    "compute_giou_loss_custom_eps": "compute the generalized IoU loss between bounding boxes with a custom epsilon value to prevent division by zero"
+  },
+  "facebookresearch_fvcore/fvcore/nn/jit_analysis.py": {
+    "build_JitModelAnalysis": "build a JitModelAnalysis object to trace a PyTorch model and calculate per-submodule statistics using JIT tracing",
+    "run_set_op_handle": "run set_op_handle on a JitModelAnalysis to register custom operator handles for calculating flops or other statistics",
+    "run_by_operator": "run by_operator on a JitModelAnalysis to get a Counter of statistics grouped by operator type for a submodule",
+    "run_by_module": "run by_module on a JitModelAnalysis to get aggregated statistics across all operators grouped by submodule names",
+    "run_total": "run total on a JitModelAnalysis to get the total aggregated statistic across all operators for a requested module"
+  },
+  "facebookresearch_fvcore/fvcore/nn/jit_handles.py": {
+    "count_flops_for_convolution": "use conv_flop_jit to count floating point operations for a JIT-traced convolution layer",
+    "count_flops_for_linear_layer": "use addmm_flop_jit to count floating point operations for a fully connected linear layer",
+    "count_flops_for_batch_norm": "use batchnorm_flop_jit to count floating point operations for a batch normalization layer",
+    "count_activations_for_op": "use generic_activation_jit to create a handle that counts activations from an operation output shape",
+    "count_flops_for_matmul": "use matmul_flop_jit to count floating point operations for a matrix multiplication operation"
+  },
+  "facebookresearch_fvcore/fvcore/nn/parameter_count.py": {
+    "count_parameters": "count the total number of parameters in a PyTorch model and its submodules",
+    "count_parameters_by_module": "count parameters grouped by each submodule name in a PyTorch neural network model",
+    "generate_parameter_table": "generate a formatted markdown table showing parameter counts and shapes for a PyTorch model",
+    "generate_parameter_table_with_depth": "generate a parameter count table for a PyTorch model with a custom max recursion depth",
+    "summarize_model_parameters": "summarize the parameter count of a PyTorch model including total parameters and per-module breakdown"
+  },
+  "facebookresearch_fvcore/fvcore/nn/precise_bn.py": {
+    "run_update_bn_stats": "run update_bn_stats to recompute batch norm statistics for a PyTorch model using a data loader",
+    "run_get_bn_modules": "run get_bn_modules to find all BatchNorm modules in training mode within a PyTorch model",
+    "review_PopulationVarianceEstimator": "review the _PopulationVarianceEstimator class that estimates population variance using batch-size-weighted sample variance",
+    "review_MeanOfBatchVarianceEstimator": "review the _MeanOfBatchVarianceEstimator class that estimates population variance as a simple average of batch variances",
+    "review_BN_MODULE_TYPES": "review the BN_MODULE_TYPES tuple that lists supported BatchNorm module types including BatchNorm1d, 2d, 3d, and SyncBatchNorm"
+  },
+  "facebookresearch_fvcore/fvcore/nn/print_model_statistics.py": {
+    "build_flop_count_str": "build a python module that uses flop_count_str to print a model's parameters and flops as a string",
+    "build_flop_count_table": "build a python module that uses flop_count_table to print a model's parameters and flops as a formatted table",
+    "create_format_size": "create a function that formats an integer with K M G suffixes using _format_size",
+    "create_pretty_statistics": "create a function that converts numeric statistics to pretty strings with K M G suffixes",
+    "create_remove_zero_statistics": "create a function that removes modules with all zero statistics from the statistics dictionary"
+  },
+  "facebookresearch_fvcore/fvcore/nn/smooth_l1_loss.py": {
+    "compute_smooth_l1_loss": "compute the smooth L1 loss between input and target tensors with a configurable beta parameter",
+    "compute_smooth_l1_loss_with_mean_reduction": "compute the smooth L1 loss between two tensors and return the mean of all loss values",
+    "compute_smooth_l1_loss_with_sum_reduction": "compute the smooth L1 loss between two tensors and return the sum of all loss values",
+    "compute_smooth_l1_loss_no_reduction": "compute the smooth L1 loss between two tensors and return per-element loss without reduction",
+    "compute_smooth_l1_loss_l1_fallback": "compute the smooth L1 loss that falls back to pure L1 loss when beta is less than 1e-5"
+  },
+  "facebookresearch_fvcore/fvcore/nn/squeeze_excitation.py": {
+    "build_SqueezeExcitation_2d": "build a SqueezeExcitation block for 2D tensors with 256 channels and a reduction ratio of 16",
+    "build_SqueezeExcitation_3d": "build a SqueezeExcitation block for 3D tensors with 128 channels using a custom activation function",
+    "build_SpatialSqueezeExcitation": "build a SpatialSqueezeExcitation block for 2D tensors with 64 channels to squeeze channel-wise and excite spatially",
+    "build_ChannelSpatialSqueezeExcitation": "build a ChannelSpatialSqueezeExcitation block that combines channel and spatial squeeze excitation for 256 channels",
+    "run_SqueezeExcitation_forward": "run the forward pass of a SqueezeExcitation block on a batch of 2D input tensors"
+  },
+  "facebookresearch_fvcore/fvcore/nn/weight_init.py": {
+    "init_c2_xavier_fill": "initialize a PyTorch module's weight using Caffe2 XavierFill and set bias to zero",
+    "init_c2_msra_fill": "initialize a PyTorch module's weight using Caffe2 MSRAFill with Kaiming normal and set bias to zero",
+    "review_c2_xavier_fill": "review the c2_xavier_fill function that applies Kaiming uniform initialization with a=1 to module weights",
+    "review_c2_msra_fill": "review the c2_msra_fill function that applies Kaiming normal fan_out initialization to module weights",
+    "test_weight_init": "test the c2_xavier_fill and c2_msra_fill functions on a PyTorch nn.Linear module"
+  },
+  "facebookresearch_fvcore/fvcore/transforms/transform.py": {
+    "create_hflip_transform": "create an HFlipTransform to horizontally flip an image and its coordinates given the image width",
+    "create_vflip_transform": "create a VFlipTransform to vertically flip an image and its coordinates given the image height",
+    "create_scale_transform": "create a ScaleTransform to resize an image from original height and width to new dimensions with interpolation",
+    "create_crop_transform": "create a CropTransform to crop an image starting at x0,y0 with given width and height",
+    "create_transform_list": "create a TransformList to chain multiple transforms like HFlipTransform and ScaleTransform and apply them in sequence"
+  },
+  "facebookresearch_fvcore/fvcore/transforms/transform_util.py": {
+    "convert_numpy_to_float_tensor": "convert a numpy array of shape HxWxC or NxHxWxC to a PyTorch float tensor with NxCxHxW dimensions",
+    "convert_tensor_to_numpy": "convert a PyTorch float tensor with NxCxHxW shape back to a numpy array with target shape and dtype",
+    "review_to_float_tensor": "review the to_float_tensor function that handles uint8 to float conversion and negative stride resolution",
+    "review_to_numpy": "review the to_numpy function that handles tensor to numpy conversion with rounding for uint8 output",
+    "test_to_float_tensor": "test the to_float_tensor function with 2D, 3D, and 4D numpy arrays to verify correct NxCxHxW output"
+  },
+  "facebookresearch_fvcore/io_tests/test_file_io.py": {
+    "test_PathManager_open": "test PathManager.open to read a local file and verify its contents",
+    "test_PathManager_exists_isfile_isdir": "test PathManager.exists, isfile, and isdir to check file and directory paths",
+    "test_PathManager_ls_mkdirs": "test PathManager.ls to list directory contents and mkdirs to create nested directories",
+    "test_PathManager_copy_symlink_rm": "test PathManager.copy, symlink, and rm to copy, link, and remove files",
+    "test_LazyPath_materialize": "test LazyPath lazy evaluation with os.fspath and os.path.join operations"
+  },
+  "facebookresearch_fvcore/tests/bm_common.py": {
+    "run_bm_history_buffer_update": "run the benchmark for TestHistoryBuffer update with varying num_values from 100 to 1000000",
+    "test_bm_history_buffer_update": "test the bm_history_buffer_update benchmark function that measures buffer update performance across scales",
+    "review_bm_history_buffer_update": "review the bm_history_buffer_update function that benchmarks HistoryBuffer initialization with different sizes"
+  },
+  "facebookresearch_fvcore/tests/bm_focal_loss.py": {
+    "run_bm_focal_loss": "run the bm_focal_loss benchmark to measure focal loss performance across different input sizes on CUDA",
+    "run_bm_focal_loss_star": "run the bm_focal_loss_star benchmark to measure focal loss star variant performance on CUDA",
+    "benchmark_focal_loss_jit": "benchmark the JIT-compiled focal loss implementation against the standard version using fvcore benchmark",
+    "benchmark_focal_loss_with_alpha": "benchmark focal loss computation with and without alpha weighting across batch sizes 100 to 10000",
+    "review_bm_focal_loss": "review the bm_focal_loss and bm_focal_loss_star benchmark functions for CUDA availability checks and test configurations"
+  },
+  "facebookresearch_fvcore/tests/test_activation_count.py": {
+    "test_activation_count_conv2d": "test activation_count on a 3-layer Conv2d network and verify counts match ground truth",
+    "test_activation_count_linear": "test activation_count on a fully connected nn.Linear layer and verify output counts",
+    "test_activation_count_custom_handles": "test activation_count with user-provided custom handles for aten::_convolution operations",
+    "test_activation_count_analysis_by_module": "test ActivationCountAnalysis.by_module() to get per-module activation counts for conv and linear layers",
+    "create_small_conv_net": "create a SmallConvNet with three Conv2d layers and compute ground truth activation counts"
+  },
+  "facebookresearch_fvcore/tests/test_checkpoint.py": {
+    "test_Checkpointer_save_load": "test the Checkpointer class by saving a PyTorch model checkpoint and loading it into a fresh model",
+    "test_PeriodicCheckpointer_step": "test the PeriodicCheckpointer step method to verify checkpoints are saved at regular iteration intervals",
+    "test_Checkpointer_has_checkpoint": "test the Checkpointer has_checkpoint method to check if a checkpoint file exists in the save directory",
+    "test_Checkpointer_checkpointables": "test the Checkpointer checkpointables parameter to save and load custom objects alongside the model state dict",
+    "test_PeriodicCheckpointer_max_to_keep": "test the PeriodicCheckpointer max_to_keep parameter to verify only the most recent checkpoints are retained on disk"
+  },
+  "facebookresearch_fvcore/tests/test_common.py": {
+    "test_HistoryBuffer": "test the HistoryBuffer class by creating a buffer, updating values, and verifying avg and median methods",
+    "test_Timer": "test the Timer class by pausing, resuming, resetting, and checking elapsed seconds and avg_seconds",
+    "test_CfgNode_merge_from_file": "test the CfgNode class by merging config values from YAML files with and without unsafe tags",
+    "test_CfgNode_freeze_computed": "test the CfgNode class by freezing it and verifying computed attributes can still be inserted",
+    "test_Registry": "test the Registry class by registering a class with a decorator, retrieving it, and iterating over entries"
+  },
+  "facebookresearch_fvcore/tests/test_flop_count.py": {
+    "analyze_flop_count_model": "analyze the FLOP count of a PyTorch model using flop_count from fvcore.nn",
+    "analyze_flop_count_by_module": "analyze FLOP count per module using FlopCountAnalysis and by_module method",
+    "test_custom_op_handles": "test custom operation handles by passing a supported_ops dict to flop_count",
+    "test_conv_flop_count": "test FLOP count for 1D, 2D, and 3D convolution layers including grouped and transposed conv",
+    "test_batch_norm_flop_count": "test FLOP count for BatchNorm1d, BatchNorm2d, and BatchNorm3d operations"
+  },
+  "facebookresearch_fvcore/tests/test_focal_loss.py": {
+    "test_focal_loss_equals_ce_loss": "test sigmoid_focal_loss equals binary cross entropy loss when gamma is zero and alpha is negative one",
+    "test_focal_loss_easy_examples_downweighted": "test sigmoid_focal_loss downweights easy examples more than cross entropy loss when gamma is two",
+    "test_focal_loss_star_equals_ce_loss": "test sigmoid_focal_loss_star equals binary cross entropy loss when gamma is one and alpha is negative one",
+    "test_focal_loss_star_easy_examples_downweighted": "test sigmoid_focal_loss_star downweights easy examples more than cross entropy loss when gamma is three",
+    "test_focal_loss_alpha_weighting": "test sigmoid_focal_loss alpha parameter zeroes loss for positive or negative examples when set to zero or one"
+  },
+  "facebookresearch_fvcore/tests/test_giou_loss.py": {
+    "test_giou_loss_identical_boxes": "test giou_loss returns zero loss when comparing identical bounding boxes",
+    "test_giou_loss_partial_overlap": "test giou_loss computes correct loss for partially overlapping bounding boxes",
+    "test_giou_loss_no_overlap": "test giou_loss handles non-overlapping side-by-side and diagonal bounding boxes",
+    "test_giou_loss_batched_reduction": "test giou_loss with batched inputs using sum and mean reduction modes",
+    "test_giou_loss_empty_inputs": "test giou_loss handles empty tensor inputs and backward pass correctly"
+  },
+  "facebookresearch_fvcore/tests/test_jit_model_analysis.py": {
+    "run_FlopCountAnalysis_total": "run FlopCountAnalysis on a PyTorch model to compute total FLOPs for all modules",
+    "run_FlopCountAnalysis_by_module": "run FlopCountAnalysis.by_module to get FLOP counts broken down by each submodule name",
+    "run_JitModelAnalysis_set_op_handle": "run JitModelAnalysis.set_op_handle to register custom operator handles for unsupported ops like conv",
+    "test_FlopCountAnalysis_uncalled_modules": "test FlopCountAnalysis.uncalled_modules to find submodules that are never invoked during the forward pass",
+    "test_FlopCountAnalysis_ancestor_mode": "test FlopCountAnalysis.ancestor_mode to switch between caller and owner scope resolution for non-forward calls"
+  },
+  "facebookresearch_fvcore/tests/test_layers_squeeze_excitation.py": {
+    "test_squeeze_excitation_layers": "test the SqueezeExcitation, SpatialSqueezeExcitation, and ChannelSpatialSqueezeExcitation layers with 2D and 3D inputs",
+    "test_build_se_method": "test the SE model builder by iterating over layer types, channel counts, and 2D/3D modes",
+    "run_get_inputs3d_generator": "run the _get_inputs3d static method to generate random 3D tensor test cases for a given channel count",
+    "run_get_inputs2d_generator": "run the _get_inputs2d static method to generate random 2D tensor test cases for a given channel count",
+    "test_get_inputs_dispatcher": "test the _get_inputs dispatcher to yield 2D or 3D tensors based on the is_3d flag"
+  },
+  "facebookresearch_fvcore/tests/test_param_count.py": {
+    "test_parameter_count": "test the parameter_count function to count parameters of a PyTorch model and its submodules",
+    "test_parameter_count_table": "test the parameter_count_table function to format a model's parameter count as a readable table",
+    "test_NetWithReuse": "test the NetWithReuse module that shares weights between conv layers to verify correct parameter counting",
+    "test_NetWithDupPrefix": "test the NetWithDupPrefix module with similarly named layers to verify table output handles prefix collisions",
+    "run_parameter_count_tests": "run the unittest suite to verify parameter_count and parameter_count_table work correctly with reused and duplicate prefix modules"
+  },
+  "facebookresearch_fvcore/tests/test_precise_bn.py": {
+    "run_test_precise_bn": "run the unittest test_precise_bn to verify BatchNorm1d, 2d, and 3d stats are updated correctly",
+    "run_test_precise_bn_insufficient_data": "run the unittest test_precise_bn_insufficient_data to verify an AssertionError is raised when data is insufficient",
+    "test_compute_bn_stats": "test the compute_bn_stats static method to compute mean and variance across a list of tensors",
+    "test_update_bn_stats": "test update_bn_stats from fvcore.nn to update running mean and variance on a BatchNorm model",
+    "review_TestPreciseBN": "review the TestPreciseBN class and its methods for testing precise batch normalization statistics"
+  },
+  "facebookresearch_fvcore/tests/test_print_model_statistics.py": {
+    "test_flop_count_table": "test flop_count_table to generate a markdown table of FLOP counts per PyTorch module",
+    "test_flop_count_str": "test flop_count_str to print a PyTorch model with FLOP and parameter counts inline",
+    "test_pretty_statistics": "test _pretty_statistics to format numeric statistics with K, M, G suffixes for display",
+    "test_group_by_module": "test _group_by_module to reorganize statistics from stat-first to module-first dictionary structure",
+    "test_remove_zero_statistics": "test _remove_zero_statistics to filter out modules whose all statistics are zero"
+  },
+  "facebookresearch_fvcore/tests/test_smooth_l1_loss.py": {
+    "test_smooth_l1_loss": "test the smooth_l1_loss function with torch tensors and different beta values",
+    "test_empty_inputs": "test smooth_l1_loss with empty tensor inputs and verify backward pass works",
+    "run_smooth_l1_loss": "run smooth_l1_loss from fvcore.nn on input and target tensors with a beta parameter",
+    "review_TestSmoothL1Loss": "review the TestSmoothL1Loss unittest class and its test methods for smooth L1 loss validation",
+    "summarize_smooth_l1_loss": "summarize the smooth_l1_loss function usage with reduction modes and beta parameters"
+  },
+  "facebookresearch_fvcore/tests/test_transform.py": {
+    "test_transform_registration": "test registering custom type handlers on Transform subclasses using register_type or its decorator form",
+    "test_transformlist_composition": "test composing multiple transforms into a TransformList using add and iadd operators",
+    "test_image_transforms": "test applying HFlipTransform, VFlipTransform, ScaleTransform, CropTransform, and BlendTransform to image arrays",
+    "test_coords_transforms": "test applying HFlipTransform, VFlipTransform, ScaleTransform, and CropTransform to coordinate arrays and verify inverse",
+    "test_segmentation_transforms": "test applying BlendTransform and ScaleTransform to segmentation arrays with nearest interpolation"
+  },
+  "facebookresearch_fvcore/tests/test_transform_util.py": {
+    "test_to_float_tensor_conversion": "test converting numpy arrays of shape HW, HWC, and NHWC to PyTorch float tensors using to_float_tensor",
+    "test_to_numpy_roundtrip": "test round-trip conversion from numpy array to float tensor and back to numpy using to_numpy",
+    "test_uint8_tensor_conversion": "test converting uint8 numpy arrays scaled to 0-255 range into float tensors via to_float_tensor",
+    "test_to_numpy_dtype_preservation": "test that to_numpy correctly restores the original dtype including uint8 and float32",
+    "test_multi_dimensional_array_conversion": "test 2D, 3D, and 4D numpy array conversions through to_float_tensor and to_numpy utilities"
+  },
+  "facebookresearch_fvcore/tests/test_weight_init.py": {
+    "run_test_conv_weight_init": "run the test_conv_weight_init test to verify msra and xavier fill on Conv1d, Conv2d, Conv3d layers",
+    "run_test_linear_weight_init": "run the test_linear_weight_init test to verify msra and xavier fill on Linear layers",
+    "test_c2_msra_fill": "test c2_msra_fill weight initialization on convolutional and linear PyTorch layers",
+    "test_c2_xavier_fill": "test c2_xavier_fill weight initialization on convolutional and linear PyTorch layers",
+    "test_weight_and_bias_dist_match": "test the weight_and_bias_dist_match helper to check weight std and zero bias distribution"
+  },
+  "facebookresearch_fvcore/tests/param_scheduler/test_scheduler_composite.py": {
+    "test_composite_param_scheduler_invalid_config": "test CompositeParamScheduler raises ValueError for mismatched schedulers lengths or bad interval_scaling values",
+    "test_composite_param_scheduler_long_sequence": "test CompositeParamScheduler with four ConstantParamSchedulers and verify the expected output schedule values",
+    "test_composite_param_scheduler_epsilon_lengths": "test CompositeParamScheduler handles lengths that sum to within epsilon of one without error",
+    "test_composite_param_scheduler_mixed_types": "test CompositeParamScheduler with StepParamScheduler and CosineParamScheduler using rescaled and fixed interval_scaling modes",
+    "test_composite_param_scheduler_linear_continuity": "test CompositeParamScheduler with two LinearParamSchedulers produces a continuous schedule with no gaps"
+  },
+  "facebookresearch_fvcore/tests/param_scheduler/test_scheduler_constant.py": {
+    "test_ConstantParamScheduler_constant_value": "test that ConstantParamScheduler returns the same constant value for all epoch fractions",
+    "test_ConstantParamScheduler_runtime_error": "test that ConstantParamScheduler raises RuntimeError when where parameter is 1 or greater",
+    "create_ConstantParamScheduler_instance": "create a ConstantParamScheduler instance with a fixed float value like 0.1",
+    "run_ConstantParamScheduler_schedule": "run the scheduler across a list of epoch fractions to generate a constant schedule",
+    "review_ConstantParamScheduler_usage": "review how ConstantParamScheduler is used in unit tests to validate constant parameter scheduling"
+  },
+  "facebookresearch_fvcore/tests/param_scheduler/test_scheduler_cosine.py": {
+    "test_CosineParamScheduler_decay": "test the CosineParamScheduler class to verify cosine decay scheduling from start_value to end_value",
+    "test_CosineParamScheduler_warmup": "test the CosineParamScheduler class to verify cosine warmup scheduling by swapping start and end values",
+    "test_CosineParamScheduler_warmup_decay_match": "test that CosineParamScheduler warmup schedule is the exact reverse of the decay schedule",
+    "review_TestCosineScheduler": "review the TestCosineScheduler unittest class and its three test methods for cosine scheduling validation",
+    "run_TestCosineScheduler_tests": "run the unittest TestCosineScheduler test suite to validate cosine parameter scheduler behavior"
+  },
+  "facebookresearch_fvcore/tests/param_scheduler/test_scheduler_exponential.py": {
+    "test_ExponentialParamScheduler": "test the ExponentialParamScheduler class by verifying exponential decay schedule values across 10 epochs",
+    "run_test_scheduler": "run the test_scheduler method to validate exponential decay parameter scheduling with start_value 2.0 and decay 0.1",
+    "review_TestExponentialScheduler": "review the TestExponentialScheduler unittest class and its exponential decay validation logic",
+    "build_exponential_scheduler": "build an ExponentialParamScheduler with a start_value and decay rate to compute exponential decay schedules",
+    "summarize_TestExponentialScheduler": "summarize the TestExponentialScheduler class that validates exponential parameter scheduling across epoch progress"
+  },
+  "facebookresearch_fvcore/tests/param_scheduler/test_scheduler_linear.py": {
+    "test_LinearParamScheduler_warmup": "test the LinearParamScheduler class to verify it produces correct linear warmup schedules from start to end value",
+    "test_LinearParamScheduler_decay": "test the LinearParamScheduler class to verify it produces correct linear decay schedules from end to start value",
+    "run_TestLienarScheduler_test_scheduler": "run the TestLienarScheduler test_scheduler method to validate both warmup and decay scheduling behavior",
+    "review_TestLienarScheduler": "review the TestLienarScheduler unittest class and its test_scheduler method for linear parameter scheduling assertions",
+    "refactor_TestLienarScheduler_test_scheduler": "refactor the test_scheduler method to parameterize warmup and decay tests into separate test cases"
+  },
+  "facebookresearch_fvcore/tests/param_scheduler/test_scheduler_multi_step.py": {
+    "test_MultiStepParamScheduler_invalid_config": "test the MultiStepParamScheduler class with invalid configs to verify ValueError is raised",
+    "test_MultiStepParamScheduler_scheduler": "test the MultiStepParamScheduler with custom milestones and verify the expected parameter schedule output",
+    "test_MultiStepParamScheduler_default_config": "test the MultiStepParamScheduler default equispaced milestones behavior when milestones arg is omitted",
+    "test_MultiStepParamScheduler_optional_args": "test the MultiStepParamScheduler optional arguments to verify equivalent scheduling across different arg combinations",
+    "run_MultiStepParamScheduler_tests": "run all unittest tests for the MultiStepParamScheduler param scheduler in fvcore"
+  },
+  "facebookresearch_fvcore/tests/param_scheduler/test_scheduler_polynomial.py": {
+    "test_PolynomialDecayParamScheduler_linear_decay": "test the PolynomialDecayParamScheduler with base_value 0.1 and power 1 for linear decay over 10 epochs",
+    "run_PolynomialDecayParamScheduler_schedule": "run the PolynomialDecayParamScheduler to generate a decay schedule from 0.1 down to 0.01 over 10 steps",
+    "review_TestPolynomialScheduler_test_scheduler": "review the TestPolynomialScheduler test_scheduler method that validates linear polynomial decay produces expected values",
+    "build_polynomial_decay_schedule": "build a polynomial decay schedule using PolynomialDecayParamScheduler with configurable base_value and power parameters",
+    "create_PolynomialDecayParamScheduler_instance": "create a PolynomialDecayParamScheduler instance with base_value 0.1 and power 1 for linear decay scheduling"
+  },
+  "facebookresearch_fvcore/tests/param_scheduler/test_scheduler_step.py": {
+    "test_StepParamScheduler_invalid_config": "test the StepParamScheduler class by passing invalid config values like negative num_updates or empty values list",
+    "test_StepParamScheduler_schedule": "test the StepParamScheduler schedule output by calling it with epoch progress values and verifying expected step values",
+    "run_TestStepScheduler_test_invalid_config": "run the TestStepScheduler test_invalid_config method to verify ValueError is raised for bad config inputs",
+    "run_TestStepScheduler_test_scheduler": "run the TestStepScheduler test_scheduler method to verify the scheduler produces correct step values across 12 updates",
+    "review_TestStepScheduler": "review the TestStepScheduler unittest class and its test methods for StepParamScheduler validation and scheduling behavior"
+  },
+  "facebookresearch_fvcore/tests/param_scheduler/test_scheduler_step_with_fixed_gamma.py": {
+    "test_step_with_fixed_gamma_scheduler": "test the StepWithFixedGammaParamScheduler with valid config to verify step decay schedule output",
+    "test_invalid_config_validation": "test the StepWithFixedGammaParamScheduler rejects invalid num_updates, num_decays, base_value, and gamma configs",
+    "run_scheduler_step_decay": "run the StepWithFixedGammaParamScheduler to generate a step decay schedule over 12 updates",
+    "review_TestStepWithFixedGammaScheduler_class": "review the TestStepWithFixedGammaScheduler unittest class and its test methods for config validation",
+    "summarize_step_decay_schedule": "summarize the StepWithFixedGammaParamScheduler step decay schedule values across epoch progress"
+  }
+}

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/benchmarl
+- repo_uri: https://github.com/facebookresearch/benchmarl
+
+## File: facebookresearch_benchmarl/examples/plotting/plot_benchmark.py
+
+Prompts
+
+```
+['run a multi-algorithm RL benchmark with MAPPO and QMIX on VMAS navigation tasks and return JSON output files', 'load and merge multiple experiment JSON result files into a single combined dictionary', 'process raw benchmark result dictionaries into structured data ready for analysis and plotting', 'create environment comparison and sample efficiency matrices from processed benchmark data for a given environment', 'plot a performance profile figure comparing algorithm performance across environments using a comparison matrix']
+```
+
+Usage
+
+```
+{'run_benchmark': 'run a multi-algorithm RL benchmark with MAPPO and QMIX on VMAS navigation tasks and return JSON output files', 'load_and_merge_json_dicts': 'load and merge multiple experiment JSON result files into a single combined dictionary', 'Plotting_process_data': 'process raw benchmark result dictionaries into structured data ready for analysis and plotting', 'Plotting_create_matrices': 'create environment comparison and sample efficiency matrices from processed benchmark data for a given environment', 'Plotting_performance_profile_figure': 'plot a performance profile figure comparing algorithm performance across environments using a comparison matrix'}
+```
+

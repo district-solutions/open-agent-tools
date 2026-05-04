@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dora
+- repo_uri: https://github.com/facebookresearch/dora
+
+## File: facebookresearch_dora/examples/mnist/grids/test.py
+
+Prompts
+
+```
+['run a DORA explorer grid that launches experiments with different batch sizes using the launcher', 'create a custom Explorer subclass that overrides get_grid_metrics to define train test and correct columns', 'use launcher.bind_ to fix a parameter like gamma for all subsequent experiment launches', 'configure SLURM resource settings like mem_per_gpu on the launcher before launching experiments', 'define grid metrics using tt.leaf to specify formatted columns for the experiment results table']
+```
+
+Usage
+
+```
+{'run_explorer_grid': 'run a DORA explorer grid that launches experiments with different batch sizes using the launcher', 'create_custom_explorer_class': 'create a custom Explorer subclass that overrides get_grid_metrics to define train test and correct columns', 'use_launcher_bind': 'use launcher.bind_ to fix a parameter like gamma for all subsequent experiment launches', 'configure_slurm_settings': 'configure SLURM resource settings like mem_per_gpu on the launcher before launching experiments', 'define_grid_metrics': 'define grid metrics using tt.leaf to specify formatted columns for the experiment results table'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/actionengine
+- repo_uri: https://github.com/google-deepmind/actionengine
+
+## File: google-deepmind_actionengine/third_party/boost/libs/hof/doc/conf.py
+
+Prompts
+
+```
+['parse the version.hpp header file to extract major, minor, and patch version numbers', 'convert indented code blocks in documentation lines to fenced code block format', 'insert C++ include header directives into documentation lines after section headings', 'extract doxygen comments from C++ header files and convert them to markdown documentation', 'configure the Sphinx application with recommonmark settings and connect the source-read hook']
+```
+
+Usage
+
+```
+{'parse_version_from_hpp': 'parse the version.hpp header file to extract major, minor, and patch version numbers', 'convert_to_code_fences': 'convert indented code blocks in documentation lines to fenced code block format', 'insert_header_includes': 'insert C++ include header directives into documentation lines after section headings', 'extract_doc_from_hpp': 'extract doxygen comments from C++ header files and convert them to markdown documentation', 'setup_sphinx_app': 'configure the Sphinx application with recommonmark settings and connect the source-read hook'}
+```
+

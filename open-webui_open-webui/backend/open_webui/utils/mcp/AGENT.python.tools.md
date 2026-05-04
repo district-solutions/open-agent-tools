@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: open-webui/open-webui
+- repo_uri: https://github.com/open-webui/open-webui
+
+## File: open-webui_open-webui/backend/open_webui/utils/mcp/client.py
+
+Prompts
+
+```
+['connect an MCP client to a server URL with optional HTTP headers', 'list available tool specs from a connected MCP server including names, descriptions, and parameters', 'call an MCP tool by function name with arguments and return the result content', 'list available resources from a connected MCP server with optional pagination cursor', 'read a resource from a connected MCP server by URI and return its content']
+```
+
+Usage
+
+```
+{'connect_mcp_server': 'connect an MCP client to a server URL with optional HTTP headers', 'list_tool_specs': 'list available tool specs from a connected MCP server including names, descriptions, and parameters', 'call_tool': 'call an MCP tool by function name with arguments and return the result content', 'list_resources': 'list available resources from a connected MCP server with optional pagination cursor', 'read_resource': 'read a resource from a connected MCP server by URI and return its content'}
+```
+

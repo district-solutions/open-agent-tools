@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fbpcp
+- repo_uri: https://github.com/facebookresearch/fbpcp
+
+## File: facebookresearch_fbpcp/onedocker/tests/gateway/test_dynamodb.py
+
+Prompts
+
+```
+['test the DynamoDBGateway put_item method that inserts items into a DynamoDB table with condition expression', 'test the DynamoDBGateway get_item method that retrieves items from a DynamoDB table by key', 'test the DynamoDBGateway delete_item method that removes items from a DynamoDB table by key', 'test the DynamoDBGateway update_item method that updates an attribute on a DynamoDB item by key', 'run the unittest test suite for the DynamoDBGateway class covering all CRUD operations']
+```
+
+Usage
+
+```
+{'test_DynamoDBGateway_put_item': 'test the DynamoDBGateway put_item method that inserts items into a DynamoDB table with condition expression', 'test_DynamoDBGateway_get_item': 'test the DynamoDBGateway get_item method that retrieves items from a DynamoDB table by key', 'test_DynamoDBGateway_delete_item': 'test the DynamoDBGateway delete_item method that removes items from a DynamoDB table by key', 'test_DynamoDBGateway_update_item': 'test the DynamoDBGateway update_item method that updates an attribute on a DynamoDB item by key', 'run_DynamoDBGateway_tests': 'run the unittest test suite for the DynamoDBGateway class covering all CRUD operations'}
+```
+

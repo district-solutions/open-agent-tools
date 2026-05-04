@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dcperf
+- repo_uri: https://github.com/facebookresearch/dcperf
+
+## File: facebookresearch_dcperf/benchpress_cli.py
+
+Prompts
+
+```
+['run the benchpress CLI benchmarking tool by invoking the main entry point', 'invoke the benchpress main function after registering default and JSON file reporters', 'register the StdoutReporter as the default reporter class in the ReporterFactory', 'register the JSONFileReporter as the json_file reporter class in the ReporterFactory', 'review the ReporterFactory class to understand how reporters are registered and retrieved']
+```
+
+Usage
+
+```
+{'run_benchpress_cli': 'run the benchpress CLI benchmarking tool by invoking the main entry point', 'invoke_benchpress_main': 'invoke the benchpress main function after registering default and JSON file reporters', 'register_stdout_reporter': 'register the StdoutReporter as the default reporter class in the ReporterFactory', 'register_json_file_reporter': 'register the JSONFileReporter as the json_file reporter class in the ReporterFactory', 'review_reporter_factory': 'review the ReporterFactory class to understand how reporters are registered and retrieved'}
+```
+

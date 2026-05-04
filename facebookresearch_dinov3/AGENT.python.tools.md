@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dinov3
+- repo_uri: https://github.com/facebookresearch/dinov3
+
+## File: facebookresearch_dinov3/setup.py
+
+Prompts
+
+```
+['review the setup.py to understand the dinov3 package configuration and dependencies', 'refactor get_requirements to parse additional pip options from requirements files', 'refactor get_package_version to extract version from alternative sources like pyproject.toml', 'summarize the setup.py package metadata including name version author and classifiers', 'test get_requirements to verify it correctly parses requirements.txt and extra index URLs']
+```
+
+Usage
+
+```
+{'review_setup_py': 'review the setup.py to understand the dinov3 package configuration and dependencies', 'refactor_get_requirements': 'refactor get_requirements to parse additional pip options from requirements files', 'refactor_get_package_version': 'refactor get_package_version to extract version from alternative sources like pyproject.toml', 'summarize_setup_py': 'summarize the setup.py package metadata including name version author and classifiers', 'test_get_requirements': 'test get_requirements to verify it correctly parses requirements.txt and extra index URLs'}
+```
+

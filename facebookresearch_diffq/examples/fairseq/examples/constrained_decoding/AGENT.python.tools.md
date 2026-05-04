@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diffq
+- repo_uri: https://github.com/facebookresearch/diffq
+
+## File: facebookresearch_diffq/examples/fairseq/examples/constrained_decoding/tok.py
+
+Prompts
+
+```
+['run a CLI tool that tokenizes stdin text using sacremoses MosesTokenizer with configurable language', 'run the tokenizer on stdin text specifying a target language like Spanish or French', 'run the tokenizer on tab-separated input preserving tab delimiters between tokenized fields', 'review the main function that creates a MosesTokenizer and tokenizes each line from stdin', 'review the inner tok function that wraps MosesTokenizer tokenize with return_str=True']
+```
+
+Usage
+
+```
+{'run_moses_tokenizer_cli': 'run a CLI tool that tokenizes stdin text using sacremoses MosesTokenizer with configurable language', 'run_tokenizer_with_language': 'run the tokenizer on stdin text specifying a target language like Spanish or French', 'run_tokenizer_preserve_tabs': 'run the tokenizer on tab-separated input preserving tab delimiters between tokenized fields', 'review_main_function': 'review the main function that creates a MosesTokenizer and tokenizes each line from stdin', 'review_tok_inner_function': 'review the inner tok function that wraps MosesTokenizer tokenize with return_str=True'}
+```
+

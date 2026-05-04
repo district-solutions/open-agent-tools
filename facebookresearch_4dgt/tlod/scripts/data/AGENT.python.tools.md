@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/4dgt
+- repo_uri: https://github.com/facebookresearch/4dgt
+
+## File: facebookresearch_4dgt/tlod/scripts/data/aria_utils.py
+
+Prompts
+
+```
+['interpolate an Aria device pose from a closed-loop trajectory at a given capture timestamp', 'process an Aria frame by undistorting the image and saving it with rectified camera intrinsics', 'read a transforms.json metadata file and return a list of AriaFrame dataclass objects', 'store a point cloud with xyz coordinates and rgb colors to a PLY file on disk', 'calculate the mapping of visible 3D point observations to their nearest camera timestamps']
+```
+
+Usage
+
+```
+{'interpolate_aria_pose': 'interpolate an Aria device pose from a closed-loop trajectory at a given capture timestamp', 'process_frame': 'process an Aria frame by undistorting the image and saving it with rectified camera intrinsics', 'read_frames_from_metadata': 'read a transforms.json metadata file and return a list of AriaFrame dataclass objects', 'storePly': 'store a point cloud with xyz coordinates and rgb colors to a PLY file on disk', 'calculate_timestamp_to_data3d': 'calculate the mapping of visible 3D point observations to their nearest camera timestamps'}
+```
+

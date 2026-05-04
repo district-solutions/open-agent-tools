@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/frankmocap
+- repo_uri: https://github.com/facebookresearch/frankmocap
+
+## File: facebookresearch_frankmocap/integration/copy_and_paste.py
+
+Prompts
+
+```
+['build a module that integrates body and hand predictions into unified SMPL-X outputs with vertices and joints', 'create a function that transfers a part rotation between global and local coordinate frames using a kinematic chain', 'create a function that builds a parent-to-child kinematic chain map from a SMPL-X model for a given joint index', 'review the transfer_rotation function to understand how it converts between angle-axis and rotation matrix formats', 'summarize the integration_copy_paste function that merges body pose predictions with hand pose predictions into a single SMPL-X output']
+```
+
+Usage
+
+```
+{'build_integration_copy_paste': 'build a module that integrates body and hand predictions into unified SMPL-X outputs with vertices and joints', 'create_transfer_rotation': 'create a function that transfers a part rotation between global and local coordinate frames using a kinematic chain', 'create_get_kinematic_map': 'create a function that builds a parent-to-child kinematic chain map from a SMPL-X model for a given joint index', 'review_transfer_rotation': 'review the transfer_rotation function to understand how it converts between angle-axis and rotation matrix formats', 'summarize_integration_copy_paste': 'summarize the integration_copy_paste function that merges body pose predictions with hand pose predictions into a single SMPL-X output'}
+```
+

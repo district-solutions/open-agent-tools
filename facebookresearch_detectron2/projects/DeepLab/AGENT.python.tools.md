@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/detectron2
+- repo_uri: https://github.com/facebookresearch/detectron2.git
+
+## File: facebookresearch_detectron2/projects/DeepLab/train_net.py
+
+Prompts
+
+```
+['run the DeepLab semantic segmentation training script with a config file and optional CLI overrides', 'run the DeepLab model in eval-only mode to test on a dataset using saved weights', 'build semantic segmentation training augmentations including resize, random crop, and random flip', 'review the Trainer class build_evaluator method that creates SemSegEvaluator or CityscapesSemSegEvaluator for a dataset', 'review the Trainer class build_train_loader method that creates a DatasetMapper with semantic segmentation augmentations']
+```
+
+Usage
+
+```
+{'run_deeplab_training': 'run the DeepLab semantic segmentation training script with a config file and optional CLI overrides', 'run_deeplab_evaluation': 'run the DeepLab model in eval-only mode to test on a dataset using saved weights', 'build_sem_seg_train_aug': 'build semantic segmentation training augmentations including resize, random crop, and random flip', 'review_Trainer_build_evaluator': 'review the Trainer class build_evaluator method that creates SemSegEvaluator or CityscapesSemSegEvaluator for a dataset', 'review_Trainer_build_train_loader': 'review the Trainer class build_train_loader method that creates a DatasetMapper with semantic segmentation augmentations'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eai-vc
+- repo_uri: https://github.com/facebookresearch/eai-vc
+
+## File: facebookresearch_eai-vc/vc_models/src/vc_models/models/compression_layer.py
+
+Prompts
+
+```
+['create a PyTorch compression layer with Conv2d, GroupNorm, ReLU, and Flatten for voice conversion models', 'build a compression layer with a custom after_compression_flat_size for different embedding dimensions', 'test the create_compression_layer function with various embed_dim and final_spatial values', 'review the create_compression_layer function to understand output_shape and output_size calculations', 'refactor the create_compression_layer to swap GroupNorm for BatchNorm normalization']
+```
+
+Usage
+
+```
+{'create_compression_layer': 'create a PyTorch compression layer with Conv2d, GroupNorm, ReLU, and Flatten for voice conversion models', 'build_compression_layer_with_custom_size': 'build a compression layer with a custom after_compression_flat_size for different embedding dimensions', 'test_create_compression_layer': 'test the create_compression_layer function with various embed_dim and final_spatial values', 'review_compression_layer_output_shape': 'review the create_compression_layer function to understand output_shape and output_size calculations', 'refactor_compression_layer_norm': 'refactor the create_compression_layer to swap GroupNorm for BatchNorm normalization'}
+```
+

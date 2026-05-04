@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/goliath
+- repo_uri: https://github.com/facebookresearch/goliath
+
+## File: facebookresearch_goliath/extensions/mvpraymarch/mvpraymarch.py
+
+Prompts
+
+```
+['build a BVH acceleration structure from primitive centers and sizes for ray-primitive intersection', 'run CUDA-accelerated raymarching over a mixture of volumetric primitives to render RGBA images', 'run the custom PyTorch autograd Function for forward and backward MVP raymarching with saved tensors', 'run the Rodrigues module to convert rotation vectors into 3x3 rotation matrices for primitive orientation', 'run gradient correctness checks comparing PyTorch pure-Python raymarching against the CUDA implementation']
+```
+
+Usage
+
+```
+{'build_accel_bvh': 'build a BVH acceleration structure from primitive centers and sizes for ray-primitive intersection', 'run_mvpraymarch': 'run CUDA-accelerated raymarching over a mixture of volumetric primitives to render RGBA images', 'run_MVPRaymarch_Function': 'run the custom PyTorch autograd Function for forward and backward MVP raymarching with saved tensors', 'run_Rodrigues_rotation': 'run the Rodrigues module to convert rotation vectors into 3x3 rotation matrices for primitive orientation', 'run_gradcheck': 'run gradient correctness checks comparing PyTorch pure-Python raymarching against the CUDA implementation'}
+```
+

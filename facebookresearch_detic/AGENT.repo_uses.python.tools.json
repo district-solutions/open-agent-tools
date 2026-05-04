@@ -1,0 +1,619 @@
+{
+  "facebookresearch_detic/detic/config.py": {
+    "add_detic_config_to_cfg": "add DETIC config options to a detectron2 CfgNode for open-vocabulary detection",
+    "configure_zeroshot_classifier": "set USE_ZEROSHOT_CLS and ZEROSHOT_WEIGHT_PATH to enable open-vocabulary classification",
+    "configure_federated_loss": "set USE_FED_LOSS and FED_LOSS_NUM_CAT to enable federated loss training",
+    "configure_detr_model": "set DETR hyperparameters like NUM_CLASSES, NHEADS, and NUM_OBJECT_QUERIES",
+    "configure_multi_dataset_dataloader": "set DATASET_RATIO and USE_DIFF_BS_SIZE for multi-dataset training"
+  },
+  "facebookresearch_detic/detic/custom_solver.py": {
+    "build_custom_optimizer": "build a custom optimizer from a detectron2 config node and PyTorch model with configurable SGD or AdamW",
+    "build_optimizer_with_gradient_clipping": "build an optimizer with full model gradient clipping enabled via the config solver settings",
+    "match_name_keywords": "match parameter names against a list of keyword strings to apply custom learning rate multipliers",
+    "review_build_custom_optimizer": "review the build_custom_optimizer function to understand how backbone and custom multiplier learning rates are applied",
+    "refactor_match_name_keywords": "refactor the match_name_keywords function to use any() for more concise keyword matching logic"
+  },
+  "facebookresearch_detic/detic/predictor.py": {
+    "run_VisualizationDemo_on_image": "run the VisualizationDemo class on a BGR image to get predictions and visualized output",
+    "run_VisualizationDemo_on_video": "run the VisualizationDemo class on a video stream to yield visualized frame predictions",
+    "create_AsyncPredictor": "create an AsyncPredictor with multiple GPU workers for asynchronous model inference on images",
+    "get_clip_embeddings": "get CLIP text embeddings for a list of vocabulary class names using a pretrained text encoder",
+    "review_AsyncPredictor_PredictWorker": "review the AsyncPredictor._PredictWorker multiprocessing class that runs a DefaultPredictor loop on a task queue"
+  },
+  "facebookresearch_detic/detic/data/custom_build_augmentation.py": {
+    "build_augmentation_resize_shortest_edge": "build a list of augmentations using ResizeShortestEdge strategy from a detectron2 config object",
+    "build_augmentation_efficientdet_resize_crop": "build a list of augmentations using EfficientDetResizeCrop strategy from a detectron2 config object",
+    "build_train_augmentation_with_flip": "build training augmentations that include resizing and random flip from config settings",
+    "build_test_augmentation_without_flip": "build test augmentations with fixed resize and no random flip from config settings",
+    "review_build_custom_augmentation": "review the build_custom_augmentation function to understand ResizeShortestEdge and EfficientDetResizeCrop augmentation logic"
+  },
+  "facebookresearch_detic/detic/data/custom_dataset_dataloader.py": {
+    "build_custom_train_loader": "build a custom training data loader with multi-dataset support and configurable samplers for detectron2",
+    "build_multi_dataset_batch_data_loader": "build a multi-dataset batch data loader that groups samples by dataset source and aspect ratio",
+    "get_detection_dataset_dicts_with_source": "get detection dataset dicts annotated with a dataset_source id for each sample across multiple datasets",
+    "MultiDatasetSampler": "create a MultiDatasetSampler that samples from multiple datasets with configurable ratios and repeat factor sampling",
+    "repeat_factors_from_tag_frequency": "compute repeat factors for dataset dicts based on tag frequency to oversample rare categories"
+  },
+  "facebookresearch_detic/detic/data/custom_dataset_mapper.py": {
+    "build_CustomDatasetMapper_from_config": "build a CustomDatasetMapper instance from a Detectron2 config with image label and tar dataset support",
+    "create_CustomDatasetMapper_for_training": "create a CustomDatasetMapper for training with annotation types, tar dataset, and debug mode enabled",
+    "run_CustomDatasetMapper_call": "run the CustomDatasetMapper call method to transform a dataset dict with augmentations and annotations",
+    "build_DetrDatasetMapper_for_training": "build a DetrDatasetMapper instance with optional cropping and transform generators for DETR training",
+    "run_DetrDatasetMapper_call": "run the DetrDatasetMapper call method to map a dataset dict into DETR format with transforms"
+  },
+  "facebookresearch_detic/detic/data/tar_dataset.py": {
+    "create_disktar_dataset": "create a DiskTarDataset from tar file paths and index directory for ImageNet-21k data loading",
+    "getitem_disktar_dataset": "get an image, label, and index from a DiskTarDataset by providing a sample index",
+    "create_tar_dataset": "create a _TarDataset to load individual tar files with optional preloading via memory mapping",
+    "load_tar_index": "load precomputed names and offsets numpy arrays from the tar index directory for a tar file",
+    "getitem_tar_dataset": "get raw image bytes from a tar file by index with automatic gzip decompression support"
+  },
+  "facebookresearch_detic/detic/data/datasets/imagenet.py": {
+    "register_imagenet_lvis_dataset": "register a custom ImageNet LVIS dataset split with Detectron2 DatasetCatalog and MetadataCatalog using custom_register_imagenet_instances",
+    "register_imagenet_22k_dataset": "register the ImageNet LVIS 22K dataset split by importing the module which auto-registers imagenet_lvis-22k",
+    "customize_imagenet_split_paths": "customize ImageNet split image root and annotation JSON paths in _CUSTOM_SPLITS_IMAGENET before registration",
+    "review_custom_register_imagenet_instances": "review the custom_register_imagenet_instances function to understand how it registers datasets with evaluator_type imagenet",
+    "summarize_imagenet_dataset_registration": "summarize how the module auto-registers ImageNet LVIS v1 and 22K splits on import via module-level loops"
+  },
+  "facebookresearch_detic/detic/data/datasets/lvis_v1.py": {
+    "load_lvis_json_dataset": "load an LVIS v1 JSON annotation file and return dataset dictionaries with bounding boxes and segmentation masks",
+    "register_lvis_instances": "register a custom LVIS instances dataset with Detectron2 DatasetCatalog and MetadataCatalog using a JSON file and image root",
+    "get_lvis_22k_meta": "get metadata for the LVIS 22K category set including thing class names from the 22K categories list",
+    "review_custom_load_lvis_json": "review the custom_load_lvis_json function that parses LVIS annotations, converts category IDs to 0-based, and handles negative and positive category IDs",
+    "refactor_custom_register_lvis_instances": "refactor the custom_register_lvis_instances function to support additional metadata fields or custom evaluator types beyond LVIS"
+  },
+  "facebookresearch_detic/detic/data/datasets/register_oid.py": {
+    "register_oid_dataset": "register an OID instances dataset to the Detectron2 DatasetCatalog with a COCO JSON file and image root path",
+    "load_coco_json": "load a COCO format JSON annotation file and return a list of dataset dicts with image records and annotations",
+    "map_category_ids": "map non-contiguous category IDs from a COCO JSON file to contiguous IDs starting from zero for the dataset metadata",
+    "filter_invalid_polygons": "filter out invalid polygon segmentations with fewer than 3 points when loading COCO annotation data",
+    "handle_neg_category_ids": "handle negative category IDs in image metadata by mapping them through the dataset's contiguous ID mapping"
+  },
+  "facebookresearch_detic/detic/data/transforms/custom_augmentation_impl.py": {
+    "create_EfficientDetResizeCrop_augmentation": "create an EfficientDetResizeCrop augmentation with a target size and random scale range for image preprocessing",
+    "build_EfficientDetResizeCrop_with_scale": "build a data augmentation pipeline using EfficientDetResizeCrop with configurable scale factors for training images",
+    "test_EfficientDetResizeCrop_get_transform": "test the EfficientDetResizeCrop get_transform method on a numpy image array to verify random scaling and cropping",
+    "review_EfficientDetResizeCrop_class": "review the EfficientDetResizeCrop class to understand how it computes random scale factors and offset-based cropping",
+    "refactor_EfficientDetResizeCrop_interp": "refactor the EfficientDetResizeCrop initialization to use a different PIL interpolation method instead of bilinear"
+  },
+  "facebookresearch_detic/detic/data/transforms/custom_transform.py": {
+    "create_EfficientDetResizeCropTransform": "create an EfficientDetResizeCropTransform instance with scaled dimensions, offsets, image scale, and target size",
+    "apply_image_resize_and_crop": "apply image resize and crop transformation using bilinear or bicubic interpolation on uint8 or float arrays",
+    "apply_coords_scale_and_offset": "apply coordinate scaling and offset transformation to 2D coordinate arrays for bounding box adjustment",
+    "apply_segmentation_nearest_interp": "apply segmentation mask transformation using nearest neighbor interpolation via the apply_image method",
+    "inverse_apply_box_transform": "inverse transform bounding boxes by reversing offset and scale operations to recover original coordinates"
+  },
+  "facebookresearch_detic/detic/evaluation/oideval.py": {
+    "run_OIDEval": "run OpenImages dataset evaluation on detection results using OIDEval with bbox or segm IoU type",
+    "run_OIDEvaluator": "run the OIDEvaluator dataset evaluator for detectron2 models on OpenImages with distributed support",
+    "run_evaluate_predictions_on_oid": "run predictions evaluation on OpenImages dataset computing AP50 and AP50_expand metrics",
+    "compute_compute_average_precision": "compute average precision from precision and recall numpy arrays using VOCdevkit definition",
+    "run_OIDEval_evaluate_img_google": "run per-image evaluation for a single image and category using Google-style IoU matching"
+  },
+  "facebookresearch_detic/detic/modeling/debug.py": {
+    "debug_train_visualize": "visualize training heatmaps, ground truth boxes, and positive sample markers on images using debug_train",
+    "debug_test_visualize": "visualize predicted heatmaps and detection results with bounding boxes and class labels using debug_test",
+    "debug_second_stage_visualize": "visualize second stage detection results with optional proposal overlays and save debug images to disk",
+    "create_color_map_from_heatmap": "create a color map image from a heatmap tensor using _get_color_image for visualization",
+    "blend_heatmaps_on_image": "blend multiple heatmap color maps onto an image with configurable alpha transparency using _blend_image_heatmaps"
+  },
+  "facebookresearch_detic/detic/modeling/utils.py": {
+    "load_class_freq": "load class frequency weights from an LVIS category info JSON file with configurable frequency exponent",
+    "get_fed_loss_inds": "sample category indices for frequency enhanced detection loss by combining appeared classes with weighted random sampling",
+    "reset_cls_test": "reset a DETR model's classification head with zero-shot weights from a numpy file for testing",
+    "summarize_load_class_freq": "summarize the load_class_freq function which reads category image counts and returns frequency-weighted tensors",
+    "review_get_fed_loss_inds": "review the get_fed_loss_inds function which samples category indices using multinomial distribution for fed loss"
+  },
+  "facebookresearch_detic/detic/modeling/backbone/swintransformer.py": {
+    "build_swintransformer_backbone": "build a Swin Transformer backbone model from config with specified size and pretrained weights",
+    "build_swintransformer_fpn_backbone": "build a Swin Transformer backbone with FPN feature pyramid for object detection tasks",
+    "build_swintransformer_bifpn_backbone": "build a Swin Transformer backbone with BiFPN for multi-scale feature fusion in detection",
+    "review_WindowAttention": "review the WindowAttention class implementing window-based multi-head self-attention with relative position bias",
+    "review_SwinTransformerBlock": "review the SwinTransformerBlock class implementing shifted window attention and MLP feed-forward layers"
+  },
+  "facebookresearch_detic/detic/modeling/backbone/timm.py": {
+    "build_timm_backbone": "build a TIMM backbone model with a specified base name and output levels for Detectron2",
+    "build_p67_timm_fpn_backbone": "build a TIMM FPN backbone with P6 and P7 top levels for object detection",
+    "build_p35_timm_fpn_backbone": "build a TIMM FPN backbone using only P3 to P5 feature levels",
+    "create_timm_resnet": "create a TIMM ResNet model with a given variant and output indices",
+    "freeze_module": "freeze a PyTorch module parameters and convert batch norm to frozen batch norm"
+  },
+  "facebookresearch_detic/detic/modeling/meta_arch/custom_rcnn.py": {
+    "build_CustomRCNN": "build a CustomRCNN model from a Detectron2 config with image labels and caption support",
+    "run_CustomRCNN_inference": "run inference on batched inputs using CustomRCNN to detect instances with postprocessing",
+    "run_CustomRCNN_forward": "run the CustomRCNN forward pass with batched inputs to compute detection losses",
+    "review_CustomRCNN_from_config": "review the CustomRCNN from_config class method to extract config parameters for initialization",
+    "review_CustomRCNN_sync_caption_features": "review the CustomRCNN _sync_caption_features method that gathers caption features across GPU ranks"
+  },
+  "facebookresearch_detic/detic/modeling/meta_arch/d2_deformable_detr.py": {
+    "build_deformable_detr_meta_arch": "build a DeformableDetr meta architecture model using a Detectron2 config with transformer parameters",
+    "create_custom_set_criterion": "create a CustomSetCriterion loss class with optional frequency extreme decomposition loss support",
+    "create_masked_backbone": "create a MaskedBackbone wrapper around a Detectron2 backbone that provides padding masking for NestedTensors",
+    "review_deformable_detr_forward": "review the DeformableDetr forward pass that handles training loss computation and inference post processing",
+    "refactor_max_size_loss": "refactor the _max_size_loss method to compute binary cross entropy on the largest predicted box per label"
+  },
+  "facebookresearch_detic/detic/modeling/roi_heads/detic_fast_rcnn.py": {
+    "build_DeticFastRCNNOutputLayers": "build a DeticFastRCNNOutputLayers model with zero-shot classifier and federated loss for open-vocabulary detection",
+    "create_from_config": "create DeticFastRCNNOutputLayers from a Detectron2 config with zero-shot and fed loss options enabled",
+    "run_losses_computation": "run the losses method to compute classification and box regression losses for ROI proposals",
+    "test_sigmoid_cross_entropy_loss": "test the sigmoid cross entropy loss with federated loss weighting and zero category ignoring",
+    "review_softmax_cross_entropy_loss": "review the softmax cross entropy loss method with fed loss and zero category weight support",
+    "run_inference": "run fast R-CNN inference on proposals with optional proposal score multiplication and NMS",
+    "test_box_reg_loss": "test the box regression loss supporting smooth L1 and GIoU loss types with custom background index",
+    "review_image_label_losses": "review the image label losses method supporting wsod, max score, max size, and caption loss strategies",
+    "run_forward": "run the forward pass to compute class scores and proposal deltas with optional classifier info",
+    "test_put_label_distribution": "test the put_label_distribution function to record class label histogram stats to event storage"
+  },
+  "facebookresearch_detic/detic/modeling/roi_heads/detic_roi_heads.py": {
+    "build_DeticCascadeROIHeads": "build a DeticCascadeROIHeads model with mult proposal score, image labels, and one class per proposal options",
+    "create_from_config": "create DeticCascadeROIHeads from a Detectron2 config with cascade box head and zero-shot classifier settings",
+    "run_forward_box": "run the forward box pass through cascade stages with optional image label and caption annotation types",
+    "test_init_box_head": "test the init box head method to create DeticFastRCNNOutputLayers predictors for each cascade stage",
+    "review_get_top_proposals": "review the get top proposals method that clips boxes, limits count, and optionally adds an image box",
+    "run_forward": "run the full ROI head forward pass supporting box, image, caption, and proptag annotation types",
+    "test_create_proposals_from_boxes": "test the create proposals from boxes method to build Instances with detached boxes and objectness logits",
+    "review_run_stage": "review the run stage method that pools box features, scales gradients, and runs the stage predictor"
+  },
+  "facebookresearch_detic/detic/modeling/roi_heads/res5_roi_heads.py": {
+    "build_CustomRes5ROIHeads": "build a CustomRes5ROIHeads instance from a detectron2 config with image label and debug support",
+    "run_forward_CustomRes5ROIHeads": "run the forward pass of CustomRes5ROIHeads on images, features, and proposals with optional classifier info",
+    "create_from_config_CustomRes5ROIHeads": "create a CustomRes5ROIHeads config dictionary from a detectron2 cfg and input shape using from_config",
+    "test_get_top_proposals": "test the get_top_proposals method to clip, limit, and optionally add image boxes to proposals",
+    "review_add_image_box": "review the _add_image_box method that creates and concatenates an image-level bounding box to proposals"
+  },
+  "facebookresearch_detic/detic/modeling/roi_heads/zero_shot_classifier.py": {
+    "build_zero_shot_classifier": "build a ZeroShotClassifier module with random weights for zero-shot classification on a given number of classes",
+    "create_classifier_from_config": "create a ZeroShotClassifier instance from a Detectron2 config object and input shape specification",
+    "run_forward_pass": "run a forward pass through the ZeroShotClassifier with input features and an optional custom classifier tensor",
+    "review_norm_weight_logic": "review the ZeroShotClassifier forward method to understand how L2 normalization and temperature scaling are applied",
+    "test_bias_initialization": "test the ZeroShotClassifier bias parameter initialization when use_bias is set to a negative value"
+  },
+  "facebookresearch_detic/detic/modeling/text/text_encoder.py": {
+    "build_text_encoder": "build a CLIP text encoder with optional pretrained ViT-B/32 weights from the clip library",
+    "run_CLIPTEXT_forward": "run the CLIPTEXT forward pass to encode a list of caption strings into feature vectors",
+    "run_CLIPTEXT_tokenize": "run the CLIPTEXT tokenize method to convert text strings into padded token tensors",
+    "run_CLIPTEXT_encode_text": "run the CLIPTEXT encode_text method to transform tokenized text tensors into feature embeddings",
+    "run_CLIPTEXT_build_attention_mask": "run the CLIPTEXT build_attention_mask method to create a causal attention mask for the transformer"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/demo.py": {
+    "run_detection_on_images": "run object detection on a list of input images using CenterNet2 and save visualized outputs",
+    "run_detection_on_webcam": "run real-time object detection on webcam feed using CenterNet2 with OpenCV display",
+    "run_detection_on_video": "run object detection on a video file and optionally save the annotated output video",
+    "setup_cfg_merge_config": "setup and merge a Detectron2 config from a YAML file with command-line overrides",
+    "get_parser_args": "get an argparse parser with arguments for config file, input, output, and confidence threshold"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/predictor.py": {
+    "run_VisualizationDemo_on_image": "run a VisualizationDemo to predict and visualize object instances on a single BGR image",
+    "run_VisualizationDemo_on_video": "run a VisualizationDemo to predict and visualize object instances on each frame of a video",
+    "create_AsyncPredictor_multi_gpu": "create an AsyncPredictor with multiple GPU workers for asynchronous parallel inference on images",
+    "run_AsyncPredictor_put_get": "run an AsyncPredictor by putting images into the task queue and getting ordered results",
+    "review_VisualizationDemo_run_on_image": "review the VisualizationDemo run_on_image method to understand panoptic, semantic, and instance prediction visualization"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/train_net.py": {
+    "run_train_net": "run the CenterNet2 training script with a config file to train an object detection model",
+    "run_do_train": "run the do_train function to train a detection model with optimizer, scheduler, and periodic checkpointing",
+    "run_do_test": "run the do_test function to evaluate a detection model on COCO or LVIS datasets",
+    "run_setup": "run the setup function to create and freeze a Detectron2 config from a YAML file and CLI options",
+    "run_main": "run the main function to optionally evaluate or train a CenterNet2 model with distributed GPU support"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/data/custom_build_augmentation.py": {
+    "build_augmentation_resize_shortest_edge": "build a Detectron2 augmentation list using ResizeShortestEdge from config for training or testing",
+    "build_augmentation_efficientdet_resize_crop": "build a Detectron2 augmentation list using EfficientDetResizeCrop with configurable scale and size from config",
+    "build_transform_gen_alias": "use the build_custom_transform_gen alias to create augmentation pipelines for backward compatibility",
+    "review_build_custom_augmentation": "review the build_custom_augmentation function to understand how it selects ResizeShortestEdge or EfficientDetResizeCrop based on config",
+    "refactor_augmentation_random_flip": "refactor build_custom_augmentation to add or remove RandomFlip augmentation for training pipelines"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/data/custom_dataset_dataloader.py": {
+    "build_custom_train_loader": "build a custom training data loader with configurable samplers for Detectron2 object detection datasets",
+    "create_ClassAwareSampler": "create a class-aware sampler that weights images by inverse category frequency for balanced training",
+    "create_MultiDatasetSampler": "create a multi-dataset sampler that samples from multiple datasets with configurable ratio weights",
+    "get_detection_dataset_dicts_with_source": "get detection dataset dicts annotated with a dataset_source ID for multi-dataset training",
+    "review_ClassAwareSampler_get_class_balance_factor": "review the ClassAwareSampler method that computes per-image sampling weights from category frequency"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/data/datasets/coco.py": {
+    "register_distill_coco_instances": "register a COCO dataset with extra annotation keys like score for knowledge distillation training",
+    "review_register_distill_coco_instances": "review the register_distill_coco_instances function to understand how it registers datasets with DatasetCatalog and MetadataCatalog",
+    "summarize_PREDEFINED_SPLITS_COCO": "summarize the _PREDEFINED_SPLITS_COCO dict that defines unlabeled COCO 2017 dataset paths",
+    "summarize_PREDEFINED_SPLITS_DISTILL_COCO": "summarize the _PREDEFINED_SPLITS_DISTILL_COCO dict that defines YOLOv4 pseudo-labeled COCO dataset paths",
+    "review_module_registration_loops": "review the module-level loops that auto-register predefined COCO and distillation splits on import"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/data/transforms/custom_augmentation_impl.py": {
+    "build_EfficientDetResizeCrop_augmentation": "build a python module that creates an EfficientDetResizeCrop augmentation with a target size and random scale range",
+    "create_EfficientDetResizeCrop_with_scale": "create an EfficientDetResizeCrop augmentation instance with a specified size and scale tuple for data augmentation",
+    "test_EfficientDetResizeCrop_get_transform": "test the EfficientDetResizeCrop get_transform method by passing a numpy image array and verifying the returned transform",
+    "review_EfficientDetResizeCrop_scaling_logic": "review the EfficientDetResizeCrop class and its scaling logic that computes img_scale from image dimensions and target size",
+    "refactor_EfficientDetResizeCrop_interp": "refactor the EfficientDetResizeCrop class to support additional interpolation methods beyond PIL BILINEAR"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/data/transforms/custom_transform.py": {
+    "create_EfficientDetResizeCropTransform": "create an EfficientDetResizeCropTransform instance with scaled dimensions, offset, and target size for image preprocessing",
+    "apply_image_resize_and_crop": "apply the EfficientDetResizeCropTransform to resize a numpy image array and crop to target size",
+    "apply_coords_scale_and_offset": "apply coordinate scaling and offset adjustment to 2D coordinate arrays using img_scale and offset values",
+    "apply_segmentation_nearest_interp": "apply segmentation mask transformation using nearest neighbor interpolation via the apply_segmentation method",
+    "review_EfficientDetResizeCropTransform_class": "review the EfficientDetResizeCropTransform class and its image resizing, cropping, and coordinate transformation methods"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/debug.py": {
+    "debug_train_center_net": "debug CenterNet training by visualizing ground truth heatmaps, positive indices, and regression targets on input images",
+    "debug_test_center_net": "debug CenterNet inference by visualizing predicted heatmaps, bounding boxes, and class labels on test images",
+    "debug_second_stage_proposals": "debug second stage detection by visualizing predicted or ground truth boxes and object proposals on images",
+    "get_color_image_heatmap": "create a color image from a heatmap tensor by multiplying with pregenerated random colors",
+    "blend_image_heatmaps": "blend multiple heatmap color maps onto an image using alpha compositing and maximum merging"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/backbone/bifpn.py": {
+    "build_resnet_bifpn_backbone": "build a BiFPN backbone using ResNet as the bottom-up network for object detection",
+    "build_dla_bifpn_backbone": "build a BiFPN backbone using DLA-34 as the bottom-up network for feature extraction",
+    "create_bifpn_layer": "create a BiFpnLayer module that combines multi-scale features with weighted bidirectional connections",
+    "create_fpn_combine": "create an FpnCombine module that resamples and fuses features from multiple input offsets",
+    "review_separable_conv2d": "review the SeparableConv2d class that implements depthwise then pointwise convolution with Swish activation"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/backbone/bifpn_fcos.py": {
+    "build_bifpn_backbone": "build a BiFPN backbone with ResNet bottom-up and configurable top levels for FCOS object detection",
+    "create_singlebifpn_module": "create a SingleBiFPN module that fuses multi-scale features using attention-weighted combinations and 3x3 convolutions",
+    "build_feature_map_resampler": "build a FeatureMapResampler to downsample feature maps with optional channel reduction and max pooling",
+    "build_backbone_with_top_levels": "build a BackboneWithTopLevels wrapper that adds extra P6 and P7 feature levels to any backbone",
+    "build_dla_bifpn_backbone": "build a BiFPN backbone using DLA-34 as the bottom-up network for FCOS detection with P3 to P7 levels"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/backbone/dla.py": {
+    "build_dla_backbone": "build a DLA backbone network with 34 or 60 layers for object detection feature extraction",
+    "build_retinanet_dla_fpn_backbone": "build a DLA FPN backbone with P6 and P7 extra levels for RetinaNet detection",
+    "create_dlaseg_model": "create a DLASeg backbone module with configurable DLAUp and multi-scale output options",
+    "create_tree_module": "create a recursive Tree module with BasicBlock or Bottleneck for hierarchical feature aggregation",
+    "create_idaup_module": "create an IDAUp module with deformable convolutions for multi-scale feature upsampling and fusion"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/backbone/dlafpn.py": {
+    "build_dla_fpn3_backbone": "build a DLA-34 bottom-up backbone with FPN top-down pathway for object detection",
+    "build_dla_fpn5_backbone": "build a DLA-34 backbone with FPN and extra P6 P7 levels for RetinaNet",
+    "build_dlaup_backbone": "build a DLA-34 backbone with top-down IDA feature fusion using conv or deformable conv nodes",
+    "create_DLA": "create a Deep Layer Aggregation network with configurable levels channels and block types",
+    "create_DLAUP": "create a DLA top-up module that fuses multi-scale features via IDAUp with optional deformable conv"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/backbone/fpn_p5.py": {
+    "build_p67_resnet_fpn_backbone": "build a ResNet FPN backbone with P6 and P7 top block levels for object detection",
+    "build_p35_resnet_fpn_backbone": "build a ResNet FPN backbone with P3 to P5 feature levels and no extra top block",
+    "create_LastLevelP6P7_P5_module": "create a LastLevelP6P7_P5 module that generates P6 and P7 feature maps from C5 input",
+    "review_LastLevelP6P7_P5_forward": "review the LastLevelP6P7_P5 forward method that applies convolutions to produce P6 and P7 tensors",
+    "refactor_build_p67_resnet_fpn_backbone": "refactor the build_p67_resnet_fpn_backbone function to customize the FPN top block or norm settings"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/backbone/res2net.py": {
+    "build_res2net_backbone": "build a Res2Net backbone from a detectron2 config for object detection feature extraction",
+    "build_res2net_fpn_backbone": "build a Res2Net backbone with FPN and P6/P7 levels for multi-scale object detection",
+    "build_res2net_bifpn_backbone": "build a Res2Net backbone with BiFPN for efficient feature pyramid network detection",
+    "create_bottleneck_block": "create a Res2Net BottleneckBlock with multi-scale representation using configurable scale and basewidth parameters",
+    "create_deform_bottleneck_block": "create a DeformBottleneckBlock with modulated deformable convolutions for improved spatial feature learning"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/dense_heads/centernet.py": {
+    "build_centernet_proposal_generator": "build a CenterNet proposal generator module with configurable FPN levels and class count for object detection",
+    "create_centernet_from_config": "create a CenterNet model instance from a Detectron2 config with specified input shapes and hyperparameters",
+    "run_centernet_forward_pass": "run the CenterNet forward pass on images and feature dictionaries to compute losses or predictions",
+    "review_centernet_losses": "review the CenterNet losses method to understand heatmap focal loss and regression loss computation",
+    "test_centernet_inference": "test the CenterNet inference pipeline including NMS and top-K filtering for object detection predictions"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/dense_heads/centernet_head.py": {
+    "build_CenterNetHead": "build a CenterNetHead module with configurable cls, bbox, and share towers for object detection",
+    "create_CenterNetHead_from_config": "create a CenterNetHead instance from a detectron2 config object and input shape specs",
+    "run_CenterNetHead_forward": "run the CenterNetHead forward pass on multi-scale feature maps to get cls logits and bbox regression",
+    "review_Scale_module": "review the Scale nn.Module that multiplies input tensors by a learnable scalar parameter",
+    "refactor_CenterNetHead_deformable": "refactor the CenterNetHead to enable or disable deformable convolutions in the tower heads"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/dense_heads/utils.py": {
+    "summarize_transpose": "summarize the _transpose function that converts image-first training targets to level-first format for FPN",
+    "summarize_reduce_sum": "summarize the reduce_sum function that performs distributed tensor summation across multiple GPUs",
+    "review_transpose": "review the _transpose function to understand how it splits and concatenates training targets across FPN levels",
+    "review_reduce_sum": "review the reduce_sum function to understand its behavior in single GPU versus multi-GPU distributed training",
+    "test_reduce_sum": "test the reduce_sum function to verify it returns the tensor unchanged when world size is less than 2"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/layers/deform_conv.py": {
+    "create_DFConv2d_modulated": "create a DFConv2d layer with modulated deformable convolution for feature extraction in object detection",
+    "create_DFConv2d_standard": "create a DFConv2d layer with standard deformable convolution without modulation for spatial feature learning",
+    "build_DFConv2d_forward": "build a forward pass through DFConv2d that applies deformable convolution to input feature maps",
+    "test_DFConv2d_offset": "test the DFConv2d forward method with return_offset to inspect learned spatial offsets",
+    "review_NewEmptyTensorOp": "review the _NewEmptyTensorOp autograd function that handles empty tensor shape propagation during backprop"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/layers/heatmap_focal_loss.py": {
+    "build_heatmap_focal_loss": "build a RetinaNet-style focal loss for multi-class heatmap predictions with configurable alpha, beta, and gamma parameters",
+    "run_binary_heatmap_focal_loss": "run a binary focal loss computation for single-channel heatmap predictions with positive and negative loss separation",
+    "test_heatmap_focal_loss_jit": "test the TorchScript-compiled version of heatmap focal loss for optimized inference performance",
+    "refactor_heatmap_focal_loss": "refactor heatmap_focal_loss and binary_heatmap_focal_loss into a single unified function as noted in the TODO comment",
+    "review_ignore_high_fp": "review the ignore_high_fp parameter that filters high false positive predictions from the negative loss calculation"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/layers/iou_loss.py": {
+    "build_iou_loss_module": "build a PyTorch module using IOULoss to compute IoU loss between predicted and target bounding boxes",
+    "create_giou_loss_function": "create a function call to giou_loss that computes generalized IoU loss between two sets of XYXY format boxes",
+    "test_IOULoss_forward": "test the IOULoss forward pass with predicted and target bounding box tensors and optional weights",
+    "refactor_IOULoss_reduction": "refactor the IOULoss class to support additional reduction modes beyond sum, batch, and none",
+    "review_giou_loss_implementation": "review the giou_loss function implementation for numerical stability and correct handling of non-overlapping boxes"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/layers/ml_nms.py": {
+    "run_ml_nms": "run non-maximum suppression on a boxlist with a specified IoU threshold",
+    "test_ml_nms": "test ml_nms with a boxlist containing pred_boxes and pred_classes fields",
+    "refactor_ml_nms": "refactor ml_nms to cap results with max_proposals after suppression",
+    "review_ml_nms": "review ml_nms which uses detectron2 batched_nms for multi-label NMS",
+    "summarize_ml_nms": "summarize ml_nms that filters overlapping boxes by score and label using batched NMS"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/meta_arch/centernet_detector.py": {
+    "build_object_detector": "build a CenterNetDetector object detector using detectron2 config to detect objects in images",
+    "run_inference": "run inference on batched input images using the CenterNetDetector to get object detection results",
+    "train_detector": "train the CenterNetDetector by calling forward with batched inputs containing ground truth instances",
+    "preprocess_images": "preprocess input images by normalizing, padding, and batching them for the CenterNetDetector backbone",
+    "review_detector_architecture": "review the CenterNetDetector class and its backbone and proposal generator components"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/roi_heads/custom_fast_rcnn.py": {
+    "build_CustomFastRCNNOutputLayers": "build a CustomFastRCNNOutputLayers instance with cfg and input_shape for ROI head classification and box regression",
+    "test_losses_method": "test the losses method to compute classification and box regression loss from predictions and proposals",
+    "test_sigmoid_cross_entropy_loss": "test the sigmoid_cross_entropy_loss method to compute BCE loss with optional FED loss weighting",
+    "test_softmax_cross_entropy_loss": "test the softmax_cross_entropy_loss method to compute cross entropy loss with optional FED loss weighting",
+    "test_inference_method": "test the inference method to predict boxes and scores with NMS and optional multi-proposal scoring"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/roi_heads/custom_roi_heads.py": {
+    "build_CustomROIHeads": "build a CustomROIHeads model using Detectron2 config to initialize box heads with CustomFastRCNNOutputLayers",
+    "build_CustomCascadeROIHeads": "build a CustomCascadeROIHeads model with multi-proposal scoring enabled via Detectron2 config",
+    "run_CustomROIHeads_forward": "run the CustomROIHeads forward pass on images and proposals to get predictions or training losses",
+    "run_CustomCascadeROIHeads_forward": "run the CustomCascadeROIHeads forward pass with cascade stages and multi-proposal score fusion at test time",
+    "review_CustomCascadeROIHeads_forward_box": "review the CustomCascadeROIHeads _forward_box method to understand cascade stage predictions and score averaging"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/centernet/modeling/roi_heads/fed_loss.py": {
+    "load_class_freq_from_json": "load class frequency data from an LVIS category info JSON file and return weighted frequencies as a tensor",
+    "get_fed_loss_sampled_classes": "sample category indices for frequency-enhanced decoupled loss using multinomial sampling with optional frequency weights",
+    "review_load_class_freq": "review the load_class_freq function to understand how it loads and weights LVIS category image counts",
+    "review_get_fed_loss_inds": "review the get_fed_loss_inds function to understand how it samples category indices for FED loss computation",
+    "refactor_get_fed_loss_inds": "refactor the get_fed_loss_inds function to support dynamic class counts instead of hardcoded C=1203"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/tools/analyze_model.py": {
+    "run_flop_analysis": "run the analyze_model.py script with --tasks flop to count GFLOPs for a Detectron2 model",
+    "run_activation_analysis": "run the analyze_model.py script with --tasks activation to count activations per operator type",
+    "run_parameter_count": "run the analyze_model.py script with --tasks parameter to print the model parameter count table",
+    "run_structure_display": "run the analyze_model.py script with --tasks structure to print the full model structure",
+    "run_multi_task_analysis": "run the analyze_model.py script with multiple --tasks to analyze flops, activations, and parameters together"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/tools/benchmark.py": {
+    "run_benchmark_train": "run a training benchmark for a Detectron2 model using the benchmark script with --task train",
+    "run_benchmark_eval": "run an evaluation benchmark for a Detectron2 model using the benchmark script with --task eval",
+    "run_benchmark_data": "run a data loader benchmark to measure dataloader throughput using the benchmark script with --task data",
+    "run_benchmark_data_advanced": "run an advanced data loader benchmark with detailed bottleneck analysis using --task data_advanced",
+    "review_RAM_msg": "review the RAM_msg function that reports current virtual memory usage in gigabytes"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/tools/lazyconfig_train_net.py": {
+    "run_model_training": "run detectron2 model training from a LazyConfig Python config file with multi-GPU DDP support",
+    "run_model_evaluation": "run evaluation of a trained detectron2 model on a test dataset using LazyConfig",
+    "run_resume_training": "resume detectron2 training from a saved checkpoint using the LazyConfig training script",
+    "review_do_train": "review the do_train function that instantiates models, optimizers, dataloaders, and registers training hooks",
+    "review_do_test": "review the do_test function that runs inference on a dataset and prints results in CSV format"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/tools/lightning_train_net.py": {
+    "run_lightning_training": "run detectron2 model training using PyTorch Lightning with multi-GPU support and configurable evaluation periods",
+    "run_lightning_validation": "run inference and validation on a trained detectron2 model using PyTorch Lightning trainer",
+    "review_TrainingModule": "review the TrainingModule LightningModule class that handles training steps, checkpointing, and evaluation for detectron2 models",
+    "review_DataModule": "review the DataModule LightningDataModule class that builds train and validation dataloaders for detectron2 datasets",
+    "review_train_function": "review the train function that configures the PyTorch Lightning trainer and orchestrates training or validation"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/tools/plain_train_net.py": {
+    "run_detectron2_training": "run the detectron2 plain training loop with a config file and optional resume flag",
+    "run_evaluation_only": "run evaluation only on a trained detectron2 model using the config and saved weights",
+    "create_evaluator": "create a dataset evaluator for COCO, LVIS, Cityscapes, or Pascal VOC using get_evaluator",
+    "run_inference_on_dataset": "run inference on a test dataset using do_test and print CSV format results",
+    "setup_detectron2_config": "setup and freeze a detectron2 config from a file and command line arguments"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/tools/train_net.py": {
+    "run_train_net": "run the detectron2 training script with a config file to train object detection models on GPU",
+    "run_train_net_eval_only": "run the training script in eval-only mode to test a model on a dataset without training",
+    "build_evaluator": "build an evaluator for a given dataset type like COCO, LVIS, or Cityscapes using the config",
+    "test_with_TTA": "test a trained model with test-time augmentation enabled for improved inference accuracy on R-CNN models",
+    "setup_cfg": "setup and merge detectron2 config from a file and command-line arguments then freeze the config"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/tools/visualize_data.py": {
+    "visualize_annotations_from_config": "run the script with --source annotation to visualize ground-truth annotations from a Detectron2 config file",
+    "visualize_dataloader_with_preprocessing": "run the script with --source dataloader to visualize data loader output including preprocessing steps",
+    "setup_detectron2_config": "build a Detectron2 config object from a config file and command-line options with frozen settings",
+    "parse_visualization_args": "parse command-line arguments for source type, config file, output directory, and display options",
+    "output_visualized_images": "save or display visualized detection images with bounding boxes, masks, and keypoints to an output directory"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/tools/visualize_json_results.py": {
+    "run_visualize_json_results": "run the script to visualize COCO or LVIS JSON predictions as side-by-side images",
+    "create_instances_from_predictions": "create detectron2 Instances objects from a list of prediction dictionaries with scores and bboxes",
+    "visualize_coco_predictions": "visualize model predictions on COCO dataset images with configurable confidence threshold",
+    "visualize_lvis_predictions": "visualize model predictions on LVIS dataset images with category ID mapping",
+    "review_create_instances_filtering": "review the create_instances function to understand how predictions are filtered by confidence threshold"
+  },
+  "facebookresearch_detic/third_party/CenterNet2/tools/deploy/export_model.py": {
+    "export_model_torchscript": "export a detectron2 model to TorchScript format using the tracing export method",
+    "export_model_onnx": "export a detectron2 model to ONNX format using the caffe2_tracing export method",
+    "export_model_caffe2": "export a detectron2 model to Caffe2 protobuf format using the caffe2_tracing export method",
+    "run_export_evaluation": "run evaluation on an exported model using the COCOEvaluator and inference_on_dataset",
+    "setup_detectron2_config": "setup a detectron2 config from a config file with command-line options and pointrend support"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/benchmark.py": {
+    "run_benchmark": "run the Deformable DETR inference speed benchmark and print FPS to stdout",
+    "run_benchmark_with_checkpoint": "run the benchmark loading a pre-trained checkpoint via the --resume flag",
+    "run_benchmark_custom_batch": "run the benchmark with a custom batch size using the --batch_size flag",
+    "measure_average_inference_time": "measure the average inference time of a PyTorch model over multiple iterations",
+    "get_benckmark_arg_parser": "get the argparse parser for configuring benchmark iterations, warmup, batch size, and checkpoint"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/engine.py": {
+    "train_one_epoch": "train a Deformable DETR model for one epoch using a data loader, criterion, and optimizer",
+    "run_train_one_epoch_with_grad_clipping": "run train_one_epoch with gradient clipping by setting max_norm to clip gradient norms",
+    "evaluate_model": "evaluate a Deformable DETR model on a test dataset and return COCO and panoptic stats",
+    "run_evaluate_with_coco_evaluator": "run evaluate to compute bbox and segmentation IoU metrics using a CocoEvaluator",
+    "run_evaluate_with_panoptic_evaluator": "run evaluate to compute panoptic quality metrics using a PanopticEvaluator"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/main.py": {
+    "run_deformable_detr_training": "run the Deformable DETR model training on COCO dataset with configurable backbone and transformer hyperparameters",
+    "run_deformable_detr_evaluation": "run evaluation of a trained Deformable DETR model on the COCO validation set using --eval flag",
+    "build_deformable_detr_model": "build a Deformable DETR model with configurable encoder layers, decoder layers, and number of attention heads",
+    "resume_deformable_detr_training": "resume Deformable DETR training from a saved checkpoint using the --resume argument with checkpoint path",
+    "configure_deformable_detr_args": "configure Deformable DETR training arguments including learning rate, batch size, epochs, and loss coefficients"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/datasets/coco.py": {
+    "build_coco_dataset": "build a COCO detection dataset for train or val splits using the build function",
+    "create_coco_detection_dataset": "create a CocoDetection dataset instance with image folder, annotation file, and transforms",
+    "convert_coco_poly_to_mask": "convert COCO polygon segmentations to binary mask tensors given height and width",
+    "create_convert_coco_polys_to_mask": "create a ConvertCocoPolysToMask callable to transform COCO annotations into boxes, labels, and masks",
+    "make_coco_transforms": "make COCO data augmentation transforms for train or val image sets"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/datasets/coco_eval.py": {
+    "create_CocoEvaluator": "create a CocoEvaluator instance with a COCO ground truth dataset and a list of IoU types",
+    "update_CocoEvaluator_predictions": "update the CocoEvaluator with new model predictions to accumulate per-image evaluation results",
+    "prepare_for_coco_detection": "prepare model predictions into COCO detection format with bounding boxes, scores, and category labels",
+    "prepare_for_coco_segmentation": "prepare model predictions into COCO segmentation format with RLE-encoded masks, scores, and labels",
+    "convert_to_xywh": "convert bounding boxes from xyxy format to xywh format using a PyTorch tensor transformation"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/datasets/coco_panoptic.py": {
+    "build_coco_panoptic_dataset": "build a COCO panoptic segmentation dataset for train or val splits using the build function",
+    "create_coco_panoptic_instance": "create a CocoPanoptic dataset instance with image folder, annotation folder, and annotation file paths",
+    "get_item_from_coco_panoptic": "get an image and its panoptic segmentation target dictionary by index from the dataset",
+    "get_height_and_width": "get the height and width of an image at a given index from the COCO panoptic dataset",
+    "review_coco_panoptic_class": "review the CocoPanoptic class to understand panoptic segmentation data loading and mask processing"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/datasets/data_prefetcher.py": {
+    "create_data_prefetcher": "create a data_prefetcher instance with a dataloader and cuda device for async prefetching",
+    "call_next_on_prefetcher": "call next on the data_prefetcher to get the next preloaded samples and targets",
+    "use_to_cuda": "use to_cuda to move samples and targets tensors to a GPU device non-blockingly",
+    "review_data_prefetcher_preload": "review the data_prefetcher preload method that fetches and transfers the next batch on a CUDA stream",
+    "refactor_data_prefetcher_stream_sync": "refactor the data_prefetcher next method to adjust CUDA stream synchronization and record_stream logic"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/datasets/panoptic_eval.py": {
+    "create_PanopticEvaluator": "create a PanopticEvaluator instance with annotation file, annotation folder, and output directory for panoptic evaluation",
+    "update_PanopticEvaluator_predictions": "update the PanopticEvaluator with new predictions by writing PNG strings to disk and accumulating results",
+    "synchronize_PanopticEvaluator_processes": "synchronize predictions across all distributed processes by gathering and merging prediction lists",
+    "summarize_PanopticEvaluator_results": "summarize panoptic evaluation results by writing predictions to JSON and computing PQ metrics via pq_compute",
+    "run_PanopticEvaluator_full_pipeline": "run the full panoptic evaluation pipeline by initializing evaluator, updating predictions, synchronizing, and summarizing results"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/datasets/samplers.py": {
+    "create_distributed_sampler": "create a DistributedSampler instance to split a dataset across multiple processes for distributed training",
+    "create_node_distributed_sampler": "create a NodeDistributedSampler instance to partition dataset samples by local node rank for multi-node training",
+    "set_epoch_distributed_sampler": "set the epoch on a DistributedSampler to change the deterministic shuffle seed for a new training epoch",
+    "iterate_distributed_sampler": "iterate over a DistributedSampler to get the subset of dataset indices assigned to the current process rank",
+    "review_sampler_classes": "review the DistributedSampler and NodeDistributedSampler classes to understand how they partition datasets for distributed training"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/datasets/transforms.py": {
+    "build_compose_pipeline": "build a Compose pipeline that chains RandomCrop, RandomHorizontalFlip, and Normalize transforms for object detection",
+    "create_randomcrop_transform": "create a RandomCrop transform that crops an image and its bounding box target to a fixed size",
+    "create_randomresize_transform": "create a RandomResize transform that randomly resizes an image from a list of sizes while scaling boxes",
+    "create_normalize_transform": "create a Normalize transform that normalizes an image and converts bounding boxes to normalized center format",
+    "create_randomselect_transform": "create a RandomSelect transform that randomly chooses between two transform sequences with configurable probability"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/datasets/torchvision_datasets/coco.py": {
+    "create_CocoDetection_dataset": "create a CocoDetection dataset instance with a root directory and COCO annotation JSON file",
+    "cache_images_method": "cache all COCO dataset images into memory for faster repeated access during training",
+    "get_image_method": "retrieve a single COCO image by file path from cache or disk as an RGB PIL Image",
+    "getitem_method": "get a dataset item by index returning a tuple of the image and its COCO annotations",
+    "len_method": "get the total number of images in the COCO dataset by calling len on the dataset"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/models/backbone.py": {
+    "build_backbone_model": "build a ResNet backbone with frozen BatchNorm using build_backbone for object detection",
+    "create_frozen_batch_norm": "create a FrozenBatchNorm2d layer with fixed batch statistics and affine parameters",
+    "create_backbone_base": "create a BackboneBase module that extracts intermediate feature layers from a pretrained backbone",
+    "create_joiner": "create a Joiner module that combines a backbone with position encoding for feature extraction",
+    "review_backbone_forward": "review the Backbone forward pass that processes NestedTensor inputs and returns feature maps"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/models/deformable_detr.py": {
+    "build_DeformableDETR_model": "build a DeformableDETR model with backbone, transformer, num_classes, num_queries, and feature levels for object detection",
+    "run_DeformableDETR_forward": "run the DeformableDETR forward pass on a NestedTensor of batched images to get prediction logits and boxes",
+    "build_SetCriterion": "build a SetCriterion loss module with a matcher, weight dict, and loss types for training Deformable DETR",
+    "run_PostProcess": "run PostProcess to convert model output logits and boxes into COCO API format with scores and labels",
+    "build_model_criterion_postprocessors": "build the full DeformableDETR model, SetCriterion, and postprocessors from args including optional segmentation support"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/models/deformable_transformer.py": {
+    "build_deforamble_transformer": "build a DeformableTransformer model from argparse args with configurable encoder decoder layers and feature levels",
+    "DeformableTransformer_forward": "run the DeformableTransformer forward pass with multi-scale source features masks and positional embeddings",
+    "DeformableTransformerEncoderLayer_forward": "run a single encoder layer with multi-scale deformable attention and feed-forward network on source features",
+    "DeformableTransformerDecoderLayer_forward": "run a single decoder layer with self-attention cross-attention and feed-forward network on target queries",
+    "DeformableTransformer_gen_encoder_output_proposals": "generate encoder output proposals and normalized memory from encoder memory padding masks and spatial shapes"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/models/matcher.py": {
+    "build_HungarianMatcher": "build a HungarianMatcher instance with custom cost_class, cost_bbox, and cost_giou weights for object detection matching",
+    "run_HungarianMatcher_forward": "run the HungarianMatcher forward pass to match predicted boxes and logits against ground truth targets",
+    "build_matcher_from_args": "build a HungarianMatcher from an argparse args object using set_cost_class, set_cost_bbox, and set_cost_giou",
+    "review_HungarianMatcher_cost_computation": "review the HungarianMatcher forward method focal loss classification cost, L1 bbox cost, and GIou cost computation",
+    "test_HungarianMatcher_linear_sum_assignment": "test the HungarianMatcher linear sum assignment matching between network predictions and ground truth targets"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/models/position_encoding.py": {
+    "build_sine_position_embedding": "build a PositionEmbeddingSine module with configurable num_pos_feats, temperature, and normalize options for transformer models",
+    "build_learned_position_embedding": "build a PositionEmbeddingLearned module with trainable row and column embeddings for absolute positional encoding",
+    "build_position_encoding_from_args": "build a position encoding module from argparse args using build_position_encoding with sine or learned mode",
+    "review_PositionEmbeddingSine_forward": "review the PositionEmbeddingSine forward method that computes sinusoidal positional encodings from a NestedTensor input",
+    "test_PositionEmbeddingLearned_reset_parameters": "test the PositionEmbeddingLearned reset_parameters method that reinitializes row and column embedding weights uniformly"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/models/segmentation.py": {
+    "build_DETRsegm": "build a DETRsegm model wrapping a DETR backbone to predict segmentation masks alongside class and box outputs",
+    "create_MaskHeadSmallConv": "create a MaskHeadSmallConv convolutional head that uses FPN-style upsampling with group norm to generate segmentation masks",
+    "create_MHAttentionMap": "create an MHAttentionMap module that computes 2D attention softmax weights between query embeddings and memory features",
+    "run_dice_loss": "run the dice_loss function to compute a DICE loss between predicted mask inputs and binary target masks",
+    "run_sigmoid_focal_loss": "run the sigmoid_focal_loss function to compute RetinaNet-style focal loss with configurable alpha and gamma parameters"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/models/ops/setup.py": {
+    "build_cuda_extension": "build the MultiScaleDeformableAttention CUDA extension by running pip install from the setup.py directory",
+    "run_get_extensions": "run get_extensions to discover and configure CPU and CUDA source files for the extension build",
+    "review_get_extensions": "review the get_extensions function to understand how it conditionally compiles CUDA vs CPU sources",
+    "refactor_setup": "refactor the setup.py to support CPU-only builds when CUDA is not available",
+    "test_extension_build": "test the extension build process by running python setup.py build_ext --inplace"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/models/ops/test.py": {
+    "test_ms_deform_attn_forward_double": "test the CUDA and PyTorch double precision forward pass equality for multi-scale deformable attention",
+    "test_ms_deform_attn_forward_float": "test the CUDA and PyTorch float precision forward pass equality for multi-scale deformable attention",
+    "test_ms_deform_attn_gradient_numerical": "test the numerical gradient correctness of MSDeformAttnFunction across various channel dimensions",
+    "run_ms_deform_attn_tests": "run all multi-scale deformable attention forward and gradient validation tests",
+    "review_ms_deform_attn_function": "review the MSDeformAttnFunction CUDA implementation against the PyTorch reference implementation"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/models/ops/functions/ms_deform_attn_func.py": {
+    "build_ms_deform_attn_forward": "build a CUDA-accelerated multi-scale deformable attention forward pass using MSDeformAttnFunction with value tensors and sampling locations",
+    "build_ms_deform_attn_backward": "build a backward pass for multi-scale deformable attention that computes gradients for value, sampling locations, and attention weights",
+    "test_ms_deform_attn_core_pytorch": "test the pure PyTorch multi-scale deformable attention core function using bilinear grid sampling and attention weight aggregation",
+    "refactor_ms_deform_attn_core_pytorch": "refactor the PyTorch reference implementation of multi-scale deformable attention to support additional padding modes or interpolation methods",
+    "review_msdeformattnfunction_class": "review the MSDeformAttnFunction autograd Function class that wraps CUDA forward and backward ops for multi-scale deformable attention"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/models/ops/modules/ms_deform_attn.py": {
+    "create_msdeform_attn_module": "create a Multi-Scale Deformable Attention module with configurable hidden dimension, feature levels, attention heads, and sampling points",
+    "build_msdeform_attn_forward_pass": "build a forward pass for MSDeformAttn that computes sampling offsets, attention weights, and applies deformable attention to multi-scale features",
+    "test_msdeform_attn_initialization": "test the MSDeformAttn module parameter initialization with angular grid bias for sampling offsets and Xavier uniform for projections",
+    "review_msdeform_attn_reference_points": "review the MSDeformAttn forward method to handle reference points as 2D coordinates or 4D reference boxes",
+    "refactor_msdeform_attn_padding_mask": "refactor the MSDeformAttn value projection to apply padding masks and zero out padded input elements before attention"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/tools/launch.py": {
+    "run_distributed_training_single_node": "run a single-node multi-process distributed training script with nproc_per_node GPUs using the launch utility",
+    "run_distributed_training_multi_node": "run a multi-node distributed training script across two nodes with specified master address and port",
+    "parse_args_distributed_launch": "parse command line arguments for distributed training including nnodes, node_rank, nproc_per_node, master_addr, and master_port",
+    "launch_training_processes": "launch multiple subprocesses for distributed training with environment variables for rank, local_rank, master_addr, and world_size",
+    "review_main_distributed_entry": "review the main entry point that spawns distributed training processes and waits for all to complete"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/util/box_ops.py": {
+    "convert_box_cxcywh_to_xyxy": "convert bounding boxes from center x, center y, width, height format to x0, y0, x1, y1 format",
+    "convert_box_xyxy_to_cxcywh": "convert bounding boxes from x0, y0, x1, y1 format to center x, center y, width, height format",
+    "compute_box_iou": "compute the intersection over union between two sets of bounding boxes and return the union areas",
+    "compute_generalized_box_iou": "compute the generalized intersection over union between two sets of bounding boxes in xyxy format",
+    "compute_masks_to_boxes": "compute bounding boxes in xyxy format from a set of 2D binary masks with shape N, H, W"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/util/misc.py": {
+    "create_smoothedvalue_tracker": "create a SmoothedValue instance to track median and global average of training loss over a sliding window",
+    "build_metriclogger_for_training": "build a MetricLogger to log training metrics like loss and iteration time every N steps",
+    "run_all_gather_distributed": "run all_gather to collect arbitrary picklable data from all distributed processes into a single list",
+    "test_reduce_dict_across_ranks": "test reduce_dict to average or sum dictionary values across all distributed training processes",
+    "init_distributed_mode_setup": "init distributed mode by calling init_distributed_mode to set up multi-GPU training with NCCL backend"
+  },
+  "facebookresearch_detic/third_party/Deformable-DETR/util/plot_utils.py": {
+    "plot_training_logs": "plot training and test results for specified fields from Deformable DETR training log files",
+    "plot_logs_mAP": "plot mAP results from COCO evaluation logs with exponential weighted smoothing across multiple experiments",
+    "plot_logs_loss": "plot loss_bbox_unscaled and class_error from training logs with solid training and dashed test lines",
+    "plot_precision_recall_curves": "plot precision recall and scores recall curves from COCO evaluation data files for multiple experiments",
+    "plot_precision_recall_exp_id": "plot precision recall curves using experiment ID naming scheme from torch saved evaluation data files"
+  },
+  "facebookresearch_detic/tools/get_cc_tags.py": {
+    "run_get_cc_tags": "run the script to extract object category tags from CC3M image captions and save tagged JSON",
+    "run_convert_captions": "run the script with --convert_caption to move captions from annotations into image records",
+    "run_tag_with_custom_categories": "run the script with --cat_path to tag images using a custom category JSON file",
+    "run_keep_all_images": "run the script with --keep_images to retain images that have no matching category tags",
+    "run_tag_with_all_captions": "run the script with --allcaps to search all captions instead of only the first one per image"
+  },
+  "facebookresearch_detic/tools/merge_lvis_coco.py": {
+    "run_merge_lvis_coco": "run the script to merge LVIS and COCO annotations into a combined dataset JSON file",
+    "run_merge_lvis_coco_box_only": "run the script with NO_SEG set to True to merge LVIS and COCO annotations without segmentation masks",
+    "review_get_bbox": "review the get_bbox function that converts COCO bbox format from xywh to x1y1x2y2 coordinates",
+    "review_COCO_SYNSET_CATEGORIES": "review the COCO_SYNSET_CATEGORIES mapping that links COCO category IDs to LVIS WordNet synset identifiers",
+    "refactor_merge_lvis_coco": "refactor the merge script to accept COCO_PATH, LVIS_PATH, and THRESH as command-line arguments instead of hardcoded values"
+  },
+  "facebookresearch_detic/tools/preprocess_imagenet22k.py": {
+    "run_preprocess_imagenet22k": "run the preprocess function to convert ImageNet-22K tar archives into numpy metadata files",
+    "create_RawTarDataset": "create a _RawTarDataset instance to read JPEG images from a tar archive using an index file",
+    "read_RawTarDataset_getitem": "read raw image data by index from a tar archive with GZIP decompression support",
+    "review_RawTarDataset_init": "review the _RawTarDataset __init__ method that parses tarlog index files and builds name and offset lists",
+    "summarize_preprocess": "summarize the preprocess function that generates numpy arrays for tarlog files, tar files, and class names"
+  }
+}

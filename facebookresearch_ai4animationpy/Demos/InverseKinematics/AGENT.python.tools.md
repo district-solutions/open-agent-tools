@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/ai4animationpy
+- repo_uri: https://github.com/facebookresearch/ai4animationpy
+
+## File: facebookresearch_ai4animationpy/Demos/InverseKinematics/Program.py
+
+Prompts
+
+```
+["run the FABRIK inverse kinematics solver on an actor's left arm bone chain", 'create an Actor entity from a GLB model file with full body bone names', 'solve inverse kinematics by setting a target position and rotation for the wrist bone', "sync the actor's IK solved bone transforms back to the scene hierarchy", 'run a standalone AI4Animation program with a camera targeting the actor entity']
+```
+
+Usage
+
+```
+{'run_FABRIK_IK_solver': "run the FABRIK inverse kinematics solver on an actor's left arm bone chain", 'create_Actor_from_glb': 'create an Actor entity from a GLB model file with full body bone names', 'solve_IK_with_target': 'solve inverse kinematics by setting a target position and rotation for the wrist bone', 'sync_actor_to_scene': "sync the actor's IK solved bone transforms back to the scene hierarchy", 'run_standalone_animation_program': 'run a standalone AI4Animation program with a camera targeting the actor entity'}
+```
+

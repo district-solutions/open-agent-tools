@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/banmo
+- repo_uri: https://github.com/facebookresearch/banmo
+
+## File: facebookresearch_banmo/third_party/detectron2/configs/common/coco_schedule.py
+
+Prompts
+
+```
+['build a default 1x COCO training LR scheduler with multi-step decay and linear warmup', 'build a default 3x COCO training LR scheduler with adjusted milestones for longer training', 'create a custom LR scheduler by calling default_X_scheduler with any positive num_X value', 'review the default_X_scheduler function that returns a WarmupParamScheduler with MultiStepParamScheduler milestones', 'summarize the pre-built lr_multiplier_1x through lr_multiplier_9x scheduler config objects']
+```
+
+Usage
+
+```
+{'build_lr_scheduler_1x': 'build a default 1x COCO training LR scheduler with multi-step decay and linear warmup', 'build_lr_scheduler_3x': 'build a default 3x COCO training LR scheduler with adjusted milestones for longer training', 'create_custom_lr_scheduler': 'create a custom LR scheduler by calling default_X_scheduler with any positive num_X value', 'review_default_X_scheduler': 'review the default_X_scheduler function that returns a WarmupParamScheduler with MultiStepParamScheduler milestones', 'summarize_lr_multiplier_configs': 'summarize the pre-built lr_multiplier_1x through lr_multiplier_9x scheduler config objects'}
+```
+

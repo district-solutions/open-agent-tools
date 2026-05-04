@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/DensePose
+- repo_uri: https://github.com/facebookresearch/DensePose.git
+
+## File: facebookresearch_DensePose/detectron/core/config.py
+
+Prompts
+
+```
+['merge a YAML config file into the global Detectron config to override default options', 'merge command line config key value pairs into the global Detectron config', 'assert and infer inferred config values then mark the global config as immutable', 'get the output directory path for training or testing based on datasets and model type', 'download and cache model weight URLs locally then rewrite the config to use cached paths', 'run RPN proposal generation inference on a dataset using a single or multi GPU setup', 'run parallel RPN proposal generation across multiple GPUs by spawning subprocesses for each image', 'run RPN proposal generation on a single GPU over all images or a specific index range', 'generate RPN proposals on all images in a roidb using a loaded Detectron model', 'generate RPN proposals on a single image and return scaled bounding boxes with scores', 'run full detection on an image to get boxes, masks, keypoints, and body UV predictions', 'run bounding box detection on an image with given box proposals and return scores and boxes', 'run bounding box detection with test-time augmentations including flips, scales, and aspect ratios', 'infer instance segmentation masks for detected bounding boxes using the mask network', 'infer instance keypoint poses from detected bounding boxes using the keypoint network', 'run inference on a Detectron model across all configured test datasets with optional multi-gpu support', 'test a Detectron network on a single dataset and return evaluation results for boxes, masks, keypoints, and body UV', 'run single GPU inference on all images in a dataset or an index range and save detections to a pickle file', 'initialize a Detectron model from the global config by loading test-time weights and creating Caffe2 networks', 'get the region of interest database for a dataset optionally restricted to a range of image indices', 'create cell anchors for all FPN levels, scales, and aspect ratios for RetinaNet inference', 'test the im_detect_bbox function by running RetinaNet detection on a sample image', 'review the im_detect_bbox function to understand FPN-level detection, NMS, and box scoring logic', 'refactor _create_cell_anchors to cache precomputed anchors across images instead of recomputing per image']
+```
+
+Usage
+
+```
+{'merge_cfg_from_file': 'merge a YAML config file into the global Detectron config to override default options', 'merge_cfg_from_list': 'merge command line config key value pairs into the global Detectron config', 'assert_and_infer_cfg': 'assert and infer inferred config values then mark the global config as immutable', 'get_output_dir': 'get the output directory path for training or testing based on datasets and model type', 'cache_cfg_urls': 'download and cache model weight URLs locally then rewrite the config to use cached paths'}
+```
+
+## File: facebookresearch_DensePose/detectron/core/rpn_generator.py
+
+Prompts
+
+```
+['merge a YAML config file into the global Detectron config to override default options', 'merge command line config key value pairs into the global Detectron config', 'assert and infer inferred config values then mark the global config as immutable', 'get the output directory path for training or testing based on datasets and model type', 'download and cache model weight URLs locally then rewrite the config to use cached paths', 'run RPN proposal generation inference on a dataset using a single or multi GPU setup', 'run parallel RPN proposal generation across multiple GPUs by spawning subprocesses for each image', 'run RPN proposal generation on a single GPU over all images or a specific index range', 'generate RPN proposals on all images in a roidb using a loaded Detectron model', 'generate RPN proposals on a single image and return scaled bounding boxes with scores', 'run full detection on an image to get boxes, masks, keypoints, and body UV predictions', 'run bounding box detection on an image with given box proposals and return scores and boxes', 'run bounding box detection with test-time augmentations including flips, scales, and aspect ratios', 'infer instance segmentation masks for detected bounding boxes using the mask network', 'infer instance keypoint poses from detected bounding boxes using the keypoint network', 'run inference on a Detectron model across all configured test datasets with optional multi-gpu support', 'test a Detectron network on a single dataset and return evaluation results for boxes, masks, keypoints, and body UV', 'run single GPU inference on all images in a dataset or an index range and save detections to a pickle file', 'initialize a Detectron model from the global config by loading test-time weights and creating Caffe2 networks', 'get the region of interest database for a dataset optionally restricted to a range of image indices', 'create cell anchors for all FPN levels, scales, and aspect ratios for RetinaNet inference', 'test the im_detect_bbox function by running RetinaNet detection on a sample image', 'review the im_detect_bbox function to understand FPN-level detection, NMS, and box scoring logic', 'refactor _create_cell_anchors to cache precomputed anchors across images instead of recomputing per image']
+```
+
+Usage
+
+```
+{'generate_rpn_on_dataset': 'run RPN proposal generation inference on a dataset using a single or multi GPU setup', 'multi_gpu_generate_rpn_on_dataset': 'run parallel RPN proposal generation across multiple GPUs by spawning subprocesses for each image', 'generate_rpn_on_range': 'run RPN proposal generation on a single GPU over all images or a specific index range', 'generate_proposals_on_roidb': 'generate RPN proposals on all images in a roidb using a loaded Detectron model', 'im_proposals': 'generate RPN proposals on a single image and return scaled bounding boxes with scores'}
+```
+
+## File: facebookresearch_DensePose/detectron/core/test.py
+
+Prompts
+
+```
+['merge a YAML config file into the global Detectron config to override default options', 'merge command line config key value pairs into the global Detectron config', 'assert and infer inferred config values then mark the global config as immutable', 'get the output directory path for training or testing based on datasets and model type', 'download and cache model weight URLs locally then rewrite the config to use cached paths', 'run RPN proposal generation inference on a dataset using a single or multi GPU setup', 'run parallel RPN proposal generation across multiple GPUs by spawning subprocesses for each image', 'run RPN proposal generation on a single GPU over all images or a specific index range', 'generate RPN proposals on all images in a roidb using a loaded Detectron model', 'generate RPN proposals on a single image and return scaled bounding boxes with scores', 'run full detection on an image to get boxes, masks, keypoints, and body UV predictions', 'run bounding box detection on an image with given box proposals and return scores and boxes', 'run bounding box detection with test-time augmentations including flips, scales, and aspect ratios', 'infer instance segmentation masks for detected bounding boxes using the mask network', 'infer instance keypoint poses from detected bounding boxes using the keypoint network', 'run inference on a Detectron model across all configured test datasets with optional multi-gpu support', 'test a Detectron network on a single dataset and return evaluation results for boxes, masks, keypoints, and body UV', 'run single GPU inference on all images in a dataset or an index range and save detections to a pickle file', 'initialize a Detectron model from the global config by loading test-time weights and creating Caffe2 networks', 'get the region of interest database for a dataset optionally restricted to a range of image indices', 'create cell anchors for all FPN levels, scales, and aspect ratios for RetinaNet inference', 'test the im_detect_bbox function by running RetinaNet detection on a sample image', 'review the im_detect_bbox function to understand FPN-level detection, NMS, and box scoring logic', 'refactor _create_cell_anchors to cache precomputed anchors across images instead of recomputing per image']
+```
+
+Usage
+
+```
+{'run_im_detect_all': 'run full detection on an image to get boxes, masks, keypoints, and body UV predictions', 'run_im_detect_bbox': 'run bounding box detection on an image with given box proposals and return scores and boxes', 'run_im_detect_bbox_aug': 'run bounding box detection with test-time augmentations including flips, scales, and aspect ratios', 'run_im_detect_mask': 'infer instance segmentation masks for detected bounding boxes using the mask network', 'run_im_detect_keypoints': 'infer instance keypoint poses from detected bounding boxes using the keypoint network'}
+```
+
+## File: facebookresearch_DensePose/detectron/core/test_engine.py
+
+Prompts
+
+```
+['merge a YAML config file into the global Detectron config to override default options', 'merge command line config key value pairs into the global Detectron config', 'assert and infer inferred config values then mark the global config as immutable', 'get the output directory path for training or testing based on datasets and model type', 'download and cache model weight URLs locally then rewrite the config to use cached paths', 'run RPN proposal generation inference on a dataset using a single or multi GPU setup', 'run parallel RPN proposal generation across multiple GPUs by spawning subprocesses for each image', 'run RPN proposal generation on a single GPU over all images or a specific index range', 'generate RPN proposals on all images in a roidb using a loaded Detectron model', 'generate RPN proposals on a single image and return scaled bounding boxes with scores', 'run full detection on an image to get boxes, masks, keypoints, and body UV predictions', 'run bounding box detection on an image with given box proposals and return scores and boxes', 'run bounding box detection with test-time augmentations including flips, scales, and aspect ratios', 'infer instance segmentation masks for detected bounding boxes using the mask network', 'infer instance keypoint poses from detected bounding boxes using the keypoint network', 'run inference on a Detectron model across all configured test datasets with optional multi-gpu support', 'test a Detectron network on a single dataset and return evaluation results for boxes, masks, keypoints, and body UV', 'run single GPU inference on all images in a dataset or an index range and save detections to a pickle file', 'initialize a Detectron model from the global config by loading test-time weights and creating Caffe2 networks', 'get the region of interest database for a dataset optionally restricted to a range of image indices', 'create cell anchors for all FPN levels, scales, and aspect ratios for RetinaNet inference', 'test the im_detect_bbox function by running RetinaNet detection on a sample image', 'review the im_detect_bbox function to understand FPN-level detection, NMS, and box scoring logic', 'refactor _create_cell_anchors to cache precomputed anchors across images instead of recomputing per image']
+```
+
+Usage
+
+```
+{'run_inference_on_dataset': 'run inference on a Detectron model across all configured test datasets with optional multi-gpu support', 'test_net_on_dataset': 'test a Detectron network on a single dataset and return evaluation results for boxes, masks, keypoints, and body UV', 'test_net_single_gpu': 'run single GPU inference on all images in a dataset or an index range and save detections to a pickle file', 'initialize_model_from_cfg': 'initialize a Detectron model from the global config by loading test-time weights and creating Caffe2 networks', 'get_roidb_and_dataset': 'get the region of interest database for a dataset optionally restricted to a range of image indices'}
+```
+
+## File: facebookresearch_DensePose/detectron/core/test_retinanet.py
+
+Prompts
+
+```
+['merge a YAML config file into the global Detectron config to override default options', 'merge command line config key value pairs into the global Detectron config', 'assert and infer inferred config values then mark the global config as immutable', 'get the output directory path for training or testing based on datasets and model type', 'download and cache model weight URLs locally then rewrite the config to use cached paths', 'run RPN proposal generation inference on a dataset using a single or multi GPU setup', 'run parallel RPN proposal generation across multiple GPUs by spawning subprocesses for each image', 'run RPN proposal generation on a single GPU over all images or a specific index range', 'generate RPN proposals on all images in a roidb using a loaded Detectron model', 'generate RPN proposals on a single image and return scaled bounding boxes with scores', 'run full detection on an image to get boxes, masks, keypoints, and body UV predictions', 'run bounding box detection on an image with given box proposals and return scores and boxes', 'run bounding box detection with test-time augmentations including flips, scales, and aspect ratios', 'infer instance segmentation masks for detected bounding boxes using the mask network', 'infer instance keypoint poses from detected bounding boxes using the keypoint network', 'run inference on a Detectron model across all configured test datasets with optional multi-gpu support', 'test a Detectron network on a single dataset and return evaluation results for boxes, masks, keypoints, and body UV', 'run single GPU inference on all images in a dataset or an index range and save detections to a pickle file', 'initialize a Detectron model from the global config by loading test-time weights and creating Caffe2 networks', 'get the region of interest database for a dataset optionally restricted to a range of image indices', 'create cell anchors for all FPN levels, scales, and aspect ratios for RetinaNet inference', 'test the im_detect_bbox function by running RetinaNet detection on a sample image', 'review the im_detect_bbox function to understand FPN-level detection, NMS, and box scoring logic', 'refactor _create_cell_anchors to cache precomputed anchors across images instead of recomputing per image']
+```
+
+Usage
+
+```
+{'run_im_detect_bbox': 'run RetinaNet detection on a single image using a trained model and return cls_boxes', 'create_cell_anchors': 'create cell anchors for all FPN levels, scales, and aspect ratios for RetinaNet inference', 'test_im_detect_bbox': 'test the im_detect_bbox function by running RetinaNet detection on a sample image', 'review_im_detect_bbox': 'review the im_detect_bbox function to understand FPN-level detection, NMS, and box scoring logic', 'refactor_create_cell_anchors': 'refactor _create_cell_anchors to cache precomputed anchors across images instead of recomputing per image'}
+```
+

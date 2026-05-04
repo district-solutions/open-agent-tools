@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/chex
+- repo_uri: https://github.com/google-deepmind/chex
+
+## File: google-deepmind_chex/docs/ext/coverage_check.py
+
+Prompts
+
+```
+['find all internal Python submodules under a given root module excluding _src modules', 'get all public symbols from chex submodules by collecting names listed in each module __all__', 'run the sphinx coverage check builder to verify all public symbols are documented in api.rst', 'run the sphinx coverage check builder write step which produces no output files', 'register the CoverageCheck builder with a sphinx application and return version and parallel_read_safe config']
+```
+
+Usage
+
+```
+{'find_internal_python_modules': 'find all internal Python submodules under a given root module excluding _src modules', 'get_public_symbols': 'get all public symbols from chex submodules by collecting names listed in each module __all__', 'CoverageCheck_finish': 'run the sphinx coverage check builder to verify all public symbols are documented in api.rst', 'CoverageCheck_write': 'run the sphinx coverage check builder write step which produces no output files', 'setup_sphinx_builder': 'register the CoverageCheck builder with a sphinx application and return version and parallel_read_safe config'}
+```
+

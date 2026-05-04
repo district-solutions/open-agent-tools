@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/actionengine
+- repo_uri: https://github.com/google-deepmind/actionengine
+
+## File: google-deepmind_actionengine/third_party/boost/libs/histogram/doc/doxygen_postprocessing.py
+
+Prompts
+
+```
+['run the doxygen post-processing script on a reference.xml file to clean and sanitize documentation', 'remove unnamed and Detail-prefixed template parameters from Doxygen XML to hide SFINAE implementation details', 'replace types containing detail or _impl in their names with unspecified placeholders in Doxygen output', 'remove deprecated typedefs from Doxygen XML by checking their purpose tag for deprecated status', 'sort headers by path depth, sort namespace items alphabetically, and strip trailing whitespace from Doxygen XML']
+```
+
+Usage
+
+```
+{'run_doxygen_postprocessing': 'run the doxygen post-processing script on a reference.xml file to clean and sanitize documentation', 'remove_unnamed_template_parameters': 'remove unnamed and Detail-prefixed template parameters from Doxygen XML to hide SFINAE implementation details', 'replace_detail_types_with_unspecified': 'replace types containing detail or _impl in their names with unspecified placeholders in Doxygen output', 'hide_deprecated_typedefs': 'remove deprecated typedefs from Doxygen XML by checking their purpose tag for deprecated status', 'sort_and_cleanup_doxygen_xml': 'sort headers by path depth, sort namespace items alphabetically, and strip trailing whitespace from Doxygen XML'}
+```
+

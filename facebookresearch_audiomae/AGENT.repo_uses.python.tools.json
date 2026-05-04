@@ -1,0 +1,86 @@
+{
+  "facebookresearch_audiomae/dataset/audioset/gen_weight.py": {
+    "gen_weight_compute_sample_weights": "generate sample weights for AudioSet multi-label classification from a JSON data file and label CSV",
+    "gen_weight_run_main": "run the script to compute and save sample weights to a CSV output file",
+    "make_index_dict_build_lookup": "build a dictionary mapping AudioSet class mid codes to their integer index from a CSV file",
+    "review_gen_weight_function": "review the gen_weight function that calculates inverse-frequency label weights for 527 AudioSet classes",
+    "refactor_gen_weight_cli_args": "refactor the gen_weight script to accept JSON file, label file, and output file via argparse CLI arguments"
+  },
+  "facebookresearch_audiomae/timm_patch/helpers.py": {
+    "use_to_2tuple": "use to_2tuple to convert a single integer stride into a 2-tuple for convolution layers",
+    "use_to_4tuple": "use to_4tuple to convert a single integer padding value into a 4-tuple for conv operations",
+    "use_to_3tuple": "use to_3tuple to convert a single integer kernel size into a 3-tuple for 3D convolutions",
+    "use_to_1tuple": "use to_1tuple to wrap a single value into a 1-tuple for consistent tuple handling",
+    "use_ntuple": "use _ntuple to create a custom n-tuple converter for arbitrary tuple lengths"
+  },
+  "facebookresearch_audiomae/timm_patch/swin_transformer.py": {
+    "build_swin_transformer_block": "build a SwinTransformerBlock with specified dim, num_heads, window_size, and shift_size for shifted window attention",
+    "create_window_multihead_attention": "create a WindowMultiHeadAttention module with scaled cosine self-attention and log-spaced continuous position bias",
+    "test_window_partition": "test the window_partition function to split a BHWC tensor into non-overlapping windows of given size",
+    "test_window_reverse": "test the window_reverse function to reconstruct a BHWC tensor from partitioned windows using window and image size",
+    "review_mlp_forward": "review the Mlp class forward pass that applies fc1, activation, dropout, fc2, and dropout sequentially"
+  },
+  "facebookresearch_audiomae/util/crop.py": {
+    "build_random_resized_crop_transform": "build a torchvision transform that performs random resized cropping matching TF/TPU implementation without for-loops",
+    "create_crop_augmentation_pipeline": "create an image augmentation pipeline using RandomResizedCrop to randomly crop and resize images for training",
+    "test_get_params_method": "test the RandomResizedCrop.get_params static method to verify it returns correct crop coordinates and dimensions",
+    "refactor_crop_implementation": "refactor the RandomResizedCrop class to customize scale and ratio ranges for different image datasets",
+    "review_tf_tpu_crop_matching": "review the RandomResizedCrop implementation that matches DeepMind BYOL TF/TPU crop behavior for reproducibility"
+  },
+  "facebookresearch_audiomae/util/datasets.py": {
+    "build_dataset_train": "build a training ImageFolder dataset from a data path with augmentation transforms using build_dataset",
+    "build_dataset_val": "build a validation ImageFolder dataset from a data path with eval transforms using build_dataset",
+    "build_transform_train": "build a training transform pipeline with color jitter and auto augmentation using build_transform",
+    "build_transform_eval": "build an evaluation transform pipeline with resize, center crop, and normalization using build_transform",
+    "refactor_build_dataset": "refactor build_dataset to support custom dataset classes instead of torchvision ImageFolder"
+  },
+  "facebookresearch_audiomae/util/lars.py": {
+    "create_LARS_optimizer": "create a LARS optimizer instance with custom learning rate, weight decay, momentum, and trust coefficient",
+    "run_LARS_step": "run a single optimization step using the LARS optimizer on model parameters with gradients",
+    "build_LARS_for_training": "build a LARS optimizer for training a PyTorch model with layer-wise adaptive learning rates",
+    "review_LARS_step": "review the LARS optimizer step method that applies adaptive scaling and momentum to parameter updates",
+    "summarize_LARS_class": "summarize the LARS optimizer class that extends torch.optim.Optimizer with trust ratio scaling"
+  },
+  "facebookresearch_audiomae/util/lr_decay.py": {
+    "build_param_groups_lrd": "build parameter groups for layer-wise lr decay on a ViT model with configurable weight decay and layer scaling",
+    "create_param_groups_lrd_no_decay": "create parameter groups with no weight decay for specified 1D parameters and custom exclusion list",
+    "test_get_layer_id_for_vit": "test the get_layer_id_for_vit function to assign correct layer IDs for ViT parameter names",
+    "refactor_param_groups_lrd_layer_decay": "refactor param_groups_lrd to use a custom layer decay rate for fine-tuning deeper ViT models",
+    "summarize_param_groups_lrd": "summarize the param_groups_lrd function and its layer-wise learning rate decay strategy following BEiT"
+  },
+  "facebookresearch_audiomae/util/lr_sched.py": {
+    "run_adjust_learning_rate": "run adjust_learning_rate to decay the learning rate with half-cycle cosine after warmup",
+    "create_cosine_lr_schedule": "create a cosine learning rate schedule with warmup epochs for a PyTorch optimizer",
+    "build_lr_warmup": "build a learning rate warmup that linearly scales lr during warmup epochs then decays with cosine",
+    "refactor_optimizer_lr": "refactor the optimizer param groups to apply scaled learning rates using lr_scale multiplier",
+    "review_adjust_learning_rate": "review adjust_learning_rate to understand the warmup and cosine decay schedule logic"
+  },
+  "facebookresearch_audiomae/util/misc.py": {
+    "init_distributed_mode": "init distributed training mode from environment variables and set up NCCL backend for multi-GPU",
+    "save_model": "save a model checkpoint with optimizer state, epoch, and AMP scaler to output directory",
+    "load_model": "load a model checkpoint from local path or URL and restore optimizer and epoch state",
+    "MetricLogger_log_every": "log training metrics at fixed intervals with ETA, iteration time, and GPU memory usage",
+    "merge_vmae_to_avmae": "merge a video MAE checkpoint into an audio-visual MAE checkpoint by adapting positional embeddings and patch weights"
+  },
+  "facebookresearch_audiomae/util/patch_embed.py": {
+    "build_PatchEmbed_org": "build a PatchEmbed_org module to convert 2D images into non-overlapping patch embeddings using Conv2d",
+    "build_PatchEmbed_new": "build a PatchEmbed_new module to convert 2D images into overlapping patch embeddings with configurable stride",
+    "build_PatchEmbed3D_new": "build a PatchEmbed3D_new module to convert 3D video tensors into patch embeddings using Conv3d",
+    "test_PatchEmbed_new_forward": "test the PatchEmbed_new forward pass by passing a random tensor and verifying output shape",
+    "test_PatchEmbed3D_new_forward": "test the PatchEmbed3D_new forward pass by passing a random video tensor and verifying output shape"
+  },
+  "facebookresearch_audiomae/util/pos_embed.py": {
+    "build_2d_sincos_pos_embed": "build a 2D sine-cosine position embedding for a square grid with optional cls token",
+    "build_flexible_2d_sincos_pos_embed": "build a 2D sine-cosine position embedding for a non-square grid with flexible height and width",
+    "build_1d_sincos_pos_embed": "build a 1D sine-cosine position embedding from a list of positions using outer product",
+    "interpolate_pos_embed_for_vision_model": "interpolate position embeddings from a checkpoint to a new model with different patch size",
+    "interpolate_pos_embed_img2audio": "interpolate position embeddings from an image checkpoint to an audio model with different grid dimensions"
+  },
+  "facebookresearch_audiomae/util/stat.py": {
+    "calculate_stats_classification": "calculate per-class statistics including mAP, AUC, precision, recall, FPR, and FNR from model output and target arrays",
+    "calculate_d_prime_from_auc": "calculate the d-prime detection sensitivity metric from a given AUC value using the standard normal distribution",
+    "gather_tensors_across_gpus": "gather and concatenate tensors from all GPU processes in a distributed training setup using torch.distributed all_gather",
+    "review_calculate_stats_function": "review the calculate_stats function to understand how it computes class-wise average precision, AUC, and ROC curves",
+    "refactor_concat_all_gather": "refactor the concat_all_gather function to support async all_gather operations for improved distributed training performance"
+  }
+}

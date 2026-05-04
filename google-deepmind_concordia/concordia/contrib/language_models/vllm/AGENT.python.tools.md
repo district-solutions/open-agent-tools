@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/concordia
+- repo_uri: https://github.com/google-deepmind/concordia
+
+## File: google-deepmind_concordia/concordia/contrib/language_models/vllm/vllm_model.py
+
+Prompts
+
+```
+['create a VLLMLanguageModel instance with a model name and gpu memory utilization settings', 'sample text from a vLLM model using a prompt with temperature and max tokens parameters', 'sample a choice from multiple responses using log probabilities with the vLLM model', 'create a VLLMLora adapter by providing a lora path and an existing VLLMLanguageModel instance', 'sample text from a vLLM model with a LoRA adapter using a prompt and sampling parameters']
+```
+
+Usage
+
+```
+{'create_vllm_language_model': 'create a VLLMLanguageModel instance with a model name and gpu memory utilization settings', 'sample_text_vllm': 'sample text from a vLLM model using a prompt with temperature and max tokens parameters', 'sample_choice_vllm': 'sample a choice from multiple responses using log probabilities with the vLLM model', 'create_vllm_lora_adapter': 'create a VLLMLora adapter by providing a lora path and an existing VLLMLanguageModel instance', 'sample_text_vllm_lora': 'sample text from a vLLM model with a LoRA adapter using a prompt and sampling parameters'}
+```
+

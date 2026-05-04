@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fbpcs
+- repo_uri: https://github.com/facebookresearch/fbpcs
+
+## File: facebookresearch_fbpcs/fbpcs/common/feature/pcs_feature_gate_utils.py
+
+Prompts
+
+```
+['get the default stage flow class for a given game type and feature set', 'get a stage flow class using a custom stage flow class override', 'get the MR PID stage flow when the private attribution MR PID feature is enabled', 'get the PCF2 lift UDP stage flow when the unified data process feature is enabled', 'review the get_stage_flow function to understand feature gating and stage flow selection logic']
+```
+
+Usage
+
+```
+{'get_stage_flow_default': 'get the default stage flow class for a given game type and feature set', 'get_stage_flow_with_custom_cls': 'get a stage flow class using a custom stage flow class override', 'get_stage_flow_mr_pid_feature': 'get the MR PID stage flow when the private attribution MR PID feature is enabled', 'get_stage_flow_lift_udp_feature': 'get the PCF2 lift UDP stage flow when the unified data process feature is enabled', 'review_get_stage_flow_logic': 'review the get_stage_flow function to understand feature gating and stage flow selection logic'}
+```
+

@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: facebookresearch/avhubert
+- repo_uri: https://github.com/facebookresearch/av_hubert
+
+## File: facebookresearch_avhubert/fairseq/fairseq/models/speech_to_text/berard.py
+
+Prompts
+
+```
+['build a speech-to-text translation model using the BerardModel with encoder and decoder components', 'build a BerardEncoder with linear layers, conv2d layers, and bidirectional LSTM for speech feature encoding', 'build an LSTMDecoder with Bahdanau MLP attention for autoregressive speech translation decoding', 'build an MLPAttention module that computes Bahdanau attention scores between encoder and decoder states', 'configure a s2t_berard model architecture with default hyperparameters for end-to-end speech translation', 'build a ConvTransformerModel for speech-to-text translation using fairseq encoder-decoder architecture', 'build a ConvTransformerEncoder with 2D conv layers followed by transformer encoder layers', 'build a TransformerDecoderNoExtra decoder that calls the scriptable extract_features method', 'configure the base convtransformer architecture with default encoder and decoder hyperparameters', 'configure the convtransformer_espnet architecture with 256-dim encoder and 12 layers', 'build a speech-to-text transformer model using S2TTransformerModel.build_model with args and task', 'build a speech-to-text transformer encoder using S2TTransformerEncoder with convolutional subsampling and transformer layers', 'create a Conv1dSubsampler module to downsample audio features using stacked 1D convolutions with GLU activation', 'configure an s2t_transformer architecture variant like s2t_transformer_s or s2t_transformer_l with preset hyperparameters', 'load a pretrained encoder into S2TTransformerModel using load_pretrained_encoder_from checkpoint path', 'build a python module that converts a 1-D lengths tensor into a 2-D binary padding mask using lengths_to_padding_mask', 'create a function that generates an attention mask with configurable left and right context windows using lengths_to_attention_mask', 'run sequence_to_segments to break a tensor into fixed-size segments with optional left and right context padding', 'test the attention_suppression function to suppress low-probability attention weights using a configurable scale threshold', 'review lengths_to_encoder_padding_mask to convert sequence lengths into a binary encoder padding mask with batch-first support']
+```
+
+Usage
+
+```
+{'build_s2t_berard_model': 'build a speech-to-text translation model using the BerardModel with encoder and decoder components', 'build_berard_encoder': 'build a BerardEncoder with linear layers, conv2d layers, and bidirectional LSTM for speech feature encoding', 'build_lstm_decoder': 'build an LSTMDecoder with Bahdanau MLP attention for autoregressive speech translation decoding', 'build_mlp_attention': 'build an MLPAttention module that computes Bahdanau attention scores between encoder and decoder states', 'configure_berard_architecture': 'configure a s2t_berard model architecture with default hyperparameters for end-to-end speech translation'}
+```
+
+## File: facebookresearch_avhubert/fairseq/fairseq/models/speech_to_text/convtransformer.py
+
+Prompts
+
+```
+['build a speech-to-text translation model using the BerardModel with encoder and decoder components', 'build a BerardEncoder with linear layers, conv2d layers, and bidirectional LSTM for speech feature encoding', 'build an LSTMDecoder with Bahdanau MLP attention for autoregressive speech translation decoding', 'build an MLPAttention module that computes Bahdanau attention scores between encoder and decoder states', 'configure a s2t_berard model architecture with default hyperparameters for end-to-end speech translation', 'build a ConvTransformerModel for speech-to-text translation using fairseq encoder-decoder architecture', 'build a ConvTransformerEncoder with 2D conv layers followed by transformer encoder layers', 'build a TransformerDecoderNoExtra decoder that calls the scriptable extract_features method', 'configure the base convtransformer architecture with default encoder and decoder hyperparameters', 'configure the convtransformer_espnet architecture with 256-dim encoder and 12 layers', 'build a speech-to-text transformer model using S2TTransformerModel.build_model with args and task', 'build a speech-to-text transformer encoder using S2TTransformerEncoder with convolutional subsampling and transformer layers', 'create a Conv1dSubsampler module to downsample audio features using stacked 1D convolutions with GLU activation', 'configure an s2t_transformer architecture variant like s2t_transformer_s or s2t_transformer_l with preset hyperparameters', 'load a pretrained encoder into S2TTransformerModel using load_pretrained_encoder_from checkpoint path', 'build a python module that converts a 1-D lengths tensor into a 2-D binary padding mask using lengths_to_padding_mask', 'create a function that generates an attention mask with configurable left and right context windows using lengths_to_attention_mask', 'run sequence_to_segments to break a tensor into fixed-size segments with optional left and right context padding', 'test the attention_suppression function to suppress low-probability attention weights using a configurable scale threshold', 'review lengths_to_encoder_padding_mask to convert sequence lengths into a binary encoder padding mask with batch-first support']
+```
+
+Usage
+
+```
+{'build_convtransformer_model': 'build a ConvTransformerModel for speech-to-text translation using fairseq encoder-decoder architecture', 'build_convtransformer_encoder': 'build a ConvTransformerEncoder with 2D conv layers followed by transformer encoder layers', 'build_convtransformer_decoder': 'build a TransformerDecoderNoExtra decoder that calls the scriptable extract_features method', 'configure_base_architecture': 'configure the base convtransformer architecture with default encoder and decoder hyperparameters', 'configure_espnet_architecture': 'configure the convtransformer_espnet architecture with 256-dim encoder and 12 layers'}
+```
+
+## File: facebookresearch_avhubert/fairseq/fairseq/models/speech_to_text/s2t_transformer.py
+
+Prompts
+
+```
+['build a speech-to-text translation model using the BerardModel with encoder and decoder components', 'build a BerardEncoder with linear layers, conv2d layers, and bidirectional LSTM for speech feature encoding', 'build an LSTMDecoder with Bahdanau MLP attention for autoregressive speech translation decoding', 'build an MLPAttention module that computes Bahdanau attention scores between encoder and decoder states', 'configure a s2t_berard model architecture with default hyperparameters for end-to-end speech translation', 'build a ConvTransformerModel for speech-to-text translation using fairseq encoder-decoder architecture', 'build a ConvTransformerEncoder with 2D conv layers followed by transformer encoder layers', 'build a TransformerDecoderNoExtra decoder that calls the scriptable extract_features method', 'configure the base convtransformer architecture with default encoder and decoder hyperparameters', 'configure the convtransformer_espnet architecture with 256-dim encoder and 12 layers', 'build a speech-to-text transformer model using S2TTransformerModel.build_model with args and task', 'build a speech-to-text transformer encoder using S2TTransformerEncoder with convolutional subsampling and transformer layers', 'create a Conv1dSubsampler module to downsample audio features using stacked 1D convolutions with GLU activation', 'configure an s2t_transformer architecture variant like s2t_transformer_s or s2t_transformer_l with preset hyperparameters', 'load a pretrained encoder into S2TTransformerModel using load_pretrained_encoder_from checkpoint path', 'build a python module that converts a 1-D lengths tensor into a 2-D binary padding mask using lengths_to_padding_mask', 'create a function that generates an attention mask with configurable left and right context windows using lengths_to_attention_mask', 'run sequence_to_segments to break a tensor into fixed-size segments with optional left and right context padding', 'test the attention_suppression function to suppress low-probability attention weights using a configurable scale threshold', 'review lengths_to_encoder_padding_mask to convert sequence lengths into a binary encoder padding mask with batch-first support']
+```
+
+Usage
+
+```
+{'build_s2t_transformer_model': 'build a speech-to-text transformer model using S2TTransformerModel.build_model with args and task', 'build_s2t_transformer_encoder': 'build a speech-to-text transformer encoder using S2TTransformerEncoder with convolutional subsampling and transformer layers', 'create_conv1d_subsampler': 'create a Conv1dSubsampler module to downsample audio features using stacked 1D convolutions with GLU activation', 'configure_s2t_architecture': 'configure an s2t_transformer architecture variant like s2t_transformer_s or s2t_transformer_l with preset hyperparameters', 'load_pretrained_encoder': 'load a pretrained encoder into S2TTransformerModel using load_pretrained_encoder_from checkpoint path'}
+```
+
+## File: facebookresearch_avhubert/fairseq/fairseq/models/speech_to_text/utils.py
+
+Prompts
+
+```
+['build a speech-to-text translation model using the BerardModel with encoder and decoder components', 'build a BerardEncoder with linear layers, conv2d layers, and bidirectional LSTM for speech feature encoding', 'build an LSTMDecoder with Bahdanau MLP attention for autoregressive speech translation decoding', 'build an MLPAttention module that computes Bahdanau attention scores between encoder and decoder states', 'configure a s2t_berard model architecture with default hyperparameters for end-to-end speech translation', 'build a ConvTransformerModel for speech-to-text translation using fairseq encoder-decoder architecture', 'build a ConvTransformerEncoder with 2D conv layers followed by transformer encoder layers', 'build a TransformerDecoderNoExtra decoder that calls the scriptable extract_features method', 'configure the base convtransformer architecture with default encoder and decoder hyperparameters', 'configure the convtransformer_espnet architecture with 256-dim encoder and 12 layers', 'build a speech-to-text transformer model using S2TTransformerModel.build_model with args and task', 'build a speech-to-text transformer encoder using S2TTransformerEncoder with convolutional subsampling and transformer layers', 'create a Conv1dSubsampler module to downsample audio features using stacked 1D convolutions with GLU activation', 'configure an s2t_transformer architecture variant like s2t_transformer_s or s2t_transformer_l with preset hyperparameters', 'load a pretrained encoder into S2TTransformerModel using load_pretrained_encoder_from checkpoint path', 'build a python module that converts a 1-D lengths tensor into a 2-D binary padding mask using lengths_to_padding_mask', 'create a function that generates an attention mask with configurable left and right context windows using lengths_to_attention_mask', 'run sequence_to_segments to break a tensor into fixed-size segments with optional left and right context padding', 'test the attention_suppression function to suppress low-probability attention weights using a configurable scale threshold', 'review lengths_to_encoder_padding_mask to convert sequence lengths into a binary encoder padding mask with batch-first support']
+```
+
+Usage
+
+```
+{'build_padding_mask_from_lengths': 'build a python module that converts a 1-D lengths tensor into a 2-D binary padding mask using lengths_to_padding_mask', 'create_attention_mask_with_context': 'create a function that generates an attention mask with configurable left and right context windows using lengths_to_attention_mask', 'run_sequence_segmentation': 'run sequence_to_segments to break a tensor into fixed-size segments with optional left and right context padding', 'test_attention_suppression': 'test the attention_suppression function to suppress low-probability attention weights using a configurable scale threshold', 'review_encoder_padding_mask': 'review lengths_to_encoder_padding_mask to convert sequence lengths into a binary encoder padding mask with batch-first support'}
+```
+

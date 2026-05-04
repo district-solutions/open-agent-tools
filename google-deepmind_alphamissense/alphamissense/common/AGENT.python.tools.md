@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/alphamissense
+- repo_uri: https://github.com/google-deepmind/alphamissense
+
+## File: google-deepmind_alphamissense/alphamissense/common/residue_constants.py
+
+Prompts
+
+```
+['load stereo chemical properties including bond lengths, bond angles, and virtual bonds from the stereo_chemical_props.txt file', 'convert an amino acid sequence string into a one-hot encoded numpy array using a given residue mapping', 'convert a protein atom ID string like CA or OG1 into its element type such as C, N, O, or S', 'generate one-hot encoded representations for chi-angle defining atoms across all 20 standard amino acid residue types', 'compute upper and lower distance bounds for all atom pairs in the 14-atom residue representation to assess structural violations']
+```
+
+Usage
+
+```
+{'load_stereo_chemical_props': 'load stereo chemical properties including bond lengths, bond angles, and virtual bonds from the stereo_chemical_props.txt file', 'sequence_to_onehot': 'convert an amino acid sequence string into a one-hot encoded numpy array using a given residue mapping', 'atom_id_to_type': 'convert a protein atom ID string like CA or OG1 into its element type such as C, N, O, or S', 'chi_angle_atom': 'generate one-hot encoded representations for chi-angle defining atoms across all 20 standard amino acid residue types', 'make_atom14_dists_bounds': 'compute upper and lower distance bounds for all atom pairs in the 14-atom residue representation to assess structural violations'}
+```
+

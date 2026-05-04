@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/banmo
+- repo_uri: https://github.com/facebookresearch/banmo
+
+## File: facebookresearch_banmo/third_party/detectron2_old/projects/DensePose/densepose/engine/trainer.py
+
+Prompts
+
+```
+['build an SGD optimizer with gradient clipping and custom learning rate factors for CSE features and embeddings', 'build a combined training data loader with optional inference-based loaders and sample counting for DensePose datasets', 'build a DensePose COCO evaluator with optional mesh alignment evaluation and embedder support for a given dataset', 'test a DensePose model on configured test datasets with optional custom evaluators and distributed inference support', 'test a DensePose model with test-time augmentation using configured transforms and evaluators on test datasets']
+```
+
+Usage
+
+```
+{'build_trainer_optimizer': 'build an SGD optimizer with gradient clipping and custom learning rate factors for CSE features and embeddings', 'build_train_loader': 'build a combined training data loader with optional inference-based loaders and sample counting for DensePose datasets', 'build_evaluator': 'build a DensePose COCO evaluator with optional mesh alignment evaluation and embedder support for a given dataset', 'test_model': 'test a DensePose model on configured test datasets with optional custom evaluators and distributed inference support', 'test_with_TTA': 'test a DensePose model with test-time augmentation using configured transforms and evaluators on test datasets'}
+```
+

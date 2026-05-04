@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/deepmind-research
+- repo_uri: https://github.com/google-deepmind/deepmind-research
+
+## File: google-deepmind_deepmind-research/synthetic_returns/synthetic_returns.py
+
+Prompts
+
+```
+['build an EpisodicMemory Haiku RNNCore module with configurable memory size and capacity for storing state vectors', 'build a SyntheticReturnsCoreWrapper that combines an RNN core with episodic memory and synthetic return prediction MLPs', 'create the initial zero state for an EpisodicMemory module given a batch size', 'create the combined initial state for both episodic memory and the wrapped RNN core', 'review the SRCoreWrapperOutput namedtuple structure containing output, synthetic_return, augmented_return, and sr_loss fields']
+```
+
+Usage
+
+```
+{'build_episodic_memory': 'build an EpisodicMemory Haiku RNNCore module with configurable memory size and capacity for storing state vectors', 'build_synthetic_returns_wrapper': 'build a SyntheticReturnsCoreWrapper that combines an RNN core with episodic memory and synthetic return prediction MLPs', 'create_episodic_memory_initial_state': 'create the initial zero state for an EpisodicMemory module given a batch size', 'create_synthetic_returns_initial_state': 'create the combined initial state for both episodic memory and the wrapped RNN core', 'review_sr_core_wrapper_output': 'review the SRCoreWrapperOutput namedtuple structure containing output, synthetic_return, augmented_return, and sr_loss fields'}
+```
+

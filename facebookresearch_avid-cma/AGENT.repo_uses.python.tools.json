@@ -1,0 +1,135 @@
+{
+  "facebookresearch_avid-cma/criterions/avid.py": {
+    "build_AVID_criterion": "build an AVID criterion module to compute cross-modal and within-modal NCE loss for video and audio embeddings",
+    "create_AVIDSimilarityMemoryBank": "create an AVIDSimilarityMemoryBank to store and update video and audio embeddings with momentum-based EMA updates",
+    "run_AVID_forward": "run the AVID forward pass to compute total loss from video and audio embeddings and target labels",
+    "review_AVIDSimilarityMemoryBank_update_memory": "review the AVIDSimilarityMemoryBank update_memory method to understand how embeddings are gathered across GPUs and updated with momentum",
+    "summarize_AVID_sample_negatives": "summarize the AVIDSimilarityMemoryBank sample_negatives method that draws negatives using an AliasMethod distribution while avoiding self"
+  },
+  "facebookresearch_avid-cma/criterions/avid_cma.py": {
+    "build_AVID_CMA_criterion": "build a python module to create an AVID_CMA criterion for audio-visual instance discrimination with memory bank",
+    "run_CMASampler_sample": "run the CMASampler to find audio-visual correspondences from video and audio memory banks across GPUs",
+    "create_AVIDSimilarityPositiveExpansion": "create an AVIDSimilarityPositiveExpansion memory bank for positive set discrimination with cross and within modal losses",
+    "test_AVID_CMA_forward": "test the AVID_CMA forward pass computing weighted cross and within modal discrimination losses from embeddings",
+    "review_CMASampler_sample_instance": "review the CMASampler sample_instance method for computing cosine similarity and top-k audio-visual correspondences"
+  },
+  "facebookresearch_avid-cma/criterions/nce.py": {
+    "build_NCECriterion": "build a python module that instantiates NCECriterion with a given nLem parameter for noise contrastive estimation",
+    "run_NCECriterion_forward": "run the NCECriterion forward pass with positive and negative score tensors to compute the NCE loss",
+    "compute_partition_function": "compute the partition function from negative score outputs using batch mean aggregation across distributed processes",
+    "review_NCECriterion_distributed": "review the NCECriterion class to understand how it handles distributed training with torch.distributed gathering",
+    "test_NCECriterion_loss": "test the NCECriterion forward method by passing mock positive and negative score tensors and verifying loss output"
+  },
+  "facebookresearch_avid-cma/datasets/audioset.py": {
+    "create_audioset_classes": "create an AudiosetClasses instance to load AudioSet class labels and display names from a CSV cache file",
+    "lookup_class_index": "use AudiosetClasses class2index method to convert a class string like a mid to its integer index",
+    "iterate_classes": "iterate over an AudiosetClasses instance to get display names by index using getitem and len",
+    "create_audioset_dataset": "create an AudioSet dataset instance with a subset name and optional video and audio clip parameters",
+    "access_audioset_metadata": "access AudioSet properties like num_videos, num_classes, sample_id, root, and subset after initialization"
+  },
+  "facebookresearch_avid-cma/datasets/video_db.py": {
+    "create_VideoDataset_for_clip_mode": "create a VideoDataset in clip mode to sample random video and audio clips from a dataset",
+    "create_VideoDataset_for_sequence_mode": "create a VideoDataset in sequence mode to load entire videos split into overlapping chunks",
+    "use_VideoDataset_getitem": "use VideoDataset getitem to retrieve a video clip with optional audio and labels by index",
+    "use_VideoDataset_sample_snippet": "use the _sample_snippet method to randomly sample synchronized video and audio start times and durations",
+    "use_chararray_helper": "use the chararray helper function to convert a list of filenames into a numpy chararray"
+  },
+  "facebookresearch_avid-cma/models/audio.py": {
+    "build_Conv2D_model": "build a Conv2D audio feature extractor model with depth 10 and 512 output dimensions",
+    "run_Conv2D_forward": "run the Conv2D forward pass on an input tensor to get a pooled 512-dim embedding",
+    "run_Conv2D_forward_with_embs": "run the Conv2D forward pass with return_embs=True to get multi-scale intermediate feature maps",
+    "review_Conv2D_architecture": "review the Conv2D architecture with conv1, four Basic2DBlock stages, and adaptive max pooling",
+    "test_Conv2D_out_dim": "test that the Conv2D model outputs a tensor with out_dim equal to 512"
+  },
+  "facebookresearch_avid-cma/models/av_wrapper.py": {
+    "build_av_wrapper_model": "build an audio-visual wrapper model from video and audio backbone models with a shared projection dimension",
+    "create_head_projection": "create a multi-layer linear projection head with ReLU activations for embedding dimensionality reduction",
+    "create_av_wrapper_module": "create an AV_Wrapper module that processes video and audio inputs through separate models and optional projection layers",
+    "run_av_wrapper_forward": "run forward pass on video and audio tensors to get projected embeddings from both modalities",
+    "load_av_wrapper_checkpoint": "load a pretrained audio-visual wrapper model from a checkpoint file with DataParallel state dict"
+  },
+  "facebookresearch_avid-cma/models/network_blocks.py": {
+    "create_Basic2DBlock": "create a Basic2DBlock with specified input and output planes for 2D convolution",
+    "build_Basic2DBlock_forward": "build a forward pass through a Basic2DBlock using two 3x3 convolutions with batch norm",
+    "create_BasicR2P1DBlock": "create a BasicR2P1DBlock with specified input and output planes for 3D spatiotemporal convolution",
+    "run_BasicR2P1DBlock_forward": "run a forward pass through a BasicR2P1DBlock with residual connection and spatiotemporal convolutions",
+    "review_BasicR2P1DBlock_residual": "review the BasicR2P1DBlock residual connection logic that adds identity or 1x1x1 conv output"
+  },
+  "facebookresearch_avid-cma/models/video.py": {
+    "build_r2plus1d_model_depth18": "build an R2Plus1D video model with default depth 18 for feature extraction",
+    "build_r2plus1d_model_depth34": "build an R2Plus1D video model with depth 34 for deeper feature extraction",
+    "run_r2plus1d_forward_pooled": "run the R2Plus1D model forward pass on video tensor and return pooled embeddings",
+    "run_r2plus1d_forward_embeddings": "run the R2Plus1D model forward pass with return_embs to get all intermediate layer features",
+    "review_basicr2p1dblock_residual": "review the BasicR2P1DBlock class and its spatial-temporal convolution with residual connection logic"
+  },
+  "facebookresearch_avid-cma/utils/alias_method.py": {
+    "build_alias_method_sampler": "build an AliasMethod sampler from a PyTorch tensor of probabilities for efficient multinomial sampling",
+    "create_alias_method_draw_samples": "create N random samples from a multinomial distribution using the AliasMethod draw method",
+    "test_alias_method_init": "test the AliasMethod constructor by passing a probability tensor and verifying normalization",
+    "refactor_alias_method_device_transfer": "refactor the AliasMethod to method to move probability and alias tensors to a target device",
+    "review_alias_method_algorithm": "review the AliasMethod class implementation of the alias method for efficient discrete sampling"
+  },
+  "facebookresearch_avid-cma/utils/eval_utils.py": {
+    "build_dataloader_for_video_dataset": "build a PyTorch DataLoader for UCF101, HMDB51, or Kinetics video datasets with MSC or crop transforms",
+    "build_model_with_pretrained_checkpoint": "build a video classification model from a pretrained checkpoint wrapped with a linear-head classifier",
+    "distribute_model_to_cuda": "distribute a PyTorch model to single GPU, DataParallel, or DistributedDataParallel across multiple GPUs",
+    "save_and_restore_checkpoint": "save and restore model checkpoints with optimizer and scheduler state using CheckpointManager",
+    "create_batch_wrapper_for_inference": "create a BatchWrapper to process large tensors in smaller batches through a model"
+  },
+  "facebookresearch_avid-cma/utils/logger.py": {
+    "create_logger_instance": "create a Logger instance with quiet mode, log file path, rank, and prefix for distributed training logging",
+    "add_line_to_logger": "add a line of text to the Logger which writes to file or prints to stdout depending on quiet mode",
+    "create_progress_meter": "create a ProgressMeter with num_batches, meters list, phase name, epoch, logger, and tensorboard writer",
+    "display_progress": "display the current batch progress with date, phase, batch number, and meter values to logger or stdout",
+    "synchronize_meters_across_gpus": "synchronize meter averages across all GPUs using torch distributed all_gather for multi-GPU training"
+  },
+  "facebookresearch_avid-cma/utils/main_utils.py": {
+    "build_model_from_config": "build a PyTorch model from a config dict specifying architecture name and constructor arguments",
+    "distribute_model_to_cuda": "distribute a PyTorch model to CUDA GPUs using DataParallel or DistributedDataParallel wrapping",
+    "build_dataloader_for_dataset": "build a PyTorch DataLoader with video and audio transforms for AudioSet or Kinetics datasets",
+    "build_optimizer_with_scheduler": "build an SGD or Adam optimizer with a MultiStepLR learning rate scheduler from config",
+    "restore_checkpoint_with_manager": "restore model and optimizer state dicts from a saved checkpoint file using CheckpointManager"
+  },
+  "facebookresearch_avid-cma/utils/metrics_utils.py": {
+    "compute_topk_accuracy": "compute the top-k classification accuracy for PyTorch model output and target tensors",
+    "create_average_meter": "create an AverageMeter instance to track running averages of training metrics like loss or accuracy",
+    "update_average_meter": "update an AverageMeter with a new value and optional sample count to maintain running statistics",
+    "reset_average_meter": "reset an AverageMeter to clear all accumulated values and start fresh tracking",
+    "use_average_meter_with_window": "create an AverageMeter with a sliding window size to track recent metric averages instead of all-time"
+  },
+  "facebookresearch_avid-cma/utils/ioutils/av_wrappers.py": {
+    "open_media_container": "open a video or audio media file container using PyAV for decoding",
+    "load_video_frames": "load video frames from a container at a specified FPS and time range",
+    "extract_video_clip": "extract a video clip starting at a given time with a specified duration",
+    "load_audio_samples": "load audio samples from a container with optional resampling to a target sample rate",
+    "extract_audio_clip": "extract an audio clip from a container starting at a given time with a specified duration"
+  },
+  "facebookresearch_avid-cma/utils/videotransforms/functional.py": {
+    "crop_video_clip_numpy": "crop a list of numpy array video frames using specified height and width coordinates",
+    "crop_video_clip_pil": "crop a list of PIL Image video frames using specified bounding box coordinates",
+    "resize_video_clip_numpy": "resize a list of numpy array video frames to a target size with bilinear or nearest interpolation",
+    "resize_video_clip_pil": "resize a list of PIL Image video frames to a target size with bilinear or nearest interpolation",
+    "compute_resize_dimensions": "compute the output height and width for resizing an image while preserving aspect ratio"
+  },
+  "facebookresearch_avid-cma/utils/videotransforms/video_transforms.py": {
+    "compose_video_transforms": "build a python module that uses Compose to chain multiple video transforms on a clip of frames",
+    "random_drop_frames": "create a function that uses RandomDrop to randomly select a fixed number of frames from a video clip",
+    "uniform_drop_frames": "create a function that uses UniformDrop to uniformly subsample frames from a video clip by count or ratio",
+    "random_resized_crop_clip": "build a python module that uses RandomResizedCrop to crop and resize video frames with random scale and aspect ratio",
+    "temporal_jitter_clip": "create a function that uses TemporalJitter to temporally subsample a video clip with configurable time scale"
+  },
+  "facebookresearch_avid-cma/utils/videotransforms/utils/functional.py": {
+    "normalize_tensor": "normalize a tensor by subtracting mean and dividing by std in place",
+    "normalize_video_frames": "normalize video frame tensors using provided mean and std values",
+    "normalize_batch": "normalize a batch of tensors with the same mean and std parameters",
+    "review_normalize": "review the normalize function to understand its in-place tensor operations",
+    "test_normalize": "test the normalize function with sample tensor mean and std values"
+  },
+  "facebookresearch_avid-cma/utils/videotransforms/utils/images.py": {
+    "convert_img_HWC_to_CWH": "convert a numpy image array from HWC format to CWH format using transpose",
+    "convert_img_grayscale_to_channel_first": "convert a 2D grayscale numpy image array to a single-channel CWH format",
+    "test_convert_img_3d_array": "test the convert_img function with a 3D numpy array to verify HWC to CWH conversion",
+    "test_convert_img_2d_array": "test the convert_img function with a 2D numpy array to verify grayscale channel expansion",
+    "refactor_convert_img_validation": "refactor the convert_img function to add input shape validation and error handling"
+  }
+}

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/acme
+- repo_uri: https://github.com/google-deepmind/acme
+
+## File: google-deepmind_acme/acme/agents/jax/bve/builder.py
+
+Prompts
+
+```
+['build a BVE agent using BVEBuilder with a config containing discount and learning rate parameters', 'create an SGDLearner for BVE training using BVELoss with discount and huber loss parameters', 'create a GenericActor for BVE online evaluations using a policy and variable source', 'create a behavior policy from BVE networks that samples actions from network output', 'review the BVEBuilder class and its make_learner, make_actor, and make_policy methods']
+```
+
+Usage
+
+```
+{'build_bve_agent': 'build a BVE agent using BVEBuilder with a config containing discount and learning rate parameters', 'create_learner': 'create an SGDLearner for BVE training using BVELoss with discount and huber loss parameters', 'create_actor': 'create a GenericActor for BVE online evaluations using a policy and variable source', 'create_policy': 'create a behavior policy from BVE networks that samples actions from network output', 'review_bvebuilder_class': 'review the BVEBuilder class and its make_learner, make_actor, and make_policy methods'}
+```
+

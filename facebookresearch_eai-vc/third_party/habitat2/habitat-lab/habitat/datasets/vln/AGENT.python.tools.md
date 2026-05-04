@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eai-vc
+- repo_uri: https://github.com/facebookresearch/eai-vc
+
+## File: facebookresearch_eai-vc/third_party/habitat2/habitat-lab/habitat/datasets/vln/r2r_vln_dataset.py
+
+Prompts
+
+```
+['create a VLNDatasetV1 instance from a DictConfig to load a gzipped R2RVLN-v1 dataset with episodes and instruction vocabulary', 'call from_json on VLNDatasetV1 to parse a JSON string into VLNEpisode objects with navigation goals and instructions', 'call check_config_paths_exist with a DictConfig to verify the dataset file and scenes directory exist before loading', "use the R2RVLN-v1 registry name to instantiate VLNDatasetV1 through Habitat's dataset registry system", 'pass a config to VLNDatasetV1 init to automatically filter episodes using build_content_scenes_filter based on scene availability']
+```
+
+Usage
+
+```
+{'load_vln_dataset': 'create a VLNDatasetV1 instance from a DictConfig to load a gzipped R2RVLN-v1 dataset with episodes and instruction vocabulary', 'parse_json_to_episodes': 'call from_json on VLNDatasetV1 to parse a JSON string into VLNEpisode objects with navigation goals and instructions', 'check_config_paths': 'call check_config_paths_exist with a DictConfig to verify the dataset file and scenes directory exist before loading', 'register_dataset': "use the R2RVLN-v1 registry name to instantiate VLNDatasetV1 through Habitat's dataset registry system", 'filter_episodes_by_scenes': 'pass a config to VLNDatasetV1 init to automatically filter episodes using build_content_scenes_filter based on scene availability'}
+```
+

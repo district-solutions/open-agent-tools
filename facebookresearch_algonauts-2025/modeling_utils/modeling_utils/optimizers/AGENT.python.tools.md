@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/algonauts-2025
+- repo_uri: https://github.com/facebookresearch/algonauts-2025
+
+## File: facebookresearch_algonauts-2025/modeling_utils/modeling_utils/optimizers/base.py
+
+Prompts
+
+```
+['build a PyTorch optimizer from TorchOptimizerConfig with a name, learning rate, and kwargs', 'build a PyTorch learning rate scheduler from TorchLRSchedulerConfig with a name and kwargs', 'build a Lightning optimizer config that combines an optimizer and optional scheduler with step or epoch interval', 'review the BaseOptimizerConfig pydantic model that defines the abstract interface for optimizer configuration', 'review the BaseLRSchedulerConfig pydantic model that defines the abstract interface for learning rate scheduler configuration']
+```
+
+Usage
+
+```
+{'build_torch_optimizer': 'build a PyTorch optimizer from TorchOptimizerConfig with a name, learning rate, and kwargs', 'build_torch_lr_scheduler': 'build a PyTorch learning rate scheduler from TorchLRSchedulerConfig with a name and kwargs', 'build_lightning_optimizer': 'build a Lightning optimizer config that combines an optimizer and optional scheduler with step or epoch interval', 'review_base_optimizer_config': 'review the BaseOptimizerConfig pydantic model that defines the abstract interface for optimizer configuration', 'review_base_lr_scheduler_config': 'review the BaseLRSchedulerConfig pydantic model that defines the abstract interface for learning rate scheduler configuration'}
+```
+

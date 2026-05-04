@@ -1,0 +1,72 @@
+{
+  "facebookresearch_gradientepisodicmemory/data/mnist_rotations.py": {
+    "run_mnist_rotation_tasks": "run the script to generate MNIST rotation tasks with configurable number of tasks and rotation range",
+    "run_rotate_dataset": "run the rotate_dataset function to rotate all images in a tensor by a given angle in degrees",
+    "build_rotation_tasks": "build a set of MNIST rotation tasks for continual learning by splitting a rotation range into N tasks",
+    "create_rotated_mnist": "create rotated versions of MNIST train and test datasets and save them to a PyTorch file",
+    "review_rotate_dataset": "review the rotate_dataset function that converts tensor images to PIL, rotates them, and returns flattened tensors"
+  },
+  "facebookresearch_gradientepisodicmemory/data/raw/raw.py": {
+    "run_download_and_prepare_cifar100": "run the script to download and prepare CIFAR-100 data as a PyTorch tensor file",
+    "run_download_and_prepare_mnist": "run the script to download and prepare MNIST data as PyTorch tensor files",
+    "create_function_unpickle": "create a function that unpickles a CIFAR-style binary file and returns its dictionary contents",
+    "test_unpickle": "test the unpickle function by loading a CIFAR-100 train or test pickle file",
+    "summarize_raw_data_script": "summarize the raw data preparation script that downloads CIFAR-100 and MNIST and saves PyTorch tensors"
+  },
+  "facebookresearch_gradientepisodicmemory/metrics/metrics.py": {
+    "compute_task_changes": "compute the number of tasks and their change points from a task label tensor",
+    "compute_confusion_matrix": "compute backward and forward transfer metrics from task labels and prediction results",
+    "compute_confusion_matrix_with_output": "compute transfer metrics and write the confusion matrix and stats to a file",
+    "analyze_backward_transfer": "analyze backward transfer by comparing final task accuracy against per-task diagonal accuracy",
+    "analyze_forward_transfer": "analyze forward transfer by comparing cross-task accuracy against baseline predictions"
+  },
+  "facebookresearch_gradientepisodicmemory/model/common.py": {
+    "build_ResNet18_classifier": "build a ResNet18 classifier model with a specified number of classes and feature filters",
+    "create_MLP_network": "create a multi-layer perceptron network with Xavier weight initialization from a list of layer sizes",
+    "build_BasicBlock_residual": "build a BasicBlock residual unit with convolutional layers and batch normalization for ResNet",
+    "create_conv3x3_layer": "create a 3x3 convolutional layer with specified input and output planes and stride",
+    "apply_Xavier_initialization": "apply Xavier uniform weight initialization to Linear layers in a PyTorch neural network module"
+  },
+  "facebookresearch_gradientepisodicmemory/model/ewc.py": {
+    "create_Net_for_continual_learning": "create a Net module for continual learning with EWC regularization on CIFAR or permuted MNIST data",
+    "run_Net_forward_with_task_masking": "run the Net forward pass with task-specific output masking for CIFAR multi-task classification",
+    "train_Net_observe_with_fisher_information": "train the Net using observe to accumulate Fisher information and optimal parameters per task",
+    "compute_Net_task_offsets": "compute the output class offset range for a given task in the Net module",
+    "review_Net_EWC_regularization": "review the Net class EWC regularization logic that penalizes parameter drift from previous task optima"
+  },
+  "facebookresearch_gradientepisodicmemory/model/gem.py": {
+    "create_GEM_Net_for_continual_learning": "create a GEM Net module with episodic memory for continual learning on CIFAR or permuted MNIST",
+    "run_project2cone2_gradient_projection": "run the GEM dual QP solver to project a gradient onto the cone of past task gradients",
+    "store_grad_for_past_tasks": "store parameter gradients of past tasks into a gradient buffer for later constraint checking",
+    "overwrite_grad_with_corrected_vector": "overwrite model parameter gradients with a corrected gradient vector when constraint violations occur",
+    "compute_offsets_for_task_outputs": "compute output offsets for a given task to select the correct class range in multi-task learning"
+  },
+  "facebookresearch_gradientepisodicmemory/model/icarl.py": {
+    "create_Net_for_incremental_learning": "create a Net module for incremental classifier and representation learning on CIFAR-100 with ResNet18 backbone",
+    "run_Net_forward_nearest_neighbor": "run the forward pass using nearest neighbor classification on stored exemplars for a given task",
+    "run_Net_forward_training": "run the forward training pass that masks outputs to predict only classes within the current task",
+    "run_Net_observe_with_distillation": "run observe to train on a minibatch with cross-entropy loss and knowledge distillation from exemplar memory",
+    "run_Net_compute_offsets": "run compute_offsets to calculate the class index range for a given task in incremental learning"
+  },
+  "facebookresearch_gradientepisodicmemory/model/independent.py": {
+    "create_Net_for_independent_multitask": "create a Net module with separate MLP or ResNet18 networks per task for independent multitask learning",
+    "build_Net_with_ResNet18_for_cifar": "build a Net that uses ResNet18 networks per task when training on CIFAR-100 data",
+    "run_Net_forward_pass": "run a forward pass through the Net for a specific task index and input tensor",
+    "train_Net_observe_method": "train the Net using the observe method to perform a single gradient step on task data",
+    "review_Net_finetune_parameter_sharing": "review the Net observe method to understand how finetune mode copies weights from the previous task network"
+  },
+  "facebookresearch_gradientepisodicmemory/model/multimodal.py": {
+    "build_multimodal_net": "build a multimodal neural network with task-specific input layers and shared hidden layers",
+    "create_net_forward": "create a forward pass through the Net model with input tensor and task index",
+    "train_net_observe": "train the Net model on a single observation using forward loss backward and optimizer step",
+    "reset_bias_function": "reset the bias of a PyTorch module to zero using the reset_bias utility function",
+    "review_net_init": "review the Net class initialization with configurable n_layers n_hiddens and SGD optimizer"
+  },
+  "facebookresearch_gradientepisodicmemory/model/single.py": {
+    "create_net_model": "create a Net model with MLP or ResNet18 backbone for continual learning tasks",
+    "forward_net_predict": "run a forward pass through the Net model with input features and task ID",
+    "observe_net_train": "train the Net model on a single batch by calling observe with inputs task and labels",
+    "compute_offsets_net": "compute the class output offset range for a given task ID in the Net model",
+    "review_net_class": "review the Net class and its continual learning architecture with masked outputs for CIFAR"
+  }
+}

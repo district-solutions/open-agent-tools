@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/actionengine
+- repo_uri: https://github.com/google-deepmind/actionengine
+
+## File: google-deepmind_actionengine/third_party/libzmq/perf/generate_graphs.py
+
+Prompts
+
+```
+['run plot_throughput to generate a dual-axis throughput graph from a CSV file', 'run plot_latency to generate a latency vs message size graph from a CSV file', 'build a throughput graph with TCP link speed y-axis ticks using plot_throughput', 'build an INPROC transport throughput graph with PPS and GBPS axes from CSV data', 'build a latency graph plotting message size against latency in microseconds from CSV']
+```
+
+Usage
+
+```
+{'run_plot_throughput': 'run plot_throughput to generate a dual-axis throughput graph from a CSV file', 'run_plot_latency': 'run plot_latency to generate a latency vs message size graph from a CSV file', 'build_throughput_graph_tcp': 'build a throughput graph with TCP link speed y-axis ticks using plot_throughput', 'build_throughput_graph_inproc': 'build an INPROC transport throughput graph with PPS and GBPS axes from CSV data', 'build_latency_graph': 'build a latency graph plotting message size against latency in microseconds from CSV'}
+```
+

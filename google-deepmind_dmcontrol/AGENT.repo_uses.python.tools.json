@@ -1,0 +1,1815 @@
+{
+  "google-deepmind_dmcontrol/dm_control/_render/base.py": {
+    "create_opengl_context": "create a ContextBase subclass to initialize an OpenGL rendering context with max width and height",
+    "use_make_current_context_manager": "use the make_current context manager to execute OpenGL calls on the dedicated rendering thread",
+    "free_context_resources": "free OpenGL context resources by calling free when the reference count reaches zero",
+    "convert_buffer_to_pixels": "convert a raw buffer to pixel format by calling to_pixels which flips the buffer vertically",
+    "manage_context_lifecycle": "manage context lifecycle with keep_alive and dont_keep_alive to track patient objects during rendering"
+  },
+  "google-deepmind_dmcontrol/dm_control/_render/base_test.py": {
+    "test_ContextBase_init": "test the ContextBase class initialization with max width and height parameters",
+    "test_ContextBase_make_current": "test the ContextBase make_current context manager for activating a rendering context on the current thread",
+    "test_ContextBase_thread_sharing": "test that multiple ContextBase instances correctly track which context is current per thread",
+    "test_ContextBase_free": "test the ContextBase free method to release the rendering context and clean up thread mappings",
+    "test_ContextBase_refcounting": "test the ContextBase increment_refcount and decrement_refcount methods to prevent premature context cleanup"
+  },
+  "google-deepmind_dmcontrol/dm_control/_render/glfw_renderer_test.py": {
+    "test_renderer_init": "test that _render.Renderer initializes with a mocked GLFW context correctly",
+    "test_renderer_make_current": "test that renderer.make_current calls glfw.make_context_current with the context",
+    "test_renderer_freeing": "test that renderer.free destroys the GLFW window and sets context to None",
+    "test_repeatedly_create_destroy_context": "test repeatedly creating and destroying MjrContext with a Renderer in threaded mode",
+    "review_GLFWContextTest": "review the GLFWContextTest class and its four test methods for GLFW rendering"
+  },
+  "google-deepmind_dmcontrol/dm_control/_render/executor/render_executor.py": {
+    "create_passthrough_executor": "create a PassthroughRenderExecutor to execute OpenGL rendering calls on the current thread without overhead",
+    "create_offloading_executor": "create an OffloadingRenderExecutor to offload OpenGL rendering calls to a dedicated background thread",
+    "use_execution_context": "use the execution_context context manager to safely call OpenGL functions through a render executor",
+    "terminate_executor": "terminate a render executor and optionally run a cleanup callable before releasing resources",
+    "check_terminated_status": "check the terminated property of a render executor to see if it has been shut down"
+  },
+  "google-deepmind_dmcontrol/dm_control/_render/executor/render_executor_test.py": {
+    "test_render_executor_multithreaded": "test the render executor multithreaded access pattern with nine concurrent threads using execution context",
+    "test_render_executor_call_on_correct_thread": "test that ctx.call executes functions on the render executor thread using execution context",
+    "test_render_executor_locking": "test the render executor locking behavior to ensure mutual exclusion between threads entering execution context",
+    "test_render_executor_reentrant_locking": "test the render executor reentrant locking by nesting three execution context managers without deadlock",
+    "test_render_executor_exception_handling": "test that the render executor propagates exceptions raised inside ctx.call back to the calling thread"
+  },
+  "google-deepmind_dmcontrol/dm_control/_render/pyopengl/egl_ext.py": {
+    "query_egl_devices": "use eglQueryDevicesEXT to list available EGL devices for headless rendering",
+    "get_platform_display": "use eglGetPlatformDisplayEXT with EGL_PLATFORM_DEVICE_EXT to get an EGL display for a specific device",
+    "load_opengl_library": "use ctypesloader to load libOpenGL.so globally for Nvidia multithreading support",
+    "review_egl_extension_bindings": "review the PFNEGLQUERYDEVICESEXTPROC and PFNEGLGETPLATFORMDISPLAYEXTPROC ctypes function type definitions",
+    "summarize_egl_ext_module": "summarize the egl_ext module which extends OpenGL.EGL for headless rendering"
+  },
+  "google-deepmind_dmcontrol/dm_control/_render/pyopengl/egl_renderer.py": {
+    "create_egl_display": "create an initialized headless EGL display on an available GPU device",
+    "build_egl_context": "build an EGLContext with a given max width and height for headless rendering",
+    "init_egl_context": "initialize an EGL context by choosing a framebuffer config and binding the OpenGL API",
+    "make_egl_current": "make an EGL context current on the calling thread for rendering operations",
+    "free_egl_context": "free an EGL context and destroy its associated resources safely"
+  },
+  "google-deepmind_dmcontrol/dm_control/_render/pyopengl/osmesa_renderer_test.py": {
+    "test_osmesa_renderer_init": "test the OSMesaContext initialization by mocking OSMesaCreateContextExt and verifying the renderer context is set correctly",
+    "test_osmesa_make_current": "test the OSMesa make_current context manager by verifying OSMesaMakeCurrent is called with the correct buffer and dimensions",
+    "test_osmesa_freeing": "test the OSMesa renderer free method by verifying OSMesaDestroyContext is called and the context is set to None",
+    "review_osmesa_context_test": "review the OSMesaContextTest class to understand how the dm_control renderer is tested with mocked OSMesa calls",
+    "run_osmesa_renderer_tests": "run the OSMesa renderer unit tests using absltest to validate renderer initialization, context switching, and cleanup"
+  },
+  "google-deepmind_dmcontrol/dm_control/autowrap/binding_generator.py": {
+    "create_binding_generator": "create a BindingGenerator instance with optional enums, consts, typedefs, hints, and index dicts",
+    "parse_enums_from_header": "parse MuJoCo header source to extract enum declarations and populate the enums_dict",
+    "parse_consts_and_typedefs": "parse MuJoCo header source to extract constant and typedef declarations into consts_dict and typedefs_dict",
+    "resolve_array_size": "resolve an array size identifier string or int to its concrete integer value or runtime dimension name",
+    "write_generated_enums": "write parsed enum definitions as Python namedtuples to a specified output file path"
+  },
+  "google-deepmind_dmcontrol/dm_control/autowrap/codegen_util.py": {
+    "create_indenter_context_manager": "create an Indenter context manager to track and apply string indentation levels across nested blocks",
+    "build_indent_function": "build a function that inserts repeated indent strings at the start of each non-empty line in a string",
+    "create_unique_ordered_dict": "create a UniqueOrderedDict subclass that enforces key uniqueness and raises ValueError on duplicate keys",
+    "test_macro_struct_name": "test the macro_struct_name function to convert mjxmacro struct names like MJDATA_POINTERS to lowercase mjdata",
+    "run_try_coerce_to_num": "run try_coerce_to_num to coerce a string to int or float, stripping trailing type suffixes"
+  },
+  "google-deepmind_dmcontrol/dm_control/blender/fake_core/bpy.py": {
+    "create_fake_bpy_object": "create a fake Blender Object stub with name, parent, matrix_world, and select_set properties",
+    "create_fake_bpy_mesh": "create a fake Blender Mesh stub with vertices, uv_layers, and loop_triangles properties",
+    "create_fake_bpy_material": "create a fake Blender Material stub with diffuse_color, roughness, and metallic properties",
+    "create_fake_bpy_export_stl": "create a fake Blender ops.export_mesh.stl stub that accepts filepath and axis parameters",
+    "create_fake_bpy_context": "create a fake Blender context stub with window_manager and evaluated_depsgraph_get methods"
+  },
+  "google-deepmind_dmcontrol/dm_control/blender/fake_core/mathutils.py": {
+    "create_Color": "create a Color instance with RGBA coordinates and access r, g, b, a properties",
+    "create_Vector": "create a Vector from coordinates and access x, y, z, w properties or compare two vectors",
+    "create_Quaternion": "create a Quaternion from coordinates and access x, y, z, w properties or rotate a Vector",
+    "create_Matrix": "create a Matrix instance and extract its translation vector, quaternion, or scale vector",
+    "create_Matrix_Diagonal": "create a diagonal Matrix using the Matrix.Diagonal class method"
+  },
+  "google-deepmind_dmcontrol/dm_control/blender/mujoco_exporter/blender_scene.py": {
+    "create_ObjectRef_from_blender_object": "create an ObjectRef from a Blender object or bone using the new_object or new_bone class methods",
+    "get_local_transform_of_object": "get the local affine transform including position and rotation quaternion for a Blender object or bone",
+    "get_rotation_dofs_for_bone": "get the rotation degrees of freedom with IK limits for a bone in an armature",
+    "map_blender_scene_tree": "map a callback over all scene objects and bones in breadth-first order using map_blender_tree",
+    "validate_material_mesh_pair": "validate whether a mesh-material pair contains any geometry using is_material_mesh_pair_valid"
+  },
+  "google-deepmind_dmcontrol/dm_control/blender/mujoco_exporter/blender_scene_test.py": {
+    "test_angle_distance": "test the _angle_distance function to calculate the shortest angular distance between two angles in degrees",
+    "test_ObjectRef_hashing": "test the ObjectRef class hashing and equality comparison for Blender mesh objects",
+    "test_ObjectRef_parent": "test the ObjectRef parent relationship for objects parented to other objects or bones",
+    "test_map_blender_tree": "test the map_blender_tree function to traverse and map Blender scene object hierarchies",
+    "test_get_rotation_dofs": "test the get_rotation_dofs method to retrieve rotation degrees of freedom for armature bones"
+  },
+  "google-deepmind_dmcontrol/dm_control/blender/mujoco_exporter/mujoco_assets.py": {
+    "build_mujoco_mesh_from_blender": "build a MujocoMesh from a Blender mesh with a specific material index and two-sided flag",
+    "save_mesh_to_msh_format": "save a MujocoMesh instance to a binary .msh file at the given filepath",
+    "create_mesh_asset_xml_elements": "create XML mesh asset elements and export .msh files for a Blender mesh and its materials",
+    "create_material_asset_xml_element": "create an XML material element with specular, shininess, reflectance, and rgba attributes from a Blender material",
+    "export_blender_objects_to_mujoco_assets": "export a sequence of Blender scene objects to a Mujoco asset XML element with optional modifier application"
+  },
+  "google-deepmind_dmcontrol/dm_control/blender/mujoco_exporter/mujoco_assets_test.py": {
+    "test_export_to_xml_mesh": "test exporting a Blender mesh object to a MuJoCo XML mesh element with file path",
+    "test_export_to_xml_material": "test exporting a Blender material to a MuJoCo XML material element with rgba and specular",
+    "test_mujoco_mesh_split": "test splitting a Blender mesh with multiple materials into separate MujocoMesh submeshes by material index",
+    "test_mujoco_mesh_two_sided": "test creating a two-sided MujocoMesh that duplicates vertices with inverted normals and reversed face winding",
+    "test_unique_asset_export": "test that shared meshes and materials across multiple objects are exported only once to avoid duplicates"
+  },
+  "google-deepmind_dmcontrol/dm_control/blender/mujoco_exporter/mujoco_scene.py": {
+    "build_mujoco_body_element": "build a mujoco body XML element from a Blender object with position and quaternion",
+    "build_mujoco_light_element": "build a mujoco light XML element from a Blender light object with shadows and attenuation",
+    "build_mujoco_mesh_geom": "build mujoco geom XML elements from a Blender mesh object with materials",
+    "build_mujoco_joint": "build a mujoco hinge joint XML element from a degree of freedom with axis and limits",
+    "export_blender_to_mujoco_xml": "export a sequence of Blender scene objects to a mujoco worldbody XML tree"
+  },
+  "google-deepmind_dmcontrol/dm_control/blender/mujoco_exporter/mujoco_scene_test.py": {
+    "test_convert_armature_to_mujoco_xml": "test converting a Blender armature to a MuJoCo XML body element using export_to_xml",
+    "test_convert_bone_creates_body": "test that a Blender bone without constraints creates a MuJoCo body element",
+    "test_convert_light_types": "test converting point, spot, and directional lights to MuJoCo XML with shadow and attenuation settings",
+    "test_export_mesh_references_asset": "test that an exported mesh geom element references its mesh asset by name",
+    "test_mesh_materials_build_multiple_geoms": "test that a mesh with multiple materials builds separate geom elements per material"
+  },
+  "google-deepmind_dmcontrol/dm_control/blender/mujoco_exporter/testing.py": {
+    "build_armature": "build a mock armature object with named bones and parent hierarchy for Blender testing",
+    "build_bone": "build a mock bone with optional IK chain constraints and rotation limits for testing",
+    "build_rotation_constraint": "build a mock rotation constraint with configurable lock and limit settings per axis",
+    "build_mesh_object": "build a mock mesh object with optional mesh data and parent bone assignment",
+    "build_material": "build a mock material definition with configurable color, metallic, and roughness properties"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/arena.py": {
+    "build_arena_with_default_xml": "build an Arena instance that loads the default composer arena MJCF XML file",
+    "build_arena_with_custom_xml": "build an Arena instance with a custom XML path and optional model name",
+    "add_free_entity_to_arena": "add a free-moving entity to the arena by attaching it with a freejoint",
+    "get_arena_mjcf_model": "get the MJCF root model from an Arena instance via the mjcf_model property",
+    "review_arena_class": "review the Arena class and its _build method for custom arena configuration"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/entity.py": {
+    "create_entity_subclass": "create a subclass of Entity that implements _build to wrap a custom MJCF model",
+    "attach_entity_to_parent": "attach an Entity to a parent Entity at a specified site using the attach method",
+    "get_entity_pose": "get the position and orientation quaternion of an Entity relative to its parent using get_pose",
+    "set_entity_velocity": "set the linear and angular velocity of a free Entity using set_velocity",
+    "configure_entity_joints": "configure all internal joint positions of an Entity using configure_joints"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/entity_test.py": {
+    "test_entity_observables": "test that a dm_control composer entity exposes the correct number of observables via as_dict",
+    "test_enable_disable_observables": "test enabling and disabling all observables on a dm_control composer entity using enable_all and disable_all",
+    "test_set_observable_options": "test setting per-observable options like update_interval and delay on a dm_control composer entity",
+    "test_attach_detach_entities": "test attaching and detaching sub-entities to a parent dm_control composer entity and verify parent-child relationships",
+    "test_shift_entity_pose": "test shifting an entity pose by position and quaternion in a dm_control physics simulation"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/environment.py": {
+    "create_rl_environment": "create a dm_control composer Environment with a custom task and time limit for RL training",
+    "reset_environment_episode": "reset the composer Environment to start a new episode and get the initial timestep observation",
+    "step_environment_action": "step the composer Environment with an action and receive the reward, discount, and observation",
+    "add_extra_hook": "add a custom extra hook callable to the Environment for before_step or after_step lifecycle events",
+    "get_observation_spec": "get the observation specification from the composer Environment to inspect observation shapes and dtypes"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/environment_hooks_test.py": {
+    "test_environment_hooks_scheduling": "test that Entity and Task hooks are correctly scheduled in a dm_control composer Environment",
+    "run_composer_environment_with_hooks": "run a composer Environment loop that adds extra hooks and steps through episodes with control actions",
+    "create_environment_with_extra_hooks": "create a composer Environment and register extra hooks for each HOOK_NAMES entry using add_extra_hook",
+    "test_env_step_with_control_array": "test that env.step correctly applies a control array and physics.data.ctrl matches the input",
+    "review_environmenthooks_test_class": "review the EnvironmentHooksTest class that extends HooksTestMixin to validate hook scheduling in dm_control"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/environment_test.py": {
+    "test_environment_failed_resets": "test composer.Environment retry logic when task raises EpisodeInitializationError during reset",
+    "test_environment_get_spec": "test composer.Environment reward_spec and discount_spec retrieval from task or fallback",
+    "test_environment_observations": "test composer.Environment provides correct observations after reset and step calls",
+    "test_environment_mjcf_recompile": "test composer.Environment skips MJCF recompilation when recompile_mjcf_every_episode is False",
+    "test_environment_fixed_initial_state": "test composer.Environment fixed_initial_state flag produces deterministic observations across resets"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/hooks_test_utils.py": {
+    "create_HOOKS_TRACKER": "create a HooksTracker to track call order of composer environment callbacks during testing",
+    "test_HOOKS_TRACKER_assertions": "test the HooksTracker assertHooksCalledOnce and assertHooksNotCalled methods to verify callback invocation counts",
+    "build_TRACKED_ENTITY": "build a TrackedEntity subclass to track composer entity callback call order in test scenarios",
+    "create_TRACKED_TASK": "create a TrackedTask with physics and control timesteps to track task-level composer callbacks",
+    "use_HOOKS_TEST_MIXIN": "use the HooksTestMixin to set up tracked entities and run episodes with callback tracking enabled"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/robot.py": {
+    "review_robot_class": "review the abstract Robot class and its actuators property contract in dm_control composer",
+    "review_down_quaternion": "review the DOWN_QUATERNION constant used for robot orientation in dm_control composer",
+    "review_actuators_property": "review the abstract actuators property that subclasses of Robot must implement",
+    "build_robot_subclass": "build a concrete Robot subclass that implements the actuators property for a custom robot",
+    "summarize_robot_module": "summarize the Robot abstract base class and its inheritance from entity.Entity"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/task.py": {
+    "create_task_subclass": "create a subclass of Task that implements root_entity and get_reward for a custom MuJoCo control problem",
+    "set_timesteps": "set the control and physics timesteps on a Task instance using set_timesteps",
+    "create_nulltask": "create a NullTask wrapping an Entity to build a Task with zero reward",
+    "customize_episode_initialization": "override initialize_episode_mjcf and initialize_episode to randomize task conditions each episode",
+    "override_before_step": "override before_step to map agent actions to custom actuator control signals"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/initializers/prop_initializer.py": {
+    "create_prop_placer": "create a PropPlacer to place composer Entity props at specified positions and orientations in a MuJoCo physics simulation",
+    "build_prop_placer_with_settle": "build a PropPlacer with settle_physics enabled to advance simulation steps until prop joint velocities and accelerations settle below thresholds",
+    "review_prop_collision_detection": "review the PropPlacer _has_collisions_with_prop method to understand how geom contact distances are checked for collision detection",
+    "refactor_rejection_sampling": "refactor the PropPlacer rejection sampling loop to customize max_attempts_per_prop or adjust position and quaternion variation distributions",
+    "test_contact_parameter_caching": "test the PropPlacer _disable_and_cache_contact_parameters and _restore_contact_parameters methods to verify contype and conaffinity are correctly saved and restored"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/initializers/prop_initializer_test.py": {
+    "test_prop_placer_non_colliding": "test PropPlacer to sample non-colliding positions for spheres within a bounded volume",
+    "test_prop_placer_rejection_sampling": "test PropPlacer rejection sampling failure when max attempts are exceeded for colliding props",
+    "test_prop_placer_ignore_contacts": "test PropPlacer ignore_contacts_with_entities to skip collisions with specific entities during placement",
+    "test_prop_placer_settle_physics": "test PropPlacer settle_physics option to let physics simulate until props rest on the ground",
+    "test_prop_placer_settle_attempts": "test PropPlacer max_settle_physics_attempts to retry placement when settling fails within the time limit"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/initializers/tcp_initializer.py": {
+    "create_TCP_initializer": "create a ToolCenterPointInitializer to set a robot hand TCP to a randomized Cartesian position with collision checking",
+    "build_TCP_initializer_with_variation": "build a ToolCenterPointInitializer using a Variation object for randomized position and quaternion sampling",
+    "test_has_relevant_collisions": "test the _has_relevant_collisions method to detect arm-arm, arm-hand, and external body collisions",
+    "review_TCP_initializer_call": "review the ToolCenterPointInitializer call method that uses inverse kinematics and rejection sampling to find collision-free poses",
+    "refactor_TCP_initializer_collision_ignore": "refactor the ToolCenterPointInitializer to enable ignore_collisions mode and disable rejection sampling for faster initialization"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/initializers/tcp_initializer_test.py": {
+    "test_TcpInitializerTest_initialize_to_fixed_pose": "test the ToolCenterPointInitializer to set a robot arm TCP to a fixed target position and quaternion",
+    "test_TcpInitializerTest_exception_if_hand_colliding_with_fixed_body": "test that the initializer raises an EpisodeInitializationError when the hand collides with a fixed obstacle at the target pose",
+    "test_TcpInitializerTest_exception_if_self_collision": "test that the initializer raises an EpisodeInitializationError when the arm or hand self-collides at the target pose",
+    "test_TcpInitializerTest_ignore_robot_collision_with_free_body": "test that the initializer succeeds when the robot collides with a free body held by a weld constraint",
+    "test_TcpInitializerTest_ignore_collision_not_involving_robot": "test that the initializer succeeds when non-robot entities in the scene are in contact with each other"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/observation/fake_physics.py": {
+    "create_fake_physics_instance": "create a FakePhysics instance to unit test the dm_control observation framework",
+    "test_step_counter": "test the FakePhysics step method to increment the internal step counter",
+    "test_observables_property": "test the FakePhysics observables property to return registered Generic observable objects",
+    "test_twice_method": "test the FakePhysics twice method to return two times the step counter value",
+    "test_reset_method": "test the FakePhysics reset method to zero the step counter and clear state"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/observation/obs_buffer.py": {
+    "create_buffer": "create a Buffer instance with a given buffer size, shape, and dtype for observation management",
+    "insert_observation": "insert a new observation with timestamp, delay, and value into the observation buffer",
+    "read_buffer": "read the buffered observation array at a given current time timestamp",
+    "create_inflight_observation": "create an InFlightObservation object with a timestamp, delay, and observation value",
+    "drop_unobserved_items": "drop upcoming observations from the schedule that will never be delivered within buffer size"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/observation/obs_buffer_test.py": {
+    "test_Buffer_out_of_order_arrival": "test the Buffer class to handle observations arriving out of order with varying delays",
+    "test_Buffer_strip_singleton_dimension": "test the Buffer class to strip singleton dimensions when buffer size is one",
+    "test_Buffer_drop_unobserved_upcoming_items": "test the Buffer drop_unobserved_upcoming_items method to prune observation schedules that would never be read",
+    "test_Buffer_read_with_delay": "test the Buffer read method to return correctly delayed observations at each timestep",
+    "test_InFlightObservation_sorting": "test the InFlightObservation class to sort observations by their arrival time"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/observation/updater.py": {
+    "create_updater_for_observables": "create an Updater instance with observables dict to manage observation buffers for a DM Control environment",
+    "reset_updater_buffers": "reset the Updater with physics and random_state to initialize observation buffers and update schedules",
+    "get_observation_spec": "call observation_spec on the Updater to retrieve Array or BoundedArray specs for all enabled observations",
+    "prepare_for_next_control_step": "call prepare_for_next_control_step to simulate the next control step and optimize the observation update schedule",
+    "get_observation_values": "call get_observation on the Updater to retrieve the current aggregated observation values as a dict"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/observation/updater_test.py": {
+    "run_updater_test": "run the absltest suite to test the observation updater module",
+    "test_nested_specs_and_values": "test nested observation specs and values using lists or tuples of observables",
+    "test_observation_spec_inference": "test automatic observation spec inference from physics observables with buffer sizes",
+    "test_custom_spec_type_passed_through": "test that custom array spec subclasses are preserved through the updater",
+    "test_variable_rates_and_delays": "test observation buffering with deterministic variable update intervals and delays"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/observation/observable/base.py": {
+    "create_generic_observable": "create a Generic observable from a callable that returns observations given a physics object",
+    "create_mujoco_feature_observable": "create a MujocoFeature observable to expose a named MuJoCo mjData field as an observation",
+    "create_mujoco_camera_observable": "create a MujocoCamera observable to render RGB or depth images from a named MuJoCo camera",
+    "configure_observable": "configure an Observable by setting update_interval, buffer_size, delay, aggregator, or corruptor attributes",
+    "use_aggregators": "use a predefined aggregator like min, max, mean, median, or sum to reduce buffered observations"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/observation/observable/base_test.py": {
+    "test_Observable_base_properties": "test the Observable base class update_interval, buffer_size, delay, and enabled properties",
+    "test_Generic_observable": "test the Generic observable wrapping a callable with a custom update_interval",
+    "test_MujocoFeature_observable": "test the MujocoFeature observable to extract qpos or geom_xpos from physics data",
+    "test_MujocoCamera_observable": "test the MujocoCamera observable to render camera images from a MuJoCo physics environment",
+    "test_corruptor_on_observable": "test applying a corruptor function to modify observable values before returning them"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/observation/observable/mjcf.py": {
+    "create_MJCFFeature_observable": "create an MJCFFeature observable to expose a named attribute of an MJCF element as an observation",
+    "create_MJCFCamera_observable": "create an MJCFCamera observable to render RGB, depth, or segmentation images from an MJCF camera element",
+    "slice_MJCFFeature_with_getitem": "slice an MJCFFeature observable using __getitem__ to select specific array indices of the bound attribute",
+    "configure_MJCFCamera_render_options": "configure MJCFCamera render options like depth, segmentation, scene_option, and render_flag_overrides for custom visualization",
+    "inspect_MJCFCamera_array_spec": "inspect the array_spec property of MJCFCamera to get the BoundedArray spec with shape, dtype, and value bounds"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/observation/observable/mjcf_test.py": {
+    "create_MJCFFeature_observable": "create an MJCFFeature observable to extract qpos or xpos data from an MJCF joint or geom element",
+    "create_MJCFFeature_with_index": "create an MJCFFeature observable with an index list to select specific rows from an xmat array",
+    "slice_MJCFFeature_observable": "slice an MJCFFeature observable using bracket notation to select a subset of array elements",
+    "create_MJCFCamera_observable": "create an MJCFCamera observable to render RGB images from a named MJCF camera element at a given resolution",
+    "create_MJCFCamera_segmentation": "create an MJCFCamera observable with segmentation enabled to render per-geom integer labels instead of RGB pixels"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/variation/distributions_test.py": {
+    "test_Uniform_distribution": "test the Uniform distribution class with low and high bounds for random sampling",
+    "test_UniformChoice_distribution": "test the UniformChoice distribution class for random selection from a list of choices",
+    "test_UniformPointOnSphere_distribution": "test the UniformPointOnSphere distribution class for generating random 3D unit vectors",
+    "test_Normal_distribution": "test the Normal distribution class with loc and scale parameters for Gaussian sampling",
+    "test_BiasedRandomWalk_distribution": "test the BiasedRandomWalk distribution class with stdev and timescale parameters for random walk sequences"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/variation/noises_test.py": {
+    "test_Additive_non_cumulative": "test the noises.Additive class with a constant amount in non-cumulative mode",
+    "test_Additive_cumulative": "test the noises.Additive class with cumulative mode to accumulate values over iterations",
+    "test_Multiplicative_non_cumulative": "test the noises.Multiplicative class with a constant amount in non-cumulative mode",
+    "test_Multiplicative_cumulative": "test the noises.Multiplicative class with cumulative mode to compound values over iterations",
+    "run_noises_test_suite": "run the absltest NoisesTest suite to verify additive and multiplicative variation behavior"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/variation/variation_broadcaster.py": {
+    "create_variation_broadcaster": "create a VariationBroadcaster wrapping a Variation object to share values across multiple callers",
+    "get_proxy_from_broadcaster": "get a proxy Variation from a VariationBroadcaster to use in place of the wrapped Variation",
+    "evaluate_broadcasted_value": "evaluate a broadcasted proxy to retrieve the cached variation value for the current round",
+    "review_variation_broadcaster_class": "review the VariationBroadcaster class that wraps a Variation and generates multiple proxies for shared values",
+    "refactor_broadcasted_value_proxy": "refactor the _BroadcastedValueProxy class to customize how broadcasted variation values are retrieved"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/variation/variation_broadcaster_test.py": {
+    "test_VariationBroadcaster": "test the VariationBroadcaster class to verify it generates consistent uniform random values across proxies",
+    "run_VariationBroadcaster_test": "run the VariationBroadcaster unit test to validate proxy value generation with a seeded random state",
+    "create_VariationBroadcaster_with_uniform": "create a VariationBroadcaster with a Uniform distribution and get proxy objects for variation evaluation",
+    "evaluate_variation_proxy": "evaluate a variation proxy using variation.evaluate with a numpy RandomState to get a sampled value",
+    "review_VariationBroadcasterTest": "review the VariationBroadcasterTest class and its test_can_generate_values method for correctness"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/variation/variation_test.py": {
+    "test_unary_operator": "test the VariationTest class to verify unary negation operator works on deterministic Constant variations",
+    "test_binary_operator": "test the VariationTest class to verify binary operators like add, sub, mul, truediv, floordiv, and pow on variations",
+    "test_binary_operator_str": "test the VariationTest class to verify string and repr representation of binary operations on variations",
+    "test_getitem": "test the VariationTest class to verify indexing operations on numpy array variations with deterministic Constant",
+    "run_variation_tests": "run the absltest main to execute all variation operation tests for unary, binary, and getitem operations"
+  },
+  "google-deepmind_dmcontrol/dm_control/composer/variation/variation_values.py": {
+    "evaluate_nested_callables": "evaluate a nested structure of callables or constants by passing args and kwargs to each callable",
+    "summarize_evaluate_function": "summarize the evaluate function that recursively maps callables in nested lists, tuples, or dicts",
+    "test_evaluate_with_dict": "test the evaluate function with a dict containing mixed callables and constant values",
+    "review_evaluate_implementation": "review the evaluate function implementation using tree.map_structure to handle nested structures",
+    "refactor_evaluate_for_custom_types": "refactor the evaluate function to support custom nested structure types beyond lists, tuples, and dicts"
+  },
+  "google-deepmind_dmcontrol/dm_control/entities/manipulators/base.py": {
+    "set_site_to_xpos": "use inverse kinematics to move a robot arm site to a target Cartesian position and orientation",
+    "randomize_arm_joints": "randomize the joint positions of a robot arm within valid sampling bounds from the MJCF model",
+    "get_joint_pos_sampling_bounds": "get the lower and upper position bounds for all arm joints from the physics model",
+    "set_grasp": "set the finger grasp positions of a robot hand using close factors from 0 open to 1 closed",
+    "build_joints_observables": "build observable features for robot arm joint positions and velocities using MJCFFeature"
+  },
+  "google-deepmind_dmcontrol/dm_control/entities/manipulators/kinova/jaco_arm.py": {
+    "build_jaco_arm_entity": "build a JacoArm composer entity to initialize a 6-DOF Kinova Jaco robot arm model",
+    "create_velocity_actuator": "create a velocity actuator for a joint with torque and velocity limits based on joint size",
+    "add_torque_sensor": "add a torque sensor to a joint parent body and return the MJCF sensor element",
+    "get_joints_pos_observable": "get the joints_pos observable that returns sine and cosine pairs of joint angles",
+    "get_joints_torque_observable": "get the joints_torque observable that projects 3-axis torque sensor data onto joint axes"
+  },
+  "google-deepmind_dmcontrol/dm_control/entities/manipulators/kinova/jaco_hand.py": {
+    "build_jaco_hand_entity": "build a JacoHand composer entity with a custom name and pinch site as the tool center point",
+    "set_grasp_finger_positions": "set the Jaco hand finger positions using close factors from 0 open to 1 closed",
+    "add_velocity_actuator_to_joint": "add a velocity actuator to an MJCF joint with configured gain force and control ranges",
+    "get_jaco_hand_observables": "get the pinch site position and rotation matrix observables from a JacoHandObservables instance",
+    "review_jaco_hand_class": "review the JacoHand class properties including joints actuators hand geoms finger geoms grip site and pinch site"
+  },
+  "google-deepmind_dmcontrol/dm_control/entities/manipulators/kinova/kinova_test.py": {
+    "test_jaco_arm_compile_and_step": "test the JacoArm class by compiling the MJCF model and stepping the physics simulation",
+    "test_jaco_arm_attach_hand": "test attaching a JacoHand to a JacoArm and verify the combined physics model compiles",
+    "test_jaco_arm_velocity_actuation": "test JacoArm velocity actuation by applying control inputs and measuring joint velocities",
+    "test_jaco_arm_backdriving_torque": "test JacoArm backdriving torque by applying incremental torque and measuring joint acceleration thresholds",
+    "test_jaco_hand_grip_force": "test JacoHand grip force by closing fingers on a sphere and measuring touch sensor data"
+  },
+  "google-deepmind_dmcontrol/dm_control/entities/props/position_detector.py": {
+    "build_PositionDetector": "build a PositionDetector with a center position and half-length size for an axis-aligned box region",
+    "register_entities_PositionDetector": "register entities with a PositionDetector so their geoms are monitored for presence in the active region",
+    "resize_PositionDetector": "resize a PositionDetector by updating its center position and half-length size at runtime",
+    "set_position_PositionDetector": "set the runtime position of a PositionDetector using physics and a new position array",
+    "check_activated_PositionDetector": "check if a PositionDetector is activated by reading its activated property after simulation steps"
+  },
+  "google-deepmind_dmcontrol/dm_control/entities/props/position_detector_test.py": {
+    "test_PositionDetector_3D": "test the PositionDetector class for 3D entity detection with configurable position and size parameters",
+    "test_PositionDetector_2D": "test the PositionDetector class for 2D entity detection ignoring the z-axis coordinate",
+    "test_PositionDetector_inverted": "test the PositionDetector inverted mode to flip detection logic for registered entities",
+    "create_PositionDetector": "create a PositionDetector with a given position array, size array, and optional inverted flag",
+    "run_PositionDetector_test": "run the PositionDetector test suite to verify 3D and 2D detection with inverted modes"
+  },
+  "google-deepmind_dmcontrol/dm_control/entities/props/primitive.py": {
+    "build_primitive_sphere": "build a Primitive entity with a sphere geom type and specified radius for MuJoCo simulation",
+    "build_primitive_box": "build a Primitive entity with a box geom type and x, y, z half lengths for simulation",
+    "get_primitive_position": "get the position sensor data from a Primitive entity's framepos sensor in the simulation",
+    "get_primitive_velocity": "get the linear and angular velocity sensor data from a Primitive entity in the simulation",
+    "create_primitive_observables": "create PrimitiveObservables to expose position, orientation, linear velocity, and angular velocity as observable features"
+  },
+  "google-deepmind_dmcontrol/dm_control/entities/props/primitive_test.py": {
+    "test_primitive_instantiation": "test creating Primitive props with sphere, capsule, cylinder, box, and ellipsoid geom types",
+    "test_primitive_position_observable": "test setting and observing the position of a Primitive prop via set_pose and observables",
+    "test_primitive_orientation_observable": "test setting and observing the orientation quaternion of a Primitive prop via set_pose",
+    "test_primitive_linear_velocity_observable": "test setting and observing the linear velocity of a Primitive prop via set_velocity",
+    "test_primitive_angular_velocity_observable": "test setting and observing the angular velocity of a Primitive prop via set_velocity"
+  },
+  "google-deepmind_dmcontrol/dm_control/entities/props/duplo/autotune.py": {
+    "run_autotune_script": "run the autotune script to tune Duplo stud radii for desired separation forces",
+    "tune_stud_radius": "tune the Duplo stud radius to achieve a desired separation force using bisection",
+    "get_separation_force_for_radius": "measure the Duplo brick separation force for a given stud radius value",
+    "review_KeepBracketingSolutions": "review the KeepBracketingSolutions class that wraps an objective function to track bracketing solutions",
+    "summarize_DESIRED_FORCES": "summarize the DESIRED_FORCES constant defining minimum, lower quartile, and maximum target forces"
+  },
+  "google-deepmind_dmcontrol/dm_control/entities/props/duplo/duplo_test.py": {
+    "test_duplo_separation_force_fixed": "test the Duplo prop separation force is consistent when variation is zero across multiple seeds",
+    "test_duplo_separation_force_distribution": "test the Duplo prop separation force distribution stays within expected min max and median bounds",
+    "test_duplo_separation_force_identical_seed": "test the Duplo prop separation force is identical for the same random seed but different across seeds",
+    "test_duplo_color_validation": "test the Duplo class raises ValueError when color values are outside the 0 to 1 range",
+    "test_duplo_stud_alignment": "test that Duplo brick studs and holes align precisely when two bricks are stacked in physics simulation"
+  },
+  "google-deepmind_dmcontrol/dm_control/entities/props/duplo/utils.py": {
+    "stack_bricks": "create a function that stacks two Duplo bricks in a composer arena and returns the attachment frame",
+    "measure_separation_force": "build a tool that measures the force needed to separate two Duplo bricks using binary search",
+    "run_stack_bricks_simulation": "run a simulation that stacks a top Duplo brick on a bottom brick with a freejoint",
+    "test_separation_force_bisection": "test the separation force measurement by bracketing min and max forces and bisecting to find the threshold",
+    "review_measure_separation_force": "review the measure_separation_force function that applies upward force and checks height threshold for brick separation"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/bowl.py": {
+    "build_bowl_arena": "build a Bowl arena with configurable size and aesthetic for locomotion tasks",
+    "regenerate_bowl_terrain": "regenerate the Bowl arena terrain by setting the regenerate flag for next episode",
+    "initialize_bowl_episode": "initialize a Bowl episode to generate sinusoidal bowl terrain with random smooth bumps",
+    "get_ground_geoms": "get the terrain and ground plane geometry references from a Bowl arena instance",
+    "review_bowl_constants": "review the terrain smoothness and bump scale constants used in Bowl arena generation"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/bowl_test.py": {
+    "test_bowl_arena_mjcf_compilation": "test that a bowl.Bowl arena can be instantiated and its MJCF model compiles with mjcf.Physics",
+    "create_bowl_arena": "create a bowl.Bowl arena instance for use in dm_control locomotion tasks",
+    "compile_mjcf_model": "compile an arena MJCF model into a physics object using mjcf.Physics.from_mjcf_model",
+    "run_bowl_test": "run the BowlTest test case to verify the bowl arena MJCF model compiles correctly",
+    "review_bowl_arena_test": "review the BowlTest class and test_can_compile_mjcf method for bowl arena validation"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/corridors.py": {
+    "build_empty_corridor_arena": "build an EmptyCorridor arena with configurable width and length for locomotion tasks",
+    "build_gaps_corridor_arena": "build a GapsCorridor arena with platforms separated by gaps for jumping tasks",
+    "build_walls_corridor_arena": "build a WallsCorridor arena with alternating side walls as obstacles for navigation",
+    "regenerate_corridor_with_random_state": "regenerate a corridor arena with new randomized dimensions using a numpy RandomState object",
+    "check_agent_at_target_position": "check if an agent position is within tolerance of the corridor end target"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/corridors_test.py": {
+    "test_compile_mjcf_for_corridor_arenas": "test that EmptyCorridor, GapsCorridor, and WallsCorridor MJCF models compile without errors",
+    "test_regenerate_corridor_size": "test that corridor arenas regenerate to expected width and length using deterministic sequences",
+    "run_corridors_test_suite": "run the absltest suite for all corridor arena types in dm_control locomotion",
+    "review_corridor_probe_contact_detection": "review how probe geom contacts are detected against corridor side walls during regeneration",
+    "summarize_corridor_arena_types": "summarize the EmptyCorridor, GapsCorridor, and WallsCorridor arena classes and their MJCF model capabilities"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/covering.py": {
+    "build_maze_walls": "build a python module to calculate rectangular wall coverings from a text maze grid using make_walls",
+    "create_maze_wall_covering_context": "create a MazeWallCoveringContext instance to greedily minimize geoms for a given text maze",
+    "calculate_walls": "calculate overlapping rectangular wall coverings for a text maze and return MazeWall tuples",
+    "create_mazewall_namedtuple": "create a MazeWall namedtuple with start and end GridCoordinates for a maze wall segment",
+    "review_make_odd_sized_walls": "review the make_odd_sized_walls option to ensure wall sections span odd grid cells for MuJoCo textures"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/covering_test.py": {
+    "run_test_suit": "run the CoveringTest test suite to verify make_walls reconstructs maze entity layers correctly",
+    "test_make_walls_random_mazes": "test covering.make_walls on 1000 randomly regenerated mazes and assert walls reconstruct the original grid",
+    "test_make_walls_odd_sized": "test covering.make_walls with make_odd_sized_walls=True and assert all wall dimensions are odd",
+    "test_no_overlapping_walls": "test covering.make_walls on a hardcoded maze string and assert total wall surface area equals 8",
+    "review_covering_test_class": "review the CoveringTest class and its three test methods for maze wall extraction logic"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/floors.py": {
+    "build_floor_arena": "build a Floor arena with a checkered groundplane and top camera for MuJoCo locomotion tasks",
+    "build_floor_with_aesthetic": "build a Floor arena with a custom aesthetic texture and skybox instead of the default checker pattern",
+    "build_floor_custom_size": "build a Floor arena with a custom size tuple and adjusted top camera distance and padding",
+    "review_floor_ground_geoms": "review the Floor class ground_geoms property that returns the ground plane geometry tuple",
+    "review_floor_size_property": "review the Floor class size property that returns the configured floor dimensions tuple"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/floors_test.py": {
+    "test_Floor_compile_mjcf": "test that a Floor arena MJCF model compiles successfully with mjcf.Physics.from_mjcf_model",
+    "test_Floor_size": "test that a Floor arena ground geom size matches the provided size tuple",
+    "test_Floor_top_camera": "test that the Floor top camera FOV and position are correctly computed from floor size",
+    "create_Floor_arena": "create a Floor arena with a custom size tuple and default checkered ground texture",
+    "review_FloorsTest_class": "review the FloorsTest class and its three test methods for MJCF compilation, size, and camera"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/labmaze_textures.py": {
+    "build_skybox_texture": "build a SkyBox entity with a given style to create a skybox texture asset for the LabMaze arena",
+    "build_wall_textures": "build a WallTextures entity with a given style to create 2D wall texture assets for the LabMaze arena",
+    "build_floor_textures": "build a FloorTextures entity with a given style to create 2D floor texture assets for the LabMaze arena",
+    "get_skybox_mjcf_model": "get the MJCF root model from a built SkyBox entity to access the skybox texture configuration",
+    "get_wall_texture_list": "get the list of 2D texture objects from a built WallTextures entity to inspect available wall textures"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/mazes.py": {
+    "build_MazeWithTargets": "build a MazeWithTargets arena with a LabMaze instance, xy_scale, and z_height parameters",
+    "build_RandomMazeWithTargets": "build a RandomMazeWithTargets arena with x_cells, y_cells, max_rooms, and room size parameters",
+    "regenerate_MazeWithTargets": "regenerate the maze layout and find new spawn and target positions in MazeWithTargets",
+    "find_token_grid_positions": "find grid positions of specified tokens in the maze entity layer",
+    "grid_to_world_positions": "convert grid coordinates to world Cartesian positions using xy_scale and offsets"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/mazes_test.py": {
+    "test_MazesTest_test_can_compile_mjcf": "test the MazesTest class to verify MJCF compilation of a random maze with targets",
+    "create_RandomMazeWithTargets": "create a RandomMazeWithTargets arena with configurable grid size, rooms, spawns, and targets",
+    "create_SkyBox_texture": "create a SkyBox texture with a specified style for the maze skybox",
+    "create_WallTextures": "create WallTextures with a specified style for maze walls matching DMLab",
+    "create_FloorTextures": "create FloorTextures with a specified style for maze floors matching DMLab"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/padded_room.py": {
+    "create_padded_room": "create a PaddedRoom instance with a given room size and optional wall padding",
+    "regenerate_maze": "regenerate the PaddedRoom maze with random objects and agent spawn positions",
+    "get_entity_layer": "get the entity_layer TextGrid property showing maze walls, objects, and spawn tokens",
+    "get_variations_layer": "get the variations_layer TextGrid property for maze variation tracking",
+    "get_maze_dimensions": "get the width and height properties of a PaddedRoom including padding"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/arenas/padded_room_test.py": {
+    "test_PaddedRoomTest_test_can_compile_mjcf": "test the PaddedRoomTest class to verify a PaddedRoom maze compiles into valid MJCF physics",
+    "run_PaddedRoomTest": "run the PaddedRoomTest test suite using absltest to validate padded room arena compilation",
+    "create_PaddedRoom": "create a PaddedRoom maze with a specified room size and number of objects",
+    "build_MazeWithTargets": "build a MazeWithTargets arena using a PaddedRoom maze with skybox, wall, and floor textures",
+    "compile_mjcf_Physics": "compile an arena MJCF model into a MuJoCo Physics object using mjcf.Physics.from_mjcf_model"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/examples/basic_cmu_2019.py": {
+    "build_cmu_humanoid_run_walls": "build a CMU humanoid environment that runs down a corridor obstructed by randomized walls",
+    "build_cmu_humanoid_run_gaps": "build a CMU humanoid environment that runs down a corridor with randomized gaps and platforms",
+    "build_cmu_humanoid_go_to_target": "build a CMU humanoid environment that navigates to a target on a standard floor arena",
+    "build_cmu_humanoid_maze_forage": "build a CMU humanoid environment that finds all target items in a randomly generated maze",
+    "build_cmu_humanoid_heterogeneous_forage": "build a CMU humanoid environment that collects correct targets while avoiding wrong ones in a fixed maze"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/examples/basic_rodent_2020.py": {
+    "build_rodent_escape_bowl": "build a dm_control environment where a rodent walker must climb out of a bowl-shaped terrain",
+    "build_rodent_run_gaps": "build a dm_control environment where a rodent runs down a corridor with randomized gaps and platforms",
+    "build_rodent_maze_forage": "build a dm_control environment where a rodent must find all target spheres in a random maze",
+    "build_rodent_two_touch": "build a dm_control environment where a rodent taps an orb, waits, and taps it again",
+    "summarize_rodent_environment_functions": "summarize the four rodent task environment factory functions and their walker, arena, and task configurations"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/examples/cmu_2020_tracking.py": {
+    "run_cmu_humanoid_tracking": "run the CMU humanoid tracking environment with motion capture reference data for RL training",
+    "create_multi_clip_mocap_tracking_task": "create a MultiClipMocapTracking task that rewards an agent for tracking motion capture reference poses",
+    "build_cmu_humanoid_environment": "build a composer Environment wrapping a CMU humanoid walker on a floor arena with a 30-second time limit",
+    "get_cmu_mocap_data_path": "get the file path for CMU motion capture dataset version 2020 using cmu_mocap_data",
+    "review_cmu_humanoid_tracking": "review the cmu_humanoid_tracking function to understand how it configures the walker, arena, and mocap tracking task"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/examples/examples_test.py": {
+    "test_cmu_humanoid_run_walls": "test the cmu_humanoid_run_walls environment constructor runs and returns valid observations and rewards",
+    "test_cmu_humanoid_run_gaps": "test the cmu_humanoid_run_gaps environment constructor runs and returns valid observations and rewards",
+    "test_rodent_escape_bowl": "test the rodent_escape_bowl environment constructor runs and returns valid observations and rewards",
+    "test_rodent_maze_forage": "test the rodent_maze_forage environment constructor runs and returns valid observations and rewards",
+    "test_rodent_two_touch": "test the rodent_two_touch environment constructor runs and returns valid observations and rewards"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/mocap/cmu_mocap_data.py": {
+    "get_path_for_cmu": "get the path to the CMU mocap HDF5 data file, downloading it if not already cached",
+    "download_cmu_mocap_data": "download the CMU motion capture data file into a local cache directory with progress bar",
+    "validate_cached_file": "check if a cached CMU mocap data file exists and has the correct file size",
+    "verify_download_hash": "verify the SHA256 hash of a downloaded CMU mocap data file to ensure integrity",
+    "summarize_cmu_mocap_constants": "summarize the CMU mocap data constants including filenames, URLs, expected sizes, and SHA256 hashes"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/mocap/loader.py": {
+    "load_hdf5_trajectory": "create an HDF5TrajectoryLoader to load mocap trajectories from an HDF5 file by path",
+    "get_trajectory_by_key": "use TrajectoryLoader get_trajectory to retrieve a trajectory by key with optional time and step bounds",
+    "limit_prop_mass": "create a PropMassLimiter to cap the maximum mass of each prop in a trajectory proto",
+    "resize_props": "create a PropResizer to scale or adjust prop sizes and mass in a trajectory proto",
+    "offset_z_positions": "create a ZOffsetter to shift the z position of walkers and props in a trajectory proto"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/mocap/loader_test.py": {
+    "test_HDF5TrajectoryLoaderTest": "test the HDF5TrajectoryLoaderTest class to verify HDF5 trajectories agree with textproto files",
+    "run_assert_proto_equal": "run the assert_proto_equal method to recursively compare two protobuf messages field by field",
+    "run_test_hdf5_agrees_with_textprotos": "run the test_hdf5_agrees_with_textprotos test to validate HDF5 loader output matches textproto data",
+    "review_HDF5TrajectoryLoaderTest": "review the HDF5TrajectoryLoaderTest class and its protobuf comparison logic for test coverage",
+    "summarize_loader_test": "summarize the loader_test module which tests HDF5TrajectoryLoader against textproto ground truth"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/mocap/props.py": {
+    "build_prop_from_proto": "build a Prop entity from a motion-capture prop_proto with optional rgba and priority friction settings",
+    "create_default_prop_rgba": "create a function that returns an interpolated RGBA color based on a given prop mass value",
+    "update_prop_geometry": "update an existing Prop geom size, mass, and rgba using a new prop object",
+    "review_prop_observables": "review the Observables class that exposes position and orientation sensor data as MJCFFeature observables",
+    "test_prop_after_compile": "test the Prop after_compile method to verify body_geom_ids are bound correctly via physics"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/mocap/trajectory.py": {
+    "create_Trajectory_from_proto": "create a Trajectory object from a mocap proto with optional start and end time slicing",
+    "call_as_dict": "call as_dict on a Trajectory to get all walker and prop pose data as numpy arrays",
+    "call_get_modified_trajectory": "call get_modified_trajectory on a Trajectory to apply proto modifiers and return a new Trajectory",
+    "call_set_walker_poses": "call set_walker_poses on a Trajectory to apply mocap poses to walkers in a physics environment",
+    "call_configure_walkers": "call configure_walkers on a Trajectory to rescale walkers and add marker sites from mocap data"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/mocap/walkers.py": {
+    "create_WalkerInfo_from_proto": "create a WalkerInfo instance from a mocap_pb2.Walker protocol buffer",
+    "check_walker_compatibility": "check whether a given walker is compatible with a WalkerInfo model type",
+    "rescale_walker_to_mocap": "rescale a walker's subtree positions and mass to match mocap data",
+    "add_marker_sites_to_walker": "add mocap tracking marker sites to a walker's MJCF model bodies",
+    "review_WalkerInfo_class": "review the WalkerInfo class and its methods for modifying walkers to match mocap data"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/props/target_sphere.py": {
+    "build_TargetSphere": "build a TargetSphere entity with custom radius, height, and checkerboard stripe colors for a dm_control locomotion task",
+    "build_TargetSphereTwoTouch": "build a TargetSphereTwoTouch entity with initial, interval, and final color states and a touch debounce duration",
+    "review_TargetSphere_activated": "review the TargetSphere activated property to check if the target has been reached during the current episode",
+    "review_TargetSphereTwoTouch_activated": "review the TargetSphereTwoTouch activated property to get the two-bit tuple indicating once and twice touched states",
+    "refactor_TargetSphere_update_activation": "refactor the TargetSphere _update_activation method to customize collision detection logic using specific geom IDs"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/props/target_sphere_test.py": {
+    "test_TargetSphereTest": "test the TargetSphereTest class to verify target sphere activation behavior in dm_control",
+    "run_testActivation": "run the testActivation test method to validate target sphere activation and reset logic",
+    "create_TargetSphere": "create a TargetSphere prop with a given radius and height_above_ground for locomotion tasks",
+    "test_target_activated_property": "test the target.activated property to check if a falling entity has entered the target zone",
+    "reset_composer_Environment": "reset the composer Environment to verify the target sphere deactivates and restores full opacity"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/soccer/boxhead.py": {
+    "build_BoxHead_walker": "build a BoxHead walker with custom roll gear, steer gear, and camera control settings",
+    "create_BoxHead_with_walker_id": "create a BoxHead walker with a numeric walker ID displayed on its head texture",
+    "test_alpha_blend": "test the alpha blending function to composite two RGBA numpy image arrays",
+    "review_compensate_gravity": "review the gravity compensation function that applies Cartesian forces to counteract gravity on MJCF bodies",
+    "summarize_BoxHeadObservables": "summarize the BoxHeadObservables class providing egocentric camera and camera joint position and velocity observables"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/soccer/boxhead_test.py": {
+    "test_BoxHead_instantiation": "test BoxHead instantiation with various camera_control and walker_id parameter combinations",
+    "test_invalid_walker_id": "test that BoxHead raises ValueError when given an invalid walker_id outside valid range",
+    "run_boxhead_tests": "run the absltest suite for dm_control locomotion soccer boxhead module",
+    "review_BoxheadTest_class": "review the BoxheadTest parameterized test class and its test_instantiation and test_invalid_walker_id methods",
+    "summarize_boxhead_test": "summarize the boxhead_test module which tests BoxHead constructor validation for camera_control and walker_id"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/soccer/camera.py": {
+    "create_MultiplayerTrackingCamera": "create a MultiplayerTrackingCamera instance with min_distance, distance_factor, and smoothing_update_speed parameters",
+    "render_camera_frame": "render the current camera frame after physics has been compiled and camera initialized",
+    "initialize_camera_episode": "initialize the camera to its target pose using entity positions at episode start",
+    "update_camera_after_step": "smoothly move the camera toward its target pose after each physics step",
+    "compute_target_camera_pose": "compute the target camera pose from entity positions using centroid and max radius"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/soccer/humanoid.py": {
+    "build_humanoid_soccer_walker": "build a Humanoid soccer walker with JERSEY visual mode and a specific walker_id and marker_rgba",
+    "add_visual_only_geoms": "add visual-only geoms like elbows and knees to a MuJoCo MJCF root to complement the JERSEY visual",
+    "get_marker_geoms": "get the sequence of marker geoms on a Humanoid walker that should be colored visually",
+    "apply_action_to_humanoid": "apply an action to a Humanoid walker physics state and update the stored previous action",
+    "initialize_humanoid_episode": "initialize a new episode for a Humanoid walker by resetting the previous action to zeros"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/soccer/humanoid_test.py": {
+    "test_humanoid_instantiation": "test the Humanoid class instantiation with various visual modes, RGBA colors, and walker IDs",
+    "test_invalid_walker_id": "test that Humanoid raises ValueError when given an invalid walker ID outside the valid range",
+    "run_humanoid_test_suite": "run the HumanoidTest parameterized test suite using absltest to validate Humanoid constructor behavior",
+    "review_humanoid_test": "review the HumanoidTest class to understand parameterized test coverage for Humanoid instantiation edge cases",
+    "refactor_humanoid_test": "refactor the HumanoidTest class to add additional parameterized test cases for new visual modes or walker IDs"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/soccer/loader_test.py": {
+    "test_soccer_env_load": "test loading a dm_control soccer environment with configurable team size and contact settings",
+    "test_soccer_action_specs": "test retrieving action specifications from a loaded dm_control soccer environment",
+    "test_soccer_env_step": "test stepping a soccer environment with random actions and logging rewards and observations",
+    "test_soccer_seed_reproducibility": "test that same random seed produces identical first observations in soccer environment",
+    "test_soccer_seed_divergence": "test that different random seeds produce different first observations in soccer environment"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/soccer/pitch.py": {
+    "build_Pitch_arena": "build a dm_control Pitch arena with configurable size, goals, walls, and field box for soccer simulation",
+    "create_Goal_position_detector": "create a Goal PositionDetector with goalposts and optional net meshes for detecting ball entry",
+    "build_RandomizedPitch_arena": "build a RandomizedPitch arena that randomizes pitch size between min and max bounds each episode",
+    "register_ball_with_pitch": "register a ball entity with the Pitch so goals and field box can detect collisions with it",
+    "summarize_pitch_constants": "summarize the mini-football dimension constants including goal size and area per humanoid ratios"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/soccer/pitch_test.py": {
+    "test_Pitch": "test the Pitch class to verify ball detection on court and off court scenarios",
+    "test_Pitch_detected_goal": "test the Pitch detected_goal method to verify home and away goal detection",
+    "test_Pitch_detected_off_court": "test the Pitch detected_off_court method to verify entities outside the pitch boundaries",
+    "test_RandomizedPitch": "test the RandomizedPitch class to verify randomized pitch sizes within min and max bounds",
+    "test_Pitch_register_ball": "test the Pitch register_ball method to attach a sphere entity as the ball"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/soccer/soccer_ball.py": {
+    "build_soccer_ball": "build a SoccerBall entity with custom radius, mass, friction, and damp_ratio parameters for MuJoCo simulation",
+    "create_regulation_soccer_ball": "create a FIFA regulation size 5 soccer ball using the regulation_soccer_ball factory function",
+    "register_player_with_ball": "register a player entity with the SoccerBall so it tracks ball-player contact events",
+    "review_SoccerBall_after_substep": "review the SoccerBall after_substep method that detects contacts between the ball and registered players",
+    "summarize_SoccerBall_properties": "summarize the SoccerBall hit, repossessed, intercepted, and dist_between_last_hits properties for contact tracking"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/soccer/soccer_ball_test.py": {
+    "test_soccer_ball_hit_detection": "test the SoccerBall hit detection by registering a player and stepping through the physics lifecycle",
+    "test_soccer_ball_tracking_cameras": "test that a SoccerBall entity has ball_cam_near, ball_cam, and ball_cam_far tracking cameras",
+    "test_soccer_ball_damp_ratio_validation": "test that creating a SoccerBall with a negative damp_ratio raises a ValueError",
+    "run_soccer_ball_test_suite": "run the SoccerBallTest absltest suite to verify hit detection, cameras, and damp ratio validation",
+    "review_soccerballtest_class": "review the SoccerBallTest class and its three test methods for coverage of the SoccerBall entity"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/soccer/task.py": {
+    "create_soccer_task": "create a soccer Task with players, arena, ball, initializer, and observables for multi-agent MuJoCo soccer",
+    "create_multiturn_task": "create a MultiturnTask for continuous soccer gameplay that resets after goals without terminating the episode",
+    "get_reward": "get per-player rewards where scoring team gets +1 and conceding team gets -1",
+    "disable_geom_contacts": "disable physical contacts between player walkers by setting contype to zero on all geoms",
+    "throw_in_ball": "throw the ball back into play by shrinking its position and resetting velocity when it goes off court"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/soccer/task_test.py": {
+    "test_soccer_task_environment": "test the soccer Task environment with parameterized team sizes and observables adders",
+    "test_soccer_scoring_rewards": "test scoring rewards for various team configurations by launching the ball toward goals",
+    "test_soccer_symmetric_observations": "test that symmetric walker configurations produce symmetric observations in the soccer task",
+    "test_uniform_initializer": "test the UniformInitializer for walker positions, rotations, and ball placement within bounds",
+    "test_multiturn_soccer_task": "test the MultiturnTask environment to verify multiple goals and cumulative rewards across turns"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/corridors.py": {
+    "create_RunThroughCorridor_task": "create a RunThroughCorridor task with a walker and arena to run a corridor locomotion experiment",
+    "initialize_episode_mjcf": "initialize the MJCF model for a corridor episode by regenerating the arena and setting camera bounds",
+    "initialize_episode": "initialize an episode by reinitializing the walker pose and computing non-foot geom IDs for contact detection",
+    "get_reward": "get the reward for a corridor episode based on the walker forward velocity relative to the target velocity",
+    "should_terminate_episode": "check if the corridor episode should terminate due to disallowed contact or end effector height failure"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/corridors_test.py": {
+    "test_walker_reinitialization": "test that a CMUHumanoid walker is correctly reinitialized with position offsets and rotation in a corridor task",
+    "test_termination_and_discount": "test that the RunThroughCorridor task correctly triggers failure termination and returns zero discount when the walker falls",
+    "run_corridor_task_tests": "run the parameterized absltest suite for corridor locomotion tasks including walker spawn position and rotation variations",
+    "review_CorridorsTest_class": "review the CorridorsTest class to understand how walker reinitialization and episode termination are validated in corridor tasks",
+    "test_initialize_episode": "test that initialize_episode resets walker joint positions and pose to upright after randomization in a corridor environment"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/escape.py": {
+    "create_escape_task": "create an Escape task with a CMUHumanoid walker and bowl-shaped arena for locomotion training",
+    "initialize_escape_episode": "initialize an escape episode by spawning the walker at a random non-contacting height",
+    "compute_escape_reward": "compute the escape reward based on walker distance from origin and upright posture",
+    "find_non_contacting_height": "find a safe spawn height for the walker by incrementing z until no physics contacts exist",
+    "compute_upright_reward": "compute an upright reward proportional to how aligned the walker torso is with the global z-axis"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/escape_test.py": {
+    "test_escape_observables": "test that the escape task environment exposes walker joints position in observations",
+    "test_escape_contact": "test that the escape task does not terminate on zero actions in the first few steps",
+    "run_escape_test_suite": "run the absltest suite for the dm_control escape locomotion task",
+    "review_escapetest_class": "review the EscapeTest class and its test_observables and test_contact test methods",
+    "summarize_escape_test": "summarize the escape task test file that validates observables and contact termination logic"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/go_to_target.py": {
+    "create_GoToTarget_task": "create a GoToTarget task with a walker and arena to navigate to a target position",
+    "build_GoToTarget_moving_target": "build a GoToTarget task with moving_target enabled so the target relocates after the walker reaches it",
+    "test_get_reward": "test the get_reward method to verify it returns 1.0 when the walker is within distance_tolerance of the target",
+    "review_after_step": "review the after_step method to understand how disallowed contacts trigger episode failure termination",
+    "summarize_GoToTarget_init": "summarize the GoToTarget constructor parameters including spawn positions, timesteps, and moving target configuration"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/go_to_target_test.py": {
+    "test_GoToTarget_observables": "test that the GoToTarget task exposes the walker/target observable in the environment timestep",
+    "test_GoToTarget_target_position_randomized": "test that GoToTarget randomizes the target position each time the environment is reset",
+    "test_GoToTarget_reward_fixed_target": "test that a fixed target GoToTask gives reward 1 when the walker reaches the target",
+    "test_GoToTarget_reward_moving_target": "test that a moving target GoToTask moves the target after steps_before_moving_target steps",
+    "test_GoToTarget_termination_and_discount": "test that GoToTarget triggers failure termination and zero discount when the walker falls over"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/random_goal_maze.py": {
+    "create_NullGoalMaze_task": "create a NullGoalMaze task with a walker and maze arena to navigate a random maze",
+    "build_RepeatSingleGoalMaze": "build a RepeatSingleGoalMaze task requiring an agent to repeatedly find the same goal in a maze",
+    "create_ManyHeterogeneousGoalsMaze": "create a ManyHeterogeneousGoalsMaze task with multiple goal types having different rewards and proportional distributions",
+    "build_ManyGoalsMaze": "build a ManyGoalsMaze task requiring an agent to find all goals placed in a random maze",
+    "create_RepeatSingleGoalMazeAugmentedWithTargets": "create a RepeatSingleGoalMazeAugmentedWithTargets task with a main goal and many lower-reward subtargets in a maze"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/random_goal_maze_test.py": {
+    "test_random_goal_maze_observables": "test that walker/joints_pos observable is present after resetting a ManyGoalsMaze environment",
+    "test_termination_and_discount": "test that an upside-down walker triggers failure termination with correct discount values",
+    "build_random_maze_arena": "build a RandomMazeWithTargets arena with configurable rooms, spawns, and target spheres",
+    "create_many_goals_maze_task": "create a ManyGoalsMaze task with a CMUHumanoid walker and target sphere builder",
+    "run_composer_environment_reset": "run a composer Environment reset and verify observation keys are populated"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/reach.py": {
+    "create_two_touch_task": "create a TwoTouch task instance with a walker, arena, and target builders for a reaching reward task",
+    "configure_touch_interval": "configure the TwoTouch task touch interval and interval tolerance parameters for timing control",
+    "initialize_episode_mjcf": "initialize the MJCF episode by attaching randomized targets to the arena for the TwoTouch task",
+    "get_reward_two_touch": "get the reward signal from the TwoTouch task based on hand proximity and touch state logic",
+    "define_two_touch_state_enum": "define a TwoTouchState enum with PRE_TOUCH, TOUCHED_ONCE, TOUCHED_TWICE, TOUCHED_TOO_SOON, and NO_SECOND_TOUCH states"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/reach_test.py": {
+    "test_reach_observables": "test the ReachTest class to verify walker joints_pos observable exists in the timestep observation",
+    "run_reach_test": "run the ReachTest test_observables method using absltest to validate the TwoTouch task setup",
+    "create_two_touch_task": "create a reach.TwoTouch task with a rodent.Rat walker and target sphere builders",
+    "build_composer_environment": "build a composer.Environment from a TwoTouch task with a fixed numpy random state",
+    "review_reach_test": "review the ReachTest class and test_observables method for dm_control locomotion reach task testing"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/reference_pose/mocap_playback.py": {
+    "run_mocap_playback": "run the mocap playback script to visualize motion capture data in the dm_control viewer",
+    "create_mocap_playback_env": "create a mocap playback environment with a CMU humanoid walker tracking motion capture reference data",
+    "launch_viewer_with_env": "launch the dm_control viewer with a persistent mocap playback environment loader",
+    "review_mocap_playback_env": "review the mocap_playback_env function to understand how it constructs the CMU humanoid tracking task",
+    "summarize_main": "summarize the main function that constructs a persistent environment and launches the viewer"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/reference_pose/rewards.py": {
+    "compute_bounded_quat_dist": "compute the bounded quaternion distance between source and target quaternions using bounded_quat_dist",
+    "compute_squared_differences": "compute squared differences between walker features and reference features using compute_squared_differences",
+    "run_termination_reward_fn": "run the termination reward function with a termination error and threshold using termination_reward_fn",
+    "run_multi_term_pose_reward_fn": "run the multi-term pose reward function with walker and reference features using multi_term_pose_reward_fn",
+    "run_comic_reward_fn": "run the CoMic reward function combining termination and multi-term pose rewards using comic_reward_fn"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/reference_pose/rewards_test.py": {
+    "test_compute_squared_differences": "test the rewards module compute_squared_differences function with walker and reference feature dictionaries",
+    "test_compute_squared_differences_exclude_keys": "test compute_squared_differences with exclude_keys parameter to omit specific feature keys from results",
+    "test_compute_squared_differences_quaternion": "test compute_squared_differences with quaternion features to verify bounded_quat_dist distance computation",
+    "run_rewards_unit_tests": "run the RewardsTest absltest suite to validate all reward computation functions",
+    "review_bounded_quat_dist_usage": "review how bounded_quat_dist is used in EXPECTED_DIFFERENCES to compute quaternion distance squared"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/reference_pose/tracking.py": {
+    "create_MultiClipMocapTracking_task": "create a MultiClipMocapTracking task to train a walker to track mocap clips from a dataset",
+    "build_ReferencePosesTask_subclass": "build a subclass of ReferencePosesTask to implement custom reference pose tracking logic for a new walker",
+    "create_PlaybackTask_visualization": "create a PlaybackTask to visualize mocap reference data by replaying clips on a walker",
+    "refactor_strip_reference_prefix": "refactor the _strip_reference_prefix utility to strip a given prefix from dictionary keys while preserving specified keep prefixes",
+    "review_get_all_reference_observations": "review the get_all_reference_observations method to understand how reference joints, body positions, and quaternions are computed for the walker"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/reference_pose/tracking_test.py": {
+    "test_MultiClipMocapTracking_initialization_and_step": "test MultiClipMocapTracking task initialization and stepping with termination_reward or comic reward types",
+    "test_MultiClipMocapTracking_clip_weights": "test MultiClipMocapTracking clip weight selection to verify correct clip is chosen on reset",
+    "test_MultiClipMocapTracking_task_validation": "test MultiClipMocapTracking task validation to ensure invalid ClipCollection arguments raise ValueError",
+    "test_MultiClipMocapTracking_prop_factory": "test MultiClipMocapTracking prop factory to verify prop observations exist and match expected dimensions",
+    "test_MultiClipMocapTracking_ghost_walker": "test MultiClipMocapTracking ghost walker to confirm ghost offset does not introduce additional actions"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/tasks/reference_pose/utils.py": {
+    "create_ghost_walker": "create a grey ghost reference walker in a MuJoCo arena with no contacts or actuators",
+    "extract_qpos_qvel": "extract full qpos and qvel arrays from a dictionary of logged walker features",
+    "set_walker_pose": "set a walker's freejoint and mocap joint positions and velocities in the physics model",
+    "set_props_pose": "set multiple prop positions and quaternions from a features dictionary with optional z offset",
+    "get_walker_features": "get a dictionary of walker features including position, quaternion, joints, velocity, and end effectors"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/ant.py": {
+    "build_ant_walker": "build an Ant quadruped walker entity from the dm_control MJCF XML model file",
+    "create_ant_observables": "create AntObservables to expose appendages_pos, bodies_quats, and bodies_pos sensor data",
+    "test_ant_aliveness": "test the Ant aliveness method which returns torso vertical orientation normalized to zero to one",
+    "refactor_ant_actuators": "refactor the Ant walker actuators property to return all MJCF actuator elements from the model",
+    "review_ant_proprioception": "review the AntObservables proprioception property combining joints, body height, end effectors, and world zaxis"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/ant_test.py": {
+    "test_ant_simulation_stepping": "test the Ant walker by compiling physics and stepping the simulation 100 times",
+    "test_ant_element_properties": "test the Ant walker egocentric_camera and root_body MJCF element properties",
+    "test_ant_tuple_properties": "test the Ant walker actuators, end_effectors, and observable_joints tuple properties",
+    "test_ant_set_name": "test setting a custom name on the Ant walker and verify mjcf_model.model",
+    "test_ant_observables": "test evaluating Ant walker appendages_pos and sensors_touch observables against physics"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/base.py": {
+    "create_WalkerPose": "create a WalkerPose namedtuple with joint positions, Cartesian displacement, and quaternion orientation",
+    "build_Walker_subclass": "build a Walker subclass that implements root_body and observable_joints abstract properties",
+    "transform_vec_to_egocentric_frame": "transform a world-frame vector into the walker's egocentric frame using physics",
+    "apply_action_to_actuators": "apply an action array to the walker's actuators via physics binding",
+    "collect_kinematic_sensors": "collect kinematic sensor observables including gyro, accelerometer, and framequat from walker attachments"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/base_test.py": {
+    "test_transform_vec_to_egocentric_frame": "test transform_vec_to_egocentric_frame to convert 3D and 2D world vectors into the walker egocentric frame",
+    "test_transform_xmat_to_egocentric_frame": "test transform_xmat_to_egocentric_frame to convert a 3x3 rotation matrix into the walker egocentric frame",
+    "run_FakeWalker": "run the FakeWalker test fixture to build a minimal MJCF walker model with a torso body",
+    "run_BaseWalkerTest": "run the BaseWalkerTest suite to validate egocentric frame transformation methods on a FakeWalker instance",
+    "review_FakeWalker": "review the FakeWalker class to understand how to subclass base.Walker with minimal required properties"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/cmu_humanoid.py": {
+    "build_CMUHumanoid": "build a CMU humanoid walker entity from the CMUHumanoid class using dm_control composer",
+    "build_CMUHumanoidPositionControlled": "build a position-controlled CMU humanoid with control range scaled to [-1, 1] using CMUHumanoidPositionControlled",
+    "build_CMUHumanoidPositionControlledV2020": "build a 2020 updated CMU humanoid walker with nose geometry and rescaled default dimensions",
+    "test_cmu_pose_to_actuation": "test the cmu_pose_to_actuation method to convert CMU mocap joint poses into actuator control signals",
+    "review_CMUHumanoidObservables": "review the CMUHumanoidObservables class and its proprioception observables including body_camera, head_height, and sensors_torque"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/cmu_humanoid_test.py": {
+    "test_CMUHumanoid_simulation": "test the CMUHumanoid walker by compiling the MJCF model and stepping the physics simulation 100 times",
+    "test_actuators_sorted_alphabetically": "test that all CMUHumanoid actuators are sorted alphabetically by name in the MJCF model",
+    "test_actuator_to_mocap_joint_mapping": "test the forward and inverse mapping between actuator indices and mocap joint indices",
+    "test_CMUHumanoidPositionControlled_actuators": "test that CMUHumanoidPositionControlled has correct general actuators with position control parameters matching expected values",
+    "test_cmu_pose_to_actuation": "test the cmu_pose_to_actuation method by converting a random CMU pose to normalized actuation values"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/fruitfly_v2.py": {
+    "build_fruitfly_walker": "build a FruitFly walker with configurable legs, wings, mouth, and antennae for MuJoCo simulation",
+    "create_fruitfly_observables": "create a FruitFlyObservables instance to access thorax height, gyro, accelerometer, and camera observables",
+    "apply_action_to_fruitfly": "apply an action vector to the FruitFly walker's actuators via apply_action method",
+    "get_fruitfly_action_spec": "get the BoundedArray action spec for the FruitFly walker's actuators and user actions",
+    "review_fruitfly_quaternion_utils": "review the neg_quat, mul_quat, rot_vec_quat, and change_body_frame quaternion utility functions"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/jumping_ball.py": {
+    "build_jumping_ball_walker": "build a JumpingBallWithHead walker with camera control and ear markers for egocentric vision",
+    "build_rolling_ball_walker": "build a RollingBallWithHead walker by extending JumpingBallWithHead and removing the kick actuator",
+    "create_root_joints": "create root slide joints along x, y, and z axes on an attachment frame",
+    "set_pose_quaternion": "set the walker pose using position and quaternion, extracting z-axis rotation for steering",
+    "initialize_episode_gravity_compensation": "initialize an episode with gravity compensation applied to the egocentric camera body"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/jumping_ball_test.py": {
+    "test_jumping_ball_simulation": "test the JumpingBallWithHead walker by compiling and stepping the physics simulation 100 times",
+    "test_jumping_ball_instantiation": "test instantiating JumpingBallWithHead with various camera_control, add_ears, and camera_height parameter combinations",
+    "test_jumping_ball_observables": "test evaluating JumpingBallWithHead observables like sensors_velocimeter and world_zaxis against physics state",
+    "test_jumping_ball_properties": "test that JumpingBallWithHead properties like actuators, end_effectors, and observable_joints return non-empty MJCF element tuples",
+    "test_jumping_ball_proprioception": "test that JumpingBallWithHead proprioception observables are all valid Observable instances"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/legacy_base.py": {
+    "review_Walker_class": "review the Walker legacy base class for DM Control locomotion robots and its abstract properties",
+    "review_WalkerObservables_class": "review the WalkerObservables class and its proprioception kinematic and dynamic sensor observable definitions",
+    "refactor_Walker_aliveness": "refactor the Walker aliveness method to return a custom alive or dead score for a robot",
+    "refactor_Walker_collect_contacts": "refactor the Walker collect_contacts method to filter or aggregate contact forces between geom pairs",
+    "summarize_WalkerObservables_observables": "summarize the WalkerObservables class observables including joints_vel body_height end_effectors_pos and sensor data"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/rescale.py": {
+    "rescale_humanoid_walker": "rescale a humanoid walker model by position factor, size factor, and optional mass",
+    "rescale_subtree_recursively": "recursively rescale an MJCF model subtree by position and size factors",
+    "adjust_walker_mass": "adjust a humanoid walker mass by scaling inertial and geometry mass properties",
+    "review_rescale_subtree": "review the rescale_subtree function to understand how it recursively scales MJCF body elements",
+    "summarize_rescale_humanoid": "summarize the rescale_humanoid function and how it scales walker lengths, sizes, and masses"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/rescale_test.py": {
+    "test_rescale_subtree": "test the rescale_subtree function by verifying endpoint positions before and after rescaling a three-link chain",
+    "run_RescaleTest": "run the RescaleTest test case to validate rescaling of MuJoCo body subtrees with position and size factors",
+    "review_RescaleTest_setUp": "review the RescaleTest setUp method that builds a three-link chain with capsule geoms and an endpoint site",
+    "summarize_rescale_test": "summarize the rescale_test module which tests rescaling of MuJoCo walker body subtrees using position and size factors",
+    "refactor_RescaleTest": "refactor the RescaleTest class to add additional test cases for edge cases in subtree rescaling"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/rodent.py": {
+    "build_rat_walker": "build a Rat walker instance with torque actuators and foot modifications enabled",
+    "create_rodent_observables": "create RodentObservables to observe head height, tendon positions, and actuator activation",
+    "test_rat_actuators": "test the Rat class actuators property to verify all joint and tendon actuators are returned",
+    "review_rat_upright_pose": "review the Rat upright_pose property to understand the default reset position and quaternion",
+    "refactor_rat_pose_to_actuation": "refactor the Rat pose_to_actuation method to convert joint poses to normalized actuator commands"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/rodent_test.py": {
+    "run_rat_corridor_simulation": "run a rat walker simulation in an empty corridor arena with physics stepping",
+    "test_rat_mjcf_elements": "test that rat walker element properties like head and root_body return mjcf Element instances",
+    "test_rat_element_tuples": "test that rat walker tuple properties like actuators and bodies return non-empty mjcf Element tuples",
+    "test_rat_observables": "test evaluating rat walker observables like tendons_pos and head_height against physics state",
+    "test_multi_rat_arena": "test creating two named rat walkers in a shared corridor arena and recompiling physics"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/scaled_actuators.py": {
+    "add_position_actuator": "add a scaled position actuator to a PyMJCF joint, tendon, or site with a given position range and control range",
+    "add_velocity_actuator": "add a scaled velocity actuator to a PyMJCF joint, tendon, or site with a given velocity range and control range",
+    "check_target_and_kwargs": "validate that a PyMJCF target element and keyword arguments are allowed before creating an actuator",
+    "review_add_position_actuator": "review the add_position_actuator function to understand how it computes affine gain and bias parameters for position control",
+    "review_add_velocity_actuator": "review the add_velocity_actuator function to understand how it computes affine gain and bias parameters for velocity control"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/scaled_actuators_test.py": {
+    "test_scaled_position_actuator": "test the scaled position actuator produces same torque as a standard actuator across random controls",
+    "test_scaled_velocity_actuator": "test the scaled velocity actuator produces same torque as a standard actuator across random controls",
+    "test_invalid_kwargs_error": "test that add_position_actuator raises TypeError when passed invalid keyword arguments like joint or ctrllimited",
+    "test_invalid_target_error": "test that add_position_actuator raises TypeError when passed a non-joint target like a worldbody element",
+    "run_scaled_actuators_tests": "run the absltest suite for scaled actuators to verify position and velocity actuator equivalence"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/assets/build_fruitfly/make_fruitfly.py": {
+    "build_fruitfly_mujoco_model": "run make_fruitfly.py to generate fruitfly.xml from drosophila base and fused XML models",
+    "change_body_frame": "change the frame of a MuJoCo body while maintaining child locations using change_body_frame",
+    "mul_quat": "multiply two quaternions together using mul_quat for 3D rotation composition",
+    "quat_to_mat": "convert a quaternion to a 3x3 rotation matrix using quat_to_mat",
+    "mat_to_quat": "convert a 3x3 rotation matrix back to a quaternion using mat_to_quat"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/assets/dog_v2/add_torque_actuators.py": {
+    "add_torque_motors_to_dog_model": "add torque motors to a MuJoCo dog model by creating fixed tendons and general actuators for spinal and limb joints",
+    "create_fixed_tendons_for_spinal_joints": "create fixed tendons that group lumbar, cervical, and caudal joints by extend, bend, and twist directions using inertia-weighted coefficients",
+    "build_general_actuators_for_tendons": "build general actuators for spinal tendons with gain values derived from default joint gain parameters and tendon coefficients",
+    "review_add_motors_function": "review the add_motors function to understand how it filters out spinal and root joints when creating actuated joint lists",
+    "summarize_dog_v2_actuator_setup": "summarize how the dog v2 model sets up torque actuators using fixed tendons for spinal regions and direct actuators for non-spinal joints"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/assets/dog_v2/build_back_legs.py": {
+    "create_back_legs": "create back legs for a dog model by adding hip, knee, ankle, and toe joints with collision geometry",
+    "build_dog_upper_legs": "build upper leg bodies with femur meshes, hip joints, and knee sites for left and right sides",
+    "build_dog_lower_legs": "build lower leg bodies with tibia and fibula meshes, knee joints, and ankle sites for both sides",
+    "build_dog_feet": "build foot bodies with tarsal bones, ankle joints, toe sites, and collision primitives for each side",
+    "build_dog_toes": "build toe bodies with phalange meshes, toe joints, sole sensor sites, and nail geometry for each side"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/assets/dog_v2/build_dog.py": {
+    "build_dog_model": "run build_dog.py to generate a MuJoCo dog.xml model from dog_base.xml with configurable spine DOFs",
+    "exclude_contacts": "exclude self-collision contact pairs between adjacent body parts in the MJCF dog model",
+    "create_torso": "build the dog torso, lumbar spine, and pelvis bodies with configurable degrees of freedom per vertebra",
+    "create_neck": "build the dog cervical spine, skull, and jaw attached to the torso body",
+    "create_back_legs": "build the dog hind legs with nails and sole sites attached to the pelvis body"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/assets/dog_v2/build_front_legs.py": {
+    "create_front_legs": "create front legs with scapula, upper arm, lower arm, hand, and finger bodies for a dog MJCF model",
+    "build_dog_front_leg_geometry": "build the front leg geometry including shoulder joints, elbow joints, wrist joints, and finger joints for the dog model",
+    "add_collision_geoms": "add collision primitive geoms to scapula, upper arm, ulna, and radius bones using physics binding",
+    "configure_joint_axes": "configure shoulder and elbow joint axes using primary_axis dictionary and side_sign for left and right sides",
+    "create_palm_sensor_sites": "create palm sensor sites on the finger bodies and return them as a list for contact sensing"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/assets/dog_v2/build_neck.py": {
+    "create_neck_for_dog_model": "create a neck and head with cervical vertebrae, skull, jaw, and collision geoms for a MuJoCo dog model",
+    "build_cervical_spine_joints": "build cervical spine joints with extend, bend, and twist DOFs between each pair of vertebrae",
+    "add_skull_and_jaw_geoms": "add skull and jaw body elements with teeth, eyes, iris, pupil, and collision primitives",
+    "generate_tooth_collision_ellipsoids": "generate ellipsoid collision geoms for upper and lower teeth based on physics-bound bone geometry",
+    "review_create_neck_function": "review the create_neck function to understand how it constructs the dog neck, skull, jaw, and collision geometry"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/assets/dog_v2/build_tail.py": {
+    "create_dog_tail": "create a tail with 21 caudal vertebrae bodies and joints for a MuJoCo dog model",
+    "build_caudal_joints": "build caudal spine joints with configurable degrees of freedom per vertebra in the dog model",
+    "add_collision_geoms": "add collision primitive geometries to each caudal vertebra bone in the dog tail",
+    "review_create_tail": "review the create_tail function that adds tail bodies, joints, and collision geoms to a dog model",
+    "summarize_create_tail": "summarize the create_tail function which builds a 21-vertebra tail with extend and bend joints"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/assets/dog_v2/build_torso.py": {
+    "create_dog_torso": "create a dog model torso with thoracic spine, ribs, sternum, and lumbar vertebrae using MJCF",
+    "build_lumbar_spine_joints": "build lumbar spine joints with configurable degrees of freedom per vertebra for extend, bend, and twist",
+    "add_pelvis_bones": "add pelvis bones including sacrum and pelvis with left and right collision primitives",
+    "configure_torso_collision": "configure ellipsoid and sphere collision primitives for the torso and lumbar vertebrae",
+    "compute_torso_com": "compute the center of mass position for the torso body and adjust geometry positions accordingly"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/assets/dog_v2/create_skin.py": {
+    "create_dog_skin": "create skin mesh and bone weights for a MuJoCo dog model from an MJCF model and skin mesh asset",
+    "generate_capsule_vertices": "generate capsule geometry vertices by combining hemisphere and cylinder vertex positions for a given radius and height",
+    "generate_ellipsoid_vertices": "generate ellipsoid geometry vertices by scaling a unit sphere vertex grid by the given size vector",
+    "generate_box_vertices": "generate box geometry vertices by sampling surface points across a given width, height, and depth",
+    "export_skin_binary": "export a MuJoCo skin asset to a binary .skn file with vertex positions, faces, texture coordinates, and bone weights"
+  },
+  "google-deepmind_dmcontrol/dm_control/locomotion/walkers/initializers/mocap.py": {
+    "create_CMUMocapInitializer": "create a CMUMocapInitializer to load CMU mocap trajectory data for walker pose initialization",
+    "initialize_pose_CMUMocapInitializer": "initialize a walker pose using CMU mocap data by setting joint positions and velocities",
+    "load_trajectory_CMUMocapInitializer": "load a CMU mocap trajectory from HDF5 data using a specified mocap key and version",
+    "review_CMUMocapInitializer": "review the CMUMocapInitializer class and its mocap-based walker initialization logic",
+    "summarize_CMUMocapInitializer": "summarize the CMUMocapInitializer class that initializes walkers using CMU motion capture dataset"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/bricks.py": {
+    "build_stack_task": "build a Stack task to train a robot arm to stack Duplo bricks in a target order",
+    "build_reassemble_task": "build a Reassemble task to train a robot arm to disassemble and reassemble bricks in a new order",
+    "create_stack_with_config": "create a Stack task with configurable num_bricks, moveable_base, and randomize_order parameters",
+    "create_reassemble_with_config": "create a Reassemble task with configurable randomize_initial_order and randomize_desired_order parameters",
+    "review_pairwise_stacking_rewards": "review the _get_pairwise_stacking_rewards function that computes coarse and fine tolerance reward components for brick pairs"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/explore.py": {
+    "run_manipulation_viewer": "run the dm_control manipulation viewer to interactively visualize a selected robot environment",
+    "run_prompt_environment_name": "run prompt_environment_name to interactively select a valid environment name from a list of options",
+    "run_main_entry": "run the main entry point to launch a manipulation environment viewer with an optional flag",
+    "review_prompt_environment_name": "review prompt_environment_name which loops until the user inputs a valid environment name from values",
+    "review_main": "review the main function that loads a manipulation environment and launches the viewer"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/lift.py": {
+    "create_Lift_task": "create a Lift task instance with an arena, arm, hand, prop, workspace, and control timestep",
+    "run_lift_brick_features": "run the lift brick features task using perfect feature observations and a duplo prop",
+    "run_lift_brick_vision": "run the lift brick vision task using camera observations and a duplo prop",
+    "run_lift_large_box_features": "run the lift large box features task using perfect feature observations and a box prop",
+    "run_lift_large_box_vision": "run the lift large box vision task using camera observations and a box prop"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/manipulation_test.py": {
+    "test_manipulation_tasks": "test all dm_control manipulation tasks run correctly with valid observations and rewards",
+    "validate_observation_spec": "validate an observation dictionary matches its observation spec keys and array constraints",
+    "validate_reward_range": "validate that a reward value is a float between 0 and 1",
+    "validate_discount_range": "validate that a discount value is a float between 0 and 1",
+    "run_manipulation_episode": "run a partial episode of a manipulation task with random actions within action spec bounds"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/place.py": {
+    "build_SphereCradle_entity": "build a concave sphere cradle entity with three spheres arranged in a circular pattern for prop placement",
+    "build_Pedestal_entity": "build a pedestal entity with a capsule pillar and attached cradle for elevating target props",
+    "create_Place_task": "create a Place task that configures a robot arm and hand to place a prop on a pedestal cradle",
+    "run_place_brick_features": "run the place brick features task using perfect feature observations with a duplo cradle prop",
+    "run_place_cradle_vision": "run the place cradle vision task using camera observations with a sphere cradle target"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/reach.py": {
+    "create_reach_task": "create a Reach task instance with an arena, arm, hand, prop, and workspace configuration",
+    "build_reach_duplo_features": "build a reach task using a Duplo prop target with perfect feature observations",
+    "build_reach_site_features": "build a reach task using a fixed site target with perfect feature observations",
+    "compute_reach_reward": "compute the tolerance-based reward from hand TCP position to target position distance",
+    "initialize_reach_episode": "initialize a reach episode by randomizing hand grasp, TCP position, and target placement"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/props/primitive.py": {
+    "create_sphere_prop": "create a Sphere prop with a custom radius and mass for MuJoCo simulation",
+    "create_box_prop": "create a Box prop with specified half lengths and mass for manipulation tasks",
+    "create_capsule_prop": "create a Capsule prop with custom radius and half length for physics simulation",
+    "create_box_with_sites": "create a BoxWithSites prop that adds corner sites for contact detection",
+    "review_primitive_observables": "review the PrimitiveObservables class to understand position, orientation, and velocity sensor observables"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/shared/arenas.py": {
+    "build_standard_arena": "build a dm_control Composer arena with skybox texture, checker ground plane, and directional lighting",
+    "build_arena_groundplane": "build an arena ground plane geometry with configurable friction, impedance, and reference parameters",
+    "attach_entity_with_offset": "attach an entity to the arena at a specified XYZ offset from the attachment site",
+    "review_standard_arena_build": "review the Standard arena _build method to understand skybox, ground texture, and lighting setup",
+    "refactor_attach_offset": "refactor the attach_offset method to support additional transform parameters beyond position"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/shared/cameras.py": {
+    "add_camera_observables": "add cameras to an entity's worldbody and configure MJCFCamera observables for them",
+    "create_camera_spec": "create a CameraSpec namedtuple with name, position, and xyaxes for custom camera configuration",
+    "use_front_close_camera": "use the FRONT_CLOSE CameraSpec preset for a close front-facing camera view",
+    "use_top_down_camera": "use the TOP_DOWN CameraSpec preset for a top-down bird's eye camera view",
+    "configure_multiple_cameras": "configure multiple CameraSpec presets like LEFT_CLOSE and RIGHT_CLOSE for side views"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/shared/observations.py": {
+    "make_options_from_settings": "construct a dict of configuration options for named observables using make_options with ObservationSettings and ObservableNames",
+    "create_ObservableSpec": "create an ObservableSpec namedtuple with enabled, update_interval, buffer_size, delay, aggregator, and corruptor fields",
+    "create_CameraObservableSpec": "create a CameraObservableSpec namedtuple with height, width, and all ObservableSpec fields for camera observables",
+    "create_ObservationSettings": "create an ObservationSettings namedtuple grouping ObservableSpecs by proprio, ftt, prop_pose, and camera categories",
+    "create_ObservableNames": "create an ObservableNames namedtuple grouping observable names by proprio, ftt, prop_pose, and camera categories"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/shared/registry.py": {
+    "add_task_constructor": "add a task constructor to the global manipulation environment registry using registry.add",
+    "get_constructor_by_name": "get a task constructor by name from the registry using get_constructor",
+    "get_all_task_names": "get all registered task constructor names using get_all_names",
+    "get_tags": "get all available tags from the manipulation environment registry using get_tags",
+    "get_names_by_tag": "get task constructor names filtered by tag using get_names_by_tag",
+    "done_importing_tasks": "call done_importing_tasks to allow overriding keys for hot-reloading task modules"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/shared/robots.py": {
+    "build_jaco_arm": "build a Kinova Jaco robot arm with manipulation-specific observation settings and defaults",
+    "build_jaco_hand": "build a Kinova Jaco robot hand with pinch site TCP and manipulation observation settings",
+    "create_arm_constructor": "create a robot arm constructor that wraps JacoArm with custom observable options",
+    "create_hand_constructor": "create a robot hand constructor that wraps JacoHand with pinch site as TCP enabled",
+    "review_arm_offset": "review the ARM_OFFSET constant that defines the default base position relative to origin"
+  },
+  "google-deepmind_dmcontrol/dm_control/manipulation/shared/workspaces.py": {
+    "add_bbox_site": "add a box-shaped site to an MJCF body for visualizing a bounding box with lower and upper bounds",
+    "add_target_site": "add a sphere-shaped site to an MJCF body for visualizing a target location with a given radius",
+    "create_BoundingBox": "create a BoundingBox namedtuple with lower and upper coordinate sequences for workspace bounds",
+    "use_uniform_z_rotation": "use the uniform_z_rotation distribution to sample random Z-axis quaternion rotations between negative and positive pi",
+    "use_DOWN_QUATERNION": "use the DOWN_QUATERNION constant to set a downward-facing orientation for a manipulator hand"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/attribute.py": {
+    "create_MJCF_attribute_subclass": "create a new MJCF attribute subclass by extending _Attribute and implementing the _assign method",
+    "build_Keyword_attribute": "build a Keyword attribute with valid_values to restrict an MJCF element to an enumerated set of options",
+    "create_Array_attribute": "create an Array attribute with a fixed length and dtype to store numeric MJCF element data",
+    "review_Identifier_attribute": "review the Identifier attribute class to understand how unique element names are managed in a NameScope",
+    "test_Reference_attribute": "test the Reference attribute to verify it correctly resolves references between MJCF elements by namespace"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/attribute_test.py": {
+    "test_MJCF_float_scalar_attribute": "test setting and validating float scalar attributes on dm_control MJCF elements with precision control",
+    "test_MJCF_int_and_string_attributes": "test integer and string scalar attribute assignment and XML serialization on MJCF elements",
+    "test_MJCF_float_array_attribute": "test float array attributes with dimension validation and precision-based XML string formatting",
+    "test_MJCF_keyword_and_identifier_attributes": "test keyword enum validation and identifier name scoping with duplicate detection on MJCF elements",
+    "test_MJCF_element_reference_and_file_attributes": "test element reference attributes with namespace validation and file asset hashing via SHA1"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/base.py": {
+    "find_MJCF_element_by_namespace": "find an MJCF element by namespace and identifier in the object tree",
+    "find_all_MJCF_elements": "find all MJCF elements of a given namespace in the model hierarchy",
+    "add_child_MJCF_element": "add a new child element with attributes to an MJCF parent element",
+    "generate_MJCF_xml_string": "generate a pretty-printed XML string from an MJCF element tree",
+    "compare_MJCF_elements": "check whether two MJCF elements are semantically equivalent using is_same_as"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/code_for_debugging_test.py": {
+    "make_valid_model": "create a valid MJCF model with a body, hinge joint, and velocity actuator",
+    "make_broken_model": "create an MJCF model with an invalid joint reference to test error handling",
+    "break_valid_model": "mutate a valid MJCF model by setting its actuator joint to an invalid reference",
+    "parse_line_refs": "parse the source file for LINE_REF markers and map them to SourceLine tuples",
+    "SourceLine": "review the SourceLine namedtuple that stores a line_number and text pair for debugging"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/copier.py": {
+    "create_copier_instance": "create a Copier instance from a source MJCF element to prepare for copying",
+    "copy_into_destination": "copy a source MJCF element tree into a destination element using Copier.copy_into",
+    "copy_with_override_attributes": "copy MJCF elements into a destination overriding all attributes with override_attributes=True",
+    "review_copier_class": "review the Copier class to understand how MJCF element copying and tracking works",
+    "summarize_copier_copy_into": "summarize the Copier.copy_into method which recursively copies MJCF child elements and returns newly created elements"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/copier_test.py": {
+    "test_include_copy_simple": "test include_copy to merge a mixin into an MJCF model and verify compiler attributes are copied",
+    "test_include_copy_with_references": "test include_copy to verify internal references like sensor site are updated to copied elements",
+    "test_include_copy_with_assets": "test include_copy to verify meshes textures and hfields are copied with preserved file references",
+    "test_include_copy_conflict_detection": "test include_copy raises ValueError when conflicting attribute values exist between model and mixin",
+    "test_include_copy_override_attributes": "test include_copy with override_attributes=True to force overwrite conflicting compiler attributes from a mixin"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/debugging.py": {
+    "enable_debug_mode": "enable PyMJCF debug mode to log stack traces when MJCF objects are modified",
+    "disable_debug_mode": "disable PyMJCF debug mode to stop logging stack traces during MJCF object modifications",
+    "get_current_stack_trace": "get the current execution stack trace truncated to before PyMJCF internal code",
+    "freeze_current_stack_trace": "use the freeze_current_stack_trace context manager to speed up bulk operations in debug mode",
+    "dump_full_debug_info_to_disk": "dump full debug information including XML and stack traces to a specified directory on disk"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/debugging_test.py": {
+    "test_debugging_stack_trace": "test that debugging.get_current_stack_trace returns the correct filename, function name, and source text",
+    "test_disable_debug_mode": "test that disabling debug mode prevents stack traces from being captured on MJCF elements",
+    "test_element_and_attribute_stacks": "test that element init stacks and attribute modification stacks are tracked correctly in debug mode",
+    "test_physics_error_message_in_debug_mode": "test that physics errors include source file and line references when debug mode is enabled",
+    "test_full_debug_dump": "test that full debug dump mode writes instrumented XML and element dump files to the dump directory"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/element.py": {
+    "create_mjcf_model": "create a RootElement to build a MuJoCo MJCF model programmatically with named components",
+    "attach_mjcf_model": "attach another MJCF model to a site or worldbody element to compose complex robots",
+    "find_mjcf_element": "find a deeply nested MJCF element by namespace and identifier without manual tree traversal",
+    "generate_mjcf_xml": "generate an XML string from an MJCF element tree with configurable precision and formatting",
+    "compare_mjcf_elements": "check whether two MJCF elements are semantically equivalent including attributes and children"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/element_test.py": {
+    "test_mjcf_element_properties": "test the dm_control mjcf element properties including tag, parent, root, and namescope attributes",
+    "test_mjcf_add_children": "test adding repeated and on-demand child elements to an mjcf model using the add method",
+    "test_mjcf_attach_detach": "test attaching and detaching submodels to a root mjcf model and verify merged children",
+    "test_mjcf_find_elements": "test finding elements by tag and name across attached submodels using the find method",
+    "test_mjcf_asset_handling": "test parsing mjcf models with assets from files, placeholders, and pre-loaded asset dictionaries"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/export_with_assets.py": {
+    "export_mjcf_model_with_assets": "export a MuJoCo MJCF model to XML format with all assets saved to a directory",
+    "export_model_to_custom_xml": "export an mjcf.RootElement to a custom named XML file in the specified output directory",
+    "export_model_with_precision": "export an MJCF model to XML with configurable floating point precision and zero threshold",
+    "save_mjcf_and_assets": "save an MJCF model and all its associated assets as files in a target directory",
+    "validate_xml_export": "validate that an MJCF model export filename ends with .xml before writing to disk"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/export_with_assets_as_zip.py": {
+    "export_mjcf_model_as_zip": "export a MuJoCo MJCF model and all its assets to a .zip file in a given output directory",
+    "export_mjcf_with_custom_name": "export an MJCF model to a zip file using a custom model name instead of the default",
+    "export_mjcf_with_precision": "export an MJCF model to a zip file with a custom floating point precision setting",
+    "export_mjcf_with_zero_threshold": "export an MJCF model to a zip file treating small floats below a threshold as zero",
+    "review_export_with_assets_as_zip": "review the export_with_assets_as_zip function to understand how it bundles MJCF models and assets into a zip"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/export_with_assets_as_zip_test.py": {
+    "test_export_mjcf_model_to_zip": "test exporting an MJCF model with assets to a zip file and validate contents",
+    "test_default_model_filename": "test that export_with_assets_as_zip uses the model name as the default zip filename",
+    "load_mjcf_from_xml_path": "load an MJCF model from an XML file path using mjcf.from_path",
+    "export_mjcf_with_assets_as_zip": "export an MJCF model and its assets to a named zip file in an output directory",
+    "verify_zip_contents_match_model": "verify a zip file contains the correct XML and asset files matching the MJCF model"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/export_with_assets_test.py": {
+    "test_export_with_assets": "test mjcf.export_with_assets to save an MJCF model and its assets to a directory",
+    "test_mjcf_from_path": "test mjcf.from_path to load a MuJoCo XML model file into an MJCF model object",
+    "test_to_xml_string": "test mjcf_model.to_xml_string to serialize an MJCF model into its XML string representation",
+    "test_get_assets": "test mjcf_model.get_assets to retrieve the model's assets dictionary for comparison or export",
+    "test_mjmodel_from_xml": "test wrapper.MjModel.from_xml_path and from_xml_string to construct MuJoCo models from exported XML"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/namescope.py": {
+    "create_NameScope": "create a NameScope instance to manage identifier scoping for an MJCF model with a given name",
+    "add_identifier_to_namespace": "add a new identifier to a specific namespace in the NameScope to register an MJCF object",
+    "remove_identifier_from_namespace": "remove an identifier from a namespace in the NameScope to unregister an MJCF object",
+    "get_full_prefix": "get the hierarchical prefix string for identifiers in a NameScope by traversing parent scopes",
+    "rename_identifier_in_namespace": "rename an identifier within a namespace in the NameScope by adding the new name and removing the old"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/parser.py": {
+    "parse_mjcf_from_xml_string": "parse an XML string into an MJCF object model using from_xml_string",
+    "parse_mjcf_from_file_handle": "parse an MJCF model from a Python file handle using from_file",
+    "parse_mjcf_from_file_path": "parse an MJCF model from a filesystem path using from_path",
+    "parse_mjcf_from_zip": "parse an MJCF model and assets from a zip file using from_zip",
+    "parse_mjcf_with_include": "parse an MJCF model that recursively resolves include tags and merges included XML files"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/physics.py": {
+    "create_physics_from_mjcf_model": "create a Physics instance from an mjcf.RootElement model using the from_mjcf_model class method",
+    "bind_mjcf_element_to_physics": "bind an mjcf element to a Physics instance to access its attributes like pos or qpos directly",
+    "reload_physics_from_mjcf_model": "reload an existing Physics instance from a new mjcf.RootElement model using reload_from_mjcf_model",
+    "access_bound_element_attributes": "access and modify MuJoCo data attributes of a bound element such as geom position or joint qpos",
+    "mark_physics_dirty_and_forward": "mark the Physics state as dirty after modifying values then call forward to recompute dynamics"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/physics_test.py": {
+    "test_physics_construct_and_reload": "test that mjcf Physics can be constructed from an MJCF model and reloaded to reset simulation time",
+    "test_physics_bind_elements_by_id": "test binding MJCF elements like geom or joint to their MuJoCo physics IDs by namespace",
+    "test_physics_attribute_access": "test reading and writing physics attributes like xpos or qpos through element bindings",
+    "test_physics_dirty_state": "test that modifying qpos marks physics as dirty and triggers automatic recalculation on next data access",
+    "test_physics_bind_mocap_body": "test binding mocap bodies to read and write mocap_pos and mocap_quat through physics bindings"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/schema.py": {
+    "parse_schema": "parse a MuJoCo MJCF schema XML file and return an ElementSpec for the root element",
+    "override_schema": "override the default MUJOCO schema with a custom schema XML file path",
+    "collect_namespaces": "collect all findable namespaces from a given ElementSpec and return them as a set",
+    "ElementSpec": "create an ElementSpec namedtuple with name, repeated, on_demand, identifier, namespace, attributes, and children fields",
+    "AttributeSpec": "create an AttributeSpec namedtuple with name, type, required, conflict_allowed, conflict_behavior, and other_kwargs fields"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/skin.py": {
+    "parse_mujoco_skin_file": "parse a MuJoCo skin file from bytes into a Skin namedtuple with vertices, texcoords, faces, and bones",
+    "serialize_skin_to_bytes": "serialize a Skin namedtuple into bytes representing a MuJoCo skin file for disk or network I/O",
+    "create_skin_namedtuple": "create a Skin namedtuple with vertices, texcoords, faces, and bones arrays for MuJoCo skin data",
+    "create_bone_namedtuple": "create a Bone namedtuple with body, bindpos, bindquat, vertex_ids, and vertex_weights for skin rigging",
+    "review_skin_parse_serialize": "review the parse and serialize functions for MuJoCo skin file binary format round-trip correctness"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/skin_test.py": {
+    "test_skin_parse_serialize_roundtrip": "test that skin.parse and skin.serialize round-trip a .skn file without data loss",
+    "review_FakeMJCFBody": "review the FakeMJCFBody mock class used as a body_getter for skin parsing tests",
+    "run_skin_test": "run the SkinTest test case to verify skin file parsing and serialization",
+    "test_skin_parse_with_body_getter": "test skin.parse by passing a FakeMJCFBody body_getter to resolve body identifiers",
+    "summarize_skin_test": "summarize the skin_test module which validates MuJoCo skin file parse and serialize round-trip"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/traversal_utils.py": {
+    "get_freejoint": "get the free joint of a MuJoCo body element or return None if absent",
+    "get_attachment_frame": "get the attachment frame of an MJCF model from its parent model",
+    "get_frame_freejoint": "get the free joint of an MJCF model attachment frame",
+    "get_frame_joints": "get all joints belonging to an MJCF model attachment frame",
+    "commit_defaults": "commit default attribute values from dclass hierarchy into a PyMJCF element"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/traversal_utils_test.py": {
+    "test_commit_defaults": "test the commit_defaults function to resolve root-level default attributes on MJCF geom elements",
+    "test_commit_defaults_partial": "test commit_defaults with a specific attributes list to resolve only selected default values",
+    "test_commit_defaults_hierarchy": "test commit_defaults across nested dclass hierarchies to verify inheritance of default geom and joint attributes",
+    "test_commit_defaults_actuator": "test commit_defaults on actuator elements like motor, position, and velocity to verify inherited forcelimited and forcerange",
+    "test_commit_defaults_childclass": "test commit_defaults with childclass inheritance to verify parent body childclass propagates to child geom elements"
+  },
+  "google-deepmind_dmcontrol/dm_control/mjcf/xml_validation_test.py": {
+    "validate_mjcf_xml_string": "validate an MJCF XML string by constructing a MuJoCo model from it",
+    "test_xml_attach": "test attaching MJCF objects like a robot arm and lego brick to an arena scene",
+    "test_xml_from_zip": "test parsing an MJCF model from a zip file and validating its XML",
+    "run_xml_validation_tests": "run the absltest suite to validate generated MJCF XML strings are valid",
+    "review_validate_function": "review the validate function that uses MjModel.from_xml_string and MjData for validation"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/engine.py": {
+    "load_mujoco_physics_from_xml": "load a MuJoCo physics model from an XML file path using Physics.from_xml_path",
+    "step_physics_simulation": "step the MuJoCo physics simulation forward by n steps using Physics.step",
+    "render_mujoco_camera_view": "render an RGB or depth image from a MuJoCo camera using Physics.render or Camera.render",
+    "get_physics_state": "get or set the full physics simulation state using Physics.get_state and Physics.set_state",
+    "create_action_spec": "create a BoundedArraySpec for MuJoCo actuator controls using the action_spec function"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/engine_test.py": {
+    "test_camera_indexing": "test camera indexing with integer, string, and unicode camera IDs in MuJoCo physics engine",
+    "test_depth_rendering": "test depth rendering to verify nearest and furthest pixel distances in orthographic camera view",
+    "test_segmentation_rendering": "test segmentation rendering to verify geom, site, and decor object type labels in rendered pixels",
+    "test_scene_callback": "test scene callback that programmatically adds a red box geom to an empty MuJoCo world before rendering",
+    "test_physics_state_management": "test setting and getting full physics state including plugin state for cable elasticity models"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/index.py": {
+    "build_named_indexer_for_mjdata": "build a named indexer for a MuJoCo mjdata struct to access fields like xpos by body name",
+    "build_named_indexer_for_mjmodel": "build a named indexer for a MuJoCo mjmodel struct to access fields like body_pos by body name",
+    "create_axis_indexers_from_model": "create axis indexers from a MuJoCo model mapping size names to RegularNamedAxis or RaggedNamedAxis instances",
+    "create_field_indexer_for_struct_field": "create a FieldIndexer for a specific struct field to enable named string-based indexing on numpy arrays",
+    "create_struct_indexer_container": "create an immutable StructIndexer container exposing FieldIndexer attributes for all dynamic array fields in a MuJoCo struct"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/index_test.py": {
+    "test_make_axis_indexers": "test make_axis_indexers to build axis indexers from a MuJoCo model",
+    "test_struct_indexer": "test struct_indexer to create field indexers for mjmodel or mjdata structs",
+    "test_named_indexing_read": "test named indexing on model and data fields using string keys like pole or slider",
+    "test_named_indexing_write": "test assignment via named indexing to write new values into MuJoCo data fields",
+    "test_iter_indexers": "test _iter_indexers to iterate all FieldIndexer pairs across model and data"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/math.py": {
+    "convert_euler_to_quaternion": "convert euler angles for roll pitch and yaw in degrees to a MuJoCo quaternion array",
+    "multiply_two_quaternions": "multiply two quaternion arrays together using the MuJoCo mjlib mju_mulQuat binding",
+    "compute_quaternion_velocity": "compute the 3D angular velocity vector from a quaternion and a time step dt",
+    "negate_quaternion": "negate a quaternion array using the MuJoCo mjlib mju_negQuat binding",
+    "compute_quaternion_difference": "compute the difference between a source and target quaternion by multiplying the negated source with the target"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/math_test.py": {
+    "test_quatprod": "test the mj_quatprod function that multiplies two quaternions and returns the product quaternion",
+    "test_quat2vel": "test the mj_quat2vel function that converts a quaternion and time step to angular velocity",
+    "test_quatneg": "test the mj_quatneg function that computes the negation of a given quaternion",
+    "test_quatdiff": "test the mj_quatdiff function that computes the difference between two quaternions",
+    "test_euler2quat": "test the euler2quat function that converts Euler angles to a quaternion representation"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/render_test.py": {
+    "test_render": "test rendering output by comparing rendered frames against expected images using image_utils sequences",
+    "test_render_multiple_physics_per_thread": "test rendering multiple physics environments like cartpole and humanoid concurrently on the same thread",
+    "test_repeatedly_create_and_destroy_rendering_contexts": "test repeated creation and destruction of rendering contexts to detect GL resource leakage",
+    "run_render_test": "run the RenderTest integration test suite for dm_control MuJoCo rendering with absltest",
+    "review_render_test": "review the RenderTest class and its parameterized rendering tests for tolerance and threading configuration"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/thread_safety_test.py": {
+    "test_load_physics_from_string": "test loading a MuJoCo Physics instance from an XML string in a threaded context",
+    "test_load_and_reload_physics_from_string": "test loading and reloading a Physics instance from an XML string across threads",
+    "test_load_and_step_physics": "test loading a Physics instance and stepping the simulation forward multiple times in a thread",
+    "test_load_and_step_multiple_physics_parallel": "test stepping two Physics instances in parallel within the same thread",
+    "test_load_physics_and_render": "test loading a Physics instance, setting controls, stepping, and rendering frames in a thread"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/testing/decorators.py": {
+    "test_run_threaded_decorator": "test a python method by running it repeatedly across multiple concurrent threads",
+    "create_threaded_test_decorator": "create a decorator that executes a test method concurrently in N threads with repeated calls",
+    "run_concurrent_test": "run a test method in parallel across 4 threads with 10 calls per thread",
+    "refactor_run_threaded": "refactor the run_threaded decorator to customize the number of threads and calls per thread",
+    "review_run_threaded": "review the run_threaded decorator that spawns threads and collects exceptions from test methods"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/testing/decorators_test.py": {
+    "test_run_threaded_decorator": "test the run_threaded decorator to verify it spawns the correct number of threads",
+    "test_threaded_calls_per_thread": "test the run_threaded decorator to verify each thread calls the method the specified number of times",
+    "test_run_threaded_main_thread": "test the run_threaded decorator with num_threads None to run in the main thread only",
+    "review_RunThreadedTest_class": "review the RunThreadedTest class and its three test methods for the run_threaded decorator",
+    "refactor_run_threaded_tests": "refactor the RunThreadedTest test methods to use fewer mock patches or add additional edge cases"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/testing/image_utils.py": {
+    "compute_rms": "compute the RMS difference between two numpy image arrays to measure pixel-level similarity",
+    "assert_images_close": "assert two rendered image arrays are within an RMS tolerance threshold for visual regression testing",
+    "save_images_on_failure": "decorate a test method to auto-save expected, actual, and difference PNGs on image comparison failure",
+    "ImagesNotCloseError": "raise a custom AssertionError with expected and actual image arrays when RMS exceeds tolerance",
+    "FrameSequence_iter_render": "iterate over newly rendered MuJoCo physics simulation frames as numpy arrays for each camera spec"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/testing/image_utils_test.py": {
+    "test_compute_rms": "test the compute_rms function to verify RMS difference between two image frames",
+    "test_assert_images_close": "test the assert_images_close function to verify two images are within tolerance",
+    "test_save_images_on_failure": "test the save_images_on_failure decorator to verify debugging images are saved on failure",
+    "test_images_not_close_error": "test the ImagesNotCloseError exception class to verify it carries expected and actual images",
+    "test_frame_sequence_iter_load": "test the _FrameSequence iter_load method to verify loading pre-rendered reference frames"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/wrapper/core.py": {
+    "create_MjModel_from_xml_string": "create an MjModel instance from an MJCF or URDF XML string with optional external assets",
+    "create_MjModel_from_xml_path": "create an MjModel instance by loading and compiling a model XML file from a file path",
+    "create_MjData_from_model": "create an MjData instance from an MjModel to hold dynamic simulation state and intermediate results",
+    "get_object_velocity": "get the 6D linear and angular velocity of a MuJoCo object by ID or name",
+    "get_contact_force": "get the contact force wrench as a 2x3 array of forces and torques for a given contact ID"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/wrapper/core_test.py": {
+    "test_MjModel_from_xml": "test loading a MuJoCo model from an XML file path using core.MjModel.from_xml_path",
+    "test_MjModel_from_xml_string": "test loading a MuJoCo model from an XML string using core.MjModel.from_xml_string with optional assets dict",
+    "test_MjData_creation": "test creating MjData simulation state from an MjModel and stepping with mujoco.mj_step",
+    "test_save_last_parsed_model_to_xml": "test saving the last parsed MuJoCo model to an XML file using core.save_last_parsed_model_to_xml",
+    "test_callback_context": "test setting and resetting MuJoCo callbacks using core.callback_context as a context manager"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/wrapper/mjbindings_test.py": {
+    "test_MjbindingsTest_testIndexDict": "test the MjbindingsTest class testIndexDict method to verify array_sizes metadata for mjdata and mjmodel fields",
+    "run_MjbindingsTest": "run the MjbindingsTest parameterized test suite using absltest to validate mjbindings sizes module",
+    "review_MjbindingsTest": "review the MjbindingsTest class and its parameterized test cases for MuJoCo struct field array size metadata",
+    "summarize_MjbindingsTest": "summarize the MjbindingsTest class which tests array_sizes dictionary lookups for mjdata and mjmodel fields",
+    "refactor_MjbindingsTest_testIndexDict": "refactor the testIndexDict method to add additional parameterized cases for new mjbindings struct fields"
+  },
+  "google-deepmind_dmcontrol/dm_control/mujoco/wrapper/util.py": {
+    "to_binary_string": "convert a text string to binary bytes using the default system encoding",
+    "to_native_string": "convert a binary or text string to the native string format using the default encoding",
+    "get_mjlib": "get the mujoco library module for use in MuJoCo physics simulation tasks",
+    "ndptr": "create a numpy ctypes ndpointer type that allows passing None as a NULL pointer",
+    "ENV_MJLIB_PATH": "review the MJLIB_PATH environment variable constant used to override the MuJoCo shared library path"
+  },
+  "google-deepmind_dmcontrol/dm_control/rl/control.py": {
+    "create_environment": "create a physics-based reinforcement learning Environment with a custom Physics and Task instance",
+    "step_environment": "step the Environment with an action array and return the resulting TimeStep",
+    "flatten_observation": "flatten multiple observation arrays into a single concatenated numpy array",
+    "compute_n_steps": "compute the number of physics timesteps per control timestep given both durations",
+    "reset_environment": "reset the Environment to start a new episode and return the first TimeStep"
+  },
+  "google-deepmind_dmcontrol/dm_control/rl/control_test.py": {
+    "test_control_environment": "test the dm_control Environment class by running EnvironmentTest with mocked physics and task",
+    "test_environment_timeout": "test the Environment timeout behavior with parameterized physics and control timestep values",
+    "test_compute_n_steps": "test the compute_n_steps function with parameterized control and physics timestep pairs",
+    "test_flatten_observations": "test the Environment flat_observation feature that concatenates multimodal observations into a single array",
+    "test_control_timestep": "test the Environment control_timestep calculation derived from physics timestep and n_sub_steps"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/acrobot.py": {
+    "create_acrobot_swingup_env": "create a dm_control Acrobot swingup environment with smooth reward and default time limit",
+    "create_acrobot_swingup_sparse_env": "create a dm_control Acrobot swingup environment with sparse indicator reward",
+    "run_physics_orientations": "run the Physics orientations method to get sines and cosines of pole angles",
+    "run_physics_to_target": "run the Physics to_target method to compute distance from the tip to the target site",
+    "review_balance_task": "review the Balance task class to understand sparse reward and episode initialization logic"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/ball_in_cup.py": {
+    "create_ball_in_cup_environment": "create a Ball-in-Cup control environment by calling catch with a custom time limit",
+    "get_model_and_assets": "get the MuJoCo model XML string and assets dict for the ball in cup domain",
+    "review_physics_ball_to_target": "review the Physics class ball_to_target method that returns the vector from ball to target",
+    "test_physics_in_target": "test the Physics in_target method to check if the ball is inside the target site",
+    "summarize_ballincup_task": "summarize the BallInCup task class including initialize_episode, get_observation, and get_reward methods"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/base.py": {
+    "create_Task_instance": "create a Task instance with a random seed for a dm_control continuous control task",
+    "get_action_spec": "get the BoundedArraySpec for physics actuators using the Task action_spec method",
+    "initialize_episode": "initialize a new episode by resetting geom colors via Task initialize_episode",
+    "set_actuator_control": "set actuator control signals by calling Task before_step with an action and physics",
+    "toggle_visualize_reward": "toggle reward visualization colors on a Task by setting the visualize_reward property"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/cartpole.py": {
+    "create_balance_task": "create a Cartpole Balance task environment with default 10 second time limit and smooth reward",
+    "create_balance_sparse_task": "create a Cartpole Balance task environment with sparse reward for benchmarking",
+    "create_swingup_task": "create a Cartpole Swing-Up task environment starting the pole pointing toward the ground",
+    "create_multi_pole_task": "create a Cartpole task environment with two or three poles for advanced balancing",
+    "generate_cartpole_model": "generate a MuJoCo XML model string for a cart with N poles using _make_model"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/cheetah.py": {
+    "run_cheetah_environment": "run the dm_control cheetah run task to create a MuJoCo running cheetah environment",
+    "get_model_and_assets": "get the cheetah MuJoCo model XML string and asset dictionary for loading",
+    "physics_speed": "get the horizontal speed of the cheetah from the Physics simulation object",
+    "cheetah_get_observation": "get an observation dict with position and velocity from the cheetah physics state",
+    "cheetah_get_reward": "get the running reward for the cheetah agent based on its current speed"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/dog.py": {
+    "create_stand_task": "create a dm_control dog stand task environment with upright posture reward",
+    "create_walk_task": "create a dm_control dog walk task environment with target walking speed",
+    "create_fetch_task": "create a dm_control dog fetch task environment to retrieve a thrown ball",
+    "customize_dog_model": "customize the dog MuJoCo model XML to set floor size and remove ball",
+    "get_dog_physics_observations": "get dog physics observations including joint angles, velocities, and sensor readings"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/explore.py": {
+    "run_dm_control_explorer": "run the dm_control suite explorer to interactively browse and visualize available reinforcement learning environments",
+    "run_explorer_with_environment": "run the dm_control explorer with a specific domain.task environment name via the environment_name flag",
+    "run_explorer_with_action_noise": "run the dm_control explorer with Gaussian action noise applied as a fraction of the action range",
+    "run_explorer_without_timeout": "run the dm_control explorer with episode time limits disabled by setting the timeout flag to false",
+    "run_explorer_with_reward_visualization": "run the dm_control explorer with reward visualization enabled to color geoms by current reward value"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/finger.py": {
+    "create_spin_environment": "create a dm_control Finger Spin environment to spin the stopped body using the spin function",
+    "create_turn_easy_environment": "create a dm_control Finger Turn easy environment with a large target radius using turn_easy",
+    "create_turn_hard_environment": "create a dm_control Finger Turn hard environment with a small target radius using turn_hard",
+    "review_physics_class": "review the Physics class methods for touch sensors, hinge velocity, tip position, and target distance",
+    "run_spin_task": "run the Spin task to get sparse reward when hinge velocity exceeds the spin threshold"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/fish.py": {
+    "create_fish_upright_environment": "create a dm_control fish upright environment to train an agent to keep the fish torso upright",
+    "create_fish_swim_environment": "create a dm_control fish swim environment to train an agent to swim toward a randomized target",
+    "review_Physics_class": "review the Physics class methods for upright, torso_velocity, joint_velocities, joint_angles, and mouth_to_target",
+    "review_Upright_task": "review the Upright task class including initialize_episode, get_observation, and get_reward methods",
+    "review_Swim_task": "review the Swim task class including initialize_episode, get_observation, and get_reward with target proximity reward"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/hopper.py": {
+    "create_hopper_stand_env": "create a Hopper stand environment that balances upright using dm_control suite",
+    "create_hopper_hop_env": "create a Hopper hop environment that hops forward using dm_control suite",
+    "get_model_and_assets": "get the Hopper MuJoCo model XML string and assets dictionary",
+    "review_Physics_class": "review the Physics class methods for height, speed, and touch sensor readings",
+    "review_Hopper_task_class": "review the Hopper task class for observation and reward logic"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/humanoid.py": {
+    "create_stand_task": "create a humanoid stand task environment with a 25 second time limit",
+    "create_walk_task": "create a humanoid walk task environment targeting 1 m/s horizontal speed",
+    "create_run_task": "create a humanoid run task environment targeting 10 m/s horizontal speed",
+    "run_pure_state_task": "run a humanoid task using pure MuJoCo state observations instead of egocentric features",
+    "review_Physics_class": "review the Physics class methods for torso upright, head height, and center of mass"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/humanoid_CMU.py": {
+    "create_stand_task": "create a dm_control environment for the CMU humanoid stand task with a 20 second time limit",
+    "create_walk_task": "create a dm_control environment for the CMU humanoid walk task targeting 1 m/s horizontal speed",
+    "create_run_task": "create a dm_control environment for the CMU humanoid run task targeting 10 m/s horizontal speed",
+    "review_Physics_class": "review the Physics class methods for head height, joint angles, and center of mass velocity",
+    "refactor_HumanoidCMU_reward": "refactor the HumanoidCMU get_reward method to customize standing, upright, and movement reward components"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/loader_test.py": {
+    "run_suite_load_without_kwargs": "run suite.load to create a cartpole swingup environment without any task kwargs",
+    "run_suite_load_with_kwargs": "run suite.load to create a cartpole swingup environment with custom time_limit and random kwargs",
+    "test_loader_load_without_kwargs": "test the LoaderTest.test_load_without_kwargs method to verify basic environment loading returns a control.Environment",
+    "test_loader_load_with_kwargs": "test the LoaderTest.test_load_with_kwargs method to verify environment loading with task_kwargs returns a control.Environment",
+    "test_loader_constants": "test the LoaderConstantsTest.testSuiteConstants method to verify BENCHMARKING, EASY, HARD, and EXTRA suite constants are non-empty"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/lqr.py": {
+    "create_lqr_2_1_environment": "create an LQR environment with 2 bodies and 1 actuated body using lqr_2_1",
+    "create_lqr_6_2_environment": "create an LQR environment with 6 bodies and 2 actuated bodies using lqr_6_2",
+    "build_lqr_model_xml": "build an MJCF XML model string for a spring-damper system using get_model_and_assets",
+    "run_lqr_episode": "run an LQR control episode by calling step on the environment returned by _make_lqr",
+    "review_lqrlevel_reward": "review the LQRLevel class get_reward method to understand the quadratic state and control cost calculation"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/lqr_solver.py": {
+    "solve_lqr_optimal_policy": "solve the discrete-time LQR problem and return the optimal value function Hessian, linear policy gain matrix, and convergence rate",
+    "compute_state_transition_matrix": "compute the state transition matrix a from the mass, stiffness, and damping matrices of a MuJoCo physics model",
+    "compute_control_transition_matrix": "compute the control transition matrix b from the mass matrix and number of controls in the environment",
+    "solve_discrete_algebraic_riccati": "solve the discrete algebraic Riccati equation using scipy to find the optimal cost-to-go Hessian matrix p",
+    "check_system_stability": "check if the controlled system is stable by verifying the maximum eigenvalue of the closed-loop matrix is less than 1.0"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/lqr_test.py": {
+    "test_lqr_optimal_policy": "test the LQR optimal policy for lqr_2_1 and lqr_6_2 environments using parameterized tests",
+    "run_lqr_solver": "run lqr_solver.solve on an LQR environment to get the P, K, and beta matrices",
+    "assert_policy_is_optimal": "assert an LQR policy is optimal by comparing analytical expected cost against measured total loss",
+    "create_lqr_test": "create a parameterized test case for LQR domains using absl.testing.parameterized.TestCase",
+    "review_lqr_test": "review the LqrTest class and its test_lqr_optimal_policy method for LQR domain validation"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/manipulator.py": {
+    "create_environment_bring_ball": "create a dm_control environment for the bring_ball manipulator task with ball prop",
+    "create_environment_bring_peg": "create a dm_control environment for the bring_peg manipulator task with peg prop",
+    "create_environment_insert_ball": "create a dm_control environment for the insert_ball manipulator task with ball and cup",
+    "create_environment_insert_peg": "create a dm_control environment for the insert_peg manipulator task with peg and slot",
+    "build_model_make_model": "build a MuJoCo XML model string and assets dict for the manipulator domain with peg or ball props"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/pendulum.py": {
+    "create_pendulum_swingup_environment": "create a pendulum swingup task environment with a configurable time limit and random seed",
+    "get_pendulum_observation": "get the pendulum observation dict containing pole orientation and angular velocity from physics state",
+    "compute_pendulum_reward": "compute the pendulum swingup reward using cosine tolerance on the pole vertical component",
+    "initialize_pendulum_episode": "initialize a pendulum episode by setting the hinge to a random angle between negative and positive pi",
+    "access_pendulum_physics": "access pendulum physics properties including pole vertical component, angular velocity, and pole orientation"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/point_mass.py": {
+    "create_easy_environment": "create a point_mass easy environment with a 20 second time limit and no randomized gains",
+    "create_hard_environment": "create a point_mass hard environment with randomized actuator gains for each episode",
+    "run_get_model_and_assets": "run get_model_and_assets to load the point_mass XML model and associated assets",
+    "review_Physics_mass_to_target": "review the Physics class mass_to_target method that returns the vector from mass to target",
+    "test_PointMass_get_reward": "test the PointMass get_reward method that computes smooth reward based on distance to target"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/quadruped.py": {
+    "create_walk_task": "create a quadruped walk task environment with a desired walking speed of 0.5 m/s",
+    "create_run_task": "create a quadruped run task environment with a desired running speed of 5 m/s",
+    "create_escape_task": "create a quadruped escape task environment where the agent must navigate out of a bowl-shaped terrain",
+    "create_fetch_task": "create a quadruped fetch task environment where the agent must push a ball to a target",
+    "build_quadruped_model": "build a MuJoCo XML model for the quadruped with configurable floor size, terrain, rangefinders, and walls"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/reacher.py": {
+    "create_reacher_easy_env": "create a reacher environment with easy target tolerance using the easy function",
+    "create_reacher_hard_env": "create a reacher environment with hard target tolerance using the hard function",
+    "get_model_and_assets": "get the reacher model XML string and assets dictionary for MuJoCo simulation",
+    "review_Physics_finger_to_target": "review the Physics class finger_to_target method that returns the vector from target to finger",
+    "review_Reacher_get_reward": "review the Reacher class get_reward method that computes tolerance-based reward for target distance"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/stacker.py": {
+    "create_stacker_environment_2_boxes": "create a dm_control stacker environment with 2 boxes using stack_2 function",
+    "create_stacker_environment_4_boxes": "create a dm_control stacker environment with 4 boxes using stack_4 function",
+    "build_mujoco_model_xml": "build a MuJoCo model XML string and assets for a given number of boxes using make_model",
+    "review_physics_class_methods": "review the Physics class bounded_joint_pos, joint_vel, body_2d_pose, touch, and site_distance methods",
+    "test_stack_task_observation_reward": "test the Stack task get_observation and get_reward methods for the stacking environment"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/suite_test.py": {
+    "create_uniform_random_policy": "create a uniform random policy that samples actions within the environment action spec bounds",
+    "run_step_environment": "run a policy through a dm_control environment for multiple episodes and yield each timestep",
+    "build_make_trajectory": "build a trajectory generator for a given domain and task using a fixed random seed",
+    "test_SuiteTest": "test all dm_control suite domains and tasks for observation specs, rewards, and determinism",
+    "review_assertCorrectColors": "review the reward visualization color blending logic for self, effector, and target materials"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/swimmer.py": {
+    "create_swimmer_environment": "create a swimmer control environment with a configurable number of links using the swimmer function",
+    "create_benchmark_swimmer6": "create a 6-link swimmer benchmarking environment using the swimmer6 function",
+    "create_benchmark_swimmer15": "create a 15-link swimmer benchmarking environment using the swimmer15 function",
+    "generate_swimmer_model_xml": "generate an MJCF XML model string for a swimmer with a given number of bodies using _make_model",
+    "get_swimmer_observation": "get an observation dict with joint angles, body velocities, and target vector from the Swimmer task"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/walker.py": {
+    "create_stand_task": "create a dm_control walker stand task environment with a 25 second time limit",
+    "create_walk_task": "create a dm_control walker walk task environment targeting 1 meter per second speed",
+    "create_run_task": "create a dm_control walker run task environment targeting 8 meters per second speed",
+    "review_Physics_class": "review the Physics class methods for torso height, upright angle, and horizontal velocity",
+    "refactor_PlanarWalker_reward": "refactor the PlanarWalker get_reward method to customize standing and movement reward weights"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/utils/parse_amc.py": {
+    "convert_amc_to_mujoco_qpos_qvel": "convert an .amc motion capture file into MuJoCo qpos and qvel arrays with resampled timesteps",
+    "parse_amc_file": "parse an .amc motion capture file and return a list of per-frame joint value arrays",
+    "create_amcvals2qpos_transformer": "create an Amcvals2qpos callable that converts a single .amc frame to MuJoCo qpos format",
+    "summarize_CMU_MOCAP_JOINT_ORDER": "summarize the CMU mocap joint order tuple listing all 61 joint names used in conversion",
+    "review_Converted_namedtuple": "review the Converted namedtuple structure with qpos, qvel, and time fields for mocap data"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/utils/parse_amc_test.py": {
+    "test_parse_amc_convert": "test parse_amc.convert to verify qpos and qvel tensor shapes from an AMC file",
+    "run_ParseAMCTest": "run the ParseAMCTest class to validate AMC file parsing produces correct dimensions",
+    "test_humanoid_CMU_stand": "test humanoid_CMU.stand environment instantiation for use with AMC motion capture data",
+    "review_parse_amc_convert_timestep": "review parse_amc.convert behavior when called with different control timestep values",
+    "summarize_ParseAMCTest": "summarize the ParseAMCTest class and its test_sizes_of_parsed_data test method"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/utils/randomizers.py": {
+    "randomize_joint_positions": "randomize the positions of hinge, slide, ball, and free joints in a MuJoCo physics body",
+    "generate_limited_quaternion": "generate a random quaternion limited to a specified rotation angle using axis-angle conversion",
+    "sample_bounded_joints": "sample bounded hinge and slider joints uniformly within their configured range limits",
+    "sample_unlimited_ball_joints": "sample quaternions for unlimited ball joints uniformly on the unit 3-sphere",
+    "review_randomization_rules": "review the randomization rules for hinge, slide, ball, and free joint types in MuJoCo physics models"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/utils/randomizers_test.py": {
+    "test_randomize_limited_and_rotational_joints": "test randomize_limited_and_rotational_joints to verify MuJoCo physics joint positions are randomized correctly",
+    "test_single_joint_of_each_type": "test randomization of free, hinge, slide, and ball joint types in a MuJoCo physics model",
+    "test_multiple_joints_of_same_type": "test that multiple hinge joints of the same type receive unique randomized values",
+    "test_unlimited_hinge_randomization_range": "test that unlimited hinge joint randomization stays within negative pi to positive pi",
+    "test_limited_ball_joint_are_respected": "test that limited ball joint randomization respects the configured range constraints"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/wrappers/action_noise.py": {
+    "create_action_noise_wrapper": "create a Wrapper instance that adds Gaussian noise to a dm_control environment's actions",
+    "wrap_env_with_noise": "wrap a control suite environment with the Wrapper class to inject action noise at a given scale",
+    "step_with_noisy_action": "call step on the Wrapper to execute an action with added Gaussian noise clipped to valid bounds",
+    "reset_wrapped_env": "call reset on the Wrapper to reset the underlying dm_control environment",
+    "review_Wrapper_class": "review the Wrapper class that adds Gaussian noise to actions and clips them to action_spec bounds"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/wrappers/action_noise_test.py": {
+    "test_action_noise_wrapper_step": "test the action noise wrapper step method with parameterized lower upper bounds and noise scale",
+    "test_action_clipping": "test that noisy actions are clipped to stay within the action spec bounds",
+    "test_error_non_finite_bounds": "test that the wrapper raises ValueError when action bounds contain inf or nan values",
+    "test_wrapper_reset": "test that the action noise wrapper correctly passes reset calls to the underlying environment",
+    "test_wrapper_attribute_passthrough": "test that the wrapper passes through task physics and control_timestep attributes to the underlying env"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/wrappers/action_scale.py": {
+    "create_action_scale_wrapper": "create a Wrapper instance that rescales environment actions to a custom minimum and maximum range",
+    "wrap_env_with_new_bounds": "wrap a dm_env Environment with new action bounds using the Wrapper constructor",
+    "step_with_scaled_action": "call step on the Wrapper to automatically transform and scale actions before forwarding to the environment",
+    "inspect_wrapped_action_spec": "call action_spec on the Wrapper to retrieve the rescaled BoundedArray with new minimum and maximum bounds",
+    "reset_wrapped_environment": "call reset on the Wrapper to delegate environment reset through to the underlying dm_env Environment"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/wrappers/action_scale_test.py": {
+    "test_action_scale_wrapper_step": "test the action_scale.Wrapper step method scales actions between minimum and maximum bounds correctly",
+    "test_action_scale_correct_spec": "test the action_scale.Wrapper returns an action_spec with the correct minimum and maximum bounds",
+    "test_action_scale_method_delegation": "test the action_scale.Wrapper delegates reset, observation_spec, and control_timestep to the underlying env",
+    "test_action_scale_invalid_spec_type": "test the action_scale.Wrapper raises ValueError when the action_spec is not a BoundedArray",
+    "test_action_scale_non_finite_bounds": "test the action_scale.Wrapper raises ValueError when minimum or maximum bounds contain NaN or infinity"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/wrappers/mujoco_profiling.py": {
+    "create_mujoco_profiling_wrapper": "create a Wrapper instance that wraps a dm_control environment and adds step timing profile data to observations",
+    "reset_wrapped_environment": "reset the wrapped environment and return a time step that includes the initial MuJoCo step timing observation",
+    "step_wrapped_environment": "step the wrapped environment with an action and return a time step augmented with cumulative step timing data",
+    "get_observation_spec": "get the extended observation spec that includes the original spec plus a step timing array with duration and call count",
+    "add_profile_observation": "add a MuJoCo step timing observation with duration and timer call count to a time step's observation dictionary"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/wrappers/mujoco_profiling_test.py": {
+    "test_MujocoProfilingTest_test_dict_observation": "test the MujocoProfilingTest class test_dict_observation method that validates the mujoco profiling wrapper adds an observation key",
+    "run_MujocoProfilingTest": "run the MujocoProfilingTest absltest suite to verify the mujoco profiling wrapper observation spec behavior",
+    "test_mujoco_profiling_Wrapper": "test the mujoco profiling Wrapper class by wrapping a cartpole swingup environment and checking observation keys",
+    "review_MujocoProfilingTest": "review the MujocoProfilingTest class and its test_dict_observation method for correctness",
+    "summarize_MujocoProfilingTest": "summarize the MujocoProfilingTest class which tests that the mujoco profiling wrapper adds a mjprofile observation key"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/wrappers/pixels.py": {
+    "create_pixel_wrapper": "create a Wrapper instance that adds pixel observations to a dm_control environment",
+    "create_pixels_only_wrapper": "create a Wrapper with pixels_only=True to discard state observations and return only pixels",
+    "create_mixed_observation_wrapper": "create a Wrapper with pixels_only=False to include both state and pixel observations",
+    "reset_pixel_env": "reset a pixel-wrapped environment and get the initial time step with rendered pixel observations",
+    "step_pixel_env": "step a pixel-wrapped environment with an action and get the next time step with pixels"
+  },
+  "google-deepmind_dmcontrol/dm_control/suite/wrappers/pixels_test.py": {
+    "test_pixels_wrapper_dict_observation": "test the pixels.Wrapper with dict observations using cartpole.swingup and render_kwargs for width and height",
+    "test_pixels_wrapper_array_observation": "test the pixels.Wrapper with single array observations using FakeArrayObservationEnvironment and pixels_only flag",
+    "create_fake_physics_render": "create a FakePhysics class with a render method returning a zero-filled uint8 numpy array",
+    "create_fake_array_observation_environment": "create a FakeArrayObservationEnvironment subclass of dm_env.Environment with reset, step, and observation_spec methods",
+    "run_pixels_test_suite": "run the PixelsTest parameterized test suite with absltest.main for both pixels_only True and False cases"
+  },
+  "google-deepmind_dmcontrol/dm_control/utils/containers.py": {
+    "create_tagged_tasks_container": "create a TaggedTasks container to store factory functions with associated tags",
+    "add_tagged_function": "use the TaggedTasks add decorator to register a factory function with multiple tags",
+    "query_tagged_functions": "query the TaggedTasks container to get all functions matching a set of tags",
+    "list_all_tags": "list all available tags registered in the TaggedTasks container",
+    "access_task_by_name": "access a registered factory function from TaggedTasks by its name using bracket notation"
+  },
+  "google-deepmind_dmcontrol/dm_control/utils/containers_test.py": {
+    "test_tagged_tasks_registration": "test TaggedTasks registration with the add decorator to register factory functions with tags",
+    "test_tagged_tasks_iteration_order": "test TaggedTasks iteration order to verify functions are returned in registration order",
+    "test_tagged_tasks_override_behavior": "test TaggedTasks override behavior by toggling allow_overriding_keys to prevent or allow duplicate keys",
+    "test_tagged_tasks_tag_query": "test TaggedTasks tagged method to query functions matching a set of tags via intersection",
+    "test_tagged_tasks_tags_list": "test TaggedTasks tags method to retrieve all unique tags across registered functions"
+  },
+  "google-deepmind_dmcontrol/dm_control/utils/inverse_kinematics.py": {
+    "compute_ik_for_site_position": "find joint positions that place a MuJoCo site at a target Cartesian position using inverse kinematics",
+    "compute_ik_for_site_orientation": "find joint positions that orient a MuJoCo site to a target quaternion using inverse kinematics",
+    "compute_ik_for_site_pose": "find joint positions satisfying both target position and orientation for a MuJoCo site using inverse kinematics",
+    "compute_ik_with_selected_joints": "compute inverse kinematics for a MuJoCo site by manipulating only a specified subset of joints",
+    "calculate_joint_velocities_via_nullspace": "calculate joint velocities to achieve an end-effector delta using the Jacobian transpose pseudoinverse or damped least squares method"
+  },
+  "google-deepmind_dmcontrol/dm_control/utils/inverse_kinematics_test.py": {
+    "test_qpos_from_site_pose": "test inverse kinematics to compute joint positions from a target site pose and quaternion",
+    "test_ball_joints_ik": "test inverse kinematics with ball joints having multiple degrees of freedom",
+    "test_joint_name_types": "test that inverse kinematics accepts None, list, tuple, or numpy array for joint names",
+    "test_disallowed_joint_types": "test that inverse kinematics raises ValueError for int, dict, or function joint name types",
+    "test_no_target_validation": "test that inverse kinematics raises ValueError when neither target_pos nor target_quat is provided"
+  },
+  "google-deepmind_dmcontrol/dm_control/utils/io.py": {
+    "read_file_contents": "create a python script that reads the full contents of a file using GetResource",
+    "get_resource_filename": "create a function that returns the filename string using GetResourceFilename",
+    "walk_directory_tree": "build a python script that walks a directory tree using WalkResources to list all files",
+    "open_file_handle": "create a python script that opens a file and returns a handle using GetResourceAsFile"
+  },
+  "google-deepmind_dmcontrol/dm_control/utils/rewards.py": {
+    "compute_tolerance_reward": "compute a soft indicator reward value between 0 and 1 for a value within specified bounds",
+    "evaluate_gaussian_sigmoid": "evaluate a gaussian sigmoid curve for values near zero using the _sigmoids helper function",
+    "compare_sigmoid_types": "compare output of gaussian, hyperbolic, long_tail, reciprocal, cosine, linear, quadratic, and tanh_squared sigmoids",
+    "test_tolerance_bounds": "test the tolerance function with various bounds and margin settings to verify correct reward computation",
+    "refactor_tolerance_sigmoid": "refactor the tolerance function to support a custom sigmoid type beyond the eight built-in options"
+  },
+  "google-deepmind_dmcontrol/dm_control/utils/rewards_test.py": {
+    "test_tolerance_sigmoid_parameterisation": "test the rewards.tolerance function with various margin and value_at_margin parameter combinations",
+    "test_tolerance_sigmoids": "test rewards.tolerance across all eight sigmoid types including gaussian, hyperbolic, cosine, and quadratic",
+    "test_tolerance_margin_loss_shape": "test rewards.tolerance margin loss shape by verifying expected output values for different x inputs",
+    "test_tolerance_vectorization": "test that rewards.tolerance correctly vectorizes over multi-dimensional numpy arrays preserving shape",
+    "test_tolerance_bounds": "test rewards.tolerance boundary conditions with exact targets, open intervals, and closed intervals"
+  },
+  "google-deepmind_dmcontrol/dm_control/utils/transformations.py": {
+    "euler_to_quat": "build a python module to convert XYZ euler angles to a quaternion using euler_to_quat",
+    "quat_to_euler": "build a python module to convert a quaternion to ZYX euler angles using quat_to_euler",
+    "quat_mul": "build a python module to compute the Hamilton product of two quaternions using quat_mul",
+    "quat_rotate": "build a python module to rotate a 3D vector by a quaternion using quat_rotate",
+    "axisangle_to_quat": "build a python module to convert an axis-angle representation to a quaternion using axisangle_to_quat"
+  },
+  "google-deepmind_dmcontrol/dm_control/utils/transformations_test.py": {
+    "test_quat_to_mat": "test the transformations module quat_to_mat function by converting quaternions to rotation matrices",
+    "test_mat_to_quat": "test the transformations module mat_to_quat function by converting rotation matrices to quaternions",
+    "test_quat_mul": "test the transformations module quat_mul function by multiplying quaternions and comparing to matrix multiplication",
+    "test_quat_rotate": "test the transformations module quat_rotate function by rotating vectors with quaternions against MuJoCo",
+    "test_axisangle_to_quat": "test the transformations module axisangle_to_quat function by converting axis-angle representations to quaternions"
+  },
+  "google-deepmind_dmcontrol/dm_control/utils/xml_tools.py": {
+    "parse_xml_file": "parse an XML file into an etree Element with blank text removed for pretty printing",
+    "find_element_by_tag_and_name": "find an XML element by its tag and name attribute within an etree root",
+    "create_nested_element": "create a deeply nested XML element structure by recursively appending copies of an element",
+    "review_find_element": "review the find_element function that locates XML elements using XPath queries by tag and name",
+    "summarize_parse": "summarize the parse function that reads XML files with a whitespace-removing parser"
+  },
+  "google-deepmind_dmcontrol/dm_control/utils/xml_tools_test.py": {
+    "test_nested_element": "test the xml_tools.nested_element function creates nested XML elements to a specified depth",
+    "test_parse_xml": "test the xml_tools.parse function reads XML from a file-like object and returns an etree element",
+    "test_find_element": "test the xml_tools.find_element function locates an XML element by tag and name attribute",
+    "test_find_element_raises": "test the xml_tools.find_element function raises ValueError when no matching element is found",
+    "test_tostring_pretty_print": "test the xml_tools.parse output can be pretty printed with etree.tostring"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/application.py": {
+    "launch_application": "launch a dm_control viewer application with an environment loader and optional policy",
+    "create_help_view": "create a Help view model that returns keyboard shortcut columns for the viewer",
+    "create_status_monitor": "create a Status model to monitor FPS, CPU time, camera, and pause state",
+    "restart_runtime": "restart the viewer runtime to reset the environment, model, and policy state",
+    "advance_simulation": "advance the simulation by a single step when the runtime is active"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/application_test.py": {
+    "test_Application_on_reload": "test the Application class _on_reload method defers viewer initialization until the next tick",
+    "test_Application_deferred_reload_params": "test the Application class deferred reload parameters update correctly when _on_reload is called multiple times",
+    "test_Application_tick_initialization": "test the Application _tick method executes deferred viewer initialization when a reload request is pending",
+    "test_Application_zoom_to_scene": "test the Application _perform_deferred_reload method calls zoom_to_scene when the reload params flag is true",
+    "test_Application_restart_runtime": "test the Application _restart_runtime method stops the runtime and reloads the environment"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/renderer.py": {
+    "create_offscreen_renderer": "create an OffScreenRenderer instance to render a MuJoCo model to an off-screen surface and retrieve pixel data",
+    "configure_scene_camera": "configure a SceneCamera to set freeloook, tracking, or fixed mode for navigating a MuJoCo scene",
+    "manipulate_body_perturbation": "create a Perturbation proxy to move or rotate a body in a MuJoCo simulation scene",
+    "toggle_render_settings": "use RenderSettings to toggle rendering flags, visualization options, geom groups, and stereo buffering modes",
+    "setup_viewport": "create a Viewport instance to manage render dimensions and convert screen coordinates to viewport coordinates"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/renderer_test.py": {
+    "test_BaseRenderer_component_rendering_order": "test that BaseRenderer renders regular components before screen capture components in order",
+    "test_OffScreenRenderer_context_and_buffer": "test OffScreenRenderer initializes mujoco context and resizes RGB buffer to viewport dimensions",
+    "test_Perturbation_start_tick_end_move": "test Perturbation start_move, tick_move, and end_move for translation and rotation operations",
+    "test_RenderSettings_toggle_and_cycle_modes": "test RenderSettings toggle rendering flags, cycle through frame and label modes",
+    "test_SceneCamera_modes_and_raycast": "test SceneCamera freelook tracking and fixed modes plus raycast to find body IDs"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/runtime.py": {
+    "create_runtime_with_environment": "create a Runtime instance with a dm_control environment and optional policy callable",
+    "run_simulation_tick": "run the simulation tick method to advance the environment by one frame",
+    "generate_default_action": "generate a default action from an action spec using midpoint or boundary values",
+    "restart_simulation_episode": "restart the simulation episode by resetting the environment model and data",
+    "query_runtime_state": "query the Runtime state machine to check if the simulation is running or stopped"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/runtime_test.py": {
+    "test_runtime_state_machine": "test the Runtime class state machine transitions between START, RUNNING, RESTARTING, and STOPPED states",
+    "test_runtime_single_step": "test the Runtime single_step method to verify it only executes when in the RUNNING state",
+    "test_runtime_step_simulation": "test the Runtime _step_simulation loop to verify correct step counts and episode finishing behavior",
+    "test_runtime_environment_interaction": "test the Runtime _start and _step methods for correct environment reset, policy calls, and physics tracking",
+    "test_get_default_action": "test the _get_default_action utility to generate default actions from BoundedArray specs with various interval types"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/user_input.py": {
+    "create_inputmap": "create an InputMap instance to bind keyboard and mouse events to callbacks",
+    "bind_key_callback": "bind a key combination to a callback function using InputMap bind method",
+    "bind_exclusive_action": "bind an Exclusive action that triggers a callback on key press and release",
+    "bind_plane_callback": "bind a callback to handle planar mouse movement via bind_plane method",
+    "bind_z_axis_callback": "bind a callback to handle mouse wheel scroll via bind_z_axis method"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/user_input_test.py": {
+    "test_inputmap_clear_bindings": "test the InputMap class clear_bindings method to reset all action and callback bindings",
+    "test_inputmap_bind_key": "test the InputMap bind method to register a callback for a specific key like KEY_UP",
+    "test_inputmap_bind_exclusive": "test the InputMap bind method with Exclusive wrapper to register an exclusive key callback",
+    "test_inputmap_bind_range": "test the InputMap bind method with Range to map multiple key-modifier combos to indexed callbacks",
+    "test_inputmap_mouse_handlers": "test the InputMap mouse move and scroll handlers to verify plane and z-axis callbacks fire correctly"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/util.py": {
+    "create_TimeMultiplier": "create a TimeMultiplier to control simulation speed relative to realtime with increase and decrease methods",
+    "create_Integrator": "create an Integrator to average a value over a specified refresh rate period in seconds",
+    "create_ErrorLogger": "create an ErrorLogger context manager that catches and logs environment errors to registered listeners",
+    "create_QuietSet": "create a QuietSet container that adds and removes items without raising errors on missing keys",
+    "create_AtomicAction": "create an AtomicAction with watermark-based begin and end methods to prevent interruptible operations"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/util_test.py": {
+    "test_QuietSet": "test the QuietSet class for adding and removing listeners with plus and minus operators",
+    "test_TimeMultiplier": "test the TimeMultiplier class for increasing and decreasing time multipliers within valid bounds",
+    "test_AtomicAction": "test the AtomicAction class for starting and ending actions without interruption from other actions",
+    "test_ObservableFlag": "test the ObservableFlag class for notifying listeners when the flag value is toggled",
+    "test_ErrorLogger": "test the ErrorLogger context manager for catching exceptions and notifying registered callbacks"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/viewer.py": {
+    "create_viewer_instance": "create a Viewer instance with a viewport, mouse, and keyboard to display a MuJoCo physics world",
+    "initialize_viewer_with_physics": "initialize the Viewer with a physics instance, renderer, and touchpad flag to bind input controls",
+    "render_viewer_scene": "render the current physics scene through the Viewer camera and renderer pipeline",
+    "cycle_camera_selector": "use CameraSelector to cycle between fixed scene cameras and free camera mode in the viewer",
+    "manipulate_object_with_controller": "use ManipulationController to select, translate, and rotate bodies in the MuJoCo scene via mouse input"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/viewer_test.py": {
+    "test_Viewer_initialization": "test the Viewer class initialization with physics and renderer components for mouse or touchpad input",
+    "test_Viewer_rendering": "test the Viewer render method to verify camera and renderer are called with perturbation data",
+    "test_CameraSelector_cycling": "test the CameraSelector class to cycle forward and backward through fixed and free-look camera modes",
+    "test_FreeCameraController_panning": "test the FreeCameraController vertical and horizontal panning, rotation, zoom, and body tracking actions",
+    "test_ManipulationController_selection": "test the ManipulationController to select bodies via raycast and drag them with vertical, horizontal, or rotate actions"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/views.py": {
+    "create_column_text_view": "create a ColumnTextView with a ColumnTextModel to render two-column text overlays in MuJoCo",
+    "render_mujoco_depth_buffer": "render the MuJoCo scene depth buffer as a subsampled RGB image in the viewport",
+    "add_view_to_layout": "add a BaseViewportView instance to a ViewportLayout at a specific PanelLocation",
+    "remove_view_from_layout": "remove a view from a ViewportLayout or clear all views using the clear method",
+    "define_panel_location": "define a PanelLocation enum value to position overlay views in the MuJoCo render window"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/views_test.py": {
+    "test_ColumnTextView_rendering": "test the ColumnTextView class rendering with empty and populated column data",
+    "test_MujocoDepthBuffer_resize": "test the MujocoDepthBuffer component updating its buffer size after viewport resize",
+    "test_MujocoDepthBuffer_depth_data": "test the MujocoDepthBuffer reading depth pixel data via mujoco mjr_readPixels",
+    "test_ViewportLayout_add_remove": "test the ViewportLayout adding and removing BaseViewportView components by panel location",
+    "test_ViewportLayout_render": "test the ViewportLayout rendering all registered views at their assigned panel locations"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/gui/base.py": {
+    "create_input_events_processor": "create an InputEventsProcessor instance to queue and process thread-safe input events",
+    "add_event_to_processor": "add a callable receiver with arguments to the InputEventsProcessor event queue",
+    "process_queued_events": "process all queued events in the InputEventsProcessor by invoking each receiver",
+    "create_double_click_detector": "create a DoubleClickDetector instance to detect mouse double click events",
+    "detect_double_click": "process a mouse button and action through the DoubleClickDetector to identify double clicks"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/gui/base_test.py": {
+    "test_double_click_detector": "test the DoubleClickDetector class to verify rapid clicks yield double click events",
+    "test_double_click_timing": "test the DoubleClickDetector process method to confirm slow clicks do not trigger double click",
+    "test_double_click_sequence": "test the DoubleClickDetector with a sequence of slow then fast clicks to verify correct detection",
+    "review_double_click_detector": "review the DoubleClickDetector class and its process method for double click detection logic",
+    "summarize_double_click_detector": "summarize the DoubleClickDetector class which detects mouse double click events within a time interval"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/gui/fullscreen_quad.py": {
+    "create_FullscreenQuadRenderer": "create a FullscreenQuadRenderer instance to initialize OpenGL geometry, texture, and shaders for fullscreen quad rendering",
+    "render_pixmap_on_fullscreen_quad": "render a numpy pixmap array onto a fullscreen quad with a given viewport shape using OpenGL",
+    "init_geometry_vertex_buffer": "initialize the fullscreen quad geometry by creating and binding an OpenGL vertex buffer with vertex positions and texture coordinates",
+    "init_texture_storage": "initialize OpenGL texture storage with nearest-neighbor filtering for mag and min filters",
+    "init_shaders_vertex_fragment": "compile and link a vertex shader and fragment shader program for rendering textured fullscreen quads"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/gui/glfw_gui.py": {
+    "create_glfw_window": "create a GlfwWindow instance with a given width, height, and title for rendering",
+    "run_event_loop": "run the GlfwWindow event loop with a tick function that renders each frame",
+    "toggle_fullscreen": "toggle the GlfwWindow between full-screen mode and its previous windowed size",
+    "handle_keyboard_input": "handle keyboard input events via GlfwKeyboard and register callbacks on the on_key observable",
+    "handle_mouse_input": "handle mouse input events via GlfwMouse including move, click, double click, and scroll"
+  },
+  "google-deepmind_dmcontrol/dm_control/viewer/gui/glfw_gui_test.py": {
+    "test_GlfwKeyboard_single_event": "test the GlfwKeyboard handler to process a single key press event with modifiers",
+    "test_GlfwKeyboard_sequence_events": "test the GlfwKeyboard handler to process a sequence of key press and release events",
+    "test_GlfwMouse_move": "test the GlfwMouse handler to track mouse position and calculate translation deltas",
+    "test_GlfwMouse_click": "test the GlfwMouse handler to process mouse button click events with modifiers",
+    "test_GlfwWindow_fullscreen": "test the GlfwWindow to enable fullscreen mode using video mode and window position"
+  }
+}

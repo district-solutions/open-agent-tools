@@ -1,0 +1,513 @@
+{
+  "google-deepmind_alphafold3/src/alphafold3/build_data.py": {
+    "build_intermediate_data": "build intermediate data by generating ccd.pickle and chemical_component_sets.pickle from components.cif",
+    "run_build_data": "run the build_data function to generate pickle files from the libcifpp components.cif file",
+    "generate_ccd_pickle": "generate a ccd.pickle file from components.cif using the ccd_pickle_gen module",
+    "generate_chemical_component_sets": "generate chemical_component_sets.pickle from the ccd data using chemical_component_sets_gen",
+    "locate_components_cif": "locate components.cif via LIBCIFPP_DATA_DIR env var or standard site packages path"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/common/base_config.py": {
+    "create_config_subclass": "create a subclass of BaseConfig to define a typed configuration dataclass with keyword-only fields",
+    "coerce_dict_to_config": "coerce a dictionary into a BaseConfig subclass instance by passing the dict as keyword arguments",
+    "use_autocreate_default": "use autocreate to set a field default that auto-constructs a nested config from its type",
+    "serialize_config_to_dict": "call as_dict on a BaseConfig instance to recursively serialize nested configs to a plain dictionary",
+    "strip_optional_type": "use _strip_optional to transform a type annotation of the form T | None into just T"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/common/folding_input.py": {
+    "load_input_from_json": "create a python module that loads an AlphaFold 3 Input from a JSON string using Input.from_json",
+    "load_input_from_mmcif": "create a python module that loads an AlphaFold 3 Input from an mmCIF string using Input.from_mmcif",
+    "serialize_input_to_json": "create a python module that serializes an AlphaFold 3 Input object to a JSON string using Input.to_json",
+    "convert_input_to_structure": "create a python module that converts an AlphaFold 3 Input to a Structure object using Input.to_structure",
+    "load_fold_inputs_from_dir": "create a python module that loads all fold inputs from JSON files in a directory using load_fold_inputs_from_dir"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/common/resources.py": {
+    "get_resource_filename": "get the absolute file path string for a named AlphaFold 3 resource relative to the data root",
+    "open_resource_file": "open a named AlphaFold 3 resource file in text or binary mode and return a file object",
+    "get_resource_directory": "get the path to a named AlphaFold 3 resource directory relative to the data root",
+    "walk_resource_tree": "walk the AlphaFold 3 resource directory tree and yield directory entries like os.walk",
+    "access_data_root": "access the AlphaFold 3 common data root path for locating bundled resources and data files"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/common/safe_pickle.py": {
+    "load_safe_pickle": "load pickle data from a binary file using the safe restricted unpickler that only allows built-in types",
+    "review_restricted_unpickler": "review the RestrictedUnpickler class that overrides find_class to block arbitrary object instantiation during unpickling",
+    "test_find_class_allowlist": "test the find_class method to ensure only allowed builtins like int, str, dict pass validation",
+    "summarize_allowed_builtins": "summarize the ALLOWED_BUILTINS frozenset that lists safe types like NoneType, bool, bytes, dict, float, int, str, tuple",
+    "refactor_load_function": "refactor the load function to accept a file path string instead of a binary file object"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/common/testing/data.py": {
+    "create_Data_instance": "create a Data instance with a test data directory path for accessing test fixtures",
+    "build_Data_path": "build a Data object and call path to resolve the absolute path to a test data file",
+    "test_Data_load_text": "test the Data class by loading a text file and verifying the returned string content",
+    "test_Data_load_binary": "test the Data class by loading a binary file in rb mode and checking bytes",
+    "refactor_Data_class": "refactor the Data class to support additional file modes or custom path resolution logic"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/constants/chemical_components.py": {
+    "create_Ccd_with_user_ccd": "create a Ccd instance with a custom user CCD string to override default chemical components",
+    "lookup_component_info": "lookup a chemical component by residue name using component_name_to_info and return its ComponentInfo",
+    "get_element_type_symbol": "get the element type symbol for a given residue and atom name using type_symbol",
+    "convert_mmcif_to_info": "convert an mmCIF mapping to a ComponentInfo dataclass using mmcif_to_info",
+    "iterate_ccd_entries": "iterate over all chemical component keys in a Ccd instance using its Mapping interface"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/constants/mmcif_names.py": {
+    "is_standard_polymer_type": "check if a given chain type string is a standard protein, DNA, or RNA polymer",
+    "guess_polymer_type": "guess whether a chain is protein, RNA, or DNA based on a list of residue names",
+    "fix_non_standard_polymer_res": "convert a non-standard residue name to the closest standard protein, RNA, or DNA residue name",
+    "review_mmcif_chain_constants": "review the mmCIF chain type constants like PROTEIN_CHAIN, DNA_CHAIN, and RNA_CHAIN for entity classification",
+    "review_mmcif_bond_constants": "review the mmCIF bond type constants like COVALENT_BOND, HYDROGEN_BOND, and DISULFIDE_BRIDGE"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/constants/residue_names.py": {
+    "convert_ccd_residue_to_one_letter": "use letters_three_to_one to convert a CCD residue name like CYS to its single letter code C",
+    "lookup_standard_protein_types": "reference PROTEIN_TYPES to get the tuple of 20 standard amino acid three-letter codes",
+    "map_one_letter_to_int": "use PROTEIN_TYPES_ONE_LETTER_TO_INT to convert a single letter amino acid code to its integer index",
+    "convert_one_to_three_letter": "use PROTEIN_COMMON_ONE_TO_THREE to map a single letter amino acid code to its three-letter CCD name",
+    "check_polymer_type_order": "use POLYMER_TYPES_ORDER to get the integer index of any protein or nucleic acid residue type"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/constants/converters/chemical_component_sets_gen.py": {
+    "run_chemical_component_sets_gen": "run the script to find ions and glycans in the CCD pickle and write results to a path",
+    "run_find_ions_and_glycans_in_ccd": "run find_ions_and_glycans_in_ccd on a CCD mapping to extract glycans and ions as frozensets",
+    "review_find_ions_and_glycans_in_ccd": "review find_ions_and_glycans_in_ccd to understand how it classifies saccharides and ions from CCD data",
+    "refactor_find_ions_and_glycans_in_ccd": "refactor find_ions_and_glycans_in_ccd to support additional chemical component categories beyond glycans and ions",
+    "summarize_main": "summarize the main function that loads CCD pickle, finds ions and glycans, and writes results"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/featurisation.py": {
+    "featurise_input": "featurise a folding input with MSA and templates into model-ready batches using the AlphaFold 3 pipeline",
+    "validate_fold_input": "validate that a folding input contains required unpaired MSA, paired MSA, and templates for each chain",
+    "run_featurisation_pipeline": "run the AlphaFold 3 featurisation pipeline on a folding input with configurable bucket sizes and MSA overlap resolution",
+    "process_folding_batches": "process a folding input into feature batches for each RNG seed using the WholePdbPipeline",
+    "configure_featurisation_options": "configure featurisation options including bucket sizes, conformer iterations, and reference date for chemical components"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/msa.py": {
+    "create_msa_from_a3m": "create an Msa object by parsing a single A3M string with optional max depth cropping",
+    "merge_multiple_msas": "merge multiple Msa objects into one deduplicated Msa using the from_multiple_msas class method",
+    "parse_multiple_a3ms": "parse multiple A3M strings into a single deduplicated Msa object using from_multiple_a3ms",
+    "featurize_msa": "featurize an Msa object to extract msa, deletion matrix, and species identifier numpy arrays",
+    "compute_msa_from_sequence": "compute an MSA for a target sequence using jackhmmer or nhmmer via get_msa with a run config"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/msa_config.py": {
+    "create_JackhmmerConfig": "create a JackhmmerConfig dataclass to configure a jackhmmer MSA search run with database and e-value settings",
+    "create_NhmmerConfig": "create an NhmmerConfig dataclass to configure an nhmmer RNA MSA search run with hmmbuild and hmmalign paths",
+    "create_RunConfig": "create a RunConfig dataclass to configure an MSA run with a tool config, chain poly type, and crop size",
+    "create_TemplateFilterConfig_no_op_filter": "create a TemplateFilterConfig using the no_op_filter classmethod to return a filter that keeps all template hits",
+    "create_TemplatesConfig": "create a TemplatesConfig dataclass to configure the template search pipeline with tool and filter settings"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/msa_features.py": {
+    "extract_msa_features_protein": "extract MSA features from protein sequences returning MSA and deletion count numpy arrays",
+    "extract_msa_features_rna": "extract MSA features from RNA sequences returning MSA and deletion count numpy arrays",
+    "extract_msa_features_dna": "extract MSA features from DNA sequences returning MSA and deletion count numpy arrays",
+    "extract_species_ids_uniprot": "extract species IDs from UniProtKB MSA description strings using regex pattern matching",
+    "review_msa_feature_mappings": "review the protein RNA and DNA residue to integer ID mapping dictionaries"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/msa_identifiers.py": {
+    "extract_species_id_from_msa_description": "extract the species identifier from a UniProtKB MSA sequence description string",
+    "parse_uniprot_sequence_identifier": "parse a UniProtKB sequence identifier string and return the species ID",
+    "create_identifiers_dataclass": "create an Identifiers dataclass instance with a species_id field for MSA data",
+    "extract_sequence_id_from_description": "extract the first token of an MSA description as a sequence identifier",
+    "review_get_identifiers": "review the get_identifiers function that computes MSA features from a description string"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/parsers.py": {
+    "parse_fasta_string": "parse a FASTA string and return sequences and descriptions as separate lists",
+    "lazy_parse_fasta_iterator": "lazily iterate over FASTA sequences yielding sequence and description tuples one at a time",
+    "convert_a3m_to_stockholm": "convert an A3M formatted MSA string into Stockholm format with optional sequence limit",
+    "convert_stockholm_to_a3m": "convert a Stockholm format MSA file into A3M format with configurable line width",
+    "review_parsers_module": "review the parsers module functions for FASTA, A3M, and Stockholm format conversion"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/pipeline.py": {
+    "run_DataPipeline_process": "run the DataPipeline process method to execute MSA and template search on all chains in a folding input",
+    "run_DataPipeline_process_protein_chain": "run the process_protein_chain method to get MSA and templates for a single protein chain",
+    "run_DataPipeline_process_rna_chain": "run the process_rna_chain method to get MSA for a single RNA chain using Nhmmer",
+    "create_DataPipelineConfig": "create a DataPipelineConfig with binary paths, database paths, and max template date for the AlphaFold data pipeline",
+    "run_get_protein_msa_and_templates": "run the cached _get_protein_msa_and_templates function to get unpaired MSA, paired MSA, and templates for a protein sequence"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/structure_stores.py": {
+    "create_StructureStore_from_directory": "create a StructureStore from a directory path to retrieve mmCIF files by target name",
+    "create_StructureStore_from_mapping": "create a StructureStore from a mapping of target names to mmCIF strings",
+    "create_StructureStore_from_tar": "create a StructureStore from a tar archive containing mmCIF files",
+    "get_mmcif_str": "get the mmCIF string for a given target name from the StructureStore",
+    "list_target_names": "list all target names available in the StructureStore"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/template_realign.py": {
+    "realign_hit_to_structure": "realign a PDB seqres hit sequence to the actual mmCIF structure sequence using query to hit mapping",
+    "remap_to_struc_seq": "remap the query to hit mapping to match the actual structure sequence with gap handling",
+    "handle_alignment_error": "handle AlignmentError exceptions when PDB seqres and mmCIF sequences cannot be aligned",
+    "review_realign_hit_to_structure": "review the realign_hit_to_structure function to understand how it remaps query residues to structure residues",
+    "summarize_template_realign": "summarize the template_realign module which realigns PDB seqres sequences to actual CIF structure sequences"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/templates.py": {
+    "create_templates_from_seq_and_a3m": "create Templates from a query sequence and MSA A3M by running hmmsearch against a PDB structure database",
+    "create_templates_from_hmmsearch_a3m": "create Templates from an existing hmmsearch A3M result string using a structure store to fetch PDB data",
+    "filter_template_hits": "filter template hits by release date cutoff, alignment ratio, hit length, and deduplicate sequences",
+    "featurize_templates": "featurize filtered template hits into stacked numpy arrays of atom positions, masks, sequences, and ligand features",
+    "run_hmmsearch_with_a3m": "run hmmsearch against a PDB database using an A3M MSA and return the A3M string of template hits"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/tools/hmmalign.py": {
+    "align_sequences_to_hmm_profile": "create a Hmmalign wrapper to align a list of raw sequences to an HMM profile and return A3M output",
+    "align_a3m_sequences_to_profile": "build a Hmmalign wrapper to align A3M formatted sequences to an HMM profile with optional extra flags",
+    "align_sequences_to_profile_with_gap_removal": "create a Hmmalign wrapper to align A3M sequences to a profile after stripping gaps and uppercasing insertions",
+    "convert_sequences_to_a3m_format": "build a function that converts a list of sequence strings into A3M format with numbered headers",
+    "initialize_hmmalign_wrapper": "create a Hmmalign instance by providing the path to the hmmalign binary and validating it exists"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/tools/hmmbuild.py": {
+    "build_hmm_profile_from_stockholm": "build an HMM profile from Stockholm format MSA using the Hmmbuild class",
+    "build_hmm_profile_from_a3m": "build an HMM profile from A3M format MSA by stripping inserted residues",
+    "initialize_hmmbuild_wrapper": "create an Hmmbuild wrapper instance with a binary path and optional singlemx flag",
+    "build_hmm_with_hand_model": "build an HMM profile using hand model construction for reference annotation",
+    "run_hmmbuild_binary": "run the hmmbuild binary via subprocess to generate HMM output from MSA input"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/tools/hmmsearch.py": {
+    "init_Hmmsearch": "initialize an Hmmsearch wrapper with binary paths, database path, and optional e-value filter flags",
+    "query_with_hmm": "query a sequence database using a prebuilt HMM profile string and return A3M results",
+    "query_with_a3m": "query a sequence database by first building an HMM from an A3M input string",
+    "query_with_sto": "query a sequence database by building an HMM from a Stockholm MSA with fast or hand model",
+    "review_Hmmsearch_class": "review the Hmmsearch class to understand how it wraps the hmmsearch binary for sequence database searches"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/tools/jackhmmer.py": {
+    "run_Jackhmmer_query": "run a Jackhmmer search against a protein database to find homologous sequences for a target sequence",
+    "build_Jackhmmer_with_sharded_db": "build a Jackhmmer instance configured to search a sharded database with parallel shard querying",
+    "create_Jackhmmer_msa_tool": "create a Jackhmmer MSA tool with custom e-value, filter thresholds, and max sequence limits",
+    "review_Jackhmmer_query_method": "review the Jackhmmer query method that handles both sharded and non-sharded database searches",
+    "summarize_merge_jackhmmer_results": "summarize the function that merges Jackhmmer results from multiple shards using e-value and bit score sorting"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/tools/msa_tool.py": {
+    "review_MsaToolResult": "review the MsaToolResult dataclass that stores target_sequence, e_value, a3m, and optional tblout fields",
+    "review_MsaTool": "review the MsaTool protocol interface that defines the query method for MSA tool implementations",
+    "create_MsaToolResult": "create an MsaToolResult instance with a target_sequence, e_value, and a3m string output",
+    "implement_MsaTool": "implement a class that conforms to the MsaTool protocol by defining a query method returning MsaToolResult",
+    "refactor_MsaTool": "refactor an existing MSA tool class to conform to the MsaTool protocol interface"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/tools/nhmmer.py": {
+    "run_nhmmer_query": "run an Nhmmer search against a nucleotide database to find homologous sequences for a target RNA or DNA query",
+    "build_nhmmer_with_sharded_db": "build an Nhmmer instance configured to search a sharded database with parallel thread execution and z-value scaling",
+    "query_nhmmer_single_db": "query a single unsharded nucleotide database using Nhmmer and return MSA results in A3M format",
+    "merge_nhmmer_results": "merge multiple Nhmmer shard results into a single MSA sorted by e-value and truncated to max sequences",
+    "review_nhmmer_alignment": "review the Nhmmer class to understand how it wraps the Nhmmer binary with hmmalign and hmmbuild for profile alignment"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/tools/rdkit_utils.py": {
+    "mol_from_ccd_cif": "create an RDKit Mol object from a CCD mmCIF data block with optional force parse and hydrogen removal",
+    "mol_to_ccd_cif": "build a CCD-like mmCIF data block from an RDKit Mol object with optional hydrogen inclusion",
+    "parse_atom_data": "parse atom names, types, charges, and leaving flags from an mmCIF molecule data block",
+    "parse_bond_data": "parse bond begin atoms, end atoms, bond types, and aromatic flags from an mmCIF molecule",
+    "get_random_conformer": "generate a random 3D conformer for an RDKit Mol using the ETKDGv3 stochastic embedding method"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/tools/shards.py": {
+    "parse_shard_spec": "parse a shard spec string like /path/to/file@20 into a ShardSpec dataclass",
+    "get_sharded_paths": "generate a list of sharded file paths from a spec like /path/to/file@20",
+    "create_ShardSpec": "create a frozen ShardSpec dataclass with prefix, num_shards, and suffix fields",
+    "review_parse_shard_spec": "review the parse_shard_spec function to understand regex-based shard spec parsing logic",
+    "test_get_sharded_paths": "test the get_sharded_paths function to verify it generates correct sharded file path lists"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/data/tools/subprocess_utils.py": {
+    "create_fasta_file": "create a FASTA file from a biological sequence string with configurable line width",
+    "check_binary_exists": "check if a binary executable exists at a given path and raise if missing",
+    "run_subprocess": "run a subprocess command with logging, timing, and error handling for external tools",
+    "check_jackhmmer_seq_limit": "check if a Jackhmmer binary supports the seq-limit flag before use",
+    "run_with_logging": "run a subprocess command with optional stdout and stderr logging to absl logs"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/jax/geometry/rigid_matrix_vector.py": {
+    "create_rigid3array_identity": "create an identity Rigid3Array transformation of a given shape using the identity class method",
+    "compose_rigid_transforms": "compose two Rigid3Array transformations together using the matmul operator to chain rotations and translations",
+    "apply_transform_to_point": "apply a Rigid3Array rigid transformation to a Vec3Array point and return the transformed point",
+    "construct_rigid_from_4x4": "construct a Rigid3Array from a homogeneous 4x4 transformation matrix using the from_array4x4 class method",
+    "align_points_rigid_transform": "construct a Rigid3Array that optimally aligns a set of source points to target points using from_point_alignment"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/jax/geometry/rotation_matrix.py": {
+    "create_Rot3Array_from_quaternion": "create a Rot3Array rotation matrix from w, x, y, z quaternion components with optional normalization",
+    "build_Rot3Array_from_svd": "build a Rot3Array rotation matrix by projecting an arbitrary 3x3 matrix using SVD decomposition",
+    "apply_Rot3Array_to_point": "apply a Rot3Array rotation to a Vec3Array point and return the transformed 3D coordinates",
+    "compose_Rot3Array_matmul": "compose two Rot3Array rotation matrices together using the matmul operator to chain rotations",
+    "create_Rot3Array_from_two_vectors": "create a Rot3Array rotation frame from two Vec3Array vectors where e0 aligns to the x-axis"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/jax/geometry/struct_of_array.py": {
+    "create_struct_of_array_dataclass": "create a frozen dataclass decorated with StructOfArray to represent nested struct of arrays with JAX pytree support",
+    "implement_getitem_indexing": "implement indexing on a StructOfArray instance to slice all array fields uniformly using get_item",
+    "validate_shapes_and_dtypes": "validate that all array fields in a StructOfArray instance have matching shapes and dtypes via post_init",
+    "flatten_pytree_node": "flatten a StructOfArray instance into flat arrays and metadata for JAX tree traversal using flatten",
+    "query_shape_and_dtype": "query the shape and dtype properties of a StructOfArray instance to inspect its array dimensions and data type"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/jax/geometry/utils.py": {
+    "unstack_jax_array": "split a JAX ndarray along an axis into a list of squeezed arrays",
+    "angdiff_angle_difference": "compute the wrapped absolute difference between two angle arrays in radians",
+    "weighted_mean_safe": "compute a NaN-safe weighted mean of a JAX array using weights and epsilon",
+    "review_unstack": "review the unstack function that splits and squeezes a JAX ndarray along a given axis",
+    "summarize_weighted_mean": "summarize the weighted_mean function that computes a safe weighted average with epsilon regularization"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/jax/geometry/vector.py": {
+    "create_vec3array_zeros": "create a Vec3Array of zeros with a given shape using the zeros class method",
+    "compute_cross_product": "compute the cross product between two Vec3Array instances using the cross method",
+    "compute_dot_product": "compute the dot product between two Vec3Array instances using the dot method",
+    "compute_euclidean_distance": "compute the euclidean distance between two Vec3Array instances using the euclidean_distance function",
+    "compute_dihedral_angle": "compute the dihedral angle between four Vec3Array points using the dihedral_angle function"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/confidence_types.py": {
+    "create_ConfidenceCategory_from_score": "create a ConfidenceCategory enum from a numeric confidence score between 0 and 100",
+    "convert_ConfidenceCategory_to_char": "convert a ConfidenceCategory enum value to its single character representation H M L or D",
+    "build_AtomConfidence_from_inference": "build an AtomConfidence dataclass from an AlphaFold InferenceResult with per atom pLDDT scores",
+    "serialize_StructureConfidenceSummary_to_json": "serialize a StructureConfidenceSummary dataclass to a JSON string with rounded float values",
+    "serialize_StructureConfidenceFull_to_json": "serialize a StructureConfidenceFull dataclass to JSON using the custom StructureConfidenceFullEncoder"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/confidences.py": {
+    "compute_rasa": "compute windowed relative solvent accessible area from a CIF string using the AlphaFold-RSA method",
+    "compute_fraction_disordered": "compute the fraction of disordered protein residues in a Structure using rASA metrics",
+    "detect_clashes": "detect whether a protein structure has clashing chains by checking atom-atom distances below a cutoff radius",
+    "compute_ranking_score": "compute a combined ranking score from pTM, ipTM, fraction disordered, and clash penalty metrics",
+    "compute_predicted_tm_score": "compute the predicted TM alignment or interface TM alignment score from tm_adjusted_pae and pair mask"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/data3.py": {
+    "compute_msa_profile_and_deletion_mean": "compute the MSA profile and deletion mean features from an MSA array and deletion matrix",
+    "convert_template_features_to_alphafold3_format": "convert template features from atom37 format to the dense atom format used by AlphaFold 3",
+    "create_empty_template_features": "create fully masked empty template features with zeros for a given number of residues",
+    "parse_isoformat_date_to_timestamp": "parse an ISO format date string and convert it to a UTC Unix timestamp",
+    "review_data3_module": "review the data3 module functions for computing protein features from parsed mmCIF objects"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/feat_batch.py": {
+    "create_batch_from_dict": "create a Batch object from a BatchDict using the from_data_dict class method",
+    "convert_batch_to_dict": "convert a Batch object back to a BatchDict using the as_data_dict method",
+    "get_num_residues": "get the number of residues from a Batch object using the num_res property",
+    "review_batch_dataclass": "review the Batch frozen dataclass containing MSA, templates, token features, and structure info fields",
+    "register_batch_for_jax": "register the Batch dataclass with JAX tree_util for pytree serialization and transformation"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/features.py": {
+    "compute_msa_features": "compute MSA features from token layouts with paired and unpaired sequence alignments for each chain",
+    "compute_template_features": "compute template features from PDB structures including atom positions and masks for protein chains",
+    "compute_token_features": "compute per-token features including residue index, aatype, chain symmetry IDs, and token type boolean masks",
+    "tokenize_atom_layout": "map a flat atom layout to evoformer tokens with one representative atom per polymer residue or ligand atom",
+    "compute_reference_structure": "compute reference structure features from CCD entries or SMILES strings using RDKit conformer generation"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/merging_features.py": {
+    "merge_msa_features_across_chains": "merge MSA features with shape NUM_SEQ NUM_RES across multiple protein chains by concatenating along axis 1",
+    "merge_paired_and_unpaired_msa": "concatenate paired all_seq MSA features with unpaired ones and update the num_alignments count in the example dict",
+    "pad_features_to_max": "pad a set of MSA features to the maximum size amongst all chains along a specified axis using constant pad values",
+    "review_merge_msa_features": "review the merge_msa_features function to understand how it handles all_seq versus regular MSA feature concatenation",
+    "summarize_merging_features_module": "summarize the merging_features module which provides methods for merging MSA features across chains and combining paired with unpaired MSA"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/mmcif_metadata.py": {
+    "add_metadata_to_mmcif": "add ModelCIF-conformant metadata including authors, citations, and pLDDT metrics to an mmCIF structure object",
+    "add_legal_comment": "add a legal terms of use comment block to the top of an mmCIF string",
+    "review_add_metadata_to_mmcif": "review the add_metadata_to_mmcif function to understand how it computes global and per-residue pLDDT values",
+    "review_add_legal_comment": "review the add_legal_comment function to understand how it prepends license terms to mmCIF output",
+    "summarize_mmcif_metadata_module": "summarize the mmCIF metadata module that adds ModelCIF conformance data and legal disclaimers to AlphaFold 3 output"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/model.py": {
+    "run_AlphaFold3_model_inference": "run the AlphaFold3 Model class forward pass on a data batch to get diffusion samples and confidence outputs",
+    "create_predicted_structure": "create a predicted protein structure from model output results and a feature batch using get_predicted_structure",
+    "compute_inference_result": "compute the full InferenceResult with pTM, ipTM, PAE metrics, and ranking scores from model output via get_inference_result",
+    "create_target_feat_embedding": "create a target feature embedding with atom cross-attention conditioning for the Evoformer module",
+    "compute_ptm_iptm": "compute pTM and ipTM confidence scores from PAE outputs using _compute_ptm with interface flag"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/msa_pairing.py": {
+    "create_paired_features": "create paired MSA features by aligning sequences across chains based on species identifiers",
+    "deduplicate_unpaired_sequences": "deduplicate unpaired MSA sequences by removing rows that already exist in the paired MSA",
+    "choose_paired_unpaired_msa_crop_sizes": "choose the crop sizes for paired and unpaired MSA arrays given a total size limit",
+    "remove_all_gapped_rows_from_all_seqs": "remove all-gapped rows from all_seq MSA features based on selected asymmetric chain IDs",
+    "align_species": "align MSA row indices across chains so sequences from the same species end up on the same row"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/params.py": {
+    "get_model_haiku_params": "get the Haiku model parameters from a directory containing AlphaFold 3 model weight files",
+    "encode_record": "encode a single Haiku parameter as bytes with scope, name, and numpy array data",
+    "read_records": "read all encoded parameter records from a byte stream and yield scope, name, and array tuples",
+    "select_model_files": "select and return model weight files from a directory matching .bin or .bin.zst patterns",
+    "open_for_reading": "open multiple model files as a single concatenated stream with optional zstandard decompression"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/post_processing.py": {
+    "post_process_inference_result": "post process an AlphaFold inference result to extract CIF data, confidence scores, and ranking metrics",
+    "write_output": "write an AlphaFold inference result to a directory as CIF and JSON confidence files with optional compression",
+    "write_embeddings": "write a dictionary of numpy embedding arrays to a compressed NPZ file in the output directory",
+    "ProcessedInferenceResult": "review the ProcessedInferenceResult dataclass that stores CIF bytes, mean confidence, ranking score, and model ID",
+    "summarize_post_processing": "summarize the AlphaFold post processing module that converts inference results into CIF and JSON output files"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/atom_layout/atom_layout.py": {
+    "make_flat_atom_layout": "create a flat AtomLayout from a Residues object using CCD chemical component data and bond information",
+    "compute_gather_idxs": "compute gather indices and mask to convert atom data from a source layout to a target layout",
+    "convert": "convert a numpy or jax array from one atom layout to another using GatherInfo indices",
+    "make_structure": "build a Structure object from a flat AtomLayout and atom coordinate arrays with optional B-factors",
+    "residues_from_structure": "extract a Residues object with terminus and deprotonation info from a Structure including missing residues"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/components/haiku_modules.py": {
+    "create_layer_norm_module": "create a LayerNorm module with upcast support for bfloat16 inputs in a Haiku neural network",
+    "build_linear_layer": "build a custom Linear module with configurable initializer and einsum-based matrix multiplication for arbitrary rank inputs",
+    "get_linear_params": "get weight and bias parameters for a linear layer using haiku_linear_get_params with specified output channels",
+    "review_get_initializer_scale": "review the _get_initializer_scale function to understand fan-in scaling and truncated normal weight initialization logic",
+    "test_layer_norm_upcast": "test the LayerNorm class upcast behavior to verify bfloat16 inputs are cast to float32 before normalization"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/components/mapping.py": {
+    "build_sharded_map": "build a python module using sharded_map to apply a function over shards with configurable shard_size and in_axes",
+    "build_sharded_apply": "build a python module using sharded_apply to process JAX arrays in memory-efficient shards with custom shard_size",
+    "build_inference_subbatch": "build a python module using inference_subbatch to run a Haiku module over subbatches with split and concat",
+    "review_sharded_map": "review the sharded_map function to understand how it trades off memory usage versus throughput using hk.vmap",
+    "review_sharded_apply": "review the sharded_apply function to understand how it slices inputs, scans shards, and stacks outputs"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/components/utils.py": {
+    "remove_invalidly_typed_feats": "create a function that removes string and invalid dtype features from an AlphaFold batch dict before sending to TPU",
+    "bfloat16_getter": "build a Haiku custom getter that casts parameters to bfloat16 dtype when the original dtype is bfloat16",
+    "bfloat16_context": "create a context manager that wraps Haiku modules with a bfloat16 getter for automatic dtype casting",
+    "mask_mean": "compute a masked mean over JAX arrays with support for broadcasting along specified axes",
+    "VALID_DTYPES": "review the list of valid numpy dtypes allowed for TPU feature tensors in AlphaFold batch processing"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/network/atom_cross_attention.py": {
+    "build_atom_cross_attention_encoder": "build a python module to run atom_cross_att_encoder that computes per-atom cross attention and maps to per-token features",
+    "build_atom_cross_attention_decoder": "build a python module to run atom_cross_att_decoder that maps per-token features to per-atom position updates",
+    "review_AtomCrossAttEncoderConfig": "review the AtomCrossAttEncoderConfig class and its per_token_channels per_atom_channels and atom_transformer settings",
+    "review_AtomCrossAttEncoderOutput": "review the AtomCrossAttEncoderOutput dataclass and its token_act skip_connection queries_mask and pair_cond fields",
+    "summarize_per_atom_conditioning": "summarize the _per_atom_conditioning function that computes single and pair conditioning for all atoms in each token"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/network/confidence_head.py": {
+    "build_confidence_head_module": "build a ConfidenceHead Haiku module to predict distance errors and confidence scores for protein structure predictions",
+    "create_confidence_head_config": "create a ConfidenceHead.Config with pairformer layers, pLDDT bins, and distogram features for AlphaFold 3",
+    "run_confidence_head_call": "run the ConfidenceHead call method to compute pLDDT, pAE, and pDE from atom positions and embeddings",
+    "review_embed_features_method": "review the _embed_features method that projects target features and distogram features into pair activations",
+    "summarize_tmscore_adjusted_pae": "summarize the _get_tmscore_adjusted_pae method that computes global and interface TM-score adjusted predicted aligned error"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/network/diffusion_head.py": {
+    "build_diffusion_head": "build a python module to instantiate a DiffusionHead for denoising atom positions in AlphaFold 3",
+    "create_random_rotation": "create a function that generates a random 3D rotation matrix via Gram-Schmidt orthogonalization",
+    "run_random_augmentation": "run random rigid augmentation on atom positions using rotation and translation transforms",
+    "sample_denoising": "sample denoised atom positions from noise using the diffusion head denoising step and noise schedule",
+    "review_noise_schedule": "review the noise_schedule function that computes sigma values for diffusion timesteps"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/network/diffusion_transformer.py": {
+    "build_Transformer_stack": "build a Haiku transformer stack with self-attention and transition blocks for diffusion model token processing",
+    "build_CrossAttTransformer_stack": "build a cross-attention transformer that applies attention between query and key subsets with pair conditioning",
+    "review_self_attention": "review the self_attention function for multihead attention with adaptive LayerNorm and gating on token sequences",
+    "review_cross_attention": "review the cross_attention function for multihead attention between separate query and key sequences with pair logits",
+    "review_transition_block": "review the transition_block function for feed-forward processing with GLU kernel and adaptive zero initialization"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/network/evoformer.py": {
+    "create_evoformer_module": "create an Evoformer Haiku module with config and global_config to generate single and pair embeddings",
+    "run_evoformer_call": "run the Evoformer __call__ method with a batch, prev state, target features, and key to get embeddings",
+    "build_seq_pair_embedding": "build a pair embedding from sequence features using _seq_pair_embedding with token features and target features",
+    "embed_template_pair": "embed template structures into pair activations using _embed_template_pair with batch, pair activations, mask, and key",
+    "process_msa_stack": "process MSA data through the Evoformer MSA stack using _embed_process_msa to update pair activations"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/network/featurization.py": {
+    "create_msa_features": "create MSA features by one-hot encoding rows and computing deletion matrix statistics from an MSA object",
+    "create_target_features": "create target features from a batch including token one-hot encoding, MSA profile, and reference structure data",
+    "create_relative_encoding": "create relative position encodings with one-hot embeddings for residue distance, token offset, entity ID, and chain ID",
+    "shuffle_msa_rows": "shuffle MSA rows randomly using Gumbel-argsort sampling and return the reordered MSA with an updated RNG key",
+    "gumbel_argsort_sample": "sample indices from logits using the Gumbel-max trick with padding-consistent random number generation"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/network/modules.py": {
+    "build_transition_block": "build a TransitionBlock Haiku module with GLU kernel for transformer transition layers",
+    "build_msa_attention": "build an MSAAttention module with configurable num_head for multiple sequence alignment attention",
+    "build_grid_self_attention": "build a GridSelfAttention module for per-sequence or per-residue self-attention with flash attention",
+    "build_triangle_multiplication": "build a TriangleMultiplication module with incoming or outgoing equation for pairwise feature propagation",
+    "build_evoformer_iteration": "build an EvoformerIteration module combining MSA attention, outer product mean, and pair attention blocks"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/network/noise_level_embeddings.py": {
+    "compute_noise_embeddings": "compute Fourier noise level embeddings for a diffusion model from a scaled noise level array",
+    "review_noise_embeddings_function": "review the noise_embeddings function to understand how it transforms scaled noise levels into Fourier embeddings",
+    "inspect_WEIGHT_constant": "inspect the fixed 256-dimensional weight constant used for Fourier embedding generation",
+    "inspect_BIAS_constant": "inspect the fixed 256-dimensional bias constant used for Fourier embedding generation",
+    "summarize_fourier_embedding_module": "summarize the noise level embeddings module and its use in AlphaFold 3 diffusion models"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/network/template_modules.py": {
+    "build_distogram_from_positions": "build a python module to compute a distogram from amino acid position coordinates using DistogramFeaturesConfig",
+    "build_backbone_rigid_frame": "build a python module to create a backbone Rigid3Array and mask from atom positions and group indices",
+    "create_template_embedding_module": "create a python module to embed a set of templates using TemplateEmbedding with PairFormer stack iterations",
+    "create_single_template_embedding": "create a python module to embed a single template using SingleTemplateEmbedding with distogram and backbone features",
+    "create_distogram_features_config": "create a python module to configure distogram binning with min_bin, max_bin, and num_bins parameters"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/pipeline/inter_chain_bonds.py": {
+    "get_polymer_ligand_and_ligand_ligand_bonds": "get polymer-ligand and ligand-ligand inter-residue bonds from a Structure object with optional glycan filtering",
+    "get_ligand_ligand_bonds": "get ligand-ligand inter-residue bonds from a Structure object with configurable glycan-only mode and bond deduplication",
+    "get_polymer_ligand_bonds": "get polymer-ligand interchain bonds from a Structure object with optional custom bond distance threshold",
+    "get_bond_layout": "compute bond layout between two sets of chain types filtered by distance, bond type, and residue name",
+    "BondAtomArrays": "create a NamedTuple holding chain_id, chain_type, res_id, res_name, atom_name, and coords arrays for bond atoms"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/pipeline/pipeline.py": {
+    "calculate_bucket_size": "calculate the bucket size to pad input tokens to based on a sequence of bucket thresholds",
+    "create_WholePdbPipeline_Config": "create a WholePdbPipeline Config object to set max atoms per token, MSA crop size, and bucket sizes",
+    "process_structure": "process a Structure with MSAs and templates through the AlphaFold 3 data pipeline to produce a feature Batch",
+    "process_item": "process a folding Input request through the pipeline and return a numpy feature dictionary with NaN validation",
+    "review_WholePdbPipeline": "review the WholePdbPipeline class and its structure cleaning, tokenization, MSA, template, and frame construction steps"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/pipeline/structure_cleaning.py": {
+    "clean_structure": "clean a PDB structure by dropping missing sequences, non-standard atoms, waters, hydrogens, leaving atoms, and bad bonds",
+    "create_empty_output_struc_and_layout": "create a zero-coordinate structure and flat atom layout from all physical residues of a PDB structure",
+    "get_leaving_atom_mask": "compute a boolean mask identifying leaving atoms to drop for a given residue in a structure",
+    "review_clean_structure": "review the clean_structure function to understand how it filters waters, hydrogens, and leaving atoms from a PDB",
+    "refactor_clean_structure": "refactor the clean_structure function to add a new filter option for dropping specific residue types"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/scoring/alignment.py": {
+    "compute_rmsd_between_coords": "compute the aligned RMSD between two sets of decoy and ground truth atom coordinates",
+    "align_coords_to_reference": "align a set of 3D coordinates to a reference structure using a rigid transformation",
+    "compute_per_atom_deviations": "compute per-atom deviations between aligned decoy and ground truth coordinates for RMSD analysis",
+    "find_least_squares_rotation": "find the least squares best fit rotation matrix between two sets of N points",
+    "test_rmsd_from_coords": "test the rmsd_from_coords function with sample decoy and ground truth coordinate arrays"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/scoring/chirality.py": {
+    "compare_chirality": "compare chirality of ligands in a structure against reference molecules or CCD entries",
+    "find_chiral_centres": "find chiral centres and detect their chirality for carbon and sulfur atoms in a molecule",
+    "chiral_match": "compare chirality of two RDKit Mol objects and check if mol1 is a subset match of mol2",
+    "mol_from_ligand_struc": "create an RDKit Mol object from a ligand structure and reference mol with 3D stereochemistry",
+    "maybe_mol_from_ccd": "create an RDKit Mol object from CCD chemical components database given a residue name"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/model/scoring/scoring.py": {
+    "create_pseudo_beta_positions": "create pseudo beta atom positions and masks from dense atom positions and amino acid types",
+    "build_pseudo_beta_with_numpy": "build pseudo beta atom positions using numpy instead of jax for offline analysis",
+    "test_pseudo_beta_fn": "test the pseudo_beta_fn function with sample amino acid types and atom position arrays",
+    "refactor_pseudo_beta_fn": "refactor pseudo_beta_fn to support additional residue types beyond standard polymers and ligands",
+    "summarize_pseudo_beta_fn": "summarize the pseudo_beta_fn function that extracts pseudo beta atom positions for scoring model outputs"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/structure/bioassemblies.py": {
+    "parse_bioassembly_from_mmcif": "construct a BioassemblyData instance from an mmCIF object using the from_mmcif class method",
+    "apply_transform_to_coords": "apply a Transform operations sequence to 3D coordinates using the apply_to_coords method",
+    "get_transforms_for_assembly": "get the list of Transform objects needed to generate a specific bioassembly by assembly ID",
+    "rename_label_asym_ids": "rename chain label_asym_ids in BioassemblyData using a mapping and filter by present chains",
+    "convert_bioassembly_to_mmcif_dict": "export BioassemblyData back to an mmCIF-compatible dictionary using the to_mmcif_dict method"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/structure/bonds.py": {
+    "create_empty_bonds_table": "create an empty Bonds table with zero rows using the Bonds.make_empty class method",
+    "get_bond_atom_indices": "get the from and dest atom indices from a Bonds table given an atom_key array",
+    "restrict_bonds_to_atoms": "restrict a Bonds table to only bonds where both endpoints exist in a given atom_key subset",
+    "export_bonds_to_mmcif_dict": "export a Bonds table to an mmCIF-compatible dictionary using atom arrays for chain, residue, and atom identifiers",
+    "concatenate_bonds_tables": "concatenate multiple Bonds tables with their atom_key arrays, reindexing keys to avoid collisions"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/structure/chemical_components.py": {
+    "create_ChemCompEntry": "create a ChemCompEntry dataclass instance with type, name, formula, and optional SMILES string fields",
+    "construct_ChemicalComponentsData_from_mmcif": "construct ChemicalComponentsData from an mmCIF object with optional MSE and unknown DNA residue fixes",
+    "convert_ChemicalComponentsData_to_mmcif_dict": "convert ChemicalComponentsData to an mmCIF-compatible dictionary mapping column names to value sequences",
+    "populate_missing_ccd_data": "populate missing chemical component data from the CCD database while preserving already-specified field values",
+    "get_res_atom_names": "get the set of atom names for a given CCD residue using the cached get_res_atom_names function"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/structure/mmcif.py": {
+    "parse_mmcif_from_string": "parse an mmCIF string into an Mmcif object using from_string for structural biology data",
+    "parse_multi_data_cif": "parse a multi-data CIF string into a dictionary of named Mmcif objects",
+    "convert_chain_id": "convert between integer and string mmCIF chain IDs using int_id_to_str_id and str_id_to_int_id",
+    "extract_bond_atom_indices": "extract from and to atom indices for bonds defined in the struct_conn table of an mmCIF",
+    "parse_oper_expression": "parse an mmCIF oper_expression string into a list of transform ID tuples for symmetry operations"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/structure/parsing.py": {
+    "parse_mmcif_string_to_structure": "parse an mmCIF string into an AlphaFold 3 Structure object with optional fixes for MSE residues and arginines",
+    "parse_parsed_mmcif_object_to_structure": "construct a Structure from an already parsed mmCIF object with control over water, bonds, and model selection",
+    "build_structure_from_atom_arrays": "build a Structure from raw atom-level NumPy arrays including coordinates, residue IDs, and chain IDs",
+    "build_structure_from_sequences_and_bonds": "build a minimal Structure from sequence strings and bonded atom pairs using the chemical components dictionary",
+    "extract_tables_from_mmcif": "extract chain, residue, and atom tables from a parsed mmCIF with options for fixing residues and including water"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/structure/structure.py": {
+    "filter_structure_by_entity_type": "filter a Structure to only include protein chains using filter_to_entity_type",
+    "stack_multiple_structures": "stack multiple Structure objects into a single multi-model Structure using the stack function",
+    "concatenate_structures": "concatenate multiple Structure objects along the atom dimension using the concat function",
+    "generate_bioassembly": "generate a biological assembly from a Structure using generate_bioassembly with an assembly_id",
+    "export_structure_to_mmcif": "export a Structure to an mmCIF string using the to_mmcif method"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/structure/structure_tables.py": {
+    "create_atoms_table_from_arrays": "create an Atoms table from numpy arrays of chain keys, residue keys, coordinates, and b-factors",
+    "create_residues_table_from_defaults": "create a Residues table with default names and insertion codes from residue IDs and chain keys",
+    "create_chains_table_from_defaults": "create a Chains table with default protein chain types from chain IDs and entity descriptions",
+    "build_structure_tables_from_atom_arrays": "build Atoms, Residues, and Chains tables from raw atom-level numpy arrays including coordinates and residue IDs",
+    "convert_tables_to_mmcif_atom_site": "convert Atoms, Residues, Chains, and Bonds tables into raw mmCIF _atom_site and _struct_conn dictionary entries"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/structure/table.py": {
+    "create_table_dataclass": "create a frozen dataclass Table with numpy array columns and a key column for structure data",
+    "filter_table_rows": "filter a Table by column predicates using constant values, iterables, or boolean functions",
+    "iterate_table_rows": "iterate over Table rows with optional foreign key joins via the iterrows method",
+    "concat_databases": "concatenate multiple Database instances into one with proper key offset and foreign key adjustment",
+    "remap_table_columns": "remap column values in a Table using a mapping dict via copy_and_remap"
+  },
+  "google-deepmind_alphafold3/src/alphafold3/structure/test_utils.py": {
+    "test_StructureTestCase_assertStructuresEqual": "test two AlphaFold Structure objects for equality using assertStructuresEqual with optional field ignore and tolerance",
+    "test_StructureTestCase_assertAuthorNamingSchemeEqual": "test two author naming scheme objects for deep equality using assertAuthorNamingSchemeEqual",
+    "test_StructureTestCase_assertAllResiduesEqual": "test two all residues dictionaries for chain-wise sequence equality using assertAllResiduesEqual",
+    "test_StructureTestCase_assertBondsEqual": "test two Bonds objects for equality by comparing atom indices, types, and roles",
+    "test_StructureTestCase_assertChemicalComponentsDataEqual": "test two ChemicalComponentData objects for equality with optional extension tolerance using assertChemicalComponentsDataEqual"
+  }
+}

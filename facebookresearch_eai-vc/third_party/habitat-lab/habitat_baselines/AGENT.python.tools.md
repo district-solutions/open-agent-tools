@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eai-vc
+- repo_uri: https://github.com/facebookresearch/eai-vc
+
+## File: facebookresearch_eai-vc/third_party/habitat-lab/habitat_baselines/run.py
+
+Prompts
+
+```
+['run a habitat baseline experiment in train mode using a config YAML file', 'run a habitat baseline experiment in eval mode using a config YAML file', 'execute a habitat experiment by loading a config and running the registered trainer', 'run a habitat experiment with a config file and optional command line overrides', 'run the habitat baselines CLI to train or evaluate with an experiment config']
+```
+
+Usage
+
+```
+{'run_habitat_train': 'run a habitat baseline experiment in train mode using a config YAML file', 'run_habitat_eval': 'run a habitat baseline experiment in eval mode using a config YAML file', 'execute_exp_with_config': 'execute a habitat experiment by loading a config and running the registered trainer', 'run_exp_with_opts': 'run a habitat experiment with a config file and optional command line overrides', 'main_cli_entry': 'run the habitat baselines CLI to train or evaluate with an experiment config'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/pybind11/tools/clang/cindex.py
+
+Prompts
+
+```
+['parse a C or C++ source file into a TranslationUnit using Index.parse', 'iterate over AST nodes by calling get_children on a Cursor to traverse the tree', 'get the spelling and CursorKind of an AST node to identify declarations and expressions', 'inspect diagnostics on a TranslationUnit to retrieve warnings, errors, and fix-it hints', 'query the Type of a Cursor to get its kind, spelling, size, and element types']
+```
+
+Usage
+
+```
+{'parse_translation_unit': 'parse a C or C++ source file into a TranslationUnit using Index.parse', 'iterate_ast_cursors': 'iterate over AST nodes by calling get_children on a Cursor to traverse the tree', 'get_cursor_spelling_and_kind': 'get the spelling and CursorKind of an AST node to identify declarations and expressions', 'inspect_diagnostics': 'inspect diagnostics on a TranslationUnit to retrieve warnings, errors, and fix-it hints', 'query_type_info': 'query the Type of a Cursor to get its kind, spelling, size, and element types'}
+```
+

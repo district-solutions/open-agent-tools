@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/grpc/examples/python/multiprocessing/server.py
+
+Prompts
+
+```
+['run a multiprocess gRPC server with one worker per CPU core using SO_REUSEPORT', 'create a PrimeChecker gRPC servicer that checks primality of a candidate number', 'run the is_prime function to check if a given integer is a prime number', 'reserve an available port with SO_REUSEPORT for multiple subprocesses to share', 'review the PrimeChecker check method that returns a Primality response for a candidate']
+```
+
+Usage
+
+```
+{'run_multiprocess_grpc_server': 'run a multiprocess gRPC server with one worker per CPU core using SO_REUSEPORT', 'create_primechecker_servicer': 'create a PrimeChecker gRPC servicer that checks primality of a candidate number', 'run_is_prime_check': 'run the is_prime function to check if a given integer is a prime number', 'reserve_port_for_subprocesses': 'reserve an available port with SO_REUSEPORT for multiple subprocesses to share', 'review_primechecker_check_method': 'review the PrimeChecker check method that returns a Primality response for a candidate'}
+```
+

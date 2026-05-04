@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fbpcs
+- repo_uri: https://github.com/facebookresearch/fbpcs
+
+## File: facebookresearch_fbpcs/fbpcs/infra/cloud_bridge/test/test_cli.py
+
+Prompts
+
+```
+['test the cli module get_parser function returns an argparse ArgumentParser instance', 'test the cli main function with aws create args and mock AwsDeploymentHelperTool', 'test the cli main function with gcp args raises SystemExit for unsupported platform', 'run the cloud bridge cli to create AWS resources using argparse subparsers', 'review the AwsDeploymentHelperTool class create and destroy methods for IAM user and policy workflows']
+```
+
+Usage
+
+```
+{'test_cli_get_parser': 'test the cli module get_parser function returns an argparse ArgumentParser instance', 'test_cli_main_aws': 'test the cli main function with aws create args and mock AwsDeploymentHelperTool', 'test_cli_main_gcp': 'test the cli main function with gcp args raises SystemExit for unsupported platform', 'run_cli_create_aws': 'run the cloud bridge cli to create AWS resources using argparse subparsers', 'review_aws_deployment_helper_tool': 'review the AwsDeploymentHelperTool class create and destroy methods for IAM user and policy workflows'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/habitat-sim
+- repo_uri: https://github.com/facebookresearch/habitat-sim
+
+## File: facebookresearch_habitat-sim/docs/m.css/documentation/test_python/page_plugins/plugins/fancyline.py
+
+Prompts
+
+```
+['register m.css documentation generation hooks for post crawl, scope, docstring, pre page, and post run lifecycle events', 'create a reStructuredText directive that renders a styled paragraph with tildes around the provided text argument', 'test the FancyLine directive run method to verify it returns a paragraph node with the m-transition CSS class', 'review the register_mcss function to understand how it registers hook callbacks and the fancy-line RST directive', 'summarize the _pre_scope and _post_scope hook functions that track a scope stack with type and path tuples']
+```
+
+Usage
+
+```
+{'register_mcss_hooks': 'register m.css documentation generation hooks for post crawl, scope, docstring, pre page, and post run lifecycle events', 'create_fancyline_directive': 'create a reStructuredText directive that renders a styled paragraph with tildes around the provided text argument', 'test_fancyline_run': 'test the FancyLine directive run method to verify it returns a paragraph node with the m-transition CSS class', 'review_register_mcss': 'review the register_mcss function to understand how it registers hook callbacks and the fancy-line RST directive', 'summarize_scope_hooks': 'summarize the _pre_scope and _post_scope hook functions that track a scope stack with type and path tuples'}
+```
+

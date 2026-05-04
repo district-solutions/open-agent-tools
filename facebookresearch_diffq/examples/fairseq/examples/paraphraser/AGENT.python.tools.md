@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diffq
+- repo_uri: https://github.com/facebookresearch/diffq
+
+## File: facebookresearch_diffq/examples/fairseq/examples/paraphraser/paraphrase.py
+
+Prompts
+
+```
+['run the paraphrase CLI tool with en2fr and fr2en model paths to generate paraphrases from input text', 'run back-translation paraphrasing by translating English to French then back to English using a mixture of experts model', 'run the gen_paraphrases function to generate multiple paraphrases of an English sentence using N experts', 'run the TransformerModel translate method to translate text between English and French using pretrained fairseq models', 'run the fr2en MOE model with a specific expert index via inference_step_args to get varied paraphrase outputs']
+```
+
+Usage
+
+```
+{'run_paraphrase_cli': 'run the paraphrase CLI tool with en2fr and fr2en model paths to generate paraphrases from input text', 'run_back_translation_paraphrasing': 'run back-translation paraphrasing by translating English to French then back to English using a mixture of experts model', 'run_gen_paraphrases': 'run the gen_paraphrases function to generate multiple paraphrases of an English sentence using N experts', 'run_transformer_translate': 'run the TransformerModel translate method to translate text between English and French using pretrained fairseq models', 'run_moe_expert_selection': 'run the fr2en MOE model with a specific expert index via inference_step_args to get varied paraphrase outputs'}
+```
+

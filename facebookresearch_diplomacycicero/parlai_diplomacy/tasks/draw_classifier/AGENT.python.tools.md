@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/parlai_diplomacy/tasks/draw_classifier/agents.py
+
+Prompts
+
+```
+['build a draw classifier teacher to predict draw votes from dialogue messages in diplomacy games', 'create a DrawVoteStatus enum with DRAW, NODRAW, and UNDRAW values for classifying message types', 'run the BaseDrawClassifierChunkTeacher to load and classify draw vote examples from game chunks', 'test the load_from_chunk method to verify label distribution across draw, undraw, and nodraw classes', 'review the MessageHistoryDrawClassifierChunkTeacher registered teacher that uses message history as input for draw classification']
+```
+
+Usage
+
+```
+{'build_draw_classifier_teacher': 'build a draw classifier teacher to predict draw votes from dialogue messages in diplomacy games', 'create_draw_vote_status_enum': 'create a DrawVoteStatus enum with DRAW, NODRAW, and UNDRAW values for classifying message types', 'run_base_draw_classifier_chunk_teacher': 'run the BaseDrawClassifierChunkTeacher to load and classify draw vote examples from game chunks', 'test_load_from_chunk': 'test the load_from_chunk method to verify label distribution across draw, undraw, and nodraw classes', 'review_message_history_drawclassifier_chunk_teacher': 'review the MessageHistoryDrawClassifierChunkTeacher registered teacher that uses message history as input for draw classification'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/acme
+- repo_uri: https://github.com/google-deepmind/acme
+
+## File: google-deepmind_acme/acme/agents/tf/bc/learning.py
+
+Prompts
+
+```
+['build a BCLearner with a Sonnet network, learning rate, and TensorFlow dataset for behavioral cloning', 'run a single SGD training step on the BCLearner that computes loss and updates network weights', 'get the trainable variables from the BCLearner as numpy arrays for inspection or transfer', 'checkpoint the BCLearner state including network, optimizer, and step count for later restoration', 'review the BCLearner class to understand how it uses sparse categorical cross-entropy for behavioral cloning']
+```
+
+Usage
+
+```
+{'build_bc_learner': 'build a BCLearner with a Sonnet network, learning rate, and TensorFlow dataset for behavioral cloning', 'run_bc_learner_step': 'run a single SGD training step on the BCLearner that computes loss and updates network weights', 'get_bc_learner_variables': 'get the trainable variables from the BCLearner as numpy arrays for inspection or transfer', 'checkpoint_bc_learner_state': 'checkpoint the BCLearner state including network, optimizer, and step count for later restoration', 'review_bc_learner_implementation': 'review the BCLearner class to understand how it uses sparse categorical cross-entropy for behavioral cloning'}
+```
+

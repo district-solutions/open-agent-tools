@@ -1,0 +1,121 @@
+{
+  "facebookresearch_editeval/src/base_processor.py": {
+    "create_dataset_processor": "create a BaseProcessor subclass to download and process a new dataset for edit evaluation",
+    "run_core_processing": "run core_processing on a BaseProcessor to standardize dataset splits, features, and normalize data",
+    "parse_json_to_dataset": "parse a JSONL file into a DatasetDict using ExternalProcessor.parse_from_json with split column names",
+    "normalize_dataset_text": "normalize input and edit text fields in a dataset split using the _normalize_data method",
+    "review_base_processor_class": "review the BaseProcessor class and its abstract download_and_process method for dataset standardization"
+  },
+  "facebookresearch_editeval/src/dataset.py": {
+    "create_EditDataset": "create an EditDataset instance to load and process a named editing dataset from raw or cached data",
+    "call_get_features": "call get_features on EditDataset to extract specific columns like edits or raw from train dev or test splits",
+    "call_get_edits": "call get_edits on EditDataset to retrieve reference edits for given ids across specified splits",
+    "call_get_inputs": "call get_inputs on EditDataset to fetch input fields including title input edits tasks and retrieved documents",
+    "call_evaluate": "call evaluate on EditDataset to score predictions against reference edits using the Evaluator with optional metric report"
+  },
+  "facebookresearch_editeval/src/diff_utils.py": {
+    "get_opcodes_diff": "generate opcodes representing insertions, deletions, and replacements between two strings using CSequenceMatcher",
+    "apply_opcodes_transform": "apply a list of opcodes to a substring of source text to produce the modified result",
+    "pretty_print_diff_output": "pretty print the difference between a source and target string showing each edit operation",
+    "source_target_to_diffs_pairs": "convert a source and target string into a list of unique source to target diff pairs",
+    "source_diffs_to_target_apply": "apply a list of source target diff pairs to transform a source string into the target"
+  },
+  "facebookresearch_editeval/src/evaluator.py": {
+    "evaluate_predictions_against_targets": "run the Evaluator evaluate method to compute metrics like ROUGE, BLEU, and BERT score on predictions versus reference targets",
+    "format_evaluation_inputs": "format and normalize input texts, predictions, and reference targets into tokenized lists for evaluation",
+    "get_scorers_for_metrics": "get a list of scorer objects for specified metrics including HuggingFace and custom metrics",
+    "evaluate_metric_by_scorer": "evaluate a single metric scorer against candidate and reference tokens or texts with category grouping",
+    "remove_wikipedia_markup": "clean Wikipedia-specific syntax from text by removing wikilinks, categories, sections, and other markup"
+  },
+  "facebookresearch_editeval/src/parse_wikitext.py": {
+    "parse_wikitext_structured": "run the wikitext parser on a JSONL input file to extract structured elements and write output",
+    "parse_input_into_structured_form": "parse a wikitext datapoint into structured elements including title, sections, claim paragraphs, and bullets",
+    "split_claim_paragraph": "split a paragraph into pre-text and post-text around a given claim text string",
+    "seperate_title_and_section_from_text": "separate title, section hierarchy, and body text from a SEP_SYMBOL delimited wikitext string",
+    "remove_section_markup": "remove section markup from text and return a list of cleaned section title strings"
+  },
+  "facebookresearch_editeval/src/preprocessing.py": {
+    "normalize_text": "normalize a string or list of tokens into a detokenized sentence using TreebankWordDetokenizer",
+    "tokenize_text": "tokenize a text string into a list of word tokens using NLTK word_tokenize",
+    "randomly_delete_word": "randomly delete a single word from a given text string and return the result",
+    "test_normalize_text": "test the normalize_text function with a sample sentence containing punctuation and contractions",
+    "test_tokenize_text": "test the tokenize_text function with a sample sentence and verify the token list output"
+  },
+  "facebookresearch_editeval/src/utils.py": {
+    "download_url": "download a file from a URL to a local directory with automatic https to http fallback",
+    "get_dataset_names_from_task": "get dataset names from a list of editing task categories like clarity or fluency",
+    "get_dataset_category": "get the editing category for a dataset name like jfleg or wnc",
+    "transpose_dict": "convert a dictionary of lists into a list of dictionaries with matching keys",
+    "print_metric_report": "print a metric scores report as markdown or tsv with average scores per metric"
+  },
+  "facebookresearch_editeval/src/metrics/custom_metrics.py": {
+    "run_exact_match_diff_metric": "run ExactMatchDiffMetric.evaluate to score predictions against targets using diff overlap",
+    "run_exact_match_metric": "run ExactMatchMetric.evaluate to compute the fraction of predictions matching any target",
+    "run_insert_delete_metric": "run InsertDeleteMetric.evaluate to score insertions and deletions using n-gram overlap",
+    "run_easse_sari_metric": "run EasseSariMetric.evaluate to compute SARI scores for sentence editing predictions",
+    "run_ibleu_metric": "run iBLEUMetric.evaluate to compute iBLEU scores balancing reference BLEU and input BLEU"
+  },
+  "facebookresearch_editeval/src/metrics/easse_preprocessing.py": {
+    "normalize_sentence_13a": "normalize a sentence using the 13a tokenizer with lowercase enabled",
+    "normalize_sentence_moses": "normalize a sentence using the Moses tokenizer for NLP preprocessing",
+    "normalize_sentence_penn": "normalize a sentence using the Penn tokenizer for tokenization",
+    "normalize_sentence_intl": "normalize a sentence using the international tokenizer V14",
+    "normalize_sentence_token_list": "normalize a sentence and return tokens as a list instead of a string"
+  },
+  "facebookresearch_editeval/src/metrics/easse_sari.py": {
+    "compute_corpus_sari": "compute the SARI score for a corpus of original, system, and reference sentences",
+    "extract_ngrams": "extract n-grams from a sentence and return a list of counters per n-gram order",
+    "compute_ngram_stats": "compute n-gram addition, keeping, and deletion statistics for sentence pairs with references",
+    "compute_micro_sari": "compute micro-averaged SARI scores for addition, keeping, and deletion operations across n-gram orders",
+    "compute_macro_sari": "compute macro-averaged SARI scores for addition, keeping, and deletion operations across n-gram orders"
+  },
+  "facebookresearch_editeval/src/metrics/gleu.py": {
+    "run_GLEU_iterations": "run GLEU scoring iterations on tokenized hypotheses against multiple reference sentences",
+    "load_references_GLEU": "load tokenized reference sentences into the GLEU calculator for n-gram comparison",
+    "load_inputs_GLEU": "load tokenized source input sentences into the GLEU calculator for n-gram extraction",
+    "compute_ngram_counts": "compute n-gram counts of a given order for a tokenized sentence using GLEU",
+    "calculate_gleu_score": "calculate the GLEU score from collected BLEU-relevant statistics with optional smoothing"
+  },
+  "facebookresearch_editeval/src/metrics/update_rouge.py": {
+    "run_update_rouge": "run update_rouge to measure ROUGE-1, ROUGE-2, and ROUGE-Lsum scores on text edit predictions",
+    "run_extract_additions": "run extract_additions to find text added between a source and target string",
+    "test_update_rouge": "test update_rouge with source, target, and prediction lists to evaluate edit quality",
+    "test_extract_additions": "test extract_additions with source and target strings to verify added text extraction",
+    "refactor_update_rouge": "refactor update_rouge to customize ROUGE metrics or add new scoring variants"
+  },
+  "facebookresearch_editeval/src/processors/fruit.py": {
+    "parse_FRUIT_tfrecord": "parse FRUIT dataset TFRecord files into a structured dictionary with inputs, targets, and retrieved documents",
+    "transform_FRUIT_input": "transform FRUIT indexed input text into plain text and structured context dictionaries with Wikipedia URLs",
+    "transform_FRUIT_output": "transform FRUIT model output by replacing sentence indices with original text and moving citations to sentence ends",
+    "extract_FRUIT_sentence_dict": "extract a dictionary mapping bracket indices to sentences from FRUIT formatted input context strings",
+    "download_FRUIT_dataset": "download and process the FRUIT dataset from GCS into train, dev, and test HuggingFace DatasetDict splits"
+  },
+  "facebookresearch_editeval/src/processors/huggingface_processors.py": {
+    "download_jfleg_dataset": "create a JFLEGProcessor with a raw path and call download_and_process to load the JFLEG fluency dataset",
+    "download_iter_dataset": "create an ITERProcessor with a raw path and optional task type then call download_and_process to load IteraTeR data",
+    "download_tmu_gfm_dataset": "create a TMUGFMProcessor with a raw path and call download_and_process to load and filter the TMU GFM fluency dataset",
+    "download_paws_dataset": "create a PAWSProcessor with a raw path and call download_and_process to load paraphrase pairs from the PAWS dataset",
+    "download_asset_dataset": "create an ASSETProcessor with a raw path and call download_and_process to load the ASSET simplification dataset"
+  },
+  "facebookresearch_editeval/src/processors/wafer_insert.py": {
+    "preprocess_wafer_example": "preprocess a WAFER insertion example by trimming sentences and linearizing wikitext into source and target",
+    "linearize_element_wikitext": "linearize a single wikitext element into markdown plain or wikipedia format with optional claim replacement",
+    "trim_text_incomplete_sentences": "trim incomplete sentences from the beginning or end of a text string using spaCy sentencizer",
+    "download_and_process_wafer_dataset": "download and process the WAFER insertion dataset from FAIR into a HuggingFace DatasetDict",
+    "add_retrieved_documents_to_jsonl": "merge retrieved documents from one JSONL file into another matching examples by id"
+  },
+  "facebookresearch_editeval/src/processors/wnc.py": {
+    "create_WNCProcessor": "create a WNCProcessor instance with a raw data path for the WNC neutralization dataset",
+    "run_download_and_process": "run download_and_process to download the bias corpus and build dev and test datasets",
+    "review_WNCProcessor_init": "review the WNCProcessor init method to understand dataset name, task name, and host link configuration",
+    "summarize_WNCProcessor": "summarize the WNCProcessor class which processes Wikipedia neutralization corpus data into HuggingFace datasets",
+    "test_download_and_process": "test the download_and_process method to verify it correctly parses TSV files into a DatasetDict"
+  },
+  "facebookresearch_editeval/src/tests/test_metrics.py": {
+    "test_sari_metric": "test the SARI metric by evaluating predictions against references and source inputs using Evaluator",
+    "test_bleu_metric": "test the BLEU metric by comparing Evaluator output against HuggingFace datasets bleu baseline",
+    "test_ibleu_metric": "test the iBLEU metric using iBLEUMetric evaluate_safe and Evaluator with original and prediction tokens",
+    "test_sacrebleu_metric": "test the SacreBLEU metric by comparing Evaluator output against HuggingFace datasets sacrebleu baseline",
+    "test_gleu_metric": "test the GLEU metric by evaluating predictions against targets with normalization enabled via Evaluator"
+  }
+}

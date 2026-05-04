@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/parlai_diplomacy/tasks/denoising/agents.py
+
+Prompts
+
+```
+['mask random tokens in a token list using a configurable noise ratio and max mask span length', 'mask specific token types like cardinals, negations, or noisy locations in a token list', 'create a denoising teacher that generates masked message examples for dialogue-based Diplomacy training', 'add command-line arguments for configuring mask seed, target type, and masking behavior for the denoising teacher', 'generate denoising training examples by applying targeted or untargeted token masking to dialogue messages']
+```
+
+Usage
+
+```
+{'mask_untargeted_tokens': 'mask random tokens in a token list using a configurable noise ratio and max mask span length', 'mask_targeted_tokens': 'mask specific token types like cardinals, negations, or noisy locations in a token list', 'denoising_chunk_teacher': 'create a denoising teacher that generates masked message examples for dialogue-based Diplomacy training', 'add_cmdline_args_denoising': 'add command-line arguments for configuring mask seed, target type, and masking behavior for the denoising teacher', 'generate_example_tuples_denoising': 'generate denoising training examples by applying targeted or untargeted token masking to dialogue messages'}
+```
+

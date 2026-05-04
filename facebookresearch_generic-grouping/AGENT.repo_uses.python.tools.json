@@ -1,0 +1,1339 @@
+{
+  "facebookresearch_generic-grouping/docs/conf.py": {
+    "get_version": "read the version file and extract the __version__ string using exec and compile",
+    "setup_sphinx_app": "connect the builder-inited event to the builder_inited_handler in the Sphinx app",
+    "builder_inited_handler": "run the stat.py script as a subprocess when the Sphinx builder initializes",
+    "configure_sphinx_autodoc": "configure Sphinx autodoc with mock imports for matplotlib, pycocotools, and mmcv.ops",
+    "configure_sphinx_html_theme": "set the Sphinx HTML output theme to sphinx_rtd_theme with custom static files"
+  },
+  "facebookresearch_generic-grouping/mmdet/version.py": {
+    "parse_version_info": "parse a version string like '2.8.0' or '1.0.0rc3' into a tuple of integers and release candidate markers",
+    "check_mmseg_version": "check the mmdet version string by importing __version__ from the mmdet version module",
+    "get_short_version": "get the short version alias which references the same value as __version__ in mmdet",
+    "inspect_version_info_tuple": "inspect the precomputed version_info tuple parsed from the mmdet __version__ string at module load time",
+    "parse_rc_version": "parse a release candidate version string such as '1.2.0rc5' using parse_version_info to extract the rc component"
+  },
+  "facebookresearch_generic-grouping/mmdet/apis/inference.py": {
+    "init_detector": "initialize an object detector from a config file and optional checkpoint weights",
+    "inference_detector": "run object detection inference on an image using a loaded detector model",
+    "async_inference_detector": "run async object detection inference on an image with a loaded detector model",
+    "show_result_pyplot": "visualize object detection results with bounding boxes on an image using pyplot",
+    "LoadImage": "load an image from a file path or numpy array into a results dictionary"
+  },
+  "facebookresearch_generic-grouping/mmdet/apis/test.py": {
+    "run_single_gpu_test": "run a single GPU inference test on a detection model with optional result visualization",
+    "run_multi_gpu_test": "run a multi-GPU distributed inference test on a detection model with GPU or CPU result collection",
+    "test_collect_results_cpu": "test the CPU-based result collection across distributed GPU ranks using temporary pickle files",
+    "test_collect_results_gpu": "test the GPU-based result collection across distributed ranks using torch distributed all_gather",
+    "review_single_gpu_test": "review the single_gpu_test function to understand visualization and mask encoding logic"
+  },
+  "facebookresearch_generic-grouping/mmdet/apis/train.py": {
+    "run_train_detector": "run the train_detector function to train an object detection model with a config and dataset",
+    "run_set_random_seed": "run set_random_seed to set random seeds for numpy torch and cuda for reproducibility",
+    "review_train_detector": "review the train_detector function to understand how it builds data loaders and registers training hooks",
+    "review_set_random_seed": "review the set_random_seed function to understand how it configures deterministic CUDNN backend behavior",
+    "refactor_train_detector": "refactor the train_detector function to support custom validation pipelines or additional distributed training options"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/anchor/anchor_generator.py": {
+    "create_anchor_generator": "create an AnchorGenerator with strides, ratios, and scales for 2D anchor-based object detection",
+    "generate_grid_anchors": "generate grid anchors across multiple feature levels using grid_anchors with featmap sizes",
+    "generate_valid_flags": "generate valid flags for anchors in multiple feature levels using valid_flags method",
+    "create_ssd_anchor_generator": "create an SSDAnchorGenerator with strides, ratios, and basesize_ratio_range for SSD detection",
+    "create_yolo_anchor_generator": "create a YOLOAnchorGenerator with strides and base_sizes for YOLO object detection"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/anchor/builder.py": {
+    "build_anchor_generator_from_cfg": "build an anchor generator from a config dict using the ANCHOR_GENERATORS registry",
+    "register_custom_anchor_generator": "register a custom anchor generator class under the ANCHOR_GENERATORS registry",
+    "build_anchor_generator_with_defaults": "build an anchor generator from config with default arguments via build_anchor_generator",
+    "review_anchor_generator_registry": "review the ANCHOR_GENERATORS registry to see all registered anchor generator types",
+    "summarize_build_anchor_generator": "summarize how build_anchor_generator uses MMCV build_from_cfg to instantiate anchor generators"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/anchor/point_generator.py": {
+    "build_grid_points": "build a python module to generate grid points for a feature map with a given stride using PointGenerator",
+    "create_valid_flags": "create a function that generates validity flags for anchor points within a specified valid region size",
+    "test_meshgrid": "test the PointGenerator _meshgrid method to verify it correctly interleaves x and y coordinate tensors",
+    "refactor_grid_points": "refactor the PointGenerator grid_points method to support configurable stride values per feature map level",
+    "review_PointGenerator": "review the PointGenerator class and its methods for generating anchor points and validity flags in object detection"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/anchor/utils.py": {
+    "convert_targets_by_image_to_feature_levels": "convert a list of per-image target tensors into per-feature-level tensors using images_to_levels",
+    "check_anchors_inside_image_border": "check which anchor boxes fall inside the valid image border using anchor_inside_flags",
+    "calculate_proportional_bbox_region": "calculate a proportional bounding box region from a given ratio using calc_region",
+    "filter_valid_anchors_with_border_tolerance": "filter anchor boxes by valid flags and allowed border tolerance using anchor_inside_flags",
+    "clamp_bbox_region_to_feature_map": "clamp a proportional bbox region to feature map boundaries using calc_region with featmap_size"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/builder.py": {
+    "build_assigner": "build a bounding box assigner from a config dict using the BBOX_ASSIGNERS registry",
+    "build_sampler": "build a bounding box sampler from a config dict using the BBOX_SAMPLERS registry",
+    "build_bbox_coder": "build a bounding box coder from a config dict using the BBOX_CODERS registry",
+    "review_BBOX_ASSIGNERS": "review the BBOX_ASSIGNERS registry to list all registered bounding box assigner types",
+    "review_BBOX_SAMPLERS": "review the BBOX_SAMPLERS registry to list all registered bounding box sampler types"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/demodata.py": {
+    "create_random_bounding_boxes": "create random bounding boxes as a PyTorch tensor with a given count and scale",
+    "generate_test_boxes_for_detection": "generate test bounding box tensors in x1,y1,x2,y2 format for object detection",
+    "ensure_numpy_random_state": "ensure a numpy RandomState object from an integer seed or None",
+    "review_random_boxes_function": "review the random_boxes function that generates bounding box tensors with configurable scale",
+    "test_ensure_rng_function": "test the ensure_rng function that normalizes seed inputs to a RandomState"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/transforms.py": {
+    "flip_bboxes": "flip bounding boxes horizontally, vertically, or diagonally given an image shape tensor",
+    "map_bboxes_to_test_scale": "map bounding boxes from original image scale to testing scale with optional flip",
+    "convert_bboxes_to_roi": "convert a list of bounding box tensors to ROI format with batch indices",
+    "decode_distance_to_bbox": "decode distance predictions from anchor points into bounding box coordinates",
+    "convert_bbox_coordinate_formats": "convert bounding box coordinates between xyxy and cxcywh formats"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/assigners/approx_max_iou_assigner.py": {
+    "build_ApproxMaxIoUAssigner": "build an ApproxMaxIoUAssigner instance with pos_iou_thr and neg_iou_thr thresholds for bounding box assignment",
+    "create_assign_method": "create a call to assign ground truth bboxes to approximated bboxes using max IoU per octave group",
+    "test_ApproxMaxIoUAssigner_assign": "test the ApproxMaxIoUAssigner assign method with approxs, squares, and ground truth bounding boxes",
+    "review_IoU_thresholds": "review the ApproxMaxIoUAssigner pos_iou_thr and neg_iou_thr configuration for positive and negative sample assignment",
+    "refactor_gpu_assign_thr": "refactor the ApproxMaxIoUAssigner gpu_assign_thr to control when assignment falls back to CPU for large GT counts"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/assigners/assign_result.py": {
+    "create_AssignResult": "create an AssignResult instance storing assignments between predicted and ground truth bounding boxes",
+    "generate_random_AssignResult": "generate a random AssignResult for testing with configurable num_gts, num_preds, and assignment probabilities",
+    "add_ground_truth_to_AssignResult": "add ground truth labels to an existing AssignResult by concatenating gt_inds, max_overlaps, and labels",
+    "get_AssignResult_info": "get a dictionary of info about an AssignResult including num_gts, num_preds, gt_inds, max_overlaps, and labels",
+    "set_extra_property_on_AssignResult": "set a user-defined extra property on an AssignResult instance using a key-value pair"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/assigners/atss_assigner.py": {
+    "build_ATSSAssigner": "build an ATSSAssigner instance with topk parameter and BboxOverlaps2D IoU calculator for object detection",
+    "assign_bboxes_to_gt": "assign ground truth bounding boxes to predicted bboxes using adaptive IoU threshold selection",
+    "review_ATSSAssigner_assign": "review the ATSSAssigner assign method that computes center distances and selects positive samples per pyramid level",
+    "refactor_ATSSAssigner_ignore_thr": "refactor the ATSSAssigner to customize the ignore_iof_thr threshold for filtering crowd boxes",
+    "summarize_ATSSAssigner_algorithm": "summarize the ATSS algorithm steps including IoU computation, candidate selection, and adaptive thresholding"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/assigners/base_assigner.py": {
+    "implement_BaseAssigner_subclass": "implement a subclass of BaseAssigner that overrides the assign method to match bboxes to ground truth",
+    "override_assign_method": "override the assign method in a BaseAssigner subclass to assign predicted bboxes to ground truth bboxes",
+    "review_BaseAssigner_abstract_class": "review the BaseAssigner abstract class and its assign method signature for bounding box assignment",
+    "extend_BaseAssigner_for_custom_logic": "extend BaseAssigner to add custom logic for assigning bboxes using gt_labels and gt_bboxes_ignore",
+    "summarize_BaseAssigner_assign_signature": "summarize the BaseAssigner assign method parameters including bboxes, gt_bboxes, gt_bboxes_ignore, and gt_labels"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/assigners/center_region_assigner.py": {
+    "build_center_region_assigner": "build a CenterRegionAssigner instance with pos_scale and neg_scale parameters for assigning ground truth to bounding boxes",
+    "run_scale_boxes": "run scale_boxes function to expand bounding boxes by a given scale factor",
+    "test_is_located_in": "test is_located_in function to check if points are located within bounding boxes",
+    "review_bboxes_area": "review bboxes_area function to compute the area of an array of bounding boxes",
+    "summarize_assign_one_hot_gt_indices": "summarize assign_one_hot_gt_indices method that assigns only one ground truth index to each prior box"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/assigners/grid_assigner.py": {
+    "build_grid_assigner": "build a GridAssigner instance with pos_iou_thr and neg_iou_thr for grid-based bbox assignment",
+    "assign_gt_to_bboxes": "assign ground truth bboxes to proposals using GridAssigner assign method with responsible flags",
+    "configure_iou_thresholds": "configure positive and negative IoU thresholds for grid assigner to control sample assignment",
+    "review_grid_assigner_algorithm": "review the GridAssigner four-step assignment algorithm that constrains positives within responsible cells",
+    "test_grid_assigner_empty_case": "test GridAssigner assign method handling of empty ground truth or empty bboxes edge cases"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/assigners/hungarian_assigner.py": {
+    "build_hungarian_assigner": "build a HungarianAssigner instance with custom classification, regression, and IoU cost configurations",
+    "assign_bbox_predictions": "assign predicted bounding boxes to ground truth using Hungarian matching based on weighted costs",
+    "configure_cls_cost": "configure the classification cost component with a custom weight for the HungarianAssigner",
+    "configure_reg_cost": "configure the regression L1 cost component with a custom weight for the HungarianAssigner",
+    "configure_iou_cost": "configure the IoU cost component with giou mode and custom weight for the HungarianAssigner"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/assigners/max_iou_assigner.py": {
+    "build_MaxIoUAssigner": "build a MaxIoUAssigner instance with pos_iou_thr and neg_iou_thr thresholds for bounding box assignment",
+    "assign_bboxes_to_gts": "assign ground truth bounding boxes to proposal bboxes using MaxIoUAssigner assign method with IoU thresholds",
+    "assign_wrt_overlaps": "assign bounding boxes to ground truth based on precomputed overlap matrix using assign_wrt_overlaps method",
+    "review_MaxIoUAssigner_init": "review the MaxIoUAssigner constructor to understand IoU threshold parameters and low quality matching options",
+    "test_MaxIoUAssigner_assign": "test the MaxIoUAssigner assign method with sample bboxes and ground truth boxes to verify correct assignment"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/assigners/point_assigner.py": {
+    "build_PointAssigner": "build a PointAssigner instance with custom scale and pos_num parameters for point-to-ground-truth assignment",
+    "run_PointAssigner_assign": "run the assign method to assign ground truth bounding boxes to each point in a tensor",
+    "test_PointAssigner_assign_empty": "test the assign method with empty ground truth boxes to verify all points are assigned as background",
+    "review_PointAssigner_level_matching": "review the PointAssigner class and its multi-level point matching logic using log2 stride-based level computation",
+    "refactor_PointAssigner_distance_calculation": "refactor the PointAssigner assign method to use a different distance metric for point-to-gt assignment"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/assigners/region_assigner.py": {
+    "build_region_assigner": "build a RegionAssigner instance with custom center_ratio and ignore_ratio for anchor assignment",
+    "assign_gt_to_anchors": "assign ground truth bounding boxes to multi-level anchors using RegionAssigner assign method",
+    "calc_region_for_bbox": "calculate the region of a bounding box defined by a ratio from center to every edge",
+    "check_anchor_centers_in_region": "check whether anchor centers are inside a given region using anchor_ctr_inside_region_flags",
+    "review_region_assigner_algorithm": "review the RegionAssigner class and its multi-level anchor to ground truth assignment algorithm"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/coder/base_bbox_coder.py": {
+    "encode_bbox_deltas": "encode deltas between predicted bboxes and ground truth bboxes using a bounding box coder",
+    "decode_predicted_bboxes": "decode predicted bboxes according to prediction and base boxes using a bounding box coder",
+    "create_bbox_coder_subclass": "create a subclass of BaseBBoxCoder that implements encode and decode methods for custom bbox encoding",
+    "review_BaseBBoxCoder": "review the BaseBBoxCoder abstract class and its encode and decode abstract methods",
+    "summarize_BaseBBoxCoder": "summarize the BaseBBoxCoder class which defines the interface for bounding box encoding and decoding"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/coder/bucketing_bbox_coder.py": {
+    "build_bucketing_bbox_coder": "build a BucketingBBoxCoder instance with num_buckets and scale_factor for SABL boundary localization",
+    "encode_bboxes_to_buckets": "encode source bboxes and ground truth bboxes into bucketing estimation and fine regression targets",
+    "decode_buckets_to_bboxes": "decode bucketing predictions and offset predictions back to decoded bounding boxes",
+    "generate_buckets_from_proposals": "generate left, right, top, and down buckets from proposals using num_buckets and scale_factor",
+    "apply_bucket2bbox_transformation": "apply bucketing estimation and fine regression to generate detected bboxes with localization confidence"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/coder/delta_xywh_bbox_coder.py": {
+    "encode_bboxes_to_delta": "encode source bounding boxes into delta coordinates (dx, dy, dw, dh) relative to ground truth boxes",
+    "decode_delta_to_bboxes": "decode delta coordinates back to bounding boxes by applying predicted deltas to base boxes with optional clipping",
+    "compute_bbox2delta": "compute regression deltas of proposal boxes with respect to ground truth boxes using configurable means and stds",
+    "apply_delta2bbox": "apply encoded deltas to shift and scale ROI boxes and convert back to top-left bottom-right format",
+    "review_DeltaXYWHBBoxCoder_class": "review the DeltaXYWHBBoxCoder class that encodes and decodes bounding box deltas following R-CNN practice"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/coder/legacy_delta_xywh_bbox_coder.py": {
+    "encode_bbox_deltas": "encode source bounding boxes into delta coordinates relative to ground truth boxes using LegacyDeltaXYWHBBoxCoder",
+    "decode_bbox_deltas": "decode predicted delta coordinates back to bounding boxes using LegacyDeltaXYWHBBoxCoder with optional shape clipping",
+    "compute_bbox2delta": "compute delta transformations from proposals to ground truth boxes using legacy_bbox2delta with means and stds normalization",
+    "apply_delta2bbox": "apply encoded deltas to shift and scale base ROI boxes using legacy_delta2bbox with aspect ratio clipping",
+    "register_bbox_coder": "register LegacyDeltaXYWHBBoxCoder in the MMDet bbox coder registry for compatibility with MMDet V1.x models"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/coder/pseudo_bbox_coder.py": {
+    "build_PseudoBBoxCoder": "build a PseudoBBoxCoder instance that passes through bounding boxes without encoding or decoding transformations",
+    "encode_PseudoBBoxCoder_encode": "encode bounding boxes using PseudoBBoxCoder encode method which returns ground truth bboxes as-is",
+    "decode_PseudoBBoxCoder_decode": "decode predicted bounding boxes using PseudoBBoxCoder decode method which returns pred_bboxes unchanged",
+    "review_PseudoBBoxCoder": "review the PseudoBBoxCoder class to understand its pass-through encode and decode behavior for bounding boxes",
+    "test_PseudoBBoxCoder": "test the PseudoBBoxCoder encode and decode methods to verify they return inputs unchanged"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/coder/tblr_bbox_coder.py": {
+    "encode_bboxes_to_tblr": "encode ground truth bounding boxes into top bottom left right coordinates relative to prior box centers",
+    "decode_tblr_to_bboxes": "decode tblr encoded coordinates back to standard xmin ymin xmax ymax bounding box format",
+    "create_tblr_bbox_coder": "create a TBLRBBoxCoder instance with a custom normalizer factor and border clipping enabled",
+    "encode_with_coder": "use the TBLRBBoxCoder encode method to transform source bboxes into tblr deltas from ground truth",
+    "decode_with_coder": "use the TBLRBBoxCoder decode method to apply tblr deltas to prior boxes and get decoded bboxes"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/coder/yolo_bbox_coder.py": {
+    "encode_bbox_deltas": "encode bounding boxes into YOLO-style transformation deltas using ground truth boxes and stride",
+    "decode_bbox_predictions": "decode predicted YOLO bounding box deltas back into absolute bounding box coordinates",
+    "review_YOLOBBoxCoder": "review the YOLOBBoxCoder class and its encode and decode methods for YOLO bbox encoding",
+    "test_YOLOBBoxCoder_encode": "test the YOLOBBoxCoder encode method with sample anchor boxes and ground truth boxes",
+    "refactor_YOLOBBoxCoder_decode": "refactor the YOLOBBoxCoder decode method to support additional output formats"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/iou_calculators/builder.py": {
+    "build_iou_calculator_from_cfg": "build an IoU calculator instance from a config dict using the IOU_CALCULATORS registry",
+    "register_iou_calculator": "register a custom IoU calculator class with the IOU_CALCULATORS registry for use in mmdet",
+    "build_iou_calculator_with_defaults": "build an IoU calculator from config with default arguments passed via default_args",
+    "review_iou_calculator_registry": "review the IOU_CALCULATORS registry to see all registered IoU calculator types",
+    "summarize_build_iou_calculator": "summarize how build_iou_calculator delegates to mmcv build_from_cfg for config-driven instantiation"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/iou_calculators/iou2d_calculator.py": {
+    "calculate_iou_between_bboxes": "calculate the intersection over union (IoU) between two sets of 2D bounding boxes using bbox_overlaps",
+    "calculate_giou_between_bboxes": "calculate the generalized IoU between two sets of 2D bounding boxes using bbox_overlaps with mode giou",
+    "calculate_iof_between_bboxes": "calculate the intersection over foreground (IoF) between two sets of 2D bounding boxes using bbox_overlaps with mode iof",
+    "calculate_aligned_bbox_overlaps": "calculate overlaps between aligned pairs of bounding boxes using bbox_overlaps with is_aligned set to True",
+    "use_bboxoverlaps2d_calculator": "use the BboxOverlaps2D class to compute IoU between two sets of 2D bounding boxes via its callable interface"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/match_costs/builder.py": {
+    "build_match_cost_from_cfg": "build a match cost instance from a config dict using the MATCH_COST registry",
+    "register_match_cost": "register a new match cost class with the MATCH_COST registry for use in config files",
+    "build_match_cost_with_defaults": "build a match cost instance from config with default arguments for missing keys",
+    "review_MATCH_COST_registry": "review the MATCH_COST registry to see all registered match cost types",
+    "summarize_build_match_cost": "summarize the build_match_cost function which delegates to mmcv build_from_cfg"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/samplers/base_sampler.py": {
+    "sample_positive_and_negative_bboxes": "sample positive and negative bounding boxes from candidates using assign results and ground truth bboxes",
+    "sample_positive_samples": "sample positive samples from assigned bounding boxes given expected count and assignment results",
+    "sample_negative_samples": "sample negative samples from assigned bounding boxes given expected count and assignment results",
+    "create_basesampler_subclass": "create a subclass of BaseSampler implementing _sample_pos and _sample_neg abstract methods for custom bbox sampling",
+    "review_basesampler_sample": "review the BaseSampler sample method to understand how positive and negative bbox sampling with GT proposals works"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/samplers/iou_balanced_neg_sampler.py": {
+    "create_IoUBalancedNegSampler": "create an IoUBalancedNegSampler instance with num proposals, pos_fraction, floor_thr, floor_fraction, and num_bins parameters",
+    "sample_via_interval_method": "sample negative proposals evenly across IoU bins using the sample_via_interval method with max_overlaps and full_set",
+    "sample_neg_method": "sample negative bounding boxes from assign_result using _sample_neg with balanced IoU interval sampling strategy",
+    "review_IoUBalancedNegSampler_class": "review the IoUBalancedNegSampler class for IoU balanced negative sampling logic and bin-based proposal selection",
+    "refactor_IoUBalancedNegSampler_floor_thr": "refactor the IoUBalancedNegSampler to customize floor_thr threshold behavior for negative sample floor set filtering"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/samplers/ohem_sampler.py": {
+    "build_OHEMSampler": "build an OHEMSampler instance with num, pos_fraction, and context for online hard example mining",
+    "review_OHEMSampler_hard_mining": "review the OHEMSampler hard_mining method to select top-k highest loss samples from bboxes",
+    "refactor_OHEMSampler_sample_pos": "refactor the OHEMSampler _sample_pos method to sample hard positive bounding box proposals",
+    "test_OHEMSampler_sample_neg": "test the OHEMSampler _sample_neg method to sample hard negative bounding box proposals",
+    "summarize_OHEMSampler_init": "summarize the OHEMSampler __init__ to configure bbox_head from context for single or multi-stage detectors"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/samplers/pseudo_sampler.py": {
+    "sample_positive_negative_indices": "sample positive and negative bounding box indices from an assign result using PseudoSampler",
+    "create_sampling_result": "create a SamplingResult with positive and negative indices from assigned bounding boxes",
+    "review_PseudoSampler_class": "review the PseudoSampler class that returns all positive and negative indices without actual sampling",
+    "refactor_PseudoSampler_sample": "refactor the PseudoSampler sample method to filter bounding boxes by assignment result gt_inds",
+    "summarize_PseudoSampler": "summarize the PseudoSampler class which extends BaseSampler and skips actual sampling logic"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/samplers/random_sampler.py": {
+    "create_random_sampler": "create a RandomSampler instance with num samples, pos_fraction, and add_gt_as_proposals options",
+    "random_choice_select": "use random_choice to randomly select num elements from a Tensor or list gallery",
+    "sample_positive_bbox": "call _sample_pos to randomly sample positive bounding box indices from an assign result",
+    "sample_negative_bbox": "call _sample_neg to randomly sample negative bounding box indices from an assign result",
+    "review_random_sampler_class": "review the RandomSampler class and its random sampling methods for bounding box assignment"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/samplers/sampling_result.py": {
+    "create_sampling_result": "create a SamplingResult from positive and negative bbox indices with ground truth assignments",
+    "generate_random_sampling_result": "generate a random SamplingResult using SamplingResult.random with a fixed rng seed for testing",
+    "move_sampling_result_to_device": "move all tensors in a SamplingResult to a specified GPU or CPU device",
+    "get_sampling_result_info": "get a dictionary of info about a SamplingResult including pos_inds, neg_inds, and assigned gt indices",
+    "concatenate_sampling_bboxes": "concatenate positive and negative bounding boxes from a SamplingResult using the bboxes property"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/bbox/samplers/score_hlr_sampler.py": {
+    "build_ScoreHLRSampler": "build a ScoreHLRSampler instance with num, pos_fraction, and context for importance-based sample reweighting in object detection",
+    "create_random_choice": "create a random selection of elements from a gallery tensor or list using ScoreHLRSampler.random_choice",
+    "test_sample_pos": "test the _sample_pos method to randomly sample positive bounding box samples from assign results",
+    "review_sample_neg": "review the _sample_neg method that computes Score-HLR and samples negative bboxes with NMS-Match grouping",
+    "summarize_sample": "summarize the sample method that samples positive and negative bboxes and returns SamplingResult with label weights"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/evaluation/bbox_overlaps.py": {
+    "calculate_bbox_iou": "calculate the intersection over union between two sets of bounding boxes using numpy arrays",
+    "calculate_bbox_iof": "calculate the intersection over foreground between two sets of bounding boxes using numpy arrays",
+    "compute_overlap_matrix": "compute an overlap matrix of shape (n, k) for all pairs of bounding boxes",
+    "refactor_bbox_overlaps": "refactor the bbox_overlaps function to support GPU acceleration via CUDA kernels",
+    "test_bbox_overlaps": "test the bbox_overlaps function with edge cases like empty bbox arrays or zero-area boxes"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/evaluation/class_names.py": {
+    "get_classes_coco": "get the COCO dataset class names by calling get_classes with the dataset name 'coco'",
+    "get_classes_voc": "get the Pascal VOC dataset class names by calling get_classes with the dataset name 'voc'",
+    "get_classes_cityscapes": "get the Cityscapes dataset class names by calling get_classes with the dataset name 'cityscapes'",
+    "coco_classes_list": "get the full list of 80 COCO object detection class labels by calling coco_classes",
+    "voc_classes_list": "get the full list of 20 Pascal VOC object detection class labels by calling voc_classes"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/evaluation/eval_hooks.py": {
+    "create_EvalHook": "create an EvalHook instance with a DataLoader to evaluate the model every N epochs during training",
+    "create_DistEvalHook": "create a DistEvalHook for distributed multi-GPU evaluation with configurable tmpdir and gpu_collect options",
+    "run_EvalHook_after_train_epoch": "run the EvalHook after_train_epoch method to trigger single GPU model evaluation on the dataloader",
+    "run_DistEvalHook_after_train_epoch": "run the DistEvalHook after_train_epoch method to trigger multi-GPU model evaluation across processes",
+    "review_EvalHook_init_rule": "review the EvalHook _init_rule method to understand how greater and less comparison rules are inferred"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/evaluation/mean_ap.py": {
+    "eval_map_dataset": "evaluate mean average precision of a detection dataset using det_results and annotations",
+    "calculate_average_precision": "calculate average precision from recall and precision arrays using area or 11points mode",
+    "classify_tpfp_imagenet": "classify detected bounding boxes as true or false positives using ImageNet IoU rules",
+    "classify_tpfp_default": "classify detected bounding boxes as true or false positives using default IoU threshold matching",
+    "print_map_summary": "print a formatted ASCII table summarizing mAP results per class with gts, dets, recall, and AP"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/evaluation/recall.py": {
+    "eval_recalls": "calculate object detection recalls from ground truth boxes and proposals with configurable IoU thresholds",
+    "print_recall_summary": "print a formatted ASCII table summarizing recall values across proposal numbers and IoU thresholds",
+    "plot_num_recall": "plot a Proposal_num-Recalls curve showing recall as a function of the number of proposals",
+    "plot_iou_recall": "plot an IoU-Recalls curve showing recall as a function of IoU threshold values",
+    "set_recall_param": "validate and normalize proposal_nums and iou_thrs inputs into numpy arrays for recall evaluation"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/export/pytorch2onnx.py": {
+    "generate_inputs_and_wrap_model": "build a wrapped MMDetection model and sample inputs ready for ONNX export from a config and checkpoint",
+    "build_model_from_cfg": "build an MMDetection model from an OpenMMLab config file and load weights from a checkpoint path",
+    "preprocess_example_input": "preprocess an example input image into a normalized tensor and metadata dict for model inference",
+    "test_generate_inputs_and_wrap_model": "test the generate_inputs_and_wrap_model function by exporting a wrapped MMDetection model to ONNX format",
+    "review_preprocess_example_input": "review the preprocess_example_input function to verify image resizing, normalization, and tensor conversion logic"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/fp16/deprecated_fp16_utils.py": {
+    "create_deprecated_fp16_optimizer_hook": "create a DeprecatedFp16OptimizerHook instance to wrap mmcv Fp16OptimizerHook with deprecation warnings",
+    "build_deprecated_auto_fp16_decorator": "build a deprecated auto_fp16 decorator that warns users to import from mmcv.runner instead",
+    "refactor_deprecated_force_fp32_decorator": "refactor code using deprecated force_fp32 decorator to migrate imports from mmdet.core to mmcv.runner",
+    "review_deprecated_wrap_fp16_model": "review the deprecated wrap_fp16_model function that wraps models for FP16 training with deprecation warnings",
+    "summarize_deprecated_fp16_utils": "summarize the deprecated FP16 utility wrappers that delegate to mmcv.runner and emit deprecation warnings"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/mask/mask_target.py": {
+    "compute_mask_target_multi_image": "compute mask targets for positive proposals across multiple images using ground truth masks and config",
+    "compute_mask_target_single_image": "compute mask targets for positive proposals in a single image by cropping and resizing ground truth masks",
+    "crop_and_resize_gt_masks": "crop and resize ground truth instance masks to a specified size for positive proposals using crop_and_resize",
+    "clip_proposal_coordinates": "clip proposal bounding box coordinates to stay within image width and height boundaries",
+    "create_empty_mask_targets": "create an empty zero tensor for mask targets when no positive proposals exist in the image"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/mask/structures.py": {
+    "create_bitmapmasks_from_ndarray": "create BitmapMasks instance from a numpy ndarray of shape N x H x W with height and width",
+    "create_polygonmasks_from_list": "create PolygonMasks instance from a nested list of polygon coordinate arrays with height and width",
+    "crop_and_resize_bitmapmasks": "crop and resize BitmapMasks by given bounding boxes using roi_align to a target output shape",
+    "convert_polygon_to_bitmap": "convert polygon masks to bitmap representation using pycocotools maskUtils frPyObjects and decode",
+    "rescale_bitmapmasks_with_interpolation": "rescale BitmapMasks to a target scale using nearest or bilinear interpolation while keeping aspect ratio"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/mask/utils.py": {
+    "split_combined_polys_into_masks": "split combined 1-D polygon tensors into per-image mask lists using poly lengths and polys per mask",
+    "encode_mask_results_to_rle": "encode bitmap mask results to RLE code for COCO format using pycocotools mask utility",
+    "encode_mask_results_with_scoring": "encode bitmap mask results with mask scoring RCNN tuple containing segmentation results and classification scores",
+    "review_split_combined_polys": "review the split_combined_polys function to understand how it uses mmcv slice_list to split polygon tensors",
+    "review_encode_mask_results": "review the encode_mask_results function to understand RLE encoding of bitmap masks for COCO output"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/post_processing/bbox_nms.py": {
+    "run_multiclass_nms": "run multiclass NMS on multi-class bounding boxes with score threshold and IoU config",
+    "run_fast_nms": "run fast NMS from YOLACT on bounding boxes with mask coefficients and score threshold",
+    "test_multiclass_nms": "test the multiclass_nms function with sample bboxes, scores, and NMS configuration parameters",
+    "test_fast_nms": "test the fast_nms function with bboxes, scores, coefficients, and IoU threshold parameters",
+    "refactor_multiclass_nms": "refactor the multiclass_nms function to add size check before feeding into batched_nms"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/post_processing/merge_augs.py": {
+    "merge_aug_proposals": "merge augmented RPN proposals from multiscale and flip testing schemes using NMS and score sorting",
+    "merge_aug_bboxes": "merge augmented detection bounding boxes and scores by averaging across multiple test augmentations",
+    "merge_aug_scores": "merge augmented bounding box scores by computing the mean across multiple test augmentations",
+    "merge_aug_masks": "merge augmented mask predictions by reversing flips and averaging or weighting mask arrays",
+    "review_merge_augs": "review the merge_augs module to understand how augmented proposals, bboxes, scores, and masks are merged"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/utils/dist_utils.py": {
+    "allreduce_grads": "allreduce gradients across GPUs for a list of model parameters with optional coalescing and bucket size",
+    "allreduce_coalesced": "coalesce and allreduce a list of tensors by type or bucket size across distributed processes",
+    "reduce_mean": "compute the mean of a tensor across all GPUs in a distributed training setup",
+    "distoptimizerhook_init": "initialize a deprecated DistOptimizerHook for distributed training that delegates to mmcv.runner.OptimizerHook",
+    "review_dist_utils": "review the dist_utils module for distributed training utility functions including gradient allreduce and tensor reduction"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/utils/misc.py": {
+    "apply_multi_apply": "apply a function to multiple lists of arguments and transpose the results into grouped lists",
+    "unmap_tensor_data": "unmap a subset of tensor data back to the original set using index mapping and fill values",
+    "convert_mask_to_ndarray": "convert BitmapMasks, PolygonMasks, or torch.Tensor masks into numpy ndarray format",
+    "review_multi_apply": "review the multi_apply function that applies a callable to multiple input lists and transposes outputs",
+    "test_unmap": "test the unmap function to verify it correctly places data back into a full-sized tensor using indices"
+  },
+  "facebookresearch_generic-grouping/mmdet/core/visualization/image.py": {
+    "draw_detection_bboxes_on_image": "draw bounding boxes and class labels with optional segmentation masks on an image using imshow_det_bboxes",
+    "visualize_gt_and_detection_results": "visualize ground truth and detection bounding boxes side by side on an image using imshow_gt_det_bboxes",
+    "convert_bgr_to_rgb_matplotlib": "convert a BGR color value to a normalized RGB tuple for matplotlib using color_val_matplotlib",
+    "filter_bboxes_by_score_threshold": "filter bounding boxes by confidence score threshold when drawing detections with imshow_det_bboxes",
+    "save_visualized_detection_image": "save an image with drawn bounding boxes and labels to a file using the out_file parameter"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/builder.py": {
+    "build_dataset_from_cfg": "build a dataset from a config dict supporting ConcatDataset, RepeatDataset, and ClassBalancedDataset types",
+    "build_dataloader_for_training": "build a PyTorch DataLoader with distributed or non-distributed sampling for object detection training",
+    "concat_datasets_from_config": "concatenate multiple datasets from a list of annotation files into a single ConcatDataset",
+    "create_worker_init_fn": "create a worker initialization function that sets random seeds for each DataLoader worker process",
+    "register_dataset_or_pipeline": "register a custom dataset class or pipeline under the DATASETS or PIPELINES Registry"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/coco.py": {
+    "load_annotations_CocoDataset": "load COCO style annotations from a JSON file into the CocoDataset using the pycocotools COCO API",
+    "get_ann_info_CocoDataset": "get bounding box and mask annotation info for a specific image index in the COCO dataset",
+    "evaluate_CocoDataset": "evaluate detection or segmentation results using COCO protocol metrics like mAP, AR, and classwise AP",
+    "results2json_CocoDataset": "convert detection or segmentation results to COCO style JSON files for bbox, segm, or proposal output",
+    "filter_imgs_CocoDataset": "filter out images that are too small or have no ground truth annotations in the COCO dataset"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/coco_split.py": {
+    "build_coco_split_dataset": "build a CocoSplitDataset instance with train_class and eval_class splits for open-world object proposal training",
+    "load_annotations_coco_split": "load COCO annotation file into a CocoSplitDataset and map category IDs for training and evaluation splits",
+    "filter_imgs_coco_split": "filter images in CocoSplitDataset to exclude those without ground truth annotations for the training category split",
+    "parse_ann_info_coco_split": "parse bounding box and mask annotations from COCO format into numpy arrays for the training category subset",
+    "evaluate_coco_split": "evaluate detection results on a CocoSplitDataset using COCO metrics with cross-category evaluation and class-agnostic support"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/coco_split_online.py": {
+    "create_CocoSplitOnlineDataset": "create a CocoSplitOnlineDataset instance with ann_dir, iou_thresh, score_thresh, and top_k parameters",
+    "get_ann_info_CocoSplitOnlineDataset": "get annotation info for a specific image index by loading per-image JSON files online",
+    "sample_targets_CocoSplitOnlineDataset": "sample and filter annotations by IoU threshold, score threshold, random shuffle, and top-k limits",
+    "review_CocoSplitOnlineDataset_class": "review the CocoSplitOnlineDataset class that loads COCO annotations online for memory-efficient training on 3M+ masks",
+    "summarize_CocoSplitOnlineDataset_init": "summarize the CocoSplitOnlineDataset constructor parameters including ann_dir, iou_thresh, score_thresh, top_k, and random_sample_masks"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/coco_split_pseudo_masks.py": {
+    "create_CocoSplitPseudoMasksDataset": "create a CocoSplitPseudoMasksDataset instance to jointly train on images with both pseudo-GT and GT annotations",
+    "review_get_ann_info": "review the get_ann_info method that loads GT annotations and merges them with filtered pseudo mask annotations",
+    "refactor_sample_targets": "refactor the sample_targets method to filter annotations by IoU threshold, score threshold, and top-k selection",
+    "build_dataset_with_pseudo_masks": "build a dataset that loads additional pseudo mask annotations from a separate COCO annotation file alongside ground truth",
+    "test_sample_targets_filtering": "test the sample_targets method to verify IoU threshold, score threshold, random sampling, and top-k filtering logic"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/cocoeval_wrappers.py": {
+    "summarize_COCOEvalWrapper": "summarize the COCOEvalWrapper class that extends COCOeval to compute and display COCO evaluation summary metrics",
+    "run_COCOEvalWrapper_summarize": "run the COCOEvalWrapper summarize method to compute AP and AR stats across IoU thresholds and area ranges",
+    "review_COCOEvalXclassWrapper": "review the COCOEvalXclassWrapper class for cross-category generalization evaluation that ignores seen-class detections",
+    "test_COCOEvalXclassWrapper_evaluateImg": "test the COCOEvalXclassWrapper evaluateImg method to evaluate a single image and category with ignored split filtering",
+    "build_COCOEvalWrapper_str": "build a COCOEvalWrapper instance and call its __str__ method to trigger summarize and print evaluation stats"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/custom.py": {
+    "create_custom_dataset": "create a CustomDataset instance with an annotation file and processing pipeline for object detection",
+    "load_annotations_custom_dataset": "load annotations from a JSON file into the CustomDataset using mmcv load",
+    "evaluate_mAP_custom_dataset": "evaluate detection results against ground truth annotations using mAP metric with IoU threshold",
+    "get_classes_custom_dataset": "get class names from a file path or list to override default CLASSES in CustomDataset",
+    "prepare_train_img_custom_dataset": "prepare training image data and annotations by running them through the Compose pipeline"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/dataset_wrappers.py": {
+    "build_concat_dataset": "build a ConcatDataset to concatenate multiple datasets with separate evaluation support",
+    "create_repeat_dataset": "create a RepeatDataset to repeat a small dataset N times for faster training",
+    "create_class_balanced_dataset": "create a ClassBalancedDataset to oversample rare categories using repeat factors",
+    "test_concat_dataset_evaluate": "test the ConcatDataset evaluate method to get per-dataset AP results separately",
+    "review_class_balanced_repeat_factors": "review the ClassBalancedDataset _get_repeat_factors method to understand category frequency computation"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/utils.py": {
+    "replace_ImageToTensor_in_pipeline": "replace ImageToTensor transforms with DefaultFormatBundle in an mmdet data pipeline config for batch inference",
+    "replace_ImageToTensor_nested": "recursively replace ImageToTensor inside MultiScaleFlipAug transforms in a nested mmdet pipeline config",
+    "get_loading_pipeline_from_config": "extract only LoadImageFromFile and LoadAnnotations steps from an mmdet data pipeline config",
+    "review_replace_ImageToTensor": "review the replace_ImageToTensor function to understand how it recursively replaces transforms in pipeline configs",
+    "review_get_loading_pipeline": "review the get_loading_pipeline function to understand how it filters loading-related pipeline steps"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/pipelines/auto_augment.py": {
+    "build_autoaugment_pipeline": "build an AutoAugment pipeline with multiple augmentation policies for object detection data augmentation",
+    "create_shear_transform": "create a Shear transform to apply horizontal or vertical shear to images and bounding boxes",
+    "create_rotate_transform": "create a Rotate transform to rotate images, bboxes, masks and segmentation maps by a given angle",
+    "create_translate_transform": "create a Translate transform to shift images and bounding boxes horizontally or vertically by an offset",
+    "create_color_transform": "create a ColorTransform to adjust image color, brightness, contrast, or equalize histogram for data augmentation"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/pipelines/formating.py": {
+    "convert_to_tensor": "convert numpy arrays, sequences, ints, and floats to torch tensors using to_tensor",
+    "use_Tensor_pipeline": "use the ToTensor pipeline class to convert specified result dict keys to torch tensors",
+    "convert_image_to_tensor": "use ImageToTensor to convert HWC images to CHW torch tensors with automatic dimension expansion",
+    "format_detection_results": "use DefaultFormatBundle to format img, gt_bboxes, gt_labels, gt_masks, and gt_semantic_seg fields",
+    "collect_pipeline_data": "use Collect to gather specified keys and img_meta into a data dict for model input"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/pipelines/loading.py": {
+    "load_image_from_file": "create a pipeline that loads an image from disk and populates the results dict with image data and metadata",
+    "load_image_from_webcam": "create a pipeline that adds image metadata to a results dict containing a preloaded webcam image",
+    "load_multichannel_image_from_files": "create a pipeline that loads multi-channel images from separate channel files and stacks them into a single array",
+    "load_annotations": "create a pipeline that loads bounding boxes, labels, masks, and semantic segmentation annotations into the results dict",
+    "filter_annotations": "create a pipeline that filters out ground truth annotations with bounding boxes smaller than a minimum width and height"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/pipelines/transforms.py": {
+    "build_resize_pipeline": "build a Resize transform to resize images with multi-scale mode and keep aspect ratio",
+    "build_randomflip_pipeline": "build a RandomFlip transform to flip images horizontally or vertically with configurable probability",
+    "build_photometricdistortion_pipeline": "build a PhotoMetricDistortion transform to apply random brightness, contrast, saturation, and hue changes",
+    "build_randomcrop_pipeline": "build a RandomCrop transform to randomly crop images with absolute or relative crop size",
+    "build_albu_pipeline": "build an Albu transform to apply Albumentations augmentations like ShiftScaleRotate and ChannelShuffle"
+  },
+  "facebookresearch_generic-grouping/mmdet/datasets/samplers/group_sampler.py": {
+    "create_GroupSampler": "create a GroupSampler to shuffle and pad dataset indices by group flag for balanced batching",
+    "create_DistributedGroupSampler": "create a DistributedGroupSampler to restrict data loading to a subset of the dataset for distributed training",
+    "iterate_GroupSampler": "iterate over a GroupSampler to get shuffled dataset indices grouped by flag with padding",
+    "set_epoch_DistributedGroupSampler": "set the epoch on a DistributedGroupSampler to deterministically shuffle indices based on the epoch",
+    "get_length_DistributedGroupSampler": "get the number of samples for the current replica from a DistributedGroupSampler instance"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/builder.py": {
+    "build_detector_from_cfg": "build a detector module from a config dict using the DETECTORS registry",
+    "build_backbone_from_cfg": "build a backbone network from a config dict using the BACKBONES registry",
+    "build_head_from_cfg": "build a detection head module from a config dict using the HEADS registry",
+    "build_loss_from_cfg": "build a loss module from a config dict using the LOSSES registry",
+    "build_module_from_registry": "build an nn.Module or Sequential from a config and any registry"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/backbones/darknet.py": {
+    "build_darknet_backbone": "build a Darknet-53 backbone model with default configuration for object detection feature extraction",
+    "create_resblock_module": "create a ResBlock residual module with configurable convolution batch norm and LeakyReLU activation layers",
+    "test_darknet_forward": "test the Darknet backbone forward pass with random input tensor and verify output feature map shapes",
+    "review_darknet_architecture": "review the Darknet backbone architecture settings including layer depths and channel configurations for depth 53",
+    "summarize_make_conv_res_block": "summarize the make_conv_res_block static method that creates convolution followed by repeated residual blocks"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/backbones/detectors_resnet.py": {
+    "build_detectoRS_resnet_backbone": "build a DetectoRS ResNet backbone with SAC and RFP support for object detection",
+    "create_bottleneck_with_sac": "create a Bottleneck block with Switchable Atrous Convolution for multi-scale feature extraction",
+    "run_rfp_forward_pass": "run the RFP forward pass on DetectoRS ResNet with recursive feature pyramid inputs",
+    "build_reslayer_for_detectoRS": "build a ResLayer with RFP input channels for the DetectoRS backbone stage",
+    "review_bottleneck_rfp_forward": "review the Bottleneck rfp_forward method that fuses RFP features with residual output"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/backbones/detectors_resnext.py": {
+    "build_resnext_backbone": "build a DetectoRS_ResNeXt backbone with 50 layers and 32 groups for object detection",
+    "create_bottleneck_block": "create a ResNeXt Bottleneck block with grouped convolutions and configurable base width",
+    "build_res_layer": "build a residual layer using make_res_layer with custom groups and base_width parameters",
+    "review_bottleneck_dcn": "review the Bottleneck class to understand DCN and SAC convolution support",
+    "summarize_arch_settings": "summarize the DetectoRS_ResNeXt arch_settings for 50, 101, and 152 layer variants"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/backbones/hourglass.py": {
+    "build_hourglassnet_backbone": "build an HourglassNet backbone with default 2 stacked hourglass modules for human pose estimation",
+    "run_hourglassnet_forward": "run forward pass on HourglassNet with a 511x511 input tensor to get multi-scale feature outputs",
+    "create_hourglassmodule_recursive": "create a recursive HourglassModule with configurable depth, stage channels, and stage blocks for feature extraction",
+    "init_hourglassnet_weights": "initialize HourglassNet weights by resetting all Conv2d layer parameters for training",
+    "review_hourglassnet_architecture": "review the HourglassNet stacked hourglass architecture with stem, hourglass modules, inters, and output convolutions"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/backbones/hrnet.py": {
+    "build_hrnet_backbone": "build an HRNet backbone with configurable stages for high-resolution feature extraction",
+    "create_hrmodule": "create an HRModule with multi-branch fusion layers for parallel feature processing",
+    "test_hrnet_forward": "test the HRNet forward pass with random input tensors and verify multi-scale output shapes",
+    "init_hrnet_weights": "initialize HRNet weights from a pretrained checkpoint or with Kaiming initialization",
+    "review_hrnet_transition_layers": "review the HRNet transition layers that connect stages with different branch counts"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/backbones/regnet.py": {
+    "build_regnet_backbone": "build a RegNet backbone model using a predefined arch like regnetx_400mf or custom arch dict",
+    "run_regnet_forward": "run the RegNet forward pass on a PyTorch tensor to get multi-scale feature outputs",
+    "generate_regnet_widths": "generate per-block widths and stage count from RegNet parameters w0, wa, wm, and depth",
+    "adjust_regnet_width_group": "adjust the compatibility of stage widths and group widths for RegNet bottleneck layers",
+    "get_regnet_stages": "get the stage widths and stage block counts from a list of per-block widths"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/backbones/res2net.py": {
+    "build_Res2Net_backbone": "build a Res2Net backbone with depth 50, scales 4, and base_width 26 for object detection",
+    "create_Bottle2neck_block": "create a Bottle2neck block with custom scales and base_width for multi-scale feature representation",
+    "create_Res2Layer": "create a Res2Layer with Bottle2neck blocks, avg_down pooling, and configurable stride for Res2Net stages",
+    "test_Res2Net_forward": "test the Res2Net backbone forward pass with a random input tensor and verify output shapes",
+    "init_Res2Net_weights": "initialize Res2Net backbone weights from a pretrained checkpoint or with Kaiming initialization"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/backbones/resnest.py": {
+    "build_resnest_backbone": "build a ResNeSt backbone model with configurable radix, groups, and reduction factor for object detection",
+    "create_splitattentionconv2d_layer": "create a Split-Attention Conv2d layer with radix softmax for grouped spatial attention in ResNeSt",
+    "build_resnest_bottleneck_block": "build a ResNeSt Bottleneck block using SplitAttentionConv2d with average pooling for downsampling",
+    "create_rsoftmax_module": "create a Radix Softmax module that applies softmax or sigmoid based on radix value for attention",
+    "review_resnest_arch_settings": "review the ResNeSt architecture settings for variants 50, 101, 152, and 200 layer configurations"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/backbones/resnet.py": {
+    "build_resnet_backbone": "build a ResNet backbone with a specified depth like 18, 50, 101, or 152 for feature extraction",
+    "build_resnetv1d_backbone": "build a ResNetV1d backbone with deep stem and avg down sampling for improved feature extraction",
+    "create_bottleneck_block": "create a Bottleneck block with 1x1, 3x3, 1x1 conv layers and optional deformable convolution support",
+    "create_basicblock": "create a BasicBlock with two 3x3 conv layers and residual connection for ResNet-18 or ResNet-34",
+    "init_resnet_weights": "initialize ResNet backbone weights from a pretrained checkpoint or use Kaiming initialization for conv layers"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/backbones/resnext.py": {
+    "build_resnext_backbone": "build a ResNeXt backbone model with configurable groups and base_width for object detection",
+    "create_resnext_bottleneck": "create a ResNeXt Bottleneck block with grouped convolutions and configurable base width",
+    "review_resnext_arch_settings": "review the ResNeXt arch_settings dict to see supported depths 50, 101, and 152",
+    "refactor_bottleneck_groups": "refactor the Bottleneck class to use grouped convolutions with custom base_width and base_channels",
+    "summarize_resnext_make_res_layer": "summarize the ResNeXt make_res_layer method that packs blocks into a ResLayer with group parameters"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/backbones/ssd_vgg.py": {
+    "build_ssd_vgg_backbone": "build an SSDVGG backbone network for single-shot detection with input size 300 and depth 11",
+    "run_ssd_vgg_forward": "run the SSDVGG forward pass on a random input tensor to get multi-scale feature outputs",
+    "init_ssd_vgg_weights": "initialize SSDVGG backbone weights from a pretrained checkpoint path or with default Kaiming init",
+    "build_l2norm_layer": "build an L2Norm normalization layer with configurable scale and epsilon for feature map normalization",
+    "review_ssd_vgg_extra_layers": "review the SSDVGG _make_extra_layers method to understand how extra conv layers are constructed for input sizes 300 and 512"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/backbones/trident_resnet.py": {
+    "build_trident_resnet_backbone": "build a TridentResNet backbone with depth 50 and 3 trident branches for multi-scale feature extraction",
+    "create_trident_conv_layer": "create a TridentConv layer with shared weights and different dilations for multi-branch convolution",
+    "build_trident_bottleneck_block": "build a TridentBottleneck block with trident dilations for use in TridentResNet stage 3",
+    "create_trident_res_layer": "create a Trident Res layer using make_trident_res_layer with TridentBottleneck blocks and specified dilations",
+    "review_tridentconv_forward": "review the TridentConv forward method to understand multi-branch inference vs single-branch test mode"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/dense_heads/anchor_head.py": {
+    "build_anchor_head": "build an AnchorHead instance with custom num_classes, in_channels, and anchor generator config for object detection",
+    "run_forward_single": "run forward_single on a single scale level feature tensor to get cls_score and bbox_pred outputs",
+    "test_get_bboxes": "test get_bboxes to transform multi-level cls_scores and bbox_preds into final detection results with NMS",
+    "review_loss_single": "review loss_single to understand how classification and regression losses are computed for a single scale level",
+    "summarize_get_targets": "summarize get_targets to understand how anchor classification and regression targets are computed across multiple images"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/dense_heads/base_dense_head.py": {
+    "review_BaseDenseHead_class": "review the BaseDenseHead abstract base class for dense detection heads in MMDetection",
+    "refactor_forward_train_method": "refactor the forward_train method to support additional training arguments or loss components",
+    "implement_loss_abstract_method": "implement the abstract loss method in a subclass to compute detection head losses",
+    "implement_get_bboxes_abstract_method": "implement the abstract get_bboxes method in a subclass to transform outputs into bounding box predictions",
+    "test_forward_train_with_proposals": "test the forward_train method with FPN features and ground truth bboxes to verify loss computation"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/dense_heads/dense_test_mixins.py": {
+    "merge_aug_bboxes": "merge augmented detection bounding boxes and scores from multiple test-time augmentations into a single tensor",
+    "aug_test_bboxes": "test detection bounding boxes with test time augmentation including multiscale and flip transforms",
+    "review_BBoxTestMixin": "review the BBoxTestMixin class and its test time augmentation methods for bounding box detection",
+    "test_merge_aug_bboxes": "test the merge_aug_bboxes method to verify it correctly maps back augmented bboxes using image metadata",
+    "test_aug_test_bboxes": "test the aug_test_bboxes method to verify it runs forward pass and applies multiclass NMS on merged results"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/dense_heads/oln_rpn_head.py": {
+    "build_oln_rpn_head": "build an OlnRPNHead instance with loss_objectness config and Centerness objectness type",
+    "review_forward_single": "review the forward_single method that computes cls, bbox, and objectness predictions from a feature map",
+    "test_loss_single": "test the loss_single method to compute classification, regression, and objectness losses for one scale level",
+    "summarize_get_targets": "summarize the get_targets method that computes classification and regression targets for anchors across multiple images",
+    "refactor_get_bboxes": "refactor the get_bboxes method to transform network output into bbox predictions using objectness scores"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/dense_heads/rpn_head.py": {
+    "build_RPNHead": "build an RPN head instance with a given number of input channels and keyword arguments",
+    "create_RPNHead_init_layers": "create and initialize the RPN conv, classification, and regression convolutional layers",
+    "run_RPNHead_forward_single": "run a forward pass on a single scale feature map to get cls scores and bbox predictions",
+    "test_RPNHead_loss": "test the RPN head loss computation using cls scores, bbox preds, and ground truth bboxes",
+    "review_RPNHead_get_bboxes_single": "review the _get_bboxes_single method that transforms cls scores and bbox preds into NMS-filtered proposals"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/dense_heads/rpn_test_mixin.py": {
+    "test_rpn_simple": "test the RPN head without augmentation by running simple_test_rpn on feature tensors and image metadata",
+    "test_rpn_augmented": "test the RPN head with test-time augmentation by running aug_test_rpn on multiple feature sets and merging proposals",
+    "test_rpn_async": "test the RPN head asynchronously by running async_simple_test_rpn with a configurable sleep interval for async inference",
+    "review_RPNTestMixin": "review the RPNTestMixin class and its test methods for region proposal network inference in MMDetection",
+    "refactor_aug_test_rpn": "refactor the aug_test_rpn method to support a different proposal merging strategy or rescaling logic"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/detectors/base.py": {
+    "extract_features_from_images": "extract features from a list of augmented images using the detector's extract_feats method",
+    "train_detector_model": "run a training step on the detector model by calling train_step with batch data and optimizer",
+    "test_detector_with_augmentation": "test the detector model with test-time augmentation using forward_test with multiple image augmentations",
+    "visualize_detection_results": "draw bounding boxes and segmentation masks over an image using show_result with configurable colors and thresholds",
+    "parse_and_reduce_losses": "parse raw network loss outputs and reduce them across GPUs for distributed training using _parse_losses"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/detectors/pa_predictor.py": {
+    "build_pairwise_affinity_predictor": "build a PairwiseAffinityPredictor detector with a backbone and classifier head for PA prediction",
+    "create_masks2palette": "create a segmentation palette from binary object masks using masks2palette",
+    "create_palette2affinity": "create pairwise affinity maps from a segmentation palette using palette2affinity",
+    "create_palette2filter": "create a background filter from a segmentation palette using palette2filter",
+    "create_pairwise_affinity_head": "create a PairwiseAffinityHead or PairwiseAffinityHeadUperNet module for PA prediction"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/detectors/rpn.py": {
+    "build_rpn_detector": "build a Region Proposal Network detector with backbone, neck, and RPN head components",
+    "extract_feat_rpn": "extract multi-level features from input images using the RPN backbone and neck",
+    "train_rpn_forward": "train the RPN detector by computing loss components from ground truth bounding boxes",
+    "test_rpn_simple": "test the RPN detector to generate region proposals without test time augmentation",
+    "test_rpn_aug": "test the RPN detector with test time augmentation and bounding box mapping"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/detectors/rpn_detector.py": {
+    "run_RPNDetector_simple_test": "run the RPNDetector simple_test method to generate region proposals from input images without test time augmentation",
+    "test_RPNDetector_proposal_generation": "test the RPNDetector class to verify it generates bounding box proposals from image tensors and metadata",
+    "review_RPNDetector_simple_test_rescale": "review the RPNDetector simple_test method and its rescale parameter for dividing proposals by scale factor",
+    "summarize_RPNDetector_class": "summarize the RPNDetector class that extends RPN and converts RPN proposals into bbox results format",
+    "refactor_RPNDetector_bbox_results": "refactor the RPNDetector simple_test method to customize how bbox_results are formatted using bbox2result"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/detectors/two_stage.py": {
+    "build_TwoStageDetector": "build a two-stage detector with backbone, RPN head, and ROI head for object detection",
+    "test_forward_train": "test the TwoStageDetector forward_train method with ground truth bboxes and labels to compute losses",
+    "run_simple_test": "run the TwoStageDetector simple_test method to perform inference without augmentation on input images",
+    "extract_feat_TwoStageDetector": "extract features from the backbone and neck of the TwoStageDetector for downstream tasks",
+    "review_init_weights": "review the TwoStageDetector init_weights method to initialize backbone, neck, RPN, and ROI head weights"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/detectors/two_tower.py": {
+    "build_TwoTowerDetector": "build a TwoTowerDetector with a recognition backbone and group detector for object detection",
+    "init_weights_TwoTowerDetector": "initialize TwoTowerDetector weights from pretrained checkpoints and optionally freeze backbone or RPN scoring layers",
+    "extract_feat_TwoTowerDetector": "extract features from an image using the recognition backbone and optional neck module",
+    "extract_grouping_TwoTowerDetector": "extract grouping proposals and mask predictions from the group detector for an image",
+    "forward_train_TwoTowerDetector": "run forward training pass on images with ground truth boxes, labels, and masks to compute losses"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/accuracy.py": {
+    "calculate_topk_accuracy": "calculate top-k classification accuracy from model predictions and ground truth labels",
+    "calculate_accuracy_with_threshold": "calculate classification accuracy filtering out predictions below a confidence threshold",
+    "use_accuracy_module": "use the Accuracy nn.Module to compute top-k accuracy in a PyTorch training loop",
+    "review_accuracy_function": "review the accuracy function to understand top-k correctness logic and threshold filtering",
+    "test_accuracy_class": "test the Accuracy class forward pass with sample prediction and target tensors"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/ae_loss.py": {
+    "build_ae_loss_module": "build a python module that computes associative embedding pull and push loss for object detection corner predictions",
+    "create_ae_loss_per_image": "create a function that calculates pull and push loss for top-left and bottom-right corner embeddings in one image",
+    "test_AssociativeEmbeddingLoss_forward": "test the AssociativeEmbeddingLoss forward pass with batched prediction tensors and ground truth match coordinates",
+    "refactor_ae_loss_per_image": "refactor ae_loss_per_image to vectorize the per-object loop for faster pull and push loss computation",
+    "review_AssociativeEmbeddingLoss": "review the AssociativeEmbeddingLoss class and its pull and push weight configuration for CornerNet training"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/balanced_l1_loss.py": {
+    "create_balanced_l1_loss_function": "create a function that calculates balanced L1 loss between prediction and target tensors with configurable beta threshold",
+    "build_BalancedL1Loss_module": "build a PyTorch nn.Module for balanced L1 loss with configurable alpha, gamma, and beta hyperparameters",
+    "test_balanced_l1_loss_piecewise": "test the balanced L1 loss function to verify piecewise behavior when diff is below and above beta threshold",
+    "refactor_BalancedL1Loss_forward": "refactor the BalancedL1Loss forward method to support custom reduction override and sample-wise weighting",
+    "review_balanced_l1_loss_formula": "review the balanced L1 loss formula implementation from the Libra R-CNN paper for correctness"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/cross_entropy_loss.py": {
+    "build_cross_entropy_loss_module": "build a CrossEntropyLoss module with configurable sigmoid, mask, and class weight options for object detection",
+    "calculate_standard_cross_entropy": "calculate cross entropy loss between predictions and labels with optional sample-wise weighting and reduction",
+    "calculate_binary_cross_entropy": "calculate binary cross entropy loss with logits for sigmoid-based classification predictions",
+    "calculate_mask_cross_entropy": "calculate cross entropy loss for mask predictions using ROI labels and target masks",
+    "review_CrossEntropyLoss_forward": "review the CrossEntropyLoss forward method to understand how cls_score, labels, and weights produce the final loss"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/focal_loss.py": {
+    "build_focalloss_module": "build a FocalLoss module with custom gamma and alpha for object detection training",
+    "run_sigmoid_focal_loss": "run the CUDA-accelerated sigmoid focal loss function on prediction and target tensors",
+    "test_py_sigmoid_focal_loss": "test the pure PyTorch sigmoid focal loss implementation for debugging purposes",
+    "refactor_focalloss_forward": "refactor the FocalLoss forward method to support softmax focal loss",
+    "review_weight_reduce_loss": "review how weight_reduce_loss applies sample-wise weights and reduction to focal loss output"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/gaussian_focal_loss.py": {
+    "build_gaussian_focal_loss_module": "build a python module that instantiates GaussianFocalLoss with custom alpha and gamma hyperparameters",
+    "create_gaussian_focal_loss_function": "create a function that computes focal loss for predictions against a gaussian heatmap target",
+    "test_GaussianFocalLoss_forward": "test the GaussianFocalLoss forward pass with a prediction tensor and gaussian distribution target",
+    "refactor_gaussian_focal_loss_weights": "refactor the gaussian_focal_loss function to support dynamic alpha and gamma weight tuning",
+    "review_GaussianFocalLoss_reduction": "review the GaussianFocalLoss class and its reduction override logic for mean sum and none modes"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/gfocal_loss.py": {
+    "build_QualityFocalLoss_module": "build a python module that instantiates QualityFocalLoss with custom beta and loss_weight for dense object detection",
+    "build_DistributionFocalLoss_module": "build a python module that instantiates DistributionFocalLoss with custom reduction and loss_weight for bounding box regression",
+    "run_quality_focal_loss": "run the quality_focal_loss function to compute QFL given predicted logits and target labels with quality scores",
+    "run_distribution_focal_loss": "run the distribution_focal_loss function to compute DFL given predicted distributions and target distance labels",
+    "refactor_QualityFocalLoss_beta": "refactor the QualityFocalLoss class to support a different beta value for the modulating factor calculation"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/ghm_loss.py": {
+    "build_ghmc_loss": "build a GHMC classification loss module with configurable bins and momentum for gradient harmonization",
+    "build_ghmr_loss": "build a GHMR regression loss module with configurable mu parameter and bins for gradient harmonization",
+    "test_GHMC_forward": "test the GHMC forward pass with prediction tensors, binary targets, and label weights",
+    "test_GHMR_forward": "test the GHMR forward pass with prediction tensors, regression targets, and label weights",
+    "refactor_GHMC_GHMR": "refactor the GHMC and GHMR loss classes to be consistent with other loss modules"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/iou_loss.py": {
+    "build_iou_loss_module": "build a python module using IoULoss to compute negative log IoU loss between predicted and target bounding boxes",
+    "create_giou_loss_module": "create a python module using GIoULoss to compute generalized IoU loss for bounding box regression in object detection",
+    "test_diou_loss_class": "test the DIoULoss class to compute distance IoU loss with center point penalty for bounding box regression",
+    "refactor_ciou_loss_class": "refactor the CIoULoss class to compute complete IoU loss incorporating aspect ratio consistency for bounding boxes",
+    "review_bounded_iou_loss": "review the BoundedIoULoss class and bounded_iou_loss function to compute bounded IoU loss with smooth L1 penalty"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/mse_loss.py": {
+    "build_mse_loss_module": "build a python module that uses MSELoss to compute mean squared error between predictions and targets",
+    "create_mse_loss_instance": "create an MSELoss instance with custom reduction and loss_weight parameters for object detection models",
+    "test_mse_loss_forward": "test the MSELoss forward pass with prediction and target tensors to verify loss calculation",
+    "refactor_mse_loss_reduction": "refactor the MSELoss class to support additional reduction strategies beyond mean, sum, and none",
+    "review_mse_loss_weighted": "review the MSELoss weighted loss decorator and forward method for correct weight and avg_factor handling"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/pisa_loss.py": {
+    "build_isr_p_reweighting": "build a python module that computes importance-based sample reweighting for positive samples using ISR_P with IoU-HLR ranking",
+    "build_carl_loss": "build a python module that computes classification-aware regression loss by weighting bbox regression with classification scores",
+    "test_isr_p_function": "test the isr_p function to compute importance-based label weights for positive samples in object detection",
+    "test_carl_loss_function": "test the carl_loss function to compute classification-aware regression loss with configurable sigmoid or softmax activation",
+    "review_isr_p_carl_implementation": "review the isr_p and carl_loss functions for importance-based sample reweighting and classification-aware regression loss in PISA"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/smooth_l1_loss.py": {
+    "build_smooth_l1_loss_module": "build a SmoothL1Loss module with configurable beta threshold and reduction method for bounding box regression",
+    "build_l1_loss_module": "build an L1Loss module with configurable reduction method and loss weight for object detection",
+    "run_smooth_l1_loss_function": "run the smooth_l1_loss function to compute piecewise L1 loss between prediction and target tensors",
+    "run_l1_loss_function": "run the l1_loss function to compute absolute difference loss between prediction and target tensors",
+    "review_smoothl1loss_forward": "review the SmoothL1Loss forward method to understand weighted loss computation with reduction override support"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/utils.py": {
+    "use_weighted_loss_decorator": "use the weighted_loss decorator to add weight and reduction arguments to a custom element-wise loss function",
+    "call_reduce_loss": "call reduce_loss to apply mean or sum reduction to an element-wise PyTorch loss tensor",
+    "call_weight_reduce_loss": "call weight_reduce_loss to apply element-wise weights and reduction to a loss tensor with optional avg_factor",
+    "create_custom_weighted_l1_loss": "create a custom L1 loss function decorated with weighted_loss to support per-element weighting and reduction",
+    "refactor_loss_function_for_weighting": "refactor an existing element-wise loss function to support weighting and reduction using the weighted_loss decorator"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/losses/varifocal_loss.py": {
+    "build_varifocal_loss_module": "build a VarifocalLoss module with custom alpha gamma and iou_weighted parameters for object detection",
+    "run_varifocal_loss_function": "run the varifocal_loss function with prediction and target tensors to compute iou-aware classification loss",
+    "test_VarifocalLoss_forward": "test the VarifocalLoss forward pass with sample prediction and target tensors and verify loss output",
+    "refactor_varifocal_loss_iou_weighted": "refactor the varifocal_loss function to toggle iou_weighted behavior for positive and negative examples",
+    "review_VarifocalLoss_reduction": "review the VarifocalLoss class reduction options and loss_weight scaling in the forward method"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/necks/fpn.py": {
+    "build_FPN_neck": "build a Feature Pyramid Network neck module with configurable input and output channels for object detection",
+    "create_FPN_with_extra_convs": "create an FPN neck with extra convolution layers on input, lateral, or output feature maps",
+    "review_FPN_forward": "review the FPN forward pass that builds laterals, top-down path, and extra output levels",
+    "refactor_FPN_init_weights": "refactor the FPN init_weights method to use a different weight initialization strategy",
+    "summarize_FPN_class": "summarize the FPN class implementation of Feature Pyramid Networks for multi-scale feature extraction"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/base_roi_head.py": {
+    "init_BaseRoIHead": "create a BaseRoIHead instance with bbox_head, mask_head, and shared_head configurations",
+    "init_weights_BaseRoIHead": "initialize the weights in the RoI head using pretrained model weights",
+    "forward_train_BaseRoIHead": "run the forward training pass with proposals, ground truth bboxes, and labels",
+    "simple_test_BaseRoIHead": "test the RoI head without augmentation using proposals and image metadata",
+    "aug_test_BaseRoIHead": "test the RoI head with augmentations and optional result rescaling"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/oln_roi_head.py": {
+    "build_OLN_RoI_head": "build an OLN RoI head that extracts region features and predicts bbox regression and localization quality",
+    "run_bbox_forward": "run the box head forward pass to extract RoI features and compute cls_score, bbox_pred, and bbox_score",
+    "run_bbox_forward_train": "run the box head forward training pass to compute loss using sampling results and ground truth bboxes",
+    "test_simple_test_bboxes": "test detection bboxes without augmentation by splitting proposals per image and applying post-processing",
+    "review_OlnRoIHead_class": "review the OlnRoIHead class that extends StandardRoIHead for open-world object proposal localization"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/rec_roi_head.py": {
+    "build_rec_roi_head": "build a RecRoIHead instance with use_group_mask and stop_grad_group config options",
+    "run_forward_train": "run forward training pass for RecRoIHead with proposals, ground truth bboxes, labels, and masks",
+    "test_simple_test_bboxes": "test bounding box detection using RecRoIHead simple_test_bboxes with proposals and image metadata",
+    "test_simple_test_mask": "test mask prediction using RecRoIHead simple_test_mask with detected bboxes and labels",
+    "run_merge_results": "run merge_results to combine detected bboxes, labels, segmentation results, and NMS indices"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/standard_roi_head.py": {
+    "build_standard_roi_head": "build a StandardRoIHead instance with bbox and mask heads for object detection and instance segmentation",
+    "train_forward_standard_roi_head": "run forward_train on StandardRoIHead with image features, proposals, and ground truth bboxes to compute losses",
+    "test_simple_standard_roi_head": "test StandardRoIHead with simple_test using image features and proposals to get detection results",
+    "test_aug_standard_roi_head": "test StandardRoIHead with aug_test using augmented image features and proposals for test-time augmentation",
+    "init_weights_standard_roi_head": "initialize StandardRoIHead weights with optional pretrained model path for shared head, bbox, and mask components"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/test_mixins.py": {
+    "test_bboxes_simple": "test detection bounding boxes without augmentation using the BBoxTestMixin simple_test_bboxes method",
+    "test_bboxes_augmented": "test detection bounding boxes with test time augmentation using the BBoxTestMixin aug_test_bboxes method",
+    "test_bboxes_async": "test detection bounding boxes asynchronously without augmentation using the BBoxTestMixin async_test_bboxes method",
+    "test_mask_simple": "test segmentation masks without augmentation using the MaskTestMixin simple_test_mask method",
+    "test_mask_augmented": "test segmentation masks with test time augmentation using the MaskTestMixin aug_test_mask method"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/bbox_heads/bbox_head.py": {
+    "build_bbox_head": "build a BBoxHead instance with configurable classification and regression fc layers for RoI features",
+    "run_forward_pass": "run the BBoxHead forward pass to get cls_score and bbox_pred from RoI feature tensors",
+    "get_bbox_targets": "get bounding box targets and labels from sampling results for training the RoI head",
+    "compute_bbox_loss": "compute classification and bounding box regression losses given predicted scores and targets",
+    "refine_bboxes": "refine bounding boxes during training by regressing by class and filtering ground truth boxes"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/bbox_heads/convfc_bbox_head.py": {
+    "build_ConvFCBBoxHead": "build a ConvFCBBoxHead with configurable shared conv and fc layers for object detection",
+    "build_Shared2FCBBoxHead": "build a Shared2FCBBoxHead with two shared fully connected layers for bbox regression",
+    "build_Shared4Conv1FCBBoxHead": "build a Shared4Conv1FCBBoxHead with four shared conv layers and one fc layer",
+    "review_ConvFCBBoxHead_forward": "review the ConvFCBBoxHead forward method that returns cls_score and bbox_pred tensors",
+    "refactor_ConvFCBBoxHead_stop_grad": "refactor ConvFCBBoxHead to enable stop_grad_reg for detached regression branch gradients"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/bbox_heads/convfc_bbox_score_head.py": {
+    "build_ConvFCBBoxScoreHead": "build a ConvFCBBoxScoreHead with BoxIoU scoring type and L1 loss for OLN-Box object proposal detection",
+    "build_Shared2FCBBoxScoreHead": "build a Shared2FCBBoxScoreHead with 2 shared FC layers and 1024 output channels for ROI head",
+    "run_forward_pass": "run a forward pass through ConvFCBBoxScoreHead to get cls_score, bbox_pred, and bbox_score outputs",
+    "test_get_targets": "test the get_targets method to compute labels, bbox_targets, and bbox_score_targets from sampling results",
+    "review_loss_computation": "review the loss method to compute cls, bbox, and bbox_score losses with reduction override support"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/mask_heads/coarse_mask_head.py": {
+    "build_coarse_mask_head": "build a CoarseMaskHead instance with configurable num_fcs, fc_out_channels, and downsample_factor for PointRend mask prediction",
+    "init_weights_coarse_mask_head": "initialize CoarseMaskHead weights using Xavier init for FC layers and constant init for fc_logits",
+    "forward_coarse_mask_head": "run forward pass on feature map x through convs, downsample, FC layers to produce coarse mask predictions",
+    "review_coarse_mask_head_init": "review the CoarseMaskHead constructor to understand how it removes conv_logits and builds FC layers for downsampling",
+    "refactor_coarse_mask_head_downsample": "refactor the CoarseMaskHead downsample_conv logic to support dynamic downsample_factor values at runtime"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/mask_heads/fcn_mask_head.py": {
+    "build_fcn_mask_head": "build an FCNMaskHead with 4 conv layers and deconv upsampling for 80 class mask prediction",
+    "init_weights_fcn_mask_head": "initialize FCNMaskHead weights using Kaiming normal for upsample and conv logits layers",
+    "forward_fcn_mask_head": "run forward pass through FCNMaskHead conv layers and upsampling to produce mask predictions",
+    "loss_fcn_mask_head": "compute cross entropy mask loss between predicted masks and ground truth mask targets",
+    "get_seg_masks_fcn_mask_head": "extract segmentation masks from mask predictions and detected bounding boxes with binary thresholding"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/mask_heads/fused_semantic_head.py": {
+    "build_fused_semantic_head": "build a FusedSemanticHead module for multi-level fused semantic segmentation with configurable convolution layers",
+    "create_fused_semantic_head_instance": "create a FusedSemanticHead instance with num_ins levels, fusion_level, and 256 input channels",
+    "run_forward_pass": "run a forward pass on multi-level feature maps through the FusedSemanticHead to get mask predictions",
+    "compute_semantic_seg_loss": "compute the weighted cross-entropy loss for semantic segmentation predictions against ground truth labels",
+    "init_conv_logits_weights": "initialize the conv_logits layer weights using Kaiming initialization in FusedSemanticHead"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/mask_heads/grid_head.py": {
+    "build_GridHead": "build a GridHead module with 9 grid points and 8 conv layers for Grid R-CNN mask refinement",
+    "review_GridHead_init_weights": "review the GridHead init_weights method that applies Kaiming and normal initialization to conv layers",
+    "run_GridHead_forward": "run the GridHead forward pass to produce fused and unfused heatmap predictions from ROI features",
+    "test_GridHead_get_targets": "test the GridHead get_targets method that computes grid point heatmap targets from sampling results",
+    "refactor_GridHead_get_bboxes": "refactor the GridHead get_bboxes method that refines detection bboxes using weighted voting of grid point predictions"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/mask_heads/htc_mask_head.py": {
+    "build_htc_mask_head": "build an HTCMaskHead instance with residual convolution for Hybrid Task Cascade mask prediction",
+    "init_weights_htc_mask_head": "initialize the weights of an HTCMaskHead including its residual convolution module",
+    "forward_htc_mask_head": "run a forward pass through HTCMaskHead to produce mask logits and residual features",
+    "review_htc_mask_head_forward": "review the HTCMaskHead forward method to understand residual feature fusion and mask prediction logic",
+    "refactor_htc_mask_head": "refactor the HTCMaskHead class to customize the upsample method or residual convolution behavior"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/mask_heads/mask_point_head.py": {
+    "build_mask_point_head": "build a MaskPointHead module with configurable FC layers and class-agnostic mask prediction for PointRend",
+    "forward_mask_classification": "run forward pass to classify points using fine-grained and coarse features concatenated through FC layers",
+    "get_training_targets": "get training targets for MaskPointHead by sampling ground truth masks at relative ROI point coordinates",
+    "calculate_point_loss": "calculate cross-entropy loss for point predictions against ground truth targets with class labels",
+    "sample_uncertain_points_train": "sample most uncertain points during training using importance sampling and random sampling ratios"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/mask_heads/maskiou_head.py": {
+    "build_MaskIoUHead": "build a MaskIoUHead module to predict IoU of predicted masks and corresponding ground truth masks",
+    "init_weights_MaskIoUHead": "initialize the MaskIoUHead convolutional and fully connected layer weights using kaiming and normal initialization",
+    "forward_MaskIoUHead": "run the MaskIoUHead forward pass with mask features and mask predictions to compute mask IoU scores",
+    "loss_MaskIoUHead": "compute the mask IoU loss between predicted IoU values and target IoU values for positive samples",
+    "get_targets_MaskIoUHead": "compute mask IoU targets from sampling results, ground truth masks, and predicted masks for training"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/roi_extractors/base_roi_extractor.py": {
+    "build_BaseRoIExtractor": "build a BaseRoIExtractor with roi_layer config, out_channels, and featmap_strides for feature extraction",
+    "build_roi_layers": "build RoI operator layers from a layer_cfg dict and featmap_strides using mmcv ops like RoIAlign",
+    "roi_rescale": "rescale RoI coordinates by a given scale factor and return the new scaled RoI tensor",
+    "init_weights_BaseRoIExtractor": "initialize the weights of a BaseRoIExtractor instance",
+    "review_BaseRoIExtractor_forward": "review the abstract forward method signature that takes feats, rois, and an optional roi_scale_factor"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/roi_extractors/generic_roi_extractor.py": {
+    "build_GenericRoIExtractor": "build a GenericRoIExtractor with sum aggregation to extract RoI features from multi-level feature maps",
+    "build_GenericRoIExtractor_concat": "build a GenericRoIExtractor with concat aggregation to concatenate RoI features from multiple feature map levels",
+    "build_GenericRoIExtractor_with_pre_post": "build a GenericRoIExtractor with pre and post processing modules for RoI feature extraction",
+    "forward_GenericRoIExtractor": "forward multi-level feature maps and RoIs through the GenericRoIExtractor to extract aggregated RoI features",
+    "forward_GenericRoIExtractor_with_scale": "forward feature maps and RoIs with a scale factor to rescale RoIs before extraction"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/roi_extractors/single_level_roi_extractor.py": {
+    "build_SingleRoIExtractor": "build a SingleRoIExtractor with roi_layer config, out_channels, and featmap_strides for FPN feature extraction",
+    "create_map_roi_levels": "create a function that maps RoIs to feature pyramid levels based on their spatial scale",
+    "test_forward_roi_extraction": "test the forward pass of SingleRoIExtractor with multi-level feature maps and RoI tensors",
+    "refactor_map_roi_levels": "refactor map_roi_levels to support custom scale thresholds instead of the default finest_scale of 56",
+    "review_SingleRoIExtractor_forward": "review the SingleRoIExtractor forward method for ONNX export compatibility and multi-level RoI alignment logic"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/roi_heads/shared_heads/res_layer.py": {
+    "build_ResLayer": "build a ResLayer shared head module with configurable ResNet depth and stage for object detection",
+    "create_ResLayer_init": "create a ResLayer instance with specified depth, stage, stride, dilation, and normalization config",
+    "test_ResLayer_forward": "test the ResLayer forward pass by passing input tensor x through the residual layer",
+    "review_ResLayer_init_weights": "review the ResLayer init_weights method to load pretrained checkpoints or apply Kaiming initialization",
+    "summarize_ResLayer_train": "summarize the ResLayer train method that keeps BatchNorm layers in eval mode during training"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/utils/builder.py": {
+    "build_transformer_from_cfg": "build a Transformer model instance from a config dict using the TRANSFORMER registry",
+    "build_positional_encoding_from_cfg": "build a Position Encoding instance from a config dict using the POSITIONAL_ENCODING registry",
+    "register_custom_transformer": "register a custom Transformer class with the TRANSFORMER registry for use in config-driven builds",
+    "register_custom_positional_encoding": "register a custom Position Encoding class with the POSITIONAL_ENCODING registry for config-driven builds",
+    "inspect_transformer_registry": "inspect the TRANSFORMER registry to list all registered Transformer module names"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/utils/gaussian_target.py": {
+    "build_gaussian2D_kernel": "build a python module to generate a 2D gaussian kernel tensor with a given radius and sigma",
+    "create_gaussian_heatmap": "create a function that generates a 2D gaussian heatmap by overlaying a gaussian kernel on an input heatmap",
+    "compute_gaussian_radius": "compute the optimal 2D gaussian radius for a detection box given a minimum IoU overlap threshold",
+    "test_gaussian2D": "test the gaussian2D function to verify it returns a correctly shaped tensor with proper gaussian distribution",
+    "review_gaussian_radius": "review the gaussian_radius function and its three quadratic equation cases for computing optimal kernel radius"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/utils/positional_encoding.py": {
+    "build_sine_positional_encoding": "build a SinePositionalEncoding module with configurable num_feats, temperature, and normalization for transformer models",
+    "build_learned_positional_encoding": "build a LearnedPositionalEncoding module with learnable row and column embedding weights for object detection",
+    "test_sine_positional_encoding_forward": "test SinePositionalEncoding forward pass with a binary mask tensor to verify output shape",
+    "test_learned_positional_encoding_forward": "test LearnedPositionalEncoding forward pass with a mask tensor to verify learned embeddings",
+    "review_positional_encoding_classes": "review SinePositionalEncoding and LearnedPositionalEncoding classes to compare sine-based vs learnable position embedding approaches"
+  },
+  "facebookresearch_generic-grouping/mmdet/models/utils/transformer.py": {
+    "build_Transformer": "build a DETR transformer model with configurable encoder and decoder layers for object detection",
+    "create_TransformerEncoder": "create a transformer encoder with stacked self-attention and feed-forward network layers",
+    "create_TransformerDecoder": "create a transformer decoder with self-attention, cross-attention, and feed-forward network layers",
+    "review_MultiheadAttention": "review the MultiheadAttention wrapper that adds residual connections and positional encoding support",
+    "refactor_FFN": "refactor the feed-forward network to customize activation functions, dropout, or residual connection behavior"
+  },
+  "facebookresearch_generic-grouping/mmdet/utils/collect_env.py": {
+    "run_collect_env": "run the collect_env function to print MMDetection environment information to stdout",
+    "build_collect_env_module": "build a python module that collects and returns MMDetection environment info as a dictionary",
+    "summarize_collect_env": "summarize the collect_env function which gathers running environment details for MMDetection",
+    "review_collect_env": "review the collect_env function that combines base environment info with MMDetection version and git hash",
+    "test_collect_env": "test the collect_env function to verify it returns a dictionary with MMDetection version and git hash"
+  },
+  "facebookresearch_generic-grouping/mmdet/utils/logger.py": {
+    "get_root_logger_default": "get the mmdet root logger with default INFO level and no log file",
+    "get_root_logger_with_file": "get the mmdet root logger writing output to a specified log file path",
+    "get_root_logger_with_level": "get the mmdet root logger configured with a custom logging level like DEBUG",
+    "review_get_root_logger": "review the get_root_logger function to understand how it wraps mmcv get_logger for mmdet",
+    "summarize_get_root_logger": "summarize the get_root_logger function which returns an mmdet named logger instance"
+  },
+  "facebookresearch_generic-grouping/mmdet/utils/profiling.py": {
+    "profile_cpu_gpu_time": "use the profile_time context manager to measure CPU and GPU time spent in a code block",
+    "profile_cuda_stream": "profile a specific CUDA stream by passing the stream argument to profile_time",
+    "profile_with_custom_name": "use profile_time with a custom trace_name and name to label timing output",
+    "profile_async_code": "use profile_time to find sweet spots of code suitable for async implementation",
+    "profile_with_end_stream": "use profile_time with a separate end_stream to record the end event on a different CUDA stream"
+  },
+  "facebookresearch_generic-grouping/pa_lib/affinity2mask.py": {
+    "build_masks_from_potentials_cc": "build a python module that converts predicted potentials to binary masks using connected component graph thresholding",
+    "build_masks_from_potentials_watershed": "build a python module that converts max potential maps to segmentation masks using watershed algorithm",
+    "build_masks_from_ucm_hierarchy": "build a python module that generates hierarchical segments from potentials using watershed and RAG merging",
+    "build_graph_from_potentials": "build a python module that converts 4-directional potential tensors into a skimage RAG graph with weighted edges",
+    "build_globalized_boundary": "build a python module that computes globalized boundary maps from local boundary probabilities using eigenvector analysis"
+  },
+  "facebookresearch_generic-grouping/pa_lib/evaluate_helper.py": {
+    "generate_proposals_from_pairwise_affinity": "generate segmentation proposals and scores from a pairwise affinity tensor using potential2masks and ranking",
+    "compute_iou_between_masks": "compute the IoU between two binary mask arrays or torch tensors with an optional threshold",
+    "rank_masks_by_color_variance": "rank segmentation masks by color variance in an image with optional NMS filtering",
+    "evaluate_coco_protocol": "evaluate detection results using the COCO evaluation protocol with optional category filtering",
+    "rank_proposals_by_potential": "rank segmentation proposals by boundary potential scores with NMS and edge filtering"
+  },
+  "facebookresearch_generic-grouping/pa_lib/oln_ranker.py": {
+    "generate_pa_proposals_with_oln": "generate object proposals from predicted affinity maps using an OLN model with configurable edge and join thresholds",
+    "compute_rpn_score_oln": "compute RPN centerness scores for proposals by matching anchors via IoU overlap with an OLN model",
+    "compute_roi_score_oln": "compute ROI classification scores for proposals using the OLN model's RoI head simple test method",
+    "review_generate_pa_proposals_with_oln": "review the generate_pa_proposals_with_oln function to understand how affinity maps are converted to ranked object proposals",
+    "refactor_compute_rpn_score_oln": "refactor compute_rpn_score_oln to support batched proposal scoring across multiple images"
+  },
+  "facebookresearch_generic-grouping/pa_lib/rag.py": {
+    "build_rag_mean_color": "build a region adjacency graph from an image and labels using mean color distance between regions",
+    "build_rag_boundary": "build a region adjacency graph from labels and an edge map using boundary pixel values",
+    "merge_hierarchical_rag": "merge regions in a RAG hierarchically by greedily combining nodes with edge weights below a threshold",
+    "merge_rag_nodes": "merge two nodes in a RAG and recompute edge weights using a custom weight function",
+    "show_rag_on_image": "visualize a region adjacency graph overlaid on an image with colored edges and region borders"
+  },
+  "facebookresearch_generic-grouping/tests/test_anchor.py": {
+    "test_standard_anchor_generator": "test the standard AnchorGenerator with scales ratios and strides configuration",
+    "test_strides": "test AnchorGenerator grid anchors with square and different x y strides",
+    "test_ssd_anchor_generator": "test the SSDAnchorGenerator with multi-level feature map sizes and base anchors",
+    "test_yolo_anchor_generator": "test the YOLOAnchorGenerator with base sizes and multi-level anchor generation",
+    "test_retina_anchor": "test the RetinaSepBNHead anchor generator with octave base scale and strides"
+  },
+  "facebookresearch_generic-grouping/tests/test_assigner.py": {
+    "test_MaxIoUAssigner": "test the MaxIoUAssigner to assign predicted bboxes to ground truth bboxes using IoU thresholds",
+    "test_PointAssigner": "test the PointAssigner to assign predicted points to ground truth bboxes based on point-in-box logic",
+    "test_ApproxMaxIoUAssigner": "test the ApproxMaxIoUAssigner to assign approximate bboxes to ground truth using octave-based IoU matching",
+    "test_CenterRegionAssigner": "test the CenterRegionAssigner to assign bboxes to ground truth using center region positive and negative scales",
+    "test_HungarianAssigner": "test the HungarianAssigner to perform optimal bipartite matching between predictions and ground truth using cost matrices"
+  },
+  "facebookresearch_generic-grouping/tests/test_coder.py": {
+    "test_yolo_bbox_coder": "test the YOLOBBoxCoder decode method with bounding box tensors and a grid size of 32",
+    "run_test_yolo_bbox_coder": "run the test_yolo_bbox_coder function to verify YOLOBBoxCoder decode produces expected bounding boxes",
+    "review_test_yolo_bbox_coder": "review the test_yolo_bbox_coder function and its assertion logic for YOLOBBoxCoder",
+    "refactor_test_yolo_bbox_coder": "refactor the test_yolo_bbox_coder function to use parameterized test cases for multiple grid sizes",
+    "summarize_test_yolo_bbox_coder": "summarize the test_yolo_bbox_coder function which validates YOLOBBoxCoder decode output against expected tensors"
+  },
+  "facebookresearch_generic-grouping/tests/test_config.py": {
+    "test_config_build_detector": "test that all detection models defined in the configs can be initialized and built",
+    "test_config_data_pipeline": "test whether the data pipeline is valid and can process corner cases like empty GT",
+    "check_roi_head": "check consistency between head config and roi head including roi align and bbox head infos",
+    "check_roi_extractor": "check roi extractor config against the built roi extractor module for aligned and output settings",
+    "check_bbox_head": "check bbox head config against the built bbox head module for in channels and output features"
+  },
+  "facebookresearch_generic-grouping/tests/test_eval_hook.py": {
+    "test_eval_hook": "test the EvalHook and DistEvalHook classes with parametrized pytest cases for save_best and rule validation",
+    "create_EvalDataset": "create an EvalDataset subclass that returns OrderedDict with mAP, index, and score metrics for evaluation",
+    "create_ExampleModel": "create an ExampleModel nn.Module with a Linear layer and train_step method returning loss and accuracy",
+    "test_EvalHook_save_best_auto": "test EvalHook with save_best set to auto to automatically select the first metric for best checkpoint tracking",
+    "test_EvalHook_resume": "test EvalHook checkpoint resumption by running EpochBasedRunner with resume and verifying best_score persists across runs"
+  },
+  "facebookresearch_generic-grouping/tests/test_fp16.py": {
+    "test_cast_tensor_type": "test cast_tensor_type to convert PyTorch tensors between float32 and int32 dtypes",
+    "test_auto_fp16_decorator": "test the auto_fp16 decorator to automatically cast nn.Module forward inputs to FP16",
+    "test_auto_fp16_apply_to": "test auto_fp16 with apply_to to selectively cast only specified forward arguments to FP16",
+    "test_force_fp32_decorator": "test the force_fp32 decorator to cast FP16 inputs back to FP32 in nn.Module forward",
+    "test_force_fp32_out_fp16": "test force_fp32 with out_fp16=True to cast inputs to FP32 but return outputs as FP16"
+  },
+  "facebookresearch_generic-grouping/tests/test_iou2d_calculator.py": {
+    "test_bbox_overlaps_2d": "test the BboxOverlaps2D class and bbox_overlaps function with GIoU and IoF modes",
+    "run_BboxOverlaps2D_giou": "run BboxOverlaps2D to compute generalized IoU between two aligned bounding box tensors",
+    "run_bbox_overlaps_iof": "run bbox_overlaps with mode iof to compute intersection over foreground ratios",
+    "test_bbox_overlaps_aligned": "test bbox_overlaps with is_aligned True to compute per-pair GIoU scores",
+    "test_bbox_overlaps_batched": "test BboxOverlaps2D with batched multi-dimensional bounding box tensors for GIoU"
+  },
+  "facebookresearch_generic-grouping/tests/test_masks.py": {
+    "test_bitmap_mask_init": "test BitmapMasks initialization with empty ndarray, list, and multi-instance mask inputs",
+    "test_bitmap_mask_rescale": "test BitmapMasks rescale method to resize masks proportionally to a new target size",
+    "test_bitmap_mask_resize": "test BitmapMasks resize method to change mask dimensions to exact target height and width",
+    "test_bitmap_mask_flip": "test BitmapMasks flip method for horizontal, vertical, and diagonal flip directions",
+    "test_polygon_mask_to_bitmap": "test PolygonMasks conversion to BitmapMasks and verify ndarray output equivalence"
+  },
+  "facebookresearch_generic-grouping/tests/test_misc.py": {
+    "test_mask2ndarray": "test the mask2ndarray utility with BitmapMasks, PolygonMasks, numpy arrays, and torch tensors",
+    "test_mask2ndarray_bitmap": "test mask2ndarray conversion of BitmapMasks to numpy ndarray and verify output matches input",
+    "test_mask2ndarray_polygon": "test mask2ndarray conversion of PolygonMasks to numpy ndarray and verify output shape",
+    "test_mask2ndarray_unsupported": "test that mask2ndarray raises TypeError when passed an unsupported type like a list",
+    "create_dummy_polygon_masks": "create dummy raw polygon masks with random points for a given size tuple"
+  },
+  "facebookresearch_generic-grouping/tests/test_version.py": {
+    "test_version_check": "test the digit_version function from mmdet by comparing semantic version strings including release candidates",
+    "run_digit_version_comparison": "run version string comparisons using mmdet digit_version to verify release candidate ordering against stable releases",
+    "review_test_version_check": "review the test_version_check function that asserts digit_version correctly orders version strings with rc suffixes",
+    "summarize_digit_version_usage": "summarize how digit_version from mmdet parses and compares semantic version strings including rc variants",
+    "test_digit_version_rc_ordering": "test that digit_version correctly orders release candidate versions such as rc0, rc1, and rc2"
+  },
+  "facebookresearch_generic-grouping/tests/test_visualization.py": {
+    "test_color_val_matplotlib": "test the color_val_matplotlib function to convert color values to matplotlib RGB tuples",
+    "test_imshow_det_bboxes": "test the imshow_det_bboxes function to draw detection bounding boxes and segmentation masks on an image",
+    "test_imshow_gt_det_bboxes": "test the imshow_gt_det_bboxes function to draw ground truth and detection bounding boxes on an image",
+    "review_color_val_matplotlib": "review the color_val_matplotlib function for handling mmcv Color, string, tuple, int, and numpy array inputs",
+    "review_imshow_det_bboxes": "review the imshow_det_bboxes function for handling empty bboxes, segmentation masks, and tensor type errors"
+  },
+  "facebookresearch_generic-grouping/tests/test_data/test_dataset.py": {
+    "test_dataset_evaluation": "test CocoDataset and CustomDataset evaluation with dummy bounding box results and mAP metrics",
+    "test_custom_classes_override_default": "test overriding default dataset classes with custom tuples, lists, or file paths for CocoDataset and VOCDataset",
+    "test_dataset_wrapper": "test ConcatDataset, RepeatDataset, and ClassBalancedDataset wrapper indexing and category frequency balancing",
+    "test_evaluation_hook": "test EvalHook and DistEvalHook evaluation intervals, start epochs, and resuming behavior with EpochBasedRunner",
+    "test_allow_empty_images": "test CocoDataset filter_empty_gt parameter to include or exclude images without ground truth annotations"
+  },
+  "facebookresearch_generic-grouping/tests/test_data/test_formatting.py": {
+    "test_default_format_bundle": "test the DefaultFormatBundle pipeline to verify it adds pad_shape, scale_factor, and img_norm_cfg to results",
+    "run_test_formatting": "run the test_default_format_bundle test to validate MMDetection pipeline formatting behavior",
+    "review_test_default_format_bundle": "review the test_default_format_bundle function to understand how LoadImageFromFile and DefaultFormatBundle interact",
+    "build_pipeline_with_build_from_cfg": "build an MMDetection pipeline object using build_from_cfg with the PIPELINES registry",
+    "summarize_test_formatting": "summarize the test_formatting module which validates DefaultFormatBundle adds required keys to image results"
+  },
+  "facebookresearch_generic-grouping/tests/test_data/test_img_augment.py": {
+    "test_construct_toy_data": "test construct_toy_data to create synthetic image data with bounding boxes and masks for augmentation testing",
+    "test_adjust_color_transform": "test the ColorTransform pipeline module to adjust image color by blending with grayscale",
+    "test_imequalize_transform": "test the EqualizeTransform pipeline module to equalize image histogram using PIL ImageOps",
+    "test_adjust_brightness_transform": "test the BrightnessTransform pipeline module to adjust image brightness with a configurable factor",
+    "test_adjust_contrast_transform": "test the ContrastTransform pipeline module to adjust image contrast with a configurable factor"
+  },
+  "facebookresearch_generic-grouping/tests/test_data/test_loading.py": {
+    "test_LoadImageFromFile_transform": "test the LoadImageFromFile transform to load color images from disk files",
+    "test_LoadImageFromFile_float32": "test the LoadImageFromFile transform with to_float32 to load images as float32 arrays",
+    "test_LoadImageFromFile_gray": "test the LoadImageFromFile transform with color_type unchanged to load grayscale images",
+    "test_LoadMultiChannelImageFromFiles_transform": "test the LoadMultiChannelImageFromFiles transform to load multiple images as a multi-channel array",
+    "test_LoadImageFromWebcam_transform": "test the LoadImageFromWebcam transform to load in-memory numpy arrays as webcam images"
+  },
+  "facebookresearch_generic-grouping/tests/test_data/test_models_aug_test.py": {
+    "run_model_aug_test_template": "run model_aug_test_template with a config file path to test augmented inference on a detector model",
+    "test_aug_test_size": "test the MultiScaleFlipAug pipeline to verify it produces 9 augmented images from 3 scales and 3 flip directions",
+    "test_cascade_rcnn_aug_test": "test Cascade R-CNN augmented inference using model_aug_test_template and assert 80 COCO category outputs",
+    "test_mask_rcnn_aug_test": "test Mask R-CNN augmented inference and assert 80 bounding box and 80 mask outputs per image",
+    "test_htc_aug_test": "test Hybrid Task Cascade augmented inference using model_aug_test_template and assert 80 bbox and 80 mask outputs"
+  },
+  "facebookresearch_generic-grouping/tests/test_data/test_rotate.py": {
+    "test_rotate_transform": "test the Rotate augmentation transform with various angle, center, and probability configurations",
+    "construct_toy_data": "create toy detection data with images, bounding boxes, labels, masks, and semantic segmentation",
+    "check_rotate": "verify rotated results match expected ground truth for images, bboxes, masks, and segmentations",
+    "test_rotate_with_bitmap_masks": "test the Rotate transform using BitmapMasks for ground truth mask augmentation",
+    "test_rotate_with_polygon_masks": "test the Rotate transform using PolygonMasks for ground truth mask augmentation"
+  },
+  "facebookresearch_generic-grouping/tests/test_data/test_sampler.py": {
+    "test_random_sampler": "test the RandomSampler with bounding boxes and ground truth labels using MaxIoUAssigner",
+    "test_random_sampler_empty_gt": "test the RandomSampler when ground truth bounding boxes are empty",
+    "test_random_sampler_empty_pred": "test the RandomSampler when predicted bounding boxes are empty",
+    "test_ohem_sampler": "test the OHEMSampler with feature pyramids and a Faster R-CNN ROI head context",
+    "test_score_hlr_sampler_empty_pred": "test the ScoreHLRSampler with empty predictions, empty ground truth, and non-empty inputs"
+  },
+  "facebookresearch_generic-grouping/tests/test_data/test_shear.py": {
+    "construct_toy_data": "construct toy test data with images, bounding boxes, labels, masks, and semantic segmentations for augmentation testing",
+    "check_shear": "check that sheared results match expected results across image, bbox, mask, and segmentation fields",
+    "test_shear": "test the Shear augmentation transform with horizontal and vertical directions and various magnitude configurations",
+    "test_shear_with_autoaugment": "test the Shear transform integrated into an AutoAugment pipeline with multiple policy configurations",
+    "test_shear_with_polygon_masks": "test the Shear augmentation transform using PolygonMasks instead of BitmapMasks for object instance masks"
+  },
+  "facebookresearch_generic-grouping/tests/test_data/test_transform.py": {
+    "test_resize_transform": "test the Resize pipeline transform for image scaling with keep_ratio and multiscale_mode options",
+    "test_flip_transform": "test the RandomFlip pipeline transform for horizontal vertical and diagonal image flipping",
+    "test_random_crop_transform": "test the RandomCrop pipeline transform with absolute relative and relative_range crop types",
+    "test_pad_transform": "test the Pad pipeline transform to pad images to a specified size_divisor like 32",
+    "test_cutout_transform": "test the CutOut pipeline transform for random cutout augmentation with configurable holes and fill values"
+  },
+  "facebookresearch_generic-grouping/tests/test_data/test_translate.py": {
+    "test_translate_augmentation": "test the Translate augmentation pipeline for horizontal and vertical image translation with bboxes and masks",
+    "construct_toy_data": "create synthetic test data with random images, bounding boxes, labels, masks, and semantic segmentation",
+    "test_translate_with_polygon_masks": "test the Translate augmentation pipeline using PolygonMasks for vertical and horizontal shifts",
+    "test_translate_with_autoaugment": "test the Translate augmentation pipeline integrated with AutoAugment policies in MMDetection",
+    "poly2mask_convert_polygons": "convert polygon annotations to binary mask arrays using pycocotools RLE encoding and decoding"
+  },
+  "facebookresearch_generic-grouping/tests/test_data/test_utils.py": {
+    "test_replace_ImageToTensor": "test the replace_ImageToTensor function to verify ImageToTensor is replaced with DefaultFormatBundle in pipelines",
+    "test_MultiScaleFlipAug_pipeline": "test the replace_ImageToTensor function with a MultiScaleFlipAug pipeline containing nested transforms",
+    "test_simple_pipeline": "test the replace_ImageToTensor function with a simple pipeline without MultiScaleFlipAug",
+    "review_replace_ImageToTensor": "review the replace_ImageToTensor utility from mmdet.datasets for pipeline transformation behavior",
+    "summarize_test_utils": "summarize the test_utils module that validates ImageToTensor replacement in MMdetection data pipelines"
+  },
+  "facebookresearch_generic-grouping/tests/test_models/test_backbones.py": {
+    "test_resnet_backbone": "test ResNet and ResNetV1d backbone forward pass with various depths and norm configurations",
+    "test_resnext_backbone": "test ResNeXt backbone with grouped convolutions and base width parameters",
+    "test_regnet_backbone": "test RegNet backbone with parametrized architecture configs like regnetx_400mf and regnetx_8gf",
+    "test_resnest_backbone": "test ResNeSt backbone with radial group convolution and reduction factor settings",
+    "test_hourglass_backbone": "test HourglassNet backbone with single and multiple stack configurations for feature extraction"
+  },
+  "facebookresearch_generic-grouping/tests/test_models/test_forward.py": {
+    "test_rpn_forward": "test the RPN detector forward pass for training and inference with demo inputs",
+    "test_single_stage_forward_gpu": "test single stage detectors like RetinaNet and YOLO forward pass on GPU",
+    "test_two_stage_forward": "test two stage detectors like Mask R-CNN forward pass with bounding boxes and masks",
+    "test_detr_forward": "test the DETR transformer detector forward pass for training and inference",
+    "create_demo_mm_inputs": "create synthetic demo inputs with random bounding boxes and labels for detector testing"
+  },
+  "facebookresearch_generic-grouping/tests/test_models/test_heads.py": {
+    "test_paa_head_loss": "test the PAAHead loss computation with empty and non-empty ground truth bounding boxes",
+    "test_fcos_head_loss": "test the FCOSHead loss computation for classification and bounding box regression",
+    "test_transformer_head_loss": "test the TransformerHead loss computation using HungarianAssigner for object detection",
+    "test_corner_head_loss": "test the CornerHead loss including detection, push, pull, and offset losses",
+    "test_yolact_head_loss": "test the YOLACTHead, YOLACTSegmHead, and YOLACTProtonet losses for instance segmentation"
+  },
+  "facebookresearch_generic-grouping/tests/test_models/test_losses.py": {
+    "test_ce_loss": "test the CrossEntropyLoss with class weights and validate loss calculation using build_loss",
+    "test_varifocal_loss": "test the VarifocalLoss with sigmoid activation and verify prediction target size assertions",
+    "test_accuracy": "test the Accuracy class with topk configurations and score threshold validation",
+    "build_loss_cross_entropy": "build a CrossEntropyLoss module from a config dict using mmdet build_loss",
+    "build_loss_varifocal": "build a VarifocalLoss module from a config dict with alpha gamma and iou_weighted params"
+  },
+  "facebookresearch_generic-grouping/tests/test_models/test_necks.py": {
+    "test_FPN_construction": "test the FPN neck module with various in_channels, out_channels, and start_level configurations",
+    "test_FPN_extra_convs": "test the FPN neck module with add_extra_convs set to on_input, on_lateral, or on_output",
+    "test_FPN_upsample": "test the FPN neck module with bilinear or scale_factor upsampling configurations",
+    "test_FPN_batchnorm": "test the FPN neck module with lateral batch normalization enabled via norm_cfg",
+    "test_ChannelMapper": "test the ChannelMapper module to map multi-level feature channels to a uniform output channel size"
+  },
+  "facebookresearch_generic-grouping/tests/test_models/test_pisa_heads.py": {
+    "test_pisa_retinanet_head_loss": "test the PISARetinaHead loss computation with empty and non-empty ground truth bounding boxes",
+    "test_pisa_ssd_head_loss": "test the PISASSDHead loss computation with empty and non-empty ground truth bounding boxes",
+    "test_pisa_roi_head_loss": "test the PISARoIHead loss computation with empty and non-empty ground truth bounding boxes",
+    "review_PISARetinaHead_forward": "review the PISARetinaHead forward pass to generate cls_scores and bbox_preds from feature maps",
+    "review_PISASSDHead_forward": "review the PISASSDHead forward pass to generate cls_scores and bbox_preds from feature maps"
+  },
+  "facebookresearch_generic-grouping/tests/test_models/test_position_encoding.py": {
+    "test_sine_positional_encoding": "test the SinePositionalEncoding module with a random mask tensor and verify output shape",
+    "test_learned_positional_encoding": "test the LearnedPositionalEncoding module with row and column embeddings and verify output shape",
+    "review_SinePositionalEncoding": "review the SinePositionalEncoding class to understand normalize and scale parameter behavior",
+    "review_LearnedPositionalEncoding": "review the LearnedPositionalEncoding class to understand row_embed and col_embed weight shapes",
+    "test_positional_encoding_assertion": "test that SinePositionalEncoding raises an AssertionError when given an invalid scale tuple"
+  },
+  "facebookresearch_generic-grouping/tests/test_models/test_roi_extractor.py": {
+    "test_GenericRoIExtractor_with_pre_post_conv": "test GenericRoIExtractor with pre and post ConvModule configurations using RoIAlign",
+    "test_GenericRoIExtractor_without_pre_post": "test GenericRoIExtractor without pre or post convolution modules using default aggregation",
+    "test_GenericRoIExtractor_concat_aggregation": "test GenericRoIExtractor with concat aggregation mode to combine multi-level feature maps",
+    "test_GenericRoIExtractor_invalid_aggregation": "test GenericRoIExtractor raises AssertionError when given an unsupported aggregation method",
+    "test_GenericRoIExtractor_channel_mismatch": "test GenericRoIExtractor raises AssertionError when out_channels does not match the sum of feature channels"
+  },
+  "facebookresearch_generic-grouping/tests/test_models/test_transformer.py": {
+    "test_multihead_attention": "test the MultiheadAttention module with self attention, key, residual, query_pos, key_pos, and mask inputs",
+    "test_ffn": "test the FFN feed-forward network module with and without residual connections",
+    "test_transformer_encoder_layer": "test the TransformerEncoderLayer with various order configurations, pre_norm, and attention masks",
+    "test_transformer_decoder_layer": "test the TransformerDecoderLayer with self attention, multihead attention, and pre_norm order configurations",
+    "test_transformer": "test the full Transformer encoder-decoder model with pre_norm and return_intermediate_dec options"
+  },
+  "facebookresearch_generic-grouping/tools/analyze_logs.py": {
+    "run_cal_train_time": "run the cal_train_time function to analyze average training iteration time from JSON logs",
+    "run_plot_curve": "run the plot_curve function to plot training metrics like bbox_mAP from JSON logs",
+    "run_load_json_logs": "run the load_json_logs function to parse JSON log files into epoch-based dictionaries",
+    "run_parse_args": "run the parse_args function to parse CLI arguments for plot_curve or cal_train_time tasks",
+    "run_main": "run the main function to analyze JSON training logs via CLI with plot_curve or cal_train_time subcommands"
+  },
+  "facebookresearch_generic-grouping/tools/analyze_results.py": {
+    "run_analyze_results_cli": "run the CLI tool to evaluate detection results and save top/bottom mAP images to a directory",
+    "run_bbox_map_eval": "run bbox_map_eval to compute the average mAP across IoU thresholds 0.5 to 0.95 for a single image",
+    "create_ResultVisualizer": "create a ResultVisualizer instance to display and save object detection evaluation results with configurable show and wait options",
+    "run_evaluate_and_show": "run evaluate_and_show to rank detection results by mAP and save the best and worst topk images",
+    "run_save_image_gts_results": "run _save_image_gts_results to render and save ground truth and detected bounding boxes with mAP scores as filenames"
+  },
+  "facebookresearch_generic-grouping/tools/benchmark.py": {
+    "run_benchmark_detector": "run a benchmark on an MMDetection model using a config file and checkpoint to measure inference FPS",
+    "run_benchmark_with_fused_conv_bn": "run a benchmark on an MMDetection model with fused conv and batch norm layers for faster inference speed",
+    "run_benchmark_with_custom_log_interval": "run a benchmark on an MMDetection model and set a custom logging interval for FPS output",
+    "review_parse_args": "review the parse_args function that defines CLI arguments for config, checkpoint, log interval, and fuse conv bn options",
+    "review_main_benchmark_loop": "review the main function that builds a detector, loads a checkpoint, and benchmarks inference over 2000 images"
+  },
+  "facebookresearch_generic-grouping/tools/browse_dataset.py": {
+    "run_browse_dataset": "run the browse_dataset tool to visualize detection bboxes and masks for a dataset using a config file",
+    "run_browse_dataset_save_output": "run the browse_dataset tool with --output-dir to save annotated images to a directory instead of displaying",
+    "run_browse_dataset_no_show": "run the browse_dataset tool with --not-show to skip display and only save output images",
+    "run_browse_dataset_skip_pipeline": "run the browse_dataset tool with --skip-type to exclude specific pipeline steps like Normalize or Collect",
+    "run_browse_dataset_custom_interval": "run the browse_dataset tool with --show-interval to set the display wait time between images"
+  },
+  "facebookresearch_generic-grouping/tools/coco_error_analysis.py": {
+    "run_coco_error_analysis": "run the COCO error analysis tool on a detection result JSON file to generate precision-recall error breakdown plots",
+    "run_analyze_results": "run analyze_results to evaluate COCO detection results against ground truth annotations and save precision-recall plots per category",
+    "run_analyze_individual_category": "run analyze_individual_category to compute supercategory and all-category precision for a single COCO category using COCOeval",
+    "run_makeplot": "run makeplot to generate and save precision-recall filled area charts for COCO error analysis by IoU type and class",
+    "run_main_cli": "run the main CLI entry point with a result JSON path and output directory to analyze COCO bbox or segmentation results"
+  },
+  "facebookresearch_generic-grouping/tools/detectron2pytorch.py": {
+    "convert_detectron_to_pytorch": "convert a detectron pretrained ResNet-50 or ResNet-101 model to PyTorch checkpoint format",
+    "convert_bn_layer": "convert a detectron batch normalization layer with affine channel weights to PyTorch style",
+    "convert_conv_fc_layer": "convert a detectron convolution or fully connected layer weights to PyTorch style",
+    "run_conversion_cli": "run the CLI tool to convert a detectron model file to a PyTorch checkpoint by specifying source, destination, and depth",
+    "check_unconverted_layers": "check and print any detectron model layer keys that were not converted during the process"
+  },
+  "facebookresearch_generic-grouping/tools/eval_metric.py": {
+    "run_eval_metric": "run eval_metric.py to evaluate detection results saved in pickle format against a dataset",
+    "run_eval_metric_bbox": "run eval_metric.py with --eval bbox to compute bounding box metrics on COCO results",
+    "run_eval_metric_format_only": "run eval_metric.py with --format-only to format results for submission without evaluation",
+    "run_eval_metric_mAP": "run eval_metric.py with --eval mAP to compute mean average precision on PASCAL VOC results",
+    "run_eval_metric_cfg_options": "run eval_metric.py with --cfg-options to override config settings during evaluation"
+  },
+  "facebookresearch_generic-grouping/tools/extract_pa_masks.py": {
+    "run_extract_pa_masks": "run the CLI tool to extract pixel adjacency masks from a trained MMDetection model checkpoint",
+    "run_single_gpu_test": "run single GPU inference to extract top-k PA masks with IoU scores against ground truth",
+    "run_multi_gpu_test": "run distributed multi-GPU inference to extract PA masks across a dataset with result collection",
+    "run_proposals2json": "run the function to convert PA mask arrays into COCO-style JSON annotations with RLE encoding",
+    "run_replace_filename_by_id": "run the function to replace image filenames with COCO image IDs in extracted proposal results"
+  },
+  "facebookresearch_generic-grouping/tools/get_flops.py": {
+    "run_get_flops": "run the get_flops tool to compute FLOPs and parameter count for an MMDetection model config",
+    "run_get_flops_custom_shape": "run get_flops with a custom input shape like 640x640 for a detection model config",
+    "build_detector_from_config": "build an MMDetection detector model from a config file using build_detector",
+    "get_model_complexity_info": "get the FLOPs and parameter count of a PyTorch model using get_model_complexity_info",
+    "parse_args_get_flops": "parse command line arguments for the get_flops tool including config path and input shape"
+  },
+  "facebookresearch_generic-grouping/tools/interpolate_extracted_masks.py": {
+    "run_resize_mask": "run resize_mask to decode COCO RLE masks, resize to original shape, and re-encode with updated area and bbox",
+    "run_interpolate_masks": "run the script to interpolate extracted masks across splits using multiprocessing with 60 worker processes",
+    "review_resize_mask": "review resize_mask to understand how it decodes RLE segmentation, resizes with nearest-neighbor interpolation, and re-encodes",
+    "refactor_resize_mask": "refactor resize_mask to accept configurable interpolation method instead of hardcoded INTER_NEAREST",
+    "summarize_resize_mask": "summarize resize_mask which processes COCO annotation segmentation masks by resizing them to original image dimensions"
+  },
+  "facebookresearch_generic-grouping/tools/print_config.py": {
+    "run_print_config": "run the print_config tool to print an MMCV config file to stdout",
+    "run_print_config_with_options": "run print_config with --options flags to override specific config values before printing",
+    "parse_args_parse_config_path": "parse command-line arguments to extract a config file path and optional override options",
+    "main_load_and_print_config": "load an MMCV Config from a file, merge optional overrides, and print the full config",
+    "review_print_config_cli": "review the print_config CLI tool that prints MMCV config files with optional overrides"
+  },
+  "facebookresearch_generic-grouping/tools/publish_model.py": {
+    "run_publish_model": "run the publish_model script to process a PyTorch checkpoint for publication",
+    "run_process_checkpoint": "run process_checkpoint to remove optimizer data and save a cleaned checkpoint file",
+    "run_parse_args": "run parse_args to parse input and output checkpoint filenames from command line",
+    "refactor_process_checkpoint": "refactor process_checkpoint to also remove sensitive metadata from the checkpoint before saving",
+    "review_process_checkpoint": "review process_checkpoint to understand how it strips optimizer state and renames files with SHA256 hashes"
+  },
+  "facebookresearch_generic-grouping/tools/pytorch2onnx.py": {
+    "convert_mmdet_to_onnx": "convert an MMDetection PyTorch model to ONNX format using a config and checkpoint file",
+    "verify_onnx_export": "verify the exported ONNX model output matches the original PyTorch model output numerically",
+    "export_onnx_with_verify": "export an MMDetection model to ONNX and verify correctness with a test image",
+    "parse_conversion_args": "parse command-line arguments for MMDetection to ONNX model conversion including shape and normalization",
+    "visualize_onnx_results": "visualize and compare PyTorch and ONNX detection results side by side using pyplot"
+  },
+  "facebookresearch_generic-grouping/tools/regnet2mmdet.py": {
+    "convert_regnet_to_mmdet": "run the CLI tool to convert a pycls pretrained RegNet model checkpoint to mmdet format",
+    "convert_stem_keys": "convert stem layer keys from pycls naming (stem.conv, stem.bn) to mmdet naming (conv1, bn1)",
+    "convert_head_keys": "convert head layer keys from pycls naming (head.fc) to mmdet naming (fc)",
+    "convert_reslayer_keys": "convert residual layer keys from pycls naming (s1.b1.f.a) to mmdet ResNet naming (layer1.0.conv1)",
+    "run_regnet2mmdet_cli": "run the regnet2mmdet script with a source model path and destination path as CLI arguments"
+  },
+  "facebookresearch_generic-grouping/tools/robustness_eval.py": {
+    "run_robustness_eval_cli": "run the corruption result analysis CLI tool on a result file for COCO or VOC datasets",
+    "get_coco_style_results": "get COCO-style corruption benchmark results including AP and AR metrics from an evaluation file",
+    "get_voc_style_results": "get Pascal VOC-style corruption benchmark results with AP50 metrics from an evaluation file",
+    "get_results": "get corruption benchmark results for COCO, VOC, or Cityscapes datasets with configurable metrics and aggregation",
+    "get_distortions_from_file": "get the list of distortion names from a corruption benchmark evaluation result file"
+  },
+  "facebookresearch_generic-grouping/tools/test.py": {
+    "run_mmdet_model_evaluation": "run an MMDetection model test and evaluation on a dataset using a config file and checkpoint",
+    "run_single_gpu_test": "run a single GPU test on an MMDetection model with visualization options and score threshold",
+    "run_multi_gpu_test": "run a multi-GPU distributed test on an MMDetection model across multiple workers",
+    "format_test_results": "format MMDetection test output results for submission to a test server without evaluation",
+    "fuse_conv_bn_for_inference": "fuse convolution and batch normalization layers in an MMDetection model to increase inference speed"
+  },
+  "facebookresearch_generic-grouping/tools/test_pa.py": {
+    "run_PA_evaluation_single_gpu": "run the single GPU test to evaluate part affinity proposals on a dataset using a checkpoint",
+    "run_PA_evaluation_multi_gpu": "run the multi GPU distributed test to evaluate part affinity proposals across multiple GPUs",
+    "run_PA_with_OLN_ranker": "run the PA evaluation using an OLN model for ranking generated mask proposals",
+    "test_PA_proposals_recall": "test the PA module by generating proposals and computing recall against ground truth masks",
+    "review_PA_test_cli": "review the test_pa CLI arguments for config, checkpoint, eval-proposals, fuse-conv-bn, and launcher options"
+  },
+  "facebookresearch_generic-grouping/tools/test_robustness.py": {
+    "run_robustness_test": "run a detector robustness test on a config and checkpoint with specified corruptions and severities",
+    "run_coco_evaluation": "run COCO evaluation on detection result JSON files and return AP and AR metrics",
+    "run_voc_evaluation": "run PASCAL VOC evaluation on detection results and return mean AP for each class",
+    "test_detector_with_corruptions": "test an MMDetection model against image corruptions like noise, blur, weather, and digital artifacts",
+    "evaluate_robustness_benchmark": "evaluate model robustness using the ImageNet-C corruption benchmark and print mPC or rPC metrics"
+  },
+  "facebookresearch_generic-grouping/tools/train.py": {
+    "run_detector_training": "run the train detector script with a config file path and optional work directory",
+    "run_distributed_training": "run distributed detector training using pytorch slurm or mpi launcher options",
+    "resume_training_from_checkpoint": "resume detector training from an existing checkpoint file using the resume-from flag",
+    "override_config_options": "override config settings during detector training using the cfg-options argument",
+    "set_random_seed_training": "set a random seed and deterministic mode for reproducible detector training runs"
+  },
+  "facebookresearch_generic-grouping/tools/upgrade_model_version.py": {
+    "run_upgrade_model_version": "run the CLI tool to upgrade an MMDetection checkpoint from an older version to the latest",
+    "convert_checkpoint": "convert an old MMDetection model checkpoint to the latest version with a specified number of classes",
+    "reorder_cls_channel": "reorder classification channels in a PyTorch tensor to match the updated class ordering",
+    "truncate_cls_channel": "truncate classification output channels by removing the background class from a model tensor",
+    "parse_config": "parse an MMDetection config string to detect whether the model is two-stage, SSD, Retina, or agnostic"
+  },
+  "facebookresearch_generic-grouping/tools/convert_datasets/cityscapes.py": {
+    "convert_cityscapes_to_coco": "run the python module to convert Cityscapes annotations to COCO JSON format for train val and test splits",
+    "collect_cityscapes_files": "run the collect_files function to gather image instance and segmentation file tuples from Cityscapes directories",
+    "load_cityscapes_annotations": "run the load_img_info function to parse instance ID images and extract annotation info with masks and bboxes",
+    "convert_annotations_to_json": "run the cvt_annotations function to transform image info dicts into a COCO-style JSON and dump to file",
+    "parse_cityscapes_cli_args": "run the parse_args function to build an argparse parser for Cityscapes path img-dir gt-dir out-dir and nproc"
+  },
+  "facebookresearch_generic-grouping/tools/convert_datasets/pascal_voc.py": {
+    "run_pascal_voc_conversion": "run the pascal_voc script to convert PASCAL VOC annotations to mmdetection format",
+    "run_parse_xml": "run parse_xml to extract bounding boxes and labels from a PASCAL VOC XML annotation file",
+    "run_cvt_annotations": "run cvt_annotations to convert PASCAL VOC dataset annotations for a specific year and split to pickle",
+    "run_main": "run main to auto-detect VOC2007 and VOC2012 folders and convert all splits to pickle files",
+    "run_parse_args": "run parse_args to build an argument parser accepting devkit_path and optional output directory"
+  }
+}

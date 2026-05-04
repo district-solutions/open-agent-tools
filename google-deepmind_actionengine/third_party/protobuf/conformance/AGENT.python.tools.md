@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/actionengine
+- repo_uri: https://github.com/google-deepmind/actionengine
+
+## File: google-deepmind_actionengine/third_party/protobuf/conformance/conformance_python.py
+
+Prompts
+
+```
+['run a protobuf conformance test by parsing a request and serializing the response to stdout', 'test the do_test function with a protobuf payload and verify JSON output serialization', 'create a protobuf test message instance for proto2, proto3, or edition2023 types', 'review the ProtocolError exception class used for handling invalid conformance requests', 'refactor the do_test_io function to support a different input output protocol']
+```
+
+Usage
+
+```
+{'run_conformance_test': 'run a protobuf conformance test by parsing a request and serializing the response to stdout', 'test_do_test_function': 'test the do_test function with a protobuf payload and verify JSON output serialization', 'create_test_message': 'create a protobuf test message instance for proto2, proto3, or edition2023 types', 'review_protocol_error_class': 'review the ProtocolError exception class used for handling invalid conformance requests', 'refactor_do_test_io': 'refactor the do_test_io function to support a different input output protocol'}
+```
+

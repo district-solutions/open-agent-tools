@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/ffcv-ssl
+- repo_uri: https://github.com/facebookresearch/ffcv-ssl
+
+## File: facebookresearch_ffcv-ssl/ffcv/benchmarks/decorator.py
+
+Prompts
+
+```
+['run all registered benchmark suites with configurable warm-up runs and a glob pattern filter', 'register a Benchmark subclass with parameterized argument combinations using the benchmark decorator', 'create a FakeSink object to suppress stderr output during benchmark execution', 'review the ALL_SUITES global registry to see which benchmark classes and configurations are registered', 'refactor the run_all function to change how median timing and throughput are calculated']
+```
+
+Usage
+
+```
+{'run_benchmark_suites': 'run all registered benchmark suites with configurable warm-up runs and a glob pattern filter', 'register_benchmark_with_decorator': 'register a Benchmark subclass with parameterized argument combinations using the benchmark decorator', 'create_fake_sink': 'create a FakeSink object to suppress stderr output during benchmark execution', 'review_ALL_SUITES_registry': 'review the ALL_SUITES global registry to see which benchmark classes and configurations are registered', 'refactor_run_all_timing': 'refactor the run_all function to change how median timing and throughput are calculated'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/run.py
+
+Prompts
+
+```
+['run a 1v6 trial comparing one agent against six agents in a Diplomacy game', 'run a population trial comparing multiple agents assigned to different powers in Diplomacy', 'train a supervised learning strategy model using the provided configuration', "benchmark a Diplomacy agent's performance using the benchmark tool", 'compute xpower support statistics from game paths with an optional counterfactual agent']
+```
+
+Usage
+
+```
+{'run_compare_agents': 'run a 1v6 trial comparing one agent against six agents in a Diplomacy game', 'run_compare_agent_population': 'run a population trial comparing multiple agents assigned to different powers in Diplomacy', 'run_train': 'train a supervised learning strategy model using the provided configuration', 'run_benchmark_agent': "benchmark a Diplomacy agent's performance using the benchmark tool", 'run_compute_xpower_statistics': 'compute xpower support statistics from game paths with an optional counterfactual agent'}
+```
+

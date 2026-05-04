@@ -1,0 +1,205 @@
+{
+  "facebookresearch_atlas/evaluation_scripts/evaluate_mmlu_predictions.py": {
+    "run_mmlu_evaluation": "run the MMLU evaluation script with predictions and gold answer files via CLI",
+    "load_predictions_from_file": "load MMLU predictions from a JSONL file or directory of domain prediction files",
+    "load_gold_answers": "load gold answer keys from a JSONL file into a nested dictionary by dataset",
+    "score_categories": "score prediction accuracy and debiased accuracy for a list of MMLU categories",
+    "review_subcategories": "review the SUBCATEGORIES dictionary mapping humanities, STEM, Soc Sci, and other to MMLU domains"
+  },
+  "facebookresearch_atlas/preprocessing/download_index.py": {
+    "run_download_index": "run the CLI to download a precomputed ATLAS index for the wiki-dec2018 corpus",
+    "run_download_index_help": "run the CLI with --help to list all available ATLAS indices and descriptions",
+    "run_download_index_custom_output": "run the CLI with --output_directory to download an index to a custom path",
+    "summarize_main": "summarize the main function that downloads 128 shards of passages and embeddings for an index",
+    "review_get_passage_path": "review the get_passage_path function that builds a passage file path from an index and shard number"
+  },
+  "facebookresearch_atlas/preprocessing/download_tools.py": {
+    "download_file_if_missing": "download a file from a URL to a target path only if it does not already exist",
+    "get_s3_path": "build a download URL by prepending the ATLAS base URL to a given relative path",
+    "get_download_path": "create a local file path by joining an output directory with a relative path",
+    "review_maybe_download_file": "review the maybe_download_file function to understand how it conditionally downloads files using wget",
+    "summarize_download_tools": "summarize the download_tools module which provides utilities for downloading ATLAS data files"
+  },
+  "facebookresearch_atlas/preprocessing/prepare_mmlu.py": {
+    "run_mmlu_preprocessing": "run the script to download and prepare MMLU data for 5-shot, multitask, and full transfer tasks",
+    "parse_mmlu_csv": "parse a single MMLU CSV file into a list of question-answer instance dictionaries",
+    "parse_all_mmlu_data": "parse all MMLU CSV files across auxiliary_train, dev, val, and test splits into a nested dictionary",
+    "make_five_shot_data": "create per-domain 5-shot train, validation, and test JSONL files for few-shot learning",
+    "make_full_transfer_data": "create full transfer learning data combining auxiliary train and dev splits with a 5000-sample validation set"
+  },
+  "facebookresearch_atlas/preprocessing/prepare_qa.py": {
+    "run_prepare_qa_cli": "run the prepare_qa script to download and preprocess TriviaQA and NaturalQuestions datasets into JSONL format",
+    "run_preprocess_triviaqa": "run preprocess_triviaqa to convert raw TriviaQA data into JSONL files with question, answers, and target fields",
+    "run_preprocess_nq": "run preprocess_nq to convert raw NaturalQuestions data into JSONL files with question and answers fields",
+    "run_convert_triviaqa": "run convert_triviaqa to transform a single TriviaQA example into a normalized dict with title-cased target",
+    "run_convert_nq": "run convert_nq to transform a single NaturalQuestions example into a normalized dict with question and answers"
+  },
+  "facebookresearch_atlas/preprocessing/prepare_templama.py": {
+    "run_main_templama": "run the main function to download and preprocess TempLAMA dataset for specified years",
+    "run_prep_question": "run prep_question to replace _X_ placeholders with extra_id_0 tokens in a query string",
+    "run_maybe_download_data": "run maybe_download_data to download train valid and test splits from Google Storage",
+    "run_parse": "run _parse to read a JSONL file and group items by query for specific years",
+    "run_get_export_obj": "run _get_export_obj to transform a raw TempLAMA item into an export-ready dictionary"
+  },
+  "facebookresearch_atlas/src/AdamWFP32Copy.py": {
+    "create_optimizer_adamwfp32copy": "create an AdamWFP32Copy optimizer instance with model parameters and a custom learning rate",
+    "run_optimizer_step_with_scale": "run a single optimization step on the AdamWFP32Copy optimizer with a gradient loss scale factor",
+    "build_mixed_precision_training_loop": "build a training loop using AdamWFP32Copy for mixed precision training with FP32 master weights",
+    "review_adamwfp32copy_step_method": "review the AdamWFP32Copy step method to understand FP32 master weight copy and gradient scaling logic",
+    "refactor_optimizer_for_amsgrad": "refactor the AdamWFP32Copy optimizer to enable the AMSGrad variant for improved convergence stability"
+  },
+  "facebookresearch_atlas/src/atlas.py": {
+    "build_index_atlas": "build a FAISS index by encoding passages into embeddings using the Atlas retriever in fp16",
+    "retrieve_passages_atlas": "retrieve top-k relevant passages for a query using the Atlas retriever with optional reranking",
+    "generate_answers_atlas": "generate answer text from tokenized passages using the Atlas reader model with beam search",
+    "tokenize_passages_atlas": "tokenize query and passage pairs for both the reader and retriever models using encode_passages",
+    "compute_reader_loss_atlas": "compute the reader loss and logits for tokenized input using the Atlas reader model"
+  },
+  "facebookresearch_atlas/src/dist_utils.py": {
+    "gather_tensor_with_gradients": "gather a PyTorch tensor across all GPUs with gradient support using the Gather autograd function",
+    "all_gather_tensors_no_grad": "all gather tensors from all ranks without gradient tracking along a specified dimension",
+    "varsize_all_gather_padded": "all gather tensors of different sizes by padding to max size then concatenating along a dimension",
+    "varsize_gather_to_dst": "gather tensors of different sizes from all ranks to a single destination rank with padding",
+    "weighted_average_across_ranks": "compute a weighted average of a value across all ranks using count as the weight"
+  },
+  "facebookresearch_atlas/src/evaluation.py": {
+    "normalize_answer_text": "normalize an answer string by removing articles, punctuation, and extra whitespace for QA evaluation",
+    "compute_f1_score": "compute the F1 score between a prediction and multiple ground truth answers using token overlap",
+    "compute_exact_match_score": "compute the exact match score between a prediction and multiple ground truth answers",
+    "compute_rouge_score": "compute ROUGE-1, ROUGE-2, and ROUGE-L scores between a prediction and multiple ground truth answers",
+    "compute_em_score": "compute the exact match score between a single prediction and ground truth using a normalization function"
+  },
+  "facebookresearch_atlas/src/fid.py": {
+    "build_FiD_model": "build a FiD model from a T5 config with FiDStack encoder and decoder",
+    "run_FiDStack_forward": "run the FiDStack forward pass with multi-context input reshaping for FiD encoding",
+    "test_get_crossattention_scores": "test extracting cross-attention scores from the FiD decoder to score passages",
+    "refactor_FiD_set_checkpoint": "refactor the FiD model to enable or disable gradient checkpointing in the encoder",
+    "review_cross_attention_forward": "review the cross attention forward function that stores scores for passage retrieval training"
+  },
+  "facebookresearch_atlas/src/index.py": {
+    "create_distributed_index": "create a DistributedIndex to initialize embeddings and doc maps for passage retrieval",
+    "search_knn_distributed": "search k-nearest neighbours using inner product metric across distributed GPU embeddings",
+    "save_load_index": "save and load sharded embeddings and passages across distributed workers to disk",
+    "create_faiss_gpu_index": "create a GPU FAISS index with IVFFlat, IVFPQ, IVFSQ, or FlatIP index types",
+    "train_faiss_index": "train a FAISS GPU index on passage embeddings using the gpu_index_factory method"
+  },
+  "facebookresearch_atlas/src/index_io.py": {
+    "load_passages_from_jsonl": "load passages from JSONL files in a distributed manner across multiple workers with optional max load limit",
+    "save_embeddings_and_index": "save embeddings and index files to disk using the provided index object and argparse options",
+    "load_or_initialize_index_flat": "initialize a new flat DistributedIndex or load an existing one from disk using argparse options",
+    "load_or_initialize_index_faiss": "initialize a new FAISS index with specified type and code size or load an existing one from disk",
+    "review_load_or_initialize_index": "review the load_or_initialize_index function to understand how it handles flat and FAISS index modes"
+  },
+  "facebookresearch_atlas/src/model_io.py": {
+    "load_or_initialize_atlas_model": "load or initialize an Atlas model from checkpoint or fresh T5 and Contriever components",
+    "save_atlas_model": "save an Atlas model with optimizer and scheduler state to a checkpoint directory",
+    "load_retriever": "load a Contriever-based retriever as tied or untied dual encoder from pretrained weights",
+    "load_reader": "load a FiD reader model and tokenizer from pretrained weights with optional crossattention support",
+    "create_checkpoint_directories": "create checkpoint and index directories for saving Atlas model artifacts during training"
+  },
+  "facebookresearch_atlas/src/modeling_bert.py": {
+    "build_bert_sequence_classifier": "build a BERT model for sequence classification using BertForSequenceClassification with a custom number of labels",
+    "build_bert_question_answering": "build a BERT model for extractive question answering using BertForQuestionAnswering to predict start and end span logits",
+    "build_bert_masked_lm": "build a BERT masked language model using BertForMaskedLM to predict masked token probabilities",
+    "build_bert_token_classifier": "build a BERT model for token classification using BertForTokenClassification for NER tasks",
+    "build_bert_multiple_choice": "build a BERT model for multiple choice classification using BertForMultipleChoice for tasks like SWAG"
+  },
+  "facebookresearch_atlas/src/modeling_t5.py": {
+    "build_t5_conditional_generation": "build a T5ForConditionalGeneration model to generate text from input prompts using pretrained weights",
+    "create_t5_encoder_embeddings": "create a T5EncoderModel to extract encoder hidden states and embeddings from input text",
+    "build_t5_seq2seq_model": "build a T5Model encoder-decoder transformer to get raw hidden states for both encoder and decoder",
+    "refactor_t5_attention": "refactor the T5Attention class to modify relative position bias or pruning behavior for custom attention",
+    "load_tf_weights_to_t5": "load TensorFlow checkpoint weights into a PyTorch T5 model using load_tf_weights_in_t5"
+  },
+  "facebookresearch_atlas/src/options.py": {
+    "build_argparse_options": "build an argparse parser with basic training parameters like name, checkpoint_dir, and batch size",
+    "add_optim_options": "add optimizer options including learning rate, warmup steps, scheduler, and gradient clipping arguments",
+    "add_modeling_options": "add modeling options for T5 reader model type, passage retrieval, and generation parameters",
+    "add_index_options": "add index options for loading saving FAISS or flat index shards and quantization settings",
+    "parse_and_get_options": "parse command line args and get all options with closed book mode and file passage overrides"
+  },
+  "facebookresearch_atlas/src/retrievers.py": {
+    "build_contriever_embeddings": "build a Contriever model to generate normalized text embeddings using average pooling on input tokens",
+    "create_dual_encoder_retriever": "create a DualEncoderRetriever that shares a single Contriever encoder for both query and passage embedding",
+    "create_untied_dual_encoder": "create an UntiedDualEncoderRetriever with separate query and passage encoders for independent embedding",
+    "review_baseretriever_interface": "review the BaseRetriever abstract class and its embed_queries and embed_passages interface methods",
+    "test_gradient_checkpointing": "test the BaseRetriever gradient_checkpointing_enable and gradient_checkpointing_disable methods on child modules"
+  },
+  "facebookresearch_atlas/src/slurm.py": {
+    "init_distributed_mode": "initialize distributed training mode for SLURM multi-node multi-GPU jobs using params object",
+    "init_signal_handler": "install SLURM signal handlers to handle job pre-emption and time limit signals",
+    "get_gloo_group": "retrieve the Gloo distributed process group for cross-node communication in PyTorch",
+    "sig_handler": "handle SIGUSR1 signals by requeuing the SLURM job on the main process",
+    "term_handler": "handle SIGTERM signals by logging and bypassing termination for graceful shutdown"
+  },
+  "facebookresearch_atlas/src/torchrun_utils.py": {
+    "init_distributed_mode_torchrun": "initialize distributed training mode for single and multi-GPU jobs using torchrun with NCCL backend",
+    "run_torchrun_distributed": "run a PyTorch distributed training job across multiple GPUs on a single node using torchrun",
+    "setup_nccl_backend": "set up the NCCL backend for multi-GPU communication and initialize the process group with environment variables",
+    "configure_gloo_group": "configure a GLOO distributed group with a 600-second timeout for cross-process communication",
+    "set_gpu_device": "set the CUDA device for the current process based on its local rank in the distributed setup"
+  },
+  "facebookresearch_atlas/src/util.py": {
+    "create_warmup_linear_scheduler": "create a WarmupLinearScheduler for a PyTorch optimizer with warmup steps and linear decay",
+    "create_cosine_scheduler": "create a CosineScheduler for a PyTorch optimizer with warmup and cosine annealing decay",
+    "create_index_refresh_scheduler": "create an IndexRefreshScheduler to control when to refresh an index during training",
+    "build_optimizer_and_schedulers": "build optimizers and learning rate schedulers for reader and retriever models using set_optim",
+    "compute_gradient_statistics": "compute gradient min, max, mean, and norm statistics across model parameters with compute_grad_stats"
+  },
+  "facebookresearch_atlas/src/tasks/base.py": {
+    "create_data_iterator": "create a data iterator that reads JSON lines from files with distributed worker support",
+    "create_batch_iterator": "create a batch iterator that groups examples into batches with optional shuffling and drop last",
+    "run_evaluation": "run evaluation to compute accuracy by comparing predictions against ground truths using exact match",
+    "process_example": "process an example dict to validate required query and target fields and add default passages",
+    "filter_results_by_id": "filter retrieved passages by removing those with matching IDs from batch metadata to prevent cheating"
+  },
+  "facebookresearch_atlas/src/tasks/fever.py": {
+    "process_fever_example": "process a FEVER claim example by extracting the claim and mapping labels to true false or maybe",
+    "evaluate_fever_prediction": "evaluate a FEVER task prediction against ground truths using exact match accuracy scoring",
+    "map_fever_labels": "map FEVER dataset labels NOT ENOUGH INFO REFUTES and SUPPORTS to maybe false and true",
+    "build_fever_query": "build a FEVER task query string with the claim formatted as question answer extra_id_0",
+    "review_Task_class": "review the Task class that extends BaseTask to process and evaluate FEVER fact verification examples"
+  },
+  "facebookresearch_atlas/src/tasks/kilt.py": {
+    "process_kilt_example": "process a KILT task example by extracting answers and formatting query and target fields",
+    "extract_gold_answers": "extract gold answers from a KILT example output list into a set of ground truths",
+    "evaluate_prediction": "evaluate a prediction against ground truths using accuracy, exact match, and F1 metrics",
+    "review_Task_class": "review the Task class that extends BaseTask for KILT dataset processing and evaluation",
+    "summarize_Task_metrics": "summarize the Task class metrics including accuracy, exact match, and F1 score computation"
+  },
+  "facebookresearch_atlas/src/tasks/lm.py": {
+    "split_text_for_lm": "split text into conditioning context and generation segments for language modeling",
+    "process_lm_example": "process an example by splitting text into query and target for language modeling",
+    "evaluate_lm_prediction": "evaluate a language model prediction using exact match, f1, and rouge scores",
+    "filter_lm_results": "filter retrieved results by id to remove the passage being generated",
+    "init_lm_task": "initialize a language modeling task with min words and context ratio options"
+  },
+  "facebookresearch_atlas/src/tasks/mlm.py": {
+    "apply_mlm_noise_to_text": "apply MLM noise to text using a T5 tokenizer with configurable noise density and span length",
+    "process_example_with_mlm_masking": "process an example by applying T5 MLM masking to the target text field and saving metadata",
+    "evaluate_prediction_with_metrics": "evaluate a prediction against ground truths using accuracy, F1, and ROUGE metrics",
+    "filter_results_by_id": "filter retrieved results by removing the passage being denoised from the result set",
+    "initialize_mlm_task": "initialize an MLM task with options for noise density, span length, and text maxlength"
+  },
+  "facebookresearch_atlas/src/tasks/multiple_choice.py": {
+    "build_multiple_choice_task": "build a multiple choice task class that processes questions with options and computes debiased accuracy metrics",
+    "create_question_prompt": "create a formatted multiple choice question prompt with options and answer placeholder for a tokenizer",
+    "generate_permutations": "generate cyclic or full permutations of multiple choice options to reduce answer position bias",
+    "compute_debiased_accuracy": "compute debiased accuracy by marginalizing choice probabilities across all option permutations",
+    "extract_choice_logits": "extract per-choice logits from model output tensor using a letter to token index mapping"
+  },
+  "facebookresearch_atlas/src/tasks/qa.py": {
+    "create_qa_task": "create a Task instance with Options to process question answering examples",
+    "get_qa_prompt": "get a formatted QA prompt string from a question using the prompt format template",
+    "process_example": "process a QA example dict to extract targets, set passages, and format the query",
+    "evaluate_prediction": "evaluate a QA prediction against ground truths using exact match and F1 scores",
+    "review_Task_class": "review the Task class metrics and methods for QA evaluation in the atlas framework"
+  },
+  "facebookresearch_atlas/src/tasks/section.py": {
+    "process_section_example": "process a section example by extracting title, section, and text fields into query and target",
+    "evaluate_prediction_with_metrics": "evaluate a prediction against ground truths using exact match, F1, and ROUGE scores",
+    "filter_retrieved_results_by_id": "filter retrieved results by removing the passage we are trying to generate using its ID",
+    "initialize_task_with_options": "initialize a section task with Options to set minimum words per language model instance",
+    "review_Task_class": "review the Task class that extends BaseTask for section-level text generation and evaluation"
+  }
+}

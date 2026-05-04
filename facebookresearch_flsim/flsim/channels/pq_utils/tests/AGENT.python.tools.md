@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/flsim
+- repo_uri: https://github.com/facebookresearch/flsim
+
+## File: facebookresearch_flsim/flsim/channels/pq_utils/tests/test_product_quantization.py
+
+Prompts
+
+```
+['test the EM class learn method to run k-means clustering on a PyTorch weight matrix', 'test the PQ class encode and decode methods on a linear layer weight tensor', 'test the PQ class encode method on a 2D convolutional layer weight tensor', 'review the EM class EmptyClusterResolveError exception handling when clustering identical vectors', 'test the PQ class encode method with multiple codebooks on a linear weight tensor']
+```
+
+Usage
+
+```
+{'test_EM_learn_kmeans': 'test the EM class learn method to run k-means clustering on a PyTorch weight matrix', 'test_PQ_encode_decode_linear': 'test the PQ class encode and decode methods on a linear layer weight tensor', 'test_PQ_encode_conv2d': 'test the PQ class encode method on a 2D convolutional layer weight tensor', 'review_EM_empty_cluster_error': 'review the EM class EmptyClusterResolveError exception handling when clustering identical vectors', 'test_PQ_multiple_codebooks': 'test the PQ class encode method with multiple codebooks on a linear weight tensor'}
+```
+

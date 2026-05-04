@@ -1,0 +1,240 @@
+{
+  "google-deepmind_dmalchemy/dm_alchemy/_load_environment.py": {
+    "load_alchemy_from_disk": "create a python script that loads the DeepMind Alchemy environment from a local disk path using load_from_disk",
+    "load_alchemy_from_docker": "create a python script that loads the DeepMind Alchemy environment from a Docker container using load_from_docker",
+    "configure_environment_settings": "build a python module that creates an EnvironmentSettings dataclass with seed, level_name, width, and height parameters",
+    "step_alchemy_environment": "run a python script that steps the Alchemy environment with repeated actions and accumulates reward and discount",
+    "connect_to_grpc_environment": "create a python function that establishes a gRPC channel and connection to a running Alchemy environment on a given port"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/bot_running_tracker.py": {
+    "create_bot_running_tracker": "create a BotRunningTracker to run multiple bots in sync with the main environment",
+    "get_envs_and_bots": "get copies of the environment and bots to run on them using get_envs_and_bots",
+    "review_episode_start": "review the BotRunningTracker episode_start method to reset all environments when an episode starts",
+    "summarize_action_and_outcome": "summarize the action_and_outcome method that lets bots take actions when a potion is used",
+    "test_trial_end": "test the trial_end method to end the trial in all copies of the environment"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/event_tracker.py": {
+    "create_GameState": "create a GameState to track symbolic state of an alchemy game with stones and potions",
+    "track_potion_used": "record a potion use event on a stone and update the game state",
+    "track_stone_used": "record a stone being placed in the cauldron and remove it from the game",
+    "replay_events": "replay recorded events from a TrialTracker onto a fresh GameState to reconstruct outcomes",
+    "convert_matrix_to_action_sequence": "convert a MatrixEventTracker matrix of events into an ordered action sequence list"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/get_meta_data.py": {
+    "get_meta_data_for_level": "call to_meta_data with a level name string to get value coefficients, offset, potion reward, bonus, and vary spawns flags",
+    "check_potion_reward": "use to_meta_data to determine if a level name containing 'shaping' returns a potion reward of 1",
+    "check_vary_spawns": "use to_meta_data to check if a level name containing 'vary_spawns' returns True for the vary spawns flag",
+    "get_value_coefficients": "call to_meta_data to retrieve the value coefficients list [1, 1, 1] for stone reward calculation",
+    "get_bonus_value": "call to_meta_data to retrieve the bonus value of 12 awarded for getting the best stone"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/io.py": {
+    "read_proto_file": "read a serialized protobuf file from disk and return its raw bytes",
+    "write_proto_file": "write serialized protobuf bytes to a file on disk",
+    "read_binary_config": "read a binary configuration file relative to the module root directory",
+    "write_serialized_data": "write arbitrary serialized binary data to a file in the module directory",
+    "inspect_root_dir": "inspect the _ROOT_DIR variable to find the module's base directory path"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/load_from_disk_test.py": {
+    "test_load_from_disk": "test loading a dm_alchemy environment from disk using EnvironmentSettings with a seed and level name",
+    "test_load_level_parameterized": "test loading multiple alchemy levels in a parameterized test case across different level configurations",
+    "run_load_from_disk_test": "run the LoadFromDiskTest class to validate dm_alchemy environment loading with a fixed seed and level",
+    "review_load_from_disk_test": "review the LoadFromDiskTest class and its make_object_under_test method for environment test coverage",
+    "summarize_alchemy_test": "summarize the AlchemyTest parameterized test class that validates loading multiple alchemy level configurations"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/load_from_docker_test.py": {
+    "test_load_from_docker": "test loading a DM Alchemy environment from Docker with a specific seed and level name",
+    "test_load_level_parameterized": "test loading multiple Alchemy levels like all_fixed and perceptual_mapping using parameterized test cases",
+    "run_load_from_docker_test": "run the LoadFromDockerTest class to validate environment creation via dm_alchemy.load_from_docker",
+    "review_environment_settings": "review the EnvironmentSettings class usage with seed and level_name parameters for Alchemy environments",
+    "summarize_alchemy_test_levels": "summarize the test level names including perceptual_mapping, all_fixed, and evaluation_episodes variants"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/partial_array_specs.py": {
+    "create_PartialArray_spec": "create a PartialArray spec with a shape containing one unknown dimension specified by -1",
+    "validate_array_against_PartialArray": "validate a numpy array against a PartialArray spec to check shape and dtype conformance",
+    "generate_test_value_PartialArray": "generate a test numpy array value that conforms to a PartialArray spec using generate_value",
+    "review_PartialArray_validation": "review the PartialArray class _validate_shape method to understand how unknown dimensions are handled",
+    "refactor_PartialArray_repr": "refactor the PartialArray __repr__ method to customize the string representation of the spec"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/partial_array_specs_test.py": {
+    "test_PartialArray_shape_validation": "test the PartialArray spec constructor to validate that only valid shape tuples are accepted",
+    "test_PartialArray_validate_shape": "test the PartialArray validate method to check if a numpy array shape matches the spec",
+    "test_PartialArray_generate_value": "test the PartialArray generate_value method to produce a valid numpy array matching the spec",
+    "test_PartialArray_serialization": "test the PartialArray spec pickling and unpickling to verify round-trip serialization works",
+    "review_PartialArray_test_suite": "review the PartialArray test suite to understand shape validation rules and error conditions"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/symbolic_alchemy.py": {
+    "create_symbolic_alchemy_level": "create a SymbolicAlchemy environment instance using get_symbolic_alchemy_level with a specified level name and seed",
+    "create_fixed_symbolic_alchemy": "create a fixed SymbolicAlchemy environment using get_symbolic_alchemy_fixed with pre-defined chemistry and episode items",
+    "run_symbolic_alchemy_step": "run a step in the SymbolicAlchemy environment by calling step with an integer action and observe the timestep",
+    "convert_int_action_to_tuple": "convert an integer action to a stone-potion tuple using int_action_to_tuple for slot-based or type-based environments",
+    "convert_tuple_action_to_int": "convert a stone-potion tuple action back to an integer using tuple_action_to_int for the environment"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/symbolic_alchemy_bots.py": {
+    "run_ideal_observer_bot": "run an IdealObserverBot episode on the symbolic alchemy environment using precomputed maps and reward weights",
+    "run_random_action_bot": "run a RandomActionBot episode on the symbolic alchemy environment that selects random stone and potion pairs",
+    "replay_trial_actions": "replay a sequence of recorded trial actions using ReplayBot on the symbolic alchemy environment",
+    "run_symbolic_alchemy_bot": "run any symbolic alchemy bot for one full episode given episode items, chemistry, and reward weights",
+    "get_multi_trial_ideal_observer_reward": "apply a greedy ideal observer policy across multiple trials and return per-trial rewards and event trackers"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/symbolic_alchemy_test.py": {
+    "test_symbolic_alchemy_fixed_chem": "test the SymbolicAlchemyFixedChemTest class to verify fixed chemistry environment behavior with stones and potions",
+    "test_symbolic_alchemy_random_chem": "test the SymbolicAlchemyRandomChemTest class to verify randomized chemistry environment behavior across episodes",
+    "test_see_chemistry_observations": "test the SymbolicAlchemySeeChemistryTest class to verify ground truth and belief state chemistry observations",
+    "test_use_stone_and_potion": "test the use stone and use potion methods to verify reward calculation and observation updates",
+    "test_end_trial_and_no_op": "test the end trial and no-op actions to verify trial transitions and observation stability"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/symbolic_alchemy_trackers.py": {
+    "create_SequenceStatsTracker": "create a SequenceStatsTracker to track how a statistic changes throughout an episode",
+    "build_SymbolicAlchemyTracker_subclass": "build a subclass of SymbolicAlchemyTracker to hook into episode, trial, and action lifecycle events",
+    "create_StatTracker": "create a StatTracker to accumulate a custom statistic on each action and outcome",
+    "create_BeliefStateTracker": "create a BeliefStateTracker to maintain and update a belief state for a symbolic alchemy agent",
+    "create_SpecificActionTracker": "create a SpecificActionTracker to count actions that satisfy a custom condition function"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/symbolic_alchemy_wrapper.py": {
+    "create_SymbolicAlchemyWrapper": "create a SymbolicAlchemyWrapper instance wrapping a 3D alchemy environment with a symbolic environment in sync",
+    "run_process_step_events": "run process_step_events to parse 3D environment events and update the symbolic environment state",
+    "run_step": "run step on the SymbolicAlchemyWrapper to take an action in the 3D environment and sync symbolic state",
+    "run_reset": "run reset on the SymbolicAlchemyWrapper to reset both the 3D and symbolic environments and clear trial state",
+    "review_add_observations": "review add_observations to merge symbolic observations into the 3D environment timestep before returning"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/symbolic_alchemy_wrapper_test.py": {
+    "test_symbolic_alchemy_wrapper_items": "test the SymbolicAlchemyWrapper to verify items are generated correctly each trial",
+    "test_potion_used_event": "test the Mock3DEnv set_potion_used method to verify potion consumption updates game state",
+    "test_stone_used_event": "test the Mock3DEnv set_stone_used method to verify stone removal from game state",
+    "review_mock3denv_class": "review the Mock3DEnv class and its events method for simulating alchemy world events",
+    "review_encode_event_function": "review the encode_event function that packs protobuf events into WorldEvent wrappers"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/encode/chemistries_proto_conversion.py": {
+    "convert_chemistry_to_proto": "convert a Chemistry object to a protobuf message for serialization",
+    "convert_proto_to_chemistry": "convert a Chemistry protobuf message back to a Chemistry object",
+    "write_chemistries_and_items": "write a sequence of chemistry and episode items tuples to a file as serialized protobuf",
+    "load_chemistries_and_items": "load chemistry and episode items from a serialized protobuf file",
+    "convert_trial_items_to_proto": "convert TrialItems containing stones and potions to a protobuf message"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/encode/precomputed_maps_proto_conversion.py": {
+    "write_int_array": "write a numpy int array to a serialized protobuf file in a given folder",
+    "load_int_array": "load a serialized protobuf int array file from a folder into a numpy array",
+    "write_bitfield_array": "write a numpy bitfield array to a base64-encoded protobuf file in a folder",
+    "load_bitfield_array": "load a base64-encoded protobuf bitfield array file from a folder into a numpy array",
+    "graph_to_proto": "convert a dm_alchemy Graph object to a protobuf GraphArray entry for serialization"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/encode/symbolic_actions_proto_conversion.py": {
+    "convert_trial_events_to_proto": "convert a MatrixEventTracker trial events object into a precomputed_maps_pb2 IntArray proto message",
+    "convert_proto_to_trial_events": "convert an IntArray proto message back into a MatrixEventTracker trial events object",
+    "convert_episode_events_to_proto": "convert a sequence of MatrixEventTracker trial events into a symbolic_actions_pb2 EpisodeEvents proto",
+    "convert_proto_to_episode_events": "convert an EpisodeEvents proto back into a list of MatrixEventTracker trial events objects",
+    "convert_evaluation_set_to_proto": "convert a nested sequence of MatrixEventTracker events into a symbolic_actions_pb2 EvaluationSetEvents proto"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/ideal_observer/helpers.py": {
+    "find_sorted_intersection": "find the intersection of two sorted lists and return matching elements with their indices",
+    "convert_list_to_bitfield": "convert a list of integers into a single bitfield integer using bitwise operations",
+    "convert_bitfield_to_list": "convert a bitfield integer back into a list of integers representing set bit positions",
+    "pack_ints_to_bitfield": "pack multiple integers with specified bit widths into a single arbitrary precision integer",
+    "review_helpers_module": "review the ideal observer helper functions for sorted intersection and bitfield conversion utilities"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/ideal_observer/ideal_observer.py": {
+    "run_ideal_observer": "run the ideal observer to find the best action and expected reward from a belief state",
+    "run_search": "run a depth-first search over actions and outcomes to find the best expected reward",
+    "create_belief_state": "create a BeliefState to track perceived stones, potions, and world state distribution",
+    "create_belief_state_with_rotation": "create a BeliefStateWithRotation to track belief including possible stone rotations",
+    "update_world_state_distribution": "update the WorldStateDistribution given a new action and observed outcome"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/ideal_observer/ideal_observer_test.py": {
+    "test_expected_reward": "test the ideal observer expected reward calculation for aligned stones and perceived potions",
+    "test_multiple_trials": "test the ideal observer across multiple trials with varying stones and potions",
+    "test_belief_state": "test the BeliefState initialization and new trial setup with aligned stones and potions",
+    "test_ideal_explorer": "test the ideal explorer mode that minimizes world states instead of search depth",
+    "test_event_tracking": "test expected and non-expected events in the ideal observer multi-trial scenarios"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/ideal_observer/precomputed_maps.py": {
+    "get_precomputed_maps": "build a python module to precompute all observation maps for the ideal observer given graph constraints and possible stone and potion maps",
+    "PrecomputedMaps_save": "create a python script to save precomputed maps as serialized protobuf files to a specified folder on disk",
+    "load_from_level_name": "create a function that loads precomputed maps from disk given an alchemy level name string",
+    "get_perm_index_conversion": "build a python module that returns bidirectional conversion arrays between permutation indices and compact indices for axis permutations",
+    "constraints_to_filename": "create a function that converts graph constraints and possible stone and potion maps into a deterministic filename string"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/ideal_observer/precomputed_maps_test.py": {
+    "run_precomputed_maps_tests": "run the absltest unit tests for precomputed maps used in the ideal observer",
+    "test_no_effect_from_partial_chem": "test that actions with no effect are correctly computed from partial chemistry data",
+    "test_partial_stone_map_to_stone_map": "test the lookup from partial stone map index to full stone map index",
+    "test_get_perm_index_conversion": "test the permutation index conversion used by precomputed maps",
+    "test_get_no_effect_from_partial_chem": "test the no effect lookup table built from partial chemistry indices"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/types/event_unpacking.py": {
+    "unpack_chemistry_and_rotation": "unpack a WorldEvent to extract chemistry constraints and rotation mapping from a ChemistryCreated event",
+    "unpack_potion_used": "unpack a WorldEvent to get the potion instance ID and stone instance ID from a PotionUsed event",
+    "get_stones": "extract a list of PerceivedStone objects with instance IDs from StoneCreated events in a sequence",
+    "get_potions": "extract a list of PerceivedPotion objects with instance IDs from PotionCreated events in a sequence",
+    "events_per_trial": "split a trajectory of WorldEvents into separate lists grouped by trial start and end boundaries"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/types/graph_from_unity_type.py": {
+    "create_graph_from_chemistry": "create a graph from a Chemistry event and existing Potion objects using create_graph",
+    "create_nodes_from_stones": "create Node objects from stone vertices with latent index and coordinates",
+    "create_edges_from_potions": "create edges between nodes based on potion effects and allowable reactions",
+    "build_graph_with_nodelist": "build a Graph object by populating NodeList and EdgeList from chemistry data",
+    "review_create_graph_function": "review the create_graph function that constructs a Graph from potions and chemistry events"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/types/graphs.py": {
+    "create_graph_from_constraint": "create a Graph from a Constraint list describing how stones transform by potions in latent space",
+    "convert_graph_to_adj_mat": "convert a Graph object to a numpy adjacency matrix with potion indices at connected entries",
+    "possible_constraints": "generate all valid Constraint lists where every node is reachable in the resulting graph",
+    "graph_distr": "compute a prior probability distribution over all valid Graph objects given a sequence of constraints",
+    "partial_graph_from_graph": "convert a fully known Graph into a PartialGraph with all edges marked as KNOWN_EDGE"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/types/graphs_test.py": {
+    "test_graph_constraint_conversion": "test the GraphsTest class to verify graph constraint round-trip conversion works correctly",
+    "run_graphs_test": "run the absltest suite for dm_alchemy types graphs to validate constraint conversion",
+    "test_possible_constraints": "test that graphs.possible_constraints returns all constraints that round-trip through graph conversion",
+    "test_create_graph_from_constraint": "test that create_graph_from_constraint produces a graph that converts back to the original constraint",
+    "test_constraint_from_graph": "test that constraint_from_graph correctly reconstructs the original constraint from a graph"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/types/helpers.py": {
+    "convert_permutation_to_index": "convert a permutation sequence to an integer using a precomputed lookup matrix",
+    "convert_index_to_permutation": "convert an integer back to a permutation sequence using a precomputed lookup matrix",
+    "encode_partial_permutation": "encode a length 3 permutation with unknown values into a unique integer index",
+    "decode_partial_permutation": "decode an integer index back into a length 3 permutation with potentially unknown values",
+    "convert_numpy_array_to_string": "convert a numpy array to its string constructor representation for serialization"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/types/stones_and_potions.py": {
+    "create_aligned_stone": "create an AlignedStone from a reward value and aligned coordinate array",
+    "generate_possible_aligned_stones": "generate a list of all 32 possible AlignedStone instances using possible_aligned_stones",
+    "apply_stone_map": "apply a StoneMap to an AlignedStone to get the corresponding LatentStone",
+    "update_partial_potion_map": "update a PartialPotionMap given an AlignedStone, PerceivedPotion, and result stone observation",
+    "react_stone_with_potion": "compute the resulting AlignedStone when applying a latent dimension and direction to a stone"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/types/stones_and_potions_test.py": {
+    "run_stones_and_potions_test": "run the absltest suite that validates index round-trip conversion for all stone and potion types",
+    "test_aligned_stone_from_index": "test that aligned_stone_from_index and AlignedStone.index convert to and from each other for all valid indices",
+    "test_perceived_potion_from_index": "test that perceived_potion_from_index and PerceivedPotion.index round-trip correctly across all valid indices",
+    "test_partial_potion_map_from_index": "test that partial_potion_map_from_index round-trips using axis and direction assignment indices with precomputed maps",
+    "test_potion_map_from_index": "test that potion_map_from_index and PotionMap.index convert correctly using index_to_perm_index and perm_index_to_index"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/types/unity_python_conversion.py": {
+    "from_unity_chemistry": "convert a unity Chemistry proto and rotation mapping to a python Chemistry object with potion map, stone map, graph, and rotation",
+    "to_unity_chemistry": "convert a python Chemistry object to a unity Chemistry proto and rotation mapping for the alchemy environment",
+    "PythonToUnityDimMap": "create a PythonToUnityDimMap instance to apply dimension mapping transformations to latent stones, potions, graphs, and potion maps",
+    "find_dim_map_and_stone_map": "find the dimension map, stone map, and rotation that map latent stones to perceived stones for a given chemistry",
+    "perceptual_features": "extract the size, roundness, and color perceptual features from a PerceivedStone as a dictionary"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/types/unity_python_conversion_test.py": {
+    "test_UnityPythonConversionTest_back_and_forth": "test the UnityPythonConversionTest class to verify round-trip conversion between Unity and Python representations",
+    "test_get_potion_tests": "test the get_potion_tests function to generate test cases for potion to Unity potion properties conversion",
+    "test_get_stone_tests": "test the get_stone_tests function to generate test cases for stone to Unity stone properties conversion",
+    "test_test_chemistries": "test the test_chemistries function to return a subset of Chemistry objects for conversion testing",
+    "test_all_graphs": "test the all_graphs function to return all possible graphs created from constraints"
+  },
+  "google-deepmind_dmalchemy/dm_alchemy/types/utils.py": {
+    "create_chemistry_dataclass": "create a Chemistry dataclass with potion_map, stone_map, graph, and rotation fields",
+    "create_trial_items": "create a TrialItems object from a sequence of potions and stones for a single trial",
+    "create_episode_items": "create an EpisodeItems object with stones and potions for each trial in an episode",
+    "create_chemistry_seen": "create a ChemistrySeen object to configure which chemistry elements appear in observations",
+    "convert_action_from_ints": "convert aligned stone and potion indices into a TypeBasedAction using type_based_action_from_ints"
+  },
+  "google-deepmind_dmalchemy/examples/random_agent.py": {
+    "run_random_agent": "run a random agent that samples actions and interacts with the DeepMind Alchemy environment",
+    "create_random_agent": "create a RandomAgent class that uniformly samples BoundedArray actions from an action spec",
+    "run_alchemy_env": "run the Alchemy environment from Docker with a specified seed and level name",
+    "test_random_agent_act": "test the RandomAgent act method to verify it generates valid actions from the action spec",
+    "review_environment_settings": "review the EnvironmentSettings configuration for seed and level name parameters"
+  }
+}

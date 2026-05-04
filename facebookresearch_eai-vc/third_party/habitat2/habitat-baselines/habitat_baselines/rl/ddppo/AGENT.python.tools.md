@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eai-vc
+- repo_uri: https://github.com/facebookresearch/eai-vc
+
+## File: facebookresearch_eai-vc/third_party/habitat2/habitat-baselines/habitat_baselines/rl/ddppo/ddp_utils.py
+
+Prompts
+
+```
+['initialize torch distributed process group using SLURM environment variables and a TCP store', 'use the rank0_only decorator to restrict function execution to world rank 0 only', 'gather variable-sized 1D tensors from all ranks into a single rank using ring all-gather', 'gather arbitrary Python objects from all distributed ranks to a single output rank', 'save checkpoint state to a file for resuming preempted SLURM jobs later']
+```
+
+Usage
+
+```
+{'init_distrib_slurm': 'initialize torch distributed process group using SLURM environment variables and a TCP store', 'rank0_only': 'use the rank0_only decorator to restrict function execution to world rank 0 only', 'gatherv': 'gather variable-sized 1D tensors from all ranks into a single rank using ring all-gather', 'gather_objects': 'gather arbitrary Python objects from all distributed ranks to a single output rank', 'save_resume_state': 'save checkpoint state to a file for resuming preempted SLURM jobs later'}
+```
+

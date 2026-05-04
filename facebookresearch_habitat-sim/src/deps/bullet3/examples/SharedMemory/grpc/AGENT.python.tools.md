@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/habitat-sim
+- repo_uri: https://github.com/facebookresearch/habitat-sim
+
+## File: facebookresearch_habitat-sim/src/deps/bullet3/examples/SharedMemory/grpc/pybullet_client.py
+
+Prompts
+
+```
+['run the pybullet grpc client that connects to localhost:6667 and submits simulation commands', 'create a pybullet grpc client that loads a URDF robot model with scaling and fixed base options', 'create a pybullet grpc client that loads an MJCF humanoid model with colors from file', 'create a pybullet grpc client that changes the mass dynamics of a loaded body', 'create a pybullet grpc client that steps the simulation in a continuous loop']
+```
+
+Usage
+
+```
+{'run_pybullet_grpc_client': 'run the pybullet grpc client that connects to localhost:6667 and submits simulation commands', 'load_urdf_model': 'create a pybullet grpc client that loads a URDF robot model with scaling and fixed base options', 'load_mjcf_model': 'create a pybullet grpc client that loads an MJCF humanoid model with colors from file', 'change_body_dynamics': 'create a pybullet grpc client that changes the mass dynamics of a loaded body', 'step_simulation_loop': 'create a pybullet grpc client that steps the simulation in a continuous loop'}
+```
+

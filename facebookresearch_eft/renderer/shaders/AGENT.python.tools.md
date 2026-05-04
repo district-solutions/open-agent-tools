@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eft
+- repo_uri: https://github.com/facebookresearch/eft
+
+## File: facebookresearch_eft/renderer/shaders/framework.py
+
+Prompts
+
+```
+['load and compile a GLSL vertex or fragment shader from a file into an OpenGL shader object', 'create an OpenGL program by linking a list of compiled shader objects together', 'find a shader file by searching the local data directory and the global module data directory', 'review the loadShader function to understand how it handles GLSL compilation and error logging', 'refactor the createProgram function to add custom validation before linking shader objects']
+```
+
+Usage
+
+```
+{'load_shader_from_file': 'load and compile a GLSL vertex or fragment shader from a file into an OpenGL shader object', 'create_program_from_shaders': 'create an OpenGL program by linking a list of compiled shader objects together', 'find_shader_file': 'find a shader file by searching the local data directory and the global module data directory', 'review_loadShader_compilation': 'review the loadShader function to understand how it handles GLSL compilation and error logging', 'refactor_createProgram_linking': 'refactor the createProgram function to add custom validation before linking shader objects'}
+```
+

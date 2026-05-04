@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eai-vc
+- repo_uri: https://github.com/facebookresearch/eai-vc
+
+## File: facebookresearch_eai-vc/third_party/habitat2/habitat-baselines/habitat_baselines/utils/common.py
+
+Prompts
+
+```
+['batch a list of observation dicts into a single TensorDict on a specified device', 'generate a video from a list of numpy images and save to disk or tensorboard', 'resize an image tensor so its shortest edge matches a target size while preserving aspect ratio', 'perform a center crop on an image tensor to a specified height and width', 'convert a tensor of image tensors into a list of BGR numpy arrays']
+```
+
+Usage
+
+```
+{'batch_obs': 'batch a list of observation dicts into a single TensorDict on a specified device', 'generate_video': 'generate a video from a list of numpy images and save to disk or tensorboard', 'image_resize_shortest_edge': 'resize an image tensor so its shortest edge matches a target size while preserving aspect ratio', 'center_crop': 'perform a center crop on an image tensor to a specified height and width', 'tensor_to_bgr_images': 'convert a tensor of image tensors into a list of BGR numpy arrays'}
+```
+

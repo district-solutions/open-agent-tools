@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/depthcontrast
+- repo_uri: https://github.com/facebookresearch/depthcontrast
+
+## File: facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/models/backbones_2d/base_bev_backbone.py
+
+Prompts
+
+```
+['build a BaseBEVBackbone network with configurable layer nums, strides, and num filters for BEV feature extraction', 'run the BaseBEVBackbone forward pass on a data dict containing spatial_features tensor input', 'create a model config object with LAYER_NUMS, LAYER_STRIDES, and NUM_FILTERS to initialize BaseBEVBackbone', 'review the BaseBEVBackbone class to understand its encoder-decoder blocks and upsampling deblocks structure', 'test the BaseBEVBackbone forward method by passing a data dict with spatial_features and checking spatial_features_2d output']
+```
+
+Usage
+
+```
+{'build_bev_backbone': 'build a BaseBEVBackbone network with configurable layer nums, strides, and num filters for BEV feature extraction', 'run_bev_backbone_forward': 'run the BaseBEVBackbone forward pass on a data dict containing spatial_features tensor input', 'create_bev_backbone_config': 'create a model config object with LAYER_NUMS, LAYER_STRIDES, and NUM_FILTERS to initialize BaseBEVBackbone', 'review_bev_backbone_architecture': 'review the BaseBEVBackbone class to understand its encoder-decoder blocks and upsampling deblocks structure', 'test_bev_backbone_forward': 'test the BaseBEVBackbone forward method by passing a data dict with spatial_features and checking spatial_features_2d output'}
+```
+

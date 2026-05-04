@@ -1,0 +1,170 @@
+{
+  "facebookresearch_attentivenas/data/auto_augment_tf.py": {
+    "create_auto_augment_policy": "create an auto augmentation policy using auto_augment_policy with name v0 or original",
+    "apply_auto_augment": "apply auto augmentation to a PIL Image using the AutoAugment class with a policy",
+    "build_augment_op": "build an AutoAugmentOp with a name, probability, and magnitude for image augmentation",
+    "create_shear_augmentation": "create a shear_x or shear_y augmentation function to transform a PIL Image",
+    "apply_image_enhance": "apply contrast, color, brightness, or sharpness enhancement to a PIL Image"
+  },
+  "facebookresearch_attentivenas/data/data_loader.py": {
+    "build_imagenet_data_loader": "build a train and validation data loader for ImageNet with distributed sampling support",
+    "build_default_imagenet_data_loader": "build PyTorch DataLoaders for ImageNet train and val splits using ImageFolder datasets",
+    "create_data_loader_with_augmentation": "create a data loader that applies configurable augmentation strategies like auto_augment_tf to ImageNet",
+    "review_build_data_loader": "review the build_data_loader function to understand how it dispatches to dataset-specific loaders",
+    "refactor_distributed_sampler": "refactor the data loader to customize DistributedSampler behavior for train and validation sets"
+  },
+  "facebookresearch_attentivenas/data/data_transform.py": {
+    "build_default_transform": "build a torchvision transform pipeline with random resized crop and horizontal flip for training images",
+    "build_imagenet_auto_augment_tf_transform": "build an ImageNet auto augment transform pipeline with random crop, flip, and augmentation policy for training",
+    "get_data_transform": "get a data transform pipeline by passing args, is_training flag, and augment strategy name",
+    "get_normalize": "get a torchvision Normalize transform using ImageNet pixel mean and standard deviation values",
+    "refactor_build_default_transform": "refactor the build_default_transform function to support additional augmentation strategies beyond random crop and flip"
+  },
+  "facebookresearch_attentivenas/evaluate/attentive_nas_eval.py": {
+    "validate_subnet_evaluation": "run validation on a list of subnets from a supernet with BN calibration and accuracy reporting",
+    "validate_min_max_random_subnets": "evaluate the min, max, and random subnets of an AttentiveNAS supernet using the validate function",
+    "validate_custom_subnet_config": "evaluate a custom subnet by specifying resolution, width, depth, kernel size, and expand ratio",
+    "validate_bn_calibration": "calibrate batch normalization running statistics on a subnet before evaluating its accuracy on the validation set",
+    "validate_distributed_results": "collect and reduce evaluation results across distributed GPUs using comm.reduce_eval_results"
+  },
+  "facebookresearch_attentivenas/evaluate/imagenet_eval.py": {
+    "run_validate_subnet": "run validation on a subnet model using a val_loader and criterion to get accuracy and loss metrics",
+    "run_flops_count": "run FLOPs and parameter counting on a subnet model given its input data shape",
+    "test_validate_one_subnet": "test the validate_one_subnet function with a dummy val_loader and subnet to verify accuracy computation",
+    "review_validate_one_subnet": "review the validate_one_subnet function for distributed evaluation logic and accuracy measurement across GPU processes",
+    "refactor_log_helper": "refactor the log_helper function to support additional logging levels beyond info and print"
+  },
+  "facebookresearch_attentivenas/models/attentive_nas_dynamic_model.py": {
+    "build_AttentiveNasDynamicModel": "build a python module to create an AttentiveNasDynamicModel from a supernet config with 1000 classes",
+    "run_set_active_subnet": "run set_active_subnet on the dynamic model to configure resolution width depth kernel size and expand ratio",
+    "sample_sample_active_subnet": "sample a random active subnet configuration from the dynamic model and optionally compute its FLOPs",
+    "get_get_active_subnet": "get a pruned static AttentiveNasStaticModel subnet from the dynamic model with preserved weights",
+    "compute_compute_active_subnet_flops": "compute the FLOPs in millions for the currently active subnet configuration of the dynamic model"
+  },
+  "facebookresearch_attentivenas/models/attentive_nas_static_model.py": {
+    "build_AttentiveNasStaticModel": "build an AttentiveNasStaticModel with first_conv, blocks, last_conv, classifier, and resolution parameters",
+    "run_forward_pass": "run a forward pass through the AttentiveNasStaticModel with input tensor x and bicubic interpolation",
+    "get_module_str": "get the module_str property to retrieve a string representation of all model modules",
+    "get_config": "get the config property to retrieve a dictionary with the model architecture configuration",
+    "initialize_weights": "initialize model weights using Kaiming normal for conv layers and normal for linear layers"
+  },
+  "facebookresearch_attentivenas/models/model_factory.py": {
+    "create_attentive_nas_dynamic_model": "create an AttentiveNasDynamicModel using create_model with arch set to attentive_nas_dynamic_model",
+    "create_attentive_nas_static_model": "create a static AttentiveNas model subsampled from a pretrained supernet using create_model",
+    "create_model_with_arch": "create a neural network model by calling create_model with args and an architecture string",
+    "review_create_model_function": "review the create_model function that supports dynamic and static AttentiveNAS model creation",
+    "summarize_model_factory": "summarize the model factory module that creates AttentiveNAS dynamic or static models from args"
+  },
+  "facebookresearch_attentivenas/models/modules/activations.py": {
+    "create_memory_efficient_swish_activation": "create a MemoryEfficientSwish module that applies the Swish activation function using a custom autograd function for memory efficiency",
+    "build_hswish_activation_layer": "build an Hswish activation layer that computes x * relu6(x + 3) / 6 as a hard Swish approximation",
+    "build_hsigmoid_activation_layer": "build an Hsigmoid activation layer that computes relu6(x + 3) / 6 as a hard sigmoid approximation",
+    "review_swish_implementation_autograd": "review the SwishImplementation custom autograd function that computes forward and backward passes for the Swish activation",
+    "test_activation_modules_forward_pass": "test the MemoryEfficientSwish, Hswish, and Hsigmoid modules by passing a PyTorch tensor through their forward methods"
+  },
+  "facebookresearch_attentivenas/models/modules/dynamic_layers.py": {
+    "build_dynamic_mbconv_layer": "build a DynamicMBConvLayer with configurable kernel sizes, expand ratios, and Squeeze-and-Excitation support",
+    "get_active_subnet_mbconv": "get an active subnet from a DynamicMBConvLayer by extracting a pruned MBInvertedConvLayer with preserved weights",
+    "build_dynamic_convbnact_layer": "build a DynamicConvBnActLayer with dynamic convolution, batch normalization, and configurable activation functions",
+    "build_dynamic_linear_layer": "build a DynamicLinearLayer that supports variable input feature sizes with a fixed output dimension",
+    "build_dynamic_shortcut_layer": "build a DynamicShortcutLayer that handles identity mapping, average pooling, and 1x1 conv for channel mismatch"
+  },
+  "facebookresearch_attentivenas/models/modules/dynamic_ops.py": {
+    "create_dynamic_separable_conv": "create a DynamicSeparableConv2d module with configurable kernel size list and channels per group for NAS search",
+    "create_dynamic_point_conv": "create a DynamicPointConv2d module that applies 1x1 convolution with dynamically selectable output channels",
+    "create_dynamic_linear": "create a DynamicLinear layer with dynamically selectable output feature dimensions for neural architecture search",
+    "create_dynamic_batchnorm": "create a DynamicBatchNorm2d module with shared BN weights across subnets and optional sync across distributed GPUs",
+    "create_dynamic_se": "create a DynamicSE squeeze-and-excitation module that adapts to variable input channel dimensions at runtime"
+  },
+  "facebookresearch_attentivenas/models/modules/nn_base.py": {
+    "init_model_he_fout": "init a PyTorch network's Conv2d weights using He fan-out initialization strategy",
+    "init_model_he_fin": "init a PyTorch network's Conv2d weights using He fan-in initialization strategy",
+    "set_bn_param": "set the momentum and epsilon parameters on all BatchNorm2d layers in a network",
+    "get_bn_param": "get the current momentum and epsilon parameters from the first BatchNorm layer in a network",
+    "load_weights_from_pretrained": "load pretrained weights from a checkpoint file into a PyTorch network's state dict"
+  },
+  "facebookresearch_attentivenas/models/modules/nn_utils.py": {
+    "build_activation_module": "build a PyTorch activation module from a string name like relu, swish, or h_swish",
+    "make_divisible_channels": "make a channel count divisible by a given divisor for MobileNet-style width scaling",
+    "drop_connect_tensor": "apply drop connect regularization to a BCWH tensor with a given dropout probability",
+    "copy_batch_norm_state": "copy batch norm weight, bias, running mean, and running var from source to target layer",
+    "get_same_padding_for_kernel": "compute same padding value for an odd kernel size used in convolutional layers"
+  },
+  "facebookresearch_attentivenas/models/modules/static_layers.py": {
+    "build_conv_bn_act_layer": "build a ConvBnActLayer with configurable kernel size, stride, and activation function for CNN blocks",
+    "build_mb_inverted_conv_layer": "build an MBInvertedConvLayer with expand ratio, SE attention, and depthwise convolution for MobileNet blocks",
+    "build_mobile_inverted_residual_block": "build a MobileInvertedResidualBlock combining an inverted convolution with a shortcut and drop connect",
+    "build_se_layer": "build an SELayer squeeze-and-excitation module that applies channel-wise attention to feature maps",
+    "set_layer_from_config": "create any static layer from a config dictionary using set_layer_from_config factory function"
+  },
+  "facebookresearch_attentivenas/sampler/attentive_nas_sampler.py": {
+    "build_arch_sampler": "build an ArchSampler instance from an architecture-to-FLOPs map file with a discretization step and model",
+    "sample_target_flops": "sample a single target FLOPs value from the probability distribution or uniformly at random",
+    "sample_archs_according_to_flops": "sample neural network architecture configurations that match a target FLOPs budget using probability-based selection",
+    "build_transition_prob_matrix": "build a transition probability matrix from an architecture-to-FLOPs map file by counting and normalizing observations",
+    "review_round_flops": "review the round_flops function that discretizes FLOPs values to the nearest multiple of a given step"
+  },
+  "facebookresearch_attentivenas/solver/build.py": {
+    "build_optimizer_sgd": "build an SGD optimizer with weight decay groups for a PyTorch model using config args",
+    "build_lr_scheduler_cosine": "build a warmup cosine learning rate scheduler for a PyTorch optimizer from config args",
+    "build_lr_scheduler_multistep": "build a warmup multi-step exponential decay learning rate scheduler from config args",
+    "build_lr_scheduler_linear": "build a warmup linear decay learning rate scheduler for a PyTorch optimizer from config args",
+    "build_lr_scheduler_constant": "build a constant learning rate scheduler that keeps the optimizer learning rate unchanged"
+  },
+  "facebookresearch_attentivenas/solver/lr_scheduler.py": {
+    "create_warmup_cosine_lr": "create a WarmupCosineLR scheduler with cosine annealing and linear warmup for a PyTorch optimizer",
+    "create_warmup_multistep_lr": "create a WarmupMultiStepLR scheduler that decays learning rate by gamma at specified milestones",
+    "create_warmup_linear_decay_lr": "create a WarmupLinearDecayLR scheduler with linear decay across milestones and warmup phase",
+    "create_constant_lr": "create a ConstantLR scheduler that keeps the learning rate unchanged throughout training",
+    "review_get_warmup_factor": "review the _get_warmup_factor_at_iter function that computes warmup factor using constant or linear methods"
+  },
+  "facebookresearch_attentivenas/utils/comm.py": {
+    "get_world_size": "get the world size of the current distributed training process group",
+    "get_rank": "get the rank of the current process in the distributed training group",
+    "is_master_process": "check if the current process is the master process with rank zero",
+    "synchronize": "synchronize all processes with a barrier during distributed training",
+    "get_parallel_model": "wrap a PyTorch model with DistributedDataParallel for multi-GPU training"
+  },
+  "facebookresearch_attentivenas/utils/config.py": {
+    "setup_config_from_yaml": "load a YAML config file using setup() to get a Config object with attribute-style access",
+    "create_AttrDict_with_nested_dicts": "create an AttrDict from a dictionary to access nested keys via dot notation instead of bracket notation",
+    "use_Loader_with_include_directive": "parse a YAML file that uses the !include directive to embed other YAML or text files",
+    "convert_AttrDict_to_yaml_dict": "call the yaml() method on an AttrDict to convert it back to a plain dictionary",
+    "repr_Config_object": "print a Config object to get a formatted multi-line string of all config keys and values"
+  },
+  "facebookresearch_attentivenas/utils/flops_counter.py": {
+    "profile_model_flops": "profile a PyTorch model to count total FLOPs and parameters for a given input size",
+    "count_net_flops_and_params": "count the FLOPs and parameters of a neural network in millions for a given data shape",
+    "count_convNd_ops": "count the operations for Conv1d, Conv2d, or Conv3d layers using kernel size and output elements",
+    "count_linear_ops": "count the operations for a Linear layer by multiplying input features by output features",
+    "register_custom_ops": "register custom operation counting hooks for unsupported layer types in the profile function"
+  },
+  "facebookresearch_attentivenas/utils/logging.py": {
+    "setup_logging_master_process": "setup logging for the master process with stdout and optional file handler output",
+    "setup_logging_file_output": "setup logging to save log messages to a specified file path in append mode",
+    "get_logger_by_name": "get a named logger instance from the logging hierarchy by its string name",
+    "suppress_print_non_master": "suppress print output from non-master processes in a multi-process environment",
+    "review_setup_logging": "review the setup_logging function to understand multi-process logging configuration and handler setup"
+  },
+  "facebookresearch_attentivenas/utils/loss_ops.py": {
+    "build_CrossEntropyLossSoft": "build a PyTorch module using CrossEntropyLossSoft for inplace distillation in image classification",
+    "build_KLLossSoft": "build a PyTorch module using KLLossSoft for knowledge distillation with temperature scaling",
+    "build_CrossEntropyLossSmooth": "build a PyTorch module using CrossEntropyLossSmooth with label smoothing for classification",
+    "test_KLLossSoft": "test the KLLossSoft forward pass with student logits, teacher logits, and ground truth labels",
+    "review_CrossEntropyLossSmooth": "review the CrossEntropyLossSmooth class and its label smoothing implementation for classification tasks"
+  },
+  "facebookresearch_attentivenas/utils/progress.py": {
+    "create_average_meter": "create an AverageMeter instance to track and compute running averages of training metrics",
+    "update_average_meter": "update an AverageMeter with new values and batch sizes to maintain running statistics",
+    "display_progress_meter": "display a ProgressMeter to show batch progress and associated metric meters during training",
+    "compute_accuracy_topk": "compute top-k classification accuracy from model output logits and ground truth target labels",
+    "reset_average_meter": "reset an AverageMeter to clear all accumulated values and start fresh tracking"
+  },
+  "facebookresearch_attentivenas/utils/saver.py": {
+    "save_checkpoint": "save a PyTorch model checkpoint with optimizer and lr_scheduler state to a file path",
+    "load_checkpoints": "load a PyTorch model checkpoint from a resume path and restore model, optimizer, and lr_scheduler state",
+    "save_acc_predictor": "save an accuracy predictor object to a joblib file using args models_save_dir and current epoch",
+    "load_acc_predictor": "load an accuracy predictor from a saved joblib file path and return the predictor object",
+    "copy_file": "copy a file from a source path to a target path using shutil copyfile"
+  }
+}

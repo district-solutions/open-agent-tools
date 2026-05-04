@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/elf
+- repo_uri: https://github.com/facebookresearch/elf
+
+## File: facebookresearch_elf/vendor/pybind11/setup.py
+
+Prompts
+
+```
+['build the pybind11 package using python setup.py install to install headers and the pybind11 package', 'install pybind11 C++ headers preserving subdirectory structure using the custom InstallHeaders distutils command', 'configure the pybind11 setup with name, version, packages, headers, and classifiers via setuptools', 'skip header installation by setting the PYBIND11_USE_CMAKE environment variable before running setup', 'review the InstallHeaders class that extends distutils install_headers to preserve header subdirectory structure']
+```
+
+Usage
+
+```
+{'build_pybind11_package': 'build the pybind11 package using python setup.py install to install headers and the pybind11 package', 'install_headers_custom': 'install pybind11 C++ headers preserving subdirectory structure using the custom InstallHeaders distutils command', 'configure_pybind11_setup': 'configure the pybind11 setup with name, version, packages, headers, and classifiers via setuptools', 'skip_headers_with_cmake': 'skip header installation by setting the PYBIND11_USE_CMAKE environment variable before running setup', 'review_install_headers_class': 'review the InstallHeaders class that extends distutils install_headers to preserve header subdirectory structure'}
+```
+

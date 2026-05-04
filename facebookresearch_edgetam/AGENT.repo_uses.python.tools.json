@@ -1,0 +1,170 @@
+{
+  "facebookresearch_edgetam/coreml/benchmark_coreml.py": {
+    "run_benchmark": "run the EdgeTAM benchmark comparing PyTorch and CoreML model performance with timing and quality metrics",
+    "load_pytorch_model": "load the PyTorch EdgeTAM model from a Hydra config and checkpoint file for CPU inference",
+    "load_coreml_models": "load the CoreML image encoder, prompt encoder, and mask decoder models from mlpackage directories",
+    "benchmark_pytorch": "benchmark the PyTorch EdgeTAM model by running multiple prediction passes and measuring latency in milliseconds",
+    "benchmark_coreml": "benchmark the CoreML EdgeTAM models by running prompt encoding and mask decoding and measuring latency"
+  },
+  "facebookresearch_edgetam/coreml/export_to_coreml.py": {
+    "export_image_encoder_coreml": "export the EdgeTAM image encoder to a CoreML mlpackage for iOS16 deployment",
+    "export_prompt_encoder_coreml": "export the EdgeTAM prompt encoder to a CoreML mlpackage for iOS16 deployment",
+    "export_mask_decoder_coreml": "export the EdgeTAM mask decoder to a CoreML mlpackage for iOS16 deployment",
+    "run_edgetam_coreml_export": "run the CLI tool to export all EdgeTAM model components to CoreML format",
+    "review_edgetam_coreml_wrappers": "review the EdgeTAMImageEncoder, EdgeTAMPromptEncoder, and EdgeTAMMaskDecoder wrapper classes for CoreML export"
+  },
+  "facebookresearch_edgetam/coreml/inference_example.py": {
+    "run_edgeTAM_video_demo": "run the EdgeTAM CoreML demo to track an object in a video and save output",
+    "run_edgeTAM_segment_example": "run the EdgeTAM segment example to segment a single image with point prompts",
+    "run_edgeTAM_track_example": "run the EdgeTAM track example for real-time video tracking with mouse clicks",
+    "review_edgetamvideotracker_class": "review the EdgeTAMVideoTracker class that loads CoreML models and manages video frame encoding",
+    "review_segment_current_frame": "review the segment_current_frame method that generates masks from tracking points and image embeddings"
+  },
+  "facebookresearch_edgetam/sam2/automatic_mask_generator.py": {
+    "generate_masks_for_image": "generate segmentation masks for an image using SAM2AutomaticMaskGenerator with default settings",
+    "load_pretrained_mask_generator": "load a pretrained SAM2 automatic mask generator from a Hugging Face model ID",
+    "generate_masks_with_crop_layers": "generate masks using crop layers for finer detail on large images with SAM2",
+    "postprocess_small_regions": "postprocess mask data to remove small disconnected regions and holes below a minimum area",
+    "refine_masks_with_m2m": "refine mask predictions using mask-to-mask refinement with low resolution mask inputs"
+  },
+  "facebookresearch_edgetam/sam2/build_sam.py": {
+    "build_sam2_model": "build a SAM 2 model from a config file and checkpoint path for image segmentation",
+    "build_sam2_video_predictor": "build a SAM 2 video predictor model from a config file for video segmentation tasks",
+    "build_sam2_hf": "build a SAM 2 model by downloading weights from a Hugging Face model ID",
+    "build_sam2_video_predictor_hf": "build a SAM 2 video predictor by downloading weights from a Hugging Face model ID",
+    "load_checkpoint_sam2": "load a PyTorch checkpoint into a SAM 2 model and validate missing or unexpected keys"
+  },
+  "facebookresearch_edgetam/sam2/sam2_image_predictor.py": {
+    "create_predictor_from_pretrained": "create a SAM2ImagePredictor from a pretrained Hugging Face model using from_pretrained",
+    "set_image_for_prediction": "set an RGB image on the predictor to compute embeddings for mask prediction",
+    "predict_masks_from_prompts": "predict segmentation masks from point coordinates, labels, or box prompts on a set image",
+    "predict_batch_masks": "predict segmentation masks for a batch of images using set_image_batch and predict_batch",
+    "get_image_embedding": "get the image embedding tensor for the currently set image from the predictor"
+  },
+  "facebookresearch_edgetam/sam2/sam2_video_predictor.py": {
+    "init_state": "initialize a SAM2VideoPredictor inference state by loading video frames from a given video path",
+    "propagate_in_video": "propagate input points across all video frames to track objects throughout the entire video",
+    "add_new_points_or_box": "add new point clicks or a bounding box prompt to a specific frame for object segmentation",
+    "add_new_mask": "add a binary mask input to a specific frame to correct or refine tracked object segmentation",
+    "remove_object": "remove an object id from the tracking state and update masks for remaining tracked objects"
+  },
+  "facebookresearch_edgetam/sam2/modeling/memory_attention.py": {
+    "build_MemoryAttentionLayer": "build a MemoryAttentionLayer with self-attention, cross-attention, and feedforward MLP for SAM2 memory encoding",
+    "build_MemoryAttention": "build a MemoryAttention stack with multiple MemoryAttentionLayer clones for multi-layer memory attention processing",
+    "review_MemoryAttentionLayer_forward": "review the MemoryAttentionLayer forward pass combining self-attention, cross-attention, and MLP with RoPE support",
+    "review_MemoryAttention_forward": "review the MemoryAttention forward pass that iterates layers with object pointer token and spatial memory handling",
+    "refactor_MemoryAttentionLayer_forward_ca": "refactor the MemoryAttentionLayer cross-attention forward to support RoPEAttentionv2 with rope key repetition"
+  },
+  "facebookresearch_edgetam/sam2/modeling/memory_encoder.py": {
+    "build_MemoryEncoder": "build a MemoryEncoder module to fuse pixel features with downsampled masks for SAM2 memory encoding",
+    "create_MaskDownSampler": "create a MaskDownSampler to progressively downsample masks by total_stride with increasing channel capacity",
+    "create_CXBlock": "create a CXBlock ConvNeXt block with depthwise conv, LayerNorm, and MLP for feature processing",
+    "create_Fuser": "create a Fuser module to apply cloned CXBlock layers for fusing visual features and mask embeddings",
+    "test_MemoryEncoder_forward": "test the MemoryEncoder forward pass with pixel features and masks to produce vision features and position encoding"
+  },
+  "facebookresearch_edgetam/sam2/modeling/perceiver.py": {
+    "build_perceiver_resampler": "build a PerceiverResampler module with configurable depth, latent dimensions, and 1D or 2D latent modes",
+    "create_perceiver_attention": "create a PerceiverAttention layer that cross-attends latents to input features with optional key-value concatenation",
+    "create_feedforward": "create a FeedForward neural network block with LayerNorm, GELU activation, and configurable expansion multiplier",
+    "test_perceiver_encoder_layer": "test the PerceiverEncoderLayer to verify cross-attention, feed-forward, and optional self-attention residual connections",
+    "review_window_partition": "review the window_partition and window_reverse functions that reshape tensors into and out of non-overlapping 2D windows"
+  },
+  "facebookresearch_edgetam/sam2/modeling/position_encoding.py": {
+    "build_PositionEmbeddingSine_forward": "build a module that generates sinusoidal 2D positional encodings for a batch of feature maps",
+    "create_PositionEmbeddingSine_encode_points": "create a module that encodes point coordinates with labels into positional embeddings using sine functions",
+    "create_PositionEmbeddingSine_encode_boxes": "create a module that encodes bounding box coordinates into positional embeddings using sine functions",
+    "build_PositionEmbeddingRandom_forward": "build a module that generates random frequency positional encodings for a given grid size",
+    "apply_apply_rotary_enc": "apply rotary positional encoding to query and key tensors using complex number multiplication"
+  },
+  "facebookresearch_edgetam/sam2/modeling/sam2_base.py": {
+    "build_sam2base_model": "build a SAM2Base model with an image encoder, memory attention module, and memory encoder for video segmentation",
+    "run_forward_sam_heads": "run the SAM prompt encoder and mask decoder to produce low and high resolution mask predictions from backbone features",
+    "run_track_step": "run a single tracking step on a video frame using point inputs, mask inputs, and memory-conditioned visual features",
+    "run_encode_new_memory": "run the memory encoder to encode predicted high-res masks and vision features into a new memory feature for future frames",
+    "run_apply_non_overlapping_constraints": "run non-overlapping constraints on predicted masks to keep only the highest scoring object at each spatial location"
+  },
+  "facebookresearch_edgetam/sam2/modeling/sam2_utils.py": {
+    "build_MLP": "build a multi-layer perceptron with configurable input hidden output dims and activation function",
+    "build_DropPath": "build a DropPath regularization module that randomly drops paths during training with configurable probability",
+    "build_LayerNorm2d": "build a 2D layer normalization module for normalizing feature maps across spatial dimensions",
+    "run_select_closest_cond_frames": "select temporally closest conditioning frames from a dictionary of frame outputs for video segmentation",
+    "run_get_1d_sine_pe": "generate 1D sine positional embeddings for transformer models given position indices and embedding dimension"
+  },
+  "facebookresearch_edgetam/sam2/modeling/backbones/hieradet.py": {
+    "build_Hiera_backbone": "build a Hiera hierarchical vision transformer backbone with configurable stages, window sizes, and global attention blocks",
+    "create_MultiScaleBlock": "create a MultiScaleBlock transformer block with multi-scale attention, MLP, and optional Q pooling for stage transitions",
+    "create_MultiScaleAttention": "create a MultiScaleAttention module with QKV projection, optional Q pooling, and scaled dot-product attention",
+    "run_Hiera_forward": "run the Hiera backbone forward pass on an image tensor to extract multi-scale feature maps",
+    "review_do_pool": "review the do_pool utility function that applies pooling and normalization with tensor format conversion"
+  },
+  "facebookresearch_edgetam/sam2/modeling/backbones/image_encoder.py": {
+    "build_image_encoder": "build a python module to create an ImageEncoder with a trunk backbone and FpnNeck for vision feature extraction",
+    "run_image_encoder_forward": "run the ImageEncoder forward pass on a tensor sample to extract vision features and positional encodings",
+    "create_fpn_neck": "create a Feature Pyramid Network neck module with configurable interpolation model and fusion type for multi-scale features",
+    "run_fpn_neck_forward": "run the FpnNeck forward pass on a list of feature tensors to produce multi-scale outputs with positional encoding",
+    "review_image_encoder_scalp": "review the ImageEncoder scalp parameter to discard lowest resolution features from the backbone FPN output"
+  },
+  "facebookresearch_edgetam/sam2/modeling/backbones/timm.py": {
+    "create_TimmBackbone": "create a TimmBackbone instance with a model name and feature layer tuple",
+    "build_TimmBackbone_forward": "build a forward pass through the TimmBackbone body and return feature tensors",
+    "test_TimmBackbone_init": "test the TimmBackbone initialization with pretrained TIMM model and feature indices",
+    "review_TimmBackbone_channel_list": "review the TimmBackbone channel_list property that extracts reversed channel counts from feature info",
+    "summarize_TimmBackbone": "summarize the TimmBackbone class that wraps TIMM pretrained models as feature extraction backbones"
+  },
+  "facebookresearch_edgetam/sam2/modeling/backbones/utils.py": {
+    "build_window_partition": "build a python module to partition a tensor into non-overlapping windows with padding",
+    "build_window_unpartition": "build a python module to unpartition windows back into the original tensor shape",
+    "create_patch_embed": "create a PatchEmbed module that converts an image to patch embeddings using a convolutional layer",
+    "test_window_partition_unpartition": "test the window_partition and window_unpartition functions with a sample tensor round trip",
+    "review_PatchEmbed_forward": "review the PatchEmbed forward method that applies a conv2d projection and permutes to B H W C"
+  },
+  "facebookresearch_edgetam/sam2/modeling/sam/mask_decoder.py": {
+    "build_mask_decoder": "build a MaskDecoder with a transformer module to predict segmentation masks from image and prompt embeddings",
+    "run_mask_decoder_forward": "run the MaskDecoder forward pass with image embeddings, prompt embeddings, and multimask output flags",
+    "test_predict_masks": "test the MaskDecoder predict_masks method to verify mask and IoU predictions from transformer output",
+    "review_dynamic_multimask_via_stability": "review the MaskDecoder _dynamic_multimask_via_stability method that falls back to best multimask when single mask stability is low",
+    "summarize_get_stability_scores": "summarize the MaskDecoder _get_stability_scores method that computes mask stability via IoU between upper and lower thresholds"
+  },
+  "facebookresearch_edgetam/sam2/modeling/sam/prompt_encoder.py": {
+    "build_prompt_encoder": "build a PromptEncoder module to encode point, box, and mask prompts for SAM mask decoder input",
+    "embed_points": "embed point prompts with coordinates and labels into sparse embeddings using the PromptEncoder",
+    "embed_boxes": "embed box prompts with corner coordinates into sparse embeddings using the PromptEncoder",
+    "embed_masks": "embed mask inputs through the mask downscaling conv layers into dense embeddings",
+    "get_dense_pe": "get the dense positional encoding tensor for the image embedding size from the PromptEncoder"
+  },
+  "facebookresearch_edgetam/sam2/modeling/sam/transformer.py": {
+    "build_TwoWayTransformer": "build a TwoWayTransformer decoder that attends to an image embedding using query point embeddings",
+    "create_TwoWayAttentionBlock": "create a TwoWayAttentionBlock with self-attention, cross-attention, and MLP layers for sparse and dense inputs",
+    "run_Attention_forward": "run the Attention layer forward pass with query, key, and value tensors using scaled dot-product attention",
+    "review_RoPEAttention": "review the RoPEAttention class that applies rotary position encoding before scaled dot-product attention",
+    "test_RoPEAttentionv2": "test the RoPEAttentionv2 class with separate query and key rotary position encoding frequency tensors"
+  },
+  "facebookresearch_edgetam/sam2/utils/amg.py": {
+    "create_maskdata_store_masks": "create a MaskData object to store and filter batched segmentation masks and related data",
+    "encode_masks_to_rle": "encode a batch of binary mask tensors to uncompressed RLE format for pycoco tools",
+    "calculate_mask_stability_score": "calculate the stability score as IoU between high and low thresholded mask logits",
+    "generate_crop_boxes_for_tiling": "generate a list of overlapping crop boxes across multiple layers for image tiling",
+    "compute_bounding_boxes_from_masks": "compute XYXY bounding boxes around a batch of binary segmentation masks"
+  },
+  "facebookresearch_edgetam/sam2/utils/misc.py": {
+    "get_sdpa_settings": "get the GPU flash attention and PyTorch math kernel settings for the current CUDA device",
+    "mask_to_box": "compute bounding box coordinates from a batch of binary segmentation masks",
+    "load_video_frames": "load and normalize video frames from an MP4 file or JPEG image folder",
+    "fill_holes_in_mask_scores": "fill small holes in mask scores by connected component analysis with a max area threshold",
+    "concat_points": "concatenate new click point coordinates and labels to existing point inputs for interactive segmentation"
+  },
+  "facebookresearch_edgetam/sam2/utils/transforms.py": {
+    "create_SAM2Transforms": "create a SAM2Transforms instance with resolution, mask threshold, and hole filling parameters",
+    "call_SAM2Transforms": "call SAM2Transforms on an image to resize and normalize it for the SAM2 model",
+    "forward_batch_SAM2Transforms": "transform a batch of images into a stacked tensor using SAM2Transforms forward_batch",
+    "transform_coords_SAM2Transforms": "transform coordinates to SAM2 model space using transform_coords with optional normalization",
+    "postprocess_masks_SAM2Transforms": "postprocess SAM2 output masks to fill holes and remove sprinkles with postprocess_masks"
+  },
+  "facebookresearch_edgetam/tools/vos_inference.py": {
+    "run_vos_inference_cli": "run video object segmentation inference on a directory of videos using SAM 2 predictor",
+    "run_vos_separate_inference": "run VOS inference separately per object for datasets like LVOS or YouTube-VOS",
+    "load_ann_png": "load a PNG annotation mask file and extract its color palette",
+    "save_ann_png": "save a 2D numpy mask array as a palette-encoded PNG file",
+    "get_per_obj_mask": "split a multi-object segmentation mask into a dict of per-object boolean masks"
+  }
+}

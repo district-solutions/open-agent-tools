@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/habitat-sim
+- repo_uri: https://github.com/facebookresearch/habitat-sim
+
+## File: facebookresearch_habitat-sim/docs/m.css/documentation/test_python/inspect_annotations/inspect_annotations.py
+
+Prompts
+
+```
+['review the python module inspect_annotations to understand type annotation parsing patterns', 'test the Foo class property a_property that returns a List[bool] type annotation', 'test the AContainer generic class derived from Generic with a TypeVar parameter', 'test the annotation function with List[int], bool, and str parameter type annotations', 'test the annotation_union function that demonstrates Union[float, int] type annotation parsing']
+```
+
+Usage
+
+```
+{'review_annotation_parsing': 'review the python module inspect_annotations to understand type annotation parsing patterns', 'test_Foo_property_annotation': 'test the Foo class property a_property that returns a List[bool] type annotation', 'test_AContainer_generic_class': 'test the AContainer generic class derived from Generic with a TypeVar parameter', 'test_annotation_function': 'test the annotation function with List[int], bool, and str parameter type annotations', 'test_annotation_union': 'test the annotation_union function that demonstrates Union[float, int] type annotation parsing'}
+```
+

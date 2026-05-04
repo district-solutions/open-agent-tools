@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/postman/setup.py
+
+Prompts
+
+```
+['run python3 setup.py build develop to build and install the postman package with C++ extensions', 'run pip install . -vv to install the postman package and its torch dependency', 'review the custom build_ext class that runs make develop before building setuptools extensions', 'refactor the build_ext class to change the make develop subprocess command or working directory', 'summarize the setuptools configuration for the postman package including name version and dependencies']
+```
+
+Usage
+
+```
+{'build_postman_package': 'run python3 setup.py build develop to build and install the postman package with C++ extensions', 'install_postman_with_pip': 'run pip install . -vv to install the postman package and its torch dependency', 'review_build_ext_class': 'review the custom build_ext class that runs make develop before building setuptools extensions', 'refactor_build_ext_class': 'refactor the build_ext class to change the make develop subprocess command or working directory', 'summarize_setup_config': 'summarize the setuptools configuration for the postman package including name version and dependencies'}
+```
+

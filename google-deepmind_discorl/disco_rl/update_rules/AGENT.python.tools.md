@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: google-deepmind/discorl
+- repo_uri: https://github.com/google-deepmind/disco_rl
+
+## File: google-deepmind_discorl/disco_rl/update_rules/actor_critic.py
+
+Prompts
+
+```
+['build an ActorCritic update rule with categorical value function and advantage normalization enabled', 'initialize the EMA state for advantage and TD tracking in the ActorCritic update rule', 'compute the combined policy gradient, value, and entropy loss for an ActorCritic rollout', 'get the unconditional output specs including logits and value arrays for the ActorCritic agent', 'prepare advantage, TD, and value target quantities from a rollout for ActorCritic loss computation', 'build a python module that constructs a tree of output shapes from action, flat, and model specs', 'create a dummy meta-network input with optional behaviour, value, and advantage outputs for initialization', 'build a python module that returns the agent total output specs from an action spec', 'run the agent loss computation by unrolling the meta network and combining loss outputs', 'create a python module that computes the agent loss portion which should not receive metagradients', 'create a DiscoUpdateRule instance with an LSTM meta-network config, value discount, and moving average parameters', 'initialize the meta state with RNN state, EMA states, and target parameters for DiscoRL training', 'unroll the meta-network over a rollout to produce policy predictions, value targets, and updated meta state', 'compute the agent loss combining policy, y-prediction, z-prediction, and auxiliary policy KL divergence terms', 'get the MetaNetInputOption defining base and action-conditional transform configs for the DiscoRL meta-network', 'build a meta-network input transform that selects values by action using batch lookup', 'build a policy-weighted average transform that computes weighted sums over action axis', 'build an EMA normalization module that normalizes inputs by exponential moving average of mean and variance', 'build a function that concatenates inputs at time t and t+1 for TD-error calculation', 'build a wrapper that adapts single-arg transforms to the standard four-arg input transform interface', 'create a PolicyGradientUpdate instance with custom entropy cost and advantage normalization settings', 'initialize meta parameters and dummy state for the PolicyGradientUpdate rule', 'unroll the meta network to extract normalized or raw advantages from rollout data']
+```
+
+Usage
+
+```
+{'build_actor_critic_update_rule': 'build an ActorCritic update rule with categorical value function and advantage normalization enabled', 'init_actor_critic_meta_state': 'initialize the EMA state for advantage and TD tracking in the ActorCritic update rule', 'compute_agent_loss': 'compute the combined policy gradient, value, and entropy loss for an ActorCritic rollout', 'get_flat_output_spec': 'get the unconditional output specs including logits and value arrays for the ActorCritic agent', 'unroll_meta_net_for_loss': 'prepare advantage, TD, and value target quantities from a rollout for ActorCritic loss computation'}
+```
+
+## File: google-deepmind_discorl/disco_rl/update_rules/base.py
+
+Prompts
+
+```
+['build an ActorCritic update rule with categorical value function and advantage normalization enabled', 'initialize the EMA state for advantage and TD tracking in the ActorCritic update rule', 'compute the combined policy gradient, value, and entropy loss for an ActorCritic rollout', 'get the unconditional output specs including logits and value arrays for the ActorCritic agent', 'prepare advantage, TD, and value target quantities from a rollout for ActorCritic loss computation', 'build a python module that constructs a tree of output shapes from action, flat, and model specs', 'create a dummy meta-network input with optional behaviour, value, and advantage outputs for initialization', 'build a python module that returns the agent total output specs from an action spec', 'run the agent loss computation by unrolling the meta network and combining loss outputs', 'create a python module that computes the agent loss portion which should not receive metagradients', 'create a DiscoUpdateRule instance with an LSTM meta-network config, value discount, and moving average parameters', 'initialize the meta state with RNN state, EMA states, and target parameters for DiscoRL training', 'unroll the meta-network over a rollout to produce policy predictions, value targets, and updated meta state', 'compute the agent loss combining policy, y-prediction, z-prediction, and auxiliary policy KL divergence terms', 'get the MetaNetInputOption defining base and action-conditional transform configs for the DiscoRL meta-network', 'build a meta-network input transform that selects values by action using batch lookup', 'build a policy-weighted average transform that computes weighted sums over action axis', 'build an EMA normalization module that normalizes inputs by exponential moving average of mean and variance', 'build a function that concatenates inputs at time t and t+1 for TD-error calculation', 'build a wrapper that adapts single-arg transforms to the standard four-arg input transform interface', 'create a PolicyGradientUpdate instance with custom entropy cost and advantage normalization settings', 'initialize meta parameters and dummy state for the PolicyGradientUpdate rule', 'unroll the meta network to extract normalized or raw advantages from rollout data']
+```
+
+Usage
+
+```
+{'get_agent_out_spec': 'build a python module that constructs a tree of output shapes from action, flat, and model specs', 'UpdateRule_get_dummy_input': 'create a dummy meta-network input with optional behaviour, value, and advantage outputs for initialization', 'UpdateRule_agent_output_spec': 'build a python module that returns the agent total output specs from an action spec', 'UpdateRule_call': 'run the agent loss computation by unrolling the meta network and combining loss outputs', 'UpdateRule_agent_loss_no_meta': 'create a python module that computes the agent loss portion which should not receive metagradients'}
+```
+
+## File: google-deepmind_discorl/disco_rl/update_rules/disco.py
+
+Prompts
+
+```
+['build an ActorCritic update rule with categorical value function and advantage normalization enabled', 'initialize the EMA state for advantage and TD tracking in the ActorCritic update rule', 'compute the combined policy gradient, value, and entropy loss for an ActorCritic rollout', 'get the unconditional output specs including logits and value arrays for the ActorCritic agent', 'prepare advantage, TD, and value target quantities from a rollout for ActorCritic loss computation', 'build a python module that constructs a tree of output shapes from action, flat, and model specs', 'create a dummy meta-network input with optional behaviour, value, and advantage outputs for initialization', 'build a python module that returns the agent total output specs from an action spec', 'run the agent loss computation by unrolling the meta network and combining loss outputs', 'create a python module that computes the agent loss portion which should not receive metagradients', 'create a DiscoUpdateRule instance with an LSTM meta-network config, value discount, and moving average parameters', 'initialize the meta state with RNN state, EMA states, and target parameters for DiscoRL training', 'unroll the meta-network over a rollout to produce policy predictions, value targets, and updated meta state', 'compute the agent loss combining policy, y-prediction, z-prediction, and auxiliary policy KL divergence terms', 'get the MetaNetInputOption defining base and action-conditional transform configs for the DiscoRL meta-network', 'build a meta-network input transform that selects values by action using batch lookup', 'build a policy-weighted average transform that computes weighted sums over action axis', 'build an EMA normalization module that normalizes inputs by exponential moving average of mean and variance', 'build a function that concatenates inputs at time t and t+1 for TD-error calculation', 'build a wrapper that adapts single-arg transforms to the standard four-arg input transform interface', 'create a PolicyGradientUpdate instance with custom entropy cost and advantage normalization settings', 'initialize meta parameters and dummy state for the PolicyGradientUpdate rule', 'unroll the meta network to extract normalized or raw advantages from rollout data']
+```
+
+Usage
+
+```
+{'init_disco_update_rule': 'create a DiscoUpdateRule instance with an LSTM meta-network config, value discount, and moving average parameters', 'init_meta_state': 'initialize the meta state with RNN state, EMA states, and target parameters for DiscoRL training', 'unroll_meta_net': 'unroll the meta-network over a rollout to produce policy predictions, value targets, and updated meta state', 'agent_loss': 'compute the agent loss combining policy, y-prediction, z-prediction, and auxiliary policy KL divergence terms', 'get_input_option': 'get the MetaNetInputOption defining base and action-conditional transform configs for the DiscoRL meta-network'}
+```
+
+## File: google-deepmind_discorl/disco_rl/update_rules/input_transforms.py
+
+Prompts
+
+```
+['build an ActorCritic update rule with categorical value function and advantage normalization enabled', 'initialize the EMA state for advantage and TD tracking in the ActorCritic update rule', 'compute the combined policy gradient, value, and entropy loss for an ActorCritic rollout', 'get the unconditional output specs including logits and value arrays for the ActorCritic agent', 'prepare advantage, TD, and value target quantities from a rollout for ActorCritic loss computation', 'build a python module that constructs a tree of output shapes from action, flat, and model specs', 'create a dummy meta-network input with optional behaviour, value, and advantage outputs for initialization', 'build a python module that returns the agent total output specs from an action spec', 'run the agent loss computation by unrolling the meta network and combining loss outputs', 'create a python module that computes the agent loss portion which should not receive metagradients', 'create a DiscoUpdateRule instance with an LSTM meta-network config, value discount, and moving average parameters', 'initialize the meta state with RNN state, EMA states, and target parameters for DiscoRL training', 'unroll the meta-network over a rollout to produce policy predictions, value targets, and updated meta state', 'compute the agent loss combining policy, y-prediction, z-prediction, and auxiliary policy KL divergence terms', 'get the MetaNetInputOption defining base and action-conditional transform configs for the DiscoRL meta-network', 'build a meta-network input transform that selects values by action using batch lookup', 'build a policy-weighted average transform that computes weighted sums over action axis', 'build an EMA normalization module that normalizes inputs by exponential moving average of mean and variance', 'build a function that concatenates inputs at time t and t+1 for TD-error calculation', 'build a wrapper that adapts single-arg transforms to the standard four-arg input transform interface', 'create a PolicyGradientUpdate instance with custom entropy cost and advantage normalization settings', 'initialize meta parameters and dummy state for the PolicyGradientUpdate rule', 'unroll the meta network to extract normalized or raw advantages from rollout data']
+```
+
+Usage
+
+```
+{'build_SelectByAction': 'build a meta-network input transform that selects values by action using batch lookup', 'build_PiWeightedAvg': 'build a policy-weighted average transform that computes weighted sums over action axis', 'build_EmaNorm': 'build an EMA normalization module that normalizes inputs by exponential moving average of mean and variance', 'build_td_pair': 'build a function that concatenates inputs at time t and t+1 for TD-error calculation', 'build_tx_factory': 'build a wrapper that adapts single-arg transforms to the standard four-arg input transform interface'}
+```
+
+## File: google-deepmind_discorl/disco_rl/update_rules/policy_gradient.py
+
+Prompts
+
+```
+['build an ActorCritic update rule with categorical value function and advantage normalization enabled', 'initialize the EMA state for advantage and TD tracking in the ActorCritic update rule', 'compute the combined policy gradient, value, and entropy loss for an ActorCritic rollout', 'get the unconditional output specs including logits and value arrays for the ActorCritic agent', 'prepare advantage, TD, and value target quantities from a rollout for ActorCritic loss computation', 'build a python module that constructs a tree of output shapes from action, flat, and model specs', 'create a dummy meta-network input with optional behaviour, value, and advantage outputs for initialization', 'build a python module that returns the agent total output specs from an action spec', 'run the agent loss computation by unrolling the meta network and combining loss outputs', 'create a python module that computes the agent loss portion which should not receive metagradients', 'create a DiscoUpdateRule instance with an LSTM meta-network config, value discount, and moving average parameters', 'initialize the meta state with RNN state, EMA states, and target parameters for DiscoRL training', 'unroll the meta-network over a rollout to produce policy predictions, value targets, and updated meta state', 'compute the agent loss combining policy, y-prediction, z-prediction, and auxiliary policy KL divergence terms', 'get the MetaNetInputOption defining base and action-conditional transform configs for the DiscoRL meta-network', 'build a meta-network input transform that selects values by action using batch lookup', 'build a policy-weighted average transform that computes weighted sums over action axis', 'build an EMA normalization module that normalizes inputs by exponential moving average of mean and variance', 'build a function that concatenates inputs at time t and t+1 for TD-error calculation', 'build a wrapper that adapts single-arg transforms to the standard four-arg input transform interface', 'create a PolicyGradientUpdate instance with custom entropy cost and advantage normalization settings', 'initialize meta parameters and dummy state for the PolicyGradientUpdate rule', 'unroll the meta network to extract normalized or raw advantages from rollout data']
+```
+
+Usage
+
+```
+{'create_policy_gradient_update': 'create a PolicyGradientUpdate instance with custom entropy cost and advantage normalization settings', 'init_params_meta': 'initialize meta parameters and dummy state for the PolicyGradientUpdate rule', 'unroll_meta_net_advantages': 'unroll the meta network to extract normalized or raw advantages from rollout data', 'compute_agent_loss': 'compute the combined policy gradient and entropy loss from rollout logits and actions', 'get_flat_output_spec': 'get the flat output specification with logits derived from a single action spec'}
+```
+

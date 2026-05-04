@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: open-webui/openapi-servers
+- repo_uri: https://github.com/open-webui/openapi-servers
+
+## File: open-webui_openapi-servers/servers/quotes-ui/main.py
+
+Prompts
+
+```
+['run the FastAPI quote display server on 0.0.0.0:8000 using uvicorn', 'post a QuoteSet to /display to render styled HTML of quotes with authors', 'get the /health endpoint to verify the quote display API is running', 'get the root / endpoint to see usage instructions and example JSON payload', 'call quote_html with a title and list of quote dicts to produce styled HTML']
+```
+
+Usage
+
+```
+{'run_fastapi_server': 'run the FastAPI quote display server on 0.0.0.0:8000 using uvicorn', 'display_quotes_html': 'post a QuoteSet to /display to render styled HTML of quotes with authors', 'check_server_health': 'get the /health endpoint to verify the quote display API is running', 'view_homepage': 'get the root / endpoint to see usage instructions and example JSON payload', 'generate_quote_html': 'call quote_html with a title and list of quote dicts to produce styled HTML'}
+```
+

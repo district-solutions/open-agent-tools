@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/beanmachine
+- repo_uri: https://github.com/facebookresearch/beanmachine
+
+## File: facebookresearch_beanmachine/src/beanmachine/minibm.py
+
+Prompts
+
+```
+['run MetropolisHastings inference on a probabilistic model with queries and observations to sample posteriors', 'create a random variable by decorating a function that returns a PyTorch Distribution with @random_variable', 'initialize a World from a list of query RVIdentifiers and optional observations using World.initialize_world', 'review the World class log_prob method to compute joint log probability of all random variables', 'test the RVIdentifier NamedTuple to uniquely identify a random variable by its wrapper and args']
+```
+
+Usage
+
+```
+{'run_metropolis_hastings_inference': 'run MetropolisHastings inference on a probabilistic model with queries and observations to sample posteriors', 'create_random_variable_decorator': 'create a random variable by decorating a function that returns a PyTorch Distribution with @random_variable', 'initialize_world_from_queries': 'initialize a World from a list of query RVIdentifiers and optional observations using World.initialize_world', 'review_world_log_prob': 'review the World class log_prob method to compute joint log probability of all random variables', 'test_rvidentifier_namedtuple': 'test the RVIdentifier NamedTuple to uniquely identify a random variable by its wrapper and args'}
+```
+

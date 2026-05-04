@@ -1,0 +1,163 @@
+{
+  "facebookresearch_flowdec/flowdec/losses.py": {
+    "build_pesq_speech_loss": "build a TorchPESQSpeechLoss module to compute PESQ loss between predicted and reference speech tensors",
+    "create_multiscale_stft_loss": "create a MultiScaleSTFTLoss module to compute multi-scale STFT loss between estimated and reference audio signals",
+    "create_mel_spectrogram_loss": "create a MelSpectrogramLoss module to compute multi-scale mel spectrogram distance between two audio signals",
+    "review_multiscale_stft_loss_forward": "review the MultiScaleSTFTLoss forward method that computes STFT loss across multiple window lengths",
+    "test_mel_spectrogram_loss_to": "test the MelSpectrogramLoss to method that moves all mel transform modules to a target device"
+  },
+  "facebookresearch_flowdec/flowdec/model.py": {
+    "create_enhancement_model": "create a new EnhancementModel subclass with a backbone, feature extractor, and learning rate for audio enhancement",
+    "enhance_audio_with_flow_model": "enhance a noisy audio waveform using FlowModel with an Euler ODE solver and configurable timesteps",
+    "enhance_audio_with_regression_model": "enhance a noisy audio waveform using RegressionModel trained with L2 loss",
+    "enhance_audio_with_score_model": "enhance a noisy audio waveform using ScoreModel with a predictor-corrector SDE sampler",
+    "evaluate_enhancement_model": "evaluate an EnhancementModel on a list of audio files and compute quality metrics like PESQ"
+  },
+  "facebookresearch_flowdec/flowdec/sdes.py": {
+    "build_OUVESDE": "build an Ornstein-Uhlenbeck Variance Exploding SDE with theta, sigma_min, sigma_max parameters for diffusion",
+    "build_OUVPSDE": "build an Ornstein-Uhlenbeck Variance Preserving SDE with beta_min, beta_max, and stiffness parameters",
+    "build_BBEDSDE": "build a Brownian Bridge Exponential Diffusion SDE with c and k parameters for ICASSP 2024",
+    "review_SDE_reverse": "review the SDE reverse method to create a reverse-time SDE or ODE from a score model",
+    "test_SDE_discretize": "test the SDE discretize method to get Euler-Maruyama drift and diffusion coefficients"
+  },
+  "facebookresearch_flowdec/flowdec/backbones/ncsnpp.py": {
+    "build_NCSNpp_model": "build an NCSNpp score-based generative model with configurable U-Net architecture and Fourier embeddings",
+    "run_NCSNpp_forward": "run the NCSNpp forward pass with complex inputs x, y and timestep t",
+    "review_NCSNpp_preprocess": "review the NCSNpp _preprocess method that converts complex x and y into four channel dimensions",
+    "review_NCSNpp_postprocess": "review the NCSNpp _postprocess method that converts four channel output back to complex tensor",
+    "refactor_NCSNpp_output_layer": "refactor the NCSNpp output layer to change the final convolution kernel size or padding"
+  },
+  "facebookresearch_flowdec/flowdec/backbones/ncsnpp_utils/layers.py": {
+    "build_ncsn_conv1x1": "build a 1x1 convolution layer with NCSN initialization for score network feature transformation",
+    "build_ddpm_conv3x3": "build a 3x3 convolution layer with DDPM variance scaling initialization for diffusion models",
+    "create_ResnetBlockDDPM": "create a ResNet block with group normalization and time embedding support for DDPM architectures",
+    "create_AttnBlock": "create a channel-wise self-attention block with NIN layers for DDPM score networks",
+    "create_ConditionalResidualBlock": "create a conditional residual block with class-based normalization for NCSN++ score networks"
+  },
+  "facebookresearch_flowdec/flowdec/backbones/ncsnpp_utils/layerspp.py": {
+    "build_GaussianFourierProjection": "build a GaussianFourierProjection module to generate sinusoidal Fourier embeddings for noise levels in diffusion models",
+    "create_AttnBlockpp": "create an AttnBlockpp channel-wise self-attention block with group normalization and skip rescale for NCSN++ networks",
+    "build_ResnetBlockBigGANpp": "build a ResnetBlockBigGANpp residual block with optional upsampling or downsampling and time embedding support",
+    "create_ResnetBlockDDPMpp": "create a ResnetBlockDDPMpp residual block with group normalization dropout and optional time embedding conditioning",
+    "build_Combine": "build a Combine module to merge skip connection features using concatenation or summation methods"
+  },
+  "facebookresearch_flowdec/flowdec/backbones/ncsnpp_utils/normalization.py": {
+    "build_normalization_from_config": "build a python module that uses get_normalization to obtain a normalization layer from a config object",
+    "create_conditional_batch_norm": "create a ConditionalBatchNorm2d layer with class-conditional gamma and beta embeddings for 2D feature maps",
+    "create_instance_norm_plus": "create an InstanceNorm2dPlus layer that normalizes features using instance norm with learnable alpha and gamma parameters",
+    "create_conditional_instance_norm_plus": "create a ConditionalInstanceNorm2dPlus layer that applies class-conditional instance normalization with embedded gamma, alpha, and beta",
+    "create_variance_norm": "create a VarianceNorm2d layer that normalizes features by dividing by their per-feature variance with learnable alpha scaling"
+  },
+  "facebookresearch_flowdec/flowdec/backbones/ncsnpp_utils/up_or_down_sampling.py": {
+    "create_Conv2d_upsample": "create a Conv2d layer with upsampling enabled for StyleGAN2-style image upscaling",
+    "create_Conv2d_downsample": "create a Conv2d layer with downsampling enabled for StyleGAN2-style image downscaling",
+    "run_naive_upsample_2d": "run naive_upsample_2d to upsample a PyTorch tensor by repeating pixels with a given factor",
+    "run_naive_downsample_2d": "run naive_downsample_2d to downsample a PyTorch tensor by averaging pixel blocks with a given factor",
+    "run_upsample_conv_2d": "run upsample_conv_2d to fuse upsampling and convolution on a tensor with an FIR filter"
+  },
+  "facebookresearch_flowdec/flowdec/backbones/ncsnpp_utils/op/fused_act.py": {
+    "build_fused_leaky_relu_module": "build a PyTorch module that applies fused LeakyReLU with bias and scaling on GPU tensors",
+    "create_fused_leaky_relu_function": "create a function that applies fused LeakyReLU activation with bias, negative slope, and scale parameters",
+    "test_FusedLeakyReLUFunction": "test the custom autograd Function that performs fused bias and LeakyReLU activation on GPU",
+    "review_FusedLeakyReLUFunctionBackward": "review the backward pass autograd Function that computes gradients for fused LeakyReLU with bias",
+    "summarize_fused_leaky_relu_cpu_fallback": "summarize the CPU fallback path that uses standard F.leaky_relu when GPU fused kernel is unavailable"
+  },
+  "facebookresearch_flowdec/flowdec/backbones/ncsnpp_utils/op/upfirdn2d.py": {
+    "build_upfirdn2d_upsample_filter_downsample": "build a PyTorch module that upsamples, filters, and downsamples a 2D tensor using the upfirdn2d function with a custom kernel",
+    "create_upfirdn2d_native_cpu_inference": "create a function that runs the pure PyTorch CPU implementation of upfirdn2d for inference without CUDA dependencies",
+    "test_UpFirDn2d_autograd_function": "test the UpFirDn2d custom autograd Function forward and backward passes on GPU tensors with various up and down factors",
+    "review_UpFirDn2dBackward_gradient_computation": "review the UpFirDn2dBackward class to understand how gradients are computed through the upsample-filter-downsample operation",
+    "summarize_upfirdn2d_op_cpp_extension": "summarize the upfirdn2d_op CUDA C++ extension module that loads upfirdn2d.cpp and upfirdn2d_kernel.cu sources"
+  },
+  "facebookresearch_flowdec/flowdec/callbacks/ema.py": {
+    "create_EMA_callback": "create an EMA callback with a decay value to maintain moving averages of model parameters during training",
+    "apply_ema_weights": "apply EMA weight updates to a LightningModule by averaging original and EMA weights with the configured decay",
+    "replace_model_weights_with_EMA": "replace model weights with EMA weights before validation or testing to evaluate using smoothed parameters",
+    "save_checkpoint_with_EMA": "save a model checkpoint that includes both original weights and EMA weights using EMAModelCheckpoint callback",
+    "load_EMA_weights_from_checkpoint": "load EMA weights from a saved checkpoint to resume training with previously computed moving averages"
+  },
+  "facebookresearch_flowdec/flowdec/data/data_module.py": {
+    "create_paired_audio_dataset": "create a PairedAudioFiles dataset from clean and noisy WAV folders with resampling and cropping",
+    "load_audio_pair_by_index": "load a specific clean and noisy audio pair by index with optional padding and cropping",
+    "create_lightning_datamodule": "create a PairedAudioDataModule with train, validation, and test dataloaders for paired audio files",
+    "setup_train_validation_dataloaders": "setup shuffled training and unshuffled validation dataloaders with configurable batch size and workers",
+    "get_evaluation_samples": "get uncropped audio samples from train, valid, or test sets for evaluation without batching"
+  },
+  "facebookresearch_flowdec/flowdec/data/feature_extractors.py": {
+    "create_complex_stft_extractor": "create a ComplexSTFT module to compute the complex STFT of audio tensors with a configurable window function",
+    "invert_complex_stft_spectrogram": "invert a complex spectrogram tensor back to audio waveform using the ComplexSTFT invert method",
+    "build_amplitude_compressed_stft": "build an AmplitudeCompressedComplexSTFT pipeline that applies STFT followed by amplitude compression and scaling",
+    "compress_and_scale_spectrogram": "create a CompressAmplitudesAndScale module to compress amplitudes with an exponent and scale a complex spectrogram",
+    "chain_invertible_extractors": "create an InvertibleSequential module to chain multiple invertible feature extractors in forward and reverse order"
+  },
+  "facebookresearch_flowdec/flowdec/eval/metrics.py": {
+    "run_get_metrics_df": "run get_metrics_df to compute audio quality metrics across a batch of estimated and reference audio files",
+    "run_get_metrics_df_parallel": "run get_metrics_df_parallel to compute audio quality metrics in parallel using multiprocessing across audio file triples",
+    "create_InitializeMetrics": "create an InitializeMetrics instance to configure and initialize a list of audio quality metrics for evaluation",
+    "review_SISXR": "review the SISXR metric class to understand how SI-SDR, SI-SIR, and SI-SAR are computed from audio signals",
+    "test_ViSQOL": "test the ViSQOL metric class to measure audio quality MOS scores using subprocess or C bindings backends"
+  },
+  "facebookresearch_flowdec/flowdec/eval/sigmos/sigmos.py": {
+    "run_sigmos_mos_estimation": "run the SigMOS estimator on an audio numpy array to get MOS quality scores",
+    "create_sigmos_estimator": "create a SigMOS MOS estimator instance with a model directory and optional CUDA device",
+    "run_sigmos_stft": "run the STFT transform on an audio signal to extract complex spectrogram features",
+    "run_compressed_mag_complex": "run the compressed magnitude complex feature extraction on a spectrogram tensor",
+    "review_sigmos_run_output": "review the SigMOS run method output containing MOS_COL, MOS_DISC, MOS_LOUD, MOS_NOISE, MOS_REVERB, MOS_SIG, MOS_OVRL scores"
+  },
+  "facebookresearch_flowdec/flowdec/sampling/correctors.py": {
+    "create_corrector_subclass": "create a new corrector subclass that implements the abstract update_fn method for custom SDE sampling",
+    "run_annealed_langevin_dynamics": "run the AnnealedLangevinDynamics corrector update_fn to perform multiple Langevin dynamics steps on a tensor",
+    "use_corrector_registry": "use the CorrectorRegistry to look up and instantiate a registered corrector by name such as ald or none",
+    "review_corrector_base_class": "review the Corrector abstract base class and its update_fn signature for implementing new corrector algorithms",
+    "test_none_corrector": "test the NoneCorrector update_fn to verify it returns the input tensor unchanged without modification"
+  },
+  "facebookresearch_flowdec/flowdec/sampling/predictors.py": {
+    "create_euler_maruyama_predictor": "create an EulerMaruyamaPredictor instance with an SDE and score function for stochastic sampling",
+    "create_reverse_diffusion_predictor": "create a ReverseDiffusionPredictor instance with an SDE and score function for reverse diffusion sampling",
+    "run_predictor_update": "run the update_fn method on a Predictor to advance state x at time step t",
+    "register_custom_predictor": "register a custom Predictor subclass into the PredictorRegistry with a unique string key",
+    "create_none_predictor": "create a NonePredictor that returns the input state unchanged for identity sampling steps"
+  },
+  "facebookresearch_flowdec/flowdec/sampling/solvers.py": {
+    "create_heun2_solver": "create a Heun2 ODE solver instance with explicit order-2 stepping for torchdyn",
+    "create_heun2_eulerlast_solver": "create a Heun2_EulerLast solver that uses Euler on the last step to avoid t=1 evaluation",
+    "run_heun2_step": "run a single Heun2 step by calling step with function f, state x, time t, and dt",
+    "run_heun2_eulerlast_step": "run a single Heun2_EulerLast step that conditionally applies Euler or Heun correction based on t+dt",
+    "get_solver_by_name": "get a solver instance by name using get_solver which returns custom solvers or passes strings to torchdyn"
+  },
+  "facebookresearch_flowdec/flowdec/util/hydra.py": {
+    "instantiate_core_objects": "instantiate a PyTorch Lightning model, datamodule, and optimizer from a Hydra config",
+    "get_loggable_cfg": "convert a Hydra config into a loggable dictionary with W&B compatible list formatting",
+    "convert_list_of_dicts": "recursively convert all lists of dictionaries in a config to a dictionary of dictionaries",
+    "review_instantiate_core_objects": "review the instantiate_core_objects function to understand how it creates model and datamodule instances",
+    "refactor_get_loggable_cfg": "refactor the get_loggable_cfg function to customize the W&B list fix workaround behavior"
+  },
+  "facebookresearch_flowdec/flowdec/util/other.py": {
+    "load_audio_to_48khz": "load an audio file from a path and resample it to 48kHz using torchaudio",
+    "pad_spectrogram": "pad a spectrogram tensor to a multiple of 64 along the time dimension with reflection padding",
+    "normalize_noisy_audio": "normalize noisy audio tensors by their maximum absolute value to prevent NaN values",
+    "compute_mean_confidence_interval": "compute the mean and confidence interval of a NumPy array using scipy statistics",
+    "detect_audio_type_from_filename": "detect whether an audio file is music, sound, or speech based on its filename prefix"
+  },
+  "facebookresearch_flowdec/flowdec/util/registry.py": {
+    "create_registry": "create a new Registry instance to manage SDE, Predictor, or Corrector subclasses by string key",
+    "register_class": "use the register decorator to register a subclass under a unique name in the Registry",
+    "get_by_name": "retrieve a registered class from the Registry by its unique string name",
+    "get_all_names": "get a list of all registered names currently stored in the Registry",
+    "review_registry_class": "review the Registry class and its register, get_by_name, and get_all_names methods"
+  },
+  "facebookresearch_flowdec/flowdec/util/viz.py": {
+    "plot_spec_spectrogram": "plot a spectrogram from a complex STFT tensor using log normalization on a matplotlib axis",
+    "get_spec_stft": "compute the short-time Fourier transform of an audio tensor with configurable window and hop parameters",
+    "show_as_spec_audio": "display an audio tensor as a spectrogram plot with time and frequency axis labels",
+    "show_as_audio_playback": "play back an audio tensor as an IPython Audio widget in a Jupyter notebook",
+    "ccmap_img_complex_rgba": "map a complex numpy array to RGBA values encoding phase as hue and amplitude as brightness"
+  },
+  "facebookresearch_flowdec/scripts/estimate_flowdec_params.py": {
+    "run_estimate_flowdec_params": "run the CLI script to estimate FlowDec model parameters beta and sigma_y from audio pairs",
+    "run_estimate_flowdec_params_per_band": "run the CLI script with --per-band to calculate frequency-dependent sigma_y for FlowDec",
+    "run_estimate_flowdec_params_overwrite": "run the CLI script with --overwrite to recalculate and overwrite existing parameter results",
+    "review_get_feats": "review the get_feats function that extracts STFT features from batches of clean and noisy audio",
+    "review_random_crop_or_pad_pair": "review the random_crop_or_pad_pair function that crops or pads audio pairs to a target length"
+  }
+}

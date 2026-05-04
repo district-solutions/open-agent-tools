@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/DensePose
+- repo_uri: https://github.com/facebookresearch/DensePose.git
+
+## File: facebookresearch_DensePose/challenge/2019_COCO_DensePose/densepose_cocoeval.py
+
+Prompts
+
+```
+['run DensePose COCO evaluation on ground truth and detection results using the denseposeCOCOeval class', 'compute the OGPS (Object Geodesic Point Similarity) IoU between detections and ground truth UV annotations', 'accumulate per-image per-category evaluation results into precision and recall statistics across all thresholds', 'summarize DensePose evaluation metrics including AP and AR at various IoU thresholds and area ranges', 'find the closest SMPL mesh vertices for predicted and ground truth UV coordinates using geodesic distance']
+```
+
+Usage
+
+```
+{'run_densepose_evaluation': 'run DensePose COCO evaluation on ground truth and detection results using the denseposeCOCOeval class', 'compute_ogps_iou': 'compute the OGPS (Object Geodesic Point Similarity) IoU between detections and ground truth UV annotations', 'accumulate_evaluation_results': 'accumulate per-image per-category evaluation results into precision and recall statistics across all thresholds', 'summarize_densepose_metrics': 'summarize DensePose evaluation metrics including AP and AR at various IoU thresholds and area ranges', 'find_closest_mesh_vertices': 'find the closest SMPL mesh vertices for predicted and ground truth UV coordinates using geodesic distance'}
+```
+

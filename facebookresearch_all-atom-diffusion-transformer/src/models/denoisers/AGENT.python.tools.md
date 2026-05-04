@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/all-atom-diffusion-transformer
+- repo_uri: https://github.com/facebookresearch/all-atom-diffusion-transformer
+
+## File: facebookresearch_all-atom-diffusion-transformer/src/models/denoisers/dit.py
+
+Prompts
+
+```
+['build a DiT diffusion model with transformer backbone for atom-level denoising with timestep and class conditioning', 'run a forward pass through the DiT model with input data, timestep, dataset index, spacegroup, and mask tensors', 'run a forward pass with classifier-free guidance by batching conditional and unconditional samples together', 'create a TimestepEmbedder to embed scalar timesteps into vector representations using sinusoidal frequency embeddings', 'create a LabelEmbedder to embed class labels with dropout support for classifier-free guidance training']
+```
+
+Usage
+
+```
+{'build_DiT_model': 'build a DiT diffusion model with transformer backbone for atom-level denoising with timestep and class conditioning', 'run_DiT_forward': 'run a forward pass through the DiT model with input data, timestep, dataset index, spacegroup, and mask tensors', 'run_DiT_forward_with_cfg': 'run a forward pass with classifier-free guidance by batching conditional and unconditional samples together', 'create_TimestepEmbedder': 'create a TimestepEmbedder to embed scalar timesteps into vector representations using sinusoidal frequency embeddings', 'create_LabelEmbedder': 'create a LabelEmbedder to embed class labels with dropout support for classifier-free guidance training'}
+```
+

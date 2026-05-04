@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eai-vc
+- repo_uri: https://github.com/facebookresearch/eai-vc
+
+## File: facebookresearch_eai-vc/third_party/mj_envs/mj_envs/tests/envs/arms/test_arms.py
+
+Prompts
+
+```
+['test that gym arm environments serialize and deserialize correctly with pickle while preserving seed and observations', 'run the parametrized pytest test for Franka and Fetch arm environment serialization across all six environment IDs', 'review the tuple of six gym environment IDs for Franka and Fetch reach and push variants', 'refactor the test_serialize_deserialize function to add assertions on reward values or step return tuples', 'summarize the test module that validates pickle round-trip serialization for MuJoCo arm-based gym environments']
+```
+
+Usage
+
+```
+{'test_serialize_deserialize': 'test that gym arm environments serialize and deserialize correctly with pickle while preserving seed and observations', 'run_test_arms': 'run the parametrized pytest test for Franka and Fetch arm environment serialization across all six environment IDs', 'review_ENVIRONMENT_IDS': 'review the tuple of six gym environment IDs for Franka and Fetch reach and push variants', 'refactor_test_serialize_deserialize': 'refactor the test_serialize_deserialize function to add assertions on reward values or step return tuples', 'summarize_test_arms': 'summarize the test module that validates pickle round-trip serialization for MuJoCo arm-based gym environments'}
+```
+

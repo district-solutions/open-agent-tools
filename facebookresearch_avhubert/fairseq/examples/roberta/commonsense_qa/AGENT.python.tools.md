@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/avhubert
+- repo_uri: https://github.com/facebookresearch/av_hubert
+
+## File: facebookresearch_avhubert/fairseq/examples/roberta/commonsense_qa/commonsense_qa_task.py
+
+Prompts
+
+```
+['build a fairseq task to finetune RoBERTa for Commonsense QA with sentence ranking criterion', 'load a RoBERTa dictionary from dict.txt and add the mask symbol for Commonsense QA', 'setup the Commonsense QA task by loading the dictionary and asserting sentence ranking criterion', 'load a train valid or test split from a JSONL file and binarize question choice pairs', 'build a RoBERTa model and register a sentence classification head with one class']
+```
+
+Usage
+
+```
+{'build_commonsense_qa_task': 'build a fairseq task to finetune RoBERTa for Commonsense QA with sentence ranking criterion', 'load_dictionary_commonsense_qa': 'load a RoBERTa dictionary from dict.txt and add the mask symbol for Commonsense QA', 'setup_task_commonsense_qa': 'setup the Commonsense QA task by loading the dictionary and asserting sentence ranking criterion', 'load_dataset_commonsense_qa': 'load a train valid or test split from a JSONL file and binarize question choice pairs', 'build_model_commonsense_qa': 'build a RoBERTa model and register a sentence classification head with one class'}
+```
+

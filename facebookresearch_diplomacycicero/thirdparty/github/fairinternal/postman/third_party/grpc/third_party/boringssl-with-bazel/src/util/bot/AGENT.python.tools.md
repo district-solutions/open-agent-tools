@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/grpc/third_party/boringssl-with-bazel/src/util/bot/vs_toolchain.py
+
+Prompts
+
+```
+['run the vs_toolchain update command to download and configure the Visual Studio toolchain for gyp', 'run SetEnvironmentAndGetRuntimeDllDirs to configure environment variables for the depot_tools VS toolchain and get runtime DLL directories', 'run FindDepotTools to locate the depot_tools directory by searching PATH for gclient.py', 'run GetVisualStudioVersion to retrieve the configured GYP_MSVS_VERSION or default toolchain version 2015', 'run _GetDesiredVsToolchainHashes to get the SHA1 hashes for the desired VS 2015 or 2017 toolchain']
+```
+
+Usage
+
+```
+{'update_vs_toolchain': 'run the vs_toolchain update command to download and configure the Visual Studio toolchain for gyp', 'set_environment_and_get_runtime_dll_dirs': 'run SetEnvironmentAndGetRuntimeDllDirs to configure environment variables for the depot_tools VS toolchain and get runtime DLL directories', 'find_depot_tools': 'run FindDepotTools to locate the depot_tools directory by searching PATH for gclient.py', 'get_visual_studio_version': 'run GetVisualStudioVersion to retrieve the configured GYP_MSVS_VERSION or default toolchain version 2015', 'get_desired_vs_toolchain_hashes': 'run _GetDesiredVsToolchainHashes to get the SHA1 hashes for the desired VS 2015 or 2017 toolchain'}
+```
+

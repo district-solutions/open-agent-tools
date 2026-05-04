@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/grpc/third_party/boringssl-with-bazel/src/util/bot/go/bootstrap.py
+
+Prompts
+
+```
+['run the bootstrap function to install and set up a hermetic Go toolset in the default location', 'install a Go toolset by downloading and extracting it from a given URL to a specified root directory', 'prepare and return Go environment variables including GOROOT, GOPATH, and GOBIN for the installed toolset', 'get a copy of the environment with Go-specific variables like GOROOT, GOPATH, and GOBIN added or overridden', 'find the full path to a Go executable in GOROOT or workspace bin directories']
+```
+
+Usage
+
+```
+{'bootstrap_go_toolset': 'run the bootstrap function to install and set up a hermetic Go toolset in the default location', 'install_go_toolset': 'install a Go toolset by downloading and extracting it from a given URL to a specified root directory', 'prepare_go_environ': 'prepare and return Go environment variables including GOROOT, GOPATH, and GOBIN for the installed toolset', 'get_go_environ': 'get a copy of the environment with Go-specific variables like GOROOT, GOPATH, and GOBIN added or overridden', 'find_go_executable': 'find the full path to a Go executable in GOROOT or workspace bin directories'}
+```
+

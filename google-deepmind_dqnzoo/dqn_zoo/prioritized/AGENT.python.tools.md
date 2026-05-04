@@ -1,0 +1,47 @@
+# Agent Python Tools
+
+- repo: google-deepmind/dqnzoo
+- repo_uri: https://github.com/google-deepmind/dqn_zoo
+
+## File: google-deepmind_dqnzoo/dqn_zoo/prioritized/agent.py
+
+Prompts
+
+```
+['build a PrioritizedDqn agent with a network, optimizer, and prioritized replay buffer', 'run a PrioritizedDqn agent step to select an action and optionally learn from replay', 'test the PrioritizedDqn agent learning by sampling transitions and updating network parameters', 'review the PrioritizedDqn loss function that computes weighted TD errors using double Q-learning', 'summarize the PrioritizedDqn agent state serialization via get_state and set_state methods', 'run the Prioritized DQN agent training loop on an Atari environment like Pong', 'run Atari training with custom flags for environment name, learning rate, and replay capacity', 'run Double DQN with proportional prioritized sampling and importance sampling correction on Atari', 'run the evaluation loop using an EpsilonGreedyActor to measure episode return and frame rate', 'run checkpointed training iterations that log human-normalized scores to a CSV file', 'test the prioritized DQN agent on the pong Atari environment with minimal training frames', 'run the absltest suite for the prioritized DQN Atari agent using python -m', 'review the RunAtariTest class and its test_can_run_agent method for flag configuration', 'refactor the RunAtariTest test method to use different Atari environment flags and hyperparameters', 'summarize the prioritized DQN Atari test file and its flag-based agent configuration']
+```
+
+Usage
+
+```
+{'build_prioritized_dqn_agent': 'build a PrioritizedDqn agent with a network, optimizer, and prioritized replay buffer', 'run_prioritized_dqn_step': 'run a PrioritizedDqn agent step to select an action and optionally learn from replay', 'test_prioritized_dqn_learn': 'test the PrioritizedDqn agent learning by sampling transitions and updating network parameters', 'review_prioritized_dqn_loss_fn': 'review the PrioritizedDqn loss function that computes weighted TD errors using double Q-learning', 'summarize_prioritized_dqn_state': 'summarize the PrioritizedDqn agent state serialization via get_state and set_state methods'}
+```
+
+## File: google-deepmind_dqnzoo/dqn_zoo/prioritized/run_atari.py
+
+Prompts
+
+```
+['build a PrioritizedDqn agent with a network, optimizer, and prioritized replay buffer', 'run a PrioritizedDqn agent step to select an action and optionally learn from replay', 'test the PrioritizedDqn agent learning by sampling transitions and updating network parameters', 'review the PrioritizedDqn loss function that computes weighted TD errors using double Q-learning', 'summarize the PrioritizedDqn agent state serialization via get_state and set_state methods', 'run the Prioritized DQN agent training loop on an Atari environment like Pong', 'run Atari training with custom flags for environment name, learning rate, and replay capacity', 'run Double DQN with proportional prioritized sampling and importance sampling correction on Atari', 'run the evaluation loop using an EpsilonGreedyActor to measure episode return and frame rate', 'run checkpointed training iterations that log human-normalized scores to a CSV file', 'test the prioritized DQN agent on the pong Atari environment with minimal training frames', 'run the absltest suite for the prioritized DQN Atari agent using python -m', 'review the RunAtariTest class and its test_can_run_agent method for flag configuration', 'refactor the RunAtariTest test method to use different Atari environment flags and hyperparameters', 'summarize the prioritized DQN Atari test file and its flag-based agent configuration']
+```
+
+Usage
+
+```
+{'run_prioritized_dqn_atari': 'run the Prioritized DQN agent training loop on an Atari environment like Pong', 'run_atari_training_with_flags': 'run Atari training with custom flags for environment name, learning rate, and replay capacity', 'run_double_dqn_with_prioritized_replay': 'run Double DQN with proportional prioritized sampling and importance sampling correction on Atari', 'run_atari_eval_loop': 'run the evaluation loop using an EpsilonGreedyActor to measure episode return and frame rate', 'run_atari_checkpointed_training': 'run checkpointed training iterations that log human-normalized scores to a CSV file'}
+```
+
+## File: google-deepmind_dqnzoo/dqn_zoo/prioritized/run_atari_test.py
+
+Prompts
+
+```
+['build a PrioritizedDqn agent with a network, optimizer, and prioritized replay buffer', 'run a PrioritizedDqn agent step to select an action and optionally learn from replay', 'test the PrioritizedDqn agent learning by sampling transitions and updating network parameters', 'review the PrioritizedDqn loss function that computes weighted TD errors using double Q-learning', 'summarize the PrioritizedDqn agent state serialization via get_state and set_state methods', 'run the Prioritized DQN agent training loop on an Atari environment like Pong', 'run Atari training with custom flags for environment name, learning rate, and replay capacity', 'run Double DQN with proportional prioritized sampling and importance sampling correction on Atari', 'run the evaluation loop using an EpsilonGreedyActor to measure episode return and frame rate', 'run checkpointed training iterations that log human-normalized scores to a CSV file', 'test the prioritized DQN agent on the pong Atari environment with minimal training frames', 'run the absltest suite for the prioritized DQN Atari agent using python -m', 'review the RunAtariTest class and its test_can_run_agent method for flag configuration', 'refactor the RunAtariTest test method to use different Atari environment flags and hyperparameters', 'summarize the prioritized DQN Atari test file and its flag-based agent configuration']
+```
+
+Usage
+
+```
+{'test_prioritized_dqn_agent': 'test the prioritized DQN agent on the pong Atari environment with minimal training frames', 'run_atari_test_suite': 'run the absltest suite for the prioritized DQN Atari agent using python -m', 'review_RunAtariTest_class': 'review the RunAtariTest class and its test_can_run_agent method for flag configuration', 'refactor_test_flags': 'refactor the RunAtariTest test method to use different Atari environment flags and hyperparameters', 'summarize_prioritized_dqn_test': 'summarize the prioritized DQN Atari test file and its flag-based agent configuration'}
+```
+

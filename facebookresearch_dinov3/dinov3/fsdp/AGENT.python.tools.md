@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dinov3
+- repo_uri: https://github.com/facebookresearch/dinov3
+
+## File: facebookresearch_dinov3/dinov3/fsdp/ac_compile_parallelize.py
+
+Prompts
+
+```
+['apply activation checkpointing, torch compile, and FSDP sharding to DINOv3 trained and inference models', 'wrap ConvNeXt stage blocks and downsample layers with activation checkpointing to reduce memory usage', 'wrap Vision Transformer blocks with activation checkpointing using full or selective checkpointing policy', 'torch compile each Vision Transformer block with optional CUDA graph support for backbone blocks', 'apply FSDP fully_shard to each Vision Transformer block with forward and backward prefetch optimization']
+```
+
+Usage
+
+```
+{'ac_compile_parallelize_models': 'apply activation checkpointing, torch compile, and FSDP sharding to DINOv3 trained and inference models', 'activation_checkpoint_convnext': 'wrap ConvNeXt stage blocks and downsample layers with activation checkpointing to reduce memory usage', 'activation_checkpoint_transformer': 'wrap Vision Transformer blocks with activation checkpointing using full or selective checkpointing policy', 'compile_transformer': 'torch compile each Vision Transformer block with optional CUDA graph support for backbone blocks', 'fsdp_transformer': 'apply FSDP fully_shard to each Vision Transformer block with forward and backward prefetch optimization'}
+```
+

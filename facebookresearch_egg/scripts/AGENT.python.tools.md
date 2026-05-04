@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/egg
+- repo_uri: https://github.com/facebookresearch/egg
+
+## File: facebookresearch_egg/scripts/check_copyright.py
+
+Prompts
+
+```
+['run the check_copyright script to verify all Python files have the Facebook copyright header', 'check if a single Python file has the required copyright and license notice header', 'review the HEADER_REGEX pattern that matches optional shebang, encoding, and Facebook copyright lines', 'refactor the exclude_files set to add or remove files from the copyright check', 'summarize the COMPILED_HEADER_REGEX compiled regex used to validate file headers']
+```
+
+Usage
+
+```
+{'run_check_copyright': 'run the check_copyright script to verify all Python files have the Facebook copyright header', 'check_copyright_function': 'check if a single Python file has the required copyright and license notice header', 'review_HEADER_REGEX': 'review the HEADER_REGEX pattern that matches optional shebang, encoding, and Facebook copyright lines', 'refactor_exclude_files': 'refactor the exclude_files set to add or remove files from the copyright check', 'summarize_COMPILED_HEADER_REGEX': 'summarize the COMPILED_HEADER_REGEX compiled regex used to validate file headers'}
+```
+

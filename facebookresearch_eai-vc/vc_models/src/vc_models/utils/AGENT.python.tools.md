@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eai-vc
+- repo_uri: https://github.com/facebookresearch/eai-vc
+
+## File: facebookresearch_eai-vc/vc_models/src/vc_models/utils/wandb.py
+
+Prompts
+
+```
+['setup a wandb run from an omegaconf config with automatic resume support and id persistence', 'start a wandb run with a generated or resumed run id and config dictionary', 'resume a previous wandb run by reading the saved wandb_id.txt file from the config directory', 'convert an omegaconf DictConfig to a plain dictionary for wandb initialization', 'generate a unique wandb run id using wandb.util.generate_id for new experiments']
+```
+
+Usage
+
+```
+{'setup_wandb_init': 'setup a wandb run from an omegaconf config with automatic resume support and id persistence', 'start_wandb_init': 'start a wandb run with a generated or resumed run id and config dictionary', 'resume_wandb_run': 'resume a previous wandb run by reading the saved wandb_id.txt file from the config directory', 'convert_omegaconf_to_dict': 'convert an omegaconf DictConfig to a plain dictionary for wandb initialization', 'generate_wandb_id': 'generate a unique wandb run id using wandb.util.generate_id for new experiments'}
+```
+

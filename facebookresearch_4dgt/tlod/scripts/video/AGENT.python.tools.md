@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/4dgt
+- repo_uri: https://github.com/facebookresearch/4dgt
+
+## File: facebookresearch_4dgt/tlod/scripts/video/images_to_videos.py
+
+Prompts
+
+```
+['run the CLI tool to convert image directories into MP4 videos using ffmpeg with configurable fps and codec', 'run the launcher to scan a data root directory for Aria camera image sequences and process them into videos', 'run a single worker to download images from a folder, concatenate them into a video, and upload the result', 'run the node function to launch parallel workers that process multiple image directories into videos simultaneously', 'run a worker that reads transforms.json to sort images by frame order before generating the output video']
+```
+
+Usage
+
+```
+{'run_images_to_videos_cli': 'run the CLI tool to convert image directories into MP4 videos using ffmpeg with configurable fps and codec', 'run_launcher_scan_sequences': 'run the launcher to scan a data root directory for Aria camera image sequences and process them into videos', 'run_worker_single_video': 'run a single worker to download images from a folder, concatenate them into a video, and upload the result', 'run_node_parallel_workers': 'run the node function to launch parallel workers that process multiple image directories into videos simultaneously', 'run_worker_with_transforms_sorting': 'run a worker that reads transforms.json to sort images by frame order before generating the output video'}
+```
+

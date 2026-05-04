@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eai-vc
+- repo_uri: https://github.com/facebookresearch/eai-vc
+
+## File: facebookresearch_eai-vc/third_party/habitat2/habitat-lab/habitat/tasks/vln/vln.py
+
+Prompts
+
+```
+['create a VLNEpisode with reference path, instruction data, and trajectory id for VLN navigation', 'create an InstructionData object with instruction text and optional token list for navigation guidance', 'use the InstructionSensor to extract instruction text, tokens, and trajectory id from a VLN episode', 'run a VLNTask agent that navigates to a goal in a 3D environment using natural language instructions', 'review the VLNTask class and its SPL metric for vision and language navigation evaluation']
+```
+
+Usage
+
+```
+{'create_VLNEpisode': 'create a VLNEpisode with reference path, instruction data, and trajectory id for VLN navigation', 'create_InstructionData': 'create an InstructionData object with instruction text and optional token list for navigation guidance', 'use_InstructionSensor': 'use the InstructionSensor to extract instruction text, tokens, and trajectory id from a VLN episode', 'run_VLNTask': 'run a VLNTask agent that navigates to a goal in a 3D environment using natural language instructions', 'review_VLNTask': 'review the VLNTask class and its SPL metric for vision and language navigation evaluation'}
+```
+

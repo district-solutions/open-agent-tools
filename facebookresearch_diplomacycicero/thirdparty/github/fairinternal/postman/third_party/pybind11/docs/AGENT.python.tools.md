@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/pybind11/docs/benchmark.py
+
+Prompts
+
+```
+['generate dummy C++ pybind11 binding code with a configurable number of classes for benchmarking', 'generate dummy C++ boost::python binding code with a configurable number of classes for benchmarking', 'run the benchmark script to compare pybind11 and boost::python compilation times and output sizes', 'review the benchmark loop that iterates over code generators and measures compilation time and binary size', 'refactor the benchmark script to support custom compiler flags or different C++ standards']
+```
+
+Usage
+
+```
+{'generate_dummy_code_pybind11': 'generate dummy C++ pybind11 binding code with a configurable number of classes for benchmarking', 'generate_dummy_code_boost': 'generate dummy C++ boost::python binding code with a configurable number of classes for benchmarking', 'run_benchmark_pybind11_vs_boost': 'run the benchmark script to compare pybind11 and boost::python compilation times and output sizes', 'review_benchmark_loop': 'review the benchmark loop that iterates over code generators and measures compilation time and binary size', 'refactor_benchmark_compilation': 'refactor the benchmark script to support custom compiler flags or different C++ standards'}
+```
+

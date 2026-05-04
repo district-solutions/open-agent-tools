@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/habitat-sim
+- repo_uri: https://github.com/facebookresearch/habitat-sim
+
+## File: facebookresearch_habitat-sim/docs/m.css/documentation/test_python/inspect_name_mapping/inspect_name_mapping/_sub/bar.py
+
+Prompts
+
+```
+['review the python foo function that takes a Foo instance and int and returns b*2', 'review the python _NameThatGetsOverridenExternally class used as a return type annotation in bar module', 'test the python foo function by passing a Foo instance and integer and verifying the return value', 'summarize the bar submodule that exports foo and _NameThatGetsOverridenExternally for name mapping tests', 'refactor the python foo function to add input validation for the Foo and int parameters']
+```
+
+Usage
+
+```
+{'review_foo_function': 'review the python foo function that takes a Foo instance and int and returns b*2', 'review_NameThatGetsOverridenExternally_class': 'review the python _NameThatGetsOverridenExternally class used as a return type annotation in bar module', 'test_foo_function': 'test the python foo function by passing a Foo instance and integer and verifying the return value', 'summarize_bar_submodule': 'summarize the bar submodule that exports foo and _NameThatGetsOverridenExternally for name mapping tests', 'refactor_foo_function': 'refactor the python foo function to add input validation for the Foo and int parameters'}
+```
+

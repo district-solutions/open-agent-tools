@@ -1,0 +1,156 @@
+{
+  "facebookresearch_avt/common/cluster.py": {
+    "init_KmeansAssigner": "create a KmeansAssigner instance by loading centroids from a file path with optional normalization",
+    "feat2cluster_assign": "compute cluster assignments for feature tensors by finding nearest centroids using cosine distance",
+    "cluster2feat_lookup": "retrieve feature vectors for given cluster indices by looking up centroids",
+    "forward_KmeansAssigner": "run the KmeansAssigner forward pass to map features to clusters or clusters to features",
+    "num_clusters_property": "get the number of clusters from a KmeansAssigner instance via the num_clusters property"
+  },
+  "facebookresearch_avt/common/log.py": {
+    "create_SmoothedValue_tracker": "create a SmoothedValue instance to track a rolling window of metric values with median and global average",
+    "update_MetricLogger_meters": "update a MetricLogger with keyword arguments to record training metrics like loss and accuracy",
+    "log_MetricLogger_iterable": "use MetricLogger log_every to iterate over a dataloader and print periodic training progress",
+    "create_default_loggers": "call get_default_loggers to create train and validation MetricLogger instances with preset meters",
+    "setup_tensorboard_writer": "call setup_tbx to create a TensorBoard SummaryWriter for the main process only"
+  },
+  "facebookresearch_avt/common/sampler.py": {
+    "create_distributed_sampler": "create a DistributedSampler to split a PyTorch dataset across multiple GPU replicas with optional shuffling",
+    "use_distributed_sampler_set_epoch": "use the set_epoch method on DistributedSampler to change the random seed for each training epoch",
+    "create_uniform_clip_sampler": "create a UniformClipSampler to sample equally spaced video clips from a VideoClips dataset with a max per video",
+    "create_random_clip_sampler": "create a RandomClipSampler to randomly sample video clips from a VideoClips dataset with a max per video",
+    "review_sampler_classes": "review the DistributedSampler, UniformClipSampler, and RandomClipSampler classes for PyTorch video data sampling strategies"
+  },
+  "facebookresearch_avt/common/scheduler.py": {
+    "create_WarmupMultiStepLR": "create a WarmupMultiStepLR scheduler with milestone epochs, gamma decay, and linear warmup for a PyTorch optimizer",
+    "create_CosineLR": "create a CosineLR scheduler that anneals learning rate with cosine schedule and returns zero after T_max",
+    "create_ReduceLROnPlateau": "create a ReduceLROnPlateau scheduler that reduces learning rate when a metric stops improving",
+    "create_Warmup_wrapper": "create a Warmup scheduler wrapper that ramps learning rate from init_lr_ratio to full LR before delegating to a base scheduler",
+    "use_Warmup_state_dict": "use the Warmup scheduler state_dict and load_state_dict methods to save and restore warmup scheduler state during training"
+  },
+  "facebookresearch_avt/common/transforms.py": {
+    "build_video_transform_pipeline": "build a python module that applies CenterCropVideo, NormalizeVideo, and ToTensorVideo transforms to a 4D video clip tensor",
+    "create_random_crop_video": "create a function that uses RandomCropVideo to randomly crop a video clip tensor to a specified size",
+    "test_temporal_center_crop": "test the TemporalCenterCrop class to extract a centered temporal segment of a given clip length from a video tensor",
+    "refactor_resize_class": "refactor the Resize class to resize a video clip tensor to a target size using bilinear interpolation",
+    "review_color_jitter_video": "review the ColorJitterVideo class and how it applies random color jitter to a 4D video clip tensor"
+  },
+  "facebookresearch_avt/common/utils.py": {
+    "compute_accuracy_topk": "compute top-k classification accuracy from PyTorch model output predictions and target labels",
+    "init_distributed_mode": "initialize PyTorch distributed training mode with NCCL backend and submitit job environment support",
+    "gather_tensors_from_all": "gather tensors from all GPU processes in a distributed PyTorch training setup",
+    "get_video_info": "extract video properties like fps and duration from a video file path using OpenCV",
+    "save_on_master": "save a PyTorch model checkpoint only on the main process in distributed training"
+  },
+  "facebookresearch_avt/datasets/base_video_dataset.py": {
+    "convert_to_anticipation": "convert a pandas DataFrame of video clips to action anticipation format using tau_a and tau_o parameters",
+    "dense_clip_sampler": "sample dense video clips from a dataset DataFrame at a fixed stride for self-supervised learning or feature extraction",
+    "BaseVideoDataset": "create a PyTorch video dataset that reads clips from a DataFrame with configurable sampling strategies and transforms",
+    "BaseVideoDataset__sample": "sample a fixed-size video clip from a video file using random, center, first, or last clip strategies",
+    "BaseVideoDataset__class_balance_data_idx": "remap a dataset index to achieve class-balanced sampling by redistributing indices across label classes"
+  },
+  "facebookresearch_avt/datasets/breakfast_50salads.py": {
+    "load_mappings_file": "create a function that reads a class mappings file and returns a dictionary mapping action class names to integer labels",
+    "read_orig_50salads_annotations": "build a function that parses 50Salads dataset annotations and returns video segments with start times, end times, and action labels",
+    "read_orig_breakfast_annotations": "build a function that parses Breakfast dataset annotations and returns video segments with start times, end times, and action labels",
+    "read_abu_farha_annotations": "create a function that reads Abu Farha CVPR annotations and returns video segments with frame-level action labels",
+    "Breakfast50Salads": "build a PyTorch dataset wrapper for the 50Salads or Breakfast action recognition datasets with cross-validation fold support"
+  },
+  "facebookresearch_avt/datasets/data.py": {
+    "create_dataset_from_config": "create a dataset object from Hydra config with transform, frame rate, and clip options",
+    "load_precomputed_metadata": "load precomputed metadata from a file and pass it into the dataset constructor",
+    "compute_video_clips": "compute video clips on the dataset using num frames and frame rate settings",
+    "save_dataset_metadata": "save the dataset metadata to a file if the precomputed metadata path does not exist",
+    "instantiate_dataset_with_hydra": "instantiate a dataset using hydra.utils.instantiate with non-recursive config and keyword arguments"
+  },
+  "facebookresearch_avt/datasets/epic_kitchens.py": {
+    "create_EPICKitchens_dataset": "create an EPICKitchens dataset loader from annotation pickle or CSV files with verb and noun classes",
+    "load_action_classes_EPICKitchens": "load action classes from a CSV file mapping verb and noun pairs to action IDs",
+    "generate_all_actions_EPICKitchens": "generate all possible action classes from the cross product of verb and noun class lists",
+    "read_rulstm_features_EpicRULSTMFeatsReader": "read RULSTM video features from an LMDB store for a given video path and time range",
+    "subselect_dataframe_by_person_EPICKitchens": "filter the EPIC Kitchens dataset dataframe to keep only videos from a specified range of participant IDs"
+  },
+  "facebookresearch_avt/datasets/reader_fns.py": {
+    "build_default_video_reader": "build a DefaultReader to read video frames from a file path using torchvision",
+    "create_onehot_label_reader": "create a VideoAsLabelOnehotReader to convert video labels into a one-hot tensor representation",
+    "test_default_reader_forward": "test the DefaultReader forward method by reading a video clip between start and end times",
+    "review_reader_base_class": "review the Reader base class and its subclasses for video reading functionality",
+    "summarize_get_frame_rate": "summarize the DefaultReader get_frame_rate method to extract fps from a video file path"
+  },
+  "facebookresearch_avt/func/train.py": {
+    "run_main_training": "run the main training loop with a Hydra config to train a video classification model end to end",
+    "run_train_one_epoch": "run a single training epoch with gradient clipping, loss weighting, and periodic checkpoint saving",
+    "run_evaluate": "run evaluation on test datasets and store logits and accuracy metrics to HDF5 files",
+    "run_store_checkpoint": "run store_checkpoint to save the model, optimizer, and lr scheduler state to a .pth file",
+    "run_init_model": "run init_model to load pretrained weights from a checkpoint file into a model with optional module filtering"
+  },
+  "facebookresearch_avt/func/train_eval_ops.py": {
+    "create_NoLossAccuracy": "create a NoLossAccuracy module that returns empty losses and accuracies for no-op training",
+    "create_BasicLossAccuracy": "create a BasicLossAccuracy module to compute classification loss and top-k accuracy with optional class balancing",
+    "review_BasicLossAccuracy_forward": "review the BasicLossAccuracy forward method to compute cls loss and acc1/acc5 per target type",
+    "create_Basic_train_ops": "create a Basic train ops class that preprocesses data and computes classification losses and accuracies",
+    "create_PredFutureFeat_train_ops": "create a PredFutureFeat class to compute classification and regression losses for future feature prediction"
+  },
+  "facebookresearch_avt/loss_fn/mse.py": {
+    "create_normed_mse_loss": "create a NormedMSE loss instance that L2-normalizes inputs before computing MSE",
+    "use_normed_mse_forward": "use NormedMSE forward pass to compute normalized MSE between input and target tensors",
+    "review_normed_mse_class": "review the NormedMSE class that extends nn.MSELoss with L2 normalization on the last dimension",
+    "refactor_normed_mse_normalization": "refactor the NormedMSE forward method to use a different normalization strategy instead of L2",
+    "test_normed_mse_forward": "test the NormedMSE forward method with input and target tensors of shape (*, C)"
+  },
+  "facebookresearch_avt/loss_fn/multidim_xentropy.py": {
+    "build_multidim_cross_entropy": "build a MultiDimCrossEntropy loss that computes cross entropy on multi-dimensional input tensors with automatic reshaping",
+    "create_quantize_and_cross_entropy": "create a QuantizeAndCrossEntropy loss that projects features to k-means centroids before computing cross entropy",
+    "test_multidim_forward": "test the MultiDimCrossEntropy forward pass with multi-dimensional input and target tensors of matching shape",
+    "review_quantize_forward": "review the QuantizeAndCrossEntropy forward method that L2-normalizes inputs and assigns targets to cluster centroids",
+    "refactor_centroid_projection": "refactor the QuantizeAndCrossEntropy centroid projection logic to support dynamic centroid loading from file paths"
+  },
+  "facebookresearch_avt/loss_fn/simclr_infonce.py": {
+    "create_MILCrossEntropyLoss_sum": "create a MILCrossEntropyLoss with sum type to compute multiple instance learning NCE loss using logsumexp over positive predictions",
+    "create_MILCrossEntropyLoss_max": "create a MILCrossEntropyLoss with max type to compute MIL NCE loss using max aggregation over positive predictions",
+    "create_DistributedSimclrInfoNCELoss": "create a DistributedSimclrInfoNCELoss module to compute contrastive loss with distributed embedding gathering across GPUs",
+    "use_MultiDimDistributedSimclrInfoNCELoss": "use MultiDimDistributedSimclrInfoNCELoss to compute NCE loss on multi-dimensional tensors by flattening initial dimensions",
+    "review_gather_embeddings": "review the gather_embeddings method to understand how it collects embeddings from all GPUs for distributed loss computation"
+  },
+  "facebookresearch_avt/models/base_model.py": {
+    "build_BaseModel": "build a BaseModel instance from an OmegaConf config with backbone, temporal aggregator, and classifier components",
+    "run_forward_singlecrop": "run forward_singlecrop on a video tensor to extract backbone features, temporal aggregates, and future predictions",
+    "run_forward_multicrop": "run forward on a multi-crop video tensor to get averaged features and auxiliary losses across crops",
+    "review_apply_classifier": "review the _apply_classifier method that applies classifiers or class mappings to generate logits for each class type",
+    "refactor_initialize_weights": "refactor the _initialize_weights method to customize Kaiming normal init for Conv3d and Linear layers"
+  },
+  "facebookresearch_avt/models/classifiers.py": {
+    "create_MLP_classifier": "create an MLP classifier with a given number of input features, output features, and hidden layers",
+    "build_MLP_network": "build a multi-layer perceptron network using PyTorch nn.Linear and nn.ReLU activation layers",
+    "run_MLP_forward": "run the forward pass of an MLP classifier on input tensor data",
+    "review_MLP_init": "review the MLP class constructor to understand how layers are built from in_features, out_features, and nlayers",
+    "refactor_MLP_layers": "refactor the MLP class to customize the number of hidden layers or add dropout regularization"
+  },
+  "facebookresearch_avt/models/future_prediction.py": {
+    "build_AVTh_model": "build an AVT head model using GPT-2 for future feature prediction with configurable output length",
+    "create_MLP_predictor": "create an MLP module with configurable layers to transform input features and predict future states",
+    "create_Identity_module": "create an Identity nn.Module wrapper that passes features through unchanged with output_dim property",
+    "review_AVTh_forward": "review the AVTh forward method that performs autoregressive rollout with GPT-2 past key caching",
+    "test_AVTh_quantize_rollout": "test the AVTh model with quantize_before_rollout enabled to use top-1 cluster assignment during prediction"
+  },
+  "facebookresearch_avt/models/temporal_aggregation.py": {
+    "build_transformer_temporal_aggregator": "build a PyTorch Transformer encoder module to aggregate temporal features from shape (B, T, C) to (B, C')",
+    "create_mean_temporal_aggregator": "create a Mean aggregation module that computes the temporal mean of (B, T, C) features across the time dimension",
+    "create_positional_encoding": "create a sinusoidal PositionalEncoding module for transformer inputs with configurable dropout and maximum sequence length",
+    "build_rulstm_temporal_aggregator": "build a RULSTM-based temporal aggregation module that aggregates (B, T, C) features with optional zero-padding on the time axis",
+    "create_identity_aggregator": "create an Identity pass-through aggregation module that returns input features unchanged with an empty auxiliary losses dict"
+  },
+  "facebookresearch_avt/models/video_classification.py": {
+    "build_r2plus1d_34_model": "build a R(2+1)D-34 video classification model using Conv2Plus1D convolutions and BasicBlock",
+    "build_ip_csn_152_model": "build an IP-CSN-152 video classification model using IPConv3DDepthwise convolutions and Bottleneck blocks",
+    "create_bninception_video_model": "create a BNInceptionVideo frame-level model that runs BNInception on each video frame separately",
+    "create_timm_model_wrapper": "create a TIMMModel wrapper that runs a timm vision model on each video frame independently",
+    "run_process_each_frame": "run process_each_frame to pass each frame of a video tensor through a model separately"
+  },
+  "facebookresearch_avt/notebooks/utils.py": {
+    "compute_accuracy": "compute top-1, top-5, and recall@5 accuracy metrics from model predictions and ground truth labels",
+    "read_results": "read model prediction results from .pth or .h5 result files in a given output directory",
+    "get_epic_marginalize_late_fuse": "late fuse predictions from multiple model runs with configurable weights for verb, noun, and action scores",
+    "package_results_for_submission": "package fused prediction results into seen.json and unseen.json files and zip them for challenge submission",
+    "plot_per_cls_perf": "plot per-class recall@5 bar charts comparing multiple model runs across verb and noun classes"
+  }
+}

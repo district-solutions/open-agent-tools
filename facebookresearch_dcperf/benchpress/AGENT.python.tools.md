@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dcperf
+- repo_uri: https://github.com/facebookresearch/dcperf
+
+## File: facebookresearch_dcperf/benchpress/logging_config.py
+
+Prompts
+
+```
+['create a root logger with file and stream handlers using the create_logger function', 'create a ConditionalFormatter that returns raw messages without formatting when the raw attribute is set', 'configure a WatchedFileHandler to write log output to benchpress.log with a custom formatter', 'configure a StreamHandler that outputs only WARNING level and above messages to stdout', 'set the root logger level via the LOGLEVEL environment variable defaulting to INFO']
+```
+
+Usage
+
+```
+{'create_logger': 'create a root logger with file and stream handlers using the create_logger function', 'create_conditional_formatter': 'create a ConditionalFormatter that returns raw messages without formatting when the raw attribute is set', 'configure_file_handler': 'configure a WatchedFileHandler to write log output to benchpress.log with a custom formatter', 'configure_stream_handler': 'configure a StreamHandler that outputs only WARNING level and above messages to stdout', 'set_log_level': 'set the root logger level via the LOGLEVEL environment variable defaulting to INFO'}
+```
+

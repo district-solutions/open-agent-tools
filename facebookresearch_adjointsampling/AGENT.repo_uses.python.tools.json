@@ -1,0 +1,163 @@
+{
+  "facebookresearch_adjointsampling/adjoint_sampling/eval_loop.py": {
+    "run_evaluation_loop": "run the evaluation function to integrate SDE, compute SOC loss, and return energy visualization",
+    "save_molecule_conformations_to_xyz": "save generated molecule batches and outputs to XYZ files with atomic symbols and positions",
+    "compute_SOC_loss": "compute the SOC loss for controls, graph states, and energy outputs using noise schedule",
+    "visualize_molecule_conformations": "visualize up to 16 molecule conformations from graph states using the atomic number table",
+    "evaluate_batch_coverage": "evaluate batch recall and coverage metrics for generated states against conformer reference data"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/train_loop.py": {
+    "run_train_one_epoch": "run one training epoch of the adjoint sampling controller with noise schedule and optimizer",
+    "run_train_one_epoch_pretrain": "run one training epoch in pretrain mode using only the Brownian motion loss",
+    "run_train_one_epoch_torsions": "run one training epoch learning torsion angles using adjoint score target torsion",
+    "get_lr": "get the current learning rate from the first param group of a PyTorch optimizer",
+    "review_train_one_epoch": "review the train_one_epoch function which computes adjoint loss and BM loss for score matching"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/components/clipper.py": {
+    "create_Clipper": "create a Clipper instance to clip multi-dimensional score tensors by their L2 norm",
+    "create_Clipper1d": "create a Clipper1d instance to clip 1D score tensors by their absolute value",
+    "run_Clipper_clip_scores": "run clip_scores on a 2D tensor to normalize scores to a max norm threshold",
+    "run_Clipper1d_clip_scores": "run clip_scores on a 1D tensor to clamp values to a max absolute threshold",
+    "review_Clipper": "review the Clipper class and its norm-based score clipping logic"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/components/controllers.py": {
+    "build_EGNN_dynamics_model": "build an EGNN dynamics model to predict molecular position updates from a batch of atom positions and edges",
+    "create_EGNN_dynamics_torsion_model": "create an EGNN dynamics torsion model to compute torsion-aware position gradients for molecular conformation sampling",
+    "build_SimpleMLP_model": "build a SimpleMLP neural network with sinusoidal time embeddings for particle system dynamics prediction",
+    "create_E_GCL_layer": "create an equivariant graph convolution layer for message passing on molecular graphs with node and edge features",
+    "run_update_batch_for_fairchem": "run update_batch_for_fairchem to prepare a batch object with atom counts, positions, and atomic numbers for FairChem compatibility"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/components/datasets.py": {
+    "build_bond_length_matrix": "build a bond length and type matrix from an RDKit molecule using covalent and van der Waals radii",
+    "create_torsional_data": "create torsional data including positions, torsion indices, and edge masks from an RDKit molecule and energy model",
+    "generate_homogeneous_dataset": "generate a homogeneous PyTorch Geometric dataset from a SMILES string with optional torsion learning and relaxation",
+    "load_spice_dataset": "load and cache a SPICE dataset from a file path with parallel SMILES processing and optional torsion learning",
+    "convert_xyz_to_loader": "convert an XYZ file and SMILES string into a PyTorch Geometric DataLoader for molecular graph data"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/components/noise_schedule.py": {
+    "create_LinearNoiseSchedule": "create a LinearNoiseSchedule with a given sigma and sample noisy positions from a graph",
+    "create_GeometricNoiseSchedule": "create a GeometricNoiseSchedule with sigma_min and sigma_max to sample noisy molecular positions",
+    "use_LinearTorsionNoiseSchedule_sample_posterior": "use LinearTorsionNoiseSchedule to sample posterior torsion angles and update molecular graph positions",
+    "use_GeometricTorsionNoiseSchedule_sample_posterior": "use GeometricTorsionNoiseSchedule to sample posterior torsion angles with geometric noise and update graph",
+    "call_logprob_diffusion_wrapped_normal": "call logprob_diffusion_wrapped_normal to compute log probability of torsions under a wrapped normal diffusion"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/components/ourjoblib.py": {
+    "run_parallel_with_progressbar": "run a function across multiple jobs in parallel using ParallelTqdm with a tqdm progress bar",
+    "run_joblib_map_sequential": "run a function over an iterable sequentially using joblib_map with the sequential backend and tqdm progress",
+    "run_joblib_map_loky": "run a function over an iterable in parallel using joblib_map with the loky backend and progress bar",
+    "create_paralleltqdm_instance": "create a ParallelTqdm instance with custom total_tasks, description, and disabled progress bar settings",
+    "review_paralleltqdm_print_progress": "review the ParallelTqdm class print_progress method that updates the tqdm progress bar during parallel execution"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/components/sample_buffer.py": {
+    "create_batch_buffer": "create a BatchBuffer with a specified buffer size to store graph states and gradients",
+    "add_graph_states_and_grads": "add graph states and gradients to a BatchBuffer which auto-trims to the buffer size limit",
+    "get_data_loader_from_buffer": "get a PyTorch DataLoader from a BatchBuffer with optional shuffling for training iterations",
+    "review_batch_buffer_class": "review the BatchBuffer class and its buffer management logic for graph state and gradient storage",
+    "refactor_batch_buffer_persistence": "refactor the BatchBuffer save_state and load_state methods to persist buffer contents to disk"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/components/sampler.py": {
+    "sample_molecules_from_loader": "sample molecular graph states from a data loader using SDE integration with configurable noise steps and discretization",
+    "sample_molecules_with_rdkit_conformers": "sample molecular graph states from a data loader using RDKit-generated 3D conformers instead of SDE noise",
+    "populate_buffer_with_energy_gradients": "populate a buffer of graph states and compute energy gradients and regularization forces from an energy model",
+    "populate_buffer_with_rdkit_gradients": "populate a buffer of RDKit conformer graph states and compute energy gradients including torsion gradients when applicable",
+    "generate_rdkit_conformer_positions": "generate multiple 3D conformer positions for a SMILES string using RDKit with chirality enforcement and duplicate handling"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/components/sde.py": {
+    "integrate_sde": "integrate an SDE over time using Euler-Maruyama steps on a molecular graph state with uniform or quadratic-linear discretization",
+    "euler_maruyama_step": "perform a single Euler-Maruyama integration step on a graph state given an SDE, time, and timestep",
+    "ControlledGraphSDE": "create a ControlledGraphSDE module that wraps a control function and noise schedule for molecular graph SDE drift and diffusion",
+    "ControlledGraphTorsionSDE": "create a ControlledGraphTorsionSDE subclass that enables torsion-angle learning for molecular conformation sampling",
+    "graph_add": "add a delta tensor to the positions of a molecular system graph dictionary in place"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/components/soc.py": {
+    "compute_adjoint_score_target": "compute the adjoint score target for graph state positions using energy gradients and a noise schedule",
+    "compute_adjoint_score_target_torsion": "compute the adjoint score target for torsion angles using energy gradient and gradient clipper",
+    "compute_SOC_loss": "compute the stochastic optimal control loss for molecular graph states given controls and energies",
+    "compute_SOC_loss_torsion": "compute the stochastic optimal control loss for torsion controls given graph state and energies",
+    "review_adjoint_score_target": "review the adjoint_score_target function to understand how energy gradients and regularization are combined"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/energies/fairchem_energy.py": {
+    "create_FairChemEnergy": "create a FairChemEnergy module with a custom model checkpoint, tau, alpha, and device settings",
+    "call_FairChemEnergy": "call the FairChemEnergy module on a batch to compute energy and forces with optional regularization",
+    "use_wandb_mode_disabled": "use the wandb_mode_disabled context manager to temporarily disable WANDB_MODE during model initialization",
+    "run_bond_regularizer": "run the bond_regularizer method on a batch to compute regularization energy and gradient forces",
+    "review_FairChemEnergy_call": "review the FairChemEnergy __call__ method to understand batch preprocessing and prediction denormalization"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/energies/regularizers.py": {
+    "run_bond_structure_regularizer": "run bond_structure_regularizer to compute bond and no-bond constraint penalties for molecular positions",
+    "create_bond_constraint_penalty": "create a bond constraint penalty using relu on bond norms exceeding bond limits",
+    "create_no_bond_constraint_penalty": "create a no-bond constraint penalty using relu on bond norms below bond limits",
+    "compute_molecular_regularization": "compute per-system regularization energy by scattering bond constraints across batched molecular graphs",
+    "refactor_regularizer_to_huber_loss": "refactor bond_structure_regularizer to use huber_loss instead of relu for smoother constraint penalties"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/sampletorsion/featurize.py": {
+    "featurize_mol_from_smiles": "convert a SMILES string into an RDKit molecule and PyTorch Geometric graph data object",
+    "featurize_mol": "convert an RDKit molecule object into a PyTorch Geometric Data graph with node and edge features",
+    "one_k_encoding": "create a one-hot encoding list with an extra category for values not in the choices list",
+    "review_featurize_mol": "review the featurize_mol function to understand how atom features like degree, hybridization, and ring membership are encoded",
+    "refactor_drugs_types": "refactor the drugs_types dictionary to add or remove element type mappings for molecular featurization"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/sampletorsion/py3d.py": {
+    "convert_axis_angle_to_quaternion": "convert axis angle rotation vectors to quaternions using PyTorch tensors",
+    "convert_quaternion_to_matrix": "convert quaternion tensors to 3x3 rotation matrices using PyTorch",
+    "convert_axis_angle_to_matrix": "convert axis angle rotation vectors directly to 3x3 rotation matrices",
+    "review_axis_angle_to_quaternion": "review the axis_angle_to_quaternion function for numerical stability with small angles",
+    "refactor_quaternion_to_matrix": "refactor the quaternion_to_matrix function to support batched tensor inputs"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/sampletorsion/randomtorsion.py": {
+    "get_random_torsions": "generate a new molecular graph state with random torsion angles sampled uniformly from negative pi to positive pi",
+    "get_random_torsions_clone": "clone a molecular graph and randomize its torsion angles then update atom positions accordingly",
+    "get_random_torsions_positions": "update molecular atom positions by applying random torsion angles and centering by subtracting the center of mass",
+    "get_random_torsions_torch": "use torch rand_like to sample random torsion angles for a batch of molecular graphs",
+    "get_random_torsions_batch": "process a batch of molecular graphs by randomizing torsions and recentering positions per molecule"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/sampletorsion/rotate.py": {
+    "get_index_to_rotate": "get the connected component atom indexes to rotate after splitting a torsion bond in a molecular graph",
+    "set_torsion_on_multiple_molecules": "rotate atoms by a delta angle around a torsion axis for multiple molecules using axis-angle rotation matrices",
+    "set_torsions": "set target torsion angles on molecular positions by computing deltas and applying rotations using RDKit conventions",
+    "grad_pos_E_to_grad_tor_E": "compute the gradient of energy with respect to torsion angles from position-space gradients using vjp",
+    "review_rotate_module": "review the rotate module functions for molecular torsion angle manipulation and gradient computation"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/sampletorsion/score_model.py": {
+    "build_TensorProductScoreModel": "build a TensorProductScoreModel for equivariant torsional diffusion scoring on molecular graphs",
+    "create_TensorProductConvLayer": "create a TensorProductConvLayer for equivariant message passing with spherical harmonics and tensor products",
+    "run_GaussianSmearing": "run GaussianSmearing to embed interatomic distances into a fixed-dimensional Gaussian basis representation",
+    "test_get_timestep_embedding": "test get_timestep_embedding to generate sinusoidal positional embeddings for diffusion timestep conditioning",
+    "review_build_conv_graph": "review TensorProductScoreModel build_conv_graph method that constructs the radius-based convolution graph with sigma embeddings"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/sampletorsion/torsion.py": {
+    "get_torsion_indexes": "get torsion indexes for an RDKit molecule using SMARTS pattern matching and mass-based neighbor selection",
+    "compute_dihedral_angle": "compute the dihedral angle from four atom positions using PyTorch tensors and RDKit rotation conventions",
+    "check_torsions": "verify that computed torsion angles match expected values by comparing sine and cosine values",
+    "reverse_dihedral_by_size": "determine whether to reverse a dihedral angle based on fragment sizes after removing a bond",
+    "refactor_dihedral": "refactor the dihedral angle computation to support batched tensor inputs for multiple molecules"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/utils/data_utils.py": {
+    "build_atomic_graph": "build a fully connected molecule graph with edge indices and one-hot atomic species from an atom list",
+    "subtract_com_batch": "subtract the center of mass from batched particle positions using a batch index tensor",
+    "convert_graph_to_vector": "convert batched particle positions from graph format to a flat vector for standard torch models",
+    "create_prebatched_dataset": "create a PyTorch Dataset wrapper that yields pre-batched input and target tuples by index",
+    "subtract_com_vector": "subtract the center of mass from particle position samples reshaped as a vector array"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/utils/distributed_mode.py": {
+    "init_distributed_mode": "init a PyTorch distributed process group from env vars or SLURM and set the NCCL backend",
+    "setup_for_distributed": "setup print to only output on the master process with timestamps in distributed training",
+    "is_dist_avail_and_initialized": "check if PyTorch distributed is available and initialized before calling distributed APIs",
+    "get_world_size": "get the total number of processes in the distributed group or return 1 if not initialized",
+    "get_rank": "get the current process rank in the distributed group or return 0 if not initialized"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/utils/eval_utils.py": {
+    "generate_conformers_from_graph_state": "generate RDKit molecule conformers from a PyTorch graph state tensor with optional geometry relaxation using ASE LBFGS",
+    "read_rdkit_mols_from_smiles": "read a SMILES string and generate multiple 3D conformers using RDKit ETKDG with optional MMFF optimization and ASE relaxation",
+    "calc_rmsd_between_molecule_lists": "calculate pairwise RMSD between lists of generated and reference RDKit molecules with automatic atom mapping and hydrogen removal",
+    "calc_performance_stats_from_rmsd": "compute coverage recall, coverage precision, AMR recall, and AMR precision metrics from an RMSD array across threshold ranges",
+    "integrate_sde_all_states": "integrate an SDE over all time steps using Euler-Maruyama with uniform or quadratic-linear discretization and return graph states and controls"
+  },
+  "facebookresearch_adjointsampling/adjoint_sampling/utils/visualize_utils.py": {
+    "convert_matplotlib_figure_to_pil_image": "convert a matplotlib figure object to a PIL Image using fig2img",
+    "compute_pairwise_interatomic_distances": "compute pairwise interatomic distances from particle position samples using interatomic_dist",
+    "generate_dataset_visualization_figure": "generate a histogram figure of interatomic distances and energies using get_dataset_fig",
+    "convert_positions_to_rdkit_molecule": "convert atom positions and types to an RDKit Mol object with SMILES using to_mol",
+    "visualize_molecular_conformations": "visualize generated molecular conformations as a grid image with SMILES legends using visualize_conformations"
+  }
+}

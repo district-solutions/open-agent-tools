@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/barkourrobot
+- repo_uri: https://github.com/google-deepmind/barkour_robot
+
+## File: google-deepmind_barkourrobot/actuator/firmware/scripts/helper.py
+
+Prompts
+
+```
+['flash both M4 and M7 cores on the Cortes board using JLink GDB server', 'flash firmware over EtherCAT to a specific device by providing M4 and M7 binary paths', 'flash firmware over EtherCAT to all detected devices on the network using the --all flag', 'update firmware for a single EtherCAT device by transitioning it to BOOT state and writing binaries', 'swap memory banks on an EtherCAT device to activate newly flashed firmware by sending the magic value']
+```
+
+Usage
+
+```
+{'flash_firmware_jlink': 'flash both M4 and M7 cores on the Cortes board using JLink GDB server', 'flash_firmware_ethercat': 'flash firmware over EtherCAT to a specific device by providing M4 and M7 binary paths', 'flash_all_devices_ethercat': 'flash firmware over EtherCAT to all detected devices on the network using the --all flag', 'update_single_device_firmware': 'update firmware for a single EtherCAT device by transitioning it to BOOT state and writing binaries', 'swap_memory_banks': 'swap memory banks on an EtherCAT device to activate newly flashed firmware by sending the magic value'}
+```
+

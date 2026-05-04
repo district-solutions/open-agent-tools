@@ -1,0 +1,121 @@
+{
+  "facebookresearch_distdepth/datasets/NYUv2base.py": {
+    "create_NYUv2Base_dataset": "create a NYUv2Base PyTorch dataset instance with data path, filenames, height, width, frame indexes, and num scales",
+    "implement_get_color_method": "implement the get_color method in a NYUv2Base subclass to load and optionally flip color images from disk",
+    "implement_get_depth_method": "implement the get_depth method in a NYUv2Base subclass to load and optionally flip depth maps from disk",
+    "use_preprocess_method": "use the preprocess method to resize color images across multiple scales and apply color augmentation",
+    "review_NYUv2Base_getitem": "review the NYUv2Base __getitem__ method to understand how it returns color images, camera intrinsics, and ground truth depth"
+  },
+  "facebookresearch_distdepth/datasets/NYUv2dataset.py": {
+    "create_NYUv2Dataset_instance": "create an NYUv2Dataset instance with data_path, filenames, height, width, frame_idxs, num_scales, and is_train args",
+    "use_get_color_method": "use the get_color method to load and center-crop a color image with optional left-right flip",
+    "use_get_depth_method": "use the get_depth method to load and center-crop a numpy depth ground truth array with optional flip",
+    "access_camera_intrinsics_K": "access the camera intrinsics matrix K as a 4x4 float32 numpy array on the dataset instance",
+    "iterate_dataset_with_getitem": "iterate the dataset using getitem to retrieve color images, augmented colors, K matrices, and depth ground truth"
+  },
+  "facebookresearch_distdepth/datasets/SimSINbase.py": {
+    "create_SimSINBase_dataset": "create a SimSINBase PyTorch dataset instance with data path, filenames, height, width, frame indices, and num scales",
+    "implement_get_color_method": "implement the get_color abstract method in a SimSINBase subclass to load and return color images from disk",
+    "implement_get_depth_method": "implement the get_depth abstract method in a SimSINBase subclass to load and return ground truth depth maps",
+    "preprocess_color_images": "call preprocess on a SimSINBase instance to resize color images across scales and apply color augmentation",
+    "getitem_dataset_sample": "call getitem on a SimSINBase dataset to retrieve a dictionary of color images, camera intrinsics, and depth ground truth"
+  },
+  "facebookresearch_distdepth/datasets/SimSINdataset.py": {
+    "init_SimSINDataset": "create a SimSINDataset instance with normalized camera intrinsics and 512x512 full resolution shape",
+    "get_color_SimSINDataset": "load a color image from path and optionally flip it left to right",
+    "get_depth_SimSINDataset": "load a depth ground truth numpy array from path and optionally flip it horizontally",
+    "review_SimSINDataset_class": "review the SimSINDataset class that extends SimSINBase for SimSIN dataset loading with intrinsics",
+    "test_SimSINDataset_get_depth": "test the SimSINDataset get_depth method to verify numpy depth loading and horizontal flip"
+  },
+  "facebookresearch_distdepth/datasets/UniSINbase.py": {
+    "create_UniSINBase_dataset": "create a UniSINBase PyTorch dataset instance with data_path, filenames, height, width, frame_idxs, and num_scales parameters",
+    "implement_get_color_subclass": "implement a subclass of UniSINBase that overrides get_color to load color images from a custom path format",
+    "implement_get_depth_subclass": "implement a subclass of UniSINBase that overrides get_depth to load ground truth depth maps from disk",
+    "use_preprocess_multiscale": "use the preprocess method to resize color images across multiple scales and apply color augmentation",
+    "review_getitem_data_loading": "review the __getitem__ method to understand how stereo pairs, camera intrinsics, and extrinsics are loaded per sample"
+  },
+  "facebookresearch_distdepth/datasets/UniSINdataset.py": {
+    "create_UniSINDataset": "create a UniSINDataset instance with data_path, filenames, height, width, frame_idxs, num_scales, and is_train parameters",
+    "get_color_UniSINDataset": "get a color image from a given file path with optional left-right flip using UniSINDataset.get_color",
+    "get_depth_UniSINDataset": "get a depth ground truth map from a given file path with optional left-right flip using UniSINDataset.get_depth",
+    "review_UniSINDataset_init": "review the UniSINDataset __init__ to understand normalized camera intrinsics matrix K and full resolution shape",
+    "summarize_UniSINDataset": "summarize the UniSINDataset class which loads UniSIN dataset color images and depth maps for monocular depth estimation"
+  },
+  "facebookresearch_distdepth/datasets/VAbase.py": {
+    "create_VABase_dataset": "create a VABase PyTorch dataset instance with data path, filenames, height, width, frame indexes, and num scales",
+    "use_pil_loader": "use the pil_loader function to load an image file from a path and convert it to RGB",
+    "preprocess_color_images": "preprocess color images by resizing to multiple scales and applying color augmentation using VABase preprocess method",
+    "get_item_from_dataset": "get a single training item dictionary with color images, camera intrinsics, and depth ground truth from VABase",
+    "implement_get_color_subclass": "implement the get_color abstract method in a VABase subclass to load color images from disk"
+  },
+  "facebookresearch_distdepth/datasets/VAdataset.py": {
+    "init_VADataset": "create a VADataset instance with normalized camera intrinsics and 640x640 full resolution shape",
+    "get_color_VADataset": "load a color image from path using PIL loader with optional left-right flip",
+    "get_depth_VADataset": "load a depth ground truth image from path using OpenCV with optional horizontal flip",
+    "review_VADataset_class": "review the VADataset class that extends VABase for Virtual Assets dataset depth estimation",
+    "summarize_VADataset_intrinsics": "summarize the normalized 4x4 camera intrinsics matrix K used for VA dataset images"
+  },
+  "facebookresearch_distdepth/dpt_networks/base_model.py": {
+    "load_model_from_file": "load a PyTorch model's state dict from a checkpoint file using BaseModel.load",
+    "create_subclass_of_basemodel": "create a subclass of BaseModel that inherits the load method for loading checkpoints",
+    "review_basemodel_load": "review the BaseModel class and its load method for loading model parameters from disk",
+    "test_basemodel_load": "test the BaseModel.load method by loading a checkpoint file and verifying state dict",
+    "refactor_basemodel_load": "refactor the BaseModel.load method to support additional checkpoint formats or device mapping"
+  },
+  "facebookresearch_distdepth/dpt_networks/blocks.py": {
+    "build_encoder_with_vit_backbone": "build a DPT encoder using _make_encoder with a ViT-B/16 backbone and pretrained weights",
+    "build_scratch_layers": "build scratch convolution layers with _make_scratch to map multi-scale feature dimensions to a uniform output shape",
+    "create_resnet_backbone": "create a ResNet backbone module with _make_resnet_backbone from a torchvision ResNet model",
+    "create_feature_fusion_block": "create a FeatureFusionBlock_custom that fuses multi-scale features with residual conv units and bilinear upsampling",
+    "create_residual_conv_unit": "create a ResidualConvUnit_custom with configurable activation, batch norm, and grouped convolutions for feature refinement"
+  },
+  "facebookresearch_distdepth/dpt_networks/dpt_depth.py": {
+    "create_DPTDepthModel": "create a DPTDepthModel instance with a ViT backbone for monocular depth estimation",
+    "create_DPTDepthModel2": "create a DPTDepthModel2 with scale and shift parameters for dataset-aligned depth prediction",
+    "run_DPT_forward": "run the DPT forward pass on an input tensor to get depth output and features",
+    "create_DPT_with_custom_head": "create a DPT model with a custom head module and specified backbone architecture",
+    "review_DPTDepthModel2_invert": "review the DPTDepthModel2 forward method to understand inverse depth to depth conversion logic"
+  },
+  "facebookresearch_distdepth/dpt_networks/midas_net.py": {
+    "build_midasnet_model": "build a MidasNet model with resnext101_wsl backbone for monocular depth estimation",
+    "run_midasnet_forward": "run a forward pass on an input image tensor through the MidasNet model",
+    "create_midasnet_with_weights": "create a MidasNet model loaded from a pretrained checkpoint file path",
+    "review_midasnet_architecture": "review the MidasNet class architecture with FeatureFusionBlock refinenets and output convolution layers",
+    "summarize_midasnet_forward_pass": "summarize the MidasNet forward pass that extracts multi-scale features and fuses them for depth prediction"
+  },
+  "facebookresearch_distdepth/dpt_networks/transforms.py": {
+    "create_Resize_transform": "create a Resize transform to resize image samples to a target width and height with optional aspect ratio",
+    "create_NormalizeImage_transform": "create a NormalizeImage transform to normalize image pixel values by given mean and standard deviation",
+    "create_PrepareForNet_transform": "create a PrepareForNet transform to transpose and cast image samples for neural network input",
+    "use_apply_min_size": "use apply_min_size to resize a sample dict to ensure minimum dimensions while keeping aspect ratio",
+    "create_ShiftImage_transform": "create a ShiftImage_w or ShiftImage_h transform to horizontally or vertically shift an image sample"
+  },
+  "facebookresearch_distdepth/dpt_networks/vit.py": {
+    "build_vitb16_backbone": "build a pretrained ViT-B/16 backbone with hooks at layers 2, 5, 8, 11 using _make_pretrained_vitb16_384",
+    "build_vitl16_backbone": "build a pretrained ViT-L/16 backbone with 1024 features using _make_pretrained_vitl16_384",
+    "build_deit_backbone": "build a pretrained DeiT-B/16 backbone for distillation using _make_pretrained_deitb16_384",
+    "build_vit_rn50_backbone": "build a ViT-B/16 with ResNet50 hybrid backbone using _make_pretrained_vitb_rn50_384",
+    "run_forward_vit": "run forward_vit on a pretrained backbone to extract multi-scale feature maps from input images"
+  },
+  "facebookresearch_distdepth/networks/depth_decoder.py": {
+    "create_depth_decoder": "create a DepthDecoder with encoder channel counts and optional output scales for monocular depth estimation",
+    "run_depth_decoder_forward": "run the DepthDecoder forward pass with a list of encoder feature tensors to get multi-scale depth outputs",
+    "build_depth_decoder_with_skips": "build a DepthDecoder with skip connections enabled to concatenate encoder features during upsampling",
+    "review_depth_decoder_architecture": "review the DepthDecoder upsampling architecture with ConvBlock layers and bilinear upsampling at five pyramid levels",
+    "test_depth_decoder_scales": "test the DepthDecoder forward pass with custom scales to produce depth predictions at selected pyramid levels"
+  },
+  "facebookresearch_distdepth/networks/pose_decoder.py": {
+    "build_pose_decoder": "build a PoseDecoder network module that decodes camera pose from encoded feature maps",
+    "create_pose_decoder_with_custom_frames": "create a PoseDecoder with custom num_frames_to_predict_for to predict poses for a specific number of frames",
+    "run_pose_decoder_forward": "run the PoseDecoder forward pass on input features to get axisangle rotation and translation vectors",
+    "review_pose_decoder_convs": "review the PoseDecoder convolutional layers that squeeze features and predict 6-DOF pose per frame",
+    "test_pose_decoder_output": "test the PoseDecoder forward method to verify it returns axisangle and translation tensors"
+  },
+  "facebookresearch_distdepth/networks/resnet_encoder.py": {
+    "build_resnet_encoder_matching": "build a ResnetEncoderMatching model with 50 layers and 96 depth bins for monocular depth estimation",
+    "create_cost_volume": "create a cost volume by matching features between current and lookup frames using L1 difference",
+    "compute_depth_bins": "compute linear or inverse depth bins for hypothesised depths used in the cost volume",
+    "extract_resnet_features": "extract multi-scale feature maps from an input image using the first two ResNet blocks",
+    "build_multiimage_resnet": "build a ResNet model that accepts multiple stacked input images with pretrained ImageNet weights"
+  }
+}

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/editeval
+- repo_uri: https://github.com/facebookresearch/editeval
+
+## File: facebookresearch_editeval/main.py
+
+Prompts
+
+```
+['download an edit dataset by name using the EditDataset class for text editing evaluation', 'evaluate model predictions against a dataset using metrics like rouge, sari, and gleu', 'convert a dataset into a JSONL file for prompting autoregressive language models', "sample random input-output pairs from a dataset's dev split for inspection", 'load a JSONL prediction file with id and output fields for evaluation']
+```
+
+Usage
+
+```
+{'download_edit_dataset': 'download an edit dataset by name using the EditDataset class for text editing evaluation', 'evaluate_predictions': 'evaluate model predictions against a dataset using metrics like rouge, sari, and gleu', 'output_inputs_to_jsonl': 'convert a dataset into a JSONL file for prompting autoregressive language models', 'sample_dataset': "sample random input-output pairs from a dataset's dev split for inspection", 'load_prediction_file': 'load a JSONL prediction file with id and output fields for evaluation'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/depthcontrast
+- repo_uri: https://github.com/facebookresearch/depthcontrast
+
+## File: facebookresearch_depthcontrast/third_party/OpenPCDet/pcdet/ops/roipoint_pool3d/roipoint_pool3d_utils.py
+
+Prompts
+
+```
+['build a PyTorch module to pool 3D point cloud features into ROI boxes with configurable sampled points', 'create a forward pass that pools point features into 3D bounding boxes and returns pooled features and empty flags', 'test the RoIPointPool3dFunction forward method with batched points, features, and 3D boxes to verify CUDA pooling', 'review the RoIPointPool3d class initialization to configure num_sampled_points and pool_extra_width parameters', 'summarize the RoIPointPool3dFunction backward method which raises NotImplementedError for gradient computation']
+```
+
+Usage
+
+```
+{'build_RoIPointPool3d_module': 'build a PyTorch module to pool 3D point cloud features into ROI boxes with configurable sampled points', 'create_RoIPointPool3d_forward': 'create a forward pass that pools point features into 3D bounding boxes and returns pooled features and empty flags', 'test_RoIPointPool3dFunction': 'test the RoIPointPool3dFunction forward method with batched points, features, and 3D boxes to verify CUDA pooling', 'review_RoIPointPool3d_init': 'review the RoIPointPool3d class initialization to configure num_sampled_points and pool_extra_width parameters', 'summarize_RoIPointPool3dFunction_backward': 'summarize the RoIPointPool3dFunction backward method which raises NotImplementedError for gradient computation'}
+```
+

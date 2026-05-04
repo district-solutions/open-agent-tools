@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/avhubert
+- repo_uri: https://github.com/facebookresearch/av_hubert
+
+## File: facebookresearch_avhubert/fairseq/tests/gpu/test_binaries_gpu.py
+
+Prompts
+
+```
+['test training a translation model with fp16 precision across multiple GPUs using fconv architecture', 'test resuming training from a saved checkpoint file with FSDP or no_c10d backend', 'test training a transformer translation model with fp16 precision and custom encoder decoder dimensions', 'test training and iterative decoding generation with a Levenshtein transformer model using nat_loss criterion', 'test scalar and iterative PQ quantization of a transformer language model using adaptive softmax']
+```
+
+Usage
+
+```
+{'test_fp16_multigpu_translation': 'test training a translation model with fp16 precision across multiple GPUs using fconv architecture', 'test_resume_training_from_checkpoint': 'test resuming training from a saved checkpoint file with FSDP or no_c10d backend', 'test_transformer_fp16_training': 'test training a transformer translation model with fp16 precision and custom encoder decoder dimensions', 'test_levenshtein_transformer_generation': 'test training and iterative decoding generation with a Levenshtein transformer model using nat_loss criterion', 'test_quantization_language_model': 'test scalar and iterative PQ quantization of a transformer language model using adaptive softmax'}
+```
+

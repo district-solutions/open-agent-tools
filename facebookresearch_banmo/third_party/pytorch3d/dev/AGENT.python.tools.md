@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/banmo
+- repo_uri: https://github.com/facebookresearch/banmo
+
+## File: facebookresearch_banmo/third_party/pytorch3d/dev/test_list.py
+
+Prompts
+
+```
+['run the test_list module to print all discoverable tests in the pytorch3d test suite', 'get a list of all test files matching the glob pattern test*.py in the tests directory', 'parse a Python test file with AST and return all test classes and test methods as dotted names', 'summarize the test_list module which discovers and lists all pytest-compatible test targets in pytorch3d', 'review the tests_from_file function that uses AST parsing to extract test class and method names from a file']
+```
+
+Usage
+
+```
+{'run_test_list_main': 'run the test_list module to print all discoverable tests in the pytorch3d test suite', 'get_test_files': 'get a list of all test files matching the glob pattern test*.py in the tests directory', 'tests_from_file': 'parse a Python test file with AST and return all test classes and test methods as dotted names', 'summarize_test_list_module': 'summarize the test_list module which discovers and lists all pytest-compatible test targets in pytorch3d', 'review_tests_from_file': 'review the tests_from_file function that uses AST parsing to extract test class and method names from a file'}
+```
+

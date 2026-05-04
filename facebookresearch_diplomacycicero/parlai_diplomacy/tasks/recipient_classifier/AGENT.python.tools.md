@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/parlai_diplomacy/tasks/recipient_classifier/agents.py
+
+Prompts
+
+```
+['create a ParlAI Message with the recipient label extracted from queue output using create_message', 'review the BaseRecipientClassifierChunkTeacher class and its create_message method for recipient label extraction', 'build a recipient classifier teacher that uses pseudo orders as input by extending BaseWithPseudoOrderRecipientClassifierChunkTeacher', 'test the MessageHistoryRecipientClassifierChunkTeacher registered teacher using message history as input for recipient prediction', 'refactor the _check_incompatible_opt method to add new validation rules for draw messages and pseudo orders']
+```
+
+Usage
+
+```
+{'create_recipient_classifier_message': 'create a ParlAI Message with the recipient label extracted from queue output using create_message', 'review_base_recipient_classifier_teacher': 'review the BaseRecipientClassifierChunkTeacher class and its create_message method for recipient label extraction', 'build_pseudoorder_recipient_classifier': 'build a recipient classifier teacher that uses pseudo orders as input by extending BaseWithPseudoOrderRecipientClassifierChunkTeacher', 'test_message_history_recipient_classifier': 'test the MessageHistoryRecipientClassifierChunkTeacher registered teacher using message history as input for recipient prediction', 'refactor_incompatible_opt_check': 'refactor the _check_incompatible_opt method to add new validation rules for draw messages and pseudo orders'}
+```
+

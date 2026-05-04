@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/gradientepisodicmemory
+- repo_uri: https://github.com/facebookresearch/gradientepisodicmemory
+
+## File: facebookresearch_gradientepisodicmemory/data/raw/raw.py
+
+Prompts
+
+```
+['run the script to download and prepare CIFAR-100 data as a PyTorch tensor file', 'run the script to download and prepare MNIST data as PyTorch tensor files', 'create a function that unpickles a CIFAR-style binary file and returns its dictionary contents', 'test the unpickle function by loading a CIFAR-100 train or test pickle file', 'summarize the raw data preparation script that downloads CIFAR-100 and MNIST and saves PyTorch tensors']
+```
+
+Usage
+
+```
+{'run_download_and_prepare_cifar100': 'run the script to download and prepare CIFAR-100 data as a PyTorch tensor file', 'run_download_and_prepare_mnist': 'run the script to download and prepare MNIST data as PyTorch tensor files', 'create_function_unpickle': 'create a function that unpickles a CIFAR-style binary file and returns its dictionary contents', 'test_unpickle': 'test the unpickle function by loading a CIFAR-100 train or test pickle file', 'summarize_raw_data_script': 'summarize the raw data preparation script that downloads CIFAR-100 and MNIST and saves PyTorch tensors'}
+```
+

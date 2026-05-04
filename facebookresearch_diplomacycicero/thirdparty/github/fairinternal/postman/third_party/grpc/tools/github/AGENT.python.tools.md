@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/grpc/tools/github/pr_latency.py
+
+Prompts
+
+```
+['run the script to measure CI test latency for recent open pull requests', 'run the script with csv format to export PR latency data to a spreadsheet', 'fetch the 100 most recent open pull requests from the GitHub API', 'retrieve CI status data for a given PR and filter by jenkins or kokoro system', 'parse an ISO 8601 datetime string into a Python datetime object']
+```
+
+Usage
+
+```
+{'run_pr_latency_measurement': 'run the script to measure CI test latency for recent open pull requests', 'run_pr_latency_csv': 'run the script with csv format to export PR latency data to a spreadsheet', 'get_pr_data': 'fetch the 100 most recent open pull requests from the GitHub API', 'get_status_data': 'retrieve CI status data for a given PR and filter by jenkins or kokoro system', 'parse_timestamp': 'parse an ISO 8601 datetime string into a Python datetime object'}
+```
+

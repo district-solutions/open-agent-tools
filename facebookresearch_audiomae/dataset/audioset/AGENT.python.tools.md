@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/audiomae
+- repo_uri: https://github.com/facebookresearch/audiomae
+
+## File: facebookresearch_audiomae/dataset/audioset/gen_weight.py
+
+Prompts
+
+```
+['generate sample weights for AudioSet multi-label classification from a JSON data file and label CSV', 'run the script to compute and save sample weights to a CSV output file', 'build a dictionary mapping AudioSet class mid codes to their integer index from a CSV file', 'review the gen_weight function that calculates inverse-frequency label weights for 527 AudioSet classes', 'refactor the gen_weight script to accept JSON file, label file, and output file via argparse CLI arguments']
+```
+
+Usage
+
+```
+{'gen_weight_compute_sample_weights': 'generate sample weights for AudioSet multi-label classification from a JSON data file and label CSV', 'gen_weight_run_main': 'run the script to compute and save sample weights to a CSV output file', 'make_index_dict_build_lookup': 'build a dictionary mapping AudioSet class mid codes to their integer index from a CSV file', 'review_gen_weight_function': 'review the gen_weight function that calculates inverse-frequency label weights for 527 AudioSet classes', 'refactor_gen_weight_cli_args': 'refactor the gen_weight script to accept JSON file, label file, and output file via argparse CLI arguments'}
+```
+

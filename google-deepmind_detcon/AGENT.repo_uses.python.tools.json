@@ -1,0 +1,72 @@
+{
+  "google-deepmind_detcon/datasets/dataset_adapter.py": {
+    "create_dataset_adapter_subclass": "create a subclass of DatasetAdapter implementing num_examples, num_classes, _load, and preprocessing methods",
+    "load_dataset_batches": "load batches from a dataset split using the load method with a specified DatasetMode and batch dimensions",
+    "preprocess_images_for_pretrain": "preprocess images for pretraining by generating two augmented views with random crops and segmentations",
+    "preprocess_images_for_eval": "preprocess images for evaluation by generating a single center crop with labels",
+    "transpose_batch_for_tpu": "transpose a JAX batch from HWCN to NHWC format for TPU training using maybe_transpose_on_device"
+  },
+  "google-deepmind_detcon/datasets/image_dataset.py": {
+    "create_imagenet_dataset": "create an ImageDataset instance to load and preprocess ImageNet2012 data with TFDS or file handlers",
+    "normalize_images": "normalize a batch of images using ImageNet mean and standard deviation color statistics",
+    "shard_dataset_split": "compute shard start and end indices for distributed dataset loading across multiple processes",
+    "get_num_examples": "get the number of examples for a given train, validation, or test split of the dataset",
+    "load_dataset_split": "load a specific split of the ImageNet dataset using TFDS or a custom file handler"
+  },
+  "google-deepmind_detcon/datasets/imagenet_with_fh.py": {
+    "load_imagenet_fh_dataset": "load an ImageNet dataset with Felzenszwalb-Huttenlocher segmentations from TFRecord shards for training or testing",
+    "parse_imagenet_example_proto": "parse a single ImageNet TFRecord example into image, label, and Felzenszwalb segmentation tensors",
+    "check_train_dataset_directory": "check that a dataset directory contains at least 2048 ImageNet training TFRecord shard files",
+    "load_dataset_train_split": "load the ImageNet training split by sharding 2048 TFRecord files across multiple workers",
+    "load_dataset_test_split": "load the ImageNet validation split by globbing all 256 validation TFRecord shard files"
+  },
+  "google-deepmind_detcon/utils/augmentations.py": {
+    "run_postprocess_augmentations": "run postprocess to apply image augmentations to view1 and view2 crops in a JAX batch",
+    "create_color_transform": "create a color jitter and grayscale transform on a batch of NHWC images using JAX",
+    "apply_gaussian_blur": "apply random gaussian blur to a batch of images with configurable sigma and kernel size",
+    "apply_solarize": "apply solarization to a batch of images with a configurable threshold and apply probability",
+    "apply_random_flip": "apply random left-right flip to a batch of images using JAX vmap"
+  },
+  "google-deepmind_detcon/utils/helpers.py": {
+    "compute_topk_accuracy": "compute top-k classification accuracy from JAX logits and 1D integer labels",
+    "compute_softmax_cross_entropy": "compute softmax cross-entropy loss from logits and one-hot labels with mean or sum reduction",
+    "l2_normalize_tensor": "l2 normalize a JAX tensor along a given axis with numerical stability",
+    "compute_l2_weight_regularizer": "compute the L2 weight regularization scalar from a model params dictionary excluding biases and norm layers",
+    "compute_regression_loss": "compute BYOL-style regression loss as squared distance between L2-normalized prediction and target vectors"
+  },
+  "google-deepmind_detcon/utils/losses.py": {
+    "compute_byol_nce_loss": "compute the DetCon BYOL NCE loss from prediction and target pairs with temperature scaling",
+    "compute_manual_cross_entropy": "compute a weighted cross-entropy loss from labels and logits using JAX log-softmax",
+    "build_detcon_loss_function": "build a self-supervised learning loss function using the BYOL NCE DetCon objective with cross-replica support",
+    "refactor_byol_nce_detcon": "refactor the byol_nce_detcon function to toggle local negatives or cross-replica loss behavior",
+    "review_manual_cross_entropy": "review the manual_cross_entropy function for weighted cross-entropy computation with JAX log-softmax"
+  },
+  "google-deepmind_detcon/utils/networks.py": {
+    "build_MLP": "build a one hidden layer perceptron with batch normalization using the MLP Haiku module",
+    "build_ResNetTorso": "build a configurable ResNet model with customizable block groups, channels, and batch norm settings",
+    "build_ResNet50": "build a ResNet50 model with bottleneck blocks using the ResNet50 Haiku module subclass",
+    "build_ResNet101": "build a ResNet101 model with 3-4-23-3 block groups using the ResNet101 Haiku module subclass",
+    "test_check_length": "test the check_length utility function to validate sequence lengths for ResNet configuration"
+  },
+  "google-deepmind_detcon/utils/optimizers.py": {
+    "build_lars_optimizer": "build a LARS optimizer with learning rate, weight decay, momentum, and eta using optax",
+    "create_scale_by_lars": "create an optax gradient transformation that rescales updates using the LARS algorithm with momentum",
+    "create_add_weight_decay": "create an optax gradient transformation that adds weight decay to gradient updates",
+    "review_exclude_bias_and_norm": "review the filter function that excludes bias and normalization weights from optimizer updates",
+    "summarize_scale_by_lars_state": "summarize the ScaleByLarsState NamedTuple that stores momentum state for the LARS optimizer"
+  },
+  "google-deepmind_detcon/utils/schedules.py": {
+    "build_learning_rate_schedule": "build a cosine learning rate schedule with warmup steps and batch size scaling",
+    "create_target_ema_schedule": "create a target EMA schedule that decays using cosine from a base EMA value",
+    "compute_cosine_decay": "compute a cosine decayed value from an initial value over a given number of steps",
+    "refactor_learning_schedule": "refactor the learning schedule function to support a different warmup strategy",
+    "review_cosine_decay": "review the cosine decay implementation and verify it matches the TF1 reference"
+  },
+  "google-deepmind_detcon/utils/tf_image_ops.py": {
+    "preprocess_image_for_training": "preprocess raw image bytes with random or center crop, resize, and optional horizontal flip for model training",
+    "get_random_crop_window": "compute a random crop window with varied area and aspect ratio for data augmentation on image bytes",
+    "get_center_crop_window": "compute a center crop window with padding for standardized image preprocessing at a given output size",
+    "clip_or_pad_tensor": "clip or pad a TensorFlow tensor to a fixed size along its first dimension with a constant fill value",
+    "decode_and_crop_nonjpeg": "decode non-JPEG image bytes and crop to a bounding box using a specified crop window"
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "facebookresearch_ava-256/data/ava_dataset.py": {
+    "create_MultiCaptureDataset": "create a MultiCaptureDataset from a list of MugsyCapture identifiers and directory paths",
+    "create_SingleCaptureDataset": "create a SingleCaptureDataset for one Mugsy capture with optional camera filtering",
+    "use_none_collate_fn": "use none_collate_fn as a DataLoader collate function to filter None samples from batches",
+    "get_texture_norm_stats": "get cross-capture texture normalization mean and standard deviation from a MultiCaptureDataset",
+    "fetch_data_from_disk": "fetch camera image, mesh vertices, average texture, and head pose for a frame and camera"
+  },
+  "facebookresearch_ava-256/data/utils.py": {
+    "create_MugsyCapture": "create a MugsyCapture instance with date, time, and subject ID to get a formatted folder name",
+    "use_MugsyCapture_folder_name": "use the MugsyCapture folder_name method to generate a capture directory path string",
+    "load_get_framelist_neuttex_and_neutvert": "load a framelist CSV and neutral texture and vertex arrays from zipped dataset files",
+    "use_getitem": "use getitem to look up a segment, frame, and camera by index from a framelist and camera list",
+    "review_MugsyCapture_class": "review the MugsyCapture class and its folder_name method for Mugsy capture identifier handling"
+  },
+  "facebookresearch_ava-256/demos/keypoints.py": {
+    "plot_keypoints_on_image": "plot 3D keypoints projected to 2D on an AVA dataset image using camera calibration",
+    "plot_keypoints_3d": "plot 3D keypoints from an AVA dataset frame as a 3D scatter plot",
+    "review_plot_keypoints_on_image": "review the plot_keypoints_on_image function that projects 3D keypoints to 2D image coordinates",
+    "review_plot_keypoints_3d": "review the plot_keypoints_3d function that renders 3D keypoints in a scatter plot",
+    "refactor_plot_keypoints_on_image": "refactor plot_keypoints_on_image to support multiple subjects or batch frame rendering"
+  },
+  "facebookresearch_ava-256/demos/mesh.py": {
+    "plot_mesh_on_image": "plot a 3D face mesh projected onto a 2D image frame using camera calibration and head pose data",
+    "plot_mesh_3d": "render a 3D wireframe face mesh visualization from PLY vertex data with configurable camera angles",
+    "review_plot_mesh_on_image": "review the plot_mesh_on_image function that overlays face mesh topology onto AVA dataset frames",
+    "review_plot_mesh_3d": "review the plot_mesh_3d function that renders 3D face mesh wireframes with configurable elevation and azimuth",
+    "refactor_plot_mesh_on_image": "refactor plot_mesh_on_image to support additional image formats beyond AVIF for mesh overlay visualization"
+  },
+  "facebookresearch_ava-256/demos/segmentation.py": {
+    "run_segmentation_demo": "run the segmentation_demo function to generate an animated PNG from AVA segmentation data",
+    "create_segmentation_video": "create an animated PNG video by blending segmentation masks with the original image using ffmpeg",
+    "colorize_segmentation_masks": "colorize unique segmentation mask regions using a predefined color map and blend with the source image",
+    "review_segmentation_demo": "review the segmentation_demo function that reads AVIF images and PNG masks from ZIP archives",
+    "summarize_segmentation_demo": "summarize the segmentation_demo function capabilities for generating fade-in fade-out segmentation visualizations"
+  },
+  "facebookresearch_ava-256/extensions/mvpraymarch/mvpraymarch.py": {
+    "run_mvpraymarch": "run raymarching on volumetric primitives with ray origins, directions, and template grids to render RGBA images",
+    "build_accel_bvh": "build a BVH acceleration structure from primitive position, rotation, and scale tensors for faster raymarching",
+    "review_mvpraymarch_class": "review the MVPRaymarch custom autograd Function class that implements forward and backward passes for volumetric raymarching",
+    "create_rodrigues_module": "create a PyTorch module that converts 3D rotation vectors into 3x3 rotation matrices using Rodrigues formula",
+    "test_gradcheck": "test gradient correctness by comparing pure Python raymarching results against the CUDA-accelerated mvpraymarch implementation"
+  },
+  "facebookresearch_ava-256/extensions/utils/utils.py": {
+    "compute_raydirs_cuda": "compute ray positions, directions, and t-min/max for camera rays using CUDA-accelerated forward pass",
+    "compute_raydirs_function": "compute camera ray origins, normalized directions, and bounding box intersection intervals from view parameters",
+    "rodrigues_rotation_matrix": "convert rotation vectors to 3x3 rotation matrices using the Rodrigues formula for camera orientation",
+    "rodrigues_module_forward": "apply the Rodrigues nn.Module to transform a batch of rotation vectors into rotation matrices",
+    "gradcheck_validate_cuda": "validate CUDA ray direction computation against pure PyTorch reference implementation and compare gradients"
+  },
+  "facebookresearch_ava-256/models/autoencoder.py": {
+    "build_autoencoder_model": "build a volumetric autoencoder with identity encoder, expression encoder, bottleneck, decoder assembler, and raymarcher submodules",
+    "run_autoencoder_forward": "run the autoencoder forward pass with camera parameters, mesh vertices, texture maps, and pixel coordinates to reconstruct images",
+    "run_autoencoder_decode": "run the autoencoder decode method with identity conditioning, expression encoding, and camera parameters to render via ray marching",
+    "review_autoencoder_forward": "review the Autoencoder forward method which encodes identity and expression then decodes and renders using ray marching",
+    "review_autoencoder_decode": "review the Autoencoder decode method which assembles decoder output, ray marches, applies color correction, and composites background"
+  },
+  "facebookresearch_ava-256/models/utils.py": {
+    "initmod_initialize_module": "initialize a PyTorch module's weights using Xavier uniform initialization with optional gain",
+    "initseq_initialize_sequence": "initialize all modules in a Sequential container with appropriate gain based on following activation",
+    "xavier_uniform_xavier_init": "compute and apply Xavier uniform weight initialization for Conv1d/2d/3d, Linear, or Transpose layers",
+    "LinearWN_weight_normalization_linear": "create a Linear layer with weight normalization that normalizes weights by their L2 norm at forward time",
+    "Conv2dWN_weight_normalization_conv2d": "create a 2D convolution layer with weight normalization using a learnable gain parameter",
+    "Conv2dWS_weight_standardization_conv2d": "create a 2D convolution layer with weight standardization from NFNets using gain and bias parameters",
+    "Downsample2d_downsample": "downsample a 2D tensor using a binomial blur kernel with configurable stride and padding",
+    "Dilate2d_dilate": "apply a uniform blur kernel dilation to a 2D tensor with configurable kernel size and stride",
+    "CoordConv2d_coordinate_convolution": "create a 2D convolution layer that appends spatial coordinate channels to the input",
+    "Conv2dUB_upsampled_bias_conv2d": "create a 2D convolution layer with spatially-varying upsampled bias parameters",
+    "Conv2dWNUB_weight_norm_upsampled_bias": "create a 2D convolution layer combining weight normalization with spatially-varying upsampled bias",
+    "ConvTranspose2dWN_weight_norm_transpose": "create a transposed 2D convolution layer with weight normalization and optional weight fusion",
+    "ConvTranspose2dWNUB_weight_norm_transpose_upsampled": "create a transposed 2D convolution with weight normalization and spatially-varying upsampled bias",
+    "Rodrigues_rodrigues_to_rotation": "convert a Rodrigues rotation vector representation into a 3x3 rotation matrix",
+    "Quaternion_quaternion_to_rotation": "convert a quaternion rotation vector into a 3x3 rotation matrix",
+    "BufferDict_register_buffers": "create a Module that registers a dictionary of tensors as non-persistent buffers"
+  },
+  "facebookresearch_ava-256/models/bg/mlp2d.py": {
+    "create_background_model_simple": "create a BackgroundModelSimple instance with specified camera and identity counts for background synthesis",
+    "build_background_mlp_network": "build a PyTorch MLP network that combines camera modifiers, identity modifiers, and positional encodings for background prediction",
+    "run_background_model_forward": "run the forward pass of BackgroundModelSimple with camera indices, identity indices, and sample coordinates to predict background colors",
+    "review_background_model_initialization": "review the BackgroundModelSimple initialization including cammod, idmod MLPs, one-hot identity buffers, and custom initseq weight initialization",
+    "refactor_positional_encoding": "refactor the BackgroundModelSimple forward method to replace the sin/cos positional encoding loop with torch functional one-hot encoding"
+  },
+  "facebookresearch_ava-256/models/bottlenecks/vae.py": {
+    "create_vae_bottleneck": "create a VAE bottleneck module that compresses feature maps using variational autoencoder",
+    "run_vae_bottleneck_forward": "run the VAE bottleneck forward pass to sample latent variables from input features",
+    "compute_kl_loss_stable": "compute the stable KL divergence loss between mu and logstd tensors",
+    "review_vae_bottleneck_squash": "review the VAE bottleneck mean and std squash parameters for compression tuning",
+    "test_vae_bottleneck_sampling": "test the VAE bottleneck sampling behavior during training versus inference modes"
+  },
+  "facebookresearch_ava-256/models/colorcals/colorcal.py": {
+    "create_colorcal_module": "create a Colorcal module with ncams cameras and nident identities for color calibration",
+    "run_colorcal_forward": "run the Colorcal forward pass on an image tensor with camera and identity indices",
+    "build_colorcal_parameters": "build learnable camera and identity weight and bias parameters for per-camera color calibration",
+    "test_colorcal_calibration": "test the Colorcal module by applying per-camera and per-identity color adjustments to an image",
+    "review_colorcal_init": "review the Colorcal constructor to configure reference camera and identity indices for calibration"
+  },
+  "facebookresearch_ava-256/models/decoders/assembler.py": {
+    "build_decoder_assembler": "build a DecoderAssembler with mesh topology arrays, vertex statistics, and primitive configuration for 3D face rendering",
+    "run_forward_pass": "run the DecoderAssembler forward pass with identity conditions, expression encoding, and camera view position to predict geometry and primitives",
+    "create_geometry_decoder": "create a GeometryDecoder instance inside DecoderAssembler to decode expression-driven facial geometry from identity latent codes",
+    "create_rgb_decoder": "create an RGBDecoder instance inside DecoderAssembler to decode view-conditioned primitive RGB colors from identity and expression codes",
+    "review_forward_residuals": "review the DecoderAssembler forward method residuals_weight parameter to control blending between predicted and default primitive position, rotation, and scale"
+  },
+  "facebookresearch_ava-256/models/decoders/geometry.py": {
+    "build_geometry_decoder": "build a GeometryDecoder instance with mesh UV, triangle, and UV triangle arrays plus hyperparameters",
+    "run_forward_pass": "run a forward pass on the GeometryDecoder with expression code, identity code, and identity biases",
+    "review_geometry_decoder_init": "review the GeometryDecoder constructor to understand how deconv layers and early exits for motion and geometry are built",
+    "summarize_forward_outputs": "summarize the forward method outputs: opacity, geometry, position residual, rotation residual, and scale residual",
+    "test_geometry_decoder_coords": "test the GeometryDecoder registered coords buffer used for grid sampling geometry predictions onto mesh vertices"
+  },
+  "facebookresearch_ava-256/models/decoders/rgb.py": {
+    "create_rgb_decoder": "create an RGBDecoder instance with imsize, nboxes, boxsize, outch, and viewcond parameters for volumetric primitive decoding",
+    "run_rgb_decoder_forward": "run the RGBDecoder forward pass with expression code, identity code, identity biases, and view direction tensors",
+    "build_rgb_decoder_layers": "build the transposed convolution layers in RGBDecoder for upsampling from 4x4 feature maps to full resolution",
+    "review_rgb_decoder_view_conditioning": "review the RGBDecoder view conditioning module that processes 3D view direction vectors into 8-channel feature maps",
+    "refactor_rgb_decoder_tensor_reshaping": "refactor the RGBDecoder tensor reshaping logic that converts flat texture maps into volumetric box grids"
+  },
+  "facebookresearch_ava-256/models/encoders/expression.py": {
+    "build_expression_encoder": "build an ExpressionEncoder with UV triangle indices and barycentric coordinates for face expression encoding",
+    "run_expression_encoder_forward": "run the ExpressionEncoder forward pass with vertices and texture tensors to get a 64x4x4 expression code",
+    "create_texture_preprocessor": "create a texture preprocessor Sequential module with weight-normalized convolutions and LeakyReLU activations",
+    "create_geometry_preprocessor": "create a geometry preprocessor Sequential module that processes geometry maps through weight-normalized convolutions",
+    "review_expression_encoder_init": "review the ExpressionEncoder init method to understand UV buffer registration and channel multiplier configuration"
+  },
+  "facebookresearch_ava-256/models/encoders/identity.py": {
+    "build_identity_encoder": "build a person identity encoder using IdentityEncoder with UV triangle indices and barycentric coordinates",
+    "run_unet_encoder_forward": "run the UnetEncoder forward pass on an input tensor to get latent codes and bias maps",
+    "create_geomap_encoding": "create a geometry map encoding from neutral vertices using the IdentityEncoder forward method",
+    "combine_geo_tex_bias_maps": "combine geometry and texture bias maps using GeoTexCombiner to mix cross-modal information",
+    "review_unet_encoder_architecture": "review the UnetEncoder architecture with 8 downsampling layers using weight-normalized convolutions"
+  },
+  "facebookresearch_ava-256/models/encoders/utils.py": {
+    "generate_geomap_from_vertices": "generate a geometry image from vertices and their topology using PyTorch tensors",
+    "generate_geomap_barycentric_interpolation": "generate a geometry map using barycentric coordinates and triangle indices for mesh rasterization",
+    "test_generate_geomap": "test the generate_geomap function with sample vertex and topology tensors",
+    "review_generate_geomap_performance": "review the generate_geomap function for backpropagation performance with repeated indices",
+    "refactor_generate_geomap_assertions": "refactor the generate_geomap function to re-enable shape assertions for debugging"
+  },
+  "facebookresearch_ava-256/models/raymarchers/mvpraymarcher.py": {
+    "build_raymarcher_module": "build a python module that instantiates a Raymarcher with a given volume radius and step size",
+    "create_raymarcher_forward": "create a function that runs Raymarcher forward pass with ray positions, directions, and decoded output tensors",
+    "test_raymarcher_class": "test the Raymarcher class initialization with a volume radius and default dt step size",
+    "review_mvpraymarch_integration": "review the Raymarcher forward method integration with the mvpraymarch CUDA extension for volumetric rendering",
+    "summarize_rayrgba_output": "summarize the Raymarcher forward method that returns RGB, alpha, RGBA tensors from ray marching"
+  },
+  "facebookresearch_ava-256/models/raymarchers/stepraymarcher.py": {
+    "init_Raymarcher": "create a Raymarcher instance with a given volume radius for pure PyTorch raymarching",
+    "forward_Raymarcher": "run the Raymarcher forward pass with ray positions, directions, tminmax, decoder output, and render options",
+    "raymarch_with_multaccum": "run raymarching using multiplicative accumulation mode by setting multaccum to true in render options",
+    "raymarch_with_grid_sample": "use grid sampling on warp and template decoder outputs to sample RGB and alpha along rays",
+    "render_rgba_output": "render RGBA output by accumulating sample colors and alpha values along ray steps"
+  },
+  "facebookresearch_ava-256/tests/test_autoencoder.py": {
+    "review_autoencoder_fixture": "review the pytest autoencoder fixture that constructs an Autoencoder from identity and expression encoders",
+    "test_autoencoder_sizes": "test the autoencoder smoke test that confirms expected encoder sizes",
+    "build_autoencoder_model": "build an Autoencoder model by assembling identity encoder, expression encoder, VAE bottleneck, decoder, raymarcher, and color calibration modules",
+    "create_identity_encoder": "create an IdentityEncoder with UV indices and barycentric coordinates for face topology encoding",
+    "create_expression_encoder": "create an ExpressionEncoder with UV indices and barycentric coordinates for facial expression encoding"
+  },
+  "facebookresearch_ava-256/tests/test_ava_dataset.py": {
+    "test_getitem_avaSingleCaptureDataset": "test the getitem function for AVA SingleCaptureDataset using a framelist DataFrame and camera calibration",
+    "run_test_ava_dataset": "run pytest on test_ava_dataset.py to validate getitem returns correct segment id, frame id, and camera",
+    "review_test_getitem_avaSingleCaptureDataset": "review the test_getitem_avaSingleCaptureDataset function to understand how getitem is validated against expected outputs",
+    "refactor_test_getitem_avaSingleCaptureDataset": "refactor test_getitem_avaSingleCaptureDataset to test additional edge cases for the AVA dataset getitem function",
+    "summarize_test_ava_dataset": "summarize the test_ava_dataset module which tests getitem using pandas DataFrames and camera calibration data"
+  },
+  "facebookresearch_ava-256/tests/test_decoder_assembler.py": {
+    "test_DecoderAssembler_sizes": "test the DecoderAssembler forward pass output tensor shapes for verts, template, primpos, primrot, and primscale",
+    "create_uv_baridx_from_obj": "create UV barycentric index data from an OBJ topology file at a given resolution using create_uv_baridx",
+    "build_DecoderAssembler_instance": "build a DecoderAssembler with UV topology, vertex mean/std, volume radius, primitive count, and primitive size",
+    "run_decoder_forward_pass": "run the DecoderAssembler forward pass with identity conditions, expression encoding, and camera view position",
+    "review_DecoderAssembler_outputs": "review the DecoderAssembler output dictionary keys and tensor shapes for geometry and primitive attributes"
+  },
+  "facebookresearch_ava-256/tests/test_expression_encoder.py": {
+    "test_expression_encoder_sizes": "test the ExpressionEncoder to confirm output shape is [1, 64, 4, 4]",
+    "create_uv_baridx_from_obj": "create UV barycentric index data from a face topology OBJ file at 1024 resolution",
+    "run_expression_encoder_forward": "run the ExpressionEncoder forward pass with verts, textures, and neutral verts to get expression code",
+    "load_binary_vertex_data": "load binary vertex data from a .bin file and reshape into a PyTorch tensor",
+    "review_expression_encoder_test": "review the test_expression_encoder.py smoke test for ExpressionEncoder output size validation"
+  },
+  "facebookresearch_ava-256/tests/test_extensions.py": {
+    "test_extension_shapes": "test the raymarcher output shapes by running pytest on test_extension_shapes to verify rayrgb and rayalpha tensor dimensions",
+    "compute_raydirs": "compute ray positions, directions, and t-min/max from camera intrinsics, extrinsics, and pixel coordinates using compute_raydirs",
+    "load_camera_calibration": "load camera calibration data from a JSON file using load_camera_calibration to get intrinsics and extrinsics for a given camera ID",
+    "raymarcher_OSS": "run the OSS raymarcher with ray positions, directions, t-min/max, and decoded output to produce ray RGB and alpha images",
+    "raydirs_fixture": "generate ray directions and positions for a given image shape and camera calibration using the raydirs pytest fixture"
+  },
+  "facebookresearch_ava-256/tests/test_geometry_decoder.py": {
+    "test_geometry_decoder_sizes": "test the geometry decoder output tensor shapes match expected dimensions for primitives and geometry",
+    "build_geometry_decoder": "build a GeometryDecoder instance with UV topology, vertex count, motion size, and box configuration",
+    "run_geometry_decoder_forward": "run the GeometryDecoder forward pass with expression encoding, identity encoding, and identity bias tensors",
+    "review_geometry_decoder_init": "review the GeometryDecoder constructor to understand UV mesh topology and deconvolution layer setup",
+    "summarize_geometry_decoder_outputs": "summarize the GeometryDecoder outputs including opacity, geometry vertices, and primitive position rotation and scale residuals"
+  },
+  "facebookresearch_ava-256/tests/test_identity_encoder.py": {
+    "test_unet_encoder_sizes": "test the UnetEncoder to confirm it outputs latent z and multi-scale bias tensors with correct shapes",
+    "test_combiner_sizes": "test the GeoTexCombiner to verify it combines geometry and texture bias tensors into correct output shapes",
+    "test_identity_encoder_sizes": "test the IdentityEncoder to validate it produces correct geometry and texture latent and bias tensor shapes",
+    "review_UnetEncoder": "review the UnetEncoder class and its multi-scale bias output structure for identity encoding",
+    "review_GeoTexCombiner": "review the GeoTexCombiner class and how it merges geometry and texture bias tensors"
+  },
+  "facebookresearch_ava-256/tests/test_rgb_decoder.py": {
+    "test_rgb_decoder_sizes": "test the RGBDecoder to ensure output tensor shapes match expected volumetric primitive dimensions",
+    "run_RGBDecoder_forward": "run the RGBDecoder forward pass with expression codes, identity codes, identity biases, and view direction",
+    "create_RGBDecoder_instance": "create an RGBDecoder instance with image size, number of boxes, box size, output channels, and view conditioning",
+    "review_RGBDecoder_initialization": "review the RGBDecoder initialization to verify supported image sizes and box size constraints",
+    "summarize_RGBDecoder_forward": "summarize the RGBDecoder forward pass that decodes expression and identity codes into RGB volumetric primitives"
+  },
+  "facebookresearch_ava-256/tests/test_vae.py": {
+    "test_VAE_bottleneck_sizes": "test the VAE_bottleneck class by verifying output tensor shapes match expected dimensions",
+    "run_bottleneck_smoke_test": "run the smoke test to confirm VAE_bottleneck produces correct mu and std outputs",
+    "create_VAE_bottleneck_instance": "create a VAE_bottleneck instance with input channels 64 and latent channels 16",
+    "review_VAE_bottleneck_forward": "review the VAE_bottleneck forward pass that returns expr_code, mu, and std tensors",
+    "refactor_test_bottleneck_sizes": "refactor the test_bottleneck_sizes function to add additional shape validation assertions"
+  }
+}

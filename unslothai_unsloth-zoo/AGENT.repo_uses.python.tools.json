@@ -1,0 +1,135 @@
+{
+  "unslothai_unsloth-zoo/unsloth_zoo/compiler.py": {
+    "compile_transformers_model": "compile a transformers model type like llama with torch.compile optimizations and fused operations",
+    "create_new_function_from_source": "create a new Python function from source code and write it to the compile cache directory",
+    "create_standalone_class": "create a standalone class with an optimized forward method and optional torch.compile decorator",
+    "apply_fused_lm_head": "apply fused linear cross entropy replacement to a model forward function source",
+    "patch_lora_forwards": "patch PEFT LoRA forward methods to use optimized addmm-based matrix multiplication"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/dataset_utils.py": {
+    "train_on_responses_only": "mask instruction tokens with -100 so the trainer only computes loss on assistant responses",
+    "sft_prepare_dataset": "tokenize and prepare a dataset for supervised fine-tuning with optional packing and chat templates",
+    "standardize_data_formats": "convert ShareGPT or other conversation formats to the standard Hugging Face user assistant role format",
+    "patch_torchcodec_audio_decoder": "patch the datasets AudioDecoder class to support dict-like contains and iteration methods",
+    "find_common_token_ids": "find the longest common token ID sublist across multiple tokenized variations of a chat template component"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/device_type.py": {
+    "get_device_type": "get the current GPU device type returning cuda, hip, or xpu from the active PyTorch installation",
+    "is_hip": "check if the current PyTorch build was compiled with AMD ROCm HIP accelerator support",
+    "device_synchronize": "synchronize the current GPU device across CUDA, XPU, or HIP as a cross-platform replacement for torch.cuda.synchronize",
+    "get_device_count": "get the number of available GPU devices for the current device type cuda hip or xpu",
+    "check_allow_prequantized_models": "check the ALLOW_PREQUANTIZED_MODELS boolean to see if pre-quantized models can be loaded on the current device"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/empty_model.py": {
+    "create_empty_model": "create an empty causal LM or vision model from a transformers config with minimal dimensions",
+    "set_additional_modules": "set embedding, norm, and lm_head modules on a model from a quantized state dict",
+    "extract_vision_layers": "extract vision layer weights from a vLLM internals object into a HuggingFace state dict",
+    "compare_attributes": "compare attributes between an original model and a new model and print mismatches",
+    "copy_attributes": "copy comparable attributes and config dicts from an original model to a new model"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/gradient_checkpointing.py": {
+    "calculate_n_gradient_checkpoints": "calculate gradient checkpoint boundaries for a given number of model layers using sqrt or custom grouping",
+    "prepare_n_gradient_checkpoints": "prepare a transformer model with gradient checkpoint boundaries for memory efficient training",
+    "patch_unsloth_smart_gradient_checkpointing": "patch pytorch checkpointing to use Unsloth smart gradient checkpointing with CPU offloading for VRAM savings",
+    "unpatch_unsloth_smart_gradient_checkpointing": "unpatch Unsloth smart gradient checkpointing and restore the original pytorch checkpoint function",
+    "reset_unsloth_gradient_checkpointing_buffers": "reset Unsloth gradient checkpointing CPU and GPU buffers to initial sizes after training completes"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/hf_utils.py": {
+    "get_model_type": "get the transformers model type from a HuggingFace or PEFT config object",
+    "extract_dtype": "extract the torch dtype from a HuggingFace pretrained config object",
+    "set_config_dtype": "set the torch dtype on a HuggingFace pretrained config object",
+    "fix_lora_mapping": "fix the auto mapping dictionary for a PEFT LoRA model",
+    "load_processor": "load an AutoProcessor from a model directory even when config.json is missing"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/llama_cpp.py": {
+    "convert_to_gguf": "convert a HuggingFace model folder to GGUF format using llama.cpp's converter script",
+    "quantize_gguf": "quantize an existing GGUF file to a lower precision like Q8_0 using llama-quantize",
+    "install_llama_cpp": "clone and build llama.cpp from source with optional GPU support on Linux or Windows",
+    "check_llama_cpp": "check if llama.cpp is installed and locate the quantizer and converter binaries",
+    "use_local_gguf": "use llama.cpp's bundled gguf-py module temporarily via a context manager to avoid conflicts"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/logging_utils.py": {
+    "patch_rl_statistics_grpo": "patch notebook progress callbacks to display GRPO trainer metrics during training",
+    "patch_rl_statistics_custom": "patch notebook statistics for a custom TRL trainer algorithm with extra metrics",
+    "get_trl_metrics": "extract all metric keys from TRL trainer source files via regex scanning",
+    "notebook_progress_callback_on_train_begin": "create a patched on_train_begin callback that initializes dynamic metric columns for notebook display",
+    "notebook_training_tracker_write_line": "create a patched write_line method that dynamically adds new metric columns to the notebook table"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/loss_utils.py": {
+    "patch_loss_functions": "patch HuggingFace transformers loss functions with optimized Unsloth cross entropy for CausalLM models",
+    "post_patch_loss_function": "post-patch a model by invoking and caching its loss function across nested model layers",
+    "fused_linear_cross_entropy": "compute fused linear cross entropy loss using CUT for memory efficient LLM training",
+    "_unsloth_get_batch_samples": "collect batch samples from an epoch iterator and compute num_items_in_batch for loss normalization",
+    "unsloth_fused_ce_loss": "compute a fused cross entropy loss for efficient training of causal language models"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/patch_torch_functions.py": {
+    "patch_torch_layer_norm": "patch torch.nn.functional.layer_norm with a compiled version for faster inference",
+    "run_layer_norm": "run layer normalization on a PyTorch tensor with optional weight and bias parameters",
+    "run_cross_entropy": "compute cross entropy loss between input logits and target with label smoothing support",
+    "review_patch_torch_functions": "review the patch_torch_functions code that replaces torch layer_norm with a compiled version",
+    "summarize_torchao_patching": "summarize how TorchAO fake quantizer forward methods are patched with torch_compile"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/patching_utils.py": {
+    "patch_bitsandbytes_compile": "patch bitsandbytes to disable torch compile for versions below 0.46.0",
+    "patch_layernorm": "replace torch.nn.LayerNorm with a custom fast layernorm implementation",
+    "patch_torch_compile": "configure torch compile and dynamo settings for faster model training",
+    "patch_model_and_tokenizer": "patch a model and tokenizer to fix dtypes embeddings and RoPE",
+    "patch_compiled_autograd": "fix double compilation of functions during gradient checkpointing"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/peft_utils.py": {
+    "create_peft_regex_for_lora": "create a regex pattern to apply LoRA to selected vision or language layers of a model",
+    "get_lora_linear_modules": "discover all Linear LoRA layer classes from the PEFT tuners library dynamically",
+    "enable_gradient_checkpointing_hooks": "register forward hooks on model modules to enable gradient checkpointing for VLMs and non-standard models",
+    "review_skip_quantization_modules": "review the list of module names that should be skipped during quantization like lm_head and vision_tower",
+    "refactor_peft_regex_target_modules": "refactor the PEFT regex generation to target custom module lists for LoRA fine-tuning"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/rl_environments.py": {
+    "check_python_modules": "check if a Python code string only imports standard library modules",
+    "check_signal_escape_patterns": "analyze Python code for patterns that could escape signal-based timeouts",
+    "create_locked_down_function": "create a sandboxed Python function from source code with no global access",
+    "execute_with_time_limit": "decorate a function to enforce a wall-clock time limit using signals or subprocesses",
+    "benchmarker_benchmark": "benchmark a function by running multiple trials with cache thrashing and time limits"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/rl_replacements.py": {
+    "compute_chunked_selective_log_softmax": "compute per-token log probabilities from logits using a memory-efficient chunked log softmax approach",
+    "compute_hidden_states_selective_log_softmax": "compute per-token log probabilities from hidden states and lm_head with optional logit scaling and softcapping",
+    "compute_grpo_loss": "compute GRPO reinforcement learning loss supporting grpo, sapo, cispo, bnpo, dr_grpo, and dapo loss types",
+    "run_efficient_grpo_backward": "run the memory-efficient UnslothEfficientGRPO autograd function for chunked forward and backward GRPO passes",
+    "compute_grpo_accumulated_loss": "compute the full accumulated GRPO loss with vision model support, autotuned batching, and CPU offloading"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/saving_utils.py": {
+    "create_huggingface_repo": "create a huggingface repository with a model card for pushing an unsloth finetuned model",
+    "merge_and_dequantize_lora": "merge lora adapters into a dequantized 16 bit model and optionally push to huggingface hub",
+    "merge_and_overwrite_lora": "download base model safetensors shards and merge lora weights directly into them in place",
+    "find_skipped_quantized_modules": "find which modules were skipped during bitsandbytes 4 bit quantization in a pytorch model",
+    "check_model_quantization_status": "check if a local or huggingface model is quantized and return its quantization type"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/tiled_mlp.py": {
+    "patch_tiled_mlp_arctic": "patch a HuggingFace model's MLP layers with tiled arithmetic to reduce VRAM usage during inference",
+    "patch_tiled_mlp_target_gb": "patch a model's MLP layers with tiled arithmetic targeting a specific VRAM budget in gigabytes",
+    "patch_mlp_single_module": "patch a single MLP module with tiled forward pass using arctic or target_gb strategy",
+    "get_max_flat_qlen": "calculate the maximum flat query length given hidden dim, MLP size, and target VRAM budget",
+    "review_TiledMLP_autograd": "review the TiledMLP autograd Function class that splits sequence dimensions for memory-efficient forward and backward passes"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/tokenizer_utils.py": {
+    "add_new_tokens_to_model": "add new tokens to a model and tokenizer using mean or interpolation method for embedding initialization",
+    "fix_untrained_tokens_in_model": "fix untrained token embeddings in a model by replacing them with the mean of trained tokens",
+    "patch_tokenizer_pad_token": "patch a tokenizer to set a proper pad token when the model lacks one or pad equals eos",
+    "patch_processor_call_for_vision": "patch a vision model processor to auto-apply chat template when conversation format is passed as text",
+    "compute_mean_of_trained_tokens": "compute the mean embedding and lm head vectors across all trained tokens excluding untrained ones"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/training_utils.py": {
+    "fix_zero_training_loss": "check a training dataset for all -100 labels that would cause zero training loss",
+    "prepare_model_for_training": "prepare a HuggingFace model for training with gradient checkpointing and dtype upcasting",
+    "unsloth_train": "run a custom Unsloth training loop with gradient accumulation and mixed precision on a trainer",
+    "get_max_steps": "calculate the total batch size max steps and number of epochs from training arguments",
+    "review_Trainer_Stats": "review the Trainer_Stats dataclass that holds training metrics like runtime"
+  },
+  "unslothai_unsloth-zoo/unsloth_zoo/utils.py": {
+    "get_package_version": "get the version of a Python package like transformers or trl using the Version utility",
+    "convert_dtype_string": "convert a dtype string like bfloat16 to its corresponding torch dtype using _get_dtype",
+    "check_main_process": "check if the current process is the main process in a distributed training setup",
+    "run_distributed_function": "run a function only on the main process and broadcast results to all ranks",
+    "get_file_lock": "get a file lock for a target path with an optional timeout for safe concurrent access"
+  }
+}

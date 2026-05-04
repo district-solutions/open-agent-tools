@@ -1,0 +1,1805 @@
+{
+  "intel_auto-round/.azure-pipelines/scripts/cuda_unit_test/azure_agent.py": {
+    "wait_for_agent": "wait for an Azure DevOps agent to come online in a specified agent pool",
+    "deregister_agent": "deregister and remove an Azure DevOps agent from its agent pool",
+    "get_pool_id": "get the numeric pool ID for a named Azure DevOps agent pool",
+    "get_auth_header": "build a Basic auth header dictionary from an Azure DevOps personal access token",
+    "run_cli": "run the CLI to wait for or deregister an Azure DevOps agent by name"
+  },
+  "intel_auto-round/.azure-pipelines/scripts/cuda_unit_test/runpod_manager.py": {
+    "create_runpod_pod": "create a RunPod GPU pod with specified name, GPU count, and environment variables via the CLI",
+    "terminate_runpod_pod": "terminate a RunPod GPU pod by name or pod ID using the RunPod REST API",
+    "wait_for_runpod_pod": "wait for a named RunPod GPU pod to become available by polling every 10 seconds",
+    "get_runpod_pod_id": "get the pod ID and status of a named RunPod GPU pod via the REST API",
+    "run_create_pod_with_retry": "run a RunPod pod creation request with up to 3 retries on 400/500 errors"
+  },
+  "intel_auto-round/.azure-pipelines/scripts/performance/check_performance.py": {
+    "run_check_performance": "run the performance check script to compare current metrics against baseline values",
+    "parse_log_file": "parse a quantization log file and extract tuning time peak ram and peak vram metrics",
+    "get_dir_size_gb": "calculate the total size of a directory in gigabytes by summing all file sizes",
+    "compare_metric": "compare a current metric value against a baseline value with a configurable tolerance threshold",
+    "get_tuning_info": "gather tuning metrics for models by parsing log files and measuring output directory sizes"
+  },
+  "intel_auto-round/.azure-pipelines/scripts/ut/collect_result.py": {
+    "run_collect_result_cli": "run the cli to analyze test logs in a directory and generate a summary report",
+    "analyze_logs_with_loganalyzer": "analyze test log files in a directory and return sorted test results with status and duration",
+    "determine_test_status_from_log": "determine if a test passed failed or has no tests by scanning log content for markers",
+    "generate_summary_report_with_reportgenerator": "generate a formatted summary report table and append it to an output file",
+    "extract_test_duration_from_log": "extract the last test duration from log content and format it as hours minutes seconds"
+  },
+  "intel_auto-round/auto_round/__main__.py": {
+    "run_quantize_model": "run auto_round to quantize a HuggingFace model using W4A16 scheme and save to output directory",
+    "run_eval_quantized_model": "run evaluation on a quantized model using lm_eval harness tasks like mmlu and wikitext",
+    "run_quantize_best_recipe": "run auto_round quantization with the best recipe using 1000 iterations and 512 calibration samples",
+    "run_quantize_fast_recipe": "run auto_round quantization with the fast recipe using 200 iterations and 512 sequence length",
+    "list_supported_formats": "list all supported output formats and quantization schemes using the auto_round list format command"
+  },
+  "intel_auto-round/auto_round/alg_ext.py": {
+    "wrapper_autoround": "extend an AutoRound instance with algorithm extension hooks for INT, MXFP, or NVFP quantization data types",
+    "quant_tensor_sym": "quantize and dequantize a tensor using symmetric integer quantization with configurable bits and group size",
+    "quant_mx": "quantize a tensor using mixed precision MXFP format with shared exponent and configurable mantissa rounding",
+    "iterative_wls_quant_search": "perform iterative weighted least squares quantization search to find optimal scale and minimum values for GGUF formats",
+    "WrapperLinearV2": "wrap a linear layer to enable weight quantization tuning with INT, MXFP, or NVFP data types"
+  },
+  "intel_auto-round/auto_round/calib_dataset.py": {
+    "build_calibration_dataloader": "build a calibration dataloader from a tokenizer and dataset name using get_dataloader",
+    "create_calibration_dataset": "create a calibration dataset for model quantization using get_dataset with a specified tokenizer and sequence length",
+    "register_custom_dataset": "register a custom dataset loader function using the register_dataset decorator for calibration",
+    "apply_chat_template": "apply a chat template to text samples using apply_chat_template_to_samples with a tokenizer",
+    "load_local_dataset": "load a local JSON or JSONL file as a calibration dataset using get_local_dataset"
+  },
+  "intel_auto-round/auto_round/envs.py": {
+    "set_config_env_vars": "set environment variable configuration values like AR_LOG_LEVEL or AR_USE_MODELSCOPE using set_config",
+    "check_is_set": "check if an environment variable like AR_LOG_LEVEL is explicitly set in the process environment",
+    "access_env_var_lazy": "access a lazy-evaluated environment variable like AR_LOG_LEVEL as a module attribute",
+    "list_env_vars": "list all available environment variable names using dir on the envs module",
+    "inspect_environment_variables_dict": "inspect the environment_variables dictionary to see all registered env var lambdas and defaults"
+  },
+  "intel_auto-round/auto_round/formats.py": {
+    "get_formats": "get a list of OutputFormat instances from a format string and BaseCompressor for model export",
+    "check_compatibility": "check whether a list of export formats is compatible with a given quantization scheme",
+    "OutputFormat_register": "register a new OutputFormat subclass under one or more format names for model export",
+    "OutputFormat_get_support_matrix": "get a formatted string showing which quantization schemes each export format supports",
+    "GGUFFormat_gguf_args_check": "validate and reset quantization arguments to match a target GGUF export format configuration"
+  },
+  "intel_auto-round/auto_round/logger.py": {
+    "use_deprecated_decorator": "use the deprecated decorator to mark a function as deprecated with a custom warning message",
+    "create_autoround_formatter": "create an AutoRoundFormatter instance to colorize log output by level with ANSI escape codes",
+    "log_warning_once": "log a warning message only once per unique message using the warning_once method on the logger",
+    "add_trace_logging": "add a TRACE level logging method to any Logger instance for verbose debug output",
+    "add_infoclean_logging": "add an INFOCLEAN level logging method to output plain messages without timestamp or level prefix"
+  },
+  "intel_auto-round/auto_round/schemes.py": {
+    "create_quantization_scheme_from_dict": "create a QuantizationScheme instance from a dictionary with bits, group_size, sym, and data_type keys",
+    "lookup_preset_scheme_by_name": "get a QuantizationScheme instance by looking up a preset name like W4A16 or INT8 from PRESET_SCHEMES",
+    "resolve_gguf_scheme_name": "resolve the GGUF scheme name string from a QuantizationScheme or AutoScheme object for export compatibility",
+    "override_scheme_with_user_config": "update a base quantization scheme with user-provided overrides for bits, data_type, and activation settings",
+    "handle_special_mixed_schemes": "generate a layer-wise quantization config dict for special schemes like GGUF:Q2_K_MIXED or W4A16_MIXED"
+  },
+  "intel_auto-round/auto_round/special_model_handler.py": {
+    "handle_special_model": "patch a transformer model forward method for special model types like deepseek_vl_v2 or qwen2_5_omni",
+    "update_module_moe": "apply fused MoE module replacements to a model and optionally release the original module",
+    "check_mllm_model_batch": "check and adjust batch size for multimodal LLMs to avoid tensor shape mismatches during quantization",
+    "get_predefined_ignore_layers": "get the list of layers to ignore during quantization for a given model architecture",
+    "load_next_step_diffusion": "load a NextStep diffusion model pipeline with tokenizer and model for image generation calibration"
+  },
+  "intel_auto-round/auto_round/wrapper.py": {
+    "create_wrapperlinear": "create a WrapperLinear module to wrap a torch.nn.Linear layer with quantization and min-max tuning enabled",
+    "build_wrapperblock": "build a wrapper_block call to wrap all supported linear and conv1d layers in a model block for quantization tuning",
+    "unwrapper_block": "unwrapper a model block by calling unwrapper_block with best tuning parameters to restore original quantized layers",
+    "compute_scale_shape": "compute the quantization scale tensor shape for a weight tensor using get_scale_shape with a given group size",
+    "create_wrapperlayernorm": "create a WrapperLayerNorm module to wrap a layer normalization layer with fake quantized weights for tuning"
+  },
+  "intel_auto-round/auto_round/algorithms/quantization/base.py": {
+    "create_quantizer_from_config": "create a BaseQuantizers instance from a QuantizationConfig using the from_config class method",
+    "quantize_embedding_layer": "quantize embedding layers in a PyTorch model by calling the _quantize_embedding_layer method",
+    "register_act_max_hook": "register forward hooks on model modules to track activation maximum values with _register_act_max_hook",
+    "get_block_outputs": "compute block outputs for calibration inputs by calling _get_block_outputs with batch size and save flags",
+    "sampling_inputs": "sample a mini-batch of calibration inputs by indices using the _sampling_inputs class method"
+  },
+  "intel_auto-round/auto_round/algorithms/quantization/config.py": {
+    "create_quantization_config": "create a QuantizationConfig with bits, group_size, sym, and data_type parameters for model quantization",
+    "validate_quantization_config": "call check_config on a QuantizationConfig instance to validate bits, group_size, and data_type settings",
+    "check_valid_group_size": "use the _is_valid_group_size static method to verify if a group_size value is valid",
+    "inspect_backend_data_type": "use BackendDataType enum values to check if a config uses fp, mx_fp, nv_fp, or fp8_static",
+    "review_quantization_properties": "review QuantizationConfig properties like is_act_quantize, is_mx_fp, is_nv_fp, and is_wfp8afp8 to inspect quantization mode"
+  },
+  "intel_auto-round/auto_round/algorithms/quantization/rtn/quantizer.py": {
+    "quantize_block_rtn": "apply zero-shot RTN quantization to a model block using RTNQuantizer",
+    "quantize_layer_rtn": "quantize a single layer using round-to-nearest with GPU fallback to CPU",
+    "quantize_block_optimized": "apply imatrix-informed RTN quantization to a model block using OptimizedRTNQuantizer",
+    "quantize_layer_outside_block": "quantize a layer outside its block using OptimizedRTNQuantizer",
+    "immediate_pack_and_save": "pack and save a quantized module to shard writer for GGUF export"
+  },
+  "intel_auto-round/auto_round/algorithms/quantization/sign_round/config.py": {
+    "create_sign_round_config": "create a SignRoundConfig instance with custom iterations and learning rate for quantization",
+    "create_sign_round_config_with_adam": "create a SignRoundConfig with enable_adam to use AdamRoundQuantizer instead of SignRoundQuantizer",
+    "create_sign_round_config_minmax_tuning": "create a SignRoundConfig with enable_minmax_tuning disabled to skip min-max parameter tuning",
+    "check_sign_round_config": "validate a SignRoundConfig instance by calling check_configs to verify batch size and iterations",
+    "review_sign_round_config_lr": "review how SignRoundConfig auto-sets learning rate based on iteration count and bit width"
+  },
+  "intel_auto-round/auto_round/algorithms/quantization/sign_round/quantizer.py": {
+    "quantize_block_with_sign_round": "build a python module that uses SignRoundQuantizer to quantize a model block with SignSGD optimizer and MSE loss",
+    "quantize_layer_outside_block": "create a function that quantizes a single model layer outside a block using WrapperLinear and SignSGD",
+    "configure_sign_round_optimizer": "build a python module that configures SignRoundQuantizer with custom learning rate, momentum, and batch size settings",
+    "compute_mse_loss_with_mask": "create a function that computes MSE loss between quantized and reference outputs with optional attention mask support",
+    "tune_minmax_parameters": "build a python module that enables minmax parameter tuning alongside round parameters during SignRound quantization"
+  },
+  "intel_auto-round/auto_round/algorithms/quantization/sign_round/sign_sgd.py": {
+    "create_SignSGD_optimizer": "create a SignSGD optimizer for model parameters with a specified learning rate",
+    "run_SignSGD_step": "run a single SignSGD optimization step on model parameters after computing gradients",
+    "build_sgd_functional": "build a functional SGD call that updates parameters using sign-based gradient descent",
+    "refactor_single_tensor_sgd": "refactor the single tensor SGD function to apply sign-based parameter updates with momentum",
+    "review_SignSGD_nesterov": "review the SignSGD optimizer class to support Nesterov momentum with sign-based updates"
+  },
+  "intel_auto-round/auto_round/algorithms/transforms/base.py": {
+    "create_rotation_config": "create a BaseRotationConfig dataclass with an algorithm name for a new rotation transform",
+    "register_rotation_algorithm": "register a new BaseRotation subclass using the register decorator with an algorithm name",
+    "apply_rotation_to_model": "apply a registered rotation algorithm to a PyTorch model using from_config and apply_to_model",
+    "check_quantization_scheme": "check if a quantization scheme like MXFP8 supports rotation transforms using check_supported_schemes",
+    "instantiate_rotation_from_config": "instantiate the correct BaseRotation subclass from a config using the from_config factory method"
+  },
+  "intel_auto-round/auto_round/algorithms/transforms/rotation/apply.py": {
+    "apply_rotation_transform": "apply a Hadamard rotation transform to a PyTorch model using a RotationConfig or dict",
+    "HadamardRotation_from_config": "build a HadamardRotation instance from a raw dict or RotationConfig object",
+    "HadamardRotation_apply_to_model": "apply the Hadamard rotation to a model with weight or input location options",
+    "triton_available_check": "check whether the Triton kernel path is available for the given data type",
+    "apply_weight_transform": "fuse a Hadamard rotation transform into the weight of a single module"
+  },
+  "intel_auto-round/auto_round/algorithms/transforms/rotation/config.py": {
+    "create_rotation_config": "create a RotationConfig pydantic model with backend inplace and hadamard_type quarot_hadamard for model rotation",
+    "normalize_rotation_config": "normalize a rotation config dict with data_type mx_fp to set default block_size to 32",
+    "to_dict_rotation_config": "convert a RotationConfig instance or string key to a plain dictionary for serialization",
+    "dump_group_size_to_rotation_config": "dump a rotation config to dict and populate block_size from the given group_size value",
+    "validate_rotation_config_backend": "validate that a RotationConfig backend value is one of auto inplace or transform"
+  },
+  "intel_auto-round/auto_round/algorithms/transforms/rotation/dispatcher.py": {
+    "apply_hadamard_rotation": "apply Hadamard rotation to a PyTorch model using inplace or transform backend based on config and data type",
+    "resolve_hadamard_backend": "resolve the Hadamard backend to inplace or transform given a RotationConfig and quantization data type",
+    "to_config": "normalize a rotation config string, dict, or RotationConfig into a validated RotationConfig instance",
+    "review_apply_hadamard_rotation": "review the apply_hadamard_rotation function to understand how it dispatches between inplace and transform backends",
+    "test_resolve_hadamard_backend": "test the resolve_hadamard_backend function with different RotationConfig backend values and data types"
+  },
+  "intel_auto-round/auto_round/algorithms/transforms/rotation/patch.py": {
+    "patch_wrapperlinear_to_apply_transform": "patch WrapperLinear to apply weight and input Hadamard transforms during AutoRound calibration",
+    "patch_wrapperwalayer_forward_to_apply_transform": "patch WrapperWALayer forward to rotate input activations before quantisation",
+    "patch_quantlinear": "patch QuantLinear to save random Hadamard matrices alongside packed quantised weights",
+    "review_patch_wrapperlinear_to_apply_transform": "review patch_wrapperlinear_to_apply_transform to understand how Hadamard transforms are injected into WrapperLinear",
+    "summarize_patch_quantlinear": "summarize patch_quantlinear to understand how Hadamard matrices are registered as buffers during packing"
+  },
+  "intel_auto-round/auto_round/algorithms/transforms/rotation/transforms.py": {
+    "build_hadamard_transform": "build a Hadamard transform instance using the factory function with a given hadamard_type string",
+    "create_HadamardTransform": "create a deterministic block-diagonal Hadamard rotation module with a specified block size and device",
+    "create_RandomHadamardTransform": "create a randomly signed Hadamard rotation module with a reproducible seed for the generator",
+    "run_HadamardTransform_forward": "run the forward pass of a HadamardTransform on a tensor to apply the rotation",
+    "review_HADAMARDS": "review the HADAMARDS registry dictionary that maps hadamard type strings to their transform classes"
+  },
+  "intel_auto-round/auto_round/algorithms/transforms/rotation/inplace/apply.py": {
+    "apply_rotation_transform": "apply hadamard rotation to a huggingface causal lm model and register online hooks",
+    "rotate_linear_by_Q": "rotate a linear layer weight matrix by a given rotation matrix Q on input or output side",
+    "fuse_ln_linear": "fuse layernorm parameters into adjacent linear layer weights and biases in place",
+    "register_online_hooks": "register online hadamard pre-forward hooks on down_proj and o_proj modules for inference",
+    "replace_layernorms_with_rmsnorm": "replace all layernorm modules in a model with rmsnorm modules that skip mean subtraction"
+  },
+  "intel_auto-round/auto_round/algorithms/transforms/rotation/inplace/hooks.py": {
+    "register_online_had_hooks": "register online Hadamard pre-forward hooks on down_proj and o_proj layers of a rotated HuggingFace model",
+    "apply_exact_had_to_linear": "apply Hadamard rotation to a Linear layer weight in-place on the input or output dimension",
+    "register_online_had_hooks_grouped": "register per-group block-diagonal Hadamard hooks on down_proj and o_proj with a fixed group size",
+    "apply_cross_head_had_to_linear": "apply a cross-head Hadamard rotation to a Linear layer input side across attention heads",
+    "matmul_hadU": "compute the butterfly Hadamard transform on a tensor using the get_hadK divisor and recursive butterfly pattern"
+  },
+  "intel_auto-round/auto_round/algorithms/transforms/rotation/inplace/model_config.py": {
+    "create_RotationMapping": "create a RotationMapping dataclass to describe transformer architecture module paths for Hadamard rotation",
+    "register_mapping": "register a new RotationMapping under a model type key in the MAPPING_REGISTRY dictionary",
+    "get_mapping": "get a RotationMapping by key from the registry or fall back to the default LLaMA-like mapping",
+    "infer_mapping_from_model": "infer the best RotationMapping for a model by checking config model_type and class name",
+    "inspect_MAPPING_REGISTRY": "inspect the MAPPING_REGISTRY dictionary to see all registered RotationMapping entries for supported architectures"
+  },
+  "intel_auto-round/auto_round/algorithms/transforms/rotation/utils/math.py": {
+    "build_deterministic_hadamard_matrix": "build a python module that constructs a deterministic Hadamard matrix of a given power-of-2 size using Sylvester construction",
+    "create_random_hadamard_matrix": "create a python module that generates a randomly signed Hadamard matrix supporting non-power-of-2 sizes from precomputed safetensors",
+    "test_is_pow2": "test the is_pow2 function to check if an integer is a positive power of two using bitwise operations",
+    "review_deterministic_hadamard_matrix": "review the deterministic_hadamard_matrix function to verify it raises ValueError for non-power-of-2 sizes and sizes less than or equal to zero",
+    "summarize_random_hadamard_matrix": "summarize the random_hadamard_matrix function that creates randomly signed Hadamard matrices by composing a random diagonal with precomputed base matrices"
+  },
+  "intel_auto-round/auto_round/algorithms/transforms/rotation/utils/matrix.py": {
+    "apply_transform_weight_input": "apply a rotation matrix to an input tensor for a PyTorch linear layer",
+    "apply_transform_weight_weight": "apply a transposed rotation matrix to a weight tensor for a PyTorch linear layer",
+    "multihead_matmul_equal_dims": "perform block-diagonal matrix multiplication on two tensors with matching inner dimensions",
+    "multihead_matmul_larger_A": "perform block-diagonal matrix multiplication where tensor A has a larger inner dimension than B",
+    "multihead_matmul_larger_B": "perform block-diagonal matrix multiplication where tensor B has a larger inner dimension than A"
+  },
+  "intel_auto-round/auto_round/algorithms/transforms/rotation/utils/triton/mxfp4.py": {
+    "build_mxfp4_quantize": "build a python module that applies hadamard transform and group-wise FP4 quantize dequantize to a CUDA tensor",
+    "run_mxfp4_forward_kernel": "run the mxfp4 forward kernel on a CUDA tensor with a hadamard matrix and return the quantized output",
+    "test_mxfp4_wrapper_quest_mode": "test the mxfp4 forward kernel wrapper in quest mode using gaussian-based per-group scaling on a CUDA tensor",
+    "test_mxfp4_wrapper_clip_mask": "test the mxfp4 forward kernel wrapper with return clip mask enabled to track values exceeding the FP4 range",
+    "review_mxfp4_quantization_levels": "review the mxfp4 forward kernel quantization logic that maps scaled values to FP4 levels zero point five one one point five two three four six"
+  },
+  "intel_auto-round/auto_round/auto_scheme/delta_loss.py": {
+    "gen_layer_config": "generate an optimal per-layer quantization config for a model using delta loss scoring and DP bit-budget optimization",
+    "get_score_for_scheme": "score a quantization scheme by computing mixed weight and activation quantization loss across all quantizable layers",
+    "choose_bits_per_layer_with_path": "solve a DP knapsack problem to pick the best per-layer quantization scheme within a total bit budget",
+    "cal_imatrix": "compute the activation importance matrix for a model by accumulating squared activation norms across a calibration dataset",
+    "model_forward_low_gpu": "run a block-by-block forward and backward pass with gradient checkpointing to score quantization under low GPU memory"
+  },
+  "intel_auto-round/auto_round/auto_scheme/gen_auto_scheme.py": {
+    "create_autoscheme_dataclass": "create an AutoScheme dataclass with avg_bits target and quantization options for model layer schemes",
+    "build_genscheme_instance": "build a GenScheme instance with an AutoScheme config, model, quant layer names, and tokenizer",
+    "get_layer_config": "get the layer configuration dictionary by calling get_layer_config on a GenScheme instance",
+    "compute_avg_bit_range": "compute the minimum and maximum average bitwidths across candidate quantization options for a model",
+    "apply_gguf_fallback": "apply GGUF quantization type fallback for layers with incompatible input feature alignment"
+  },
+  "intel_auto-round/auto_round/auto_scheme/register.py": {
+    "register_mixed_precision_algorithm": "use the register_scheme_methods decorator to register a mixed precision algorithm class into the AUTO_SCHEME_METHODS registry",
+    "register_algorithm_with_multiple_names": "use the register_scheme_methods decorator with a list of names to register an algorithm under multiple keys",
+    "access_registered_schemes": "access the AUTO_SCHEME_METHODS dictionary to retrieve a registered mixed precision algorithm class by its name",
+    "review_register_scheme_methods": "review the register_scheme_methods decorator to understand how it maps algorithm classes to string keys in the registry",
+    "summarize_auto_scheme_methods_registry": "summarize the AUTO_SCHEME_METHODS dictionary registry that stores mixed precision algorithm classes keyed by their scheme names"
+  },
+  "intel_auto-round/auto_round/auto_scheme/utils.py": {
+    "apply_quant_scheme": "apply a quantization scheme to specified layers of a PyTorch model using preset names or custom dictionaries",
+    "remove_quant_scheme": "remove all quantization scheme attributes from every module in a PyTorch model",
+    "compute_avg_bits_for_scheme": "compute the average and total bit usage for a quantization scheme across specified model layers",
+    "compute_layer_bits": "compute the total and average bitwidth for a single quantized layer including scale and zero-point overhead",
+    "parse_shared_layers": "parse and match shared layer groups in a model using regex patterns or substring matching"
+  },
+  "intel_auto-round/auto_round/compressors/base.py": {
+    "build_llm_quantization_pipeline": "build a python module that uses BaseCompressor to quantize an LLM with W4A16 scheme and save to GGUF format",
+    "create_compressor_instance": "create a BaseCompressor instance with a model name, tokenizer, and W4A16 quantization scheme for 4-bit weight quantization",
+    "quantize_and_save_model": "quantize a loaded LLM model using the quantize_and_save method and export it to the auto_round format",
+    "run_rtn_quantization": "run round-to-nearest quantization on a model by setting iters to zero and calling the quantize method",
+    "configure_layer_wise_quantization": "configure per-layer quantization settings using layer_config to apply different bit widths to specific model layers"
+  },
+  "intel_auto-round/auto_round/compressors/config.py": {
+    "create_extra_config": "create an ExtraConfig instance to configure model quantization with tuning, scheme, mllm, and diffusion settings",
+    "configure_tuning_extra_config": "configure a TuningExtraConfig dataclass to set learning rate, nblocks, and minmax tuning parameters",
+    "configure_scheme_extra_config": "configure a SchemeExtraConfig dataclass to set weight and activation quantization bits, group size, and symmetry",
+    "configure_mllm_extra_config": "configure an MLLMExtraConfig dataclass to set processor, image processor, and template for multimodal models",
+    "convert_config_to_dict": "convert an ExtraConfig or BaseExtraConfig subclass to a dictionary using the to_dict method"
+  },
+  "intel_auto-round/auto_round/compressors/shard_writer.py": {
+    "save_module_tensors": "save model module tensors to shard files with automatic memory management and size limits",
+    "finalize_shard_saving": "finalize shard saving by renaming temp files and writing the weight index JSON file",
+    "parse_size_string": "parse a human readable size string like 5GB into bytes for shard size configuration",
+    "offload_module_to_meta": "offload a saved module to the meta device to free up system RAM after saving",
+    "handle_tied_weights": "detect and deduplicate tied weights in the current shard by tracking storage pointers"
+  },
+  "intel_auto-round/auto_round/compressors/utils.py": {
+    "set_layer_config": "set layer-specific quantization configs for a PyTorch model with regex matching and GGUF format support",
+    "get_layer_config_by_gguf_format": "get the layer configuration by GGUF quantization format for a given model architecture",
+    "block_forward": "perform a forward pass through a model block with optional automatic mixed precision",
+    "is_wfp8afp8": "check if a quantization scheme uses FP8 weights and FP8 activations with standard floating point",
+    "IndexSampler": "create a cyclic sampler that returns shuffled index batches for model calibration data sampling"
+  },
+  "intel_auto-round/auto_round/compressors/diffusion/compressor.py": {
+    "build_diffusion_compressor": "build a DiffusionCompressor instance to quantize a diffusion model with W4A16 scheme on coco2014 dataset",
+    "run_calibration": "run the calib method to cache block inputs by executing the diffusion pipeline on calibration prompts",
+    "save_quantized_model": "save the quantized diffusion model and pipeline components to an output directory in auto_round format",
+    "run_pipeline_forward": "run the diffusion pipeline forward pass with custom prompts, guidance scale, and inference steps for calibration",
+    "get_block_outputs": "get the output tensors of a transformer block by forwarding sampled inputs through the block"
+  },
+  "intel_auto-round/auto_round/compressors/diffusion/dataset.py": {
+    "build_dataloader_coco2014": "build a pytorch dataloader for the coco2014 text to image caption dataset with a custom batch size",
+    "build_dataloader_local_tsv": "build a pytorch dataloader from a local tsv file containing image id and caption columns",
+    "create_dataset_class": "create a torch dataset subclass that loads captions from a tsv file and register it with the decorator",
+    "register_custom_dataset": "register a custom dataset class to the diffusion dataset registry using the register_dataset decorator",
+    "summarize_text2imgdataset": "summarize the Text2ImgDataset class that loads caption id and caption text pairs from a tsv file"
+  },
+  "intel_auto-round/auto_round/compressors/diffusion/eval.py": {
+    "run_diffusion_eval": "run diffusion_eval to generate images from prompts and compute CLIP, CLIP-IQA, or ImageReward metrics",
+    "compute_clip_score": "compute the CLIP score between text prompts and generated images using the CLIPScore model",
+    "compute_clip_iqa_score": "compute the CLIP-IQA image quality assessment score for generated images",
+    "compute_imagereward_score": "compute the ImageReward score between text prompts and generated images using ImageReward-v1.0",
+    "review_metric_map": "review the metric_map dictionary that maps clip, clip-iqa, and imagereward to their compute functions"
+  },
+  "intel_auto-round/auto_round/compressors/diffusion/hybrid.py": {
+    "build_hybrid_compressor": "build a HybridCompressor to quantize both AR and DiT components of a hybrid diffusion model",
+    "quantize_hybrid_model": "quantize a hybrid AR+Diffusion model using HybridCompressor with W4A16 scheme and custom calibration datasets",
+    "save_quantized_hybrid": "save a quantized hybrid model pipeline to an output directory with both AR and DiT components",
+    "quantize_and_save_hybrid": "quantize and save a hybrid diffusion model in one step using quantize_and_save with auto_round format",
+    "check_is_hybrid_diffusion_model": "check if a model path or pipeline object is a hybrid AR+Diffusion model using is_hybrid_diffusion_model"
+  },
+  "intel_auto-round/auto_round/compressors/mllm/compressor.py": {
+    "build_mllm_compressor": "build an MLLMCompressor instance to quantize a multi-modal large language model with W4A16 scheme",
+    "calibrate_mllm_model": "calibrate a multi-modal model for quantization by running calibration samples through the MLLMCompressor",
+    "save_quantized_mllm": "save a quantized multi-modal model to disk using the MLLMCompressor save_quantized method",
+    "test_only_text_model": "test if a multi-modal model can process text-only datasets using the _only_text_test function",
+    "check_quant_nontext": "check whether non-text modules should be quantized based on layer configuration using _check_quant_nontext"
+  },
+  "intel_auto-round/auto_round/compressors/mllm/dataset.py": {
+    "build_mllm_dataloader": "build a multimodal dataloader for calibration using a template, model, tokenizer, and dataset name",
+    "create_llava_dataset": "create an LlavaDataset instance with a template, model, tokenizer, and dataset path for supervised fine-tuning",
+    "register_custom_dataset": "register a custom dataset class to the MLLM_DATASET registry using the register_dataset decorator",
+    "convert_conversations": "convert LlavaDataset conversations by remapping roles and replacing tokens using covert_conversations method",
+    "clear_dataset_cache": "clear the runtime cache of an LlavaDataset instance using the clear_runtime_cache method"
+  },
+  "intel_auto-round/auto_round/compressors/mllm/eval.py": {
+    "run_mllm_eval": "run multimodal LLM evaluation on a model across datasets using VLMEvalKit with video and image benchmarks",
+    "run_lmms_eval": "run multimodal LLM benchmark evaluation on a model using lmms_eval and save results to JSON",
+    "review_mllm_eval": "review the mllm_eval function that handles model type detection, dataset inference, and evaluation result logging",
+    "review_lmms_eval": "review the lmms_eval function that maps model types and runs lmms_eval simple_evaluate with configurable batch size",
+    "refactor_MODEL_TYPE_TO_VLMEVAL_MODEL": "refactor the MODEL_TYPE_TO_VLMEVAL_MODEL mapping to add support for a new vision language model class"
+  },
+  "intel_auto-round/auto_round/compressors/mllm/processor.py": {
+    "register_processor": "register a new multimodal processor class under a name in the PROCESSORS registry",
+    "build_HFProcessor_get_input": "build a processor to tokenize multimodal messages with images for Qwen2-VL or mllama models",
+    "build_CogVLM2Processor_get_input": "build a processor to prepare conversation input IDs and padded tensors for CogVLM2 models",
+    "build_LlavaProcessor_get_input": "build a processor to preprocess multimodal text and image inputs for LLaVA model calibration",
+    "build_LongCatNextProcessor_get_input": "build a processor to handle text image and audio inputs for LongCat-Next multimodal models"
+  },
+  "intel_auto-round/auto_round/compressors/mllm/template.py": {
+    "get_template_by_name": "get a registered chat template by model type name like qwen2_vl or mllama",
+    "get_template_from_json": "get a chat template by loading a custom JSON template file path",
+    "load_template_from_file": "load and register a new chat template from a JSON configuration file",
+    "register_template": "register a new chat template with custom format strings and processor into the registry",
+    "encode_sources_with_template": "encode a list of role-content sources into a formatted string using a template"
+  },
+  "intel_auto-round/auto_round/compressors/mllm/utils.py": {
+    "fetch_image_from_path": "fetch an image from a local file path and return a PIL Image object",
+    "fetch_image_from_url": "fetch an image from an http or https url and return a PIL Image object",
+    "extract_data_dir_directory": "extract and return a directory path when the input is a valid directory",
+    "extract_data_dir_key_value": "parse a comma-separated key=value string into a dictionary for image, video, or audio keys",
+    "review_visual_keys": "review the VISUAL_KEYS list containing multimodal model component names like vision_tower and multimodal_projector"
+  },
+  "intel_auto-round/auto_round/compressors_new/architecture_visualization.py": {
+    "run_architecture_visualization": "run the main function to print all architecture visualization tables and examples",
+    "print_architecture_table": "print the mixin pattern combination table showing all model type and compressor combinations",
+    "print_mixin_explanation": "print an explanation of the mixin pattern core components and advantages",
+    "print_post_init_flow": "print the BaseCompressor post_init execution flow diagram with all four steps",
+    "print_usage_examples": "print usage examples for MLLM and Diffusion model compression with AutoRound",
+    "print_decision_tree": "print the AutoRound creation decision tree showing model type and config routing logic"
+  },
+  "intel_auto-round/auto_round/compressors_new/base.py": {
+    "create_BaseCompressor": "create a BaseCompressor instance with a QuantizationConfig, model, tokenizer, and W4A16 scheme",
+    "quantize_and_save_model": "quantize and save a PyTorch model to an output directory using the quantize_and_save method",
+    "save_quantized_model": "save an already quantized model to disk in GGUF or auto_round format using save_quantized",
+    "resolve_quantization_scheme": "resolve a quantization scheme string into concrete config attributes on the compressor via resolve_scheme",
+    "review_BaseCompressor_post_init": "review the BaseCompressor post_init pipeline that resolves scheme, formats, patches model, and sets up hardware"
+  },
+  "intel_auto-round/auto_round/compressors_new/calib.py": {
+    "quantize_model_with_calib_compressor": "create a CalibCompressor instance and call quantize to quantize a PyTorch model using calibration-based weight optimization",
+    "quantize_model_with_calibrated_rtn": "create a CalibratedRTNCompressor instance and call quantize to perform RTN quantization with optional importance matrix statistics",
+    "cache_intermediate_data_gpu_cpu": "call try_cache_inter_data_gpucpu to cache block inputs on GPU with automatic CPU fallback when memory is insufficient",
+    "quantize_single_decoder_block": "call quantize_block to quantize a single transformer decoder block with reference output collection and act-max hooks",
+    "run_calibration_for_quantization": "call calib to run calibration forward passes on a dataset to collect activation statistics for quantization"
+  },
+  "intel_auto-round/auto_round/compressors_new/config.py": {
+    "create_extra_config": "create an ExtraConfig instance to configure model quantization with tuning, scheme, and diffusion settings",
+    "configure_tuning_extra_config": "configure a TuningExtraConfig dataclass to set learning rate, AMP, and min-max tuning parameters",
+    "configure_scheme_extra_config": "configure a SchemeExtraConfig dataclass to set weight and activation quantization bits and group size",
+    "convert_config_to_dict": "convert an ExtraConfig object to a flat dictionary using the to_dict method",
+    "check_config_is_default": "check if a BaseExtraConfig subclass instance has all default values using the is_default method"
+  },
+  "intel_auto-round/auto_round/compressors_new/diffusion_mixin.py": {
+    "build_diffusion_compressor": "build a compressor with DiffusionMixin to quantize Stable Diffusion or FLUX models",
+    "calibrate_diffusion_model": "run calibration on a diffusion pipeline using text prompts and denoising steps",
+    "save_quantized_diffusion": "save a quantized diffusion pipeline with all components to an output directory",
+    "configure_diffusion_parameters": "configure guidance scale, inference steps, and generator seed for diffusion quantization",
+    "wrap_block_forward": "wrap a diffusion model block forward function to handle positional arguments as kwargs"
+  },
+  "intel_auto-round/auto_round/compressors_new/entry.py": {
+    "create_autoround_compressor": "create an AutoRound compressor instance with RTNConfig or SignRoundConfig to quantize a PyTorch model",
+    "create_autoround_compatible_wrapper": "create an AutoRoundCompatible wrapper for backward-compatible model quantization with the old API using bits and group_size",
+    "detect_model_type": "detect whether a model is an LLM, MLLM, or Diffusion model using the detect_model_type function",
+    "resolve_config_alias": "resolve a string config alias like sign_round or rtn to its corresponding config class using AutoRound._resolve_config",
+    "check_weight_scheme": "check if a quantization scheme is weight-only by calling is_weight_scheme with a scheme string or dict"
+  },
+  "intel_auto-round/auto_round/compressors_new/mllm_mixin.py": {
+    "init_mllm_mixin": "create an MLLMMixin compressor instance with processor and image_processor overrides for a vision-language model",
+    "calibrate_mllm_model": "run MLLM-specific calibration on a multi-modal model using a template and dataset for quantization",
+    "save_quantized_mllm": "save a quantized multi-modal LLM to an output directory with processor and image_processor artifacts",
+    "configure_quant_nontext_module": "build an MLLMMixin compressor that quantizes non-text vision modules by setting quant_nontext_module to true",
+    "review_mllm_calib_data_handling": "review the MLLMMixin calib method to understand how it processes string, dict, and tensor data formats"
+  },
+  "intel_auto-round/auto_round/compressors_new/shard_writer.py": {
+    "create_shard_writer": "create a ShardWriter singleton to save model parameters as sharded files with memory management",
+    "save_module_tensors": "save a PyTorch module's state dict tensors into the current shard accumulator",
+    "finalize_shard_saving": "finalize shard saving by renaming temp files and writing the weight index JSON",
+    "reset_shard_writer": "reset the ShardWriter singleton state so the next instantiation creates a fresh writer",
+    "write_module_or_finalize": "write a named module to shards or finalize saving with the write method"
+  },
+  "intel_auto-round/auto_round/compressors_new/utils.py": {
+    "set_layer_config": "set layer-specific quantization configs for a PyTorch model with regex expansion and GGUF support",
+    "get_layer_config_by_gguf_format": "get layer config mapped to a target GGUF quantization format for a given model",
+    "block_forward": "perform a forward pass through a model block with optional mixed precision and device placement",
+    "IndexSampler_next_batch": "create an IndexSampler and get the next batch of shuffled sample indices for calibration data",
+    "infer_bits_by_data_type": "infer the bit width from a quantization data type string like int4 or fp8"
+  },
+  "intel_auto-round/auto_round/compressors_new/zero_shot.py": {
+    "quantize_model_zero_shot": "quantize a PyTorch model using ZeroShotCompressor with round-to-nearest quantization and return the quantized model and layer config",
+    "quantize_single_block_rtn": "quantize a single model block via round-to-nearest using ZeroShotCompressor quantize_block method without calibration data",
+    "compress_llm_with_config": "compress an LLM model by passing an AlgConfig to ZeroShotCompressor and calling quantize for blockwise RTN quantization",
+    "quantize_with_low_gpu_mem": "quantize a model with low GPU memory usage enabled by setting low_gpu_mem_usage to True in ZeroShotCompressor",
+    "quantize_with_immediate_saving": "quantize a model and write shards immediately during blockwise quantization using ZeroShotCompressor with is_immediate_saving enabled"
+  },
+  "intel_auto-round/auto_round/context/base.py": {
+    "create_context": "create a singleton context instance by calling create_context on a BaseContext subclass",
+    "get_context": "get the existing singleton context instance by calling get_context on a BaseContext subclass",
+    "reset_context": "reset and remove the singleton context instance by calling reset_context on a BaseContext subclass",
+    "build_singleton_metaclass": "build a singleton metaclass that wraps __init__ to skip re-initialization using AutoSkipInitMeta",
+    "review_basecontext": "review the BaseContext class and its singleton lifecycle methods for context management"
+  },
+  "intel_auto-round/auto_round/context/compress.py": {
+    "create_compress_context_default": "create a CompressContext instance with default settings for model compression with low CPU memory usage",
+    "create_compress_context_low_gpu_mem": "create a CompressContext instance with low GPU memory usage enabled to manage GPU memory during compression",
+    "create_compress_context_custom_device": "create a CompressContext instance with a custom device map and output directory for compressed models",
+    "clear_memory_compress_context": "call clear_memory on a CompressContext instance to free GPU or CPU memory when low GPU memory mode is enabled",
+    "create_compress_context_immediate_packing": "create a CompressContext instance with immediate packing and saving enabled along with torch compile support"
+  },
+  "intel_auto-round/auto_round/context/model.py": {
+    "create_model_context": "create a ModelContext instance with a model and tokenizer for quantization on CPU",
+    "apply_patches_model": "apply format-specific patches to the model structure before quantization post init",
+    "replace_forward_hooks": "replace the forward function of all model modules with custom hook registration",
+    "recover_forward_hooks": "recover the original forward function and remove all registered hook handles",
+    "load_model_mllm_diffusion": "load an MLLM or diffusion model with processor and pipe artifacts via ModelContext"
+  },
+  "intel_auto-round/auto_round/data_type/fp8.py": {
+    "quant_block_fp_sym": "quantize a tensor using block float8 symmetric format with configurable group size and scale",
+    "quant_fp8_sym": "quantize a tensor using float8 e4m3fn symmetric format with dynamic per-token scaling",
+    "quant_fp8_e5m2": "quantize a tensor using float8 e5m2 symmetric format with dynamic per-token scaling",
+    "quant_fp8_unit_scale": "quantize a tensor using float8 e4m3fn format with a fixed unit scale of one",
+    "quant_fp8_sym_gaudi3": "quantize a tensor using float8 symmetric format optimized for Gaudi3 hardware"
+  },
+  "intel_auto-round/auto_round/data_type/gguf.py": {
+    "quant_tensor_sym_dq": "quantize and dequantize a tensor symmetrically with double quantization for GGUF export",
+    "quant_tensor_asym_float_zp": "quantize and dequantize a tensor asymmetrically with float zero-point for GGUF formats",
+    "quant_tensor_asym_dq": "quantize and dequantize a tensor asymmetrically with double quantized scale and zero-point",
+    "quant_tensor_gguf_asym_dq": "quantize a tensor using asymmetric GGUF quantization for Q2_K Q4_K or Q5_K formats",
+    "quant_tensor_gguf_sym_dq": "quantize a tensor using symmetric GGUF quantization for Q3_K or Q6_K formats"
+  },
+  "intel_auto-round/auto_round/data_type/int.py": {
+    "quant_tensor_sym": "quantize a PyTorch tensor using symmetric RTN quantization with configurable bits and group size",
+    "quant_tensor_asym": "quantize a PyTorch tensor using asymmetric RTN quantization with zero-point and configurable bits",
+    "quant_tensor_opt_rtn_sym": "quantize a tensor using optimized symmetric RTN with importance matrix weighted scale search",
+    "quant_tensor_sym_gptq": "quantize a tensor using GPTQ-style symmetric quantization with centered zero-point for full unsigned range",
+    "search_scales": "search for optimal quantization scales by iteratively minimizing MSE loss across a grid of candidates"
+  },
+  "intel_auto-round/auto_round/data_type/mxfp.py": {
+    "quantize_tensor_with_quant_mx": "quantize a PyTorch tensor using MXFP format with shared exponent and configurable group size",
+    "quantize_tensor_with_quant_mx_rceil": "quantize a PyTorch tensor using MXFP format with ceiling-based shared exponent calculation",
+    "quantize_elements_with_quant_element": "quantize individual tensor elements by specified exponent bits, mantissa bits, and max norm",
+    "review_quant_element_rounding": "review the quant_element function to understand even, nearest, floor, and stochastic mantissa rounding modes",
+    "test_quant_mx_formats": "test quant_mx against MXFP_FORMAT_CACHE entries like mx_fp4, mx_fp8, or mx_bf16 data types"
+  },
+  "intel_auto-round/auto_round/data_type/nvfp.py": {
+    "cast_to_fp4": "cast a PyTorch tensor to FP4 format using straight-through estimator rounding and clamping to [-6, 6]",
+    "calculate_gparam": "calculate the global scaling factor for NVFP quantization given a tensor and group size of 16",
+    "nv_fp4": "quantize a PyTorch tensor to NV FP4 format with configurable group size, global scale, and max scale",
+    "nv_fp4_with_static_gs": "quantize a PyTorch tensor to NV FP4 format using a static global scale derived from a provided tensor max value",
+    "fp4_v2_with_global_scale": "quantize a PyTorch tensor to FP4 v2 format using unsigned E5M3 scale encoding with a provided tensor max value"
+  },
+  "intel_auto-round/auto_round/data_type/register.py": {
+    "register_dtype_class": "use the register_dtype decorator to register a dtype class in the QUANT_FUNC_WITH_DTYPE registry",
+    "register_multiple_dtypes": "use register_dtype with a list of names to register a dtype under multiple keys",
+    "query_registered_dtypes": "inspect the QUANT_FUNC_WITH_DTYPE dictionary to find all registered dtype classes",
+    "review_register_dtype": "review the register_dtype decorator to understand how dtype classes are mapped to names",
+    "summarize_QUANT_FUNC_WITH_DTYPE": "summarize the QUANT_FUNC_WITH_DTYPE registry dictionary and its registered dtype entries"
+  },
+  "intel_auto-round/auto_round/data_type/utils.py": {
+    "reshape_pad_tensor_by_group_size": "reshape and pad a PyTorch tensor so its last dimension is divisible by a given group size for quantization",
+    "revert_tensor_by_pad": "revert a padded and reshaped tensor back to its original shape by removing the padding",
+    "get_quant_func": "retrieve the appropriate quantization function from the registry based on dtype, bit width, and symmetry flags",
+    "float8_e4m3fn_ste": "apply a straight-through estimator for float8 e4m3fn quantization to preserve gradient flow during training",
+    "update_fused_layer_global_scales": "update global scales for fused attention or MLP layers under NVFP4 quantization so q/k/v or gate/up share a scale"
+  },
+  "intel_auto-round/auto_round/data_type/w4fp8.py": {
+    "build_progressive_quant_fp8_int4": "build a python module that quantizes a torch tensor from bf16 to fp8 then to int4 with grouping",
+    "create_fp8_to_int4_quantization": "create a function that performs two-stage quantization converting a tensor to fp8 and then to int4",
+    "test_progressive_quant_fp8_int4": "test the progressive_quant_fp8_int4 function by quantizing a torch tensor with group size 128",
+    "refactor_quantization_scale_clipping": "refactor the progressive_quant_fp8_int4 function to support configurable minimum scaling factor for fp8 conversion",
+    "review_register_dtype_fp8_to_int_sym": "review the progressive_quant_fp8_int4 function registered as fp8_to_int_sym dtype for two-stage quantization"
+  },
+  "intel_auto-round/auto_round/eval/eval_cli.py": {
+    "run_eval_model": "run evaluation on a pre-trained model using the hf backend with default lm-eval tasks",
+    "run_eval_vllm": "run evaluation on a model using the vllm backend with custom tensor parallel size",
+    "run_eval_task_by_task": "run evaluation on tasks sequentially with automatic retry on out of memory errors",
+    "run_eval_diffusion": "run evaluation on a diffusion model with CLIP metrics and custom guidance scale",
+    "parse_vllm_args": "parse a comma separated string of vllm arguments into a typed dictionary of kwargs"
+  },
+  "intel_auto-round/auto_round/eval/evaluation.py": {
+    "run_model_evaluation": "run model evaluation for a quantized model using lm_eval with specified tasks and batch size",
+    "simple_evaluate_user_model": "evaluate a HuggingFace model instance with a tokenizer on specified lm_eval tasks",
+    "simple_evaluate": "run lm_eval simple_evaluate with a model type string and model arguments",
+    "evaluate_diffusion_model": "evaluate a diffusion model by generating images from prompts and computing metrics",
+    "prepare_model_for_eval": "prepare a quantized model for evaluation by dispatching blocks and setting dtype"
+  },
+  "intel_auto-round/auto_round/experimental/attention.py": {
+    "init_hooked_attention": "initialize a QuantizedAttentionImpl submodule on an attention module for FP8 query calibration",
+    "attention_quant_ctx": "use a context manager to prepare all attention modules for FP8 quantization calibration on a model",
+    "QuantizedAttentionImpl_forward": "run the quantized attention forward pass that tracks query max and scale before delegating to the original implementation",
+    "prep_attention_module_for_calibration": "prepare an attention module for calibration by registering hooked attention with the given config",
+    "clean_up_hooked_attention": "clean up hooked attention parameters and restore the original attention implementation after calibration"
+  },
+  "intel_auto-round/auto_round/experimental/kv_cache.py": {
+    "build_kvcache_quant_context": "use the kvcache_quant_context manager to run FP8 KV cache quantization on a PyTorch model",
+    "create_initialize_quantized_kv_cache": "initialize a quantized KV cache on an attention module with fp8_e4m3fn dtype",
+    "run_freeze_module_quantization": "freeze module quantization by deleting observers and removing the quantized KV cache",
+    "test_prep_attention_module_for_calibration": "register forward pre and output hooks on an attention module for KV cache calibration",
+    "review_QuantizedKVParameterCache": "review the singleton QuantizedKVParameterCache class that extends DynamicCache for FP8 quantized key value caching"
+  },
+  "intel_auto-round/auto_round/experimental/utils.py": {
+    "per_tensor_fp8_qdq": "quantize a PyTorch tensor to FP8 format and return the quantized tensor with its scale",
+    "update_parameter_data": "update or create a named parameter on a PyTorch module with new tensor data",
+    "normalize_static_kv_dtype": "convert a dtype string or torch dtype to a normalized torch dtype for static KV cache",
+    "is_attention_module": "check if a PyTorch module is an attention layer by inspecting its class name and attributes",
+    "clean_model_parameters_and_buffers": "remove specified parameters and buffers from all modules in a PyTorch model"
+  },
+  "intel_auto-round/auto_round/experimental/qmodules/base.py": {
+    "review_QModuleBase": "review the QModuleBase abstract class that defines the interface for quantization schemes in Auto-Round",
+    "review_from_original": "review the abstract from_original class method that creates a quantized module from an original layer and config",
+    "review_get_min_capability": "review the abstract get_min_capability class method that returns the minimum device capability for a quantization scheme",
+    "review_process_weights_after_loading": "review the abstract process_weights_after_loading method that performs cleanup after weight loading is complete",
+    "summarize_QModuleBase": "summarize the QModuleBase class and its abstract methods for implementing quantization schemes in Auto-Round"
+  },
+  "intel_auto-round/auto_round/experimental/qmodules/fp4_utils.py": {
+    "unpack_fp4_from_uint8": "unpack a uint8 tensor into FP4 E2M1 values and reshape to m by n dimensions",
+    "get_e2m1_tensor": "get a cached device-specific E2M1 lookup tensor for FP4 value mapping",
+    "review_unpack_fp4_from_uint8": "review the unpack_fp4_from_uint8 function to understand how uint8 nibbles map to FP4 E2M1 values",
+    "refactor_unpack_fp4_from_uint8_cuda": "refactor the CUDA unpack path to use torch compile for better performance",
+    "summarize_e2m1_values": "summarize the E2M1 FP4 constant values and their sign magnitude bit layout"
+  },
+  "intel_auto-round/auto_round/experimental/qmodules/fp8_static.py": {
+    "create_fp8_quant_linear_layer": "create a WeightFP8ActFP8StaticQuantLinear layer with specified input and output features for FP8 quantization",
+    "build_fp8_layer_from_original": "build a WeightFP8ActFP8StaticQuantLinear layer from an original torch.nn.Linear layer using from_original class method",
+    "quantize_tensor_to_fp8": "quantize a PyTorch tensor to float8_e4m3fn format using _quant_tensor_to_fp8_with_scale with a given scale",
+    "dequantize_fp8_weight_online": "dequantize the FP8 weight of a WeightFP8ActFP8StaticQuantLinear layer back to its original dtype using dequant_weight_online",
+    "run_fp8_quantized_forward_pass": "run a forward pass through a WeightFP8ActFP8StaticQuantLinear layer with bf16 input and get quantized output"
+  },
+  "intel_auto-round/auto_round/experimental/qmodules/mx.py": {
+    "create_MXFP4QuantLinear": "create an MXFP4QuantLinear layer from an original torch.nn.Linear layer using from_original class method",
+    "create_MXINT4QuantLinear": "create an MXINT4QuantLinear layer from an original torch.nn.Linear layer using from_original class method",
+    "create_MXFP8QuantLinear": "create an MXFP8QuantLinear layer with float8_e4m3fn weights by instantiating MXFP8QuantLinear with config and dtype",
+    "review_MXQuantLinearBase_dequant": "review the MXQuantLinearBase dequant_mx_tensor method to understand how packed weights are dequantized using group-wise scales",
+    "test_get_fp_scale": "test the get_fp_scale function to convert E8M0 exponent tensors to floating point scale values"
+  },
+  "intel_auto-round/auto_round/experimental/qmodules/mxint4_utils.py": {
+    "unpack_int4_from_uint8": "unpack a uint8 tensor into int4 values using E0M4 lookup and reshape to m by n",
+    "get_e0m4_tensor": "get or create a device-specific E0M4 lookup tensor for int4 quantization values",
+    "review_unpack_int4_from_uint8": "review the unpack_int4_from_uint8 function to understand nibble extraction and sign magnitude logic",
+    "summarize_e0m4_values": "summarize the E0M4 constant values used for mapping 3-bit magnitude indices to float values",
+    "test_unpack_int4_from_uint8_cpu": "test the CPU unpacking path for uint8 to int4 conversion with custom tensor shapes"
+  },
+  "intel_auto-round/auto_round/experimental/qmodules/nvfp4.py": {
+    "create_NVFP4QuantLinear": "create an NVFP4QuantLinear layer with given in_features, out_features, and QuantizationScheme config",
+    "from_original_NVFP4QuantLinear": "create an NVFP4QuantLinear layer from an existing torch.nn.Linear layer using from_original",
+    "dequant_weight_online_NVFP4QuantLinear": "dequantize the packed NVFP4 weight tensor back to full precision using dequant_weight_online",
+    "qdq_input_NVFP4QuantLinear": "quantize and dequantize an input activation tensor using the qdq_input method",
+    "forward_NVFP4QuantLinear": "run a forward pass through the NVFP4QuantLinear layer with quantized input and dequantized weight"
+  },
+  "intel_auto-round/auto_round/export/utils.py": {
+    "save_model": "save a quantized PyTorch model to a directory with sharding, safetensors, and quantization config support",
+    "get_autogptq_packing_qlinear": "get a QuantLinear class for AutoGPTQ export configured for a specific backend like triton or marlin",
+    "filter_quantization_config": "filter a quantization config dictionary by removing default values, None entries, and non-serializable keys",
+    "release_layer_safely": "safely release the weight and bias tensors of a neural network layer to free GPU memory",
+    "resolve_pipeline_export_layout": "resolve the output directory layout for exporting a pipeline model component with artifact copying"
+  },
+  "intel_auto-round/auto_round/export/export_to_autogptq/export.py": {
+    "export_model_to_autogptq": "export a quantized PyTorch model to AutoGPTQ format with GPTQ-compatible quantization config and save to output directory",
+    "convert_to_autogptq_dynamic": "convert an AutoRound regex config dict into AutoGPTQ dynamic config with positive and negative regex match entries",
+    "convert_from_autogptq_dynamic": "convert an AutoGPTQ dynamic config dict back into AutoRound extra config with bits and group size keys",
+    "pack_layer": "pack a single model layer into a QuantLinear module using the specified backend and device for GPTQ inference",
+    "review_pack_layer": "review the pack_layer function to understand how it handles Linear, Conv2d, and Conv1D layer types for quantization packing"
+  },
+  "intel_auto-round/auto_round/export/export_to_autogptq/qlinear_triton.py": {
+    "create_quantlinear_2bit": "create a QuantLinear module with 2-bit quantization for a given input and output feature size",
+    "create_quantlinear_4bit": "create a QuantLinear module with 4-bit quantization and custom group size for compressed inference",
+    "pack_quantlinear_weights": "pack a standard linear layer weight into the QuantLinear module using scales and zeros",
+    "warmup_quantlinear_model": "warm up a Triton-based quantized model before inference with a specified sequence length",
+    "review_quantlinear_pack": "review the QuantLinear pack method to understand how weights are quantized and bit-packed"
+  },
+  "intel_auto-round/auto_round/export/export_to_autoround/export.py": {
+    "save_quantized_model_as_autoround": "save a quantized PyTorch model in auto-round format to a specified output directory with tokenizer and processor",
+    "pack_model_layer_for_quantization": "pack a model layer for quantization by replacing it with a QuantLinear layer using the specified backend",
+    "import_quant_linear_for_backend": "dynamically import the correct QuantLinear class for a given backend like auto_round, gptq, or awq",
+    "pack_lowbit_activation_layer": "pack a model layer with 8-bit or lower activation quantization using Triton-based QuantLinear",
+    "review_quantization_export_functions": "review the export module functions for packing and saving quantized models in auto-round format"
+  },
+  "intel_auto-round/auto_round/export/export_to_autoround/export_to_fp8.py": {
+    "save_quantized_model_fp8": "save a quantized model in FP8 format to an output directory with tokenizer and processor",
+    "pack_layer_fp8": "pack a model layer for FP8 quantization by replacing it with a quantized FP8QLinear or FP8BlockQLinear module",
+    "create_fp8_qlinear": "create an FP8QLinear module with weight scale and optional zero point for per-channel FP8 quantization",
+    "create_fp8_block_qlinear": "create an FP8BlockQLinear module with inverse weight scale for per-block FP8 quantization",
+    "review_pack_layer": "review the pack_layer function to understand how it handles weight quantization with group size and zero point"
+  },
+  "intel_auto-round/auto_round/export/export_to_autoround/export_to_nvfp_mx.py": {
+    "pack_layer_quantize": "pack a model layer into a quantized QuantLinear module for mx/nvfp data types",
+    "save_quantized_model": "save a quantized model in auto-round format with mx/nvfp data types to a directory",
+    "pack_layer_replace_linear": "replace a standard nn.Linear layer with a packed QuantLinear layer in the model",
+    "save_quantized_with_tokenizer": "save a quantized model along with its tokenizer and processor to an output directory",
+    "pack_layer_moe_amax": "pack MOE model layers by computing input global scale from act_max values"
+  },
+  "intel_auto-round/auto_round/export/export_to_autoround/qlinear_fp.py": {
+    "create_quantlinear_layer": "create a QuantLinear MXFP quantized linear layer with 4 or 8 bit precision and group-wise scaling",
+    "pack_quantlinear_weights": "pack a linear layer's weights into QuantLinear using scales, zeros, and optional global scale parameters",
+    "pack_fp4_to_uint8": "pack a tensor with FP4 range values into a compact uint8 tensor by pairing 4-bit values",
+    "review_quantlinear_init": "review the QuantLinear __init__ method to understand bit width, group size, and data type validation logic",
+    "summarize_pack_fp4_to_uint8_cpu": "summarize the CPU FP4 to uint8 packing function that maps values to nearest E2M1 representation"
+  },
+  "intel_auto-round/auto_round/export/export_to_autoround/qlinear_int.py": {
+    "create_quantlinear_layer": "create a QuantLinear MXINT quantized linear layer with 4-bit weights and group size 32",
+    "pack_quantlinear_weights": "pack a PyTorch linear layer's weights into the QuantLinear module using scales and zeros",
+    "pack_int4_to_uint8": "pack a scaled int4 tensor into a compact uint8 tensor for CPU or CUDA devices",
+    "review_quantlinear_init": "review the QuantLinear __init__ method to understand supported bits, group size, and buffer registration",
+    "summarize_pack_int4_logic": "summarize the _pack_int4_to_uint8 function that maps float values to E0M4 indices and packs pairs into uint8"
+  },
+  "intel_auto-round/auto_round/export/export_to_autoround/qlinear_triton_act.py": {
+    "create_quantlinear_layer": "create a QuantLinear layer with 4-bit quantization and group size 128 for a neural network",
+    "pack_quantized_weights": "pack a standard linear layer weight into quantized format using QuantLinear pack method",
+    "build_quantized_model": "build a quantized model by replacing linear layers with QuantLinear modules supporting 2 4 or 8 bits",
+    "review_quantlinear_init": "review the QuantLinear constructor to verify bits group size and feature dimension validation logic",
+    "summarize_quantlinear_pack": "summarize the QuantLinear pack method that quantizes weights scales and zeros into packed int32 format"
+  },
+  "intel_auto-round/auto_round/export/export_to_autoround/utils.py": {
+    "check_neq_config_validate": "check a quantization config dict against expected values and return mismatched keys",
+    "check_neq_config_review": "review a config dict to find keys that differ from expected QuantizationScheme values",
+    "check_neq_config_test": "test the check_neq_config function with sample config and expected keyword arguments",
+    "check_neq_config_refactor": "refactor check_neq_config to also raise an error when config is missing required keys",
+    "check_neq_config_summarize": "summarize the check_neq_config function that compares config dicts against expected values"
+  },
+  "intel_auto-round/auto_round/export/export_to_awq/export.py": {
+    "export_model_to_awq_format": "save a quantized PyTorch model to AWQ format with tokenizer and processor in an output directory",
+    "pack_layer_to_wqlinear_gemm": "pack a single model layer into WQLinear_GEMM format using its quantization scale and zero point",
+    "collect_modules_to_not_convert": "collect all module names that should not be quantized based on layer config and regex rules",
+    "check_supported_layer_type": "check if a PyTorch module is a supported quantizable layer type for AWQ export",
+    "review_save_quantized_as_autoawq": "review the save_quantized_as_autoawq function to understand how it packs layers and saves the quantized model"
+  },
+  "intel_auto-round/auto_round/export/export_to_awq/utils.py": {
+    "dequantize_gemm": "dequantize packed AWQ GEMM weights by unpacking, reversing order, and applying scales",
+    "unpack_awq": "unpack packed AWQ qweight and qzeros tensors using bitwise right shift operations",
+    "reverse_awq_order": "reverse the AWQ column ordering of unpacked weight and zero tensors",
+    "WQLinear_GEMM_from_linear": "create a 4-bit AWQ quantized linear module from an existing PyTorch linear layer",
+    "WQLinearMMFunction_forward": "run a quantized linear matrix multiplication using packed AWQ weights and scales"
+  },
+  "intel_auto-round/auto_round/export/export_to_gguf/convert.py": {
+    "download_convert_hf_to_gguf": "download the convert_hf_to_gguf.py dependency file from the llama.cpp GitHub repository",
+    "wrap_model_instance_for_gguf": "wrap a model instance with layer config and tensor functions for GGUF export",
+    "prepare_tensors_for_gguf_writer": "prepare and quantize model tensors, then add them to the GGUF writer with proper data types",
+    "quant_data_with_auto_round_config": "quantize a torch tensor using scale, zero point, and imatrix from the AutoRound module config",
+    "map_layer_config_to_ggml_qtype": "map an AutoRound layer config entry to the corresponding GGML quantization type by bit width"
+  },
+  "intel_auto-round/auto_round/export/export_to_gguf/convert_hf_to_gguf.py": {
+    "convert_hf_model_to_gguf": "convert a HuggingFace transformers model directory to GGUF format for llama.cpp inference",
+    "convert_quantized_model_to_gguf": "dequantize and convert a GPTQ or FP8 quantized HuggingFace model to GGUF format",
+    "convert_multimodal_model_to_gguf": "convert a vision or audio multimodal model's projector weights to separate GGUF mmproj file",
+    "convert_moe_model_to_gguf": "convert a Mixture of Experts model like Mixtral or DeepSeekV2 to GGUF with merged expert tensors",
+    "register_custom_model_architecture": "register a new model architecture class with ModelBase.register decorator to support conversion of custom models"
+  },
+  "intel_auto-round/auto_round/export/export_to_gguf/export.py": {
+    "create_gguf_model_instance": "create a GGUF model instance from a HuggingFace model with specified quantization backend and output directory",
+    "pack_gguf_layer": "pack a quantized model layer into GGUF format by block name and clean up weights after packing",
+    "save_quantized_as_gguf": "save a quantized model as a GGUF file with optional multimodal projector support",
+    "review_FTYPE_MAP": "review the FTYPE_MAP dictionary that maps quantization type strings like q4_0 to GGUF LlamaFileType enums",
+    "summarize_export_gguf": "summarize the GGUF export workflow that creates model instances, packs layers, and writes the final GGUF file"
+  },
+  "intel_auto-round/auto_round/export/export_to_gguf/packing.py": {
+    "quantize_tensor_to_ggml_format": "quantize a pytorch tensor to a specified GGML quantization type like q4_0 or q8_0 using ggml_quant",
+    "register_custom_quantization_type": "register a new quantization block function under a name in the GGML_QUANT_TYPE registry using register_qtype",
+    "quantize_with_chunked_memory_optimization": "quantize large tensors in memory-efficient chunks using make_qx_quants_chunk with configurable bits and rmse type",
+    "quantize_k_series_blocks": "quantize model weight blocks to Q2_K through Q6_K formats using the registered q2_k through q6_k quant block functions",
+    "quantize_with_rmse_refinement": "quantize tensor data with iterative RMSE refinement using make_q3_quants or make_qx_quants for improved accuracy"
+  },
+  "intel_auto-round/auto_round/export/export_to_gguf/special_handle.py": {
+    "handle_special_model": "patch a GGUF exporter class with special tensor handling for GptOssForCausalLM architecture",
+    "get_tensor_from_file": "read a named tensor from a safetensors file or indexed model directory",
+    "gptoss_generate_extra_tensors": "generate extra tensors and repack MXFP4 blocks and scales for GPT-OSS model export",
+    "gptoss_modify_tensors": "modify and split gate_up_proj tensors into separate gate and up tensors during GGUF export",
+    "GPTOSS_RELOAD": "toggle the GPTOSS_RELOAD flag to control whether tensors are reloaded from the original model file"
+  },
+  "intel_auto-round/auto_round/export/export_to_llmcompressor/config.py": {
+    "check_compressed_tensors_installed": "check if the compressed-tensors package is installed and available for import",
+    "check_compressed_tensors_raise_error": "check if compressed-tensors is installed and raise an ImportError if it is missing",
+    "initialize_quantization_with_scheme": "initialize a quantization config using a preset scheme string like mxfp4 for Linear layers",
+    "initialize_quantization_with_config_groups": "initialize a quantization config using explicit config_groups with custom QuantizationScheme objects",
+    "initialize_quantization_with_kv_cache": "initialize a quantization config with a custom kv_cache_scheme and ignore list for lm_head"
+  },
+  "intel_auto-round/auto_round/export/export_to_llmcompressor/export.py": {
+    "save_quantized_model_llmcompressor": "save a quantized PyTorch model in the LLM-Compressor format to a specified output directory",
+    "construct_quantization_scheme": "construct a compressed_tensors QuantizationScheme from an auto_round layer with weight and activation args",
+    "pack_quantized_layer": "pack a single quantized layer by setting its quantization scheme, scale, and zero point attributes",
+    "get_weight_scheme_strategy": "get the quantization strategy string for weights based on a given group_size value",
+    "get_act_scheme_strategy": "get the quantization strategy string for activations based on a given group_size value"
+  },
+  "intel_auto-round/auto_round/export/export_to_llmcompressor/export_to_fp.py": {
+    "pack_layer": "pack a model layer into QuantLinear format for MXFP or NVFP quantized export",
+    "save_quantized_as_fp": "save a quantized model in llm-compressor format with MXFP or NVFP data types",
+    "get_scheme": "get the compressed-tensors format string for a given MXFP or NVFP data type and bit width",
+    "get_group_format": "get the group format string for MXFP, NVFP, or float quantized layers",
+    "build_mixed_fp_quantization_config": "build a mixed-precision quantization config dict with per-group format strings for compressed tensors"
+  },
+  "intel_auto-round/auto_round/export/export_to_llmcompressor/export_to_static_fp.py": {
+    "save_quantized_as_static_fp": "save a quantized FP8 model in llm-compressor format to an output directory with tokenizer and layer config",
+    "pack_layer": "pack a model layer for FP8 quantization by replacing it with a quantized version in place",
+    "construct_kv_scheme": "construct the default KV cache quantization scheme with 8-bit float tensor strategy for FP8_STATIC export",
+    "use_fp8_kv": "check if static KV cache should use FP8 dtype based on the provided dtype string",
+    "configure_gaudi2_fp8_dtype": "configure FP8 dtype flavor to float8_e4m3fnuz for Intel Gaudi2 hardware compatibility in quantization config"
+  },
+  "intel_auto-round/auto_round/export/export_to_llmcompressor/utils.py": {
+    "generate_ignore_regex_list": "generate a list of regex patterns to ignore layers with bits greater than 8 during quantization",
+    "build_quantization_ignore_config": "build a quantization config that ignores high-bit layers using the generate_ignore_regex_list function",
+    "review_generate_ignore_regex_list": "review the generate_ignore_regex_list function to understand how it filters regex and layer configs",
+    "test_generate_ignore_regex_list": "test the generate_ignore_regex_list function with sample regex_config and layer_config dictionaries",
+    "refactor_generate_ignore_regex_list": "refactor the generate_ignore_regex_list function to support additional bit-width thresholds for ignoring layers"
+  },
+  "intel_auto-round/auto_round/export/export_to_mlx/export.py": {
+    "save_quantized_model_as_mlx": "save a quantized PyTorch model to MLX-compatible format for mlx-lm inference on Apple Silicon",
+    "pack_layer_for_mlx": "pack a single quantized layer into MLX uint32 packed format with scales and biases",
+    "build_mlx_quantization_config": "build the quantization dictionary for an MLX config.json with mixed-bit per-layer overrides",
+    "pack_weight_mlx": "pack integer weights into uint32 tensors using MLX contiguous bit stream packing format",
+    "create_mlx_packed_layer": "create an MLXPackedLayer module holding uint32 packed weights, float16 scales, and biases"
+  },
+  "intel_auto-round/auto_round/inference/backend.py": {
+    "check_compatible": "check if a quantization configuration is compatible with a specified backend for a given device and packing format",
+    "get_layer_backend": "select the most suitable backend for a model layer based on compatibility and priority ranking",
+    "dynamic_import_inference_linear": "dynamically import the correct QuantLinear class for a given backend and quantization configuration",
+    "get_highest_priority_backend": "find the highest priority backend that supports a given quantization config and device",
+    "process_requirement": "check and log missing library requirements for a backend and display pip install commands"
+  },
+  "intel_auto-round/auto_round/inference/convert_model.py": {
+    "convert_hf_model": "convert a HuggingFace model into an AutoRound quantized model by replacing linear layers with quantized layers",
+    "get_layer_config": "get a layer-wise quantization configuration dictionary for a given model and quantization config",
+    "post_init": "perform post-initialization for quantization backends including AutoGPTQ, GPTQModel, and IPEX layers",
+    "get_available_devices": "get a list of available compute devices like cuda, hpu, xpu, mps, and cpu",
+    "infer_target_device": "infer the target device from a device_map argument that can be a dict, int, or string"
+  },
+  "intel_auto-round/auto_round/modeling/finegrained_fp8_patch.py": {
+    "replace_model_linears_with_fp8": "replace all torch.nn.Linear modules in a PyTorch model with FP8Linear modules for fp8 quantization",
+    "create_fp8_linear_layer": "create an FP8Linear layer with configurable block size and dynamic or static activation scheme",
+    "quantize_weights_to_fp8": "quantize fp32 weight tensors to fp8 format with per-tile inverse scales using Fp8Quantize",
+    "dequantize_fp8_weights_to_fp32": "dequantize fp8 weight tensors back to fp32 using inverse scales with Fp8Dequantize",
+    "review_fp8_quantization_config": "review the FP8Linear class to understand block size and activation scheme parameters for quantization"
+  },
+  "intel_auto-round/auto_round/modeling/finegrained_fp8_patch_v4.py": {
+    "create_fp8_linear_layer": "create an FP8Linear layer with specified in_features, out_features, block_size, and activation_scheme",
+    "replace_model_with_fp8_linear": "replace all linear layers in a PyTorch model with FP8Linear layers using a quantization config",
+    "review_FP8Linear_class": "review the FP8Linear class to understand its FP8 weight storage and per-block inverse scale parameters",
+    "refactor_replace_with_fp8_linear": "refactor replace_with_fp8_linear to customize which modules to skip during FP8 conversion",
+    "summarize_replace_with_fp8_linear": "summarize the replace_with_fp8_linear function that recursively swaps nn.Linear layers for FP8Linear"
+  },
+  "intel_auto-round/auto_round/modeling/fp8_quant.py": {
+    "replace_linear_with_fp8": "replace all torch.nn.Linear modules in a model with FP8Linear modules while skipping expert modules",
+    "patch_fp8_expert_replacement": "apply a patch to transformers to disable expert replacement during FP8 quantization",
+    "bypass_cuda_device_check": "patch FineGrainedFP8HfQuantizer to bypass CUDA device capability validation for FP8 model loading",
+    "review_fp8_quant_patch": "review the FP8 quantization patching logic that overrides transformers replace_with_fp8_linear behavior",
+    "summarize_oot_replace_with_fp8_linear": "summarize the oot_replace_with_fp8_linear function that converts Linear layers to FP8Linear with bias handling"
+  },
+  "intel_auto-round/auto_round/modeling/hpu_patch.py": {
+    "patch_finegrained_fp8": "patch transformers.integrations.finegrained_fp8 with HPU-compatible overrides for Intel Habana processors",
+    "review_patch_finegrained_fp8": "review the patch_finegrained_fp8 function to verify HPU availability checks and version detection logic",
+    "test_patch_finegrained_fp8": "test the patch_finegrained_fp8 function to confirm it patches transformers symbols correctly on HPU devices",
+    "refactor_patch_finegrained_fp8": "refactor patch_finegrained_fp8 to support additional transformers versions beyond 4.x and 5.x",
+    "summarize_patch_finegrained_fp8": "summarize the patch_finegrained_fp8 function that replaces finegrained_fp8 symbols with HPU-compatible versions"
+  },
+  "intel_auto-round/auto_round/modeling/fused_moe/deepseek_v2.py": {
+    "apply_rotary_emb": "apply rotary positional embeddings to query and key tensors for DeepSeek V2 attention",
+    "rotary_emb_forward": "compute cosine and sine position embeddings for a DeepSeek V2 rotary embedding module",
+    "attn_forward": "run the attention forward pass for a DeepSeek V2 layer with multi query attention",
+    "DeepseekV2RotaryEmbedding_from_original": "create a DeepSeek V2 rotary embedding replacement module from an original transformer module",
+    "DeepseekV2Attention_from_original": "create a DeepSeek V2 attention replacement module from an original transformer attention layer"
+  },
+  "intel_auto-round/auto_round/modeling/fused_moe/gpt_oss.py": {
+    "create_GPTOssSingleExpert": "create a GPTOssSingleExpert module with custom hidden and intermediate sizes for GPT-OSS expert inference",
+    "build_SequentialGPTOSSMoE": "build a SequentialGPTOSSMoE module from an original GptOssMLP and GptOssConfig to replace fused MoE with per-expert modules",
+    "run_materialize_weights": "run _materialize_weights on a SequentialGPTOSSMoE instance to copy weights from fused tensors into per-expert MLPs",
+    "review_SequentialGPTOSSMoE_forward": "review the SequentialGPTOSSMoE forward method that routes tokens through selected experts using router scores and indices",
+    "test_from_original": "test the from_original classmethod to create a SequentialGPTOSSMoE from an existing GptOssMLP module and config"
+  },
+  "intel_auto-round/auto_round/modeling/fused_moe/llama4.py": {
+    "build_sequential_llama4_text_moe": "build a SequentialLlama4TextMoe module from an original Llama4TextMoe and Llama4Config for sequential expert processing",
+    "create_sequential_llama4_text_experts": "create a SequentialLlama4TextExperts ModuleList that splits fused gate-up projections into separate Llama4TextMLP experts",
+    "run_moe_forward_pass": "run the forward pass of SequentialLlama4TextMoe with hidden states to get expert-weighted output and router logits",
+    "materialize_moe_weights": "materialize the fused expert weights into individual expert gate, up, and down projection parameters",
+    "review_moe_router_scoring": "review the MoE router scoring logic that handles both tuple and raw router logits from different transformers versions"
+  },
+  "intel_auto-round/auto_round/modeling/fused_moe/moe_experts_interface.py": {
+    "prepare_model_for_moe_quantization": "prepare a HuggingFace model for MOE quantization by unfusing fused expert weights into per-expert Linear layers",
+    "register_linear_loop_experts": "register the linear_loop experts implementation with transformers for use with quantized MOE models",
+    "linear_loop_experts_forward": "run a forward pass through MOE experts using individual Linear layers per expert instead of fused 3D parameters",
+    "is_linear_loop_available": "check if the linear_loop experts implementation is available in the current transformers version",
+    "unfuse_experts_weights_inplace": "unfuse fused 3D expert weight parameters into per-expert nn.Linear containers in place"
+  },
+  "intel_auto-round/auto_round/modeling/fused_moe/qwen3_5_moe.py": {
+    "create_sparse_moe_block": "create a LinearQwen3_5MoeSparseMoeBlock from an original Qwen3_5MoeSparseMoeBlock and model config",
+    "run_experts_forward": "run the experts_forward method to compute expert outputs for hidden states with routing weights",
+    "materialize_weights": "materialize expert weights by splitting fused gate_up projections into separate gate and up projections",
+    "build_sequential_experts": "build a SequentialQwen3_5MoeExperts ModuleList with Qwen3_5MoeMLP experts on the meta device",
+    "replace_moe_block": "replace a Qwen3_5MoeSparseMoeBlock using from_original to create a fused MoE replacement module"
+  },
+  "intel_auto-round/auto_round/modeling/fused_moe/qwen3_omni.py": {
+    "create_thinker_moe_replacement": "create a LinearQwen3OmniThinkerSparseMoeBlock replacement that unfuses fused expert weights for per-expert quantization",
+    "create_talker_moe_replacement": "create a LinearQwen3OmniTalkerSparseMoeBlock replacement that unfuses fused expert weights with shared expert support",
+    "materialize_thinker_expert_weights": "materialize fused 3D expert weights into individual nn.Linear layers for the thinker MoE block",
+    "materialize_talker_expert_weights": "materialize fused 3D expert weights into individual nn.Linear layers for the talker MoE block",
+    "run_experts_forward_pass": "run the experts_forward method to route tokens through selected MoE experts using top-k routing weights"
+  },
+  "intel_auto-round/auto_round/modeling/fused_moe/qwen3_vl_moe.py": {
+    "create_moe_block": "create a LinearQwen3VLMoeTextSparseMoeBlock from an original Qwen3VLMoeTextSparseMoeBlock and config for calibration",
+    "run_moe_forward": "run the forward pass of LinearQwen3VLMoeTextSparseMoeBlock to route tokens through top-k experts",
+    "materialize_moe_weights": "materialize the expert weights from meta device into individual gate, up, and down projections",
+    "build_sequential_experts": "build a SequentialQwen3VLMoeTextExperts ModuleList with individual Qwen3VLMoeTextMLP experts on the meta device",
+    "replace_moe_module": "replace a Qwen3VLMoeTextSparseMoeBlock with LinearQwen3VLMoeTextSparseMoeBlock using the from_original class method"
+  },
+  "intel_auto-round/auto_round/modeling/fused_moe/replace_modules.py": {
+    "apply_replacements": "apply module replacements to a transformers model for MoE quantization calibration",
+    "materialize_model_": "materialize all replacement module weights from meta device to real tensors",
+    "is_custom_model": "check if a model has a registered custom MoE replacement module",
+    "ReplacementModuleBase": "create a custom replacement module subclass to swap original modules during calibration",
+    "ModuleReplacementTracker": "track and release original modules after they are replaced by replacement modules"
+  },
+  "intel_auto-round/auto_round/modeling/fused_moe/step3_5_moe.py": {
+    "create_Step3p5ExpertMLP": "create a single expert MLP module with gate_proj, up_proj, and down_proj layers for MoE models",
+    "build_SequentialStep3p5MoeExperts": "build a ModuleList that converts fused MoELinear weights into individual Step3p5ExpertMLP modules per expert",
+    "build_LinearStep3p5MoEMLP": "build a replacement module that splits fused MoELinear into individual nn.Linear per expert for quantization",
+    "run_LinearStep3p5MoEMLP_forward": "run the forward pass of LinearStep3p5MoEMLP to route hidden states through selected experts with routing weights",
+    "test_LinearStep3p5MoEMLP_router_bias_func": "test the router bias function that applies sigmoid gating with bias and top-k expert selection"
+  },
+  "intel_auto-round/auto_round/modeling/unfused_moe/deepseek_v3.py": {
+    "build_moe_module": "build a LinearDeepseekV3MoE mixed expert module with shared experts from a DeepSeek V3 config",
+    "create_experts_forward": "create a forward pass through selected experts using top-k indices and weights for hidden states",
+    "route_tokens_to_experts": "route tokens to experts by computing group scores and selecting top-k experts with normalized weights",
+    "review_forward_method": "review the LinearDeepseekV3MoE forward method that routes tokens through experts and adds shared expert output",
+    "refactor_expert_routing": "refactor the route_tokens_to_experts method to support custom group scoring or expert selection strategies"
+  },
+  "intel_auto-round/auto_round/modeling/unfused_moe/ernie4_5_moe.py": {
+    "build_moe_block": "build a LinearErnie4_5_MoeSparseMoeBlock instance from an ERNIE 4.5 MoE config with experts and shared experts",
+    "run_experts_forward": "run the experts_forward method to route tokens through selected MoE experts and aggregate weighted outputs",
+    "run_forward_pass": "run the forward pass of the MoE block on hidden states with gating and expert routing",
+    "review_moe_initialization": "review the LinearErnie4_5_MoeSparseMoeBlock initialization to understand expert count, top-k, and shared expert setup",
+    "refactor_experts_forward": "refactor the experts_forward method to optimize token routing and expert aggregation for the MoE block"
+  },
+  "intel_auto-round/auto_round/modeling/unfused_moe/glm_moe.py": {
+    "build_moe_module": "build a LinearGlm4MoeMoE module with a config to create a mixed expert layer with shared experts",
+    "create_experts_forward": "create a forward pass through selected experts using hidden states, top-k indices, and top-k weights",
+    "route_tokens_to_experts": "route tokens to experts by computing group scores and selecting top-k experts from router logits",
+    "review_forward_method": "review the LinearGlm4MoeMoE forward method that combines routed expert output with shared expert residuals",
+    "refactor_expert_routing": "refactor the route_tokens_to_experts method to support a different expert grouping or normalization strategy"
+  },
+  "intel_auto-round/auto_round/modeling/unfused_moe/glm_moe_dsa.py": {
+    "build_moe_module": "build a LinearGlmMoeDsaMoE mixed expert module from a config with routed and shared experts",
+    "run_forward_pass": "run the forward pass of LinearGlmMoeDsaMoE on hidden states to get expert-weighted output",
+    "route_tokens_to_experts": "route tokens to top-k experts using group-wise topk routing with sigmoid router logits",
+    "review_experts_forward": "review the experts_forward method that dispatches tokens to selected experts and aggregates weighted outputs",
+    "summarize_moe_architecture": "summarize the LinearGlmMoeDsaMoE architecture with its gate router, expert list, and shared expert MLP"
+  },
+  "intel_auto-round/auto_round/modeling/unfused_moe/glm_moe_light.py": {
+    "build_moe_module": "build a LinearGlm4MoeLiteMoE mixed expert module with shared experts from a GLM4 config",
+    "run_experts_forward": "run the experts_forward method to process hidden states through selected experts with top-k weights",
+    "route_tokens_to_experts": "route tokens to experts using group-based top-k routing with sigmoid router logits and e-score correction",
+    "run_moe_forward": "run the forward pass through the MoE module combining routed expert output with shared expert residuals",
+    "review_moe_routing": "review the route_tokens_to_experts method for group-aware expert selection and normalized top-k weight computation"
+  },
+  "intel_auto-round/auto_round/modeling/unfused_moe/qwen3_moe.py": {
+    "create_moe_sparse_block": "create a LinearQwen3MoeSparseMoeBlock instance with a config specifying num_experts and hidden_size",
+    "run_moe_forward_pass": "run the forward pass of LinearQwen3MoeSparseMoeBlock with hidden_states tensor input",
+    "build_moe_expert_routing": "build a MoE routing mechanism using top-k softmax gating with normalized probabilities",
+    "review_moe_expert_selection": "review the LinearQwen3MoeSparseMoeBlock expert selection logic using one-hot encoding and expert masking",
+    "refactor_moe_gate_layer": "refactor the LinearQwen3MoeSparseMoeBlock gate layer to use a different routing strategy"
+  },
+  "intel_auto-round/auto_round/modeling/unfused_moe/qwen3_next.py": {
+    "build_moe_block": "build a LinearQwen3NextSparseMoeBlock from a config with num_experts, top_k, and hidden_size",
+    "run_forward_moe": "run the forward pass of LinearQwen3NextSparseMoeBlock on hidden states tensor",
+    "review_moe_gating": "review the gating mechanism in LinearQwen3NextSparseMoeBlock that routes tokens to top-k experts",
+    "refactor_moe_experts": "refactor the expert loop in LinearQwen3NextSparseMoeBlock to use vectorized operations instead of iteration",
+    "summarize_shared_expert": "summarize how the shared expert with sigmoid gate merges into final hidden states"
+  },
+  "intel_auto-round/auto_round/utils/common.py": {
+    "monkey_patch_transformers": "apply monkey patches to the transformers library for compatibility with auto_round quantization",
+    "parse_layer_config_arg": "parse a CLI layer configuration string into a normalized Python dictionary",
+    "compress_layer_names": "compress numbered layer names into a compact range notation like layer.[0-2]",
+    "infer_bits_by_data_type": "infer the quantization bit width from a data type string like int4 or fp8",
+    "to_standard_regex": "convert a user-specified layer name pattern into a standardized regex for matching"
+  },
+  "intel_auto-round/auto_round/utils/device.py": {
+    "detect_device": "detect the best available computation device by checking CUDA, XPU, HPU, or CPU availability",
+    "dispatch_model_by_all_available_devices": "dispatch a PyTorch model across all available GPU devices using balanced memory allocation",
+    "clear_memory": "clear GPU and CPU memory by emptying caches and collecting garbage on specified devices",
+    "parse_available_devices": "parse a device map string or dict and return a normalized list of available device names",
+    "memory_monitor_update": "update the global memory monitor singleton to track peak RAM and VRAM usage across devices"
+  },
+  "intel_auto-round/auto_round/utils/distributed.py": {
+    "check_distributed_training": "check if the current process is running in a distributed training environment with multiple GPUs",
+    "setup_ddp_for_block": "wrap a PyTorch model block with DistributedDataParallel when distributed training is enabled",
+    "review_is_distributed": "review the is_distributed function that checks torch distributed initialization and world size",
+    "review_setup_ddp_if_needed": "review the setup_ddp_if_needed_ function that wraps model blocks with DDP for quantization",
+    "refactor_ddp_wrapping": "refactor the setup_ddp_if_needed_ function to customize DDP wrapping parameters for model blocks"
+  },
+  "intel_auto-round/auto_round/utils/missing_tensors.py": {
+    "copy_missing_tensors_from_source": "copy missing tensors like MTP layers from the original checkpoint into the quantized output directory",
+    "split_fused_expert_tensors": "split 3D fused MoE expert tensors into per-expert 2D tensors for gate_proj and up_proj",
+    "quantize_weight_rtn": "quantize a 2D weight tensor using round-to-nearest and pack into auto_gptq qweight qzeros scales format",
+    "woq_quantize_missing_tensors": "apply weight-only quantization with RTN to missing Linear weight tensors using auto-round config",
+    "get_woq_config_from_dir": "read the quantization config from config.json to get bits group_size and sym for auto-round packing"
+  },
+  "intel_auto-round/auto_round/utils/model.py": {
+    "load_llm_model": "load a pretrained LLM model and tokenizer from huggingface or modelscope using llm_load_model",
+    "load_mllm_model": "load a multimodal LLM model with processor and image processor using mllm_load_model",
+    "load_diffusion_model": "load a diffusion pipeline model from huggingface using diffusion_load_model",
+    "get_block_names": "get the block layer names for a transformer or vision language model using get_block_names",
+    "set_amax_for_moe": "set activation max values for uncalibrated MoE expert layers using set_amax_for_all_moe_layers"
+  },
+  "intel_auto-round/auto_round/utils/offload.py": {
+    "create_offload_manager_offload_mode": "create an OffloadManager in offload mode to save and clear model layer weights to disk",
+    "create_offload_manager_clean_mode": "create an OffloadManager in clean mode to clear weights and reload from original checkpoint files",
+    "offload_model_layers": "offload multiple model layers to free CPU RAM and optionally trigger garbage collection",
+    "reload_offloaded_modules": "reload previously offloaded model modules from disk or original checkpoint files",
+    "add_offload_hooks": "add pre-forward hooks to transparently reload model modules on demand during inference"
+  },
+  "intel_auto-round/auto_round/utils/weight_handler.py": {
+    "detect_weight_type": "detect the quantized weight type of a PyTorch module or model by scanning for quantized_weight_type attributes",
+    "check_and_mark_quantized_module": "check a model for quantized layers and mark each detected layer with its quantized_weight_type",
+    "convert_module_to_hp_if_necessary": "convert quantized FP8 MXFP4 MXFP8 NVFP4 or WOQ layers in a model to high-precision Linear layers",
+    "register_weight_type_handler": "register a new weight type handler class for a custom ModuleWeightType using the decorator pattern",
+    "is_quantized_input_module": "check if a model contains quantized input weights and return the detected ModuleWeightType"
+  },
+  "intel_auto-round/auto_round_extension/ark/install_kernel.py": {
+    "run_install_kernel": "run the install_kernel script to auto install the correct auto round kernel library for your torch version",
+    "get_torch_minor": "get the torch major minor version string from the installed torch package",
+    "get_auto_round_minor": "get the auto round major minor version string from the installed auto round package",
+    "review_KERNEL_MAP": "review the KERNEL_MAP that maps torch minor versions to auto round lib package version constraints",
+    "refactor_main": "refactor the main function to support additional torch versions or custom kernel package installation logic"
+  },
+  "intel_auto-round/auto_round_extension/ark/qlinear.py": {
+    "create_quantlinear_layer": "create a QuantLinear layer with 4-bit symmetric quantization and group size 128",
+    "create_quantlinear_gptq_layer": "create a QuantLinearGPTQ layer for GPTQ-style 4-bit quantized linear transformation",
+    "create_quantlinear_awq_layer": "create a QuantLinearAWQ layer for AWQ-style 4-bit quantized linear transformation",
+    "unpack_quantized_weights": "unpack packed quantized weights and zeros to 8-bit signed tensors using unpack_to_8bit_signed",
+    "dequantize_weight": "dequantize packed weights back to full precision using dequantize_weight with scales and bits",
+    "post_init_model": "run ark_post_init on a model to repack all QuantLinear modules for inference",
+    "review_quantlinear_post_init": "review the QuantLinear post_init method that repacks weights via the ARK kernel",
+    "test_quantlinear_forward": "test the QuantLinear forward pass with a bfloat16 input tensor on CPU"
+  },
+  "intel_auto-round/auto_round_extension/cuda/gptqmodel_marlin.py": {
+    "get_marlin_layer": "get the MarlinQuantLinear class from gptqmodel for CUDA quantized linear layer inference",
+    "create_marlin_quant_linear": "create a MarlinQuantLinear layer with 4-bit quantization, group size 128, and specified input and output features",
+    "apply_gptq_marlin_linear": "apply the GPTQ Marlin GEMM kernel to perform quantized matrix multiplication on CUDA tensors",
+    "repack_marlin_weights": "repack quantized weights from autogptq format to marlin format using gptq_marlin_repack kernel",
+    "dequantize_qzeros": "dequantize the packed qzeros tensor of a MarlinQuantLinear layer and repeat by group size"
+  },
+  "intel_auto-round/auto_round_extension/hpu/qlinear_hpu.py": {
+    "create_quantlinear_hpu_module": "create a QuantLinear HPU module with 4-bit quantization for Intel Habana processor inference",
+    "build_pack_tensor": "build a function that packs a tensor into compressed 4-bit format using bitwise operations",
+    "test_quantlinear_forward": "test the QuantLinear forward pass that converts uint4 weights and performs matrix multiplication on HPU",
+    "refactor_quantlinear_preprocessing": "refactor the QuantLinear preprocessing method to unpack CUDA format weights and repack for HPU",
+    "review_quantlinear_unpack_methods": "review the QuantLinear unpack_zeros and unpack_weight methods that decompress 4-bit quantized tensors"
+  },
+  "intel_auto-round/auto_round_extension/hpu/qlinear_hpu_gptq.py": {
+    "create_quantlinear_hpu": "create a QuantLinear HPU module with 4-bit quantization for Intel Habana processors",
+    "pack_tensor_4bit": "pack a tensor into 4-bit quantized format using bitwise operations for storage efficiency",
+    "forward_quantlinear_inference": "run forward inference through a QuantLinear HPU layer with uint4 weight conversion",
+    "unpack_zeros_cuda_format": "unpack quantized zeros from CUDA old format using bitwise right shift and masking",
+    "set_packed_quantlinear": "set packed quantized weights and zeros from another QuantLinear class instance"
+  },
+  "intel_auto-round/auto_round_extension/ipex/qlinear_ipex_awq.py": {
+    "create_quantlinear_4bit": "create a QuantLinear module with 4-bit quantization for Intel XPU or CPU inference",
+    "build_quantlinear_from_linear": "build a QuantLinear module from an existing nn.Linear layer using the from_linear class method",
+    "run_quantlinear_forward": "run the forward pass of a QuantLinear module on input tensor x using IPEX quantized kernels",
+    "review_quantlinear_post_init": "review the post_init method that initializes the IPEX weight-only quantized linear layer from quantized weights",
+    "summarize_quantlinear_buffers": "summarize the QuantLinear registered buffers including qweight, qzeros, scales, and bias tensors"
+  },
+  "intel_auto-round/auto_round_extension/ipex/qlinear_ipex_gptq.py": {
+    "create_quantlinear_layer": "create a QuantLinear module with 4-bit GPTQ quantization for Intel IPEX inference",
+    "pack_quantlinear_weights": "pack a linear layer weight into the QuantLinear 4-bit GPTQ quantized format",
+    "post_init_quantlinear": "initialize the IPEX weight-only quantized linear backend after packing QuantLinear weights",
+    "unpack_quantized_weights": "unpack quantized weight and zero tensors to 8-bit signed format using unpack_to_8bit_signed",
+    "dequantize_weight": "dequantize packed GPTQ weights back to full precision using dequantize_weight"
+  },
+  "intel_auto-round/auto_round_extension/mlx/qlinear_mlx.py": {
+    "build_quantized_linear_layer_mlx": "build a QuantLinearMLX module with 4-bit quantization and group size 128 for Apple Silicon inference",
+    "convert_gptq_to_mlx_format": "convert a GPTQ quantized linear module to MLX format using QuantLinearMLX.from_gptq for hardware accelerated inference",
+    "run_quantized_forward_pass": "run a forward pass through a QuantLinearMLX layer that uses MLX quantized_matmul or falls back to PyTorch",
+    "unpack_packed_weight_tensor": "unpack a uint32 packed weight tensor from a QuantLinearMLX layer back to integer values using _unpack_weight_torch",
+    "convert_torch_tensor_to_mlx": "convert a PyTorch tensor to an MLX array using _torch_to_mlx with DLPack zero-copy transfer"
+  },
+  "intel_auto-round/auto_round_extension/torch/qlinear_torch.py": {
+    "create_quantlinear_layer": "create a QuantLinear layer with 4-bit quantization for a given input and output feature size",
+    "pack_weights_248_bits": "pack linear layer weights into 2, 4, or 8-bit quantized format using pack_248_bits method",
+    "pack_weights_3bits": "pack linear layer weights into 3-bit quantized format using pack_3bits method",
+    "run_quantized_forward": "run a forward pass through a QuantLinear layer to compute quantized output from input tensor",
+    "get_wf_3bits_tensor": "get or create a device-specific 3-bit weight format tensor for quantized unpacking operations"
+  },
+  "intel_auto-round/auto_round_extension/torch/qlinear_torch_zp.py": {
+    "create_quantlinear_2bit": "create a QuantLinear module with 2-bit quantization for a given infeatures and outfeatures size",
+    "create_quantlinear_4bit": "create a QuantLinear module with 4-bit quantization and custom group size for model compression",
+    "pack_weights_248_bits": "pack linear layer weights into 2, 4, or 8-bit quantized format using pack_248_bits method",
+    "pack_weights_3bits": "pack linear layer weights into 3-bit quantized format using pack_3bits method with scales and zeros",
+    "run_quantlinear_forward": "run forward pass through a QuantLinear module to compute quantized linear layer output"
+  },
+  "intel_auto-round/auto_round_extension/triton/qlinear_tritonv2.py": {
+    "create_quantlinear_layer": "create a QuantLinear layer with 4-bit quantization, group size 128, and 512 input and output features",
+    "pack_quantlinear_weights": "pack a linear layer's weights into the QuantLinear module using provided scales and zeros",
+    "run_quantlinear_forward": "run a forward pass through a QuantLinear layer with a float16 input tensor",
+    "warmup_quantlinear_autotune": "warm up the autotune cache for all QuantLinear layers in a model with sequence length 2048",
+    "review_quantlinear_init": "review the QuantLinear __init__ method to verify bit width and feature divisibility constraints"
+  },
+  "intel_auto-round/auto_round_extension/triton/qlinear_tritonv2_zp.py": {
+    "create_quantized_linear_layer": "create a QuantLinear module with 4-bit quantization and group size 128 for a given input and output feature size",
+    "run_quantized_forward_pass": "run a forward pass through a QuantLinear layer with a float16 input tensor to get quantized output",
+    "warmup_quantized_kernel_cache": "warmup the autotune cache for all QuantLinear layers in a model with a specified sequence length",
+    "review_quantlinear_init": "review the QuantLinear __init__ method to understand buffer registration for qweight, qzeros, and scales",
+    "refactor_quantlinear_forward": "refactor the QuantLinear forward method to support additional input shapes or dtype conversions"
+  },
+  "intel_auto-round/auto_round_extension/triton/triton_utils/custom_autotune.py": {
+    "build_autotune_decorator": "build a triton kernel decorated with autotune to benchmark and select the best config from a list",
+    "create_customized_triton_autotuner": "create a CustomizedTritonAutoTuner instance wrapping a kernel function with configurable configs and key arguments",
+    "run_autotune_bench": "run the autotune benchmark on a triton kernel using 40 repetitions and quantile timing measurements",
+    "refactor_matmul248_kernel_config_pruner": "refactor the matmul248_kernel_config_pruner to shrink block sizes based on input tensor dimensions M, N, K",
+    "review_prune_configs_method": "review the prune_configs method that filters kernel configs using a performance model and top_k selection"
+  },
+  "intel_auto-round/auto_round_extension/triton/triton_utils/dequant.py": {
+    "build_dequant_configs": "build triton autotune configs with custom block sizes and warp counts for dequantization kernels",
+    "run_dequant_kernel_248": "run the Triton JIT dequant kernel to unpack 2/4/8-bit quantized weights on GPU using group indices",
+    "run_dequant248": "run the dequant248 launcher to dequantize 2/4/8-bit quantized weights on CUDA or XPU devices",
+    "run_quant_matmul_248": "run a quantized matrix multiplication by dequantizing weights then multiplying with input tensors",
+    "review_QuantLinearFunction": "review the QuantLinearFunction autograd class that provides forward and backward passes for quantized linear layers"
+  },
+  "intel_auto-round/auto_round_extension/triton/triton_utils/kernels.py": {
+    "run_quant_matmul_248": "run a quantized matrix multiplication on cuda or xpu devices using packed int32 weights",
+    "run_transpose_quant_matmul_248": "run a transposed quantized matrix multiplication for backward gradient computation on gpu",
+    "run_quant_matmul_inference_only_248": "run an inference-only quantized matrix multiplication that outputs float16 results on gpu",
+    "review_quant_matmul_248_kernel": "review the triton jit kernel that computes quantized matmul with per-group scales and zeros",
+    "review_quantlinearfunction": "review the autograd function that supports forward and backward passes for quantized linear layers"
+  },
+  "intel_auto-round/auto_round_extension/triton/triton_utils_zp/custom_autotune.py": {
+    "build_autotune_decorator": "build a triton kernel decorated with autotune to benchmark and select the fastest config from a list",
+    "create_customized_triton_autotuner": "create a CustomizedTritonAutoTuner instance to autotune a kernel with 40 benchmark runs instead of 100",
+    "run_autotune_bench": "run the autotune benchmark on a triton kernel with configurable block sizes and warp counts",
+    "refactor_matmul248_kernel_config_pruner": "refactor the matmul248_kernel_config_pruner to shrink block sizes when M, N, or K dimensions are smaller",
+    "review_customized_triton_autotuner_prune_configs": "review the CustomizedTritonAutoTuner prune_configs method to understand how performance models filter candidate configurations"
+  },
+  "intel_auto-round/auto_round_extension/triton/triton_utils_zp/dequant.py": {
+    "build_dequant_kernel_248": "build a triton kernel that dequantizes 2/4/8 bit weights using group indices and scales",
+    "create_dequant248_function": "create a function that dequantizes compressed weights on cuda or xpu devices for inference",
+    "test_quant_matmul_248": "test the quantized matrix multiplication function with dequantized weights and optional transpose",
+    "refactor_quantlinearfunction": "refactor the QuantLinearFunction autograd class to support custom backward pass for quantized linear layers",
+    "review_dequant_configs": "review the default dequant kernel autotune configurations with block sizes and warp counts"
+  },
+  "intel_auto-round/auto_round_extension/triton/triton_utils_zp/kernels.py": {
+    "run_quant_matmul_248": "run quant_matmul_248 to multiply input by quantized weights with scales and zeros on cuda or xpu",
+    "run_transpose_quant_matmul_248": "run transpose_quant_matmul_248 to multiply input by transposed quantized weights for gradient computation on cuda or xpu",
+    "run_quant_matmul_inference_only_248": "run quant_matmul_inference_only_248 to perform forward-only quantized matrix multiplication returning float16 output on cuda or xpu",
+    "review_quant_matmul_248_kernel": "review the quant_matmul_248_kernel triton JIT kernel that computes C=AxB with 4-bit packed int32 weights and group-wise quantization",
+    "review_quantlinearfunction": "review QuantLinearFunction autograd class that wraps quant_matmul_248 for forward and transpose_quant_matmul_248 for backward passes"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/auto_round_ext.py": {
+    "create_autoround_extension_config": "create an AutoRoundExtensionConfig instance with weight bits, group size, and activation quantization parameters",
+    "get_quant_method_for_layer": "get the appropriate quantization method for a vLLM layer like Attention, FusedMoE, or LinearBase",
+    "parse_quant_scheme_from_config": "parse a quantization scheme from a configuration dictionary using QuantizationScheme attributes",
+    "build_config_from_dict": "build an AutoRoundExtensionConfig from a dictionary with bits, group size, sym, and extra config",
+    "patch_vllm_autoround_config": "patch the vLLM AutoRoundConfig class with AutoRoundExtensionConfig at import time"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/fp4_utils.py": {
+    "pack_fp4_to_uint8": "pack a PyTorch tensor of float values into FP4 E2M1 format stored as uint8 by finding closest quantized values",
+    "unpack_fp4_from_uint8": "unpack a uint8 tensor containing packed FP4 E2M1 values back into a dense PyTorch tensor with specified dtype",
+    "cast_to_fp4": "quantize a PyTorch tensor by rounding each element to the nearest valid FP4 E2M1 value using threshold-based binning",
+    "get_e2m1_tensor": "get or create a device-specific cached lookup tensor containing the eight FP4 E2M1 quantization values for a given device",
+    "review_fp4_quantization": "review the FP4 E2M1 quantization utilities including pack, unpack, and cast functions for vLLM extension usage"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/kv_cache.py": {
+    "create_autoround_kv_cache_method": "create an AutoRoundKVCacheMethod instance that validates and initializes KV cache quantization configuration",
+    "validate_kv_cache_scheme": "validate a quantization configuration scheme for KV cache using the static validate_kv_cache_scheme method",
+    "create_autoround_kv_cache_method_for_mla": "create an AutoRoundKVCacheMethodForMLA instance to handle MLA-specific KV cache quantization with aligned scales",
+    "process_weights_after_loading_mla": "process and align K/V scale weights after loading a layer using AutoRoundKVCacheMethodForMLA",
+    "review_kv_cache_quantization": "review the AutoRoundKVCacheMethod and AutoRoundKVCacheMethodForMLA classes for KV cache quantization support in vLLM"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/linear_impl_mxfp4.py": {
+    "create_mxfp4_linear_layer": "create an AutoRoundMXFP4LinearImpl instance to handle MXFP4 quantized linear layer weights",
+    "build_mxfp4_weights": "build packed MXFP4 weight parameters and group quantization scales for a torch module layer",
+    "process_mxfp4_weights_after_loading": "process and dequantize MXFP4 packed weights to FP8 format after loading into a layer",
+    "apply_mxfp4_gemm": "apply MXFP4 GEMM computation with unpacked FP8 weights and BF16 scales on input tensors",
+    "get_mxfp4_min_capability": "get the minimum GPU compute capability required for MXFP4 linear operations"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/linear_impl_mxfp8.py": {
+    "create_weights_mxfp8": "create MXFP8 quantized weight parameters for a vLLM linear layer with group-wise scales",
+    "apply_weights_mxfp8": "apply MXFP8 quantized weights to input tensors with dequantization and matrix multiplication",
+    "get_min_capability_mxfp8": "get the minimum GPU compute capability required for MXFP8 linear operations",
+    "process_weights_after_loading_mxfp8": "process MXFP8 quantized weights after they are loaded into a vLLM layer",
+    "init_autoround_mxfp8_linear": "initialize an AutoRoundMXFP8LinearImpl instance with a quantization scheme and tensor group strategy"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/moe_impl_mxfp4.py": {
+    "create_mxfp4_moe_weights": "create MXFP4 quantized MoE layer weights with packed w13 and w2 parameters and group-wise scales",
+    "apply_activation_silu_swigluoai": "apply silu or swigluoai activation function to combine w1 and w3 expert gate outputs",
+    "dequant_mxfp4_to_fp8": "dequantize packed MXFP4 weights to FP8 format with BF16 scales for pre-unpacking before inference",
+    "run_mxfp4_moe_forward": "run MXFP4 MoE forward pass with expert selection, GEMM emulation, and expert output aggregation",
+    "get_fused_moe_quant_config": "get the fused MoE quantization config for OCP MX modular MoE with MXFP4 or MXFP8 dtypes"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/moe_impl_mxfp8.py": {
+    "create_mxfp8_moe_layer_weights": "create MXFP8 quantized weights for a MoE layer with w13 and w2 weight tensors and group scales",
+    "apply_activation_silu_or_swigluoai": "apply silu or swigluoai activation function to local w1 and w3 output tensors in a MoE layer",
+    "get_fused_moe_quant_config": "get the OCP MXFP8 quantization config for a fused MoE layer with weight scales and optional bias",
+    "apply_mxfp8_moe_forward": "apply the MXFP8 MoE forward pass with expert selection and fused expert computation on input tensors",
+    "review_autoround_moe_method_mxfp8_impl": "review the AutoRoundMoEMethodMXFp8Impl class that extends AutoRoundMoEMethod for MXFP8 quantized MoE inference in vLLM"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/mxfp4_qdq_utils.py": {
+    "quantize_to_mxfp4": "quantize a bfloat16 tensor to MXFP4 format with round-ceiling block scaling",
+    "dequantize_mxfp4_to_dtype": "dequantize packed MXFP4 data back to a target dtype like bfloat16 or float32",
+    "run_mxfp4_emulation": "run an MXFP4 emulation pipeline that quantizes input, dequantizes weight, and performs matmul",
+    "run_mxfp4_gemm": "run a GEMM operation with MXFP4 quantized input and FP8 unpacked weight",
+    "qdq_mxfp4_rounding": "quantize and dequantize a tensor using MXFP4 scaled even rounding with block size 32"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/mxfp8_qdq_utils.py": {
+    "quant_tensor_to_mx_fp8": "quantize a pytorch tensor to MX FP8 E4M3 format with block size 32 using quant_mx_fp8",
+    "dequant_mx_fp8_weights": "dequantize FP8 weights back to a target dtype using dequant_mx_fp8 with block scaling",
+    "get_fp_scale_from_e8m0": "convert an E8M0 biased exponent scale tensor to floating point scale values using get_fp_scale",
+    "review_dequant_mx_fp8": "review the dequant_mx_fp8 function to understand how it reshapes weights and applies block scaling",
+    "refactor_get_fp_scale": "refactor get_fp_scale to support additional floating point formats beyond float32"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/quant_impl.py": {
+    "review_AutoRoundQuantImpl": "review the AutoRoundQuantImpl abstract base class and its abstract method signatures for quantization implementations",
+    "summarize_AutoRoundQuantImpl": "summarize the AutoRoundQuantImpl ABC interface that defines quantization weight creation, application, and post-loading processing",
+    "build_AutoRoundQuantImpl_subclass": "build a concrete subclass of AutoRoundQuantImpl that implements get_min_capability, create_weights, apply_weights, and process_weights_after_loading",
+    "test_AutoRoundQuantImpl_subclass": "test a concrete AutoRoundQuantImpl subclass to verify all abstract methods are properly implemented and raise no errors",
+    "refactor_AutoRoundQuantImpl_apply_weights": "refactor the apply_weights method signature in an AutoRoundQuantImpl subclass to support additional tensor arguments"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/quant_method_linear.py": {
+    "get_quant_method_for_layer": "get an AutoRoundQuantLinearMethod instance for a given layer prefix and quantization config",
+    "create_quantized_weights": "create quantized weights for a linear layer using the MXFP8 or MXFP4 implementation",
+    "process_weights_after_loading": "process and finalize quantized weights for a linear layer after model loading",
+    "apply_quantized_linear": "apply a quantized linear transformation to an input tensor with optional bias",
+    "get_min_capability": "get the minimum GPU capability required for the quantized linear method implementation"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/quant_method_moe.py": {
+    "get_moe_method_for_layer": "get the appropriate MoE quantization method for a layer based on its AutoRound quantization config and prefix",
+    "get_fused_moe_quant_config": "get the FusedMoE quantization config for a given torch module layer",
+    "dispatch_mxfp4_moe_impl": "dispatch to the MXFP4 w4a4 MoE implementation when the quantization scheme matches MXFP4 format",
+    "dispatch_mxfp8_moe_impl": "dispatch to the MXFP8 w8a8 MoE implementation when the quantization scheme matches MXFP8 format",
+    "create_unquantized_moe_method": "create an unquantized FusedMoE method when the quantization scheme bits do not require quantization"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/utils.py": {
+    "build_mx_fp8_quantization": "convert a high precision tensor to MX FP8 E4M3 format with block-wise scaling",
+    "create_fp_scale_from_e8m0": "compute floating point scale values from E8M0 biased exponent tensors",
+    "test_pack_uint4_tensor": "pack pairs of uint8 values into compact uint4 format by shifting and ORing",
+    "review_get_scheme": "review the get_scheme function that matches layer prefixes to quantization schemes",
+    "summarize_need_quantize": "summarize the need_quantize function that checks if weight bits are less than 16"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/vllm_oot_patches.py": {
+    "update_flashinfer_workspace_buffer_size": "update the FlashInfer workspace buffer size by setting a new integer value for vllm attention backend",
+    "remap_kv_scale_name": "remap FP8 k/v_scale checkpoint parameter names to the expected model parameter name format using regex patterns",
+    "patch_vllm_weight_utils": "monkey-patch vllm weight utils to use the custom kv_scale name remapping function for loading model checkpoints",
+    "review_oot_maybe_remap_kv_scale_name": "review the oot_maybe_remap_kv_scale_name function that handles deprecated kv_scale and multiple scale naming conventions",
+    "summarize_vllm_oot_patches": "summarize the vLLM out-of-tree patches module that updates FlashInfer buffer size and remaps FP8 scale parameter names"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/tests/conftest.py": {
+    "run_vllm_runner_generate": "run vllm_runner to generate text from prompts using greedy decoding with max tokens",
+    "run_hf_runner_generate": "run hf_runner to generate text from prompts using transformers model with greedy decoding",
+    "run_vllm_runner_beam_search": "run vllm_runner to perform beam search generation with specified beam width and max tokens",
+    "run_hf_runner_classify": "run hf_runner to classify text prompts using a sentence transformer or cross encoder model",
+    "run_local_asset_server": "run local_asset_server to start a threaded HTTP server that serves test image assets"
+  },
+  "intel_auto-round/auto_round_extension/vllm_ext/tests/test_fp8kv.py": {
+    "test_auto_fp8_kv": "test the FP8 KV cache generation with vLLM runner on a CUDA model with compute capability at least 10.0",
+    "cuda_capability_at_least": "create a function that checks if the GPU device capability meets a minimum major and minor version",
+    "set_vllm_ar_env": "review the pytest fixture that sets VLLM environment variables for MXFP4 and FP8 quantization testing",
+    "run_test_fp8kv": "run the pytest test suite for FP8 KV cache validation on a Qwen2.5 model with vLLM",
+    "refactor_cuda_capability_at_least": "refactor the cuda_capability_at_least function to support additional GPU vendor platforms beyond CUDA"
+  },
+  "intel_auto-round/test/envs.py": {
+    "check_package_version": "check if a package satisfies a version requirement using require_package_version",
+    "skip_test_unless_version": "skip a unittest test method unless a package version requirement is met",
+    "check_module_in_model": "check if a PyTorch model contains a specific module type using has_module",
+    "skip_test_unless_multi_gpu": "skip a unittest test method unless multiple CUDA GPUs are available",
+    "check_library_availability": "check if a quantization library like gguf, auto_gptq, or awq is installed"
+  },
+  "intel_auto-round/test/fixtures.py": {
+    "create_tiny_model_fixture": "create a pytest fixture that saves a tiny version of a HuggingFace model for fast testing",
+    "create_fp8_model_fixture": "create a pytest fixture that builds a tiny FP8 quantized Qwen model with mocked CUDA capability",
+    "create_diffusion_model_fixture": "create a pytest fixture that saves a tiny diffusion model like Flux with reduced layers and config overrides",
+    "create_mllm_model_fixture": "create a pytest fixture that saves a tiny multimodal LLM like Qwen-VL with reduced layers and tokenizer",
+    "create_moe_model_fixture": "create a pytest fixture that saves a tiny MoE model with FP8 experts and reduced hidden layers"
+  },
+  "intel_auto-round/test/helpers.py": {
+    "generate_prompt": "generate text from a prompt using a loaded LLM model and tokenizer",
+    "evaluate_accuracy": "evaluate model accuracy on a benchmark task like lambada_openai with a threshold check",
+    "get_tiny_model": "create a tiny sliced model with reduced layers for faster testing",
+    "is_model_outputs_similar": "compare outputs of two models using cosine similarity or top-k agreement metrics",
+    "save_tiny_model": "save a tiny sliced model with reduced layers to a local directory for testing"
+  },
+  "intel_auto-round/test/test_ark/test_model.py": {
+    "run_autoround_quantize_and_save": "run AutoRound to quantize a model with specified bits, group size, and symmetry settings",
+    "test_autoround_formats_cpu_xpu": "test AutoRound quantization with auto_round and gptqmodel formats on CPU and XPU devices",
+    "test_autoround_awq_fp16": "test AutoRound auto_awq format quantization with 4-bit 32-group-size on CPU and XPU",
+    "test_autoround_2bit_asymmetric": "test AutoRound 2-bit asymmetric quantization with 32 group size on CPU device",
+    "review_test_autoround_ark_backend": "review the TestAutoRoundARKBackend class that tests model quantization with ARK backend across formats and devices"
+  },
+  "intel_auto-round/test/test_cpu/advanced/test_evaluation_functions.py": {
+    "test_parse_vllm_args_empty": "test parse_vllm_args returns empty dict for None or empty string input",
+    "test_parse_vllm_args_integers": "test parse_vllm_args correctly parses comma separated integer arguments like tensor_parallel_size",
+    "test_parse_vllm_args_floats": "test parse_vllm_args correctly parses comma separated float arguments like gpu_memory_utilization",
+    "test_parse_vllm_args_booleans": "test parse_vllm_args correctly parses boolean arguments like trust_remote_code and enable_lora",
+    "test_load_gguf_model_if_needed": "test _load_gguf_model_if_needed returns correct values for non GGUF model paths"
+  },
+  "intel_auto-round/test/test_cpu/advanced/test_low_precision_input_model.py": {
+    "test_fp8_block_quantized_model": "test an FP8 block quantized model by checking weight dtype and converting CompressedLinear layers to high precision",
+    "test_w4a16_quantized_model": "test a W4A16 quantized model by verifying INT4 packed weights and converting to bfloat16",
+    "check_and_mark_quantized_module": "check and mark quantized modules in a model to detect FP8, NVFP4, MXFP4, or WOQ weight types",
+    "convert_module_to_hp_if_necessary": "convert compressed linear layers in a quantized model back to high precision bfloat16 weights",
+    "quantize_w4a16_to_mxfp4": "quantize a W4A16 model to MXFP4 format using AutoRound and save with llm_compressor format"
+  },
+  "intel_auto-round/test/test_cpu/backends/test_torch_backend.py": {
+    "run_autoround_quantize_and_save": "run AutoRound to quantize a model with 4-bit asymmetric grouping and save the output",
+    "test_autoround_torch_4bits_asym": "test the torch backend with 4-bit asymmetric quantization using group size 128",
+    "test_autoround_torch_4bits_sym": "test the torch backend with 4-bit symmetric quantization using group size 32",
+    "create_autoround_config": "create an AutoRoundConfig with torch backend to load a quantized model from disk",
+    "evaluate_model_accuracy": "evaluate the quantized model accuracy with a configurable threshold and batch size"
+  },
+  "intel_auto-round/test/test_cpu/core/test_autoopt.py": {
+    "run_AutoRoundAdam_quantize": "run AutoRoundAdam to quantize an LLM model with 4-bit asymmetric group-wise quantization",
+    "test_AutoRoundAdam_with_OPT": "test AutoRoundAdam quantization on a tiny OPT model with a custom dataloader",
+    "get_block_names_for_model": "get the LLM block names from a model using get_block_names with quant_vision enabled",
+    "setup_test_fixture_with_teardown": "setup a pytest class fixture that cleans up the runs directory after all tests complete",
+    "quantize_model_with_adam": "quantize a causal LM model using AutoRoundAdam with configurable bits group size and iterations"
+  },
+  "intel_auto-round/test/test_cpu/core/test_autoround.py": {
+    "quantize_model_with_autoround": "create an AutoRound instance and call quantize to quantize a model with specified bits and group_size",
+    "quantize_and_save_model": "build an AutoRound quantization pipeline that quantizes a model and saves it to a directory in auto_round format",
+    "configure_layer_wise_quantization": "create an AutoRound instance with layer_config to set per-layer bits and data_type for selective quantization",
+    "quantize_with_mx_fp4": "run AutoRound quantization using mx_fp4 data_type with act_bits and act_data_type for mixed precision quantization",
+    "dequantize_fp8_weight": "test the _dequant_fp8_linear_weight utility to dequantize FP8 linear weights back to high precision"
+  },
+  "intel_auto-round/test/test_cpu/core/test_autoround_acc.py": {
+    "run_autoround_quantize": "run AutoRound quantization on a pretrained model with 4-bit symmetric group-wise quantization on CPU",
+    "run_autoround_quantize_and_save": "run AutoRound quantize_and_save to quantize a model and save it to disk in auto_round format",
+    "test_autoround_default_accuracy": "test the default accuracy of AutoRound quantization by comparing two quantized model outputs",
+    "test_autoround_3bit_asymmetric": "test 3-bit asymmetric AutoRound quantization on a tiny OPT model and save the result",
+    "review_autoround_init": "review the AutoRound constructor parameters including bits, group_size, sym, device, iters, seqlen, and dataset"
+  },
+  "intel_auto-round/test/test_cpu/core/test_init.py": {
+    "test_torch_compile": "test that AutoRound disables torch compile when using NVFP4 or FP8_STATIC quantization schemes",
+    "test_autoround_nvfp4_torch_compile": "test that AutoRound rejects torch compile with NVFP4 scheme and disables it automatically",
+    "test_autoround_fp8_static_torch_compile": "test that AutoRound rejects torch compile with FP8_STATIC scheme and disables it automatically",
+    "review_autoround_init": "review the AutoRound class initialization to understand how scheme and torch compile options interact",
+    "summarize_autoround_torch_compile_behavior": "summarize how AutoRound handles incompatible quantization schemes with torch compile enabled"
+  },
+  "intel_auto-round/test/test_cpu/core/test_low_cpu_mem_options.py": {
+    "test_low_cpu_mem_usage_option": "test that the low_cpu_mem_usage option is stored correctly in the AutoRound instance",
+    "test_offloader_disabled": "test that the offloader is disabled when low_cpu_mem_usage is set to False",
+    "test_offload_records_blocks": "test that offloading records offloaded blocks when low_cpu_mem_usage is enabled",
+    "review_autoround_low_cpu_mem": "review the AutoRound class low_cpu_mem_usage parameter for block weight offloading to disk",
+    "test_offloader_has_method": "test the offloader has method to check if a model layer block was offloaded"
+  },
+  "intel_auto-round/test/test_cpu/export/test_export.py": {
+    "quantize_and_save_autogptq_format": "quantize a model and export it in auto_gptq format with 4-bit asymmetric quantization",
+    "quantize_and_save_autoround_format": "quantize a model and export it in auto_round format with 4-bit symmetric quantization",
+    "quantize_and_save_autoawq_format": "quantize a model and export it in auto_awq format using the auto_round:auto_awq hybrid format",
+    "export_fp8_static_quantization": "export an fp8 static quantized model with configurable static_kv_dtype for key and value projections",
+    "export_llm_compressor_format": "export a quantized model in llm_compressor format supporting int8 dynamic or w4a16 weight-only schemes"
+  },
+  "intel_auto-round/test/test_cpu/export/test_gguf_format.py": {
+    "test_gguf_q4_0_quantization": "test quantizing a model to GGUF Q4_0 format using AutoRound with 4-bit symmetric quantization",
+    "test_gguf_q4_k_m_layer_config": "test quantizing a model with custom per-layer configuration using GGUF Q4_K_M mixed format",
+    "test_gguf_cli_all_formats": "test running AutoRound via command line with various GGUF quantization formats like q4_k_m",
+    "test_vlm_gguf_quantization": "test quantizing a vision-language model to GGUF format with and without non-text module quantization",
+    "test_gguf_qtype_layer_config": "test setting layer-specific quantization types for embed tokens and lm_head using set_layer_config"
+  },
+  "intel_auto-round/test/test_cpu/export/test_llmc_format.py": {
+    "test_AutoRound_FP8_static_quantization": "test AutoRound FP8 static quantization and export to llm_compressor format",
+    "test_AutoRound_mxfp8_quantization": "test AutoRound MXFP8 quantization and save to llm_compressor format",
+    "test_AutoRound_mixed_precision_quantization": "test AutoRound mixed precision MXFP4 and MXFP8 quantization with AutoScheme",
+    "test_AutoRound_quantize_and_save": "test AutoRound quantize_and_save method with llm_compressor format output",
+    "test_AutoRound_serial_export_packing": "test AutoRound serial export packing for FP8 static and MXFP8 formats"
+  },
+  "intel_auto-round/test/test_cpu/integrations/test_llmc_integration.py": {
+    "test_oneshot_application": "test applying oneshot quantization to a tiny llama model with various AutoRoundModifier recipes",
+    "test_oneshot_with_device_ids": "test oneshot quantization across multiple GPU device IDs using AutoRoundModifier",
+    "test_rtn_oneshot": "test round-to-nearest oneshot quantization with w8a8 dynamic and static recipes",
+    "create_autoround_modifier_recipe": "create an AutoRoundModifier recipe with 4-bit group-wise weight quantization ignoring lm_head",
+    "create_w8a8_quantization_recipe": "create a w8a8 quantization recipe with channel-wise weights and token-wise dynamic activations"
+  },
+  "intel_auto-round/test/test_cpu/models/test_block_names.py": {
+    "test_get_block_names_moe": "test get_block_names on a nested MoE model to verify block name extraction",
+    "test_get_block_names_multimodal": "test get_block_names on a multimodal model with and without vision quantization enabled",
+    "test_autoround_quantize_with_block_names": "test AutoRound quantization using get_block_names to specify which blocks to quantize",
+    "test_get_block_names_qwen_vl": "test get_block_names on a Qwen2VL multimodal model to verify vision block filtering",
+    "test_get_block_names_qwen_moe": "test get_block_names on a Qwen1.5 MoE model to verify correct layer block detection"
+  },
+  "intel_auto-round/test/test_cpu/models/test_conv1d.py": {
+    "test_quantize_conv1d_model": "test quantizing a Conv1D model using AutoRound with 4-bit precision and group size 128",
+    "run_autoround_quantization": "run AutoRound quantization on a causal language model with symmetric 4-bit quantization",
+    "test_model_inference_after_quantization": "test model inference on a quantized model loaded from disk with CPU device mapping",
+    "setup_quantization_test_environment": "setup a test environment for model quantization with tokenizer and temporary save directory",
+    "save_quantized_model": "save a quantized model to disk and return the quantized model path for loading"
+  },
+  "intel_auto-round/test/test_cpu/models/test_diffusion.py": {
+    "test_flux_saving": "test W4A16 quantization and saving of a FLUX diffusion model using AutoRound",
+    "test_flux": "test MXFP4 quantization of a FLUX diffusion model using AutoRound without saving",
+    "test_flux_calib": "test NVFP4 quantization with calibration data caching on a FLUX diffusion model",
+    "setup_flux": "set up a FLUX.1-dev text-to-image pipeline using diffusers AutoPipelineForText2Image",
+    "autoround_quantize_and_save": "quantize a diffusion pipeline with W4A16 scheme and save the quantized model to disk"
+  },
+  "intel_auto-round/test/test_cpu/models/test_glm_image.py": {
+    "test_glm_image_multimodal_block_discovery": "test the GLM-Image multimodal block name discovery helper with fake model hierarchies",
+    "test_find_pipeline_model_subfolder": "test the local pipeline subfolder discovery helper using temporary diffusers-style directories",
+    "test_glm_image_processor_construction": "test the GlmImageProcessor wrapping logic that combines image processor and tokenizer components",
+    "test_glm_image_i2i_call_logic": "test the image-to-image pipeline invocation logic with mocked pipeline calls",
+    "test_glm_image_dimension_validation": "test that GLM-Image height and width dimensions must be divisible by 32"
+  },
+  "intel_auto-round/test/test_cpu/models/test_mllm.py": {
+    "test_autoround_quantize_mllm": "test the AutoRound class to quantize a Qwen2-VL multimodal model with 4-bit precision and save in auto_gptq format",
+    "test_quantize_vision_model": "test quantizing a Qwen2VLForConditionalGeneration model with vision module quantization enabled using AutoRound",
+    "test_find_matching_blocks": "test the find_matching_blocks function to match regex patterns against model block names for selective quantization",
+    "test_mllm_dataset_loading": "test the MLLM_DATASET dictionary to load and verify dataset questions with configurable sample sizes",
+    "test_cache_intermediate_data": "test the cache_inter_data method to cache intermediate activations and verify early-stop tracking during calibration"
+  },
+  "intel_auto-round/test/test_cpu/models/test_moe_alignment.py": {
+    "test_moe_scale_alignment_fp8_static": "test that FP8_STATIC quantization unifies gate and up input scales across all MoE experts",
+    "test_set_amax_for_all_moe_layers_direct": "test the set_amax_for_all_moe_layers function directly to verify act_max unification across MoE experts",
+    "run_AutoRound_FP8_STATIC_quantize": "run AutoRound with FP8_STATIC scheme to quantize a DeepSeek-V2-Lite model and save the output",
+    "apply_replacements_fused_moe": "apply fused MoE replacements to a model before calibrating act_max values across experts",
+    "set_amax_for_all_moe_layers": "set the act_max attribute uniformly across all MoE layer experts by taking the maximum value"
+  },
+  "intel_auto-round/test/test_cpu/models/test_moe_experts_interface.py": {
+    "test_linear_loop_registration": "test that linear_loop is registered with transformers ALL_EXPERTS_FUNCTIONS global mapping",
+    "test_unfuse_experts_weights": "test unfusing fused Mixtral style expert weights into individual nn.Linear layers",
+    "test_unfuse_experts_weights_transposed": "test unfusing transposed Llama4 style expert weights into individual nn.Linear layers",
+    "test_linear_loop_forward": "test that linear_loop forward pass produces correct output shape and non-zero results",
+    "test_prepare_model_for_moe_quantization": "test the full prepare_model_for_moe_quantization flow that unfuses experts and sets linear_loop implementation"
+  },
+  "intel_auto-round/test/test_cpu/models/test_moe_model.py": {
+    "quantize_moe_model": "quantize a MoE model using AutoRound with MXFP4 or MXFP8 scheme and save the quantized output",
+    "count_modules_by_type": "count modules of a specific type in a PyTorch model by class name or class object",
+    "test_gptoss_quantization": "test GPT-OSS model quantization with MXFP4 and MXFP8 schemes and verify expert module counts",
+    "test_llama4_quantization": "test Llama4 model quantization with MXFP4 scheme and verify the loaded model runs inference",
+    "test_step3p5_moe_replacement": "test that apply_replacements swaps Step3p5MoEMLP to LinearStep3p5MoEMLP and materializes expert weights correctly"
+  },
+  "intel_auto-round/test/test_cpu/models/test_omni_model.py": {
+    "test_get_block_names": "test get_block_names returns thinker and talker layer names for Qwen2.5-Omni model",
+    "test_handle_special_model": "test _handle_special_model patches the forward function for Qwen2.5-Omni and Qwen3-Omni-MoE",
+    "test_apply_replacements": "test apply_replacements replaces MoE blocks with LinearQwen3OmniThinker and LinearQwen3OmniTalker modules",
+    "test_is_moe_layer": "test is_moe_layer correctly detects MoE blocks in Qwen3-Omni-MoE thinker and talker layers",
+    "test_get_predefined_ignore_layers": "test get_predefined_ignore_layers returns mlp.gate layers for Qwen3-Omni-MoE model"
+  },
+  "intel_auto-round/test/test_cpu/quantization/test_act_quantization.py": {
+    "test_autoround_mx_fp4_quantization": "test AutoRound quantization with MXFP4 activation bits and mx_fp data type on a model",
+    "test_autoround_wint4fp8_dynamic": "test AutoRound with 4-bit weights and dynamic FP8 activations using fp8 data type",
+    "test_autoround_wint4fp8_static": "test AutoRound with 4-bit weights and static FP8 activations using fp8_to_int_sym data type",
+    "test_autoround_wfp8afp8_static": "test AutoRound with FP8 weights and FP8 activations using configurable act_group_size parameter",
+    "test_autoround_quantize_and_save": "test AutoRound quantize_and_save with MXFP4, NVFP4, W4A16, or FP8_STATIC schemes and layer_config"
+  },
+  "intel_auto-round/test/test_cpu/quantization/test_asym.py": {
+    "test_asymmetric_quantization_group_sizes": "test asymmetric quantization with group sizes 32, 64, and 128 using AutoRound",
+    "test_asymmetric_quantization_bits": "test asymmetric quantization with 2-bit and 8-bit precision using AutoRound",
+    "test_asymmetric_quantization_formats": "test asymmetric quantization export formats including auto_round, auto_gptq, and gptqmodel",
+    "run_autoround_quantize_and_save": "run AutoRound to quantize a model and save it with specified bits and group size",
+    "test_model_inference_after_quantization": "test model inference using AutoModelForCausalLM after asymmetric quantization with AutoRound"
+  },
+  "intel_auto-round/test/test_cpu/quantization/test_block_fp.py": {
+    "test_autoround_invalid_scheme": "test AutoRound initialization with invalid quantization schemes and verify expected exceptions are raised",
+    "test_block_fp8_quant": "test quant_block_fp_sym function by quantizing a random tensor and verifying scale values match expected",
+    "test_reshape_pad_tensor": "test reshape_pad_tensor_by_group_size function to reshape and pad a tensor by specified group size",
+    "test_autoround_group_size_handler": "test AutoRound with group_size set to -1 and verify CLI subprocess runs successfully",
+    "run_autoround_cli": "run the auto_round CLI module with specific bits group_size and format arguments via subprocess"
+  },
+  "intel_auto-round/test/test_cpu/quantization/test_mix_bits.py": {
+    "test_mixed_bit_quantization_gptqmodel": "test mixed bit quantization with AutoRound and save model in auto_gptq format for GPTQModel inference",
+    "test_mixed_bit_quantization_autoround_format": "test mixed bit quantization with AutoRound and save model in auto_round format with layer-specific bit configs",
+    "test_mixed_bit_quantization_awq_format": "test mixed bit quantization with AutoRound and save model in auto_awq format with fallback regex support",
+    "test_mixed_bit_quantization_mxfp4_format": "test mixed bit quantization with MXFP4 scheme and evaluate accuracy using AutoRound with layer-specific act_bits",
+    "test_mixed_bit_quantization_part_name_loading": "test mixed bit quantization loading with part names and regex patterns in extra_config for HuggingFace model loading"
+  },
+  "intel_auto-round/test/test_cpu/quantization/test_mx_quant_linear.py": {
+    "test_mxquantlinear_from_original_and_forward": "test MXFP4 and MXFP8 quantized linear layers by comparing forward pass output against original float32 layers",
+    "test_mxint_quantlinear_from_original_and_forward": "test MXINT4 quantized linear layers by comparing forward pass output against original float32 layers",
+    "run_get_quant_func": "run get_quant_func to retrieve a quantize-and-dequantize function for a given data type and bit width",
+    "build_MXFPLinear_pack": "build an MXFP QuantLinear instance and pack weights from an original linear layer with shared exponent scales",
+    "create_MXINTLinear_pack": "create an MXINT QuantLinear instance and pack weights from an original linear layer with shared exponent scales"
+  },
+  "intel_auto-round/test/test_cpu/quantization/test_mxfp_nvfp.py": {
+    "test_nvfp4_moe_quantization": "test NVFP4 quantization of MoE models with AutoRound using rtn or ar calibration",
+    "test_mxfp4_moe_quantization": "test MXFP4 quantization of MoE models with AutoRound and verify lm_head packing",
+    "test_mxfp4_llmcompressor_export": "test MXFP4 quantization and export in llm_compressor format with compressed_tensors",
+    "test_mxfp8_llmcompressor_export": "test MXFP8 quantization and export in llm_compressor format and verify folder size",
+    "test_fp8_kv_attn": "test FP8 KV cache and attention scales with MXFP4 MXFP8 or NVFP4 schemes"
+  },
+  "intel_auto-round/test/test_cpu/quantization/test_mxfp_save_load.py": {
+    "test_e2e_quant_and_load": "test end-to-end MXFP8 and MXFP4 quantization and save-load of a Qwen2 model using AutoRound",
+    "run_MXFP8_quantization_test": "run the parametrized test to quantize a Qwen2 model with MXFP8 scheme and verify the saved model loads correctly",
+    "run_MXFP4_quantization_test": "run the parametrized test to quantize a Qwen2 model with MXFP4 scheme and verify the saved model loads correctly",
+    "test_AutoRound_quantize_and_save": "test AutoRound quantize_and_save method with auto_round format for MXFP8 and MXFP4 data types",
+    "test_QMODULE_MAPPING_verification": "test that MXFP8QuantLinear or MXFP4QuantLinear modules are present in the loaded quantized model"
+  },
+  "intel_auto-round/test/test_cpu/quantization/test_nvfp4_quant_linear.py": {
+    "test_nvfp4_quantlinear_forward": "test NVFP4 quantized linear layer forward pass against original torch.nn.Linear output",
+    "calculate_gparam_global_scale": "calculate the global scale parameter for a tensor given a group size",
+    "get_quant_func_quantize_weights": "get a quantization function for a given data type, bit width, and symmetry setting",
+    "pack_fp_quantlinear_weights": "pack an original linear layer's weights into an FP QuantLinear module with scales",
+    "create_nvfp4_quantlinear_from_original": "create an NVFP4QuantLinear layer from an original torch.nn.Linear layer using a config"
+  },
+  "intel_auto-round/test/test_cpu/quantization/test_statc_attn.py": {
+    "test_deepseek_v2_fp8_static_quantization": "test FP8_STATIC quantization of DeepSeek-V2-Lite-Chat model using AutoRound with static attention dtype",
+    "test_deepseek_v3_fp8_static_quantization": "test FP8_STATIC quantization of DeepSeek-V3 model using AutoRound with static attention dtype",
+    "setup_deepseekv2_fixture": "create a pytest fixture that loads DeepSeek-V2-Lite-Chat model, tokenizer, and config with one hidden layer",
+    "setup_deepseekv3_fixture": "create a pytest fixture that loads DeepSeek-V3 model, tokenizer, and config with one hidden layer",
+    "quantize_and_save_llm_compressor": "run AutoRound quantize_and_save with llm_compressor format and verify q_scale is collected for static attention"
+  },
+  "intel_auto-round/test/test_cpu/schemes/test_auto_scheme.py": {
+    "create_autoscheme_w2a16": "create an AutoScheme with avg_bits 2 and W2A16 options for model quantization",
+    "create_autoscheme_mxfp4": "create an AutoScheme with avg_bits 4 and mxfp4 options for mixed precision quantization",
+    "run_autoround_quantize_and_save": "run AutoRound with a scheme to quantize a model and save the result to a directory",
+    "test_layer_config_override": "test AutoRound with a custom layer_config to override bits, group_size, and sym for specific layers",
+    "compute_avg_bits_for_model": "compute the average bits per weight for a quantized model using compute_avg_bits_for_model"
+  },
+  "intel_auto-round/test/test_cpu/schemes/test_auto_scheme_low_cpu_mem.py": {
+    "test_OffloadManager_context": "test the OffloadManager class as a context manager that auto-cleans offloaded model weights on exit",
+    "test_OffloadManager_offload_reload": "test the OffloadManager offload and reload methods to save and restore model block weights to disk",
+    "test_OffloadManager_hooks": "test the OffloadManager add_offload_hooks and remove_offload_hooks methods to clear and restore all model blocks",
+    "test_clear_module_weights": "test the _clear_module_weights function to zero out weight tensors from a PyTorch module while caching original numel",
+    "test_AutoScheme_low_cpu_mem": "test the AutoScheme dataclass with low_cpu_mem_usage enabled to reduce CPU RAM during model quantization"
+  },
+  "intel_auto-round/test/test_cpu/schemes/test_scheme.py": {
+    "quantize_model_with_autoround": "create an AutoRound instance with a scheme like W4A16 to quantize a HuggingFace model",
+    "save_quantized_model_as_gguf": "call quantize_and_save with format gguf:q4_k_m to export a quantized model in GGUF format",
+    "configure_mixed_precision_quantization": "pass a layer_config dict to AutoRound to set per-layer bit widths for mixed precision quantization",
+    "create_quantization_scheme_from_dict": "use QuantizationScheme.from_dict with bits and group_size keys to build a custom quantization scheme",
+    "parse_available_devices": "call parse_available_devices with a device string like auto or cuda:0,cuda:1 to get a device list"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_alg_ext.py": {
+    "test_autoround_quantize_with_alg_ext": "test AutoRound quantization with enable_alg_ext flag using W2A16 scheme on a model",
+    "test_autoround_gguf_quantize": "test AutoRound quantization with gguf q4_k_s scheme and algorithm extension enabled",
+    "test_autoscheme_mixed_precision": "test AutoRound with AutoScheme using mxfp4 and mxfp8 options and average 5.5 bits",
+    "test_autoround_multiple_dtypes": "test AutoRound quantization across MXFP4, NVFP4, and W2A16G64 schemes with torch compile",
+    "import_wrapper_autoround": "import the wrapper_autoround function from auto_round.alg_ext module for algorithm extension"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_calib_dataset.py": {
+    "test_autoround_json_calibration": "test AutoRound quantization using a local JSON file as the calibration dataset",
+    "test_autoround_jsonl_calibration": "test AutoRound quantization using a local JSONL file as the calibration dataset",
+    "test_autoround_chat_template": "test AutoRound quantization with a HuggingFace dataset that applies a chat template",
+    "test_autoround_combine_datasets": "test AutoRound quantization by combining multiple HuggingFace datasets with comma separation",
+    "test_autoround_combine_datasets_with_num": "test AutoRound quantization by combining datasets with per-dataset sample count parameters"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_cli_usage.py": {
+    "run_auto_round_llm_quantization": "run auto_round CLI to quantize an LLM model with specified format and evaluation tasks",
+    "run_auto_round_mllm_quantization": "run auto_round CLI with --mllm flag to quantize a multimodal language model",
+    "run_auto_round_layer_config": "run auto_round CLI with --layer_config to set per-layer quantization bits and data types",
+    "parse_layer_config_arg": "parse a JSON-like layer configuration string into a dictionary of layer names and quantization settings",
+    "test_auto_round_eval_help": "run auto_round CLI with --eval --lmms -h to display evaluation help for multimodal models"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_compress_layer_names.py": {
+    "test_compress_consecutive_layers": "test compress_layer_names compresses consecutive layer indices into a range like [0-3]",
+    "test_compress_expert_suffixes": "test compress_layer_names groups MoE expert layers by suffix and expert number",
+    "test_compress_multiple_suffixes": "test compress_layer_names separates different projection suffixes into distinct groups",
+    "test_compress_cross_layer_experts": "test compress_layer_names keeps expert layers from different layer indices as separate groups",
+    "test_compress_edge_cases": "test compress_layer_names handles single names, non-consecutive ranges, no-number names, and empty input"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_fp8_re_quant.py": {
+    "test_per_tensor_dequant": "test the per tensor FP8 linear weight dequantization using _dequant_fp8_linear_weight with a scalar weight_scale",
+    "test_per_channel_dequant": "test the per channel FP8 linear weight dequantization with out_features or in_features scale vectors",
+    "test_devstral_model_structure": "test converting a Devstral FP8 linear layer to bfloat16 using check_and_mark_quantized_module and convert_module_to_hp_if_necessary",
+    "dequant_fp8_linear_weight": "dequantize an FP8 linear weight tensor to bfloat16 using a per tensor per channel or block wise scale",
+    "convert_fp8_module_to_high_precision": "convert an FP8 quantized module to a high precision nn.Linear module with dequantized bfloat16 weights"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_generation.py": {
+    "test_autoround_quantize_and_save": "test the AutoRound quantize_and_save method to quantize a model and save it to disk",
+    "test_4bit_symmetric_quantization": "test 4-bit symmetric quantization of a causal LM model using AutoRound with group size 128",
+    "test_model_generation_after_quantization": "test text generation from a quantized model loaded via AutoModelForCausalLM on CPU",
+    "test_autoround_with_dataloader": "test AutoRound quantization using a dataloader dataset with configurable iterations and sequence length",
+    "test_quantized_model_reload_and_generate": "test reloading a quantized model and tokenizer then generating text with max new tokens"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_load_awq_gptq.py": {
+    "test_load_gptq_model_raises_not_implemented": "test that loading a GPTQ model with AutoRoundConfig raises NotImplementedError",
+    "test_load_awq_model_on_cpu": "test loading an AWQ quantized model on CPU using AutoRoundConfig and AutoModelForCausalLM",
+    "run_test_autoround_class": "run the TestAutoRound pytest class to verify GPTQ and AWQ model loading behavior",
+    "test_model_inference_with_awq": "test model inference using model_infer helper after loading an AWQ quantized model",
+    "review_test_autoround_teardown": "review the TestAutoRound teardown_class method that cleans up the runs directory"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_logger.py": {
+    "test_logger": "test the auto_round logger with all log levels from TRACE to CRITICAL using pytest",
+    "test_warning_once": "test the logger warning_once method to verify duplicate warnings are suppressed",
+    "test_autoround_formatter": "test the AutoRoundFormatter by capturing log output via a StringIO stream handler",
+    "test_trace_level": "test that TRACE level logging works when AR_LOG_LEVEL env var is set to TRACE",
+    "test_logger_levels": "test that all standard log levels DEBUG INFO WARNING ERROR CRITICAL appear in captured output"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_missing_tensors.py": {
+    "split_fused_expert_tensors": "split fused MoE expert gate_up_proj and down_proj tensors into individual expert weight tensors",
+    "quantize_weight_rtn": "quantize a 2D weight tensor using round-to-nearest with configurable bits and group size",
+    "get_woq_config_from_dir": "read and validate the auto-round WOQ quantization config from a model directory",
+    "copy_missing_tensors_from_source": "copy missing tensors from a source model to a target model with optional WOQ quantization",
+    "test_missing_tensors": "run the pytest test suite for split_fused_expert_tensors, quantize_weight_rtn, and copy_missing_tensors_from_source"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_model_scope.py": {
+    "test_llm_quantization_modelscope": "test LLM quantization using AutoRound with model_scope platform and w4a16 scheme",
+    "test_mllm_quantization_modelscope": "test multimodal LLM quantization using AutoRound with model_scope platform and batch_size parameter",
+    "run_autoround_quantize_and_save": "run AutoRound quantize_and_save on a model from model_scope with specified scheme and iterations",
+    "test_autoround_modelscope_setup": "test the class setup that copies modelscope cache for AutoRound quantization tests",
+    "review_test_modelscope_class": "review the TestModelScope class that tests LLM and MLLM quantization via model_scope platform"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_set_layer_config.py": {
+    "test_set_layer_config_ignore_layers_digit_suffix": "test that ignore_layers with digit-ending names like layers.1 does not bleed into layers.10 or layers.11",
+    "test_set_layer_config_block_level_ignore": "test that ignore_layers with a block name like layers.0 forces fp16 on all child modules",
+    "test_set_layer_config_unmatched_layer_warns": "test that an unrecognized layer name in layer_config emits a warning instead of raising ValueError",
+    "test_set_layer_config_regex_fallback": "test that unsupported ignore_layers entries are preserved in regex_config for export",
+    "test_set_layer_config_wrapper": "test the set_layer_config utility from auto_round.compressors.utils using the _call_set_layer_config helper wrapper"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_shard_writer.py": {
+    "create_ShardWriter": "create a ShardWriter instance from a rounder to handle shard-saving of model parameters",
+    "test_save_module": "test saving a torch module's tensors into the ShardWriter with a given prefix name",
+    "test_finalize": "test finalizing the ShardWriter to flush remaining tensors and write shard files to disk",
+    "test_tie_word_embeddings_missing": "test that ShardWriter saves the tail layer when tie_word_embeddings is absent from config",
+    "test_tie_word_embeddings_true": "test that ShardWriter skips the lm_head and offloads to meta when tie_word_embeddings is true"
+  },
+  "intel_auto-round/test/test_cpu/utils/test_utils.py": {
+    "test_is_tbb_available": "test that is_tbb_available returns False when TBB is not installed",
+    "test_can_pack_with_numba_tbb_not_configured": "test that can_pack_with_numba returns False when TBB is installed but not configured",
+    "test_can_pack_with_numba_numba_missing": "test that can_pack_with_numba returns False when numba is not installed",
+    "test_test_packing_with_numba_class": "test the TestPackingWithNumba class to verify TBB and numba availability checks",
+    "review_test_packing_with_numba": "review the TestPackingWithNumba test class and its mock-based assertions for device utilities"
+  },
+  "intel_auto-round/test/test_cuda/advanced/test_evaluation.py": {
+    "test_eval_mode_hf_backend": "test the auto_round CLI with --eval flag to evaluate a model using the HF backend",
+    "test_iters_0_hf_backend": "test auto_round quantization with iters=0 and HF backend evaluation on a model",
+    "test_iters_0_task_by_task": "test auto_round quantization with iters=0 and task-by-task evaluation across multiple tasks",
+    "run_test_hf_evaluation_class": "run the TestHFEvaluation pytest class to validate all evaluation modes on CUDA",
+    "review_test_evaluation": "review the test_evaluation module to understand auto_round evaluation test coverage and skip conditions"
+  },
+  "intel_auto-round/test/test_cuda/advanced/test_multiple_card.py": {
+    "test_autoround_cli_multi_card_calibration": "run the auto_round CLI with multiple GPU devices for model calibration quantization",
+    "test_autoround_cli_nvfp4_quantization": "run the auto_round CLI with NVFP4 scheme across multiple GPUs with torch compile enabled",
+    "test_autoround_device_map_string": "test AutoRound quantization using a regex-based device map string to assign layers to specific GPUs",
+    "test_autoround_act_quantization": "test AutoRound activation quantization with custom device map dict and 4-bit act_bits across GPUs",
+    "test_autoround_mllm_device_map": "test AutoRound multi-modal LLM device mapping with string, integer, auto, and dict device_map options"
+  },
+  "intel_auto-round/test/test_cuda/algorithms/test_alg_ext.py": {
+    "test_quantize_with_scheme": "test AutoRound quantization with MXFP4, NVFP4, W2A16G64, or GGUF schemes using enable_alg_ext",
+    "test_2bit_quantization": "test 2-bit quantization with AutoRound using bits=2, group_size=64, and enable_alg_ext=True",
+    "test_cli_quantization": "test the auto_round CLI module with enable_alg_ext, avg_bits, and options flags",
+    "run_quantize_and_save": "run AutoRound quantize_and_save to produce a quantized model and evaluate accuracy with evaluate_accuracy",
+    "review_autoscheme_config": "review AutoScheme configuration with options, avg_bits, and ignore_scale_zp_bits parameters"
+  },
+  "intel_auto-round/test/test_cuda/algorithms/test_auto_scheme.py": {
+    "build_autoscheme_mixed_precision": "build an AutoScheme with target avg_bits and quantization options like GGUF or MXFP4",
+    "build_autoround_quantizer": "build an AutoRound quantizer with a model path and AutoScheme for mixed precision quantization",
+    "test_autoround_quantize": "test AutoRound quantize method to quantize a model and return layer config",
+    "test_autoround_quantize_and_save": "test AutoRound quantize_and_save to quantize a model and export it in GGUF format",
+    "test_compute_avg_bits_for_model": "test compute_avg_bits_for_model to verify the average bits per weight of a quantized model"
+  },
+  "intel_auto-round/test/test_cuda/backends/test_exllamav2_backend.py": {
+    "run_autoround_quantize_and_save": "run AutoRound to quantize a model with 4-bit asymmetric quantization and save in gptqmodel format",
+    "run_autoround_with_group_size": "run AutoRound quantization with configurable group sizes ranging from 32 to 1024 for symmetric 4-bit models",
+    "run_autoround_awq_quantization": "run AutoRound to quantize a model in auto_awq format and load with gptqmodel:awq_exllamav2 backend",
+    "run_exllamav2_inference_float16": "run inference on a quantized model using the gptqmodel:exllamav2 backend with float16 dtype",
+    "run_exllamav2_inference_bfloat16": "run inference on a quantized model using the gptqmodel:exllamav2 backend with bfloat16 dtype"
+  },
+  "intel_auto-round/test/test_cuda/backends/test_marlin_backend.py": {
+    "run_autoround_marlin_4bit_quantization": "run AutoRound 4-bit symmetric quantization with marlin backend on a causal LM model",
+    "test_autoround_marlin_group_sizes": "test AutoRound marlin backend quantization across multiple group sizes like 32, 64, and 128",
+    "test_gptqmodel_awq_marlin_backend": "test AWQ quantization with gptqmodel awq_marlin backend using AutoRound and evaluate accuracy",
+    "quantize_and_save_auto_gptq_format": "quantize a model with AutoRound and save it in auto_gptq format for marlin backend loading",
+    "evaluate_quantized_model_accuracy": "evaluate the accuracy of a marlin-quantized model using evaluate_accuracy with a threshold"
+  },
+  "intel_auto-round/test/test_cuda/backends/test_torch_backend.py": {
+    "run_autoround_4bit_asym_quantization": "run AutoRound 4-bit asymmetric quantization on a model with group size 128 and save in gptqmodel format",
+    "run_autoround_4bit_sym_quantization": "run AutoRound 4-bit symmetric quantization on a model and save in auto_round format for torch backend",
+    "run_autoround_3bit_quantization": "run AutoRound 3-bit asymmetric quantization on a model and save in gptqmodel format for inference",
+    "test_autoround_quantize_and_save": "test the AutoRound quantize_and_save method with a specified output directory and format string",
+    "test_autoround_save_quantized": "test the AutoRound save_quantized method with inplace false and auto_round format for model export"
+  },
+  "intel_auto-round/test/test_cuda/backends/test_triton_backend.py": {
+    "run_autoround_quantize_and_save": "run AutoRound to quantize a model with specified bits, group_size, and symmetry then save it",
+    "test_autoround_tritonv2_2bits_asym": "test AutoRound 2-bit asymmetric quantization with tritonv2 backend on a causal language model",
+    "test_autoround_tritonv2_4bits_sym": "test AutoRound 4-bit symmetric quantization with tritonv2 backend and evaluate accuracy on float16 and bfloat16",
+    "create_autoround_config_tritonv2": "create an AutoRoundConfig with tritonv2 backend to load a quantized model from a saved path",
+    "review_test_autoround_triton_backend": "review the TestAutoRoundTritonBackend test class that validates quantization accuracy across multiple bit widths and symmetry settings"
+  },
+  "intel_auto-round/test/test_cuda/calibration/test_calib_dataset.py": {
+    "test_combine_dataset": "test the AutoRound quantization with multiple comma-separated datasets for calibration",
+    "run_autoround_quantize": "run AutoRound quantization on a model with specified bits, group size, and symmetry settings",
+    "create_autoround_instance": "create an AutoRound instance with a model path, dataset, and quantization hyperparameters",
+    "test_autoround_with_combined_datasets": "test AutoRound quantization using a comma-separated list of HuggingFace datasets",
+    "review_autoround_quantization": "review the AutoRound quantization process with custom iterations and sequence length"
+  },
+  "intel_auto-round/test/test_cuda/calibration/test_customized_data.py": {
+    "test_autoround_list_batch_encoding": "test AutoRound quantization with a list of batch-encoded tokenizer inputs as calibration data",
+    "test_autoround_mixed_attention_mask": "test AutoRound quantization with split input_ids tensors passed as a list dataset",
+    "test_autoround_batch_encoding": "test AutoRound quantization with batch-encoded inputs moved to the model device",
+    "review_test_customized_data_class": "review the TestCustomizedData pytest class and its three calibration data format test methods",
+    "summarize_autoround_calibration_patterns": "summarize how AutoRound accepts different calibration data formats including lists, split tensors, and batch encodings"
+  },
+  "intel_auto-round/test/test_cuda/export/test_auto_awq_format.py": {
+    "test_autoawq_format": "test quantizing a model with AutoRound and saving in auto_awq format",
+    "test_autoawq_format_fp_qsave_layers": "test quantizing a model with per-layer config and saving in auto_awq format",
+    "test_fallback_regex_for_awq_format": "test AutoRound quantization with layer config regex fallback for auto_awq export",
+    "run_autoround_quantize_and_save": "run AutoRound quantize_and_save to export a quantized model in auto_awq format",
+    "load_quantized_model_with_autoroundconfig": "load a quantized model using AutoModelForCausalLM with AutoRoundConfig quantization_config"
+  },
+  "intel_auto-round/test/test_cuda/export/test_auto_gptq_format.py": {
+    "test_autogptq_format_export": "test that AutoRound quantizes a model and saves it in auto_gptq format correctly",
+    "test_autogptq_format_ignore_layers": "test AutoRound quantize_and_save with layer_config to skip quantizing specific layers like q_proj",
+    "run_autoround_quantize": "run AutoRound quantization on a model with specified bits, group_size, and symmetry settings",
+    "save_quantized_model_autogptq": "save a quantized model to disk in auto_gptq format using save_quantized",
+    "load_quantized_model_autoround": "load a quantized model from disk using AutoModelForCausalLM with AutoRoundConfig"
+  },
+  "intel_auto-round/test/test_cuda/export/test_auto_round_format.py": {
+    "quantize_model_autoround_format": "quantize a model using AutoRound with configurable bits, group_size, and symmetry settings",
+    "quantize_model_mixed_precision": "quantize a model with per-layer mixed precision configuration using layer_config parameter",
+    "quantize_model_awq_backend": "quantize and save a model in auto_round:auto_awq format for AWQ backend inference",
+    "load_quantized_model_tritonv2": "load a pre-quantized model using AutoRoundConfig with tritonv2 backend for inference",
+    "quantize_model_fp8_block": "quantize a model using FP8_BLOCK scheme and save in fp8 format with block-wise scaling"
+  },
+  "intel_auto-round/test/test_cuda/export/test_fp8_format.py": {
+    "test_fp8_block_quantization": "test FP8 block quantization with AutoRound using scheme FP8_BLOCK and format fp8",
+    "run_autoround_fp8_quantize_and_save": "run AutoRound quantize_and_save with scheme FP8_BLOCK to produce an fp8 quantized model",
+    "verify_fp8_layer_attributes": "verify quantized model layers have weight_scale_inv attribute and float8_e4m3fn dtype",
+    "check_fp8_quantization_config": "check quantization config has quant_method fp8 and weight_block_size 128x128",
+    "eval_fp8_model_on_cuda": "evaluate fp8 quantized model generation on CUDA device using eval_generated_prompt"
+  },
+  "intel_auto-round/test/test_cuda/export/test_gguf_format.py": {
+    "quantize_and_save_gguf": "use AutoRound to quantize a model and save it in gguf:q4_0 format",
+    "save_quantized_gguf_format": "call save_quantized with format gguf:q4_1 to export a quantized model as GGUF",
+    "create_tiny_model": "use save_tiny_model to create a small subset model with 2 layers for testing",
+    "evaluate_quantized_accuracy": "call evaluate_accuracy on a quantized model with a threshold and piqa task",
+    "inspect_gguf_tensors": "use GGUFReader to read a GGUF file and inspect tensor names and types"
+  },
+  "intel_auto-round/test/test_cuda/export/test_llmc_format.py": {
+    "test_mxfp4_llmcompressor_quantization": "test MXFP4 quantization with AutoRound and save in llm_compressor format",
+    "test_nvfp4_llmcompressor_quantization": "test NVFP4 quantization with AutoRound and save in llm_compressor format",
+    "test_fp8_block_llmcompressor_quantization": "test FP8_BLOCK quantization with AutoRound and save in llm_compressor format",
+    "run_autoround_quantize_and_save": "run AutoRound quantize_and_save to export a quantized model in llm_compressor format",
+    "verify_quantization_config": "verify the quantization_config format and num_bits values from a saved quantized model"
+  },
+  "intel_auto-round/test/test_cuda/integrations/test_llmc_integration.py": {
+    "run_oneshot_quantization": "run oneshot quantization on a Llama model using an AutoRoundModifier recipe and save output",
+    "test_oneshot_application": "test oneshot application of quantization recipes including NVFP4 and MXFP4 schemes on a model",
+    "test_oneshot_with_device_ids": "test oneshot quantization across multiple GPU device IDs using AutoRoundModifier",
+    "test_rtn_oneshot": "test round-to-nearest oneshot quantization with W8A8 dynamic and static recipes",
+    "review_autoround_modifier_recipes": "review the AutoRoundModifier recipe configurations for 4-bit group and 8-bit channel quantization"
+  },
+  "intel_auto-round/test/test_cuda/integrations/test_sglang.py": {
+    "run_autoround_quantization_sglang": "run AutoRound W4A16 quantization on a model and test inference with SGLang Engine",
+    "test_mixed_precision_quantization": "test mixed precision quantization with layer config for self_attn, lm_head, and mlp layers",
+    "run_sglang_inference_on_quantized_model": "run SGLang Engine inference on a quantized model path with temperature and top_p sampling params",
+    "test_awq_format_quantization": "test AWQ format quantization by converting auto_round format to auto_awq and running SGLang inference",
+    "verify_quantization_config_extra_attrs": "verify quantization config extra_config only saves attributes differing from default Scheme values"
+  },
+  "intel_auto-round/test/test_cuda/integrations/test_vllm.py": {
+    "test_auto_round_inference": "test AutoRound quantized model inference with vLLM LLM and SamplingParams for text generation",
+    "test_mixed_autoround_format": "test mixed precision AutoRound quantization with layer config and save quantized model in auto_round format",
+    "test_mixed_llmcompressor_format": "test mixed precision quantization with LLMCompressor format using NVFP4 scheme and layer-wise bit configuration",
+    "test_vllm_evaluation_backend": "test vLLM evaluation backend with custom args like tensor_parallel_size and gpu_memory_utilization via CLI",
+    "test_auto_round_awq_format": "test AutoRound AWQ format quantization and vLLM inference with W4A16 scheme and sampling parameters"
+  },
+  "intel_auto-round/test/test_cuda/models/test_conv1d.py": {
+    "test_quant_conv1d_model": "test the AutoRound quantization of a Conv1D model with 4-bit precision and group size 128",
+    "run_autoround_quantization": "run the AutoRound quantization process on a causal language model with specified bits and group size",
+    "test_save_quantized_model": "test saving a quantized model to disk and reloading it with AutoModelForCausalLM",
+    "test_model_inference_after_quant": "test model inference after quantization using the model_infer helper function",
+    "review_test_quantization_conv1d": "review the TestQuantizationConv1d class and its quantization test setup with fixtures"
+  },
+  "intel_auto-round/test/test_cuda/models/test_diffusion.py": {
+    "quantize_diffusion_model_rtn": "quantize a diffusion pipeline using AutoRound with MXFP4 scheme and zero iterations for RTN quantization",
+    "quantize_and_save_z_image": "quantize and save a Z-Image model using AutoRound with one iteration and coco2014 dataset",
+    "quantize_diffusion_with_layer_config": "quantize a diffusion pipeline with per-layer bit configuration using AutoRound and MXFP4 scheme",
+    "check_if_diffusion_model": "check if a given model path is a diffusion model using the is_diffusion_model utility function",
+    "quantize_diffusion_multi_gpu": "quantize a diffusion pipeline across multiple GPUs using AutoRound with a device_map parameter"
+  },
+  "intel_auto-round/test/test_cuda/models/test_fp8_model.py": {
+    "quantize_model_with_autoround": "create an AutoRound instance with iters=0 to quantize an FP8 model using round-to-nearest",
+    "save_quantized_model_as_gguf": "call quantize_and_save with format gguf:q4_0 to export a quantized model as GGUF",
+    "quantize_with_layer_config": "pass a layer_config dict to AutoRound to quantize specific layers like lm_head at 4 bits",
+    "check_quantized_module_types": "call check_and_mark_quantized_module on a model to detect and return FP8 weight types",
+    "convert_fp8_to_high_precision": "call convert_module_to_hp_if_necessary to convert FP8Linear layers back to standard torch.nn.Linear"
+  },
+  "intel_auto-round/test/test_cuda/models/test_get_block_name.py": {
+    "test_get_block_names": "test get_block_names function to extract transformer block layer names from a loaded HuggingFace model",
+    "test_is_pure_text_model": "test is_pure_text_model function to verify if a model is text-only without vision or audio components",
+    "test_multimodal_block_names": "test get_block_names with quant_vision flag to retrieve both vision and language model block names",
+    "test_check_block_names": "test check_block_names helper to validate block name prefixes and layer counts match expected values",
+    "test_autoround_models": "test AutoRound compatibility across multiple model architectures including LLaMA, Qwen, Gemma, Falcon, and FLUX"
+  },
+  "intel_auto-round/test/test_cuda/models/test_mllm.py": {
+    "quantize_vlm_with_autoround": "quantize a vision language model using AutoRound with 4-bit symmetric quantization and save in auto_round format",
+    "run_qwen_vl_inference": "run inference on a quantized Qwen2-VL model with an image and text prompt using AutoProcessor",
+    "get_vision_block_names": "get the block names for a multimodal LLM model with optional vision module quantization using get_block_names",
+    "detect_mllm_model": "detect whether a given model is a multimodal LLM using is_mllm_model and load it with mllm_load_model",
+    "test_early_stop_calibration": "test early-stop behavior during calibration caching for Llama-3.2 vision model using AutoRound cache_inter_data"
+  },
+  "intel_auto-round/test/test_cuda/models/test_moe_model.py": {
+    "test_qwen3_5_moe_quantization": "test quantizing a Qwen3.5 MoE model using AutoRound and verify inference on CUDA",
+    "run_autoround_quantize_and_save": "run AutoRound quantize_and_save on a model with custom nsamples, seqlen, and iters parameters",
+    "test_load_quantized_moe_model": "test loading a quantized Qwen3.5 MoE model from disk and running inference on CUDA",
+    "review_autoround_moe_quantization": "review the AutoRound quantization workflow for Qwen3.5 MoE models including save and reload",
+    "summarize_test_qwen3_5_moe": "summarize the test_qwen3_5_moe test function that validates MoE model quantization and inference"
+  },
+  "intel_auto-round/test/test_cuda/models/test_omni_model.py": {
+    "run_autoround_quantize_and_save": "run AutoRound to quantize a Qwen2.5-Omni model and save the quantized weights",
+    "run_autoround_quantize_mxfp4": "run AutoRound with MXFP4 scheme to quantize a Qwen3-Omni-MoE model",
+    "test_qwen2_5_omni_quantization": "test the Qwen2.5-Omni quantization flow by quantizing saving and reloading the model",
+    "test_qwen3_omni_moe_quantization": "test the Qwen3-Omni-MoE quantization flow by quantizing saving and running inference",
+    "review_test_omni_model": "review the test_omni_model test file for CUDA integration tests on Qwen-Omni models"
+  },
+  "intel_auto-round/test/test_cuda/models/test_support_vlms.py": {
+    "test_qwen2_vl_quantization": "test quantizing Qwen2-VL-2B-Instruct multimodal model using auto_round with mllm flag and verify inference",
+    "test_phi3_vision_quantization": "test quantizing Phi-3.5-vision-instruct model using auto_round with mllm flag and verify image description inference",
+    "test_phi3_vision_awq_format": "test quantizing Phi-3.5-vision-instruct in auto_awq format with non-text module quantization and verify WQLinear_GEMM layers",
+    "test_glm4v_quantization": "test quantizing THUDM glm-4v-9b vision language model using auto_round and verify tuning success",
+    "test_granite_vision_quantization": "test quantizing IBM granite-vision-3.2-2b model using auto_round and verify tuning success"
+  },
+  "intel_auto-round/test/test_cuda/quantization/test_asym.py": {
+    "test_asym_group_size_with_tuning": "test asymmetric quantization with group sizes 32, 64, and 128 using AutoRound on a tiny OPT model",
+    "test_asym_bits_with_tuning": "test asymmetric quantization with bit widths 2, 3, and 8 using AutoRound on a tiny OPT model",
+    "test_asym_format_with_tuning": "test asymmetric quantization export formats auto_round, auto_gptq, and gptqmodel using AutoRound on a tiny OPT model",
+    "run_AutoRound_quantize_and_save": "run AutoRound to quantize a model with asymmetric settings and save to an output directory",
+    "review_TestAutoRoundAsym": "review the TestAutoRoundAsym class that tests asymmetric quantization with varying group sizes, bits, and export formats"
+  },
+  "intel_auto-round/test/test_cuda/quantization/test_mxfp_nvfp.py": {
+    "test_e2e_quant_and_infer": "test end-to-end quantization and inference with MXFP8, MXFP4, or NVFP4 schemes on a Qwen model",
+    "test_nvfp4_moe_actmax_rtn": "test NVFP4 quantization with rtn on a DeepSeek V2 MoE model using AutoRound",
+    "test_nvfp4_moe_actmax_ar": "test NVFP4 quantization with auto-round iterations on a DeepSeek V2 MoE model",
+    "test_qwen_moe_quant_infer": "test NVFP4 quantization and accuracy evaluation on a Qwen MoE model with layer config",
+    "review_TestAutoRound": "review the TestAutoRound class and its NVFP4 MoE quantization test methods for correctness"
+  },
+  "intel_auto-round/test/test_cuda/quantization/test_packing.py": {
+    "test_pack_fp4_to_uint8": "test the pack_fp4_to_uint8 function by comparing output against the reference implementation",
+    "create_random_e2m1_tensor": "create a random tensor with E2M1 FP4 values sampled from the FLOAT_TO_E2M1 lookup table",
+    "pack_fp4_to_uint8_old": "pack a tensor of FP4 values into uint8 by mapping each value to its 4-bit index",
+    "check_cuda_memory": "check if the current CUDA device has more than 40 GB of total memory",
+    "review_test_packing_fp4": "review the parametrized test_packing_fp4 test that validates FP4 packing across Qwen weight shapes"
+  },
+  "intel_auto-round/test/test_cuda/quantization/test_torch_compile.py": {
+    "test_gguf_q2ks_torch_compile": "test GGUF Q2_K_S quantization with torch compile enabled on a Qwen model",
+    "test_gguf_q2ks_torch_compile_iters0": "test GGUF Q2_K_S quantization with torch compile in RTN mode using iters zero",
+    "run_autoround_quantize": "run AutoRound quantization with torch compile enabled and save the quantized model to a directory",
+    "run_autoround_quantize_and_save": "run AutoRound quantize and save in one step with GGUF format and torch compile enabled",
+    "review_test_torch_compile": "review the TestTorchCompile class that tests GGUF quantization with torch compile for correctness"
+  },
+  "intel_auto-round/test/test_cuda/transform/test_mxfp4_transform.py": {
+    "run_mxfp4_quantization": "run MXFP4 quantization on a HuggingFace model using AutoRound with default rotation",
+    "run_mxfp4_tuning_quantization": "run MXFP4 quantization with tuning iterations on a HuggingFace model using AutoRound",
+    "run_random_hadamard_mxfp4_quantization": "run MXFP4 quantization with random Hadamard rotation on a HuggingFace model using AutoRound",
+    "test_quantized_model_inference": "test inference on a quantized MXFP4 model loaded via AutoModelForCausalLM",
+    "review_autoround_mxfp4_tests": "review the TestAutoRound class and its MXFP4 quantization test methods"
+  },
+  "intel_auto-round/test/test_hpu/test_auto_round.py": {
+    "run_opt_125m_on_hpu": "run the opt-125m model quantization on HPU using AutoRound with 4-bit weights and group size 128",
+    "test_opt_125m_lazy_mode": "test the opt-125m model quantization on HPU in lazy mode using pytest",
+    "test_opt_125m_compile_mode": "test the opt-125m model quantization on HPU in compile mode using pytest",
+    "test_w4a8": "test the w4a8 mixed precision quantization with fp8 activations and int4 weights using AutoRound",
+    "review_run_opt_125m_on_hpu": "review the run_opt_125m_on_hpu function that loads opt-125m and quantizes it with AutoRound on HPU"
+  },
+  "intel_auto-round/test/test_hpu/test_inference.py": {
+    "check_is_hpex_available": "check if habana frameworks torch core is available for hpu inference",
+    "review_is_hpex_available": "review the is_hpex_available function that checks for habana frameworks availability",
+    "test_hpu_inference_autogptq": "test auto_gptq format quantized model inference on habana hpu devices",
+    "test_hpu_inference_autoround": "test auto_round format quantized model inference on habana hpu devices",
+    "refactor_test_autoround_class": "refactor the commented out TestAutoRound class into proper pytest format"
+  },
+  "intel_auto-round/test/test_hpu/test_quant_fp8.py": {
+    "test_autoround_fp8_quantization": "test AutoRound FP8 static quantization on Qwen3-0.6B model and verify FP8 linear layers",
+    "run_rtn_generation_test": "run the rtn generation test that quantizes a model to FP8 and saves with llm_compressor format",
+    "test_check_nan_inf_in_tensor": "test the check_nan_inf_in_tensor method to detect NaN or Inf values in a PyTorch tensor",
+    "review_test_autoround_class": "review the TestAutoRound class and its FP8 quantization test parametrized over Qwen3 model variants",
+    "summarize_autoround_quantize_and_save": "summarize how AutoRound quantize_and_save converts model linears to FP8QLinear with float8_e4m3fn weights"
+  },
+  "intel_auto-round/test/test_hpu/test_statc_attn.py": {
+    "test_deepseek_v2_on_hpu": "test DeepSeek-V2 model quantization with FP8 static attention on HPU using AutoRound",
+    "setup_deepseekv2_fixture": "create a pytest fixture that loads DeepSeek-V2 model, tokenizer, and config with reduced layers",
+    "autoround_quantize_and_save": "run AutoRound quantize_and_save with FP8_STATIC scheme and llm_compressor format for a model",
+    "check_q_scale_collection": "review the quantized model q_scale tensor to verify static attention scales were collected",
+    "verify_fp8_static_attention": "test that FP8 static attention dtype produces non-zero q_scale values on HPU devices"
+  },
+  "intel_auto-round/test/test_mlx/test_mlx_format.py": {
+    "run_autoround_quantize_and_save": "run AutoRound RTN quantization on a model and export to mlx or auto_round format",
+    "read_quantization_config": "read the quantization_config dictionary from an exported model directory",
+    "count_mlx_layers": "count QuantLinearMLX instances in a loaded HuggingFace model",
+    "generate_with_mlx_lm": "load a native MLX checkpoint through mlx_lm and generate text",
+    "generate_with_hf_transformers": "load an auto_round checkpoint through HF transformers and generate text"
+  },
+  "intel_auto-round/test/test_xpu/test_autoround.py": {
+    "quantize_model_gptq_format": "quantize a causal LM model using AutoRound with GPTQ format and save to disk",
+    "quantize_model_awq_format": "quantize a causal LM model using AutoRound with AWQ format and save to disk",
+    "quantize_model_scheme": "quantize a model using AutoRound with schemes like W4A16, W8A16, MXFP4, or NVFP4",
+    "quantize_vlm_model": "quantize a vision language model like Qwen2-VL using AutoRound with W4A16 scheme",
+    "quantize_lm_head": "quantize the lm_head layer of a model using AutoRound with custom layer_config settings"
+  },
+  "intel_auto-round/test/test_xpu/test_llmc_integration.py": {
+    "test_oneshot_application": "test applying AutoRound quantization recipes to a TinyLlama model on Intel XPU via oneshot",
+    "test_oneshot_with_device_ids": "test oneshot quantization across multiple Intel XPU devices using device_ids parameter",
+    "test_rtn_oneshot": "test round-to-none quantization with w8a8 dynamic and static recipes on Intel XPU",
+    "create_autoround_modifier_recipe": "create an AutoRoundModifier recipe with 4-bit group-wise weight quantization and lm_head ignored",
+    "run_oneshot_quantization": "run oneshot quantization on a HuggingFace model using a calibration dataset and AutoRound recipe"
+  },
+  "intel_auto-round/test/test_xpu/test_xpu_sdpa_patch.py": {
+    "test_patch_xpu_sdpa_drop_causal_mask": "test that patch_xpu_sdpa_drop_causal_mask correctly identifies and replaces causal masks on XPU devices",
+    "run_xpu_sdpa_patch_test": "run the XPU SDPA patch test to verify causal mask replacement produces correct attention output",
+    "test_scaled_dot_product_attention_with_causal_mask": "test scaled dot product attention with a causal mask on XPU and compare to is_causal=True output",
+    "test_scaled_dot_product_attention_with_non_causal_mask": "test scaled dot product attention with a non-causal mask on XPU to verify it is not patched",
+    "verify_xpu_availability": "verify that torch XPU is available before running the SDPA patch test"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "facebookresearch_dlrm/optim/rwsadagrad.py": {
+    "create_optimizer": "create an RWSAdagrad optimizer instance with custom learning rate and weight decay for model parameters",
+    "run_optimization_step": "run a single optimization step using the RWSAdagrad optimizer to update model parameters with sparse gradients",
+    "configure_lr_decay": "configure the RWSAdagrad optimizer with learning rate decay to reduce step size over training iterations",
+    "share_memory_state": "share the RWSAdagrad optimizer state across processes for multi-process training with sparse and dense gradients",
+    "review_sparse_gradient_update": "review the RWSAdagrad step method to understand how row-wise sparse gradient updates are computed and applied"
+  },
+  "facebookresearch_dlrm/tools/visualize.py": {
+    "run_visualize_dlrm_embeddings": "run the DLRM visualization script with UMAP and T-SNE to analyze embedding tables and data representations for kaggle or terabyte datasets",
+    "run_analyze_model_data": "run the analyze_model_data function to perform full embedding analysis, UMAP visualization, and categorical analysis on a trained DLRM model",
+    "run_visualize_embeddings_umap": "run visualize_embeddings_umap to reduce and plot DLRM embedding table vectors using UMAP dimensionality reduction with configurable metrics",
+    "run_visualize_embeddings_tsne": "run visualize_embeddings_tsne to reduce and plot DLRM embedding table vectors using T-SNE dimensionality reduction",
+    "run_analyse_categorical_counts": "run analyse_categorical_counts to compute and plot frequency counts and embedding norms for each categorical variable in the training data"
+  },
+  "facebookresearch_dlrm/torchrec_dlrm/aws_component.py": {
+    "run_dlrm_main_default": "run the DLRM training job with 8 trainers on a single AWS p4d instance using default settings",
+    "run_dlrm_main_multi_host": "run the DLRM training job with 16 trainers spanning 2 hosts using multiples of 8",
+    "run_dlrm_main_custom_args": "run the DLRM training job with custom script arguments passed to dlrm_main.py entrypoint",
+    "review_run_dlrm_main": "review the run_dlrm_main function to understand how it configures DDP training on AWS p4d instances",
+    "refactor_run_dlrm_main": "refactor the run_dlrm_main function to support configurable CPU and GPU resource allocation per node"
+  },
+  "facebookresearch_dlrm/torchrec_dlrm/dlrm_main.py": {
+    "run_dlrm_training": "run the DLRM model training on Criteo dataset with configurable epochs and batch size",
+    "run_dlrm_with_dcn": "run the DLRM-DCN model training with deep and cross network interaction layers",
+    "run_dlrm_with_projection": "run the DLRM-Projection model training with dual branch interaction architecture",
+    "run_dlrm_multi_hot": "run the DLRM training with multi-hot encoding for sparse features using pareto distribution",
+    "run_dlrm_adagrad": "run the DLRM training using the Adagrad optimizer with fused backward pass updates"
+  },
+  "facebookresearch_dlrm/torchrec_dlrm/lr_scheduler.py": {
+    "create_LRPolicyScheduler": "create a LRPolicyScheduler with warmup steps, decay start step, and decay steps for an optimizer",
+    "build_lr_warmup_schedule": "build a learning rate schedule that linearly warms up from zero over a specified number of steps",
+    "build_lr_decay_schedule": "build a learning rate schedule that quadratically decays the learning rate over a specified number of steps",
+    "review_LRPolicyScheduler_get_lr": "review the LRPolicyScheduler get_lr method that returns the current learning rate based on step count",
+    "test_LRPolicyScheduler_validation": "test the LRPolicyScheduler constructor validation that ensures warmup finishes before decay starts"
+  },
+  "facebookresearch_dlrm/torchrec_dlrm/multi_hot.py": {
+    "create_multihot_converter": "create a Multihot instance with uniform or pareto distribution to convert 1-hot sparse features to multi-hot",
+    "convert_batch_to_multi_hot": "convert a torchrec Batch with 1-hot sparse features into a multi-hot Batch using convert_to_multi_hot",
+    "save_frequency_stats": "save pre-hash and post-hash frequency statistics as numpy files using save_freqs_stats",
+    "pause_stats_collection": "pause frequency stats collection during validation by calling pause_stats_collection_during_val_and_test with a model",
+    "create_restartable_map": "create a RestartableMap iterator that applies a function to each element of a source iterable"
+  },
+  "facebookresearch_dlrm/torchrec_dlrm/data/dlrm_dataloader.py": {
+    "get_dataloader": "get a PyTorch DataLoader for train, val, or test stage using command line args and a distributed backend",
+    "get_random_dataloader": "get a DataLoader wrapping a RandomRecDataset with synthetic random Criteo-style data for the given stage",
+    "get_in_memory_dataloader": "get a DataLoader wrapping an InMemoryBinaryCriteoIterDataPipe or MultiHotCriteoIterDataPipe from binary numpy files on disk",
+    "review_get_dataloader": "review the get_dataloader function to understand how it routes between random and in-memory data loaders based on args",
+    "refactor_get_in_memory_dataloader": "refactor the _get_in_memory_dataloader function to support additional dataset formats beyond criteo_kaggle and criteo_1tb"
+  },
+  "facebookresearch_dlrm/torchrec_dlrm/data/multi_hot_criteo.py": {
+    "create_MultiHotCriteoIterDataPipe": "create a MultiHotCriteoIterDataPipe datapipe instance with dense sparse and label file paths for distributed training",
+    "build_MultiHotCriteoIterDataPipe_with_mmap": "build a MultiHotCriteoIterDataPipe with mmap_mode enabled to memory map dense and label numpy arrays",
+    "iterate_MultiHotCriteoIterDataPipe_batches": "iterate over a MultiHotCriteoIterDataPipe to yield Batch objects containing dense features sparse features and labels",
+    "load_sparse_from_npz": "load a sparse multi-hot feature array from an npz file using memmap via the _load_from_npz method",
+    "convert_arrays_to_batch": "convert numpy dense sparse and label arrays into a Batch object with KeyedJaggedTensor sparse features"
+  },
+  "facebookresearch_dlrm/torchrec_dlrm/scripts/materialize_synthetic_multihot_dataset.py": {
+    "run_materialize_multihot_dataset": "run the script to materialize synthetic multi-hot dataset from Criteo binary npy files into npz format",
+    "run_multihot_with_pareto_distribution": "run the script with pareto distribution type to generate multi-hot sparse dataset for all days",
+    "run_multihot_with_copy_labels": "run the script with copy labels and dense flag to include labels and dense data in output",
+    "run_distributed_multihot_materialization": "run the script in distributed mode across multiple GPUs using NCCL backend for parallel dataset generation",
+    "review_parse_args_multihot": "review the parse_args function to understand CLI arguments for multi-hot dataset materialization including embedding sizes and distribution type"
+  },
+  "facebookresearch_dlrm/torchrec_dlrm/tests/test_dlrm_main.py": {
+    "run_dlrm_trainer_random": "run the DLRM trainer with random data using elastic_launch and configurable batch limits",
+    "run_dlrm_trainer_criteo": "run the DLRM trainer on in-memory Criteo dataset with configurable epochs and batch size",
+    "run_dlrm_trainer_dcn": "run the DLRM trainer with DCN interaction type and configurable low-rank dimensions",
+    "test_main_function": "test the main DLRM entry point using distributed elastic launch with spawn method",
+    "test_main_function_dcn": "test the main DLRM entry point with DCN interaction layers via elastic distributed launch"
+  },
+  "facebookresearch_dlrm/tricks/md_embedding_bag.py": {
+    "run_md_solver": "run md_solver to compute mixed-dimension embedding sizes using the alpha power temperature heuristic",
+    "run_alpha_power_rule": "run alpha_power_rule to calculate embedding dimensions based on a parameter budget or baseline dimension",
+    "run_pow_2_round": "run pow_2_round to round embedding dimensions to the nearest power of 2",
+    "create_PrEmbeddingBag": "create a PrEmbeddingBag module with a sparse embedding bag and optional linear projection to base dimension",
+    "review_PrEmbeddingBag_forward": "review the PrEmbeddingBag forward method to understand how it applies projection after the embedding bag lookup"
+  },
+  "facebookresearch_dlrm/tricks/qr_embedding_bag.py": {
+    "build_QREmbeddingBag_mult": "build a QREmbeddingBag module using the mult operation to compose quotient and remainder embeddings for memory-efficient recommendations",
+    "build_QREmbeddingBag_concat": "build a QREmbeddingBag module using the concat operation to concatenate quotient and remainder embedding vectors",
+    "build_QREmbeddingBag_add": "build a QREmbeddingBag module using the add operation to sum quotient and remainder embedding vectors",
+    "test_QREmbeddingBag_forward": "test the QREmbeddingBag forward pass with input indices offsets and per_sample_weights arguments",
+    "review_QREmbeddingBag_reset_parameters": "review the QREmbeddingBag reset_parameters method that initializes weight tensors with a uniform distribution"
+  }
+}

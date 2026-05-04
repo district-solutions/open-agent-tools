@@ -1,0 +1,646 @@
+{
+  "facebookresearch_detectandtrack/lib/convert/box.py": {
+    "expand_boxes": "expand bounding boxes by a given ratio around their center using numpy arrays",
+    "expand_boxes_ratio": "expand bounding boxes by 20 percent ratio for object detection preprocessing",
+    "compute_boxes_from_pose": "compute bounding boxes from COCO style 17 keypoint poses across video frames",
+    "compute_boxes_from_pose_coco": "compute bounding boxes from COCO style poses and return x y width height format",
+    "review_expand_boxes": "review the expand_boxes function to understand how it scales bounding box dimensions"
+  },
+  "facebookresearch_detectandtrack/lib/convert/data.py": {
+    "get_posetrack_kpt_ordering": "get the PoseTrack 15 keypoint ordering and 14 skeleton joint connections for human pose estimation",
+    "build_posetrack_skeleton_visualizer": "build a module that uses get_posetrack_kpt_ordering to draw a human skeleton from detected keypoints",
+    "convert_posetrack_keypoints": "convert keypoints between PoseTrack ordering and another dataset format using the ordering list",
+    "validate_posetrack_annotations": "validate PoseTrack annotation files by checking keypoint names against the expected ordering",
+    "summarize_posetrack_skeleton": "summarize the PoseTrack skeleton structure by listing all joints and their connections"
+  },
+  "facebookresearch_detectandtrack/lib/convert/loader.py": {
+    "load_mat_annotation_file": "load a MATLAB .mat annotation file and return a list of VideoAnnot namedtuples with image paths, labels, and bounding boxes",
+    "parse_video_annotations": "parse video annotation data from a .mat file into VideoAnnot objects containing image names, labeled flags, and box lists",
+    "extract_bounding_boxes_and_poses": "extract bounding box head coordinates, track IDs, and 15x3 pose arrays from labeled video annotations in a .mat file",
+    "create_VideoAnnot_namedtuple": "create a VideoAnnot namedtuple with fields for image path, labeled status, and a list of VideoAnnotBox objects",
+    "create_VideoAnnotBox_namedtuple": "create a VideoAnnotBox namedtuple with fields for head bounding box coordinates, track ID, and pose keypoints"
+  },
+  "facebookresearch_detectandtrack/lib/core/config.py": {
+    "cfg_from_file": "load a YAML config file and merge it into the default Fast R-CNN config options",
+    "cfg_from_cfg": "merge a config dictionary into the default Fast R-CNN config options",
+    "cfg_from_list": "set config keys via a key-value list from the command line",
+    "assert_and_infer_cfg": "validate and infer config options such as RPN and video settings",
+    "get_output_dir": "get or create the output directory path for training or testing"
+  },
+  "facebookresearch_detectandtrack/lib/core/mpii_eval_engine.py": {
+    "run_mpii_eval": "run the MPII evaluation on detection pickle files using a roidb and dataset object",
+    "coco2posetrack": "convert COCO format keypoints to MPII posetrack format with confidence scores and threshold filtering",
+    "compute_score": "compute a keypoint confidence score using global, local, or scaled confidence types from config",
+    "convert_data_to_annorect_struct": "convert detection boxes, poses, and track IDs into MPII annorect JSON structure for evaluation",
+    "run_posetrack_eval": "run posetrack evaluation by converting detections to JSON and computing mAP and MOTA scores"
+  },
+  "facebookresearch_detectandtrack/lib/core/nms_wrapper.py": {
+    "run_nms_on_detections": "run non-maximum suppression on a numpy array of detection boxes with a given IoU threshold",
+    "run_soft_nms_with_gaussian": "run soft NMS using the gaussian method on detection boxes with a custom sigma and overlap threshold",
+    "run_tube_nms_on_video_detections": "run NMS on video tube detections where each row contains concatenated bounding boxes across multiple frames",
+    "run_nms_with_soft_nms_flag": "run NMS dispatching to CPU or tube NMS based on detection box dimensionality and soft NMS flag",
+    "review_soft_nms_methods": "review the soft_nms function to understand the hard, linear, and gaussian suppression methods available"
+  },
+  "facebookresearch_detectandtrack/lib/core/rpn_generator.py": {
+    "generate_rpn_on_dataset": "generate RPN region proposals on a dataset using single or multi-GPU inference with Caffe2",
+    "evaluate_proposal_file": "evaluate RPN proposal recall metrics at 300, 1000, and 2000 proposals per image across area categories",
+    "generate_rpn_on_range": "generate RPN proposals on a specified range of images from a dataset and save results to pickle",
+    "im_proposals": "generate RPN region proposals and scores on a single image using a loaded Caffe2 model",
+    "get_image_blob": "convert a BGR image into a network input blob with scaling and pixel mean subtraction"
+  },
+  "facebookresearch_detectandtrack/lib/core/test.py": {
+    "run_im_detect_bbox": "run bounding box detection on an image using a Fast R-CNN model with optional box proposals",
+    "run_im_detect_bbox_aug": "run bounding box detection with test-time augmentations including horizontal flip, scale, and aspect ratio variations",
+    "run_im_detect_all": "run full detection pipeline including bounding boxes, masks, and keypoints on an image with timing",
+    "run_im_detect_mask": "infer instance segmentation masks for detected bounding boxes using a mask R-CNN model",
+    "run_im_detect_keypoints": "infer instance keypoint poses from detected bounding boxes using a keypoint R-CNN model"
+  },
+  "facebookresearch_detectandtrack/lib/core/test_engine.py": {
+    "test_net_on_dataset": "test a Fast R-CNN network on a dataset with optional multi-GPU support and evaluation",
+    "initialize_model_from_cfg": "initialize a Caffe2 detection model from config with weights and optional mask and keypoint nets",
+    "test_net": "run inference on images in a roidb collecting bounding boxes, segmentations, and keypoints",
+    "evaluate_all": "evaluate detections, segmentations, and keypoints against ground truth for COCO, Cityscapes, or VOC datasets",
+    "multi_gpu_test_net_on_dataset": "run parallel multi-GPU inference on a dataset then collate and save detection results"
+  },
+  "facebookresearch_detectandtrack/lib/core/tracking_engine.py": {
+    "run_posetrack_tracking": "run pose tracking on detections from a pickle file and output tracked results with evaluation",
+    "compute_matches_tracks": "compute track IDs for all detections across video frames using Hungarian or greedy bipartite matching",
+    "compute_distance_matrix": "compute a pairwise cost matrix between previous and current frame detections using bbox overlap or pose PCK",
+    "compute_matches": "perform bipartite matching on a cost matrix to match current frame detections to previous frame tracks",
+    "smooth_pose_video": "smooth pose keypoints across video frames using Farneback optical flow with forward and backward context"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/json_dataset.py": {
+    "create_json_dataset": "create a JsonDataset instance from a COCO JSON annotation file for PoseTrack datasets",
+    "get_roidb_with_gt": "get the region proposal database with ground truth annotations and optional proposal files",
+    "add_proposals_to_roidb": "add proposal boxes and ROI scales to an existing roidb with ground truth annotations",
+    "convert_predictions_to_coco_objs": "convert raw prediction boxes and poses into COCO-format object dictionaries for evaluation",
+    "filter_crowd_proposals": "filter out proposal boxes that overlap crowd regions above a specified IoU threshold"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/json_dataset_evaluator.py": {
+    "evaluate_segmentations": "run COCO segmentation evaluation on a JSON dataset and write results to an output directory",
+    "evaluate_detections": "run COCO bounding box detection evaluation on a JSON dataset and log per-category AP metrics",
+    "evaluate_recall": "compute detection proposal recall metrics for a roidb across configurable IoU thresholds and area ranges",
+    "evaluate_keypoints": "run COCO keypoint evaluation on a JSON dataset using logit, prob, or bbox confidence scores",
+    "log_detection_eval_metrics": "summarize COCO evaluation metrics including mean AP and per-category AP at IoU thresholds 0.5 to 0.95"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/roidb.py": {
+    "build_combined_roidb_for_training": "build a python module to load and combine multiple dataset roidbs for training with optional proposal files",
+    "create_extend_with_flipped_entries": "create a function that extends a roidb with horizontally flipped entries for data augmentation",
+    "test_filter_for_training": "test the filter_for_training function to remove roidb entries with no usable foreground or background RoIs",
+    "refactor_add_bbox_regression_targets": "refactor the add_bbox_regression_targets function to compute bounding-box regression targets for each roidb entry",
+    "summarize_compute_and_log_stats": "summarize the _compute_and_log_stats function that logs a ground-truth class histogram across the roidb"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py/evaluateAP.py": {
+    "run_evaluateAP": "run evaluateAP to compute average precision, precision, and recall for pose tracking predictions against ground truth",
+    "run_computeMetrics": "run computeMetrics to calculate AP, precision, and recall per joint from scores and labels arrays",
+    "test_evaluateAP": "test evaluateAP by passing ground truth frames and predicted frames to verify AP computation",
+    "review_computeMetrics": "review computeMetrics to understand how it iterates over joints and images to aggregate precision and recall",
+    "refactor_evaluateAP": "refactor evaluateAP to accept a configurable distance threshold instead of the hardcoded 0.5 value"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py/evaluatePCKh.py": {
+    "run_evaluatePCKh": "run evaluatePCKh to compute PCKh pose estimation accuracy from ground truth and prediction frames",
+    "run_computeDist": "run computeDist to calculate normalized Euclidean distances between ground truth and predicted joint keypoints",
+    "run_computePCK": "run computePCK to compute percentage of correct keypoints within a normalized distance threshold",
+    "review_evaluatePCKh": "review evaluatePCKh to understand the PCKh evaluation pipeline for human pose estimation benchmarks",
+    "refactor_computeDist": "refactor computeDist to support additional normalization methods beyond head bounding box size"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py/evaluateTracking.py": {
+    "run_evaluateTracking": "run evaluateTracking to compute MOT metrics for pose tracking predictions against ground truth",
+    "run_computeMetrics": "run computeMetrics to calculate MOTA, MOTP, precision, and recall per joint across sequences",
+    "run_process_frame": "run process_frame to accumulate per-joint MOT metrics for a single tracking sequence",
+    "review_evaluateTracking": "review evaluateTracking to understand how predicted poses are assigned to ground truth poses",
+    "refactor_computeMetrics": "refactor computeMetrics to adjust the multiprocessing pool size or intermediate metric names"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py/evaluate_simple.py": {
+    "run_evaluate_pose_and_tracking": "run evaluate to compute AP and MOT metrics for PoseTrack predictions against ground truth",
+    "run_evaluate_pose_only": "run evaluate with eval_track=False to compute only Average Precision metrics for pose estimation",
+    "run_evaluate_tracking_only": "run evaluate with eval_pose=False to compute only MOT tracking metrics for pose tracking",
+    "run_evaluate_upper_bound": "run evaluate with eval_upper_bound=True to compute tracking metrics using ground truth detection upper bound",
+    "review_evaluate_function": "review the evaluate function that loads ground truth and prediction data then computes AP and MOT metrics"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py-motmetrics/motmetrics/distances.py": {
+    "compute_squared_euclidean_distance_matrix": "compute the squared Euclidean distance matrix between object and hypothesis points using norm2squared_matrix",
+    "compute_iou_distance_matrix": "compute the intersection over union distance matrix between object and hypothesis rectangles using iou_matrix",
+    "filter_distances_by_max_threshold": "filter pairwise distances by setting values exceeding max_d2 to np.nan in norm2squared_matrix",
+    "evaluate_tracker_pairwise_distances": "evaluate pairwise distances between ground truth objects and tracker hypotheses for MOT benchmarking",
+    "handle_empty_input_arrays": "handle empty object or hypothesis arrays by returning an empty distance matrix"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py-motmetrics/motmetrics/io.py": {
+    "load_motchallenge_data": "load MOT challenge tracking data from a file into a pandas DataFrame with bounding box columns",
+    "load_vatictxt_data": "load Vatic text format annotation files into a pandas DataFrame with track IDs and bounding boxes",
+    "loadtxt_any_format": "load tracking data from MOT16, MOT15-2D, or Vatic text format files into a DataFrame",
+    "render_summary_table": "render a metrics summary DataFrame into console-friendly tabular output with custom formatters and name mappings",
+    "use_motchallenge_metric_names": "use the motchallenge_metric_names dictionary to map internal metric names to MOTChallenge-compliant abbreviations"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py-motmetrics/motmetrics/metrics.py": {
+    "create_metrics_host": "create a MetricsHost instance with create() to register default MOT metrics for tracker benchmarking",
+    "compute_mota_motp": "compute MOTA and MOTP metrics on a MOTAccumulator using MetricsHost compute method",
+    "register_custom_metric": "register a custom metric function with dependencies and formatter to the MetricsHost",
+    "list_registered_metrics": "list all registered metrics with descriptions and dependencies using list_metrics method",
+    "compute_many_trackers": "compute MOT metrics across multiple trackers at once using compute_many method"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py-motmetrics/motmetrics/mot.py": {
+    "create_MOTAccumulator": "create a MOTAccumulator instance with auto_id enabled to track multi-object tracking events per frame",
+    "update_MOTAccumulator": "update the MOTAccumulator with object IDs, hypothesis IDs, and a pairwise distance matrix for a given frame",
+    "reset_MOTAccumulator": "reset the MOTAccumulator to clear all tracked events, pairings, and last occurrence state",
+    "create_event_dataframe": "create a new pandas DataFrame with FrameId and Event multi-index for tracking MOT events",
+    "sanitize_distances": "sanitize a distance matrix by replacing NaN and infinite values with a safe invalid distance value"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py-motmetrics/motmetrics/utils.py": {
+    "compare_detector_to_groundtruth": "compare detector results to ground truth using IoU or Euclidean distance and return a MOTAccumulator",
+    "compute_iou_distance_matrix": "compute the intersection over union distance matrix between object and hypothesis bounding box rectangles",
+    "compute_euclidean_distance_matrix": "compute the squared Euclidean distance matrix between object and hypothesis points with a max distance threshold",
+    "create_mot_accumulator": "create a MOTAccumulator to track per-frame MATCH, SWITCH, MISS, and FP events for multi-object tracking evaluation",
+    "update_mot_accumulator_with_frame": "update the MOTAccumulator with object IDs, hypothesis IDs, and a pairwise distance matrix for a given frame"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py-motmetrics/motmetrics/apps/eval_motchallenge.py": {
+    "run_motchallenge_eval": "run the MOTChallenge evaluation script comparing tracker results against ground truth data",
+    "run_parse_args": "run parse_args to parse CLI arguments for groundtruths directory, tests directory, loglevel, and data format",
+    "run_compare_dataframes": "run compare_dataframes to compare tracker result dataframes against ground truth using IoU with threshold 0.5",
+    "run_compute_metrics": "run compute_many to compute MOTChallenge benchmark metrics across all matched sequence pairs",
+    "run_render_summary": "run render_summary to print a formatted table of MOTChallenge metrics from the computed summary"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py-motmetrics/motmetrics/tests/test_distances.py": {
+    "test_norm2squared_matrix": "test the norm2squared_matrix function to compute pairwise squared Euclidean distances between two sets of points",
+    "test_norm2squared_matrix_max_d2": "test the norm2squared_matrix function with a max_d2 threshold to mask distances above the limit with NaN",
+    "test_norm2squared_empty": "test the norm2squared_matrix function with empty input arrays to verify it returns an empty result",
+    "test_iou_matrix": "test the iou_matrix function to compute pairwise Intersection-over-Union between two sets of bounding boxes",
+    "test_iou_matrix_max_iou": "test the iou_matrix function with a max_iou threshold to mask IoU values above the limit with NaN"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py-motmetrics/motmetrics/tests/test_io.py": {
+    "test_load_vatic_format": "test loading VATIC annotation text files using mm.io.loadtxt with VATIC_TXT format",
+    "test_load_motchallenge_format": "test loading MOT15 2D challenge text files using mm.io.loadtxt with MOT15_2D format",
+    "load_vatic_annotations": "load VATIC format tracking annotations from a text file into a pandas DataFrame",
+    "load_mot15_2d_annotations": "load MOT15 2D format tracking annotations from a text file into a pandas DataFrame",
+    "review_io_loadtext": "review the mm.io.loadtxt function and its supported Format enum options for parsing tracking data"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py-motmetrics/motmetrics/tests/test_metrics.py": {
+    "test_metrics_host_register_and_compute": "test the MetricsHost by registering lambda metrics with explicit dependencies and computing a summary",
+    "test_metrics_host_auto_deps": "test the MetricsHost by registering metrics with auto dependency resolution and computing results",
+    "test_metrics_host_auto_name": "test the MetricsHost by registering named functions with auto names and auto dependencies",
+    "run_motchallenge_comparison": "run a MOT challenge comparison by loading ground truth and test data then computing metrics",
+    "render_motchallenge_summary": "render a formatted MOT challenge metrics summary table from computed results using render_summary"
+  },
+  "facebookresearch_detectandtrack/lib/datasets/posetrack/poseval/py-motmetrics/motmetrics/tests/test_mot.py": {
+    "test_MOTAccumulator_events": "test MOTAccumulator to verify FP, MISS, MATCH, and SWITCH events are generated correctly per frame",
+    "test_MOTAccumulator_max_switch_time": "test MOTAccumulator max_switch_time parameter to ensure track switches only occur within the allowed frame window",
+    "test_MOTAccumulator_auto_id": "test MOTAccumulator auto_id mode to verify automatic frame ID incrementing and manual frame ID rejection",
+    "compute_mota_motp_metrics": "compute MOTA and MOTP metrics from a MOTAccumulator using MetricsHost to evaluate multi-object tracking performance",
+    "test_correct_average_mota": "test the correct MOTA average calculation across frames with mixed tracked and untracked objects"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/FPN.py": {
+    "build_fpn_ResNet_body": "build a Caffe2 model by bolting FPN onto a ResNet backbone using add_fpn_ResNet101_conv5_body",
+    "add_fpn_connections": "add FPN top-down and lateral connections to a backbone model using add_fpn with stage info",
+    "add_fpn_rpn_outputs": "add RPN output heads with shared weights across FPN levels using add_fpn_rpn_outputs",
+    "map_rois_to_fpn_levels": "map ROIs to appropriate FPN pyramid levels based on their spatial area using map_rois_to_fpn_levels",
+    "add_multilevel_roi_blobs": "split ROIs into per-level blobs for multilevel RoI pooling using add_multilevel_roi_blobs"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/FPN3D.py": {
+    "build_fpn_ResNet50_body": "build a 3D FPN model by bolting FPN onto a ResNet50 conv5 backbone",
+    "build_fpn_ResNet101_P2only_body": "build a 3D FPN model using only the finest P2 level on a ResNet101 backbone",
+    "add_fpn_generic_onto_body": "add an FPN head onto any ResNet backbone given a conv body and stage info function",
+    "add_fpn_connections": "add FPN lateral 1x1 conv, top-down 2x upsampling, and post-hoc 3x3 conv connections",
+    "add_fpn_rpn_outputs": "add RPN proposal classification and bbox regression outputs on FPN feature pyramid levels"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/ResNet.py": {
+    "build_ResNet50_conv5_body": "build a ResNet-50 convolutional body with bottleneck blocks and freeze at stage 2",
+    "build_ResNet101_conv5_body": "build a ResNet-101 convolutional body with 23 bottleneck blocks in stage 4",
+    "build_ResNet_convX_body": "build a generic ResNet body with configurable block counts and feature dimensions",
+    "build_ResNet_roi_conv5_head": "build an RoI feature transformation head with RoI pooling and res5 stage",
+    "query_stage_info_ResNet50": "query the ConvStageInfo for ResNet-50 including blob names, dims, and spatial scales"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/ResNet3D.py": {
+    "build_ResNet50_conv5_body": "build a ResNet-50 conv5 body with 3-4-6-3 bottleneck blocks for video detection",
+    "build_ResNet101_conv5_body": "build a ResNet-101 conv5 body with 3-4-23-3 bottleneck blocks for video detection",
+    "build_ResNet_convX_body": "build a generic ResNet body with configurable block counts and optional freezing for video",
+    "build_ResNet_roi_conv5_head": "build an RoI feature transform and res5 head applied to each RoI for detection",
+    "review_stage_info_ResNet50_conv5": "review the ResNet-50 conv5 stage info returning blob names, dims, and spatial scales"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/VGG16.py": {
+    "build_VGG16_conv5_body": "build a VGG16 conv5 feature extraction body with 13 convolutional layers and max pooling",
+    "build_VGG16_fcn": "build a fully convolutional VGG16 network with optional dilated convolutions for feature extraction",
+    "build_VGG16_roi_fc_head": "build a VGG16 ROI fully connected head with RoI feature transform and two FC layers",
+    "review_add_VGG16_conv5_body": "review the VGG16 conv5 body function that returns output blob, 512 channels, and 1/16 spatial scale",
+    "review_add_VGG16_fcn": "review the VGG16 FCN function that branches on cfg.MODEL.DILATION for dilated or standard convolutions"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/VGG_CNN_M_1024.py": {
+    "build_VGG_CNN_M_1024_conv5_body": "build a VGG-CNN-M-1024 convolutional body with conv1 through conv5 layers using the add_VGG_CNN_M_1024_conv5_body function",
+    "build_VGG_CNN_M_1024_roi_fc_head": "build a VGG-CNN-M-1024 ROI fully-connected head with fc6 and fc7 layers using the add_VGG_CNN_M_1024_roi_fc_head function",
+    "review_conv5_body_layers": "review the VGG-CNN-M-1024 conv5 body layers including Conv, ReLU, LRN, and MaxPool operations",
+    "review_roi_fc_head_layers": "review the VGG-CNN-M-1024 ROI FC head layers including RoIFeatureTransform, FC, ReLU, and Dropout operations",
+    "summarize_VGG_CNN_M_1024_architecture": "summarize the VGG-CNN-M-1024 model architecture used for Faster R-CNN object detection"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/detector.py": {
+    "build_detection_model_helper": "build a DetectionModelHelper instance with num_classes and train mode for Caffe2 object detection",
+    "create_roi_feature_transform": "create RoI feature transforms using RoIPoolF or RoIAlign methods on multi-level FPN features",
+    "generate_rpn_proposals": "generate RPN proposals from cls_probs and bbox_pred blobs using GenerateProposalsOp",
+    "build_conv_affine_layer": "build a ConvAffine layer combining convolution with affine channel normalization for detection models",
+    "update_workspace_learning_rate": "update the workspace learning rate and correct momentum blobs across all GPUs during training"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/fast_rcnn_heads.py": {
+    "build_fast_rcnn_outputs": "build a python module to add RoI classification and bounding box regression output ops to a Detectron model",
+    "build_fast_rcnn_losses": "build a python module to add SoftmaxWithLoss and SmoothL1Loss for RoI classification and bounding box regression",
+    "build_roi_2mlp_head": "build a python module to add a ReLU MLP with two hidden layers for RoI feature transformation",
+    "review_add_fast_rcnn_outputs": "review the add_fast_rcnn_outputs function to understand how cls_score and bbox_pred fully connected layers are configured",
+    "review_add_fast_rcnn_losses": "review the add_fast_rcnn_losses function to understand how classification and bounding box regression losses are computed and aggregated"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/generate_anchors.py": {
+    "generate_anchors": "generate a matrix of anchor boxes in x1 y1 x2 y2 format with configurable sizes and aspect ratios",
+    "generate_anchors_time_dim": "generate anchor boxes extended across multiple time frames for video object detection tasks",
+    "whctrs": "compute the width height x center and y center coordinates from an anchor box window",
+    "mkanchors": "build anchor box windows from a vector of widths heights and center coordinates",
+    "ratio_enum": "enumerate a set of anchor boxes for each aspect ratio relative to a base anchor"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/head_builder.py": {
+    "build_roi_2mlp_head": "build a 2-layer MLP head with ReLU activations for RoI feature classification in Fast R-CNN",
+    "build_roi_2mlp_glu_head": "build a 2-layer MLP head with Gated Linear Unit activations for RoI feature classification",
+    "review_add_roi_2mlp_head": "review the add_roi_2mlp_head function to understand RoI feature transform and FC layer construction",
+    "review_add_roi_2mlp_glu_head": "review the add_roi_2mlp_glu_head function to understand GLU gating with Sigmoid and Mul operations",
+    "refactor_add_roi_2mlp_head": "refactor add_roi_2mlp_head to use dynamic config instead of hard-coded FAST_RCNN MLP_HEAD_DIM"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/keypoint_rcnn_heads.py": {
+    "build_ResNet_roi_conv5_head_for_keypoints": "build a ResNet ROI conv5 head for keypoints using RoIFeatureTransform and ResNet stages",
+    "build_roi_pose_head_v1convX": "build a stacked convolutional pose head with configurable 2D conv layers and ReLU activations",
+    "build_roi_pose_head_v1convX_3d": "build a 3D stacked convolutional pose head for video-based keypoint detection tasks",
+    "review_add_ResNet_roi_conv5_head_for_keypoints": "review the ResNet ROI conv5 head function for keypoint ROI feature transformation and stage addition",
+    "review_add_roi_pose_head_v1convX": "review the pose head function to understand 2D vs 3D convolution branching and layer stacking logic"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/mask_rcnn_heads.py": {
+    "build_mask_head_v1up4convs": "build a Mask R-CNN mask head with 4 conv layers and deconv upsampling using ResNet_mask_rcnn_fcn_head_v1up4convs",
+    "build_mask_head_v1up": "build a Mask R-CNN mask head with 2 conv layers and deconv upsampling using ResNet_mask_rcnn_fcn_head_v1up",
+    "build_mask_head_v0upshare": "build a Mask R-CNN mask head that shares computation with the bbox branch using ResNet_mask_rcnn_fcn_head_v0upshare",
+    "build_mask_head_v0up": "build a Mask R-CNN mask head with a ResNet roi conv5 stage and deconv upsampling using ResNet_mask_rcnn_fcn_head_v0up",
+    "add_roi_conv5_head": "add a ResNet roi conv5 head for masks with RoIFeatureTransform using add_ResNet_roi_conv5_head_for_masks"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/model_builder.py": {
+    "create_model": "create a detection model by calling create with a model name string and train flag",
+    "build_fast_rcnn": "build a Fast R-CNN model using build_generic_fast_rcnn_model with a conv body and ROI head function",
+    "build_faster_rcnn": "build a Faster R-CNN model with RPN and Fast R-CNN branches using build_generic_fast_rcnn_model",
+    "build_rpn": "build an RPN-only model using build_generic_rpn_model with a configurable conv body function",
+    "add_mask_rcnn_outputs": "add mask prediction outputs to a Mask R-CNN model using add_mask_rcnn_outputs with FC or Conv heads"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/optimizer.py": {
+    "build_data_parallel_model": "build a data parallel model across multiple GPUs using a single GPU build function",
+    "build_forward_graph": "build the forward computation graph on each GPU with correct device scoping",
+    "add_allreduce_graph": "add an allreduce graph to synchronize gradients across multiple GPUs using NCCL or muji",
+    "add_single_gpu_param_update_ops": "add momentum SGD parameter update operators for a single GPU with weight decay support",
+    "review_optimizer_functions": "review the optimizer module functions for data parallel training and gradient synchronization"
+  },
+  "facebookresearch_detectandtrack/lib/modeling/rpn_heads.py": {
+    "build_rpn_outputs": "build a python module to add RPN objectness classification and bounding box regression outputs to a detection model",
+    "create_single_scale_rpn": "create a single scale RPN head with conv layers for classification logits and bbox regression predictions",
+    "test_rpn_losses": "test the RPN loss computation including sigmoid cross entropy and smooth L1 loss for bounding box regression",
+    "review_add_generic_rpn_outputs": "review the add_generic_rpn_outputs function to understand how it delegates between FPN and single scale RPN modes",
+    "refactor_rpn_heads": "refactor the RPN heads module to support custom anchor generation strategies or additional spatial scales"
+  },
+  "facebookresearch_detectandtrack/lib/nms/py_cpu_nms.py": {
+    "run_nms_on_detections": "run non-maximum suppression on a numpy array of bounding box detections with a given IoU threshold",
+    "create_nms_filter": "create a function that filters overlapping bounding boxes by IoU threshold using pure Python CPU NMS",
+    "test_py_cpu_nms": "test the py_cpu_nms function with sample detection boxes and an IoU threshold value",
+    "refactor_nms_threshold": "refactor the py_cpu_nms function to support a configurable IoU threshold for bounding box suppression",
+    "summarize_nms_algorithm": "summarize the py_cpu_nms function that implements greedy region-based NMS for object detection"
+  },
+  "facebookresearch_detectandtrack/lib/nms/py_cpu_nms_tubes.py": {
+    "run_nms_tubes": "run non-maximum suppression on spatiotemporal tube detections with a given IoU threshold",
+    "build_nms_tubes_cli": "build a CLI tool that runs NMS on video detection tubes from a NumPy array",
+    "test_py_cpu_nms_tubes": "test the py_cpu_nms_tubes function with sample detection boxes and an IoU threshold",
+    "refactor_py_cpu_nms_tubes": "refactor py_cpu_nms_tubes to use vectorized NumPy operations instead of a while loop",
+    "summarize_py_cpu_nms_tubes": "summarize how py_cpu_nms_tubes computes average IoU across time steps for tube suppression"
+  },
+  "facebookresearch_detectandtrack/lib/ops/collect_and_distribute_fpn_rpn_proposals.py": {
+    "collect_fpn_rpn_proposals": "collect RPN proposals from multiple FPN levels and select top scoring regions of interest",
+    "distribute_rois_across_fpn_levels": "distribute collected ROIs across FPN levels based on spatial pyramid mapping and configuration",
+    "run_collect_and_distribute_op": "run the CollectAndDistributeFpnRpnProposalsOp forward pass to collect and distribute RPN proposals for training or inference",
+    "review_collect_and_distribute_class": "review the CollectAndDistributeFpnRpnProposalsOp class and its forward method for FPN RPN proposal handling",
+    "refactor_collect_function": "refactor the collect function to support custom scoring thresholds for RPN proposal selection"
+  },
+  "facebookresearch_detectandtrack/lib/ops/debug_ops.py": {
+    "review_PDBOp_forward": "review the PDBOp class forward method that checks inputs for NaN values and drops into pdb",
+    "review_TDBOp_forward": "review the TDBOp class forward method that prints stack trace and drops into an interactive shell",
+    "test_PDBOp_forward": "test the PDBOp forward method by passing input_tensor and output_tensor to trigger a pdb breakpoint",
+    "test_TDBOp_forward": "test the TDBOp forward method by passing input_tensor and output_tensor to trigger an interactive debugging session",
+    "refactor_PDBOp_to_TDBOp": "refactor PDBOp to use TDBOp for better debugging with stack trace and interactive namespace access"
+  },
+  "facebookresearch_detectandtrack/lib/ops/generate_proposal_labels.py": {
+    "generate_proposal_labels_forward": "run the GenerateProposalLabelsOp forward method to convert RPN ROIs into Fast R-CNN training blobs",
+    "add_proposals_to_roidb": "use json_dataset.add_proposals to attach RPN-generated ROIs and image scales to the roidb entries",
+    "get_fast_rcnn_blob_names": "call roi_data.fast_rcnn.get_fast_rcnn_blob_names to retrieve the list of output blob names for Fast R-CNN",
+    "add_fast_rcnn_blobs": "use roi_data.fast_rcnn.add_fast_rcnn_blobs to populate blob dictionaries with roidb ground truth and labels",
+    "deserialize_and_copy_blobs": "use blob_utils.deserialize to load roidb data and py_op_copy_blob to write results to output tensors"
+  },
+  "facebookresearch_detectandtrack/lib/ops/generate_proposals.py": {
+    "build_RPN_proposal_generator": "build a Python module to generate object detection proposals using RPN anchors and bounding box deltas",
+    "create_GenerateProposalsOp_class": "create a GenerateProposalsOp class that transforms anchors into proposals by applying estimated bounding-box transformations",
+    "run_proposals_for_one_image": "run the proposals_for_one_image method to generate region proposals for a single image with NMS filtering",
+    "test_forward_method": "test the forward method of GenerateProposalsOp to process batch inputs and output RoIs with probabilities",
+    "review_filter_boxes_function": "review the _filter_boxes function that filters boxes by minimum size and image boundary constraints"
+  },
+  "facebookresearch_detectandtrack/lib/ops/roi_blob_transforms.py": {
+    "build_roi_batch_converter": "build a python module that converts ROI blobs from Nx(4T+1) to N*Tx(4+1) format using RoIToBatchFormatOp",
+    "create_roi_transform_op": "create a RoIToBatchFormatOp instance to transform region of interest blobs for RoITransform operations",
+    "test_roi_forward_pass": "test the RoIToBatchFormatOp forward method with a sample Nx(4T+1) input tensor and verify output shape",
+    "refactor_roi_blob_transform": "refactor the RoIToBatchFormatOp forward method to support visibility predictions and full image replacement",
+    "summarize_roi_batch_format": "summarize the RoIToBatchFormatOp class that converts ROI blobs for use with RoIAlign in Faster R-CNN"
+  },
+  "facebookresearch_detectandtrack/lib/roi_data/data_utils.py": {
+    "build_field_of_anchors": "build a python module to generate a field of anchors for RPN and RetinaNet detection models",
+    "create_unmap_data": "create a function that unmaps a subset of numpy array data back to its original size",
+    "compute_bbox_regression_targets": "compute bounding-box regression targets for an image using existing and ground truth ROIs",
+    "review_FieldOfAnchors_namedtuple": "review the FieldOfAnchors namedtuple structure used for storing anchor fields in RetinaNet models",
+    "summarize_anchor_caching": "summarize the thread-local caching mechanism used to memoize field of anchors generation"
+  },
+  "facebookresearch_detectandtrack/lib/roi_data/fast_rcnn.py": {
+    "get_fast_rcnn_blob_names": "get the list of blob names needed for Fast R-CNN training or inference based on config flags",
+    "add_fast_rcnn_blobs": "add training blobs by sampling RoIs from each image in the roidb and concatenating them into tensors",
+    "sample_rois": "sample foreground and background RoIs from an image entry using overlap thresholds and config batch size",
+    "compute_targets": "compute bounding-box regression targets for sampled RoIs relative to their matched ground truth boxes",
+    "expand_bbox_targets": "expand compact bounding-box regression targets into the 4-of-4K class-specific representation used by the network"
+  },
+  "facebookresearch_detectandtrack/lib/roi_data/keypoint_rcnn.py": {
+    "add_keypoint_rcnn_blobs_sample_fg_rois": "sample foreground ROIs with visible keypoints from a roidb and populate training blobs for keypoint R-CNN",
+    "add_keypoint_rcnn_blobs_convert_to_heatmaps": "convert sampled keypoints to heatmap labels and weights per frame for keypoint R-CNN training",
+    "add_keypoint_rcnn_blobs_scale_and_batch": "scale sampled ROIs by image scale factor and prepend batch index before storing in blobs dict",
+    "review_within_box": "review the _within_box helper that checks if Nx2xK keypoint points lie inside Nx4 bounding boxes",
+    "refactor_add_keypoint_rcnn_blobs": "refactor add_keypoint_rcnn_blobs to support a different keypoint visibility threshold or ROI sampling strategy"
+  },
+  "facebookresearch_detectandtrack/lib/roi_data/loader.py": {
+    "create_roi_data_loader": "create a RoIDataLoader instance with a roidb to load region of interest data for training",
+    "shuffle_roidb_inds": "shuffle the roidb indices randomly with optional aspect grouping for horizontal and vertical images",
+    "get_next_minibatch": "get the next minibatch of blobs for training by retrieving indices and preparing data",
+    "enqueue_blobs_to_gpu": "enqueue blobs onto a GPU BlobsQueue by feeding them to the Caffe2 workspace",
+    "start_loader_with_prefill": "start the RoIDataLoader worker and enqueuer threads with optional queue prefilling before training"
+  },
+  "facebookresearch_detectandtrack/lib/roi_data/mask_rcnn.py": {
+    "build_mask_rcnn_blobs": "build a python module to prepare mask targets by associating ground truth masks to each training ROI with a foreground class label",
+    "create_class_specific_masks": "create a function that expands mask targets from per-mask to per-class shape for class-specific Mask R-CNN training",
+    "test_add_mask_rcnn_blobs": "test the add_mask_rcnn_blobs function to verify it correctly rasterizes polygon masks into binary MxM images for foreground ROIs",
+    "review_mask_target_expansion": "review the _expand_to_class_specific_mask_targets function to understand how it maps masks to class-specific target tensors",
+    "refactor_mask_roi_preparation": "refactor the add_mask_rcnn_blobs function to handle edge cases where no foreground ROIs exist by using a background ROI with ignore labels"
+  },
+  "facebookresearch_detectandtrack/lib/roi_data/minibatch.py": {
+    "get_minibatch_blobs": "get a minibatch of blobs and valid flags from a roidb for training a Fast R-CNN network",
+    "get_blob_names": "get the ordered list of blob names used by the data loader for RPN or Fast R-CNN training",
+    "build_image_blob": "build an input image blob from a roidb with random scale sampling and optional flipping",
+    "review_get_minibatch": "review the get_minibatch function to understand how it constructs blobs for RPN and Fast R-CNN training",
+    "refactor_get_image_blob": "refactor the _get_image_blob function to support custom scale selection instead of random sampling"
+  },
+  "facebookresearch_detectandtrack/lib/roi_data/rpn.py": {
+    "build_rpn_blobs_for_training": "build a python module to add RPN blobs for training Faster R-CNN models using add_rpn_blobs",
+    "create_rpn_blob_names": "create a function that returns RPN blob names for training or inference using get_rpn_blob_names",
+    "generate_field_of_anchors": "generate a field of anchors with memoized caching using _get_field_of_anchors for a given stride and sizes",
+    "compute_rpn_labels_and_targets": "compute RPN anchor labels and bounding box regression targets using _get_rpn_blobs for an image",
+    "compute_bbox_regression_targets": "compute bounding-box regression targets for example and ground truth ROIs using _compute_targets"
+  },
+  "facebookresearch_detectandtrack/lib/utils/blob.py": {
+    "create_image_blob_from_list": "create a blob from a list of images by padding and transposing to batch channel height width format",
+    "prepare_image_for_blob": "prepare an image for blob input by mean subtracting pixel values and resizing to target sizes",
+    "create_zeros_blob": "create a numpy blob of zeros with the specified shape and optional int32 data type",
+    "copy_blob_data": "copy data from one caffe2 blob to another while preserving shape and data type",
+    "serialize_python_object": "serialize a python object into a float32 numpy array for feeding into the caffe2 workspace"
+  },
+  "facebookresearch_detectandtrack/lib/utils/boxes.py": {
+    "split_tube_into_boxes": "split a video tube representation into individual frame boxes for object detection across time",
+    "bbox_overlaps": "compute the average IoU overlap between two sets of bounding boxes using Cython acceleration",
+    "bbox_transform": "apply bounding-box regression deltas to transform proposal boxes into predicted ground-truth boxes",
+    "clip_boxes_to_image": "clip bounding box coordinates to stay within the specified image height and width boundaries",
+    "box_voting": "refine top detection boxes by weighted voting with overlapping detections using confidence scores"
+  },
+  "facebookresearch_detectandtrack/lib/utils/c2.py": {
+    "import_detectron_ops": "import Detectron custom ops into Caffe2 by initializing the ops library via dyndep",
+    "create_suffix_net": "create a new Caffe2 Net that includes only the ops after removing the first N ops from an existing net",
+    "normalize_blob_name": "normalize a scoped blob name by removing the GPU prefix and returning the unscoped name",
+    "create_cuda_scope": "create a GPU name scope and CUDA device scope context manager for a given GPU ID",
+    "create_cpu_scope": "create a CPU device scope context manager for running Caffe2 operations on the CPU"
+  },
+  "facebookresearch_detectandtrack/lib/utils/colormap.py": {
+    "get_colormap_bgr": "get a numpy array of 102 colors in BGR format scaled to 0-255",
+    "get_colormap_rgb": "get a numpy array of 102 colors in RGB format by passing rgb=True",
+    "use_colormap_for_visualization": "use the colormap function to assign distinct colors to detected objects in an image",
+    "review_colormap": "review the colormap function that returns 102 predefined colors for object detection visualization",
+    "summarize_colormap": "summarize the colormap utility that provides a fixed palette of 102 colors for tracking tasks"
+  },
+  "facebookresearch_detectandtrack/lib/utils/coordinator.py": {
+    "create_Coordinator": "create a Coordinator instance to manage stop signals across multiprocessing workers",
+    "use_request_stop": "call request_stop on a Coordinator to signal all workers to stop",
+    "use_stop_on_exception": "use the stop_on_exception context manager to halt coordination when an exception occurs",
+    "use_coordinated_get": "use coordinated_get to safely retrieve items from a queue while respecting stop signals",
+    "use_coordinated_put": "use coordinated_put to safely send items to a queue while respecting stop signals"
+  },
+  "facebookresearch_detectandtrack/lib/utils/env.py": {
+    "get_runtime_dir": "get the runtime directory path by returning the first entry in sys.path",
+    "get_py_bin_ext": "get the python binary extension which returns the string '.py'",
+    "set_up_matplotlib": "set up matplotlib to use the non-interactive Agg backend for headless rendering",
+    "exit_on_error": "exit the detectron tool with error code 1 when an error occurs",
+    "get_detectron_ops_lib": "get the path to the detectron ops shared library by searching common install prefixes"
+  },
+  "facebookresearch_detectandtrack/lib/utils/file_sys.py": {
+    "create_directory_safe": "create a single directory at a given path, silently skipping if it already exists",
+    "create_nested_directories_safe": "create all intermediate directories in a path, silently skipping if the full path already exists",
+    "run_command_with_retries": "run a shell command with exponential backoff retries up to 4 attempts before asserting success",
+    "rsync_files": "rsync files from a source path to a destination path with automatic retry on failure",
+    "mount_nfs_userspace": "mount an NFS share to a local mount point using nfusr with automatic retry on failure"
+  },
+  "facebookresearch_detectandtrack/lib/utils/general.py": {
+    "run_cmd": "run a shell command and optionally capture its stdout output",
+    "mkdir_p": "create all directories in a path ignoring errors if the directory already exists",
+    "get_best_accessible": "find the first accessible path from a list of candidate paths",
+    "flatten_list": "flatten a nested list of lists into a single flat list",
+    "deprecated": "mark a function as deprecated with a warning decorator"
+  },
+  "facebookresearch_detectandtrack/lib/utils/image.py": {
+    "resize_image_width_relative_aspect_ratio": "resize an image using width-relative aspect ratio transformation with cv2",
+    "resize_image_absolute_aspect_ratio": "resize an image to a target absolute aspect ratio while preserving area",
+    "extract_key_frame_path": "extract the middle image path from a roidb entry with a list of images",
+    "read_images_from_entry": "read images or video frames from a roidb entry returning a list of numpy arrays",
+    "reshape_batch_to_time_dimension": "reshape a B*TxCxHxW numpy blob into BxCxTxHxW format for video processing"
+  },
+  "facebookresearch_detectandtrack/lib/utils/io.py": {
+    "dump_dict_to_pickle": "create a python script that uses robust_pickle_dump to serialize a dictionary to a pickle file",
+    "review_robust_pickle_dump": "review the robust_pickle_dump function to understand how it serializes data using pickle with the highest protocol",
+    "refactor_robust_pickle_dump": "refactor robust_pickle_dump to replace cPickle with the modern pickle module for Python 3 compatibility",
+    "test_robust_pickle_dump": "test the robust_pickle_dump function by dumping a sample dictionary and verifying the output file exists",
+    "summarize_robust_pickle_dump": "summarize the robust_pickle_dump function which writes a data dictionary to an absolute file path using pickle"
+  },
+  "facebookresearch_detectandtrack/lib/utils/keypoints.py": {
+    "get_keypoints": "get the list of 17 COCO human body keypoints and their left-right flip mapping pairs",
+    "flip_keypoints": "flip ground truth keypoints horizontally using the left-right flip map and image width",
+    "flip_heatmaps": "flip keypoint heatmaps horizontally by swapping left-right channels and reversing spatial axis",
+    "heatmaps_to_keypoints": "extract predicted keypoint x, y, logit, and probability from resized heatmaps and ROIs",
+    "keypoints_to_heatmap_labels": "generate discrete heatmap location labels and weights from continuous keypoint coordinates and ROIs"
+  },
+  "facebookresearch_detectandtrack/lib/utils/logger.py": {
+    "log_json_stats_to_file": "log a dictionary of stats as JSON to stdout and optionally append to a file",
+    "create_smoothed_value_tracker": "create a SmoothedValue instance with a window size to track a series of numeric values",
+    "add_value_to_smoothed_tracker": "add a numeric value to a SmoothedValue tracker to update its rolling window and totals",
+    "get_window_average_from_tracker": "get the average value over the current rolling window from a SmoothedValue tracker",
+    "get_global_average_from_tracker": "get the global average of all values added to a SmoothedValue tracker since creation"
+  },
+  "facebookresearch_detectandtrack/lib/utils/logging.py": {
+    "setup_logging": "setup logging with a custom logger name and INFO level format to stdout",
+    "log_json_stats": "log a dictionary of stats as formatted JSON output to stdout",
+    "create_SmoothedValue": "create a SmoothedValue tracker with a window size to monitor a series of values",
+    "send_email": "send an email with a subject and body to a recipient via local SMTP",
+    "review_SmoothedValue_methods": "review the SmoothedValue class methods AddValue, GetMedianValue, GetAverageValue, and GetGlobalAverageValue"
+  },
+  "facebookresearch_detectandtrack/lib/utils/lr_policy.py": {
+    "get_lr_at_iter": "get the learning rate at a given training iteration using the configured solver settings and warmup schedule",
+    "lr_func_steps_with_lrs": "compute the learning rate at a given iteration using predefined step boundaries and explicit learning rate values",
+    "lr_func_steps_with_decay": "compute the learning rate at a given iteration using step boundaries with exponential gamma decay from the base learning rate",
+    "lr_func_step": "compute the learning rate at a given iteration using a fixed step size with exponential gamma decay from the base learning rate",
+    "get_step_index": "find which learning rate step index a given training iteration falls into based on configured step boundaries"
+  },
+  "facebookresearch_detectandtrack/lib/utils/model_convert_utils.py": {
+    "fuse_conv_affine": "fuse Conv or ConvTranspose layers with following AffineChannel layers into a single Conv operation",
+    "filter_ops": "filter Caffe2 operators by type, inputs, outputs, or custom conditions using OpFilter",
+    "convert_ops_in_proto": "convert operators in a Caffe2 NetDef proto by applying a transformation function or chain of functions",
+    "generate_init_net": "generate a Caffe2 initialization net from a dictionary of numpy blob tensors",
+    "compare_models": "compare two model outputs by running test images and asserting blob results match within tolerance"
+  },
+  "facebookresearch_detectandtrack/lib/utils/net.py": {
+    "import_custom_ops": "build a python module to initialize custom Caffe2 operators like roi_pool, roi_align, and l1_loss from the ops library",
+    "initialize_from_weights_file": "create a function to load model weights from a pickled file and broadcast parameters across all GPUs",
+    "inflate_weights": "build a python module to inflate 2D pretrained weights to match 3D convolution blob shapes using mean-repeat or center-only mode",
+    "save_model_to_weights_file": "create a function to save model parameters, momentum, and preserved blobs to a pickled weights file",
+    "broadcast_parameters": "build a python module to copy parameter blobs from GPU 0 to all other GPUs in a multi-GPU setup"
+  },
+  "facebookresearch_detectandtrack/lib/utils/pytorch_cnn_features.py": {
+    "extract_cnn_features_from_image": "extract CNN features from a BGR image using a pretrained ResNet18 model and specified layers",
+    "prepare_image_for_pytorch": "prepare a BGR numpy image by converting to RGB, resizing to 224x224, normalizing, and creating a PyTorch tensor",
+    "extract_features_custom_model": "extract features from a custom PyTorch model by passing it as test_model to extract_features",
+    "extract_multi_layer_features": "extract features from multiple ResNet layers by passing a tuple of layer names to extract_features",
+    "review_extract_features": "review the extract_features function that extracts CNN features from images using a pretrained ResNet model"
+  },
+  "facebookresearch_detectandtrack/lib/utils/segms.py": {
+    "flip_segms": "flip polygon segmentation masks horizontally given an image width for data augmentation",
+    "polys_to_mask": "convert a list of polygon coordinates into a binary mask array for a given height and width",
+    "mask_to_bbox": "extract the bounding box coordinates from a binary segmentation mask as a numpy array",
+    "polys_to_mask_wrt_box": "convert polygons to a normalized binary mask relative to a bounding box at size M",
+    "polys_to_boxes": "convert a list of polygon segmentations into bounding box arrays with x0, y0, x1, y1 coordinates"
+  },
+  "facebookresearch_detectandtrack/lib/utils/subprocess.py": {
+    "run_parallel_inference": "run a binary NUM_GPUS times in parallel splitting work across GPUs using range arguments",
+    "run_subprocess_with_range": "run a subprocess with a specific range of indices and capture its output to a file",
+    "test_process_in_parallel": "test the process_in_parallel function by running a binary across multiple GPUs with a given size",
+    "review_log_subprocess_output": "review the log_subprocess_output function that streams and logs stdout from parallel subprocesses",
+    "refactor_process_in_parallel": "refactor process_in_parallel to support Python 3 by replacing cPickle with pickle and updating file type checks"
+  },
+  "facebookresearch_detectandtrack/lib/utils/timer.py": {
+    "create_timer_instance": "create a Timer instance to measure elapsed time between tic and toc calls",
+    "start_timer_with_tic": "start the Timer by calling tic to record the current start time",
+    "stop_timer_with_toc": "stop the Timer by calling toc to get average or last elapsed time",
+    "reset_timer_counters": "reset all Timer counters including total time, calls, and average time to zero",
+    "measure_code_execution_time": "measure code execution time by wrapping logic between tic and toc calls"
+  },
+  "facebookresearch_detectandtrack/lib/utils/training_stats.py": {
+    "create_TrainingStats": "create a TrainingStats instance to track vital training statistics for a Caffe2 model",
+    "update_UpdateIterStats": "update tracked iteration statistics by summing loss blobs and averaging metric blobs across GPUs",
+    "log_LogIterStats": "log tracked training statistics as JSON at configured iteration intervals during SGD training",
+    "get_GetStats": "get current training stats including ETA, GPU memory usage, smoothed loss, and learning rate",
+    "timer_IterTic_IterToc": "start and stop the iteration timer using IterTic and IterToc to measure training iteration duration"
+  },
+  "facebookresearch_detectandtrack/lib/utils/video.py": {
+    "get_video_info": "get video name, key frame, and flip status for each entry in a region proposal database",
+    "get_clip": "assemble video clips from a region proposal database by combining adjacent frames into temporal sequences",
+    "get_clip_remove_imperfect": "assemble video clips from a region proposal database and skip entries with missing frames",
+    "combine_clips": "combine multiple clip frames into a single entry with unified tracks, boxes, and keypoints",
+    "center_crop_list": "center crop a list to a specified size while preserving the middle element"
+  },
+  "facebookresearch_detectandtrack/lib/utils/video_io.py": {
+    "read_clip_from_video": "read specific frames from a video file and return them as a NHWC numpy array",
+    "write_clip_to_file": "write a numpy array of video frames to an AVI file with a specified FPS",
+    "read_video_context_manager": "open a video file using the ReadVideo context manager to safely manage the OpenCV capture object",
+    "write_video_context_manager": "create an AVI video writer using the WriteVideo context manager with MJPG codec and specified FPS",
+    "stack_video_into_channels": "convert a video array from NxHxWxC format to HxWx(C*N) format by stacking frames into channels"
+  },
+  "facebookresearch_detectandtrack/lib/utils/vis.py": {
+    "vis_one_image_opencv": "visualize object detection boxes, segmentation masks, and keypoints on an image using OpenCV",
+    "vis_one_image": "visualize detections with bounding boxes, masks, and keypoints then save the result as a PDF image",
+    "vis_predictions": "visualize tracking tubes and keypoint predictions across multiple video frames with bounding boxes",
+    "vis_mask": "overlay a binary segmentation mask with a colored border onto an image using OpenCV",
+    "vis_keypoints": "draw human pose keypoints and skeleton connections on an image with confidence threshold filtering"
+  },
+  "facebookresearch_detectandtrack/tests/data_loader_benchmark.py": {
+    "run_data_loader_benchmark": "run the data loader benchmark with configurable loaders, queue sizes, and batch count",
+    "run_loader_loop": "run the loader loop to measure average get_next_minibatch time over 100 iterations",
+    "run_main_benchmark": "run the main benchmark that creates a RoIDataLoader, dequeues blobs across GPUs, and measures dequeue time",
+    "parse_args_benchmark": "parse command line arguments for the data loader benchmark including loaders, queue size, and profiler options",
+    "review_main": "review the main function that benchmarks RoIDataLoader dequeue performance across multiple GPUs"
+  },
+  "facebookresearch_detectandtrack/tests/test_batch_permutation_op.py": {
+    "test_batch_permutation_forward_and_gradient": "test the BatchPermutationOpTest forward pass and gradient check with random numpy arrays on CUDA",
+    "test_batch_permutation_size_exceptions": "test the BatchPermutationOpTest size exception handling when input array and index shapes mismatch",
+    "run_batch_permutation_op_test": "run the BatchPermutation operator test with a given X tensor and permutation index array I",
+    "run_batch_permutation_speed_test": "run the BatchPermutation operator speed benchmark using Caffe2 prof_dag network execution with configurable iterations",
+    "review_batch_permutation_op_test_class": "review the BatchPermutationOpTest class and its methods for testing Caffe2 BatchPermutation operator correctness and performance"
+  },
+  "facebookresearch_detectandtrack/tests/test_bbox_transform.py": {
+    "test_bbox_transform_and_inverse": "test that bbox_transform and bbox_transform_inv are inverse operations using random boxes and weights",
+    "test_bbox_dataset_to_prediction_roundtrip": "test the full roundtrip from dataset xywh boxes to predicted xyxy boxes and verify IoU equals 1",
+    "test_cython_bbox_iou_against_coco_api": "test that the cython bbox_overlaps implementation matches the COCO API IoU for small and big boxes",
+    "review_bbox_transform": "review the bbox_transform function that maps proposal boxes to ground-truth boxes using regression deltas and weights",
+    "review_bbox_transform_inv": "review the bbox_transform_inv function that computes bounding-box regression deltas from proposal and ground-truth boxes"
+  },
+  "facebookresearch_detectandtrack/tests/test_cfg.py": {
+    "test_AttrDict_immutability": "test the AttrDict class immutability feature to lock nested config values recursively",
+    "test_cfg_deepcopy": "test the cfg global config object can be deep copied without mutating the original",
+    "test_merge_cfg_from_cfg": "test merging config values from one AttrDict config object into the global cfg singleton",
+    "test_merge_cfg_from_file": "test loading and merging config values from a YAML file into the global cfg",
+    "test_merge_cfg_from_list": "test merging config key-value pairs from a command-line style list into the global cfg"
+  },
+  "facebookresearch_detectandtrack/tests/test_loader.py": {
+    "create_loader_and_network": "create a RoIDataLoader and Caffe2 DAG network from sample data for training or testing",
+    "run_net": "run a Caffe2 network once and fetch the data blob from GPU zero",
+    "get_roidb_blobs": "stack ROI database entries into a numpy blob dictionary for data loading",
+    "get_net": "build a Caffe2 DAG net with DequeueBlobs ops for each configured GPU",
+    "test_two_parallel_loaders": "test two parallel RoIDataLoader instances with mocked minibatch functions to verify correct data dequeuing"
+  },
+  "facebookresearch_detectandtrack/tests/test_smooth_l1_loss_op.py": {
+    "test_smooth_l1_loss_forward_and_gradient": "test the SmoothL1Loss operator forward pass and gradient using Caffe2 gradient checker on CUDA",
+    "run_smooth_l1_loss_unit_test": "run the unittest for SmoothL1Loss operator with random inputs and gradient verification",
+    "create_smooth_l1_loss_operator": "create a SmoothL1Loss Caffe2 operator with Y_hat, Y, inside_weights, outside_weights inputs and scale and beta params",
+    "review_smooth_l1_loss_gradient_check": "review the SmoothL1LossTest class and its gradient checking logic using Caffe2 GradientChecker",
+    "summarize_smooth_l1_loss_test": "summarize the SmoothL1LossTest test case that validates forward pass and gradient correctness on GPU"
+  },
+  "facebookresearch_detectandtrack/tests/test_spatial_narrow_as_op.py": {
+    "test_SpatialNarrowAsOpTest_small_forward_and_gradient": "test the SpatialNarrowAsOpTest class small forward pass and gradient check with small random tensors",
+    "test_SpatialNarrowAsOpTest_large_forward": "test the SpatialNarrowAsOpTest class large forward pass with 256 channel tensors",
+    "test_SpatialNarrowAsOpTest_size_exceptions": "test the SpatialNarrowAsOpTest class size exception handling for incompatible tensor dimensions",
+    "run_run_test_method": "run the _run_test method to execute SpatialNarrowAs operator on input tensors A and B with optional gradient check",
+    "review_SpatialNarrowAsOpTest_class": "review the SpatialNarrowAsOpTest class and its test methods for the Caffe2 SpatialNarrowAs operator"
+  },
+  "facebookresearch_detectandtrack/tests/test_zero_even_op.py": {
+    "run_ZeroEvenOpTest": "run the ZeroEvenOpTest unit tests to verify the ZeroEven Caffe2 operator on CPU",
+    "test_ZeroEven_op_on_gpu": "test the ZeroEven Caffe2 operator on GPU using CUDA device scope",
+    "test_ZeroEven_throws_on_non_1D": "test that the ZeroEven operator raises RuntimeError on non-1D input arrays",
+    "test_ZeroEven_sets_even_indices_to_zero": "test that the ZeroEven operator sets values at even indices to zero",
+    "test_ZeroEven_preserves_odd_indices": "test that the ZeroEven operator preserves values at odd indices unchanged"
+  },
+  "facebookresearch_detectandtrack/tools/test_net.py": {
+    "run_test_fast_rcnn_network": "run a Fast R-CNN network test on an image database using a config file and model weights",
+    "run_test_net_with_range": "run test_net on a specific range of indices for parallel subprocess inference on a dataset",
+    "run_multi_gpu_testing": "run multi-GPU testing on a Fast R-CNN network using cfg.NUM_GPUS for inference",
+    "run_rpn_only_testing": "run RPN-only model testing on a dataset to generate region proposals across multiple datasets",
+    "run_test_with_auto_weights": "run network testing that auto-discovers model weights from the output directory if no weights are specified"
+  },
+  "facebookresearch_detectandtrack/tools/test_on_single_video.py": {
+    "run_detectandtrack_on_video": "run DetectandTrack on a single video with --cfg and --video flags to detect objects and track them",
+    "run_video_frame_extraction": "run the script to extract frames from a video into a temporary folder using _read_video",
+    "run_3d_detection": "run 3D detection on consecutive video frames using the 3d config model for multi-frame detection",
+    "run_lstm_tracking": "run LSTM-based tracking on video detections by enabling TRACKING.LSTM_TEST.LSTM_TRACKING_ON in the config",
+    "run_visualization_generation": "run visualization generation to produce annotated frames with bounding boxes, keypoints, and track IDs"
+  },
+  "facebookresearch_detectandtrack/tools/train_net.py": {
+    "train_detection_network": "train a detection network using a config file and optional command line options",
+    "create_model_with_resume": "create a detection model with automatic checkpoint resume from previous training iterations",
+    "run_training_loop": "run the training loop with logging, checkpointing, and NaN loss detection",
+    "test_trained_model": "test a trained detection model using saved weights and multi GPU inference",
+    "optimize_model_memory": "optimize model memory by sharing gradient blobs across GPUs using memonger"
+  },
+  "facebookresearch_detectandtrack/tools/visualize_results_v2.py": {
+    "run_visualize_results": "run the visualization tool with --cfg and --thresh to generate detection result images",
+    "run_vis_function": "run the vis function to visualize ground truth and predicted detections side by side",
+    "run_generate_visualizations": "run _generate_visualizations to produce GT and predicted bounding box images for a single frame",
+    "run_convert_roidb_to_pred_boxes": "run _convert_roidb_to_pred_boxes to append a confidence column to roidb bounding boxes",
+    "run_convert_roidb_to_pred_keyps": "run _convert_roidb_to_pred_keyps to transform ground truth keypoints into visualization format"
+  }
+}

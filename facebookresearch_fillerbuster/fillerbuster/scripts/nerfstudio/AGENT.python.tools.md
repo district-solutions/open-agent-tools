@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fillerbuster
+- repo_uri: https://github.com/facebookresearch/fillerbuster
+
+## File: facebookresearch_fillerbuster/fillerbuster/scripts/nerfstudio/render.py
+
+Prompts
+
+```
+['render a camera path from a JSON file into an MP4 video using the camera-path subcommand', 'render a trajectory that interpolates between training or eval dataset camera poses using the interpolate subcommand', 'render a spiral camera trajectory around the scene using the spiral subcommand', 'render a circular camera trajectory around a specified center point using the circle subcommand', 'render all images in a dataset split and save outputs as images or video using the dataset subcommand']
+```
+
+Usage
+
+```
+{'render_camera_path_video': 'render a camera path from a JSON file into an MP4 video using the camera-path subcommand', 'render_interpolated_trajectory': 'render a trajectory that interpolates between training or eval dataset camera poses using the interpolate subcommand', 'render_spiral_trajectory': 'render a spiral camera trajectory around the scene using the spiral subcommand', 'render_circle_trajectory': 'render a circular camera trajectory around a specified center point using the circle subcommand', 'render_dataset_images': 'render all images in a dataset split and save outputs as images or video using the dataset subcommand'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/ai-foundations
+- repo_uri: https://github.com/google-deepmind/ai-foundations
+
+## File: google-deepmind_ai-foundations/ai_foundations/formatting/format_qa.py
+
+Prompts
+
+```
+['format a question and answer row with start and end of turn delimiters for flashcard format', 'format a question answer pair using custom start and end of turn delimiter strings', 'format a dictionary with category question and answer keys into user and model turn strings', 'format a pandas series row with category question and answer into delimited turn strings', 'review the format_qa function to understand how it adds start and end of turn tokens to QA pairs']
+```
+
+Usage
+
+```
+{'format_qa_flashcard': 'format a question and answer row with start and end of turn delimiters for flashcard format', 'format_qa_custom_delimiters': 'format a question answer pair using custom start and end of turn delimiter strings', 'format_qa_from_dict': 'format a dictionary with category question and answer keys into user and model turn strings', 'format_qa_from_series': 'format a pandas series row with category question and answer into delimited turn strings', 'review_format_qa': 'review the format_qa function to understand how it adds start and end of turn tokens to QA pairs'}
+```
+

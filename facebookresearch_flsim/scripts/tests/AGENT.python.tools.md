@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/flsim
+- repo_uri: https://github.com/facebookresearch/flsim
+
+## File: facebookresearch_flsim/scripts/tests/test_old_config_converter.py
+
+Prompts
+
+```
+['test the TestOldConfigConveter class to verify old FLSim JSON configs convert to new format', 'run the test_conversion method to validate get_new_fl_config output matches expected new config files', 'review the TestOldConfigConveter class and its test_conversion method for config conversion assertions', 'refactor the test_conversion method to add more old to new config file pairs for broader coverage', 'summarize the get_new_fl_config function imported from scripts.old_config_converter used to convert old FLSim configs']
+```
+
+Usage
+
+```
+{'test_config_conversion': 'test the TestOldConfigConveter class to verify old FLSim JSON configs convert to new format', 'run_test_conversion': 'run the test_conversion method to validate get_new_fl_config output matches expected new config files', 'review_TestOldConfigConveter': 'review the TestOldConfigConveter class and its test_conversion method for config conversion assertions', 'refactor_test_conversion': 'refactor the test_conversion method to add more old to new config file pairs for broader coverage', 'summarize_get_new_fl_config': 'summarize the get_new_fl_config function imported from scripts.old_config_converter used to convert old FLSim configs'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/elf
+- repo_uri: https://github.com/facebookresearch/elf
+
+## File: facebookresearch_elf/rlpytorch/stats/stats.py
+
+Prompts
+
+```
+['create a RewardCount instance to accumulate and track rewards from completed RL games', 'create a WinRate instance to track win and loss counts and compute win rates', 'feed a batch dictionary with id, last_terminal, and last_r keys into a Stats collector', 'call print_summary on an EvalCount subclass to print accumulated stats and reset counters', 'call reset_on_new_model on an EvalCount to exclude old game ids and start fresh tracking']
+```
+
+Usage
+
+```
+{'create_rewardcount_accumulate_rewards': 'create a RewardCount instance to accumulate and track rewards from completed RL games', 'create_winrate_track_winloss': 'create a WinRate instance to track win and loss counts and compute win rates', 'feed_stats_batch_data': 'feed a batch dictionary with id, last_terminal, and last_r keys into a Stats collector', 'summary_evalcount_print_results': 'call print_summary on an EvalCount subclass to print accumulated stats and reset counters', 'reset_on_new_model_evalcount': 'call reset_on_new_model on an EvalCount to exclude old game ids and start fresh tracking'}
+```
+

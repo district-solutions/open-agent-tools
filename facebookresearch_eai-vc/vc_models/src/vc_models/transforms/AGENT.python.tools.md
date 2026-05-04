@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eai-vc
+- repo_uri: https://github.com/facebookresearch/eai-vc
+
+## File: facebookresearch_eai-vc/vc_models/src/vc_models/transforms/random_shifts_aug.py
+
+Prompts
+
+```
+['create a RandomShiftsAug module with a pad parameter to apply random shift augmentation to tensor inputs', 'apply random shift augmentation to a batch of image tensors using the RandomShiftsAug forward method', 'augment a single 3D frame tensor by passing it through RandomShiftsAug which auto-handles unsqueezing', 'augment a batch of 4D tensor frames with random spatial shifts using grid sampling and replicate padding', 'review the RandomShiftsAug class to understand how it uses F.grid_sample for differentiable random cropping']
+```
+
+Usage
+
+```
+{'create_augmentation_module': 'create a RandomShiftsAug module with a pad parameter to apply random shift augmentation to tensor inputs', 'apply_random_shifts': 'apply random shift augmentation to a batch of image tensors using the RandomShiftsAug forward method', 'augment_single_frame': 'augment a single 3D frame tensor by passing it through RandomShiftsAug which auto-handles unsqueezing', 'augment_batch_of_frames': 'augment a batch of 4D tensor frames with random spatial shifts using grid sampling and replicate padding', 'review_augmentation_implementation': 'review the RandomShiftsAug class to understand how it uses F.grid_sample for differentiable random cropping'}
+```
+

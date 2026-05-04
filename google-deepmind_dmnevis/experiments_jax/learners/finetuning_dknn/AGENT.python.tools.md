@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/dmnevis
+- repo_uri: https://github.com/google-deepmind/dm_nevis
+
+## File: google-deepmind_dmnevis/experiments_jax/learners/finetuning_dknn/finetuning_dknn_learner.py
+
+Prompts
+
+```
+['build a finetuning learner with hyperparameter search and multiple transfer strategies for sequential task learning', 'fit a model with early stopping, dynamic LR decay, and validation-based checkpointing', 'get the best previous train state to finetune from using independent, previous, transfer matrix, or KNN strategies', 'init training from a source task selected by a KNN-based dynamic transfer matrix estimator', 'adapt the training batch size to dataset size using fixed or adaptive batching strategies']
+```
+
+Usage
+
+```
+{'build_finetuning_learner': 'build a finetuning learner with hyperparameter search and multiple transfer strategies for sequential task learning', 'fit_with_early_stopping': 'fit a model with early stopping, dynamic LR decay, and validation-based checkpointing', 'get_train_state_for_finetuning': 'get the best previous train state to finetune from using independent, previous, transfer matrix, or KNN strategies', 'init_from_knn_transfer': 'init training from a source task selected by a KNN-based dynamic transfer matrix estimator', 'adapt_batch_size_to_dataset_size': 'adapt the training batch size to dataset size using fixed or adaptive batching strategies'}
+```
+

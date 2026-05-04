@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/grpc/tools/gcp/github_stats_tracking/main.py
+
+Prompts
+
+```
+['run the webapp2 WSGI application that serves the /daily cron endpoint for GitHub stats tracking', 'create a webapp2 RequestHandler subclass that triggers data fetching on GET requests and returns HTTP 204', 'test the DailyCron get method to verify it calls fetch and returns a 204 status code', 'review the WSGIApplication routing configuration that maps /daily to the DailyCron handler', 'summarize the fetch function imported from fetch_data that is called by the DailyCron handler']
+```
+
+Usage
+
+```
+{'run_daily_cron': 'run the webapp2 WSGI application that serves the /daily cron endpoint for GitHub stats tracking', 'create_DailyCron_handler': 'create a webapp2 RequestHandler subclass that triggers data fetching on GET requests and returns HTTP 204', 'test_DailyCron_get': 'test the DailyCron get method to verify it calls fetch and returns a 204 status code', 'review_app_routing': 'review the WSGIApplication routing configuration that maps /daily to the DailyCron handler', 'summarize_fetch_import': 'summarize the fetch function imported from fetch_data that is called by the DailyCron handler'}
+```
+

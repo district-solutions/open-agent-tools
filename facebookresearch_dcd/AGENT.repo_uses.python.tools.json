@@ -1,0 +1,408 @@
+{
+  "facebookresearch_dcd/algos/agent.py": {
+    "create_acagent_instance": "create an ACAgent instance by passing an algo and storage object to the constructor",
+    "update_acagent": "update the ACAgent by calling update with optional discard_grad and kl_dict parameters",
+    "act_with_acagent": "act using the ACAgent by calling act with observation and recurrent hidden state arguments",
+    "get_value_from_acagent": "get the value estimate from the ACAgent by calling get_value with the current observation",
+    "move_acagent_to_device": "move the ACAgent and its storage to a target device like cuda by calling to"
+  },
+  "facebookresearch_dcd/algos/ppo.py": {
+    "create_PPO_agent": "create a PPO reinforcement learning agent with an actor-critic network and Adam optimizer",
+    "update_PPO_policy": "update the PPO policy using rollout data with clipped surrogate objective and value loss",
+    "compute_PPO_grad_norm": "compute the L2 gradient norm across all actor-critic parameters for monitoring training stability",
+    "review_PPO_update": "review the PPO update method to understand clipped surrogate loss and advantage normalization logic",
+    "refactor_PPO_kl_loss": "refactor the PPO update method to add or modify KL divergence loss between protagonist and antagonist distributions"
+  },
+  "facebookresearch_dcd/algos/storage.py": {
+    "create_RolloutStorage": "create a RolloutStorage buffer to store observations, actions, rewards, and value predictions for PPO training",
+    "insert_rollout_data": "insert a timestep of observations, actions, rewards, and masks into the RolloutStorage buffer",
+    "compute_returns": "compute GAE or discounted returns for all timesteps in the RolloutStorage buffer using gamma and lambda",
+    "generate_feed_forward_batches": "generate mini-batches from the RolloutStorage buffer for feed-forward PPO policy updates",
+    "generate_recurrent_batches": "generate mini-batches from the RolloutStorage buffer for recurrent PPO policy updates with hidden states"
+  },
+  "facebookresearch_dcd/envs/registration.py": {
+    "register_env": "register a new gym environment with an id, entry point, and max episode steps",
+    "make_env": "make a gym environment instance from a registered environment id with optional kwargs",
+    "get_env_spec": "get the EnvSpec for a registered environment id from the global registry",
+    "load_entry_point": "load a Python class or function from a module:attribute string using importlib",
+    "patch_deprecated_methods": "patch deprecated underscore-prefixed methods on a gym environment for backward compatibility"
+  },
+  "facebookresearch_dcd/envs/bipedalwalker/adversarial.py": {
+    "create_adversarial_env": "create a BipedalWalkerAdversarialEnv instance with full mode and a random seed for adversarial level generation",
+    "run_step_adversary": "run step_adversary on a BipedalWalkerAdversarialEnv to mutate terrain parameters one step at a time",
+    "reset_to_level": "reset the adversarial environment to a specific level encoding with custom terrain parameters and seed",
+    "mutate_level": "mutate the current level parameters by a specified number of edits using PARAM_MUTATIONS ranges",
+    "register_gym_envs": "register BipedalWalker-Adversarial-v0 and related Gym environments with custom entry points and max episode steps"
+  },
+  "facebookresearch_dcd/envs/bipedalwalker/register.py": {
+    "register_multigrid_env": "register a new MultiGrid environment with gym using a custom entry point and reward threshold",
+    "register_env_with_max_steps": "register a MultiGrid environment with gym specifying a custom max episode steps limit",
+    "register_env_default_threshold": "register a MultiGrid environment with gym using the default reward threshold of 0.95",
+    "review_register_function": "review the register function to understand how MultiGrid environments are added to the gym registry",
+    "summarize_env_list": "summarize the env_list module variable that tracks registered MultiGrid environment IDs"
+  },
+  "facebookresearch_dcd/envs/bipedalwalker/walker_env.py": {
+    "create_BipedalWalkerCustom_env": "create a BipedalWalkerCustom gym environment with an EnvConfig and optional seed for reproducibility",
+    "run_step_BipedalWalkerCustom": "run a single step on the BipedalWalkerCustom environment by passing a 4-element action array",
+    "reset_BipedalWalkerCustom": "reset the BipedalWalkerCustom environment to its initial state and return the first observation",
+    "render_BipedalWalkerCustom": "render the BipedalWalkerCustom environment in human or rgb_array mode using the render method",
+    "re_init_BipedalWalkerCustom": "reinitialize the BipedalWalkerCustom environment with a new EnvConfig and seed without creating a new instance"
+  },
+  "facebookresearch_dcd/envs/bipedalwalker/walker_test_envs.py": {
+    "create_bipedalwalker_default_env": "create a BipedalWalkerDefault gym environment with default terrain configuration",
+    "create_bipedalwalker_insane_env": "create a BipedalWalkerInsane gym environment with all terrain obstacles maxed out",
+    "create_bipedalwalker_xchal_env": "create a procedurally generated BipedalWalkerXChal environment with random obstacle parameters",
+    "create_bipedalwalker_poet_rose_env": "create a BipedalWalkerPOETRose gym environment using a specific rose ID like 1a or 2b",
+    "create_bipedalwalker_config": "create an EnvConfig with custom stump height, pit gap, stair, and roughness parameters"
+  },
+  "facebookresearch_dcd/envs/box2d/bezier.py": {
+    "create_bezier_curve_from_points": "create a bezier curve from an array of 2D control points using the bezier function",
+    "generate_smooth_closed_curve": "generate a smooth closed Bezier curve through a set of points using get_bezier_curve with adjustable rad and edgy parameters",
+    "create_curve_segments": "create a series of connected Bezier curve segments between points with specified entry and exit angles using get_curve",
+    "generate_random_points": "generate n random 2D points in the unit square with a minimum distance constraint using get_random_points",
+    "sort_points_counter_clockwise": "sort an array of 2D points in counter-clockwise order around their centroid using ccw_sort"
+  },
+  "facebookresearch_dcd/envs/box2d/car_racing.py": {
+    "create_carracing_env": "create a CarRacing gym environment instance with optional verbose flag for debugging",
+    "run_carracing_episode": "run a CarRacing episode by calling reset then stepping with steer gas brake actions",
+    "render_carracing": "render the CarRacing environment in human rgb_array or state_pixels mode",
+    "register_carracing_gym": "register the CarRacing-Vanilla-v0 environment with gym using gym_register entry point",
+    "create_track_carracing": "create a random racing track with checkpoints and border tiles via _create_track"
+  },
+  "facebookresearch_dcd/envs/box2d/car_racing_adversarial.py": {
+    "create_adversarial_car_racing_env": "create a CarRacingBezierAdversarial environment with custom control points and sparse rewards",
+    "step_adversary_agent": "step the adversary agent to place a new control point on the track sketch",
+    "reset_to_level": "reset the adversarial car racing environment to a specific pre-defined level configuration",
+    "reset_agent_status": "reset the car agent status and recreate the track from adversary control points",
+    "reset_random_track": "reset the adversarial environment with a randomized track and optional fixed seed"
+  },
+  "facebookresearch_dcd/envs/box2d/car_racing_bezier.py": {
+    "run_car_racing_bezier_env": "run the CarRacingBezier gym environment with keyboard controls via argparse CLI with optional track name and seed",
+    "create_bezier_track": "create a Bezier curve racetrack with configurable control points and border indicators in the Box2D world",
+    "create_polar_track": "create a polar coordinate racetrack from random checkpoints with configurable minimum and maximum radius ratios",
+    "configure_sparse_rewards": "configure sparse reward bins and goal tracking for the CarRacingBezier environment to reward reaching target track segments",
+    "render_car_racing_view": "render the CarRacingBezier environment in human, rgb_array, state_pixels, level, or sketch mode with optional birdseye camera view"
+  },
+  "facebookresearch_dcd/envs/box2d/car_racing_f1.py": {
+    "create_F1_racetrack_env": "dynamically create a CarRacingF1 gym environment for a specific Formula 1 racetrack like Belgium or Monaco",
+    "register_F1_gym_env": "register a new CarRacingF1-v0 gym environment with a custom entry point and max episode steps",
+    "build_constructor_for_track": "build a constructor function that initializes CarRacingBezier with a specific F1 track name and kwargs",
+    "review_racetracks_dict": "review the racetracks dictionary that maps Formula 1 track class names to their RaceTrack instances",
+    "summarize_set_global": "summarize the set_global function that assigns dynamically created F1 environment classes to the module namespace"
+  },
+  "facebookresearch_dcd/envs/box2d/rendering.py": {
+    "create_viewer_window": "create a Viewer instance with a given width and height to render 2D geometry",
+    "render_scene_to_rgb": "render the Viewer scene and return an RGB numpy array of the current frame",
+    "draw_shapes_on_viewer": "draw circles, polygons, polylines, or lines on a Viewer using convenience draw methods",
+    "create_capsule_geometry": "create a capsule compound geometry from a given length and width for rendering",
+    "display_image_array": "display a numpy image array in a SimpleImageViewer window with optional scaling"
+  },
+  "facebookresearch_dcd/envs/multigrid/adversarial.py": {
+    "create_adversarial_env": "create an AdversarialEnv instance with custom n_clutter, grid size, and max_steps parameters",
+    "step_adversary_place_objects": "call step_adversary with a location integer to place the goal, agent, or walls in sequence",
+    "reset_agent_restart_episode": "call reset_agent to restart the agent at its start position while preserving the adversary-designed level layout",
+    "mutate_level_edit_grid": "call mutate_level with num_edits to randomly modify walls, agent, and goal positions in the current grid",
+    "reset_to_level_from_string": "call reset_to_level with a space-separated string of adversary action integers to reconstruct a saved level"
+  },
+  "facebookresearch_dcd/envs/multigrid/cluttered.py": {
+    "create_cluttered_environment": "create a ClutteredMultiGrid environment with configurable grid size, agents, and number of obstacles",
+    "customize_cluttered_grid": "customize the ClutteredMultiGrid grid by setting n_clutter, randomize_goal, and walls_are_lava parameters",
+    "run_cluttered_step": "run a step action in the ClutteredMultiGrid environment and return observation, reward, done, and info",
+    "register_cluttered_env": "register a ClutteredMultiGrid variant as a Gym environment using register.register with an env_id and entry_point",
+    "create_lava_cluttered_env": "create a ClutteredMinigridLava environment where obstacles are lava instead of walls"
+  },
+  "facebookresearch_dcd/envs/multigrid/crossing.py": {
+    "create_crossing_env": "create a CrossingEnv with configurable grid size, number of crossings, and obstacle type for reinforcement learning",
+    "create_lava_crossing_env": "create a LavaCrossingEnv with lava obstacles on a 9x9 grid with one crossing for RL training",
+    "create_simple_crossing_env": "create a SimpleCrossingEnv with wall obstacles on a 9x9 grid with one crossing for RL training",
+    "customize_crossing_grid": "customize the CrossingEnv grid by setting size, num_crossings, and obstacle_type to Lava or Wall",
+    "register_minigrid_env": "register a MiniGrid crossing environment variant with a unique ID and entry point for gym access"
+  },
+  "facebookresearch_dcd/envs/multigrid/fourrooms.py": {
+    "create_fourrooms_env": "create a FourRoomsEnv instance with optional agent and goal positions for the classic 4 rooms gridworld",
+    "run_fourrooms_step": "run a step action in the FourRoomsEnv and return observation, reward, done flag, and info dict",
+    "reset_fourrooms_env": "reset the FourRoomsEnv to its initial state and return the starting observation with direction",
+    "generate_fourrooms_grid": "generate the 4 room grid layout with walls, doors, agent, and goal placement using _gen_grid",
+    "register_fourrooms_env": "register the MiniGrid-FourRooms-v0 environment with the gym registration system for use in training"
+  },
+  "facebookresearch_dcd/envs/multigrid/manual_control.py": {
+    "run_manual_control": "run the manual control script to interact with a gym_minigrid environment using keyboard controls",
+    "run_with_custom_env": "run the manual control script with a custom gym environment name via the --env argument",
+    "run_with_seed": "run the manual control script with a fixed random seed for reproducible environment generation",
+    "run_agent_view": "run the manual control script in agent view mode to see the partially observable agent perspective",
+    "review_key_handler": "review the key_handler function that maps keyboard events to environment actions like move, pickup, and drop"
+  },
+  "facebookresearch_dcd/envs/multigrid/multigrid.py": {
+    "create_multiagent_gridworld_env": "create a MultiGridEnv with N agents, competitive or non-competitive mode, and a fixed grid size",
+    "run_multiagent_episode": "run a multi-agent gridworld episode by calling reset then step with an array of actions per agent",
+    "place_agents_and_objects": "place agents and objects like doors, keys, and goals at random or specific positions in the grid",
+    "render_multiagent_grid": "render the multi-agent gridworld environment with per-agent visibility masks and agent color highlighting",
+    "decode_grid_encoding": "decode a numpy array grid encoding back into a Grid object with a visibility mask using Grid.decode"
+  },
+  "facebookresearch_dcd/envs/multigrid/register.py": {
+    "register_multigrid_env": "register a new MultiGrid environment with OpenAI gym using an env_id and entry_point",
+    "register_multigrid_with_threshold": "register a MultiGrid environment with a custom reward_threshold for gym registration",
+    "register_multigrid_with_steps": "register a MultiGrid environment with max_episode_steps to limit episode length",
+    "review_register_function": "review the register function to understand how MultiGrid environments are added to gym",
+    "summarize_env_list": "summarize the env_list variable that tracks registered MultiGrid environment ids"
+  },
+  "facebookresearch_dcd/envs/multigrid/window.py": {
+    "create_Window": "create a Window instance with a title to draw a gridworld using Matplotlib",
+    "show_img_Window": "show or update an image in the Window using the show_img method with a numpy array",
+    "set_caption_Window": "set a caption text below the image in the Window using the set_caption method",
+    "reg_key_handler_Window": "register a keyboard event handler function with the Window using the reg_key_handler method",
+    "show_Window": "show the Window and start the matplotlib event loop using the show method with optional blocking"
+  },
+  "facebookresearch_dcd/envs/runners/adversarial_runner.py": {
+    "create_adversarial_runner": "create an AdversarialRunner with protagonist agent, adversary agent, and environment adversary for adversarial training",
+    "run_adversarial_training_iteration": "run a full adversarial training iteration that generates environments, performs agent rollouts, and updates all agents",
+    "perform_agent_rollout": "perform a rollout for the protagonist or adversary agent with optional level replay and gradient updates",
+    "save_and_load_runner_state": "save the AdversarialRunner state dict with agent weights and optimizer states or load from a checkpoint",
+    "compute_environment_adversary_return": "compute the environment adversary return using paired, flexible paired, or minimax UED algorithms"
+  },
+  "facebookresearch_dcd/envs/wrappers/car_racing_wrappers.py": {
+    "create_car_racing_wrapper": "create a CarRacingWrapper around a gym environment with grayscale, reward shaping, and early termination options",
+    "run_step_with_action_repeat": "run the step method to execute repeated actions with reward shaping and sparse reward support",
+    "reset_environment_with_preprocessing": "reset the environment and apply cropping, grayscale conversion, and frame stacking to observations",
+    "configure_observation_space": "configure the observation space with optional cropping, grayscale, channel-first layout, and frame stacking",
+    "reset_to_specific_level": "reset the environment to a specific level with preprocessing, frame stacking, and transposition applied"
+  },
+  "facebookresearch_dcd/envs/wrappers/multigrid_wrappers.py": {
+    "create_fully_observable_wrapper": "create a MultiGridFullyObsWrapper around a gym_minigrid env to expose the full grid as a compact 3-channel observation",
+    "use_full_obs_space": "use the full_obs observation space to access the encoded grid with object, color, and direction channels for each cell",
+    "get_agent_observation": "get the agent observation with the full grid encoding that includes the agent position marked in red",
+    "reset_wrapper_adversarial": "reset the MultiGridFullyObsWrapper in adversarial mode to return the raw observation without adding full_obs",
+    "reset_wrapper_non_adversarial": "reset the MultiGridFullyObsWrapper in non-adversarial mode to automatically include the full grid observation"
+  },
+  "facebookresearch_dcd/envs/wrappers/obs_wrappers.py": {
+    "create_adversarial_observation_wrapper": "create a subclass of AdversarialObservationWrapper that implements agent_observation to transform environment observations",
+    "build_vec_preprocess_image_wrapper": "build a VecPreprocessImageWrapper to scale, transpose, and convert vectorized environment observations to PyTorch tensors",
+    "test_preprocess_observation": "test the _preprocess method to verify scaling, transposing, and tensor conversion of observations",
+    "review_transpose_obs_space": "review the _transpose_obs_space method to understand how Dict and Box observation spaces are transposed",
+    "refactor_step_wait": "refactor the step_wait method to preprocess observations and convert rewards to tensors after environment steps"
+  },
+  "facebookresearch_dcd/envs/wrappers/parallel_wrappers.py": {
+    "create_subproc_vec_env": "create a SubprocVecEnv to run multiple gym environments in parallel subprocesses via pipes",
+    "create_parallel_adversarial_vec_env": "create a ParallelAdversarialVecEnv to run adversarial environments in parallel with adversary action support",
+    "step_async_wait": "run step_async then step_wait on a SubprocVecEnv to execute actions across parallel environments",
+    "reset_to_level": "reset a specific parallel environment to a given level using reset_to_level on ParallelAdversarialVecEnv",
+    "remote_attr": "fetch or call an arbitrary attribute on remote environments using remote_attr with optional data and flatten"
+  },
+  "facebookresearch_dcd/envs/wrappers/time_limit.py": {
+    "create_timelimit_wrapper": "create a TimeLimit wrapper around a gym environment to enforce a maximum number of episode steps",
+    "step_timelimit_env": "step the TimeLimit-wrapped environment with an action and receive observation, reward, done, and info",
+    "reset_timelimit_env": "reset the TimeLimit-wrapped environment to start a new episode with elapsed steps set to zero",
+    "reset_random_timelimit_env": "reset the TimeLimit-wrapped environment to a random state with elapsed steps set to zero",
+    "reset_to_level_timelimit_env": "reset the TimeLimit-wrapped environment to a specific level with elapsed steps set to zero"
+  },
+  "facebookresearch_dcd/envs/wrappers/vec_env.py": {
+    "implement_vecenv_subclass": "implement a subclass of VecEnv that overrides reset, step_async, and step_wait for a custom environment",
+    "use_step_async_wait": "use step_async and step_wait to asynchronously step a batch of vectorized environments with actions",
+    "create_vecenvwrapper": "create a VecEnvWrapper subclass to transform observations or actions across a batch of environments",
+    "use_cloudpicklewrapper": "use CloudpickleWrapper to serialize objects with cloudpickle for safe multiprocessing communication",
+    "use_clear_mpi_env_vars": "use clear_mpi_env_vars context manager to temporarily remove MPI env vars before spawning child processes"
+  },
+  "facebookresearch_dcd/envs/wrappers/vec_frame_stack.py": {
+    "create_vec_frame_stack_wrapper": "create a VecFrameStack wrapper that stacks n frames along the last axis of a VecEnv observation space",
+    "step_wait_frame_stack": "step_wait on a VecFrameStack wrapper to roll observations and return stacked frames with rewards and dones",
+    "reset_frame_stack": "reset a VecFrameStack wrapper to clear stacked observations and initialize with the first observation",
+    "reset_agent_frame_stack": "reset_agent on a VecFrameStack wrapper to clear stacked observations and set the latest agent observation",
+    "reset_random_frame_stack": "reset_random on a VecFrameStack wrapper to clear stacked observations and set a random initial observation"
+  },
+  "facebookresearch_dcd/envs/wrappers/vec_monitor.py": {
+    "create_vecmonitor_wrapper": "create a VecMonitor wrapper around a VecEnv to track episode returns and lengths",
+    "reset_vecmonitor": "reset the VecMonitor wrapper and zero out episode return and length tracking arrays",
+    "step_wait_vecmonitor": "step the wrapped environment and record episode info when episodes terminate",
+    "configure_results_writer": "configure a VecMonitor with a filename to write episode results to a CSV file",
+    "enable_episode_buffer": "enable the episode return and length buffer in VecMonitor by setting keep_buf"
+  },
+  "facebookresearch_dcd/envs/wrappers/vec_normalize.py": {
+    "create_vec_normalize_wrapper": "create a VecNormalize wrapper to normalize observations and rewards from a vectorized environment",
+    "run_step_wait_normalized": "run step_wait on a VecNormalize wrapper to get normalized observations and clipped rewards",
+    "reset_vec_normalize_env": "reset a VecNormalize wrapped environment and get normalized initial observations",
+    "review_obfilt_normalization": "review the _obfilt method to understand how observations are normalized using running mean and std",
+    "refactor_vec_normalize_reset_methods": "refactor the VecNormalize reset_agent, reset_random, or reset_alp_gmm methods to support custom reset logic"
+  },
+  "facebookresearch_dcd/level_replay/level_sampler.py": {
+    "create_LevelSampler": "create a LevelSampler instance with seeds, observation space, action space, and a sampling strategy",
+    "sample_level": "sample a level seed using the LevelSampler sample method with random or sequential strategy",
+    "update_seed_score": "update a seed score with the update_seed_score method given actor index, seed, score, and step count",
+    "update_with_rollouts": "update seed scores from rollout data using update_with_rollouts and a strategy like policy_entropy or gae",
+    "sample_weights": "compute normalized sampling weights for all seeds using the sample_weights method with score and staleness transforms"
+  },
+  "facebookresearch_dcd/level_replay/level_store.py": {
+    "create_LevelStore": "create a LevelStore instance with an optional max_size and data_info dictionary for numpy level data",
+    "insert_levels": "insert one or more levels into the LevelStore and receive their assigned seed indices",
+    "remove_levels": "remove one or more levels from the LevelStore by their seed indices",
+    "get_level_by_seed": "retrieve a stored level by its seed, optionally deserialized as a numpy array",
+    "reconcile_seeds": "reconcile the LevelStore seeds by ejecting any seeds not present in the provided list"
+  },
+  "facebookresearch_dcd/models/car_racing_models.py": {
+    "build_CarRacingNetwork": "build a CarRacingNetwork model with CNN image embedding and Beta distribution policy head for continuous action spaces",
+    "build_CarRacingBezierAdversaryEnvNetwork": "build a CarRacingBezierAdversaryEnvNetwork model with sketch embedding and categorical or Beta policy for bezier curve generation",
+    "test_CarRacingNetwork_act": "test the CarRacingNetwork act method to sample actions from a Beta distribution given image observations",
+    "test_CarRacingBezierAdversaryEnvNetwork_act": "test the CarRacingBezierAdversaryEnvNetwork act method to sample control point actions with optional goal bin selection",
+    "review_CarRacingNetwork_evaluate_actions": "review the CarRacingNetwork evaluate_actions method that computes value, log probabilities, and entropy for given actions"
+  },
+  "facebookresearch_dcd/models/common.py": {
+    "create_RNN_module": "create an RNN module with LSTM or GRU architecture for actor-critic networks",
+    "build_Conv2d_tf_layer": "build a Conv2d layer with TensorFlow-style same padding behavior",
+    "create_Flatten_module": "create a Flatten module to reshape tensors keeping batch dimension",
+    "build_fc_layers": "build fully connected layers with tanh activation and orthogonal weight initialization",
+    "apply_init_to_modules": "apply Xavier uniform initialization to Conv2d and BatchNorm2d modules"
+  },
+  "facebookresearch_dcd/models/distributions.py": {
+    "create_categorical_distribution_nn": "create a Categorical neural network module that maps inputs to a categorical distribution over outputs",
+    "sample_from_fixed_categorical": "sample an action from a FixedCategorical distribution and return it with an extra dimension",
+    "compute_log_probs_fixed_categorical": "compute the log probabilities of given actions using a FixedCategorical distribution",
+    "get_mode_fixed_categorical": "get the most likely action from a FixedCategorical distribution by finding the argmax of probabilities",
+    "forward_categorical_module": "pass input tensor through a Categorical module to get a FixedCategorical distribution with logits"
+  },
+  "facebookresearch_dcd/models/multigrid_global_critic_models.py": {
+    "build_MultigridGlobalCriticNetwork": "build a MultigridGlobalCriticNetwork actor-critic model with observation and action spaces for reinforcement learning",
+    "run_act_method": "run the act method on MultigridGlobalCriticNetwork to sample actions and get values from inputs",
+    "run_get_value_method": "run the get_value method on MultigridGlobalCriticNetwork to compute state values from observation inputs",
+    "run_evaluate_actions_method": "run the evaluate_actions method on MultigridGlobalCriticNetwork to compute log probabilities and entropy for given actions",
+    "review_MultigridGlobalCriticNetwork_forward_base": "review the MultigridGlobalCriticNetwork _forward_base method to understand image and scalar embedding preprocessing logic"
+  },
+  "facebookresearch_dcd/models/multigrid_models.py": {
+    "build_MultigridNetwork": "build a MultigridNetwork actor-critic module with observation space, action space, and optional LSTM recurrent architecture",
+    "create_MultigridNetwork_act": "create an action selection by calling act on a MultigridNetwork with inputs, RNN hidden states, and masks",
+    "run_MultigridNetwork_get_value": "run the critic value head on a MultigridNetwork to get state value estimates from inputs",
+    "test_MultigridNetwork_evaluate_actions": "test action evaluation by calling evaluate_actions on a MultigridNetwork to get log probabilities and entropy",
+    "review_MultigridNetwork_forward_base": "review the _forward_base method to understand how image, scalar, and positional embeddings are combined before the RNN"
+  },
+  "facebookresearch_dcd/models/popart.py": {
+    "create_PopArt_layer": "create a PopArt linear layer with input and output shape for value normalization",
+    "build_PopArt_update_running_stats": "build a PopArt module and call update to compute running mean and variance from a batch",
+    "test_PopArt_normalize": "test the PopArt normalize method to standardize input vectors using debiased mean and variance",
+    "refactor_PopArt_denormalize": "refactor code using PopArt denormalize to transform standardized values back to original scale",
+    "review_PopArt_debiased_mean_var": "review the PopArt debiased_mean_var method to inspect running statistics for debugging"
+  },
+  "facebookresearch_dcd/models/recurrent_walker_models.py": {
+    "create_BipedalWalkerRecurrentStudentPolicy": "create a recurrent student policy network for bipedal walker with MLP base and diagonal Gaussian action distribution",
+    "create_BipedalWalkerRecurrentAdversaryPolicy": "create a recurrent adversary policy network for bipedal walker with optional editor mode and random action support",
+    "create_MLPBase": "create an MLP base network with separate actor and critic heads and optional LSTM or GRU recurrent layers",
+    "create_DiagGaussian": "create a diagonal Gaussian action distribution module with orthogonal initialized linear layer and learnable log standard deviation",
+    "create_Categorical": "create a categorical action distribution module with orthogonal initialized linear layer for discrete action spaces"
+  },
+  "facebookresearch_dcd/models/walker_models.py": {
+    "create_BipedalWalkerStudentPolicy": "create a BipedalWalkerStudentPolicy with an observation shape and continuous action space for reinforcement learning",
+    "create_BipedalWalkerAdversaryPolicy": "create a BipedalWalkerAdversaryPolicy with image and random_z observation spaces for adversarial training",
+    "create_MLPBase": "create an MLPBase neural network with configurable input size and optional recurrent GRU support",
+    "create_DiagGaussian": "create a DiagGaussian action distribution module with orthogonal-initialized linear layers for continuous actions",
+    "create_Categorical": "create a Categorical action distribution module with orthogonal-initialized linear layers for discrete actions"
+  },
+  "facebookresearch_dcd/results/plot_eval_bars.py": {
+    "run_plot_eval_bars_minigrid": "run plot_eval_bars.py to generate bar charts comparing RL methods across MiniGrid environments from CSV result files",
+    "run_plot_eval_bars_bipedal": "run plot_eval_bars.py to plot BipedalWalker evaluation results as grouped bar charts with error bars",
+    "run_plot_eval_bars_custom_metrics": "run plot_eval_bars.py with custom row_prefix and include filters to plot specific metrics from result CSVs",
+    "run_parse_args": "run parse_args to configure result path, CSV files, labels, ylabel, savename, and figsize for bar chart generation",
+    "run_plot_eval_bars_uniform_blocks": "run plot_eval_bars.py with custom figsize to plot uniform block count results across environments"
+  },
+  "facebookresearch_dcd/results/plot_f1.py": {
+    "run_plot_f1_benchmark": "run plot_f1.py to generate a bar chart of CarRacingF1 benchmark results from CSV files",
+    "run_parse_args": "run parse_args to parse CLI arguments for result path, files, labels, and plot options",
+    "run_agg_test_episodes_by_seed": "run agg_test_episodes_by_seed to compute mean statistics across test episodes grouped by seed",
+    "run_plot_bar_chart": "run the main block to plot a bar chart with mean test returns and standard error bars",
+    "run_save_figure": "run plot_f1.py with --savename to save the generated benchmark comparison plot as a PDF"
+  },
+  "facebookresearch_dcd/teachDeepRL/teachers/teacher_controller.py": {
+    "create_TeacherController": "create a TeacherController with a specified teacher algorithm, environment parameter bounds, and optional seed",
+    "call_set_env_params": "call set_env_params on a TeacherController to sample tasks and reset the environment with new parameters",
+    "call_record_train_episode": "call record_train_episode on a TeacherController to log a reward and update the task generator",
+    "convert_param_vec_to_dict": "convert a flat parameter vector into a named parameter dictionary using param_vec_to_param_dict",
+    "dump_TeacherController": "dump a TeacherController state including training data and task generator to a pickle file"
+  },
+  "facebookresearch_dcd/teachDeepRL/teachers/algos/alp_gmm.py": {
+    "create_ALPGMM": "create an ALPGMM instance with task space min and max boundary vectors",
+    "update_ALPGMM_with_task_reward": "update the ALPGMM model with a new task vector and its reward value",
+    "sample_task_from_ALPGMM": "sample a new task from the ALPGMM using ALP-weighted Gaussian mixture or random exploration",
+    "compute_alp_with_EmpiricalALPComputer": "compute the absolute learning progress for a task and reward pair using nearest neighbor lookup",
+    "proportional_choice_select_index": "select an index proportionally from a value array with optional epsilon random fallback"
+  },
+  "facebookresearch_dcd/teachDeepRL/teachers/algos/covar_gmm.py": {
+    "create_CovarGMM": "create a CovarGMM instance with task space boundaries, seed, and optional fitting parameters",
+    "update_CovarGMM": "update the CovarGMM with a task and reward to fit Gaussian mixture models over time",
+    "sample_task_CovarGMM": "sample a new task from the CovarGMM based on learning progress or random exploration",
+    "dump_CovarGMM": "dump the CovarGMM bookkeeping data including weights, covariances, and means into a dictionary",
+    "proportional_choice": "select an index proportionally from a value array with optional epsilon random fallback"
+  },
+  "facebookresearch_dcd/teachDeepRL/teachers/algos/oracle_teacher.py": {
+    "create_oracle_teacher": "create an OracleTeacher instance with mins, maxs, window_step_vector, seed, reward threshold, and step rate parameters",
+    "sample_task_oracle_teacher": "sample a random task from the OracleTeacher's current window position and window range using uniform distribution",
+    "update_oracle_teacher": "update the OracleTeacher with a task and reward, shifting the window position when mean reward exceeds threshold",
+    "dump_oracle_teacher": "call the dump method on OracleTeacher to return the provided dictionary unchanged",
+    "review_oracle_teacher_class": "review the OracleTeacher class that manages a sliding window for curriculum learning in deep reinforcement learning"
+  },
+  "facebookresearch_dcd/teachDeepRL/teachers/algos/random_teacher.py": {
+    "create_random_teacher": "create a RandomTeacher instance with mins and maxs bounds for random task generation",
+    "sample_task_from_random_teacher": "sample a random task from the RandomTeacher using the sample_task method",
+    "update_random_teacher": "call update on the RandomTeacher with a task and competence value",
+    "dump_random_teacher": "dump the RandomTeacher state by passing a dictionary to the dump method",
+    "initialize_random_task_generator": "initialize a RandomTeacher with a custom seed for reproducible random task sampling"
+  },
+  "facebookresearch_dcd/teachDeepRL/teachers/algos/riac.py": {
+    "create_riac_instance": "create a RIAC instance with task space bounds and optional hyperparameters for curriculum learning",
+    "sample_task_from_riac": "sample a task from the RIAC teacher using ALP-weighted region selection and mutation strategies",
+    "update_riac_with_reward": "update the RIAC teacher with a task and reward pair to trigger region splitting and ALP recomputation",
+    "compute_alp_for_region": "compute the absolute learning progress of a region by comparing first and second half reward means",
+    "split_riac_region": "split a RIAC region node into two sub-regions based on ALP difference and population constraints"
+  },
+  "facebookresearch_dcd/teachDeepRL/teachers/utils/dataset.py": {
+    "create_Databag_add_vectors": "create a Databag with a given dimension and add vectors to it for nearest neighbor lookup",
+    "create_Dataset_from_xy": "create a Dataset from separate x and y arrays using the from_xy class method",
+    "find_nn_x_in_Dataset": "find the k nearest neighbors of an input vector x in a Dataset using nn_x",
+    "find_nn_y_in_Dataset": "find the k nearest neighbors of an output vector y in a Dataset using nn_y",
+    "create_BufferedDataset_with_buffer": "create a BufferedDataset with a configurable buffer size to batch KDTree rebuilds when adding data"
+  },
+  "facebookresearch_dcd/teachDeepRL/teachers/utils/plot_utils.py": {
+    "create_gmm_visualization_gif": "create a GIF animation of GMM clusters with competence grids from a blackbox dictionary over episodes",
+    "plot_regions_with_colorbar": "plot rectangular regions with jet colormap and a colorbar showing absolute learning progress values",
+    "scale_and_unscale_vectors": "scale a numpy 1D array to [-1,1] given bounds and unscale it back to original range",
+    "truncate_colormap_range": "truncate a matplotlib colormap to a specific min and max value range for custom visualization",
+    "create_scatter_plot_with_emphasis": "create a 2D scatter plot with red dots and optionally emphasized blue dots for highlighted data"
+  },
+  "facebookresearch_dcd/teachDeepRL/teachers/utils/test_utils.py": {
+    "get_empty_env_ranges": "get a dictionary of environment parameter ranges initialized to None for roughness, stump_height, obstacle_spacing, and gap_width",
+    "get_test_set_name": "generate a test set name string from environment parameter ranges by concatenating parameter keys with their min and max values",
+    "test_get_empty_env_ranges": "test the get_empty_env_ranges function to verify it returns a dictionary with all four environment parameters set to None",
+    "test_get_test_set_name": "test the get_test_set_name function with sample environment ranges to confirm it builds the correct concatenated name string",
+    "refactor_get_test_set_name": "refactor the get_test_set_name function to use identity comparison with == instead of is for string key checks"
+  },
+  "facebookresearch_dcd/train_scripts/make_cmd.py": {
+    "generate_train_commands": "generate training shell commands from a params dict with configurable trial count and seed offsets",
+    "generate_param_grid_combinations": "generate all parameter combinations from a hyperparameter grid using default values for fixed params",
+    "run_make_cmd_cli": "run the CLI to generate training commands from a JSON grid config file with optional xvfb support",
+    "generate_xpid_from_params": "generate a unique experiment ID string from training params including env, PPO, and editor settings",
+    "parse_make_cmd_args": "parse CLI arguments for directory path, JSON config name, trial count, and checkpoint options"
+  },
+  "facebookresearch_dcd/util/filewriter.py": {
+    "create_FileWriter": "create a FileWriter instance to log experiment metrics to CSV files in a specified directory",
+    "log_metrics_with_FileWriter": "log a dictionary of key-value metrics to the experiment CSV log file with automatic tick tracking",
+    "gather_git_and_slurm_metadata": "gather git commit info, branch, slurm environment variables, and system env into a metadata dictionary",
+    "log_level_weights_and_seeds": "log level weight arrays and track new seed indices to CSV when recording seed diffs is enabled",
+    "close_FileWriter_and_save_metadata": "close the FileWriter, update end date and success status, and persist metadata to a JSON file"
+  },
+  "facebookresearch_dcd/util/geo_complexity.py": {
+    "calculate_complexity_from_points": "calculate polygon complexity metrics from a list of coordinate points using default coefficients",
+    "calculate_complexity_custom_coefficients": "calculate polygon complexity with custom amplitude and convexity coefficients from coordinate points",
+    "get_notches_normalized": "get the normalized notch count for a Shapely Polygon object to measure angular complexity",
+    "get_stats_geodataframe": "get polygon complexity statistics including area, perimeter, amplitude, convexity, and notches from a GeoDataFrame",
+    "review_complexity_function": "review the complexity function that computes polygon complexity metrics from coordinate points"
+  },
+  "facebookresearch_dcd/util/make_agent.py": {
+    "create_make_agent": "create a PPO RL agent with actor-critic model and rollout storage for a given environment",
+    "create_model_for_env_agent": "create a neural network model for a MultiGrid, CarRacing, or BipedalWalker environment agent",
+    "create_model_for_multigrid_agent": "create a MultigridNetwork model for a MultiGrid environment with optional global critic or policy",
+    "create_model_for_car_racing_agent": "create a CarRacingNetwork or CarRacingBezierAdversaryEnvNetwork model for a CarRacing environment",
+    "create_model_for_bipedalwalker_agent": "create a BipedalWalker student or adversary policy model with optional LSTM recurrence"
+  },
+  "facebookresearch_dcd/util/unionfind.py": {
+    "create_unionfind_instance": "create a UnionFind instance with an initial list of elements to manage disjoint sets",
+    "union_two_elements": "union two elements in a UnionFind instance to merge their disjoint sets into one",
+    "find_root_of_element": "find the root index of the disjoint set containing a given element in a UnionFind",
+    "check_connected_elements": "check whether two elements are connected and belong to the same component in a UnionFind",
+    "get_all_components": "get all connected components as a list of sets from a UnionFind instance"
+  }
+}

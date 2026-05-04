@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/ava-256
+- repo_uri: https://github.com/facebookresearch/ava-256
+
+## File: facebookresearch_ava-256/add_headers.py
+
+Prompts
+
+```
+['run a scan of a directory to add Meta copyright headers to all Python files', 'run a check on a single Python file and add the Meta copyright header if missing', 'create a script that recursively adds Meta copyright headers to all Python files in a directory', 'test the check_and_add_header function by running it on a Python file missing the Meta header', 'refactor the scan_directory function to support filtering by additional file extensions beyond .py', 'run distributed data parallel training of an autoencoder using a YAML config file and multiple GPUs', 'run gen_optimizer to create an Adam, SGD, or AdamW optimizer for a PyTorch neural network module', 'run setup to initialize a PyTorch NCCL distributed process group with the given rank and world size', 'run prepare to instantiate AvaMultiCaptureDataset, DistributedSampler, and DataLoader for distributed training', 'run xid_eval to perform cross-ID evaluation by rendering driven images from a driver subject onto neutral subjects', 'run the CLI to download ava-256 dataset assets to a specified output directory', 'run the CLI to download specific assets like camera_calibration or head_pose for captures', 'run the CLI with multiple workers to parallelize downloading ava-256 dataset files', 'run the CLI to download encoder data including framelist and 5 hardcoded cameras', 'run the CLI to download multi-camera assets like images and segmentation parts per capture', 'compute the mean L1 loss between a predicted tensor and a ground truth tensor', 'compute the mean L2 loss between a predicted tensor and a ground truth tensor', 'review the mean_ell_1 function to understand how it calculates absolute difference loss', 'review the mean_ell_2 function to understand how it calculates squared difference loss', 'refactor the losses module to add SSIM loss support as noted in the TODO comment', 'load a Wavefront OBJ file and return vertices, faces, and texture coordinates as numpy arrays', 'load a KRT JSON file and return camera intrinsics, extrinsics, and distortion parameters', 'find the closest point on a 3D mesh for query points and return barycentric coordinates', 'composite a list of image arrays into a grid and save the result as a PNG file', 'load training capture IDs from a CSV file and return MugsyCapture objects with directory paths']
+```
+
+Usage
+
+```
+{'run_scan_directory': 'run a scan of a directory to add Meta copyright headers to all Python files', 'run_check_and_add_header': 'run a check on a single Python file and add the Meta copyright header if missing', 'create_add_headers_script': 'create a script that recursively adds Meta copyright headers to all Python files in a directory', 'test_check_and_add_header': 'test the check_and_add_header function by running it on a Python file missing the Meta header', 'refactor_scan_directory': 'refactor the scan_directory function to support filtering by additional file extensions beyond .py'}
+```
+
+## File: facebookresearch_ava-256/ddp-train.py
+
+Prompts
+
+```
+['run a scan of a directory to add Meta copyright headers to all Python files', 'run a check on a single Python file and add the Meta copyright header if missing', 'create a script that recursively adds Meta copyright headers to all Python files in a directory', 'test the check_and_add_header function by running it on a Python file missing the Meta header', 'refactor the scan_directory function to support filtering by additional file extensions beyond .py', 'run distributed data parallel training of an autoencoder using a YAML config file and multiple GPUs', 'run gen_optimizer to create an Adam, SGD, or AdamW optimizer for a PyTorch neural network module', 'run setup to initialize a PyTorch NCCL distributed process group with the given rank and world size', 'run prepare to instantiate AvaMultiCaptureDataset, DistributedSampler, and DataLoader for distributed training', 'run xid_eval to perform cross-ID evaluation by rendering driven images from a driver subject onto neutral subjects', 'run the CLI to download ava-256 dataset assets to a specified output directory', 'run the CLI to download specific assets like camera_calibration or head_pose for captures', 'run the CLI with multiple workers to parallelize downloading ava-256 dataset files', 'run the CLI to download encoder data including framelist and 5 hardcoded cameras', 'run the CLI to download multi-camera assets like images and segmentation parts per capture', 'compute the mean L1 loss between a predicted tensor and a ground truth tensor', 'compute the mean L2 loss between a predicted tensor and a ground truth tensor', 'review the mean_ell_1 function to understand how it calculates absolute difference loss', 'review the mean_ell_2 function to understand how it calculates squared difference loss', 'refactor the losses module to add SSIM loss support as noted in the TODO comment', 'load a Wavefront OBJ file and return vertices, faces, and texture coordinates as numpy arrays', 'load a KRT JSON file and return camera intrinsics, extrinsics, and distortion parameters', 'find the closest point on a 3D mesh for query points and return barycentric coordinates', 'composite a list of image arrays into a grid and save the result as a PNG file', 'load training capture IDs from a CSV file and return MugsyCapture objects with directory paths']
+```
+
+Usage
+
+```
+{'run_ddp_training': 'run distributed data parallel training of an autoencoder using a YAML config file and multiple GPUs', 'run_gen_optimizer': 'run gen_optimizer to create an Adam, SGD, or AdamW optimizer for a PyTorch neural network module', 'run_setup': 'run setup to initialize a PyTorch NCCL distributed process group with the given rank and world size', 'run_prepare': 'run prepare to instantiate AvaMultiCaptureDataset, DistributedSampler, and DataLoader for distributed training', 'run_xid_eval': 'run xid_eval to perform cross-ID evaluation by rendering driven images from a driver subject onto neutral subjects'}
+```
+
+## File: facebookresearch_ava-256/download.py
+
+Prompts
+
+```
+['run a scan of a directory to add Meta copyright headers to all Python files', 'run a check on a single Python file and add the Meta copyright header if missing', 'create a script that recursively adds Meta copyright headers to all Python files in a directory', 'test the check_and_add_header function by running it on a Python file missing the Meta header', 'refactor the scan_directory function to support filtering by additional file extensions beyond .py', 'run distributed data parallel training of an autoencoder using a YAML config file and multiple GPUs', 'run gen_optimizer to create an Adam, SGD, or AdamW optimizer for a PyTorch neural network module', 'run setup to initialize a PyTorch NCCL distributed process group with the given rank and world size', 'run prepare to instantiate AvaMultiCaptureDataset, DistributedSampler, and DataLoader for distributed training', 'run xid_eval to perform cross-ID evaluation by rendering driven images from a driver subject onto neutral subjects', 'run the CLI to download ava-256 dataset assets to a specified output directory', 'run the CLI to download specific assets like camera_calibration or head_pose for captures', 'run the CLI with multiple workers to parallelize downloading ava-256 dataset files', 'run the CLI to download encoder data including framelist and 5 hardcoded cameras', 'run the CLI to download multi-camera assets like images and segmentation parts per capture', 'compute the mean L1 loss between a predicted tensor and a ground truth tensor', 'compute the mean L2 loss between a predicted tensor and a ground truth tensor', 'review the mean_ell_1 function to understand how it calculates absolute difference loss', 'review the mean_ell_2 function to understand how it calculates squared difference loss', 'refactor the losses module to add SSIM loss support as noted in the TODO comment', 'load a Wavefront OBJ file and return vertices, faces, and texture coordinates as numpy arrays', 'load a KRT JSON file and return camera intrinsics, extrinsics, and distortion parameters', 'find the closest point on a 3D mesh for query points and return barycentric coordinates', 'composite a list of image arrays into a grid and save the result as a PNG file', 'load training capture IDs from a CSV file and return MugsyCapture objects with directory paths']
+```
+
+Usage
+
+```
+{'run_download_ava256_dataset': 'run the CLI to download ava-256 dataset assets to a specified output directory', 'run_download_specific_assets': 'run the CLI to download specific assets like camera_calibration or head_pose for captures', 'run_parallel_download_with_workers': 'run the CLI with multiple workers to parallelize downloading ava-256 dataset files', 'run_download_encoder_data': 'run the CLI to download encoder data including framelist and 5 hardcoded cameras', 'run_download_multi_camera_assets': 'run the CLI to download multi-camera assets like images and segmentation parts per capture'}
+```
+
+## File: facebookresearch_ava-256/losses.py
+
+Prompts
+
+```
+['run a scan of a directory to add Meta copyright headers to all Python files', 'run a check on a single Python file and add the Meta copyright header if missing', 'create a script that recursively adds Meta copyright headers to all Python files in a directory', 'test the check_and_add_header function by running it on a Python file missing the Meta header', 'refactor the scan_directory function to support filtering by additional file extensions beyond .py', 'run distributed data parallel training of an autoencoder using a YAML config file and multiple GPUs', 'run gen_optimizer to create an Adam, SGD, or AdamW optimizer for a PyTorch neural network module', 'run setup to initialize a PyTorch NCCL distributed process group with the given rank and world size', 'run prepare to instantiate AvaMultiCaptureDataset, DistributedSampler, and DataLoader for distributed training', 'run xid_eval to perform cross-ID evaluation by rendering driven images from a driver subject onto neutral subjects', 'run the CLI to download ava-256 dataset assets to a specified output directory', 'run the CLI to download specific assets like camera_calibration or head_pose for captures', 'run the CLI with multiple workers to parallelize downloading ava-256 dataset files', 'run the CLI to download encoder data including framelist and 5 hardcoded cameras', 'run the CLI to download multi-camera assets like images and segmentation parts per capture', 'compute the mean L1 loss between a predicted tensor and a ground truth tensor', 'compute the mean L2 loss between a predicted tensor and a ground truth tensor', 'review the mean_ell_1 function to understand how it calculates absolute difference loss', 'review the mean_ell_2 function to understand how it calculates squared difference loss', 'refactor the losses module to add SSIM loss support as noted in the TODO comment', 'load a Wavefront OBJ file and return vertices, faces, and texture coordinates as numpy arrays', 'load a KRT JSON file and return camera intrinsics, extrinsics, and distortion parameters', 'find the closest point on a 3D mesh for query points and return barycentric coordinates', 'composite a list of image arrays into a grid and save the result as a PNG file', 'load training capture IDs from a CSV file and return MugsyCapture objects with directory paths']
+```
+
+Usage
+
+```
+{'compute_mean_ell_1_loss': 'compute the mean L1 loss between a predicted tensor and a ground truth tensor', 'compute_mean_ell_2_loss': 'compute the mean L2 loss between a predicted tensor and a ground truth tensor', 'review_mean_ell_1': 'review the mean_ell_1 function to understand how it calculates absolute difference loss', 'review_mean_ell_2': 'review the mean_ell_2 function to understand how it calculates squared difference loss', 'refactor_losses_add_ssim': 'refactor the losses module to add SSIM loss support as noted in the TODO comment'}
+```
+
+## File: facebookresearch_ava-256/utils.py
+
+Prompts
+
+```
+['run a scan of a directory to add Meta copyright headers to all Python files', 'run a check on a single Python file and add the Meta copyright header if missing', 'create a script that recursively adds Meta copyright headers to all Python files in a directory', 'test the check_and_add_header function by running it on a Python file missing the Meta header', 'refactor the scan_directory function to support filtering by additional file extensions beyond .py', 'run distributed data parallel training of an autoencoder using a YAML config file and multiple GPUs', 'run gen_optimizer to create an Adam, SGD, or AdamW optimizer for a PyTorch neural network module', 'run setup to initialize a PyTorch NCCL distributed process group with the given rank and world size', 'run prepare to instantiate AvaMultiCaptureDataset, DistributedSampler, and DataLoader for distributed training', 'run xid_eval to perform cross-ID evaluation by rendering driven images from a driver subject onto neutral subjects', 'run the CLI to download ava-256 dataset assets to a specified output directory', 'run the CLI to download specific assets like camera_calibration or head_pose for captures', 'run the CLI with multiple workers to parallelize downloading ava-256 dataset files', 'run the CLI to download encoder data including framelist and 5 hardcoded cameras', 'run the CLI to download multi-camera assets like images and segmentation parts per capture', 'compute the mean L1 loss between a predicted tensor and a ground truth tensor', 'compute the mean L2 loss between a predicted tensor and a ground truth tensor', 'review the mean_ell_1 function to understand how it calculates absolute difference loss', 'review the mean_ell_2 function to understand how it calculates squared difference loss', 'refactor the losses module to add SSIM loss support as noted in the TODO comment', 'load a Wavefront OBJ file and return vertices, faces, and texture coordinates as numpy arrays', 'load a KRT JSON file and return camera intrinsics, extrinsics, and distortion parameters', 'find the closest point on a 3D mesh for query points and return barycentric coordinates', 'composite a list of image arrays into a grid and save the result as a PNG file', 'load training capture IDs from a CSV file and return MugsyCapture objects with directory paths']
+```
+
+Usage
+
+```
+{'load_obj': 'load a Wavefront OBJ file and return vertices, faces, and texture coordinates as numpy arrays', 'load_camera_calibration': 'load a KRT JSON file and return camera intrinsics, extrinsics, and distortion parameters', 'closest_point_barycentrics': 'find the closest point on a 3D mesh for query points and return barycentric coordinates', 'render_img': 'composite a list of image arrays into a grid and save the result as a PNG file', 'train_csv_loader': 'load training capture IDs from a CSV file and return MugsyCapture objects with directory paths'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/grpc/examples/python/auth/test/_auth_example_test.py
+
+Prompts
+
+```
+['test the AuthExampleTest to verify a successful authenticated gRPC call between customized client and server', 'test the AuthExampleTest to verify UNAVAILABLE status when using an insecure channel without credentials', 'test the AuthExampleTest to verify UNAUTHENTICATED status when using SSL but missing call credentials', 'run all gRPC Python authentication example unit tests with verbosity level 2', 'review the AuthExampleTest class and its three test methods for gRPC authentication scenarios']
+```
+
+Usage
+
+```
+{'test_successful_auth_call': 'test the AuthExampleTest to verify a successful authenticated gRPC call between customized client and server', 'test_no_channel_credential': 'test the AuthExampleTest to verify UNAVAILABLE status when using an insecure channel without credentials', 'test_no_call_credential': 'test the AuthExampleTest to verify UNAUTHENTICATED status when using SSL but missing call credentials', 'run_auth_example_tests': 'run all gRPC Python authentication example unit tests with verbosity level 2', 'review_auth_example_test': 'review the AuthExampleTest class and its three test methods for gRPC authentication scenarios'}
+```
+

@@ -1,0 +1,156 @@
+{
+  "facebookresearch_dynamicstereo/datasets/augmentor.py": {
+    "create_adjustgamma_augmentation": "create an AdjustGamma callable that applies random gamma and gain to a PIL image sample",
+    "create_sequence_augmentor": "create a SequenceDispFlowAugmentor with crop_size and optional scale, flip, saturation, and gamma params",
+    "run_color_transform": "run color_transform on a sequence of stereo image pairs with symmetric or asymmetric photometric augmentation",
+    "run_eraser_transform": "run eraser_transform on a sequence of stereo image pairs to randomly occlude regions with mean color",
+    "run_spatial_transform": "run spatial_transform on image and disparity pairs to apply random scaling, stretching, and cropping"
+  },
+  "facebookresearch_dynamicstereo/datasets/dynamic_stereo_datasets.py": {
+    "create_dynamic_replica_dataset": "create a DynamicReplicaDataset instance to load stereo image sequences with depth and mask annotations from a data root",
+    "create_sceneflow_dataset": "create a SequenceSceneFlowDataset to load FlyingThings3D, Monkaa, or Driving stereo image and disparity pairs for training",
+    "create_sintel_stereo_dataset": "create a SequenceSintelStereo dataset to load Sintel stereo training sequences with sparse disparity ground truth",
+    "fetch_dataloader": "fetch a PyTorch DataLoader combining SceneFlow and DynamicReplica datasets with configurable augmentation and batch size",
+    "load_16bit_depth_png": "load a 16-bit big-endian PNG depth map and convert it to a float32 numpy array using StereoSequenceDataset"
+  },
+  "facebookresearch_dynamicstereo/datasets/frame_utils.py": {
+    "read_flow_middlebury": "read a .flo optical flow file in Middlebury format and return a numpy array",
+    "read_pfm_file": "read a PFM file and return the image data as a numpy array with proper endianness",
+    "read_disparity_sintel_stereo": "read a Sintel Stereo disparity PNG file and return disparity values with a validity mask",
+    "read_disparity_middlebury": "read a Middlebury ground truth disparity PFM file and return disparity with non-occlusion mask",
+    "read_generic_file": "read image, flow, or PFM files by extension and return the appropriate numpy array or PIL Image"
+  },
+  "facebookresearch_dynamicstereo/evaluation/evaluate.py": {
+    "run_evaluation_on_dataset": "run the evaluate function to evaluate a dynamic stereo model on a benchmark dataset like sintel or dynamicreplica",
+    "run_eval_with_config": "run the run_eval function with a DefaultConfig to evaluate model metrics and save results to JSON",
+    "evaluate_dynamicreplica_dataset": "run evaluation on the dynamicreplica validation dataset using the Evaluator and model_zoo components",
+    "evaluate_real_sequences": "run evaluation on real-world sequences like teddy_static or ignacio_waving using DynamicReplicaDataset",
+    "configure_evaluation_with_hydra": "configure and run the Hydra-based evaluate entry point with custom dataset, model, and GPU settings"
+  },
+  "facebookresearch_dynamicstereo/evaluation/core/evaluator.py": {
+    "evaluate_stereo_sequence": "run the Evaluator to evaluate a DynamicStereo model on a test dataloader and collect per-batch results",
+    "setup_evaluator_visualization": "configure the Evaluator visualization settings from a DictConfig with interval and experiment directory",
+    "review_Evaluator_class": "review the Evaluator class that extends Configurable for evaluating DynamicStereo disparity predictions",
+    "refactor_evaluate_sequence": "refactor the evaluate_sequence method to support custom model inference modes like train_mode",
+    "summarize_Evaluator": "summarize the Evaluator class capabilities for disparity evaluation and visualization of stereo video sequences"
+  },
+  "facebookresearch_dynamicstereo/evaluation/utils/eval_utils.py": {
+    "eval_endpoint_error_sequence": "compute endpoint error and temporal endpoint error metrics for predicted disparity sequences against ground truth",
+    "eval_batch": "evaluate disparity prediction performance metrics for a batch including mean error and bad pixel percentages",
+    "depth_to_pcd": "convert a depth map and image into a 3D point cloud with optional outlier filtering and extrinsic transforms",
+    "depth2disparity_scale": "compute the focal length times baseline scale factor from left and right camera projections",
+    "PerceptionMetric": "create a frozen dataclass representing a perception metric name with optional depth scaling norm and suffix"
+  },
+  "facebookresearch_dynamicstereo/evaluation/utils/utils.py": {
+    "create_PerceptionPrediction": "create a PerceptionPrediction dataclass to hold depth map, disparity, image RGB, and foreground probability tensors",
+    "aggregate_eval_results": "aggregate per-batch evaluation results using mean or sum reduction across all metrics",
+    "aggregate_and_print_results": "aggregate per-batch evaluation results and print a formatted table of perception metrics",
+    "read_calibration": "read a ZED stereo camera calibration config file and return rectification maps and poses",
+    "visualize_batch": "visualize depth predictions as 3D point cloud reconstruction videos with multiple camera angles"
+  },
+  "facebookresearch_dynamicstereo/models/dynamic_stereo_model.py": {
+    "build_dynamic_stereo_model": "build a DynamicStereoModel that loads pretrained weights and runs inference on a batch dictionary",
+    "run_dynamic_stereo_inference": "run the DynamicStereoModel forward pass on a batch_dict with configurable iterations and kernel size",
+    "review_DynamicStereoModel": "review the DynamicStereoModel class that wraps DynamicStereo with pretrained checkpoint loading and CUDA setup",
+    "summarize_DynamicStereoModel_forward": "summarize the DynamicStereoModel forward method that calls forward_batch_test with kernel_size and iters parameters",
+    "test_DynamicStereoModel_post_init": "test the DynamicStereoModel __post_init__ method that loads state_dict weights and initializes the internal DynamicStereo model"
+  },
+  "facebookresearch_dynamicstereo/models/raft_stereo_model.py": {
+    "build_stereo_disparity_model": "build a RAFTStereoModel to estimate disparity maps from left-right stereo image pairs",
+    "run_disparity_inference": "run the RAFTStereoModel forward pass on a batch_dict with stereo_video pairs to get disparity",
+    "create_stereo_model_config": "create a RAFTStereoModel with custom model_weights path and default hidden_dims and corr_levels config",
+    "review_RAFTStereoModel_forward": "review the RAFTStereoModel forward method that pads inputs, runs inference with autocast, and returns disparity",
+    "test_RAFTStereoModel_initialization": "test the RAFTStereoModel post_init that loads pretrained weights and sets the model to eval mode on CUDA"
+  },
+  "facebookresearch_dynamicstereo/models/core/attention.py": {
+    "build_PositionEncodingSine": "build a PositionEncodingSine module to add 2D sinusoidal position encoding to feature maps",
+    "create_LinearAttention": "create a LinearAttention module for fast multi-head linear attention with ELU feature mapping",
+    "create_FullAttention": "create a FullAttention module for standard multi-head scaled dot-product attention with optional dropout",
+    "build_LoFTREncoderLayer": "build a LoFTREncoderLayer transformer encoder with configurable linear or full attention and feed-forward network",
+    "build_LocalFeatureTransformer": "build a LocalFeatureTransformer module with self and cross attention layers for feature matching"
+  },
+  "facebookresearch_dynamicstereo/models/core/corr.py": {
+    "build_CorrBlock1D_pyramid": "build a CorrBlock1D correlation pyramid from two feature maps with configurable levels and radius",
+    "create_bilinear_sampler_stereo": "create a bilinear sampler that samples image values at pixel coordinates for stereo disparity estimation",
+    "create_coords_grid_tensor": "create a coordinate grid tensor for a given batch size, height, and width on a specified device",
+    "run_CorrBlock1D_correlation_lookup": "run a CorrBlock1D instance with a flow tensor to extract multi-scale correlation values via bilinear sampling",
+    "review_CorrBlock1D_corr_static": "review the CorrBlock1D static corr method that computes all-pairs correlation between two feature maps using einsum"
+  },
+  "facebookresearch_dynamicstereo/models/core/dynamic_stereo.py": {
+    "build_dynamic_stereo_model": "build a DynamicStereo model with configurable max_disp, attention_type, and 3D update blocks for stereo depth estimation",
+    "run_forward_disparity_estimation": "run the forward pass to estimate optical flow and disparity between left and right image pairs in a video sequence",
+    "run_forward_batch_test": "run forward_batch_test on a batch of stereo video frames with sliding window kernel for disparity prediction",
+    "review_forward_sst_block": "review the forward_sst_block method that applies positional encoding, self-attention, cross-attention, and temporal attention to feature maps",
+    "test_convex_upsample": "test the convex_upsample method that upsamples flow fields using softmax-weighted convex combination of neighboring values"
+  },
+  "facebookresearch_dynamicstereo/models/core/extractor.py": {
+    "build_ResidualBlock": "build a ResidualBlock with configurable input planes, output planes, normalization function, and stride for feature extraction",
+    "build_BasicEncoder": "build a BasicEncoder with configurable output dimension, normalization function, and dropout rate for image feature encoding",
+    "run_ResidualBlock_forward": "run the ResidualBlock forward pass on a tensor to compute residual features with convolutions and normalization",
+    "run_BasicEncoder_forward": "run the BasicEncoder forward pass on an image tensor or list of tensors to extract features",
+    "review_BasicEncoder_make_layer": "review the BasicEncoder _make_layer method that constructs sequential ResidualBlock layers with configurable dimensions and stride"
+  },
+  "facebookresearch_dynamicstereo/models/core/model_zoo.py": {
+    "build_model_from_zoo": "build a DynamicStereoModel or RAFTStereoModel instance by calling model_zoo with the model name string",
+    "build_model_with_kwargs": "build a stereo model from the model zoo passing keyword arguments for model-specific configuration",
+    "get_default_configs": "get a deep copy of all registered model default configurations via get_all_model_default_configs",
+    "review_model_zoo_factory": "review the model_zoo factory function that resolves model class by name and instantiates with kwargs",
+    "review_MODEL_NAME_TO_MODEL": "review the _MODEL_NAME_TO_MODEL registry dict that maps model class names to their classes"
+  },
+  "facebookresearch_dynamicstereo/models/core/update.py": {
+    "build_BasicUpdateBlock": "build a BasicUpdateBlock module to update stereo flow estimates using motion encoding and separable ConvGRU with optional attention",
+    "build_SeqUpdateBlock3D": "build a SequenceUpdateBlock3D module to update stereo flow estimates across video sequences using 3D separable ConvGRU",
+    "create_SepConvGRU": "create a SepConvGRU module that performs horizontal then vertical separable convolutions for recurrent feature updates",
+    "create_TimeAttnBlock": "create a TimeAttnBlock module that applies self-attention across temporal dimensions for video stereo estimation",
+    "create_SpaceAttnBlock": "create a SpaceAttnBlock module that applies spatial self-attention using LoFTREncoderLayer for feature refinement"
+  },
+  "facebookresearch_dynamicstereo/models/core/utils/config.py": {
+    "get_default_args_Configurable": "get the default DictConfig arguments for a Configurable or ReplaceableBase class",
+    "expand_args_fields_Configurable": "expand a Configurable class into a dataclass with auto-generated args fields",
+    "run_auto_creation_Configurable": "run all creation functions to initialize nested Configurable members in __post_init__",
+    "registry_register_ReplaceableBase": "register a subclass of ReplaceableBase in the global registry by name",
+    "remove_unused_components_DictConfig": "remove unused pluggable component args from a DictConfig in place"
+  },
+  "facebookresearch_dynamicstereo/models/core/utils/utils.py": {
+    "create_InputPadder_sintel_mode": "create an InputPadder instance in sintel mode to pad 4D tensors to dimensions divisible by 8",
+    "create_InputPadder_kitti_mode": "create an InputPadder instance in kitti mode to pad tensors with height padding applied only to the bottom",
+    "pad_tensors_with_InputPadder": "pad multiple 4D input tensors using an InputPadder so their spatial dimensions are divisible by 8",
+    "unpad_tensor_with_InputPadder": "unpad a 4D tensor back to its original dimensions using the same InputPadder instance",
+    "interpolate_tensor_bilinear": "interpolate a tensor to a target size using bilinear interpolation with align corners enabled"
+  },
+  "facebookresearch_dynamicstereo/scripts/checksum_check.py": {
+    "run_checksum_verification": "run the checksum checker on a folder of zip files against expected SHA256 hashes",
+    "run_dump_sha256s": "run the checksum tool with dump mode to generate a new SHA256 hashes JSON file",
+    "check_single_file_sha256": "check a single zip file SHA256 hash against expected values from a JSON file",
+    "compute_file_sha256": "compute the SHA256 hash digest of any file using chunked reading",
+    "load_expected_sha256s": "load expected SHA256 hash values from a JSON file for dataset verification"
+  },
+  "facebookresearch_dynamicstereo/scripts/download_utils.py": {
+    "download_dataset_parallel": "download and unpack a dataset from a JSON link list file using parallel workers",
+    "build_arg_parser_download": "build an argument parser for downloading a named dataset with configurable splits and workers",
+    "unpack_split_file": "unpack a downloaded archive file into a split-specific folder within the download directory",
+    "download_split_file": "download a single dataset file with optional SHA256 checksum verification and skip logic",
+    "download_with_progress_bar": "download a file from a URL with a tqdm progress bar showing transfer speed"
+  },
+  "facebookresearch_dynamicstereo/train_utils/logger.py": {
+    "create_logger_instance": "create a Logger instance with a model, scheduler, and checkpoint path for training logging",
+    "push_metrics_to_logger": "push a dictionary of training metrics to the Logger for a specific task",
+    "update_logger_step": "update the Logger step counter and print training status at the configured summary frequency",
+    "write_dict_to_tensorboard": "write a dictionary of results directly to TensorBoard as scalar values at the current step",
+    "close_logger_writer": "close the Logger TensorBoard SummaryWriter to flush and release resources"
+  },
+  "facebookresearch_dynamicstereo/train_utils/losses.py": {
+    "compute_sequence_loss": "compute the sequence loss over a list of flow predictions against ground truth flow with validity mask",
+    "calculate_epe_metrics": "calculate end-point error metrics including 1px, 3px, and 5px thresholds from the final flow prediction",
+    "weight_iterative_predictions": "weight iterative flow predictions using an adjusted loss gamma for consistent multi-iteration training",
+    "filter_invalid_flow_pixels": "filter out invalid pixels and extremely large displacements from flow ground truth using magnitude threshold",
+    "validate_flow_tensor_shapes": "validate that flow prediction tensors match ground truth shapes and contain no NaN or Inf values"
+  },
+  "facebookresearch_dynamicstereo/train_utils/utils.py": {
+    "count_parameters_model": "count the number of trainable parameters in a PyTorch model",
+    "run_test_eval_model": "run test evaluation on a model across multiple dataloaders and save results to JSON",
+    "fig2data_matplotlib": "convert a Matplotlib figure to a numpy array of RGB pixel values",
+    "save_ims_to_tb_tensorboard": "save training images, disparity maps, and flow predictions to a TensorBoard writer",
+    "review_utils_functions": "review the utility functions for parameter counting, evaluation, figure conversion, and TensorBoard logging"
+  }
+}

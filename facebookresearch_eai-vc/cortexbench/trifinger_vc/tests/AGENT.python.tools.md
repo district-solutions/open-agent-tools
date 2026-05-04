@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eai-vc
+- repo_uri: https://github.com/facebookresearch/eai-vc
+
+## File: facebookresearch_eai-vc/cortexbench/trifinger_vc/tests/test_tf.py
+
+Prompts
+
+```
+['test the reach environment by stepping with zero actions and asserting zero reward', 'test the Task execute_policy method by running a demo and validating robot position output', 'test the BCFinetune train method by running one epoch and verifying checkpoint files are saved', 'test BCFinetune training for 10 epochs and validate simulation rollout success metrics', 'test BCFinetune training for 50 epochs and validate improved simulation rollout success metrics']
+```
+
+Usage
+
+```
+{'test_step_reach_env': 'test the reach environment by stepping with zero actions and asserting zero reward', 'test_task_execute_policy': 'test the Task execute_policy method by running a demo and validating robot position output', 'test_bc_algo_train': 'test the BCFinetune train method by running one epoch and verifying checkpoint files are saved', 'test_bc_train_short': 'test BCFinetune training for 10 epochs and validate simulation rollout success metrics', 'test_bc_train_long': 'test BCFinetune training for 50 epochs and validate improved simulation rollout success metrics'}
+```
+

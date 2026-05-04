@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/efm3d
+- repo_uri: https://github.com/facebookresearch/efm3d
+
+## File: facebookresearch_efm3d/data/dataverse_url_parser.py
+
+Prompts
+
+```
+['parse dataverse URLs from a JSON config file and generate YAML files for training, validation, and combined datasets', 'download WebDataset tar files for specified sequences from dataverse URLs to a local output directory', 'split sequence data into train and validation sets using a specified ratio and random seed for reproducibility', 'split sequence data into train and validation sets based on sequence names defined in a JSON file', 'extract download URLs from a dictionary of tar file information organized by sequence names']
+```
+
+Usage
+
+```
+{'parse_dataverse_urls_to_yaml': 'parse dataverse URLs from a JSON config file and generate YAML files for training, validation, and combined datasets', 'download_wds_files_for_sequences': 'download WebDataset tar files for specified sequences from dataverse URLs to a local output directory', 'split_sequences_by_ratio': 'split sequence data into train and validation sets using a specified ratio and random seed for reproducibility', 'split_sequences_by_json': 'split sequence data into train and validation sets based on sequence names defined in a JSON file', 'extract_urls_from_tars_info': 'extract download URLs from a dictionary of tar file information organized by sequence names'}
+```
+

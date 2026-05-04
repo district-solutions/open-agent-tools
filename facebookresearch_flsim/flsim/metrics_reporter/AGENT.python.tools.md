@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/flsim
+- repo_uri: https://github.com/facebookresearch/flsim
+
+## File: facebookresearch_flsim/flsim/metrics_reporter/tensorboard_metrics_reporter.py
+
+Prompts
+
+```
+['create a subclass of FLMetricsReporter that implements compare_metrics, compute_scores, and create_eval_metrics abstract methods', 'add batch metrics including loss, predictions, targets, and model inputs to the FLMetricsReporter instance', 'report training or evaluation metrics to stdout and tensorboard using the report_metrics method with a training stage', 'reset the FLMetricsReporter by clearing all accumulated losses, predictions, targets, and model inputs lists', 'get the latest computed scores dictionary from the FLMetricsReporter after calling report_metrics']
+```
+
+Usage
+
+```
+{'create_FLMetricsReporter_subclass': 'create a subclass of FLMetricsReporter that implements compare_metrics, compute_scores, and create_eval_metrics abstract methods', 'add_batch_metrics_to_reporter': 'add batch metrics including loss, predictions, targets, and model inputs to the FLMetricsReporter instance', 'report_metrics_with_tensorboard': 'report training or evaluation metrics to stdout and tensorboard using the report_metrics method with a training stage', 'reset_FLMetricsReporter_state': 'reset the FLMetricsReporter by clearing all accumulated losses, predictions, targets, and model inputs lists', 'get_latest_scores_from_reporter': 'get the latest computed scores dictionary from the FLMetricsReporter after calling report_metrics'}
+```
+

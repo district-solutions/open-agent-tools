@@ -1,0 +1,877 @@
+{
+  "facebookresearch_dinov3/dinov3/checkpointer/checkpointer.py": {
+    "save_checkpoint": "save a PyTorch model and optimizer state to a distributed checkpoint directory with iteration tracking",
+    "load_checkpoint": "load a PyTorch model and optimizer state from a distributed checkpoint directory with strict loading option",
+    "register_dont_save_hooks": "register state dict hooks to exclude specified frozen weights from being saved in checkpoints",
+    "init_fsdp_model_from_checkpoint": "initialize an FSDP2 model from a DCP or PyTorch standard checkpoint with optional key filtering",
+    "cleanup_checkpoint": "cleanup checkpoint directories based on a retention policy keeping only best or final checkpoints"
+  },
+  "facebookresearch_dinov3/dinov3/configs/config.py": {
+    "setup_config": "setup a DINOv3 configuration from a config file and command line overrides with scaling rules applied",
+    "setup_multidistillation": "setup a multi-distillation training job with student process subgroups and per-student configurations",
+    "setup_job": "setup logging, distributed training, and random seeds for a DINOv3 training job",
+    "get_default_config": "get the default SSL configuration loaded from ssl_default_config.yaml as an OmegaConf DictConfig",
+    "exit_job": "clean up a DINOv3 job by disabling distributed training and closing logging"
+  },
+  "facebookresearch_dinov3/dinov3/data/adapters.py": {
+    "create_dataset_with_index": "create a dataset class that returns image, target, and sample index on each getitem call",
+    "create_enumerated_targets_dataset": "create a DatasetWithEnumeratedTargets wrapper that adds sample indices to dataset targets",
+    "pad_dataset_for_distributed": "pad a dataset to a multiple of world size for distributed training with drop_last false",
+    "get_image_relpath_from_adapter": "get the relative file path of an image at a given index from the wrapped dataset",
+    "get_target_with_enumeration": "get a target tuple containing the sample index and original target from the adapter"
+  },
+  "facebookresearch_dinov3/dinov3/data/collate.py": {
+    "collate_samples_with_masking": "collate image crop samples into batched tensors with configurable masking ratios and probability",
+    "generate_masked_patch_indices": "generate masked patch indices and weights for vision transformer masked autoencoder training",
+    "apply_circular_shift_to_masks": "apply random circular shifts to generated masks for data augmentation during collation",
+    "subset_batch_by_divisor": "reduce a collated batch to a smaller subset by dividing batch size by a given factor",
+    "review_collate_data_and_cast": "review the collate_data_and_cast function to understand masking strategy and tensor stacking logic"
+  },
+  "facebookresearch_dinov3/dinov3/data/loaders.py": {
+    "create_dataset_from_string": "create a dataset from a string like ImageNet:split=TRAIN with optional image and target transforms",
+    "create_data_loader": "create a PyTorch data loader with configurable sampler type, batch size, and shuffle options",
+    "create_sample_transform": "create a transform function that applies separate image and target transforms to dataset samples",
+    "parse_dataset_string": "parse a dataset string like ImageNet:split=TRAIN:root=/path into a dataset class and kwargs",
+    "review_sampler_type_enum": "review the SamplerType enum with DISTRIBUTED, EPOCH, INFINITE, SHARDED_INFINITE, and SHARDED_INFINITE_NEW variants"
+  },
+  "facebookresearch_dinov3/dinov3/data/masking.py": {
+    "create_masking_generator": "create a MaskingGenerator instance with input size and num_masking_patches parameters for vision transformer masking",
+    "generate_random_mask": "call the MaskingGenerator to generate a random boolean mask array for a given number of patches",
+    "mask_rectangular_regions": "use the _mask method to mask rectangular regions with configurable aspect ratio and area constraints",
+    "complete_mask_randomly": "use complete_mask_randomly to fill remaining unmasked patches randomly until the target mask count is reached",
+    "get_mask_shape": "call get_shape on a MaskingGenerator to retrieve the height and width dimensions of the mask grid"
+  },
+  "facebookresearch_dinov3/dinov3/data/meta_loaders.py": {
+    "create_combined_dataloader": "create a CombinedDataLoader that merges multiple data loaders with configurable sampling ratios",
+    "build_homogeneous_iterator": "build a homogeneous iterator that samples batches from combined loaders using weighted random selection",
+    "test_combined_dataloader_init": "test the CombinedDataLoader initialization with loaders_with_ratios and batch_size parameters",
+    "review_combining_modes": "review the GLOBAL_HOMOGENEOUS and LOCAL_HOMOGENEOUS combining mode constants in CombinedDataLoader",
+    "summarize_loader_count_tracking": "summarize how CombinedDataLoader tracks and logs empirical sampling ratios per loader"
+  },
+  "facebookresearch_dinov3/dinov3/data/samplers.py": {
+    "create_EpochSampler": "create an EpochSampler to sample fixed-size batches with optional shuffling and distributed sharding",
+    "create_InfiniteSampler": "create an InfiniteSampler that yields an endless stream of shuffled or sequential sample indices",
+    "create_ShardedInfiniteSampler": "create a ShardedInfiniteSampler for distributed training with skip-ahead support and seeded shuffling",
+    "review_generate_randperm_indices": "review the _generate_randperm_indices function that generates random permutation indices matching PyTorch CPU implementation",
+    "review_shuffle_tensor_slice": "review the _shuffle_tensor_slice and _new_shuffle_tensor_slice functions that shuffle a strided slice of a tensor"
+  },
+  "facebookresearch_dinov3/dinov3/data/transforms.py": {
+    "build_classification_train_transform": "build a torchvision transform pipeline for image classification training with random crop and horizontal flip",
+    "build_eval_transform": "build a torchvision transform pipeline for evaluation with resize, center crop, and normalization",
+    "create_gaussian_blur_transform": "create a GaussianBlur transform that randomly applies blur with configurable probability and radius range",
+    "create_resize_transform": "create a resize transform with options for square, large side, or default resizing modes",
+    "get_target_transform": "get a classification target transform function for VOC2007 or IMaterialist datasets by dataset name"
+  },
+  "facebookresearch_dinov3/dinov3/data/datasets/ade20k.py": {
+    "create_ADE20K_dataset_train": "create an ADE20K dataset instance using the train split with a specified root directory",
+    "create_ADE20K_dataset_val": "create an ADE20K dataset instance using the val split for validation purposes",
+    "get_image_data_by_index": "get raw image bytes from the ADE20K dataset by providing an integer index",
+    "get_target_segmentation_by_index": "get raw segmentation target data from the ADE20K dataset by providing an integer index",
+    "load_ADE20K_file_paths": "load image and segmentation file paths from ADE20K split text files using _load_file_paths"
+  },
+  "facebookresearch_dinov3/dinov3/data/datasets/coco_captions.py": {
+    "create_CocoCaptions_dataset": "create a CocoCaptions dataset instance with a specified split and root directory path",
+    "read_images_and_captions": "read COCO image annotations and captions from a JSON file for a given split",
+    "get_target_caption": "get a random caption for a given image index from the CocoCaptions dataset",
+    "get_image_data": "get the raw image bytes for a given index from the CocoCaptions dataset",
+    "get_image_relpath": "get the relative file path of an image at a given index in the dataset"
+  },
+  "facebookresearch_dinov3/dinov3/data/datasets/decoders.py": {
+    "decode_image_bytes_to_rgb": "create a python module that uses ImageDataDecoder to decode raw image bytes into an RGB PIL Image",
+    "decode_target_passthrough": "create a python module that uses TargetDecoder to pass through an arbitrary target value unchanged",
+    "decode_dense_target_image": "create a python module that uses DenseTargetDecoder to decode raw image bytes into a PIL Image without color conversion",
+    "review_decoder_base_class": "review the Decoder base class and its abstract decode method to understand the decoder interface contract",
+    "refactor_decoder_subclasses": "refactor the ImageDataDecoder and DenseTargetDecoder subclasses to share common BytesIO image loading logic"
+  },
+  "facebookresearch_dinov3/dinov3/data/datasets/extended.py": {
+    "create_subclass_extended_vision_dataset": "create a subclass of ExtendedVisionDataset that implements get_image_data and get_target methods",
+    "use_getitem_retrieve_sample": "use ExtendedVisionDataset __getitem__ to retrieve a decoded image and target tuple by index",
+    "configure_custom_decoders": "configure ExtendedVisionDataset with custom image_decoder and target_decoder Decoder instances",
+    "implement_get_image_data": "implement get_image_data in a subclass to return raw image bytes for a given index",
+    "implement_get_target": "implement get_target in a subclass to return label or target data for a given index"
+  },
+  "facebookresearch_dinov3/dinov3/data/datasets/image_net.py": {
+    "create_imagenet_dataset": "create an ImageNet dataset instance with a specified split, root directory, and extra cache path",
+    "dump_imagenet_extra": "dump ImageNet dataset entries, class IDs, and class names to NumPy cache files",
+    "get_imagenet_image_data": "get the raw image bytes for a sample at a given index in the ImageNet dataset",
+    "get_imagenet_class_info": "get the class ID or class name for a sample at a given index in the ImageNet dataset",
+    "parse_imagenet_image_path": "parse an ImageNet image relative path to extract the class ID and actual index"
+  },
+  "facebookresearch_dinov3/dinov3/data/datasets/image_net_22k.py": {
+    "init_ImageNet22k_dataset": "create an ImageNet22k dataset instance with root and extra paths for memory-mapped tarball access",
+    "get_image_data_by_index": "retrieve raw image bytes for a given sample index from the ImageNet22k dataset",
+    "get_targets_array": "get all class labels as a numpy array from the ImageNet22k dataset",
+    "find_class_id_by_index": "resolve a numeric class index to its string class ID in ImageNet22k",
+    "dump_extra_cache": "pre-compute and save entries and class IDs as numpy arrays to the extra directory"
+  },
+  "facebookresearch_dinov3/dinov3/data/datasets/nyu.py": {
+    "create_NYU_dataset_train": "create an NYU dataset instance using the train split with a specified root directory",
+    "create_NYU_dataset_val": "create an NYU dataset instance using the val split with custom image and target decoders",
+    "get_image_data_by_index": "get the raw image bytes for a sample at a given index from the NYU dataset",
+    "get_target_depth_by_index": "get the raw depth target data for a sample at a given index from the NYU dataset",
+    "review_NYU_Split_enum": "review the _Split enum that maps train, val, and test splits to their data file names"
+  },
+  "facebookresearch_dinov3/dinov3/distributed/torch_distributed_primitives.py": {
+    "reduce_dict_average": "reduce a dictionary of torch tensors across all DDP processes and return averaged results",
+    "reduce_dict_sum": "reduce a dictionary of torch tensors across all DDP processes and return summed results without averaging",
+    "gather_all_tensors_equal_shape": "gather all tensors from multiple DDP processes into a single list broadcasted to all processes",
+    "gather_all_tensors_variable_shape": "gather tensors of varying shapes from DDP processes by padding to max size then truncating",
+    "gather_all_tensors_scalar": "gather scalar tensors from all DDP processes into a list using simple all_gather"
+  },
+  "facebookresearch_dinov3/dinov3/distributed/torch_distributed_wrapper.py": {
+    "enable_distributed_training": "enable distributed training with NCCL backend and auto-detect TorchElastic, Slurm, or manual environment",
+    "disable_distributed_training": "disable distributed training and destroy all process groups and restore builtin print",
+    "check_distributed_enabled": "check if distributed training is currently enabled and initialized",
+    "get_rank_and_world_size": "get the current process rank and world size for the default or specified process group",
+    "create_process_subgroups": "create new process subgroups from a sequence of rank sequences for subgroup communication"
+  },
+  "facebookresearch_dinov3/dinov3/eval/accumulators.py": {
+    "create_results_accumulator": "create a ResultsAccumulator instance to collect predictions and targets across distributed processes",
+    "update_accumulator_with_tensors": "update a ResultsAccumulator with prediction, target, and index tensors from a batch",
+    "accumulate_gathered_results": "call accumulate on a ResultsAccumulator to gather and order all predictions and targets",
+    "use_noop_accumulator": "use a NoOpAccumulator as a no-op placeholder that discards all update calls",
+    "cat_and_gather_tensor_list": "concatenate a list of tensors and gather them across all distributed processes"
+  },
+  "facebookresearch_dinov3/dinov3/eval/data.py": {
+    "get_labels_from_dataset": "get all labels from a classification dataset as a stacked torch tensor",
+    "get_num_classes_from_dataset": "get the number of classes in a dataset by computing the max label value",
+    "create_class_indices_mapping": "create a mapping from class labels to tensors of dataset indices for each class",
+    "split_train_val_datasets": "split a training dataset into train and validation subsets with equal class distribution",
+    "create_train_dataset_dict": "create a dictionary of few-shot training dataset subsets for multiple random evaluation tries"
+  },
+  "facebookresearch_dinov3/dinov3/eval/helpers.py": {
+    "write_results": "write evaluation results dict to a JSON file in the specified output directory",
+    "args_dict_to_dataclass": "merge eval arguments with an OmegaConf dataclass config and save the resulting config to YAML",
+    "cli_parser": "parse command line arguments into a dictionary of evaluation arguments using OmegaConf",
+    "review_write_results": "review the write_results function to understand how it saves results only on the main process",
+    "review_args_dict_to_dataclass": "review the args_dict_to_dataclass function to understand config merging and dataclass validation"
+  },
+  "facebookresearch_dinov3/dinov3/eval/knn.py": {
+    "run_knn_evaluation": "run k-NN classification evaluation on a DINOv3 model using train and test datasets",
+    "create_KnnModule": "create a KnnModule to compute k-nearest neighbors on distributed chunks of train features",
+    "eval_knn_with_model": "evaluate k-NN classification with a model, extracting train features and running test evaluation",
+    "benchmark_launcher": "launch a k-NN benchmark evaluation from a config dict with distributed setup and logging",
+    "create_KnnEvalConfig": "create a KnnEvalConfig dataclass to configure k-NN evaluation with model, train, eval, and few-shot settings"
+  },
+  "facebookresearch_dinov3/dinov3/eval/linear.py": {
+    "run_linear_evaluation": "run a linear probe evaluation on a frozen DINOv3 model using CLI arguments and config",
+    "train_linear_classifiers": "train multiple linear classifiers on top of frozen backbone features with grid search over learning rates",
+    "setup_linear_classifiers": "build linear classifier modules for each learning rate and number of last blocks combination",
+    "create_linear_input": "concatenate class tokens from intermediate blocks and optionally average-pooled patch tokens into a flat feature vector",
+    "eval_linear_with_model": "evaluate a pretrained model by training linear heads on a dataset and testing on validation and test sets"
+  },
+  "facebookresearch_dinov3/dinov3/eval/log_regression.py": {
+    "run_log_regression_evaluation": "run logistic regression evaluation on frozen DINOv3 features using the CLI entry point",
+    "run_benchmark_launcher": "run the benchmark launcher to parse args, load a model, and execute log regression evaluation",
+    "train_logreg_model_for_C": "train a logistic regression model with a given regularization C value on extracted features",
+    "sweep_C_values": "sweep across 45 regularization C values to find the best hyperparameter on a validation set",
+    "create_logreg_module": "create a LogRegModule wrapping scikit-learn LogisticRegression with optional OneVsRestClassifier for multi-label"
+  },
+  "facebookresearch_dinov3/dinov3/eval/results.py": {
+    "make_results_dataframe": "create a Results DataFrame from a dictionary of scalar or list values using make()",
+    "load_results_from_file": "load results from a CSV, JSONL, Excel, or YAML file into a Results DataFrame using load()",
+    "save_results_to_file": "save a Results DataFrame to CSV, JSONL, Excel, or YAML format using save()",
+    "stack_results_vertically": "concatenate multiple Results DataFrames vertically into one using vstack()",
+    "save_results_dict_to_file": "create a Results DataFrame from a dict and save it to a file using save_from_dict()"
+  },
+  "facebookresearch_dinov3/dinov3/eval/setup.py": {
+    "load_model_from_hub": "load a DINOv3 or DINOv2 model from torch.hub using a ModelConfig with dino_hub set",
+    "load_model_from_config": "load a DINOv3 model from a local config file and pretrained weights via load_model_and_context",
+    "setup_and_build_model": "setup and build a DINOv3 model for evaluation from a config file with optional pretrained weights",
+    "get_autocast_dtype": "get the autocast dtype from a DINOv3 config by checking compute_precision param_dtype setting",
+    "create_model_config": "create a ModelConfig dataclass to specify config file, pretrained weights, or torch.hub model name"
+  },
+  "facebookresearch_dinov3/dinov3/eval/utils.py": {
+    "wrap_model": "wrap a PyTorch model with optional L2 normalization and multi-scale inference wrappers",
+    "extract_features": "extract features from a dataset using a model with distributed data loading and gathering",
+    "evaluate": "run evaluation on a model with postprocessors, metrics, and optional result accumulation",
+    "save_features_dict": "save a dictionary of feature tensors to a .pt or .npy file on disk",
+    "average_metrics": "compute the mean and standard deviation across a list of evaluation metrics dictionaries"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/checkpoint_utils.py": {
+    "load_checkpoint": "load a PyTorch checkpoint file and return model state dict and iteration number",
+    "save_checkpoint": "save a model and optimizer state dict to a checkpoint file at a given iteration",
+    "find_latest_checkpoint": "find the latest checkpoint file in a directory or model_final.pth if it exists",
+    "unwrap_ddp_state_dict": "unwrap a DDP-wrapped model state dict by removing the module. prefix from keys",
+    "review_checkpoint_utils": "review the checkpoint utility functions for loading, saving, and finding PyTorch model checkpoints"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/config.py": {
+    "create_depth_config": "create a DepthConfig dataclass to configure DINOv3 monocular depth estimation training and evaluation",
+    "create_optimizer_config": "create an OptimizerConfig dataclass to set learning rate, beta1, beta2, weight decay, and gradient clip values",
+    "create_transform_config": "create a TransformConfig dataclass to configure train and eval image transforms with normalization settings",
+    "make_depth_train_transforms_from_config": "build depth training transforms from a DepthConfig including random crop, brightness, and rotation augmentations",
+    "make_depth_eval_transforms_from_config": "build depth evaluation transforms from a DepthConfig for val or test splits with optional TTA"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/data.py": {
+    "build_dataloader_for_depth_evaluation": "build a dataloader from a dataset descriptor string for depth estimation training or evaluation",
+    "build_infinite_dataloader_for_training": "build an InfiniteDataloader that auto-restarts and increments epoch when training data is exhausted",
+    "create_worker_init_fn_for_seeding": "create a worker init function that seeds numpy, random, and torch for each dataloader worker",
+    "review_InfiniteDataloader_class": "review the InfiniteDataloader class that wraps a DataLoader with automatic epoch tracking and restart",
+    "test_build_dataloader_with_split": "test the build_dataloader function with train, val, or test split and distributed sampling"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/eval.py": {
+    "evaluate_depther_with_config": "evaluate a depth estimation model using a DepthConfig and depther module on a given device",
+    "evaluate_depther_with_dataloader": "evaluate a depth estimation model using a dataloader with configurable metrics and test time augmentation",
+    "run_inverse_tta_hook": "create a forward hook that applies inverse transforms for test time augmentation on a module",
+    "run_depth_evaluation_pipeline": "run the full depth evaluation pipeline with least squares alignment and NYU Eigen evaluation mask",
+    "review_evaluate_depther_with_dataloader": "review the evaluate_depther_with_dataloader function to understand metric calculation and multi-GPU result gathering"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/loss.py": {
+    "build_sigloss_for_depth": "build a SigLoss module with warm-up to compute scale-invariant log loss for monocular depth estimation",
+    "create_multiloss_combination": "create a MultiLoss module combining SigLoss and GradientLoss with custom weights for depth training",
+    "use_gradientloss_multiscale": "use GradientLoss to compute multi-scale gradient differences between predicted and ground truth depth maps",
+    "use_gradientlogloss_multiscale": "use GradientLogLoss to compute multi-scale gradient differences on log-transformed depth predictions and targets",
+    "use_l1loss_masked": "use L1Loss to compute masked L1 error between predicted and ground truth depth tensors"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/metrics.py": {
+    "calculate_depth_metrics": "calculate depth estimation metrics like RMSE, MAE, and SILog between ground truth and predicted depth tensors",
+    "run_depth_evaluation": "run depth evaluation by computing a1, a2, a3 accuracy thresholds on predicted versus ground truth depth maps",
+    "create_depth_metric": "create a DepthMetric dataclass with a name and is_lower_better flag to define custom depth evaluation metrics",
+    "test_depth_metric_is_better": "test the DepthMetric is_better method to compare two metric values and determine which is superior",
+    "review_depth_metrics_tuple": "review the DEPTH_METRICS tuple containing all ten standard depth evaluation metrics with their directionality"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/run.py": {
+    "run_depth_evaluation": "run the DINOv3 depth estimation evaluation pipeline via CLI with config and output directory",
+    "run_benchmark_launcher": "run the depth benchmark launcher to train or evaluate a depther model with given eval args",
+    "eval_depther_with_model": "evaluate a depther model using a DepthConfig and return metrics like abs_rel, a1, and rmse",
+    "add_dataset_prefix_to_results": "add a dataset name prefix to each key in a results dictionary for disambiguation",
+    "load_dinov3_vit7b16_dd": "load the pretrained DINOv3 ViT-7B/16 depth estimation model with autocast dtype support"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/schedulers.py": {
+    "build_WarmupOneCycleLR": "build a WarmupOneCycleLR scheduler with cosine annealing and momentum scheduling for a PyTorch optimizer",
+    "build_WarmupMultiStepLR": "build a WarmupMultiStepLR scheduler with warmup and gamma-based step decay for a PyTorch optimizer",
+    "build_scheduler_factory": "build a learning rate scheduler by name using build_scheduler with an optimizer and constructor kwargs",
+    "test_annealing_cos": "test the annealing_cos function to cosine anneal a value from start to end over a percentage",
+    "test_annealing_linear": "test the annealing_linear function to linearly anneal a value from start to end over a percentage"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/train.py": {
+    "train_depth_model_with_backbone": "train a depth estimation model using a pretrained backbone and DINOv3 depth config",
+    "run_depth_training_epochs": "run depth model training epochs with a depther, optimizer, scheduler, and dataloaders",
+    "create_iterbasedtrainer": "create an IterBasedTrainer to manage depth model training batches and validation",
+    "train_depth_model_on_batch": "train a depth estimation model on a single batch of images and ground truth depth",
+    "validate_depth_model": "validate a depth estimation model on the validation dataloader and compute metrics"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/transforms.py": {
+    "build_depth_train_transforms": "build a python module to create depth estimation training transforms with random crop and color augmentation",
+    "build_depth_eval_transforms": "build a python module to create depth estimation evaluation transforms with optional test time augmentation",
+    "create_color_augmentation": "create a ColorAug transform that applies random gamma, brightness, and color augmentation to images",
+    "create_left_right_flip_aug": "create a LeftRightFlipAug transform that returns original and horizontally flipped image pairs for TTA",
+    "create_fixed_crop": "create a FixedCrop transform to apply NYU or FULL crop to images and depth labels"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/utils.py": {
+    "align_depth_least_square": "align predicted depth map to ground truth using least squares scale and shift estimation",
+    "create_chmv2_mixlog_bins": "create mixed log depth bins interpolated between linear and log distributions for CHMv2 model",
+    "create_outputs_with_chmv2_mixlog_norm": "convert depth bin logits to depth values in meters using soft-argmax mixlog normalization",
+    "setup_model_ddp": "wrap a PyTorch model with DistributedDataParallel and move it to the specified device",
+    "review_depth_utils": "review the DINOv3 depth evaluation utilities for alignment, binning, normalization, and DDP setup"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/visualization_utils.py": {
+    "create_depth_visualization": "create a colorized PIL image from a depth tensor using a matplotlib colormap",
+    "build_alpha_blend_overlay": "build an alpha-blended overlay of a PIL image and an RGB mask array",
+    "test_normalized_tensor_to_pil": "test converting a normalized 3xHxW image tensor back to a PIL image",
+    "save_depth_predictions": "save depth prediction results as images or raw tensors to a directory",
+    "get_prediction_comparison_images": "get PIL images for input, prediction, and ground truth with optional alpha blending"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/datasets/datasets_utils.py": {
+    "create_eval_crop_type_enum": "create an EvalCropType enum with NYU_EIGEN and FULL crop type values for depth evaluation",
+    "build_make_valid_mask_full": "build a valid evaluation mask for a BxCxHxW tensor using full image coverage with ignored value filtering",
+    "build_make_valid_mask_nyu_eigen": "build a valid evaluation mask using NYU Eigen crop region for depth estimation on a BxCxHxW tensor",
+    "test_make_valid_mask_ignored_value": "test make_valid_mask to correctly exclude regions where all channels equal the ignored value",
+    "review_make_valid_mask_crop_scaling": "review make_valid_mask to verify NYU Eigen crop coordinates scale proportionally to input tensor height and width"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/models/dpt_head.py": {
+    "build_DPTHead_for_depth_estimation": "build a DPTHead module for monocular depth estimation from ViT backbone features",
+    "create_ConvModule_with_norm_and_activation": "create a ConvModule that bundles conv, batch norm, and ReLU activation layers",
+    "build_ReassembleBlocks_for_ViT_features": "build ReassembleBlocks to project and resize ViT multi-scale feature maps with cls token readout",
+    "create_FeatureFusionBlock_for_multi_scale_fusion": "create a FeatureFusionBlock to merge and upsample multi-scale features with residual conv units",
+    "test_DPTHead_forward_features": "test the DPTHead forward_features method with a list of ViT feature tensors"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/models/embed.py": {
+    "create_center_padding_module": "create a CenterPadding module that pads tensor dimensions to a specified multiple",
+    "use_center_padding_forward": "use CenterPadding forward pass to pad a PyTorch tensor to even multiples",
+    "create_stretch_to_multiple_module": "create a StretchToMultiple module that interpolates tensor dimensions to a specified multiple",
+    "use_stretch_to_multiple_forward": "use StretchToMultiple forward pass to bilinearly interpolate a tensor to even multiples",
+    "compare_padding_vs_stretching": "compare CenterPadding zero-padding versus StretchToMultiple bilinear interpolation for tensor dimension alignment"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/models/encoder.py": {
+    "create_vit_wrapper": "create a DinoVisionTransformerWrapper to extract intermediate layers from a ViT backbone model",
+    "get_backbone_out_indices": "get output layer indices for a ViT backbone using FOUR_EVEN_INTERVALS strategy",
+    "configure_backbone_layers": "configure DinoVisionTransformerWrapper to extract the last 4 layers from a backbone model",
+    "adapt_patch_size": "create a DinoVisionTransformerWrapper with center padding to adapt input images to patch size",
+    "freeze_backbone_encoder": "create a DinoVisionTransformerWrapper that freezes the backbone model gradients for inference"
+  },
+  "facebookresearch_dinov3/dinov3/eval/depth/models/linear_head.py": {
+    "create_linear_head_for_depth": "create a LinearHead module with specified input channels and output channels for depth estimation",
+    "build_linear_head_with_batchnorm": "build a LinearHead with SyncBatchNorm enabled for multi-level image feature processing",
+    "run_forward_pass_linear_head": "run a forward pass through the LinearHead to transform multi-level feature inputs into depth predictions",
+    "predict_depth_map_linear_head": "predict a depth map by running forward and bilinear interpolation to a target resolution",
+    "review_linear_head_cls_token_handling": "review the LinearHead class and how it concatenates CLS tokens with patch tokens"
+  },
+  "facebookresearch_dinov3/dinov3/eval/detection/models/backbone.py": {
+    "build_DINOBackbone": "build a DINOBackbone module from a pretrained model with configurable trainable blocks and layer norm",
+    "build_backbone_with_position_encoding": "build a complete backbone with position encoding using build_backbone and args for object detection",
+    "run_DINOBackbone_forward": "run the DINOBackbone forward pass on a NestedTensor to get intermediate layer features",
+    "create_BackboneWithPositionEncoding": "create a BackboneWithPositionEncoding that combines a backbone with position embeddings for detection",
+    "review_DINOBackbone_parameter_freezing": "review the DINOBackbone parameter freezing logic that controls which blocks require gradients"
+  },
+  "facebookresearch_dinov3/dinov3/eval/detection/models/detr.py": {
+    "build_PlainDETR_model": "build a PlainDETR object detection model with a backbone and transformer for one-to-one and one-to-many query matching",
+    "build_PlainDETRReParam_model": "build a PlainDETRReParam model that outputs bounding box deltas and old coordinates alongside predictions",
+    "run_PostProcess_inference": "run PostProcess to convert raw model logits and boxes into COCO-format results with top-k scoring",
+    "build_model_factory": "build a PlainDETR or PlainDETRReParam model from args using the build_model factory function",
+    "create_MLP_module": "create a multi-layer perceptron module with configurable input, hidden, output dimensions and layer count"
+  },
+  "facebookresearch_dinov3/dinov3/eval/detection/models/global_ape_decoder.py": {
+    "build_global_ape_decoder": "build a GlobalDecoder with GlobalDecoderLayer using config args for object detection",
+    "create_global_cross_attention": "create a GlobalCrossAttention module with configurable heads and dropout for cross-attention",
+    "create_global_decoder_layer": "create a GlobalDecoderLayer with self-attention, cross-attention, and FFN sublayers",
+    "run_global_decoder_forward": "run the GlobalDecoder forward pass with target embeddings and source features",
+    "review_global_decoder_layer_norm": "review the GlobalDecoderLayer pre_norm and post_norm forward implementations"
+  },
+  "facebookresearch_dinov3/dinov3/eval/detection/models/global_rpe_decomp_decoder.py": {
+    "build_global_rpe_decomp_decoder": "build a global RPE decomposed decoder from args with GlobalDecoderLayer and GlobalDecoder stacked layers",
+    "create_global_cross_attention": "create a GlobalCrossAttention module with configurable RPE type, hidden dim, and feature stride for object detection",
+    "create_global_decoder_layer": "create a GlobalDecoderLayer with self-attention, global cross-attention, and FFN supporting pre or post norm",
+    "create_global_decoder": "create a GlobalDecoder that stacks decoder layers with optional checkpointing and iterative bounding box refinement",
+    "review_global_cross_attention_forward": "review the GlobalCrossAttention forward pass that computes RPE-biased scaled dot product attention using reference points"
+  },
+  "facebookresearch_dinov3/dinov3/eval/detection/models/position_encoding.py": {
+    "build_sine_position_embedding": "build a PositionEmbeddingSine module with normalized sinusoidal positional encodings for transformer image inputs",
+    "build_learned_position_embedding": "build a PositionEmbeddingLearned module with trainable row and column embedding lookups for absolute positions",
+    "build_position_encoding_from_args": "build a ModuleList of position encodings from args using sine, learned, or sine_unnorm strategy",
+    "review_PositionEmbeddingSine_forward": "review the PositionEmbeddingSine forward method that computes sin/cos positional embeddings from a NestedTensor mask",
+    "test_PositionEncoding_enum": "test the PositionEncoding enum values LEARNED, SINE, and SINE_UNNORM for correct string matching"
+  },
+  "facebookresearch_dinov3/dinov3/eval/detection/models/transformer.py": {
+    "build_transformer": "build a Transformer model for object detection with configurable encoder, decoder, and two-stage proposal generation",
+    "build_transformer_reparam": "build a TransformerReParam model that uses delta-to-bbox conversion for reparameterized two-stage object detection",
+    "build_transformer_from_args": "build a Transformer or TransformerReParam model from an args namespace using the build_transformer factory function",
+    "run_transformer_forward": "run the Transformer forward pass with multi-scale source features, masks, and position embeddings to get decoder outputs",
+    "review_transformer_encoder_proposals": "review the gen_encoder_output_proposals method that generates initial box proposals from encoder memory features"
+  },
+  "facebookresearch_dinov3/dinov3/eval/detection/models/transformer_encoder.py": {
+    "build_transformer_encoder": "build a TransformerEncoder with cloned encoder layers and optional layer normalization",
+    "run_transformer_encoder_forward": "run the TransformerEncoder forward pass with source tensor, mask, and positional encoding",
+    "build_transformer_encoder_layer": "build a TransformerEncoderLayer with multihead attention and feedforward network",
+    "test_forward_pre_normalization": "test the forward_pre method that applies layer normalization before attention and feedforward",
+    "review_with_pos_embed": "review the with_pos_embed method that adds positional encoding to input tensor"
+  },
+  "facebookresearch_dinov3/dinov3/eval/detection/models/utils.py": {
+    "build_LayerNorm2D_module": "build a PyTorch module that applies LayerNorm across the channel dimension of N C H W tensors",
+    "create_LayerNorm2D_instance": "create a LayerNorm2D instance with a custom normalized shape and optional norm layer",
+    "test_LayerNorm2D_forward": "test the LayerNorm2D forward pass by passing an N C H W tensor and verifying output shape",
+    "review_LayerNorm2D_class": "review the LayerNorm2D class to understand how it permutes tensors before and after normalization",
+    "refactor_LayerNorm2D_norm_layer": "refactor the LayerNorm2D class to use a custom norm layer instead of the default nn.LayerNorm"
+  },
+  "facebookresearch_dinov3/dinov3/eval/detection/models/windows.py": {
+    "build_windows_wrapper": "build a WindowsWrapper module that splits input tensors into N equally sized windows for backbone feature extraction",
+    "create_windows_wrapper_init": "create a WindowsWrapper instance with a backbone, number of horizontal and vertical windows, and patch size parameters",
+    "run_windows_wrapper_forward": "run the WindowsWrapper forward pass on a NestedTensor to get concatenated window and global features",
+    "review_windows_wrapper_forward": "review the WindowsWrapper forward method that crops windows, extracts features via backbone, and concatenates results",
+    "summarize_windows_wrapper": "summarize the WindowsWrapper class that doubles output channels by combining window-level and global-level backbone features"
+  },
+  "facebookresearch_dinov3/dinov3/eval/detection/util/box_ops.py": {
+    "convert_cxcywh_to_xyxy": "convert bounding boxes from center x, center y, width, height format to x1, y1, x2, y2 format",
+    "convert_xyxy_to_cxcywh": "convert bounding boxes from x1, y1, x2, y2 format to center x, center y, width, height format",
+    "compute_bbox_from_deltas": "compute bounding boxes from proposal boxes and delta encodings with optional border clipping and center clamp",
+    "compute_delta_from_bbox": "compute delta encodings from proposal boxes and ground truth boxes with optional mean and std normalization",
+    "review_box_ops": "review the box_ops module for bounding box format conversion and delta encoding utilities"
+  },
+  "facebookresearch_dinov3/dinov3/eval/detection/util/misc.py": {
+    "build_reduce_dict": "build a python module to reduce dictionary values across distributed processes using all_reduce",
+    "create_nested_tensor": "create a NestedTensor from a list of 3D tensors with padding and boolean masks",
+    "test_accuracy": "test the accuracy function to compute precision at k for classification outputs",
+    "refactor_get_param_dict": "refactor the get_param_dict function to group model parameters by learning rate and weight decay",
+    "summarize_inverse_sigmoid": "summarize the inverse_sigmoid function that computes log-odds with numerical stability clamping"
+  },
+  "facebookresearch_dinov3/dinov3/eval/metrics/classification.py": {
+    "build_classification_metric": "build a classification metric collection from a ClassificationMetricType enum and number of classes",
+    "build_topk_accuracy_metric": "build a top-k multiclass accuracy metric collection with configurable averaging method and k values",
+    "build_topk_recall_metric": "build a top-k multiclass recall metric collection with configurable averaging method and k values",
+    "AnyMatchAccuracy": "create an AnyMatchAccuracy metric that checks if any top-k prediction matches a list of targets",
+    "accuracy": "compute top-k accuracy percentages for model output predictions against target labels"
+  },
+  "facebookresearch_dinov3/dinov3/eval/metrics/imagenet_c.py": {
+    "use_ImageNet_C_Metric": "create an ImageNet_C_Metric instance to track model accuracy across ImageNet-C corruption types and severity levels",
+    "update_ImageNet_C_Metric": "call update on ImageNet_C_Metric with model predictions and target tensors to accumulate per-corruption accuracy",
+    "compute_ImageNet_C_Metric": "call compute on ImageNet_C_Metric to get the Mean Corruption Error score as a top-1 tensor",
+    "compute_relative_average_scores": "compute the relative average corruption error score by comparing model scores against AlexNet inverse reference scores",
+    "lookup_CORRUPTION_LEVEL_TO_ID": "use CORRUPTION_LEVEL_TO_ID to map a corruption type and severity level pair to its integer bucket index"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/config.py": {
+    "create_SegmentationConfig": "create a SegmentationConfig dataclass to configure DINOv3 backbone, decoder, optimizer, and dataset for segmentation",
+    "build_DecoderConfig": "build a DecoderConfig dataclass to set decoder type, hidden dim, num classes, and dropout for segmentation head",
+    "create_OptimizerConfig": "create an OptimizerConfig dataclass to set learning rate, beta1, beta2, weight decay, and gradient clipping",
+    "build_EvalConfig": "build an EvalConfig dataclass to configure slide mode, crop size, stride, and test-time augmentation for evaluation",
+    "use_ModelDtype_autocast_dtype": "use the ModelDtype enum autocast_dtype property to get torch bfloat16 or float32 dtype for mixed precision"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/eval.py": {
+    "run_segmentation_evaluation": "run evaluate_segmentation_model to compute mIoU, dice, and fscore metrics on a test dataloader",
+    "test_segmentation_pipeline": "test a DINOv3 segmentation model end-to-end by building the decoder, dataloader, and running inference",
+    "build_segmentation_decoder": "build a segmentation decoder from a backbone using build_segmentation_decoder with M2F head configuration",
+    "load_dinov3_vit7b16_ms": "load the DINOv3 ViT-7B-16 segmentation model with M2F adapter via torch hub",
+    "calculate_segmentation_metrics": "calculate mIoU, dice, and fscore segmentation metrics from intersect and union tensors"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/inference.py": {
+    "run_segmentation_inference_whole": "run whole image segmentation inference on an input tensor using a segmentation model with bilinear rescaling",
+    "run_segmentation_inference_slide": "run sliding window segmentation inference on an image with configurable crop size and stride for overlapping predictions",
+    "run_inference_with_horizontal_flip_tta": "run segmentation inference with horizontal flip test-time augmentation applied to revert the flipped prediction",
+    "run_inference_with_m2f_decoder": "run segmentation inference using an m2f decoder head that combines mask predictions and class logits with einsum",
+    "run_inference_with_output_activation": "run segmentation inference with a softmax or sigmoid output activation applied to the final prediction tensor"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/loss.py": {
+    "build_dice_loss_segmentation": "build a segmentation model using DiceLoss with configurable smooth and exponent parameters",
+    "create_multilabel_dice_loss": "create a MultilabelDiceLoss module for multi-label segmentation tasks with sigmoid activation",
+    "build_cross_entropy_loss": "build a CrossEntropyLoss module with class weights and ignore index support",
+    "create_multi_segmentation_loss": "create a MultiSegmentationLoss that combines DiceLoss and CrossEntropyLoss with configurable weights",
+    "test_weighted_loss_decorator": "test the weighted_loss decorator to add weight and reduction args to a loss function"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/metrics.py": {
+    "calculate_segmentation_metrics": "calculate segmentation metrics like mIoU, accuracy, and F-score from aggregated intermediate evaluation results",
+    "calculate_intersect_and_union": "calculate intersection and union histograms between predicted and ground truth segmentation maps for evaluation",
+    "total_area_to_metrics": "convert total area intersect and union tensors into per-class mIoU, dice, or F-score metrics",
+    "preprocess_nonzero_labels": "preprocess segmentation labels by shifting nonzero values down and preserving the ignore index",
+    "f_score_computation": "compute the F-score from precision and recall values using a configurable beta parameter"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/run.py": {
+    "run_segmentation_with_dinov3": "run semantic segmentation using a DINOv3 backbone model with a given config for training or testing",
+    "test_segmentation_with_pretrained_head": "test model performance on a pretrained decoder head by running segmentation with a load_from config",
+    "train_segmentation_with_linear_head": "train a linear decoder head for semantic segmentation using a DINOv3 backbone model",
+    "benchmark_launcher": "launch a segmentation benchmark by loading config, backbone model, and running evaluation or training",
+    "main_cli_entry": "run the segmentation benchmark CLI entry point that parses args and launches the benchmark pipeline"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/schedulers.py": {
+    "build_WarmupOneCycleLR": "build a WarmupOneCycleLR scheduler with cosine annealing and momentum for a PyTorch optimizer",
+    "build_scheduler": "build a learning rate scheduler from a type string using build_scheduler with an optimizer and kwargs",
+    "create_annealing_cos": "create a cosine annealing schedule from a start value to an end value over a percentage",
+    "create_annealing_linear": "create a linear annealing schedule from a start value to an end value over a percentage",
+    "review_SCHEDULERS_DICT": "review the SCHEDULERS_DICT mapping of scheduler type strings to PyTorch and custom scheduler classes"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/train.py": {
+    "build_InfiniteDataloader": "build an InfiniteDataloader wrapper that restarts iteration and increments epoch when the underlying dataloader is exhausted",
+    "create_worker_init_fn": "create a worker init function that sets numpy, random, and torch seeds for each dataloader worker",
+    "run_validate": "run validation on a segmentation model using a val dataloader and return whether metrics improved",
+    "run_train_step": "run a single training step with forward pass, loss computation, gradient clipping, and optimizer update",
+    "run_train_segmentation": "run the full segmentation training loop with dataloaders, optimizer, scheduler, validation, and model checkpointing"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/transforms.py": {
+    "build_segmentation_train_pipeline": "build a python module to create a segmentation training transform pipeline with random crop and photometric distortion",
+    "build_segmentation_eval_pipeline": "build a python module to create a segmentation evaluation transform pipeline with optional TTA and resizing",
+    "create_photometric_distortion_transform": "create a PhotoMetricDistortion transform that applies random brightness, contrast, saturation, and hue to images",
+    "create_fixed_side_resize": "create a FixedSideResize transform that resizes images to a fixed small side with optional random ratio",
+    "create_random_crop_with_label": "create a RandomCropWithLabel transform that crops images and labels while respecting category ratio limits"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/backbone/dinov3_adapter.py": {
+    "build_DINOv3_Adapter": "build a DINOv3_Adapter backbone with frozen ViT and deformable attention for segmentation",
+    "create_SpatialPriorModule": "create a SpatialPriorModule CNN stem to extract multi-scale spatial features from images",
+    "test_InteractionBlockWithCls": "test the InteractionBlockWithCls layer that fuses ViT tokens with CNN features via deformable attention",
+    "review_ConvFFN": "review the ConvFFN module combining linear layers with depthwise convolution for feature processing",
+    "refactor_DropPath": "refactor the DropPath stochastic depth regularization to adjust dropout probability for residual blocks"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/heads/linear_head.py": {
+    "create_linear_head_for_segmentation": "create a LinearHead with specified input channels and output channels for semantic segmentation",
+    "build_linear_head_with_cls_token": "build a LinearHead that concatenates CLS tokens with patch tokens for segmentation",
+    "run_forward_pass_linear_head": "run a forward pass through the LinearHead to get segmentation feature maps",
+    "predict_segmentation_map": "predict a segmentation map by running the LinearHead predict method with rescaling",
+    "transform_multi_level_features": "transform and concatenate multi-level image features using bilinear interpolation"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/heads/mask2former_head.py": {
+    "build_mask2former_head": "build a Mask2FormerHead instance with a custom input shape and number of classes for segmentation",
+    "run_mask2former_forward": "run the Mask2FormerHead forward pass on a batch of feature tensors to get predictions",
+    "run_mask2former_predict": "run the Mask2FormerHead predict method to get interpolated segmentation masks at a target resolution",
+    "review_mask2former_pixel_decoder": "review the Mask2FormerHead pixel decoder configuration using MSDeformAttnPixelDecoder with 16 attention heads",
+    "review_mask2former_transformer_decoder": "review the Mask2FormerHead transformer decoder configuration using MultiScaleMaskedTransformerDecoder with 100 queries"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/heads/mask2former_transformer_decoder.py": {
+    "build_mask2former_decoder": "build a MultiScaleMaskedTransformerDecoder for mask classification with configurable queries, heads, and decoder layers",
+    "create_self_attention_layer": "create a SelfAttentionLayer with multihead attention, layer norm, dropout, and optional pre-normalization",
+    "create_cross_attention_layer": "create a CrossAttentionLayer that attends between target queries and memory features with positional embeddings",
+    "create_ffn_layer": "create a FFNLayer with two linear layers, dropout, layer norm, and configurable activation function",
+    "create_conv2d_wrapper": "create a Conv2d wrapper that supports optional normalization and activation layers after convolution"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/heads/pixel_decoder.py": {
+    "build_pixel_decoder": "build a MSDeformAttnPixelDecoder for multi-scale feature decoding in semantic segmentation models",
+    "create_transformer_encoder": "create a MSDeformAttnTransformerEncoderOnly with configurable encoder layers and multi-scale feature levels",
+    "build_conv2d_wrapper": "build a Conv2d wrapper module with optional normalization and activation layers",
+    "test_xavier_fill": "test the c2_xavier_fill function to initialize module weights using Caffe2 XavierFill",
+    "review_encoder_layer": "review the MSDeformAttnTransformerEncoderLayer forward pass combining self-attention and feed-forward networks"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/utils/batch_norm.py": {
+    "create_FrozenBatchNorm2d": "create a FrozenBatchNorm2d layer with fixed batch statistics for a given number of features",
+    "convert_frozen_batchnorm": "convert all BatchNorm2d and SyncBatchNorm layers in a module to FrozenBatchNorm2d",
+    "convert_frozenbatchnorm2d_to_batchnorm2d": "convert all FrozenBatchNorm2d layers in a module back to standard BatchNorm2d",
+    "get_norm": "get a normalization layer by name string like BN, SyncBN, FrozenBN, GN, or LN",
+    "create_NaiveSyncBatchNorm": "create a NaiveSyncBatchNorm layer for correct cross-worker gradient sync with equal or N-weighted stats"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/utils/ms_deform_attn.py": {
+    "build_msdeformattn_module": "build a Multi-Scale Deformable Attention module with configurable heads, levels, and sampling points",
+    "create_msdeformattn_forward": "create a forward pass through MSDeformAttn using query, reference points, and flattened multi-scale input features",
+    "test_ms_deform_attn_core_pytorch": "test the pure PyTorch multi-scale deformable attention core function with bilinear grid sampling",
+    "review_msdeformattnfunction_autograd": "review the MSDeformAttnFunction autograd Function class for custom forward and backward CUDA passes",
+    "refactor_msdeformattn_parameter_init": "refactor the MSDeformAttn parameter initialization to use angular sampling offsets and Xavier uniform weights"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/utils/position_encoding.py": {
+    "build_sine_positional_encoding": "build a PositionEmbeddingSine module with 64 positional features for transformer image encoding",
+    "create_normalized_positional_encoding": "create a PositionEmbeddingSine with normalize=True and custom scale for normalized image coordinates",
+    "run_forward_positional_encoding": "run forward pass on a feature tensor through PositionEmbeddingSine to get sinusoidal positional embeddings",
+    "test_positional_encoding_with_mask": "test PositionEmbeddingSine forward pass with a boolean mask to handle padded image regions",
+    "review_positional_encoding_repr": "review the PositionEmbeddingSine __repr__ output to inspect num_pos_feats, temperature, normalize, and scale config"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/utils/transformer.py": {
+    "build_Transformer": "build a Transformer encoder-decoder model with configurable d_model, nhead, and layer count for segmentation",
+    "create_TransformerEncoder": "create a TransformerEncoder that stacks cloned encoder layers with optional layer normalization",
+    "create_TransformerDecoder": "create a TransformerDecoder that returns intermediate activations from all decoding layers",
+    "test_TransformerEncoderLayer": "test the TransformerEncoderLayer forward pass with self-attention and feedforward sublayers",
+    "test_TransformerDecoderLayer": "test the TransformerDecoderLayer forward pass with self-attention, cross-attention, and feedforward sublayers"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/utils/ops/setup.py": {
+    "build_cuda_extension": "build the MultiScaleDeformableAttention CUDA extension using python setup.py build_ext --inplace",
+    "install_extension": "install the MultiScaleDeformableAttention PyTorch CUDA extension via pip install -e .",
+    "get_extensions": "call get_extensions() to discover and configure CPU and CUDA source files for the extension",
+    "review_setup_config": "review the setup.py configuration for the MultiScaleDeformableAttention CUDA extension build",
+    "refactor_cuda_compile_args": "refactor the nvcc extra compile args in get_extensions to add or remove CUDA flags"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/utils/ops/test.py": {
+    "test_ms_deform_attn_forward_double": "test the MSDeformAttnFunction forward pass using double precision and compare with PyTorch reference implementation",
+    "test_ms_deform_attn_forward_float": "test the MSDeformAttnFunction forward pass using float precision and compare with PyTorch reference implementation",
+    "test_ms_deform_attn_gradient_numerical": "test the MSDeformAttnFunction numerical gradients for value, sampling locations, and attention weights",
+    "run_ms_deform_attn_tests": "run all MSDeformAttnFunction forward and gradient tests across multiple channel configurations",
+    "review_ms_deform_attn_pytorch_core": "review the ms_deform_attn_core_pytorch reference implementation used for validating CUDA output correctness"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/utils/ops/functions/ms_deform_attn_func.py": {
+    "run_ms_deform_attn_core_pytorch": "run the pure PyTorch multi-scale deformable attention core function for debugging and testing",
+    "test_MSDeformAttnFunction_forward": "test the MSDeformAttnFunction forward pass using the CUDA-accelerated MSDA extension",
+    "test_MSDeformAttnFunction_backward": "test the MSDeformAttnFunction backward pass to verify gradient computation for sampling locations",
+    "review_ms_deform_attn_core_pytorch": "review the ms_deform_attn_core_pytorch function to understand bilinear grid sampling across feature pyramid levels",
+    "summarize_MSDeformAttnFunction": "summarize the MSDeformAttnFunction autograd Function class that wraps CUDA multi-scale deformable attention"
+  },
+  "facebookresearch_dinov3/dinov3/eval/segmentation/models/utils/ops/modules/ms_deform_attn.py": {
+    "create_ms_deform_attn_module": "create a Multi-Scale Deformable Attention module with configurable heads, levels, and sampling points",
+    "run_ms_deform_attn_forward": "run the MSDeformAttn forward pass with query, reference points, and multi-scale input features",
+    "test_is_power_of_2": "test the _is_power_of_2 utility function to validate integer power-of-two checks",
+    "review_ms_deform_attn_init": "review the MSDeformAttn constructor parameter validation and linear layer initialization",
+    "refactor_ms_deform_attn_reset_parameters": "refactor the MSDeformAttn _reset_parameters method to customize angular grid bias initialization"
+  },
+  "facebookresearch_dinov3/dinov3/eval/text/ac_comp_parallelize.py": {
+    "ac_compile_parallelize_and_init": "apply activation checkpointing, torch compile, and FSDP sharding to a CLIP model for distributed training",
+    "map_modules_and_blocks": "apply a callable to all blocks of a list of nn.Module models in place",
+    "compile_block": "torch compile a single model block with optional CUDA graph support for faster inference",
+    "compile_backbone": "torch compile all blocks in a model backbone for improved training or inference speed",
+    "compile_head": "torch compile all blocks and the linear projection of a model head module"
+  },
+  "facebookresearch_dinov3/dinov3/eval/text/build_dinotxt.py": {
+    "build_model_and_tokenizer": "build a DINOTxt model with training transforms and tokenizer for vision-language training",
+    "build_model_for_eval": "build a DINOTxt model loaded with pretrained weights and eval transforms for inference",
+    "load_backbone_checkpoint": "load pretrained weights from a PyTorch or DCP checkpoint into a model backbone",
+    "compile_parallelize_and_init": "wrap a DINOTxt model in FSDP or DDP, compile it, and initialize weights",
+    "rename_register_token": "rename register_tokens to storage_tokens in a checkpoint state dict for DINOv2 compatibility"
+  },
+  "facebookresearch_dinov3/dinov3/eval/text/clip_loss.py": {
+    "compute_clip_loss": "compute memory efficient CLIP loss between image and text feature tensors across distributed processes",
+    "use_ring_allreduce_helper": "use the ring allreduce helper to cycle tensor chunks across all ranks in a process group",
+    "review_autograd_forward": "review the MemoryEfficientClipLoss forward pass that computes logits and logsumexp across distributed ranks",
+    "review_autograd_backward": "review the MemoryEfficientClipLoss backward pass that computes gradients for image and text features",
+    "refactor_clip_loss_for_single_gpu": "refactor the memory efficient CLIP loss function to work on a single GPU without distributed communication"
+  },
+  "facebookresearch_dinov3/dinov3/eval/text/dinotxt_model.py": {
+    "build_DINOTxt_model": "build a DINOTxt model with a DINOTxtConfig for vision-language contrastive learning",
+    "create_DINOTxtConfig": "create a DINOTxtConfig dataclass to configure embed dimension and vision and text backbone settings",
+    "encode_image_with_patch_tokens": "encode an image tensor into features and patch tokens using DINOTxt encode_image_with_patch_tokens",
+    "encode_text": "encode a text tensor into normalized embeddings using DINOTxt encode_text method",
+    "get_logits": "compute image-to-text and text-to-image contrastive logits using DINOTxt get_logits method"
+  },
+  "facebookresearch_dinov3/dinov3/eval/text/gram_loss.py": {
+    "build_gram_loss_fn": "build a python module that computes the Gram matrix MSE loss between backbone and model patch tokens",
+    "create_gram_loss_fn_with_sampling": "create a function that computes Gram loss with configurable patch sampling rate for efficient training",
+    "test_gram_loss_fn": "test the gram_loss_fn function by passing two patch token tensors and verifying the MSE loss output",
+    "refactor_gram_loss_fn": "refactor the gram_loss_fn to support custom normalization strategies beyond L2 normalization",
+    "summarize_gram_loss_fn": "summarize the gram_loss_fn which computes MSE between Gram matrices of sampled and normalized patch tokens"
+  },
+  "facebookresearch_dinov3/dinov3/eval/text/text_tower.py": {
+    "build_text_model": "build a TextTower model from a backbone config YAML file with head blocks and pooling",
+    "build_text_backbone": "build a TextTransformer backbone from an OmegaConf config with specified dimensions and layers",
+    "create_text_head": "create a TextHead module with causal self-attention blocks and optional linear projection",
+    "create_text_tower": "create a TextTower module combining a backbone and head with first, last, or argmax pooling",
+    "init_text_head_weights": "initialize TextHead weights using normal distribution for linear projection and block init"
+  },
+  "facebookresearch_dinov3/dinov3/eval/text/text_transformer.py": {
+    "create_text_transformer_model": "create a TextTransformer model with specified vocab size, embedding dim, num heads, and num layers",
+    "init_text_transformer_weights": "initialize the TextTransformer model weights using normal distribution with layer-scaled standard deviations",
+    "run_text_transformer_forward": "run the TextTransformer forward pass on token indices to get contextualized embeddings",
+    "build_causal_text_transformer": "build a causal TextTransformer with CausalSelfAttentionBlock layers for autoregressive text processing",
+    "review_text_transformer_architecture": "review the TextTransformer class architecture including token embeddings, positional embeddings, and attention blocks"
+  },
+  "facebookresearch_dinov3/dinov3/eval/text/tokenizer.py": {
+    "build_tokenizer_from_path": "build a Tokenizer instance from a local BPE vocabulary file path using get_tokenizer",
+    "build_tokenizer_from_url": "build a Tokenizer instance by downloading a BPE vocabulary file from a URL using get_tokenizer",
+    "tokenize_single_text": "tokenize a single text string into a padded tensor with start and end tokens using Tokenizer.tokenize",
+    "tokenize_batch_texts": "tokenize a list of text strings into a batch tensor with configurable context length using Tokenizer.tokenize",
+    "review_tokenizer_truncation": "review the Tokenizer.tokenize method to understand how it truncates tokens exceeding the context length"
+  },
+  "facebookresearch_dinov3/dinov3/eval/text/train_dinotxt.py": {
+    "run_train_dinotxt": "run the DINOTxt training loop via CLI with a trainer config file and output directory",
+    "train_DINOTxt_model": "train a DINOTxt vision-text model using CLIP contrastive loss and optional gram loss",
+    "test_DINOTxt_checkpoint": "test and save a DINOTxt model checkpoint to an evaluation directory at a given iteration",
+    "write_config_DINOTxtConfig": "write a DINOTxtConfig object to a YAML file in the specified output directory",
+    "exclude_optimizer_params": "exclude bias, batch norm, layer norm, and logit scale parameters from weight decay"
+  },
+  "facebookresearch_dinov3/dinov3/eval/text/vision_tower.py": {
+    "build_vision_tower": "build a VisionTower module with a frozen backbone and configurable head blocks for vision feature extraction",
+    "create_vision_head": "create a VisionHead with self-attention blocks and SwiGLU FFN layers to process image tokens",
+    "build_vision_model_from_config": "build a complete vision model from a backbone config file using build_vision_model",
+    "extract_backbone_features": "extract class tokens, patch tokens, and register tokens from images using get_backbone_features",
+    "init_vision_tower_weights": "initialize VisionTower weights using init_weights to apply ViT weight initialization to all blocks"
+  },
+  "facebookresearch_dinov3/dinov3/fsdp/ac_compile_parallelize.py": {
+    "ac_compile_parallelize_models": "apply activation checkpointing, torch compile, and FSDP sharding to DINOv3 trained and inference models",
+    "activation_checkpoint_convnext": "wrap ConvNeXt stage blocks and downsample layers with activation checkpointing to reduce memory usage",
+    "activation_checkpoint_transformer": "wrap Vision Transformer blocks with activation checkpointing using full or selective checkpointing policy",
+    "compile_transformer": "torch compile each Vision Transformer block with optional CUDA graph support for backbone blocks",
+    "fsdp_transformer": "apply FSDP fully_shard to each Vision Transformer block with forward and backward prefetch optimization"
+  },
+  "facebookresearch_dinov3/dinov3/hub/backbones.py": {
+    "build_dinov3_vitb16_backbone": "build a DINOv3 ViT-B/16 vision transformer backbone model with pretrained LVD1689M weights",
+    "build_dinov3_vitl16_backbone": "build a DINOv3 ViT-L/16 vision transformer backbone model with pretrained weights",
+    "build_dinov3_convnext_base_backbone": "build a DINOv3 ConvNeXt-B backbone model with pretrained LVD1689M weights",
+    "build_dinov3_vit7b16_backbone": "build a DINOv3 ViT-7B/16 large vision transformer backbone model with pretrained weights",
+    "build_dinov3_vith16plus_backbone": "build a DINOv3 ViT-H/16+ SwiGLU vision transformer backbone model with pretrained weights"
+  },
+  "facebookresearch_dinov3/dinov3/hub/classifiers.py": {
+    "build_dinov3_linear_classifier": "build a DINOv3 ViT-7B/16 linear classifier for ImageNet-1k classification using dinov3_vit7b16_lc",
+    "create_linear_classification_head": "create a pretrained linear classification head with 1000 output classes using _make_dinov3_linear_classification_head",
+    "create_linear_classifier_wrapper": "create a LinearClassifierWrapper that concatenates cls and mean patch tokens before the linear head",
+    "run_dinov3_classification": "run inference with a DINOv3 linear classifier on images using dinov3_vit7b16_lc pretrained on ImageNet-1k",
+    "review_classifier_weights_enum": "review the ClassifierWeights enum to understand available pretrained weight options for linear classifiers"
+  },
+  "facebookresearch_dinov3/dinov3/hub/depthers.py": {
+    "build_dinov3_vit7b16_depther": "build a DINOv3 ViT-7B depth estimation model with pretrained SYNTHMIX weights and DPT head",
+    "build_dinov3_vitl16_chmv2_depther": "build a DINOv3 ViT-L depth estimation model pretrained on CHMV2 dataset with DPT head",
+    "create_depther_config": "create a DecoderConfig for depth estimation with custom depth range and backbone output layers",
+    "create_chmv2_config": "create a CHMV2-specific DecoderConfig with mixlog binning strategy and custom head kwargs",
+    "review_DepthWeights_enum": "review the DepthWeights enum defining CHMV2 and SYNTHMIX depth estimation weight variants"
+  },
+  "facebookresearch_dinov3/dinov3/hub/detectors.py": {
+    "build_dinov3_detector": "build a DINOv3 ViT-7B object detector with pretrained COCO2017 weights using dinov3_vit7b16_de",
+    "run_object_detection": "run object detection on a list of normalized image tensors using DetectorWithProcessor forward pass",
+    "create_detector_with_processor": "create a DetectorWithProcessor module wrapping a DETR detector and PostProcess postprocessor for inference",
+    "build_custom_detector": "build a custom DINOv3 detector with a specified backbone and detection head config via _make_dinov3_detector",
+    "review_detection_weights_enum": "review the DetectionWeights enum to see available pretrained detection weight options like COCO2017"
+  },
+  "facebookresearch_dinov3/dinov3/hub/dinotxt.py": {
+    "build_dinotxt_model": "build a DINOTxt vision-language model with pretrained ViT-L/16 backbone and text transformer",
+    "build_dinotxt_untrained": "build a DINOTxt model from scratch without pretrained weights using pretrained=False",
+    "build_dinotxt_custom_weights": "build a DINOTxt model loading custom weights from a URL or file path",
+    "create_dinotxt_tokenizer": "create a BPE tokenizer for DINOTxt text encoding using the default vocab URL",
+    "review_DINOTxtWeights": "review the DINOTxtWeights enum to see available pretrained weight variants like LVTD2300M"
+  },
+  "facebookresearch_dinov3/dinov3/hub/segmentors.py": {
+    "build_dinov3_vit7b16_segmentor": "build a DINOv3 ViT-7B M2F segmentor model pretrained on ADE20K dataset",
+    "build_dinov3_vitl16_segmentor": "build a DINOv3 ViT-L M2F segmentor model using the internal factory function",
+    "create_segmentor_with_custom_weights": "create a segmentor model loading weights from a custom URL or file path",
+    "create_segmentor_without_pretrained": "create a DINOv3 segmentor model without loading pretrained segmentation head weights",
+    "review_SegmentorWeights_enum": "review the SegmentorWeights enum to see available pretrained segmentation weight options"
+  },
+  "facebookresearch_dinov3/dinov3/layers/attention.py": {
+    "build_SelfAttention_module": "build a SelfAttention module with configurable heads, dropout, and optional RoPE positional encoding support",
+    "build_CausalSelfAttention_module": "build a CausalSelfAttention module for autoregressive models with causal masking and weight initialization",
+    "create_rope_apply_function": "create a function that applies rotary positional embeddings to tensors using sin and cos rotations",
+    "create_LinearKMaskedBias_layer": "create a LinearKMaskedBias layer that applies NaN-masked bias to linear transformations with divisible output features",
+    "test_SelfAttention_forward_list": "test the SelfAttention forward_list method to process batched tensor lists with per-item RoPE encoding"
+  },
+  "facebookresearch_dinov3/dinov3/layers/block.py": {
+    "build_selfattentionblock": "build a SelfAttentionBlock with dim 768 and 12 heads for transformer encoder layers",
+    "build_causalselfattentionblock": "build a CausalSelfAttentionBlock with dim 768 and 12 heads for causal transformer layers",
+    "test_selfattentionblock_forward": "test the SelfAttentionBlock forward pass with a single tensor and optional rope embeddings",
+    "test_selfattentionblock_forward_list": "test the SelfAttentionBlock forward_list method with a list of tensors for batched processing",
+    "review_causalselfattentionblock_init_weights": "review the CausalSelfAttentionBlock init_weights method to customize attention and projection standard deviations"
+  },
+  "facebookresearch_dinov3/dinov3/layers/dino_head.py": {
+    "create_DINOHead": "create a DINOHead instance with specified input and output dimensions for self-supervised learning",
+    "build_DINOHead_with_bn": "build a DINOHead with batch normalization enabled and custom hidden dimension size",
+    "run_DINOHead_forward": "run the DINOHead forward pass on input tensor with optional last layer skip",
+    "init_DINOHead_weights": "initialize DINOHead weights using truncated normal distribution with std 0.02",
+    "build_MLP_with_build_mlp": "build an MLP with configurable layers, batch norm, and GELU activation via _build_mlp"
+  },
+  "facebookresearch_dinov3/dinov3/layers/ffn_layers.py": {
+    "create_mlp_layer": "create a two-layer MLP feed-forward network with GELU activation and configurable hidden features",
+    "create_swiglu_ffn_layer": "create a SwiGLU feed-forward network with SiLU gating and aligned hidden dimension size",
+    "use_listforward_mixin": "use the ListForwardMixin to batch-process a list of tensors through a forward pass",
+    "review_mlp_forward": "review the Mlp class forward method to understand the fc1-activation-dropout-fc2 computation graph",
+    "refactor_swiglu_hidden_features": "refactor the SwiGLUFFN hidden feature calculation to use a different alignment or ratio"
+  },
+  "facebookresearch_dinov3/dinov3/layers/fp8_linear.py": {
+    "convert_linears_to_fp8": "convert all matching Linear layers in a PyTorch module to FP8 using a regex filter",
+    "create_Fp8Linear": "create an FP8 linear layer that performs float8 matrix multiplication with automatic scaling",
+    "create_Fp8LinearKMaskedBias": "create an FP8 linear layer with masked bias support for attention head masking",
+    "review_Fp8LinearFn": "review the custom autograd function that handles FP8 forward and backward passes with per-row scaling",
+    "refactor_scale_matmul": "refactor the scale and matmul helper functions that convert tensors to float8 and perform scaled matrix multiplication"
+  },
+  "facebookresearch_dinov3/dinov3/layers/layer_scale.py": {
+    "create_layerscale_module": "create a LayerScale module with a given dimension and initial gamma values",
+    "create_layerscale_inplace": "create a LayerScale module that performs in-place multiplication on input tensors",
+    "reset_layerscale_parameters": "reset the LayerScale gamma parameters to their initial constant values",
+    "forward_layerscale_tensor": "apply LayerScale forward pass to scale a tensor by learnable gamma weights",
+    "build_layerscale_for_transformer": "build a LayerScale layer to scale transformer block outputs with small init values"
+  },
+  "facebookresearch_dinov3/dinov3/layers/patch_embed.py": {
+    "create_patch_embed_module": "create a PatchEmbed module to convert 2D images into patch embeddings with configurable patch size",
+    "build_patch_embed_with_norm": "build a PatchEmbed layer with a custom normalization layer for image-to-patch token projection",
+    "test_patch_embed_forward": "test the PatchEmbed forward pass by passing a batch of images and verifying output shape",
+    "review_patch_embed_flops": "review the PatchEmbed flops method to calculate floating point operations for the projection layer",
+    "refactor_patch_embed_reset_parameters": "refactor the PatchEmbed reset_parameters method to reinitialize convolution weights and bias uniformly"
+  },
+  "facebookresearch_dinov3/dinov3/layers/rms_norm.py": {
+    "create_rmsnorm_layer": "create an RMSNorm layer with a given dimension and epsilon for normalizing tensor features",
+    "build_rmsnorm_forward": "build a forward pass through an RMSNorm layer to normalize input tensor data",
+    "test_rmsnorm_norm": "test the RMSNorm internal normalization method to verify it computes root mean square correctly",
+    "refactor_rmsnorm_reset": "refactor the RMSNorm reset_parameters method to reinitialize the weight parameter to ones",
+    "review_rmsnorm_usage": "review the RMSNorm class usage pattern in transformer models for layer normalization"
+  },
+  "facebookresearch_dinov3/dinov3/layers/rope_position_encoding.py": {
+    "create_rope_embedding_with_base": "create a RopePositionEmbedding module with a specified base value for rotary positional encoding",
+    "create_rope_embedding_with_periods": "create a RopePositionEmbedding module using min_period and max_period instead of base",
+    "forward_rope_sin_cos": "run the forward pass of RopePositionEmbedding to get sin and cos tensors for given H and W",
+    "review_rope_normalization_modes": "review the RopePositionEmbedding class and its min, max, and separate coordinate normalization modes",
+    "test_rope_augmentation": "test the RopePositionEmbedding shift_coords, jitter_coords, and rescale_coords training-time augmentation features"
+  },
+  "facebookresearch_dinov3/dinov3/layers/sparse_linear.py": {
+    "create_LinearW24_layer": "create a LinearW24 sparse linear layer with 2:4 sparsity support for a neural network",
+    "replace_linears_with_sparse_linear": "replace all nn.Linear layers matching a filter function with LinearW24 sparse layers in a module",
+    "update_24sparsity_enable": "enable 2:4 sparsity on all LinearW24 layers in a model and reset torch compilation caches",
+    "update_24sparsity_disable": "disable 2:4 sparsity on all LinearW24 layers in a model and reset torch compilation caches",
+    "review_LinearW24_forward": "review the LinearW24 forward pass that sparsifies weights using xformers sparsify24 with STE gradient"
+  },
+  "facebookresearch_dinov3/dinov3/logging/helpers.py": {
+    "create_MetricLogger": "create a MetricLogger instance to track training metrics with tab-delimited output",
+    "update_MetricLogger_meters": "update MetricLogger meters with keyword arguments containing loss values or tensor scalars",
+    "log_every_MetricLogger": "use log_every to iterate over a dataloader while logging metrics at fixed intervals",
+    "create_SmoothedValue": "create a SmoothedValue tracker with a configurable window size for smoothed metric reporting",
+    "synchronize_MetricLogger_processes": "synchronize MetricLogger meters across distributed processes using all_reduce for consistent metrics"
+  },
+  "facebookresearch_dinov3/dinov3/loss/dino_clstoken_loss.py": {
+    "create_DINOLoss": "create a DINOLoss module with out_dim, student_temp, and center_momentum parameters for DINOv3 training",
+    "build_DINOLoss_forward": "build a cross-entropy loss computation between student logits and teacher probabilities with optional diagonal ignoring",
+    "run_softmax_center_teacher": "run softmax centering and sharpening on teacher output using the learned center and teacher temperature",
+    "test_sinkhorn_knopp_teacher": "test the Sinkhorn-Knopp algorithm to compute normalized teacher assignment probabilities across distributed processes",
+    "review_update_center": "review the async center update mechanism that reduces teacher output across processes and applies momentum-based centering"
+  },
+  "facebookresearch_dinov3/dinov3/loss/gram_loss.py": {
+    "create_gram_loss_module": "create a GramLoss module to compute MSE loss between student and teacher feature gram matrices",
+    "build_gram_loss_with_normalization": "build a GramLoss module with apply_norm to normalize features before computing gram matrix similarities",
+    "run_gram_loss_forward": "run the GramLoss forward pass with output and target feature tensors of shape B, N, dim",
+    "test_gram_loss_negative_removal": "test the GramLoss module with remove_neg to zero out negative similarity values in gram matrices",
+    "review_gram_loss_img_level": "review the GramLoss forward method to compute gram matrices at image level or across the entire batch"
+  },
+  "facebookresearch_dinov3/dinov3/loss/ibot_patch_loss.py": {
+    "create_IBOTPatchLoss": "create an iBOTPatchLoss module with a given patch output dimension and student temperature",
+    "compute_patch_loss_forward": "compute cross-entropy loss between student and teacher patch tokens using masked student outputs",
+    "compute_masked_patch_loss": "compute masked patch loss with optional custom mask weights and number of masked patches",
+    "run_sinkhorn_knopp_teacher": "run the Sinkhorn-Knopp algorithm to normalize teacher output assignments across distributed processes",
+    "update_teacher_center": "update the moving average center of teacher patch tokens using async distributed all-reduce"
+  },
+  "facebookresearch_dinov3/dinov3/loss/koleo_loss.py": {
+    "build_koleo_loss_regularization": "build a KoLeoLoss module to compute entropic regularization loss on student backbone output vectors",
+    "build_koleo_loss_distributed": "build a KoLeoLossDistributed module to compute entropic loss across distributed GPU processes with all_gather",
+    "test_koleo_loss_forward": "test the KoLeoLoss forward pass by passing normalized student output tensors and verifying scalar loss output",
+    "test_koleo_loss_distributed_topk": "test the KoLeoLossDistributed forward pass with a custom topk parameter for multi-nearest neighbor search",
+    "review_koleo_pairwise_NNs_inner": "review the pairwise_NNs_inner method that finds nearest neighbors via dot product on L2-normalized vectors"
+  },
+  "facebookresearch_dinov3/dinov3/models/convnext.py": {
+    "build_convnext_model": "build a ConvNeXt model with specified depths and dims for image feature extraction",
+    "get_convnext_arch": "create a ConvNeXt model variant using get_convnext_arch with a size name like convnext_base",
+    "get_intermediate_layers": "extract intermediate layer features from a ConvNeXt model with optional normalization and reshaping",
+    "forward_features": "run forward_features on a ConvNeXt model to get CLS tokens and patch tokens as a list of dicts",
+    "drop_path_regularization": "apply stochastic depth drop path regularization to tensor inputs during training"
+  },
+  "facebookresearch_dinov3/dinov3/models/vision_transformer.py": {
+    "build_vit_small": "build a DINOv3 ViT-Small vision transformer model with 384 embed dim and 12 layers",
+    "build_vit_base": "build a DINOv3 ViT-Base vision transformer model with 768 embed dim and 12 layers",
+    "build_vit_large": "build a DINOv3 ViT-Large vision transformer model with 1024 embed dim and 24 layers",
+    "build_vit_so400m": "build a DINOv3 ViT-SO400M vision transformer model with 1152 embed dim and 27 layers",
+    "build_vit_giant2": "build a DINOv3 ViT-Giant2 vision transformer model with 1536 embed dim and 40 layers"
+  },
+  "facebookresearch_dinov3/dinov3/run/init.py": {
+    "run_job_context": "run a DINOv3 job using the job_context manager with distributed training and logging enabled",
+    "setup_job_with_context": "setup a DINOv3 training job with output directory, seed, and distributed timeout configuration",
+    "run_distributed_training": "run distributed DINOv3 training with automatic setup and cleanup via the job_context context manager",
+    "configure_job_logging": "configure DINOv3 job logging and distributed process setup using job_context with custom parameters",
+    "cleanup_job_resources": "cleanup DINOv3 job resources including distributed processes and logging via the job_context finally block"
+  },
+  "facebookresearch_dinov3/dinov3/run/submit.py": {
+    "submit_training_job": "submit a Python training script to a Slurm cluster using submitit with configurable GPUs and nodes",
+    "create_checkpointable_submitter": "create a CheckpointableSubmitter instance to wrap a callable for checkpoint-aware Slurm job submission",
+    "configure_slurm_parser": "build an argparse parser with Slurm job arguments like ngpus, nodes, timeout, partition, and QoS settings",
+    "get_shared_folder": "get the shared experiments folder path under the user checkpoint directory for storing job outputs",
+    "run_submitter_main": "run the submit CLI entry point to launch a module's callable on a Slurm cluster with auto-requeue support"
+  },
+  "facebookresearch_dinov3/dinov3/thirdparty/CLIP/clip/simple_tokenizer.py": {
+    "encode_text_to_bpe_tokens": "create a SimpleTokenizer and encode text into BPE token IDs for CLIP model input",
+    "decode_bpe_tokens_to_text": "use SimpleTokenizer decode method to convert BPE token IDs back into readable text",
+    "apply_bpe_tokenization": "apply the BPE algorithm to a single token using SimpleTokenizer bpe method with caching",
+    "clean_text_with_basic_clean": "use basic_clean function to fix text encoding and unescape HTML entities from input text",
+    "normalize_whitespace_with_whitespace_clean": "use whitespace_clean function to collapse multiple whitespace characters into single spaces"
+  },
+  "facebookresearch_dinov3/dinov3/train/cosine_lr_scheduler.py": {
+    "create_cosine_scheduler": "create a CosineScheduler instance with base value, final value, total iterations, and optional warmup",
+    "get_scheduler_value": "get the learning rate value at a specific iteration index from a CosineScheduler",
+    "build_lr_schedule": "build a numpy array learning rate schedule with linear warmup and cosine decay using linear_warmup_cosine_decay",
+    "create_truncated_cosine_schedule": "create a CosineScheduler with trunc_extra to generate a truncated cosine annealing schedule",
+    "create_schedule_with_freeze": "create a CosineScheduler with freeze_iters to hold the initial value at zero for a set number of iterations"
+  },
+  "facebookresearch_dinov3/dinov3/train/multidist_meta_arch.py": {
+    "run_forward_backward_multidistillation": "run the MultiDistillationMetaArch forward_backward method to compute DINO, IBOT, and KOLEO losses and backpropagate",
+    "get_teacher_output_multidistillation": "get the teacher output with sinkhorn-knopp centered CLS and masked patch tokens for multidistillation training",
+    "review_MultiDistillationMetaArch_class": "review the MultiDistillationMetaArch class to understand its multidistillation codepath for DINO, IBOT, and KOLEO losses",
+    "refactor_forward_backward_subgroup_broadcasting": "refactor the forward_backward method to modify how global and local crops are broadcast to subgroups",
+    "summarize_get_teacher_output_method": "summarize the get_teacher_output method which processes teacher backbone outputs through DINO and IBOT heads"
+  },
+  "facebookresearch_dinov3/dinov3/train/param_groups.py": {
+    "calculate_vit_lr_decay_rate": "calculate the learning rate decay rate for a given ViT parameter name and layer configuration",
+    "get_param_groups_with_decay": "get parameter groups with learning rate decay multipliers for a PyTorch model's named parameters",
+    "fuse_param_groups": "fuse parameter groups by combining parameters that share the same lr_multiplier, wd_multiplier, and is_last_layer keys",
+    "get_param_groups_with_decay_fsdp": "get parameter groups with learning rate decay for an FSDP-wrapped PyTorch model supporting SimpleFSDP and FSDP2",
+    "remove_fsdp_compile_names": "remove FSDP, activation checkpointing, xFSDP, and torch.compile wrapper prefixes from a parameter name string"
+  },
+  "facebookresearch_dinov3/dinov3/train/ssl_meta_arch.py": {
+    "build_SSLMetaArch": "build a SSLMetaArch instance from a DINOv3 config to set up student, teacher, and gram teacher models",
+    "run_forward_backward": "run forward_backward on batched crop data to compute DINO, IBOT, Koleo, and Gram losses with backprop",
+    "compute_losses": "compute DINO global and local losses, IBOT patch loss, Koleo regularization, and Gram loss from student and teacher outputs",
+    "update_ema": "update the EMA teacher model parameters by exponentially moving averaging them toward the student parameters",
+    "prepare_for_distributed_training": "prepare the SSLMetaArch for distributed training by parallelizing student and inference-only models with FSDP"
+  },
+  "facebookresearch_dinov3/dinov3/train/train.py": {
+    "run_DINOv3_training": "run DINOv3 self-supervised training with config file and distributed data parallel across GPUs",
+    "run_DINOv3_evaluation": "run evaluation only mode on a trained DINOv3 model using pretrained weights and checkpoint",
+    "run_multidistillation_training": "run multi-distillation training with SSLMetaArch or MultiDistillationMetaArch using the config file",
+    "build_optimizer": "build an AdamW optimizer with configurable beta parameters from the training config and parameter groups",
+    "build_schedulers": "build cosine decay schedules for learning rate, weight decay, momentum, and teacher temperature"
+  },
+  "facebookresearch_dinov3/dinov3/utils/cluster.py": {
+    "get_slurm_executor_parameters": "get SLURM executor parameters for a given number of nodes and GPUs per node on a cluster",
+    "get_slurm_account": "get the SLURM account name for a specified cluster type",
+    "get_checkpoint_path": "get the checkpoint directory path for a given cluster type",
+    "get_user_checkpoint_path": "get the user-specific checkpoint path under the current user's home on the cluster",
+    "get_slurm_partition": "get the SLURM partition name for a given cluster type"
+  },
+  "facebookresearch_dinov3/dinov3/utils/custom_callable.py": {
+    "load_custom_callable": "load a custom callable by name from a Python module file path",
+    "change_working_dir_and_pythonpath": "temporarily change the working directory and sys.path to a new directory",
+    "review_load_custom_callable": "review the load_custom_callable function that dynamically imports and retrieves callables from module files",
+    "test_load_custom_callable": "test the load_custom_callable function with a sample module path and callable name",
+    "refactor_change_working_dir_and_pythonpath": "refactor the change_working_dir_and_pythonpath context manager to support additional environment variable changes"
+  },
+  "facebookresearch_dinov3/dinov3/utils/dtype.py": {
+    "convert_string_to_torch_dtype": "convert a string like 'float32' to the corresponding torch.dtype using as_torch_dtype",
+    "convert_numpy_to_torch_dtype": "convert a numpy dtype object to the corresponding torch.dtype using as_torch_dtype",
+    "pass_torch_dtype_through": "pass an existing torch.dtype through as_torch_dtype and get it back unchanged",
+    "review_as_torch_dtype": "review the as_torch_dtype function to understand how it handles str, numpy, and torch dtype inputs",
+    "summarize_TypeSpec": "summarize the TypeSpec type alias which accepts str, numpy dtype, or torch dtype as valid inputs"
+  },
+  "facebookresearch_dinov3/dinov3/utils/utils.py": {
+    "cat_keep_shapes_tensors": "concatenate a list of PyTorch tensors while preserving their original shapes for later uncat",
+    "uncat_with_shapes_tensors": "split a flattened tensor back into a list of tensors using previously saved shapes and token counts",
+    "named_replace_module": "recursively replace child modules in a PyTorch nn.Module by applying a callable function to each",
+    "named_apply_module": "recursively apply a callable function to each named module in a PyTorch nn.Module tree",
+    "fix_random_seeds": "fix all random seeds for PyTorch, CUDA, NumPy, and Python random to ensure reproducibility"
+  }
+}

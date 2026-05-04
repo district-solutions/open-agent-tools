@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/adaptiveteacher
+- repo_uri: https://github.com/facebookresearch/adaptive_teacher
+
+## File: facebookresearch_adaptiveteacher/prod_lib/runner/runner.py
+
+Prompts
+
+```
+['build a student and teacher model ensemble from a config using DAobjUnbiasedTeacherRunner', 'train a domain adaptation object detection model with student teacher ensemble using DAobjUnbiasedTeacherRunner do_train', 'get a COCO or Pascal VOC dataset evaluator for a given dataset name and output folder', 'get a cached TensorboardXWriter instance for logging training metrics to a specified log directory', 'review the BaseUnbiasedTeacherRunner class which extends UnbiasedTeacherRunner and adds adaptive teacher config']
+```
+
+Usage
+
+```
+{'build_DAobjUnbiasedTeacherRunner_model': 'build a student and teacher model ensemble from a config using DAobjUnbiasedTeacherRunner', 'train_DAobjUnbiasedTeacherRunner': 'train a domain adaptation object detection model with student teacher ensemble using DAobjUnbiasedTeacherRunner do_train', 'get_evaluator_COCO_PascalVOC': 'get a COCO or Pascal VOC dataset evaluator for a given dataset name and output folder', 'get_tensorboard_writer': 'get a cached TensorboardXWriter instance for logging training metrics to a specified log directory', 'review_BaseUnbiasedTeacherRunner': 'review the BaseUnbiasedTeacherRunner class which extends UnbiasedTeacherRunner and adds adaptive teacher config'}
+```
+

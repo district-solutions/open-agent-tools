@@ -1,0 +1,121 @@
+{
+  "facebookresearch_dpr/dpr/options.py": {
+    "set_cfg_params_from_state": "override encoder config parameters from a checkpoint state dict into an OmegaConf DictConfig",
+    "get_encoder_params_state_from_cfg": "extract encoder parameters from a DictConfig to save in a model checkpoint",
+    "set_seed": "set random seeds for Python, NumPy, and PyTorch including CUDA for reproducibility",
+    "setup_cfg_gpu": "configure CUDA GPU and distributed training parameters from an OmegaConf config object",
+    "setup_logger": "initialize a Python logger with INFO level and a formatted console stream handler"
+  },
+  "facebookresearch_dpr/dpr/data/biencoder_data.py": {
+    "create_jsonqa_dataset": "create a JsonQADataset from JSON files to load QA pairs with positive and negative passages",
+    "create_jsonlqa_dataset": "create a JsonlQADataset from JSONL files to stream load QA pairs with lazy subset loading",
+    "parse_nq_tables": "parse Natural Questions HTML table tokens using NQTableParser to extract structured Table objects",
+    "read_nq_tables_jsonl": "read a JSONL file of NQ table data and return a dictionary of parsed Table objects",
+    "split_tables_to_chunks": "split a dictionary of Table objects into text chunks with a configurable max table length"
+  },
+  "facebookresearch_dpr/dpr/data/download_data.py": {
+    "download_dpr_resource": "download a DPR resource like NQ train data or retriever checkpoint by its resource key",
+    "download_resource_single_file": "download a single compressed or uncompressed DPR resource file from an S3 URL to a local directory",
+    "download_file_simple": "download a single file from a URL to a specified output directory without decompression",
+    "unpack_gzip_file": "unpack a gzip compressed file and save the decompressed contents to a specified output path",
+    "run_download_cli": "run the DPR data download CLI tool with a resource key and optional output directory argument"
+  },
+  "facebookresearch_dpr/dpr/data/qa_validation.py": {
+    "calculate_matches": "calculate top-k retrieval hits by evaluating if answers exist in retrieved documents using multiprocessing",
+    "calculate_matches_from_meta": "calculate retrieval hits from document metadata with optional title inclusion and zlib decompression support",
+    "calculate_chunked_matches": "calculate top-k hits for table chunked documents tracking both chunk and original table level matches",
+    "has_answer": "check if a document text contains any of the provided answers using string or regex matching",
+    "exact_match_score": "compute exact match score between a predicted answer and ground truth after normalization"
+  },
+  "facebookresearch_dpr/dpr/data/reader_data.py": {
+    "convert_retriever_results": "convert dense retriever JSON results into serialized reader model input data files using multiprocessing",
+    "preprocess_retriever_data": "preprocess retriever results into ReaderSample objects with positive and negative passages for reader training",
+    "get_best_spans": "find the best answer spans from start and end logits for extractive question answering prediction",
+    "ExtractiveReaderDataset": "create a PyTorch dataset that loads and optionally preprocesses reader training data from JSON or pickle files",
+    "ReaderPassage": "create a ReaderPassage container to hold passage text, title, score, and answer span data for reader model input"
+  },
+  "facebookresearch_dpr/dpr/data/retriever_data.py": {
+    "create_QASample": "create a QASample object with a query string, id, and list of answer strings",
+    "load_CsvQASrc": "load QA data from a TSV file using CsvQASrc with configurable column indices",
+    "load_JsonlQASrc": "load QA data from a JSONL file using JsonlQASrc with configurable attribute names",
+    "load_CsvCtxSrc": "load context passages from a TSV file into a BiEncoderPassage dictionary using CsvCtxSrc",
+    "convert_KiltCsvCtxSrc": "convert DPR retrieval output to KILT format using KiltCsvCtxSrc convert_to_kilt method"
+  },
+  "facebookresearch_dpr/dpr/data/tables.py": {
+    "parse_nq_tables_from_jsonl": "parse a Natural Questions JSONL file into a dictionary of Table objects using NQTableParser",
+    "convert_search_results_to_dpr": "convert BM25 search results and table data into DPR training format with positive and hard negative contexts",
+    "convert_train_jsonl_to_ctxmatch": "convert a DPR training JSONL file into context matching shards for retrieval model training",
+    "check_answer_in_table": "check if a table contains a given answer string by visiting cells and matching normalized tokens",
+    "convert_long_answer_to_dpr": "convert long answer table annotations from Natural Questions into DPR training JSONL format"
+  },
+  "facebookresearch_dpr/dpr/indexer/faiss_indexers.py": {
+    "create_flat_index_for_dense_vectors": "create a DenseFlatIndexer to build a FAISS flat inner product index from dense vectors",
+    "index_documents_with_flat_indexer": "index a list of document id and vector tuples using DenseFlatIndexer index_data method",
+    "search_knn_with_flat_indexer": "search for top-k nearest neighbor documents using DenseFlatIndexer search_knn with query vectors",
+    "serialize_and_deserialize_faiss_index": "serialize a DenseIndexer to disk and deserialize it back to restore the FAISS index and metadata",
+    "create_hnsw_index_for_retrieval": "create a DenseHNSWFlatIndexer to build an efficient HNSW index with dot product to L2 conversion"
+  },
+  "facebookresearch_dpr/dpr/models/biencoder.py": {
+    "build_biencoder_model": "build a BiEncoder model with separate question and context encoders for dense retrieval training",
+    "create_biencoder_batch": "create a BiEncoderBatch from BiEncoderSample list using a Tensorizer with hard negatives and positives",
+    "calculate_dot_product_scores": "calculate dot product similarity scores between query vectors and context vectors for retrieval ranking",
+    "compute_biencoder_nll_loss": "compute negative log likelihood loss for BiEncoder training using in-batch negatives and positive indices",
+    "extract_biencoder_representation": "extract sequence output, pooled output, and hidden states from a sub model with optional frozen encoder"
+  },
+  "facebookresearch_dpr/dpr/models/fairseq_models.py": {
+    "get_roberta_biencoder_components": "build a biencoder with question and context encoders from a pretrained RoBERTa model for DPR retrieval",
+    "get_fairseq_adamw_optimizer": "create a Fairseq AdamW optimizer for a PyTorch model using configurable learning rate and weight decay",
+    "RobertaEncoder_from_pretrained": "build a RoBERTa encoder from a pretrained Fairseq model directory for feature extraction",
+    "RobertaEncoder_forward": "run a RoBERTa encoder forward pass on input token IDs to extract sequence and CLS representations",
+    "get_roberta_encoder_components": "build a RoBERTa encoder and tensorizer pair from a pretrained model config for DPR encoding"
+  },
+  "facebookresearch_dpr/dpr/models/hf_models.py": {
+    "build_biencoder_from_config": "build a BERT biencoder with question and context encoders from a DPR config object",
+    "build_reader_from_config": "build a BERT reader model with encoder and optimizer from a DPR config object",
+    "create_bert_tensorizer": "create a BertTensorizer that converts text to tokenized tensors using a BERT tokenizer",
+    "create_roberta_tensorizer": "create a RobertaTensorizer that converts text to tokenized tensors using a RoBERTa tokenizer",
+    "init_hf_bert_encoder": "initialize a HuggingFace BERT encoder with optional projection layer and dropout settings"
+  },
+  "facebookresearch_dpr/dpr/models/pytext_models.py": {
+    "build_biencoder_pipeline": "build a BERT biencoder pipeline with tensorizer, biencoder, and optimizer using get_bert_biencoder_components",
+    "create_adamw_optimizer": "create an AdamW optimizer for a PyTorch model with custom learning rate and weight decay",
+    "init_pytext_bert_encoder": "initialize a PyText BERT encoder from a pretrained checkpoint file with projection and dropout",
+    "get_bert_base_config": "get the default PyText BERT base configuration with 768 embedding dim and 12 layers",
+    "review_pytextbertencoder_forward": "review the PytextBertEncoder forward pass that returns pooled output through an optional projection layer"
+  },
+  "facebookresearch_dpr/dpr/models/reader.py": {
+    "build_Reader_model": "build a DPR Reader model using an encoder module and hidden size for extractive QA",
+    "run_Reader_forward": "run the Reader model forward pass with input ids, attention mask, and token type ids",
+    "create_reader_input_batch": "create a ReaderBatch from ReaderSample list with configurable passages per question and max length",
+    "compute_reader_loss": "compute the combined span and switch loss for Reader model training with start and end logits",
+    "review_ReaderBatch_namedtuple": "review the ReaderBatch namedtuple structure with input ids, start positions, end positions, answers mask, and token type ids"
+  },
+  "facebookresearch_dpr/dpr/utils/data_utils.py": {
+    "read_serialized_data_from_files": "create a python module to read and aggregate pickle serialized data from multiple file paths into a single list",
+    "read_data_from_json_files": "build a python script to read and merge data from multiple JSON files into one aggregated list",
+    "read_data_from_jsonl_files": "create a function to read and aggregate records from multiple JSONL files into a single list",
+    "normalize_question": "build a python utility to normalize a question string by replacing curly quotes with straight quotes",
+    "ShardedDataIterator": "create a python module to iterate over a sharded dataset for PyTorch DDP distributed training with configurable batch size"
+  },
+  "facebookresearch_dpr/dpr/utils/dist_utils.py": {
+    "get_rank": "get the current process rank in a PyTorch distributed training job",
+    "get_world_size": "get the total number of processes in a PyTorch distributed training job",
+    "get_default_group": "get the default WORLD process group for PyTorch distributed communication",
+    "all_reduce": "perform an all-reduce operation on a tensor across all processes in a distributed group",
+    "all_gather_list": "gather arbitrary picklable Python data from all workers into a list across a distributed group"
+  },
+  "facebookresearch_dpr/dpr/utils/model_utils.py": {
+    "setup_distributed_model": "setup a PyTorch model and optimizer for distributed training with optional fp16 support",
+    "move_tensors_to_device": "move a nested sample of tensors, dicts, and lists to a specified device",
+    "create_linear_lr_schedule": "create a linear warmup then decay learning rate schedule for a PyTorch optimizer",
+    "initialize_model_weights": "initialize Linear, Embedding, and LayerNorm module weights with normal distribution and zero bias",
+    "load_checkpoint_state": "load a saved model checkpoint file and return a CheckpointState namedtuple with model and optimizer dicts"
+  },
+  "facebookresearch_dpr/dpr/utils/tokenizers.py": {
+    "tokenize_text_simple": "use SimpleTokenizer to tokenize text into tokens with regex-based word boundary splitting",
+    "tokenize_text_spacy": "use SpacyTokenizer to tokenize text with spaCy and extract pos, lemma, and ner annotations",
+    "extract_ngrams": "call the ngrams method on a Tokens object to extract n-grams up to length n from tokenized text",
+    "extract_entity_groups": "call entity_groups on a Tokens object to group consecutive NER-tagged tokens by their entity type",
+    "untokenize_tokens": "call untokenize on a Tokens object to reconstruct the original text with whitespace from token data"
+  }
+}

@@ -1,0 +1,450 @@
+{
+  "google-deepmind_ferminet/ferminet/base_config.py": {
+    "create_default_config": "create a default ConfigDict with all VMC calculation parameters for molecular quantum Monte Carlo simulations",
+    "resolve_config_references": "resolve FieldReference values in a ConfigDict and call set_molecule if it is a callable",
+    "check_system_type_value": "check if a given value matches any SystemType enum member using the has_value class method",
+    "configure_optimization_hyperparameters": "configure optimizer settings including learning rate, KFAC, and ADAM hyperparameters in the default config",
+    "configure_network_architecture": "configure FermiNet or PsiFormer network architecture parameters including hidden dims, determinants, and Jastrow factors"
+  },
+  "google-deepmind_ferminet/ferminet/checkpoint.py": {
+    "save_checkpoint": "save MCMC walker configurations and network parameters to a numpy npz checkpoint file",
+    "restore_checkpoint": "restore MCMC walker configurations and network parameters from a numpy npz checkpoint file",
+    "find_last_checkpoint": "find the most recent valid checkpoint file in a directory by name",
+    "create_save_path": "create a timestamped directory for saving FermiNet QMC checkpoint files",
+    "get_restore_path": "get the path to a previous checkpoint directory for restoring a calculation"
+  },
+  "google-deepmind_ferminet/ferminet/curvature_tags_and_blocks.py": {
+    "register_repeated_dense": "register a dense layer with KFAC using the repeated_dense variant for vmap-applied layers",
+    "register_qmc": "register a dense layer with KFAC using the qmc variant for Quantum Monte Carlo layers",
+    "RepeatedDenseBlock": "create a Kronecker-factored curvature block for dense layers repeatedly applied via vmap",
+    "QmcBlockedDense": "create a Kronecker-factored curvature block for QMC blocked dense layers with two-matrix Kronecker product",
+    "GRAPH_PATTERNS": "use the graph patterns tuple to match repeated dense layer computations in the tagged JAX graph"
+  },
+  "google-deepmind_ferminet/ferminet/density.py": {
+    "calc_hf_prob": "calculate the Hartree-Fock probability density for electron positions given an SCF approximation and spin counts",
+    "make_effective_batch_network": "create a batch network function that computes half the log of Hartree-Fock probability for MCMC sampling",
+    "make_rprime_mcmc_step": "build an MCMC step function for sampling r-prime electron positions using Hartree-Fock probability",
+    "get_rho": "compute a sample of the one-body density matrix from electron positions and Hartree-Fock molecular orbitals",
+    "eval_mos": "evaluate molecular orbitals at given electron positions for restricted or unrestricted Hartree-Fock calculations"
+  },
+  "google-deepmind_ferminet/ferminet/envelopes.py": {
+    "get_envelope_by_label": "get an envelope object by passing an EnvelopeLabel to get_envelope for use in FermiNet QMC calculations",
+    "create_isotropic_envelope": "create an isotropic exponentially decaying multiplicative envelope using make_isotropic_envelope for pre-determinant application",
+    "create_bottleneck_envelope": "create a bottleneck envelope with a fixed number of envelopes projected linearly into orbital space",
+    "create_full_envelope": "create a fully anisotropic exponentially decaying envelope using make_full_envelope with covariance-based distance computation",
+    "create_sto_envelope": "create a Slater-type orbital envelope with polynomial terms using make_sto_envelope for pre-orbital application"
+  },
+  "google-deepmind_ferminet/ferminet/hamiltonian.py": {
+    "build_local_kinetic_energy": "build a local kinetic energy function using local_kinetic_energy with a FermiNet wavefunction and laplacian method",
+    "build_excited_kinetic_energy_matrix": "build a kinetic energy matrix for excited states using excited_kinetic_energy_matrix with a specified number of states",
+    "compute_potential_energy": "compute the total potential energy for an electron configuration using potential_energy with electron and nuclear distances",
+    "build_local_energy": "build a local energy evaluator using local_energy with a wavefunction, nuclear charges, and pseudopotential options",
+    "compute_electron_electron_potential": "compute the electron-electron Coulomb repulsion using potential_electron_electron with pairwise electron distances"
+  },
+  "google-deepmind_ferminet/ferminet/jastrows.py": {
+    "create_simple_ee_jastrow": "create a simple electron-electron Jastrow factor with init and apply functions for cusp conditions",
+    "get_jastrow_by_type": "get the Jastrow init and apply functions by passing a JastrowType enum value",
+    "apply_jastrow_ee_cusp": "apply the electron-electron Jastrow cusp factor to electron distance arrays with spin counts",
+    "review_JastrowType_enum": "review the JastrowType enum to see available multiplicative Jastrow factor options like NONE and SIMPLE_EE",
+    "summarize_jastrow_ee_internal": "summarize the internal _jastrow_ee function that computes parallel and antiparallel electron cusp contributions"
+  },
+  "google-deepmind_ferminet/ferminet/loss.py": {
+    "build_vmc_loss": "build a VMC loss function with custom gradients using make_loss for a FermiNet wavefunction network",
+    "build_wqmc_loss": "build a WQMC loss function with weighted quasi-Monte Carlo gradients using make_wqmc_loss",
+    "build_energy_overlap_loss": "build an energy overlap loss function for excited state optimization using make_energy_overlap_loss",
+    "clip_local_values": "clip local operator estimates to remove outliers using clip_local_values with a configurable clip scale",
+    "review_auxiliarylossdata": "review the AuxiliaryLossData dataclass to understand energy, variance, and overlap fields returned by loss functions"
+  },
+  "google-deepmind_ferminet/ferminet/main.py": {
+    "run_ferminet_training": "run FermiNet training by passing a config file path via the --config flag",
+    "run_main_wrapper": "run the main_wrapper entry point for calling FermiNet from a setuptools console_script",
+    "review_main_function": "review the main function that resolves a config and calls train.train with it",
+    "review_main_wrapper": "review the main_wrapper function designed for setuptools console_script entry-point integration",
+    "summarize_flags_config": "summarize the absl flags DEFINE_config_file usage for the config file path argument"
+  },
+  "google-deepmind_ferminet/ferminet/mcmc.py": {
+    "run_mh_update": "run one Metropolis-Hastings Monte Carlo step using an all-electron move with Gaussian proposal",
+    "run_mh_block_update": "run one Metropolis-Hastings step for a block of electrons with symmetric Gaussian proposal",
+    "run_mh_accept": "run the MH accept or reject step given current state, proposal, and log probabilities",
+    "build_make_mcmc_step": "build an MCMC step function that performs multiple Metropolis-Hastings moves with configurable width and blocks",
+    "run_update_mcmc_width": "run adaptive MCMC width update based on recent acceptance ratios and configurable thresholds"
+  },
+  "google-deepmind_ferminet/ferminet/network_blocks.py": {
+    "init_linear_layer": "create a python module that initializes weight and bias parameters for a JAX linear layer with given input and output dimensions",
+    "linear_layer": "build a python script that evaluates a linear layer by computing the dot product of inputs and weights plus an optional bias",
+    "split_into_blocks": "create a function that splits a square JAX array into sub-blocks along the leading two axes using specified block dimensions",
+    "slogdet": "build a python module that computes the sign and natural logarithm of the determinant of a square matrix with a fast path for 1x1 matrices",
+    "logdet_matmul": "create a function that combines FermiNet orbital determinants with optional weights in the log domain using the log-sum-exp trick"
+  },
+  "google-deepmind_ferminet/ferminet/networks.py": {
+    "build_fermi_net": "build a FermiNet object with init and apply functions for a given number of spins and nuclear charges",
+    "construct_input_features": "construct electron-atom and electron-electron vectors and distances from raw electron and atomic positions",
+    "make_ferminet_features": "create a FeatureLayer with init and apply functions for standard one- and two-electron input features",
+    "make_fermi_net_layers": "create permutation-equivariant and interaction layer init and apply functions for the FermiNet architecture",
+    "make_total_ansatz": "construct a meta-Slater determinant ansatz that combines multiple excited states into a single wavefunction"
+  },
+  "google-deepmind_ferminet/ferminet/observables.py": {
+    "build_s2_estimator": "build a Monte Carlo S^2 operator estimator for a wavefunction using make_s2 with a signed network and spin configuration",
+    "build_dipole_estimator": "build a dipole moment estimator for a wavefunction using make_dipole with a signed network and excited state count",
+    "build_density_matrix": "build a one-electron reduced density matrix estimator using make_density_matrix with a signed network, walker positions, and config",
+    "create_observable_fns": "create batch-averaged observable functions from batchless estimators using make_observable_fns with optional pmap transformation",
+    "review_DensityState": "review the DensityState dataclass attributes including t, positions, probabilities, move_width, pmove, and mo_coeff for MCMC chain state tracking"
+  },
+  "google-deepmind_ferminet/ferminet/pretrain.py": {
+    "get_hf": "compute a Hartree-Fock solution for a molecule using PySCF with a specified basis set and spin configuration",
+    "eval_orbitals": "evaluate SCF molecular orbitals at given electron positions for alpha and beta spin channels",
+    "make_pretrain_step": "create a callable that performs one optimization step to match neural network orbitals to Hartree-Fock orbitals",
+    "pretrain_hartree_fock": "run Hartree-Fock pretraining iterations to initialize FermiNet orbitals to closely match SCF solutions",
+    "review_pretrain_module": "review the pretrain module functions for Hartree-Fock pretraining and orbital evaluation utilities"
+  },
+  "google-deepmind_ferminet/ferminet/pseudopotential.py": {
+    "build_pp_potential": "build a pseudopotential potential evaluator from atomic charges and element symbols using make_pp_potential",
+    "create_local_pseudopotential": "create a local pseudopotential callable from r_grid, v_grid_loc, and ecp_mask using make_local_pseudopotential",
+    "create_nonlocal_pseudopotential": "create a nonlocal pseudopotential callable from charges, r_grid, v_grid_nonloc, and ecp_mask using make_nonlocal_pseudopotential",
+    "test_vmap_sum": "test the vmap_sum decorator to verify it vmapped a function and sums over the vmapped axis",
+    "review_construct_align": "review the construct_align function that builds a rotation matrix to align a z axis along a given vector"
+  },
+  "google-deepmind_ferminet/ferminet/psiformer.py": {
+    "build_psiformer_network": "build a Psiformer network with stacked self-attention layers for fermionic wavefunction modeling",
+    "create_multi_head_attention": "create a multi-head attention module with configurable heads and embedding dimensions",
+    "create_layer_norm": "create a layer normalization module with scale and offset parameters",
+    "create_mlp_block": "create an MLP block with tanh activations and final linear projection",
+    "create_self_attention_block": "create a QKV self-attention block with optional layer norm and residual connections"
+  },
+  "google-deepmind_ferminet/ferminet/train.py": {
+    "run_train": "run the QMC training loop with a ConfigDict to optimize a FermiNet wavefunction",
+    "init_electrons": "initialize electron positions and spin configurations around atoms for MCMC sampling",
+    "make_opt_update_step": "create an OptUpdate callable that evaluates loss and gradients and updates parameters using optax",
+    "make_training_step": "create a training step callable that performs MCMC moves then an optimization update",
+    "make_kfac_training_step": "create a KFAC training step callable that performs MCMC moves then a KFAC optimization update"
+  },
+  "google-deepmind_ferminet/ferminet/configs/atom.py": {
+    "get_atom_config": "get a FermiNet configuration for running generic single-atom QMC simulations",
+    "adjust_nuclear_charge": "adjust the nuclear charge and electron count for a single atom in a FermiNet config",
+    "run_single_atom_qmc": "run a quantum Monte Carlo simulation for a single atom using the atom config module",
+    "set_spin_polarisation": "set the spin polarisation for a single atom in the FermiNet atom configuration",
+    "configure_delta_charge": "configure a fractional delta charge on a single atom in the FermiNet atom config"
+  },
+  "google-deepmind_ferminet/ferminet/configs/c2h4.py": {
+    "get_config_c2h4": "get the FermiNet ConfigDict for the ethene C2H4 molecule with 8 alpha and 8 beta electrons",
+    "run_c2h4_calculation": "run a FermiNet quantum chemistry calculation on the ethene molecule using the default config",
+    "review_c2h4_geometry": "review the ethene molecule geometry defined in bohr units with two carbon and four hydrogen atoms",
+    "summarize_c2h4_config": "summarize the FermiNet configuration for the C2H4 ethene molecule including atom positions and electron count",
+    "modify_c2h4_electrons": "modify the electron count in the C2H4 config to change alpha and beta electron numbers"
+  },
+  "google-deepmind_ferminet/ferminet/configs/ch4.py": {
+    "get_config_ch4": "get the FermiNet configuration for running a methane CH4 molecule simulation with 5 alpha and 5 beta electrons",
+    "review_get_config": "review the get_config function that returns a ConfigDict for methane geometry in bohr units",
+    "summarize_ch4_config": "summarize the methane molecule configuration including carbon and hydrogen atom coordinates and electron counts",
+    "refactor_get_config": "refactor the get_config function to support a different molecule geometry or electron count",
+    "test_get_config": "test the get_config function to verify it returns a valid ConfigDict with correct CH4 molecule data"
+  },
+  "google-deepmind_ferminet/ferminet/configs/diatomic.py": {
+    "get_diatomic_config": "get the default FermiNet config for running a diatomic molecule simulation with QMC",
+    "create_diatomic_molecule": "create a diatomic molecule from a config by parsing the molecule name and setting atom coordinates",
+    "lookup_bond_length": "lookup the default bond length in angstroms for a known diatomic molecule from the BOND_LENGTHS dictionary",
+    "lookup_spin_polarisation": "lookup the default spin polarisation value for a known diatomic molecule from the SPIN_POLARISATION dictionary",
+    "configure_bond_length_multiple": "configure the bond length multiple on a diatomic config to scale interatomic distance for QMC runs"
+  },
+  "google-deepmind_ferminet/ferminet/configs/h4.py": {
+    "get_config_H4": "get the FermiNet configuration for a four hydrogen atom system on a circle",
+    "set_geometry_H4": "set the molecular geometry for four hydrogen atoms arranged on a circle",
+    "run_H4_VMC": "run a variational Monte Carlo calculation on the H4 molecule using FermiNet",
+    "modify_H4_radius": "modify the H4 configuration radius to change the distance of hydrogen atoms from center",
+    "modify_H4_angle": "modify the H4 configuration angle to change the angular separation of hydrogen atoms"
+  },
+  "google-deepmind_ferminet/ferminet/configs/hcl.py": {
+    "get_config_hcl": "get the FermiNet QMC configuration for HCl excited states with pseudopotentials",
+    "finalize_pyscf_mol": "finalize a config by building a pyscf Mole object with pseudopotentials for the HCl molecule",
+    "run_hcl_qmc": "run a quantum Monte Carlo calculation on HCl using the FermiNet config with 3 excited states",
+    "create_hcl_molecule": "create an HCl molecule config with hydrogen and chlorine atoms at specified coordinates",
+    "configure_pseudopotentials": "configure pseudopotentials for chlorine atoms in the HCl molecule using the cc-pvdz basis set"
+  },
+  "google-deepmind_ferminet/ferminet/configs/heg.py": {
+    "get_HEG_config": "get the FermiNet configuration for an unpolarised 14 electron homogeneous electron gas",
+    "build_sc_lattice_vectors": "build simple cubic lattice vectors from a Wigner-Seitz radius and electron count",
+    "run_HEG_simulation": "run a FermiNet simulation of a 14 electron homogeneous electron gas using the default config",
+    "review_get_config": "review the get_config function to understand how PBC feature layers and envelopes are configured",
+    "refactor_lattice_calculation": "refactor the _sc_lattice_vecs function to support different lattice geometries beyond simple cubic"
+  },
+  "google-deepmind_ferminet/ferminet/configs/hn.py": {
+    "get_config_hn": "get the default FermiNet configuration for a 1D hydrogen chain simulation",
+    "set_geometry_hn": "set the molecular geometry for a hydrogen chain with configurable bond length and atom count",
+    "run_hn_simulation": "run a FermiNet quantum chemistry simulation on a 1D hydrogen chain using the default config",
+    "modify_hn_bond_length": "modify the hydrogen chain bond length in the FermiNet configuration before running",
+    "review_hn_config": "review the FermiNet hydrogen chain configuration to inspect atom positions and electron counts"
+  },
+  "google-deepmind_ferminet/ferminet/configs/li_excited.py": {
+    "get_config_li_excited": "get the FermiNet config for running excited states QMC simulations on a lithium atom",
+    "adjust_nuclear_charge_cfg": "adjust the nuclear charge and electron count for a lithium atom config dictionary",
+    "run_li_excited_qmc": "run a quantum Monte Carlo simulation for excited states of lithium using FermiNet",
+    "configure_li_observables": "configure s2, dipole, and density observables for a lithium atom QMC calculation",
+    "set_spin_polarisation_li": "set the spin polarisation field reference for a lithium atom FermiNet config"
+  },
+  "google-deepmind_ferminet/ferminet/configs/li_wqmc.py": {
+    "get_config_li_wqmc": "get the FermiNet configuration for running lithium atom simulations with weighted QMC optimization",
+    "adjust_nuclear_charge": "adjust the nuclear charge and electron count for a single atom in a FermiNet config",
+    "run_li_wqmc_simulation": "run a weighted QMC simulation for a lithium atom using the psiformer network",
+    "configure_spin_polarisation": "configure spin polarisation for a lithium atom in the FermiNet wqmc config",
+    "set_kfac_norm_constraint": "set the KFAC norm constraint to 1e-3 for lithium wqmc optimization"
+  },
+  "google-deepmind_ferminet/ferminet/configs/nh3.py": {
+    "get_config_nh3": "get the FermiNet configuration for running an ammonia (NH3) molecule simulation",
+    "run_nh3_simulation": "run a FermiNet quantum chemistry simulation on the ammonia molecule using the default config",
+    "review_nh3_config": "review the ammonia molecule geometry and electron configuration in the FermiNet config",
+    "summarize_get_config": "summarize the get_config function that returns an NH3 ConfigDict with molecular geometry and electron counts",
+    "modify_nh3_geometry": "modify the ammonia molecule atomic coordinates or electron count in the FermiNet configuration"
+  },
+  "google-deepmind_ferminet/ferminet/configs/organic.py": {
+    "get_organic_config": "get the default FermiNet config for running organic molecule simulations",
+    "configure_organic_molecule": "configure a ConfigDict with molecule geometry and electron counts for bicyclobutane or cyclobutadiene",
+    "lookup_molecule_geometry": "lookup atomic coordinates from the systems dictionary for bicyclobutane butadiene or cyclobutadiene geometries",
+    "set_electrons_for_molecule": "set electron counts to 15 alpha 15 beta for butadiene or 14 alpha 14 beta for cyclobutadiene",
+    "validate_molecule_name": "validate that a molecule name exists in the systems dictionary before building the molecule"
+  },
+  "google-deepmind_ferminet/ferminet/configs/excited/atoms.py": {
+    "get_config_for_atoms_qmc": "get a ConfigDict for running generic atoms with quantum Monte Carlo simulation",
+    "configure_excited_states": "configure excited states settings for atomic QMC simulations using preset values",
+    "set_spin_polarisation": "set spin polarisation as a field reference for atomic system configuration",
+    "adjust_nuclear_charge": "adjust nuclear charge for molecule setup using the atom config helper",
+    "set_pretrain_iterations": "set pretraining iterations to 10000 for atomic QMC config"
+  },
+  "google-deepmind_ferminet/ferminet/configs/excited/benzene.py": {
+    "get_config_benzene": "get the FermiNet ConfigDict for running excited states QMC simulations on a benzene molecule",
+    "finalise_benzene_molecule": "finalise the experiment config by parsing benzene geometry and setting molecule atoms and electrons",
+    "run_benzene_excited_qmc": "run a quantum Monte Carlo simulation for excited states of benzene using the FermiNet config",
+    "configure_benzene_network": "configure the bottleneck envelope type and 32 envelopes for the benzene neural network",
+    "review_benzene_geometry": "review the benzene molecule geometry with six carbon and six hydrogen atoms in bohr units"
+  },
+  "google-deepmind_ferminet/ferminet/configs/excited/carbon_dimer.py": {
+    "get_config_C2": "get the FermiNet experiment config for running QMC on the carbon dimer molecule",
+    "finalise_molecule_config": "finalise an experiment config by setting the C2 molecule with a configurable bond length",
+    "run_QMC_C2": "run a quantum Monte Carlo simulation on the carbon dimer using the psiformer preset",
+    "review_finalise_bond_length": "review the finalise function to understand how bond length is computed from the equilibrium multiple",
+    "summarize_get_config_presets": "summarize the get_config function and how it applies psiformer and excited_states presets"
+  },
+  "google-deepmind_ferminet/ferminet/configs/excited/double_excitation.py": {
+    "get_config_double_excitation": "get a FermiNet QMC config for excited state double excitation calculations on nitrosomethane",
+    "finalise_molecule_config": "finalise an experiment config by parsing molecule geometry and setting electron counts",
+    "review_SYSTEMS_geometries": "review the molecular geometry data for nitrosomethane, butadiene, glyoxal, tetrazine, and cyclopentadienone",
+    "build_excited_state_config": "build a QMC config with 6 states, 50k pretrain iterations, and 2 MCMC blocks",
+    "run_double_excitation_qmc": "run a quantum Monte Carlo simulation for double excitation states using the nitrosomethane molecule"
+  },
+  "google-deepmind_ferminet/ferminet/configs/excited/oscillator.py": {
+    "get_config_oscillator": "get the FermiNet experiment config for excited state oscillator calculations on molecules",
+    "finalise_molecule_config": "finalise an experiment config by building a PySCF molecule from a named geometry",
+    "run_excited_state_oscillator": "run FermiNet excited state calculations on molecules like BH, HCl, H2O, or CO",
+    "build_pyscf_molecule": "build a PySCF Mole object with ECP basis sets for second-row atoms like S, Si, Cl",
+    "configure_excited_states": "configure FermiNet for 5 excited states with 10000 pretrain iterations using excited state presets"
+  },
+  "google-deepmind_ferminet/ferminet/configs/excited/twisted_ethylene.py": {
+    "get_config_twisted_ethylene": "get the default QMC config for twisted ethylene excited state calculations",
+    "finalize_molecule_geometry": "finalize a molecule geometry config by applying torsion and pyramidalization twist angles",
+    "build_planar_ethylene_config": "build a planar ethylene molecule config with 8 alpha and 8 beta electrons",
+    "build_twisted_ethylene_config": "build a twisted ethylene molecule config with custom tau and phi twist angles",
+    "review_ethylene_geometry": "review the planar and twisted ethylene atomic coordinates in angstroms"
+  },
+  "google-deepmind_ferminet/ferminet/pbc/envelopes.py": {
+    "build_multiwave_envelope": "build a multiwave envelope for periodic boundary conditions using reciprocal lattice kpoints",
+    "create_kpoints": "create reciprocal lattice vectors from a lattice matrix and electron spin configuration",
+    "test_make_multiwave_envelope": "test the make_multiwave_envelope function with a set of kpoints and atom-electron coordinates",
+    "test_make_kpoints": "test the make_kpoints function with a lattice matrix and spin tuple",
+    "review_envelope_init": "review the envelope init function that initializes sigma coefficients for Fourier series terms"
+  },
+  "google-deepmind_ferminet/ferminet/pbc/feature_layer.py": {
+    "build_pbc_feature_layer": "build a periodic boundary condition feature layer for fermionic neural networks using make_pbc_feature_layer",
+    "compute_periodic_norm": "compute the periodic norm of vectors in fractional coordinates using periodic_norm with a lattice metric tensor",
+    "create_feature_layer_with_lattice": "create a PBC feature layer with a custom lattice matrix and dimension via make_pbc_feature_layer",
+    "create_feature_layer_without_r_ae": "create a PBC feature layer excluding electron-atom distance features by setting include_r_ae to False",
+    "create_rescaled_feature_layer": "create a PBC feature layer with log-rescaled electron-atom distances for numerical stability"
+  },
+  "google-deepmind_ferminet/ferminet/pbc/hamiltonian.py": {
+    "build_ewald_potential": "build a python module to create an Ewald-summed Coulomb potential function for a periodic lattice",
+    "create_local_energy_pbc": "create a function that evaluates the local energy of a FermiNet wavefunction under periodic boundary conditions",
+    "test_make_ewald_potential": "test the make_ewald_potential function with a cubic lattice and verify convergence of the Ewald sum",
+    "refactor_local_energy": "refactor the local_energy function to support excited states in periodic boundary conditions",
+    "review_ewald_summation": "review the Ewald summation implementation for real and reciprocal space potential calculations"
+  },
+  "google-deepmind_ferminet/ferminet/pbc/tests/features_test.py": {
+    "test_pbc_feature_layer_shape": "test the PBC feature layer output shape matches init dimensions for electron features",
+    "test_pbc_feature_layer_periodicity": "test the PBC feature layer produces identical features after displacing an electron by a lattice vector",
+    "test_make_pbc_feature_layer": "test make_pbc_feature_layer with configurable include_r_ae parameter for homogeneous electron gas",
+    "test_construct_input_features": "test networks.construct_input_features to build electron-electron and atom-electron distance features from coordinates",
+    "test_feature_layer_apply": "test the feature layer apply method with ae, ee, r_ae, and r_ee inputs"
+  },
+  "google-deepmind_ferminet/ferminet/pbc/tests/hamiltonian_test.py": {
+    "test_local_energy_periodicity": "test that local energy is invariant when displacing an electron by a lattice vector under PBC",
+    "run_PbcHamiltonianTest": "run the PbcHamiltonianTest test class to verify periodic boundary condition Hamiltonian behavior",
+    "build_fermi_net_with_pbc": "build a FermiNet network using make_fermi_net with a multiwave envelope and PBC feature layer",
+    "create_local_energy_closure": "create a local energy function closure via hamiltonian.local_energy with charges, nspins, and lattice parameters",
+    "review_PbcHamiltonianTest_test_periodicity": "review the test_periodicity method to understand how PBC energy invariance is validated with displaced electron coordinates"
+  },
+  "google-deepmind_ferminet/ferminet/tests/envelopes_test.py": {
+    "test_apply_covariance": "test envelopes._apply_covariance against jnp.einsum with parameterized tensor shapes",
+    "test_reduced_apply_covariance": "test envelopes._apply_covariance with reduced 3D shapes and squeezed output",
+    "run_envelopes_test": "run the absltest suite for ferminet.envelopes covariance application tests",
+    "review_ApplyCovarianceTest": "review the ApplyCovarianceTest class and its parameterized test methods",
+    "summarize_shape_options": "summarize the _shape_options helper that yields parameterized shape tuples for tests"
+  },
+  "google-deepmind_ferminet/ferminet/tests/excited_test.py": {
+    "test_excited_state_atoms": "run parameterized tests for excited states of atoms Li through Ne using ferminet or psiformer networks",
+    "test_oscillator_molecules": "run excited state tests for molecules like HCl, H2O, CO, and C2H4 with ferminet or psiformer",
+    "test_carbon_dimer_equilibrium": "run carbon dimer excited state tests across multiple equilibrium distance multiples from 0.8 to 1.5",
+    "test_twisted_ethylene": "run twisted ethylene excited state tests for planar and twisted configurations at various twist angles",
+    "test_double_excitation_systems": "run double excitation tests for nitrosomethane, butadiene, glyoxal, tetrazine, and cyclopentadienone molecules"
+  },
+  "google-deepmind_ferminet/ferminet/tests/hamiltonian_test.py": {
+    "test_local_kinetic_energy": "test the local kinetic energy calculation using default or folx laplacian methods",
+    "test_potential_energy": "test the potential energy computation for electron-electron and electron-nucleus interactions",
+    "test_local_energy": "test the local energy calculation for a hydrogen atom wavefunction",
+    "test_laplacian": "test the laplacian computation comparing default and folx methods against hessian-based kinetic energy",
+    "test_fermi_net_laplacian": "test the fermi net laplacian with full determinant and partial determinant configurations"
+  },
+  "google-deepmind_ferminet/ferminet/tests/network_blocks_test.py": {
+    "test_array_partitions": "test the array_partitions function to compute cumulative indices from a list of partition sizes",
+    "test_slogdet": "test the slogdet function to compute sign and log-determinant of matrices against numpy",
+    "test_split_into_blocks": "test the split_into_blocks function to split a matrix into sub-blocks by dimension list",
+    "review_NetworkBlocksTest": "review the NetworkBlocksTest class and its parameterized test cases for network_blocks utilities",
+    "summarize_network_blocks_test": "summarize the network_blocks_test module and its three parameterized test methods"
+  },
+  "google-deepmind_ferminet/ferminet/tests/networks_test.py": {
+    "build_fermi_net": "build a Fermi Net neural network with nspins, charges, hidden dims, and an envelope function",
+    "create_ferminet_features": "create a feature layer for the Fermi Net using make_ferminet_features with natoms, nspins, and ndim",
+    "test_construct_input_features": "test construct_input_features to compute electron-electron distances and verify gradient masking for diagonal terms",
+    "test_construct_symmetric_features": "test construct_symmetric_features to verify electron permutation symmetry of one-body and two-body hidden features",
+    "test_antisymmetry": "test Fermi Net antisymmetry by swapping electron positions and spins and verifying sign flip of the wavefunction"
+  },
+  "google-deepmind_ferminet/ferminet/tests/psiformer_test.py": {
+    "test_psiformer_antisymmetry": "test the PsiformerTest.test_antisymmetry method to verify antisymmetric output when swapping electron positions and spins",
+    "test_psiformer_network": "test the PsiformerTest.test_psiformer method to verify network output shapes across parameterized network options",
+    "run_network_options_generator": "run the _network_options generator to yield all combinations of vmap, ndim, determinants, nspins, jastrow, and rescale_inputs",
+    "review_psiformer_test_class": "review the PsiformerTest class and its parameterized test methods for Psiformer network validation",
+    "refactor_network_options": "refactor the _network_options function to add or remove test option combinations for psiformer testing"
+  },
+  "google-deepmind_ferminet/ferminet/tests/train_test.py": {
+    "test_training_step": "test the QmcTest training step with various systems, optimizers, and complex network configurations",
+    "test_s2_energy": "test the QmcTest s2 energy calculation with different state counts using spin energy weight",
+    "test_random_pretraining": "test the QmcTest random pretraining with excitation type set to random for LiH",
+    "test_inference_step": "test the QmcTest inference step by running training then switching optimizer to none",
+    "test_overlap_step": "test the QmcTest overlap step using vmc_overlap objective with s2, dipole, and density observables"
+  },
+  "google-deepmind_ferminet/ferminet/utils/analysis_tools.py": {
+    "estimate_stats_QMC_energy": "estimate mean energy and standard error from QMC local energy data using blocking analysis",
+    "estimate_stats_with_burnin": "estimate statistics for local energy data after discarding burn-in samples for equilibration",
+    "estimate_stats_grouped": "estimate per-group energy statistics by grouping QMC data on specified column names",
+    "format_network_config": "format a neural network layer configuration into a compact string like 3x64",
+    "review_estimate_stats": "review the estimate_stats function for QMC energy blocking analysis and error estimation"
+  },
+  "google-deepmind_ferminet/ferminet/utils/elements.py": {
+    "lookup_element_by_symbol": "use SYMBOLS dict to look up an Element object by its chemical symbol like 'Fe' or 'C'",
+    "lookup_element_by_atomic_number": "use ATOMIC_NUMS dict to look up an Element object by its atomic number like 26 for iron",
+    "get_element_group": "call the group property on an Element to get its periodic table group number",
+    "get_element_spin_config": "call the spin_config property on an Element to get the number of unpaired electrons in its ground state",
+    "get_element_alpha_beta_electrons": "call the nalpha and nbeta properties on an Element to get alpha and beta electron counts"
+  },
+  "google-deepmind_ferminet/ferminet/utils/gto.py": {
+    "normalize_primitive_weights": "normalize primitive GTO basis function weights so contracted orbitals square integrate to 1",
+    "full_cart2sph": "compute the transformation matrix from full cartesian derivatives to spherical harmonic representation for angular momentum l",
+    "cart2sph": "convert cartesian coordinates to spherical coordinates returning rho, phi, and theta arrays",
+    "solid_harmonic": "compute all solid harmonics r^ell Y_{ell,m} up to a given maximum angular momentum on a grid",
+    "Mol_eval_gto": "evaluate all contracted Gaussian-type orbitals on a grid of xyz coordinates using JAX"
+  },
+  "google-deepmind_ferminet/ferminet/utils/multi_host.py": {
+    "check_synced_pytree": "check whether a JAX PyTree object is synced across all local devices",
+    "review_check_synced": "review the check_synced function that validates device synchronization for PyTree objects",
+    "test_check_synced": "test the check_synced function with a PyTree mapped over multiple local devices",
+    "summarize_check_synced": "summarize the check_synced function that compares norms across JAX local devices",
+    "refactor_check_synced": "refactor the check_synced function to support cross-host synchronization checks"
+  },
+  "google-deepmind_ferminet/ferminet/utils/pseudopotential.py": {
+    "make_pp_args": "create pseudopotential arguments for given atomic symbols using ccecp basis sets and gaussian cutoff calculation",
+    "eval_ecp_on_grid": "evaluate ECP potential on a radial grid for multiple atomic numbers and return core counts and grid values",
+    "calc_r_c": "calculate the radial cutoff for each angular momentum channel of an ECP given a tolerance value",
+    "eval_leg": "evaluate Legendre polynomials of order 0 through 3 for a given x value using JAX switch",
+    "check_pp_args": "validate that pseudopotential arguments including core counts, cutoff radii, and grid shapes are consistent"
+  },
+  "google-deepmind_ferminet/ferminet/utils/scf.py": {
+    "run_hartree_fock_calculation": "run a Hartree-Fock self-consistent field calculation on a molecule using the Scf class with pyscf",
+    "evaluate_molecular_orbitals": "evaluate Hartree-Fock molecular orbitals at given electron positions using Scf.eval_mos",
+    "evaluate_slater_determinant": "evaluate the Slater determinant sign and log absolute value for electron positions using Scf.eval_slater",
+    "compute_ordered_excitations": "compute the lowest energy single and double excitations from a Hartree-Fock result using get_ordered_excitations",
+    "register_scf_pytree_node": "register the Scf class as a JAX pytree node for flattening and unflattening with jax.tree_util"
+  },
+  "google-deepmind_ferminet/ferminet/utils/statistics.py": {
+    "build_exponential_moving_average": "build a python module that computes exponentially-weighted mean and variance over a stream of observations",
+    "create_weighted_stats_dataclass": "create a WeightedStats dataclass to hold mean and variance values for float or numpy arrays",
+    "test_exponentialy_weighted_stats": "test the exponentialy_weighted_stats function with a sequence of scalar observations and an alpha decay factor",
+    "refactor_weighted_stats_generic": "refactor the WeightedStats class to support additional numeric types beyond float, numpy, and JAX arrays",
+    "summarize_exponentialy_weighted_stats": "summarize the exponentialy_weighted_stats function which calculates incremental exponentially-weighted mean and variance using Tony Finch algorithm"
+  },
+  "google-deepmind_ferminet/ferminet/utils/system.py": {
+    "create_atom_with_symbol": "create an Atom instance with an element symbol and coordinates in bohr",
+    "create_atom_with_angstrom": "create an Atom instance with coordinates in angstrom that auto converts to bohr",
+    "get_atom_coords_array": "get a numpy array of atomic coordinates in bohr from an Atom instance",
+    "get_atom_coords_angstrom": "get atomic coordinates converted to angstrom from an Atom instance",
+    "convert_pyscf_mol_to_config": "convert a PySCF Mole object to an internal ConfigDict representation"
+  },
+  "google-deepmind_ferminet/ferminet/utils/units.py": {
+    "convert_bohr_to_angstrom": "use bohr2angstrom to convert a value in Bohr units to Angstroms",
+    "convert_angstrom_to_bohr": "use angstrom2bohr to convert a value in Angstroms to Bohr units",
+    "convert_hartree_to_kcal": "use hartree2kcal to convert an energy value from Hartrees to kcal/mol",
+    "convert_kcal_to_hartree": "use kcal2hartree to convert an energy value from kcal/mol to Hartrees",
+    "review_unit_constants": "review the unit conversion constants ANGSTROM_BOHR, BOHR_ANGSTROM, KCAL_HARTREE, and HARTREE_KCAL"
+  },
+  "google-deepmind_ferminet/ferminet/utils/utils.py": {
+    "select_output_callable": "create a function that returns only the nth result from a callable returning a sequence",
+    "select_output_index": "build a wrapper that extracts the argnum-th element from a function returning multiple values",
+    "flatten_dict_keys_nested": "create a function that flattens a nested dictionary into dot-separated keys",
+    "flatten_dict_keys_prefix": "build a utility that flattens nested dict keys with a custom prefix string",
+    "summarize_utils": "summarize the ferminet utils module containing select_output and flatten_dict_keys helper functions"
+  },
+  "google-deepmind_ferminet/ferminet/utils/writers.py": {
+    "create_writer_csv": "create a Writer context manager to log iteration data to a CSV file with a given schema",
+    "write_iteration_data": "write a row of key-value data to the CSV file for a given iteration index",
+    "use_writer_context_manager": "use the Writer as a context manager to automatically open and close the CSV file",
+    "configure_writer_logging": "configure the Writer to optionally log each iteration entry to stdout via abseil logging",
+    "customize_writer_iteration_key": "customize the Writer iteration column header by setting the iteration_key parameter"
+  },
+  "google-deepmind_ferminet/ferminet/utils/tests/elements_test.py": {
+    "test_elements_module": "run the elements test suite to validate atomic number and symbol mappings",
+    "test_element_group_period": "run parameterized tests to verify element period, group, and spin configuration properties",
+    "test_periods": "run tests to validate that each period contains the expected number of elements",
+    "test_groups": "run tests to verify group numbering increments correctly across the periodic table",
+    "review_elements_test": "review the ElementsTest class to understand periodic table element property assertions"
+  },
+  "google-deepmind_ferminet/ferminet/utils/tests/gto_test.py": {
+    "test_eval_gto": "test the GtoTest class to verify Gaussian-type orbital evaluation against PySCF results",
+    "test_grad_solid_harmonic": "test the GtoTest class to verify solid harmonic gradient computation via JAX autodiff",
+    "review_Mol_from_pyscf_mol": "review the gto.Mol.from_pyscf_mol method that converts a PySCF molecule to a JAX-compatible Ferminet molecule",
+    "review_Mol_eval_gto": "review the gto.Mol.eval_gto method that evaluates Gaussian-type orbitals at given coordinates",
+    "summarize_grad_solid_harmonic": "summarize the gto.grad_solid_harmonic and gto.grad_solid_harmonic_by_jacfwd functions for computing solid harmonic gradients"
+  },
+  "google-deepmind_ferminet/ferminet/utils/tests/scf_test.py": {
+    "test_scf_interface": "test the Scf class interface with parameterized molecules and electron configurations",
+    "run_scf_calculation": "run a restricted or unrestricted Hartree-Fock SCF calculation on a molecule",
+    "create_scf_object": "create an Scf object with a molecule, electron count, and restricted flag",
+    "eval_mos": "evaluate molecular orbital values at random 3D coordinate points",
+    "test_scf_diatomics": "test SCF calculations on simple diatomic molecules like N2 and O2"
+  },
+  "google-deepmind_ferminet/ferminet/utils/tests/statistics_test.py": {
+    "test_exponentially_weighted_stats": "test the exponentially weighted stats function with parameterized alpha values against pandas ewm",
+    "run_statistics_test": "run the absltest suite for ferminet utils statistics module",
+    "review_StatisticsTest": "review the StatisticsTest class and its parameterized test methods",
+    "summarize_exponentialy_weighted_stats": "summarize the exponentialy_weighted_stats function behavior using simulated converging data",
+    "test_pandas_ewm_equivalence": "test that exponentialy_weighted_stats matches pandas ewm mean and variance outputs"
+  },
+  "google-deepmind_ferminet/ferminet/utils/tests/system_test.py": {
+    "create_atom_with_coords": "create an Atom with symbol and coordinates in angstrom or bohr units",
+    "test_atom_coords_conversion": "test that Atom coords convert correctly between angstrom and bohr units",
+    "test_atom_invalid_units": "test that Atom raises ValueError when given an invalid units string",
+    "convert_pyscf_mol_to_internal": "convert a PySCF Mole object to the internal Ferminet representation with electrons and basis",
+    "convert_pyscf_mol_angstrom_to_bohr": "convert a PySCF molecule with angstrom coordinates to internal bohr representation"
+  },
+  "google-deepmind_ferminet/ferminet/utils/tests/units_test.py": {
+    "test_angstrom2bohr": "test the angstrom2bohr function converts angstrom values to bohr units correctly",
+    "test_bohr2angstrom": "test the bohr2angstrom function converts bohr values to angstrom units correctly",
+    "test_hartree2kcal": "test the hartree2kcal function converts hartree energy values to kcal per mol",
+    "test_kcal2hartree": "test the kcal2hartree function converts kcal per mol values to hartree energy",
+    "test_idempotent_conversions": "test that converting angstrom to bohr and back returns the original value"
+  }
+}

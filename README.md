@@ -1,8 +1,14 @@
 # OpenAgent Tools (OATs)
 
-A repo for those trying to power up small-to-large models with a tool-calling prompt index we're calling the [OpenAgent Tools Protocol (OATs)](https://openagent.tools).
+- A repo for those trying to power up small-to-large models with a tool-calling prompt index we're calling the [OpenAgent Tools Protocol (OATs)](https://openagent.tools). Using OATs lets developer and security teams curate supported tools with easy-to-edit json and markdown files.
 
-![OpenAgent Tools - Intro Tool Calling Pipeline for Powering Up Small AI Models](https://raw.githubusercontent.com/district-solutions/open-agent-tools/refs/heads/main/docs/open-agent-tools-intro-tool-calling-pipeline-for-powering-up-small-ai-models.jpg)
+- We wanted to share how to compile a dataset with a tool-calling segmentation approach.
+
+- OATs is a self-hosted tool-calling approach for agents and humans to align on approved tools.
+
+- The initial use case is moderating multi-agentic tool discovery, guidance, resolution and usage on a filesystem containing 20600+ git repos using over 2.1 TB disk space.
+
+![OpenAgent Tools - Architecture - Intro Tool Calling Pipeline for Powering Up Small AI Models](https://raw.githubusercontent.com/district-solutions/open-agent-tools/refs/heads/main/docs/open-agent-tools-intro-tool-calling-pipeline-for-powering-up-small-ai-models.jpg)
 
 ## The Problem
 
@@ -13,6 +19,12 @@ Large language models (LLMs) require expensive GPU infrastructure. This project 
 By data-mining leading AI repositories, we started preprocessing the source code across multiple passes. Each pass continues to extract, learn, and compress the source code into structured, indices that a small model can semantically use to match with "similar" prompts to the "best" tools and the underlying source code.
 
 The result is a **fast, high-quality tool-calling approach that hopefully runs on constrained hardware with many plug-and-play tools**.
+
+- We also publish a parquet file to the [OpenAgent Tools dataset on Huggingface](https://huggingface.co/datasets/open-agent-tools/open-tools) that complements the json files in the root repo directory.
+
+- There are over **111,000** tool-calling ready-to-use rows in the [OATs 20260504 parquet collected from 158 leading ai-centric/ai-adjacent github repos](https://huggingface.co/datasets/open-agent-tools/open-tools/blob/main/dataset.open-agent-tools.ai-repos.repo-uses.20260504.parquet).
+
+- Reach out if you want to add a new repo!!
 
 ### Validated Models
 
@@ -102,10 +114,11 @@ AI Reasons
 
 Human Reasons
 
-- We have 1000s of pre-ai, home-grown command line tools this approach already works with.
+- We have 1000s of pre-ai, home-grown command line tools this approach already works with and we wanted to share.
 - We wanted to help others build similar solutions.
 - We want to hear ways we can make this better.
-- Reduce the large cloud models dependencies by recording and curating how your long-running tool calling chains perform. Capturing this data enables you to train and finetune your own internal models on preferred tool chain pathways (tool graph efficiency optimization).
+- Reduce the large cloud models dependencies by recording and curating how self-hosted long-running tool calling chains perform. Capturing this data enables your team to train and finetune your own internal models on preferred tool chain pathways (tool graph efficiency optimization).
+
 
 ---
 

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/grpc/third_party/bloaty/third_party/re2/benchlog/benchplot.py
+
+Prompts
+
+```
+['parse an RE2 benchlog file and extract benchmark data into a dictionary grouped by test name', 'generate temporary CSV files from parsed benchlog data with indexed rows and semicolon-separated values', 'run gnuplot to generate a PNG plot from benchlog data using linespoints with grid and autoscale', 'create a gnuplot context manager that automatically cleans up temporary files on exit', 'generate a PNG plot from an RE2 benchlog file using the command line interface']
+```
+
+Usage
+
+```
+{'parse_re2_benchlog': 'parse an RE2 benchlog file and extract benchmark data into a dictionary grouped by test name', 'generate_csv_tempfiles': 'generate temporary CSV files from parsed benchlog data with indexed rows and semicolon-separated values', 'run_gnuplot_visualization': 'run gnuplot to generate a PNG plot from benchlog data using linespoints with grid and autoscale', 'create_gnuplot_context_manager': 'create a gnuplot context manager that automatically cleans up temporary files on exit', 'generate_benchlog_plot_cli': 'generate a PNG plot from an RE2 benchlog file using the command line interface'}
+```
+

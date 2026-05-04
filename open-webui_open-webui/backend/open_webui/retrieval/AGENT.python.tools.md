@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: open-webui/open-webui
+- repo_uri: https://github.com/open-webui/open-webui
+
+## File: open-webui_open-webui/backend/open_webui/retrieval/utils.py
+
+Prompts
+
+```
+['run hybrid search on a vector collection using BM25 and embedding retrievers with reranking', 'build an async embedding function wrapper for sentence-transformers, Ollama, OpenAI, or Azure OpenAI engines', 'run retrieval to extract sources from text, notes, chats, URLs, files, and collections with hybrid search', 'review the RerankCompressor class that compresses retrieved documents using reranking or cosine similarity scoring', 'build a function that merges multiple query result dicts into a single deduplicated, sorted, top-k result']
+```
+
+Usage
+
+```
+{'run_query_doc_with_hybrid_search': 'run hybrid search on a vector collection using BM25 and embedding retrievers with reranking', 'build_get_embedding_function': 'build an async embedding function wrapper for sentence-transformers, Ollama, OpenAI, or Azure OpenAI engines', 'run_get_sources_from_items': 'run retrieval to extract sources from text, notes, chats, URLs, files, and collections with hybrid search', 'review_RerankCompressor': 'review the RerankCompressor class that compresses retrieved documents using reranking or cosine similarity scoring', 'build_merge_and_sort_query_results': 'build a function that merges multiple query result dicts into a single deduplicated, sorted, top-k result'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fbpcs
+- repo_uri: https://github.com/facebookresearch/fbpcs
+
+## File: facebookresearch_fbpcs/fbpcs/infra/logging_service/download_logs/cloud/test/test_aws_cloud.py
+
+Prompts
+
+```
+['test the AwsCloud class to fetch paginated CloudWatch logs from a given log group and stream', 'test the AwsCloud class to verify an S3 bucket exists using head_bucket', 'test the AwsCloud class to fetch AWS Glue crawler configuration by crawler name', 'test the AwsCloud class to fetch Athena database config for a given catalog and database', 'test the AwsCloud class to describe a Kinesis Firehose delivery stream and its config']
+```
+
+Usage
+
+```
+{'test_AwsCloud_get_cloudwatch_logs': 'test the AwsCloud class to fetch paginated CloudWatch logs from a given log group and stream', 'test_AwsCloud_verify_s3_bucket': 'test the AwsCloud class to verify an S3 bucket exists using head_bucket', 'test_AwsCloud_get_glue_crawler_config': 'test the AwsCloud class to fetch AWS Glue crawler configuration by crawler name', 'test_AwsCloud_get_athena_database_config': 'test the AwsCloud class to fetch Athena database config for a given catalog and database', 'test_AwsCloud_get_kinesis_firehose_streams': 'test the AwsCloud class to describe a Kinesis Firehose delivery stream and its config'}
+```
+

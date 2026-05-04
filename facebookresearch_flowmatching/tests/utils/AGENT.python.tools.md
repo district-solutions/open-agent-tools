@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/flowmatching
+- repo_uri: https://github.com/facebookresearch/flow_matching
+
+## File: facebookresearch_flowmatching/tests/utils/test_utils.py
+
+Prompts
+
+```
+['test the unsqueeze_to_match function to add dimensions to a tensor matching a target shape', 'test the expand_tensor_like function to expand a tensor to match another tensor shape', 'test the gradient function to compute gradients of a tensor output with respect to an input', 'run the TestUtils unit test suite to verify flow_matching utility functions work correctly', 'review the TestUtils class and its test methods for tensor utility function coverage']
+```
+
+Usage
+
+```
+{'test_unsqueeze_to_match': 'test the unsqueeze_to_match function to add dimensions to a tensor matching a target shape', 'test_expand_tensor_like': 'test the expand_tensor_like function to expand a tensor to match another tensor shape', 'test_gradient': 'test the gradient function to compute gradients of a tensor output with respect to an input', 'run_test_utils': 'run the TestUtils unit test suite to verify flow_matching utility functions work correctly', 'review_testutils_class': 'review the TestUtils class and its test methods for tensor utility function coverage'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dvsr
+- repo_uri: https://github.com/facebookresearch/dvsr
+
+## File: facebookresearch_dvsr/video_demo.py
+
+Prompts
+
+```
+['run the DVSR video super-resolution demo on an input directory with a config and checkpoint', 'initialize a DVSR model from a config file and checkpoint for video restoration', 'run video inference on an input directory using a loaded DVSR model and save results', 'parse command-line arguments for the DVSR video restoration demo including config and checkpoint paths', 'modify deprecated command-line arguments that use underscores to use hyphens instead']
+```
+
+Usage
+
+```
+{'run_video_demo': 'run the DVSR video super-resolution demo on an input directory with a config and checkpoint', 'init_model_from_config': 'initialize a DVSR model from a config file and checkpoint for video restoration', 'run_video_inference': 'run video inference on an input directory using a loaded DVSR model and save results', 'parse_demo_args': 'parse command-line arguments for the DVSR video restoration demo including config and checkpoint paths', 'modify_deprecated_args': 'modify deprecated command-line arguments that use underscores to use hyphens instead'}
+```
+

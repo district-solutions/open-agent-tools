@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diffq
+- repo_uri: https://github.com/facebookresearch/diffq
+
+## File: facebookresearch_diffq/examples/fairseq/fairseq/models/huggingface/hf_gpt2.py
+
+Prompts
+
+```
+['build a HuggingFaceGPT2LanguageModel instance using build_model with args and task', 'create a HuggingFaceGPT2Decoder with GPT2Config and GPT2LMHeadModel from transformers', 'run the forward pass on prev_output_tokens to get language model logits', 'extract features from prev_output_tokens using extract_features with incremental state support', 'configure GPT2 architecture variants like hf_gpt2_medium, hf_gpt2_large, or hf_gpt2_xl']
+```
+
+Usage
+
+```
+{'build_hf_gpt2_model': 'build a HuggingFaceGPT2LanguageModel instance using build_model with args and task', 'create_gpt2_decoder': 'create a HuggingFaceGPT2Decoder with GPT2Config and GPT2LMHeadModel from transformers', 'run_forward_pass': 'run the forward pass on prev_output_tokens to get language model logits', 'extract_gpt2_features': 'extract features from prev_output_tokens using extract_features with incremental state support', 'configure_gpt2_architecture': 'configure GPT2 architecture variants like hf_gpt2_medium, hf_gpt2_large, or hf_gpt2_xl'}
+```
+

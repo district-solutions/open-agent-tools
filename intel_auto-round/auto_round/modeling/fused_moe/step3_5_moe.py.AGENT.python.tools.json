@@ -1,0 +1,7 @@
+{
+    "create_Step3p5ExpertMLP": "create a single expert MLP module with gate_proj, up_proj, and down_proj layers for MoE models",
+    "build_SequentialStep3p5MoeExperts": "build a ModuleList that converts fused MoELinear weights into individual Step3p5ExpertMLP modules per expert",
+    "build_LinearStep3p5MoEMLP": "build a replacement module that splits fused MoELinear into individual nn.Linear per expert for quantization",
+    "run_LinearStep3p5MoEMLP_forward": "run the forward pass of LinearStep3p5MoEMLP to route hidden states through selected experts with routing weights",
+    "test_LinearStep3p5MoEMLP_router_bias_func": "test the router bias function that applies sigmoid gating with bias and top-k expert selection"
+}

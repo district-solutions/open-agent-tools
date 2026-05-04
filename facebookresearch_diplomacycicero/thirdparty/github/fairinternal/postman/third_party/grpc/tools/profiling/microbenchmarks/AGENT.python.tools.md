@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/grpc/tools/profiling/microbenchmarks/bm_json.py
+
+Prompts
+
+```
+['parse a gRPC microbenchmark name string into its template and dynamic arguments', 'convert abbreviated size strings like 100M or 10k into numeric float values', 'expand gRPC microbenchmark JSON results into flattened row records with parsed names and labels', 'review the _BM_SPECS dictionary to understand template and dynamic argument definitions for benchmark types', 'summarize the bm_json module utilities for parsing and expanding gRPC microbenchmark JSON data']
+```
+
+Usage
+
+```
+{'parse_bm_name': 'parse a gRPC microbenchmark name string into its template and dynamic arguments', 'numericalize_sizes': 'convert abbreviated size strings like 100M or 10k into numeric float values', 'expand_benchmark_json': 'expand gRPC microbenchmark JSON results into flattened row records with parsed names and labels', 'review_bm_specs': 'review the _BM_SPECS dictionary to understand template and dynamic argument definitions for benchmark types', 'summarize_bm_json_utils': 'summarize the bm_json module utilities for parsing and expanding gRPC microbenchmark JSON data'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/eai-vc
+- repo_uri: https://github.com/facebookresearch/eai-vc
+
+## File: facebookresearch_eai-vc/third_party/trifinger_simulation/trifinger_simulation/tasks/move_cuboid.py
+
+Prompts
+
+```
+['sample a random goal pose for the cube at a given difficulty level from 1 to 4', 'validate that a given cube goal pose is within the allowed arena bounds and height', 'evaluate the cost between a goal pose and actual pose based on the difficulty level', 'get the 3D positions of all 8 corners of a cube given its pose', 'serialize a Pose object to a JSON string or deserialize a JSON string to a Pose']
+```
+
+Usage
+
+```
+{'sample_goal_pose': 'sample a random goal pose for the cube at a given difficulty level from 1 to 4', 'validate_goal_pose': 'validate that a given cube goal pose is within the allowed arena bounds and height', 'evaluate_state_cost': 'evaluate the cost between a goal pose and actual pose based on the difficulty level', 'get_cube_corner_positions': 'get the 3D positions of all 8 corners of a cube given its pose', 'serialize_goal_to_json': 'serialize a Pose object to a JSON string or deserialize a JSON string to a Pose'}
+```
+

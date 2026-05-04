@@ -1,0 +1,191 @@
+{
+  "facebookresearch_adaptiveteacher/adapteacher/config.py": {
+    "add_ateacher_config": "add semi-supervised training config options to a detectron2 CfgNode for the aTeacher model",
+    "review_add_ateacher_config": "review the add_ateacher_config function to understand semi-supervised training default config values",
+    "refactor_add_ateacher_config": "refactor add_ateacher_config to support custom pseudo bounding box sampling strategies",
+    "summarize_add_ateacher_config": "summarize the add_ateacher_config function and its SEMISUPNET config defaults",
+    "test_add_ateacher_config": "test the add_ateacher_config function by applying it to a fresh detectron2 CfgNode"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/data/build.py": {
+    "divide_label_unlabel": "divide dataset dicts into labeled and unlabeled sets using a supervision percentage and pre-generated random seed file",
+    "build_detection_semisup_train_loader": "build a semi-supervised training data loader from labeled datasets using a detectron2 config and optional mapper",
+    "build_detection_test_loader": "build a test data loader for evaluation on a named dataset using a detectron2 config",
+    "build_detection_semisup_train_loader_two_crops": "build a semi-supervised training data loader with separate labeled and unlabeled datasets supporting cross-dataset or supervision modes",
+    "build_semisup_batch_data_loader_two_crop": "build a batch data loader that groups labeled and unlabeled datasets by aspect ratio for two-crop semi-supervised training"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/data/detection_utils.py": {
+    "build_strong_augmentation": "build a strong augmentation pipeline with ColorJitter, GaussianBlur, and RandomErasing for training",
+    "create_augmentation_pipeline": "create a Compose transform pipeline with SimCLR-style augmentations for self-supervised training",
+    "test_build_strong_augmentation": "test the build_strong_augmentation function with is_train True and False to verify pipeline",
+    "refactor_augmentation_params": "refactor build_strong_augmentation to accept configurable probabilities and scales for each transform",
+    "review_augmentation_transforms": "review the build_strong_augmentation function and its torchvision transform composition logic"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/data/datasets/builtin.py": {
+    "register_coco_unlabel_instances": "register a COCO format dataset with a json annotation file and image root directory into the DatasetCatalog",
+    "load_coco_unlabel_json": "load unlabelled COCO json annotations and return a list of image record dicts with file paths and dimensions",
+    "register_coco_unlabel": "register all predefined COCO unlabelled dataset splits from a given root directory into the DatasetCatalog",
+    "register_all_cityscapes_foggy": "register all Cityscapes foggy image dataset splits for train val and test into the DatasetCatalog",
+    "register_all_clipart": "register all Clipart1k dataset splits in PASCAL VOC format into the DatasetCatalog with pascal_voc evaluator"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/data/datasets/cityscapes_foggy.py": {
+    "load_cityscapes_instances_from_json": "load cityscapes instance segmentation annotations from json polygon files into Detectron2 format",
+    "load_cityscapes_instances_from_png": "load cityscapes instance segmentation annotations from png instance id files with polygon or mask output",
+    "load_cityscapes_semantic": "load cityscapes semantic segmentation labels and image metadata into Detectron2 dataset format",
+    "get_cityscapes_files": "scan cityscapes image and ground truth directories to collect matching file tuples for foggy variants",
+    "parse_cityscapes_to_dict": "parse a single cityscapes annotation file tuple into a Detectron2 dataset dictionary with bounding boxes and segmentation"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/engine/hooks.py": {
+    "create_LossEvalHook": "create a LossEvalHook instance with eval_period, model, data_loader, and model_output parameters",
+    "run_LossEvalHook_after_step": "run the LossEvalHook after_step method to trigger periodic loss evaluation during training",
+    "use_inference_context": "use the inference_context manager to temporarily set a model to eval mode then restore it",
+    "review_LossEvalHook_get_loss": "review the LossEvalHook _get_loss method to understand loss extraction for loss_only, loss_proposal, and meanteacher modes",
+    "refactor_LossEvalHook_detect_anomaly": "refactor the LossEvalHook _detect_anomaly method to add custom handling for infinite or NaN loss values"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/engine/probe.py": {
+    "compute_fp_gtoutlier": "compute false positive OOD object statistics by comparing ground truth and pseudo boxes using pairwise IoU",
+    "compute_num_box": "compute bounding box statistics including count, size, inlier, outlier, and background ratios for ROI proposals",
+    "compute_ood_acc": "compute OOD detection accuracy and recall metrics for foreground and all samples using OOD scores",
+    "bbox_stat": "aggregate multiple bounding box statistics by dispatching to named metric methods via getattr on the probe instance",
+    "probe_roih_bbox": "probe ROI head bounding box proposals to compute average count, size, confidence, and majority class ratio"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/engine/trainer.py": {
+    "build_BaselineTrainer": "build a BaselineTrainer instance from a Detectron2 config for supervised object detection training",
+    "build_ATeacherTrainer": "build an ATeacherTrainer instance from a config for semi-supervised teacher-student object detection training",
+    "run_train_loop": "run the training loop on a BaselineTrainer or ATeacherTrainer with a specified start and max iteration",
+    "run_pseudo_labeling": "run pseudo-label generation on unlabeled data using the teacher model with configurable thresholding",
+    "update_teacher_model": "update the teacher model weights via exponential moving average from the student model"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/evaluation/coco_evaluation.py": {
+    "convert_dataset_to_coco_json": "convert a detectron2 registered dataset to COCO format JSON and save to an output file",
+    "create_COCOEvaluator_for_bbox_segm_keypoints": "create a COCOEvaluator instance to evaluate bbox, segmentation, or keypoint detection tasks on a dataset",
+    "run_COCOEvaluator_evaluate": "run the COCOEvaluator evaluate method to compute AP metrics and return results as an OrderedDict",
+    "convert_instances_to_coco_json": "convert detectron2 Instances objects to COCO-format JSON annotations for a given image ID",
+    "evaluate_box_proposals_recall": "evaluate detection proposal recall metrics using pairwise IoU against ground truth boxes with area filtering"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/evaluation/pascal_voc_evaluation.py": {
+    "create_PascalVOCDetectionEvaluator": "create a PascalVOCDetectionEvaluator instance for a given dataset name to evaluate object detection results",
+    "run_voc_eval": "run the voc_eval function to compute recall, precision, and AP for a detection class",
+    "compute_voc_ap": "compute the VOC average precision from precision and recall arrays using the voc_ap function",
+    "parse_rec_xml": "parse a PASCAL VOC XML annotation file into a list of object structures using parse_rec",
+    "evaluate_PascalVOC_predictions": "evaluate object detection predictions against Pascal VOC ground truth annotations using the evaluate method"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/modeling/meta_arch/rcnn.py": {
+    "build_DAobjTwoStagePseudoLabGeneralizedRCNN": "build a domain adaptation two-stage pseudo-label GeneralizedRCNN model from a Detectron2 config",
+    "build_TwoStagePseudoLabGeneralizedRCNN": "build a two-stage pseudo-label GeneralizedRCNN model for supervised and unsupervised training branches",
+    "build_FCDiscriminator_img": "build a fully connected image discriminator with configurable convolutional layers for domain classification",
+    "use_grad_reverse": "use the gradient reverse function to negate gradients during backpropagation for domain adaptation",
+    "run_DAobjTwoStagePseudoLabGeneralizedRCNN_forward": "run the domain adaptation RCNN forward pass with supervised, unsupervised, or domain branches"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/modeling/meta_arch/vgg.py": {
+    "build_vgg_backbone": "build a VGG16 backbone network using make_layers with batch normalization for feature extraction",
+    "build_vgg_fpn_backbone": "build a VGG16 backbone wrapped in an FPN with LastLevelMaxPool for multi-scale feature pyramids",
+    "create_make_layers": "create a Sequential convolutional layer stack from a VGG config list with optional batch normalization",
+    "review_vgg_backbone_forward": "review the vgg_backbone forward pass that returns a dict of features from each stage",
+    "refactor_vgg_backbone_stages": "refactor the vgg_backbone stage slicing logic that splits the VGG16 modules into 5 stages"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/modeling/proposal_generator/rpn.py": {
+    "run_PseudoLabRPN_forward": "run the PseudoLabRPN forward pass with images, features, and ground truth instances to generate proposals",
+    "build_PseudoLabRPN": "build a PseudoLabRPN region proposal network registered in the Detectron2 PROPOSAL_GENERATOR_REGISTRY for Faster R-CNN",
+    "review_PseudoLabRPN_forward": "review the PseudoLabRPN forward method that computes objectness logits, anchor deltas, and loss for region proposals",
+    "refactor_PseudoLabRPN_loss": "refactor the PseudoLabRPN forward method to customize loss weighting for anchor objectness and box regression",
+    "summarize_PseudoLabRPN": "summarize the PseudoLabRPN class that extends Detectron2 RPN with compute_loss and compute_val_loss parameters"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/modeling/roi_heads/fast_rcnn.py": {
+    "build_focal_loss_module": "build a FocalLoss nn.Module that computes focal loss with configurable gamma and num_classes parameters",
+    "create_fast_rcnn_focal_loss": "create a FastRCNNFocalLoss instance to compute classification and box regression losses for ROI proposals",
+    "review_fast_rcnn_focal_loss_output_layers": "review the FastRCNNFocaltLossOutputLayers class that extends FastRCNNOutputLayers with focal loss support",
+    "test_focal_loss_forward": "test the FocalLoss forward method by passing input logits and target class labels",
+    "refactor_fast_rcnn_loss_computation": "refactor the FastRCNNFocalLoss losses method to customize classification and box regression loss computation"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/modeling/roi_heads/roi_heads.py": {
+    "build_roi_heads_pseudo_lab": "build a StandardROIHeadsPseudoLab ROI head for pseudo labeling in Detectron2 object detection models",
+    "init_box_head_with_loss": "initialize a box head with CrossEntropy or FocalLoss predictor using _init_box_head class method",
+    "forward_roi_heads_training": "run the forward pass of StandardROIHeadsPseudoLab with training loss computation and proposal sampling",
+    "forward_roi_heads_inference": "run the forward pass of StandardROIHeadsPseudoLab for inference to get predicted instances and predictions",
+    "label_and_sample_proposals": "label and sample proposals by matching against ground truth boxes using pairwise IoU and proposal matcher"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/solver/build.py": {
+    "build_lr_scheduler": "build a learning rate scheduler from a detectron2 config node and optimizer",
+    "build_warmup_multistep_lr": "build a WarmupMultiStepLR scheduler using config steps, gamma, and warmup parameters",
+    "build_warmup_cosine_lr": "build a WarmupCosineLR scheduler using config max_iter and warmup parameters",
+    "build_warmup_twostage_multistep_lr": "build a WarmupTwoStageMultiStepLR scheduler using config steps, factor_list, gamma, and warmup parameters",
+    "review_build_lr_scheduler": "review the build_lr_scheduler function to understand supported scheduler types and config requirements"
+  },
+  "facebookresearch_adaptiveteacher/adapteacher/solver/lr_scheduler.py": {
+    "create_WarmupTwoStageMultiStepLR": "create a WarmupTwoStageMultiStepLR scheduler with milestones, factor_list, and warmup parameters for a PyTorch optimizer",
+    "build_lr_scheduler_with_warmup": "build a learning rate scheduler with linear warmup and multi-step decay using WarmupTwoStageMultiStepLR",
+    "test_WarmupTwoStageMultiStepLR_get_lr": "test the WarmupTwoStageMultiStepLR get_lr method to verify correct learning rate computation at each epoch",
+    "review_WarmupTwoStageMultiStepLR_init": "review the WarmupTwoStageMultiStepLR constructor to understand milestone validation and factor_list length checks",
+    "refactor_WarmupTwoStageMultiStepLR": "refactor the WarmupTwoStageMultiStepLR class to support additional warmup methods or decay strategies"
+  },
+  "facebookresearch_adaptiveteacher/prod_lib/config/defaults.py": {
+    "add_aut_config": "add config for SemiSupSegRunner discriminator loss weight, type, and data augmentation settings",
+    "review_add_aut_config": "review the add_aut_config function to understand discriminator configuration defaults",
+    "refactor_add_aut_config": "refactor add_aut_config to support additional discriminator types beyond concate, p2, and multi",
+    "test_add_aut_config": "test add_aut_config to verify DIS_LOSS_WEIGHT, DIS_TYPE, and ISAUG are set correctly on cfg",
+    "summarize_add_aut_config": "summarize the add_aut_config function and its UNBIASEDTEACHER config defaults"
+  },
+  "facebookresearch_adaptiveteacher/prod_lib/data/builtin.py": {
+    "register_coco_unlabel_instances": "register a COCO unlabeled dataset with a name, metadata dict, json annotation file, and image root path",
+    "load_coco_unlabel_json": "load a COCO format json annotation file into a list of Detectron2 standard dataset dicts",
+    "load_json": "load and return the contents of a json file using PathManager for remote or local paths",
+    "register_all_cityscapes_foggy": "register all Cityscapes foggy dataset splits including train, val, and test into the DatasetCatalog",
+    "register_all_clipart": "register all Clipart PASCAL VOC format dataset splits including train and test into the DatasetCatalog"
+  },
+  "facebookresearch_adaptiveteacher/prod_lib/data/cityscapes_foggy.py": {
+    "load_cityscapes_instances_from_json": "load cityscapes instance segmentation annotations from JSON polygon files into Detectron2 format",
+    "load_cityscapes_instances_from_png": "load cityscapes instance segmentation annotations from PNG instance ID files using multiprocessing",
+    "load_cityscapes_semantic": "load cityscapes semantic segmentation labels and image metadata into a list of dicts",
+    "get_cityscapes_files": "scan cityscapes image and ground truth directories to collect tuples of matching annotation file paths",
+    "cityscapes_files_to_dict": "parse a single cityscapes annotation file tuple into a Detectron2 dataset dict with bounding boxes and segmentation"
+  },
+  "facebookresearch_adaptiveteacher/prod_lib/engine/probe.py": {
+    "init_OpenMatchTrainerProbe": "initialize an OpenMatchTrainerProbe with a Detectron2 config to set BOX_AP and NUM_CLASSES",
+    "run_bbox_stat": "run bbox_stat to compute multiple bounding box metrics across unlabeled ground truth and pseudo labels",
+    "compute_fp_gtoutlier": "compute false positive and OOD ground-truth outlier statistics for predicted or pseudo bounding boxes",
+    "compute_num_box": "compute bounding box count, average size, inlier, outlier, and confidence statistics for ROI predictions",
+    "compute_ood_acc": "compute OOD detection accuracy and recall for foreground and all bounding boxes using pairwise IoU"
+  },
+  "facebookresearch_adaptiveteacher/prod_lib/engine/trainer.py": {
+    "run_DAobjTrainer_step": "run a single training step of the DAobjTrainer for teacher-student mutual learning",
+    "run_DAobjTrainer_burn_in": "run the burn-in stage to supervisedly train the student model with labeled data",
+    "run_DAobjTrainer_teacher_student_learning": "run teacher-student mutual learning with labeled and unlabeled data using pseudo-labels",
+    "review_DAobjTrainer_weight_losses": "review the weight_losses method to understand how supervised and unsupervised losses are weighted",
+    "review_DAobjTrainer_threshold_bbox": "review the threshold_bbox method to understand how proposals are filtered by confidence thresholds"
+  },
+  "facebookresearch_adaptiveteacher/prod_lib/evaluation/coco_evaluation.py": {
+    "convert_to_coco_json": "convert a detectron2 dataset to COCO JSON format and save it to a specified output file",
+    "create_COCOEvaluator": "create a COCOEvaluator instance to evaluate bbox, segmentation, and keypoint detection metrics on a dataset",
+    "run_COCOEvaluator_evaluate": "run the COCOEvaluator evaluate method to compute AP and AR metrics on collected predictions",
+    "instances_to_coco_json": "convert detectron2 Instances objects into a COCO-format JSON list for evaluation",
+    "review__evaluate_box_proposals": "review the box proposal recall evaluation function that computes AR metrics across area ranges and limits"
+  },
+  "facebookresearch_adaptiveteacher/prod_lib/evaluation/pascal_voc_evaluation.py": {
+    "run_PascalVOCDetectionEvaluator": "run PascalVOCDetectionEvaluator on a dataset to compute Pascal VOC style AP metrics for object detection",
+    "run_voc_eval": "run voc_eval to compute recall, precision, and AP for a specific class against ground truth annotations",
+    "run_voc_ap": "run voc_ap to compute average precision from precision and recall arrays using VOC 07 or 12 metric",
+    "run_parse_rec": "run parse_rec to parse a PASCAL VOC XML annotation file and extract object bounding box data",
+    "review_PascalVOCDetectionEvaluator_evaluate": "review the PascalVOCDetectionEvaluator evaluate method to understand how mAP, AP50, and AP75 are computed"
+  },
+  "facebookresearch_adaptiveteacher/prod_lib/modeling/daobj_rcnn.py": {
+    "build_DAobjTwoStagePseudoLabGeneralizedRCNN": "build a domain adversarial two-stage pseudo-label GeneralizedRCNN model from a Detectron2 config",
+    "create_FCDiscriminator_img": "create a fully connected image discriminator module with configurable convolutional layers for domain classification",
+    "run_grad_reverse": "run the gradient reverse function to negate gradients during backpropagation for domain adaptation",
+    "review_DAobjTwoStagePseudoLabGeneralizedRCNN_forward": "review the DAobjTwoStagePseudoLabGeneralizedRCNN forward method to understand supervised and unsupervised branch logic",
+    "summarize_FCDiscriminator_img": "summarize the FCDiscriminator_img class which implements a 3-layer Conv2d discriminator with LeakyReLU activations"
+  },
+  "facebookresearch_adaptiveteacher/prod_lib/modeling/vgg.py": {
+    "build_vgg_backbone": "build a VGG16 backbone for Detectron2 that outputs multi-scale feature maps from five stages",
+    "build_vgg_fpn_backbone": "build a VGG16 backbone with FPN for Detectron2 using LastLevelMaxPool as the top block",
+    "create_make_layers": "create a Sequential module from a VGG config list with optional batch normalization layers",
+    "review_vgg_backbone_forward": "review the vgg_backbone forward method that returns a dict of features from each stage",
+    "refactor_vgg_cfgs": "refactor the VGG config dictionary to add support for custom VGG variant layer configurations"
+  },
+  "facebookresearch_adaptiveteacher/prod_lib/runner/runner.py": {
+    "build_DAobjUnbiasedTeacherRunner_model": "build a student and teacher model ensemble from a config using DAobjUnbiasedTeacherRunner",
+    "train_DAobjUnbiasedTeacherRunner": "train a domain adaptation object detection model with student teacher ensemble using DAobjUnbiasedTeacherRunner do_train",
+    "get_evaluator_COCO_PascalVOC": "get a COCO or Pascal VOC dataset evaluator for a given dataset name and output folder",
+    "get_tensorboard_writer": "get a cached TensorboardXWriter instance for logging training metrics to a specified log directory",
+    "review_BaseUnbiasedTeacherRunner": "review the BaseUnbiasedTeacherRunner class which extends UnbiasedTeacherRunner and adds adaptive teacher config"
+  }
+}

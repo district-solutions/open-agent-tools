@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/grpc/src/python/grpcio_reflection/grpc_reflection/v1alpha/reflection.py
+
+Prompts
+
+```
+['enable server reflection on a gRPC server by registering the ReflectionServicer with a list of service names', 'create a ReflectionServicer instance with a list of fully-qualified service names and an optional descriptor pool', 'review the ServerReflectionInfo RPC handler that dispatches file-by-filename, symbol, extension, and list-services requests', 'test the _file_by_filename method to look up a protobuf file descriptor by its filename in the descriptor pool', 'summarize the _list_services method that returns all registered service names as a ListServiceResponse']
+```
+
+Usage
+
+```
+{'enable_server_reflection': 'enable server reflection on a gRPC server by registering the ReflectionServicer with a list of service names', 'create_ReflectionServicer': 'create a ReflectionServicer instance with a list of fully-qualified service names and an optional descriptor pool', 'review_ServerReflectionInfo': 'review the ServerReflectionInfo RPC handler that dispatches file-by-filename, symbol, extension, and list-services requests', 'test_file_by_filename': 'test the _file_by_filename method to look up a protobuf file descriptor by its filename in the descriptor pool', 'summarize_list_services': 'summarize the _list_services method that returns all registered service names as a ListServiceResponse'}
+```
+

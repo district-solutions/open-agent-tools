@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: intel/auto-round
+- repo_uri: https://github.com/intel/auto-round
+
+## File: intel_auto-round/auto_round/export/utils.py
+
+Prompts
+
+```
+['save a quantized PyTorch model to a directory with sharding, safetensors, and quantization config support', 'get a QuantLinear class for AutoGPTQ export configured for a specific backend like triton or marlin', 'filter a quantization config dictionary by removing default values, None entries, and non-serializable keys', 'safely release the weight and bias tensors of a neural network layer to free GPU memory', 'resolve the output directory layout for exporting a pipeline model component with artifact copying']
+```
+
+Usage
+
+```
+{'save_model': 'save a quantized PyTorch model to a directory with sharding, safetensors, and quantization config support', 'get_autogptq_packing_qlinear': 'get a QuantLinear class for AutoGPTQ export configured for a specific backend like triton or marlin', 'filter_quantization_config': 'filter a quantization config dictionary by removing default values, None entries, and non-serializable keys', 'release_layer_safely': 'safely release the weight and bias tensors of a neural network layer to free GPU memory', 'resolve_pipeline_export_layout': 'resolve the output directory layout for exporting a pipeline model component with artifact copying'}
+```
+

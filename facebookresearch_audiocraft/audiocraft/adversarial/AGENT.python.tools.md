@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/audiocraft
+- repo_uri: https://github.com/facebookresearch/audiocraft.git
+
+## File: facebookresearch_audiocraft/audiocraft/adversarial/losses.py
+
+Prompts
+
+```
+['create an AdversarialLoss wrapper with an adversary module, optimizer, and loss functions for GAN training', 'train the adversary discriminator using fake and real sample tensors via train_adv method', 'compute the generator adversarial loss and feature matching loss by calling forward on AdversarialLoss', 'get an adversarial loss criterion function by name such as mse, hinge, or hinge2', 'create a FeatureMatchingLoss module to compute L1 feature matching loss between fake and real feature maps']
+```
+
+Usage
+
+```
+{'create_adversarial_loss_wrapper': 'create an AdversarialLoss wrapper with an adversary module, optimizer, and loss functions for GAN training', 'train_adversary_with_fake_real': 'train the adversary discriminator using fake and real sample tensors via train_adv method', 'compute_generator_adversarial_loss': 'compute the generator adversarial loss and feature matching loss by calling forward on AdversarialLoss', 'get_adv_criterion_by_type': 'get an adversarial loss criterion function by name such as mse, hinge, or hinge2', 'create_feature_matching_loss': 'create a FeatureMatchingLoss module to compute L1 feature matching loss between fake and real feature maps'}
+```
+

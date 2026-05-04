@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/habitat-lab
+- repo_uri: https://github.com/facebookresearch/habitat-lab
+
+## File: facebookresearch_habitat-lab/habitat-baselines/setup.py
+
+Prompts
+
+```
+['build a python package for habitat-baselines with all subdirectory requirements collected', 'run collect_requirements to gather all requirements.txt files from habitat_baselines subdirectories', 'run get_package_version to extract the VERSION string from habitat_baselines/version.py', 'run the habitat-baselines console script entry point from habitat_baselines.run.main', 'review the setup.py entry_points configuration for the habitat-baselines console_scripts']
+```
+
+Usage
+
+```
+{'build_package_habitat_baselines': 'build a python package for habitat-baselines with all subdirectory requirements collected', 'run_collect_requirements': 'run collect_requirements to gather all requirements.txt files from habitat_baselines subdirectories', 'run_get_package_version': 'run get_package_version to extract the VERSION string from habitat_baselines/version.py', 'run_console_script_habitat_baselines': 'run the habitat-baselines console script entry point from habitat_baselines.run.main', 'review_setup_entry_points': 'review the setup.py entry_points configuration for the habitat-baselines console_scripts'}
+```
+

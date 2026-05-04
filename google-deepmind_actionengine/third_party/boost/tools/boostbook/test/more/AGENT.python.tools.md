@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/actionengine
+- repo_uri: https://github.com/google-deepmind/actionengine
+
+## File: google-deepmind_actionengine/third_party/boost/tools/boostbook/test/more/run-tests.py
+
+Prompts
+
+```
+['run the boostbook test suite by transforming XML files with XSLT and comparing output to gold files', 'generate gold reference files by running boostbook XSLT transformation on XML test inputs and writing output', 'run the boostbook XSLT transformation on an XML file and normalize the generated IDs', 'normalize boostbook document IDs by truncating and renumbering them for consistent comparison', 'compare generated XML output against a gold reference file using unified diff and report differences']
+```
+
+Usage
+
+```
+{'run_boostbook_tests': 'run the boostbook test suite by transforming XML files with XSLT and comparing output to gold files', 'generate_gold_files': 'generate gold reference files by running boostbook XSLT transformation on XML test inputs and writing output', 'run_boostbook_xslt': 'run the boostbook XSLT transformation on an XML file and normalize the generated IDs', 'normalize_boostbook_ids': 'normalize boostbook document IDs by truncating and renumbering them for consistent comparison', 'compare_xml_output': 'compare generated XML output against a gold reference file using unified diff and report differences'}
+```
+

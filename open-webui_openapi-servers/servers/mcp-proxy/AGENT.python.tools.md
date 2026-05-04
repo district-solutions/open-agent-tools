@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: open-webui/openapi-servers
+- repo_uri: https://github.com/open-webui/openapi-servers
+
+## File: open-webui_openapi-servers/servers/mcp-proxy/main.py
+
+Prompts
+
+```
+['run a FastAPI server that proxies MCP tools as HTTP endpoints on a given host and port', "create dynamic FastAPI POST endpoints from an MCP session's available tools and their input schemas", "parse command line arguments to extract host, port, and the MCP server command after '--'", 'call an MCP tool through a dynamically generated HTTP endpoint that validates arguments via Pydantic', 'initialize an MCP client session via stdio to connect to an MCP server and retrieve its info']
+```
+
+Usage
+
+```
+{'run_mcp_proxy_server': 'run a FastAPI server that proxies MCP tools as HTTP endpoints on a given host and port', 'create_dynamic_endpoints_from_mcp_tools': "create dynamic FastAPI POST endpoints from an MCP session's available tools and their input schemas", 'parse_args_for_proxy': "parse command line arguments to extract host, port, and the MCP server command after '--'", 'call_mcp_tool_via_endpoint': 'call an MCP tool through a dynamically generated HTTP endpoint that validates arguments via Pydantic', 'initialize_mcp_client_session': 'initialize an MCP client session via stdio to connect to an MCP server and retrieve its info'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: google-deepmind/bsuite
+- repo_uri: https://github.com/google-deepmind/bsuite
+
+## File: google-deepmind_bsuite/bsuite/experiments/summary_analysis.py
+
+Prompts
+
+```
+['build a python module that scores bsuite experiments across hyperparameter settings using bsuite_score', 'create a radar plot comparing agent performance across bsuite experiment tags using bsuite_radar_plot', 'generate a bar plot of bsuite scores comparing agents across experiments using bsuite_bar_plot', 'summarize bsuite scores averaged by experiment tags using ave_score_by_tag', 'plot a bar chart comparing agent scores for a single bsuite experiment using plot_single_experiment']
+```
+
+Usage
+
+```
+{'build_bsuite_score_dataframe': 'build a python module that scores bsuite experiments across hyperparameter settings using bsuite_score', 'create_radar_plot': 'create a radar plot comparing agent performance across bsuite experiment tags using bsuite_radar_plot', 'generate_bar_plot': 'generate a bar plot of bsuite scores comparing agents across experiments using bsuite_bar_plot', 'summarize_scores_by_tag': 'summarize bsuite scores averaged by experiment tags using ave_score_by_tag', 'plot_single_experiment': 'plot a bar chart comparing agent scores for a single bsuite experiment using plot_single_experiment'}
+```
+

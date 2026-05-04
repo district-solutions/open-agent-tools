@@ -1,0 +1,163 @@
+{
+  "facebookresearch_grounded-video-description/misc/AttModel.py": {
+    "build_attention_module": "build a PyTorch Attention module that computes additive attention weights over visual features using an RNN hidden state",
+    "build_attention2_module": "build an Attention2 module with configurable region attention modes including additive, multiplicative, and dot-product variants",
+    "build_topdown_core": "build a TopDownCore module that combines two LSTM cells with dual attention mechanisms for grounded video description",
+    "build_topdown_model": "build a TopDownModel that wraps TopDownCore as a 2-layer attention-based language model for video captioning",
+    "review_attention_forward": "review the Attention forward method to understand how softmax-weighted feature aggregation produces attention residuals"
+  },
+  "facebookresearch_grounded-video-description/misc/CaptionModelBU.py": {
+    "run_beam_search_caption": "run beam search on CaptionModel to generate video captions from visual features and RNN state",
+    "review_CaptionModel_beam_search": "review the CaptionModel beam_search method for attention-based caption generation with pointer network masking",
+    "refactor_beam_step_nested": "refactor the nested beam_step function in beam_search to be a standalone method of CaptionModel",
+    "test_CaptionModel_initialization": "test the CaptionModel class initialization and verify it inherits from nn.Module correctly",
+    "summarize_beam_search_decoding": "summarize the beam search decoding logic that generates caption sequences using log-probability scoring"
+  },
+  "facebookresearch_grounded-video-description/misc/bbox_transform.py": {
+    "build_bbox_transform": "build a python module to compute normalized bounding box transformation targets from expected and ground truth ROIs",
+    "build_bbox_transform_batch": "build a python module to compute batched bounding box transformation targets for 2D or 3D ROI tensors",
+    "build_bbox_transform_inv": "build a python module to invert bounding box deltas and predict refined box coordinates from anchor boxes",
+    "build_clip_boxes_batch": "build a python module to clip batched bounding box coordinates to image boundary limits",
+    "build_bbox_overlaps_batch": "build a python module to compute batched IoU overlap between anchor boxes and ground truth boxes"
+  },
+  "facebookresearch_grounded-video-description/misc/dataloader_anet.py": {
+    "create_DataLoader_instance": "create a DataLoader instance with opt config to load ActivityNet video segment data for training",
+    "review_DataLoader_init": "review the DataLoader class __init__ method to understand how GloVe vectors and proposal files are loaded",
+    "summarize_get_det_word": "summarize the get_det_word method that maps bounding box annotations to caption word indices",
+    "refactor_get_frm_mask": "refactor the get_frm_mask method to improve frame mask computation between proposals and ground truth boxes",
+    "test_DataLoader_getitem": "test the DataLoader __getitem__ method to verify it returns correct tensors for video segment data"
+  },
+  "facebookresearch_grounded-video-description/misc/model.py": {
+    "build_AttModel": "build a grounded video description model with attention-based captioning using the AttModel class",
+    "run_AttModel_forward": "run the AttModel forward pass with MLE training on segmented video features and ground truth sequences",
+    "run_AttModel_sample": "run the AttModel sampling method to generate video captions from proposal features and masks",
+    "run_AttModel_beam_search": "run beam search inference on the AttModel to generate top-k caption sequences for video clips",
+    "review_AttModel_grounder": "review the AttModel grounder method that computes attention scores between text embeddings and visual region features"
+  },
+  "facebookresearch_grounded-video-description/misc/transformer.py": {
+    "build_transformer_encoder": "build a Transformer encoder model with configurable d_model, n_layers, n_heads, and dropout ratio",
+    "build_transformer_decoder": "build a TransformerDecoder model with greedy inference or cross-entropy training mode",
+    "create_attention_layer": "create a MultiHead attention layer with configurable heads, causal masking, and dropout",
+    "create_positional_encodings": "create sinusoidal positional encodings for a given tensor shape using positional_encodings_like",
+    "build_encoder_decoder_pipeline": "build an encoder-decoder pipeline using Transformer and TransformerDecoder for sequence generation"
+  },
+  "facebookresearch_grounded-video-description/misc/utils.py": {
+    "decode_sequence": "decode a PyTorch tensor of token IDs into human-readable text sequences using an index-to-word mapping",
+    "update_values": "recursively update a target dictionary with non-None values from a source dictionary including nested dicts",
+    "LMCriterion_forward": "compute language modeling loss, attention loss, and grounding loss for a grounded video description model",
+    "RandomCropWithBbox_call": "randomly crop a PIL image while adjusting associated bounding box coordinates to match the new crop region",
+    "vis_detections": "visualize object detections on a matplotlib axis by drawing colored bounding boxes with class name labels"
+  },
+  "facebookresearch_grounded-video-description/prepro/prepro_dic_anet.py": {
+    "run_prepro_dic_anet": "run the ActivityNet dictionary preprocessing script to build vocab and caption JSON files",
+    "build_vocab_function": "build a vocabulary from video segment tokens filtering by word count threshold",
+    "create_word_to_detection_map": "create a word to detection label mapping from the ActivityNet class vocabulary",
+    "generate_word_lemmas": "generate word lemmas using Stanford CoreNLP for each vocabulary word",
+    "output_preprocessed_json": "output preprocessed dictionary and caption JSON files for ActivityNet video segments"
+  },
+  "facebookresearch_grounded-video-description/tools/vg_cls_overlap.py": {
+    "run_vg_cls_overlap_main": "run the script to analyze class vocabulary overlap between Visual Genome and Something-Something v2 datasets",
+    "run_get_dataset_cls": "run get_dataset_cls to extract object class vocabulary from VG, Flickr30k, Open Image, SS2, or ANet datasets",
+    "run_load_corpus": "run load_corpus to load and return sentences from Flickr30k, SS2, or ANet grounding datasets",
+    "review_get_dataset_cls": "review get_dataset_cls which uses Stanford CoreNLP to lemmatize class names and filter by frequency threshold",
+    "review_main": "review main which compares two dataset class dictionaries and reports missing vocabulary with corpus frequency"
+  },
+  "facebookresearch_grounded-video-description/tools/anet_entities/scripts/attr_prep_tag_NP.py": {
+    "run_preprocess_anet_entities": "run the ActivityNet-Entities dataset preprocessing script to convert raw annotations to NP/object annotation files",
+    "extract_attr_from_database": "extract all attributes from video bounding box annotations in the ActivityNet database for train and val splits",
+    "define_train_val_test_split": "define train, validation, and test splits from ActivityNet caption files with a 50/50 val-test split",
+    "freq_obj_list_with_nlp": "generate object class list using Stanford CoreNLP lemmatization and frequency threshold filtering on noun phrases",
+    "prep_all_database_with_noun_phrases": "preprocess the full database to create noun phrase annotations with object class labels and bounding boxes"
+  },
+  "facebookresearch_grounded-video-description/tools/anet_entities/scripts/eval_grd_anet_entities.py": {
+    "run_gt_grounding_evaluation": "run the ActivityNet entities grounding evaluation script with GT sentences using argparse CLI",
+    "run_gen_grounding_evaluation": "run the ActivityNet entities grounding evaluation script with generated sentences using argparse CLI",
+    "review_ANetGrdEval_gt_grd_eval": "review the ANetGrdEval class gt_grd_eval method that computes grounding accuracy for GT sentences",
+    "review_ANetGrdEval_grd_eval": "review the ANetGrdEval class grd_eval method that computes precision recall and F1 scores",
+    "review_ANetGrdEval_precision_recall_util": "review the ANetGrdEval class precision_recall_util method that calculates per-class precision and recall"
+  },
+  "facebookresearch_grounded-video-description/tools/anet_entities/scripts/utils.py": {
+    "compute_bbox_overlaps_batch": "compute IoU overlaps between anchor boxes and ground truth boxes in batch mode using PyTorch tensors",
+    "compute_bbox_overlaps_with_mask": "compute batched bounding box overlaps with an optional frame mask to filter cross-frame matches",
+    "generate_frame_mask": "generate a boolean frame mask by comparing proposal frame indices against ground truth bounding box frame indices",
+    "review_bbox_overlaps_batch": "review the bbox_overlaps_batch function that handles both 2D and 3D anchor tensor inputs for IoU calculation",
+    "refactor_get_frm_mask": "refactor the get_frm_mask function to use numpy broadcasting instead of tile for better performance"
+  },
+  "facebookresearch_grounded-video-description/tools/densevid_eval/evaluate.py": {
+    "run_densevid_evaluation": "run the evaluate.py CLI to evaluate video caption predictions against ground truth references using tIoU thresholds",
+    "run_ANETcaptions_evaluate": "run the ANETcaptions class evaluate method to compute CIDEr, BLEU, METEOR, ROUGE, and SPICE scores across tIoU thresholds",
+    "run_evaluate_detection": "run the evaluate_detection method to compute temporal precision and recall for predicted video event timestamps",
+    "run_evaluate_tiou": "run the evaluate_tiou method to compute caption quality scores at a specific temporal IoU threshold",
+    "run_remove_nonascii": "run the remove_nonascii function to strip non-ASCII characters from caption text before evaluation"
+  },
+  "facebookresearch_grounded-video-description/tools/densevid_eval/coco-caption/pycocoevalcap/eval.py": {
+    "evaluate_coco_caption": "run COCOEvalCap.evaluate() to compute BLEU, METEOR, ROUGE, CIDEr, and SPICE scores for image captions",
+    "tokenize_coco_annotations": "call COCOEvalCap.tokenize() to tokenize ground truth and predicted annotations using PTBTokenizer",
+    "set_eval_score": "use COCOEvalCap.setEval() to store a computed score for a given evaluation method",
+    "set_img_to_eval": "call COCOEvalCap.setImgToEvalImgs() to map per-image scores to their corresponding image IDs",
+    "collect_eval_imgs": "invoke COCOEvalCap.setEvalImgs() to compile all per-image evaluation results into a list"
+  },
+  "facebookresearch_grounded-video-description/tools/densevid_eval/coco-caption/pycocoevalcap/bleu/bleu.py": {
+    "compute_bleu_score": "compute BLEU scores for image caption hypotheses against ground truth references using the Bleu class",
+    "init_bleu_with_n_grams": "initialize a Bleu scorer with a custom n-gram range up to n for evaluating captions",
+    "get_bleu_method_name": "get the method name string 'Bleu' from the Bleu class for metric identification",
+    "review_Bleu_compute_score": "review the Bleu class compute_score method to understand how hypotheses and references are scored",
+    "refactor_Bleu_scoring_option": "refactor the Bleu class to switch between shortest, closest, or average scoring options"
+  },
+  "facebookresearch_grounded-video-description/tools/densevid_eval/coco-caption/pycocoevalcap/bleu/bleu_scorer.py": {
+    "build_bleu_scorer": "build a python module that uses BleuScorer to compute BLEU scores for candidate sentences against references",
+    "cook_refs_function": "create a function that calls cook_refs to preprocess a list of reference sentences for BLEU evaluation",
+    "cook_test_function": "create a function that calls cook_test to preprocess a candidate sentence against cooked references for BLEU scoring",
+    "compute_bleu_score": "run the BleuScorer compute_score method to calculate BLEU scores with closest or average reference length strategy",
+    "precook_ngrams": "create a function that uses precook to extract n-gram counts and word length from a sentence string"
+  },
+  "facebookresearch_grounded-video-description/tools/densevid_eval/coco-caption/pycocoevalcap/cider/cider.py": {
+    "compute_cider_score": "compute the CIDEr score for a corpus of image captions by comparing hypotheses against references",
+    "init_cider_scorer": "create a Cider scorer instance with configurable n-gram range and gaussian penalty sigma parameter",
+    "get_cider_method_name": "get the string name of the CIDEr evaluation metric method",
+    "review_cider_class": "review the Cider class and its compute_score method for caption evaluation logic",
+    "summarize_cider_scorer_usage": "summarize how the CiderScorer is used internally to accumulate and compute CIDEr scores"
+  },
+  "facebookresearch_grounded-video-description/tools/densevid_eval/coco-caption/pycocoevalcap/cider/cider_scorer.py": {
+    "compute_cider_score": "compute the CIDEr score for test captions against reference captions using corpus IDF",
+    "precook_ngrams": "precook a sentence into an n-gram term frequency vector for CIDEr scoring",
+    "cook_references": "cook a list of reference sentences into precomputed n-gram representations",
+    "cook_test_sentence": "cook a single test sentence into a precomputed n-gram representation",
+    "compute_doc_freq": "compute document frequency of n-grams across all reference captions for IDF calculation"
+  },
+  "facebookresearch_grounded-video-description/tools/densevid_eval/coco-caption/pycocoevalcap/meteor/meteor.py": {
+    "compute_score_meteor": "compute METEOR scores for ground truth and hypothesis caption pairs using the Meteor class",
+    "create_meteor_instance": "create a Meteor instance that spawns a Java subprocess for METEOR evaluation via stdio",
+    "score_single_hypothesis": "score a single hypothesis string against a list of reference strings using _score method",
+    "get_meteor_method_name": "get the METEOR method name string by calling the method function on a Meteor instance",
+    "review_meteor_thread_safety": "review the Meteor class threading lock usage to ensure thread-safe subprocess communication"
+  },
+  "facebookresearch_grounded-video-description/tools/densevid_eval/coco-caption/pycocoevalcap/rouge/rouge.py": {
+    "compute_rouge_l_score": "compute the ROUGE-L score for candidate sentences against reference sentences using the Rouge class",
+    "calculate_lcs_length": "calculate the longest common subsequence length between two tokenized strings using my_lcs",
+    "calc_single_score": "calculate the ROUGE-L score for a single candidate sentence against multiple references",
+    "compute_batch_score": "compute ROUGE-L scores for a batch of candidate and reference sentence pairs across images",
+    "get_metric_name": "get the metric method name by calling the method function on a Rouge instance"
+  },
+  "facebookresearch_grounded-video-description/tools/densevid_eval/coco-caption/pycocoevalcap/spice/spice.py": {
+    "compute_spice_score": "compute the SPICE metric score for image captions by comparing hypotheses against ground truth references",
+    "run_spice_evaluation": "run the SPICE Java scorer on a set of image captions and return average and per-image scores",
+    "convert_to_float": "convert an object to a float value or return NaN if conversion fails",
+    "get_spice_method_name": "get the string name of the SPICE evaluation metric method",
+    "evaluate_coco_captions": "evaluate COCO image captions using the SPICE metric with ground truth and result dictionaries"
+  },
+  "facebookresearch_grounded-video-description/tools/densevid_eval/coco-caption/pycocoevalcap/tokenizer/ptbtokenizer.py": {
+    "tokenize_captions_with_ptb": "create a PTBTokenizer instance and call tokenize with a dictionary of image captions to get tokenized results",
+    "remove_punctuation_from_tokenized_text": "use the PUNCTUATIONS list to filter out punctuation tokens from tokenized caption strings",
+    "review_ptbtokenizer_class": "review the PTBTokenizer class which wraps Stanford CoreNLP PTBTokenizer via a Java subprocess call",
+    "summarize_tokenize_method": "summarize the tokenize method that lowercases, tokenizes captions using Stanford CoreNLP, and strips punctuation",
+    "refactor_ptbtokenizer_temp_file_handling": "refactor the PTBTokenizer to use context managers for safer temporary file creation and cleanup"
+  },
+  "facebookresearch_grounded-video-description/tools/densevid_eval/coco-caption/pycocotools/coco.py": {
+    "load_coco_annotations": "load a COCO annotation JSON file into memory and create an index for fast lookup",
+    "get_ann_ids": "get annotation IDs filtered by image IDs, category IDs, area range, or crowd label",
+    "decode_mask": "decode a binary mask encoded via run-length encoding into a 2D boolean numpy array",
+    "encode_mask": "encode a 2D boolean numpy array into run-length encoding format for compact storage",
+    "seg_to_mask": "convert polygon segmentation coordinates into a binary mask of specified height and width"
+  }
+}

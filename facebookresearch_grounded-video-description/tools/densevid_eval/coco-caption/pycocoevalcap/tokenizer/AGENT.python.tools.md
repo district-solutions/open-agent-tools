@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/grounded-video-description
+- repo_uri: https://github.com/facebookresearch/grounded-video-description
+
+## File: facebookresearch_grounded-video-description/tools/densevid_eval/coco-caption/pycocoevalcap/tokenizer/ptbtokenizer.py
+
+Prompts
+
+```
+['create a PTBTokenizer instance and call tokenize with a dictionary of image captions to get tokenized results', 'use the PUNCTUATIONS list to filter out punctuation tokens from tokenized caption strings', 'review the PTBTokenizer class which wraps Stanford CoreNLP PTBTokenizer via a Java subprocess call', 'summarize the tokenize method that lowercases, tokenizes captions using Stanford CoreNLP, and strips punctuation', 'refactor the PTBTokenizer to use context managers for safer temporary file creation and cleanup']
+```
+
+Usage
+
+```
+{'tokenize_captions_with_ptb': 'create a PTBTokenizer instance and call tokenize with a dictionary of image captions to get tokenized results', 'remove_punctuation_from_tokenized_text': 'use the PUNCTUATIONS list to filter out punctuation tokens from tokenized caption strings', 'review_ptbtokenizer_class': 'review the PTBTokenizer class which wraps Stanford CoreNLP PTBTokenizer via a Java subprocess call', 'summarize_tokenize_method': 'summarize the tokenize method that lowercases, tokenizes captions using Stanford CoreNLP, and strips punctuation', 'refactor_ptbtokenizer_temp_file_handling': 'refactor the PTBTokenizer to use context managers for safer temporary file creation and cleanup'}
+```
+

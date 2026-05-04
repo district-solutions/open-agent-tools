@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/third_party/grpc/third_party/protobuf/update_compatibility_version.py
+
+Prompts
+
+```
+['run the script to update LAST_RELEASED version in tests.sh with a new MAJOR.MINOR.MICRO version', 'run RewriteTextFile to rewrite a text file line by line using a custom line rewriter function', 'run ReplaceVersion to replace the LAST_RELEASED value in a line with a new version string', 'refactor RewriteTextFile to use context managers for safer file handling instead of manual open and close', 'review ReplaceVersion to verify the regex pattern correctly matches and replaces LAST_RELEASED version strings']
+```
+
+Usage
+
+```
+{'run_update_compatibility_version': 'run the script to update LAST_RELEASED version in tests.sh with a new MAJOR.MINOR.MICRO version', 'run_RewriteTextFile': 'run RewriteTextFile to rewrite a text file line by line using a custom line rewriter function', 'run_ReplaceVersion': 'run ReplaceVersion to replace the LAST_RELEASED value in a line with a new version string', 'refactor_RewriteTextFile': 'refactor RewriteTextFile to use context managers for safer file handling instead of manual open and close', 'review_ReplaceVersion': 'review ReplaceVersion to verify the regex pattern correctly matches and replaces LAST_RELEASED version strings'}
+```
+

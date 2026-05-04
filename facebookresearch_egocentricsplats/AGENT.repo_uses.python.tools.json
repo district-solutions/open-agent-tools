@@ -1,0 +1,135 @@
+{
+  "facebookresearch_egocentricsplats/model/GS2D_gsplat.py": {
+    "create_Gaussians2D": "create a Gaussians2D instance with a DictConfig and SceneInfo for 2D Gaussian Splatting training",
+    "render_Gaussians2D": "render a scene from a Camera viewpoint using Gaussians2D with scaling modifier and sh degree",
+    "forward_Gaussians2D": "run the forward pass of Gaussians2D with intrinsics and view matrices to render RGB and depth",
+    "training_step_Gaussians2D": "execute a training step for Gaussians2D computing image depth normal and distortion losses",
+    "get_valid_mask": "compute a valid mask filtering NaN Inf and out-of-range values from tensor data"
+  },
+  "facebookresearch_egocentricsplats/model/loss.py": {
+    "calculate_inverse_depth_loss": "calculate the inverse depth loss from a rendered depth map using sparse 2D point coordinates and huber or l1 loss",
+    "create_ImageLoss": "create an ImageLoss instance with rgb or luminance color space and alex or vgg lpips network for computing image losses",
+    "run_ImageLoss_call": "run the ImageLoss callable to compute l1, huber, ssim, dssim, psnr, or lpips losses between a captured and ground truth image",
+    "compute_ssim": "compute the structural similarity index between two images using a gaussian window and configurable window size",
+    "compute_kl_divergence": "compute the KL divergence between a target occupancy density rho and a predicted sigmoid rho_hat tensor"
+  },
+  "facebookresearch_egocentricsplats/model/vanilla_gsplat.py": {
+    "create_gaussian_splats_with_optimizers": "create Gaussian splats with optimizers from a point cloud for 3D scene reconstruction",
+    "render_scene_from_camera": "render a 3D Gaussian splat scene from a specified camera viewpoint with depth and normals",
+    "save_gaussian_splats_to_ply": "save trained Gaussian splats parameters including means, scales, rotations, and colors to a PLY file",
+    "load_gaussian_splats_from_ply": "load Gaussian splats parameters from a PLY file to resume training or inference",
+    "apply_3d_depth_based_filter": "apply a view-dependent 3D Gaussian filter based on minimum depth for smoother rendering"
+  },
+  "facebookresearch_egocentricsplats/scene/cameras.py": {
+    "create_Camera": "create a Camera instance with uid, w2c matrix, FoVx, FoVy, image dimensions, and optional exposure settings",
+    "create_AriaCamera": "create an AriaCamera with closed-loop trajectory, rolling shutter support, and sampled view matrices for motion compensation",
+    "create_CameraDataset": "create a CameraDataset from a list of Camera objects for training or render-only PyTorch data loading",
+    "interpolate_cameras_fps": "interpolate a list of Camera poses into a piecewise trajectory at a target FPS using SLERP and linear translation",
+    "convert_camera_to_JSON": "serialize a Camera object to a JSON-compatible dictionary with id, c2w, fov, fx, fy, and exposure metadata"
+  },
+  "facebookresearch_egocentricsplats/scene/dataset_readers.py": {
+    "readAriaSceneInfo": "read an Aria scene from an input folder and return a SceneInfo object with cameras and point cloud",
+    "get_scene_info": "get scene information from a scene config by dispatching to the appropriate reader based on input format",
+    "pinhole_camera_rectify": "rectify a pinhole camera image by removing radial distortion using OpenCV distortion parameters",
+    "equidistant_camera_rectify": "undistort a fisheye camera image to an equidistant fisheye projection using radial distortion coefficients",
+    "aggregate_scene_infos": "aggregate multiple SceneInfo objects into one combined scene with merged point clouds and sorted cameras"
+  },
+  "facebookresearch_egocentricsplats/scripts/aria_utils.py": {
+    "undistort_image": "undistort a raw Aria camera frame using fisheye624 calibration to linear or spherical output",
+    "process_frame": "process an Aria frame by undistorting the image and saving it to an output folder with metadata",
+    "interpolate_aria_pose": "interpolate a closed-loop trajectory pose at a given capture timestamp using bisection search",
+    "read_frames_from_metadata": "read and parse frame metadata from a transforms JSON file into a list of AriaFrame objects",
+    "storePly": "store 3D point cloud data with xyz coordinates, normals, and rgb colors to a PLY file"
+  },
+  "facebookresearch_egocentricsplats/scripts/downloader.py": {
+    "run_downloader_all": "run the python downloader script to download all sequences and data types from a CDN file",
+    "run_downloader_specific_sequences": "run the python downloader script to download specific sequences by name from a CDN file",
+    "run_downloader_specific_data_types": "run the python downloader script to download specific data types by index from a CDN file",
+    "run_downloader_overwrite": "run the python downloader script with overwrite flag to redownload previously downloaded sequences",
+    "review_parse_args": "review the python parse_args function that defines CLI arguments for CDN file, output folder, and data types"
+  },
+  "facebookresearch_egocentricsplats/scripts/extract_aria_vrs.py": {
+    "extract_aria_vrs_frames": "extract Aria VRS frames with camera poses and calibration into JSON format using the CLI",
+    "run_single_sequence": "run a single Aria VRS recording extraction with trajectory and semi-dense point cloud inputs",
+    "to_aria_image_frame": "convert raw Aria VRS sensor data into structured image frames with rolling shutter timestamps",
+    "create_visible_depth_map": "create sparse depth maps for SLAM camera frames using semi-dense point cloud observations",
+    "fetch_visible_depth_map_for_RGB": "fetch and project sparse depth points from SLAM cameras into the RGB camera frustum"
+  },
+  "facebookresearch_egocentricsplats/utils/aria_utils.py": {
+    "interpolate_closed_loop_pose": "interpolate between two closed loop trajectory poses at a given timestamp using linear interpolation",
+    "interpolate_aria_pose_from_trajectory": "interpolate an ARIA device pose from a closed loop trajectory at a specific capture time",
+    "create_PoseSE3_dataclass": "create a PoseSE3 dataclass instance with transform, linear velocity, angular velocity, quality score, and timestamp",
+    "review_PoseSE3_dataclass": "review the PoseSE3 dataclass fields including transform_world_device, linear_velocity, angular_velocity, quality_score, and time_ns",
+    "summarize_interpolate_aria_pose": "summarize the interpolate_aria_pose function that uses bisection search to find and interpolate poses from a trajectory"
+  },
+  "facebookresearch_egocentricsplats/utils/eval.py": {
+    "run_eval": "run the evaluation comparing test output JSON against ground truth JSON for depth and normal metrics",
+    "calc_depth_distance_scale_invariant": "calculate the scale-invariant depth distance between predicted and ground truth depth maps using a foreground mask",
+    "calc_normal_distance": "calculate the cosine distance between predicted and ground truth surface normal maps using a foreground mask",
+    "erode_mask": "erode a binary mask with a 5x5 kernel and optionally resize it to a target square size",
+    "review_eval": "review the eval module functions for depth and normal evaluation metrics on egocentric scene data"
+  },
+  "facebookresearch_egocentricsplats/utils/image_utils.py": {
+    "convert_rgb_to_ycbcr": "convert an RGB tensor to YCbCr color space using JPEG conversion coefficients",
+    "convert_ycbcr_to_rgb": "convert a YCbCr tensor back to RGB color space using JPEG conversion coefficients",
+    "compute_psnr": "compute the peak signal-to-noise ratio between two image tensors with optional masking",
+    "convert_tensor_to_numpy_array": "convert a PyTorch image tensor to a numpy uint8 array for saving with PIL",
+    "apply_gamma_correction": "apply gamma correction to linear RGB images using sRGB or Aria-specific conversion"
+  },
+  "facebookresearch_egocentricsplats/utils/io.py": {
+    "load_vanilla_gaussian_model": "load a pretrained vanilla Gaussian Splatting model from a given model path using load_from_model_path",
+    "load_2d_gaussian_model": "load a pretrained 2D Gaussian Splatting model from a given model path using load_from_model_path",
+    "load_model_with_bilateral_grid": "load a pretrained model with an optional bilateral grid path using load_from_model_path",
+    "load_model_with_ply_subpath": "load a pretrained model from a specific PLY subpath within the model directory using load_from_model_path",
+    "review_load_from_model_path": "review the load_from_model_path function to understand how it selects between vanillaGS and 2dgs model types"
+  },
+  "facebookresearch_egocentricsplats/utils/point_utils.py": {
+    "fetch_ply_point_cloud": "read a PLY file and return a BasicPointCloud with positions, colors, and normals",
+    "fetch_ply_with_stride": "read a PLY file and subsample the point cloud using a stride value",
+    "store_ply_point_cloud": "write xyz coordinates, rgb colors, and normals to a PLY file on disk",
+    "project_point_3d": "project a 3D point into camera image coordinates using extrinsic and intrinsic matrices",
+    "project_batch_points": "project a batch of 3D points and return valid screen coordinates with a visibility mask"
+  },
+  "facebookresearch_egocentricsplats/utils/render_utils.py": {
+    "apply_turbo_colormap": "apply a turbo colormap to a monochrome tensor image and return a colored RGB image",
+    "depths_to_points": "convert a depth map and camera view into 3D world-space points using intrinsics and extrinsics",
+    "depth_to_normal": "compute a normalized surface normal map from a depth map and camera view using finite differences",
+    "build_render_utils_cli": "build a python module that applies turbo colormap, depth to points, and depth to normal from render_utils",
+    "test_depths_to_points": "test the depths_to_points function with a sample camera view and depth map tensor"
+  },
+  "facebookresearch_egocentricsplats/viewer/_renderer.py": {
+    "create_renderer_thread": "create a Renderer thread with a viewer, client handle, and threading lock for background rendering",
+    "submit_render_task": "submit a RenderTask with action move and camera state to the Renderer for processing",
+    "define_render_transitions": "define the state transition map between RenderState and RenderAction for the Renderer",
+    "calculate_image_dimensions": "calculate image width and height based on render state and aspect ratio using _get_img_wh",
+    "create_render_task": "create a RenderTask dataclass with action static and an optional camera state"
+  },
+  "facebookresearch_egocentricsplats/viewer/render_panel.py": {
+    "populate_render_tab": "populate a Viser GUI tab with camera keyframe controls, playback, and render command generation for 3D Gaussian Splatting",
+    "create_Keyframe_from_camera": "create a Keyframe dataclass from a Viser CameraHandle capturing position, orientation, FOV, and model transforms",
+    "update_Keyframe_model_poses": "update a Keyframe's model sizes and poses from current slider and transform control values",
+    "add_camera_to_CameraPath": "add or replace a camera keyframe in a CameraPath with Kochanek-Bartels spline interpolation support",
+    "interpolate_CameraPath_pose_and_fov": "interpolate camera pose, FOV, and model transforms at a normalized time along the CameraPath spline"
+  },
+  "facebookresearch_egocentricsplats/viewer/train_viewer.py": {
+    "create_TrainerViewer3DGS": "create a TrainerViewer3DGS instance with a ViserServer, model, train cameras, and validation cameras",
+    "review_TrainerViewer3DGS_viewer_render_fn": "review the viewer_render_fn method that renders 3D Gaussian Splatting scenes with color, depth, or normal modalities",
+    "build_TrainerViewer3DGS_generate_guis": "build the GUI controls for training stats, pause/resume buttons, and rendering options using generate_guis",
+    "test_TrainerViewer3DGS_render_modalities": "test the TrainerViewer3DGS render modalities including color, depth, normal, and normal_from_depth visualization modes",
+    "refactor_TrainerViewerBase": "refactor the TrainerViewerBase class to customize the base viewer behavior for training mode rendering"
+  },
+  "facebookresearch_egocentricsplats/viewer/viewer.py": {
+    "create_viewer_instance": "create a Viewer instance bound to a viser server with a render function and rendering mode",
+    "get_camera_state": "get the CameraState with fov, aspect ratio, and c2w matrix from a viser client handle",
+    "compute_camera_intrinsics": "compute the 3x3 camera intrinsic matrix K from a CameraState given image width and height",
+    "update_viewer_step": "update the viewer with the current training step and number of rays processed per step",
+    "complete_training": "mark the viewer training as completed and disable all training GUI controls"
+  },
+  "facebookresearch_egocentricsplats/viewer/viewer_customized.py": {
+    "build_get_sizes": "build a python module to compute canvas and image dimensions from max resolution and aspect ratio",
+    "build_find_nearest_se3": "build a python module to find the nearest 6D SE3 pose to a reference pose using Frobenius norm",
+    "build_ViewerCustomized": "build a python module to create a customized 3D viewer with GUI controls inheriting from Viewer",
+    "build_add_cameras_to_scene": "build a python module to visualize camera frustums in the 3D scene with click-to-navigate support",
+    "build_add_frame_slider_folder": "build a python module to add a frame slider GUI for navigating through training camera viewpoints"
+  }
+}

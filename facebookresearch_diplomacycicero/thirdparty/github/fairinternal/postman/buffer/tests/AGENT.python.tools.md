@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/diplomacycicero
+- repo_uri: https://github.com/facebookresearch/diplomacy_cicero
+
+## File: facebookresearch_diplomacycicero/thirdparty/github/fairinternal/postman/buffer/tests/buffer_test.py
+
+Prompts
+
+```
+['test the NestPrioritizedReplay buffer by adding data from multiple multiprocessing clients via postman', 'test querying a TorchScript model state dict from multiple clients through a ModelQueue server', 'run the unittest test suite for postman buffer replay and model queue functionality', 'create a NestPrioritizedReplay buffer with configurable capacity, alpha, beta, and priority settings', 'create a ModelQueue to distribute TorchScript model state dicts to multiple client processes']
+```
+
+Usage
+
+```
+{'test_add_replay_buffer': 'test the NestPrioritizedReplay buffer by adding data from multiple multiprocessing clients via postman', 'test_query_model_state_dict': 'test querying a TorchScript model state dict from multiple clients through a ModelQueue server', 'run_buffer_test_suite': 'run the unittest test suite for postman buffer replay and model queue functionality', 'create_NestPrioritizedReplay_buffer': 'create a NestPrioritizedReplay buffer with configurable capacity, alpha, beta, and priority settings', 'create_ModelQueue_for_distribution': 'create a ModelQueue to distribute TorchScript model state dicts to multiple client processes'}
+```
+

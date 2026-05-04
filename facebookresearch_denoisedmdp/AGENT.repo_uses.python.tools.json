@@ -1,0 +1,401 @@
+{
+  "facebookresearch_denoisedmdp/denoised_mdp/io.py": {
+    "write_video_from_frames": "write a list of torch tensor frames to an MP4 video file at a given path",
+    "make_grid_of_images": "make a grid of images from a batch of tensors with configurable rows and padding",
+    "normalize_tensor_grid": "normalize image tensors in a grid to a specified value range before display",
+    "create_single_channel_grid": "create a grid from single-channel tensors by automatically converting to three channels",
+    "ensure_grid_divisible_by_16": "create an image grid whose dimensions are divisible by 16 for ffmpeg compatibility"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/memory.py": {
+    "create_experience_replay_buffer": "create an ExperienceReplay buffer with an AutoResetEnvBase environment and a reset step action fill value tensor",
+    "sample_replay_segments": "sample a batch of sequence segments of given length from the ExperienceReplay buffer",
+    "append_reset_to_replay": "append a reset step with an observation tensor to the ExperienceReplay buffer starting a new episode",
+    "append_step_to_replay": "append a step with action, reward, next observation, and done flag to the ExperienceReplay buffer",
+    "compute_tensor_checksum": "compute a checksum-like XOR digest of a PyTorch tensor using the checkxor function for data integrity verification"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/base.py": {
+    "act_agent_base": "act using an AgentBase subclass by calling act with a latent state and optional exploration noise",
+    "init_latent_state_agent_base": "init a latent state for a new episode by calling init_latent_state on an AgentBase subclass",
+    "train_reconstruct_agent_base": "train_reconstruct on an AgentBase subclass to get TrainOutput with transition and reward predictions",
+    "imagine_ahead_noiseless_agent_base": "imagine_ahead_noiseless on an AgentBase subclass to plan ahead in the latent space over a horizon",
+    "posterior_rsample_one_step_agent_base": "posterior_rsample_one_step on an AgentBase subclass to update the latent state given an action and observation"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/denoised_mdp.py": {
+    "build_DenoisedMDP_agent": "build a DenoisedMDP agent with transition, reward, encoder, observation, and actor model configs for an environment",
+    "create_TransitionModelConfig": "create a TransitionModelConfig with custom belief and state sizes for x, y, z latent parts",
+    "run_imagine_ahead_noiseless": "run the imagine_ahead_noiseless method to generate imaginary trajectories using the dynamics model and actor",
+    "train_reconstruct": "train the DenoisedMDP agent by reconstructing observations and rewards from experience replay data",
+    "posterior_rsample_one_step": "sample the posterior latent state one step using action, next observation, and reward inputs"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/utils.py": {
+    "compute_lambda_return": "compute GAE lambda returns from imged rewards, value predictions, and a bootstrap tensor",
+    "use_training_mode_context": "temporarily set multiple PyTorch modules to training or eval mode using a context manager",
+    "use_optim_step_context": "perform an optimizer step with optional gradient clipping using a context manager",
+    "use_freeze_parameters": "freeze gradients on a list of PyTorch modules within a context manager block",
+    "use_optim_wrapper": "wrap a PyTorch optimizer with gradient clipping and state dict save and load support"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/learning/base.py": {
+    "create_optimizer_ctor_callable": "create a callable that builds a PyTorch optimizer from parameters and a learning rate",
+    "create_base_learning_subclass": "create a subclass of BaseLearning that implements the abstract train_step method",
+    "add_optimizer_to_learning": "add a named optimizer with a learning rate and optional gradient clipping to a BaseLearning instance",
+    "get_trainable_parameters": "get all trainable parameters from a BaseLearning module by calling trainable_parameters",
+    "save_and_load_state_dict": "save and load the combined module and optimizer state dict of a BaseLearning instance"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/learning/model.py": {
+    "create_observation_loss": "create an ObservationLoss instance with a configurable weight for observation reconstruction loss",
+    "create_reward_loss": "create a RewardLoss instance with a configurable weight for reward prediction loss",
+    "create_kl_loss": "create a KLLoss with alpha, beta, and free_nats hyperparameters for posterior-prior KL divergence",
+    "run_variational_model_training": "run a VariationalModelLearning train_step on experience replay data with a DenoisedMDP world model",
+    "compute_variational_losses": "compute the total weighted loss and per-term losses from observation, reward, and KL components"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/learning/policy.py": {
+    "create_value_model": "create a ValueModel for state-value prediction using a world model's belief and state sizes",
+    "create_q_model": "create a Q-function ValueModel that takes actions as input using a world model's actor action size",
+    "build_dynamics_backprop_actor_critic": "build a Dreamer-style actor-critic learner that backpropagates through imagined dynamics to update policy and value",
+    "run_sac_training_step": "run a Soft Actor-Critic training step with twin Q-networks, entropy regularization, and Polyak target updates",
+    "apply_polyak_update": "apply an in-place Polyak soft update to smoothly interpolate target network parameters toward main parameters"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/networks/actor.py": {
+    "create_actor_model": "create an ActorModel with belief size, state size, hidden size, and action size parameters",
+    "get_action_distribution": "get the action distribution from an ActorModel given a latent state or tensor input",
+    "sample_action": "sample a stochastic or deterministic action from an ActorModel using get_action",
+    "create_sample_dist": "create a SampleDist wrapper around a PyTorch distribution to estimate mean, mode, and entropy via sampling",
+    "review_actor_forward": "review the ActorModel forward pass that outputs action mean and standard deviation from input tensors"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/networks/encoder.py": {
+    "create_encoder_model_64x64": "create an EncoderModel for 64x64 image observations with a specified output latent size",
+    "create_encoder_model_96x96": "create an EncoderModel for 96x96 image observations with an extra 3x3 conv layer before flattening",
+    "run_encoder_forward_pass": "run a forward pass through the EncoderModel to encode image observations into latent vectors",
+    "review_encoder_conv_architecture": "review the EncoderModel convolutional architecture with four strided conv layers and a final linear projection",
+    "refactor_encoder_activation_function": "refactor the EncoderModel to use a different activation function such as elu or tanh instead of relu"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/networks/observation.py": {
+    "build_ObservationModel_64x64": "build an ObservationModel for 64x64 observations with a specified belief size, state size, and hidden size",
+    "build_ObservationModel_96x96": "build an ObservationModel for 96x96 observations using ConvTranspose2d layers to decode latent features into images",
+    "run_forward_feature": "run forward_feature on a tensor through the fc1 layer and conv_head to produce decoded observation output",
+    "run_forward": "run forward on a LatentState to get a Normal distribution over reconstructed observations with configurable stddev",
+    "review_ObservationModel_conv_architecture": "review the ObservationModel conv_head architecture that uses BottledModule to handle batched ConvTranspose2d decoding"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/networks/reward.py": {
+    "create_RewardMeanNetwork": "create a RewardMeanNetwork with belief_size, state_size, and hidden_size for reward prediction",
+    "build_RewardMeanNetwork_forward": "build a forward pass through RewardMeanNetwork that returns a squeezed reward tensor",
+    "create_RewardModel": "create a RewardModel with x and y network sizes and configurable stddev for reward modeling",
+    "run_RewardModel_get_distn_and_x_mean": "run get_distn_and_x_mean on a RewardModel to get a Normal distribution and x mean",
+    "test_RewardModel_forward": "test the RewardModel forward method to return a Normal distribution from a latent state"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/networks/transition.py": {
+    "build_TransitionModel": "build a TransitionModel with x, y, z belief and state sizes for a denoised MDP agent",
+    "create_LatentState": "create a LatentState dataclass with x, y, z belief and state tensors for world model tracking",
+    "run_posterior_rsample": "run posterior_rsample on a TransitionModel with actions, observations, and rewards over a time sequence",
+    "run_posterior_rsample_one_step": "run posterior_rsample_one_step on a TransitionModel with a single action and observation to get posterior latent state",
+    "run_x_prior_rsample_one_step": "run x_prior_rsample_one_step on a TransitionModel with a single action to get the x prior without posterior"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/networks/utils.py": {
+    "get_activation_module": "create a function that returns a PyTorch activation module from a string name, ActivationKind enum, or nn.Module instance",
+    "bottle": "build a wrapper that flattens time and batch dimensions of a tensor tuple for processing then restores shape",
+    "BottledModule": "create a TorchScript-compatible module wrapper that flattens batch dimensions before forwarding and unflattens after",
+    "ClipGradTanhBijector": "build a bijective transform that applies tanh forward and atanh inverse with gradient clipping for safe inversion",
+    "no_jit_fuser": "create a context manager that temporarily disables all TorchScript JIT fusers on CPU and GPU then restores them"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/agents/networks/value.py": {
+    "create_value_model": "create a ValueModel with belief_size, state_size, and hidden_size parameters for value estimation",
+    "create_q_function_model": "create a ValueModel with action_size parameter to use as a Q function network",
+    "forward_value_prediction": "forward a latent state tensor through the ValueModel to get scalar value predictions",
+    "forward_q_value_with_action": "forward a latent state and action tensor through the ValueModel to get Q values",
+    "forward_feature_directly": "forward a pre-computed feature tensor through the ValueModel using forward_feature method"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/abc.py": {
+    "create_observation_space": "create a gym Box observation space from an ObsOutputKind enum with height, width, and channel parameters",
+    "convert_uint8_to_float32": "convert a uint8 image tensor to normalized float32 by dividing by 255 and subtracting 0.5",
+    "resize_uint8_image": "resize a uint8 numpy array image to a target shape using OpenCV INTER_LINEAR interpolation",
+    "convert_image_to_observation": "convert a uint8 numpy image to a PyTorch observation tensor with optional resizing and normalization",
+    "process_observation_for_network": "process a batched observation tensor into float32 format suitable as neural network input"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/interaction.py": {
+    "env_interact": "build a Python module to interact with an AutoResetEnvBase environment using a custom interactor and yield EnvInteractData steps",
+    "env_interact_random_actor": "run a random actor against an AutoResetEnvBase environment for a specified number of steps",
+    "env_interact_with_model": "run a world model agent against an AutoResetEnvBase environment and yield interaction data steps",
+    "Interactor": "create a custom interactor class by subclassing Interactor and implementing init_state and act_and_update_state methods",
+    "BasicEnvState": "build a BasicEnvState NamedTuple to track episode count, step count, observations, rewards, and done flags"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/utils.py": {
+    "create_batched_auto_reset_env": "create a batched auto-reset environment from an env factory function with a given seed and batch shape",
+    "wrap_env_with_auto_reset": "wrap a scalar environment with AutoResetWrapper to automatically reset on episode termination",
+    "split_random_seed": "split a random seed into n independent SeedSequences for parallel environment seeding",
+    "stack_tensors_or_as_tensor": "stack a list of tensors along dim 0 or convert a list to a single tensor",
+    "create_concat_env": "create a ConcatEnv that runs multiple environments in parallel and stacks their observations and rewards"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/natural_imgsource.py": {
+    "create_ImageSource_subclass": "create a subclass of ImageSource that returns RGB images with a fixed shape",
+    "build_ConcatImageSource": "build a ConcatImageSource to concatenate multiple ImageSource outputs along a specified axis",
+    "create_RandomVideoSource": "create a RandomVideoSource that loads video frames from a filelist and applies contrast and sharpen",
+    "test_RandomImageSource": "test the RandomImageSource class to load and serve random images from a filelist",
+    "refactor_BackgroundMatting": "refactor the BackgroundMatting class to produce a color mask for a given image"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/wrappers.py": {
+    "create_DMCWrapper": "create a DMCWrapper gym environment for a DM Control domain and task with configurable observation output",
+    "run_DMCWrapper_step": "run a step on the DMCWrapper environment with a normalized action and collect observations and rewards",
+    "run_DMCWrapper_reset": "reset the DMCWrapper environment to its initial state and return the first observation",
+    "review_DMCWrapper_seed": "review the DMCWrapper seed method to understand how random states are split and assigned to the environment",
+    "refactor_DMCWrapper_convert_action": "refactor the DMCWrapper _convert_action method to normalize actions from the unit box to the true action space"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/acrobot.py": {
+    "create_acrobot_swingup_env": "create an Acrobot swingup environment with smooth reward using the swingup function",
+    "create_acrobot_sparse_env": "create an Acrobot swingup environment with sparse reward using the swingup_sparse function",
+    "review_Physics_class": "review the Physics class methods horizontal, vertical, to_target, and orientations for Acrobot simulation",
+    "review_Balance_class": "review the Balance task class for Acrobot swingup reward and observation logic",
+    "summarize_get_model_and_assets": "summarize the get_model_and_assets function that loads the Acrobot MuJoCo XML model and assets"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/ball_in_cup.py": {
+    "create_ball_in_cup_environment": "create a Ball-in-Cup DM Control environment using the catch function with a custom time limit",
+    "get_model_and_assets": "get the MuJoCo model XML string and assets dict for the ball in cup domain",
+    "review_Physics_ball_to_target": "review the Physics class ball_to_target method that returns the vector from ball to target",
+    "review_Physics_in_target": "review the Physics class in_target method that returns 1 if the ball is in the target",
+    "review_BallInCup_get_reward": "review the BallInCup task get_reward method that returns a sparse reward based on ball position"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/base.py": {
+    "create_task_subclass": "create a subclass of Task to define a new continuous control task for the Control Suite",
+    "initialize_task_with_seed": "initialize a Task instance with a random seed or RandomState for reproducible episodes",
+    "get_action_spec": "get the BoundedArraySpec for MuJoCo actuators by calling action_spec on a Task instance",
+    "set_visualize_reward": "set the visualize_reward property on a Task to enable reward-based color highlighting",
+    "customize_before_step": "override before_step in a Task subclass to customize how actions map to physics controls"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/cartpole.py": {
+    "create_cartpole_balance_env": "create a cartpole balance environment with a default 10 second time limit",
+    "create_cartpole_swingup_env": "create a cartpole swing-up environment starting the pole pointing downward",
+    "create_multi_pole_env": "create a cartpole environment with two or more chained poles",
+    "review_Balance_class": "review the Balance task class reward logic for sparse and smooth modes",
+    "review_Physics_class": "review the Physics class helper methods for cart position and pole angle"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/cheetah.py": {
+    "run_cheetah_environment": "run the cheetah DMC environment with a configurable time limit and optional noisy sensors",
+    "get_model_and_assets": "get the cheetah MuJoCo model XML string and asset dictionary for the physics simulation",
+    "Physics_speed": "get the horizontal running speed of the cheetah from the physics sensor data with optional noise",
+    "Cheetah_get_observation": "get an observation dict with position and velocity from the cheetah physics state",
+    "Cheetah_get_reward": "get a linear tolerance reward based on the cheetah running speed relative to the target speed"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/explore.py": {
+    "run_dm_control_explorer": "run the DM Control Suite environment explorer with a specified domain and task name",
+    "run_explorer_with_action_noise": "run the environment explorer with Gaussian action noise applied to each action dimension",
+    "run_explorer_without_timeout": "run the environment explorer with no episode time limit for unlimited interaction",
+    "run_explorer_with_reward_visualization": "run the environment explorer with geom colors varying by current reward value",
+    "review_prompt_environment_name": "review the prompt_environment_name function that interactively validates user input against available environment names"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/finger.py": {
+    "create_finger_spin_environment": "create a DM Control Finger Spin task environment to spin the stopped body",
+    "create_finger_turn_easy_environment": "create a DM Control Finger Turn task environment with an easy target radius",
+    "create_finger_turn_hard_environment": "create a DM Control Finger Turn task environment with a hard target radius",
+    "review_physics_class_methods": "review the Physics class methods for touch sensors, hinge velocity, and tip position",
+    "summarize_finger_suite_tasks": "summarize the Finger domain SUITE benchmarking tasks including Spin and Turn variants"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/fish.py": {
+    "create_fish_upright_env": "create a Fish Upright control environment with a configurable time limit and random seed",
+    "create_fish_swim_env": "create a Fish Swim control environment with a configurable time limit and random seed",
+    "review_Physics_upright": "review the Physics class upright method that returns the torso z-axis projection",
+    "review_Physics_mouth_to_target": "review the Physics class mouth_to_target method that computes the vector from mouth to target",
+    "review_Swim_get_reward": "review the Swim task get_reward method that combines in-target and upright rewards"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/hopper.py": {
+    "create_hopper_stand_env": "create a Hopper stand environment that balances upright using dm_control suite",
+    "create_hopper_hop_env": "create a Hopper hop environment that hops forward using dm_control suite",
+    "get_hopper_model_and_assets": "get the Hopper MuJoCo model XML string and assets dictionary",
+    "review_Physics_class": "review the Physics class methods for height, speed, and touch sensor readings",
+    "review_Hopper_task_class": "review the Hopper task class for observation, reward, and episode initialization logic"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/humanoid.py": {
+    "create_humanoid_stand_task": "create a humanoid stand task environment with a 25 second time limit and default random seed",
+    "create_humanoid_walk_task": "create a humanoid walk task environment targeting a horizontal speed of 1 meter per second",
+    "create_humanoid_run_task": "create a humanoid run task environment targeting a horizontal speed of 10 meters per second",
+    "create_humanoid_run_pure_state": "create a humanoid run task environment that returns pure MuJoCo state as observations instead of features",
+    "review_Physics_class_methods": "review the Physics class methods for torso_upright, head_height, center_of_mass_velocity, joint_angles, and extremities"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/humanoid_CMU.py": {
+    "create_stand_task": "create a DM Control humanoid_CMU stand task environment with a 20 second time limit",
+    "create_run_task": "create a DM Control humanoid_CMU run task environment targeting 10 m/s horizontal speed",
+    "get_physics_head_height": "get the head height of the humanoid_CMU physics simulation from the z position",
+    "get_physics_com_velocity": "get the center of mass velocity from the humanoid_CMU physics sensor data",
+    "get_humanoid_observation": "get an egocentric observation dict with joint angles, extremities, and torso orientation"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/lqr.py": {
+    "create_lqr_2_1_environment": "create an LQR environment with 2 bodies and 1 actuated body using lqr_2_1",
+    "create_lqr_6_2_environment": "create an LQR environment with 6 bodies and 2 actuated bodies using lqr_6_2",
+    "build_lqr_model_xml": "build an MJCF XML model string for a procedurally generated LQR system with n bodies and actuators",
+    "run_LQRLevel_get_reward": "run the LQRLevel get_reward method to compute quadratic state and control reward from physics",
+    "test_LQRLevel_initialize_episode": "test the LQRLevel initialize_episode method to sample a random state from a unit sphere"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/lqr_solver.py": {
+    "solve_lqr_optimal_policy": "solve the LQR problem for a dm_control environment and return the optimal value function Hessian, linear policy, and convergence rate",
+    "solve_dare_iteratively": "solve the discrete-time algebraic Riccati equation by iteration given transition matrix A, control matrix B, and cost matrices Q and R",
+    "compute_lqr_gain_matrix": "compute the optimal linear feedback gain matrix K for a dm_control LQR environment using the algebraic Riccati equation",
+    "check_lqr_stability": "check if a controlled LQR system is stable by computing the maximum eigenvalue of the closed-loop state transition matrix",
+    "review_lqr_solver": "review the LQR solver module that computes optimal policies for dm_control MuJoCo environments using discrete algebraic Riccati equation methods"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/manipulator.py": {
+    "create_manipulator_model": "create a MuJoCo XML model for the planar manipulator with ball or peg props",
+    "build_bring_ball_environment": "build a DM Control environment for the manipulator bring ball task",
+    "build_bring_peg_environment": "build a DM Control environment for the manipulator bring peg task",
+    "build_insert_ball_environment": "build a DM Control environment for the manipulator insert ball into cup task",
+    "build_insert_peg_environment": "build a DM Control environment for the manipulator insert peg into slot task"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/pendulum.py": {
+    "create_pendulum_environment": "create a pendulum swingup environment using the swingup function with a custom time limit",
+    "get_model_and_assets": "get the pendulum MuJoCo model XML string and assets dict via get_model_and_assets",
+    "review_physics_class": "review the Physics class methods pole_vertical, angular_velocity, and pole_orientation for the pendulum domain",
+    "build_swingup_task": "build a SwingUp task instance that initializes the pole to a random angle each episode",
+    "summarize_get_observation": "summarize the SwingUp get_observation method that returns pole orientation and angular velocity"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/point_mass.py": {
+    "create_easy_point_mass_env": "create a point_mass easy environment with no randomized actuator gains for benchmarking",
+    "create_hard_point_mass_env": "create a point_mass hard environment with randomized actuator gains for challenging control",
+    "get_model_and_assets": "get the MuJoCo model XML string and assets dict for the point_mass domain",
+    "review_Physics_mass_to_target": "review the Physics class mass_to_target method that returns the vector from mass to target",
+    "review_PointMass_get_reward": "review the PointMass get_reward method that computes smooth reward based on target proximity and control magnitude"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/quadruped.py": {
+    "create_quadruped_walk_task": "create a DM Control quadruped walk task environment with a desired walking speed of 0.5 m/s",
+    "create_quadruped_run_task": "create a DM Control quadruped run task environment with a desired running speed of 5 m/s",
+    "create_quadruped_escape_task": "create a DM Control quadruped escape task environment with terrain and rangefinders to navigate a bowl-shaped heightfield",
+    "create_quadruped_fetch_task": "create a DM Control quadruped fetch task environment with walls and a ball to push to a target",
+    "build_quadruped_model_xml": "build a MuJoCo model XML string for the quadruped with configurable floor size, terrain, rangefinders, and walls"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/reacher.py": {
+    "create_reacher_easy_env": "create a reacher easy environment with a 0.05 target tolerance and randomized target position",
+    "create_reacher_hard_env": "create a reacher hard environment with a 0.015 target tolerance and randomized target position",
+    "get_model_and_assets": "get the MuJoCo model XML string and assets dictionary for the reacher domain",
+    "review_Physics_finger_to_target": "review the Physics class finger_to_target method that returns the vector from target to finger",
+    "review_Reacher_get_reward": "review the Reacher class get_reward method that computes tolerance-based reward for finger-to-target distance"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/stacker.py": {
+    "create_stacker_2box_env": "create a DM Control stacker environment with 2 boxes using stack_2",
+    "create_stacker_4box_env": "create a DM Control stacker environment with 4 boxes using stack_4",
+    "build_stacker_model_xml": "build a MuJoCo XML model and assets for the stacker domain with n_boxes",
+    "review_Physics_class": "review the Physics class methods for bounded_joint_pos, joint_vel, body_2d_pose, touch, and site_distance",
+    "review_Stack_task": "review the Stack task class including initialize_episode, get_observation, and get_reward methods"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/swimmer.py": {
+    "create_swimmer_env": "create a swimmer control environment with a specified number of links using the swimmer function",
+    "create_swimmer6_env": "create a 6-link swimmer benchmarking environment using the swimmer6 function",
+    "create_swimmer15_env": "create a 15-link swimmer benchmarking environment using the swimmer15 function",
+    "get_model_and_assets": "get the MuJoCo model XML string and assets dict for a swimmer with n joints",
+    "review_physics_class": "review the Physics class methods for nose_to_target, body_velocities, and joints"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/walker.py": {
+    "create_stand_task": "create a DM Control walker stand task environment with a 25 second time limit",
+    "create_walk_task": "create a DM Control walker walk task environment with optional noisy sensor support",
+    "create_run_task": "create a DM Control walker run task environment targeting 8 meters per second speed",
+    "review_Physics_class": "review the Physics class methods for torso height, upright projection, and horizontal velocity",
+    "review_PlanarWalker_class": "review the PlanarWalker task class reward function and observation space for the walker domain"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/tests/domains_test.py": {
+    "create_uniform_random_policy": "create a uniform random policy that samples actions within the bounds of a given action spec",
+    "step_environment": "step through a DM Control environment episodes using a provided policy and yield each time step",
+    "make_trajectory": "make a trajectory generator for a given domain and task using a seeded uniform random policy",
+    "test_domain_components_have_names": "test that all physics model components in a DM Control domain task have non-empty names",
+    "test_environment_is_deterministic": "test that two trajectories with identical seeds produce identical observations rewards and discounts"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/tests/loader_test.py": {
+    "run_loader_tests": "run the LoaderTest suite to verify dm_control.suite.load works without kwargs",
+    "run_loader_kwargs_tests": "run the LoaderTest suite to verify dm_control.suite.load works with task_kwargs",
+    "run_constants_tests": "run the LoaderConstantsTest suite to verify suite.BENCHMARKING EASY HARD EXTRA are non-empty",
+    "test_load_without_kwargs": "test that suite.load cartpole swingup returns a control.Environment instance",
+    "test_load_with_kwargs": "test that suite.load cartpole swingup with task_kwargs returns a control.Environment instance"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/tests/lqr_test.py": {
+    "test_lqr_optimal_policy": "test the LQR optimal policy for lqr_2_1 and lqr_6_2 environments using the lqr_solver",
+    "test_lqr_optimal_policy_no_scipy": "test the LQR optimal policy using the non-scipy DARE solver code path",
+    "assertPolicyisOptimal": "assert an LQR policy is optimal by comparing measured total loss against the analytical expected cost",
+    "run_lqr_test_suite": "run the LqrTest parameterized test suite for lqr_2_1 and lqr_6_2 environments via absltest",
+    "review_LqrTest_class": "review the LqrTest class and its parameterized test methods for LQR domain validation"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/utils/parse_amc.py": {
+    "convert_amc_to_qpos_qvel": "convert an .amc motion capture file into MuJoCo qpos and qvel arrays with resampling",
+    "parse_amc_file": "parse an .amc motion capture file and return frame values as a list of numpy arrays",
+    "create_amcvals2qpos_transformer": "create an Amcvals2qpos callable that converts a single .amc frame to MuJoCo qpos format",
+    "convert_euler_to_quat": "convert euler angles in degrees to a quaternion array using zyx rotation order",
+    "compute_quat_difference": "compute the quaternion difference between a source and target quaternion using MuJoCo bindings"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/utils/parse_amc_test.py": {
+    "test_parse_amc_convert": "test the ParseAMCTest class to verify parse_amc.convert produces correct qpos and qvel tensor shapes",
+    "run_parse_amc_test": "run the ParseAMCTest test suite to validate AMC file parsing with different timesteps",
+    "review_parse_amc_convert": "review the parse_amc.convert function usage for converting AMC motion capture data to MuJoCo state arrays",
+    "test_humanoid_CMU_stand": "test the humanoid_CMU.stand environment instantiation used as input to parse_amc.convert",
+    "summarize_parse_amc_test": "summarize the ParseAMCTest class which validates AMC parsing output dimensions and timestep interpolation"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/utils/randomizers.py": {
+    "randomize_joints_in_physics_model": "randomize the positions of all joints in a MuJoCo physics model using uniform sampling",
+    "generate_limited_quaternion": "generate a random quaternion limited to a specified rotation angle using axis-angle conversion",
+    "randomize_hinge_joints": "randomize hinge joint positions uniformly within their bounded or unbounded range",
+    "randomize_ball_joints": "randomize ball joint orientations by sampling quaternions on the unit 3-sphere",
+    "review_randomizer_module": "review the randomizers module to understand joint randomization rules for hinges sliders balls and free joints"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/utils/randomizers_test.py": {
+    "test_randomize_limited_and_rotational_joints": "test the randomize_limited_and_rotational_joints function with a MuJoCo physics object and numpy RandomState",
+    "test_single_joint_of_each_type": "test randomization of free, hinge, slide, and ball joint types in a MuJoCo physics model",
+    "test_multiple_joints_of_same_type": "test that multiple hinge joints of the same type receive unique randomized positions",
+    "test_unlimited_hinge_randomization_range": "test that unlimited hinge joint randomization stays within negative pi to positive pi bounds",
+    "test_limited_joint_limits": "test that limited hinge and slide joints respect their configured range constraints during randomization"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/wrappers/action_noise.py": {
+    "create_action_noise_wrapper": "create a Wrapper that adds Gaussian noise to a dm_control environment's actions with a configurable scale",
+    "wrap_env_with_noise": "wrap a dm_control suite environment with the action noise Wrapper to inject Gaussian noise during step calls",
+    "step_with_noisy_action": "call step on the Wrapper to execute an action with clipped Gaussian noise added before forwarding to the underlying environment",
+    "review_wrapper_bounds_validation": "review the Wrapper __init__ to understand how it validates that all action spec bounds are finite before computing noise std",
+    "refactor_noise_scale": "refactor the Wrapper to customize the noise scale parameter which controls the standard deviation as a fraction of the action range"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/wrappers/action_noise_test.py": {
+    "test_action_noise_wrapper_step": "test the action noise wrapper step method with parameterized lower upper bounds and noise scale",
+    "test_action_noise_clipping": "test the action noise wrapper clips noisy actions to stay within the action spec bounds",
+    "test_action_noise_non_finite_bounds": "test the action noise wrapper raises ValueError when action spec bounds contain inf or nan",
+    "test_action_noise_wrapper_reset": "test the action noise wrapper reset method delegates to the underlying environment reset",
+    "test_action_noise_wrapper_specs": "test the action noise wrapper observation_spec and action_spec delegate to the underlying environment"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/wrappers/pixels.py": {
+    "create_pixel_wrapper": "create a Wrapper instance that adds rendered pixel observations to a dm_control environment",
+    "create_pixels_only_wrapper": "create a pixel-only Wrapper that discards state observations and returns only rendered pixels",
+    "create_mixed_observation_wrapper": "create a Wrapper with pixels_only=False to include both state and pixel observations",
+    "reset_wrapped_env": "reset the wrapped environment and get a time step with pixel observations added",
+    "step_wrapped_env": "step the wrapped environment with an action and get a time step with pixel observations"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/dmc/dmc2gym/local_dm_control_suite/wrappers/pixels_test.py": {
+    "test_pixels_wrapper_dict_observation": "test the pixels.Wrapper with a cartpole swingup environment using dict observations and custom render dimensions",
+    "test_pixels_wrapper_array_observation": "test the pixels.Wrapper with a FakeArrayObservationEnvironment using single array observations and pixels_only mode",
+    "run_pixels_test_suite": "run the absltest PixelsTest suite to verify pixel wrapper behavior for dict and array observation environments",
+    "review_fakephysics_render": "review the FakePhysics class render method that returns a 4x5x3 uint8 zero-filled numpy array",
+    "review_fakearrayobservationenvironment": "review the FakeArrayObservationEnvironment class that implements dm_env.Environment with a 2-element float observation spec"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/robodesk/robodesk/setup.py": {
+    "summarize_package_files": "summarize the package_files function that walks a directory and returns relative paths for all files found",
+    "review_setuptools_setup": "review the setuptools.setup call that configures the robodesk package with name version dependencies and classifiers",
+    "refactor_package_files": "refactor the package_files function to use pathlib instead of os.walk for collecting asset file paths",
+    "test_package_files": "test the package_files function by calling it with a directory path and verifying it returns a list of relative file paths",
+    "build_robodesk_package": "build the robodesk python package using setup.py to install the multi-task reinforcement learning benchmark"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/robodesk/robodesk/robodesk/robodesk.py": {
+    "create_robodesk_env": "create a RoboDesk gym environment with a specified task like open_slide or stack",
+    "create_robodesk_with_tv_env": "create a RoboDeskWithTV gym environment that includes a TV playing video distractors",
+    "run_robodesk_step": "run a single step in the RoboDesk environment by passing an action and getting observations",
+    "reset_robodesk_env": "reset the RoboDesk environment to a fresh state with randomized object positions",
+    "render_robodesk_observation": "render the RoboDesk environment as an RGB array image at the configured size"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/robodesk/robodesk/robodesk/utils.py": {
+    "create_numpy_rng_wrapper": "create a NumPyRNGWrapper instance with a seed to manage random number generation across NumPy versions",
+    "convert_pose_to_lookfrom": "build a function that converts a dm_control Pose object into a camera lookfrom position array",
+    "convert_lookfrom_to_pose": "create a function that constructs a dm_control Pose from camera lookfrom and lookat position arrays",
+    "create_smooth_random_walker": "build a SmoothRandomWalker iterator that generates smooth random N-dimensional walk coordinates with configurable pull and decay",
+    "create_camera_manager": "create a CameraManager instance to handle noisy camera rendering with jittering for a RoboDesk environment"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/envs/robodesk/robodesk/robodesk/video_source.py": {
+    "create_random_video_source": "create a RandomVideoSource that loads frames from video files with contrast and sharpening",
+    "process_frame_resize_and_enhance": "process a video frame by resizing and applying contrast change and sharpening filters",
+    "seed_random_video_source": "seed a RandomVideoSource with a specific random seed for reproducible frame selection",
+    "concatenate_image_sources": "create a ConcatRollingImageSource that concatenates multiple image sources along an axis",
+    "step_video_source_frames": "step a video source to advance to the next frame in the loaded frame buffer"
+  },
+  "facebookresearch_denoisedmdp/denoised_mdp/utils/logging.py": {
+    "configure_logger": "configure the root logger with a log file, log level, and stdout handler using tqdm",
+    "create_TqdmLoggingHandler": "create a TqdmLoggingHandler that writes log messages via tqdm.tqdm.write to avoid corrupting progress bars",
+    "create_MultiLineFormatter": "create a MultiLineFormatter that applies the log format prefix to each line of multi-line log messages",
+    "handle_uncaught_exception": "handle uncaught exceptions by logging them as errors and shutting down the logging system",
+    "disable_logger_temporarily": "disable the logger at a given level within a context manager and restore the previous level on exit"
+  }
+}

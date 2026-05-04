@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/banmo
+- repo_uri: https://github.com/facebookresearch/banmo
+
+## File: facebookresearch_banmo/third_party/pytorch3d/pytorch3d/common/workaround/symeig3x3.py
+
+Prompts
+
+```
+['compute eigenvalues and eigenvectors for a batch of symmetric 3x3 matrices using symeig3x3', 'compute only eigenvalues for symmetric 3x3 matrices by setting eigenvectors to False in symeig3x3', 'create 3D rotation matrices around each coordinate axis by pi/2 using _create_rotation_matrices static method', 'construct an orthonormal set of eigenvectors from pre-computed eigenvalues using _construct_eigenvecs_set', 'compute a sign tensor that returns 1.0 for positive values and -1.0 otherwise using _sign_without_zero']
+```
+
+Usage
+
+```
+{'compute_eigenvalues_and_eigenvectors': 'compute eigenvalues and eigenvectors for a batch of symmetric 3x3 matrices using symeig3x3', 'compute_eigenvalues_only': 'compute only eigenvalues for symmetric 3x3 matrices by setting eigenvectors to False in symeig3x3', 'create_rotation_matrices': 'create 3D rotation matrices around each coordinate axis by pi/2 using _create_rotation_matrices static method', 'construct_orthonormal_eigenvectors': 'construct an orthonormal set of eigenvectors from pre-computed eigenvalues using _construct_eigenvecs_set', 'sign_without_zero': 'compute a sign tensor that returns 1.0 for positive values and -1.0 otherwise using _sign_without_zero'}
+```
+
