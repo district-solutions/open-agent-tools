@@ -2,8 +2,6 @@
 
 - A repo for those trying to power up small-to-large models with a tool-calling prompt index we're calling the [OpenAgent Tools Protocol (OATs)](https://openagent.tools). Using OATs lets developer and security teams curate supported tools with easy-to-edit json and markdown files.
 
-- We wanted to share how to compile a dataset with a tool-calling segmentation approach.
-
 - OATs is a self-hosted tool-calling approach for agents and humans to align on approved tools.
 
 - The initial use case is moderating multi-agentic tool discovery, guidance, resolution and usage on a filesystem containing 20600+ git repos using over 2.1 TB disk space.
@@ -117,8 +115,8 @@ Human Reasons
 - We have 1000s of pre-ai, home-grown command line tools this approach already works with and we wanted to share.
 - We wanted to help others build similar solutions.
 - We want to hear ways we can make this better.
+- We wanted to share how to compile a dataset with a tool-calling segmentation approach.
 - Reduce the large cloud models dependencies by recording and curating how self-hosted long-running tool calling chains perform. Capturing this data enables your team to train and finetune your own internal models on preferred tool chain pathways (tool graph efficiency optimization).
-
 
 ---
 
