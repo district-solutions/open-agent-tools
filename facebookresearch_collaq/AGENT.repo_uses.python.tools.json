@@ -1,0 +1,861 @@
+{
+  "facebookresearch_collaq/src_code/controllers/basic_controller_influence.py": {
+    "init_BasicMACInfluence": "initialize a BasicMACInfluence multi-agent controller with scheme, groups, and args for COLLAQ training",
+    "select_actions_BasicMACInfluence": "select actions for agents in a multi-agent episode batch using alone Q-value outputs",
+    "get_individual_q_BasicMACInfluence": "get individual Q-values including interactive, alone, and combined outputs for each agent in the batch",
+    "get_alone_q_BasicMACInfluence": "get alone Q-values from the target agent network for influence-based action selection",
+    "forward_BasicMACInfluence": "run a forward pass through the agent network to compute policy logits or Q-values"
+  },
+  "facebookresearch_collaq/src_code/controllers/basic_controller_interactive.py": {
+    "create_BasicMACInteractive": "create a BasicMACInteractive multi-agent controller that shares parameters between agents using scheme, groups, and args",
+    "select_actions_BasicMACInteractive": "select actions for agents in a batch using the BasicMACInteractive controller with forward pass and action selector",
+    "init_hidden_BasicMACInteractive": "initialize hidden states for all agents in a BasicMACInteractive controller given a batch size",
+    "save_and_load_models_BasicMACInteractive": "save or load agent model state dictionaries to and from a file path using BasicMACInteractive",
+    "create_BasicMACInteractiveRegV2": "create a BasicMACInteractiveRegV2 controller with a target agent for regularized multi-agent reinforcement learning"
+  },
+  "facebookresearch_collaq/src_code/learners/q_explore_learner.py": {
+    "create_RNDModel": "create an RNDModel neural network module for random network distillation intrinsic reward",
+    "run_RNDModel_get_reward": "run the RNDModel get_reward method to compute intrinsic reward from state predictions",
+    "run_RNDModel_update": "run the RNDModel update method to train the body model against the target network",
+    "create_QExploreLearner": "create a QExploreLearner with VDN or QMixer and count or RND intrinsic exploration",
+    "run_QExploreLearner_train": "run the QExploreLearner train method to perform one step of Q-learning with intrinsic rewards"
+  },
+  "facebookresearch_collaq/src_code/learners/q_influence_learner.py": {
+    "create_QInfluenceLearner": "create a QInfluenceLearner instance with a MAC, scheme, logger, and args configuration",
+    "train_QInfluenceLearner": "train the QInfluenceLearner on an EpisodeBatch using TD-error loss and RMSprop optimization",
+    "update_targets_QInfluenceLearner": "update the target MAC and mixer networks by copying weights from the live networks",
+    "save_models_QInfluenceLearner": "save the MAC models, mixer state dict, and optimizer state to a directory path",
+    "load_models_QInfluenceLearner": "load the MAC models, mixer state dict, and optimizer state from a directory path"
+  },
+  "facebookresearch_collaq/src_code/learners/q_interactive_learner.py": {
+    "train_q_interactive_learner": "train the QInteractiveLearner on an EpisodeBatch with TD-error loss and regularization",
+    "update_target_networks": "update target MAC and mixer networks by copying current network weights",
+    "initialize_q_interactive_learner": "initialize a QInteractiveLearner with a MAC, logger, and configurable mixer type",
+    "save_learner_models": "save the MAC, mixer, and optimizer state dicts to a directory path",
+    "load_learner_models": "load the MAC, mixer, and optimizer state dicts from a directory path"
+  },
+  "facebookresearch_collaq/src_code/modules/rnn_interactive_agent.py": {
+    "build_scaled_dot_product_attention": "build a ScaledDotProductAttention module that computes scaled dot-product attention with optional masking and dropout",
+    "create_multi_head_attention": "create a Multi_Head_Attention module with linear projections, layer normalization, and scaled dot-product attention",
+    "create_multi_head_attention_2layer": "create a Multi_Head_Attention_2layer module with two stacked attention layers for deeper feature extraction",
+    "build_rnn_interactive_attn_agent": "build a RNNInteractiveAttnAgent that combines GRU cells with self-attention for multi-agent interactive Q-value prediction",
+    "create_rnn_interactive_agent": "create a RNNInteractiveAgent with separate alone and interactive GRU agents that sum Q-values for multi-agent decisions"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/main.py": {
+    "run_pymarl_experiment": "run the pymarl multi-agent RL experiment with sacred config and commandline args",
+    "run_with_env_and_alg_config": "run the pymarl framework with a custom environment and algorithm YAML config file",
+    "recursive_dict_update_merge": "recursively update a dictionary with values from another dictionary preserving nested structure",
+    "config_copy_deep": "create a deep copy of a config dictionary or list preserving all nested values",
+    "get_config_from_yaml": "load a YAML config file from the config subfolder by parsing commandline arguments"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/run.py": {
+    "run_MARL_training": "run the PyMARL multi-agent RL training loop with config, logger, and sacred experiment tracking",
+    "run_sequential_training": "run sequential multi-agent RL training episodes with replay buffer sampling and periodic model saving",
+    "evaluate_MARL_model": "evaluate a trained multi-agent RL model by running test episodes and optionally saving replay data",
+    "load_checkpoint_model": "load a PyMARL model checkpoint from a specified path and resume training or evaluation",
+    "sanity_check_config": "validate and sanitize PyMARL config arguments including CUDA availability and test episode alignment"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/components/action_selectors.py": {
+    "create_multinomial_action_selector": "create a MultinomialActionSelector that samples actions from masked policy distributions using Categorical sampling",
+    "create_epsilon_greedy_action_selector": "create an EpsilonGreedyActionSelector that selects actions using epsilon-greedy strategy with linear decay schedule",
+    "select_action_multinomial": "select actions from agent policy inputs by sampling from a masked Categorical distribution",
+    "select_action_epsilon_greedy": "select actions using epsilon-greedy exploration by masking unavailable Q-values and sampling randomly or greedily",
+    "register_action_selector": "register a new action selector class in the REGISTRY dictionary by key name"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/components/episode_buffer.py": {
+    "create_EpisodeBatch": "create an EpisodeBatch with a scheme, groups, batch size, and max sequence length for MARL episode data",
+    "update_EpisodeBatch": "update an EpisodeBatch with new transition or episode data using batch and time slices",
+    "sample_ReplayBuffer": "sample a random batch of episodes from a ReplayBuffer for training a multi-agent RL policy",
+    "insert_ReplayBuffer": "insert an EpisodeBatch into a ReplayBuffer with automatic wraparound and buffer index management",
+    "slice_EpisodeBatch": "slice an EpisodeBatch by batch index or time steps to extract subsets of episode data"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/components/epsilon_schedules.py": {
+    "create_decay_then_flat_schedule_linear": "create a DecayThenFlatSchedule with linear decay from start to finish over a given time_length",
+    "create_decay_then_flat_schedule_exp": "create a DecayThenFlatSchedule with exponential decay from start to finish over a given time_length",
+    "eval_schedule_at_time": "eval a DecayThenFlatSchedule at time step T to get the current epsilon value",
+    "review_decay_then_flat_schedule_class": "review the DecayThenFlatSchedule class and its linear and exponential decay evaluation logic",
+    "refactor_eval_method": "refactor the DecayThenFlatSchedule eval method to support additional decay types beyond linear and exp"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/components/transforms.py": {
+    "create_onehot_transform": "create a OneHot transform that one-hot encodes a PyTorch tensor to a specified output dimension",
+    "transform_tensor_onehot": "transform a PyTorch tensor into a one-hot encoded tensor using the OneHot transform class",
+    "infer_output_info_onehot": "infer the output shape and dtype of a OneHot transform given input shape and dtype",
+    "extend_transform_base": "extend the Transform base class to implement a custom tensor transformation with transform and infer_output_info methods",
+    "review_transform_classes": "review the Transform base class and OneHot subclass for tensor transformation capabilities in PyMARL"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/controllers/basic_controller.py": {
+    "create_BasicMAC": "create a BasicMAC multi-agent controller that shares parameters between agents using a registered agent and action selector",
+    "select_actions_BasicMAC": "select actions for agents in an episode batch using the forward pass and action selector",
+    "forward_BasicMAC": "run the forward pass to compute agent outputs with softmax and epsilon floor for policy logits",
+    "save_models_BasicMAC": "save the agent model state dict to a file path for later loading and checkpointing",
+    "load_models_BasicMAC": "load the agent model state dict from a saved file path to restore training progress"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/envs/multiagentenv.py": {
+    "implement_multiagentenv_subclass": "implement a subclass of MultiAgentEnv that overrides step, get_obs, reset, and other abstract methods for a custom multi-agent environment",
+    "override_step_method": "override the step method in a MultiAgentEnv subclass to return reward, terminated, and info given a list of agent actions",
+    "override_get_obs_methods": "override get_obs and get_obs_agent in a MultiAgentEnv subclass to return observations for all agents or a specific agent_id",
+    "override_get_avail_actions": "override get_avail_actions and get_avail_agent_actions in a MultiAgentEnv subclass to return available actions for each agent",
+    "use_get_env_info": "call get_env_info on a MultiAgentEnv instance to retrieve state_shape, obs_shape, n_actions, n_agents, and episode_limit"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/learners/coma_learner.py": {
+    "create_COMALearner": "create a COMALearner instance with mac, scheme, logger, and args for counterfactual multi-agent RL training",
+    "train_COMALearner": "train the COMALearner on an EpisodeBatch by updating both the critic network and agent policy networks",
+    "review_train_critic": "review the _train_critic method that computes TD-lambda targets and performs backpropagation on the critic network",
+    "save_models_COMALearner": "save the COMALearner mac models, critic state dict, and optimizer states to a directory path",
+    "load_models_COMALearner": "load the COMALearner mac models, critic state dict, and optimizer states from a directory path"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/learners/q_learner.py": {
+    "create_QLearner": "create a QLearner instance with a MAC, scheme, logger, and args for multi-agent Q-learning",
+    "train_QLearner": "train the QLearner on an EpisodeBatch to compute TD-error and update agent and mixer weights",
+    "update_targets_QLearner": "update the target MAC and target mixer networks by copying weights from the live networks",
+    "save_models_QLearner": "save the MAC models, mixer state dict, and optimiser state to a given file path",
+    "load_models_QLearner": "load the MAC models, mixer state dict, and optimiser state from a given file path"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/learners/qtran_learner.py": {
+    "create_QLearner": "create a QLearner instance with a MAC, scheme, logger, and args for QTRAN multi-agent reinforcement learning",
+    "train_QLearner": "train the QLearner on an EpisodeBatch computing TD, optimal, and non-optimal loss for QTRAN base mixing",
+    "update_targets_QLearner": "update the target MAC and target mixer networks by copying weights from the online networks",
+    "save_models_QLearner": "save the MAC models, mixer state dict, and optimizer state to a given file path",
+    "load_models_QLearner": "load the MAC models, mixer state dict, and optimizer state from a given file path"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/modules/agents/rnn_agent.py": {
+    "create_rnn_agent": "create an RNNAgent instance with input_shape and args containing rnn_hidden_dim and n_actions",
+    "init_hidden_states": "call init_hidden on an RNNAgent to get zero-initialized hidden states on the correct device",
+    "forward_pass_rnn": "run a forward pass through the RNNAgent with inputs and hidden_state to get Q-values and new hidden state",
+    "review_rnn_agent_architecture": "review the RNNAgent class which uses fc1, GRUCell, and fc2 layers for sequential decision making",
+    "refactor_rnn_agent_layers": "refactor the RNNAgent forward method to add dropout or batch normalization between layers"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/modules/critics/coma.py": {
+    "build_COMACritic": "build a COMACritic network for counterfactual multi-agent reinforcement learning using PyMARL scheme and args",
+    "run_COMACritic_forward": "run the COMACritic forward pass on a batch to compute Q-values for all agents",
+    "review_COMACritic_build_inputs": "review the COMACritic _build_inputs method that concatenates state, observations, actions, and agent IDs",
+    "refactor_COMACritic_layers": "refactor the COMACritic fc1, fc2, fc3 linear layers to use configurable hidden dimensions",
+    "summarize_COMACritic_get_input_shape": "summarize the COMACritic _get_input_shape method that calculates total input dimension from the scheme"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/modules/mixers/qmix.py": {
+    "create_qmixer_with_hypernet_1": "create a QMixer with 1 hypernet layer by passing args with n_agents, state_shape, and mixing_embed_dim",
+    "create_qmixer_with_hypernet_2": "create a QMixer with 2 hypernet layers by setting hypernet_layers to 2 and hypernet_embed in args",
+    "forward_qmixer_agent_qs": "run the QMixer forward pass with agent_qs and states tensors to compute the total joint Q-value",
+    "review_qmixer_hyper_w1": "review the QMixer hyper_w_1 network which produces state-conditioned weights for the first mixing layer",
+    "review_qmixer_V_network": "review the QMixer V network which computes V(s) as a state-dependent bias for the final output"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/modules/mixers/qtran.py": {
+    "create_QTranBase": "create a QTranBase mixer network instance with coma_critic or qtran_paper architecture and small or big network size",
+    "run_QTranBase_forward": "run the QTranBase forward pass with a batch, hidden states, and optional actions to get Q and V outputs",
+    "build_Q_network": "build the Q network for joint action-value estimation using state and action inputs through a multi-layer MLP",
+    "build_V_network": "build the V network for state-value estimation using state inputs through a multi-layer MLP",
+    "review_action_encoding": "review the action_encoding network that encodes agent hidden states and actions for the qtran_paper architecture"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/modules/mixers/vdn.py": {
+    "create_VDNMixer": "create a VDNMixer instance that extends nn.Module for value decomposition networks",
+    "run_VDNMixer_forward": "run the VDNMixer forward pass to sum agent Q-values across the agent dimension",
+    "test_VDNMixer_forward": "test the VDNMixer forward method with agent Q-values tensor and batch input",
+    "review_VDNMixer": "review the VDNMixer class implementation for summing agent Q-values along dimension 2",
+    "refactor_VDNMixer_forward": "refactor the VDNMixer forward method to support configurable summation dimensions"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/runners/episode_runner.py": {
+    "run_episode": "run a single MARL episode in train or test mode using the EpisodeRunner",
+    "setup_episode_runner": "setup the EpisodeRunner with scheme, groups, preprocess, and mac for batch creation",
+    "reset_episode_runner": "reset the EpisodeRunner environment and create a new EpisodeBatch for the next episode",
+    "get_env_info": "get environment info like state shape, action shape, and n_agents from the EpisodeRunner",
+    "log_episode_stats": "log episode return mean, return std, and aggregated stats using the EpisodeRunner _log method"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/runners/parallel_runner.py": {
+    "run_parallel_episodes": "run a batch of parallel MARL environment episodes using ParallelRunner with test_mode flag",
+    "setup_parallel_runner": "setup a ParallelRunner with scheme, groups, preprocess, and mac for episode batch creation",
+    "reset_parallel_envs": "reset all parallel environment subprocesses and collect initial observations, states, and available actions",
+    "close_parallel_envs": "close all parallel environment subprocesses by sending close commands through parent connections",
+    "create_cloudpickle_wrapper": "create a CloudpickleWrapper to serialize callable objects for multiprocessing using cloudpickle instead of pickle"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/utils/dict2namedtuple.py": {
+    "convert_dict_to_namedtuple": "convert a dictionary into a namedtuple so values are accessible as dot-notation attributes",
+    "convert_dict_for_attribute_access": "convert a dictionary to a GenericDict namedtuple to enable attribute-style key access",
+    "convert_dict_for_immutable_access": "convert a dictionary into an immutable namedtuple for read-only attribute access",
+    "review_convert_function": "review the convert function that transforms a dictionary into a namedtuple with keys as field names",
+    "test_convert_function": "test the convert function by passing a sample dictionary and verifying attribute access works"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/utils/logging.py": {
+    "create_logger": "create a Logger instance with a console_logger to track training stats",
+    "setup_tensorboard": "setup TensorBoard logging for the Logger by calling setup_tb with a directory name",
+    "setup_sacred": "setup Sacred experiment tracking for the Logger by calling setup_sacred with a run dict",
+    "log_stat": "log a stat key value pair with timestamp to the Logger and optional backends",
+    "get_logger": "get a configured root logger with StreamHandler and DEBUG level for console output"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/utils/rl_utils.py": {
+    "build_td_lambda_targets": "build TD(lambda) targets for reinforcement learning using rewards, terminated flags, masks, and target Q-values",
+    "create_rl_lambda_returns": "create lambda-return values from t=0 to t=T-1 for multi-agent RL training episodes",
+    "test_build_td_lambda_targets": "test the build_td_lambda_targets function with PyTorch tensors for rewards and target Q-values",
+    "refactor_rl_utils": "refactor the rl_utils module to support additional TD target computation strategies",
+    "summarize_build_td_lambda_targets": "summarize the build_td_lambda_targets function that computes backward recursive forward view lambda returns"
+  },
+  "facebookresearch_collaq/third_party/pymarl/src/utils/timehelper.py": {
+    "print_training_progress": "print training episode progress with elapsed time, time left, and recent episode rewards",
+    "calculate_time_left": "calculate estimated time remaining for a training run based on start time and current progress",
+    "convert_seconds_to_readable": "convert a number of seconds into a human-readable string showing days, hours, minutes, and seconds",
+    "refactor_print_time": "refactor the print_time function to support custom formatting or additional training metrics",
+    "review_timehelper_module": "review the timehelper module functions for time estimation and progress printing utilities"
+  },
+  "facebookresearch_collaq/third_party/sacred/examples/03_hello_config_scope.py": {
+    "run_sacred_experiment": "run the sacred experiment hello_cs that prints a configurable greeting message",
+    "create_config_scope": "create a sacred ConfigScope function that defines recipient and message config variables",
+    "run_experiment_with_override": "run the sacred experiment with a custom recipient or message via the with CLI argument",
+    "review_experiment_cfg": "review the sacred experiment cfg function that constructs a greeting message from a recipient variable",
+    "refactor_main_automain": "refactor the sacred automain main function to accept a message argument and print it"
+  },
+  "facebookresearch_collaq/third_party/sacred/examples/04_captured_functions.py": {
+    "run_captured_functions_example": "run the sacred captured functions example that auto-injects config parameters into foo and bar",
+    "create_experiment_with_config": "create a sacred Experiment with a config function that defines a message parameter",
+    "capture_function_with_config": "create a captured function using ex.capture that auto-receives config parameters without explicit arguments",
+    "override_captured_function_arg": "call a captured function with an explicit argument to override the default config value",
+    "review_capture_decorator": "review the ex.capture decorator pattern for automatic config injection in sacred experiments"
+  },
+  "facebookresearch_collaq/third_party/sacred/examples/05_my_commands.py": {
+    "run_sacred_experiment_greet": "run the sacred experiment greet command to print a greeting message with a configurable name",
+    "run_sacred_experiment_shout": "run the sacred experiment shout command to print a slang shout message",
+    "run_sacred_experiment_main": "run the sacred experiment main command to see available command options",
+    "create_sacred_command": "create a sacred experiment command using the ex.command decorator to add a CLI command",
+    "configure_sacred_experiment": "configure a sacred experiment using the ex.config decorator to set default config values"
+  },
+  "facebookresearch_collaq/third_party/sacred/examples/06_randomness.py": {
+    "run_sacred_experiment_with_fixed_seed": "run the Sacred randomness experiment with a fixed seed to get reproducible random results",
+    "run_experiment_with_variable_numbers": "run the Sacred experiment with a fixed seed and vary the numbers parameter for independent calls",
+    "run_experiment_with_reverse_order": "run the Sacred experiment with reverse=True to verify function calls do not interfere with each other",
+    "create_sacred_experiment_with_config": "create a Sacred Experiment with a config function that defines reverse and numbers parameters",
+    "create_captured_function_with_rnd": "create a captured function that uses the _rnd special parameter to generate random integers"
+  },
+  "facebookresearch_collaq/third_party/sacred/examples/07_magic.py": {
+    "run_svm_experiment": "run a sacred experiment that trains an SVM classifier on the breast cancer dataset",
+    "create_sacred_experiment": "create a sacred Experiment instance with a FileStorageObserver to log runs to disk",
+    "define_experiment_config": "define experiment configuration using the ex.config decorator with local variables for hyperparameters",
+    "capture_config_params": "capture experiment config parameters automatically using the ex.capture decorator on a function",
+    "enable_cli_integration": "enable command line integration for the main function using the ex.automain decorator"
+  },
+  "facebookresearch_collaq/third_party/sacred/examples/08_less_magic.py": {
+    "run_svm_experiment": "run the sacred SVM experiment that trains on breast cancer data and returns test accuracy",
+    "create_svm_model": "create an SVM classifier model with configurable C, gamma, and kernel parameters",
+    "configure_sacred_experiment": "configure a sacred experiment with explicit dictionary config for SVM hyperparameters",
+    "add_file_observer": "add a FileStorageObserver to a sacred experiment to log runs to a directory",
+    "load_and_split_data": "load the breast cancer dataset and split into train and test sets with 20 percent test size"
+  },
+  "facebookresearch_collaq/third_party/sacred/examples/captured_out_filter.py": {
+    "run_progress_experiment": "run a sacred experiment that filters captured output to remove backspaces and linefeeds",
+    "create_progress_monitor": "create a ProgressMonitor class instance to track and display task completion progress",
+    "use_progress_generator": "use the progress generator function to iterate over items with a progress bar",
+    "apply_output_filter": "apply the apply_backspaces_and_linefeeds filter to a sacred experiment captured output",
+    "write_and_flush_stdout": "write multiple strings to stdout and flush the buffer using write_and_flush"
+  },
+  "facebookresearch_collaq/third_party/sacred/examples/ingredient.py": {
+    "create_sacred_ingredient": "create a Sacred Ingredient to encapsulate dataset configuration and reusable functions",
+    "run_load_data": "run the captured load_data function to load and optionally normalize a dataset",
+    "run_stats_command": "run the stats command to print dataset statistics with configurable parameters",
+    "create_sacred_experiment": "create a Sacred Experiment that incorporates an Ingredient for shared configuration",
+    "run_experiment_automain": "run the automain experiment entry point that loads data and prints results"
+  },
+  "facebookresearch_collaq/third_party/sacred/examples/log_example.py": {
+    "run_sacred_log_example": "run the sacred log_example script to demonstrate custom logging with an Experiment",
+    "create_sacred_experiment_with_custom_logger": "create a sacred Experiment and attach a custom logger with a StreamHandler and Formatter",
+    "configure_sacred_experiment_with_config_decorator": "configure a sacred Experiment using the @ex.config decorator to define config variables",
+    "capture_config_values_with_ex_capture": "capture config values and the _log object in a function using the @ex.capture decorator",
+    "run_sacred_main_with_automain": "run a sacred Experiment's main function using the @ex.automain decorator with captured config"
+  },
+  "facebookresearch_collaq/third_party/sacred/examples/modular.py": {
+    "create_ingredient": "create a Sacred Ingredient to define reusable configuration components with nested dependencies",
+    "create_experiment": "create a Sacred Experiment that composes multiple Ingredients for modular configuration",
+    "configure_ingredient": "configure an Ingredient using the @ingredient.config decorator to define scoped config values",
+    "capture_config": "capture config values into a function using the @ingredient.capture decorator for dependency injection",
+    "run_automain": "run the main experiment function using the @ex.automain decorator as the entry point"
+  },
+  "facebookresearch_collaq/third_party/sacred/examples/named_config.py": {
+    "run_sacred_experiment": "run the sacred hello_config experiment that prints a configurable greeting message",
+    "create_named_config": "create a named config in sacred to override default config values like recipient and message",
+    "create_default_config": "create a default config in sacred that sets recipient and message variables for the experiment",
+    "run_experiment_with_rude_config": "run the sacred experiment with the rude named config to print a rude greeting",
+    "review_automain_entry": "review the sacred automain decorated main function that prints the experiment name and message"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/arg_parser.py": {
+    "parse_config_updates": "parse command-line config update strings like foo.bar=17 into a dictionary and named configs list",
+    "format_usage_text": "generate a docopt-compatible usage text for a sacred experiment with commands and options",
+    "format_options_usage": "format a list of CLI options into a docopt Options section with flags and descriptions",
+    "format_command_usage": "format a dictionary of commands into a docopt Commands section with names and docstrings",
+    "convert_cli_value": "parse a command-line string value as a Python literal or fall back to a plain string"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/commandline_options.py": {
+    "create_cli_option_decorator": "use the cli_option decorator to register a new command-line flag with short and long forms",
+    "implement_commandlineoption_subclass": "subclass CommandLineOption to add a custom CLI flag with an execute classmethod",
+    "use_debug_option": "use the debug_option flag to set a sacred run into debug mode and suppress warnings",
+    "use_loglevel_option": "use the loglevel_option to set the logging level for a sacred run by number or name",
+    "use_enforce_clean_option": "use the enforce_clean_option to fail a run if any version control repository has uncommitted changes"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/commands.py": {
+    "print_config": "print the updated Sacred experiment configuration with color-coded modifications and additions",
+    "print_dependencies": "print the detected source files and dependencies for a Sacred experiment run",
+    "save_config": "save the updated Sacred experiment configuration to a JSON file",
+    "help_for_command": "get the help text including signature and docstring for a Sacred command function",
+    "print_named_configs": "print the available named configurations for a Sacred ingredient and all sub-ingredients"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/dependencies.py": {
+    "gather_sources_and_dependencies": "gather all source files and package dependencies from a Python experiment's globals dict",
+    "Source_create": "create a Source object with file digest and optional git commit info for a given filename",
+    "PackageDependency_create": "create a PackageDependency object from an imported Python module to capture its name and version",
+    "get_digest": "compute the MD5 hash digest of a file for change detection and reproducibility tracking",
+    "is_local_source": "check if a module file belongs to the local experiment directory or is an external package dependency"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/experiment.py": {
+    "create_experiment": "create a new Sacred Experiment instance with a name and optional ingredients for managing ML experiment configuration",
+    "run_experiment_commandline": "run the Sacred Experiment command-line interface by calling run_commandline to parse sys.argv and execute the default command",
+    "run_experiment_programmatically": "run a Sacred Experiment command programmatically by calling run with config_updates and named_configs to start a Run",
+    "define_main_function": "define the main function of a Sacred Experiment using the @ex.main decorator to mark it as the default command",
+    "add_option_hook": "add an option hook function to a Sacred Experiment using @ex.option_hook to modify command-line options before a run is created"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/host_info.py": {
+    "get_host_info": "collect host information including CPU, OS, Python version, and GPU details into a dictionary",
+    "HostInfoGetter": "create a HostInfoGetter wrapper that stores a getter function and name for collecting host info",
+    "host_info_gatherer": "decorate a function with host_info_gatherer to register it as a named host info collector",
+    "check_additional_host_info": "validate a list of additional HostInfoGetter objects to ensure no name conflicts with default gatherers",
+    "host_info_getter": "register a custom function as a host info gatherer in the global gatherers dictionary"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/ingredient.py": {
+    "create_ingredient": "create a Sacred Ingredient instance with a path and optional sub-ingredients for reusable experiment components",
+    "capture_function": "use the capture decorator on a function to auto-fill arguments from the Sacred configuration",
+    "add_config": "add a configuration dictionary or YAML file to an Ingredient using add_config with keyword arguments",
+    "define_command": "define a new command for an Ingredient using the command decorator to expose it on the CLI",
+    "traverse_ingredients": "recursively traverse an Ingredient and its sub-ingredients using traverse_ingredients to detect circular dependencies"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/initialize.py": {
+    "create_run": "create a Sacred Run by initializing scaffolding, config, logging, and seeding from an experiment",
+    "create_scaffolding": "create an OrderedDict of Scaffold objects from an experiment and its sorted ingredients",
+    "initialize_logging": "initialize logging for all scaffolds in the experiment and return root and run loggers",
+    "gather_ingredients_topological": "gather and topologically sort an experiment's ingredients by deepest dependency depth",
+    "get_command": "get the main command function from scaffolding by its dotted command path"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/metrics_logger.py": {
+    "create_metrics_logger": "create a MetricsLogger instance to collect scalar metrics during experiment runs",
+    "log_scalar_metric": "log a scalar metric value with an optional step number to the MetricsLogger queue",
+    "get_last_metrics": "retrieve all logged metric entries since the last call to get_last_metrics",
+    "create_scalar_metric_log_entry": "create a ScalarMetricLogEntry container with a name, step, timestamp, and value",
+    "linearize_metrics": "group a list of ScalarMetricLogEntries by metric name into steps, values, and timestamps"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/optional.py": {
+    "run_optional_import": "run optional_import to conditionally import a package and return a boolean and the module or None",
+    "run_optional_import_multiple": "run optional_import with multiple package names to check if all packages are available together",
+    "run_get_tensorflow": "run get_tensorflow to import TensorFlow with backward compatibility for version 1 and 2",
+    "review_optional_import": "review the optional_import function to understand how it handles ImportError and returns availability",
+    "review_optional_module_checks": "review the module-level optional imports for numpy, yaml, pandas, sqlalchemy, mako, tinydb, and tensorflow"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/randomness.py": {
+    "get_seed_random": "get a random seed integer between 1 and 1 billion using the get_seed function",
+    "get_seed_with_rng": "get a random seed from a provided random number generator instance using get_seed",
+    "create_rnd_numpy": "create a seeded numpy RandomState or stdlib Random instance using create_rnd with an integer seed",
+    "set_global_seed_all": "set the global random seed across python random, numpy, tensorflow, and pytorch using set_global_seed",
+    "review_randomness_module": "review the randomness module functions get_seed, create_rnd, and set_global_seed for seed management"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/run.py": {
+    "run_experiment": "run a Sacred experiment by calling the Run instance to execute the main function with observers",
+    "log_scalar_metric": "log a scalar metric value with an optional step number to the Run metrics logger",
+    "add_resource_file": "add a file as a resource to the Run so observers track its path and md5 sum",
+    "add_artifact_file": "add a file as an artifact to the Run with optional metadata and content type",
+    "open_resource_file": "open a file and register it as a resource with observers in one call"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/serializer.py": {
+    "flatten_object_to_dict": "flatten a Python object into a JSON-serializable dictionary using jsonpickle with keys enabled",
+    "restore_object_from_dict": "restore a Python object from a JSON-serializable dictionary using jsonpickle with keys enabled",
+    "flatten_numpy_array": "flatten a numpy array into a JSON-serializable dictionary using jsonpickle with registered numpy handlers",
+    "restore_pandas_dataframe": "restore a pandas DataFrame from a JSON-serializable dictionary using jsonpickle with registered pandas handlers",
+    "review_serializer_module": "review the sacred serializer module that provides flatten and restore functions for object serialization"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/stdout_capturing.py": {
+    "create_captured_stdout_buffer": "create a CapturedStdout instance with a StringIO buffer to capture and retrieve stdout output incrementally",
+    "use_teeing_stream_proxy": "use TeeingStreamProxy to wrap stdout or stderr and duplicate all written data to an output buffer",
+    "run_tee_output_python": "run tee_output_python context manager to duplicate sys.stdout and sys.stderr to a StringIO buffer",
+    "run_tee_output_fd": "run tee_output_fd context manager to duplicate stdout and stderr to a temporary file at the file descriptor level",
+    "get_stdcapturer_by_mode": "get a std capturer context manager by mode name such as no, fd, or sys"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/utils.py": {
+    "recursive_update": "recursively update a nested dictionary with values from another dictionary",
+    "iterate_flattened": "iterate over a nested dictionary yielding dotted paths and leaf values",
+    "set_by_dotted_path": "set a value in a nested dictionary using a dotted path string",
+    "get_by_dotted_path": "get a value from a nested dictionary using a dotted path string",
+    "convert_camel_case_to_snake_case": "convert a CamelCase string to snake_case format"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/config/captured_function.py": {
+    "create_captured_function": "create a captured function wrapper that injects config, logger, and randomness arguments into a callable",
+    "apply_captured_function_decorator": "apply the captured_function wrapt decorator to a function to auto-inject config and seed arguments on call",
+    "review_create_captured_function": "review the create_captured_function factory that attaches signature, randomness, and config metadata to a function",
+    "review_captured_function_decorator": "review the captured_function wrapt decorator that constructs arguments from config and logs execution timing",
+    "test_captured_function_with_randomness": "test the captured_function decorator to verify it injects _seed and _rnd when the wrapped function requests them"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/config/config_files.py": {
+    "load_config_file": "load a configuration file in json, yaml, or pickle format by filename",
+    "save_config_file": "save a configuration dictionary to a json, yaml, or pickle file by filename",
+    "get_handler": "get the file handler for a config file based on its extension",
+    "review_Handler_class": "review the Handler class that wraps load, dump, and mode for config file I/O",
+    "review_HANDLER_BY_EXT": "review the HANDLER_BY_EXT dictionary mapping file extensions to their Handler instances"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/config/config_scope.py": {
+    "create_ConfigScope": "create a ConfigScope instance from a function to evaluate config with preset and fallback values",
+    "call_ConfigScope": "call a ConfigScope with fixed preset and fallback dicts to produce a ConfigSummary",
+    "extract_function_body": "extract the body code and line offset from a function using get_function_body",
+    "parse_config_comments": "parse inline and preceding comments from a function into variable docs using get_config_comments",
+    "dedent_function_body": "dedent a function body string by detecting and stripping the leading indentation"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/config/config_summary.py": {
+    "create_ConfigSummary": "create a ConfigSummary dict tracking added, modified, typechanged config keys and docs",
+    "update_from_ConfigSummary": "update a ConfigSummary from another config modification object using intersection for added keys",
+    "update_add_ConfigSummary": "update a ConfigSummary by adding new config modifications using union for added keys",
+    "ensure_coherence_ConfigSummary": "ensure ConfigSummary coherence by propagating parent paths and removing overlaps between sets",
+    "review_ConfigSummary_class": "review the ConfigSummary class that extends dict to track config changes with added, modified, and typechanged sets"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/config/custom_containers.py": {
+    "create_dogmatic_dict": "create a DogmaticDict with fixed config keys that ignore attempts to overwrite them",
+    "create_dogmatic_list": "create a DogmaticList that silently ignores all mutation operations like append or insert",
+    "create_readonly_dict": "create a ReadOnlyDict that raises SacredError on any attempt to modify the dictionary",
+    "create_readonly_list": "create a ReadOnlyList that raises SacredError on any attempt to modify the list",
+    "make_read_only": "make a nested structure of dicts and lists read-only by converting to ReadOnlyDict and ReadOnlyList"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/config/signature.py": {
+    "get_argspec_function": "get the argument specification of a function including args, varargs, kwargs, and defaults",
+    "create_Signature_object": "create a Signature object from a function to extract its name, arguments, and defaults",
+    "get_free_parameters": "get the list of free parameters not yet provided in args or kwargs for a Signature",
+    "construct_arguments": "construct validated args and kwargs for a function signature by filling in missing options",
+    "review_Signature_class": "review the Signature class methods for extracting and validating Python function signatures"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/config/utils.py": {
+    "validate_config_key": "validate a config key against mongo, jsonpickle, string, and python identifier rules",
+    "normalize_config_object": "recursively normalize a config object by validating keys and converting numpy scalars",
+    "fill_in_config_defaults": "recursively fill missing keys in a config dict from a preset dict",
+    "evaluate_config_scopes": "chain evaluate multiple config scope callables and merge results into a final config",
+    "dogmatize_config": "recursively convert dicts and lists into DogmaticDict and DogmaticList immutable containers"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/observers/base.py": {
+    "create_RunObserver_subclass": "create a custom RunObserver subclass to handle experiment lifecycle events in Sacred",
+    "implement_queued_event": "implement the queued_event method in a RunObserver subclass to log experiment queue details",
+    "implement_started_event": "implement the started_event method in a RunObserver subclass to capture experiment start metadata",
+    "implement_completed_event": "implement the completed_event method in a RunObserver subclass to record experiment results and stop time",
+    "use_td_format": "use td_format to convert a Python timedelta object into a human-readable duration string"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/observers/file_storage.py": {
+    "create_file_storage_observer": "create a FileStorageObserver instance to log experiment runs to a specified base directory on disk",
+    "use_file_storage_cli_option": "use the file_storage_option CLI flag to add a FileStorageObserver to a Sacred experiment run",
+    "save_experiment_metrics": "save experiment metrics with values, steps, and timestamps to a metrics.json file via log_metrics",
+    "render_mako_template_report": "render a Mako HTML template report from run data, config, info, and captured output",
+    "save_experiment_sources_and_resources": "save experiment source files and resource files to dedicated directories using find_or_save with MD5 deduplication"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/observers/gcs_observer.py": {
+    "create_GoogleCloudStorageObserver": "create a GoogleCloudStorageObserver instance to log Sacred experiment results to a GCS bucket",
+    "validate_bucket_is_valid_bucket": "validate a Google Cloud Storage bucket name against GCS naming rules using _is_valid_bucket",
+    "join_gcs_paths_gcs_join": "join multiple GCS path segments into a single forward-slash separated path string using gcs_join",
+    "add_gcs_observer_gcs_option": "add a GCS observer to a Sacred experiment run via the gcs_option CLI helper",
+    "log_metrics_log_metrics": "log experiment metrics with values, steps, and timestamps to a metrics.json file on GCS"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/observers/mongo.py": {
+    "create_MongoObserver": "create a MongoObserver to log Sacred experiment runs to a MongoDB database with a custom URL and db_name",
+    "create_QueuedMongoObserver": "create a QueuedMongoObserver that logs Sacred experiment runs to MongoDB using a fault-tolerant background process",
+    "use_mongo_db_option": "add a MongoDB observer to a Sacred experiment run via the mongo_db_option CLI argument",
+    "force_bson_encodeable": "convert a Python object or dict into a BSON-serializable format by sanitizing invalid keys and values",
+    "parse_mongo_db_arg": "parse a MongoDB connection string argument into kwargs for host, port, db_name, collection, and priority"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/observers/queue.py": {
+    "create_queue_observer": "create a QueueObserver wrapping a RunObserver to process events in the background with retry logic",
+    "wrap_observer_with_queue": "wrap a sacred RunObserver with QueueObserver to queue events and retry on failure",
+    "review_queue_observer_retry": "review the QueueObserver _run method that retries failed event processing with configurable retry intervals",
+    "refactor_queue_observer_join": "refactor the QueueObserver join method to wait for queued events to drain before stopping the worker thread",
+    "test_wrapped_event_namedtuple": "test the WrappedEvent namedtuple that stores event name args and kwargs for queued processing"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/observers/s3_observer.py": {
+    "create_S3Observer": "create an S3Observer instance to store experiment results in an AWS S3 bucket with a specified basedir",
+    "validate_S3_bucket_name": "validate an AWS S3 bucket name against AWS naming rules using the _is_valid_bucket helper function",
+    "join_S3_keys": "join multiple path segments into a single S3 key string using the s3_join utility function",
+    "add_S3_observer_via_cli": "add an S3 observer to a Sacred experiment run using the s3_option CLI with s3://bucket/path syntax",
+    "save_experiment_metrics_to_S3": "log experiment metrics with values, steps, and timestamps to a metrics.json file on S3 using log_metrics"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/observers/slack.py": {
+    "create_SlackObserver_from_config": "create a SlackObserver from a Sacred config file with webhook_url and optional bot settings",
+    "create_SlackObserver_with_webhook": "create a SlackObserver instance with a webhook URL to send experiment status messages to Slack",
+    "customize_SlackObserver_completed_text": "customize the SlackObserver completed_text template to format experiment completion messages with custom fields",
+    "test_SlackObserver_failed_event": "test the SlackObserver failed_event method to send failure notifications with error trace to Slack",
+    "review_SlackObserver_interrupted_event": "review the SlackObserver interrupted_event method that posts experiment interruption status to a Slack webhook"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/observers/sql.py": {
+    "create_sql_observer": "create a SqlObserver instance with a SQLAlchemy database URL to track experiment runs",
+    "create_sql_observer_from_engine": "create a SqlObserver from an existing SQLAlchemy engine and session object",
+    "query_run_by_id": "query a completed run by its ID and return the run data as JSON",
+    "add_sql_observer_cli": "add a SQL Observer to a Sacred experiment run via the command line --sql option",
+    "review_sql_observer_events": "review the SqlObserver class methods for handling started, completed, failed, and interrupted run events"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/observers/sql_bases.py": {
+    "create_source_record": "create a Source ORM record from a filename and md5sum using get_or_create with a SQLAlchemy session",
+    "create_dependency_record": "create a Dependency ORM record by parsing a name==version string via get_or_create with a session",
+    "create_artifact_from_file": "create an Artifact ORM instance from a binary file using the create class method with name and filename",
+    "create_experiment_record": "create an Experiment ORM record with sources and dependencies using get_or_create with experiment info dict",
+    "query_run_to_json": "query a Run ORM record and serialize it to JSON using the to_json method with nested relationships"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/observers/telegram_obs.py": {
+    "create_TelegramObserver_from_config": "create a TelegramObserver from a config file with token and chat_id entries",
+    "create_TelegramObserver_directly": "create a TelegramObserver with a telegram bot and chat_id for experiment notifications",
+    "send_started_event": "send a Telegram message when a Sacred experiment starts on a host",
+    "send_completed_event": "send a Telegram message when a Sacred experiment completes with its result",
+    "send_failed_event": "send a Telegram message with backtrace when a Sacred experiment fails"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/observers/tinydb_hashfs.py": {
+    "create_TinyDbObserver": "create a TinyDbObserver instance to log Sacred experiment runs to a local TinyDB database at a given path",
+    "create_TinyDbObserver_from_existing": "create a TinyDbObserver from an existing TinyDB database and HashFS filesystem instance",
+    "fetch_files_TinyDbReader": "fetch source, resource, and artifact files for experiments matching a name or TinyDB query",
+    "fetch_report_TinyDbReader": "fetch a formatted text report with parameters, results, and dependencies for matching experiments",
+    "fetch_metadata_TinyDbReader": "fetch raw metadata entries for experiments by name, index, or custom TinyDB query"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/observers/tinydb_hashfs_bases.py": {
+    "get_db_file_manager": "create a TinyDB database and HashFS file manager with custom serializers for datetime, numpy, pandas, and file objects",
+    "DateTimeSerializer_encode_decode": "encode and decode datetime objects to and from ISO format strings for TinyDB serialization",
+    "NdArraySerializer_encode_decode": "serialize numpy ndarrays to JSON lists and deserialize them back to numpy arrays",
+    "DataFrameSerializer_encode_decode": "serialize pandas DataFrames to JSON strings and deserialize them back to DataFrames",
+    "FileSerializer_encode_decode": "store files in a HashFS content-addressed store and retrieve them as wrapped BufferedReader objects"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/stflow/internal.py": {
+    "create_context_method_decorator": "create a ContextMethodDecorator instance with a class, method name, and decorator function",
+    "patch_method_with_context": "use ContextMethodDecorator as a context manager to temporarily patch a class method",
+    "restore_original_method": "exit the ContextMethodDecorator context to automatically restore the original unpatched method",
+    "review_double_patch_protection": "review the ContextMethodDecorator sacred_patched guard that prevents re-patching the same method",
+    "summarize_decorator_func_signature": "summarize the decorator function signature requiring instance, original_method, args, and kwargs parameters"
+  },
+  "facebookresearch_collaq/third_party/sacred/sacred/stflow/method_interception.py": {
+    "create_logfilewriter_decorator": "create a LogFileWriter decorator on a function to intercept TensorFlow FileWriter logdir arguments",
+    "create_logfilewriter_context_manager": "create a LogFileWriter context manager to capture TensorFlow FileWriter logdir paths in scoped blocks",
+    "review_logfilewriter_class": "review the LogFileWriter class that intercepts tf.summary.FileWriter init to log directory paths",
+    "refactor_logfilewriter_init": "refactor the LogFileWriter init method to customize how logdir arguments are extracted and stored",
+    "summarize_logfilewriter_usage": "summarize the LogFileWriter class usage as both a decorator and context manager for TensorFlow experiments"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/conftest.py": {
+    "parse_docstring_calls": "parse a docstring to extract indented dollar-sign blocks as shell calls and expected outputs",
+    "generate_parametrized_example_tests": "generate parametrized pytest tests from example Python files by parsing their docstrings for calls and outputs",
+    "add_sqlalchemy_cli_option": "add a sqlalchemy-connect-url command line option to the pytest argument parser",
+    "create_tmpfile_fixture": "create a temporary Python file fixture with an md5 checksum for use in pytest tests",
+    "review_get_calls_from_doc": "review the get_calls_from_doc function that parses docstrings for indented dollar-sign command blocks"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_arg_parser.py": {
+    "test_parse_individual_arguments": "test the docopt-based CLI argument parser for sacred experiment commands like run and evaluate",
+    "test_get_config_updates": "test the get_config_updates function that parses key=value config strings into nested dictionaries",
+    "test_convert_value": "test the _convert_value function that parses string literals into Python types like ints, floats, lists, and dicts",
+    "review_gather_command_line_options": "review the gather_command_line_options function used to collect CLI options for sacred experiments",
+    "review_format_usage": "review the format_usage function that builds docopt usage strings for sacred CLI parsing"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_commands.py": {
+    "test_iterate_marked": "test the _iterate_marked function to iterate over a config dict and yield ConfigEntry and PathEntry tuples",
+    "test_format_entry": "test the _format_entry function to format a ConfigEntry or PathEntry into a human-readable string",
+    "test_format_config": "test the _format_config function to format an entire config dict into indented key-value text output",
+    "test_help_for_command": "test the help_for_command function to extract a command name and docstring for help text",
+    "test_format_named_configs": "test the _format_named_configs function to format a dict of named configs with docstrings into text"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_dependencies.py": {
+    "test_PEP440_VERSION_PATTERN": "test the PEP440_VERSION_PATTERN regex against valid and invalid version strings",
+    "test_Source_create": "test creating a Source object from a Python file path and verify its digest",
+    "test_PackageDependency_create": "test creating a PackageDependency from a module and verify its name and version",
+    "test_gather_sources_and_dependencies": "test gathering all source files and package dependencies from a module's globals",
+    "test_is_local_source": "test whether a given file path is a local source relative to an experiment path"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_exceptions.py": {
+    "test_circular_dependency_raises": "test that running an experiment with a circular ingredient dependency raises CircularDependencyError",
+    "test_config_added_raises": "test that running an experiment with unused config updates raises ConfigAddedError",
+    "test_missing_config_raises": "test that running an experiment with a missing config parameter raises MissingConfigError",
+    "test_format_filtered_stacktrace_true": "test that format_filtered_stacktrace filters out captured function internals when filter_traceback is default or always",
+    "test_format_sacred_error": "test that format_sacred_error formats SacredError output with configurable traceback, filtering, and usage options"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_experiment.py": {
+    "test_sacred_experiment_main_command": "test the sacred Experiment class main command decorator registration and default command behavior",
+    "test_sacred_experiment_automain": "test the sacred automain decorator that auto-runs when the script is the main module",
+    "test_sacred_config_updates_validation": "test the sacred Experiment config updates validation that raises ConfigAddedError on unused config keys",
+    "test_sacred_named_config": "test the sacred named_config decorator to override experiment configuration values at runtime",
+    "test_sacred_cli_option": "test the sacred cli_option decorator to add custom CLI flags and arguments to an experiment"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_host_info.py": {
+    "test_get_host_info": "test the get_host_info function to verify it returns hostname, cpu, os, and python_version",
+    "test_host_info_getter_decorator": "test the host_info_getter decorator to register a custom gatherer function in host_info_gatherers",
+    "test_host_info_getter_with_name": "test the host_info_getter decorator with a custom name parameter to register under a different key",
+    "test_host_info_gatherers_registry": "test the host_info_gatherers registry dict to confirm custom gatherers are added and removed correctly",
+    "test_host_info_deprecation_warning": "test that using host_info_getter with the name parameter emits a DeprecationWarning"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_ingredients.py": {
+    "test_create_ingredient": "test creating a Sacred Ingredient with a given path name and verify its sources",
+    "test_capture_function": "test capturing a function on an Ingredient using the capture decorator with optional prefix",
+    "test_add_command": "test adding a command to an Ingredient using the command decorator with optional prefix or unobserved flag",
+    "test_add_config": "test adding configuration to an Ingredient via dict, kwargs, or JSON file using add_config",
+    "test_gather_commands": "test gathering commands from nested Ingredients and verify they are prefixed with the Ingredient path"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_metrics_logger.py": {
+    "log_scalar_metric_with_run": "log a scalar metric using _run.log_scalar with a named metric, value, and step number",
+    "log_scalar_metric_with_experiment": "log a scalar metric using ex.log_scalar with a named metric, value, and step number",
+    "log_scalar_metric_implicit_step": "log a scalar metric using ex.log_scalar with an auto-incrementing implicit step number",
+    "log_multiple_scalar_metrics": "log multiple named scalar metrics per step using ex.log_scalar for training loss and accuracy",
+    "linearize_metrics": "linearize a list of ScalarMetricLogEntry objects into a dict grouped by metric name with steps and values"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_modules.py": {
+    "test_ingredient_config": "test that an Ingredient config decorator registers a ConfigScope with key-value pairs",
+    "test_ingredient_captured_functions": "test that an Ingredient capture decorator registers a captured function accessible by name",
+    "test_ingredient_command": "test that an Ingredient command decorator registers a runnable command with config parameters",
+    "test_experiment_run": "test that an Experiment with a main decorator runs and returns the result",
+    "test_double_nested_config": "test that nested Ingredients propagate config scopes through multiple levels of hierarchy"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_optional.py": {
+    "test_optional_import_existing": "test optional_import to verify an installed package like pytest returns True and the module object",
+    "test_optional_import_nonexisting": "test optional_import to verify a nonexisting package returns False and None",
+    "test_get_tensorflow": "test get_tensorflow to ensure it imports TensorFlow with backward compatibility for version 1 and 2",
+    "test_modules_exist_tensorflow": "test modules_exist to check if the tensorflow module is available in the environment",
+    "refactor_optional_import": "refactor optional_import to handle multiple package names and return a tuple of success and module"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_run.py": {
+    "test_run_class_attributes": "test the sacred Run class config and info dict attributes",
+    "test_run_execution": "test running a sacred Run experiment and verify start stop times and result",
+    "test_run_observer_events": "test that sacred Run emits started heartbeat and completed events on success",
+    "test_run_interrupt_handling": "test sacred Run observer interrupted event for KeyboardInterrupt SacredInterrupt and TimeoutInterrupt",
+    "test_run_stdout_capturing": "test sacred Run stdout capturing modes no sys and fd with captured output"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_serializer.py": {
+    "test_flatten_json_noop": "test that flatten returns JSON-compatible objects unchanged including strings numbers dicts and lists",
+    "test_restore_json_noop": "test that restore returns JSON-compatible objects unchanged including unicode strings and booleans",
+    "test_serialize_non_str_keys": "test that flatten and restore round-trip dicts with integer keys correctly",
+    "test_serialize_numpy_arrays": "test that flatten and restore preserve numpy array values dtype and shape",
+    "test_serialize_tuples": "test that flatten and restore round-trip tuples and preserve tuple type"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_stdout_capturing.py": {
+    "test_python_tee_output": "test the python_tee_output function to verify sys-level stdout and stderr capturing with get_stdcapturer",
+    "test_fd_tee_output": "test the fd_tee_output function to verify file descriptor level stdout and stderr capturing",
+    "review_get_stdcapturer": "review the get_stdcapturer function usage for sys and fd capture modes in stdout capturing tests",
+    "summarize_test_python_tee_output": "summarize the test_python_tee_output test that validates captured stdout and stderr output lines",
+    "refactor_test_fd_tee_output": "refactor the test_fd_tee_output test to modify C library and subprocess stdout capturing assertions"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_utils.py": {
+    "test_recursive_update": "test recursive_update to merge nested dicts in place without overwriting existing keys",
+    "test_iterate_flattened": "test iterate_flattened to flatten a nested dict into dotted key-value pairs",
+    "test_set_by_dotted_path": "test set_by_dotted_path to set a value in a nested dict using a dotted string key",
+    "test_convert_to_nested_dict": "test convert_to_nested_dict to transform a flat dotted-key dict into a nested dict",
+    "test_convert_camel_case_to_snake_case": "test convert_camel_case_to_snake_case to convert CamelCase or camelCase strings to snake_case"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_config/test_captured_functions.py": {
+    "create_captured_function": "create a captured function wrapper that preserves name, docstring, and adds config injection and logging",
+    "test_captured_function_config_injection": "test calling a captured function with config values injected into function arguments",
+    "test_captured_function_randomness": "test a captured function that uses _rnd and _seed magic arguments for reproducible randomness",
+    "test_captured_function_magic_logger": "test that a captured function receives the logger via the _log magic argument",
+    "test_captured_function_kwargs_immutability": "test that calling a captured function does not modify the original kwargs dictionary"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_config/test_config_dict.py": {
+    "test_config_dict_returns_dict": "test that calling a ConfigDict instance returns a standard Python dict",
+    "test_fixing_values": "test that passing a dict to ConfigDict fixes specific config values",
+    "test_config_dict_raises_on_invalid_keys": "test that ConfigDict raises KeyError for keys containing dollar signs, dots, or slashes",
+    "test_adding_values": "test that ConfigDict tracks newly added keys via the added attribute",
+    "test_conf_scope_contains_presets": "test that ConfigDict merges preset values with the original config dict"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_config/test_config_files.py": {
+    "test_save_and_load": "test that each config file handler can dump and load data round-trip without loss",
+    "test_load_config_file": "test that load_config_file correctly loads data from a temp file with a supported extension",
+    "test_load_config_file_exception_msg_invalid_ext": "test that load_config_file raises a ValueError with a descriptive message for unsupported file extensions",
+    "review_test_config_files": "review the pytest test suite for sacred config file handlers including save/load round-trip and error handling",
+    "refactor_test_save_and_load": "refactor the test_save_and_load parametrized test to add additional data types or edge cases"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_config/test_config_scope.py": {
+    "test_ConfigScope_decorator": "test the ConfigScope decorator that converts a function into a configuration dictionary",
+    "test_ConfigScope_fixed_values": "test fixing config values by passing a dict to override ConfigScope defaults",
+    "test_ConfigScope_preset_fallback": "test ConfigScope preset and fallback argument handling for optional config values",
+    "test_dedent_function_body": "test the dedent_function_body utility that normalizes indentation in a function source string",
+    "test_get_function_body": "test the get_function_body utility that extracts a function's source body and line offset"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_config/test_config_scope_chain.py": {
+    "chain_evaluate_config_scopes": "chain evaluate multiple ConfigScope decorated functions to combine their config keys into a final config dictionary",
+    "ConfigScope_decorator": "create a ConfigScope decorated function that defines configuration variables accessible to downstream scopes",
+    "ConfigDict_wrapper": "create a ConfigDict wrapper from a ConfigScope result to use in chained config scope evaluation",
+    "test_chained_config_scopes_with_fixed": "test chained config scopes with fixed parameters that prevent modification of locked config values",
+    "test_chained_config_scopes_with_preset": "test chained config scopes with preset parameters that provide initial values included in the final config"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_config/test_dogmatic_dict.py": {
+    "test_DogmaticDict_fixed_values": "test DogmaticDict fixed values that cannot be changed or deleted",
+    "test_DogmaticDict_fallback_values": "test DogmaticDict fallback values accessible via getitem but not iterated",
+    "test_DogmaticDict_revelation": "test DogmaticDict revelation method to expose hidden fixed keys",
+    "test_DogmaticDict_nested_merge": "test DogmaticDict nested fixed values merging with fallback dict",
+    "test_DogmaticDict_dict_interface": "test DogmaticDict standard dict interface including setitem delitem and update"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_config/test_dogmatic_list.py": {
+    "test_DogmaticList_init": "test that DogmaticList initializes as an empty list or from an existing list",
+    "test_DogmaticList_immutability": "test that DogmaticList rejects append, extend, insert, sort, reverse, setitem, delitem, iadd, and imul mutations",
+    "test_DogmaticList_getitem": "test that DogmaticList supports read-only indexing including negative indices",
+    "test_DogmaticList_revelation": "test that DogmaticList revelation returns an empty set for plain values and nested DogmaticDict keys",
+    "test_DogmaticList_list_interface": "test that DogmaticList supports len, count, and index read-only list interface methods"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_config/test_fallback_dict.py": {
+    "test_fallback_dict_is_dictionary": "test that fallback_dict is an instance of dict using isinstance",
+    "test_fallback_dict_getitem": "test setting and retrieving items on a fallback_dict via bracket notation",
+    "test_fallback_dict_fallback": "test that fallback_dict returns original fallback values and allows overriding them",
+    "test_fallback_dict_get": "test the get method on fallback_dict with existing keys, fallback keys, and missing keys",
+    "create_fallback_dict_fixture": "create a pytest fixture that returns a fallback_dict initialized with a seed dictionary"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_config/test_readonly_containers.py": {
+    "test_readonly_dict": "test that make_read_only converts a dict to a ReadOnlyDict that rejects all mutations",
+    "test_readonly_list": "test that make_read_only converts a list to a ReadOnlyList that rejects all mutations",
+    "test_nested_readonly_containers": "test that make_read_only recursively wraps nested dicts and lists while preserving tuple types",
+    "test_copy_on_readonly_dict": "test that shallow copy of a ReadOnlyDict preserves key-value pairs but keeps nested dicts read-only",
+    "test_deepcopy_on_readonly_dict": "test that deepcopy of a ReadOnlyDict produces a fully mutable independent copy"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_config/test_signature.py": {
+    "test_Signature_constructor": "test the Signature class constructor to extract function names and arguments from callable objects",
+    "test_Signature_get_free_parameters": "test the Signature get_free_parameters method to find unfilled parameters given positional args and kwargs",
+    "test_Signature_construct_arguments": "test the Signature construct_arguments method to build validated arg and kwarg tuples for a function",
+    "test_Signature_construct_arguments_errors": "test the Signature construct_arguments method to raise TypeError on unexpected or duplicate arguments",
+    "test_Signature_string_repr": "test the Signature class string and repr output to display function signatures with defaults and varargs"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_config/test_utils.py": {
+    "test_normalize_or_die_for_numpy_datatypes": "test normalize_or_die with all numpy scalar datatypes including int8, float32, and uint64",
+    "test_normalize_or_die_for_numpy_arrays": "test normalize_or_die with numpy arrays of various datatypes and verify length preservation"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/failing_mongo_mock.py": {
+    "test_FailingMongoClient": "test the FailingMongoClient class to simulate MongoDB connection failures after a set number of calls",
+    "test_FailingCollection_insert_one": "test the FailingCollection insert_one method to verify it raises ConnectionFailure after max calls",
+    "test_FailingCollection_update_one": "test the FailingCollection update_one method to verify it raises ConnectionFailure after max calls",
+    "test_ReconnectingMongoClient": "test the ReconnectingMongoClient class to simulate MongoDB disconnection then reconnection behavior",
+    "test_ReconnectingCollection_is_in_failure_range": "test the ReconnectingCollection _is_in_failure_range method to verify failure window logic between max calls"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_file_storage_observer.py": {
+    "test_queued_event": "test the FileStorageObserver queued_event method to create run directory and config.json",
+    "test_started_event": "test the FileStorageObserver started_event method to create run directory with cout.txt and run.json",
+    "test_heartbeat_event": "test the FileStorageObserver heartbeat_event method to update run status with heartbeat time and info",
+    "test_completed_event": "test the FileStorageObserver completed_event method to update run status to COMPLETED with result",
+    "test_log_metrics": "test the FileStorageObserver log_metrics method to store scalar metrics in metrics.json"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_gcs_observer.py": {
+    "test_GoogleCloudStorageObserver_started_event": "test the GCS observer started_event creates cout.txt, config.json, and run.json in the bucket",
+    "test_GoogleCloudStorageObserver_completed_event": "test the GCS observer completed_event updates run.json status to COMPLETED",
+    "test_GoogleCloudStorageObserver_failed_event": "test the GCS observer failed_event updates run.json status to FAILED",
+    "test_GoogleCloudStorageObserver_artifact_event": "test the GCS observer artifact_event uploads an artifact file to the bucket directory",
+    "test_GoogleCloudStorageObserver_bucket_validation": "test the GCS observer raises ValueError on invalid bucket names and accepts valid ones"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_mongo_observer.py": {
+    "test_MongoObserver_started_event": "test the MongoObserver started_event method to create a new run document in MongoDB",
+    "test_MongoObserver_heartbeat_event": "test the MongoObserver heartbeat_event method to update run info and captured output in MongoDB",
+    "test_MongoObserver_completed_event": "test the MongoObserver completed_event method to mark a run as COMPLETED with stop time and result",
+    "test_force_bson_encodeable": "test the force_bson_encodeable function to sanitize documents for MongoDB BSON compatibility",
+    "test_MongoObserver_log_metrics": "test the MongoObserver log_metrics method to store scalar metrics in a separate MongoDB collection"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_mongo_option.py": {
+    "test_parse_mongo_db_arg_db_name": "test parse_mongo_db_arg to extract db_name from a simple database name string",
+    "test_parse_mongo_db_arg_collection": "test parse_mongo_db_arg to extract db_name and collection from a dot-separated string",
+    "test_parse_mongo_db_arg_hostname": "test parse_mongo_db_arg to extract url from a hostname:port string",
+    "test_parse_mongo_db_arg_hostname_dbname_collection": "test parse_mongo_db_arg to extract url, db_name, and collection from a full connection string",
+    "test_parse_mongo_db_arg_priority": "test parse_mongo_db_arg to extract priority from a connection string with exclamation mark suffix"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_queue_mongo_observer.py": {
+    "test_queuedmongoobserver_started_event": "test the QueuedMongoObserver started_event to create a new run document in MongoDB",
+    "test_queuedmongoobserver_heartbeat_event": "test the QueuedMongoObserver heartbeat_event to update run info, captured output, and result",
+    "test_queuedmongoobserver_completed_event": "test the QueuedMongoObserver completed_event to mark a run as COMPLETED with stop time",
+    "test_queuedmongoobserver_log_metrics": "test the QueuedMongoObserver log_metrics to store scalar measurements in the metrics collection",
+    "test_queuedmongoobserver_artifact_event": "test the QueuedMongoObserver artifact_event to store file artifacts with content type and metadata"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_queue_observer.py": {
+    "test_started_event": "test the QueueObserver started_event to verify the worker thread starts and forwards args",
+    "test_non_terminal_generic_events": "test QueueObserver non-terminal events like heartbeat, resource, and artifact forwarding to the covered observer",
+    "test_terminal_generic_events": "test QueueObserver terminal events like completed, interrupted, and failed that stop the worker thread",
+    "test_log_metrics": "test QueueObserver log_metrics to verify OrderedDict metrics are forwarded individually to the covered observer",
+    "test_run_waits_for_running_queue_observer": "test that Experiment.run waits for a QueueObserver with a long interval before completing"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_run_observer.py": {
+    "test_run_observer": "test the RunObserver base class by asserting all event methods return None",
+    "test_started_event": "test the RunObserver started_event method with config, info, and metadata parameters",
+    "test_heartbeat_event": "test the RunObserver heartbeat_event method with info, resource info, and result parameters",
+    "test_completed_event": "test the RunObserver completed_event method with a datetime and _id parameter",
+    "test_interrupted_event": "test the RunObserver interrupted_event method with a datetime and status string"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_s3_observer.py": {
+    "test_S3Observer_started_event": "test the S3Observer started_event to verify it creates an S3 bucket and writes config.json and run.json",
+    "test_S3Observer_completed_event": "test the S3Observer completed_event to verify it updates run.json status to COMPLETED",
+    "test_S3Observer_failed_event": "test the S3Observer failed_event to verify it updates run.json status to FAILED with an error message",
+    "test_S3Observer_artifact_event": "test the S3Observer artifact_event to verify it uploads artifact files to the S3 run directory",
+    "test_S3Observer_equality": "test the S3Observer equality comparison to verify observers with the same bucket and basedir are equal"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_sql_observer.py": {
+    "test_sql_observer_started_event": "test the SqlObserver started_event to create a Run, Host, and Experiment record in the database",
+    "test_sql_observer_heartbeat_event": "test the SqlObserver heartbeat_event to update run info, captured output, and result values",
+    "test_sql_observer_completed_event": "test the SqlObserver completed_event to set stop_time, result, and COMPLETED status on a run",
+    "test_sql_observer_failed_event": "test the SqlObserver failed_event to record fail_time, fail_trace, and FAILED status on a run",
+    "test_sql_observer_artifact_event": "test the SqlObserver artifact_event to attach an artifact file to a run record"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_sql_observer_not_installed.py": {
+    "test_importerror_sql": "test that SqlObserver raises ImportError when SQLAlchemy is not installed in a Sacred experiment",
+    "run_test_sql_observer_not_installed": "run the pytest test to verify SqlObserver import error behavior when SQLAlchemy is missing",
+    "review_test_importerror_sql": "review the test_importerror_sql function that checks SqlObserver raises ImportError without SQLAlchemy"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_tinydb_observer.py": {
+    "test_TinyDbObserver_started_event": "test the TinyDbObserver started_event method to create a new run entry in the database",
+    "test_TinyDbObserver_heartbeat_event": "test the TinyDbObserver heartbeat_event method to update run info and captured output",
+    "test_TinyDbObserver_completed_event": "test the TinyDbObserver completed_event method to mark a run as COMPLETED with stop time",
+    "test_TinyDbObserver_artifact_event": "test the TinyDbObserver artifact_event method to store and track artifact files in the run",
+    "test_tiny_db_option": "test the tiny_db_option function to attach a TinyDbObserver to a Sacred Experiment"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_tinydb_observer_not_installed.py": {
+    "test_TinyDbObserver_import_error": "test that TinyDbObserver raises ImportError when tinydb is not installed",
+    "test_Experiment_with_observer": "test a Sacred Experiment that appends a TinyDbObserver and runs",
+    "test_Experiment_config_decorator": "test a Sacred Experiment config decorator that defines a dictionary config",
+    "test_Experiment_main_decorator": "test a Sacred Experiment main decorator that reads config values",
+    "test_Experiment_run": "test running a Sacred Experiment with ex.run() and observers attached"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_observers/test_tinydb_reader.py": {
+    "run_test_experiment": "run a test experiment using TinyDbObserver to record start, heartbeat, artifact, resource, and completion events",
+    "fetch_metadata_by_indices": "fetch experiment metadata from TinyDbReader by numeric index or list of indices",
+    "fetch_metadata_by_query": "fetch experiment metadata from TinyDbReader using a TinyDB Query object with regex or field filters",
+    "fetch_files_by_index": "fetch experiment artifacts, resources, and source files as BufferedReader objects by index",
+    "fetch_report_by_index": "fetch a formatted text report of an experiment including parameters, result, dependencies, and outputs"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_stflow/test_internal.py": {
+    "test_context_method_decorator": "test the ContextMethodDecorator to ensure it can intercept method calls on a class",
+    "test_FooClass_do_foo": "test the FooClass do_foo method with positional and keyword arguments",
+    "test_decorate_three_times": "test the decorate_three_times decorator function that multiplies a method return value by three",
+    "test_decorate_three_times_with_exception": "test the decorate_three_times_with_exception decorator that raises a RuntimeError when called",
+    "test_ContextMethodDecorator_context_manager": "test the ContextMethodDecorator context manager to verify decoration is scoped and removed after exit"
+  },
+  "facebookresearch_collaq/third_party/sacred/tests/test_stflow/test_method_interception.py": {
+    "test_log_file_writer_decorator": "test the LogFileWriter decorator that captures TensorFlow FileWriter logdirs into the Sacred run info dictionary",
+    "test_log_file_writer_context_manager": "test the LogFileWriter context manager that scopes TensorFlow logdir capture to a specific code block",
+    "test_log_file_writer_exception_handling": "test the LogFileWriter context manager preserves captured logdirs even when an exception is raised inside",
+    "test_log_file_writer_class_method": "test the LogFileWriter decorator applied to a class method to capture TensorFlow logdirs",
+    "test_tensorflow_filewriter_interception": "test that tf.summary.FileWriter calls are intercepted and logdirs are stored in the run info dict"
+  },
+  "facebookresearch_collaq/third_party/smac/smac/env/multiagentenv.py": {
+    "implement_multiagentenv_subclass": "implement a subclass of MultiAgentEnv that overrides step, get_obs, reset, and other abstract methods for a custom multi-agent environment",
+    "override_step_method": "override the step method in a MultiAgentEnv subclass to return reward, terminated flag, and info dict given agent actions",
+    "override_get_obs_methods": "override get_obs and get_obs_agent in a MultiAgentEnv subclass to return observations for all agents or a specific agent by ID",
+    "override_get_avail_actions": "override get_avail_actions and get_avail_agent_actions in a MultiAgentEnv subclass to return available actions for all agents or a specific agent",
+    "use_get_env_info": "call get_env_info on a MultiAgentEnv instance to retrieve state_shape, obs_shape, n_actions, n_agents, and episode_limit"
+  },
+  "facebookresearch_collaq/third_party/smac/smac/env/starcraft2/starcraft2.py": {
+    "create_starcraft2_env": "create a StarCraft2Env instance with a specific map name, difficulty, and reward configuration for multi-agent micromanagement",
+    "reset_starcraft2_env": "reset the StarCraft2Env to start a new episode and return initial observations and state",
+    "step_starcraft2_env": "execute a step in the StarCraft2Env with agent actions and return reward, terminated flag, and info dict",
+    "get_obs_starcraft2_env": "get all agent observations from the StarCraft2Env as a list of feature vectors",
+    "get_state_starcraft2_env": "get the global state vector from the StarCraft2Env containing ally and enemy unit features",
+    "get_avail_actions_starcraft2_env": "get the available actions for all agents in the StarCraft2Env as a list of action masks",
+    "get_agent_action_starcraft2_env": "construct a StarCraft II raw protocol action for a specific agent and action index",
+    "reward_battle_starcraft2_env": "calculate the battle reward based on damage dealt to enemies and allies in the current step",
+    "get_stats_starcraft2_env": "get battle statistics including battles won, win rate, timeouts, and force restarts from the environment",
+    "save_replay_starcraft2_env": "save the current StarCraft II replay to a specified directory with a custom prefix",
+    "get_visibility_matrix_starcraft2_env": "get a boolean visibility matrix showing which units are visible to each agent within sight range",
+    "get_obs_agent_starcraft2_env": "get the observation vector for a specific agent including movement, enemy, ally, and own features",
+    "close_starcraft2_env": "close the StarCraft II process and clean up resources associated with the environment",
+    "get_avail_agent_actions_starcraft2_env": "get the available actions for a specific agent as a binary action mask array",
+    "update_units_starcraft2_env": "update ally and enemy unit states after an environment step and return game end code"
+  },
+  "facebookresearch_collaq/third_party/smac/smac/env/starcraft2/maps/smac_maps.py": {
+    "get_smac_map_registry": "get the SMAC map parameter registry dictionary with all 23 StarCraft II map configurations",
+    "review_SMACMap_class": "review the SMACMap base class that extends pysc2.maps.lib.Map for StarCraft II multi-agent scenarios",
+    "review_map_param_registry": "review the map_param_registry dictionary containing n_agents, n_enemies, race, and unit_type_bits per map",
+    "summarize_dynamic_map_classes": "summarize how dynamic map classes are generated from the registry using type() and globals()",
+    "review_map_configurations": "review the 23 SMAC map configurations including 3m, MMM, corridor, and 2c_vs_64zg scenarios"
+  },
+  "facebookresearch_collaq/third_party/smac/smac/examples/rllib/env.py": {
+    "create_rllib_starcraft_env": "create an RLlib-compatible multi-agent StarCraft2 environment with a specified map name",
+    "reset_rllib_starcraft_env": "reset the RLlib StarCraft2 environment and get initial observations for all ready agents",
+    "step_rllib_starcraft_env": "step the RLlib StarCraft2 environment with an action dict for all ready agents",
+    "review_rllib_starcraft_env_class": "review the RLlibStarCraft2Env class that wraps SMAC StarCraft2Env for RLlib multi-agent compatibility",
+    "refactor_rllib_starcraft_env_observation_space": "refactor the RLlibStarCraft2Env observation space to include additional features beyond obs and action_mask"
+  },
+  "facebookresearch_collaq/third_party/smac/smac/examples/rllib/run_qmix.py": {
+    "run_qmix_sc2_training": "run StarCraft 2 multi-agent QMIX training with RLlib on a specified map",
+    "run_qmix_with_custom_iters": "run QMIX training for a custom number of iterations using the --num-iters flag",
+    "run_qmix_with_custom_workers": "run QMIX training with a custom number of Ray workers using the --num-workers flag",
+    "run_qmix_on_custom_map": "run QMIX training on a custom StarCraft 2 map using the --map-name flag",
+    "review_env_creator": "review the env_creator function that groups homogeneous agents and creates observation and action spaces"
+  }
+}

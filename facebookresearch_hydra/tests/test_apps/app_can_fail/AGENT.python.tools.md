@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/tests/test_apps/app_can_fail/my_app.py
+
+Prompts
+
+```
+['run the hydra CLI app that divides 1 by a configurable divisor value', 'test the hydra app to verify it fails when divisor is set to zero', 'review the hydra main decorator usage with version_base set to None', 'refactor the my_app function to add error handling for division by zero', 'summarize how the hydra app uses DictConfig to access the divisor configuration value']
+```
+
+Usage
+
+```
+{'run_hydra_app': 'run the hydra CLI app that divides 1 by a configurable divisor value', 'test_hydra_division_by_zero': 'test the hydra app to verify it fails when divisor is set to zero', 'review_hydra_main_decorator': 'review the hydra main decorator usage with version_base set to None', 'refactor_my_app_error_handling': 'refactor the my_app function to add error handling for division by zero', 'summarize_hydra_config_usage': 'summarize how the hydra app uses DictConfig to access the divisor configuration value'}
+```
+

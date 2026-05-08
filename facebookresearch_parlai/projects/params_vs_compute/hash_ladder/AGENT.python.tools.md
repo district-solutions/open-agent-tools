@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/projects/params_vs_compute/hash_ladder/hash_ladder.py
+
+Prompts
+
+```
+['train a HashLadderAgent model on convai2 with --ladder-size 1 --hash-size 32 --hash-layer 1', 'build a custom Decoder with HashLayerFFN replacing the feedforward layer at the specified hash-layer index', 'review the HashLayerFFN forward pass that hashes token IDs and routes vectors through separate linear layers per bin', 'review the HashLadderAgent compute_loss method that adds dummy_loss to fix adaptive weights in distributed training', 'refactor the HashLayerFFN hash method to use a custom hash function instead of random token ID mapping']
+```
+
+Usage
+
+```
+{'train_hash_ladder_model': 'train a HashLadderAgent model on convai2 with --ladder-size 1 --hash-size 32 --hash-layer 1', 'build_hash_ladder_decoder': 'build a custom Decoder with HashLayerFFN replacing the feedforward layer at the specified hash-layer index', 'review_HashLayerFFN_forward': 'review the HashLayerFFN forward pass that hashes token IDs and routes vectors through separate linear layers per bin', 'review_HashLadderAgent_compute_loss': 'review the HashLadderAgent compute_loss method that adds dummy_loss to fix adaptive weights in distributed training', 'refactor_HashLayerFFN_hash': 'refactor the HashLayerFFN hash method to use a custom hash function instead of random token ID mapping'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/collaq
+- repo_uri: https://github.com/facebookresearch/collaq
+
+## File: facebookresearch_collaq/third_party/pymarl/src/modules/critics/coma.py
+
+Prompts
+
+```
+['build a COMACritic network for counterfactual multi-agent reinforcement learning using PyMARL scheme and args', 'run the COMACritic forward pass on a batch to compute Q-values for all agents', 'review the COMACritic _build_inputs method that concatenates state, observations, actions, and agent IDs', 'refactor the COMACritic fc1, fc2, fc3 linear layers to use configurable hidden dimensions', 'summarize the COMACritic _get_input_shape method that calculates total input dimension from the scheme']
+```
+
+Usage
+
+```
+{'build_COMACritic': 'build a COMACritic network for counterfactual multi-agent reinforcement learning using PyMARL scheme and args', 'run_COMACritic_forward': 'run the COMACritic forward pass on a batch to compute Q-values for all agents', 'review_COMACritic_build_inputs': 'review the COMACritic _build_inputs method that concatenates state, observations, actions, and agent IDs', 'refactor_COMACritic_layers': 'refactor the COMACritic fc1, fc2, fc3 linear layers to use configurable hidden dimensions', 'summarize_COMACritic_get_input_shape': 'summarize the COMACritic _get_input_shape method that calculates total input dimension from the scheme'}
+```
+

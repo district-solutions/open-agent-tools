@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/llama-recipes
+- repo_uri: https://github.com/facebookresearch/llama-recipes.git
+
+## File: facebookresearch_llama-recipes/3p-integrations/groq/groq-example-templates/presidential-speeches-rag-with-pinecone/main.py
+
+Prompts
+
+```
+['run the presidential speeches RAG chat loop using Groq and Pinecone', 'retrieve the top 3 most relevant excerpts from a Pinecone vector store for a user question', 'generate a response to a user question using Groq LLM with relevant speech excerpts', 'create a PineconeVectorStore with SentenceTransformer embeddings for presidential speeches', 'refactor the main RAG loop to support a different LLM model or vector store']
+```
+
+Usage
+
+```
+{'run_presidential_speeches_rag': 'run the presidential speeches RAG chat loop using Groq and Pinecone', 'get_relevant_excerpts_similarity_search': 'retrieve the top 3 most relevant excerpts from a Pinecone vector store for a user question', 'presidential_speech_chat_completion_groq': 'generate a response to a user question using Groq LLM with relevant speech excerpts', 'create_pinecone_vector_store': 'create a PineconeVectorStore with SentenceTransformer embeddings for presidential speeches', 'refactor_main_rag_loop': 'refactor the main RAG loop to support a different LLM model or vector store'}
+```
+

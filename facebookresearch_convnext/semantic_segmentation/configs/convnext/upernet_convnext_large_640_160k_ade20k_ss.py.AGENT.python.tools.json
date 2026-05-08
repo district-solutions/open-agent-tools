@@ -1,0 +1,14 @@
+{
+    "note": "This file is a pure configuration file with no callable functions, classes, or APIs. It defines training hyperparameters and model architecture settings for UperNet + ConvNeXt-Large semantic segmentation on ADE20K using MMSegmentation. No example tool statements are applicable.",
+    "config_description": "UperNet ConvNeXt-Large 640x640 160k iterations ADE20K semantic segmentation configuration",
+    "key_settings": {
+        "backbone": "ConvNeXt-Large with depths=[3,3,27,3], dims=[192,384,768,1536], drop_path_rate=0.4",
+        "decode_head": "UperNet decode head with 150 classes (ADE20K)",
+        "crop_size": "640x640",
+        "optimizer": "AdamW with lr=1e-4, weight_decay=0.05, stage-wise LR decay",
+        "lr_schedule": "Poly decay with linear warmup (1500 iters)",
+        "test_mode": "Slide testing with crop_size=640x640, stride=426x426",
+        "data": "2 samples per GPU (8 GPUs by default)",
+        "runner": "IterBasedRunnerAmp (AMP mixed precision training)"
+    }
+}

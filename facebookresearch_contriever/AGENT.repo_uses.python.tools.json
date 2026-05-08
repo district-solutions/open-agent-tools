@@ -1,0 +1,107 @@
+{
+  "facebookresearch_contriever/data_scripts/convertmrtydi2beir.py": {
+    "convert_mrtydi_to_beir": "convert MR TyDi dataset to BEIR format by transforming queries, corpus, and qrels files",
+    "run_convert2beir_cli": "run the convert2beir script with data_path and output_path as command line arguments",
+    "transform_mrtydi_queries": "transform MR TyDi topic.tsv queries into BEIR queries.jsonl format with _id and text fields",
+    "transform_mrtydi_corpus": "transform MR TyDi docs.jsonl corpus into BEIR corpus.jsonl format with _id, text, and title fields",
+    "transform_mrtydi_qrels": "transform MR TyDi qrels split files into BEIR qrels TSV format with query-id, corpus-id, and score columns"
+  },
+  "facebookresearch_contriever/data_scripts/preprocess_xmkqa.py": {
+    "preprocess_xmkqa": "preprocess the xMKQA dataset by splitting multilingual QA examples into per-language JSONL files with English answers",
+    "run_preprocess_xmkqa_cli": "run the xMKQA preprocessing script with an input JSONL file path and output directory as CLI arguments",
+    "filter_xmkqa_answers": "filter xMKQA answers to exclude unanswerable, binary, and long answer types keeping only short answers and aliases",
+    "split_xmkqa_by_language": "split xMKQA examples into separate JSONL files for each of the 26 supported languages",
+    "review_preprocess_xmkqa": "review the preprocess_xmkqa function to understand how it parses multilingual queries and filters answer types"
+  },
+  "facebookresearch_contriever/src/beir_utils.py": {
+    "encode_queries_dense": "encode a list of query strings into dense embeddings using a query encoder and tokenizer",
+    "encode_corpus_dense": "encode a corpus of documents with title and text fields into dense embeddings using a doc encoder",
+    "evaluate_dense_retrieval": "evaluate a dense retrieval model on a BEIR dataset and return NDCG, MAP, recall, and precision metrics",
+    "create_dense_encoder_model": "create a DenseEncoderModel wrapping query and doc encoders with optional text normalization and lowercasing",
+    "run_beir_evaluation": "run BEIR retrieval evaluation with dense exact search and save results to a specified path"
+  },
+  "facebookresearch_contriever/src/contriever.py": {
+    "load_retriever_model": "load a Contriever or XLMRetriever model with tokenizer from a local checkpoint or HuggingFace model path",
+    "create_contriever_embeddings": "create dense text embeddings using the Contriever class with average or CLS pooling strategies",
+    "create_xlm_embeddings": "create multilingual dense text embeddings using the XLMRetriever class based on XLM-RoBERTa",
+    "normalize_embeddings": "normalize Contriever or XLMRetriever output embeddings using L2 normalization via the forward pass",
+    "review_pooling_strategy": "review the Contriever or XLMRetriever pooling strategy to switch between average and CLS token pooling"
+  },
+  "facebookresearch_contriever/src/data.py": {
+    "load_data_contrastive_pairs": "load training data from multiple paths into a MultiDataset for contrastive learning with configurable sampling",
+    "load_dataset_tensors": "load PyTorch tensor files from a directory in split, full, or single loading mode",
+    "create_multidataset_sampling": "create a MultiDataset that samples from multiple datasets with configurable probability weighting",
+    "apply_augmentation_tokens": "apply mask, replace, delete, or shuffle augmentation to token tensors with configurable probability",
+    "load_passages_retrieval": "load passages from JSONL or TSV files for passage retrieval with id, title, and text fields"
+  },
+  "facebookresearch_contriever/src/dist_utils.py": {
+    "gather_tensor_across_gpus": "gather a PyTorch tensor from all GPUs in a distributed training setup using all_gather",
+    "gather_nograd_tensor_no_grad": "gather a tensor across all processes without computing gradients for inference or evaluation",
+    "varsize_gather_variable_length_tensors": "gather tensors of different sizes across processes by padding to the maximum size",
+    "get_rank_world_size_barrier": "get the current process rank, world size, or synchronize processes with a distributed barrier",
+    "weighted_average_loss_across_gpus": "compute a weighted average of loss values across all GPUs in distributed training"
+  },
+  "facebookresearch_contriever/src/evaluation.py": {
+    "calculate_matches": "calculate answer matches across retrieved documents using multiprocessing for a QA dataset",
+    "has_answer": "check if a document text contains any of the provided answer strings using tokenization",
+    "f1_score": "compute the maximum F1 score between a prediction and multiple ground truth answers",
+    "exact_match_score": "compute the maximum exact match score between a prediction and multiple ground truth answers",
+    "SimpleTokenizer_tokenize": "tokenize text into alphanumeric and non-whitespace tokens with optional lowercasing"
+  },
+  "facebookresearch_contriever/src/finetuning_data.py": {
+    "create_Dataset_for_finetuning": "create a Dataset instance to load JSON/JSONL data with positive and negative contexts for contrastive finetuning",
+    "create_Collator_for_tokenization": "create a Collator to batch-encode queries and passages into tokenized tensors using a HuggingFace tokenizer",
+    "review_Dataset_getitem": "review the Dataset __getitem__ method to understand how gold and negative contexts are sampled per example",
+    "review_Dataset_sample_n_hard_negatives": "review the sample_n_hard_negatives method to understand the probabilistic hard vs random negative sampling strategy",
+    "review_Collator_call": "review the Collator __call__ method to see how queries, golds, and negatives are tokenized and split into tensors"
+  },
+  "facebookresearch_contriever/src/inbatch.py": {
+    "create_InBatch_module": "create an InBatch module with options for normalization, label smoothing, and a retriever model",
+    "load_retriever_with_InBatch": "load a Contriever or XLMRetriever model and tokenizer using the InBatch _load_retriever method",
+    "run_InBatch_forward": "run the InBatch forward pass with query and key tokens to compute in-batch contrastive loss",
+    "get_encoder_from_InBatch": "get the retriever encoder from an InBatch module using the get_encoder method",
+    "review_InBatch_class": "review the InBatch class for in-batch negative contrastive learning with distributed gathering"
+  },
+  "facebookresearch_contriever/src/index.py": {
+    "create_faiss_indexer": "create an Indexer with a flat or PQ FAISS index for a given vector size",
+    "index_embeddings": "index a set of document IDs and their embedding vectors into the FAISS index",
+    "search_knn_vectors": "search the FAISS index with query vectors to retrieve top-k nearest neighbor document IDs and scores",
+    "serialize_faiss_index": "serialize the FAISS index and its ID mapping metadata to disk files in a directory",
+    "deserialize_faiss_index": "deserialize a FAISS index and its ID mapping metadata from disk files into an Indexer"
+  },
+  "facebookresearch_contriever/src/moco.py": {
+    "build_MoCo_model": "build a MoCo contrastive learning model with query and key encoders for dense retrieval",
+    "run_MoCo_forward": "run the MoCo forward pass with query and key token inputs to compute contrastive loss",
+    "create_MoCo_retriever": "create a MoCo retriever by loading a HuggingFace model with optional random initialization",
+    "test_MoCo_momentum_update": "test the MoCo momentum update mechanism that updates the key encoder from the query encoder",
+    "review_MoCo_queue": "review the MoCo dequeue and enqueue logic that manages the negative sample queue"
+  },
+  "facebookresearch_contriever/src/normalize_text.py": {
+    "normalize_text": "normalize text by removing control characters and standardizing hyphens, quotes, slashes, and other unicode variants",
+    "review_normalize_function": "review the normalize function that strips control characters and standardizes unicode punctuation",
+    "refactor_normalize_tilde": "refactor the normalize function to uncomment and enable tilde character normalization",
+    "test_normalize_hyphens": "test the normalize function with various unicode hyphen and dash characters",
+    "summarize_normalize_constants": "summarize the unicode character sets for controls, hyphens, quotes, and slashes used in normalization"
+  },
+  "facebookresearch_contriever/src/options.py": {
+    "parse_contriever_training_options": "parse command line arguments for Contriever contrastive retrieval model training and evaluation",
+    "initialize_options_parser": "initialize an argparse parser with all Contriever training, evaluation, and finetuning arguments",
+    "print_and_save_options": "print parsed options to console and save them to an opt.txt file in the output directory",
+    "configure_contrastive_training": "configure MoCo contrastive training parameters including queue size, temperature, and momentum",
+    "configure_finetuning_negatives": "configure finetuning negative context options including hard negative ratio and minimum index"
+  },
+  "facebookresearch_contriever/src/slurm.py": {
+    "init_distributed_mode": "initialize distributed training mode for single GPU, multi-GPU, or SLURM multi-node jobs",
+    "init_signal_handler": "register signal handlers to handle SLURM time limit and pre-emption signals",
+    "sig_handler": "handle SIGUSR1 signals by requeuing the SLURM job on the main process",
+    "term_handler": "handle SIGTERM signals by logging and bypassing termination for graceful shutdown",
+    "review_init_distributed_mode": "review the init_distributed_mode function to understand SLURM and torch.distributed launch support"
+  },
+  "facebookresearch_contriever/src/utils.py": {
+    "save_model_checkpoint": "save a PyTorch model checkpoint with optimizer, scheduler, and config to a directory",
+    "load_model_checkpoint": "load a PyTorch model checkpoint and restore optimizer, scheduler, and training state",
+    "create_warmup_linear_scheduler": "create a WarmupLinearScheduler learning rate scheduler with warmup steps and linear decay",
+    "create_cosine_scheduler": "create a CosineScheduler learning rate scheduler with warmup steps and cosine annealing",
+    "track_weighted_average_stats": "track and compute weighted average statistics across distributed processes using WeightedAvgStats"
+  }
+}

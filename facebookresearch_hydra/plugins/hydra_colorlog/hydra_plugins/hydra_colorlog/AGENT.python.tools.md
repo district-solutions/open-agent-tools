@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/plugins/hydra_colorlog/hydra_plugins/hydra_colorlog/colorlog.py
+
+Prompts
+
+```
+['review the HydraColorlogSearchPathPlugin class that extends SearchPathPlugin for Hydra colorlog configuration', 'review the manipulate_search_path method that appends the hydra-colorlog config search path', 'refactor the HydraColorlogSearchPathPlugin to customize the config search path for hydra colorlog', 'test the HydraColorlogSearchPathPlugin class to verify it appends the correct search path', 'summarize the HydraColorlogSearchPathPlugin class and its manipulate_search_path method']
+```
+
+Usage
+
+```
+{'review_HydraColorlogSearchPathPlugin': 'review the HydraColorlogSearchPathPlugin class that extends SearchPathPlugin for Hydra colorlog configuration', 'review_manipulate_search_path': 'review the manipulate_search_path method that appends the hydra-colorlog config search path', 'refactor_HydraColorlogSearchPathPlugin': 'refactor the HydraColorlogSearchPathPlugin to customize the config search path for hydra colorlog', 'test_HydraColorlogSearchPathPlugin': 'test the HydraColorlogSearchPathPlugin class to verify it appends the correct search path', 'summarize_HydraColorlogSearchPathPlugin': 'summarize the HydraColorlogSearchPathPlugin class and its manipulate_search_path method'}
+```
+

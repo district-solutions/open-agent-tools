@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/tests/test_apps/custom_env_defaults/my_app.py
+
+Prompts
+
+```
+['run the Hydra app that asserts environment variable FOO equals bar', 'test that Hydra custom environment defaults set FOO to bar before the app runs', 'review the hydra.main decorator usage with version_base set to None', 'summarize the my_app function that validates environment variables via Hydra', 'refactor the my_app function to support additional environment variable assertions']
+```
+
+Usage
+
+```
+{'run_hydra_app_with_custom_env': 'run the Hydra app that asserts environment variable FOO equals bar', 'test_hydra_custom_env_defaults': 'test that Hydra custom environment defaults set FOO to bar before the app runs', 'review_hydra_main_decorator': 'review the hydra.main decorator usage with version_base set to None', 'summarize_my_app_entry_point': 'summarize the my_app function that validates environment variables via Hydra', 'refactor_my_app_env_check': 'refactor the my_app function to support additional environment variable assertions'}
+```
+

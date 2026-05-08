@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairo
+- repo_uri: https://github.com/facebookresearch/fairo
+
+## File: facebookresearch_fairo/polymetis/polymetis/python/torchcontrol/planning/min_jerk.py
+
+Prompts
+
+```
+['generate a minimum jerk trajectory in joint space from start to goal positions with specified duration and frequency', 'generate a minimum jerk trajectory in Cartesian space between two transformation poses with position and rotation', 'generate a minimum jerk trajectory through 3D XYZ space from a start to goal position', 'generate a joint space trajectory from a Cartesian end-effector goal pose using inverse kinematics and null space correction', 'generate a 1D minimum jerk position velocity and acceleration trajectory from 0 to 1 over N steps']
+```
+
+Usage
+
+```
+{'generate_joint_space_min_jerk': 'generate a minimum jerk trajectory in joint space from start to goal positions with specified duration and frequency', 'generate_cartesian_space_min_jerk': 'generate a minimum jerk trajectory in Cartesian space between two transformation poses with position and rotation', 'generate_position_min_jerk': 'generate a minimum jerk trajectory through 3D XYZ space from a start to goal position', 'generate_cartesian_target_joint_min_jerk': 'generate a joint space trajectory from a Cartesian end-effector goal pose using inverse kinematics and null space correction', 'min_jerk_spaces': 'generate a 1D minimum jerk position velocity and acceleration trajectory from 0 to 1 over N steps'}
+```
+

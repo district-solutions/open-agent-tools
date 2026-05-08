@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/looptool
+- repo_uri: https://github.com/facebookresearch/loop_tool
+
+## File: facebookresearch_looptool/extern/wasmblr/thread_example/server.py
+
+Prompts
+
+```
+['run a Python HTTP server with CORS headers on a specified port defaulting to 8000', 'create a CORSRequestHandler class that adds Cross-Origin-Opener-Policy and Cross-Origin-Embedder-Policy headers to responses', 'start a SimpleHTTPRequestHandler-based server that serves files from the current directory with added CORS headers', 'configure the HTTP server port via command line argument or use default port 8000', 'serve files with headers required for WebAssembly SharedArrayBuffer and cross-origin isolation']
+```
+
+Usage
+
+```
+{'run_cors_http_server': 'run a Python HTTP server with CORS headers on a specified port defaulting to 8000', 'create_cors_request_handler': 'create a CORSRequestHandler class that adds Cross-Origin-Opener-Policy and Cross-Origin-Embedder-Policy headers to responses', 'start_simple_http_server': 'start a SimpleHTTPRequestHandler-based server that serves files from the current directory with added CORS headers', 'configure_server_port': 'configure the HTTP server port via command line argument or use default port 8000', 'serve_wasm_shared_array_buffer': 'serve files with headers required for WebAssembly SharedArrayBuffer and cross-origin isolation'}
+```
+

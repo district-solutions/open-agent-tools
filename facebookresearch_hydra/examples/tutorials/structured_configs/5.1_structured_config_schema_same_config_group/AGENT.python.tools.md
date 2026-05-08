@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/examples/tutorials/structured_configs/5.1_structured_config_schema_same_config_group/my_app.py
+
+Prompts
+
+```
+['run the hydra app that prints the structured config as YAML output', 'create a MySQLConfig dataclass with driver, port, user, and password fields', 'create a PostGreSQLConfig dataclass with driver, user, port, password, and timeout fields', 'register structured config classes with ConfigStore for a db config group', 'review the DBConfig base schema with driver, host, and port fields']
+```
+
+Usage
+
+```
+{'run_hydra_structured_config_app': 'run the hydra app that prints the structured config as YAML output', 'create_mysql_config_dataclass': 'create a MySQLConfig dataclass with driver, port, user, and password fields', 'create_postgresql_config_dataclass': 'create a PostGreSQLConfig dataclass with driver, user, port, password, and timeout fields', 'register_config_store_group': 'register structured config classes with ConfigStore for a db config group', 'review_dbconfig_schema': 'review the DBConfig base schema with driver, host, and port fields'}
+```
+

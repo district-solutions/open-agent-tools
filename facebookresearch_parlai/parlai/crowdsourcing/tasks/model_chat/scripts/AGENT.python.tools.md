@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/parlai/crowdsourcing/tasks/model_chat/scripts/save_image_contexts.py
+
+Prompts
+
+```
+['run the script to save image contexts as a pickle file for the model image chat task', 'create an argument parser with the image-context-path option for saving image context files', 'save a pickle of images and BST-style context info for the model image chat task', 'review the save_image_contexts function that loops over images and collects unique contexts', 'refactor save_image_contexts to use the collected context information in the image chat task']
+```
+
+Usage
+
+```
+{'run_save_image_contexts': 'run the script to save image contexts as a pickle file for the model image chat task', 'create_image_context_args_parser': 'create an argument parser with the image-context-path option for saving image context files', 'save_image_contexts_pickle': 'save a pickle of images and BST-style context info for the model image chat task', 'review_save_image_contexts': 'review the save_image_contexts function that loops over images and collects unique contexts', 'refactor_save_image_contexts': 'refactor save_image_contexts to use the collected context information in the image chat task'}
+```
+

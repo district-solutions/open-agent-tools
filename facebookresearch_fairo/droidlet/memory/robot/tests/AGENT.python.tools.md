@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairo
+- repo_uri: https://github.com/facebookresearch/fairo
+
+## File: facebookresearch_fairo/droidlet/memory/robot/tests/test_low_level_memory.py
+
+Prompts
+
+```
+['test the LocoAgentMemory update_other_players and basic_search APIs for player lookup', 'test the DetectedObjectNode create and get_detected_objects_tagged APIs for tagged object retrieval', 'test the DanceNode create API and TripleNode get_triples for dance registration and lookup', 'create a LocoAgentMemory instance and update it with a list of Player objects', 'create a DetectedObjectNode from a detected object and query it by tag']
+```
+
+Usage
+
+```
+{'test_locoplayer_apis': 'test the LocoAgentMemory update_other_players and basic_search APIs for player lookup', 'test_detected_object_apis': 'test the DetectedObjectNode create and get_detected_objects_tagged APIs for tagged object retrieval', 'test_dance_api': 'test the DanceNode create API and TripleNode get_triples for dance registration and lookup', 'create_locopmemory_instance': 'create a LocoAgentMemory instance and update it with a list of Player objects', 'create_detected_object_node': 'create a DetectedObjectNode from a detected object and query it by tag'}
+```
+

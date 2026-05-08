@@ -1,0 +1,100 @@
+{
+  "facebookresearch_hiplot/.circleci/test_e2e.py": {
+    "create_browser_chrome": "create a headless Chrome WebDriver instance with browser logging enabled and 1920x1080 window size",
+    "create_browser_firefox": "create a headless Firefox WebDriver instance with browser logging enabled and 1920x1080 window size",
+    "test_demo_pages": "test HTML demo pages by opening them in a headless browser and checking for console errors",
+    "use_BROWSERS_FACTORY": "use the BROWSERS_FACTORY dictionary to instantiate a Chrome or Firefox WebDriver by name",
+    "review_test_demo_pages": "review the test_demo_pages function that polls browser logs until a timeout or Tests done message"
+  },
+  "facebookresearch_hiplot/.circleci/test_notebook.py": {
+    "test_jupyter_notebook": "test a Jupyter notebook by opening it in Chrome via Selenium and clicking the Run button",
+    "run_e2e_notebook_test": "run an end-to-end test that opens a Jupyter notebook in a headless Chrome browser",
+    "capture_notebook_screenshots": "capture screenshots and HTML of a Jupyter notebook at multiple steps during execution",
+    "check_browser_logs": "check browser logs for errors and HiPlot waiting messages after running a notebook cell",
+    "assert_notebook_execution": "assert that a notebook execution produced zero errors and at most one HiPlot wait message"
+  },
+  "facebookresearch_hiplot/examples/demo_streamlit_cache.py": {
+    "run_streamlit_demo": "run the streamlit demo script that displays a cached hiplot experiment with sliders",
+    "create_cached_experiment": "create a cached hiplot experiment with 1000 rows using the st.cache decorator",
+    "compress_experiment": "set the experimental _compress flag on a hiplot experiment to reduce bandwidth at first load",
+    "convert_to_streamlit": "convert a hiplot experiment to a Streamlit-compatible object using the to_streamlit method",
+    "display_experiment": "display a cached hiplot experiment in the Streamlit app using the display method"
+  },
+  "facebookresearch_hiplot/hiplot/compress.py": {
+    "compress_datapoints": "compress a list of Datapoint objects into a dictionary with columns and rows keys",
+    "build_columns_list": "build a list of unique column names from Datapoint values excluding reserved uid and from_uid keys",
+    "compress_experiment_data": "compress experiment datapoints into a tabular format with columns and rows for serialization",
+    "review_compress_function": "review the compress function that transforms Datapoint lists into a columns and rows dictionary structure",
+    "refactor_build_columns_list": "refactor the _build_columns_list helper to extract unique metric keys from Datapoint value dictionaries"
+  },
+  "facebookresearch_hiplot/hiplot/experiment.py": {
+    "create_experiment_from_iterable": "create a HiPlot Experiment from a list of dictionaries using Experiment.from_iterable",
+    "create_experiment_from_csv": "create a HiPlot Experiment from a CSV file using Experiment.from_csv",
+    "create_experiment_from_dataframe": "create a HiPlot Experiment from a pandas DataFrame using Experiment.from_dataframe",
+    "export_experiment_to_html": "export a HiPlot Experiment to a standalone HTML file using Experiment.to_html",
+    "merge_experiments": "merge multiple HiPlot Experiments into a single Experiment using Experiment.merge"
+  },
+  "facebookresearch_hiplot/hiplot/fetchers.py": {
+    "load_experiment_from_csv": "load a HiPlot experiment from a CSV file path using the load_csv fetcher function",
+    "load_experiment_from_json": "load a HiPlot experiment from a JSON file or Nevergrad JSON using the load_json fetcher function",
+    "load_fairseq_experiment": "load a HiPlot experiment from a fairseq training log file using the fairseq:// URI prefix",
+    "load_wav2letter_experiment": "load a HiPlot experiment from wav2letter performance metric files using the w2l:// URI prefix",
+    "get_fetchers_list": "get a list of experiment fetchers including built-in and custom fetchers using get_fetchers with a list of fetcher specs"
+  },
+  "facebookresearch_hiplot/hiplot/fetchers_demo.py": {
+    "create_experiment_from_iterable": "create a HiPlot Experiment from an iterable of dictionaries using from_iterable",
+    "build_pbt_demo_experiment": "build a Population Based Training demo experiment with fake params and metrics",
+    "customize_display_config": "customize parallel plot, table, and XY display settings for a HiPlot experiment",
+    "create_line_xy_experiment": "create an XY line chart experiment with parent-child datapoint relationships",
+    "run_demo_by_name": "run a named demo experiment from the README_DEMOS registry dictionary"
+  },
+  "facebookresearch_hiplot/hiplot/ipython.py": {
+    "display_experiment_in_jupyter": "display a HiPlot Experiment in a Jupyter notebook with interactive frontend and Python communication",
+    "get_selected_datapoints": "get the list of datapoints currently selected by the user in the HiPlot Jupyter interface",
+    "get_brush_extents": "get the current brush selection extents from the HiPlot interactive visualization in Jupyter",
+    "inject_hiplot_js_bundle": "inject the HiPlot JavaScript bundle into the Jupyter notebook as a global window variable",
+    "wrap_html_for_full_width": "wrap HTML content in a full-width Jupyter notebook display with resize handling"
+  },
+  "facebookresearch_hiplot/hiplot/render.py": {
+    "render_hiplot_experiment_to_html_or_csv": "run the hiplot CLI to render an experiment to HTML or CSV via stdout",
+    "create_standalone_experiment_page": "create a standalone HTML page from HiPlot experiment options with a unique element ID",
+    "inline_css_js_in_html": "inline external CSS, JS, and image assets directly into an HTML string using BeautifulSoup",
+    "render_jinja_template": "render a Jinja2 HTML template from a given directory and template file name",
+    "escape_value_for_javascript": "escape an arbitrary Python value as a JSON-safe string for JavaScript injection"
+  },
+  "facebookresearch_hiplot/hiplot/server.py": {
+    "run_hiplot_server": "run a HiPlot Flask server with experiment fetchers on a specified host and port",
+    "run_server_with_fetchers": "run the HiPlot server with a list of ExperimentFetcher functions to serve experiment data",
+    "run_server_main_cli": "run the HiPlot webserver from the command line with host, port, and fetcher arguments",
+    "serve_experiment_data_endpoint": "serve experiment data via the /data endpoint by loading experiments through registered fetchers",
+    "run_server_in_debug_mode": "run the HiPlot server in Flask debug mode with file modification watching enabled"
+  },
+  "facebookresearch_hiplot/hiplot/streamlit_helpers.py": {
+    "create_streamlit_component": "create a HiPlot Streamlit component by calling _StreamlitHelpers.create_component to declare and cache the component",
+    "check_streamlit_runtime": "check if code is running within a Streamlit environment using _StreamlitHelpers.is_running_within_streamlit",
+    "display_experiment_in_streamlit": "display a HiPlot Experiment in Streamlit by creating an ExperimentStreamlitComponent and calling its display method",
+    "get_default_return_for_ret_type": "get the default return value for a specified return type like brush_extents or selected_uids using get_default_return_for",
+    "build_experiment_streamlit_component": "build an ExperimentStreamlitComponent with an Experiment, a unique key, and optional return type specification for selected UIDs"
+  },
+  "facebookresearch_hiplot/hiplot/test_experiment.py": {
+    "merge_experiments": "merge multiple hiplot Experiment objects into a single combined Experiment",
+    "create_experiment_from_iterable": "create a hiplot Experiment from a list of dictionaries with uid and value keys",
+    "create_experiment_from_dataframe": "create a hiplot Experiment from a pandas DataFrame with uid column",
+    "create_experiment_from_optuna": "create a hiplot Experiment from an Optuna study object with trial results",
+    "validate_experiment": "validate a hiplot Experiment to check for circular references and missing parents"
+  },
+  "facebookresearch_hiplot/hiplot/test_fetchers.py": {
+    "test_load_demo": "test loading a HiPlot demo experiment by name and validate its datapoints",
+    "test_load_csv": "test loading a CSV file into a HiPlot experiment and validate datapoint count",
+    "test_load_json": "test loading a JSON file into a HiPlot experiment and validate datapoints",
+    "test_MultipleFetcher_get_uri_length": "test the MultipleFetcher class get_uri_length method to parse multi:// URI blocks",
+    "test_load_xps_with_fetchers": "test loading multiple experiments from a multi-line URI string using get_fetchers"
+  },
+  "facebookresearch_hiplot/hiplot/test_render.py": {
+    "test_demos_ipython": "test all README demo experiments by displaying them in an IPython environment",
+    "test_demos_streamlit": "test all README demo experiments by displaying them in a Streamlit environment with selected_uids return",
+    "test_index_html_valid": "test that the index HTML template parses without errors using BeautifulSoup and a custom HTMLParser",
+    "review_MyHTMLParser": "review the MyHTMLParser class that extends HTMLParser to capture start tags, end tags, and data content",
+    "run_test_demos_ipython": "run the IPython demo test to verify all hiplot README demos display correctly in a notebook"
+  }
+}

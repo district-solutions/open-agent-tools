@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/localrf
+- repo_uri: https://github.com/facebookresearch/localrf
+
+## File: facebookresearch_localrf/localTensoRF/dataLoader/localrf_dataset.py
+
+Prompts
+
+```
+['create a LocalRFDataset instance from a data directory with configurable split, frames chunk, and downsampling', 'sample a batch of pixel data from the LocalRFDataset with specified batch size and number of views', 'activate additional frames in the LocalRFDataset to expand the active frame window for training', 'deactivate old frames from the LocalRFDataset to free memory and shift the active window forward', 'concatenate and append numpy arrays along a specified dimension using the concatenate_append utility function']
+```
+
+Usage
+
+```
+{'create_localrf_dataset': 'create a LocalRFDataset instance from a data directory with configurable split, frames chunk, and downsampling', 'sample_batch_from_dataset': 'sample a batch of pixel data from the LocalRFDataset with specified batch size and number of views', 'activate_frames_incrementally': 'activate additional frames in the LocalRFDataset to expand the active frame window for training', 'deactivate_old_frames': 'deactivate old frames from the LocalRFDataset to free memory and shift the active window forward', 'concatenate_and_append_arrays': 'concatenate and append numpy arrays along a specified dimension using the concatenate_append utility function'}
+```
+

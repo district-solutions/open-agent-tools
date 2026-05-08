@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/infersent
+- repo_uri: https://github.com/facebookresearch/infersent
+
+## File: facebookresearch_infersent/models.py
+
+Prompts
+
+```
+['build an InferSent encoder with config for word embedding dim, LSTM dim, and pool type', 'encode a list of sentences into fixed-length embeddings using the InferSent model', 'build a vocabulary from sentences using word2v vectors loaded from a file path', 'visualize word importance for a sentence using a bar chart of LSTM attention', 'run forward pass on a batch of sentence embeddings through the bidirectional LSTM encoder']
+```
+
+Usage
+
+```
+{'build_infer_sent_encoder': 'build an InferSent encoder with config for word embedding dim, LSTM dim, and pool type', 'encode_sentences': 'encode a list of sentences into fixed-length embeddings using the InferSent model', 'build_vocab_from_sentences': 'build a vocabulary from sentences using word2v vectors loaded from a file path', 'visualize_word_importance': 'visualize word importance for a sentence using a bar chart of LSTM attention', 'forward_sentence_embeddings': 'run forward pass on a batch of sentence embeddings through the bidirectional LSTM encoder'}
+```
+

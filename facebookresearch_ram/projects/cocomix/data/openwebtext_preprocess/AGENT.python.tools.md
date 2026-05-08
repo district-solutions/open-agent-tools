@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/ram
+- repo_uri: https://github.com/facebookresearch/ram
+
+## File: facebookresearch_ram/projects/cocomix/data/openwebtext_preprocess/prepare.py
+
+Prompts
+
+```
+['run the script to download, tokenize, and save the openwebtext dataset as binary files for training', 'review the process function that tokenizes text examples using gpt2 bpe encoding and appends the eot token', 'refactor the dataset splitting logic to use a different test size or seed for the train val split', 'summarize how the script uses numpy memmap to write tokenized ids in batches to binary files', 'test the tokenization pipeline that maps the process function across the split dataset with multiprocessing']
+```
+
+Usage
+
+```
+{'run_openwebtext_preprocessing': 'run the script to download, tokenize, and save the openwebtext dataset as binary files for training', 'review_process_function': 'review the process function that tokenizes text examples using gpt2 bpe encoding and appends the eot token', 'refactor_dataset_splitting': 'refactor the dataset splitting logic to use a different test size or seed for the train val split', 'summarize_memmap_writing': 'summarize how the script uses numpy memmap to write tokenized ids in batches to binary files', 'test_tokenization_pipeline': 'test the tokenization pipeline that maps the process function across the split dataset with multiprocessing'}
+```
+

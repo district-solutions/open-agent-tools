@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/paretoq
+- repo_uri: https://github.com/facebookresearch/paretoq
+
+## File: facebookresearch_paretoq/train.py
+
+Prompts
+
+```
+['run the train function to train a quantized LLaMA model using HuggingFace Trainer', 'run evaluation on a quantized LLaMA model and compute perplexity metrics', 'run weight clip value initialization for 1, 2, 3, or 4 bit quantized model weights', 'run the CustomJsonDataset to load and tokenize training and validation JSON data', 'run safe_save_model_for_hf_trainer to save the trained quantized model to a local path']
+```
+
+Usage
+
+```
+{'run_quantized_llama_training': 'run the train function to train a quantized LLaMA model using HuggingFace Trainer', 'run_model_evaluation': 'run evaluation on a quantized LLaMA model and compute perplexity metrics', 'run_weight_clip_initialization': 'run weight clip value initialization for 1, 2, 3, or 4 bit quantized model weights', 'run_dataset_loading': 'run the CustomJsonDataset to load and tokenize training and validation JSON data', 'run_model_saving': 'run safe_save_model_for_hf_trainer to save the trained quantized model to a local path'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/pytorchganzoo
+- repo_uri: https://github.com/facebookresearch/pytorch_gan_zoo
+
+## File: facebookresearch_pytorchganzoo/models/datasets/utils/db_stats.py
+
+Prompts
+
+```
+['build statistics for a dataset by counting occurrences of each class across multiple categories', 'get a frequency count of values for a single class column from a list of record dictionaries', 'build an ordered key mapping from shift attributes with optional classification loss weight equalization', 'refactor getClassStats to use collections.Counter for cleaner frequency counting of class values', 'summarize the buildKeyOrder function that maps shift attributes to ordered label lists with optional weights']
+```
+
+Usage
+
+```
+{'build_dict_stats': 'build statistics for a dataset by counting occurrences of each class across multiple categories', 'get_class_stats': 'get a frequency count of values for a single class column from a list of record dictionaries', 'build_key_order': 'build an ordered key mapping from shift attributes with optional classification loss weight equalization', 'refactor_get_class_stats': 'refactor getClassStats to use collections.Counter for cleaner frequency counting of class values', 'summarize_build_key_order': 'summarize the buildKeyOrder function that maps shift attributes to ordered label lists with optional weights'}
+```
+

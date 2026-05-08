@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/lavila
+- repo_uri: https://github.com/facebookresearch/lavila
+
+## File: facebookresearch_lavila/scripts/convert_egovlp_ckpt.py
+
+Prompts
+
+```
+['run the script to convert an EgoVLP checkpoint to a new format with renamed keys', 'convert EgoVLP checkpoint keys from module.video_model to module.visual naming convention', 'convert EgoVLP checkpoint keys from module.text_model to module.textual naming convention', 'convert EgoVLP checkpoint keys from module.txt_proj and module.vid_proj to text_projection and image_projection', 'save the converted EgoVLP checkpoint with epoch, state_dict, and best_acc1 metadata']
+```
+
+Usage
+
+```
+{'run_convert_ckpt': 'run the script to convert an EgoVLP checkpoint to a new format with renamed keys', 'convert_video_model_keys': 'convert EgoVLP checkpoint keys from module.video_model to module.visual naming convention', 'convert_text_model_keys': 'convert EgoVLP checkpoint keys from module.text_model to module.textual naming convention', 'convert_projection_keys': 'convert EgoVLP checkpoint keys from module.txt_proj and module.vid_proj to text_projection and image_projection', 'save_converted_ckpt': 'save the converted EgoVLP checkpoint with epoch, state_dict, and best_acc1 metadata'}
+```
+

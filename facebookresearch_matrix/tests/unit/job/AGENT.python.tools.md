@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/matrix
+- repo_uri: https://github.com/facebookresearch/matrix
+
+## File: facebookresearch_matrix/tests/unit/job/test_job_manager.py
+
+Prompts
+
+```
+['test that _execute_task_sequence logs traceback when user function raises an exception', 'review the test that verifies traceback logging on user function failure', 'refactor the dummy_deploy helper function to return custom deployment results', 'review the minimal ray stub module used to mock Ray for unit tests', 'test the remote decorator that wraps objects for the ray stub mock']
+```
+
+Usage
+
+```
+{'test_execute_task_sequence_logs_traceback': 'test that _execute_task_sequence logs traceback when user function raises an exception', 'review_test_execute_task_sequence_logs_traceback': 'review the test that verifies traceback logging on user function failure', 'refactor_dummy_deploy': 'refactor the dummy_deploy helper function to return custom deployment results', 'review_ray_stub': 'review the minimal ray stub module used to mock Ray for unit tests', 'test_remote_decorator': 'test the remote decorator that wraps objects for the ray stub mock'}
+```
+

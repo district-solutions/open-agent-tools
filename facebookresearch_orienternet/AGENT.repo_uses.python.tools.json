@@ -1,0 +1,324 @@
+{
+  "facebookresearch_orienternet/maploc/demo.py": {
+    "run_Demo_localize": "run the Demo class localize method to predict camera position and yaw from an image and map canvas",
+    "create_Demo_instance": "create a Demo instance that loads a pretrained OrienterNet model for visual localization inference",
+    "run_ImageCalibrator": "run the ImageCalibrator class to estimate camera roll, pitch, and focal length from an RGB image",
+    "parse_location_prior": "parse a location prior from EXIF metadata, explicit lat/lon coordinates, or a geocoded address string",
+    "run_Demo_read_input_image": "run the Demo read_input_image method to load an image, extract EXIF, calibrate camera, and compute a bounding box"
+  },
+  "facebookresearch_orienternet/maploc/module.py": {
+    "create_GenericModule": "create a GenericModule LightningModule instance from a config to run training and validation steps",
+    "run_training_step": "run a training step on a batch and log loss metrics to the progress bar",
+    "run_validation_step": "run a validation step on a batch and compute metrics and loss values",
+    "configure_optimizers": "configure an Adam optimizer with an optional learning rate scheduler for the model",
+    "load_from_checkpoint": "load a GenericModule from a checkpoint file with optional config overrides and best model selection"
+  },
+  "facebookresearch_orienternet/maploc/train.py": {
+    "run_train": "run the train function to start training an OrienterNet model with a Hydra DictConfig",
+    "run_main": "run the main entry point to train an OrienterNet model using Hydra configuration",
+    "create_seeding_callback": "create a SeedingCallback class to reseed PyTorch Lightning workers at each epoch start",
+    "create_console_logger": "create a ConsoleLogger callback to log training epoch starts and validation results",
+    "prepare_experiment_dir": "prepare an experiment directory by saving config and finding the last checkpoint path"
+  },
+  "facebookresearch_orienternet/maploc/data/dataset.py": {
+    "create_MapLocDataset": "create a MapLocDataset instance with stage, config, names, data, image_dirs, and tile_managers for visual place recognition",
+    "implement_getitem_MapLocDataset": "implement a PyTorch Dataset getitem method that returns image, map canvas, camera pose, and ground truth UV coordinates",
+    "implement_get_view_MapLocDataset": "implement a method to extract a view with raster map, camera parameters, roll-pitch-yaw, and GPS data from scene data",
+    "implement_process_image_MapLocDataset": "implement image preprocessing that rectifies pitch, resizes to target focal length, pads, and applies color jitter augmentation",
+    "implement_create_map_mask_MapLocDataset": "implement a method to create a boolean map mask around the center of a canvas with configurable radius and padding"
+  },
+  "facebookresearch_orienternet/maploc/data/image.py": {
+    "rectify_image_with_roll": "rectify a torch image tensor using a camera model and roll angle with bilinear grid sampling",
+    "rectify_image_with_roll_and_pitch": "rectify a torch image tensor using a camera model with both roll and pitch Euler angles",
+    "resize_image_to_fixed_size": "resize a torch image tensor to a fixed width and height using bilinear interpolation with antialiasing",
+    "resize_image_with_camera_scale": "resize a torch image tensor and scale the associated camera intrinsics proportionally to the new dimensions",
+    "pad_image_with_crop_and_center": "pad or crop a torch image tensor to a target size with optional center cropping and camera adjustment"
+  },
+  "facebookresearch_orienternet/maploc/data/sequential.py": {
+    "chunk_sequence_split_trajectory": "chunk a sequence of camera indices into segments by distance, time delay, and max length constraints",
+    "chunk_sequence_filter_by_distance": "split trajectory indices into chunks where inter-sample distance exceeds a maximum threshold",
+    "chunk_sequence_filter_by_time": "chunk camera sequence indices by maximum time delay between consecutive captures in seconds",
+    "unpack_batches_extract_tensors": "unpack a list of batch dicts into stacked tensors for images, canvas, rasters, yaws, and UV coordinates",
+    "unpack_batches_convert_uv_to_xy": "extract batch data and convert UV ground truth coordinates to XY using canvas to_xy methods"
+  },
+  "facebookresearch_orienternet/maploc/data/torch.py": {
+    "collate_batch": "collate a batch of tensors, numpy arrays, dicts, or namedtuples into stacked tensors for PyTorch DataLoader",
+    "set_num_threads": "set the number of threads for numpy, MKL, OpenBLAS, and PyTorch to limit CPU usage",
+    "worker_init_fn": "initialize a DataLoader worker with seeded randomness and configurable thread limits from dataset config",
+    "unbatch_to_device": "move batched data to a device, squeeze batch dimension from tensors, and unwrap single-item string lists",
+    "review_collate_function": "review the collate function to understand how it handles tensors, numpy arrays, dicts, and namedtuples"
+  },
+  "facebookresearch_orienternet/maploc/data/utils.py": {
+    "crop_map_raster": "crop a map raster to a random square region and adjust the xy coordinates accordingly",
+    "random_rot90_raster": "randomly rotate a map raster by 90 degree increments and update xy coordinates and heading",
+    "random_flip_image_raster": "randomly flip an image and map raster horizontally or vertically and update coordinates and heading",
+    "decompose_rotmat_euler": "decompose a camera to world rotation matrix into roll pitch and yaw Euler angles",
+    "summarize_data_augmentation_utils": "summarize the map location data augmentation utilities for cropping rotation and flipping operations"
+  },
+  "facebookresearch_orienternet/maploc/data/kitti/dataset.py": {
+    "create_KittiDataModule": "create a KittiDataModule instance with a config dict and optional TileManager for KITTI map localization data",
+    "setup_KittiDataModule_splits": "run the KittiDataModule setup method to parse train val and test splits from KITTI data files",
+    "parse_split_KittiDataModule": "parse a KITTI split file or list of date drive paths into image names and GPS shifts",
+    "get_frame_data_KittiDataModule": "extract camera pose translation and roll pitch yaw Euler angles from a KITTI GPS file",
+    "create_sequence_dataloader_KittiDataModule": "build a sequence-aware PyTorch DataLoader that groups KITTI images by date drive and chunks them"
+  },
+  "facebookresearch_orienternet/maploc/data/kitti/prepare.py": {
+    "download_kitti_data": "download KITTI raw data sequences and calibration files from AWS S3 to a local data directory",
+    "prepare_osm_tiles": "generate map tiles from an OSM file using GPS data and save them to an output path",
+    "run_prepare_cli": "run the prepare script with --data_dir and --generate_tiles flags to download data and generate OSM tiles",
+    "review_prepare_osm": "review the prepare_osm function that parses GPS files, projects coordinates, and creates tile maps",
+    "refactor_download": "refactor the download function to support resuming partial KITTI dataset downloads"
+  },
+  "facebookresearch_orienternet/maploc/data/kitti/utils.py": {
+    "parse_gps_file": "parse a KITTI GPS file to extract lat/lon coordinates and rotation matrix from yaw, pitch, roll",
+    "parse_split_file": "parse a KITTI split file to extract sequence names and optional 3D shift vectors",
+    "parse_calibration_file": "parse a KITTI calibration file into a dictionary of rotation, translation, and projection matrices",
+    "get_camera_calibration": "get camera intrinsics and GPS-to-camera extrinsics from a KITTI calibration directory for a given camera index",
+    "review_split_files": "review the KITTI split files list containing test1, test2, and train file names"
+  },
+  "facebookresearch_orienternet/maploc/data/mapillary/dataset.py": {
+    "create_pack_dump_dict": "create numpy arrays from dump dictionary points, views, and camera params for efficient memory sharing",
+    "build_mapillary_datamodule": "build a PyTorch Lightning data module for Mapillary street-level imagery with configurable scenes and splits",
+    "test_mapillary_datamodule_setup": "test the MapillaryDataModule setup method to load tile managers, dumps, and validate camera models",
+    "refactor_filter_elements": "refactor the filter_elements method to filter images by ground plane height or point cloud observations",
+    "run_sequence_dataloader": "run a sequence dataloader that chunks and shuffles Mapillary image sequences for training"
+  },
+  "facebookresearch_orienternet/maploc/data/mapillary/download.py": {
+    "create_MapillaryDownloader": "create a MapillaryDownloader instance with an API token to fetch Mapillary image data asynchronously",
+    "download_image_pixels": "download image pixels from a Mapillary URL and save them to a local file path",
+    "fetch_image_infos": "fetch metadata for multiple image IDs concurrently using the MapillaryDownloader with caching support",
+    "opensfm_camera_from_info": "create an OpenSfM Camera object from a Mapillary image info dictionary with perspective or fisheye support",
+    "opensfm_shot_from_info": "create an OpenSfM Shot with camera and pose from a Mapillary image info dict and projection"
+  },
+  "facebookresearch_orienternet/maploc/data/mapillary/prepare.py": {
+    "run_process_location": "run process_location to download and prepare Mapillary images for a given city location",
+    "run_process_sequence": "run process_sequence to undistort and select keyframes from a list of image IDs",
+    "run_process_shot": "run process_shot to undistort a single camera shot and save the output image",
+    "run_get_pano_offset": "run get_pano_offset to compute a deterministic random panorama offset from image metadata",
+    "run_pack_shot_dict": "run pack_shot_dict to serialize a Shot object with GPS and pose data into a dictionary"
+  },
+  "facebookresearch_orienternet/maploc/data/mapillary/utils.py": {
+    "select_keyframes_from_shots": "select keyframes from a list of shots based on minimum distance between camera centers",
+    "create_perspective_camera_from_pano": "create a perspective camera from a panorama camera with a specified output size",
+    "scale_camera_dimensions": "scale a camera width and height down to fit within a maximum size",
+    "undistort_panorama_images": "undistort a panorama image into four perspective views using PanoramaUndistorter and render_panorama",
+    "undistort_shot_images": "undistort a shot image handling panorama, perspective, or fisheye projection types with undistort_shot"
+  },
+  "facebookresearch_orienternet/maploc/evaluation/kitti.py": {
+    "run_kitti_evaluation": "run KITTI localization evaluation on a given split with directional and yaw error recall metrics",
+    "run_kitti_sequential_evaluation": "run KITTI sequential localization evaluation with chunking and centered map masking",
+    "run_kitti_cli": "run the KITTI evaluation CLI with --experiment, --split, and --sequential flags",
+    "review_run_function": "review the run function that merges configs, creates KittiDataModule, and evaluates metrics",
+    "review_default_cfg_sequential": "review the default_cfg_sequential OmegaConf that sets mask_radius, prior_range_rotation, and chunking max_length"
+  },
+  "facebookresearch_orienternet/maploc/evaluation/mapillary.py": {
+    "run_mapillary_evaluation": "run the Mapillary dataset evaluation for a given experiment and split with recall metrics",
+    "run_mapillary_sequential": "run the Mapillary evaluation in sequential mode with chunking and sequence error metrics",
+    "run_mapillary_cli": "run the Mapillary evaluation CLI with --experiment flag and optional --sequential and dotlist config overrides",
+    "review_run_function": "review the run function that evaluates Mapillary localization experiments and logs recall at thresholds",
+    "review_split_overrides": "review the split_overrides dict that defines validation scenes for the Mapillary dataset"
+  },
+  "facebookresearch_orienternet/maploc/evaluation/run.py": {
+    "run_evaluate": "run evaluation of an OrienterNet model on a dataset split with optional sequential mode and visualization output",
+    "run_evaluate_single_image": "run single image evaluation on a dataloader with a GenericModule model and optional GPS fusion metrics",
+    "run_evaluate_sequential": "run sequential evaluation on a dataset using RigidAligner or GPSAligner for trajectory-based pose estimation",
+    "resolve_checkpoint_path": "resolve a checkpoint file path from an experiment name or pretrained model identifier with automatic download support",
+    "review_pretrained_models": "review the pretrained_models dictionary to find available OrienterNet checkpoint names and their configuration overrides"
+  },
+  "facebookresearch_orienternet/maploc/evaluation/utils.py": {
+    "compute_recall_from_errors": "compute recall values from a list of error measurements for localization evaluation",
+    "compute_auc_from_errors_and_recall": "compute area under curve metrics given sorted errors, recall values, and threshold list",
+    "write_dump_experiment_results": "write experiment configuration, results, and error metrics to a JSON log file",
+    "review_compute_recall": "review the compute_recall function that sorts errors and calculates cumulative recall curve",
+    "refactor_compute_auc": "refactor the compute_auc function to support additional threshold-based AUC computation methods"
+  },
+  "facebookresearch_orienternet/maploc/evaluation/viz.py": {
+    "plot_single_localization_example": "plot a single localization example with map, likelihood overlay, and neural map visualization",
+    "plot_example_with_bev": "plot a localization example including bird's eye view confidence and feature visualizations",
+    "plot_fused_predictions": "plot localization results using fused log probabilities and fused pose predictions",
+    "save_localization_figures_for_paper": "save publication-ready localization figures including map, likelihood, and neural map PDFs",
+    "plot_directional_error": "plot localization results with directional error metrics showing lateral and longitudinal displacement"
+  },
+  "facebookresearch_orienternet/maploc/models/base.py": {
+    "create_subclass_BaseModel": "create a subclass of BaseModel that implements _init and _forward methods for a custom model",
+    "implement_init_BaseModel": "implement the _init method in a BaseModel subclass to initialize model layers from config",
+    "implement_forward_BaseModel": "implement the _forward method in a BaseModel subclass to return prediction tensors from input data",
+    "implement_loss_BaseModel": "implement the loss method in a BaseModel subclass to compute and return a dictionary of loss values",
+    "configure_BaseModel": "configure a BaseModel subclass with default_conf and required_data_keys for custom model behavior"
+  },
+  "facebookresearch_orienternet/maploc/models/bev_net.py": {
+    "build_BEVNet": "build a BEVNet model with ResNet Bottleneck blocks for bird's eye view feature extraction",
+    "create_BEVNet_with_confidence": "create a BEVNet model with an optional confidence prediction head enabled",
+    "run_BEVNet_forward": "run the BEVNet forward pass to extract features and produce output predictions",
+    "review_BEVNet_init": "review the BEVNet _init method to understand how Bottleneck blocks and AdaptationBlock are configured",
+    "refactor_BEVNet_padding": "refactor the BEVNet padding mode configuration to support non-zero padding strategies"
+  },
+  "facebookresearch_orienternet/maploc/models/bev_projection.py": {
+    "create_polar_projection_depth": "create a PolarProjectionDepth module to project images into polar coordinates using depth scores and camera parameters",
+    "sample_depth_scores": "sample depth scores from pixel scales and camera intrinsics using log-scale normalization and grid sampling",
+    "create_cartesian_projection": "create a CartesianProjection module to convert polar-projected images into bird's eye view using camera parameters",
+    "grid_to_polar": "convert a Cartesian grid to polar coordinates using camera focal length and principal point",
+    "sample_from_polar": "sample a bird's eye view image from polar-projected data using normalized grid coordinates and validity masks"
+  },
+  "facebookresearch_orienternet/maploc/models/feature_extractor.py": {
+    "build_feature_extractor_vgg": "build a FeatureExtractor model using a pretrained VGG16 encoder for multi-scale feature extraction",
+    "build_feature_extractor_resnet": "build a FeatureExtractor model using a ResNet50 encoder with gradient checkpointing enabled",
+    "create_decoder_block": "create a DecoderBlock that upsamples features and concatenates with skip connections from the encoder",
+    "create_adaptation_block": "create an AdaptationBlock with a 1x1 convolution to project feature channels to a target dimension",
+    "run_feature_extraction_forward": "run the FeatureExtractor forward pass on an image tensor to get multi-scale feature maps"
+  },
+  "facebookresearch_orienternet/maploc/models/feature_extractor_v2.py": {
+    "build_FeatureExtractor": "build a FeatureExtractor model with a ResNet50 encoder and FPN decoder for image feature extraction",
+    "create_DecoderBlock": "create a DecoderBlock that upsamples and fuses skip connections with bilinear interpolation and padding",
+    "create_FPN": "create a Feature Pyramid Network decoder that merges multi-scale encoder features into a single output",
+    "build_encoder_resnet": "build a ResNet encoder with configurable downsampling layers using torchvision feature extraction",
+    "remove_conv_stride": "remove the stride from a Conv2d layer and replace it with stride 1 while preserving weights"
+  },
+  "facebookresearch_orienternet/maploc/models/metrics.py": {
+    "compute_location_error": "compute the 2D location error between predicted and ground truth UV coordinates given pixels per meter",
+    "compute_angle_error": "compute the angular error between predicted and ground truth yaw angles in degrees",
+    "track_location_2d_recall": "track the 2D location recall metric by computing how often errors fall below a threshold",
+    "track_angle_recall": "track the angle recall metric by computing how often yaw errors fall below a threshold",
+    "compute_lateral_longitudinal_error": "compute lateral and longitudinal error by rotating UV displacement into yaw-aligned coordinates"
+  },
+  "facebookresearch_orienternet/maploc/models/orienternet.py": {
+    "build_OrienterNet_model": "build an OrienterNet model with image encoder, map encoder, and BEV net configuration",
+    "run_OrienterNet_forward": "run the OrienterNet forward pass to predict camera pose from image and map data",
+    "test_exhaustive_voting": "test the exhaustive_voting method to match BEV features against map templates via FFT convolution",
+    "review_OrienterNet_loss": "review the OrienterNet loss function that computes NLL loss with optional label smoothing",
+    "summarize_OrienterNet_metrics": "summarize the OrienterNet metrics returning location error, yaw error, and recall measures"
+  },
+  "facebookresearch_orienternet/maploc/models/sequential.py": {
+    "propagate_belief": "propagate a belief tensor across spatial-rotation canvases given delta XY and yaw offsets",
+    "markov_filtering": "run Markov filtering over a sequence of observations, canvases, positions, and yaw angles",
+    "integrate_observation": "integrate a source observation into a target belief tensor using pose deltas and canvases",
+    "RigidAligner_update": "update a RigidAligner with a new observation, canvas, position, and yaw to accumulate belief",
+    "GPSAligner_update": "update a GPSAligner with GPS coordinates, accuracy, canvas, position, and yaw for alignment"
+  },
+  "facebookresearch_orienternet/maploc/models/utils.py": {
+    "create_grid_tensor": "create a 2D coordinate grid tensor with configurable width, height, step size, and origin",
+    "build_rotation_matrix": "build a 2D rotation matrix from a tensor of angles in radians",
+    "create_global_pooling_module": "create a GlobalPooling PyTorch module that applies mean or max adaptive pooling",
+    "apply_gradient_rotation_matrix": "apply the gradient of a 2D rotation matrix computed from angle tensors",
+    "use_checkpointed_decorator": "use the checkpointed decorator to enable gradient checkpointing on a PyTorch module class"
+  },
+  "facebookresearch_orienternet/maploc/models/voting.py": {
+    "create_TemplateSampler": "create a TemplateSampler module to sample rotated BEV image kernels using grid sampling and quadrant optimization",
+    "run_conv2d_fft_batchwise": "run batchwise FFT-based 2D convolution on signal and kernel tensors with same padding and kernel flipping",
+    "create_SparseMapSampler": "create a SparseMapSampler module to sample rotated 2D point candidates from an image map using bilinear grid sampling",
+    "run_argmax_xyr": "run argmax on 3D score tensors to extract x, y, and yaw angle coordinates from flattened indices",
+    "run_fuse_gps": "run GPS fusion to combine log probability volumes with GPS coordinates using gaussian or hard threshold weighting"
+  },
+  "facebookresearch_orienternet/maploc/osm/analysis.py": {
+    "plot_osm_histograms": "plot horizontal bar histograms for OSM nodes, ways, and areas from an OSMData object",
+    "plot_sankey_hierarchy": "create a Sankey diagram showing key to tag to group flow for OSM nodes",
+    "count_elements": "count OSM elements by group using a filter function and a parse function",
+    "recover_hierarchy": "recover a two-level hierarchy dictionary from flat group labels in a Counter object",
+    "plot_histogram": "draw a horizontal bar histogram with log scale and auto-labeled bars from a counts dict"
+  },
+  "facebookresearch_orienternet/maploc/osm/data.py": {
+    "build_MapData_from_osm": "build a MapData object from raw OSMData by parsing nodes, ways, areas, and multipolygon relations",
+    "create_MapArea_from_relation": "create a MapArea with outer and inner polygon rings from an OSM multipolygon relation",
+    "glue_OSM_ways": "glue a list of OSM ways into connected paths by joining shared endpoints and detecting cycles",
+    "parse_multipolygon_relation": "parse an OSM relation into inner and outer way paths for multipolygon area construction",
+    "construct_MapLine_from_way": "construct a MapLine with stacked node coordinates from an OSM way for line-based map features"
+  },
+  "facebookresearch_orienternet/maploc/osm/download.py": {
+    "get_osm_data": "get OSM map data for a geographic boundary box from the OpenStreetMap API",
+    "get_osm_with_cache": "get OSM map data for a boundary box and cache the response to a file path",
+    "get_osm_overwrite_cache": "get OSM map data for a boundary box and overwrite any existing cached file",
+    "review_get_osm": "review the get_osm function that fetches OpenStreetMap data using a boundary box and optional caching",
+    "summarize_get_osm": "summarize the get_osm function which queries the OSM API with a bounding box and supports file caching"
+  },
+  "facebookresearch_orienternet/maploc/osm/parser.py": {
+    "parse_levels_string": "parse a semicolon or comma separated level string into a list of floats",
+    "filter_level_osm_element": "filter an OSM element to exclude underground or non-ground-floor levels",
+    "is_area_osm_way": "check if an OSM way represents a closed area like a building or park",
+    "match_to_group_label": "match an OSM label string to a semantic group using regex patterns",
+    "group_elements_osm_data": "group OSM nodes, ways, and areas into semantic categories like building, road, or tree"
+  },
+  "facebookresearch_orienternet/maploc/osm/raster.py": {
+    "create_canvas_for_raster": "create a Canvas with a BoundaryBox and pixels-per-meter value to rasterize OSM map elements",
+    "draw_polygon_on_canvas": "draw a filled polygon on the Canvas raster using xy coordinates converted to UV space",
+    "render_raster_masks": "render per-group raster masks from MapNode, MapLine, and MapArea lists onto a Canvas",
+    "convert_mask_to_index": "convert a dictionary of group masks into a single index array with background class zero",
+    "render_raster_map": "render a stacked raster map array from area, way, and node group masks"
+  },
+  "facebookresearch_orienternet/maploc/osm/reader.py": {
+    "load_osm_data_from_file": "load OpenStreetMap data from a JSON or XML file into an OSMData object",
+    "parse_osm_nodes_from_dict": "parse OSM nodes from an Overpass-like dictionary structure using OSMNode.from_dict",
+    "parse_osm_ways_from_dict": "parse OSM ways from an Overpass-like dictionary structure using OSMWay.from_dict",
+    "get_length_from_osm_tag": "get a length value in meters from an OSM element tag using get_length",
+    "project_osm_nodes_to_xy": "project all OSM node geo coordinates to XY using add_xy_to_nodes with a Projection"
+  },
+  "facebookresearch_orienternet/maploc/osm/tiling.py": {
+    "build_tile_manager_from_bbox": "build a TileManager from a bounding box by downloading OSM data and rendering raster map tiles",
+    "query_tile_manager_canvas": "query a TileManager with a bounding box to retrieve a Canvas with the composited raster image",
+    "create_map_index_spatial_query": "create a MapIndex from MapData to spatially query nodes, lines, and areas by bounding box",
+    "save_tile_manager_pickle": "save a TileManager to disk as a pickled file with PNG-encoded raster tiles and metadata",
+    "load_tile_manager_from_pickle": "load a TileManager from a pickled file restoring tiles, projection, and bounding box metadata"
+  },
+  "facebookresearch_orienternet/maploc/osm/viz.py": {
+    "create_geoplotter_figure": "create a GeoPlotter instance with a specified zoom level for interactive map visualization",
+    "plot_points_on_map": "plot latitude and longitude points as colored markers on an OpenStreetMap using GeoPlotter",
+    "draw_bbox_on_map": "draw a bounding box outline on the map using GeoPlotter with a specified color",
+    "apply_colormap_to_rasters": "apply the Colormap class to colorize area and way rasters using map category colors",
+    "plot_nodes_on_raster": "plot node locations from a raster array as labeled scatter points on a matplotlib axis"
+  },
+  "facebookresearch_orienternet/maploc/utils/exif.py": {
+    "extract_gps_coordinates": "use the EXIF class to extract longitude and latitude from an image file's GPS EXIF tags",
+    "extract_focal_length": "use the EXIF class to extract the 35mm equivalent focal length and focal ratio from image EXIF data",
+    "extract_capture_time": "use the EXIF class to extract the capture timestamp as a Unix epoch float from image EXIF tags",
+    "extract_geolocation": "use the EXIF class extract_geo method to get a dict with latitude, longitude, altitude, and DOP from an image",
+    "compute_focal_ratio": "use the compute_focal function to calculate the 35mm focal length and focal ratio from sensor width and focal data"
+  },
+  "facebookresearch_orienternet/maploc/utils/geo.py": {
+    "create_boundarybox_from_min_max": "create a BoundaryBox from min and max numpy arrays defining spatial bounds",
+    "parse_boundarybox_from_string": "parse a BoundaryBox from a comma-separated string of min and max coordinate values",
+    "normalize_coordinates_with_boundarybox": "normalize coordinates to a 0-1 range using a BoundaryBox min and max bounds",
+    "project_geocoordinates_to_topocentric": "project latitude longitude coordinates to topocentric XY using a Projection instance",
+    "unproject_topocentric_to_geocoordinates": "unproject topocentric XY coordinates back to latitude longitude using a Projection instance"
+  },
+  "facebookresearch_orienternet/maploc/utils/geo_opensfm.py": {
+    "compute_ecef_from_lla": "compute ECEF XYZ coordinates from latitude, longitude, and altitude using the WGS84 ellipsoid model",
+    "compute_lla_from_ecef": "compute latitude, longitude, and altitude from ECEF XYZ coordinates using the WGS84 ellipsoid model",
+    "build_topocentric_transform_matrix": "build a 4x4 transformation matrix from a topocentric reference frame to ECEF coordinates",
+    "convert_topocentric_from_lla": "convert latitude, longitude, and altitude to topocentric XYZ relative to a reference position",
+    "use_TopocentricConverter_class": "use the TopocentricConverter class to convert between lat/lon/alt and topocentric XYZ with a fixed origin"
+  },
+  "facebookresearch_orienternet/maploc/utils/geometry.py": {
+    "convert_points_to_homogeneous": "convert N-dimensional points to homogeneous coordinates by appending a 1 as the last dimension",
+    "convert_points_from_homogeneous": "remove the homogeneous dimension from N-dimensional points by dividing by the last coordinate",
+    "undistort_camera_points": "undistort 2D camera points using radial and tangential distortion coefficients with validity masking",
+    "review_geometry_undistort": "review the undistort_points function to understand the radial and tangential distortion model and inflection point logic",
+    "summarize_homogeneous_conversions": "summarize the from_homogeneous and to_homogeneous functions for converting between Euclidean and homogeneous coordinates"
+  },
+  "facebookresearch_orienternet/maploc/utils/io.py": {
+    "read_image": "read an image file from disk using OpenCV and convert BGR to RGB format",
+    "write_torch_image": "write a normalized torch tensor image to disk as a BGR image file",
+    "write_json": "write a dictionary containing numpy arrays or torch tensors to a JSON file",
+    "download_file": "download a file from a URL with a progress bar and save to a local path",
+    "JSONEncoder": "review the JSONEncoder class that serializes numpy arrays and torch tensors to JSON"
+  },
+  "facebookresearch_orienternet/maploc/utils/viz_2d.py": {
+    "plot_images_horizontally": "plot a list of NumPy images horizontally with optional titles and adaptive figure sizing",
+    "plot_keypoints_on_images": "plot keypoints as scatter points on existing matplotlib image axes with custom colors",
+    "plot_matches_between_images": "plot matching keypoints between two images with colored connecting lines and endpoint markers",
+    "add_text_to_axis": "add labeled text with outline effects to a specific axis in the current figure",
+    "features_to_RGB": "project high-dimensional feature maps to RGB colors using PCA for visualization"
+  },
+  "facebookresearch_orienternet/maploc/utils/viz_localization.py": {
+    "create_likelihood_overlay": "create a likelihood overlay RGB image from a probability map with optional map visualization blending",
+    "create_heatmap_rgb": "create an RGB heatmap image from score values with optional masking and configurable colormap",
+    "plot_camera_pose": "plot a camera pose with position and yaw orientation arrows on a matplotlib axis",
+    "plot_dense_rotations": "plot dense rotation arrows from a probability tensor showing orientation predictions above a threshold",
+    "add_circle_inset": "add a circular inset zoom view centered on a point of interest on a matplotlib axis"
+  },
+  "facebookresearch_orienternet/maploc/utils/wrappers.py": {
+    "create_pose_from_Rt": "create a Pose object from a rotation matrix and translation vector tensor",
+    "create_pose_from_4x4mat": "create a Pose object from a 4x4 SE3 transformation matrix tensor",
+    "compose_poses": "compose two SE3 Pose objects to chain coordinate frame transformations",
+    "transform_points_with_pose": "transform a set of 3D points using a Pose object via matmul",
+    "create_camera_from_dict": "create a Camera object from a COLMAP camera dictionary or named tuple"
+  }
+}

@@ -1,0 +1,751 @@
+{
+  "facebookresearch_maskrcnn-benchmark/demo/predictor.py": {
+    "run_COCODemo_on_image": "run the COCODemo class to detect objects and overlay bounding boxes on an OpenCV image",
+    "create_COCODemo_instance": "create a COCODemo instance with a config and confidence threshold for object detection",
+    "build_transform_for_model": "build the image preprocessing transform pipeline used to prepare images for the detection model",
+    "visualize_keypoints_with_vis_keypoints": "visualize person keypoints on an image using the vis_keypoints function with threshold and alpha",
+    "select_top_predictions_by_score": "select top predictions above a confidence threshold sorted by descending score from model output"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/config/paths_catalog.py": {
+    "get_dataset_catalog_entry": "get a dataset catalog entry by name for coco, voc, or cityscapes datasets",
+    "get_model_catalog_url": "get a model download URL by name for Caffe2 Detectron or ImageNet pretrained models",
+    "list_available_datasets": "list all available dataset names and their configuration from the DATASETS catalog dictionary",
+    "list_available_models": "list all available pretrained model names and signatures from the C2_DETECTRON_MODELS catalog",
+    "review_DATASET_CATALOG": "review the DatasetCatalog class and its DATASETS dictionary to understand supported dataset paths and splits"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/build.py": {
+    "build_dataset_from_catalog": "build a dataset from a list of dataset names using a DatasetCatalog and transforms",
+    "make_data_sampler": "create a data sampler for a dataset with optional shuffle and distributed sampling support",
+    "make_batch_data_sampler": "build a batch sampler with optional aspect ratio grouping and iteration-based sampling",
+    "make_data_loader": "build a PyTorch DataLoader from a config with support for training, testing, and distributed modes",
+    "compute_aspect_ratios": "compute the aspect ratios of all images in a dataset for grouping purposes"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/datasets/abstract.py": {
+    "create_dataset_subclass": "create a subclass of AbstractDataset that implements __getitem__, __len__, and get_img_info for a custom object detection dataset",
+    "initMaps_class_to_index": "call initMaps on an AbstractDataset subclass to build name_to_id and id_to_name mappings from the CLASSES list",
+    "review_AbstractDataset_interface": "review the AbstractDataset class to understand the required CLASSES, __getitem__, __len__, and get_img_info contract for maskrcnn_benchmark datasets",
+    "implement_getitem_for_dataset": "implement __getitem__ in an AbstractDataset subclass to return a PIL image, BoxList target, and index for a given sample",
+    "summarize_AbstractDataset": "summarize the AbstractDataset base class and its role as a common interface for maskrcnn_benchmark dataset customization"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/datasets/cityscapes.py": {
+    "create_cityscapes_dataset": "create a CityScapesDataset instance with image and annotation directories for train or val split",
+    "process_binary_masks": "process CityScapes binary instance ID masks into bounding boxes, segmentations, and labels",
+    "process_polygons": "process CityScapes polygon annotations from JSON files into bounding boxes, polygons, and labels",
+    "filter_ground_truth": "filter ground truth boxes and segmentations by minimum bounding box area threshold",
+    "get_image_info": "get image metadata including height, width, and file paths for a given dataset index"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/datasets/coco.py": {
+    "create_COCODataset": "create a COCODataset instance from a COCO annotation file and image root directory",
+    "getitem_COCODataset": "get an image and its bounding box labels masks and keypoints by index",
+    "has_valid_annotation": "check if a list of COCO annotations contains valid bounding boxes or keypoints",
+    "get_img_info_COCODataset": "get the COCO image metadata dictionary for a given dataset index",
+    "count_visible_keypoints": "count the total number of visible keypoints across a list of COCO annotations"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/datasets/concat_dataset.py": {
+    "build_concatdataset_class": "build a ConcatDataset class that extends torch ConcatDataset with image info query support",
+    "create_get_idxs_method": "create a function that uses bisect to resolve a flat index into dataset and sample indices",
+    "create_get_img_info_method": "create a function that retrieves image info from a sub-dataset given a concatenated index",
+    "test_concatdataset_get_idxs": "test the ConcatDataset get_idxs method to verify correct dataset and sample index resolution",
+    "review_concatdataset_class": "review the ConcatDataset class and its get_idxs and get_img_info methods for correctness"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/datasets/list_dataset.py": {
+    "create_ListDataset": "create a ListDataset from a list of image file paths with optional transforms",
+    "build_ListDataset_with_transforms": "build a ListDataset that applies image transforms to each image and its dummy bounding box target",
+    "test_ListDataset_getitem": "test the ListDataset __getitem__ method to verify it returns an RGB image and BoxList target",
+    "review_ListDataset_class": "review the ListDataset class and its __init__, __getitem__, __len__, and get_img_info methods",
+    "summarize_ListDataset": "summarize the ListDataset class that wraps a list of image paths into a PyTorch-compatible dataset"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/datasets/voc.py": {
+    "create_PascalVOCDataset": "create a PascalVOCDataset instance with a data directory, split name, and optional transforms",
+    "get_groundtruth_boxes": "get ground truth bounding boxes and labels for a given image index from Pascal VOC annotations",
+    "preprocess_VOC_annotation": "preprocess a Pascal VOC XML annotation into tensors for boxes, labels, and difficult flags",
+    "get_image_info": "get the height and width of an image by its index from the VOC annotation file",
+    "map_class_id_to_name": "map a Pascal VOC class ID integer to its corresponding class name string"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/datasets/evaluation/cityscapes/cityscapes_eval.py": {
+    "run_cityscapes_evaluation": "run the do_cityscapes_evaluation function to evaluate predictions against Cityscapes ground truth",
+    "evaluate_bbox_matches": "evaluate bounding box matches using eval_instances.evaluateBoxMatches with computed IoU scores",
+    "evaluate_mask_matches": "evaluate segmentation mask matches using eval_instances.evaluateMaskMatches with computed IoU scores",
+    "compute_averages": "compute average AP scores using eval_instances.computeAverages on box or mask match results",
+    "match_gts_with_preds": "match ground truth instances with predictions using eval_instances.matchGtsWithPreds for IoU computation"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/datasets/evaluation/cityscapes/eval_instances.py": {
+    "run_matchGtsWithPreds": "run matchGtsWithPreds to match ground truth instances with predictions across a dataset",
+    "run_evaluateBoxMatches": "run evaluateBoxMatches to compute bounding box AP scores for Cityscapes instance evaluation",
+    "run_evaluateMaskMatches": "run evaluateMaskMatches to compute mask-level AP scores for Cityscapes instance segmentation",
+    "run_computeAverages": "run computeAverages to compute average AP, AP50, and AP75 metrics from evaluation results",
+    "run_printResults": "run printResults to print a formatted table of per-class and average AP metrics"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/datasets/evaluation/coco/abs_to_coco.py": {
+    "convert_abstract_to_coco": "convert an AbstractDataset-derived dataset to COCO-style annotation format for pycocotools evaluation",
+    "process_single_image": "process a single image from an AbstractDataset and extract COCO-style image and annotation data",
+    "masks_to_rles": "convert a tensor of binary instance masks to COCO-compatible RLE encoded segmentation format",
+    "review_convert_abstract_to_coco": "review the convert_abstract_to_coco function for multiprocessing dataset conversion to COCO format",
+    "summarize_masks_to_rles": "summarize the masks_to_rles function that encodes binary mask tensors into RLE format"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/datasets/evaluation/coco/coco_eval.py": {
+    "run_do_coco_evaluation": "run COCO evaluation on model predictions for bbox, segmentation, and keypoints",
+    "create_prepare_for_coco_detection": "create COCO detection results from model predictions with bounding boxes and scores",
+    "build_prepare_for_coco_segmentation": "build COCO segmentation results from model predictions with RLE-encoded masks",
+    "test_evaluate_box_proposals": "test detection proposal recall metrics by evaluating IoU overlap against ground truth boxes",
+    "review_COCOResults_class": "review the COCOResults class that stores and formats COCO evaluation metrics like AP and AR"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/datasets/evaluation/coco/coco_eval_wrapper.py": {
+    "run_coco_evaluation_on_custom_dataset": "run COCO-style evaluation on a custom AbstractDataset by converting annotations to COCO format",
+    "convert_abstract_to_coco_annotations": "convert an AbstractDataset's annotations to COCO JSON format and save to output folder",
+    "wrap_evaluation_with_coco_conversion": "wrap the original COCO evaluation function to auto-convert custom dataset annotations before evaluating",
+    "review_do_coco_evaluation": "review the do_coco_evaluation wrapper function that bridges AbstractDataset and COCO evaluation",
+    "refactor_coco_eval_wrapper": "refactor the coco_eval_wrapper to support additional dataset formats beyond AbstractDataset"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/datasets/evaluation/voc/voc_eval.py": {
+    "run_voc_evaluation": "run PASCAL VOC evaluation on object detection predictions against ground truth boxlists",
+    "eval_detection_voc": "evaluate object detection predictions against ground truth using configurable IoU threshold and VOC metric",
+    "calc_detection_voc_prec_rec": "calculate precision and recall for object detection predictions using PASCAL VOC matching logic",
+    "calc_detection_voc_ap": "calculate average precision from precision and recall arrays using 11-point or interpolated metric",
+    "review_voc_eval": "review the PASCAL VOC evaluation functions for object detection precision recall and average precision"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/samplers/distributed.py": {
+    "create_distributed_sampler": "create a DistributedSampler instance to split a dataset across multiple training processes",
+    "use_distributed_sampler_with_dataloader": "use a DistributedSampler with a DataLoader for exclusive per-process data loading in distributed training",
+    "set_epoch_distributed_sampler": "set the epoch on a DistributedSampler to ensure different shuffling order across training epochs",
+    "review_distributed_sampler_shuffling": "review the DistributedSampler class and its deterministic epoch-based shuffling logic using torch.Generator",
+    "refactor_distributed_sampler_padding": "refactor the DistributedSampler to customize how extra samples are padded for even division across replicas"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/transforms/build.py": {
+    "build_transforms_train": "build a transforms pipeline for training with color jitter, resize, flip, and normalization from config",
+    "build_transforms_test": "build a transforms pipeline for testing with resize, to tensor, and normalization from config",
+    "review_build_transforms": "review the build_transforms function to understand how it composes augmentation transforms from a config object",
+    "refactor_build_transforms": "refactor build_transforms to support additional augmentation transforms like random crop or rotation",
+    "summarize_build_transforms": "summarize the build_transforms function that creates a Compose pipeline with Resize, Flip, ColorJitter, and Normalize"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/data/transforms/transforms.py": {
+    "build_compose_transform_pipeline": "build a Compose pipeline that chains Resize, RandomHorizontalFlip, and Normalize transforms for image and target",
+    "create_resize_transform": "create a Resize transform that resizes images to a random min_size while respecting max_size",
+    "create_flip_augmentation": "create a RandomHorizontalFlip or RandomVerticalFlip transform to augment images and transpose targets",
+    "create_color_jitter_transform": "create a ColorJitter transform to randomly adjust brightness, contrast, saturation, and hue of images",
+    "create_normalize_transform": "create a Normalize transform that converts BGR to RGB, scales to 255, and normalizes with mean and std"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/engine/bbox_aug.py": {
+    "run_bbox_augmented_detection": "run bounding box detection with test-time augmentation including flips and multiple scales on images",
+    "run_bbox_detection": "run bounding box detection on original images with resize, tensor conversion, and normalization transforms",
+    "run_bbox_hflip_detection": "run bounding box detection on horizontally flipped images and transpose detections back to original orientation",
+    "run_bbox_scale_detection": "run bounding box detection at a specified scale with optional horizontal flip for multi-scale inference",
+    "review_bbox_aug_functions": "review the im_detect_bbox_aug function that merges detections from multiple transforms and applies NMS"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/engine/inference.py": {
+    "run_inference_on_dataset": "run inference on a detection model using a data loader and save predictions to an output folder",
+    "run_compute_on_dataset": "run model predictions on a dataset with optional bounding box augmentation and timing",
+    "run_accumulate_predictions": "accumulate and merge predictions from multiple GPUs into a single sorted list",
+    "review_inference_function": "review the inference function that handles multi-GPU evaluation, timing, and result aggregation for object detection",
+    "refactor_compute_on_dataset": "refactor compute_on_dataset to support custom output processing or additional augmentation strategies"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/engine/trainer.py": {
+    "run_do_train": "run the do_train function to train a Mask R-CNN model with mixed precision and validation",
+    "run_reduce_loss_dict": "run reduce_loss_dict to average loss values across all GPU processes in distributed training",
+    "review_do_train": "review the do_train function for its training loop, checkpointing, and periodic validation logic",
+    "refactor_do_train": "refactor the do_train function to support a custom validation data loader or logging callback",
+    "summarize_reduce_loss_dict": "summarize the reduce_loss_dict function which reduces and averages loss tensors across distributed processes"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/layers/batch_norm.py": {
+    "create_frozen_batch_norm_layer": "create a FrozenBatchNorm2d layer with fixed batch statistics for a given number of channels",
+    "use_frozen_batch_norm_in_model": "use FrozenBatchNorm2d as a drop-in replacement for BatchNorm2d in a PyTorch model",
+    "apply_frozen_batch_norm_forward": "apply the FrozenBatchNorm2d forward pass to normalize a 4D tensor using fixed running statistics",
+    "review_frozen_batch_norm_float16_support": "review the FrozenBatchNorm2d class and its automatic float16 dtype casting in the forward method",
+    "refactor_frozen_batch_norm_affine_params": "refactor the FrozenBatchNorm2d class to customize the initial weight, bias, running mean, or running var buffers"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/layers/misc.py": {
+    "build_Conv2d_empty_tensor": "build a Conv2d layer that safely handles empty tensors by computing output shape manually",
+    "build_ConvTranspose2d_empty_tensor": "build a ConvTranspose2d layer that safely handles empty tensors during transposed convolution",
+    "build_BatchNorm2d_empty_tensor": "build a BatchNorm2d layer that safely handles empty tensors by returning same-shaped empty output",
+    "use_interpolate_empty_tensor": "use the interpolate function to resize tensors while safely handling empty tensor inputs",
+    "build_DFConv2d_deformable": "build a DFConv2d deformable convolutional layer with optional modulated deformable convolution support"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/layers/roi_align.py": {
+    "create_ROIAlign_module": "create a ROIAlign nn.Module with output_size, spatial_scale, and sampling_ratio parameters",
+    "run_roi_align_forward": "run roi_align forward pass on input features and region proposals with spatial scaling",
+    "test_ROIAlign_backward": "test the ROIAlign backward pass gradient computation through the C extension",
+    "review_ROIAlign_amp": "review the ROIAlign forward method apex amp float_function decorator for mixed precision",
+    "refactor_roi_align_sampling": "refactor the roi_align function to adjust the sampling_ratio parameter for feature pooling"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/layers/roi_pool.py": {
+    "create_ROIPool_module": "create a ROIPool module with a given output_size and spatial_scale for region-of-interest pooling",
+    "build_ROIPool_forward": "build a forward pass through ROIPool by passing input feature maps and rois tensors",
+    "test_roi_pool_function": "test the roi_pool autograd function with input, roi, output_size, and spatial_scale arguments",
+    "review_ROIPool_backward": "review the _ROIPool backward pass that computes gradients using saved argmax indices",
+    "refactor_ROIPool_amp": "refactor the ROIPool forward method to use apex amp float_function for mixed precision"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/layers/sigmoid_focal_loss.py": {
+    "create_SigmoidFocalLoss_module": "create a SigmoidFocalLoss module with gamma and alpha parameters for multi-label classification",
+    "run_SigmoidFocalLoss_forward": "run the SigmoidFocalLoss forward pass on logits and targets tensors to compute loss",
+    "test_sigmoid_focal_loss_cpu": "test the sigmoid_focal_loss_cpu function with sample logits, targets, gamma, and alpha values",
+    "review_SigmoidFocalLoss_backward": "review the _SigmoidFocalLoss backward pass that computes gradients via the CUDA extension",
+    "refactor_sigmoid_focal_loss_cuda": "refactor the sigmoid_focal_loss_cuda autograd function to use TorchScript instead of the C extension"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/layers/smooth_l1_loss.py": {
+    "compute_smooth_l1_loss": "compute smooth L1 loss between input and target tensors with a configurable beta parameter",
+    "compute_smooth_l1_loss_with_custom_beta": "compute smooth L1 loss using a custom beta value for controlling the L2 to L1 transition threshold",
+    "compute_smooth_l1_loss_sum": "compute the summed smooth L1 loss across all elements by setting size_average to False",
+    "review_smooth_l1_loss": "review the smooth_l1_loss function to understand its beta parameter and size_average behavior",
+    "refactor_smooth_l1_loss_beta": "refactor the smooth_l1_loss function to use a different default beta value for the loss calculation"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/layers/dcn/deform_conv_func.py": {
+    "build_deform_conv_forward": "build a deformable convolution forward pass using DeformConvFunction with input, offset, and weight tensors on CUDA",
+    "build_modulated_deform_conv_forward": "build a modulated deformable convolution forward pass using ModulatedDeformConvFunction with input, offset, mask, and weight tensors",
+    "test_deform_conv_backward": "test the DeformConvFunction backward pass to compute gradients for input, offset, and weight tensors",
+    "test_modulated_deform_conv_backward": "test the ModulatedDeformConvFunction backward pass to compute gradients for input, offset, mask, weight, and bias tensors",
+    "review_deform_conv_output_size": "review the DeformConvFunction _output_size method to calculate output tensor dimensions from input, weight, padding, dilation, and stride"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/layers/dcn/deform_conv_module.py": {
+    "create_DeformConv_layer": "create a DeformConv layer with specified in_channels, out_channels, and kernel_size for deformable convolution",
+    "create_ModulatedDeformConv_layer": "create a ModulatedDeformConv layer with offset and mask support for modulated deformable convolution",
+    "create_ModulatedDeformConvPack_layer": "create a ModulatedDeformConvPack layer that automatically predicts offset and mask from input features",
+    "review_DeformConv_forward": "review the DeformConv forward method that applies deformable convolution using input and offset tensors",
+    "review_ModulatedDeformConvPack_forward": "review the ModulatedDeformConvPack forward method that predicts offset and mask then applies modulated deformable convolution"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/layers/dcn/deform_pool_func.py": {
+    "run_deform_roi_pooling": "run deform_roi_pooling on CUDA feature maps with ROIs and offset tensors for deformable RoI pooling",
+    "review_DeformRoIPoolingFunction_forward": "review the DeformRoIPoolingFunction forward pass that calls _C.deform_psroi_pooling_forward with spatial scale and group parameters",
+    "review_DeformRoIPoolingFunction_backward": "review the DeformRoIPoolingFunction backward pass that computes gradients for data, ROIs, and offset tensors",
+    "test_deform_roi_pooling_cuda": "test the deform_roi_pooling function with CUDA tensors to verify forward and backward pass correctness",
+    "refactor_DeformRoIPoolingFunction_trans_std": "refactor the DeformRoIPoolingFunction to validate trans_std bounds between 0.0 and 1.0 before pooling"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/layers/dcn/deform_pool_module.py": {
+    "create_DeformRoIPooling": "create a DeformRoIPooling module with spatial_scale, out_size, out_channels, and no_trans parameters",
+    "build_DeformRoIPoolingPack": "build a DeformRoIPoolingPack module that predicts offset via an FC network for deformable ROI pooling",
+    "build_ModulatedDeformRoIPoolingPack": "build a ModulatedDeformRoIPoolingPack module that predicts both offset and mask for modulated deformable ROI pooling",
+    "review_DeformRoIPooling_forward": "review the DeformRoIPooling forward method that calls deform_roi_pooling with data, rois, and offset tensors",
+    "refactor_ModulatedDeformRoIPoolingPack_mask_fc": "refactor the ModulatedDeformRoIPoolingPack mask_fc network to change the number of deform_fc_channels or output size"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/box_coder.py": {
+    "encode_bounding_box_proposals": "encode a set of bounding box proposals relative to reference boxes using BoxCoder",
+    "decode_bounding_box_offsets": "decode relative box offsets back into predicted bounding boxes using BoxCoder",
+    "create_box_coder_instance": "create a BoxCoder instance with custom weights and bbox_xform_clip for box regression",
+    "review_box_coder_encode": "review the BoxCoder encode method to understand how proposals are transformed into regression targets",
+    "review_box_coder_decode": "review the BoxCoder decode method to understand how relative codes are transformed into predicted boxes"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/make_layers.py": {
+    "create_conv3x3_layer": "create a 3x3 convolutional layer with optional GroupNorm and ReLU activation",
+    "create_fc_layer": "create a fully connected layer with Kaiming uniform initialization and optional GroupNorm",
+    "create_group_norm_layer": "create a GroupNorm layer using config-based group count and epsilon settings",
+    "create_conv_factory": "create a convolution factory function that returns conv layers with Kaiming uniform init",
+    "calculate_groupnorm_groups": "calculate the number of GroupNorm groups from channel dim and dim-per-group config"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/matcher.py": {
+    "create_matcher_instance": "create a Matcher instance with high and low threshold values for matching predictions to ground truth",
+    "call_matcher_on_quality_matrix": "run the Matcher on an MxN match quality matrix to get ground truth matches for each prediction",
+    "review_matcher_thresholds": "review the Matcher class BELOW_LOW_THRESHOLD and BETWEEN_THRESHOLDS constants for match quality stratification",
+    "test_set_low_quality_matches": "test the set_low_quality_matches_ method to produce additional matches for predictions with only low-quality candidates",
+    "summarize_matcher_call": "summarize the Matcher __call__ method that assigns ground truth elements to predicted elements using quality thresholds"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/poolers.py": {
+    "create_LevelMapper": "create a LevelMapper to determine FPN levels for RoIs based on box area",
+    "create_Pooler": "create a Pooler module with ROIAlign for multi-level feature map pooling",
+    "test_Pooler_forward": "test the Pooler forward method with feature maps and box lists",
+    "refactor_convert_to_roi_format": "refactor convert_to_roi_format to support additional box list formats",
+    "build_make_pooler": "build a Pooler instance from config using the make_pooler factory function"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/utils.py": {
+    "cat_tensors_along_dim": "concatenate a list of torch tensors along a specified dimension using the cat utility",
+    "cat_single_tensor_no_copy": "return a single tensor from a one-element list without an unnecessary copy",
+    "cat_tensors_default_dim": "concatenate multiple torch tensors along dimension 0 by default",
+    "review_cat_function": "review the cat function to understand its optimization for single-element tensor lists",
+    "summarize_cat_function": "summarize the cat utility function that wraps torch.cat with a single-element shortcut"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/backbone/backbone.py": {
+    "build_resnet_backbone": "build a ResNet C4 or C5 backbone model from a Detectron2 config object",
+    "build_resnet_fpn_backbone": "build a ResNet FPN backbone model with feature pyramid network from a config object",
+    "build_resnet_fpn_p3p7_backbone": "build a ResNet FPN P3-P7 backbone for RetinaNet from a config object",
+    "build_backbone": "build a backbone model by looking up the registered CONV_BODY name in the config",
+    "review_backbone_registry": "review the BACKBONES registry to see which backbone names are registered and available"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/backbone/fbnet.py": {
+    "create_builder_fbnet": "create an FBNetBuilder and architecture definition from a maskrcnn-benchmark config object",
+    "build_fbnet_backbone": "build an FBNet backbone model using FBNetTrunk with a given builder and architecture definition",
+    "build_fbnet_rpn_head": "build an FBNet RPN head with feature extraction and convolution regressor from config",
+    "build_fbnet_roi_head": "build an FBNet ROI head for bounding box, keypoint, or mask feature extraction from config",
+    "review_fbnet_classes": "review the FBNetTrunk, FBNetRPNHead, and FBNetROIHead classes and their forward methods"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/backbone/fbnet_builder.py": {
+    "build_fbnet_backbone": "build an FBNet backbone model using FBNetBuilder with a given architecture definition and width ratio",
+    "create_irf_block": "create an IRFBlock inverted residual bottleneck with configurable kernel size, expansion ratio, and SE module",
+    "unify_architecture_definition": "unify an FBNet architecture definition dict into a standardized stages list format with block metadata",
+    "expand_stage_config": "expand a compressed stage configuration list into individual block configurations with proper stride values",
+    "add_fbnet_blocks": "add a sequence of FBNet blocks to the model using the FBNetBuilder add_blocks method with stage info"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/backbone/fbnet_modeldef.py": {
+    "add_archs": "add new model architecture definitions to the global MODEL_ARCH registry dictionary",
+    "review_MODEL_ARCH": "review the MODEL_ARCH dictionary containing default, xirb16d_dsmask, and mobilenet_v2 FBNet backbone configurations",
+    "review_MODEL_ARCH_CHAM": "review the MODEL_ARCH_CHAM dictionary containing cham_v1a and cham_v2 CHAM backbone configurations",
+    "summarize_add_archs": "summarize the add_archs function that merges architecture dicts into MODEL_ARCH with duplicate name checks",
+    "refactor_MODEL_ARCH": "refactor the MODEL_ARCH default configuration to modify stage block types or channel widths"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/backbone/fpn.py": {
+    "build_FPN": "build a Feature Pyramid Network module that adds FPN on top of a list of feature maps",
+    "create_FPN_forward": "create a forward pass through FPN layers that returns feature maps ordered from highest resolution first",
+    "test_LastLevelMaxPool": "test the LastLevelMaxPool module that applies max pooling to generate an additional lower-resolution feature level",
+    "review_LastLevelP6P7": "review the LastLevelP6P7 module used in RetinaNet to generate extra P6 and P7 layers",
+    "summarize_FPN_top_blocks": "summarize the FPN top_blocks parameter that performs extra operations on the last FPN output"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/backbone/resnet.py": {
+    "build_resnet_backbone": "build a ResNet backbone model from a config object with configurable stem and stage specs",
+    "create_resnethed": "create a ResNetHead module with custom block stages and channel dimensions for feature extraction",
+    "test_bottleneck_forward": "test the Bottleneck class forward pass with configurable norm functions and deformable conv options",
+    "review_make_stage": "review the _make_stage function that constructs sequential residual blocks with configurable stride and dilation",
+    "summarize_stage_specs": "summarize the ResNet stage specification tuples for R-50, R-101, and R-152 FPN model variants"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/detector/detectors.py": {
+    "build_detection_model": "build a detection model by calling build_detection_model with a config object that has MODEL.META_ARCHITECTURE set",
+    "review_DETECTION_META_ARCHITECTURES": "review the _DETECTION_META_ARCHITECTURES registry mapping GeneralizedRCNN to its class for object detection",
+    "refactor_build_detection_model": "refactor build_detection_model to support additional meta-architecture types beyond GeneralizedRCNN",
+    "test_build_detection_model": "test build_detection_model by passing a mock config with MODEL.META_ARCHITECTURE set to GeneralizedRCNN",
+    "summarize_detectors_module": "summarize the detectors module which provides a factory function to instantiate detection meta-architectures from config"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/detector/generalized_rcnn.py": {
+    "build_GeneralizedRCNN": "build a GeneralizedRCNN model from a config that includes backbone, RPN, and ROI heads",
+    "run_GeneralizedRCNN_forward_training": "run the GeneralizedRCNN forward pass in training mode with images and targets to get losses",
+    "run_GeneralizedRCNN_forward_inference": "run the GeneralizedRCNN forward pass in inference mode with images to get detections and masks",
+    "review_GeneralizedRCNN_architecture": "review the GeneralizedRCNN class architecture consisting of backbone, RPN, and ROI heads components",
+    "refactor_GeneralizedRCNN_forward": "refactor the GeneralizedRCNN forward method to handle RPN-only models without ROI heads"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/roi_heads.py": {
+    "build_roi_heads": "build ROI heads combining box, mask, and keypoint heads from a config and input channels",
+    "create_CombinedROIHeads": "create a CombinedROIHeads module that combines box, mask, and keypoint heads into a single module",
+    "run_CombinedROIHeads_forward": "run the CombinedROIHeads forward pass on features and proposals to get detections and losses",
+    "review_CombinedROIHeads_init": "review the CombinedROIHeads constructor to understand how feature extractors are shared between heads",
+    "refactor_build_roi_heads": "refactor build_roi_heads to conditionally include box, mask, or keypoint heads based on config flags"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/box_head/box_head.py": {
+    "build_roi_box_head": "build a ROIBoxHead instance from config and input channels for Faster R-CNN box head",
+    "create_roi_box_head_forward": "create a forward pass through ROIBoxHead with features, proposals, and optional targets",
+    "review_roi_box_head_subsample": "review the ROIBoxHead training subsample logic that filters proposals with positive negative ratio",
+    "test_roi_box_head_predictor": "test the ROIBoxHead predictor to produce class logits and box regression outputs",
+    "summarize_roi_box_head_loss": "summarize the ROIBoxHead loss evaluator that computes classifier and box regression losses"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/box_head/inference.py": {
+    "build_PostProcessor": "build a PostProcessor module to post-process ROI box predictions with NMS and score thresholding",
+    "create_make_roi_box_post_processor": "create a PostProcessor instance from a config object using make_roi_box_post_processor",
+    "run_PostProcessor_forward": "run the PostProcessor forward pass on class logits and box regression outputs with proposals",
+    "review_PostProcessor_filter_results": "review the PostProcessor filter_results method that applies score thresholding and NMS per class",
+    "refactor_PostProcessor_prepare_boxlist": "refactor the PostProcessor prepare_boxlist method to reshape boxes and scores into a BoxList"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/box_head/loss.py": {
+    "build_FastRCNNLossComputation": "build a FastRCNNLossComputation instance with a Matcher, BalancedPositiveNegativeSampler, and BoxCoder for Faster R-CNN loss",
+    "run_subsample_proposals": "run subsample on proposals and targets to perform positive/negative sampling for ROI box head training",
+    "compute_classification_and_box_loss": "compute classification loss via cross entropy and box regression loss via smooth L1 for Faster R-CNN",
+    "match_targets_to_proposals": "match ground truth targets to proposals using IoU and a Matcher to get matched indices",
+    "create_roi_box_loss_evaluator": "create an ROI box loss evaluator from a config with Matcher, BoxCoder, and sampler settings"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/box_head/roi_box_feature_extractors.py": {
+    "make_roi_box_feature_extractor": "build a ROI box feature extractor from config using the registry and in_channels",
+    "ResNet50Conv5ROIFeatureExtractor": "create a ResNet50 Conv5 ROI feature extractor with a pooler and ResNet head for proposals",
+    "FPN2MLPFeatureExtractor": "build an FPN MLP feature extractor with fc6 and fc7 layers for ROI classification",
+    "FPNXconv1fcFeatureExtractor": "create an FPN conv-based feature extractor with stacked convolutions and a final FC layer",
+    "review_ResNet50Conv5ROIFeatureExtractor_forward": "review the ResNet50Conv5ROIFeatureExtractor forward method that pools features then passes through the ResNet head"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/box_head/roi_box_predictors.py": {
+    "build_fast_rcnn_predictor": "build a FastRCNNPredictor module with config and in_channels for ROI box classification and regression",
+    "build_fpn_predictor": "build an FPNPredictor module with cfg and in_channels for feature pyramid ROI box prediction",
+    "create_roi_box_predictor": "create an ROI box predictor using make_roi_box_predictor with cfg and in_channels",
+    "review_fastrcnnpredictor_forward": "review the FastRCNNPredictor forward method that applies avgpool and returns cls_logit and bbox_pred",
+    "review_fpnpredictor_forward": "review the FPNPredictor forward method that handles 4D tensors and returns scores and bbox_deltas"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/keypoint_head/inference.py": {
+    "build_keypoint_post_processor": "build a KeypointPostProcessor module that processes keypoint heatmaps and boxes into PersonKeypoints results",
+    "create_heatmaps_to_keypoints": "create a function that extracts predicted keypoint locations from heatmap tensors and ROI bounding boxes",
+    "test_keypointer_class": "test the Keypointer class that projects mask heatmaps onto bounding box locations",
+    "refactor_make_roi_keypoint_post_processor": "refactor the make_roi_keypoint_post_processor factory function to create a KeypointPostProcessor with a Keypointer",
+    "review_keypoint_inference": "review the KeypointPostProcessor forward method and heatmaps_to_keypoints function for keypoint inference logic"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/keypoint_head/keypoint_head.py": {
+    "build_roi_keypoint_head": "build a ROIKeypointHead module from config and input channels for keypoint detection",
+    "create_roi_keypoint_head_forward": "create a forward pass through ROIKeypointHead with features, proposals, and optional targets",
+    "test_roi_keypoint_head_training": "test the ROIKeypointHead forward method in training mode with ground-truth targets",
+    "review_roi_keypoint_head_inference": "review the ROIKeypointHead forward method in inference mode for keypoint post-processing",
+    "refactor_roi_keypoint_head_loss": "refactor the ROIKeypointHead loss evaluator to compute keypoint heat map losses"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/keypoint_head/loss.py": {
+    "build_roi_keypoint_loss_evaluator": "build a KeypointRCNN loss evaluator from a config using make_roi_keypoint_loss_evaluator",
+    "create_keypoint_loss_computation": "create a KeypointRCNNLossComputation instance with a matcher, sampler, and discretization size",
+    "test_subsample_proposals": "test the subsample method to perform positive negative sampling on proposals and targets",
+    "review_keypoint_loss_call": "review the KeypointRCNNLossComputation call method that computes cross entropy keypoint loss from logits",
+    "refactor_project_keypoints_to_heatmap": "refactor project_keypoints_to_heatmap to convert keypoints to heatmap targets for a given discretization size"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/keypoint_head/roi_keypoint_feature_extractors.py": {
+    "build_keypoint_feature_extractor": "build a KeypointRCNNFeatureExtractor with a config and input channels for ROI keypoint feature extraction",
+    "create_pooler_for_keypoints": "create a Pooler with resolution, scales, and sampling ratio for keypoint ROI pooling",
+    "run_forward_keypoint_extractor": "run the forward pass of KeypointRCNNFeatureExtractor with feature maps and proposals",
+    "review_make_roi_keypoint_feature_extractor": "review the make_roi_keypoint_feature_extractor factory function that builds extractors from config registry",
+    "refactor_conv_layers_initialization": "refactor the Conv2d layer initialization in KeypointRCNNFeatureExtractor to use a different weight init strategy"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/keypoint_head/roi_keypoint_predictors.py": {
+    "build_KeypointRCNNPredictor": "build a KeypointRCNNPredictor module with a transposed convolution layer for keypoint heatmap prediction",
+    "create_forward_pass": "create a forward pass through the KeypointRCNNPredictor that applies deconvolution and bilinear upsampling",
+    "make_roi_keypoint_predictor": "create a factory function that builds a registered ROI keypoint predictor from config",
+    "review_KeypointRCNNPredictor_init": "review the KeypointRCNNPredictor init to understand kaiming_normal weight initialization and bias setup",
+    "summarize_make_roi_keypoint_predictor": "summarize the make_roi_keypoint_predictor factory function that looks up and instantiates a registered predictor"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/mask_head/inference.py": {
+    "build_MaskPostProcessor": "build a MaskPostProcessor to post process CNN mask logits and attach masks to BoxList results",
+    "create_MaskPostProcessorCOCOFormat": "create a MaskPostProcessorCOCOFormat to convert mask post processing results to COCO RLE format",
+    "test_paste_mask_in_image": "test paste_mask_in_image to resize and paste a mask onto an image at a bounding box location",
+    "review_Masker": "review the Masker class that projects masks onto image locations specified by bounding boxes",
+    "refactor_make_roi_mask_post_processor": "refactor make_roi_mask_post_processor to configure a MaskPostProcessor with an optional Masker from config"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/mask_head/loss.py": {
+    "project_masks_on_boxes": "crop and resize segmentation masks to bounding box positions for loss computation targets",
+    "MaskRCNNLossComputation_match_targets_to_proposals": "match ground truth targets to proposals using IoU and a Matcher for Mask RCNN",
+    "MaskRCNNLossComputation_prepare_targets": "prepare labels and mask targets from proposals and ground truth for each image",
+    "MaskRCNNLossComputation_call": "compute the binary cross entropy mask loss for positive proposal samples in Mask RCNN",
+    "make_roi_mask_loss_evaluator": "create a MaskRCNNLossComputation evaluator with a Matcher from the given config object"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/mask_head/mask_head.py": {
+    "build_roi_mask_head": "build a ROIMaskHead module from config and input channels for mask prediction in Mask R-CNN",
+    "forward_roi_mask_head": "run the ROIMaskHead forward pass with features and proposals to compute mask logits and losses",
+    "keep_only_positive_boxes": "filter a list of BoxList objects to keep only boxes with labels greater than zero",
+    "review_roi_mask_head_forward": "review the ROIMaskHead forward method to understand training vs inference branching logic for mask prediction",
+    "refactor_keep_only_positive_boxes": "refactor keep_only_positive_boxes to support additional filtering criteria beyond positive labels"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/mask_head/roi_mask_feature_extractors.py": {
+    "build_MaskRCNNFPNFeatureExtractor": "build a MaskRCNNFPNFeatureExtractor module that pools ROI features and applies convolutional blocks for mask head feature extraction",
+    "create_make_roi_mask_feature_extractor": "create a feature extractor by calling make_roi_mask_feature_extractor with a config and input channel count",
+    "review_MaskRCNNFPNFeatureExtractor_forward": "review the MaskRCNNFPNFeatureExtractor forward method that pools features then applies ReLU conv blocks",
+    "test_MaskRCNNFPNFeatureExtractor": "test the MaskRCNNFPNFeatureExtractor class by passing feature maps and proposals through the forward pass",
+    "refactor_make_roi_mask_feature_extractor": "refactor make_roi_mask_feature_extractor to support additional registered feature extractor types in the registry"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/roi_heads/mask_head/roi_mask_predictors.py": {
+    "build_maskrcnn_c4_predictor": "build a MaskRCNNC4Predictor module with transposed conv and 1x1 conv layers for mask prediction",
+    "build_maskrcnn_conv1x1_predictor": "build a MaskRCNNConv1x1Predictor module with a single 1x1 conv layer for mask prediction",
+    "create_roi_mask_predictor": "create an ROI mask predictor from config using make_roi_mask_predictor factory function",
+    "review_maskrcnn_c4_predictor_forward": "review the MaskRCNNC4Predictor forward pass that applies transposed conv, ReLU, then 1x1 conv",
+    "review_maskrcnn_conv1x1_predictor_forward": "review the MaskRCNNConv1x1Predictor forward pass that applies a single 1x1 conv for mask logits"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/rpn/anchor_generator.py": {
+    "generate_anchors": "generate anchor boxes in xyxy format for a given stride, sizes, and aspect ratios",
+    "create_anchor_generator": "create an AnchorGenerator module with configurable sizes, aspect ratios, and strides for FPN or single-scale RPN",
+    "grid_anchors": "compute grid anchors across feature map grid sizes using the AnchorGenerator grid_anchors method",
+    "make_anchor_generator_retinanet": "build a RetinaNet anchor generator with octave-based multi-scale anchor sizes from a config object",
+    "add_visibility_to": "add a visibility field to a BoxList indicating which anchors fall within the image boundaries"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/rpn/inference.py": {
+    "create_RPNPostProcessor": "create an RPNPostProcessor instance with pre_nms_top_n, post_nms_top_n, nms_thresh, and min_size parameters",
+    "run_RPNPostProcessor_forward": "run the RPNPostProcessor forward method on anchors, objectness, and box_regression tensors to get post-processed proposals",
+    "run_RPNPostProcessor_forward_for_single_feature_map": "run forward_for_single_feature_map to process anchors, objectness, and box_regression for a single FPN level",
+    "run_RPNPostProcessor_add_gt_proposals": "run add_gt_proposals to append ground-truth bounding boxes to the list of RPN proposals during training",
+    "run_make_rpn_postprocessor": "run make_rpn_postprocessor to construct an RPNPostProcessor from a config object and box coder"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/rpn/loss.py": {
+    "build_rpn_loss_computation": "build an RPNLossComputation instance with a matcher, sampler, box coder, and label generation function",
+    "run_match_targets_to_anchors": "run match_targets_to_anchors to compute IoU and match ground truth targets to anchor boxes",
+    "run_prepare_targets": "run prepare_targets to generate labels and regression targets for anchors across images",
+    "run_rpn_loss_call": "run the RPNLossComputation call to compute objectness loss and box regression loss for RPN",
+    "build_rpn_loss_evaluator": "build an RPN loss evaluator from config and box coder using make_rpn_loss_evaluator"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/rpn/rpn.py": {
+    "build_rpn_module": "build an RPNModule from config and in_channels to compute region proposals and losses",
+    "create_rpn_head": "create a SingleConvRPNHead with conv, classification logits, and bbox regression layers",
+    "create_rpn_head_conv_regressor": "create an RPNHeadConvRegressor with cls_logits and bbox_pred conv layers for anchor prediction",
+    "test_rpn_forward_train": "test the RPNModule forward training path with anchors, objectness, and targets",
+    "review_rpn_forward_test": "review the RPNModule forward test path that returns sorted boxes by objectness score"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/rpn/utils.py": {
+    "permute_and_flatten_tensor": "permute and flatten a PyTorch tensor from NxAxCxHxW to Nx-1xC shape for RPN prediction layers",
+    "concat_box_prediction_layers": "concatenate box classification and regression prediction layers across multiple feature levels for RPN",
+    "review_permute_and_flatten": "review the permute_and_flatten function that reshapes RPN layer tensors using view, permute, and reshape operations",
+    "review_concat_box_prediction_layers": "review the concat_box_prediction_layers function that flattens and concatenates box classification and regression tensors",
+    "summarize_rpn_utils": "summarize the RPN utility functions for permuting, flattening, and concatenating box prediction layer tensors"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/rpn/retinanet/inference.py": {
+    "create_retinanet_postprocessor": "create a RetinaNetPostProcessor instance with pre_nms_thresh, nms_thresh, and num_classes parameters",
+    "run_forward_single_feature_map": "run forward_for_single_feature_map to process anchors, box_cls, and box_regression tensors into detections",
+    "run_select_over_all_levels": "run select_over_all_levels to apply per-class NMS and limit detections across all FPN levels",
+    "build_retinanet_postprocessor_from_config": "build a RetinaNetPostProcessor from a config object using make_retinanet_postprocessor factory function",
+    "review_retinanet_inference_pipeline": "review the RetinaNetPostProcessor class and its NMS thresholding and box decoding logic"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/rpn/retinanet/loss.py": {
+    "build_retinanet_loss_computation": "build a RetinaNetLossComputation instance with a matcher, box coder, and focal loss function",
+    "run_retinanet_loss_call": "run RetinaNetLossComputation on anchors, box classifications, box regression, and targets to get losses",
+    "create_retinanet_loss_evaluator": "create a RetinaNet loss evaluator from a config object and box coder using make_retinanet_loss_evaluator",
+    "review_retinanet_labels_generation": "review the generate_retinanet_labels function that extracts labels from matched targets BoxList",
+    "refactor_retinanet_regression_loss": "refactor the RetinaNet regression loss computation using smooth L1 loss with configurable beta"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/modeling/rpn/retinanet/retinanet.py": {
+    "build_retinanet_module": "build a RetinaNetModule from config and input channels using build_retinanet",
+    "create_retinanet_head": "create a RetinaNetHead with classification and regression towers for object detection",
+    "test_retinanet_forward": "test the RetinaNetModule forward pass with images, features, and optional targets",
+    "review_retinanet_head_forward": "review the RetinaNetHead forward method that returns logits and bbox regression per feature level",
+    "summarize_retinanet_loss_evaluator": "summarize how the RetinaNetModule computes classification and regression losses during training"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/solver/build.py": {
+    "build_optimizer_sgd": "build an SGD optimizer with bias-specific learning rate and weight decay from a config and model",
+    "build_lr_scheduler_warmup": "build a WarmupMultiStepLR scheduler with warmup factor, iters, and method from a config",
+    "review_make_optimizer": "review the make_optimizer function to understand how it separates bias parameters with different learning rates",
+    "review_make_lr_scheduler": "review the make_lr_scheduler function to understand how it configures warmup and step decay",
+    "refactor_optimizer_params": "refactor make_optimizer to support additional parameter groups beyond bias with custom learning rates"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/solver/lr_scheduler.py": {
+    "create_WarmupMultiStepLR_scheduler": "create a WarmupMultiStepLR scheduler with optimizer, milestones, gamma, and warmup parameters for training",
+    "build_WarmupMultiStepLR_with_linear_warmup": "build a WarmupMultiStepLR scheduler using linear warmup method with custom warmup_iters and warmup_factor",
+    "test_WarmupMultiStepLR_get_lr": "test the WarmupMultiStepLR get_lr method to verify learning rate calculation during warmup and after milestones",
+    "review_WarmupMultiStepLR_init": "review the WarmupMultiStepLR __init__ method to understand milestone validation and warmup method constraints",
+    "summarize_WarmupMultiStepLR_class": "summarize the WarmupMultiStepLR class that combines multi-step LR decay with linear or constant warmup"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/structures/bounding_box.py": {
+    "create_boxlist": "create a BoxList from a list of bounding box coordinates and image size",
+    "resize_boxlist": "resize a BoxList bounding box set to a new image width and height",
+    "transpose_boxlist": "transpose a BoxList by flipping it left-right or top-bottom",
+    "convert_boxlist_mode": "convert a BoxList between xyxy and xywh coordinate modes",
+    "crop_boxlist": "crop a rectangular region from a BoxList bounding box set"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/structures/boxlist_ops.py": {
+    "build_boxlist_nms": "build a python module that performs non-maximum suppression on a BoxList with a configurable threshold and max proposals",
+    "create_remove_small_boxes": "create a function that filters a BoxList to keep only boxes with both sides greater than or equal to a minimum size",
+    "compute_boxlist_iou": "compute the intersection over union between two BoxLists and return an N by M tensor of IoU values",
+    "concatenate_boxlists": "concatenate a list of BoxList objects with the same image size and mode into a single BoxList",
+    "review_boxlist_ops": "review the boxlist_ops module functions for NMS, small box removal, IoU computation, and box list concatenation"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/structures/image_list.py": {
+    "create_ImageList": "create an ImageList object from a batched tensor and a list of original image sizes",
+    "move_ImageList_to_device": "move an ImageList tensor to a specified device using the to method",
+    "convert_tensor_to_image_list": "convert a single 3D or 4D torch tensor into an ImageList with inferred image sizes",
+    "batch_images_to_image_list": "batch a list of variable-sized image tensors into a padded ImageList with zero padding",
+    "batch_images_with_stride": "batch variable-sized images into an ImageList padded to a size divisible by a given stride"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/structures/keypoint.py": {
+    "create_person_keypoints": "create a PersonKeypoints object with 17 COCO keypoints and image size",
+    "resize_keypoints": "resize Keypoints coordinates proportionally to a new image width and height",
+    "transpose_keypoints_flip": "transpose Keypoints using FLIP_LEFT_RIGHT to mirror x coordinates across image width",
+    "convert_keypoints_to_heatmap": "convert keypoints and ROIs into a heatmap tensor with a given heatmap size",
+    "create_flip_indices": "create flip indices tensor from a list of keypoint names and a left-right flip map"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/structures/segmentation_mask.py": {
+    "create_BinaryMaskList_from_tensors": "create a BinaryMaskList from a torch tensor of shape num_instances by H by W",
+    "create_PolygonList_from_polygons": "create a PolygonList from a list of polygon coordinate lists for each instance",
+    "convert_PolygonList_to_binarymask": "convert a PolygonList of polygon instances into a BinaryMaskList using pycocotools mask utilities",
+    "crop_SegmentationMask_by_box": "crop a SegmentationMask to a bounding box region in xyxy format and return the cropped mask",
+    "transpose_BinaryMaskList_flip": "transpose a BinaryMaskList by flipping masks left-right or top-bottom using the transpose method"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/c2_model_loading.py": {
+    "load_c2_pickled_weights": "load Caffe2 pickled weights from a file path into a Python dictionary",
+    "rename_basic_resnet_weights": "rename Caffe2 ResNet layer weight keys to PyTorch torchvision-compatible naming conventions",
+    "rename_weights_for_resnet": "remap Caffe2 ResNet weights including FPN, Mask R-CNN, and Keypoint R-CNN keys",
+    "load_resnet_c2_format": "load and convert Caffe2 ResNet pretrained weights for R-50, R-101, or R-152 backbone models",
+    "load_c2_format": "load Caffe2 format weights using the registered backbone CONV_BODY configuration key"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/checkpoint.py": {
+    "save_checkpoint": "save a PyTorch model checkpoint with optimizer and scheduler state to disk using Checkpointer",
+    "load_checkpoint": "load a PyTorch model checkpoint from file and restore model, optimizer, and scheduler state",
+    "check_checkpoint_exists": "check if a checkpoint exists in the save directory using Checkpointer has_checkpoint method",
+    "load_detectron_checkpoint": "load a Detectron checkpoint from catalog, URL, or Caffe2 pkl format using DetectronCheckpointer",
+    "tag_last_checkpoint": "write the path of the most recent checkpoint file to the last_checkpoint metadata file"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/collect_env.py": {
+    "collect_env_info": "run collect_env_info to gather and return the full PyTorch environment info string including Pillow version",
+    "get_pil_version": "run get_pil_version to return a formatted string with the installed Pillow version",
+    "summarize_collect_env_info": "summarize the collect_env_info function which combines PyTorch env info with Pillow version details",
+    "review_get_pil_version": "review the get_pil_version function that formats the Pillow package version into a string",
+    "test_collect_env_info": "test the collect_env_info function to verify it returns environment info with Pillow version appended"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/comm.py": {
+    "get_world_size": "get the world size of the distributed training process group",
+    "get_rank": "get the rank of the current process in the distributed training group",
+    "is_main_process": "check if the current process is the main process with rank zero",
+    "synchronize": "synchronize all processes with a barrier during distributed training",
+    "all_gather": "gather picklable data from all ranks into a single list"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/cv2_util.py": {
+    "build_findContours": "build a python module to find contours in an image using cv2 with version compatibility",
+    "create_findContours": "create a function that wraps cv2.findContours to return contours and hierarchy across OpenCV 3 and 4",
+    "test_findContours": "test the findContours function by passing an image and retrieving contours and hierarchy",
+    "refactor_findContours": "refactor the findContours wrapper to support additional OpenCV versions beyond 3 and 4",
+    "review_findContours": "review the findContours function and its OpenCV version compatibility logic"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/env.py": {
+    "setup_environment": "run the setup_environment function to perform environment setup using the TORCH_DETECTRON_ENV_MODULE env var",
+    "setup_custom_environment": "run setup_custom_environment with a custom module path to load and execute a Python setup file",
+    "review_setup_environment": "review the setup_environment function to understand how it reads TORCH_DETECTRON_ENV_MODULE and delegates to custom setup",
+    "review_setup_custom_environment": "review the setup_custom_environment function to understand how it dynamically imports and validates a custom module",
+    "refactor_setup_custom_environment": "refactor setup_custom_environment to use a different dynamic import strategy instead of import_file"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/imports.py": {
+    "import_file_dynamic_module": "import a Python module dynamically from a given file path using import_file",
+    "import_file_make_importable": "import a Python file and register it in sys.modules so it can be imported by name",
+    "import_file_py3_importlib": "use import_file with importlib to load a module spec from a file location in Python 3",
+    "import_file_py2_fallback": "use import_file with imp.load_source as a Python 2 fallback for dynamic module loading",
+    "review_import_file_function": "review the import_file function that dynamically loads Python modules from arbitrary file paths"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/logger.py": {
+    "setup_logger_stdout": "setup a logger that writes DEBUG messages to stdout with timestamps and log levels",
+    "setup_logger_file": "setup a logger that writes DEBUG messages to a file in a specified save directory",
+    "setup_logger_distributed": "setup a logger that skips handler setup for non-master distributed processes with rank greater than zero",
+    "setup_logger_custom_filename": "setup a logger that writes to a custom filename instead of the default log.txt",
+    "review_setup_logger": "review the setup_logger function to understand how it configures stdout and file handlers for logging"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/metric_logger.py": {
+    "create_SmoothedValue": "create a SmoothedValue instance to track a rolling window of metric values with configurable window size",
+    "update_SmoothedValue": "update a SmoothedValue instance with a new value to compute median, avg, and global_avg",
+    "create_MetricLogger": "create a MetricLogger to track multiple named metrics using SmoothedValue meters with tab-delimited output",
+    "update_MetricLogger": "update a MetricLogger with keyword arguments to log multiple metrics including torch.Tensor values",
+    "str_MetricLogger": "print a MetricLogger to get a tab-delimited string of all tracked metrics with median and global average"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/miscellaneous.py": {
+    "create_directory_safely": "create a directory at a given path using mkdir that ignores if it already exists",
+    "save_dataset_labels_to_json": "save dataset category labels to a labels.json file in the output directory",
+    "save_config_to_file": "save a configuration object to a file by writing its dump output",
+    "review_save_labels": "review the save_labels function that extracts categories from datasets and writes labels.json",
+    "review_save_config": "review the save_config function that writes a cfg dump to a specified file path"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/model_serialization.py": {
+    "load_state_dict_model": "load a PyTorch model's state dict from a loaded checkpoint with automatic prefix stripping and key alignment",
+    "align_and_update_state_dicts": "align and update a model's state dict keys by suffix-matching against a loaded state dict's keys",
+    "strip_prefix_if_present": "strip a given prefix from all keys in a state dict if every key starts with that prefix",
+    "review_load_state_dict": "review the load_state_dict function that handles DataParallel module prefix removal and state dict alignment before loading",
+    "summarize_align_and_update": "summarize the align_and_update_state_dicts function that matches model weights to pretrained weights using longest suffix matching"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/model_zoo.py": {
+    "download_model_from_url": "download a PyTorch model checkpoint from a URL and cache it locally",
+    "cache_model_with_custom_dir": "cache a model file to a custom directory using cache_url with model_dir",
+    "cache_model_without_progress": "download a model checkpoint silently by setting progress to False",
+    "review_cache_url_function": "review the cache_url function that downloads and caches Torch serialized model files",
+    "summarize_model_zoo_module": "summarize the model_zoo module that provides URL caching with hash verification for model files"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/registry.py": {
+    "create_registry_instance": "create a Registry instance with a default module dictionary for managing registered modules",
+    "register_module_function_call": "register a function or class in the Registry by calling register with a name and module",
+    "register_module_decorator": "register a function in the Registry using the register method as a decorator",
+    "access_registered_module": "access a registered module from the Registry using dictionary-style key lookup",
+    "review_registry_class": "review the Registry class and its register method for module registration patterns"
+  },
+  "facebookresearch_maskrcnn-benchmark/maskrcnn_benchmark/utils/timer.py": {
+    "create_timer_instance": "create a Timer object to track elapsed time across multiple operations using tic and toc",
+    "use_timer_tic_toc": "use the Timer tic and toc methods to measure and return average execution time",
+    "reset_timer_state": "reset a Timer instance to zero calls and zero total time for fresh measurements",
+    "convert_seconds_to_timedelta_str": "convert a time difference in seconds to a human-readable timedelta string using get_time_str",
+    "get_timer_average_time_str": "get the Timer average time formatted as a timedelta string using the avg_time_str method"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/checkpoint.py": {
+    "run_test_checkpointer": "run the unittest TestCheckpointer suite to verify checkpoint save and load functionality",
+    "test_Checkpointer_save_load": "test the Checkpointer class save and load methods with DataParallel model compatibility",
+    "test_load_state_dict": "test the load_state_dict function for loading state dicts into complex nested PyTorch models",
+    "test_Checkpointer_has_checkpoint": "test the Checkpointer has_checkpoint method to detect existing checkpoint files in a directory",
+    "test_Checkpointer_get_checkpoint_file": "test the Checkpointer get_checkpoint_file method to retrieve the latest checkpoint file path"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/test_backbones.py": {
+    "run_test_build_backbones": "run the unittest that builds all registered backbones and verifies forward pass output shapes",
+    "test_backbone_registry": "test that the backbone registry contains registered backbone builders and each one constructs correctly",
+    "test_backbone_out_channels": "test that each backbone has an out_channels attribute matching its output tensor shape",
+    "review_test_backbones_class": "review the TestBackbones unittest class and its test_build_backbones method for backbone validation logic",
+    "refactor_backbone_cfgs": "refactor the BACKBONE_CFGS mapping to add or update config file paths for backbone variants"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/test_box_coder.py": {
+    "test_box_decoder": "test the BoxCoder.decode method by decoding bbox deltas and comparing against ground truth",
+    "run_box_coder_test": "run the unittest TestBoxCoder to verify box decoding matches expected ground truth values",
+    "create_box_coder_instance": "create a BoxCoder instance with uniform weights of (1.0, 1.0, 1.0, 1.0)",
+    "decode_bbox_deltas": "decode predicted bbox deltas using BoxCoder.decode to recover ground truth bounding boxes",
+    "review_test_box_coder": "review the TestBoxCoder class and its test_box_decoder method for correctness"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/test_configs.py": {
+    "run_test_configs_load": "run the unittest TestConfigs.test_configs_load to verify all YAML config files are loadable",
+    "test_configs_load": "test that all YAML config files under the config root path can be loaded without error",
+    "review_TestConfigs": "review the TestConfigs unittest class and its test_configs_load method for config validation coverage",
+    "summarize_test_configs": "summarize the test_configs.py module which validates all YAML config files are loadable via utils",
+    "refactor_test_configs_load": "refactor the test_configs_load method to add assertions on loaded config values instead of just loading"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/test_data_samplers.py": {
+    "test_GroupedBatchSampler_respect_order": "test the GroupedBatchSampler to verify it respects the original sample order when batching by group",
+    "test_GroupedBatchSampler_drop_uneven": "test the GroupedBatchSampler with drop_uneven enabled to drop incomplete batches at group boundaries",
+    "test_SubsetSampler_with_GroupedBatchSampler": "test the SubsetSampler combined with GroupedBatchSampler to batch a subset of indices by group",
+    "test_IterationBasedBatchSampler_num_iterations": "test the IterationBasedBatchSampler to verify it yields the exact number of iterations specified",
+    "create_SubsetSampler_class": "create a SubsetSampler class that iterates over a fixed list of dataset indices"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/test_detectors.py": {
+    "get_config_files": "get config YAML file paths from a list or glob pattern while excluding specified folders",
+    "create_model": "create a frozen detection model from a config object and move it to the specified device",
+    "create_random_input": "create random tensor inputs shaped by the config MIN_SIZE_TRAIN values as an image list",
+    "test_build_detectors": "test that all detection models build successfully from config files on the given device",
+    "test_run_selected_detectors": "test that selected detection models build and run inference on random inputs correctly"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/test_fbnet.py": {
+    "run_test_fbnet_primitives": "run the unittest test_primitives method to verify all fbnet_builder primitives on CPU",
+    "run_test_fbnet_identity": "run the unittest test_identity method to verify the Identity primitive passthrough and stride behavior",
+    "run_test_fbnet_empty_batch": "run the unittest test_primitives_empty_batch method to verify primitives handle zero batch size on CPU",
+    "review_test_primitive_helper": "review the _test_primitive helper function that creates ops and validates output tensor shapes",
+    "refactor_test_fbnet_builder": "refactor the TestFBNetBuilder class to add new primitive test cases or parameter combinations"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/test_feature_extractors.py": {
+    "test_roi_box_feature_extractors": "test the ROI box feature extractors by running forward passes with random inputs and bounding boxes",
+    "test_roi_keypoints_feature_extractors": "test the ROI keypoints feature extractors by running forward passes with random inputs and bounding boxes",
+    "test_roi_mask_feature_extractors": "test the ROI mask feature extractors by running forward passes with random inputs and bounding boxes",
+    "review_test_feature_extractors_class": "review the TestFeatureExtractors unittest class and its three test methods for ROI feature extractor validation",
+    "run_feature_extractor_tests": "run the unittest suite to validate all registered ROI feature extractors produce correct output shapes"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/test_metric_logger.py": {
+    "test_MetricLogger_update": "test the MetricLogger class by updating metrics and verifying count, total, median, and avg values",
+    "test_MetricLogger_no_attr": "test that MetricLogger raises AttributeError when accessing a non-existent attribute",
+    "create_MetricLogger_instance": "create a MetricLogger instance and update it with keyword arguments to track metric values",
+    "test_SmoothedValue_properties": "test the SmoothedValue class properties including count, total, median, and avg after updates",
+    "review_MetricLogger_class": "review the MetricLogger class and its update method for tracking smoothed metric values"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/test_nms.py": {
+    "run_test_nms_cpu": "run the test_nms_cpu unit test that validates NMS across multiple IoU thresholds",
+    "run_test_nms1_cpu": "run the test_nms1_cpu unit test that validates NMS with 54 boxes at 0.5 threshold",
+    "run_test_nms": "run all NMS unit tests in the TestNMS class using unittest",
+    "test_box_nms_function": "test the box_nms function from maskrcnn_benchmark.layers with torch boxes and scores",
+    "review_test_nms_class": "review the TestNMS class and its test_nms_cpu and test_nms1_cpu methods"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/test_predictors.py": {
+    "run_test_predictors": "run the unittest test suite for ROI box, keypoint, and mask predictors",
+    "test_roi_box_predictors": "test that ROI box predictor outputs match expected class scores and bounding box deltas",
+    "test_roi_keypoints_predictors": "test that ROI keypoint predictor outputs match expected keypoint class dimensions",
+    "test_roi_mask_predictors": "test that ROI mask predictor outputs match expected mask class dimensions",
+    "review_test_predictors": "review the TestPredictors class and _test_predictors generator function for predictor testing logic"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/test_rpn_heads.py": {
+    "run_test_rpn_heads": "run the unittest TestRPNHeads to verify all registered RPN head builders produce correct output shapes",
+    "test_test_build_rpn_heads": "test the test_build_rpn_heads method that validates RPN head logits and bbox regression tensor shapes",
+    "review_test_rpn_heads": "review the TestRPNHeads class and its test_build_rpn_heads method for RPN head validation logic",
+    "refactor_test_build_rpn_heads": "refactor the test_build_rpn_heads method to add custom RPN head configs via the RPN_CFGS dictionary",
+    "summarize_test_rpn_heads": "summarize the TestRPNHeads unittest class that iterates over registry.RPN_HEADS builders and validates forward pass outputs"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/test_segmentation_mask.py": {
+    "test_SegmentationMask_convert": "test the SegmentationMask convert method to round-trip between poly and mask formats",
+    "test_SegmentationMask_crop": "test the SegmentationMask crop method to crop masks by a bounding box",
+    "test_SegmentationMask_resize": "test the SegmentationMask resize method to resize masks to a new width and height",
+    "test_SegmentationMask_transpose": "test the SegmentationMask transpose method to flip masks horizontally or vertically",
+    "run_test_segmentation_mask": "run the unittest test suite for SegmentationMask conversion, crop, resize, and transpose"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/utils.py": {
+    "load_config_relative": "load a maskrcnn-benchmark config from a file path relative to the config root directory",
+    "load_config_absolute": "load a maskrcnn-benchmark config from an absolute file path and return a merged config object",
+    "get_config_root_path": "get the root path for maskrcnn-benchmark configuration files",
+    "test_load_config": "test loading a maskrcnn-benchmark config file and verify the merged config values",
+    "review_config_loading": "review the maskrcnn-benchmark config loading utilities for correctness and best practices"
+  },
+  "facebookresearch_maskrcnn-benchmark/tests/env_tests/env.py": {
+    "get_config_root_path": "get the path to the configs directory for unit tests in maskrcnn-benchmark",
+    "test_get_config_root_path": "test the get_config_root_path function to verify it returns the correct configs directory path",
+    "review_get_config_root_path": "review the get_config_root_path function to understand how it computes the relative path to configs",
+    "refactor_get_config_root_path": "refactor the get_config_root_path function to use pathlib instead of os.path for cleaner path manipulation",
+    "summarize_get_config_root_path": "summarize the get_config_root_path function which returns the path to the configs directory for unit tests"
+  },
+  "facebookresearch_maskrcnn-benchmark/tools/train_net.py": {
+    "run_train_net": "run the train_net.py script with a config file to train a Mask R-CNN detection model",
+    "train_detection_model": "train a detection model using the train function with config, local rank, and distributed settings",
+    "run_test_inference": "run inference on test datasets using run_test to evaluate bbox, segmentation, and keypoints",
+    "build_detection_model": "build a detection model from config using build_detection_model and prepare it for training",
+    "skip_test_training": "run training with the --skip-test flag to skip final model evaluation after training"
+  },
+  "facebookresearch_maskrcnn-benchmark/tools/cityscapes/convert_cityscapes_to_coco.py": {
+    "convert_cityscapes_to_coco": "run the cityscapes to coco conversion tool with --dataset cityscapes_instance_only --datadir PATH --outdir PATH",
+    "convert_cocostuff_to_coco": "run the cocostuff to coco conversion tool with --dataset cocostuff --datadir PATH --outdir PATH",
+    "poly_to_box": "convert a polygon contour into a tight xyxy bounding box",
+    "xyxy_to_xywh": "convert an xyxy bounding box into xywh format for COCO annotations",
+    "getLabelID": "extract the label ID from a Cityscapes instance ID by dividing by 1000"
+  },
+  "facebookresearch_maskrcnn-benchmark/tools/cityscapes/instances2dict_with_polygons.py": {
+    "run_instances2dict_with_polygons": "run the instances2dict_with_polygons function to convert Cityscapes PNG instance images to a dictionary with polygon contours",
+    "build_cityscapes_instance_parser": "build a Python module to parse Cityscapes instance PNG files and extract labeled object instances with polygon contours",
+    "test_instances2dict_with_polygons": "test the instances2dict_with_polygons function with a list of Cityscapes instance PNG image files",
+    "refactor_instances2dict_with_polygons": "refactor the instances2dict_with_polygons function to support additional contour approximation methods or output formats",
+    "review_instances2dict_with_polygons": "review the instances2dict_with_polygons function and its use of cv2_util.findContours for polygon extraction from instance masks"
+  }
+}

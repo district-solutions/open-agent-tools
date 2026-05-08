@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/param
+- repo_uri: https://github.com/facebookresearch/param
+
+## File: facebookresearch_param/inference/compute/pt/pytorch_linear.py
+
+Prompts
+
+```
+['run the pytorch linear MLP benchmark on cpu gpu or nnpi device with configurable batch size and layer count', 'create a multi-layer perceptron model with configurable input hidden output sizes and number of hidden layers', 'run GPU inference benchmark with optional TensorRT compilation or MIGraphX acceleration for linear model', 'run CPU inference benchmark for a linear model with configurable warmup steps and data types', 'review the Net class forward pass that applies linear layers with relu activations and softmax output']
+```
+
+Usage
+
+```
+{'run_MLP_benchmark': 'run the pytorch linear MLP benchmark on cpu gpu or nnpi device with configurable batch size and layer count', 'create_Net_model': 'create a multi-layer perceptron model with configurable input hidden output sizes and number of hidden layers', 'run_infer_gpu': 'run GPU inference benchmark with optional TensorRT compilation or MIGraphX acceleration for linear model', 'run_infer_cpu': 'run CPU inference benchmark for a linear model with configurable warmup steps and data types', 'review_Net_forward': 'review the Net class forward pass that applies linear layers with relu activations and softmax output'}
+```
+

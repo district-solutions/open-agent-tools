@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/matrix
+- repo_uri: https://github.com/facebookresearch/matrix
+
+## File: facebookresearch_matrix/tests/integration/job/test_echo_job.py
+
+Prompts
+
+```
+['test the Matrix job submission flow by deploying echo tasks and verifying completed results', 'start a local Matrix Ray cluster with one worker and two CPUs using the Cli class', 'submit a job definition with task definitions to the Matrix cluster via cli.job.submit', 'check the status of a submitted Matrix job using cli.job.status and poll until completed', 'retrieve the output results of a completed Matrix job using cli.job.get_results']
+```
+
+Usage
+
+```
+{'test_deploy_hello': 'test the Matrix job submission flow by deploying echo tasks and verifying completed results', 'start_matrix_cluster': 'start a local Matrix Ray cluster with one worker and two CPUs using the Cli class', 'submit_job': 'submit a job definition with task definitions to the Matrix cluster via cli.job.submit', 'check_job_status': 'check the status of a submitted Matrix job using cli.job.status and poll until completed', 'get_job_results': 'retrieve the output results of a completed Matrix job using cli.job.get_results'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/humenv
+- repo_uri: https://github.com/facebookresearch/humenv
+
+## File: facebookresearch_humenv/humenv/misc/motionlib.py
+
+Prompts
+
+```
+['load episodes from an HDF5 file into a list of dictionaries with optional key filtering', 'canonicalize a file path to an absolute path relative to a base directory', 'create a MotionBuffer from HDF5 or text list files to store motion data with qpos and qvel keys', 'sample a batch of motion data from the MotionBuffer using priority-weighted random selection', 'update the sampling priorities for specific motion IDs in the MotionBuffer and renormalize']
+```
+
+Usage
+
+```
+{'load_episodes_from_h5': 'load episodes from an HDF5 file into a list of dictionaries with optional key filtering', 'canonicalize_path': 'canonicalize a file path to an absolute path relative to a base directory', 'create_motion_buffer': 'create a MotionBuffer from HDF5 or text list files to store motion data with qpos and qvel keys', 'sample_motion_buffer': 'sample a batch of motion data from the MotionBuffer using priority-weighted random selection', 'update_motion_priorities': 'update the sampling priorities for specific motion IDs in the MotionBuffer and renormalize'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/dagger
+- repo_uri: https://github.com/facebookresearch/dagger
+
+## File: facebookresearch_dagger/tests/test_dag.py
+
+Prompts
+
+```
+['create a custom ExperimentState subclass with PROPERTIES and NONHASHED_ATTRIBUTES for dagger experiments', 'spawn a new experiment tree with initial state properties using exp.spawn_new_tree', 'create a Recipe subclass with a run method that transforms an ExperimentState and returns it', 'apply a non-mutating Function to a dagger state without creating a new state node', 'filter experiment graph nodes by tag patterns using exp.graph.nodes.filter with glob-style queries']
+```
+
+Usage
+
+```
+{'create_experiment_state_class': 'create a custom ExperimentState subclass with PROPERTIES and NONHASHED_ATTRIBUTES for dagger experiments', 'spawn_experiment_tree': 'spawn a new experiment tree with initial state properties using exp.spawn_new_tree', 'create_recipe_class': 'create a Recipe subclass with a run method that transforms an ExperimentState and returns it', 'apply_function_to_state': 'apply a non-mutating Function to a dagger state without creating a new state node', 'filter_experiment_graph_nodes': 'filter experiment graph nodes by tag patterns using exp.graph.nodes.filter with glob-style queries'}
+```
+

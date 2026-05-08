@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/collaborative-reasoner
+- repo_uri: https://github.com/facebookresearch/collaborative-reasoner
+
+## File: facebookresearch_collaborative-reasoner/lightning_modules/loggers/patched_loggers.py
+
+Prompts
+
+```
+['create a PatchedWandbLogger instance with entity, project, name, and save_dir parameters', 'initialize a PatchedWandbLogger that auto-creates save directories and processes experiment names from env vars', 'log Python and YAML source code files to Weights and Biases using the log_code method', 'configure PatchedWandbLogger tags by auto-splitting experiment names or passing custom tag lists', 'enable offline mode for temporary experiments by including tmp in the experiment name']
+```
+
+Usage
+
+```
+{'create_PatchedWandbLogger': 'create a PatchedWandbLogger instance with entity, project, name, and save_dir parameters', 'init_PatchedWandbLogger': 'initialize a PatchedWandbLogger that auto-creates save directories and processes experiment names from env vars', 'log_code_PatchedWandbLogger': 'log Python and YAML source code files to Weights and Biases using the log_code method', 'configure_PatchedWandbLogger_tags': 'configure PatchedWandbLogger tags by auto-splitting experiment names or passing custom tag lists', 'enable_PatchedWandbLogger_offline': 'enable offline mode for temporary experiments by including tmp in the experiment name'}
+```
+

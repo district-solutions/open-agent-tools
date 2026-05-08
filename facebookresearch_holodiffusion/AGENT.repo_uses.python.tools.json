@@ -1,0 +1,142 @@
+{
+  "facebookresearch_holodiffusion/holo_diffusion/custom_modules.py": {
+    "build_MLPWithInputSkips": "build a configurable MLP with input skip connections and customizable hidden activation functions",
+    "create_MLPMeanFeatureAggregator": "create a feature aggregator module that uses an MLP to aggregate multi-view features with ray direction embeddings",
+    "test_MLPWithInputSkips_forward": "test the MLPWithInputSkips forward pass with input tensor and optional skip tensor",
+    "review_MLPMeanFeatureAggregator_forward": "review the MLPMeanFeatureAggregator forward method that aggregates sampled features using weighted mean reduction",
+    "refactor_get_point_to_source_camera_ray_dirs": "refactor the function that computes normalized ray directions from 3D points to source camera centers"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/holo_diffusion_model.py": {
+    "create_HoloDiffusionModel": "create a HoloDiffusionModel instance with voxel grid resolution and feature size configuration",
+    "run_forward_HoloDiffusionModel": "run the forward pass of HoloDiffusionModel with RGB images and cameras to render predictions",
+    "sample_random_voxel_features": "sample random voxel features through the denoising diffusion process using net_3d and diffusion",
+    "create_net_3d": "create a 3D Unet model with configurable input and output channels for voxel feature processing",
+    "visualize_predictions": "visualize HoloDiffusionModel predictions using Visdom with rendered images, depths, and masks"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/holo_voxel_grid_implicit_function.py": {
+    "create_RenderMLP": "create a RenderMLP instance with configurable density and radiance MLP networks for 3D scene rendering",
+    "run_RenderMLP_forward": "run the RenderMLP forward pass to compute densities, radiance features, and viewpoint-independent features from input features and view directions",
+    "get_RenderMLP_normals": "get surface normals from 3D points using the RenderMLP density network and automatic differentiation",
+    "build_HoloVoxelGridImplicitFunction": "build a HoloVoxelGridImplicitFunction with configurable resolution, volume extent, and render MLP for implicit 3D scene representation",
+    "run_HoloVoxelGridImplicitFunction_forward": "run the HoloVoxelGridImplicitFunction forward pass to sample voxel grid features along rays and decode densities and colour features"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/guided_diffusion/gaussian_diffusion.py": {
+    "create_beta_schedule": "create a linear or cosine beta schedule for diffusion timesteps using get_named_beta_schedule",
+    "build_gaussian_diffusion": "build a GaussianDiffusion instance with betas, model_mean_type, model_var_type, and loss_type",
+    "sample_diffusion_model": "sample from a diffusion model using p_sample_loop to generate a batch of outputs",
+    "sample_ddim_loop": "generate samples using ddim_sample_loop for faster deterministic diffusion sampling with eta control",
+    "compute_training_losses": "compute training losses for a diffusion model at a given timestep using training_losses"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/guided_diffusion/losses.py": {
+    "compute_normal_kl_divergence": "compute the KL divergence between two Gaussian distributions using mean and log variance tensors",
+    "approximate_standard_normal_cdf": "approximate the cumulative distribution function of a standard normal distribution for a tensor input",
+    "compute_discretized_gaussian_log_likelihood": "compute the log-likelihood of a Gaussian distribution discretizing to a given image tensor",
+    "review_normal_kl": "review the normal_kl function to understand how it broadcasts shapes for Gaussian KL divergence",
+    "test_discretized_gaussian_log_likelihood": "test the discretized_gaussian_log_likelihood function with image tensors scaled to the range negative one to one"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/guided_diffusion/nn.py": {
+    "create_conv_nd": "create a 1D, 2D, or 3D convolution module by specifying dimensions and channel arguments",
+    "create_timestep_embedding": "create sinusoidal timestep embeddings for diffusion model training with configurable dimension and max period",
+    "update_ema": "update target model parameters using exponential moving average from source parameters with a configurable rate",
+    "zero_module": "zero out all parameters of a PyTorch module and return the modified module",
+    "checkpoint": "evaluate a function with gradient checkpointing to reduce memory usage at the expense of extra compute"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/guided_diffusion/timestep_sampler.py": {
+    "create_uniform_schedule_sampler": "create a UniformSampler for a diffusion process with equal timestep weights",
+    "create_loss_second_moment_resampler": "create a LossSecondMomentResampler that reweights timesteps based on the second moment of losses",
+    "sample_timesteps_with_weights": "sample timesteps for a batch using importance sampling with computed weights",
+    "update_sampler_with_local_losses": "update a LossAwareSampler with local timestep losses across distributed ranks",
+    "create_named_schedule_sampler": "create a named ScheduleSampler by string name such as uniform or loss-second-moment"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/guided_diffusion/unet.py": {
+    "build_UNetModel": "build a UNetModel with timestep embedding and attention for diffusion-based image generation",
+    "build_AsymmetricUNetModel": "build an AsymmetricUNetModel with a decoder that has twice as many blocks as the encoder",
+    "build_SuperResModel": "build a SuperResModel UNet that conditions on a low-resolution image for super-resolution",
+    "build_EncoderUNetModel": "build an EncoderUNetModel half UNet with adaptive pooling for feature extraction",
+    "build_AttentionPool2d": "build an AttentionPool2d module with QKV attention pooling adapted from CLIP"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/tests/test_diffusion_utils.py": {
+    "test_SimpleUnet3D_forward_pass": "test the SimpleUnet3D forward pass with a 32x32x32 voxel grid input and random timesteps",
+    "test_SimpleUnet3D_backward_pass": "test the SimpleUnet3D backward pass to verify gradients are computed without NaNs",
+    "setup_SimpleUnet3D_for_testing": "create a SimpleUnet3D model with dummy 3D input tensor and timestep tensor for testing",
+    "run_SimpleUnet3D_inference": "run a SimpleUnet3D model on a 3D voxel grid input with specified diffusion timesteps",
+    "review_SimpleUnet3D_gradient_check": "review the SimpleUnet3D backward pass to confirm no NaN gradients in model weights"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/tests/test_voxel_grid_implicit_function.py": {
+    "test_RenderMLP_forward": "test the RenderMLP forward pass to verify no NaNs in densities, radiance, and view-dependent outputs",
+    "test_RenderMLP_backward": "test the RenderMLP backward pass to verify no NaNs in the computed gradients of MLP weights",
+    "test_VoxelGridImplicitFunction_forward": "test the HoloVoxelGridImplicitFunction forward pass to verify no NaNs in densities and features outputs",
+    "test_VoxelGridImplicitFunction_backward": "test the HoloVoxelGridImplicitFunction backward pass to verify no NaNs in the computed gradients of weights",
+    "setup_render_mlp": "create a RenderMLP instance with dummy feature tensors and normalized view direction tensors for testing"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/utils/checkpoint_utils.py": {
+    "load_experiment_from_directory": "load a trained HoloDiffusion experiment from an experiment directory with optional render size and device overrides",
+    "load_experiment_with_sequence_filter": "load a HoloDiffusion experiment restricted to a specific sequence name from the experiment directory",
+    "load_experiment_with_custom_render_size": "load a HoloDiffusion experiment with custom render image width and height dimensions",
+    "get_config_from_experiment_directory": "load and return the OmegaConf DictConfig from an expconfig.yaml file in an experiment directory",
+    "review_load_experiment_function": "review the load_experiment function to understand how it merges configs and reconstructs the model and data source"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/utils/diffusion_utils.py": {
+    "build_SimpleUnet3D": "build a 3D UNet model with configurable channels, attention resolutions, and dropout for diffusion",
+    "create_ImplicitronGaussianDiffusion": "create a Gaussian diffusion process with configurable beta schedule, noise steps, and sampling strategy",
+    "review_SimpleUnet3D_forward": "review the SimpleUnet3D forward pass that concatenates conditional features and runs the UNet",
+    "test_ImplicitronGaussianDiffusion_p_sample_loop": "test the ImplicitronGaussianDiffusion p_sample_loop method for iterative denoising sampling",
+    "summarize_ImplicitronGaussianDiffusion_q_sample": "summarize the ImplicitronGaussianDiffusion q_sample method for adding noise at a given timestep"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/utils/render_utils/flyaround.py": {
+    "render_flyaround_video": "render a flyaround video of a 3D scene using a model with circular, figure-eight, or trefoil knot camera trajectories",
+    "generate_simple_360_trajectory": "generate a simple 360 degree camera trajectory with configurable elevation, radius, and focal length for rendering",
+    "extract_images_from_predictions": "extract and process rendered images, masks, and depth maps from model prediction dictionaries into visualization-ready tensors",
+    "stack_images_grid": "stack multiple images into a grid layout for side-by-side visualization with optional resizing",
+    "generate_prediction_videos": "generate MP4 videos from a list of rendered prediction frames with optional visdom visualization"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/utils/render_utils/mesh_render.py": {
+    "render_mesh_with_soft_rasterization": "render a textured PyTorch3D mesh using soft rasterization to produce an image, render mask, and depth map",
+    "create_feature_shader_for_vertex_features": "create a FeatureShader module to render vertex feature maps from mesh fragments without shading",
+    "compute_softmax_depth_from_fragments": "compute a depth map from rasterization fragments using softmax blending with configurable znear and zfar",
+    "blend_features_with_softmax_weights": "blend per-face colors and alpha using softmax weights based on 2D distance and depth from rasterization fragments",
+    "clamp_tensor_preserving_sign": "clamp a tensor to a minimum absolute value while preserving the original sign of each element"
+  },
+  "facebookresearch_holodiffusion/holo_diffusion/utils/render_utils/shaded_depth_render.py": {
+    "depth_to_shaded_mesh": "convert depth maps to shaded images using mesh rendering with pytorch3d cameras and materials",
+    "depth_to_shaded_pointcloud": "convert depth maps to shaded images using point cloud normals with ambient lighting control",
+    "grid_pcl_to_shaded_mesh": "render a point cloud grid as a shaded mesh image with configurable material and background color",
+    "grid_pcl_to_shaded": "compute shaded values from a point cloud grid using estimated surface normals and neighborhood size",
+    "get_grid_mesh": "build a triangle mesh from a vertex grid and binary mask for 3D rendering"
+  },
+  "facebookresearch_holodiffusion/trainer/model_factory.py": {
+    "create_ImplicitronModelFactory": "create an ImplicitronModelFactory instance to initialize an implicit rendering model with configurable resume settings",
+    "call_ImplicitronModelFactory": "call the ImplicitronModelFactory with an experiment directory and optional accelerator to get a model instance",
+    "resume_model_from_checkpoint": "resume a model from a specific epoch checkpoint using the resume_epoch parameter on ImplicitronModelFactory",
+    "force_resume_model": "force resume a model from checkpoint and raise FileNotFoundError if no checkpoint exists in the experiment directory",
+    "load_model_state_dict": "load a model's state dict from a checkpoint file with strict or non-strict mode fallback"
+  },
+  "facebookresearch_holodiffusion/trainer/optimizer_factory.py": {
+    "build_optimizer_and_scheduler": "build an optimizer and learning rate scheduler from a model using ImplicitronOptimizerFactory",
+    "create_optimizer_with_param_groups": "create an optimizer with custom parameter groups and learning rates using group_learning_rates config",
+    "resume_optimizer_from_checkpoint": "resume an optimizer state from a checkpoint file in the experiment directory",
+    "configure_lr_policy": "configure a MultiStepLR, Exponential, or LinearExponential learning rate policy for training",
+    "extract_param_groups_from_module": "extract parameter groups from a PyTorch module using the param_groups dictionary pattern"
+  },
+  "facebookresearch_holodiffusion/trainer/timer.py": {
+    "create_timer_context_manager": "create a Timer context manager to measure elapsed time of a code block",
+    "create_timer_decorator": "create a Timer decorator to time the execution of a function",
+    "create_timer_cuda_sync": "create a Timer with cuda_sync enabled to accurately time GPU operations",
+    "review_timer_classvars": "review the Timer class timers and timers_n_ticks class variables for aggregated timing data",
+    "test_timer_error": "test the TimerError exception raised when start is called on an already running timer"
+  },
+  "facebookresearch_holodiffusion/trainer/training_loop.py": {
+    "run_ImplicitronTrainingLoop": "run the ImplicitronTrainingLoop to train a 3D model with configurable epochs, validation, and checkpointing",
+    "load_stats_ImplicitronTrainingLoop": "load training stats from a checkpoint to resume training at a specific epoch",
+    "run_training_epoch_ImplicitronTrainingLoop": "run a single training or validation epoch with forward pass, loss computation, and backward pass",
+    "checkpoint_model_ImplicitronTrainingLoop": "save model checkpoints and optimizer state with optional purging of older checkpoints",
+    "create_WholeDatasetLoader": "create a WholeDatasetLoader to load the entire dataset into a single batch for training"
+  },
+  "facebookresearch_holodiffusion/trainer/utils.py": {
+    "seed_all_random_engines": "seed all random engines including numpy, torch, and random with a given integer seed value",
+    "get_optimizer_discriminator_path": "get the discriminator optimizer path by replacing _opt.pth with _opt_disc.pth in the file path",
+    "path_mkdir": "create a directory at the given path with parent directories if they do not exist",
+    "use_seed_context_manager": "use the use_seed class as a context manager to temporarily set and restore random seed state",
+    "use_seed_decorator": "decorate a function with use_seed to wrap its execution with a temporary random seed"
+  }
+}

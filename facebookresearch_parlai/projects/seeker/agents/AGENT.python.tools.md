@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/projects/seeker/agents/gpt2_seeker.py
+
+Prompts
+
+```
+['build a GPT2 with retriever agent that packs retrieved documents and input context as a prompt', 'build a combo GPT2 agent that handles retrieval for some contexts and decoder-only for others', 'build a GPT2 Seeker agent with additional arguments sourced from several sub models', 'test the GPT2WithRetrieverAgent eval_step method to cache labels for retrieval and filter docs', 'test the GPT2ComboAgent batchify method to add skip retrieval input vec to the batch', 'build a GPT2WithRetrieverModel that retrieves documents and concatenates them with input for language modeling', 'build a ComboGPT2Model that handles contexts with and without retrieved documents using FiD encoding', 'review the FilterDocsForLabelSearchEngineRetrieverMixin class that filters retrieved documents containing the label string', 'build a FilterDocsForLabelSearchEngineRetrieverCombo retriever that filters label-containing docs for combo FiD search', 'build an IdentityLayer encoder that passes input tokens through unchanged for FiD model encoding', 'initialize a shared version of a top-level agent with the same params but different history objects', 'construct a new opt for a subagent by loading an opt file and applying specific and general override args', 'generate search queries in batch using a search query agent and inject an optional query string', 'review the ModularAgentMixin class and its shared functionality for modular agents like seeker and BB3', 'refactor the batch_act_search_query_generation method to support custom query injection logic for search agents', 'interleave FiD encoder outputs for retrieval and skip-retrieval inputs to preserve original batch order', 'build a ComboFidModel that conditionally skips retrieval for selected batch items during encoding', 'build a ComboFidSearchQuerySearchEngineRetriever that overrides the search engine retriever for combo setup', 'create a retriever via combo_fid_retriever_factory that returns a ComboFidSearchQuerySearchEngineRetriever for search engine type', 'review the ComboFidSearchRetrieverMixin class to understand how search queries are set and generated']
+```
+
+Usage
+
+```
+{'build_GPT2WithRetrieverAgent': 'build a GPT2 with retriever agent that packs retrieved documents and input context as a prompt', 'build_GPT2ComboAgent': 'build a combo GPT2 agent that handles retrieval for some contexts and decoder-only for others', 'build_GPT2SeekerAgent': 'build a GPT2 Seeker agent with additional arguments sourced from several sub models', 'test_GPT2WithRetrieverAgent_eval_step': 'test the GPT2WithRetrieverAgent eval_step method to cache labels for retrieval and filter docs', 'test_GPT2ComboAgent_batchify': 'test the GPT2ComboAgent batchify method to add skip retrieval input vec to the batch'}
+```
+
+## File: facebookresearch_parlai/projects/seeker/agents/gpt2_seeker_modules.py
+
+Prompts
+
+```
+['build a GPT2 with retriever agent that packs retrieved documents and input context as a prompt', 'build a combo GPT2 agent that handles retrieval for some contexts and decoder-only for others', 'build a GPT2 Seeker agent with additional arguments sourced from several sub models', 'test the GPT2WithRetrieverAgent eval_step method to cache labels for retrieval and filter docs', 'test the GPT2ComboAgent batchify method to add skip retrieval input vec to the batch', 'build a GPT2WithRetrieverModel that retrieves documents and concatenates them with input for language modeling', 'build a ComboGPT2Model that handles contexts with and without retrieved documents using FiD encoding', 'review the FilterDocsForLabelSearchEngineRetrieverMixin class that filters retrieved documents containing the label string', 'build a FilterDocsForLabelSearchEngineRetrieverCombo retriever that filters label-containing docs for combo FiD search', 'build an IdentityLayer encoder that passes input tokens through unchanged for FiD model encoding', 'initialize a shared version of a top-level agent with the same params but different history objects', 'construct a new opt for a subagent by loading an opt file and applying specific and general override args', 'generate search queries in batch using a search query agent and inject an optional query string', 'review the ModularAgentMixin class and its shared functionality for modular agents like seeker and BB3', 'refactor the batch_act_search_query_generation method to support custom query injection logic for search agents', 'interleave FiD encoder outputs for retrieval and skip-retrieval inputs to preserve original batch order', 'build a ComboFidModel that conditionally skips retrieval for selected batch items during encoding', 'build a ComboFidSearchQuerySearchEngineRetriever that overrides the search engine retriever for combo setup', 'create a retriever via combo_fid_retriever_factory that returns a ComboFidSearchQuerySearchEngineRetriever for search engine type', 'review the ComboFidSearchRetrieverMixin class to understand how search queries are set and generated']
+```
+
+Usage
+
+```
+{'build_GPT2WithRetrieverModel': 'build a GPT2WithRetrieverModel that retrieves documents and concatenates them with input for language modeling', 'build_ComboGPT2Model': 'build a ComboGPT2Model that handles contexts with and without retrieved documents using FiD encoding', 'review_FilterDocsForLabelSearchEngineRetrieverMixin': 'review the FilterDocsForLabelSearchEngineRetrieverMixin class that filters retrieved documents containing the label string', 'build_FilterDocsForLabelSearchEngineRetrieverCombo': 'build a FilterDocsForLabelSearchEngineRetrieverCombo retriever that filters label-containing docs for combo FiD search', 'build_IdentityLayer': 'build an IdentityLayer encoder that passes input tokens through unchanged for FiD model encoding'}
+```
+
+## File: facebookresearch_parlai/projects/seeker/agents/modular_agent.py
+
+Prompts
+
+```
+['build a GPT2 with retriever agent that packs retrieved documents and input context as a prompt', 'build a combo GPT2 agent that handles retrieval for some contexts and decoder-only for others', 'build a GPT2 Seeker agent with additional arguments sourced from several sub models', 'test the GPT2WithRetrieverAgent eval_step method to cache labels for retrieval and filter docs', 'test the GPT2ComboAgent batchify method to add skip retrieval input vec to the batch', 'build a GPT2WithRetrieverModel that retrieves documents and concatenates them with input for language modeling', 'build a ComboGPT2Model that handles contexts with and without retrieved documents using FiD encoding', 'review the FilterDocsForLabelSearchEngineRetrieverMixin class that filters retrieved documents containing the label string', 'build a FilterDocsForLabelSearchEngineRetrieverCombo retriever that filters label-containing docs for combo FiD search', 'build an IdentityLayer encoder that passes input tokens through unchanged for FiD model encoding', 'initialize a shared version of a top-level agent with the same params but different history objects', 'construct a new opt for a subagent by loading an opt file and applying specific and general override args', 'generate search queries in batch using a search query agent and inject an optional query string', 'review the ModularAgentMixin class and its shared functionality for modular agents like seeker and BB3', 'refactor the batch_act_search_query_generation method to support custom query injection logic for search agents', 'interleave FiD encoder outputs for retrieval and skip-retrieval inputs to preserve original batch order', 'build a ComboFidModel that conditionally skips retrieval for selected batch items during encoding', 'build a ComboFidSearchQuerySearchEngineRetriever that overrides the search engine retriever for combo setup', 'create a retriever via combo_fid_retriever_factory that returns a ComboFidSearchQuerySearchEngineRetriever for search engine type', 'review the ComboFidSearchRetrieverMixin class to understand how search queries are set and generated']
+```
+
+Usage
+
+```
+{'init_shared_model': 'initialize a shared version of a top-level agent with the same params but different history objects', 'get_subagent_opt': 'construct a new opt for a subagent by loading an opt file and applying specific and general override args', 'batch_act_search_query_generation': 'generate search queries in batch using a search query agent and inject an optional query string', 'review_ModularAgentMixin': 'review the ModularAgentMixin class and its shared functionality for modular agents like seeker and BB3', 'refactor_batch_act_search_query_generation': 'refactor the batch_act_search_query_generation method to support custom query injection logic for search agents'}
+```
+
+## File: facebookresearch_parlai/projects/seeker/agents/seeker_modules.py
+
+Prompts
+
+```
+['build a GPT2 with retriever agent that packs retrieved documents and input context as a prompt', 'build a combo GPT2 agent that handles retrieval for some contexts and decoder-only for others', 'build a GPT2 Seeker agent with additional arguments sourced from several sub models', 'test the GPT2WithRetrieverAgent eval_step method to cache labels for retrieval and filter docs', 'test the GPT2ComboAgent batchify method to add skip retrieval input vec to the batch', 'build a GPT2WithRetrieverModel that retrieves documents and concatenates them with input for language modeling', 'build a ComboGPT2Model that handles contexts with and without retrieved documents using FiD encoding', 'review the FilterDocsForLabelSearchEngineRetrieverMixin class that filters retrieved documents containing the label string', 'build a FilterDocsForLabelSearchEngineRetrieverCombo retriever that filters label-containing docs for combo FiD search', 'build an IdentityLayer encoder that passes input tokens through unchanged for FiD model encoding', 'initialize a shared version of a top-level agent with the same params but different history objects', 'construct a new opt for a subagent by loading an opt file and applying specific and general override args', 'generate search queries in batch using a search query agent and inject an optional query string', 'review the ModularAgentMixin class and its shared functionality for modular agents like seeker and BB3', 'refactor the batch_act_search_query_generation method to support custom query injection logic for search agents', 'interleave FiD encoder outputs for retrieval and skip-retrieval inputs to preserve original batch order', 'build a ComboFidModel that conditionally skips retrieval for selected batch items during encoding', 'build a ComboFidSearchQuerySearchEngineRetriever that overrides the search engine retriever for combo setup', 'create a retriever via combo_fid_retriever_factory that returns a ComboFidSearchQuerySearchEngineRetriever for search engine type', 'review the ComboFidSearchRetrieverMixin class to understand how search queries are set and generated']
+```
+
+Usage
+
+```
+{'interleave_fid_combo_outputs': 'interleave FiD encoder outputs for retrieval and skip-retrieval inputs to preserve original batch order', 'build_ComboFidModel': 'build a ComboFidModel that conditionally skips retrieval for selected batch items during encoding', 'build_ComboFidSearchQuerySearchEngineRetriever': 'build a ComboFidSearchQuerySearchEngineRetriever that overrides the search engine retriever for combo setup', 'combo_fid_retriever_factory': 'create a retriever via combo_fid_retriever_factory that returns a ComboFidSearchQuerySearchEngineRetriever for search engine type', 'review_ComboFidSearchRetrieverMixin': 'review the ComboFidSearchRetrieverMixin class to understand how search queries are set and generated'}
+```
+

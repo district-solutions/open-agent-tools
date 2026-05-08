@@ -1,0 +1,135 @@
+{
+  "facebookresearch_open-eqa/data/frames2videos.py": {
+    "run_frames2videos_cli": "run the frames2videos CLI to convert frame directories into MP4 videos for a dataset split",
+    "run_create_video": "run create_video to encode a folder of RGB PNG frames into an MP4 video file",
+    "run_parse_args": "run parse_args to configure input frames directory, output videos directory, split, and FPS settings",
+    "run_get_folders": "run get_folders to discover and list all subdirectories under the input frames directory",
+    "run_main": "run main to iterate over all frame folders and create MP4 videos from RGB PNG sequences"
+  },
+  "facebookresearch_open-eqa/data/hm3d/config.py": {
+    "create_habitat_sim_config": "create a habitat-sim simulator configuration with rgb, depth, and semantic sensors using make_cfg",
+    "create_sensor_spec": "create a camera sensor specification with a given uuid, type, hfov, resolution, position, and pitch",
+    "add_move_actions": "add six movement actions including forward, backward, left, right, up, and down to an action space",
+    "add_turn_actions": "add turn left and turn right actions with a specified rotation amount to an action space",
+    "add_look_actions": "add look up and look down actions with a specified pitch amount to an action space"
+  },
+  "facebookresearch_open-eqa/data/hm3d/extract-frames.py": {
+    "extract_frames_from_hm3d_pickles": "extract rgb and depth frames from HM3D pickle files using Habitat-Sim simulator",
+    "save_intrinsics_from_pickle": "compute and save camera intrinsic matrices from HM3D pickle scene data",
+    "save_pose_from_simulator": "save the camera pose transformation matrix from a Habitat-Sim simulator instance",
+    "save_depth_from_simulator": "save depth observations as 16-bit PNG images from a Habitat-Sim simulator",
+    "save_color_from_simulator": "save RGB color observations as PNG images from a Habitat-Sim simulator"
+  },
+  "facebookresearch_open-eqa/data/scannet/SensorData.py": {
+    "load_scannet_sensor_data": "load a ScanNet .sens binary file using SensorData to parse frames and camera intrinsics",
+    "export_depth_images": "export depth images from a SensorData object to a directory as 16-bit PNG files",
+    "export_color_images": "export color images from a SensorData object to a directory as PNG files",
+    "export_camera_poses": "export camera-to-world pose matrices from SensorData frames to text files in a directory",
+    "export_camera_intrinsics": "export color and depth intrinsic and extrinsic matrices from SensorData to text files"
+  },
+  "facebookresearch_open-eqa/data/scannet/extract-frames.py": {
+    "run_extract_frames": "run the script to extract RGB and depth frames from ScanNet sensor data files",
+    "run_extract_rgb_only": "run the script with --rgb-only flag to extract only color images from ScanNet scenes",
+    "run_extract_with_max_frames": "run the script with --max-num-frames to limit frames extracted per scene",
+    "review_parse_args": "review the parse_args function that configures CLI arguments for dataset path, ScanNet root, and output directory",
+    "review_get_folder_to_scene": "review the get_folder_to_scene function that maps episode history folders to ScanNet scene names"
+  },
+  "facebookresearch_open-eqa/openeqa/baselines/claude-vision.py": {
+    "run_claude_vision_baseline": "run the claude vision baseline on the open EQA dataset with frame-based visual question answering",
+    "run_dry_run": "run a dry run of the claude vision baseline processing only the first 5 questions",
+    "parse_claude_output": "parse the claude API output string and extract the answer after the A: prefix",
+    "ask_question": "ask a visual question to Claude using image frames and return the parsed answer",
+    "review_ask_question": "review the ask_question function that prepares vision messages and calls the Anthropic API"
+  },
+  "facebookresearch_open-eqa/openeqa/baselines/gemini-pro-vision.py": {
+    "run_gemini_vision_baseline": "run the gemini-pro-vision baseline on an EQA dataset using video frames as visual context",
+    "ask_question_with_frames": "ask a question to Gemini Pro Vision by providing frame image paths and a question string",
+    "parse_gemini_output": "parse the Gemini API output string to extract the answer after the A: prefix",
+    "run_dry_run_baseline": "run a dry run of the gemini-pro-vision baseline processing only the first 5 questions",
+    "resume_baseline_results": "resume the gemini-pro-vision baseline from existing results skipping already completed question IDs"
+  },
+  "facebookresearch_open-eqa/openeqa/baselines/gemini-pro.py": {
+    "run_gemini_baseline": "run the gemini-pro baseline on an open-eqa dataset using the CLI with --dataset and --model flags",
+    "run_dry_run": "run a dry run of the gemini-pro baseline processing only the first 5 questions with --dry-run",
+    "ask_question_gemini": "ask a single question to the Gemini Pro model and get a parsed answer using ask_question",
+    "parse_gemini_output": "parse the Gemini model output string to extract the answer after the A: prefix",
+    "resume_results": "resume processing from existing results by passing an output path that already contains partial answers"
+  },
+  "facebookresearch_open-eqa/openeqa/baselines/gpt4.py": {
+    "run_gpt4_baseline": "run the GPT-4 baseline on an Open-EQA dataset using the CLI with --dataset and --model flags",
+    "ask_question_with_gpt4": "call ask_question to send a single question to GPT-4 and get a parsed answer string",
+    "parse_gpt4_output": "use parse_output to extract the answer from a GPT-4 response string after the A: prefix",
+    "run_dry_run_gpt4": "run the GPT-4 baseline in dry-run mode to process only the first 5 questions",
+    "resume_gpt4_results": "resume the GPT-4 baseline from a partial results JSON file by pointing --output-directory to existing results"
+  },
+  "facebookresearch_open-eqa/openeqa/baselines/gpt4v.py": {
+    "run_gpt4v_baseline": "run the GPT-4V baseline on an EQA dataset with image frames and save answers to JSON",
+    "ask_question_vision": "ask a question to GPT-4V with image frames and get a text answer from the OpenAI API",
+    "parse_args_gpt4v": "parse command-line arguments for the GPT-4V EQA baseline including dataset path, model, and frames directory",
+    "review_ask_question": "review the ask_question function that prepares vision messages and calls the OpenAI API for answers",
+    "refactor_main_loop": "refactor the main loop to change how frames are sampled or how results are persisted"
+  },
+  "facebookresearch_open-eqa/openeqa/baselines/llama.py": {
+    "run_llama_baseline": "run the LLaMA model baseline on an open-eqa dataset with --model-path and --dataset flags",
+    "run_llama_dry_run": "run a dry run of the LLaMA baseline processing only the first 5 questions",
+    "ask_question_llama": "ask a question to an LLaMA model using the ask_question function with a prompt template",
+    "parse_output_llama": "parse the LLaMA model output string to extract the answer after the A: prefix",
+    "parse_args_llama": "parse command line arguments for the LLaMA baseline including model path, temperature, and max tokens"
+  },
+  "facebookresearch_open-eqa/openeqa/evaluation/llm_match.py": {
+    "run_llm_match_score": "run get_llm_match_score to compare a predicted answer against a ground-truth answer using an LLM",
+    "parse_score_output": "parse an LLM output string to extract a numeric score using the parse_score function",
+    "test_parse_score": "test parse_score with a raw digit string or a tagged output string containing 'Your mark:'",
+    "refactor_get_llm_match_score": "refactor get_llm_match_score to use a different OpenAI model or adjust temperature and max tokens",
+    "review_parse_score": "review parse_score to understand how it extracts integer scores from LLM output using a tag delimiter"
+  },
+  "facebookresearch_open-eqa/openeqa/utils/anthropic_utils.py": {
+    "prepare_anthropic_messages": "prepare a list of Anthropic API messages from user text content for Claude",
+    "prepare_anthropic_vision_messages": "prepare Anthropic vision messages with optional prefix, suffix, and resized base64 encoded images",
+    "call_anthropic_api": "call the Anthropic Claude API with messages, model, max tokens, and temperature settings",
+    "call_anthropic_api_with_retry": "call the Anthropic API with automatic retry using exponential backoff up to 6 attempts",
+    "run_anthropic_cli": "run the module directly to send a message to Claude and print the response"
+  },
+  "facebookresearch_open-eqa/openeqa/utils/demo_utils.py": {
+    "decode_frames_from_video_path": "decode all frames from a video file at a given path using OpenCV and return them as a list",
+    "get_equally_spaced_frames": "select k equally spaced frames from a list of video frames using numpy",
+    "review_decode_frames_from_video_path": "review the decode_frames_from_video_path function that reads all frames from a video file using cv2.VideoCapture",
+    "review_get_equally_spaced_frames": "review the get_equally_spaced_frames function that samples k evenly spaced frames from a frame list",
+    "refactor_decode_frames_from_video_path": "refactor the decode_frames_from_video_path function to filter out the final empty frame appended when reading ends"
+  },
+  "facebookresearch_open-eqa/openeqa/utils/google_utils.py": {
+    "configure_google_api_key": "configure the google generativeai client with an API key from an environment variable or explicit value",
+    "call_gemini_pro": "call the gemini-pro model with a text prompt and return the generated response as a string",
+    "call_gemini_with_retry": "call the google generative AI API with automatic retry using exponential backoff up to six attempts",
+    "call_gemini_with_vision": "call the gemini-pro-vision model with text and PIL Image inputs to get a multimodal response",
+    "run_google_api_cli": "run the module directly to configure the API key and send a sample prompt to gemini-pro"
+  },
+  "facebookresearch_open-eqa/openeqa/utils/llama_utils.py": {
+    "run_llama_inference": "run a LLaMA model inference on a text prompt using the LLaMARunner class",
+    "create_llama_runner": "create a LLaMARunner instance from a HuggingFace model path with optional 8bit loading",
+    "run_llama_cli": "run the LLaMA inference CLI module with a model path and optional 8bit or fast kernel flags",
+    "enable_determinism": "enable full determinism in transformers by setting a random seed",
+    "call_llama_runner": "call the LLaMARunner with a text input and sampling parameters like temperature and top_p"
+  },
+  "facebookresearch_open-eqa/openeqa/utils/openai_utils.py": {
+    "set_openai_key": "set the OpenAI API key from an environment variable or provided string",
+    "prepare_openai_messages": "prepare a list of user role messages from a text content string",
+    "prepare_openai_vision_messages": "prepare vision messages with base64 encoded images and optional prefix or suffix text",
+    "call_openai_api": "call the OpenAI chat completions API with retry logic and return the response content",
+    "summarize_openai_utils": "summarize the OpenAI utility module functions for setting keys, preparing messages, and calling the API"
+  },
+  "facebookresearch_open-eqa/openeqa/utils/prompt_utils.py": {
+    "load_prompt_mmbench": "load the mmbench prompt template from the prompts directory",
+    "load_prompt_gpt4v": "load the gpt4v prompt template from the prompts directory",
+    "load_prompt_claude3_vision": "load the claude3-vision prompt template from the prompts directory",
+    "load_prompt_gemini_pro_vision": "load the gemini-pro-vision prompt template from the prompts directory",
+    "load_prompt_invalid_name": "load a prompt by name and raise ValueError for invalid names"
+  },
+  "facebookresearch_open-eqa/viewer/app.py": {
+    "run_flask_viewer_app": "run the flask app to serve the Open-EQA viewer on localhost with debug mode enabled",
+    "get_video_by_index": "post a JSON index to the /get_video endpoint to retrieve a specific video dataset entry",
+    "get_random_video_index": "call the /get_random_index endpoint to get a random index into the Open-EQA dataset",
+    "render_index_page": "visit the root route to render the index.html template for the viewer front end",
+    "load_and_filter_dataset": "load the open-eqa-v0.json dataset, add video paths, and filter out entries with missing videos"
+  }
+}

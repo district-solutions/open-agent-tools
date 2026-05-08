@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/crag
+- repo_uri: https://github.com/facebookresearch/crag
+
+## File: facebookresearch_crag/mock_api/apiwrapper/pycragapi.py
+
+Prompts
+
+```
+['use the CRAG client to search for entities by name in the Open domain', 'use the CRAG client to get information about a movie by its name', 'use the CRAG client to get the price history for a given stock ticker symbol', 'use the CRAG client to get the Grammy Best New Artist for a specific year', 'use the CRAG client to get NBA games played on a specific date for a team']
+```
+
+Usage
+
+```
+{'search_open_entity_by_name': 'use the CRAG client to search for entities by name in the Open domain', 'get_movie_info_by_name': 'use the CRAG client to get information about a movie by its name', 'get_finance_price_history': 'use the CRAG client to get the price history for a given stock ticker symbol', 'get_grammy_best_artist_by_year': 'use the CRAG client to get the Grammy Best New Artist for a specific year', 'get_nba_games_on_date': 'use the CRAG client to get NBA games played on a specific date for a team'}
+```
+

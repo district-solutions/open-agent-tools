@@ -1,0 +1,1479 @@
+{
+  "facebookresearch_labgraph/devices/force_torch/force_torch_ati.py": {
+    "run_forcetorchati_graph": "run the ForceTorchATIGraph labgraph node to stream ATI force torque sensor data over UDP",
+    "create_forcetorchati_config": "create a ForceTorchATIConfig with custom poll rate, host IP, device IP, and port settings",
+    "setup_forcetorchati_source": "setup a ForceTorchATISource node that connects to an ATI NET FT sensor via UDP socket",
+    "unpack_force_torque_field": "unpack a force or torque field from raw ATI sensor data bytes by index position",
+    "reset_forcetorch_bias": "reset the ATI force torque sensor bias by sending a bias command over UDP"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/benchmark.py": {
+    "create_capturepoint": "create a CapturePoint object with a recording timestamp and list of Capture objects",
+    "configure_benchmark": "configure a BenchmarkConfig with output_path, output_name, and run_time settings",
+    "setup_benchmark_node": "setup a Benchmark labgraph node that spawns a BenchmarkWorker process for recording timestamps",
+    "subscribe_capture_results": "subscribe to CaptureResult messages on the Benchmark node INPUT topic to record timestamps",
+    "publish_exit_signal": "publish an ExitSignal on the OUTPUT_EXIT topic when benchmarking is complete and done"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/benchmark_worker.py": {
+    "create_BenchmarkWorker": "create a BenchmarkWorker process to capture performance metrics from a multiprocessing task queue",
+    "run_BenchmarkWorker": "run a BenchmarkWorker process that collects timing data and saves results to a JSON file",
+    "review_BenchmarkWorker_run": "review the BenchmarkWorker run method that processes tasks from a JoinableQueue and saves output",
+    "refactor_BenchmarkWorker_output": "refactor the BenchmarkWorker output dictionary to support additional performance metric fields",
+    "test_BenchmarkWorker": "test the BenchmarkWorker class by feeding tasks into its JoinableQueue and verifying JSON output"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/display.py": {
+    "build_display_node": "build a labgraph Display node that draws overlays and presents them in CV2 windows",
+    "create_display_config": "create a DisplayConfig with target framerate, stats history size, and extension types",
+    "run_display_loop": "run the display main loop that updates windows at a target framerate with perf tracking",
+    "review_display_handler_setup": "review the Display node setup that initializes a DisplayHandler with key callback registration",
+    "test_exit_handling": "test the Display node exit handling via stream signal, user signal, or ESC key press"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/display_handler.py": {
+    "create_display_handler": "create a DisplayHandler instance with history size and extension types for pose visualization",
+    "register_key_callback": "register a callback function to handle cv2 waitKey events in the DisplayHandler",
+    "register_post_render_callback": "register a callback function to be called after rendering extension data on frames",
+    "update_frames": "update the DisplayHandler with new capture frames and extension data for display",
+    "update_windows": "update CV2 windows with current frames and process key presses at the given framerate"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/dynamic_graph.py": {
+    "create_dynamic_graph": "create a DynamicGraph subclass and add nodes at runtime using add_node with connections and config",
+    "add_node_to_graph": "add a node to a DynamicGraph with its type, connection list, and optional config object",
+    "add_connection_between_nodes": "add a connection between two nodes in a DynamicGraph using a four-element string list",
+    "add_logger_connection": "add a logger connection tuple mapping a stream path to a node output topic",
+    "create_dynamic_group": "create a DynamicGroup subclass and add nodes and topics at runtime using add_node and add_topic"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/extension.py": {
+    "create_extension_result": "create an ExtensionResult dataclass instance to hold arbitrary extension output data",
+    "implement_posevis_extension_base": "implement a PoseVisExtensionBase subclass with register_args, check_enabled, process_frame, draw_overlay, and check_output methods",
+    "register_args_method": "register command-line arguments on an ArgumentParser to enable or disable a pose vis extension",
+    "process_frame_method": "process a numpy array video frame and return an ExtensionResult with the extension output",
+    "draw_overlay_method": "draw overlay graphics on a numpy array frame using an ExtensionResult for display"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/performance_utility.py": {
+    "create_perfutility_instance": "create a PerfUtility instance to measure function execution time and track updates per second",
+    "run_update_start": "run update_start on a PerfUtility instance to begin profiling a function's execution time",
+    "run_update_end": "run update_end on a PerfUtility instance to end profiling and calculate delta_time and updates per second",
+    "get_remaining_sleep_time": "get the remaining sleep time in seconds for a target update rate using get_remaining_sleep_time",
+    "review_perfutility_class": "review the PerfUtility class and its attributes for tracking delta_time, update_count, and averaged state"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/runner.py": {
+    "build_posevis_graph": "build a PoseVis graph by calling PoseVisRunner.build to register nodes and enable extensions",
+    "run_posevis_graph": "run the PoseVis graph using PoseVisRunner.run with labgraph ParallelRunner and logger config",
+    "create_posevis_config": "create a PoseVisConfig dataclass with extensions, log directory, display framerate, and stats settings",
+    "review_posevisrunner_abstract_class": "review the PoseVisRunner abstract class and its register_nodes method for subclass implementation",
+    "refactor_posevisrunner_display_logic": "refactor PoseVisRunner.build to customize Display node or TerminationHandler connection logic"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/stats_worker.py": {
+    "create_capturepoint": "create a CapturePoint object with frame index, runtime, target fps, receive time, and device timestamps",
+    "create_capturestats": "create a CaptureStats object with framedrop percentage, latency, jitter, and desync values",
+    "run_statsworker": "run a StatsWorker multiprocessing process to compute capture performance stats from a task queue",
+    "setup_statsworker": "setup a StatsWorker's internal deques for timestamps, latency values, and desync tracking",
+    "review_statsworker_run": "review the StatsWorker run loop that calculates framedrop, latency, jitter, and desync statistics"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/termination_handler.py": {
+    "create_termination_handler_node": "create a labgraph node that terminates the graph cleanly upon receiving an ExitSignal",
+    "create_termination_handler_state": "create a labgraph state class with a signal_received boolean attribute for tracking exit signals",
+    "subscribe_exit_stream": "subscribe to the INPUT_EXIT_STREAM topic to handle ExitSignal messages from the stream",
+    "subscribe_exit_user": "subscribe to the INPUT_EXIT_USER topic to handle ExitSignal messages from the user",
+    "run_termination_handler_main_loop": "run the main loop that polls signal_received and raises NormalTermination when an exit signal is detected"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/utils.py": {
+    "absolute_path_convert": "convert a relative path to an absolute path and ensure the parent directory exists",
+    "is_path_check": "check if a string is an absolute path starting with slash or drive letter",
+    "relative_latency_calculate": "calculate the relative latency between device timestamps and receive timestamps",
+    "parse_sources_parse": "parse a list of string sources into integers, GStreamer strings, or absolute file paths",
+    "parse_resolutions_convert": "convert resolution strings in id:WxHxFPS format to a list of width height fps tuples"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/extensions/face_detection.py": {
+    "setup_face_detection_extension": "setup a FaceDetectionExtension that initializes MediaPipe face detection and objectron tracking",
+    "process_frame_face_detection": "process a numpy array frame with MediaPipe face detection and return ExtensionResult",
+    "draw_face_detection_overlay": "draw face detection bounding boxes on a frame using MediaPipe drawing utilities",
+    "check_face_detection_output": "check if face detection result data has valid detections with proper length",
+    "register_face_detection_args": "register the --face_detection CLI argument to enable the face detection extension"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/extensions/face_mesh.py": {
+    "setup_facemesh_extension": "initialize a MediaPipe FaceMesh detector with refined landmarks and confidence thresholds",
+    "process_frame_facemesh": "process a video frame to extract 468-point face landmarks using MediaPipe",
+    "draw_overlay_facemesh": "draw face mesh tesselation, contours, and iris landmarks on a video frame",
+    "check_output_facemesh": "validate that face mesh results contain 468 landmarks per detected face",
+    "register_args_facemesh": "register the --face_mesh CLI argument to enable the face mesh extension"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/extensions/hands.py": {
+    "create_hands_extension": "create a PoseVisExtension subclass that enables MediaPipe hand tracking with configurable detection parameters",
+    "setup_hands_config": "build a HandsConfig dataclass to configure max hands, model complexity, and confidence thresholds for hand detection",
+    "process_frame_hands": "run hand landmark detection on a video frame using MediaPipe and return ExtensionResult with landmarks and handedness",
+    "draw_overlay_hands": "draw detected hand landmarks and connections onto a frame using MediaPipe drawing utilities",
+    "check_output_hands": "review the hand detection result to validate that each hand has the expected 21 landmarks"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/extensions/holistic.py": {
+    "create_holistic_extension": "create a HolisticExtension class that extends PoseVisExtension for MediaPipe holistic pose and face landmark detection",
+    "register_args_holistic": "register the --holistic CLI argument to enable the holistic extension via argparse",
+    "process_frame_holistic": "process a numpy frame with MediaPipe holistic to extract face and pose landmarks",
+    "draw_overlay_landmarks": "draw face mesh contours and pose connections as landmarks on a frame using MediaPipe drawing utilities",
+    "check_output_holistic": "validate that the holistic extension result data has the expected structure and length"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/extensions/pose.py": {
+    "create_pose_config": "create a PoseConfig dataclass with model complexity, smoothing, and confidence threshold settings",
+    "setup_pose_extension": "setup a PoseExtension instance with MediaPipe pose detection using custom PoseConfig parameters",
+    "process_frame_pose": "process a numpy array frame through MediaPipe pose detection and return pose landmarks",
+    "draw_pose_overlay": "draw pose landmarks and connections on a frame using MediaPipe drawing utilities",
+    "check_pose_output": "validate that pose detection results contain 33 landmarks per entry in the ExtensionResult"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/gesture/hand/annotation.py": {
+    "create_annotation_gesture_tracker": "create an Annotation instance to track hand vertices and gesture labels for pose data",
+    "save_gestures_to_json": "save hand gesture vertex data to a JSON file using the NumpyJSONEncoder for serialization",
+    "load_gestures_from_json": "load previously saved gesture vertex data from a JSON file into the Annotation object",
+    "guess_annotations_match_gestures": "match tracked hand vertices against known gestures and return the closest label by difference value",
+    "plot_hand_3d_visualization": "plot hand vertex data in a 3D matplotlib axes with configurable drawing order and scaling"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/gesture/hand/gesture_vis.py": {
+    "run_gesture_vis": "run hand tracking and gesture recognition on webcam or video sources with live visualization",
+    "run_gesture_vis_export": "run gesture recognition and export the annotated stream as an MP4 video file",
+    "run_gesture_vis_collect": "run gesture data collection mode to label and save new hand gesture patterns",
+    "review_GestureVis_on_key": "review the GestureVis on_key method that handles keyboard input for mode switching and gesture collection",
+    "review_GestureVis_get_bounds_data": "review the GestureVis get_bounds_data method that extracts hand bounding boxes and world landmark vectors"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/gesture/pose/pose_gesture_vis.py": {
+    "run_pose_gesture_vis": "run the pose gesture visualization tool with webcam sources and MediaPipe pose landmark detection",
+    "run_pose_gesture_vis_export": "run the pose gesture visualization tool and export annotated frames to an MP4 video file",
+    "collect_gesture_data": "collect gesture data points by labeling poses in collection mode using the spacebar key",
+    "guess_pose_gesture": "guess the current pose gesture by comparing landmark distances against saved labeled gesture data",
+    "compute_pose_landmark_distances": "compute normalized distances and directional vectors between pose landmarks for gesture recognition features"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/runners/benchmark_runner.py": {
+    "run_benchmark": "run the BenchmarkRunner to gather performance details from video sources with specified resolutions",
+    "create_benchmark_config": "create a BenchmarkRunnerConfig dataclass with sources, resolutions, output path, output name, and run time",
+    "register_benchmark_nodes": "register benchmark nodes by calling register_nodes on BenchmarkRunner to set up the BENCHMARK node and connections",
+    "run_source_stream": "run a SourceStreamRunner with configured sources and resolutions as part of the benchmark pipeline",
+    "add_benchmark_connection": "add a connection from BENCHMARK OUTPUT_EXIT to DISPLAY or TERM_HANDLER based on display framerate config"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/runners/replay_runner.py": {
+    "create_ReplayStreamRunnerConfig": "create a ReplayStreamRunnerConfig dataclass instance with a path string for the log file to replay",
+    "run_ReplayStreamRunner": "run a ReplayStreamRunner with PoseVisConfig and ReplayStreamRunnerConfig to replay pose visualization log files",
+    "register_nodes_ReplayStreamRunner": "call register_nodes on ReplayStreamRunner to resolve the path and add a ReplayStream node to the graph",
+    "review_ReplayStreamRunner": "review the ReplayStreamRunner class that extends PoseVisRunner to replay log files via ReplayStream",
+    "summarize_ReplayStreamRunnerConfig": "summarize the ReplayStreamRunnerConfig dataclass that holds the path attribute for replay log file configuration"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/runners/source_runner.py": {
+    "create_SourceStreamRunnerConfig": "create a SourceStreamRunnerConfig dataclass with sources and resolutions for video capture",
+    "create_SourceStreamRunner": "create a SourceStreamRunner instance with PoseVisConfig and SourceStreamRunnerConfig to capture video sources",
+    "run_register_nodes": "run register_nodes on SourceStreamRunner to add a STREAM node sorted by lowest framerate",
+    "review_SourceStreamRunner": "review the SourceStreamRunner class that extends PoseVisRunner to capture video from multiple sources",
+    "summarize_SourceStreamRunnerConfig": "summarize the SourceStreamRunnerConfig dataclass attributes including sources list and resolutions tuples"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/streams/replay_stream.py": {
+    "run_replay_stream": "run the ReplayStream node to replay capture results from an HDF5 log file",
+    "create_replay_stream_config": "create a ReplayStreamConfig with a log path and list of PoseVisExtension objects",
+    "setup_replay_stream": "setup the ReplayStream node to initialize an HDF5Reader for the configured log file",
+    "read_log_publisher": "use the read_log async publisher to iterate through captures and yield CaptureResult messages",
+    "create_replay_stream_state": "create a ReplayStreamState with a PerfUtility and optional HDF5Reader for tracking replay performance"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/streams/source_stream.py": {
+    "create_SourceStreamConfig": "create a SourceStreamConfig with sources, resolutions, extensions, and target framerate for the SourceStream node",
+    "create_SourceStreamState": "create a SourceStreamState with an optional CaptureHandler and PerfUtility for tracking capture state",
+    "run_SourceStream_read_sources": "run the SourceStream async publisher to capture frames from all sources and publish CaptureResult messages",
+    "review_SourceStream_setup": "review the SourceStream setup method that initializes a CaptureHandler with configured sources and extensions",
+    "refactor_SourceStream_cleanup": "refactor the SourceStream cleanup method to properly shut down the CaptureHandler and release resources"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/streams/utils/capture_handler.py": {
+    "create_capture_handler": "create a CaptureHandler instance with video sources, resolutions, and PoseVisExtension objects",
+    "start_capture_workers": "start all CaptureWorker processes in the CaptureHandler to begin capturing video frames",
+    "get_captures": "get captured frames from all active workers as a list of Capture tuples with metadata",
+    "cleanup_capture_handler": "cleanup the CaptureHandler by stopping workers, joining processes, and unlinking shared memory",
+    "handle_all_captures_finished": "handle the AllCapturesFinished exception when all video sources have completed capturing"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/streams/utils/capture_worker.py": {
+    "create_capture_worker_process": "create a CaptureWorker subprocess to handle CV2 VideoCapture frame reading and shared memory communication",
+    "open_capture_with_backend": "open a camera or video source using the appropriate CV2 backend like V4L2 or GStreamer",
+    "read_capture_frame": "read and process a frame from the capture source with resize, flip, and BGR to RGB conversion",
+    "setup_worker_with_extensions": "setup a capture worker with shared memory, blank frame, and PoseVisExtension instances",
+    "cleanup_capture_worker": "cleanup and release the capture worker resources including VideoCapture and extensions"
+  },
+  "facebookresearch_labgraph/devices/webcam/pose_vis/test/tests.py": {
+    "test_posevis_pipeline": "test the PoseVis pipeline with HandsExtension by building a SourceStreamRunner and running it end to end",
+    "create_test_subscriber_node": "create a labgraph Node subclass that subscribes to CaptureResult messages and validates extension outputs",
+    "run_source_stream_runner": "run a SourceStreamRunner with webcam image sources and a configured resolution to process frames",
+    "add_node_to_posevis_graph": "add a custom subscriber node to the PoseVis graph with input output topic connections",
+    "build_source_stream_runner": "build a SourceStreamRunner pipeline from PoseVisConfig and SourceStreamRunnerConfig before running it"
+  },
+  "facebookresearch_labgraph/docs/performance/load_test.py": {
+    "run_load_test": "run the labgraph load test graph with default 30 second duration and dynamic size config",
+    "run_load_test_many_dynamic_sizes": "run the load test across 21 dynamic sizes from 8 bytes to 8 megabytes using --many-dynamic-sizes",
+    "review_LoadTestPublisher": "review the LoadTestPublisher node that publishes LoadTestSample messages with counter and dynamic numpy data",
+    "review_LoadTestSubscriber": "review the LoadTestSubscriber node that receives samples and logs latency, sample rate, and dropped samples",
+    "review_LoadTestConfig": "review the LoadTestConfig class with duration, dynamic_size, and auto-generated HDF5 output file path"
+  },
+  "facebookresearch_labgraph/extensions/graphviz_support/graphviz_support/generate_graphviz/generate_graphviz.py": {
+    "generate_graphviz_visualization": "generate a graphviz visualization of a LabGraph computational graph topology and save to output file",
+    "identify_graph_nodes": "identify graph methods from a LabGraph instance and return them as individual GraphVizNode objects",
+    "connect_to_upstream": "connect graph nodes to their upstream nodes using stream topic path mappings",
+    "build_graph": "build a graphviz Digraph visualization with nodes and edges and render to file",
+    "in_out_edge_mapper": "map downstream node input edges to upstream node output edges using stream topic paths"
+  },
+  "facebookresearch_labgraph/extensions/graphviz_support/graphviz_support/graphviz_node/graphviz_node.py": {
+    "create_graphviz_node": "create a GraphVizNode instance with a given name for use in a graph visualization",
+    "set_node_grouping": "set the grouping property on a GraphVizNode to logically group methods sharing the same process",
+    "set_node_in_edge": "set the in_edge property on a GraphVizNode to subscribe to a topic path and track in_edges",
+    "set_node_upstream": "set the upstream_node property on a GraphVizNode to link it to an adjacent upstream node",
+    "review_graphviz_node_class": "review the GraphVizNode class and its properties for name, grouping, in_edge, out_edges, and upstream_node"
+  },
+  "facebookresearch_labgraph/extensions/graphviz_support/graphviz_support/tests/test_lg_graphviz_api.py": {
+    "test_identify_graph_nodes": "test the identify_graph_nodes function to extract all nodes from a labgraph Graph instance",
+    "test_out_edge_node_mapper": "test the out_edge_node_mapper function to map output edges to their corresponding graph nodes",
+    "test_in_out_edge_mapper": "test the in_out_edge_mapper function to map input streams to their upstream output streams",
+    "test_connect_to_upstream": "test the connect_to_upstream function to link graph nodes with their upstream stream connections",
+    "test_build_graph": "test the build_graph function to generate a Graphviz SVG visualization of a labgraph graph"
+  },
+  "facebookresearch_labgraph/extensions/graphviz_support/graphviz_support/tests/demo_graph/amplifier.py": {
+    "create_AmplifierConfig": "create an AmplifierConfig with an out_in_ratio float value for the Amplifier node",
+    "build_Amplifier_node": "build a labgraph Amplifier node that subscribes to input messages and publishes amplified output",
+    "run_Amplifier_amplify": "run the Amplifier amplify method to multiply input message data by the configured out_in_ratio",
+    "test_Amplifier_output": "test the Amplifier output method to verify it multiplies input by the out_in_ratio config value",
+    "review_Amplifier_AMPLIFIER_INPUT": "review the Amplifier AMPLIFIER_INPUT and AMPLIFIER_OUTPUT topic definitions for RandomMessage types"
+  },
+  "facebookresearch_labgraph/extensions/graphviz_support/graphviz_support/tests/demo_graph/attenuator.py": {
+    "create_attenuator_node": "create a labgraph Attenuator node that applies signal attenuation to incoming RandomMessage data",
+    "create_attenuator_config": "create an AttenuatorConfig with a float attenuation value for the Attenuator node",
+    "run_attenuate_method": "run the async attenuate method to process RandomMessage data through the attenuation formula",
+    "test_output_method": "test the output method to verify attenuation calculation using pow(10, attenuation/20) formula",
+    "review_attenuator_class": "review the Attenuator class subscriber-publisher pattern for labgraph node signal processing"
+  },
+  "facebookresearch_labgraph/extensions/graphviz_support/graphviz_support/tests/demo_graph/demo.py": {
+    "create_Demo_graph": "create a labgraph Demo graph that wires NoiseGenerator, RollingAverager, Amplifier, Attenuator, and Sink modules together",
+    "run_Demo_setup": "run the Demo setup method to configure all modules with their respective config objects",
+    "review_Demo_connections": "review the Demo connections method that defines data flow between module inputs and outputs",
+    "summarize_Demo_process_modules": "summarize the Demo process_modules method that returns all modules in the graph as a tuple",
+    "test_Demo_class": "test the Demo class to verify it correctly extends lg.Graph and configures its five processing modules"
+  },
+  "facebookresearch_labgraph/extensions/graphviz_support/graphviz_support/tests/demo_graph/sink.py": {
+    "create_SinkState": "create a SinkState class with optional numpy array fields data_1, data_2, and data_3",
+    "create_Sink_node": "create a Sink labgraph Node with three input topics for RandomMessage",
+    "review_Sink_got_message": "review the Sink got_message subscriber method that stores message data into state",
+    "review_Sink_do_something": "review the Sink do_something main method that raises NormalTermination",
+    "summarize_Sink_subscribers": "summarize the three Sink subscriber methods that route RandomMessage data to state fields"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/priority_queue.py": {
+    "create_priority_queue": "create a PriorityQueue instance with a custom max_size and optional tie_breaker generator",
+    "push_to_priority_queue": "push data with an integer priority into the PriorityQueue using the push method",
+    "pop_from_priority_queue": "pop the highest priority item from the PriorityQueue using the pop method",
+    "handle_empty_exception": "handle the Empty exception when popping from an empty PriorityQueue",
+    "handle_full_exception": "handle the Full exception when pushing to a PriorityQueue at max capacity"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/protocol.py": {
+    "create_Trial": "create a Trial with a Condition and list of Stimulus objects for an experiment",
+    "end_Trial": "end a Trial to finalize all associated stimuli and record results",
+    "create_ExperimentState": "create an ExperimentState dataclass to track trial results across an experiment",
+    "create_BaseCondition": "create a BaseCondition enum with EXPERIMENT_START for marking experiment lifecycle events",
+    "create_ReadyMessage": "create a ReadyMessage labgraph message with a boolean ready flag for node signaling"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/protocol_node.py": {
+    "create_protocol_node": "create a ProtocolNode that manages experiment trials using a priority queue and labgraph topics",
+    "setup_protocol_node": "setup a ProtocolNode by importing a module and initializing the priority queue and experiment state",
+    "publish_current_trial": "publish the current trial on CURRENT_TRIAL_TOPIC as a timestamped CurrentTrialMessage when ready",
+    "subscribe_ready_topic": "subscribe to READY_TOPIC messages to set the node ready state for publishing new trials",
+    "end_trial_subscriber": "subscribe to END_TRIAL_TOPIC to record trial results and mark the node ready for the next trial"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/qt_node.py": {
+    "create_QtNodeConfig": "create a QtNodeConfig with a module name and optional window size tuple or FULLSCREEN",
+    "run_QtNode": "run the QtNode to start a PyQt5 application with a MainWindow and graphics scene",
+    "subscribe_QtNode_current_trial": "subscribe to the CURRENT_TRIAL_TOPIC to receive and store incoming trial messages",
+    "publish_QtNode_ready": "publish a ReadyMessage on the READY_TOPIC when the Qt application is initialized and ready",
+    "publish_QtNode_end_trial": "publish an EndTrialMessage on the END_TRIAL_TOPIC when all QtStimulus items in the current trial are completed"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/qt_stimulus.py": {
+    "create_qtstimulus_widget": "create a QtStimulus dataclass with a qt_type string and optional callbacks list for Qt widgets",
+    "setup_qtstimulus_in_view": "setup a QtStimulus instance into a QGraphicsView to create and configure the widget or player",
+    "enable_qtstimulus_display": "enable a QtStimulus to show its widget and play its media player",
+    "disable_qtstimulus_display": "disable a QtStimulus to hide its widget and pause its media player",
+    "teardown_qtstimulus_resources": "teardown a QtStimulus to clean up its widget, player, and parent references"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/qt_widgets.py": {
+    "create_MainWindow": "create a PyQt5 graphics view window that dispatches keypress events to registered callback functions",
+    "create_QGraphicsItemWithHover": "create a graphics item mixin that triggers callbacks on hover enter and leave events",
+    "create_QObjectWithMediaContent": "create a QObject mixin that converts local file paths into QMediaContent objects",
+    "create_QLabelWithPictureFromFilename": "create a QLabel widget that loads and scales a picture from a filename to fit the label",
+    "create_QGraphicsRectItemWithHover": "create a graphics rectangle item that supports hover enter and leave callback events"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/stimulus.py": {
+    "create_stimulus_subclass": "create a subclass of Stimulus that implements enable and disable methods for a custom stimulus",
+    "start_stimulus_with_timing": "start a Stimulus instance with a delayed start time and specified duration using threading timers",
+    "end_stimulus_early": "end a running Stimulus early by cancelling all timers and calling disable and teardown",
+    "add_trial_result_to_stimulus": "add a trial result to the stimulus trial results dictionary with a name and value",
+    "create_end_timer_for_stimulus": "create or replace an end timer on a Stimulus to schedule its termination at a specific time"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/examples/__main__.py": {
+    "run_protocol_ui_graph": "run a labgraph protocol UI graph with a named protocol module and optional fullscreen mode",
+    "create_uigraph_config": "create a UIGraphConfig with a protocol name and window size for labgraph protocol examples",
+    "setup_uigraph_connections": "setup a UIGraph connecting ProtocolNode and QtNode topics for current trial, end trial, and ready signals",
+    "configure_protocol_node": "configure a ProtocolNode with a module path string for running labgraph protocol examples",
+    "run_parallel_runner": "run a labgraph ParallelRunner with a configured UIGraph to execute protocol and Qt nodes in parallel"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/examples/audio_player.py": {
+    "run_get_trials": "run get_trials to yield a list of audio playback Trial objects",
+    "create_audio_condition": "create an AudioCondition subclass with a PLAY_AUDIO constant for audio trial conditions",
+    "build_audio_stimulus": "build an audio Stimulus using get_audio_player with duration, pkg, and filename parameters",
+    "review_get_trials": "review the get_trials function that yields Trial objects for audio playback experiments",
+    "summarize_audio_condition": "summarize the AudioCondition class and its PLAY_AUDIO condition constant"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/examples/display_image.py": {
+    "create_image_condition": "create an ImageCondition subclass of Condition with a SHOW_IMAGE constant for image display trials",
+    "get_stimulus_image_widget": "create a Stimulus using get_image_widget with duration, width, height, pkg, and filename parameters",
+    "get_trials_display_image": "yield a list of Trial objects pairing ImageCondition.SHOW_IMAGE with an image stimulus",
+    "review_image_condition_class": "review the ImageCondition class that extends Condition with a SHOW_IMAGE attribute",
+    "refactor_get_trials": "refactor the get_trials function to yield additional Trial objects with different conditions"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/examples/labels_buttons.py": {
+    "create_DummyCondition": "create a DummyCondition subclass of Condition with a DUMMY_TRIAL class attribute for labgraph protocol trials",
+    "create_get_stimulus": "create a stimulus that returns a label widget with custom duration and text using get_label_widget",
+    "create_get_clicky_stimulus": "create a stimulus that returns a clickable button widget with custom text using get_button_w_callback",
+    "create_get_trials": "create a generator that yields Trial objects combining label and button stimuli for a labgraph experiment",
+    "review_get_trials": "review the get_trials generator that yields Trial lists with label and button stimulus combinations"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/examples/random_targets.py": {
+    "create_TargetCondition": "create a TargetCondition subclass of Condition with LABEL and TARGET constants for trial types",
+    "run_get_trials": "run the get_trials generator to yield a sequence of LABEL and TARGET Trial objects",
+    "create_get_stimulus": "create a Stimulus label widget with custom duration, text, and screen position",
+    "create_get_target": "create a Stimulus mouse target with a specified hover time requirement",
+    "review_TargetCondition": "review the TargetCondition class and its LABEL and TARGET condition constants"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/examples/text_box_w_feedback.py": {
+    "create_textbox_condition_class": "create a Condition subclass with TEXT_BOX and FEEDBACK constants for trial types",
+    "build_textbox_stimulus": "build a stimulus that displays a text box with an instruction and 5 second duration",
+    "create_feedback_stimulus": "create a feedback stimulus that shows RIGHT in green or WRONG in red based on trial results",
+    "run_get_trials_generator": "run the get_trials generator to yield text box trials followed by feedback trials three times",
+    "review_get_feedback_stimulus": "review the _get_feedback_stimulus function that checks previous trial results and returns a colored label widget"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/examples/video_player.py": {
+    "run_get_trials": "run get_trials to yield a list of video playback trials for the experiment protocol",
+    "create_video_condition": "create a VideoCondition subclass with a PLAY_VIDEO constant for video stimulus conditions",
+    "build_get_stimulus": "build a Stimulus object using get_video_player with a duration, package, and filename",
+    "review_get_video_player": "review the get_video_player helper to create a video stimulus with configurable duration and file",
+    "test_get_trials": "test the get_trials function to verify it yields Trial objects with video stimuli"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/helpers/audio_player.py": {
+    "create_audio_player_stimulus": "create a QtStimulus audio player that plays an audio file for a specified duration",
+    "build_audio_player_with_package": "build an audio player stimulus that resolves an audio file path from a named package",
+    "test_get_audio_player": "test the get_audio_player function to verify it returns a QtStimulus with correct duration and callbacks",
+    "review_get_audio_player": "review the get_audio_player function and its use of Deferred callbacks for media content",
+    "summarize_get_audio_player": "summarize the get_audio_player function which creates a QMediaPlayerWithMediaContent stimulus for audio playback"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/helpers/button_w_callback.py": {
+    "create_qt_pushbutton_with_callback": "create a QPushButton stimulus with custom text and a click callback function",
+    "build_button_stimulus_at_position": "build a QPushButton stimulus positioned at specific coordinates with a click handler",
+    "create_button_with_start_duration": "create a QPushButton stimulus that starts at a given time and runs for a set duration",
+    "test_get_button_w_callback": "test the get_button_w_callback function to verify it returns a QtStimulus with correct callbacks",
+    "review_get_button_w_callback": "review the get_button_w_callback function and its use of Deferred end callback on click"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/helpers/common.py": {
+    "get_random_position": "compute a random (x, y) position within a window given window and element sizes",
+    "get_absolute_position": "compute the absolute screen coordinates from a QtStimulus anchor and relative offset",
+    "get_position": "return a Deferred random position or the given position for stimulus element placement",
+    "get_filepath": "resolve a file path from a package resource or return the filename directly",
+    "RANDOM_sentinel": "use the RANDOM sentinel to request a random position for a stimulus element"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/helpers/image_widget.py": {
+    "create_image_widget": "create a QtStimulus image widget with a specified filename, duration, width, and height",
+    "create_image_widget_with_position": "create an image widget with a fixed position instead of random placement on screen",
+    "create_image_widget_with_pkg": "create an image widget that loads a filename from a specific package path",
+    "create_image_widget_delayed": "create an image widget that starts displaying after a specified delay time",
+    "review_get_image_widget": "review the get_image_widget function to understand how it configures QtStimulus callbacks for image display"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/helpers/label_widget.py": {
+    "create_qt_label_stimulus": "create a QtStimulus QLabel widget with custom text, duration, and position for visual stimuli",
+    "build_label_with_callbacks": "build a label widget stimulus with additional callbacks like setFont or setStyleSheet",
+    "test_get_label_widget": "test the get_label_widget function returns a QtStimulus with correct qt_type and callbacks",
+    "review_get_label_widget": "review the get_label_widget function to understand how it constructs QLabel callbacks",
+    "refactor_label_widget_position": "refactor get_label_widget to support custom default positions instead of RANDOM"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/helpers/mouse_target.py": {
+    "create_mouse_target": "create a QtStimulus mouse hover target rectangle with configurable position, size, and color",
+    "create_mouse_target_with_hover_callbacks": "create a mouse target that triggers create_end_timer on hover enter and cancel_end_timer on hover leave",
+    "create_random_position_mouse_target": "create a mouse target with a randomly generated position within the stimulus window bounds",
+    "create_custom_duration_mouse_target": "create a mouse target stimulus with a custom display duration instead of the default INFINITE",
+    "create_styled_mouse_target": "create a mouse target with custom brush color, pen color, width, height, and hover delay time"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/helpers/text_box_w_result.py": {
+    "create_text_box_with_result": "create a text input stimulus with an instruction label and result callback for labgraph trials",
+    "build_qt_textbox_stimulus": "build a Qt QLineEdit stimulus that captures user text input and stores it as a trial result",
+    "create_label_and_textbox_pair": "create a paired label widget and text input box stimulus for labgraph protocol experiments",
+    "test_get_text_box_w_result": "test the get_text_box_w_result function to verify it returns a list of label and textbox stimuli",
+    "review_get_text_box_w_result": "review the get_text_box_w_result function and its use of Deferred callbacks for position and result handling"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_protocol/labgraph_protocol/helpers/video_player.py": {
+    "create_video_player_stimulus": "create a QtStimulus video player with a given duration and video filename",
+    "create_video_player_with_position": "create a video player stimulus positioned at specific coordinates on screen",
+    "create_video_player_from_package": "create a video player stimulus loading a video file from a Python package",
+    "create_video_player_with_delay": "create a video player stimulus that starts playing after a specified delay",
+    "create_video_player_random_position": "create a video player stimulus with a randomly positioned video on screen"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/application/application.py": {
+    "create_application_config": "create an ApplicationConfig with title, width, height, and external timer settings for a PyQt window",
+    "run_application_plot": "run the Application node to launch a PyQt window with configured plots and an optional external timer",
+    "setup_application_window": "setup a pyqt GraphicsWindow with a title, dimensions, and add plot items in a vertical layout",
+    "update_application_plots": "update all plot nodes in the Application by calling their update methods on each timer tick",
+    "cleanup_application": "cleanup and quit the PyQt application by calling the cleanup method on the Application node"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/examples/application_example.py": {
+    "run_labgraph_viz_demo": "run the Demo graph to start a labgraph visualization with bar and line plots",
+    "create_generator_node": "create a Generator node that publishes random bar plot and line plot messages at a configurable sample rate",
+    "configure_bar_plot": "configure a BarPlot with x_field and y_field mapping to message attributes using BarPlotConfig",
+    "configure_line_plot": "configure a LinePlot in append mode with a window size using LinePlotConfig and Mode.APPEND",
+    "setup_application_with_plots": "setup an Application with a title, dimensions, and external timer then add LinePlot and BarPlot to it"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/examples/bar_plot_example.py": {
+    "run_bar_plot_demo": "run the Demo graph to display a live bar plot with random data using labgraph",
+    "create_generator_node": "create a Generator node that publishes RandomMessage with domain and range numpy arrays at a configurable sample rate",
+    "configure_bar_plot": "configure a BarPlot with BarPlotConfig specifying x_field, y_field, and pyqtgraph style labels for title and axes",
+    "create_window_node": "create a Window node that builds a pyqtgraph GraphicsWindow and displays a BarPlot widget",
+    "setup_simple_viz_group": "setup a SimpleVizGroup that connects input messages to a BarPlot and embeds it in a Window node"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/examples/heat_map_example.py": {
+    "run_heatmap_demo": "run the Demo graph to display a live heatmap and colormap visualization window",
+    "create_generator_node": "create a Generator node that yields random HeatMapMessage data at a configured sample rate",
+    "configure_heatmap_plot": "configure a HeatMap plot with data, channel_map, shape, and external_timer settings",
+    "build_viz_group": "build a SimpleVizGroup that connects HeatMap and ColorMap plots to a shared input topic",
+    "run_labgraph_graph": "run a labgraph Graph with lg.run to start the Demo visualization pipeline"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/examples/line_plot_example.py": {
+    "run_line_plot_demo": "run the Demo graph to visualize live noise data with LinePlot in a pyqtgraph window",
+    "create_generator_node": "create a Generator node that publishes AppendMessage and UpdateMessage topics at a configurable sample rate",
+    "configure_lineplot_append_mode": "configure a LinePlot with Mode.APPEND and window_size to display a scrolling window of appended samples",
+    "configure_lineplot_update_mode": "configure a LinePlot with Mode.UPDATE to overwrite existing data on each incoming message",
+    "build_window_node": "build a Window node that creates a pyqtgraph GraphicsWindow and adds LinePlot items to it"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/examples/scatter_plot_example.py": {
+    "run_scatter_plot_demo": "run the Demo graph to display a scatter plot with random red and green data points",
+    "create_generator_node": "create a Generator node that publishes RandomMessage with random x and y coordinates at a configurable sample rate",
+    "configure_scatter_plot": "configure a ScatterPlot with x and y fields, axis labels, and named styles for red and green data series",
+    "build_window_node": "build a Window node that creates a pyqtgraph GraphicsWindow and displays a ScatterPlot inside it",
+    "setup_viz_group": "setup a SimpleVizGroup that connects input messages to a ScatterPlot and wires it to a Window node"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/examples/spatial_plot_example.py": {
+    "run_spatial_plot_demo": "run the labgraph Demo graph to visualize random data with a SpatialPlot in a PyQt window",
+    "create_generator_node": "create a labgraph Generator node that publishes RandomMessage data at a configurable sample rate",
+    "configure_spatial_plot": "configure a SpatialPlot with SpatialPlotConfig including color maps, labels, and point positions",
+    "build_window_node": "build a labgraph Window node that creates a PyQt GraphicsWindow and displays a SpatialPlot",
+    "setup_viz_group": "setup a SimpleVizGroup that connects input messages to a SpatialPlot and displays them in a Window"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/plots/bar_plot.py": {
+    "create_barplotdata": "create a BarPlotData dataclass instance with x, x0, x1, height, and width fields",
+    "configure_barplotconfig": "configure a BarPlotConfig with x_field, y_field, style dict, and external_timer settings",
+    "build_barplot": "build a BarPlot node that subscribes to a topic and visualizes data as a bar plot",
+    "update_barplot": "update the bar plot display by calling update to refresh BarGraphItem options with new data",
+    "stop_barplot": "stop the bar plot node timer by calling the stop method on the BarPlot instance"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/plots/color_map.py": {
+    "build_colormap_plot": "build a pyqtgraph PlotItem with a vertical color bar using a matplotlib colormap",
+    "create_colormap_node": "create a labgraph ColorMap node to subscribe to a topic and visualize data as a color bar",
+    "configure_colormap_shape": "configure a ColorMapConfig with data field, shape tuple, and colormap name for visualization",
+    "review_scale_axis": "review the ColorMapGraphicsObject scale_axis method that sets the right axis scale based on data max",
+    "test_got_message": "test the ColorMap got_message subscriber that reshapes 1D data into a 2D colormap using channel_map"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/plots/heat_map.py": {
+    "build_heatmap_node": "build a labgraph HeatMap node that subscribes to a topic and visualizes data as a pyqtgraph heatmap",
+    "create_heatmap_config": "create a HeatMapConfig with data field, channel_map, shape tuple, color_map name, and external_timer settings",
+    "update_heatmap_colormap": "update the heatmap color map using a matplotlib colormap converted to a Qt lookup table",
+    "style_heatmap_plot": "style the heatmap plot by calling ImageItem methods with keyword args or positional args from config",
+    "stop_heatmap_timer": "stop the heatmap node's internal QTimer to halt periodic image updates"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/plots/line_plot.py": {
+    "build_lineplot_node": "build a labgraph LinePlot node that subscribes to a topic and visualizes data as a scrolling line plot",
+    "create_lineplotconfig": "create a LinePlotConfig with x_field, y_field, mode, window_size, and curve_style settings for the plot",
+    "create_curvestyle": "create a CurveStyle dataclass with pen color and name to define the visual appearance of a curve",
+    "review_lineplot_got_message": "review the LinePlot got_message method that receives messages and updates curves based on config mode",
+    "test_lineplot_update_curve": "test the LinePlot _update_curve method to verify APPEND mode appends data and UPDATE mode overwrites it"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/plots/scatter_plot.py": {
+    "build_scatter_plot_node": "build a labgraph ScatterPlot node that renders scatter plots from incoming messages using pyqtgraph",
+    "create_scatter_plot_style": "create a ScatterPlotStyle dataclass to configure pen, symbol, symbolBrush, and symbolSize for plot points",
+    "configure_scatter_plot_config": "configure a ScatterPlotConfig with x_field, y_field, labels, styles, axis ranges, and alpha settings",
+    "review_scatter_plot_update": "review the ScatterPlot update method that clears and sets data on each subplot from state data",
+    "test_scatter_plot_got_message": "test the ScatterPlot got_message subscriber that extracts x and y field values from incoming messages"
+  },
+  "facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/plots/spatial_plot.py": {
+    "build_spatial_plot": "build a SpatialPlot node that creates a pyqtgraph PlotItem with labeled axes and scatter subplots",
+    "create_spatial_plot_config": "create a SpatialPlotConfig with a color map, axis labels, and named point datasets",
+    "review_spatial_plot_style": "review the SpatialPlotStyle dataclass to configure pen, symbol, and symbolSize for scatter points",
+    "test_got_message": "test the SpatialPlot got_message subscriber that maps incoming values to colored brushes for subplots",
+    "refactor_spatial_plot_update": "refactor the SpatialPlot update method to safely refresh scatter brushes on each timer tick"
+  },
+  "facebookresearch_labgraph/extensions/psychopy_example/psychopy_example/__main__.py": {
+    "run_psychopy_example_graph": "run the PsychopyExample labgraph graph using lg.run to start the Controller and Display modules",
+    "create_labgraph_graph_subclass": "create a labgraph Graph subclass like PsychopyExample with Controller and Display module attributes",
+    "define_process_modules": "define the process_modules method to return a sequence of lg.Module instances for the graph",
+    "define_graph_connections": "define the connections method to wire Controller and Display topics together as tuples",
+    "configure_graph_logging": "configure the logging method to return a dict mapping topic names to lg.Topic instances"
+  },
+  "facebookresearch_labgraph/extensions/psychopy_example/psychopy_example/components.py": {
+    "create_controller_node": "create a labgraph Controller node that subscribes to keys and publishes display messages in round robin order",
+    "create_display_node": "create a labgraph Display node that sets up psychopy stims and flips frames in the main thread",
+    "create_keys_message": "create a KeysMessage labgraph message class that carries a list of display key strings",
+    "create_display_message": "create a DisplayMessage labgraph message class that carries a single display key string",
+    "setup_psychopy_stims": "setup psychopy ImageStim and TextStim objects mapped to keys for display in a labgraph node"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_monitor/labgraph_monitor.py": {
+    "init_LabgraphMonitor": "create a LabgraphMonitor instance with an lg.Graph object to monitor graph topology",
+    "stream_graph_topology": "run the stream_graph_topology method to stream graph topology via WebSockets",
+    "stream_real_time_graph": "run the stream_real_time_graph method to stream graph topology and real-time messages via WebSockets",
+    "generate_graph_topology": "build a graph topology from an lg.Graph using generate_graph_topology for WebSocket streaming",
+    "run_topology": "run the run_topology function to serve generated graph topology data over WebSockets"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_monitor/examples/labgraph_monitor_example.py": {
+    "run_labgraph_monitor_demo": "run the Demo graph with ParallelRunner to start the LabGraph monitor WebSocket server",
+    "create_labgraph_graph": "create a LabGraph graph subclass with WebSocket server, serializer, and signal processing nodes",
+    "configure_graph_nodes": "configure graph nodes like NoiseGenerator, Amplifier, Attenuator, and RollingAverager in setup",
+    "define_graph_connections": "define data flow connections between graph nodes using the connections method",
+    "set_graph_topology": "call set_graph_topology to populate the graph with serialized topology and sub-pub mapping"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_monitor/generate_lg_monitor/generate_lg_monitor.py": {
+    "identify_graph_nodes": "identify all nodes and their input output edges from a labgraph computational graph instance",
+    "serialize_graph": "serialize a labgraph computational graph topology into a dictionary with nodes and upstream connections",
+    "connect_to_upstream": "connect graph nodes to their upstream nodes by mapping streams and published topic paths",
+    "sub_pub_grouping_map": "match subscriber nodes with their publisher nodes and return a topic path grouping dictionary",
+    "set_graph_topology": "serialize graph topology and set it on the graph instance for LabGraph Monitor WebSocket messaging"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_monitor/lg_monitor_node/lg_monitor_message.py": {
+    "create_LabgraphMonitorMessage": "create a LabgraphMonitorMessage instance from an lg.Message subclass to represent a Labgraph message",
+    "get_message_name": "get the name of a LabgraphMonitorMessage by calling the name method on the instance",
+    "serialize_LabgraphMonitorMessage": "serialize a LabgraphMonitorMessage into a SerializedMessage dict with name and fields from type annotations",
+    "review_LabgraphMonitorMessage_class": "review the LabgraphMonitorMessage class and its serialize method for message field extraction logic",
+    "refactor_LabgraphMonitorMessage_serialize": "refactor the LabgraphMonitorMessage serialize method to include field default values in the output"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_monitor/lg_monitor_node/lg_monitor_node.py": {
+    "create_labgraph_monitor_node": "create a LabgraphMonitorNode instance with a given name for graph monitoring",
+    "set_node_grouping": "set the grouping property on a LabgraphMonitorNode to logically group methods sharing the same process",
+    "set_node_in_edge": "set the in_edge property on a LabgraphMonitorNode to subscribe to a topic path",
+    "set_upstream_node": "set the upstream_node property on a LabgraphMonitorNode to link an adjacent data source node",
+    "set_upstream_message": "set the upstream_message property on a LabgraphMonitorNode to store a received LabgraphMonitorMessage"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_monitor/server/lg_monitor_server.py": {
+    "run_topology": "run a websocket server graph that streams a labgraph topology to connected clients",
+    "review_WSSenderNode": "review the WSSenderNode inner class that wires a Serializer and WSAPIServerNode together",
+    "create_WSAPIServerConfig": "create a WSAPIServerConfig with app_id, ip, port, api_version, and sample_rate settings",
+    "configure_SerializerConfig": "configure a SerializerConfig with serialized graph data, sample rate, stream name, and stream id",
+    "summarize_run_topology": "summarize the run_topology function that creates and runs a labgraph WebSocket monitoring server"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_monitor/server/serializer_node.py": {
+    "create_serializer_config": "create a SerializerConfig with data, sample_rate, stream_name, and stream_id fields for labgraph node configuration",
+    "create_data_state": "create a DataState class with four optional dictionary slots for storing serialized message data",
+    "build_serializer_node": "build a Serializer labgraph Node that subscribes to four RandomMessage topics and publishes WSStreamMessage outputs",
+    "review_get_grouping": "review the Serializer get_grouping method that matches subscriber topics with their upstream grouping keys",
+    "test_source_publisher": "test the Serializer async source publisher that yields WSStreamMessage samples at a configurable sample rate"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_monitor/tests/test_lg_monitor_api.py": {
+    "test_identify_upstream_message": "test the identify_upstream_message function to find the upstream message type for a given topic path",
+    "test_identify_graph_nodes": "test the identify_graph_nodes function to extract all nodes from a labgraph computational graph",
+    "test_out_edge_node_mapper": "test the out_edge_node_mapper function to map published topic paths to their publisher nodes",
+    "test_in_out_edge_mapper": "test the in_out_edge_mapper function to map downstream input edges to upstream output edges",
+    "test_serialize_graph": "test the serialize_graph function to serialize a labgraph topology into a dictionary with nodes and groupings"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_yaml_parser/yamlify.py": {
+    "convert_python_to_yaml": "convert a LabGraph Python file to YAML format using the yamlify function",
+    "parse_labgraph_units": "parse LabGraph unit classes from Python source code using LabGraphUnitsParser",
+    "load_python_file": "load a Python file's source code as a string using PythonFileLoader",
+    "save_labgraph_model": "save a LabGraphUnitsModel to a YAML file using the save method",
+    "serialize_to_yaml": "serialize a dictionary object to a YAML file using YamlSerializer"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_yaml_parser/_parser/base_parser.py": {
+    "review_BaseParser": "review the python BaseParser abstract class and its parse method signature",
+    "refactor_BaseParser": "refactor the python BaseParser to add additional abstract methods or type hints",
+    "summarize_BaseParser": "summarize the python BaseParser abstract base class and its intended usage pattern"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_yaml_parser/_parser/lg_units_parser.py": {
+    "parse_labgraph_units_from_python_code": "parse a Python source string containing LabGraph unit classes and extract their structure into LabGraphUnitsModel objects",
+    "visit_classdef_for_labgraph_builtin_units": "visit AST ClassDef nodes to detect and extract LabGraph builtin unit subclasses like Node, Group, Graph, Message, Config, and State",
+    "construct_complex_type_from_ast_node": "recursively construct a dot-separated type string from a typed_ast AST node representing a class member or method annotation",
+    "extract_publishers_and_subscribers_from_decorators": "extract publisher and subscriber decorator arguments from LabGraph unit methods to map data flow inputs and outputs",
+    "parse_connections_method_for_groups_and_graphs": "parse the connections method body in LabGraph Group or Graph classes to build a key-value dictionary of unit connections"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_yaml_parser/loader/base_loader.py": {
+    "review_BaseLoader": "review the BaseLoader abstract class and its load_from_file abstract static method signature",
+    "create_subclass_BaseLoader": "create a subclass of BaseLoader that implements the load_from_file abstract static method"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_yaml_parser/loader/python_file_loader.py": {
+    "load_python_file_content": "load the content of a Python file as a string using PythonFileLoader.load_from_file",
+    "read_py_file": "read a .py file and return its contents as a string via PythonFileLoader",
+    "validate_and_load_py": "validate a file exists and is a .py file then load its content",
+    "review_PythonFileLoader": "review the PythonFileLoader class and its load_from_file static method",
+    "summarize_PythonFileLoader": "summarize the PythonFileLoader class which loads .py file contents as strings"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_yaml_parser/model/base_model.py": {
+    "review_BASEMODEL": "review the python BaseModel abstract class and its save method signature",
+    "summarize_BASEMODEL": "summarize the python BaseModel abstract base class for model data storage",
+    "create_SUBCLASS_BASEMODEL": "create a subclass of BaseModel that implements the abstract save method",
+    "refactor_BASEMODEL_SAVE": "refactor the BaseModel save method to support additional serialization formats",
+    "test_BASEMODEL_SUBCLASS": "test a concrete subclass of BaseModel that implements the save method"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_yaml_parser/model/lg_unit_model.py": {
+    "create_labgraph_units_model": "create a LabGraphUnitsModel instance with a name and base unit type",
+    "get_model_name": "get the name property of a LabGraphUnitsModel instance",
+    "get_model_base": "get the base unit type of a LabGraphUnitsModel instance",
+    "get_model_members": "get the members dictionary of a LabGraphUnitsModel instance",
+    "save_model_to_yaml": "save a LabGraphUnitsModel to a YAML file using the save method"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_yaml_parser/serializer/yaml_serializer.py": {
+    "serialize_dict_to_yaml": "serialize a dictionary object to a YAML file in the yaml_outputs directory",
+    "create_yaml_serializer": "create a YamlSerializer instance to serialize model dictionaries into YAML format",
+    "dump_yaml_with_base_serializer": "use the YamlSerializer class to dump a dict as YAML with unsorted keys",
+    "review_yaml_serializer_class": "review the YamlSerializer class and its serialize method for YAML serialization logic",
+    "refactor_yaml_serializer_output_dir": "refactor the YamlSerializer serialize method to accept a configurable output directory path"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_yaml_parser/tests/test_lg_yaml_api.py": {
+    "load_python_file": "use PythonFileLoader to load Python source code from a file path",
+    "parse_labgraph_units": "use LabGraphUnitsParser to parse LabGraph unit definitions from Python source code",
+    "test_loader_error_handling": "test that PythonFileLoader raises PythonFileLoaderError for missing or wrong file types",
+    "parse_message_config_state_units": "parse LabGraph Message, Config, and State units and verify their members and base class",
+    "parse_node_group_graph_units": "parse LabGraph Node, Group, and Graph units and verify their members and methods"
+  },
+  "facebookresearch_labgraph/extensions/yaml_support/labgraph_yaml_parser/tests/tests_code/test_lg_unit_group.py": {
+    "create_labgraph_group_class": "create a labgraph Group subclass with OUTPUT topic, config, and child node declarations",
+    "define_group_connections": "define the connections method in a labgraph Group to wire child node inputs and outputs",
+    "setup_group_nodes": "implement the setup method in a labgraph Group to initialize NODE_1 and NODE_2 child nodes",
+    "review_MyGroup_class": "review the MyGroup labgraph Group class that declares two MyNode children and an OUTPUT topic",
+    "test_MyGroup_connections": "test the MyGroup connections method to verify child node wiring returns correct lg.Connections"
+  },
+  "facebookresearch_labgraph/labgraph/_cthulhu/clock.py": {
+    "create_experiment_clock": "create an ExperimentClock instance to get the current simulation time via get_time",
+    "start_clock_controller": "create a ClockController and call start with a start_time to begin the simulation clock",
+    "set_clock_time": "use ClockController set_time to set the current time and optionally start running the clock",
+    "tick_clock_forward": "use ClockController tick to advance the simulation clock forward by a specified increment",
+    "set_realtime_factor": "use ClockController set_realtime_factor to adjust the clock speed while preserving paused or running state"
+  },
+  "facebookresearch_labgraph/labgraph/_cthulhu/cthulhu.py": {
+    "create_consumer_with_callback": "create a Consumer that wraps a Cthulhu StreamConsumer with a Labgraph message callback",
+    "create_producer_for_stream": "create a Producer that wraps a Cthulhu StreamProducer to emit Labgraph messages",
+    "register_stream_with_message_type": "register a named stream with a Labgraph message type in the Cthulhu stream registry",
+    "get_stream_by_name": "get an existing StreamInterface from the Cthulhu stream registry by its name",
+    "format_performance_summary": "format a PerformanceSummary object into a human-readable string with runtime and drop stats"
+  },
+  "facebookresearch_labgraph/labgraph/_cthulhu/tests/test_clock.py": {
+    "test_manual_busy_tick": "test the ClockController tick method to manually advance experiment clock time by increments",
+    "test_regular_clock_time": "test the ExperimentClock get_time method returns system time when clock is started normally",
+    "test_clock_with_realtime_factor": "test the ClockController set_realtime_factor method to speed up experiment clock relative to system time",
+    "create_clock_controller": "create a ClockController instance to pause and manually control experiment clock time",
+    "create_experiment_clock": "create an ExperimentClock instance to read the current experiment time from the clock manager"
+  },
+  "facebookresearch_labgraph/labgraph/_cthulhu/tests/test_cthulhu.py": {
+    "test_producer_consumer": "test the Labgraph Cthulhu Producer and Consumer wrappers to publish and subscribe to messages on a registered stream",
+    "test_complex_graph": "test the Labgraph Cthulhu wrappers to stream messages through a multi-producer multi-consumer graph with transformation",
+    "run_register_stream": "run register_stream to create a named stream interface for a custom Message subclass",
+    "run_producer_consumer": "run Producer and Consumer context managers to publish and receive typed messages on a registered stream",
+    "run_produce_message": "run produce_message on a Producer instance to publish a typed message to the stream"
+  },
+  "facebookresearch_labgraph/labgraph/devices/protocols/lsl/lsl_poller_node.py": {
+    "create_lsl_poller_config": "create an LSLPollerConfig with a custom stream type and poll time for labgraph",
+    "build_lsl_poller_node": "build an LSLPollerNode that resolves an LSL stream and creates a StreamInlet in setup",
+    "run_lsl_subscriber": "run the async lsl_subscriber publisher loop to pull samples and yield LSLMessages",
+    "review_lsl_poller_node_setup": "review the LSLPollerNode setup method to resolve streams by type and create an inlet",
+    "summarize_lsl_poller_node": "summarize the LSLPollerNode class that polls LSL streams and publishes samples as LSLMessages"
+  },
+  "facebookresearch_labgraph/labgraph/devices/protocols/lsl/lsl_sender_node.py": {
+    "create_LSLSenderConfig": "create an LSLSenderConfig with stream_name, stream_type, n_channels, unique_identifier, and sample_rate fields",
+    "setup_LSLSenderNode": "setup an LSLSenderNode that creates a StreamInfo and StreamOutlet using the config parameters",
+    "publish_LSLMessage": "publish LSLMessage data samples to an LSL stream outlet via the lsl_publisher subscriber method",
+    "review_LSLSenderNode": "review the LSLSenderNode class that forwards LabGraph topic messages to an LSL stream outlet",
+    "refactor_lsl_publisher": "refactor the lsl_publisher async method to handle sample pushing with configurable POLL_TIME intervals"
+  },
+  "facebookresearch_labgraph/labgraph/devices/protocols/lsl/tests/test_lsl_node.py": {
+    "test_lsl_poller_node": "test the LSLPollerNode by running a graph that polls LSL streams and writes received samples to a file",
+    "test_lsl_sender_node": "test the LSLSenderNode by running a graph that sends LSLMessage samples to an LSL stream outlet",
+    "test_lsl_send_and_poll": "test a full LSL send and poll pipeline using ParallelRunner with MySource, LSLSenderNode, LSLPollerNode, and MySink",
+    "create_lsl_sink_node": "create a MySink Node subclass that subscribes to LSLMessage topics and writes sample data to an output file",
+    "create_lsl_source_node": "create a MySource Node subclass that publishes LSLMessage samples as an async publisher with configurable termination"
+  },
+  "facebookresearch_labgraph/labgraph/events/event_generator.py": {
+    "create_deferred_message": "create a DeferredMessage that lazily builds a Message with auto-injected timestamps on access",
+    "build_event_dataclass": "build an Event dataclass with a DeferredMessage, topic, delay, and optional duration fields",
+    "create_event_graph": "create an EventGraph from a start event and add subsequent events at start or end boundaries",
+    "add_event_at_end": "add an event to the EventGraph heap scheduled after the previous event's duration ends",
+    "implement_base_event_generator": "implement a BaseEventGenerator subclass with generate_events and set_topics abstract methods"
+  },
+  "facebookresearch_labgraph/labgraph/events/event_generator_node.py": {
+    "create_event_generator_node": "create a subclass of BaseEventGeneratorNode that publishes timed events to Labgraph topics",
+    "setup_generator_on_node": "call setup_generator on a BaseEventGeneratorNode to attach a BaseEventGenerator instance",
+    "generate_events_from_node": "call generate_events on a BaseEventGeneratorNode to get an EventPublishingHeap of scheduled events",
+    "implement_publish_events": "implement the abstract publish_events async method on a BaseEventGeneratorNode subclass to publish timed events",
+    "review_metaclass_topic_filtering": "review how BaseEventGeneratorNodeMeta filters out WaitEndMessage topics and populates published_topics metadata"
+  },
+  "facebookresearch_labgraph/labgraph/events/tests/test_event_generator.py": {
+    "test_deferred_message_init": "test that DeferredMessage stores message type, args, and kwargs without building the message yet",
+    "test_deferred_message_build_regular": "test that DeferredMessage.build_message constructs a regular Message instance from stored args and kwargs",
+    "test_deferred_message_build_timestamped": "test that DeferredMessage.build_message constructs a TimestampedMessage with the current time as the first arg",
+    "test_event_init": "test that Event wraps a DeferredMessage with a Topic and default delay and duration of zero",
+    "test_event_graph_accumulated_time": "test that EventGraph manages events in a heap ordered by accumulated time with parent-child relationships"
+  },
+  "facebookresearch_labgraph/labgraph/events/tests/test_event_generator_node.py": {
+    "test_BaseEventGeneratorNode_metadata": "test that get_method_metadata extracts published topics from a BaseEventGeneratorNode publish method",
+    "test_BaseEventGeneratorNode_init": "test that BaseEventGeneratorNode captures start time on initialization using mocked time",
+    "test_BaseEventGeneratorNode_elapsed": "test that _time_elapsed_since_start returns the correct elapsed time since node creation",
+    "test_BaseEventGeneratorNode_setup_generator": "test that setup_generator attaches a BaseEventGenerator and generate_events returns its heap",
+    "test_BaseEventGeneratorNode_publish": "test that calling publish_events on a BaseEventGeneratorNode raises NotImplementedError"
+  },
+  "facebookresearch_labgraph/labgraph/examples/graph_w_logging.py": {
+    "create_random_float_generator_node": "create a labgraph Node that publishes random float messages to a typed topic",
+    "create_demo_graph_with_logging": "create a labgraph Graph that logs node output to an h5 file via named topics",
+    "run_graph_with_parallel_runner": "run a labgraph Graph using ParallelRunner with LoggerConfig to record data to disk",
+    "define_labgraph_topic": "define a labgraph Topic with a typed message class for inter-node communication",
+    "publish_async_messages": "publish async messages from a labgraph Node using the publisher decorator and NormalTermination"
+  },
+  "facebookresearch_labgraph/labgraph/examples/rate.py": {
+    "create_Rate_instance": "create a Rate object with a specified hz frequency for loop timing control",
+    "run_Rate_sleep": "run the async Rate sleep method to pause execution at a fixed frequency in a loop",
+    "test_Rate_remaining": "test the Rate remaining method to check time left before the next sleep cycle",
+    "refactor_Rate_sleep": "refactor the Rate sleep method to handle time jumping forward and backward edge cases",
+    "review_Rate_class": "review the Rate class for async loop timing with ROS-inspired rate control behavior"
+  },
+  "facebookresearch_labgraph/labgraph/examples/simple_viz.py": {
+    "run_Demo_graph": "run the Demo graph that generates random noise, averages it, and displays a real-time bar plot",
+    "create_NoiseGenerator_node": "create a NoiseGenerator node that publishes random noise data to a single output topic at a configured sample rate",
+    "create_RollingAverager_node": "create a RollingAverager node that averages incoming messages over a configurable time window",
+    "create_AveragedNoise_group": "create an AveragedNoise group that combines a NoiseGenerator and RollingAverager into a single reusable component",
+    "create_Plot_node": "create a Plot node that subscribes to data messages and renders a real-time matplotlib bar graph"
+  },
+  "facebookresearch_labgraph/labgraph/examples/simple_viz_fixed_rate.py": {
+    "run_fixed_rate_viz_demo": "run the labgraph demo graph that generates noise and displays a real-time matplotlib bar graph",
+    "create_noise_generator_node": "create a labgraph node that publishes random noise data at a fixed sample rate using Rate",
+    "create_rolling_averager_node": "create a labgraph transformer node that averages incoming messages over a configurable time window",
+    "create_averaged_noise_group": "create a labgraph group that connects a NoiseGenerator to a RollingAverager and exposes averaged output",
+    "create_plot_node": "create a labgraph node with a main method that renders a real-time matplotlib bar graph from incoming data"
+  },
+  "facebookresearch_labgraph/labgraph/examples/simple_viz_zmq.py": {
+    "run_labgraph_zmq_demo": "run the Demo graph that streams ZMQ data and displays a real-time matplotlib bar chart",
+    "create_rolling_averager_node": "create a RollingAverager node that averages incoming RandomMessage data over a configurable time window",
+    "create_zmq_deserializer_node": "create a ZMQDeserializer node that converts raw ZMQMessage data into RandomMessage objects",
+    "create_averaged_noise_group": "create an AveragedNoise group combining ZMQPollerNode, ZMQDeserializer, and RollingAverager nodes",
+    "create_plot_node": "create a Plot node that renders a real-time matplotlib bar graph from streaming RandomMessage data"
+  },
+  "facebookresearch_labgraph/labgraph/examples/simulation.py": {
+    "run_simulation_demo": "run the labgraph simulation demo that generates and plots daubechies wavelet cycles in real time",
+    "create_simulation_generator_node": "create a labgraph node that generates SimulationMessage outputs with rotating daubechies wavelet data at a configurable sample rate",
+    "create_simulation_plot_node": "create a labgraph node that subscribes to SimulationMessage and displays real-time matplotlib line plots of the data",
+    "create_simulation_function_cycles": "create simulation cycles including sine, square, daubechies wavelet, and hemodynamic response function waveforms using SimulationFunction",
+    "create_labgraph_demo_graph": "create a labgraph Demo graph that connects a SimulationGenerator node to a Plot node with configurable sample rate and refresh rate"
+  },
+  "facebookresearch_labgraph/labgraph/examples/zmq_source.py": {
+    "run_zmq_publisher": "run the zmq PUB socket that streams random numpy arrays to tcp://*:5555 on topic randomstream",
+    "run_stream_samples": "run the stream_samples function to continuously publish random feature vectors at 10 Hz via zmq",
+    "create_zmq_pub_socket": "create a zmq PUB socket bound to tcp://*:5555 for publishing random data streams",
+    "refactor_stream_samples": "refactor stream_samples to support configurable sample rate, feature count, endpoint, and topic",
+    "review_zmq_source": "review the zmq_source module and its stream_samples function for zmq PUB socket usage patterns"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/config.py": {
+    "build_config_from_args": "build a Config object from command-line arguments using the Config.fromargs class method",
+    "create_config_subclass": "create a subclass of Config with message fields to define module configuration options",
+    "parse_config_args": "parse command-line arguments into a Config instance with typed fields like int, str, float, bool, or Enum",
+    "review_config_fromargs": "review the Config.fromargs method that builds a Config from argparse command-line arguments",
+    "refactor_add_field_to_parser": "refactor the _add_field_to_argument_parser function to support additional Python types for config fields"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/cpp_node.py": {
+    "create_CPPNodeConfig": "create a CPPNodeConfig with a cpp_class type and optional args list for C++ node configuration",
+    "create_CPPNode": "create a CPPNode instance with a config containing a cpp_class to auto-register C++ topics and streams",
+    "run_CPPNode": "run the CPPNode async run method to execute the underlying C++ node in a background executor thread",
+    "setup_CPPNode": "setup the CPPNode by instantiating the C++ class with config args and calling the C++ setup method",
+    "configure_CPPNode": "configure an existing CPPNode with new args while preserving the original cpp_class reference"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/graph.py": {
+    "create_graph_subclass": "create a subclass of Graph that defines config, publishers, and subscribers for a computational graph",
+    "validate_graph_topics": "validate that all topics in a Graph have both publishers and subscribers using _validate_topics",
+    "override_logging_topics": "override the logging method in a Graph subclass to return a dict of Topics to log",
+    "customize_process_modules": "override process_modules in a Graph subclass to distribute modules across multiple processes",
+    "get_streams_by_logging_id": "get a mapping of logging IDs to Streams for all topics returned by the logging method"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/group.py": {
+    "create_group_class": "create a Labgraph Group subclass that defines Node and Group children as annotated class attributes",
+    "override_connections_method": "override the connections method in a Group subclass to link publisher topics to subscriber topics",
+    "build_group_with_cpp_nodes": "build a Group that instantiates CPPNode children from labgraph_cpp Node types declared as class annotations",
+    "review_group_stream_validation": "review the Group class _get_streams method that uses union-find to merge connected topics into shared streams",
+    "refactor_group_child_validation": "refactor the Group _is_valid_child_name method to add or remove special names excluded from child registration"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/method.py": {
+    "create_publisher_method": "create a Labgraph Node method decorated with @publisher to publish messages to a Topic",
+    "create_subscriber_method": "create a Labgraph Node method decorated with @subscriber to receive messages from a Topic",
+    "create_transformer_method": "create a Labgraph Node method decorated with both @publisher and @subscriber to transform messages",
+    "create_background_method": "create a Labgraph Node method decorated with @background to run in a background event loop",
+    "create_main_method": "create a Labgraph Node method decorated with @main to run in the main thread on startup"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/module.py": {
+    "create_module_subclass": "create a python module subclass of Module with Topic class variables and a custom State type",
+    "configure_module": "configure a Labgraph Module instance by calling configure with a Config object",
+    "get_publishers": "get all Publisher methods from a Module instance using the publishers property",
+    "get_subscribers": "get all Subscriber methods from a Module instance using the subscribers property",
+    "validate_streams": "validate that each stream in a Module has only one publisher by calling _validate_streams"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/node_test_harness.py": {
+    "test_labgraph_node_with_harness": "test a Labgraph node by running an async function on it using run_with_harness",
+    "run_async_function_to_completion": "run an async function or async generator to completion and collect results",
+    "create_node_test_harness": "create a NodeTestHarness context manager to set up and clean up a Labgraph node",
+    "collect_async_generator_results": "collect results from an async generator with an optional max number of results",
+    "review_NodeTestHarness_get_node": "review the NodeTestHarness class and its get_node context manager for node lifecycle management"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/topic.py": {
+    "create_topic_instance": "create a Topic instance with a Message subclass type for use in a labgraph Module",
+    "assign_topic_name": "assign a name to a Topic instance using the _assign_name method",
+    "get_topic_name": "get the name of a Topic instance via its name property",
+    "review_topic_class": "review the Topic class and understand how topics reference streams in a labgraph graph",
+    "summarize_topic_message_type": "summarize the Topic class message_type attribute and how it stores the Message subclass"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/tests/test_config.py": {
+    "test_config_from_args": "test building a labgraph Config from command-line arguments using Config.fromargs()",
+    "test_node_config": "test providing a Config object to a labgraph Node using node.configure()",
+    "test_node_no_config": "test that accessing config on an unconfigured Node raises a LabgraphError",
+    "test_config_asdict": "test converting a labgraph Config to a dictionary using config.asdict()",
+    "test_config_enum_fields": "test Config fields typed with IntEnum and str Enum subclasses"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/tests/test_graph.py": {
+    "test_incomplete_graph": "test that a Labgraph Graph with unused topics logs a warning about missing publishers or subscribers",
+    "test_complete_graph": "test that a Labgraph Graph with all topics having publishers and subscribers constructs without warnings",
+    "build_graph_with_connections": "build a Labgraph Graph subclass that defines nodes and wires them together using the connections method",
+    "create_node_with_publisher_subscriber": "create a Labgraph Node with Topic fields decorated with publisher and subscriber to transform messages",
+    "create_group_with_nested_connections": "create a Labgraph Group that nests child groups and nodes and defines connections between their topics"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/tests/test_group.py": {
+    "test_group_streams": "test the Group __streams__ property to verify topic path connectivity across nested groups",
+    "test_group_descendants": "test the Group __descendants__ property to verify all nested children and nodes are discovered",
+    "test_group_children": "test the Group __children__ property to verify direct child modules are correctly listed",
+    "test_group_methods": "test the Group __methods__ property to verify all node methods and their topic paths",
+    "test_group_topics": "test the Group __topics__ property to verify all topics are accessible by name"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/tests/test_harness.py": {
+    "test_NodeTestHarness_get_node": "test NodeTestHarness.get_node to create a labgraph node with config and state in a context manager",
+    "test_run_async_publisher": "test run_async to execute an async publisher method and collect yielded messages from a labgraph node",
+    "test_run_async_subscriber": "test run_async to execute an async subscriber method with message arguments on a labgraph node",
+    "test_run_with_harness": "test run_with_harness to run a labgraph node method with config and state in a single call",
+    "test_max_num_results": "test max_num_results parameter to limit the number of yielded messages from a labgraph node publisher"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/tests/test_module.py": {
+    "test_module_topics": "test that a labgraph Module subclass correctly registers Topic attributes with expected message types",
+    "create_message_subclass": "create a Message subclass with typed fields like int or float for use with labgraph Topics",
+    "create_module_subclass": "create a Module subclass that declares Topic attributes bound to specific Message types",
+    "review_module_topic_registration": "review how a labgraph Module registers its Topic attributes in the __topics__ dictionary",
+    "test_parametrized_topic_validation": "test parametrized validation that each Topic on a Module has the correct name and message type"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/tests/test_node.py": {
+    "test_node_methods": "test that a labgraph Node has the expected Publisher, Subscriber, and Transformer NodeMethod objects registered",
+    "test_invalid_published_topic": "test that publishing to a topic not set as a class variable raises a LabgraphError",
+    "test_invalid_subscribed_topic": "test that subscribing to a topic not set as a class variable raises a LabgraphError",
+    "test_bad_publishers_node": "test that a Node with multiple publishers on the same topic raises a LabgraphError",
+    "review_MyNode": "review the MyNode class example showing subscriber, publisher, and transformer method decorators on a labgraph Node"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/tests/test_publisher.py": {
+    "test_duplicate_publisher": "test that applying the publisher decorator twice on the same topic raises a LabgraphError",
+    "test_multiple_publisher": "test that applying the publisher decorator on different topics creates a valid async publisher",
+    "review_test_duplicate_publisher": "review the test_duplicate_publisher function to verify LabgraphError is raised for duplicate topic decorators",
+    "review_test_multiple_publisher": "review the test_multiple_publisher function to verify multiple topic decorators work correctly",
+    "refactor_test_publisher": "refactor the test_publisher test functions to add additional edge cases for the publisher decorator"
+  },
+  "facebookresearch_labgraph/labgraph/graphs/tests/test_subscriber.py": {
+    "test_duplicate_subscriber": "test that applying multiple @subscriber decorators to a method raises a LabgraphError",
+    "test_subscriber_signature": "test that a subscriber method with an invalid signature raises a LabgraphError",
+    "review_subscriber_decorator": "review the @subscriber decorator validation logic for duplicate decorators and signature checks",
+    "review_MyMessage": "review the MyMessage class that extends Message with an int_field type annotation",
+    "summarize_test_subscriber": "summarize the test cases that validate @subscriber decorator error handling on Node methods"
+  },
+  "facebookresearch_labgraph/labgraph/loggers/logger.py": {
+    "create_logger_config": "create a LoggerConfig with custom output_directory, buffer_size, and flush_period for labgraph logging",
+    "implement_logger_write": "implement the abstract Logger write method to persist messages_by_logging_id to disk",
+    "run_logger_background_loop": "run the Logger background loop that periodically flushes buffered messages based on buffer_size or flush_period",
+    "buffer_and_flush_messages": "buffer messages by logging_id then flush the buffer to get a dict of messages grouped by logging_id",
+    "setup_logger_consumers": "setup a Logger to subscribe to Cthulhu streams and create Consumer callbacks for each logging_id"
+  },
+  "facebookresearch_labgraph/labgraph/loggers/hdf5/logger.py": {
+    "build_HDF5Logger": "build a python module that uses HDF5Logger to write labgraph messages to an HDF5 file",
+    "create_HDF5Logger_setup": "create an HDF5Logger instance and call setup to open a new HDF5 file for writing",
+    "test_HDF5Logger_write": "test the HDF5Logger write method to persist messages by logging ID into HDF5 datasets",
+    "refactor_get_numpy_type_for_field_type": "refactor get_numpy_type_for_field_type to support additional labgraph field types for numpy conversion",
+    "review_HDF5Logger_cleanup": "review the HDF5Logger cleanup method to ensure the HDF5 file is properly closed and flushed"
+  },
+  "facebookresearch_labgraph/labgraph/loggers/hdf5/reader.py": {
+    "read_hdf5_logs": "create an HDF5Reader instance with a file path and log types dict to read HDF5 log data",
+    "parse_hdf5_messages": "access the logs property on an HDF5Reader to parse and retrieve deserialized Message objects from the HDF5 file",
+    "deserialize_field_value": "call get_deserialized_value with a raw value and FieldType to convert HDF5 raw data to the correct Python type",
+    "review_HDF5Reader_class": "review the HDF5Reader class and its lazy parsing approach that defers file I/O until the logs property is accessed",
+    "summarize_get_deserialized_value": "summarize the get_deserialized_value function which handles BoolType, BytesType, FloatType, IntEnumType, IntType, NumpyType, and StrType deserialization"
+  },
+  "facebookresearch_labgraph/labgraph/loggers/hdf5/tests/test_logger.py": {
+    "test_hdf5_logger_write_read": "test that messages written to an HDF5 file can be read back and verified",
+    "test_hdf5_logger_field_types": "test the HDF5 logger handles StrType, StrDynamicType, and DynamicType field types correctly",
+    "test_hdf5_logger_serializable_dynamic": "test the HDF5 logger preprocesses and postprocesses SERIALIZABLE_DYNAMIC_TYPES like ListType and DataclassType",
+    "test_hdf5_logger_string_encoding": "test that string fields are decoded using the correct encoding from StrType or StrDynamicType",
+    "test_hdf5_logger_dynamic_bytes": "test that DynamicType fields excluding StrDynamicType are compared as raw bytes"
+  },
+  "facebookresearch_labgraph/labgraph/loggers/hdf5/tests/test_reader.py": {
+    "test_hdf5_reader": "test the HDF5Reader class by reading back logged messages from an HDF5 file and verifying field values",
+    "run_hdf5_reader_test": "run the test_hdf5_reader function to validate HDF5Reader correctly parses all message field types from an HDF5 file",
+    "review_hdf5reader_class": "review the HDF5Reader class and its logs property that lazily parses HDF5 files into typed Message lists",
+    "review_get_deserialized_value": "review the get_deserialized_value function that converts raw HDF5 values into Python types based on field type",
+    "refactor_hdf5_reader_test": "refactor the test_hdf5_reader function to add assertions for additional field types or edge cases"
+  },
+  "facebookresearch_labgraph/labgraph/loggers/hdf5/tests/test_utils.py": {
+    "write_logs_to_hdf5": "write synthetic labgraph messages with all field types to an HDF5 file using a Logger subclass",
+    "create_MyMessage": "create a MyMessage instance with int, str, float, bool, bytes, enum, list, dict, and dataclass fields",
+    "test_MyIntEnum": "test the MyIntEnum class with integer-backed enum values A equals 1 and B equals 2",
+    "test_MyStrEnum": "test the MyStrEnum class with string-backed enum values A and B",
+    "review_MyDataclass": "review the MyDataclass dataclass with sub_int_field and sub_str_field for nested message serialization"
+  },
+  "facebookresearch_labgraph/labgraph/loggers/tests/test_loggers.py": {
+    "test_NaiveLogger": "test the NaiveLogger class to verify it receives all messages sent via Cthulhu producers",
+    "run_test_logger": "run the test_logger function that validates message delivery across multiple streams and message types",
+    "create_NaiveLogger_subclass": "create a custom Logger subclass like NaiveLogger that buffers messages by logging ID in setup and write",
+    "review_test_logger": "review the test_logger function to understand how Cthulhu producers and LoggerConfig are wired together",
+    "refactor_write_messages": "refactor the async _write_messages helper to control message production rate and stop the logger"
+  },
+  "facebookresearch_labgraph/labgraph/messages/message.py": {
+    "create_Message_subclass": "create a Labgraph Message subclass with typed fields for shared memory IPC communication",
+    "create_TimestampedMessage_subclass": "create a TimestampedMessage subclass with a timestamp field for time-aligned data",
+    "serialize_message_asdict": "serialize a Labgraph Message instance to an OrderedDict using the asdict method",
+    "deserialize_message_fromdict": "deserialize a Labgraph Message from a dictionary using the fromdict class method",
+    "replace_message_fields": "create a new Labgraph Message with selected fields replaced using the replace method"
+  },
+  "facebookresearch_labgraph/labgraph/messages/types.py": {
+    "get_field_type": "get a FieldType instance for a Python type like int, float, str, bool, bytes, numpy.ndarray, Enum, List, Dict, or dataclass",
+    "get_packed_value": "pack a Python value into bytes using a FieldType for serialization with struct or pickle",
+    "get_unpacked_value": "unpack bytes back into a Python value using a FieldType with struct or pickle deserialization",
+    "get_len_bytes": "encode the length of an object as a zero-padded 10-byte ASCII length prefix",
+    "get_next_bytes": "read a length-prefixed chunk of bytes from a byte stream and return the raw bytes and updated cursor position"
+  },
+  "facebookresearch_labgraph/labgraph/messages/tests/test_message.py": {
+    "create_message_with_primitive_fields": "create a labgraph Message subclass with int, str, float, bool, and bytes fields",
+    "test_message_asdict_serialization": "test serializing a labgraph Message instance to a dictionary using the asdict method",
+    "test_message_fromdict_deserialization": "test deserializing a labgraph Message from a dictionary using the fromdict class method",
+    "test_message_with_numpy_fields": "test creating a labgraph Message with static or dynamic numpy array fields",
+    "test_message_post_init_validation": "test adding __post_init__ validation logic to a labgraph Message subclass"
+  },
+  "facebookresearch_labgraph/labgraph/runners/aligner.py": {
+    "create_timestamp_aligner": "create a TimestampAligner with a specified lag to buffer and align messages from multiple streams",
+    "register_callback_on_aligner": "register a callback function on a TimestampAligner for a specific stream id",
+    "push_message_to_aligner": "push a timestamped message into the aligner buffer using LabgraphCallbackParams",
+    "get_aligned_messages": "retrieve and deliver aligned messages from the buffer after the lag period has elapsed",
+    "run_aligner_loop": "run the TimestampAligner async loop to continuously deliver aligned messages until termination"
+  },
+  "facebookresearch_labgraph/labgraph/runners/cthulhu.py": {
+    "create_module_streams": "create Cthulhu streams for a labgraph Module by registering each stream with its message type",
+    "review_create_module_streams": "review the create_module_streams function to understand how it registers Cthulhu streams from a Module",
+    "summarize_create_module_streams": "summarize the create_module_streams function which iterates over module streams and registers them with Cthulhu",
+    "test_create_module_streams": "test the create_module_streams function with a Module that has streams with and without message types",
+    "refactor_create_module_streams": "refactor the create_module_streams function to handle stream registration errors more gracefully"
+  },
+  "facebookresearch_labgraph/labgraph/runners/launch.py": {
+    "run_module_in_subprocess": "run a python module in a subprocess with arguments using the launch function",
+    "run_module_in_pex_env": "run a python module inside a PEX environment using the launch function",
+    "run_module_with_kwargs": "run a python module in a subprocess passing Popen kwargs like stdout or cwd",
+    "review_launch_function": "review the launch function to understand how it handles PEX vs normal environments",
+    "summarize_launch_subprocess": "summarize how the launch function constructs subprocess commands for different platforms"
+  },
+  "facebookresearch_labgraph/labgraph/runners/local_runner.py": {
+    "run_labgraph_module": "run a Labgraph module using LocalRunner by passing a Module instance and optional RunnerOptions",
+    "setup_cthulhu_streams": "set up Cthulhu producers and consumers for a Labgraph module's published and subscribed topic streams",
+    "create_local_runner": "create a LocalRunner instance with a Module and optional RunnerOptions to execute foreground and background processing",
+    "run_setup_cleanup": "run the setup and cleanup lifecycle methods on all descendant modules in the correct parent-first order",
+    "bootstrap_cpp_nodes": "bootstrap C++ nodes in a Labgraph module by mapping topic paths to Cthulhu stream IDs"
+  },
+  "facebookresearch_labgraph/labgraph/runners/parallel_runner.py": {
+    "run_labgraph_graph": "run a Labgraph graph by passing a graph type class to the run entry point function",
+    "create_parallel_runner": "create a ParallelRunner instance with a Graph and optional RunnerOptions to manage multi-process execution",
+    "run_parallel_runner": "run the ParallelRunner to start all graph modules as separate processes with inter-process streams",
+    "review_parallel_runner_start_processes": "review the ParallelRunner _start_processes method that serializes config, state, and streams to temp files for subprocesses",
+    "review_parallel_runner_get_class_module": "review the ParallelRunner _get_class_module method that resolves the real module name for classes defined in __main__"
+  },
+  "facebookresearch_labgraph/labgraph/runners/process_manager.py": {
+    "run_ProcessManager": "run a ProcessManager with a list of ProcessInfo objects to start and monitor multiple child processes",
+    "create_ProcessInfo": "create a ProcessInfo dataclass with a module name and optional args to describe a child process",
+    "manage_ProcessManagerState": "manage shared ProcessManagerState across processes using an mp.Manager for thread-safe phase and exception tracking",
+    "handle_ProcessManagerException": "handle a ProcessManagerException to inspect failures, exceptions, and phases of crashed or hanged processes",
+    "use_ProcessPhase": "use the ProcessPhase enum to track process lifecycle states from STARTING through TERMINATED"
+  },
+  "facebookresearch_labgraph/labgraph/runners/profiling.py": {
+    "check_should_profile": "check if the PROFILE environment variable is set to enable profiling",
+    "write_profiling_results": "write yappi profiling results for a labgraph module to a .pstat file on disk",
+    "review_should_profile": "review the should_profile function that checks for the PROFILE environment variable",
+    "review_write_profiling_results": "review the write_profiling_results function that saves yappi stats to a .pstat file",
+    "summarize_profiling_module": "summarize the profiling module that provides yappi-based profiling utilities for labgraph modules"
+  },
+  "facebookresearch_labgraph/labgraph/runners/runner.py": {
+    "create_bootstrap_info": "create a BootstrapInfo dataclass with process name, manager state, and stream IDs by topic path",
+    "create_runner_options": "create a RunnerOptions dataclass with optional aligner, bootstrap info, logger type, and logger config",
+    "subclass_runner": "subclass the abstract Runner class implementing __init__ with a Module and optional RunnerOptions",
+    "implement_runner_run": "implement the abstract run method in a Runner subclass to execute the module graph",
+    "configure_logger_type": "configure a RunnerOptions instance with a custom Logger type and LoggerConfig for the runner"
+  },
+  "facebookresearch_labgraph/labgraph/runners/util.py": {
+    "get_module_class_by_name": "get a Labgraph Module class from a python module and class name string",
+    "get_module_class_with_rename_fallback": "get a Labgraph Module class by checking renamed classes when the direct attribute is missing",
+    "get_module_class_validate_subclass": "get a Labgraph Module class and validate it is a subclass of Module",
+    "review_get_module_class": "review the get_module_class function that dynamically imports and validates Labgraph Module subclasses",
+    "summarize_get_module_class": "summarize the get_module_class function logic for dynamic class lookup with rename fallback"
+  },
+  "facebookresearch_labgraph/labgraph/runners/tests/test_aligner.py": {
+    "test_TIMESTAMP_ALIGNER_chronological_order": "test that TimestampAligner with large lag delivers messages in chronological order across streams",
+    "test_TIMESTAMP_ALIGNER_insufficient_lag": "test that TimestampAligner with small lag delivers messages out of chronological order",
+    "create_PARALLEL_RUNNER_with_aligner": "create a ParallelRunner with a TimestampAligner to order messages from multiple async publisher streams",
+    "build_NODE_with_publisher_subscriber": "build a Node with publisher and subscriber methods connected via Topics in a Graph",
+    "run_GRAPH_with_normal_termination": "run a Graph with ParallelRunner and stop it using NormalTermination after collecting results"
+  },
+  "facebookresearch_labgraph/labgraph/runners/tests/test_cpp.py": {
+    "run_MyMixedGraph": "run a labgraph Graph with C++ and Python nodes using ParallelRunner",
+    "test_test_cpp_graph": "test a mixed C++ and Python node graph and verify output files and HDF5 logs",
+    "create_MyPythonSink": "create a Python sink Node that writes received messages to a file and terminates",
+    "configure_CPPNodeConfig": "configure a C++ node with CPPNodeConfig args in a Graph setup method",
+    "review_MyMixedGraph_connections": "review the MyMixedGraph connections method that wires CPP_SOURCE to CPP_SINK and PYTHON_SINK"
+  },
+  "facebookresearch_labgraph/labgraph/runners/tests/test_exception.py": {
+    "test_process_manager_normal_shutdown": "test that multiple processes managed by ProcessManager terminate normally without errors",
+    "test_process_manager_crash_handling": "test that ProcessManager correctly detects and reports process crashes at any lifecycle phase",
+    "test_process_manager_exception_handling": "test that ProcessManager correctly detects and reports exceptions raised by managed processes",
+    "test_process_manager_hang_handling": "test that ProcessManager correctly detects and kills processes that hang at any phase",
+    "run_child_main_subprocess": "run the child_main click CLI to simulate a managed subprocess with a given shutdown behavior"
+  },
+  "facebookresearch_labgraph/labgraph/runners/tests/test_launch.py": {
+    "test_launch_function": "test the launch runner by spawning a subprocess that writes a random string to a temp file",
+    "run_launch_subprocess": "run a subprocess using the launch function with command-line arguments and wait for completion",
+    "create_temp_file_for_test": "create a temporary file using NamedTemporaryFile for use in subprocess launch testing",
+    "generate_random_string": "generate a random string of specified length using the random_string utility function",
+    "write_string_to_file": "write a string argument to a file specified as a command-line argument via the main entry point"
+  },
+  "facebookresearch_labgraph/labgraph/runners/tests/test_process_manager.py": {
+    "test_process_manager_normal_termination": "test the ProcessManager by running multiple processes that terminate normally through all phases",
+    "test_process_manager_crash_handling": "test the ProcessManager by running processes where one crashes at a specific phase",
+    "test_process_manager_exception_handling": "test the ProcessManager by running processes where one raises an exception at a specific phase",
+    "test_process_manager_hang_handling": "test the ProcessManager by running processes where one hangs and gets killed by the manager",
+    "run_proc_simulated_process": "run the proc function to simulate a managed process transitioning through STARTING, READY, RUNNING, STOPPING, and TERMINATED phases"
+  },
+  "facebookresearch_labgraph/labgraph/runners/tests/test_runner.py": {
+    "run_local_graph": "run a LocalRunner on a Graph with source, transform, and sink nodes connected via topics",
+    "run_parallel_graph": "run a ParallelRunner on a distributed Graph with PubGroup and SubGroup modules",
+    "test_background_main": "test that background and main decorated methods execute correctly on a Node",
+    "run_parallel_logging": "run a ParallelRunner and verify HDF5 logging output for graph topics",
+    "run_single_process_parallel": "run a ParallelRunner on a single-process Graph and verify message flow end to end"
+  },
+  "facebookresearch_labgraph/labgraph/simulations/function_generator.py": {
+    "create_FunctionChannelConfig": "create a FunctionChannelConfig dataclass with a shape tuple to configure generator channels",
+    "create_FunctionGeneratorMessage": "create a FunctionGeneratorMessage with a numpy ndarray data field for experiment samples",
+    "review_FunctionGenerator_set_channel_config": "review the FunctionGenerator set_channel_config method to configure data generation across channels",
+    "review_FunctionGenerator_next_sample": "review the FunctionGenerator abstract next_sample method that returns the next experiment sample",
+    "review_FunctionGenerator_next_n_samples": "review the FunctionGenerator next_n_samples method that returns a list of n experiment samples"
+  },
+  "facebookresearch_labgraph/labgraph/simulations/function_generator_node.py": {
+    "create_FunctionGeneratorNode": "create a FunctionGeneratorNode instance that generates samples to the graph based on user-specified functions",
+    "set_generator_on_FunctionGeneratorNode": "set a FunctionGenerator on a FunctionGeneratorNode to configure sample generation for the simulation graph",
+    "review_FunctionGeneratorNode_class": "review the FunctionGeneratorNode class that extends Node and uses ExperimentClock for time tracking in simulations",
+    "summarize_FunctionGeneratorNode_init": "summarize the FunctionGeneratorNode constructor that initializes an ExperimentClock for time-based sample generation",
+    "test_FunctionGeneratorNode_set_generator": "test the FunctionGeneratorNode set_generator method to verify a FunctionGenerator is properly assigned to the node"
+  },
+  "facebookresearch_labgraph/labgraph/tests/test_typecheck.py": {
+    "run_mypy_typecheck": "run mypy type-checking on the LabGraph source code using a config file",
+    "test_typecheck_function": "test the LabGraph codebase for type errors by invoking mypy in a subprocess",
+    "extract_and_typecheck_zip": "extract Python files from a typecheck source zip archive and run mypy on them",
+    "typecheck_installed_labgraph": "typecheck the installed LabGraph package location by globbing all Python files",
+    "review_test_typecheck": "review the test_typecheck function that validates LabGraph types via mypy subprocess execution"
+  },
+  "facebookresearch_labgraph/labgraph/util/logger.py": {
+    "get_logger_module": "get a configured logging.Logger instance for a given module name using get_logger",
+    "get_log_level_env": "get the current log level from the LOGLEVEL environment variable using get_log_level",
+    "create_logger_for_module": "create a logger for a specific module by calling get_logger with the module name",
+    "configure_logging_level": "configure the logging level via the LOGLEVEL environment variable before importing the logger module",
+    "review_logger_setup": "review the logger module's basicConfig and get_logger functions for proper log level handling"
+  },
+  "facebookresearch_labgraph/labgraph/util/min_heap.py": {
+    "create_minheap": "create a MinHeap instance to manage a priority queue of generic entries",
+    "push_entry_to_minheap": "push an entry onto the MinHeap using the push method to add items",
+    "pop_entry_from_minheap": "pop the smallest entry from the MinHeap using the pop method",
+    "access_minheap_by_index": "access a MinHeap entry by index using bracket notation and __getitem__",
+    "get_minheap_length": "get the number of entries in the MinHeap using len() and __len__"
+  },
+  "facebookresearch_labgraph/labgraph/util/random.py": {
+    "create_random_string": "create a random string of a given length using the random_string function",
+    "create_random_string_custom_chars": "create a random string with a custom character set using the random_string function",
+    "test_random_string_length": "test the random_string function generates strings of the correct length",
+    "test_random_string_charset": "test the random_string function only uses characters from the provided character set",
+    "refactor_random_string": "refactor the random_string function to use secrets module for cryptographic safety"
+  },
+  "facebookresearch_labgraph/labgraph/util/resource.py": {
+    "extract_resource_to_tempfile": "extract a package resource to a temporary file and return the file path",
+    "extract_pex_resource": "extract a resource from a pex zip package to a temporary file",
+    "get_resource_data": "get binary data from a package resource using pkgutil and write it to a temp file",
+    "review_get_resource_tempfile": "review the get_resource_tempfile function that handles both normal packages and pex archives",
+    "refactor_get_resource_tempfile": "refactor get_resource_tempfile to support additional archive formats beyond pex"
+  },
+  "facebookresearch_labgraph/labgraph/util/testing.py": {
+    "get_test_filename": "create a temporary test file with a random name and specified extension in the system temp directory",
+    "async_test": "decorate an async test function to run it in an asyncio event loop",
+    "local_test": "decorate a test function to skip it when running in the Sandcastle environment",
+    "get_free_port": "get an available free TCP port number by binding a socket to port zero",
+    "get_event_loop": "get the current asyncio event loop or create a new one if the existing loop is closed"
+  },
+  "facebookresearch_labgraph/labgraph/util/typing.py": {
+    "check_python_version_is_38_or_above": "check if the current Python interpreter version is greater than 3.8 using is_py38",
+    "check_generic_subclass_relationship": "check if a typing generic alias is a subclass of a given generic type using is_generic_subclass",
+    "inspect_typing_origin_on_py38": "inspect the origin of a generic alias type using typing.get_origin on Python 3.8+",
+    "inspect_typing_subclass_on_py37": "inspect the subclass relationship of a generic type using issubclass on Python 3.7 and below",
+    "refactor_typing_checks_for_version": "refactor the typing utility functions to remove Python 3.8 version checks once 3.6 is deprecated"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_client/api_message_constructor.py": {
+    "build_start_stream_request": "build a python module that constructs a serialized StartStreamRequest JSON message for a given target and stream ID",
+    "build_end_stream_request": "build a python module that constructs a serialized EndStreamRequest JSON message for a given stream ID",
+    "create_start_stream_with_app_id": "create a StartStreamRequest JSON message that includes an optional app_id for the specified data stream",
+    "test_get_start_stream_request": "test the get_start_stream_request function to verify it returns valid JSON with the correct target and stream ID",
+    "test_get_end_stream_request": "test the get_end_stream_request function to verify it returns valid JSON with the correct stream ID"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_client/ws_poller_node.py": {
+    "create_WSPollerConfig": "create a WSPollerConfig with app_id, ip, port, and api_version fields for websocket polling",
+    "connect_WSPollerNode": "connect a WSPollerNode to a websocket server using the configured ip and port",
+    "start_streaming_WSPollerNode": "start streaming data from a websocket connection by sending a start stream message",
+    "recv_WSPollerNode": "receive the next message from the websocket connection synchronously or asynchronously",
+    "ws_publisher_WSPollerNode": "run the ws_publisher async generator to continuously poll and yield WSMessage objects from websocket"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_client/ws_poller_stream_node.py": {
+    "create_STREAMWSPollerConfig": "create a STREAMWSPollerConfig with streams list, optional stream_ids, ip, port, and api_version fields",
+    "setup_STREAMWSPollerNode": "setup a STREAMWSPollerNode that validates streams and stream_ids match and auto-generates UUIDs if needed",
+    "start_streams_STREAMWSPollerNode": "start websocket streams on a STREAMWSPollerNode by sending start stream requests for each configured stream",
+    "end_streams_STREAMWSPollerNode": "end websocket streams on a STREAMWSPollerNode by sending end stream requests for each configured stream",
+    "get_stream_id_STREAMWSPollerNode": "get the stream_id for a given stream_name from a STREAMWSPollerNode's streams mapping"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_client/tests/test_ws_node_client.py": {
+    "test_ws_poller_node": "test that a WSPollerNode reads samples from a WebSocket and echoes them through a graph",
+    "create_MySink_node": "create a Node subclass that subscribes to WSMessage topics and writes data to a file",
+    "run_ws_poller_graph": "run a LocalRunner with a graph connecting a STREAMWSPollerNode source to a MySink node",
+    "configure_STREAMWSPollerNode": "configure a STREAMWSPollerNode with an app_id and list of WebSocket streams to poll",
+    "create_MySinkConfig": "create a Config subclass with an output_filename field for a sink node"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_server/ws_api_node_server.py": {
+    "create_WSAPIServerConfig": "create a WSAPIServerConfig with app_id, ip, port, api_version, and optional num_messages for termination",
+    "build_WSAPIServerNode": "build a WSAPIServerNode WebSocket API server node that subscribes to WSStreamMessage topics and forwards samples",
+    "test_create_batch_samples": "test the create_batch_samples method to generate a list of sample data with timestamps for a given batch size",
+    "review_termination_background": "review the termination_background async method that polls and raises NormalTermination after receiving num_messages messages",
+    "refactor_ws_server_publisher": "refactor the ws_server_publisher subscriber method to handle WSStreamMessage routing, sample batching, and connection error recovery"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_server/ws_node_server.py": {
+    "run_WSServerNode_main_loop": "run the WSServerNode main_loop to start a WebSocket server session and poll until shutdown",
+    "create_WSServerConfig": "create a WSServerConfig with app_id, ip, port, api_version, and enums fields for WebSocket server setup",
+    "setup_WSServerNode": "setup a WSServerNode by initializing ip, port, app_id, api_version, enums, stream, and shutdown from config",
+    "cleanup_WSServerNode": "cleanup a WSServerNode by setting the shutdown flag to true to stop the main loop",
+    "review_WSServerNode_class": "review the WSServerNode class and its main_loop, setup, and cleanup lifecycle methods"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_server/api/api_request.py": {
+    "parse_api_request": "parse a JSON websocket message into an APIRequest object with request id, stream id, and app id",
+    "validate_json_message": "validate that a JSON message contains the required api version and api request fields",
+    "update_stream_request": "update a base stream message with the request id and stream id from an APIRequest",
+    "check_labgraph_monitor": "check if an APIRequest stream name matches the LABGRAPH_MONITOR stream type",
+    "check_request_type": "check if an APIRequest is a start stream or end stream request type"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_server/api/ws_api_message_constructor.py": {
+    "build_start_stream_request": "build a LabGraph WS API start stream request message with a stream ID and request ID",
+    "build_start_stream_error": "build a LabGraph WS API error message for a non-existent stream with a request ID",
+    "build_end_stream_request": "build a LabGraph WS API end stream request message with a stream ID and request ID",
+    "build_sample_data_message": "build a sample data message from a numpy array and produced timestamp for streaming",
+    "review_ws_api_message_constructor": "review the ws_api_message_constructor module and its functions for building LabGraph WebSocket API messages"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_server/api/tests/test_ws_server_api.py": {
+    "test_get_start_stream_request": "test the get_start_stream_request function to build a LabGraph WS API start stream message",
+    "test_get_end_stream_request": "test the get_end_stream_request function to build a LabGraph WS API end stream message",
+    "test_api_request": "test the APIRequest class to parse a JSON WebSocket API request message",
+    "build_start_stream_request": "build a LabGraph WS API start stream request message with a stream ID and request ID",
+    "build_end_stream_request": "build a LabGraph WS API end stream request message with a stream ID and request ID"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_server/session/session.py": {
+    "send_samples_to_streams": "send samples to all active streams matching a given stream name via the Session websocket",
+    "add_stream_to_session": "add an ApiStreamDesc to the Session so it receives sample messages for its stream name",
+    "remove_stream_from_session": "remove an ApiStreamDesc from the Session and clean up its batch number tracking",
+    "get_streams_by_name": "get all ApiStreamDesc objects registered in the Session that match a given stream name",
+    "check_stream_name_active": "check whether a given stream name has any active streams registered in the Session"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_server/session/session_manager.py": {
+    "add_websocket_session": "create a new WebSocket session with an IP, port, and enums object and return its session ID",
+    "get_session": "retrieve a WebSocket session object by its session ID from the session manager",
+    "num_sessions": "get the current number of active WebSocket sessions managed by the session manager",
+    "clear_sessions": "stop all active WebSocket sessions and clear the session manager's session list",
+    "get_session_id": "generate the next unique session ID using an incrementing counter"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_server/session/ws_server.py": {
+    "run_ws_server_process": "run the WSServer process method to handle incoming websocket connections and stream requests",
+    "create_ws_server_instance": "create a WSServer instance with enums and configurable timeout and sleep pause settings",
+    "start_ws_stream_connection": "start a websocket stream connection by sending a start stream request message to the client",
+    "end_ws_stream_connection": "end a websocket stream connection by sending an end stream request message to the client",
+    "check_ws_stream_active": "check if a named stream is currently active in the WSServer streams dictionary"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_server/session/ws_session.py": {
+    "create_websocket_session": "create a WebSocketSession with an ip, port, session_id, and enums object",
+    "start_websocket_session": "start a WebSocketSession to launch a websocket server on the configured ip and port",
+    "stop_websocket_session": "stop a running WebSocketSession by halting the event loop and joining the thread",
+    "write_websocket_data": "write data to connected websocket clients via the async write method on WebSocketSession",
+    "review_websocket_session_class": "review the WebSocketSession class and its start, stop, and write methods"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_server/session/tests/test_ws_server_session.py": {
+    "test_session_manager_add_and_clear": "test adding and clearing WebSocket sessions via the SessionManager class",
+    "test_websocket_session_start_stop": "test starting and stopping a WebSocketSession on a given IP and port",
+    "test_ws_server_process_loop": "test the WSServer process handler by running it in an asyncio event loop",
+    "review_SessionManager_add_websocket_session": "review the SessionManager add_websocket_session method that creates and starts a new WebSocketSession",
+    "review_WebSocketSession_write": "review the WebSocketSession async write method that sends data via the WSServer"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_server/tests/test_server_local.py": {
+    "test_WSAPIServerNode_local": "test the WSAPIServerNode by running a local graph that sends mock stream messages",
+    "create_MySource_node": "create a MySource node that publishes WSStreamMessage samples to a WebSocket server topic",
+    "run_LocalRunner_graph": "run a LocalRunner with a graph connecting MySource to WSAPIServerNode for local testing",
+    "configure_WSAPIServerConfig": "configure a WSAPIServerConfig with app_id, ip, port, api_version, and sample_rate settings",
+    "review_MyWSSenderGraph_connections": "review the MyWSSenderGraph connections that wire MySource.TOPIC to WSAPIServerNode.topic"
+  },
+  "facebookresearch_labgraph/labgraph/websockets/ws_server/tests/test_ws_node_server.py": {
+    "test_WSAPIServerNode": "test the WSAPIServerNode by publishing a WSStreamMessage through the ws_server_publisher",
+    "create_WSAPIServerConfig": "create a WSAPIServerConfig with app_id, ip, port, api_version, num_messages, and enums",
+    "create_WSStreamMessage": "create a WSStreamMessage with samples, stream_name, and stream_id for WebSocket communication",
+    "run_async_publisher": "run the node ws_server_publisher asynchronously with a WSStreamMessage as an argument",
+    "use_NodeTestHarness": "use NodeTestHarness to set up and tear down a WSAPIServerNode with a given config"
+  },
+  "facebookresearch_labgraph/labgraph/zmq_node/zmq_poller_node.py": {
+    "create_ZMQPollerConfig": "create a ZMQPollerConfig with read_addr, zmq_topic, and optional poll_time for ZMQ polling",
+    "build_ZMQPollerNode": "build a ZMQPollerNode that polls data from a ZMQ SUB socket and publishes ZMQMessages",
+    "review_ZMQPollerNode_setup": "review the ZMQPollerNode setup method that creates an asyncio ZMQ SUB socket and subscribes to a topic",
+    "test_socket_monitor": "test the ZMQPollerNode socket_monitor background task that watches for ZMQ connection events",
+    "summarize_zmq_publisher": "summarize the ZMQPollerNode zmq_publisher async generator that yields ZMQMessage data on the topic"
+  },
+  "facebookresearch_labgraph/labgraph/zmq_node/zmq_sender_node.py": {
+    "create_ZMQSenderConfig": "create a ZMQSenderConfig with write_addr and zmq_topic fields for ZMQ sender node configuration",
+    "build_ZMQSenderNode": "build a ZMQSenderNode that subscribes to Labgraph messages and forwards them to a ZMQ PUB socket",
+    "review_ZMQSenderNode_setup": "review the ZMQSenderNode setup method that creates an asyncio ZMQ context and binds a PUB socket",
+    "test_ZMQSenderNode_zmq_subscriber": "test the ZMQSenderNode zmq_subscriber method that sends multipart messages to connected ZMQ subscribers",
+    "summarize_ZMQSenderNode_socket_monitor": "summarize the ZMQSenderNode socket monitor background task that tracks subscriber connection and disconnection events"
+  },
+  "facebookresearch_labgraph/labgraph/zmq_node/tests/test_zmq_node.py": {
+    "test_zmq_poller_node": "test the ZMQPollerNode reads samples from a ZMQ PUB socket and echoes them through a labgraph graph",
+    "test_zmq_sender_node": "test the ZMQSenderNode reads samples from a labgraph source node and writes them to a ZMQ socket",
+    "test_zmq_send_and_poll": "test ZMQSenderNode and ZMQPollerNode work together in a graph using ParallelRunner for send and receive",
+    "create_zmq_source_node": "create a labgraph Node subclass with a publisher method that yields ZMQMessage samples to a topic",
+    "create_zmq_sink_node": "create a labgraph Node subclass with a subscriber method that receives ZMQMessage samples and writes them to a file"
+  },
+  "facebookresearch_labgraph/signal_processing/filter/detrend.py": {
+    "detrend_and_offset_basic": "detrend a time series array by subtracting a linear fit and centering on the temporal mean",
+    "detrend_and_offset_fix_negative": "detrend and offset a time series array while interpolating negative values to positive for DOT power measurements",
+    "interpolate_nan": "interpolate NaN values in a 1D numpy array using linear interpolation between non-NaN neighbors",
+    "review_detrend_and_offset": "review the detrend_and_offset function to understand how it handles multi-channel time series data with optional negative value fixing",
+    "summarize_interpolate_nan": "summarize the interpolate_nan function that fills NaN gaps in a signal using scipy linear interpolation"
+  },
+  "facebookresearch_labgraph/signal_processing/filter/fir_filters.py": {
+    "build_fir_filter": "apply an FIR lowpass or highpass filter to a numpy signal array with matched initial conditions",
+    "create_fir_coefficients_states": "compute FIR filter coefficients and initial steady state for real-time sample-by-sample filtering",
+    "test_check_symmetry": "check if FIR filter coefficients are symmetric or antisymmetric and return a boolean result",
+    "summarize_symmetric_fir_group_delay": "calculate the group delay in samples for a symmetric or antisymmetric FIR filter",
+    "refactor_fir_filter": "refactor the FIR filter function to support bandpass or bandstop filter types beyond lowpass and highpass"
+  },
+  "facebookresearch_labgraph/signal_processing/filter/iir_filters.py": {
+    "apply_butterworth_filter": "apply a zero-phase Butterworth lowpass filter to a numpy signal array using filtfilt",
+    "apply_butterworth_sos_filter": "apply a numerically stable Butterworth highpass filter using second-order sections on multi-channel data",
+    "compute_butter_coefficients": "compute numerator and denominator polynomials for a Butterworth bandpass filter at a given cutoff and order",
+    "compute_butter_sos": "compute second-order section coefficients for a Butterworth bandstop filter for use with sosfilt",
+    "compute_butter_group_delay": "compute the group delay in samples across frequencies for a given Butterworth filter configuration",
+    "apply_exponential_moving_average": "apply an exponential moving average filter to a signal sample using a specified window size N",
+    "apply_macd_filter": "apply a moving average convergence divergence filter using short and long EMA window sizes",
+    "init_causal_butterworth": "initialize a causal Butterworth filter with a first time sample for real-time per-sample processing",
+    "process_sample_causal_butterworth": "process a single sample through a causal Butterworth filter and update internal state",
+    "review_CausalButterworth_process_sample": "review the CausalButterworth class process_sample method for correct channel dimension handling and state updates"
+  },
+  "facebookresearch_labgraph/signal_processing/filter/signal_transforms.py": {
+    "run_do_fft": "run a fast Fourier transform on a time-domain signal and return frequency values and magnitude",
+    "run_filter_impulse_response": "run a filter impulse response calculation given SOS or FIR coefficients and sample count",
+    "run_filter_freq_response": "run a frequency response analysis on an IIR filter specified in second order sections",
+    "run_filter_phase_delay": "run a phase delay calculation on an IIR filter and return delay as a function of frequency",
+    "run_filter_group_delay": "run a group delay calculation on an IIR or FIR filter using the Lyons method"
+  },
+  "facebookresearch_labgraph/signal_processing/filter/tests/test_detrend.py": {
+    "run_detrend_positive_trend_test": "run the DetrendTest test_detrend_and_offset_positive_trend unit test for positive linear trend signals",
+    "run_detrend_negative_trend_test": "run the DetrendTest test_detrend_and_offset_negative_trend unit test for negative linear trend signals",
+    "test_detrend_and_offset_function": "test the detrend_and_offset function with composite signals containing DC offset and linear trends",
+    "review_detrend_test_class": "review the DetrendTest class and its test methods for signal detrending assertions",
+    "refactor_detrend_test_fix_negative": "refactor the DetrendTest test_detrend_and_offset_negative_trend to verify fix_negative parameter behavior"
+  },
+  "facebookresearch_labgraph/signal_processing/filter/tests/test_fir_filters.py": {
+    "test_fir_filter_1D": "test the fir_filter function with one-dimensional signal data and verify lowpass filtering",
+    "test_fir_filter_nD": "test the fir_filter function with multi-dimensional signal data stacked along axis 1",
+    "test_fir_filter_axis": "test the fir_filter function with column vector and row vector input shapes",
+    "test_fir_filter_linearPhase": "test the fir_filter function produces linear phase delay proportional to filter order",
+    "check_peak_freq": "check that filtered signal peak frequencies match expected values using PSD multitaper analysis"
+  },
+  "facebookresearch_labgraph/signal_processing/filter/tests/test_iir_filters.py": {
+    "test_butterworth_filter_attenuation": "test the butterworth_filter function to verify highpass, lowpass, and bandpass frequency attenuation on multi-channel signals",
+    "test_causal_butterworth_stability": "test the CausalButterworth class for numerical stability when filtering long-duration low-frequency signals sample by sample",
+    "test_butterworth_sos_vs_tf_stability": "test that second-order section filters remain stable for narrow passbands while transfer-function filters may not",
+    "test_butterworth_filter_phase_delay": "test the noDelay option to verify filtfilt produces zero-phase output while lfilter introduces phase delay",
+    "test_macd_ema_signal_processing": "test the moving_average_convergence_divergence and exponential_moving_average functions to isolate a frequency of interest from noisy physiological signals"
+  },
+  "facebookresearch_labgraph/signal_processing/filter/tests/test_signal_transforms.py": {
+    "test_do_fft_1D": "test the do_fft function on 1D signals to verify FFT magnitude at known frequencies",
+    "test_do_fft_multidimensional": "test the do_fft function on 2D and 3D arrays along a specified axis",
+    "test_filter_impulse_response": "test the filter_impulse_response function for both IIR SOS and FIR coefficient filters",
+    "test_filter_freq_response": "test the filter_freq_response function to verify magnitude and phase of a Butterworth bandpass filter",
+    "test_filter_group_delay": "test the filter_group_delay function and compare results against symmetric_fir_group_delay for FIR filters"
+  },
+  "facebookresearch_labgraph/signal_processing/nodes/function_to_node.py": {
+    "convert_function_to_labgraph_node": "convert a typed Python function into a Labgraph node with auto-generated ArgumentMessage and ReturnMessage classes",
+    "parse_function_annotations_for_labgraph": "parse function parameter and return type annotations to determine which fields go into Labgraph message classes",
+    "generate_message_class_from_types": "generate a dynamic Labgraph message class from a dictionary of field names and type annotations",
+    "create_error_collecting_decorator": "create a decorator that collects multiple validation errors and raises them together as a single exception",
+    "parse_return_annotation_for_dataclass_unpacking": "parse a function return annotation and optionally deconstruct a dataclass return type into individual message fields"
+  },
+  "facebookresearch_labgraph/signal_processing/nodes/window_trigger.py": {
+    "create_window_trigger_node": "create a Labgraph node that buffers a message stream and emits windows when a trigger predicate fires",
+    "create_window_trigger_message": "create a WindowTriggerMessage class that holds a list of sample messages from a buffered stream",
+    "configure_window_trigger_config": "configure a WindowTriggerConfig with a window length specifying how many messages to buffer",
+    "review_WindowEmitter_call": "review the _WindowEmitter class that maintains a sliding window deque and evaluates a trigger predicate on each message",
+    "refactor_WindowTriggerNode_run": "refactor the WindowTriggerNode run method to customize how buffered windows are yielded as output messages"
+  },
+  "facebookresearch_labgraph/signal_processing/nodes/faucet/iir_filter_node.py": {
+    "create_CausalButterFilterNodeConfig": "create a CausalButterFilterNodeConfig with custom sample rate, highpass cutoff, and lowpass cutoffs",
+    "create_DefaultBandpassConfigGenerator": "create a DefaultBandpassConfigGenerator to get default bandpass filter configuration for causal filtering",
+    "run_CausalButterFilterNode": "run the CausalButterFilterNode labgraph node to apply causal IIR filtering on signal samples",
+    "review_CausalButterFilterNode_run_filter": "review the CausalButterFilterNode run_filter method that processes samples through a cascaded filter chain",
+    "refactor_CausalButterFilterNode_init_filter_class": "refactor the CausalButterFilterNode _init_filter_class method to customize sample rate estimation logic"
+  },
+  "facebookresearch_labgraph/signal_processing/nodes/faucet/tests/test_logmean_node.py": {
+    "build_test_signal": "build a numpy signal array with configurable time steps, channels, and power scaler for testing",
+    "get_correct_logmean_signal": "compute the expected logmean output for a signal array by applying negative log10 transformation",
+    "test_logmean_node_pass_through": "test the LogmeanNode pass-through mode to verify signals are returned unchanged",
+    "test_logmean_node": "test the LogmeanNode logmean computation against expected output using SignalSampleMessage inputs",
+    "review_logmean_node": "review the LogmeanNode and LogMeanNodeConfig classes for signal processing behavior and edge cases"
+  },
+  "facebookresearch_labgraph/signal_processing/nodes/tests/test_function_to_node.py": {
+    "parse_function_annotations": "parse function type annotations to extract input output message schemas and dataclass deconstruction flags",
+    "function_to_node_basic": "convert a typed python function into a labgraph node with auto generated input and output message classes",
+    "function_to_node_kwargs": "convert a function to a labgraph node and pass keyword arguments via FunctionConfig kwargs override",
+    "function_to_node_dataclass": "convert a function returning a dataclass to a labgraph node with deconstructed return message fields",
+    "function_to_node_graph": "wire a function converted to a labgraph node into a graph with generator and consumer nodes"
+  },
+  "facebookresearch_labgraph/signal_processing/nodes/tests/test_window_trigger.py": {
+    "test_make_window_trigger_node": "test the make_window_trigger_node factory function with a SampleMessage and trigger predicate",
+    "test_predict_state": "test the predict_state method to verify expected window trigger stream state",
+    "test_generator_consumer_graph": "test the Generator, Consumer, and Graph classes in a labgraph ParallelRunner pipeline",
+    "test_in_graph": "test the window trigger node end-to-end inside a labgraph Graph with ParallelRunner",
+    "review_sample_message_class": "review the SampleMessage class extending lg.TimestampedMessage with sample and equality logic"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic/generators/noise_generator.py": {
+    "create_NoiseChannelConfig": "create a NoiseChannelConfig dataclass with amplitudes, offsets, and sample_rate for noise generation",
+    "build_NoiseGenerator": "build a NoiseGenerator instance that produces uniformly distributed random noise on each channel",
+    "run_next_sample": "run the next_sample method to generate a FunctionGeneratorMessage with random noise data",
+    "review_NoiseChannelConfig_post_init": "review the NoiseChannelConfig __post_init__ validation that asserts shape consistency across amplitudes and offsets",
+    "summarize_NoiseGenerator": "summarize the NoiseGenerator class that generates random noise samples with configurable amplitude, offset, and sample rate"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic/generators/sine_wave_generator.py": {
+    "create_sine_wave_channel_config": "create a SineWaveChannelConfig with amplitude, frequency, phase shift, midline arrays and sample rate",
+    "create_sine_wave_generator": "create a SineWaveGenerator instance initialized with a SineWaveChannelConfig for multi-channel sinusoid generation",
+    "generate_next_sample": "call next_sample on a SineWaveGenerator to produce the next FunctionGeneratorMessage with sinusoid values",
+    "review_sine_wave_channel_config_validation": "review the SineWaveChannelConfig post-init validation that asserts matching array shapes and positive sample rate",
+    "refactor_sine_wave_generator_time_tracking": "refactor the SineWaveGenerator to use a different time tracking approach instead of incrementing by inverse sample rate"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic/generators/tests/test_noise_generator.py": {
+    "test_noise_generation": "test the NoiseGenerator produces samples within configured amplitude and offset bounds",
+    "create_noisegenerator": "create a NoiseGenerator instance with a NoiseChannelConfig for uniform random noise generation",
+    "create_noisechannelconfig": "create a NoiseChannelConfig with shape, amplitudes, offsets, and sample_rate parameters",
+    "run_next_sample": "run the next_sample method on a NoiseGenerator to get a FunctionGeneratorMessage with noise data",
+    "review_noisegenerator": "review the NoiseGenerator class and its next_sample method for uniform noise generation"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic/generators/tests/test_sine_wave_generator.py": {
+    "test_sine_wave_generator": "test the SineWaveGenerator produces correct sinusoidal samples matching channel configuration parameters",
+    "run_test_generate_sinusoid": "run the test_generate_sinusoid function to validate sine wave sample generation accuracy",
+    "create_sine_wave_channel_config": "create a SineWaveChannelConfig with shape, amplitudes, frequencies, phase shifts, midlines, and sample rate",
+    "generate_sine_wave_samples": "generate sine wave samples using SineWaveGenerator and next_sample method for multi-channel signals",
+    "verify_sine_wave_output": "verify generated sine wave samples match expected values using numpy testing assertions"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic/nodes/mixer_two_input_node.py": {
+    "create_MixerTwoInputConfig": "create a MixerTwoInputConfig with left and right numpy weight matrices for signal mixing",
+    "build_MixerTwoInputNode": "build a MixerTwoInputNode labgraph node that mixes two input signals using configurable weight matrices",
+    "test_mix_samples": "test the mix_samples async publisher method that combines left and right signal samples into a weighted output",
+    "review_left_input_subscriber": "review the left_input subscriber method that validates and queues incoming left signal samples",
+    "refactor_MixerTwoInputNode_setup": "refactor the MixerTwoInputNode setup method to validate weight matrix dimensions and initialize input queues"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic/nodes/signal_capture_node.py": {
+    "create_signal_capture_config": "create a SignalCaptureConfig with num_capture to set how many samples the node should capture",
+    "build_signal_capture_node": "build a SignalCaptureNode labgraph node that captures SignalSampleMessage samples and terminates after num_capture",
+    "test_sample_sink": "test the sample_sink subscriber method to verify it appends samples and raises NormalTermination after num_capture",
+    "review_signal_capture_node_samples": "review the SignalCaptureNode samples property to retrieve captured SignalSampleMessage samples from the node",
+    "summarize_signal_capture_node": "summarize the SignalCaptureNode class that captures SignalSampleMessage samples on SAMPLE_TOPIC and terminates after reaching num_capture"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic/nodes/signal_generator_node.py": {
+    "create_signal_generator_node": "create a SignalGeneratorNode subclass to generate custom signal samples using a FunctionGenerator",
+    "run_publish_samples": "run the publish_samples async publisher to yield SignalSampleMessage samples at regular intervals",
+    "setup_signal_generator": "setup the SignalGeneratorNode by initializing an asyncio shutdown event for lifecycle management",
+    "cleanup_signal_generator": "cleanup the SignalGeneratorNode by setting the shutdown event to stop sample publishing",
+    "review_signal_generator_node": "review the SignalGeneratorNode class and its async publisher pattern for LabGraph signal generation"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic/nodes/tests/test_mixer_one_input_node.py": {
+    "test_mixer_one_input_node": "test the MixerOneInputNode by running a labgraph graph that mixes sine wave signals and validates output",
+    "create_MyGraphConfig": "create a labgraph Config class with sine wave, mixer, and signal capture configuration fields",
+    "create_MyGraph": "create a labgraph Graph that connects a signal generator to a mixer node and capture node",
+    "run_MyGraph_setup": "run the MyGraph setup method to configure the capture node, mixer node, and sine wave generator",
+    "review_MyGraph_connections": "review the MyGraph connections method that wires the sample source to the mixer and capture node"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic/nodes/tests/test_mixer_two_input_node.py": {
+    "test_mixer_two_input_node": "test the MixerTwoInputNode by running a labgraph graph that mixes sine wave signals and validates output",
+    "create_mixer_two_input_config": "create a MixerTwoInputConfig with left and right weight matrices for signal mixing",
+    "build_labgraph_graph_with_mixer": "build a labgraph Graph that connects a signal generator to a mixer node and capture node",
+    "configure_sine_wave_generator": "configure a SineWaveGenerator with amplitude, frequency, phase shift, and midline parameters",
+    "run_local_runner_with_graph": "run a labgraph LocalRunner with a configured graph to execute signal processing nodes"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic/nodes/tests/test_sine_wave_generator_node.py": {
+    "test_sine_wave_generator_node": "test the sine wave generator node by running a labgraph graph with a capture node and signal generator",
+    "create_MyGraphConfig": "create a labgraph config class that holds a signal capture config and sine wave channel config",
+    "create_MyGraph": "create a labgraph graph that connects a signal capture node to a signal generator node with a sine wave generator",
+    "run_MyGraph_with_LocalRunner": "run a configured labgraph graph using LocalRunner to generate and capture sine wave samples",
+    "configure_SineWaveGenerator_in_graph": "configure a signal generator node with a SineWaveGenerator using SineWaveChannelConfig in a labgraph graph setup"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic_data/additive_synth_dataset.py": {
+    "create_AdditiveSynthDataset": "create a synthetic fNIRS finger-tapping dataset with configurable trials, channels, and class proportions",
+    "generate_synth_data": "generate synthetic fNIRS trial data combining HRF signal, physiological noise, measurement noise, and motion artifacts",
+    "sim_physio_noise": "simulate physiological noise with configurable frequency and amplitude parameters for five components",
+    "generate_hrf": "generate a hemodynamic response function signal with configurable amplitude and scaling factor",
+    "hrf_scale_from_channel_dists": "compute HRF scaling weights from source-detector channel distances using cutoff thresholds"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic_data/additive_synth_dataset_variant.py": {
+    "create_AdditiveSynthDatasetVariant": "create an AdditiveSynthDatasetVariant synthetic fNIRS dataset with trials, channels, and class labels",
+    "generate_synth_data": "generate synthetic fNIRS data combining HRF signal, physiological noise, measurement noise, and motion artifacts",
+    "generate_motion_noise": "generate simulated motion artifact noise with pulse, shift, low-frequency oscillation, and spike components",
+    "sim_physio_noise": "simulate physiological noise with configurable frequency and amplitude bands for heart rate and respiration",
+    "hrf_scale_from_channel_dists": "compute HRF scale attenuation factors from source-detector channel distance array values"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic_data/dummy_generator.py": {
+    "generate_simulated_hemodynamics": "generate simulated hemodynamics using a double-gamma HRF over a given duration and sample rate",
+    "generate_dummy_physiological_noise": "generate dummy physiological noise as a sine wave at a specified frequency, amplitude, and phase",
+    "generate_motion_noise": "generate motion noise artifacts as a linear drift at a random temporal position in the signal",
+    "compute_double_gamma_hrf": "compute a hemodynamic response function as a linear combination of two gamma distributions",
+    "compute_gamma_pdf": "compute the gamma probability density function using shape and rate parameterization instead of scale"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic_data/tests/test_additive_synth_dataset_variant.py": {
+    "test_generate_synth_data": "test the generate_synth_data function to verify trial length equals sample_rate times trial_length",
+    "test_AdditiveSynthDatasetVariant_multiple_channels": "test AdditiveSynthDatasetVariant with multiple channels, class labels, and HRF scale conditions",
+    "test_hrf_scale_from_channel_dists": "test hrf_scale_from_channel_dists to compute HRF scales from a list of channel distance values",
+    "review_AdditiveSynthDatasetVariant": "review the AdditiveSynthDatasetVariant class constructor parameters including n_trials, trial_length, channel_dists, class_labels, hrf_scale_for_cond, and sample_rate",
+    "summarize_generate_synth_data": "summarize the generate_synth_data function which takes hrf_scale, sample_rate, and trial_length to produce synthetic signal data"
+  },
+  "facebookresearch_labgraph/signal_processing/synthetic_data/tests/test_dummy_generator.py": {
+    "test_simulated_hemodynamics": "test the simulated_hemodynamics function that generates double-gamma HRF signals with configurable amplitude, duration, and sample rate",
+    "test_dummy_physiological_noise": "test the dummy_physiological_noise function that generates cardiac-like noise at a specified frequency and phase",
+    "test_motion_noise": "test the motion_noise function that generates random motion artifacts with configurable amplitude and duration",
+    "test_time_index": "test the _make_time_index helper that creates time series indices from duration and sample rate parameters",
+    "test_pink_noise": "test the powerlaw_psd_gaussian function that generates 1/f pink noise and verify spectral power decreases with frequency"
+  },
+  "facebookresearch_labgraph/signal_processing/utils/data_view/array_utils.py": {
+    "chunk_array_into_segments": "chunk a numpy array into overlapping segments of fixed size with configurable step",
+    "window_array_inplace": "apply a causal or acausal sliding window to a numpy array using memory-efficient stride tricks",
+    "parallel_apply_along_axis": "apply a function along an axis of a numpy array using multiprocessing for parallel execution",
+    "mix_array_with_matrix": "multiply an ND array by a 2D mixing matrix along specified axes for signal mixing",
+    "upcast_apply_function": "apply a 2D-only function to ND arrays by upcasting and iterating over batch dimensions"
+  },
+  "facebookresearch_labgraph/signal_processing/utils/doc/docfill.py": {
+    "create_docstring_decorator": "create a decorator that replaces placeholder identifiers in function docstrings with provided keyword values",
+    "build_docfill_for_functions": "build a docstring filling decorator to share common documentation across multiple functions",
+    "test_fill_in_docstring": "test the fill_in_docstring decorator by applying it to a function and verifying the docstring output",
+    "refactor_docstring_placeholders": "refactor a module to use fill_in_docstring for replacing repeated docstring text with shared placeholders",
+    "review_docfill_usage": "review the fill_in_docstring decorator and its usage pattern for filling docstring identifiers"
+  },
+  "facebookresearch_labgraph/signal_processing/utils/types/channel_info.py": {
+    "create_DOTChannelInfo": "create a DOTChannelInfo object with detector and source indices, distances, and spatial coordinates",
+    "create_Metric2ChannelInfo": "create a Metric2ChannelInfo object with detector source indices and is_Metric1 boolean labels",
+    "create_StringChannelInfo": "create a StringChannelInfo object from a list of column names for a time series",
+    "slice_ChannelInfo": "slice a ChannelInfo object by index or range to get a subset of channel rows",
+    "compare_ChannelInfo": "compare two ChannelInfo objects for equality using the __eq__ method"
+  },
+  "facebookresearch_labgraph/signal_processing/utils/types/time_series.py": {
+    "create_TimeSeries": "create a TimeSeries object from numpy timestamp and channel data arrays",
+    "select_channels_TimeSeries": "select specific channels from a TimeSeries using numpy-style indexing",
+    "transform_channel_data_TimeSeries": "apply a function to TimeSeries channel data and return a new TimeSeries",
+    "create_LabeledTimeSeries": "create a LabeledTimeSeries with timestamps, channel data, and ChannelInfo metadata",
+    "select_channels_by_set_StringLabeledTimeSeries": "select channels by name from a StringLabeledTimeSeries using a list of channel names"
+  }
+}

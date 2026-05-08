@@ -1,0 +1,310 @@
+{
+  "facebookresearch_memory/apps/fastRNN/eval.py": {
+    "run_fastRNN_evaluation": "run a fastRNN model evaluation using lm_eval harness with a config file and checkpoint directory",
+    "run_launch_eval": "run the launch_eval function to evaluate a consolidated fastRNN model and log results to JSON",
+    "run_eval_cli": "run the eval.py CLI with a config file and dot-list overrides for evaluation arguments",
+    "review_EvalArgs": "review the EvalArgs dataclass to understand evaluation configuration options like ckpt_dir and generator settings",
+    "review_main_config_merge": "review the main function to understand how OmegaConf merges default, file, and CLI config values"
+  },
+  "facebookresearch_memory/apps/fastRNN/generate.py": {
+    "run_fastRNN_generation": "run the fastRNN generate script with a checkpoint path to generate text from prompts",
+    "load_consolidated_model_and_tokenizer": "load a consolidated fastRNN model and tokenizer from a checkpoint directory path",
+    "create_PackedRNNGenerator": "create a PackedRNNGenerator instance with config, model, and tokenizer for text generation",
+    "create_StateCache": "create a StateCache module to store convolution and hidden state buffers for RNN generation",
+    "review_PackedRNNGenerator_generate_next_token": "review the PackedRNNGenerator generate_next_token method for sequential token generation logic"
+  },
+  "facebookresearch_memory/apps/fastRNN/train.py": {
+    "run_fastRNN_training": "run the fastRNN training loop with a config file via train.py config=path/to/config.yaml",
+    "train_minGRU_model": "train a minGRU language model using train.py with model_type=minGRU and a YAML config",
+    "train_minLSTM_model": "train a minLSTM language model using train.py with model_type=minLSTM and a YAML config",
+    "train_hawk_model": "train a HAWK RNN model using train.py with model_type=hawk and a YAML config",
+    "review_TrainArgs": "review the TrainArgs dataclass to understand training hyperparameters like steps, grad_acc_steps, and model_type"
+  },
+  "facebookresearch_memory/apps/fastRNN/component/compilable_scan.py": {
+    "run_scan_forward": "run the scan function to perform a warp scan over gates and tokens tensors on CUDA",
+    "run_scan_reverse": "run the scan function with reverse=True to perform a reverse warp scan over sequence data",
+    "test_scan_fwd_custom_op": "test the scan_fwd custom op that computes forward warp scan on contiguous CUDA tensors",
+    "test_scan_bwd_custom_op": "test the scan_bwd custom op that computes gradients for gates and tokens during backprop",
+    "review_scan_autograd": "review the scan autograd registration that wires scan_fwd with scan_bwd_bridge for gradient computation"
+  },
+  "facebookresearch_memory/apps/fastRNN/component/rnn_common.py": {
+    "run_conv1d_parallel": "run causal conv1d on a tensor with silu activation in parallel mode",
+    "run_conv1d_sequential": "run causal conv1d on a tensor using sequential mode with a cache state",
+    "run_scan_parallel": "run a parallel scan operation on tensors a and b with cu_seqlens",
+    "run_scan_sequential": "run a sequential scan step using cached states and tensors a and b",
+    "review_prepare_for_cache": "review the _prepare_for_cache function that resets hidden state between sequences in a batch"
+  },
+  "facebookresearch_memory/apps/fastRNN/hawk/core_hawk.py": {
+    "build_BaseHawk_model": "build a BaseHawk RNN model from BaseHawkArgs config and initialize weights with init_weights",
+    "create_RGLRUBlock_module": "create an RGLRUBlock module with gated RGLRU recurrence and output projection for sequence processing",
+    "run_RGLRU_forward": "run the RGLRU forward pass with input tensor, sequence lengths, and parallel or sequential impl mode",
+    "review_SqrtBoundDerivative_custom_autograd": "review the SqrtBoundDerivative custom autograd function that clips sqrt gradients to prevent explosion",
+    "test_HawkBlock_layer": "test the HawkBlock layer combining RGLRUBlock recurrence with FeedForward and RMSNorm residual connections"
+  },
+  "facebookresearch_memory/apps/fastRNN/hawk/hawk.py": {
+    "build_LMHawk_model": "build a LMHawk language model using LMHawkArgs with vocab size and weight tying config",
+    "create_LMHawkArgs_config": "create a LMHawkArgs dataclass config with vocab size, seed, and loss reduction settings",
+    "run_LMHawk_forward": "run the LMHawk forward pass with token values and optional target tensor for loss",
+    "reset_LMHawk_parameters": "reset the LMHawk model parameters using trunc normal initialization with custom init std",
+    "get_no_recompute_ops": "get the set of torch ops to exclude from gradient checkpointing recomputation"
+  },
+  "facebookresearch_memory/apps/fastRNN/minGRU/core_gru.py": {
+    "build_minGRU_model": "build a BaseMinGRU model with configurable dim, n_layers, and n_heads using BaseMinGRUArgs",
+    "create_GRU_layer": "create a GRU layer with linear projections, optional conv1d, and recurrent scan for sequence processing",
+    "create_GRUBlock_with_residual": "create a GRUBlock with RMSNorm and residual connection wrapping a GRU layer",
+    "run_GRU_forward_pass": "run a forward pass through the GRU module with parallel or sequential scan implementation",
+    "init_minGRU_weights": "initialize BaseMinGRU weights using trunc_normal with depth-based or dim-ratio scaling factors"
+  },
+  "facebookresearch_memory/apps/fastRNN/minGRU/mingru.py": {
+    "build_lm_min_gru_model": "build a language model using LMMinGRU with LMMinGRUArgs config including vocab size and weight tying",
+    "create_state_cache": "create a StateCache module to store convolution and hidden state tensors for autoregressive decoding",
+    "run_lm_min_gru_forward": "run the LMMinGRU forward pass with token values and optional targets to get logits or loss",
+    "reset_lm_min_gru_parameters": "reset LMMinGRU model parameters using trunc normal initialization with configurable init standard deviation",
+    "get_no_recompute_ops": "get the set of torch ops to exclude from gradient checkpointing recomputation including mm and scan ops"
+  },
+  "facebookresearch_memory/apps/fastRNN/minLSTM/core_lstm.py": {
+    "build_BaseMinLSTM_model": "build a BaseMinLSTM model with configurable dim, n_layers, and n_heads using BaseMinLSTMArgs",
+    "create_LSTM_layer": "create an LSTM layer with linear projections for forget/input gates and state scan operations",
+    "run_LSTMBlock_forward": "run an LSTMBlock forward pass with RMSNorm and residual connection on input tensor",
+    "review_LSTM_reset_parameters": "review the LSTM reset_parameters method that initializes weights with truncated normal distribution",
+    "test_BaseMinLSTM_init_weights": "test the BaseMinLSTM init_weights method that sets layer weights using depth-based scaling factors"
+  },
+  "facebookresearch_memory/apps/fastRNN/minLSTM/minlstm.py": {
+    "build_lm_min_lstm_model": "build a LMMinLSTM language model from LMMinLSTMArgs with vocab size and weight tying config",
+    "create_lm_min_lstm_args": "create a LMMinLSTMArgs dataclass with vocab size, weight tying, seed, and loss reduction settings",
+    "run_forward_pass": "run a forward pass on token values through LMMinLSTM to get logits or cross entropy loss",
+    "reset_lm_min_lstm_parameters": "reset LMMinLSTM model parameters using trunc normal initialization with configurable init std",
+    "get_no_recompute_ops": "get the set of torch ops to exclude from gradient checkpointing recomputation"
+  },
+  "facebookresearch_memory/apps/main/eval.py": {
+    "run_lm_harness_evaluation": "run an LM Harness evaluation on a consolidated model checkpoint using eval.py with a config file",
+    "create_eval_harness_lm_wrapper": "create an EvalHarnessLM wrapper around a PackedCausalTransformerGenerator for lm-eval harness compatibility",
+    "run_generate_until": "run the EvalHarnessLM generate_until method to generate text completions from prompts with temperature and top_p",
+    "run_loglikelihood_rolling": "run the EvalHarnessLM loglikelihood_rolling method to compute rolling log-likelihoods for prompts",
+    "launch_eval_with_config": "launch evaluation by loading a consolidated model and running simple_evaluate with LMHarnessArgs configuration"
+  },
+  "facebookresearch_memory/apps/main/generate.py": {
+    "run_transformer_text_generation": "run the PackedCausalTransformerGenerator to generate text from prompts using a loaded LMTransformer checkpoint",
+    "sample_tokens_with_top_p": "sample tokens from logits using top-p nucleus sampling with configurable temperature and probability threshold",
+    "sample_tokens_with_top_k": "sample tokens from logits using top-k sampling with configurable temperature and k value",
+    "pack_prompts_for_batching": "pack multiple tokenized prompts into a single concatenated tensor with their corresponding lengths",
+    "load_consolidated_model_and_tokenizer": "load a consolidated LMTransformer model and tokenizer from a checkpoint directory with params.json config"
+  },
+  "facebookresearch_memory/apps/main/train.py": {
+    "run_LLM_training": "run distributed LLM training with gradient accumulation, checkpointing, and async evaluation via train.py config.yaml",
+    "review_TrainArgs": "review the TrainArgs dataclass that configures model, data, optimizer, distributed, checkpoint, profiling, and logging settings",
+    "review_TrainState": "review the TrainState class that tracks optimizer steps, accumulation steps, scheduler, and dataloader state for checkpointing",
+    "review_train_function": "review the train function that builds model, optimizer, dataloader, runs the training loop with probing and metrics logging",
+    "review_validate_train_args": "review the validate_train_args function that validates vocab size, data paths, and distributed parallelism configuration"
+  },
+  "facebookresearch_memory/apps/main/transformer.py": {
+    "create_LMTransformer": "create a language model transformer with token embeddings, RMSNorm, and configurable attention implementation",
+    "build_causal_mask": "build a causal attention mask for xformers, sdpa, or flex_attention with optional sliding window support",
+    "compute_flops_per_token": "compute the number of FLOPs per token given model parameters, layers, dimension, and sequence length",
+    "build_fsdp_grouping_plan": "build an FSDP grouping plan that groups token embeddings, transformer layers, and output separately",
+    "parallelize_tp": "parallelize a transformer model for tensor parallelism across attention and feedforward layers using a device mesh"
+  },
+  "facebookresearch_memory/apps/mamba/core_mamba.py": {
+    "build_BaseMamba_model": "build a BaseMamba model using BaseMambaArgs to configure dim, n_layers, n_heads, and state_dim parameters",
+    "create_SSM_module": "create an SSM module with configurable hidden_dim, n_heads, state_dim, conv_size, and chunk_size for selective state space modeling",
+    "create_MambaBlock_layer": "create a MambaBlock layer with RMSNorm and SSM that applies residual connections for sequence transformation",
+    "run_SSM_forward": "run the SSM forward pass with tensor input, tok_idx, cu_seqlens, and ssm_impl mode for training or generation",
+    "init_BaseMamba_weights": "initialize BaseMamba model weights using init_weights with depth-based scaling factors and trunc normal initialization"
+  },
+  "facebookresearch_memory/apps/mamba/eval.py": {
+    "run_mamba_model_evaluation": "run evaluation of a consolidated Mamba model checkpoint using lm_eval harness",
+    "run_eval_with_config": "run Mamba model evaluation by passing a config file path and optional CLI overrides",
+    "run_eval_with_cli_overrides": "run Mamba evaluation with config file and override generator or harness settings via CLI dot notation",
+    "review_EvalArgs_dataclass": "review the EvalArgs dataclass that holds evaluation configuration including checkpoint dir and generator args",
+    "review_launch_eval": "review the launch_eval function that loads a Mamba model and runs lm_eval simple_evaluate"
+  },
+  "facebookresearch_memory/apps/mamba/generate.py": {
+    "run_mamba_generation": "run the Mamba model generation script with CLI arguments to generate text from prompts",
+    "create_mamba_generator": "create a PackedCausalMambaGenerator instance with a config, model, and tokenizer for text generation",
+    "generate_next_token_mamba": "generate the next token using the Mamba model forward pass with ssm_update implementation",
+    "prefill_mamba_context": "prefill the Mamba model context by setting up token indices and running the SSM forward pass",
+    "clear_mamba_cache": "clear the SSM state cache for all Mamba modules in the model before generation"
+  },
+  "facebookresearch_memory/apps/mamba/mamba.py": {
+    "create_LMMamba_model": "create a language model using LMMamba with LMMambaArgs config and token embeddings",
+    "run_LMMamba_forward": "run the LMMamba forward pass with token values and optional target tensor for loss",
+    "create_StateCache": "create a StateCache module to store convolution and state cache buffers for Mamba inference",
+    "calculate_flops_per_token": "calculate the number of FLOPs per token using get_num_flop_per_token with model parameters",
+    "get_activation_checkpointing_ops": "get the set of no-recompute ops for activation checkpointing via get_no_recompute_ops"
+  },
+  "facebookresearch_memory/apps/mamba/train.py": {
+    "run_mamba_model_training": "run the Mamba language model training loop with config file via train.py config=path/to/config.yaml",
+    "train_LMMamba_with_cli": "train an LMMamba model using OmegaConf CLI args like train.py config=cfg.yaml model.dim=512 steps=10000",
+    "review_TrainArgs_dataclass": "review the TrainArgs dataclass that holds training hyperparameters including model, data, optim, and distributed settings",
+    "review_TrainState_class": "review the TrainState class that tracks optimizer steps, accumulation steps, scheduler, and data loader state",
+    "review_validate_train_args": "review the validate_train_args function that validates vocab size, checkpoint path, data sources, and distributed parallelism"
+  },
+  "facebookresearch_memory/apps/mamba/component/causal_conv1d_compilable.py": {
+    "run_causal_conv1d_forward": "run the causal_conv1d_fn function to perform a causal 1D convolution forward pass with optional silu activation",
+    "compile_causal_conv1d": "compile the causal_conv1d_fn function using torch.compile for optimized CUDA kernel execution",
+    "test_causal_conv1d_backward": "test the causal_conv1d backward pass by calling backward on the output and checking gradients",
+    "run_causal_conv1d_update": "run the causal_conv1d_update function to perform incremental convolution state updates with circular buffer support",
+    "review_causal_conv1d_custom_op": "review the causal_conv1d_fwd and causal_conv1d_bwd custom ops registered with torch.library for torch.compile compatibility"
+  },
+  "facebookresearch_memory/apps/mamba/component/ssm_compilable.py": {
+    "run_mamba_chunk_scan_combined": "run the mamba chunk scan combined SSM operation on CUDA tensors with optional z and dt_bias",
+    "run_compiled_mamba_chunk_scan": "run the torch.compile wrapped mamba chunk scan combined operation for optimized CUDA performance",
+    "test_ssm_chunk_scan_fwd": "test the custom op ssm_chunk_scan_combined_fwd forward pass with batched input tensors and chunk size",
+    "test_ssm_chunk_scan_bwd": "test the custom op ssm_chunk_scan_combined_bwd backward pass to compute gradients for all parameters",
+    "review_mamba_compilable_wrapper": "review the ssm_compilable module that wraps mamba SSM chunk scan for torch.compile compatibility"
+  },
+  "facebookresearch_memory/apps/mtp/eval.py": {
+    "run_eval_mtp_model": "run evaluation of an MTP model using lm_eval harness with a config file",
+    "run_launch_eval": "run launch_eval to load a consolidated MTP model and evaluate it with lm_eval",
+    "run_eval_cli": "run eval.py with a config file and dot-list CLI overrides for EvalArgs",
+    "review_launch_eval": "review the launch_eval function that consolidates checkpoints, loads an LMTransformer, and runs lm_eval",
+    "review_main_config_merge": "review the main function that merges default, file, and CLI OmegaConf configs for evaluation"
+  },
+  "facebookresearch_memory/apps/mtp/train.py": {
+    "run_train_mtp_model": "run the MTP transformer model training loop with config file via main CLI entry point",
+    "build_train_args": "build a TrainArgs dataclass to configure model, data, optimizer, distributed, and checkpoint settings",
+    "create_train_state": "create a TrainState object to track optimizer steps, accumulation steps, scheduler, and data loader state",
+    "validate_train_args": "validate TrainArgs configuration including vocab size, data paths, distributed parallelism, and probe frequency",
+    "run_checkpoint_save": "run checkpoint saving for model, optimizer, and train state via CheckpointManager during training"
+  },
+  "facebookresearch_memory/apps/mtp/transformer.py": {
+    "create_causal_mask": "create a causal attention mask for xformers, sdpa, or flex_attention with optional sliding window support",
+    "calculate_attention_flops": "calculate the number of FLOPs per token for attention computation given layers, sequence length, and dimension",
+    "calculate_total_flops": "compute total FLOPs per token including non-embedding parameters and attention operations for model estimation",
+    "build_lm_transformer": "build a language model transformer with multiple future heads, token embeddings, and RMSNorm for MTP training",
+    "build_fsdp_plan": "build an FSDP grouping plan that separates token embeddings and groups transformer layers individually"
+  },
+  "facebookresearch_memory/apps/plots/analysis.py": {
+    "run_parallel_map": "run a function in parallel across a list of files using multiprocessing Pool",
+    "run_parallel_from_glob": "run a function in parallel across files matching a glob pattern with recursive search",
+    "load_raw_jsonl": "load a JSONL file line by line into a list of JSON objects with error handling",
+    "get_metrics": "load metrics from a JSONL file and merge with config.yaml params into a normalized DataFrame",
+    "get_merged_df": "merge metrics DataFrames from multiple JSONL files matching a glob pattern into a single DataFrame"
+  },
+  "facebookresearch_memory/apps/plots/probe_animation.py": {
+    "run_probe_animation_cli": "run probe_animation.py with probe folder paths to generate animated HTML plots of activation distributions across transformer layers over training steps",
+    "run_plot_depth_distr_time": "run plot_depth_distr_time to create an animated subplot grid showing mean and quantile distributions of layer activations across model depth over time",
+    "run_get_mean_quantiles": "run get_mean_quantiles to extract mean values and quantile arrays for specified layer names from a probe data dictionary",
+    "run_Plotter_class": "run the Plotter class to initialize an animated matplotlib plot for a single run's layer activation means and quantile fills across timesteps",
+    "run_render_to_file": "run _render_to_file to render animated HTML plots for a given linear layer template including input, weight, output, and gradient distributions"
+  },
+  "facebookresearch_memory/lingua/args.py": {
+    "load_config_from_yaml": "load a YAML config file and convert it into a typed dataclass instance using OmegaConf",
+    "dump_config_to_yaml": "dump a dataclass config object to a YAML file with optional logging of the config contents",
+    "convert_dict_to_dataclass": "convert a dictionary to a typed dataclass instance with recursive nested structure support",
+    "convert_dataclass_to_dict": "convert a dataclass instance back to a plain dictionary with resolved OmegaConf references",
+    "flatten_nested_dict": "flatten a nested dictionary into a single-level dict with underscore-separated composite keys"
+  },
+  "facebookresearch_memory/lingua/checkpoint.py": {
+    "consolidate_checkpoints": "consolidate FSDP distributed checkpoints in a directory into a single consolidated.pth file",
+    "CheckpointManager_save": "save model, optimizer, and train state to a checkpoint folder using CheckpointManager",
+    "CheckpointManager_load": "load model, optimizer, and train state from a checkpoint folder using CheckpointManager",
+    "CheckpointManager_clean_up": "clean up old checkpoint folders keeping only the most recent dump and eval saves",
+    "CheckpointManager_get_existing_saves": "get a sorted list of existing checkpoint save folders from the checkpoint directory"
+  },
+  "facebookresearch_memory/lingua/data.py": {
+    "build_dataloader_from_args": "build a dataloader from DataArgs config to load and iterate over JSONL dataset chunks",
+    "init_dataloader_state_from_args": "initialize a PrefetchState from DataArgs for resuming data loading from a specific rank and world size",
+    "pack_tokens": "pack token sequences into fixed-length chunks with sliding window views for model training",
+    "batch_and_shuffle_prefetched_sequences": "prefetch and shuffle batches of token sequences to reduce correlation inside training batches",
+    "async_iterator": "create an async producer-consumer iterator that prefetches data in a separate multiprocessing worker"
+  },
+  "facebookresearch_memory/lingua/distributed.py": {
+    "parallelize_model": "parallelize a PyTorch model using FSDP sharding, tensor parallelism, activation checkpointing, and torch.compile",
+    "get_device_mesh": "get a CUDA device mesh for data parallel replication, sharding, and tensor parallelism from DistributedArgs",
+    "setup_torch_distributed": "setup torch distributed process group for multi-GPU, multi-node, or SLURM jobs with NCCL backend",
+    "check_model_value_range": "check a PyTorch model for NaN, Inf, suspicious value ranges, large standard deviations, or all-zero parameters",
+    "dist_mean": "compute the mean of a scalar value across all processes in a distributed device mesh using all_reduce"
+  },
+  "facebookresearch_memory/lingua/float8.py": {
+    "convert_linears_to_fp8": "convert all nn.Linear modules in a PyTorch model to FP8 using the rowwise recipe",
+    "create_Fp8Linear": "create an FP8 linear layer that performs float8_e4m3fn matmul with rowwise scaling",
+    "review_Fp8LinearFn": "review the Fp8LinearFn autograd function that handles forward and backward FP8 matrix multiplication",
+    "refactor_scale": "refactor the scale function to clamp amax and convert tensors to FP8 dtype",
+    "test_named_replace": "test the named_replace utility that recursively applies a replacement function to all submodules"
+  },
+  "facebookresearch_memory/lingua/logger.py": {
+    "init_logger_setup": "init a logger with stdout, stderr handlers and optional file output for distributed jobs",
+    "init_logger_with_file": "init a logger that writes logs to a file on rank 0 with a custom name and level",
+    "set_root_log_level": "set the root logger level to a string like DEBUG or an integer value",
+    "create_log_formatter": "create a LogFormatter instance that adds rank, level, timestamp, and elapsed time to log messages",
+    "review_log_formatter_multiline": "review the LogFormatter class and its multiline message indentation and exception formatting logic"
+  },
+  "facebookresearch_memory/lingua/metrics.py": {
+    "create_metric_logger": "create a MetricLogger to log training metrics to a JSONL file with optional W&B integration",
+    "monitor_gpu_memory": "use GPUMemoryMonitor to track GPU memory usage, peak stats, and power draw on a CUDA device",
+    "upload_metrics_to_wandb": "upload training and evaluation metrics from a checkpoint directory to Weights & Biases",
+    "count_model_params": "get the total number of parameters in a PyTorch nn.Module model",
+    "configure_logging_args": "configure LoggingArgs with frequency settings and optional WandbArgs for experiment tracking"
+  },
+  "facebookresearch_memory/lingua/optim.py": {
+    "build_optimizer_adamw": "build an AdamW optimizer with parameter groups and a LambdaLR scheduler for a PyTorch model",
+    "build_lr_fn_cosine": "build a cosine learning rate schedule function with warmup, cycle length, and theta parameters",
+    "create_lr_linear_schedule": "create a linear learning rate schedule that warms up then decays to a minimum ratio",
+    "create_lr_inv_sqrt_schedule": "create an inverse square root learning rate schedule with warmup and exponential decay factor",
+    "review_OptimArgs_dataclass": "review the OptimArgs dataclass with configurable lr, weight decay, beta, and scheduler settings"
+  },
+  "facebookresearch_memory/lingua/probe.py": {
+    "probe_model_activations_with_AutoProbeD": "use AutoProbeD as a context manager to probe a PyTorch model's linear inputs, outputs, weights, and gradients during forward and backward passes",
+    "log_custom_tensor_with_log_stats": "call log_stats on any tensor with a name to log its statistics when AutoProbeD is active in the current context",
+    "compute_tensor_statistics_with_get_stats": "use _get_stats to compute shape, mean, std, skew, kurtosis, min, max, and quantiles for a PyTorch tensor",
+    "probe_attention_logits_and_entropy": "AutoProbeD automatically logs attention logits and entropy for SDPA and xFormers flash attention operations during model forward passes",
+    "disable_torch_compile_with_TorchCompileDisabler": "use TorchCompileDisabler as a context manager to temporarily disable torch.compile on a module and its submodules"
+  },
+  "facebookresearch_memory/lingua/profiling.py": {
+    "run_profiler_context": "use maybe_run_profiler as a context manager to profile a PyTorch module with xformers and wandb integration",
+    "convert_perfetto_to_html": "convert a perfetto trace JSON file to an interactive HTML viewer using perfetto_to_html",
+    "configure_profiler_args": "create a ProfilerArgs dataclass to configure warmup steps, profile steps, and trace folder for profiling",
+    "profile_with_wandb_pytorch": "use PyTorchProfilerWandb to profile PyTorch operations and log trace HTML artifacts to wandb",
+    "profile_memory_with_wandb": "use MemSnapshotsProfilerWandb to capture memory snapshots and log memory trace plots to wandb"
+  },
+  "facebookresearch_memory/lingua/stool.py": {
+    "launch_slurm_job": "launch a Slurm job by submitting an sbatch script with GPU nodes and conda environment",
+    "copy_python_dir": "copy Python files from one directory to another using rsync with selective inclusion",
+    "retrieve_partition_max_time": "retrieve the maximum time limits for each Slurm partition using sinfo",
+    "validate_stool_args": "validate StoolArgs configuration including time limits, constraints, account, and QoS settings",
+    "run_stool_cli": "run the stool CLI module to submit a training job via OmegaConf dot-list arguments"
+  },
+  "facebookresearch_memory/lingua/tokenizer.py": {
+    "build_tokenizer": "build a tokenizer using build_tokenizer with name bytes sp tiktoken or mock and an optional model path",
+    "encode_text_byte": "encode text to byte tokens using ByteTokenizer encode with optional BOS and EOS token flags",
+    "decode_tokens_byte": "decode a list of integer tokens back to a UTF-8 string using ByteTokenizer decode",
+    "encode_text_sentencepiece": "encode text to tokens using SentencePieceTokenizer with a SentencePiece model file and BOS EOS flags",
+    "get_token_offsets": "get token substrings and their byte offsets in the original text using get_token_offsets on any tokenizer"
+  },
+  "facebookresearch_memory/lingua/transformer.py": {
+    "build_transformer_model": "build a BaseTransformer model with configurable dimensions, layers, and attention heads using BaseTransformerArgs",
+    "create_attention_with_rope": "create an Attention module with rotary embeddings and grouped query attention support for multi-head attention",
+    "test_feedforward_swiglu": "test the FeedForward module using SiLU activation with w1, w3, w2 linear layers in SwiGLU pattern",
+    "review_rotary_embedding": "review the RotaryEmbedding class to precompute frequency tensors for RoPE positional encoding",
+    "refactor_attention_implementation": "refactor the Attention forward pass to switch between sdpa, fmha, or flex_attention backends"
+  },
+  "facebookresearch_memory/lingua/product_key/colwise_embedding_bag.py": {
+    "create_xformer_embedding_bag": "create an xFormerEmbeddingBag module with a given size and embedding dimension",
+    "run_xformer_embedding_bag_forward": "run the xFormerEmbeddingBag forward pass with indices and per-sample weight scores",
+    "create_colwise_embedding_bag_style": "create a ColwiseEmbeddingBag parallel style with custom input and output sharding layouts",
+    "review_colwise_partition_fn": "review the ColwiseEmbeddingBag partition function that column-shards EmbeddingBag weights across devices",
+    "test_colwise_apply": "test the ColwiseEmbeddingBag _apply method to distribute an xFormerEmbeddingBag module on a DeviceMesh"
+  },
+  "facebookresearch_memory/lingua/product_key/memory.py": {
+    "build_hashingmemory_module": "build a HashingMemory module with product key memory for a given input and output dimension",
+    "create_hashingmemory_forward": "create a forward pass through HashingMemory to read values from the memory using product key retrieval",
+    "configure_productkeyargs": "configure ProductKeyArgs dataclass to enable product key memory with custom key count, heads, and k-NN parameters",
+    "build_querymlp_module": "build a QueryMLP module to compute multi-head queries from input embeddings for memory retrieval",
+    "reset_hashingmemory_parameters": "reset HashingMemory parameters including keys, values, and query projections with configurable initialization"
+  },
+  "facebookresearch_memory/lingua/product_key/xformer_embeddingbag.py": {
+    "run_xformers_embedding_bag": "run xformers_embedding_bag with indices, weight, and per_sample_weights tensors to compute embedding bag lookups",
+    "run_custom_embedding_bag_function": "run custom_embedding_bag_function with indices, weight, and per_sample_weights tensors for a chunked backward embedding bag",
+    "run_embedding_bag_triton": "run embedding_bag_triton with indices, weight, and per_sample_weights tensors for a Triton-accelerated embedding bag forward pass",
+    "run_embedding_bag_bw_rev_indices": "run embedding_bag_bw_rev_indices to compute weight and per_sample_weights gradients using reverse index aggregation",
+    "run_embedding_bag_bw2": "run embedding_bag_bw2 to compute weight and per_sample_weights gradients using atomics or locking strategies"
+  },
+  "facebookresearch_memory/setup/download_prepare_hf_data.py": {
+    "run_download_prepare_hf_data": "run the CLI to download, shuffle, and split a HuggingFace dataset like fineweb_edu into chunked JSONL files",
+    "run_download_dataset": "run the download_dataset function to download a HuggingFace dataset with retry logic on timeout",
+    "run_parquet_to_jsonl": "run the parquet_to_jsonl function to convert Parquet files to JSONL using a DataTrove pipeline",
+    "run_setup_terashuf": "run the setup_terashuf function to clone and compile the terashuf shuffling tool from source",
+    "run_run_command": "run the run_command function to execute a shell command with subprocess and print the command being run"
+  }
+}

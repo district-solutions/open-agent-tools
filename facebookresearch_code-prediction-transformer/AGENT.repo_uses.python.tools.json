@@ -1,0 +1,107 @@
+{
+  "facebookresearch_code-prediction-transformer/code2seq/code2seq_model.py": {
+    "build_code2seq_model": "build a Code2SeqModel instance with token and subtoken vocab sizes and a loss function",
+    "run_forward_pass": "run a forward pass through the Code2SeqModel with starts, paths, ends, and targets tensors",
+    "embed_code_paths": "embed code paths using the node embedding and bidirectional LSTM in Code2SeqModel",
+    "compute_attention_weights": "compute softmax attention weights over embedded tensors using EmbeddingAttentionLayer",
+    "reset_model_parameters": "reset all multi-dimensional parameters in the Code2SeqModel using Xavier uniform initialization"
+  },
+  "facebookresearch_code-prediction-transformer/code2seq/dataset.py": {
+    "create_dataset_from_jsonl": "create a PyTorch Dataset that loads data points from a JSON-lines file with efficient seek-based access",
+    "get_dataset_length": "get the total number of data points in the code2seq Dataset by calling len on it",
+    "retrieve_data_point_by_index": "retrieve a single data point from the Dataset by index using seek-based file reading",
+    "collate_batch_into_tensors": "collate a batch of target, starts, paths, and ends into padded PyTorch tensors for model input",
+    "pad_sequences_with_combine": "pad variable-length start, path, and end sequences to uniform dimensions using the collate combine helper"
+  },
+  "facebookresearch_code-prediction-transformer/code2seq/generate_data.py": {
+    "generate_data_points_from_ast": "run generate_data.py to extract terminal-to-terminal paths from AST files and write datapoints to output",
+    "extract_paths_from_ast": "extract all valid paths between terminal nodes in an AST using DFS with a max path length constraint",
+    "get_leaf_nodes_by_type": "get leaf node indices from an AST filtered by id type such as attr, num, name, or param",
+    "get_all_paths_with_sampling": "get all paths for target nodes in an AST with random sampling capped at a max number of paths",
+    "load_word_to_index_vocab": "load a pickled vocabulary file and return a word-to-index mapping with an unknown token fallback"
+  },
+  "facebookresearch_code-prediction-transformer/code2seq/generate_vocab.py": {
+    "run_generate_vocab_cli": "run the generate_vocab script to create a code2seq vocabulary pickle file from a JSON-lines input",
+    "create_token_vocab": "create a token-type vocabulary from a JSON-lines code dataset using the code2seq generate_vocab tool",
+    "create_subtoken_vocab": "create a subtoken-type vocabulary by tokenizing terminal nodes from a JSON-lines code dataset",
+    "create_output_vocab": "create an output-type vocabulary from terminal nodes of a JSON-lines code dataset",
+    "review_get_value": "review the get_value function to understand how it extracts tokens, subtokens, or output nodes from parsed JSON lines"
+  },
+  "facebookresearch_code-prediction-transformer/models/code2seq/dataset.py": {
+    "create_Dataset": "create a PyTorch Dataset instance from a JSONL file path for code2seq model training",
+    "use_Dataset_getitem": "use the Dataset __getitem__ method to load a single JSON data point by index",
+    "use_Dataset_len": "use the Dataset __len__ method to get the total number of data points in the file",
+    "run_Dataset_collate": "run the Dataset collate static method to pad and stack a batch into PyTorch tensors",
+    "review_Dataset_class": "review the Dataset class that provides efficient random-access loading of JSONL data for code2seq"
+  },
+  "facebookresearch_code-prediction-transformer/models/code2seq/generate_vocab.py": {
+    "run_generate_vocab_token": "run generate_vocab.py to build a token vocabulary from a JSONL dataset for the code2seq model",
+    "run_generate_vocab_subtoken": "run generate_vocab.py with subtoken mode to tokenize terminal nodes and build a vocabulary pickle file",
+    "run_generate_vocab_output": "run generate_vocab.py with output mode to extract terminal nodes as the vocabulary from a JSONL input",
+    "create_get_value_function": "create a function that extracts vocabulary items from a parsed JSON line using token, subtoken, or output mode",
+    "refactor_get_value_subtoken": "refactor get_value to support a new vocab_type that combines token and subtoken extraction strategies"
+  },
+  "facebookresearch_code-prediction-transformer/models/path_trans/dataset.py": {
+    "create_setup_instance": "create a Setup instance that builds a Vocab and Dataset from filepaths for the path_trans model",
+    "convert_tokens_with_vocab": "convert dependency paths, extensions, and root paths into vocabulary indices using the Vocab convert method",
+    "collate_batch_sequences": "collate a batch of sequences into padded PyTorch tensors with input, target, and root path data",
+    "pad_root_paths": "pad root paths to uniform length within a batch using the combine_root_paths helper function",
+    "build_dataset_for_training": "build a Dataset instance from a file path and IDs file for path-based code prediction training"
+  },
+  "facebookresearch_code-prediction-transformer/models/path_trans/generate_data.py": {
+    "generate_datapoints_from_ast": "run the CLI tool to generate datapoints from an AST file with configurable context and path length",
+    "extract_leaf_tokens_from_ast": "create a function that extracts leaf tokens and their indices from an AST node list",
+    "build_ancestor_chains_for_ast": "build ancestor chains for each node in an AST by traversing parent-child relationships",
+    "get_root_paths_for_leaves": "get root-to-leaf paths with a configurable max path length for given leaf IDs",
+    "generate_augmented_datapoints_with_sliding_window": "generate augmented datapoints from an AST using a sliding window approach when tokens exceed max length"
+  },
+  "facebookresearch_code-prediction-transformer/models/path_trans_variation/dataset.py": {
+    "create_setup_vocab": "create a Setup instance that builds a Vocab from a vocab file path",
+    "create_setup_dataset": "create a Setup instance that builds a Dataset from file paths",
+    "convert_vocab_tokens": "convert a sequence of tokens to vocabulary indices using Vocab convert method",
+    "collate_dataset_sequences": "collate a batch of sequences into padded PyTorch tensors using Dataset collate",
+    "review_dataset_collate_padding": "review the Dataset collate method to understand how sequences are padded and shifted"
+  },
+  "facebookresearch_code-prediction-transformer/models/path_trans_variation/generate_data.py": {
+    "generate_datapoints_from_ast": "run generate_data.py with an AST JSON-lines file to produce augmented datapoints for training",
+    "extract_leaf_tokens_from_ast": "use get_leaf_info to extract leaf tokens and their indices from an AST node list",
+    "create_augmented_windows": "use get_dps to generate sliding window datapoints with configurable max length from an AST",
+    "run_cli_datapoint_generation": "run the script with --ast_fp and --out_fp arguments to generate and write datapoints to a file",
+    "configure_context_length": "set the --n_ctx argument to control the maximum number of tokens per generated datapoint"
+  },
+  "facebookresearch_code-prediction-transformer/models/seq/astunparser.py": {
+    "unparse_ast_to_source": "convert a Python AST tree back into source code using the Unparser class",
+    "unparse_ast_to_string": "unparse a Python AST into a string by passing a StringIO buffer to Unparser",
+    "unparse_ast_with_future_imports": "unparse an AST while tracking __future__ imports for correct string literal handling",
+    "interleave_helper": "call a function on each item in a sequence with an interleaving function between items",
+    "dispatch_ast_nodes": "dispatch AST node types to their corresponding unparsing methods via the dispatch method"
+  },
+  "facebookresearch_code-prediction-transformer/models/seq/dataset.py": {
+    "create_setup_instance": "create a Setup instance that builds a Vocab and Dataset from filepaths",
+    "convert_tokens_to_indices": "convert a sequence of tokens to vocabulary indices using Vocab.convert",
+    "collate_batch_sequences": "collate a batch of sequences into padded input and target tensors with Dataset.collate",
+    "create_dataset_from_files": "create a Dataset instance from a file path and an IDs file path",
+    "create_vocab_from_file": "create a Vocab instance from a vocabulary file path using Setup._create_vocab"
+  },
+  "facebookresearch_code-prediction-transformer/models/seq/generate_data.py": {
+    "generate_datapoints_from_source": "run the CLI to generate JSON datapoints from a list of Python source code files",
+    "tokenize_python_source": "parse Python source code into AST tokens and split into fixed-length context windows",
+    "extract_leaf_ids": "extract indices of non-None AST node types from a list of token types",
+    "extract_value_ids": "extract indices of attr, Num, NameStore, NameLoad, and NameParam AST node types",
+    "transpose_tokens": "transpose a list of SrcASTToken objects into chunked token and type lists"
+  },
+  "facebookresearch_code-prediction-transformer/models/trav_trans/dataset.py": {
+    "create_vocab_convert": "create a Vocab instance and convert token sequences to index sequences using the vocab2idx mapping",
+    "collate_dataset_sequences": "collate a batch of sequences into padded input and target tensors for model training",
+    "setup_create_dataset": "create a Dataset instance from a file path and an IDs file path using Setup",
+    "setup_create_vocab": "create a Vocab instance from a vocab file path using the Setup class",
+    "review_collate_padding": "review the Dataset collate method to understand how sequences are padded and shifted for teacher forcing"
+  },
+  "facebookresearch_code-prediction-transformer/models/trav_trans/generate_ast_ids.py": {
+    "run_generate_ast_leaf_ids": "run generate_ast_ids.py to extract leaf and internal node ids from an AST file",
+    "run_generate_ast_value_ids": "run generate_ast_ids.py to extract attr, num, name, and param value ids from an AST file",
+    "run_generate_ast_type_ids": "run generate_ast_ids.py to extract call, assign, return, list, dict, and raise type ids from an AST file",
+    "run_generate_ast_all_ids": "run generate_ast_ids.py with all id types to extract leaf, value, and type ids from an AST file",
+    "review_get_leaf_ids": "review the get_leaf_ids function that separates AST nodes into leaf and internal node index lists"
+  }
+}

@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: facebookresearch/d2go
+- repo_uri: https://github.com/facebookresearch/d2go
+
+## File: facebookresearch_d2go/d2go/modeling/meta_arch/fcos.py
+
+Prompts
+
+```
+['build a FCOS object detection model from a Detectron2 config using the from_config class method', 'create an FCOSInferenceWrapper module that wraps a FCOS model for single image forward inference', 'add FCOS model configuration defaults including num classes, inference thresholds, and focal loss parameters to a config node', 'prepare a FCOS model for quantization by wrapping backbone and head with quant subclasses and fusing modules', 'export a FCOS model using default_fcos_prepare_for_export to return a PredictorExportConfig with preprocess and postprocess info', 'prepare a GeneralizedRCNN model for export to Caffe2, ONNX, or TorchScript using the RCNN_PREPARE_FOR_EXPORT_REGISTRY', 'prepare a GeneralizedRCNN model for quantization by wrapping backbone, RPN head, and ROI heads with quant wrappers', 'prepare a GeneralizedRCNN model for FX-based quantization-aware training using default_rcnn_custom_prepare_fx with example inputs', 'convert a prepared FX quantized GeneralizedRCNN model using default_rcnn_custom_convert_fx to apply convert_fx on each sub-module', 'wrap a GeneralizedRCNN model with D2RCNNInferenceWrapper to handle preprocessing and postprocessing during tracing export', 'review the RetinaNet class that re-registers detectron2 RetinaNet in D2Go META_ARCH_REGISTRY', 'review the prepare_for_export method that raises NotImplementedError for export preparation', 'summarize the RetinaNet wrapper class extending detectron2 RetinaNet with D2Go registry support', 'test the RetinaNet class registration in D2Go META_ARCH_REGISTRY', 'refactor the prepare_for_export method to support model export instead of raising NotImplementedError', 'prepare a SemanticSegmentor model for export by generating preprocess and postprocess function configs', 'run the ModelWrapper forward pass to normalize input, extract backbone features, and return segmentation results', 'create a PreprocessFunc to extract and pad image tensors from D2Go dataloader batches with size divisibility alignment', 'run PostprocessFunc to rescale semantic segmentation logits to original image resolution and package results', "review the SemanticSegmentor class that re-registers Detectron2's meta-arch in D2Go with updated export APIs"]
+```
+
+Usage
+
+```
+{'build_FCOS_model_from_config': 'build a FCOS object detection model from a Detectron2 config using the from_config class method', 'create_FCOSInferenceWrapper': 'create an FCOSInferenceWrapper module that wraps a FCOS model for single image forward inference', 'add_fcos_configs': 'add FCOS model configuration defaults including num classes, inference thresholds, and focal loss parameters to a config node', 'prepare_FCOS_for_quantization': 'prepare a FCOS model for quantization by wrapping backbone and head with quant subclasses and fusing modules', 'export_FCOS_model': 'export a FCOS model using default_fcos_prepare_for_export to return a PredictorExportConfig with preprocess and postprocess info'}
+```
+
+## File: facebookresearch_d2go/d2go/modeling/meta_arch/rcnn.py
+
+Prompts
+
+```
+['build a FCOS object detection model from a Detectron2 config using the from_config class method', 'create an FCOSInferenceWrapper module that wraps a FCOS model for single image forward inference', 'add FCOS model configuration defaults including num classes, inference thresholds, and focal loss parameters to a config node', 'prepare a FCOS model for quantization by wrapping backbone and head with quant subclasses and fusing modules', 'export a FCOS model using default_fcos_prepare_for_export to return a PredictorExportConfig with preprocess and postprocess info', 'prepare a GeneralizedRCNN model for export to Caffe2, ONNX, or TorchScript using the RCNN_PREPARE_FOR_EXPORT_REGISTRY', 'prepare a GeneralizedRCNN model for quantization by wrapping backbone, RPN head, and ROI heads with quant wrappers', 'prepare a GeneralizedRCNN model for FX-based quantization-aware training using default_rcnn_custom_prepare_fx with example inputs', 'convert a prepared FX quantized GeneralizedRCNN model using default_rcnn_custom_convert_fx to apply convert_fx on each sub-module', 'wrap a GeneralizedRCNN model with D2RCNNInferenceWrapper to handle preprocessing and postprocessing during tracing export', 'review the RetinaNet class that re-registers detectron2 RetinaNet in D2Go META_ARCH_REGISTRY', 'review the prepare_for_export method that raises NotImplementedError for export preparation', 'summarize the RetinaNet wrapper class extending detectron2 RetinaNet with D2Go registry support', 'test the RetinaNet class registration in D2Go META_ARCH_REGISTRY', 'refactor the prepare_for_export method to support model export instead of raising NotImplementedError', 'prepare a SemanticSegmentor model for export by generating preprocess and postprocess function configs', 'run the ModelWrapper forward pass to normalize input, extract backbone features, and return segmentation results', 'create a PreprocessFunc to extract and pad image tensors from D2Go dataloader batches with size divisibility alignment', 'run PostprocessFunc to rescale semantic segmentation logits to original image resolution and package results', "review the SemanticSegmentor class that re-registers Detectron2's meta-arch in D2Go with updated export APIs"]
+```
+
+Usage
+
+```
+{'prepare_rcnn_for_export': 'prepare a GeneralizedRCNN model for export to Caffe2, ONNX, or TorchScript using the RCNN_PREPARE_FOR_EXPORT_REGISTRY', 'prepare_rcnn_for_quantization': 'prepare a GeneralizedRCNN model for quantization by wrapping backbone, RPN head, and ROI heads with quant wrappers', 'prepare_rcnn_fx_qat': 'prepare a GeneralizedRCNN model for FX-based quantization-aware training using default_rcnn_custom_prepare_fx with example inputs', 'convert_rcnn_fx_quantized': 'convert a prepared FX quantized GeneralizedRCNN model using default_rcnn_custom_convert_fx to apply convert_fx on each sub-module', 'wrap_rcnn_inference': 'wrap a GeneralizedRCNN model with D2RCNNInferenceWrapper to handle preprocessing and postprocessing during tracing export'}
+```
+
+## File: facebookresearch_d2go/d2go/modeling/meta_arch/retinanet.py
+
+Prompts
+
+```
+['build a FCOS object detection model from a Detectron2 config using the from_config class method', 'create an FCOSInferenceWrapper module that wraps a FCOS model for single image forward inference', 'add FCOS model configuration defaults including num classes, inference thresholds, and focal loss parameters to a config node', 'prepare a FCOS model for quantization by wrapping backbone and head with quant subclasses and fusing modules', 'export a FCOS model using default_fcos_prepare_for_export to return a PredictorExportConfig with preprocess and postprocess info', 'prepare a GeneralizedRCNN model for export to Caffe2, ONNX, or TorchScript using the RCNN_PREPARE_FOR_EXPORT_REGISTRY', 'prepare a GeneralizedRCNN model for quantization by wrapping backbone, RPN head, and ROI heads with quant wrappers', 'prepare a GeneralizedRCNN model for FX-based quantization-aware training using default_rcnn_custom_prepare_fx with example inputs', 'convert a prepared FX quantized GeneralizedRCNN model using default_rcnn_custom_convert_fx to apply convert_fx on each sub-module', 'wrap a GeneralizedRCNN model with D2RCNNInferenceWrapper to handle preprocessing and postprocessing during tracing export', 'review the RetinaNet class that re-registers detectron2 RetinaNet in D2Go META_ARCH_REGISTRY', 'review the prepare_for_export method that raises NotImplementedError for export preparation', 'summarize the RetinaNet wrapper class extending detectron2 RetinaNet with D2Go registry support', 'test the RetinaNet class registration in D2Go META_ARCH_REGISTRY', 'refactor the prepare_for_export method to support model export instead of raising NotImplementedError', 'prepare a SemanticSegmentor model for export by generating preprocess and postprocess function configs', 'run the ModelWrapper forward pass to normalize input, extract backbone features, and return segmentation results', 'create a PreprocessFunc to extract and pad image tensors from D2Go dataloader batches with size divisibility alignment', 'run PostprocessFunc to rescale semantic segmentation logits to original image resolution and package results', "review the SemanticSegmentor class that re-registers Detectron2's meta-arch in D2Go with updated export APIs"]
+```
+
+Usage
+
+```
+{'review_RetinaNet_class': 'review the RetinaNet class that re-registers detectron2 RetinaNet in D2Go META_ARCH_REGISTRY', 'review_prepare_for_export_method': 'review the prepare_for_export method that raises NotImplementedError for export preparation', 'summarize_RetinaNet_wrapper': 'summarize the RetinaNet wrapper class extending detectron2 RetinaNet with D2Go registry support', 'test_RetinaNet_registry': 'test the RetinaNet class registration in D2Go META_ARCH_REGISTRY', 'refactor_prepare_for_export': 'refactor the prepare_for_export method to support model export instead of raising NotImplementedError'}
+```
+
+## File: facebookresearch_d2go/d2go/modeling/meta_arch/semantic_seg.py
+
+Prompts
+
+```
+['build a FCOS object detection model from a Detectron2 config using the from_config class method', 'create an FCOSInferenceWrapper module that wraps a FCOS model for single image forward inference', 'add FCOS model configuration defaults including num classes, inference thresholds, and focal loss parameters to a config node', 'prepare a FCOS model for quantization by wrapping backbone and head with quant subclasses and fusing modules', 'export a FCOS model using default_fcos_prepare_for_export to return a PredictorExportConfig with preprocess and postprocess info', 'prepare a GeneralizedRCNN model for export to Caffe2, ONNX, or TorchScript using the RCNN_PREPARE_FOR_EXPORT_REGISTRY', 'prepare a GeneralizedRCNN model for quantization by wrapping backbone, RPN head, and ROI heads with quant wrappers', 'prepare a GeneralizedRCNN model for FX-based quantization-aware training using default_rcnn_custom_prepare_fx with example inputs', 'convert a prepared FX quantized GeneralizedRCNN model using default_rcnn_custom_convert_fx to apply convert_fx on each sub-module', 'wrap a GeneralizedRCNN model with D2RCNNInferenceWrapper to handle preprocessing and postprocessing during tracing export', 'review the RetinaNet class that re-registers detectron2 RetinaNet in D2Go META_ARCH_REGISTRY', 'review the prepare_for_export method that raises NotImplementedError for export preparation', 'summarize the RetinaNet wrapper class extending detectron2 RetinaNet with D2Go registry support', 'test the RetinaNet class registration in D2Go META_ARCH_REGISTRY', 'refactor the prepare_for_export method to support model export instead of raising NotImplementedError', 'prepare a SemanticSegmentor model for export by generating preprocess and postprocess function configs', 'run the ModelWrapper forward pass to normalize input, extract backbone features, and return segmentation results', 'create a PreprocessFunc to extract and pad image tensors from D2Go dataloader batches with size divisibility alignment', 'run PostprocessFunc to rescale semantic segmentation logits to original image resolution and package results', "review the SemanticSegmentor class that re-registers Detectron2's meta-arch in D2Go with updated export APIs"]
+```
+
+Usage
+
+```
+{'prepare_semantic_segmentor_for_export': 'prepare a SemanticSegmentor model for export by generating preprocess and postprocess function configs', 'run_model_wrapper_forward': 'run the ModelWrapper forward pass to normalize input, extract backbone features, and return segmentation results', 'create_preprocess_func': 'create a PreprocessFunc to extract and pad image tensors from D2Go dataloader batches with size divisibility alignment', 'run_postprocess_func': 'run PostprocessFunc to rescale semantic segmentation logits to original image resolution and package results', 'review_semantic_segmentor_class': "review the SemanticSegmentor class that re-registers Detectron2's meta-arch in D2Go with updated export APIs"}
+```
+

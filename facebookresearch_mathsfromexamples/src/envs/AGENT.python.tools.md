@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mathsfromexamples
+- repo_uri: https://github.com/facebookresearch/mathsfromexamples
+
+## File: facebookresearch_mathsfromexamples/src/envs/ode.py
+
+Prompts
+
+```
+['create an ODEEnvironment instance with params to generate synthetic ODE systems for training', 'generate a random ODE system and compute its convergence speed at the evaluation point', 'generate a control system and compute controllability dimension with optional Gramian matrix prediction', 'convert a SymPy expression to a prefix token list for sequence modeling', 'parse a prefix expression list and convert it to human-readable infix notation']
+```
+
+Usage
+
+```
+{'create_ode_environment': 'create an ODEEnvironment instance with params to generate synthetic ODE systems for training', 'generate_ode_convergence_system': 'generate a random ODE system and compute its convergence speed at the evaluation point', 'generate_control_system': 'generate a control system and compute controllability dimension with optional Gramian matrix prediction', 'convert_sympy_to_prefix': 'convert a SymPy expression to a prefix token list for sequence modeling', 'parse_prefix_to_infix': 'parse a prefix expression list and convert it to human-readable infix notation'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/poincare-embeddings
+- repo_uri: https://github.com/facebookresearch/poincare-embeddings
+
+## File: facebookresearch_poincare-embeddings/embed.py
+
+Prompts
+
+```
+['run the CLI to train hyperbolic embeddings on a dataset with configurable manifold and model', 'run reconstruction evaluation on a trained model checkpoint to compute mean rank and map rank', 'run hypernymy evaluation on a trained model checkpoint to compute hypernymy accuracy metrics', 'run the async evaluation loop that processes epoch results and tracks best model checkpoints', 'run multi-threaded hogwild training with shared memory model across multiple processes']
+```
+
+Usage
+
+```
+{'run_train_hyperbolic_embeddings': 'run the CLI to train hyperbolic embeddings on a dataset with configurable manifold and model', 'run_reconstruction_evaluation': 'run reconstruction evaluation on a trained model checkpoint to compute mean rank and map rank', 'run_hypernymy_evaluation': 'run hypernymy evaluation on a trained model checkpoint to compute hypernymy accuracy metrics', 'run_async_evaluation_loop': 'run the async evaluation loop that processes epoch results and tracks best model checkpoints', 'run_hogwild_multithreaded_training': 'run multi-threaded hogwild training with shared memory model across multiple processes'}
+```
+

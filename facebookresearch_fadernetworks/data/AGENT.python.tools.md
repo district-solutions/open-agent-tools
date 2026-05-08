@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fadernetworks
+- repo_uri: https://github.com/facebookresearch/fadernetworks
+
+## File: facebookresearch_fadernetworks/data/preprocess.py
+
+Prompts
+
+```
+['run preprocess_images to read CelebA face images, resize to 256x256, and save as a PyTorch tensor', 'run preprocess_attributes to parse list_attr_celeba.txt and save 41 binary attributes per image as a PyTorch file', 'refactor preprocess_images to support configurable image size and output path instead of hardcoded constants', 'review preprocess_attributes to verify correct parsing of 41 binary CelebA attributes from the text file', 'summarize preprocess_images which crops, resizes, and converts 202599 CelebA images into a PyTorch tensor saved as a .pth file']
+```
+
+Usage
+
+```
+{'run_preprocess_images': 'run preprocess_images to read CelebA face images, resize to 256x256, and save as a PyTorch tensor', 'run_preprocess_attributes': 'run preprocess_attributes to parse list_attr_celeba.txt and save 41 binary attributes per image as a PyTorch file', 'refactor_preprocess_images': 'refactor preprocess_images to support configurable image size and output path instead of hardcoded constants', 'review_preprocess_attributes': 'review preprocess_attributes to verify correct parsing of 41 binary CelebA attributes from the text file', 'summarize_preprocess_images': 'summarize preprocess_images which crops, resizes, and converts 202599 CelebA images into a PyTorch tensor saved as a .pth file'}
+```
+

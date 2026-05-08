@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/tests/test_apps/hydra_to_cfg_interpolation/my_app.py
+
+Prompts
+
+```
+['run a Hydra app that prints config value c interpolated from hydra:job.override_dirname', 'run the my_app function decorated with hydra.main to print cfg.c from config.yaml', 'test the Hydra app to verify cfg.c resolves the hydra:job.override_dirname interpolation', 'review the my_app function using the hydra.main decorator with config_path and config_name', 'summarize the Hydra app that uses DictConfig to print interpolated config values']
+```
+
+Usage
+
+```
+{'run_hydra_app_with_cfg_interpolation': 'run a Hydra app that prints config value c interpolated from hydra:job.override_dirname', 'run_my_app': 'run the my_app function decorated with hydra.main to print cfg.c from config.yaml', 'test_hydra_override_dirname_interpolation': 'test the Hydra app to verify cfg.c resolves the hydra:job.override_dirname interpolation', 'review_hydra_main_decorator': 'review the my_app function using the hydra.main decorator with config_path and config_name', 'summarize_hydra_cfg_app': 'summarize the Hydra app that uses DictConfig to print interpolated config values'}
+```
+

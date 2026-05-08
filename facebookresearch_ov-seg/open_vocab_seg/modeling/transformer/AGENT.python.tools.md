@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: facebookresearch/ov-seg
+- repo_uri: https://github.com/facebookresearch/ov-seg
+
+## File: facebookresearch_ov-seg/open_vocab_seg/modeling/transformer/open_vocab_transformer_predictor.py
+
+Prompts
+
+```
+['create an OpenVocabTransformerPredictor instance with custom embedding dim, hidden dim, and transformer parameters', 'freeze all pretrained parameters except class_embed in the OpenVocabTransformerPredictor for fine-tuning', 'build an OpenVocabTransformerPredictor from a Detectron2 config object using the from_config classmethod', 'review the class_embed MLP output FFN configuration in OpenVocabTransformerPredictor for mask classification', 'summarize the OpenVocabTransformerPredictor transformer encoder-decoder architecture and hyperparameters', 'create a PositionEmbeddingSine module with custom num_pos_feats, temperature, and normalize settings', 'run the forward pass of PositionEmbeddingSine on a tensor with an optional mask', 'test the PositionEmbeddingSine class by passing a batch of image tensors through forward', 'review the PositionEmbeddingSine constructor to understand default parameters and validation logic', 'refactor the PositionEmbeddingSine forward method to support additional normalization strategies', 'build a Transformer model with configurable encoder and decoder layers for vision tasks', 'create a TransformerEncoder that processes source sequences through stacked encoder layers', 'create a TransformerDecoder that generates outputs from memory with optional intermediate activations', 'review the TransformerEncoderLayer self-attention and feedforward operations with pre or post normalization', 'review the TransformerDecoderLayer self-attention cross-attention and feedforward operations with normalization options', 'build a TransformerPredictor module with configurable encoder-decoder layers, query embeddings, and mask classification for segmentation', 'create an MLP multi-layer perceptron with configurable input, hidden, output dimensions and layer count', 'review the TransformerPredictor forward pass that computes positional encoding, transformer output, and segmentation masks', 'test the TransformerPredictor from_config class method that reads Mask2Former hyperparameters from a Detectron2 config', 'refactor the TransformerPredictor _set_aux_loss method to structure intermediate decoder outputs for auxiliary loss computation']
+```
+
+Usage
+
+```
+{'create_open_vocab_transformer_predictor': 'create an OpenVocabTransformerPredictor instance with custom embedding dim, hidden dim, and transformer parameters', 'freeze_pretrained_parameters': 'freeze all pretrained parameters except class_embed in the OpenVocabTransformerPredictor for fine-tuning', 'build_from_detectron2_config': 'build an OpenVocabTransformerPredictor from a Detectron2 config object using the from_config classmethod', 'review_class_embed_mlp': 'review the class_embed MLP output FFN configuration in OpenVocabTransformerPredictor for mask classification', 'summarize_transformer_architecture': 'summarize the OpenVocabTransformerPredictor transformer encoder-decoder architecture and hyperparameters'}
+```
+
+## File: facebookresearch_ov-seg/open_vocab_seg/modeling/transformer/position_encoding.py
+
+Prompts
+
+```
+['create an OpenVocabTransformerPredictor instance with custom embedding dim, hidden dim, and transformer parameters', 'freeze all pretrained parameters except class_embed in the OpenVocabTransformerPredictor for fine-tuning', 'build an OpenVocabTransformerPredictor from a Detectron2 config object using the from_config classmethod', 'review the class_embed MLP output FFN configuration in OpenVocabTransformerPredictor for mask classification', 'summarize the OpenVocabTransformerPredictor transformer encoder-decoder architecture and hyperparameters', 'create a PositionEmbeddingSine module with custom num_pos_feats, temperature, and normalize settings', 'run the forward pass of PositionEmbeddingSine on a tensor with an optional mask', 'test the PositionEmbeddingSine class by passing a batch of image tensors through forward', 'review the PositionEmbeddingSine constructor to understand default parameters and validation logic', 'refactor the PositionEmbeddingSine forward method to support additional normalization strategies', 'build a Transformer model with configurable encoder and decoder layers for vision tasks', 'create a TransformerEncoder that processes source sequences through stacked encoder layers', 'create a TransformerDecoder that generates outputs from memory with optional intermediate activations', 'review the TransformerEncoderLayer self-attention and feedforward operations with pre or post normalization', 'review the TransformerDecoderLayer self-attention cross-attention and feedforward operations with normalization options', 'build a TransformerPredictor module with configurable encoder-decoder layers, query embeddings, and mask classification for segmentation', 'create an MLP multi-layer perceptron with configurable input, hidden, output dimensions and layer count', 'review the TransformerPredictor forward pass that computes positional encoding, transformer output, and segmentation masks', 'test the TransformerPredictor from_config class method that reads Mask2Former hyperparameters from a Detectron2 config', 'refactor the TransformerPredictor _set_aux_loss method to structure intermediate decoder outputs for auxiliary loss computation']
+```
+
+Usage
+
+```
+{'create_PositionEmbeddingSine': 'create a PositionEmbeddingSine module with custom num_pos_feats, temperature, and normalize settings', 'run_PositionEmbeddingSine_forward': 'run the forward pass of PositionEmbeddingSine on a tensor with an optional mask', 'test_PositionEmbeddingSine': 'test the PositionEmbeddingSine class by passing a batch of image tensors through forward', 'review_PositionEmbeddingSine_init': 'review the PositionEmbeddingSine constructor to understand default parameters and validation logic', 'refactor_PositionEmbeddingSine_forward': 'refactor the PositionEmbeddingSine forward method to support additional normalization strategies'}
+```
+
+## File: facebookresearch_ov-seg/open_vocab_seg/modeling/transformer/transformer.py
+
+Prompts
+
+```
+['create an OpenVocabTransformerPredictor instance with custom embedding dim, hidden dim, and transformer parameters', 'freeze all pretrained parameters except class_embed in the OpenVocabTransformerPredictor for fine-tuning', 'build an OpenVocabTransformerPredictor from a Detectron2 config object using the from_config classmethod', 'review the class_embed MLP output FFN configuration in OpenVocabTransformerPredictor for mask classification', 'summarize the OpenVocabTransformerPredictor transformer encoder-decoder architecture and hyperparameters', 'create a PositionEmbeddingSine module with custom num_pos_feats, temperature, and normalize settings', 'run the forward pass of PositionEmbeddingSine on a tensor with an optional mask', 'test the PositionEmbeddingSine class by passing a batch of image tensors through forward', 'review the PositionEmbeddingSine constructor to understand default parameters and validation logic', 'refactor the PositionEmbeddingSine forward method to support additional normalization strategies', 'build a Transformer model with configurable encoder and decoder layers for vision tasks', 'create a TransformerEncoder that processes source sequences through stacked encoder layers', 'create a TransformerDecoder that generates outputs from memory with optional intermediate activations', 'review the TransformerEncoderLayer self-attention and feedforward operations with pre or post normalization', 'review the TransformerDecoderLayer self-attention cross-attention and feedforward operations with normalization options', 'build a TransformerPredictor module with configurable encoder-decoder layers, query embeddings, and mask classification for segmentation', 'create an MLP multi-layer perceptron with configurable input, hidden, output dimensions and layer count', 'review the TransformerPredictor forward pass that computes positional encoding, transformer output, and segmentation masks', 'test the TransformerPredictor from_config class method that reads Mask2Former hyperparameters from a Detectron2 config', 'refactor the TransformerPredictor _set_aux_loss method to structure intermediate decoder outputs for auxiliary loss computation']
+```
+
+Usage
+
+```
+{'build_transformer_model': 'build a Transformer model with configurable encoder and decoder layers for vision tasks', 'create_transformer_encoder': 'create a TransformerEncoder that processes source sequences through stacked encoder layers', 'create_transformer_decoder': 'create a TransformerDecoder that generates outputs from memory with optional intermediate activations', 'review_transformer_encoder_layer': 'review the TransformerEncoderLayer self-attention and feedforward operations with pre or post normalization', 'review_transformer_decoder_layer': 'review the TransformerDecoderLayer self-attention cross-attention and feedforward operations with normalization options'}
+```
+
+## File: facebookresearch_ov-seg/open_vocab_seg/modeling/transformer/transformer_predictor.py
+
+Prompts
+
+```
+['create an OpenVocabTransformerPredictor instance with custom embedding dim, hidden dim, and transformer parameters', 'freeze all pretrained parameters except class_embed in the OpenVocabTransformerPredictor for fine-tuning', 'build an OpenVocabTransformerPredictor from a Detectron2 config object using the from_config classmethod', 'review the class_embed MLP output FFN configuration in OpenVocabTransformerPredictor for mask classification', 'summarize the OpenVocabTransformerPredictor transformer encoder-decoder architecture and hyperparameters', 'create a PositionEmbeddingSine module with custom num_pos_feats, temperature, and normalize settings', 'run the forward pass of PositionEmbeddingSine on a tensor with an optional mask', 'test the PositionEmbeddingSine class by passing a batch of image tensors through forward', 'review the PositionEmbeddingSine constructor to understand default parameters and validation logic', 'refactor the PositionEmbeddingSine forward method to support additional normalization strategies', 'build a Transformer model with configurable encoder and decoder layers for vision tasks', 'create a TransformerEncoder that processes source sequences through stacked encoder layers', 'create a TransformerDecoder that generates outputs from memory with optional intermediate activations', 'review the TransformerEncoderLayer self-attention and feedforward operations with pre or post normalization', 'review the TransformerDecoderLayer self-attention cross-attention and feedforward operations with normalization options', 'build a TransformerPredictor module with configurable encoder-decoder layers, query embeddings, and mask classification for segmentation', 'create an MLP multi-layer perceptron with configurable input, hidden, output dimensions and layer count', 'review the TransformerPredictor forward pass that computes positional encoding, transformer output, and segmentation masks', 'test the TransformerPredictor from_config class method that reads Mask2Former hyperparameters from a Detectron2 config', 'refactor the TransformerPredictor _set_aux_loss method to structure intermediate decoder outputs for auxiliary loss computation']
+```
+
+Usage
+
+```
+{'build_transformer_predictor': 'build a TransformerPredictor module with configurable encoder-decoder layers, query embeddings, and mask classification for segmentation', 'create_mlp_ffn': 'create an MLP multi-layer perceptron with configurable input, hidden, output dimensions and layer count', 'review_transformer_predictor_forward': 'review the TransformerPredictor forward pass that computes positional encoding, transformer output, and segmentation masks', 'test_transformer_predictor_from_config': 'test the TransformerPredictor from_config class method that reads Mask2Former hyperparameters from a Detectron2 config', 'refactor_set_aux_loss': 'refactor the TransformerPredictor _set_aux_loss method to structure intermediate decoder outputs for auxiliary loss computation'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/llama-recipes
+- repo_uri: https://github.com/facebookresearch/llama-recipes.git
+
+## File: facebookresearch_llama-recipes/getting-started/inference/api_inference/api_inference.py
+
+Prompts
+
+```
+['run the api_inference CLI module with --api-key and --provider flags to launch a Gradio inference interface', 'run the LlamaInference class to launch a Gradio UI for chat completions via the Llama or OpenAI API provider', 'create a LlamaInference instance with an API key and provider to call chat completions on Llama or OpenAI-compatible endpoints', 'infer a chat completion by calling LlamaInference.infer with user input text and a model ID string', 'launch a Gradio interface for LLM inference using LlamaInference.launch_interface with Llama or OpenAI provider defaults']
+```
+
+Usage
+
+```
+{'run_api_inference_cli': 'run the api_inference CLI module with --api-key and --provider flags to launch a Gradio inference interface', 'run_llama_inference_gradio': 'run the LlamaInference class to launch a Gradio UI for chat completions via the Llama or OpenAI API provider', 'create_llama_inference_client': 'create a LlamaInference instance with an API key and provider to call chat completions on Llama or OpenAI-compatible endpoints', 'infer_llama_chat_completion': 'infer a chat completion by calling LlamaInference.infer with user input text and a model ID string', 'launch_gradio_interface': 'launch a Gradio interface for LLM inference using LlamaInference.launch_interface with Llama or OpenAI provider defaults'}
+```
+

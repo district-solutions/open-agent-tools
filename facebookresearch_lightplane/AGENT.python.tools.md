@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/lightplane
+- repo_uri: https://github.com/facebookresearch/lightplane
+
+## File: facebookresearch_lightplane/setup.py
+
+Prompts
+
+```
+['run setup.py to install the lightplane package with triton, cogapp, configargparse, and tqdm dependencies', 'review the setup.py configuration for the lightplane package including version, dependencies, and excluded packages', 'summarize the lightplane package dependencies including triton 2.1.0, cogapp, configargparse, and tqdm', 'refactor the setup.py find_packages exclude list to add or remove test, example, or scratch directories', 'build a distribution wheel for the lightplane package using setup.py with the specified install requirements']
+```
+
+Usage
+
+```
+{'install_lightplane_package': 'run setup.py to install the lightplane package with triton, cogapp, configargparse, and tqdm dependencies', 'review_setup_configuration': 'review the setup.py configuration for the lightplane package including version, dependencies, and excluded packages', 'summarize_package_dependencies': 'summarize the lightplane package dependencies including triton 2.1.0, cogapp, configargparse, and tqdm', 'refactor_setup_excludes': 'refactor the setup.py find_packages exclude list to add or remove test, example, or scratch directories', 'build_lightplane_wheel': 'build a distribution wheel for the lightplane package using setup.py with the specified install requirements'}
+```
+

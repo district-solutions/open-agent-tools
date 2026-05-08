@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/parlai/agents/ir_baseline/ir_baseline.py
+
+Prompts
+
+```
+['build a Parlai IR baseline agent that ranks candidate responses by similarity to the input query', 'create a fixed-size max priority queue that keeps the N largest items using a heap', 'rank a list of candidate strings by their token-level similarity score to a query representation', 'build a TF-IDF-style query representation with word frequencies and a norm value from a dictionary', 'score the similarity match between a query representation and a text string using token overlap']
+```
+
+Usage
+
+```
+{'build_ir_baseline_agent': 'build a Parlai IR baseline agent that ranks candidate responses by similarity to the input query', 'create_max_priority_queue': 'create a fixed-size max priority queue that keeps the N largest items using a heap', 'rank_candidates_by_similarity': 'rank a list of candidate strings by their token-level similarity score to a query representation', 'build_query_representation': 'build a TF-IDF-style query representation with word frequencies and a norm value from a dictionary', 'score_match_query_to_text': 'score the similarity match between a query representation and a text string using token overlap'}
+```
+

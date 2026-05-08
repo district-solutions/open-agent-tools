@@ -1,0 +1,457 @@
+{
+  "facebookresearch_consistentdepth/loaders/video_dataset.py": {
+    "load_color_image": "load a color image from a file path and return a normalized torch tensor in range 0 to 1",
+    "load_flow_tensor": "load an optical flow image from a raw file path and return a 2-channel flow tensor in pixels",
+    "load_mask_tensor": "load a binary mask image from a file path and return a 0 or 1 torch tensor",
+    "create_VideoDataset": "create a PyTorch dataset that loads 3D video frame pairs with flow, mask, and camera metadata",
+    "create_VideoFrameDataset": "create a PyTorch dataset that loads individual video frames from a formatted color file path"
+  },
+  "facebookresearch_consistentdepth/loss/consistency_loss.py": {
+    "compute_weighted_mse_loss": "compute the weighted mean squared error between input and target tensors using per-pixel weights",
+    "compute_weighted_rmse_loss": "compute the weighted root mean squared error between input and target tensors using per-pixel weights",
+    "compute_weighted_mean_loss": "compute the weighted mean of a tensor using normalized per-element weights",
+    "compute_geometry_consistency_loss": "compute geometry consistency loss including reprojection error and disparity error for camera pairs",
+    "run_consistency_loss": "run the ConsistencyLoss module on predicted depths and metadata to compute total geometry consistency loss"
+  },
+  "facebookresearch_consistentdepth/loss/loss_params.py": {
+    "add_loss_arguments_to_parser": "add loss-related arguments to an argparse parser for view baseline, reprojection, and parameter regularization weights",
+    "make_loss_params_string": "generate a formatted string summarizing loss parameters from an options object",
+    "review_LossParams_class": "review the LossParams class and its static methods for argument parsing and string formatting",
+    "refactor_LossParams_add_arguments": "refactor LossParams.add_arguments to support additional loss weight arguments for custom training configurations",
+    "test_LossParams_make_str": "test the LossParams.make_str method to verify correct formatting of loss parameter strings"
+  },
+  "facebookresearch_consistentdepth/monodepth/depth_model.py": {
+    "review_DepthModel_class": "review the DepthModel abstract base class for monocular depth estimation",
+    "review_forward_method": "review the forward method that estimates depth and applies optional scale transformations",
+    "review_estimate_depth_method": "review the abstract estimate_depth method that subclasses must implement for depth prediction",
+    "review_save_method": "review the abstract save method that subclasses must implement for model persistence",
+    "create_DepthModel_subclass": "create a subclass of DepthModel that implements estimate_depth and save methods"
+  },
+  "facebookresearch_consistentdepth/monodepth/depth_model_registry.py": {
+    "get_depth_model_list": "get a list of available depth model type strings for the consistent depth model registry",
+    "get_depth_model_class": "get the depth model class for a given type string like mc midas2 or monodepth2",
+    "create_depth_model": "create an instantiated depth model from a type string like mc midas2 or monodepth2",
+    "review_depth_model_registry": "review the depth model registry factory functions for supported model types and instantiation",
+    "summarize_depth_model_registry": "summarize the depth model registry module that provides factory functions for monocular depth estimation models"
+  },
+  "facebookresearch_consistentdepth/monodepth/mannequin_challenge_model.py": {
+    "init_mannequin_challenge_model": "create a MannequinChallengeModel instance that downloads and loads the pre-trained depth estimation model",
+    "estimate_depth_images": "estimate depth maps from input images using the MannequinChallengeModel estimate_depth method",
+    "switch_model_to_train": "switch the MannequinChallengeModel to training mode using the train method",
+    "switch_model_to_eval": "switch the MannequinChallengeModel to evaluation mode using the eval method",
+    "save_model_state": "save the MannequinChallengeModel generator network state dict to a file using the save method"
+  },
+  "facebookresearch_consistentdepth/monodepth/midas_v2_model.py": {
+    "create_MidasV2Model_with_pretrained_weights": "create a MidasV2Model instance that loads pretrained MiDaS v2 weights from the Intel ISL checkpoint URL",
+    "create_MidasV2Model_for_cpu_fallback": "create a MidasV2Model with support_cpu=True to gracefully fall back to CPU when no GPU is available",
+    "estimate_depth_from_images": "estimate monocular depth maps from input image tensors by normalizing, running inference, and converting disparity to depth",
+    "save_MidasV2Model_state_dict": "save the MidasV2Model internal state dict to a file path using torch.save for later loading",
+    "review_MidasV2Model_class": "review the MidasV2Model class that extends DepthModel with MiDaS v2 single-image depth estimation using ImageNet normalization"
+  },
+  "facebookresearch_consistentdepth/monodepth/monodepth2_model.py": {
+    "estimate_depth_from_images": "estimate depth from input images using the Monodepth2Model with a ResnetEncoder and DepthDecoder",
+    "initialize_monodepth2_model": "initialize a Monodepth2Model that downloads pretrained encoder and depth decoder weights from Google Cloud Storage",
+    "set_model_to_eval_mode": "set the Monodepth2Model encoder and depth decoder to evaluation mode for inference",
+    "set_model_to_train_mode": "set the Monodepth2Model encoder and depth decoder to training mode for fine-tuning",
+    "get_model_parameters": "get all trainable parameters from the Monodepth2Model encoder and depth decoder as a list"
+  },
+  "facebookresearch_consistentdepth/monodepth/mannequin_challenge/models/base_model.py": {
+    "initialize_BaseModel": "initialize a BaseModel instance with opt config including gpu_ids, isTrain, and checkpoints_dir",
+    "save_network_BaseModel": "save a PyTorch network state dict to a .pth file using save_network helper",
+    "load_network_BaseModel": "load a PyTorch network state dict from a .pth file using load_network helper",
+    "set_input_BaseModel": "set input data on a BaseModel instance using the set_input method",
+    "get_current_visuals_BaseModel": "retrieve the current input visuals from a BaseModel instance using get_current_visuals"
+  },
+  "facebookresearch_consistentdepth/monodepth/mannequin_challenge/models/hourglass.py": {
+    "build_hourglass_model": "build an HourglassModel with a given number of input channels for monocular depth estimation",
+    "run_hourglass_forward": "run the HourglassModel forward pass to predict depth and confidence maps from an input tensor",
+    "create_inception_module": "create an inception module with a custom config of parallel convolution branches",
+    "review_channels_hourglass_blocks": "review the Channels1 through Channels4 recursive hourglass blocks with skip connections and upsampling",
+    "refactor_inception_config": "refactor the inception module config to change filter sizes and output channel dimensions"
+  },
+  "facebookresearch_consistentdepth/monodepth/mannequin_challenge/models/networks.py": {
+    "compute_gradient": "compute the x and y gradients of a 2D, 3D, or 4D tensor with optional normalization",
+    "init_weights": "initialize network weights using normal, xavier, kaiming, or orthogonal initialization strategies",
+    "get_scheduler": "create a learning rate scheduler using lambda, step, or plateau decay policies",
+    "init_net": "move a network to GPU with DataParallel and initialize its weights with the specified strategy",
+    "LaplacianLayer": "apply a Laplacian filter to compute image or depth edge magnitude with optional normalization"
+  },
+  "facebookresearch_consistentdepth/monodepth/mannequin_challenge/models/pix2pix_model.py": {
+    "create_hourglass_variant": "create a HourglassVariant module that wraps an existing model with uncertainty prediction and a new input layer",
+    "build_pix2pix_model": "build a Pix2PixModel for monocular depth estimation using an hourglass network with configurable single or two view input",
+    "run_forward_pass": "run a forward pass through the Pix2PixModel to predict depth and confidence maps from stacked input tensors",
+    "evaluate_depth_errors": "evaluate depth prediction errors using scale-invariant RMSE, L1 relative error, and RMSE metrics on TUM dataset targets",
+    "save_predictions_to_hdf5": "save depth predictions, ground truth, masks, and camera parameters to HDF5 files for evaluation and visualization"
+  },
+  "facebookresearch_consistentdepth/monodepth/mannequin_challenge/options/base_options.py": {
+    "create_BaseOptions_parser": "create a BaseOptions instance to build an argparse parser for monocular depth estimation CLI arguments",
+    "initialize_BaseOptions_arguments": "initialize the BaseOptions parser with all default arguments for input type, model, GPU, and batch config",
+    "parse_BaseOptions_cli": "parse command line arguments using BaseOptions to get a namespace with all experiment configuration options",
+    "configure_BaseOptions_gpu_ids": "configure GPU device IDs by passing a comma-separated string like 0,1,2,3 to the gpu_ids argument",
+    "review_BaseOptions_class": "review the BaseOptions class to understand the argparse arguments for single_view, two_view, and two_view_k input modes"
+  },
+  "facebookresearch_consistentdepth/monodepth/mannequin_challenge/options/train_options.py": {
+    "parse_train_options": "parse command line arguments to configure GAN training hyperparameters and save options to disk",
+    "configure_learning_rate": "set the initial learning rate, beta1 momentum, and lr_policy for the Adam optimizer",
+    "set_training_schedule": "configure niter, niter_decay, and lr_decay_epoch to control training iterations and learning rate decay",
+    "configure_cycle_gan_loss": "set lambda_A and lambda_B weights for cycle consistency loss in cycle GAN training",
+    "customize_display_and_saving": "configure display_freq, print_freq, save_latest_freq, and save_epoch_freq for training output and checkpoint frequency"
+  },
+  "facebookresearch_consistentdepth/monodepth/mannequin_challenge/util/util.py": {
+    "create_directory": "create a directory at a given path if it does not already exist using mkdir",
+    "create_multiple_directories": "create multiple directories from a list of paths using mkdirs",
+    "refactor_mkdir": "refactor the mkdir function to use os.makedirs with exist_ok instead of a manual check",
+    "review_mkdirs": "review the mkdirs function to handle both single paths and lists of paths",
+    "test_mkdir": "test the mkdir function to ensure it creates directories only when they do not exist"
+  },
+  "facebookresearch_consistentdepth/monodepth/midas_v2/base_model.py": {
+    "load_model_weights": "load PyTorch model weights from a checkpoint file using BaseModel.load(path)",
+    "review_Basemodel_class": "review the BaseModel class and its load method for loading model state dicts",
+    "refactor_Basemodel_load": "refactor the BaseModel.load method to support additional checkpoint formats",
+    "test_Basemodel_load": "test the BaseModel.load method with a sample PyTorch checkpoint file",
+    "summarize_Basemodel_load": "summarize the BaseModel.load method that extracts model weights from checkpoint files"
+  },
+  "facebookresearch_consistentdepth/monodepth/midas_v2/blocks.py": {
+    "build_encoder_with_resnext101": "build a pretrained ResNeXt-101 WSL encoder and scratch layer for monocular depth estimation",
+    "create_scratch_layers": "create scratch Conv2d layers to project ResNet feature maps to a uniform channel count",
+    "build_resnet_backbone": "build a ResNet backbone module from a torchvision ResNet model with layer1 through layer4",
+    "create_interpolate_module": "create an Interpolate module that upscales a tensor by a given scale factor using bilinear interpolation",
+    "build_feature_fusion_block": "build a FeatureFusionBlock that fuses multi-scale features with residual conv units and upsamples output"
+  },
+  "facebookresearch_consistentdepth/monodepth/midas_v2/midas_net.py": {
+    "create_MidasNet_for_monocular_depth": "create a MidasNet model for monocular depth estimation with a pretrained ResNeXt-101 backbone and 256 features",
+    "run_MidasNet_forward_pass": "run a forward pass through MidasNet to predict depth from an input image tensor",
+    "load_MidasNet_from_checkpoint": "load a MidasNet model from a saved checkpoint file path using the load method",
+    "review_FeatureFusionBlock": "review the FeatureFusionBlock class that fuses multi-scale features with residual conv units and upsampling",
+    "review_Interpolate_module": "review the Interpolate module that wraps nn.functional.interpolate with configurable scale factor and mode"
+  },
+  "facebookresearch_consistentdepth/monodepth/midas_v2/transforms.py": {
+    "resize_sample_with_aspect_ratio": "create a Resize transform to resize image samples to a target width and height while keeping aspect ratio",
+    "apply_min_size_to_sample": "use apply_min_size to resize a sample dict with image, disparity, and mask to ensure minimum dimensions",
+    "normalize_image_with_mean_std": "create a NormalizeImage transform to normalize an image sample using given mean and standard deviation values",
+    "prepare_sample_for_network_input": "use PrepareForNet to transpose and convert image, mask, disparity, and depth arrays to contiguous float32 tensors",
+    "constrain_dimensions_to_multiple_of": "use Resize.constrain_to_multiple_of to snap a dimension value to the nearest multiple of a given stride"
+  },
+  "facebookresearch_consistentdepth/monodepth/monodepth2/layers.py": {
+    "build_disp_to_depth": "build a python module to convert sigmoid disparity output into depth predictions using min and max depth bounds",
+    "create_transformation_from_parameters": "create a 4x4 transformation matrix from axisangle rotation and translation vectors with optional inversion",
+    "test_compute_depth_errors": "test the compute_depth_errors function to calculate abs_rel, rmse, and accuracy metrics between ground truth and predicted depths",
+    "review_SSIM": "review the SSIM class to compute structural similarity loss between pairs of images using pooled statistics",
+    "refactor_BackprojectDepth": "refactor the BackprojectDepth class to transform a depth image into a 3D point cloud using camera intrinsics"
+  },
+  "facebookresearch_consistentdepth/monodepth/monodepth2/networks/depth_decoder.py": {
+    "create_depth_decoder": "create a DepthDecoder instance with encoder channel counts and multi-scale output configuration",
+    "run_depth_decoder_forward": "run the DepthDecoder forward pass on encoder feature lists to produce multi-scale disparity maps",
+    "review_depth_decoder_architecture": "review the DepthDecoder upsampling convolutions and skip connection design for monocular depth estimation",
+    "refactor_depth_decoder_scales": "refactor the DepthDecoder scales parameter to control which pyramid levels output disparity predictions",
+    "summarize_depth_decoder_forward": "summarize the DepthDecoder forward method that upsamples features through ConvBlocks and applies sigmoid for disparity"
+  },
+  "facebookresearch_consistentdepth/monodepth/monodepth2/networks/resnet_encoder.py": {
+    "create_ResnetEncoder": "create a ResnetEncoder with 18 or 50 layers for monocular depth estimation feature extraction",
+    "run_ResnetEncoder_forward": "run the ResnetEncoder forward pass on an input image tensor to extract multi-scale features",
+    "build_resnet_multiimage_input": "build a ResNet model with multiple stacked input images for multi-frame depth estimation",
+    "create_ResNetMultiImageInput": "create a ResNetMultiImageInput model that accepts varying numbers of input image channels",
+    "review_ResnetEncoder_num_ch_enc": "review the ResnetEncoder num_ch_enc array to understand feature channel dimensions at each layer"
+  },
+  "facebookresearch_consistentdepth/third_party/OpticalFlowToolkit/lib/flowlib.py": {
+    "read_optical_flow_file": "read an optical flow file in .flo, .png, or .pfm format and return a numpy array",
+    "write_optical_flow_flo": "write an optical flow numpy array to a Middlebury .flo format file",
+    "visualize_optical_flow": "visualize an optical flow map using Ccbcr color wheel or RGB color mode",
+    "evaluate_flow_error": "evaluate the end point error between ground truth and predicted optical flow files",
+    "warp_image_with_flow": "warp an image to the next frame using an optical flow map with cubic interpolation"
+  },
+  "facebookresearch_consistentdepth/third_party/OpticalFlowToolkit/lib/haze.py": {
+    "synthesize_haze": "create a Haze instance and call synthesize_haze to render haze onto left and right stereo images using disparity maps",
+    "synthesize_rain": "create a Haze instance and call synthesize_rain to render rain effects onto left and right stereo images",
+    "synthesize_all": "create a Haze instance and call synthesize_all to render combined haze and rain effects onto stereo images",
+    "render_haze": "call Haze.render_haze with an alpha map, background image, and haze map to produce a hazy rendered image",
+    "render_rain": "call Haze.render_rain with a background image and rain map to produce a rain-rendered image"
+  },
+  "facebookresearch_consistentdepth/third_party/OpticalFlowToolkit/lib/kittitool.py": {
+    "read_disp_png": "read a KITTI disparity map from a PNG file and return a numpy array",
+    "write_disp_png": "write a KITTI disparity map numpy array to a 16-bit PNG file",
+    "review_read_disp_png": "review the read_disp_png function that parses KITTI disparity PNG files using pypng",
+    "review_write_disp_png": "review the write_disp_png function that encodes disparity data to KITTI PNG format",
+    "refactor_write_disp_png": "refactor the write_disp_png function to fix the undefined variable d instead of disp"
+  },
+  "facebookresearch_consistentdepth/third_party/OpticalFlowToolkit/lib/pfm.py": {
+    "read_pfm_file": "read a PFM file and return the image data as a numpy array along with its scale factor",
+    "write_pfm_file": "write a float32 numpy array image to a PFM file with an optional scale value",
+    "parse_pfm_header": "parse a PFM file header to extract color mode, width, height, scale, and endianness",
+    "convert_color_pfm": "read a color PFM file and return a height by width by 3 numpy array",
+    "convert_grayscale_pfm": "read a grayscale PFM file and return a height by width numpy array"
+  },
+  "facebookresearch_consistentdepth/third_party/colmap/scripts/python/build.py": {
+    "build_colmap_and_dependencies": "run the build script to compile COLMAP and all dependencies from source with cmake",
+    "build_cmake_project": "build a cmake project by configuring and installing it to a specified path",
+    "build_ceres_solver": "build the Ceres solver dependency with optional SuiteSparse and LAPACK support",
+    "download_zipfile_with_md5_check": "download a zip file from a URL, verify its MD5 hash, and extract it",
+    "parse_build_args": "parse command line arguments for the COLMAP build script including paths and feature flags"
+  },
+  "facebookresearch_consistentdepth/third_party/colmap/scripts/python/build_windows_app.py": {
+    "build_windows_app": "build a COLMAP Windows application bundle by copying executables, DLLs, and batch scripts into an app directory",
+    "run_build_windows_app": "run the script with --install_path and --app_path arguments to assemble a COLMAP Windows deployment package",
+    "create_zip_archive": "create a zip archive of the COLMAP Windows app directory for deployment using shutil.make_archive",
+    "copy_dlls_and_exes": "copy all .exe and .dll files from the install directory into the app bin and lib folders",
+    "mkdir_if_not_exists": "create a directory if it does not already exist, asserting the parent directory exists"
+  },
+  "facebookresearch_consistentdepth/third_party/colmap/scripts/python/clang_format_code.py": {
+    "run_clang_format_on_directory": "run clang-format on all C++ header and source files in a given directory recursively",
+    "run_clang_format_custom_exts": "run clang-format on files with custom extensions like .hpp or .cpp in a directory",
+    "run_clang_format_custom_style": "run clang-format with a custom style instead of the default File style on a directory",
+    "review_parse_args": "review the parse_args function that defines --path, --exts, and --style CLI arguments",
+    "refactor_main": "refactor the main function to add error handling for clang-format subprocess failures"
+  },
+  "facebookresearch_consistentdepth/third_party/colmap/scripts/python/database.py": {
+    "create_colmap_database": "create a COLMAP SQLite database with all tables using COLMAPDatabase.connect and create_tables",
+    "add_camera_to_colmap_db": "add a camera with model, width, height, and params to the COLMAP database using add_camera",
+    "add_image_to_colmap_db": "add an image with name and camera_id to the COLMAP database using add_image",
+    "add_keypoints_to_colmap_db": "add keypoints as a numpy array to an image in the COLMAP database using add_keypoints",
+    "add_matches_to_colmap_db": "add feature matches between two images to the COLMAP database using add_matches"
+  },
+  "facebookresearch_consistentdepth/third_party/colmap/scripts/python/export_inlier_matches.py": {
+    "run_export_inlier_matches": "run the script to export inlier matches from a COLMAP database to a text file",
+    "run_pair_id_to_image_ids": "run the pair_id_to_image_ids function to decode a COLMAP pair_id into two image IDs",
+    "run_parse_args": "run the parse_args function to parse command-line arguments for database path, output path, and minimum matches",
+    "review_main": "review the main function that queries a COLMAP SQLite database and exports inlier matches to a text file",
+    "summarize_export_inlier_matches": "summarize the export_inlier_matches script that reads two_view_geometries from a COLMAP database and writes match pairs to a text file"
+  },
+  "facebookresearch_consistentdepth/third_party/colmap/scripts/python/export_inlier_pairs.py": {
+    "run_export_inlier_pairs": "run the script to export inlier image pairs from a COLMAP database to a text file",
+    "run_pair_id_to_image_ids": "run the pair_id_to_image_ids function to decode a COLMAP pair ID into two image IDs",
+    "run_parse_args": "run the parse_args function to parse command-line arguments for database path, match list path, and minimum matches",
+    "run_main": "run the main function to query a COLMAP SQLite database and write filtered inlier pairs to an output file",
+    "refactor_pair_id_to_image_ids": "refactor the pair_id_to_image_ids function to use integer division instead of float division"
+  },
+  "facebookresearch_consistentdepth/third_party/colmap/scripts/python/plyfile.py": {
+    "read_ply_file": "read a PLY file from disk using PlyData.read and access vertex or face element data",
+    "write_ply_file": "write a PLY file to disk by creating a PlyData object with PlyElement elements and calling write",
+    "describe_ply_element": "construct a PlyElement from a numpy structured array using PlyElement.describe for writing PLY data",
+    "parse_ply_header": "parse a PLY file header from a stream using PlyData._parse_header to extract format and element metadata",
+    "make2d_array": "convert an array of arrays into a 2D numpy array using make2d with specified cols and dtype"
+  },
+  "facebookresearch_consistentdepth/third_party/colmap/scripts/python/read_dense.py": {
+    "run_read_dense_cli": "run the COLMAP dense reader CLI to visualize depth and normal maps from binary array files",
+    "read_array_function": "read a COLMAP binary array file and return a numpy array reshaped to width height and channels",
+    "parse_args_function": "parse command line arguments for depth map path normal map path and depth percentile thresholds",
+    "main_visualize_depth_normal": "read depth and normal maps clip depth by percentile and visualize both with matplotlib",
+    "review_read_dense_module": "review the read_dense module for reading COLMAP binary depth and normal map files"
+  },
+  "facebookresearch_consistentdepth/third_party/colmap/scripts/python/read_write_model.py": {
+    "read_colmap_model": "read a COLMAP sparse reconstruction model from a folder in binary or text format using read_model",
+    "write_colmap_model": "write cameras, images, and 3D points to a COLMAP model folder in binary or text format using write_model",
+    "convert_colmap_format": "convert a COLMAP model between binary and text formats using the CLI with input and output format arguments",
+    "convert_quaternion_to_rotation_matrix": "convert a quaternion vector to a 3x3 rotation matrix using qvec2rotmat",
+    "convert_rotation_matrix_to_quaternion": "convert a 3x3 rotation matrix to a quaternion vector using rotmat2qvec"
+  },
+  "facebookresearch_consistentdepth/third_party/colmap/scripts/python/test_read_write_model.py": {
+    "run_compare_txt_bin_models": "run the test script to compare text and binary COLMAP SfM models for equality",
+    "test_compare_cameras": "test two COLMAP camera dictionaries for matching id, width, height, and params",
+    "test_compare_images": "test two COLMAP image dictionaries for matching qvec, tvec, camera_id, and point2D data",
+    "test_compare_points": "test two COLMAP 3D point dictionaries for matching xyz, rgb, error, and image associations",
+    "run_roundtrip_write_read_model": "run a roundtrip test that writes then reads back COLMAP models in txt and bin formats"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/losses.py": {
+    "create_EPE_function": "create a function that computes the end-point error between input_flow and target_flow tensors",
+    "use_L1_loss_module": "use the L1 module to compute the mean absolute difference between output and target tensors",
+    "use_L2_loss_module": "use the L2 module to compute the mean L2 norm between output and target tensors",
+    "use_L1Loss_class": "use the L1Loss class to compute both L1 loss and EPE values for flow estimation",
+    "use_MultiScale_loss": "use the MultiScale class to compute weighted multi-scale L1 or L2 loss across pyramid levels"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/models.py": {
+    "build_FlowNet2_model": "build a FlowNet2 optical flow estimation model with FlowNetC, FlowNetS, FlowNetSD, and FlowNetFusion blocks",
+    "create_FlowNet2C_model": "create a FlowNet2C correlation-based optical flow model that processes two input image streams",
+    "create_FlowNet2S_model": "create a FlowNet2S single-image optical flow model with multi-scale feature prediction",
+    "create_FlowNet2SD_model": "create a FlowNet2SD optical flow model with additional conv0 layer and inter-conv blocks",
+    "create_FlowNet2CSS_model": "create a FlowNet2CSS cascaded optical flow model combining FlowNetC with two FlowNetS stages"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/networks/FlowNetC.py": {
+    "build_FlowNetC_model": "build a FlowNetC optical flow network model with batch normalization and fp16 correlation support",
+    "run_FlowNetC_forward": "run the FlowNetC forward pass on a concatenated image pair tensor to predict optical flow",
+    "create_FlowNetC_correlation": "create a correlation layer with configurable pad size and max displacement for feature matching",
+    "test_FlowNetC_multiscale_flow": "test the FlowNetC model to verify it returns multiscale flow predictions during training mode",
+    "review_FlowNetC_decoder": "review the FlowNetC decoder upsampling and deconvolution layers for optical flow refinement"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/networks/FlowNetFusion.py": {
+    "build_FlowNetFusion_model": "build a FlowNetFusion model instance with batch normalization for optical flow fusion",
+    "run_FlowNetFusion_forward": "run the FlowNetFusion forward pass on an 11-channel input tensor to predict optical flow",
+    "create_FlowNetFusion_without_batchnorm": "create a FlowNetFusion model without batch normalization by setting batchNorm to False",
+    "review_FlowNetFusion_encoder_decoder": "review the FlowNetFusion encoder-decoder architecture with conv, deconv, and flow prediction layers",
+    "summarize_FlowNetFusion_parameter_count": "summarize the FlowNetFusion model which has 581,226 parameters for multi-scale flow prediction"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/networks/FlowNetS.py": {
+    "create_FlowNetS_model": "create a FlowNetS optical flow estimation model with configurable input channels and batch normalization",
+    "run_FlowNetS_forward": "run the FlowNetS forward pass on an input tensor to predict optical flow fields",
+    "review_FlowNetS_encoder_decoder": "review the FlowNetS encoder-decoder architecture with six convolutional stages and four deconvolutional stages",
+    "summarize_FlowNetS_multi_scale_flow": "summarize the FlowNetS multi-scale flow prediction layers that output flow at five resolution levels",
+    "test_FlowNetS_training_inference": "test the FlowNetS model returning multi-scale flow during training and single flow during inference"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/networks/FlowNetSD.py": {
+    "create_FlowNetSD_model": "create a FlowNetSD optical flow network model with batch normalization enabled",
+    "run_FlowNetSD_forward": "run the FlowNetSD forward pass on an input tensor to predict optical flow",
+    "review_FlowNetSD_encoder_decoder": "review the FlowNetSD encoder-decoder architecture with multi-scale flow prediction layers",
+    "refactor_FlowNetSD_batch_norm": "refactor the FlowNetSD class to toggle batch normalization on or off",
+    "summarize_FlowNetSD_forward": "summarize the FlowNetSD forward pass that returns multi-scale flow outputs during training"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/networks/submodules.py": {
+    "build_conv_layer": "build a Conv2d layer with optional batch normalization and leaky ReLU activation",
+    "build_i_conv_layer": "build a Conv2d layer with optional batch normalization but no activation function",
+    "create_flow_predictor": "create a Conv2d layer that predicts 2-channel optical flow from input feature maps",
+    "build_deconv_layer": "build a transposed convolution layer with leaky ReLU for upsampling feature maps",
+    "init_deconv_bilinear_weights": "initialize a transposed convolution weight tensor with bilinear interpolation kernel values"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/networks/channelnorm_package/channelnorm.py": {
+    "create_ChannelNorm_module": "create a ChannelNorm module with default L2 norm degree for PyTorch channel normalization",
+    "create_ChannelNorm_custom_deg": "create a ChannelNorm module with a custom norm degree for flexible channel normalization",
+    "use_ChannelNorm_forward": "use the ChannelNorm forward method to compute channel-wise L-norm of a 4D input tensor",
+    "review_ChannelNormFunction_forward": "review the ChannelNormFunction forward method that delegates channel norm computation to a CUDA kernel",
+    "review_ChannelNormFunction_backward": "review the ChannelNormFunction backward method that computes gradients via the CUDA extension"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/networks/correlation_package/correlation.py": {
+    "create_Correlation_module": "create a Correlation module with custom pad_size, kernel_size, and max_displacement parameters for optical flow",
+    "create_CorrelationFunction_module": "create a CorrelationFunction module to compute correlation between two input tensors using CUDA acceleration",
+    "run_Correlation_forward": "run the Correlation module forward pass on two input tensors to compute their correlation output",
+    "run_CorrelationFunction_forward": "run the CorrelationFunction forward pass with two input tensors and CUDA backend correlation computation",
+    "review_Correlation_backward": "review the CorrelationFunction backward method that computes gradients for input1 and input2 via correlation_cuda"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/networks/resample2d_package/resample2d.py": {
+    "create_Resample2d_module": "create a Resample2d module with kernel_size and bilinear interpolation settings for 2D tensor resampling",
+    "use_Resample2d_forward": "use the Resample2d forward method to resample input1 tensor using flow offsets from input2 tensor",
+    "review_Resample2dFunction_forward": "review the Resample2dFunction forward method that delegates to resample2d_cuda for GPU-accelerated 2D resampling",
+    "review_Resample2dFunction_backward": "review the Resample2dFunction backward method that computes gradients for both input tensors via CUDA",
+    "test_Resample2d_module": "test the Resample2d module by passing two contiguous tensors and verifying the resampled output shape"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/utils/flow_utils.py": {
+    "read_flow_file": "read a Middlebury .flo optical flow file and return a numpy array",
+    "write_flow_file": "write optical flow data to a Middlebury .flo format file",
+    "read_flow_separate_channels": "read a .flo file and extract u and v flow channels separately",
+    "write_flow_combined_array": "write a combined (H, W, 2) numpy array as optical flow to a .flo file",
+    "write_flow_separate_channels": "write separate u and v channel arrays as optical flow to a .flo file"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/utils/frame_utils.py": {
+    "read_image_with_read_gen": "read a PNG, JPEG, PPM, or JPG image file and return the RGB numpy array",
+    "read_numpy_binary_with_read_gen": "read a .bin or .raw numpy file and return the loaded numpy array",
+    "read_flow_with_read_gen": "read a .flo optical flow file and return the flow data as a float32 numpy array",
+    "load_multiformat_data_with_read_gen": "load image, numpy binary, or optical flow files by extension using a single function",
+    "strip_alpha_from_image_with_read_gen": "read an image file and automatically strip the alpha channel if present"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/utils/param_utils.py": {
+    "parse_flownetc_weights": "load FlowNetC model weights and biases into PyTorch Conv2d and ConvTranspose2d modules from numpy arrays",
+    "parse_flownets_weights": "load FlowNetS model weights and biases into PyTorch modules with configurable parameter prefix for multi-network models",
+    "parse_flownetsonly_weights": "load FlowNetS-only model weights and biases into PyTorch modules with optional parameter prefix support",
+    "parse_flownetsd_weights": "load FlowNetSD model weights and biases into PyTorch modules including interconv layers and netsd prefix",
+    "parse_flownetfusion_weights": "load FlowNet Fusion model weights and biases into PyTorch modules for fusing multiple flow predictions"
+  },
+  "facebookresearch_consistentdepth/third_party/flownet2/utils/tools.py": {
+    "create_timer_context": "use TimerBlock as a context manager to time and log code block execution duration",
+    "add_argparse_args_from_class": "use add_arguments_for_module to auto-generate argparse arguments from a class constructor signature",
+    "extract_kwargs_from_args": "use kwargs_from_args to extract prefixed argument values from parsed argparse namespace into a dict",
+    "save_torch_checkpoint": "use save_checkpoint to save a PyTorch model state dict and optionally copy the best model",
+    "format_loss_values": "use format_dictionary_of_losses to format a list of loss labels and values into a readable string"
+  },
+  "facebookresearch_consistentdepth/tools/colmap_processor.py": {
+    "run_COLMAPProcessor_process": "run the COLMAPProcessor process method to perform feature extraction, matching, and sparse or dense reconstruction",
+    "run_COLMAPProcessor_extract_features": "run the COLMAPProcessor extract_features method to extract SIFT features from images into a COLMAP database",
+    "run_COLMAPProcessor_match": "run the COLMAPProcessor match method to perform exhaustive or sequential feature matching on extracted features",
+    "run_COLMAPProcessor_dense": "run the COLMAPProcessor dense method to perform undistortion and patch match stereo for dense depth reconstruction",
+    "run_COLMAPProcessor_map": "run the COLMAPProcessor map method to build a sparse 3D reconstruction using the COLMAP mapper"
+  },
+  "facebookresearch_consistentdepth/tools/make_video.py": {
+    "run_make_video_cli": "run the CLI tool to create MP4 videos from color and depth image frame directories",
+    "create_depth_overlay_video": "create a depth overlay video by blending grayscale color frames with depth frames",
+    "stack_videos_side_by_side": "stack multiple video files horizontally side by side into a single composite video using ffmpeg",
+    "create_resized_video": "create a resized version of an existing video to a specified width and height tuple",
+    "count_frames_in_directory": "count the number of image frames with a given file extension in a directory"
+  },
+  "facebookresearch_consistentdepth/utils/calibrate.py": {
+    "calibrate_depth_with_method": "calibrate predicted depth against ground truth using scale, scale-shift, or RANSAC method",
+    "calibrate_scale_shift_depth": "compute scale and shift parameters via least squares to align predicted depth with ground truth",
+    "calibrate_scale_shift_RANSAC_depth": "robustly estimate scale and shift for depth calibration using RANSAC regression to handle outliers",
+    "calibrate_scale_depth": "compute a single scale factor by taking the median ratio of ground truth to predicted depth values",
+    "resize_small_depth_images": "resize two depth images so the larger one matches the dimensions of the smaller one"
+  },
+  "facebookresearch_consistentdepth/utils/calibration.py": {
+    "calibrate_w_sparse_colmap": "calibrate camera intrinsics and extrinsics from a COLMAP sparse reconstruction and dense depth directory",
+    "calibrate_frame_w_sparse_points": "calibrate a single frame scale factor using sparse 3D points, intrinsics, extrinsics, and inverse depth",
+    "vote_scale": "compute a robust scale estimate by averaging values within the 10th to 90th percentile range",
+    "store_visible_points_per_image": "build a mapping from image IDs to their visible 3D points from a COLMAP reconstruction",
+    "review_calibrate_w_sparse_colmap": "review the calibrate_w_sparse_colmap function that computes calibrated intrinsics, extrinsics, and scales from COLMAP data"
+  },
+  "facebookresearch_consistentdepth/utils/consistency.py": {
+    "sample_data_by_uv_coordinates": "sample an image array at arbitrary pixel coordinates using grid_sample interpolation",
+    "compute_sum_of_square_error": "compute the sum of squared error between two numpy arrays along a specified axis",
+    "generate_consistency_mask": "generate a boolean mask by comparing a reference image to a warped target image using optical flow",
+    "compute_consistent_flow_masks": "compute merged flow and photometric consistency masks for a pair of images and their optical flows",
+    "review_consistency_module": "review the consistency module functions for optical flow validation and photometric consistency checking"
+  },
+  "facebookresearch_consistentdepth/utils/frame_range.py": {
+    "parse_frame_range_from_string": "parse a comma-separated frame range string like 1-10,15,21-40 into a NamedOptionalSet",
+    "create_FrameRange_with_num_frames": "create a FrameRange object from an OptionalSet clipped to a total number of frames",
+    "compute_FrameRange_intersection": "compute the intersection of a FrameRange with another OptionalSet to narrow selected frames",
+    "get_sorted_frames_from_FrameRange": "get a sorted list of all frame indices from a FrameRange using the frames method",
+    "create_OptionalSet_intersection": "create an OptionalSet and compute its intersection with another OptionalSet for frame filtering"
+  },
+  "facebookresearch_consistentdepth/utils/frame_sampling.py": {
+    "sample_frame_pairs": "sample frame pairs from a FrameRange using multiple SamplePairsOptions strategies",
+    "sample_hierarchical_pairs": "generate hierarchical frame pairs with configurable min and max distance between frames",
+    "sample_consecutive_pairs": "generate consecutive frame pairs by sampling adjacent frames in a sequence",
+    "sample_exhausted_pairs": "generate all possible frame pairs exhaustively for a given number of frames",
+    "convert_to_one_way_pairs": "convert two-way frame pairs to one-way pairs by ordering each pair ascending"
+  },
+  "facebookresearch_consistentdepth/utils/geometry.py": {
+    "warp_image_between_views": "warp target images to the reference view using depth maps and camera extrinsics intrinsics",
+    "convert_pixels_to_3d_points": "convert pixel coordinates and depth values to 3D points in camera space using intrinsics",
+    "reproject_points_between_cameras": "reproject 3D points from a reference camera coordinate system to a target camera coordinate system",
+    "generate_warping_field": "generate a warping field UV grid to sample one image frame into another using depth and camera params",
+    "project_camera_points_to_pixels": "project 3D points in camera space back to 2D pixel coordinates using camera intrinsics"
+  },
+  "facebookresearch_consistentdepth/utils/geometry_np.py": {
+    "reproject_3d_points": "reproject 3D points using camera extrinsic matrix to transform coordinates between camera views",
+    "project_3d_to_pixels": "project 3D points to 2D pixel coordinates using camera intrinsics and focal length",
+    "sample_depth_at_pixels": "sample depth values from a depth map at given pixel coordinates with nearest neighbour interpolation",
+    "extract_focal_length": "extract the focal length values fx and fy from a camera intrinsics array",
+    "extract_principal_point": "extract the principal point cx and cy from a camera intrinsics array"
+  },
+  "facebookresearch_consistentdepth/utils/helpers.py": {
+    "create_dotdict_class": "create a dotdict class that allows dot notation access to dictionary attributes",
+    "create_mkdir_ifnotexists_function": "create a function that makes a directory only if it does not already exist",
+    "create_print_title_function": "create a function that prints text surrounded by horizontal dash lines",
+    "create_print_banner_function": "create a function that prints text inside a star bordered banner box",
+    "create_suppressedstdout_context_manager": "create a context manager that suppresses stdout by redirecting it to devnull"
+  },
+  "facebookresearch_consistentdepth/utils/image_io.py": {
+    "load_image": "load an image file and return a normalized float buffer with EXIF rotation correction",
+    "resize_to_target": "resize an image to a target max size while aligning dimensions to a multiple",
+    "save_image": "save a normalized float image to disk as a standard image or raw binary file",
+    "load_raw_float32_image": "load a raw float32 binary image file compatible with C++ CvUtil freadimg format",
+    "save_depth_map_colored": "save a depth map and optionally generate a colored visualization using an external binary"
+  },
+  "facebookresearch_consistentdepth/utils/load_colmap.py": {
+    "convert_intrinsics_to_colmap_camera": "convert numpy intrinsics array to a COLMAP Camera object with SIMPLE_PINHOLE or PINHOLE model",
+    "convert_extrinsics_to_colmap_images": "convert extrinsics matrices to COLMAP BaseImage objects with quaternion vectors and translation vectors",
+    "save_colmap_project_from_intrinsics_extrinsics": "save intrinsics and extrinsics as a COLMAP project file to a given directory path",
+    "convert_colmap_cameras_to_intrinsics": "extract intrinsics matrices from COLMAP camera objects scaled to a new image size",
+    "convert_colmap_images_to_extrinsics": "extract extrinsics matrices from COLMAP image objects with coordinate system conversion applied"
+  },
+  "facebookresearch_consistentdepth/utils/torch_helpers.py": {
+    "move_tensor_to_device": "move a PyTorch tensor to the available CUDA or CPU device using to_device",
+    "move_dict_of_tensors_to_device": "recursively move a dictionary of PyTorch tensors to the GPU or CPU device",
+    "move_list_of_tensors_to_device": "recursively move a list of PyTorch tensors to the available compute device",
+    "move_nested_data_to_device": "recursively move nested dicts and lists containing tensors to the CUDA or CPU device",
+    "check_default_device": "inspect the module-level _device variable to see if CUDA or CPU is selected as the default"
+  },
+  "facebookresearch_consistentdepth/utils/url_helpers.py": {
+    "download_model_from_url": "download a model file from a URL to a local path with caching support",
+    "download_zip_model_and_extract": "download a zipped model from a URL and extract it to a local directory",
+    "cache_check_before_download": "check if a model file is already cached locally before downloading from a URL",
+    "download_model_to_custom_root": "download a model from a URL to a custom path_root directory instead of checkpoints",
+    "summarize_get_model_from_url": "summarize the get_model_from_url function that downloads and optionally unzips model files from URLs"
+  },
+  "facebookresearch_consistentdepth/utils/visualization.py": {
+    "visualize_depth_map": "create a colored visualization of a depth map using the magma colormap with gamma correction",
+    "visualize_depth_directory": "convert a directory of raw depth files to colored PNG visualizations with consistent scaling",
+    "create_video_from_images": "create an MP4 video from a sequence of images using ffmpeg at 30fps with libx264 encoding",
+    "apply_mask_to_image": "apply a binary mask overlay to an image with a configurable mask color and alpha blending",
+    "review_visualize_depth": "review the visualize_depth function to understand how it rescales depth values and applies the magma colormap"
+  }
+}

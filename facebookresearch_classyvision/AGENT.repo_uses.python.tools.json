@@ -1,0 +1,1220 @@
+{
+  "facebookresearch_classyvision/classy_vision/dataset/classy_cifar.py": {
+    "create_CIFAR10Dataset": "create a CIFAR10Dataset instance from config with split, root, and transform settings",
+    "create_CIFAR100Dataset": "create a CIFAR100Dataset instance from config with split, root, and transform settings",
+    "build_CIFARDataset_from_config": "build a CIFARDataset subclass instance using from_config with a dictionary config",
+    "test_CIFAR10Dataset": "test the CIFAR10Dataset class by instantiating it with train split and verifying data loading",
+    "review_CIFARDataset_init": "review the CIFARDataset __init__ method to understand how CIFAR10 and CIFAR100 datasets are initialized"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/classy_dataset.py": {
+    "create_ClassyDataset": "create a ClassyDataset instance wrapping a PyTorch dataset with batch size, shuffle, and transform config",
+    "parse_config_ClassyDataset": "parse a config dict to extract batchsize_per_replica, shuffle, num_samples, and transform settings",
+    "iterator_ClassyDataset": "get a PyTorch DataLoader iterator with distributed sampling and configurable shuffle seed and epoch",
+    "get_global_batchsize_ClassyDataset": "get the global batch size across all replicas by multiplying per-replica batch size by world size",
+    "set_num_workers_ClassyDataset": "set the number of worker processes used by the ClassyDataset DataLoader for data loading"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/classy_hmdb51.py": {
+    "create_hmdb51_dataset": "create an HMDB51Dataset instance for action recognition with video clips and audio samples",
+    "build_hmdb51_from_config": "build an HMDB51Dataset from a config dict with split, video_dir, and splits_dir",
+    "load_hmdb51_metadata": "load precomputed HMDB51 dataset metadata from a cached metadata file path",
+    "save_hmdb51_metadata": "save computed HMDB51 dataset metadata to a file for faster future loading",
+    "review_hmdb51_init": "review the HMDB51Dataset constructor to understand video clip sampling and metadata caching logic"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/classy_kinetics400.py": {
+    "build_kinetics400_dataset": "build a Kinetics400Dataset instance with video directory, clip frames, and metadata file path",
+    "create_dataset_from_config": "create a Kinetics400Dataset from a config dictionary with split, video_dir, and metadata_file keys",
+    "load_metadata": "load precomputed video metadata from a cached metadata file for the Kinetics400 dataset",
+    "save_metadata": "save computed video metadata to a file for the Kinetics400 dataset to speed up future loads",
+    "review_kinetics400_init": "review the Kinetics400Dataset constructor to understand video clip sampling and metadata caching logic"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/classy_synthetic_image.py": {
+    "create_synthetic_dataset": "create a SyntheticImageDataset instance with random synthetic images and binary classification targets",
+    "build_from_config": "build a SyntheticImageDataset from a config dictionary with crop_size, class_ratio, and seed parameters",
+    "test_dataset_setup": "test ML pipeline setup by training on synthetic images to validate 100 percent accuracy",
+    "review_class_init": "review the SyntheticImageDataset class constructor that wraps RandomImageBinaryClassDataset with configurable batch size and shuffle",
+    "refactor_from_config": "refactor the from_config classmethod to parse config and build transforms for synthetic image dataset instantiation"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/classy_synthetic_image_streaming.py": {
+    "create_synthetic_dataset": "create a SyntheticImageStreamingDataset with random binary class images for training",
+    "build_dataset_from_config": "build a SyntheticImageStreamingDataset from a config dict with crop_size, class_ratio, and seed",
+    "test_iterator_wrapper": "test the iterator method that wraps the dataloader with DataloaderLimitWrapper",
+    "review_async_gpu_copy": "review the SyntheticImageStreamingDataset class and its async_gpu_copy dataloader wrapper support",
+    "refactor_transform_pipeline": "refactor the from_config method to customize the ImageNet normalization transform pipeline"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/classy_synthetic_video.py": {
+    "create_synthetic_video_dataset": "create a SyntheticVideoDataset instance with random video clips for testing video models",
+    "build_dataset_from_config": "build a SyntheticVideoDataset from a config dictionary using the from_config classmethod",
+    "test_distributed_sampler": "test the _get_sampler method to create a DistributedSampler for multi-GPU training",
+    "review_synthetic_video_dataset_class": "review the SyntheticVideoDataset class and its constructor parameters for video clip generation",
+    "summarize_video_clips_property": "summarize the video_clips property which raises NotImplementedError in SyntheticVideoDataset"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/classy_ucf101.py": {
+    "build_ucf101_dataset": "build a UCF101Dataset instance with video clips, frame rate, and audio samples for action recognition",
+    "create_ucf101_from_config": "create a UCF101Dataset from a config dict with split, video_dir, and metadata_file parameters",
+    "load_ucf101_metadata": "load precomputed UCF101 dataset metadata from a cached file path for faster initialization",
+    "save_ucf101_metadata": "save UCF101 dataset metadata to a file path to avoid recomputing on future loads",
+    "register_ucf101_dataset": "register the UCF101 dataset class with the classy_vision dataset registry using the ucf101 name"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/classy_video_dataset.py": {
+    "create_MaxLengthClipSampler": "create a MaxLengthClipSampler that wraps a TorchVision clip sampler with an optional max sample limit",
+    "build_ClassyVideoDataset": "build a ClassyVideoDataset for video classification using frames_per_clip and clips_per_video config",
+    "parse_config_ClassyVideoDataset": "parse a config dictionary to extract video dataset parameters like frames_per_clip and step_between_clips",
+    "load_metadata_ClassyVideoDataset": "load pre-computed video dataset metadata from a file and optionally update video file paths",
+    "save_metadata_ClassyVideoDataset": "save video dataset metadata containing video paths, fps, and frame timestamps to a file"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/dataloader_async_gpu_wrapper.py": {
+    "create_async_gpu_dataloader": "create a DataloaderAsyncGPUWrapper that wraps a dataloader and moves data to GPU asynchronously",
+    "build_dataloader_with_preload": "build a DataloaderAsyncGPUWrapper that preloads the next batch on a parallel CUDA stream",
+    "test_async_gpu_wrapper_iteration": "test the DataloaderAsyncGPUWrapper __next__ method to verify it returns cached GPU data and preloads the next batch",
+    "review_dataloader_async_gpu_wrapper_preload": "review the DataloaderAsyncGPUWrapper preload method that copies the next batch to GPU using recursive_copy_to_gpu",
+    "summarize_dataloader_async_gpu_wrapper_init": "summarize the DataloaderAsyncGPUWrapper __init__ that asserts CUDA availability and creates a CUDA stream"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/image_path_dataset.py": {
+    "create_image_path_dataset_from_folder": "create an ImagePathDataset instance from an image folder directory with subdirectories for each target class",
+    "create_image_path_dataset_from_files": "create an ImagePathDataset instance from a list of image file paths for inference without targets",
+    "build_dataset_from_config": "build an ImagePathDataset from a config dictionary using the from_config class method",
+    "check_torchvision_imagefolder_structure": "check if an image folder follows the torchvision ImageFolder subdirectory structure",
+    "load_dataset_with_transforms": "load an image dataset that applies TupleToMapTransform to map samples to input and target keys"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/transforms/autoaugment.py": {
+    "build_imagenet_autoaugment_transform": "build a python module that applies ImageNet auto-augment policies to PIL images for data augmentation",
+    "create_subpolicy_augmentation": "create a SubPolicy that applies two random image operations with configurable probability and magnitude",
+    "test_imageop_enum": "test the ImageOp enum to verify all 14 augmentation operations like shear, rotate, and color are defined",
+    "refactor_get_image_op_settings": "refactor get_image_op_settings to add new image operations with custom magnitude ranges and fill colors",
+    "review_rotate_with_fill": "review the rotate_with_fill function that rotates a PIL image and fills empty corners with gray"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/transforms/classy_transform.py": {
+    "create_custom_transform": "create a subclass of ClassyTransform that implements __call__ to preprocess images before model inference",
+    "implement_transform_call": "implement the abstract __call__ method in a ClassyTransform subclass to transform input image data",
+    "build_transform_from_config": "build a ClassyTransform instance from a config dictionary using the from_config class method",
+    "review_classytransform_abc": "review the ClassyTransform abstract base class and its __call__ interface for data preprocessing",
+    "refactor_transform_subclass": "refactor a ClassyTransform subclass to accept additional config parameters via from_config"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/transforms/mixup.py": {
+    "build_MixupTransform": "build a MixupTransform instance with mixup_alpha and num_classes for image data augmentation",
+    "create_mixup_target": "create mixed labels by blending two targets with a lambda coefficient and label smoothing",
+    "test_rand_bbox": "test the rand_bbox function to generate random square bounding boxes for CutMix augmentation",
+    "refactor_cutmix_bbox_and_lam": "refactor the cutmix_bbox_and_lam function to generate bounding boxes and correct lambda values",
+    "review_one_hot": "review the one_hot function that converts class indices to one-hot encoded tensors on a device"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/transforms/util.py": {
+    "build_apply_transform_to_key": "build a python module that uses ApplyTransformToKey to apply a transform to a specific key in a sample dict",
+    "create_imagenet_augment_transform": "create a python script that uses ImagenetAugmentTransform to apply random crop, flip, and normalization to a PIL image",
+    "create_imagenet_no_augment_transform": "create a python script that uses ImagenetNoAugmentTransform to apply center crop and normalization to a PIL image for inference",
+    "build_field_transform_default_imagenet": "build a python module that uses build_field_transform_default_imagenet to compose a key map transform with an ImageNet transform",
+    "run_default_unnormalize": "run a python script that uses default_unnormalize to reverse ImageNet mean and std normalization on a torch tensor"
+  },
+  "facebookresearch_classyvision/classy_vision/dataset/transforms/util_video.py": {
+    "build_video_clip_random_resize_crop": "build a VideoClipRandomResizeCrop transform that randomly resizes and crops a video clip tensor for training augmentation",
+    "build_video_clip_resize": "build a VideoClipResize transform that rescales a video clip tensor to a specified short edge size preserving aspect ratio",
+    "build_video_default_augment": "build a VideoDefaultAugmentTransform that applies random resize, crop, horizontal flip, and normalization to video data for training",
+    "build_video_default_no_augment": "build a VideoDefaultNoAugmentTransform that resizes and normalizes video data without augmentation for testing",
+    "build_video_field_transform_default": "build a video field transform pipeline that maps video and audio tuples to normalized tensors with configurable augmentation"
+  },
+  "facebookresearch_classyvision/classy_vision/distributed/launch_ray.py": {
+    "run_distributed_training": "run a multi-node distributed training script across Ray workers using launch_ray.py",
+    "launch_NodeLaunchActor": "launch a Ray actor that spawns subprocesses for distributed training on each node",
+    "wait_for_gpus": "wait for enough GPUs to become available in the Ray cluster before training starts",
+    "parse_args": "parse command line arguments for distributed training including nnodes, nproc_per_node, and Ray address",
+    "find_free_port": "find an available free TCP port on the node for use as the master port"
+  },
+  "facebookresearch_classyvision/classy_vision/generic/debug.py": {
+    "debug_info": "install sys.excepthook to drop into pdb post-mortem on unhandled exceptions in interactive sessions",
+    "review_debug_info": "review the debug_info exception hook that prints tracebacks and launches pdb on unhandled errors",
+    "test_debug_info": "test the debug_info function to verify it delegates to sys.__excepthook__ when stderr is not a TTY",
+    "refactor_debug_info": "refactor debug_info to support custom exception filtering before entering post-mortem debugging",
+    "summarize_debug_info": "summarize the debug_info function that enables interactive post-mortem debugging via pdb on exceptions"
+  },
+  "facebookresearch_classyvision/classy_vision/generic/distributed_util.py": {
+    "init_distributed_model": "wrap a PyTorch model with DistributedDataParallel for multi-GPU training with configurable bucket size",
+    "all_reduce_mean": "compute the mean of a tensor across all processes in a distributed training job",
+    "gather_tensors_from_all": "gather tensors from all ranks into a list using torch distributed all_gather",
+    "broadcast_object": "broadcast a serializable Python object from a source rank to all workers in a distributed job",
+    "is_distributed_training_run": "check if the current process is part of an active distributed training run with world size greater than one"
+  },
+  "facebookresearch_classyvision/classy_vision/generic/opts.py": {
+    "add_generic_args": "add generic CLI arguments for convnet training and testing to an argparse parser",
+    "check_generic_args": "validate parsed CLI arguments and create the checkpoint folder if it does not exist",
+    "get_parser": "get a standard argparse parser preconfigured with Classy Vision training arguments",
+    "parse_train_arguments": "parse and validate command-line arguments for a Classy Vision training job",
+    "review_opts_module": "review the opts module functions for adding and validating Classy Vision CLI arguments"
+  },
+  "facebookresearch_classyvision/classy_vision/generic/pdb.py": {
+    "set_trace": "drop into a multiprocessing-safe Python debugger at the current call site",
+    "create_MultiprocessingPdb": "create a MultiprocessingPdb instance that wraps pdb.Pdb with nosigint enabled",
+    "review_MultiprocessingPdb_cmdloop": "review the _cmdloop method that locks stdin before running the debugger command loop",
+    "test_set_trace": "test the set_trace function to verify it drops into a debugger in multiprocessing code",
+    "refactor_MultiprocessingPdb": "refactor the MultiprocessingPdb class to support additional stdin handling strategies"
+  },
+  "facebookresearch_classyvision/classy_vision/generic/perf_stats.py": {
+    "create_PerfTimer_context_manager": "create a PerfTimer context manager to measure elapsed time of a named code block",
+    "create_PerfStats_accumulator": "create a PerfStats instance to accumulate host and CUDA timer stats across iterations",
+    "use_PerfTimer_start_stop": "use PerfTimer start and stop methods to manually time a code section without context manager",
+    "report_PerfStats_report_str": "report performance stats as a formatted string with host and CUDA event columns",
+    "create_PerfMetric_tracker": "create a PerfMetric to track a single numerical value with exponential moving average"
+  },
+  "facebookresearch_classyvision/classy_vision/generic/profiler.py": {
+    "profile_model": "profile a PyTorch model to measure CPU and CUDA execution times per operator",
+    "compute_flops": "compute the number of FLOPs needed for a forward pass of a PyTorch model",
+    "compute_activations": "compute the number of activations created during a forward pass of a PyTorch model",
+    "count_params": "count the total number of parameters in a PyTorch nn.Module model",
+    "summarize_profiler_info": "summarize torch autograd profiler statistics into a formatted string with CPU and CUDA times"
+  },
+  "facebookresearch_classyvision/classy_vision/generic/registry_utils.py": {
+    "import_all_modules_in_directory": "import all Python modules from a directory into a base module namespace using import_all_modules",
+    "import_all_packages_from_directory": "automatically import all top-level packages from a directory using import_all_packages_from_directory",
+    "register_modules_for_registry": "register all modules in a directory under a base module for use with a registry pattern",
+    "discover_and_import_packages": "discover and import all packages in a root directory that have an __init__.py file",
+    "bulk_import_python_modules": "bulk import Python modules from a directory path into sys.modules for lazy loading"
+  },
+  "facebookresearch_classyvision/classy_vision/generic/util.py": {
+    "load_checkpoint": "load a PyTorch model checkpoint from a file path onto a specified CPU or CUDA device",
+    "save_checkpoint": "save a PyTorch model state dictionary to a checkpoint file in the specified folder",
+    "convert_to_one_hot": "convert a tensor of target class indices into a one-hot encoded tensor given the number of classes",
+    "recursive_copy_to_device": "recursively copy tensors inside nested lists, tuples, and dicts to a specified PyTorch device",
+    "split_batchnorm_params": "split a model parameters into BatchNorm parameters and all other parameters for separate optimization"
+  },
+  "facebookresearch_classyvision/classy_vision/generic/visualize.py": {
+    "connect_visdom_server": "connect to a visdom server with optional server address and port parameters",
+    "check_visdom_connection": "check if the client is currently connected to a visdom server",
+    "plot_learning_curves": "plot a dictionary of learning curves as line graphs in visdom",
+    "plot_loss_functions": "plot pytorch loss functions as curves over a score range in visdom",
+    "visualize_model_graph": "visualize a classy model computation graph in TensorBoard using a summary writer"
+  },
+  "facebookresearch_classyvision/classy_vision/heads/classy_head.py": {
+    "create_ClassyHead": "create a ClassyHead instance with a unique_id and num_classes for transfer learning",
+    "implement_from_config": "implement a subclass of ClassyHead that instantiates from a config dictionary",
+    "implement_forward": "implement the forward method in a ClassyHead subclass to perform inference on input tensors",
+    "review_ClassyHead": "review the ClassyHead base class and its abstract methods for subclass implementation",
+    "build_transfer_learning_head": "build a custom head subclass of ClassyHead to attach to a pretrained ClassyModel"
+  },
+  "facebookresearch_classyvision/classy_vision/heads/fully_connected_head.py": {
+    "build_fully_connected_head": "build a FullyConnectedHead with adaptive avg pooling and a linear layer for classification",
+    "create_head_from_config": "create a FullyConnectedHead instance from a config dictionary with num_classes and in_plane",
+    "run_forward_pass": "run the forward pass of FullyConnectedHead on a tensor through pooling and linear layers",
+    "review_head_initialization": "review the FullyConnectedHead constructor to understand optional conv planes and l2 normalization",
+    "refactor_activation_choice": "refactor the from_config method to support additional activation functions beyond relu and silu"
+  },
+  "facebookresearch_classyvision/classy_vision/heads/fully_convolutional_linear_head.py": {
+    "create_FullyConvolutionalLinear": "create a FullyConvolutionalLinear layer with a specified input dimension, number of classes, and activation function",
+    "create_FullyConvolutionalLinearHead": "create a FullyConvolutionalLinearHead with 3D average pooling, optional dropout, and a fully convolutional linear projection",
+    "build_from_config": "build a FullyConvolutionalLinearHead instance from a configuration dictionary with in_plane and num_classes parameters",
+    "test_forward_FullyConvolutionalLinear": "test the FullyConvolutionalLinear forward pass that permutes 5D tensors and applies a linear projection",
+    "review_FullyConvolutionalLinearHead_forward": "review the FullyConvolutionalLinearHead forward method that applies 3D pooling, dropout, and fully convolutional linear projection"
+  },
+  "facebookresearch_classyvision/classy_vision/heads/identity_head.py": {
+    "create_identity_head": "create an IdentityHead instance that returns input tensors unchanged for model output",
+    "use_identity_head_forward": "use the IdentityHead forward method to pass input tensors through without modification",
+    "instantiate_from_config": "instantiate an IdentityHead from a config dictionary containing a unique_id key",
+    "register_identity_head": "register the IdentityHead class with the classy_vision head registry using the identity name",
+    "attach_identity_head_to_model": "attach an IdentityHead to a model when the model output is already the desired result"
+  },
+  "facebookresearch_classyvision/classy_vision/heads/vision_transformer_head.py": {
+    "create_vision_transformer_head": "create a VisionTransformerHead with a specified input plane size and number of output classes",
+    "create_head_with_hidden_layer": "create a VisionTransformerHead with a hidden layer using hidden_dim and Tanh activation",
+    "create_head_with_l2_normalization": "create a VisionTransformerHead that applies L2 normalization to inputs before the forward pass",
+    "init_head_weights": "initialize the VisionTransformerHead weights using Lecun normal init for pre_logits and zeros for head",
+    "build_head_from_config": "build a VisionTransformerHead instance from a config dictionary using the from_config class method"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/checkpoint_hook.py": {
+    "create_CheckpointHook": "create a CheckpointHook instance to save model checkpoints in a specified folder during training",
+    "build_CheckpointHook_with_period": "build a CheckpointHook that saves checkpoints every N phases instead of every phase",
+    "test_get_checkpoint_name": "test the get_checkpoint_name class method to generate checkpoint filenames for a given phase index",
+    "review_on_phase_end": "review the on_phase_end method that conditionally saves checkpoints based on phase type and period",
+    "refactor_save_checkpoint": "refactor the _save_checkpoint method to customize how checkpoint files are saved and copied"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/classy_hook.py": {
+    "create_custom_hook": "create a custom ClassyHook subclass that implements on_start, on_step, and on_end lifecycle methods",
+    "store_hook_state": "store serializable state data in self.state attributes of a ClassyHook subclass instance",
+    "checkpoint_hook_state": "get and set ClassyHook state dictionaries for saving and restoring hook checkpoints",
+    "configure_hook_from_dict": "instantiate a ClassyHook subclass from a config dictionary using the from_config class method",
+    "disable_hook_method": "set a hook method to _noop to disable that specific lifecycle callback in a subclass"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/exponential_moving_average_model_hook.py": {
+    "create_EMA_hook": "create an ExponentialMovingAverageModelHook with a decay factor and device for tracking EMA of model parameters",
+    "build_model_state_iterator": "build an iterator over model named parameters and batch norm buffers to apply EMA updates",
+    "test_on_step_ema_update": "test the on_step method that updates EMA model state using foreach operations during training",
+    "refactor_set_model_state": "refactor the set_model_state method to swap between EMA and current model weights based on phase",
+    "review_on_phase_start": "review the on_phase_start hook that restores EMA or current model state depending on training phase"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/loss_lr_meter_logging_hook.py": {
+    "create_LossLrMeterLoggingHook": "create a LossLrMeterLoggingHook instance to log loss, LR, and meters during training",
+    "configure_LossLrMeterLoggingHook_log_freq": "configure LossLrMeterLoggingHook with a log_freq parameter to log every N batches",
+    "register_LossLrMeterLoggingHook": "register the LossLrMeterLoggingHook using the register_hook decorator with name loss_lr_meter_logging",
+    "review_on_phase_end": "review the on_phase_end method that logs synced meters and loss at phase completion",
+    "review_on_step": "review the on_step method that logs approximate meters every log_freq batches during training"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/model_complexity_hook.py": {
+    "build_model_complexity_hook": "build a ClassyVision hook that logs model parameters, FLOPs, and activations on task start",
+    "create_on_start_profiling": "create an on_start hook method that measures model parameters, FLOPs, and activations using the profiler",
+    "test_get_summary": "test the get_summary method to verify it returns FLOPs, activations, and parameters in millions",
+    "refactor_model_complexity_hook": "refactor the ModelComplexityHook to add custom metrics beyond parameters, FLOPs, and activations",
+    "review_classy_profiler_integration": "review the ModelComplexityHook integration with count_params, compute_flops, and compute_activations from the profiler module"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/model_tensorboard_hook.py": {
+    "create_ModelTensorboardHook": "create a ModelTensorboardHook instance with a TensorBoard SummaryWriter to visualize model graphs",
+    "build_from_config": "build a ModelTensorboardHook from a config dictionary containing summary_writer arguments",
+    "review_on_start": "review the on_start method that plots the model graph in TensorBoard on task start",
+    "test_register_hook": "test the model_tensorboard hook registration decorator for ClassyVision hooks",
+    "summarize_ModelTensorboardHook": "summarize the ModelTensorboardHook class that visualizes model architecture in TensorBoard"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/output_csv_hook.py": {
+    "create_OutputCSVHook": "create an OutputCSVHook instance to save model predictions to a CSV file during evaluation",
+    "use_OutputCSVHook_on_step": "use the on_step method to write sample IDs, predictions, and targets to a tab-delimited CSV file",
+    "configure_OutputCSVHook_id_key": "configure the OutputCSVHook with a custom id_key to extract sample identifiers from the dataset",
+    "register_OutputCSVHook": "register the output_csv hook in ClassyVision to automatically log predictions during test phases",
+    "use_OutputCSVHook_delimiter": "use a custom delimiter like comma when initializing OutputCSVHook for CSV output format"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/precise_batch_norm_hook.py": {
+    "create_precise_bn_hook": "create a PreciseBatchNormHook instance with a specified number of samples to compute precise batch norm statistics",
+    "build_hook_from_config": "build a PreciseBatchNormHook from a config dictionary containing num_samples and optional cache_samples settings",
+    "review_on_step_caching": "review the on_step method that caches training samples on CPU during training for precise batch norm computation",
+    "test_on_phase_end_update": "test the on_phase_end method that updates batch norm stats using cached or freshly loaded samples",
+    "summarize_get_iterator_helper": "summarize the _get_iterator helper function that yields input tensors from a data iterator with optional GPU transfer"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/profiler_hook.py": {
+    "build_profiler_hook": "build a ClassyVision ProfilerHook to profile model forward pass and log runtime breakdown",
+    "create_profiler_on_start": "create a ProfilerHook on_start method that profiles the forward pass and logs results",
+    "test_ProfilerHook": "test the ProfilerHook class to verify it profiles model forward pass correctly",
+    "refactor_ProfilerHook_on_start": "refactor the ProfilerHook on_start method to support custom profiling configurations",
+    "summarize_ProfilerHook": "summarize the ProfilerHook class that profiles model forward pass and logs runtime info"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/progress_bar_hook.py": {
+    "create_progress_bar_hook": "create a ProgressBarHook instance to display a progress bar during batch processing in ClassyVision",
+    "register_progress_bar_hook": "register the progress_bar hook using the register_hook decorator to enable progress tracking",
+    "on_phase_start_progress": "start a progress bar at phase start by calling on_phase_start with a task object",
+    "update_progress_on_step": "update the progress bar on each training step by calling on_step with the task",
+    "finish_progress_bar": "finish and clear the progress bar at phase end by calling on_phase_end with the task"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/tensorboard_plot_hook.py": {
+    "create_tensorboard_plot_hook": "create a TensorboardPlotHook instance with a SummaryWriter and custom log period for training",
+    "build_hook_from_config": "build a TensorboardPlotHook from a config dict with summary_writer args and log_period",
+    "review_on_phase_end": "review the on_phase_end method that logs losses, learning rates, meters, and GPU memory to Tensorboard",
+    "test_on_step": "test the on_step method that records learning rates, wall times, and sample fetch times per step",
+    "summarize_get_cum_sample_fetch_times": "summarize the _get_cum_sample_fetch_times method that computes cumulative sample fetch times across distributed replicas"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/torchscript_hook.py": {
+    "create_torchscript_hook": "create a TorchscriptHook instance to convert a classy vision model into TorchScript format",
+    "trace_model_to_torchscript": "trace a PyTorch model using torch.jit.trace to produce a TorchScript module from dummy input",
+    "script_model_to_torchscript": "script a PyTorch model using torch.jit.script to produce a TorchScript module without tracing",
+    "save_torchscript_model": "save a TorchScript model to a specified folder as torchscript.pt using PathManager",
+    "register_torchscript_hook": "register the torchscript hook with classy vision to automatically save models at the end of training"
+  },
+  "facebookresearch_classyvision/classy_vision/hooks/visdom_hook.py": {
+    "create_visdom_hook": "create a VisdomHook instance with server host, port, and environment name to plot training metrics",
+    "plot_learning_curvisdom": "plot learning curves to visdom by calling on_phase_end on a VisdomHook with a task object",
+    "register_visdom_hook": "register the visdom hook using the register_hook decorator to enable metric visualization during training",
+    "track_phase_metrics": "track phase loss, learning rate, and meter values by invoking on_phase_end on a VisdomHook instance",
+    "configure_visdom_environment": "configure a VisdomHook with a custom environment name and title suffix for organized metric plotting"
+  },
+  "facebookresearch_classyvision/classy_vision/hub/classy_hub_interface.py": {
+    "create_image_dataset": "create an ImagePathDataset from image files with configurable batch size and transforms",
+    "predict_sample": "run the model to predict a label for a single image sample",
+    "extract_features": "extract feature embeddings from an image sample using the model",
+    "from_model": "instantiate a ClassyHubInterface from an existing PyTorch or ClassyModel",
+    "get_data_iterator": "get an iterator over a ClassyDataset to retrieve training or testing samples"
+  },
+  "facebookresearch_classyvision/classy_vision/losses/barron_loss.py": {
+    "create_barron_loss_instance": "create a BarronLoss instance with alpha, size_average, and c parameters for robust regression",
+    "build_barron_loss_from_config": "build a BarronLoss from a config dictionary with alpha, size_average, and c keys",
+    "run_barron_loss_forward": "run the BarronLoss forward pass on prediction and target tensors to compute loss",
+    "review_barron_loss_alpha_variants": "review the BarronLoss class and its three alpha variants: zero, infinity, and general",
+    "test_barron_loss_size_average": "test the BarronLoss forward method with size_average enabled to verify loss normalization"
+  },
+  "facebookresearch_classyvision/classy_vision/losses/classy_loss.py": {
+    "build_classyloss_from_config": "build a ClassyLoss instance from a configuration dictionary using the from_config class method",
+    "create_loss_forward_pass": "create a forward pass that computes the loss given model output and target tensors",
+    "test_get_classy_state": "test the get_classy_state method to retrieve the loss state dictionary for checkpointing",
+    "refactor_set_classy_state": "refactor the set_classy_state method to load loss state from a checkpoint dictionary",
+    "review_has_learned_parameters": "review the has_learned_parameters method to check if the loss has trainable parameters"
+  },
+  "facebookresearch_classyvision/classy_vision/losses/label_smoothing_loss.py": {
+    "create_label_smoothing_loss": "create a LabelSmoothingCrossEntropyLoss instance with a smoothing parameter to decrease output score gaps",
+    "build_loss_from_config": "build a LabelSmoothingCrossEntropyLoss from a config dictionary containing smoothing_param, ignore_index, and reduction",
+    "compute_valid_targets": "compute valid one-hot target vectors from class indices by masking out ignore index values",
+    "smooth_targets": "smooth valid one-hot target vectors by normalizing and adding the smoothing parameter divided by class count",
+    "run_forward_loss": "run the forward pass to compute label-smoothed cross entropy loss between model output and target labels"
+  },
+  "facebookresearch_classyvision/classy_vision/losses/multi_output_sum_loss.py": {
+    "build_multi_output_sum_loss": "build a MultiOutputSumLoss instance that applies a loss function to multiple model outputs and sums the results",
+    "create_from_config": "create a MultiOutputSumLoss from a config dict using the from_config class method with a registered loss",
+    "test_forward_multi_tensor": "test the forward method by passing a list of output tensors and a target to compute summed loss",
+    "test_forward_single_tensor": "test the forward method by passing a single output tensor that gets wrapped into a list automatically",
+    "review_multi_output_sum_loss_class": "review the MultiOutputSumLoss class to understand how it wraps and sums losses across multiple model outputs"
+  },
+  "facebookresearch_classyvision/classy_vision/losses/soft_target_cross_entropy_loss.py": {
+    "build_soft_target_cross_entropy_loss": "build a SoftTargetCrossEntropyLoss instance with ignore_index, reduction, and normalize_targets parameters",
+    "create_loss_from_config": "create a SoftTargetCrossEntropyLoss from a config dictionary using the from_config class method",
+    "run_forward_pass": "run the forward pass of SoftTargetCrossEntropyLoss with output logits and target tensors",
+    "test_multilabel_loss": "test the SoftTargetCrossEntropyLoss with multilabel targets and ignore_index masking",
+    "review_normalization_logic": "review the SoftTargetCrossEntropyLoss normalize_targets logic that divides valid targets by their sum"
+  },
+  "facebookresearch_classyvision/classy_vision/losses/sum_arbitrary_loss.py": {
+    "build_sum_arbitrary_loss": "build a SumArbitraryLoss that sums multiple weighted ClassyLoss instances on the same prediction and target",
+    "create_loss_from_config": "create a SumArbitraryLoss from a config dict with a list of loss configs and optional weights",
+    "register_sum_arbitrary_loss": "register the SumArbitraryLoss class under the name sum_arbitrary in the ClassyVision loss registry",
+    "compute_weighted_loss_sum": "compute the forward pass that applies each loss to prediction and target then sums with weights",
+    "review_loss_initialization": "review the SumArbitraryLoss init that defaults weights to ones when no weights tensor is provided"
+  },
+  "facebookresearch_classyvision/classy_vision/meters/accuracy_meter.py": {
+    "create_accuracy_meter": "create an AccuracyMeter instance with a list of top-k values for classification accuracy tracking",
+    "update_accuracy_meter": "update the AccuracyMeter with model output logits and target labels to track correct predictions",
+    "sync_accuracy_meter_state": "sync the AccuracyMeter state across distributed workers using all_reduce_sum for aggregated totals",
+    "get_accuracy_value": "get the current top-k accuracy values as a dictionary from the AccuracyMeter value property",
+    "reset_accuracy_meter": "reset the AccuracyMeter to zero out all correct prediction counts and sample counts"
+  },
+  "facebookresearch_classyvision/classy_vision/meters/classy_meter.py": {
+    "create_custom_meter": "create a custom meter class that extends ClassyMeter to track a new training metric",
+    "build_meter_from_config": "build a ClassyMeter instance from a configuration dictionary using the from_config class method",
+    "update_meter_with_batch": "update the meter state with model output and target tensors after each batch",
+    "sync_meter_state": "sync the meter state across distributed training processes using sync_state",
+    "checkpoint_meter_state": "save and restore the meter state for checkpointing using get_classy_state and set_classy_state"
+  },
+  "facebookresearch_classyvision/classy_vision/meters/precision_meter.py": {
+    "create_PrecisionAtKMeter": "create a PrecisionAtKMeter instance with a list of top-k values for classification precision tracking",
+    "update_PrecisionAtKMeter": "update the PrecisionAtKMeter with model output logits and target labels to track correct predictions",
+    "get_value_PrecisionAtKMeter": "get the current top-k precision values as a dictionary from the PrecisionAtKMeter",
+    "sync_PrecisionAtKMeter": "sync the PrecisionAtKMeter state across distributed workers using all_reduce_sum for correct predictions",
+    "reset_PrecisionAtKMeter": "reset all counters in the PrecisionAtKMeter to zero for starting a new evaluation phase"
+  },
+  "facebookresearch_classyvision/classy_vision/meters/recall_meter.py": {
+    "create_RecallAtKMeter": "create a RecallAtKMeter instance with a list of top-k values for recall tracking",
+    "build_from_config": "build a RecallAtKMeter from a config dictionary containing the topk parameter",
+    "test_update_method": "test the update method by passing model output logits and target tensors",
+    "review_sync_state": "review the sync_state method that aggregates metrics across distributed workers using all_reduce_sum",
+    "summarize_value_property": "summarize the value property that returns top-k recall ratios as a dictionary"
+  },
+  "facebookresearch_classyvision/classy_vision/meters/video_accuracy_meter.py": {
+    "create_video_accuracy_meter": "create a VideoAccuracyMeter instance with topk values and clips per video for train and test",
+    "build_video_accuracy_from_config": "build a VideoAccuracyMeter from a config dictionary with topk and clips_per_video_test keys",
+    "test_video_accuracy_meter": "test the VideoAccuracyMeter class by instantiating it with topk list and clip counts",
+    "review_video_accuracy_meter_class": "review the VideoAccuracyMeter class and its top-k video-level accuracy calculation logic",
+    "summarize_video_accuracy_meter": "summarize the VideoAccuracyMeter class that computes video-level accuracy by averaging clip-level predictions"
+  },
+  "facebookresearch_classyvision/classy_vision/meters/video_meter.py": {
+    "create_VideoMeter": "create a VideoMeter instance with clips_per_video_train and clips_per_video_test parameters",
+    "update_VideoMeter": "update the VideoMeter with model output logits, target labels, and is_train flag",
+    "get_VideoMeter_value": "get the computed video-level metric value from the VideoMeter's internal meter",
+    "save_VideoMeter_state": "save the VideoMeter state including meter_state, name, and clips_per_video config",
+    "reset_VideoMeter": "reset the VideoMeter and its internal meter to clear accumulated predictions and counts"
+  },
+  "facebookresearch_classyvision/classy_vision/models/anynet.py": {
+    "build_anynet_model": "build an AnyNet model from a config dict with depths, widths, strides, and block type",
+    "create_anynetparams": "create an AnyNetParams object to configure depths, widths, group widths, and bottleneck multipliers for stages",
+    "build_resbottleneckblock": "build a ResBottleneckBlock with configurable group width, bottleneck multiplier, and squeeze-and-excitation ratio",
+    "create_anystage": "create an AnyStage with a sequence of blocks sharing the same output shape and depth",
+    "review_anynet_forward": "review the AnyNet forward pass that applies the stem then trunk_output to input tensor x"
+  },
+  "facebookresearch_classyvision/classy_vision/models/classy_block.py": {
+    "create_ClassyBlock": "create a ClassyBlock instance wrapping a PyTorch module with a given name",
+    "build_ClassyBlock_forward": "build a forward pass through a ClassyBlock that records the wrapped module output",
+    "test_ClassyBlock_wrapped_module": "test the wrapped_module method to retrieve the underlying PyTorch module from a ClassyBlock",
+    "review_ClassyBlock_stateless": "review the ClassyBlock stateless mode controlled by the CLASSY_BLOCK_STATELESS environment variable",
+    "summarize_ClassyBlock": "summarize the ClassyBlock class which wraps a module and records its output for head execution"
+  },
+  "facebookresearch_classyvision/classy_vision/models/classy_model.py": {
+    "build_ClassyModel_from_config": "build a ClassyModel instance from a configuration dictionary using the from_config class method",
+    "convert_nn_module_to_ClassyModel": "convert an existing PyTorch nn.Module into a ClassyModel using the from_model class method",
+    "attach_heads_to_ClassyModel": "attach ClassyHead objects to named blocks of a ClassyModel using the set_heads method",
+    "get_classy_state_for_checkpointing": "get the model state dictionary with trunk and heads separated using the get_classy_state method",
+    "execute_heads_on_ClassyModel": "execute all attached heads on block outputs and return their results using the execute_heads method"
+  },
+  "facebookresearch_classyvision/classy_vision/models/densenet.py": {
+    "build_densenet_model": "build a DenseNet model with configurable num_blocks, growth_rate, and expansion parameters for image classification",
+    "create_densenet_from_config": "create a DenseNet instance from a config dictionary using the from_config class method",
+    "build_dense_layer": "build a _DenseLayer with batch norm, 1x1 conv, 3x3 conv, and optional squeeze-and-excitation",
+    "build_transition_layer": "build a _Transition layer with batch norm, 1x1 conv, and average pooling to reduce spatial resolution",
+    "run_densenet_forward": "run a forward pass through the DenseNet model on input tensor x to get feature output"
+  },
+  "facebookresearch_classyvision/classy_vision/models/efficientnet.py": {
+    "build_efficientnet_model": "build an EfficientNet model from config with a specified model_name like B0 through B7",
+    "create_mbconvblock": "create an MBConvBlock with squeeze-and-excitation, depthwise convolution, and skip connections",
+    "run_efficientnet_forward": "run a forward pass through an EfficientNet model on input image tensors",
+    "test_drop_connect": "test the drop_connect function to randomly drop inputs during training with a given rate",
+    "scale_width_depth": "scale the number of filters and block repeats using width and depth coefficients"
+  },
+  "facebookresearch_classyvision/classy_vision/models/lecun_normal_init.py": {
+    "init_tensor_lecun_normal": "initialize a PyTorch tensor using LeCun normal distribution with a given fan_in value",
+    "review_lecun_normal_init": "review the lecun_normal_init function to understand how it handles PyTorch version compatibility for trunc_normal_",
+    "refactor_lecun_normal_init": "refactor lecun_normal_init to use a custom trunc_normal_ fallback for PyTorch versions below 1.7",
+    "test_lecun_normal_init": "test the lecun_normal_init function by passing a tensor and fan_in to verify truncated normal initialization",
+    "summarize_lecun_normal_init": "summarize the lecun_normal_init function which applies truncated normal initialization with std equal to sqrt(1/fan_in)"
+  },
+  "facebookresearch_classyvision/classy_vision/models/mlp.py": {
+    "create_MLP_model": "create an MLP model with configurable hidden layers, dropout, and batch normalization",
+    "build_MLP_from_config": "build an MLP model instance from a dictionary config with input_dim, output_dim, and hidden_dims",
+    "run_MLP_forward": "run a forward pass through the MLP model on a PyTorch tensor input",
+    "test_MLP_with_batchnorm": "test the MLP model with batch normalization enabled on all hidden layers",
+    "review_MLP_dropout": "review the MLP model dropout configuration including first_dropout and per-layer dropout settings"
+  },
+  "facebookresearch_classyvision/classy_vision/models/r2plus1_util.py": {
+    "build_r2plus1d_unit": "build an R(2+1)D convolutional unit that decomposes 3D conv into spatial and temporal conv layers",
+    "create_r2plus1d_with_custom_dim_mid": "create an R(2+1)D unit with a custom middle channel dimension for the spatial conv output",
+    "test_r2plus1d_unit": "test the r2plus1_unit function by building a unit with specified input and output dimensions",
+    "refactor_r2plus1d_groups": "refactor the r2plus1_unit to use grouped convolutions for parameter-efficient video feature extraction",
+    "review_r2plus1d_bn_params": "review the r2plus1_unit batch norm epsilon and momentum parameters for training stability"
+  },
+  "facebookresearch_classyvision/classy_vision/models/regnet.py": {
+    "build_regnet_model_from_config": "build a RegNet model from a config dict using RegNet.from_config with depth, w_0, w_a, w_m, and group_width parameters",
+    "create_regnetparams_and_expand": "create a RegNetParams object then call get_expanded_params to compute per-stage widths, strides, depths, and group widths",
+    "instantiate_regnet_y_variant": "instantiate a RegNetY variant like RegNetY400mf or RegNetY8gf with optional keyword arguments to override default settings",
+    "instantiate_regnet_x_variant": "instantiate a RegNetX variant like RegNetX400mf or RegNetX32gf with Squeeze-and-Excitation disabled for lightweight models",
+    "run_regnet_forward_pass": "run a forward pass through a RegNet model by calling forward with an input tensor to get trunk output features"
+  },
+  "facebookresearch_classyvision/classy_vision/models/resnext.py": {
+    "build_resnext_model": "build a ResNeXt model with configurable num_blocks, init_planes, and reduction ratio",
+    "create_resnext_from_config": "create a ResNeXt instance from a config dictionary using the from_config class method",
+    "build_resnet50_model": "build a ResNet50 model with 3-4-6-3 bottleneck blocks and zero-init BN residuals",
+    "build_resnext50_32x4d_model": "build a ResNeXt50 32x4d model with base width 4 and cardinality 32",
+    "review_bottlenecklayer_class": "review the BottleneckLayer class with 1x1-3x3-1x1 conv structure and optional SE"
+  },
+  "facebookresearch_classyvision/classy_vision/models/resnext3d.py": {
+    "build_resnext3d_model": "build a ResNeXt3D 3D video model from a config dict using from_config",
+    "create_resnext3d_from_config": "create a ResNeXt3D model instance by calling from_config with required args like input_planes and num_blocks",
+    "review_resnext3d_forward": "review the ResNeXt3DBase forward method that handles dict or tensor video input through stem and stages",
+    "test_resnext3d_set_classy_state": "test the set_classy_state method to load checkpoint weights with 2D to 3D convolution inflation support",
+    "refactor_resnext3d_init_parameter": "refactor the _init_parameter method to customize Kaiming or zero initialization for Conv3d and BatchNorm3d layers"
+  },
+  "facebookresearch_classyvision/classy_vision/models/resnext3d_block.py": {
+    "build_ResBlock": "build a ResBlock residual block with configurable skip and residual transformation types for 3D video data",
+    "create_BasicTransformation": "create a BasicTransformation module with two 3x3x3 grouped convolutions and batch normalization layers",
+    "create_PostactivatedBottleneckTransformation": "create a PostactivatedBottleneckTransformation with Tx1x1, Tx3x3 group conv, and 1x1x1 projection layers",
+    "create_PreactivatedBottleneckTransformation": "create a PreactivatedBottleneckTransformation with pre-activation batch norm and relu before each convolution layer",
+    "create_BasicR2Plus1DTransformation": "create a BasicR2Plus1DTransformation that decomposes 3D convolutions into separate 2D spatial and 1D temporal convolutions"
+  },
+  "facebookresearch_classyvision/classy_vision/models/resnext3d_stage.py": {
+    "build_ResStage": "build a ResStage module for 3D ResNet with configurable multi-pathway blocks and temporal kernel sizes",
+    "build_ResStageBase": "build a ResStageBase module that computes temporal kernel sizes and manages multiple pathway forward passes",
+    "test_ResStage_forward": "test the ResStage forward pass with multi-pathway tensor inputs for SlowFast video recognition",
+    "refactor_ResStage_skip_transformation": "refactor the ResStage to support a different skip transformation type for residual connections",
+    "review_ResStage_pre_activation": "review the ResStage final stage BatchNorm3d and ReLU activation for preactivated bottleneck transformation"
+  },
+  "facebookresearch_classyvision/classy_vision/models/resnext3d_stem.py": {
+    "build_ResNeXt3DStemSinglePathway": "build a single pathway 3D stem module with Conv3d, BatchNorm3d, ReLU, and optional MaxPool3d",
+    "build_R2Plus1DStemSinglePathway": "build an R(2+1)D single pathway stem module using factorized spatial and temporal convolutions",
+    "build_ResNeXt3DStemMultiPathway": "build a multi-pathway 3D stem module for SlowFast or single pathway video models",
+    "build_R2Plus1DStemMultiPathway": "build a multi-pathway R(2+1)D stem module for video models with factorized convolutions",
+    "build_ResNeXt3DStem": "build a simplified 3D stem wrapper that auto-configures kernel, stride, and padding from temporal and spatial sizes"
+  },
+  "facebookresearch_classyvision/classy_vision/models/squeeze_and_excitation_layer.py": {
+    "create_squeeze_excitation_layer": "create a SqueezeAndExcitationLayer with a given number of input planes and default reduction ratio of 16",
+    "create_squeeze_excitation_custom_reduction": "create a SqueezeAndExcitationLayer with a custom reduction ratio to control channel bottleneck size",
+    "create_squeeze_excitation_reduced_planes": "create a SqueezeAndExcitationLayer with explicit reduced_planes instead of a reduction ratio",
+    "create_squeeze_excitation_custom_activation": "create a SqueezeAndExcitationLayer with a custom activation module instead of the default ReLU",
+    "run_squeeze_excitation_forward": "run the forward pass of SqueezeAndExcitationLayer on a 4D tensor to apply channel-wise attention scaling"
+  },
+  "facebookresearch_classyvision/classy_vision/models/vision_transformer.py": {
+    "build_vision_transformer_model": "build a VisionTransformer model with custom image size, patch size, and number of layers for image classification",
+    "create_ViT_preset_model": "create a ViTB16 or ViTL16 preset Vision Transformer model with default hyperparameters for 224x224 images",
+    "test_EncoderBlock_flops": "test the EncoderBlock flops method to calculate floating point operations for a given input tensor shape",
+    "refactor_VisionTransformer_conv_stem": "refactor the VisionTransformer to use custom conv_stem_layers instead of the default single conv projection",
+    "review_VisionTransformer_set_classy_state": "review the VisionTransformer set_classy_state method that interpolates position embeddings for different image resolutions"
+  },
+  "facebookresearch_classyvision/classy_vision/optim/adam.py": {
+    "create_adam_optimizer": "create an Adam optimizer instance with custom learning rate, betas, and weight decay parameters",
+    "prepare_adam_with_param_groups": "prepare the Adam optimizer by passing model parameter groups to initialize torch.optim.Adam",
+    "build_adam_from_config": "build an Adam optimizer from a configuration dictionary with lr, betas, eps, and amsgrad settings",
+    "register_adam_optimizer": "register the Adam optimizer class with the ClassyVision optimizer registry using the adam key",
+    "review_adam_from_config_validation": "review the from_config method that validates betas tuple values are floats in the range [0, 1)"
+  },
+  "facebookresearch_classyvision/classy_vision/optim/adamw.py": {
+    "create_adamw_optimizer": "create an AdamW optimizer instance with custom learning rate, betas, and weight decay parameters",
+    "prepare_adamw_with_param_groups": "prepare the AdamW optimizer by passing PyTorch parameter groups to the prepare method",
+    "build_adamw_from_config": "build an AdamW optimizer from a dictionary config with lr, betas, eps, weight_decay, and amsgrad keys",
+    "review_adamw_from_config_validation": "review the AdamW from_config method to validate betas tuple values are floats in the range [0, 1)",
+    "refactor_adamw_amsgrad_support": "refactor the AdamW optimizer class to toggle amsgrad mode for improved convergence stability"
+  },
+  "facebookresearch_classyvision/classy_vision/optim/adamw_mt.py": {
+    "create_adamwmt_optimizer": "create an AdamWMT multi-tensor AdamW optimizer instance with custom learning rate and betas",
+    "prepare_adamwmt_param_groups": "prepare the AdamWMT optimizer by passing param groups to initialize the multi-tensor AdamW",
+    "build_adamwmt_from_config": "build an AdamWMT optimizer from a config dictionary with lr, betas, eps, and weight_decay",
+    "register_adamwmt_optimizer": "register the AdamWMT optimizer class with the name adamw_mt using the register_optimizer decorator",
+    "review_adamwmt_from_config_validation": "review the AdamWMT from_config method that validates betas are floats in the range [0, 1)"
+  },
+  "facebookresearch_classyvision/classy_vision/optim/classy_optimizer.py": {
+    "create_optimizer_from_config": "create a ClassyOptimizer instance from a configuration dictionary using the from_config class method",
+    "set_param_groups_with_scheduler": "set optimizer param groups with a ParamScheduler to automatically schedule learning rate during training",
+    "step_optimizer_with_where": "step the optimizer with a where value to update parameters based on training progress",
+    "access_optimizer_options_view": "access the current learning rate and momentum values through the options_view property",
+    "checkpoint_optimizer_state": "save and restore the optimizer state using get_classy_state and set_classy_state for checkpointing"
+  },
+  "facebookresearch_classyvision/classy_vision/optim/rmsprop.py": {
+    "create_rmsprop_optimizer": "create an RMSProp optimizer instance with custom learning rate, momentum, and weight decay parameters",
+    "build_rmsprop_from_config": "build an RMSProp optimizer from a configuration dictionary with validated hyperparameters and defaults",
+    "prepare_rmsprop_with_param_groups": "prepare the RMSProp optimizer by wrapping torch.optim.RMSprop with the given parameter groups",
+    "register_rmsprop_optimizer": "register the RMSProp optimizer class under the name rmsprop in the ClassyOptimizer registry",
+    "validate_rmsprop_config": "validate RMSProp config parameters ensuring momentum and alpha are in [0,1) and eps is positive"
+  },
+  "facebookresearch_classyvision/classy_vision/optim/rmsprop_tf.py": {
+    "create_rmsprop_tf_optimizer": "create an RMSpropTFOptimizer instance with custom learning rate, momentum, and alpha parameters",
+    "run_rmsprop_tf_step": "run a single optimization step using the RMSpropTFOptimizer step method with an optional closure",
+    "build_rmsprop_tf_from_config": "build an RMSPropTF optimizer instance from a dictionary config with lr, momentum, and eps",
+    "prepare_rmsprop_tf_param_groups": "prepare an RMSpropTFOptimizer by passing param groups to the RMSPropTF prepare method",
+    "review_rmsprop_tf_centered": "review the RMSpropTFOptimizer centered mode which normalizes gradients by variance estimation"
+  },
+  "facebookresearch_classyvision/classy_vision/optim/sgd.py": {
+    "create_SGD_optimizer": "create an SGD optimizer instance with configurable learning rate, momentum, and weight decay parameters",
+    "prepare_SGD_with_param_groups": "prepare the SGD optimizer by wrapping torch.optim.SGD with the given parameter groups",
+    "create_SGD_from_config": "create an SGD optimizer instance from a configuration dictionary with default parameter values",
+    "enable_LARC_adaptation": "enable LARC adaptive gradient clipping on the SGD optimizer using apex.parallel.LARC wrapper",
+    "configure_SGD_nesterov_momentum": "configure the SGD optimizer with Nesterov momentum acceleration for faster convergence"
+  },
+  "facebookresearch_classyvision/classy_vision/optim/zero.py": {
+    "build_zero_optimizer": "build a ZeRO optimizer that wraps a base ClassyOptimizer and shards its state across replicas",
+    "prepare_zero_optimizer": "prepare the ZeRO optimizer with param groups using Fairscale OSS for distributed training",
+    "create_zero_from_config": "create a ZeRO optimizer instance from a config dict with a base_optimizer key",
+    "run_on_epoch_consolidation": "run the on_epoch hook to consolidate sharded optimizer state on the primary rank",
+    "consolidate_zero_state_dict": "consolidate the sharded optimizer state dict to the primary rank for checkpointing"
+  },
+  "facebookresearch_classyvision/classy_vision/optim/param_scheduler/classy_vision_param_scheduler.py": {
+    "create_update_interval_from_config": "create an UpdateInterval enum value from a config dictionary with update_interval key",
+    "create_classy_param_scheduler": "create a ClassyParamScheduler instance with a specified UpdateInterval for epoch or step updates",
+    "use_update_interval_epoch": "use the UpdateInterval.EPOCH enum to update parameters before each training epoch",
+    "use_update_interval_step": "use the UpdateInterval.STEP enum to update parameters before each optimizer step",
+    "review_classy_param_scheduler_from_config": "review the ClassyParamScheduler from_config classmethod to implement custom scheduler instantiation from config"
+  },
+  "facebookresearch_classyvision/classy_vision/optim/param_scheduler/composite_scheduler.py": {
+    "build_composite_scheduler": "build a CompositeParamScheduler with multiple schedulers, lengths, and interval scaling options",
+    "create_from_config": "create a CompositeParamScheduler instance from a config dictionary with schedulers and lengths",
+    "review_interval_scaling_enum": "review the IntervalScaling enum with RESCALED and FIXED members for scheduler intervals",
+    "refactor_composite_init": "refactor the CompositeParamScheduler init to support custom update intervals and scaling strategies",
+    "test_from_config": "test the from_config class method to instantiate a CompositeParamScheduler from a config dict"
+  },
+  "facebookresearch_classyvision/classy_vision/optim/param_scheduler/fvcore_schedulers.py": {
+    "create_cosine_scheduler_from_config": "create a CosineParamScheduler from a config dict with name, start_value, and end_value",
+    "create_linear_scheduler_from_config": "create a LinearParamScheduler from a config dict with name, start_value, and end_value",
+    "create_step_scheduler_from_config": "create a StepParamScheduler from a config dict with name, start_value, and boundaries",
+    "create_polynomial_decay_scheduler_from_config": "create a PolynomialDecayParamScheduler from a config dict with name, start_value, and power",
+    "review_create_classy_scheduler_class": "review the _create_classy_scheduler_class factory function that wraps fvcore schedulers with from_config and update_interval"
+  },
+  "facebookresearch_classyvision/classy_vision/tasks/classification_task.py": {
+    "build_classification_task_from_config": "build a ClassificationTask from a config dict with model, loss, optimizer, and dataset settings",
+    "set_distributed_options_ddp": "set distributed training options like broadcast buffers mode and synchronized batch norm on the task",
+    "set_amp_args_mixed_precision": "set automatic mixed precision arguments to enable Apex or PyTorch AMP for faster training",
+    "run_train_step": "run a single training step with forward pass, loss computation, backward pass, and optimizer update",
+    "set_checkpoint_resume_training": "set a checkpoint path to resume training from a saved model state"
+  },
+  "facebookresearch_classyvision/classy_vision/tasks/classy_task.py": {
+    "create_ClassyTask_subclass": "create a subclass of ClassyTask that implements all abstract methods for a custom training task",
+    "build_from_config": "build a ClassyTask instance from a configuration dictionary using the from_config class method",
+    "run_train_step": "run a single training step over one batch of data from the dataloaders",
+    "checkpoint_get_set_state": "get and set the ClassyTask state dictionary for saving and loading training checkpoints",
+    "run_hooks": "run hook functions for all registered ClassyHook instances with local variables from train_step"
+  },
+  "facebookresearch_classyvision/classy_vision/tasks/fine_tuning_task.py": {
+    "create_finetuningtask_from_config": "create a FineTuningTask instance from a config dict with pretrained checkpoint and freeze options",
+    "set_pretrained_checkpoint": "set the pretrained checkpoint file path on a FineTuningTask instance for model loading",
+    "set_freeze_trunk": "set freeze_trunk to disable gradient updates on the trunk model except head layers",
+    "set_reset_heads": "set reset_heads to reinitialize the head layers when loading a pretrained checkpoint",
+    "prepare_finetuning_task": "prepare the FineTuningTask by loading pretrained weights and optionally freezing the trunk"
+  },
+  "facebookresearch_classyvision/classy_vision/templates/synthetic/datasets/my_dataset.py": {
+    "create_MyDataset": "create a MyDataset instance with crop size, class ratio, seed, and transform parameters",
+    "build_MyDataset_from_config": "build a MyDataset from a config dictionary with crop_size, class_ratio, and seed keys",
+    "register_MyDataset": "register the MyDataset class as my_dataset using the register_dataset decorator",
+    "test_MyDataset_from_config": "test the MyDataset from_config class method with a sample config dictionary",
+    "review_MyDataset_init": "review the MyDataset init method that wraps RandomImageBinaryClassDataset with ClassyDataset"
+  },
+  "facebookresearch_classyvision/classy_vision/templates/synthetic/losses/my_loss.py": {
+    "create_MyLoss_class": "create a custom ClassyLoss subclass named MyLoss that computes binary cross entropy loss",
+    "register_MyLoss_with_decorator": "register the MyLoss class with the ClassyVision loss registry using the register_loss decorator",
+    "implement_forward_method": "implement the forward method to convert targets to one-hot labels and compute binary cross entropy",
+    "implement_from_config_method": "implement the from_config class method to instantiate MyLoss without requiring config parameters",
+    "use_binary_cross_entropy_loss": "use PyTorch F.binary_cross_entropy to compute loss between model input and one-hot encoded target labels"
+  },
+  "facebookresearch_classyvision/classy_vision/templates/synthetic/models/my_model.py": {
+    "create_MyModel": "create a MyModel instance that extends ClassyModel with a sequential neural network",
+    "build_MyModel_forward": "build a forward pass through the MyModel sequential network with pooling and linear layers",
+    "register_MyModel": "register the MyModel class with the ClassyModel registry using the my_model key",
+    "test_MyModel_from_config": "test the MyModel from_config class method to instantiate the model from a config",
+    "review_MyModel_init": "review the MyModel init that builds an AdaptiveAvgPool2d, Flatten, Linear, and Sigmoid pipeline"
+  },
+  "facebookresearch_classyvision/classy_vision/trainer/classy_trainer.py": {
+    "run_ClassyTrainer_train": "run the ClassyTrainer train method to execute training phases on a ClassyTask",
+    "create_ClassyTrainer_subclass": "create a subclass of ClassyTrainer to customize distributed training environment setup",
+    "review_ClassyTrainer_train_loop": "review the ClassyTrainer train method and its outer training loop control flow",
+    "test_ClassyTrainer_with_task": "test the ClassyTrainer by passing a ClassyTask instance to the train method",
+    "summarize_ClassyTrainer": "summarize the ClassyTrainer base class responsible for setting up and controlling training"
+  },
+  "facebookresearch_classyvision/classy_vision/trainer/distributed_trainer.py": {
+    "init_distributed_training": "initialize distributed training with NCCL or Gloo backend using environment variables for process group setup",
+    "setup_env_vars": "set default environment variables for distributed training including WORLD_SIZE, RANK, MASTER_ADDR, and NCCL error handling",
+    "train_distributed": "train a model across multiple processes using DistributedTrainer with GPU or CPU support",
+    "configure_gpu_device": "configure CUDA device index based on local rank for distributed GPU training",
+    "review_DistributedTrainer": "review the DistributedTrainer class that extends ClassyTrainer for multi-process distributed training"
+  },
+  "facebookresearch_classyvision/classy_vision/trainer/local_trainer.py": {
+    "run_local_training": "run a LocalTrainer to train a ClassyTask on a single GPU or CPU process",
+    "create_local_trainer": "create a LocalTrainer instance that extends ClassyTrainer for single-process training",
+    "train_with_gpu": "train a task using LocalTrainer with GPU by setting task.use_gpu to true",
+    "train_with_cpu": "train a task using LocalTrainer with CPU by setting task.use_gpu to false",
+    "review_local_trainer": "review the LocalTrainer class and its train method for single-process training setup"
+  },
+  "facebookresearch_classyvision/hydra_plugins/classy_vision_path/classy_vision_path.py": {
+    "create_hydra_search_path_plugin": "create a Hydra SearchPathPlugin subclass that appends a config search path for a package",
+    "build_classy_vision_path_plugin": "build a ClassyVisionPathPlugin that registers pkg://classy_vision.hydra.conf in the Hydra config search path",
+    "manipulate_search_path_append": "manipulate a Hydra ConfigSearchPath by appending a provider and package path entry",
+    "review_ClassyVisionPathPlugin_manipulate_search_path": "review the ClassyVisionPathPlugin class and its manipulate_search_path method to understand how it registers Hydra config paths",
+    "refactor_search_path_plugin": "refactor the ClassyVisionPathPlugin to support multiple config search paths or dynamic provider names"
+  },
+  "facebookresearch_classyvision/scripts/parse_sphinx.py": {
+    "run_parse_sphinx_cli": "run the parse_sphinx script with -i input_dir -o output_dir to strip HTML body from Sphinx docs",
+    "run_parse_sphinx_search": "run parse_sphinx on a Sphinx HTML directory that includes search.html to add search JS scripts",
+    "run_parse_sphinx_docusaurus": "run parse_sphinx to convert Sphinx HTML docs for use in a Docusaurus output directory",
+    "review_parse_sphinx_function": "review the parse_sphinx function that walks an input directory and wraps document divs with sphinx class",
+    "refactor_parse_sphinx_js": "refactor parse_sphinx to update the searchtools.js file path reference from URL_ROOT to _sphinx-sources"
+  },
+  "facebookresearch_classyvision/scripts/parse_tutorials.py": {
+    "run_gen_tutorials": "run the script to generate HTML, JS, ipynb, and py tutorial files from Jupyter notebooks",
+    "build_tutorial_html": "build HTML tutorial files from Jupyter notebooks using nbconvert HTMLExporter and BeautifulSoup",
+    "convert_notebook_to_python": "convert a Jupyter notebook to a Python script using nbconvert ScriptExporter",
+    "generate_tutorial_js": "generate a React TutorialPage JS file for a given tutorial ID using the TEMPLATE string",
+    "parse_notebook_metadata": "parse a Jupyter notebook with nbformat and set the kernelspec display_name to python3"
+  },
+  "facebookresearch_classyvision/test/api_test.py": {
+    "run_classification_training_pipeline": "run a ClassyVision classification training pipeline with a synthetic dataset, model, loss, and SGD optimizer",
+    "create_classification_task": "create a ClassificationTask with model, datasets, loss, optimizer, and learning rate scheduler using the builder pattern",
+    "build_synthetic_dataset": "build a synthetic MyDataset with torchvision image transforms like RandomResizedCrop and Normalize for training",
+    "configure_sgd_optimizer": "configure an SGD optimizer with momentum, weight decay, and Nesterov acceleration for model training",
+    "train_with_local_trainer": "train a classification task using LocalTrainer with a configured task and linear learning rate scheduler"
+  },
+  "facebookresearch_classyvision/test/classy_vision_head_test.py": {
+    "build_head_from_config": "build a ClassyHead from a config dict using the build_head factory function",
+    "register_custom_head": "register a custom head class with the register_head decorator for use with build_head",
+    "test_build_head": "test that build_head creates a head with the correct unique_id from config",
+    "test_forward_pass": "test the forward pass of a built head with a random input tensor",
+    "test_identity_head": "test that the identity head returns the same tensor as input"
+  },
+  "facebookresearch_classyvision/test/dataloader_async_gpu_wrapper_test.py": {
+    "create_ZeroImageDataset": "create a ZeroImageDataset that generates zero-filled image tensors with random classification targets",
+    "test_DataloaderAsyncGPUWrapper": "test the DataloaderAsyncGPUWrapper to verify async GPU data loading returns correct CUDA tensors",
+    "run_test_dataset_async": "run the test_dataset_async unittest to validate streaming dataset batch counts and GPU tensor placement",
+    "review_ZeroImageDataset_iter": "review the ZeroImageDataset __iter__ method that distributes work across DataLoader workers using mod N",
+    "refactor_ZeroImageDataset_getitem": "refactor the ZeroImageDataset __getitem__ to customize image generation and target label logic"
+  },
+  "facebookresearch_classyvision/test/dataset_classy_dataset_test.py": {
+    "build_dataset_from_config": "build a dataset from a config dict using the build_dataset registry function",
+    "register_dataset_decorator": "register a custom dataset class with the register_dataset decorator for config-based instantiation",
+    "test_classydataset_iterator": "test the ClassyDataset iterator method to return a PyTorch DataLoader with configurable workers",
+    "test_classydataset_sharding": "test the ClassyDataset sharding logic to verify correct sample distribution across distributed ranks",
+    "test_classydataset_shuffle": "test the ClassyDataset shuffle logic to verify different sample orderings per epoch and seed"
+  },
+  "facebookresearch_classyvision/test/dataset_classy_video_dataset_test.py": {
+    "build_dataset_from_config": "build a ClassyVision video dataset from a config dict and sample list using build_dataset",
+    "register_custom_video_dataset": "register a custom video dataset class with the register_dataset decorator for use in the registry",
+    "test_parse_config": "test the parse_config method to extract video dataset parameters from a config dictionary",
+    "test_max_length_clip_sampler": "test the MaxLengthClipSampler to verify it limits iteration to a specified number of samples",
+    "create_test_video_dataset": "create a TestVideoDataset subclass that wraps a ListDataset with video and audio tensor samples"
+  },
+  "facebookresearch_classyvision/test/dataset_dataloader_limit_wrapper_test.py": {
+    "test_streaming_dataset": "test that streaming datasets return the correct number of batches and length is calculated correctly",
+    "build_task_from_config": "build a task from a config dictionary using build_task to prepare dataloaders and data iterators",
+    "test_number_of_batches": "test the data iterator returns the expected number of batches by iterating and counting",
+    "get_test_task_config": "get a test task configuration dictionary to use as a base for dataset config setup",
+    "rebuild_dataloaders": "rebuild dataloaders for the current phase and recreate data iterators to verify consistency"
+  },
+  "facebookresearch_classyvision/test/dataset_image_path_dataset_test.py": {
+    "build_image_path_dataset": "build an ImagePathDataset from config using image_files or image_folder paths",
+    "test_build_dataset_config": "test the build_dataset function with valid and invalid config combinations",
+    "test_image_dataset_files": "test ImagePathDataset loading images from a list of image file paths",
+    "test_image_dataset_folder": "test ImagePathDataset loading images from a torchvision ImageFolder directory structure",
+    "create_sort_key_function": "create a sort key function that handles tuples of tensors or single tensors"
+  },
+  "facebookresearch_classyvision/test/dataset_transforms_autoaugment_test.py": {
+    "test_imagenet_autoaugment_transform": "test the imagenet autoaugment transform runs without errors on a random image dataset sample",
+    "create_random_image_dataset": "create a RandomImageBinaryClassDataset with crop size 224 and 100 samples for testing transforms",
+    "build_imagenet_field_transform": "build a default imagenet field transform using the imagenet_autoaugment config name",
+    "run_autoaugment_test": "run the AutoaugmentTransformTest unittest class to verify imagenet autoaugment registration and execution",
+    "review_autoaugment_transform": "review the AutoaugmentTransformTest class and its test methods for imagenet autoaugment transform validation"
+  },
+  "facebookresearch_classyvision/test/dataset_transforms_lighting_transform_test.py": {
+    "test_lighting_transform": "test the LightingTransformTest class to verify the lighting transform runs without errors on random image datasets",
+    "create_random_image_dataset": "create a RandomImageBinaryClassDataset with crop_size 224, class_ratio 0.5, and 100 samples for testing",
+    "build_field_transform": "build a field transform using build_field_transform_default_imagenet with ToTensor and lighting config options",
+    "run_lighting_test": "run the test_lighting_transform_no_errors method to validate the lighting transform is registered and executes correctly",
+    "review_lighting_transform_test": "review the LightingTransformTest class and its test methods for dataset transform validation"
+  },
+  "facebookresearch_classyvision/test/dataset_transforms_mixup_test.py": {
+    "test_mixup_transform_single_label": "test MixupTransform on single-label image batches across batch, pair, and elem modes",
+    "test_cutmix_transform_single_label": "test MixupTransform with cutmix_alpha and cutmix_minmax on single-label image batches",
+    "test_mixup_cutmix_combined": "test MixupTransform with both mixup_alpha and cutmix_alpha using switch_prob for combined augmentation",
+    "test_mixup_with_label_smoothing": "test MixupTransform combined with cutmix and label_smoothing on single-label image batches",
+    "test_mixup_multi_modal": "test MixupTransform on multi-modal inputs with video and audio tensors and single or multi labels"
+  },
+  "facebookresearch_classyvision/test/dataset_transforms_test.py": {
+    "build_transforms_from_config": "build a transform pipeline from a config list using build_transforms with resize and center_crop",
+    "register_custom_transform": "register a custom ClassyTransform subclass with the register_transform decorator for use in config",
+    "test_transforms_pipeline": "test that build_transforms produces output matching ImagenetNoAugmentTransform using torch.allclose",
+    "create_resize_transform": "create a resize ClassyTransform that wraps torchvision Resize and apply it to a PIL image",
+    "create_center_crop_transform": "create a center_crop ClassyTransform that wraps torchvision CenterCrop and apply it to a PIL image"
+  },
+  "facebookresearch_classyvision/test/dataset_transforms_util_test.py": {
+    "test_build_dict_field_transform_default_imagenet": "test the DatasetTransformsUtilTest to verify dict field transforms apply correctly with ImageNet defaults",
+    "test_build_tuple_field_transform_default_imagenet": "test the DatasetTransformsUtilTest to verify tuple field transforms apply correctly with ImageNet defaults",
+    "test_apply_transform_to_key_from_config": "test the DatasetTransformsUtilTest to verify transforms are applied to specific keys from config",
+    "test_generic_image_transform": "test the DatasetTransformsUtilTest to verify GenericImageTransform constructor and from_config behavior",
+    "run_dataset_transforms_util_tests": "run the unittest test suite for dataset transform utility functions in ClassyVision"
+  },
+  "facebookresearch_classyvision/test/dataset_transforms_util_video_test.py": {
+    "test_video_field_transform_default": "test the build_video_field_transform_default function with default train and test video transforms",
+    "test_video_transform_with_config": "test video field transforms using a custom config with ToTensorVideo and NormalizeVideo",
+    "create_random_video_dataset": "create a RandomVideoDataset with 10 classes, 100 samples, and 32 frames per clip",
+    "run_video_transform_test": "run the DatasetTransformUtilVideoTest suite to validate default and custom video transform pipelines",
+    "review_video_constants": "review the VideoConstants class for CROP_SIZE, MEAN, STD, and SIZE_RANGE values"
+  },
+  "facebookresearch_classyvision/test/generic_distributed_util_test.py": {
+    "test_broadcast_object": "test the broadcast_object function across multiple distributed processes using the primary rank as source",
+    "test_broadcast_object_pick_source": "test the broadcast_object function across multiple distributed processes using a non-primary rank as source",
+    "run_in_process_group": "run a list of function calls across multiple distributed processes and collect results from a queue",
+    "init_and_run_process": "initialize a torch distributed process group and run a target function with provided inputs",
+    "review_TestDistributedUtil": "review the TestDistributedUtil class and its test methods for distributed object broadcasting utilities"
+  },
+  "facebookresearch_classyvision/test/generic_profiler_test.py": {
+    "compute_activations": "compute the total activations of a PyTorch model given an input shape",
+    "compute_flops": "compute the total FLOPs of a PyTorch model given an input shape",
+    "count_params": "count the total number of parameters in a PyTorch model",
+    "get_shape": "extract tensor shapes from a list, dict, or nested list of dicts of tensors",
+    "build_model": "build a Classy Vision model from a config object for profiling"
+  },
+  "facebookresearch_classyvision/test/generic_util_test.py": {
+    "save_checkpoint": "save a model checkpoint dictionary to a directory using save_checkpoint",
+    "load_checkpoint": "load a previously saved checkpoint dictionary from a directory using load_checkpoint",
+    "split_batchnorm_params": "split batch normalization parameters from other model parameters using split_batchnorm_params",
+    "recursive_copy_to_gpu": "recursively copy tensors and nested collections to GPU using recursive_copy_to_gpu",
+    "torch_seed_context": "use the torch_seed context manager to temporarily set a random seed for reproducibility"
+  },
+  "facebookresearch_classyvision/test/heads_fully_connected_head_test.py": {
+    "build_FullyConnectedHead": "build a FullyConnectedHead with num_classes and in_plane parameters for classification",
+    "build_head_from_config": "build a head from a config dict using build_head with name and parameters",
+    "test_FullyConnectedHead_forward": "test the FullyConnectedHead forward pass and verify output shape matches num_classes",
+    "test_normalize_inputs_l2": "test the FullyConnectedHead with l2 normalization to verify unit norm output",
+    "test_head_gradient_consistency": "test that normalized and unnormalized head gradients match after backward pass"
+  },
+  "facebookresearch_classyvision/test/heads_fully_convolutional_linear_head_test.py": {
+    "create_FullyConvolutionalLinearHead": "create a FullyConvolutionalLinearHead with num_classes, in_plane, pool_size, and softmax activation",
+    "create_FullyConvolutionalLinearHead_from_config": "create a FullyConvolutionalLinearHead from a config dictionary using the from_config class method",
+    "test_FullyConvolutionalLinearHead_forward": "test the FullyConvolutionalLinearHead forward pass with a 5D torch tensor input",
+    "test_FullyConvolutionalLinearHead_eval": "test the FullyConvolutionalLinearHead in eval mode to verify output shape changes",
+    "test_FullyConvolutionalLinearHead_adaptive_pool": "test the FullyConvolutionalLinearHead with adaptive pooling by setting pool_size to None"
+  },
+  "facebookresearch_classyvision/test/heads_vision_transformer_head_test.py": {
+    "create_VisionTransformerHead_with_classes": "create a VisionTransformerHead with num_classes and in_plane to classify input features",
+    "create_VisionTransformerHead_with_l2_normalize": "create a VisionTransformerHead with l2 normalization and no num_classes for feature embedding",
+    "test_VisionTransformerHead_forward_output_shape": "test the VisionTransformerHead forward pass output shape matches batch_size by num_classes",
+    "test_VisionTransformerHead_l2_normalization": "test the VisionTransformerHead l2 normalized output has unit norm per sample",
+    "review_VisionTransformerHead_init_weights": "review the VisionTransformerHead init_weights method for lecun_normal and zero initialization"
+  },
+  "facebookresearch_classyvision/test/hooks_checkpoint_hook_test.py": {
+    "test_CheckpointHook_constructors": "test the CheckpointHook constructor with valid and invalid config including checkpoint_folder and checkpoint_period",
+    "test_CheckpointHook_on_phase_end": "test the CheckpointHook on_phase_end method to verify checkpoint saving raises exceptions on failure",
+    "test_CheckpointHook_state_checkpointing": "test the CheckpointHook state checkpointing to verify checkpoints are saved only on the correct phase_type",
+    "test_CheckpointHook_checkpoint_period": "test the CheckpointHook checkpoint_period parameter to verify checkpoints are saved only after the specified number of phases",
+    "test_load_checkpoint_and_resume": "test loading a saved checkpoint with load_checkpoint and resuming training with LocalTrainer on GPU or CPU"
+  },
+  "facebookresearch_classyvision/test/hooks_classy_hook_test.py": {
+    "build_hook_from_config": "build a ClassyHook instance from a config dict using the build_hook factory function",
+    "build_hooks_from_configs": "build multiple ClassyHook instances from a list of config dicts using build_hooks",
+    "register_hook_decorator": "register a custom hook class with the hook registry using the register_hook decorator",
+    "test_hook_state_serialization": "test saving and restoring a ClassyHook state using get_classy_state and set_classy_state",
+    "create_custom_classyhook": "create a custom ClassyHook subclass with lifecycle methods and a from_config class method"
+  },
+  "facebookresearch_classyvision/test/hooks_exponential_moving_average_model_hook_test.py": {
+    "test_EMA_hook_constructors": "test the ExponentialMovingAverageModelHook constructor with valid and invalid config parameters",
+    "test_EMA_model_state_iterator": "test the get_model_state_iterator method to verify fc and bn parameters are found",
+    "test_EMA_weight_updates": "test the ExponentialMovingAverageModelHook on_step lifecycle to verify EMA weight updates over 10 steps",
+    "test_EMA_mixed_devices": "test the ExponentialMovingAverageModelHook when model and hook devices differ between cpu and gpu",
+    "review_TestModel_class": "review the TestModel class that extends ClassyModel with a Linear and BatchNorm1d layer"
+  },
+  "facebookresearch_classyvision/test/hooks_loss_lr_meter_logging_hook_test.py": {
+    "test_LossLrMeterLoggingHook_constructors": "test the LossLrMeterLoggingHook constructor with valid and invalid log_freq config values",
+    "test_LossLrMeterLoggingHook_logging": "test the LossLrMeterLoggingHook logging behavior on every log_freq batches and phase end",
+    "test_LossLrMeterLoggingHook_logged_lr": "test that the logged learning rate values match expected scheduler output across epochs",
+    "create_LossLrMeterLoggingHook": "create a LossLrMeterLoggingHook instance with a specified log_freq to log loss and lr meters",
+    "create_LRLoggingHook": "create a custom ClassyHook subclass that captures learning rate values on each training step"
+  },
+  "facebookresearch_classyvision/test/hooks_output_csv_hook_test.py": {
+    "parse_csv_file": "create a function that parses a tab-delimited CSV file and returns the number of rows",
+    "test_output_csv_hook_constructors": "test that the OutputCSVHook is constructed correctly with a folder config",
+    "test_output_csv_hook_train": "test training a task with the OutputCSVHook and verify CSV output has 10 rows",
+    "create_output_csv_hook": "create an OutputCSVHook instance with a folder path to log training output to CSV",
+    "run_local_trainer_with_csv_hook": "run a LocalTrainer on a task with an OutputCSVHook attached to log results"
+  },
+  "facebookresearch_classyvision/test/hooks_precise_batch_norm_hook_test.py": {
+    "test_PreciseBatchNormHook_constructors": "test the PreciseBatchNormHook constructor with valid and invalid config parameters",
+    "test_PreciseBatchNormHook_train": "test training a ClassyVision task with the PreciseBatchNormHook enabled",
+    "test_PreciseBatchNormHook_bn_stats": "test that batch norm stats are updated during training but not during evaluation",
+    "get_bn_stats_from_model": "get batch norm running mean and variance statistics from all batch norm layers in a PyTorch model",
+    "compare_bn_stats": "compare two sets of batch norm statistics using torch.allclose to check equality"
+  },
+  "facebookresearch_classyvision/test/hooks_profiler_hook_test.py": {
+    "test_ProfilerHook_constructors": "test that ProfilerHook is constructed correctly with an empty config dictionary",
+    "test_ProfilerHook_profiler": "test that ProfilerHook creates a profile instance with use_cuda enabled on start",
+    "test_ProfilerHook_on_start": "test that ProfilerHook on_start triggers profiler and summarizes profiler info",
+    "test_ProfilerHook_with_classy_task": "test ProfilerHook integration with a standard ClassyVision task instance",
+    "test_ProfilerHook_with_video_task": "test ProfilerHook integration with a ClassyVision video task instance"
+  },
+  "facebookresearch_classyvision/test/hooks_torchscript_hook_test.py": {
+    "test_TorchscriptHook_constructors": "test the TorchscriptHook constructor with valid and invalid config parameters",
+    "run_torchscript_using_trace": "run the TorchscriptHook on_start and on_end hooks using trace mode to save a torchscript model",
+    "run_torchscript_using_script": "run the TorchscriptHook on_start and on_end hooks using script mode with use_trace set to False",
+    "test_torchscript_output_match": "test that the torchscript model output matches the original model output using torch.allclose",
+    "build_task_from_config": "build a task from a config using build_task and prepare it for torchscript hook execution"
+  },
+  "facebookresearch_classyvision/test/hub_classy_hub_interface_test.py": {
+    "create_image_dataset": "create an image dataset from image files using ClassyHubInterface with a specified phase type",
+    "predict_with_hub_interface": "predict output labels for input data using the ClassyHubInterface predict method",
+    "extract_features_from_model": "extract feature vectors from input data using the ClassyHubInterface extract_features method",
+    "build_hub_interface_from_task": "build a ClassyHubInterface from a ClassyTask using the from_task class method",
+    "build_hub_interface_from_model": "build a ClassyHubInterface from a PyTorch model using the from_model class method"
+  },
+  "facebookresearch_classyvision/test/losses_barron_loss_test.py": {
+    "build_barron_loss_from_config": "build a BarronLoss instance from a config dict using the build_loss factory function",
+    "create_barron_loss_from_config": "create a BarronLoss instance from a config dict using the from_config class method",
+    "test_barron_loss_computation": "test the BarronLoss forward pass with outputs and targets tensors to verify loss values",
+    "test_barron_loss_alpha_variants": "test the BarronLoss with different alpha values including zero and infinity",
+    "test_barron_loss_deepcopy": "test that a deep copy of a BarronLoss instance produces identical loss results"
+  },
+  "facebookresearch_classyvision/test/losses_generic_utils_test.py": {
+    "test_convert_to_one_hot_single": "test convert_to_one_hot with a single target tensor and 5 classes",
+    "test_convert_to_one_hot_multiple": "test convert_to_one_hot with multiple target tensors and 3 classes",
+    "run_testutils_test_single": "run the TestUtils test_single method to verify single target one-hot encoding",
+    "run_testutils_test_two": "run the TestUtils test_two method to verify multiple target one-hot encoding",
+    "review_testutils_class": "review the TestUtils class and its one-hot encoding test methods"
+  },
+  "facebookresearch_classyvision/test/losses_label_smoothing_cross_entropy_loss_test.py": {
+    "build_label_smoothing_loss": "build a LabelSmoothingCrossEntropyLoss from a config dict using build_loss",
+    "create_loss_from_config": "create a LabelSmoothingCrossEntropyLoss instance using the from_config class method",
+    "test_compute_valid_targets": "test compute_valid_targets to extract valid targets from one-hot or class tensors",
+    "test_smooth_targets": "test smooth_targets to apply label smoothing with a given smoothing parameter",
+    "test_loss_call": "test calling the loss with outputs and targets to compute the smoothed cross-entropy value"
+  },
+  "facebookresearch_classyvision/test/losses_multi_output_sum_loss_test.py": {
+    "build_MultiOutputSumLoss": "build a MultiOutputSumLoss from a config dict using build_loss to sum losses across multiple outputs",
+    "register_MockLoss1": "register a custom loss class with the register_loss decorator to extend ClassyLoss functionality",
+    "test_MultiOutputSumLoss_single_output": "test the MultiOutputSumLoss with a single tensor output and verify the summed loss value",
+    "test_MultiOutputSumLoss_list_outputs": "test the MultiOutputSumLoss with a list of tensor outputs and verify the summed loss value",
+    "create_MockLoss1_from_config": "create a MockLoss1 instance from a config dict using the from_config class method pattern"
+  },
+  "facebookresearch_classyvision/test/losses_soft_target_cross_entropy_loss_test.py": {
+    "build_soft_target_cross_entropy_loss": "build a SoftTargetCrossEntropyLoss criterion from a config dict using build_loss",
+    "test_soft_target_cross_entropy_with_targets": "test the SoftTargetCrossEntropyLoss by computing loss on outputs and soft targets",
+    "test_soft_target_cross_entropy_ignore_index": "test the SoftTargetCrossEntropyLoss ignore_index feature to skip invalid target values",
+    "test_soft_target_cross_entropy_none_reduction": "test the SoftTargetCrossEntropyLoss with reduction set to none for per-sample loss",
+    "test_deep_copy_loss_criterion": "test deep copying a SoftTargetCrossEntropyLoss criterion and verify it produces identical loss"
+  },
+  "facebookresearch_classyvision/test/losses_sum_arbitrary_loss_test.py": {
+    "build_sum_arbitrary_loss": "build a SumArbitraryLoss from config using build_loss with named sub-losses and weights",
+    "create_mock_loss_class": "create a custom ClassyLoss subclass with forward and from_config methods registered via register_loss",
+    "test_sum_arbitrary_loss": "test SumArbitraryLoss computes the weighted sum of multiple registered mock loss values",
+    "test_build_loss_factory": "test the build_loss factory function constructs a SumArbitraryLoss with correct weights and loss types",
+    "test_deep_copy_loss": "test that deepcopy of a SumArbitraryLoss produces an independent copy with identical behavior"
+  },
+  "facebookresearch_classyvision/test/losses_test.py": {
+    "build_loss_from_config": "build a loss function from a config dict using build_loss from classy_vision.losses",
+    "test_cross_entropy_loss": "test CrossEntropyLoss with a config dict containing name, weight, ignore_index, and reduction",
+    "test_bce_with_logits_loss": "test BCEWithLogitsLoss with a config dict containing name, weight, and reduction",
+    "run_criterions_test": "run the CriterionsTest unittest class to validate all loss function configurations",
+    "review_test_loss_helper": "review the _test_loss helper method that builds and validates loss functions from config"
+  },
+  "facebookresearch_classyvision/test/meters_accuracy_meter_test.py": {
+    "build_accuracy_meter": "build an AccuracyMeter with topk list to track top-k classification accuracy metrics",
+    "test_accuracy_meter_registry": "test that meters.build_meter with name accuracy returns an AccuracyMeter instance",
+    "test_accuracy_meter_single_update": "test AccuracyMeter update and reset with a single batch of model outputs and targets",
+    "test_accuracy_meter_multilabel": "test AccuracyMeter with multilabel one-hot targets to verify top-k accuracy computation",
+    "test_accuracy_meter_distributed": "test AccuracyMeter across distributed processes to verify correct aggregation of accuracy values"
+  },
+  "facebookresearch_classyvision/test/meters_precision_meter_test.py": {
+    "build_precision_at_k_meter": "build a PrecisionAtKMeter with topk values to track classification precision metrics",
+    "test_precision_meter_registry": "test that meters.build_meter with name precision_at_k returns a PrecisionAtKMeter instance",
+    "test_single_meter_update_and_reset": "test PrecisionAtKMeter update and reset with a single batch of model outputs and targets",
+    "test_double_meter_update_and_reset": "test PrecisionAtKMeter with multiple batch updates accumulating precision across batches",
+    "test_meter_distributed": "test PrecisionAtKMeter distributed state aggregation across multiple processes"
+  },
+  "facebookresearch_classyvision/test/meters_recall_meter_test.py": {
+    "build_recall_at_k_meter": "build a RecallAtKMeter with topk list to track top-k recall metrics",
+    "build_meter_from_registry": "build a recall_at_k meter using meters.build_meter with a config dict",
+    "test_single_update_reset": "test the RecallAtKMeter update and reset cycle with model output and target tensors",
+    "test_invalid_inputs": "test the RecallAtKMeter with invalid model output, target, or topk values",
+    "test_distributed_state": "test the RecallAtKMeter get_state and set_state for distributed training scenarios"
+  },
+  "facebookresearch_classyvision/test/meters_video_accuracy_meter_test.py": {
+    "build_video_accuracy_meter": "build a VideoAccuracyMeter with topk and clips_per_video config for video classification accuracy tracking",
+    "test_video_accuracy_meter_registry": "test that meters.build_meter with name video_accuracy returns a VideoAccuracyMeter instance",
+    "test_single_meter_update_and_reset": "test single batch update and reset of VideoAccuracyMeter with expected top-1 and top-2 accuracy values",
+    "test_double_meter_update_and_reset": "test multiple batch updates and reset of VideoAccuracyMeter across two batches with accumulated accuracy",
+    "test_meter_invalid_inputs": "test VideoAccuracyMeter error handling for invalid model output dimensions, target shapes, and topk values"
+  },
+  "facebookresearch_classyvision/test/models_classy_block_stateless_test.py": {
+    "test_classyblock_stateless_output": "test that a stateless ClassyBlock output equals torch.zeros(0) after forward pass",
+    "test_classyblock_stateful_output": "test that a stateful ClassyBlock retains the forward output in its output attribute",
+    "run_classyblock_stateless_test": "run the unittest to verify stateless ClassyBlock behavior using the CLASSY_BLOCK_STATELESS env var",
+    "run_classyblock_stateful_test": "run the unittest to verify stateful ClassyBlock retains output after forward pass",
+    "review_classyblock_stateless_setup": "review the TestClassyStatelessBlock setUp method that initializes stateful and stateless ClassyBlock models"
+  },
+  "facebookresearch_classyvision/test/models_classy_block_test.py": {
+    "test_set_heads": "test ClassyModel.set_heads to attach a ClassyHead to a named model block",
+    "test_execute_heads": "test ClassyModel.execute_heads to run attached heads and retrieve their outputs",
+    "test_get_heads": "test ClassyModel.get_heads to verify which heads are currently attached to the model",
+    "test_classyhead_subclass": "test a custom ClassyHead subclass with a forward method that applies a linear layer",
+    "test_head_executor_wrapper": "test ClassyModelHeadExecutorWrapper to automatically return head outputs alongside model forward pass"
+  },
+  "facebookresearch_classyvision/test/models_classy_model_test.py": {
+    "build_model_from_config": "build a ClassyModel from a config dict using build_model with name and heads settings",
+    "test_classy_model_wrapper": "test that ClassyModelWrapper correctly wraps a ClassyModel and delegates forward calls",
+    "test_model_from_checkpoint": "test loading a ClassyModel from a saved checkpoint and verify all parameters match",
+    "test_classy_model_adapter": "test adapting a plain nn.Module into a ClassyModel using ClassyModel.from_model",
+    "test_model_heads": "test attaching a FullyConnectedHead to a ResNet model and verify output shape"
+  },
+  "facebookresearch_classyvision/test/models_densenet_test.py": {
+    "build_densenet_model": "build a DenseNet model from a config dict using build_model and run a forward pass",
+    "test_densenet_forward_pass": "test the DenseNet model by running a forward pass and verifying output shape",
+    "test_model_state_get_set": "test get_classy_state and set_classy_state to verify model state serialization works",
+    "quantize_densenet_model": "quantize a DenseNet model using FX Graph Mode quantization with prepare_fx and convert_fx",
+    "find_block_full_path": "find the full module path for a given block name in a PyTorch model"
+  },
+  "facebookresearch_classyvision/test/models_efficientnet_test.py": {
+    "build_efficientnet_model": "build an EfficientNet model from a config dict using build_model with custom model_params",
+    "build_preset_efficientnet": "build a preset EfficientNet model by passing a config with name like efficientnet_b0 through b7",
+    "test_efficientnet_forward": "test the EfficientNet model forward pass by passing a random torch tensor of shape (10, 3, 260, 260)",
+    "test_build_model_config": "test building an EfficientNet model using either model_params or model_name in the config dict",
+    "get_model_config": "create an EfficientNet model config dict with width_coefficient, depth_coefficient, resolution, and dropout_rate params"
+  },
+  "facebookresearch_classyvision/test/models_mlp_test.py": {
+    "build_mlp_model": "build an MLP model from a config dict with input_dim, output_dim, and hidden_dims",
+    "test_model_forward_pass": "test the MLP model forward pass with a torch tensor and verify output shape",
+    "test_model_isinstance_classy": "test that the built model is an instance of ClassyModel",
+    "quantize_model_fx_graph": "quantize the MLP model using FX Graph Mode Quantization with prepare_fx and convert_fx",
+    "review_test_mlp_model_class": "review the TestMLPModel test class and its build and quantize test methods"
+  },
+  "facebookresearch_classyvision/test/models_regnet_test.py": {
+    "build_regnet_model": "build a RegNet model from a config dict using build_model with depth, w_0, w_a, w_m, and group_width parameters",
+    "test_regnet_model_forward": "test a RegNet model forward pass by passing a random tensor and verifying output shape matches batch size",
+    "quantize_regnet_model": "quantize a RegNet model stem using FX graph mode quantization with prepare_fx and convert_fx APIs",
+    "test_regnet_activation_swap": "test swapping ReLU activations to SiLU in a RegNet model and verify the models match via repr comparison",
+    "test_regnet_preset_models": "test building RegNet preset models like regnet_y_400mf or regnet_x_8gf using just the name in the config"
+  },
+  "facebookresearch_classyvision/test/models_resnext3d_test.py": {
+    "build_resnext3d_model": "build a ResNeXt3D model from a config dict using build_model for video classification",
+    "test_forward_pass_resnext3d": "test the ResNeXt3D model forward pass with video input tensors in train or test mode",
+    "test_set_classy_state_plain": "test saving and loading a ResNeXt3D model state using get_classy_state and set_classy_state",
+    "test_weight_inflation_2d_to_3d": "test inflating 2D ResNeXt conv weights to initialize a 3D ResNeXt model via set_classy_state",
+    "test_inconsistent_kernel_size_error": "test that set_classy_state raises an AssertionError when 2D and 3D model kernel sizes mismatch"
+  },
+  "facebookresearch_classyvision/test/models_resnext_test.py": {
+    "build_resnext_model": "build a ResNeXt model from config using build_model and run a forward pass to verify output shape",
+    "test_model_state": "test get_classy_state and set_classy_state to verify model state serialization works correctly",
+    "quantize_model_fx": "quantize a ResNeXt model using FX graph mode post-training quantization with fbgemm config",
+    "find_block_path": "find the full module path for a named block in a PyTorch model using named_modules",
+    "verify_torchvision_equivalence": "verify ClassyVision ResNet tensor shapes match torchvision equivalent models by comparing state dict sizes"
+  },
+  "facebookresearch_classyvision/test/models_vision_transformer_test.py": {
+    "build_vit_model_from_config": "build a vision transformer model from a config dict using build_model",
+    "test_vit_forward_pass": "test the vision transformer forward pass with a batch of image tensors",
+    "test_vit_state_transfer": "test getting and setting classy state between two vision transformer models",
+    "test_vit_resolution_change": "test transferring model state between vision transformer models with different image resolutions",
+    "test_vit_all_presets": "test all vision transformer presets including vit_b_32 vit_b_16 vit_l_32 vit_l_16 and vit_h_14"
+  },
+  "facebookresearch_classyvision/test/optim_param_scheduler_composite_test.py": {
+    "build_composite_scheduler": "build a CompositeParamScheduler from config with multiple schedulers and fractional lengths",
+    "test_invalid_config": "test CompositeParamScheduler validation for empty schedulers, mismatched lengths, and bad update_interval values",
+    "test_mixed_scheduler_types": "test CompositeParamScheduler with step and cosine schedulers using rescaled and fixed interval scaling",
+    "test_linear_scheduler_no_gaps": "test that rescaled linear schedulers produce continuous values without gaps across intervals",
+    "test_update_interval": "test CompositeParamScheduler update_interval enum values for step and epoch modes"
+  },
+  "facebookresearch_classyvision/test/optim_param_scheduler_constant_test.py": {
+    "build_constant_scheduler": "build a ConstantParamScheduler from a config dict with name, num_epochs, and value keys",
+    "test_constant_scheduler_schedule": "test that the ConstantParamScheduler returns the same constant value across all epoch progress values",
+    "test_invalid_config": "test that ConstantParamScheduler.from_config raises an error when the value key is missing from config",
+    "build_param_scheduler_factory": "build a param scheduler using the build_param_scheduler factory function with a constant config",
+    "test_scheduler_input_bounds": "test that the ConstantParamScheduler raises a RuntimeError when called with input value 1 or greater"
+  },
+  "facebookresearch_classyvision/test/optim_param_scheduler_cosine_test.py": {
+    "build_cosine_param_scheduler": "build a CosineParamScheduler from a config dict with name, start_value, and end_value keys",
+    "test_cosine_scheduler_decay": "test the CosineParamScheduler decay schedule by calling it with epoch progress values from 0 to 1",
+    "test_cosine_scheduler_warmup": "test the CosineParamScheduler warmup schedule by swapping start_value and end_value in the config",
+    "test_invalid_config": "test that CosineParamScheduler.from_config raises an error when start_value or end_value is missing",
+    "build_param_scheduler_from_config": "build a param scheduler using build_param_scheduler with a cosine config dict"
+  },
+  "facebookresearch_classyvision/test/optim_param_scheduler_linear_test.py": {
+    "build_linear_param_scheduler": "build a LinearParamScheduler from a config dict with start_value and end_value for linear interpolation",
+    "test_linear_scheduler_warmup": "test the LinearParamScheduler as a warmup scheduler that linearly increases from start to end value",
+    "test_linear_scheduler_decay": "test the LinearParamScheduler as a decay scheduler that linearly decreases from start to end value",
+    "test_invalid_config": "test that LinearParamScheduler.from_config raises an error when start_value or end_value is missing",
+    "build_param_scheduler_from_config": "build a param scheduler using build_param_scheduler factory function with a linear config dict"
+  },
+  "facebookresearch_classyvision/test/optim_param_scheduler_multi_step_test.py": {
+    "build_multistep_scheduler": "build a MultiStepParamScheduler from a config dict with values and milestones",
+    "test_invalid_config": "test that MultiStepParamScheduler raises ValueError for invalid num_epochs, values, or milestones",
+    "test_scheduler_output": "test the scheduler returns expected learning rate values across all epochs",
+    "test_default_equispaced_milestones": "test the scheduler with default equispaced milestones when milestones key is omitted",
+    "build_param_scheduler_factory": "build a param scheduler using the build_param_scheduler factory function with a multistep config"
+  },
+  "facebookresearch_classyvision/test/optim_param_scheduler_polynomial_test.py": {
+    "build_polynomial_decay_scheduler": "build a PolynomialDecayParamScheduler from a config dict with base_value, power, and num_epochs",
+    "test_scheduler_linear_decay": "test the polynomial scheduler returns a linear decay schedule from 0.1 to 0.01 over 10 epochs",
+    "test_invalid_config_handling": "test that PolynomialDecayParamScheduler raises an error when base_value or power is missing from config",
+    "build_param_scheduler_factory": "build a param scheduler using the build_param_scheduler factory function with a polynomial config",
+    "review_polynomial_scheduler_config": "review the polynomial scheduler config structure with name, num_epochs, base_value, and power fields"
+  },
+  "facebookresearch_classyvision/test/optim_param_scheduler_step_test.py": {
+    "build_step_param_scheduler_from_config": "build a StepParamScheduler from a config dict with name, num_epochs, and values list",
+    "build_param_scheduler_factory": "build a param scheduler using the build_param_scheduler factory function with a step config",
+    "test_step_scheduler_schedule": "test the StepParamScheduler schedule output across 12 epochs with decreasing values",
+    "test_invalid_config_handling": "test that StepParamScheduler raises ValueError for negative epochs or empty values list",
+    "run_step_scheduler_call": "run the StepParamScheduler with a progress float between 0 and 1 to get the scheduled value"
+  },
+  "facebookresearch_classyvision/test/optim_param_scheduler_step_with_fixed_gamma_test.py": {
+    "build_step_with_fixed_gamma_scheduler": "build a StepWithFixedGammaParamScheduler from a config dict with base_value, gamma, num_decays, and num_epochs",
+    "test_scheduler_decay_schedule": "test the StepWithFixedGammaParamScheduler schedule values across epochs to verify correct gamma decay steps",
+    "test_invalid_config_validation": "test that StepWithFixedGammaParamScheduler raises ValueError for invalid num_epochs, num_decays, base_value, or gamma",
+    "build_param_scheduler_by_name": "build a param scheduler using build_param_scheduler with a config dict specifying name step_with_fixed_gamma",
+    "review_step_with_fixed_gamma_config": "review the StepWithFixedGammaParamScheduler config structure with base_value, gamma, num_decays, and num_epochs fields"
+  },
+  "facebookresearch_classyvision/test/optim_param_scheduler_test.py": {
+    "register_param_scheduler": "register a custom ClassyParamScheduler subclass using the register_param_scheduler decorator with a unique name",
+    "create_ClassyParamScheduler": "create a ClassyParamScheduler subclass that implements __call__ and from_config to schedule optimizer parameters",
+    "test_param_scheduler_epoch": "test a param scheduler with UpdateInterval.EPOCH to verify it updates learning rate each epoch",
+    "test_param_scheduler_step": "test a param scheduler with UpdateInterval.STEP to verify it updates learning rate each training step",
+    "test_UpdateInterval_from_config": "test UpdateInterval.from_config to parse update interval strings like epoch or step from a config dict"
+  },
+  "facebookresearch_classyvision/test/optim_sgd_test.py": {
+    "test_sgd_optimizer": "test the SGD optimizer with momentum, weight decay, and nesterov configuration options",
+    "test_sgd_lr_step": "test SGD optimizer parameter updates with a linear learning rate scheduler across training steps",
+    "test_sgd_param_groups": "test setting SGD optimizer parameter groups with a LinearParamScheduler for dynamic learning rates",
+    "review_TestSGDOptimizer_class": "review the TestSGDOptimizer class that extends TestOptimizer to validate SGD update equations",
+    "run_sgd_lr_scheduler_test": "run the test_lr_step method to verify SGD learning rate interpolation at different training progress points"
+  },
+  "facebookresearch_classyvision/test/optim_sharded_sgd_test.py": {
+    "test_ZeRO_optimizer_state_sharding": "test the ZeRO optimizer state sharding integration with SGD in a single process distributed setup",
+    "test_oss_sgd_distributed": "test the distributed OSS SGD optimizer by launching a multi-process training job with 2 processes",
+    "init_torch_distributed_process_group": "initialize a PyTorch distributed process group using the GLOO backend with a file-based init method",
+    "review_TestOptimizerStateShardingIntegration": "review the TestOptimizerStateShardingIntegration class that tests ZeRO optimizer state sharding with SGD configuration",
+    "review_TestOptimizerStateSharding": "review the TestOptimizerStateSharding class that runs distributed training via subprocess to validate OSS SGD"
+  },
+  "facebookresearch_classyvision/test/suites.py": {
+    "run_unittests": "run all discovered unit tests in the test directory using unittest.TestLoader",
+    "discover_test_files": "discover all test files matching the pattern *_test.py in the test directory",
+    "shard_tests_circleci": "shard a unittest.TestSuite across CircleCI parallel nodes using CIRCLE_NODE_TOTAL and CIRCLE_NODE_INDEX env vars",
+    "flatten_test_suite": "flatten nested test suites into individual tests and shuffle them with a fixed random seed",
+    "run_test_suite": "run a unittest.TestSuite with TextTestRunner from the command line entry point"
+  },
+  "facebookresearch_classyvision/test/tasks_classification_task_test.py": {
+    "build_classification_task": "build a ClassificationTask from config using build_task and prepare it for training",
+    "test_checkpointing": "test checkpointing by comparing task states before and after training phases",
+    "test_gradient_clipping": "test gradient clipping by setting clip_grad_norm and verifying gradient norms after training",
+    "test_gradient_accumulation": "test gradient accumulation by comparing simulated batch size results with actual batch size results",
+    "test_stateful_loss": "test a custom stateful loss registered with register_loss and verify it appears in classy state"
+  },
+  "facebookresearch_classyvision/test/tasks_fine_tuning_task_test.py": {
+    "build_finetuning_task": "build a FineTuningTask from a config dict using build_task with name set to fine_tuning",
+    "test_finetuning_prepare": "test that FineTuningTask prepare fails without a pretrained checkpoint and succeeds after setting one",
+    "test_finetuning_train": "test fine tuning training with frozen trunk and reset heads using LocalTrainer",
+    "create_batchnorm_cross_entropy_loss": "create a custom loss class with BatchNorm and CrossEntropy registered via register_loss decorator",
+    "test_parametric_loss_finetuning": "test fine tuning with a parametric loss containing BatchNorm modules to verify state preservation"
+  },
+  "facebookresearch_classyvision/test/test_generic_utils_test.py": {
+    "test_ClassyTestCase_assertTorchAllClose": "test the ClassyTestCase.assertTorchAllClose method to verify two PyTorch tensors are numerically close",
+    "test_TensorEquality": "test that identical PyTorch tensors pass the assertTorchAllClose assertion without raising an exception",
+    "test_TensorNotClose": "test that tensors with different values fail the assertTorchAllClose assertion and raise AssertionError",
+    "test_NonTensorInput": "test that passing a non-tensor argument to assertTorchAllClose raises an AssertionError",
+    "run_ClassyTestCase_tests": "run the TestClassyTestCase unit tests to validate the assertTorchAllClose assertion utility"
+  },
+  "facebookresearch_classyvision/test/trainer_distributed_trainer_test.py": {
+    "run_distributed_training_test": "run the TestDistributedTrainer test_training method to verify MLP model training with 2 processes",
+    "run_sync_batch_norm_test": "run the TestDistributedTrainer test_sync_batch_norm method to verify sync batch norm training on GPU",
+    "test_distributed_trainer_class": "test the TestDistributedTrainer class to validate distributed training with valid and invalid configs",
+    "review_test_training_method": "review the test_training method that launches distributed training via subprocess and checks return codes",
+    "review_test_sync_batch_norm_method": "review the test_sync_batch_norm method that tests PyTorch sync batch norm mode with multi-process training"
+  },
+  "facebookresearch_classyvision/test/trainer_local_trainer_test.py": {
+    "test_local_trainer_training": "test the LocalTrainer by training a small MLP model and verifying accuracy",
+    "create_classification_task": "create a ClassificationTask with loss, model, optimizer, meters, and hooks configured",
+    "run_local_trainer": "run the LocalTrainer to train a ClassificationTask across multiple epochs",
+    "build_dataset_for_task": "build train and test datasets using build_dataset and attach them to a task",
+    "review_classification_task_setup": "review the ClassificationTask setup including epochs, loss, model, optimizer, and meters"
+  },
+  "facebookresearch_classyvision/test/generic/config_utils.py": {
+    "get_test_task_config": "get a ResNet classification task config dict with synthetic image datasets and SGD optimizer",
+    "get_fast_test_task_config": "get a minimal ResNet task config with tiny synthetic datasets for fast unit testing",
+    "get_test_classy_task": "build a ClassyVision classification task object from the default ResNet test config",
+    "get_test_mlp_task_config": "get an MLP model task config with batch normalization for sync batchnorm testing",
+    "get_distributed_launch_cmd": "generate a torch.distributed.launch command string for multi-process DDP training"
+  },
+  "facebookresearch_classyvision/test/generic/hook_test_utils.py": {
+    "test_hook_constructor": "test a classy_vision hook constructor using HookTestBase constructor_test_helper with config and hook_type",
+    "test_hook_from_config": "test that a hook type can be instantiated from a config dict via from_config",
+    "test_hook_registry_build": "test building a hook from the registry using build_hook with a named config",
+    "test_hook_invalid_configs": "test that invalid configs raise AssertionError, TypeError, KeyError, or ValueError when passed to from_config",
+    "review_hooktestbase_class": "review the HookTestBase unittest class and its constructor_test_helper method for hook testing patterns"
+  },
+  "facebookresearch_classyvision/test/generic/meter_test_utils.py": {
+    "test_meter_update_and_reset": "test a meter by applying updates, checking values, resetting, and reapplying the same updates",
+    "test_meter_distributed_sync": "test distributed meter synchronization across two processes using multiprocessing queues and torch distributed",
+    "test_meter_classy_state_transfer": "test get and set classy state methods by transferring state between two meters and verifying values match",
+    "test_meter_invalid_inputs": "test that a meter raises AssertionError when given invalid model output or target shapes",
+    "spawn_meter_worker_process": "spawn a meter worker process that listens for update, value, and shutdown signals via queues"
+  },
+  "facebookresearch_classyvision/test/generic/optim_test_util.py": {
+    "build_optimizer_from_config": "build an optimizer from a config dict using build_optimizer and set param groups",
+    "test_optimizer_state_get_set": "test the optimizer get_classy_state and set_classy_state methods for state serialization",
+    "test_lr_schedule": "test constant step and composite learning rate schedules across multiple epochs",
+    "test_batchnorm_weight_decay": "test that batch norm params have zero weight decay while linear params are trained",
+    "test_optimizer_step_args": "test that the optimizer step method requires the where argument to be named explicitly"
+  },
+  "facebookresearch_classyvision/test/generic/utils.py": {
+    "test_compare_batches": "test two batches for equality using compare_batches with a unittest test fixture",
+    "test_compare_datasets": "test two datasets for equality by comparing all samples using compare_datasets",
+    "test_recursive_unpack": "test recursive_unpack to split a batch dict or tensor into a list of individual samples",
+    "test_compare_model_state": "test two model state dicts for equality using compare_model_state with trunk and heads",
+    "test_compare_states": "test two classy state dicts for equality using compare_states with base model and losses"
+  },
+  "facebookresearch_classyvision/test/manual/hooks_model_complexity_hook_test.py": {
+    "test_model_complexity_hook_constructors": "test that ModelComplexityHook is constructed correctly using the constructor_test_helper with an empty config",
+    "test_model_complexity_hook_on_start": "test the ModelComplexityHook on_start method by iterating over multiple model configs and logging output",
+    "run_model_complexity_hook_test": "run the TestModelComplexityHook unittest class to verify hook construction and on_start behavior",
+    "review_model_complexity_hook_usage": "review how ModelComplexityHook is instantiated and called with a task that has a base_model set",
+    "test_build_model_with_hook": "test building models from configs and passing them to ModelComplexityHook via a prepared classy task"
+  },
+  "facebookresearch_classyvision/test/manual/hooks_model_tensorboard_hook_test.py": {
+    "test_ModelTensorboardHook_constructors": "test that ModelTensorboardHook is constructed correctly via the model_tensorboard registry",
+    "test_ModelTensorboardHook_writer": "test that SummaryWriter add_graph is called only when is_primary returns True",
+    "test_HookTestBase_helper": "test hook construction using the constructor_test_helper with config and hook_kwargs",
+    "review_TestModelTensorboardHook": "review the TestModelTensorboardHook class and its test_constructors and test_writer methods",
+    "run_ModelTensorboardHook_tests": "run the unittest tests for ModelTensorboardHook constructor and writer behavior"
+  },
+  "facebookresearch_classyvision/test/manual/hooks_progress_bar_hook_test.py": {
+    "test_ProgressBarHook_constructors": "test that ProgressBarHook is constructed correctly via the classy_vision hook registry with an empty config",
+    "test_ProgressBarHook_progress_bar_lifecycle": "test that the progress bar is created, updated each step, and finished correctly during a task phase",
+    "test_ProgressBarHook_on_step_updates": "test that on_step updates the progress bar with the correct batch index and caps at num_batches",
+    "test_ProgressBarHook_missing_phase_start": "test that calling on_step without on_phase_start does not crash the ProgressBarHook",
+    "test_ProgressBarHook_non_primary": "test that ProgressBarHook skips creating a progress bar when is_primary returns False"
+  },
+  "facebookresearch_classyvision/test/manual/hooks_tensorboard_plot_hook_test.py": {
+    "test_TensorboardPlotHook_constructors": "test the TensorboardPlotHook constructors with valid and invalid config parameters",
+    "test_TensorboardPlotHook_writer_scalars": "test the TensorboardPlotHook writer logs correct scalars to SummaryWriter when is_primary is True",
+    "test_TensorboardPlotHook_logged_lr": "test the TensorboardPlotHook learning rate logging across training epochs with a mock scheduler",
+    "review_DummySummaryWriter": "review the DummySummaryWriter mock class that captures scalar logs for TensorboardPlotHook testing",
+    "test_HookTestBase_integration": "test the TensorboardPlotHook integration with LocalTrainer and build_task config utilities"
+  },
+  "facebookresearch_classyvision/test/manual/hooks_visdom_hook_test.py": {
+    "test_visdom_hook_constructors": "test the VisdomHook class constructor with server, port, env, and title_suffix config options",
+    "test_visdom_hook_plots": "test that VisdomHook populates visdom with plots on phase end using mocked Visdom client",
+    "test_visdom_metrics_tracking": "test that VisdomHook tracks loss, learning rate, and meter metrics across train and test phases",
+    "test_visdom_empty_losses": "test that VisdomHook skips metric updates and visdom calls when task losses list is empty",
+    "test_visdom_line_calls": "test that visdom.line is called only on primary process during test phase with valid connection"
+  },
+  "facebookresearch_classyvision/test/manual/models_classy_vision_model_test.py": {
+    "build_model_from_config": "build a ClassyModel from a config dictionary using the build_model function",
+    "test_get_classy_state": "test getting and comparing model state dictionaries with the get_classy_state method",
+    "test_set_classy_state": "test setting model state on a new model using the set_classy_state method",
+    "test_set_heads": "test attaching classification heads to a model trunk using the set_heads method",
+    "test_clear_heads": "test removing all heads from a model using the clear_heads method"
+  },
+  "facebookresearch_classyvision/test/manual/tasks_classification_task_amp_test.py": {
+    "build_task_with_amp_config": "build a ClassificationTask from a config dict that includes amp_args for mixed precision training",
+    "test_build_task_amp": "test that build_task creates a ClassificationTask with APEX or PyTorch AMP settings applied",
+    "test_training_with_apex_amp": "test training a ClassificationTask using APEX AMP with opt_level O2 on GPU",
+    "test_training_with_pytorch_amp": "test training a ClassificationTask using native PyTorch AMP on GPU via LocalTrainer",
+    "review_classification_task_amp": "review the TestClassificationTaskAMP class to understand how AMP is configured and tested for ClassificationTask"
+  }
+}

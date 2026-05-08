@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/plugins/hydra_colorlog/tests/test_colorlog.py
+
+Prompts
+
+```
+['test that colorlog is available in hydra job_logging and hydra_logging config groups', 'run the test suite to verify hydra colorlog plugin config is installed correctly', 'review the test_config_installed function to verify colorlog config group assertions', 'summarize the test_colorlog module which validates hydra colorlog plugin installation', 'refactor the test_config_installed function to add additional colorlog config assertions']
+```
+
+Usage
+
+```
+{'test_config_installed': 'test that colorlog is available in hydra job_logging and hydra_logging config groups', 'run_test_colorlog': 'run the test suite to verify hydra colorlog plugin config is installed correctly', 'review_test_config_installed': 'review the test_config_installed function to verify colorlog config group assertions', 'summarize_test_colorlog': 'summarize the test_colorlog module which validates hydra colorlog plugin installation', 'refactor_test_config_installed': 'refactor the test_config_installed function to add additional colorlog config assertions'}
+```
+

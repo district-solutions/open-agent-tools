@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairo
+- repo_uri: https://github.com/facebookresearch/fairo
+
+## File: facebookresearch_fairo/droidlet/lowlevel/test/test_transforms3d.py
+
+Prompts
+
+```
+['run the unittest TransformsTest suite to test native and open3d PCD transform functionality', 'test the TransformsTest.test_native_pcd_transform method that computes point clouds from RGB depth and camera transforms', 'create a function that loads camera intrinsic matrix and resolution from a JSON file', 'create a function that loads RGB image, depth map, base pose, and camera transform from test asset files', 'review the TransformsTest class and its test_native_pcd_transform method for point cloud transform correctness']
+```
+
+Usage
+
+```
+{'run_transforms_test': 'run the unittest TransformsTest suite to test native and open3d PCD transform functionality', 'test_native_pcd_transform': 'test the TransformsTest.test_native_pcd_transform method that computes point clouds from RGB depth and camera transforms', 'load_intrinsic': 'create a function that loads camera intrinsic matrix and resolution from a JSON file', 'load_ground_truth_pcd': 'create a function that loads RGB image, depth map, base pose, and camera transform from test asset files', 'review_transforms_test': 'review the TransformsTest class and its test_native_pcd_transform method for point cloud transform correctness'}
+```
+

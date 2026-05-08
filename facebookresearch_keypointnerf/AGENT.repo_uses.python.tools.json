@@ -1,0 +1,44 @@
+{
+  "facebookresearch_keypointnerf/src/config.py": {
+    "create_parser": "create an argparse parser with config, data_root, out_dir, run_val, fast_dev_run, model_ckpt, and num_gpus arguments for KeypointNeRF",
+    "load_cfg": "load a JSON or YAML configuration file from a given path and return it as a dictionary",
+    "save_config": "save a config dictionary to a JSON file in the specified directory with the current git commit hash",
+    "get_git_commit_head": "get the current git repository HEAD commit hash as a string",
+    "get_model": "instantiate a KeypointNeRFLightningModule model from a config dictionary using the from_config class method"
+  },
+  "facebookresearch_keypointnerf/src/model.py": {
+    "render_novel_views": "render novel view images from a trained KeypointNeRF model given camera poses and a batch",
+    "render_video": "render a 360-degree video from a trained KeypointNeRF model using a data loader",
+    "compute_test_metric": "compute PSNR and SSIM metrics between rendered and ground truth images using Kornia",
+    "query_geometry_and_color": "query the KeypointNeRF model for alpha, SDF, and RGB at 3D points given camera parameters",
+    "forward_training": "run a forward training pass through KeypointNeRF and compute reconstruction loss with VGG loss"
+  },
+  "facebookresearch_keypointnerf/src/spatial.py": {
+    "create_spatial_encoder": "create a SpatialEncoder module with a given sp_level, sp_type, scale, and number of keypoints",
+    "compute_position_embedding": "compute sinusoidal position embeddings for input tensor x with specified frequency levels",
+    "generate_pe_vector": "generate a frequency vector for positional encoding with given number of levels and scale",
+    "get_encoder_dim": "get the output dimension of a SpatialEncoder based on its sp_type and sp_level configuration",
+    "encode_spatial_forward": "run the SpatialEncoder forward pass with spatial data including KRT, points, and extrinsics"
+  },
+  "facebookresearch_keypointnerf/src/utils.py": {
+    "build_360_cameras": "build a 360-degree camera rig with extrinsics and intrinsics from headpose and focal length",
+    "sample_features_grid": "sample features from a tensor at normalized UV coordinates using bilinear grid sampling",
+    "compute_nerf_loss": "compute multi-component NeRF reconstruction loss including L1, L2, SSIM, and VGG perceptual terms",
+    "create_hourglass_network": "create a stacked hourglass network module for human pose estimation with configurable depth and features",
+    "build_vgg_loss": "build a VGG19-based perceptual loss module that computes multi-layer feature distance between two images"
+  },
+  "facebookresearch_keypointnerf/src/zju_dataset.py": {
+    "create_ZJUDataset": "create a ZJUDataset instance to load Zju-MoCap training or test data from a data root",
+    "create_ZJUTestDataset": "create a ZJUTestDataset instance with configurable frame and camera sampling for evaluation",
+    "review_get_human_split": "review the get_human_split function that returns train or test subject configurations with frame intervals",
+    "summarize_get_near_far": "summarize the get_near_far static method that calculates ray intersections with a 3D bounding box",
+    "test_get_rays": "test the get_rays static method that computes ray origins and directions from camera intrinsics and extrinsics"
+  },
+  "facebookresearch_keypointnerf/src/zju_evaluator.py": {
+    "compute_score_mse_psnr_ssim": "compute MSE, PSNR, and SSIM scores for predicted vs ground truth RGB images using ZJUEvaluator",
+    "compute_psnr_static": "compute the PSNR value between two image arrays using the static _compute_psnr method",
+    "compute_ssim_with_crop": "compute SSIM on human-cropped regions and save pred, gt, and input images to disk",
+    "review_ZJUEvaluator_class": "review the ZJUEvaluator class and its image quality metric computation methods",
+    "refactor_compute_score_tensor_handling": "refactor compute_score to handle tensor input conversion and metric aggregation"
+  }
+}

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/conftest.py
+
+Prompts
+
+```
+['configure pytest test markers based on file path patterns for test categorization', 'split pytest test groupings across CircleCI parallel nodes using the circleci tests split command', 'get the module and class name from a pytest item for test grouping heuristics', 'filter a list of test groupings by calling the circleci tests split subprocess', 'override pytest exit status to OK when no tests are collected on a CircleCI node']
+```
+
+Usage
+
+```
+{'configure_pytest_markers': 'configure pytest test markers based on file path patterns for test categorization', 'split_tests_circleci': 'split pytest test groupings across CircleCI parallel nodes using the circleci tests split command', 'get_class_name': 'get the module and class name from a pytest item for test grouping heuristics', 'filter_tests_with_circleci': 'filter a list of test groupings by calling the circleci tests split subprocess', 'handle_no_tests_collected': 'override pytest exit status to OK when no tests are collected on a CircleCI node'}
+```
+

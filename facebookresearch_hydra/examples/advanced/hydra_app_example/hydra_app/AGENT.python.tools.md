@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/examples/advanced/hydra_app_example/hydra_app/main.py
+
+Prompts
+
+```
+['run the hydra app main module that adds two numbers from config and prints a greeting', 'run the add function with a DictConfig to sum two config values by key and print the result', 'run the hydra decorated main function that loads config and calls add with num1 and num2', 'refactor the add function to support more than two numbers or different arithmetic operations', 'review the hydra main decorator config setup and how DictConfig is used throughout the module']
+```
+
+Usage
+
+```
+{'run_hydra_app': 'run the hydra app main module that adds two numbers from config and prints a greeting', 'run_add_function': 'run the add function with a DictConfig to sum two config values by key and print the result', 'run_hydra_main': 'run the hydra decorated main function that loads config and calls add with num1 and num2', 'refactor_add_function': 'refactor the add function to support more than two numbers or different arithmetic operations', 'review_hydra_config_usage': 'review the hydra main decorator config setup and how DictConfig is used throughout the module'}
+```
+

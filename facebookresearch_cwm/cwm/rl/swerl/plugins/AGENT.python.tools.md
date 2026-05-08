@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/cwm
+- repo_uri: https://github.com/facebookresearch/cwm
+
+## File: facebookresearch_cwm/cwm/rl/swerl/plugins/edit.py
+
+Prompts
+
+```
+['edit a file by providing a search block and replacement block using SEARCH/REPLACE format', 'find all occurrences of a substring in a text string and return their indices', 'parse an edit command with path, search text, and replacement text using SEARCH/REPLACE regex', 'apply an in-place file edit by replacing search text with replacement text and writing back', 'validate that search text appears exactly once in a file before performing replacement']
+```
+
+Usage
+
+```
+{'edit_file_search_replace': 'edit a file by providing a search block and replacement block using SEARCH/REPLACE format', 'find_all_occurrences': 'find all occurrences of a substring in a text string and return their indices', 'parse_edit_command': 'parse an edit command with path, search text, and replacement text using SEARCH/REPLACE regex', 'apply_inplace_file_edit': 'apply an in-place file edit by replacing search text with replacement text and writing back', 'validate_edit_uniqueness': 'validate that search text appears exactly once in a file before performing replacement'}
+```
+

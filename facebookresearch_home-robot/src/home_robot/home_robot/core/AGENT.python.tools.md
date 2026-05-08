@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/home-robot
+- repo_uri: https://github.com/facebookresearch/home-robot
+
+## File: facebookresearch_home-robot/src/home_robot/home_robot/core/abstract_agent.py
+
+Prompts
+
+```
+['create a python class that subclasses Agent and implements reset and act methods', 'implement the act method to return an Action and info dict given Observations', 'implement the reset method to reinitialize agent state before an episode', 'review the Agent abstract base class and its reset and act method signatures', 'refactor an Agent subclass to return additional debug info from the act method', 'implement a subclass of Env that resets the environment to its initial state', 'implement a subclass of Env that applies an Action and optionally uses info and prev_obs', 'implement a subclass of Env that returns current Observations from the environment', 'implement a subclass of Env with an episode_over property that returns whether the episode has ended', 'implement a subclass of Env that returns a dictionary of metrics for the current episode', 'create a subclass of PerceptionModule that implements the abstract predict method for custom perception logic', 'implement the predict method in a PerceptionModule subclass to process Observations and return predictions', 'review the PerceptionModule abstract base class and its predict method signature for interface compliance', 'refactor a PerceptionModule subclass to handle new observation types in the predict method', 'test a PerceptionModule subclass to verify the predict method returns correct results for given Observations', 'create a HybridAction from a DiscreteNavigationAction like MOVE_FORWARD or PICK_OBJECT', 'create a HybridAction with an xyt numpy array for continuous navigation control', 'create a HybridAction with joint angles and optional xyt for full-body continuous manipulation', 'create a HybridAction with pos, ori, and gripper arrays for end-effector manipulation', 'create an Observations dataclass with rgb, depth, gps, and compass sensor data', 'navigate a robot to a target xyt position using global or relative coordinates', 'reset all internal state of the robot client back to its initial configuration', 'execute an open loop trajectory with configurable position and rotation error thresholds', 'check if the robot is in navigation mode or manipulation mode for grasping', 'configure a grasp client with a robot client and attempt grasping an object goal']
+```
+
+Usage
+
+```
+{'implement_agent_subclass': 'create a python class that subclasses Agent and implements reset and act methods', 'implement_act_method': 'implement the act method to return an Action and info dict given Observations', 'implement_reset_method': 'implement the reset method to reinitialize agent state before an episode', 'review_agent_abc': 'review the Agent abstract base class and its reset and act method signatures', 'refactor_agent_subclass': 'refactor an Agent subclass to return additional debug info from the act method'}
+```
+
+## File: facebookresearch_home-robot/src/home_robot/home_robot/core/abstract_env.py
+
+Prompts
+
+```
+['create a python class that subclasses Agent and implements reset and act methods', 'implement the act method to return an Action and info dict given Observations', 'implement the reset method to reinitialize agent state before an episode', 'review the Agent abstract base class and its reset and act method signatures', 'refactor an Agent subclass to return additional debug info from the act method', 'implement a subclass of Env that resets the environment to its initial state', 'implement a subclass of Env that applies an Action and optionally uses info and prev_obs', 'implement a subclass of Env that returns current Observations from the environment', 'implement a subclass of Env with an episode_over property that returns whether the episode has ended', 'implement a subclass of Env that returns a dictionary of metrics for the current episode', 'create a subclass of PerceptionModule that implements the abstract predict method for custom perception logic', 'implement the predict method in a PerceptionModule subclass to process Observations and return predictions', 'review the PerceptionModule abstract base class and its predict method signature for interface compliance', 'refactor a PerceptionModule subclass to handle new observation types in the predict method', 'test a PerceptionModule subclass to verify the predict method returns correct results for given Observations', 'create a HybridAction from a DiscreteNavigationAction like MOVE_FORWARD or PICK_OBJECT', 'create a HybridAction with an xyt numpy array for continuous navigation control', 'create a HybridAction with joint angles and optional xyt for full-body continuous manipulation', 'create a HybridAction with pos, ori, and gripper arrays for end-effector manipulation', 'create an Observations dataclass with rgb, depth, gps, and compass sensor data', 'navigate a robot to a target xyt position using global or relative coordinates', 'reset all internal state of the robot client back to its initial configuration', 'execute an open loop trajectory with configurable position and rotation error thresholds', 'check if the robot is in navigation mode or manipulation mode for grasping', 'configure a grasp client with a robot client and attempt grasping an object goal']
+```
+
+Usage
+
+```
+{'implement_env_reset': 'implement a subclass of Env that resets the environment to its initial state', 'implement_env_apply_action': 'implement a subclass of Env that applies an Action and optionally uses info and prev_obs', 'implement_env_get_observation': 'implement a subclass of Env that returns current Observations from the environment', 'implement_env_episode_over': 'implement a subclass of Env with an episode_over property that returns whether the episode has ended', 'implement_env_get_episode_metrics': 'implement a subclass of Env that returns a dictionary of metrics for the current episode'}
+```
+
+## File: facebookresearch_home-robot/src/home_robot/home_robot/core/abstract_perception.py
+
+Prompts
+
+```
+['create a python class that subclasses Agent and implements reset and act methods', 'implement the act method to return an Action and info dict given Observations', 'implement the reset method to reinitialize agent state before an episode', 'review the Agent abstract base class and its reset and act method signatures', 'refactor an Agent subclass to return additional debug info from the act method', 'implement a subclass of Env that resets the environment to its initial state', 'implement a subclass of Env that applies an Action and optionally uses info and prev_obs', 'implement a subclass of Env that returns current Observations from the environment', 'implement a subclass of Env with an episode_over property that returns whether the episode has ended', 'implement a subclass of Env that returns a dictionary of metrics for the current episode', 'create a subclass of PerceptionModule that implements the abstract predict method for custom perception logic', 'implement the predict method in a PerceptionModule subclass to process Observations and return predictions', 'review the PerceptionModule abstract base class and its predict method signature for interface compliance', 'refactor a PerceptionModule subclass to handle new observation types in the predict method', 'test a PerceptionModule subclass to verify the predict method returns correct results for given Observations', 'create a HybridAction from a DiscreteNavigationAction like MOVE_FORWARD or PICK_OBJECT', 'create a HybridAction with an xyt numpy array for continuous navigation control', 'create a HybridAction with joint angles and optional xyt for full-body continuous manipulation', 'create a HybridAction with pos, ori, and gripper arrays for end-effector manipulation', 'create an Observations dataclass with rgb, depth, gps, and compass sensor data', 'navigate a robot to a target xyt position using global or relative coordinates', 'reset all internal state of the robot client back to its initial configuration', 'execute an open loop trajectory with configurable position and rotation error thresholds', 'check if the robot is in navigation mode or manipulation mode for grasping', 'configure a grasp client with a robot client and attempt grasping an object goal']
+```
+
+Usage
+
+```
+{'create_perception_module_subclass': 'create a subclass of PerceptionModule that implements the abstract predict method for custom perception logic', 'implement_predict_method': 'implement the predict method in a PerceptionModule subclass to process Observations and return predictions', 'review_perception_module_abc': 'review the PerceptionModule abstract base class and its predict method signature for interface compliance', 'refactor_perception_subclass': 'refactor a PerceptionModule subclass to handle new observation types in the predict method', 'test_perception_module_subclass': 'test a PerceptionModule subclass to verify the predict method returns correct results for given Observations'}
+```
+
+## File: facebookresearch_home-robot/src/home_robot/home_robot/core/interfaces.py
+
+Prompts
+
+```
+['create a python class that subclasses Agent and implements reset and act methods', 'implement the act method to return an Action and info dict given Observations', 'implement the reset method to reinitialize agent state before an episode', 'review the Agent abstract base class and its reset and act method signatures', 'refactor an Agent subclass to return additional debug info from the act method', 'implement a subclass of Env that resets the environment to its initial state', 'implement a subclass of Env that applies an Action and optionally uses info and prev_obs', 'implement a subclass of Env that returns current Observations from the environment', 'implement a subclass of Env with an episode_over property that returns whether the episode has ended', 'implement a subclass of Env that returns a dictionary of metrics for the current episode', 'create a subclass of PerceptionModule that implements the abstract predict method for custom perception logic', 'implement the predict method in a PerceptionModule subclass to process Observations and return predictions', 'review the PerceptionModule abstract base class and its predict method signature for interface compliance', 'refactor a PerceptionModule subclass to handle new observation types in the predict method', 'test a PerceptionModule subclass to verify the predict method returns correct results for given Observations', 'create a HybridAction from a DiscreteNavigationAction like MOVE_FORWARD or PICK_OBJECT', 'create a HybridAction with an xyt numpy array for continuous navigation control', 'create a HybridAction with joint angles and optional xyt for full-body continuous manipulation', 'create a HybridAction with pos, ori, and gripper arrays for end-effector manipulation', 'create an Observations dataclass with rgb, depth, gps, and compass sensor data', 'navigate a robot to a target xyt position using global or relative coordinates', 'reset all internal state of the robot client back to its initial configuration', 'execute an open loop trajectory with configurable position and rotation error thresholds', 'check if the robot is in navigation mode or manipulation mode for grasping', 'configure a grasp client with a robot client and attempt grasping an object goal']
+```
+
+Usage
+
+```
+{'create_HybridAction_from_discrete': 'create a HybridAction from a DiscreteNavigationAction like MOVE_FORWARD or PICK_OBJECT', 'create_HybridAction_from_continuous_navigation': 'create a HybridAction with an xyt numpy array for continuous navigation control', 'create_HybridAction_from_full_body': 'create a HybridAction with joint angles and optional xyt for full-body continuous manipulation', 'create_HybridAction_from_end_effector': 'create a HybridAction with pos, ori, and gripper arrays for end-effector manipulation', 'create_Observations_dataclass': 'create an Observations dataclass with rgb, depth, gps, and compass sensor data'}
+```
+
+## File: facebookresearch_home-robot/src/home_robot/home_robot/core/robot.py
+
+Prompts
+
+```
+['create a python class that subclasses Agent and implements reset and act methods', 'implement the act method to return an Action and info dict given Observations', 'implement the reset method to reinitialize agent state before an episode', 'review the Agent abstract base class and its reset and act method signatures', 'refactor an Agent subclass to return additional debug info from the act method', 'implement a subclass of Env that resets the environment to its initial state', 'implement a subclass of Env that applies an Action and optionally uses info and prev_obs', 'implement a subclass of Env that returns current Observations from the environment', 'implement a subclass of Env with an episode_over property that returns whether the episode has ended', 'implement a subclass of Env that returns a dictionary of metrics for the current episode', 'create a subclass of PerceptionModule that implements the abstract predict method for custom perception logic', 'implement the predict method in a PerceptionModule subclass to process Observations and return predictions', 'review the PerceptionModule abstract base class and its predict method signature for interface compliance', 'refactor a PerceptionModule subclass to handle new observation types in the predict method', 'test a PerceptionModule subclass to verify the predict method returns correct results for given Observations', 'create a HybridAction from a DiscreteNavigationAction like MOVE_FORWARD or PICK_OBJECT', 'create a HybridAction with an xyt numpy array for continuous navigation control', 'create a HybridAction with joint angles and optional xyt for full-body continuous manipulation', 'create a HybridAction with pos, ori, and gripper arrays for end-effector manipulation', 'create an Observations dataclass with rgb, depth, gps, and compass sensor data', 'navigate a robot to a target xyt position using global or relative coordinates', 'reset all internal state of the robot client back to its initial configuration', 'execute an open loop trajectory with configurable position and rotation error thresholds', 'check if the robot is in navigation mode or manipulation mode for grasping', 'configure a grasp client with a robot client and attempt grasping an object goal']
+```
+
+Usage
+
+```
+{'navigate_robot_to_position': 'navigate a robot to a target xyt position using global or relative coordinates', 'reset_robot_state': 'reset all internal state of the robot client back to its initial configuration', 'execute_robot_trajectory': 'execute an open loop trajectory with configurable position and rotation error thresholds', 'check_robot_control_mode': 'check if the robot is in navigation mode or manipulation mode for grasping', 'configure_grasp_client': 'configure a grasp client with a robot client and attempt grasping an object goal'}
+```
+

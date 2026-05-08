@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/projectariatools
+- repo_uri: https://github.com/facebookresearch/projectaria_tools
+
+## File: facebookresearch_projectariatools/projects/AriaDigitalTwinDatasetTools/python/TestBindings.py
+
+Prompts
+
+```
+['test the AriaDigitalTwinDataPathsProvider class to verify scene metadata and data file paths exist', 'test the AriaDigitalTwinDataProvider class to verify data availability and query methods return valid results', 'run the TestAeaPybindings unittest suite to validate all Aria Digital Twin Python bindings', 'review the AriaDigitalTwinDataPathsProvider metadata methods like get_scene_name and get_device_serial_number', 'review the AriaDigitalTwinDataProvider query methods for retrieving images, poses, and bounding boxes by timestamp']
+```
+
+Usage
+
+```
+{'test_AriaDigitalTwinDataPathsProvider': 'test the AriaDigitalTwinDataPathsProvider class to verify scene metadata and data file paths exist', 'test_AriaDigitalTwinDataProvider': 'test the AriaDigitalTwinDataProvider class to verify data availability and query methods return valid results', 'run_TestAeaPybindings': 'run the TestAeaPybindings unittest suite to validate all Aria Digital Twin Python bindings', 'review_AriaDigitalTwinDataPathsProvider_metadata': 'review the AriaDigitalTwinDataPathsProvider metadata methods like get_scene_name and get_device_serial_number', 'review_AriaDigitalTwinDataProvider_query': 'review the AriaDigitalTwinDataProvider query methods for retrieving images, poses, and bounding boxes by timestamp'}
+```
+

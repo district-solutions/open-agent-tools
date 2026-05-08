@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/parlai/crowdsourcing/tasks/dialcrowd/dialcrowd_blueprint.py
+
+Prompts
+
+```
+['review the DialCrowdStaticBlueprint class that chunks conversation data into subtask groups for crowd annotation', 'review the DialCrowdStaticBlueprintArgs dataclass that configures subtasks per unit for conversation annotation tasks', 'review the get_frontend_args method that loads task config and merges ParlAI settings for the frontend', 'review the get_task_path function that returns the directory path of the blueprint module', 'refactor the DialCrowdStaticBlueprint init to customize how raw data is chunked into subtask groups']
+```
+
+Usage
+
+```
+{'review_DialCrowdStaticBlueprint': 'review the DialCrowdStaticBlueprint class that chunks conversation data into subtask groups for crowd annotation', 'review_DialCrowdStaticBlueprintArgs': 'review the DialCrowdStaticBlueprintArgs dataclass that configures subtasks per unit for conversation annotation tasks', 'review_get_frontend_args': 'review the get_frontend_args method that loads task config and merges ParlAI settings for the frontend', 'review_get_task_path': 'review the get_task_path function that returns the directory path of the blueprint module', 'refactor_DialCrowdStaticBlueprint_init': 'refactor the DialCrowdStaticBlueprint init to customize how raw data is chunked into subtask groups'}
+```
+

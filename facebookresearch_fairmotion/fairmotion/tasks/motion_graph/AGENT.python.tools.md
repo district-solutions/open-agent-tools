@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairmotion
+- repo_uri: https://github.com/facebookresearch/fairmotion
+
+## File: facebookresearch_fairmotion/fairmotion/tasks/motion_graph/motion_graph.py
+
+Prompts
+
+```
+['construct a motion graph from BVH motion files by creating nodes and edges based on pose similarity', 'create a random motion by traversing the motion graph with configurable length and blend parameters', 'create a stitched motion from a list of graph nodes with optional blending between segments', 'save the motion graph to a gzip pickle file or load it back from disk', 'reduce the motion graph to its largest strongly or weakly connected components']
+```
+
+Usage
+
+```
+{'construct_motion_graph': 'construct a motion graph from BVH motion files by creating nodes and edges based on pose similarity', 'create_random_motion': 'create a random motion by traversing the motion graph with configurable length and blend parameters', 'create_motion_from_nodes': 'create a stitched motion from a list of graph nodes with optional blending between segments', 'save_and_load_graph': 'save the motion graph to a gzip pickle file or load it back from disk', 'reduce_graph_components': 'reduce the motion graph to its largest strongly or weakly connected components'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/open-eqa
+- repo_uri: https://github.com/facebookresearch/open-eqa
+
+## File: facebookresearch_open-eqa/evaluate-predictions.py
+
+Prompts
+
+```
+['run the evaluate-predictions script to score model predictions against the Open-EQA dataset', 'run a dry-run evaluation of the first 5 questions using evaluate-predictions', 'run evaluate-predictions with force mode to evaluate results even if responses are missing', 'run evaluate-predictions in verbose mode to print the output metrics file path', 'run evaluate-predictions with a custom output directory for storing metrics JSON']
+```
+
+Usage
+
+```
+{'run_evaluate_predictions': 'run the evaluate-predictions script to score model predictions against the Open-EQA dataset', 'run_evaluate_dry_run': 'run a dry-run evaluation of the first 5 questions using evaluate-predictions', 'run_evaluate_force': 'run evaluate-predictions with force mode to evaluate results even if responses are missing', 'run_evaluate_verbose': 'run evaluate-predictions in verbose mode to print the output metrics file path', 'run_evaluate_custom_output': 'run evaluate-predictions with a custom output directory for storing metrics JSON'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/interwild
+- repo_uri: https://github.com/facebookresearch/interwild
+
+## File: facebookresearch_interwild/data/InterHand26M/InterHand26M.py
+
+Prompts
+
+```
+['create an InterHand26M dataset instance with a transform and data_split for training or evaluation', 'load InterHand26M annotations including camera params, 3D joints, and MANO parameters from JSON files', 'get a single data sample with image, joint coordinates, MANO params, and bounding boxes by index', 'evaluate model predictions computing MPJPE, MPVPE, MRRPE, RRVE, and bbox IoU metrics', 'print aggregated evaluation results including MPJPE, MPVPE, MRRPE, RRVE, and bbox IoU averages']
+```
+
+Usage
+
+```
+{'create_dataset_instance': 'create an InterHand26M dataset instance with a transform and data_split for training or evaluation', 'load_data_annotations': 'load InterHand26M annotations including camera params, 3D joints, and MANO parameters from JSON files', 'get_item_sample': 'get a single data sample with image, joint coordinates, MANO params, and bounding boxes by index', 'evaluate_predictions': 'evaluate model predictions computing MPJPE, MPVPE, MRRPE, RRVE, and bbox IoU metrics', 'print_eval_result': 'print aggregated evaluation results including MPJPE, MPVPE, MRRPE, RRVE, and bbox IoU averages'}
+```
+

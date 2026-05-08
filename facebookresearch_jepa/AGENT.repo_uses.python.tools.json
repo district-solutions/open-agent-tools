@@ -1,0 +1,226 @@
+{
+  "facebookresearch_jepa/app/main.py": {
+    "run_jepa_training": "run the JEPA training pipeline by spawning one process per GPU device using a YAML config file",
+    "run_process_main": "run the per-process entry point that loads a config, initializes distributed training, and launches the app scaffold",
+    "run_multi_gpu": "run multi-GPU training by passing a list of CUDA devices via the --devices argument",
+    "run_with_config": "run the JEPA app using a custom YAML config file specified with the --fname argument",
+    "review_process_main": "review the process_main function that handles CUDA device assignment, config loading, and distributed init"
+  },
+  "facebookresearch_jepa/app/main_distributed.py": {
+    "run_distributed_training": "run distributed JEPA training jobs on a SLURM cluster using submitit with yaml config files",
+    "run_batch_launch": "batch launch multiple training configs from a yaml list file using the --batch-launch flag",
+    "run_single_config": "run a single training job by passing a yaml config file path with the --fname argument",
+    "review_Trainer_class": "review the Trainer class that wraps pretraining params and launches the app via app_main",
+    "review_launch_app_with_parsed_args": "review the launch_app_with_parsed_args function that creates a submitit AutoExecutor and batch submits Trainer jobs"
+  },
+  "facebookresearch_jepa/app/vjepa/train.py": {
+    "run_vjepa_training": "run the main training loop for video JEPa with a config dict containing model, data, and optimization settings",
+    "review_main_training_loop": "review the main function that orchestrates distributed video JEPa training with encoder, predictor, and target encoder",
+    "create_checkpoint_saving": "create a checkpoint saving function that stores encoder, predictor, optimizer, and scaler state dicts to disk",
+    "build_forward_target_pass": "build the forward target pass that encodes video clips through the target encoder with layer norm and masking",
+    "test_loss_computation": "test the JEPa loss function that computes Lp prediction loss between predictor output and target encoder output"
+  },
+  "facebookresearch_jepa/app/vjepa/transforms.py": {
+    "create_video_transform": "create a VideoTransform instance to apply augmentation and normalization to video frame buffers",
+    "build_transforms_pipeline": "build a video transforms pipeline using make_transforms with configurable flip, resize, and crop options",
+    "normalize_tensor": "normalize a PyTorch tensor by subtracting mean and dividing by standard deviation",
+    "normalize_tensor_inplace": "normalize a C T H W tensor in-place by subtracting mean and dividing by std",
+    "review_VideoTransform_call": "review the VideoTransform call method that applies spatial transforms, flips, and erasing to video buffers"
+  },
+  "facebookresearch_jepa/app/vjepa/utils.py": {
+    "init_video_model_ViTEncoderPredictor": "init a video masked autoencoder ViT encoder and predictor model with configurable patch size and frames",
+    "init_opt_AdamW_schedulers": "init an AdamW optimizer with warmup cosine LR schedule and cosine weight decay schedule for V-JEPA training",
+    "load_checkpoint_resume_training": "load a checkpoint file to restore encoder, predictor, target encoder, optimizer, and scaler state",
+    "review_init_video_model_mask_tokens": "review the init_video_model function to understand mask token configuration and model initialization",
+    "review_init_opt_param_groups": "review the init_opt function to understand parameter grouping for weight decay exclusion on bias and norm layers"
+  },
+  "facebookresearch_jepa/evals/main.py": {
+    "run_evaluation": "run a JEPA evaluation using a YAML config file across multiple GPUs",
+    "run_evaluation_single_gpu": "run a JEPA evaluation on a single GPU with the default configs.yaml file",
+    "run_evaluation_multi_gpu": "run a JEPA evaluation across multiple GPUs by specifying device IDs like cuda:0 cuda:1",
+    "review_process_main": "review the process_main function that loads config, initializes distributed GPUs, and launches evaluation",
+    "refactor_process_main": "refactor the process_main function to support additional config loading formats beyond YAML"
+  },
+  "facebookresearch_jepa/evals/main_distributed.py": {
+    "run_distributed_evals": "run distributed evaluation jobs on a SLURM cluster using YAML config files and submitit",
+    "launch_evals_with_parsed_args": "launch evaluation jobs with parsed config dicts using submitit AutoExecutor on a SLURM partition",
+    "create_Trainer": "create a Trainer instance that wraps eval args and calls eval_main when invoked",
+    "review_Trainer_checkpoint": "review the Trainer checkpoint method that returns a DelayedSubmission for preemption recovery",
+    "run_batch_launch_evals": "run multiple evaluation configs from a batch YAML file as a SLURM job array"
+  },
+  "facebookresearch_jepa/evals/image_classification_frozen/eval.py": {
+    "run_image_classification_frozen": "run the main eval loop to fine-tune an AttentiveClassifier on a frozen pretrained JEPA vision encoder",
+    "run_one_epoch_train_val": "run one training or validation epoch with the frozen encoder and classifier returning top-1 accuracy",
+    "init_model_vision_transformer": "initialize a pretrained vision transformer encoder from a checkpoint file with optional video frame support",
+    "make_dataloader_dataset": "create a train or validation dataloader with auto-augment transforms for image classification datasets",
+    "init_opt_adamw_schedulers": "initialize an AdamW optimizer with warmup cosine LR schedule and cosine weight decay schedule for the classifier"
+  },
+  "facebookresearch_jepa/evals/video_classification_frozen/eval.py": {
+    "run_video_classification_eval": "run the main evaluation loop to train a frozen video classification model on a dataset",
+    "run_one_epoch_training": "run one training or evaluation epoch with a frozen encoder and trainable classifier",
+    "load_pretrained_encoder": "load a pretrained vision transformer encoder from a checkpoint file for video classification",
+    "make_video_dataloader": "create a distributed dataloader for video classification with configurable transforms and segment sampling",
+    "init_optimizer_schedulers": "initialize an AdamW optimizer with warmup cosine learning rate and weight decay schedulers"
+  },
+  "facebookresearch_jepa/evals/video_classification_frozen/utils.py": {
+    "create_FrameAggregation": "create a FrameAggregation module to process each video frame independently and concatenate all tokens",
+    "create_ClipAggregation": "create a ClipAggregation module to process each video clip independently and concatenate all tokens",
+    "create_VideoTransform": "create a VideoTransform object with random resize, flip, auto augment, and random erasing for training",
+    "create_EvalVideoTransform": "create an EvalVideoTransform object to sample multiple spatial views of each video clip for evaluation",
+    "create_make_transforms": "create video transforms using make_transforms for training or multi-view evaluation pipelines"
+  },
+  "facebookresearch_jepa/src/datasets/data_manager.py": {
+    "init_imagenet_dataloader": "init a data loader and distributed sampler for ImageNet with a given batch size and transform",
+    "init_inat21_dataloader": "init a data loader and distributed sampler for iNat21 image dataset with custom num workers",
+    "init_places205_dataloader": "init a data loader and distributed sampler for Places205 dataset with a subset file",
+    "init_videodataset_dataloader": "init a data loader and distributed sampler for a video dataset with clip length and frame sample rate",
+    "review_init_data": "review the init_data function to understand supported dataset types and parameter defaults"
+  },
+  "facebookresearch_jepa/src/datasets/image_dataset.py": {
+    "create_imagedataset_loader": "create a distributed DataLoader and sampler for an ImageFolder dataset with configurable batch size and workers",
+    "build_imagefolder_dataset": "build an ImageFolder dataset from a root path with optional transform and train or val split",
+    "review_ImageFolder_class": "review the ImageFolder class that extends torchvision ImageFolder and constructs data paths from root and image_folder",
+    "refactor_make_imagedataset": "refactor the make_imagedataset function to support additional sampler types or custom collation logic",
+    "summarize_ImageFolder_init": "summarize the ImageFolder init method that joins root, image_folder, and train or val suffix into a data path"
+  },
+  "facebookresearch_jepa/src/datasets/video_dataset.py": {
+    "create_videodataset": "create a VideoDataset from CSV or NPY data paths with configurable frames per clip and frame step",
+    "build_dataloader": "build a distributed DataLoader with VideoDataset using make_videodataset and optional weighted sampling",
+    "load_video_frames": "load video frames from a file using Decord VideoReader with configurable clip sampling and overlap",
+    "filter_videos": "filter short or long videos by size or frame count when loading video data",
+    "sample_clips": "sample multiple random clips from a video with configurable partitioning and frame indexing"
+  },
+  "facebookresearch_jepa/src/datasets/utils/video/functional.py": {
+    "crop_clip": "crop a list of numpy arrays or PIL images to a specified rectangular region",
+    "resize_clip": "resize a list of numpy arrays or PIL images to a target size with bilinear interpolation",
+    "get_resize_sizes": "compute the new height and width for resizing an image while preserving aspect ratio",
+    "normalize": "normalize a 4D torch tensor video clip using mean and standard deviation values",
+    "is_tensor_clip": "check if a given object is a 4D torch tensor representing a video clip"
+  },
+  "facebookresearch_jepa/src/datasets/utils/video/randaugment.py": {
+    "create_randaugment_transform": "create a RandAugment transform from a config string like 'rand-m9-n3-mstd0.5' using rand_augment_transform",
+    "build_augmentop_for_image": "build an AugmentOp instance to apply a single named augmentation like Rotate or ShearX to a PIL image",
+    "create_rand_augment_ops_list": "create a list of AugmentOp instances with a given magnitude using rand_augment_ops",
+    "apply_randaugment_to_image": "apply a RandAugment transform to a PIL image by calling it with the image as input",
+    "review_rotate_function": "review the rotate function that handles PIL version compatibility for rotating images by degrees"
+  },
+  "facebookresearch_jepa/src/datasets/utils/video/transforms.py": {
+    "create_random_augment": "create a random augmentation transform for video data using randaugment parameters and interpolation method",
+    "random_resized_crop": "randomly crop and resize video frames to a target height and width with configurable scale and ratio",
+    "random_resized_crop_with_shift": "crop video frames with linearly interpolated shifting crop boxes across frames for temporal augmentation",
+    "random_sized_crop_img": "perform Inception-style random sized cropping on a single image with configurable scale and aspect ratio jitter",
+    "color_jitter": "apply random brightness, contrast, and saturation jitter to video frames with configurable jitter ratios"
+  },
+  "facebookresearch_jepa/src/datasets/utils/video/volume_transforms.py": {
+    "convert_image_array": "convert a numpy image array from HWC format to CHW format using convert_img",
+    "create_clip_to_tensor": "create a ClipToTensor callable to convert a list of image frames to a normalized tensor",
+    "create_clip_to_tensor_k": "create a ClipToTensor_K callable to convert image frames to a tensor normalized to -1 to 1",
+    "convert_numpy_to_tensor": "convert a numpy array to a PyTorch tensor using the ToTensor callable class",
+    "summarize_volume_transforms": "summarize the video volume transform utilities for image clip to tensor conversion"
+  },
+  "facebookresearch_jepa/src/masks/multiblock3d.py": {
+    "create_mask_collator": "create a MaskCollator with mask config dicts, crop size, num frames, patch size, and tubelet size",
+    "call_mask_collator": "call the MaskCollator on a batch to get collated batch, encoder masks, and predictor masks",
+    "create_mask_generator": "create a _MaskGenerator with crop size, num frames, spatial and temporal patch sizes, and mask scales",
+    "sample_block_mask": "sample a 3D block mask with random temporal, spatial, and aspect ratio dimensions for masking",
+    "step_mask_generator": "step the _MaskGenerator iteration counter to advance the seed for deterministic mask generation"
+  },
+  "facebookresearch_jepa/src/masks/random_tube.py": {
+    "create_mask_collator": "create a MaskCollator with mask config list, crop size, num frames, patch size, and tubelet size",
+    "call_mask_collator": "call the MaskCollator on a batch to get collated batch, encoder masks, and predictor masks",
+    "step_mask_collator": "step the MaskCollator to increment iteration counters across all mask generators",
+    "create_mask_generator": "create a _MaskGenerator with crop size, num frames, spatial and temporal patch sizes, and masking ratio",
+    "call_mask_generator": "call the _MaskGenerator with a batch size to generate encoder and predictor mask tensors"
+  },
+  "facebookresearch_jepa/src/masks/utils.py": {
+    "apply_masks_concat": "apply masks to a tensor and concatenate the masked patch selections along dimension 0",
+    "apply_masks_no_concat": "apply masks to a tensor and return a list of separately masked patch selections",
+    "apply_masks_gather_patches": "gather specific patch indices from a batched tensor using mask index tensors",
+    "apply_masks_repeat_mask": "unsqueeze and repeat a mask tensor to match the feature dimension for gathering",
+    "apply_masks_batched_tensor": "apply multiple mask tensors to a single batched tensor and collect results"
+  },
+  "facebookresearch_jepa/src/models/attentive_pooler.py": {
+    "create_attentive_pooler": "create an AttentivePooler module with learnable query tokens and cross-attention to pool sequence embeddings",
+    "create_attentive_classifier": "create an AttentiveClassifier that pools sequence embeddings then classifies into num_classes categories",
+    "build_pooler_with_depth": "build an AttentivePooler with multiple self-attention blocks by setting depth greater than one",
+    "review_cross_attention_block": "review the AttentivePooler cross-attention block configuration with configurable num_heads and mlp_ratio",
+    "test_init_weights": "test the AttentivePooler weight initialization using trunc_normal_ and rescaled block scaling"
+  },
+  "facebookresearch_jepa/src/models/predictor.py": {
+    "build_VisionTransformerPredictor": "build a VisionTransformerPredictor model with configurable embed_dim, depth, and num_heads for masked image modeling",
+    "run_vit_predictor_factory": "run the vit_predictor factory function to create a VisionTransformerPredictor with default LayerNorm and mlp_ratio settings",
+    "test_diffusion_noise": "test the diffusion method to apply noise scheduling and normalize features on predictor target tokens",
+    "review_forward_masked_prediction": "review the forward method that concatenates context and target tokens then predicts masked patches through attention blocks",
+    "refactor_init_pos_embed": "refactor the _init_pos_embed method to support custom 2D or 3D sincos positional embeddings for image or video input"
+  },
+  "facebookresearch_jepa/src/models/vision_transformer.py": {
+    "build_vision_transformer": "build a VisionTransformer model with custom embed_dim, depth, and num_heads for image or video input",
+    "run_vit_forward_pass": "run a forward pass through a VisionTransformer with optional patch token masks applied",
+    "create_vit_base_model": "create a vit_base VisionTransformer with 768 embed dim, 12 layers, and 12 attention heads",
+    "create_vit_large_model": "create a vit_large VisionTransformer with 1024 embed dim, 24 layers, and 16 attention heads",
+    "interpolate_pos_encoding": "interpolate positional embeddings in a VisionTransformer to match different input image or video sizes"
+  },
+  "facebookresearch_jepa/src/models/utils/modules.py": {
+    "build_MLP": "build a two-layer MLP neural network module with configurable hidden features and GELU activation",
+    "create_Attention": "create a multi-head self-attention module with optional SDPA and manual attention computation modes",
+    "build_Block": "build a transformer encoder block combining self-attention and MLP with residual connections and layer norm",
+    "create_CrossAttention": "create a cross-attention module that attends queries against separate key-value inputs using SDPA",
+    "build_CrossAttentionBlock": "build a cross-attention transformer block combining cross-attention and MLP with residual connections and layer norm"
+  },
+  "facebookresearch_jepa/src/models/utils/multimask.py": {
+    "create_multimask_wrapper": "create a MultiMaskWrapper around a backbone model to apply multiple masks in forward pass",
+    "run_multimask_forward": "run the MultiMaskWrapper forward pass with input tensor and optional list of masks",
+    "create_predictor_multimask_wrapper": "create a PredictorMultiMaskWrapper around a backbone model for context-target multimask prediction",
+    "run_predictor_multimask_forward": "run the PredictorMultiMaskWrapper forward pass with context, target, and their respective masks",
+    "review_multimask_classes": "review the MultiMaskWrapper and PredictorMultiMaskWrapper classes for backbone wrapping and multimask forwarding patterns"
+  },
+  "facebookresearch_jepa/src/models/utils/patch_embed.py": {
+    "create_PatchEmbed_2D": "create a PatchEmbed module that converts 2D image tensors into patch embeddings using a convolutional projection layer",
+    "create_PatchEmbed3D": "create a PatchEmbed3D module that converts 3D video tensors into patch embeddings using a 3D convolutional projection layer",
+    "run_PatchEmbed_forward": "run the PatchEmbed forward pass on a batch of 2D image tensors to get flattened patch embeddings",
+    "run_PatchEmbed3D_forward": "run the PatchEmbed3D forward pass on a batch of 3D video tensors to get flattened tubelet embeddings",
+    "review_PatchEmbed_config": "review the PatchEmbed class configuration for patch_size, in_chans, and embed_dim parameters"
+  },
+  "facebookresearch_jepa/src/models/utils/pos_embs.py": {
+    "generate_3d_sincos_positional_embeddings": "generate 3D sinusoidal positional embeddings for a grid with specified depth, height, and width dimensions",
+    "generate_2d_sincos_positional_embeddings": "generate 2D sinusoidal positional embeddings for a square grid with optional class token support",
+    "generate_1d_sincos_positional_embeddings": "generate 1D sinusoidal positional embeddings for a sequence of positions with optional class token",
+    "compute_sincos_embeddings_from_grid_positions": "compute sinusoidal positional embeddings from arbitrary grid positions using sine and cosine basis functions",
+    "review_positional_embedding_functions": "review the positional embedding utility functions for 1D, 2D, and 3D grid encoding"
+  },
+  "facebookresearch_jepa/src/utils/distributed.py": {
+    "init_distributed_process_group": "init a torch distributed process group with nccl backend using rank and world size from SLURM or manual args",
+    "allgather_tensor_across_ranks": "gather tensors from all ranks into a single concatenated tensor using the AllGather autograd function",
+    "allreduce_sum_tensor": "sum a tensor across all ranks using the AllReduceSum autograd function for distributed training",
+    "allreduce_mean_tensor": "compute the mean of a tensor across all ranks using the AllReduce autograd function for distributed training",
+    "review_distributed_utils": "review the distributed training utilities including init_distributed, AllGather, AllReduceSum, and AllReduce classes"
+  },
+  "facebookresearch_jepa/src/utils/logging.py": {
+    "gpu_timer": "time a GPU operation by wrapping a closure with CUDA event timing",
+    "get_logger": "create a configured Python logger with custom format and write to stdout",
+    "CSVLogger": "create a CSVLogger instance to write typed data rows to a CSV file",
+    "AverageMeter": "create an AverageMeter to track running average, min, max, and current value",
+    "grad_logger": "compute gradient norm statistics across model parameters including first and last layer"
+  },
+  "facebookresearch_jepa/src/utils/monitoring.py": {
+    "create_resource_monitoring_thread": "create a ResourceMonitoringThread to monitor a process PID with a custom refresh interval and callback",
+    "run_resource_monitoring_thread": "run a ResourceMonitoringThread in the background to collect CPU, IO, and thread stats for a PID",
+    "stop_resource_monitoring_thread": "stop a running ResourceMonitoringThread by calling its stop method to halt resource sampling",
+    "create_resource_stats_sample": "create a ResourceStatsSample dataclass to hold CPU, IO, and context switch metrics for a process",
+    "review_compress_cpu_affinity": "review the compress_cpu_affinity helper that converts a CPU affinity list into a compact range string"
+  },
+  "facebookresearch_jepa/src/utils/schedulers.py": {
+    "create_warmup_cosine_schedule": "create a WarmupCosineSchedule to schedule learning rate with linear warmup then cosine decay",
+    "run_warmup_cosine_step": "run the WarmupCosineSchedule step method to update optimizer learning rate for the next training step",
+    "create_cosine_wd_schedule": "create a CosineWDSchedule to schedule weight decay using a cosine annealing curve over training steps",
+    "run_cosine_wd_step": "run the CosineWDSchedule step method to update optimizer weight decay for the next training step",
+    "review_warmup_cosine_schedule": "review the WarmupCosineSchedule class to understand its warmup steps, reference LR, and final LR configuration"
+  },
+  "facebookresearch_jepa/src/utils/tensors.py": {
+    "init_tensor_truncated_normal": "initialize a PyTorch tensor with truncated normal distribution values using trunc_normal_",
+    "apply_masks_select_patches": "apply masks to select specific patches from a batch of feature tensors using apply_masks",
+    "repeat_interleave_batch_rows": "repeat and interleave batch rows of a tensor N times using repeat_interleave_batch",
+    "review_trunc_normal_implementation": "review the trunc_normal_ function implementation for initializing model weights with bounded normal values",
+    "summarize_apply_masks_function": "summarize the apply_masks function that gathers tensor patches by index masks across batch dimensions"
+  }
+}

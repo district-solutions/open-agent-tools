@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/projectariatools
+- repo_uri: https://github.com/facebookresearch/projectaria_tools
+
+## File: facebookresearch_projectariatools/examples/Gen1/python_samples/SAM_eye_gaze_prompt/SAM_eye_prompt_demo.py
+
+Prompts
+
+```
+['run EfficientSAM on RGB frames from a VRS file using eye gaze reprojection as point prompts', 'load VRS video data and MPS eye gaze data to run segmentation with gaze prompts', 'rotate 2D points clockwise by 90 degrees for image alignment before SAM inference', 'parse command line arguments for VRS path, eye gaze file, and EfficientSAM model selection', 'visualize EfficientSAM mask output, eye gaze projection, and inference stats using Rerun']
+```
+
+Usage
+
+```
+{'run_efficient_sam_with_eyegaze': 'run EfficientSAM on RGB frames from a VRS file using eye gaze reprojection as point prompts', 'load_vrs_and_eyegaze_data': 'load VRS video data and MPS eye gaze data to run segmentation with gaze prompts', 'rotate_2d_points': 'rotate 2D points clockwise by 90 degrees for image alignment before SAM inference', 'parse_sam_demo_args': 'parse command line arguments for VRS path, eye gaze file, and EfficientSAM model selection', 'visualize_sam_masks_with_rerun': 'visualize EfficientSAM mask output, eye gaze projection, and inference stats using Rerun'}
+```
+

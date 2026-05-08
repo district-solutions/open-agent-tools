@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/hydra/test_utils/completion.py
+
+Prompts
+
+```
+['run the hydra completion test CLI that prints the config as YAML', 'run the run_cli function to print the Hydra DictConfig as YAML output', 'test the Hydra shell completion using the completion test config', 'review the run_cli function decorated with hydra.main for completion testing', 'summarize the run_cli function that prints OmegaConf config as YAML', 'test the ConfigSourceTestSuite to verify if a config path is a group using is_group', 'test the ConfigSourceTestSuite to verify if a config path is a config using is_config', 'test the ConfigSourceTestSuite list method to enumerate config groups and configs with ObjectType filters', 'test the ConfigSourceTestSuite load_config method to load and validate config content and defaults list', 'test the ConfigSourceTestSuite to verify package header behavior for explicit, global, group, and name packages', 'run a Hydra CLI application that prints the loaded configuration as YAML output', 'create a function decorated with hydra.main to load configs from a specified path and config name', 'print an OmegaConf DictConfig object as formatted YAML using OmegaConf.to_yaml', 'review the Hydra example app that loads db_conf and prints configuration via run_cli', 'refactor the run_cli function to process or modify the loaded Hydra DictConfig before printing', 'test the LauncherTestSuite class to run a single job sweep with a given launcher name', 'test the LauncherTestSuite class to run a two job sweep with config overrides', 'test the BatchedSweeperTestSuite class to verify batched sweeping produces correct number of batches and jobs', 'test the IntegrationTestSuite class to verify custom task name overrides from config or CLI', 'test the IntegrationTestSuite class to verify custom sweep directory and subdir configuration', 'run a Hydra integration test that generates a task script, executes it with overrides, and verifies output', 'run a Python script as a subprocess and capture stdout and stderr with optional warning handling', 'run an arbitrary subprocess command and capture stdout and stderr with configurable error handling', 'assert two multiline text strings are identical and print a unified diff on mismatch', 'assert each line of expected text regex-matches the corresponding line of actual output']
+```
+
+Usage
+
+```
+{'run_hydra_cli_completion_test': 'run the hydra completion test CLI that prints the config as YAML', 'run_run_cli': 'run the run_cli function to print the Hydra DictConfig as YAML output', 'test_hydra_completion': 'test the Hydra shell completion using the completion test config', 'review_run_cli': 'review the run_cli function decorated with hydra.main for completion testing', 'summarize_run_cli': 'summarize the run_cli function that prints OmegaConf config as YAML'}
+```
+
+## File: facebookresearch_hydra/hydra/test_utils/config_source_common_tests.py
+
+Prompts
+
+```
+['run the hydra completion test CLI that prints the config as YAML', 'run the run_cli function to print the Hydra DictConfig as YAML output', 'test the Hydra shell completion using the completion test config', 'review the run_cli function decorated with hydra.main for completion testing', 'summarize the run_cli function that prints OmegaConf config as YAML', 'test the ConfigSourceTestSuite to verify if a config path is a group using is_group', 'test the ConfigSourceTestSuite to verify if a config path is a config using is_config', 'test the ConfigSourceTestSuite list method to enumerate config groups and configs with ObjectType filters', 'test the ConfigSourceTestSuite load_config method to load and validate config content and defaults list', 'test the ConfigSourceTestSuite to verify package header behavior for explicit, global, group, and name packages', 'run a Hydra CLI application that prints the loaded configuration as YAML output', 'create a function decorated with hydra.main to load configs from a specified path and config name', 'print an OmegaConf DictConfig object as formatted YAML using OmegaConf.to_yaml', 'review the Hydra example app that loads db_conf and prints configuration via run_cli', 'refactor the run_cli function to process or modify the loaded Hydra DictConfig before printing', 'test the LauncherTestSuite class to run a single job sweep with a given launcher name', 'test the LauncherTestSuite class to run a two job sweep with config overrides', 'test the BatchedSweeperTestSuite class to verify batched sweeping produces correct number of batches and jobs', 'test the IntegrationTestSuite class to verify custom task name overrides from config or CLI', 'test the IntegrationTestSuite class to verify custom sweep directory and subdir configuration', 'run a Hydra integration test that generates a task script, executes it with overrides, and verifies output', 'run a Python script as a subprocess and capture stdout and stderr with optional warning handling', 'run an arbitrary subprocess command and capture stdout and stderr with configurable error handling', 'assert two multiline text strings are identical and print a unified diff on mismatch', 'assert each line of expected text regex-matches the corresponding line of actual output']
+```
+
+Usage
+
+```
+{'test_is_group': 'test the ConfigSourceTestSuite to verify if a config path is a group using is_group', 'test_is_config': 'test the ConfigSourceTestSuite to verify if a config path is a config using is_config', 'test_list': 'test the ConfigSourceTestSuite list method to enumerate config groups and configs with ObjectType filters', 'test_load_config': 'test the ConfigSourceTestSuite load_config method to load and validate config content and defaults list', 'test_package_behavior': 'test the ConfigSourceTestSuite to verify package header behavior for explicit, global, group, and name packages'}
+```
+
+## File: facebookresearch_hydra/hydra/test_utils/example_app.py
+
+Prompts
+
+```
+['run the hydra completion test CLI that prints the config as YAML', 'run the run_cli function to print the Hydra DictConfig as YAML output', 'test the Hydra shell completion using the completion test config', 'review the run_cli function decorated with hydra.main for completion testing', 'summarize the run_cli function that prints OmegaConf config as YAML', 'test the ConfigSourceTestSuite to verify if a config path is a group using is_group', 'test the ConfigSourceTestSuite to verify if a config path is a config using is_config', 'test the ConfigSourceTestSuite list method to enumerate config groups and configs with ObjectType filters', 'test the ConfigSourceTestSuite load_config method to load and validate config content and defaults list', 'test the ConfigSourceTestSuite to verify package header behavior for explicit, global, group, and name packages', 'run a Hydra CLI application that prints the loaded configuration as YAML output', 'create a function decorated with hydra.main to load configs from a specified path and config name', 'print an OmegaConf DictConfig object as formatted YAML using OmegaConf.to_yaml', 'review the Hydra example app that loads db_conf and prints configuration via run_cli', 'refactor the run_cli function to process or modify the loaded Hydra DictConfig before printing', 'test the LauncherTestSuite class to run a single job sweep with a given launcher name', 'test the LauncherTestSuite class to run a two job sweep with config overrides', 'test the BatchedSweeperTestSuite class to verify batched sweeping produces correct number of batches and jobs', 'test the IntegrationTestSuite class to verify custom task name overrides from config or CLI', 'test the IntegrationTestSuite class to verify custom sweep directory and subdir configuration', 'run a Hydra integration test that generates a task script, executes it with overrides, and verifies output', 'run a Python script as a subprocess and capture stdout and stderr with optional warning handling', 'run an arbitrary subprocess command and capture stdout and stderr with configurable error handling', 'assert two multiline text strings are identical and print a unified diff on mismatch', 'assert each line of expected text regex-matches the corresponding line of actual output']
+```
+
+Usage
+
+```
+{'run_hydra_cli_app': 'run a Hydra CLI application that prints the loaded configuration as YAML output', 'create_hydra_main_decorator': 'create a function decorated with hydra.main to load configs from a specified path and config name', 'print_config_as_yaml': 'print an OmegaConf DictConfig object as formatted YAML using OmegaConf.to_yaml', 'review_hydra_config_app': 'review the Hydra example app that loads db_conf and prints configuration via run_cli', 'refactor_run_cli': 'refactor the run_cli function to process or modify the loaded Hydra DictConfig before printing'}
+```
+
+## File: facebookresearch_hydra/hydra/test_utils/launcher_common_tests.py
+
+Prompts
+
+```
+['run the hydra completion test CLI that prints the config as YAML', 'run the run_cli function to print the Hydra DictConfig as YAML output', 'test the Hydra shell completion using the completion test config', 'review the run_cli function decorated with hydra.main for completion testing', 'summarize the run_cli function that prints OmegaConf config as YAML', 'test the ConfigSourceTestSuite to verify if a config path is a group using is_group', 'test the ConfigSourceTestSuite to verify if a config path is a config using is_config', 'test the ConfigSourceTestSuite list method to enumerate config groups and configs with ObjectType filters', 'test the ConfigSourceTestSuite load_config method to load and validate config content and defaults list', 'test the ConfigSourceTestSuite to verify package header behavior for explicit, global, group, and name packages', 'run a Hydra CLI application that prints the loaded configuration as YAML output', 'create a function decorated with hydra.main to load configs from a specified path and config name', 'print an OmegaConf DictConfig object as formatted YAML using OmegaConf.to_yaml', 'review the Hydra example app that loads db_conf and prints configuration via run_cli', 'refactor the run_cli function to process or modify the loaded Hydra DictConfig before printing', 'test the LauncherTestSuite class to run a single job sweep with a given launcher name', 'test the LauncherTestSuite class to run a two job sweep with config overrides', 'test the BatchedSweeperTestSuite class to verify batched sweeping produces correct number of batches and jobs', 'test the IntegrationTestSuite class to verify custom task name overrides from config or CLI', 'test the IntegrationTestSuite class to verify custom sweep directory and subdir configuration', 'run a Hydra integration test that generates a task script, executes it with overrides, and verifies output', 'run a Python script as a subprocess and capture stdout and stderr with optional warning handling', 'run an arbitrary subprocess command and capture stdout and stderr with configurable error handling', 'assert two multiline text strings are identical and print a unified diff on mismatch', 'assert each line of expected text regex-matches the corresponding line of actual output']
+```
+
+Usage
+
+```
+{'test_LauncherTestSuite_sweep_1_job': 'test the LauncherTestSuite class to run a single job sweep with a given launcher name', 'test_LauncherTestSuite_sweep_2_jobs': 'test the LauncherTestSuite class to run a two job sweep with config overrides', 'test_BatchedSweeperTestSuite_sweep_batches': 'test the BatchedSweeperTestSuite class to verify batched sweeping produces correct number of batches and jobs', 'test_IntegrationTestSuite_custom_task_name': 'test the IntegrationTestSuite class to verify custom task name overrides from config or CLI', 'test_IntegrationTestSuite_custom_sweeper_run_workdir': 'test the IntegrationTestSuite class to verify custom sweep directory and subdir configuration'}
+```
+
+## File: facebookresearch_hydra/hydra/test_utils/test_utils.py
+
+Prompts
+
+```
+['run the hydra completion test CLI that prints the config as YAML', 'run the run_cli function to print the Hydra DictConfig as YAML output', 'test the Hydra shell completion using the completion test config', 'review the run_cli function decorated with hydra.main for completion testing', 'summarize the run_cli function that prints OmegaConf config as YAML', 'test the ConfigSourceTestSuite to verify if a config path is a group using is_group', 'test the ConfigSourceTestSuite to verify if a config path is a config using is_config', 'test the ConfigSourceTestSuite list method to enumerate config groups and configs with ObjectType filters', 'test the ConfigSourceTestSuite load_config method to load and validate config content and defaults list', 'test the ConfigSourceTestSuite to verify package header behavior for explicit, global, group, and name packages', 'run a Hydra CLI application that prints the loaded configuration as YAML output', 'create a function decorated with hydra.main to load configs from a specified path and config name', 'print an OmegaConf DictConfig object as formatted YAML using OmegaConf.to_yaml', 'review the Hydra example app that loads db_conf and prints configuration via run_cli', 'refactor the run_cli function to process or modify the loaded Hydra DictConfig before printing', 'test the LauncherTestSuite class to run a single job sweep with a given launcher name', 'test the LauncherTestSuite class to run a two job sweep with config overrides', 'test the BatchedSweeperTestSuite class to verify batched sweeping produces correct number of batches and jobs', 'test the IntegrationTestSuite class to verify custom task name overrides from config or CLI', 'test the IntegrationTestSuite class to verify custom sweep directory and subdir configuration', 'run a Hydra integration test that generates a task script, executes it with overrides, and verifies output', 'run a Python script as a subprocess and capture stdout and stderr with optional warning handling', 'run an arbitrary subprocess command and capture stdout and stderr with configurable error handling', 'assert two multiline text strings are identical and print a unified diff on mismatch', 'assert each line of expected text regex-matches the corresponding line of actual output']
+```
+
+Usage
+
+```
+{'run_integration_test': 'run a Hydra integration test that generates a task script, executes it with overrides, and verifies output', 'run_python_script': 'run a Python script as a subprocess and capture stdout and stderr with optional warning handling', 'run_process': 'run an arbitrary subprocess command and capture stdout and stderr with configurable error handling', 'assert_text_same': 'assert two multiline text strings are identical and print a unified diff on mismatch', 'assert_regex_match': 'assert each line of expected text regex-matches the corresponding line of actual output'}
+```
+

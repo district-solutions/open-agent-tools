@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: facebookresearch/convnext-v2
+- repo_uri: https://github.com/facebookresearch/convnext-v2
+
+## File: facebookresearch_convnext-v2/models/convnextv2.py
+
+Prompts
+
+```
+['build a ConvNeXtV2 tiny model with depths [3,3,9,3] and dims [96,192,384,768] for image classification', 'build a ConvNeXtV2 base model with depths [3,3,27,3] and dims [128,256,512,1024] for image classification', 'create a feature extraction pipeline using ConvNeXtV2 forward_features method to get global average pooled features', 'test the ConvNeXtV2 Block forward pass with depthwise conv, LayerNorm, GELU, and GRN operations', 'review the ConvNeXtV2 architecture with stem, downsample layers, 4 stages of residual blocks, and classification head', 'build a SparseConvNeXtV2 model with custom depths and dims for sparse 3D feature extraction', 'create a Block instance with a given dimension and drop_path rate for sparse residual processing', 'run a forward pass through SparseConvNeXtV2 with input tensor and mask for sparse encoding', 'review the Block forward method to understand the depthwise conv, norm, MLP, and GRN pipeline', 'test the upsample_mask method to reshape and repeat a flat mask tensor to spatial dimensions', 'build a Fully Convolutional Masked Autoencoder model with ConvNeXtV2 backbone using the FCMAE class', 'create a convnextv2_tiny FCMAE model with depths [3,3,9,3] and dims [96,192,384,768]', 'create a convnextv2_base FCMAE model with depths [3,3,27,3] and dims [128,256,512,1024]', 'test the FCMAE patchify and unpatchify methods to reshape images into and from patch sequences', 'review the FCMAE gen_random_mask method that generates random binary masks for masked autoencoder training', 'create a GRN Global Response Normalization layer for dense 4D tensor feature maps', 'create a MinkowskiGRN layer that applies Global Response Normalization to sparse tensors', 'create a MinkowskiDropPath layer that applies stochastic drop path regularization to sparse tensors', 'create a MinkowskiLayerNorm layer that applies channel-wise layer normalization to sparse tensors', 'create a LayerNorm layer supporting channels_last or channels_first data format normalization']
+```
+
+Usage
+
+```
+{'build_convnextv2_tiny_model': 'build a ConvNeXtV2 tiny model with depths [3,3,9,3] and dims [96,192,384,768] for image classification', 'build_convnextv2_base_model': 'build a ConvNeXtV2 base model with depths [3,3,27,3] and dims [128,256,512,1024] for image classification', 'create_forward_features_extraction': 'create a feature extraction pipeline using ConvNeXtV2 forward_features method to get global average pooled features', 'test_block_forward_pass': 'test the ConvNeXtV2 Block forward pass with depthwise conv, LayerNorm, GELU, and GRN operations', 'review_convnextv2_architecture': 'review the ConvNeXtV2 architecture with stem, downsample layers, 4 stages of residual blocks, and classification head'}
+```
+
+## File: facebookresearch_convnext-v2/models/convnextv2_sparse.py
+
+Prompts
+
+```
+['build a ConvNeXtV2 tiny model with depths [3,3,9,3] and dims [96,192,384,768] for image classification', 'build a ConvNeXtV2 base model with depths [3,3,27,3] and dims [128,256,512,1024] for image classification', 'create a feature extraction pipeline using ConvNeXtV2 forward_features method to get global average pooled features', 'test the ConvNeXtV2 Block forward pass with depthwise conv, LayerNorm, GELU, and GRN operations', 'review the ConvNeXtV2 architecture with stem, downsample layers, 4 stages of residual blocks, and classification head', 'build a SparseConvNeXtV2 model with custom depths and dims for sparse 3D feature extraction', 'create a Block instance with a given dimension and drop_path rate for sparse residual processing', 'run a forward pass through SparseConvNeXtV2 with input tensor and mask for sparse encoding', 'review the Block forward method to understand the depthwise conv, norm, MLP, and GRN pipeline', 'test the upsample_mask method to reshape and repeat a flat mask tensor to spatial dimensions', 'build a Fully Convolutional Masked Autoencoder model with ConvNeXtV2 backbone using the FCMAE class', 'create a convnextv2_tiny FCMAE model with depths [3,3,9,3] and dims [96,192,384,768]', 'create a convnextv2_base FCMAE model with depths [3,3,27,3] and dims [128,256,512,1024]', 'test the FCMAE patchify and unpatchify methods to reshape images into and from patch sequences', 'review the FCMAE gen_random_mask method that generates random binary masks for masked autoencoder training', 'create a GRN Global Response Normalization layer for dense 4D tensor feature maps', 'create a MinkowskiGRN layer that applies Global Response Normalization to sparse tensors', 'create a MinkowskiDropPath layer that applies stochastic drop path regularization to sparse tensors', 'create a MinkowskiLayerNorm layer that applies channel-wise layer normalization to sparse tensors', 'create a LayerNorm layer supporting channels_last or channels_first data format normalization']
+```
+
+Usage
+
+```
+{'build_sparse_convnextv2_model': 'build a SparseConvNeXtV2 model with custom depths and dims for sparse 3D feature extraction', 'create_sparse_block': 'create a Block instance with a given dimension and drop_path rate for sparse residual processing', 'run_sparse_forward_pass': 'run a forward pass through SparseConvNeXtV2 with input tensor and mask for sparse encoding', 'review_block_forward': 'review the Block forward method to understand the depthwise conv, norm, MLP, and GRN pipeline', 'test_upsample_mask': 'test the upsample_mask method to reshape and repeat a flat mask tensor to spatial dimensions'}
+```
+
+## File: facebookresearch_convnext-v2/models/fcmae.py
+
+Prompts
+
+```
+['build a ConvNeXtV2 tiny model with depths [3,3,9,3] and dims [96,192,384,768] for image classification', 'build a ConvNeXtV2 base model with depths [3,3,27,3] and dims [128,256,512,1024] for image classification', 'create a feature extraction pipeline using ConvNeXtV2 forward_features method to get global average pooled features', 'test the ConvNeXtV2 Block forward pass with depthwise conv, LayerNorm, GELU, and GRN operations', 'review the ConvNeXtV2 architecture with stem, downsample layers, 4 stages of residual blocks, and classification head', 'build a SparseConvNeXtV2 model with custom depths and dims for sparse 3D feature extraction', 'create a Block instance with a given dimension and drop_path rate for sparse residual processing', 'run a forward pass through SparseConvNeXtV2 with input tensor and mask for sparse encoding', 'review the Block forward method to understand the depthwise conv, norm, MLP, and GRN pipeline', 'test the upsample_mask method to reshape and repeat a flat mask tensor to spatial dimensions', 'build a Fully Convolutional Masked Autoencoder model with ConvNeXtV2 backbone using the FCMAE class', 'create a convnextv2_tiny FCMAE model with depths [3,3,9,3] and dims [96,192,384,768]', 'create a convnextv2_base FCMAE model with depths [3,3,27,3] and dims [128,256,512,1024]', 'test the FCMAE patchify and unpatchify methods to reshape images into and from patch sequences', 'review the FCMAE gen_random_mask method that generates random binary masks for masked autoencoder training', 'create a GRN Global Response Normalization layer for dense 4D tensor feature maps', 'create a MinkowskiGRN layer that applies Global Response Normalization to sparse tensors', 'create a MinkowskiDropPath layer that applies stochastic drop path regularization to sparse tensors', 'create a MinkowskiLayerNorm layer that applies channel-wise layer normalization to sparse tensors', 'create a LayerNorm layer supporting channels_last or channels_first data format normalization']
+```
+
+Usage
+
+```
+{'build_FCMAE_model': 'build a Fully Convolutional Masked Autoencoder model with ConvNeXtV2 backbone using the FCMAE class', 'create_convnextv2_tiny': 'create a convnextv2_tiny FCMAE model with depths [3,3,9,3] and dims [96,192,384,768]', 'create_convnextv2_base': 'create a convnextv2_base FCMAE model with depths [3,3,27,3] and dims [128,256,512,1024]', 'test_patchify_unpatchify': 'test the FCMAE patchify and unpatchify methods to reshape images into and from patch sequences', 'review_gen_random_mask': 'review the FCMAE gen_random_mask method that generates random binary masks for masked autoencoder training'}
+```
+
+## File: facebookresearch_convnext-v2/models/utils.py
+
+Prompts
+
+```
+['build a ConvNeXtV2 tiny model with depths [3,3,9,3] and dims [96,192,384,768] for image classification', 'build a ConvNeXtV2 base model with depths [3,3,27,3] and dims [128,256,512,1024] for image classification', 'create a feature extraction pipeline using ConvNeXtV2 forward_features method to get global average pooled features', 'test the ConvNeXtV2 Block forward pass with depthwise conv, LayerNorm, GELU, and GRN operations', 'review the ConvNeXtV2 architecture with stem, downsample layers, 4 stages of residual blocks, and classification head', 'build a SparseConvNeXtV2 model with custom depths and dims for sparse 3D feature extraction', 'create a Block instance with a given dimension and drop_path rate for sparse residual processing', 'run a forward pass through SparseConvNeXtV2 with input tensor and mask for sparse encoding', 'review the Block forward method to understand the depthwise conv, norm, MLP, and GRN pipeline', 'test the upsample_mask method to reshape and repeat a flat mask tensor to spatial dimensions', 'build a Fully Convolutional Masked Autoencoder model with ConvNeXtV2 backbone using the FCMAE class', 'create a convnextv2_tiny FCMAE model with depths [3,3,9,3] and dims [96,192,384,768]', 'create a convnextv2_base FCMAE model with depths [3,3,27,3] and dims [128,256,512,1024]', 'test the FCMAE patchify and unpatchify methods to reshape images into and from patch sequences', 'review the FCMAE gen_random_mask method that generates random binary masks for masked autoencoder training', 'create a GRN Global Response Normalization layer for dense 4D tensor feature maps', 'create a MinkowskiGRN layer that applies Global Response Normalization to sparse tensors', 'create a MinkowskiDropPath layer that applies stochastic drop path regularization to sparse tensors', 'create a MinkowskiLayerNorm layer that applies channel-wise layer normalization to sparse tensors', 'create a LayerNorm layer supporting channels_last or channels_first data format normalization']
+```
+
+Usage
+
+```
+{'create_GRN_layer': 'create a GRN Global Response Normalization layer for dense 4D tensor feature maps', 'create_MinkowskiGRN_layer': 'create a MinkowskiGRN layer that applies Global Response Normalization to sparse tensors', 'create_MinkowskiDropPath_layer': 'create a MinkowskiDropPath layer that applies stochastic drop path regularization to sparse tensors', 'create_MinkowskiLayerNorm_layer': 'create a MinkowskiLayerNorm layer that applies channel-wise layer normalization to sparse tensors', 'create_LayerNorm_layer': 'create a LayerNorm layer supporting channels_last or channels_first data format normalization'}
+```
+

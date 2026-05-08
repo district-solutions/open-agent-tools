@@ -1,0 +1,177 @@
+{
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/data.py": {
+    "create_training_dataset": "create a training dataset with AudioVisualDataset and feature_collate_train collate function from args",
+    "create_validation_dataset": "create a validation dataset with AudioVisualDataset and feature_collate_val collate function from args",
+    "review_AudioVisualDataset": "review the AudioVisualDataset class that loads video features and labels from a pickle file",
+    "refactor_feature_collate_train": "refactor the feature_collate_train function to customize max_length or episode_length padding behavior",
+    "summarize_feature_collate_val": "summarize the feature_collate_val function that pads and masks validation batch tensors"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/opts.py": {
+    "run_get_parameters": "run get_parameters to parse command line arguments for deep learning training configuration",
+    "build_argparse_parser": "build an argparse parser with dataset model and training parameters for deep learning",
+    "create_training_config": "create a training configuration with batch size learning rate and epoch settings",
+    "configure_model_weights": "configure pretrained model weights and checkpoint paths for model loading",
+    "set_dataset_paths": "set train and test dataset file paths for pickle dataset loading"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/train.py": {
+    "run_train_epoch": "run one training epoch with a model, data loader, optimizer, and loss criterion",
+    "review_train_epoch": "review the train_epoch function that computes avgpool and LSTM cross-entropy losses per batch",
+    "refactor_train_epoch": "refactor train_epoch to support additional loss types beyond avgpool and LSTM cross-entropy",
+    "summarize_train_epoch": "summarize the train_epoch function that logs accuracy and loss metrics via TensorBoard writer",
+    "test_train_epoch": "test the train_epoch function with a mock data loader and model returning predictions"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/validate.py": {
+    "run_validate": "run the validation script to evaluate a pretrained Listen to Look model on the validation dataset",
+    "run_validate_function": "run the validate function to compute accuracy and mAP metrics on a validation data loader",
+    "run_main": "run the main function to build the model, load a checkpoint, and validate against test data",
+    "review_validate_function": "review the validate function that computes avgpool, LSTM, and GT prediction accuracy and mAP metrics",
+    "review_main_function": "review the main function that sets up the model, checkpointer, validation dataset, and runs validation"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/models/audioPreview_model.py": {
+    "build_AudioPreviewModel": "build an AudioPreviewModel instance with a net_classifier and args for audio preview prediction",
+    "run_forward_AudioPreviewModel": "run the forward pass of AudioPreviewModel with features, ground truth predictions, and feature masks",
+    "run_forwardOne_AudioPreviewModel": "run a single forward step of AudioPreviewModel using features, feature banks, masks, and hidden state",
+    "review_AudioPreviewModel_forward": "review the AudioPreviewModel forward method to understand the episodic attention-based feature selection loop",
+    "refactor_AudioPreviewModel_LSTMCell": "refactor the AudioPreviewModel LSTMCell to swap weight normalization or change hidden size configuration"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/models/imageAudioClassify_model.py": {
+    "build_ImageAudioClassifyModel": "build a PyTorch ImageAudioClassifyModel with a classifier network and args for image-audio classification",
+    "run_forward_pass": "run the forward pass of ImageAudioClassifyModel with an image-audio embedding tensor",
+    "test_ImageAudioClassifyModel": "test the ImageAudioClassifyModel forward pass with sample image-audio embedding inputs",
+    "refactor_ImageAudioClassifyModel": "refactor the ImageAudioClassifyModel forward method to support additional output modes",
+    "review_ImageAudioClassifyModel": "review the ImageAudioClassifyModel class and its feature extraction conditional logic"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/models/models.py": {
+    "build_audioPreviewLSTM": "build an AudioPreviewModel LSTM network using a classifier net and optional pretrained weights",
+    "build_imageAudioClassifierNet": "build an ImageAudioClassifyModel network using a classifier net and optional pretrained weights",
+    "build_classifierNet": "build a ClassifierNet with configurable input dimensions and number of classes",
+    "review_ModelBuilder": "review the ModelBuilder class and its three network builder methods",
+    "refactor_ModelBuilder": "refactor the ModelBuilder class to support additional model types or weight loading strategies"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/models/networks.py": {
+    "build_mlp": "build a multi-layer perceptron with configurable hidden dims, batch norm, relu, and dropout",
+    "create_conv": "create a Conv2d layer with optional batch normalization and relu activation",
+    "build_visualnet": "build a VisualNet feature extractor from a pretrained ResNet for image embeddings",
+    "build_audionet": "build an AudioNet feature extractor from a pretrained ResNet for audio spectrogram embeddings",
+    "build_classifiernet": "build a ClassifierNet linear classifier for finetuning on a specified number of classes"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/utils/checkpointer.py": {
+    "save_checkpoint": "save a PyTorch model checkpoint with optimizer and scheduler state to disk",
+    "load_checkpoint": "load a PyTorch model checkpoint with optimizer and scheduler state from disk",
+    "load_model_only": "load only the model state dict from a checkpoint file without optimizer or scheduler",
+    "check_checkpoint_exists": "check if a last_checkpoint file exists in the save directory",
+    "get_checkpoint_path": "get the path of the most recently saved checkpoint file from the save directory"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/utils/logging.py": {
+    "setup_logger": "setup a logger with stdout and file handlers using a custom MyFormatter for a training run",
+    "setup_tbx": "setup a TensorBoardX SummaryWriter for the master process to log training metrics to a save directory",
+    "create_MyFormatter": "create a custom logging formatter that uses different output formats for DEBUG, INFO, and ERROR levels",
+    "review_MyFormatter_format": "review the MyFormatter format method to understand how it swaps formats based on log record level",
+    "refactor_MyFormatter": "refactor the MyFormatter class to support additional log levels like WARNING or CRITICAL with custom formats"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/utils/metrics.py": {
+    "create_AverageMeter": "create an AverageMeter instance to track running average and current value of metrics",
+    "create_NaiveMeter": "create a NaiveMeter instance to track per-index values alongside running averages",
+    "calculate_accuracy": "calculate top-1 classification accuracy between model outputs and target labels",
+    "aggredate_video_accuracy": "aggregate per-frame softmax predictions into video-level top-k accuracy scores",
+    "aggredate_video_map": "aggregate per-frame predictions into video-level mean average precision scores"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/utils/model_serialization.py": {
+    "load_state_dict_model": "load a PyTorch model's state dict from a pre-trained checkpoint with automatic prefix stripping and key alignment",
+    "align_and_update_state_dicts": "align and update a model's state dict keys by suffix-matching against a loaded pre-trained state dict",
+    "strip_prefix_if_present": "strip a given prefix from all keys in a state dict if every key starts with that prefix",
+    "review_align_and_update_state_dicts": "review the align_and_update_state_dicts function that matches model weights by longest suffix match strategy",
+    "summarize_load_state_dict": "summarize the load_state_dict function that strips module prefixes and aligns state dicts before loading into a model"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/utils/scheduler.py": {
+    "create_WarmupMultiStepLR_scheduler": "create a WarmupMultiStepLR learning rate scheduler with milestones and warmup for a PyTorch optimizer",
+    "create_default_lr_scheduler": "create a default learning rate scheduler with 5000 warmup iterations using the default_lr_scheduler function",
+    "review_WarmupMultiStepLR_get_lr": "review the WarmupMultiStepLR get_lr method to understand how warmup and milestone decay compute learning rates",
+    "refactor_WarmupMultiStepLR_warmup": "refactor the WarmupMultiStepLR class to support a custom warmup method beyond constant or linear",
+    "test_WarmupMultiStepLR_milestones": "test the WarmupMultiStepLR scheduler to verify learning rate drops at each milestone using gamma decay"
+  },
+  "facebookresearch_listen-to-look/listen_to_look_single_modality/utils/utils.py": {
+    "init_hidden_rnn": "create a zero-initialized hidden state tensor for RNN cells with given batch and cell size",
+    "find_length_tensors": "find the length of each tensor in a list of PyTorch tensors by their first dimension",
+    "pad_tensor_to_length": "pad a PyTorch tensor with zeros along the first dimension to reach a specified target length",
+    "process_list_tensors": "process a list of ground truth and prediction tensors by padding, trimming, and handling short sequences",
+    "create_mask_for_padded_tensor": "create a binary mask tensor for padded sequences given batch size, max length, episode length, and actual lengths"
+  },
+  "facebookresearch_listen-to-look/models/audioPreview_model.py": {
+    "build_AudioPreviewModel": "build an AudioPreviewModel instance with net_imageAudio, net_classifier, and args for audio-visual feature processing",
+    "run_forward_AudioPreviewModel": "run the forward pass on image and audio features with feature masks and episode length",
+    "run_forwardOne_AudioPreviewModel": "run a single forward step processing image and audio features through the LSTM and attention mechanism",
+    "review_AudioPreviewModel_init": "review the AudioPreviewModel constructor to understand MLP, LSTM, and modality attention layer initialization",
+    "summarize_AudioPreviewModel_forward": "summarize the forward method that performs iterative attention-based feature selection across image and audio modalities"
+  },
+  "facebookresearch_listen-to-look/models/imageAudioClassify_model.py": {
+    "build_image_audio_classifier": "build a pytorch ImageAudioClassifyModel that fuses image and audio inputs for classification",
+    "create_forward_pass": "create a forward pass through ImageAudioClassifyModel with images and audios to get predictions",
+    "test_image_audio_embedding": "test the ImageAudioClassifyModel forward method to extract joint image audio embeddings",
+    "refactor_classifier_network": "refactor the ImageAudioClassifyModel net_classifier to support multi-label classification output",
+    "review_feature_extraction": "review the ImageAudioClassifyModel forward method feature_extraction flag for returning embeddings"
+  },
+  "facebookresearch_listen-to-look/models/imageAudio_model.py": {
+    "create_ImageAudioModel": "create an ImageAudioModel instance with two fully-connected layers for image-audio feature fusion",
+    "run_ImageAudioModel_forward": "run the ImageAudioModel forward pass to fuse image and audio features into a 512-d embedding",
+    "build_ImageAudioModel_network": "build a PyTorch model that concatenates image and audio features through a two-layer MLP",
+    "test_ImageAudioModel_forward": "test the ImageAudioModel forward method by passing image and audio feature tensors",
+    "review_ImageAudioModel_init": "review the ImageAudioModel init method and its weight initialization using networks.weights_init"
+  },
+  "facebookresearch_listen-to-look/models/models.py": {
+    "build_image": "build a pretrained ResNet18-based visual stream network using ModelBuilder.build_image with optional weights",
+    "build_audio": "build a pretrained ResNet18-based audio stream network using ModelBuilder.build_audio with optional weights",
+    "build_classifierNet": "build a ClassifierNet with configurable input dimensions and class count using ModelBuilder.build_classifierNet",
+    "build_imageAudioNet": "build an ImageAudioModel network with weight initialization using ModelBuilder.build_imageAudioNet",
+    "build_imageAudioClassifierNet": "build an ImageAudioClassifyModel combining image-audio and classifier networks using ModelBuilder.build_imageAudioClassifierNet"
+  },
+  "facebookresearch_listen-to-look/models/networks.py": {
+    "create_conv_layer": "create a Conv2d layer with optional batch normalization and ReLU activation",
+    "build_mlp_network": "build a multi-layer perceptron with configurable hidden dims, batchnorm, and dropout",
+    "init_weights": "initialize Conv, BatchNorm2d, and Linear layer weights with normal distribution",
+    "build_visualnet": "build a VisualNet feature extractor from a pretrained ResNet model",
+    "build_audionet": "build an AudioNet feature extractor that adapts a ResNet for audio spectrogram input"
+  },
+  "facebookresearch_listen-to-look/utils/checkpointer.py": {
+    "save_checkpoint": "save a PyTorch model checkpoint with optimizer and scheduler state to a .pth file",
+    "load_checkpoint": "load a PyTorch model checkpoint including optimizer and scheduler state from a .pth file",
+    "load_model_only": "load only the model state dict from a checkpoint file without optimizer or scheduler",
+    "check_checkpoint_exists": "check if a last_checkpoint file exists in the save directory to determine if resuming is possible",
+    "get_checkpoint_file": "get the path of the most recently saved checkpoint file from the last_checkpoint metadata file"
+  },
+  "facebookresearch_listen-to-look/utils/logging.py": {
+    "setup_logger": "setup a logger with stdout and file handlers using a custom MyFormatter for a given save directory",
+    "setup_tbx": "setup a tensorboardX SummaryWriter for the master process given a save directory path",
+    "create_MyFormatter": "create a custom logging formatter that uses different format strings for debug, info, and error levels",
+    "review_MyFormatter_format": "review the MyFormatter format method that swaps format strings based on log record level before formatting",
+    "refactor_MyFormatter": "refactor the MyFormatter class to support additional log levels or custom format strings per level"
+  },
+  "facebookresearch_listen-to-look/utils/metrics.py": {
+    "create_AverageMeter": "create an AverageMeter instance to track running average and current value of metrics",
+    "create_NaiveMeter": "create a NaiveMeter instance to track per-index values alongside running averages",
+    "calculate_accuracy": "calculate top-1 classification accuracy between model outputs and target labels",
+    "aggredate_video_accuracy": "aggregate per-frame softmax predictions into video-level top-k accuracy scores",
+    "aggredate_video_map": "aggregate per-frame predictions into video-level mean average precision scores"
+  },
+  "facebookresearch_listen-to-look/utils/model_serialization.py": {
+    "load_state_dict_model": "load a PyTorch model's state dict from a pretrained checkpoint with automatic prefix stripping and key alignment",
+    "align_and_update_state_dicts": "align and update a model's state dict keys to match a loaded pretrained checkpoint using suffix matching",
+    "strip_prefix_if_present": "strip a common prefix like module. from all state dict keys if every key has it",
+    "review_align_and_update_state_dicts": "review the align_and_update_state_dicts function that matches model keys to loaded keys by longest suffix match",
+    "summarize_load_state_dict": "summarize the load_state_dict function that strips module prefixes and aligns keys before loading into a model"
+  },
+  "facebookresearch_listen-to-look/utils/scheduler.py": {
+    "create_warmup_multistep_lr_scheduler": "create a WarmupMultiStepLR scheduler with an optimizer, milestones, and linear warmup for training",
+    "build_lr_scheduler_with_default": "build a default learning rate scheduler using default_lr_scheduler with an optimizer and milestone list",
+    "test_get_lr_method": "test the WarmupMultiStepLR get_lr method to verify warmup and milestone decay calculations",
+    "review_warmup_multistep_lr_class": "review the WarmupMultiStepLR class to understand warmup factor and gamma decay logic",
+    "refactor_default_lr_scheduler": "refactor the default_lr_scheduler function to customize gamma or warmup_factor parameters"
+  },
+  "facebookresearch_listen-to-look/utils/utils.py": {
+    "init_hidden_tensor": "create a zero-initialized hidden state tensor for an RNN cell with given batch size and cell size",
+    "find_tensor_lengths": "find the length of each tensor in a list of PyTorch tensors by inspecting their first dimension",
+    "pad_tensor_to_length": "pad a 2D tensor with zeros along the first dimension to reach a specified target length",
+    "process_audio_image_tensors": "process lists of image and audio feature tensors by padding, trimming, and stacking them to uniform length",
+    "create_attention_mask": "create a binary attention mask tensor for padded sequences given batch size, max length, episode length, and actual lengths"
+  }
+}

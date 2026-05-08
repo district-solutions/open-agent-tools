@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/matrix
+- repo_uri: https://github.com/facebookresearch/matrix
+
+## File: facebookresearch_matrix/matrix/app_server/code/sandbox_runner.py
+
+Prompts
+
+```
+['run Python code in a bubblewrap sandbox with filesystem isolation and timeout limits', 'create a SandboxRunner instance with shared paths and resource limits for sandboxed execution', 'execute untrusted Python code safely using bubblewrap with controlled filesystem access', 'review the SandboxRunner class to understand how bubblewrap isolates filesystem and network access', 'refactor the SandboxRunner run method to use subprocess timeout instead of manual polling']
+```
+
+Usage
+
+```
+{'run_code_in_sandbox': 'run Python code in a bubblewrap sandbox with filesystem isolation and timeout limits', 'create_sandbox_runner': 'create a SandboxRunner instance with shared paths and resource limits for sandboxed execution', 'execute_untrusted_code': 'execute untrusted Python code safely using bubblewrap with controlled filesystem access', 'review_sandbox_isolation': 'review the SandboxRunner class to understand how bubblewrap isolates filesystem and network access', 'refactor_timeout_handling': 'refactor the SandboxRunner run method to use subprocess timeout instead of manual polling'}
+```
+

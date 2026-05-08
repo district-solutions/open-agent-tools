@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/examples/configure_hydra/custom_help/my_app.py
+
+Prompts
+
+```
+['run the hydra app my_app that prints the configuration as YAML', 'run the hydra app my_app with --help to see custom help output', 'run the hydra app my_app with command-line config overrides like key=value', 'review the hydra.main decorator usage with version_base, config_path, and config_name', 'summarize how OmegaConf.to_yaml is used to print the DictConfig as YAML']
+```
+
+Usage
+
+```
+{'run_hydra_app': 'run the hydra app my_app that prints the configuration as YAML', 'run_hydra_app_with_help': 'run the hydra app my_app with --help to see custom help output', 'run_hydra_app_with_cfg_override': 'run the hydra app my_app with command-line config overrides like key=value', 'review_hydra_main_decorator': 'review the hydra.main decorator usage with version_base, config_path, and config_name', 'summarize_omegaconf_yaml_output': 'summarize how OmegaConf.to_yaml is used to print the DictConfig as YAML'}
+```
+

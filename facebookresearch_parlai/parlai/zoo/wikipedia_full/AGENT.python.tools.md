@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/parlai/zoo/wikipedia_full/tfidf_retriever.py
+
+Prompts
+
+```
+['download the Wikipedia full TFIDF retriever model to a specified datapath directory', 'download the TFIDF retriever model for use with the Wizard of Wikipedia task', "download the model.tgz file for the wikipedia_full TFIDF retriever using Parlai's download_models utility", 'review the download function that configures options and retrieves the Wikipedia TFIDF retriever model', 'summarize the TFIDF retriever module that provides Wikipedia model download functionality for Parlai']
+```
+
+Usage
+
+```
+{'download_wikipedia_tfidf_model': 'download the Wikipedia full TFIDF retriever model to a specified datapath directory', 'download_tfidf_retriever_for_wizard': 'download the TFIDF retriever model for use with the Wizard of Wikipedia task', 'download_models_wikipedia_full': "download the model.tgz file for the wikipedia_full TFIDF retriever using Parlai's download_models utility", 'review_download_function': 'review the download function that configures options and retrieves the Wikipedia TFIDF retriever model', 'summarize_tfidf_retriever_module': 'summarize the TFIDF retriever module that provides Wikipedia model download functionality for Parlai'}
+```
+

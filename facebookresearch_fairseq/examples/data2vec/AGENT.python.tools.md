@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairseq
+- repo_uri: https://github.com/facebookresearch/fairseq
+
+## File: facebookresearch_fairseq/examples/data2vec/fb_convert_beit_cp.py
+
+Prompts
+
+```
+['convert a BEiT checkpoint to a data2vec vision model checkpoint using the CLI tool', 'convert a BEiT checkpoint to a data2vec image classification model checkpoint using the CLI tool', 'convert a BEiT checkpoint to data2vec format using inception normalization values', 'run the update_checkpoint function to remap BEiT model state dict keys to data2vec format', 'review the get_parser function that defines CLI arguments for checkpoint conversion including type and output path']
+```
+
+Usage
+
+```
+{'convert_beit_checkpoint_to_data2vec_vision': 'convert a BEiT checkpoint to a data2vec vision model checkpoint using the CLI tool', 'convert_beit_checkpoint_to_data2vec_image_classification': 'convert a BEiT checkpoint to a data2vec image classification model checkpoint using the CLI tool', 'convert_beit_checkpoint_with_inception_norms': 'convert a BEiT checkpoint to data2vec format using inception normalization values', 'run_update_checkpoint_key_remapping': 'run the update_checkpoint function to remap BEiT model state dict keys to data2vec format', 'review_get_parser_cli_arguments': 'review the get_parser function that defines CLI arguments for checkpoint conversion including type and output path'}
+```
+

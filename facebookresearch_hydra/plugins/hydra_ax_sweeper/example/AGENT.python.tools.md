@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/plugins/hydra_ax_sweeper/example/banana.py
+
+Prompts
+
+```
+['run the banana function that computes the Himmelblau optimization benchmark using Hydra config values for x and y', 'run the hydra-configured banana script to evaluate the Banana function with configurable x and y parameters', 'review the banana function that calculates z as a Himmelblau-style optimization benchmark formula', 'summarize the banana function which computes (a-x)^2 + b*(y-x^2)^2 using Hydra-configured inputs', 'test the banana function by running it with different Hydra config values for x and y']
+```
+
+Usage
+
+```
+{'run_banana_function': 'run the banana function that computes the Himmelblau optimization benchmark using Hydra config values for x and y', 'run_banana_with_hydra': 'run the hydra-configured banana script to evaluate the Banana function with configurable x and y parameters', 'review_banana_function': 'review the banana function that calculates z as a Himmelblau-style optimization benchmark formula', 'summarize_banana_function': 'summarize the banana function which computes (a-x)^2 + b*(y-x^2)^2 using Hydra-configured inputs', 'test_banana_function': 'test the banana function by running it with different Hydra config values for x and y'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/projectariatools
+- repo_uri: https://github.com/facebookresearch/projectaria_tools
+
+## File: facebookresearch_projectariatools/core/python/sophus/test/sophusPybindTest.py
+
+Prompts
+
+```
+['test SO3 rotation group exponential and logarithmic map operations using numpy rotation vectors', 'test SE3 rigid transformation exponential and logarithmic map with translation and rotation vectors', 'test SE3 construction from quaternion and translation components and roundtrip conversion', 'test interpolate and iterativeMean functions for computing SE3 geodesic midpoint and average', 'test SE3.rot_x, SE3.rot_y, SE3.rot_z axis-aligned rotation constructors and matrix output']
+```
+
+Usage
+
+```
+{'test_SO3_exp_log': 'test SO3 rotation group exponential and logarithmic map operations using numpy rotation vectors', 'test_SE3_exp_log': 'test SE3 rigid transformation exponential and logarithmic map with translation and rotation vectors', 'test_SE3_quat_translation': 'test SE3 construction from quaternion and translation components and roundtrip conversion', 'test_interpolate_SE3': 'test interpolate and iterativeMean functions for computing SE3 geodesic midpoint and average', 'test_SE3_rot_axis': 'test SE3.rot_x, SE3.rot_y, SE3.rot_z axis-aligned rotation constructors and matrix output'}
+```
+

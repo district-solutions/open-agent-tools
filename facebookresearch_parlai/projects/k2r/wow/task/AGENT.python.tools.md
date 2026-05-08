@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/projects/k2r/wow/task/agents.py
+
+Prompts
+
+```
+['initialize a WizardOfWikipediaGeneratorTeacher with options to collect and cache distractor knowledge sentences', 'get the teacher ID appended with active mutator names for identification', 'compute F1 scores between predicted knowledge responses and the checked sentence ground truth', 'register the AddCheckedSentence mutator to probabilistically inject correct or distractor knowledge into messages', 'mutate a ParlAI message by appending the checked sentence with a confidence score and optional distractor']
+```
+
+Usage
+
+```
+{'init_wizard_of_wikipedia_generator_teacher': 'initialize a WizardOfWikipediaGeneratorTeacher with options to collect and cache distractor knowledge sentences', 'customize_teacher_id_with_mutators': 'get the teacher ID appended with active mutator names for identification', 'evaluate_knowledge_f1_metrics': 'compute F1 scores between predicted knowledge responses and the checked sentence ground truth', 'register_add_checked_sentence_mutator': 'register the AddCheckedSentence mutator to probabilistically inject correct or distractor knowledge into messages', 'mutate_message_with_probabilistic_knowledge': 'mutate a ParlAI message by appending the checked sentence with a confidence score and optional distractor'}
+```
+

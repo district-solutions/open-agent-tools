@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/habitat-sim
+- repo_uri: https://github.com/facebookresearch/habitat-sim
+
+## File: facebookresearch_habitat-sim/src/deps/magnum/src/Magnum/Math/Implementation/generateHalfTables.py
+
+Prompts
+
+```
+['run the script to generate the halfTables.hpp C++ header file with lookup tables', 'run convertmantissa to convert a half-float mantissa integer to a 32-bit float representation', 'review the mantissa_table generation that builds a 2048-entry 32-bit lookup table for half-to-float conversion', 'review the exponent_table generation that builds a 64-entry 32-bit lookup table for half exponent values', 'review the base_table and shift_table generation that build 512-entry lookup tables for float-to-half conversion']
+```
+
+Usage
+
+```
+{'run_generate_half_tables': 'run the script to generate the halfTables.hpp C++ header file with lookup tables', 'run_convertmantissa': 'run convertmantissa to convert a half-float mantissa integer to a 32-bit float representation', 'review_mantissa_table': 'review the mantissa_table generation that builds a 2048-entry 32-bit lookup table for half-to-float conversion', 'review_exponent_table': 'review the exponent_table generation that builds a 64-entry 32-bit lookup table for half exponent values', 'review_base_and_shift_tables': 'review the base_table and shift_table generation that build 512-entry lookup tables for float-to-half conversion'}
+```
+

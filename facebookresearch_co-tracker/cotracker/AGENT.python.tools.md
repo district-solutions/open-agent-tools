@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/co-tracker
+- repo_uri: https://github.com/facebookresearch/co-tracker
+
+## File: facebookresearch_co-tracker/cotracker/predictor.py
+
+Prompts
+
+```
+['run the CoTrackerPredictor forward method to compute dense tracks across all video frames', 'run the CoTrackerPredictor forward method with queries tensor to compute sparse point tracks', 'run the CoTrackerPredictor forward method with grid_size to compute tracks on a regular grid', 'run the CoTrackerPredictor forward method with backward_tracking to compute tracks in both directions', 'run the CoTrackerOnlinePredictor forward method to process video chunks incrementally for online tracking']
+```
+
+Usage
+
+```
+{'run_dense_tracking': 'run the CoTrackerPredictor forward method to compute dense tracks across all video frames', 'run_sparse_tracking': 'run the CoTrackerPredictor forward method with queries tensor to compute sparse point tracks', 'run_grid_tracking': 'run the CoTrackerPredictor forward method with grid_size to compute tracks on a regular grid', 'run_backward_tracking': 'run the CoTrackerPredictor forward method with backward_tracking to compute tracks in both directions', 'run_online_tracking': 'run the CoTrackerOnlinePredictor forward method to process video chunks incrementally for online tracking'}
+```
+

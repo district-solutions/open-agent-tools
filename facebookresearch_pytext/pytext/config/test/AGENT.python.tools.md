@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/pytext
+- repo_uri: https://github.com/facebookresearch/pytext
+
+## File: facebookresearch_pytext/pytext/config/test/component_test.py
+
+Prompts
+
+```
+['test parsing JSON into a typed config object with auto-discovered sub-components using config_from_json', 'test serializing a typed config object back to JSON with component type keys using config_to_json', 'test that ConfigParseError is raised when a non-sub-component is used in an incorrect config', 'test that ConfigParseError is raised when a non-expansible parent component is referenced with a sub-component', 'test round-trip serialization and parsing of expandable components and union-typed config fields', 'test the upgrade_one_version function to adapt a PyText config dict to the next version', 'test the downgrade_one_version function to adapt a PyText config dict to the previous version', 'test pytext_config_from_json to parse and validate a PyText config from a JSON dict', 'test that all upgrade adapters exist for every version up to LATEST_VERSION', 'test that all downgrade adapters exist for every version starting from FIRST_DOWNGRADE_ADAPTER_VERSION', 'run the LoadAllConfigTest to validate all pytext JSON config files parse without errors', 'test that parse_config can load and parse all pytext JSON config files recursively', 'review the LoadAllConfigTest class and its test_load_all_configs method for config validation logic', 'refactor the EXCLUDE_DIRS set to add or remove directories from the config file glob scan', 'summarize how register_builtin_tasks is called at module level to register all PyText task types', 'test config_from_json to parse a JSON object into a typed ConfigBase config instance', 'test config_to_json to serialize a ConfigBase config instance back to a JSON dictionary', 'test config_from_json with Union types to parse nested config with multiple possible model types', 'test config_from_json with Component subclasses that have registered Config classes for model registration', 'test config_from_json with Tuple type annotations to validate nested and variable-length tuple fields', 'run the pytext serialize test suite to verify config serialization and deserialization round-trips', 'test that serialize._value_from_json parses a JSON value into the correct typed Python value', 'test that serialize._value_to_json converts a typed Python value into its JSON representation']
+```
+
+Usage
+
+```
+{'test_config_from_json_parsing': 'test parsing JSON into a typed config object with auto-discovered sub-components using config_from_json', 'test_config_to_json_serialization': 'test serializing a typed config object back to JSON with component type keys using config_to_json', 'test_config_parse_error_on_mismatch': 'test that ConfigParseError is raised when a non-sub-component is used in an incorrect config', 'test_config_parse_error_on_non_expansible': 'test that ConfigParseError is raised when a non-expansible parent component is referenced with a sub-component', 'test_roundtrip_serialize_and_parse': 'test round-trip serialization and parsing of expandable components and union-typed config fields'}
+```
+
+## File: facebookresearch_pytext/pytext/config/test/config_adapter_test.py
+
+Prompts
+
+```
+['test parsing JSON into a typed config object with auto-discovered sub-components using config_from_json', 'test serializing a typed config object back to JSON with component type keys using config_to_json', 'test that ConfigParseError is raised when a non-sub-component is used in an incorrect config', 'test that ConfigParseError is raised when a non-expansible parent component is referenced with a sub-component', 'test round-trip serialization and parsing of expandable components and union-typed config fields', 'test the upgrade_one_version function to adapt a PyText config dict to the next version', 'test the downgrade_one_version function to adapt a PyText config dict to the previous version', 'test pytext_config_from_json to parse and validate a PyText config from a JSON dict', 'test that all upgrade adapters exist for every version up to LATEST_VERSION', 'test that all downgrade adapters exist for every version starting from FIRST_DOWNGRADE_ADAPTER_VERSION', 'run the LoadAllConfigTest to validate all pytext JSON config files parse without errors', 'test that parse_config can load and parse all pytext JSON config files recursively', 'review the LoadAllConfigTest class and its test_load_all_configs method for config validation logic', 'refactor the EXCLUDE_DIRS set to add or remove directories from the config file glob scan', 'summarize how register_builtin_tasks is called at module level to register all PyText task types', 'test config_from_json to parse a JSON object into a typed ConfigBase config instance', 'test config_to_json to serialize a ConfigBase config instance back to a JSON dictionary', 'test config_from_json with Union types to parse nested config with multiple possible model types', 'test config_from_json with Component subclasses that have registered Config classes for model registration', 'test config_from_json with Tuple type annotations to validate nested and variable-length tuple fields', 'run the pytext serialize test suite to verify config serialization and deserialization round-trips', 'test that serialize._value_from_json parses a JSON value into the correct typed Python value', 'test that serialize._value_to_json converts a typed Python value into its JSON representation']
+```
+
+Usage
+
+```
+{'test_upgrade_one_version': 'test the upgrade_one_version function to adapt a PyText config dict to the next version', 'test_downgrade_one_version': 'test the downgrade_one_version function to adapt a PyText config dict to the previous version', 'test_pytext_config_from_json': 'test pytext_config_from_json to parse and validate a PyText config from a JSON dict', 'test_upgrade_adapters_exist': 'test that all upgrade adapters exist for every version up to LATEST_VERSION', 'test_downgrade_adapters_exist': 'test that all downgrade adapters exist for every version starting from FIRST_DOWNGRADE_ADAPTER_VERSION'}
+```
+
+## File: facebookresearch_pytext/pytext/config/test/pytext_all_config_test.py
+
+Prompts
+
+```
+['test parsing JSON into a typed config object with auto-discovered sub-components using config_from_json', 'test serializing a typed config object back to JSON with component type keys using config_to_json', 'test that ConfigParseError is raised when a non-sub-component is used in an incorrect config', 'test that ConfigParseError is raised when a non-expansible parent component is referenced with a sub-component', 'test round-trip serialization and parsing of expandable components and union-typed config fields', 'test the upgrade_one_version function to adapt a PyText config dict to the next version', 'test the downgrade_one_version function to adapt a PyText config dict to the previous version', 'test pytext_config_from_json to parse and validate a PyText config from a JSON dict', 'test that all upgrade adapters exist for every version up to LATEST_VERSION', 'test that all downgrade adapters exist for every version starting from FIRST_DOWNGRADE_ADAPTER_VERSION', 'run the LoadAllConfigTest to validate all pytext JSON config files parse without errors', 'test that parse_config can load and parse all pytext JSON config files recursively', 'review the LoadAllConfigTest class and its test_load_all_configs method for config validation logic', 'refactor the EXCLUDE_DIRS set to add or remove directories from the config file glob scan', 'summarize how register_builtin_tasks is called at module level to register all PyText task types', 'test config_from_json to parse a JSON object into a typed ConfigBase config instance', 'test config_to_json to serialize a ConfigBase config instance back to a JSON dictionary', 'test config_from_json with Union types to parse nested config with multiple possible model types', 'test config_from_json with Component subclasses that have registered Config classes for model registration', 'test config_from_json with Tuple type annotations to validate nested and variable-length tuple fields', 'run the pytext serialize test suite to verify config serialization and deserialization round-trips', 'test that serialize._value_from_json parses a JSON value into the correct typed Python value', 'test that serialize._value_to_json converts a typed Python value into its JSON representation']
+```
+
+Usage
+
+```
+{'run_load_all_configs_test': 'run the LoadAllConfigTest to validate all pytext JSON config files parse without errors', 'test_parse_config': 'test that parse_config can load and parse all pytext JSON config files recursively', 'review_LoadAllConfigTest': 'review the LoadAllConfigTest class and its test_load_all_configs method for config validation logic', 'refactor_EXCLUDE_DIRS': 'refactor the EXCLUDE_DIRS set to add or remove directories from the config file glob scan', 'summarize_register_builtin_tasks': 'summarize how register_builtin_tasks is called at module level to register all PyText task types'}
+```
+
+## File: facebookresearch_pytext/pytext/config/test/pytext_config_test.py
+
+Prompts
+
+```
+['test parsing JSON into a typed config object with auto-discovered sub-components using config_from_json', 'test serializing a typed config object back to JSON with component type keys using config_to_json', 'test that ConfigParseError is raised when a non-sub-component is used in an incorrect config', 'test that ConfigParseError is raised when a non-expansible parent component is referenced with a sub-component', 'test round-trip serialization and parsing of expandable components and union-typed config fields', 'test the upgrade_one_version function to adapt a PyText config dict to the next version', 'test the downgrade_one_version function to adapt a PyText config dict to the previous version', 'test pytext_config_from_json to parse and validate a PyText config from a JSON dict', 'test that all upgrade adapters exist for every version up to LATEST_VERSION', 'test that all downgrade adapters exist for every version starting from FIRST_DOWNGRADE_ADAPTER_VERSION', 'run the LoadAllConfigTest to validate all pytext JSON config files parse without errors', 'test that parse_config can load and parse all pytext JSON config files recursively', 'review the LoadAllConfigTest class and its test_load_all_configs method for config validation logic', 'refactor the EXCLUDE_DIRS set to add or remove directories from the config file glob scan', 'summarize how register_builtin_tasks is called at module level to register all PyText task types', 'test config_from_json to parse a JSON object into a typed ConfigBase config instance', 'test config_to_json to serialize a ConfigBase config instance back to a JSON dictionary', 'test config_from_json with Union types to parse nested config with multiple possible model types', 'test config_from_json with Component subclasses that have registered Config classes for model registration', 'test config_from_json with Tuple type annotations to validate nested and variable-length tuple fields', 'run the pytext serialize test suite to verify config serialization and deserialization round-trips', 'test that serialize._value_from_json parses a JSON value into the correct typed Python value', 'test that serialize._value_to_json converts a typed Python value into its JSON representation']
+```
+
+Usage
+
+```
+{'test_config_from_json': 'test config_from_json to parse a JSON object into a typed ConfigBase config instance', 'test_config_to_json': 'test config_to_json to serialize a ConfigBase config instance back to a JSON dictionary', 'test_union_config_parsing': 'test config_from_json with Union types to parse nested config with multiple possible model types', 'test_component_config': 'test config_from_json with Component subclasses that have registered Config classes for model registration', 'test_tuple_config_validation': 'test config_from_json with Tuple type annotations to validate nested and variable-length tuple fields'}
+```
+
+## File: facebookresearch_pytext/pytext/config/test/serialize_test.py
+
+Prompts
+
+```
+['test parsing JSON into a typed config object with auto-discovered sub-components using config_from_json', 'test serializing a typed config object back to JSON with component type keys using config_to_json', 'test that ConfigParseError is raised when a non-sub-component is used in an incorrect config', 'test that ConfigParseError is raised when a non-expansible parent component is referenced with a sub-component', 'test round-trip serialization and parsing of expandable components and union-typed config fields', 'test the upgrade_one_version function to adapt a PyText config dict to the next version', 'test the downgrade_one_version function to adapt a PyText config dict to the previous version', 'test pytext_config_from_json to parse and validate a PyText config from a JSON dict', 'test that all upgrade adapters exist for every version up to LATEST_VERSION', 'test that all downgrade adapters exist for every version starting from FIRST_DOWNGRADE_ADAPTER_VERSION', 'run the LoadAllConfigTest to validate all pytext JSON config files parse without errors', 'test that parse_config can load and parse all pytext JSON config files recursively', 'review the LoadAllConfigTest class and its test_load_all_configs method for config validation logic', 'refactor the EXCLUDE_DIRS set to add or remove directories from the config file glob scan', 'summarize how register_builtin_tasks is called at module level to register all PyText task types', 'test config_from_json to parse a JSON object into a typed ConfigBase config instance', 'test config_to_json to serialize a ConfigBase config instance back to a JSON dictionary', 'test config_from_json with Union types to parse nested config with multiple possible model types', 'test config_from_json with Component subclasses that have registered Config classes for model registration', 'test config_from_json with Tuple type annotations to validate nested and variable-length tuple fields', 'run the pytext serialize test suite to verify config serialization and deserialization round-trips', 'test that serialize._value_from_json parses a JSON value into the correct typed Python value', 'test that serialize._value_to_json converts a typed Python value into its JSON representation']
+```
+
+Usage
+
+```
+{'run_serialize_tests': 'run the pytext serialize test suite to verify config serialization and deserialization round-trips', 'test_config_from_json': 'test that serialize.config_from_json correctly deserializes a JSON dict into a ConfigBase config object', 'test_config_to_json': 'test that serialize.config_to_json correctly serializes a ConfigBase config object back to a JSON dict', 'test_value_from_json': 'test that serialize._value_from_json parses a JSON value into the correct typed Python value', 'test_value_to_json': 'test that serialize._value_to_json converts a typed Python value into its JSON representation'}
+```
+

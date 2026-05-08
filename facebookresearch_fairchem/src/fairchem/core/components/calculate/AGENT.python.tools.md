@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairchem
+- repo_uri: https://github.com/facebookresearch/fairchem
+
+## File: facebookresearch_fairchem/src/fairchem/core/components/calculate/_calculate_runner.py
+
+Prompts
+
+```
+['run the CalculateRunner to execute calculations using an ASE calculator and save results to file', 'implement the abstract calculate method in a subclass to perform ASE calculator computations', 'implement the abstract write_results method in a subclass to save calculation results to a directory', 'load a previously saved calculation state from a checkpoint location to resume interrupted jobs', 'create a subclass of CalculateRunner that implements calculate and write_results for custom calculations']
+```
+
+Usage
+
+```
+{'run_calculate_runner': 'run the CalculateRunner to execute calculations using an ASE calculator and save results to file', 'implement_calculate_method': 'implement the abstract calculate method in a subclass to perform ASE calculator computations', 'implement_write_results_method': 'implement the abstract write_results method in a subclass to save calculation results to a directory', 'load_state_from_checkpoint': 'load a previously saved calculation state from a checkpoint location to resume interrupted jobs', 'create_calculate_runner_subclass': 'create a subclass of CalculateRunner that implements calculate and write_results for custom calculations'}
+```
+

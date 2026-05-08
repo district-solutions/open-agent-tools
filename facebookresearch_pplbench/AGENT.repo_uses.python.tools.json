@@ -1,0 +1,345 @@
+{
+  "facebookresearch_pplbench/pplbench/__main__.py": {
+    "run_ppl_benchmark": "run the pplbench CLI to benchmark probabilistic programming language inference performance",
+    "run_console_main": "run the console_main entry point with BrokenPipeError handling for the PPL benchmark",
+    "read_config": "read and parse a JSON schema config for the PPL benchmark via jsonargparse",
+    "configure_logging": "configure logging with stdout and file handlers based on the benchmark config",
+    "review_main_entry": "review the main entry point that orchestrates model simulation, sample collection, and report generation"
+  },
+  "facebookresearch_pplbench/pplbench/main.py": {
+    "run_ppl_benchmark": "run a PPL benchmark experiment with a config JSON specifying model, PPLs, iterations, and trials",
+    "read_config_from_cli": "parse a JSON config file from command line arguments using the PPLBench schema",
+    "configure_logging_for_benchmark": "configure logging with stdout and file handlers based on the benchmark config",
+    "review_main_entry": "review the main entry point that orchestrates data simulation, sample collection, and plot generation",
+    "review_schema_definition": "review the SCHEMA JSON object that defines valid PPLBench experiment configuration properties"
+  },
+  "facebookresearch_pplbench/pplbench/lib/model_helper.py": {
+    "find_model_class": "find a model class by name from a config object in the pplbench.models package",
+    "simulate_data": "generate training and test xarray datasets from a model class and benchmark config",
+    "review_find_model_class": "review the find_model_class function that dynamically loads a model class from a config",
+    "review_simulate_data": "review the simulate_data function that generates train and test datasets using a model class",
+    "summarize_model_helper": "summarize the model_helper module that provides model loading and data simulation utilities for pplbench"
+  },
+  "facebookresearch_pplbench/pplbench/lib/ppl_helper.py": {
+    "find_ppl_details": "find PPL inference details from a benchmark config and return a list of PPLDetails named tuples",
+    "collect_samples_and_stats": "collect MCMC samples and compute diagnostics like n_eff, Rhat, and PLL across multiple PPL inference trials",
+    "create_PPLDetails": "create a PPLDetails named tuple with name, seed, color, impl class, inference class, and arguments",
+    "review_find_ppl_details": "review the find_ppl_details function to understand how it extracts and validates PPL inference configuration",
+    "refactor_collect_samples_and_stats": "refactor the collect_samples_and_stats function to support additional diagnostic metrics or custom output formats"
+  },
+  "facebookresearch_pplbench/pplbench/lib/ppl_profiler.py": {
+    "create_PPL_Profiler": "create a PPL_Profiler instance with an output directory and config to start deterministic or statistical profiling",
+    "start_profiling_BMG": "start profiling a Bean Machine graph by calling start_profiling_BMG with the graph object",
+    "finish_profiling": "finish profiling and write results including top functions and flame graph SVG to the output directory",
+    "create_raw_stat_file": "create a raw statistics log file from cProfile stats for use with flamegraph.pl visualization",
+    "process_stats": "process cProfile stats into a call graph with root functions and cumulative timing data"
+  },
+  "facebookresearch_pplbench/pplbench/lib/reports.py": {
+    "generate_plots": "generate PLL plots for varying sample ranges including full, three quarter, half, quarter, and post warmup draws",
+    "generate_pll_plot": "generate a single predictive log likelihood plot with mean line and min max shaded region for MCMC chains",
+    "create_plots_for_mcmc": "create multiple PLL plots across different draw subsets to visualize convergence of MCMC sampling chains",
+    "plot_predictive_log_likelihood": "plot predictive log likelihood over MCMC draws with symlog scale and chain-wise min max shading",
+    "save_pll_figure": "save a PLL figure to disk as a high DPI PNG with tight bounding box and formatted scientific notation axis"
+  },
+  "facebookresearch_pplbench/pplbench/lib/utils.py": {
+    "load_class_by_name": "load a Python class by its fully qualified name string using pydoc.locate",
+    "create_output_directory": "create a timestamped output directory and save a config file as JSON",
+    "save_xarray_dataset": "save an xarray Dataset to both NetCDF and CSV files in an output directory",
+    "encode_simplenamespace_to_json": "encode a SimpleNamespace config object to JSON using a custom JSONEncoder",
+    "format_json_string": "convert a compact JSON string into a human-readable indented format"
+  },
+  "facebookresearch_pplbench/pplbench/models/base_model.py": {
+    "create_subclass_generate_data": "create a subclass of BaseModel that implements generate_data to forward sample from a prior distribution",
+    "create_subclass_evaluate_posterior_predictive": "create a subclass of BaseModel that implements evaluate_posterior_predictive to compute predictive log likelihood",
+    "implement_additional_metrics": "implement the additional_metrics method in a BaseModel subclass to compute custom model-specific metrics",
+    "review_Basemodel_abstract_interface": "review the BaseModel abstract class and its generate_data and evaluate_posterior_predictive interface methods",
+    "build_model_subclass": "build a python module that subclasses BaseModel and implements generate_data and evaluate_posterior_predictive for a new model"
+  },
+  "facebookresearch_pplbench/pplbench/models/crowd_sourced_annotation.py": {
+    "generate_crowd_sourced_data": "generate synthetic crowd-sourced annotation data with configurable labelers, categories, and correctness priors",
+    "evaluate_posterior_predictive_likelihood": "evaluate the posterior predictive likelihood of test items against posterior samples from the model",
+    "create_dirichlet_confusion_matrices": "create per-labeler confusion matrices sampled from a Dirichlet prior based on expected correctness",
+    "review_crowd_sourced_annotation_model": "review the CrowdSourcedAnnotation class and its generative model for inferring true labels from imperfect annotators",
+    "summarize_crowd_sourced_annotation": "summarize the CrowdSourcedAnnotation model including hyperparameters, generative process, and posterior sample structure"
+  },
+  "facebookresearch_pplbench/pplbench/models/logistic_regression.py": {
+    "generate_logistic_regression_data": "generate synthetic Bayesian logistic regression training and test datasets with configurable hyperparameters",
+    "evaluate_posterior_predictive_likelihood": "evaluate the posterior predictive log-likelihood of test items against posterior samples",
+    "create_bayesian_logistic_regression_model": "create a Bayesian logistic regression model with configurable alpha, beta, and feature scale priors",
+    "review_logistic_regression_generate_data": "review the LogisticRegression.generate_data method to understand synthetic data generation with sigmoid probabilities",
+    "refactor_logistic_regression_evaluation": "refactor the LogisticRegression.evaluate_posterior_predictive method to support additional output formats"
+  },
+  "facebookresearch_pplbench/pplbench/models/n_schools.py": {
+    "generate_nschools_data": "generate synthetic N schools dataset with configurable states, districts, and types for Bayesian modeling",
+    "evaluate_posterior_predictive_likelihood": "evaluate the posterior predictive log-likelihood of test data against posterior samples from the N schools model",
+    "create_nschools_train_test_split": "create balanced train and test xarray datasets for the N schools hierarchical model with equal school distribution",
+    "review_nschools_model": "review the NSchools class hierarchical Bayesian model structure with state, district, and type effects",
+    "summarize_nschools_generate_data": "summarize the NSchools generate_data method parameters including seed, n schools, states, districts, and types"
+  },
+  "facebookresearch_pplbench/pplbench/models/noisy_or_topic.py": {
+    "generate_noisy_or_topic_data": "generate synthetic Noisy-OR topic model data with a given seed, number of topics, and number of words",
+    "evaluate_posterior_predictive_likelihood": "evaluate the posterior predictive log-likelihood of test data against posterior samples from a Noisy-OR topic model",
+    "review_NoisyOrTopic_generate_data": "review the NoisyOrTopic.generate_data method to understand how leak nodes, topic nodes, and word nodes are sampled",
+    "review_NoisyOrTopic_evaluate_posterior_predictive": "review the NoisyOrTopic.evaluate_posterior_predictive method to understand how predictive log-likelihood is computed per sample",
+    "refactor_NoisyOrTopic_for_custom_fanout": "refactor the NoisyOrTopic.generate_data method to support a custom average fanout distribution for topic children"
+  },
+  "facebookresearch_pplbench/pplbench/models/robust_regression.py": {
+    "generate_robust_regression_data": "generate synthetic robust regression train and test datasets with configurable hyperparameters and seed",
+    "evaluate_posterior_predictive_likelihood": "evaluate the posterior predictive log-likelihood of test items against posterior samples using Student-t distribution",
+    "create_robust_regression_model": "create a RobustRegression model class that generates data with Normal priors and Student-t likelihood",
+    "review_robust_regression_generate_data": "review the generate_data method to understand how synthetic X and Y data is generated with configurable parameters",
+    "summarize_robust_regression_class": "summarize the RobustRegression class model including priors for alpha, beta, nu, and sigma parameters"
+  },
+  "facebookresearch_pplbench/pplbench/models/utils.py": {
+    "compute_log1pexp": "compute log(1 + exp(x)) in a numerically stable way for a numpy array",
+    "compute_log1mexpm": "compute log(1 - exp(-x)) in a numerically stable way for a numpy array of positive numbers",
+    "split_train_test": "split an xarray dataset into training and test sets along a given coordinate",
+    "review_log1pexp": "review the log1pexp function that computes log(1 + exp(x)) with numerical stability",
+    "refactor_split_train_test": "refactor the split_train_test function to support additional coordinate slicing options"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/base_ppl_inference.py": {
+    "build_ppl_inference_subclass": "build a subclass of BasePPLInference that implements compile and infer methods for a probabilistic model",
+    "implement_infer_method": "implement the infer method to run MCMC sampling and return an xarray Dataset of samples",
+    "implement_compile_method": "implement the compile method to precompile the model representation with a given random seed",
+    "override_additional_diagnostics": "override additional_diagnostics to save custom inference diagnostics to an output directory after benchmarking",
+    "review_is_adaptive_attribute": "review the is_adaptive attribute to decide whether warmup samples should be excluded from diagnostics"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/beanmachine/base_bm_impl.py": {
+    "review_BaseBeanMachineImplementation": "review the BaseBeanMachineImplementation abstract class and its abstract methods for Bean Machine PPL integration",
+    "summarize_BaseBeanMachineImplementation": "summarize the BaseBeanMachineImplementation abstract base class defining the interface for Bean Machine probabilistic program implementations",
+    "review_data_to_observations": "review the abstract data_to_observations method that converts xarray datasets into Bean Machine observation format",
+    "review_get_queries": "review the abstract get_queries method returning a list of RVIdentifier random variables for inference",
+    "review_extract_data_from_bm": "review the abstract extract_data_from_bm method that converts MonteCarloSamples inference results into an xarray dataset"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/beanmachine/crowd_sourced_annotation.py": {
+    "create_crowd_sourced_annotation_model": "create a CrowdSourcedAnnotation model with n items, k labelers, and num_categories for probabilistic label inference",
+    "build_confusion_matrix_distribution": "build a Dirichlet confusion matrix distribution for each labeler and category using expected correctness priors",
+    "convert_data_to_observations": "convert an xarray Dataset of crowd labels into a dictionary mapping random variables to observations for Bean Machine",
+    "extract_inference_samples": "extract MonteCarloSamples from Bean Machine into an xarray Dataset with prevalence and confusion matrix dimensions",
+    "get_inference_queries": "get a list of random variable queries including prevalence and confusion matrix for all labelers and categories"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/beanmachine/inference.py": {
+    "run_MCMC_infer": "run MCMC inference on an xarray Dataset using CompositionalInference with warmup and sampling iterations",
+    "run_MCMC_custom_algorithm": "run MCMC inference with a custom Bean Machine algorithm like NUTS or HMC",
+    "create_BaseBMInference": "create a BaseBMInference instance with a Bean Machine implementation class and model attributes",
+    "review_MCMC_infer": "review the MCMC infer method to understand how it selects algorithms and extracts samples",
+    "summarize_BaseBMInference": "summarize the BaseBMInference class initialization and compile method behavior"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/beanmachine/logistic_regression.py": {
+    "build_logistic_regression_model": "build a Bean Machine logistic regression model with configurable alpha and beta prior scales",
+    "create_random_variable_alpha": "create a Normal-distributed alpha random variable with a configurable scale parameter",
+    "create_random_variable_beta": "create a Normal-distributed beta random variable expanded across k features",
+    "convert_data_to_observations": "convert an xarray dataset to a dictionary mapping random variables to tensor observations",
+    "extract_inference_samples": "extract alpha and beta posterior samples from MonteCarloSamples into an xarray Dataset"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/beanmachine/n_schools.py": {
+    "create_NSchools_model": "create an NSchools probabilistic model with states, districts, and types for hierarchical Bayesian inference",
+    "define_sigma_state_random_variable": "define a HalfCauchy-distributed sigma_state random variable for state-level variance in the NSchools model",
+    "define_beta_baseline_random_variable": "define a StudentT-distributed beta_baseline random variable for the baseline effect in the NSchools model",
+    "convert_data_to_observations": "convert an xarray Dataset to a dictionary mapping random variables to observed values for Bean Machine inference",
+    "extract_data_from_bm": "extract MonteCarloSamples from Bean Machine and convert them into an xarray Dataset for PPLBench"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/beanmachine/noisy_or_topic.py": {
+    "build_NoisyOrTopic_model": "build a NoisyOrTopic model with num_topics, num_words, and edge_weight parameters for probabilistic inference",
+    "create_node_random_variable": "create a Bernoulli random variable node using the noisy-OR gate formula with parent accumulators",
+    "convert_data_to_observations": "convert an xarray dataset to a dictionary mapping random variables to torch tensor observations",
+    "extract_data_from_bm_samples": "extract MonteCarloSamples from Bean Machine and convert to an xarray Dataset with active topic samples",
+    "get_queries_for_topics": "get a list of node random variables for all topics to query during inference"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/beanmachine/robust_regression.py": {
+    "create_robust_regression_model": "create a RobustRegression model with n samples, k features, and prior scale parameters",
+    "build_data_to_observations": "build a dictionary mapping random variables X and Y to observed tensor values from an xarray Dataset",
+    "run_get_queries": "run get_queries to retrieve the list of alpha, beta, nu, and sigma random variables for inference",
+    "extract_data_from_bm": "extract MonteCarloSamples from Bean Machine inference and convert them into an xarray Dataset with draw and feature dimensions",
+    "review_studentT_likelihood": "review the Y random variable that uses a StudentT distribution with nu degrees of freedom for robust regression"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/beanmachine/graph/base_bmgraph_impl.py": {
+    "review_BaseBMGraphImplementation": "review the BaseBMGraphImplementation abstract base class and its abstract methods for BMGraph statistical model integration",
+    "review_graph_property": "review the abstract graph property that returns a bmg.Graph object representing the statistical model",
+    "review_bind_data_to_bmgraph": "review the abstract bind_data_to_bmgraph method that adds xarray Dataset observations to the model",
+    "review_format_samples_from_bmgraph": "review the abstract format_samples_from_bmgraph method that converts numpy inference samples into an xarray Dataset",
+    "review_init": "review the abstract __init__ method that builds a BMGraph object and records queries from model attributes"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/beanmachine/graph/crowd_sourced_annotation.py": {
+    "create_crowd_sourced_annotation_graph": "create a CrowdSourcedAnnotation BMGraph model with expected correctness and concentration parameters for binary labelers",
+    "build_dirichlet_beta_distribution": "build a size-2 Dirichlet distribution using the dirichlet helper method equivalent to a Beta distribution and its complement",
+    "bind_labels_to_bmgraph": "bind an xarray Dataset of labels and labelers to the BMGraph model to add observations for inference",
+    "format_inference_samples": "format raw numpy inference samples into an xarray Dataset with prev and confusion_matrix dimensions",
+    "review_crowd_sourced_annotation_class": "review the CrowdSourcedAnnotation class and its confusion matrix prior logic for binary crowd-sourced annotation tasks"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/beanmachine/graph/inference.py": {
+    "run_NMC_inference": "run No-Marginal-Clamping inference on a BMGraph model with a specified number of iterations and seed",
+    "run_GlobalMCMC_inference": "run Global MCMC inference using NUTS or another algorithm on a BMGraph model with warmup steps",
+    "compile_BaseBMGraphInference": "compile a BaseBMGraphInference instance by instantiating its implementation class with model attributes and a seed",
+    "review_NMC_class": "review the NMC class to understand how it performs non-adaptive inference via bmg.InferenceType.NMC",
+    "review_GlobalMCMC_class": "review the GlobalMCMC class to understand how it performs adaptive MCMC inference with configurable algorithms"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/beanmachine/graph/logistic_regression.py": {
+    "build_logistic_regression_bmgraph": "build a LogisticRegression BMGraph model with n samples, k features, and prior scales for alpha and beta",
+    "initialize_logistic_regression_graph": "initialize a probabilistic logistic regression graph with normal priors on alpha and beta coefficients",
+    "bind_data_to_bmgraph": "bind xarray dataset observations to the logistic regression BMGraph model nodes",
+    "format_samples_from_bmgraph": "convert inference sample arrays into an xarray Dataset with alpha and beta dimensions",
+    "review_logistic_regression_class": "review the LogisticRegression class and its BMGraph probabilistic model construction methods"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/beanmachine/graph/n_schools.py": {
+    "build_NSchools_bmgraph": "build a BMGraph probabilistic model for the N Schools eightfold hierarchical regression problem",
+    "create_NSchools_instance": "create an NSchools instance with attrs like num_states, num_districts_per_state, and scale parameters",
+    "bind_data_to_bmgraph": "bind xarray Dataset observations to the BMGraph model by observing y and sigma values",
+    "format_samples_from_bmgraph": "format inference samples from a numpy array into an xarray Dataset with draw, state, district dims",
+    "review_NSchools_graph": "review the NSchools class BMGraph construction including HalfCauchy priors, Normal effects, and StudentT baseline"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/jags/base_jags_impl.py": {
+    "review_BaseJagsImplementation": "review the BaseJagsImplementation abstract class and its interface methods for JAGS model integration",
+    "implement_get_code": "implement a subclass of BaseJagsImplementation that returns JAGS code representing a statistical model",
+    "implement_format_data_to_jags": "implement format_data_to_jags to convert an xarray Dataset into a JAGS-compatible data dictionary",
+    "implement_extract_data_from_jags": "implement extract_data_from_jags to convert JAGS sample output into an xarray Dataset",
+    "implement_get_vars": "implement get_vars to return the list of variables needed from JAGS inference"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/jags/inference.py": {
+    "run_MCMC_infer": "run MCMC inference on an xarray dataset using JAGS with configurable iterations and warmup",
+    "create_MCMC_instance": "create an MCMC inference object from a BaseJagsImplementation class and model attributes",
+    "review_MCMC_infer": "review the MCMC infer method that samples from a JAGS model and pads warmup draws",
+    "summarize_MCMC_class": "summarize the MCMC class that wraps pyjags.Model for probabilistic programming inference",
+    "refactor_MCMC_compile": "refactor the MCMC compile method which is a no-op since JAGS has no separate compile step"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/jags/logistic_regression.py": {
+    "build_logistic_regression_jags_model": "build a JAGS logistic regression model by instantiating LogisticRegression with hyperparameter attrs",
+    "run_format_data_to_jags": "run format_data_to_jags on an xarray Dataset to produce a JAGS-ready data dictionary with X and Y",
+    "run_extract_data_from_jags": "run extract_data_from_jags on a JAGS samples dict to get an xarray Dataset of alpha and beta draws",
+    "run_get_code": "run get_code to retrieve the JAGS model code string with priors and likelihood for logistic regression",
+    "run_get_vars": "run get_vars to retrieve the list of model variables alpha and beta needed from inference"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/jags/n_schools.py": {
+    "init_NSchools": "create an NSchools instance with model attributes like num_states, num_districts_per_state, and scale parameters",
+    "get_vars_NSchools": "get the list of seven MCMC variable names including sigma and beta parameters from NSchools",
+    "format_data_to_jags_NSchools": "format an xarray dataset into a JAGS-ready dictionary with 1-based indices and observed data",
+    "extract_data_from_jags_NSchools": "extract JAGS MCMC samples into an xarray dataset with draw, state, district, and type coordinates",
+    "get_code_NSchools": "get the JAGS model code string defining hierarchical priors and likelihood for the n schools problem"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/jags/noisy_or_topic.py": {
+    "build_noisy_or_topic_model": "build a NoisyOrTopic JAGS model with num_topics, num_words, and edge_weight parameters",
+    "generate_jags_code": "generate JAGS model code for a Noisy-OR topic model with Bernoulli topic and word nodes",
+    "format_data_to_jags": "format an xarray Dataset into a JAGS-compatible dictionary with sentence word observations",
+    "extract_data_from_jags": "extract MCMC samples from JAGS output into an xarray Dataset with draw and topic dimensions",
+    "get_inference_vars": "get the list of variables needed from inference which returns active topic nodes"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/jags/robust_regression.py": {
+    "get_vars_RobustRegression": "get the list of MCMC sample variable names from the RobustRegression class",
+    "format_data_to_jags_RobustRegression": "format an xarray dataset into a JAGS-compatible data dictionary for robust regression",
+    "extract_data_from_jags_RobustRegression": "extract JAGS MCMC samples into an xarray dataset with draw and feature dimensions",
+    "get_code_RobustRegression": "get the JAGS model code string for the robust regression with Student-t likelihood",
+    "init_RobustRegression": "create a RobustRegression instance with keyword arguments for prior hyperparameters"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/numpyro/base_numpyro_impl.py": {
+    "implement_BaseNumPyroImplementation": "implement a subclass of BaseNumPyroImplementation to define a custom NumPyro statistical model for PPLBench",
+    "define_model_method": "define the abstract model method using NumPyro primitives to represent a statistical model with observed data",
+    "define_extract_data_from_numpyro": "define the extract_data_from_numpyro method to convert NumPyro inference samples into an xarray Dataset",
+    "review_BaseNumPyroImplementation": "review the BaseNumPyroImplementation abstract class and its required methods for NumPyro model integration",
+    "refactor_BaseNumPyroImplementation_subclass": "refactor a BaseNumPyroImplementation subclass to update the model or sample extraction logic"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/numpyro/inference.py": {
+    "run_MCMC_infer": "run MCMC inference with NUTS algorithm on an xarray Dataset using NumPyro",
+    "run_MCMC_warmup": "run MCMC warmup phase separately to collect warmup samples before final inference",
+    "review_MCMC_class": "review the MCMC class that extends BaseNumPyroInference for probabilistic programming inference",
+    "review_BaseNumPyroInference": "review the BaseNumPyroInference class that initializes a NumPyro implementation from model attributes",
+    "summarize_MCMC_infer": "summarize the MCMC infer method that splits RNG keys and merges warmup with post-warmup samples"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/numpyro/logistic_regression.py": {
+    "create_logistic_regression_model": "create a LogisticRegression instance with n samples, k features, and prior scale parameters",
+    "run_logistic_regression_model": "run the NumPyro logistic regression model on an xarray Dataset with X and Y variables",
+    "extract_data_from_numpyro_samples": "extract MCMC samples from NumPyro inference output into an xarray Dataset with alpha and beta",
+    "review_logistic_regression_prior": "review the LogisticRegression class prior distributions for alpha and beta parameters",
+    "summarize_logistic_regression_implementation": "summarize the LogisticRegression class that implements a Bernoulli logistic regression model with NumPyro"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/numpyro/robust_regression.py": {
+    "create_robust_regression_instance": "create a RobustRegression instance with n, k, alpha_scale, beta_scale, beta_loc, and sigma_mean parameters",
+    "run_robust_regression_model": "run the RobustRegression model method with an xarray Dataset containing X and Y data",
+    "extract_samples_from_numpyro": "extract MCMC samples from NumPyro output into an xarray Dataset with alpha, beta, nu, and sigma",
+    "review_robust_regression_model": "review the RobustRegression model using Student-T likelihood with Gamma-distributed degrees of freedom nu",
+    "refactor_robust_regression_priors": "refactor the RobustRegression model to change the Normal, Gamma, or Exponential prior distributions"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/pymc3/base_pymc3_impl.py": {
+    "implement_BasePyMC3Implementation": "implement a subclass of BasePyMC3Implementation to define a custom PyMC3 statistical model for PPLBench",
+    "implement_get_model": "implement the get_model method to build a PyMC3 Model from an xarray Dataset",
+    "implement_extract_data_from_pymc3": "implement extract_data_from_pymc3 to convert a PyMC3 MultiTrace into an xarray Dataset",
+    "review_BasePyMC3Implementation": "review the BasePyMC3Implementation abstract class and its required abstract methods for PPLBench integration",
+    "summarize_BasePyMC3Implementation": "summarize the BasePyMC3Implementation interface that defines get_model and extract_data_from_pymc3 abstract methods"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/pymc3/inference.py": {
+    "run_MCMC_infer": "run MCMC inference with NUTS algorithm on an xarray Dataset to sample posterior distributions",
+    "run_VI_infer": "run variational inference with ADVI algorithm on an xarray Dataset to approximate posterior distributions",
+    "create_BasePyMC3Inference": "create a BasePyMC3Inference instance with an implementation class and model attributes dictionary",
+    "review_MCMC_class": "review the MCMC class that performs Markov Chain Monte Carlo sampling using PyMC3 step methods",
+    "review_VI_class": "review the VI class that performs variational inference fitting and sampling using PyMC3"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/pymc3/logistic_regression.py": {
+    "build_logistic_regression_model": "build a PyMC3 logistic regression model with configurable alpha and beta priors from an xarray dataset",
+    "create_logistic_regression_instance": "create a LogisticRegression instance with n samples, k features, and prior scale parameters",
+    "extract_pymc3_samples": "extract alpha and beta posterior samples from a PyMC3 MultiTrace into an xarray Dataset",
+    "review_logistic_regression_get_model": "review the LogisticRegression get_model method that constructs a Bernoulli logistic regression with Normal priors",
+    "summarize_logistic_regression_class": "summarize the LogisticRegression class that implements a Bayesian logistic regression model using PyMC3"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/pymc3/noisy_or_topic.py": {
+    "build_noisy_or_topic_model": "build a PyMC3 Noisy-OR topic model from an xarray dataset with edge weights and Bernoulli topic activations",
+    "create_noisy_or_topic_instance": "create a NoisyOrTopic instance with num_topics, num_words, and edge_weight dictionary parameters",
+    "extract_pymc3_samples_to_xarray": "extract PyMC3 MultiTrace samples into an xarray Dataset with draw and topic dimensions",
+    "review_noisy_or_topic_get_model": "review the NoisyOrTopic get_model method that builds a hierarchical Bernoulli model with logit transformations",
+    "refactor_noisy_or_topic_edge_weights": "refactor the NoisyOrTopic class to support different edge weight formats or sparse matrices"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/pymc3/robust_regression.py": {
+    "build_robust_regression_model": "build a PyMC3 robust regression model with StudentT likelihood from an xarray dataset",
+    "create_robust_regression_instance": "create a RobustRegression instance with n samples, k features, and prior scale parameters",
+    "extract_pymc3_samples": "extract alpha, beta, nu, and sigma samples from a PyMC3 MultiTrace into an xarray Dataset",
+    "review_robust_regression_get_model": "review the RobustRegression get_model method that defines alpha, beta, nu, sigma, and StudentT likelihood",
+    "refactor_robust_regression_priors": "refactor the RobustRegression class to change prior distributions for alpha, beta, nu, or sigma parameters"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/stan/base_stan_impl.py": {
+    "implement_BaseStanImplementation": "implement a subclass of BaseStanImplementation to define a new Stan probabilistic model",
+    "get_code": "call get_code on a BaseStanImplementation subclass to retrieve the Stan code for the statistical model",
+    "get_pars": "call get_pars on a BaseStanImplementation subclass to get the list of parameters needed from inference",
+    "format_data_to_stan": "call format_data_to_stan on a BaseStanImplementation subclass to convert an xarray Dataset into a Stan-compatible dictionary",
+    "extract_data_from_stan": "call extract_data_from_stan on a BaseStanImplementation subclass to convert Stan inference results into an xarray Dataset"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/stan/crowd_sourced_annotation.py": {
+    "build_crowd_sourced_annotation_model": "build a CrowdSourcedAnnotation Stan model for inferring true labels from noisy crowd-sourced annotations",
+    "format_data_to_stan": "format an xarray dataset into a Stan-compatible dictionary with 1-based labels and labelers",
+    "extract_data_from_stan": "extract Stan inference samples into an xarray Dataset with prev and confusion_matrix parameters",
+    "get_pars": "get the list of required inference parameters prev and confusion_matrix from the model",
+    "get_code": "get the Stan model code string with dirichlet priors and categorical likelihood for crowd annotation"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/stan/inference.py": {
+    "compile_stan_model": "compile a Stan model from code using BaseStanInference with a given seed and compile arguments",
+    "run_mcmc_inference": "run MCMC sampling inference on an xarray dataset using the MCMC class with NUTS algorithm",
+    "run_vi_inference": "run variational inference on an xarray dataset using the VI class with meanfield algorithm",
+    "extract_vb_params": "extract variational bayes parameters from pystan vb results into a chain-dimensioned OrderedDict format",
+    "review_BaseStanInference": "review the BaseStanInference class and its compile method for Stan model compilation"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/stan/logistic_regression.py": {
+    "run_logistic_regression_stan": "run the LogisticRegression class to perform Bayesian logistic regression inference using Stan",
+    "format_data_to_stan": "format an xarray Dataset into a Stan-compatible dictionary with X design matrix and Y response",
+    "extract_data_from_stan": "extract Stan MCMC samples into an xarray Dataset with alpha and beta parameters",
+    "get_stan_model_code": "get the Stan model code string defining data, parameters, and bernoulli_logit likelihood",
+    "get_inference_parameters": "get the list of required inference parameters alpha and beta from LogisticRegression"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/stan/n_schools.py": {
+    "build_stan_nschools_model": "build a Python module to instantiate NSchools with model arguments for a hierarchical Bayesian schools model",
+    "format_data_to_stan": "create a function that converts an xarray Dataset into a Stan-ready dictionary with 1-based indices",
+    "extract_data_from_stan": "create a function that converts Stan MCMC samples into an xarray Dataset with inferred parameters",
+    "get_pars_nschools": "create a function that returns the list of parameter names needed from the NSchools Stan inference",
+    "get_code_nschools": "create a function that returns the Stan model code string for the hierarchical n-schools regression"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/stan/noisy_or_topic.py": {
+    "build_NoisyOrTopic_stan_model": "build a NoisyOrTopic Stan model for probabilistic topic inference using the Gumbel softmax trick",
+    "run_format_data_to_stan": "run format_data_to_stan to convert an xarray dataset into a Stan-compatible data dictionary",
+    "run_extract_data_from_stan": "run extract_data_from_stan to convert Stan sample output into an xarray dataset of inferred parameters",
+    "run_get_pars": "run get_pars to retrieve the list of parameters needed from the NoisyOrTopic inference",
+    "run_get_code": "run get_code to retrieve the Stan model code string for the NoisyOrTopic implementation"
+  },
+  "facebookresearch_pplbench/pplbench/ppls/stan/robust_regression.py": {
+    "build_robust_regression_stan_model": "build a RobustRegression instance with model arguments to configure a Student-t errors linear model",
+    "format_data_to_stan": "format an xarray Dataset into a Stan-ready dictionary with X design matrix and Y response values",
+    "extract_data_from_stan": "extract Stan MCMC samples into an xarray Dataset with alpha, beta, nu, and sigma parameters",
+    "get_pars": "get the list of parameter names needed from inference including alpha, beta, nu, and sigma",
+    "get_code": "get the Stan model code string for a linear regression model with Student-t error distribution"
+  }
+}

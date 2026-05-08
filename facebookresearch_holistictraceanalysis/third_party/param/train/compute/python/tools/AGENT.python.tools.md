@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/holistictraceanalysis
+- repo_uri: https://github.com/facebookresearch/holistictraceanalysis
+
+## File: facebookresearch_holistictraceanalysis/third_party/param/train/compute/python/tools/nsys_analysis.py
+
+Prompts
+
+```
+['run the nsys_analysis tool to analyze an nsys sqlite trace file and output operator event JSON', 'create an OperatorEvent object to track CUDA kernel and sync events for a named operator', 'parse CUDA kernel event rows from an nsys sqlite database into OperatorEvent objects', 'analyze OperatorEvent objects to compute T1 through T5 timing metrics for each operator range', 'find overlapping time intervals between two lists of start-end interval pairs']
+```
+
+Usage
+
+```
+{'run_nsys_analysis': 'run the nsys_analysis tool to analyze an nsys sqlite trace file and output operator event JSON', 'create_operator_event': 'create an OperatorEvent object to track CUDA kernel and sync events for a named operator', 'parse_kernel_events': 'parse CUDA kernel event rows from an nsys sqlite database into OperatorEvent objects', 'analyze_events': 'analyze OperatorEvent objects to compute T1 through T5 timing metrics for each operator range', 'find_overlap_intervals': 'find overlapping time intervals between two lists of start-end interval pairs'}
+```
+

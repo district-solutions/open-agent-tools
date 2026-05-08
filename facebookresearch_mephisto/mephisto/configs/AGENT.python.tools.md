@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mephisto
+- repo_uri: https://github.com/facebookresearch/mephisto
+
+## File: facebookresearch_mephisto/mephisto/configs/logging.py
+
+Prompts
+
+```
+['get the list of log handlers based on the WRITE_LOG_TO_FILE environment variable', 'get the hydra-formatted log file path using the executed script name and current timestamp', 'configure Python logging using the LOGGING dict with dictConfig for console and optional file output', 'set the LOG_LEVEL environment variable to control logging verbosity across all handlers', 'enable file logging by setting WRITE_LOG_TO_FILE to 1 and creating the output directory']
+```
+
+Usage
+
+```
+{'get_log_handlers': 'get the list of log handlers based on the WRITE_LOG_TO_FILE environment variable', 'get_log_filename': 'get the hydra-formatted log file path using the executed script name and current timestamp', 'configure_logging_dict': 'configure Python logging using the LOGGING dict with dictConfig for console and optional file output', 'set_log_level': 'set the LOG_LEVEL environment variable to control logging verbosity across all handlers', 'enable_file_logging': 'enable file logging by setting WRITE_LOG_TO_FILE to 1 and creating the output directory'}
+```
+

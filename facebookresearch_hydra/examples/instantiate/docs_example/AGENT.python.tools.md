@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/examples/instantiate/docs_example/my_app.py
+
+Prompts
+
+```
+['run the Hydra app that instantiates an Optimizer, Dataset, and Trainer from config', 'instantiate an Optimizer object from a Hydra config node with algo and lr parameters', 'instantiate an Optimizer from config and override the lr parameter at the call site', 'recursively instantiate a Trainer with nested Optimizer and Dataset from a Hydra config', 'instantiate a Trainer from config and override nested optimizer and dataset parameters at the call site']
+```
+
+Usage
+
+```
+{'run_my_app': 'run the Hydra app that instantiates an Optimizer, Dataset, and Trainer from config', 'instantiate_optimizer': 'instantiate an Optimizer object from a Hydra config node with algo and lr parameters', 'instantiate_optimizer_override_lr': 'instantiate an Optimizer from config and override the lr parameter at the call site', 'instantiate_trainer_recursive': 'recursively instantiate a Trainer with nested Optimizer and Dataset from a Hydra config', 'instantiate_trainer_override_nested': 'instantiate a Trainer from config and override nested optimizer and dataset parameters at the call site'}
+```
+

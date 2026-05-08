@@ -1,0 +1,1274 @@
+{
+  "facebookresearch_fairscale/benchmarks/fsdp.py": {
+    "run_fsdp_benchmark": "run the FSDP benchmark for a language model using synthetic or real data with configurable batch size",
+    "run_fsdp_dry_run": "run a sample FSDP training dry run without regression testing using the --dry_run flag",
+    "run_fsdp_fp16": "run the FSDP benchmark in full fp16 mode using the --full_fp16 flag",
+    "run_fsdp_auto_wrap": "run the FSDP benchmark with auto_wrap enabled using the --enable_auto_wrap flag",
+    "run_fsdp_eval": "run the FSDP benchmark in evaluation mode using the --benchmark_eval flag"
+  },
+  "facebookresearch_fairscale/benchmarks/moe.py": {
+    "run_moe_benchmark": "run a single process Mixture of Experts benchmark across multiple CUDA devices using mp.spawn",
+    "run_train_loop": "run the distributed training loop for an MOE model with gradient clipping and loss logging",
+    "benchmark_DDP_model": "benchmark a DDP-wrapped language model using NCCL backend and multi-process spawning",
+    "review_train_function": "review the train function that handles batch processing, loss computation, and per-rank logging",
+    "summarize_benchmark_single_process": "summarize the benchmark_single_process function that spawns worker processes for MOE model evaluation"
+  },
+  "facebookresearch_fairscale/benchmarks/oss.py": {
+    "run_oss_benchmark": "run the OSS optimizer state sharding benchmark on MNIST with vanilla, DDP, or ShardedDDP modes",
+    "run_train_function": "run the train function to benchmark distributed training with OSS optimizer sharding on a vision model",
+    "run_get_problem": "run get_problem to set up a torchvision or timm model with MNIST dataloader and cross entropy loss",
+    "run_validate_benchmark": "run validate_benchmark to check training speed, memory, and loss against golden reference stats",
+    "review_OptimType": "review the OptimType enum to understand vanilla, oss_ddp, oss_sharded_ddp, and everyone optimizer configurations"
+  },
+  "facebookresearch_fairscale/benchmarks/pipe.py": {
+    "run_pipe_benchmark": "run a single process language model benchmark using FairScale Pipe across multiple GPU devices",
+    "train_pipelined_model": "train a pipelined language model with gradient clipping and per batch loss logging",
+    "generate_layer_balance": "generate a layer balance schedule for distributing model layers across multiple devices",
+    "verify_throughput": "verify benchmark words per second throughput against golden configuration thresholds",
+    "get_tensors_by_size": "get a count of CUDA tensors grouped by their size bucket dimensions"
+  },
+  "facebookresearch_fairscale/benchmarks/utils.py": {
+    "init_random_seed": "init a random seed across torch, cuda, and numpy for reproducible benchmark runs",
+    "init_args": "init an argparse parser with benchmark flags like batch size, chunks, and model name",
+    "create_model_config": "create a model config dict with an instantiated model, optimizer, and dataset info",
+    "get_lm_model": "get a GPT-2 based transformer language model for sequence prediction with optional lazy construction",
+    "log_number_of_parameters": "log the total number of trainable parameters in a PyTorch model with distributed support"
+  },
+  "facebookresearch_fairscale/benchmarks/datasets/mnist.py": {
+    "run_setup_cached_mnist": "run setup_cached_mnist to download and cache the MNIST dataset to the system temp directory",
+    "test_setup_cached_mnist": "test setup_cached_mnist to verify it downloads MNIST and retries up to 5 times on failure",
+    "review_setup_cached_mnist": "review setup_cached_mnist to understand its retry logic and corrupted data cleanup behavior",
+    "summarize_setup_cached_mnist": "summarize setup_cached_mnist which downloads MNIST with mirror fallback and automatic corruption recovery",
+    "refactor_setup_cached_mnist": "refactor setup_cached_mnist to accept a custom root directory instead of using the system temp directory"
+  },
+  "facebookresearch_fairscale/benchmarks/datasets/wikitext2_data.py": {
+    "get_real_datasets": "download and tokenize the wikitext-2 dataset into train, validation, and test tensors",
+    "get_dataloaders": "create distributed PyTorch dataloaders for train, validation, and test datasets with batching",
+    "get_real_dataloaders": "return real wikitext-2 dataloaders with vocabulary size for language model benchmarking",
+    "get_synthetic_datasets": "generate synthetic language model datasets with random token IDs for benchmarking",
+    "get_synthetic_dataloaders": "return synthetic dataloaders for fast language model benchmarking without real data"
+  },
+  "facebookresearch_fairscale/benchmarks/experimental/benchmark_dataset.py": {
+    "create_BenchmarkLMDataset": "create a BenchmarkLMDataset with custom vocab size, max source positions, and total samples for benchmarking",
+    "use_BenchmarkLMDataset_getitem": "use BenchmarkLMDataset getitem to retrieve a random source-target token pair by index",
+    "use_BenchmarkLMDataset_len": "use BenchmarkLMDataset len to get the total number of samples in the dataset",
+    "run_collate_sentences_lm": "run collate_sentences_lm to batch sample dictionaries into stacked source and target tensors",
+    "test_BenchmarkLMDataset": "test the BenchmarkLMDataset class by iterating over samples and verifying tensor shapes"
+  },
+  "facebookresearch_fairscale/benchmarks/experimental/benchmark_mevo.py": {
+    "run_benchmark_mevo": "run the MEVO kernel benchmark with fp16 dtype and gradient tracking enabled",
+    "run_benchmark_mevo_no_grad": "run the MEVO benchmark with no_grad mode to measure forward-only performance",
+    "run_benchmark_mevo_fwd_bwd": "run the MEVO benchmark with forward and backward passes enabled",
+    "run_benchmark_mevo_fp32": "run the MEVO kernel benchmark using fp32 dtype for precision comparison",
+    "review_run_on_gpu": "review the run_on_gpu function that measures GPU runtime and peak memory usage"
+  },
+  "facebookresearch_fairscale/benchmarks/experimental/experimental_async_approaches.py": {
+    "run_pipeline_parallel_benchmark": "run the experimental async pipeline parallel language model benchmark with MPI and specified decoder layers",
+    "create_spectrain_sgd_optimizer": "create a SpectrainSGDMomentum optimizer that uses weight prediction with momentum for pipeline parallel training",
+    "create_xpipe_adam_optimizer": "create an XpipeAdam optimizer that uses future weight prediction based on microbatch index for pipeline parallel training",
+    "build_transformer_lm_model": "build a TransformerLMSequntial language model with embedding, positional encoding, decoder, and linear layers for pipe compatibility",
+    "generate_pipeline_balance": "generate a balanced layer distribution across pipeline parallel devices using generate_balance or generate_balance_weighted"
+  },
+  "facebookresearch_fairscale/benchmarks/experimental/offload.py": {
+    "run_benchmark_offload": "run a benchmark for the OffloadModel with language model or sequential model using CLI args",
+    "create_model_config_offload": "create a model config dict with model, optimizer, and data for lm or seq model benchmarking",
+    "train_language_model_offload": "train a language model using OffloadModel with profiler and fp16 context support",
+    "train_seq_model_offload": "train a sequential model using OffloadModel with synthetic data and log throughput metrics",
+    "verify_peak_memory_offload": "verify peak CUDA memory usage against golden config reference values with standard deviation tolerance"
+  },
+  "facebookresearch_fairscale/benchmarks/experimental/sync_batchnorm.py": {
+    "run_sync_batchnorm_benchmark": "run the sync batchnorm benchmark comparing BatchNorm2d, SyncBatchNorm, and fairscale SyncBatchNorm across GPUs",
+    "benchmark_bn_function": "benchmark a batch normalization class using DDP with warmup and timed forward passes on random tensors",
+    "compare_batchnorm_implementations": "compare torch BatchNorm2d, torch SyncBatchNorm, and fairscale SyncBatchNorm performance using multi-process spawning",
+    "review_benchmark_bn": "review the benchmark_bn function that initializes NCCL process groups and measures batchnorm forward pass latency",
+    "refactor_benchmark_bn": "refactor the benchmark_bn function to support configurable tensor shapes, warmup iterations, and benchmark iterations"
+  },
+  "facebookresearch_fairscale/benchmarks/golden_configs/lm_wikitext2.py": {
+    "get_FSDP_model_config": "get the FSDP model config with vocab size, embedding dim, and decoder layers for WikiText-2",
+    "get_Pipe_benchmark_config": "get the Pipe benchmark config with learning rate, batch size, and cross entropy loss",
+    "get_MOE_model_config": "get the MOE model config with mixture of experts settings and 20 decoder layers",
+    "get_Offload_Transformer_golden_stats": "get the Offload Transformer golden real stats including avg words per second and peak memory",
+    "get_Offload_Sequential_benchmark_config": "get the Offload Sequential benchmark config with 100 layers and checkpoint activation enabled"
+  },
+  "facebookresearch_fairscale/benchmarks/golden_configs/oss_mnist.py": {
+    "get_golden_real_stats": "get the golden reference benchmark stats for the OSS MNIST real data experiment",
+    "summarize_get_golden_real_stats": "summarize the get_golden_real_stats function that returns reference speed, memory, and loss values",
+    "review_get_golden_real_stats": "review the get_golden_real_stats function to verify the reference benchmark thresholds are current"
+  },
+  "facebookresearch_fairscale/benchmarks/models/transformer_lm.py": {
+    "build_transformer_lm": "build a GPT-2 based TransformerLM language model with configurable decoder layers and embedding dimensions",
+    "create_encoder_layer_with_moe": "create a TransformerEncoderLayer with mixture of experts enabled for sparse feedforward computation",
+    "create_decoder_layer": "create a TransformerDecoderLayer with causal masking for autoregressive language modeling tasks",
+    "review_positional_encoding": "review the PositionalEncodingLayer class and its sinusoidal positional encoding implementation",
+    "test_feedforward_layer": "test the FeedForwardLayer forward pass with configurable activation and dropout parameters"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/auto_shard.py": {
+    "shard_model_split_nn_module": "shard a PyTorch nn.Module into N GraphModule shards using torch.fx tracing and automatic cutpoint detection",
+    "trace_model_with_leaf_modules": "trace a PyTorch model into a GraphModule while automatically wrapping untracable submodules as leaf nodes",
+    "split_nodes_find_cutpoints": "split a traced GraphModule into shard cutpoints based on parameter count and skip connection analysis",
+    "create_shard_to_param_count_map": "create a mapping from shard IDs to their total parameter counts using node-to-shard assignments",
+    "get_count_from_param_dict": "look up the parameter count for a node name from a param count dictionary with fallback matching"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/mevo.py": {
+    "build_memory_efficient_vocab_output": "build a MemoryEfficientVocabOutput module with shared proj_weight and tile_factor for memory-efficient softmax",
+    "create_baseline_softmax": "create a BaselineSoftmax module with shared proj_weight and optional LMCL margin and scale parameters",
+    "test_get_data": "test the get_data utility function to generate random input weight and target tensors for benchmarking",
+    "review_memory_efficient_vocab_output_forward": "review the MemoryEfficientVocabOutput forward method that fuses fc softmax and nll_loss in a tiled fashion",
+    "refactor_get_max_function": "refactor the GetMaxFunction autograd function to compute max-per-token from input and weight tensors"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/offload.py": {
+    "create_offload_model": "create an OffloadModel wrapping an nn.Sequential model to offload parameters to CPU during training",
+    "split_sequential_model": "split an nn.Sequential model into balanced shards by parameter count using the _split function",
+    "create_model_shard": "create a ModelShard wrapping a single model slice with forward_load and forward_drop methods",
+    "review_offload_function": "review the OffloadFunction autograd class that enables activation checkpointing at shard boundaries",
+    "review_shard_sync_layer": "review the ShardSyncLayer autograd class that synchronizes parameter loading between model shards"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/sync_batchnorm.py": {
+    "create_sync_batchnorm_layer": "create a SyncBatchNorm layer for distributed training with a custom process group",
+    "convert_sync_batchnorm": "convert all BatchNorm layers in a PyTorch module to SyncBatchNorm for distributed training",
+    "calculate_stats_distributed": "calculate mean, variance, and inverse standard deviation across distributed processes using all_reduce",
+    "review_sync_batchnorm_backward": "review the _SyncBatchNormFunction backward pass to understand gradient computation across processes",
+    "refactor_sync_batchnorm_checkpointing": "refactor SyncBatchNorm forward to handle checkpointing and recomputing phases in activation checkpointing"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/ampnet_pipe/ampnet.py": {
+    "create_task_without_skip_trackers": "create a Task for a partition and batch with optional activation checkpointing based on checkpoint_stop index",
+    "review_AsyncAMPnetEventLoop": "review the AsyncAMPnetEventLoop class and its pipeline parallel event loop methods for AMPnet weight prediction",
+    "run_async_send_inner": "run a forward pass on the first partition and return the result batch and activations PipeMessage",
+    "run_async_grad_inner": "run the backward pass by receiving gradient tensors and calling torch.autograd.backward on the stored activations",
+    "run_event_loop_across_minibatches": "run the trunk event loop across minibatches with warmup forward passes and steady state forward-backward scheduling"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/ampnet_pipe/pipe.py": {
+    "create_AMPnetPipe": "create an AMPnetPipe instance for asynchronous pipeline parallel training with stale weights",
+    "interleave_AMPnetPipe": "interleave training across minibatches using AMPnetPipe with a dataloader, criterion, and optimizer",
+    "run_AMPnetPipe_event_loop": "run the AMPnetPipe event loop for head, tail, or intermediate pipeline stages",
+    "review_AMPnetPipe_interleave": "review the AMPnetPipe interleave method for pipeline parallel training configuration",
+    "summarize_AMPnetPipe": "summarize the AMPnetPipe class which avoids the bubble issue using stale weights and gradients"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/data_parallel/gossip/distributed.py": {
+    "build_slowmo_ddp_wrapper": "build a SlowMoDistributedDataParallel wrapper around a PyTorch module for multi-node distributed training with SlowMo momentum",
+    "create_slowmo_base_algorithm": "create a SlowMoBaseAlgorithm enum to choose between LOCALSGD or SGP base algorithms for distributed averaging",
+    "run_perform_slowmo_step": "run the perform_slowmo method after optimizer.step to synchronize parameters across nodes using slow momentum",
+    "review_sgp_gossip_thread": "review the _sgp_gossip_target static method that runs the background gossip thread for push-sum parameter mixing",
+    "refactor_global_momentum_buffers": "refactor the _init_global_momentum_buffers method to shard slow momentum parameters across nodes for memory efficiency"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/data_parallel/gossip/gossiper.py": {
+    "create_gossiper_instance": "create a Gossiper instance with a torch tensor message and GraphManager for multi-peer communication",
+    "run_pushsum_mix": "run a PushSum mix step to perform consensus averaging across distributed peers",
+    "run_pushpull_mix": "run a PushPull mix step to perform doubly-stochastic consensus averaging across peers",
+    "refresh_gossiper_peers": "refresh the in and out peers on a Gossiper instance using refresh_peers_ with rotation",
+    "mix_outgoing_messages": "mix outgoing messages with weights using mix_out_msg_ to prepare tensors for gossip communication"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/data_parallel/gossip/graph_manager.py": {
+    "create_ring_graph_topology": "create a RingGraph instance to build a static ring topology for peer-to-peer communication",
+    "create_dynamic_exponential_graph": "create a DynamicDirectedExponentialGraph to build an exponential peer-to-peer communication topology",
+    "create_bipartite_graph": "create a DynamicBipartiteExponentialGraph to build a bipartite graph for alternating peer communication",
+    "get_peers_and_edges": "get the out-peers and in-peers for a rank using GraphManager get_peers or get_edges methods",
+    "create_npeer_dynamic_graph": "create an NPeerDynamicDirectedExponentialGraph to build a configurable N-peer dynamic topology"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/data_parallel/gossip/mixing_manager.py": {
+    "create_UniformMixing_instance": "create a UniformMixing instance with a GraphManager and torch device for gossip mixing weights",
+    "get_mixing_weights_UniformMixing": "get mixing weights from a UniformMixing instance using uniform allocation across peers",
+    "check_is_regular_MixingManager": "check if a MixingManager graph is regular with no bias in stationary distribution",
+    "check_is_uniform_MixingManager": "check if a MixingManager distributes mixing weights uniformly over peers",
+    "review_MixingManager_abstract_class": "review the MixingManager abstract class API for implementing custom gossip mixing strategies"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/data_parallel/gossip/utils/cuda_metering.py": {
+    "create_cuda_event_recorder": "create a CudaEventRecorder instance to start timing a named CUDA event",
+    "stop_cuda_event_recorder": "stop a CudaEventRecorder to record the end time of a CUDA event",
+    "get_cuda_timings": "get the CUDA event timings since last reset with average and standard deviation",
+    "get_all_cuda_timings": "get all CUDA event timings ever recorded with average and standard deviation",
+    "reset_cuda_timings": "reset the CUDA event recorder timings to start fresh measurements"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/data_parallel/gossip/utils/helpers.py": {
+    "flatten_tensors": "flatten a list of PyTorch tensors into a single contiguous 1D buffer for efficient communication",
+    "unflatten_tensors": "unflatten a 1D tensor buffer back into a list of tensors with original shapes",
+    "group_by_dtype": "group a list of PyTorch tensors by their data types into a dictionary",
+    "communicate": "communicate a list of tensors using a communication operation like all_reduce with automatic dtype grouping",
+    "create_process_group": "create and initialize a new PyTorch distributed process group with the given ranks"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/distributed_pipeline/graph.py": {
+    "build_MultiInputSequential": "build a MultiInputSequential module that chains multiple nn.Modules where the first accepts multiple tensor inputs",
+    "create_RemoteSequential": "create a RemoteSequential from a list of rpc.RRef objects to wrap remote modules sequentially",
+    "add_layer_PipelineModulesGraph": "add a RemoteModule layer with specified input sources and optional output count to a PipelineModulesGraph",
+    "add_sequence_PipelineModulesGraph": "add a sequence of RemoteModules to a PipelineModulesGraph where each module feeds into the next",
+    "partition_graph_PipelineModulesGraph": "partition a PipelineModulesGraph into device-local sequential groups and return tuples of nodes and remote module references"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/distributed_pipeline/loss.py": {
+    "create_distributed_loss": "create a distributed loss function from an nn.Module using DistributedLoss for RPC-based pipeline parallel training",
+    "use_dloss_with_rrefs": "use the returned dloss callable with input and target RRef objects to compute loss on a remote worker",
+    "review_DistributedLoss": "review the DistributedLoss factory function that wraps an nn.Module loss for RPC remote execution via _rloss",
+    "review__rloss": "review the _rloss helper that resolves RRef inputs and targets locally before calling the loss function",
+    "test_DistributedLoss": "test the DistributedLoss function by passing an nn.Module like nn.MSELoss and verifying the returned dloss callable"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/distributed_pipeline/partition_handler.py": {
+    "create_DistributedPipelineRecord": "create a DistributedPipelineRecord to store micro-batches as input to a single pipeline partition",
+    "feed_DistributedPipelineRecord": "feed individual tensors of a given chunk into a DistributedPipelineRecord remotely via RPC",
+    "run_partition_pipeline": "run pipeline parallelism on a PartitionHandler by processing all micro-batches through the partition module",
+    "compute_partition_chunk": "compute forward pass for a single micro-batch chunk with optional activation checkpointing support",
+    "make_pipeline_record": "make a DistributedPipelineRecord from a PartitionHandler with specified downstream consumer partitions"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/distributed_pipeline/pipeline.py": {
+    "create_DistributedPipeline": "create a DistributedPipeline wrapping a PipelineModulesGraph with micro-batch chunks and checkpointing strategy",
+    "run_DistributedPipeline_forward": "run the DistributedPipeline forward pass to process input tensors through partitioned pipeline stages",
+    "get_DistributedPipeline_parameter_rrefs": "get the remote parameter RRefs from all partitions in a DistributedPipeline instance",
+    "review_DistributedPipeline_Partition": "review the Partition dataclass that groups pipeline nodes with their RPC handler reference",
+    "test_check_pytorch_version": "test the check_pytorch_version function to verify PyTorch 1.8 or higher is installed"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/nn/distributed_pipeline/trace.py": {
+    "make_graph_pipeline": "create a PipelineModulesGraph from a PyTorch module using FX tracing for distributed pipeline parallelism",
+    "RemoteModuleTracer_is_leaf_module": "review the RemoteModuleTracer class to check if a module is a leaf RemoteModule for FX tracing",
+    "GraphCreator_create_graph": "build a PipelineModulesGraph by analyzing traced FX graph nodes and mapping RemoteModule data dependencies",
+    "GraphCreator_get_module": "get the nn.Module corresponding to a call_module FX node from the tracer root",
+    "call_trace_remote_module": "trace a PyTorch module with RemoteModuleTracer while temporarily patching RemoteModule named_modules and named_children"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/optim/dynamic_loss_scaler.py": {
+    "create_dynamic_loss_scaler": "create a DynamicLossScaler instance with custom init_scale and scale_factor parameters",
+    "scale_loss_outputs": "scale the model loss outputs by multiplying with the current loss_scale factor",
+    "step_optimizer_with_scaler": "unscale gradients and step the optimizer using the scaler step method",
+    "update_scaler_after_step": "update the loss scale factor after a successful optimizer step completes",
+    "unscale_optimizer_gradients": "unscale the optimizer gradients by dividing them by the current loss scale"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/tooling/layer_memory_tracker.py": {
+    "monitor_model_memory_layerwise": "create a LayerwiseMemoryTracker to monitor a PyTorch model's memory usage layer by layer during forward and backward passes",
+    "suggest_checkpoint_locations": "use suggest_checkpoint_location to find the best places to insert activation memory reset checkpoints in a model trace",
+    "plot_memory_traces": "call compare_memory_traces_in_plot to generate memory allocation and activation plots from LayerMemoryTrace data",
+    "find_optimal_activation_checkpoints": "use find_best_reset_points to compute ideal checkpoint placement given a list of per-layer activation sizes",
+    "track_process_group_allgather": "wrap a ProcessGroup with ProcessGroupTracker to monitor allgather calls and correlate them with memory traces"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/wgit/pygit.py": {
+    "init_pygit_repo": "create a PyGit instance to initialize or wrap a git repository within a wgit directory",
+    "pygit_add_all": "use PyGit add method to stage all untracked files not in gitignore to the index",
+    "pygit_commit": "use PyGit commit method to commit staged changes with a message to the wgit git repo",
+    "pygit_status": "use PyGit status method to get a dictionary of file paths and their pygit2 status codes",
+    "pygit_set_author_config": "use PyGit _set_author_config to read git user name and email from gitconfig or fallback defaults"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/wgit/repo.py": {
+    "init_weigit_repo": "create a new WeiGit repo in a directory to track neural network weight versions",
+    "add_tensor_checkpoint": "add a PyTorch checkpoint file to the WeiGit repo with per-tensor deduplication and gzip compression",
+    "commit_weigit_changes": "commit staged WeiGit changes to the repo with a descriptive commit message",
+    "check_repo_status": "check the status of tracked files in the WeiGit repo to see which are clean, added, or modified",
+    "recursive_apply_to_elements": "recursively traverse a nested dict or list and apply a callback function to each leaf element"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/wgit/sha1_store.py": {
+    "create_sha1_store": "create a new SHA1_Store at a given path with optional compression and deduplication settings",
+    "add_tensor_to_store": "add a PyTorch tensor or state dict to the SHA1_Store with optional gzip compression",
+    "get_tensor_from_store": "retrieve a tensor or dict from the SHA1_Store by its SHA1 hash string",
+    "delete_sha1_entry": "delete a SHA1 entry from the store by decrementing its reference count",
+    "query_store_size_info": "query original, deduped, and compressed size stats for a SHA1 entry or the entire store"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/wgit/signal_sparsity.py": {
+    "create_signal_sparsity_config": "create a SignalSparsity config with FFT algo and top-k percent for SST and DST sparsification",
+    "compress_tensor_with_lossy_compress": "compress a PyTorch tensor using SignalSparsity lossy_compress to get SST and DST sparse tensors",
+    "transform_dense_to_sst": "transform a dense tensor to a signal sparse tensor using dense_to_sst with FFT and top-k",
+    "reconstruct_dense_from_sst_dst": "reconstruct a dense tensor from SST and DST sparse tensors using sst_dst_to_dense",
+    "generate_random_sparse_mask": "generate a random sparse mask tensor with a given percent of non-zeros along a dimension"
+  },
+  "facebookresearch_fairscale/fairscale/experimental/wgit/signal_sparsity_profiling.py": {
+    "create_energy_concentration_profile": "create an EnergyConcentrationProfile instance to measure energy concentration on a specific tensor dimension",
+    "measure_energy_concentration": "measure the energy concentration of a PyTorch tensor across specified top-K percent thresholds",
+    "measure_fft_energy_concentration": "measure the energy concentration of a tensor in the FFT frequency domain",
+    "review_energy_concentration_profile_class": "review the EnergyConcentrationProfile class and its measure and measure_fft methods",
+    "summarize_signal_sparsity_profiling": "summarize the signal sparsity profiling module for tensor energy concentration analysis"
+  },
+  "facebookresearch_fairscale/fairscale/fair_dev/testing/testing.py": {
+    "set_random_seed": "set a random seed across python, numpy, and torch for reproducible testing",
+    "dist_init": "initialize torch distributed process group and rpc for multi-gpu testing across ranks",
+    "torch_spawn": "spawn a pytest test across multiple world sizes using torch multiprocessing",
+    "objects_are_equal": "compare two objects including tensors, dicts, and lists for equality with tolerance",
+    "check_same_model_params": "assert two torch nn modules have identical parameters and buffers"
+  },
+  "facebookresearch_fairscale/fairscale/fair_dev/testing/testing_memory.py": {
+    "find_tensor_by_shape_param": "find a torch.nn.parameter.Parameter tensor on the heap matching a specific target shape",
+    "find_tensor_by_shape_any": "find any tensor on the heap matching a specific target shape including non-parameter tensors",
+    "test_find_tensor_by_shape": "test the find_tensor_by_shape function to verify it locates tensors of a given shape on the heap",
+    "review_find_tensor_by_shape": "review the find_tensor_by_shape function and its garbage collection heap scanning logic",
+    "refactor_find_tensor_by_shape": "refactor the find_tensor_by_shape function to return matching tensors instead of a boolean"
+  },
+  "facebookresearch_fairscale/fairscale/internal/containers.py": {
+    "apply_to_tensors": "recursively apply a function to all PyTorch tensors nested in dicts, lists, tuples, or sets",
+    "apply_to_type": "recursively apply a function to all objects matching a type predicate across nested container types",
+    "to_np": "convert a PyTorch tensor or nested container of tensors to NumPy arrays",
+    "from_np": "convert a NumPy array or nested container of arrays to PyTorch tensors",
+    "pack_kwargs": "flatten positional and keyword arguments into separate key and value tuples for later reconstruction"
+  },
+  "facebookresearch_fairscale/fairscale/internal/object.py": {
+    "serialize_python_object_to_tensor": "serialize any Python object into a PyTorch ByteTensor using pickle for distributed communication",
+    "serialize_object_with_fixed_buffer": "serialize a Python object to a fixed-size PyTorch tensor padded with zeros for fixed-width messaging",
+    "deserialize_tensor_to_python_object": "deserialize a PyTorch tensor back into the original Python object using pickle",
+    "test_pyobject_to_tensor_roundtrip": "test that pyobject_to_tensor and tensor_to_pyobject roundtrip a Python object correctly",
+    "review_tensor_serialization_for_distributed": "review the pickle-based tensor serialization utilities for use in distributed PyTorch workflows"
+  },
+  "facebookresearch_fairscale/fairscale/internal/parallel.py": {
+    "chunk_and_pad_tensor": "chunk a PyTorch tensor into equal-sized parts with zero padding for the last chunk",
+    "validate_process_group_device": "validate a PyTorch process group is correctly configured for the given CUDA device",
+    "enable_sync_batch_norm": "enable PyTorch SyncBatchNorm layers in a module to work without DDP for FSDP training",
+    "get_cached_process_group": "get or create a cached PyTorch distributed process group by name and rank list",
+    "review_process_group_name_enum": "review the ProcessGroupName enum with default and reduce_scatter group name values"
+  },
+  "facebookresearch_fairscale/fairscale/internal/params.py": {
+    "calc_grad_norm": "calculate the gradient norm of a list of PyTorch parameters with a given p-norm order",
+    "recursive_copy_to_device": "recursively copy tensors inside nested lists, tuples, and dicts to a target device",
+    "get_global_rank": "get the global rank of a process within a PyTorch distributed process group",
+    "create_workhandle": "create a Workhandle dataclass instance wrapping a distributed handle with an optional callback",
+    "review_params_module": "review the FairScale params module for gradient norm calculation and device copy utilities"
+  },
+  "facebookresearch_fairscale/fairscale/internal/reduce_scatter_bucketer.py": {
+    "create_ReduceScatterBucketer": "create a ReduceScatterBucketer instance with a custom bucket size in megabytes",
+    "run_reduce_scatter_async": "run async reduce-scatter on a list of tensors with a callback function",
+    "run_flush_buckets": "run flush on the bucketer to execute all queued reduce-scatter operations",
+    "review_Bucket_class": "review the Bucket class flush method for reduce-scatter collective communication logic",
+    "test_bucket_teardown": "test the ReduceScatterBucketer teardown method to free all bucket buffers"
+  },
+  "facebookresearch_fairscale/fairscale/internal/state_dict.py": {
+    "find_module_instances": "find all occurrences of a given module class among a PyTorch module's children and return their state_dict-style paths",
+    "replace_by_prefix": "replace all keys matching a given old prefix with a new prefix in a PyTorch state_dict in place",
+    "find_layer_norm_modules": "find all LayerNorm module instances and their paths within a PyTorch neural network module",
+    "rename_state_dict_keys": "rename state_dict keys by replacing an old prefix string with a new prefix string",
+    "inspect_module_tree": "inspect a PyTorch module tree to locate all instances of a specific module subclass"
+  },
+  "facebookresearch_fairscale/fairscale/internal/version.py": {
+    "parse_torch_version_string": "parse a PyTorch version string like 1.12.0 into a tuple of integers",
+    "check_torch_prerelease_warning": "check if a PyTorch pre-release version string triggers a logging warning",
+    "get_current_torch_version_tuple": "get the current PyTorch version as a tuple of major minor and patch integers",
+    "review_torch_version_parsing": "review the torch_version function regex pattern for parsing version strings",
+    "test_torch_version_edge_cases": "test the torch_version function with invalid or pre-release version strings"
+  },
+  "facebookresearch_fairscale/fairscale/nn/checkpoint/checkpoint_activations.py": {
+    "checkpoint_wrapper_module": "wrap a PyTorch nn.Module with activation checkpointing to reduce GPU memory usage during training",
+    "disable_checkpointing_context": "use the disable_checkpointing context manager to temporarily skip activation checkpointing in a code block",
+    "is_checkpointing_check": "check whether the current forward pass is running under activation checkpointing",
+    "is_recomputing_check": "check whether the current forward pass is recomputing activations to avoid duplicate side effects",
+    "CheckpointFunction_autograd": "use the CheckpointFunction autograd class to perform custom activation checkpointing with non-tensor output support"
+  },
+  "facebookresearch_fairscale/fairscale/nn/checkpoint/checkpoint_utils.py": {
+    "patch_batchnorm_module": "patch all batchnorm instances in a PyTorch module so they don't track running stats during torch.no_grad()",
+    "review_patch_batchnorm": "review the patch_batchnorm function to understand how it hooks pre and post forward on batchnorm layers",
+    "refactor_patch_batchnorm": "refactor patch_batchnorm to support additional normalization layers beyond _BatchNorm",
+    "test_patch_batchnorm": "test patch_batchnorm by applying it to a module with BatchNorm1d, BatchNorm2d, and SyncBatchNorm layers",
+    "summarize_patch_batchnorm": "summarize how patch_batchnorm prevents incorrect running stats tracking during activation checkpointing"
+  },
+  "facebookresearch_fairscale/fairscale/nn/data_parallel/fsdp_optim_utils.py": {
+    "flatten_optim_state_dict": "shard a full optimizer state dict for FSDP by mapping global param IDs to local ones",
+    "check_param_counts_before_sharding": "validate that the number of FSDP instances matches the optimizer state param count before sharding",
+    "build_unflat_state_dict": "build an unflattened non-sharded optimizer state dict from gathered per-rank FSDP state dicts on rank 0",
+    "is_singleton_tensor": "check if a PyTorch tensor is dimensionless with zero dimensions for FSDP optimizer state handling",
+    "unflatten_optim_state": "convert optimizer state for flattened FSDP parameters back into original unflattened parameter shapes"
+  },
+  "facebookresearch_fairscale/fairscale/nn/data_parallel/fully_sharded_data_parallel.py": {
+    "wrap_module_with_fsdp": "wrap a PyTorch nn.Module with FullyShardedDataParallel to shard parameters across data parallel workers",
+    "fsdp_mixed_precision_forward": "run a forward pass with FSDP wrapped module using mixed precision FP16 computation and FP32 master weights",
+    "fsdp_gather_full_optim_state": "gather the full consolidated optimizer state dict from all FSDP ranks using gather_full_optim_state_dict",
+    "fsdp_consolidate_shard_weights": "consolidate sharded checkpoint weights from multiple ranks into a single unsharded state dict using consolidate_shard_weights",
+    "fsdp_auto_wrap_batchnorm": "auto wrap all BatchNorm layers in a module with a special single-rank FSDP instance using auto_wrap_bn"
+  },
+  "facebookresearch_fairscale/fairscale/nn/data_parallel/sharded_ddp.py": {
+    "build_sharded_ddp_wrapper": "build a ShardedDataParallel wrapper around a PyTorch module with an OSS sharded optimizer for gradient sharding",
+    "create_sdp_forward_pass": "create a forward pass through a ShardedDataParallel model that primes automatic gradient reduction to the correct rank",
+    "test_refresh_trainable": "test the ShardedDataParallel refresh_trainable method to update assumptions after freezing or unfreezing model parameters",
+    "review_no_sync_context": "review the ShardedDataParallel no_sync context manager to disable gradient synchronization for gradient accumulation",
+    "summarize_sync_buffers": "summarize the ShardedDataParallel sync_buffers method which broadcasts model buffers including batch norm statistics across ranks"
+  },
+  "facebookresearch_fairscale/fairscale/nn/misc/flatten_params_wrapper.py": {
+    "create_flat_parameter": "create a FlatParameter from a list of nn.Parameters to flatten them into a single tensor",
+    "wrap_module_with_flatten_params_wrapper": "wrap a PyTorch module with FlattenParamsWrapper to transparently flatten its parameters into flat tensors",
+    "get_param_views_from_flat_parameter": "get parameter views from a FlatParameter by calling get_param_views to reconstruct original shaped tensors",
+    "unflatten_params_context_manager": "use the unflatten_params context manager to temporarily restore original parameters from flattened state",
+    "get_flat_state_dict": "get the flattened state dict of a FlattenParamsWrapper using flat_state_dict instead of the default unflattened version"
+  },
+  "facebookresearch_fairscale/fairscale/nn/misc/param_bucket.py": {
+    "create_param_bucket": "create a ParamBucket to store multiple PyTorch parameters as views into a shared flat buffer",
+    "add_param_to_bucket": "add a PyTorch parameter tensor to a ParamBucket so its data becomes a view of the bucket buffer",
+    "create_grad_bucket": "create a GradBucket to manage gradient tensors as views into a shared flat buffer for communication",
+    "add_grad_to_bucket": "add a parameter gradient to a GradBucket so param.grad becomes a view of the bucket buffer",
+    "collapse_and_rebuild_grad_bucket": "collapse a GradBucket to release memory then rebuild it to restore gradient views"
+  },
+  "facebookresearch_fairscale/fairscale/nn/model_parallel/cross_entropy.py": {
+    "compute_vocab_parallel_cross_entropy": "compute cross-entropy loss for vocab-partitioned logits across model-parallel GPUs using vocab_parallel_cross_entropy",
+    "review_VocabParallelCrossEntropy_forward": "review the _VocabParallelCrossEntropy forward pass that computes logits max, masks targets, and all-reduces across GPUs",
+    "review_VocabParallelCrossEntropy_backward": "review the _VocabParallelCrossEntropy backward pass that computes softmax gradients with target class correction",
+    "refactor_vocab_parallel_cross_entropy": "refactor vocab_parallel_cross_entropy to support a different reduction operation or custom loss scaling",
+    "test_VocabParallelCrossEntropy": "test the _VocabParallelCrossEntropy autograd function with multi-GPU model parallel partitions and target masking"
+  },
+  "facebookresearch_fairscale/fairscale/nn/model_parallel/initialize.py": {
+    "initialize_model_parallel_groups": "initialize model parallel, data parallel, pipeline parallel, and context parallel process groups for distributed training",
+    "check_model_parallel_initialized": "check if model parallel and data parallel groups have been initialized before use",
+    "get_model_parallel_rank": "get the current rank within the model parallel group for this process",
+    "get_data_parallel_ranks": "get the list of ranks in the data parallel group for this process",
+    "destroy_model_parallel": "destroy and reset all model parallel, data parallel, pipeline parallel, and context parallel groups"
+  },
+  "facebookresearch_fairscale/fairscale/nn/model_parallel/layers.py": {
+    "create_VocabParallelEmbedding": "create a VocabParallelEmbedding layer to parallelize embeddings across the vocabulary dimension for model parallelism",
+    "create_ParallelEmbedding": "create a ParallelEmbedding layer to parallelize embeddings across the embedding dimension for model parallelism",
+    "create_ColumnParallelLinear": "create a ColumnParallelLinear layer to parallelize a linear layer along its output columns with optional all-gather",
+    "create_RowParallelLinear": "create a RowParallelLinear layer to parallelize a linear layer along its input rows with all-reduce",
+    "review_initialize_affine_weight": "review the _initialize_affine_weight function that builds master weights and scatters chunks across model parallel ranks"
+  },
+  "facebookresearch_fairscale/fairscale/nn/model_parallel/mappings.py": {
+    "copy_to_model_parallel_region": "copy a tensor into the model parallel region with all-reduce on backward pass",
+    "reduce_from_model_parallel_region": "all-reduce a tensor from the model parallel region across GPUs in the forward pass",
+    "scatter_to_model_parallel_region": "scatter a tensor across model parallel GPUs by splitting along the last dimension",
+    "gather_from_model_parallel_region": "gather and concatenate tensors from model parallel GPUs along the last dimension",
+    "review_mappings_module": "review the model parallel mappings module for tensor split gather and reduce operations"
+  },
+  "facebookresearch_fairscale/fairscale/nn/model_parallel/random.py": {
+    "initialize_model_parallel_seed": "initialize model parallel CUDA seeds for data and model parallel groups using a given seed value",
+    "fork_cuda_rng_state": "fork the CUDA RNG state to perform operations then restore the original state using the tracker context manager",
+    "checkpoint_model_function": "checkpoint a model or part of the model to save memory during training with proper RNG state tracking",
+    "add_cuda_rng_tracker": "add a named CUDA RNG state to the tracker with a specific seed value for later forking",
+    "reset_cuda_rng_tracker": "reset the CUDA RNG states tracker to its initial state clearing all tracked states and seeds"
+  },
+  "facebookresearch_fairscale/fairscale/nn/model_parallel/utils.py": {
+    "split_tensor_along_last_dim": "split a PyTorch tensor into equal partitions along its last dimension for model parallelism",
+    "ensure_divisibility": "assert that a numerator is evenly divisible by a given denominator and raise on failure",
+    "divide_and_check_no_remainder": "divide a numerator by a denominator after asserting the division has no remainder",
+    "vocab_range_from_global_vocab_size": "compute the start and end vocabulary index range for a given rank in model parallel training",
+    "vocab_range_from_per_partition_vocab_size": "compute the start and end vocabulary index range from a per-partition vocab size and rank"
+  },
+  "facebookresearch_fairscale/fairscale/nn/moe/moe_layer.py": {
+    "create_moe_layer": "create a MOELayer with a Top2Gate and expert network for mixture of experts",
+    "run_moe_forward": "run the MOELayer forward pass with a 3D input tensor to get expert-weighted output",
+    "review_moe_layer_init": "review the MOELayer constructor to understand gate, experts, and process group arguments",
+    "test_alltoall_autograd": "test the _AllToAll custom autograd function for distributed all-to-all communication",
+    "summarize_moe_layer_forward": "summarize the MOELayer forward method implementing GShard Algorithm 2 with dispatch and combine"
+  },
+  "facebookresearch_fairscale/fairscale/nn/moe/top2gate.py": {
+    "create_Top2Gate_module": "create a Top2Gate module with a given model dimension and number of experts",
+    "run_top2gating_on_logits": "run top2gating on logits tensor to get auxiliary loss, combine weights, and dispatch mask",
+    "generate_gumbel_rsample": "generate Gumbel-distributed random samples for a given shape and device using gumbel_rsample",
+    "create_one_hot_encoding": "create a one-hot encoded tensor from index values and number of classes",
+    "review_top2gating_implementation": "review the top2gating function implementing Top2Gating from the GShard paper with Gumbel-max trick"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/async_pipe.py": {
+    "create_asyncpipe_for_pipeline_parallelism": "create an AsyncPipe wrapping an nn.Sequential module with a balance list for pipeline parallel training",
+    "build_asyncpipe_with_checkpointing": "build an AsyncPipe with checkpoint set to 'always' to enable activation checkpointing across all micro-batches",
+    "run_asyncpipe_forward": "run the AsyncPipe forward pass on input tensors to get output through the pipeline",
+    "test_asyncpipe_partitioning": "test the AsyncPipe instantiate_partition method to verify module layers are split across ranks correctly",
+    "review_asyncpipe_balance_validation": "review the check_balance and verify_module functions to understand validation of module and balance arguments"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/async_pipeline.py": {
+    "create_async_pipeline": "create an AsyncPipeline instance with module partitions, skip layout, and process group for pipeline parallelism",
+    "run_async_pipeline": "run the AsyncPipeline with training batches and an optional threading event for async execution",
+    "configure_checkpoint_stop": "configure the checkpoint_stop property to control activation checkpointing based on training or eval mode",
+    "setup_transport": "setup the MakeTransport with RPC or MPI communication using worker map and input device settings",
+    "review_async_pipeline_class": "review the AsyncPipeline class and its run method for pipeline parallelism across distributed ranks"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/async_schedule.py": {
+    "create_task_pipeline": "create a Task for a pipeline partition with optional activation checkpointing based on chunk id",
+    "run_async_event_loop": "run the AsyncEventLoop event loop to process microbatches across pipeline parallel stages",
+    "send_async_activations": "send activation tensors asynchronously to the next pipeline stage using AutogradWithoutActivations",
+    "perform_backward_invocation": "perform the backward pass for a pipeline invocation by looking up saved activations and calling backward",
+    "wrap_module_for_pipeline": "wrap an nn.Sequential module with ModuleWrapper including its location and invocation metadata"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/batchnorm.py": {
+    "create_DeferredBatchNorm_layer": "create a DeferredBatchNorm layer with num_features and chunks for mini-batch statistics tracking",
+    "convert_model_batch_norm": "convert all BatchNorm layers in a PyTorch model to DeferredBatchNorm using convert_deferred_batch_norm",
+    "track_micro_batch_statistics": "track running mean and variance across multiple micro-batches before committing statistics",
+    "review_DeferredBatchNorm_forward": "review the DeferredBatchNorm forward pass logic for training mode micro-batch normalization",
+    "refactor_DeferredBatchNorm_commit": "refactor the DeferredBatchNorm _commit method to customize exponential moving average calculation"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/checkpoint.py": {
+    "create_Checkpointing": "create a Checkpointing instance with a function and batch to enable activation checkpointing",
+    "call_checkpoint_method": "call the checkpoint method on a Checkpointing object to apply Checkpoint autograd function to a batch",
+    "call_recompute_method": "call the recompute method on a Checkpointing object to apply Recompute autograd function to a batch",
+    "use_is_checkpointing": "use is_checkpointing to check if the current forward pass is under activation checkpointing",
+    "use_is_recomputing": "use is_recomputing to check if the current forward pass is under checkpoint recomputation"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/copy.py": {
+    "use_copy_autograd_function": "use the Copy autograd function to copy tensors between CUDA streams with non-blocking transfers",
+    "use_wait_autograd_function": "use the Wait autograd function to synchronize one CUDA stream to another before starting operations",
+    "review_copy_forward_backward": "review the Copy class forward and backward methods for stream-aware tensor copying with autograd support",
+    "review_wait_forward_backward": "review the Wait class forward and backward methods for stream synchronization with gradient passthrough",
+    "summarize_context_class": "summarize the Context class interface that stores prev_stream and next_stream for Copy and Wait autograd functions"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/dependency.py": {
+    "fork_tensor_autograd_lane": "branch out from an autograd lane of a PyTorch tensor using the fork function",
+    "join_two_autograd_lanes": "merge two autograd lanes back together using the join function with a tensor and phony",
+    "use_fork_autograd_function": "apply the Fork autograd Function directly to detach a tensor and produce a phony output",
+    "use_join_autograd_function": "apply the Join autograd Function to merge an input tensor with a phony tensor",
+    "review_dependency_module": "review the dependency module for arbitrary autograd lane branching and merging utilities"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/messages.py": {
+    "create_transport_with_MakeTransport": "create a Transport instance using MakeTransport with use_rpc, worker_map, and input_device arguments",
+    "send_message_with_RpcTransport": "send a PipeMessage via RpcTransport using rpc_sync or rpc_async to a remote worker",
+    "recv_message_with_SendRecvTransport": "receive a PipeMessage header and tensors using SendRecvTransport with torch.distributed.recv",
+    "handle_out_of_order_with_get_out_of_order": "handle out-of-order microbatch messages by requeuing them until the expected index arrives",
+    "move_tensors_with_to_input_device": "move a tuple of tensors to a specified input device using to_input_device"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/microbatch.py": {
+    "create_Batch_tensor": "create a Batch object wrapping a single PyTorch tensor with an index value",
+    "create_Batch_tensors": "create a Batch object wrapping a tuple of PyTorch tensors with an index value",
+    "scatter_microbatch": "split a mini-batch tensor or tuple of tensors into multiple micro-batches using scatter",
+    "gather_microbatch": "concatenate a list of Batch micro-batches back into a single mini-batch using gather",
+    "check_tensor_input": "validate that an input is a PyTorch tensor or tuple of tensors using check"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/phony.py": {
+    "get_phony_tensor": "get a cached phony tensor for a given device and requires_grad setting",
+    "create_phony_dependency": "create a phony tensor to establish arbitrary dependency in a PyTorch autograd graph",
+    "cache_phony_per_device": "cache and reuse phony tensors keyed by device and requires_grad to avoid reallocation",
+    "review_get_phony": "review the get_phony function that returns a cached empty tensor for autograd graph dependencies",
+    "summarize_phony_module": "summarize the phony module that provides zero-space tensors for autograd graph dependency tracking"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/pipe.py": {
+    "build_pipe_model": "build a Pipe module wrapping an nn.Sequential model with balance and chunks for pipeline parallelism",
+    "create_pipe_forward": "create a forward pass through a Pipe module that scatters input into micro-batches and runs pipeline parallelism",
+    "test_split_module": "test the split_module function to partition an nn.Sequential model across multiple CUDA devices",
+    "review_verify_module": "review the verify_module function to validate an nn.Sequential module has no duplicate children",
+    "refactor_verify_splitting": "refactor the verify_splitting function to check for duplicate parameters across partitions on distinct devices"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/pipeline.py": {
+    "run_pipeline_parallelism": "run pipeline parallelism across micro-batches and partitions using the Pipeline class",
+    "generate_clock_cycle_schedule": "generate a pipeline parallel schedule for micro-batches and partitions using clock_cycles",
+    "copy_batch_between_streams": "copy a micro-batch between GPU streams using the copy function",
+    "wait_for_stream_sync": "synchronize GPU streams and wait for batch transfer using the wait function",
+    "depend_microbatch_backprop": "establish backpropagation dependency ordering between micro-batches using the depend function"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/rpc.py": {
+    "build_PipeRPCWrapper": "build a PipeRPCWrapper to control pipeline parallel training from a single rank 0 process",
+    "create_foreach_worker_callback": "create a foreach_worker callback to register an optimizer on each pipeline parallel worker",
+    "run_PipeRPCWrapper_forward": "run the PipeRPCWrapper forward pass to execute pipeline parallel inference across distributed workers",
+    "review_PipeBackRedirect_backward": "review the PipeBackRedirect autograd function to understand how gradients are sent back through RPC",
+    "test_get_shapes_get_dtype": "test the get_shapes and get_dtype utility functions to extract tensor shape and dtype metadata"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/stream.py": {
+    "create_new_stream": "create a new CPU or CUDA stream for a given torch device",
+    "get_current_stream": "get the current stream for a CPU or CUDA torch device",
+    "use_stream_context": "use a context manager to switch to a specific CPU or CUDA stream",
+    "wait_stream_sync": "make a source stream wait for a target stream to complete its queued work",
+    "record_stream_tensor": "record a tensor on a CPU or CUDA stream to protect against reallocation"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/worker.py": {
+    "create_Task_for_microbatch": "create a Task with compute and finalize callables to process a micro-batch on a pipeline partition",
+    "run_Task_compute": "run the Task compute method to execute a micro-batch computation on the assigned CUDA stream",
+    "finalize_Task_batch": "finalize a Task batch by running the finalize callable after worker threads complete compute",
+    "spawn_worker_threads": "spawn worker threads bound to specific devices using spawn_workers as a context manager",
+    "create_and_join_workers": "create worker threads with create_workers and cleanly shut them down with join_workers"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/balance/blockpartition.py": {
+    "solve_sequence_partitions": "split a sequence of integers into balanced partitions minimizing variance between partition sums",
+    "solve_balanced_split": "partition a list of numbers into k groups with approximately equal normalized sums",
+    "solve_minimize_variance": "divide a sequence into N partitions where each partition sum is as close as possible",
+    "review_solve_algorithm": "review the Block Partitions of Sequences algorithm by Imre Barany for balancing partition sums",
+    "test_solve_edge_cases": "test the solve function with edge cases like single element sequences or equal partitions"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/balance/profile.py": {
+    "profile_times_per_layer": "profile elapsed times per layer of an nn.Sequential module using forward and backward passes",
+    "profile_sizes_per_layer": "profile CUDA memory usage per layer of an nn.Sequential module including parameters and activations",
+    "create_layerwise_sandbox": "create deep copies of each layer in an nn.Sequential module for safe profiling without modifying the original",
+    "detach_batch_from_autograd": "detach all tensors in a Batch from the autograd graph while preserving requires_grad flags",
+    "review_profile_module": "review the per-layer profiler module that measures timing and memory usage for pipeline parallel balancing"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/skip/layout.py": {
+    "build_skip_layout": "build a SkipLayout object from skip routes dict and number of partitions",
+    "inspect_skip_layout_partitions": "inspect skip connection layout across a list of nn.Sequential partition modules",
+    "copy_policy_by_dest": "generate skip copy routes for a destination partition using SkipLayout copy_policy method",
+    "copy_policy_by_src": "generate skip copy routes from a source partition using SkipLayout copy_policy_by_src method",
+    "review_requires_copy": "review whether a skip connection requires partition-to-partition copy using SkipLayout requires_copy method"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/skip/portal.py": {
+    "create_Portal": "create a Portal instance to store a tensor with a specified life count and index",
+    "use_Portal_blue": "use Portal blue method to hide a tensor from the autograd engine and return a phony",
+    "use_Portal_orange": "use Portal orange method to retrieve a hidden tensor without losing backpropagation ability",
+    "use_Portal_copy": "use Portal copy method to copy a hidden tensor between two streams with backpropagation",
+    "review_PortalBlue_PortalOrange_PortalCopy": "review the PortalBlue, PortalOrange, and PortalCopy autograd functions for skip connection tensor handling"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/skip/skippable.py": {
+    "define_skippable_module": "use the skippable decorator to define a PyTorch module with named stash and pop skip connections",
+    "stash_skip_tensor": "yield a stash command to save a named skip tensor for later use by downstream layers",
+    "pop_skip_tensor": "yield a pop command to retrieve a previously stashed skip tensor by its declared name",
+    "isolate_skip_namespace": "call isolate on a skippable module to assign skip tensors to a Namespace for reuse without conflict",
+    "verify_skippables_integrity": "run verify_skippables on an nn.Sequential module to check all stash and pop pairs are matched"
+  },
+  "facebookresearch_fairscale/fairscale/nn/pipe/skip/tracker.py": {
+    "create_SkipTracker": "create a SkipTracker instance to track saved skip tensors on the current thread",
+    "create_SkipTrackerThroughPortals": "create a SkipTrackerThroughPortals instance with a SkipLayout and index to track skip tensors through portals",
+    "use_skip_tracker_context": "use the use_skip_tracker context manager to register a skip tracker on the current thread",
+    "get_current_skip_tracker": "get the current skip tracker on the current thread using current_skip_tracker function",
+    "save_and_load_skip_tensor": "save a skip tensor with SkipTracker.save and retrieve it with SkipTracker.load using namespace and name"
+  },
+  "facebookresearch_fairscale/fairscale/nn/wrap/auto_wrap.py": {
+    "enable_wrap_context_manager": "use enable_wrap context manager to wrap nn modules with a specified wrapper class and config",
+    "auto_wrap_recursive": "recursively wrap child modules of a transformer block based on an auto wrap policy function",
+    "wrap_module_annotation": "annotate a module with wrap so it gets wrapped when inside an enable_wrap context manager",
+    "default_auto_wrap_policy": "use the default auto wrap policy to decide if a module should be wrapped based on parameter count",
+    "config_auto_wrap_policy": "use the config auto wrap policy to wrap modules that have a wrapper_config attribute set"
+  },
+  "facebookresearch_fairscale/fairscale/optim/adam.py": {
+    "create_fused_adam_optimizer": "create a FusedAdam optimizer with mixed precision for FP16 model parameters on GPU",
+    "create_adam_with_custom_lr": "create an Adam optimizer with a custom learning rate and beta values for training",
+    "run_adam_step": "run a single optimization step with the FusedAdam optimizer to update model parameters",
+    "review_precision_enum": "review the Precision enum to choose between FULL_PRECISION, MIXED_PRECISION, or PURE_FP16 modes",
+    "review_multidevicereplicator": "review the _MultiDeviceReplicator class for lazy per-device tensor copying and caching"
+  },
+  "facebookresearch_fairscale/fairscale/optim/adascale.py": {
+    "create_adascale_optimizer": "create an AdaScale optimizer wrapping SGD for distributed large batch training",
+    "create_adascale_wrapper": "create an AdaScaleWrapper optimizer with model parameters and SGD class",
+    "review_adascale_gain": "review the AdaScale gain method to understand learning rate scaling ratio",
+    "refactor_adascale_set_scale": "refactor the AdaScale set_scale method to update batch size scaling factor",
+    "test_adascale_step": "test the AdaScale step method to verify scaled learning rate optimizer updates"
+  },
+  "facebookresearch_fairscale/fairscale/optim/grad_scaler.py": {
+    "create_shardedgradscaler": "create a ShardedGradScaler instance with custom init_scale, growth_factor, and process_group parameters",
+    "scale_loss_tensors": "scale a loss tensor or list of tensors by the GradScaler's current scale factor",
+    "unscale_optimizer_grads": "unscale the gradients of an SGD optimizer and synchronize inf detection across distributed ranks",
+    "step_optimizer_with_scaler": "step an optimizer with gradient scaling, automatically calling unscale and skipping steps on inf/NaN",
+    "update_scaler_scale": "update the GradScaler's scale factor based on detected inf/NaN gradients or set a new manual scale"
+  },
+  "facebookresearch_fairscale/fairscale/optim/layerwise_gradient_scaler.py": {
+    "create_LayerwiseGradientScaler": "create a LayerwiseGradientScaler for a PyTorch model with per-layer gradient scaling factors",
+    "call_scale_method": "call the scale method on a LayerwiseGradientScaler to register backward hooks before loss backward pass",
+    "call_unscale_method": "call the unscale method on a LayerwiseGradientScaler to unscale gradients and remove backward hooks",
+    "call_step_method": "call the step method on a LayerwiseGradientScaler to conditionally run optimizer step and update scales",
+    "get_layer_info": "get the list of LayerInfo objects from a LayerwiseGradientScaler to inspect per-layer scaling factors"
+  },
+  "facebookresearch_fairscale/fairscale/optim/oss.py": {
+    "create_OSS_optimizer": "create an OSS sharded optimizer wrapping Adam with lr 0.01 for distributed training",
+    "run_OSS_step": "run a single OSS optimizer step to update and broadcast sharded parameters across ranks",
+    "clip_OSS_grad_norm": "clip the OSS optimizer gradients to a max norm across all distributed ranks",
+    "consolidate_OSS_state_dict": "consolidate the OSS optimizer state dict from all ranks to a single recipient rank",
+    "refresh_OSS_trainable": "refresh the OSS optimizer partitioning after freezing or unfreezing model parameters"
+  },
+  "facebookresearch_fairscale/tests/experimental/nn/test_auto_shard.py": {
+    "test_transformer_auto_shard": "test auto-sharding a TransformerModel with shard_model and verify parameter counts across shards",
+    "test_branched_network_shard": "test auto-sharding a BranchedNetwork with dynamic conditionals and verify output matches original model",
+    "create_positional_encoding": "create a PositionalEncoding module that adds sinusoidal positional embeddings to input tensors",
+    "create_transformer_model": "create a TransformerModel with embedding, positional encoding, transformer encoder, and linear decoder layers",
+    "create_branched_network": "create a BranchedNetwork with multiple Branch modules that route input through left or right linear layers"
+  },
+  "facebookresearch_fairscale/tests/experimental/nn/test_mevo.py": {
+    "test_mevo_eval_mode": "test the MEVO module in eval mode without a target tensor and verify output shape",
+    "test_mevo_kernel_with_scale": "test the MEVO kernel with parametrized lmcl_scale values and compare gradients against BaselineSoftmaxNllLoss",
+    "run_mevo_forward_backward": "run the MEVO forward and backward pass with tiled computation and measure peak GPU memory usage",
+    "compare_mevo_gradients": "compare MEVO weight and input gradients against BaselineSoftmaxNllLoss reference implementation for correctness",
+    "generate_mevo_test_data": "generate random input weight and target tensors using get_data for MEVO testing with configurable shapes and dtypes"
+  },
+  "facebookresearch_fairscale/tests/experimental/nn/test_multiprocess_pipe.py": {
+    "create_sequence_pipeline": "create a DistributedPipeline from a list of RemoteModuleParams layers with device balance and chunk configuration",
+    "test_create_pipeline": "test creating a single-layer DistributedPipeline with one RemoteModule on a specified worker device",
+    "test_forward_backward": "test forward pass and backward gradient computation through a multi-worker distributed pipeline with MSELoss",
+    "test_distributed_optimizer_update": "test parameter updates using DistributedOptimizer with SGD across multiple RPC workers in a pipeline",
+    "test_auto_graph_extract": "test automatic graph extraction from a ShardedLinearLayer model using make_graph and verify partition structure"
+  },
+  "facebookresearch_fairscale/tests/experimental/nn/test_offload.py": {
+    "test_OffloadModel_single_run": "test the OffloadModel wrapper with a single forward and backward pass on CUDA",
+    "test_OffloadModel_correctness": "test OffloadModel correctness against a regular model across fp16, checkpointing, and microbatch combinations",
+    "create_Sequential_model": "create a torch.nn.Sequential model with configurable linear layers for input, hidden, and output dimensions",
+    "check_parity_offload_vanilla": "check parameter and buffer parity between an offloaded model and a vanilla model after training",
+    "train_OffloadModel_with_microbatches": "train an OffloadModel with optional fp16, activation checkpointing, and microbatch support"
+  },
+  "facebookresearch_fairscale/tests/experimental/nn/test_sync_batchnorm.py": {
+    "test_syncbatchnorm_parity": "test that FairScale SyncBatchNorm produces identical outputs to PyTorch SyncBatchNorm across 1D, 2D, and 3D inputs",
+    "test_syncbatchnorm_ddp": "test FairScale SyncBatchNorm wrapped in DDP for parity with PyTorch SyncBatchNorm in distributed settings",
+    "test_syncbatchnorm_memory": "test that FairScale SyncBatchNorm uses less GPU memory than PyTorch SyncBatchNorm under DDP",
+    "test_syncbatchnorm_checkpoint": "test FairScale SyncBatchNorm wrapped with checkpoint_wrapper for activation checkpointing parity",
+    "review_check_parity": "review the check_parity function that compares forward and backward pass outputs between two batch norm modules"
+  },
+  "facebookresearch_fairscale/tests/experimental/nn/ampnet_pipe_process/test_ampnet_pipe.py": {
+    "run_async_event_loop_interleave_simple": "run the async_event_loop_interleave_simple test with a 2-worker AMPnetPipe and MSELoss",
+    "run_async_event_loop_interleave_hard": "run the async_event_loop_interleave_hard test with a 4-worker AMPnetPipe and MSELoss",
+    "create_MySGD_optimizer": "create a MySGD optimizer instance with a custom learning rate for model parameters",
+    "create_AMPnetDelegate": "create an AMPnetDelegate to transform inputs, targets, and log loss during piped training",
+    "create_FakeDataset": "create a FakeDataset with configurable input_dim, output_dim, and total_samples for testing"
+  },
+  "facebookresearch_fairscale/tests/experimental/nn/data_parallel/test_gossip.py": {
+    "test_slowmo_distributed_data_parallel": "test SlowMoDistributedDataParallel with LocalSGD and SGP base algorithms across multiple GPU configurations",
+    "run_get_gpus_for_rank": "run get_gpus_for_rank to split available GPUs into subsets for each distributed process rank",
+    "test_localsgd_frequency": "test LocalSGD synchronization behavior with frequency greater than 2 across distributed processes",
+    "run_find_memory_used_by_model": "run find_memory_used_by_model to measure GPU memory allocation for a given PyTorch model class",
+    "test_slowmo_memory_efficient": "test SlowMo memory-efficient mode to verify extra memory usage stays within expected bounds"
+  },
+  "facebookresearch_fairscale/tests/experimental/optim/test_dynamic_loss_scaler.py": {
+    "test_dynamic_loss_scaler_without_overflow": "test the DynamicLossScaler by training a linear regression model over 1000 epochs without gradient overflow",
+    "train_model_with_dynamic_loss_scaler": "train a PyTorch model using DynamicLossScaler to scale loss, step optimizer, and update scaler each epoch",
+    "init_synthetic_linear_regression_dataset": "create a synthetic linear regression dataset with 100 shuffled samples and convert to PyTorch tensors",
+    "review_manual_linear_regression_module": "review the ManualLinearRegression nn.Module class with a single nn.Linear layer for 1D input and output",
+    "refactor_dynamic_loss_scaler_training_loop": "refactor the training loop to use DynamicLossScaler scale, backward, step, and update methods for mixed precision"
+  },
+  "facebookresearch_fairscale/tests/experimental/tooling/test_layer_memory_tracker.py": {
+    "test_layerwise_memory_tracker": "test the LayerwiseMemoryTracker by monitoring a PyTorch model and collecting forward and backward memory traces",
+    "test_layerwise_memory_tracker_with_ddp": "test the LayerwiseMemoryTracker with DistributedDataParallel to collect memory traces across multiple GPUs",
+    "test_layerwise_memory_tracker_with_fsdp": "test the LayerwiseMemoryTracker with FullyShardedDataParallel to collect memory traces and all-gathered activations",
+    "test_find_best_reset_points": "test the find_best_reset_points function to compute optimal activation checkpointing split points for a list of layer activations",
+    "test_layerwise_memory_tracker_with_nlp_model": "test the LayerwiseMemoryTracker with a GPT2 NLP model to verify memory trace collection on a realistic architecture"
+  },
+  "facebookresearch_fairscale/tests/experimental/wgit/test_api.py": {
+    "test_Repo_init": "test the Repo class initialization that creates a wgit directory with sha1_store and git tracking",
+    "test_Repo_add": "test the Repo add method that tracks PyTorch checkpoint files with optional per_tensor and gzip options",
+    "test_Repo_commit": "test the Repo commit method that saves tracked changes with a commit message to the git log",
+    "test_Repo_status": "test the Repo status method that returns CLEAN, CHANGES_ADDED_NOT_COMMITED, or CHANGES_NOT_ADDED for tracked files",
+    "test_Repo_log": "test the Repo log method that prints the version history of a tracked checkpoint file"
+  },
+  "facebookresearch_fairscale/tests/experimental/wgit/test_cli.py": {
+    "test_cli_init": "test the wgit cli init command to create a new checkpoint version control repository",
+    "test_cli_add": "test the wgit cli add command to stage a PyTorch checkpoint file for commit",
+    "test_cli_commit": "test the wgit cli commit command to commit staged checkpoint changes with a message",
+    "test_cli_status": "test the wgit cli status command to check the cleanliness of tracked checkpoint files",
+    "test_cli_log": "test the wgit cli log command to display the commit history of the repository"
+  },
+  "facebookresearch_fairscale/tests/experimental/wgit/test_pygit.py": {
+    "test_PyGit_initialization": "test the PyGit class initialization with a parent path and gitignore list",
+    "test_PyGit_add": "test the PyGit add method to stage all untracked files in the wgit repo",
+    "test_PyGit_commit": "test the PyGit commit method to commit staged changes with a message",
+    "test_PyGit_status": "test the PyGit status method to get file status codes from the wgit repo",
+    "test_PyGit_teardown": "test the PyGit teardown cleanup to remove the temp wgit testing directory"
+  },
+  "facebookresearch_fairscale/tests/experimental/wgit/test_sha1_store.py": {
+    "test_SHA1_Store_add_file": "test the SHA1_Store add method by storing PyTorch checkpoint files with optional compression",
+    "test_SHA1_Store_add_state_dict": "test the SHA1_Store add method by storing PyTorch state dicts and verifying ref counts",
+    "test_SHA1_Store_add_tensor": "test the SHA1_Store add method by storing a PyTorch tensor and checking the SHA1 key",
+    "test_SHA1_Store_get": "test the SHA1_Store get method by retrieving stored files, state dicts, and tensors by SHA1 hash",
+    "test_SHA1_Store_delete": "test the SHA1_Store delete method with reference counting to ensure entries are removed correctly"
+  },
+  "facebookresearch_fairscale/tests/experimental/wgit/test_signal_sparsity.py": {
+    "create_SignalSparsity": "create a SignalSparsity instance with sst_top_k_element and dst_top_k_element to configure sparsity",
+    "test_dense_to_sst": "test the dense_to_sst method to convert a dense tensor into sparse signal space via FFT",
+    "test_dense_sst_to_dst": "test the dense_sst_to_dst method to compute the DST tensor from dense and SST inputs",
+    "test_sst_dst_to_dense": "test the sst_dst_to_dense method to reconstruct a dense tensor from SST and DST tensors",
+    "test_lossy_compress": "test the lossy_compress method to perform end-to-end lossy compression returning reconstructed tensor, SST, and DST"
+  },
+  "facebookresearch_fairscale/tests/experimental/wgit/test_signal_sparsity_profiling.py": {
+    "test_ECP_measure": "test the EnergyConcentrationProfile measure method with a PyTorch tensor on a specified dimension",
+    "test_ECP_measure_fft": "test the EnergyConcentrationProfile measure_fft method to measure FFT energy concentration on a tensor",
+    "test_nonblocking": "test that CPU runs ahead of GPU in the ECP measuring process with a large tensor",
+    "test_expected_output": "test ECP measure and measure_fft output against expected tensors using parametrize test cases",
+    "test_ECP_constructor": "test creating an EnergyConcentrationProfile instance with a dimension and top_k_percents list"
+  },
+  "facebookresearch_fairscale/tests/nn/checkpoint/test_checkpoint_activations.py": {
+    "test_checkpoint_wrapper_basic": "test the checkpoint_wrapper function on a basic FFN model to verify loss and gradient correctness",
+    "test_cpu_offload_memory": "test the checkpoint_wrapper with cpu_offload enabled to verify GPU memory savings during activation checkpointing",
+    "test_multiin_multiout_checkpointing": "test checkpoint_wrapper on a model with multiple inputs and outputs to verify correctness across configurations",
+    "test_disable_checkpointing": "test the disable_checkpointing context manager to verify checkpointing can be temporarily disabled during forward and backward passes",
+    "test_checkpoint_requires_grad": "test checkpoint_wrapper behavior when some model layers have requires_grad set to False to verify selective recomputation"
+  },
+  "facebookresearch_fairscale/tests/nn/checkpoint/test_checkpoint_activations_norm.py": {
+    "test_checkpoint_wrapper_with_layernorm": "test checkpoint_wrapper with LayerNorm across cpu and cuda devices with mixed precision modes",
+    "test_checkpoint_wrapper_with_batchnorm2d": "test checkpoint_wrapper with BatchNorm2d across cpu and cuda devices with fp16 and call_half precision",
+    "get_model_with_checkpointing": "create a Sequential model with Linear and norm layers optionally wrapped by checkpoint_wrapper",
+    "test_norm_mixed_precision_fp16": "test checkpoint_wrapper with fp16 mixed precision by setting param data and buffers to half precision",
+    "test_norm_backward_pass": "test forward and backward pass of checkpointed model with SGD optimizer and gradient computation"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp.py": {
+    "test_FSDP_mixed_precision": "test FullyShardedDataParallel with mixed precision training using ShardedGradScaler and autocast",
+    "test_FSDP_identical_outputs": "test FullyShardedDataParallel produces identical outputs and losses compared to PyTorch DDP",
+    "test_FSDP_cpu_offload": "test FullyShardedDataParallel with CPU offload enabled for model parameters and gradients",
+    "test_FSDP_mixture_of_experts": "test FullyShardedDataParallel with MixtureOfExperts model using separate expert process groups",
+    "test_FSDP_serialization": "test pickling and multiprocessing serialization of FullyShardedDataParallel wrapped modules"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_apply.py": {
+    "test_FSDP_transformer_weight_init": "test FSDP weight initialization on a TransformerWithSharedParams model across distributed config options",
+    "test_FSDP_nested_wrapped_weight_init": "test FSDP weight initialization on a NestedWrappedModule model across distributed config options",
+    "run_model_init_and_apply_custom_weight_init": "run a model factory function that creates a model and applies BERT-style weight initialization via model.apply",
+    "run_init_bert_params_": "run the BERT weight initializer on nn.Linear, nn.Embedding, and nn.MultiheadAttention modules with normal distribution",
+    "review_TestApply_class": "review the TestApply class that parameterizes FSDP weight init tests across multiple distributed configurations"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_freezing_weights.py": {
+    "test_FSDP_submodule_freezing_weights": "test FSDP with frozen head parameters using the FreezeModel class",
+    "test_FSDP_freezing_requires_grad": "test FSDP weight freezing by setting requires_grad to False on trunk parameters",
+    "test_FSDP_freezing_grad_to_none": "test FSDP weight freezing by setting grad to None after backward pass",
+    "test_FSDP_nested_trunk_freezing": "test FSDP with a NestedTrunkModel where trunk blocks are individually wrapped and frozen",
+    "test_FSDP_vs_DDP_freezing": "test that FSDP produces identical state dicts to DDP when freezing trunk weights"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_fwd_fwd_bwd_bwd.py": {
+    "test_FSDP_fwd_fwd_bwd_bwd": "test the FSDP forward-forward-backward-backward pattern used in pipeline parallelism training",
+    "run_FFN_forward": "run a simple feed-forward neural network with two linear layers and ReLU activation",
+    "test_FSDP_no_sync_context": "test the FSDP no_sync context manager for deferring gradient synchronization across micro-batches",
+    "wrap_model_with_FSDP": "wrap a PyTorch model with FullyShardedDataParallel using enable_wrap and wrap utilities",
+    "test_FSDP_distributed_multiprocessing": "test FSDP model training using torch multiprocessing spawn with NCCL backend across two GPUs"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_grad_acc.py": {
+    "test_FSDP_gradient_accumulation": "test FSDP gradient accumulation produces same grads as training on concatenated batches",
+    "test_FSDP_no_sync_context": "test FSDP no_sync context manager defers gradient synchronization until exit",
+    "test_FSDP_nested_wrapper": "test FSDP gradient accumulation with nested FullyShardedDataParallel wrapped modules",
+    "test_FSDP_communication_counts": "test FSDP all-gather and reduce-scatter call counts inside and outside no_sync",
+    "test_FSDP_no_sync_before_forward": "test FSDP no_sync behavior when used before the first forward pass"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_hf_transformer_eval.py": {
+    "test_FSDP_auto_wrap": "test auto wrapping a HuggingFace-style transformer model with FSDP using an auto wrap policy",
+    "create_wrap_transformer_only_policy": "create an auto wrap policy function that wraps only nn.Transformer modules for FSDP sharding",
+    "build_TransformerWithLMHead": "build a transformer model with an LM head, embedding layer, and output projection for language modeling",
+    "create_TransformerOutput_dataclass": "create a dataclass output wrapper that supports both string key and integer index access like HuggingFace",
+    "run_FSDP_transformer_forward": "run a forward pass on an FSDP-wrapped transformer model with random source and target sequences"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_input.py": {
+    "test_FSDP_input_types": "test FSDP with dict and list input types using pytest parametrized test cases",
+    "test_FSDP_mixed_precision": "test FSDP model with mixed precision enabled on GPU using the fsdp_config parameter",
+    "test_FSDP_training_loop": "test FSDP forward backward pass with SGD optimizer over multiple training iterations",
+    "test_FSDP_training_state": "test FSDP model asserts TrainingState.IDLE after completing the training loop",
+    "test_FSDP_dist_init": "test FSDP distributed initialization using dist_init with temp files for single GPU setup"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_memory.py": {
+    "test_fsdp_memory_usage": "test FSDP GPU memory usage across multiple iterations with DDP and FSDP configurations",
+    "create_model_with_fsdp": "create a Model with FSDP wrapping, auto_wrap_bn, and optional checkpoint_wrapper on blocks",
+    "wrap_module_with_fsdp": "wrap a PyTorch module with FSDP using to_fsdp and a process group config",
+    "collect_gpu_memory": "collect current GPU memory allocated in MB into a results dictionary with a prefix key",
+    "run_distributed_worker": "run a distributed training worker that measures memory at each training iteration phase"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_metadata.py": {
+    "create_convolutional_model_with_fsdp": "create a ConvolutionalModel with optional FullyShardedDataParallel wrapping on selected conv and linear layers",
+    "test_consolidate_shard_weights": "test consolidating sharded FSDP checkpoint weights and metadata from multiple GPU ranks into a full state dict",
+    "test_consolidate_missing_params": "test FSDP consolidate_shard_weights with strict=False to handle missing parameters in MoE expert shards",
+    "run_fsdp_checkpoint_roundtrip": "run a training loop then save and reload FSDP sharded checkpoints to verify weight fidelity",
+    "review_convolutionalmodel_class": "review the ConvolutionalModel class and its forward pass through conv blocks and fully connected layers"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_multiple_forward.py": {
+    "test_FSDP_multiple_forward": "test FSDP module with multiple forward passes on the same inner module",
+    "run_FSDP_training_loop": "run a training loop with FSDP wrapped model using SGD optimizer",
+    "test_FSDP_mixed_precision": "test FSDP with mixed precision and flattened parameters configurations",
+    "test_FSDP_distributed_spawn": "test FSDP model using torch multiprocessing spawn with world size 2",
+    "review_FSDP_training_state": "review FSDP model TrainingState assertions after backward and optimizer steps"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_multiple_forward_checkpoint.py": {
+    "test_FSDP_multiple_forward_checkpoint": "test FSDP with multiple forward passes and activation checkpointing across distributed GPUs",
+    "create_Model_with_checkpoint_wrapper": "create a Model with checkpoint_wrapper on block2 to test FSDP activation checkpointing",
+    "create_Model2_with_multiple_checkpoints": "create a Model2 with checkpoint_wrapper on block2 and block3 for multiple checkpoint tests",
+    "run_create_model_with_fsdp_config": "run _create_model to build a model with FSDP wrapping, checkpoint, and batch norm options",
+    "test_distributed_worker_FSDP_training": "test the _distributed_worker function for FSDP training with multiple forward passes and gradient reduction"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_multiple_wrapping.py": {
+    "test_fsdp_nested_wrapping": "test FSDP with nested wrapping multiple times using parametrized world size, precision, and flatten configs",
+    "run_FSDP_multiple_wrap_test": "run the FSDP multiple wrapping test across world sizes 1 and 2 with mixed and full precision",
+    "test_FSDP_reshape_after_training": "test wrapping a module with nested FSDP wrappers again after training to verify inference output matches",
+    "review_FSDP_training_state": "review the FSDP TrainingState.IDLE assertion after training loops to confirm model state correctness",
+    "test_FSDP_inner_model_rewrite": "test rewrapping an InnerModel with FSDP and verify output matches the original wrapped model"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_optimizer_utils.py": {
+    "test_consolidate_optimizer": "test FSDP gather_full_optim_state_dict against unwrapped model optimizer state dict with SGD or Adam",
+    "test_consolidate_optimizer_diff_world_size": "test FSDP optimizer state consolidation across different world sizes with multiple process groups",
+    "test_model_with_unused_params": "test FSDP gather_full_optim_state_dict handling of models with unused parameters wrapped in FSDP",
+    "test_is_singleton_tensor": "test the is_singleton_tensor utility function to check if a PyTorch tensor contains a single element",
+    "get_moe_group": "create a Mixture of Experts process group for initializing MoE layers in distributed training"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_overlap.py": {
+    "test_FSDP_forward_overlap": "test FSDP overlapping between all_gather and forward pass with configurable world size and precision",
+    "create_Layer_module": "create a Layer nn.Module with configurable compute cycles and optional parameters for timing",
+    "create_Min10_tracker": "create a Min10 class to track and average the minimum 10 timing data points",
+    "run_distributed_worker": "run a distributed worker that patches all_gather with artificial delays and measures GPU overlap",
+    "create_FSDP_model": "create an FSDP wrapped Sequential model with four wrapped Layer modules using enable_wrap and wrap"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_pre_backward_hook.py": {
+    "test_FSDP_pre_backward_hook": "test FSDP with a model that triggers a pre_backward hook bug using nested FSDP and Linear layers",
+    "run_FSDP_gradient_check": "run the FSDP pre backward hook test to verify gradient shapes and values across forward and backward passes",
+    "test_FSDP_nested_model": "test a nested FSDP model with flatten_parameters=False to validate gradient computation through multiple linear layers",
+    "run_dist_init_teardown": "run distributed initialization and teardown for the FSDP pre backward hook test using temp files",
+    "test_FSDP_backward_pass": "test multiple backward passes on an FSDP wrapped model to confirm gradients are computed and cleared correctly"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_regnet.py": {
+    "test_FSDP_with_RegNet_model": "test FSDP against DDP reference using a RegNet-like model with residual blocks",
+    "build_ResBlock_module": "build a ResBlock conv module with residual connection, SE block, and batch normalization",
+    "build_Model_trunk_head": "build an SSL model with a conv trunk and linear head for classification",
+    "run_distributed_worker_FSDP": "run a distributed training worker that compares FSDP and DDP model states after training",
+    "test_auto_wrap_bn_with_FSDP": "test auto_wrap_bn wrapping order with SyncBatchNorm conversion in FSDP training"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_shared_weights.py": {
+    "test_FSDP_shared_weights": "test FSDP with shared weights between wrappers using parametrized flat and sharing modes",
+    "create_Model_with_shared_weights": "create a Model with shared weights or bias between linear layers l1 and l3",
+    "run_dist_worker_FSDP": "run the distributed worker to train an FSDP-wrapped model and verify state dict equality",
+    "train_model_with_SGD": "train a PyTorch model using SGD optimizer with backward pass and gradient simulation",
+    "review_Model_forward": "review the Model forward pass that chains four linear layers l0 through l3"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_shared_weights_mevo.py": {
+    "test_FSDP_shared_weights_MEVO": "test FSDP with shared weights between wrappers using a model with the MEVO kernel",
+    "run_Model_forward_pass": "run a forward pass through the Model with embedding, MEVO, linear layers, and LayerNorm",
+    "train_Model_with_SGD": "train the Model using SGD optimizer with backward pass and gradient clipping checks",
+    "eval_Model_in_no_grad": "eval the Model in evaluation mode with and without torch.no_grad context manager",
+    "test_FSDP_optim_state_gather": "test FSDP gather_full_optim_state_dict to collect momentum buffers across distributed ranks"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_state_dict.py": {
+    "test_FSDP_local_state_dict_save_load": "test that FSDP local_state_dict can be saved and loaded for a given worker across training steps",
+    "test_FSDP_state_dict_after_forward": "test calling FSDP state_dict after training steps to verify parameter state correctness",
+    "test_FSDP_nested_wrapped_model_state_dict": "test state dict round-trip save and load for nested FSDP wrapped model instances",
+    "test_FSDP_state_dict_device_dtype": "test FSDP state_dict device placement and dtype with mixed precision and CPU offload configs",
+    "test_FSDP_subclass_recursion": "test that subclassing FSDP and overriding state_dict with local_state_dict does not cause infinite recursion"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_summon_full_params.py": {
+    "test_fsdp_summon_full_params_memory": "test the FSDP summon_full_params context manager for CUDA memory leaks across distributed config options",
+    "test_fsdp_summon_full_params_volatile": "test the FSDP summon_full_params volatile mode to verify parameters are not persisted after the context exits",
+    "test_fsdp_summon_full_params_persistence": "test the FSDP summon_full_params non-volatile mode to verify parameter changes persist across context manager calls",
+    "review_get_cuda_mem": "review the get_cuda_mem helper function that synchronizes CUDA and returns allocated memory after garbage collection",
+    "run_fsdp_summon_full_params_tests": "run the FSDP summon_full_params test suite to validate memory management and parameter persistence behavior"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_uneven.py": {
+    "test_FSDP_uneven_shards": "test FSDP with uneven parameter shards across multiple GPUs using pytest",
+    "run_test_one_iteration": "run the test_one_iteration function to verify FSDP single iteration with Linear models",
+    "run_test_smaller_than_world_size": "run test_smaller_than_world_size to verify FSDP handles params smaller than world_size",
+    "test_FSDP_mixed_precision": "test FSDP with mixed precision and fp32 reduce scatter configuration options",
+    "review_test_func": "review the _test_func helper that wraps FSDP models with SGD optimizer for forward and backward passes"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_fsdp_with_checkpoint_wrapper.py": {
+    "test_FSDP_checkpoint_wrapper": "test FSDP with checkpoint_wrapper wrapping a submodule in both F->C and C->F orders",
+    "run_train_eval_checkpointing": "run training and evaluation steps with FSDP and activation checkpointing across multiple precision modes",
+    "test_SimpleModuleWithCheckpointing": "test the SimpleModuleWithCheckpointing class that wraps a Linear layer with FSDP and checkpoint_wrapper",
+    "review_checkpoint_wrapper_order": "review the FSDP and checkpoint_wrapper wrapping order impact on parameter shapes and mixed precision",
+    "test_fsdp_param_shapes": "test that FSDP parameter shapes remain consistent across train and eval steps with checkpointing"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_sharded_ddp_features.py": {
+    "test_sharded_ddp_step": "test ShardedDataParallel training step with broadcast buffers, gradient accumulation, and fp16 reduction",
+    "test_sharded_ddp_multiple_inputs": "test ShardedDataParallel with a model accepting multiple tensor inputs as a tuple",
+    "test_sharded_ddp_train_eval_change": "test ShardedDataParallel correctly handles switching between train and eval modes across ranks",
+    "test_sharded_ddp_sync_batch_norm": "test ShardedDataParallel compatibility with SyncBatchNorm across multiple GPUs",
+    "test_sharded_ddp_multiple_groups": "test ShardedDataParallel with multiple process groups using subset of ranks"
+  },
+  "facebookresearch_fairscale/tests/nn/data_parallel/test_sharded_ddp_pytorch_parity.py": {
+    "test_sharded_ddp_parity": "test ShardedDDP produces identical results to PyTorch DDP across AMP, gradient accumulation, and fp16 reduction scenarios",
+    "test_sharded_ddp_two_optim": "test ShardedDDP parity with two separate OSS optimizers managing different parameter groups against DDP",
+    "run_ddp_parity": "run a multi-process comparison of ShardedDDP and DDP training loops with configurable gradient accumulation and manual reduction",
+    "run_ddp_parity_two_optim": "run a multi-process test comparing ShardedDDP with two OSS optimizers against DDP with two SGD optimizers",
+    "get_mlp_emb_model": "create an MLP model with an embedding layer, trunk, and head for use in ShardedDDP parity tests"
+  },
+  "facebookresearch_fairscale/tests/nn/misc/test_flatten_params_wrapper.py": {
+    "test_flatten_params_wrapper_basic": "test the FlattenParamsWrapper on a basic linear module to verify parameter flattening preserves output",
+    "test_flatten_params_wrapper_partial": "test partial flattening of selected transformer layer parameters while leaving others non-flattened",
+    "test_flatten_params_wrapper_multi_group": "test FlattenParamsWrapper with two separate flatten groups on a transformer module",
+    "test_flatten_params_wrapper_state_dict": "test that the unflattened state dict of a wrapped module matches the original module state dict",
+    "test_flatten_params_wrapper_unflatten_context": "test the unflatten_params context manager to temporarily restore original parameter shapes from flat params"
+  },
+  "facebookresearch_fairscale/tests/nn/misc/test_grad_bucket.py": {
+    "test_grad_bucket_grad_values_conserved": "test that GradBucket.add_grad preserves original parameter gradient values after bucketing",
+    "test_grad_bucket_memory_leak": "test that GradBucket.shrink releases excess buffer storage to prevent memory leaks",
+    "test_grad_bucket_max_size": "test that GradBucket.add_grad raises AssertionError when param exceeds bucket max size",
+    "test_grad_bucket_collapse_and_rebuild": "test that GradBucket.collapse zeroes the buffer and rebuild restores gradient references",
+    "review_grad_bucket_class": "review the GradBucket class from fairscale.nn.misc for gradient bucketing and memory management"
+  },
+  "facebookresearch_fairscale/tests/nn/misc/test_param_bucket.py": {
+    "test_ParamBucket_param_values_conserved": "test that ParamBucket conserves parameter values after adding a tensor to the bucket",
+    "test_ParamBucket_max_size": "test that ParamBucket raises AssertionError when adding a param exceeding the bucket max size",
+    "test_ParamBucket_double_check_in": "test that ParamBucket raises AssertionError when the same param is added twice to the bucket",
+    "test_ParamBucket_type_change": "test that ParamBucket correctly converts its buffer dtype between float16 and float32",
+    "test_ParamBucket_add_param": "test the ParamBucket add_param method to check in a torch tensor as a view of the bucket buffer"
+  },
+  "facebookresearch_fairscale/tests/nn/model_parallel/test_cross_entropy.py": {
+    "test_cross_entropy": "test the vocab_parallel_cross_entropy function against standard torch cross entropy for correctness across model parallel sizes",
+    "run_test_cross_entropy": "run the cross entropy test comparing torch and MPU loss and gradient values with a given model parallel size",
+    "torch_cross_entropy": "compute standard torch cross entropy loss and gradients for a batch of logits and random targets",
+    "mpu_cross_entropy": "compute model parallel cross entropy loss using scatter_to_model_parallel_region and vocab_parallel_cross_entropy",
+    "review_vocab_parallel_cross_entropy": "review the vocab_parallel_cross_entropy implementation by comparing its loss and gradients to standard torch cross entropy"
+  },
+  "facebookresearch_fairscale/tests/nn/model_parallel/test_initialize.py": {
+    "test_initialize_model_parallel": "test the model parallel initialization by spawning processes across all world sizes and verifying group setup",
+    "test_get_model_parallel_src_rank": "test the get_model_parallel_src_rank function to verify source rank calculation in a distributed setting",
+    "test_adjacency": "test that model parallel groups are contiguous by mocking torch.distributed and checking group membership",
+    "run_initialize_model_parallel": "run the model parallel initialization test with a given rank, size, and communication filenames",
+    "run_get_model_parallel_src_rank": "run the source rank test to validate model parallel source rank computation across distributed ranks"
+  },
+  "facebookresearch_fairscale/tests/nn/model_parallel/test_layers.py": {
+    "test_parallel_embedding": "test ParallelEmbedding and VocabParallelEmbedding layers for correctness across model parallel ranks",
+    "test_initialize_affine_weight": "test the _initialize_affine_weight function for column and row parallel weight initialization",
+    "test_column_parallel_linear": "test ColumnParallelLinear layer forward and backward pass gradient correctness across ranks",
+    "test_row_parallel_linear": "test RowParallelLinear layer forward and backward pass gradient correctness across ranks",
+    "test_affine_weight": "run the affine weight initialization test spawning all world sizes deterministically"
+  },
+  "facebookresearch_fairscale/tests/nn/model_parallel/test_random.py": {
+    "test_set_cuda_rng_state": "test the CUDA RNG state save and restore functions across distributed model parallel ranks",
+    "test_cuda_rng_tracker": "test the CUDA RNG tracker fork and add seed functionality for interleaved random generation",
+    "test_model_parallel_cuda_manual_seed": "test the model parallel CUDA manual seed function with forked RNG contexts",
+    "run_test_set_cuda_rng_state": "run the CUDA RNG state reset test verifying reproducibility after restoring saved RNG state",
+    "run_test_cuda_rng_tracker": "run the CUDA RNG tracker test verifying interleaved seed generation produces correct tensors"
+  },
+  "facebookresearch_fairscale/tests/nn/moe/test_moe_layer.py": {
+    "create_MOELayer_with_Top2Gate": "create a MOELayer using Top2Gate and a Linear expert module for mixture of experts",
+    "test_MOELayer_forward_pass": "test the MOELayer forward pass with identity expert weights and verify output shape",
+    "test_MOELayer_multi_experts": "test the MOELayer with multiple local experts using a ModuleList of Linear modules",
+    "test_MOELayer_backward_pass": "test the MOELayer backward pass by computing MSELoss and verifying gradient values",
+    "create_RoundRobinGate_for_routing": "create a RoundRobinGate class that round-robins tokens to experts for routing tests"
+  },
+  "facebookresearch_fairscale/tests/nn/moe/test_top2gating.py": {
+    "test_Top2Gate_creation": "test creating a Top2Gate instance with specified input and expert dimensions",
+    "test_Top2Gate_cuda": "test creating a Top2Gate instance and moving it to CUDA device",
+    "test_Top2Gate_forward": "test the Top2Gate forward pass returning auxiliary loss, combine weights, and dispatch mask",
+    "test_top2gating_overflow": "test the top2gating function to verify expert capacity allocation per GShard Algorithm 1",
+    "test_top2gating_dispatch": "test the top2gating function dispatch mask behavior when all tokens select the same expert"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/conftest.py": {
+    "review_manual_seed_zero_fixture": "review the pytest autouse fixture that sets torch manual seed to zero before each test",
+    "review_cuda_sleep_fixture": "review the pytest session-scoped fixture that calibrates and returns a CUDA sleep callable",
+    "review_cuda_sleep_impl_function": "review the cuda_sleep_impl helper that wraps torch.cuda._sleep with calibrated cycle timing",
+    "review_pytest_report_header_hook": "review the pytest hook that returns the torch version string in the test report header",
+    "review_pytest_runtest_teardown_hook": "review the pytest teardown hook that cleans up model parallel and distributed process groups"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_balance.py": {
+    "test_blockpartition_solve": "test the blockpartition.solve function to split a list of numbers into balanced partitions",
+    "test_balance_by_time": "test the balance_by_time function to partition a PyTorch model by layer execution time",
+    "test_balance_by_size": "test the balance_by_size function to partition a PyTorch model by parameter and activation size",
+    "test_layerwise_sandbox": "test the layerwise_sandbox function to profile individual model layers in isolation on a target device",
+    "test_balance_by_size_param_scale": "test the balance_by_size function with param_scale to weight parameter size versus activation size"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_bugs.py": {
+    "test_Pipe_python_autograd_function": "test Pipe with a custom Python autograd Function module using checkpoint always mode",
+    "test_Pipe_exception_no_hang": "test that Pipe does not hang when a partition raises an exception during micro-batch processing",
+    "test_Pipe_tuple_wait_gradient_sync": "test Pipe gradient synchronization with tuple inputs and custom autograd sleep functions across GPUs",
+    "test_Pipe_parallel_randoms": "test Pipe with parallel dropout layers to verify random number consistency across chunks",
+    "review_Pipe_bug_tests": "review the Pipe module bug regression tests covering autograd functions, exceptions, tuple waits, and parallel randoms"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_checkpoint.py": {
+    "test_serial_checkpoints": "test the serial checkpoint forward and backward pass timeline with fork and join dependency",
+    "test_not_requires_grad": "test checkpointing on tensors that do not require gradients and verify recomputation",
+    "test_not_requires_grad_with_parameter": "test checkpointing with a non-grad input tensor multiplied by a grad parameter",
+    "test_random_in_checkpoint": "test that dropout randomness is reproducible when using activation checkpointing",
+    "test_detect_checkpointing_recomputing": "test is_checkpointing and is_recomputing detection during forward and backward passes"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_checkpoint_ddp.py": {
+    "run_pipe_checkpoint": "run the pipe_checkpoint function to checkpoint and recompute activations using fairscale Checkpointing",
+    "run_set_random_seed": "run set_random_seed to set random seeds for python, numpy, and torch for reproducibility",
+    "test_basic_ddp": "test basic DDP forward and backward pass with activation checkpointing using pytest",
+    "test_weight_sharing": "test DDP with weight sharing between layers and activation checkpointing",
+    "test_checkpoint_half": "test DDP with partial activation checkpointing on only some layers in the model"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_copy.py": {
+    "test_copy_wait_cpu_cpu": "test the Copy and Wait autograd functions for CPU to CPU tensor stream copying",
+    "test_copy_wait_cpu_cuda": "test the Copy and Wait autograd functions for CPU to CUDA tensor stream copying",
+    "test_copy_wait_cuda_cpu": "test the Copy and Wait autograd functions for CUDA to CPU tensor stream copying",
+    "test_copy_wait_cuda_cuda": "test the Copy and Wait autograd functions for CUDA to CUDA tensor stream copying",
+    "test_wait_multiple_tensors": "test Wait.apply with multiple tensors to verify shared gradient function behavior"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_deferred_batch_norm.py": {
+    "test_deferred_batch_norm_transparency": "test DeferredBatchNorm produces identical outputs and gradients compared to standard BatchNorm2d with chunked forward passes",
+    "test_running_stats_momentum": "test DeferredBatchNorm running mean and variance match standard BatchNorm2d across different momentum settings",
+    "test_convert_deferred_batch_norm": "test converting BatchNorm2d layers to DeferredBatchNorm including edge cases with track_running_stats disabled",
+    "test_deferred_batch_norm_eval": "test DeferredBatchNorm produces matching outputs to BatchNorm2d in evaluation mode after training",
+    "test_deferred_batch_norm_optimize": "test DeferredBatchNorm training convergence with SGD optimizer over multiple steps with chunked forward passes"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_dependency.py": {
+    "test_fork_join_cuda_backward": "test the fork and join functions with CUDA tensors and verify backward pass ordering",
+    "test_fork_join_enable_grad": "test the fork and join functions under torch.enable_grad context and verify grad_fn classes",
+    "test_fork_join_no_grad": "test the fork and join functions under torch.no_grad context to confirm no-op behavior",
+    "test_fork_leak_memory": "test the fork and join functions for memory leaks using weakref after backward pass",
+    "test_join_requires_grad_scenarios": "test the join function behavior when fork input does and does not require gradients"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_inplace.py": {
+    "test_inplace_requires_grad": "test that Pipe with checkpoint always raises RuntimeError on in-place operations on tensors requiring grad",
+    "test_inplace_not_requires_grad": "test that Pipe with checkpoint always handles in-place operations on tensors not requiring grad",
+    "test_inplace_incorrect_grad": "test that Pipe with checkpoint always produces incorrect gradients when non-idempotent in-place ops run multiple times",
+    "run_inplace_test_suite": "run the pytest test suite for FairScale Pipe in-place operation detection and gradient correctness",
+    "review_pipe_checkpoint_inplace": "review the FairScale Pipe module checkpoint always mode handling of in-place tensor operations"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_microbatch.py": {
+    "test_Batch_class": "test the Batch class for atomic and non-atomic tensor wrapping behavior",
+    "test_Batch_call_method": "test the Batch call method to apply a function to wrapped tensors",
+    "test_Batch_setitem": "test the Batch setitem by index and slice assignment operations",
+    "test_check_function": "test the check function to validate tensor or tuple of tensor inputs",
+    "test_gather_and_scatter": "test the gather and scatter functions for batching and splitting tensors"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_parity.py": {
+    "test_pipe_parity": "test the Pipe module parity between regular and Pipe-wrapped PyTorch models across multiple GPUs",
+    "run_correctness_test": "run the test_correctness parametrized test with fp16, checkpoint, and chunk variations",
+    "create_sequential_model": "create a Sequential model with Linear layers sized by GPU count using _get_model",
+    "train_pipe_model": "train a Pipe-wrapped model with configurable checkpointing and chunk-based pipeline parallelism",
+    "check_model_parity": "check that Pipe and regular model parameters, optimizer groups, and buffers match within tolerance"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_phony.py": {
+    "test_get_phony_size": "test that get_phony returns a tensor with size (1,) on the cpu device",
+    "test_get_phony_requires_grad": "test that get_phony respects the requires_grad flag for true and false cases",
+    "test_cached_phony_identity": "test that get_phony caches and returns the same tensor for identical device and requires_grad args",
+    "test_phony_in_autograd_function": "test that get_phony works inside a custom torch.autograd.Function and returns a detached tensor",
+    "review_get_phony_caching": "review the get_phony function caching behavior across different device and requires_grad combinations"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_pipe.py": {
+    "create_pipe_model": "create a Pipe model from an nn.Sequential module with balance and device configuration",
+    "test_pipe_checkpoint_modes": "test the Pipe model checkpoint modes including always, except_last, and never options",
+    "test_pipe_deferred_batch_norm": "test the Pipe model deferred batch norm functionality across different checkpoint modes",
+    "test_pipe_sequential_access": "test the Pipe model sequential-like indexing and iteration over partitioned modules",
+    "test_pipe_forward_lockstep": "test the Pipe model forward lockstep execution across multiple partitions and chunks"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_pipeline.py": {
+    "test_clock_cycles": "test the clock_cycles function with various stage and micro-batch combinations to verify pipeline scheduling",
+    "review_clock_cycles": "review the clock_cycles function from fairscale.nn.pipe.pipeline for correctness of scheduling output",
+    "summarize_clock_cycles": "summarize the clock_cycles function which generates pipeline parallel scheduling tuples for stages and micro-batches",
+    "run_clock_cycles_test": "run the test_clock_cycles pytest to validate pipeline scheduling for different stage and micro-batch counts",
+    "refactor_clock_cycles_test": "refactor the test_clock_cycles function to add additional edge case assertions for pipeline scheduling"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_stream.py": {
+    "test_new_stream": "test creating new CPU or CUDA streams using new_stream for a given torch device",
+    "test_current_stream": "test getting the current stream for a CPU or CUDA device using current_stream",
+    "test_use_stream": "test using a context manager to switch to a specific CPU or CUDA stream with use_stream",
+    "test_wait_stream": "test making one stream wait for another stream to complete using wait_stream",
+    "test_record_stream": "test recording a tensor to a stream to prevent premature memory reallocation using record_stream"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_transparency.py": {
+    "test_Pipe_gradient_transparency": "test that Pipe produces identical gradients to a plain nn.Sequential model",
+    "run_test_simple_linears": "run the test_simple_linears test to verify Pipe gradient correctness on linear layers",
+    "review_Pipe_transparency_test": "review the test_simple_linears function that validates Pipe gradient transparency",
+    "summarize_Pipe_transparency_test": "summarize the test that compares gradients with and without Pipe wrapping",
+    "refactor_test_simple_linears": "refactor the test_simple_linears function to test additional layer types beyond Linear"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/test_worker.py": {
+    "test_spawn_workers_context_manager": "test the spawn_workers context manager to spawn worker threads per device and join them on exit",
+    "test_Task_compute_success": "test the Task class compute function returns a Batch result on success via output queues",
+    "test_Task_compute_exception": "test the Task class compute function returns exception info when the compute function raises an error",
+    "test_multithreading_with_spawn_workers": "test that spawn_workers executes Task compute functions across multiple threads for parallel processing",
+    "test_grad_mode_propagation": "test that torch gradient mode is correctly propagated to worker threads when using spawn_workers"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/skip/test_api.py": {
+    "test_namespace_difference": "test that two Namespace instances are not equal to each other",
+    "test_namespace_copy": "test that copy.copy of a Namespace equals the original but is not the same object",
+    "test_skippable_repr": "test the string representation of a skippable decorated nn.Module class",
+    "review_skippable_decorator": "review the skippable decorator usage with stash names on an nn.Module subclass",
+    "review_stash_yield": "review how stash is used with yield to save skip tensors in a forward method"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/skip/test_gpipe.py": {
+    "test_skip_connection_gpipe": "test the GPipe skip connection with stash and pop across multiple CUDA devices and balance configurations",
+    "test_none_skip_connection": "test that stashing and popping None values through a Pipe model does not introduce portal gradient functions",
+    "run_skippable_stash_pop": "run a Pipe model with skippable layers that stash input tensors and pop them in downstream layers",
+    "review_Pipe_balance_checkpoint": "review the Pipe wrapper with different balance arrays and checkpoint strategies for model parallelism",
+    "test_Portal_gradient_flow": "test that PortalBlue, PortalCopy, and PortalOrange backward classes are not present in the gradient graph for None skips"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/skip/test_inspect_skip_layout.py": {
+    "test_inspect_skip_layout_no_skippables": "test inspect_skip_layout returns empty policy when partitions contain no skippable modules",
+    "test_inspect_skip_layout_inner_partition": "test inspect_skip_layout returns empty policy when stash and pop are in the same partition",
+    "test_inspect_skip_layout_adjoining_partitions": "test inspect_skip_layout returns skip route when stash and pop are in adjoining partitions",
+    "test_inspect_skip_layout_far_partitions": "test inspect_skip_layout returns skip route when stash and pop are separated by intermediate partitions",
+    "test_inspect_skip_layout_namespace_isolation": "test inspect_skip_layout correctly resolves skip routes when modules are isolated by different Namespace instances"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/skip/test_leak.py": {
+    "test_delete_portal_tensor": "test the portal tensor lifecycle across stash and pop modules with different checkpointing modes",
+    "test_no_portal_without_pipe": "test that Portal objects are not created when using Stash and Pop without a Pipe wrapper",
+    "review_Stash_class": "review the Stash nn.Module subclass that uses the skippable decorator and stash function to store skip tensors",
+    "review_Pop_class": "review the Pop nn.Module subclass that uses the skippable decorator and pop function to retrieve skip tensors",
+    "run_test_leak_tests": "run the pytest test suite for skip connection portal tensor memory leak validation with parametrize"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/skip/test_portal.py": {
+    "test_Portal_copy_device_transfer": "test the Portal class copy method to transfer a tensor from CPU to CUDA device",
+    "test_Portal_blue_orange_grad": "test the Portal blue and orange methods for correct gradient computation with fork and join",
+    "test_Portal_blue_orange_no_grad": "test the Portal blue and orange methods when the tensor does not require gradients",
+    "test_Portal_put_grad_use_grad": "test the Portal put_grad and use_grad methods for ephemeral gradient storage and retrieval",
+    "test_Portal_tensor_life_lifecycle": "test the Portal tensor_life parameter to control how many blue and orange operations exhaust the tensor"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/skip/test_stash_pop.py": {
+    "test_stash_with_skippable": "test stashing a tensor using the skippable decorator and stash function in a PyTorch module",
+    "test_pop_stash_connection": "test popping a stashed tensor across two skippable modules connected in a skip connection pipeline",
+    "test_skippable_declaration_validation": "test that skippable modules raise RuntimeError when stash or pop keys are declared but not used",
+    "test_skip_tracker_context": "test using SkipTracker with use_skip_tracker context manager to track stashed tensors during forward passes",
+    "test_stash_none_value": "test stashing a None value using the skippable decorator without raising an error"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/skip/test_tracker.py": {
+    "test_skip_tracker_default": "test that current_skip_tracker returns a SkipTracker instance in a new thread",
+    "test_skip_tracker_data_parallel": "test skip connection stash and pop decorators with nn.DataParallel on CUDA",
+    "test_skip_tracker_portal_reuse": "test that SkipTrackerThroughPotals reuses the same portal on repeated save calls",
+    "test_skip_tracker_copy_policy": "test that cross-partition routes use portals while same-partition routes use tensors",
+    "test_skip_tracker_tensor_life_checkpointing": "test tensor_life reference counting under enable_checkpointing and enable_recomputing contexts"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe/skip/test_verify_skippables.py": {
+    "test_verify_skippables_matching": "test that verify_skippables passes when a stash layer is followed by a matching pop layer",
+    "test_verify_skippables_stash_not_pop": "test that verify_skippables raises TypeError when a stashed tensor has no corresponding pop layer",
+    "test_verify_skippables_pop_unknown": "test that verify_skippables raises TypeError when a pop layer references a tensor that was never stashed",
+    "test_verify_skippables_namespace_isolation": "test that Namespace and isolate allow duplicate stash-pop pairs when isolated into separate namespaces",
+    "test_skippable_decorator_stash_pop": "test the skippable decorator with stash and pop parameters to define skip connection layers"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe_process/test_bugs.py": {
+    "test_python_autograd_function": "test AsyncPipe with a custom Python autograd Function module using checkpoint always mode",
+    "test_exception_no_hang": "test AsyncPipe exception handling across 3 partitions to verify no hang on failed micro-batch",
+    "test_tuple_wait": "test AsyncPipe gradient synchronization with tuple inputs and a custom Sleep autograd function",
+    "test_parallel_randoms": "test AsyncPipe parallel random number generation consistency across distributed workers with dropout layers",
+    "review_AsyncPipe_bugs": "review the AsyncPipe test suite covering autograd, exceptions, tuple waits, and parallel randoms"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe_process/test_inplace.py": {
+    "test_asyncpipe_inplace_requires_grad": "test AsyncPipe with in-place operations on tensors that require gradients using checkpointing",
+    "test_asyncpipe_inplace_not_requires_grad": "test AsyncPipe with in-place operations on tensors that do not require gradients",
+    "test_asyncpipe_inplace_incorrect_grad": "test AsyncPipe checkpointing produces incorrect gradients when non-idempotent in-place ops modify captured tensors",
+    "review_asyncpipe_inplace_checkpointing": "review AsyncPipe in-place operation handling and checkpointing behavior across distributed workers",
+    "run_asyncpipe_inplace_tests": "run the pytest test suite for AsyncPipe in-place operation edge cases with torch_spawn"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe_process/test_pipe.py": {
+    "run_asyncpipe_pipeline": "run an AsyncPipe model with balance and chunks for pipeline parallel training",
+    "test_asyncpipe_checkpoint_modes": "test AsyncPipe checkpoint modes including always, except_last, and never",
+    "test_asyncpipe_deferred_batch_norm": "test AsyncPipe deferred batch norm to verify running mean and var match",
+    "test_asyncpipe_lazy_construction": "test AsyncPipe lazy module construction using LazyModule wrappers",
+    "test_asyncpipe_partition_distribution": "test AsyncPipe partition distribution across multiple ranks and devices"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe_process/test_rpc.py": {
+    "test_PipeRPCWrapper_basic": "test the PipeRPCWrapper class with a basic two-layer model using RPC across two workers",
+    "test_PipeRPCWrapper_optimizer": "test the PipeRPCWrapper optimizer registration and stepping across multiple RPC workers with layer reuse",
+    "test_PipeRPCWrapper_megatron": "test the PipeRPCWrapper with Megatron model parallel layers including ColumnParallelLinear and RowParallelLinear",
+    "test_PipeRPCWrapper_reuse_final_stage": "test the PipeRPCWrapper backward pass logic when reused layers appear in the final pipeline stage",
+    "test_PipeRPCWrapper_construct_rank_zero": "test that PipeRPCWrapper construction fails with an assertion error when called from a non-zero rank"
+  },
+  "facebookresearch_fairscale/tests/nn/pipe_process/test_transparency.py": {
+    "test_simple_linears": "test the AsyncPipe gradient transparency by comparing pipelined vs sequential model gradients",
+    "run_test_transparency": "run the simple_linears test to verify AsyncPipe produces identical gradients to a standard nn.Sequential model",
+    "review_simple_linears": "review the simple_linears test function that validates gradient correctness across pipelined partitions",
+    "summarize_test_transparency": "summarize the test_transparency module which tests AsyncPipe gradient equivalence using sum_grad and zero_grad helpers",
+    "refactor_simple_linears": "refactor the simple_linears test to support additional pipe classes beyond AsyncPipe"
+  },
+  "facebookresearch_fairscale/tests/nn/wrap/test_wrap.py": {
+    "test_wrap_with_FSDP": "test wrapping a PyTorch nn.Linear module with FSDP using enable_wrap and wrap",
+    "test_auto_wrap_policy": "test auto wrapping child modules based on min_num_params threshold using default_auto_wrap_policy",
+    "test_auto_wrap_skip_root": "test auto wrapping the root module by setting skip_params_check_for_root to True",
+    "test_force_leaf_modules": "test preventing certain modules from being wrapped by adding them to force_leaf_modules",
+    "test_FSDP_forward_backward": "test forward and backward passes through an auto-wrapped FSDP model with mixed precision"
+  },
+  "facebookresearch_fairscale/tests/optim/test_adam.py": {
+    "test_adam_optimizer_step_full_precision": "test the fairscale Adam optimizer step with full precision FP32 parameters on CUDA",
+    "test_adam_optimizer_step_mixed_precision": "test the fairscale Adam optimizer step with mixed precision FP16 parameters and FP32 state",
+    "test_adam_optimizer_state_dict": "test the fairscale Adam optimizer state dict save and load for parameter group persistence",
+    "test_adam_optimizer_grad_scaler": "test the fairscale Adam optimizer with GradScaler for pure FP16 training with loss scaling",
+    "test_adam_optimizer_multigpu": "test the fairscale Adam optimizer step across multiple GPU devices with parameters on different GPUs"
+  },
+  "facebookresearch_fairscale/tests/optim/test_ddp_adascale.py": {
+    "test_adascale_with_ddp": "test AdaScale optimizer with DistributedDataParallel using pytest and golden test data",
+    "test_adascale_with_sdp_fsdp": "test AdaScale optimizer with ShardedDataParallel and FullyShardedDataParallel data parallel strategies",
+    "test_adascale_gradient_accumulation": "test AdaScale with DDP gradient accumulation using the model no_sync context manager",
+    "test_adascale_intra_grad_corr_mean": "test AdaScale intra gradient correlation mean computation using no_sync and manual all_reduce",
+    "test_adascale_gather_flat_grad": "test AdaScale flat gradient gathering and cosine similarity between consecutive gradients"
+  },
+  "facebookresearch_fairscale/tests/optim/test_layerwise_gradient_scaler.py": {
+    "train_feedforward_model": "train a FeedForward neural network with optional per-layer gradient scaling using LayerwiseGradientScaler",
+    "train_convnet_model": "train a SimpleConvNet vision model on CIFAR10 with per-layer gradient scaling via LayerwiseGradientScaler",
+    "test_linear_model": "test that a FeedForward model trained with and without per-layer scaling produces identical gradients",
+    "test_vision_model": "test that a SimpleConvNet trained with and without per-layer scaling produces identical gradients on CIFAR10",
+    "get_params_with_grad": "get all parameter gradients from a trained PyTorch model by iterating over named modules and parameters"
+  },
+  "facebookresearch_fairscale/tests/optim/test_oss.py": {
+    "test_OSS_state_dict": "test the OSS optimizer state dict serialization and loading across distributed ranks",
+    "test_OSS_sharding": "test the OSS optimizer parameter sharding across multiple GPU ranks",
+    "test_OSS_gradient_clipping": "test the OSS optimizer gradient clipping with various norm types",
+    "test_OSS_reproducibility": "test that OSS optimizer produces reproducible results after save and load of state",
+    "test_OSS_ddp_parity": "test that OSS optimizer produces identical results to standard PyTorch DDP optimizer"
+  },
+  "facebookresearch_fairscale/tests/optim/test_oss_adascale.py": {
+    "test_adascale_with_oss": "test AdaScale optimizer with OSS sharding on a distributed PyTorch model using NCCL backend",
+    "test_adascale_sequential_model": "test AdaScale with OSS on a sequential multi-layer linear model across two GPU ranks",
+    "run_adascale_golden_tests": "run the parametrized AdaScale golden test data cases against OSS-wrapped SGD optimizer",
+    "review_adascale_wrapper_combinations": "review the four AdaScale and OSS wrapping combinations: ada-oss, wrapper-oss, oss-wrapper, and none",
+    "refactor_dist_init": "refactor the distributed process group initialization to use a different backend or init method"
+  },
+  "facebookresearch_fairscale/tests/optim/test_single_node_adascale.py": {
+    "test_adascale_gradient_accumulation": "test AdaScale optimizer with gradient accumulation on CPU or GPU using SGD",
+    "test_adascale_state_checkpointing": "test AdaScale state checkpointing by saving and loading optimizer state dict on GPU",
+    "test_adascale_lr_scheduler": "test AdaScale integration with LambdaLR learning rate scheduler across multiple epochs",
+    "test_adascale_add_param_group": "test AdaScale add_param_group API to dynamically add new parameter groups to the optimizer",
+    "test_adascale_unhook": "test AdaScale unhook method to free gradient hook tensors from CUDA memory"
+  },
+  "facebookresearch_fairscale/tests/utils/test_containers.py": {
+    "test_apply_to_tensors": "test the apply_to_tensors function that recursively applies a callable to all tensors in nested containers",
+    "test_pack_kwargs": "test the pack_kwargs function that flattens positional and keyword arguments into separate key and value tuples",
+    "test_unpack_kwargs": "test the unpack_kwargs function that reconstructs positional args and kwargs dict from packed key and value tuples",
+    "test_split_non_tensors": "test the split_non_tensors function that separates tensors from non-tensor objects in a tuple for later reconstruction",
+    "test_packed_sequence": "test that apply_to_tensors correctly modifies PyTorch RNN PackedSequence objects by filling tensor data with zeros"
+  },
+  "facebookresearch_fairscale/tests/utils/test_parallel.py": {
+    "test_chunk_and_pad": "test the chunk_and_pad function splits a tensor into equal-sized padded chunks across N GPUs",
+    "run_test_chunk_and_pad_parameterized": "run the parameterized test that validates chunk_and_pad for 1 to 32 chunk counts",
+    "review_test_chunk_and_pad": "review the test_chunk_and_pad function to verify it asserts equal chunk lengths and correct chunk count",
+    "summarize_test_chunk_and_pad": "summarize the test_chunk_and_pad function which validates tensor chunking and padding behavior",
+    "refactor_test_chunk_and_pad": "refactor the test_chunk_and_pad function to use pytest parametrize instead of parameterized"
+  },
+  "facebookresearch_fairscale/tests/utils/test_reduce_scatter_bucketer.py": {
+    "test_reduce_scatter_bucketer": "test the ReduceScatterBucketer class with parameterized bucket cap and shard size configurations",
+    "test_out_of_order_reduction": "test the ReduceScatterBucketer handling of out-of-order tensor reductions across distributed processes",
+    "run_reduce_scatter_async": "run async reduce scatter on a list of tensors with a callback function",
+    "run_flush_bucketer": "run flush on the ReduceScatterBucketer to complete pending reduce scatter operations",
+    "spawn_distributed_test": "spawn distributed test processes across all world sizes using spawn_and_init helper"
+  },
+  "facebookresearch_fairscale/tests/utils/test_state_dict.py": {
+    "test_find_module_instances": "test find_module_instances to locate all LayerNorm or Linear modules in a PyTorch module tree",
+    "test_replace_by_prefix": "test replace_by_prefix_ to rename state dict keys by replacing a prefix in-place",
+    "run_test_find_module_instances": "run the test_find_module_instances function to verify finding module instances by type in a neural network",
+    "run_test_replace_by_prefix": "run the test_replace_by_prefix function to verify in-place prefix replacement on a state dictionary",
+    "review_test_state_dict": "review the test_state_dict module to understand how find_module_instances and replace_by_prefix_ are tested"
+  },
+  "facebookresearch_fairscale/tests/utils/test_version.py": {
+    "test_torch_version_parsing": "test the torch_version function parses version strings like 1.9.0 into tuples",
+    "test_torch_version_bad_format": "test the torch_version function returns an empty tuple for bad format strings",
+    "test_torch_version_empty_string": "test the torch_version function returns an empty tuple for empty string input",
+    "test_torch_version_git_suffix": "test the torch_version function strips git suffixes like 1.10.0a0+gitbc6fc3e",
+    "test_torch_version_cu_suffix": "test the torch_version function strips cuda suffixes like 1.7.0+cu102"
+  }
+}

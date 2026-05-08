@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/crypten
+- repo_uri: https://github.com/facebookresearch/crypten
+
+## File: facebookresearch_crypten/crypten/debug/debug.py
+
+Prompts
+
+```
+['configure logging with a multi-process debug template showing timestamp, level, filename, and process name', 'print a message only to parties whose rank matches the specified destination ranks', 'log a message to the logger of specific party ranks with a configurable log level', 'print messages from each party in rank order using a barrier to ensure deterministic output', 'validate a Crypten function result against the corresponding PyTorch reference with a configurable tolerance']
+```
+
+Usage
+
+```
+{'configure_logging': 'configure logging with a multi-process debug template showing timestamp, level, filename, and process name', 'crypten_print': 'print a message only to parties whose rank matches the specified destination ranks', 'crypten_log': 'log a message to the logger of specific party ranks with a configurable log level', 'crypten_print_in_order': 'print messages from each party in rank order using a barrier to ensure deterministic output', 'validate_correctness': 'validate a Crypten function result against the corresponding PyTorch reference with a configurable tolerance'}
+```
+

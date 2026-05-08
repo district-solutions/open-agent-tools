@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/cruxeval
+- repo_uri: https://github.com/facebookresearch/cruxeval
+
+## File: facebookresearch_cruxeval/data/generate_function_prompts.py
+
+Prompts
+
+```
+['run generate to create a JSONL file of few-shot prompts for str, list, and dict methods', 'create a few-shot prompt from a target function name and example pairs', 'list all public methods of str, list, and dict built-in types', 'generate prompts by combining string and list examples for each str method', 'generate prompts by combining string and list examples for each list and dict method']
+```
+
+Usage
+
+```
+{'generate_function_prompts_jsonl': 'run generate to create a JSONL file of few-shot prompts for str, list, and dict methods', 'make_prompt_from_function_and_examples': 'create a few-shot prompt from a target function name and example pairs', 'enumerate_builtin_type_methods': 'list all public methods of str, list, and dict built-in types', 'combine_examples_for_str_methods': 'generate prompts by combining string and list examples for each str method', 'combine_examples_for_list_dict_methods': 'generate prompts by combining string and list examples for each list and dict method'}
+```
+

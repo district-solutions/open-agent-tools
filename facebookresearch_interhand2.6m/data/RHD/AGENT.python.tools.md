@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/interhand2.6m
+- repo_uri: https://github.com/facebookresearch/interhand2.6m
+
+## File: facebookresearch_interhand2.6m/data/RHD/dataset.py
+
+Prompts
+
+```
+['create a Dataset instance with a transform and mode to load RHD hand pose training or evaluation data', 'get a single training sample with augmented image, joint coordinates, and metadata from the dataset by index', 'evaluate predicted 3D hand joint coordinates against ground truth and compute MPJPE and handedness accuracy', 'convert a hand type string to a one-hot numpy array for left or right hand classification', 'load RHD dataset annotations from COCO JSON files and build a datalist with camera parameters and joint coordinates']
+```
+
+Usage
+
+```
+{'create_dataset_instance': 'create a Dataset instance with a transform and mode to load RHD hand pose training or evaluation data', 'get_dataset_item': 'get a single training sample with augmented image, joint coordinates, and metadata from the dataset by index', 'evaluate_predictions': 'evaluate predicted 3D hand joint coordinates against ground truth and compute MPJPE and handedness accuracy', 'convert_handtype_to_array': 'convert a hand type string to a one-hot numpy array for left or right hand classification', 'load_rhd_annotations': 'load RHD dataset annotations from COCO JSON files and build a datalist with camera parameters and joint coordinates'}
+```
+

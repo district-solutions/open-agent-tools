@@ -1,0 +1,282 @@
+{
+  "facebookresearch_pytorchganzoo/models/DCGAN.py": {
+    "create_DCGAN_instance": "create a DCGAN model instance with custom latent vector dimension and depth parameters",
+    "build_generator_network": "build a generator network using getNetG with configurable depth and activation settings",
+    "build_discriminator_network": "build a discriminator network using getNetD with configurable depth and decision layer size",
+    "create_optimizer_for_generator": "create an Adam optimizer for the generator network with learning rate and beta parameters",
+    "create_optimizer_for_discriminator": "create an Adam optimizer for the discriminator network with learning rate and beta parameters"
+  },
+  "facebookresearch_pytorchganzoo/models/base_GAN.py": {
+    "build_GAN_subclass": "build a python module that subclasses BaseGAN and implements getNetG, getNetD, getOptimizerG, and getOptimizerD methods",
+    "test_GAN_generation": "test the BaseGAN test method to generate images from a latent vector input tensor",
+    "optimize_GAN_parameters": "optimize the GAN discriminator and generator parameters using optimizeParameters with a real data batch",
+    "save_GAN_model": "save the trained GAN model state dict including config, netG, netD, and avgG to a file path",
+    "load_GAN_model": "load a previously saved GAN model from a file path with optional finetuning support"
+  },
+  "facebookresearch_pytorchganzoo/models/gan_visualizer.py": {
+    "export_visualization": "export a grid image of GAN generations to a file path with optional mask export",
+    "export_db": "export a dataset of fake GAN generations as individual image files to a directory",
+    "generate_images_from_constraints": "generate images from label constraints like gender and color and save or publish them",
+    "save_interpolation": "save interpolated images between two latent vectors as a sequence of output files",
+    "export_nn": "compute the nearest neighbors metric for GAN generations using a feature extractor and KDTree"
+  },
+  "facebookresearch_pytorchganzoo/models/progressive_gan.py": {
+    "create_ProgressiveGAN": "create a ProgressiveGAN instance with custom latent vector dimension and depth scale settings",
+    "build_generator_network": "build the generator network using getNetG with progressive scaling and blending layers",
+    "build_discriminator_network": "build the discriminator network using getNetD with mini batch standard deviation regularization",
+    "add_scale_to_model": "add a new resolution scale to both generator and discriminator networks to double output size",
+    "update_alpha_blending": "update the alpha blending factor between resolution scales during progressive training"
+  },
+  "facebookresearch_pytorchganzoo/models/styleGAN.py": {
+    "instantiate_stylegan": "create a StyleGAN instance with custom nMappings, phiTruncation, and gamma_avg hyperparameters",
+    "get_generator_network": "build the StyleGAN generator network by calling getNetG to construct a GNet with mapping layers",
+    "add_resolution_scale": "add a new resolution scale to the progressive StyleGAN model using the addScale method",
+    "update_blending_alpha": "update the progressive blending factor alpha to control resolution transition during training",
+    "configure_truncation_trick": "configure the StyleGAN truncation trick by setting phiTruncation to control sample diversity"
+  },
+  "facebookresearch_pytorchganzoo/models/UTs/test_ac_criterion.py": {
+    "test_AC_GAN_criterion": "run the unit test for ACGanCriterion to validate loss computation and tensor building",
+    "run_test_AC_GAN_criterion": "run the test function that validates ACGanCriterion target and latent tensor dimensions",
+    "review_AC_GAN_criterion_test": "review the ACGanCriterion unit test that checks cross-entropy and multi-label soft-margin loss",
+    "summarize_AC_GAN_criterion_test": "summarize the test function that verifies ACGanCriterion loss calculations against expected values",
+    "refactor_AC_GAN_criterion_test": "refactor the ACGanCriterion test to use pytest fixtures for attribute keys and criterion tensors"
+  },
+  "facebookresearch_pytorchganzoo/models/datasets/attrib_dataset.py": {
+    "create_attrib_dataset_with_json": "create an AttribDataset instance from an image directory and a JSON attribute dictionary file",
+    "create_attrib_dataset_imagefolder": "create an AttribDataset that mimics torchvision ImageFolder format from a directory of categorized images",
+    "load_attrib_dict": "load a JSON attribute dictionary mapping image filenames to their attribute key-value pairs",
+    "get_text_descriptor": "get the text descriptor dictionary of attributes for a given image index in the dataset",
+    "get_key_orders": "get the attribute key order and possible values for building labeled dataset key mappings"
+  },
+  "facebookresearch_pytorchganzoo/models/datasets/hd5.py": {
+    "create_H5Dataset_from_h5_file": "create an H5Dataset instance from an HDF5 file path with optional transform and stats file",
+    "build_H5Dataset_with_partition": "build an H5Dataset using a partition file and partition value to filter training data",
+    "test_H5Dataset_getitem": "test the H5Dataset __getitem__ method to retrieve an image and attribute tensor by index",
+    "review_H5Dataset_buildAttribShift": "review the H5Dataset buildAttribShift method that maps attribute labels to integer shift values",
+    "summarize_H5Dataset_getKeyOrders": "summarize the H5Dataset getKeyOrders method that returns attribute key ordering from stats data"
+  },
+  "facebookresearch_pytorchganzoo/models/datasets/utils/db_stats.py": {
+    "build_dict_stats": "build statistics for a dataset by counting occurrences of each class across multiple categories",
+    "get_class_stats": "get a frequency count of values for a single class column from a list of record dictionaries",
+    "build_key_order": "build an ordered key mapping from shift attributes with optional classification loss weight equalization",
+    "refactor_get_class_stats": "refactor getClassStats to use collections.Counter for cleaner frequency counting of class values",
+    "summarize_build_key_order": "summarize the buildKeyOrder function that maps shift attributes to ordered label lists with optional weights"
+  },
+  "facebookresearch_pytorchganzoo/models/eval/build_nn_db.py": {
+    "build_nn_feature_database": "build a neural network feature database by extracting features from images and saving to a pickle file",
+    "test_feature_extraction_cli": "test the feature extraction CLI with a config file and feature extractor path to build features",
+    "run_feature_extractor_pipeline": "run the feature extraction pipeline using a config JSON and feature extractor model on a dataset",
+    "review_test_function": "review the test function that parses CLI args, loads config, and saves extracted features to a pickle file",
+    "summarize_feature_db_workflow": "summarize the workflow that builds a feature extractor model, transforms images, and saves features"
+  },
+  "facebookresearch_pytorchganzoo/models/eval/inception.py": {
+    "run_inception_score_evaluation": "run the test function to compute the inception score for a GAN model using a pretrained InceptionV3 classifier",
+    "test_model_with_inception_v3": "test a GAN model by generating fake images and computing the inception score over 1000 batches",
+    "load_model_checkpoint_for_evaluation": "load a model checkpoint from disk using getLastCheckPoint and parse its scale and iteration state",
+    "compute_inception_score_with_feature_transform": "compute the inception score by transforming generated images with FeatureTransform normalization before scoring",
+    "save_inception_score_results": "save the computed inception score results to a JSON file using saveScore with scale and iteration metadata"
+  },
+  "facebookresearch_pytorchganzoo/models/eval/inspirational_generation.py": {
+    "run_gradient_descent_on_input": "run gradient descent on a GAN model input to find optimal latent vectors matching inspiration images",
+    "run_test_inspirational_generation": "run the test function to generate inspirational images from an input image using a trained GAN model",
+    "create_update_parser": "create an argparse parser with arguments for feature extractors, learning rate, steps, and optimization strategy",
+    "build_id_module": "build an identity module that passes input tensors through unchanged for feature extraction pipelines",
+    "review_gradient_descent_on_input": "review the gradientDescentOnInput function to understand how it performs similarity search with gradient descent or random search"
+  },
+  "facebookresearch_pytorchganzoo/models/eval/laplacian_SWD.py": {
+    "run_laplacian_swd_evaluation": "run the Laplacian SWD metric evaluation on a trained GAN model checkpoint",
+    "compute_dataset_self_noise": "compute the inner noise of a dataset using the Laplacian SWD metric",
+    "test_LaplacianSWDMetric": "test the LaplacianSWDMetric class by comparing real and fake image batches",
+    "review_test_function": "review the test function that evaluates GAN model quality using Laplacian SWD scores",
+    "save_swd_scores": "save Laplacian SWD evaluation scores to a JSON file for a given model checkpoint"
+  },
+  "facebookresearch_pytorchganzoo/models/eval/metric_plot.py": {
+    "test_metric_plot": "test the metric_plot module by running the test function with an argparse parser and visualisation object",
+    "run_metric_evaluation": "run the test function to load SWD, NN, and INCEPTION metric JSON files and publish line plots",
+    "plot_SWD_metrics": "plot SWD metrics from a checkpoint JSON file using the test function with a visualisation backend",
+    "plot_NN_metrics": "plot NN metrics from a checkpoint JSON file using the test function with a visualisation backend",
+    "plot_INCEPTION_metrics": "plot INCEPTION metrics from a checkpoint JSON file using the test function with a visualisation backend"
+  },
+  "facebookresearch_pytorchganzoo/models/eval/nn_metric.py": {
+    "run_test_nn_metric": "run the NN metric evaluation test with a parser to export nearest neighbor scores",
+    "run_test_nn_visualize": "run the test function with showNN to visualize nearest neighbors in visdom",
+    "update_parser_add_nn_args": "update an argparse parser to add showNN, size, and featureExtractor arguments",
+    "get_model_name_from_config": "get the model name from a training config file path ending in _train_config.json",
+    "test_nn_metric_cli": "test the NN metric module via CLI with name, module, config, and featureExtractor args"
+  },
+  "facebookresearch_pytorchganzoo/models/eval/visualization.py": {
+    "run_test_visualization": "run the test function to export GAN model visualizations and interpolations from a checkpoint",
+    "run_get_model_name": "run getModelName to extract the model name from a _train_config.json file path",
+    "run_update_parser_with_labels": "run updateParserWithLabels to add label arguments to an argparse parser from a labels dict",
+    "test_test_function": "test the test function to validate GAN checkpoint loading and visualization export workflows",
+    "review_test_function": "review the test function for GAN model visualization, interpolation, and dataset export logic"
+  },
+  "facebookresearch_pytorchganzoo/models/loss_criterions/GDPP_loss.py": {
+    "run_GDPPLoss": "run GDPPLoss with discriminator feature tensors phiFake and phiReal to compute the GDPP loss value",
+    "build_GAN_training_with_GDPP": "build a GAN training loop that uses GDPPLoss to penalize mode collapse by comparing real and fake feature diversity",
+    "test_GDPPLoss_backward": "test GDPPLoss backward pass by calling with backward=True to perform gradient computation via retain_graph",
+    "review_GDPPLoss_compute_diversity": "review the GDPPLoss compute_diversity nested function that normalizes features and computes eigenvalues via symeig",
+    "summarize_GDPPLoss": "summarize the GDPPLoss function that computes magnitude loss and weighted structure loss from real and fake discriminator features"
+  },
+  "facebookresearch_pytorchganzoo/models/loss_criterions/ac_criterion.py": {
+    "init_ACGANCriterion": "create an ACGANCriterion instance with an attribKeysOrder dictionary defining attribute categories and their possible values",
+    "generateConstraintsFromVector": "generate one-hot constraint tensors from a labels dictionary for a given batch size",
+    "buildRandomCriterionTensor": "build random criterion tensors with random combinations of attribute class values for a batch",
+    "buildLatentCriterion": "build a one-hot latent criterion tensor from a target category tensor",
+    "getCriterion": "compute the conditional cross-entropy loss between the discriminator output and target labels"
+  },
+  "facebookresearch_pytorchganzoo/models/loss_criterions/base_loss_criterions.py": {
+    "create_MSE_loss": "create an MSE loss criterion instance for GAN discriminator training on a device",
+    "create_WGANGP_loss": "create a WGAN-GP loss criterion instance with linear activation for GAN training",
+    "create_Logistic_loss": "create a non-saturating logistic loss criterion instance for GAN discriminator training",
+    "create_DCGAN_loss": "create a DCGAN binary cross entropy loss criterion instance for GAN training",
+    "review_BaseLossWrapper": "review the BaseLossWrapper class and its getCriterion method for custom GAN loss implementation"
+  },
+  "facebookresearch_pytorchganzoo/models/loss_criterions/gradient_losses.py": {
+    "run_WGANGPGradientPenalty": "run the WGANGPGradientPenalty function to compute a gradient penalty for WGAN-GP training",
+    "run_logisticGradientPenalty": "run the logisticGradientPenalty function to compute a gradient penalty for logistic GAN training",
+    "create_WGANGP_gradient_penalty": "create a WGAN-GP gradient penalty by interpolating real and fake data through a discriminator",
+    "create_logistic_gradient_penalty": "create a logistic gradient penalty by computing the squared gradient norm of real data",
+    "refactor_gradient_losses": "refactor the gradient loss functions to use modern PyTorch tensor operations instead of autograd.Variable"
+  },
+  "facebookresearch_pytorchganzoo/models/loss_criterions/loss_texture.py": {
+    "build_LossTexture": "build a LossTexture module with a pretrained VGG19 model to compute style transfer texture loss",
+    "run_getLoss": "run getLoss to compute the MSE texture loss between fake and real image feature representations",
+    "run_getFeatures": "run getFeatures to extract mean and variance statistics from VGG feature maps at multiple scales",
+    "run_extractRelUIndexes": "run extractRelUIndexes to find ReLU layer indices in a Sequential model matching target scale layers",
+    "run_extractIndexedLayers": "run extractIndexedLayers to forward an input tensor through selected layers and collect intermediate activations"
+  },
+  "facebookresearch_pytorchganzoo/models/metrics/inception_score.py": {
+    "create_InceptionScore": "create an InceptionScore instance with a pretrained classifier model for evaluating generated images",
+    "updateWithMiniBatch": "update the InceptionScore accumulator with a mini-batch of reference image tensors",
+    "getScore": "get the final inception score after processing all mini-batches of generated images",
+    "review_InceptionScore_class": "review the InceptionScore class to understand how entropy and softmax are accumulated across batches",
+    "refactor_InceptionScore_getScore": "refactor the InceptionScore getScore method to support batched or streaming score computation"
+  },
+  "facebookresearch_pytorchganzoo/models/metrics/laplacian_swd.py": {
+    "build_LaplacianSWDMetric": "build a LaplacianSWDMetric instance with patchSize, nDescriptorLevel, and depthPyramid parameters",
+    "run_updateWithMiniBatch": "run updateWithMiniBatch on a LaplacianSWDMetric to extract and store descriptors from reference and target minibatches",
+    "run_getScore": "run getScore on a LaplacianSWDMetric to compute SWD distance between stored reference and target descriptor distributions",
+    "test_sliced_wasserstein": "test the sliced_wasserstein function to compute NVIDIA's approximation of the SWD distance between two descriptor arrays",
+    "test_getDescriptorsForMinibatch": "test getDescriptorsForMinibatch to extract randomly chosen patches of a given size from each image in a minibatch"
+  },
+  "facebookresearch_pytorchganzoo/models/metrics/nn_score.py": {
+    "build_train_val_test_split": "build a stratified train/val/test split from an attributes JSON file with configurable ratios",
+    "compute_dataset_attribute_stats": "compute frequency statistics for each attribute category and label across a dataset",
+    "train_feature_maker_resnet": "train a ResNet-18 feature extractor model on attributed image data with optional visualization",
+    "extract_features_and_build_kdtree": "extract features from a dataset using a loaded model and save a KDTree with image names",
+    "load_feature_extractor_model": "load a pretrained feature extractor model from a saved checkpoint with configurable gradient settings"
+  },
+  "facebookresearch_pytorchganzoo/models/networks/DCGAN_nets.py": {
+    "create_GNet_generator": "create a GNet generator network with a latent vector dimension and output channels for DCGAN image generation",
+    "create_DNet_discriminator": "create a DNet discriminator network with input channels and decision layer size for DCGAN image classification",
+    "run_GNet_forward": "run the GNet forward pass to generate images from a latent vector input tensor",
+    "run_DNet_forward": "run the DNet forward pass to classify input images and optionally extract feature maps",
+    "apply_weights_init": "apply the weights_init function to initialize Conv and BatchNorm layer weights with normal distribution"
+  },
+  "facebookresearch_pytorchganzoo/models/networks/constant_net.py": {
+    "create_constantnet_identity": "create a ConstantNet module that passes input tensors through unchanged or reshaped to a fixed output shape",
+    "create_meanstd_pooling": "create a MeanStd module that computes per-channel mean and variance from N C W H tensors",
+    "create_featuretransform_resize_normalize": "create a FeatureTransform module that bilinearly upsamples features then normalizes by mean and std",
+    "review_constantnet_forward": "review the ConstantNet forward method to understand its reshape behavior when shapeOut is provided",
+    "test_featuretransform_buffers": "test the FeatureTransform registered mean and std buffers to verify correct normalization of input tensors"
+  },
+  "facebookresearch_pytorchganzoo/models/networks/custom_layers.py": {
+    "create_equalized_conv2d_layer": "create an EqualizedConv2d layer with He initialization and equalized learning rate constraints",
+    "create_equalized_linear_layer": "create an EqualizedLinear layer with He initialization and equalized learning rate constraints",
+    "upscale_tensor_2d": "upscale a 4D tensor spatially by an integer factor using nearest-neighbor replication",
+    "normalize_tensor_with_normalizationlayer": "normalize a tensor by its per-channel RMS using the NormalizationLayer module",
+    "compute_he_initialization_factor": "compute He's initialization constant for a given layer using getLayerNormalizationFactor"
+  },
+  "facebookresearch_pytorchganzoo/models/networks/mini_batch_stddev_module.py": {
+    "create_minibatch_stddev_channel": "create a function that adds a minibatch standard deviation channel to a PyTorch tensor feature map",
+    "build_gan_discriminator_with_stddev": "build a GAN discriminator layer that uses mini-batch standard deviation for feature augmentation",
+    "test_minibatch_stddev_function": "test the miniBatchStdDev function with a 4D tensor and verify the output channel count increases by one",
+    "refactor_minibatch_stddev_subgroup": "refactor the miniBatchStdDev function to support configurable subgroup sizes for standard deviation computation",
+    "review_minibatch_stddev_implementation": "review the miniBatchStdDev function that computes per-subgroup standard deviation and concatenates it as an extra channel"
+  },
+  "facebookresearch_pytorchganzoo/models/networks/progressive_conv_net.py": {
+    "build_GNet_generator": "build a progressive GAN generator network with GNet using a specified latent dimension and initial scale depth",
+    "build_DNet_discriminator": "build a progressive GAN discriminator network with DNet using a specified initial scale depth and input dimensions",
+    "addScale_GNet": "add a new resolution scale to the GNet generator to double the output image size",
+    "addScale_DNet": "add a new resolution scale to the DNet discriminator to handle higher resolution input images",
+    "setNewAlpha_GNet": "set the alpha blending factor on the GNet generator to smoothly merge outputs between resolution scales"
+  },
+  "facebookresearch_pytorchganzoo/models/networks/styleGAN.py": {
+    "build_GNet_generator": "build a StyleGAN generator network with configurable mapping layers and truncation psi",
+    "create_GNet_addScale": "create additional resolution scales on the GNet generator by calling addScale with a new channel dimension",
+    "create_GNet_setNewAlpha": "create a blending factor between resolutions by calling setNewAlpha with a value between 0 and 1",
+    "test_GNet_forward": "test the GNet forward pass by passing latent vectors and verifying output image tensor shape",
+    "review_AdaIN_layer": "review the AdaIN layer implementation for adaptive instance normalization with style modulation"
+  },
+  "facebookresearch_pytorchganzoo/models/trainer/DCGAN_trainer.py": {
+    "train_DCGAN_model": "train a DCGAN model for the specified number of epochs and save a checkpoint",
+    "initialize_DCGAN_with_pretrained_networks": "initialize a product GAN by loading pretrained discriminator and generator networks from .pt files",
+    "create_DCGAN_trainer": "create a DCGANTrainer instance with a dataset path and optional GANTrainer kwargs",
+    "init_DCGAN_model": "initialize the DCGAN model using the trainer's model config and GPU setting",
+    "get_DCGAN_default_config": "get the default configuration for the DCGANTrainer from the class-level _defaultConfig"
+  },
+  "facebookresearch_pytorchganzoo/models/trainer/gan_trainer.py": {
+    "init_GANTrainer": "create a GANTrainer instance with a dataset path, GPU flag, visualization module, and training config",
+    "trainOnEpoch_GANTrainer": "train the GAN model on one epoch using a DataLoader, tracking losses and saving checkpoints",
+    "loadSavedTraining_GANTrainer": "load a saved checkpoint to resume GAN training from a specific scale and iteration",
+    "saveCheckpoint_GANTrainer": "save the GAN model weights, temporary config, loss logs, and reference vectors to disk",
+    "getDBLoader_GANTrainer": "get a DataLoader for the training dataset at a given resolution scale with proper transforms"
+  },
+  "facebookresearch_pytorchganzoo/models/trainer/progressive_gan_trainer.py": {
+    "init_ProgressiveGANTrainer": "create a ProgressiveGANTrainer instance with a dataset path, mini batch scheduler, and config scheduler",
+    "train_ProgressiveGANTrainer": "run progressive GAN training across multiple resolution scales with alpha blending and checkpoint saving",
+    "initModel_ProgressiveGANTrainer": "build a ProgressiveGAN model from the trainer's configuration and GPU settings",
+    "updateAlphaJumps_ProgressiveGANTrainer": "compute alpha jump iteration schedules and values for each resolution scale",
+    "addNewScales_ProgressiveGANTrainer": "add new resolution scales with custom or linear alpha jump configuration to the trainer"
+  },
+  "facebookresearch_pytorchganzoo/models/trainer/styleGAN_trainer.py": {
+    "init_StyleGANTrainer": "create a StyleGANTrainer instance with a dataset path and optional keyword arguments",
+    "initModel_StyleGANTrainer": "initialize a StyleGAN model with depth scales and GPU settings via initModel",
+    "getDefaultConfig_StyleGANTrainer": "get the default StyleGAN configuration object from the trainer class",
+    "review_StyleGANTrainer_class": "review the StyleGANTrainer class that extends ProgressiveGANTrainer for StyleGAN training",
+    "run_StyleGAN_training": "run progressive StyleGAN training using the StyleGANTrainer with a dataset path"
+  },
+  "facebookresearch_pytorchganzoo/models/utils/config.py": {
+    "create_config_from_dict": "create a config object by merging an input dictionary with a default config object",
+    "update_config_object": "update a config object with fields from another config object or dictionary",
+    "parse_bool_from_string": "parse a string value into a boolean using common yes no true false variants",
+    "add_config_args_to_parser": "add argparse arguments to a parser based on the attributes of a default config object",
+    "extract_config_to_dict": "extract config object members into a dictionary using a reference config as a template"
+  },
+  "facebookresearch_pytorchganzoo/models/utils/image_transform.py": {
+    "create_numpy_resize": "create a NumpyResize transform to resize a numpy array image to a given size using bilinear interpolation",
+    "create_numpy_flip": "create a NumpyFlip transform to randomly flip a numpy array image horizontally with configurable probability",
+    "create_numpy_to_tensor": "create a NumpyToTensor transform to convert a numpy array image into a PyTorch tensor",
+    "load_image_with_pil_loader": "load an image from a file path as a PIL RGB image or numpy array using pil_loader",
+    "build_standard_transform": "build a standard image transform pipeline with resize, tensor conversion, and normalization using standardTransform"
+  },
+  "facebookresearch_pytorchganzoo/models/utils/product_module.py": {
+    "build_mask_split_shape_texture": "build a binary mask to split a latent vector into shape and texture network inputs",
+    "build_mask_split_mixed_noise": "build a mask split with mixed noise enabled so both shape and texture use all noise dimensions",
+    "build_mask_split_conditional": "build a mask split that assigns conditional attributes to shape or texture networks using keySplits",
+    "build_mask_split_simple": "build a basic mask split with no conditional attributes for a simple shape and texture GAN",
+    "review_buildMaskSplit": "review the buildMaskSplit function to understand how latent vectors are split into shape and texture masks"
+  },
+  "facebookresearch_pytorchganzoo/models/utils/utils.py": {
+    "finiteCheck": "check PyTorch tensor gradients for inf or NaN values and zero them out",
+    "prepareClassifier": "replace the final linear layer of a PyTorch model with a new classifier head",
+    "parse_state_name": "parse a model checkpoint filename to extract the model name, scale, and iteration number",
+    "getLastCheckPoint": "find the latest model checkpoint files in a directory by name, scale, or iteration",
+    "loadStateDictCompatible": "load a state dict into a PyTorch module with fallback key matching for DataParallel"
+  },
+  "facebookresearch_pytorchganzoo/visualization/np_visualizer.py": {
+    "build_numpy_grid_from_arrays": "create a grid image from a batch of NCHW numpy arrays with configurable interpolation",
+    "save_tensor_as_image": "clamp a PyTorch tensor to -1 to 1 and save it as a grid image to disk",
+    "review_make_numpy_grid": "review the make_numpy_grid function that arranges NCHW arrays into a single grid image",
+    "refactor_saveTensor": "refactor the saveTensor function to support additional image formats beyond imageio",
+    "summarize_publish_functions": "summarize the publishTensors, publishLoss, publishLinePlot, and publishScatterPlot stub functions"
+  },
+  "facebookresearch_pytorchganzoo/visualization/visualizer.py": {
+    "resize_tensor_images": "resize a batch of PyTorch image tensors to a specified output size with clamping and interpolation",
+    "publish_tensors_to_visdom": "publish a batch of PyTorch image tensors to a Visdom environment with a caption and grid layout",
+    "save_tensor_images": "save a batch of PyTorch image tensors to disk as an image file after resizing",
+    "publish_loss_curves": "publish training loss curves over iterations to Visdom line plots for each loss key",
+    "publish_scatter_plot": "publish a 2D or 3D scatter plot of tensor data clouds to Visdom with random marker colors"
+  }
+}

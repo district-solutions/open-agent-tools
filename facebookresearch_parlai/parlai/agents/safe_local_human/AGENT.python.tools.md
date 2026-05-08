@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/parlai/agents/safe_local_human/safe_local_human.py
+
+Prompts
+
+```
+['run the SafeLocalHumanAgent to get keyboard input with safety filtering for offensive messages', 'check if text is offensive using the SafeLocalHumanAgent check_offensive method with string matcher and classifier', 'observe and filter bot replies using SafeLocalHumanAgent observe method to detect offensive bot messages', 'get a human reply from keyboard input using the SafeLocalHumanAgent get_reply method', 'add safety filtering command-line arguments to a ParlaiParser using SafeLocalHumanAgent add_cmdline_args method']
+```
+
+Usage
+
+```
+{'run_safe_local_human_agent': 'run the SafeLocalHumanAgent to get keyboard input with safety filtering for offensive messages', 'check_offensive_text': 'check if text is offensive using the SafeLocalHumanAgent check_offensive method with string matcher and classifier', 'observe_bot_reply': 'observe and filter bot replies using SafeLocalHumanAgent observe method to detect offensive bot messages', 'get_human_reply': 'get a human reply from keyboard input using the SafeLocalHumanAgent get_reply method', 'add_safety_cmdline_args': 'add safety filtering command-line arguments to a ParlaiParser using SafeLocalHumanAgent add_cmdline_args method'}
+```
+

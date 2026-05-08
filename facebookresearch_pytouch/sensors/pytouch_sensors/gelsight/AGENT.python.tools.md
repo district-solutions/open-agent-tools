@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/pytouch
+- repo_uri: https://github.com/facebookresearch/pytouch
+
+## File: facebookresearch_pytouch/sensors/pytouch_sensors/gelsight/gelsight_mini.py
+
+Prompts
+
+```
+['find all connected Gelsight Mini devices using the find function with optional serial filter', 'create a GelsightMini instance and connect to the device using its serial number', 'get a single image frame from the Gelsight Mini sensor with optional transpose', 'save a captured image frame from the Gelsight Mini sensor to a file path', 'show a live OpenCV window view of the Gelsight Mini sensor with optional frame difference']
+```
+
+Usage
+
+```
+{'find_gelsight_mini_devices': 'find all connected Gelsight Mini devices using the find function with optional serial filter', 'connect_gelsight_mini': 'create a GelsightMini instance and connect to the device using its serial number', 'get_frame_from_gelsight': 'get a single image frame from the Gelsight Mini sensor with optional transpose', 'save_frame_to_disk': 'save a captured image frame from the Gelsight Mini sensor to a file path', 'show_live_view': 'show a live OpenCV window view of the Gelsight Mini sensor with optional frame difference'}
+```
+

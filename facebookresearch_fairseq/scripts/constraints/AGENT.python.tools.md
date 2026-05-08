@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairseq
+- repo_uri: https://github.com/facebookresearch/fairseq
+
+## File: facebookresearch_fairseq/scripts/constraints/extract.py
+
+Prompts
+
+```
+['run the extract script to extract random phrase constraints from tab-separated source-target pairs via stdin', 'run extract with --number to extract multiple random phrases of a given length from each target sentence', 'run extract with --add-sos and --add-eos flags to wrap target sentences with start and end tokens', 'run extract with --seed for reproducible random phrase extraction from reference files', 'review the get_phrase function that extracts a phrase from a word list and removes those words in place']
+```
+
+Usage
+
+```
+{'run_extract_constraints': 'run the extract script to extract random phrase constraints from tab-separated source-target pairs via stdin', 'run_extract_multiple_phrases': 'run extract with --number to extract multiple random phrases of a given length from each target sentence', 'run_extract_with_sos_eos': 'run extract with --add-sos and --add-eos flags to wrap target sentences with start and end tokens', 'run_extract_with_seed': 'run extract with --seed for reproducible random phrase extraction from reference files', 'review_get_phrase': 'review the get_phrase function that extracts a phrase from a word list and removes those words in place'}
+```
+

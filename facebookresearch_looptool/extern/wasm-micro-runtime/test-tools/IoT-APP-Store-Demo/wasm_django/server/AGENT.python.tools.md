@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/looptool
+- repo_uri: https://github.com/facebookresearch/loop_tool
+
+## File: facebookresearch_looptool/extern/wasm-micro-runtime/test-tools/IoT-APP-Store-Demo/wasm_django/server/wasm_server.py
+
+Prompts
+
+```
+['run the WASM TCP server on localhost port 8888 in a background thread', 'query device information from a connected IoT device via its TCP socket connection', 'install a WASM applet file onto a connected IoT device by name and file path', 'uninstall a named WASM applet from a connected IoT device via its TCP socket', 'decode a binary attribute container message into a Python dictionary of key-value pairs']
+```
+
+Usage
+
+```
+{'run_wasm_server': 'run the WASM TCP server on localhost port 8888 in a background thread', 'query_device': 'query device information from a connected IoT device via its TCP socket connection', 'install_wasm_applet': 'install a WASM applet file onto a connected IoT device by name and file path', 'uninstall_wasm_applet': 'uninstall a named WASM applet from a connected IoT device via its TCP socket', 'decode_attr_container': 'decode a binary attribute container message into a Python dictionary of key-value pairs'}
+```
+

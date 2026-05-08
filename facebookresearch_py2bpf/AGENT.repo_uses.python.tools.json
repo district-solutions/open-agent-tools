@@ -1,0 +1,156 @@
+{
+  "facebookresearch_py2bpf/_bpf/_instructions.py": {
+    "convert_bpf_program_to_raw_instructions": "convert a list of BPF instruction objects and labels into a raw ctypes instruction array using convert_to_raw_instructions",
+    "create_mov_instruction": "create a Mov instruction to move data between registers, immediates, or memory operands in BPF programs",
+    "build_alu64_arithmetic_instruction": "build an ALU64 arithmetic instruction like Add, Sub, Multiply, or Divide operating on registers or immediates",
+    "create_conditional_jump_instruction": "create a conditional jump instruction like JumpIfEqual or JumpIfGreaterThan comparing a register to an immediate or another register",
+    "create_bpf_call_or_return_instruction": "create a Call instruction to invoke a BPF helper function by number or a Ret instruction to exit the program"
+  },
+  "facebookresearch_py2bpf/_bpf/_perf_event.py": {
+    "open_perf_event": "open a perf event using perf_event_open with a PerfEventAttr structure and optional pid, cpu, group_fd, and flags",
+    "create_perf_event_attr": "create a PerfEventAttr ctypes structure to configure perf event type, size, config, sample_period, and sample_type fields",
+    "create_perf_event_mmap_page": "create a PerfEventMmapPage ctypes structure to read perf event mmap page data including data_head, data_tail, and time fields",
+    "create_perf_event_header": "create a PerfEventHeader ctypes structure to parse perf event record headers with type, misc, and size fields",
+    "configure_sample_period_union": "configure a SamplePeriodUnion ctypes union to set either sample_period or sample_freq for perf event sampling"
+  },
+  "facebookresearch_py2bpf/_bpf/_syscall.py": {
+    "run_syscall": "run a raw Linux system call by number with arbitrary arguments via libc syscall",
+    "run_bpf": "run a BPF system call with a command, attribute pointer, and attribute length",
+    "get_libc": "get a lazy-loaded ctypes handle to libc.so.6 for making low-level C calls",
+    "get_errno": "get the current thread errno value from libc __errno_location",
+    "review_syscall_module": "review the _syscall module to understand BPF and raw syscall wrappers for eBPF programs"
+  },
+  "facebookresearch_py2bpf/_bpf/_template_jit.py": {
+    "translate_varinstructions_to_bpf": "translate a list of VarInstructions into BPF instructions using the translate function",
+    "review_translate_function": "review the translate function that converts VarInstructions to BPF instruction lists with optional verbose output",
+    "review_opcode_translators": "review the opcode translator functions that handle JUMP_FORWARD, CALL_FUNCTION, COMPARE_OP, and other bytecode opcodes",
+    "review_pseudo_function_calls": "review the pseudo-function call handlers for memcpy, addrof, ptr, deref, packet_copy, load_skb, and mem_eq",
+    "review_bpf_memory_operations": "review the _mov, _lea, _memcpy, and _mov_const helper functions for BPF memory movement and address calculation"
+  },
+  "facebookresearch_py2bpf/_translation/_dis_plus.py": {
+    "use_OpCode_class": "use the OpCode class to access Python bytecode opcodes as named class attributes",
+    "check_hasjmp_set": "check if an opcode is a jump instruction using the hasjmp set of all jump opcodes",
+    "check_hascondjmp_set": "check if an opcode is a conditional jump using the hascondjmp set",
+    "wrap_function_with_opcode_key_wrapper": "wrap a function with opcode_key_wrapper to convert KeyError into descriptive ValueError for invalid opcodes",
+    "disassemble_with_dis_extension": "disassemble Python bytecode using the dis module extended with OpCode and jump opcode sets"
+  },
+  "facebookresearch_py2bpf/_translation/_folding.py": {
+    "pin_globals_to_consts": "replace LOAD_GLOBAL and LOAD_DEREF instructions with LOAD_CONST by resolving globals and closure cells to their constant values",
+    "reinterpret_const_strings": "convert string constants in LOAD_CONST instructions to null-terminated ctypes c_char arrays for BPF compatibility",
+    "fold_consts": "evaluate binary arithmetic operations and function calls with all-constant operands and replace them with their computed constant results",
+    "remove_unread_consts": "remove unreferenced LOAD_CONST instructions that have no corresponding source variable references in the instruction list",
+    "make_const": "create a new LOAD_CONST VarInstruction from an existing instruction, preserving destination variables and setting the constant value"
+  },
+  "facebookresearch_py2bpf/_translation/_labels.py": {
+    "insert_labels_into_bytecode": "insert labels into a list of bytecode instructions at jump target offsets",
+    "create_label_with_offset": "create a Label object with a given bytecode offset value",
+    "review_insert_labels_function": "review the insert_labels function that uses a min-heap to place labels at jump destinations",
+    "summarize_label_class": "summarize the Label class that stores an offset and provides string representation",
+    "refactor_insert_labels_for_custom_instructions": "refactor insert_labels to work with custom instruction objects that have offset and opcode attributes"
+  },
+  "facebookresearch_py2bpf/_translation/_mem.py": {
+    "convert_primitive_var_types": "convert primitive variable types in a list of instructions by mapping int types to c_uint64",
+    "replace_load_consts": "replace LOAD_CONST opcodes with ConstVar objects and propagate them to source variables in instructions",
+    "replace_arg_loads": "replace LOAD_FAST opcodes for function arguments with ArgVar objects using provided argument types",
+    "insert_fast_vars": "insert FastVar objects for LOAD_FAST and STORE_FAST opcodes in a list of instructions",
+    "replace_fast_stores": "replace destination variables with stored FastVar mappings and filter non-Var stores from instructions"
+  },
+  "facebookresearch_py2bpf/_translation/_stack.py": {
+    "create_stackvar": "create a StackVar instance with a ctypes type and negative stack offset",
+    "alloc_stack_variable": "allocate a new stack variable using the Stack bump allocator with alignment rounding",
+    "set_stack_allocations": "convert Var and FastVar objects to StackVar instances using a bump allocator",
+    "review_stack_class": "review the Stack class bump allocator that rounds offsets to alignment boundaries",
+    "review_stackvar_class": "review the StackVar class that represents variables located on the stack"
+  },
+  "facebookresearch_py2bpf/_translation/_trace.py": {
+    "trace_all_execution_paths": "trace all execution paths through a stream of bytecode instructions by following jumps and returns",
+    "walk_instruction_paths": "walk through bytecode instructions recursively to yield each complete execution path as a list",
+    "follow_jumps_in_bytecode": "follow both conditional and unconditional forward jumps in a bytecode instruction stream",
+    "summarize_get_all_execution_paths": "summarize the get_all_execution_paths function that traces execution paths through bytecode instructions",
+    "review_get_all_execution_paths": "review the get_all_execution_paths function and its recursive walk logic for tracing bytecode"
+  },
+  "facebookresearch_py2bpf/_translation/_translate.py": {
+    "convert_python_function_to_bpf_pseudocode": "convert a python function to register-based pseudo-bytecode for BPF translation using convert_to_register_ops",
+    "validate_python_opcodes_for_bpf_translation": "validate that a python function uses only translatable opcodes via _ensure_translatable_ops",
+    "review_convert_to_register_ops_pipeline": "review the convert_to_register_ops function and its multi-stage bytecode transformation pipeline",
+    "summarize_bpf_bytecode_translation_stages": "summarize the translation stages including var assignment, constant folding, type inference, and stack allocation",
+    "test_ensure_translatable_ops_validation": "test the _ensure_translatable_ops function to verify it rejects unsupported python opcodes"
+  },
+  "facebookresearch_py2bpf/_translation/_types.py": {
+    "create_ptr_type": "create a dynamically typed pointer class from a ctypes structure using make_ptr",
+    "deduce_dst_var_types": "deduce destination variable types for bytecode instructions and enforce type consistency",
+    "propagate_src_var_types": "propagate source variable types from destination variables across bytecode instructions",
+    "review_type_inference": "review the set_dst_var_types function to understand how it handles LOAD_CONST, LOAD_FAST, and math opcodes",
+    "refactor_ptr_class": "refactor the Ptr ctypes subclass to add custom methods for pointer type introspection"
+  },
+  "facebookresearch_py2bpf/_translation/_vars.py": {
+    "assign_vars_trace_execution_paths": "assign explicit source and destination variables to bytecode instructions by tracing all execution paths",
+    "create_VarInstruction_with_src_dst_vars": "create a VarInstruction wrapping a bytecode instruction with explicit source and destination variable lists",
+    "create_Var_with_num_and_type": "create a Var object with a numeric identifier and optional type for variable tracking",
+    "fill_line_starts_on_var_instructions": "fill in missing line start numbers on VarInstruction objects by propagating the last known line number",
+    "review_assign_vars_stack_simulation": "review the assign_vars function that simulates stack state across execution paths to map implicit stack locations to explicit variables"
+  },
+  "facebookresearch_py2bpf/examples/blacklist_ingress_ips.py": {
+    "run_blacklist_ingress_ips": "run the script to blacklist IPs from a file on a network device using py2bpf",
+    "build_blacklist_maps": "build eBPF maps from a file of IPv4 and IPv6 addresses for ingress filtering",
+    "compile_filter": "compile a drop function that checks packet source IPs against blacklist maps",
+    "clear_ingress_filter": "clear the existing ingress filter on a specified network device",
+    "review_drop_fn": "review the drop function that loads source addresses and checks them against blacklist maps"
+  },
+  "facebookresearch_py2bpf/examples/connect_watcher.py": {
+    "run_connect_watcher": "run the connect watcher to monitor sys_connect syscall latency and print process connection timing",
+    "create_comm_timing_structure": "create a CommTiming ctypes structure to store process name, elapsed time, pid, and raw address",
+    "create_connect_start_structure": "create a ConnectStart ctypes structure to track socket connection start time and address family",
+    "get_pretty_addr_raw": "get a human-readable address string from raw bytes supporting AF_UNIX, AF_INET, and AF_INET6",
+    "review_kprobe_connect_tracing": "review the kprobe-based sys_connect entry and exit probe tracing setup for connection latency measurement"
+  },
+  "facebookresearch_py2bpf/examples/execsnoop.py": {
+    "run_execsnoop": "run the execsnoop script to monitor sys_execve kernel calls and print process execution events",
+    "create_Call_structure": "create a Call ctypes Structure with pid, comm, and four arg fields for execve probe data",
+    "create_execve_probe": "create a kprobe function that hooks sys_execve and reads process args from pt_regs",
+    "review_BpfQueue": "review the BpfQueue datastructure used to collect Call events from the eBPF probe",
+    "summarize_probe_read": "summarize how probe_read safely reads kernel memory to extract argv arguments from registers"
+  },
+  "facebookresearch_py2bpf/examples/flow_counter.py": {
+    "create_ebpf_map_for_flow_counting": "create an eBPF map keyed by a Flow structure to count network packet flows",
+    "create_socket_filter_with_bpf_program": "create a SocketFilter from a BPF program function and attach it to a raw packet socket",
+    "extract_flow_from_skb": "extract source IP, destination IP, ports, and L4 protocol from an skb in a BPF program",
+    "iterate_ebpf_map_results": "iterate over an eBPF map items to print TCP, UDP, and ICMP flow counts",
+    "convert_uint32_to_ipv4_string": "convert a packed uint32 integer to a human-readable IPv4 address string using inet_ntop"
+  },
+  "facebookresearch_py2bpf/examples/nanosleep_watcher.py": {
+    "run_nanosleep_probe": "run a BPF kprobe on sys_nanosleep to watch nanosleep syscall invocations",
+    "create_bpf_queue": "create a BpfQueue with a ctypes Structure type to exfiltrate kernel events to userspace",
+    "create_kprobe_decorator": "create a kprobe decorator on sys_nanosleep to intercept kernel function calls",
+    "read_kernel_memory": "read kernel memory safely using probe_read to access pointer arguments from pt_regs",
+    "get_current_comm": "get the current process comm name using get_current_comm inside a BPF probe function"
+  },
+  "facebookresearch_py2bpf/examples/opensnoop.py": {
+    "run_opensnoop": "run the opensnoop example to trace sys_open kernel calls and print pid, comm, and path",
+    "create_kprobe_open_probe": "create a kprobe function decorated with py2bpf.kprobe.probe to trace the sys_open kernel syscall",
+    "create_call_structure": "create a ctypes Structure with pid, comm, and path fields for BPF event data",
+    "create_bpfqueue_call_queue": "create a BpfQueue datastructure to collect Call events from the kernel probe into user space",
+    "review_open_probe_funcs": "review the open_probe function that uses get_current_pid_tgid, get_current_comm, probe_read_str, and perf_event_output"
+  },
+  "facebookresearch_py2bpf/examples/sync_watcher.py": {
+    "run_sync_watcher": "run the sync_watcher script to monitor sys_sync kernel calls and print timing data",
+    "create_sync_call_structure": "create a SyncCall ctypes Structure with comm, time, and pid fields for BPF events",
+    "probe_sys_sync_entry": "probe the sys_sync kernel function entry to record start times per process PID",
+    "probe_sys_sync_exit": "probe the sys_sync kernel function exit to calculate duration and output timing events",
+    "create_bpf_queue_and_map": "create a BpfQueue for SyncCall events and a BPF map to track sync start times"
+  },
+  "facebookresearch_py2bpf/examples/unlinkers.py": {
+    "run_kprobe_do_unlinkat": "run a kprobe on the do_unlinkat kernel function to trace file unlink operations",
+    "create_bpf_queue": "create a BpfQueue datastructure to collect events from a kprobe into a ctypes Structure",
+    "probe_read_kernel_memory": "use probe_read to safely read a kernel pointer value into a user-space buffer",
+    "get_current_comm": "use get_current_comm to capture the current process command name into a ctypes field",
+    "perf_event_output": "use perf_event_output to send a kprobe event to a BpfQueue on a specific CPU"
+  },
+  "facebookresearch_py2bpf/tests/compiler_smoke_tests.py": {
+    "run_compiler_smoke_tests": "run the py2bpf compiler smoke tests to verify BPF program compilation works",
+    "test_compile_socket_filter": "test compiling a Python function into a BPF socket filter program using compile_socket_filter",
+    "test_basic_smoke": "test the BasicSmokeTest class to verify simple function and lambda compilation",
+    "test_math_operations": "test the MathSmokeTest class to verify arithmetic and bitwise operations compile to BPF",
+    "test_stack_variables": "test the StackSmokeTest class to verify stack variable access compiles to BPF"
+  }
+}

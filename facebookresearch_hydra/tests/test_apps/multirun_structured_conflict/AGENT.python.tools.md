@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/tests/test_apps/multirun_structured_conflict/my_app.py
+
+Prompts
+
+```
+['run the Hydra app that prints config.test.param from a structured config dataclass', 'create a dataclass with a MISSING int param to use as a Hydra structured config schema', 'register a TestConfig dataclass under group test name default in the Hydra ConfigStore', 'review the hydra.main decorator that transforms run into a config-driven entry point', 'test the Hydra multirun structured config conflict scenario using this minimal app']
+```
+
+Usage
+
+```
+{'run_hydra_app': 'run the Hydra app that prints config.test.param from a structured config dataclass', 'create_structured_config': 'create a dataclass with a MISSING int param to use as a Hydra structured config schema', 'register_config_store': 'register a TestConfig dataclass under group test name default in the Hydra ConfigStore', 'review_hydra_main_decorator': 'review the hydra.main decorator that transforms run into a config-driven entry point', 'test_multirun_conflict': 'test the Hydra multirun structured config conflict scenario using this minimal app'}
+```
+

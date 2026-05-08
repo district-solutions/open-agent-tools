@@ -1,0 +1,35 @@
+{
+  "facebookresearch_paretoq/models/modeling_llama_quant.py": {
+    "build_quantized_llama_causal_lm": "build a quantized LlamaForCausalLM model from a config with w_bits quantization on attention and MLP layers",
+    "create_llama_model_forward_pass": "create a forward pass through LlamaModel with input_ids, attention_mask, and past_key_values for inference",
+    "test_quantized_attention_layer": "test the LlamaAttention forward method with rotary position embeddings and KV cache updates",
+    "review_quantized_mlp_gating": "review the LlamaMLP class to understand how QuantizeLinear is used for gate, up, and down projections",
+    "refactor_llama_for_sequence_classification": "refactor LlamaForSequenceClassification to add a custom pooling strategy on top of the quantized LlamaModel"
+  },
+  "facebookresearch_paretoq/models/utils_quant.py": {
+    "create_lsq_quantization": "create a learned step-size quantization autograd function for binary, ternary, or low-bit weight quantization",
+    "create_stretched_elastic_quant": "create a stretched elastic quantization autograd function for 0-bit or 2-bit weight quantization",
+    "build_quantize_linear_layer": "build a quantized linear layer that applies LSQ or stretched elastic quantization on weights",
+    "review_lsq_backward_grad": "review the LsqBinaryTernaryExtension backward pass gradient computation for alpha and input tensors",
+    "test_quantize_linear_forward": "test the QuantizeLinear forward pass with different w_bits values to verify quantization behavior"
+  },
+  "facebookresearch_paretoq/utils/datautils.py": {
+    "set_seed": "set the random seed for numpy and torch using set_seed(seed)",
+    "get_train_val_dataset": "load a JSONL file and split into train and validation datasets using get_train_val_dataset",
+    "create_CustomJsonDataset": "create a PyTorch IterableDataset that tokenizes and groups text into fixed-size blocks using CustomJsonDataset",
+    "tokenize_function": "tokenize a text example using the CustomJsonDataset tokenize_function method",
+    "jload": "load a JSON file into a dictionary using jload(filename)"
+  },
+  "facebookresearch_paretoq/utils/process_args.py": {
+    "process_args_parse_cli": "call process_args to parse CLI arguments into ModelArguments, DataArguments, and TrainingArguments dataclasses",
+    "create_ModelArguments_dataclass": "create a ModelArguments dataclass to configure model input/output paths and quantization bit width",
+    "create_DataArguments_dataclass": "create a DataArguments dataclass to configure training and evaluation data paths and sample limits",
+    "create_TrainingArguments_dataclass": "create a TrainingArguments dataclass extending HuggingFace TrainingArguments with QAT and model max length support",
+    "review_process_args_workflow": "review the process_args function that parses CLI args, creates output directories, and sets the output model local path"
+  },
+  "facebookresearch_paretoq/utils/utils.py": {
+    "get_logger": "create a logger with INFO level and console handler for a given logger name",
+    "safe_save_model_for_hf_trainer": "save a HuggingFace Trainer model state dict to disk excluding teacher keys",
+    "get_local_rank": "get the local rank from environment variable or torch distributed fallback"
+  }
+}

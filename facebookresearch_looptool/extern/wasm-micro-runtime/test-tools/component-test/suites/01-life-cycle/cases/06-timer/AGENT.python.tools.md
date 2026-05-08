@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/looptool
+- repo_uri: https://github.com/facebookresearch/loop_tool
+
+## File: facebookresearch_looptool/extern/wasm-micro-runtime/test-tools/component-test/suites/01-life-cycle/cases/06-timer/case.py
+
+Prompts
+
+```
+['run the CTestCase on_run_case method to test WASM timer functionality', 'install a WASM module as an app using install_app with a name and .wasm file path', 'query all installed apps using query_app and verify with check_query_apps', 'send an HTTP GET request to a WASM app endpoint using send_request', 'check the response payload from a WASM app request against expected JSON data']
+```
+
+Usage
+
+```
+{'run_timer_test_case': 'run the CTestCase on_run_case method to test WASM timer functionality', 'install_wasm_app': 'install a WASM module as an app using install_app with a name and .wasm file path', 'query_installed_apps': 'query all installed apps using query_app and verify with check_query_apps', 'send_http_request': 'send an HTTP GET request to a WASM app endpoint using send_request', 'check_response_payload': 'check the response payload from a WASM app request against expected JSON data'}
+```
+

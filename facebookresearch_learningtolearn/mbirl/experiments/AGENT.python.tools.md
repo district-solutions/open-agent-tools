@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/learningtolearn
+- repo_uri: https://github.com/facebookresearch/learningtolearn
+
+## File: facebookresearch_learningtolearn/mbirl/experiments/run_model_based_irl.py
+
+Prompts
+
+```
+['run the model-based IRL experiment to learn cost functions from robot trajectory demonstrations', 'create an IRLLoss callable that computes mean squared error between predicted and target trajectory endpoints', 'evaluate action optimization by rolling out trajectories and computing IRL loss against expert demonstrations', 'run the inverse RL training loop to learn cost function parameters from training and test trajectories', 'create a learnable cost function such as Weighted, TimeDep, or RBF for model-based IRL']
+```
+
+Usage
+
+```
+{'run_model_based_irl': 'run the model-based IRL experiment to learn cost functions from robot trajectory demonstrations', 'create_IRLLoss': 'create an IRLLoss callable that computes mean squared error between predicted and target trajectory endpoints', 'evaluate_action_optimization': 'evaluate action optimization by rolling out trajectories and computing IRL loss against expert demonstrations', 'run_irl_training': 'run the inverse RL training loop to learn cost function parameters from training and test trajectories', 'create_learnable_cost': 'create a learnable cost function such as Weighted, TimeDep, or RBF for model-based IRL'}
+```
+

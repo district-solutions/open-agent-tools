@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mega
+- repo_uri: https://github.com/facebookresearch/mega
+
+## File: facebookresearch_mega/setup.py
+
+Prompts
+
+```
+['build and install the fairseq sequence-to-sequence toolkit package with all C++ and Cython extensions', 'create a custom setuptools Extension class that automatically includes numpy header directories', 'run the fairseq-train CLI command to train a sequence-to-sequence model on a dataset', 'run the fairseq-generate CLI command to generate translations from a trained model', 'run the fairseq-eval-lm CLI command to evaluate a language model on a test set']
+```
+
+Usage
+
+```
+{'build_fairseq_package': 'build and install the fairseq sequence-to-sequence toolkit package with all C++ and Cython extensions', 'create_numpy_extension': 'create a custom setuptools Extension class that automatically includes numpy header directories', 'run_fairseq_train': 'run the fairseq-train CLI command to train a sequence-to-sequence model on a dataset', 'run_fairseq_generate': 'run the fairseq-generate CLI command to generate translations from a trained model', 'run_fairseq_eval_lm': 'run the fairseq-eval-lm CLI command to evaluate a language model on a test set'}
+```
+

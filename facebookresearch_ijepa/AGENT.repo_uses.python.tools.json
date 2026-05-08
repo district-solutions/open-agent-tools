@@ -1,0 +1,86 @@
+{
+  "facebookresearch_ijepa/src/helper.py": {
+    "init_model_ViT_encoder_predictor": "init a ViT encoder and predictor model with configurable patch size, crop size, and embedding dimensions",
+    "init_opt_AdamW_schedulers": "init an AdamW optimizer with warmup cosine LR schedule and cosine weight decay schedule for encoder and predictor",
+    "load_checkpoint_resume_training": "load a checkpoint file to restore encoder, predictor, target encoder, optimizer, and scaler state",
+    "review_load_checkpoint_error_handling": "review the load_checkpoint function exception handling that logs errors and resets epoch to zero",
+    "refactor_init_model_weight_initialization": "refactor the init_model weight initialization to use a different truncation normal standard deviation"
+  },
+  "facebookresearch_ijepa/src/train.py": {
+    "run_iJEPa_training": "run the iJEPa model training loop with distributed data parallel on ImageNet-1K",
+    "build_masked_training_pipeline": "build a masked image training pipeline using multi-block mask collator and context-target masking",
+    "create_checkpoint_saving": "create a checkpoint saving function that stores encoder, predictor, target encoder, and optimizer state",
+    "refactor_momentum_scheduler": "refactor the momentum scheduler to update target encoder weights with exponential moving average",
+    "review_distributed_training_setup": "review the distributed training setup with DDP wrapping and SLURM-based device visibility"
+  },
+  "facebookresearch_ijepa/src/transforms.py": {
+    "create_transforms_for_augmentation": "create a composed image transform pipeline with random crop, flip, color jitter, and normalization",
+    "build_gaussian_blur_transform": "build a GaussianBlur transform class that applies random-radius blur to PIL images with configurable probability",
+    "create_color_distortion_pipeline": "create a color distortion transform using ColorJitter and RandomGrayscale with configurable strength",
+    "test_make_transforms": "test the make_transforms function by applying it to a PIL image and verifying tensor output shape",
+    "review_gaussian_blur_call": "review the GaussianBlur class __call__ method to understand how it applies probabilistic blur with random radius"
+  },
+  "facebookresearch_ijepa/src/datasets/imagenet1k.py": {
+    "create_imagenet_dataloader": "create an ImageNet dataset and distributed DataLoader with configurable batch size and transforms",
+    "build_imagenet_dataset": "build an ImageNet dataset wrapper that optionally copies data locally from a network tar file",
+    "filter_imagenet_subset": "filter an ImageNet dataset to a subset of images specified in a text file",
+    "copy_imagenet_locally": "copy ImageNet tar data locally to a SLURM scratch directory for faster access",
+    "review_imagenet_class": "review the ImageNet class that extends torchvision ImageFolder with local data copying and target indexing"
+  },
+  "facebookresearch_ijepa/src/masks/multiblock.py": {
+    "create_mask_collator": "create a MaskCollator instance with custom input_size, patch_size, and mask scale parameters for iMask generation",
+    "generate_encoder_masks": "generate encoder masks by calling the MaskCollator on a batch of images to get visible patch indices",
+    "generate_predictor_masks": "generate predictor masks by calling the MaskCollator on a batch of images to get masked patch indices",
+    "sample_block_size": "sample a random block height and width using _sample_block_size with a torch Generator and scale range",
+    "sample_block_mask": "sample a random block mask with _sample_block_mask constrained to acceptable regions on the patch grid"
+  },
+  "facebookresearch_ijepa/src/masks/random.py": {
+    "create_mask_collator": "create a MaskCollator with ratio, input_size, and patch_size for masked image modeling",
+    "call_mask_collator_batch": "call the MaskCollator on a batch to get collated data with encoder and predictor masks",
+    "step_mask_collator_counter": "step the MaskCollator iterator counter to get a new seed value for mask generation",
+    "review_mask_collator_call": "review the MaskCollator __call__ method that generates encoder and predictor masks for each image in a batch",
+    "refactor_mask_collator_ratio": "refactor the MaskCollator to support a fixed ratio instead of a random ratio range"
+  },
+  "facebookresearch_ijepa/src/masks/utils.py": {
+    "apply_masks_gather_patches": "apply masks to gather specific patches from a tensor using torch gather",
+    "apply_masks_select_context_patches": "apply masks to select context patches from a batch of patch tensors",
+    "apply_masks_select_target_patches": "apply masks to select target patches from a batch of patch tensors",
+    "review_apply_masks": "review the apply_masks function that gathers patches from tensors using mask indices",
+    "summarize_apply_masks": "summarize the apply_masks function for iJEPa mask-based patch selection"
+  },
+  "facebookresearch_ijepa/src/models/vision_transformer.py": {
+    "build_vit_base_model": "build a VisionTransformer base model with 768 embed dim and 12 layers using vit_base factory function",
+    "build_vit_predictor_model": "build a VisionTransformerPredictor model with mask tokens and positional embeddings for masked image modeling",
+    "create_sincos_pos_embed": "create 2D sinusoidal positional embeddings for a given grid size and embedding dimension",
+    "run_drop_path": "run stochastic depth drop path regularization on a tensor with configurable drop probability",
+    "review_VisionTransformer_forward": "review the VisionTransformer forward pass including patch embedding, positional encoding, masking, and block processing"
+  },
+  "facebookresearch_ijepa/src/utils/distributed.py": {
+    "init_distributed_process_group": "init a distributed process group using NCCL backend with SLURM or manual rank and world size",
+    "all_gather_tensor_across_ranks": "gather tensors from all ranks into a single concatenated tensor using the AllGather autograd function",
+    "all_reduce_sum_tensor": "sum a tensor across all ranks using the AllReduceSum autograd function with gradient support",
+    "all_reduce_mean_tensor": "compute the mean of a tensor across all ranks using the AllReduce autograd function with gradient support",
+    "review_distributed_utils": "review the distributed training utilities including init_distributed, AllGather, AllReduceSum, and AllReduce classes"
+  },
+  "facebookresearch_ijepa/src/utils/logging.py": {
+    "time_gpu_closure": "use gpu_timer to measure the GPU execution time of a callable closure function",
+    "create_csv_logger": "create a CSVLogger instance to write typed header rows and data rows to a CSV file",
+    "log_csv_row": "use the CSVLogger log method to append a formatted data row to an existing CSV file",
+    "track_average_meter": "use AverageMeter to compute running average, min, max, and sum of updated values over time",
+    "log_gradient_norms": "use grad_logger to compute gradient norm statistics across model named parameters including first and last layer"
+  },
+  "facebookresearch_ijepa/src/utils/schedulers.py": {
+    "create_warmup_cosine_lr_schedule": "create a WarmupCosineSchedule to linearly warm up then cosine decay the optimizer learning rate",
+    "run_warmup_cosine_schedule_step": "run a step on the WarmupCosineSchedule to update the optimizer learning rate for the current step",
+    "create_cosine_weight_decay_schedule": "create a CosineWDSchedule to cosine anneal the optimizer weight decay from ref_wd to final_wd",
+    "run_cosine_wd_schedule_step": "run a step on the CosineWDSchedule to update the optimizer weight decay for the current step",
+    "review_scheduler_classes": "review the WarmupCosineSchedule and CosineWDSchedule classes for optimizer hyperparameter scheduling patterns"
+  },
+  "facebookresearch_ijepa/src/utils/tensors.py": {
+    "apply_masks_tensor_patches": "apply masks to a batch of patch tensors to gather selected patches by index",
+    "repeat_interleave_batch_tensor": "repeat and interleave batches of tensor rows a specified number of times",
+    "trunc_normal_tensor_init": "initialize a tensor with truncated normal distribution values clamped between bounds",
+    "review_apply_masks_gather": "review the apply_masks function that gathers tensor patches using index masks and concatenates results",
+    "summarize_trunc_normal_init": "summarize the trunc_normal_ function that fills a tensor with truncated normal distribution values"
+  }
+}

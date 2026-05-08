@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/parlai/tasks/wikiqa/build.py
+
+Prompts
+
+```
+['run the build function to download and prepare the WikiQA dataset for Parlai', 'create a function that converts WikiQA TSV files into Facebook format text files', 'create filtered training data by excluding entries with no valid answers', 'download the WikiQA corpus tarball from parl.ai using the DownloadableFile resource', 'refactor create_fb_format to use context managers and handle edge cases in TSV parsing']
+```
+
+Usage
+
+```
+{'build_wikiqa_dataset': 'run the build function to download and prepare the WikiQA dataset for Parlai', 'create_fb_format_convert': 'create a function that converts WikiQA TSV files into Facebook format text files', 'create_fb_format_filtered': 'create filtered training data by excluding entries with no valid answers', 'download_wikiqa_resources': 'download the WikiQA corpus tarball from parl.ai using the DownloadableFile resource', 'refactor_create_fb_format': 'refactor create_fb_format to use context managers and handle edge cases in TSV parsing'}
+```
+

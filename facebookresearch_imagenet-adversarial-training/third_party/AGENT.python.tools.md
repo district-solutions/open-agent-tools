@@ -1,0 +1,33 @@
+# Agent Python Tools
+
+- repo: facebookresearch/imagenet-adversarial-training
+- repo_uri: https://github.com/facebookresearch/imagenet-adversarial-training
+
+## File: facebookresearch_imagenet-adversarial-training/third_party/imagenet_utils.py
+
+Prompts
+
+```
+['build a training or validation image augmentor list using fbresnet_augmentor for BGR images', 'create a multi-threaded validation dataflow from an ImageNet directory with batching and augmentation', 'run evaluation on ILSVRC12 validation data to measure top1 error and attack success rate', 'build a subclass of ImageNetModel to define a custom ImageNet classification model with logits', 'refactor the compute_loss_and_error method to customize cross-entropy loss and top-k error tracking', 'run the serve-data script to serve ImageNet training data over ZMQ with a specified batch size', 'run the serve-data script with fake data to test the ZMQ dataflow pipeline without real ImageNet data', 'run the serve-data script in benchmark mode to measure data loading speed with a warmup period', 'run the serve-data script without zmq_ops format to serve raw data over ZMQ IPC', 'review the get_data function that builds an augmented batched ImageNet dataflow with ZMQ prefetching']
+```
+
+Usage
+
+```
+{'build_augmentor': 'build a training or validation image augmentor list using fbresnet_augmentor for BGR images', 'create_val_dataflow': 'create a multi-threaded validation dataflow from an ImageNet directory with batching and augmentation', 'run_evaluation': 'run evaluation on ILSVRC12 validation data to measure top1 error and attack success rate', 'build_imagenet_model': 'build a subclass of ImageNetModel to define a custom ImageNet classification model with logits', 'refactor_loss_computation': 'refactor the compute_loss_and_error method to customize cross-entropy loss and top-k error tracking'}
+```
+
+## File: facebookresearch_imagenet-adversarial-training/third_party/serve-data.py
+
+Prompts
+
+```
+['build a training or validation image augmentor list using fbresnet_augmentor for BGR images', 'create a multi-threaded validation dataflow from an ImageNet directory with batching and augmentation', 'run evaluation on ILSVRC12 validation data to measure top1 error and attack success rate', 'build a subclass of ImageNetModel to define a custom ImageNet classification model with logits', 'refactor the compute_loss_and_error method to customize cross-entropy loss and top-k error tracking', 'run the serve-data script to serve ImageNet training data over ZMQ with a specified batch size', 'run the serve-data script with fake data to test the ZMQ dataflow pipeline without real ImageNet data', 'run the serve-data script in benchmark mode to measure data loading speed with a warmup period', 'run the serve-data script without zmq_ops format to serve raw data over ZMQ IPC', 'review the get_data function that builds an augmented batched ImageNet dataflow with ZMQ prefetching']
+```
+
+Usage
+
+```
+{'run_serve_data': 'run the serve-data script to serve ImageNet training data over ZMQ with a specified batch size', 'run_serve_data_fake': 'run the serve-data script with fake data to test the ZMQ dataflow pipeline without real ImageNet data', 'run_serve_data_benchmark': 'run the serve-data script in benchmark mode to measure data loading speed with a warmup period', 'run_serve_data_no_zmq_ops': 'run the serve-data script without zmq_ops format to serve raw data over ZMQ IPC', 'review_get_data': 'review the get_data function that builds an augmented batched ImageNet dataflow with ZMQ prefetching'}
+```
+

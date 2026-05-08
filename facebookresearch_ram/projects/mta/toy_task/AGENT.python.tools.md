@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/ram
+- repo_uri: https://github.com/facebookresearch/ram
+
+## File: facebookresearch_ram/projects/mta/toy_task/generate_data.py
+
+Prompts
+
+```
+['run the main function to generate train and test JSONL data for the MTA toy task', 'run synthetize_data to generate adversarial block-and-query samples with a target block to find', 'create a train and test dataset of block-finding examples with fixed sequence length 319', 'review the synthetize_data function that generates adversarial samples where distractor blocks avoid query tokens', 'refactor the main function to support variable pad_len instead of hardcoded 319 sequence length']
+```
+
+Usage
+
+```
+{'run_generate_mta_toy_task_data': 'run the main function to generate train and test JSONL data for the MTA toy task', 'run_synthetize_data': 'run synthetize_data to generate adversarial block-and-query samples with a target block to find', 'create_mta_toy_task_dataset': 'create a train and test dataset of block-finding examples with fixed sequence length 319', 'review_synthetize_data': 'review the synthetize_data function that generates adversarial samples where distractor blocks avoid query tokens', 'refactor_main_pad_len': 'refactor the main function to support variable pad_len instead of hardcoded 319 sequence length'}
+```
+

@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/param
+- repo_uri: https://github.com/facebookresearch/param
+
+## File: facebookresearch_param/train/compute/pt/pytorch_cutlass.py
+
+Prompts
+
+```
+['run the pytorch_cutlass module to benchmark cuBlas and cuTlass GEMM performance on CUDA', 'measure the cuBlas matrix multiplication timing for given tensors and step count', 'measure the cuTlass matrix multiplication timing for given tensors and step count', 'run a single GEMM test with specified M, N, K dimensions and dtype on CUDA', 'run the GEMM comparison across a dataset of M, N, K matrix size tuples', 'run the CvT convolutional projection and token embedding benchmark on GPU or CPU', 'run benchmark_requests to measure average or median execution time of a function across tensor inputs', 'create a CvT convolutional projection layer using depthwise batch norm or average pooling methods', 'create a CvT convolutional token embedding layer to convert images to patch embeddings with optional normalization', 'run the run function to benchmark a conv_proj or patch_embed layer and get elapsed time, bytes, and FLOPS', 'run a benchmark to measure PyTorch EmbeddingBag performance on CPU, GPU, or TPU devices', 'create an XlaEmbeddingBag module as a TPU-compatible replacement for nn.EmbeddingBag with constant offsets', 'measure CPU embedding lookup performance by timing warmup and benchmark steps with indices and offsets', 'measure GPU embedding lookup performance by timing CUDA-synchronized warmup and benchmark steps', 'initialize embedding indices using uniform or Zipf distribution sampling with configurable alpha parameter', 'run a PyTorch GEMM benchmark on CPU with configurable matrix sizes and data types', 'run a PyTorch GEMM benchmark on GPU using CUDA with warmup and measurement steps', 'run a PyTorch GEMM benchmark on TPU using PyTorch/XLA with lazy evaluation sync', 'measure the elapsed time for torch.mm matrix multiplication on CPU over multiple steps', 'measure the elapsed time for torch.mm matrix multiplication on GPU with CUDA synchronization', 'run a PyTorch MLP benchmark on CPU with SGD optimizer and FP32 data type', 'run a PyTorch MLP benchmark on GPU with autocast for float16 or bfloat16 mixed precision', 'run a PyTorch MLP benchmark on TPU using torch_xla with SGD optimizer', 'run a PyTorch MLP benchmark in forward-only mode without backward pass or optimizer step', 'run a PyTorch MLP benchmark on GPU with explicit weight casting to float16 or bfloat16']
+```
+
+Usage
+
+```
+{'run_gemm_benchmark': 'run the pytorch_cutlass module to benchmark cuBlas and cuTlass GEMM performance on CUDA', 'measure_blas_timing': 'measure the cuBlas matrix multiplication timing for given tensors and step count', 'measure_tlass_timing': 'measure the cuTlass matrix multiplication timing for given tensors and step count', 'run_single_gemm_test': 'run a single GEMM test with specified M, N, K dimensions and dtype on CUDA', 'run_gemm_comparison': 'run the GEMM comparison across a dataset of M, N, K matrix size tuples'}
+```
+
+## File: facebookresearch_param/train/compute/pt/pytorch_cvt_convs.py
+
+Prompts
+
+```
+['run the pytorch_cutlass module to benchmark cuBlas and cuTlass GEMM performance on CUDA', 'measure the cuBlas matrix multiplication timing for given tensors and step count', 'measure the cuTlass matrix multiplication timing for given tensors and step count', 'run a single GEMM test with specified M, N, K dimensions and dtype on CUDA', 'run the GEMM comparison across a dataset of M, N, K matrix size tuples', 'run the CvT convolutional projection and token embedding benchmark on GPU or CPU', 'run benchmark_requests to measure average or median execution time of a function across tensor inputs', 'create a CvT convolutional projection layer using depthwise batch norm or average pooling methods', 'create a CvT convolutional token embedding layer to convert images to patch embeddings with optional normalization', 'run the run function to benchmark a conv_proj or patch_embed layer and get elapsed time, bytes, and FLOPS', 'run a benchmark to measure PyTorch EmbeddingBag performance on CPU, GPU, or TPU devices', 'create an XlaEmbeddingBag module as a TPU-compatible replacement for nn.EmbeddingBag with constant offsets', 'measure CPU embedding lookup performance by timing warmup and benchmark steps with indices and offsets', 'measure GPU embedding lookup performance by timing CUDA-synchronized warmup and benchmark steps', 'initialize embedding indices using uniform or Zipf distribution sampling with configurable alpha parameter', 'run a PyTorch GEMM benchmark on CPU with configurable matrix sizes and data types', 'run a PyTorch GEMM benchmark on GPU using CUDA with warmup and measurement steps', 'run a PyTorch GEMM benchmark on TPU using PyTorch/XLA with lazy evaluation sync', 'measure the elapsed time for torch.mm matrix multiplication on CPU over multiple steps', 'measure the elapsed time for torch.mm matrix multiplication on GPU with CUDA synchronization', 'run a PyTorch MLP benchmark on CPU with SGD optimizer and FP32 data type', 'run a PyTorch MLP benchmark on GPU with autocast for float16 or bfloat16 mixed precision', 'run a PyTorch MLP benchmark on TPU using torch_xla with SGD optimizer', 'run a PyTorch MLP benchmark in forward-only mode without backward pass or optimizer step', 'run a PyTorch MLP benchmark on GPU with explicit weight casting to float16 or bfloat16']
+```
+
+Usage
+
+```
+{'run_cvt_conv_benchmark': 'run the CvT convolutional projection and token embedding benchmark on GPU or CPU', 'run_benchmark_requests': 'run benchmark_requests to measure average or median execution time of a function across tensor inputs', 'create_cvt_convolutional_projection': 'create a CvT convolutional projection layer using depthwise batch norm or average pooling methods', 'create_cvt_convolutional_token_embedding': 'create a CvT convolutional token embedding layer to convert images to patch embeddings with optional normalization', 'run_cvt_layer_benchmark': 'run the run function to benchmark a conv_proj or patch_embed layer and get elapsed time, bytes, and FLOPS'}
+```
+
+## File: facebookresearch_param/train/compute/pt/pytorch_emb.py
+
+Prompts
+
+```
+['run the pytorch_cutlass module to benchmark cuBlas and cuTlass GEMM performance on CUDA', 'measure the cuBlas matrix multiplication timing for given tensors and step count', 'measure the cuTlass matrix multiplication timing for given tensors and step count', 'run a single GEMM test with specified M, N, K dimensions and dtype on CUDA', 'run the GEMM comparison across a dataset of M, N, K matrix size tuples', 'run the CvT convolutional projection and token embedding benchmark on GPU or CPU', 'run benchmark_requests to measure average or median execution time of a function across tensor inputs', 'create a CvT convolutional projection layer using depthwise batch norm or average pooling methods', 'create a CvT convolutional token embedding layer to convert images to patch embeddings with optional normalization', 'run the run function to benchmark a conv_proj or patch_embed layer and get elapsed time, bytes, and FLOPS', 'run a benchmark to measure PyTorch EmbeddingBag performance on CPU, GPU, or TPU devices', 'create an XlaEmbeddingBag module as a TPU-compatible replacement for nn.EmbeddingBag with constant offsets', 'measure CPU embedding lookup performance by timing warmup and benchmark steps with indices and offsets', 'measure GPU embedding lookup performance by timing CUDA-synchronized warmup and benchmark steps', 'initialize embedding indices using uniform or Zipf distribution sampling with configurable alpha parameter', 'run a PyTorch GEMM benchmark on CPU with configurable matrix sizes and data types', 'run a PyTorch GEMM benchmark on GPU using CUDA with warmup and measurement steps', 'run a PyTorch GEMM benchmark on TPU using PyTorch/XLA with lazy evaluation sync', 'measure the elapsed time for torch.mm matrix multiplication on CPU over multiple steps', 'measure the elapsed time for torch.mm matrix multiplication on GPU with CUDA synchronization', 'run a PyTorch MLP benchmark on CPU with SGD optimizer and FP32 data type', 'run a PyTorch MLP benchmark on GPU with autocast for float16 or bfloat16 mixed precision', 'run a PyTorch MLP benchmark on TPU using torch_xla with SGD optimizer', 'run a PyTorch MLP benchmark in forward-only mode without backward pass or optimizer step', 'run a PyTorch MLP benchmark on GPU with explicit weight casting to float16 or bfloat16']
+```
+
+Usage
+
+```
+{'run_embeddingbag_benchmark': 'run a benchmark to measure PyTorch EmbeddingBag performance on CPU, GPU, or TPU devices', 'create_xla_embeddingbag': 'create an XlaEmbeddingBag module as a TPU-compatible replacement for nn.EmbeddingBag with constant offsets', 'measure_cpu_embedding': 'measure CPU embedding lookup performance by timing warmup and benchmark steps with indices and offsets', 'measure_gpu_embedding': 'measure GPU embedding lookup performance by timing CUDA-synchronized warmup and benchmark steps', 'init_zipf_indices': 'initialize embedding indices using uniform or Zipf distribution sampling with configurable alpha parameter'}
+```
+
+## File: facebookresearch_param/train/compute/pt/pytorch_gemm.py
+
+Prompts
+
+```
+['run the pytorch_cutlass module to benchmark cuBlas and cuTlass GEMM performance on CUDA', 'measure the cuBlas matrix multiplication timing for given tensors and step count', 'measure the cuTlass matrix multiplication timing for given tensors and step count', 'run a single GEMM test with specified M, N, K dimensions and dtype on CUDA', 'run the GEMM comparison across a dataset of M, N, K matrix size tuples', 'run the CvT convolutional projection and token embedding benchmark on GPU or CPU', 'run benchmark_requests to measure average or median execution time of a function across tensor inputs', 'create a CvT convolutional projection layer using depthwise batch norm or average pooling methods', 'create a CvT convolutional token embedding layer to convert images to patch embeddings with optional normalization', 'run the run function to benchmark a conv_proj or patch_embed layer and get elapsed time, bytes, and FLOPS', 'run a benchmark to measure PyTorch EmbeddingBag performance on CPU, GPU, or TPU devices', 'create an XlaEmbeddingBag module as a TPU-compatible replacement for nn.EmbeddingBag with constant offsets', 'measure CPU embedding lookup performance by timing warmup and benchmark steps with indices and offsets', 'measure GPU embedding lookup performance by timing CUDA-synchronized warmup and benchmark steps', 'initialize embedding indices using uniform or Zipf distribution sampling with configurable alpha parameter', 'run a PyTorch GEMM benchmark on CPU with configurable matrix sizes and data types', 'run a PyTorch GEMM benchmark on GPU using CUDA with warmup and measurement steps', 'run a PyTorch GEMM benchmark on TPU using PyTorch/XLA with lazy evaluation sync', 'measure the elapsed time for torch.mm matrix multiplication on CPU over multiple steps', 'measure the elapsed time for torch.mm matrix multiplication on GPU with CUDA synchronization', 'run a PyTorch MLP benchmark on CPU with SGD optimizer and FP32 data type', 'run a PyTorch MLP benchmark on GPU with autocast for float16 or bfloat16 mixed precision', 'run a PyTorch MLP benchmark on TPU using torch_xla with SGD optimizer', 'run a PyTorch MLP benchmark in forward-only mode without backward pass or optimizer step', 'run a PyTorch MLP benchmark on GPU with explicit weight casting to float16 or bfloat16']
+```
+
+Usage
+
+```
+{'run_gemm_benchmark_cpu': 'run a PyTorch GEMM benchmark on CPU with configurable matrix sizes and data types', 'run_gemm_benchmark_gpu': 'run a PyTorch GEMM benchmark on GPU using CUDA with warmup and measurement steps', 'run_gemm_benchmark_tpu': 'run a PyTorch GEMM benchmark on TPU using PyTorch/XLA with lazy evaluation sync', 'measure_cpu_mm': 'measure the elapsed time for torch.mm matrix multiplication on CPU over multiple steps', 'measure_gpu_mm': 'measure the elapsed time for torch.mm matrix multiplication on GPU with CUDA synchronization'}
+```
+
+## File: facebookresearch_param/train/compute/pt/pytorch_linear.py
+
+Prompts
+
+```
+['run the pytorch_cutlass module to benchmark cuBlas and cuTlass GEMM performance on CUDA', 'measure the cuBlas matrix multiplication timing for given tensors and step count', 'measure the cuTlass matrix multiplication timing for given tensors and step count', 'run a single GEMM test with specified M, N, K dimensions and dtype on CUDA', 'run the GEMM comparison across a dataset of M, N, K matrix size tuples', 'run the CvT convolutional projection and token embedding benchmark on GPU or CPU', 'run benchmark_requests to measure average or median execution time of a function across tensor inputs', 'create a CvT convolutional projection layer using depthwise batch norm or average pooling methods', 'create a CvT convolutional token embedding layer to convert images to patch embeddings with optional normalization', 'run the run function to benchmark a conv_proj or patch_embed layer and get elapsed time, bytes, and FLOPS', 'run a benchmark to measure PyTorch EmbeddingBag performance on CPU, GPU, or TPU devices', 'create an XlaEmbeddingBag module as a TPU-compatible replacement for nn.EmbeddingBag with constant offsets', 'measure CPU embedding lookup performance by timing warmup and benchmark steps with indices and offsets', 'measure GPU embedding lookup performance by timing CUDA-synchronized warmup and benchmark steps', 'initialize embedding indices using uniform or Zipf distribution sampling with configurable alpha parameter', 'run a PyTorch GEMM benchmark on CPU with configurable matrix sizes and data types', 'run a PyTorch GEMM benchmark on GPU using CUDA with warmup and measurement steps', 'run a PyTorch GEMM benchmark on TPU using PyTorch/XLA with lazy evaluation sync', 'measure the elapsed time for torch.mm matrix multiplication on CPU over multiple steps', 'measure the elapsed time for torch.mm matrix multiplication on GPU with CUDA synchronization', 'run a PyTorch MLP benchmark on CPU with SGD optimizer and FP32 data type', 'run a PyTorch MLP benchmark on GPU with autocast for float16 or bfloat16 mixed precision', 'run a PyTorch MLP benchmark on TPU using torch_xla with SGD optimizer', 'run a PyTorch MLP benchmark in forward-only mode without backward pass or optimizer step', 'run a PyTorch MLP benchmark on GPU with explicit weight casting to float16 or bfloat16']
+```
+
+Usage
+
+```
+{'run_mlp_benchmark_cpu': 'run a PyTorch MLP benchmark on CPU with SGD optimizer and FP32 data type', 'run_mlp_benchmark_gpu': 'run a PyTorch MLP benchmark on GPU with autocast for float16 or bfloat16 mixed precision', 'run_mlp_benchmark_tpu': 'run a PyTorch MLP benchmark on TPU using torch_xla with SGD optimizer', 'run_mlp_forward_only': 'run a PyTorch MLP benchmark in forward-only mode without backward pass or optimizer step', 'run_mlp_explicit_cast': 'run a PyTorch MLP benchmark on GPU with explicit weight casting to float16 or bfloat16'}
+```
+

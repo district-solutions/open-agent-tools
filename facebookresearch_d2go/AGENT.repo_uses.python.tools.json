@@ -1,0 +1,1209 @@
+{
+  "facebookresearch_d2go/d2go/distributed.py": {
+    "launch_distributed_training": "launch a D2Go distributed training job across multiple processes and machines with automatic CPU fallback",
+    "create_shared_context": "create a D2GoSharedContext dataclass to pass shared state to all distributed workers before launch",
+    "get_local_rank": "get the local rank of the current process in a distributed D2Go training setup",
+    "get_num_processes_per_machine": "get the number of processes running per machine in a D2Go distributed environment",
+    "run_distributed_worker": "run a D2Go distributed worker function that sets up process groups and executes the main function"
+  },
+  "facebookresearch_d2go/d2go/initializer.py": {
+    "run_initialize_all": "run initialize_all to set up the D2Go environment and populate all registries",
+    "run_initialize_all_with_bootstrap": "run initialize_all with boostrap_registries true to also bootstrap registries with caching enabled",
+    "review_initialize_all": "review the initialize_all function to understand the idempotent initialization guard pattern",
+    "summarize_setup_env": "summarize the _setup_env function that registers torchvision ops and sets up Detectron2 environment",
+    "review_populate_registries": "review the _populate_registries function that imports optimizer, dataset_mappers, and fbnet_v2 modules"
+  },
+  "facebookresearch_d2go/d2go/setup.py": {
+    "build_basic_cli_args": "build a list of CLI argument strings from config path, output dir, and runner name parameters",
+    "create_cfg_from_cli": "create a CfgNode config object from a config file path with optional command-line overwrites",
+    "setup_basic_argument_parser": "build an argparse parser for Detectron2Go training binaries with distributed and output dir options",
+    "setup_after_launch": "run post-launch setup including logger init, config dump, runner initialization, and deterministic training config",
+    "post_mortem_if_fail_for_main": "create a picklable wrapper decorator that enables post-mortem debugging on failure for the main function"
+  },
+  "facebookresearch_d2go/d2go/checkpoint/api.py": {
+    "check_distributed_checkpoint": "check if a Checkpointer instance supports distributed checkpointing using is_distributed_checkpoint",
+    "review_is_distributed_checkpoint": "review the is_distributed_checkpoint function that checks if a Checkpointer supports distributed checkpointing",
+    "refactor_is_distributed_checkpoint": "refactor is_distributed_checkpoint to add fallback logic for Checkpointer types without is_distributed method",
+    "test_is_distributed_checkpoint": "test is_distributed_checkpoint with a Checkpointer that has and lacks the is_distributed method",
+    "summarize_is_distributed_checkpoint": "summarize the is_distributed_checkpoint function that returns bool based on Checkpointer distributed support"
+  },
+  "facebookresearch_d2go/d2go/checkpoint/fsdp_checkpoint.py": {
+    "create_FSDPCheckpointer": "create an FSDPCheckpointer instance to save and load FSDP model checkpoints in distributed training",
+    "load_FSDPCheckpointer": "load a sharded or full FSDP checkpoint from a directory or file path using FSDPCheckpointer",
+    "save_FSDPCheckpointer": "save an FSDP model checkpoint with sharded or full state dict using FSDPCheckpointer",
+    "review_FSDPCheckpointer_load": "review the FSDPCheckpointer load method to understand how it handles LOCAL_STATE_DICT and FULL_STATE_DICT",
+    "summarize_FSDPCheckpointer_save": "summarize the FSDPCheckpointer save method and how it gathers optimizer and EMA state dicts"
+  },
+  "facebookresearch_d2go/d2go/checkpoint/log_checkpoint.py": {
+    "log_checkpoint_info": "log a checkpoint with a unique id, checkpoint type, and state string",
+    "review_log_checkpoint": "review the log_checkpoint function to understand its logging behavior and parameters",
+    "refactor_log_checkpoint": "refactor log_checkpoint to support additional checkpoint metadata fields",
+    "test_log_checkpoint": "test the log_checkpoint function with various checkpoint types and states",
+    "summarize_log_checkpoint": "summarize the log_checkpoint function and its fb_overwritable decorator usage"
+  },
+  "facebookresearch_d2go/d2go/checkpoint/utils.py": {
+    "gather_optimizer_state_dict": "gather the full or sharded optimizer state dict from an FSDP model for checkpointing",
+    "scatter_optimizer_state_dict": "load and scatter a full or sharded optimizer state dict into an FSDP model",
+    "gather_ema_state_dict": "gather the full or sharded EMA state dict from an FSDP model across all ranks",
+    "scatter_ema_state_dict": "load a full or sharded EMA state dict into an FSDP model and restore model state",
+    "review_utils_checkpoint": "review the FSDP checkpoint utility functions for optimizer and EMA state dict gathering and scattering"
+  },
+  "facebookresearch_d2go/d2go/config/config.py": {
+    "load_full_config_from_file": "load a full D2Go config from a YAML file with base inheritance and defaults merged",
+    "auto_scale_world_size": "auto scale a D2Go solver config to a new world size using registered scaling methods",
+    "CfgNode_merge_from_list": "merge command-line style config overrides into a CfgNode from a dot-keyed string list",
+    "convert_cfg_to_dict": "recursively convert a D2Go CfgNode config object into a plain Python dictionary",
+    "CfgNode_cast_from_other_class": "cast a detectron2 CfgNode instance into a D2Go CfgNode preserving all internal fields"
+  },
+  "facebookresearch_d2go/d2go/config/utils.py": {
+    "flatten_config_dict": "flatten a nested configuration dictionary into a single-layer dict with dot-separated keys",
+    "get_from_flattened_config_dict": "read a value from a nested config dict using a dot-separated flattened key path",
+    "config_dict_to_list_str": "convert a configuration dictionary into a flat list of alternating key and value strings",
+    "get_cfg_diff_table": "generate a side-by-side comparison table showing differences between two configuration dicts",
+    "get_diff_cfg": "compute the diff between two CfgNode configs and return only the changed keys and values"
+  },
+  "facebookresearch_d2go/d2go/data/build.py": {
+    "build_d2go_train_loader": "build a D2Go training data loader from a CfgNode config with an optional dataset mapper",
+    "build_weighted_detection_train_loader": "build a weighted detection training data loader that balances dataset frequencies using repeat factors",
+    "build_mapped_train_loader": "build a mapped training data loader that selects WeightedTrainingSampler or standard sampler based on config",
+    "get_sampling_probability_table": "generate a tabulated sampling probability table showing dataset sizes, repeat factors, and sample probabilities",
+    "build_clip_grouping_data_loader": "build a batched data loader for video clip training grouped by clip length across GPUs"
+  },
+  "facebookresearch_d2go/d2go/data/config.py": {
+    "add_d2go_data_default_configs": "add default D2Go data configuration nodes for datasets, mappers, augmentation ops, and test settings to a CfgNode",
+    "configure_train_test_categories": "configure train and test category lists to filter COCO dataset classes when loading data",
+    "configure_coco_injection": "configure COCO dataset injection with names, image directories, JSON files, and optional keypoint metadata",
+    "configure_dataset_mapper": "configure the D2GoDatasetMapper with backfill size, retry count, and exception catching settings",
+    "configure_augmentation_ops": "configure train and test augmentation operation lists with transform names and optional JSON arguments"
+  },
+  "facebookresearch_d2go/d2go/data/datasets.py": {
+    "register_extended_coco_dataset": "register a COCO dataset split with image directory and annotation JSON file to DatasetCatalog",
+    "register_extended_lvis_dataset": "register an LVIS dataset split with image directory and annotation JSON file to DatasetCatalog",
+    "register_coco_text_dataset": "register a COCO text dataset split with source JSON and image directory to DatasetCatalog",
+    "inject_coco_datasets": "inject multiple COCO datasets from config with names, image dirs, and JSON files using a registered function",
+    "register_json_datasets": "discover and register all JSON dataset splits from the d2go.datasets module directory"
+  },
+  "facebookresearch_d2go/d2go/data/disk_cache.py": {
+    "create_diskcachedlist_batched_static": "create a DiskCachedList wrapping a Python list with batched_static disk caching strategy to save RAM",
+    "create_diskcachedlist_naive": "create a DiskCachedList wrapping a Python list with naive individual item disk caching strategy",
+    "access_diskcachedlist_item": "access an item from a DiskCachedList by index using standard list indexing syntax",
+    "get_diskcachedlist_length": "get the total number of elements in a DiskCachedList using the len function",
+    "review_diskcachedlist_cleanup": "review the DiskCachedList class __del__ and atexit cleanup methods for cache directory removal"
+  },
+  "facebookresearch_d2go/d2go/data/extended_coco.py": {
+    "load_extended_coco_dataset": "load a COCO annotation JSON file into Detectron2 dataset dict format with image root and optional dataset name",
+    "convert_coco_text_to_detection": "convert a COCOText style JSON file to COCODetection format with optional set type filtering and minimum image size",
+    "create_inmemory_coco": "create an InMemoryCOCO object from a preloaded JSON dict to avoid repeated file I/O when converting formats",
+    "extract_archive_to_image_root": "extract one or more tar.gz archive files into a target image directory with strip components",
+    "validate_bbox_annotations": "validate horizontal or rotated bounding box annotations against image dimensions and filter invalid ones"
+  },
+  "facebookresearch_d2go/d2go/data/extended_lvis.py": {
+    "load_lvis_annotations": "load LVIS format JSON annotations into Detectron2 dataset dict format with bounding boxes and segmentation masks",
+    "get_lvis_metadata": "get LVIS instance metadata including thing classes from an LVIS API object",
+    "visualize_lvis_dataset": "run the module to load LVIS annotations and visualize dataset samples with bounding boxes",
+    "review_extended_lvis_load": "review the extended_lvis_load function that parses LVIS JSON annotations into Detectron2 format",
+    "refactor_lvis_loader": "refactor the extended_lvis_load function to support additional annotation formats or metadata fields"
+  },
+  "facebookresearch_d2go/d2go/data/keypoint_metadata_registry.py": {
+    "register_keypoint_metadata": "register a KeypointMetadata named tuple with names, flip_map, and connection_rules in the KEYPOINT_METADATA_REGISTRY",
+    "get_keypoint_metadata": "get keypoint metadata by name from the registry and return it as a dictionary",
+    "create_keypoint_metadata": "create a KeypointMetadata named tuple with keypoint names, flip map pairs, and connection rules",
+    "convert_keypoint_metadata_to_dict": "convert a KeypointMetadata instance to a dictionary with keypoint_names, keypoint_flip_map, and keypoint_connection_rules keys",
+    "review_keypoint_metadata_registry": "review the KEYPOINT_METADATA_REGISTRY to see all registered keypoint metadata definitions"
+  },
+  "facebookresearch_d2go/d2go/data/utils.py": {
+    "create_coco_subset_with_n_images": "create a COCOSubsetWithNImages to sample a fixed number of images from a COCO dataset using frontmost or random sampling",
+    "create_coco_subset_with_given_images": "create a COCOSubsetWithGivenImages to filter a COCO dataset down to a specific list of image file names",
+    "create_coco_with_classes_to_use": "create a COCOWithClassesToUse to filter a COCO dataset to only include annotations for a specified list of class names",
+    "register_sub_dataset_with_n_images": "register a temporary sub-dataset with a limited number of images using the register_sub_dataset_with_n_images context manager",
+    "configure_dataset_creation": "configure dataset creation settings including shared memory offload and disk cache using the configure_dataset_creation context manager"
+  },
+  "facebookresearch_d2go/d2go/data/dataset_mappers/build.py": {
+    "build_dataset_mapper": "build a dataset mapper from a config using the D2GO_DATA_MAPPER_REGISTRY factory function",
+    "register_dataset_mapper": "register a custom dataset mapper function with the D2GO_DATA_MAPPER_REGISTRY registry",
+    "review_D2GO_DATA_MAPPER_REGISTRY": "review the D2GO_DATA_MAPPER_REGISTRY to see which dataset mappers are registered",
+    "refactor_build_dataset_mapper": "refactor the build_dataset_mapper function to support additional config options or default mappers",
+    "test_build_dataset_mapper": "test the build_dataset_mapper function with a mock config and registered mapper"
+  },
+  "facebookresearch_d2go/d2go/data/dataset_mappers/data_reading.py": {
+    "read_image_with_prefetch": "read an image file with optional prefetched tensor data and return a numpy array",
+    "read_image_with_prefetch_no_prefetch": "read an image file from disk using detectron2 utils when no prefetched data is provided",
+    "read_image_with_prefetch_pillow_exif": "read an image from a prefetched tensor, apply EXIF orientation, and convert to numpy",
+    "read_sem_seg_file_with_prefetch_png": "read a PNG semantic segmentation mask file with optional prefetched data and return grayscale numpy array",
+    "read_sem_seg_file_with_prefetch_npy": "read an NPY semantic segmentation mask file from disk or prefetched tensor and return the numpy array"
+  },
+  "facebookresearch_d2go/d2go/data/transforms/affine.py": {
+    "create_AffineTransform": "create an AffineTransform with a 2x3 matrix M to warp an image using cv2.warpAffine",
+    "apply_image_AffineTransform": "apply an AffineTransform to warp a numpy array image using the transform matrix",
+    "apply_coords_AffineTransform": "apply an AffineTransform to warp 2D coordinate points through the transform matrix",
+    "create_RandomPivotScaling": "create a RandomPivotScaling transform generator that scales images around a random pivot point",
+    "create_RandomAffine": "create a RandomAffine transform generator with configurable rotation, translation, scale, and shear parameters"
+  },
+  "facebookresearch_d2go/d2go/data/transforms/auto_aug.py": {
+    "create_RandAugmentImage": "create a RandAugmentImage transform to apply random augmentation ops to uint8 numpy images",
+    "create_TrivialAugmentWideImage": "create a TrivialAugmentWideImage transform to apply a single random augmentation to uint8 images",
+    "create_AugMixImage": "create an AugMixImage transform to apply chained augmentation mixtures to uint8 numpy images",
+    "register_RandAugmentImageOp": "register the RandAugmentImageOp factory function in TRANSFORM_OP_REGISTRY for config-based transform building",
+    "wrap_transform_with_ToTensorWrapper": "wrap a torchvision transform with ToTensorWrapper to convert numpy arrays to tensors and back"
+  },
+  "facebookresearch_d2go/d2go/data/transforms/blur.py": {
+    "create_LocalizedBoxMotionBlurTransform": "create a LocalizedBoxMotionBlurTransform to apply motion blur to specific bounding box regions in an image",
+    "build_LocalizedBoxMotionBlur_augmentation": "build a LocalizedBoxMotionBlur augmentation that randomly applies motion blur to annotated bounding boxes with configurable probability",
+    "create_MotionBlurTransform": "create a MotionBlurTransform to apply full-image motion blur with configurable kernel size, angle, and direction parameters",
+    "build_RandomMotionBlur_augmentation": "build a RandomMotionBlur augmentation that probabilistically applies random motion blur to an entire image",
+    "create_GaussianBlurTransform": "create a GaussianBlurTransform to apply Gaussian blur to an image using cv2 with configurable kernel size and sigma range"
+  },
+  "facebookresearch_d2go/d2go/data/transforms/box_utils.py": {
+    "get_box_union": "merge multiple bounding boxes into a single union box using get_box_union",
+    "get_box_from_mask": "extract a bounding box from a 2D segmentation mask using get_box_from_mask",
+    "get_min_box_aspect_ratio": "compute a minimal bounding box matching a target aspect ratio using get_min_box_aspect_ratio",
+    "scale_bbox_center": "scale a bounding box around its center by a target factor using scale_bbox_center",
+    "EnlargeBoundingBox": "enlarge bounding boxes by a fixed padding or percentage using the EnlargeBoundingBox transform class"
+  },
+  "facebookresearch_d2go/d2go/data/transforms/build.py": {
+    "build_transform_gen": "build a list of Detectron2 transform generators from a config node and transform representation strings",
+    "parse_tfm_gen_repr": "parse a transform generator representation string into name and optional argument string separated by double colon",
+    "register_resize_shortest_edge_op": "register a ResizeShortestEdgeOp transform that resizes images by shortest edge using config min and max size settings",
+    "register_resize_shortest_edge_square_op": "register a ResizeShortestEdgeSquareOp transform that resizes images to a square shape without keeping aspect ratio",
+    "register_resize_op": "register a ResizeOp transform that resizes images using JSON-parsed keyword arguments for the Resize transform"
+  },
+  "facebookresearch_d2go/d2go/data/transforms/color_yuv.py": {
+    "convert_rgb_to_yuv_bt601": "convert an RGB image numpy array to YUV-BT.601 color space format",
+    "convert_yuv_bt601_to_rgb": "convert a YUV-BT.601 image numpy array back to RGB color space format",
+    "create_random_contrast_yuv_augmentation": "create a RandomContrastYUV augmentation that randomly adjusts contrast in YUV images",
+    "create_random_saturation_yuv_augmentation": "create a RandomSaturationYUV augmentation that randomly adjusts saturation in YUV images",
+    "build_invertible_color_transform": "build an InvertibleColorTransform wrapper for invertible photometric image color space operations"
+  },
+  "facebookresearch_d2go/d2go/data/transforms/crop.py": {
+    "create_crop_boundary_augmentation": "create a CropBoundary augmentation that crops N pixels from each side of an image",
+    "create_pad_transform": "create a PadTransform to pad an image to a larger size with a specified pad mode and value",
+    "create_pad_to_square_augmentation": "create a PadToSquare augmentation that pads an image to a square shape with a given pad value",
+    "create_random_instance_crop_augmentation": "create a RandomInstanceCrop augmentation that crops around a random instance with a configurable scale range",
+    "create_crop_box_augmentation": "create a CropBoxAug augmentation that crops an image around a bounding box with an optional scale factor"
+  },
+  "facebookresearch_d2go/d2go/data/transforms/d2_native.py": {
+    "build_random_brightness_augmentation": "build a RandomBrightnessOp transform with intensity_min and intensity_max kwargs from a JSON arg string",
+    "build_random_flip_augmentation": "build a RandomFlipOp transform with a configurable probability from a JSON arg string",
+    "build_random_crop_augmentation": "build a RandomCropOp or FixedSizeCropOp transform with crop_size kwargs from a JSON arg string",
+    "build_resize_scale_augmentation": "build a ResizeScaleOp transform with min_scale, max_scale, target_height, and target_width kwargs",
+    "build_ssd_color_augmentation": "build a RandomSSDColorAugOp transform using ColorAugSSDTransform with the config INPUT FORMAT"
+  },
+  "facebookresearch_d2go/d2go/data/transforms/tensor.py": {
+    "create_auginput_with_tensor": "create an AugInput object with a torch tensor image and optional bounding boxes",
+    "apply_transform_to_auginput": "apply a Transform in-place to an AugInput to transform its image, boxes, and segmentation",
+    "apply_augmentations_to_auginput": "apply a list of Augmentations or Transforms to an AugInput and return the AugmentationList",
+    "convert_tensor_to_array": "convert a CHW torch tensor image to an HWC numpy array using Tensor2Array",
+    "convert_array_to_tensor": "convert an HWC numpy array image to a CHW torch tensor using Array2Tensor"
+  },
+  "facebookresearch_d2go/d2go/evaluation/evaluator.py": {
+    "run_inference_on_dataset": "run inference on a dataset using a model and data loader with optional evaluator checkpointing",
+    "patch_DatasetEvaluators_has_finished_process": "patch detectron2 DatasetEvaluators to add a has_finished_process method for skipping redundant processing",
+    "create_ResultCache": "create a ResultCache utility to save and load evaluation cache data across distributed processes",
+    "load_ResultCache": "load cached evaluation results from a pickle file with optional gathering across ranks",
+    "save_ResultCache": "save evaluation data to a per-rank pickle cache file in the specified cache directory"
+  },
+  "facebookresearch_d2go/d2go/evaluation/prediction_count_evaluation.py": {
+    "create_PredictionCountEvaluator": "create a PredictionCountEvaluator instance to count predictions on a hard negative dataset with no annotations",
+    "run_PredictionCountEvaluator_process": "run the process method to collect prediction counts and confidence scores from model outputs",
+    "run_PredictionCountEvaluator_evaluate": "run the evaluate method to compute mean predictions per image and mean confidence per prediction",
+    "test_PredictionCountEvaluator_distributed": "test the PredictionCountEvaluator in distributed mode to gather prediction counts across all processes",
+    "review_PredictionCountEvaluator_reset": "review the reset method to clear prediction counts and confidence scores between evaluation runs"
+  },
+  "facebookresearch_d2go/d2go/evaluation/sem_seg_evaluation.py": {
+    "create_MultiSemSegEvaluator": "create a MultiSemSegEvaluator instance to evaluate multiple semantic segmentation predictions for the same target dataset",
+    "process_MultiSemSegEvaluator": "process inputs and outputs through MultiSemSegEvaluator to evaluate multiple predictions per image with per-frame results",
+    "evaluate_MultiSemSegEvaluator": "evaluate all collected predictions and return aggregated semantic segmentation results across all sub-evaluators",
+    "create_MultiSemSegVidEvaluator": "create a MultiSemSegVidEvaluator to evaluate semantic segmentation results for video clips with per-frame file names",
+    "create_PerImageEvaluator": "create a PerImageEvaluator wrapper to evaluate each image individually and record the N most interesting results for playback"
+  },
+  "facebookresearch_d2go/d2go/export/api.py": {
+    "create_PredictorExportConfig": "create a PredictorExportConfig NamedTuple to store model export information including model, data generator, and preprocessing settings",
+    "implement_ModelExportMethod_export": "implement a subclass of ModelExportMethod abstract class to export a PyTorch model to a deployable format like TorchScript",
+    "implement_ModelExportMethod_load": "implement the load method in a ModelExportMethod subclass to load an exported model back for inference",
+    "test_ModelExportMethod_test_export_and_load": "test the export and load lifecycle of a ModelExportMethod subclass by comparing original and loaded model outputs",
+    "register_ModelExportMethodRegistry": "register a custom ModelExportMethod subclass with the ModelExportMethodRegistry for use in the predictor export pipeline"
+  },
+  "facebookresearch_d2go/d2go/export/exporter.py": {
+    "convert_and_export_predictor": "convert a pytorch model and export it to a predictor in the specified deployable format",
+    "export_predictor": "export a pytorch model to a predictor of a given type and save it to output_dir",
+    "convert_model": "convert a pytorch model by fusing for fp32 or fake quantizing for int8 predictor types",
+    "convert_quantized_model": "convert a pytorch model to an int8 quantized model using post-training quantization or QAT",
+    "is_predictor_quantized": "check if a predictor type string indicates an int8 or quantized model format"
+  },
+  "facebookresearch_d2go/d2go/export/torchscript.py": {
+    "export_torchscript_model": "export a PyTorch model to TorchScript using trace or script mode and save to output path",
+    "optimize_for_mobile": "create a MobileOptimizationConfig to apply optimize_for_mobile with CPU, Metal, or Vulkan backend",
+    "load_torchscript_model": "load a saved TorchScript model from a file path and wrap it in TorchscriptWrapper",
+    "tracing_adapter_export": "export a model with TracingAdapter to handle non-flattened inputs and outputs during tracing",
+    "update_export_kwargs": "parse export_method trigger words like _mobile, @scripting, or @tracing to auto-set export kwargs"
+  },
+  "facebookresearch_d2go/d2go/model_zoo/model_zoo.py": {
+    "get_model_from_zoo": "get a pre-trained D2Go model by config path using model_zoo.get with trained=True",
+    "get_config_for_model": "get a CfgNode config object for a D2Go model using model_zoo.get_config with a config path",
+    "get_checkpoint_url": "get the download URL for a trained model checkpoint using model_zoo.get_checkpoint_url with a config path",
+    "get_config_file_path": "get the filesystem path to a builtin D2Go config YAML file using model_zoo.get_config_file",
+    "list_available_models": "list available pre-trained model config names from _ModelZooUrls.CONFIG_PATH_TO_URL_SUFFIX mapping"
+  },
+  "facebookresearch_d2go/d2go/modeling/api.py": {
+    "build_d2go_model": "build a D2Go model from a CfgNode config with modeling hooks and FSDP support",
+    "build_meta_arch": "build the model architecture from cfg.MODEL.META_ARCHITECTURE and cast it to the target device",
+    "create_D2GoModelBuildResult": "create a D2GoModelBuildResult dataclass to store a built model and its applied modeling hooks",
+    "review_build_d2go_model": "review the build_d2go_model function to understand FSDP distributed initialization and modeling hook application",
+    "refactor_build_meta_arch": "refactor build_meta_arch to register a custom meta-architecture in D2Go's META_ARCH_REGISTRY"
+  },
+  "facebookresearch_d2go/d2go/modeling/distillation.py": {
+    "build_distillation_modeling_hook": "build a DistillationModelingHook from config to apply knowledge distillation to a student model",
+    "create_knowledge_distillation_algorithm": "create a KnowledgeDistillation algorithm that computes layer-wise losses between student and teacher model outputs",
+    "create_domain_adaptation_algorithm": "create a DomainAdaptation algorithm that applies loss over domain0 and domain1 inputs",
+    "create_pseudo_labeler": "create a RelabelTargetInBatch pseudo labeler that replaces batch targets with teacher model outputs",
+    "create_default_loss_combiner": "create a DefaultLossCombiner that returns a weighted sum of losses based on name_weight dictionary"
+  },
+  "facebookresearch_d2go/d2go/modeling/ema.py": {
+    "create_EMAState_from_model": "create an EMAState object from a PyTorch model using the FromModel class method",
+    "update_model_with_EMAUpdater": "update a model's exponential moving average using EMAUpdater with a specified decay rate",
+    "apply_ema_weights_to_model": "apply EMA weights to a model and optionally restore the original weights afterward",
+    "configure_model_ema_in_detectron2": "add MODEL_EMA configuration options to a Detectron2 config object using add_model_ema_configs",
+    "use_EMAHook_for_training": "attach an EMAHook to a Detectron2 training loop to update EMA weights after each step"
+  },
+  "facebookresearch_d2go/d2go/modeling/image_pooler.py": {
+    "build_ImagePooler_crop_and_resize": "build an ImagePooler module to crop a tensor image by box and resize the shortest edge",
+    "create_ImagePooler_forward_crop": "create an ImagePooler forward pass that crops an image tensor by an XYXY box and returns transforms",
+    "test_ImagePooler_inference_crop": "test the ImagePooler forward method to crop and resize an image tensor during inference",
+    "review_ImagePooler_augmentation_pipeline": "review the ImagePooler augmentation pipeline that converts tensors to arrays, crops by box, and resizes",
+    "summarize_ImagePooler_class": "summarize the ImagePooler class that pools image regions using crop and resize transforms for inference"
+  },
+  "facebookresearch_d2go/d2go/modeling/kmeans_anchors.py": {
+    "add_kmeans_anchors_cfg": "add K-means anchor configuration options to a Detectron2 CfgNode config object",
+    "compute_kmeans_anchors_hook": "create a before_train hook that computes K-means anchors and updates the anchor generator",
+    "KMeansAnchorGenerator_init": "initialize a KMeansAnchorGenerator with config and input shape for single feature map RPN",
+    "KMeansAnchorGenerator_update_cell_anchors": "update the cell anchors buffer with computed K-means anchor coordinates",
+    "compute_kmeans_anchors": "compute K-means anchor boxes from a data loader using sklearn clustering on box sizes"
+  },
+  "facebookresearch_d2go/d2go/modeling/misc.py": {
+    "create_split_and_concat_module": "create a SplitAndConcat module to split a tensor along one dimension and concatenate along another",
+    "run_split_and_concat_forward": "run the SplitAndConcat forward pass to chunk and concatenate a PyTorch tensor across specified dimensions",
+    "create_add_coord_channels_module": "create an AddCoordChannels module to append normalized x and y coordinate channels to a tensor",
+    "run_add_coord_channels_with_r": "run the AddCoordChannels forward pass with radial distance to append x, y, and r channels to a tensor",
+    "review_inplace_delegate": "review the inplace_delegate function to delegate API calls to a submodule for quantization support"
+  },
+  "facebookresearch_d2go/d2go/modeling/model_freezing_utils.py": {
+    "add_model_freezing_configs": "add a FROZEN_LAYER_REG_EXP config list to the detectron2 config object for model freezing",
+    "set_requires_grad": "set requires_grad on model parameters matching regex patterns to freeze or unfreeze specific layers",
+    "freeze_matched_bn": "convert batch normalization layers matching regex patterns into FrozenBatchNorm2d modules in a PyTorch model",
+    "review_set_requires_grad": "review the set_requires_grad function to understand how regex patterns match and freeze model parameters",
+    "summarize_freeze_matched_bn": "summarize the freeze_matched_bn function that recursively converts matching batchnorm layers to FrozenBatchNorm2d"
+  },
+  "facebookresearch_d2go/d2go/modeling/modeling_hook.py": {
+    "build_and_apply_modeling_hooks": "build modeling hooks from config and apply them to a PyTorch model module",
+    "create_ModelingHook_subclass": "create a subclass of ModelingHook that implements apply and unapply abstract methods",
+    "apply_modeling_hooks": "apply a list of ModelingHook instances to a PyTorch model in sequential order",
+    "unapply_modeling_hooks": "unapply all modeling hooks from a trained model by calling model.unapply_modeling_hooks()",
+    "review_ModelingHook_apply": "review the ModelingHook apply method to understand how it modifies the input model"
+  },
+  "facebookresearch_d2go/d2go/modeling/subclass.py": {
+    "add_subclass_configs": "add subclass model configuration options to a Detectron2 config node for subclass prediction",
+    "create_subclass_fetcher": "create a custom SubclassFetcher subclass and register it with SUBCLASS_FETCHER_REGISTRY for fetching subclass IDs",
+    "build_subclass_head": "build a fully connected subclass prediction head with configurable layers using build_subclass_head",
+    "use_subclass_dataset_mapper": "use SubclassDatasetMapper to encode ground truth subclass labels into instances during training",
+    "use_standard_roi_heads_with_subclass": "use StandardROIHeadsWithSubClass to add subclass prediction to a standard ROI heads model"
+  },
+  "facebookresearch_d2go/d2go/modeling/backbone/fbnet_cfg.py": {
+    "add_fbnet_default_configs": "add FBNet backbone default config options including arch, scale factor, and head settings to a CfgNode",
+    "add_fbnet_v2_default_configs": "add FBNet V2 backbone and VT_FPN default config options including normalization and token settings to a CfgNode",
+    "add_bifpn_default_configs": "add BiFPN backbone default config options including depth multiplier, scale factor, and width divisor to a CfgNode",
+    "review_add_fbnet_default_configs": "review the add_fbnet_default_configs function to understand FBNet detection, keypoint, and mask head config defaults",
+    "summarize_add_fbnet_v2_default_configs": "summarize the add_fbnet_v2_default_configs function covering FBNet V2 normalization args and VT_FPN feature pyramid settings"
+  },
+  "facebookresearch_d2go/d2go/modeling/backbone/fbnet_v2.py": {
+    "build_fbnet_backbone": "build an FBNetV2 backbone module from a detectron2 config for object detection",
+    "build_fbnet_stages": "build FBNet stages for a named subpart like trunk, rpn, bbox, kpts, or mask",
+    "register_fbnetv2_c4_backbone": "register an FBNetV2 C4 backbone in the detectron2 BACKBONE_REGISTRY for detection tasks",
+    "register_fbnetv2_fpn_backbone": "register an FBNetV2 FPN backbone with LastLevelMaxPool top block in the BACKBONE_REGISTRY",
+    "create_fbnetv2_retinanet_backbone": "create an FBNetV2 RetinaNet backbone with LastLevelP6P7 top block for multi-scale detection"
+  },
+  "facebookresearch_d2go/d2go/modeling/backbone/modules.py": {
+    "build_RPNHeadConvRegressor": "build an RPN head module that predicts classification logits and bbox regression for a list of feature tensors",
+    "create_MaskRCNNConv1x1Predictor": "create a Mask R-CNN 1x1 convolution predictor that outputs mask logits from input feature maps",
+    "create_KeypointRCNNPredictor": "create a Keypoint R-CNN predictor with transposed convolution and bilinear upsampling for keypoint heatmaps",
+    "create_KeypointRCNNPredictorNoUpscale": "create a Keypoint R-CNN predictor with transposed convolution but no additional upsampling step",
+    "create_KeypointRCNNIRFPredictorNoUpscale": "create a Keypoint R-CNN predictor using an IRFBlock for transposed upsampling without extra interpolation"
+  },
+  "facebookresearch_d2go/d2go/modeling/meta_arch/fcos.py": {
+    "build_FCOS_model_from_config": "build a FCOS object detection model from a Detectron2 config using the from_config class method",
+    "create_FCOSInferenceWrapper": "create an FCOSInferenceWrapper module that wraps a FCOS model for single image forward inference",
+    "add_fcos_configs": "add FCOS model configuration defaults including num classes, inference thresholds, and focal loss parameters to a config node",
+    "prepare_FCOS_for_quantization": "prepare a FCOS model for quantization by wrapping backbone and head with quant subclasses and fusing modules",
+    "export_FCOS_model": "export a FCOS model using default_fcos_prepare_for_export to return a PredictorExportConfig with preprocess and postprocess info"
+  },
+  "facebookresearch_d2go/d2go/modeling/meta_arch/rcnn.py": {
+    "prepare_rcnn_for_export": "prepare a GeneralizedRCNN model for export to Caffe2, ONNX, or TorchScript using the RCNN_PREPARE_FOR_EXPORT_REGISTRY",
+    "prepare_rcnn_for_quantization": "prepare a GeneralizedRCNN model for quantization by wrapping backbone, RPN head, and ROI heads with quant wrappers",
+    "prepare_rcnn_fx_qat": "prepare a GeneralizedRCNN model for FX-based quantization-aware training using default_rcnn_custom_prepare_fx with example inputs",
+    "convert_rcnn_fx_quantized": "convert a prepared FX quantized GeneralizedRCNN model using default_rcnn_custom_convert_fx to apply convert_fx on each sub-module",
+    "wrap_rcnn_inference": "wrap a GeneralizedRCNN model with D2RCNNInferenceWrapper to handle preprocessing and postprocessing during tracing export"
+  },
+  "facebookresearch_d2go/d2go/modeling/meta_arch/retinanet.py": {
+    "review_RetinaNet_class": "review the RetinaNet class that re-registers detectron2 RetinaNet in D2Go META_ARCH_REGISTRY",
+    "review_prepare_for_export_method": "review the prepare_for_export method that raises NotImplementedError for export preparation",
+    "summarize_RetinaNet_wrapper": "summarize the RetinaNet wrapper class extending detectron2 RetinaNet with D2Go registry support",
+    "test_RetinaNet_registry": "test the RetinaNet class registration in D2Go META_ARCH_REGISTRY",
+    "refactor_prepare_for_export": "refactor the prepare_for_export method to support model export instead of raising NotImplementedError"
+  },
+  "facebookresearch_d2go/d2go/modeling/meta_arch/semantic_seg.py": {
+    "prepare_semantic_segmentor_for_export": "prepare a SemanticSegmentor model for export by generating preprocess and postprocess function configs",
+    "run_model_wrapper_forward": "run the ModelWrapper forward pass to normalize input, extract backbone features, and return segmentation results",
+    "create_preprocess_func": "create a PreprocessFunc to extract and pad image tensors from D2Go dataloader batches with size divisibility alignment",
+    "run_postprocess_func": "run PostprocessFunc to rescale semantic segmentation logits to original image resolution and package results",
+    "review_semantic_segmentor_class": "review the SemanticSegmentor class that re-registers Detectron2's meta-arch in D2Go with updated export APIs"
+  },
+  "facebookresearch_d2go/d2go/modeling/modeldef/fbnet_modeldef_registry.py": {
+    "add_model_arch": "add a single FBNetV2 model architecture to the registry by name",
+    "add_multiple_model_archs": "add multiple FBNetV2 model architectures to the registry from a dictionary",
+    "get_model_arch": "get a deep copy of a registered FBNetV2 model architecture by name",
+    "review_FBNetV2ModelArch": "review the FBNetV2ModelArch class and its static registry methods for model architecture management",
+    "summarize_FBNetV2ModelArch": "summarize the FBNetV2ModelArch class which provides a static registry for FBNetV2 model architectures"
+  },
+  "facebookresearch_d2go/d2go/optimizer/build.py": {
+    "build_optimizer": "build an optimizer from config using build_optimizer_mapper with a PyTorch model and d2go config",
+    "get_param_groups": "get optimizer parameter groups for a model with learning rate and weight decay settings from config",
+    "register_optimizer_mapper": "register a new optimizer builder function in the D2GO_OPTIM_MAPPER_REGISTRY for custom optimizer support",
+    "add_gradient_clipping": "add full model gradient clipping to an optimizer by wrapping it with maybe_add_gradient_clipping",
+    "get_lr_param_groups": "get learning rate parameter groups for a model with bias lr factor and lr multiplier overwrite settings"
+  },
+  "facebookresearch_d2go/d2go/quantization/fx.py": {
+    "get_prepare_fx_fn": "get the FX graph preparation function for quantization or QAT based on the is_qat flag",
+    "get_convert_fn": "get the quantization conversion function choosing between eager mode and FX graph mode from config",
+    "get_prepare_fn": "get the eager mode preparation function for standard quantization or QAT based on config and is_qat flag",
+    "review_get_prepare_fx_fn": "review the get_prepare_fx_fn function to understand how it selects between prepare_fx and prepare_qat_fx",
+    "review_get_convert_fn": "review the get_convert_fn function to understand how it selects between convert and convert_fx based on EAGER_MODE"
+  },
+  "facebookresearch_d2go/d2go/quantization/learnable_qat.py": {
+    "convert_qconfig_to_learnable": "convert a QConfig to its learnable counterpart using convert_to_learnable_qconfig",
+    "setup_optimizer_param_groups": "setup optimizer param groups with zero weight decay for learnable QAT scale and zero_point params",
+    "enable_learnable_observer": "enable learning observers and sync scale and zero_point tensors across distributed processes",
+    "toggle_fake_quant": "enable or disable fake quantization on learnable QAT modules using apply on the model",
+    "check_learnable_fake_quant": "check that a model uses learnable fake quant ops when qat method is learnable"
+  },
+  "facebookresearch_d2go/d2go/quantization/modeling.py": {
+    "post_training_quantize": "calibrate a model and convert it to a quantized int8 PyTorch model using post-training quantization",
+    "setup_qat_model": "prepare an fp32 model for quantization-aware training by inserting fake quant and observer modules",
+    "convert_to_quantized_model": "convert a fake quant model with fp32 operators into a real quantized model with int8 operators",
+    "prepare_fake_quant_model": "prepare an fp32 model for fake quantization in either QAT or PTQ mode using eager or FX graph",
+    "QATCheckpointer": "load non-QAT checkpoint weights into a QAT model by remapping state dict keys and ignoring observer keys"
+  },
+  "facebookresearch_d2go/d2go/quantization/qconfig.py": {
+    "create_qconfig_from_cfg": "create a qconfig from a D2Go quantization config using set_backend_and_create_qconfig",
+    "get_qconfig_for_backend": "get a QConfig for a given backend like qnnpack using holistic_get_qconfig",
+    "parse_extended_backend": "parse an extended backend string like qnnpack@symmetric using _smart_parse_extended_backend",
+    "validate_quantization_backend": "validate that a backend string is a supported PyTorch native backend using validate_native_backend",
+    "decode_extended_backend": "decode an extended backend string to its native backend name using smart_decode_backend"
+  },
+  "facebookresearch_d2go/d2go/registry/bootstrap.py": {
+    "bootstrap_registries": "bootstrap all d2go registries by scanning and lazily registering objects from all Python files in the package",
+    "break_bootstrap": "break out of the bootstrap process mid-execution to skip remaining unexecutable code in a file",
+    "lazy_on_bootstrap": "decorate a function to return a MagicMock during bootstrap instead of executing the real function body",
+    "BootstrapStatus": "use the BootstrapStatus enum to check if a file was CACHED, FULLY_IMPORTED, PARTIALLY_IMPORTED, or FAILED during bootstrap",
+    "CachedResult": "inspect a CachedResult dataclass to view the sha1 hash, registered names, and bootstrap status for a file"
+  },
+  "facebookresearch_d2go/d2go/runner/api.py": {
+    "review_RunnerV2Mixin": "review the RunnerV2Mixin class which provides an interface for V2 Runner with a final get_default_cfg method"
+  },
+  "facebookresearch_d2go/d2go/runner/config_defaults.py": {
+    "get_base_runner_default_cfg": "build a D2Go BaseRunner config with default solver, metric gathering, and writer period settings",
+    "get_detectron2go_runner_default_cfg": "build a Detectron2GoRunner config with FBNet, quantization, FSDP, and distillation defaults",
+    "get_generalized_rcnn_runner_default_cfg": "build a GeneralizedRCNNRunner config with RCNN export, postprocess, and quantization prepare options",
+    "add_distillation_configs": "add distillation config with teacher model type, algorithm, and helper settings to a CfgNode",
+    "preprocess_cfg": "preprocess a D2Go CfgNode config object and return it for downstream use"
+  },
+  "facebookresearch_d2go/d2go/runner/debug_runner.py": {
+    "build_debug_runner_model": "build a DebugRunner model that returns an empty nn.Sequential module for debugging",
+    "test_debug_runner": "test the DebugRunner do_test method to get random dummy metrics for dataset0",
+    "run_debug_training": "run the DebugRunner do_train method to save dummy checkpoint files to output directory",
+    "build_qat_checkpointer": "build a QATCheckpointer from the DebugRunner for model checkpointing with save directory",
+    "get_debug_default_cfg": "get the default config from DebugRunner with tensorboard and target metric settings"
+  },
+  "facebookresearch_d2go/d2go/runner/default_runner.py": {
+    "build_D2GoRunner_model": "build a detection model from config using Detectron2GoRunner build_model method",
+    "run_D2GoRunner_train": "run training with Detectron2GoRunner do_train method on a detection model",
+    "run_D2GoRunner_test": "run evaluation with Detectron2GoRunner do_test method on a trained detection model",
+    "scale_default_d2_configs": "scale detection config learning rate and iterations based on GPU world size",
+    "create_Detectron2GoRunner": "create a Detectron2GoRunner instance to manage training and evaluation of detection models"
+  },
+  "facebookresearch_d2go/d2go/runner/lightning_task.py": {
+    "build_DefaultTask_from_config": "build a DefaultTask Lightning module from a D2Go CfgNode config with optional pretrained weights",
+    "build_DefaultTask_model": "build a D2Go model instance from a CfgNode config for backward compatible tooling",
+    "convert_D2Go_checkpoint_to_lightning": "convert a legacy D2Go checkpoint dict to Lightning checkpoint format in place by renaming keys",
+    "check_is_lightning_checkpoint": "check if a checkpoint dict is a PyTorch Lightning checkpoint by inspecting its keys",
+    "check_is_d2go_checkpoint": "check if a checkpoint dict is a legacy D2Go checkpoint by inspecting its keys"
+  },
+  "facebookresearch_d2go/d2go/runner/training_hooks.py": {
+    "update_hooks_from_registry": "update trainer hooks by iterating over all registered hook functions in TRAINER_HOOKS_REGISTRY",
+    "register_hook_function": "register a function in TRAINER_HOOKS_REGISTRY that adds custom hooks to the trainer's hook list",
+    "review_update_hooks_from_registry": "review the update_hooks_from_registry function to understand how registered hook functions are applied to the trainer",
+    "refactor_update_hooks_from_registry": "refactor update_hooks_from_registry to filter registered hooks by a subset of names from the config",
+    "summarize_TRAINER_HOOKS_REGISTRY": "summarize the TRAINER_HOOKS_REGISTRY and how hook functions are registered and invoked during training"
+  },
+  "facebookresearch_d2go/d2go/runner/callbacks/quantization.py": {
+    "run_QAT_callback": "create a QuantizationAwareTraining callback to enable quantization-aware training on a PyTorch Lightning model",
+    "run_PTQ_callback": "create a PostTrainingQuantization callback to quantize a trained model using validation data for calibration",
+    "build_QAT_from_config": "build a QuantizationAwareTraining callback from a D2Go CfgNode config with QAT settings",
+    "build_PTQ_from_config": "build a PostTrainingQuantization callback from a D2Go CfgNode config with quantization module settings",
+    "test_requires_calibration": "test whether a set of QConfigDicts requires calibration by checking for static quant types"
+  },
+  "facebookresearch_d2go/d2go/trainer/activation_checkpointing.py": {
+    "add_activation_checkpoint_configs": "add activation checkpoint config entries to a D2GO CfgNode with reentrant and auto wrap policy settings",
+    "apply_activation_checkpointing": "apply activation checkpointing to a PyTorch model using a checkpoint wrapper function and auto wrap policy",
+    "ActivationCheckpointModelingHook_apply": "apply the ActivationCheckpointModelingHook to wrap a PyTorch model with activation checkpointing based on config",
+    "ActivationCheckpointModelingHook_register": "register the ActivationCheckpointModelingHook class in the MODELING_HOOK_REGISTRY for use as a modeling hook",
+    "checkpoint_wrapper_usage": "use checkpoint_wrapper with NO_REENTRANT or REENTRANT CheckpointImpl to wrap model layers for memory-efficient training"
+  },
+  "facebookresearch_d2go/d2go/trainer/fsdp.py": {
+    "build_fsdp_model": "build a FullyShardedDataParallel wrapped model with configurable sharding strategy and mixed precision",
+    "add_fsdp_configs": "add FSDP configuration options to a D2Go CfgNode for distributed training setup",
+    "create_fsdp_wrapper": "create an FSDPWrapper instance that handles state dict types and autocast for a PyTorch model",
+    "apply_fsdp_modeling_hook": "apply the FSDPModelingHook to wrap a model in FSDP based on D2Go config settings",
+    "run_bottom_up_nested_fsdp": "run a post-order traversal to wrap nested modules in FSDP for distributed initialization"
+  },
+  "facebookresearch_d2go/d2go/trainer/helper.py": {
+    "parse_precision_from_string": "convert a precision string like bfloat16 to a torch dtype or lightning-compatible value",
+    "get_module_class_from_name": "recursively find and return a module class by name from a PyTorch model's children",
+    "get_layer_cls_from_names": "get a list of layer classes from a model matching a list of layer names",
+    "never_wrap_policy": "create an FSDP wrap policy that skips wrapping all child modules and wraps only the root",
+    "size_based_auto_wrap_policy": "create an FSDP auto wrap policy that wraps modules with at least a minimum number of parameters"
+  },
+  "facebookresearch_d2go/d2go/utils/abnormal_checker.py": {
+    "create_rel_loss_checker": "create a relative loss checker function that validates if loss delta exceeds a configurable threshold",
+    "build_train_image_writer": "build a TrainImageWriter class to write training images with abnormal losses to tensorboard",
+    "build_file_writer": "build a FileWriter class to save abnormal loss data and model state to disk as pth files",
+    "create_abnormal_loss_checker": "create an AbnormalLossChecker to detect and log abnormal training losses during model training",
+    "build_abnormal_loss_checker_wrapper": "build an AbnormalLossCheckerWrapper module that wraps a model and checks losses on each forward pass"
+  },
+  "facebookresearch_d2go/d2go/utils/demo_predictor.py": {
+    "run_DemoPredictor_on_image": "run a DemoPredictor on a BGR image to get model predictions with resizing and preprocessing",
+    "run_VisualizationDemo_on_image": "run a VisualizationDemo on an image to get predictions and visualized output with instance or segmentation overlays",
+    "run_VisualizationDemo_on_video": "run a VisualizationDemo on a video stream to yield visualized frames with predictions drawn on each frame",
+    "create_DemoPredictor_with_model": "create a DemoPredictor from a trained model with configurable min and max test size and input format",
+    "create_VisualizationDemo_with_config": "create a VisualizationDemo from a config file with optional parallel processing and instance coloring mode"
+  },
+  "facebookresearch_d2go/d2go/utils/ema_state.py": {
+    "create_EMAState_from_model": "create an EMAState object from a PyTorch model using the from_model class method",
+    "update_EMAState_with_model": "update the EMA state by calling update with the current model after each training step",
+    "apply_EMAState_to_model": "apply the stored EMA weights back to the model using the apply_to method",
+    "load_EMAState_state_dict": "load EMA state from a serialized state dictionary using the load_state_dict method",
+    "move_EMAState_to_device": "move the EMA state tensors to a specified device using the to method"
+  },
+  "facebookresearch_d2go/d2go/utils/flop_calculator.py": {
+    "dump_flops_info": "dump flops information for a PyTorch model to an output directory using mobile_cv and fvcore counters",
+    "add_flop_printing_hook": "add a forward pre-hook to a model that prints and saves flops on the first call",
+    "default_flop_counter": "register a default flop counter profiler that attaches flop printing to a model via config",
+    "add_print_flops_callback": "add a callback to log model flops and parameter count after the first inference",
+    "attach_profilers": "attach all configured profilers from a config object to a model"
+  },
+  "facebookresearch_d2go/d2go/utils/gpu_memory_profiler.py": {
+    "attach_oom_logger": "attach a GPU OOM logger to log memory snapshots when CUDA out-of-memory errors occur",
+    "log_memory_snapshot": "log a CUDA memory snapshot to an output directory with trace and segment plots",
+    "dump_snapshot": "dump a CUDA memory snapshot to a directory as a pickle file and HTML plots",
+    "record_memory_history": "start recording CUDA memory history and stack traces with a configurable max entry limit",
+    "add_memory_profiler_configs": "add default memory profiler configuration options to a Detectron2 CfgNode config object"
+  },
+  "facebookresearch_d2go/d2go/utils/helper.py": {
+    "run_once_decorator": "create a function decorated with run_once so it executes only once and caches the result",
+    "run_once_raise_multiple": "create a run_once decorated function that raises MultipleFunctionCallError on subsequent calls",
+    "retryable_decorator": "apply the retryable decorator to a function to make it retryable with configurable attempts",
+    "get_dir_path": "get the directory path of a Python module given its relative import path",
+    "D2Trainer_build_evaluator": "build an evaluator for a Detectron2 dataset using D2Trainer.build_evaluator with a config and dataset name"
+  },
+  "facebookresearch_d2go/d2go/utils/launch_environment.py": {
+    "get_model_zoo_storage_prefix": "get the S3 storage prefix URL for D2Go model zoo models",
+    "get_launch_environment": "get the current launch environment which defaults to local",
+    "summarize_get_model_zoo_storage_prefix": "summarize the get_model_zoo_storage_prefix function that returns the D2Go model zoo S3 URL",
+    "summarize_get_launch_environment": "summarize the get_launch_environment function that returns the current launch environment string",
+    "review_MODEL_ZOO_STORAGE_PREFIX": "review the MODEL_ZOO_STORAGE_PREFIX module-level constant for the D2Go model zoo URL"
+  },
+  "facebookresearch_d2go/d2go/utils/logging.py": {
+    "initialize_logging": "initialize the root logger to a specific logging level such as logging.DEBUG or logging.INFO",
+    "replace_print_with_logging": "replace the built-in print function with logging.info so all stdout prints go through the logging module",
+    "log_interval": "decorate a function with log_interval to log entry and exit messages along with execution duration",
+    "log_interval_custom_category": "decorate a function with log_interval using a custom category and name for structured logging context",
+    "log_enter_exit": "use the internal _log_enter and _log_exit helpers to manually log entry and exit of a code block with duration"
+  },
+  "facebookresearch_d2go/d2go/utils/mast.py": {
+    "use_mast_error_handler": "decorate an entrypoint function with mast_error_handler to catch and log ChildFailedError from torch.distributed elastic",
+    "use_gather_mast_errors": "decorate a CLI entrypoint with gather_mast_errors to copy the earliest torchx reply JSON file on failure",
+    "review_mast_error_handler": "review the mast_error_handler decorator that initializes an error handler and dumps error files on child process failure",
+    "review_gather_mast_errors": "review the gather_mast_errors decorator that finds and copies the oldest torchx reply file to a configured environment variable path",
+    "refactor_mast_error_handler": "refactor the mast_error_handler decorator to support custom error file handling or additional exception types"
+  },
+  "facebookresearch_d2go/d2go/utils/misc.py": {
+    "check_version_library": "check if an installed library version meets a minimum required version threshold",
+    "print_metrics_table": "print a formatted metrics table from a nested dictionary of model evaluation scores",
+    "dump_trained_model_configs": "dump trained model configuration files as YAML to an output directory",
+    "save_and_load_binary_outputs": "save and load PyTorch model outputs to and from binary files using torch serialization",
+    "mode_context_manager": "temporarily switch a PyTorch module to training or evaluation mode using a context manager"
+  },
+  "facebookresearch_d2go/d2go/utils/parse_module_params.py": {
+    "iterate_module_named_parameters": "iterate over all named parameters of a PyTorch model yielding module name, module, param name, and value",
+    "iterate_module_named_parameters_skip_frozen": "iterate over only trainable parameters of a PyTorch model by skipping parameters that do not require gradients",
+    "iterate_module_named_parameters_no_dedup": "iterate over all named parameters of a PyTorch model including duplicates by disabling the requires_grad check",
+    "review_iterate_module_named_parameters": "review the iterate_module_named_parameters function to understand how it avoids yielding duplicate parameters across nested modules",
+    "refactor_iterate_module_named_parameters": "refactor the iterate_module_named_parameters function to return a list instead of yielding generator values"
+  },
+  "facebookresearch_d2go/d2go/utils/tensorboard_log_util.py": {
+    "get_tensorboard_log_dir": "get the tensorboard log directory path from a given output directory",
+    "review_get_tensorboard_log_dir": "review the get_tensorboard_log_dir function and its fb_overwritable decorator usage",
+    "refactor_get_tensorboard_log_dir": "refactor get_tensorboard_log_dir to support custom log directory naming conventions",
+    "test_get_tensorboard_log_dir": "test the get_tensorboard_log_dir function with various output directory paths",
+    "summarize_get_tensorboard_log_dir": "summarize the get_tensorboard_log_dir function and its role in tensorboard logging"
+  },
+  "facebookresearch_d2go/d2go/utils/validation_monitor.py": {
+    "run_fetch_checkpoints_till_final": "run fetch_checkpoints_till_final to poll a checkpoint directory and yield all checkpoints until model_final is found",
+    "create_checkpoint_polling_loop": "create a polling loop that watches a directory for new Detectron2 and Lightning checkpoints in iteration order",
+    "test_fetch_checkpoints_till_final": "test fetch_checkpoints_till_final by pointing it at a directory with model_*.pth and model_final.pth files",
+    "review_fetch_checkpoints_till_final": "review fetch_checkpoints_till_final to understand how it handles both Detectron2 pth and PyTorch Lightning ckpt formats",
+    "summarize_fetch_checkpoints_till_final": "summarize fetch_checkpoints_till_final which is a generator that yields checkpoint paths with exponential backoff sleep until the final model appears"
+  },
+  "facebookresearch_d2go/d2go/utils/visualization.py": {
+    "add_tensorboard_default_configs": "add default tensorboard configuration settings to a detectron2 config node for visualization during training and evaluation",
+    "visualize_train_input": "create a visualization of a training input image with ground truth boxes masks and keypoints overlaid",
+    "visualize_test_output": "build a visualization of model test output showing predicted instance panoptic or semantic segmentation results",
+    "visualize_dataset_dict": "create a visualization of a dataset dictionary entry using the dataset mapper and metadata catalog",
+    "DataLoaderVisWrapper": "wrap a data loader to periodically write training input visualizations to tensorboard at a configured frequency"
+  },
+  "facebookresearch_d2go/d2go/utils/testing/data_loader_helper.py": {
+    "create_toy_dataset": "create a toy COCO-format dataset with bounding boxes, keypoints, and segmentation annotations from an image generator",
+    "register_toy_coco_dataset": "register a temporary toy COCO dataset with local images as a context manager for testing",
+    "create_local_dataset": "create and register a local dataset with images and annotations in a specified output directory",
+    "LocalImageGenerator": "generate local RGB images and return image metadata dictionaries for a given directory and size",
+    "create_detection_data_loader_on_toy_dataset": "create a training or testing detection data loader on a temporary toy COCO dataset"
+  },
+  "facebookresearch_d2go/d2go/utils/testing/helper.py": {
+    "get_resource_path": "get the file path to a resource in the d2go tests resources directory",
+    "skip_if_no_gpu": "skip a GPU test function when no CUDA device is available on the machine",
+    "enable_ddp_env": "enable a distributed data parallel environment for testing with a specified backend",
+    "tempdir": "create a temporary directory that is automatically cleaned up after a test function completes",
+    "review_helper": "review the d2go testing helper module and its decorators for GPU and DDP test support"
+  },
+  "facebookresearch_d2go/d2go/utils/testing/lightning_test_module.py": {
+    "create_random_dataset": "create a RandomDataset with random normal data of a given size and length",
+    "create_test_module": "create a TestModule LightningModule with two linear layers for testing PyTorch Lightning training",
+    "run_training_step": "run a training step on a batch and return output, loss, and checkpoint values",
+    "run_validation_step": "run a validation step on a batch and return output, loss, and checkpoint values",
+    "configure_optimizers": "configure an SGD optimizer with StepLR scheduler for the TestModule parameters"
+  },
+  "facebookresearch_d2go/d2go/utils/testing/lightning_train_helper.py": {
+    "build_lt_trainer": "build a PyTorch Lightning trainer with model checkpointing and evaluation interval from a Detectron2 config",
+    "create_lt_train": "create a training loop that fits a task using a Lightning trainer with event storage",
+    "test_lt_test": "test a task using a Lightning trainer and return evaluation results with event storage",
+    "refactor_get_lt_trainer": "refactor the get_lt_trainer function to customize checkpoint callbacks or trainer hyperparameters",
+    "summarize_lt_train_lt_test": "summarize the lt_train and lt_test helper functions for PyTorch Lightning task training and testing"
+  },
+  "facebookresearch_d2go/d2go/utils/testing/meta_arch_helper.py": {
+    "create_DetMetaArchForTest": "create a DetMetaArchForTest meta architecture module for detection model testing",
+    "test_DetMetaArchForTest_forward": "test the DetMetaArchForTest forward pass to simulate training with conv and pooling layers",
+    "test_DetMetaArchForTest_inference": "test the DetMetaArchForTest inference method to return mock detection instances with boxes and scores",
+    "refactor_DetMetaArchForTest_custom_prepare_fx": "refactor the DetMetaArchForTest custom_prepare_fx method to prepare quantization-aware training on the avgpool layer",
+    "create_detection_cfg": "create a detection config with a local dataset and DetMetaArchForTest meta architecture settings"
+  },
+  "facebookresearch_d2go/d2go/utils/testing/rcnn_helper.py": {
+    "create_batched_inputs_for_rcnn_test": "create batched inputs with synthetic images and optional bounding boxes for RCNN model testing",
+    "get_detected_instances_from_image": "extract detected instances with boxes, scores, and keypoints from batched input images",
+    "mock_rcnn_inference_for_testing": "mock GeneralizedRCNN inference to return synthetic detected instances for unit testing",
+    "get_quick_test_config_opts": "generate configuration options to speed up RCNN model tests with small resolutions and single proposals",
+    "test_rcnn_model_export": "test RCNN model export to a predictor format and compare outputs against the PyTorch model"
+  },
+  "facebookresearch_d2go/d2go/utils/testing/sem_seg_helper.py": {
+    "generate_test_input_basic": "generate a random test input image and segmentation mask for training with specified height, width, and num_classes",
+    "generate_test_input_with_super_classes": "generate a test input with super_classes for multi-class semantic segmentation using generate_test_input",
+    "generate_test_input_inference": "generate a test input image without a segmentation mask for inference mode using generate_test_input",
+    "validate_test_output_basic": "validate semantic segmentation output tensor dimensions match expected height, width, and num_classes",
+    "validate_test_output_with_super_classes": "validate multi-class semantic segmentation output dictionary keys and mask dimensions using validate_test_output"
+  },
+  "facebookresearch_d2go/demo/demo.py": {
+    "run_object_detection_on_images": "run object detection on input images using a Detectron2 config and save visualized outputs",
+    "run_object_detection_on_video": "run object detection on a video file and save the annotated output as an MKV video",
+    "setup_cfg_confidence_threshold": "set the confidence threshold for RetinaNet, ROI heads, and panoptic FPN model predictions",
+    "get_parser_detectron2_demo": "create an argparse parser with config file, input, output, and confidence threshold arguments",
+    "review_main_demo_entry": "review the main entry point that handles image and video input for object detection demos"
+  },
+  "facebookresearch_d2go/projects_oss/detr/main.py": {
+    "run_DETR_training": "run the DETR transformer detector training script with configurable backbone, epochs, and learning rate",
+    "run_DETR_evaluation": "run the DETR model evaluation on a validation dataset and save COCO bbox results",
+    "run_DETR_distributed_training": "run multi-GPU distributed DETR training across multiple machines using torch multiprocessing",
+    "run_DETR_frozen_weights": "run DETR training with frozen pretrained weights to train only the segmentation mask head",
+    "run_DETR_checkpoint_resume": "resume DETR training from a saved checkpoint restoring model, optimizer, and scheduler state"
+  },
+  "facebookresearch_d2go/projects_oss/detr/setup.py": {
+    "build_detr_cuda_extension": "build the detr CUDA C++ extension module by running python setup.py install",
+    "run_setup_install": "run python setup.py install to compile and install the detr package with CUDA support",
+    "get_extensions_discover_sources": "get the list of C++ and CUDA source files for the detr._C extension module",
+    "review_get_extensions": "review the get_extensions function that discovers and configures CUDA extension sources",
+    "summarize_setup": "summarize the setup.py configuration for the Deformable DETR package with CUDA extensions"
+  },
+  "facebookresearch_d2go/projects_oss/detr/test_all.py": {
+    "test_box_ops_conversion": "test the box_ops box_cxcywh_to_xyxy and box_xyxy_to_cxcywh conversion functions for numerical accuracy",
+    "test_hungarian_matcher": "test the HungarianMatcher class for matching predicted logits and boxes against target labels and boxes",
+    "test_model_script_detection": "test that detr_resnet50 detection model produces identical output when scripted with torch.jit.script",
+    "test_model_script_panoptic": "test that detr_resnet50_panoptic model produces identical pred_logits, pred_boxes, and pred_masks when scripted",
+    "test_model_onnx_detection": "test that detr_resnet50 detection model exports to ONNX and validates with onnxruntime inference"
+  },
+  "facebookresearch_d2go/projects_oss/detr/test_deit_backbone.py": {
+    "test_deit_backbone_models": "test DeiT transformer backbone models with various input sizes using the deit_d2go_model_wrapper",
+    "test_pit_backbone_models": "test PiT transformer backbone models with various input sizes using the pit_d2go_model_wrapper",
+    "run_test_deit_model": "run the test_deit_model unittest method to validate DeiT backbone forward pass on CUDA",
+    "run_test_pit_model": "run the test_pit_model unittest method to validate PiT backbone forward pass on CUDA",
+    "review_TestTransformerBackbone": "review the TestTransformerBackbone class and its DeiT and PiT model test methods"
+  },
+  "facebookresearch_d2go/projects_oss/detr/test_detr_export.py": {
+    "test_detr_res50_export": "test the DETR model with ResNet-50 backbone by scripting and comparing model outputs",
+    "test_detr_fbnet_export": "test the DETR model with FBNetV2 backbone by scripting and comparing model outputs",
+    "set_detr_cfg": "create a DETR configuration by setting encoder layers, decoder layers, queries, and feedforward dimensions",
+    "assert_model_output": "test that a scripted model produces identical prediction logits and boxes as the original model",
+    "analyze_detr_flops": "analyze the FLOP count of a DETR model using fvcore FlopCountAnalysis and print the table"
+  },
+  "facebookresearch_d2go/projects_oss/detr/test_detr_runner.py": {
+    "build_DETRRunner_model": "build a DETRRunner model using get_default_cfg and build_model for object detection",
+    "test_DETRRunner_train": "test the DETRRunner do_train method to train a model and save model_final.pth",
+    "create_local_dataset": "create a local dataset using create_local_dataset helper for training and testing",
+    "test_DETRRunner_build_model": "test the DETRRunner build_model and build_detection_train_loader methods for inference output",
+    "run_DETRRunner_unit_tests": "run the TestOssRunner unit tests to validate DETR model building and training"
+  },
+  "facebookresearch_d2go/projects_oss/detr/test_op.py": {
+    "run_test_forward_double": "run the Tester test_forward_equal_with_pytorch_double to validate CUDA forward pass matches PyTorch in double precision",
+    "run_test_forward_float": "run the Tester test_forward_equal_with_pytorch_float to validate CUDA forward pass matches PyTorch in float precision",
+    "run_test_gradient_numerical": "run the Tester test_gradient_numerical to validate MSDeformAttnFunction gradients using torch.autograd.gradcheck",
+    "test_MSDeformAttnFunction": "test the MSDeformAttnFunction.apply CUDA custom op against the ms_deform_attn_core_pytorch reference implementation",
+    "review_tester_class": "review the Tester unittest class and its three test methods for multi-scale deformable attention validation"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/engine.py": {
+    "train_one_epoch_DETR_model": "train one epoch of a DETR model using a criterion, data loader, optimizer, and device",
+    "evaluate_DETR_model_with_coco": "evaluate a DETR model on a dataset using CocoEvaluator for bbox and segmentation metrics",
+    "run_DETR_training_loop": "run the DETR training loop with gradient clipping, loss reduction, and metric logging",
+    "run_DETR_evaluation_with_panoptic": "run DETR evaluation with panoptic segmentation postprocessing and PQ metric computation",
+    "review_train_one_epoch_gradient_clipping": "review the train_one_epoch function to understand gradient clipping and loss reduction logic"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/hub.py": {
+    "build_detr_resnet50_model": "build a DETR ResNet-50 object detection model with 6 encoder and 6 decoder layers",
+    "build_detr_resnet101_dc5_model": "build a DETR-DC5 ResNet-101 object detection model with dilation for higher output resolution",
+    "build_detr_panoptic_model": "build a DETR ResNet-50 panoptic segmentation model with configurable confidence threshold",
+    "run_detr_pretrained_inference": "run a pretrained DETR model loaded from Facebook AI public weights for object detection",
+    "build_detr_custom_classes": "build a DETR model with a custom number of classes for domain-specific object detection"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/runner.py": {
+    "create_DETRDatasetMapper": "create a DETRDatasetMapper instance with config and training mode for DETR object detection data mapping",
+    "run_DETRDatasetMapper_call": "run the DETRDatasetMapper call method to transform a dataset dictionary using D2GoDatasetMapper logic",
+    "run_DETRDatasetMapper_original_call": "run the DETRDatasetMapper original call method to transform a dataset dictionary using DetrDatasetMapper logic",
+    "get_DETRRunner_default_cfg": "get the default configuration for DETRRunner including DETR, DeiT backbone, and PiT backbone settings",
+    "review_DETRRunner_class": "review the DETRRunner class that extends GeneralizedRCNNRunner with DETR-specific configuration"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/backbone/deit.py": {
+    "build_distilled_vision_transformer": "build a DistilledVisionTransformer model with cls token, dist token, and spatial feature output",
+    "create_deit_scalable_distilled": "create a scalable distilled DEiT model from a JSON config with configurable depth, heads, and mlp ratio",
+    "register_deit_backbone_in_detectron2": "register a DEiT backbone in Detectron2 using deit_d2go_model_wrapper with model config and pretrained weights",
+    "review_distilledvisiontransformer_forward_features": "review the DistilledVisionTransformer forward_features method that returns cls, dist, and spatial tensor outputs",
+    "refactor_deit_positional_embedding_interpolation": "refactor the DistilledVisionTransformer _get_pos_embed method to bilinearly interpolate positional embeddings for variable input sizes"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/backbone/pit.py": {
+    "build_PoolingTransformer_backbone": "build a PoolingTransformer backbone model with configurable base dimensions, depth, and attention heads",
+    "create_DistilledPoolingTransformer_model": "create a DistilledPoolingTransformer model with dual classification tokens for knowledge distillation training",
+    "test_pit_scalable_distilled": "test the pit_scalable_distilled function by building a model from a JSON config dictionary",
+    "refactor_conv_head_pooling": "refactor the conv_head_pooling module to change the convolution type between depthwise and standard",
+    "review_pit_d2go_model_wrapper": "review the pit_d2go_model_wrapper Detectron2 backbone registry function for loading pretrained weights"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/d2/config.py": {
+    "add_detr_config": "add DETR model configuration to a d2go CfgNode with default loss, transformer, and solver settings",
+    "review_add_detr_config": "review the add_detr_config function to understand default DETR loss weights and transformer hyperparameters",
+    "refactor_add_detr_config": "refactor add_detr_config to add a new config option for custom position encoding",
+    "summarize_add_detr_config": "summarize the add_detr_config function and list all DETR config fields it registers",
+    "test_add_detr_config": "test that add_detr_config correctly sets NUM_OBJECT_QUERIES to 100 on a fresh CfgNode"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/d2/dataset_mapper.py": {
+    "build_transform_gen": "build a list of TransformGen objects from a Detectron2 config for training or inference",
+    "create_DetrDatasetMapper": "create a DetrDatasetMapper instance with config and is_train flag to map dataset dicts for DETR",
+    "call_DetrDatasetMapper": "call the DetrDatasetMapper on a dataset dict to read, transform, and convert images and annotations to tensors",
+    "review_DetrDatasetMapper_call": "review the DetrDatasetMapper __call__ method to understand image reading, cropping, and annotation transformation logic",
+    "refactor_DetrDatasetMapper_crop": "refactor the DetrDatasetMapper to customize the random crop generation pipeline for training augmentations"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/d2/detr.py": {
+    "build_detr_model": "build a DETR object detection model from a Detectron2 config with HungarianMatcher and SetCriterion",
+    "run_detr_forward": "run the Detr forward pass on batched inputs to compute training losses or inference results",
+    "create_detr_inference": "create object detection predictions by running inference on box classification and box regression outputs",
+    "refactor_detr_preprocess": "refactor the Detr preprocess_image method to normalize, pad, and batch input images into an ImageList",
+    "review_detr_prepare_targets": "review the Detr prepare_targets method that converts ground truth instances to normalized label and box tensors"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/datasets/ade.py": {
+    "build_ADE20KParsing_dataset": "build an ADE20KParsing dataset instance with a root path, split, and optional transforms",
+    "run_masks_to_boxes": "run masks_to_boxes to compute xyxy bounding boxes from a tensor of binary masks",
+    "test_ADE20KParsing_getitem": "test the ADE20KParsing __getitem__ method to verify it returns image and target dict with masks and boxes",
+    "review_get_ade20k_pairs": "review the _get_ade20k_pairs function to understand how train, val, and trainval splits are assembled",
+    "refactor_build_function": "refactor the build function to customize transforms or dataset path arguments for ADE20K parsing"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/datasets/coco.py": {
+    "build_coco_dataset": "build a COCO detection dataset with transforms and optional mask support using the build function",
+    "create_coco_detection_dataset": "create a CocoDetection dataset instance from an image folder and COCO annotation JSON file",
+    "convert_coco_polygons_to_masks": "convert COCO polygon segmentations into binary mask tensors using convert_coco_poly_to_mask",
+    "review_ConvertCocoPolysToMask": "review the ConvertCocoPolysToMask class that converts COCO annotations to boxes, labels, and masks",
+    "create_coco_transforms": "create COCO dataset transforms for training or validation using make_coco_transforms"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/datasets/coco_eval.py": {
+    "create_coco_evaluator": "create a CocoEvaluator instance with ground truth COCO dataset and IoU types for bbox or segm evaluation",
+    "update_evaluator_predictions": "update the CocoEvaluator with model predictions to compute per-image COCO evaluation results",
+    "summarize_coco_metrics": "summarize COCO evaluation metrics including mAP across IoU types after accumulating results",
+    "convert_boxes_to_xywh": "convert bounding boxes from xyxy format to xywh format using the convert_to_xywh helper function",
+    "prepare_coco_detection_results": "prepare model predictions into COCO detection result format with image_id, category_id, bbox, and score fields"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/datasets/coco_panoptic.py": {
+    "build_coco_panoptic_dataset": "build a CocoPanoptic dataset instance for COCO panoptic segmentation with image and annotation folders",
+    "build_dataset_with_build_fn": "build a COCO panoptic dataset using the build function with train or val image set",
+    "getitem_sample_from_dataset": "get a sample image and target dictionary with masks, labels, and boxes from the dataset by index",
+    "get_height_and_width": "get the height and width of an image at a given index from the COCO panoptic dataset",
+    "review_cocopanoptic_class": "review the CocoPanoptic class and its __getitem__ method for panoptic segmentation data loading"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/datasets/panoptic_eval.py": {
+    "create_panoptic_evaluator": "create a PanopticEvaluator instance with annotation file, annotation folder, and output directory",
+    "update_predictions": "update the PanopticEvaluator with new predictions that include file names and png strings",
+    "synchronize_predictions": "synchronize predictions across all processes using the PanopticEvaluator synchronize_between_processes method",
+    "summarize_evaluation": "summarize panoptic evaluation results by writing predictions JSON and computing PQ metrics",
+    "review_panoptic_evaluator_class": "review the PanopticEvaluator class and its update, synchronize, and summarize methods"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/datasets/transforms.py": {
+    "compose_transform_pipeline": "build a Compose pipeline that chains RandomHorizontalFlip, RandomResize, and Normalize transforms for DETR object detection data augmentation",
+    "crop_image_with_bboxes": "create a function that crops an image and adjusts bounding box coordinates and masks using the crop function",
+    "resize_image_with_aspect_ratio": "build a RandomResize transform that resizes images to a random size while preserving aspect ratio and scaling bounding boxes",
+    "normalize_and_normalize_boxes": "create a Normalize transform that normalizes pixel values and converts bounding boxes from xyxy to normalized cxcywh format",
+    "random_select_between_transforms": "build a RandomSelect transform that randomly chooses between two transform sequences with configurable probability for data augmentation"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/functions/ms_deform_attn_func.py": {
+    "run_MSDeformAttnFunction_forward": "run the MSDeformAttnFunction forward pass with value, sampling locations, and attention weights tensors",
+    "run_MSDeformAttnFunction_backward": "run the MSDeformAttnFunction backward pass to compute gradients for value, sampling locations, and attention weights",
+    "run_ms_deform_attn_core_pytorch": "run the pure PyTorch multi-scale deformable attention core function for debugging and testing",
+    "review_MSDeformAttnFunction": "review the MSDeformAttnFunction class that wraps CUDA-based multi-scale deformable attention with AMP support",
+    "test_ms_deform_attn_core_pytorch": "test the ms_deform_attn_core_pytorch function using bilinear grid sampling across multiple feature pyramid levels"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/models/backbone.py": {
+    "build_backbone": "build a ResNet backbone with frozen BatchNorm using the Backbone class",
+    "create_FrozenBatchNorm2d": "create a FrozenBatchNorm2d module with fixed batch statistics and affine parameters",
+    "create_BackboneBase": "create a BackboneBase module that wraps a torchvision backbone with configurable training",
+    "create_Joiner": "create a Joiner module that combines a backbone with position encoding",
+    "test_build_backbone": "test the build_backbone function to construct a complete backbone model with position encoding"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/models/build.py": {
+    "build_detr_backbone": "build a DETR backbone with ResNet, FBNet, or simple single stage and position encoding from config",
+    "build_detr_model": "build a DETR model instance by name from the DETR_MODEL_REGISTRY using a config object",
+    "create_ResNetMaskedBackbone": "create a ResNetMaskedBackbone that wraps Detectron2 backbone with padding masking for NestedTensor inputs",
+    "create_FBNetMaskedBackbone": "create an FBNetMaskedBackbone that wraps Detectron2 FBNet backbone with padding masking and feature strides",
+    "create_SimpleSingleStageBackbone": "create a SimpleSingleStageBackbone with configurable stride and channel for single stage feature extraction"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/models/deformable_detr.py": {
+    "build_DeformableDETR_model": "build a DeformableDETR model with a backbone, transformer, and configurable number of object queries",
+    "run_DeformableDETR_forward": "run the DeformableDETR forward pass on a NestedTensor of batched images to get predictions",
+    "create_MLP_module": "create a multi-layer perceptron module with configurable input, hidden, output dimensions and layer count",
+    "run_PostProcess_inference": "run PostProcess to convert raw model outputs into COCO API format with scores, labels, and boxes",
+    "review_DeformableDETR_from_config": "review the DeformableDETR from_config method to understand how Detectron2 config builds the model"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/models/deformable_transformer.py": {
+    "build_deforamble_transformer": "build a DeformableTransformer model from argparse args with configurable encoder and decoder layers",
+    "DeformableTransformer_forward": "run the DeformableTransformer forward pass with multi-scale source features, masks, and positional embeddings",
+    "DeformableTransformerEncoderLayer_forward": "run a single encoder layer with multi-scale deformable attention and feed-forward network",
+    "DeformableTransformerDecoderLayer_forward": "run a single decoder layer with self-attention, cross-attention, and feed-forward network",
+    "DeformableTransformer_get_proposal_pos_embed": "compute sinusoidal position embeddings from bounding box proposals in cx, cy, w, h format"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/models/detr.py": {
+    "build_DETR_model": "build a DETR object detection model with backbone, transformer, and configurable number of queries",
+    "run_DETR_forward": "run the DETR forward pass on a NestedTensor of batched images to get predictions",
+    "create_PostProcess": "create a PostProcess module to convert DETR output logits and boxes to COCO API format",
+    "create_MLP": "create a multi-layer perceptron with configurable input, hidden, output dimensions and layer count",
+    "build_DETR_criterion": "build the full DETR pipeline including model, SetCriterion loss, and postprocessors from args"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/models/matcher.py": {
+    "build_HungarianMatcher": "build a HungarianMatcher instance with custom cost_class, cost_bbox, and cost_giou weights for object detection matching",
+    "run_HungarianMatcher_forward": "run the HungarianMatcher forward pass to match predicted boxes and logits against ground truth targets",
+    "build_matcher_from_args": "build a HungarianMatcher from an argparse namespace with set_cost_class, set_cost_bbox, and set_cost_giou attributes",
+    "review_HungarianMatcher_focal_loss": "review the HungarianMatcher forward method to understand how focal loss mode changes classification cost computation",
+    "test_HungarianMatcher_linear_sum_assignment": "test the HungarianMatcher to verify it correctly uses scipy linear_sum_assignment for bipartite matching"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/models/position_encoding.py": {
+    "build_sine_position_embedding": "build a PositionEmbeddingSine module with configurable num_pos_feats, temperature, normalize, scale, and centered options",
+    "build_learned_position_embedding": "build a PositionEmbeddingLearned module with trainable row and column embedding tables for absolute position encoding",
+    "build_position_encoding_from_args": "build a position encoding module from args using build_position_encoding with sine or learned strategy",
+    "review_PositionEmbeddingSine_forward": "review the PositionEmbeddingSine forward method that computes sinusoidal positional encodings from a NestedTensor mask",
+    "review_PositionEmbeddingLearned_reset_parameters": "review the PositionEmbeddingLearned reset_parameters method that initializes row and column embeddings with uniform distribution"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/models/segmentation.py": {
+    "build_DETRsegm_model": "build a DETRsegm model wrapping a DETR backbone for instance segmentation with mask prediction",
+    "create_MaskHeadSmallConv": "create a MaskHeadSmallConv convolutional head using FPN-style upsampling with group normalization layers",
+    "create_MHAttentionMap": "create a MHAttentionMap 2D attention module that returns attention softmax weights without value multiplication",
+    "compute_dice_loss": "compute the DICE loss for mask predictions comparing inputs against binary classification targets",
+    "compute_sigmoid_focal_loss": "compute the sigmoid focal loss for dense detection with configurable alpha and gamma weighting"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/models/setcriterion.py": {
+    "create_SetCriterion": "create a SetCriterion module to compute DETR loss using hungarian assignment between ground truth boxes and model outputs",
+    "create_FocalLossSetCriterion": "create a FocalLossSetCriterion module to compute DETR loss using focal loss instead of cross entropy for classification",
+    "review_SetCriterion_loss_labels": "review the SetCriterion loss_labels method to understand how cross entropy classification loss is computed with empty class weighting",
+    "review_SetCriterion_loss_boxes": "review the SetCriterion loss_boxes method to understand how L1 regression and GIoU losses are computed for bounding boxes",
+    "review_SetCriterion_loss_masks": "review the SetCriterion loss_masks method to understand how focal loss and dice loss are computed for segmentation masks"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/models/transformer.py": {
+    "build_transformer": "build a DETR Transformer model with configurable encoder and decoder layers for object detection",
+    "create_transformer_encoder": "create a TransformerEncoder that processes source sequences with multi-head self-attention and positional embeddings",
+    "create_transformer_decoder": "create a TransformerDecoder that generates outputs using self-attention and cross-attention with encoder memory",
+    "build_transformer_encoder_layer": "build a TransformerEncoderLayer with multi-head self-attention and feedforward network for sequence encoding",
+    "build_transformer_decoder_layer": "build a TransformerDecoderLayer with self-attention, cross-attention, and feedforward network for sequence decoding"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/modules/ms_deform_attn.py": {
+    "create_MSDeformAttn_module": "create a Multi-Scale Deformable Attention module with configurable hidden dimension, feature levels, attention heads, and sampling points",
+    "build_MSDeformAttn_forward_pass": "build a forward pass through MSDeformAttn using query tensors, reference points, and flattened multi-scale input features",
+    "test_MSDeformAttn_initialization": "test the MSDeformAttn class initialization with custom d_model, n_levels, n_heads, and n_points parameters",
+    "review_MSDeformAttn_reset_parameters": "review the MSDeformAttn _reset_parameters method that initializes sampling offsets with angular grid patterns and attention weights to zero",
+    "refactor_MSDeformAttn_sampling_locations": "refactor the MSDeformAttn forward method to compute sampling locations from reference points and learned offsets for point or box reference modes"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/util/box_ops.py": {
+    "convert_box_cxcywh_to_xyxy": "convert bounding boxes from center x, center y, width, height format to xyxy format",
+    "convert_box_xyxy_to_cxcywh": "convert bounding boxes from xyxy format to center x, center y, width, height format",
+    "compute_box_iou": "compute the intersection over union between two sets of bounding boxes and return the union area",
+    "compute_generalized_box_iou": "compute the generalized intersection over union between two sets of bounding boxes in xyxy format",
+    "compute_boxes_from_masks": "compute bounding boxes around binary segmentation masks in N, H, W format and return xyxy boxes"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/util/misc.py": {
+    "create_MetricLogger": "create a MetricLogger to track and log training metrics like loss and accuracy over iterations",
+    "create_SmoothedValue": "create a SmoothedValue object to track a rolling window of metric values with median and global average",
+    "build_NestedTensor": "build a NestedTensor from a list of variable-sized image tensors using nested_tensor_from_tensor_list",
+    "init_distributed_mode": "init distributed training mode by calling init_distributed_mode with an args object containing rank and world size",
+    "run_all_gather": "run all_gather to collect arbitrary picklable data from all distributed process ranks into a single list"
+  },
+  "facebookresearch_d2go/projects_oss/detr/detr/util/plot_utils.py": {
+    "plot_training_logs": "plot training and test results from DETR log files using plot_logs with specified fields",
+    "plot_mAP_curves": "plot mAP curves from COCO evaluation results in training logs using plot_logs",
+    "plot_precision_recall_curves": "plot precision and recall curves from torch-loaded evaluation files using plot_precision_recall",
+    "plot_scores_vs_recall": "plot detection scores versus recall curves from COCO eval data using plot_precision_recall",
+    "review_plot_logs_function": "review the plot_logs function to understand how it handles multiple log files and EWM smoothing"
+  },
+  "facebookresearch_d2go/tests/data/test_d2go_datasets.py": {
+    "convert_coco_text_to_detection_json": "convert a COCO text annotation JSON file to COCO detection JSON format using extended_coco",
+    "filter_coco_annotations": "filter and reject invalid COCO annotations like out-of-bbox or zero-area using convert_to_dict_list",
+    "load_extended_coco_with_copy_keys": "load a COCO JSON dataset with optional direct copy keys preserved in loaded image dicts",
+    "register_keypoint_metadata": "register custom keypoint metadata with names, flip maps, and connection rules via KEYPOINT_METADATA_REGISTRY",
+    "create_adhoc_class_subset_dataset": "create an adhoc COCO dataset subset filtered to specific classes using AdhocDatasetManager and COCOWithClassesToUse"
+  },
+  "facebookresearch_d2go/tests/data/test_data_loader.py": {
+    "create_runner": "create a GeneralizedRCNNRunner instance using create_runner with the d2go runner class name",
+    "build_detection_train_loader": "build a detection training data loader from the runner using build_detection_train_loader with config",
+    "build_detection_test_loader": "build a detection test data loader from the runner using build_detection_test_loader with config and dataset name",
+    "test_DiskCachedList": "test DiskCachedList by creating a cached list from mixed data types and verifying indexed access",
+    "test_disk_cached_dataloader": "test the disk-cached data loader by enabling disk cache config and iterating over train and test loaders"
+  },
+  "facebookresearch_d2go/tests/data/test_data_transforms.py": {
+    "test_build_transform_gen": "test the build_transform_gen function with default config for train and test image transforms",
+    "test_resize_square_transforms": "test the build_transform_gen function with ResizeShortestEdgeSquareOp for square image resizing",
+    "run_testdata_transforms": "run the TestDataTransforms unittest class to verify image transform generation and application",
+    "review_testdata_transforms_class": "review the TestDataTransforms class and its test methods for image transform validation",
+    "summarize_build_transform_gen_usage": "summarize how build_transform_gen is used with Detectron2GoRunner config for train and test pipelines"
+  },
+  "facebookresearch_d2go/tests/data/test_data_transforms_affine.py": {
+    "generate_test_data": "generate test data with affine augmentation parameters including angle, translation, scale, and shear for a source image",
+    "warp_points": "warp 2D coordinate points using an inverse affine transformation matrix",
+    "test_affine_angle": "test affine angle transforms on an image with 45 and 90 degree rotations",
+    "test_affine_translation": "test affine translation transforms on an image with translation values of 0, 1, and 2",
+    "test_affine_shear": "test affine shear transforms on an image with shear values of 0, 1, and 2"
+  },
+  "facebookresearch_d2go/tests/data/test_data_transforms_auto_aug.py": {
+    "test_rand_aug_transforms": "test the RandAugmentImageOp augmentation by building a transform gen and applying it to a random image",
+    "test_trivial_aug_transforms": "test the TrivialAugmentWideImageOp augmentation by building a transform gen and applying it to a grayscale image",
+    "test_aug_mix_transforms": "test the AugMixImageOp augmentation with severity 3 by building a transform gen and applying it to an image",
+    "build_transform_gen": "build a transform generator from a Detectron2Go config with auto augmentation ops for training",
+    "apply_augmentations": "apply augmentation transforms to a numpy image array and return the transformed image"
+  },
+  "facebookresearch_d2go/tests/data/test_data_transforms_blur.py": {
+    "test_gaussian_blur_transforms": "test the gaussian blur data transform on a numpy image using Detectron2GoRunner config",
+    "build_transform_gen": "build a transform generator from a Detectron2GoRunner config with RandomGaussianBlurOp augmentation settings",
+    "apply_augmentations": "apply augmentation transforms to a numpy image using a built transform generator",
+    "get_default_cfg": "get the default Detectron2GoRunner configuration to set up data augmentation operations",
+    "review_TestDataTransformsBlur": "review the TestDataTransformsBlur unittest class and its gaussian blur transform test method"
+  },
+  "facebookresearch_d2go/tests/data/test_data_transforms_box_utils.py": {
+    "test_get_min_box_aspect_ratio": "test get_min_box_aspect_ratio to adjust a box to a target aspect ratio",
+    "test_get_box_from_mask": "test get_box_from_mask to extract a bounding box from a binary numpy mask",
+    "test_scale_bbox_center": "test scale_bbox_center to scale a bounding box uniformly from its center point",
+    "test_enlarge_bounding_box_op": "test EnlargeBoundingBoxOp to enlarge bounding boxes by fixed padding or percentage",
+    "test_build_transform_gen": "test build_transform_gen to construct data augmentation transforms from a D2GO config node"
+  },
+  "facebookresearch_d2go/tests/data/test_data_transforms_color_yuv.py": {
+    "test_yuv_color_transforms": "test the RandomContrastYUVOp and RandomSaturationYUVOp augmentation transforms on a synthetic YUV image",
+    "test_rgb_to_yuv_conversion": "test the RGB2YUVBT601 transform to convert an RGB image to YUV color space",
+    "test_yuv_to_rgb_conversion": "test the YUVBT6012RGB transform to convert a YUV image back to RGB color space",
+    "test_rgb_yuv_inverse_transform": "test the inverse method of RGB2YUVBT601 to reverse a YUV conversion back to RGB",
+    "build_transform_gen_with_yuv_ops": "build a transform generator using RandomContrastYUVOp or RandomSaturationYUVOp via build_transform_gen"
+  },
+  "facebookresearch_d2go/tests/data/test_data_transforms_crop.py": {
+    "test_ExtentTransform": "test the ExtentTransform class to crop a segmentation mask from a source rectangle to a specified output size",
+    "test_RandomCropFixedAspectRatio": "test the RandomCropFixedAspectRatio augmentation to randomly crop an image and mask while maintaining a fixed aspect ratio",
+    "test_PadTransform": "test the PadTransform class to pad a cropped image region back into its original full-size canvas",
+    "test_InvertibleCropTransform": "test the InvertibleCropTransform class to crop an image and then invert the transform to restore the original image",
+    "test_PadBorderDivisible": "test the PadBorderDivisible augmentation to pad an image so its height and width are divisible by a given number"
+  },
+  "facebookresearch_d2go/tests/data/test_data_transforms_tensor.py": {
+    "test_tensor_aug": "test the TestDataTransformsTensor class to verify Tensor2Array and Array2Tensor augmentation round-trips",
+    "run_test_tensor_aug": "run the test_tensor_aug test method to validate torch.Tensor input data augmentation transforms",
+    "review_TestDataTransformsTensor": "review the TestDataTransformsTensor class and its test_tensor_aug method for tensor augmentation coverage",
+    "test_AugInput": "test the tensor_aug AugInput class by wrapping a torch.Tensor image for augmentation",
+    "test_AugmentationList_inverse": "test the AugmentationList inverse transform by applying Tensor2Array then Array2Tensor and verifying round-trip equality"
+  },
+  "facebookresearch_d2go/tests/evaluation/test_evaluator.py": {
+    "run_inference_on_dataset": "run inference on a dataset using a model, data loader, and DatasetEvaluator",
+    "test_inference_on_dataset": "test the inference_on_dataset function with a simple model and custom evaluator",
+    "create_result_cache": "create a ResultCache to save and load evaluation results to a directory",
+    "test_inference_with_checkpoint": "test inference with checkpoint caching to skip reprocessing on repeated runs",
+    "review_DatasetEvaluators_has_finished_process": "review the DatasetEvaluators wrapper to check if all evaluators have finished processing"
+  },
+  "facebookresearch_d2go/tests/evaluation/test_prediction_count_evaluation.py": {
+    "test_PredictionCountEvaluator_process_evaluate_reset": "test the PredictionCountEvaluator process, evaluate, and reset methods with mock detection outputs",
+    "run_test_prediction_count_evaluation": "run the unit test suite for PredictionCountEvaluator to verify prediction counting and confidence metrics",
+    "review_TestPredictionCountEvaluation_class": "review the TestPredictionCountEvaluation test class and its mock output setup for detection instances",
+    "test_assertDictAlmostEqual_helper": "test the assertDictAlmostEqual helper method for comparing nested dictionaries with approximate float equality",
+    "create_mock_detection_outputs": "create mock detection outputs with Instances and confidence scores for testing the PredictionCountEvaluator"
+  },
+  "facebookresearch_d2go/tests/export/test_api.py": {
+    "test_convert_and_export_predictor": "test convert_and_export_predictor to export a PyTorch model to TorchScript predictor format",
+    "test_create_predictor": "test create_predictor to load and run an exported predictor from a directory path",
+    "test_PredictorExportConfig": "test PredictorExportConfig to configure model export with data_generator and run_func_info settings",
+    "test_TwoPartSimpleModel": "test TwoPartSimpleModel to export a model split into two parts around a non-traceable function",
+    "test_ScriptingOnlyModel": "test ScriptingOnlyModel to export a model with control flow loops using TorchScript scripting mode"
+  },
+  "facebookresearch_d2go/tests/export/test_torchscript.py": {
+    "test_torchscript_export_methods": "test the update_export_kwargs_from_export_method decorator with various torchscript export method strings",
+    "test_mobile_optimization_cpu": "test that torchscript_mobile export method sets mobile_optimization backend to CPU",
+    "test_mobile_optimization_metal": "test that torchscript_mobile-metal export method sets mobile_optimization backend to metal",
+    "test_mobile_optimization_vulkan": "test that torchscript_mobile-vulkan export method sets mobile_optimization backend to vulkan",
+    "test_jit_mode_tracing_scripting": "test that torchscript_mobile@tracing and @scripting set jit_mode to trace or script"
+  },
+  "facebookresearch_d2go/tests/misc/test_config.py": {
+    "test_load_configs": "test that all detectron2 and detectron2go YAML config files are loadable via GeneralizedRCNNRunner",
+    "test_base_reroute": "test rerouted config path resolution with single and multiple base YAML files",
+    "test_temp_new_allowed": "test the temp_new_allowed context manager to temporarily allow new keys on a CfgNode",
+    "test_auto_scale_world_size": "test auto scaling batch size when changing the reference world size from 8 to 1 GPU",
+    "test_flatten_config_dict": "test flattening a nested config dictionary into a single-layer dot-notation key dictionary"
+  },
+  "facebookresearch_d2go/tests/misc/test_flop_count.py": {
+    "test_flop_count": "test the FLOP counting for a Mask R-CNN model using dump_flops_info and verify output files",
+    "run_dump_flops_info": "run dump_flops_info on a detection model with toy dataset inputs to generate FLOP analysis files",
+    "create_detection_data_loader_on_toy_dataset": "create a detection data loader on a toy dataset with specified height and width dimensions",
+    "review_TestFlopCount": "review the TestFlopCount class that validates FLOP counting output files for mobilecv and fvcore formats",
+    "summarize_dump_flops_info": "summarize how dump_flops_info generates flops_str_mobilecv, flops_str_fvcore, and flops_table_fvcore text files"
+  },
+  "facebookresearch_d2go/tests/misc/test_lightning_train_net.py": {
+    "test_lightning_train_net_main": "test the main training entry point using GeneralizedRCNNTask with a detection config",
+    "test_checkpointing_save_and_load": "test saving and loading model checkpoints from last.ckpt and FINAL_MODEL_CKPT files",
+    "run_main_training": "run the lightning training main function with a CfgNode config and GeneralizedRCNNTask",
+    "create_detection_cfg": "create a detection configuration using meta_arch_helper for GeneralizedRCNNTask and a temp directory",
+    "flatten_config_dict_accuracy": "flatten the accuracy config dict from training output to compare checkpoint evaluation results"
+  },
+  "facebookresearch_d2go/tests/misc/test_registration.py": {
+    "import_submodules_recursive": "recursively import all submodules of a Python package and return them as a dictionary",
+    "test_META_ARCH_REGISTRY_population": "run the unittest to verify META_ARCH_REGISTRY is fully populated after importing d2go.modeling",
+    "test_DATA_MAPPER_REGISTRY_population": "run the unittest to verify D2GO_DATA_MAPPER_REGISTRY is fully populated after importing dataset_mappers",
+    "review_BaseRegistryPopulationTests": "review the BaseRegistryPopulationTests mixin class and its abstract methods for registry population testing",
+    "refactor_import_submodules": "refactor the import_submodules function to add error handling for failed module imports"
+  },
+  "facebookresearch_d2go/tests/misc/test_utils_abnormal_checker.py": {
+    "test_AbnormalLossChecker": "test the AbnormalLossChecker class by calling check_step with a list of loss values",
+    "test_AbnormalLossCheckerWrapper": "test the AbnormalLossCheckerWrapper by wrapping a model and verifying logged abnormal loss files",
+    "create_AbnormalLossChecker": "create an AbnormalLossChecker with a custom writer callback to detect abnormal training losses",
+    "create_AbnormalLossCheckerWrapper": "create an AbnormalLossCheckerWrapper around a PyTorch model to automatically check losses during forward passes",
+    "test_FileWriter": "test the FileWriter class by saving abnormal loss data to .pth files in a temporary directory"
+  },
+  "facebookresearch_d2go/tests/misc/test_validation_monitor.py": {
+    "test_fetch_checkpoints_local": "test fetch_checkpoints_till_final by creating local .pth checkpoint files and verifying the count",
+    "test_fetch_lightning_checkpoints_local": "test fetch_checkpoints_till_final with PyTorch Lightning checkpoint files and verify the count",
+    "create_file_helper": "create an empty file at a given path using PathManager open",
+    "run_test_validation_monitor": "run the TestValidationMonitor unittest suite to validate checkpoint fetching logic",
+    "review_test_validation_monitor": "review the TestValidationMonitor class and its two test methods for checkpoint validation"
+  },
+  "facebookresearch_d2go/tests/modeling/test_box2box_transform.py": {
+    "test_box2box_transform_apply_deltas": "test the Box2BoxTransform apply_deltas method with hardcoded bounding box deltas and expected results",
+    "run_box2box_transform_unit_test": "run the unittest for Box2BoxTransform to verify bounding box delta transformation correctness",
+    "review_test_box2box_transform": "review the TestBox2BoxTransform class and its test_box2box_transform method for correctness",
+    "refactor_test_box2box_transform": "refactor the TestBox2BoxTransform test to parameterize bounding box and delta inputs",
+    "summarize_box2box_transform_test": "summarize the Box2BoxTransform unit test that validates apply_deltas against ground truth bounding boxes"
+  },
+  "facebookresearch_d2go/tests/modeling/test_box_with_nms_limit.py": {
+    "test_fast_rcnn_inference": "test the fast_rcnn_inference function with random boxes and scores for NMS validation",
+    "test_box_with_nms_limit": "test the Caffe2 BoxWithNMSLimit operator against PyTorch fast_rcnn_inference for equivalence",
+    "run_nms_comparison_test": "run the test_caffe2_pytorch_eq test to compare Caffe2 and PyTorch NMS outputs",
+    "review_test_box_with_nms_limit_class": "review the TestBoxWithNMSLimit class and its caffe2 pytorch equivalence test method",
+    "refactor_nms_limit_test": "refactor the test_caffe2_pytorch_eq test to support different random seeds or batch sizes"
+  },
+  "facebookresearch_d2go/tests/modeling/test_kmeans_anchors.py": {
+    "build_sequence_loader": "build a PyTorch DataLoader that samples dataset dicts in order using IntervalSampler and BatchSampler",
+    "create_IntervalSampler": "create a PyTorch Sampler subclass that yields indices at fixed intervals across a dataset",
+    "test_compute_kmeans_anchors": "test the compute_kmeans_anchors function against reference anchor values using numpy assert_allclose",
+    "test_build_model_kmeans": "test building a GeneralizedRCNNRunner model with KMeansAnchorGenerator and verify cell anchors match expected values",
+    "review_TestKmeansAnchors": "review the TestKmeansAnchors unittest class and its k-means anchor computation test methods"
+  },
+  "facebookresearch_d2go/tests/modeling/test_meta_arch_rcnn.py": {
+    "test_mask_rcnn_inference": "test the FBNetV3 Mask R-CNN model inference using the RCNNBaseTestCases template test suite",
+    "test_mask_rcnn_export_torchscript": "test exporting the Mask R-CNN model to TorchScript format with Caffe2 ops and INT8 quantization",
+    "test_keypoint_rcnn_export": "test exporting the FBNetV3 Keypoint R-CNN model to TorchScript INT8 format with qnnpack backend",
+    "test_qat_eager_export": "test the Quantization Aware Training eager mode export for FBNetV3 Mask R-CNN with INT8 quantization",
+    "test_torchvision_format_export": "test exporting a Generalized R-CNN model to TorchVision format using convert_and_export_predictor and torch.jit.script"
+  },
+  "facebookresearch_d2go/tests/modeling/test_meta_arch_semantic_seg.py": {
+    "test_semantic_seg_inference": "test the semantic segmentation model inference using random image inputs and torch.no_grad",
+    "test_semantic_seg_training": "test the semantic segmentation model training loop with loss computation and backward pass",
+    "test_export_torchscript": "test exporting the semantic segmentation model to TorchScript format and compare outputs",
+    "create_batch_for_semantic_seg": "create a batch of random image inputs with optional semantic segmentation masks for training",
+    "build_data_loader_for_seg": "build a generator-based data loader that yields semantic segmentation input batches"
+  },
+  "facebookresearch_d2go/tests/modeling/test_model_zoo.py": {
+    "run_test_model_zoo_pretrained": "run the unittest that verifies all model zoo configs return a valid nn.Module",
+    "test_model_zoo_get": "test the model_zoo.get function with trained=True across all available config files",
+    "review_TestD2GoModelZoo": "review the TestD2GoModelZoo class and its pretrained model validation logic",
+    "summarize_test_model_zoo_pretrained": "summarize the test_model_zoo_pretrained method that iterates over all model zoo config URLs",
+    "refactor_TestD2GoModelZoo": "refactor the TestD2GoModelZoo class to add parameterized tests for individual model configs"
+  },
+  "facebookresearch_d2go/tests/modeling/test_modeling_distillation.py": {
+    "build_teacher_model": "build a teacher model from a torchscript file or config using _build_teacher with a CfgNode",
+    "apply_distillation_hook": "apply the DistillationModelingHook to a student model to enable knowledge distillation during training",
+    "record_layer_outputs": "record intermediate layer outputs from a model using record_layers to cache activations for distillation loss computation",
+    "compute_layer_losses": "compute layer-wise distillation losses between student and teacher cached outputs using compute_layer_losses with LayerLossMetadata",
+    "use_knowledge_distillation_mixin": "apply the KnowledgeDistillation dynamic mixin to a model to enable training with teacher layer loss supervision"
+  },
+  "facebookresearch_d2go/tests/modeling/test_modeling_ema.py": {
+    "test_EMASstate_FromModel": "test the EMAState.FromModel method to capture and apply model state dictionaries with frozen parameter and buffer options",
+    "test_EMASstate_saveload": "test the EMAState save and load functionality using state_dict and load_state_dict methods for serialization",
+    "test_EMASstate_crossdevice": "test the EMAState cross-device capability to apply GPU model state to CPU models and vice versa",
+    "test_EMAUpdater_decay": "test the EMAUpdater class to update model weights with configurable exponential moving average decay rates",
+    "test_EMAHook_integration": "test the EMAHook integration with Detectron2GoRunner to manage EMA state during training lifecycle hooks"
+  },
+  "facebookresearch_d2go/tests/modeling/test_modeling_image_pooler.py": {
+    "test_ImagePooler_basic": "test the ImagePooler class with resize_short and resize_max parameters to pool image regions",
+    "test_ImagePooler_scale_box": "test the ImagePooler class with box_scale_factor to scale cropped bounding boxes",
+    "test_ImagePooler_crop_only": "test the ImagePooler class with box_scale_factor 1.0 to crop bounding boxes without scaling",
+    "test_ImagePooler_crop_and_scale": "test the ImagePooler class with box_scale_factor 1.2 to crop and scale bounding boxes",
+    "test_ImagePooler_crop_scale_resize": "test the ImagePooler class with resize_shortest, resize_short, resize_max, and box_scale_factor together"
+  },
+  "facebookresearch_d2go/tests/modeling/test_modeling_meta_arch_modeling_hook.py": {
+    "build_d2go_model_with_hooks": "build a D2Go model with modeling hooks applied via a CfgNode configuration",
+    "test_modeling_hook_apply_unapply": "test applying and unapplying a modeling hook to wrap and unwrap a PyTorch model",
+    "create_modeling_hook_plus_one": "create a modeling hook that wraps a model to add one to its forward output",
+    "create_modeling_hook_times_two": "create a modeling hook that wraps a model to multiply its forward output by two",
+    "test_modeling_hook_deepcopy": "test that a model with applied modeling hooks can be deep copied and unapplied"
+  },
+  "facebookresearch_d2go/tests/modeling/test_nms.py": {
+    "run_test_nms_cpu": "run the TestNMS.test_nms_cpu unit test that validates box_nms across five IoU thresholds",
+    "run_test_nms1_cpu": "run the TestNMS.test_nms1_cpu unit test that validates box_nms on 54 boxes at threshold 0.5",
+    "run_test_nms": "run all NMS unit tests in the TestNMS class using unittest",
+    "review_test_nms_cpu": "review the test_nms_cpu method that tests box_nms with 5 boxes and varying IoU thresholds",
+    "review_test_nms1_cpu": "review the test_nms1_cpu method that tests box_nms with 54 boxes at a fixed threshold"
+  },
+  "facebookresearch_d2go/tests/modeling/test_optimizer.py": {
+    "test_optimizer_param_groups": "test the TestOptimizer class to verify optimizer param group creation with default settings",
+    "test_optimizer_lr_multiplier": "test the TestOptimizer class to verify custom learning rate multipliers per layer",
+    "test_optimizer_weight_decay_norm": "test the TestOptimizer class to verify separate weight decay for normalization layers",
+    "test_optimizer_custom_param_groups": "test the TestOptimizer class to verify custom param groups via get_optimizer_param_groups method",
+    "test_optimizer_grad_clipping": "test the TestOptimizer class to verify full model gradient clipping across all optimizers"
+  },
+  "facebookresearch_d2go/tests/modeling/test_rcnn_export_example.py": {
+    "run_maskrcnn_export_example": "run the maskrcnn_export_caffe2_vs_torchvision_opset_format_example function to export a Mask R-CNN model to both Caffe2 and TorchScript formats",
+    "test_maskrcnn_export": "test the TestOptimizer class to verify Mask R-CNN export produces equivalent outputs in Caffe2 and torchvision formats",
+    "export_maskrcnn_torchscript": "export a Mask R-CNN model using GeneralizedRCNNRunner and the exporter main function to generate TorchScript predictor files",
+    "run_torchvision_inference": "run inference on a torchvision-style exported model by passing a CHW image tensor and unpacking flattened output tensors",
+    "run_caffe2_inference": "run inference on a caffe2-style exported model by passing data and im_info tensors and extracting roi_bbox_nms and roi_score_nms outputs"
+  },
+  "facebookresearch_d2go/tests/modeling/test_rcnn_helper.py": {
+    "test_get_instances_from_image": "test extracting detected instances with boxes and keypoints from batched image inputs",
+    "test_get_instances_from_image_scale_image": "test that detected instance boxes scale correctly when the input image is resized",
+    "test_mock_rcnn_inference": "test MockRCNNInference model inference with and without post-processing on batched inputs",
+    "review_MockRCNNInference": "review the MockRCNNInference class that mocks GeneralizedRCNN inference with configurable image and resize sizes",
+    "review_get_detected_instances_from_image": "review the rcnn_helper function that extracts detected instances with boxes, scores, and keypoints from images"
+  },
+  "facebookresearch_d2go/tests/modeling/test_rpn_heads.py": {
+    "run_test_rpn_heads": "run the unittest test_build_rpn_heads to verify all registered RPN heads produce correct output shapes",
+    "run_test_rpn_heads_rotated": "run the unittest test_build_rpn_heads_with_rotated_anchor_generator to verify RPN heads work with rotated anchors",
+    "test_RPN_HEAD_REGISTRY": "test all RPN head builders in the RPN_HEAD_REGISTRY by iterating over registered entries",
+    "review_TestRPNHeads": "review the TestRPNHeads class and its test methods for RPN head validation logic",
+    "refactor_RPN_CFGS": "refactor the RPN_CFGS dictionary to add custom config file overrides for specific RPN head variants"
+  },
+  "facebookresearch_d2go/tests/runner/test_runner_default_runner.py": {
+    "build_d2go_model": "build a Detectron2Go model from config using Detectron2GoRunner build_model method",
+    "train_d2go_model": "train a Detectron2Go model with do_train and resume support for checkpointing",
+    "test_d2go_model": "test a trained Detectron2Go model and get COCO AP evaluation results",
+    "run_d2go_ema_training": "run Detectron2Go training with exponential moving average model weights enabled",
+    "run_d2go_qat_training": "run Detectron2Go quantization aware training with fbgemm or qnnpack backend"
+  },
+  "facebookresearch_d2go/tests/runner/test_runner_lightning_quantization.py": {
+    "use_rsetattr_rgetattr_rhasattr": "use rsetattr, rgetattr, and rhasattr to get, set, and check deeply nested object attributes by dot-path string",
+    "create_ModelTransform_with_step": "create a ModelTransform that runs a function on the model at a specific training step",
+    "create_ModelTransform_with_interval": "create a ModelTransform that runs a function on the model at a fixed training interval",
+    "run_QuantizationAwareTraining_callback": "run QuantizationAwareTraining as a PyTorch Lightning callback to quantize a model during training with configurable start and freeze steps",
+    "run_PostTrainingQuantization_static": "run PostTrainingQuantization with static qconfig to quantize a trained model after fitting with calibration"
+  },
+  "facebookresearch_d2go/tests/runner/test_runner_lightning_task.py": {
+    "create_GeneralizedRCNNTask_from_cfg": "create a GeneralizedRCNNTask instance from a CfgNode config for training with PyTorch Lightning",
+    "load_GeneralizedRCNNTask_from_checkpoint": "load a GeneralizedRCNNTask from a saved checkpoint file and compare model state dicts",
+    "build_model_eval_only": "build a detection model from config in eval-only mode with optional EMA weights",
+    "create_runner_from_module_path": "create a runner class dynamically from its fully qualified module path string",
+    "test_quantization_aware_training": "test quantization-aware training with a custom meta architecture using prepare_qat_fx and convert_fx"
+  },
+  "facebookresearch_d2go/tests/skip_init/test_registries_bootstrap.py": {
+    "test_bootstrap_core_lib": "test the bootstrap_registries function with caching disabled to verify core library bootstrap",
+    "test_bootstrap_with_cache": "test the bootstrap_registries function with caching enabled to verify cached bootstrap behavior",
+    "run_unimport": "run the _unimport function to remove a package and its submodules from sys.modules",
+    "review_TestRegistryBootstrap": "review the TestRegistryBootstrap class and its setUp and tearDown lifecycle methods",
+    "summarize_initialize_all": "summarize how initialize_all is called with boostrap_registries set to False"
+  },
+  "facebookresearch_d2go/tests/trainer/test_activation_checkpointing.py": {
+    "add_activation_checkpoint_configs": "add activation checkpoint configuration options to a CfgNode for memory-efficient training",
+    "create_ActivationCheckpointModelingHook": "create an ActivationCheckpointModelingHook from a config to wrap model layers with checkpointing",
+    "apply_ActivationCheckpointModelingHook": "apply the ActivationCheckpointModelingHook to a PyTorch model to wrap children with CheckpointWrapper",
+    "test_activation_checkpointing_config": "test that activation checkpoint config adds expected REENTRANT and AUTO_WRAP_POLICY defaults",
+    "run_training_with_activation_checkpointing": "run Detectron2GoRunner training with activation checkpointing enabled via modeling hooks and resume"
+  },
+  "facebookresearch_d2go/tests/utils/test_gpu_memory_profiler.py": {
+    "train_with_memory_profiler": "run a Detectron2Go training loop with GPU memory profiler enabled and snapshot logging",
+    "test_gpu_memory_profiler_no_gpu": "test the GPU memory profiler silently passes when running on CPU without CUDA",
+    "test_gpu_memory_profiler_with_gpu": "test the GPU memory profiler generates snapshot pickle and trace plot files on CUDA",
+    "register_MetaArchForTestSimple": "build a simple Conv2d-based meta architecture module registered with META_ARCH_REGISTRY for testing",
+    "create_local_dataset": "create a local dataset with dummy images for use in memory profiler training tests"
+  },
+  "facebookresearch_d2go/tests/utils/test_visualization.py": {
+    "create_test_images_and_dataset_json": "create toy images and a COCO-style annotation JSON file in a given data directory",
+    "create_dummy_input_dict": "create a dummy input dictionary with a zero image tensor and optional bounding box instances",
+    "test_visualizer_wrapper": "test the VisualizerWrapper class by visualizing train input and asserting pixel values at scaled coordinates",
+    "test_dataloader_visualizer_wrapper": "test the DataLoaderVisWrapper by iterating once and verifying image data was written to the mock buffer",
+    "test_dict_based_dataloader_visualizer_wrapper": "test the DataLoaderVisWrapper with a dict-based DummyMetaArch and verify multiple tagged images in the buffer"
+  },
+  "facebookresearch_d2go/tools/benchmark_data.py": {
+    "run_benchmark_data_loader": "run the benchmark_data tool to benchmark data loading performance for train or test datasets",
+    "run_benchmark_test_loader": "run the benchmark_data tool with --is-train=False to benchmark test data loading performance",
+    "run_benchmark_distributed": "run the benchmark_data tool across multiple processes and machines using distributed launch arguments",
+    "review_main_benchmark_function": "review the main function that iterates over a data loader and logs per-iteration timing statistics",
+    "review_BenchmarkDataOutput_class": "review the BenchmarkDataOutput dataclass that holds accuracy and metrics dictionaries from benchmark results"
+  },
+  "facebookresearch_d2go/tools/evaluator.py": {
+    "run_model_evaluation": "run the evaluator binary to evaluate a torchscript or caffe2 predictor model using Detectron2Go",
+    "build_cli_args_eval": "build CLI arguments for the evaluator binary with eval-only or resume flags enabled",
+    "run_main_evaluator": "run the main evaluator function with a config node, output directory, and predictor path",
+    "run_cmdline_evaluation": "run the evaluator with parsed command line arguments including predictor path and thread count",
+    "review_wrapped_main": "review the wrapped_main function that applies mast error handling around the main evaluator"
+  },
+  "facebookresearch_d2go/tools/exporter.py": {
+    "export_pytorch_model_to_predictor": "run the exporter CLI to convert a pytorch detectron2go model to a deployable predictor format",
+    "export_model_with_skip_if_fail": "run the exporter with --skip-if-fail to continue exporting other predictor types after one fails",
+    "export_model_without_weights": "run the exporter with --skip-model-weights to export a model without loading pretrained weights",
+    "export_model_to_specific_device": "run the exporter with --device gpu to export the pytorch model for a specific target device",
+    "review_ExporterOutput_dataclass": "review the ExporterOutput dataclass that holds predictor paths and accuracy comparison results"
+  },
+  "facebookresearch_d2go/tools/lightning_train_net.py": {
+    "run_lightning_training": "run D2Go model training with PyTorch Lightning using a config file and output directory",
+    "run_evaluation_only": "run evaluation only on a D2Go model using the lightning trainer with --eval-only flag",
+    "get_trainer_params": "get PyTorch Lightning trainer parameters dict from a D2Go config node including strategy and precision",
+    "get_trainer_callbacks": "get a list of PyTorch Lightning callbacks from a D2Go config including checkpoint and QAT",
+    "get_ddp_strategy": "get a DDPStrategy instance from a D2Go config node with find_unused_parameters setting"
+  },
+  "facebookresearch_d2go/tools/train_net.py": {
+    "run_detection_model_training": "run the d2go train_net CLI to train a detection model with distributed data parallel",
+    "run_evaluation_only": "run the d2go train_net CLI with --eval-only to evaluate a trained detection model",
+    "resume_training_from_checkpoint": "run the d2go train_net CLI with --resume to resume training from a checkpoint directory",
+    "build_cli_args_for_training": "build CLI argument list for the train_net binary with eval-only or resume flags",
+    "invoke_main_entry_point": "invoke the train_net main entry point that gathers MAST errors and runs the CLI"
+  }
+}

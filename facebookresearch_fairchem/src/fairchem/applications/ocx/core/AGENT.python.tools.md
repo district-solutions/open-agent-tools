@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairchem
+- repo_uri: https://github.com/facebookresearch/fairchem
+
+## File: facebookresearch_fairchem/src/fairchem/applications/ocx/core/data_handling.py
+
+Prompts
+
+```
+['load and preprocess computational and experimental CSV data with XRD matching for CO2R or HER reaction analysis', 'apply XRF composition mapping from XRF data to experimental data and filter out null entries', 'convert Faradaic efficiency and current density to a production rate in mol per cm squared per second', 'interpolate experimental data to a fixed applied potential using log-linear interpolation for Faradaic efficiency columns', 'add leave-one-out and leave-one-composition-out cross-validation category columns to a dataframe for ML training', 'add element property features to a pandas DataFrame from chemical composition strings using matminer featurizers', 'add element features to a DataFrame using a custom composition column name instead of the default xrf comp', 'review the add_el_features function to understand how it extracts weighted average element properties from compositions', 'refactor add_el_features to support additional element properties beyond X, row, group, atomic_mass, atomic_radius, and mendeleev_no', 'summarize the add_el_features function that converts composition strings into element property features using matminer', 'convert a full cell voltage value to half cell voltage vs SHE or RHE scale', 'get the SHE voltage from a full cell voltage measurement using calibration data', 'load experiment calibration data including measurements, conditions, and extracted parameters for voltage conversion', 'convert a standard hydrogen electrode potential to reversible hydrogen electrode potential using pH and reference potential', 'correct a measured potential value by compensating for resistance using current density, area, and pH', 'create a function that normalizes facet fractions on Wulff constructions per bulk_id in a pandas DataFrame', 'filter out rows with null facet_fraction_on_wulff_not_normalized values from a computational DataFrame', 'set facet fraction to zero for entries where any descriptor column contains NaN values', 'review the get_normalized_facet_fracs function to understand how it normalizes facet fractions across bulk IDs', 'summarize the Wulff construction utility functions for normalizing facet fractions in computational materials data']
+```
+
+Usage
+
+```
+{'load_and_preprocess_data': 'load and preprocess computational and experimental CSV data with XRD matching for CO2R or HER reaction analysis', 'get_and_apply_xrf_mapping': 'apply XRF composition mapping from XRF data to experimental data and filter out null entries', 'get_production_rate': 'convert Faradaic efficiency and current density to a production rate in mol per cm squared per second', 'get_constant_V': 'interpolate experimental data to a fixed applied potential using log-linear interpolation for Faradaic efficiency columns', 'add_cv_categories': 'add leave-one-out and leave-one-composition-out cross-validation category columns to a dataframe for ML training'}
+```
+
+## File: facebookresearch_fairchem/src/fairchem/applications/ocx/core/features.py
+
+Prompts
+
+```
+['load and preprocess computational and experimental CSV data with XRD matching for CO2R or HER reaction analysis', 'apply XRF composition mapping from XRF data to experimental data and filter out null entries', 'convert Faradaic efficiency and current density to a production rate in mol per cm squared per second', 'interpolate experimental data to a fixed applied potential using log-linear interpolation for Faradaic efficiency columns', 'add leave-one-out and leave-one-composition-out cross-validation category columns to a dataframe for ML training', 'add element property features to a pandas DataFrame from chemical composition strings using matminer featurizers', 'add element features to a DataFrame using a custom composition column name instead of the default xrf comp', 'review the add_el_features function to understand how it extracts weighted average element properties from compositions', 'refactor add_el_features to support additional element properties beyond X, row, group, atomic_mass, atomic_radius, and mendeleev_no', 'summarize the add_el_features function that converts composition strings into element property features using matminer', 'convert a full cell voltage value to half cell voltage vs SHE or RHE scale', 'get the SHE voltage from a full cell voltage measurement using calibration data', 'load experiment calibration data including measurements, conditions, and extracted parameters for voltage conversion', 'convert a standard hydrogen electrode potential to reversible hydrogen electrode potential using pH and reference potential', 'correct a measured potential value by compensating for resistance using current density, area, and pH', 'create a function that normalizes facet fractions on Wulff constructions per bulk_id in a pandas DataFrame', 'filter out rows with null facet_fraction_on_wulff_not_normalized values from a computational DataFrame', 'set facet fraction to zero for entries where any descriptor column contains NaN values', 'review the get_normalized_facet_fracs function to understand how it normalizes facet fractions across bulk IDs', 'summarize the Wulff construction utility functions for normalizing facet fractions in computational materials data']
+```
+
+Usage
+
+```
+{'add_el_features': 'add element property features to a pandas DataFrame from chemical composition strings using matminer featurizers', 'add_el_features_custom_column': 'add element features to a DataFrame using a custom composition column name instead of the default xrf comp', 'review_add_el_features': 'review the add_el_features function to understand how it extracts weighted average element properties from compositions', 'refactor_add_el_features': 'refactor add_el_features to support additional element properties beyond X, row, group, atomic_mass, atomic_radius, and mendeleev_no', 'summarize_add_el_features': 'summarize the add_el_features function that converts composition strings into element property features using matminer'}
+```
+
+## File: facebookresearch_fairchem/src/fairchem/applications/ocx/core/voltage.py
+
+Prompts
+
+```
+['load and preprocess computational and experimental CSV data with XRD matching for CO2R or HER reaction analysis', 'apply XRF composition mapping from XRF data to experimental data and filter out null entries', 'convert Faradaic efficiency and current density to a production rate in mol per cm squared per second', 'interpolate experimental data to a fixed applied potential using log-linear interpolation for Faradaic efficiency columns', 'add leave-one-out and leave-one-composition-out cross-validation category columns to a dataframe for ML training', 'add element property features to a pandas DataFrame from chemical composition strings using matminer featurizers', 'add element features to a DataFrame using a custom composition column name instead of the default xrf comp', 'review the add_el_features function to understand how it extracts weighted average element properties from compositions', 'refactor add_el_features to support additional element properties beyond X, row, group, atomic_mass, atomic_radius, and mendeleev_no', 'summarize the add_el_features function that converts composition strings into element property features using matminer', 'convert a full cell voltage value to half cell voltage vs SHE or RHE scale', 'get the SHE voltage from a full cell voltage measurement using calibration data', 'load experiment calibration data including measurements, conditions, and extracted parameters for voltage conversion', 'convert a standard hydrogen electrode potential to reversible hydrogen electrode potential using pH and reference potential', 'correct a measured potential value by compensating for resistance using current density, area, and pH', 'create a function that normalizes facet fractions on Wulff constructions per bulk_id in a pandas DataFrame', 'filter out rows with null facet_fraction_on_wulff_not_normalized values from a computational DataFrame', 'set facet fraction to zero for entries where any descriptor column contains NaN values', 'review the get_normalized_facet_fracs function to understand how it normalizes facet fractions across bulk IDs', 'summarize the Wulff construction utility functions for normalizing facet fractions in computational materials data']
+```
+
+Usage
+
+```
+{'convert_fullcell_to_halfcell_voltage': 'convert a full cell voltage value to half cell voltage vs SHE or RHE scale', 'get_she_voltage_from_fullcell': 'get the SHE voltage from a full cell voltage measurement using calibration data', 'load_calibration_data_for_voltage_conversion': 'load experiment calibration data including measurements, conditions, and extracted parameters for voltage conversion', 'convert_she_to_rhe_potential': 'convert a standard hydrogen electrode potential to reversible hydrogen electrode potential using pH and reference potential', 'correct_potential_with_resistance_compensation': 'correct a measured potential value by compensating for resistance using current density, area, and pH'}
+```
+
+## File: facebookresearch_fairchem/src/fairchem/applications/ocx/core/wulff.py
+
+Prompts
+
+```
+['load and preprocess computational and experimental CSV data with XRD matching for CO2R or HER reaction analysis', 'apply XRF composition mapping from XRF data to experimental data and filter out null entries', 'convert Faradaic efficiency and current density to a production rate in mol per cm squared per second', 'interpolate experimental data to a fixed applied potential using log-linear interpolation for Faradaic efficiency columns', 'add leave-one-out and leave-one-composition-out cross-validation category columns to a dataframe for ML training', 'add element property features to a pandas DataFrame from chemical composition strings using matminer featurizers', 'add element features to a DataFrame using a custom composition column name instead of the default xrf comp', 'review the add_el_features function to understand how it extracts weighted average element properties from compositions', 'refactor add_el_features to support additional element properties beyond X, row, group, atomic_mass, atomic_radius, and mendeleev_no', 'summarize the add_el_features function that converts composition strings into element property features using matminer', 'convert a full cell voltage value to half cell voltage vs SHE or RHE scale', 'get the SHE voltage from a full cell voltage measurement using calibration data', 'load experiment calibration data including measurements, conditions, and extracted parameters for voltage conversion', 'convert a standard hydrogen electrode potential to reversible hydrogen electrode potential using pH and reference potential', 'correct a measured potential value by compensating for resistance using current density, area, and pH', 'create a function that normalizes facet fractions on Wulff constructions per bulk_id in a pandas DataFrame', 'filter out rows with null facet_fraction_on_wulff_not_normalized values from a computational DataFrame', 'set facet fraction to zero for entries where any descriptor column contains NaN values', 'review the get_normalized_facet_fracs function to understand how it normalizes facet fractions across bulk IDs', 'summarize the Wulff construction utility functions for normalizing facet fractions in computational materials data']
+```
+
+Usage
+
+```
+{'normalize_facet_fractions': 'create a function that normalizes facet fractions on Wulff constructions per bulk_id in a pandas DataFrame', 'filter_null_facet_fractions': 'filter out rows with null facet_fraction_on_wulff_not_normalized values from a computational DataFrame', 'zero_out_incomplete_descriptors': 'set facet fraction to zero for entries where any descriptor column contains NaN values', 'review_get_normalized_facet_fracs': 'review the get_normalized_facet_fracs function to understand how it normalizes facet fractions across bulk IDs', 'summarize_wulff_construction_utils': 'summarize the Wulff construction utility functions for normalizing facet fractions in computational materials data'}
+```
+

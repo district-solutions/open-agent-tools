@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/parlai/tasks/dialog_babi_plus/build.py
+
+Prompts
+
+```
+['run the build function to download and set up the dialog-babi-plus dataset in the ParlAI datapath directory', 'review the build function to understand how it downloads, version-checks, and marks the dialog-babi-plus dataset as complete', 'summarize the build function which handles downloading dialog-babi-plus data, removing outdated versions, and marking completion', 'refactor the build function to support additional downloadable resources or a newer dataset version string', 'test the build function by calling it with a mock opt dictionary containing a datapath key']
+```
+
+Usage
+
+```
+{'build_dialog_babi_plus_data': 'run the build function to download and set up the dialog-babi-plus dataset in the ParlAI datapath directory', 'review_build_function': 'review the build function to understand how it downloads, version-checks, and marks the dialog-babi-plus dataset as complete', 'summarize_build_function': 'summarize the build function which handles downloading dialog-babi-plus data, removing outdated versions, and marking completion', 'refactor_build_function': 'refactor the build function to support additional downloadable resources or a newer dataset version string', 'test_build_function': 'test the build function by calling it with a mock opt dictionary containing a datapath key'}
+```
+

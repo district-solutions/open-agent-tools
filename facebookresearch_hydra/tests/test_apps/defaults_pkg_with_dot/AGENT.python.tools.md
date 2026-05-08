@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/tests/test_apps/defaults_pkg_with_dot/my_app.py
+
+Prompts
+
+```
+['run a Hydra application that prints the configuration from a config file', 'create a Python app using Hydra main decorator with a config file', 'test a Hydra application that loads and prints configuration from a YAML file', 'review the Hydra main decorator usage with version_base and config_path parameters', 'summarize a minimal Hydra application that prints configuration using DictConfig']
+```
+
+Usage
+
+```
+{'run_hydra_app': 'run a Hydra application that prints the configuration from a config file', 'create_hydra_app': 'create a Python app using Hydra main decorator with a config file', 'test_hydra_config': 'test a Hydra application that loads and prints configuration from a YAML file', 'review_hydra_main': 'review the Hydra main decorator usage with version_base and config_path parameters', 'summarize_hydra_app': 'summarize a minimal Hydra application that prints configuration using DictConfig'}
+```
+

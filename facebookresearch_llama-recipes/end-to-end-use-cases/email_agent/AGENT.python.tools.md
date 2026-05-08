@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/llama-recipes
+- repo_uri: https://github.com/facebookresearch/llama-recipes.git
+
+## File: facebookresearch_llama-recipes/end-to-end-use-cases/email_agent/email_agent.py
+
+Prompts
+
+```
+['authenticate a Gmail user and return the Gmail API service object using OAuth2 credentials', 'list emails from Gmail matching a query string with sender, subject, and received time', 'get the decoded text body of a Gmail message by its message ID', 'compose and send a new email or reply to or forward an existing email via Gmail API', 'run an LLM-powered email agent that uses tool calling to list, read, reply, and forward Gmail messages']
+```
+
+Usage
+
+```
+{'authenticate_gmail': 'authenticate a Gmail user and return the Gmail API service object using OAuth2 credentials', 'list_emails': 'list emails from Gmail matching a query string with sender, subject, and received time', 'get_email_body': 'get the decoded text body of a Gmail message by its message ID', 'send_email': 'compose and send a new email or reply to or forward an existing email via Gmail API', 'Agent': 'run an LLM-powered email agent that uses tool calling to list, read, reply, and forward Gmail messages'}
+```
+

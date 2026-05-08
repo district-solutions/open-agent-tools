@@ -1,0 +1,37 @@
+{
+  "facebookresearch_hypernymysuite/hypernymysuite/base.py": {
+    "create_HypernymySuiteModel_subclass": "create a subclass of HypernymySuiteModel that implements predict and vocab for custom hypernymy scoring",
+    "implement_predict_method": "implement the predict method to estimate the degree to which a hyponym is_a hypernym",
+    "implement_predict_many_method": "implement predict_many to vectorize batch predictions for multiple hyponym-hypernym pairs at once",
+    "create_Precomputed_model": "create a Precomputed model from a TSV file with precomputed hypernymy predictions for word pairs",
+    "review_Precomputed_predict": "review the Precomputed predict method to return similarity scores from the lookup table for word pairs"
+  },
+  "facebookresearch_hypernymysuite/hypernymysuite/evaluation.py": {
+    "run_all_evaluations": "run all_evaluations on a hypernymy model to get a unified nested dictionary of all benchmark results",
+    "create_dataset": "create a Dataset object from a TSV file with a model vocabulary dictionary for hypernymy evaluation",
+    "run_correlation_setup": "run correlation_setup to compute Spearman rho between model predictions and continuous scores on a dataset",
+    "run_siege_setup": "run siege_setup to compute average precision scores for a binary hypernymy dataset",
+    "run_bless_directionality": "run bless_directionality_setup to test if a model predicts correct directionality for positive hypernymy pairs"
+  },
+  "facebookresearch_hypernymysuite/hypernymysuite/pattern.py": {
+    "build_RawCountModel": "build a RawCountModel from a patterns file to predict hypernymy scores using raw co-occurrence counts",
+    "create_PPMIModel": "create a PPMIModel from a patterns file to predict hypernymy scores using positive pointwise mutual information",
+    "run_SvdRawModel": "run an SvdRawModel with dimension k to predict hypernymy scores via SVD over raw counts",
+    "test_SvdPpmiModel": "test an SvdPpmiModel with dimension k to predict hypernymy scores via SVD over PPMI values",
+    "review_RandomBaseline": "review a RandomBaseline model with dimension k and seed to generate consistent random hypernymy predictions"
+  },
+  "facebookresearch_hypernymysuite/hypernymysuite/reader.py": {
+    "read_sparse_matrix_from_file": "read a 3-column tab-separated file into a scipy sparse CSR matrix with row and column vocabularies",
+    "read_sparse_matrix_with_cache": "read a sparse matrix file and cache the result as a pickle file for faster subsequent reads",
+    "read_sparse_matrix_same_vocab": "read a sparse matrix file where rows and columns share the same vocabulary mapping",
+    "read_sparse_matrix_gzip": "read a gzip compressed 3-column sparse matrix file and return a scipy sparse matrix with vocabularies",
+    "parse_three_column_line": "parse a tab-separated line with two or three columns into target, context, and weight values"
+  },
+  "facebookresearch_hypernymysuite/hypernymysuite/unsup.py": {
+    "build_unsupervised_baseline": "build an UnsupervisedBaseline model using a sparse distributional space file and a similarity measure function",
+    "create_slqs_model": "create an SLQS model from a sparse distributional space file with a configurable topk entropy parameter",
+    "compute_clarkeDE_similarity": "compute the clarkeDE distributional inclusion score between two dense numpy vectors",
+    "compute_cosine_similarity": "compute the cosine similarity between two dense numpy vectors using the cosine function",
+    "run_slqs_cos_predict": "run the SLQS_Cos model to predict hypernymy scores combining entropy measures with cosine similarity"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "facebookresearch_co-tracker/cotracker/predictor.py": {
+    "run_dense_tracking": "run the CoTrackerPredictor forward method to compute dense tracks across all video frames",
+    "run_sparse_tracking": "run the CoTrackerPredictor forward method with queries tensor to compute sparse point tracks",
+    "run_grid_tracking": "run the CoTrackerPredictor forward method with grid_size to compute tracks on a regular grid",
+    "run_backward_tracking": "run the CoTrackerPredictor forward method with backward_tracking to compute tracks in both directions",
+    "run_online_tracking": "run the CoTrackerOnlinePredictor forward method to process video chunks incrementally for online tracking"
+  },
+  "facebookresearch_co-tracker/cotracker/datasets/dataclass_utils.py": {
+    "load_dataclass_from_json": "load a list of dataclass instances from a JSON file using the load_dataclass function",
+    "load_dataclass_binary": "load a list of dataclass instances from a binary JSON file handle using load_dataclass with binary=True",
+    "resolve_optional_type": "check whether a type annotation is equivalent to typing.Optional using the _resolve_optional helper",
+    "unwrap_optional_type": "strip an Optional wrapper from a type annotation using the _unwrap_type helper",
+    "get_dataclass_field_default": "get the default value for a dataclass field using the _get_dataclass_field_default helper"
+  },
+  "facebookresearch_co-tracker/cotracker/datasets/dr_dataset.py": {
+    "create_dynamic_replica_dataset": "create a DynamicReplicaDataset instance from a root directory with a specified split and trajectory count",
+    "load_frame_annotations": "load frame annotations from a gzipped JSON file into DynamicReplicaFrameAnnotation dataclass objects",
+    "crop_rgb_trajectories": "crop RGB images and their corresponding 2D trajectory coordinates to a specified size",
+    "get_dataset_sample": "retrieve a sample from the dataset containing video frames, trajectories, and visibility masks",
+    "filter_visible_trajectories": "filter out trajectory points that are visible for fewer than 10 frames in the sample"
+  },
+  "facebookresearch_co-tracker/cotracker/datasets/kubric_movif_dataset.py": {
+    "create_KubricMovifDataset": "create a KubricMovifDataset instance to load and sample video sequences with 2D point trajectories from a data root directory",
+    "create_CoTrackerDataset": "create a CoTrackerDataset base class instance to configure photometric and spatial augmentation parameters for video trajectory data",
+    "run_add_photometric_augs": "run photometric augmentations including eraser occlusion, patch replacement, color jitter, and Gaussian blur on video frames and trajectories",
+    "run_add_spatial_augs": "run spatial augmentations including random padding, scaling, stretching, cropping, and flipping on video frames and trajectory coordinates",
+    "run_crop": "run a simple random crop on video frames and adjust corresponding trajectory coordinates to match the cropped region"
+  },
+  "facebookresearch_co-tracker/cotracker/datasets/real_dataset.py": {
+    "review_RealDataset_class": "review the RealDataset class and its PyTorch Dataset implementation for real video tracking data",
+    "refactor_RealDataset_init_stopwords": "refactor the RealDataset init to externalize the stopwords list into a configurable parameter",
+    "test_RealDataset_crop": "test the RealDataset crop method to verify random cropping of video frame tensors",
+    "summarize_RealDataset_getitem_helper": "summarize the getitem_helper method that reads videos and applies random frame rate and resize augmentations",
+    "refactor_RealDataset_getitem_helper": "refactor the getitem_helper method to remove hardcoded file paths and support configurable video sources"
+  },
+  "facebookresearch_co-tracker/cotracker/datasets/tap_vid_datasets.py": {
+    "resize_video": "resize a numpy array video to a specified output size using mediapy",
+    "sample_queries_first": "sample the first visible point in each track as a query point for TAPNet evaluation",
+    "sample_queries_strided": "sample query points at strided intervals across frames for TAPNet evaluation",
+    "create_TapVidDataset": "create a TapVidDataset instance to load and iterate over TAP-Vid tracking benchmark data",
+    "get_TapVidDataset_item": "get a CoTrackerData sample with frames, trajectories, and visibility from the TapVidDataset"
+  },
+  "facebookresearch_co-tracker/cotracker/datasets/utils.py": {
+    "create_CoTrackerData": "create a CoTrackerData dataclass instance to store video tracks with trajectory and visibility tensors",
+    "collate_fn_batch": "collate a batch of CoTrackerData samples by stacking video, trajectory, and visibility tensors together",
+    "collate_fn_train_batch": "collate a training batch of CoTrackerData samples including valid masks, transforms, and augmented video tensors",
+    "try_to_cuda_tensor": "move a torch tensor to the cuda device by converting to float and calling cuda",
+    "dataclass_to_cuda_dataclass": "move all tensor fields of a CoTrackerData dataclass to the cuda device in place"
+  },
+  "facebookresearch_co-tracker/cotracker/evaluation/evaluate.py": {
+    "run_evaluation": "run the CoTracker model evaluation on a specified benchmark dataset using the evaluate entry point",
+    "run_eval_function": "run the run_eval function to evaluate CoTracker on a dataset with a DefaultConfig object",
+    "create_default_config": "create a DefaultConfig dataclass to configure experiment directory, dataset, checkpoint, grid size, and model parameters",
+    "build_cotracker_model": "build a CoTracker model from a checkpoint file using build_cotracker with offline and window length options",
+    "evaluate_sequence": "evaluate a predictor on a test dataloader sequence using the Evaluator class evaluate_sequence method"
+  },
+  "facebookresearch_co-tracker/cotracker/evaluation/core/eval_utils.py": {
+    "compute_tapvid_metrics": "compute TAP-Vid metrics including Jaccard, points within threshold, and occlusion accuracy for video tracking predictions",
+    "run_compute_tapvid_metrics": "run compute_tapvid_metrics with query points, ground truth occlusions, and predicted tracks to evaluate tracking performance",
+    "test_compute_tapvid_metrics": "test compute_tapvid_metrics by passing numpy arrays for query points, ground truth, and predictions in first or strided mode",
+    "review_compute_tapvid_metrics": "review compute_tapvid_metrics to understand how Jaccard and occlusion accuracy are computed across pixel thresholds",
+    "refactor_compute_tapvid_metrics": "refactor compute_tapvid_metrics to support additional query modes beyond first and strided sampling strategies"
+  },
+  "facebookresearch_co-tracker/cotracker/evaluation/core/evaluator.py": {
+    "run_Evaluator_evaluate_sequence": "run the Evaluator evaluate_sequence method to evaluate a CoTracker model on a test dataloader and return metrics",
+    "run_Evaluator_compute_metrics": "run the Evaluator compute_metrics method to compute tracking accuracy metrics for tapvid or dynamic_replica datasets",
+    "create_Evaluator_instance": "create an Evaluator instance with an experiment directory path for CoTracker model evaluation and visualization",
+    "test_Evaluator_tapvid_evaluation": "test the Evaluator evaluate_sequence method with a tapvid dataset to compute query-based tracking metrics",
+    "test_Evaluator_online_model": "test the Evaluator evaluate_sequence method with a CoTrackerThreeOnline model for online tracking evaluation"
+  },
+  "facebookresearch_co-tracker/cotracker/models/bootstap_predictor.py": {
+    "create_TAPIRPredictor": "create a TAPIRPredictor instance with bootstap mode enabled to load the bootstapir checkpoint model",
+    "run_forward_tracking": "run the TAPIRPredictor forward pass on video RGB frames with query points to get tracks and visibility",
+    "postprocess_occlusions": "postprocess occlusion and expected distance tensors to compute a binary visibility mask for tracked points",
+    "review_TAPIRPredictor_init": "review the TAPIRPredictor class init to understand how it loads standard or bootstap TAPIR checkpoints",
+    "refactor_forward_interpolation": "refactor the TAPIRPredictor forward method to support variable interpolation shapes instead of hardcoded 256x256"
+  },
+  "facebookresearch_co-tracker/cotracker/models/build_cotracker.py": {
+    "build_cotracker3_offline": "build a CoTracker3 offline model with default window length of 16 frames",
+    "build_cotracker3_online": "build a CoTracker3 online model for real-time point tracking with configurable window length",
+    "build_cotracker2": "build a CoTracker2 model with stride 4 and a custom window length",
+    "load_checkpoint": "build a CoTracker model and load pretrained weights from a checkpoint file",
+    "review_build_cotracker": "review the build_cotracker factory function that constructs CoTracker2 or CoTracker3 models"
+  },
+  "facebookresearch_co-tracker/cotracker/models/evaluation_predictor.py": {
+    "create_evaluation_predictor": "create an EvaluationPredictor instance wrapping a CoTrackerThreeOffline model with configurable grid and SIFT sampling options",
+    "run_evaluation_predictor_forward": "run the EvaluationPredictor forward pass on a video tensor and query points to get trajectory and visibility predictions",
+    "process_single_point_tracking": "process a single query point through the model using the _process_one_point method with local grid augmentation",
+    "configure_grid_sampling": "configure the EvaluationPredictor with grid_size and local_grid_size parameters for grid-based point sampling during tracking",
+    "configure_sift_sampling": "configure the EvaluationPredictor with sift_size and num_uniformly_sampled_pts parameters for SIFT and uniform point sampling"
+  },
+  "facebookresearch_co-tracker/cotracker/models/core/embeddings.py": {
+    "generate_2d_sincos_grid_embedding": "generate a 2D positional embedding from a grid size using get_2d_sincos_pos_embed",
+    "generate_2d_embedding_from_coords": "generate a 2D positional embedding from batched XY coordinates using get_2d_embedding",
+    "generate_1d_sincos_embedding": "generate a 1D positional embedding from position values using get_1d_sincos_pos_embed_from_grid",
+    "generate_2d_embedding_from_grid_tensor": "generate a 2D positional embedding from a pre-built grid tensor using get_2d_sincos_pos_embed_from_grid",
+    "review_sincos_embedding_functions": "review the sincos positional embedding functions for use in vision transformer models"
+  },
+  "facebookresearch_co-tracker/cotracker/models/core/model_utils.py": {
+    "generate_uniform_sampled_points": "generate uniformly sampled spatiotemporal points across video frames with random time and spatial coordinates",
+    "generate_grid_points": "generate a grid of uniformly distributed 2D points covering a rectangular region with configurable margin",
+    "sample_spatial_features": "sample spatial features from a 4D tensor at specified 2D coordinates using bilinear interpolation",
+    "sample_spatiotemporal_features": "sample spatio-temporal features from a 5D tensor at specified 3D coordinates using bilinear interpolation",
+    "compute_masked_mean": "compute the mean of a tensor weighted by a mask tensor along a specified dimension"
+  },
+  "facebookresearch_co-tracker/cotracker/models/core/cotracker/blocks.py": {
+    "create_MLP_for_vision_transformer": "create a Vision Transformer MLP with configurable hidden features, activation layer, and dropout",
+    "build_ResidualBlock_with_norm": "build a residual block with group, batch, or instance normalization and configurable stride",
+    "create_BasicEncoder_feature_extractor": "create a feature encoder with residual layers and multi-scale bilinear interpolation for image features",
+    "build_CorrBlock_correlation_pyramid": "build a correlation block that samples feature pyramid levels using bilinear interpolation for tracking",
+    "create_AttnBlock_with_attention": "create an attention block with layer normalization, multi-head attention, and MLP feed-forward network"
+  },
+  "facebookresearch_co-tracker/cotracker/models/core/cotracker/cotracker.py": {
+    "build_CoTracker2_model": "build a CoTracker2 model with configurable window length, stride, and virtual tracks for video point tracking",
+    "run_CoTracker2_forward": "run the CoTracker2 forward pass to predict tracked coordinates and visibility for point queries in a video",
+    "run_EfficientUpdateFormer_forward": "run the EfficientUpdateFormer forward pass to update track estimates using time and space attention blocks",
+    "review_CoTracker2_forward_window": "review the CoTracker2 forward_window method which iteratively refines coordinate predictions using correlation features and a transformer",
+    "refactor_CrossAttnBlock": "refactor the CrossAttnBlock class to modify cross-attention behavior between point tokens and virtual track tokens"
+  },
+  "facebookresearch_co-tracker/cotracker/models/core/cotracker/cotracker3_offline.py": {
+    "run_CoTrackerThreeOffline_forward": "run the CoTrackerThreeOffline forward pass to predict point tracks across all video frames",
+    "build_CoTrackerThreeOffline_model": "build a CoTrackerThreeOffline model for offline point tracking on full video sequences",
+    "test_CoTrackerThreeOffline_tracking": "test the CoTrackerThreeOffline forward method with a video tensor and point queries",
+    "review_CoTrackerThreeOffline_forward": "review the CoTrackerThreeOffline forward method which uses multi-scale correlation and transformer updates",
+    "refactor_CoTrackerThreeOffline_forward": "refactor the CoTrackerThreeOffline forward method to change the number of iterative updates or chunk size"
+  },
+  "facebookresearch_co-tracker/cotracker/models/core/cotracker/cotracker3_online.py": {
+    "build_CoTrackerThreeOnline_model": "build a CoTrackerThreeOnline model instance with configurable window length, stride, and correlation radius parameters",
+    "run_forward_online_tracking": "run the forward method on a video tensor with point queries to predict object tracks and visibility",
+    "create_posenc_positional_encoding": "create a positional encoding tensor by applying sinusoidal encoding with configurable min and max degree scales",
+    "test_forward_window_iteration": "test the forward_window method to iterate correlation feature extraction and transformer updates for a video window",
+    "review_CoTrackerThreeBase_init": "review the CoTrackerThreeBase class initialization to understand feature encoder, updateformer, and correlation MLP architecture"
+  },
+  "facebookresearch_co-tracker/cotracker/models/core/cotracker/losses.py": {
+    "compute_sequence_flow_loss": "compute a weighted sequence loss over flow predictions with optional Huber loss and visibility masking",
+    "calculate_huber_loss": "calculate element-wise Huber loss between two tensors with a configurable delta threshold",
+    "compute_sequence_BCE_loss": "compute binary cross entropy loss over a sequence of visibility predictions and ground truth",
+    "compute_sequence_prob_loss": "compute log probability loss for classifying if tracked points are within a pixel threshold of targets",
+    "compute_masked_mean": "compute the mean of a tensor along specified dimensions using an optional boolean mask"
+  },
+  "facebookresearch_co-tracker/cotracker/utils/train_utils.py": {
+    "get_eval_dataloader": "create an evaluation dataloader for datasets like dynamic_replica, tapvid_davis, tapvid_kinetics, or kubric",
+    "get_train_dataset": "build a training dataset combining kubric and dynamic_replica datasets with configurable augmentation and sampling",
+    "run_test_eval": "run evaluation on multiple dataloaders using an EvaluationPredictor and log metrics to TensorBoard",
+    "Logger_push": "push training metrics to the Logger for periodic aggregation and TensorBoard scalar logging",
+    "sig_handler": "handle USR1 signals on a Slurm cluster to requeue the current job and exit gracefully"
+  },
+  "facebookresearch_co-tracker/cotracker/utils/visualizer.py": {
+    "visualize_tracks_on_video": "create a Visualizer instance and call visualize to draw object tracking points and trajectories on video frames",
+    "read_video_from_path": "read a video file from disk path and return stacked numpy array of frames using imageio",
+    "draw_circle_on_image": "draw a colored circle at specified coordinates on a PIL image with configurable radius and alpha",
+    "draw_line_on_image": "draw a colored line between two coordinate points on a PIL image with configurable linewidth",
+    "save_video_from_tensor": "save a tensor video as an MP4 file to disk using imageio with configurable FPS"
+  },
+  "facebookresearch_co-tracker/gradio_demo/app.py": {
+    "get_colors": "generate a list of random RGB color tuples for visualizing N distinct tracked points",
+    "get_points_on_a_grid": "generate a uniform NxN grid of 2D point coordinates as a PyTorch tensor over a given extent",
+    "paint_point_track": "overlay colored tracked point dots onto video frames using bilinear interpolation and visibility masks",
+    "preprocess_video_input": "read a video file, resize it to preview and model input resolutions, and initialize tracking state",
+    "track": "run CoTracker3 point tracking on a video using selected query points or an auto-generated grid"
+  },
+  "facebookresearch_co-tracker/tests/test_bilinear_sample.py": {
+    "test_bilinear_sampler_4d": "test the bilinear sampler on 4D image tensors with identity sampling and align_corners modes",
+    "test_bilinear_sampler_5d": "test the bilinear sampler on 5D video tensors with identity sampling and align_corners modes",
+    "run_test_bilinear_sample": "run the unittest test suite for the bilinear sampler module using unittest.main",
+    "review_test_bilinear_sampler_class": "review the TestBilinearSampler class and its 4D and 5D identity sampling test methods",
+    "summarize_bilinear_sampler_tests": "summarize the bilinear sampler test cases covering 4D image and 5D video tensor sampling"
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "facebookresearch_pytouch/examples/contact_area.py": {
+    "extract_surface_contact": "run the extract_surface_contact function to compute major and minor axis of surface contact area from images",
+    "extract_surface_contact_real_time": "run the extract_surface_contact_real_time function to display real-time object contact area with a DIGIT sensor",
+    "pytouch_PyTouch_init": "build a PyTouch instance with DigitSensor and ContactArea task to analyze surface contact from images",
+    "contact_area_custom_config": "create a ContactArea task with custom base image and contour threshold to extract contact ellipse axes",
+    "imagehandler_load_and_save": "use ImageHandler to load images as numpy arrays and save annotated contact area results to PNG files"
+  },
+  "facebookresearch_pytouch/examples/multi_task.py": {
+    "run_PyTouch_multi_task": "run a PyTouch instance with DigitSensor and ContactArea plus TouchDetect tasks on sample images",
+    "run_ContactArea_task": "run the ContactArea task on a sample image with a base image to get major and minor axis",
+    "run_TouchDetect_task": "run the TouchDetect task on a sample image to determine if touching is detected",
+    "create_ContactArea_custom": "create a ContactArea task with a custom base image and contour threshold of 10",
+    "create_TouchDetect_custom": "create a TouchDetect task with DigitSensor and a touchdetect_resnet18 zoo model"
+  },
+  "facebookresearch_pytouch/examples/surface_3d.py": {
+    "run_visualize_surface_3d": "run the visualize_surface_3d function to render 3D point clouds from touch sensor image sequences",
+    "create_ImageSequenceDataset": "create an ImageSequenceDataset to load touch image sequences from a dataset path",
+    "create_Visualizer3DViewParams": "create Visualizer3DViewParams to define a custom 3D camera view with fov, lookat, and zoom",
+    "create_Visualizer3D": "create a Visualizer3D instance to render 3D point clouds with custom view parameters",
+    "run_Surface3D_point_cloud_3d": "run Surface3D point_cloud_3d to generate 3D points, depth, and normals from a color image"
+  },
+  "facebookresearch_pytouch/examples/touch_detect.py": {
+    "run_touch_detect": "run the touch_detect function to detect if a hand is touching using PyTouch with DigitSensor",
+    "create_ImageHandler": "create an ImageHandler to load an image from a file path for touch detection input",
+    "build_PyTouch_with_TouchDetect": "build a PyTouch instance with DigitSensor and TouchDetect task for default touch detection",
+    "run_TouchDetect_custom_model": "run TouchDetect with a custom zoo model like touchdetect_resnet18 for touch classification",
+    "test_touch_detection_certainty": "test touch detection by calling TouchDetect on an image and checking is_touching and certainty values"
+  },
+  "facebookresearch_pytouch/pytouch/base.py": {
+    "init_PyTouch_with_sensor": "create a PyTouch instance with a sensor class and optional tasks",
+    "init_PyTouch_with_source": "create a PyTouch instance with a sensor and a specific SensorDataSources type",
+    "init_PyTouch_with_tasks": "create a PyTouch instance with a sensor and a list of task classes to initialize",
+    "init_sensor_method": "initialize a sensor instance from a sensor class with RAW data source",
+    "init_tasks_method": "initialize task classes by instantiating them with the sensor and attaching as attributes"
+  },
+  "facebookresearch_pytouch/pytouch/common/visualizer.py": {
+    "create_visualizer3d_window": "create a Visualizer3D instance with custom window, view, and option params for 3D visualization",
+    "init_geometry_clouds_frames_meshes": "initialize a list of point clouds, coordinate frames, or triangle meshes by type",
+    "visualize_geometries_with_transforms": "visualize point clouds, frames, and meshes in the 3D window with optional absolute transforms",
+    "render_3d_points": "render a single set of 3D points as a point cloud in the Open3D visualizer window",
+    "visualize_inlier_outlier_cloud": "split and visualize inlier and outlier points from a point cloud using index selection"
+  },
+  "facebookresearch_pytouch/pytouch/handlers/image.py": {
+    "init_ImageHandler": "create an ImageHandler instance from an image file path with optional color space conversion",
+    "tensor_to_PIL": "convert a PyTorch tensor back to a PIL Image using the tensor_to_PIL static method",
+    "ImageHandler_tensor": "get a PyTorch tensor representation of the loaded image via the tensor property",
+    "ImageHandler_nparray": "get a numpy array representation of the loaded image via the nparray property",
+    "ImageHandler_save": "save a PIL or OpenCV image to disk using the save static method"
+  },
+  "facebookresearch_pytouch/pytouch/handlers/sensor.py": {
+    "init_sensor_handler": "create a SensorHandler instance that opens a cv2.VideoCapture device and raises IOError on failure",
+    "get_frame": "call get_frame on a SensorHandler to read and return the next camera frame as a numpy array",
+    "dev_property": "access the dev property of SensorHandler to retrieve the underlying cv2.VideoCapture object",
+    "review_sensor_handler": "review the SensorHandler class to understand how it wraps cv2.VideoCapture for frame capture",
+    "refactor_sensor_handler": "refactor SensorHandler to add frame rate control or resolution settings to the capture device"
+  },
+  "facebookresearch_pytouch/pytouch/handlers/video.py": {
+    "create_video_handler": "create a VideoHandler instance that loads a video file from a given path",
+    "get_frame_from_video": "get the next frame and its position from a VideoHandler using get_frame",
+    "resize_video_frames": "resize video frames to a specific width and height tuple or scaling factor",
+    "seek_video_frame": "seek to a specific frame position in the video using set_frame_pos",
+    "review_video_handler_class": "review the VideoHandler class and its frame reading and resizing capabilities"
+  },
+  "facebookresearch_pytouch/pytouch/models/slip_resnet.py": {
+    "build_resnet18_model": "build a ResNet-18 model using the resnet18 factory function for image classification",
+    "build_resnet50_model": "build a ResNet-50 model using the resnet50 factory function with bottleneck blocks",
+    "create_resnet_custom": "create a custom ResNet model using the ResNet class with specified block and layers",
+    "build_resnext_model": "build a ResNeXt-50 32x4d model using the resnext50_32x4d factory function",
+    "review_resnet_forward": "review the ResNet forward pass that handles 5D tensor input with temporal averaging"
+  },
+  "facebookresearch_pytouch/pytouch/models/zoo.py": {
+    "download_model_from_zoo": "download a PyTouch model from the S3 zoo bucket by model name and sensor type",
+    "load_model_from_zoo": "load a PyTouch model state dict from the S3 zoo by model name and sensor",
+    "load_onnx_from_zoo": "download and load an ONNX model from the PyTouch zoo as an InferenceSession",
+    "list_models": "list all available model keys in the PyTouch S3 zoo bucket",
+    "load_onnx_session": "load an ONNX model file from disk and return an ONNX Runtime InferenceSession"
+  },
+  "facebookresearch_pytouch/pytouch/models/pix2pix/pix2pix.py": {
+    "init_pix2pix_model": "initialize a Pix2PixModel with a name, model type, dataset mode, direction, and optional checkpoint directory",
+    "load_zoo_model_weights": "load a pretrained state dict into the Pix2PixModel generator network using init_zoo_model",
+    "convert_color_to_normal": "run a color image through the Pix2PixModel and get a normal map output via color_to_normal",
+    "preprocess_image_for_model": "convert a torch tensor image to a PIL Image and apply pix2pix transforms using preprocess_image",
+    "create_model_input_dict": "build a model input dictionary with A and B image tensors and path placeholders using _create_model_input"
+  },
+  "facebookresearch_pytouch/pytouch/models/pix2pix/thirdparty/poisson.py": {
+    "run_poisson_reconstruct": "run poisson_reconstruct with grady, gradx, and boundarysrc numpy arrays to reconstruct an image",
+    "test_poisson_reconstruct": "test poisson_reconstruct by passing synthetic gradient fields and a boundary image",
+    "review_poisson_reconstruct": "review poisson_reconstruct to understand the discrete sine transform based Poisson image reconstruction algorithm",
+    "summarize_poisson_reconstruct": "summarize poisson_reconstruct which uses DST and eigenvalue decomposition for fast Poisson image reconstruction",
+    "refactor_poisson_reconstruct": "refactor poisson_reconstruct to replace deprecated scipy.fftpack with scipy.fft for modern scipy compatibility"
+  },
+  "facebookresearch_pytouch/pytouch/models/pix2pix/thirdparty/pix2pix/data/base_dataset.py": {
+    "create_dataset_subclass": "create a subclass of BaseDataset implementing __len__ and __getitem__ for a custom image dataset",
+    "build_transform_pipeline": "build a torchvision transform pipeline using get_transform with resize, crop, and flip options",
+    "test_get_params": "test the get_params function to compute random crop positions and flip decisions for an image",
+    "review_base_dataset_abc": "review the BaseDataset abstract class and its required methods for PyTorch dataset integration",
+    "refactor_get_transform": "refactor the get_transform function to add support for a new preprocessing mode"
+  },
+  "facebookresearch_pytouch/pytouch/models/pix2pix/thirdparty/pix2pix/models/base_model.py": {
+    "create_subclass_BaseModel": "create a subclass of BaseModel that implements set_input, forward, and optimize_parameters methods",
+    "save_networks_epoch": "save all model networks to disk as checkpoint files for a given epoch number",
+    "load_networks_epoch": "load all model networks from disk checkpoint files for a given epoch or iteration",
+    "update_learning_rate": "update learning rates for all optimizers using their associated schedulers at the end of each epoch",
+    "set_requires_grad": "set requires_grad to True or False for all parameters in a list of networks"
+  },
+  "facebookresearch_pytouch/pytouch/models/pix2pix/thirdparty/pix2pix/models/networks.py": {
+    "define_G_generator": "create a ResNet or U-Net generator network for image-to-image translation using define_G",
+    "define_D_discriminator": "create a PatchGAN or PixelGAN discriminator network for adversarial training using define_D",
+    "init_net_weights": "initialize a PyTorch network's weights using normal, xavier, kaiming, or orthogonal methods",
+    "get_scheduler_lr": "create a learning rate scheduler with linear, step, plateau, or cosine decay policy",
+    "GANLoss_compute": "compute GAN adversarial loss using vanilla, LSGAN, or WGAN-GP objectives"
+  },
+  "facebookresearch_pytouch/pytouch/models/pix2pix/thirdparty/pix2pix/models/pix2pix_model.py": {
+    "initialize_pix2pix_model": "initialize a Pix2PixModel with opt flags to set up generator, discriminator, and optimizers",
+    "modify_commandline_options": "modify the argparse parser to set pix2pix defaults like unet_256 generator and vanilla GAN mode",
+    "set_input": "set input data from the dataloader dict into real_A and real_B tensors on the device",
+    "forward_pass": "run a forward pass through the generator netG to produce fake_B from real_A",
+    "optimize_parameters": "optimize both discriminator and generator parameters in one training step with forward and backward passes"
+  },
+  "facebookresearch_pytouch/pytouch/models/pix2pix/thirdparty/pix2pix/util/util.py": {
+    "convert_tensor_to_numpy_image": "convert a PyTorch tensor into a numpy image array with optional grayscale to RGB expansion",
+    "diagnose_network_gradients": "diagnose a PyTorch network by calculating and printing the mean of average absolute gradients",
+    "save_numpy_image_to_disk": "save a numpy image array to disk as a PIL image with optional aspect ratio resizing",
+    "print_numpy_array_stats": "print the mean, min, max, median, and standard deviation statistics of a numpy array",
+    "create_directories": "create one or more empty directories if they don't already exist"
+  },
+  "facebookresearch_pytouch/pytouch/sensors/base.py": {
+    "init_sensorbase": "create a SensorBase instance with a sensor name, data source type, and optional data path",
+    "sensorbase_name": "call the name method on a SensorBase instance to retrieve the sensor's name string",
+    "sensorbase_repr": "get the string representation of a SensorBase instance showing sensor name, data source, and data path",
+    "sensorbase_validate_dataset": "instantiate a SensorBase with DATASET data source to validate that a data path is required",
+    "sensorbase_validate_video": "instantiate a SensorBase with VIDEO data source to validate that a data path is required"
+  },
+  "facebookresearch_pytouch/pytouch/sensors/digit.py": {
+    "create_DigitSensor": "create a DigitSensor instance with a data source and optional custom transform pipeline",
+    "build_DigitSensor_transform": "build a composed torchvision transform pipeline that resizes to 64x64, converts to tensor, and normalizes",
+    "review_DigitSensorDefaults": "review the DigitSensorDefaults class with SCALES, MEANS, and STDS constants for image normalization",
+    "test_DigitSensor_zoo_name": "test the DigitSensor zoo_name static method that returns the string DigitSensor",
+    "refactor_DigitSensor_init": "refactor the DigitSensor constructor to accept a custom transform or use the default composed pipeline"
+  },
+  "facebookresearch_pytouch/pytouch/sensors/gelsight.py": {
+    "create_gelsight_sensor": "create a GelsightSensor instance with a data source and optional data path",
+    "build_gelsight_transform": "build a torchvision transform pipeline that resizes to 64x64 and normalizes using ImageNet stats",
+    "review_gelsight_defaults": "review the GelsightSensorDefaults class for default scale, mean, and standard deviation values",
+    "test_gelsight_zoo_name": "test the GelsightSensor zoo_name static method returns the string GelSightSensor",
+    "refactor_gelsight_transform": "refactor the GelsightSensor transform method to customize resize scale or normalization parameters"
+  },
+  "facebookresearch_pytouch/pytouch/sensors/omnitact.py": {
+    "create_omnitact_sensor": "create an OmnitactSensor instance with a data source and optional data path",
+    "build_omnitact_transform": "build a torchvision transform pipeline that resizes to 64x64, converts to tensor, and normalizes",
+    "review_omnitact_sensor_defaults": "review the OmnitactSensorDefaults class constants for image scale, mean, and standard deviation values",
+    "test_omnitact_zoo_name": "test the OmnitactSensor zoo_name static method to verify it returns the correct sensor identifier",
+    "refactor_omnitact_transform": "refactor the OmnitactSensor transform method to customize resize scales or normalization parameters"
+  },
+  "facebookresearch_pytouch/pytouch/tasks/slip_detect.py": {
+    "build_slip_detect_transform_pipeline": "build a spatial and temporal transform pipeline for slip detection video data using SlipDetect.transform",
+    "create_slip_detect_spatial_transforms": "create spatial transforms with scale, center crop, and normalization for slip detection training data",
+    "test_slipdetect_transform_static_method": "test the SlipDetect.transform static method to verify it returns spatial, temporal, and target transforms",
+    "review_slipdetect_class": "review the SlipDetect class and its transform method for video data augmentation and normalization",
+    "summarize_slipdetect_transform": "summarize the SlipDetect.transform method that composes torchvision transforms for slip detection tasks"
+  },
+  "facebookresearch_pytouch/pytouch/tasks/surface_3d.py": {
+    "build_surface3d_model": "build a Surface3D model instance with sensor params and optional model path for 3D reconstruction",
+    "run_point_cloud_3d": "run the point_cloud_3d method to reconstruct a 3D point cloud from a color image",
+    "test_normals_prediction": "test the normals method to predict surface normals from a color image input",
+    "review_normal_to_grad_depth": "review the normal_to_grad_depth method that converts a normal map to gradient depth values",
+    "summarize_depth_to_points3d": "summarize the depth_to_points3d method that back-projects a depth map to 3D points using camera matrices"
+  },
+  "facebookresearch_pytouch/pytouch/tasks/touch_detect.py": {
+    "create_touchdetect_model": "create a TouchDetect model from a sensor and zoo model to classify touch on frames",
+    "run_is_touching": "run the is_touching method on a frame to get a touch prediction and certainty score",
+    "process_frame": "process a raw frame through the model transform pipeline and return a batched tensor",
+    "build_transform_pipeline": "build a Compose transform pipeline with resize, normalization, and optional augmentation for training",
+    "load_custom_model": "load a custom TouchDetect model from a file path instead of the PyTouchZoo registry"
+  },
+  "facebookresearch_pytouch/pytouch/tasks/surface3d/geometry.py": {
+    "preproc_normal": "preprocess a normal map tensor by centering, normalizing, and setting background normals to face the camera",
+    "normal_to_grad_depth": "convert a surface normal map into depth gradient tensors along x and y axes in meters",
+    "integrate_grad_depth": "integrate depth gradient tensors into a reconstructed depth map using Poisson reconstruction",
+    "depth_to_pts3d": "back-project a 2D depth map into 3D world coordinates using projection and view matrices",
+    "remove_outlier_pts": "remove statistical outliers from a 3D point cloud using Open3D with configurable neighbor count and std ratio"
+  },
+  "facebookresearch_pytouch/pytouch/utils/common_utils.py": {
+    "flip_tensor_along_axis": "flip a PyTorch tensor along axis 0 to reverse its order",
+    "min_clip_tensor": "clip a PyTorch tensor values to a minimum threshold using torch.max",
+    "max_clip_tensor": "clip a PyTorch tensor values to a maximum threshold using torch.min",
+    "normalize_tensor_min_max": "normalize a PyTorch tensor to an arbitrary range using min-max normalization",
+    "convert_pandas_col_to_numpy": "convert a pandas DataFrame column of string arrays into a stacked numpy array"
+  },
+  "facebookresearch_pytouch/pytouch/utils/data_utils.py": {
+    "interpolate_img": "interpolate a PyTorch tensor image to new row and column dimensions using bilinear interpolation",
+    "test_interpolate_img": "test the interpolate_img function by resizing a sample tensor to specified rows and columns",
+    "refactor_interpolate_img": "refactor interpolate_img to support batched tensor inputs with shape B x C x H x W",
+    "review_interpolate_img": "review the interpolate_img function for correct permute operations during row and column interpolation",
+    "summarize_interpolate_img": "summarize the interpolate_img function that resizes a C x H x W tensor to target rows and columns"
+  },
+  "facebookresearch_pytouch/pytouch/utils/model_utils.py": {
+    "set_seed": "set a random seed for python, numpy, and torch reproducibility",
+    "print_dataset_info": "print the size and number of classes of a PyTorch dataset",
+    "freeze_weights": "freeze all model weights except those in the final fully connected layer",
+    "convert_state_dict_if_from_pl": "extract and clean a state dict from a PyTorch-Lightning checkpoint file",
+    "choose_last_fc_mode": "choose whether to use the last fully connected layer for score or feature mode"
+  },
+  "facebookresearch_pytouch/pytouch/utils/train_utils.py": {
+    "choose_optimizer_Adam": "choose the Adam optimizer class by name for PyTorch training",
+    "choose_optimizer_SGD": "choose the SGD optimizer class by name for PyTorch training",
+    "test_choose_optimizer": "test the choose_optimizer function with Adam and SGD optimizer names",
+    "refactor_choose_optimizer": "refactor choose_optimizer to support additional PyTorch optimizers like Adagrad or RMSprop",
+    "review_choose_optimizer": "review the choose_optimizer function and its optimizer selection logic"
+  },
+  "facebookresearch_pytouch/pytouch/utils/vis_utils.py": {
+    "convert_flow_to_color": "convert an optical flow UV tensor into a color-coded HSV image using OpenCV",
+    "draw_flow_arrows": "overlay green arrows on an image to visualize optical flow direction and magnitude",
+    "convert_depth_to_color": "normalize a depth map and convert it to a grayscale BGR image for display",
+    "draw_rotated_rectangle": "draw a rotated rectangle patch on the current matplotlib axes at a given center and angle",
+    "visualize_images_with_colormap": "display a list of images on matplotlib subplots with optional titles and colorbars"
+  },
+  "facebookresearch_pytouch/pytouch/utils/tests/common_utils_test.py": {
+    "test_flip": "test the flip function that reverses tensor batch order along the first dimension",
+    "test_min_clip": "test the min_clip function that gets maximum values along rows or columns of a tensor",
+    "test_max_clip": "test the max_clip function that gets minimum values along rows or columns of a tensor",
+    "test_normalize": "test the normalize function that scales tensor values to a specified range like 0 to 1 or 0 to 255",
+    "test_pandas_col_to_numpy": "test the pandas_col_to_numpy function that converts a pandas DataFrame column to a numpy array"
+  },
+  "facebookresearch_pytouch/pytouch/utils/tests/data_utils_test.py": {
+    "test_interpolate_img_same_dimension": "test interpolate_img with a 3x3 tensor keeping the same dimensions",
+    "test_interpolate_img_upscale": "test interpolate_img to upscale a 3x3 tensor to a 6x6 tensor",
+    "test_interpolate_img_downscale": "test interpolate_img to downscale a 6x6 tensor to a 3x3 tensor",
+    "test_interpolate_img_empty": "test interpolate_img raises RuntimeError when given an empty tensor",
+    "run_data_utils_test": "run the DataUtilsTest unittest suite to validate all interpolate_img test cases"
+  },
+  "facebookresearch_pytouch/pytouch/utils/tests/train_utils_test.py": {
+    "test_choose_optimizer_adam": "test that choose_optimizer returns optim.Adam when given the string Adam",
+    "test_choose_optimizer_sgd": "test that choose_optimizer returns optim.SGD when given the string SGD",
+    "test_choose_optimizer_invalid": "test that choose_optimizer raises NotImplementedError for an unrecognized optimizer string",
+    "run_train_utils_test": "run the unittest suite for train_utils choose_optimizer function",
+    "review_trainutils_test": "review the TrainUtilsTest class and its optimizer selection test cases"
+  },
+  "facebookresearch_pytouch/sensors/setup.py": {
+    "build_sdist": "build a source distribution for the pytouch_sensors package using python setup.py sdist",
+    "install_pytouch_sensors": "install the pytouch_sensors package locally using python setup.py install",
+    "build_bdist_wheel": "build a wheel distribution for the pytouch_sensors package using python setup.py bdist_wheel",
+    "review_setup_config": "review the pytouch_sensors setup.py configuration including dependencies and classifiers",
+    "summarize_setup": "summarize the pytouch_sensors setup.py package metadata and install requirements"
+  },
+  "facebookresearch_pytouch/sensors/pytouch_sensors/digit/digit.py": {
+    "find_digit_devices": "find all connected DIGIT force sensor devices using pyudev video4linux subsystem",
+    "create_digit_instance": "create a Digit object with a given serial number to control a DIGIT force sensor",
+    "connect_digit_stream": "connect to a DIGIT device and configure stream resolution and FPS settings",
+    "set_digit_led_intensity": "set the RGB LED intensity on a DIGIT device between 0 and 15 per channel",
+    "get_digit_frame": "grab a single image frame from the DIGIT force sensor and optionally transpose it"
+  },
+  "facebookresearch_pytouch/sensors/pytouch_sensors/gelsight/gelsight_mini.py": {
+    "find_gelsight_mini_devices": "find all connected Gelsight Mini devices using the find function with optional serial filter",
+    "connect_gelsight_mini": "create a GelsightMini instance and connect to the device using its serial number",
+    "get_frame_from_gelsight": "get a single image frame from the Gelsight Mini sensor with optional transpose",
+    "save_frame_to_disk": "save a captured image frame from the Gelsight Mini sensor to a file path",
+    "show_live_view": "show a live OpenCV window view of the Gelsight Mini sensor with optional frame difference"
+  },
+  "facebookresearch_pytouch/train/datamodules/slip_detect.py": {
+    "create_slip_detect_datamodule": "create a SlipDetectDataModule instance with a config object for slip detection video data",
+    "setup_slip_datasets": "setup train and validation SlipVideo or SlipVideoClip datasets using the data module setup method",
+    "build_train_dataloader": "build a shuffled PyTorch DataLoader for the slip detection training dataset with configurable batch size",
+    "build_val_dataloader": "build an unshuffled PyTorch DataLoader for the slip detection validation dataset with configurable batch size",
+    "review_slip_detect_datamodule": "review the SlipDetectDataModule class and its LightningDataModule integration for video slip detection"
+  },
+  "facebookresearch_pytouch/train/datamodules/touch_detect.py": {
+    "create_TouchDetectDataModule": "create a TouchDetectDataModule instance with a config object for touch detection data loading",
+    "setup_TouchDetectDataModule": "setup the TouchDetectDataModule to split DigitFolder data into train and validation subsets",
+    "run_train_dataloader": "run the train_dataloader method to get a shuffled DataLoader for touch detection training",
+    "run_val_dataloader": "run the val_dataloader method to get an unshuffled DataLoader for touch detection validation",
+    "review_TouchDetectDataModule": "review the TouchDetectDataModule class and its train-validation split logic using DigitFolder datasets"
+  },
+  "facebookresearch_pytouch/train/models/slip_detect.py": {
+    "build_slip_detection_model": "build a SlipDetectionModel with a config that sets model.n_classes and optimizer.lr",
+    "run_slip_detection_forward": "run the SlipDetectionModel forward pass on a frame tensor to get slip predictions",
+    "test_training_step": "test the SlipDetectionModel training_step method with a batch of images, targets, and sensor names",
+    "test_validation_step": "test the SlipDetectionModel validation_step method to compute val_loss and val_acc metrics",
+    "review_configure_optimizers": "review the SlipDetectionModel configure_optimizers method that returns an Adam optimizer with the configured learning rate"
+  },
+  "facebookresearch_pytouch/train/models/slip_resnet.py": {
+    "build_resnet50_video_model": "build a ResNet-50 model using resnet50() to process 5D video tensors with temporal averaging",
+    "create_resnet18_model": "create a ResNet-18 model using resnet18() with BasicBlock for lightweight video feature extraction",
+    "review_ResNet_forward": "review the ResNet class forward method that reshapes 5D video input and averages over the time dimension",
+    "test_Bottleneck_block": "test the Bottleneck class forward pass with 1x1-3x3-1x1 conv sequence and residual skip connection",
+    "summarize_resnext50_32x4d": "summarize the resnext50_32x4d factory function that builds a grouped Bottleneck ResNet with 32 groups of width 4"
+  },
+  "facebookresearch_pytouch/train/models/touch_detect.py": {
+    "build_touch_detection_model": "build a ResNet18-based touch detection model with frozen base layers and a custom classification head",
+    "run_touch_detection_forward": "run inference on a frame tensor through the touch detection model to get class predictions",
+    "test_training_step": "test the training step that computes cross-entropy loss on image-target batches and logs train_loss",
+    "test_validation_step": "test the validation step that computes loss and accuracy metrics on image-target batches",
+    "review_configure_optimizers": "review the optimizer configuration that sets up MADGRAD with the specified learning rate"
+  }
+}

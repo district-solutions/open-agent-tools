@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/jacobianregularizer
+- repo_uri: https://github.com/facebookresearch/jacobian_regularizer
+
+## File: facebookresearch_jacobianregularizer/jacobian/jacobian.py
+
+Prompts
+
+```
+['create a JacobianReg loss criterion to compute the trace of the square of the Jacobian for robust learning', 'run the JacobianReg forward pass with input x and output y to compute (1/2) tr |dy/dx|^2', 'build a JacobianReg module with n=-1 for exact orthonormal projection instead of random approximation', 'review the _jacobian_vector_product method that computes dy/dx dot v using torch.autograd.grad', 'test the _random_vector method that creates a random vector of dimension C with norm C^(1/2)']
+```
+
+Usage
+
+```
+{'create_jacobianreg_loss': 'create a JacobianReg loss criterion to compute the trace of the square of the Jacobian for robust learning', 'run_jacobianreg_forward': 'run the JacobianReg forward pass with input x and output y to compute (1/2) tr |dy/dx|^2', 'build_jacobianreg_exact': 'build a JacobianReg module with n=-1 for exact orthonormal projection instead of random approximation', 'review_jacobian_vector_product': 'review the _jacobian_vector_product method that computes dy/dx dot v using torch.autograd.grad', 'test_random_vector_generation': 'test the _random_vector method that creates a random vector of dimension C with norm C^(1/2)'}
+```
+

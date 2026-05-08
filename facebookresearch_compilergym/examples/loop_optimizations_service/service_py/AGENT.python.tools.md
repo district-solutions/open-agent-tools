@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/compilergym
+- repo_uri: https://github.com/facebookresearch/compilergym
+
+## File: facebookresearch_compilergym/examples/loop_optimizations_service/service_py/loops_opt_service.py
+
+Prompts
+
+```
+['run the CompilerGym loop optimization service as a gRPC server for RL agents', 'create a LoopsOptCompilationSession instance to apply loop unroll or vectorize actions to a benchmark', 'apply a loop unroll or vectorize action to LLVM IR via the apply_action method', 'get an observation like IR, Inst2vec, Autophase, Programl, runtime, or size from a session', 'review the LoopsOptCompilationSession class and its loop unroll and vectorize action spaces']
+```
+
+Usage
+
+```
+{'run_compiler_gym_loop_opt_service': 'run the CompilerGym loop optimization service as a gRPC server for RL agents', 'create_loops_opt_compilation_session': 'create a LoopsOptCompilationSession instance to apply loop unroll or vectorize actions to a benchmark', 'apply_loop_optimization_action': 'apply a loop unroll or vectorize action to LLVM IR via the apply_action method', 'get_loop_opt_observation': 'get an observation like IR, Inst2vec, Autophase, Programl, runtime, or size from a session', 'review_loops_opt_service': 'review the LoopsOptCompilationSession class and its loop unroll and vectorize action spaces'}
+```
+

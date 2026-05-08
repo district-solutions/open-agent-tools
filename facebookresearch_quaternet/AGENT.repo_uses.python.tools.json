@@ -1,0 +1,79 @@
+{
+  "facebookresearch_quaternet/common/mocap_dataset.py": {
+    "create_MocapDataset": "create a MocapDataset instance by loading motion capture data from a numpy file path with a skeleton and fps",
+    "downsample_MocapDataset": "downsample a MocapDataset by an integer factor to reduce frame rate while keeping all stride variants",
+    "mirror_MocapDataset": "mirror all sequences in a MocapDataset for data augmentation by flipping left and right joints",
+    "compute_euler_angles_MocapDataset": "compute euler angles for all rotations in a MocapDataset given a rotation axis order string",
+    "compute_positions_MocapDataset": "compute world and local joint positions for all sequences in a MocapDataset using forward kinematics"
+  },
+  "facebookresearch_quaternet/common/pose_network.py": {
+    "train_PoseNetwork": "train a PoseNetwork model with teacher forcing on motion capture sequences for a specified number of epochs",
+    "save_weights_PoseNetwork": "save the PoseNetwork model weights to a file using torch.save for later inference",
+    "load_weights_PoseNetwork": "load PoseNetwork model weights from a saved file to resume training or run inference",
+    "cuda_PoseNetwork": "move the PoseNetwork model and tensors to CUDA GPU for accelerated training and inference",
+    "eval_PoseNetwork": "set the PoseNetwork model to evaluation mode disabling dropout and batch normalization updates"
+  },
+  "facebookresearch_quaternet/common/quaternet.py": {
+    "create_quaternet_model": "create a QuaterNet model with a given number of skeleton joints for 3D pose estimation",
+    "run_quaternet_forward_pass": "run a forward pass of QuaterNet on input tensors to predict joint rotations as quaternions",
+    "build_quaternet_with_controls": "build a QuaterNet model with extra control features for conditioned motion generation",
+    "test_quaternet_velocity_mode": "test QuaterNet in velocity mode to model relative rotations instead of absolute poses",
+    "review_quaternet_forward_return_all": "review the QuaterNet forward method return_all option to output all frames instead of the last"
+  },
+  "facebookresearch_quaternet/common/quaternion.py": {
+    "multiply_quaternions": "multiply two quaternion tensors using qmul to compute the product of rotations",
+    "rotate_vectors_with_quaternion": "rotate 3D vectors about a rotation described by quaternion q using qrot",
+    "convert_quaternion_to_euler": "convert quaternion tensor to Euler angles in a specified rotation order using qeuler",
+    "fix_quaternion_continuity": "enforce quaternion continuity across time dimension by selecting minimal distance representation using qfix",
+    "convert_expmap_to_quaternion": "convert axis-angle exponential map rotations to quaternions using expmap_to_quaternion"
+  },
+  "facebookresearch_quaternet/common/skeleton.py": {
+    "create_skeleton": "create a Skeleton instance with joint offsets and parent indices for a kinematic chain",
+    "run_forward_kinematics": "run forward kinematics on a Skeleton using quaternion rotations and root positions to compute world joint positions",
+    "remove_joints_from_skeleton": "remove specified joints from a Skeleton and propagate their rotations along the kinematic chain in a dataset",
+    "compute_skeleton_metadata": "compute skeleton metadata including has_children and children lists from the parent array",
+    "transfer_skeleton_to_cuda": "transfer a Skeleton offsets tensor to CUDA for GPU-accelerated forward kinematics computation"
+  },
+  "facebookresearch_quaternet/common/spline.py": {
+    "create_spline_from_points": "create a Spline object from a numpy array of 2D or 3D points with optional closed loop",
+    "interpolate_spline_at_distance": "interpolate the Spline at a given arc length distance to get coordinates along the curve",
+    "add_custom_track_to_spline": "add a custom data track to the Spline with linear or circular interpolation mode",
+    "reparameterize_spline_uniformly": "reparameterize the Spline to have equal-length segments with configurable smoothing factor",
+    "compute_angle_difference": "compute the signed angle difference between two sets of cosine and sine angle pairs"
+  },
+  "facebookresearch_quaternet/common/visualization.py": {
+    "render_animation_interactive": "render a 3D skeleton pose animation interactively using matplotlib with pose data and a skeleton object",
+    "render_animation_html": "render a 3D skeleton pose animation as an HTML5 video string for notebook display",
+    "render_animation_mp4": "render and export a 3D skeleton pose animation as an h264 MP4 video file using ffmpeg",
+    "render_animation_gif": "render and export a 3D skeleton pose animation as a GIF file using imagemagick",
+    "review_render_animation": "review the render_animation function that visualizes 3D skeleton poses with trajectory spline and camera tracking"
+  },
+  "facebookresearch_quaternet/long_term/locomotion_utils.py": {
+    "build_phase_track": "build a phase track signal from world positions by detecting footstep contacts and walking cycle state",
+    "extract_translations_controls": "extract translation and control features including longitudinal speed, height, and walking phase from motion data",
+    "build_extra_features": "build extra features for all subjects and actions in a motion capture dataset",
+    "phase_to_features": "extract amplitude, absolute phase, and angular velocity from a phase signal tensor",
+    "compute_splines": "compute equal-segment-length splines with interpolated tracks for each animation in a motion capture dataset"
+  },
+  "facebookresearch_quaternet/long_term/pace_network.py": {
+    "train_pacenetwork": "train a PaceNetwork model on motion capture spline dataset sequences with configurable batch size and epochs",
+    "predict_pacenetwork": "predict amplitude frequency and direction tracks on a spline using a trained PaceNetwork model",
+    "extract_features_spline": "extract curvature and speed input features or amplitude frequency direction output features from a spline",
+    "save_load_pacenetwork_weights": "save or load PaceNetwork model weights to and from a file using torch state dict",
+    "compute_angle_operations": "compute versor-based angle difference or angle sum between two 2D direction vectors using static methods"
+  },
+  "facebookresearch_quaternet/long_term/pose_network_long_term.py": {
+    "generate_motion_along_spline": "generate a locomotion sequence by following a spline path with an action prefix using PoseNetworkLongTerm",
+    "rotate_batch_augmentation": "apply random rotation data augmentation to a batch of pose rotation and position buffers",
+    "compute_positional_loss": "compute positional loss with forward kinematics comparing predicted quaternions to expected 3D positions",
+    "prepare_training_batch": "prepare and yield augmented training batches of rotations and positions from a motion capture dataset",
+    "review_PoseNetworkLongTerm_class": "review the PoseNetworkLongTerm class that extends PoseNetwork for long-term human motion prediction"
+  },
+  "facebookresearch_quaternet/short_term/pose_network_short_term.py": {
+    "build_PoseNetworkShortTerm": "build a PoseNetworkShortTerm model with a specified prefix length for short-term human pose prediction",
+    "create_prepare_next_batch": "create batches of quaternion and Euler angle data from motion capture sequences for training",
+    "test_loss_impl": "test the Euler angle L1 loss computation with 2pi wrap-around between predicted quaternions and expected angles",
+    "review_predict": "review the predict method that generates future pose frames from a given prefix sequence",
+    "summarize_PoseNetworkShortTerm": "summarize the PoseNetworkShortTerm class that extends PoseNetwork for short-term 3D human pose forecasting"
+  }
+}

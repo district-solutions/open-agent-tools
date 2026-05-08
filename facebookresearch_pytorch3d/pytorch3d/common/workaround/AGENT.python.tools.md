@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/pytorch3d
+- repo_uri: https://github.com/facebookresearch/pytorch3d.git
+
+## File: facebookresearch_pytorch3d/pytorch3d/common/workaround/symeig3x3.py
+
+Prompts
+
+```
+['compute eigenvalues and eigenvectors for a batch of symmetric 3x3 matrices using symeig3x3', 'compute only eigenvalues for symmetric 3x3 matrices by passing eigenvectors=False to symeig3x3', 'construct an orthonormal set of eigenvectors from pre-computed eigenvalues using _construct_eigenvecs_set', 'create 3 rotation matrices around each coordinate axis by pi/2 using _create_rotation_matrices', 'compute unit-length U and V vectors forming a right-handed orthonormal set with a given eigenvector using _get_uv']
+```
+
+Usage
+
+```
+{'compute_eigenvalues_and_eigenvectors_for_symmetric_3x3_matrices': 'compute eigenvalues and eigenvectors for a batch of symmetric 3x3 matrices using symeig3x3', 'compute_eigenvalues_only_for_symmetric_3x3_matrices': 'compute only eigenvalues for symmetric 3x3 matrices by passing eigenvectors=False to symeig3x3', 'construct_orthonormal_eigenvector_set_from_eigenvalues': 'construct an orthonormal set of eigenvectors from pre-computed eigenvalues using _construct_eigenvecs_set', 'create_rotation_matrices_for_3d_coordinate_axes': 'create 3 rotation matrices around each coordinate axis by pi/2 using _create_rotation_matrices', 'compute_unit_vectors_for_orthonormal_basis': 'compute unit-length U and V vectors forming a right-handed orthonormal set with a given eigenvector using _get_uv'}
+```
+

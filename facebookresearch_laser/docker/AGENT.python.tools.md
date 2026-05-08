@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/laser
+- repo_uri: https://github.com/facebookresearch/laser
+
+## File: facebookresearch_laser/docker/app.py
+
+Prompts
+
+```
+['run the flask LASER encoder server on port 80 with debug mode enabled', 'send a GET request to /vectorize with query params q and lang to get text embeddings', 'use the LaserEncoderPipeline to encode sentences into multilingual embeddings for a given language', 'cache LASER3 encoders by language code to avoid reloading models for repeated requests', 'check if a language is supported by LASER2 using the LASER2_LANGUAGE list before encoding']
+```
+
+Usage
+
+```
+{'run_flask_laser_server': 'run the flask LASER encoder server on port 80 with debug mode enabled', 'vectorize_text_to_embedding': 'send a GET request to /vectorize with query params q and lang to get text embeddings', 'encode_multilingual_sentences': 'use the LaserEncoderPipeline to encode sentences into multilingual embeddings for a given language', 'cache_laser3_encoders': 'cache LASER3 encoders by language code to avoid reloading models for repeated requests', 'check_laser2_language_support': 'check if a language is supported by LASER2 using the LASER2_LANGUAGE list before encoding'}
+```
+

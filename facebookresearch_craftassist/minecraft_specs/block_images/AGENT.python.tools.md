@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/craftassist
+- repo_uri: https://github.com/facebookresearch/craftassist
+
+## File: facebookresearch_craftassist/minecraft_specs/block_images/read_images.py
+
+Prompts
+
+```
+['run the script to parse HTML and CSS chunks and extract 32x32 Minecraft block images from a sprite sheet', 'run the script to load block property JSON data and build name-to-property and property-to-name mappings', 'run the script to load mob property JSON data and build name-to-property and property-to-name mappings', 'summarize the get_colors function which analyzes a 32x32 block image and returns a dictionary of detected color names to pixel counts', 'review the CMAP dictionary that maps detailed color names like fuchsia and maroon to simplified color categories like purple and red']
+```
+
+Usage
+
+```
+{'run_extract_block_images': 'run the script to parse HTML and CSS chunks and extract 32x32 Minecraft block images from a sprite sheet', 'run_extract_block_properties': 'run the script to load block property JSON data and build name-to-property and property-to-name mappings', 'run_extract_mob_properties': 'run the script to load mob property JSON data and build name-to-property and property-to-name mappings', 'summarize_get_colors': 'summarize the get_colors function which analyzes a 32x32 block image and returns a dictionary of detected color names to pixel counts', 'review_CMAP': 'review the CMAP dictionary that maps detailed color names like fuchsia and maroon to simplified color categories like purple and red'}
+```
+

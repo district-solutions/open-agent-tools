@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mephisto
+- repo_uri: https://github.com/facebookresearch/mephisto
+
+## File: facebookresearch_mephisto/mephisto/abstractions/providers/prolific/api/data_models/base_model.py
+
+Prompts
+
+```
+['create a BaseModel instance by passing keyword arguments that become instance attributes', 'validate a BaseModel instance against its JSON Schema using the validate method', 'convert a BaseModel instance to a plain dictionary using the to_dict method', 'subclass BaseModel and override the schema and required_schema_fields class attributes for custom validation', 'get the string or repr representation of a BaseModel instance showing its class name and id']
+```
+
+Usage
+
+```
+{'init_basemodel_with_data': 'create a BaseModel instance by passing keyword arguments that become instance attributes', 'validate_basemodel_against_schema': 'validate a BaseModel instance against its JSON Schema using the validate method', 'to_dict_basemodel': 'convert a BaseModel instance to a plain dictionary using the to_dict method', 'subclass_basemodel_with_custom_schema': 'subclass BaseModel and override the schema and required_schema_fields class attributes for custom validation', 'str_repr_basemodel': 'get the string or repr representation of a BaseModel instance showing its class name and id'}
+```
+

@@ -1,0 +1,33 @@
+# Agent Python Tools
+
+- repo: facebookresearch/home-robot
+- repo_uri: https://github.com/facebookresearch/home-robot
+
+## File: facebookresearch_home-robot/projects/habitat_objectnav/files_to_adapt/eval_env_wrapper.py
+
+Prompts
+
+```
+['build a python module to create an EvalEnvWrapper for Habitat object navigation evaluation with a config', 'create a function to reset the evaluation environment to a specific episode ID and preprocess observations', 'run the plan_and_step method to visualize, plan navigation actions, and step the environment forward', 'refactor the _preprocess_obs method to extract semantic frames, pose deltas, and goal categories from observations', 'review the _reset_to_episode method that resets the Habitat environment to a given episode and reconfigures the task', 'run the vectorized evaluator on a train or val split with a specified number of episodes per environment', 'run the vectorized evaluator on a specific list of episode keys from a given dataset split', 'run the video recording process to compile snapshot images into AVI videos for each evaluated episode', 'run the eval_vectorized script from CLI with a config path and optional command-line overrides for GPU IDs and episode count', 'review the VectorizedEvaluator class and its eval, eval_on_specific_episodes, and record_videos methods']
+```
+
+Usage
+
+```
+{'build_eval_env_wrapper': 'build a python module to create an EvalEnvWrapper for Habitat object navigation evaluation with a config', 'create_reset_episode': 'create a function to reset the evaluation environment to a specific episode ID and preprocess observations', 'run_plan_and_step': 'run the plan_and_step method to visualize, plan navigation actions, and step the environment forward', 'refactor_obs_preprocessing': 'refactor the _preprocess_obs method to extract semantic frames, pose deltas, and goal categories from observations', 'review_reset_to_episode': 'review the _reset_to_episode method that resets the Habitat environment to a given episode and reconfigures the task'}
+```
+
+## File: facebookresearch_home-robot/projects/habitat_objectnav/files_to_adapt/eval_vectorized.py
+
+Prompts
+
+```
+['build a python module to create an EvalEnvWrapper for Habitat object navigation evaluation with a config', 'create a function to reset the evaluation environment to a specific episode ID and preprocess observations', 'run the plan_and_step method to visualize, plan navigation actions, and step the environment forward', 'refactor the _preprocess_obs method to extract semantic frames, pose deltas, and goal categories from observations', 'review the _reset_to_episode method that resets the Habitat environment to a given episode and reconfigures the task', 'run the vectorized evaluator on a train or val split with a specified number of episodes per environment', 'run the vectorized evaluator on a specific list of episode keys from a given dataset split', 'run the video recording process to compile snapshot images into AVI videos for each evaluated episode', 'run the eval_vectorized script from CLI with a config path and optional command-line overrides for GPU IDs and episode count', 'review the VectorizedEvaluator class and its eval, eval_on_specific_episodes, and record_videos methods']
+```
+
+Usage
+
+```
+{'run_vectorized_eval': 'run the vectorized evaluator on a train or val split with a specified number of episodes per environment', 'run_eval_specific_episodes': 'run the vectorized evaluator on a specific list of episode keys from a given dataset split', 'run_record_videos': 'run the video recording process to compile snapshot images into AVI videos for each evaluated episode', 'run_eval_vectorized_cli': 'run the eval_vectorized script from CLI with a config path and optional command-line overrides for GPU IDs and episode count', 'review_VectorizedEvaluator': 'review the VectorizedEvaluator class and its eval, eval_on_specific_episodes, and record_videos methods'}
+```
+

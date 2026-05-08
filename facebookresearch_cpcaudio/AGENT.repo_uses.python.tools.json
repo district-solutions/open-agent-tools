@@ -1,0 +1,142 @@
+{
+  "facebookresearch_cpcaudio/cpc/cpc_default_config.py": {
+    "get_default_cpc_config": "get the default CPC model configuration with all architecture and training hyperparameters set to their defaults",
+    "set_default_cpc_config": "set default CPC configuration arguments on an existing argparse ArgumentParser instance",
+    "build_cpc_parser": "build an argparse parser with CPC architecture configuration arguments including encoder, learning rate, and normalization options",
+    "review_cpc_config": "review the CPC default configuration to understand encoder dimensions, learning rate, and prediction network settings",
+    "summarize_cpc_hyperparameters": "summarize the CPC model hyperparameters including hidden dimensions, number of epochs, and sampling type defaults"
+  },
+  "facebookresearch_cpcaudio/cpc/dataset.py": {
+    "create_AudioBatchData_dataset": "create an AudioBatchData dataset from audio sequences with sliding window size and phone labels",
+    "build_AudioLoader_dataloader": "build an AudioLoader dataloader with batch sampling strategies like samespeaker or sequential",
+    "run_findAllSeqs": "run findAllSeqs to discover all audio sequences in a directory and extract speaker labels",
+    "parse_parseSeqLabels": "parse a phone labels text file into a dictionary mapping sequence names to phoneme label lists",
+    "filter_filterSeqs": "filter a list of sequence tuples to only include sequences listed in a text file"
+  },
+  "facebookresearch_cpcaudio/cpc/feature_loader.py": {
+    "build_feature_module": "build a FeatureModule to extract CPC features from audio batches with optional collapsing",
+    "build_model_phone_combined": "build a ModelPhoneCombined to concatenate CPC feature extraction with phone prediction",
+    "load_model_from_checkpoints": "load a CPCModel from checkpoint files with optional state dict loading",
+    "build_features_from_audio": "build features from an audio file using a FeatureModule with chunking and normalization",
+    "load_supervised_criterion": "load a supervised phone criterion from a checkpoint path with CTC or standard mode"
+  },
+  "facebookresearch_cpcaudio/cpc/model.py": {
+    "build_CPCEncoder": "build a CPCEncoder convolutional encoder with configurable hidden size and normalization mode for audio feature extraction",
+    "create_CPCModel": "create a CPCModel by combining an encoder like CPCEncoder with an autoregressive module like CPCAR for contrastive prediction",
+    "build_CPCAR": "build a CPCAR autoregressive module using GRU, LSTM, or RNN with optional hidden state keeping and reverse sequence mode",
+    "create_BiDIRAR": "create a BiDIRAR bidirectional GRU module with separate forward and backward networks for BERT-style training",
+    "build_ConcatenatedModel": "build a ConcatenatedModel that concatenates features and encoded outputs from multiple CPCModel instances"
+  },
+  "facebookresearch_cpcaudio/cpc/train.py": {
+    "run_CPC_training": "run CPC audio model training with a dataset path, GPU count, and number of epochs via the main entry point",
+    "getCriterion_unsupervised_or_supervised": "create a CPC training criterion for unsupervised contrastive prediction or supervised speaker or phone classification tasks",
+    "trainStep_epoch_training": "run a single epoch of CPC model training with forward pass, loss computation, backprop, and optimizer step",
+    "valStep_validation": "run a validation step on the CPC model to compute loss and accuracy metrics without gradient computation",
+    "parseArgs_training_config": "parse command line arguments for CPC training including dataset paths, GPU config, checkpoint paths, and learning rate"
+  },
+  "facebookresearch_cpcaudio/cpc/transformers.py": {
+    "build_transformer_ar": "build an autoregressive transformer with nLayers, dimEncoded, and sizeSeq using buildTransformerAR",
+    "create_scaled_dot_product_attention": "create a ScaledDotProductAttention module with optional relative positional encoding for sequence data",
+    "create_multi_head_attention": "create a MultiHeadAttention module with nheads attention heads and optional absolute positional encoding",
+    "create_transformer_layer": "create a TransformerLayer with multi-head attention, feed-forward network, and layer normalization",
+    "create_static_position_embedding": "create a StaticPositionEmbedding module that adds sinusoidal positional encodings to input sequences"
+  },
+  "facebookresearch_cpcaudio/cpc/unit_tests.py": {
+    "run_findAllSeqs": "run findAllSeqs to discover all audio sequence files and speakers in a directory",
+    "run_filterSeqs": "run filterSeqs to filter audio sequences against a provided sequence list file",
+    "run_AudioBatchData": "run AudioBatchData to create a batched audio dataset loader with speaker labels",
+    "run_parseSeqLabels": "run parseSeqLabels to load and parse phone label data from a text file",
+    "run_beam_search": "run beam_search to perform beam search decoding on CTC log-probability matrices"
+  },
+  "facebookresearch_cpcaudio/cpc/criterion/criterion.py": {
+    "build_CPCUnsupersivedCriterion": "build a CPC unsupervised criterion module with nPredicts steps and negative sampling for contrastive prediction training",
+    "create_PredictionNetwork": "create a prediction network with RNN, LSTM, conv, or transformer predictors for contrastive prediction coding",
+    "create_SpeakerCriterion": "create a speaker classification criterion with a linear classifier and cross entropy loss for speaker identification",
+    "create_PhoneCriterion": "create a phone classification criterion with a linear or multi-layer classifier for phoneme prediction tasks",
+    "create_CTCTPhoneCriterion": "create a CTC phone criterion module with a linear classifier and CTC loss for sequence-to-sequence phone recognition"
+  },
+  "facebookresearch_cpcaudio/cpc/criterion/custom_layers.py": {
+    "create_equalized_conv1d_layer": "create an EqualizedConv1d layer with He initialization and zero bias for audio feature extraction",
+    "create_equalized_conv2d_layer": "create an EqualizedConv2d layer with He initialization and zero bias for image feature extraction",
+    "create_equalized_linear_layer": "create an EqualizedLinear layer with He initialization and zero bias for a fully connected layer",
+    "upscale_2d_tensor": "upscale a 2D tensor by a given integer factor using nearest-neighbor style expansion",
+    "apply_normalization_layer": "apply per-sample normalization to a tensor by dividing by its L2 norm along dimension 1"
+  },
+  "facebookresearch_cpcaudio/cpc/criterion/seq_alignment.py": {
+    "run_beam_search_ctc": "run beam search decoding on CTC score predictions with a specified number of beams and blank label",
+    "run_collapse_label_chain": "run label chain collapsing on a 2D tensor to remove consecutive duplicate labels and return padded output",
+    "run_needleman_wunsch_align_score": "run Needleman-Wunsch sequence alignment scoring between two sequences with configurable deletion, mismatch, and reward scores",
+    "run_get_seq_per": "run sequence PER calculation using Needleman-Wunsch alignment with normalized error rate between ground truth and detected labels",
+    "run_get_per": "run parallel PER evaluation across a data loader using beam search decoding and multiprocessing for batched audio features"
+  },
+  "facebookresearch_cpcaudio/cpc/eval/ABX.py": {
+    "run_ABX_from_checkpoint": "run the ABX evaluation from a model checkpoint on a dataset with an item file",
+    "run_ABX_from_pre_computed": "run the ABX evaluation using pre-computed torch feature files from a dataset",
+    "run_ABX_within_speakers": "run the ABX evaluation in within-speaker mode to compute phone confusion scores",
+    "run_ABX_across_speakers": "run the ABX evaluation in across-speaker mode to compute phone confusion scores",
+    "run_ABX_debug": "run the ABX evaluation in debug mode limited to the first 1000 sequences"
+  },
+  "facebookresearch_cpcaudio/cpc/eval/build_zeroSpeech_features.py": {
+    "run_build_zeroSpeech_features": "run the CLI to build ZeroSpeech Track1 evaluation features from a dataset using a CPC checkpoint",
+    "run_buildAllFeature": "run buildAllFeature to extract and save features for all audio sequences in multiple output formats",
+    "run_getArgs": "run getArgs to load checkpoint arguments from a checkpoint_args.json file",
+    "refactor_buildAllFeature_format": "refactor buildAllFeature to add a new output format beyond npz, fea, npy, and af",
+    "review_build_zeroSpeech_features_main": "review the main CLI entry point for argument parsing, model loading, and feature extraction flow"
+  },
+  "facebookresearch_cpcaudio/cpc/eval/common_voices_eval.py": {
+    "train_phone_recognition_model": "train a CTC phone recognition model on Common Voices audio data using CPC features and an Adam optimizer",
+    "compute_phone_error_rate": "compute the phone error rate on a validation dataset using beam search and a trained CTC classifier",
+    "create_single_sequence_dataset": "create a SingleSequenceDataset that loads audio sequences and phone labels from a directory for batched training",
+    "build_ctc_phone_criterion": "build a CTC phone classification criterion with optional LSTM, sequence normalization, and dropout layers",
+    "run_training_loop": "run a multi-epoch training loop with train and validation steps, saving the best checkpoint by validation loss"
+  },
+  "facebookresearch_cpcaudio/cpc/eval/linear_separability.py": {
+    "run_linear_separability_training": "run the CPC linear separability trainer to evaluate speaker or phone separability on audio data",
+    "run_train_step": "run a single training step for the linear separability criterion with backpropagation and optimizer updates",
+    "run_val_step": "run a single validation step to compute loss and accuracy for the linear separability criterion",
+    "run_parse_args": "parse command line arguments for the linear separability trainer including paths, GPU count, and hyperparameters",
+    "run_main": "run the main entry point that loads models, sets up data loaders, and starts linear separability training"
+  },
+  "facebookresearch_cpcaudio/cpc/eval/ABX/abx_group_computation.py": {
+    "get_distance_function_from_name": "get the distance function by name such as euclidian or cosine for batch computation",
+    "get_cosine_distance_batch": "compute cosine distance between two batched sequence tensors with shape batch seq channel",
+    "get_euclidian_distance_batch": "compute euclidean distance between two batched sequence tensors with shape batch seq channel",
+    "get_distance_group_dtw": "compute DTW distance matrix between two groups of sequences using a specified distance function",
+    "get_theta_group_dtw": "compute the ABX theta score using DTW distances between groups a, b, and x"
+  },
+  "facebookresearch_cpcaudio/cpc/eval/ABX/abx_iterators.py": {
+    "load_item_file": "load an ABX .item file and parse triplets with phone, context, and speaker mappings",
+    "normalize_with_singularity": "normalize a 3D tensor across the channel dimension and handle null vectors with a border vector",
+    "get_features_group": "group and sort feature data by a specified index order for hierarchical ABX triplet organization",
+    "ABXFeatureLoader_init": "create an ABXFeatureLoader to load and manage audio features from an item file with optional normalization",
+    "ABXWithinGroupIterator": "iterate over ABX within-group triplets comparing phone instances from the same speaker and context"
+  },
+  "facebookresearch_cpcaudio/cpc/eval/ABX/unit_tests.py": {
+    "run_dtw_distance_tests": "run the unit tests for DTW distance computation on batched PyTorch tensors",
+    "run_theta_dtw_symetric_test": "run the symmetric theta DTW function test using euclidian distance on tensor groups",
+    "run_cosine_normalization_tests": "run the singularity normalization and cosine distance batch tests on PyTorch tensors",
+    "run_group_maker_tests": "run the 1D, 2D, and 3D feature grouping tests using get_features_group",
+    "run_abx_feature_loader_tests": "run the ABXFeatureLoader base and within iterator tests on dummy item files"
+  },
+  "facebookresearch_cpcaudio/cpc/eval/utils/adjust_sample_rate.py": {
+    "run_adjust_sample_rate_cli": "run the CLI tool to resample audio files from a directory to a target sample rate",
+    "run_adjust_sample_rate_function": "run the adjust_sample_rate function to resample a list of audio files using sinc interpolation",
+    "run_get_names_list": "run get_names_list to parse a TSV file and extract the first column as a list of names",
+    "run_main": "run the main function to match audio files against a phone transcription list and resample them",
+    "review_adjust_sample_rate": "review the adjust_sample_rate function that uses torchaudio Resample with sinc interpolation to convert audio sample rates"
+  },
+  "facebookresearch_cpcaudio/cpc/utils/misc.py": {
+    "untensor_convert_tensors": "recursively convert torch tensors in nested lists and dicts to plain Python lists",
+    "save_logs_json": "save a dictionary of training logs to a JSON file with pretty printing",
+    "update_logs_average": "compute averaged log values by subtracting previous logs and dividing by the number of steps",
+    "set_seed_reproducibility": "set random seeds for Python, NumPy, and PyTorch including CUDA for reproducible experiments",
+    "SchedulerCombiner_sequential_schedulers": "apply a list of learning rate schedulers sequentially based on activation step thresholds"
+  },
+  "facebookresearch_cpcaudio/cpc/utils/unit_tests.py": {
+    "run_testCombineRamp": "run the TestCombineSchedulers testCombineRamp unit test to verify ramp scheduling function behavior",
+    "run_testCombineRampStep": "run the TestCombineSchedulers testCombineRampStep unit test to verify combined ramp and step scheduler behavior",
+    "test_ramp_scheduling_function": "test the ramp_scheduling_function utility that linearly ramps learning rate over a specified number of epochs",
+    "test_SchedulerCombiner": "test the SchedulerCombiner class that applies multiple learning rate schedulers sequentially with activation steps",
+    "review_TestCombineSchedulers": "review the TestCombineSchedulers unittest class and its setUp method for PyTorch optimizer and scheduler setup"
+  }
+}

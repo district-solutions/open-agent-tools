@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/craftassist
+- repo_uri: https://github.com/facebookresearch/craftassist
+
+## File: facebookresearch_craftassist/python/base_agent/ttad/generation_dialogues/templates/templates.py
+
+Prompts
+
+```
+['pick a random dialogue template for a given action type like Move or Build', 'get a single-turn dialogue template by setting dialogue_len to 1 in template_attr', 'get a dialogue template excluding inbuilt composites by setting no_inbuilt_composites to True', 'get a dialogue template instantiated with a specific node and template attributes', 'review the template_map dictionary that maps 14 action types to their dialogue template lists']
+```
+
+Usage
+
+```
+{'get_template_random_dialogue': 'pick a random dialogue template for a given action type like Move or Build', 'get_template_single_turn': 'get a single-turn dialogue template by setting dialogue_len to 1 in template_attr', 'get_template_no_composites': 'get a dialogue template excluding inbuilt composites by setting no_inbuilt_composites to True', 'get_template_with_node': 'get a dialogue template instantiated with a specific node and template attributes', 'review_template_map': 'review the template_map dictionary that maps 14 action types to their dialogue template lists'}
+```
+

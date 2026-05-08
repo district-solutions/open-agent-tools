@@ -1,0 +1,177 @@
+{
+  "facebookresearch_rcdm/evaluations/evaluator.py": {
+    "run_evaluator_cli": "run the evaluator CLI to compute FID, sFID, Inception Score, Precision, and Recall between reference and sample NPZ batches",
+    "compute_frechet_distance": "compute the Frechet Inception Distance between two FIDStatistics objects with mean and covariance matrices",
+    "compute_inception_score": "compute the Inception Score for a set of activations using softmax probabilities split into groups",
+    "compute_prec_recall": "compute precision and recall metrics by comparing reference and sample feature manifolds using k-nearest neighbor radii",
+    "read_activations_from_npz": "read image activations from an NPZ file and compute pool_3 and spatial features using the Inception V3 graph"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/RCDM.py": {
+    "init_RCDM": "initialize an RCDM model with SSL backbone and diffusion model from args configuration",
+    "forward_RCDM_generate_samples": "generate image samples from a batch of images or image file path using RCDM forward pass",
+    "forward_RCDM_single_image": "generate num_samples images from a single image file path using the RCDM model",
+    "init_RCDM_ssl_model": "initialize the SSL model for feature extraction with a specified model type and head",
+    "init_RCDM_diffusion": "create and configure the diffusion model with feature conditioning and SSL dimensions"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/dist_util.py": {
+    "init_distributed_mode": "init distributed training mode using torch.distributed with nccl backend and environment variables",
+    "setup_for_distributed": "setup distributed training to disable printing on non-master processes by overriding builtin print",
+    "sync_params": "sync a sequence of tensors across all ranks from rank 0 using dist broadcast",
+    "save_on_master": "save a torch tensor to disk only on the main process using th.save",
+    "is_main_process": "check if the current process is the main process by comparing rank to zero"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/fp16_util.py": {
+    "create_MixedPrecisionTrainer": "create a MixedPrecisionTrainer to train a PyTorch model with FP16 mixed precision support",
+    "convert_module_to_f16": "convert a PyTorch Conv1d, Conv2d, or Conv3d module's weights and biases to float16",
+    "convert_module_to_f32": "convert a PyTorch Conv1d, Conv2d, or Conv3d module's weights and biases back to float32",
+    "make_master_params": "make full-precision master parameters from grouped model parameters for mixed precision training",
+    "check_overflow": "check if a gradient or parameter value is infinite or NaN for overflow detection"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/gaussian_diffusion.py": {
+    "create_gaussiandiffusion": "create a GaussianDiffusion instance with a beta schedule, model mean type, variance type, and loss type",
+    "get_named_beta_schedule": "get a predefined linear or cosine beta schedule for a given number of diffusion timesteps",
+    "p_sample_loop": "generate samples from a diffusion model by iteratively denoising from random noise over all timesteps",
+    "ddim_sample_loop": "generate samples from a diffusion model using the faster deterministic DDIM sampling method",
+    "training_losses": "compute training losses for a diffusion model at a single timestep given inputs and noise"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/get_rcdm_models.py": {
+    "download_rcdm_dino_trunk": "download the RCDM DINO trunk model checkpoint from the FAIR public files server",
+    "download_rcdm_dino_head": "download the RCDM DINO head model checkpoint including the projection head weights",
+    "download_rcdm_simclr_trunk": "download the RCDM SimCLR trunk model checkpoint from the FAIR public files server",
+    "download_rcdm_supervised": "download the RCDM supervised model checkpoint trained with labeled data from FAIR",
+    "download_rcdm_barlow_head": "download the RCDM Barlow Twins head model checkpoint including projection head weights"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/get_ssl_models.py": {
+    "get_ssl_embedding_model_dino": "get a pretrained DINO ResNet50 self-supervised embedding model with optional head projection",
+    "get_ssl_embedding_model_simclr": "get a pretrained SimCLR ResNet50 self-supervised embedding model with MLP head",
+    "get_ssl_embedding_model_barlow": "get a pretrained Barlow Twins ResNet50 self-supervised embedding model with projector head",
+    "create_DINOHead_projector": "create a DINOHead MLP projector with configurable layers, batch norm, and bottleneck dimension",
+    "create_SimCLRHead_projector": "create a SimCLRHead two-layer MLP projector for self-supervised contrastive learning"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/image_datasets.py": {
+    "load_data_generator": "create a data loader generator that yields batches of images from a directory with optional class conditioning and augmentation",
+    "load_single_image": "load a single image file, center crop to 224x224, normalize to float32, and return as a CHW numpy array",
+    "create_imagedataset": "build a PyTorch Dataset class that shards image paths across ranks and applies random crop and flip augmentation",
+    "center_crop_arr": "center crop a PIL image to a target size using progressive BOX downsampling and BICUBIC upscale before cropping",
+    "random_crop_arr": "randomly crop a PIL image to a target size with configurable crop fraction range and progressive downsampling"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/layers.py": {
+    "build_SNConv2d_layer": "build a spectrally-normalized 2D convolutional layer using SNConv2d with specified in/out channels and kernel size",
+    "create_GBlock_generator": "create a generator residual block with GBlock using class-conditional batchnorm and optional upsampling",
+    "create_DBlock_discriminator": "create a discriminator residual block with DBlock using spectral norm convolutions and optional downsampling",
+    "build_ccbn_layer": "build a class-conditional batchnorm layer using ccbn with gain and bias linear projections",
+    "run_power_iteration": "run power iteration to estimate top N singular values of a weight matrix for spectral normalization"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/logger.py": {
+    "configure_logger": "configure a logger to write key-value diagnostics to stdout, log, csv, or tensorboard output formats",
+    "logkv_and_dumpkvs": "log key-value pairs with logkv then flush all diagnostics to output files with dumpkvs",
+    "logkv_mean": "log a value with logkv_mean to compute a running average across multiple calls before dumping",
+    "profile_decorator": "profile a function with the profile decorator to measure and log wall time under a scoped key",
+    "scoped_configure": "use scoped_configure as a context manager to temporarily switch logger directory and output formats"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/losses.py": {
+    "compute_normal_kl_divergence": "compute the KL divergence between two Gaussian distributions using mean and log-variance tensors",
+    "approximate_standard_normal_cdf": "approximate the cumulative distribution function of the standard normal distribution for a tensor",
+    "compute_discretized_gaussian_log_likelihood": "compute the log-likelihood of a Gaussian distribution discretizing to a given image tensor",
+    "review_losses_module": "review the losses module for likelihood-based loss helpers used in diffusion models",
+    "test_normal_kl_broadcasting": "test the normal_kl function to verify shape broadcasting between batch tensors and scalars"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/nn.py": {
+    "create_conv_nd": "create a 1D, 2D, or 3D convolution module using conv_nd with the desired dimensions",
+    "create_timestep_embedding": "create sinusoidal timestep embeddings for diffusion model timesteps with a given embedding dimension",
+    "update_ema": "update target model parameters using exponential moving average from source parameters with a configurable rate",
+    "zero_module": "zero out all parameters of a PyTorch module and return the zeroed module",
+    "checkpoint": "evaluate a function with gradient checkpointing to reduce memory at the expense of extra compute"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/resample.py": {
+    "create_named_schedule_sampler": "create a named schedule sampler by name such as uniform or loss-second-moment for a diffusion object",
+    "sample_timesteps_with_schedule_sampler": "sample weighted timesteps for a batch using a ScheduleSampler instance with importance sampling",
+    "create_uniform_sampler": "create a UniformSampler that returns equal weights across all diffusion timesteps for unbiased sampling",
+    "update_loss_aware_sampler": "update a LossAwareSampler with local timestep losses and synchronize reweighting across distributed ranks",
+    "create_loss_second_moment_resampler": "create a LossSecondMomentResampler that resamples timesteps based on the second moment of historical losses"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/respace.py": {
+    "create_spaced_diffusion": "create a SpacedDiffusion process that skips steps in a base GaussianDiffusion using selected timesteps",
+    "compute_space_timesteps": "compute a set of strided timesteps from an original diffusion process using section counts or DDIM format",
+    "run_training_losses": "run training losses through a SpacedDiffusion process with automatic timestep mapping for the wrapped model",
+    "compute_p_mean_variance": "compute the posterior mean and variance for a model through SpacedDiffusion with rescaled timesteps",
+    "wrap_model_timesteps": "wrap a model with _WrappedModel to map timesteps and optionally rescale them to the original step count"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/script_util.py": {
+    "create_model_and_diffusion": "create a UNet model and Gaussian diffusion process for image generation with configurable channels and attention",
+    "create_gaussian_diffusion": "create a Gaussian diffusion process with configurable noise schedule, steps, and timestep respacing",
+    "create_classifier_and_diffusion": "create an EncoderUNet classifier model and Gaussian diffusion process for conditional image generation",
+    "sr_create_model_and_diffusion": "create a SuperRes model and diffusion process for super-resolution image generation from small to large size",
+    "add_dict_to_argparser": "add default configuration dictionary keys as argparse arguments with automatic type inference"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/train_util.py": {
+    "run_train_loop": "run the TrainLoop class to train a diffusion model with distributed data parallel and EMA tracking",
+    "resume_checkpoint_training": "resume training from the latest checkpoint by calling find_resume_checkpoint and loading saved model parameters",
+    "save_model_checkpoint": "save the model and optimizer state to a checkpoint file using the TrainLoop save method",
+    "find_ema_checkpoint": "find an EMA checkpoint file by step number and rate using the find_ema_checkpoint function",
+    "log_loss_dict": "log diffusion training losses with quartile breakdown using the log_loss_dict function"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/unet.py": {
+    "build_UNetModel": "build a UNetModel with configurable channels, attention resolutions, and timestep embedding for diffusion",
+    "build_EncoderUNetModel": "build an EncoderUNetModel with adaptive pooling for image classification and feature extraction",
+    "build_SuperResModel": "build a SuperResModel that conditions on low-resolution images for super-resolution diffusion",
+    "build_ResBlock": "build a ResBlock with optional upsampling, downsampling, and scale-shift normalization for UNet layers",
+    "build_AttentionBlock": "build an AttentionBlock with QKV attention and configurable heads for spatial self-attention"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/src/logger.py": {
+    "create_logger_with_file_and_console_handlers": "create a logger with file and console handlers using create_logger with a filepath and process rank",
+    "create_log_formatter_with_elapsed_time": "create a LogFormatter instance that formats log records with level name, timestamp, and elapsed time",
+    "create_pd_stats_tracker": "create a PD_Stats object to track and persist statistics as a pickled pandas DataFrame",
+    "update_pd_stats_with_row": "update a PD_Stats tracker with a new row of data and optionally save to pickle file",
+    "reset_logger_elapsed_time": "reset the logger elapsed time by calling the reset_time method attached to the logger"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/src/multicropdataset.py": {
+    "create_multicropdataset": "create a MultiCropDataset instance from an ImageFolder path with configurable crop sizes and scales",
+    "use_getitem_multicropdataset": "use MultiCropDataset getitem to return multiple augmented crops of a single image",
+    "create_pilrandomgaussianblur": "create a PILRandomGaussianBlur transform that applies random Gaussian blur to PIL images with configurable probability",
+    "use_get_color_distortion": "use get_color_distortion to build a Compose transform with random color jitter and grayscale augmentation",
+    "review_multicropdataset_augmentation": "review the MultiCropDataset class and its augmentation pipeline for self-supervised learning data loading"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/src/resnet50.py": {
+    "build_resnet50_model": "build a ResNet-50 model using Bottleneck blocks with configurable projection head and prototype layers",
+    "build_resnet101_model": "build a ResNet-101 model using Bottleneck blocks with 23 blocks in the third stage",
+    "build_resnext50_model": "build a ResNeXt-50 32x4d model with grouped convolutions and 4 width per group",
+    "build_wide_resnet50": "build a widened ResNet-50 model with 2x, 4x, or 5x channel width multiplier",
+    "run_resnet_forward": "run forward pass through ResNet backbone and projection head on image tensor inputs"
+  },
+  "facebookresearch_rcdm/guided_diffusion_rcdm/src/utils.py": {
+    "init_distributed_mode": "initialize distributed training mode by setting world size, rank, and NCCL backend from environment variables",
+    "initialize_exp": "initialize an experiment by dumping parameters, creating a checkpoint directory, logger, and training stats object",
+    "restart_from_checkpoint": "restart training from a checkpoint file by loading state dicts and run variables into provided objects",
+    "fix_random_seeds": "fix random seeds for PyTorch, CUDA, and NumPy to ensure reproducible results across runs",
+    "accuracy": "compute top-k classification accuracy by comparing model output predictions against target labels"
+  },
+  "facebookresearch_rcdm/scripts/image_sample.py": {
+    "run_image_sampling": "run the image_sample script to generate conditioned image samples using an RCDM diffusion model",
+    "run_ssl_feature_conditioning": "run image sampling conditioned on SSL features from DINO or similar self-supervised models",
+    "run_ddim_sampling": "run the image_sample script with DDIM sampling instead of standard p_sample_loop for faster generation",
+    "run_custom_model_path": "run image sampling using a custom trained model checkpoint loaded from a specified model path",
+    "run_batch_image_generation": "run batch image generation with configurable batch size and save results as a JPEG grid"
+  },
+  "facebookresearch_rcdm/scripts/image_sample_interpolation.py": {
+    "run_image_interpolation": "run image sample interpolation between two images using a diffusion model conditioned on SSL features",
+    "run_interpolate_cli": "run the interpolation CLI with --first_image_path and --second_image_path to generate interpolated samples",
+    "create_interpolate_points": "create interpolated vectors between two points in latent space using linear interpolation with configurable steps",
+    "review_exclude_bias_and_norm": "review the exclude_bias_and_norm function that filters parameters by checking if they are 1-dimensional",
+    "summarize_main": "summarize the main function that loads SSL and diffusion models, computes feature embeddings, and generates interpolated images"
+  },
+  "facebookresearch_rcdm/scripts/image_sample_manipulation.py": {
+    "run_image_sample_manipulation": "run the image sample manipulation script to transfer attributes from one image to another using RCDM diffusion",
+    "generate_embeddings": "generate normalized embeddings from a data loader using an SSL model and optional MLP projection",
+    "nearest_neighbors_faiss": "find the 20 nearest neighbors of a target embedding using FAISS with GPU or IVF index",
+    "compute_dist_ssl": "compute squared L2 distance between an SSL model feature and a target tensor",
+    "create_argparser": "create an argument parser with RCDM diffusion defaults and image manipulation specific flags"
+  },
+  "facebookresearch_rcdm/scripts/image_train.py": {
+    "run_train_rcdm": "run a conditional representation-based diffusion model training loop on images using an SSL model",
+    "run_train_rcdm_no_ssl": "run a diffusion model training loop on images without an SSL conditioning model",
+    "create_argparser_training": "create an argparse parser with defaults for RCDM image training including learning rate and batch size",
+    "load_ssl_data_generator": "create a data generator that extracts SSL features from images for conditional diffusion model training",
+    "review_main_training_flow": "review the main training flow that initializes distributed mode, loads SSL models, and runs the training loop"
+  }
+}

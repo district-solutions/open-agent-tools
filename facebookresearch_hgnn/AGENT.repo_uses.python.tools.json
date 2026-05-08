@@ -1,0 +1,352 @@
+{
+  "facebookresearch_hgnn/data/qm8/get_data.py": {
+    "download_qm8_dataset": "download the QM8 gdb8 dataset from DeepChem S3 and extract the tar.gz archive",
+    "read_csv_properties": "create a function that reads qm8.sdf.csv and returns a dictionary mapping indices to molecular property lists",
+    "split_train_valid_test": "run the train valid test split of QM8 molecules using RDKit SDMolSupplier and JSON index files",
+    "preprocess_molecules_to_graphs": "preprocess raw molecular data by converting SMILES strings to graph representations with node features and edges",
+    "get_validation_indices": "load validation split file indices from valid_idx_qm8.json and return a list of integer file indices"
+  },
+  "facebookresearch_hgnn/data/qm8/utils.py": {
+    "convert_molecule_to_graph": "convert an RDKit molecule into a graph representation with nodes and edges for the QM8 dataset",
+    "check_kekulize_needed": "check if an RDKit molecule needs Kekulization by inspecting its bond types",
+    "create_onehot_encoding": "create a one-hot encoded list for a given index and total length",
+    "get_dataset_info": "get atom types, maximum valence, and number-to-atom mappings for a molecular dataset",
+    "map_bond_types": "map between bond type strings and RDKit BondType enums using bond_dict and number_to_bond"
+  },
+  "facebookresearch_hgnn/data/qm9/get_data.py": {
+    "download_qm9_dataset": "download the QM9 gdb9 dataset from deepchem S3 and extract the tar.gz archive",
+    "read_csv_properties": "create a function that reads gdb9.sdf.csv and returns a dictionary mapping molecule indices to property values",
+    "split_train_valid_test": "run the train validation test split of QM9 molecules using RDKit SDMolSupplier and split index JSON files",
+    "preprocess_molecules_to_graphs": "preprocess raw molecule data by converting SMILES strings to graph representations with node features and edges",
+    "get_validation_indices": "load validation split indices from valid_idx_qm9.json and return a list of integer file indices"
+  },
+  "facebookresearch_hgnn/data/qm9/utils.py": {
+    "convert_mol_to_graph": "convert an RDKit molecule to nodes and edges for graph neural network input",
+    "get_dataset_info": "get atom types, maximum valence, and number to atom mapping for a dataset",
+    "check_kekulize_needed": "check if an RDKit molecule needs kekulization based on bond types",
+    "create_onehot_encoding": "create a one-hot encoded list for a given index and length",
+    "map_bond_types": "map bond type strings to integers and integers back to RDKit bond types"
+  },
+  "facebookresearch_hgnn/data/synthetic/generate_graphs.py": {
+    "run_generate_graphs": "run the script to generate synthetic Erdos-Renyi, Small-World, and Barabasi-Albert graphs and save train/dev/test pickle files",
+    "run_graph_generation": "run the graph generation script to create 6000 graphs per type with random node counts between 200 and 500",
+    "create_pickle_dump": "create a pickle_dump function that serializes any Python object to a file using the highest pickle protocol",
+    "create_graph_to_edges": "create a graph_to_edges function that converts a NetworkX graph into a list of (src, weight, dst) tuples",
+    "refactor_graph_generation": "refactor the graph generation script to accept command-line arguments for node count ranges, graph count, and split sizes"
+  },
+  "facebookresearch_hgnn/data/tu/data_preprocess.py": {
+    "run_data_preprocess": "run the script to preprocess a TU graph dataset like ENZYMES into train test and valid JSON files",
+    "run_kfold_split": "run the 10-fold cross-validation split on a TU graph dataset and save train test valid JSON files per fold",
+    "run_one_hot_vec": "run the one_hot_vec function to create a one-hot encoded vector of a given length at a specified position",
+    "review_data_preprocess": "review the data_preprocess script that extracts edges node features and targets from PyTorch Geometric TUDataset graphs",
+    "refactor_one_hot_vec": "refactor the one_hot_vec function to use numpy instead of a manual list-based implementation"
+  },
+  "facebookresearch_hgnn/data/zinc/get_data.py": {
+    "run_download_zinc_dataset": "run the script to download the ZINC 250k drugs CSV dataset from GitHub",
+    "run_dataset_split": "run the dataset_split function to split ZINC molecules into train, valid, and test sets",
+    "run_preprocess_smiles_to_graphs": "run the preprocess function to convert SMILES strings into molecular graph representations",
+    "run_full_pipeline": "run the main pipeline to download, split, and preprocess the ZINC dataset into JSON files",
+    "refactor_download_file": "refactor the download_file function to use requests instead of os.system wget"
+  },
+  "facebookresearch_hgnn/data/zinc/utils.py": {
+    "convert_smiles_to_graph": "convert a SMILES string to molecular graph nodes and edges using to_graph",
+    "get_dataset_info": "get atom types, maximum valence, and number-to-atom mappings for a dataset using dataset_info",
+    "create_onehot_encoding": "create a one-hot encoded list for a given index and length using onehot",
+    "check_kekulize_needed": "check if an RDKit molecule needs Kekulization based on bond types using need_kekulize",
+    "review_bond_mappings": "review the bond_dict and number_to_bond mappings for bond type conversions"
+  },
+  "facebookresearch_hgnn/dataset/EthereumDataset.py": {
+    "read_ether_price": "read weighted average Ether price from a JSON file and return a date-to-price dictionary",
+    "read_truncated_ether_price": "read Ether price data, sort chronologically, and truncate entries after a specified cutoff date",
+    "EthereumDataset_init": "create an EthereumDataset instance for train, dev, or test split using price data and day splits",
+    "EthereumDataset_get_price_feature": "compute price features including normalized exact prices and up/down indicators for a date range",
+    "EthereumDataset_defaultdict2list": "convert adjacency matrix and weight dictionaries to trimmed lists with max or random neighbor selection"
+  },
+  "facebookresearch_hgnn/dataset/NodeClassificationDataset.py": {
+    "build_NodeClassificationDataset": "build a NodeClassificationDataset instance that loads graph node classification data from pickle files",
+    "create_load_data": "create a call to load_data to load and preprocess graph features, labels, and adjacency matrices",
+    "test_parse_index_file": "test the parse_index_file function to parse integer indices from a text file line by line",
+    "refactor_preprocess_features": "refactor preprocess_features to row-normalize a scipy sparse feature matrix for graph neural networks",
+    "review_sample_mask": "review the sample_mask function that creates a boolean mask array from a list of indices"
+  },
+  "facebookresearch_hgnn/dataset/SyntheticDataset.py": {
+    "create_synthetic_dataset": "create a SyntheticDataset instance from pickled graph data files for train, dev, or test splits",
+    "getitem_graph_features": "get graph node features, adjacency matrix, weights, labels, and masks by index from the dataset",
+    "one_hot_encode_degree": "create a one-hot encoded vector for node degree values in the graph dataset",
+    "build_graph_adjacency": "build adjacency matrices and normalized weights from graph edge lists with self connections",
+    "load_pickle_dataset": "load a pickled graph dataset file for training, development, or testing splits"
+  },
+  "facebookresearch_hgnn/gnn/RiemannianGNN.py": {
+    "build_riemannian_gnn_model": "build a RiemannianGNN model with args, logger, and manifold for hyperbolic graph neural network inference",
+    "create_gnn_params": "create GNN weight parameters for a specific message type across poincare, euclidean, or lorentz manifolds",
+    "split_graph_by_negative_edge": "split the graph adjacency matrix and weights into positive and negative edge components",
+    "aggregate_msg_neighbors": "aggregate neighbor messages via weighted sum in the tangent space for a specific message type",
+    "run_forward_pass": "run the RiemannianGNN forward pass on node representations, adjacency list, weights, and mask tensors"
+  },
+  "facebookresearch_hgnn/hyperbolic_module/CentroidDistance.py": {
+    "build_centroid_distance_module": "build a PyTorch module to calculate pairwise distances between node representations and centroids on a manifold",
+    "create_centroid_embedding": "create a centroid embedding layer with configurable num_centroid and embed_size parameters for hyperbolic or euclidean manifolds",
+    "compute_node_centroid_distances": "compute pairwise distances between node representations and centroid embeddings using manifold distance metrics",
+    "compute_graph_centroid_distances": "compute average pooled graph-level centroid distances by summing node distances and dividing by mask sum",
+    "review_CentroidDistance_forward": "review the CentroidDistance forward method that broadcasts node and centroid representations and returns graph and node level distances"
+  },
+  "facebookresearch_hgnn/hyperbolic_module/PoincareDistance.py": {
+    "compute_poincare_distance_forward": "compute the Poincare distance between two tensors u and v using the forward method",
+    "compute_poincare_distance_backward": "compute the backward gradient for Poincare distance using the backward method",
+    "compute_poincare_gradient": "compute the gradient of Poincare distance with respect to input tensors using the grad method",
+    "review_poincare_distance_class": "review the PoincareDistance class and its custom autograd forward and backward implementations",
+    "test_poincare_distance": "test the PoincareDistance class by computing distances between two PyTorch tensors"
+  },
+  "facebookresearch_hgnn/manifold/EuclideanManifold.py": {
+    "init_embed_EuclideanManifold": "create a EuclideanManifold instance and initialize embedding weights with uniform random values then normalize",
+    "distance_EuclideanManifold": "compute the Euclidean distance between two tensors u and v using the manifold distance method",
+    "log_map_EuclideanManifold": "compute the logarithmic map from point x to y or from zero to y on the Euclidean manifold",
+    "exp_map_EuclideanManifold": "compute the exponential map from zero or point x along vector v and normalize the result",
+    "normalize_EuclideanManifold": "clip tensor weights by their norm using the EuclideanManifold normalize method with a max_norm threshold"
+  },
+  "facebookresearch_hgnn/manifold/LorentzManifold.py": {
+    "create_lorentz_manifold": "create a LorentzManifold instance with args, logger, and configurable eps and norm_clip parameters",
+    "compute_lorentzian_dot_product": "compute the Lorentzian scalar product of two batched tensors using the static ldot method",
+    "convert_lorentz_to_poincare": "convert points from Lorentz model coordinates to Poincare ball coordinates using from_lorentz_to_poincare",
+    "compute_geodesic_distance": "compute the geodesic distance between two points on the hyperboloid using the distance method",
+    "compute_exponential_map": "compute the exponential map from a point along a tangent vector using exp_map_x or exp_map_zero"
+  },
+  "facebookresearch_hgnn/manifold/PoincareManifold.py": {
+    "init_poincare_manifold": "create a PoincareManifold instance with args and logger for hyperbolic space operations",
+    "mob_add_vectors": "add two vectors in hyperbolic space using the mobius addition operation",
+    "compute_poincare_distance": "compute the Poincare distance between two points in hyperbolic space",
+    "exp_map_tangent_to_hyperbolic": "map a tangent space vector to hyperbolic space using the exponential map",
+    "compute_riemannian_gradient": "compute the Riemannian gradient from the Euclidean gradient in the Poincare ball"
+  },
+  "facebookresearch_hgnn/optimizer/ramsgrad.py": {
+    "create_riemannianamsgrad_optimizer": "create a RiemannianAMSGrad optimizer instance with args, params, and learning rate",
+    "run_step_optimization": "run a single optimization step on the RiemannianAMSGrad optimizer with optional learning rate",
+    "review_riemannianamsgrad_class": "review the RiemannianAMSGrad class and its Riemannian AMS gradient descent implementation",
+    "refactor_step_method": "refactor the RiemannianAMSGrad step method to support custom manifold operations",
+    "summarize_riemannianamsgrad_init": "summarize the RiemannianAMSGrad init method and its default hyperparameter configuration"
+  },
+  "facebookresearch_hgnn/optimizer/rsgd.py": {
+    "create_RiemannianSGD_optimizer": "create a RiemannianSGD optimizer instance with args, params, and learning rate",
+    "run_RiemannianSGD_step": "run a single optimization step using the RiemannianSGD step method",
+    "build_RiemannianSGD_with_manifold": "build a RiemannianSGD optimizer that uses manifold rgrad and exp_map_x for updates",
+    "test_RiemannianSGD_step_lr": "test the RiemannianSGD step method with a custom learning rate argument",
+    "review_RiemannianSGD_class": "review the RiemannianSGD class and its step method for Riemannian gradient descent"
+  },
+  "facebookresearch_hgnn/params/CollabEuclideanParams.py": {
+    "add_params": "add CLI arguments for COLLAB hyperparameters including learning rate, optimizer, GNN layers, and embedding size to an argparse parser",
+    "run_COLLAB_training": "run a COLLAB graph classification experiment with euclidean manifold embeddings using the default hyperparameter configuration",
+    "configure_optimizer": "configure the optimizer type (sgd, adam, or amsgrad) and learning rate scheduler for COLLAB training",
+    "set_gnn_architecture": "set the GNN architecture parameters including number of layers, embedding size, dropout, and activation function",
+    "configure_data_paths": "configure the train, validation, and test file paths for COLLAB dataset with fold-based cross-validation"
+  },
+  "facebookresearch_hgnn/params/CollabHyperbolicParams.py": {
+    "add_COLLAB_hyperbolic_params": "add COLLAB dataset hyperbolic GNN training parameters to an argparse parser",
+    "configure_learning_rate": "configure the learning rate and hyperbolic learning rate for COLLAB hyperbolic GNN training",
+    "set_optimizer": "set the optimizer and hyperbolic optimizer for COLLAB hyperbolic GNN model training",
+    "configure_gnn_architecture": "configure GNN layers, embedding size, activation, and dropout for COLLAB hyperbolic model",
+    "set_data_paths": "set train, validation, and test file paths for COLLAB dataset with fold support"
+  },
+  "facebookresearch_hgnn/params/DDEuclideanParams.py": {
+    "add_params": "add argparse arguments for DDEuclideanParams including lr, optimizer, gnn_layer, embed_size, and dataset file paths",
+    "run_add_params": "run add_params to register CLI arguments for a DDE protein classification GNN training configuration",
+    "review_add_params": "review the add_params function to understand all 35 hypergraph neural network training arguments registered",
+    "refactor_add_params": "refactor add_params to support additional manifold types beyond euclidean for the DDE dataset",
+    "summarize_add_params": "summarize the add_params function which configures learning rate, optimizer, GNN layers, and DD dataset paths"
+  },
+  "facebookresearch_hgnn/params/DDHyperbolicParams.py": {
+    "add_hyperbolic_gnn_params": "add hyperbolic GNN training parameters like learning rate, optimizer, and manifold type to an argparse parser",
+    "configure_optimizer_and_scheduler": "configure the optimizer type, hyperbolic optimizer, and learning rate scheduler for graph neural network training",
+    "set_model_architecture_params": "set GNN architecture parameters including layer count, embedding size, activation function, and dropout rate",
+    "configure_data_paths": "configure train, validation, and test file paths for the DD dataset with fold-based splitting",
+    "set_regularization_and_training": "set regularization parameters like weight decay, gradient clipping, and early stopping patience for training"
+  },
+  "facebookresearch_hgnn/params/EnzymesEuclideanParams.py": {
+    "add_params": "add argparse arguments for ENZYMES dataset Euclidean HGNN training configuration to an existing parser",
+    "review_add_params": "review the add_params function to understand all 35 CLI arguments for ENZYMES Euclidean GNN training",
+    "refactor_add_params": "refactor add_params to split optimizer, model, and dataset arguments into separate helper functions",
+    "test_add_params": "test the add_params function by passing an argparse parser and verifying all arguments are registered",
+    "summarize_add_params": "summarize the add_params function which defines CLI defaults for learning rate, GNN layers, and ENZYMES data paths"
+  },
+  "facebookresearch_hgnn/params/EnzymesHyperbolicParams.py": {
+    "run_add_params": "run add_params to register argparse arguments for a hyperbolic GNN model on the ENZYMES dataset",
+    "build_argparse_parser": "build an argparse parser with hyperbolic GNN training parameters like learning rate, optimizer, and max epochs",
+    "configure_optimizer": "configure the optimizer and hyperbolic optimizer choices such as amsgrad, rsgd, or ramsgrad via add_params",
+    "set_gnn_architecture": "set GNN architecture parameters including layer count, embedding size, activation function, and manifold type",
+    "customize_dataset_paths": "customize the train, validation, and test file paths for the ENZYMES dataset using add_params"
+  },
+  "facebookresearch_hgnn/params/EthereumEuclideanParams.py": {
+    "add_training_params": "add argparse arguments for learning rate, optimizer, and scheduler to an argument parser",
+    "add_gnn_architecture_params": "add argparse arguments for GNN layer count, embedding size, and dropout to an argument parser",
+    "add_activation_params": "add argparse arguments for activation function type and leaky_relu alpha to an argument parser",
+    "add_ethereum_data_params": "add argparse arguments for Ethereum price file path, total addresses, and max price to an argument parser",
+    "add_distributed_training_params": "add argparse arguments for distributed method and centroid count to an argument parser"
+  },
+  "facebookresearch_hgnn/params/EthereumHyperbolicParams.py": {
+    "add_params": "add argparse arguments for an Ethereum hyperbolic GNN training run including learning rate, optimizer, and manifold settings",
+    "run_add_params": "run add_params to register all CLI arguments for configuring an Ethereum transaction graph neural network experiment",
+    "review_add_params": "review the add_params function to understand the 30+ hyperbolic GNN training arguments it registers on an argparse parser",
+    "refactor_add_params": "refactor add_params to split the 30+ arguments into logical groups like optimizer, architecture, and data parameters",
+    "test_add_params": "test add_params by passing an argparse parser and verifying all 30+ Ethereum GNN arguments are registered with correct defaults"
+  },
+  "facebookresearch_hgnn/params/NodeClassificationHyperbolicParams.py": {
+    "add_classification_params": "add argparse parameters for hyperbolic node classification including dataset, learning rate, and optimizer choices",
+    "run_node_classification_cli": "run a CLI that accepts dataset, epochs, dropout, and manifold type for hyperbolic GNN node classification",
+    "configure_hyperbolic_optimizer": "configure the hyperbolic optimizer with rsgd or ramsgrad options and learning rate settings",
+    "set_gnn_architecture_params": "set GNN architecture parameters like layer count, embedding size, activation function, and weight tying",
+    "review_add_params_function": "review the add_params function to understand all available hyperbolic node classification CLI arguments"
+  },
+  "facebookresearch_hgnn/params/ProteinsEuclideanParams.py": {
+    "run_add_params": "run add_params to register argparse arguments for a PROTEINS dataset Euclidean HGNN training configuration",
+    "build_argparse_parser": "build an argparse parser with add_params to configure learning rate, optimizer, and GNN layers for protein graph classification",
+    "test_add_params_defaults": "test add_params to verify default values like lr=0.001, optimizer=adam, and max_epochs=200 are set correctly",
+    "refactor_add_params": "refactor add_params to add new argument choices or modify default values for the Euclidean manifold HGNN experiment",
+    "review_add_params": "review add_params to understand all 35+ arguments for optimizer, GNN architecture, data paths, and distributed training settings"
+  },
+  "facebookresearch_hgnn/params/ProteinsHyperbolicParams.py": {
+    "add_params_argparse": "add argparse arguments for hyperbolic GNN training on the PROTEINS dataset to an existing parser",
+    "configure_optimizer": "configure the optimizer type and learning rate for hyperbolic graph neural network training",
+    "set_gnn_architecture": "set the GNN layer count, embedding size, and activation function for hyperbolic models",
+    "configure_data_paths": "configure the train, validation, and test file paths for the PROTEINS dataset",
+    "set_hyperbolic_options": "set hyperbolic manifold embedding options including optimizer, manifold type, and projection initialization"
+  },
+  "facebookresearch_hgnn/params/QM8EuclideanParams.py": {
+    "build_argparse_parser_for_qm8_gnn": "build an argparse parser with add_params to configure QM8 Euclidean GNN training hyperparameters",
+    "run_qm8_euclidean_gnn_training": "run QM8 molecular property prediction training with configurable learning rate, optimizer, and max epochs",
+    "test_add_params_function": "test the add_params function by calling it with an argparse parser and verifying registered arguments",
+    "review_gnn_hyperparameter_defaults": "review the default GNN hyperparameters including 4 layers, 256 embed size, and leaky_relu activation",
+    "refactor_add_params_for_custom_dataset": "refactor add_params to support custom train, dev, and test file paths for a new dataset"
+  },
+  "facebookresearch_hgnn/params/QM8HyperbolicParams.py": {
+    "add_training_params": "add argparse arguments for learning rate, optimizer, and scheduler to a parser for QM8 training",
+    "add_model_architecture_params": "add argparse arguments for GNN layers, embedding size, activation, and dropout to a parser",
+    "add_manifold_geometry_params": "add argparse arguments for embedding manifold type, centroids, and hyperbolic variables to a parser",
+    "add_data_metric_params": "add argparse arguments for train, dev, test file paths and evaluation metric to a parser",
+    "add_distributed_training_params": "add argparse arguments for max epochs, patience, gradient clipping, and distributed method to a parser"
+  },
+  "facebookresearch_hgnn/params/QM9EuclideanParams.py": {
+    "build_argparse_parser_for_qm9": "build an argparse parser with QM9 Euclidean GNN training hyperparameters like lr, optimizer, and epochs",
+    "create_gnn_training_config": "create a training configuration with GNN layers, embedding size, dropout, and activation function arguments",
+    "run_qm9_euclidean_params": "run the add_params function to register all QM9 Euclidean hyperparameters on an argparse parser",
+    "review_add_params_function": "review the add_params function that registers 30+ argparse arguments for QM9 molecular property prediction",
+    "refactor_qm9_param_defaults": "refactor the QM9 Euclidean params to change default learning rate, optimizer, or embedding manifold settings"
+  },
+  "facebookresearch_hgnn/params/QM9HyperbolicParams.py": {
+    "build_argparse_parser_for_qm9_hgnn": "build an argparse parser with add_params to configure QM9 hyperbolic GNN training with 35+ arguments",
+    "create_training_config_for_qm9": "create a training config by calling add_params to set lr, optimizer, epochs, and manifold for QM9",
+    "run_qm9_hyperbolic_gnn_experiment": "run a QM9 experiment by parsing args via add_params with custom lr, embed_size, and metric",
+    "refactor_add_params_for_custom_dataset": "refactor add_params to swap QM9 default mean/std and data file paths for a new dataset",
+    "review_add_params_hyperbolic_options": "review add_params to verify hyperbolic optimizer, manifold, and embedding choices are correct"
+  },
+  "facebookresearch_hgnn/params/RedditEuclideanParams.py": {
+    "build_argparse_parser_gnn": "build an argparse parser with GNN training hyperparameters for the Reddit dataset using add_params",
+    "run_add_params_function": "run add_params to register CLI arguments for learning rate, optimizer, and GNN layers",
+    "test_add_params_cli": "test the add_params function by parsing CLI args for the Reddit Euclidean GNN experiment",
+    "review_add_params_defaults": "review the add_params function default values for optimizer, dropout, and activation settings",
+    "refactor_add_params_choices": "refactor add_params to add new optimizer or lr_scheduler choices for the Reddit GNN experiment"
+  },
+  "facebookresearch_hgnn/params/RedditHyperbolicParams.py": {
+    "run_add_params": "run add_params to register Reddit hyperbolic GNN training arguments on an argparse parser",
+    "build_argparse_parser": "build an argparse parser with Reddit hyperbolic GNN parameters by calling add_params",
+    "configure_gnn_training": "configure GNN training hyperparameters like learning rate, optimizer, and epochs via add_params",
+    "set_hyperbolic_embeddings": "set hyperbolic embedding manifold options and optimizer choices using add_params arguments",
+    "customize_dataset_paths": "customize train, dev, and test file paths for the REDDIT-MULTI-12K dataset via add_params"
+  },
+  "facebookresearch_hgnn/params/SyntheticEuclideanParams.py": {
+    "add_gnn_training_params": "add GNN training parameters like learning rate, optimizer, and max epochs to an argparse parser",
+    "add_manifold_embedding_params": "add embedding manifold parameters to choose between euclidean and hyperbolic geometry for the GNN model",
+    "add_data_file_params": "add synthetic dataset file paths for train, dev, and test splits to an argparse parser",
+    "add_regularization_params": "add dropout, weight decay, and gradient clipping parameters to control model regularization",
+    "add_activation_params": "add activation function parameters with choices of relu, leaky_relu, or rrelu to the parser"
+  },
+  "facebookresearch_hgnn/params/SyntheticHyperbolicParams.py": {
+    "run_add_params": "run add_params to register synthetic hyperbolic GNN training arguments on an argparse parser",
+    "review_add_params": "review add_params to inspect the 30+ hyperbolic GNN training arguments and their defaults",
+    "refactor_add_params": "refactor add_params to add new argument groups for hyperbolic manifold or optimizer settings",
+    "test_add_params": "test add_params by parsing a synthetic hyperbolic GNN config and verifying all argument defaults",
+    "summarize_add_params": "summarize add_params to list all synthetic hyperbolic GNN training parameters and their choices"
+  },
+  "facebookresearch_hgnn/params/ZINCEuclideanParams.py": {
+    "add_params_for_zinc_gnn": "add argparse arguments for a ZINC molecule GNN training configuration with euclidean manifold embeddings",
+    "configure_learning_rate_and_optimizer": "configure the learning rate, optimizer, and scheduler arguments for GNN training via add_params",
+    "set_gnn_architecture_params": "set GNN architecture parameters like layer count, embed size, dropout, and activation via add_params",
+    "configure_zinc_dataset_paths": "configure train, validation, and test file paths for the ZINC molecule dataset via add_params",
+    "set_edge_and_manifold_params": "set edge type, negative edge, and euclidean manifold embedding parameters via add_params"
+  },
+  "facebookresearch_hgnn/params/ZINCHyperbolicParams.py": {
+    "add_training_params": "add argparse arguments for learning rate, optimizer, and max epochs to a ZINC hyperbolic GNN training parser",
+    "add_gnn_architecture_params": "add argparse arguments for GNN layers, embedding size, activation function, and dropout to a parser",
+    "add_hyperbolic_params": "add argparse arguments for hyperbolic optimizer, embedding manifold, and projection initialization to a parser",
+    "add_data_params": "add argparse arguments for ZINC molecule train, validation, and test file paths to a parser",
+    "add_evaluation_params": "add argparse arguments for evaluation metric, normalization, and property index to a parser"
+  },
+  "facebookresearch_hgnn/task/BaseTask.py": {
+    "load_dataset_train_dev_test": "create train, dev, and test DataLoaders from a dataset class with optional distributed sampling",
+    "reset_epoch_stats": "reset epoch statistics for a given epoch and phase prefix like train dev or test",
+    "update_epoch_stats": "update running epoch statistics with loss, score, and label tensors for classification or regression",
+    "report_epoch_stats": "report aggregated epoch accuracy and loss across distributed nodes using reduce or all_gather",
+    "report_best": "log the best development and test scores tracked by the early stopping criterion"
+  },
+  "facebookresearch_hgnn/task/GraphPrediction.py": {
+    "build_GraphPrediction_module": "build a PyTorch module that performs graph-level prediction using R-GNN and centroid distance aggregation",
+    "create_GraphPrediction_init": "create a GraphPrediction instance with args, logger, rgnn, and manifold for hyperbolic or euclidean embedding",
+    "run_GraphPrediction_forward": "run the forward pass on node features, adjacency, weights, and mask to get graph predictions",
+    "review_GraphPrediction_embedding": "review the GraphPrediction class embedding logic that supports both hyperbolic and euclidean manifold initialization",
+    "summarize_GraphPrediction_output": "summarize the GraphPrediction output linear layer that maps centroids to regression or classification outputs"
+  },
+  "facebookresearch_hgnn/task/GraphPredictionTask.py": {
+    "run_GraphPredictionTask_run_gnn": "run the GraphPredictionTask GNN training loop with distributed data parallel on graph prediction data",
+    "create_collate_fn": "create a collate function that pads adjacency matrices and weights for graph data batches",
+    "evaluate_GraphPredictionTask_evaluate": "evaluate the graph prediction model on a data loader and return accuracy and loss metrics",
+    "review_GraphPredictionTask_forward": "review the GraphPredictionTask forward method that computes scores and loss for regression or classification",
+    "load_GraphPredictionTask_load_data": "load synthetic or real graph dataset using GraphDataset or SyntheticDataset with the collate function"
+  },
+  "facebookresearch_hgnn/task/GraphSeriesPrediction.py": {
+    "build_graph_series_prediction_model": "build a GraphSeriesPrediction PyTorch module for transaction graph series prediction with hyperbolic or euclidean embeddings",
+    "create_embedding_layer": "create an nn.Embedding layer for node addresses with configurable manifold initialization on hyperbolic or euclidean space",
+    "run_forward_pass": "run a forward pass on transaction graph data with node lists, adjacency matrices, weights, and price features",
+    "review_centroid_distance_module": "review the CentroidDistance module used to compute graph representations from node embeddings and masks",
+    "test_rggn_integration": "test the recurrent graph neural network integration for processing node representations through temporal transaction graphs"
+  },
+  "facebookresearch_hgnn/task/GraphSeriesPredictionTask.py": {
+    "run_gnn_training": "run the GraphSeriesPredictionTask GNN training loop with early stopping on Ethereum graph data",
+    "create_collate_fn": "create a collate function that pads node lists, adjacency matrices, and weight matrices for batching",
+    "evaluate_model": "evaluate the GraphSeriesPredictionTask model on a dev or test data loader and report accuracy",
+    "forward_pass": "run a forward pass through the model using node lists, adjacency matrices, and price features",
+    "load_ethereum_data": "load the EthereumDataset with the custom collate function for graph series prediction training"
+  },
+  "facebookresearch_hgnn/task/NodeClassification.py": {
+    "build_NodeClassification_model": "build a NodeClassification model with args, logger, rgnn, and manifold for hyperbolic graph node classification",
+    "run_NodeClassification_forward": "run the forward pass with adjacency, weight, and feature tensors to get node classification logits",
+    "create_feature_linear_layer": "create a feature linear layer that maps input_dim to embed_size with configurable initialization",
+    "test_CentroidDistance_integration": "test the CentroidDistance module integration for computing node centroid similarity in hyperbolic space",
+    "review_NodeClassification_init": "review the NodeClassification init method to understand linear layers, activation, and log softmax setup"
+  },
+  "facebookresearch_hgnn/task/NodeClassificationTask.py": {
+    "run_gnn_node_classification": "run the NodeClassificationTask GNN model training loop with early stopping and evaluation on dev and test sets",
+    "create_cross_entropy_loss": "create a masked cross-entropy loss function that computes negative log probability weighted by a mask tensor",
+    "evaluate_model_accuracy": "evaluate the node classification model accuracy on dev or test splits using masked label comparison",
+    "compute_masked_accuracy": "compute classification accuracy by comparing predicted and real classes weighted by a mask tensor",
+    "load_node_classification_data": "load the NodeClassificationDataset and wrap it in a DataLoader with batch size 1 for training"
+  },
+  "facebookresearch_hgnn/utils/EarlyStoppingCriterion.py": {
+    "create_EarlyStoppingCriterion_max_mode": "create an EarlyStoppingCriterion instance with max mode to track best validation accuracy during training",
+    "create_EarlyStoppingCriterion_min_mode": "create an EarlyStoppingCriterion instance with min mode and patience 5 to monitor training loss",
+    "run_EarlyStoppingCriterion_step": "run the step method with current dev and test scores to check if training should continue",
+    "test_EarlyStoppingCriterion_patience": "test the EarlyStoppingCriterion class to verify it stops training after patience epochs without improvement",
+    "review_EarlyStoppingCriterion_init": "review the EarlyStoppingCriterion constructor to understand patience, mode, and min_delta parameter validation"
+  },
+  "facebookresearch_hgnn/utils/logger.py": {
+    "create_logger_with_file_and_console_handlers": "create a logger that writes debug logs to a file and info logs to the console",
+    "create_log_formatter_with_elapsed_time": "create a LogFormatter that prefixes log messages with level name, timestamp, and elapsed time",
+    "reset_logger_elapsed_time": "reset the logger elapsed time by calling the reset_time method on the logger object",
+    "format_log_message_with_multiline_support": "format a log message that replaces newlines with indented lines to align with the prefix",
+    "configure_logger_debug_and_info_levels": "configure a logger with debug level for file output and info level for console output"
+  },
+  "facebookresearch_hgnn/utils/utils.py": {
+    "init_nn_module_weights": "initialize PyTorch module weights using orthogonal, xavier, or kaiming methods via nn_init",
+    "get_optimizer_for_params": "create an SGD, Adam, or AMSGrad optimizer from args and parameter list using get_optimizer",
+    "get_hyperbolic_optimizer_for_params": "create a RiemannianSGD or RiemannianAMSGrad hyperbolic optimizer from args and params using get_hyperbolic_optimizer",
+    "set_up_optimizer_and_scheduler": "set up euclidean and hyperbolic optimizers with LR schedulers using set_up_optimizer_scheduler",
+    "categorize_model_params": "categorize model parameters into hyperbolic and euclidean groups using categorize_params"
+  }
+}

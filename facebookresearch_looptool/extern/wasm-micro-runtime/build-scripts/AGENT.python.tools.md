@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/looptool
+- repo_uri: https://github.com/facebookresearch/loop_tool
+
+## File: facebookresearch_looptool/extern/wasm-micro-runtime/build-scripts/build_llvm.py
+
+Prompts
+
+```
+['run the build_llvm script with --platform linux --arch X86 to build LLVM for Linux', 'run clone_llvm to clone the LLVM repository to a specified directory with a given branch', 'run build_llvm to compile LLVM with specified platform, backends, and extra projects like clang', 'run repackage_llvm to move the built LLVM tarball out of the build directory and extract it', 'run the build_llvm script with --platform xtensa to build LLVM for Xtensa targets']
+```
+
+Usage
+
+```
+{'run_build_llvm_cli': 'run the build_llvm script with --platform linux --arch X86 to build LLVM for Linux', 'run_clone_llvm': 'run clone_llvm to clone the LLVM repository to a specified directory with a given branch', 'run_build_llvm_function': 'run build_llvm to compile LLVM with specified platform, backends, and extra projects like clang', 'run_repackage_llvm': 'run repackage_llvm to move the built LLVM tarball out of the build directory and extract it', 'run_build_llvm_for_xtensa': 'run the build_llvm script with --platform xtensa to build LLVM for Xtensa targets'}
+```
+

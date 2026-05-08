@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/openlth
+- repo_uri: https://github.com/facebookresearch/open_lth
+
+## File: facebookresearch_openlth/pruning/base.py
+
+Prompts
+
+```
+['review the abstract Strategy class defining the pruning strategy interface for OpenLTH', 'review the abstract get_pruning_hparams method that returns a pruning hyperparameters type', 'review the abstract prune method that takes pruning hparams, a trained model, and an optional mask', 'implement a concrete subclass of Strategy to define a custom pruning strategy', 'implement the abstract prune method in a Strategy subclass to return a Mask', 'create a Mask object from a dictionary of tensor name keys and binary tensor values', 'create a Mask with all ones for each prunable layer in a given model', 'save a Mask to disk along with a JSON sparsity report of total and unpruned weights', 'load a previously saved Mask from a given output location path', 'check the sparsity and density properties of a Mask to get the fraction of pruned and unpruned weights', 'create a PrunedModel instance by wrapping a Model with a Mask to apply pruning', 'apply a pruning mask to model parameters by multiplying parameter data with mask values', 'run a forward pass on the pruned model that applies the mask before computing output', 'convert a layer parameter name to its corresponding mask buffer name using to_mask_name', 'save the underlying model state to disk at a given location and step number', 'get a partial pruning function from a PruningHparams object using the registered strategy', 'get the pruning hparams schema type for a specific registered pruning strategy by name', 'register a new pruning strategy by adding it to the registered_strategies dictionary', 'review the registered_strategies dictionary to see which pruning strategies are currently available', 'summarize the sparse_global pruning strategy registered in the registry module', 'prune a trained model using sparse global pruning with a specified fraction of weights to remove', 'create PruningHparams with a custom pruning fraction and layers to ignore for sparse global pruning', 'get the PruningHparams class type from the Strategy for sparse global pruning configuration', 'review the Strategy.prune method to understand how magnitude-based global pruning computes a threshold across all prunable weights', 'refactor the pruning layers to ignore logic to support a list instead of a comma-separated string']
+```
+
+Usage
+
+```
+{'review_Strategy_class': 'review the abstract Strategy class defining the pruning strategy interface for OpenLTH', 'review_Strategy_get_pruning_hparams': 'review the abstract get_pruning_hparams method that returns a pruning hyperparameters type', 'review_Strategy_prune': 'review the abstract prune method that takes pruning hparams, a trained model, and an optional mask', 'implement_Strategy_subclass': 'implement a concrete subclass of Strategy to define a custom pruning strategy', 'implement_Strategy_prune': 'implement the abstract prune method in a Strategy subclass to return a Mask'}
+```
+
+## File: facebookresearch_openlth/pruning/mask.py
+
+Prompts
+
+```
+['review the abstract Strategy class defining the pruning strategy interface for OpenLTH', 'review the abstract get_pruning_hparams method that returns a pruning hyperparameters type', 'review the abstract prune method that takes pruning hparams, a trained model, and an optional mask', 'implement a concrete subclass of Strategy to define a custom pruning strategy', 'implement the abstract prune method in a Strategy subclass to return a Mask', 'create a Mask object from a dictionary of tensor name keys and binary tensor values', 'create a Mask with all ones for each prunable layer in a given model', 'save a Mask to disk along with a JSON sparsity report of total and unpruned weights', 'load a previously saved Mask from a given output location path', 'check the sparsity and density properties of a Mask to get the fraction of pruned and unpruned weights', 'create a PrunedModel instance by wrapping a Model with a Mask to apply pruning', 'apply a pruning mask to model parameters by multiplying parameter data with mask values', 'run a forward pass on the pruned model that applies the mask before computing output', 'convert a layer parameter name to its corresponding mask buffer name using to_mask_name', 'save the underlying model state to disk at a given location and step number', 'get a partial pruning function from a PruningHparams object using the registered strategy', 'get the pruning hparams schema type for a specific registered pruning strategy by name', 'register a new pruning strategy by adding it to the registered_strategies dictionary', 'review the registered_strategies dictionary to see which pruning strategies are currently available', 'summarize the sparse_global pruning strategy registered in the registry module', 'prune a trained model using sparse global pruning with a specified fraction of weights to remove', 'create PruningHparams with a custom pruning fraction and layers to ignore for sparse global pruning', 'get the PruningHparams class type from the Strategy for sparse global pruning configuration', 'review the Strategy.prune method to understand how magnitude-based global pruning computes a threshold across all prunable weights', 'refactor the pruning layers to ignore logic to support a list instead of a comma-separated string']
+```
+
+Usage
+
+```
+{'create_mask_from_dict': 'create a Mask object from a dictionary of tensor name keys and binary tensor values', 'create_mask_ones_like_model': 'create a Mask with all ones for each prunable layer in a given model', 'save_mask_with_sparsity_report': 'save a Mask to disk along with a JSON sparsity report of total and unpruned weights', 'load_mask_from_disk': 'load a previously saved Mask from a given output location path', 'check_mask_sparsity_and_density': 'check the sparsity and density properties of a Mask to get the fraction of pruned and unpruned weights'}
+```
+
+## File: facebookresearch_openlth/pruning/pruned_model.py
+
+Prompts
+
+```
+['review the abstract Strategy class defining the pruning strategy interface for OpenLTH', 'review the abstract get_pruning_hparams method that returns a pruning hyperparameters type', 'review the abstract prune method that takes pruning hparams, a trained model, and an optional mask', 'implement a concrete subclass of Strategy to define a custom pruning strategy', 'implement the abstract prune method in a Strategy subclass to return a Mask', 'create a Mask object from a dictionary of tensor name keys and binary tensor values', 'create a Mask with all ones for each prunable layer in a given model', 'save a Mask to disk along with a JSON sparsity report of total and unpruned weights', 'load a previously saved Mask from a given output location path', 'check the sparsity and density properties of a Mask to get the fraction of pruned and unpruned weights', 'create a PrunedModel instance by wrapping a Model with a Mask to apply pruning', 'apply a pruning mask to model parameters by multiplying parameter data with mask values', 'run a forward pass on the pruned model that applies the mask before computing output', 'convert a layer parameter name to its corresponding mask buffer name using to_mask_name', 'save the underlying model state to disk at a given location and step number', 'get a partial pruning function from a PruningHparams object using the registered strategy', 'get the pruning hparams schema type for a specific registered pruning strategy by name', 'register a new pruning strategy by adding it to the registered_strategies dictionary', 'review the registered_strategies dictionary to see which pruning strategies are currently available', 'summarize the sparse_global pruning strategy registered in the registry module', 'prune a trained model using sparse global pruning with a specified fraction of weights to remove', 'create PruningHparams with a custom pruning fraction and layers to ignore for sparse global pruning', 'get the PruningHparams class type from the Strategy for sparse global pruning configuration', 'review the Strategy.prune method to understand how magnitude-based global pruning computes a threshold across all prunable weights', 'refactor the pruning layers to ignore logic to support a list instead of a comma-separated string']
+```
+
+Usage
+
+```
+{'create_pruned_model': 'create a PrunedModel instance by wrapping a Model with a Mask to apply pruning', 'apply_mask_to_parameters': 'apply a pruning mask to model parameters by multiplying parameter data with mask values', 'forward_pass_with_mask': 'run a forward pass on the pruned model that applies the mask before computing output', 'convert_layer_name_to_mask_name': 'convert a layer parameter name to its corresponding mask buffer name using to_mask_name', 'save_pruned_model': 'save the underlying model state to disk at a given location and step number'}
+```
+
+## File: facebookresearch_openlth/pruning/registry.py
+
+Prompts
+
+```
+['review the abstract Strategy class defining the pruning strategy interface for OpenLTH', 'review the abstract get_pruning_hparams method that returns a pruning hyperparameters type', 'review the abstract prune method that takes pruning hparams, a trained model, and an optional mask', 'implement a concrete subclass of Strategy to define a custom pruning strategy', 'implement the abstract prune method in a Strategy subclass to return a Mask', 'create a Mask object from a dictionary of tensor name keys and binary tensor values', 'create a Mask with all ones for each prunable layer in a given model', 'save a Mask to disk along with a JSON sparsity report of total and unpruned weights', 'load a previously saved Mask from a given output location path', 'check the sparsity and density properties of a Mask to get the fraction of pruned and unpruned weights', 'create a PrunedModel instance by wrapping a Model with a Mask to apply pruning', 'apply a pruning mask to model parameters by multiplying parameter data with mask values', 'run a forward pass on the pruned model that applies the mask before computing output', 'convert a layer parameter name to its corresponding mask buffer name using to_mask_name', 'save the underlying model state to disk at a given location and step number', 'get a partial pruning function from a PruningHparams object using the registered strategy', 'get the pruning hparams schema type for a specific registered pruning strategy by name', 'register a new pruning strategy by adding it to the registered_strategies dictionary', 'review the registered_strategies dictionary to see which pruning strategies are currently available', 'summarize the sparse_global pruning strategy registered in the registry module', 'prune a trained model using sparse global pruning with a specified fraction of weights to remove', 'create PruningHparams with a custom pruning fraction and layers to ignore for sparse global pruning', 'get the PruningHparams class type from the Strategy for sparse global pruning configuration', 'review the Strategy.prune method to understand how magnitude-based global pruning computes a threshold across all prunable weights', 'refactor the pruning layers to ignore logic to support a list instead of a comma-separated string']
+```
+
+Usage
+
+```
+{'get_pruning_function': 'get a partial pruning function from a PruningHparams object using the registered strategy', 'get_pruning_hparams_for_strategy': 'get the pruning hparams schema type for a specific registered pruning strategy by name', 'register_new_pruning_strategy': 'register a new pruning strategy by adding it to the registered_strategies dictionary', 'review_registered_strategies': 'review the registered_strategies dictionary to see which pruning strategies are currently available', 'summarize_sparse_global_strategy': 'summarize the sparse_global pruning strategy registered in the registry module'}
+```
+
+## File: facebookresearch_openlth/pruning/sparse_global.py
+
+Prompts
+
+```
+['review the abstract Strategy class defining the pruning strategy interface for OpenLTH', 'review the abstract get_pruning_hparams method that returns a pruning hyperparameters type', 'review the abstract prune method that takes pruning hparams, a trained model, and an optional mask', 'implement a concrete subclass of Strategy to define a custom pruning strategy', 'implement the abstract prune method in a Strategy subclass to return a Mask', 'create a Mask object from a dictionary of tensor name keys and binary tensor values', 'create a Mask with all ones for each prunable layer in a given model', 'save a Mask to disk along with a JSON sparsity report of total and unpruned weights', 'load a previously saved Mask from a given output location path', 'check the sparsity and density properties of a Mask to get the fraction of pruned and unpruned weights', 'create a PrunedModel instance by wrapping a Model with a Mask to apply pruning', 'apply a pruning mask to model parameters by multiplying parameter data with mask values', 'run a forward pass on the pruned model that applies the mask before computing output', 'convert a layer parameter name to its corresponding mask buffer name using to_mask_name', 'save the underlying model state to disk at a given location and step number', 'get a partial pruning function from a PruningHparams object using the registered strategy', 'get the pruning hparams schema type for a specific registered pruning strategy by name', 'register a new pruning strategy by adding it to the registered_strategies dictionary', 'review the registered_strategies dictionary to see which pruning strategies are currently available', 'summarize the sparse_global pruning strategy registered in the registry module', 'prune a trained model using sparse global pruning with a specified fraction of weights to remove', 'create PruningHparams with a custom pruning fraction and layers to ignore for sparse global pruning', 'get the PruningHparams class type from the Strategy for sparse global pruning configuration', 'review the Strategy.prune method to understand how magnitude-based global pruning computes a threshold across all prunable weights', 'refactor the pruning layers to ignore logic to support a list instead of a comma-separated string']
+```
+
+Usage
+
+```
+{'prune_model_sparse_global': 'prune a trained model using sparse global pruning with a specified fraction of weights to remove', 'create_pruning_hparams': 'create PruningHparams with a custom pruning fraction and layers to ignore for sparse global pruning', 'get_pruning_hparams_type': 'get the PruningHparams class type from the Strategy for sparse global pruning configuration', 'review_strategy_prune': 'review the Strategy.prune method to understand how magnitude-based global pruning computes a threshold across all prunable weights', 'refactor_pruning_layers_to_ignore': 'refactor the pruning layers to ignore logic to support a list instead of a comma-separated string'}
+```
+

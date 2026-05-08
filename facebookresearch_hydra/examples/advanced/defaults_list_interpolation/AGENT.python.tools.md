@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/examples/advanced/defaults_list_interpolation/my_app.py
+
+Prompts
+
+```
+['run the hydra app my_app that prints the resolved config as YAML', 'run the hydra app my_app with config overrides like server=nginx', 'summarize the my_app function that prints the Hydra resolved config using OmegaConf.to_yaml', 'review the hydra.main decorator that bootstraps config from conf/config.yaml with defaults list interpolation', 'test the defaults list interpolation feature using optional server_db with ${server}_${db} syntax']
+```
+
+Usage
+
+```
+{'run_hydra_app': 'run the hydra app my_app that prints the resolved config as YAML', 'run_hydra_app_with_override': 'run the hydra app my_app with config overrides like server=nginx', 'summarize_my_app': 'summarize the my_app function that prints the Hydra resolved config using OmegaConf.to_yaml', 'review_hydra_main_decorator': 'review the hydra.main decorator that bootstraps config from conf/config.yaml with defaults list interpolation', 'test_defaults_list_interpolation': 'test the defaults list interpolation feature using optional server_db with ${server}_${db} syntax'}
+```
+

@@ -1,0 +1,296 @@
+{
+  "facebookresearch_lightplane/examples/fit_single_scene.py": {
+    "run_fit_single_scene": "run the fit_single_scene script to train a Lightplane NeRF model on a single scene dataset",
+    "run_evaluation": "run the evaluation function to render test images and compute PSNR SSIM and LPIPS metrics",
+    "run_get_argparse": "run get_argparse to parse command line arguments for fitting a NeRF model to a scene",
+    "run_main_training_loop": "run the main training loop with voxel grid or triplane representation and ray or image rendering",
+    "review_evaluation": "review the evaluation function that renders images from a pretrained field and saves visualizations"
+  },
+  "facebookresearch_lightplane/examples/utils/dataloader/co3d_dataset.py": {
+    "create_CO3DDataset": "create a CO3DDataset instance from a root directory with a specified train or test split",
+    "load_sequence_CO3DDataset": "load a specific CO3D sequence by ID to preload images and compute camera poses",
+    "gen_rays_CO3DDataset": "generate camera rays for all loaded images with an optional downscaling factor",
+    "review_CO3DDataset_indexing": "review the CO3DDataset constructor indexing logic that parses frame annotations and caches to NPZ",
+    "refactor_CO3DDataset_pose_filtering": "refactor the CO3DDataset load_sequence method to adjust the max_pose_dist outlier filtering threshold"
+  },
+  "facebookresearch_lightplane/examples/utils/dataloader/config_util.py": {
+    "define_common_args": "define common argparse arguments for data loading including dataset type, scene scale, and normalization options",
+    "build_data_options": "build a dictionary of data options from parsed args to pass as kwargs to the dataset constructor",
+    "maybe_merge_config_file": "load a JSON config file and merge its arguments into the parsed args namespace",
+    "setup_render_opts": "setup SparseGrid renderer options by copying render arguments from parsed args to the renderer opt object",
+    "review_config_util": "review the config_util module functions for argument parsing, config merging, and render option setup"
+  },
+  "facebookresearch_lightplane/examples/utils/dataloader/dataset.py": {
+    "auto_dataset_detect_and_load": "auto detect and load the correct dataset class from a given root directory path",
+    "create_CO3DDataset_from_registry": "create a CO3D dataset instance using the datasets registry with key co3d",
+    "create_NeRFDataset_from_registry": "create a NeRF Blender dataset instance using the datasets registry with key nerf",
+    "create_LLFFDataset_from_registry": "create an LLFF dataset instance using the datasets registry with key llff",
+    "create_NSVFDataset_from_registry": "create an NSVF dataset instance using the datasets registry with key nsvf"
+  },
+  "facebookresearch_lightplane/examples/utils/dataloader/dataset_base.py": {
+    "gen_rays": "generate camera rays from poses and intrinsics for a given scaling factor",
+    "shuffle_rays": "shuffle all training rays for the current epoch using permutation or random selection",
+    "get_image_size": "get the height and width of a specific image in the dataset",
+    "DatasetBase_init": "initialize a DatasetBase with scene center, radius, and sphere bound settings",
+    "review_DatasetBase": "review the DatasetBase class and its ray generation and shuffling methods"
+  },
+  "facebookresearch_lightplane/examples/utils/dataloader/llff_dataset.py": {
+    "create_llff_dataset": "create an LLFFDataset instance to load and iterate over LLFF-format forward-facing scene images and camera poses",
+    "convert_rays_to_ndc": "convert a set of ray origins and directions to NDC coordinates using the convert_to_ndc function",
+    "build_camera_intrinsics": "build a camera intrinsics dictionary with width, height, fx, fy, px, py using the buildCamera function",
+    "build_nerf_poses": "build a dictionary of camera poses from a NeRF pose array using the buildNerfPoses function",
+    "load_colmap_binary": "load COLMAP sparse reconstruction images and cameras from binary files using readImagesBinary and readCamerasBinary"
+  },
+  "facebookresearch_lightplane/examples/utils/dataloader/load_llff.py": {
+    "load_llff_dataset": "load an LLFF dataset from a directory with poses, bounds, and camera intrinsics",
+    "minify_images": "downscale images in an LLFF dataset directory by a specified factor or resolution",
+    "recenter_poses": "recenter camera poses to their average position for consistent scene coordinate system",
+    "spherify_poses": "convert camera poses to a spherical path for 360 degree scene rendering",
+    "render_spiral_path": "generate a spiral camera path for novel view synthesis rendering"
+  },
+  "facebookresearch_lightplane/examples/utils/dataloader/nsvf_dataset.py": {
+    "create_NSVFDataset": "create an NSVFDataset instance to load images and camera poses from an NSVF-format data directory",
+    "load_NSVFDataset_with_split": "load an NSVFDataset with a train, val, or test split from a given root directory",
+    "normalize_NSVFDataset_cameras": "normalize NSVFDataset camera poses using similarity_from_cameras or bounding box normalization",
+    "generate_rays_NSVFDataset": "generate viewing rays from NSVFDataset camera poses and intrinsics using gen_rays with a scaling factor",
+    "shuffle_rays_NSVFDataset": "shuffle or select rays from an NSVFDataset for training using the shuffle_rays method"
+  },
+  "facebookresearch_lightplane/examples/utils/dataloader/util.py": {
+    "compute_ssim": "compute the SSIM similarity metric between two PyTorch image tensors with configurable Gaussian filter parameters",
+    "generate_rays": "generate perspective or equirectangular camera rays from image dimensions, focal length, and camera-to-world poses",
+    "pose_spherical": "generate a spherical camera pose matrix from theta, phi angles and radius for NeRF-style rendering",
+    "get_expon_lr_func": "create an exponential learning rate decay function with optional warmup delay for NeRF training optimization",
+    "jiggle_and_interp_poses": "interpolate camera poses with cubic spline and add Gaussian noise for novel view synthesis trajectories"
+  },
+  "facebookresearch_lightplane/examples/utils/util/camera_util.py": {
+    "get_sphere_cameras": "create a set of cameras arranged in a sphere around the origin with configurable elevation and distance",
+    "get_rays_for_extrinsic": "compute camera rays and centers from extrinsic rotation and translation matrices for a given image size",
+    "generate_random_cameras": "generate random camera rotation matrices and translation vectors within specified distance, elevation, and azimuth ranges",
+    "review_camera_util": "review the camera utility module for sphere cameras, ray generation, and random camera functions",
+    "refactor_generate_random_cameras": "refactor generate_random_cameras to support additional coordinate systems or camera constraints"
+  },
+  "facebookresearch_lightplane/examples/utils/util/config_util.py": {
+    "define_common_args": "define common CLI arguments for data loading, 3D representation, rendering, display, and optimizer options on a configargparse parser",
+    "build_data_options": "build a dictionary of data loading options from parsed CLI args to pass as kwargs to the dataset constructor",
+    "maybe_merge_config_file": "load a JSON config file and merge its key-value pairs into parsed CLI args, validating against known arguments",
+    "setup_render_opts": "pass rendering arguments from CLI args to a SparseGrid renderer options object for 3D scene rendering",
+    "review_config_util": "review the config utility module that defines common arguments, builds data options, merges config files, and sets up render options"
+  },
+  "facebookresearch_lightplane/examples/utils/util/grid_util.py": {
+    "init_3d_representation_voxel_grid": "create a voxel grid 3D representation with random values and gradients enabled",
+    "init_3d_representation_triplane": "create a triplane 3D representation with three orthogonal planes and gradients enabled",
+    "random_grid_voxel": "create a random voxel grid tensor with specified size and gradient settings",
+    "grid_TV_loss": "calculate total variation loss across a list of grid tensors with optional color grid",
+    "grid_L1_loss": "calculate L1 regularization loss across a list of grid tensors with optional color grid"
+  },
+  "facebookresearch_lightplane/examples/utils/util/io_util.py": {
+    "save_image_list_to_video": "create a Python module that saves a list of RGB images to an MP4 video file using OpenCV",
+    "convert_depth_image_to_colormap": "build a Python function that converts a PyTorch depth tensor to a colored colormap image using OpenCV",
+    "safe_create_dir": "create a Python function that safely creates a directory only if it does not already exist",
+    "get_save_path": "build a Python function that creates a save directory with logging subfolder and returns logging and model paths",
+    "review_convert_depth_image_to_colormap": "review the convert_depth_image_to_colormap function to understand how it normalizes depth values and applies a colormap"
+  },
+  "facebookresearch_lightplane/examples/utils/util/metric.py": {
+    "compute_psnr_metric": "compute the PSNR metric between a generated tensor and ground truth tensor",
+    "compute_rgb_ssim": "compute the SSIM similarity score between two RGB images using Gaussian filtering",
+    "compute_rgb_lpips": "compute the LPIPS perceptual similarity score between two numpy RGB images",
+    "init_lpips_model": "initialize an LPIPS model with alex or vgg network on a given device",
+    "review_metric_functions": "review the PSNR, SSIM, and LPIPS metric functions for image quality evaluation"
+  },
+  "facebookresearch_lightplane/examples/utils/util/nnfm_loss.py": {
+    "run_NNFMLoss_forward": "run NNFMLoss forward pass to compute nnfm, content, and gram losses from output, style, and content images",
+    "create_NNFMLoss_instance": "create an NNFMLoss instance with a pretrained VGG-16 model on the specified device for feature extraction",
+    "run_match_colors_for_image_set": "run match_colors_for_image_set to transform an image set colors to match a style image using SVD",
+    "run_nn_feat_replace": "run nn_feat_replace to replace features in tensor a with nearest neighbors from tensor b by cosine distance",
+    "run_gram_matrix": "run gram_matrix to compute the Gram matrix of feature maps for style loss computation"
+  },
+  "facebookresearch_lightplane/examples/utils/util/renderer_util.py": {
+    "get_prediction_for_view_render": "get a rendered prediction for a camera view using a LightplaneRenderer and extrinsic matrices",
+    "get_prediction_for_view_rays": "get ray directions and origins from extrinsic camera poses for lightplane rendering",
+    "get_prediction_for_view_grid": "get rendered output from a feature grid using ray sampling and near-far depth bounds",
+    "review_get_prediction_for_view": "review the get_predicton_for_view function to understand how it constructs Rays and calls the render module",
+    "summarize_renderer_util": "summarize the renderer_util module that provides view prediction rendering via LightplaneRenderer"
+  },
+  "facebookresearch_lightplane/lightplane/lightplane_renderer.py": {
+    "render_lightplane_rays": "render rays through a 3D grid using the lightplane renderer with trunk, color, and opacity MLPs",
+    "run_lightplane_forward_pass": "run the LightplaneFunction forward pass to compute ray length, transmittance, and rendered features from a feature grid",
+    "run_lightplane_backward_pass": "run the LightplaneFunction backward pass to compute gradients for the feature grid, MLP params, and ray encoding",
+    "calculate_mlp_parameter_count": "calculate the total number of weight and bias parameters for an MLP given input, hidden, output dimensions and layer count",
+    "review_lightplane_renderer_config": "review the lightplane renderer configuration including num_samples, gain, contract_coords, scaffold, and triton block size settings"
+  },
+  "facebookresearch_lightplane/lightplane/lightplane_splatter.py": {
+    "build_lightplane_splatter": "build a python module to splat ray encodings to a multi-resolution output grid using lightplane_splatter",
+    "build_lightplane_mlp_splatter": "build a python module to splat ray features through an MLP into a multi-resolution grid using lightplane_mlp_splatter",
+    "test_lightplane_splatter_function": "test the LightplaneSplatterFunction autograd forward and backward pass with Triton kernels for ray-marched splatting",
+    "review_lightplane_splatter_contraction": "review the lightplane_splatter MeRF coordinate contraction logic for unbounded scene representation",
+    "summarize_lightplane_splatter_backward": "summarize the LightplaneSplatterFunction backward pass gradient computation for splatting features and MLP parameters"
+  },
+  "facebookresearch_lightplane/lightplane/misc_utils.py": {
+    "flatten_grid_list": "flatten a list of torch grid tensors into a single 2D tensor and return grid sizes",
+    "unflatten_grid_tensor": "unflatten a 2D tensor back into a tuple of grid tensors using provided grid sizes",
+    "pad_feature_to_block_size": "pad a feature tensor to a multiple of the specified block size using zero padding",
+    "check_grid_shapes": "validate that grid tensors and grid sizes are consistent and compatible with each other",
+    "process_and_flatten_grid": "process and flatten grid and color grid tensors into unified 2D tensor form with sizes"
+  },
+  "facebookresearch_lightplane/lightplane/mlp_utils.py": {
+    "init_decoder_params": "initialize Lightplane renderer decoder MLP parameters with Xavier initialization for trunk, opacity, and color MLPs",
+    "init_splatter_params": "initialize Lightplane splatter MLP parameters with Xavier initialization for 3D feature grid splatting",
+    "flatten_decoder_params": "flatten trunk, opacity, and color MLP weight matrices and bias vectors into a single contiguous tensor",
+    "flattened_decoder_params_to_list": "unflatten a 1D MLP parameter tensor back into separate weight matrices and bias vectors for each MLP",
+    "get_triton_function_input_dims": "extract MLP layer counts and hidden unit dimensions from decoder params for Triton kernel configuration"
+  },
+  "facebookresearch_lightplane/lightplane/naive_renderer.py": {
+    "run_lightplane_renderer_naive": "run the naive lightplane renderer to render rays against a 3D grid and return color and depth",
+    "run_lightplane_eval_mlp": "run the MLP evaluation on sampled grid features to compute opacity and color for 3D points",
+    "run_lightplane_eval_mlp_opacity_only": "run the opacity-only MLP evaluation on sampled grid features to compute opacity values for 3D points",
+    "run_sample_grid_list_checkpointed": "run grid sampling from a list of 3D grids at given 3D points with optional gradient checkpointing",
+    "run_eval_mlp": "run a multi-layer perceptron forward pass on input vectors using provided weights and biases"
+  },
+  "facebookresearch_lightplane/lightplane/naive_splatter.py": {
+    "run_lightplane_splatter_naive": "run the naive lightplane splatter on rays to produce splatted feature grids for debugging",
+    "run_lightplane_mlp_splatter_naive": "run the naive lightplane splatter with MLP and input grid to produce splatted feature grids",
+    "review_splat_voxel_grid": "review the _splat_voxel_grid function that performs trilinear interpolation splatting of features into 3D voxel grids",
+    "review_splat_grid": "review the _splat_grid function that performs bilinear interpolation splatting of features into 2D planes",
+    "summarize_lightplane_splatter_naive_impl": "summarize the _lightplane_splatter_naive_impl core implementation that samples rays, evaluates MLP, and splats features"
+  },
+  "facebookresearch_lightplane/lightplane/ray_utils.py": {
+    "create_Rays_dataclass": "create a Rays dataclass with directions, origins, grid_idx, near, and far tensors",
+    "index_Rays_getitem": "index a Rays object with a key to select a subset of rays",
+    "pad_Rays_to_block_size": "pad a Rays object to a multiple of a given block size",
+    "calc_harmonic_embedding": "calculate the harmonic embedding for ray directions with a specified number of harmonic functions",
+    "jitter_near_far": "jitter the near and far planes by a random offset based on the number of samples"
+  },
+  "facebookresearch_lightplane/lightplane/renderer_module.py": {
+    "create_LightplaneRenderer": "create a LightplaneRenderer module with configurable MLP layers, grid channels, and sample count for 3D rendering",
+    "run_forward_rendering": "run the LightplaneRenderer forward pass with Rays and feature grid to render images with alpha masks",
+    "eval_decoder_at_points": "evaluate the decoder MLP at given 3D points using feature grid and ray encoding to get opacity and color",
+    "calculate_scaffold": "calculate a voxel scaffold by sampling the feature grid and pruning points below an opacity threshold",
+    "eval_opacity_at_points": "evaluate opacity values at given 3D points using the feature grid and decoder parameters"
+  },
+  "facebookresearch_lightplane/lightplane/splatter_module.py": {
+    "create_lightplane_splatter_module": "create a LightplaneSplatter module to splat ray encodings directly into an output grid",
+    "create_lightplane_mlp_splatter_module": "create a LightplaneMLPSplatter module that samples from an input grid, passes through an MLP, then splats",
+    "run_lightplane_splatter_forward": "run the LightplaneSplatter forward pass to splat rays encoding into a zero-initialized output grid",
+    "run_lightplane_mlp_splatter_forward": "run the LightplaneMLPSplatter forward pass with an input grid prior and MLP to produce a splatted grid",
+    "review_check_splatter_ray_encoding_input": "review the _check_splatter_ray_encoding_input function that validates ray encoding tensor dimensions"
+  },
+  "facebookresearch_lightplane/lightplane/visualize.py": {
+    "visualize_rays_plotly_basic": "visualize rays using plotly and return an interactive 3D figure with ray lines and points",
+    "visualize_rays_plotly_save_html": "visualize rays using plotly and save the interactive figure as an HTML file to disk",
+    "visualize_rays_plotly_with_colors": "visualize rays with RGB pixel colors applied to near-origin points for color-coded ray visualization",
+    "visualize_rays_plotly_limit_rays": "visualize rays with a maximum number of rays displayed per feature grid subplot",
+    "visualize_rays_plotly_custom_layout": "visualize rays in a custom grid layout with configurable line width and marker size"
+  },
+  "facebookresearch_lightplane/lightplane/triton_src/shared/func_util.py": {
+    "build_triton_sigmoid_backward": "build a Triton kernel that computes the sigmoid activation backward pass using d_sigmoid",
+    "create_triton_softplus_kernel": "create a Triton kernel that computes the numerically stable softplus activation using softplus",
+    "test_d_softplus_gradient": "test the d_softplus function to compute softplus gradient in a Triton kernel",
+    "refactor_d_linear_relu_kernel": "refactor a Triton kernel to use d_linear_relu for linear layer with ReLU backward pass",
+    "summarize_d_linear_backward": "summarize the d_linear function that computes backward gradients for a linear layer y = x @ w + b"
+  },
+  "facebookresearch_lightplane/lightplane/triton_src/shared/fwbw_util.py": {
+    "review_fwbw_init": "review the fwbw_init Triton JIT kernel that loads ray origins, directions, and encoding buffers for forward-backward rendering",
+    "review_fwbw_splatter_init": "review the fwbw_splatter_init Triton JIT kernel that loads splatting features and masks for Gaussian splatting ray marching",
+    "summarize_fwbw_init": "summarize the fwbw_init function which computes offsets, masks, and buffers for ray-based 3D rendering kernels",
+    "summarize_fwbw_splatter_init": "summarize the fwbw_splatter_init function which initializes feature and mask buffers for splatting-based rendering",
+    "refactor_fwbw_init": "refactor the fwbw_init kernel to support additional ray encoding dimensions or different grid indexing schemes"
+  },
+  "facebookresearch_lightplane/lightplane/triton_src/shared/grid_sample_util.py": {
+    "sample_grid_rep": "sample feature values from voxel or triplane grids using trilinear interpolation in a Triton kernel",
+    "splat_grid_rep": "splat gradient values back into voxel or triplane feature grids using atomic adds in a Triton kernel",
+    "review_voxel_grid_sample": "review the Triton kernel that performs multi-grid trilinear sampling across voxel and plane grids",
+    "review_voxel_grid_splat": "review the Triton kernel that splats gradients across multiple voxel and plane feature grids",
+    "review_is_in_bounds": "review the Triton utility that generates in-bounds masks for normalized 3D coordinates"
+  },
+  "facebookresearch_lightplane/lightplane/triton_src/shared/rand_util.py": {
+    "int_to_randn_triton": "run the Triton GPU kernel to convert two integer tensors into normally distributed random floats using a seed",
+    "int_to_randn_naive": "run the PyTorch CPU implementation to convert two integer tensors into normally distributed random floats using a seed",
+    "hash": "review the Triton JIT hash function that scrambles an int32 value using bitwise shifts and multiplication",
+    "pair_hash": "review the Triton JIT pair hash function that combines two int32 values using XOR and bit shifting",
+    "int32_to_float01": "summarize the Triton JIT function that normalizes an int32 value to a float in the range [0, 1]"
+  },
+  "facebookresearch_lightplane/lightplane/triton_src/shared/ray_util.py": {
+    "contract_pi_coords": "contract 3D coordinates using the MERF contract_pi function to map unbounded space into a bounded [-1, 1] range",
+    "contract_pi_helper": "apply the contract_pi_one helper to a single coordinate value with its computed norm for bounded space mapping",
+    "compute_inverse_sphere_depth": "compute inverse sphere depth for a given step index, total steps, far bound, and disparity at infinity",
+    "compute_linear_depth": "compute linear depth for a given step index, total steps, near bound, and far bound",
+    "review_ray_util_functions": "review the Triton JIT ray utility functions for coordinate contraction and depth sampling strategies"
+  },
+  "facebookresearch_lightplane/lightplane/triton_src/templates/cog_util.py": {
+    "generate_triton_template_file_name": "generate a named Triton template file string from template name and layer counts for trunk, opacity, and color",
+    "generate_splatter_mlp_file_name": "generate a named splatter MLP file string from a template name and number of layers",
+    "build_enumerated_variable_string": "build a comma-separated enumerated string with a given prefix and postfix for N items",
+    "generate_mlp_weight_bias_string": "generate a comma-separated string of weight and bias variable names for an MLP with N layers",
+    "generate_mlp_gradient_string": "generate a comma-separated string of gradient weight and bias variable names for an MLP with N layers"
+  },
+  "facebookresearch_lightplane/lightplane/triton_src/templates/renderer_bw.py": {
+    "review_bw_kernel": "review the bw_kernel Triton JIT function for backward volumetric rendering gradient computation",
+    "summarize_bw_kernel": "summarize the bw_kernel backward pass logic including transmittance, opacity, and color gradient propagation",
+    "refactor_bw_kernel": "refactor the bw_kernel to support additional depth sampling strategies beyond inverse sphere and linear",
+    "review_load_mlp_params": "review the load_mlp_params stub function that is overridden by cog-generated MLP parameter loading code",
+    "summarize_cog_template": "summarize the cog code generation template that auto-generates MLP forward and backward functions for trunk, opacity, and color heads"
+  },
+  "facebookresearch_lightplane/lightplane/triton_src/templates/renderer_fw.py": {
+    "run_fw_kernel": "run the triton JIT forward rendering kernel to perform volumetric ray marching over feature grids",
+    "review_fw_kernel": "review the fw_kernel triton JIT function for volumetric ray marching and expected depth computation",
+    "summarize_fw_kernel": "summarize the fw_kernel forward pass logic including grid sampling, MLP evaluation, and color compositing",
+    "refactor_load_mlp_params": "refactor the load_mlp_params placeholder function to load MLP weights from a custom tensor layout",
+    "test_mlp_trunk": "test the mlp_trunk placeholder function after cog codegen generates the actual trunk MLP forward pass"
+  },
+  "facebookresearch_lightplane/lightplane/triton_src/templates/splatter_bw.py": {
+    "review_bw_kernel": "review the bw_kernel Triton JIT kernel for backward-pass gradient splatting on feature grids",
+    "review_bw_kernel_wMLP": "review the bw_kernel_wMLP Triton JIT kernel for backward-pass gradient splatting with MLP layers",
+    "summarize_fwbw_splatter_init": "summarize how fwbw_splatter_init initializes ray sampling buffers for backward splatting kernels",
+    "review_cog_template": "review the cog template directives that auto-generate MLP parameter loading and gradient accumulation code",
+    "summarize_sample_grid_rep": "summarize how sample_grid_rep and splat_grid_rep sample and scatter gradients across 3D feature grids"
+  },
+  "facebookresearch_lightplane/lightplane/triton_src/templates/splatter_fw.py": {
+    "run_fw_kernel": "run the Triton fw_kernel to splat features into a 3D grid along camera rays",
+    "run_fw_kernel_wMLP": "run the Triton fw_kernel_wMLP to splat features through an MLP into a 3D grid",
+    "review_fw_kernel": "review the fw_kernel Triton JIT function for ray marching and grid splatting logic",
+    "review_fw_kernel_wMLP": "review the fw_kernel_wMLP Triton JIT function for MLP-augmented feature splatting",
+    "summarize_cog_template": "summarize the cog code generation template that auto-generates MLP parameter loading and splatting code"
+  },
+  "facebookresearch_lightplane/tests/renderer_speed_benchmark.py": {
+    "run_renderer_speed_benchmark": "run the renderer_speed_benchmark function to benchmark lightplane rendering speed across image sizes",
+    "run_test_one_full": "run _test_one_full to benchmark a single renderer configuration with forward and backward passes",
+    "print_cuda_memory_usage": "call print_memory_usage to display current CUDA memory statistics for the active device",
+    "review_test_one_full": "review the _test_one_full function to understand how checkpoint, naive, and kernel modes are benchmarked",
+    "refactor_renderer_speed_benchmark": "refactor renderer_speed_benchmark to add custom image sizes or modify the test sweep parameters"
+  },
+  "facebookresearch_lightplane/tests/splatter_speed_benchmark.py": {
+    "run_splatter_speed_benchmark": "run the splatter speed benchmark to measure forward and backward pass performance across kernel, naive, and checkpoint modes",
+    "run_test_one_full": "run a single full splatter test with given parameters, reruns, and warmup iterations across all three modes",
+    "review_splatter_speed_benchmark": "review the splatter speed benchmark function that sweeps grid size, ray count, and view count parameters",
+    "review_test_one_full": "review the _test_one_full function that benchmarks forward and backward pass timing and memory for splatter modes",
+    "refactor_test_one_full": "refactor the _test_one_full function to support additional splatter modes or custom performance metrics"
+  },
+  "facebookresearch_lightplane/tests/test_randn.py": {
+    "test_int_to_randn_triton": "test the int_to_randn_triton function to verify it produces normal distribution output matching the naive implementation",
+    "test_int_to_randn_naive": "test the int_to_randn_naive function to verify it converts random integer permutations to normal distribution values",
+    "test_TestRandn_class": "test the TestRandn unittest class to validate randn generation correctness across multiple iterations",
+    "run_test_randn": "run the test_randn unit test to verify Triton and naive randn implementations produce matching results",
+    "review_int_to_randn_accuracy": "review the int_to_randn_triton and int_to_randn_naive functions for numerical accuracy within 1e-3 tolerance"
+  },
+  "facebookresearch_lightplane/tests/test_renderer_with_autograd.py": {
+    "run_renderer_autograd_tests": "run the TestRendererWithAutograd unittest to verify lightplane renderer forward and backward pass correctness",
+    "test_lightplane_renderer_forward": "test the lightplane renderer forward pass against the naive reference implementation across parameter sweeps",
+    "test_lightplane_renderer_backward": "test the lightplane renderer backward pass gradients against the naive reference implementation",
+    "review_TestRendererWithAutograd": "review the TestRendererWithAutograd class and its parameter sweep test configuration for renderer validation",
+    "refactor_test_sweep_params": "refactor the test_sweep parameter grid in TestRendererWithAutograd to add or remove renderer configuration combinations"
+  },
+  "facebookresearch_lightplane/tests/test_splatter_with_autograd.py": {
+    "run_test_splatter_with_autograd": "run the TestSplatterWithAutograd test suite to validate lightplane splatter forward and backward pass correctness",
+    "test_splatter_forward_backward": "test the splatter operation forward pass and gradient computation across multiple parameter combinations",
+    "test_splatter_naive_vs_lightplane": "test that the lightplane splatter implementation matches the naive implementation for forward and backward passes",
+    "review_TestSplatterWithAutograd": "review the TestSplatterWithAutograd class and its parameter sweep test configuration for splatter validation",
+    "summarize_test_splatter_with_autograd": "summarize the splatter autograd test file that compares naive and optimized lightplane splatter results"
+  },
+  "facebookresearch_lightplane/tests/utils.py": {
+    "test_lightplane_splatter_wrapper": "test the lightplane splatter wrapper function with rays and grid size to compare naive and optimized implementations",
+    "compare_tensor_outputs": "compare two torch tensors with absolute and relative difference thresholds to validate numerical correctness",
+    "measure_cuda_memory": "measure CUDA memory allocation and peak usage in MB using the Memory context manager",
+    "generate_random_rays": "generate random Rays objects with configurable origins, directions, near/far bounds, and optional encoding",
+    "create_test_example": "create a complete test example with rays, grids, MLP decoder params, and scaffold for lightplane testing"
+  }
+}

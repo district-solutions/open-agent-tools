@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/cpa
+- repo_uri: https://github.com/facebookresearch/cpa
+
+## File: facebookresearch_cpa/tests/test.py
+
+Prompts
+
+```
+['run the sim_adata function to generate synthetic single-cell AnnData with control and drug conditions', 'run the CPA API to train a perturbation response model on single-cell data for one epoch', 'create a CPA API instance with an AnnData object, perturbation key, and control group settings', 'review the sim_adata function that creates synthetic iid data using scvi and assigns condition labels', 'summarize how the CPA API is initialized and trained using synthetic AnnData in the test script']
+```
+
+Usage
+
+```
+{'run_sim_adata': 'run the sim_adata function to generate synthetic single-cell AnnData with control and drug conditions', 'run_cpa_api_training': 'run the CPA API to train a perturbation response model on single-cell data for one epoch', 'create_cpa_api_instance': 'create a CPA API instance with an AnnData object, perturbation key, and control group settings', 'review_sim_adata': 'review the sim_adata function that creates synthetic iid data using scvi and assigns condition labels', 'summarize_cpa_api_usage': 'summarize how the CPA API is initialized and trained using synthetic AnnData in the test script'}
+```
+

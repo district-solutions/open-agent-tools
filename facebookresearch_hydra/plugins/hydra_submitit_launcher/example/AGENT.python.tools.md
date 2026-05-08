@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/plugins/hydra_submitit_launcher/example/my_app.py
+
+Prompts
+
+```
+['run a Hydra app that uses submitit JobEnvironment to log process ID and task info', 'review the my_app function that uses hydra.main with version_base None and config_path dot', 'summarize how submitit.JobEnvironment is used to access job context in a Hydra app', 'refactor the my_app function to customize logging output for process ID and task configuration', 'test the my_app entry point that runs with Hydra config and submitit job environment']
+```
+
+Usage
+
+```
+{'run_hydra_submitit_app': 'run a Hydra app that uses submitit JobEnvironment to log process ID and task info', 'review_my_app_hydra_config': 'review the my_app function that uses hydra.main with version_base None and config_path dot', 'summarize_submitit_job_environment': 'summarize how submitit.JobEnvironment is used to access job context in a Hydra app', 'refactor_my_app_logging': 'refactor the my_app function to customize logging output for process ID and task configuration', 'test_my_app_hydra_entry': 'test the my_app entry point that runs with Hydra config and submitit job environment'}
+```
+

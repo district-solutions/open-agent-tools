@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/projects/roscoe/synthetic_evaluation/synthetic_roscoe.py
+
+Prompts
+
+```
+['run the synthetic ROSCOE evaluation script to score perturbed synthetic datasets with reasoning metrics', 'create a SyntheticChain object to parse and normalize reasoning chain steps from a list of strings', 'create a SyntheticEvaluator to evaluate synthetic dialog reasoning chains using embedding and language models', 'update the SyntheticEvaluator with hypotheses, references, and contexts loaded from a JSON lines file', 'score a synthetic dataset file using the evaluator and save results as a TSV file']
+```
+
+Usage
+
+```
+{'run_synthetic_roscoe_cli': 'run the synthetic ROSCOE evaluation script to score perturbed synthetic datasets with reasoning metrics', 'create_synthetic_chain': 'create a SyntheticChain object to parse and normalize reasoning chain steps from a list of strings', 'create_synthetic_evaluator': 'create a SyntheticEvaluator to evaluate synthetic dialog reasoning chains using embedding and language models', 'update_evaluator_from_file': 'update the SyntheticEvaluator with hypotheses, references, and contexts loaded from a JSON lines file', 'score_and_save': 'score a synthetic dataset file using the evaluator and save results as a TSV file'}
+```
+

@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairscale
+- repo_uri: https://github.com/facebookresearch/fairscale
+
+## File: facebookresearch_fairscale/benchmarks/fsdp.py
+
+Prompts
+
+```
+['run the FSDP benchmark for a language model using synthetic or real data with configurable batch size', 'run a sample FSDP training dry run without regression testing using the --dry_run flag', 'run the FSDP benchmark in full fp16 mode using the --full_fp16 flag', 'run the FSDP benchmark with auto_wrap enabled using the --enable_auto_wrap flag', 'run the FSDP benchmark in evaluation mode using the --benchmark_eval flag', 'run a single process Mixture of Experts benchmark across multiple CUDA devices using mp.spawn', 'run the distributed training loop for an MOE model with gradient clipping and loss logging', 'benchmark a DDP-wrapped language model using NCCL backend and multi-process spawning', 'review the train function that handles batch processing, loss computation, and per-rank logging', 'summarize the benchmark_single_process function that spawns worker processes for MOE model evaluation', 'run the OSS optimizer state sharding benchmark on MNIST with vanilla, DDP, or ShardedDDP modes', 'run the train function to benchmark distributed training with OSS optimizer sharding on a vision model', 'run get_problem to set up a torchvision or timm model with MNIST dataloader and cross entropy loss', 'run validate_benchmark to check training speed, memory, and loss against golden reference stats', 'review the OptimType enum to understand vanilla, oss_ddp, oss_sharded_ddp, and everyone optimizer configurations', 'run a single process language model benchmark using FairScale Pipe across multiple GPU devices', 'train a pipelined language model with gradient clipping and per batch loss logging', 'generate a layer balance schedule for distributing model layers across multiple devices', 'verify benchmark words per second throughput against golden configuration thresholds', 'get a count of CUDA tensors grouped by their size bucket dimensions', 'init a random seed across torch, cuda, and numpy for reproducible benchmark runs', 'init an argparse parser with benchmark flags like batch size, chunks, and model name', 'create a model config dict with an instantiated model, optimizer, and dataset info', 'get a GPT-2 based transformer language model for sequence prediction with optional lazy construction', 'log the total number of trainable parameters in a PyTorch model with distributed support']
+```
+
+Usage
+
+```
+{'run_fsdp_benchmark': 'run the FSDP benchmark for a language model using synthetic or real data with configurable batch size', 'run_fsdp_dry_run': 'run a sample FSDP training dry run without regression testing using the --dry_run flag', 'run_fsdp_fp16': 'run the FSDP benchmark in full fp16 mode using the --full_fp16 flag', 'run_fsdp_auto_wrap': 'run the FSDP benchmark with auto_wrap enabled using the --enable_auto_wrap flag', 'run_fsdp_eval': 'run the FSDP benchmark in evaluation mode using the --benchmark_eval flag'}
+```
+
+## File: facebookresearch_fairscale/benchmarks/moe.py
+
+Prompts
+
+```
+['run the FSDP benchmark for a language model using synthetic or real data with configurable batch size', 'run a sample FSDP training dry run without regression testing using the --dry_run flag', 'run the FSDP benchmark in full fp16 mode using the --full_fp16 flag', 'run the FSDP benchmark with auto_wrap enabled using the --enable_auto_wrap flag', 'run the FSDP benchmark in evaluation mode using the --benchmark_eval flag', 'run a single process Mixture of Experts benchmark across multiple CUDA devices using mp.spawn', 'run the distributed training loop for an MOE model with gradient clipping and loss logging', 'benchmark a DDP-wrapped language model using NCCL backend and multi-process spawning', 'review the train function that handles batch processing, loss computation, and per-rank logging', 'summarize the benchmark_single_process function that spawns worker processes for MOE model evaluation', 'run the OSS optimizer state sharding benchmark on MNIST with vanilla, DDP, or ShardedDDP modes', 'run the train function to benchmark distributed training with OSS optimizer sharding on a vision model', 'run get_problem to set up a torchvision or timm model with MNIST dataloader and cross entropy loss', 'run validate_benchmark to check training speed, memory, and loss against golden reference stats', 'review the OptimType enum to understand vanilla, oss_ddp, oss_sharded_ddp, and everyone optimizer configurations', 'run a single process language model benchmark using FairScale Pipe across multiple GPU devices', 'train a pipelined language model with gradient clipping and per batch loss logging', 'generate a layer balance schedule for distributing model layers across multiple devices', 'verify benchmark words per second throughput against golden configuration thresholds', 'get a count of CUDA tensors grouped by their size bucket dimensions', 'init a random seed across torch, cuda, and numpy for reproducible benchmark runs', 'init an argparse parser with benchmark flags like batch size, chunks, and model name', 'create a model config dict with an instantiated model, optimizer, and dataset info', 'get a GPT-2 based transformer language model for sequence prediction with optional lazy construction', 'log the total number of trainable parameters in a PyTorch model with distributed support']
+```
+
+Usage
+
+```
+{'run_moe_benchmark': 'run a single process Mixture of Experts benchmark across multiple CUDA devices using mp.spawn', 'run_train_loop': 'run the distributed training loop for an MOE model with gradient clipping and loss logging', 'benchmark_DDP_model': 'benchmark a DDP-wrapped language model using NCCL backend and multi-process spawning', 'review_train_function': 'review the train function that handles batch processing, loss computation, and per-rank logging', 'summarize_benchmark_single_process': 'summarize the benchmark_single_process function that spawns worker processes for MOE model evaluation'}
+```
+
+## File: facebookresearch_fairscale/benchmarks/oss.py
+
+Prompts
+
+```
+['run the FSDP benchmark for a language model using synthetic or real data with configurable batch size', 'run a sample FSDP training dry run without regression testing using the --dry_run flag', 'run the FSDP benchmark in full fp16 mode using the --full_fp16 flag', 'run the FSDP benchmark with auto_wrap enabled using the --enable_auto_wrap flag', 'run the FSDP benchmark in evaluation mode using the --benchmark_eval flag', 'run a single process Mixture of Experts benchmark across multiple CUDA devices using mp.spawn', 'run the distributed training loop for an MOE model with gradient clipping and loss logging', 'benchmark a DDP-wrapped language model using NCCL backend and multi-process spawning', 'review the train function that handles batch processing, loss computation, and per-rank logging', 'summarize the benchmark_single_process function that spawns worker processes for MOE model evaluation', 'run the OSS optimizer state sharding benchmark on MNIST with vanilla, DDP, or ShardedDDP modes', 'run the train function to benchmark distributed training with OSS optimizer sharding on a vision model', 'run get_problem to set up a torchvision or timm model with MNIST dataloader and cross entropy loss', 'run validate_benchmark to check training speed, memory, and loss against golden reference stats', 'review the OptimType enum to understand vanilla, oss_ddp, oss_sharded_ddp, and everyone optimizer configurations', 'run a single process language model benchmark using FairScale Pipe across multiple GPU devices', 'train a pipelined language model with gradient clipping and per batch loss logging', 'generate a layer balance schedule for distributing model layers across multiple devices', 'verify benchmark words per second throughput against golden configuration thresholds', 'get a count of CUDA tensors grouped by their size bucket dimensions', 'init a random seed across torch, cuda, and numpy for reproducible benchmark runs', 'init an argparse parser with benchmark flags like batch size, chunks, and model name', 'create a model config dict with an instantiated model, optimizer, and dataset info', 'get a GPT-2 based transformer language model for sequence prediction with optional lazy construction', 'log the total number of trainable parameters in a PyTorch model with distributed support']
+```
+
+Usage
+
+```
+{'run_oss_benchmark': 'run the OSS optimizer state sharding benchmark on MNIST with vanilla, DDP, or ShardedDDP modes', 'run_train_function': 'run the train function to benchmark distributed training with OSS optimizer sharding on a vision model', 'run_get_problem': 'run get_problem to set up a torchvision or timm model with MNIST dataloader and cross entropy loss', 'run_validate_benchmark': 'run validate_benchmark to check training speed, memory, and loss against golden reference stats', 'review_OptimType': 'review the OptimType enum to understand vanilla, oss_ddp, oss_sharded_ddp, and everyone optimizer configurations'}
+```
+
+## File: facebookresearch_fairscale/benchmarks/pipe.py
+
+Prompts
+
+```
+['run the FSDP benchmark for a language model using synthetic or real data with configurable batch size', 'run a sample FSDP training dry run without regression testing using the --dry_run flag', 'run the FSDP benchmark in full fp16 mode using the --full_fp16 flag', 'run the FSDP benchmark with auto_wrap enabled using the --enable_auto_wrap flag', 'run the FSDP benchmark in evaluation mode using the --benchmark_eval flag', 'run a single process Mixture of Experts benchmark across multiple CUDA devices using mp.spawn', 'run the distributed training loop for an MOE model with gradient clipping and loss logging', 'benchmark a DDP-wrapped language model using NCCL backend and multi-process spawning', 'review the train function that handles batch processing, loss computation, and per-rank logging', 'summarize the benchmark_single_process function that spawns worker processes for MOE model evaluation', 'run the OSS optimizer state sharding benchmark on MNIST with vanilla, DDP, or ShardedDDP modes', 'run the train function to benchmark distributed training with OSS optimizer sharding on a vision model', 'run get_problem to set up a torchvision or timm model with MNIST dataloader and cross entropy loss', 'run validate_benchmark to check training speed, memory, and loss against golden reference stats', 'review the OptimType enum to understand vanilla, oss_ddp, oss_sharded_ddp, and everyone optimizer configurations', 'run a single process language model benchmark using FairScale Pipe across multiple GPU devices', 'train a pipelined language model with gradient clipping and per batch loss logging', 'generate a layer balance schedule for distributing model layers across multiple devices', 'verify benchmark words per second throughput against golden configuration thresholds', 'get a count of CUDA tensors grouped by their size bucket dimensions', 'init a random seed across torch, cuda, and numpy for reproducible benchmark runs', 'init an argparse parser with benchmark flags like batch size, chunks, and model name', 'create a model config dict with an instantiated model, optimizer, and dataset info', 'get a GPT-2 based transformer language model for sequence prediction with optional lazy construction', 'log the total number of trainable parameters in a PyTorch model with distributed support']
+```
+
+Usage
+
+```
+{'run_pipe_benchmark': 'run a single process language model benchmark using FairScale Pipe across multiple GPU devices', 'train_pipelined_model': 'train a pipelined language model with gradient clipping and per batch loss logging', 'generate_layer_balance': 'generate a layer balance schedule for distributing model layers across multiple devices', 'verify_throughput': 'verify benchmark words per second throughput against golden configuration thresholds', 'get_tensors_by_size': 'get a count of CUDA tensors grouped by their size bucket dimensions'}
+```
+
+## File: facebookresearch_fairscale/benchmarks/utils.py
+
+Prompts
+
+```
+['run the FSDP benchmark for a language model using synthetic or real data with configurable batch size', 'run a sample FSDP training dry run without regression testing using the --dry_run flag', 'run the FSDP benchmark in full fp16 mode using the --full_fp16 flag', 'run the FSDP benchmark with auto_wrap enabled using the --enable_auto_wrap flag', 'run the FSDP benchmark in evaluation mode using the --benchmark_eval flag', 'run a single process Mixture of Experts benchmark across multiple CUDA devices using mp.spawn', 'run the distributed training loop for an MOE model with gradient clipping and loss logging', 'benchmark a DDP-wrapped language model using NCCL backend and multi-process spawning', 'review the train function that handles batch processing, loss computation, and per-rank logging', 'summarize the benchmark_single_process function that spawns worker processes for MOE model evaluation', 'run the OSS optimizer state sharding benchmark on MNIST with vanilla, DDP, or ShardedDDP modes', 'run the train function to benchmark distributed training with OSS optimizer sharding on a vision model', 'run get_problem to set up a torchvision or timm model with MNIST dataloader and cross entropy loss', 'run validate_benchmark to check training speed, memory, and loss against golden reference stats', 'review the OptimType enum to understand vanilla, oss_ddp, oss_sharded_ddp, and everyone optimizer configurations', 'run a single process language model benchmark using FairScale Pipe across multiple GPU devices', 'train a pipelined language model with gradient clipping and per batch loss logging', 'generate a layer balance schedule for distributing model layers across multiple devices', 'verify benchmark words per second throughput against golden configuration thresholds', 'get a count of CUDA tensors grouped by their size bucket dimensions', 'init a random seed across torch, cuda, and numpy for reproducible benchmark runs', 'init an argparse parser with benchmark flags like batch size, chunks, and model name', 'create a model config dict with an instantiated model, optimizer, and dataset info', 'get a GPT-2 based transformer language model for sequence prediction with optional lazy construction', 'log the total number of trainable parameters in a PyTorch model with distributed support']
+```
+
+Usage
+
+```
+{'init_random_seed': 'init a random seed across torch, cuda, and numpy for reproducible benchmark runs', 'init_args': 'init an argparse parser with benchmark flags like batch size, chunks, and model name', 'create_model_config': 'create a model config dict with an instantiated model, optimizer, and dataset info', 'get_lm_model': 'get a GPT-2 based transformer language model for sequence prediction with optional lazy construction', 'log_number_of_parameters': 'log the total number of trainable parameters in a PyTorch model with distributed support'}
+```
+

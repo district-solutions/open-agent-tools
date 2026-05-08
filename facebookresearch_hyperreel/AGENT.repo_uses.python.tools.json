@@ -1,0 +1,493 @@
+{
+  "facebookresearch_hyperreel/datasets/base.py": {
+    "create_base_dataset": "create a BaseDataset subclass that reads metadata and prepares training data with image coordinates and RGB values",
+    "prepare_train_data": "prepare training data by collecting all image coordinates and RGB values into concatenated tensors",
+    "shuffle_dataset": "shuffle the dataset coordinates and RGB tensors randomly for training with optional patch-based shuffling",
+    "crop_batch_tensors": "crop a batch of tensors to a center region using specified width and height deltas",
+    "patchify_tensor": "patchify a tensor into fixed-width patches with random offset and boundary removal for patch-based training"
+  },
+  "facebookresearch_hyperreel/datasets/blender.py": {
+    "create_BlenderDataset_for_split": "create a BlenderDataset instance with a config and train or test split for NeRF training",
+    "create_DenseBlenderDataset_with_val_set": "create a DenseBlenderDataset instance with a custom validation set for dense view synthesis",
+    "create_BlenderLightfieldDataset": "create a BlenderLightfieldDataset instance to load lightfield data from a single transforms.json file",
+    "get_coords_rays_from_pose": "get ray origins and directions for a given camera pose index using get_coords",
+    "get_intrinsics_camera_matrix": "get the 3x3 camera intrinsics matrix K from a BlenderDataset or DenseBlenderDataset instance"
+  },
+  "facebookresearch_hyperreel/datasets/catacaustics.py": {
+    "readBundleFolder": "parse a COLMAP bundle.out file to extract camera poses, intrinsics, and image paths",
+    "CatacausticsDataset_read_meta": "load camera poses, intrinsics, and image paths from bundle folders for train, validation, and test splits",
+    "CatacausticsDataset_prepare_train_data": "collect and concatenate all training ray coordinates and RGB values into tensors",
+    "CatacausticsDataset_get_coords": "compute ray origins and directions for a given camera index using intrinsics and poses",
+    "CatacausticsDataset_getitem": "return a batch dict with coords, rgb, pose, and weight for the given split and index"
+  },
+  "facebookresearch_hyperreel/datasets/donerf.py": {
+    "create_DONeRFDataset": "create a DONeRFDataset instance with config and split for DONeRF scene data loading",
+    "load_poses_from_meta": "load camera poses and image paths from DONeRF metadata JSON files",
+    "get_coords": "get ray origin and direction coordinates for a given image index",
+    "get_rgb": "get RGB pixel values from an RGBA image with alpha compositing",
+    "get_depth": "get depth values from a .npz depth file with near-far clipping"
+  },
+  "facebookresearch_hyperreel/datasets/eikonal.py": {
+    "create_EikonalDataset": "create an EikonalDataset instance from a config object for a specified train or val split",
+    "review_EikonalDataset_read_meta": "review the EikonalDataset read_meta method that loads poses, bounds, image paths, and computes camera intrinsics",
+    "review_EikonalDataset_get_coords": "review the EikonalDataset get_coords method that computes ray origins and directions for a given view index",
+    "review_EikonalDataset_get_rgb": "review the EikonalDataset get_rgb method that loads, resizes, and transforms an image into pixel color values",
+    "review_EikonalDataset_prepare_render_data": "review the EikonalDataset prepare_render_data method that generates spiral or interpolated camera poses for rendering"
+  },
+  "facebookresearch_hyperreel/datasets/fourier.py": {
+    "create_FourierDataset": "create a FourierDataset from a training dataset to compute per-view ray statistics and FFT of RGB images",
+    "create_FourierLightfieldDataset": "create a FourierLightfieldDataset from a training dataset for lightfield-based ray sampling with FFT features",
+    "use_fft_rgb": "apply a 2D FFT transform to each RGB channel of a tensor using ortho normalization",
+    "use_FourierDataset_get_random_rays": "generate random rays with randomized position and direction for a FourierDataset within a given ray range",
+    "use_FourierLightfieldDataset_get_random_rays": "generate random lightfield rays from a randomized 2D position using the get_lightfield_rays utility"
+  },
+  "facebookresearch_hyperreel/datasets/immersive.py": {
+    "create_immersive_dataset": "create an ImmersiveDataset instance with config and split to load immersive video data for training or rendering",
+    "review_perspective_to_fisheye": "review the perspective_to_fisheye function that converts perspective points to fisheye using OpenCV undistortPoints",
+    "test_read_meta": "test the ImmersiveDataset read_meta method that loads models.json and populates video paths, intrinsics, distortions, and poses",
+    "refactor_subsample": "refactor the ImmersiveDataset subsample method to change how pixel coordinates and RGB are subsampled during training",
+    "summarize_get_coords": "summarize the ImmersiveDataset get_coords method that computes ray coordinates with fisheye undistortion and NDC conversion"
+  },
+  "facebookresearch_hyperreel/datasets/lightfield.py": {
+    "create_lightfield_dataset": "create a LightfieldDataset instance with a config object to load lightfield data for training or rendering",
+    "prepare_train_data_lightfield": "prepare training data by iterating over lightfield sub-aperture images and collecting ray coordinates and RGB values",
+    "prepare_render_data_spiral": "prepare render data by generating spiral camera poses or supersampled horizontal views for novel view synthesis",
+    "get_coords_lightfield": "get ray coordinates for a given spatial index pair using st_scale and uv_scale parameters",
+    "create_epi_dataset": "create an EPIDataset instance with a config object to load epipolar lightfield data for training or rendering"
+  },
+  "facebookresearch_hyperreel/datasets/llff.py": {
+    "create_llff_dataset": "create an LLFFDataset instance from a config to load LLFF scene poses, images, and ray directions",
+    "create_dense_llff_dataset": "create a DenseLLFFDataset instance to load grid-arranged LLFF scenes with row and column skip logic",
+    "review_llff_read_meta": "review the LLFFDataset read_meta method that parses poses_bounds.npy, computes intrinsics, and splits train/val sets",
+    "review_dense_llff_read_meta": "review the DenseLLFFDataset read_meta method that loads separate bounds.npy and poses.npy with grid-based train/val splitting",
+    "refactor_llff_get_coords": "refactor the LLFFDataset get_coords method to compute camera rays and optionally convert to NDC space"
+  },
+  "facebookresearch_hyperreel/datasets/neural_3d.py": {
+    "create_Neural3DVideoDataset": "create a Neural3DVideoDataset instance from a config object for training neural 3D video",
+    "review_read_meta": "review the read_meta method that loads poses, bounds, video paths, and camera intrinsics",
+    "test_subsample": "test the subsample method to verify regular pixel subsampling works correctly on coords and rgb",
+    "refactor_get_coords": "refactor the get_coords method to support additional camera coordinate formats for ray generation",
+    "summarize_prepare_train_data": "summarize the prepare_train_data method that loads video frames, applies subsampling, and concatenates training data"
+  },
+  "facebookresearch_hyperreel/datasets/random.py": {
+    "create_RandomRayDataset": "create a RandomRayDataset that samples random rays from a training dataset using computed position and direction statistics",
+    "create_RandomPixelDataset": "create a RandomPixelDataset that samples random pixels per image and constructs rays with corresponding RGB values",
+    "create_RandomViewSubsetDataset": "create a RandomViewSubsetDataset that selects a random subset of camera views and samples rays within their convex hull",
+    "create_RandomRayLightfieldDataset": "create a RandomRayLightfieldDataset that generates rays parameterized by st and uv planes for lightfield rendering",
+    "review_RandomRayDataset_jitter": "review the RandomRayDataset jitter method that adds random noise to ray origins and directions for data augmentation"
+  },
+  "facebookresearch_hyperreel/datasets/shiny.py": {
+    "create_shiny_dataset": "create a ShinyDataset instance from a config object for training or validation splits",
+    "create_dense_shiny_dataset": "create a DenseShinyDataset instance that loads grid-arranged images with row and column skipping",
+    "read_meta_shiny": "load poses, camera intrinsics, image paths, and ray directions from dataset metadata files",
+    "prepare_render_data_shiny": "generate spiral camera poses or interpolated poses for novel view rendering",
+    "convert_rays_to_ndc": "convert ray origins and directions to normalized device coordinates using focal length"
+  },
+  "facebookresearch_hyperreel/datasets/spaces.py": {
+    "create_spaces_dataset": "create a SpacesDataset instance from a config object for a given train or val split",
+    "review_read_meta": "review the SpacesDataset read_meta method that loads camera intrinsics, poses, and image paths from models.json",
+    "summarize_get_coords": "summarize the SpacesDataset get_coords method that computes ray origins and directions for a given image index",
+    "test_get_rgb": "test the SpacesDataset get_rgb method that loads, resizes, and returns a flattened RGB tensor for an image",
+    "refactor_to_ndc": "refactor the SpacesDataset to_ndc method to convert camera rays into normalized device coordinate space"
+  },
+  "facebookresearch_hyperreel/datasets/stanford.py": {
+    "create_stanford_lightfield_dataset": "create a StanfordLightfieldDataset instance with config and split to load Stanford lightfield images and camera coordinates",
+    "create_stanford_epi_dataset": "create a StanfordEPIDataset instance with config to load EPI images and compute su coordinate grids",
+    "create_stanford_llff_dataset": "create a StanfordLLFFDataset instance with config to load LLFF-format Stanford data with poses and intrinsics",
+    "review_stanford_llff_read_meta": "review the StanfordLLFFDataset read_meta method that parses camera coordinates from filenames and normalizes them",
+    "review_stanford_llff_prepare_render_data": "review the StanfordLLFFDataset prepare_render_data method that creates spiral or interpolated poses for rendering"
+  },
+  "facebookresearch_hyperreel/datasets/technicolor.py": {
+    "create_technicolor_dataset": "create a TechnicolorDataset instance with config and split for lightfield video data loading",
+    "read_meta_technicolor": "read camera parameters and image paths from the Technicolor dataset metadata files",
+    "subsample_coords_rgb": "subsample coordinate and RGB data based on keyframe step and fraction settings",
+    "prepare_train_data": "prepare training data by collecting all coordinates and RGB values from image paths",
+    "prepare_render_data": "prepare rendering data with interpolated poses and spiral camera trajectories for novel view synthesis"
+  },
+  "facebookresearch_hyperreel/datasets/video3d_ground_truth.py": {
+    "create_dataset_instance": "create a Video3DTimeGroundTruthDataset instance with a config object and train split for 3D video data",
+    "load_metadata_and_poses": "load metadata, camera poses, intrinsics, and normalized time values from JSON pose files in the dataset directory",
+    "prepare_training_data": "prepare training data by collecting coords, RGB, depth, and flow tensors across all images into concatenated tensors",
+    "render_spiral_poses": "render spiral camera poses using interpolate_poses and create_spiral_poses for novel view synthesis with focus depth",
+    "get_item_batch": "get a batch dict with coords, RGB, depth, and flow for render, test, val, or train splits by index"
+  },
+  "facebookresearch_hyperreel/datasets/video3d_static.py": {
+    "create_Video3DDataset": "create a Video3DDataset instance from a config object with train or val split",
+    "review_Video3DDataset_read_meta": "review the Video3DDataset read_meta method that loads camera poses and computes intrinsics",
+    "review_Video3DDataset_prepare_render_data": "review the Video3DDataset prepare_render_data method that generates spiral or interpolated camera poses",
+    "review_Video3DDataset_get_coords": "review the Video3DDataset get_coords method that computes ray origins and directions for a given frame index",
+    "review_Video3DDataset_get_rgb": "review the Video3DDataset get_rgb method that loads and processes an RGBA image into RGB tensor format",
+    "review_Video3DDataset_get_intrinsics": "review the Video3DDataset get_intrinsics method that builds the 3x3 camera intrinsic matrix K"
+  },
+  "facebookresearch_hyperreel/datasets/video3d_time.py": {
+    "create_Video3DTimeDataset": "create a Video3DTimeDataset instance with config and split for 4D video neural rendering",
+    "review_read_meta": "review the read_meta method that loads poses, intrinsics, and image paths from JSON metadata files",
+    "summarize_subsample": "summarize the subsample method that reduces pixel coordinates and RGB values based on frame offsets",
+    "refactor_prepare_train_data": "refactor the prepare_train_data method to collect and concatenate all training coordinates and RGB data",
+    "test_prepare_render_data": "test the prepare_render_data method that generates spiral camera poses and interpolated times for rendering"
+  },
+  "facebookresearch_hyperreel/nlf/activations.py": {
+    "get_activation_by_name": "get an activation module by name string or config object using get_activation",
+    "create_tanh_activation": "create a Tanh activation module with configurable inner and outer scaling factors",
+    "build_twist_to_matrix": "build a TwistToMatrix module that converts 6D SE(3) twist vectors to transformation matrices",
+    "review_sparse_magnitude": "review the SparseMagnitude class that applies softmax-normalized magnitude to param channel vectors",
+    "test_interp_value": "test the InterpValue module that interpolates between two activations over training iterations"
+  },
+  "facebookresearch_hyperreel/nlf/contract.py": {
+    "build_contract_from_dict": "use contract_dict to instantiate a contract class by key such as mipnerf or donerf",
+    "create_MIPNeRFContract": "create a MIPNeRFContract instance with config to contract 3D points into a bounded space",
+    "create_DoNeRFContract": "create a DoNeRFContract instance with config to apply power-based distance contraction",
+    "contract_points_BBoxContract": "contract 3D points into a normalized bounding box using BBoxContract contract_points method",
+    "inverse_contract_distance_MIPNeRFContract": "invert contracted distance values back to original scale using MIPNeRFContract inverse_contract_distance"
+  },
+  "facebookresearch_hyperreel/nlf/param.py": {
+    "create_RayParam": "create a RayParam module from config to transform rays using the specified parameterization function",
+    "build_TwoPlaneParam": "build a TwoPlaneParam module that projects rays onto near and far axis-aligned planes",
+    "use_PlueckerParam": "use PlueckerParam to encode rays as normalized direction and moment vectors for coordinate-invariant representation",
+    "create_ContractPointsParam": "create a ContractPointsParam module that applies spatial contraction to a subset of parameterized ray channels",
+    "use_ray_param_dict": "use ray_param_dict to look up and instantiate any registered ray parameterization by name from config"
+  },
+  "facebookresearch_hyperreel/nlf/pe.py": {
+    "build_WindowedPE_module": "build a WindowedPE module that applies sin/cos positional encoding with cosine-scheduled frequency windowing over training iterations",
+    "create_BasicPE_encoding": "create a BasicPE module that applies sin and cos positional encoding with exponential frequency bands to input tensors",
+    "test_WindowedRandomPE_forward": "test the WindowedRandomPE forward pass to verify random Fourier features with iteration-based frequency scheduling",
+    "refactor_LearnablePE_embedding": "refactor the LearnablePE class to use trainable embedding matrix and bias parameters instead of fixed random features",
+    "review_pe_dict_registry": "review the pe_dict registry mapping string keys to PE classes like basic, windowed, identity, random, learnable, and select"
+  },
+  "facebookresearch_hyperreel/nlf/rendering.py": {
+    "create_RenderLightfield": "create a RenderLightfield instance with a model, subdivision, and config for lightfield rendering",
+    "run_render_chunked": "run render_chunked to process rays in batches using a render function and chunk size",
+    "run_RenderLightfield_forward": "run the RenderLightfield forward method to render rays through the lightfield model",
+    "run_RenderLightfield_embed": "run the RenderLightfield embed method to get embeddings for rays through the model",
+    "review_Render_run_chunked": "review the Render base class _run_chunked method for chunked inference with configurable net_chunk size"
+  },
+  "facebookresearch_hyperreel/nlf/subdivision.py": {
+    "build_depth_subdivision": "build a DepthSubdivision module to reparametrize rays across uniform depth grid slices between near and far bounds",
+    "build_voxel_embedding_subdivision": "build a VoxelEmbeddingSubdivision module to embed rays through a 3D voxel grid with optional post-embedding network",
+    "build_radial_subdivision": "build a RadialSubdivision module to intersect rays with concentric spherical shells and sort by depth",
+    "build_nerf_subdivision": "build a NeRFSubdivision module to sample points along rays using axis-aligned plane intersections with voxel codes",
+    "review_subdivision_dict": "review the subdivision_dict registry mapping string keys to Subdivision class types for factory instantiation"
+  },
+  "facebookresearch_hyperreel/nlf/embedding/affine.py": {
+    "create_AffineEmbedding": "create an AffineEmbedding module with a linear layer mapping in_channels to out_channels",
+    "create_LocalAffineEmbedding": "create a LocalAffineEmbedding module that uses an MLP to predict per-sample affine transforms",
+    "run_LocalAffineEmbedding_forward": "run the LocalAffineEmbedding forward pass to apply learned affine transforms to input tensors",
+    "run_LocalAffineEmbedding_embed_params": "run embed_params on LocalAffineEmbedding to extract the predicted transformation matrix without applying it",
+    "review_affine_embedding_dict": "review the affine_embedding_dict registry mapping string keys to AffineEmbedding and LocalAffineEmbedding classes"
+  },
+  "facebookresearch_hyperreel/nlf/embedding/embedding.py": {
+    "create_identity_embedding": "create an IdentityEmbedding module that passes input tensors through unchanged with configurable group",
+    "create_ray_point_embedding": "create a RayPointEmbedding module that composes multiple embeddings with iteration-based wait and stop scheduling",
+    "use_embedding_dict": "use the embedding_dict registry to look up and instantiate embedding classes by string type key",
+    "set_embedding_iteration": "set the current iteration on an embedding module to control which sub-embeddings are active",
+    "forward_ray_point_embedding": "forward rays through a RayPointEmbedding to get flattened feature dictionaries with active embeddings applied"
+  },
+  "facebookresearch_hyperreel/nlf/embedding/feature.py": {
+    "create_FeatureEmbedding_module": "create a FeatureEmbedding PyTorch module with in_channels and a config object for feature embedding",
+    "build_FeatureEmbedding_forward_pass": "build a forward pass through FeatureEmbedding that returns input or passes it through the internal net",
+    "review_FeatureEmbedding_set_iter": "review the FeatureEmbedding set_iter method that sets the current iteration counter on the module",
+    "summarize_feature_embedding_dict": "summarize the feature_embedding_dict registry that maps the feature key to the FeatureEmbedding class",
+    "test_FeatureEmbedding_depth_zero": "test the FeatureEmbedding forward method to verify it returns input unchanged when config net depth is zero"
+  },
+  "facebookresearch_hyperreel/nlf/embedding/point.py": {
+    "create_PointPredictionEmbedding": "create a PointPredictionEmbedding module that predicts point features using ray parameters and positional encodings",
+    "create_CreatePointsEmbedding": "create a CreatePointsEmbedding module that computes 3D points from rays and distance values along ray directions",
+    "create_AdvectPointsEmbedding": "create an AdvectPointsEmbedding module that applies spatial and angular flow to advect 3D points over time",
+    "create_ContractEmbedding": "create a ContractEmbedding module that contracts 3D points and distances using a configurable contraction function",
+    "create_ReflectEmbedding": "create a ReflectEmbedding module that computes reflected ray directions and points using surface normals"
+  },
+  "facebookresearch_hyperreel/nlf/embedding/ray.py": {
+    "create_calibrate_planar_embedding": "create a CalibratePlanarEmbedding module to apply learnable 2D offset calibration to ray origins",
+    "create_calibrate_embedding": "create a CalibrateEmbedding module to apply per-view pose and time offset calibration to rays",
+    "create_ray_prediction_embedding": "create a RayPredictionEmbedding module to predict point and ray outputs from parameterized ray features",
+    "create_ray_intersect_embedding": "create a RayIntersectEmbedding module to compute ray intersections using a configurable intersect function",
+    "create_create_rays_embedding": "create a CreateRaysEmbedding module to construct new rays from input points and ray directions"
+  },
+  "facebookresearch_hyperreel/nlf/intersect/base.py": {
+    "create_intersect_module": "create an Intersect nn.Module subclass that computes ray intersection points and distances from z_vals",
+    "build_uniform_weight_fn": "build a uniform weight function that returns ones_like tensors for all ray distances",
+    "build_ease_max_weight_fn": "build an ease_max weight function that computes ray direction-based weights clamped between 0 and 1",
+    "review_intersect_forward": "review the Intersect forward method that processes z_vals, applies activation, computes distances, and returns points",
+    "test_process_z_vals": "test the process_z_vals method that scales z_vals, applies inverse contract or disparity conversion"
+  },
+  "facebookresearch_hyperreel/nlf/intersect/primitive.py": {
+    "create_intersect_plane": "create an IntersectPlane instance to compute ray-plane intersections using normal vectors and plane distance",
+    "create_intersect_euclidean_distance": "create an IntersectEuclideanDistance instance to compute ray intersections using learned per-ray distance offsets",
+    "create_intersect_euclidean_distance_unified": "create an IntersectEuclideanDistanceUnified instance to compute intersections using Plucker position unification and distance offsets",
+    "create_intersect_cylinder_new": "create an IntersectCylinderNew instance to compute ray-cylinder intersections with space transformation and fallback recycling",
+    "create_intersect_sphere_new": "create an IntersectSphereNew instance to compute ray-sphere intersections with space transformation and fallback recycling"
+  },
+  "facebookresearch_hyperreel/nlf/intersect/voxel.py": {
+    "build_voxel_grid_intersection": "build a voxel grid intersection module using IntersectVoxelGrid with config and z_channels",
+    "build_deformable_voxel_grid": "build a deformable voxel grid intersection using IntersectDeformableVoxelGrid with start normals",
+    "test_intersect_voxel_grid": "test the IntersectVoxelGrid intersect method with rays and z_vals tensors",
+    "test_deformable_intersect": "test the IntersectDeformableVoxelGrid intersect method with rays and normal distance z_vals",
+    "review_voxel_intersect_dict": "review the voxel_intersect_dict registry mapping string keys to intersection classes"
+  },
+  "facebookresearch_hyperreel/nlf/intersect/z.py": {
+    "create_IntersectZPlane": "create an IntersectZPlane instance with z_channels, cfg, and kwargs for ray-plane intersection",
+    "build_z_samples": "build z-axis sample points using IntersectZPlane with linear or disparity sampling on CUDA",
+    "run_intersect_method": "run the IntersectZPlane intersect method to compute ray-to-z-plane intersection distances",
+    "review_z_scale_calculation": "review the IntersectZPlane z_scale calculation logic based on sample spacing and config",
+    "test_local_prediction": "test the IntersectZPlane local prediction feature that offsets z_vals by voxel grid origin"
+  },
+  "facebookresearch_hyperreel/nlf/models/models.py": {
+    "build_lightfield_model": "build a LightfieldModel from a config to embed rays and predict colors via the color model",
+    "create_base_color_model": "create a BaseColorModel MLP that maps input channels to color output channels using a net config",
+    "embed_rays_with_lightfield": "embed input rays through the LightfieldModel param and embedding model to get feature representations",
+    "set_iteration_on_model": "set the current training iteration on a LightfieldModel and all its submodels and embeddings",
+    "register_model_in_dict": "register a LightfieldModel class in the ray_model_dict, pos_model_dict, and model_dict registries"
+  },
+  "facebookresearch_hyperreel/nlf/nets/array_nd.py": {
+    "build_ArrayND": "build a learnable N-dimensional tensor lookup module that samples features via grid_sample from a configurable tensor",
+    "build_ArrayNDMultiple": "build a multi-factor N-dimensional tensor module that samples and combines features using product or concat mode",
+    "build_ArrayNDSubdivided": "build a subdivided N-dimensional tensor module that uses voxel indexing to sample features from a grid of sub-tensors",
+    "review_array_dict": "review the array_dict registry that maps string keys to ArrayND, ArrayNDMultiple, and ArrayNDSubdivided classes",
+    "refactor_my_index": "refactor the my_index helper function that selects and stacks specific input channels from a tensor"
+  },
+  "facebookresearch_hyperreel/nlf/nets/mlp.py": {
+    "build_BaseMLP_network": "build a BaseMLP neural network with configurable depth, hidden channels, and positional encoding",
+    "create_ZeroMLP_module": "create a ZeroMLP module that returns zero tensors for a given output channel count",
+    "create_ConstantMLP_module": "create a ConstantMLP module that outputs a learned constant bias vector for all inputs",
+    "build_PartitionedMLP_network": "build a PartitionedMLP network with partitioned batch matmul for multi-condition neural fields",
+    "use_mlp_dict_factory": "use the mlp_dict factory to instantiate MLP variants like base, siren, or constant by name"
+  },
+  "facebookresearch_hyperreel/nlf/nets/nets.py": {
+    "create_MultipleNet": "create a MultipleNet module that combines multiple neural networks with configurable wait and stop iterations",
+    "build_net_dict": "build a net_dict registry by importing MLP, tensor, and tensorf network types from submodules",
+    "run_MultipleNet_forward": "run the MultipleNet forward pass to compute scaled outputs from active sub-networks based on current iteration",
+    "test_MultipleNet_set_iter": "test the MultipleNet set_iter method to update the current iteration across all sub-networks",
+    "review_MultipleNet_feature_net": "review the MultipleNet feature_net configuration for applying feature transforms before output aggregation"
+  },
+  "facebookresearch_hyperreel/nlf/nets/siren.py": {
+    "build_siren_network": "build a Siren neural network with sine activations using a config object for depth and hidden channels",
+    "create_sine_layer": "create a SineLayer with custom omega_0 frequency factor for first or hidden layer weight initialization",
+    "run_sine_layer_forward": "run forward pass through a SineLayer to compute sin(omega_0 * linear(input)) output",
+    "review_siren_forward_with_skip": "review the Siren forward pass that concatenates skip connections at specified layer indices",
+    "test_sine_layer_intermediate": "test the SineLayer forward_with_intermediate method to inspect pre-sine activation distributions"
+  },
+  "facebookresearch_hyperreel/nlf/nets/tensor.py": {
+    "build_tensor_product_module": "build a TensorProduct module that computes tensor products with configurable basis functions and opacity channels",
+    "create_tensor_concat_module": "create a TensorConcat module that concatenates tensor outputs with shared extra features across tensors",
+    "build_tensor_reduce_module": "build a TensorReduce module that reduces tensor outputs using mean or over compositing strategies",
+    "create_over_composite_function": "create a function that performs over compositing of RGB values with alpha weights for volume rendering",
+    "build_over_opacity_function": "build a function that computes volume rendering from RGB and density values using exponential opacity"
+  },
+  "facebookresearch_hyperreel/nlf/nets/tensorf_base.py": {
+    "build_tensor_vm_volume": "build a TensorVM tensor factorization volume for 3D Gaussian splatting scene representation",
+    "build_tensor_vm_split_volume": "build a TensorVMSplit volume with separate density and appearance plane and line coefficients",
+    "build_tensor_cp_volume": "build a TensorCP canonical polyadic decomposition volume using only line coefficients",
+    "review_tensorbase_ray_marching": "review the TensorBase forward method for ray sampling and volume rendering logic",
+    "refactor_tensorbase_alpha_mask": "refactor the TensorBase updateAlphaMask method to adjust the bounding box based on alpha thresholds"
+  },
+  "facebookresearch_hyperreel/nlf/nets/tensorf_density.py": {
+    "create_TensorVM": "create a TensorVM tensor factorization volume module for 3D scene representation with plane and line coefficients",
+    "create_TensorVMSplit": "create a TensorVMSplit module with separate density and appearance plane line coefficients for 3D rendering",
+    "create_TensorCP": "create a TensorCP canonical polyadic decomposition module using only line coefficients for density and appearance",
+    "create_MLPRender_PE": "create an MLPRender_PE MLP rendering module with positional and view directional encoding for RGB output",
+    "create_AlphaGridMask": "create an AlphaGridMask module to sample alpha values from a 3D volume using grid sampling"
+  },
+  "facebookresearch_hyperreel/nlf/nets/tensorf_dynamic.py": {
+    "init_svd_volume": "initialize SVD tensor factorization planes for density and appearance on a given device and resolution",
+    "compute_densityfeature": "compute density features from sampled 4D spatiotemporal coordinates using grid sampling on space and time planes",
+    "compute_appfeature": "compute appearance features from sampled 4D spatiotemporal coordinates using grid sampling on space and time planes",
+    "forward": "render RGB images by performing volume rendering over sampled ray points with density and appearance features",
+    "getDenseAlpha": "compute dense alpha volume across all frames by sampling a 3D grid and evaluating alpha values over time"
+  },
+  "facebookresearch_hyperreel/nlf/nets/tensorf_hybrid.py": {
+    "init_svd_volume_TensorVMKeyframeHybrid": "initialize the SVD tensor volume for density and appearance planes with configurable grid resolution and device",
+    "compute_densityfeature_TensorVMKeyframeHybrid": "compute density features from sampled 4D coordinates using plane and line basis grid sampling",
+    "compute_appfeature_TensorVMKeyframeHybrid": "compute appearance features from sampled 4D coordinates using plane and line basis grid sampling",
+    "forward_TensorVMKeyframeHybrid": "run the full forward pass to render RGB images from ray points, times, and view directions",
+    "upsample_volume_grid_TensorVMKeyframeHybrid": "upsample the volume grid resolution for both appearance and density tensor components"
+  },
+  "facebookresearch_hyperreel/nlf/nets/tensorf_no_sample.py": {
+    "review_TensorVMNoSample_class": "review the TensorVMNoSample class for tensor volume decomposition and neural rendering capabilities",
+    "summarize_compute_densityfeature": "summarize the compute_densityfeature method that extracts density features from 3D coordinates using plane and line tensor decomposition",
+    "summarize_compute_appfeature": "summarize the compute_appfeature method that extracts appearance features from 3D coordinates using plane and line tensor decomposition",
+    "review_forward_rendering": "review the forward method that performs ray marching rendering with density, color, and weight compositing",
+    "summarize_feature2density": "summarize the feature2density method that converts density features to density values using softplus, relu, or relu_abs activation"
+  },
+  "facebookresearch_hyperreel/nlf/nets/tensorf_reflect.py": {
+    "create_TensorVMReflect": "create a TensorVMReflect instance with in_channels, out_channels, and cfg config dict",
+    "compute_density_normal": "compute density and normalized surface normals from 3D points and ray weights using autograd",
+    "forward_TensorVMReflect": "run the forward pass to render RGB images from sampled points, viewdirs, and distances",
+    "render_normal_field": "render surface normals by including render_normal in the fields list of render_kwargs",
+    "register_tensorf_reflect": "register TensorVMReflect in tensorf_reflect_dict under the key tensor_vm_split_reflect"
+  },
+  "facebookresearch_hyperreel/nlf/regularizers/base.py": {
+    "build_losses_from_cfg": "build loss functions from config keys containing 'loss' and convert angle_std to radians for weight_map entries",
+    "get_batch_from_train_or_regularizer": "get a batch from the regularizer dataset or training dataset based on use_inp_freq and batch index",
+    "compute_regularization_loss": "compute the regularization loss for a batch, returning zero during warmup or after stop_iters",
+    "calculate_exponential_decay_weight": "calculate the loss weight using exponential decay based on current iteration, num_epochs, and decay rate",
+    "run_chunked_rendering": "run chunked rendering on input rays using the regularizer as the forward module with configurable ray_chunk size"
+  },
+  "facebookresearch_hyperreel/nlf/regularizers/fourier.py": {
+    "create_FourierRegularizer": "create a FourierRegularizer instance with a system and config to compute Fourier-domain loss",
+    "run_FourierRegularizer_loss": "run the FourierRegularizer loss method to compute fourier_loss between rendered and target FFT spectra",
+    "review_FourierRegularizer_init": "review the FourierRegularizer constructor to understand how range and use_absolute are configured",
+    "refactor_FourierRegularizer_loss": "refactor the FourierRegularizer loss method to support additional Fourier-domain loss functions",
+    "summarize_FourierRegularizer": "summarize the FourierRegularizer class which extends BaseRegularizer to enforce Fourier-domain consistency on rendered RGB"
+  },
+  "facebookresearch_hyperreel/nlf/regularizers/geometry.py": {
+    "create_geometry_regularizer": "create a GeometryRegularizer instance to compute geometry loss between predicted points and ground truth depth",
+    "create_geometry_feedback_regularizer": "create a GeometryFeedbackRegularizer to compute teacher-student loss with render weights and normal matching",
+    "create_flow_regularizer": "create a FlowRegularizer instance to compute flow-based loss between predicted and ground truth optical flow",
+    "create_render_weight_regularizer": "create a RenderWeightRegularizer to compute sparsity and match loss on render weights with easing",
+    "review_geometry_regularizers": "review the GeometryRegularizer, GeometryFeedbackRegularizer, FlowRegularizer, and RenderWeightRegularizer classes for loss computation patterns"
+  },
+  "facebookresearch_hyperreel/nlf/regularizers/ray_density.py": {
+    "create_sample_simplex": "create a function that samples random points from a unit simplex using sorted random values",
+    "build_RayDensityRegularizer": "build a RayDensityRegularizer class that computes ray density loss using camera poses, intersection points, and sigma values",
+    "review_RayDensityRegularizer_loss": "review the RayDensityRegularizer _loss method that generates random rays, computes intersections, and calculates sigma-based density loss",
+    "build_SimpleRayDensityRegularizer": "build a SimpleRayDensityRegularizer class that computes weighted ray density loss with extrapolation and interpolation support",
+    "test_RayDensityRegularizer_get_random_views": "test the get_random_views method that returns a random subset of camera view indices without replacement"
+  },
+  "facebookresearch_hyperreel/nlf/regularizers/teacher.py": {
+    "create_teacher_regularizer": "create a TeacherRegularizer that computes RGB loss between predicted and ground truth colors from dataset batches",
+    "create_blurry_teacher_regularizer": "create a BlurryTeacherRegularizer that applies Gaussian blur to predicted RGB patches before computing loss",
+    "create_teacher_model_regularizer": "create a TeacherModelRegularizer that loads a pretrained teacher model checkpoint and compares its output to the student model",
+    "generate_random_rays_convex": "generate random rays via convex combination of existing rays for the TeacherModelRegularizer training process",
+    "load_state_dict_for_model": "load a state dict into a model handling alpha mask, grid size, and SVD volume initialization"
+  },
+  "facebookresearch_hyperreel/nlf/regularizers/tensor.py": {
+    "build_TensorTV_regularizer": "build a TensorTV regularizer instance with a system and config to compute TV loss on tensors",
+    "create_tv_loss_function": "create a function that computes total variation loss on 3D or 4D tensors with optional skip rows and columns",
+    "test_roll_1_2_3_functions": "test the roll_1, roll_2, roll_3 functions that shift tensor elements along dimensions 1, 2, or 3",
+    "review_TensorTV_loss_method": "review the TensorTV _loss method that calculates TV or L1 loss on color and opacity tensors",
+    "refactor_tv_loss_skip_logic": "refactor the tv_loss function to support different skip patterns for rows and columns in 3D tensors"
+  },
+  "facebookresearch_hyperreel/nlf/regularizers/tensorf.py": {
+    "create_TVLoss_module": "create a TVLoss PyTorch module that computes total variation loss on 4D tensors with configurable weight",
+    "compute_TVLoss_forward": "compute the total variation loss for a batch of 4D tensors using the TVLoss forward pass",
+    "create_TensoRF_regularizer": "create a TensoRF regularizer that applies L1 and TV regularization to a TensorF rendering system",
+    "compute_TensoRF_loss": "compute the combined L1 and TV regularization loss for a training batch in the TensoRF regularizer",
+    "update_TensoRF_iteration": "update the TensoRF regularizer iteration and adjust L1 weight when the AlphaMask update threshold is reached"
+  },
+  "facebookresearch_hyperreel/nlf/regularizers/voxel_sparsity.py": {
+    "review_VoxelSparsityRegularizer_class": "review the VoxelSparsityRegularizer class that computes entropy-based voxel sparsity loss for neural field training",
+    "summarize_loss_method": "summarize the loss method that evaluates voxel occupancy entropy using chunked forward passes through the position model",
+    "test_VoxelSparsityRegularizer_initialization": "test the VoxelSparsityRegularizer initialization with a system and config object to verify parent class setup",
+    "refactor_loss_chunking": "refactor the loss method chunking loop to use torch.split instead of manual index slicing for cleaner code",
+    "build_VoxelSparsityRegularizer_integration": "build a training loop integration that instantiates VoxelSparsityRegularizer and calls loss during each optimization step"
+  },
+  "facebookresearch_hyperreel/nlf/visualizers/base.py": {
+    "create_BaseVisualizer_subclass": "create a subclass of BaseVisualizer that overrides validation_video and validation_image methods",
+    "build_BaseVisualizer_with_cfg": "build a BaseVisualizer instance passing a system object and config dict with run_on_test key",
+    "test_get_system": "test the BaseVisualizer get_system method to verify it returns the stored system reference",
+    "refactor_validation_video": "refactor the BaseVisualizer validation_video method to generate and return validation video tensors",
+    "review_render_kwargs_property": "review the BaseVisualizer render_kwargs property and override it to return custom rendering arguments"
+  },
+  "facebookresearch_hyperreel/nlf/visualizers/closest_view.py": {
+    "create_ClosestViewVisualizer": "create a ClosestViewVisualizer instance with a system and config for validating closest view RGB",
+    "run_validation": "run the ClosestViewVisualizer validation method on a batch to retrieve closest RGB from pose",
+    "run_validation_video": "run the ClosestViewVisualizer validation_video method to generate closest view video outputs from a batch",
+    "run_validation_image": "run the ClosestViewVisualizer validation_image method on a batch to produce image outputs",
+    "review_ClosestViewVisualizer": "review the ClosestViewVisualizer class and its validation methods for closest RGB retrieval from pose data"
+  },
+  "facebookresearch_hyperreel/nlf/visualizers/embedding.py": {
+    "create_EmbeddingVisualizer": "create an EmbeddingVisualizer instance with a system and config to visualize neural field embeddings",
+    "run_validation": "run the validation method to render and warp-visualize embedding fields from a batch of coordinates",
+    "run_validation_image": "run the validation_image method to produce image outputs for embedding visualization during validation",
+    "run_validation_video": "run the validation_video method to produce video outputs for embedding visualization during validation",
+    "review_EmbeddingVisualizer": "review the EmbeddingVisualizer class and its validation methods for embedding field visualization"
+  },
+  "facebookresearch_hyperreel/nlf/visualizers/epipolar.py": {
+    "create_EPIVisualizer": "create an EPIVisualizer instance with a system and config to visualize epipolar plane images",
+    "run_EPIVisualizer_validation": "run the EPIVisualizer validation method to generate ground truth and predicted EPI outputs from a batch",
+    "run_EPIVisualizer_validation_image": "run the EPIVisualizer validation_image method to return EPI image outputs keyed by images/epi prefix",
+    "review_EPIVisualizer_init": "review the EPIVisualizer constructor to understand how near, far, st_scale, and uv_scale parameters are configured",
+    "refactor_EPIVisualizer_validation": "refactor the EPIVisualizer validation method to support custom ray generation or additional output keys"
+  },
+  "facebookresearch_hyperreel/nlf/visualizers/focus.py": {
+    "create_FocusVisualizer": "create a FocusVisualizer instance with a system and config to visualize lightfield focus",
+    "run_FocusVisualizer_validation": "run the FocusVisualizer validation method to generate in-focus and out-of-focus RGB images",
+    "run_FocusVisualizer_validation_image": "run the FocusVisualizer validation_image method to return focus visualization outputs keyed by image path",
+    "review_FocusVisualizer_cone_warp": "review the FocusVisualizer validation method cone warp logic that computes s and t response vectors",
+    "review_FocusVisualizer_pe_weight": "review the FocusVisualizer validation method positional encoding weight calculation using frequency bands"
+  },
+  "facebookresearch_hyperreel/nlf/visualizers/tensor.py": {
+    "create_TensorVisualizer": "create a TensorVisualizer instance with a system and config for tensor visualization",
+    "run_validation_render": "run the validation method to render unwarped and warped RGB tensor outputs from a batch",
+    "run_validation_image": "run the validation_image method to get prefixed image outputs from tensor validation",
+    "review_TensorVisualizer_class": "review the TensorVisualizer class and its validation and validation_image methods",
+    "refactor_validation_method": "refactor the validation method to support additional tensor shape dimensions beyond 2D and 3D"
+  },
+  "facebookresearch_hyperreel/utils/config_utils.py": {
+    "format_config": "format all string values in an OmegaConf DictConfig using Python string interpolation with the config object",
+    "replace_config": "recursively replace None values in an OmegaConf DictConfig with provided keyword argument defaults",
+    "lambda_config": "recursively find keys by name in an OmegaConf DictConfig and apply a callback function to each match",
+    "format_config_helper": "recursively traverse an OmegaConf DictConfig and format string values using the master config as context",
+    "review_config_utils": "review the config_utils module functions for recursively formatting, replacing, and transforming OmegaConf DictConfig objects"
+  },
+  "facebookresearch_hyperreel/utils/flow_utils.py": {
+    "get_base_time_compute_keyframe_offset": "compute a base time offset from a tensor using flow keyframes and total frames with optional jitter",
+    "get_base_time_with_jitter": "compute a jittered base time tensor by adding random noise scaled by flow_scale to the time offset",
+    "get_flow_and_time_advect_flow": "compute advected optical flow and base time from a flow tensor using keyframe-based time offset and activation",
+    "get_flow_and_time_rigid_flow": "compute rigid optical flow by applying activation to the product of flow and time offset tensor",
+    "get_flow_and_time_with_random_offset": "compute optical flow with random time offset jitter and return the flow tensor and base time"
+  },
+  "facebookresearch_hyperreel/utils/gui_utils.py": {
+    "create_orbit_camera": "create an OrbitCamera instance with width, height, radius, and fovy parameters for 3D scene viewing",
+    "get_camera_pose": "get the 4x4 camera pose matrix from an OrbitCamera using its pose property",
+    "get_camera_intrinsics": "get the camera intrinsics array including focal length and principal point from OrbitCamera",
+    "orbit_camera_view": "orbit the OrbitCamera view by calling orbit with dx and dy delta values",
+    "create_nerf_gui": "create a NeRFGUI interactive viewer with a NeRF system, width, height, radius, and fovy"
+  },
+  "facebookresearch_hyperreel/utils/intersect_utils.py": {
+    "intersect_sphere": "compute ray-sphere intersection distances given rays, origin, and radius using the quadratic formula",
+    "intersect_cylinder": "compute ray-cylinder intersection distances by projecting rays onto the XZ plane and solving quadratically",
+    "intersect_plane": "compute ray-plane intersection distances given rays, plane normal vector, and plane distance from origin",
+    "intersect_axis_plane": "compute ray-axis-aligned plane intersection distances along a specified axis dimension",
+    "intersect_voxel_grid": "compute ray-voxel grid intersection distances for all three axes relative to a given origin"
+  },
+  "facebookresearch_hyperreel/utils/pose_utils.py": {
+    "create_spiral_render_poses": "create a spiral path of camera poses for 360 degree NeRF rendering",
+    "create_spherical_render_poses": "create spherical camera poses at a fixed radius looking downward for rendering",
+    "center_and_correct_poses": "center and correct camera poses with optional scaling and axis flipping for NeRF",
+    "interpolate_camera_poses": "interpolate between camera poses using SE3 twist representation for smooth motion",
+    "compute_bounding_sphere_radius": "compute the bounding sphere radius from centered camera poses for scene bounds"
+  },
+  "facebookresearch_hyperreel/utils/ray_utils.py": {
+    "get_lightfield_rays": "generate lightfield rays for a given U V grid with specified aspect ratio and near far planes",
+    "get_epi_rays": "generate epipolar rays for a given U S grid with specified aspect ratio and near far planes",
+    "get_rays": "compute ray origins and directions from camera directions and a camera to world transformation matrix",
+    "get_ray_directions_K": "compute ray directions for an image grid given a camera intrinsic matrix K and image dimensions",
+    "sample_images_at_xy": "sample pixel values from images at arbitrary xy coordinates using bilinear interpolation and grid sampling"
+  },
+  "facebookresearch_hyperreel/utils/rotation_conversions.py": {
+    "convert_quaternion_to_matrix": "convert quaternions with real part first to 3x3 rotation matrices using quaternion_to_matrix",
+    "convert_matrix_to_quaternion": "convert 3x3 rotation matrices to quaternions with real part first using matrix_to_quaternion",
+    "convert_euler_angles_to_matrix": "convert Euler angles in radians to rotation matrices using euler_angles_to_matrix with a convention string",
+    "convert_axis_angle_to_matrix": "convert axis angle vectors to rotation matrices using axis_angle_to_matrix",
+    "convert_rotation_6d_to_matrix": "convert 6D rotation representation to rotation matrices using rotation_6d_to_matrix with Gram-Schmidt orthogonalization"
+  },
+  "facebookresearch_hyperreel/utils/sh_utils.py": {
+    "eval_sh_coeffs_at_directions": "evaluate spherical harmonics coefficients at unit direction vectors for a given degree 0-4",
+    "eval_sh_bases_for_directions": "evaluate spherical harmonics basis functions at unit direction vectors without taking a linear combination",
+    "compute_sh_color_from_dirs": "compute RGB color values from spherical harmonics coefficients and viewing direction tensors",
+    "compute_sh_bases_tensor": "compute a tensor of spherical harmonics basis values for use in neural rendering pipelines",
+    "refactor_eval_sh_for_gpu": "refactor the eval_sh function to optimize spherical harmonics evaluation for GPU acceleration"
+  },
+  "facebookresearch_hyperreel/utils/tensorf_utils.py": {
+    "visualize_depth_tensor": "visualize a depth tensor as a color-mapped image using OpenCV COLORMAP_JET",
+    "compute_ssim": "compute the SSIM similarity metric between two RGB images using Gaussian filtering",
+    "compute_lpips": "compute the LPIPS perceptual similarity metric between two RGB images using Alex or VGG",
+    "convert_sdf_to_ply": "convert a 3D SDF tensor to a PLY mesh file using marching cubes",
+    "apply_positional_encoding": "apply Fourier positional encoding to 3D coordinates with configurable frequency bands"
+  },
+  "facebookresearch_hyperreel/utils/visualization.py": {
+    "get_warp_dimensions_sorted": "get the top k warp dimensions by standard deviation from a PyTorch embedding tensor",
+    "get_warp_dimensions_all": "get all warp dimension indices from a PyTorch embedding tensor without sorting",
+    "visualize_warp_with_bounds": "visualize warp embeddings by selecting dimensions and normalizing with custom min and max bounds",
+    "visualize_warp_normalized": "visualize warp embeddings by selecting dimensions and auto-normalizing values to 0-1 range",
+    "visualize_warp_abs": "visualize warp embeddings by taking absolute values and clamping output to 0-1 range"
+  },
+  "facebookresearch_hyperreel/utils/warmup_scheduler.py": {
+    "create_gradual_warmup_scheduler": "create a GradualWarmupScheduler to gradually increase learning rate over a specified number of epochs",
+    "use_warmup_scheduler_with_after_scheduler": "use a GradualWarmupScheduler with an after_scheduler like ReduceLROnPlateau for post-warmup LR control",
+    "get_lr_warmup_scheduler": "get the current learning rates from a GradualWarmupScheduler during the warmup phase",
+    "step_warmup_scheduler": "step the GradualWarmupScheduler forward to advance the learning rate schedule by one epoch",
+    "review_gradualwarmupscheduler_class": "review the GradualWarmupScheduler class and its warmup learning rate strategy for PyTorch optimizers"
+  }
+}

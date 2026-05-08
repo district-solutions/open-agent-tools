@@ -1,0 +1,51 @@
+{
+  "facebookresearch_fadernetworks/data/preprocess.py": {
+    "run_preprocess_images": "run preprocess_images to read CelebA face images, resize to 256x256, and save as a PyTorch tensor",
+    "run_preprocess_attributes": "run preprocess_attributes to parse list_attr_celeba.txt and save 41 binary attributes per image as a PyTorch file",
+    "refactor_preprocess_images": "refactor preprocess_images to support configurable image size and output path instead of hardcoded constants",
+    "review_preprocess_attributes": "review preprocess_attributes to verify correct parsing of 41 binary CelebA attributes from the text file",
+    "summarize_preprocess_images": "summarize preprocess_images which crops, resizes, and converts 202599 CelebA images into a PyTorch tensor saved as a .pth file"
+  },
+  "facebookresearch_fadernetworks/src/evaluation.py": {
+    "run_Evaluator_evaluate": "run the Evaluator evaluate method to compute all model metrics and log results for a given epoch",
+    "run_Evaluator_eval_reconstruction_loss": "run the Evaluator eval_reconstruction_loss method to compute the autoencoder reconstruction perplexity across all data batches",
+    "run_Evaluator_eval_clf_accuracy": "run the Evaluator eval_clf_accuracy method to compute flipped attribute accuracy using the trained classifier",
+    "run_Evaluator_eval_lat_dis_accuracy": "run the Evaluator eval_lat_dis_accuracy method to compute the latent discriminator prediction accuracy per attribute",
+    "run_compute_accuracy": "run the compute_accuracy function to compute classifier prediction accuracy across all data batches"
+  },
+  "facebookresearch_fadernetworks/src/loader.py": {
+    "load_images": "load the CelebA dataset images and attributes split into train, valid, and test sets",
+    "normalize_images": "normalize image tensor values from 0-255 range to -1 to 1 range",
+    "log_attributes_stats": "log the distribution statistics of face attributes across train, valid, and test sets",
+    "DataSampler_train_batch": "get a random batch of normalized images with attributes and optional flip augmentation",
+    "DataSampler_eval_batch": "get a contiguous range of normalized images with attributes for evaluation"
+  },
+  "facebookresearch_fadernetworks/src/logger.py": {
+    "create_logger_with_file": "create a logger that writes debug logs to a file and info logs to the console",
+    "create_logger_console_only": "create a logger that writes info logs to the console without a file handler",
+    "reset_logger_elapsed_time": "reset the logger elapsed time by calling the reset_time method on the logger object",
+    "review_log_formatter_class": "review the LogFormatter class and its format method that adds level name, timestamp, and elapsed time to log records",
+    "refactor_log_formatter_multiline": "refactor the LogFormatter format method to handle multiline log messages with proper indentation"
+  },
+  "facebookresearch_fadernetworks/src/model.py": {
+    "build_autoencoder_layers": "build encoder and decoder layers for an autoencoder with configurable feature maps and skip connections",
+    "create_autoencoder_model": "create an AutoEncoder model that encodes images and decodes them conditioned on attribute vectors",
+    "create_latent_discriminator": "create a LatentDiscriminator that classifies latent representations into attribute categories using conv and linear layers",
+    "create_patch_discriminator": "create a PatchDiscriminator that evaluates image patches and returns per-sample real/fake scores via sigmoid",
+    "flip_attributes": "flip one or all attribute values in a batch of attribute tensors using the params mapping"
+  },
+  "facebookresearch_fadernetworks/src/training.py": {
+    "create_Trainer": "create a Trainer instance with an autoencoder, discriminators, data loader, and training parameters",
+    "run_lat_dis_step": "run a training step for the latent discriminator using encoded autoencoder outputs",
+    "run_ptc_dis_step": "run a training step for the patch discriminator on real and flipped decoded images",
+    "run_autoencoder_step": "run a training step for the autoencoder combining reconstruction and discriminator losses",
+    "run_classifier_step": "run a training step for a standalone classifier using attribute prediction loss"
+  },
+  "facebookresearch_fadernetworks/src/utils.py": {
+    "get_optimizer": "parse an optimizer config string like 'adam,lr=0.001' and return a PyTorch optimizer for a model",
+    "clip_grad_norm": "clip the gradient norm of model parameters to a specified maximum value in-place",
+    "reload_model": "reload a previously trained PyTorch model's state dict and attributes from a saved checkpoint file",
+    "bool_flag": "parse a command-line boolean flag string like 'true', 'false', '0', or '1' into a Python bool",
+    "initialize_exp": "initialize a training experiment by creating a dump directory, saving params, and setting up a logger"
+  }
+}

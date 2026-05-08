@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/pytext
+- repo_uri: https://github.com/facebookresearch/pytext
+
+## File: facebookresearch_pytext/demo/atis_joint_model/data_processor.py
+
+Prompts
+
+```
+['run the ATIS data processor CLI to convert raw intent, slot, and query CSVs into processed train, validation, and test files', 'process the ATIS training data CSVs into tab-separated train and validation split files using provided vocabularies', 'process the ATIS test data CSVs into a tab-separated test file using provided intent, slot, and word vocabularies', 'read a vocabulary file and return a dictionary mapping line indices to stripped word strings', 'convert a space-separated numericalized sentence into a list of words with their character start and end indices using a vocab']
+```
+
+Usage
+
+```
+{'run_data_processor_cli': 'run the ATIS data processor CLI to convert raw intent, slot, and query CSVs into processed train, validation, and test files', 'process_train_set': 'process the ATIS training data CSVs into tab-separated train and validation split files using provided vocabularies', 'process_test_set': 'process the ATIS test data CSVs into a tab-separated test file using provided intent, slot, and word vocabularies', 'read_vocab': 'read a vocabulary file and return a dictionary mapping line indices to stripped word strings', 'stringify': 'convert a space-separated numericalized sentence into a list of words with their character start and end indices using a vocab'}
+```
+

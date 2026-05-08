@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/contrastivescenecontexts
+- repo_uri: https://github.com/facebookresearch/contrastivescenecontexts
+
+## File: facebookresearch_contrastivescenecontexts/downstream/votenet/ddp_main.py
+
+Prompts
+
+```
+['run the VoteNet detection training pipeline using Hydra config and DDP across multiple GPUs', 'run the VoteNet detection testing pipeline using Hydra config on a single or multi-GPU setup', 'run the single_proc_run function to train a DetectionTrainer on a single GPU with a config', 'run multi_proc_run to launch detection training across multiple GPUs with a random port', 'run the main entry point to start VoteNet training or testing with fixed random seeds']
+```
+
+Usage
+
+```
+{'run_detection_training': 'run the VoteNet detection training pipeline using Hydra config and DDP across multiple GPUs', 'run_detection_testing': 'run the VoteNet detection testing pipeline using Hydra config on a single or multi-GPU setup', 'run_single_gpu_training': 'run the single_proc_run function to train a DetectionTrainer on a single GPU with a config', 'run_multi_gpu_training': 'run multi_proc_run to launch detection training across multiple GPUs with a random port', 'run_votenet_main': 'run the main entry point to start VoteNet training or testing with fixed random seeds'}
+```
+

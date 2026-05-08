@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/parlai/tasks/dbll_babi/build.py
+
+Prompts
+
+```
+['build the DBLL bAbI dataset by downloading and extracting data to the specified datapath directory', 'review the build function that checks for existing data and downloads DBLL resources if needed', 'summarize the RESOURCES list containing DownloadableFile entries for the DBLL dataset archive', 'test the build function with a custom opt dictionary specifying a datapath for DBLL data', 'refactor the build function to support versioned data downloads for the DBLL dataset']
+```
+
+Usage
+
+```
+{'build_dbll_babi_data': 'build the DBLL bAbI dataset by downloading and extracting data to the specified datapath directory', 'review_build_function': 'review the build function that checks for existing data and downloads DBLL resources if needed', 'summarize_resources_list': 'summarize the RESOURCES list containing DownloadableFile entries for the DBLL dataset archive', 'test_build_opt': 'test the build function with a custom opt dictionary specifying a datapath for DBLL data', 'refactor_build_versioning': 'refactor the build function to support versioned data downloads for the DBLL dataset'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/plugins/hydra_optuna_sweeper/tests/test_optuna_sweeper_plugin.py
+
+Prompts
+
+```
+['test creating Optuna distributions from config dicts with categorical, int, and float types', 'test creating Optuna distributions from CLI override strings like choice, range, and interval', 'test extracting sweep parameters and fixed values from a list of CLI override strings', 'test running a Hydra multirun sweep with the Optuna TPE sampler and verify best trial results', 'test running a multi-objective Hydra sweep with Optuna and verify Pareto-optimal solutions do not dominate each other']
+```
+
+Usage
+
+```
+{'test_create_optuna_distribution_from_config': 'test creating Optuna distributions from config dicts with categorical, int, and float types', 'test_create_optuna_distribution_from_override': 'test creating Optuna distributions from CLI override strings like choice, range, and interval', 'test_create_params_from_overrides': 'test extracting sweep parameters and fixed values from a list of CLI override strings', 'test_optuna_example': 'test running a Hydra multirun sweep with the Optuna TPE sampler and verify best trial results', 'test_optuna_multi_objective_example': 'test running a multi-objective Hydra sweep with Optuna and verify Pareto-optimal solutions do not dominate each other'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/d2go
+- repo_uri: https://github.com/facebookresearch/d2go
+
+## File: facebookresearch_d2go/d2go/model_zoo/model_zoo.py
+
+Prompts
+
+```
+['get a pre-trained D2Go model by config path using model_zoo.get with trained=True', 'get a CfgNode config object for a D2Go model using model_zoo.get_config with a config path', 'get the download URL for a trained model checkpoint using model_zoo.get_checkpoint_url with a config path', 'get the filesystem path to a builtin D2Go config YAML file using model_zoo.get_config_file', 'list available pre-trained model config names from _ModelZooUrls.CONFIG_PATH_TO_URL_SUFFIX mapping']
+```
+
+Usage
+
+```
+{'get_model_from_zoo': 'get a pre-trained D2Go model by config path using model_zoo.get with trained=True', 'get_config_for_model': 'get a CfgNode config object for a D2Go model using model_zoo.get_config with a config path', 'get_checkpoint_url': 'get the download URL for a trained model checkpoint using model_zoo.get_checkpoint_url with a config path', 'get_config_file_path': 'get the filesystem path to a builtin D2Go config YAML file using model_zoo.get_config_file', 'list_available_models': 'list available pre-trained model config names from _ModelZooUrls.CONFIG_PATH_TO_URL_SUFFIX mapping'}
+```
+

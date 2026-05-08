@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/cutler
+- repo_uri: https://github.com/facebookresearch/cutler
+
+## File: facebookresearch_cutler/cutler/train_net.py
+
+Prompts
+
+```
+['run the cutler training script with a config file to train a detectron2 model on GPU', 'run the cutler training script in eval-only mode to test a model on a dataset', 'build an evaluator for a given dataset using the build_evaluator function with config and dataset name', 'test a model with test-time augmentation using the Trainer.test_with_TTA class method', 'setup detectron2 config with cutler options by merging a config file and command-line arguments']
+```
+
+Usage
+
+```
+{'run_train_net': 'run the cutler training script with a config file to train a detectron2 model on GPU', 'run_train_net_eval_only': 'run the cutler training script in eval-only mode to test a model on a dataset', 'build_evaluator': 'build an evaluator for a given dataset using the build_evaluator function with config and dataset name', 'test_with_TTA': 'test a model with test-time augmentation using the Trainer.test_with_TTA class method', 'setup_config': 'setup detectron2 config with cutler options by merging a config file and command-line arguments'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/qhoptim
+- repo_uri: https://github.com/facebookresearch/qhoptim
+
+## File: facebookresearch_qhoptim/qhoptim/common/param_conv.py
+
+Prompts
+
+```
+['convert PID controller gains kp, ki, kd into QHM optimizer hyperparameters alpha, nu, beta', 'convert synthesized Nesterov momentum parameters alpha, beta1, beta2 into QHM optimizer hyperparameters', 'convert robust momentum parameters lambda, kappa, rho into QHM optimizer hyperparameters via synthesized Nesterov', 'convert AccSGD parameters delta, kappa, xi, eps into QHM optimizer hyperparameters alpha, nu, beta', 'convert NAdam optimizer parameters lr, beta1, beta2 into QHAdam optimizer hyperparameters']
+```
+
+Usage
+
+```
+{'convert_pid_to_qhm': 'convert PID controller gains kp, ki, kd into QHM optimizer hyperparameters alpha, nu, beta', 'convert_synthesized_nesterov_to_qhm': 'convert synthesized Nesterov momentum parameters alpha, beta1, beta2 into QHM optimizer hyperparameters', 'convert_robust_momentum_to_qhm': 'convert robust momentum parameters lambda, kappa, rho into QHM optimizer hyperparameters via synthesized Nesterov', 'convert_accsgd_to_qhm': 'convert AccSGD parameters delta, kappa, xi, eps into QHM optimizer hyperparameters alpha, nu, beta', 'convert_nadam_to_qhadam': 'convert NAdam optimizer parameters lr, beta1, beta2 into QHAdam optimizer hyperparameters'}
+```
+

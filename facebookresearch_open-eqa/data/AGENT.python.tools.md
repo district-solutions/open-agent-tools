@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/open-eqa
+- repo_uri: https://github.com/facebookresearch/open-eqa
+
+## File: facebookresearch_open-eqa/data/frames2videos.py
+
+Prompts
+
+```
+['run the frames2videos CLI to convert frame directories into MP4 videos for a dataset split', 'run create_video to encode a folder of RGB PNG frames into an MP4 video file', 'run parse_args to configure input frames directory, output videos directory, split, and FPS settings', 'run get_folders to discover and list all subdirectories under the input frames directory', 'run main to iterate over all frame folders and create MP4 videos from RGB PNG sequences']
+```
+
+Usage
+
+```
+{'run_frames2videos_cli': 'run the frames2videos CLI to convert frame directories into MP4 videos for a dataset split', 'run_create_video': 'run create_video to encode a folder of RGB PNG frames into an MP4 video file', 'run_parse_args': 'run parse_args to configure input frames directory, output videos directory, split, and FPS settings', 'run_get_folders': 'run get_folders to discover and list all subdirectories under the input frames directory', 'run_main': 'run main to iterate over all frame folders and create MP4 videos from RGB PNG sequences'}
+```
+

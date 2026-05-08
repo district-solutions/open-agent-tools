@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/habitat-sim
+- repo_uri: https://github.com/facebookresearch/habitat-sim
+
+## File: facebookresearch_habitat-sim/src/deps/magnum-bindings/doc/python/conf-public.py
+
+Prompts
+
+```
+['review the URL_FORMATTER function that formats documentation output paths for static files and pages', 'summarize the URL_FORMATTER function logic for routing static files to root and pages to subdirectories', 'test the URL_FORMATTER function with STATIC type and PAGE type inputs to verify correct path output', 'refactor the URL_FORMATTER function to support additional type names beyond STATIC and PAGE', 'review the conf-public.py configuration variables for documentation output paths stylesheets and search settings']
+```
+
+Usage
+
+```
+{'review_URL_FORMATTER': 'review the URL_FORMATTER function that formats documentation output paths for static files and pages', 'summarize_URL_FORMATTER': 'summarize the URL_FORMATTER function logic for routing static files to root and pages to subdirectories', 'test_URL_FORMATTER': 'test the URL_FORMATTER function with STATIC type and PAGE type inputs to verify correct path output', 'refactor_URL_FORMATTER': 'refactor the URL_FORMATTER function to support additional type names beyond STATIC and PAGE', 'review_conf_public_config': 'review the conf-public.py configuration variables for documentation output paths stylesheets and search settings'}
+```
+

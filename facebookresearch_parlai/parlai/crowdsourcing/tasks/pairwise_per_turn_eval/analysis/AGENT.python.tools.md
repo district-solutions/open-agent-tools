@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/parlai/crowdsourcing/tasks/pairwise_per_turn_eval/analysis/compile_results.py
+
+Prompts
+
+```
+['run the PerTurnEvalResultsCompiler to compile and save pairwise per-turn evaluation results from Mephisto task data', 'compile pairwise per-turn evaluation results into CSVs with win rates, completion times, and worker stats', 'setup argparse arguments including a worker block list for filtering unacceptable crowdworkers', 'check conversation utterances for acceptability violations using the AcceptabilityChecker and skip unacceptable conversations', 'calculate and save model win rates grouped by date and model pair nickname to a CSV file']
+```
+
+Usage
+
+```
+{'run_compile_results': 'run the PerTurnEvalResultsCompiler to compile and save pairwise per-turn evaluation results from Mephisto task data', 'compile_pairwise_eval_results': 'compile pairwise per-turn evaluation results into CSVs with win rates, completion times, and worker stats', 'setup_args_worker_block_list': 'setup argparse arguments including a worker block list for filtering unacceptable crowdworkers', 'check_acceptability_violations': 'check conversation utterances for acceptability violations using the AcceptabilityChecker and skip unacceptable conversations', 'calculate_win_rates_by_date': 'calculate and save model win rates grouped by date and model pair nickname to a CSV file'}
+```
+

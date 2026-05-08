@@ -1,0 +1,338 @@
+{
+  "facebookresearch_llm-speedrunner/analysis/analyze_embeddings.py": {
+    "compute_embedding_distances": "compute code embedding distances between LLM solutions and human ground-truth records using a pretrained embedding model",
+    "build_dataframe_from_json": "build a pandas DataFrame of embedding distances from a JSON file containing LLM run records and human code",
+    "aggregate_and_print_distances": "aggregate embedding distance metrics by method, model, record, and levels then print the grouped means",
+    "plot_embedding_distances": "plot aggregated embedding distance metrics filtered by model and hint level with a line chart",
+    "get_code_embedding": "get a cached code embedding vector for a given text string using the Salesforce SFR embedding model"
+  },
+  "facebookresearch_llm-speedrunner/analysis/parse_levels.py": {
+    "extract_level_number": "extract a level number from a file path string using regex pattern matching",
+    "extract_record_number": "extract a record number from a directory name string using regex pattern matching",
+    "find_levels_in_configs": "walk a directory tree and parse config.yaml files to extract level numbers and record info",
+    "find_levels_in_configs_glob": "parse config.yaml files matching glob patterns to extract experiment metadata including model, runner, and ideator",
+    "filter_folder_info": "filter a folder info dictionary by key-value conditions to find matching experiment configurations"
+  },
+  "facebookresearch_llm-speedrunner/analysis/plot_utils.py": {
+    "gather_metrics_from_workspace": "gather metrics from versioned workspace subdirectories into a sorted pandas DataFrame",
+    "plot_gap_comparison_subplots": "create a subplot grid of bar charts comparing gap percentages across multiple datasets",
+    "gather_metrics_with_template": "gather metrics from workspace subdirectories including an optional initial template results file",
+    "plot_gap_comparison_custom_title": "create a bar chart comparison with a custom main title and adaptive subplot layout",
+    "review_gather_metrics_function": "review the gather_metrics function to understand how it parses versioned results JSON files"
+  },
+  "facebookresearch_llm-speedrunner/core/agent.py": {
+    "create_agent_with_openai": "create an Agent instance with an OpenAI model URL and API key from secrets",
+    "create_agent_with_gemini": "create an Agent instance with a Gemini model and GEMINI_API_KEY from secrets",
+    "agent_act_with_instruction": "run the Agent act method with an instruction string to generate an LLM response",
+    "agent_act_with_validator": "run the Agent act method with a validator callback to validate and retry LLM responses",
+    "agent_flush_logs": "flush the Agent LLM client logs to a specified file path"
+  },
+  "facebookresearch_llm-speedrunner/core/knowledge.py": {
+    "create_knowledge_store_from_entries": "create a KnowledgeStore initialized with a list of string entries or KnowledgeEntry objects",
+    "create_knowledge_store_from_files": "create a KnowledgeStore that loads content from file paths or glob patterns on disk",
+    "insert_knowledge_entry": "insert a string or KnowledgeEntry object into an existing KnowledgeStore instance",
+    "search_knowledge_store_as_string": "search the KnowledgeStore and return all entries formatted as an XML-like knowledge string",
+    "search_knowledge_store_as_list": "search the KnowledgeStore and return entries as a list of KnowledgeEntry objects with optional max length"
+  },
+  "facebookresearch_llm-speedrunner/core/llm_client.py": {
+    "create_LLMClient": "create an LLMClient instance to interface with VLLM or OpenAI-compatible LLM servers",
+    "generate_completion": "generate a chat completion response from an LLM using the LLMClient generate method",
+    "strip_think_tokens": "strip thinking tokens from LLM response text using the strip_think_tokens function",
+    "get_model_client": "get an OpenAI or AzureOpenAI client for a given model URL and API key",
+    "flush_logs": "flush LLMClient metrics logs to a JSON file using the flush_logs method"
+  },
+  "facebookresearch_llm-speedrunner/core/validators.py": {
+    "extract_code_from_text": "extract code blocks from LLM response text using markdown fence pattern matching",
+    "extract_last_json_dict": "extract the last JSON dictionary string from text using regex pattern matching",
+    "validate_json_response": "validate an LLM response as JSON and optionally check required key types",
+    "validate_code_response": "validate and extract code from an LLM response using markdown fence patterns",
+    "extract_code_strict_mode": "extract code from text in strict mode returning empty string if no code blocks found"
+  },
+  "facebookresearch_llm-speedrunner/core/workspace.py": {
+    "create_workspace_version": "create a new version directory in the workspace by copying files from a template or parent version",
+    "view_workspace_files": "view the contents of files in a workspace version directory with optional recursive listing",
+    "get_top_k_versions": "get the top-k best versions ranked by a selection metric from completed experiments",
+    "view_version_history": "view the version history log with optional filtering for good or buggy versions and ancestor depth",
+    "delete_workspace_version": "delete a workspace version directory and recursively remove all its child versions"
+  },
+  "facebookresearch_llm-speedrunner/core/coders/aider.py": {
+    "create_AiderCoder": "create an AiderCoder instance with a specific model name and configuration options",
+    "run_AiderCoder_code": "run the AiderCoder code method to generate code for a task with file targets",
+    "get_aider_model_name": "get the Aider-compatible model name from a standard model name string",
+    "set_env_vars_for_model": "set environment variables for Azure, Gemini, or OpenAI model API access",
+    "configure_AiderCoder_edit_format": "configure the AiderCoder to use diff format with strict diff enforcement"
+  },
+  "facebookresearch_llm-speedrunner/core/coders/base.py": {
+    "code_Coder_code": "generate a whole code edit from an instruction and save it to the workspace",
+    "review_Coder_code": "review the Coder class code method that generates code edits from instructions",
+    "refactor_Coder_code": "refactor the Coder code method to support additional prompt parameters or validation rules",
+    "summarize_Coder_code": "summarize the Coder code method which resolves paths, builds prompts, and saves updated code",
+    "test_Coder_code": "test the Coder code method with a mock workspace and agent to verify code generation"
+  },
+  "facebookresearch_llm-speedrunner/core/ideators/base.py": {
+    "ideate_hypothesis_from_code": "ideate a hypothesis for improving code files given a task description and workspace version",
+    "create_ideator_agent": "create an Ideator agent that generates code improvement hypotheses using an LLM",
+    "ideate_with_debug_context": "ideate a debugging hypothesis for code with bug history and ignore ideas",
+    "ideate_with_knowledge": "ideate a hypothesis using external knowledge and history alongside code files",
+    "act_with_validator": "act on an instruction prompt and validate the LLM response as structured JSON"
+  },
+  "facebookresearch_llm-speedrunner/core/ideators/dummy_ideator.py": {
+    "ideate_pass_through_knowledge": "create a DummyIdeator agent that passes through knowledge strings without any model interactions",
+    "ideate_split_knowledge_lines": "use DummyIdeator ideate method to split a knowledge string into individual lines and return metadata",
+    "ideate_empty_knowledge": "call DummyIdeator ideate with no knowledge to get an empty list and dummy metadata dict",
+    "review_DummyIdeator_class": "review the DummyIdeator class that extends Agent and implements a pass-through ideate method",
+    "refactor_DummyIdeator_ideate": "refactor the DummyIdeator ideate method to add custom processing before passing through knowledge"
+  },
+  "facebookresearch_llm-speedrunner/core/prompts/coder_prompts.py": {
+    "generate_basic_code_prompt": "generate a code improvement prompt using basic_code_prompt with task description, file names, and ideas",
+    "generate_zero_knowledge_prompt": "generate a zero knowledge code prompt using basic_code_prompt with no ideas or knowledge provided",
+    "customize_prompt_with_packages": "customize a code prompt with available packages using the PACKAGE_INFO_COMPONENT template",
+    "customize_prompt_with_bug_history": "customize a code prompt with bug history using the CHILD_BUG_INFO_COMPONENT template",
+    "customize_prompt_with_knowledge": "customize a code prompt with domain knowledge using the KNOWLEDGE_INFO_COMPONENT template"
+  },
+  "facebookresearch_llm-speedrunner/core/prompts/ideator_prompts.py": {
+    "generate_ideation_prompt": "generate an ideation prompt for improving code with a task description and summary",
+    "generate_debug_ideation_prompt": "generate a debug ideation prompt to hypothesize fixes for buggy code",
+    "generate_ideation_prompt_with_history": "generate an ideation prompt that includes previous change history and outcomes",
+    "generate_ideation_prompt_with_knowledge": "generate an ideation prompt that incorporates relevant domain knowledge",
+    "generate_ideation_prompt_ignoring_ideas": "generate an ideation prompt that excludes previously proposed ideas"
+  },
+  "facebookresearch_llm-speedrunner/core/runners/bon_science_runner.py": {
+    "run_BON_science_loop": "run the BoNScienceRunner to evaluate N hypotheses and continue with best-of-N selection across iterations",
+    "create_BON_science_runner": "create a BoNScienceRunner instance with experiment config, workspace, agent, ideator, coder, and slurm config",
+    "select_next_open_version": "select the next open version to branch from by choosing top-performing or buggy leaf versions",
+    "run_experiment_on_version": "run an experiment on a workspace version by coding hypotheses and submitting jobs to SLURM",
+    "run_evaluation_on_version": "run evaluation on a workspace version by submitting eval jobs and recording results via callback"
+  },
+  "facebookresearch_llm-speedrunner/core/runners/science_runner.py": {
+    "init_science_runner": "initialize a ScienceRunner with ExperimentConfig, Workspace, Agent, Ideator, Coder, and SlurmConfig",
+    "extract_metrics_from_logs": "extract metrics from job logs for a given version using regex or LLM fallback",
+    "set_results_for_version": "set results for a workspace version by summarizing logs and extracting metrics",
+    "run_science_experiment": "run the ScienceRunner experiment loop for a specified number of iterations",
+    "shutdown_science_runner": "shutdown the ScienceRunner by cancelling pending SLURM jobs and deleting pending versions"
+  },
+  "facebookresearch_llm-speedrunner/launchers/launch_cumulative_speedup.py": {
+    "run_cascaded_speedup_experiment": "run a cascaded scientist experiment to measure cumulative training time reduction across records",
+    "gather_metrics_from_workspace": "gather training time and validation loss metrics from workspace version directories into a DataFrame",
+    "generate_scientist_command": "generate a command to launch a scientist run for a specific record with model and template settings",
+    "compute_training_time_reduction": "compute the best training time reduction from workspace results while filtering out invalid solutions",
+    "launch_cascaded_jobs_with_submitit": "launch parallel cascaded scientist jobs via submitit executor across multiple model and template combinations"
+  },
+  "facebookresearch_llm-speedrunner/launchers/launch_llm_speedrun_agent_additional_knowledge.py": {
+    "generate_cmd": "generate a command list to launch a scientist job with a specific record number, model, and knowledge source paths",
+    "get_slurm_id": "get the current SLURM job ID from environment variables for workspace path augmentation",
+    "worker": "run a subprocess command with an augmented workspace path that includes the SLURM job ID",
+    "set_agent_search_parameters": "set agent search parameters for flat, tree, forest, aide, or multi-aide search strategies",
+    "main": "submit batch scientist jobs via submitit across record numbers, search variants, and frontier models"
+  },
+  "facebookresearch_llm-speedrunner/launchers/launch_llm_speedrun_agent_baselines.py": {
+    "run_llm_speedrun_agent_baselines": "run LLM agent baseline experiments across multiple records, models, and knowledge levels via SLURM",
+    "generate_cmd_scientist_launch": "generate a launch_scientist command with record number, model, knowledge level, and science runner config",
+    "set_agent_search_parameters": "set agent search parameters for flat, tree, forest, aide, or multi-aide search strategies",
+    "run_worker_with_slurm_id": "run a subprocess command with an augmented workspace path using the current SLURM job ID",
+    "get_slurm_id": "get the current SLURM job ID from environment variables SLURM_JOB_ID, SLURM_ARRAY_JOB_ID, and SLURM_ARRAY_TASK_ID"
+  },
+  "facebookresearch_llm-speedrunner/launchers/launch_slurm.py": {
+    "run_scientist_job": "run a scientist job on a SLURM cluster using submitit with configurable hyperparameters",
+    "submit_batch_jobs": "submit a batch of scientist jobs across a grid of hypothesis and debug parameters",
+    "configure_job_parameters": "configure SLURM job parameters like timeout, CPUs, nodes, and array parallelism",
+    "run_scientist_with_task": "run a scientist experiment with a specific task name, model, and iteration count",
+    "launch_scientist_cli": "launch scientist jobs via CLI with argparse options for job name, timeout, and search parameters"
+  },
+  "facebookresearch_llm-speedrunner/tests/test_metrics_utils.py": {
+    "extract_single_line_metrics": "extract key-value metrics from a single line of training log text with type casting",
+    "extract_best_line_metrics_higher": "find the best training log line by selecting the highest accuracy metric value",
+    "extract_best_line_metrics_lower": "find the best training log line by selecting the lowest loss metric value",
+    "extract_best_line_metrics_thresholds": "find the best training log line filtered by minimum and maximum metric threshold constraints",
+    "extract_last_line_metrics": "extract metrics from the last valid line of multi-line training log output"
+  },
+  "facebookresearch_llm-speedrunner/tests/test_workspace.py": {
+    "create_workspace_version": "create a new Workspace version from a template directory or existing parent version",
+    "save_workspace_file": "save content to a file in the Workspace root or a specific version directory",
+    "view_workspace_history": "view the version history of a Workspace including ancestors and descendants with bug filtering",
+    "get_top_k_versions": "get the top K Workspace versions ranked by a metric score from results.json",
+    "delete_workspace_version": "delete a specific Workspace version and update version info and child pointers"
+  },
+  "facebookresearch_llm-speedrunner/utils/fs_utils.py": {
+    "expand_path": "expand a relative or tilde path into an absolute path using expand_path",
+    "fname_matches_any": "check if a filename matches any glob pattern in a list using fname_matches_any",
+    "cp_dir": "copy a directory tree to a target path while ignoring specific files using cp_dir",
+    "create_unique_temp_folder": "create a unique temporary folder with a given name prefix using create_unique_temp_folder",
+    "review_fs_utils": "review the fs_utils module for path expansion, file matching, directory copy, and temp folder utilities"
+  },
+  "facebookresearch_llm-speedrunner/utils/metrics_utils.py": {
+    "extract_single_line_metrics": "extract key-value metric pairs from a single line of text and cast values to specified types",
+    "extract_best_line_metrics": "extract the best metrics line from multi-line text based on a selection metric with optional threshold constraints",
+    "extract_last_line_metrics": "extract metrics from the last valid line of multi-line text with key-value pairs",
+    "review_extract_single_line_metrics": "review the extract_single_line_metrics function to understand its regex pattern and type casting behavior",
+    "refactor_extract_best_line_metrics": "refactor the extract_best_line_metrics function to support additional selection criteria or threshold logic"
+  },
+  "facebookresearch_llm-speedrunner/utils/slurm_utils.py": {
+    "submit_slurm_job": "submit a SLURM job using submitit with specified nodes, GPUs, CPUs, and timeout",
+    "observe_submitit_job": "observe a submitit job status and execute a callback when the job finishes",
+    "wait_for_observed_jobs": "wait for all observed submitit jobs and their callbacks to complete",
+    "cancel_observed_jobs": "cancel all pending observed submitit jobs in the JobObserver pool",
+    "simulate_local_submitit_job": "simulate a submitit job locally by running a command as a subprocess"
+  },
+  "facebookresearch_llm-speedrunner/utils/str_utils.py": {
+    "convert_type_name_to_type": "convert a type name string like 'float' or 'int' to its corresponding Python type object",
+    "filter_serializable_dict": "filter a dictionary to keep only JSON-serializable key-value pairs and drop the rest",
+    "refactor_basic_type_name_to_type": "refactor the basic_type_name_to_type function to support additional type mappings",
+    "review_get_serializable_dict_subset": "review the get_serializable_dict_subset function and its JSON serialization filtering logic",
+    "summarize_str_utils": "summarize the str_utils module and its type conversion and serialization utility functions"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/collatz/collatz.py": {
+    "run_collatz_script": "run the collatz script to find the number with max steps under 10 million",
+    "create_collatz_steps_function": "create a function that counts the number of steps in a Collatz sequence for a given number",
+    "create_find_max_collatz_function": "create a function that finds the number with the most Collatz steps up to a given limit",
+    "refactor_collatz_steps": "refactor the collatz_steps function to use memoization for faster repeated calculations",
+    "test_find_max_collatz": "test the find_max_collatz function with a small limit and verify the returned number and step count"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_1/train_gpt2.py": {
+    "run_GPT_model": "run the GPT model forward pass with token indices and optional targets for loss computation",
+    "build_GPTConfig": "build a GPTConfig dataclass to set block_size, vocab_size, n_layer, n_head, and n_embd hyperparameters",
+    "create_DistributedDataLoader": "create a DistributedDataLoader to load binary token shards across multiple DDP processes for training",
+    "test_CausalSelfAttention": "test the CausalSelfAttention module with scaled dot product attention and causal masking on input tensors",
+    "review_GPT_configure_optimizers": "review the GPT configure_optimizers method to set up AdamW with weight decay and learning rate"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_10/train_gpt2.py": {
+    "run_GPT_model_training": "run the GPT-2 model training loop with distributed data parallel across multiple GPUs",
+    "create_Muon_optimizer": "create a Muon optimizer with SGD-momentum and Newton-Schulz orthogonalization for 2D parameters",
+    "build_CausalSelfAttention_layer": "build a CausalSelfAttention layer with rotary embeddings, QK norm, and value mixing via lamb parameter",
+    "review_DistributedDataLoader": "review the DistributedDataLoader class that loads tokenized data shards across distributed processes",
+    "test_zeropower_via_newtonschulz5": "test the zeropower_via_newtonschulz5 function that computes matrix orthogonalization using quintic Newton-Schulz iteration"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_11/train_gpt2.py": {
+    "run_GPT_model": "run the GPT model forward pass with token indices and targets to compute cross-entropy loss",
+    "create_Muon_optimizer": "create a Muon optimizer with SGD-momentum and Newton-Schulz orthogonalization for 2D parameters",
+    "build_CausalSelfAttention": "build a CausalSelfAttention module with rotary embeddings, QK RMS norm, and value mixing via learnable lambda",
+    "test_DistributedDataLoader": "test the DistributedDataLoader to load and shard binary token files across multiple GPU processes",
+    "review_Block_residual": "review the Block module with learnable residual lambdas combining current and original inputs before attention and MLP"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_12/train_gpt2.py": {
+    "run_GPT_training": "run the GPT-2 model training loop with distributed data parallel across multiple GPUs",
+    "create_Muon_optimizer": "create a Muon optimizer with Newton-Schulz orthogonalization for 2D parameter updates",
+    "build_GPT_model": "build a GPT-2 model with U-Net skip connections, rotary embeddings, and flex attention",
+    "review_CausalSelfAttention": "review the CausalSelfAttention module with QK RMS norm and learnable lambda mixing",
+    "test_DistributedDataLoader": "test the DistributedDataLoader for loading tokenized binary data shards across processes"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_13/train_gpt2.py": {
+    "run_GPT_model": "run the GPT model forward pass with token inputs, targets, and an attention block size",
+    "build_Muon_optimizer": "build a Muon optimizer with SGD-momentum and Newton-Schulz orthogonalization for 2D parameters",
+    "create_DistributedDataLoader": "create a DistributedDataLoader that shards binary token files across multiple GPU processes",
+    "review_CausalSelfAttention": "review the CausalSelfAttention module using FlexAttention, rotary embeddings, and QK RMS normalization",
+    "test_zeropower_via_newtonschulz5": "test the zeropower_via_newtonschulz5 function to orthogonalize a 2D matrix via quintic Newton-Schulz iteration"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_14/train_gpt2.py": {
+    "run_GPT_training": "run the GPT-2 model training loop with Muon optimizer and FlexAttention on distributed GPUs",
+    "create_Muon_optimizer": "create a Muon optimizer instance for 2D parameters with Newton-Schulz orthogonalization and SGD momentum",
+    "build_GPT_model": "build a GPT-2 model with U-Net skip connections, rotary embeddings, and value token embeddings",
+    "use_DistributedDataLoader": "use the DistributedDataLoader to load and iterate over binary token shard files across distributed processes",
+    "compute_zeropower_newtonschulz5": "compute the zeroth power orthogonalization of a 2D matrix using the compiled Newton-Schulz quintic iteration"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_15/train_gpt2.py": {
+    "run_GPT_model": "run the GPT model forward pass with token embeddings and sliding window causal attention mask",
+    "create_Muon_optimizer": "create a Muon optimizer with SGD-momentum and Newton-Schulz orthogonalization for 2D parameters",
+    "compute_zeropower_newtonschulz5": "compute the zeroth power orthogonalization of a matrix using quintic Newton-Schulz iteration",
+    "build_DistributedDataLoader": "build a distributed data loader that shards binary token files across GPU processes",
+    "review_CausalSelfAttention": "review the CausalSelfAttention module with FlexAttention, rotary embeddings, and value residual learning"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_16/train_gpt2.py": {
+    "run_train_gpt2": "run the GPT-2 training script with Muon optimizer and FlexAttention for LLM speedrunner competition",
+    "review_Muon_optimizer": "review the Muon optimizer class that performs SGD-momentum with Newton-Schulz orthogonalization for 2D parameters",
+    "review_CausalSelfAttention": "review the CausalSelfAttention module using flex_attention with rotary embeddings and QK normalization",
+    "review_GPT_model": "review the GPT model with U-Net architecture, value embeddings, and document-aware sliding window block masks",
+    "refactor_DistributedDataLoader": "refactor the DistributedDataLoader to support alternative binary data shard formats or different sequence lengths"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_17/train_gpt2.py": {
+    "run_gpt2_training": "run the GPT-2 training loop with distributed data parallel and Muon optimizer on GPU",
+    "build_gpt_model": "build a GPT-2 model with U-Net architecture, FlexAttention, and rotary embeddings using GPTConfig",
+    "create_muon_optimizer": "create a Muon optimizer with Newton-Schulz orthogonalized momentum for 2D matrix parameters",
+    "create_distributed_dataloader": "create a DistributedDataLoader that loads binary token shards across multiple GPU processes",
+    "compute_zeropower_newtonschulz5": "compute the zeroth power orthogonalization of a matrix using Newton-Schulz quintic iteration"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_18/train_gpt2.py": {
+    "run_GPT_model": "run the GPT model forward pass with inputs, targets, and sliding window block mask",
+    "build_Muon_optimizer": "build a Muon optimizer with configurable learning rate, momentum, and Newton-Schulz steps",
+    "create_DistributedDataLoader": "create a DistributedDataLoader that loads binary token shards across distributed ranks",
+    "test_zeropower_via_newtonschulz5": "test the zeropower_via_newtonschulz5 function to orthogonalize a 2D matrix via Newton-Schulz iteration",
+    "review_GPT_forward": "review the GPT forward pass with U-Net skip connections, value embeddings, and FlexAttention block masks"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_19/train_gpt2.py": {
+    "run_GPT_model": "run the GPT model forward pass with FlexAttention block masks and value embeddings",
+    "run_Muon_optimizer": "run the Muon optimizer step with Newton-Schulz orthogonalization on 2D parameter updates",
+    "run_mm_op": "run the custom FP8 scaled matrix multiplication operator with autograd support",
+    "run_distributed_data_generator": "run the distributed data generator to yield token batches across GPU ranks",
+    "run_training_loop": "run the distributed training loop with learning rate cooldown and sliding window warmup"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_2/train_gpt2.py": {
+    "run_GPT_model": "run the GPT model forward pass with token indices and optional targets to compute logits and loss",
+    "run_DistributedDataLoader": "run the DistributedDataLoader to load and iterate over binary token data shards across distributed processes",
+    "build_GPTConfig": "build a GPTConfig dataclass to configure block size, vocab size, number of layers, heads, and embedding dimensions",
+    "run_CausalSelfAttention": "run the CausalSelfAttention module with rotary embeddings and scaled dot product attention on input tensors",
+    "run_rmsnorm": "run the rmsnorm function to apply root mean square layer normalization to a tensor with configurable epsilon"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_20/train_gpt2.py": {
+    "run_train_gpt2": "run the distributed GPT-2 training loop with Muon optimizer and FP8 lm_head on GPU",
+    "review_Muon_optimizer": "review the Muon optimizer class that performs Newton-Schulz orthogonalization on weight updates",
+    "review_GPT_model": "review the GPT model class with U-net skip connections and FlexAttention block masks",
+    "review_mm_op": "review the custom FP8 matmul operator for efficient lm_head forward and backward passes",
+    "review_distributed_data_generator": "review the distributed data generator that shards binary token files across GPU ranks"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_21/train_gpt2.py": {
+    "run_GPT_model": "run the GPT model forward pass with input sequence, target sequence, and sliding window block masks",
+    "create_Muon_optimizer": "create a Muon optimizer with Newton-Schulz orthogonalization for 2D parameter groups with configurable learning rate and momentum",
+    "build_CastedLinear_layer": "build a CastedLinear layer with optional FP8 matmul support and configurable scaling factors for input, weight, and gradient",
+    "create_distributed_data_generator": "create a distributed data generator that loads binary token shards and yields batched input-target pairs across GPU ranks",
+    "run_zeropower_newtonschulz5": "run the Newton-Schulz5 iteration to compute the zeroth power orthogonalization of a batched matrix tensor"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_3/train_gpt2.py": {
+    "run_gpt2_training": "run the GPT-2 model training loop with DDP across multiple GPUs using torchrun",
+    "create_orthogonal_nesterov_optimizer": "create an OrthogonalNesterov optimizer that uses Newton-Schulz iteration for zeroth power gradient updates",
+    "build_combined_optimizer": "build a CombinedOptimizer that wraps multiple optimizers and supports unified step, zero_grad, and scale_lrs",
+    "create_gpt_model": "create a GPT-2 model with Rotary embeddings, causal self-attention, and weight-tying between embeddings and lm_head",
+    "create_distributed_dataloader": "create a DistributedDataLoader that shards binary token files across DDP processes for distributed training"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_4/train_gpt2.py": {
+    "run_GPT2_training": "run the GPT-2 model training loop with DDP, Muon optimizer, and gradient accumulation on GPU",
+    "create_Muon_optimizer": "create a Muon optimizer instance with SGD-momentum and Newton-Schulz orthogonalization for 2D parameters",
+    "build_GPT_model": "build a GPT-2 model with Rotary embeddings, causal self-attention, and weight-tying using GPTConfig",
+    "use_DistributedDataLoader": "use the DistributedDataLoader to load tokenized binary data shards across multiple DDP processes",
+    "compute_zeropower_newtonschulz5": "compute the zeroth power orthogonalization of a matrix using the compiled Newton-Schulz quintic iteration"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_5/train_gpt2.py": {
+    "run_GPT_model": "run the GPT model forward pass on token indices and compute cross-entropy loss against targets",
+    "create_Muon_optimizer": "create a Muon optimizer with SGD-momentum and Newton-Schulz orthogonalization for 2D transformer parameters",
+    "build_DistributedDataLoader": "build a distributed data loader that shards binary token files across GPU processes for training",
+    "test_zeropower_via_newtonschulz5": "test the Newton-Schulz iteration function that orthogonalizes a 2D matrix via quintic iteration",
+    "review_GPT_config": "review the GPTConfig dataclass and GPT model architecture with rotary embeddings and ReLU squared MLP"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_6/train_gpt2.py": {
+    "run_GPT_training": "run the GPT-2 model training loop with DDP, Muon optimizer, and gradient accumulation on tokenized data",
+    "create_Muon_optimizer": "create a Muon optimizer instance with SGD-momentum and Newton-Schulz orthogonalization for 2D transformer parameters",
+    "build_GPT_model": "build a GPT-2 model with rotary embeddings, causal self-attention, RMSNorm, and ReLU-squared MLP blocks",
+    "test_zeropower_via_newtonschulz5": "test the Newton-Schulz iteration function that orthogonalizes a 2D matrix using quintic iteration in bfloat16",
+    "review_DistributedDataLoader": "review the DistributedDataLoader class that loads binary token shards and yields batches across distributed processes"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_7/train_gpt2.py": {
+    "run_GPT_model": "run the GPT model forward pass with token indices and optional targets to compute loss",
+    "run_Muon_optimizer": "run the Muon optimizer step to apply orthogonalized SGD-momentum updates to 2D parameters",
+    "build_DistributedDataLoader": "build a DistributedDataLoader to load tokenized data shards across multiple GPU processes",
+    "run_zeropower_via_newtonschulz5": "run the Newton-Schulz iteration to compute the zeroth power orthogonalization of a 2D matrix",
+    "run_CausalSelfAttention": "run the CausalSelfAttention module forward pass with rotary embeddings and RMS normalization on input tensors"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_8/train_gpt2.py": {
+    "run_GPT_training": "run the GPT-2 model training loop with distributed data parallel and Muon optimizer",
+    "create_Muon_optimizer": "create a Muon optimizer for 2D transformer parameters using Newton-Schulz orthogonalization",
+    "build_DistributedDataLoader": "build a distributed data loader that reads tokenized binary shard files across processes",
+    "use_zeropower_via_newtonschulz5": "use the Newton-Schulz iteration to orthogonalize a 2D gradient matrix in bfloat16",
+    "configure_GPT_model": "configure a GPT-2 model with rotary embeddings, RMSNorm, and ReLU squared MLP activations"
+  },
+  "facebookresearch_llm-speedrunner/workspace_templates/nanogpt_speedrun/record_9/train_gpt2.py": {
+    "run_gpt2_training": "run the GPT-2 model training loop with distributed data parallel across multiple GPUs",
+    "create_muon_optimizer": "create a Muon optimizer instance with configurable learning rate, momentum, and Newton-Schulz backend",
+    "build_gpt_model": "build a GPT-2 model with configurable vocab size, layers, heads, and embedding dimensions",
+    "use_distributed_dataloader": "use the DistributedDataLoader to load tokenized data shards across multiple processes for training",
+    "apply_rotary_embedding": "apply rotary positional embeddings to multihead attention query and key tensors"
+  }
+}

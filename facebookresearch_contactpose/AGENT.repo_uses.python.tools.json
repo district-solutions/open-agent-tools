@@ -1,0 +1,100 @@
+{
+  "facebookresearch_contactpose/scripts/download_data.py": {
+    "run_download_grasps": "run the ContactPoseDownloader to download and extract all grasp data from Dropbox",
+    "run_download_contact_maps": "run the ContactPoseDownloader to download contact maps for a specific participant and intent",
+    "run_download_images": "run the ContactPoseDownloader to download color and depth images for a participant and intent",
+    "run_download_3d_models": "run the ContactPoseDownloader to download and extract 3D model files from Dropbox",
+    "run_download_markers": "run the ContactPoseDownloader to download 3D model marker location data from Dropbox"
+  },
+  "facebookresearch_contactpose/scripts/preprocess_images.py": {
+    "run_preprocess_images_cli": "run the preprocess_images script to crop RGB and depth images and randomize backgrounds for ML training",
+    "run_preprocess_single": "run the preprocess function to crop and save depth images for a single person intent and object",
+    "run_preprocess_all": "run the preprocess_all function to batch preprocess images across multiple people intents and objects",
+    "review_inspect_dir": "review the inspect_dir function that lists all image filenames in a given directory",
+    "refactor_preprocess_masking": "refactor the preprocess function to change the depth-based and color-based foreground masking logic"
+  },
+  "facebookresearch_contactpose/scripts/show_contactmap.py": {
+    "run_show_contactmap_simple": "run the script to visualize a contact map with the simple mode using argparse CLI arguments",
+    "run_show_contactmap_semantic_fingers": "run the script to visualize a contact map colored by finger proximity using semantic_hands_fingers mode",
+    "run_show_contactmap_semantic_phalanges": "run the script to visualize a contact map colored by phalange proximity using semantic_hands_phalanges mode",
+    "apply_colormap_to_mesh": "apply an inferno colormap to an Open3D mesh vertex colors with configurable sigmoid activation",
+    "apply_semantic_colormap_to_mesh": "apply different colormaps per semantic index to an Open3D mesh for finger or phalange visualization"
+  },
+  "facebookresearch_contactpose/scripts/data_analysis/active_areas.py": {
+    "run_discover_active_areas": "run the script to discover active areas on an object surface most frequently touched by a specific finger part",
+    "run_show_active_areas": "run the script with --show to visualize active areas on a 3D mesh using Open3D",
+    "run_discover_thumb_tip_use": "run the script with finger_idx 0 and part_idx 3 to find thumb tip active areas for use intent",
+    "run_discover_little_finger_handoff": "run the script with finger_idx 4 to find little finger active areas for handoff intent",
+    "run_discover_custom_participants": "run the script with --p_nums to discover active areas for a custom range of participant numbers"
+  },
+  "facebookresearch_contactpose/scripts/data_analysis/hand_contact_prob.py": {
+    "calc_hand_contact_prob": "calculate contact probability for hand mesh vertices using a contact map and KDTree spatial search",
+    "show_hand_contact_prob": "visualize hand contact probability as a color-coded 3D mesh using Open3D and matplotlib",
+    "run_hand_contact_analysis": "run the script to calculate and visualize hand contact probability for specified subjects and intents",
+    "review_calc_hand_contact_prob": "review the calc_hand_contact_prob function that computes mean contact probability across subjects using MANO meshes",
+    "review_show_hand_contact_prob": "review the show_hand_contact_prob function that renders a color-coded hand mesh with contact probability values"
+  },
+  "facebookresearch_contactpose/scripts/maintenance/get_urls.py": {
+    "run_get_url_for_participant": "run the script with --p_id to generate Dropbox shared links for all video objects of a participant",
+    "create_dropbox_shared_link": "create a public Dropbox shared link for a video path using the get_url function",
+    "update_urls_json": "update the data/urls.json file with new Dropbox shared URLs for video color objects",
+    "refactor_get_url": "refactor the get_url function to use requests directly instead of writing to a temporary JSON file",
+    "review_data_template": "review the data_template settings for Dropbox API sharing visibility and access configuration"
+  },
+  "facebookresearch_contactpose/scripts/maintenance/move_videos_dropbox.py": {
+    "move_dropbox_videos": "move Kinect camera video files from a participant folder into a new color subfolder on Dropbox",
+    "create_dropbox_folder": "create a new folder on Dropbox at the specified path using files_create_folder",
+    "check_dropbox_file_exists": "check if a video file exists on Dropbox using files_get_metadata before moving it",
+    "move_dropbox_file": "move a video file from one Dropbox path to another using files_move",
+    "run_video_migration": "run the maintenance script to batch move participant videos into organized color subfolders on Dropbox"
+  },
+  "facebookresearch_contactpose/scripts/maintenance/produce_videos.py": {
+    "produce_contactpose_videos": "run produce to download images and encode contact pose videos for a participant number",
+    "produce_cleanup_failed_tasks": "run produce with cleanup flag to retry failed video production tasks from status.json",
+    "produce_worker_download_and_encode": "run produce_worker to download images for a task tuple and encode them into video files",
+    "produce_parallel_video_pipeline": "run produce with parallel mode to process multiple participant-intent-object combinations concurrently using a process pool",
+    "produce_specific_tasks": "run produce with explicit tasks list to produce videos for specific participant-intent-object combinations"
+  },
+  "facebookresearch_contactpose/scripts/maintenance/remove_videos.py": {
+    "remove_zip_and_video_files": "run the remove function to delete zip files and color.mp4 videos for a participant session directory",
+    "remove_zip_files_from_object_dirs": "run the remove function to delete all zip files from object subdirectories in a participant session",
+    "remove_kinect_color_videos": "run the remove function to delete color.mp4 files from kinect2_left, kinect2_right, and kinect2_middle camera directories",
+    "remove_session_root_files": "run the remove function to delete all files at the root level of a participant session directory",
+    "run_remove_cli": "run the script from the command line with a participant number argument to clean up session data"
+  },
+  "facebookresearch_contactpose/utilities/dataset.py": {
+    "get_object_names": "get a list of objects grasped by a participant with a specific intent from the ContactPose dataset",
+    "get_intents": "get the list of intents with which a participant grasped a specific object in the ContactPose dataset",
+    "get_p_nums": "get the list of participants who grasped a specific object with a given intent in the ContactPose dataset",
+    "ContactPose_init": "create a ContactPose dataset accessor for a participant, intent, and object to load grasp annotations and camera data",
+    "ContactPose_mano_meshes": "get MANO hand mesh vertices, faces, and joints for a specific frame from the ContactPose dataset"
+  },
+  "facebookresearch_contactpose/utilities/mano_fitting.py": {
+    "fit_mano_model_to_joints": "fit the MANO hand model to 3D joint locations using MANOFitter.fit_joints with pose and shape parameters",
+    "register_two_point_clouds": "register two point clouds by rigid transformation using register_pcs to compute the target-to-source transform",
+    "extract_palm_joints": "extract the 6 palm joints (root plus base of all 5 fingers) from a joint array using get_palm_joints",
+    "create_mano_param_dict": "create a default MANO parameter dictionary with zero-initialized pose, betas, and transformation values using mano_param_dict",
+    "load_mano_model_for_fitting": "load LEFT and RIGHT MANO model pickle files via the MANOFitter class constructor for hand mesh fitting"
+  },
+  "facebookresearch_contactpose/utilities/misc.py": {
+    "draw_hands_on_image": "draw hand joints and finger line segments on an image using cv2 circles and lines",
+    "project_3d_points": "project Nx3 3D points to 2D pixel coordinates using a 3x4 camera projection matrix",
+    "convert_openpose_to_mano_joints": "convert hand joint coordinates from OpenPose format to MANO format with proper finger mapping",
+    "load_mano_meshes_from_params": "load MANO hand mesh vertices and joints from pose parameters and model dictionaries",
+    "refine_mask_with_grabcut": "refine noisy segmentation mask edges using OpenCV GrabCut algorithm on a source image"
+  },
+  "facebookresearch_contactpose/utilities/networking.py": {
+    "download_url_with_retry": "download a file from a URL to a local path with exponential backoff retry logic",
+    "download_url_once_streaming": "download a file from a URL to a local path using streaming with a tqdm progress bar",
+    "upload_dropbox_with_retry": "upload a local file to a Dropbox path with automatic folder creation and exponential backoff retry",
+    "calculate_exponential_backoff": "calculate an exponential backoff delay with jitter for retrying failed network requests",
+    "refactor_download_url": "refactor the download_url function to support custom proxy configuration or timeout settings"
+  },
+  "facebookresearch_contactpose/utilities/rendering.py": {
+    "create_depth_renderer": "create a DepthRenderer instance with an object mesh, camera intrinsics, and camera name for depth rendering",
+    "render_depth_map": "render a depth map of an object mesh given its 4x4 pose relative to the camera",
+    "compute_vertex_visibility": "compute the 2D projection locations and binary visibility of object mesh vertices using Z-buffer depth comparison",
+    "initialize_renderer_with_hand_mesh": "initialize a DepthRenderer with a hand mesh dictionary containing vertices and faces for depth rendering",
+    "review_depth_renderer_class": "review the DepthRenderer class that renders object or hand meshes into depth maps using pyrender and OSMesa"
+  }
+}

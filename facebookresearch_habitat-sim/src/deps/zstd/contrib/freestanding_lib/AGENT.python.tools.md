@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/habitat-sim
+- repo_uri: https://github.com/facebookresearch/habitat-sim
+
+## File: facebookresearch_habitat-sim/src/deps/zstd/contrib/freestanding_lib/freestanding.py
+
+Prompts
+
+```
+['run the freestanding script to build a self-contained zstd library from source', 'run the PartialPreprocessor to resolve ifdef and ifndef blocks in C source files', 'run the freestanding script with --rewrite-include to replace include paths in zstd source files', 'run the freestanding script with --exclude to remove code between BEGIN and END markers', 'run the freestanding script with --sed to apply regex replacements across zstd source files']
+```
+
+Usage
+
+```
+{'build_freestanding_zstd_lib': 'run the freestanding script to build a self-contained zstd library from source', 'run_preprocess_c_macros': 'run the PartialPreprocessor to resolve ifdef and ifndef blocks in C source files', 'rewrite_include_paths': 'run the freestanding script with --rewrite-include to replace include paths in zstd source files', 'exclude_code_sections': 'run the freestanding script with --exclude to remove code between BEGIN and END markers', 'apply_sed_replacements': 'run the freestanding script with --sed to apply regex replacements across zstd source files'}
+```
+

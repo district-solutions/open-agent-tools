@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairo
+- repo_uri: https://github.com/facebookresearch/fairo
+
+## File: facebookresearch_fairo/polymetis/polymetis/python/torchcontrol/models/torchscript_pinocchio.py
+
+Prompts
+
+```
+['build a RobotModelPinocchio from a URDF file to compute robot kinematics and dynamics', 'compute forward kinematics to get link position and orientation from joint angles', 'compute inverse kinematics to find joint positions that achieve a desired end-effector pose', 'compute the Jacobian matrix relative to a link frame given joint positions', 'compute inverse dynamics to get desired torques for target joint accelerations']
+```
+
+Usage
+
+```
+{'build_robot_model_from_urdf': 'build a RobotModelPinocchio from a URDF file to compute robot kinematics and dynamics', 'compute_forward_kinematics': 'compute forward kinematics to get link position and orientation from joint angles', 'compute_inverse_kinematics': 'compute inverse kinematics to find joint positions that achieve a desired end-effector pose', 'compute_robot_jacobian': 'compute the Jacobian matrix relative to a link frame given joint positions', 'compute_inverse_dynamics': 'compute inverse dynamics to get desired torques for target joint accelerations'}
+```
+

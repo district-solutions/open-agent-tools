@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/crypten
+- repo_uri: https://github.com/facebookresearch/crypten
+
+## File: facebookresearch_crypten/examples/mpc_cifar/mpc_cifar.py
+
+Prompts
+
+```
+['run the MPC CIFAR10 training loop with LeNet for a specified number of epochs', 'validate a plaintext or encrypted LeNet model on a CIFAR10 validation dataset', 'construct an encrypted private model from a trained PyTorch LeNet for multi-party computation', 'encrypt a data tensor with a specified source rank for secure multi-party inference', 'create a LeNet convolutional neural network with ReLU activations for CIFAR10 classification']
+```
+
+Usage
+
+```
+{'run_mpc_cifar_training': 'run the MPC CIFAR10 training loop with LeNet for a specified number of epochs', 'validate_model': 'validate a plaintext or encrypted LeNet model on a CIFAR10 validation dataset', 'construct_private_model': 'construct an encrypted private model from a trained PyTorch LeNet for multi-party computation', 'encrypt_data_tensor': 'encrypt a data tensor with a specified source rank for secure multi-party inference', 'create_lenet_model': 'create a LeNet convolutional neural network with ReLU activations for CIFAR10 classification'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairchem
+- repo_uri: https://github.com/facebookresearch/fairchem
+
+## File: facebookresearch_fairchem/src/fairchem/data/odac/force_field/FF_analysis.py
+
+Prompts
+
+```
+['run the FF_analysis module to generate force field error plots and MAE statistics for CO2 and H2O', 'load a JSON file of DFT and force field data points and split into CO2 and H2O lists', 'generate a histogram of raw force field minus DFT errors for CO2 and H2O molecules', 'compute the mean absolute error for physisorption points where DFT energy is between 0 and -0.5 eV', 'compute the mean absolute error for chemisorption points where DFT energy is between -0.5 and -2 eV']
+```
+
+Usage
+
+```
+{'run_FF_analysis': 'run the FF_analysis module to generate force field error plots and MAE statistics for CO2 and H2O', 'get_data_from_json': 'load a JSON file of DFT and force field data points and split into CO2 and H2O lists', 'plot_raw_error_histogram': 'generate a histogram of raw force field minus DFT errors for CO2 and H2O molecules', 'calculate_physisorption_error': 'compute the mean absolute error for physisorption points where DFT energy is between 0 and -0.5 eV', 'calculate_chemisorption_error': 'compute the mean absolute error for chemisorption points where DFT energy is between -0.5 and -2 eV'}
+```
+

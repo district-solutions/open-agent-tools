@@ -1,0 +1,100 @@
+{
+  "facebookresearch_cruxeval/data/generate_function_prompts.py": {
+    "generate_function_prompts_jsonl": "run generate to create a JSONL file of few-shot prompts for str, list, and dict methods",
+    "make_prompt_from_function_and_examples": "create a few-shot prompt from a target function name and example pairs",
+    "enumerate_builtin_type_methods": "list all public methods of str, list, and dict built-in types",
+    "combine_examples_for_str_methods": "generate prompts by combining string and list examples for each str method",
+    "combine_examples_for_list_dict_methods": "generate prompts by combining string and list examples for each list and dict method"
+  },
+  "facebookresearch_cruxeval/data/filter/analyze_ops.py": {
+    "annotate_code_for_bad_ops": "run annotate on Python code to detect undesirable operations like big numbers, float ops, and true division",
+    "check_assert_statement": "check an assert line to validate it matches the expected pattern of assert f(args) == literal",
+    "filter_trace_bytecode_ops": "use filter_trace as a sys.settrace callback to inspect BINARY and INPLACE bytecode operations at runtime",
+    "test_annotate_function": "test the annotate function by running the built-in test that checks code with big power ops and safe code",
+    "raise_forbidden_exception": "raise a ForbiddenException when code contains forbidden patterns like import, eval, exec, or open"
+  },
+  "facebookresearch_cruxeval/evaluation/evaluate_generations.py": {
+    "run_evaluate_generations_cli": "run the evaluate_generations CLI to score code generations against the CRUXEval benchmark dataset",
+    "run_evaluate_generations_pass_at_k": "run evaluate_generations to compute pass@1 and pass@5 scores for model-generated code samples",
+    "run_evaluate_generations_input_mode": "run evaluate_generations in input mode to evaluate generated code against input-based test cases",
+    "run_evaluate_generations_output_mode": "run evaluate_generations in output mode to evaluate generated code against output-based test cases",
+    "run_evaluate_generations_dump_results": "run evaluate_generations and dump scored results including raw generations to a JSON file"
+  },
+  "facebookresearch_cruxeval/evaluation/print_evaluation_directories.py": {
+    "get_all_directories": "create a function that lists all subdirectories in a given path and returns them as a sorted list",
+    "print_input_directories": "run the script to print all input evaluation directories from the model_generations folder",
+    "print_output_directories": "run the script to print all output evaluation directories from the model_generations folder",
+    "review_get_all_directories": "review the get_all_directories function that uses os.listdir and os.path.isdir to filter directories",
+    "refactor_get_all_directories": "refactor get_all_directories to accept a custom path argument instead of defaulting to the current directory"
+  },
+  "facebookresearch_cruxeval/evaluation/utils_execute.py": {
+    "check_correctness": "run a Python program in a sandboxed subprocess and check if it passes within a timeout",
+    "time_limit": "create a context manager that enforces a time limit on code execution using signals",
+    "swallow_io": "create a context manager that redirects stdout, stderr, and stdin to a write-only buffer",
+    "reliability_guard": "run a safety guard that disables destructive OS functions and subprocess calls for sandboxed execution",
+    "create_tempdir": "create a temporary directory context manager that changes into it for isolated file operations"
+  },
+  "facebookresearch_cruxeval/evaluation/utils_general.py": {
+    "calculate_pass_at_k": "calculate the pass@k score given total samples n, correct count c, and k",
+    "evaluate_generations_score": "evaluate generated code samples against expected output using input or output mode",
+    "run_pass_at_k_evaluation": "run pass@k evaluation to measure code generation success rate at k samples",
+    "test_evaluate_score": "test the evaluate_score function with generated code samples and expected outputs",
+    "summarize_pass_at_k_formula": "summarize the pass@k formula used for evaluating code generation correctness"
+  },
+  "facebookresearch_cruxeval/inference/generator.py": {
+    "run_code_generation": "run code generation for a CRUXEval task using a vLLM model and sampling parameters",
+    "create_generator": "create a Generator instance with a model, tokenizer, and args for CRUXEval inference",
+    "generate_task_outputs": "generate code completions for a named CRUXEval task and return generations with references",
+    "review_generator_class": "review the Generator class that handles dataset tokenization, sampling, and code completion for evaluation tasks",
+    "summarize_generate_method": "summarize the generate method that tokenizes datasets, runs vLLM inference, and returns code generations"
+  },
+  "facebookresearch_cruxeval/inference/main.py": {
+    "run_cruxeval_inference": "run code generation inference on a language model using vLLM for a specified CRUXEval task",
+    "run_model_evaluation_with_vllm": "evaluate a Hugging Face model on CRUXEval benchmarks with configurable batch size and precision",
+    "run_code_generation_with_cot": "run code generation inference with chain-of-thought reasoning enabled on a specified task",
+    "parse_args_eval": "parse command line arguments for CRUXEval model evaluation including model path, tasks, and generation parameters",
+    "save_generations_to_json": "save model code generations and raw outputs to JSON files for later analysis"
+  },
+  "facebookresearch_cruxeval/inference/utils.py": {
+    "create_tokenized_dataset": "create a TokenizedDataset to tokenize and preprocess code completion prompts for a language model",
+    "iterate_tokenized_dataset": "iterate over a TokenizedDataset to yield tokenized prompts with input IDs and attention masks",
+    "run_complete_code": "run code completion inference using a model, sampling params, and dataloader to generate code outputs",
+    "review_tokenized_dataset_class": "review the TokenizedDataset class to understand how it handles single and dual prompt tokenization",
+    "summarize_complete_code_function": "summarize the complete_code function that generates code completions and returns processed and raw outputs"
+  },
+  "facebookresearch_cruxeval/inference/tasks/base.py": {
+    "create_Task_subclass": "create a subclass of Task that implements get_prompt and get_reference for a new benchmark",
+    "implement_get_dataset": "implement the get_dataset abstract method to return an iterable of dataset samples",
+    "implement_get_prompt": "implement the get_prompt method to build a prompt string from a dataset document",
+    "implement_process_results": "implement the process_results method to evaluate generations against ground truth references",
+    "implement_postprocess_generation": "implement the postprocess_generation method to clean up LM code generation output"
+  },
+  "facebookresearch_cruxeval/inference/tasks/input_prediction.py": {
+    "create_input_prediction_task": "create an InputPrediction task instance with chain-of-thought prompting enabled for CRUXEval input prediction",
+    "get_prompt_for_document": "get the prompt for a dataset document using direct or chain-of-thought input prediction format",
+    "postprocess_generation_output": "postprocess a model generation by stripping the prompt and extracting the answer from bracket tags",
+    "get_reference_for_document": "get the reference tuple of code, input, and output for a dataset document",
+    "get_dataset_for_task": "get the test dataset split for the CRUXEval input prediction task"
+  },
+  "facebookresearch_cruxeval/inference/tasks/output_prediction.py": {
+    "create_output_prediction_task": "create an OutputPrediction task instance with chain-of-thought or phind output mode enabled",
+    "get_prompt_for_code_input": "get a prompt for output prediction given code and input using direct or chain-of-thought style",
+    "postprocess_llm_generation": "postprocess an LLM generation by stripping the prompt and extracting the answer after ANSWER or == markers",
+    "get_reference_for_doc": "get the reference tuple of code, input, and expected output for a dataset document",
+    "run_output_prediction_evaluation": "run the output prediction task to evaluate model generations against references from the CRUXEval dataset"
+  },
+  "facebookresearch_cruxeval/openai/openai_prompt.py": {
+    "call_openai_api": "call the OpenAI chat completions API with a system prompt, user prompt, temperature, and model",
+    "batch_prompt_direct_output": "batch prompt a list of queries using direct output format and extract answers via double equals",
+    "batch_prompt_cot_output": "batch prompt a list of queries using chain of thought output format and extract answers",
+    "batch_prompt_direct_input": "batch prompt a list of queries using direct input format and extract function predictions",
+    "batch_prompt_cot_input": "batch prompt a list of queries using chain of thought input format and extract function predictions"
+  },
+  "facebookresearch_cruxeval/openai/openai_run.py": {
+    "run_openai_batch": "run the OpenAI batch prompt evaluation on the CRUXEval dataset with a specified model and temperature",
+    "run_openai_cot_input": "run the OpenAI chain-of-thought input mode evaluation on the CRUXEval dataset with GPT models",
+    "run_openai_direct_output": "run the OpenAI direct output mode evaluation on the CRUXEval dataset without chain-of-thought",
+    "get_save_dir_path": "get the save directory path for model generations based on mode, model, cot, and temperature",
+    "run_openai_all_combinations": "run the OpenAI evaluation across all model, mode, cot, and temperature combinations using itertools product"
+  }
+}

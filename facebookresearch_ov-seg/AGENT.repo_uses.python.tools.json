@@ -1,0 +1,436 @@
+{
+  "facebookresearch_ov-seg/datasets/prepare_ade20k_full_sem_seg.py": {
+    "run_prepare_ade20k_full_sem_seg": "run the script to convert ADE20K-Full validation annotations to detectron2 format with resized images and uint16 label masks",
+    "loadAde20K_decode_segmentation": "load an ADE20K image file and decode its RGB segmentation PNG into a class mask array using R/10*256+G formula",
+    "create_ade20K_category_mapping": "create a mapping from ADE20K original category IDs to contiguous train IDs using the ADE20K_SEM_SEG_FULL_CATEGORIES list",
+    "resize_ade20K_images_labels": "resize ADE20K images and labels to max 512px on the longest side using bilinear for images and nearest for labels",
+    "convert_ade20K_labels_to_uint16": "convert ADE20K class mask labels from int32 to uint16 format with unmapped classes set to 65535 background value"
+  },
+  "facebookresearch_ov-seg/datasets/prepare_ade20k_sem_seg.py": {
+    "convert_ade20k_annotation": "convert an ADE20K annotation image to detectron2 format by shifting pixel values by 1",
+    "convert_with_index_mapping": "convert an annotation image using a custom class index mapping to remap semantic labels",
+    "run_ade20k_validation_prep": "run the script to prepare ADE20K validation annotations for detectron2 format",
+    "refactor_convert_for_batch": "refactor the convert function to process multiple annotation files in parallel",
+    "review_convert_dtype_assertion": "review the convert function and its uint8 dtype assertion for edge case handling"
+  },
+  "facebookresearch_ov-seg/datasets/prepare_coco_stuff_sem_seg.py": {
+    "run_convert_to_trainID": "run convert_to_trainID to remap COCO-Stuff class IDs to training IDs and save converted masks",
+    "run_prepare_coco_stuff": "run the script to convert all COCO-Stuff train2017 masks to Detectron2-compatible training IDs",
+    "test_convert_to_trainID": "test convert_to_trainID with a sample mask file to verify class ID remapping works correctly",
+    "review_full_clsID_to_trID": "review the full_clsID_to_trID mapping dictionary to understand which COCO-Stuff class IDs are remapped",
+    "refactor_convert_to_trainID": "refactor convert_to_trainID to support batch processing of multiple mask files at once"
+  },
+  "facebookresearch_ov-seg/datasets/prepare_pascal_context.py": {
+    "run_prepare_pascal_context": "run the script to convert PASCAL Context validation masks from .mat to .tif and .png formats",
+    "convert_pc59_mask": "convert a PASCAL Context .mat mask file to a 59-class PNG using a label mapping dictionary",
+    "convert_pc459_mask": "convert a PASCAL Context .mat mask file to a 459-class TIFF by subtracting one from labels",
+    "review_convert_pc59": "review the convert_pc59 function that maps 459-class labels to 59-class labels and saves as PNG",
+    "summarize_convert_pc459": "summarize the convert_pc459 function that loads a .mat LabelMap, decrements labels, and saves as TIFF"
+  },
+  "facebookresearch_ov-seg/datasets/prepare_voc_sem_seg.py": {
+    "run_prepare_voc_sem_seg": "run the script to convert PASCAL VOC 2012 validation segmentation masks to detectron2 format",
+    "run_convert_to_trainID": "run convert_to_trainID to remap a segmentation mask's class IDs to training IDs and save as PNG",
+    "test_convert_to_trainID": "test convert_to_trainID with a sample mask path to verify class ID remapping and output",
+    "refactor_convert_to_trainID": "refactor convert_to_trainID to support custom clsID_to_trID mappings for other datasets",
+    "summarize_clsID_to_trID": "summarize the clsID_to_trID mapping dictionary that remaps 21 PASCAL VOC classes to training IDs"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/data/gather_cc.py": {
+    "run_gather_cc_download_images": "run gather_cc.py with TSV file arguments to download and resize images in parallel using 300 worker processes",
+    "run_grab_download_single_image": "run the grab function to download a single image from a URL, resize to 512x512, and save to disk",
+    "refactor_grab_add_retry_logic": "refactor the grab function to add retry logic for failed image downloads with exponential backoff",
+    "review_main_multiprocessing_pool": "review the main block multiprocessing pool setup that processes TSV files and writes output CSV results",
+    "summarize_gather_cc_workflow": "summarize the gather_cc.py workflow that downloads images from TSV URLs, validates aspect ratio, and generates output CSV"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/open_clip/factory.py": {
+    "create_model": "create a CLIP model from a config name with optional pretrained weights and precision settings",
+    "create_model_and_transforms": "create a CLIP model along with train and validation image preprocessing transforms",
+    "load_checkpoint": "load a PyTorch checkpoint state dict into an existing CLIP model with position embedding resizing",
+    "list_models": "list all available CLIP model architecture names registered from model config JSON files",
+    "add_model_config": "add a new model config directory or file path to the registry and rescan configs"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/open_clip/loss.py": {
+    "create_clip_loss_module": "create a ClipLoss nn.Module instance with local_loss and gather_with_grad config options",
+    "compute_clip_contrastive_loss": "compute the contrastive loss between image features and text features using logit_scale",
+    "gather_features_distributed": "gather image and text features across all GPUs using torch.distributed or horovod allgather",
+    "review_cliploss_forward": "review the ClipLoss forward method to understand how logits and cross-entropy loss are computed",
+    "refactor_cliploss_label_caching": "refactor the ClipLoss label caching logic to support dynamic batch sizes across devices"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/open_clip/model.py": {
+    "build_CLIP_model": "build a CLIP model with custom vision and text config dataclasses for multimodal embedding",
+    "build_model_from_openai_state_dict": "build a CLIP model from an OpenAI pretrained state dict with auto-detected architecture",
+    "encode_image_CLIP": "encode an image tensor into normalized features using the CLIP model visual encoder",
+    "encode_text_CLIP": "encode text tokens into normalized features using the CLIP model text transformer",
+    "trace_model": "trace a CLIP model with example inputs for TorchScript export and deployment"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/open_clip/openai.py": {
+    "list_openai_models": "list all available pretrained OpenAI CLIP model names",
+    "load_openai_model_by_name": "load a pretrained OpenAI CLIP model by name onto the specified device",
+    "load_openai_model_from_path": "load a CLIP model from a local checkpoint file path",
+    "load_openai_model_non_jit": "load a CLIP model as a non-JIT state dict for easier modification",
+    "load_openai_model_cpu": "load a CLIP model onto CPU with float32 dtype patching"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/open_clip/pretrained.py": {
+    "list_pretrained_models": "list all available pretrained CLIP model names and their pretrain tags",
+    "list_pretrained_tag_models": "list all model architectures that have a given pretrain tag like openai",
+    "list_pretrained_model_tags": "list all pretrain tags available for a specific model architecture like ViT-B-32",
+    "get_pretrained_url": "get the download URL for a pretrained model given its architecture and tag",
+    "download_pretrained": "download a pretrained CLIP model weights file from a URL with SHA256 checksum verification"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/open_clip/timm_model.py": {
+    "create_timm_model": "create a TimmModel wrapping a timm model as a CLIP vision tower with configurable pooling and projection",
+    "create_timm_model_with_attention_pooling": "create a TimmModel using abs_attn or rot_attn pooling for attention-based feature extraction",
+    "lock_timm_model": "lock a TimmModel trunk parameters to freeze weights during fine-tuning with optional unlocked groups",
+    "forward_timm_model": "run a forward pass through the TimmModel trunk and head to get embedded features",
+    "review_timm_model_init": "review the TimmModel init to understand pooling and projection layer configuration options"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/open_clip/tokenizer.py": {
+    "tokenize_text": "tokenize a string or list of strings into CLIP token tensors with context length 77",
+    "create_simple_tokenizer": "create a SimpleTokenizer instance with a custom BPE vocab file path and special tokens",
+    "encode_text": "encode a text string into a list of BPE token IDs using the SimpleTokenizer",
+    "decode_tokens": "decode a list of token IDs back into human-readable text using the SimpleTokenizer",
+    "clean_text": "clean text by fixing unicode with ftfy and unescaping HTML entities using basic_clean"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/open_clip/transform.py": {
+    "build_image_transform_pipeline": "build a torchvision transform pipeline for training or inference with configurable image size and normalization",
+    "create_resize_max_size_transform": "create a ResizeMaxSize transform that resizes images to fit within a max size and pads to square",
+    "create_maskget_transform": "create a Maskget transform that extracts a binary mask from an image based on a mean color threshold",
+    "create_erosion_augmentation": "create an Erosion augmentation transform that applies random morphological erosion to image regions",
+    "create_normalize_with_mask": "create a Normalize_w_mask transform that normalizes a tensor image while preserving its accompanying mask"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/open_clip/utils.py": {
+    "freeze_batch_norm_2d_module": "freeze all BatchNorm2d and SyncBatchNorm layers in a PyTorch module by converting them to FrozenBatchNorm2d",
+    "freeze_batch_norm_2d_selective": "freeze specific named BatchNorm2d layers in a PyTorch module using a module_match dictionary",
+    "to_2tuple_convert": "convert a scalar or iterable into a 2-tuple using the to_2tuple utility function",
+    "to_4tuple_convert": "convert a scalar or iterable into a 4-tuple using the to_4tuple utility function",
+    "to_ntuple_dynamic": "convert a scalar or iterable into an n-tuple of any length using the to_ntuple utility"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/training/data.py": {
+    "create_csv_dataset": "create a CsvDataset from a CSV file with image paths and caption columns for training",
+    "get_webdataset_pipeline": "build a webdataset DataPipeline with shuffling, decoding, and batching for image-text training data",
+    "get_data": "create train and validation dataloaders from args supporting webdataset, CSV, ImageNet, and ADE20K sources",
+    "get_dataset_size": "get the total sample count and number of shards from a webdataset shard path",
+    "create_shared_epoch": "create a SharedEpoch object to synchronize epoch state across multiprocessing dataloader workers"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/training/distributed.py": {
+    "init_distributed_device": "init a distributed training device for multi-GPU or multi-node PyTorch training with Horovod or DDP support",
+    "is_master": "check if the current process is the global or local master process in a distributed training setup",
+    "is_using_distributed": "check if the current environment is configured for distributed training via WORLD_SIZE or SLURM_NTASKS env vars",
+    "is_using_horovod": "check if the current environment is running under Horovod by inspecting OMPI or PMI environment variables",
+    "world_info_from_env": "extract local rank, global rank, and world size from environment variables for distributed training setup"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/training/logger.py": {
+    "setup_logging_basic": "setup logging to stdout with a specified log level using the root logger",
+    "setup_logging_with_file": "setup logging to both stdout and a file with a specified log level",
+    "setup_logging_with_hostname": "setup logging with hostname included in log messages for multi-node training",
+    "review_setup_logging": "review the setup_logging function to understand how it configures the root logger and handlers",
+    "refactor_setup_logging": "refactor setup_logging to support additional log formats or custom handler configurations"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/training/main.py": {
+    "run_open_clip_training": "run the main training loop for OpenCLIP vision-language model with CLI arguments",
+    "run_evaluation_only": "run evaluation only on a pretrained OpenCLIP model without training",
+    "run_distributed_training": "run distributed OpenCLIP training across multiple GPUs or nodes with DDP",
+    "resume_training_from_checkpoint": "resume an OpenCLIP training run from a saved checkpoint file",
+    "review_random_seed": "review the random_seed function that sets torch, numpy, and random seeds"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/training/main_mask_prompt_tuning.py": {
+    "run_mask_prompt_tuning_training": "run the main training loop for mask prompt tuning on OpenCLIP models with CLI args",
+    "run_random_seed": "run random_seed to set torch, numpy, and python random seeds for reproducibility",
+    "run_copy_codebase": "run copy_codebase to copy the current codebase into the experiment logs directory",
+    "review_main_training_loop": "review the main function training loop that handles distributed setup, optimizer, scheduler, and checkpointing",
+    "review_optimizer_param_groups": "review the optimizer parameter grouping logic that separates mask embeddings, gain/bias, and rest params"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/training/params.py": {
+    "parse_training_args": "parse command line arguments for open_clip training with model, data, and optimizer options",
+    "get_default_optimizer_params": "get default learning rate and Adam optimizer params for ViT or non-ViT models",
+    "run_training_with_args": "run open_clip training by calling parse_args to get all CLI arguments as a namespace",
+    "configure_dataset_args": "configure training and validation dataset paths, types, and sample counts via CLI arguments",
+    "set_distributed_training_args": "set distributed training options including backend, URL, horovod, and DDP static graph"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/training/scheduler.py": {
+    "create_cosine_lr_scheduler": "create a cosine learning rate scheduler with warmup for an optimizer over a given number of steps",
+    "assign_learning_rate_to_optimizer": "assign a new learning rate value to all parameter groups of an optimizer",
+    "compute_warmup_lr": "compute the warmup learning rate for a given step during the warmup phase",
+    "run_cosine_lr_adjuster": "run the cosine LR adjuster function at each training step to update the optimizer learning rate",
+    "review_cosine_lr_warmup": "review the cosine LR scheduler and warmup logic for correct learning rate scheduling behavior"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/training/train.py": {
+    "train_one_epoch": "train an OpenCLIP model for one epoch using images, texts, optimizer, and scheduler",
+    "train_one_epoch_w_mask": "train an OpenCLIP model for one epoch with image masks using optimizer and scheduler",
+    "evaluate": "evaluate an OpenCLIP model on validation data and compute zero-shot and retrieval metrics",
+    "get_metrics": "compute image-to-text and text-to-image retrieval metrics including mean rank and recall at k",
+    "AverageMeter": "create an AverageMeter to track running average and current values for training metrics"
+  },
+  "facebookresearch_ov-seg/open_clip_training/src/training/zero_shot.py": {
+    "build_zeroshot_classifier": "build a zero-shot classifier by encoding class names through the model's text encoder and normalizing embeddings",
+    "run_zeroshot_eval": "run zero-shot evaluation on ImageNet or ADE20K datasets using a prebuilt classifier and dataloader",
+    "compute_accuracy_topk": "compute top-k accuracy scores by comparing model output logits against ground truth targets",
+    "run_inference_loop": "run the inference loop over a dataloader to encode images, compute logits, and measure top1 and top5 accuracy",
+    "review_zero_shot_eval": "review the zero_shot_eval function that orchestrates classifier building and evaluation across ImageNet-val, ImageNet-v2, and ADE20K datasets"
+  },
+  "facebookresearch_ov-seg/open_clip_training/tests/test_simple.py": {
+    "test_inference": "test the open_clip ViT-B-32-quickgelu model inference with image and text encoding",
+    "create_model_and_transforms": "create an open_clip model and preprocessing transforms using create_model_and_transforms with a pretrained checkpoint",
+    "encode_image": "encode an image into feature vectors using the open_clip model encode_image method",
+    "encode_text": "encode text tokens into feature vectors using the open_clip model encode_text method",
+    "tokenize": "tokenize a list of text strings using the open_clip tokenizer for CLIP model input"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/config.py": {
+    "add_ovseg_config": "add open vocabulary segmentation config to a detectron2 CfgNode by calling add_ovseg_config",
+    "add_mask_former_default_config": "add mask former default config including transformer, loss, and swin backbone settings to a cfg node",
+    "add_our_config": "add custom config for CLIP adapter, embedding head, sliding window, and wandb to a cfg node",
+    "configure_mask_former_transformer": "configure the mask former transformer heads, layers, dropout, and hidden dim via add_mask_former_default_config",
+    "configure_clip_adapter": "configure the CLIP adapter model name, prompt templates, mask settings, and ensemble weight via add_our_config"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/mask_former_model.py": {
+    "build_MaskFormer_from_config": "build a MaskFormer model instance from a detectron2 config object using the from_config class method",
+    "run_MaskFormer_forward": "run the MaskFormer forward pass on batched image inputs to get semantic or panoptic segmentation results",
+    "review_MaskFormer_semantic_inference": "review the MaskFormer semantic_inference method that combines mask classification logits with predicted masks via einsum",
+    "refactor_MaskFormer_prepare_targets": "refactor the MaskFormer prepare_targets method that pads ground truth masks to match image tensor dimensions",
+    "test_MaskFormer_criterion": "test the MaskFormer SetCriterion loss computation with HungarianMatcher bipartite matching for labels and masks"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/ovseg_model.py": {
+    "build_ovseg_model": "build a zero-shot semantic segmentation model using OVSeg with a CLIP adapter and detectron2 backbone",
+    "run_ovseg_inference": "run semantic segmentation inference on images using the OVSeg forward method with batched inputs",
+    "build_ovsegdemo_model": "build a demo zero-shot segmentation model using OVSegDEMO with custom class names for inference",
+    "review_ovseg_semantic_inference": "review the OVSeg semantic_inference method that combines mask classification with CLIP ensemble predictions",
+    "refactor_ovseg_clip_ensemble": "refactor the OVSeg clip ensemble logic to adjust the ensemble weight between mask former and CLIP predictions"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/data/augmentations.py": {
+    "create_mask2box": "create a function that computes the bounding box from a binary segmentation mask",
+    "create_expand_box": "create a function that expands a bounding box by a given ratio with image boundary clamping",
+    "create_CropImageWithMask": "create a detectron2 augmentation that crops an image around a semantic segmentation mask region",
+    "create_CropImageWithBox": "create a detectron2 augmentation that crops an image around a given bounding box with expand ratio",
+    "create_RandomResizedCrop": "create a detectron2 augmentation that performs random resized crop with configurable scale and aspect ratio"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/data/build.py": {
+    "build_detection_train_loader": "build a detection training dataloader with configurable sampler, mapper, and batch size for object detection models",
+    "build_detection_test_loader": "build a detection test dataloader with inference sampler and configurable samples per GPU for evaluation",
+    "get_detection_dataset_dicts": "load and prepare dataset dicts for detection or segmentation with optional filtering and proposal files",
+    "print_classification_instances_class_histogram": "print a histogram table showing the distribution of classification instances across all categories",
+    "wrap_metas": "wrap dataset dicts with metadata kwargs assigning extra attributes to each sample in the dataset"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/data/dataset_mappers/mask_former_semantic_dataset_mapper.py": {
+    "create_MaskFormerSemanticDatasetMapper": "create a MaskFormerSemanticDatasetMapper instance with augmentations, image format, ignore label, and size divisibility settings",
+    "build_from_config": "build a MaskFormerSemanticDatasetMapper from a Detectron2 config object for training or inference mode",
+    "run_dataset_mapping": "run the mapper on a Detectron2 dataset dict to produce image tensors and semantic segmentation labels",
+    "review_augmentation_pipeline": "review the augmentation pipeline including resize, crop, color augmentation, and random flip transforms",
+    "summarize_per_category_masks": "summarize how per-category binary masks are prepared from semantic segmentation ground truth labels"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/data/datasets/csv_data.py": {
+    "create_csv_dataset": "create a CsvDataset from a CSV file with image and caption columns for CLIP training",
+    "get_webdataset_pipeline": "build a webdataset DataPipeline with shuffling, sharding, and batching for distributed training",
+    "get_imagenet_loader": "create an ImageNet train or val dataloader with optional subset random sampling per class",
+    "get_dataset_size": "get the total sample count and number of shards from a webdataset shard path",
+    "get_data": "build train and validation dataloaders from args supporting CSV, webdataset, and ImageNet sources"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/data/datasets/register_ade20k_full.py": {
+    "register_ade20k_full_dataset": "register the ADE20K-Full semantic segmentation dataset with Detectron2 DatasetCatalog and MetadataCatalog using a root directory path",
+    "get_ade20k_full_meta": "get the ADE20K-Full metadata including stuff class names and dataset ID to contiguous ID mapping",
+    "summarize_ADE20K_SEM_SEG_FULL_CATEGORIES": "summarize the ADE20K-Full 847 semantic segmentation category definitions with names, IDs, and train IDs",
+    "review_register_all_ade20k_full": "review the register_all_ade20k_full function to understand how it registers the validation split with Detectron2",
+    "review_get_ade20k_full_meta": "review the _get_ade20k_full_meta function to understand how it builds the ID mapping and class list"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/data/datasets/register_cc3m.py": {
+    "load_cc_image": "load a CSV file of image paths and captions into a list of dataset record dicts",
+    "get_coco_stuff_meta": "get a metadata dict mapping contiguous stuff IDs to dataset IDs and class names from a category list",
+    "register_cc_3m": "register a CC-3M dataset with Detectron2 DatasetCatalog and MetadataCatalog using a CSV file path",
+    "review_COCO_CATEGORIES": "review the COCO_CATEGORIES list containing 182 category dicts with id, name, color, and isthing fields",
+    "review_ADE20K_150_CATEGORIES": "review the ADE20K_150_CATEGORIES list containing 150 category dicts with id, name, color, and isthing fields"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/data/datasets/register_coco_stuff.py": {
+    "register_coco_stuff_10k_dataset": "register the COCO-Stuff 10k semantic segmentation dataset with Detectron2 DatasetCatalog using a root path",
+    "register_coco_stuff_dataset": "register the standard COCO-Stuff semantic segmentation dataset with Detectron2 DatasetCatalog using a root path",
+    "get_coco_stuff_metadata": "generate metadata including stuff class names and ID mappings from a COCO category list",
+    "review_COCO_CATEGORIES": "review the COCO_CATEGORIES list containing 171 thing and stuff category definitions with IDs and names",
+    "summarize_register_coco_stuff": "summarize how register_all_coco_stuff registers the COCO 2017 train split with Detectron2 metadata"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/data/datasets/register_pascal_context.py": {
+    "register_pascal_context_59": "register the Pascal Context 59-class semantic segmentation validation dataset in Detectron2 DatasetCatalog",
+    "register_pascal_context_459": "register the Pascal Context 459-class semantic segmentation validation dataset in Detectron2 DatasetCatalog",
+    "get_voc_meta": "get a metadata dictionary with stuff_classes from a given category name list",
+    "import_pascal_context_datasets": "import this module to auto-register both Pascal Context 59 and 459 datasets in Detectron2",
+    "use_pascal_context_names": "access the PASCALCONTEX59_NAMES or PASCALCONTEX459_NAMES tuples for class label lookup"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/data/datasets/register_voc_seg.py": {
+    "register_pascalvoc_dataset": "register the Pascal VOC 2012 semantic segmentation validation dataset with Detectron2 DatasetCatalog and MetadataCatalog",
+    "get_voc_meta": "create a metadata dictionary with stuff_classes from a given category list for VOC datasets",
+    "load_pascalvoc_on_import": "auto-register the Pascal VOC 2012 dataset on module import using the DETECTRON2_DATASETS environment variable",
+    "review_register_pascalvoc": "review the register_pascalvoc function to understand how it registers VOC2012 with Detectron2 DatasetCatalog",
+    "summarize_PASCALVOC20_NAMES": "summarize the PASCALVOC20_NAMES tuple containing the 20 Pascal VOC 2012 object class names"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/evaluation/generalized_sem_seg_evaluation.py": {
+    "init_GeneralizedSemSegEvaluator": "create a GeneralizedSemSegEvaluator instance with a dataset name, optional num classes, and post process function",
+    "process_predictions": "process model inputs and semantic segmentation outputs to update the confusion matrix and predictions list",
+    "evaluate_metrics": "evaluate semantic segmentation metrics including mIoU, fwIoU, mACC, and pACC across all classes",
+    "review_GeneralizedSemSegEvaluator": "review the GeneralizedSemSegEvaluator class to understand how it extends SemSegEvaluator with post processing and evaluation set support",
+    "summarize_evaluate_method": "summarize the evaluate method that computes per-class IoU, accuracy, and harmonic IoU for known and unknown class subsets"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/criterion.py": {
+    "compute_dice_loss": "compute the DICE loss between predicted masks and target binary masks for segmentation",
+    "compute_sigmoid_focal_loss": "compute the sigmoid focal loss for dense detection with configurable alpha and gamma parameters",
+    "create_set_criterion": "create a SetCriterion module with a matcher, weight dict, and loss types for MaskFormer training",
+    "compute_label_loss": "compute the classification cross-entropy loss between predicted logits and target class labels",
+    "compute_mask_loss": "compute combined focal and dice losses between predicted masks and ground truth segmentation masks"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/matcher.py": {
+    "create_HungarianMatcher": "create a HungarianMatcher instance with custom cost weights for class, mask, and dice loss",
+    "run_HungarianMatcher_forward": "run the HungarianMatcher forward pass to match predictions to ground truth targets",
+    "compute_batch_dice_loss": "compute the batch DICE loss between predicted masks and target binary masks",
+    "compute_batch_sigmoid_focal_loss": "compute the batch sigmoid focal loss between predicted masks and target masks with alpha and gamma",
+    "review_HungarianMatcher_memory_efficient_forward": "review the memory efficient forward matching logic that uses linear sum assignment for bipartite matching"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/backbone/clip_resnet.py": {
+    "build_modified_resnet_backbone": "build a ModifiedResNet backbone with custom layer depths, width, strides, and multi-grid dilation settings",
+    "create_bottleneck_block": "create a Bottleneck block with configurable inplanes, planes, stride, and dilation for residual connections",
+    "register_d2_modified_resnet": "register a D2ModifiedResNet backbone in Detectron2 using config depth, groups, and stem type settings",
+    "forward_modified_resnet_features": "run a forward pass through ModifiedResNet to extract multi-scale feature maps res2 through res5",
+    "review_bottleneck_downsample": "review the Bottleneck class downsample logic that uses avgpool and 1x1 conv for stride or channel mismatch"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/backbone/swin.py": {
+    "build_swin_transformer_backbone": "build a SwinTransformer backbone with configurable depths, num_heads, and window_size for semantic segmentation",
+    "create_d2swin_transformer": "create a D2SwinTransformer registered in Detectron2 BACKBONE_REGISTRY using config MODEL.SWIN settings",
+    "review_window_attention": "review the WindowAttention class for multi-head self-attention with relative position bias in shifted windows",
+    "refactor_swin_transformer_block": "refactor the SwinTransformerBlock to adjust window_size, shift_size, or mlp_ratio parameters",
+    "test_patch_merging": "test the PatchMerging layer that reduces spatial resolution by half and doubles channel dimension"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/clip_adapter/adapter.py": {
+    "build_clip_adapter": "build a ClipAdapter module to compute similarity logits between CLIP image and text features",
+    "create_mask_former_clip_adapter": "create a MaskFormerClipAdapter to extract image features from masked regions and compare with text",
+    "test_get_sim_logits": "test the get_sim_logits method to compute temperature-scaled dot product between text and image features",
+    "review_clip_adapter_forward": "review the ClipAdapter forward pass that preprocesses images and computes text-image similarity",
+    "refactor_preprocess_image": "refactor the MaskFormerClipAdapter _preprocess_image method to crop, normalize, and resize masked image regions"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/clip_adapter/text_template.py": {
+    "create_PredefinedPromptExtractor": "create a PredefinedPromptExtractor with custom text templates for CLIP text feature extraction",
+    "run_ImageNetPromptExtractor": "run the ImageNetPromptExtractor to encode class names using 100 ImageNet-style prompt templates",
+    "run_VILDPromptExtractor": "run the VILDPromptExtractor to encode class names using 14 VILD-style prompt templates",
+    "review_PromptExtractor": "review the PromptExtractor base class and its init_buffer and forward interface",
+    "summarize_IMAGENET_PROMPT": "summarize the IMAGENET_PROMPT list of 100 text templates for zero-shot classification"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/clip_adapter/utils.py": {
+    "build_clip_model": "build a CLIP model from a name string with optional frozen parameters for open vocabulary segmentation",
+    "expand_box": "expand a bounding box by a ratio and clamp coordinates to image dimensions",
+    "mask2box": "convert a binary mask tensor into a bounding box with min and max coordinates",
+    "crop_with_mask": "crop an image tensor using a mask and bounding box with configurable fill values",
+    "review_expand_box": "review the expand_box function to understand bounding box expansion and clamping logic"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/heads/mask_former_head.py": {
+    "build_maskformer_head": "build a MaskFormerHead module for semantic segmentation using a pixel decoder and transformer predictor",
+    "create_maskformer_head_from_config": "create a MaskFormerHead instance from a Detectron2 config object and input feature shapes",
+    "run_maskformer_forward": "run the MaskFormerHead forward pass on image features to produce mask predictions",
+    "review_maskformer_head_layers": "review the MaskFormerHead layers method that routes features through the pixel decoder and transformer predictor",
+    "refactor_maskformer_state_dict_loading": "refactor the MaskFormerHead _load_from_state_dict method to handle weight format version migration"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/heads/open_vocab_mask_former_head.py": {
+    "build_open_vocab_mask_former_head": "build an OpenVocabMaskFormerHead instance with a pixel decoder and transformer predictor for semantic segmentation",
+    "create_from_config": "create an OpenVocabMaskFormerHead from a detectron2 config object and input feature shape dictionary",
+    "run_forward_pass": "run a forward pass through the OpenVocabMaskFormerHead layers to get mask predictions from features",
+    "freeze_pretrained_modules": "freeze pretrained parameters in the OpenVocabMaskFormerHead pixel decoder while keeping the predictor trainable",
+    "load_state_dict_migration": "load a state dict into OpenVocabMaskFormerHead with automatic key remigration from version 1 to version 2 format"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/heads/pixel_decoder.py": {
+    "build_pixel_decoder": "build a pixel decoder model from config and input shape using build_pixel_decoder",
+    "create_base_pixel_decoder": "create a BasePixelDecoder with FPN-style lateral and output convolutions for mask feature extraction",
+    "create_transformer_encoder_pixel_decoder": "create a TransformerEncoderPixelDecoder that adds transformer encoder layers to the FPN feature pyramid",
+    "review_transformer_encoder_only": "review the TransformerEncoderOnly class which wraps TransformerEncoder with position embedding and Xavier initialization",
+    "refactor_forward_features": "refactor the forward_features method to extract mask features and transformer encoder features from input feature maps"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/transformer/open_vocab_transformer_predictor.py": {
+    "create_open_vocab_transformer_predictor": "create an OpenVocabTransformerPredictor instance with custom embedding dim, hidden dim, and transformer parameters",
+    "freeze_pretrained_parameters": "freeze all pretrained parameters except class_embed in the OpenVocabTransformerPredictor for fine-tuning",
+    "build_from_detectron2_config": "build an OpenVocabTransformerPredictor from a Detectron2 config object using the from_config classmethod",
+    "review_class_embed_mlp": "review the class_embed MLP output FFN configuration in OpenVocabTransformerPredictor for mask classification",
+    "summarize_transformer_architecture": "summarize the OpenVocabTransformerPredictor transformer encoder-decoder architecture and hyperparameters"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/transformer/position_encoding.py": {
+    "create_PositionEmbeddingSine": "create a PositionEmbeddingSine module with custom num_pos_feats, temperature, and normalize settings",
+    "run_PositionEmbeddingSine_forward": "run the forward pass of PositionEmbeddingSine on a tensor with an optional mask",
+    "test_PositionEmbeddingSine": "test the PositionEmbeddingSine class by passing a batch of image tensors through forward",
+    "review_PositionEmbeddingSine_init": "review the PositionEmbeddingSine constructor to understand default parameters and validation logic",
+    "refactor_PositionEmbeddingSine_forward": "refactor the PositionEmbeddingSine forward method to support additional normalization strategies"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/transformer/transformer.py": {
+    "build_transformer_model": "build a Transformer model with configurable encoder and decoder layers for vision tasks",
+    "create_transformer_encoder": "create a TransformerEncoder that processes source sequences through stacked encoder layers",
+    "create_transformer_decoder": "create a TransformerDecoder that generates outputs from memory with optional intermediate activations",
+    "review_transformer_encoder_layer": "review the TransformerEncoderLayer self-attention and feedforward operations with pre or post normalization",
+    "review_transformer_decoder_layer": "review the TransformerDecoderLayer self-attention cross-attention and feedforward operations with normalization options"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/modeling/transformer/transformer_predictor.py": {
+    "build_transformer_predictor": "build a TransformerPredictor module with configurable encoder-decoder layers, query embeddings, and mask classification for segmentation",
+    "create_mlp_ffn": "create an MLP multi-layer perceptron with configurable input, hidden, output dimensions and layer count",
+    "review_transformer_predictor_forward": "review the TransformerPredictor forward pass that computes positional encoding, transformer output, and segmentation masks",
+    "test_transformer_predictor_from_config": "test the TransformerPredictor from_config class method that reads Mask2Former hyperparameters from a Detectron2 config",
+    "refactor_set_aux_loss": "refactor the TransformerPredictor _set_aux_loss method to structure intermediate decoder outputs for auxiliary loss computation"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/utils/events.py": {
+    "setup_wandb": "initialize wandb with detectron2 config and args for experiment tracking on the main process",
+    "create_wandb_writer": "create a WandbWriter instance to log scalars, images, and histograms from detectron2 event storage to wandb",
+    "use_wandb_writer_write": "call write on WandbWriter to flush latest scalars, images, and histograms to wandb with grouping rules",
+    "use_isin_rule": "use the IsIn rule class to check if a keyword is present in a scalar name string",
+    "use_prefix_rule": "use the Prefix rule class to prepend a keyword prefix to a scalar name with a slash separator"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/utils/misc.py": {
+    "create_nested_tensor_from_images": "create a NestedTensor from a list of 3D image tensors with automatic padding and masking",
+    "build_onnx_nested_tensor": "build an ONNX-compatible NestedTensor from a list of 3D tensors using functional padding",
+    "check_distributed_initialized": "check if PyTorch distributed is available and initialized for multi-GPU training",
+    "extract_binary_masks_from_semseg": "extract binary masks for each unique class ID from a ground truth semantic segmentation tensor",
+    "decompose_nested_tensor": "decompose a NestedTensor object into its underlying tensors and mask components"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/utils/post_process_utils.py": {
+    "run_dense_crf_post_process": "run dense crf post processing on segmentation logits and an image to refine predictions",
+    "create_crf_refined_logits": "create refined segmentation logits by applying dense crf inference with configurable iteration count",
+    "build_post_process_pipeline": "build a post processing pipeline that takes torch tensor logits and an image for crf refinement",
+    "test_dense_crf_inference": "test the dense crf inference function with softmax logits and a 3 channel image",
+    "refactor_crf_parameters": "refactor the dense crf post process function to customize bilateral and gaussian kernel parameters"
+  },
+  "facebookresearch_ov-seg/open_vocab_seg/utils/predictor.py": {
+    "run_OVSegPredictor": "run the OVSegPredictor class to predict semantic segmentation on an image with custom class names",
+    "create_OVSegVisualizer": "create an OVSegVisualizer instance to draw semantic segmentation masks with labeled class names on an image",
+    "run_VisualizationDemo": "run the VisualizationDemo class to perform open-vocabulary semantic segmentation and visualization on an image",
+    "review_OVSegPredictor_call": "review the OVSegPredictor __call__ method that preprocesses BGR images and runs model inference with class names",
+    "review_OVSegVisualizer_draw_sem_seg": "review the OVSegVisualizer draw_sem_seg method that draws labeled segmentation masks sorted by area size"
+  },
+  "facebookresearch_ov-seg/third_party/CLIP/clip/clip.py": {
+    "load_CLIP_model": "load a CLIP model by name such as ViT-B/32 to a specified device like cuda or cpu",
+    "tokenize_text_for_CLIP": "tokenize text strings into a tensor with start and end tokens for CLIP model input",
+    "download_CLIP_model_checkpoint": "download a CLIP model checkpoint from OpenAI with SHA256 checksum verification and caching",
+    "get_available_CLIP_models": "get a list of available CLIP model names like RN50 ViT-B/32 and ViT-L/14",
+    "transform_image_for_CLIP": "apply image preprocessing with resize center crop and normalization for CLIP model input"
+  },
+  "facebookresearch_ov-seg/third_party/CLIP/clip/model.py": {
+    "build_CLIP_model_from_state_dict": "build a CLIP model from a PyTorch state dict using the build_model function",
+    "encode_image_with_CLIP": "encode an image tensor into features using the CLIP encode_image method",
+    "encode_text_with_CLIP": "encode text tokens into features using the CLIP encode_text method",
+    "run_CLIP_forward_pass": "run a CLIP forward pass with image and text to get similarity logits",
+    "convert_model_weights_to_fp16": "convert CLIP model weights to fp16 using the convert_weights function"
+  },
+  "facebookresearch_ov-seg/third_party/CLIP/clip/simple_tokenizer.py": {
+    "encode_text_to_bpe_tokens": "create a SimpleTokenizer and encode text into BPE token IDs for CLIP model input",
+    "decode_bpe_tokens_to_text": "use SimpleTokenizer decode method to convert BPE token IDs back to readable text",
+    "apply_bpe_tokenization": "apply the BPE algorithm to a single token using SimpleTokenizer bpe method with caching",
+    "clean_text_with_basic_clean": "use basic_clean function to fix text encoding issues and unescape HTML entities",
+    "normalize_whitespace_with_whitespace_clean": "use whitespace_clean function to collapse multiple whitespace characters into single spaces"
+  },
+  "facebookresearch_ov-seg/third_party/CLIP/tests/test_consistency.py": {
+    "test_consistency": "test the CLIP JIT and Python model outputs produce consistent softmax probabilities",
+    "run_test_consistency": "run pytest on test_consistency to verify JIT and native CLIP model equivalence",
+    "review_test_consistency": "review the test_consistency function that compares JIT and Python CLIP model outputs",
+    "refactor_test_consistency": "refactor test_consistency to add tolerance parameters or additional model comparison checks",
+    "summarize_test_consistency": "summarize the test_consistency function that validates CLIP model consistency across JIT and Python"
+  },
+  "facebookresearch_ov-seg/tools/convert-pretrained-clip-model-to-d2.py": {
+    "run_convert_pretrained_clip_to_d2": "run the script to convert a pretrained CLIP model pth file to a Detectron2 compatible pkl file",
+    "run_transform_state_dict": "run the transform function to rename and prefix keys in a pretrained model state dict for Detectron2",
+    "convert_swin_model_to_d2": "convert a Swin Transformer pretrained checkpoint to a Detectron2 pickle format with backbone key prefixes",
+    "refactor_transform_key_renaming": "refactor the transform function to add or remove key renaming rules for model state dict conversion",
+    "review_transform_visual_model_filter": "review the transform function logic that filters visual_model keys and renames relative_coords, atten_mask_matrix, and channel_reduction"
+  },
+  "facebookresearch_ov-seg/tools/web_demo.py": {
+    "run_gradio_demo": "run the OVSeg Gradio web demo for open-vocabulary semantic segmentation",
+    "run_inference": "run open-vocabulary segmentation inference on an image with specified class names",
+    "setup_cfg": "setup and load the Detectron2 OVSeg configuration from a YAML config file",
+    "review_inference": "review the inference function that runs OVSeg on an image and returns a segmentation map",
+    "refactor_inference": "refactor the inference function to accept a configurable model config file path"
+  }
+}

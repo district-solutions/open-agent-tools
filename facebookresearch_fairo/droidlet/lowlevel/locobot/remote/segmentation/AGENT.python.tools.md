@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairo
+- repo_uri: https://github.com/facebookresearch/fairo
+
+## File: facebookresearch_fairo/droidlet/lowlevel/locobot/remote/segmentation/detectron2_segmentation.py
+
+Prompts
+
+```
+['run Detectron2Segmentation to get one-hot segmentation predictions and visualizations from BGR images with optional depth filtering', 'create an ImageSegmentation instance with a confidence threshold and GPU ID to run Mask R-CNN predictions on images', 'build a BatchPredictor from a Detectron2 config to run batch inference on numpy image arrays', 'review the VisualizationDemo class that runs predictions and draws instance segmentation visualizations on images', 'summarize the setup_cfg function that loads and freezes a Detectron2 config from file and command-line arguments']
+```
+
+Usage
+
+```
+{'run_detectron2_segmentation': 'run Detectron2Segmentation to get one-hot segmentation predictions and visualizations from BGR images with optional depth filtering', 'create_image_segmentation': 'create an ImageSegmentation instance with a confidence threshold and GPU ID to run Mask R-CNN predictions on images', 'build_batch_predictor': 'build a BatchPredictor from a Detectron2 config to run batch inference on numpy image arrays', 'review_visualization_demo': 'review the VisualizationDemo class that runs predictions and draws instance segmentation visualizations on images', 'summarize_setup_cfg': 'summarize the setup_cfg function that loads and freezes a Detectron2 config from file and command-line arguments'}
+```
+

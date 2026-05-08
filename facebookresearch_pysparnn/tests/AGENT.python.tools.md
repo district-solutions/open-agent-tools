@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/pysparnn
+- repo_uri: https://github.com/facebookresearch/pysparnn
+
+## File: facebookresearch_pysparnn/tests/test_pysparnn.py
+
+Prompts
+
+```
+['build a ClusterIndex with sparse features and search using default unit cosine distance', 'build a ClusterIndex with dense features and DenseCosineDistance for nearest neighbor search', 'build a ClusterIndex with SlowEuclideanDistance for Euclidean nearest neighbor search', 'remove near duplicate rows from a UnitCosineDistance matrix using remove_near_duplicates', 'search a MultiClusterIndex with large k to retrieve top-k nearest neighbors']
+```
+
+Usage
+
+```
+{'build_cluster_index_cosine': 'build a ClusterIndex with sparse features and search using default unit cosine distance', 'build_cluster_index_dense': 'build a ClusterIndex with dense features and DenseCosineDistance for nearest neighbor search', 'build_cluster_index_euclidean': 'build a ClusterIndex with SlowEuclideanDistance for Euclidean nearest neighbor search', 'remove_near_duplicates': 'remove near duplicate rows from a UnitCosineDistance matrix using remove_near_duplicates', 'search_multi_cluster_index': 'search a MultiClusterIndex with large k to retrieve top-k nearest neighbors'}
+```
+

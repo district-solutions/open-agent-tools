@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/co-tracker
+- repo_uri: https://github.com/facebookresearch/co-tracker
+
+## File: facebookresearch_co-tracker/cotracker/evaluation/evaluate.py
+
+Prompts
+
+```
+['run the CoTracker model evaluation on a specified benchmark dataset using the evaluate entry point', 'run the run_eval function to evaluate CoTracker on a dataset with a DefaultConfig object', 'create a DefaultConfig dataclass to configure experiment directory, dataset, checkpoint, grid size, and model parameters', 'build a CoTracker model from a checkpoint file using build_cotracker with offline and window length options', 'evaluate a predictor on a test dataloader sequence using the Evaluator class evaluate_sequence method']
+```
+
+Usage
+
+```
+{'run_evaluation': 'run the CoTracker model evaluation on a specified benchmark dataset using the evaluate entry point', 'run_eval_function': 'run the run_eval function to evaluate CoTracker on a dataset with a DefaultConfig object', 'create_default_config': 'create a DefaultConfig dataclass to configure experiment directory, dataset, checkpoint, grid size, and model parameters', 'build_cotracker_model': 'build a CoTracker model from a checkpoint file using build_cotracker with offline and window length options', 'evaluate_sequence': 'evaluate a predictor on a test dataloader sequence using the Evaluator class evaluate_sequence method'}
+```
+

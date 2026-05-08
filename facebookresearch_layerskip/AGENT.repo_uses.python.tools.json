@@ -1,0 +1,65 @@
+{
+  "facebookresearch_layerskip/self_speculation/autoregressive_generator.py": {
+    "generate_tokens_autoregressive": "generate token IDs autoregressively using a LlamaForCausalLM model with KV cache for fast generation",
+    "generate_tokens_with_early_exit": "generate tokens using an early exit layer to skip full model forward passes for faster inference",
+    "generate_tokens_with_logits_processors": "generate tokens with custom logits processors applied before decoding the next token",
+    "generate_tokens_with_streaming": "generate tokens and stream each token through a TextStreamer as it is produced",
+    "generate_tokens_with_stopping_criteria": "generate tokens until a custom stopping criteria is met or EOS token is encountered"
+  },
+  "facebookresearch_layerskip/self_speculation/generator_base.py": {
+    "generate_text_with_llama": "create a HuggingfaceLlamaGenerator and call generate with a prompt and GenerationConfig to produce text",
+    "create_generation_config": "build a GenerationConfig dataclass to set max_steps, temperature, top_p, and sampling parameters for LLM generation",
+    "implement_generation_strategy": "create a subclass of GenerationStrategy and implement generate_token_ids to define custom token generation logic",
+    "create_logits_processors": "call create_logits_processors on HuggingfaceLlamaGenerator to build a NoRepeatNGramLogitsProcessor from a GenerationConfig",
+    "create_stopping_criteria": "call create_stopping_criteria on HuggingfaceLlamaGenerator to build StopStringCriteria from stop words in GenerationConfig"
+  },
+  "facebookresearch_layerskip/self_speculation/llama_model_utils.py": {
+    "run_forward_early": "run forward_early to perform a partial LLM forward pass exiting at a specified layer",
+    "run_forward_remainder": "run forward_remainder to complete a speculative decoding pass using cached early-exit hidden states",
+    "run_forward": "run forward to perform a standard autoregressive forward pass through a LlamaForCausalLM model",
+    "decode_next_token": "decode the next token from logits using greedy or sampled decoding with top-k and top-p filtering",
+    "filter_logits_top_k_top_p": "filter logits using top-k and top-p nucleus sampling to reduce the candidate token distribution"
+  },
+  "facebookresearch_layerskip/self_speculation/self_speculation_generator.py": {
+    "generate_token_ids_self_speculative": "run self-speculative token generation using an early-exit Llama model with draft and verify steps",
+    "single_step_speculation_draft_and_verify": "run a single speculative decoding step that drafts tokens via early exit then verifies with the full model",
+    "max_fn_normalize_positive_values": "compute a normalized distribution from positive values in a PyTorch tensor using max_fn",
+    "review_SelfSpeculativeGenerationStrategy_class": "review the SelfSpeculativeGenerationStrategy class for self-speculative decoding with early exit layers and token verification",
+    "refactor_single_step_speculation_sampling": "refactor single_step_speculation to support alternative sampling strategies for draft token acceptance"
+  },
+  "facebookresearch_layerskip/self_speculation/speculative_streamer.py": {
+    "create_speculative_streamer": "create a SpeculativeTextStreamer instance with a tokenizer for non-blocking speculative decoding output",
+    "put_tokens_to_streamer": "put token values into the SpeculativeTextStreamer to decode and stream text to stdout",
+    "delete_tokens_from_streamer": "delete specified number of tokens from the streamer cache and backspace printed text",
+    "review_speculative_streamer_draft_handling": "review the SpeculativeTextStreamer class and how it escapes newlines in draft tokens",
+    "refactor_streamer_non_blocking_mode": "refactor the SpeculativeTextStreamer to customize threading behavior in non-blocking mode"
+  },
+  "facebookresearch_layerskip/tests/test_autoregressive_generator.py": {
+    "test_generate_token_ids_with_stopping_criteria": "test the AutoRegressiveGenerationStrategy to halt token generation early using a custom stopping criteria lambda",
+    "test_generate_token_ids_with_logit_processors": "test the AutoRegressiveGenerationStrategy to apply custom logit processors during autoregressive token generation",
+    "run_model_and_config_fixture": "run the pytest fixture to create a LlamaForCausalLM model, tokenizer, and GenerationConfig for testing",
+    "test_AutoRegressiveGenerationStrategy_generate_token_ids": "test the generate_token_ids method with input token IDs, EOS tokens, and a GenerationConfig",
+    "review_GenerationConfig_max_steps": "review the GenerationConfig class to understand how max_steps controls the number of generation steps"
+  },
+  "facebookresearch_layerskip/tests/test_llama_model_utils.py": {
+    "test_make_causal_mask": "test the _make_causal_mask function to create lower triangular attention masks with past key value support",
+    "test_expand_mask": "test the _expand_mask function to expand attention masks for multi-head attention shape requirements",
+    "test_prepare_decoder_attention_mask": "test the _prepare_decoder_attention_mask function to combine causal and attention masks for decoder input",
+    "test_top_k_top_p_filtering": "test the top_k_top_p_filtering function to filter logits using top-k and top-p sampling strategies",
+    "test_decode_next_token": "test the decode_next_token function to decode next tokens using argmax or probabilistic sampling"
+  },
+  "facebookresearch_layerskip/tests/test_self_speculation_generator.py": {
+    "test_single_step_speculation": "test the SelfSpeculativeGenerationStrategy single_step_speculation method for EOS token handling",
+    "test_generate_token_ids": "test the generate_token_ids method with custom logits processors during token generation",
+    "test_generation_config": "test the GenerationConfig class with max_steps, exit_layer, and num_speculations parameters",
+    "test_model_fixture": "test the model_and_config pytest fixture that loads a causal LM model and tokenizer",
+    "test_speculation_matches": "test that speculation matches are less than or equal to total speculations"
+  },
+  "facebookresearch_layerskip/tests/test_speculative_streamer.py": {
+    "test_put_tokens_non_blocking": "test the SpeculativeTextStreamer put method in non-blocking mode to verify threading is used",
+    "test_thread_safety": "test the SpeculativeTextStreamer thread safety by calling put multiple times concurrently",
+    "test_put_tokens_blocking": "test the SpeculativeTextStreamer put method in blocking mode to verify tokenizer decode is called",
+    "test_delete_tokens": "test the SpeculativeTextStreamer delete method to verify tokens are removed from the text cache",
+    "test_draft_handling": "test the SpeculativeTextStreamer put method with draft and non-draft token handling"
+  }
+}

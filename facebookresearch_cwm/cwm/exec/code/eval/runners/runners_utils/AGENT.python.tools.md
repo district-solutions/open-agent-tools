@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/cwm
+- repo_uri: https://github.com/facebookresearch/cwm
+
+## File: facebookresearch_cwm/cwm/exec/code/eval/runners/runners_utils/pyext.py
+
+Prompts
+
+```
+['create a runtime Python module from keyword arguments using RuntimeModule.from_objects', 'create a runtime Python module by executing a string of code with RuntimeModule.from_string', 'overload a Python function based on argument count using the overload.argc decorator', 'overload a Python function based on argument types using the overload.args decorator', 'remove tail recursion from a function using the tail_recurse decorator to avoid stack overflow']
+```
+
+Usage
+
+```
+{'create_runtime_module_from_objects': 'create a runtime Python module from keyword arguments using RuntimeModule.from_objects', 'create_runtime_module_from_string': 'create a runtime Python module by executing a string of code with RuntimeModule.from_string', 'overload_function_by_argc': 'overload a Python function based on argument count using the overload.argc decorator', 'overload_function_by_args': 'overload a Python function based on argument types using the overload.args decorator', 'remove_tail_recursion': 'remove tail recursion from a function using the tail_recurse decorator to avoid stack overflow'}
+```
+

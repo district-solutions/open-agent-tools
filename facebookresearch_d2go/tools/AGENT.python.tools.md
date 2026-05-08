@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/d2go
+- repo_uri: https://github.com/facebookresearch/d2go
+
+## File: facebookresearch_d2go/tools/benchmark_data.py
+
+Prompts
+
+```
+['run the benchmark_data tool to benchmark data loading performance for train or test datasets', 'run the benchmark_data tool with --is-train=False to benchmark test data loading performance', 'run the benchmark_data tool across multiple processes and machines using distributed launch arguments', 'review the main function that iterates over a data loader and logs per-iteration timing statistics', 'review the BenchmarkDataOutput dataclass that holds accuracy and metrics dictionaries from benchmark results', 'run the evaluator binary to evaluate a torchscript or caffe2 predictor model using Detectron2Go', 'build CLI arguments for the evaluator binary with eval-only or resume flags enabled', 'run the main evaluator function with a config node, output directory, and predictor path', 'run the evaluator with parsed command line arguments including predictor path and thread count', 'review the wrapped_main function that applies mast error handling around the main evaluator', 'run the exporter CLI to convert a pytorch detectron2go model to a deployable predictor format', 'run the exporter with --skip-if-fail to continue exporting other predictor types after one fails', 'run the exporter with --skip-model-weights to export a model without loading pretrained weights', 'run the exporter with --device gpu to export the pytorch model for a specific target device', 'review the ExporterOutput dataclass that holds predictor paths and accuracy comparison results', 'run D2Go model training with PyTorch Lightning using a config file and output directory', 'run evaluation only on a D2Go model using the lightning trainer with --eval-only flag', 'get PyTorch Lightning trainer parameters dict from a D2Go config node including strategy and precision', 'get a list of PyTorch Lightning callbacks from a D2Go config including checkpoint and QAT', 'get a DDPStrategy instance from a D2Go config node with find_unused_parameters setting', 'run the d2go train_net CLI to train a detection model with distributed data parallel', 'run the d2go train_net CLI with --resume to resume training from a checkpoint directory', 'build CLI argument list for the train_net binary with eval-only or resume flags', 'invoke the train_net main entry point that gathers MAST errors and runs the CLI']
+```
+
+Usage
+
+```
+{'run_benchmark_data_loader': 'run the benchmark_data tool to benchmark data loading performance for train or test datasets', 'run_benchmark_test_loader': 'run the benchmark_data tool with --is-train=False to benchmark test data loading performance', 'run_benchmark_distributed': 'run the benchmark_data tool across multiple processes and machines using distributed launch arguments', 'review_main_benchmark_function': 'review the main function that iterates over a data loader and logs per-iteration timing statistics', 'review_BenchmarkDataOutput_class': 'review the BenchmarkDataOutput dataclass that holds accuracy and metrics dictionaries from benchmark results'}
+```
+
+## File: facebookresearch_d2go/tools/evaluator.py
+
+Prompts
+
+```
+['run the benchmark_data tool to benchmark data loading performance for train or test datasets', 'run the benchmark_data tool with --is-train=False to benchmark test data loading performance', 'run the benchmark_data tool across multiple processes and machines using distributed launch arguments', 'review the main function that iterates over a data loader and logs per-iteration timing statistics', 'review the BenchmarkDataOutput dataclass that holds accuracy and metrics dictionaries from benchmark results', 'run the evaluator binary to evaluate a torchscript or caffe2 predictor model using Detectron2Go', 'build CLI arguments for the evaluator binary with eval-only or resume flags enabled', 'run the main evaluator function with a config node, output directory, and predictor path', 'run the evaluator with parsed command line arguments including predictor path and thread count', 'review the wrapped_main function that applies mast error handling around the main evaluator', 'run the exporter CLI to convert a pytorch detectron2go model to a deployable predictor format', 'run the exporter with --skip-if-fail to continue exporting other predictor types after one fails', 'run the exporter with --skip-model-weights to export a model without loading pretrained weights', 'run the exporter with --device gpu to export the pytorch model for a specific target device', 'review the ExporterOutput dataclass that holds predictor paths and accuracy comparison results', 'run D2Go model training with PyTorch Lightning using a config file and output directory', 'run evaluation only on a D2Go model using the lightning trainer with --eval-only flag', 'get PyTorch Lightning trainer parameters dict from a D2Go config node including strategy and precision', 'get a list of PyTorch Lightning callbacks from a D2Go config including checkpoint and QAT', 'get a DDPStrategy instance from a D2Go config node with find_unused_parameters setting', 'run the d2go train_net CLI to train a detection model with distributed data parallel', 'run the d2go train_net CLI with --resume to resume training from a checkpoint directory', 'build CLI argument list for the train_net binary with eval-only or resume flags', 'invoke the train_net main entry point that gathers MAST errors and runs the CLI']
+```
+
+Usage
+
+```
+{'run_model_evaluation': 'run the evaluator binary to evaluate a torchscript or caffe2 predictor model using Detectron2Go', 'build_cli_args_eval': 'build CLI arguments for the evaluator binary with eval-only or resume flags enabled', 'run_main_evaluator': 'run the main evaluator function with a config node, output directory, and predictor path', 'run_cmdline_evaluation': 'run the evaluator with parsed command line arguments including predictor path and thread count', 'review_wrapped_main': 'review the wrapped_main function that applies mast error handling around the main evaluator'}
+```
+
+## File: facebookresearch_d2go/tools/exporter.py
+
+Prompts
+
+```
+['run the benchmark_data tool to benchmark data loading performance for train or test datasets', 'run the benchmark_data tool with --is-train=False to benchmark test data loading performance', 'run the benchmark_data tool across multiple processes and machines using distributed launch arguments', 'review the main function that iterates over a data loader and logs per-iteration timing statistics', 'review the BenchmarkDataOutput dataclass that holds accuracy and metrics dictionaries from benchmark results', 'run the evaluator binary to evaluate a torchscript or caffe2 predictor model using Detectron2Go', 'build CLI arguments for the evaluator binary with eval-only or resume flags enabled', 'run the main evaluator function with a config node, output directory, and predictor path', 'run the evaluator with parsed command line arguments including predictor path and thread count', 'review the wrapped_main function that applies mast error handling around the main evaluator', 'run the exporter CLI to convert a pytorch detectron2go model to a deployable predictor format', 'run the exporter with --skip-if-fail to continue exporting other predictor types after one fails', 'run the exporter with --skip-model-weights to export a model without loading pretrained weights', 'run the exporter with --device gpu to export the pytorch model for a specific target device', 'review the ExporterOutput dataclass that holds predictor paths and accuracy comparison results', 'run D2Go model training with PyTorch Lightning using a config file and output directory', 'run evaluation only on a D2Go model using the lightning trainer with --eval-only flag', 'get PyTorch Lightning trainer parameters dict from a D2Go config node including strategy and precision', 'get a list of PyTorch Lightning callbacks from a D2Go config including checkpoint and QAT', 'get a DDPStrategy instance from a D2Go config node with find_unused_parameters setting', 'run the d2go train_net CLI to train a detection model with distributed data parallel', 'run the d2go train_net CLI with --resume to resume training from a checkpoint directory', 'build CLI argument list for the train_net binary with eval-only or resume flags', 'invoke the train_net main entry point that gathers MAST errors and runs the CLI']
+```
+
+Usage
+
+```
+{'export_pytorch_model_to_predictor': 'run the exporter CLI to convert a pytorch detectron2go model to a deployable predictor format', 'export_model_with_skip_if_fail': 'run the exporter with --skip-if-fail to continue exporting other predictor types after one fails', 'export_model_without_weights': 'run the exporter with --skip-model-weights to export a model without loading pretrained weights', 'export_model_to_specific_device': 'run the exporter with --device gpu to export the pytorch model for a specific target device', 'review_ExporterOutput_dataclass': 'review the ExporterOutput dataclass that holds predictor paths and accuracy comparison results'}
+```
+
+## File: facebookresearch_d2go/tools/lightning_train_net.py
+
+Prompts
+
+```
+['run the benchmark_data tool to benchmark data loading performance for train or test datasets', 'run the benchmark_data tool with --is-train=False to benchmark test data loading performance', 'run the benchmark_data tool across multiple processes and machines using distributed launch arguments', 'review the main function that iterates over a data loader and logs per-iteration timing statistics', 'review the BenchmarkDataOutput dataclass that holds accuracy and metrics dictionaries from benchmark results', 'run the evaluator binary to evaluate a torchscript or caffe2 predictor model using Detectron2Go', 'build CLI arguments for the evaluator binary with eval-only or resume flags enabled', 'run the main evaluator function with a config node, output directory, and predictor path', 'run the evaluator with parsed command line arguments including predictor path and thread count', 'review the wrapped_main function that applies mast error handling around the main evaluator', 'run the exporter CLI to convert a pytorch detectron2go model to a deployable predictor format', 'run the exporter with --skip-if-fail to continue exporting other predictor types after one fails', 'run the exporter with --skip-model-weights to export a model without loading pretrained weights', 'run the exporter with --device gpu to export the pytorch model for a specific target device', 'review the ExporterOutput dataclass that holds predictor paths and accuracy comparison results', 'run D2Go model training with PyTorch Lightning using a config file and output directory', 'run evaluation only on a D2Go model using the lightning trainer with --eval-only flag', 'get PyTorch Lightning trainer parameters dict from a D2Go config node including strategy and precision', 'get a list of PyTorch Lightning callbacks from a D2Go config including checkpoint and QAT', 'get a DDPStrategy instance from a D2Go config node with find_unused_parameters setting', 'run the d2go train_net CLI to train a detection model with distributed data parallel', 'run the d2go train_net CLI with --resume to resume training from a checkpoint directory', 'build CLI argument list for the train_net binary with eval-only or resume flags', 'invoke the train_net main entry point that gathers MAST errors and runs the CLI']
+```
+
+Usage
+
+```
+{'run_lightning_training': 'run D2Go model training with PyTorch Lightning using a config file and output directory', 'run_evaluation_only': 'run evaluation only on a D2Go model using the lightning trainer with --eval-only flag', 'get_trainer_params': 'get PyTorch Lightning trainer parameters dict from a D2Go config node including strategy and precision', 'get_trainer_callbacks': 'get a list of PyTorch Lightning callbacks from a D2Go config including checkpoint and QAT', 'get_ddp_strategy': 'get a DDPStrategy instance from a D2Go config node with find_unused_parameters setting'}
+```
+
+## File: facebookresearch_d2go/tools/train_net.py
+
+Prompts
+
+```
+['run the benchmark_data tool to benchmark data loading performance for train or test datasets', 'run the benchmark_data tool with --is-train=False to benchmark test data loading performance', 'run the benchmark_data tool across multiple processes and machines using distributed launch arguments', 'review the main function that iterates over a data loader and logs per-iteration timing statistics', 'review the BenchmarkDataOutput dataclass that holds accuracy and metrics dictionaries from benchmark results', 'run the evaluator binary to evaluate a torchscript or caffe2 predictor model using Detectron2Go', 'build CLI arguments for the evaluator binary with eval-only or resume flags enabled', 'run the main evaluator function with a config node, output directory, and predictor path', 'run the evaluator with parsed command line arguments including predictor path and thread count', 'review the wrapped_main function that applies mast error handling around the main evaluator', 'run the exporter CLI to convert a pytorch detectron2go model to a deployable predictor format', 'run the exporter with --skip-if-fail to continue exporting other predictor types after one fails', 'run the exporter with --skip-model-weights to export a model without loading pretrained weights', 'run the exporter with --device gpu to export the pytorch model for a specific target device', 'review the ExporterOutput dataclass that holds predictor paths and accuracy comparison results', 'run D2Go model training with PyTorch Lightning using a config file and output directory', 'run evaluation only on a D2Go model using the lightning trainer with --eval-only flag', 'get PyTorch Lightning trainer parameters dict from a D2Go config node including strategy and precision', 'get a list of PyTorch Lightning callbacks from a D2Go config including checkpoint and QAT', 'get a DDPStrategy instance from a D2Go config node with find_unused_parameters setting', 'run the d2go train_net CLI to train a detection model with distributed data parallel', 'run the d2go train_net CLI with --resume to resume training from a checkpoint directory', 'build CLI argument list for the train_net binary with eval-only or resume flags', 'invoke the train_net main entry point that gathers MAST errors and runs the CLI']
+```
+
+Usage
+
+```
+{'run_detection_model_training': 'run the d2go train_net CLI to train a detection model with distributed data parallel', 'run_evaluation_only': 'run the d2go train_net CLI with --eval-only to evaluate a trained detection model', 'resume_training_from_checkpoint': 'run the d2go train_net CLI with --resume to resume training from a checkpoint directory', 'build_cli_args_for_training': 'build CLI argument list for the train_net binary with eval-only or resume flags', 'invoke_main_entry_point': 'invoke the train_net main entry point that gathers MAST errors and runs the CLI'}
+```
+

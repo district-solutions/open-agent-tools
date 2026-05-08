@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/highrescanopyheight
+- repo_uri: https://github.com/facebookresearch/highrescanopyheight
+
+## File: facebookresearch_highrescanopyheight/inference.py
+
+Prompts
+
+```
+['run the inference CLI to predict canopy height maps from aerial or satellite imagery using a pretrained SSL checkpoint', 'build an SSLAE model with a Vision Transformer backbone and DPT head for canopy height regression', 'create an SSLModule that loads a pretrained or quantized compressed checkpoint and scales predictions by 10x', 'evaluate a canopy height prediction model on the NEON dataset and compute MAE, RMSE, and R2 metrics', 'create a NeonDataset to load and crop NEON aerial imagery with optional image normalization via a pretrained network']
+```
+
+Usage
+
+```
+{'run_canopy_height_inference': 'run the inference CLI to predict canopy height maps from aerial or satellite imagery using a pretrained SSL checkpoint', 'build_sslae_model': 'build an SSLAE model with a Vision Transformer backbone and DPT head for canopy height regression', 'create_sslmodule_from_checkpoint': 'create an SSLModule that loads a pretrained or quantized compressed checkpoint and scales predictions by 10x', 'evaluate_model_metrics': 'evaluate a canopy height prediction model on the NEON dataset and compute MAE, RMSE, and R2 metrics', 'create_neon_dataset': 'create a NeonDataset to load and crop NEON aerial imagery with optional image normalization via a pretrained network'}
+```
+

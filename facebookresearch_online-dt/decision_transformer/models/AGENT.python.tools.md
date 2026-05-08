@@ -1,0 +1,47 @@
+# Agent Python Tools
+
+- repo: facebookresearch/online-dt
+- repo_uri: https://github.com/facebookresearch/online-dt
+
+## File: facebookresearch_online-dt/decision_transformer/models/decision_transformer.py
+
+Prompts
+
+```
+['build a DecisionTransformer model with GPT2 backbone for offline RL trajectory modeling', 'create a SquashedNormal distribution by applying tanh transform to a base Normal distribution', 'create a DiagGaussianActor neural network module for diagonal Gaussian policy output', 'run the DecisionTransformer forward pass to predict next state, action, and return', 'run get_predictions on a DecisionTransformer to get clamped action predictions from trajectory context', 'create a TrajectoryModel instance with state_dim, act_dim, and optional max_length parameters', 'run the forward pass on states, actions, rewards with optional masks and attention_mask', 'get zero-filled predictions for the last timestep of states, actions, and rewards', 'review the TrajectoryModel forward method to understand masked token handling and return values', 'refactor the TrajectoryModel get_predictions method to return actual model predictions instead of zeros', 'build a GPT2Model transformer from a GPT2Config for trajectory modeling without position embeddings', 'create an Attention module with causal masking and optional cross-attention support for GPT-2 blocks', 'test the GPT2Model forward pass with input embeddings and attention masks', 'refactor the Block class to add or remove cross-attention layers for encoder-decoder use', 'load TensorFlow checkpoint weights into a PyTorch GPT-2 model from a file path']
+```
+
+Usage
+
+```
+{'build_decision_transformer_model': 'build a DecisionTransformer model with GPT2 backbone for offline RL trajectory modeling', 'create_squashed_normal_distribution': 'create a SquashedNormal distribution by applying tanh transform to a base Normal distribution', 'create_diag_gaussian_actor': 'create a DiagGaussianActor neural network module for diagonal Gaussian policy output', 'run_decision_transformer_forward': 'run the DecisionTransformer forward pass to predict next state, action, and return', 'run_decision_transformer_get_predictions': 'run get_predictions on a DecisionTransformer to get clamped action predictions from trajectory context'}
+```
+
+## File: facebookresearch_online-dt/decision_transformer/models/model.py
+
+Prompts
+
+```
+['build a DecisionTransformer model with GPT2 backbone for offline RL trajectory modeling', 'create a SquashedNormal distribution by applying tanh transform to a base Normal distribution', 'create a DiagGaussianActor neural network module for diagonal Gaussian policy output', 'run the DecisionTransformer forward pass to predict next state, action, and return', 'run get_predictions on a DecisionTransformer to get clamped action predictions from trajectory context', 'create a TrajectoryModel instance with state_dim, act_dim, and optional max_length parameters', 'run the forward pass on states, actions, rewards with optional masks and attention_mask', 'get zero-filled predictions for the last timestep of states, actions, and rewards', 'review the TrajectoryModel forward method to understand masked token handling and return values', 'refactor the TrajectoryModel get_predictions method to return actual model predictions instead of zeros', 'build a GPT2Model transformer from a GPT2Config for trajectory modeling without position embeddings', 'create an Attention module with causal masking and optional cross-attention support for GPT-2 blocks', 'test the GPT2Model forward pass with input embeddings and attention masks', 'refactor the Block class to add or remove cross-attention layers for encoder-decoder use', 'load TensorFlow checkpoint weights into a PyTorch GPT-2 model from a file path']
+```
+
+Usage
+
+```
+{'init_TrajectoryModel': 'create a TrajectoryModel instance with state_dim, act_dim, and optional max_length parameters', 'forward_TrajectoryModel': 'run the forward pass on states, actions, rewards with optional masks and attention_mask', 'get_predictions_TrajectoryModel': 'get zero-filled predictions for the last timestep of states, actions, and rewards', 'review_TrajectoryModel_forward': 'review the TrajectoryModel forward method to understand masked token handling and return values', 'refactor_TrajectoryModel_get_predictions': 'refactor the TrajectoryModel get_predictions method to return actual model predictions instead of zeros'}
+```
+
+## File: facebookresearch_online-dt/decision_transformer/models/trajectory_gpt2.py
+
+Prompts
+
+```
+['build a DecisionTransformer model with GPT2 backbone for offline RL trajectory modeling', 'create a SquashedNormal distribution by applying tanh transform to a base Normal distribution', 'create a DiagGaussianActor neural network module for diagonal Gaussian policy output', 'run the DecisionTransformer forward pass to predict next state, action, and return', 'run get_predictions on a DecisionTransformer to get clamped action predictions from trajectory context', 'create a TrajectoryModel instance with state_dim, act_dim, and optional max_length parameters', 'run the forward pass on states, actions, rewards with optional masks and attention_mask', 'get zero-filled predictions for the last timestep of states, actions, and rewards', 'review the TrajectoryModel forward method to understand masked token handling and return values', 'refactor the TrajectoryModel get_predictions method to return actual model predictions instead of zeros', 'build a GPT2Model transformer from a GPT2Config for trajectory modeling without position embeddings', 'create an Attention module with causal masking and optional cross-attention support for GPT-2 blocks', 'test the GPT2Model forward pass with input embeddings and attention masks', 'refactor the Block class to add or remove cross-attention layers for encoder-decoder use', 'load TensorFlow checkpoint weights into a PyTorch GPT-2 model from a file path']
+```
+
+Usage
+
+```
+{'build_GPT2Model': 'build a GPT2Model transformer from a GPT2Config for trajectory modeling without position embeddings', 'create_Attention': 'create an Attention module with causal masking and optional cross-attention support for GPT-2 blocks', 'test_GPT2Model_forward': 'test the GPT2Model forward pass with input embeddings and attention masks', 'refactor_Block_cross_attention': 'refactor the Block class to add or remove cross-attention layers for encoder-decoder use', 'load_tf_weights_in_gpt2': 'load TensorFlow checkpoint weights into a PyTorch GPT-2 model from a file path'}
+```
+

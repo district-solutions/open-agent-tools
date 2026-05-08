@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairchem
+- repo_uri: https://github.com/facebookresearch/fairchem
+
+## File: facebookresearch_fairchem/tests/conftest.py
+
+Prompts
+
+```
+['run pytest with --inference-checkpoint flag to test a specific model checkpoint against a dataset', 'run pytest with --skip-ocpapi-integration flag to skip ocpapi integration tests during test collection', 'use seed_everywhere to set random seeds across random, numpy, and torch for reproducible tests', 'use the water_xyz_file fixture to get a temporary XYZ file path for a 3-atom water molecule', 'use the autouse setup_before_each_test fixture to clean up ray, gp_utils, and distutils state between tests']
+```
+
+Usage
+
+```
+{'run_pytest_with_inference_checkpoint': 'run pytest with --inference-checkpoint flag to test a specific model checkpoint against a dataset', 'run_pytest_skip_ocpapi_integration': 'run pytest with --skip-ocpapi-integration flag to skip ocpapi integration tests during test collection', 'use_seed_everywhere': 'use seed_everywhere to set random seeds across random, numpy, and torch for reproducible tests', 'use_water_xyz_file_fixture': 'use the water_xyz_file fixture to get a temporary XYZ file path for a 3-atom water molecule', 'use_setup_before_each_test_fixture': 'use the autouse setup_before_each_test fixture to clean up ray, gp_utils, and distutils state between tests'}
+```
+

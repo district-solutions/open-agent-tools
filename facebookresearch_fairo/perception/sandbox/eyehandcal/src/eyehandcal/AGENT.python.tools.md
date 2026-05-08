@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairo
+- repo_uri: https://github.com/facebookresearch/fairo
+
+## File: facebookresearch_fairo/perception/sandbox/eyehandcal/src/eyehandcal/utils.py
+
+Prompts
+
+```
+['detect ArUco marker corners in images using cv2.aruco with subpixel refinement for a target marker index', 'build a 3x3 camera intrinsic projection matrix from fx, fy, ppx, ppy focal length and principal point parameters', 'optimize eye-in-hand calibration parameters using LBFGS to minimize reprojection error between observed and projected marker positions', 'compute a 3x3 rotation matrix from a 3-element rotation vector using skew-symmetric matrix exponential', 'generate synthetic eye-in-hand calibration data with configurable noise for a 2-DOF robot arm and camera setup']
+```
+
+Usage
+
+```
+{'detect_corners_aruco_markers': 'detect ArUco marker corners in images using cv2.aruco with subpixel refinement for a target marker index', 'build_camera_projection_matrix': 'build a 3x3 camera intrinsic projection matrix from fx, fy, ppx, ppy focal length and principal point parameters', 'optimize_hand_eye_calibration_parameters': 'optimize eye-in-hand calibration parameters using LBFGS to minimize reprojection error between observed and projected marker positions', 'compute_rotation_matrix_from_rotvec': 'compute a 3x3 rotation matrix from a 3-element rotation vector using skew-symmetric matrix exponential', 'generate_simulated_calibration_data': 'generate synthetic eye-in-hand calibration data with configurable noise for a 2-DOF robot arm and camera setup'}
+```
+

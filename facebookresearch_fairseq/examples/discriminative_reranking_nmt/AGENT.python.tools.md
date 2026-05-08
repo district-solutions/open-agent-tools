@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairseq
+- repo_uri: https://github.com/facebookresearch/fairseq
+
+## File: facebookresearch_fairseq/examples/discriminative_reranking_nmt/drnmt_rerank.py
+
+Prompts
+
+```
+['run discriminative reranking on fairseq NMT hypotheses using a trained model to rescore and select best translations', 'parse fairseq interactive generation output file to extract source sentences, hypotheses, and model scores', 'tune reranking forward weight and length penalty parameters using random search across multiple trials', 'compute combined reranking score from forward model score, discriminative model score, and length penalty', 'evaluate reranked hypotheses against reference text using BLEU or TER metrics via sacrebleu']
+```
+
+Usage
+
+```
+{'run_discriminative_reranking': 'run discriminative reranking on fairseq NMT hypotheses using a trained model to rescore and select best translations', 'parse_fairseq_gen_output': 'parse fairseq interactive generation output file to extract source sentences, hypotheses, and model scores', 'tune_reranking_weights': 'tune reranking forward weight and length penalty parameters using random search across multiple trials', 'compute_rerank_score': 'compute combined reranking score from forward model score, discriminative model score, and length penalty', 'evaluate_bleu_ter': 'evaluate reranked hypotheses against reference text using BLEU or TER metrics via sacrebleu'}
+```
+

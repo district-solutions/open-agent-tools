@@ -1,0 +1,170 @@
+{
+  "facebookresearch_lavila/lavila/data/datasets.py": {
+    "load_video_frames_by_time": "use video_loader to extract frames from a video file between start and end timestamps with configurable FPS and clip length",
+    "sample_frame_ids_uniformly": "use get_frame_ids to uniformly sample frame IDs between a start and end frame with optional jitter for training augmentation",
+    "load_video_frames_by_frame_ids": "use video_loader_by_frames to load specific frames from a video given a list of frame IDs and return a stacked tensor",
+    "create_clip_video_dataset": "use VideoCaptionDatasetCLIP to create a PyTorch dataset for video-caption pairs with CLIP-style transforms and tokenization for training",
+    "create_downstream_classification_dataset": "use get_downstream_dataset to create a VideoClassyDataset for video classification tasks with label mapping and configurable clip sampling"
+  },
+  "facebookresearch_lavila/lavila/data/video_transforms.py": {
+    "create_temporal_crop": "create a TemporalCrop module to split a video tensor into smaller temporal clips with configurable stride",
+    "create_spatial_crop": "create a SpatialCrop module to generate multiple spatial crops from a list of video tensors",
+    "build_uniform_crop": "build a uniform crop function to perform spatial sampling on images with optional bounding box adjustment",
+    "create_permute_op": "create a Permute nn.Module to reorder tensor dimensions for video frame tensors",
+    "refactor_crop_boxes": "refactor bounding box coordinates by applying x and y offset adjustments for cropping"
+  },
+  "facebookresearch_lavila/lavila/models/coca.py": {
+    "build_cross_attention_layer": "build a CrossAttention module with configurable heads, dim_head, and optional parallel feedforward for multimodal layers",
+    "create_layer_norm_module": "create a LayerNorm module with learnable gamma and zero bias for normalizing tensor features",
+    "create_residual_wrapper": "create a Residual wrapper that adds input to the output of any callable function",
+    "create_swiglu_activation": "create a SwiGLU activation module that splits input and applies silu gating for feedforward networks",
+    "review_cross_attention_forward": "review the CrossAttention forward pass that computes scaled query-key similarity and aggregates with values"
+  },
+  "facebookresearch_lavila/lavila/models/distributed_utils.py": {
+    "gather_from_all": "gather tensors from all distributed workers while preserving gradient flow for backward propagation",
+    "convert_to_distributed_tensor": "convert a tensor to the correct device for NCCL distributed backend communication",
+    "convert_to_normal_tensor": "convert a tensor back to its original device after distributed communication",
+    "is_distributed_training_run": "check if the current process is part of an active distributed training run",
+    "review_GatherLayer": "review the GatherLayer autograd function that gathers tensors from all workers with gradient support"
+  },
+  "facebookresearch_lavila/lavila/models/gpt2_gated.py": {
+    "augment_gpt2_config": "augment a GPT2Config to add cross-attention and tanh gating parameters for encoder-decoder use",
+    "load_tf_weights_in_gpt2": "load TensorFlow checkpoint weights into a PyTorch GPT-2 model from a given path",
+    "GPT2LMHeadModel_freeze_lm_weights": "freeze pretrained GPT-2 LM weights and keep only cross-attention and gating parameters trainable",
+    "GPT2Model_forward": "run the bare GPT-2 transformer forward pass with optional encoder hidden states for cross-attention",
+    "GPT2ForSequenceClassification_forward": "run GPT-2 forward pass with a sequence classification head for single or multi-label tasks"
+  },
+  "facebookresearch_lavila/lavila/models/loss.py": {
+    "build_CLIP_loss_module": "build a CLIPLoss module to compute contrastive image-text loss with distributed GPU gathering",
+    "create_SSL_CLIP_loss": "create an SSLCLIPLoss module to compute contrastive loss with pseudo labels and ground truth indicators",
+    "run_caption_loss": "run a CaptionLoss module to compute token-level cross-entropy loss for caption generation",
+    "test_max_margin_ranking_loss": "test the MaxMarginRankingLoss class to compute margin-based ranking loss on image-text similarity matrices",
+    "review_adaptive_max_margin_ranking_loss": "review the AdaptiveMaxMarginRankingLoss class to compute weighted margin ranking loss with per-sample importance weights"
+  },
+  "facebookresearch_lavila/lavila/models/models.py": {
+    "build_CLIP_model": "build a CLIP model with a SpaceTimeTransformer vision encoder and OpenAI CLIP text transformer",
+    "build_CLIP_HF_model": "build a CLIP_HF model using a HuggingFace DistilBert text encoder and a vision model",
+    "build_VCLM_model": "build a VCLM model with a CLIP vision encoder and a gated GPT-2 text decoder",
+    "build_VideoClassifier": "build a VideoClassifier model with a vision encoder and linear classification head",
+    "get_loss_for_model": "get the appropriate loss function for a CLIP or VCLM model given training args"
+  },
+  "facebookresearch_lavila/lavila/models/narrator.py": {
+    "encode_image_to_tokens": "encode a batch of video frames into image tokens using the VCLM_HF vision encoder and attention pooling",
+    "generate_text_from_image": "generate caption text from image tokens using sample-based decoding with top-k and top-p warping",
+    "beam_search_generate": "generate caption text from image tokens using beam search decoding with configurable beam width and length penalty",
+    "group_beam_search_generate": "generate diverse caption text from image tokens using group beam search with multiple beam groups",
+    "forward_pass_training": "run a forward pass through VCLM_HF to compute text token logits and labels for training"
+  },
+  "facebookresearch_lavila/lavila/models/openai_clip.py": {
+    "load_clip_model": "load a CLIP model by name like ViT-B/32 to a specified device with optional JIT compilation",
+    "tokenize_texts": "tokenize a string or list of strings into a tensor with start and end tokens",
+    "list_available_models": "list all available CLIP model names such as RN50, ViT-B/16, and ViT-L/14",
+    "download_clip_checkpoint": "download a CLIP model checkpoint from a URL with SHA256 checksum verification and progress bar",
+    "transform_image": "create a torchvision transform pipeline that resizes, crops, normalizes a PIL image for CLIP input"
+  },
+  "facebookresearch_lavila/lavila/models/openai_model.py": {
+    "build_CLIP_model_from_state_dict": "build a CLIP model from a PyTorch state dict using the build_model function",
+    "encode_image_with_CLIP": "encode an image tensor into embeddings using the CLIP model encode_image method",
+    "encode_text_with_CLIP": "encode text tokens into embeddings using the CLIP model encode_text method",
+    "convert_model_weights_to_fp16": "convert applicable model parameters to fp16 using the convert_weights function",
+    "run_CLIP_forward_pass": "run a forward pass through the CLIP model to get image and text embeddings with logit scale"
+  },
+  "facebookresearch_lavila/lavila/models/timesformer.py": {
+    "build_video_transformer_model": "build a SpaceTimeTransformer model for video classification with configurable depth, heads, and embed dimension",
+    "create_space_time_attention_block": "create a SpaceTimeBlock with separate temporal and spatial attention layers for video understanding",
+    "run_video_patch_embedding": "run VideoPatchEmbed to convert video frames into patch embeddings using a 2D convolutional projection",
+    "test_var_attention_forward": "test the VarAttention forward pass with einops rearrangement for space or time attention",
+    "freeze_spatial_weights": "freeze spatial attention weights in SpaceTimeTransformer while keeping temporal attention trainable"
+  },
+  "facebookresearch_lavila/lavila/models/tokenizer.py": {
+    "tokenize_text_with_simple_tokenizer": "create a SimpleTokenizer instance and tokenize text strings into BPE token IDs with a fixed context length",
+    "encode_decode_with_simple_tokenizer": "encode raw text to token IDs and decode token IDs back to text using SimpleTokenizer",
+    "tokenize_with_bert_tokenizer": "create a MyBertTokenizer instance and tokenize text into input IDs and attention masks for BERT models",
+    "tokenize_with_distilbert_tokenizer": "create a MyDistilBertTokenizer instance and tokenize text into input IDs and attention masks for DistilBERT models",
+    "tokenize_with_gpt2_tokenizer": "create a MyGPT2Tokenizer instance and tokenize text into input IDs with optional BOS token for GPT-2 models"
+  },
+  "facebookresearch_lavila/lavila/models/utils.py": {
+    "inflate_positional_embeds": "inflate temporal positional embeddings to match a different number of frames using bilinear interpolation or zeros",
+    "remap_keys": "remap CLIP-style model state dict keys to TimeSformer-style keys for a given number of transformer layers",
+    "rgetattr": "recursively get a nested attribute from an object using dot-separated attribute path strings",
+    "rsetattr": "recursively set a nested attribute on an object using dot-separated attribute path strings",
+    "review_utils": "review the lavila models utils module for positional embedding inflation and CLIP to TimeSformer key remapping functions"
+  },
+  "facebookresearch_lavila/lavila/utils/distributed.py": {
+    "init_distributed_mode": "init distributed training mode from environment variables for multi-GPU PyTorch jobs using NCCL backend",
+    "get_model": "get the underlying model module from a DataParallel or DistributedDataParallel wrapped PyTorch model",
+    "save_on_master": "save checkpoint state dict to disk only on the main process during distributed training",
+    "is_main_process": "check if the current process is the main process with rank zero in a distributed job",
+    "setup_for_distributed": "setup distributed print suppression so only the master process outputs log messages"
+  },
+  "facebookresearch_lavila/lavila/utils/evaluation.py": {
+    "compute_topk_accuracy": "compute the top-k classification accuracy for PyTorch model output and target tensors",
+    "compute_accuracy_top1_top5": "compute both top-1 and top-5 accuracy from model predictions and ground truth labels",
+    "get_mean_accuracy_from_confusion_matrix": "get the mean per-class accuracy and overall accuracy from a confusion matrix",
+    "evaluate_classification_performance": "evaluate classification model performance by computing top-k accuracy metrics on a batch",
+    "calculate_per_class_accuracy": "calculate per-class accuracy and overall accuracy from a numpy confusion matrix array"
+  },
+  "facebookresearch_lavila/lavila/utils/evaluation_charades.py": {
+    "compute_map_mAP": "compute mean average precision from a submission array and ground truth array for action recognition",
+    "compute_map_weighted": "compute weighted mean average precision using class frequencies from ground truth labels",
+    "charades_map_evaluate": "evaluate Charades action recognition predictions using the approximate mAP evaluation function",
+    "charades_map_empty_videos": "handle empty ground truth videos by masking submissions before computing mAP",
+    "create_submission_file": "create a submission file from video IDs and prediction arrays for Charades evaluation"
+  },
+  "facebookresearch_lavila/lavila/utils/evaluation_egomcq.py": {
+    "run_egomcq_accuracy_metrics": "run egomcq_accuracy_metrics to compute Intra-video and Inter-video accuracy from predictions, labels, and types tensors",
+    "test_egomcq_accuracy_metrics": "test egomcq_accuracy_metrics with sample torch tensors for preds, labels, and types to verify accuracy calculation",
+    "review_egomcq_accuracy_metrics": "review egomcq_accuracy_metrics to understand how it splits accuracy by Intra-video and Inter-video groups",
+    "summarize_egomcq_accuracy_metrics": "summarize egomcq_accuracy_metrics which returns a dictionary of accuracy percentages grouped by video type",
+    "refactor_egomcq_accuracy_metrics": "refactor egomcq_accuracy_metrics to vectorize the loop-based accuracy computation for better performance"
+  },
+  "facebookresearch_lavila/lavila/utils/evaluation_ek100cls.py": {
+    "get_marginal_indexes_verb": "get marginal indexes for each verb in the actions dataset using mode verb",
+    "get_marginal_indexes_noun": "get marginal indexes for each noun in the actions dataset using mode noun",
+    "marginalize_probs": "marginalize probability distributions over action indexes to compute verb or noun level probabilities",
+    "review_get_marginal_indexes": "review the get_marginal_indexes function that retrieves action indexes for each verb or noun category",
+    "review_marginalize": "review the marginalize function that sums probabilities across action indexes for each verb or noun"
+  },
+  "facebookresearch_lavila/lavila/utils/evaluation_ek100mir.py": {
+    "calculate_nDCG": "calculate the normalized Discounted Cumulative Gain between a similarity matrix and relevancy matrix for cross-modal retrieval evaluation",
+    "calculate_mAP": "compute the mean average precision from a similarity matrix and relevancy matrix for ranking quality assessment",
+    "get_mAP": "get mean average precision scores for both visual and text retrieval directions plus their average",
+    "get_nDCG": "get normalized DCG scores for both visual and text retrieval directions plus their average",
+    "calculate_DCG": "calculate the Discounted Cumulative Gain for a similarity matrix using relevancy scores and k-counts mask"
+  },
+  "facebookresearch_lavila/lavila/utils/meter.py": {
+    "create_AverageMeter": "create an AverageMeter to track running average and current value of a metric",
+    "update_AverageMeter": "update an AverageMeter with a new value and optional sample count",
+    "synchronize_AverageMeter": "synchronize an AverageMeter across distributed processes using torch distributed all_reduce",
+    "create_ProgressMeter": "create a ProgressMeter with a list of AverageMeters to display batch progress",
+    "display_ProgressMeter": "display the current batch progress and all meter values to stdout"
+  },
+  "facebookresearch_lavila/lavila/utils/preprocess.py": {
+    "generate_label_map_ek100": "generate a label map and action mapping from EK100 dataset CSV annotation files",
+    "generate_label_map_charades": "generate a label map and action mapping from CharadesEgo dataset class files",
+    "generate_label_map_egtea": "generate a label map and action mapping from EGTEA dataset action index files",
+    "generate_tokenizer_bert": "generate a BERT or DistilBERT tokenizer instance based on the model name string",
+    "generate_tokenizer_gpt2": "generate a GPT2 variant tokenizer instance based on the model name string"
+  },
+  "facebookresearch_lavila/lavila/utils/random.py": {
+    "set_random_seed": "set a random seed for torch, numpy, and python random modules with a given seed value",
+    "set_random_seed_with_rank": "set a random seed offset by rank for distributed training reproducibility",
+    "review_random_seed": "review the random_seed function that seeds torch, numpy, and python random together",
+    "refactor_random_seed": "refactor the random_seed function to also seed cuda random for GPU reproducibility",
+    "test_random_seed": "test the random_seed function to verify torch, numpy, and python random produce reproducible results"
+  },
+  "facebookresearch_lavila/lavila/utils/scheduler.py": {
+    "build_cosine_lr_schedule": "build a cosine annealing learning rate schedule for training over a fixed number of epochs",
+    "create_cosine_schedule_with_warmup": "create a cosine schedule with linear warmup from a start value to the base value",
+    "run_cosine_scheduler": "run the cosine scheduler to generate an array of values across all training iterations",
+    "test_cosine_scheduler": "test the cosine scheduler function with custom base value, final value, and epoch parameters",
+    "refactor_cosine_scheduler": "refactor the cosine scheduler to support additional warmup strategies beyond linear interpolation"
+  },
+  "facebookresearch_lavila/scripts/convert_egovlp_ckpt.py": {
+    "run_convert_ckpt": "run the script to convert an EgoVLP checkpoint to a new format with renamed keys",
+    "convert_video_model_keys": "convert EgoVLP checkpoint keys from module.video_model to module.visual naming convention",
+    "convert_text_model_keys": "convert EgoVLP checkpoint keys from module.text_model to module.textual naming convention",
+    "convert_projection_keys": "convert EgoVLP checkpoint keys from module.txt_proj and module.vid_proj to text_projection and image_projection",
+    "save_converted_ckpt": "save the converted EgoVLP checkpoint with epoch, state_dict, and best_acc1 metadata"
+  }
+}

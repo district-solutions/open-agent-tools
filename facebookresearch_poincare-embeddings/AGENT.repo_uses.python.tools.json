@@ -1,0 +1,79 @@
+{
+  "facebookresearch_poincare-embeddings/hype/checkpoint.py": {
+    "create_localcheckpoint": "create a LocalCheckpoint instance with a file path to manage PyTorch model checkpoint saving and loading",
+    "save_checkpoint_with_retry": "save model parameters to a checkpoint file with automatic retry on failure up to 10 attempts",
+    "initialize_from_checkpoint": "initialize model parameters by loading an existing checkpoint file or using fresh parameters if none exists",
+    "upgrade_state_dict": "upgrade an old checkpoint state dictionary to add missing model config fields for backward compatibility",
+    "review_localcheckpoint_class": "review the LocalCheckpoint class and its initialize and save methods for checkpoint management patterns"
+  },
+  "facebookresearch_poincare-embeddings/hype/common.py": {
+    "use_acosh_tensor": "apply the custom acosh function to a PyTorch tensor with numerical stability via epsilon clamping",
+    "review_Acosh_forward": "review the Acosh forward pass that computes inverse hyperbolic cosine using log(x + sqrt(x*x - 1))",
+    "review_Acosh_backward": "review the Acosh backward pass that computes gradient g / z with clamped z to avoid division by zero",
+    "test_acosh_function": "test the acosh function by passing a PyTorch tensor and epsilon to Acosh.apply",
+    "refactor_Acosh_class": "refactor the Acosh custom autograd Function to support additional numerical stability options"
+  },
+  "facebookresearch_poincare-embeddings/hype/energy_function.py": {
+    "create_EnergyFunction": "create an EnergyFunction module with a manifold, dimension, and size for Poincar\u00e9 embeddings",
+    "run_EnergyFunction_forward": "run the EnergyFunction forward pass on input indices to compute energy between subject and object embeddings",
+    "use_EnergyFunction_optim_params": "use the EnergyFunction optim_params method to get manifold-aware optimizer parameters with retraction and transport",
+    "create_DistanceEnergyFunction": "create a DistanceEnergyFunction that computes energy as manifold distance between subject and object embeddings",
+    "create_EntailmentConeEnergyFunction": "create an EntailmentConeEnergyFunction with a margin for modeling entailment relations using cone geometry"
+  },
+  "facebookresearch_poincare-embeddings/hype/graph.py": {
+    "load_adjacency_matrix_hdf5": "load an adjacency matrix from an HDF5 file with ids, neighbors, offsets, weights, and objects",
+    "load_adjacency_matrix_csv": "load an adjacency matrix from a CSV file with optional symmetrization and object mapping",
+    "load_edge_list": "load an edge list from a CSV file returning indexed edges, objects, and weights",
+    "create_dataset": "create a PyTorch Dataset from edge indices, objects, and weights with negative sampling support",
+    "eval_reconstruction": "evaluate embedding reconstruction quality by ranking neighbors using a model and adjacency list"
+  },
+  "facebookresearch_poincare-embeddings/hype/hypernymy_eval.py": {
+    "run_hypernymy_evaluation": "run the main function to evaluate a Poincare embeddings checkpoint on hypernymy suite benchmarks",
+    "create_entailment_cone_model": "create an EntailmentConeModel from a checkpoint dict to predict hypernymy scores for word pairs",
+    "download_hypernymy_data": "download the hypernymysuite evaluation data using the download_data function",
+    "predict_hypernymy_scores": "predict hypernymy entailment scores for lists of hyponym and hypernym word pairs using predict_many",
+    "summarize_evaluation_results": "summarize hypernymy evaluation results by computing the average across all val_inv metrics"
+  },
+  "facebookresearch_poincare-embeddings/hype/rsgd.py": {
+    "create_riemannian_sgd_optimizer": "create a RiemannianSGD optimizer with params, learning rate, rgrad function, and expm function",
+    "run_riemannian_sgd_step": "run a single optimization step on the RiemannianSGD optimizer with an optional learning rate",
+    "review_riemannian_sgd_init": "review the RiemannianSGD class init to understand required rgrad and expm callback parameters",
+    "refactor_riemannian_sgd_step": "refactor the RiemannianSGD step method to support custom gradient transformations or logging",
+    "summarize_riemannian_sgd": "summarize the RiemannianSGD optimizer class and its Riemannian gradient descent approach"
+  },
+  "facebookresearch_poincare-embeddings/hype/train.py": {
+    "run_train_poincare_model": "run the train function to train a Poincare embeddings model over multiple epochs with a DataLoader",
+    "review_train_burnin_phase": "review the train function burn-in phase that uses a reduced learning rate multiplier for early epochs",
+    "test_train_asgd_counts": "test the train function ASGD object occurrence counting logic that bins and normalizes input counts",
+    "refactor_train_logging": "refactor the train function epoch logging to support custom log formats beyond JSON stats output",
+    "summarize_train_checkpointer": "summarize the train function checkpointer callback that saves model state at specified epochs"
+  },
+  "facebookresearch_poincare-embeddings/hype/manifolds/euclidean.py": {
+    "create_EuclideanManifold": "create a EuclideanManifold instance with optional max_norm and curvature K parameters",
+    "compute_EuclideanManifold_distance": "compute the squared Euclidean distance between two tensors u and v using the manifold",
+    "normalize_EuclideanManifold_vectors": "normalize tensor vectors in-place using the manifold's max_norm renorm constraint",
+    "compute_EuclideanManifold_expm": "compute the exponential map on the Euclidean manifold with optional learning rate and normalization",
+    "compute_EuclideanManifold_angle": "compute the angle at point u between vectors u and v using the law of cosines"
+  },
+  "facebookresearch_poincare-embeddings/hype/manifolds/lorentz.py": {
+    "create_lorentz_manifold": "create a LorentzManifold instance with custom eps, norm_clip, max_norm, and curvature K parameters",
+    "compute_lorentzian_dot_product": "compute the Lorentzian scalar product of two tensors using the ldot static method",
+    "normalize_hyperboloid_vectors": "normalize embedding vectors onto the hyperboloid surface using the normalize method",
+    "compute_hyperboloid_distance": "compute the geodesic distance between two points on the Lorentz hyperboloid manifold",
+    "apply_exponential_map": "apply the exponential map to update points on the hyperboloid along tangent vectors"
+  },
+  "facebookresearch_poincare-embeddings/hype/manifolds/manifold.py": {
+    "review_Manifold_class": "review the Manifold abstract base class and its geometric operations for Poincare embeddings",
+    "implement_Manifold_distance": "implement a concrete Manifold subclass that provides the distance method for two points",
+    "implement_Manifold_expm": "implement a concrete Manifold subclass that provides the expm exponential map method",
+    "implement_Manifold_logm": "implement a concrete Manifold subclass that provides the logm logarithmic map method",
+    "use_Manifold_norm": "use the Manifold norm method to compute the L2 norm of embedding weights"
+  },
+  "facebookresearch_poincare-embeddings/hype/manifolds/poincare.py": {
+    "create_poincare_manifold": "create a PoincareManifold instance with curvature K and epsilon for numerical stability",
+    "compute_poincare_distance": "compute the Poincare distance between two tensors u and v using the manifold distance method",
+    "compute_half_aperture": "compute the half aperture angle at a point u on the Poincare manifold",
+    "compute_angle_at_u": "compute the angle at point u between vectors u and v on the Poincare manifold",
+    "compute_rgrad": "compute the Riemannian gradient by scaling Euclidean gradient d_p with position p on the manifold"
+  }
+}

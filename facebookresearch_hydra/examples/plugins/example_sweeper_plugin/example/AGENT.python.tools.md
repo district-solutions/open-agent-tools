@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/examples/plugins/example_sweeper_plugin/example/my_app.py
+
+Prompts
+
+```
+['run the Hydra app my_app that prints the resolved configuration as YAML', 'run the Hydra app my_app in sweep mode using the example sweeper plugin', 'review the Hydra app my_app and its config files under the conf directory', 'summarize the Hydra app my_app that uses OmegaConf to print configuration as YAML', 'refactor the Hydra app my_app to add custom logic beyond printing the config']
+```
+
+Usage
+
+```
+{'run_hydra_app': 'run the Hydra app my_app that prints the resolved configuration as YAML', 'run_hydra_sweep': 'run the Hydra app my_app in sweep mode using the example sweeper plugin', 'review_hydra_config': 'review the Hydra app my_app and its config files under the conf directory', 'summarize_my_app': 'summarize the Hydra app my_app that uses OmegaConf to print configuration as YAML', 'refactor_my_app': 'refactor the Hydra app my_app to add custom logic beyond printing the config'}
+```
+

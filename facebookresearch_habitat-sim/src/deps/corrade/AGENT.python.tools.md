@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/habitat-sim
+- repo_uri: https://github.com/facebookresearch/habitat-sim
+
+## File: facebookresearch_habitat-sim/src/deps/corrade/conanfile.py
+
+Prompts
+
+```
+['build the Corrade C++ library using the Conan recipe with cmake and default options', 'configure cmake definitions for Corrade including MSVC compatibility and build static options', 'sort a list of library names into the correct dependency link order with optional suffix', 'package the built Corrade libraries and copy the COPYING license file to the licenses directory', 'review the Corrade Conan recipe options including shared, fPIC, interconnect, pluginmanager, rc, testsuite, and utility']
+```
+
+Usage
+
+```
+{'build_corrade_conan_package': 'build the Corrade C++ library using the Conan recipe with cmake and default options', 'configure_cmake_for_corrade': 'configure cmake definitions for Corrade including MSVC compatibility and build static options', 'sort_libs_dependency_order': 'sort a list of library names into the correct dependency link order with optional suffix', 'package_corrade_with_licenses': 'package the built Corrade libraries and copy the COPYING license file to the licenses directory', 'review_corrade_conanfile_options': 'review the Corrade Conan recipe options including shared, fPIC, interconnect, pluginmanager, rc, testsuite, and utility'}
+```
+

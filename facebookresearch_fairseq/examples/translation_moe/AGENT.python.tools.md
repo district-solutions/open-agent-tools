@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairseq
+- repo_uri: https://github.com/facebookresearch/fairseq
+
+## File: facebookresearch_fairseq/examples/translation_moe/score.py
+
+Prompts
+
+```
+['run the scoring script with --sys to compute pairwise BLEU over candidate hypotheses', 'run the scoring script with --ref and --sys to compute multi-reference BLEU scores', 'run the scoring script with --ref only to compute intra-reference pairwise and leave-one-out BLEU', 'compute corpus-level BLEU score between a system output stream and reference streams using sacrebleu', 'compute sentence-level BLEU score between a single hypothesis and reference with exponential smoothing']
+```
+
+Usage
+
+```
+{'run_pairwise_bleu_scoring': 'run the scoring script with --sys to compute pairwise BLEU over candidate hypotheses', 'run_multi_reference_bleu': 'run the scoring script with --ref and --sys to compute multi-reference BLEU scores', 'run_intra_reference_bleu': 'run the scoring script with --ref only to compute intra-reference pairwise and leave-one-out BLEU', 'compute_corpus_bleu': 'compute corpus-level BLEU score between a system output stream and reference streams using sacrebleu', 'compute_sentence_bleu': 'compute sentence-level BLEU score between a single hypothesis and reference with exponential smoothing'}
+```
+

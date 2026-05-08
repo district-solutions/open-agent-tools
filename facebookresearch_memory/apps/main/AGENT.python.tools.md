@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: facebookresearch/memory
+- repo_uri: https://github.com/facebookresearch/memory
+
+## File: facebookresearch_memory/apps/main/eval.py
+
+Prompts
+
+```
+['run an LM Harness evaluation on a consolidated model checkpoint using eval.py with a config file', 'create an EvalHarnessLM wrapper around a PackedCausalTransformerGenerator for lm-eval harness compatibility', 'run the EvalHarnessLM generate_until method to generate text completions from prompts with temperature and top_p', 'run the EvalHarnessLM loglikelihood_rolling method to compute rolling log-likelihoods for prompts', 'launch evaluation by loading a consolidated model and running simple_evaluate with LMHarnessArgs configuration', 'run the PackedCausalTransformerGenerator to generate text from prompts using a loaded LMTransformer checkpoint', 'sample tokens from logits using top-p nucleus sampling with configurable temperature and probability threshold', 'sample tokens from logits using top-k sampling with configurable temperature and k value', 'pack multiple tokenized prompts into a single concatenated tensor with their corresponding lengths', 'load a consolidated LMTransformer model and tokenizer from a checkpoint directory with params.json config', 'run distributed LLM training with gradient accumulation, checkpointing, and async evaluation via train.py config.yaml', 'review the TrainArgs dataclass that configures model, data, optimizer, distributed, checkpoint, profiling, and logging settings', 'review the TrainState class that tracks optimizer steps, accumulation steps, scheduler, and dataloader state for checkpointing', 'review the train function that builds model, optimizer, dataloader, runs the training loop with probing and metrics logging', 'review the validate_train_args function that validates vocab size, data paths, and distributed parallelism configuration', 'create a language model transformer with token embeddings, RMSNorm, and configurable attention implementation', 'build a causal attention mask for xformers, sdpa, or flex_attention with optional sliding window support', 'compute the number of FLOPs per token given model parameters, layers, dimension, and sequence length', 'build an FSDP grouping plan that groups token embeddings, transformer layers, and output separately', 'parallelize a transformer model for tensor parallelism across attention and feedforward layers using a device mesh']
+```
+
+Usage
+
+```
+{'run_lm_harness_evaluation': 'run an LM Harness evaluation on a consolidated model checkpoint using eval.py with a config file', 'create_eval_harness_lm_wrapper': 'create an EvalHarnessLM wrapper around a PackedCausalTransformerGenerator for lm-eval harness compatibility', 'run_generate_until': 'run the EvalHarnessLM generate_until method to generate text completions from prompts with temperature and top_p', 'run_loglikelihood_rolling': 'run the EvalHarnessLM loglikelihood_rolling method to compute rolling log-likelihoods for prompts', 'launch_eval_with_config': 'launch evaluation by loading a consolidated model and running simple_evaluate with LMHarnessArgs configuration'}
+```
+
+## File: facebookresearch_memory/apps/main/generate.py
+
+Prompts
+
+```
+['run an LM Harness evaluation on a consolidated model checkpoint using eval.py with a config file', 'create an EvalHarnessLM wrapper around a PackedCausalTransformerGenerator for lm-eval harness compatibility', 'run the EvalHarnessLM generate_until method to generate text completions from prompts with temperature and top_p', 'run the EvalHarnessLM loglikelihood_rolling method to compute rolling log-likelihoods for prompts', 'launch evaluation by loading a consolidated model and running simple_evaluate with LMHarnessArgs configuration', 'run the PackedCausalTransformerGenerator to generate text from prompts using a loaded LMTransformer checkpoint', 'sample tokens from logits using top-p nucleus sampling with configurable temperature and probability threshold', 'sample tokens from logits using top-k sampling with configurable temperature and k value', 'pack multiple tokenized prompts into a single concatenated tensor with their corresponding lengths', 'load a consolidated LMTransformer model and tokenizer from a checkpoint directory with params.json config', 'run distributed LLM training with gradient accumulation, checkpointing, and async evaluation via train.py config.yaml', 'review the TrainArgs dataclass that configures model, data, optimizer, distributed, checkpoint, profiling, and logging settings', 'review the TrainState class that tracks optimizer steps, accumulation steps, scheduler, and dataloader state for checkpointing', 'review the train function that builds model, optimizer, dataloader, runs the training loop with probing and metrics logging', 'review the validate_train_args function that validates vocab size, data paths, and distributed parallelism configuration', 'create a language model transformer with token embeddings, RMSNorm, and configurable attention implementation', 'build a causal attention mask for xformers, sdpa, or flex_attention with optional sliding window support', 'compute the number of FLOPs per token given model parameters, layers, dimension, and sequence length', 'build an FSDP grouping plan that groups token embeddings, transformer layers, and output separately', 'parallelize a transformer model for tensor parallelism across attention and feedforward layers using a device mesh']
+```
+
+Usage
+
+```
+{'run_transformer_text_generation': 'run the PackedCausalTransformerGenerator to generate text from prompts using a loaded LMTransformer checkpoint', 'sample_tokens_with_top_p': 'sample tokens from logits using top-p nucleus sampling with configurable temperature and probability threshold', 'sample_tokens_with_top_k': 'sample tokens from logits using top-k sampling with configurable temperature and k value', 'pack_prompts_for_batching': 'pack multiple tokenized prompts into a single concatenated tensor with their corresponding lengths', 'load_consolidated_model_and_tokenizer': 'load a consolidated LMTransformer model and tokenizer from a checkpoint directory with params.json config'}
+```
+
+## File: facebookresearch_memory/apps/main/train.py
+
+Prompts
+
+```
+['run an LM Harness evaluation on a consolidated model checkpoint using eval.py with a config file', 'create an EvalHarnessLM wrapper around a PackedCausalTransformerGenerator for lm-eval harness compatibility', 'run the EvalHarnessLM generate_until method to generate text completions from prompts with temperature and top_p', 'run the EvalHarnessLM loglikelihood_rolling method to compute rolling log-likelihoods for prompts', 'launch evaluation by loading a consolidated model and running simple_evaluate with LMHarnessArgs configuration', 'run the PackedCausalTransformerGenerator to generate text from prompts using a loaded LMTransformer checkpoint', 'sample tokens from logits using top-p nucleus sampling with configurable temperature and probability threshold', 'sample tokens from logits using top-k sampling with configurable temperature and k value', 'pack multiple tokenized prompts into a single concatenated tensor with their corresponding lengths', 'load a consolidated LMTransformer model and tokenizer from a checkpoint directory with params.json config', 'run distributed LLM training with gradient accumulation, checkpointing, and async evaluation via train.py config.yaml', 'review the TrainArgs dataclass that configures model, data, optimizer, distributed, checkpoint, profiling, and logging settings', 'review the TrainState class that tracks optimizer steps, accumulation steps, scheduler, and dataloader state for checkpointing', 'review the train function that builds model, optimizer, dataloader, runs the training loop with probing and metrics logging', 'review the validate_train_args function that validates vocab size, data paths, and distributed parallelism configuration', 'create a language model transformer with token embeddings, RMSNorm, and configurable attention implementation', 'build a causal attention mask for xformers, sdpa, or flex_attention with optional sliding window support', 'compute the number of FLOPs per token given model parameters, layers, dimension, and sequence length', 'build an FSDP grouping plan that groups token embeddings, transformer layers, and output separately', 'parallelize a transformer model for tensor parallelism across attention and feedforward layers using a device mesh']
+```
+
+Usage
+
+```
+{'run_LLM_training': 'run distributed LLM training with gradient accumulation, checkpointing, and async evaluation via train.py config.yaml', 'review_TrainArgs': 'review the TrainArgs dataclass that configures model, data, optimizer, distributed, checkpoint, profiling, and logging settings', 'review_TrainState': 'review the TrainState class that tracks optimizer steps, accumulation steps, scheduler, and dataloader state for checkpointing', 'review_train_function': 'review the train function that builds model, optimizer, dataloader, runs the training loop with probing and metrics logging', 'review_validate_train_args': 'review the validate_train_args function that validates vocab size, data paths, and distributed parallelism configuration'}
+```
+
+## File: facebookresearch_memory/apps/main/transformer.py
+
+Prompts
+
+```
+['run an LM Harness evaluation on a consolidated model checkpoint using eval.py with a config file', 'create an EvalHarnessLM wrapper around a PackedCausalTransformerGenerator for lm-eval harness compatibility', 'run the EvalHarnessLM generate_until method to generate text completions from prompts with temperature and top_p', 'run the EvalHarnessLM loglikelihood_rolling method to compute rolling log-likelihoods for prompts', 'launch evaluation by loading a consolidated model and running simple_evaluate with LMHarnessArgs configuration', 'run the PackedCausalTransformerGenerator to generate text from prompts using a loaded LMTransformer checkpoint', 'sample tokens from logits using top-p nucleus sampling with configurable temperature and probability threshold', 'sample tokens from logits using top-k sampling with configurable temperature and k value', 'pack multiple tokenized prompts into a single concatenated tensor with their corresponding lengths', 'load a consolidated LMTransformer model and tokenizer from a checkpoint directory with params.json config', 'run distributed LLM training with gradient accumulation, checkpointing, and async evaluation via train.py config.yaml', 'review the TrainArgs dataclass that configures model, data, optimizer, distributed, checkpoint, profiling, and logging settings', 'review the TrainState class that tracks optimizer steps, accumulation steps, scheduler, and dataloader state for checkpointing', 'review the train function that builds model, optimizer, dataloader, runs the training loop with probing and metrics logging', 'review the validate_train_args function that validates vocab size, data paths, and distributed parallelism configuration', 'create a language model transformer with token embeddings, RMSNorm, and configurable attention implementation', 'build a causal attention mask for xformers, sdpa, or flex_attention with optional sliding window support', 'compute the number of FLOPs per token given model parameters, layers, dimension, and sequence length', 'build an FSDP grouping plan that groups token embeddings, transformer layers, and output separately', 'parallelize a transformer model for tensor parallelism across attention and feedforward layers using a device mesh']
+```
+
+Usage
+
+```
+{'create_LMTransformer': 'create a language model transformer with token embeddings, RMSNorm, and configurable attention implementation', 'build_causal_mask': 'build a causal attention mask for xformers, sdpa, or flex_attention with optional sliding window support', 'compute_flops_per_token': 'compute the number of FLOPs per token given model parameters, layers, dimension, and sequence length', 'build_fsdp_grouping_plan': 'build an FSDP grouping plan that groups token embeddings, transformer layers, and output separately', 'parallelize_tp': 'parallelize a transformer model for tensor parallelism across attention and feedforward layers using a device mesh'}
+```
+

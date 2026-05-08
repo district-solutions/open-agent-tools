@@ -1,0 +1,170 @@
+{
+  "facebookresearch_maskformer/datasets/prepare_ade20k_full_sem_seg.py": {
+    "run_prepare_ade20k_full_sem_seg": "run the script to convert ADE20K full dataset images and segmentation masks for Detectron2 training",
+    "loadAde20K_decode_mask": "load an ADE20K image and decode its RGB segmentation PNG into a class mask array",
+    "review_ADE20K_SEM_SEG_FULL_CATEGORIES": "review the 847 ADE20K full semantic segmentation category definitions with original IDs and train IDs",
+    "refactor_loadAde20K_resize": "refactor loadAde20K to support configurable resize dimensions instead of the hardcoded 512 pixel max size",
+    "test_loadAde20K_class_mask": "test the loadAde20K function to verify it correctly decodes RGB segmentation masks into class ID arrays"
+  },
+  "facebookresearch_maskformer/datasets/prepare_ade20k_sem_seg.py": {
+    "run_convert_ade20k_annotations": "run the script to convert ADE20K semantic segmentation annotations to Detectron2 format",
+    "run_prepare_ade20k_sem_seg": "run prepare_ade20k_sem_seg.py to convert training and validation annotation images for Detectron2",
+    "convert_ade20k_annotation": "convert a single ADE20K annotation image by shifting pixel values for Detectron2 compatibility",
+    "review_convert_function": "review the convert function that shifts ADE20K annotation pixel values by subtracting 1",
+    "summarize_prepare_ade20k_sem_seg": "summarize the prepare_ade20k_sem_seg.py script that batch-converts ADE20K annotations for Detectron2"
+  },
+  "facebookresearch_maskformer/demo/demo.py": {
+    "run_maskformer_on_images": "run maskformer segmentation on input images using the demo CLI with --input flag",
+    "run_maskformer_on_webcam": "run maskformer segmentation on live webcam feed using the demo CLI with --webcam flag",
+    "run_maskformer_on_video": "run maskformer segmentation on a video file using the demo CLI with --video-input flag",
+    "setup_maskformer_config": "setup a detectron2 config with maskformer options using setup_cfg from a YAML config file",
+    "test_opencv_video_format": "test if an OpenCV video codec and file extension combination is supported on the system"
+  },
+  "facebookresearch_maskformer/demo/predictor.py": {
+    "run_VisualizationDemo_on_image": "run a VisualizationDemo on a BGR image to get panoptic or instance segmentation predictions and visualized output",
+    "run_VisualizationDemo_on_video": "run a VisualizationDemo on a video stream to yield visualized BGR frames with segmentation predictions",
+    "create_AsyncPredictor": "create an AsyncPredictor with multiple GPU workers to run model predictions asynchronously across processes",
+    "use_AsyncPredictor_call": "use an AsyncPredictor as a callable to submit an image and receive ordered prediction results",
+    "review_AsyncPredictor_put_get": "review the AsyncPredictor put and get methods for async task queuing and ordered result retrieval"
+  },
+  "facebookresearch_maskformer/mask_former/config.py": {
+    "add_mask_former_config": "add MaskFormer configuration settings to a Detectron2 CfgNode for model training and inference",
+    "review_add_mask_former_config": "review the add_mask_former_config function to understand default MaskFormer model and transformer settings",
+    "refactor_add_mask_former_config": "refactor add_mask_former_config to customize loss weights, transformer layers, or Swin backbone parameters",
+    "summarize_add_mask_former_config": "summarize the add_mask_former_config function and its default configuration values for MaskFormer",
+    "test_add_mask_former_config": "test the add_mask_former_config function by passing a Detectron2 CfgNode and verifying all fields are set"
+  },
+  "facebookresearch_maskformer/mask_former/mask_former_model.py": {
+    "build_maskformer_model": "build a MaskFormer model from a detectron2 config for semantic segmentation",
+    "run_forward_pass": "run a forward pass on batched inputs to get semantic or panoptic segmentation predictions",
+    "run_semantic_inference": "run semantic inference on mask classification and mask prediction outputs to get per-pixel logits",
+    "run_panoptic_inference": "run panoptic inference on mask classification and mask prediction outputs to get segment IDs and info",
+    "review_maskformer_criterion": "review the MaskFormer class and its SetCriterion loss computation with HungarianMatcher bipartite matching"
+  },
+  "facebookresearch_maskformer/mask_former/data/dataset_mappers/detr_panoptic_dataset_mapper.py": {
+    "build_transform_gens": "build a list of TransformGen objects from a detectron2 config for training or inference",
+    "create_DETRPanopticDatasetMapper": "create a DETRPanopticDatasetMapper instance with crop and transform generators for COCO panoptic segmentation",
+    "review_DETRPanopticDatasetMapper_from_config": "review the DETRPanopticDatasetMapper from_config class method to build mapper kwargs from a detectron2 config",
+    "test_DETRPanopticDatasetMapper_call": "test the DETRPanopticDatasetMapper call method to transform a dataset dict with image reads and panoptic segmentation parsing",
+    "summarize_DETRPanopticDatasetMapper": "summarize the DETRPanopticDatasetMapper class that maps Detectron2 dataset dicts into MaskFormer format with geometric transforms and cropping"
+  },
+  "facebookresearch_maskformer/mask_former/data/dataset_mappers/mask_former_semantic_dataset_mapper.py": {
+    "build_semantic_dataset_mapper": "build a MaskFormerSemanticDatasetMapper to transform Detectron2 dataset dicts for semantic segmentation training",
+    "create_mapper_from_config": "create a MaskFormerSemanticDatasetMapper from a Detectron2 config with augmentations and crop settings",
+    "test_call_method": "test the MaskFormerSemanticDatasetMapper call method to map dataset dicts with semantic segmentation ground truth",
+    "review_augmentation_pipeline": "review the MaskFormerSemanticDatasetMapper augmentation pipeline including resize, crop, color aug, and flip transforms",
+    "refactor_binary_mask_generation": "refactor the MaskFormerSemanticDatasetMapper to customize per-category binary mask generation from semantic segmentation labels"
+  },
+  "facebookresearch_maskformer/mask_former/data/datasets/register_ade20k_full.py": {
+    "register_ade20k_full_dataset": "register the ADE20K-Full semantic segmentation dataset with detectron2 DatasetCatalog and MetadataCatalog for training and validation splits",
+    "get_ade20k_full_metadata": "get the ADE20K-Full category metadata including 847 stuff class names and dataset-to-contiguous ID mappings",
+    "load_ade20k_full_sem_seg": "load ADE20K-Full semantic segmentation images and TIFF annotations using detectron2 load_sem_seg with jpg and tif extensions",
+    "configure_ade20k_full_ignore_label": "configure the ADE20K-Full dataset ignore label to 65535 for 16-bit TIFF ground truth images",
+    "customize_ade20k_full_root": "customize the ADE20K-Full dataset root path via the DETECTRON2_DATASETS environment variable or a default datasets directory"
+  },
+  "facebookresearch_maskformer/mask_former/data/datasets/register_ade20k_panoptic.py": {
+    "load_ade20k_panoptic_json": "load ADE20K panoptic JSON annotations and return a list of dicts in Detectron2 standard format",
+    "register_ade20k_panoptic": "register an ADE20K panoptic segmentation dataset split with Detectron2 DatasetCatalog and MetadataCatalog",
+    "get_metadata": "get ADE20K metadata including thing and stuff class names, colors, and ID mappings",
+    "register_all_ade20k_panoptic": "register all predefined ADE20K panoptic train and val splits under a given root directory",
+    "review_ADE20K_150_CATEGORIES": "review the ADE20K 150 category definitions including names, colors, IDs, and isthing flags"
+  },
+  "facebookresearch_maskformer/mask_former/data/datasets/register_coco_stuff_10k.py": {
+    "register_coco_stuff_10k_dataset": "register the COCO-Stuff 10k semantic segmentation dataset for train and test splits in Detectron2",
+    "get_coco_stuff_metadata": "get the COCO-Stuff 10k metadata including stuff class names and dataset to contiguous ID mappings",
+    "summarize_coco_categories": "summarize the 171 COCO-Stuff 10k category definitions including thing and stuff classes with colors and IDs",
+    "review_dataset_registration": "review the register_all_coco_stuff_10k function to understand how train and test splits are registered with DatasetCatalog",
+    "refactor_coco_stuff_meta": "refactor the _get_coco_stuff_meta function to add additional metadata fields like supercategory groupings"
+  },
+  "facebookresearch_maskformer/mask_former/data/datasets/register_mapillary_vistas.py": {
+    "register_mapillary_vistas_dataset": "register the Mapillary Vistas semantic segmentation dataset with detectron2 DatasetCatalog and MetadataCatalog",
+    "get_mapillary_vistas_meta": "get the Mapillary Vistas metadata including 65 stuff classes and their corresponding colors",
+    "summarize_MAPILLARY_VISTAS_SEM_SEG_CATEGORIES": "summarize the 66 Mapillary Vistas semantic segmentation categories with their colors, names, and evaluation flags",
+    "review_register_all_mapillary_vistas": "review the register_all_mapillary_vistas function to understand how train and val splits are registered",
+    "refactor_get_mapillary_vistas_meta": "refactor the _get_mapillary_vistas_meta function to support a custom subset of evaluation categories"
+  },
+  "facebookresearch_maskformer/mask_former/modeling/criterion.py": {
+    "compute_dice_loss": "compute the DICE loss between predicted masks and target binary masks for segmentation",
+    "compute_sigmoid_focal_loss": "compute the sigmoid focal loss for dense detection with configurable alpha and gamma parameters",
+    "create_setcriterion": "create a SetCriterion module with a matcher, weight dict, and loss types for MaskFormer training",
+    "compute_loss_labels": "compute the classification cross-entropy loss between predicted logits and target class labels",
+    "compute_loss_masks": "compute the combined focal and dice loss between predicted masks and target segmentation masks"
+  },
+  "facebookresearch_maskformer/mask_former/modeling/matcher.py": {
+    "create_hungarian_matcher": "create a HungarianMatcher instance with custom cost weights for classification, mask, and dice costs",
+    "run_hungarian_matcher_forward": "run the HungarianMatcher forward pass to match predicted masks against ground truth targets",
+    "compute_batch_dice_loss": "compute the batch dice loss between predicted mask logits and binary target masks",
+    "compute_batch_sigmoid_focal_loss": "compute the batch sigmoid focal loss between predicted mask logits and binary target masks",
+    "review_hungarianmatcher_memory_efficient_forward": "review the memory efficient forward method that performs LSAP matching per batch element"
+  },
+  "facebookresearch_maskformer/mask_former/modeling/backbone/swin.py": {
+    "build_swin_transformer_backbone": "build a SwinTransformer backbone with configurable depths, num_heads, window_size, and embed_dim for semantic segmentation",
+    "create_d2swin_transformer": "create a D2SwinTransformer registered in Detectron2 BACKBONE_REGISTRY using config MODEL.SWIN fields",
+    "build_window_attention": "build a WindowAttention module with relative position bias for shifted window multi-head self-attention",
+    "create_swin_transformer_block": "create a SwinTransformerBlock with window partitioning, cyclic shift, and FFN for hierarchical feature extraction",
+    "build_patch_merging": "build a PatchMerging layer that reduces spatial resolution by half and doubles channel dimension"
+  },
+  "facebookresearch_maskformer/mask_former/modeling/heads/mask_former_head.py": {
+    "build_maskformer_head": "build a MaskFormerHead module for semantic segmentation using a pixel decoder and transformer predictor",
+    "create_maskformer_head_from_config": "create a MaskFormerHead instance from a detectron2 config with pixel decoder and transformer predictor",
+    "run_maskformer_forward": "run the MaskFormerHead forward pass on image features to produce mask predictions",
+    "review_maskformer_head_layers": "review the MaskFormerHead layers method that routes features through the pixel decoder and predictor",
+    "refactor_maskformer_state_dict_loading": "refactor the MaskFormerHead _load_from_state_dict to handle weight format migration for older checkpoints"
+  },
+  "facebookresearch_maskformer/mask_former/modeling/heads/per_pixel_baseline.py": {
+    "build_PerPixelBaselineHead": "build a PerPixelBaselineHead semantic segmentation head with a pixel decoder and 1x1 conv predictor",
+    "build_PerPixelBaselinePlusHead": "build a PerPixelBaselinePlusHead semantic segmentation head with a transformer predictor and deep supervision",
+    "forward_PerPixelBaselineHead": "run forward pass on PerPixelBaselineHead to get segmentation logits or training losses",
+    "forward_PerPixelBaselinePlusHead": "run forward pass on PerPixelBaselinePlusHead with optional deep supervision auxiliary outputs",
+    "review_PerPixelBaselineHead_losses": "review the PerPixelBaselineHead losses method for cross entropy computation with bilinear interpolation"
+  },
+  "facebookresearch_maskformer/mask_former/modeling/heads/pixel_decoder.py": {
+    "build_pixel_decoder": "build a pixel decoder from config using build_pixel_decoder with cfg and input_shape",
+    "create_base_pixel_decoder": "create a BasePixelDecoder instance with input_shape, conv_dim, mask_dim, and norm parameters",
+    "forward_features_base": "run forward_features on BasePixelDecoder to extract mask features from input feature maps",
+    "create_transformer_encoder_pixel_decoder": "create a TransformerEncoderPixelDecoder with transformer config including dropout, nheads, and enc_layers",
+    "forward_features_transformer": "run forward_features on TransformerEncoderPixelDecoder to get mask features and transformer encoder features"
+  },
+  "facebookresearch_maskformer/mask_former/modeling/transformer/position_encoding.py": {
+    "create_position_embedding_sine": "create a PositionEmbeddingSine module with default 64 positional features for transformer image encoding",
+    "create_position_embedding_sine_normalized": "create a PositionEmbeddingSine module with normalize enabled and a custom scale for positional encoding",
+    "run_position_embedding_forward": "run the forward pass of PositionEmbeddingSine on a batch of image feature tensors",
+    "run_position_embedding_forward_with_mask": "run the forward pass of PositionEmbeddingSine on feature tensors with a boolean padding mask",
+    "review_position_embedding_sine_init": "review the PositionEmbeddingSine constructor to understand num_pos_feats, temperature, normalize, and scale parameters"
+  },
+  "facebookresearch_maskformer/mask_former/modeling/transformer/transformer.py": {
+    "build_transformer_model": "build a Transformer encoder-decoder model with configurable d_model, nhead, and layer count",
+    "create_transformer_encoder": "create a TransformerEncoder that stacks cloned encoder layers with optional layer normalization",
+    "create_transformer_decoder": "create a TransformerDecoder that returns intermediate outputs from all decoding layers",
+    "run_transformer_forward": "run the Transformer forward pass with source, mask, query embed, and positional embed",
+    "review_transformer_encoder_layer": "review the TransformerEncoderLayer self-attention and feedforward sub-layers with pre/post normalization"
+  },
+  "facebookresearch_maskformer/mask_former/modeling/transformer/transformer_predictor.py": {
+    "build_transformer_predictor": "build a TransformerPredictor module for maskFormer semantic segmentation with configurable transformer encoder and decoder layers",
+    "create_mlp_ffn": "create a simple multi-layer perceptron FFN with configurable input, hidden, output dimensions and layer count",
+    "run_transformer_forward": "run the TransformerPredictor forward pass with input features and mask features to get predicted logits and masks",
+    "review_from_config": "review the TransformerPredictor from_config class method that reads detectron2 config to initialize transformer parameters",
+    "test_set_aux_loss": "test the _set_aux_loss method that prepares auxiliary loss outputs for deep supervision training"
+  },
+  "facebookresearch_maskformer/mask_former/utils/misc.py": {
+    "create_nested_tensor": "create a NestedTensor object from a batch of tensors and an optional boolean mask",
+    "nested_tensor_from_tensor_list": "build a NestedTensor by padding a list of 3D image tensors to a uniform batch shape",
+    "nested_tensor_decompose": "decompose a NestedTensor into its underlying tensors and mask components",
+    "nested_tensor_to_device": "move a NestedTensor and its mask to a specified device like cuda or cpu",
+    "check_dist_initialized": "check if PyTorch distributed is available and initialized for multi-GPU training"
+  },
+  "facebookresearch_maskformer/tools/analyze_model.py": {
+    "run_flop_analysis": "run flop count analysis on a detectron2 model using a config file and test data",
+    "run_activation_analysis": "run activation count analysis on a detectron2 model to measure operator activations across inputs",
+    "run_parameter_count": "run parameter count analysis on a detectron2 model and print the parameter count table",
+    "run_structure_analysis": "run model structure analysis on a detectron2 model and print the full model architecture",
+    "setup_config": "setup and load a detectron2 config from a YAML or LazyConfig file with mask former support"
+  },
+  "facebookresearch_maskformer/tools/evaluate_pq_for_semantic_segmentation.py": {
+    "run_pq_evaluation_cli": "run the PQ evaluation CLI tool to compute panoptic quality metrics for semantic segmentation predictions on a dataset",
+    "run_mIoU_evaluation": "run the evaluation script to calculate mean IoU from a COCO-style JSON predictions file against ground truth",
+    "compute_pq_single_image": "compute panoptic quality statistics for a single image by comparing ground truth and predicted segmentation masks",
+    "create_argparse_parser": "create an argument parser with dataset name and JSON file path options for semantic segmentation evaluation",
+    "calculate_confusion_matrix_miou": "calculate a confusion matrix from ground truth and predicted segmentations and derive per-class and mean IoU"
+  }
+}

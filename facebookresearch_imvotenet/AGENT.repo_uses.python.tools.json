@@ -1,0 +1,175 @@
+{
+  "facebookresearch_imvotenet/models/ap_helper.py": {
+    "parse_predictions_3d": "parse model predictions to oriented bounding box parameters and suppress overlapping boxes using NMS",
+    "parse_groundtruths_3d": "parse ground truth labels to oriented bounding box parameters for 3D object detection evaluation",
+    "calculate_average_precision": "calculate average precision and mean AP metrics for 3D object detection using the APCalculator class",
+    "flip_axis_to_camera": "flip point cloud coordinates from depth frame to camera frame for 3D object detection",
+    "flip_axis_to_depth": "flip point cloud coordinates from camera frame to depth frame for 3D object detection"
+  },
+  "facebookresearch_imvotenet/models/backbone_module.py": {
+    "build_Pointnet2Backbone": "build a Pointnet2Backbone network for point cloud feature learning with configurable input feature dimensions",
+    "run_Pointnet2Backbone_forward": "run a forward pass of the Pointnet2Backbone on a point cloud tensor to extract multi-scale features",
+    "test_Pointnet2Backbone": "test the Pointnet2Backbone module by running a random point cloud tensor through the network",
+    "review_Pointnet2Backbone_forward": "review the Pointnet2Backbone forward pass that performs four set abstraction layers and two feature upsampling layers",
+    "refactor_Pointnet2Backbone_break_up_pc": "refactor the Pointnet2Backbone _break_up_pc method to split point cloud tensors into xyz coordinates and features"
+  },
+  "facebookresearch_imvotenet/models/dump_helper.py": {
+    "dump_results": "dump 3D object detection results including point clouds, bounding boxes, and labels to a directory as PLY and OBJ files",
+    "softmax": "compute softmax probabilities along the last axis of a numpy array for objectness score conversion",
+    "dump_point_clouds": "dump input point clouds, seed points, vote points, and aggregated vote points as PLY files",
+    "dump_predicted_bboxes": "dump predicted oriented bounding boxes filtered by objectness confidence threshold and NMS mask as PLY files",
+    "dump_ground_truth": "dump ground truth bounding boxes, centroid points, and objectness labels as PLY and OBJ files"
+  },
+  "facebookresearch_imvotenet/models/image_feature_module.py": {
+    "build_ImageFeatureModule": "build an ImageFeatureModule to project 3D seed points to 2D image space and extract image votes",
+    "build_ImageMLPModule": "build an ImageMLPModule with two conv1d layers and batch normalization for processing image features",
+    "run_append_img_feat": "run append_img_feat to fuse image features with 3D point cloud geometric, semantic, and texture cues",
+    "review_ImageFeatureModule_forward": "review the ImageFeatureModule forward pass that computes UV coordinates and gathers per-pixel image votes",
+    "refactor_ImageMLPModule": "refactor the ImageMLPModule to adjust input dimensions or hidden layer size for image feature processing"
+  },
+  "facebookresearch_imvotenet/models/imvotenet.py": {
+    "build_ImVoteNet_model": "build an ImVoteNet model for 3D object detection with RGB-D input and multiple proposal towers",
+    "run_ImVoteNet_forward": "run the ImVoteNet forward pass on point cloud inputs to generate 3D object proposals",
+    "create_sample_valid_seeds": "create seed point indices by sampling valid points from a binary mask tensor",
+    "review_ImVoteNet_forward": "review the ImVoteNet forward pass that processes image-only, point-only, and joint feature towers",
+    "refactor_ImVoteNet_sampling": "refactor the ImVoteNet sampling strategy to support alternative seed point selection methods"
+  },
+  "facebookresearch_imvotenet/models/loss_helper.py": {
+    "compute_vote_loss": "compute the vote loss by matching predicted votes to ground truth votes for seed points",
+    "compute_objectness_loss": "compute the objectness loss for proposals by comparing aggregated vote centers to ground truth object centers",
+    "compute_box_and_sem_cls_loss": "compute 3D bounding box center, heading, size losses and semantic classification loss for object proposals",
+    "get_loss": "compute the total combined loss including vote, objectness, box, and semantic classification losses across all branches",
+    "review_loss_helper_constants": "review the FAR_THRESHOLD, NEAR_THRESHOLD, GT_VOTE_FACTOR, and OBJECTNESS_CLS_WEIGHTS constants used in loss computation"
+  },
+  "facebookresearch_imvotenet/models/proposal_module.py": {
+    "build_ProposalModule": "build a ProposalModule for 3D object detection with vote aggregation and proposal generation",
+    "run_ProposalModule_forward": "run the ProposalModule forward pass with xyz coordinates and features to generate object proposals",
+    "decode_scores": "decode raw network output into objectness scores, center, heading, size, and semantic class scores",
+    "create_vote_aggregation": "create a PointnetSAModuleVotes for aggregating votes around sampled proposals with configurable radius and sample count",
+    "test_ProposalModule_sampling": "test the ProposalModule with vote_fps, seed_fps, or random sampling strategies on point cloud votes"
+  },
+  "facebookresearch_imvotenet/models/votenet.py": {
+    "build_VoteNet_model": "build a VoteNet model for 3D object detection in point clouds with hough voting",
+    "run_VoteNet_forward": "run a forward pass of VoteNet on a point cloud tensor input",
+    "create_VoteNet_instance": "create a VoteNet instance with configurable num_class, num_heading_bin, and num_proposal parameters",
+    "test_VoteNet_inference": "test VoteNet inference on random or dataset point cloud samples",
+    "review_VoteNet_architecture": "review the VoteNet architecture with backbone, voting module, and proposal module components"
+  },
+  "facebookresearch_imvotenet/models/voting_module.py": {
+    "create_voting_module": "create a VotingModule with a vote factor and seed feature dimension for 3D point cloud voting",
+    "run_voting_module_forward": "run the VotingModule forward pass with seed XYZ coordinates and seed features to generate votes",
+    "build_vote_offsets": "build vote offset predictions from seed point features using the VotingModule convolutional layers",
+    "test_voting_module_shapes": "test the VotingModule by passing random tensors and verifying output tensor shapes match expected dimensions",
+    "review_voting_module_residual_features": "review the VotingModule residual feature computation that adds offsets to seed features for vote features"
+  },
+  "facebookresearch_imvotenet/pointnet2/pointnet2_modules.py": {
+    "build_PointnetSAModuleMSG": "build a PointnetSAModuleMSG layer with multiscale grouping for point cloud feature extraction",
+    "create_PointnetSAModuleVotes": "create a PointnetSAModuleVotes layer with RBF pooling and point index support for votenet",
+    "run_PointnetFPModule": "run a PointnetFPModule to propagate features from one point set to another via interpolation",
+    "test_PointnetLFPModuleMSG": "test a PointnetLFPModuleMSG learnable feature propagation layer with multiscale grouping",
+    "review_PointnetSAModule": "review the PointnetSAModule single-scale set abstraction layer for point cloud processing"
+  },
+  "facebookresearch_imvotenet/pointnet2/pointnet2_test.py": {
+    "test_interpolation_grad": "test the gradient computation of pointnet2_utils.three_interpolate using torch.autograd.gradcheck",
+    "run_interpolation_test": "run the test_interpolation_grad function to validate three_interpolate gradient correctness",
+    "review_test_interpolation_grad": "review the test_interpolation_grad function and its gradcheck assertions for correctness",
+    "refactor_test_interpolation_grad": "refactor test_interpolation_grad to use different batch sizes or feature dimensions",
+    "summarize_test_interpolation_grad": "summarize the test_interpolation_grad function and its use of three_interpolate"
+  },
+  "facebookresearch_imvotenet/pointnet2/pointnet2_utils.py": {
+    "build_furthest_point_sampling": "build a module to sample points using iterative furthest point sampling on a point cloud tensor",
+    "create_ball_query": "create a ball query to find neighboring points within a given radius around center points",
+    "use_queryandgroup_module": "use the QueryAndGroup module to group point cloud features by radius-based ball query",
+    "run_three_nn_interpolation": "run three nearest neighbor search and weighted interpolation on point cloud feature tensors",
+    "review_groupall_module": "review the GroupAll module that groups all point cloud features into a single set"
+  },
+  "facebookresearch_imvotenet/pointnet2/pytorch_utils.py": {
+    "build_shared_mlp": "build a SharedMLP module with a list of channel sizes for point cloud feature extraction",
+    "create_conv2d_layer": "create a Conv2d layer with optional batch normalization and ReLU activation for point cloud processing",
+    "create_conv1d_layer": "create a Conv1d layer with optional batch normalization and preact mode for 1D feature maps",
+    "create_conv3d_layer": "create a Conv3d layer with configurable kernel size, stride, and padding for 3D convolutions",
+    "create_fc_layer": "create a fully connected FC layer with optional batch normalization and activation for classification heads",
+    "create_bn_momentum_scheduler": "create a BNMomentumScheduler to dynamically adjust batch norm momentum across training epochs",
+    "set_bn_momentum_default": "set the default batch normalization momentum value across all BN layers in a model",
+    "review_shared_mlp": "review the SharedMLP class to understand how it chains Conv2d layers with configurable batch norm",
+    "review_conv_base": "review the _ConvBase class to understand the preact vs postact layer ordering logic",
+    "review_bn_momentum_scheduler": "review the BNMomentumScheduler class to understand how it applies a lambda function per epoch"
+  },
+  "facebookresearch_imvotenet/sunrgbd/model_util_sunrgbd.py": {
+    "create_sunrgbd_config": "create a SunrgbdDatasetConfig instance with 10 object classes and 12 heading bins for SUNRGB-D dataset",
+    "convert_size_to_class": "convert a 3D bounding box size to its discrete size class and residual using SunrgbdDatasetConfig",
+    "convert_angle_to_class": "convert a continuous heading angle to a discrete class ID and residual angle using SunrgbdDatasetConfig",
+    "reconstruct_obb_from_params": "reconstruct a 7D oriented bounding box from center, heading class, heading residual, size class, and size residual",
+    "convert_class_to_angle": "convert a discrete heading class ID and residual back to a continuous angle using SunrgbdDatasetConfig"
+  },
+  "facebookresearch_imvotenet/sunrgbd/sunrgbd_detection_dataset.py": {
+    "create_dataset_instance": "create a SunrgbdDetectionVotesDataset instance with color, height, and augmentation enabled for training",
+    "get_dataset_item": "get a data sample from the dataset including point clouds, votes, and bounding box labels",
+    "preload_2d_bboxes": "pre-load 2D bounding box detections and class scores from text files into memory maps",
+    "visualize_votes": "visualize point votes and vote masks by writing PLY files for voted point clouds",
+    "visualize_obb": "visualize oriented bounding box ground truth labels and centroids as PLY files"
+  },
+  "facebookresearch_imvotenet/sunrgbd/sunrgbd_utils.py": {
+    "parse_sunrgbd_3d_objects": "parse SUN RGB-D label file lines into SUNObject3d objects with 2D/3D bounding box data",
+    "project_point_cloud_to_image": "project upright depth point cloud coordinates to 2D image UV coordinates using calibration matrix",
+    "compute_3d_bounding_box": "compute 3D bounding box corners from a SUNObject3d object and project them to 2D image coordinates",
+    "draw_projected_3d_box": "draw a 3D bounding box projected onto a 2D image using OpenCV line drawing",
+    "flip_point_cloud_axes": "flip point cloud axis coordinates between camera and depth coordinate systems"
+  },
+  "facebookresearch_imvotenet/utils/box_util.py": {
+    "compute_3d_box_iou": "compute the 3D bounding box IoU and bird's eye view 2D IoU between two sets of 8 corner points",
+    "compute_2d_box_iou": "compute the 2D axis-aligned bounding box IoU between two boxes given as xmin,ymin,xmax,ymax tuples",
+    "generate_3d_box_corners": "generate 3D box corner coordinates from box size, heading angle, and center position",
+    "clip_polygon": "clip a subject polygon against a convex clip polygon using the Sutherland-Hodgman algorithm",
+    "compute_convex_hull_intersection": "compute the intersection polygon and area between two convex hulls given as lists of 2D vertices"
+  },
+  "facebookresearch_imvotenet/utils/eval_det.py": {
+    "run_eval_det_cls": "run eval_det_cls to compute precision, recall, and average precision for a single object detection class",
+    "run_eval_det": "run eval_det to compute precision, recall, and average precision across multiple object detection classes",
+    "run_eval_det_multiprocessing": "run eval_det_multiprocessing to compute detection metrics across multiple classes using 10 parallel worker processes",
+    "run_voc_ap": "run voc_ap to compute VOC average precision from precision and recall arrays with optional 11-point metric",
+    "run_get_iou": "run get_iou or get_iou_obb to compute 3D bounding box IoU between two boxes"
+  },
+  "facebookresearch_imvotenet/utils/metric_util.py": {
+    "calc_iou": "compute the IoU of two axis-aligned 3D bounding boxes given their center and lengths",
+    "single_scene_precision_recall": "compute true positives, false positives, and false negatives for predicted bounding boxes against ground truth",
+    "multi_scene_precision_recall": "compute precision and recall across multiple scenes with optional label and prediction masks",
+    "precision_recall": "calculate precision and recall metrics from true positive, false positive, and false negative counts",
+    "test_metric_util": "run the built-in IoU and precision recall unit tests for the metric utility functions"
+  },
+  "facebookresearch_imvotenet/utils/nms.py": {
+    "run_nms_2d": "run 2D non-maximum suppression on axis-aligned bounding boxes with an overlap threshold",
+    "run_nms_2d_faster": "run faster vectorized 2D non-maximum suppression on bounding boxes using IoU or overlap ratio",
+    "run_nms_3d_faster": "run faster vectorized 3D non-maximum suppression on axis-aligned 3D bounding boxes",
+    "run_nms_3d_faster_samecls": "run 3D non-maximum suppression that only suppresses boxes of the same class",
+    "run_nms_crnr_dist": "run non-maximum suppression using bounding box corner distance measure instead of IoU"
+  },
+  "facebookresearch_imvotenet/utils/nn_distance.py": {
+    "run_nn_distance": "run nn_distance to compute nearest neighbor distances between two point cloud tensors",
+    "run_huber_loss": "run huber_loss to compute a smooth L1 loss on a PyTorch error tensor",
+    "run_demo_nn_distance": "run demo_nn_distance to print nearest neighbor distances for random point clouds",
+    "test_nn_distance_l1smooth": "test nn_distance with l1smooth=True to compute Huber loss-based nearest neighbor distances",
+    "test_nn_distance_l1": "test nn_distance with l1=True to compute L1-based nearest neighbor distances between point clouds"
+  },
+  "facebookresearch_imvotenet/utils/pc_util.py": {
+    "random_sampling": "randomly sample N points from a point cloud numpy array with optional replacement",
+    "point_cloud_to_volume": "convert an Nx3 point cloud into a 3D occupancy grid volume of given voxel size",
+    "point_cloud_to_bbox": "extract an axis-aligned bounding box center and dimensions from a point cloud",
+    "write_ply_color": "write colored point cloud data to a PLY file using class labels and a colormap",
+    "rotate_point_cloud": "rotate a point cloud around the Z axis by a random or given rotation matrix"
+  },
+  "facebookresearch_imvotenet/utils/tf_logger.py": {
+    "create_tensorboard_logger": "create a Logger instance with a log directory for TensorBoard summary writing",
+    "log_scalar_summary": "log a scalar variable with a tag, value, and step using Logger scalar_summary",
+    "log_image_summary": "log a list of images with a tag and step using Logger image_summary",
+    "log_histogram_summary": "log a histogram of tensor values with a tag and step using Logger histo_summary",
+    "review_logger_class": "review the Logger class and its TensorBoard summary writer methods"
+  },
+  "facebookresearch_imvotenet/utils/tf_visualizer.py": {
+    "create_visualizer": "create a Visualizer instance with an opt object and optional name for TensorBoard logging",
+    "log_images": "log a dictionary of labeled images to the TensorBoard logger at a given step",
+    "log_scalars": "log a dictionary of scalar labels and values to the TensorBoard logger at a given step",
+    "print_current_scalars": "print and write epoch, iteration, and scalar values to the console and log file",
+    "review_Visualizer_class": "review the Visualizer class and its methods for TensorBoard image and scalar logging"
+  }
+}

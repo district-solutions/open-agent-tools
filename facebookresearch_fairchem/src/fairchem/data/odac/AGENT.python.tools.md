@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairchem
+- repo_uri: https://github.com/facebookresearch/fairchem
+
+## File: facebookresearch_fairchem/src/fairchem/data/odac/setup_vasp.py
+
+Prompts
+
+```
+['create a VASP calculator for MOF relaxation and write input files to a given path', 'create a VASP calculator for MOF plus adsorbate relaxation with atom positions only relaxed', 'run setup_vasp_calc_mof to generate VASP input files for a MOF structure from a CIF file', 'run setup_vasp_mof_and_ads to generate VASP input files for a pre-relaxed MOF with adsorbates', 'refactor setup_vasp_calc_mof to support configurable k-point grids for small unit cells']
+```
+
+Usage
+
+```
+{'setup_vasp_calc_mof': 'create a VASP calculator for MOF relaxation and write input files to a given path', 'setup_vasp_mof_and_ads': 'create a VASP calculator for MOF plus adsorbate relaxation with atom positions only relaxed', 'run_setup_vasp_calc_mof': 'run setup_vasp_calc_mof to generate VASP input files for a MOF structure from a CIF file', 'run_setup_vasp_mof_and_ads': 'run setup_vasp_mof_and_ads to generate VASP input files for a pre-relaxed MOF with adsorbates', 'refactor_setup_vasp_calc_mof': 'refactor setup_vasp_calc_mof to support configurable k-point grids for small unit cells'}
+```
+

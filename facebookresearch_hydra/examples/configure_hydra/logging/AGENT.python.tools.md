@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/examples/configure_hydra/logging/my_app.py
+
+Prompts
+
+```
+['run the Hydra app that logs an info level message using the configured logger', 'review the my_app function decorated with hydra.main for config path and config name setup', 'summarize the minimal Hydra app example that demonstrates logging configuration', 'refactor the my_app Hydra app to add additional log levels or messages', 'test the Hydra app logging configuration by running my_app with custom log settings']
+```
+
+Usage
+
+```
+{'run_hydra_logging_app': 'run the Hydra app that logs an info level message using the configured logger', 'review_hydra_main_decorator': 'review the my_app function decorated with hydra.main for config path and config name setup', 'summarize_hydra_logging_example': 'summarize the minimal Hydra app example that demonstrates logging configuration', 'refactor_hydra_app_logging': 'refactor the my_app Hydra app to add additional log levels or messages', 'test_hydra_logging_config': 'test the Hydra app logging configuration by running my_app with custom log settings'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mephisto
+- repo_uri: https://github.com/facebookresearch/mephisto
+
+## File: facebookresearch_mephisto/examples/remote_procedure/interactive_image_generation/run_task__local__inhouse.py
+
+Prompts
+
+```
+['run the mephisto interactive image generation task locally using the inhouse blueprint and operator', 'get the next dynamic fieldset config for an interactive image generation task based on worker prompt and score', 'simulate retrieval of a generated image URL from a third-party service using a prompt and answer index', 'generate an extrapolated task_data.json config file from form and token sets values config files', 'track and append fieldset prompt and score history per unit using the UnitSafeCacheService']
+```
+
+Usage
+
+```
+{'run_interactive_image_generation_task': 'run the mephisto interactive image generation task locally using the inhouse blueprint and operator', 'get_next_fieldset_remote_procedure': 'get the next dynamic fieldset config for an interactive image generation task based on worker prompt and score', 'request_image_url_simulation': 'simulate retrieval of a generated image URL from a third-party service using a prompt and answer index', 'generate_data_json_config': 'generate an extrapolated task_data.json config file from form and token sets values config files', 'cache_unit_fieldset_history': 'track and append fieldset prompt and score history per unit using the UnitSafeCacheService'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/craftassist
+- repo_uri: https://github.com/facebookresearch/craftassist
+
+## File: facebookresearch_craftassist/python/mcevent/dispatcher.py
+
+Prompts
+
+```
+['create a new Signal instance with optional caching enabled for receiver lookup', 'connect a receiver function to a Signal with an optional sender filter and dispatch_uid', 'disconnect a registered receiver from a Signal by receiver reference or dispatch_uid', 'send a signal from a sender to all connected receivers and collect responses', 'use the @receiver decorator to connect a function to one or more Signal instances']
+```
+
+Usage
+
+```
+{'create_signal_instance': 'create a new Signal instance with optional caching enabled for receiver lookup', 'connect_receiver_to_signal': 'connect a receiver function to a Signal with an optional sender filter and dispatch_uid', 'disconnect_receiver_from_signal': 'disconnect a registered receiver from a Signal by receiver reference or dispatch_uid', 'send_signal_to_receivers': 'send a signal from a sender to all connected receivers and collect responses', 'use_receiver_decorator': 'use the @receiver decorator to connect a function to one or more Signal instances'}
+```
+

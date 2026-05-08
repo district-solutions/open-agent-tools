@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairchem
+- repo_uri: https://github.com/facebookresearch/fairchem
+
+## File: facebookresearch_fairchem/tests/core/models/test_inference_interface.py
+
+Prompts
+
+```
+['test the HydraModelV2 inference interface methods including prepare_for_inference and on_predict_check', 'test that prepare_for_inference keeps the same backbone when it returns self', 'test that prepare_for_inference replaces the backbone when a new backbone is returned', 'test that build_inference_settings is a classmethod on the backbone returning a dict', 'test that UMASFastPytorchBackend converts SO2 convolution modules to block-diagonal GEMM variants']
+```
+
+Usage
+
+```
+{'test_hydra_model_inference_interface': 'test the HydraModelV2 inference interface methods including prepare_for_inference and on_predict_check', 'test_prepare_for_inference_no_replacement': 'test that prepare_for_inference keeps the same backbone when it returns self', 'test_prepare_for_inference_with_replacement': 'test that prepare_for_inference replaces the backbone when a new backbone is returned', 'test_build_inference_settings_classmethod': 'test that build_inference_settings is a classmethod on the backbone returning a dict', 'test_umas_fast_pytorch_backend_converts_so2': 'test that UMASFastPytorchBackend converts SO2 convolution modules to block-diagonal GEMM variants'}
+```
+

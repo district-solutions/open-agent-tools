@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/paq
+- repo_uri: https://github.com/facebookresearch/paq
+
+## File: facebookresearch_paq/paq/rerankers/rerank.py
+
+Prompts
+
+```
+['run the RePAQ reranking CLI to rerank retrieval results from retrieve.py output files', 'run predictions on QA pairs using a reranker model and write results to an output file', 'load a pretrained multiple choice reranker model and tokenizer from a model path', 'predict the best answer for each QA by reranking retrieved candidates with a model', 'tokenize a batch of QA pairs into model inputs for the reranker forward pass']
+```
+
+Usage
+
+```
+{'run_reranking_cli': 'run the RePAQ reranking CLI to rerank retrieval results from retrieve.py output files', 'run_predictions_function': 'run predictions on QA pairs using a reranker model and write results to an output file', 'load_reranker_model': 'load a pretrained multiple choice reranker model and tokenizer from a model path', 'predict_reranking': 'predict the best answer for each QA by reranking retrieved candidates with a model', 'tokenize_batch_qas': 'tokenize a batch of QA pairs into model inputs for the reranker forward pass'}
+```
+

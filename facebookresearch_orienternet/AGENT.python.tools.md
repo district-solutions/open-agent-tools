@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/orienternet
+- repo_uri: https://github.com/facebookresearch/orienternet
+
+## File: facebookresearch_orienternet/app.py
+
+Prompts
+
+```
+['run the OrienterNet demo to localize an image on OpenStreetMap and predict coordinates', 'run the Gradio web interface for OrienterNet visual localization with image upload', 'review the run function that performs image localization using Demo and TileManager', 'summarize the Demo class used for reading input images and running localization inference', 'test the GeoPlotter class for rendering interactive map visualizations with raster and points']
+```
+
+Usage
+
+```
+{'run_localize_image': 'run the OrienterNet demo to localize an image on OpenStreetMap and predict coordinates', 'run_gradio_interface': 'run the Gradio web interface for OrienterNet visual localization with image upload', 'review_run_function': 'review the run function that performs image localization using Demo and TileManager', 'summarize_demo_class': 'summarize the Demo class used for reading input images and running localization inference', 'test_geoplotter': 'test the GeoPlotter class for rendering interactive map visualizations with raster and points'}
+```
+

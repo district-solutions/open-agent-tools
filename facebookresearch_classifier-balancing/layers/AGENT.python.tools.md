@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/classifier-balancing
+- repo_uri: https://github.com/facebookresearch/classifier-balancing
+
+## File: facebookresearch_classifier-balancing/layers/ModulatedAttLayer.py
+
+Prompts
+
+```
+['create a ModulatedAttLayer instance with specified in_channels and reduction ratio for self-attention', 'build an embedded Gaussian self-attention mechanism that computes theta, phi, and g projections on input features', 'test the ModulatedAttLayer forward pass with a 7x7 spatial feature tensor and verify output shape', 'review the init_weights method that applies Kaiming normal initialization to g, theta, and phi conv layers', 'summarize how the fc_spatial linear layer computes spatial attention weights over 7x7 feature maps']
+```
+
+Usage
+
+```
+{'create_modulated_attention_layer': 'create a ModulatedAttLayer instance with specified in_channels and reduction ratio for self-attention', 'build_embedded_gaussian_attention': 'build an embedded Gaussian self-attention mechanism that computes theta, phi, and g projections on input features', 'test_forward_pass': 'test the ModulatedAttLayer forward pass with a 7x7 spatial feature tensor and verify output shape', 'review_init_weights': 'review the init_weights method that applies Kaiming normal initialization to g, theta, and phi conv layers', 'summarize_spatial_attention': 'summarize how the fc_spatial linear layer computes spatial attention weights over 7x7 feature maps'}
+```
+

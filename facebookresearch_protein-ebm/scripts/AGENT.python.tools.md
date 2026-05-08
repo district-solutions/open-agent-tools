@@ -1,0 +1,33 @@
+# Agent Python Tools
+
+- repo: facebookresearch/protein-ebm
+- repo_uri: https://github.com/facebookresearch/protein-ebm
+
+## File: facebookresearch_protein-ebm/scripts/extract_saliency.py
+
+Prompts
+
+```
+['run the extract_saliency script to compute attention saliency maps for a PDB protein structure', 'run the attention_vis function to compute gradient norms around each residue atom in a protein', 'run the _construct_residue_atom_indices function to map node embeddings to residue and atom index pairs', 'run the create_parser function to build an argparse parser with transformer and PDB arguments', 'run the main function to load a RotomerTransformerModel and extract saliency viewports for a cached PDB', 'run the script to generate a colormap saliency CSV from a pickled results file and viewport indices', 'run the intensity_to_color function to convert a 0-1 intensity value into an RGB tuple', 'run the to_atom_name function to look up an atom name from a residue and atom index', 'review the main function that loads pickled viewport results, ranks gradient norms, and writes color CSV output', 'review the create_parser function that defines CLI arguments for results file, color file, and viewport center indices']
+```
+
+Usage
+
+```
+{'run_extract_saliency': 'run the extract_saliency script to compute attention saliency maps for a PDB protein structure', 'run_attention_vis': 'run the attention_vis function to compute gradient norms around each residue atom in a protein', 'run_construct_residue_atom_indices': 'run the _construct_residue_atom_indices function to map node embeddings to residue and atom index pairs', 'run_create_parser': 'run the create_parser function to build an argparse parser with transformer and PDB arguments', 'run_main': 'run the main function to load a RotomerTransformerModel and extract saliency viewports for a cached PDB'}
+```
+
+## File: facebookresearch_protein-ebm/scripts/generate_colormap_saliency.py
+
+Prompts
+
+```
+['run the extract_saliency script to compute attention saliency maps for a PDB protein structure', 'run the attention_vis function to compute gradient norms around each residue atom in a protein', 'run the _construct_residue_atom_indices function to map node embeddings to residue and atom index pairs', 'run the create_parser function to build an argparse parser with transformer and PDB arguments', 'run the main function to load a RotomerTransformerModel and extract saliency viewports for a cached PDB', 'run the script to generate a colormap saliency CSV from a pickled results file and viewport indices', 'run the intensity_to_color function to convert a 0-1 intensity value into an RGB tuple', 'run the to_atom_name function to look up an atom name from a residue and atom index', 'review the main function that loads pickled viewport results, ranks gradient norms, and writes color CSV output', 'review the create_parser function that defines CLI arguments for results file, color file, and viewport center indices']
+```
+
+Usage
+
+```
+{'run_generate_colormap_saliency': 'run the script to generate a colormap saliency CSV from a pickled results file and viewport indices', 'run_intensity_to_color': 'run the intensity_to_color function to convert a 0-1 intensity value into an RGB tuple', 'run_to_atom_name': 'run the to_atom_name function to look up an atom name from a residue and atom index', 'review_main': 'review the main function that loads pickled viewport results, ranks gradient norms, and writes color CSV output', 'review_create_parser': 'review the create_parser function that defines CLI arguments for results file, color file, and viewport center indices'}
+```
+

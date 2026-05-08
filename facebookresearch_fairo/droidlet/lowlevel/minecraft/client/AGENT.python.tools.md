@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairo
+- repo_uri: https://github.com/facebookresearch/fairo
+
+## File: facebookresearch_fairo/droidlet/lowlevel/minecraft/client/generate_recipes.py
+
+Prompts
+
+```
+['run the script to generate a craft_recipes.h C++ header from items.ini and crafting.txt', 'run fill_recipe to place an ingredient into a 3x3 crafting grid at the first available slot', 'run format_recipe to format a crafting recipe as a C++ unordered_map initializer string', 'review the fill_recipe function that fills a 9-slot recipe array with ingredients by x,y coordinates', 'review the format_recipe function that converts recipe data into C++ struct initializer syntax']
+```
+
+Usage
+
+```
+{'run_generate_recipes': 'run the script to generate a craft_recipes.h C++ header from items.ini and crafting.txt', 'run_fill_recipe': 'run fill_recipe to place an ingredient into a 3x3 crafting grid at the first available slot', 'run_format_recipe': 'run format_recipe to format a crafting recipe as a C++ unordered_map initializer string', 'review_fill_recipe': 'review the fill_recipe function that fills a 9-slot recipe array with ingredients by x,y coordinates', 'review_format_recipe': 'review the format_recipe function that converts recipe data into C++ struct initializer syntax'}
+```
+

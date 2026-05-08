@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/blink
+- repo_uri: https://github.com/facebookresearch/blink
+
+## File: facebookresearch_blink/elq/vcg_utils/measures.py
+
+Prompts
+
+```
+['run entity_linking_tp_with_overlap to count weak and strong true positive matches between gold and predicted entity links', 'test entity_linking_tp_with_overlap with gold and predicted entity tuples to verify weak and strong match counts', 'review entity_linking_tp_with_overlap to understand LCS-based weak and strong match counting for entity linking evaluation', 'refactor entity_linking_tp_with_overlap to support additional match criteria or different span overlap thresholds', 'summarize entity_linking_tp_with_overlap which uses dynamic programming to count weak overlapping and strong exact entity link matches']
+```
+
+Usage
+
+```
+{'run_entity_linking_tp_with_overlap': 'run entity_linking_tp_with_overlap to count weak and strong true positive matches between gold and predicted entity links', 'test_entity_linking_tp_with_overlap': 'test entity_linking_tp_with_overlap with gold and predicted entity tuples to verify weak and strong match counts', 'review_entity_linking_tp_with_overlap': 'review entity_linking_tp_with_overlap to understand LCS-based weak and strong match counting for entity linking evaluation', 'refactor_entity_linking_tp_with_overlap': 'refactor entity_linking_tp_with_overlap to support additional match criteria or different span overlap thresholds', 'summarize_entity_linking_tp_with_overlap': 'summarize entity_linking_tp_with_overlap which uses dynamic programming to count weak overlapping and strong exact entity link matches'}
+```
+

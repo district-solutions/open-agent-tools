@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/tools/release/release.py
+
+Prompts
+
+```
+['run the release tool to check local package versions against latest PyPI releases', 'build sdist and wheel distributions for packages with newer local versions than PyPI', "bump the version number in a package's init file or setup.py to the next version", "get a package's name, local version, and latest PyPI version from its directory path", 'fetch and parse PyPI JSON metadata for a given package name into an OmegaConf DictConfig']
+```
+
+Usage
+
+```
+{'check_package_versions': 'run the release tool to check local package versions against latest PyPI releases', 'build_packages': 'build sdist and wheel distributions for packages with newer local versions than PyPI', 'bump_version': "bump the version number in a package's init file or setup.py to the next version", 'get_package_info': "get a package's name, local version, and latest PyPI version from its directory path", 'get_metadata': 'fetch and parse PyPI JSON metadata for a given package name into an OmegaConf DictConfig'}
+```
+

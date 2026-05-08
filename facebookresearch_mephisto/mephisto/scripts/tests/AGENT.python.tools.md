@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mephisto
+- repo_uri: https://github.com/facebookresearch/mephisto
+
+## File: facebookresearch_mephisto/mephisto/scripts/tests/react_apps.py
+
+Prompts
+
+```
+['build all Mephisto React web apps including packages, generators, and example demos', 'clean build and node_modules directories for all Mephisto React apps and packages', 'clean all build artifacts then rebuild all Mephisto React web apps from scratch', 'build the mephisto core, bootstrap chat, global context store, and addons packages', 'clean all React app build directories and optionally remove package lock files']
+```
+
+Usage
+
+```
+{'build_react_apps': 'build all Mephisto React web apps including packages, generators, and example demos', 'clean_react_apps': 'clean build and node_modules directories for all Mephisto React apps and packages', 'rebuild_react_apps': 'clean all build artifacts then rebuild all Mephisto React web apps from scratch', 'build_mephisto_packages': 'build the mephisto core, bootstrap chat, global context store, and addons packages', 'clean_with_package_locks': 'clean all React app build directories and optionally remove package lock files'}
+```
+

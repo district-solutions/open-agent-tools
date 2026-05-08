@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/isdf
+- repo_uri: https://github.com/facebookresearch/isdf
+
+## File: facebookresearch_isdf/isdf/ros_utils/node.py
+
+Prompts
+
+```
+['create an iSDFNode ROS subscriber that receives RGB-D frames and camera poses from the /frames topic', 'create an iSDFFrankaNode ROS subscriber that receives RGB, depth, and pose from separate /franka topics', 'use the iSDFNode callback to parse RGB-D frames and camera transforms into a queue for processing', 'use the iSDFFrankaNode ee_to_cam method to transform end-effector pose to camera pose using extrinsic calibration', 'use get_latest_frame to drain a queue and retrieve only the most recent RGB-D frame tuple']
+```
+
+Usage
+
+```
+{'create_iSDFNode': 'create an iSDFNode ROS subscriber that receives RGB-D frames and camera poses from the /frames topic', 'create_iSDFFrankaNode': 'create an iSDFFrankaNode ROS subscriber that receives RGB, depth, and pose from separate /franka topics', 'use_iSDFNode_callback': 'use the iSDFNode callback to parse RGB-D frames and camera transforms into a queue for processing', 'use_iSDFFrankaNode_ee_to_cam': 'use the iSDFFrankaNode ee_to_cam method to transform end-effector pose to camera pose using extrinsic calibration', 'use_get_latest_frame': 'use get_latest_frame to drain a queue and retrieve only the most recent RGB-D frame tuple'}
+```
+

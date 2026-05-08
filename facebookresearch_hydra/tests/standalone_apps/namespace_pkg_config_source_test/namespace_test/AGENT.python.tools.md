@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/hydra
+- repo_uri: https://github.com/facebookresearch/hydra.git
+
+## File: facebookresearch_hydra/tests/standalone_apps/namespace_pkg_config_source_test/namespace_test/test_namespace.py
+
+Prompts
+
+```
+['test the ImportlibResourcesConfigSource with a namespace package path using ConfigSourceTestSuite', 'test config loading from a namespace package directory and verify dataset and nested group options', 'run hydra initialize with a config_path pointing to a namespace package directory', 'test the config_loader get_group_options method to verify dataset entries like cifar10 and imagenet', 'test the config_loader list_groups method to verify nested group structure like level1 and level2']
+```
+
+Usage
+
+```
+{'test_ImportlibResourcesConfigSource_in_namespace': 'test the ImportlibResourcesConfigSource with a namespace package path using ConfigSourceTestSuite', 'test_config_in_dir': 'test config loading from a namespace package directory and verify dataset and nested group options', 'run_hydra_initialize_with_config_path': 'run hydra initialize with a config_path pointing to a namespace package directory', 'test_config_loader_get_group_options': 'test the config_loader get_group_options method to verify dataset entries like cifar10 and imagenet', 'test_config_loader_list_groups': 'test the config_loader list_groups method to verify nested group structure like level1 and level2'}
+```
+

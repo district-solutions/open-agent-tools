@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/memory
+- repo_uri: https://github.com/facebookresearch/memory
+
+## File: facebookresearch_memory/validate_distributed_embeddingbag.py
+
+Prompts
+
+```
+['run the distributed EmbeddingBag validation script with torchrun on 2 GPUs to verify correctness', 'test the EmbeddingBag forward and backward pass without model parallelism as a baseline', 'test the EmbeddingBag with model parallelism and FSDP sharding at a given mp_size', 'create an xFormerEmbeddingBag with random indices, per-sample weights, and a gradient tensor for testing', 'review the ColwiseEmbeddingBag parallelization and fully_shard FSDP configuration for distributed training']
+```
+
+Usage
+
+```
+{'run_distributed_embeddingbag_validation': 'run the distributed EmbeddingBag validation script with torchrun on 2 GPUs to verify correctness', 'test_no_mp_embeddingbag': 'test the EmbeddingBag forward and backward pass without model parallelism as a baseline', 'test_mp_embeddingbag': 'test the EmbeddingBag with model parallelism and FSDP sharding at a given mp_size', 'create_embeddingbag_test_data': 'create an xFormerEmbeddingBag with random indices, per-sample weights, and a gradient tensor for testing', 'review_distributed_parallelization': 'review the ColwiseEmbeddingBag parallelization and fully_shard FSDP configuration for distributed training'}
+```
+

@@ -1,0 +1,807 @@
+{
+  "facebookresearch_mask-predict/fairseq/binarizer.py": {
+    "binarize_text_file": "binarize a text file using a dictionary and consumer callback to encode lines into token IDs",
+    "find_file_offsets": "find byte offsets for splitting a text file into equal-sized chunks for parallel processing",
+    "safe_readline_unicode": "read a line from a file safely recovering from Unicode decode errors by seeking back",
+    "review_binarizer_class": "review the Binarizer class and its binarize method for text-to-token-ID conversion logic",
+    "summarize_binarize_stats": "summarize the binarize function output including nseq, ntok, nunk, and replaced unknown words"
+  },
+  "facebookresearch_mask-predict/fairseq/bleu.py": {
+    "create_scorer_for_bleu": "create a Scorer instance with pad, eos, and unk token IDs to compute BLEU scores",
+    "add_reference_prediction_pair": "add a reference and prediction torch.IntTensor pair to the Scorer for BLEU evaluation",
+    "compute_bleu_score": "compute the BLEU score from accumulated reference and prediction pairs using Scorer.score",
+    "get_bleu_precision": "get the n-gram precision ratios for orders 1 through 4 from the Scorer",
+    "score_with_sacrebleu": "create a SacrebleuScorer to add string pairs and compute corpus BLEU via sacrebleu"
+  },
+  "facebookresearch_mask-predict/fairseq/checkpoint_utils.py": {
+    "save_checkpoint": "save a model checkpoint to disk with training state, optimizer history, and validation loss",
+    "load_checkpoint": "load a checkpoint and restore the training iterator, optimizer, and learning rate scheduler",
+    "load_model_ensemble": "load an ensemble of pretrained model checkpoints and return the models with their args",
+    "load_pretrained_component_from_model": "load a pretrained encoder or decoder component from a checkpoint file into an existing component",
+    "checkpoint_paths": "retrieve all checkpoint files in a directory matching a pattern, sorted by epoch in descending order"
+  },
+  "facebookresearch_mask-predict/fairseq/distributed_utils.py": {
+    "init_distributed_process_group": "initialize a distributed process group using torch.distributed with the given args and backend",
+    "infer_distributed_init_method": "infer the distributed init method from environment variables for Slurm or torch.distributed.launch",
+    "gather_data_from_all_workers": "gather arbitrary picklable data from all distributed workers into a single list",
+    "suppress_non_master_print": "suppress print output on non-master processes in a distributed training setup",
+    "check_master_process": "check if the current process is the master process by comparing distributed rank to zero"
+  },
+  "facebookresearch_mask-predict/fairseq/fb_hub.py": {
+    "load_model_from_hubconf": "load a pretrained model by name from the local repo hubconf.py entrypoint",
+    "list_hubconf_entrypoints": "list all available entrypoint names defined in the local repo hubconf.py file",
+    "review_load_function": "review the load function that imports hubconf.py and returns a model with pretrained weights",
+    "review_list_function": "review the list function that returns callable entrypoints from hubconf.py excluding private functions",
+    "refactor_load_for_python3": "refactor the load function to use force_reload as a proper keyword argument instead of kwargs"
+  },
+  "facebookresearch_mask-predict/fairseq/file_utils.py": {
+    "cached_path": "download a URL or resolve a local file path and return the cached file path",
+    "load_archive_file": "load and extract a tar archive file from a URL or local path into a directory",
+    "get_from_cache": "download a file from a URL or S3 path to a local cache directory and return the path",
+    "read_set_from_file": "read a text file line by line and return a deduplicated set of strings",
+    "url_to_filename": "generate a deterministic SHA256 hashed filename from a URL and optional ETag"
+  },
+  "facebookresearch_mask-predict/fairseq/hub_utils.py": {
+    "load_pretrained_model": "load a pre-trained fairseq model ensemble and task from a model archive path",
+    "create_generator": "create a Generator instance from model args, task, and models for sequence generation",
+    "generate_translation": "generate a translated output string from a source string using the Generator",
+    "review_from_pretrained": "review the from_pretrained function to understand model loading and archive mapping logic",
+    "summarize_Generator_class": "summarize the Generator class capabilities for sequence generation with BPE and tokenizer support"
+  },
+  "facebookresearch_mask-predict/fairseq/legacy_distributed_data_parallel.py": {
+    "create_LegacyDistributedDataParallel": "create a LegacyDistributedDataParallel wrapper around a PyTorch module with a given world size",
+    "use_no_sync_context_manager": "use the no_sync context manager to disable gradient synchronization during training steps",
+    "review_forward_method": "review the forward method that delegates inputs directly to the wrapped module",
+    "refactor_register_grad_hook": "refactor the _register_grad_hook method to customize gradient all-reduction behavior for NCCL",
+    "summarize_all_reduce_logic": "summarize the all_reduce inner function that buckets and reduces gradients across processes"
+  },
+  "facebookresearch_mask-predict/fairseq/meters.py": {
+    "create_average_meter": "create an AverageMeter to track running average and current value of metrics",
+    "update_average_meter": "update an AverageMeter with a new value and optional sample count",
+    "create_time_meter": "create a TimeMeter to compute average occurrences of events per second",
+    "create_stopwatch_meter": "create a StopwatchMeter to measure sum and average duration of timed events",
+    "reset_meters": "reset an AverageMeter, TimeMeter, or StopwatchMeter to clear accumulated state"
+  },
+  "facebookresearch_mask-predict/fairseq/options.py": {
+    "get_training_parser": "build a fairseq training argument parser with dataset, distributed, optimization, and checkpointing args",
+    "get_generation_parser": "build a fairseq generation argument parser with beam search, sampling, and length penalty options",
+    "get_preprocessing_parser": "build a fairseq preprocessing argument parser for binning source and target language data",
+    "parse_args_and_arch": "parse command line args and dynamically add model-specific arguments from the architecture registry",
+    "get_eval_lm_parser": "build a fairseq language model evaluation argument parser with word probability and context window options"
+  },
+  "facebookresearch_mask-predict/fairseq/pdb.py": {
+    "set_trace": "set a breakpoint in a multiprocessing Python process using fairseq pdb.set_trace()",
+    "create_MultiprocessingPdb": "create a MultiprocessingPdb instance to debug code running in a multiprocessing environment",
+    "review_MultiprocessingPdb__cmdloop": "review the MultiprocessingPdb _cmdloop method that safely handles stdin in multiprocessing",
+    "test_set_trace": "test the set_trace function to verify it drops into a debugger in multiprocessing contexts",
+    "refactor_MultiprocessingPdb": "refactor the MultiprocessingPdb class to support additional debugging features in multiprocessing"
+  },
+  "facebookresearch_mask-predict/fairseq/progress_bar.py": {
+    "build_progress_bar": "build a progress bar from args and iterator using build_progress_bar with tqdm or json format",
+    "create_json_progress_bar": "create a json_progress_bar instance to log training stats as JSON output at intervals",
+    "create_tqdm_progress_bar": "create a tqdm_progress_bar instance to display a tqdm progress bar with epoch prefix",
+    "create_tensorboard_log_wrapper": "create a tensorboard_log_wrapper to log training stats to tensorboard alongside a wrapped progress bar",
+    "format_stat": "format a stat value using format_stat to convert AverageMeter, TimeMeter, or StopwatchMeter to string"
+  },
+  "facebookresearch_mask-predict/fairseq/pybleu.py": {
+    "run_pybleuscorer_score": "run PyBleuScorer to calculate BLEU score between a reference corpus and output corpus",
+    "run_pybleuscorer_precision": "run PyBleuScorer precision method to calculate n-gram precision for a reference and output sentence",
+    "create_sent_ngrams_list": "create a list of all n-grams from a sentence using sent_ngrams_list with a given n value",
+    "run_tokenize_corpus": "run tokenize on a corpus to split sentences into lists of word tokens",
+    "run_lower_corpus": "run lower on a corpus or string to convert all text to lowercase case-insensitively"
+  },
+  "facebookresearch_mask-predict/fairseq/registry.py": {
+    "build_registry": "build a registry using setup_registry with a name, base class, and default value",
+    "register_class": "register a class in the registry using the register_x decorator returned by setup_registry",
+    "build_from_registry": "build an instance from the registry using the build_x function with argparse args",
+    "review_setup_registry": "review the setup_registry function to understand how it creates build and register helpers",
+    "summarize_REGISTRIES": "summarize the global REGISTRIES dictionary that tracks all created registries and their defaults"
+  },
+  "facebookresearch_mask-predict/fairseq/search.py": {
+    "create_beam_search_decoder": "create a BeamSearch instance with a target dictionary to perform standard beam search decoding",
+    "run_length_constrained_beam_search": "run LengthConstrainedBeamSearch with min and max length coefficients to constrain output sequence length",
+    "build_diverse_beam_search": "build a DiverseBeamSearch decoder with num_groups and diversity_strength for diverse hypothesis generation",
+    "create_sampling_decoder": "create a Sampling decoder with top-k or top-p parameters for stochastic sequence generation",
+    "review_search_step_method": "review the Search base class step method signature and return tuple of scores indices and beams"
+  },
+  "facebookresearch_mask-predict/fairseq/sequence_generator.py": {
+    "generate_translations_with_beam_search": "create a SequenceGenerator with beam search to generate translations from a source sentence batch",
+    "generate_with_sampling": "build a SequenceGenerator using sampling mode with top-k and top-p constraints for diverse output",
+    "generate_with_diverse_beam_search": "create a SequenceGenerator with diverse beam search groups to produce varied translation hypotheses",
+    "ensemble_model_forward_decoder": "run the EnsembleModel forward_decoder method to get averaged log probabilities and attention scores across models",
+    "reorder_encoder_output": "use EnsembleModel reorder_encoder_out to reorder encoder outputs when beam search reorders hypotheses"
+  },
+  "facebookresearch_mask-predict/fairseq/sequence_scorer.py": {
+    "score_translation_batch": "score a batch of translations using an ensemble of fairseq models and return hypothesis scores",
+    "compute_target_token_probs": "compute normalized probabilities for target tokens given decoder output from a fairseq model",
+    "batch_softmax_for_large_sequences": "batch softmax computation across large sequences to stay within memory limits using softmax_batch",
+    "gather_target_probs_from_decoder": "gather target token probabilities from decoder output using index gathering on the probability tensor",
+    "extract_attention_alignment": "extract attention weights and token alignment from the decoder output for scored translations"
+  },
+  "facebookresearch_mask-predict/fairseq/tokenizer.py": {
+    "tokenize_line": "tokenize a line of text by normalizing whitespace and splitting into tokens",
+    "create_tokenizer_cli": "create a CLI tool that tokenizes input text lines using the tokenize_line function",
+    "test_tokenize_line": "test the tokenize_line function with various whitespace and edge case inputs",
+    "refactor_tokenize_line": "refactor the tokenize_line function to support configurable whitespace normalization patterns",
+    "review_SPACE_NORMALIZER": "review the SPACE_NORMALIZER regex pattern for handling Unicode and multibyte whitespace"
+  },
+  "facebookresearch_mask-predict/fairseq/trainer.py": {
+    "create_Trainer": "create a Trainer instance with args, task, model, and criterion for data parallel training",
+    "train_step_Trainer": "run a training step with forward, backward pass, and parameter update on sample batches",
+    "valid_step_Trainer": "run a validation step with forward pass in evaluation mode on a single sample",
+    "save_checkpoint_Trainer": "save all training state including model, optimizer, and meters to a checkpoint file",
+    "load_checkpoint_Trainer": "load training state from a checkpoint file to resume training with optimizer and lr scheduler"
+  },
+  "facebookresearch_mask-predict/fairseq/utils.py": {
+    "parse_embedding_file": "parse an embedding text file into a dictionary of word and embedding tensors",
+    "load_embedding_into_module": "load parsed embedding weights into a PyTorch embedding module for a given vocabulary",
+    "make_positions_tensor": "replace non-padding symbols in a tensor with their position numbers starting at padding_idx+1",
+    "get_activation_function": "get a callable activation function by name such as relu, gelu, tanh, or linear",
+    "clip_grad_norm": "clip a gradient tensor by norm and return the original gradient norm value"
+  },
+  "facebookresearch_mask-predict/fairseq/criterions/cross_entropy.py": {
+    "run_cross_entropy_forward": "run the CrossEntropyCriterion forward method to compute loss for a given sample and model",
+    "compute_cross_entropy_loss": "compute the cross entropy loss using nll_loss on log-probabilities and target tokens",
+    "aggregate_logging_outputs": "aggregate logging outputs from data parallel training by summing loss, tokens, and sentences",
+    "review_cross_entropy_criterion": "review the CrossEntropyCriterion class and its forward, compute_loss, and aggregate_logging_outputs methods",
+    "refactor_compute_loss": "refactor the compute_loss method to support a different reduction strategy or loss function"
+  },
+  "facebookresearch_mask-predict/fairseq/criterions/fairseq_criterion.py": {
+    "build_criterion": "build a custom FairseqCriterion subclass that computes loss for a given model and sample",
+    "create_add_args": "create a subclass of FairseqCriterion that adds criterion-specific arguments to an argparse parser",
+    "test_forward": "test the FairseqCriterion forward method to compute loss, sample size, and logging outputs",
+    "review_aggregate_logging_outputs": "review the FairseqCriterion aggregate_logging_outputs method for aggregating data parallel training outputs",
+    "summarize_grad_denom": "summarize the FairseqCriterion grad_denom method that computes the gradient denominator from sample sizes"
+  },
+  "facebookresearch_mask-predict/fairseq/criterions/label_smoothed_cross_entropy.py": {
+    "compute_label_smoothed_nll_loss": "compute label smoothed negative log likelihood loss given log probs, target, and epsilon",
+    "create_label_smoothed_criterion": "create a LabelSmoothedCrossEntropyCriterion instance with a label smoothing epsilon value",
+    "review_forward_loss_computation": "review the forward method that computes loss, sample size, and logging output for a model sample",
+    "refactor_compute_loss_method": "refactor the compute_loss method to extract log probs and targets before calling label_smoothed_nll_loss",
+    "summarize_aggregate_logging_outputs": "summarize how aggregate_logging_outputs combines per-batch loss and nll_loss across data parallel processes"
+  },
+  "facebookresearch_mask-predict/fairseq/criterions/label_smoothed_length_cross_entropy.py": {
+    "build_label_smoothed_length_criterion": "build a FairseqCriterion subclass that combines label smoothing cross entropy with sequence length prediction loss",
+    "create_compute_loss_method": "create a compute_loss method that calculates NLL loss, smooth loss, and length loss from model outputs",
+    "test_forward_method": "test the LabelSmoothedLengthCrossEntropyCriterion forward method to compute loss, sample size, and logging outputs for a sample",
+    "review_aggregate_logging_outputs": "review the aggregate_logging_outputs static method that aggregates logging outputs from data parallel training across processes",
+    "refactor_add_args_parser": "refactor the add_args static method to add label smoothing epsilon argument to the Fairseq argument parser"
+  },
+  "facebookresearch_mask-predict/fairseq/data/base_wrapper_dataset.py": {
+    "create_BaseWrapperDataset": "create a BaseWrapperDataset instance that wraps an existing FairseqDataset for transparent delegation",
+    "review_BaseWrapperDataset_collater": "review the BaseWrapperDataset collater method to understand how it delegates to the wrapped dataset or falls back to default_collate",
+    "test_BaseWrapperDataset_getitem": "test the BaseWrapperDataset __getitem__ method to verify it correctly delegates index access to the wrapped dataset",
+    "refactor_BaseWrapperDataset_prefetch": "refactor the BaseWrapperDataset prefetch method to add error handling when the wrapped dataset does not support prefetch",
+    "summarize_BaseWrapperDataset_ordered_indices": "summarize the BaseWrapperDataset ordered_indices method and how it delegates ordering logic to the wrapped dataset"
+  },
+  "facebookresearch_mask-predict/fairseq/data/concat_dataset.py": {
+    "create_concat_dataset": "create a ConcatDataset from multiple datasets with configurable sample ratios for weighted sampling",
+    "review_concat_dataset_cumsum": "review the ConcatDataset cumsum static method that computes weighted cumulative sizes across datasets",
+    "test_concat_dataset_getitem": "test the ConcatDataset getitem method to verify correct sample retrieval by index across datasets",
+    "summarize_concat_dataset_prefetch": "summarize the ConcatDataset prefetch method that delegates prefetching to underlying datasets by index ranges",
+    "refactor_concat_dataset_ordered_indices": "refactor the ConcatDataset ordered_indices method to return indices sorted by sample size for reduced padding"
+  },
+  "facebookresearch_mask-predict/fairseq/data/data_utils.py": {
+    "load_indexed_dataset": "load a fairseq indexed dataset from a data-bin path using a dictionary and optional combine flag",
+    "batch_by_size": "yield mini-batches of dataset indices bucketed by token count with max tokens and sentences limits",
+    "collate_tokens": "convert a list of 1d tensors into a padded 2d tensor with optional left padding and eos handling",
+    "filter_by_size": "filter dataset indices by size using a size function and max positions tuple with optional exception raising",
+    "process_bpe_symbol": "process and remove BPE symbols from a sentence string supporting sentencepiece and custom BPE markers"
+  },
+  "facebookresearch_mask-predict/fairseq/data/dictionary.py": {
+    "create_dictionary": "create a Dictionary instance with pad, eos, unk, bos, and mask special symbols",
+    "load_dictionary_from_file": "load a Dictionary from a text file using Dictionary.load with symbol and count pairs",
+    "encode_line_to_ids": "encode a text line into token indices using Dictionary.encode_line with optional eos append",
+    "finalize_dictionary": "finalize a Dictionary by sorting symbols by frequency with threshold and nwords limits",
+    "convert_tensor_to_string": "convert a tensor of token indices back to a string using Dictionary.string with BPE support"
+  },
+  "facebookresearch_mask-predict/fairseq/data/fairseq_dataset.py": {
+    "create_subclass_FairseqDataset": "create a subclass of FairseqDataset that implements __getitem__ and __len__ for custom data",
+    "implement_collater_method": "implement the collater method in a FairseqDataset subclass to merge samples into a mini-batch",
+    "implement_num_tokens_method": "implement the num_tokens method in a FairseqDataset subclass to return token count per sample",
+    "implement_ordered_indices_method": "implement the ordered_indices method in a FairseqDataset subclass to return a sorted list of indices",
+    "implement_prefetch_method": "implement the prefetch method in a FairseqDataset subclass to preload data for an epoch"
+  },
+  "facebookresearch_mask-predict/fairseq/data/indexed_dataset.py": {
+    "make_dataset": "create a dataset from a given path using lazy, cached, raw, or mmap implementation",
+    "make_builder": "build an IndexedDatasetBuilder or MMapIndexedDatasetBuilder for writing binary indexed dataset files",
+    "infer_dataset_impl": "infer the dataset implementation type from an existing index file at a given path",
+    "IndexedDatasetBuilder_finalize": "finalize an IndexedDatasetBuilder by writing the index file with offsets and sizes",
+    "MMapIndexedDatasetBuilder_add_item": "add a tensor item to an MMapIndexedDatasetBuilder for memory-mapped dataset construction"
+  },
+  "facebookresearch_mask-predict/fairseq/data/iterators.py": {
+    "create_CountingIterator": "create a CountingIterator wrapper that tracks elements consumed from an iterable",
+    "create_EpochBatchIterator": "create an EpochBatchIterator for multi-epoch iteration over a PyTorch dataset with sharding",
+    "create_ShardedIterator": "create a ShardedIterator to split an iterable into N shards for distributed training",
+    "create_GroupedIterator": "create a GroupedIterator that chunks an iterable into fixed-size groups of items",
+    "create_StreamingEpochBatchIterator": "create a StreamingEpochBatchIterator for streaming dataset iteration with shard support"
+  },
+  "facebookresearch_mask-predict/fairseq/data/language_pair_dataset.py": {
+    "create_language_pair_dataset": "create a LanguagePairDataset wrapping source and target datasets with padding and EOS options",
+    "collate_samples_into_batch": "collate a list of source-target sample dicts into a sorted mini-batch tensor dict",
+    "get_ordered_indices": "get an ordered list of dataset indices sorted by source and target sentence lengths",
+    "review_collate_merge": "review the collate function merge helper that pads and optionally shifts EOS tokens",
+    "summarize_num_tokens_size": "summarize the num_tokens and size methods used for max-tokens batching and max-positions filtering"
+  },
+  "facebookresearch_mask-predict/fairseq/data/language_pair_self_dataset_mask.py": {
+    "create_masked_dataset": "create a LanguagePairSelfDatasetMask instance with source and target datasets for masked language modeling",
+    "collate_samples": "collate a list of sample dicts into a mini-batch tensor dict with src_tokens and target",
+    "make_source_target": "call _make_source_target on a LanguagePairSelfDatasetMask to apply random token masking to target sequences",
+    "get_dummy_batch": "get a dummy batch from a LanguagePairSelfDatasetMask with specified num_tokens and max_positions",
+    "ordered_indices": "get ordered indices from a LanguagePairSelfDatasetMask sorted by source and target sentence sizes"
+  },
+  "facebookresearch_mask-predict/fairseq/data/prepend_token_dataset.py": {
+    "create_prepend_token_dataset": "create a PrependTokenDataset that prepends a special token to each item in a fairseq dataset",
+    "review_prepend_token_dataset_getitem": "review the PrependTokenDataset __getitem__ method to understand how tokens are prepended using torch.cat",
+    "test_prepend_token_dataset_sizes": "test the PrependTokenDataset sizes property to verify it increments each size by one when a token is set",
+    "refactor_prepend_token_dataset_num_tokens": "refactor the PrependTokenDataset num_tokens method to support custom token counting logic",
+    "summarize_prepend_token_dataset_class": "summarize the PrependTokenDataset class and its wrapper behavior for prepending tokens to dataset items"
+  },
+  "facebookresearch_mask-predict/fairseq/data/encoders/gpt2_bpe.py": {
+    "encode_text_with_gpt2_bpe": "encode a string into GPT-2 BPE token IDs using the GPT2BPE class",
+    "decode_gpt2_bpe_tokens": "decode a space-separated string of GPT-2 BPE token IDs back to text",
+    "create_encoder_from_files": "create an Encoder instance from encoder.json and vocab.bpe files using get_encoder",
+    "apply_bpe_merges_to_token": "apply byte pair encoding merges to a single token using Encoder.bpe",
+    "review_bytes_to_unicode_mapping": "review the bytes_to_unicode function that maps UTF-8 bytes to unicode strings"
+  },
+  "facebookresearch_mask-predict/fairseq/data/encoders/moses_tokenizer.py": {
+    "build_moses_tokenizer": "build a MosesTokenizer instance with source and target language args from sacremoses",
+    "encode_text_with_moses": "encode a string into tokenized text using the MosesTokenizer encode method",
+    "decode_text_with_moses": "decode tokenized text back into natural language using the MosesTokenizer decode method",
+    "add_moses_tokenizer_args": "add Moses tokenizer CLI arguments for source language, target language, dash splits, and escape options",
+    "register_moses_tokenizer": "register the MosesTokenizer class with the fairseq tokenizer registry under the name moses"
+  },
+  "facebookresearch_mask-predict/fairseq/data/encoders/nltk_tokenizer.py": {
+    "create_NLTKTokenizer": "create an NLTKTokenizer instance to tokenize text using NLTK word_tokenize",
+    "encode_NLTKTokenizer": "encode a string into space-separated tokens using NLTKTokenizer encode method",
+    "decode_NLTKTokenizer": "decode tokenized text back to a string using NLTKTokenizer decode method",
+    "register_nltk_tokenizer": "register the NLTK tokenizer with fairseq using the register_tokenizer decorator",
+    "review_NLTKTokenizer_class": "review the NLTKTokenizer class and its encode decode methods for text tokenization"
+  },
+  "facebookresearch_mask-predict/fairseq/data/encoders/sentencepiece_bpe.py": {
+    "encode_text_with_sentencepiece": "encode a string into sentencepiece subword tokens using SentencepieceBPE",
+    "decode_sentencepiece_tokens": "decode sentencepiece subword tokens back into a readable string",
+    "register_sentencepiece_bpe": "register the sentencepiece BPE encoder with fairseq using the register_bpe decorator",
+    "add_sentencepiece_args": "add the sentencepiece-vocab argument to an argparse parser for SentencepieceBPE",
+    "initialize_sentencepiece_processor": "initialize a SentencepieceBPE instance by loading a sentencepiece vocab file"
+  },
+  "facebookresearch_mask-predict/fairseq/data/encoders/space_tokenizer.py": {
+    "encode_text_with_space_tokenizer": "create a SpaceTokenizer instance and call encode to normalize whitespace in a string",
+    "decode_text_with_space_tokenizer": "create a SpaceTokenizer instance and call decode to return the input string unchanged",
+    "register_space_tokenizer": "use the register_tokenizer decorator to register SpaceTokenizer under the name space in fairseq",
+    "review_SpaceTokenizer_class": "review the SpaceTokenizer class and its encode and decode methods for whitespace normalization",
+    "summarize_SpaceTokenizer_encode": "summarize the SpaceTokenizer encode method that replaces all whitespace sequences with a single space"
+  },
+  "facebookresearch_mask-predict/fairseq/data/encoders/subword_nmt_bpe.py": {
+    "build_subword_nmt_bpe_encoder": "build a SubwordNMTBPE encoder using bpe codes file and separator to apply BPE tokenization",
+    "encode_text_with_bpe": "encode a string using the SubwordNMTBPE encode method to apply BPE subword segmentation",
+    "decode_bpe_tokenized_text": "decode BPE tokenized text by removing the bpe separator symbol using the decode method",
+    "add_bpe_args_to_parser": "add bpe-codes and bpe-separator arguments to an argparse parser using the add_args static method",
+    "review_subword_nmt_bpe_class": "review the SubwordNMTBPE class and its encode decode methods for BPE subword tokenization"
+  },
+  "facebookresearch_mask-predict/fairseq/models/bert_seq2seq.py": {
+    "build_Transformer_nonautoregressive": "build a BERT-based non-autoregressive transformer seq2seq model using Transformer_nonautoregressive with an encoder and decoder",
+    "create_TransformerEncoder": "create a TransformerEncoder instance with source dictionary, token embeddings, and configurable encoder layers",
+    "create_SelfTransformerDecoder": "create a SelfTransformerDecoder instance with target dictionary, embeddings, and optional encoder attention",
+    "review_BertLayerNorm": "review the BertLayerNorm class to understand TF-style layer normalization with epsilon inside the square root",
+    "refactor_base_architecture": "refactor the base_architecture function to set default hyperparameters for the BERT transformer seq2seq model"
+  },
+  "facebookresearch_mask-predict/fairseq/models/composite_encoder.py": {
+    "create_composite_encoder": "create a CompositeEncoder that wraps multiple FairseqEncoder objects into a single encoder",
+    "run_forward_composite_encoder": "run forward on a CompositeEncoder to get outputs from all wrapped encoders as a dictionary",
+    "reorder_encoder_outputs": "reorder the encoder outputs of a CompositeEncoder according to a new batch order",
+    "get_max_positions": "get the minimum max_positions across all encoders in a CompositeEncoder",
+    "upgrade_state_dict_composite": "upgrade the state dict by delegating to each encoder in a CompositeEncoder"
+  },
+  "facebookresearch_mask-predict/fairseq/models/distributed_fairseq_model.py": {
+    "wrap_model_for_distributed_training": "wrap a BaseFairseqModel with DistributedFairseqModel to support distributed data parallel training",
+    "configure_c10d_ddp_backend": "configure the c10d DDP backend with device IDs and bucket capacity for distributed training",
+    "configure_legacy_ddp_backend": "configure the no_c10d legacy DDP backend with world size and buffer size for distributed training",
+    "access_wrapped_model_attributes": "access attributes on the wrapped model through the _DistributedFairseqModel __getattr__ forwarding",
+    "review_DistributedFairseqModel": "review the DistributedFairseqModel function that wraps a model for distributed data parallel training with c10d or legacy backend"
+  },
+  "facebookresearch_mask-predict/fairseq/models/fairseq_decoder.py": {
+    "review_FairseqDecoder_forward": "review the FairseqDecoder forward method that processes prev_output_tokens and encoder_out to produce logits",
+    "review_FairseqDecoder_extract_features": "review the FairseqDecoder extract_features method that returns decoder features and model-specific outputs",
+    "review_FairseqDecoder_output_layer": "review the FairseqDecoder output_layer method that projects features to vocabulary size",
+    "review_FairseqDecoder_get_normalized_probs": "review the FairseqDecoder get_normalized_probs method that computes softmax or log_softmax probabilities from logits",
+    "review_FairseqDecoder_upgrade_state_dict": "review the FairseqDecoder upgrade_state_dict method that upgrades old state dicts for new fairseq versions"
+  },
+  "facebookresearch_mask-predict/fairseq/models/fairseq_encoder.py": {
+    "create_encoder_subclass": "create a subclass of FairseqEncoder that implements forward and reorder_encoder_out methods",
+    "review_FairseqEncoder_forward": "review the FairseqEncoder forward method to understand src_tokens and src_lengths input shapes",
+    "implement_reorder_encoder_out": "implement reorder_encoder_out in a FairseqEncoder subclass to rearrange output by new_order tensor",
+    "override_max_positions": "override the max_positions method in a FairseqEncoder subclass to set a custom maximum input length",
+    "upgrade_state_dict_encoder": "upgrade a legacy FairseqEncoder state dict for compatibility with new fairseq versions"
+  },
+  "facebookresearch_mask-predict/fairseq/models/fairseq_incremental_decoder.py": {
+    "build_incremental_decoder": "build a python module that subclasses FairseqIncrementalDecoder to implement custom incremental decoding logic",
+    "implement_forward_method": "implement the forward method in a FairseqIncrementalDecoder subclass to process prev_output_tokens with encoder_out",
+    "implement_extract_features": "implement the extract_features method in a FairseqIncrementalDecoder subclass to return decoder features and model outputs",
+    "reorder_incremental_state": "reorder incremental state during beam search by calling reorder_incremental_state with a new_order tensor",
+    "set_beam_size": "set the beam size on a FairseqIncrementalDecoder and all its child modules using set_beam_size"
+  },
+  "facebookresearch_mask-predict/fairseq/models/fairseq_model.py": {
+    "build_encoder_decoder_model": "build a FairseqEncoderDecoderModel by passing an encoder and decoder instance to the constructor",
+    "load_pretrained_model": "load a pretrained fairseq model using BaseFairseqModel.from_pretrained with a model name or path",
+    "optimize_generation_speed": "optimize a fairseq model for faster generation by calling make_generation_fast_ to remove weight norms",
+    "extract_features_decoder_only": "extract features from a FairseqLanguageModel by calling extract_features with source tokens",
+    "combine_multi_model": "combine multiple encoder-decoder models into a FairseqMultiModel using dictionaries of encoders and decoders"
+  },
+  "facebookresearch_mask-predict/fairseq/models/transformer.py": {
+    "build_TransformerModel": "build a TransformerModel encoder-decoder from args and task dictionaries for machine translation",
+    "build_TransformerEncoder": "build a TransformerEncoder with positional embeddings and multi-layer self-attention for source sequences",
+    "build_TransformerDecoder": "build a TransformerDecoder with encoder-decoder attention and incremental state support for target generation",
+    "review_TransformerEncoderLayer": "review the TransformerEncoderLayer self-attention and feed-forward network with residual connections and layer normalization",
+    "review_TransformerDecoderLayer": "review the TransformerDecoderLayer self-attention, encoder attention, and feed-forward network with incremental decoding support"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/adaptive_input.py": {
+    "build_adaptive_input_module": "build an AdaptiveInput module with vocab size, padding index, initial dim, factor, output dim, and cutoff list",
+    "create_adaptive_input_forward": "create a forward pass through AdaptiveInput to embed token IDs into adaptive embeddings",
+    "test_adaptive_input_weights_for_band": "test the weights_for_band method to retrieve embedding and linear weights for a given band index",
+    "review_adaptive_input_init": "review the AdaptiveInput constructor to understand how it creates per-band embedding and linear layers",
+    "summarize_adaptive_input_forward_masking": "summarize how AdaptiveInput forward uses cutoff masks to route tokens to the correct embedding band"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/adaptive_softmax.py": {
+    "create_adaptive_softmax": "create an AdaptiveSoftmax module with a vocab size, input dim, and cutoff buckets for efficient softmax",
+    "build_tied_head_module": "build a TiedHeadModule that projects input through tied embedding weights and a class projection layer",
+    "adapt_target_for_cutoffs": "adapt target tensor indices into cutoff bucket targets using the adapt_target method of AdaptiveSoftmax",
+    "compute_log_prob": "compute full vocabulary log probabilities from hidden vectors using the get_log_prob method of AdaptiveSoftmax",
+    "create_tied_linear": "create a TiedLinear layer that performs a linear transformation using shared weights with optional transpose"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/beamable_mm.py": {
+    "create_BeamableMM_module": "create a BeamableMM module with a specified beam size for optimized beam decoding",
+    "run_BeamableMM_forward": "run the BeamableMM forward pass with two batched tensor inputs for matrix multiplication",
+    "set_BeamableMM_beam_size": "set the beam size on an existing BeamableMM module for inference optimization",
+    "review_BeamableMM_optimization": "review the BeamableMM class and its optimized matrix multiplication logic for beam search",
+    "test_BeamableMM_inference": "test the BeamableMM forward method in eval mode with beam-shaped batched inputs"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/character_token_embedder.py": {
+    "create_character_token_embedder": "create a CharacterTokenEmbedder with a vocab, convolution filters, char embed dim, and highway layers",
+    "run_forward_pass": "run a forward pass through CharacterTokenEmbedder to get word embeddings from input token tensors",
+    "set_vocab_mapping": "set the vocabulary on a CharacterTokenEmbedder to build word-to-character index mappings",
+    "reset_parameters": "reset the CharacterTokenEmbedder parameters using Xavier normal and Xavier uniform initialization",
+    "prepare_onnx_export": "prepare a CharacterTokenEmbedder for ONNX export by enabling trace-compatible tensor operations"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/conv_tbc.py": {
+    "create_ConvTBC_module": "create a ConvTBC 1D convolution module with specified in_channels, out_channels, and kernel_size",
+    "build_ConvTBC_with_padding": "build a ConvTBC convolution layer with custom padding for time-major batch-channel input tensors",
+    "run_ConvTBC_forward": "run the ConvTBC forward pass on a contiguous time-batch-channel tensor to get convolved output",
+    "test_ConvTBC_initialization": "test the ConvTBC module initialization verifying weight shape is kernel_size x in_channels x out_channels",
+    "review_ConvTBC_repr": "review the ConvTBC __repr__ method to confirm it displays in_channels, out_channels, kernel_size, and padding"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/downsampled_multihead_attention.py": {
+    "build_downsampled_multihead_attention": "build a DownsampledMultiHeadAttention module with gating and downsampling for sequence models",
+    "create_single_head_attention": "create a SingleHeadAttention layer with optional gating and downsampling support",
+    "test_downsampled_multihead_attention_forward": "test the DownsampledMultiHeadAttention forward pass with query key and value tensors",
+    "review_single_head_attention_forward": "review the SingleHeadAttention forward method for masking and padding mask logic",
+    "create_gated_linear_layer": "create a GatedLinear layer with weight normalization and interspersed GLU units"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/dynamic_convolution.py": {
+    "create_dynamic_conv_layer": "create a DynamicConv1dTBC layer with specified input_size, kernel_size, and num_heads for dynamic convolution",
+    "run_dynamic_conv_forward": "run forward pass on DynamicConv1dTBC with TxBxC tensor input and optional incremental state",
+    "build_dynamic_conv_with_softmax": "build a DynamicConv1dTBC module with weight_softmax enabled to normalize convolution filters with softmax",
+    "test_dynamic_conv_in_proj": "test the DynamicConv1dTBC in_proj mode that jointly projects input and generates convolution filters",
+    "review_dynamic_conv_incremental": "review the DynamicConv1dTBC reorder_incremental_state method for beam search state management"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/fb_bidirectional_multihead_attention.py": {
+    "build_bidirectional_attention_module": "build a BidirectionalMultiheadSelfAttention module with configurable embed_dim and num_heads for sequence modeling",
+    "run_forward_pass_bidirectional_attention": "run a forward pass on BidirectionalMultiheadSelfAttention with forward and backward sequence tensors",
+    "test_mask_generation": "test the mask method to generate attention masks that block current state cross-attention",
+    "review_in_proj_q_kv": "review the in_proj_q and in_proj_kv methods that split the combined projection weights for query and key-value",
+    "refactor_onnx_export_preparation": "refactor the prepare_for_onnx_export_ method to enable ONNX-compatible attention mask computation"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/fb_elmo_token_embedder.py": {
+    "create_elmo_token_embedder": "create an ElmoTokenEmbedder instance with a FairseqLanguageModel to learn task-specific word representations",
+    "run_elmo_forward_pass": "run a forward pass through ElmoTokenEmbedder to get weighted combination of LM hidden states",
+    "build_elmo_with_fine_tuning": "build an ElmoTokenEmbedder with tune_lm enabled and frozen layers for fine-tuning a language model",
+    "review_elmo_lm_states": "review the _lm_states method to understand how forward and backward tower states are combined",
+    "test_elmo_sentence_boundaries": "test the _with_sentence_boundaries method to add BOS and EOS tokens to input tensors"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/gelu.py": {
+    "apply_gelu_activation": "apply the GELU activation function to a PyTorch tensor using the erf-based approximation",
+    "apply_gelu_accurate_activation": "apply the accurate GELU activation function to a PyTorch tensor using the tanh-based approximation",
+    "compare_gelu_implementations": "compare the standard gelu and gelu_accurate functions on the same input tensor",
+    "use_gelu_in_model": "use the gelu function as an activation layer in a PyTorch neural network module",
+    "use_gelu_accurate_in_model": "use the gelu_accurate function as an activation layer in a PyTorch neural network module"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/grad_multiply.py": {
+    "use_grad_multiply_forward": "use GradMultiply forward pass to pass a tensor through unchanged while storing the scale factor",
+    "use_grad_multiply_backward": "use GradMultiply backward pass to multiply the incoming gradient by a stored scale factor",
+    "create_grad_scale_layer": "create a custom autograd function that scales gradients by a factor during backpropagation",
+    "review_grad_multiply_class": "review the GradMultiply class to understand how it scales gradients without altering forward outputs",
+    "test_grad_multiply_function": "test the GradMultiply autograd function to verify gradient scaling works correctly with a given scale"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/highway.py": {
+    "create_highway_layer": "create a Highway layer with a specified input dimension and number of layers",
+    "build_highway_forward_pass": "build a forward pass through the Highway layer to transform input tensors",
+    "reset_highway_parameters": "reset the Highway layer parameters with Xavier normal weight init and biased gate",
+    "review_highway_class": "review the Highway class implementation for gated residual connections and transform projections",
+    "test_highway_layer": "test the Highway layer forward pass with a PyTorch tensor of matching input dimension"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/layer_norm.py": {
+    "create_layer_norm_with_apex_fallback": "create a LayerNorm layer that uses Apex FusedLayerNorm on CUDA or falls back to torch.nn.LayerNorm",
+    "build_layer_norm_for_export": "build a LayerNorm layer with export=True to force standard torch.nn.LayerNorm without Apex dependency",
+    "create_layer_norm_custom_eps": "create a LayerNorm layer with a custom epsilon value for numerical stability control",
+    "review_layer_norm_factory": "review the LayerNorm factory function to understand Apex FusedLayerNorm fallback logic",
+    "summarize_layer_norm_module": "summarize the LayerNorm module that wraps torch.nn.LayerNorm with optional Apex GPU acceleration"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/learned_positional_embedding.py": {
+    "create_learned_positional_embedding": "create a LearnedPositionalEmbedding module with num_embeddings, embedding_dim, and padding_idx parameters",
+    "forward_positional_embeddings": "run the forward pass on input tensor of size bsz x seqlen to get positional embeddings",
+    "forward_incremental_decoding": "run forward with incremental_state for single-step decoding during autoregressive generation",
+    "forward_precomputed_positions": "run forward with pre-computed positions tensor instead of auto-generating position ids",
+    "get_max_positions": "get the maximum number of supported positions from the LearnedPositionalEmbedding module"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/lightweight_convolution.py": {
+    "build_LightweightConv1d": "build a LightweightConv1d module with multi-head causal convolution on BxCxT tensors",
+    "build_LightweightConv1dTBC": "build a LightweightConv1dTBC module with multi-head causal convolution on TxBxC tensors",
+    "test_LightweightConv1d_forward": "test the LightweightConv1d forward pass with softmax normalized weights and weight dropout",
+    "test_LightweightConv1dTBC_incremental": "test the LightweightConv1dTBC incremental state forward pass for autoregressive decoding",
+    "review_LightweightConv1dTBC_band_matrix": "review the LightweightConv1dTBC expanded forward method that turns convolution filters into band matrices"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/linearized_convolution.py": {
+    "create_linearized_convolution": "create a LinearizedConvolution module with specified in_channels, out_channels, and kernel_size",
+    "run_forward_training": "run the forward pass in training mode with Time x Batch x Channel input",
+    "run_forward_inference": "run the forward pass in inference mode with incremental_state for one time step at a time",
+    "reorder_incremental_state": "reorder the incremental state input buffer according to a new batch order",
+    "review_linearized_weight": "review the LinearizedConvolution class and how it reshapes convolution weights for linear inference"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/logsumexp_moe.py": {
+    "use_logsumexp_moe_forward": "use LogSumExpMoE to compute log-sum-exp forward pass with posterior-based backward for MoE models",
+    "use_logsumexp_moe_backward": "use LogSumExpMoE backward pass to compute gradients using posterior weights instead of softmax",
+    "implement_custom_autograd_function": "implement a custom PyTorch autograd function with separate forward and backward logic like LogSumExpMoE",
+    "compute_logsumexp_with_custom_grad": "compute log-sum-exp over a dimension while using posterior probabilities for gradient computation",
+    "apply_moe_tricks": "apply Mixture of Experts tricks from Shen et al. 2019 for diverse machine translation models"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/mean_pool_gating_network.py": {
+    "create_MeanPoolGatingNetwork": "create a MeanPoolGatingNetwork instance with a given embed_dim and number of experts",
+    "build_gating_network_with_dropout": "build a MeanPoolGatingNetwork with optional dropout for expert selection in a mixture-of-experts model",
+    "run_forward_pass": "run a forward pass on encoder output to get log-softmax expert responsibilities",
+    "review_mean_pooling_logic": "review the MeanPoolGatingNetwork forward method and its padding-aware mean pooling over encoder output",
+    "summarize_MeanPoolGatingNetwork": "summarize the MeanPoolGatingNetwork class and its two-layer gating network for selecting experts"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/multihead_attention.py": {
+    "build_multihead_attention_layer": "build a MultiheadAttention module with specified embed_dim and num_heads for transformer models",
+    "run_forward_pass": "run a forward pass through MultiheadAttention with query, key, and value tensors",
+    "create_self_attention": "create a self-attention layer by setting self_attention=True in MultiheadAttention init",
+    "test_incremental_state": "test incremental state caching for efficient autoregressive generation with MultiheadAttention",
+    "review_sparse_mask": "review the apply_sparse_mask method to add custom sparse attention masking logic"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/positional_embedding.py": {
+    "create_learned_positional_embedding": "create a learned positional embedding module with normal-initialized weights and a padding index",
+    "create_sinusoidal_positional_embedding": "create a sinusoidal positional embedding module with fixed embeddings for any sequence length",
+    "build_positional_embedding_factory": "build a positional embedding using the factory function choosing learned or sinusoidal mode",
+    "review_PositionalEmbedding_padding_offset": "review the PositionalEmbedding factory function and how it offsets num_embeddings when padding_idx is set",
+    "summarize_get_embedding_static_method": "summarize the SinusoidalPositionalEmbedding.get_embedding static method that builds sinusoidal embeddings matching tensor2tensor"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/scalar_bias.py": {
+    "use_scalar_bias_function": "use the scalar_bias function to prepend a scalar bias vector to a PyTorch tensor along a specified dimension",
+    "apply_scalar_bias_autograd": "apply the ScalarBias autograd function to add a learnable scalar bias for self-attention mechanisms in transformer models",
+    "review_scalar_bias_forward": "review the ScalarBias forward pass that expands input tensor size by one along the specified dimension and fills with bias_init value",
+    "test_scalar_bias_backward": "test the ScalarBias backward pass that extracts gradients from the input portion of the tensor excluding the bias dimension",
+    "refactor_scalar_bias_for_custom_dim": "refactor the scalar_bias function to support custom default bias initialization values for different attention scenarios"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/simple_sinusoidal_positional_embedding.py": {
+    "create_positional_embedding": "create a SimpleSinusoidalPositionalEmbedding module with a given embedding dimension and number of embeddings",
+    "build_sinusoidal_embeddings": "build sinusoidal positional embeddings using sine and cosine functions for sequence positions",
+    "forward_positional_lookup": "forward pass to look up positional embeddings by index from the precomputed weight tensor",
+    "review_embedding_init": "review the SimpleSinusoidalPositionalEmbedding init to understand how sinusoidal weights are computed and zero-padded for odd dimensions",
+    "test_forward_positions": "test the forward method by passing position indices and verifying the returned embedding tensor shape"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/sinusoidal_positional_embedding.py": {
+    "create_sinusoidal_positional_embedding": "create a SinusoidalPositionalEmbedding module with a given embedding dimension and padding index",
+    "build_get_embedding": "build sinusoidal embeddings for a given number of embeddings and embedding dimension",
+    "run_forward_pass": "run a forward pass through SinusoidalPositionalEmbedding with input tensor of size bsz by seqlen",
+    "test_max_positions": "test the max_positions method to verify the maximum number of supported positions",
+    "prepare_onnx_export": "prepare the SinusoidalPositionalEmbedding module for ONNX export by enabling onnx tracing"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/sparse_multihead_attention.py": {
+    "build_sparse_attention_module": "build a SparseMultiheadAttention module with configurable stride and expressivity for sparse transformer attention",
+    "compute_checkpoint_index": "compute the checkpoint index for a given word index using stride and expressivity parameters",
+    "compute_subset_summaries": "compute the subset two summaries set for sparse attention pattern across all stride windows",
+    "compute_fixed_attention_subset": "compute the fixed attention subset for a word index combining stride window and summary tokens",
+    "apply_sparse_mask": "apply a sparse attention mask to attention weights tensor for efficient long sequence generation"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/sparse_transformer_sentence_encoder.py": {
+    "build_sparse_transformer_encoder": "build a SparseTransformerSentenceEncoder with custom stride and expressivity for sparse attention",
+    "create_sparse_encoder_layer": "create a SparseTransformerSentenceEncoderLayer with configurable stride and expressivity parameters",
+    "run_sparse_encoder_forward": "run the SparseTransformerSentenceEncoder forward pass on token tensors to get representations",
+    "freeze_sparse_encoder_layers": "freeze the first N transformer layers of the SparseTransformerSentenceEncoder for transfer learning",
+    "review_sparse_attention_config": "review the SparseTransformerSentenceEncoder stride and expressivity config for sparse multihead attention"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/transformer_sentence_encoder.py": {
+    "build_transformer_sentence_encoder": "build a bidirectional Transformer sentence encoder for BERT style pre-trained models with token and segment embeddings",
+    "create_encoder_with_bert_init": "create a TransformerSentenceEncoder with BERT weight initialization using normal distribution with std 0.02",
+    "run_forward_pass": "run a forward pass through the encoder with tokens and segment labels to get inner states and sentence representation",
+    "freeze_encoder_embeddings": "freeze the token, segment, and position embeddings of the encoder for transfer learning fine-tuning",
+    "review_init_bert_params": "review the init_bert_params function that initializes Linear, Embedding, and MultiheadAttention weights with normal distribution"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/transformer_sentence_encoder_layer.py": {
+    "create_transformer_encoder_layer": "create a TransformerSentenceEncoderLayer with custom embedding_dim and num_attention_heads for BERT-style models",
+    "build_encoder_layer_with_gelu": "build a TransformerSentenceEncoderLayer using gelu activation function instead of the default relu",
+    "run_forward_pass": "run a forward pass through the TransformerSentenceEncoderLayer with input tensor and attention mask",
+    "review_self_attention_config": "review the TransformerSentenceEncoderLayer self-attention configuration including add_bias_kv and add_zero_attn options",
+    "test_layer_norm_order": "test the TransformerSentenceEncoderLayer to verify LayerNorm is applied after residual connections"
+  },
+  "facebookresearch_mask-predict/fairseq/modules/unfold.py": {
+    "unfold1d_tensor": "unfold a TxBxC tensor to TxBxCxK using as_strided with configurable kernel size and padding",
+    "unfold1d_pad_and_stride": "pad a 3D tensor along the time dimension then create a strided view for sliding window access",
+    "unfold1d_kernel_size_one": "unsqueeze a TxBxC tensor to TxBxCx1 when kernel size equals one",
+    "review_unfold1d_padding": "review the unfold1d function padding logic that uses F.pad with left and right padding values",
+    "summarize_unfold1d": "summarize the unfold1d function that transforms TxBxC tensors into TxBxCxK strided views for sequence modeling"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/adadelta.py": {
+    "create_adadelta_optimizer": "create an Adadelta optimizer instance with params and config for fairseq training",
+    "configure_adadelta_args": "configure adadelta optimizer arguments including rho, eps, weight decay, and anneal eps",
+    "get_optimizer_config": "get the optimizer config dictionary with lr, rho, eps, and weight decay values",
+    "register_adadelta_optimizer": "register the Adadelta optimizer class with the fairseq optimizer registry",
+    "review_adadelta_class": "review the Adadelta class and its optimizer configuration for fairseq model training"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/adafactor.py": {
+    "create_adafactor_optimizer": "create an Adafactor optimizer instance for PyTorch model parameters with configurable learning rate and decay",
+    "run_adafactor_step": "run a single optimization step using the Adafactor optimizer to update model parameters",
+    "review_adafactor_config": "review the Adafactor optimizer configuration including eps, clip threshold, decay rate, and weight decay settings",
+    "build_fairseq_adafactor": "build a FairseqAdafactor optimizer wrapper that registers adafactor arguments with the Fairseq argument parser",
+    "test_adafactor_relative_step": "test the Adafactor optimizer relative step learning rate scheduling with warmup initialization"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/adagrad.py": {
+    "review_Adagrad_class": "review the Adagrad optimizer class that wraps torch.optim.Adagrad for fairseq training",
+    "review_add_args_method": "review the add_args static method that registers weight-decay CLI argument for the Adagrad optimizer",
+    "review_optimizer_config_property": "review the optimizer_config property that returns lr and weight_decay kwargs for checkpoint overrides",
+    "test_Adagrad_init": "test the Adagrad class __init__ method that creates a torch.optim.Adagrad instance with config",
+    "refactor_Adagrad_optimizer_config": "refactor the Adagrad optimizer_config property to support additional optimizer hyperparameters"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/adam.py": {
+    "create_adam_optimizer": "create an Adam optimizer instance with custom learning rate, betas, and weight decay for model training",
+    "run_adam_step": "run a single Adam optimization step to update model parameters using computed gradients",
+    "create_fusedadam_optimizer": "create a GPU-only FusedAdam optimizer with gradient clipping and mixed precision support",
+    "review_fairseqadam_config": "review the FairseqAdam optimizer configuration including betas, epsilon, and weight decay arguments",
+    "refactor_adam_amsgrad": "refactor the Adam optimizer step method to enable or disable the AMSGrad variant for training"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/bmuf.py": {
+    "review_FairseqBMUF_class": "review the FairseqBMUF class for incremental block distributed data parallelism training",
+    "refactor_FairseqBMUF_add_args": "refactor FairseqBMUF add_args to customize block learning rate and sync iteration defaults",
+    "test_FairseqBMUF_step": "test the FairseqBMUF step method to verify block synchronization during optimization",
+    "build_optimizer_with_bmuf": "build a distributed training optimizer using FairseqBMUF with Nesterov block momentum",
+    "summarize_FairseqBMUF_sync": "summarize the FairseqBMUF _sync_block method for model synchronization across distributed workers"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/fairseq_optimizer.py": {
+    "review_FairseqOptimizer_class": "review the FairseqOptimizer class and its gradient clipping and learning rate methods",
+    "refactor_clip_grad_norm": "refactor the clip_grad_norm method to support a different gradient clipping strategy",
+    "test_backward_step": "test the FairseqOptimizer backward and step methods for a training loop",
+    "summarize_load_state_dict": "summarize the load_state_dict method and its optimizer_overrides parameter behavior",
+    "build_optimizer_wrapper": "build a subclass of FairseqOptimizer that wraps a custom torch.optim optimizer"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/fp16_optimizer.py": {
+    "build_FP16_optimizer": "build an FP16 optimizer with FP32 master params for mixed precision training",
+    "build_MemoryEfficientFP16_optimizer": "build a memory efficient FP16 optimizer that avoids maintaining FP32 model copies",
+    "create_DynamicLossScaler": "create a dynamic loss scaler to adjust loss scale based on gradient overflow",
+    "test_DynamicLossScaler_has_overflow": "test the has_overflow static method to detect inf or nan in gradient norms",
+    "review_FP16Optimizer_clip_grad_norm": "review the FP16Optimizer clip_grad_norm method that clips gradients and updates the dynamic loss scaler"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/lamb.py": {
+    "create_Lamb_optimizer": "create a Lamb optimizer instance with custom learning rate, betas, and weight decay parameters",
+    "run_Lamb_step": "run a single optimization step using the Lamb optimizer to update model parameters",
+    "review_FairseqLamb_add_args": "review the FairseqLamb add_args method to configure LAMB optimizer CLI arguments",
+    "test_Lamb_step_closure": "test the Lamb optimizer step method with a closure that returns the loss value",
+    "refactor_Lamb_adam_mode": "refactor the Lamb optimizer to use adam mode which forces trust ratio to 1"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/nag.py": {
+    "create_NAG_optimizer": "create a NAG optimizer instance with params, learning rate, momentum, and weight decay",
+    "run_NAG_step": "run a single NAG optimization step on model parameters with optional closure",
+    "review_FairseqNAG_add_args": "review the FairseqNAG add_args method that registers momentum and weight-decay CLI arguments",
+    "summarize_FairseqNAG_optimizer_config": "summarize the FairseqNAG optimizer_config property that returns lr, momentum, and weight_decay kwargs",
+    "test_NAG_fp16_support": "test the NAG optimizer supports_memory_efficient_fp16 property for FP16 compatibility"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/sgd.py": {
+    "create_SGD_optimizer": "create an SGD optimizer instance with params and learning rate config",
+    "review_SGD_add_args": "review the SGD add_args method to see momentum and weight-decay CLI arguments",
+    "summarize_SGD_optimizer_config": "summarize the SGD optimizer_config property that returns lr, momentum, and weight_decay kwargs",
+    "build_SGD_optimizer": "build a Fairseq SGD optimizer subclass that wraps torch.optim.SGD with momentum and weight decay",
+    "test_SGD_register": "test the SGD optimizer registration with the register_optimizer decorator for the sgd key"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/lr_scheduler/cosine_lr_scheduler.py": {
+    "create_cosine_lr_scheduler": "create a CosineSchedule instance with args and optimizer to use cosine learning rate scheduling",
+    "configure_cosine_scheduler_args": "configure cosine scheduler arguments like warmup-updates, max-lr, t-mult, and lr-shrink via add_args",
+    "step_update_lr": "call step_update with num_updates to compute and set the current cosine learning rate",
+    "step_epoch_lr": "call step at epoch boundaries to return the current optimizer learning rate without changing it",
+    "review_cosine_schedule_class": "review the CosineSchedule class and its warmup phase and cosine annealing logic"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/lr_scheduler/fairseq_lr_scheduler.py": {
+    "create_FairseqLRScheduler": "create a FairseqLRScheduler instance with args and a FairseqOptimizer",
+    "review_FairseqLRScheduler_add_args": "review the FairseqLRScheduler add_args static method for parser argument configuration",
+    "test_FairseqLRScheduler_state_dict": "test the FairseqLRScheduler state_dict method to return the best validation loss",
+    "test_FairseqLRScheduler_load_state_dict": "test the FairseqLRScheduler load_state_dict method to restore the best validation loss",
+    "summarize_FairseqLRScheduler_step": "summarize the FairseqLRScheduler step method that updates learning rate at epoch end"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/lr_scheduler/fixed_schedule.py": {
+    "create_fixed_lr_scheduler": "create a FixedSchedule LR scheduler with fixed learning rate and optional warmup updates",
+    "review_fixed_schedule_class": "review the FixedSchedule class and its learning rate decay strategy on a fixed schedule",
+    "refactor_get_next_lr": "refactor the get_next_lr method to support custom annealing logic after force_anneal epoch",
+    "test_step_update_warmup": "test the step_update method to verify linear warmup of learning rate over N updates",
+    "summarize_add_args_parser": "summarize the add_args method that registers force-anneal, lr-shrink, and warmup-updates CLI arguments"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/lr_scheduler/inverse_square_root_schedule.py": {
+    "create_inverse_sqrt_lr_scheduler": "create an InverseSquareRootSchedule instance with args and optimizer to manage learning rate decay",
+    "configure_warmup_updates": "configure the warmup-updates argument to linearly warmup the learning rate for the first N updates",
+    "set_warmup_init_lr": "set the warmup-init-lr argument to define the initial learning rate during the warmup phase",
+    "step_update_lr": "call step_update with num_updates to compute and set the learning rate after each training update",
+    "review_inverse_sqrt_schedule": "review the InverseSquareRootSchedule class to understand its warmup phase and inverse square root decay logic"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/lr_scheduler/polynomial_decay_schedule.py": {
+    "create_polynomial_decay_lr_scheduler": "create a PolynomialDecaySchedule LR scheduler with warmup updates and polynomial decay power",
+    "add_args_lr_scheduler_parser": "add command-line arguments for force-anneal, warmup-updates, end-learning-rate, power, and total-num-update to a parser",
+    "get_next_lr_by_epoch": "get the next learning rate for a given epoch using fixed LR schedule or annealing",
+    "step_lr_by_epoch": "step the learning rate at the end of an epoch and update the optimizer",
+    "step_update_lr_by_num_updates": "step the learning rate after each update using warmup, polynomial decay, or end learning rate"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/lr_scheduler/reduce_lr_on_plateau.py": {
+    "build_reduce_lr_on_plateau_scheduler": "build a ReduceLROnPlateau LR scheduler that decays learning rate when validation loss plateaus",
+    "create_lr_shrink_args": "create argparse arguments for lr-shrink factor and lr-threshold for learning rate annealing",
+    "test_step_with_val_loss": "test the step method by passing epoch and validation loss to update the learning rate",
+    "review_state_dict_save_load": "review the state_dict and load_state_dict methods for saving and restoring scheduler best and last_epoch state",
+    "refactor_reduce_lr_on_plateau_init": "refactor the ReduceLROnPlateau constructor to validate that a single learning rate is provided"
+  },
+  "facebookresearch_mask-predict/fairseq/optim/lr_scheduler/triangular_lr_scheduler.py": {
+    "create_triangular_lr_scheduler": "create a TriangularSchedule instance with args and optimizer for cyclical learning rate scheduling",
+    "configure_triangular_lr_args": "configure argparse arguments for the triangular LR scheduler including max-lr, lr-period-updates, lr-shrink, and shrink-min",
+    "step_triangular_lr_epoch": "step the triangular LR scheduler at epoch boundaries without changing the learning rate",
+    "step_update_triangular_lr": "step update the triangular LR scheduler to compute and set a new learning rate after each update",
+    "review_triangular_schedule_class": "review the TriangularSchedule class and its triangular cyclical learning rate scheduling implementation"
+  },
+  "facebookresearch_mask-predict/fairseq/strategies/decoding_strategy.py": {
+    "review_DecodingStrategy": "review the DecodingStrategy class and its abstract generate method signature",
+    "refactor_DecodingStrategy_generate": "refactor the DecodingStrategy generate method to implement a concrete decoding strategy",
+    "create_DecodingStrategy_subclass": "create a subclass of DecodingStrategy that implements the generate method for beam search",
+    "test_DecodingStrategy_generate": "test the DecodingStrategy generate method with a mock model and encoder output",
+    "summarize_DecodingStrategy": "summarize the DecodingStrategy class which serves as a base class for decoding strategies"
+  },
+  "facebookresearch_mask-predict/fairseq/strategies/easy_first.py": {
+    "run_EasyFirst_generate": "run the EasyFirst strategy generate method to perform beam search decoding on masked tokens",
+    "review_EasyFirst_generate_candidates": "review the EasyFirst generate_candidates method to compute softmax log probabilities for candidate tokens",
+    "review_EasyFirst_select_best": "review the EasyFirst select_best method to select top candidates using beam search scoring",
+    "review_EasyFirst_is_unique": "review the EasyFirst is_unique method to check if a token sequence is unique among existing beams",
+    "build_EasyFirst_strategy": "build a decoding strategy using EasyFirst for mask prediction with configurable beam size"
+  },
+  "facebookresearch_mask-predict/fairseq/strategies/left_to_right.py": {
+    "generate_left_to_right_decoding": "generate left-to-right beam search predictions using the LeftToRight strategy class with a model and encoder output",
+    "generate_candidates_for_position": "generate candidate token log-probabilities for a specific position using softmax and mask constraints",
+    "register_left_to_right_strategy": "register the left_to_right decoding strategy in the STRATEGY_REGISTRY via the register_strategy decorator",
+    "review_LeftToRight_generate": "review the LeftToRight generate method that performs position-by-position beam search decoding with candidate selection",
+    "summarize_LeftToRight_class": "summarize the LeftToRight class that extends EasyFirst for left-to-right mask prediction decoding"
+  },
+  "facebookresearch_mask-predict/fairseq/strategies/mask_predict.py": {
+    "build_mask_predict_strategy": "build a MaskPredict decoding strategy with configurable iterations for iterative non-autoregressive translation",
+    "generate_mask_predict_tokens": "generate translated tokens using iterative mask prediction with a fairseq model and encoder output",
+    "generate_non_autoregressive_tokens": "generate non-autoregressive token predictions and probabilities from a model decoder output in one pass",
+    "select_worst_tokens": "select the worst predicted token indices by lowest probability for re-masking in each iteration",
+    "review_mask_predict_class": "review the MaskPredict class and its iterative mask prediction decoding strategy for sequence generation"
+  },
+  "facebookresearch_mask-predict/fairseq/strategies/strategy_utils.py": {
+    "duplicate_encoder_out": "duplicate encoder output tensors for beam search by repeating across the beam size dimension",
+    "generate_step_with_prob": "generate the next token step with softmax probabilities and argmax indices from model output",
+    "assign_single_value_byte": "assign a single scalar value to selected positions in a byte tensor using a mask",
+    "assign_multi_value_long": "assign multiple values to selected positions in a long tensor using row-wise index offsets",
+    "convert_tokens": "convert a list of token IDs to a space-separated string using a token dictionary"
+  },
+  "facebookresearch_mask-predict/fairseq/tasks/fairseq_task.py": {
+    "build_dictionary_from_files": "build a dictionary from a list of text files with configurable threshold and padding factor",
+    "load_dictionary_from_file": "load a fairseq dictionary from a saved dictionary file on disk",
+    "setup_task_from_args": "setup a fairseq task instance from parsed command-line arguments",
+    "get_batch_iterator": "get an epoch batch iterator that yields batches from a dataset with size constraints",
+    "train_step_forward_backward": "run a training step that computes loss and performs backward pass with the optimizer"
+  },
+  "facebookresearch_mask-predict/fairseq/tasks/translation.py": {
+    "build_translation_task": "build a fairseq TranslationTask to translate between source and target language pairs",
+    "load_langpair_dataset": "load a language pair dataset from indexed files for a given split and data path",
+    "setup_translation_task": "setup a TranslationTask by loading source and target dictionaries from data paths",
+    "load_dataset_split": "load a specific dataset split like train valid or test for translation training",
+    "build_inference_dataset": "build a LanguagePairDataset for inference from source tokens and their lengths"
+  },
+  "facebookresearch_mask-predict/fairseq/tasks/translation_self.py": {
+    "setup_translation_self_task": "setup a TranslationSelfTask by calling setup_task with parsed args to load source and target dictionaries",
+    "add_translation_self_args": "add translation self task arguments to an argparse parser including source lang, target lang, and mask range",
+    "load_translation_dataset": "load a train, valid, or test dataset split for the translation self task with dynamic length masking",
+    "get_max_positions": "get the max source and target positions allowed by the translation self task",
+    "review_TranslationSelfTask": "review the TranslationSelfTask class and its load_dataset method for self-supervised translation with mask range support"
+  },
+  "facebookresearch_mask-predict/fairseq_cli/eval_lm.py": {
+    "run_eval_lm": "run the fairseq eval_lm CLI to evaluate perplexity of a trained language model on a dataset",
+    "run_main_eval_lm": "run the main function to evaluate a language model's negative log-likelihood loss and perplexity",
+    "review_WordStat_class": "review the WordStat class that tracks word log probabilities, counts, and next word probabilities",
+    "review_WordStat_add": "review the WordStat add method that increments log probability and next word probability counters",
+    "review_sequence_scorer_usage": "review how SequenceScorer is used to score token sequences and compute positional scores"
+  },
+  "facebookresearch_mask-predict/fairseq_cli/generate.py": {
+    "run_translation_generation": "run the fairseq generate CLI to translate pre-processed data with a trained model",
+    "run_bleu_scoring": "run the fairseq generate CLI to compute BLEU scores on generated translations",
+    "run_beam_search_generation": "run the fairseq generate CLI with beam search to produce top-N hypotheses",
+    "run_alignment_generation": "run the fairseq generate CLI with --print-alignment to output source-target word alignments",
+    "run_prefix_constrained_generation": "run the fairseq generate CLI with --prefix-size to constrain generation with prefix tokens"
+  },
+  "facebookresearch_mask-predict/fairseq_cli/interactive.py": {
+    "run_interactive_translation": "run the fairseq interactive CLI to translate raw text with a trained model",
+    "run_buffered_read": "run buffered_read to read input lines in batches of a given buffer size",
+    "run_make_batches": "run make_batches to encode source lines into tokenized batch tensors for inference",
+    "run_main": "run main to load a model ensemble and perform interactive generation on input sentences",
+    "run_cli_main": "run cli_main to parse interactive generation arguments and start the translation loop"
+  },
+  "facebookresearch_mask-predict/fairseq_cli/preprocess.py": {
+    "run_preprocess_binarize": "run the preprocess CLI to build vocabularies and binarize training data for source and target languages",
+    "run_preprocess_joined_dict": "run the preprocess CLI with --joined-dictionary to generate a shared dictionary for source and target languages",
+    "run_preprocess_align": "run the preprocess CLI with --alignfile to produce a word alignment dictionary from alignment data",
+    "run_preprocess_raw": "run the preprocess CLI with --output-format raw to copy original text files instead of binarizing",
+    "run_preprocess_only_source": "run the preprocess CLI with --only-source to process only the source language without a target"
+  },
+  "facebookresearch_mask-predict/fairseq_cli/score.py": {
+    "run_bleu_scoring_corpus": "run BLEU scoring of generated translations against reference translations using fairseq",
+    "run_bleu_scoring_sacrebleu": "run BLEU scoring with sacrebleu by passing the --sacrebleu flag to the scorer",
+    "run_bleu_scoring_sentence_level": "run sentence-level BLEU scoring with +1 smoothing using the --sentence-bleu flag",
+    "run_bleu_scoring_case_insensitive": "run case-insensitive BLEU scoring by passing the --ignore-case flag to the scorer",
+    "run_bleu_scoring_custom_ngram_order": "run BLEU scoring considering ngrams up to a custom order using the -o flag"
+  },
+  "facebookresearch_mask-predict/fairseq_cli/train.py": {
+    "run_train_model": "run the fairseq training CLI to train a new model on one or multiple GPUs",
+    "run_distributed_training": "run distributed training across multiple GPUs using torch multiprocessing spawn",
+    "run_validate_model": "run validation on specified subsets and return validation losses for checkpointing",
+    "run_train_epoch": "run training for one epoch with batch grouping and progress bar logging",
+    "run_get_training_stats": "run get_training_stats to collect loss, perplexity, learning rate, and wall time metrics"
+  },
+  "facebookresearch_mask-predict/scripts/average_checkpoints.py": {
+    "average_checkpoints": "average the model weights from multiple PyTorch checkpoint files into a single checkpoint",
+    "run_average_checkpoints_cli": "run the CLI tool to average input checkpoint files and write the result to an output path",
+    "last_n_checkpoints": "find the last N checkpoint files in a directory by epoch or update number",
+    "run_average_last_n_epoch_checkpoints": "run the CLI with --num-epoch-checkpoints to average the last N epoch-based checkpoints in a directory",
+    "run_average_last_n_update_checkpoints": "run the CLI with --num-update-checkpoints to average the last N update-based checkpoints in a directory"
+  },
+  "facebookresearch_mask-predict/scripts/count_docs.py": {
+    "run_count_docs": "run the script to count documents and average lines and tokens per document in a large file",
+    "run_count_docs_gzip": "run the script with --gzip flag to count documents in a gzip compressed file",
+    "review_main": "review the main function that parses args and iterates over lines to count docs, lines, and tokens",
+    "summarize_gopen": "summarize the gopen helper function that opens a file normally or via gzip based on the --gzip flag",
+    "refactor_count_docs": "refactor the count_docs script to support custom document separator patterns instead of empty lines"
+  },
+  "facebookresearch_mask-predict/scripts/read_binarized.py": {
+    "run_read_binarized_with_dict": "run the script to decode a binarized dataset file using a dictionary and print text to stdout",
+    "run_read_binarized_raw_tokens": "run the script to read a binarized file without a dictionary and print raw token IDs to stdout",
+    "run_read_binarized_lazy_impl": "run the script with the lazy dataset implementation to read a binarized file and output text",
+    "review_get_parser": "review the get_parser function that configures argparse with --dataset-impl, --dict, and --input arguments",
+    "review_main": "review the main function that loads a binarized dataset and prints each line as text or token IDs"
+  },
+  "facebookresearch_mask-predict/scripts/rm_pt.py": {
+    "run_rm_pt_delete_checkpoints": "recursively delete PyTorch checkpoint files from directories while preserving checkpoint_best.pt and checkpoint_last.pt",
+    "run_rm_pt_save_last_n": "delete checkpoint files but save the last N checkpoints using the --save-last flag",
+    "run_rm_pt_save_every_n": "delete checkpoint files but save every Nth checkpoint using the --save-every flag",
+    "run_rm_pt_delete_best_last": "delete all checkpoint files including checkpoint_best.pt and checkpoint_last.pt using --delete-best and --delete-last flags",
+    "run_rm_pt_desymlink_checkpoints": "preserve checkpoint files and dereference symlinks by copying the real file content in place"
+  },
+  "facebookresearch_mask-predict/scripts/shard_docs.py": {
+    "run_shard_docs": "run the shard_docs script to split a large document file into multiple shards respecting document boundaries",
+    "run_shard_docs_num_shards": "run shard_docs with --num-shards to split an input file into N round-robin distributed shard files",
+    "review_main": "review the main function that parses input file and num-shards arguments then distributes documents across shard output files",
+    "review_output_doc": "review the output_doc inner function that writes a document to a specific shard file with proper newline separation",
+    "summarize_shard_docs": "summarize the shard_docs script that splits a text file into N shards by distributing documents separated by empty lines"
+  },
+  "facebookresearch_mask-predict/scripts/split_train_valid_docs.py": {
+    "run_split_train_valid": "run the script to split a large document file into train and valid sets using reservoir sampling",
+    "run_reservoir_sampling": "run reservoir sampling to select k random documents from a large file while respecting document boundaries",
+    "run_document_splitting": "run the script to split documents separated by empty lines into sample and remainder output files",
+    "run_cli_split": "run the CLI tool with input file, sample output, remainder output, and k parameter for document splitting",
+    "review_update_sample": "review the update_sample function that implements reservoir sampling logic for selecting k documents from a stream"
+  },
+  "facebookresearch_mask-predict/scripts/spm_decode.py": {
+    "run_spm_decode_pieces": "run the sentencepiece decode script to decode piece tokens from an input file using a model",
+    "run_spm_decode_ids": "run the sentencepiece decode script to decode integer IDs from an input file using a model",
+    "run_spm_decode_unk": "run the sentencepiece decode script to decode tokens remapping <<unk>> tokens to ID 0",
+    "review_main": "review the main function that parses args and decodes sentencepiece tokens line by line",
+    "refactor_decode": "refactor the decode function to support additional input formats beyond piece and id"
+  },
+  "facebookresearch_mask-predict/scripts/spm_encode.py": {
+    "run_spm_encode_pieces": "run the spm_encode script to encode input text files as sentencepiece tokens using a model",
+    "run_spm_encode_ids": "run the spm_encode script to encode input text files as sentencepiece token IDs using a model",
+    "run_spm_encode_with_length_filter": "run the spm_encode script with min-len and max-len filters to encode only lines within token bounds",
+    "run_spm_encode_stdin": "run the spm_encode script to encode text from stdin and write encoded output to stdout",
+    "run_spm_encode_multi_file": "run the spm_encode script to encode multiple parallel input files and write to multiple output files"
+  }
+}

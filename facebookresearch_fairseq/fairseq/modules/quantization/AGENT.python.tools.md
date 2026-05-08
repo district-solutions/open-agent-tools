@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairseq
+- repo_uri: https://github.com/facebookresearch/fairseq
+
+## File: facebookresearch_fairseq/fairseq/modules/quantization/quantization_options.py
+
+Prompts
+
+```
+['parse a YAML dictionary into quantization options with n_centroids, block_sizes, and layers_to_quantize for Linear and Embedding layers', 'convert a YAML dictionary with key and value keys into a two-element tuple', 'review the parse_config_yaml function to understand default quantization options for Linear and Embedding layers', 'test the parse_config_yaml function with custom n_centroids and block_sizes YAML data', 'refactor the convert_yaml_to_tuple function to handle missing key or value dictionary keys gracefully']
+```
+
+Usage
+
+```
+{'parse_config_yaml': 'parse a YAML dictionary into quantization options with n_centroids, block_sizes, and layers_to_quantize for Linear and Embedding layers', 'convert_yaml_to_tuple': 'convert a YAML dictionary with key and value keys into a two-element tuple', 'review_parse_config_yaml': 'review the parse_config_yaml function to understand default quantization options for Linear and Embedding layers', 'test_parse_config_yaml': 'test the parse_config_yaml function with custom n_centroids and block_sizes YAML data', 'refactor_convert_yaml_to_tuple': 'refactor the convert_yaml_to_tuple function to handle missing key or value dictionary keys gracefully'}
+```
+

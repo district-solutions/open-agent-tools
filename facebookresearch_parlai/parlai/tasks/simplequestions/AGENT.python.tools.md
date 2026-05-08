@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/parlai
+- repo_uri: https://github.com/facebookresearch/parlai
+
+## File: facebookresearch_parlai/parlai/tasks/simplequestions/build.py
+
+Prompts
+
+```
+['run the build function to download and prepare the SimpleQuestions dataset into the datapath directory', 'download the SimpleQuestions tar.gz file from parl.ai into the specified data directory', 'check if the SimpleQuestions dataset has already been built in the data path', 'remove an older version of the SimpleQuestions dataset directory before rebuilding', 'mark the SimpleQuestions dataset as fully built and ready for use']
+```
+
+Usage
+
+```
+{'build_simplequestions_data': 'run the build function to download and prepare the SimpleQuestions dataset into the datapath directory', 'download_simplequestions_tarball': 'download the SimpleQuestions tar.gz file from parl.ai into the specified data directory', 'check_simplequestions_built': 'check if the SimpleQuestions dataset has already been built in the data path', 'remove_outdated_simplequestions': 'remove an older version of the SimpleQuestions dataset directory before rebuilding', 'mark_simplequestions_done': 'mark the SimpleQuestions dataset as fully built and ready for use'}
+```
+

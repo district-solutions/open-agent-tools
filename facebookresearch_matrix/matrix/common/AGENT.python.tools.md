@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/matrix
+- repo_uri: https://github.com/facebookresearch/matrix
+
+## File: facebookresearch_matrix/matrix/common/cluster_info.py
+
+Prompts
+
+```
+['create a ClusterInfo dataclass instance with hostname, port, and executor fields for cluster configuration', 'get the head HTTP host from a ClusterInfo object returning localhost or the hostname', 'configure a ClusterInfo dataclass with http_port, grpc_port, and dashboard_port values', 'set the executor field on a ClusterInfo instance to local or remote mode', 'review the ClusterInfo dataclass fields and get_head_http_host function for cluster configuration']
+```
+
+Usage
+
+```
+{'create_ClusterInfo_dataclass': 'create a ClusterInfo dataclass instance with hostname, port, and executor fields for cluster configuration', 'get_head_http_host': 'get the head HTTP host from a ClusterInfo object returning localhost or the hostname', 'configure_cluster_ports': 'configure a ClusterInfo dataclass with http_port, grpc_port, and dashboard_port values', 'set_cluster_executor': 'set the executor field on a ClusterInfo instance to local or remote mode', 'review_ClusterInfo': 'review the ClusterInfo dataclass fields and get_head_http_host function for cluster configuration'}
+```
+

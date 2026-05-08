@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairchem
+- repo_uri: https://github.com/facebookresearch/fairchem
+
+## File: facebookresearch_fairchem/src/fairchem/applications/ocx/analysis/ml_inference.py
+
+Prompts
+
+```
+['run the ml_inference script to perform HER voltage prediction on computational and experimental data', 'run ml_inference with elemental features added via matminer for enhanced HER predictions', 'run ml_inference with cross validation results to generate a parity plot of predicted vs experimental voltage', 'get aggregate energies per bulk material from a CSV or parquet file for ML inference', 'review the ml_inference argparse CLI arguments for HER inference including expt_csv, comp_csv, and output_dir']
+```
+
+Usage
+
+```
+{'run_ml_inference_her': 'run the ml_inference script to perform HER voltage prediction on computational and experimental data', 'run_ml_inference_with_features': 'run ml_inference with elemental features added via matminer for enhanced HER predictions', 'run_ml_inference_parity_plot': 'run ml_inference with cross validation results to generate a parity plot of predicted vs experimental voltage', 'get_computational_df_to_predict': 'get aggregate energies per bulk material from a CSV or parquet file for ML inference', 'review_ml_inference_cli': 'review the ml_inference argparse CLI arguments for HER inference including expt_csv, comp_csv, and output_dir'}
+```
+

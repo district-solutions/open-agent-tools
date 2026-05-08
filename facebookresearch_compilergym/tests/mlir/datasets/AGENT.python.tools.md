@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/compilergym
+- repo_uri: https://github.com/facebookresearch/compilergym
+
+## File: facebookresearch_compilergym/tests/mlir/datasets/matmul_test.py
+
+Prompts
+
+```
+['test the MatmulDataset size assertion to verify it contains exactly one benchmark', 'test random benchmark selection from the MatmulDataset and write source files to a directory', 'test that benchmark_from_size raises an OSError when the retry count is exceeded', 'test that the MLIR environment runtime observations are all positive values', 'test the matmul_dataset fixture that creates a MatmulDataset via the gym mlir-v0 environment']
+```
+
+Usage
+
+```
+{'test_matmul_dataset_size': 'test the MatmulDataset size assertion to verify it contains exactly one benchmark', 'test_matmul_random_select': 'test random benchmark selection from the MatmulDataset and write source files to a directory', 'test_matmul_retry_count_exceeded': 'test that benchmark_from_size raises an OSError when the retry count is exceeded', 'test_matmul_positive_runtimes': 'test that the MLIR environment runtime observations are all positive values', 'test_matmul_fixture': 'test the matmul_dataset fixture that creates a MatmulDataset via the gym mlir-v0 environment'}
+```
+

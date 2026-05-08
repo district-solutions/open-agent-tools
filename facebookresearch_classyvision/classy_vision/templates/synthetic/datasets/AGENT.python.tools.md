@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/classyvision
+- repo_uri: https://github.com/facebookresearch/classyvision
+
+## File: facebookresearch_classyvision/classy_vision/templates/synthetic/datasets/my_dataset.py
+
+Prompts
+
+```
+['create a MyDataset instance with crop size, class ratio, seed, and transform parameters', 'build a MyDataset from a config dictionary with crop_size, class_ratio, and seed keys', 'register the MyDataset class as my_dataset using the register_dataset decorator', 'test the MyDataset from_config class method with a sample config dictionary', 'review the MyDataset init method that wraps RandomImageBinaryClassDataset with ClassyDataset']
+```
+
+Usage
+
+```
+{'create_MyDataset': 'create a MyDataset instance with crop size, class ratio, seed, and transform parameters', 'build_MyDataset_from_config': 'build a MyDataset from a config dictionary with crop_size, class_ratio, and seed keys', 'register_MyDataset': 'register the MyDataset class as my_dataset using the register_dataset decorator', 'test_MyDataset_from_config': 'test the MyDataset from_config class method with a sample config dictionary', 'review_MyDataset_init': 'review the MyDataset init method that wraps RandomImageBinaryClassDataset with ClassyDataset'}
+```
+

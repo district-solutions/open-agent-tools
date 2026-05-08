@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/matrix
+- repo_uri: https://github.com/facebookresearch/matrix
+
+## File: facebookresearch_matrix/matrix/scripts/delete_named_actor.py
+
+Prompts
+
+```
+['run the script to kill a named Ray actor by name and namespace on a Ray cluster', 'run the CLI tool to delete a named Ray actor using hostname port actor name and namespace', 'review the delete_named_actor function that connects to a Ray cluster and kills a named actor', 'summarize the delete_named_actor function that uses ray.get_actor and ray.kill to remove actors', 'test the delete_named_actor function by providing a Ray head URL actor name and namespace', 'run the script to load a HuggingFace dataset and dump it to a JSONL file', 'run the script to load a specific split of a HuggingFace dataset and save to JSONL', 'run the script to load a dataset and apply a prompt template to a text field before saving', 'run the script to load a HuggingFace dataset and save it to a custom output JSONL path', 'run the script via fire CLI to convert any HuggingFace dataset to JSONL format', 'kill a Ray actor by its name and namespace using the by_name CLI command', 'kill a Ray actor by its hex actor ID using the by_id CLI command', 'repeatedly kill random actors from a list at set intervals using the random CLI command', 'initialize a Ray connection to the cluster using matrix Cli and get_ray_address utility', 'kill a Ray actor and prevent it from restarting by setting the no_restart flag to True', 'run a lighteval benchmark task against a deployed LLM model on a Matrix cluster', 'setup a SLURM cluster and deploy an LLM application with multiple replicas via Matrix CLI', 'run a lighteval evaluation with custom generation parameters like temperature and max tokens', 'run a lighteval pipeline evaluation using a custom tasks directory for benchmark datasets', 'cleanup and remove a deployed LLM application and stop the Matrix cluster after evaluation', 'merge a dataset JSONL file with LLM prediction JSONL file and output combined results', 'run the merge_dataset_with_pred script via fire CLI to merge dataset and prediction JSONL files', 'merge predictions into dataset lines using a configurable dot-separated line field for matching', 'extract a configurable dot-separated prediction field from LLM response JSONL and add as pred column', 'report which dataset lines are missing predictions after merging dataset and prediction JSONL files']
+```
+
+Usage
+
+```
+{'run_delete_named_actor': 'run the script to kill a named Ray actor by name and namespace on a Ray cluster', 'run_delete_named_actor_cli': 'run the CLI tool to delete a named Ray actor using hostname port actor name and namespace', 'review_delete_named_actor': 'review the delete_named_actor function that connects to a Ray cluster and kills a named actor', 'summarize_delete_named_actor': 'summarize the delete_named_actor function that uses ray.get_actor and ray.kill to remove actors', 'test_delete_named_actor': 'test the delete_named_actor function by providing a Ray head URL actor name and namespace'}
+```
+
+## File: facebookresearch_matrix/matrix/scripts/hf_dataset_to_jsonl.py
+
+Prompts
+
+```
+['run the script to kill a named Ray actor by name and namespace on a Ray cluster', 'run the CLI tool to delete a named Ray actor using hostname port actor name and namespace', 'review the delete_named_actor function that connects to a Ray cluster and kills a named actor', 'summarize the delete_named_actor function that uses ray.get_actor and ray.kill to remove actors', 'test the delete_named_actor function by providing a Ray head URL actor name and namespace', 'run the script to load a HuggingFace dataset and dump it to a JSONL file', 'run the script to load a specific split of a HuggingFace dataset and save to JSONL', 'run the script to load a dataset and apply a prompt template to a text field before saving', 'run the script to load a HuggingFace dataset and save it to a custom output JSONL path', 'run the script via fire CLI to convert any HuggingFace dataset to JSONL format', 'kill a Ray actor by its name and namespace using the by_name CLI command', 'kill a Ray actor by its hex actor ID using the by_id CLI command', 'repeatedly kill random actors from a list at set intervals using the random CLI command', 'initialize a Ray connection to the cluster using matrix Cli and get_ray_address utility', 'kill a Ray actor and prevent it from restarting by setting the no_restart flag to True', 'run a lighteval benchmark task against a deployed LLM model on a Matrix cluster', 'setup a SLURM cluster and deploy an LLM application with multiple replicas via Matrix CLI', 'run a lighteval evaluation with custom generation parameters like temperature and max tokens', 'run a lighteval pipeline evaluation using a custom tasks directory for benchmark datasets', 'cleanup and remove a deployed LLM application and stop the Matrix cluster after evaluation', 'merge a dataset JSONL file with LLM prediction JSONL file and output combined results', 'run the merge_dataset_with_pred script via fire CLI to merge dataset and prediction JSONL files', 'merge predictions into dataset lines using a configurable dot-separated line field for matching', 'extract a configurable dot-separated prediction field from LLM response JSONL and add as pred column', 'report which dataset lines are missing predictions after merging dataset and prediction JSONL files']
+```
+
+Usage
+
+```
+{'run_load_and_dump_dataset': 'run the script to load a HuggingFace dataset and dump it to a JSONL file', 'run_load_and_dump_dataset_with_split': 'run the script to load a specific split of a HuggingFace dataset and save to JSONL', 'run_load_and_dump_dataset_with_template': 'run the script to load a dataset and apply a prompt template to a text field before saving', 'run_load_and_dump_dataset_custom_output': 'run the script to load a HuggingFace dataset and save it to a custom output JSONL path', 'run_load_and_dump_dataset_cli': 'run the script via fire CLI to convert any HuggingFace dataset to JSONL format'}
+```
+
+## File: facebookresearch_matrix/matrix/scripts/kill_ray_actor.py
+
+Prompts
+
+```
+['run the script to kill a named Ray actor by name and namespace on a Ray cluster', 'run the CLI tool to delete a named Ray actor using hostname port actor name and namespace', 'review the delete_named_actor function that connects to a Ray cluster and kills a named actor', 'summarize the delete_named_actor function that uses ray.get_actor and ray.kill to remove actors', 'test the delete_named_actor function by providing a Ray head URL actor name and namespace', 'run the script to load a HuggingFace dataset and dump it to a JSONL file', 'run the script to load a specific split of a HuggingFace dataset and save to JSONL', 'run the script to load a dataset and apply a prompt template to a text field before saving', 'run the script to load a HuggingFace dataset and save it to a custom output JSONL path', 'run the script via fire CLI to convert any HuggingFace dataset to JSONL format', 'kill a Ray actor by its name and namespace using the by_name CLI command', 'kill a Ray actor by its hex actor ID using the by_id CLI command', 'repeatedly kill random actors from a list at set intervals using the random CLI command', 'initialize a Ray connection to the cluster using matrix Cli and get_ray_address utility', 'kill a Ray actor and prevent it from restarting by setting the no_restart flag to True', 'run a lighteval benchmark task against a deployed LLM model on a Matrix cluster', 'setup a SLURM cluster and deploy an LLM application with multiple replicas via Matrix CLI', 'run a lighteval evaluation with custom generation parameters like temperature and max tokens', 'run a lighteval pipeline evaluation using a custom tasks directory for benchmark datasets', 'cleanup and remove a deployed LLM application and stop the Matrix cluster after evaluation', 'merge a dataset JSONL file with LLM prediction JSONL file and output combined results', 'run the merge_dataset_with_pred script via fire CLI to merge dataset and prediction JSONL files', 'merge predictions into dataset lines using a configurable dot-separated line field for matching', 'extract a configurable dot-separated prediction field from LLM response JSONL and add as pred column', 'report which dataset lines are missing predictions after merging dataset and prediction JSONL files']
+```
+
+Usage
+
+```
+{'kill_ray_actor_by_name': 'kill a Ray actor by its name and namespace using the by_name CLI command', 'kill_ray_actor_by_id': 'kill a Ray actor by its hex actor ID using the by_id CLI command', 'kill_random_actors_repeatedly': 'repeatedly kill random actors from a list at set intervals using the random CLI command', 'init_ray_connection': 'initialize a Ray connection to the cluster using matrix Cli and get_ray_address utility', 'kill_actor_no_restart': 'kill a Ray actor and prevent it from restarting by setting the no_restart flag to True'}
+```
+
+## File: facebookresearch_matrix/matrix/scripts/light_eval_example.py
+
+Prompts
+
+```
+['run the script to kill a named Ray actor by name and namespace on a Ray cluster', 'run the CLI tool to delete a named Ray actor using hostname port actor name and namespace', 'review the delete_named_actor function that connects to a Ray cluster and kills a named actor', 'summarize the delete_named_actor function that uses ray.get_actor and ray.kill to remove actors', 'test the delete_named_actor function by providing a Ray head URL actor name and namespace', 'run the script to load a HuggingFace dataset and dump it to a JSONL file', 'run the script to load a specific split of a HuggingFace dataset and save to JSONL', 'run the script to load a dataset and apply a prompt template to a text field before saving', 'run the script to load a HuggingFace dataset and save it to a custom output JSONL path', 'run the script via fire CLI to convert any HuggingFace dataset to JSONL format', 'kill a Ray actor by its name and namespace using the by_name CLI command', 'kill a Ray actor by its hex actor ID using the by_id CLI command', 'repeatedly kill random actors from a list at set intervals using the random CLI command', 'initialize a Ray connection to the cluster using matrix Cli and get_ray_address utility', 'kill a Ray actor and prevent it from restarting by setting the no_restart flag to True', 'run a lighteval benchmark task against a deployed LLM model on a Matrix cluster', 'setup a SLURM cluster and deploy an LLM application with multiple replicas via Matrix CLI', 'run a lighteval evaluation with custom generation parameters like temperature and max tokens', 'run a lighteval pipeline evaluation using a custom tasks directory for benchmark datasets', 'cleanup and remove a deployed LLM application and stop the Matrix cluster after evaluation', 'merge a dataset JSONL file with LLM prediction JSONL file and output combined results', 'run the merge_dataset_with_pred script via fire CLI to merge dataset and prediction JSONL files', 'merge predictions into dataset lines using a configurable dot-separated line field for matching', 'extract a configurable dot-separated prediction field from LLM response JSONL and add as pred column', 'report which dataset lines are missing predictions after merging dataset and prediction JSONL files']
+```
+
+Usage
+
+```
+{'run_lighteval_on_deployed_model': 'run a lighteval benchmark task against a deployed LLM model on a Matrix cluster', 'setup_matrix_cluster_and_deploy_app': 'setup a SLURM cluster and deploy an LLM application with multiple replicas via Matrix CLI', 'run_lighteval_with_custom_generation_params': 'run a lighteval evaluation with custom generation parameters like temperature and max tokens', 'run_lighteval_with_custom_tasks': 'run a lighteval pipeline evaluation using a custom tasks directory for benchmark datasets', 'cleanup_matrix_cluster_and_app': 'cleanup and remove a deployed LLM application and stop the Matrix cluster after evaluation'}
+```
+
+## File: facebookresearch_matrix/matrix/scripts/merge_dataset_with_pred.py
+
+Prompts
+
+```
+['run the script to kill a named Ray actor by name and namespace on a Ray cluster', 'run the CLI tool to delete a named Ray actor using hostname port actor name and namespace', 'review the delete_named_actor function that connects to a Ray cluster and kills a named actor', 'summarize the delete_named_actor function that uses ray.get_actor and ray.kill to remove actors', 'test the delete_named_actor function by providing a Ray head URL actor name and namespace', 'run the script to load a HuggingFace dataset and dump it to a JSONL file', 'run the script to load a specific split of a HuggingFace dataset and save to JSONL', 'run the script to load a dataset and apply a prompt template to a text field before saving', 'run the script to load a HuggingFace dataset and save it to a custom output JSONL path', 'run the script via fire CLI to convert any HuggingFace dataset to JSONL format', 'kill a Ray actor by its name and namespace using the by_name CLI command', 'kill a Ray actor by its hex actor ID using the by_id CLI command', 'repeatedly kill random actors from a list at set intervals using the random CLI command', 'initialize a Ray connection to the cluster using matrix Cli and get_ray_address utility', 'kill a Ray actor and prevent it from restarting by setting the no_restart flag to True', 'run a lighteval benchmark task against a deployed LLM model on a Matrix cluster', 'setup a SLURM cluster and deploy an LLM application with multiple replicas via Matrix CLI', 'run a lighteval evaluation with custom generation parameters like temperature and max tokens', 'run a lighteval pipeline evaluation using a custom tasks directory for benchmark datasets', 'cleanup and remove a deployed LLM application and stop the Matrix cluster after evaluation', 'merge a dataset JSONL file with LLM prediction JSONL file and output combined results', 'run the merge_dataset_with_pred script via fire CLI to merge dataset and prediction JSONL files', 'merge predictions into dataset lines using a configurable dot-separated line field for matching', 'extract a configurable dot-separated prediction field from LLM response JSONL and add as pred column', 'report which dataset lines are missing predictions after merging dataset and prediction JSONL files']
+```
+
+Usage
+
+```
+{'merge_dataset_with_predictions': 'merge a dataset JSONL file with LLM prediction JSONL file and output combined results', 'load_and_dump_dataset_cli': 'run the merge_dataset_with_pred script via fire CLI to merge dataset and prediction JSONL files', 'merge_by_line_field': 'merge predictions into dataset lines using a configurable dot-separated line field for matching', 'extract_pred_field': 'extract a configurable dot-separated prediction field from LLM response JSONL and add as pred column', 'report_missing_lines': 'report which dataset lines are missing predictions after merging dataset and prediction JSONL files'}
+```
+

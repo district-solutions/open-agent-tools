@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairchem
+- repo_uri: https://github.com/facebookresearch/fairchem
+
+## File: facebookresearch_fairchem/src/fairchem/data/omat/entries/compatibility.py
+
+Prompts
+
+```
+['apply Materials Project style energy corrections to an ASE Atoms object using OMat24 or MP2020 correction types', 'generate a ComputedStructureEntry from a pymatgen structure and total energy with MP2020 or OMat24 corrections applied', 'generate parameters dict for a ComputedStructureEntry from a VASP input set including hubbards and POTCAR info', 'create an OMat24Compatibility instance with Advanced GGA/GGA+U mixing scheme and custom OMat24 config file defaults', 'process a ComputedStructureEntry using OMat24Compatibility to apply energy corrections with peroxide and anion handling']
+```
+
+Usage
+
+```
+{'apply_mp_style_corrections': 'apply Materials Project style energy corrections to an ASE Atoms object using OMat24 or MP2020 correction types', 'generate_computed_structure_entry': 'generate a ComputedStructureEntry from a pymatgen structure and total energy with MP2020 or OMat24 corrections applied', 'generate_cse_parameters': 'generate parameters dict for a ComputedStructureEntry from a VASP input set including hubbards and POTCAR info', 'create_OMat24Compatibility': 'create an OMat24Compatibility instance with Advanced GGA/GGA+U mixing scheme and custom OMat24 config file defaults', 'process_entry_with_OMat24': 'process a ComputedStructureEntry using OMat24Compatibility to apply energy corrections with peroxide and anion handling'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/pytouch
+- repo_uri: https://github.com/facebookresearch/pytouch
+
+## File: facebookresearch_pytouch/sensors/setup.py
+
+Prompts
+
+```
+['build a source distribution for the pytouch_sensors package using python setup.py sdist', 'install the pytouch_sensors package locally using python setup.py install', 'build a wheel distribution for the pytouch_sensors package using python setup.py bdist_wheel', 'review the pytouch_sensors setup.py configuration including dependencies and classifiers', 'summarize the pytouch_sensors setup.py package metadata and install requirements']
+```
+
+Usage
+
+```
+{'build_sdist': 'build a source distribution for the pytouch_sensors package using python setup.py sdist', 'install_pytouch_sensors': 'install the pytouch_sensors package locally using python setup.py install', 'build_bdist_wheel': 'build a wheel distribution for the pytouch_sensors package using python setup.py bdist_wheel', 'review_setup_config': 'review the pytouch_sensors setup.py configuration including dependencies and classifiers', 'summarize_setup': 'summarize the pytouch_sensors setup.py package metadata and install requirements'}
+```
+

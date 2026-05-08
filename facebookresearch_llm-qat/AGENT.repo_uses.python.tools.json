@@ -1,0 +1,44 @@
+{
+  "facebookresearch_llm-qat/models/modeling_llama_quant.py": {
+    "build_quantized_llama_causal_lm": "build a quantized LlamaForCausalLM model from a LlamaConfig with w_bits and a_bits for weight and activation quantization",
+    "build_quantized_llama_sequence_classifier": "build a quantized LlamaForSequenceClassification model with a linear classification head on top of the Llama decoder",
+    "create_llama_decoder_with_kv_quantization": "create a LlamaModel decoder with KV cache quantization using SymQuantizer and configurable kv_bits from config",
+    "review_llamaattention_quantized_projections": "review the LlamaAttention class that uses QuantizeLinear for q, k, v, o projections with configurable w_bits and a_bits",
+    "review_llamamlp_quantized_layers": "review the LlamaMLP class with QuantizeLinear gate, up, and down projections using config-driven w_bits and a_bits quantization"
+  },
+  "facebookresearch_llm-qat/models/utils_quant.py": {
+    "create_symmetric_quantizer": "create a SymQuantizer autograd function to perform uniform symmetric quantization on a PyTorch tensor",
+    "create_asymmetric_quantizer": "create an AsymQuantizer autograd function to perform min-max asymmetric quantization on a PyTorch tensor",
+    "build_quantize_linear_layer": "build a QuantizeLinear layer that quantizes both weights and activations with configurable bit widths",
+    "test_symquantizer_forward_backward": "test the SymQuantizer forward and backward pass with a sample tensor and clip values",
+    "refactor_quantize_linear_bits": "refactor the QuantizeLinear class to support custom bit widths for weights and activations"
+  },
+  "facebookresearch_llm-qat/utils/datautils.py": {
+    "set_seed": "set the random seed for numpy and torch using set_seed(seed)",
+    "get_train_val_dataset": "load a JSONL file and split into train and validation datasets using get_train_val_dataset",
+    "create_CustomJsonDataset": "create a PyTorch IterableDataset that tokenizes and groups text into fixed-size blocks using CustomJsonDataset",
+    "tokenize_function": "tokenize a text example using the CustomJsonDataset tokenize_function method",
+    "jload": "load a JSON file into a dictionary using jload(filename)"
+  },
+  "facebookresearch_llm-qat/utils/kd_trainer.py": {
+    "create_KDTrainer": "create a KDTrainer instance that extends HuggingFace Trainer for knowledge distillation training",
+    "compute_ce_loss_KDTrainer": "compute the cross-entropy KL divergence loss between student and teacher model logits",
+    "compute_mse_loss_KDTrainer": "compute the MSE loss between student and teacher model logits",
+    "compute_loss_train_KDTrainer": "compute the knowledge distillation training loss using teacher and student model outputs",
+    "wrap_model_KDTrainer": "wrap a model with FSDP, ShardedDDP, or DDP for distributed knowledge distillation training"
+  },
+  "facebookresearch_llm-qat/utils/process_args.py": {
+    "run_process_args": "run process_args to parse CLI arguments into ModelArguments, DataArguments, and TrainingArguments dataclasses",
+    "create_model_arguments": "create a ModelArguments dataclass to configure quantization bits for weights, activations, and KV cache",
+    "create_data_arguments": "create a DataArguments dataclass to configure training and evaluation data paths and sample limits",
+    "create_training_arguments": "create a TrainingArguments dataclass extending HuggingFace TrainingArguments with QAT and knowledge distillation options",
+    "review_model_arguments": "review the ModelArguments dataclass fields for quantization bit settings and model input output paths"
+  },
+  "facebookresearch_llm-qat/utils/utils.py": {
+    "get_logger": "create a logger with INFO level and console handler for a given logger name",
+    "safe_save_model_for_hf_trainer": "save a HuggingFace Trainer model state dict to disk excluding teacher keys",
+    "get_local_rank": "get the local rank from environment variable or torch distributed fallback",
+    "review_utils_functions": "review the utility functions for logging, model saving, and distributed rank retrieval",
+    "summarize_utils_module": "summarize the utils module providing logging setup, model saving, and rank utilities"
+  }
+}

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/enorm
+- repo_uri: https://github.com/facebookresearch/enorm
+
+## File: facebookresearch_enorm/enorm/main.py
+
+Prompts
+
+```
+['run the ENorm training loop on CIFAR-10 with configurable epochs, batch size, and learning rate', 'run the train function to perform one epoch of training with SGD and optional ENorm regularization', 'run the test function to evaluate model accuracy and loss on a test data loader', 'review the AverageMeter class that computes and stores average and current values for metrics', 'run the adjust_learning_rate function to decay the learning rate using a linear or quadratic schedule']
+```
+
+Usage
+
+```
+{'run_ENorm_training': 'run the ENorm training loop on CIFAR-10 with configurable epochs, batch size, and learning rate', 'run_train_function': 'run the train function to perform one epoch of training with SGD and optional ENorm regularization', 'run_test_function': 'run the test function to evaluate model accuracy and loss on a test data loader', 'review_AverageMeter_class': 'review the AverageMeter class that computes and stores average and current values for metrics', 'run_adjust_learning_rate': 'run the adjust_learning_rate function to decay the learning rate using a linear or quadratic schedule'}
+```
+

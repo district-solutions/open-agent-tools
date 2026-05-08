@@ -1,0 +1,1115 @@
+{
+  "facebookresearch_pytorchvideo/projects/video_nerf/dataset.py": {
+    "get_nerf_datasets_objectron": "get training, validation, and test datasets for the objectron dataset with specified image size",
+    "get_nerf_datasets_custom_root": "get nerf datasets from a custom data root path with bundle adjusted camera parameters",
+    "trivial_collate_batch": "return an uncollated batch as-is for use with PyTorch DataLoader collate_fn",
+    "review_get_nerf_datasets": "review the get_nerf_datasets function that loads video frames and builds PerspectiveCameras per frame",
+    "refactor_trivial_collate": "refactor the trivial_collate function to support basic batch stacking for tensor images"
+  },
+  "facebookresearch_pytorchvideo/projects/video_nerf/dataset_utils.py": {
+    "convert_objectron_to_pytorch3d": "convert Objectron rotation and translation matrices to PyTorch3D world coordinate system",
+    "generate_train_val_test_splits": "generate shuffled train, validation, and test index splits from a list of image indices",
+    "parse_objectron_geometry_data": "parse Objectron protobuf metadata files to extract camera projection and view matrices per frame",
+    "resize_image_frames": "resize a list of image frames to a target size with isotropic bilinear interpolation",
+    "review_dataset_utils": "review the dataset utility functions for coordinate transforms, data splitting, geometry parsing, and image resizing"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/accelerator/deployment/common/model_transmuter.py": {
+    "transmute_model": "transmute a PyTorch nn.Module model by replacing submodules with efficientBlocks for a target device",
+    "find_equivalent_efficient_module": "find an equivalent efficientBlock for a given nn.Module by searching through a transmuter list",
+    "register_transmuter_list": "register a list of transmuter functions for a target device in EFFICIENT_BLOCK_TRANSMUTER_REGISTRY",
+    "review_transmute_model": "review the transmute_model function to understand how it recursively replaces model submodules",
+    "summarize_transmuter_registry": "summarize the EFFICIENT_BLOCK_TRANSMUTER_REGISTRY dictionary and how transmuter lists are organized per device"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/accelerator/deployment/mobile_cpu/transmuter/transmuter_mobile_cpu.py": {
+    "transmute_Conv3dPwBnAct": "transmute a 1x1x1 pointwise nn.Conv3d module into an equivalent Conv3dPwBnAct for mobile CPU optimization",
+    "transmute_Conv3d3x3x3DwBnAct": "transmute a 3x3x3 depthwise nn.Conv3d module into an equivalent Conv3d3x3x3DwBnAct for mobile CPU optimization",
+    "transmute_Conv3dTemporalKernel1BnAct": "transmute a temporal kernel 1 nn.Conv3d module into an equivalent Conv3dTemporalKernel1BnAct for mobile CPU optimization",
+    "transmute_Conv3d3x1x1BnAct": "transmute a 3x1x1 temporal nn.Conv3d module into an equivalent Conv3d3x1x1BnAct for mobile CPU optimization",
+    "transmute_Conv3d5x1x1BnAct": "transmute a 5x1x1 temporal nn.Conv3d module into an equivalent Conv3d5x1x1BnAct for mobile CPU optimization"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/accelerator/deployment/mobile_cpu/utils/model_conversion.py": {
+    "convert_model_deployable_mobile_cpu": "convert a PyTorch video model with efficient blocks into a deployable form for mobile CPU inference",
+    "convert_model_for_quantization": "convert a PyTorch model to deployable form with quantization support for mobile CPU using QNNPACK",
+    "convert_model_native_conv3d_qnnpack": "convert a PyTorch model to deployable form enabling native int8 Conv3d operations via QNNPACK",
+    "review_convert_to_deployable_form": "review the convert_to_deployable_form function that transforms efficient blocks in a model for mobile CPU deployment",
+    "summarize_model_conversion_hooks": "summarize how forward hooks capture input tensor sizes across all modules during model conversion"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/accelerator/efficient_blocks/efficient_block_base.py": {
+    "create_efficient_block_subclass": "create a subclass of EfficientBlockBase that implements convert and forward methods",
+    "implement_convert_method": "implement the convert method to transform an efficient block into deployable form",
+    "implement_forward_method": "implement the forward method to define the block's training-time computation graph",
+    "review_EfficientBlockBase": "review the EfficientBlockBase abstract class and its convert and forward method contracts",
+    "summarize_EfficientBlockBase": "summarize the EfficientBlockBase class and its original versus deployable form design"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/accelerator/efficient_blocks/no_op_convert_block.py": {
+    "create_NoOpConvertBlock": "create a NoOpConvertBlock instance that wraps an nn.Module without applying conversion",
+    "use_NoOpConvertBlock_forward": "use NoOpConvertBlock forward method to pass input through the wrapped model unchanged",
+    "call_NoOpConvertBlock_convert": "call NoOpConvertBlock convert method which performs no operation on the wrapped model",
+    "review_NoOpConvertBlock": "review the NoOpConvertBlock class that provides a no-op wrapper for EfficientBlockBase compatibility",
+    "refactor_NoOpConvertBlock": "refactor NoOpConvertBlock to wrap an nn.Module that does not need hardware-specific conversion"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/ava.py": {
+    "create_ava_dataset": "create a LabeledVideoDataset for the AVA actions dataset from frame paths and labels CSV files",
+    "parse_ava_frame_paths_and_labels": "parse AVA dataset frame paths and labels CSV files into a list of labeled video paths tuples",
+    "load_ava_labels_csv": "load and parse an AVA per frame labels CSV file into a nested dictionary of bounding boxes and labels",
+    "load_ava_image_lists": "load image paths from an AVA frame paths file and return sorted absolute paths with video index mappings",
+    "sample_clip_at_timestamp": "sample a video clip centered around a specific timestamp using a TimeStampClipSampler"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/charades.py": {
+    "create_charades_dataset": "create a Charades dataset instance with a clip sampler and data path for action recognition",
+    "sample_clip_frames": "sample frames from a video clip using uniform spacing across frame indices",
+    "read_video_paths_and_labels": "read a space-separated CSV file containing video frame paths and action labels",
+    "iterate_charades_clips": "iterate through Charades dataset clips using the __next__ method with clip sampling strategy",
+    "configure_charades_transform": "configure a Charades dataset with a custom transform callable for preprocessing video clips"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/clip_sampling.py": {
+    "create_uniform_clip_sampler": "create a UniformClipSampler to evenly split a video into fixed-duration clips with configurable stride",
+    "create_random_clip_sampler": "create a RandomClipSampler to randomly sample a single clip of fixed duration from a video",
+    "create_constant_clips_per_video_sampler": "create a ConstantClipsPerVideoSampler to evenly sample a fixed number of clips per video",
+    "create_random_multi_clip_sampler": "create a RandomMultiClipSampler to randomly sample multiple clips of fixed duration from a video",
+    "use_make_clip_sampler_factory": "use make_clip_sampler to construct a clip sampler by name such as uniform or random"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/dataset_manifest_utils.py": {
+    "load_videos_from_manifest": "load frame or encoded videos from CSV manifest files into a Video dataset dictionary",
+    "convert_frame_numbers_to_filepaths": "convert frame numbers to zero-padded file paths for a video using VideoFrameInfo metadata",
+    "parse_hms_timestamp_to_seconds": "parse an HH:MM:SS or HH:MM:SS.fraction timestamp string into total seconds as a float",
+    "save_encoded_video_manifest": "save a dictionary of EncodedVideoInfo objects to a CSV manifest file for later reuse",
+    "save_video_frame_info": "save a dictionary of VideoFrameInfo objects to a CSV file for later reuse"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/encoded_video.py": {
+    "create_encoded_video_from_path": "create an EncodedVideo object from a file path using the from_path class method with pyav decoder",
+    "create_encoded_video_with_torchvision": "create an EncodedVideo object from a file path using the torchvision decoder via from_path",
+    "create_encoded_video_with_decord": "create an EncodedVideo object from a file path using the decord decoder via from_path",
+    "select_video_class_pyav": "select the EncodedVideoPyAV class by calling select_video_class with the pyav decoder string",
+    "review_encodedvideo_from_path": "review the EncodedVideo from_path class method that reads video files via PathManager and constructs decoder-specific instances"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/encoded_video_decord.py": {
+    "create_EncodedVideoDecord_with_audio": "create an EncodedVideoDecord instance from a binary video file to decode both video frames and audio samples",
+    "create_EncodedVideoDecord_video_only": "create an EncodedVideoDecord instance with decode_audio disabled to decode only video frames from an encoded file",
+    "get_clip_frames_and_audio": "get a clip of video frames and audio samples between two timestamps in seconds from an EncodedVideoDecord object",
+    "review_EncodedVideoDecord_fault_tolerance": "review the EncodedVideoDecord class and its fault tolerance configuration for handling corrupted video frames during decoding",
+    "summarize_EncodedVideoDecord_close": "summarize the EncodedVideoDecord close method that releases the underlying Decord AVReader or VideoReader resource"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/encoded_video_pyav.py": {
+    "create_EncodedVideoPyAV": "create an EncodedVideoPyAV instance from a binary file to decode video and audio streams using PyAV",
+    "get_clip_from_video": "get a clip of video frames and audio samples between start and end seconds from an encoded video",
+    "decode_video_selectively": "decode a specific time range of a video stream using PyAV with selective decoding and seeking",
+    "close_video_container": "close the internal PyAV container to release resources after decoding video",
+    "review_EncodedVideoPyAV_class": "review the EncodedVideoPyAV class and its selective decoding logic for video and audio streams"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/encoded_video_torchvision.py": {
+    "create_EncodedVideoTorchVision": "create an EncodedVideoTorchVision instance from a binary file to decode video and audio streams",
+    "get_clip_video_audio": "get a video clip with optional audio samples between start and end seconds",
+    "review_EncodedVideoTorchVision_duration": "review the EncodedVideoTorchVision class duration property that returns the video end time in seconds",
+    "summarize_torch_vision_decode_video": "summarize the _torch_vision_decode_video method that decodes video frames and audio using Torchvision ops",
+    "test_EncodedVideoTorchVision_get_clip": "test the EncodedVideoTorchVision get_clip method to retrieve RGB frames and audio samples by time range"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/epic_kitchen_forecasting.py": {
+    "create_epic_kitchen_forecasting_dataset": "create an EpicKitchenForecasting dataset instance with video info, actions, and manifest file paths for action forecasting",
+    "review_clip_sampling_enum": "review the ClipSampling enum class that defines Random as the only supported clip sampling strategy",
+    "refactor_transform_generator": "refactor the _transform_generator static method to customize how clips are transformed before being returned",
+    "summarize_frame_filter_generator": "summarize the _frame_filter_generator static method that subsamples frame indices based on frames per clip and time stride",
+    "test_define_clip_structure_generator": "test the _define_clip_structure_generator static method that produces candidate sample clips from video actions for forecasting"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/epic_kitchen_recognition.py": {
+    "create_epic_kitchen_recognition_dataset": "create an EpicKitchenRecognition dataset instance with video info, actions, and manifest file paths",
+    "build_clip_sampling_strategy": "build a clip sampling strategy using ClipSampling.RandomOffsetUniform for uniform random offset sampling",
+    "review_transform_generator": "review the _transform_generator method that filters actions within clip time bounds and applies transforms",
+    "refactor_frame_filter_generator": "refactor the _frame_filter_generator method to subsample frame indices to a target frames per clip count",
+    "summarize_define_clip_structure_generator": "summarize the _define_clip_structure_generator method that creates VideoClipInfo objects with random offset sampling"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/frame_video.py": {
+    "create_FrameVideo_from_directory": "create a FrameVideo from a directory of image frames sorted by natural key ordering",
+    "create_FrameVideo_from_frame_paths": "create a FrameVideo from a list of image frame file paths with a given fps",
+    "get_clip_from_FrameVideo": "get a video clip as a tensor from a FrameVideo between start and end seconds",
+    "load_images_with_retries": "load a list of image paths into a stacked tensor with retry logic for transient errors",
+    "review_FrameVideo_class": "review the FrameVideo class and its methods for accessing video clips from individual frame images"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/hmdb51.py": {
+    "create_hmdb51_dataset": "create a LabeledVideoDataset for HMDB51 using the Hmdb51 helper function with a clip sampler and split config",
+    "load_hmdb51_paths_from_dir": "load HMDB51 labeled video paths from a splits directory using Hmdb51LabeledVideoPaths.from_dir with split id and type",
+    "load_hmdb51_paths_from_csvs": "load HMDB51 labeled video paths from a list of split text files using Hmdb51LabeledVideoPaths.from_csvs",
+    "set_hmdb51_path_prefix": "set the video path prefix on an Hmdb51LabeledVideoPaths object to prepend a root directory to all video paths",
+    "review_hmdb51_split_types": "review the Hmdb51LabeledVideoPaths class split type dictionary and allowed splits for train, test, and unused folds"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/json_dataset.py": {
+    "build_video_only_dataset": "build a LabeledVideoDataset with no annotations from a JSON file listing video names",
+    "build_clip_recognition_dataset": "build a LabeledVideoDataset with noun and verb annotations from an Ego4D JSON file",
+    "create_untrimmed_clip_sampler": "create an UntrimmedClipSampler wrapper that adapts untrimmed annotated clips to the standard ClipSampler format",
+    "review_video_only_dataset": "review the video_only_dataset function to understand how it loads video paths from a JSON manifest",
+    "review_untrimmed_clip_sampler_call": "review the UntrimmedClipSampler __call__ method to understand how it samples clips within annotated time boundaries"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/kinetics.py": {
+    "create_kinetics_dataset": "create a LabeledVideoDataset for Kinetics using a clip sampler and data path",
+    "create_kinetics_with_audio": "create a Kinetics dataset with audio decoding enabled and pyav decoder",
+    "create_kinetics_with_transform": "create a Kinetics dataset with a custom transform callable for clip preprocessing",
+    "create_kinetics_with_prefix": "create a Kinetics dataset with a video path prefix for root directory resolution",
+    "review_kinetics_function": "review the Kinetics helper function that wraps labeled_video_dataset for action recognition"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/labeled_video_dataset.py": {
+    "create_labeled_video_dataset": "create a LabeledVideoDataset from a list of video paths and labels with a clip sampler",
+    "create_dataset_helper": "create a labeled video dataset from a data path using the labeled_video_dataset helper function",
+    "sample_video_clips": "sample video clips from a dataset using the __next__ method with a clip sampler strategy",
+    "iterate_video_dataset": "iterate over a LabeledVideoDataset using __iter__ to get clips with multiprocessing worker support",
+    "get_video_sampler": "get the video sampler from a LabeledVideoDataset to set the epoch for distributed sampling"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/labeled_video_paths.py": {
+    "create_LabeledVideoPaths_from_csv": "create a LabeledVideoPaths object by reading a CSV file with video paths and integer labels",
+    "create_LabeledVideoPaths_from_directory": "create a LabeledVideoPaths object by parsing a directory structure with class subdirectories and video files",
+    "create_LabeledVideoPaths_from_path": "create a LabeledVideoPaths object from a file or directory path auto-detecting the source type",
+    "access_LabeledVideoPaths_by_index": "access a video path and label tuple from a LabeledVideoPaths object by integer index",
+    "set_LabeledVideoPaths_path_prefix": "set a path prefix on a LabeledVideoPaths object to prepend to all video paths"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/ssv2.py": {
+    "create_SSV2_dataset": "create a PyTorch IterableDataset for Something-Something V2 action recognition using frame-based video data",
+    "sample_clip_frames": "sample frames from a video clip using segment-based uniform or random sampling strategy",
+    "read_video_paths_and_labels": "read SSV2 video frame paths and labels from CSV and JSON annotation files",
+    "iterate_SSV2_clips": "iterate over SSV2 dataset clips with configurable clip sampling and optional transforms",
+    "configure_SSV2_frame_filtering": "configure frame filtering for SSV2 dataset with frames per clip and random sampling options"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/ucf101.py": {
+    "create_ucf101_dataset": "create a LabeledVideoDataset for UCF101 action recognition using a clip sampler and data path",
+    "create_ucf101_with_audio": "create a UCF101 dataset that decodes audio from videos using the pyav decoder",
+    "create_ucf101_with_transform": "create a UCF101 dataset with a custom transform callable for preprocessing video clips",
+    "create_ucf101_with_prefix": "create a UCF101 dataset with a video path prefix to resolve relative video paths",
+    "create_ucf101_with_sampler": "create a UCF101 dataset using a specific video sampler type for distributed training splits"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/utils.py": {
+    "export_video_array": "encode a numpy array or torch tensor of video frames to an MP4 file at a given path",
+    "thwc_to_cthw": "permute a torch tensor from time-height-width-channel layout to channel-height-width-time layout",
+    "secs_to_pts": "convert a time in seconds to presentation timestamp using a given time base and start offset",
+    "load_dataclass_dict_from_csv": "load a CSV file into a dictionary of dataclass objects keyed by a specified field name",
+    "save_dataclass_objs_to_headered_csv": "save a list of dataclass objects to a CSV file with header row and field values"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/video.py": {
+    "load_video_from_path": "use VideoPathHandler to load a video from a file path or directory with optional audio decoding",
+    "load_encoded_video": "use VideoPathHandler to load an EncodedVideo from a single video file using pyav decoder",
+    "load_frame_video": "use VideoPathHandler to load a FrameVideo from a directory of frames at a specified FPS",
+    "get_video_clip": "use the Video abstract class get_clip method to retrieve frames between start and end times in seconds",
+    "review_video_abc": "review the Video abstract base class interface for duration property and get_clip method"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/ego4d/ego4d_dataset.py": {
+    "create_ego4d_moments_dataset": "create an Ego4dMomentsDataset instance to load Ego4D video, audio, and IMU data for the moments benchmark",
+    "load_imu_data": "load and normalize IMU sensor data from CSV files using the Ego4dImuData class for a given video UID",
+    "get_imu_sample": "get a time-windowed IMU signal sample for a specific video clip start and end time",
+    "build_audio_transform": "build a torchaudio signal transform for spectrogram, melspectrogram, or MFCC audio feature extraction",
+    "convert_labels_one_hot": "convert a list of Ego4D moment label strings into a one-hot encoded integer list"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/ego4d/utils.py": {
+    "check_window_len": "constrain a time window to a fixed length and video duration bounds",
+    "create_MomentsClipSampler": "create a clip sampler that returns a fixed window around an Ego4d annotation",
+    "get_label_id_map": "load a label ID mapping from a JSON file using iopath",
+    "review_Ego4dImuDataBase": "review the abstract base class for Ego4d IMU data access with has_imu and get_imu_sample methods",
+    "refactor_MomentsClipSampler_call": "refactor the MomentsClipSampler call method to adjust clip start and end times for video boundaries"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/epic_kitchen/epic_kitchen_dataset.py": {
+    "create_epic_kitchen_dataset": "create an EpicKitchenDataset instance with video info, actions CSV, clip sampler, and data manifest paths",
+    "sample_video_clip": "sample a video clip by index from the EpicKitchenDataset returning video tensor, audio, and actions",
+    "define_action_data": "define an ActionData dataclass with participant ID, video ID, verb, noun, timestamps, and frame ranges",
+    "get_action_start_time": "get the start time in seconds from an ActionData instance using the start_time property",
+    "get_dataset_length": "get the total number of video clips in the EpicKitchenDataset using the length method"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/data/epic_kitchen/utils.py": {
+    "build_frame_manifest_flat": "build a frame manifest dictionary from a flat directory of video frames with optional multithreading",
+    "build_frame_manifest_nested": "build a frame manifest dictionary from a nested participant directory structure with optional multithreading",
+    "build_encoded_manifest_nested": "build an encoded video manifest dictionary from a nested participant directory structure",
+    "review_build_frame_manifest_from_flat_directory": "review the build_frame_manifest_from_flat_directory function that parses frame files into VideoFrameInfo objects",
+    "review_build_frame_manifest_from_nested_directory": "review the build_frame_manifest_from_nested_directory function that parses participant-based frame files into VideoFrameInfo objects"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/attention.py": {
+    "create_Mlp_block": "create a two-layer MLP block with GELU activation and configurable dropout for transformer models",
+    "build_MultiScaleAttention_layer": "build a multiscale attention layer with optional 3D pooling for query, key, and value tensors",
+    "create_MultiScaleBlock_transformer": "create a multiscale vision transformer block combining attention and MLP with residual connections",
+    "review_AttentionPool_module": "review the _AttentionPool module that applies 3D pooling operations to flattened tensor sequences",
+    "refactor_MultiScaleAttention_pooling": "refactor the MultiScaleAttention layer to switch between conv, avg, and max pooling modes"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/attention_torchscript.py": {
+    "build_Mlp": "build a PyTorch MLP block with two linear layers and GELU activation for a transformer model",
+    "create_MultiScaleAttention": "create a multiscale attention module with optional 3D pooling for query, key, and value projections",
+    "build_ScriptableMultiScaleBlock": "build a multiscale vision transformer block combining attention, MLP, and residual skip connections",
+    "test_MultiScaleAttention_forward": "test the MultiScaleAttention forward pass with a tensor and THW shape list input",
+    "review_ScriptableMultiScaleBlock": "review the ScriptableMultiScaleBlock class for TorchScript compatibility and pooling skip logic"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/batch_norm.py": {
+    "create_NaiveSyncBatchNorm1d": "create a 1D synchronized batch norm layer with global or local device sync",
+    "create_NaiveSyncBatchNorm2d": "create a 2D synchronized batch norm layer as a correct alternative to nn.SyncBatchNorm",
+    "create_NaiveSyncBatchNorm3d": "create a 3D synchronized batch norm layer for spatiotemporal video tensor normalization",
+    "test_NaiveSyncBatchNorm_forward": "test the forward pass of NaiveSyncBatchNorm with multi-device distributed training",
+    "refactor_NaiveSyncBatchNorm_local_sync": "refactor NaiveSyncBatchNorm to use local device sync instead of global sync"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/convolutions.py": {
+    "create_convreduce3d_sum": "create a ConvReduce3D module that builds multiple Conv3d layers and sums their outputs",
+    "create_convreduce3d_cat": "create a ConvReduce3D module with reduction method cat to concatenate conv outputs along channel dim",
+    "create_conv_2plus1d": "create a 2plus1d conv layer by factorizing 3D convolution into temporal and spatial convolutions",
+    "build_conv2plus1d_module": "build a Conv2plus1d module with custom temporal conv, spatial conv, normalization, and activation",
+    "review_convreduce3d_forward": "review the ConvReduce3D forward method that stacks conv outputs and reduces via sum or cat"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/distributed.py": {
+    "get_world_size": "get the world size of the distributed process group or return 1 if not initialized",
+    "cat_all_gather": "gather tensors from all processes and concatenate them along dimension 0",
+    "init_distributed_training": "initialize per-machine process groups for distributed training across multiple GPUs and machines",
+    "get_local_rank": "get the rank of the current process within the local per-machine process group",
+    "GroupGather": "perform all gather and sum across local GPU groups with support for multiple sync groups"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/drop_path.py": {
+    "create_drop_path_layer": "create a DropPath module with a given drop probability for stochastic depth regularization",
+    "run_drop_path_function": "run the drop_path function on a tensor with a specified drop probability during training",
+    "test_DropPath_forward": "test the DropPath module forward pass to verify stochastic depth is applied correctly",
+    "review_drop_path_implementation": "review the drop_path function to understand how stochastic depth binarizes and scales the output",
+    "refactor_DropPath_for_multidim": "refactor the DropPath class to handle tensors of varying dimensions beyond 2D ConvNets"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/fusion.py": {
+    "make_fusion_layer_concat": "create a concat fusion layer using make_fusion_layer with method concat and feature_dims list",
+    "make_fusion_layer_sum": "build a sum fusion layer using make_fusion_layer with method sum and matching feature_dims",
+    "ConcatFusion_forward": "run ConcatFusion forward pass to concatenate input tensors along the last feature dimension",
+    "TemporalConcatFusion_forward": "run TemporalConcatFusion forward pass to concatenate input tensors along the temporal dimension",
+    "ReduceFusion_custom": "build a ReduceFusion layer with a custom reduce function for max, sum, or prod fusion"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/mlp.py": {
+    "build_mlp_with_default_activation": "build a multi-layer perceptron with default ReLU activation using make_multilayer_perceptron",
+    "build_mlp_with_batch_norm": "build a multi-layer perceptron with batch normalization using make_multilayer_perceptron and norm parameter",
+    "build_mlp_with_dropout": "build a multi-layer perceptron with dropout using make_multilayer_perceptron and dropout_rate parameter",
+    "build_mlp_with_custom_activation": "build a multi-layer perceptron with custom mid and final activation using make_multilayer_perceptron",
+    "review_mlp_factory": "review the make_multilayer_perceptron factory function and its layer construction pattern"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/nonlocal_net.py": {
+    "create_nonlocal_block": "create a NonLocal block with custom conv_theta, conv_phi, conv_g, and conv_out modules",
+    "create_nonlocal_with_create_nonlocal": "create a NonLocal block using create_nonlocal with dim_in and dim_inner parameters",
+    "run_nonlocal_forward": "run the NonLocal forward pass on a 5D tensor with shape N, C, T, H, W",
+    "review_nonlocal_instantiation": "review the NonLocal class instantiation options dot_product and softmax normalization methods",
+    "refactor_nonlocal_pooling": "refactor the NonLocal block to use MaxPool3d pooling for reduced computation"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/positional_encoding.py": {
+    "create_PositionalEncoding": "create a PositionalEncoding module that applies sinusoidal positional encoding to a tensor with shape batch_size x seq_len x embed_dim",
+    "create_SpatioTemporalClsPositionalEncoding": "create a SpatioTemporalClsPositionalEncoding module that adds a cls token and applies spatiotemporal encoding to a tensor",
+    "build_3d_sincos_pos_embed": "build a 3D sine-cosine positional embedding tensor for video patches with grid_size, t_size, and optional cls token",
+    "build_2d_sincos_pos_embed": "build a 2D sine-cosine positional embedding tensor for image patches with grid_size and optional cls token",
+    "create_1d_sincos_pos_embed_from_grid": "create a 1D sine-cosine positional embedding from a numpy array of positions with a given embed_dim"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/positional_encoding_torchscript.py": {
+    "create_spatiotemporal_positional_encoding": "create a ScriptableSpatioTemporalClsPositionalEncoding module with embed_dim and patch_embed_shape for video transformers",
+    "build_sep_pos_embed_module": "build a separable positional encoding module with spatial and temporal embeddings for video patch sequences",
+    "forward_spatiotemporal_encoding": "forward a tensor through the spatiotemporal positional encoding to add spatial and temporal position embeddings",
+    "review_positional_encoding_init": "review the ScriptableSpatioTemporalClsPositionalEncoding init to understand embed_dim, patch_embed_shape, and sep_pos_embed parameters",
+    "test_positional_encoding_forward": "test the forward pass of ScriptableSpatioTemporalClsPositionalEncoding with a batch of video patch tensors"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/squeeze_excitation.py": {
+    "create_SE_layer_2D": "create a SqueezeAndExcitationLayer2D instance with a given input channel dimension and reduction ratio",
+    "create_SE_layer_custom_reduced": "create a SqueezeAndExcitationLayer2D instance with a custom reduced_planes value instead of reduction ratio",
+    "run_SE_forward": "run forward pass through a SqueezeAndExcitationLayer2D on a 2D tensor to apply channel-wise scaling",
+    "create_audio_2d_se_block": "create a 2D residual block with optional squeeze excitation using create_audio_2d_squeeze_excitation_block",
+    "review_SE_layer": "review the SqueezeAndExcitationLayer2D class to understand its adaptive average pooling and excitation mechanism"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/swish.py": {
+    "create_swish_activation_module": "create a Swish activation module as an nn.Module wrapper for use in PyTorch neural networks",
+    "use_swish_in_model": "use the Swish class as a drop-in activation layer in a PyTorch model's forward pass",
+    "run_swish_forward_pass": "run a forward pass through Swish to compute x * sigmoid(x) on a PyTorch tensor",
+    "review_swish_backward_grad": "review the SwishFunction backward method to understand the custom gradient computation for x * sigmoid(x)",
+    "test_swish_autograd_function": "test the SwishFunction autograd implementation to verify correct forward and backward passes"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/utils.py": {
+    "set_attributes_on_object": "set attributes on a Python object from a dictionary of key-value parameters",
+    "round_width_for_filters": "round the width of neural network filters based on a width multiplier and divisor",
+    "round_width_with_ceil": "round filter width using ceiling rounding method with a specified multiplier and minimum width",
+    "round_repeats_for_layers": "round the number of neural network layers based on a depth multiplier",
+    "summarize_utils_module": "summarize the pytorchvideo layers utility functions for attribute setting and width rounding"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/accelerator/mobile_cpu/activation_functions.py": {
+    "create_swish_activation": "create a Swish activation function using the custom op for efficient training",
+    "create_hardswish_activation": "create a HardSwish activation function natively supported by PyTorch Mobile for int8 mode",
+    "create_relu_activation": "create a ReLU activation function with inplace operation for efficient blocks",
+    "convert_swish_for_deploy": "convert a Swish activation to naive swish for PyTorch Mobile deployment",
+    "lookup_supported_act_functions": "lookup the supported_act_functions dictionary to find available activation function classes by name"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/accelerator/mobile_cpu/attention.py": {
+    "create_squeeze_excitation_2d": "create a SqueezeExcitation block for 2D data with a specified number of channels and reduction ratio",
+    "create_squeeze_excitation_3d": "create a SqueezeExcitation block for 3D video data with custom activation and channel reduction",
+    "convert_se_to_cpu_efficient": "convert a SqueezeExcitation instance into an efficient CPU-deployable form using linear layers instead of conv",
+    "run_se_forward_pass": "run a forward pass through a SqueezeExcitation block to compute channel-wise attention weights on input tensor",
+    "review_se_convert_flag": "review the SqueezeExcitation convert_flag to check whether the block has been converted to deployable form"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/accelerator/mobile_cpu/conv_helper.py": {
+    "build_reshape_module": "build a PyTorch module that reshapes input tensors to a specified tuple size using _Reshape",
+    "build_skipconnectmul_module": "build a PyTorch module that multiplies input x with layer(x) using _SkipConnectMul",
+    "build_conv3d_temporal_kernel3_decomposed": "build a module that decomposes a Conv3d with temporal kernel 3 into equivalent Conv2d layers",
+    "build_conv3d_temporal_kernel5_decomposed": "build a module that decomposes a Conv3d with temporal kernel 5 into equivalent Conv2d layers",
+    "build_conv3d_temporal_kernel1_decomposed": "build a module that decomposes a Conv3d with temporal kernel 1 into a single Conv2d layer"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/accelerator/mobile_cpu/convolutions.py": {
+    "create_Conv3dPwBnAct": "create a Conv3dPwBnAct pointwise conv3d 1x1x1 block with batchnorm and relu activation",
+    "convert_Conv3dPwBnAct": "convert a Conv3dPwBnAct block into efficient Conv2d form for PyTorch Mobile deployment",
+    "create_Conv3d3x3x3DwBnAct": "create a Conv3d3x3x3DwBnAct depthwise 3x3x3 conv3d block with optional batchnorm and activation",
+    "convert_Conv3d3x3x3DwBnAct": "convert a Conv3d3x3x3DwBnAct block into decomposed Conv2d form for mobile deployment",
+    "create_Conv3dTemporalKernel1BnAct": "create a Conv3dTemporalKernel1BnAct block with temporal kernel 1 and configurable spatial kernel"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/layers/accelerator/mobile_cpu/pool.py": {
+    "create_AdaptiveAvgPool3dOutSize1": "create an AdaptiveAvgPool3dOutSize1 layer that pools 3D tensors to output size (1, 1, 1)",
+    "create_AdaptiveAvgPool2dOutSize1": "create an AdaptiveAvgPool2dOutSize1 layer that pools 2D tensors to output size (1, 1)",
+    "convert_AdaptiveAvgPool3dOutSize1": "convert an AdaptiveAvgPool3dOutSize1 layer to a fixed kernel AvgPool3d for mobile CPU efficiency",
+    "create_AdaptiveAvgPool3d": "create an AdaptiveAvgPool3d layer with a specified output size for QNNPACK mobile CPU support",
+    "create_AdaptiveAvgPool2d": "create an AdaptiveAvgPool2d layer with a specified output size for QNNPACK mobile CPU support"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/losses/soft_target_cross_entropy.py": {
+    "create_soft_target_cross_entropy_loss": "create a SoftTargetCrossEntropyLoss instance with default mean reduction and normalized targets",
+    "create_loss_with_ignore_index": "create a SoftTargetCrossEntropyLoss that ignores samples with a specific class index",
+    "compute_multi_label_cross_entropy": "compute cross entropy loss with multi-label soft targets using log softmax",
+    "run_loss_with_no_reduction": "run the SoftTargetCrossEntropyLoss forward pass with reduction set to none for per-sample loss",
+    "review_normalize_targets_behavior": "review the SoftTargetCrossEntropyLoss class and how normalize_targets divides targets by their sum"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/audio_visual_slowfast.py": {
+    "create_avslowfast_model": "create an AudioVisual SlowFast network model for video recognition with audio, visual slow, and fast pathways",
+    "build_fusion_module": "build an AudioToSlowFastFusionBuilder module to fuse audio features into the slow and fast pathways",
+    "create_fuse_module": "create a FuseAudioToFastSlow module that fuses fast pathway and audio features into the slow pathway",
+    "review_avslowfast_architecture": "review the AVSlowFast model architecture with three pathways for slow video, fast video, and audio inputs",
+    "test_fusion_forward": "test the FuseAudioToFastSlow forward pass that concatenates and adds fused tensors across pathways"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/byol.py": {
+    "build_BYOL_model": "build a BYOL self-supervised learning model with a backbone, projector, and predictor network",
+    "run_BYOL_forward": "run the BYOL forward pass on two augmented views x1 and x2 to compute contrastive loss",
+    "test_sim_loss": "test the BYOL similarity loss function by computing negative mean dot product of two tensors",
+    "refactor_momentum_update": "refactor the BYOL momentum backbone update to adjust the momentum coefficient mmt for annealing",
+    "review_forward_backbone": "review the BYOL forward backbone method that projects input through backbone and predictor then normalizes"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/csn.py": {
+    "create_csn_model": "create a CSN model for video classification with default ResNet-50 depth and 400 classes",
+    "create_csn_custom_depth": "create a CSN model with ResNet-101 depth for video classification on a custom dataset",
+    "create_csn_depthwise": "create a CSN model using depthwise convolution by setting stage_conv_b_width_per_group to 1",
+    "create_csn_no_dropout": "create a CSN model with dropout disabled and global average pooling on the head output",
+    "create_csn_custom_stem": "create a CSN model with a custom stem kernel size and stride for short video clips"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/head.py": {
+    "create_res_basic_head": "create a ResNet basic head with pooling, dropout, projection, and global spatiotemporal averaging for video classification",
+    "create_vit_basic_head": "create a Vision Transformer basic head with sequence pooling, dropout, and linear projection for video classification",
+    "create_res_roi_pooling_head": "create a ResNet RoI head with RoIAlign, spatial pooling, and projection for region-based video tasks",
+    "build_sequence_pool_module": "build a SequencePool module that extracts a single embedding using cls token or mean pooling",
+    "review_ResNetRoIHead_forward": "review the ResNetRoIHead forward pass that applies RoIAlign with bounding boxes and 3D pooling"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/masked_multistream.py": {
+    "build_masked_temporal_pooling": "build a MaskedTemporalPooling module to apply max, avg, or sum pooling on masked sequence tensors",
+    "create_transpose_multihead_attention": "create a TransposeMultiheadAttention module to apply multihead attention on batched sequence tensors with masking",
+    "build_masked_sequential": "build a MaskedSequential container to compose masked modules like attention, pooling, and LSTM in sequence",
+    "create_masked_lstm": "create a masked LSTM wrapper that processes variable-length sequences using pack_padded_sequence",
+    "build_masked_multipathway": "build a MaskedMultiPathWay module to process multiple input streams and fuse their outputs"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/memory_bank.py": {
+    "build_memory_bank_for_contrastive_learning": "build a MemoryBank module with a backbone and MLP for contrastive learning on video data",
+    "create_memory_bank_with_custom_params": "create a MemoryBank with custom neg_size, temperature, bank_size, and momentum parameters",
+    "run_forward_pass_memory_bank": "run a forward pass through MemoryBank with input tensor and sample indices to get contrastive loss",
+    "review_memory_bank_initialization": "review the MemoryBank class and its _init_mem_bank method for memory buffer initialization",
+    "test_memory_bank_training_update": "test the MemoryBank training mode memory update using momentum-based embedding updates"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/net.py": {
+    "build_Net_model": "build a Net model with a list of block modules for video recognition",
+    "build_DetectionBBoxNetwork": "build a DetectionBBoxNetwork model that processes input tensors with bounding boxes",
+    "build_MultiPathWayWithFuse": "build a MultiPathWayWithFuse model with multiple pathway blocks and fusion layers",
+    "run_Net_forward": "run the Net forward pass to process input tensor through sequential blocks",
+    "run_DetectionBBoxNetwork_forward": "run the DetectionBBoxNetwork forward pass with input tensor and bounding boxes"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/r2plus1d.py": {
+    "create_r2plus1d_model": "create an R(2+1)D video action recognition model with configurable depth like 50, 101, or 152",
+    "create_2plus1d_bottleneck_block": "create a 2plus1d bottleneck block with spatiotemporal convolutions, normalization, and activation layers",
+    "build_r2plus1d_custom_depth": "build an R(2+1)D network with a custom model depth and number of output classes",
+    "build_r2plus1d_custom_head": "build an R(2+1)D model with a custom head pooling kernel size and activation function",
+    "review_r2plus1d_architecture": "review the R(2+1)D model architecture including stem, stages, and head components"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/resnet.py": {
+    "create_resnet": "create a ResNet model for video recognition with configurable depth, stem, stages, and head",
+    "create_bottleneck_block": "create a BottleneckBlock with three conv layers, normalization, and activation for ResNet",
+    "create_res_block": "create a ResBlock with a bottleneck branch and optional shortcut connection for residual learning",
+    "create_res_stage": "create a ResStage with multiple sequential ResBlocks for a ResNet stage",
+    "create_acoustic_resnet": "create an acoustic ResNet model for audio recognition using spectrogram input"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/simclr.py": {
+    "build_simclr_model": "build a SimCLR model with an MLP head and optional backbone for contrastive learning",
+    "run_simclr_forward": "run the SimCLR forward pass with two augmented view tensors to compute contrastive loss",
+    "create_simclr_with_backbone": "create a SimCLR instance with a custom backbone network and temperature parameter",
+    "review_simclr_contrastive_loss": "review the SimCLR forward method that computes normalized dot product contrastive loss",
+    "test_simclr_distributed_gather": "test the SimCLR forward pass that gathers x2 embeddings across distributed GPUs"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/slowfast.py": {
+    "create_slowfast_model": "create a SlowFast video recognition model with configurable depth, pathways, and fusion settings",
+    "create_slowfast_roi_detection_model": "create a SlowFast video detection model with ROI pooling head for bounding box classification",
+    "build_poolconcatpathway_module": "build a PoolConcatPathway module to pool and concatenate multi-pathway tensors along the channel dimension",
+    "create_fasttoslowfusionbuilder": "create a FastToSlowFusionBuilder to generate fusion convolution modules between Fast and Slow pathways",
+    "build_fusefasttoslow_module": "build a FuseFastToSlow module that fuses Fast pathway features into the Slow pathway via convolution and concatenation"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/stem.py": {
+    "create_res_basic_stem": "create a ResNet basic stem layer with Conv3d, BatchNorm3d, ReLU, and MaxPool3d for video feature extraction",
+    "create_acoustic_res_basic_stem": "create an acoustic ResNet stem layer with parallel temporal and spatial Conv3d convolutions using ConvReduce3D",
+    "build_ResNetBasicStem_forward": "build a ResNet basic stem module that applies convolution, normalization, activation, and pooling in sequence",
+    "build_PatchEmbed_forward": "build a transformer patch embedding module that patchifies input, flattens, and transposes to B THW C shape",
+    "create_conv_patch_embed": "create a transformer patch embedding layer using Conv3d followed by flatten and transpose operations"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/vision_transformers.py": {
+    "create_mvit_model": "create a MultiscaleVisionTransformers model using create_multiscale_vision_transformers with spatial_size 224 and temporal_size 16",
+    "build_mvit_for_kinetics400": "build a MViT_B model for Kinetics400 classification with embed_dim_mul and pool_q_stride_size configs",
+    "run_mvit_forward_pass": "run a forward pass through a MultiscaleVisionTransformers model with a video tensor input",
+    "fuse_batch_norm_layers": "fuse batch norm layers into linear layers in a MultiscaleVisionTransformers model for inference optimization",
+    "review_mvit_architecture": "review the MultiscaleVisionTransformers class architecture including patch_embed, blocks, normalization, and head components"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/weight_init.py": {
+    "init_resnet_model_weights": "initialize a PyTorch model's weights using ResNet style with kaiming_normal for conv layers",
+    "init_vit_model_weights": "initialize a vision transformer model's weights using truncated normal distribution",
+    "init_net_weights_resnet_style": "initialize a model's weights with ResNet style using init_net_weights with style set to resnet",
+    "init_net_weights_vit_style": "initialize a model's weights with ViT style using init_net_weights with style set to vit",
+    "review_weight_init_functions": "review the weight initialization functions for ResNet and ViT models in pytorchvideo"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/x3d.py": {
+    "create_x3d_model": "create an X3D video recognition model with configurable width and depth factors for a given number of classes",
+    "create_x3d_stem": "create an X3D stem layer with depthwise separable convolutions, batch norm, and ReLU activation",
+    "create_x3d_bottleneck_block": "create an X3D bottleneck block with 1x1x1, 3x3x3 depthwise, and 1x1x1 convolutions plus squeeze-and-excitation",
+    "create_x3d_res_block": "create an X3D residual block with a bottleneck branch and optional identity shortcut connection",
+    "create_x3d_head": "create an X3D classification head with projected pooling, dropout, and a linear projection layer"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/accelerator/mobile_cpu/efficient_x3d.py": {
+    "create_x3d_model": "create an EfficientX3d model with default XS expansion for 400 class video classification",
+    "create_x3d_large_model": "create an EfficientX3d model with L expansion for deeper video classification network",
+    "create_x3d_no_head": "create an EfficientX3d feature extractor model without the classification head enabled",
+    "create_x3d_custom_classes": "create an EfficientX3d model with a custom number of output classes for classification",
+    "create_x3d_custom_dropout": "create an EfficientX3d model with a custom dropout rate for training regularization"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/accelerator/mobile_cpu/residual_blocks.py": {
+    "create_X3dBottleneckBlock": "create an X3D style residual block with configurable channels, stride, and squeeze-excite ratio",
+    "run_X3dBottleneckBlock_forward": "run a forward pass through an X3D bottleneck block with optional residual connection",
+    "convert_X3dBottleneckBlock_for_quantize": "convert an X3D bottleneck block for quantization with native conv3d QNNPACK support",
+    "review_X3dBottleneckBlock_residual_projection": "review the X3D bottleneck block residual projection logic for stride or channel mismatch",
+    "refactor_X3dBottleneckBlock_activation": "refactor the X3D bottleneck block to use a different activation function like swish or hardswish"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/hub/csn.py": {
+    "build_csn_r101_model": "build a CSN R101 video recognition model with default settings using csn_r101()",
+    "build_csn_r101_pretrained": "build a pretrained CSN R101 model loaded with Kinetics weights using csn_r101(pretrained=True)",
+    "build_csn_r101_custom": "build a CSN R101 model with custom kwargs to modify model architecture settings",
+    "review_csn_r101_function": "review the csn_r101 function to understand model depth and pooling configuration",
+    "summarize_csn_r101": "summarize the csn_r101 function and its pretrained weight loading from the Kinetics dataset"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/hub/efficient_x3d_mobile_cpu.py": {
+    "create_efficient_x3d_xs_model": "create an X3D-XS video recognition model optimized for mobile CPU inference",
+    "create_efficient_x3d_s_model": "create an X3D-S video recognition model optimized for mobile CPU inference",
+    "create_pretrained_efficient_x3d_xs": "create a pretrained X3D-XS model loaded with Kinetics-400 weights for mobile CPU",
+    "create_pretrained_efficient_x3d_s": "create a pretrained X3D-S model loaded with Kinetics-400 weights for mobile CPU",
+    "review_efficient_x3d_internal": "review the internal _efficient_x3d helper that creates X3D models and loads pretrained state dicts"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/hub/r2plus1d.py": {
+    "create_r2plus1d_r50_model": "create an R(2+1)D R50 video recognition model with dropout rate 0.5",
+    "create_pretrained_r2plus1d_r50": "create a pretrained R(2+1)D R50 model loaded with Kinetics dataset weights",
+    "build_r2plus1d_r50_custom": "build an R(2+1)D R50 model with custom kwargs for modified model settings",
+    "review_r2plus1d_r50_function": "review the r2plus1d_r50 function and its pretrained weight loading logic",
+    "summarize_r2plus1d_r50": "summarize the r2plus1d_r50 function for video recognition on the Kinetics dataset"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/hub/resnet.py": {
+    "create_slow_r50_model": "create a Slow R50 video recognition model with optional pretrained Kinetics weights",
+    "create_slow_r50_detection_model": "create a Slow R50 detection model with ROI head pretrained on AVA dataset",
+    "create_c2d_r50_model": "create a C2D R50 video recognition model with optional pretrained Kinetics weights",
+    "create_i3d_r50_model": "create an I3D R50 video recognition model with optional pretrained Kinetics weights",
+    "build_resnet_with_custom_builder": "build a ResNet model using the internal _resnet helper with a custom model builder function"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/hub/slowfast.py": {
+    "build_slowfast_r50_model": "build a SlowFast R50 video recognition model with optional pretrained Kinetics weights",
+    "build_slowfast_r101_model": "build a SlowFast R101 video recognition model with optional pretrained Kinetics weights",
+    "build_slowfast_16x8_r101_50_50_model": "build a SlowFast R101_50_50 model with 16x8 temporal sampling and pretrained weights",
+    "build_slowfast_r50_detection_model": "build a SlowFast R50 detection model with ROI head finetuned on AVA dataset",
+    "review_slowfast_hub_api": "review the SlowFast hub module functions for pretrained video model instantiation"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/hub/utils.py": {
+    "build_pretrained_model": "build a pretrained PyTorchVideo model by calling hub_model_builder with pretrained=True and a checkpoint URL",
+    "build_model_with_defaults": "build a PyTorchVideo model using hub_model_builder with default_config to set fallback argument values",
+    "build_model_from_builder_func": "build a PyTorchVideo model by passing a model builder function and kwargs to hub_model_builder",
+    "review_hub_model_builder": "review the hub_model_builder function to understand how it merges default_config with kwargs before calling the builder",
+    "summarize_hub_model_builder": "summarize the hub_model_builder function that constructs models and optionally loads pretrained weights from a checkpoint URL"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/hub/vision_transformers.py": {
+    "build_mvit_base_16x4": "build a multiscale vision transformer model with 16x4 settings pretrained on Kinetics400",
+    "build_mvit_base_32x3": "build a multiscale vision transformer model with 32x3 settings pretrained on Kinetics400",
+    "build_mvit_base_16": "build a depth 16 multiscale vision transformer model pretrained on ImageNet-1k",
+    "review_mvit_base_16x4": "review the mvit_base_16x4 function to understand model config and pretrained weight loading",
+    "summarize_mvit_configs": "summarize the mvit_video_base_config and mvit_image_base_16_config dictionary settings"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/models/hub/x3d.py": {
+    "create_x3d_xs_model": "create an X3D-XS video recognition model with 4-frame input clips and 160x160 crop size",
+    "create_x3d_s_model": "create an X3D-S video recognition model with 13-frame input clips and 160x160 crop size",
+    "create_x3d_m_model": "create an X3D-M video recognition model with 16-frame input clips and 224x224 crop size",
+    "create_x3d_l_model": "create an X3D-L video recognition model with 16-frame input clips and 312x312 crop size",
+    "create_x3d_pretrained_model": "create a pretrained X3D model by loading Kinetics checkpoint weights from the model zoo"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/neural_engine/detection_hook.py": {
+    "generate_detectron2_predictor": "generate a detectron2 DefaultPredictor from a model config dict with backend, model, and threshold keys",
+    "run_people_keypoint_detection": "run the PeopleKeypointDetectionHook to detect human keypoints in a loaded image using detectron2",
+    "load_image_with_opencv": "create an ImageLoadHook that loads an image from a file path using cv2.imread",
+    "detect_people_bounding_boxes": "run the Detectron2PeopleDetectionHook to detect people bounding boxes in a loaded image",
+    "run_people_detection_executor": "run the people_detection_executor function to extract person bounding boxes from a detectron2 predictor output"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/neural_engine/engine.py": {
+    "run_NeuralEngine_with_hooks": "run a NeuralEngine with a list of HookBase hooks and an OrderedDict status",
+    "create_NeuralEngine_topological_sort": "create a topological sort of hooks based on their inputs and outputs using NeuralEngine",
+    "use_NeuralEngine_context_manager": "use NeuralEngine as a context manager to execute hooks in topological order",
+    "call_NeuralEngine_with_video_path": "call NeuralEngine with a video file path string to process it through hooks",
+    "set_NeuralEngine_execution_order": "set a custom execution order function on NeuralEngine to replace topological sort"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/neural_engine/hook.py": {
+    "create_hookbase_subclass": "create a subclass of HookBase with custom executor, conditional execution, and exit functions",
+    "run_hookbase": "run a HookBase instance with an OrderedDict status to execute the hook pipeline",
+    "create_decodehook": "create a DecodeHook to decode video and audio from a file path using PYAV decoder",
+    "full_decode_video": "use full_decode to extract all video frames and audio from an encoded video file path",
+    "create_x3dclshook": "create an X3DClsHook to classify video actions using a pretrained X3D-S model from PyTorch Hub"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/transforms/augmentations.py": {
+    "create_augment_transform": "create an AugmentTransform instance to apply random brightness augmentation to a video tensor",
+    "build_affine_transform": "build a python module that applies an affine transform matrix to a tensor using the affine function",
+    "test_equalize": "test the _equalize function on a video tensor to verify histogram equalization works for float and uint8 dtypes",
+    "refactor_adjust_brightness": "refactor the _adjust_brightness function to support a custom fill color argument",
+    "review_rotate": "review the _rotate function to understand how it handles fill arguments and bilinear interpolation"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/transforms/functional.py": {
+    "uniform_temporal_subsample": "uniformly subsample frames from a video tensor along the temporal dimension",
+    "short_side_scale": "scale a video tensor by its shorter spatial side while maintaining aspect ratio",
+    "random_resized_crop": "crop a video tensor to a random size and aspect ratio then resize it",
+    "uniform_crop": "perform uniform spatial sampling on video frames with left, center, or right crop",
+    "convert_to_one_hot": "convert target class indices to one-hot vectors with optional label smoothing"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/transforms/mix.py": {
+    "create_MixUp_for_video_augmentation": "create a MixUp augmentation module that mixes video tensors and labels using a beta distribution",
+    "create_CutMix_for_video_augmentation": "create a CutMix augmentation module that patches random regions of video tensors with flipped batch samples",
+    "create_MixVideo_for_stochastic_augmentation": "create a MixVideo module that stochastically applies either MixUp or CutMix to video tensors based on probability",
+    "refactor_MixUp_forward_for_audio": "refactor the MixUp forward method to also mix audio tensors alongside video tensors",
+    "review_CutMix_rand_box_generation": "review the CutMix class _get_rand_box method for random square box generation given a lambda value"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/transforms/transforms.py": {
+    "uniform_temporal_subsample_video": "create a UniformTemporalSubsample transform to select equispaced temporal samples from a video tensor",
+    "short_side_scale_video": "build a ShortSideScale transform to resize a video tensor by scaling its short side to a target size",
+    "random_resized_crop_video": "create a RandomResizedCrop transform to randomly crop and resize a video tensor to target dimensions",
+    "normalize_video_clip": "build a Normalize transform to normalize a video tensor by mean subtraction and standard deviation division",
+    "op_sampler_transforms": "create an OpSampler to randomly sample and apply weighted transforms sequentially to an input tensor"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo/transforms/transforms_factory.py": {
+    "create_video_transform_train": "create a training video transform pipeline with random cropping, normalization, and temporal subsampling",
+    "create_video_transform_val": "create a validation video transform pipeline with center cropping, scaling, and normalization",
+    "create_video_transform_randaug": "create a training video transform pipeline that uses RandAugment augmentation with configurable magnitude and layers",
+    "create_video_transform_augmix": "create a training video transform pipeline that uses AugMix augmentation with configurable depth and width",
+    "create_video_transform_dict_input": "create a video transform pipeline that applies transforms to a dictionary key and optionally removes keys"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/train_app.py": {
+    "run_video_classification_training": "run the VideoClassificationTrainApp to train a video classification model using PyTorch Lightning",
+    "test_video_classification_model": "test a trained video classification model using the VideoClassificationTrainApp test method",
+    "launch_submitit_job": "launch a distributed training job on a SLURM cluster using the submitit_launcher function",
+    "create_train_app_config": "create a VideoClassificationTrainAppConf dataclass with module, trainer, datamodule, logger, and callback defaults",
+    "instantiate_lightning_module": "instantiate a PyTorch Lightning module from Hydra config using get_lightning_module in VideoClassificationTrainApp"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/callbacks/precise_batchnorm.py": {
+    "create_precise_bn_callback": "create a PreciseBn callback with a specified number of batches for recomputing batch norm stats",
+    "use_precise_bn_in_trainer": "use the PreciseBn callback in a PyTorch Lightning trainer to update batch norm statistics each epoch",
+    "review_precise_bn_loader": "review the _get_precise_bn_loader method that yields input tensors from a data loader for batch norm updates",
+    "refactor_on_train_epoch_end": "refactor the on_train_epoch_end method to customize how precise batch norm stats are updated per epoch",
+    "summarize_precise_bn_class": "summarize the PreciseBn class that recomputes batch norm running averages with fixed weights during training"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/datamodule/collators.py": {
+    "build_collator_from_name": "build a collator function by name using build_collator_from_name to get a collator callable from the registry",
+    "collate_multiple_samples_batch": "collate a batch of multi-sample dictionaries using multiple_samples_collate for repeated augmentation data",
+    "register_custom_collator": "register a custom collator function in the _COLLATORS dictionary for use with build_collator_from_name",
+    "review_multiple_samples_collate": "review the multiple_samples_collate function to understand how it flattens and collates multi-sample batches",
+    "test_build_collator_from_name": "test build_collator_from_name with valid and invalid names to verify collator lookup and error handling"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/datamodule/datamodule.py": {
+    "create_PyTorchVideoDataModule": "create a PyTorchVideoDataModule instance with dataloader and transforms config for video classification training",
+    "setup_PyTorchVideoDataModule": "setup the PyTorchVideoDataModule datasets for train, val, or test phases using the setup method",
+    "get_train_dataloader": "get the train DataLoader from PyTorchVideoDataModule with distributed sampler epoch support for video data",
+    "build_DataLoaderConf": "build a DataLoaderConf dataclass with train, val, and test PhaseDataLoaderConf settings for each phase",
+    "register_VideoClassificationDataModuleConf": "register the VideoClassificationDataModuleConf schema in Hydra ConfigStore for video classification data module configuration"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/datamodule/transforms.py": {
+    "build_transforms_from_config": "build a composed video transform pipeline from a list of Hydra config objects",
+    "build_single_transform_from_config": "build a single transform from a Hydra config object with nested transform composition",
+    "apply_transform_to_key_on_list": "apply a transform to each item in a list stored under a dictionary key",
+    "create_slowfast_pathway_transform": "create a SlowFast pathway transform that splits video frames into slow and fast clips",
+    "create_color_jitter_video_ssl": "create a color jitter transform with blur and grayscale for self-supervised learning video augmentation"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/module/byol.py": {
+    "create_byol_resnet50_model": "create a BYOL model with a ResNet-50 video backbone, projector MLP, and predictor MLP using create_byol_resnet_50",
+    "build_BYOL_module": "build a BYOL nn.Module with a custom backbone, momentum backbone, projector, and predictor for self-supervised learning",
+    "run_momentum_update_backbone": "run the momentum update on the BYOL target backbone using the exponential moving average formula",
+    "train_BYOLModule_on_video": "train a BYOLModule Lightning module on video data with multiple augmented views and cosine momentum annealing",
+    "configure_BYOLModuleConf": "configure a BYOLModuleConf dataclass with model, loss, optimizer, metrics, and lr_scheduler for Hydra-based training"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/module/distributed_utils.py": {
+    "init_process_group": "initialize a PyTorch distributed process group with nccl backend for multi-machine training",
+    "all_gather_tensors": "gather tensors from all processes across machines and concatenate them along dimension 0",
+    "all_reduce_tensors": "reduce tensors across all processes with optional averaging by world size",
+    "all_gather_unaligned_data": "gather arbitrary picklable data from all ranks using the gloo backend",
+    "all_gather_with_gradient": "perform distributed all_gather on tensors while preserving gradient computation through autograd"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/module/losses.py": {
+    "create_SoftTargetCrossEntropy": "create a SoftTargetCrossEntropy loss module for computing cross entropy with soft targets and mean or none reduction",
+    "build_NtxentLoss": "build an NtxentLoss module for SimCLR self-supervised learning that computes NT-Xent loss from a list of two embedding tensors",
+    "create_SimilarityLoss": "create a SimilarityLoss module for BYOL self-supervised learning that computes temperature-scaled similarity between query and key tensors",
+    "build_ContrastiveLoss": "build a ContrastiveLoss module for MoCo self-supervised learning that computes temperature-scaled contrastive loss from embedding tensors",
+    "review_losses_module": "review the losses module containing SoftTargetCrossEntropy, NtxentLoss, SimilarityLoss, and ContrastiveLoss classes for self-supervised video learning"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/module/lr_policy.py": {
+    "get_lr_at_epoch": "get the learning rate for a given epoch with warmup support using an LRSchedulerConf",
+    "lr_func_cosine": "compute the cosine annealing learning rate for a given epoch and scheduler config",
+    "lr_func_steps_with_relative_lrs": "compute the step-based learning rate using relative LR multipliers for a given epoch",
+    "get_step_index": "retrieve the LR step index for a given epoch based on configured step boundaries",
+    "set_lr": "set the learning rate on all parameter groups of a PyTorch optimizer"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/module/moco_v2.py": {
+    "create_moco_resnet_50": "create a MoCo model with a ResNet-50 backbone and MLP projector for unsupervised video representation learning",
+    "build_MOCO_model": "build a MOCO module with a backbone, momentum backbone, and optional projector for contrastive learning",
+    "run_MOCOV2Module_training": "run a MOCOV2Module training step that computes contrastive loss using a feature queue and momentum backbone",
+    "review_MOCOV2Module_conf": "review the MOCOV2ModuleConf dataclass to configure dim, queue size k, and batch shuffle settings for MoCo v2",
+    "summarize_MOCO_momentum_update": "summarize the MOCO momentum_update_backbone method that performs exponential moving average weight updates on the momentum backbone"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/module/optimizer.py": {
+    "construct_optimizer_sgd": "construct an SGD optimizer with momentum and weight decay for a PyTorch model using OptimizerConf",
+    "construct_optimizer_adamw": "construct an AdamW optimizer with configurable learning rate and weight decay for a PyTorch model",
+    "construct_optimizer_lars": "construct an optimizer wrapped with LARS adaptive rate scaling for large batch training",
+    "configure_optimizer_conf": "configure an OptimizerConf dataclass with method, learning rate, momentum, and weight decay settings",
+    "lars_step": "perform a LARS optimizer step that adaptively scales learning rates per parameter group"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/module/simclr.py": {
+    "create_simclr_model": "create a SimCLR model with a custom backbone and optional projector MLP module",
+    "run_simclr_forward": "run the SimCLR forward pass on a pair of augmented video tensors for training",
+    "build_simclr_resnet50": "build a ResNet-50 based SimCLR model with configurable projector MLP dimensions and depth",
+    "create_simclr_module": "create a SimCLRModule Lightning module with loss, optimizer, metrics, and KNN memory support",
+    "review_simclr_module_conf": "review the SimCLRModuleConf dataclass schema for Hydra config-driven SimCLR training setup"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/module/ssl_helper.py": {
+    "create_mlp_util": "create an MLP module with configurable layers, normalization, and Xavier initialization for SSL projector or predictor heads",
+    "create_classification_model_from_ssl_checkpoint": "create a classification model by extracting the backbone from a SimCLR, BYOL, or MoCo v2 SSL checkpoint",
+    "SSLFineTuningModel": "build a fine-tuning model that chains an SSL backbone with an optional MLP and supports backbone freezing",
+    "KnnMemory_eval_knn": "evaluate KNN predictions on query features using stored memory features and training labels with temperature scaling",
+    "SSLBaseModule": "review the PyTorch Lightning base module for SSL tasks supporting KNN memory, momentum annealing, and data ensembling"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/pytorchvideo_trainer/module/video_classification.py": {
+    "create_video_classification_module": "create a VideoClassificationModule Lightning module for training a video classification model with model, loss, and optimizer configs",
+    "build_model_from_modelzoo_checkpoint": "build a classification model by loading pretrained weights from a PyTorchVideo model zoo checkpoint file",
+    "build_model_from_lightning_checkpoint": "build a classification model by loading a pretrained VideoClassificationModule from a PyTorch Lightning checkpoint file",
+    "create_syncbn_process_group": "create a distributed process group for synchronized BatchNorm across a specified number of GPUs",
+    "review_video_classification_module_conf": "review the VideoClassificationModuleConf dataclass schema used for Hydra config-based instantiation of video classification modules"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/tests/test_conf_datamodule.py": {
+    "test_init_with_hydra": "test the TestKineticsDataModuleConf class to verify Hydra config composition and PyTorchVideoDataModule instantiation",
+    "test_kinetics_datamodule_conf": "test the TestKineticsDataModuleConf test class for Kinetics data module configuration validation",
+    "compose_hydra_config": "compose a Hydra config using initialize_config_module and compose with datamodule overrides",
+    "instantiate_pytorchvideo_datamodule": "instantiate a PyTorchVideoDataModule from a Hydra config using hydra.utils.instantiate",
+    "review_test_kinetics_datamodule_conf": "review the TestKineticsDataModuleConf class and its test_init_with_hydra method for correctness"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/tests/test_conf_module.py": {
+    "test_video_classification_module_hydra_config": "test the VideoClassificationModule instantiation using Hydra config with slow_r50 model override",
+    "test_simclr_module_hydra_config": "test the SimCLRModule instantiation using Hydra compose and config module initialization",
+    "test_byol_module_hydra_config": "test the BYOLModule instantiation using Hydra config with byol_train_app_conf",
+    "test_moco_v2_module_hydra_config": "test the MOCOV2Module instantiation using Hydra config with moco_v2_train_app_conf",
+    "run_all_module_conf_tests": "run all unittest test classes to verify Hydra config instantiation for video training modules"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/tests/test_task_byol.py": {
+    "test_BYOL_train_app": "test the BYOL training application with 30 ensemble views and spatial crops",
+    "run_BYOL_training": "run the BYOL training app with a small kinetics dataset and custom overrides",
+    "create_BYOL_train_app": "create a BYOL train app from hydra config with dataset path overrides",
+    "review_TestBYOLTrainApp": "review the TestBYOLTrainApp class and its get_train_app method for BYOL configuration",
+    "summarize_BYOL_test": "summarize the BYOL training test that validates video clips count against ensemble views"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/tests/test_task_moco_v2.py": {
+    "test_MoCoV2_train_app": "test the MoCo v2 training app by running train and test with 30 ensemble views",
+    "run_MoCoV2_training": "run the MoCo v2 training pipeline using a small kinetics dataset with hydra config overrides",
+    "create_MoCoV2_train_app": "create a MoCo v2 train app instance with custom batch size, knn memory, and data path overrides",
+    "review_TestMOCOV2TrainApp_class": "review the TestMOCOV2TrainApp class and its get_train_app helper method for MoCo v2 test setup",
+    "summarize_test_moco_v2_app_train_test_30_views": "summarize the test_moco_v2_app_train_test_30_views method that validates video clip counts across ensemble views"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/tests/test_task_module_all.py": {
+    "test_train_video_model": "test training a supervised video classification model using the video_classification_train_app_conf Hydra config",
+    "test_train_video_model_simclr": "test training a SimCLR self-supervised video model using the simclr_train_app_conf Hydra config",
+    "test_train_video_model_byol": "test training a BYOL self-supervised video model using the byol_train_app_conf Hydra config",
+    "run_train_method": "run the PyTorch Lightning trainer to fit a model and datamodule from a VideoClassificationTrainAppConf config",
+    "instantiate_datamodule": "instantiate a VideoClassificationDataModuleConf into a datamodule using Hydra's instantiate with non-recursive mode"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/tests/test_task_simclr.py": {
+    "run_test_simclr_app_train_test_30_views": "run the SimCLR train and test 30 views test to verify video clip counts",
+    "test_TestSimCLRTrainApp_get_train_app": "test the get_train_app method that creates a SimCLR training app with hydra overrides",
+    "test_TestSimCLRTrainApp_class": "test the TestSimCLRTrainApp class that validates SimCLR training with ensemble views and spatial crops",
+    "run_simclr_training_test": "run the SimCLR training test using a small kinetics dataset with knn memory configuration",
+    "review_TestSimCLRTrainApp_test_simclr_app_train_test_30_views": "review the test_simclr_app_train_test_30_views method to understand SimCLR 30-view validation logic"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/tests/test_task_video_classification.py": {
+    "test_video_classification_train": "test the video classification training app by running train on a small kinetics dataset",
+    "test_video_classification_train_precise_bn": "test the video classification training app with precise batch normalization callback enabled",
+    "test_video_classification_test": "test the video classification app by running the test evaluation pipeline",
+    "test_video_classification_30_views": "test the video classification app with 30 ensemble views and spatial crops",
+    "get_train_app": "create a BaseTrainApp configured for video classification with hydra overrides and optional precise BN"
+  },
+  "facebookresearch_pytorchvideo/pytorchvideo_trainer/tests/util.py": {
+    "create_small_kinetics_dataset": "create a small Kinetics-like test dataset with dummy MP4 videos and CSV label files in a directory",
+    "create_dummy_video_frames": "create dummy video frames as a PyTorch tensor with a moving Gaussian blob across frames",
+    "write_single_csv_file": "write a list of rows to a space-delimited CSV file for video dataset annotations",
+    "run_locally": "run a unit test function with torch distributed availability mocked to false for local testing",
+    "BaseTrainAppTestCase_create_app_from_hydra": "create a BaseTrainApp instance from a Hydra config module and config name with optional overrides"
+  },
+  "facebookresearch_pytorchvideo/tests/benchmark_accelerator_efficient_blocks.py": {
+    "run_benchmark_conv3d_pw_bn_relu": "run the benchmark test for Conv3dPwBnAct with ReLU activation in original and deployable modes",
+    "run_benchmark_conv3d_3x3x3_dw_bn_relu": "run the benchmark test for Conv3d3x3x3DwBnAct with ReLU activation in original and deployable modes",
+    "run_benchmark_x3d_bottleneck_block": "run the benchmark test for X3dBottleneckBlock in original and deployable modes with quantization options",
+    "test_Conv3dPwBnAct_quantization": "test Conv3dPwBnAct quantization with qnnpack backend using prepare and convert from torch.ao.quantization",
+    "test_X3dBottleneckBlock_convert": "test X3dBottleneckBlock convert method with native_conv3d_op_qnnpack for mobile CPU deployment"
+  },
+  "facebookresearch_pytorchvideo/tests/benchmark_transforms.py": {
+    "run_benchmark_short_side_scale": "run the benchmark test for short_side_scale transform across multiple video frame sizes",
+    "test_benchmark_transforms_class": "test the TestBenchmarkTransforms class to benchmark pytorchvideo short side scale operations",
+    "create_dummy_video_frames_benchmark": "create dummy video frames using create_dummy_video_frames for benchmarking transform performance",
+    "refactor_benchmark_kwargs": "refactor the benchmark kwargs_list to add new temporal and spatial size combinations",
+    "summarize_benchmark_results": "summarize the benchmark results for short_side_scale across different video frame configurations"
+  },
+  "facebookresearch_pytorchvideo/tests/test_accelerator_deployment_mobile_cpu_model_conversion.py": {
+    "test_convert_to_deployable_form": "test the convert_to_deployable_form function with an X3dBottleneckBlock model wrapped by QuantStub and DeQuantStub",
+    "test_X3dBottleneckBlock_model_conversion": "test the X3dBottleneckBlock model conversion to deployment form and verify arithmetic equivalence",
+    "review_EfficientBlockBase_convert_flag": "review the EfficientBlockBase sub-modules to verify all convert_flag attributes are set after conversion",
+    "review_forward_hooks_cleanup": "review the forward hooks on both reference and converted models to ensure they are empty",
+    "test_quant_wrapper_model": "test a QuantStub and DeQuantStub wrapped X3dBottleneckBlock model for deployment conversion correctness"
+  },
+  "facebookresearch_pytorchvideo/tests/test_accelerator_deployment_model_transmuter.py": {
+    "test_mobile_cpu_transmuter": "test the mobile CPU model transmuter by running TestModelTransmuter to verify Conv3d blocks are replaced with EfficientBlockBase",
+    "run_transmute_model": "run transmute_model on a PyTorch nn.Module with target_device set to mobile_cpu to replace layers with efficient blocks",
+    "run_convert_to_deployable_form": "run convert_to_deployable_form on a transmutated model and input tensor to produce a deployable model for mobile CPU inference",
+    "review_EfficientBlockBase": "review the EfficientBlockBase class to understand which transmutated model layers inherit from it after mobile CPU conversion",
+    "refactor_residual_block": "refactor a residual block model with Conv3d and ReLU layers to be compatible with the mobile CPU transmuter pipeline"
+  },
+  "facebookresearch_pytorchvideo/tests/test_accelerator_efficient_blocks_mobile_cpu_activation_attention.py": {
+    "test_activation_equivalency": "test activation function equivalency by comparing reference and converted outputs for supported act functions",
+    "test_squeeze_excite_equivalency": "test SqueezeExcitation module equivalency by comparing reference and converted outputs with max error threshold",
+    "review_SqueezeExcitation_convert": "review the SqueezeExcitation convert method to verify arithmetic equivalency after mobile CPU acceleration conversion",
+    "review_supported_act_functions": "review the supported_act_functions dictionary to inspect available activation functions for mobile CPU acceleration",
+    "test_TestActivationAttentionEquivalency": "test the TestActivationAttentionEquivalency class to validate mobile CPU accelerator equivalency for activation and attention modules"
+  },
+  "facebookresearch_pytorchvideo/tests/test_accelerator_efficient_blocks_mobile_cpu_conv3d.py": {
+    "test_Conv3dPwBnAct_equivalency": "test the Conv3dPwBnAct block equivalency between training and deployment mode using the convert method",
+    "test_Conv3d3x3x3DwBnAct_equivalency": "test the Conv3d3x3x3DwBnAct depthwise conv block equivalency between training and deployment mode",
+    "test_Conv3d3x1x1BnAct_equivalency": "test the Conv3d3x1x1BnAct temporal conv block equivalency across multiple input temporal sizes",
+    "test_Conv3d5x1x1BnAct_equivalency": "test the Conv3d5x1x1BnAct temporal conv block equivalency across multiple input temporal sizes",
+    "review_TestConv3dBlockEquivalency": "review the TestConv3dBlockEquivalency test class that validates mobile CPU accelerator conv block deployment conversion"
+  },
+  "facebookresearch_pytorchvideo/tests/test_accelerator_efficient_blocks_mobile_cpu_head_layer.py": {
+    "test_head_layer_equivalency": "test the TestHeadLayerEquivalency class to verify AdaptiveAvgPool and FullyConnected layer arithmetic equivalency",
+    "run_adaptive_avg_pool_2d_test": "run the AdaptiveAvgPool2d efficient block conversion test with BCHW input tensors",
+    "run_adaptive_avg_pool_3d_test": "run the AdaptiveAvgPool3d efficient block conversion test with BCTHW input tensors",
+    "test_fully_connected_conversion": "test the FullyConnected layer conversion for mobile CPU accelerator equivalency",
+    "review_pool_linear_head_layer": "review the pool plus linear head layer pattern for mobile CPU accelerator blocks"
+  },
+  "facebookresearch_pytorchvideo/tests/test_accelerator_efficient_blocks_mobile_cpu_residual_block.py": {
+    "test_X3dBottleneckBlock_equivalency": "test the X3dBottleneckBlock equivalency between training and deployment mode outputs",
+    "run_test_conv3d_block_equivalency": "run the TestConv3dBlockEquivalency test suite for X3D bottleneck block validation",
+    "review_X3dBottleneckBlock_conversion": "review the X3dBottleneckBlock convert method for deployment mode transformation",
+    "test_residual_block_activation_functions": "test the X3dBottleneckBlock with relu, swish, hswish, and identity activation functions",
+    "refactor_test_equivalency_threshold": "refactor the TestConv3dBlockEquivalency test to adjust the max error threshold"
+  },
+  "facebookresearch_pytorchvideo/tests/test_accelerator_models_efficient_x3d.py": {
+    "test_create_x3d_model": "test the TestEfficientX3d class to verify X3D model creation with different expansion sizes",
+    "test_load_hubconf": "test loading efficient_x3d_xs and efficient_x3d_s models via torch.hub.load from local source",
+    "test_forward_pass": "test forwarding random input tensors through the X3D model and validate output shape",
+    "create_test_inputs": "create random PyTorch tensors with batch sizes 1 or 2 for X3D model test cases",
+    "review_test_efficient_x3d": "review the TestEfficientX3d unittest class and its test methods for X3D model validation"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_ava_dataset.py": {
+    "test_Ava_dataset_multiple_videos": "test the Ava dataset by creating temporary frame videos and verifying video, boxes, and labels output",
+    "test_Ava_dataset_with_label_map": "test the Ava dataset with a label map file to filter actions by ID and verify output",
+    "create_temp_ava_dataset_2_videos": "create a temporary AVA dataset context manager that generates 2 frame-based test videos with CSV metadata",
+    "create_random_bbox": "create a function that generates random bounding box coordinates as a list and comma-separated string",
+    "review_TestAvaDataset_class": "review the TestAvaDataset unittest class and its test methods for AVA dataset validation"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_charades_dataset.py": {
+    "test_charades_single_clip": "test the Charades dataset with a uniform clip sampler for single clip per video",
+    "test_charades_multiple_clips": "test the Charades dataset with a uniform clip sampler for multiple clips per video",
+    "test_charades_multiple_labels": "test the Charades dataset with multiple labels per frame using a random clip sampler",
+    "review_temp_charades_dataset": "review the temp_charades_dataset context manager that creates a temporary CSV with test frame videos",
+    "review_test_charades_dataset_class": "review the TestCharadesDataset unittest class and its three test methods for Charades dataset validation"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_dataset_manifest_utils.py": {
+    "create_VideoFrameInfo": "create a VideoFrameInfo object with video_id, location, frame_file_stem, and frame number range",
+    "create_EncodedVideoInfo": "create an EncodedVideoInfo object with a video_id and file_path for an encoded video",
+    "create_VideoInfo": "create a VideoInfo object with video_id, resolution, duration, and fps metadata",
+    "test_frame_number_to_filepaths": "test VideoDataset._frame_number_to_filepaths to convert frame indices to file paths",
+    "test_remove_video_info_missing_or_incomplete_videos": "test VideoDataset._remove_video_info_missing_or_incomplete_videos to clean up unmatched or incomplete video entries"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_domsev_dataset.py": {
+    "test_DomsevVideoDataset_len": "test the DomsevVideoDataset __len__ method returns correct number of clips for frame and encoded video types",
+    "test_DomsevVideoDataset_getitem": "test the DomsevVideoDataset __getitem__ method returns correct clip data with labels, start_time, stop_time, and video_id",
+    "test_seconds_to_frame_index": "test the _seconds_to_frame_index function converts seconds to frame index with zero-indexed and one-indexed modes",
+    "test_get_overlap_for_time_range_pair": "test the _get_overlap_for_time_range_pair function computes correct overlap between two time ranges",
+    "review_LabelData": "review the LabelData dataclass structure with video_id, start_time, stop_time, start_frame, stop_frame, label_id, and label_name fields"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_encoded_video.py": {
+    "test_EncodedVideo_from_path": "test EncodedVideo.from_path to load a video file and verify its duration and frame count",
+    "test_EncodedVideo_get_clip": "test EncodedVideo.get_clip to extract video frames and audio samples from a time range",
+    "test_EncodedVideo_decode_audio_false": "test EncodedVideo.from_path with decode_audio=False to load video frames without decoding audio",
+    "test_EncodedVideoPyAV_file_api": "test EncodedVideoPyAV to load and decode a video from an open file handle",
+    "test_EncodedVideo_error_handling": "test EncodedVideo.from_path error handling for non-existent files and corrupt video files"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_epic_kitchen_dataset.py": {
+    "test_ActionData": "test the ActionData dataclass by constructing it with participant, video, verb, noun, and timestamp fields",
+    "test_EpicKitchenDataset_len": "test the EpicKitchenDataset length by creating a dataset with mock video info and action CSV files",
+    "test_EpicKitchenDataset_getitem": "test the EpicKitchenDataset getitem method by retrieving clips and verifying actions, start_time, and stop_time",
+    "create_ActionData_instance": "create an ActionData instance with participant_id, video_id, narration, timestamps, verb, noun, and noun_class fields",
+    "create_EpicKitchenDataset": "create an EpicKitchenDataset with video_info_file_path, actions_file_path, clip_sampler, and dataset_type parameters"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_epic_kitchen_forecasting.py": {
+    "test_EpicKitchenForecasting_transform_generator": "test the EpicKitchenForecasting._transform_generator method that filters forecast actions and reshapes video tensors for action forecasting",
+    "test_EpicKitchenForecasting_frame_filter_generator": "test the EpicKitchenForecasting._frame_filter_generator method that subsamples frame indices across multiple input clips",
+    "test_EpicKitchenForecasting_define_clip_structure_generator": "test the EpicKitchenForecasting._define_clip_structure_generator method that creates candidate video clips from action annotations",
+    "test_ActionData_dataclass": "test the ActionData dataclass that represents kitchen actions with verb, noun, timestamps, and frame indices",
+    "test_ClipSampling_enum": "test the ClipSampling enum that defines sampling strategies for video clip selection in the forecasting dataset"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_epic_kitchen_recognition.py": {
+    "test_transform_generator": "test the EpicKitchenRecognition _transform_generator method that filters actions within clip time bounds",
+    "test_frame_filter_generator": "test the EpicKitchenRecognition _frame_filter_generator method that subsamples frames to a target count",
+    "test_define_clip_structure_generator": "test the EpicKitchenRecognition _define_clip_structure_generator method that creates clips with random offset uniform sampling",
+    "review_ActionData": "review the ActionData class used to represent kitchen action annotations with narration and timestamps",
+    "review_ClipSampling": "review the ClipSampling enum that defines clip sampling strategies for EpicKitchenRecognition data loading"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_epic_kitchen_utils.py": {
+    "test_build_frame_manifest_flat": "test the build_frame_manifest_from_flat_directory function with sync and multithreading modes",
+    "test_build_frame_manifest_nested": "test the build_frame_manifest_from_nested_directory function with sync and multithreading modes",
+    "test_build_encoded_manifest_nested": "test the build_encoded_manifest_from_nested_directory function with mock MP4 files",
+    "run_write_mock_frame_files": "run write_mock_frame_files to create mock frame files in a temp directory for testing",
+    "review_TestEpicKitchenUtils": "review the TestEpicKitchenUtils test class and its five test methods for Epic Kitchen dataset utilities"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_frame_video.py": {
+    "test_FrameVideo_from_frame_paths": "test the FrameVideo.from_frame_paths method by creating a video from a list of frame image paths",
+    "test_FrameVideo_get_clip": "test the FrameVideo.get_clip method to extract frames between start and end time in seconds",
+    "test_FrameVideo_duration": "test the FrameVideo duration property to verify video length calculated from frame count and fps",
+    "test_FrameVideo_get_clip_with_filter": "test the FrameVideo.get_clip method with a frame_filter lambda to subsample frames before loading",
+    "test_FrameVideo_error_handling": "test the FrameVideo class error handling for non-existent files and empty frame path lists"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_json_dataset.py": {
+    "test_clip_recognition_random_sampler": "test the clip recognition dataset using a random clip sampler with JSON annotations",
+    "test_clip_recognition_uniform_sampler": "test the clip recognition dataset using a uniform clip sampler with JSON annotations",
+    "test_video_only_dataset": "test the video only dataset using a random clip sampler with JSON annotations",
+    "review_mock_json_annotations": "review the mock_json_annotations context manager that creates temporary JSON annotation files for testing",
+    "review_test_json_datasets_class": "review the TestJsonDatasets unittest class and its test methods for JSON dataset validation"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_labeled_video_dataset.py": {
+    "test_LabeledVideoDataset_single_clip": "test LabeledVideoDataset with uniform clip sampling and sequential video sampler across pyav, torchvision, and decord decoders",
+    "test_LabeledVideoDataset_random_clip_sampling": "test LabeledVideoDataset with random clip sampling to verify correct temporal shape and label assignment",
+    "test_LabeledVideoDataset_distributed_sampler": "test LabeledVideoDataset with DistributedSampler across multiple processes using gloo backend for two epochs",
+    "test_LabeledVideoDataset_multiprocessing": "test LabeledVideoDataset with DataLoader multiprocessing workers including edge cases with non-divisible process counts",
+    "test_LabeledVideoDataset_constant_clips_per_video": "test LabeledVideoDataset with constant_clips_per_video sampling strategy using Fraction duration and min_clips parameter"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_ssv2_dataset.py": {
+    "create_temp_ssv2_dataset": "create a temporary SSv2 dataset with label JSON, video label JSON, and video path CSV files",
+    "test_single_clip_per_video": "test the SSv2 dataset with a single clip per video using constant_clips_per_video sampling",
+    "run_ssv2_dataset_tests": "run the TestSSv2Dataset unittest class to validate SSv2 dataset frame sampling and labeling",
+    "review_temp_ssv2_dataset_context_manager": "review the temp_ssv2_dataset context manager that creates temporary frame videos and annotation files",
+    "summarize_ssv2_dataset_test": "summarize the TestSSv2Dataset test class and its single_clip_per_video test method"
+  },
+  "facebookresearch_pytorchvideo/tests/test_data_utils.py": {
+    "test_DataclassFieldCaster": "test the DataclassFieldCaster base class that auto-casts dataclass fields to their annotated types",
+    "test_export_video_array": "test the export_video_array function that writes a numpy tensor to an MP4 video file",
+    "test_load_dataclass_dict_from_csv": "test the load_dataclass_dict_from_csv function that reads CSV rows into a dict of dataclass objects",
+    "test_save_dataclass_objs_to_headered_csv": "test the save_dataclass_objs_to_headered_csv function that writes a list of dataclass objects to CSV",
+    "review_DataclassFieldCaster_complex_field": "review the DataclassFieldCaster complex_initialized_dataclass_field method for custom field transformation lambdas"
+  },
+  "facebookresearch_pytorchvideo/tests/test_fuse_bn.py": {
+    "test_fuse_bn": "test that model.fuse_bn() correctly fuses BatchNorm layers in a multiscale vision transformer",
+    "run_test_fuse_bn": "run the TestFuseBN unittest to verify BatchNorm fusion preserves model output equivalence",
+    "review_rand_init_bn": "review the rand_init_bn helper function that randomly initializes BatchNorm weight, bias, running_var, and running_mean",
+    "review_TestFuseBN": "review the TestFuseBN class that validates BatchNorm fusion removes all BatchNorm1d and BatchNorm3d layers",
+    "refactor_test_fuse_bn": "refactor the test_fuse_bn test to use a different multiscale vision transformer configuration"
+  },
+  "facebookresearch_pytorchvideo/tests/test_layers_attention.py": {
+    "test_MultiScaleAttention": "test the MultiScaleAttention layer with various pooling kernels and dimension expansion configurations",
+    "test_MultiScaleBlock": "test the MultiScaleBlock layer with dimension changes, attention multiplication, and pooling",
+    "test_Mlp": "test the Mlp layer with multiple activation functions, dropout rates, and feature dimensions",
+    "test_MultiScaleBlock_scriptable": "test that MultiScaleBlock is TorchScript compilable across all parameter combinations",
+    "review_MultiScaleAttention_usage": "review the MultiScaleAttention class for spatial-temporal attention with stride-based pooling and cls embedding"
+  },
+  "facebookresearch_pytorchvideo/tests/test_layers_convolutions.py": {
+    "test_ConvReduce3D": "test the ConvReduce3D class by creating stacked 3D convolutions and verifying output shapes",
+    "test_Conv2plus1d": "test the Conv2plus1d class by comparing manual construction against the factory function output",
+    "create_ConvReduce3D": "create a ConvReduce3D model with multiple stacked 3D convolution layers and custom kernel sizes",
+    "create_conv_2plus1d": "create a factorized 2+1D convolution using the create_conv_2plus1d factory function with batch norm",
+    "review_TestConvReduce3D": "review the TestConvReduce3D test class and its tensor input generation helper method"
+  },
+  "facebookresearch_pytorchvideo/tests/test_layers_drop_path.py": {
+    "test_DropPath_zero_prob": "test the DropPath layer with drop_prob 0 to verify input equals output",
+    "test_DropPath_nonzero_prob": "test the DropPath layer with drop_prob 0.5 to verify output shape matches input",
+    "run_test_dropPath": "run the TestDropPath unit test suite for the pytorchvideo DropPath layer",
+    "review_TestDropPath": "review the TestDropPath class and its test_dropPath method for correctness",
+    "summarize_TestDropPath": "summarize the TestDropPath class that tests DropPath with zero and nonzero drop probabilities"
+  },
+  "facebookresearch_pytorchvideo/tests/test_layers_fusion.py": {
+    "test_reduce_fusion_layers": "test the make_fusion_layer with max, sum, and prod reduction methods on tensor inputs",
+    "test_concat_fusion": "test the make_fusion_layer concat method to concatenate tensors along the last dimension",
+    "test_temporal_concat_fusion": "test the make_fusion_layer temporal_concat method to concatenate tensors along the temporal dimension",
+    "test_fusion_output_dim": "test that fusion layer output_dim matches expected dimension for each fusion method",
+    "test_make_fusion_layer_api": "test the make_fusion_layer API by creating fusion models and verifying tensor output equality"
+  },
+  "facebookresearch_pytorchvideo/tests/test_layers_mlp.py": {
+    "test_make_multilayer_perceptron": "test the make_multilayer_perceptron function with various activation and normalization combinations",
+    "run_MLP_test_suite": "run the TestMLP unittest class to verify multilayer perceptron construction and output dimensions",
+    "review_TestMLP_class": "review the TestMLP class and its test_make_multilayer_perceptron method for coverage gaps",
+    "build_MLP_with_pytorchvideo": "build a multilayer perceptron using make_multilayer_perceptron with custom fully connected dims and dropout",
+    "refactor_MLP_test_combinations": "refactor the test_make_multilayer_perceptron to add new activation or normalization layer combinations"
+  },
+  "facebookresearch_pytorchvideo/tests/test_layers_nonlocal_net.py": {
+    "test_NonLocal_direct": "test the NonLocal model by instantiating it with Conv3d layers and running forward passes",
+    "test_create_nonlocal_builder": "test the create_nonlocal builder function and compare outputs against a manually constructed NonLocal model",
+    "run_NonLocal_forward_pass": "run a forward pass through a NonLocal model with various 5D tensor input shapes",
+    "review_NonLocal_instantiation": "review the NonLocal class instantiation with dot_product and softmax modes and optional pooling",
+    "summarize_get_inputs_helper": "summarize the _get_inputs static method that yields random tensors for test cases"
+  },
+  "facebookresearch_pytorchvideo/tests/test_layers_positional_encoding.py": {
+    "test_PositionalEncoding": "test the PositionalEncoding layer by applying sinusoidal positional encodings to a batched sequence tensor input",
+    "test_PositionalEncoding_dimension_mismatch": "test the PositionalEncoding layer with mismatched sequence lengths to verify assertion errors on undersized encodings",
+    "test_SpatioTemporalClsPositionalEncoding_with_cls": "test the SpatioTemporalClsPositionalEncoding layer with a cls token to verify output shape includes the extra token",
+    "test_SpatioTemporalClsPositionalEncoding_without_cls": "test the SpatioTemporalClsPositionalEncoding layer without a cls token to verify output shape matches input shape",
+    "test_SpatioTemporalClsPositionalEncoding_scriptable": "test the SpatioTemporalClsPositionalEncoding layer is TorchScript compatible by scripting and comparing outputs across parameter combinations"
+  },
+  "facebookresearch_pytorchvideo/tests/test_layers_squeeze_excitation.py": {
+    "test_2d_squeeze_excitation_forward_pass": "test the Test2DSqueezeExcitationBlock forward pass to verify output tensor shape matches expected dimensions",
+    "create_audio_2d_squeeze_excitation_block": "create an audio 2D squeeze excitation block with configurable conv kernel size stride and padding",
+    "review_Test2DSqueezeExcitationBlock_class": "review the Test2DSqueezeExcitationBlock class and its layer arguments for squeeze excitation configuration",
+    "summarize_create_audio_2d_squeeze_excitation_block": "summarize the create_audio_2d_squeeze_excitation_block function parameters including dim_in dim_out and se_reduction_ratio",
+    "refactor_Test2DSqueezeExcitationBlock_forward_pass": "refactor the test_forward_pass method to support multiple batch sizes and input shapes"
+  },
+  "facebookresearch_pytorchvideo/tests/test_losses_soft_target_cross_entropy.py": {
+    "test_SoftTargetCrossEntropyLoss": "test the SoftTargetCrossEntropyLoss class with various batch sizes and class counts",
+    "test_soft_target_cross_entropy_loss_method": "test the soft target cross entropy loss method with 1D and 2D targets",
+    "review_TestSoftTargetCrossEntropyLoss_class": "review the TestSoftTargetCrossEntropyLoss unittest class and its test methods",
+    "summarize_get_inputs_helper": "summarize the _get_inputs static method that yields random tensor pairs for testing",
+    "refactor_test_soft_target_cross_entropy_loss": "refactor the test_soft_target_cross_entropy_loss method to add new batch size or class count combinations"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_audio_visual_slowfast.py": {
+    "test_create_avslowfast_with_callable": "test the create_audio_visual_slowfast builder with various norm and activation callable inputs",
+    "test_AVSlowFast_model_forwarding": "test the Audio-Visual SlowFast model forwarding with generated video and audio tensor inputs",
+    "create_audio_visual_slowfast_model": "create an Audio-Visual SlowFast model using create_audio_visual_slowfast with specified input channels and depth",
+    "generate_test_input_tensors": "generate test input tensors for video and audio using uniform_temporal_subsample_repeated transforms",
+    "review_TestAVSlowFast_class": "review the TestAVSlowFast unittest class and its test methods for Audio-Visual SlowFast model validation"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_byol.py": {
+    "test_BYOL_model": "test the BYOL model with a linear backbone and projector on random tensor inputs",
+    "run_test_byol": "run the TestBYOL unit test to verify BYOL forward pass with two crop inputs",
+    "review_TestBYOL_class": "review the TestBYOL class that tests BYOL model with seeded random inputs",
+    "create_BYOL_test": "create a test case for BYOL using a linear backbone and batch norm",
+    "summarize_test_byol": "summarize the test_byol method that validates BYOL forward pass on paired tensor crops"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_csn.py": {
+    "test_create_csn_model": "test the create_csn function by building a CSN model with configurable depth and stride parameters",
+    "test_csn_forward_pass": "test the CSN model forward pass with random input tensors of varying batch sizes and channel counts",
+    "test_csn_channel_mismatch": "test that the CSN model raises a RuntimeError when input tensor channels do not match the model",
+    "test_load_csn_hubconf": "test loading a CSN R101 model from the local torch hub configuration file",
+    "generate_csn_test_inputs": "generate random PyTorch tensors with configurable channel, clip length, and crop size for CSN model testing"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_head.py": {
+    "test_ResNetBasicHead": "test the ResNetBasicHead model with various input dimensions and output dimensions",
+    "test_ResNetRoIHead": "test the ResNetRoIHead model with bounding boxes and ROI alignment layers",
+    "test_create_res_basic_head": "test the create_res_basic_head builder with different pool and activation configurations",
+    "test_create_res_roi_pooling_head": "test the create_res_roi_pooling_head builder with various ROI layer and pooling options",
+    "test_create_vit_basic_head": "test the create_vit_basic_head builder with sequence input tensors"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_hub_vision_transformers.py": {
+    "test_load_hubconf": "test loading MViT vision transformer models from a local torch hub repository",
+    "test_hub_model_builder": "test the hub_model_builder utility with default and override config parameters",
+    "run_test_hub_vision_transformers": "run the TestHubVisionTransformers unittest suite to validate hub model loading and builder utilities",
+    "review_test_hub_model_builder": "review the test_hub_model_builder method to understand config override and assertion behavior",
+    "refactor_test_load_hubconf": "refactor the test_load_hubconf method to add pretrained model loading test cases"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_masked_multistream.py": {
+    "test_masked_multistream_model": "test the MaskedSequential model with PositionalEncoding, TransposeMultiheadAttention, and MaskedTemporalPooling layers",
+    "test_masked_temporal_pooling": "test MaskedTemporalPooling with max, avg, and sum pooling methods on masked sequences",
+    "test_transpose_multihead_attention": "test TransposeMultiheadAttention with masked input tensors and multiple attention heads",
+    "test_masked_lstm": "test masked LSTM with unidirectional and bidirectional modes on variable-length sequences",
+    "test_learn_masked_default": "test LearnMaskedDefault to handle valid, invalid, and partially valid mask scenarios"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_memory_bank.py": {
+    "test_memory_bank_model": "test the MemoryBank model with a backbone, MLP, temperature, bank_size, and dim parameters",
+    "create_memory_bank_instance": "create a MemoryBank instance with a Linear backbone, Linear MLP, and configurable temperature and bank size",
+    "run_memory_bank_forward": "run the MemoryBank forward pass on random tensor inputs with corresponding index tensors",
+    "generate_test_inputs": "generate random tensor inputs and index tensors for testing the MemoryBank model",
+    "setup_test_rng": "set up a reproducible random number generator seed for MemoryBank unit tests"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_r2plus1d.py": {
+    "test_create_r2plus1d_model": "test the R(2+1)D model creation with different input channels, clip lengths, and crop sizes",
+    "test_r2plus1d_forward_pass": "test the R(2+1)D model forward pass with random tensor inputs and verify output shape",
+    "create_r2plus1d_with_bottleneck": "create an R(2+1)D model using create_r2plus1d with mixed bottleneck and 2plus1d bottleneck blocks",
+    "test_r2plus1d_channel_mismatch": "test that the R(2+1)D model raises RuntimeError when input tensor channels don't match model input channels",
+    "generate_r2plus1d_test_inputs": "generate random PyTorch tensor inputs with batch sizes 1 and 2 for R(2+1)D model testing"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_resnet.py": {
+    "create_bottleneck_block": "create a BottleneckBlock with Conv3d layers, BatchNorm3d, and ReLU for video feature extraction",
+    "create_separable_bottleneck_block": "create a SeparableBottleneckBlock with sum or cat reduce method for multi-branch convolutions",
+    "create_acoustic_bottleneck_block": "create an acoustic SeparableBottleneckBlock with configurable norm and activation callables",
+    "create_res_block": "create a ResBlock with a BottleneckBlock branch and optional skip connection conv",
+    "create_resnet": "create a full ResNet video model with stem, stages, and head using callable builders"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_slowfast.py": {
+    "test_slowfast_hubconf_loading": "test loading slowfast_r50 and slowfast_r101 models via torch.hub.load from local source",
+    "test_slowfast_detection_hubconf": "test loading slowfast_r50_detection model via torch.hub.load and run forward pass with bounding box inputs",
+    "test_create_slowfast_with_roi_head": "test creating a SlowFast model with ROI head using create_slowfast_with_roi_head and run forward pass",
+    "test_create_slowfast_with_callable": "test creating a SlowFast model with custom norm and activation callables via create_slowfast builder",
+    "test_get_inputs_generator": "test the _get_inputs static method that yields temporally subsampled random tensors for model inputs"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_stem.py": {
+    "create_ResNetBasicStem": "create a ResNetBasicStem model with Conv3d, BatchNorm3d, ReLU, and optional pooling layers",
+    "test_ResNetBasicStem_simple": "test a simple ResNetBasicStem without pooling by forwarding random tensors and verifying output shapes",
+    "test_ResNetBasicStem_convreduce3d": "test a ResNetBasicStem with ConvReduce3D convolution instead of standard Conv3d",
+    "create_res_basic_stem": "create a ResNetBasicStem using the create_res_basic_stem builder with callable pool, activation, and norm arguments",
+    "create_acoustic_res_basic_stem": "create an acoustic ResNetBasicStem using ConvReduce3D with the create_acoustic_res_basic_stem builder function"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_vision_transformers.py": {
+    "create_mvit_3d_model": "create a multiscale vision transformer model for 3D video input with adaptive pool stride",
+    "create_mvit_2d_model": "create a multiscale vision transformer model for 2D image input with 2D patch embedding",
+    "create_mvit_without_patch_embed": "create a multiscale vision transformer model without patch embedding using pre-computed features",
+    "test_mvit_torchscriptable": "test that the multiscale vision transformer model is TorchScript compilable across all boolean configuration combinations",
+    "test_mvit_deprecated_scriptable": "test that creating a scriptable model with create_scriptable_model=True raises a DeprecationWarning"
+  },
+  "facebookresearch_pytorchvideo/tests/test_models_x3d.py": {
+    "create_x3d_model": "create an X3D video classification model with configurable width, depth, and bottleneck factors",
+    "test_create_x3d_forward": "test the X3D model forward pass with random video tensor inputs and verify output shape",
+    "test_load_hubconf": "test loading X3D XS, S, and M models via torch hub from a local repository",
+    "create_x3d_bottleneck_block": "create an X3D bottleneck block for use as the residual block in the X3D model",
+    "generate_test_inputs": "generate random 5D video tensors with batch sizes of 1 or 2 for model testing"
+  },
+  "facebookresearch_pytorchvideo/tests/test_simclr.py": {
+    "test_simclr_model": "test the SimCLR model with a linear backbone and MLP on random tensor inputs",
+    "run_simclr_test": "run the TestSimCLR unit test to verify SimCLR forward pass with different input shapes",
+    "create_simclr_instance": "create a SimCLR model instance with a backbone, MLP, and temperature parameter",
+    "review_test_simclr_class": "review the TestSimCLR class and its test methods for SimCLR model validation",
+    "summarize_get_inputs_method": "summarize the _get_inputs static method that yields random tensor pairs for test cases"
+  },
+  "facebookresearch_pytorchvideo/tests/test_transforms.py": {
+    "create_video_transform": "create a video transform pipeline for training or validation with subsampling, normalization, and cropping",
+    "apply_uniform_temporal_subsample": "apply uniform temporal subsampling to select equispaced frames from a video tensor",
+    "apply_mixup_cutmix": "apply mixup or cutmix augmentation to a batch of video tensors and labels",
+    "apply_randaug_augmix": "apply randaugment or augmix data augmentation to a video tensor for robustness training",
+    "apply_short_side_scale_and_crop": "apply short side scaling and uniform cropping to video tensors with optional bounding box support"
+  },
+  "facebookresearch_pytorchvideo/tests/test_uniform_clip_sampler.py": {
+    "test_uniform_clip_sampler": "test the UniformClipSampler class with parameterized video duration, fps, stride, and window size combinations",
+    "test_num_clips": "test the _num_clips utility function to verify correct clip count calculations for various video parameters",
+    "run_test_uniform_clip_sampler": "run the parameterized test suite for UniformClipSampler with backpad_last true and false scenarios",
+    "run_test_num_clips": "run the parameterized test suite for _num_clips with various stride and window size combinations",
+    "review_TestUniformClipSampler": "review the TestUniformClipSampler class and its parameterized test cases for video clip sampling edge cases"
+  },
+  "facebookresearch_pytorchvideo/tests/utils.py": {
+    "create_dummy_video_frames": "create synthetic video frames as a torch tensor with a moving Gaussian blob across frames",
+    "create_random_bbox": "create random bounding box coordinates as a torch tensor for a given height and width",
+    "temp_encoded_video": "create a temporary lossless MP4 video file with synthetic frames that auto-deletes after use",
+    "temp_encoded_video_with_audio": "create a temporary MP4 video with both synthetic video frames and random audio samples",
+    "write_audio_video": "write interleaved video and audio streams to an MP4 file using PyAV with lossless encoding"
+  },
+  "facebookresearch_pytorchvideo/tutorials/video_classification_example/slurm.py": {
+    "run_slurm_job": "submit a Python function as a SLURM job using submitit with cluster config parameters",
+    "run_init_and_run": "initialize SLURM environment variables and execute a run function with a given config",
+    "run_copy_and_run_with_config": "copy the current directory and submit a job to SLURM with specified cluster configuration",
+    "review_init_and_run": "review the init_and_run function that maps SLURM env vars to standard distributed training variables",
+    "review_copy_and_run_with_config": "review the copy_and_run_with_config function that clones the workspace and submits a SLURM job via submitit"
+  },
+  "facebookresearch_pytorchvideo/tutorials/video_classification_example/train.py": {
+    "train_video_classification_model": "train a PyTorchVideo ResNet model on the Kinetics dataset using PyTorch Lightning",
+    "create_video_classification_lightning_module": "create a LightningModule that constructs a video or audio ResNet model with cross-entropy loss",
+    "build_kinetics_data_module": "build a LightningDataModule that creates train and val dataloaders for the Kinetics dataset",
+    "run_video_transforms": "run video preprocessing transforms including temporal subsample, normalize, random scale, crop, and horizontal flip",
+    "run_audio_transforms": "run audio preprocessing transforms including resample, mel spectrogram, log transform, and temporal subsample"
+  },
+  "facebookresearch_pytorchvideo/tutorials/video_detection_example/visualization.py": {
+    "create_text_labels": "create text labels from class IDs, scores, and class names for visualization output",
+    "draw_text_on_image": "draw text at a specified position on an image using ImgVisualizer",
+    "draw_multiple_text_labels": "draw multiple text labels around a bounding box using ImgVisualizer",
+    "draw_one_frame": "draw predicted labels and bounding boxes on a single video frame",
+    "draw_clip_with_fading": "draw bounding boxes and labels on a video clip with fade in and out effect"
+  }
+}

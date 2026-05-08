@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/home-robot
+- repo_uri: https://github.com/facebookresearch/home-robot
+
+## File: facebookresearch_home-robot/src/home_robot/home_robot/navigation_policy/object_navigation/objectnav_frontier_exploration_policy.py
+
+Prompts
+
+```
+['build a python module to create an ObjectNavFrontierExplorationPolicy with seen_frontier strategy and 20 semantic categories', 'run the forward method on ObjectNavFrontierExplorationPolicy with map features and an object category to get a goal map', 'test the reach_single_category method to navigate to a mapped object category or explore frontiers', 'review the reach_object_recep_combination method that finds objects on receptacles in the semantic map', 'summarize the get_frontier_map method that computes unexplored frontier regions using morphological dilation']
+```
+
+Usage
+
+```
+{'build_objectnav_frontier_policy': 'build a python module to create an ObjectNavFrontierExplorationPolicy with seen_frontier strategy and 20 semantic categories', 'run_forward_navigation': 'run the forward method on ObjectNavFrontierExplorationPolicy with map features and an object category to get a goal map', 'test_reach_single_category': 'test the reach_single_category method to navigate to a mapped object category or explore frontiers', 'review_reach_object_recep_combination': 'review the reach_object_recep_combination method that finds objects on receptacles in the semantic map', 'summarize_get_frontier_map': 'summarize the get_frontier_map method that computes unexplored frontier regions using morphological dilation'}
+```
+

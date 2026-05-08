@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/labgraph
+- repo_uri: https://github.com/facebookresearch/labgraph
+
+## File: facebookresearch_labgraph/extensions/labgraph_viz/labgraph_viz/application/application.py
+
+Prompts
+
+```
+['create an ApplicationConfig with title, width, height, and external timer settings for a PyQt window', 'run the Application node to launch a PyQt window with configured plots and an optional external timer', 'setup a pyqt GraphicsWindow with a title, dimensions, and add plot items in a vertical layout', 'update all plot nodes in the Application by calling their update methods on each timer tick', 'cleanup and quit the PyQt application by calling the cleanup method on the Application node']
+```
+
+Usage
+
+```
+{'create_application_config': 'create an ApplicationConfig with title, width, height, and external timer settings for a PyQt window', 'run_application_plot': 'run the Application node to launch a PyQt window with configured plots and an optional external timer', 'setup_application_window': 'setup a pyqt GraphicsWindow with a title, dimensions, and add plot items in a vertical layout', 'update_application_plots': 'update all plot nodes in the Application by calling their update methods on each timer tick', 'cleanup_application': 'cleanup and quit the PyQt application by calling the cleanup method on the Application node'}
+```
+
