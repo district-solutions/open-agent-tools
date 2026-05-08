@@ -20,7 +20,7 @@ The result is a **fast, high-quality tool-calling approach that hopefully runs o
 
 - We also publish a parquet file to the [OpenAgent Tools dataset on Huggingface](https://huggingface.co/datasets/open-agent-tools/open-tools) that complements the json files in the root repo directory.
 
-- There are over **141,000** tool-calling ready-to-use rows in the [OATs 20260508 parquet collected from 234 leading ai-centric/ai-adjacent github repos](https://huggingface.co/datasets/open-agent-tools/open-tools/blob/main/dataset.open-agent-tools.ai-repos.repo-uses.20260504.parquet).
+- There are over **141,000** tool-calling ready-to-use rows in the [OATs 20260508 parquet collected from 234 leading ai-centric/ai-adjacent github repos](https://huggingface.co/datasets/open-agent-tools/open-tools/blob/main/dataset.open-agent-tools.ai-repos.repo-uses.20260508.parquet).
 
 - Reach out if you want to add a new repo!!
 
