@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/nevergrad
+- repo_uri: https://github.com/facebookresearch/nevergrad
+
+## File: facebookresearch_nevergrad/docs/instrumentations_examples.py
+
+Prompts
+
+```
+['run the nevergrad instrumentation benchmark across multiple dimensions and array sizes', 'test a nevergrad optimizer with a 30 second timeout using SIGALRM signal handling', 'create a continuous multidimensional array domain using ng.p.Array with a given shape', 'create a discrete boolean array domain using ng.p.Array with integer casting enabled', 'create a mixed continuous and discrete domain using ng.p.Instrumentation with multiple parameters']
+```
+
+Usage
+
+```
+{'run_instrumentation_benchmark': 'run the nevergrad instrumentation benchmark across multiple dimensions and array sizes', 'test_optimizer_with_timeout': 'test a nevergrad optimizer with a 30 second timeout using SIGALRM signal handling', 'create_continuous_array_domain': 'create a continuous multidimensional array domain using ng.p.Array with a given shape', 'create_discrete_array_domain': 'create a discrete boolean array domain using ng.p.Array with integer casting enabled', 'create_mixed_instrumentation_domain': 'create a mixed continuous and discrete domain using ng.p.Instrumentation with multiple parameters'}
+```
+

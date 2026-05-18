@@ -1,0 +1,11 @@
+{
+    "note": "This file is a configuration-only Python file (dict literals). It defines dataset settings, training/test pipelines, dataloaders, and evaluators for the Pascal VOC2007+2012 dataset in MMDetection. It contains no callable functions, classes, or methods — only configuration variables.",
+    "dataset_type": "VOCDataset",
+    "data_root": "data/VOCdevkit/",
+    "train_pipeline": "LoadImageFromFile -> LoadAnnotations -> Resize -> RandomFlip -> PackDetInputs",
+    "test_pipeline": "LoadImageFromFile -> Resize -> LoadAnnotations -> PackDetInputs",
+    "train_dataloader": "ConcatDataset of VOC2007+VOC2012 trainval splits, repeated 3x, batch_size=2",
+    "val_dataloader": "VOC2007 test split, batch_size=1, test_mode=True",
+    "val_evaluator": "VOCMetric with mAP and 11points eval mode",
+    "config_usage": "Used as a base config in MMDetection training runs via `--config` or `CONFIG_FILE` env var"
+}

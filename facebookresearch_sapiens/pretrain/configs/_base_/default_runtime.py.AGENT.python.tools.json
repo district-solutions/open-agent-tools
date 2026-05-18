@@ -1,0 +1,22 @@
+{
+    "note": "This file is a configuration-only module with no functions, classes, or callable APIs. It defines default runtime settings for MMPretrain training pipelines as a collection of variable assignments.",
+    "summary": "default_runtime.py provides default configuration values for MMPretrain training runs including: default_scope (registry scope), default_hooks (timer, logger, param_scheduler, checkpoint, sampler_seed, visualization), env_cfg (cudnn_benchmark, multiprocessing, distributed backend), vis_backends (LocalVisBackend, TensorboardVisBackend), visualizer (UniversalVisualizer), log_level, load_from, resume, and randomness settings.",
+    "variables": [
+        "default_scope - set to 'mmpretrain' to use MMPretrain registries",
+        "default_hooks - dict of training hooks: IterTimerHook, LoggerHook, ParamSchedulerHook, CheckpointHook, DistSamplerSeedHook, VisualizationHook",
+        "env_cfg - environment config: cudnn_benchmark, mp_cfg (fork start method), dist_cfg (nccl backend)",
+        "vis_backends - list of visualization backends: LocalVisBackend, TensorboardVisBackend",
+        "visualizer - UniversalVisualizer configured with vis_backends",
+        "log_level - logging level set to 'INFO'",
+        "load_from - path to checkpoint to load from (default None)",
+        "resume - whether to resume training (default False)",
+        "randomness - random seed and deterministic settings (default seed=None, deterministic=False)"
+    ],
+    "use_cases": [
+        "Use as a base config file in MMPretrain training pipelines by referencing it in config inheritance",
+        "Override default_hooks to customize training hooks like checkpoint frequency or logger interval",
+        "Modify env_cfg to change distributed training backend or multiprocessing settings",
+        "Enable visualization by setting VisualizationHook enable=True and adding WandbVisBackend",
+        "Set load_from and resume=True to continue training from a saved checkpoint"
+    ]
+}

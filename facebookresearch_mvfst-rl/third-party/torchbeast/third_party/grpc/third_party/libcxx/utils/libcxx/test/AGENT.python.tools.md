@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mvfst-rl
+- repo_uri: https://github.com/facebookresearch/mvfst-rl
+
+## File: facebookresearch_mvfst-rl/third-party/torchbeast/third_party/grpc/third_party/libcxx/utils/libcxx/test/config.py
+
+Prompts
+
+```
+['configure the libc++ test environment by setting up compiler flags, link flags, and available features', 'load a site-specific configuration file from a parameter or environment variable into the lit config', 'configure the C++ compiler under test by inferring clang++ and setting compile environment variables', 'configure address, memory, thread, or undefined behavior sanitizer flags and environment variables for testing', 'configure lit test substitutions for compiler paths, compile flags, link flags, and build commands', 'run a LocalExecutor to execute a command locally and return output, error, and exit code', 'run a PrefixExecutor to wrap a command with a prefix like valgrind or qemu before execution', 'run a PostfixExecutor to append additional arguments to a command before execution', 'run a TimeoutExecutor to execute a command with a time limit using the timeout wrapper', 'run an SSHExecutor to execute a command remotely over SSH on a specified host', 'execute a libc++ test by compiling and running pass or fail test files', 'get all test files in a directory that match configured suffixes', 'evaluate a pass test by compiling linking and running the executable', 'evaluate a fail test by compiling and expecting compilation to fail', 'create custom parsers for FLAKY_TEST and MODULES_DEFINES test keywords', 'test if a given locale string is supported on the current platform by attempting to set it', 'add common test-suite locale features to a feature set for a given platform including Windows', 'create a platform-specific target info object by detecting the OS or loading a custom module', 'create a default target info object that provides platform detection and no-op compile and link flag methods', 'create a macOS target info object that detects SDK paths, macOS version, and configures library paths', 'wrap a function with trace_function to log calls and results to stdout', 'wrap all public methods on an object with trace_object to log every method call', 'wrap a function with trace_function using a custom label prefix for log messages', 'wrap a function with trace_function to log exceptions raised during execution', 'wrap an object with trace_object which automatically skips dunder methods like init']
+```
+
+Usage
+
+```
+{'configure_libcxx_test_environment': 'configure the libc++ test environment by setting up compiler flags, link flags, and available features', 'load_site_config': 'load a site-specific configuration file from a parameter or environment variable into the lit config', 'configure_cxx_compiler': 'configure the C++ compiler under test by inferring clang++ and setting compile environment variables', 'configure_sanitizer_flags': 'configure address, memory, thread, or undefined behavior sanitizer flags and environment variables for testing', 'configure_substitutions': 'configure lit test substitutions for compiler paths, compile flags, link flags, and build commands'}
+```
+
+## File: facebookresearch_mvfst-rl/third-party/torchbeast/third_party/grpc/third_party/libcxx/utils/libcxx/test/executor.py
+
+Prompts
+
+```
+['configure the libc++ test environment by setting up compiler flags, link flags, and available features', 'load a site-specific configuration file from a parameter or environment variable into the lit config', 'configure the C++ compiler under test by inferring clang++ and setting compile environment variables', 'configure address, memory, thread, or undefined behavior sanitizer flags and environment variables for testing', 'configure lit test substitutions for compiler paths, compile flags, link flags, and build commands', 'run a LocalExecutor to execute a command locally and return output, error, and exit code', 'run a PrefixExecutor to wrap a command with a prefix like valgrind or qemu before execution', 'run a PostfixExecutor to append additional arguments to a command before execution', 'run a TimeoutExecutor to execute a command with a time limit using the timeout wrapper', 'run an SSHExecutor to execute a command remotely over SSH on a specified host', 'execute a libc++ test by compiling and running pass or fail test files', 'get all test files in a directory that match configured suffixes', 'evaluate a pass test by compiling linking and running the executable', 'evaluate a fail test by compiling and expecting compilation to fail', 'create custom parsers for FLAKY_TEST and MODULES_DEFINES test keywords', 'test if a given locale string is supported on the current platform by attempting to set it', 'add common test-suite locale features to a feature set for a given platform including Windows', 'create a platform-specific target info object by detecting the OS or loading a custom module', 'create a default target info object that provides platform detection and no-op compile and link flag methods', 'create a macOS target info object that detects SDK paths, macOS version, and configures library paths', 'wrap a function with trace_function to log calls and results to stdout', 'wrap all public methods on an object with trace_object to log every method call', 'wrap a function with trace_function using a custom label prefix for log messages', 'wrap a function with trace_function to log exceptions raised during execution', 'wrap an object with trace_object which automatically skips dunder methods like init']
+```
+
+Usage
+
+```
+{'run_local_executor': 'run a LocalExecutor to execute a command locally and return output, error, and exit code', 'run_prefix_executor': 'run a PrefixExecutor to wrap a command with a prefix like valgrind or qemu before execution', 'run_postfix_executor': 'run a PostfixExecutor to append additional arguments to a command before execution', 'run_timeout_executor': 'run a TimeoutExecutor to execute a command with a time limit using the timeout wrapper', 'run_ssh_executor': 'run an SSHExecutor to execute a command remotely over SSH on a specified host'}
+```
+
+## File: facebookresearch_mvfst-rl/third-party/torchbeast/third_party/grpc/third_party/libcxx/utils/libcxx/test/format.py
+
+Prompts
+
+```
+['configure the libc++ test environment by setting up compiler flags, link flags, and available features', 'load a site-specific configuration file from a parameter or environment variable into the lit config', 'configure the C++ compiler under test by inferring clang++ and setting compile environment variables', 'configure address, memory, thread, or undefined behavior sanitizer flags and environment variables for testing', 'configure lit test substitutions for compiler paths, compile flags, link flags, and build commands', 'run a LocalExecutor to execute a command locally and return output, error, and exit code', 'run a PrefixExecutor to wrap a command with a prefix like valgrind or qemu before execution', 'run a PostfixExecutor to append additional arguments to a command before execution', 'run a TimeoutExecutor to execute a command with a time limit using the timeout wrapper', 'run an SSHExecutor to execute a command remotely over SSH on a specified host', 'execute a libc++ test by compiling and running pass or fail test files', 'get all test files in a directory that match configured suffixes', 'evaluate a pass test by compiling linking and running the executable', 'evaluate a fail test by compiling and expecting compilation to fail', 'create custom parsers for FLAKY_TEST and MODULES_DEFINES test keywords', 'test if a given locale string is supported on the current platform by attempting to set it', 'add common test-suite locale features to a feature set for a given platform including Windows', 'create a platform-specific target info object by detecting the OS or loading a custom module', 'create a default target info object that provides platform detection and no-op compile and link flag methods', 'create a macOS target info object that detects SDK paths, macOS version, and configures library paths', 'wrap a function with trace_function to log calls and results to stdout', 'wrap all public methods on an object with trace_object to log every method call', 'wrap a function with trace_function using a custom label prefix for log messages', 'wrap a function with trace_function to log exceptions raised during execution', 'wrap an object with trace_object which automatically skips dunder methods like init']
+```
+
+Usage
+
+```
+{'execute_LibcxxTestFormat': 'execute a libc++ test by compiling and running pass or fail test files', 'getTestsInDirectory_LibcxxTestFormat': 'get all test files in a directory that match configured suffixes', 'evaluate_pass_test_LibcxxTestFormat': 'evaluate a pass test by compiling linking and running the executable', 'evaluate_fail_test_LibcxxTestFormat': 'evaluate a fail test by compiling and expecting compilation to fail', 'make_custom_parsers_LibcxxTestFormat': 'create custom parsers for FLAKY_TEST and MODULES_DEFINES test keywords'}
+```
+
+## File: facebookresearch_mvfst-rl/third-party/torchbeast/third_party/grpc/third_party/libcxx/utils/libcxx/test/target_info.py
+
+Prompts
+
+```
+['configure the libc++ test environment by setting up compiler flags, link flags, and available features', 'load a site-specific configuration file from a parameter or environment variable into the lit config', 'configure the C++ compiler under test by inferring clang++ and setting compile environment variables', 'configure address, memory, thread, or undefined behavior sanitizer flags and environment variables for testing', 'configure lit test substitutions for compiler paths, compile flags, link flags, and build commands', 'run a LocalExecutor to execute a command locally and return output, error, and exit code', 'run a PrefixExecutor to wrap a command with a prefix like valgrind or qemu before execution', 'run a PostfixExecutor to append additional arguments to a command before execution', 'run a TimeoutExecutor to execute a command with a time limit using the timeout wrapper', 'run an SSHExecutor to execute a command remotely over SSH on a specified host', 'execute a libc++ test by compiling and running pass or fail test files', 'get all test files in a directory that match configured suffixes', 'evaluate a pass test by compiling linking and running the executable', 'evaluate a fail test by compiling and expecting compilation to fail', 'create custom parsers for FLAKY_TEST and MODULES_DEFINES test keywords', 'test if a given locale string is supported on the current platform by attempting to set it', 'add common test-suite locale features to a feature set for a given platform including Windows', 'create a platform-specific target info object by detecting the OS or loading a custom module', 'create a default target info object that provides platform detection and no-op compile and link flag methods', 'create a macOS target info object that detects SDK paths, macOS version, and configures library paths', 'wrap a function with trace_function to log calls and results to stdout', 'wrap all public methods on an object with trace_object to log every method call', 'wrap a function with trace_function using a custom label prefix for log messages', 'wrap a function with trace_function to log exceptions raised during execution', 'wrap an object with trace_object which automatically skips dunder methods like init']
+```
+
+Usage
+
+```
+{'test_locale': 'test if a given locale string is supported on the current platform by attempting to set it', 'add_common_locales': 'add common test-suite locale features to a feature set for a given platform including Windows', 'make_target_info': 'create a platform-specific target info object by detecting the OS or loading a custom module', 'DefaultTargetInfo': 'create a default target info object that provides platform detection and no-op compile and link flag methods', 'DarwinLocalTI': 'create a macOS target info object that detects SDK paths, macOS version, and configures library paths'}
+```
+
+## File: facebookresearch_mvfst-rl/third-party/torchbeast/third_party/grpc/third_party/libcxx/utils/libcxx/test/tracing.py
+
+Prompts
+
+```
+['configure the libc++ test environment by setting up compiler flags, link flags, and available features', 'load a site-specific configuration file from a parameter or environment variable into the lit config', 'configure the C++ compiler under test by inferring clang++ and setting compile environment variables', 'configure address, memory, thread, or undefined behavior sanitizer flags and environment variables for testing', 'configure lit test substitutions for compiler paths, compile flags, link flags, and build commands', 'run a LocalExecutor to execute a command locally and return output, error, and exit code', 'run a PrefixExecutor to wrap a command with a prefix like valgrind or qemu before execution', 'run a PostfixExecutor to append additional arguments to a command before execution', 'run a TimeoutExecutor to execute a command with a time limit using the timeout wrapper', 'run an SSHExecutor to execute a command remotely over SSH on a specified host', 'execute a libc++ test by compiling and running pass or fail test files', 'get all test files in a directory that match configured suffixes', 'evaluate a pass test by compiling linking and running the executable', 'evaluate a fail test by compiling and expecting compilation to fail', 'create custom parsers for FLAKY_TEST and MODULES_DEFINES test keywords', 'test if a given locale string is supported on the current platform by attempting to set it', 'add common test-suite locale features to a feature set for a given platform including Windows', 'create a platform-specific target info object by detecting the OS or loading a custom module', 'create a default target info object that provides platform detection and no-op compile and link flag methods', 'create a macOS target info object that detects SDK paths, macOS version, and configures library paths', 'wrap a function with trace_function to log calls and results to stdout', 'wrap all public methods on an object with trace_object to log every method call', 'wrap a function with trace_function using a custom label prefix for log messages', 'wrap a function with trace_function to log exceptions raised during execution', 'wrap an object with trace_object which automatically skips dunder methods like init']
+```
+
+Usage
+
+```
+{'trace_function_calls': 'wrap a function with trace_function to log calls and results to stdout', 'trace_object_methods': 'wrap all public methods on an object with trace_object to log every method call', 'trace_function_with_label': 'wrap a function with trace_function using a custom label prefix for log messages', 'trace_function_exceptions': 'wrap a function with trace_function to log exceptions raised during execution', 'trace_object_skip_dunder': 'wrap an object with trace_object which automatically skips dunder methods like init'}
+```
+

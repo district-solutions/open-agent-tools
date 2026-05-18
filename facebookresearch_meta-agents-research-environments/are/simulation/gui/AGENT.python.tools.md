@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/meta-agents-research-environments
+- repo_uri: https://github.com/facebookresearch/meta-agents-research-environments
+
+## File: facebookresearch_meta-agents-research-environments/are/simulation/gui/cli.py
+
+Prompts
+
+```
+['run the ARE simulation GUI server on localhost:8080 with a specified scenario ID', 'run the ARE simulation GUI server with SSL certificate and key file paths', 'run the ARE simulation GUI server with cProfile profiler enabled for performance analysis', 'run the ARE simulation GUI server loading scenarios from a custom dataset directory path', 'run the ARE simulation GUI server starting in a specific UI view like SCENARIOS or PLAYGROUND']
+```
+
+Usage
+
+```
+{'run_gui_server': 'run the ARE simulation GUI server on localhost:8080 with a specified scenario ID', 'run_gui_server_with_ssl': 'run the ARE simulation GUI server with SSL certificate and key file paths', 'run_gui_server_with_profiler': 'run the ARE simulation GUI server with cProfile profiler enabled for performance analysis', 'run_gui_server_with_dataset': 'run the ARE simulation GUI server loading scenarios from a custom dataset directory path', 'run_gui_server_with_custom_view': 'run the ARE simulation GUI server starting in a specific UI view like SCENARIOS or PLAYGROUND'}
+```
+

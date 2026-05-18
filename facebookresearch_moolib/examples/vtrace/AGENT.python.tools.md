@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/moolib
+- repo_uri: https://github.com/facebookresearch/moolib
+
+## File: facebookresearch_moolib/examples/vtrace/experiment.py
+
+Prompts
+
+```
+['run the VTrace reinforcement learning experiment for Atari games with distributed training via moolib', 'create a LearnerState dataclass to hold the model, optimizer, scheduler, and training metadata', 'compute the policy gradient loss from logits, actions, and advantages using cross-entropy', 'compute the entropy loss from policy logits to encourage exploration during training', 'compute gradients for the learner model using VTrace returns and backpropagate through the loss']
+```
+
+Usage
+
+```
+{'run_vtrace_experiment': 'run the VTrace reinforcement learning experiment for Atari games with distributed training via moolib', 'create_LearnerState': 'create a LearnerState dataclass to hold the model, optimizer, scheduler, and training metadata', 'compute_policy_gradient_loss': 'compute the policy gradient loss from logits, actions, and advantages using cross-entropy', 'compute_entropy_loss': 'compute the entropy loss from policy logits to encourage exploration during training', 'compute_gradients': 'compute gradients for the learner model using VTrace returns and backpropagate through the loss'}
+```
+

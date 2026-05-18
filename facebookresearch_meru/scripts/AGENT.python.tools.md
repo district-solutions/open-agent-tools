@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/meru
+- repo_uri: https://github.com/facebookresearch/meru
+
+## File: facebookresearch_meru/scripts/image_traversals.py
+
+Prompts
+
+```
+['run image traversal on an image using a trained MERU or CLIP model checkpoint', 'interpolate between an image feature vector and the root feature across N steps', 'calculate similarity scores between image features and text features for MERU or CLIP models', 'retrieve and encode captions, nouns, and adjectives from the Pexels text dataset', 'review the main function that loads a model, encodes an image, and prints nearest neighbor texts']
+```
+
+Usage
+
+```
+{'run_image_traversal': 'run image traversal on an image using a trained MERU or CLIP model checkpoint', 'interpolate_features': 'interpolate between an image feature vector and the root feature across N steps', 'calc_similarity_scores': 'calculate similarity scores between image features and text features for MERU or CLIP models', 'get_text_features': 'retrieve and encode captions, nouns, and adjectives from the Pexels text dataset', 'review_main': 'review the main function that loads a model, encodes an image, and prints nearest neighbor texts'}
+```
+

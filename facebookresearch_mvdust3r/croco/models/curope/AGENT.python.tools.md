@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mvdust3r
+- repo_uri: https://github.com/facebookresearch/mvdust3r
+
+## File: facebookresearch_mvdust3r/croco/models/curope/curope2d.py
+
+Prompts
+
+```
+['create a cuRoPE2D module with custom frequency and F0 parameters for 2D rotary positional encoding', 'run the cuRoPE2D forward pass on tokens and positions tensors to apply 2D rotary positional encoding', 'test the cuRoPE2D_func forward method by applying rope_2d kernel to tokens with given positions and base', 'test the cuRoPE2D_func backward method by applying inverse rope_2d kernel to gradient tensors', 'review the cuRoPE2D class and cuRoPE2D_func autograd function for 2D rotary positional encoding implementation']
+```
+
+Usage
+
+```
+{'create_cuRoPE2D_module': 'create a cuRoPE2D module with custom frequency and F0 parameters for 2D rotary positional encoding', 'run_cuRoPE2D_forward': 'run the cuRoPE2D forward pass on tokens and positions tensors to apply 2D rotary positional encoding', 'test_cuRoPE2D_func_forward': 'test the cuRoPE2D_func forward method by applying rope_2d kernel to tokens with given positions and base', 'test_cuRoPE2D_func_backward': 'test the cuRoPE2D_func backward method by applying inverse rope_2d kernel to gradient tensors', 'review_cuRoPE2D_implementation': 'review the cuRoPE2D class and cuRoPE2D_func autograd function for 2D rotary positional encoding implementation'}
+```
+

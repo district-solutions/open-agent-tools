@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/multimodal
+- repo_uri: https://github.com/facebookresearch/multimodal
+
+## File: facebookresearch_multimodal/examples/common/data/multidata.py
+
+Prompts
+
+```
+['create a MultiDataLoader from a list of PyTorch dataloaders with optional custom sampling function', 'build a MultiDataModule wrapping multiple LightningDataModules for multi-task training with configurable sampling', 'use a custom sampling function to control which dataloader is selected for each batch iteration', 'iterate over a MultiDataLoader to get batches with datamodule_index from multiple datasets', 'set the epoch on all samplers in a MultiDataLoader for distributed training reproducibility']
+```
+
+Usage
+
+```
+{'create_MultiDataLoader': 'create a MultiDataLoader from a list of PyTorch dataloaders with optional custom sampling function', 'build_MultiDataModule': 'build a MultiDataModule wrapping multiple LightningDataModules for multi-task training with configurable sampling', 'use_sampling_func': 'use a custom sampling function to control which dataloader is selected for each batch iteration', 'iterate_MultiDataLoader': 'iterate over a MultiDataLoader to get batches with datamodule_index from multiple datasets', 'set_epoch_MultiDataLoader': 'set the epoch on all samplers in a MultiDataLoader for distributed training reproducibility'}
+```
+

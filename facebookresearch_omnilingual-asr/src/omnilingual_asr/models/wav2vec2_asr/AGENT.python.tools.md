@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/omnilingual-asr
+- repo_uri: https://github.com/facebookresearch/omnilingual-asr
+
+## File: facebookresearch_omnilingual-asr/src/omnilingual_asr/models/wav2vec2_asr/config.py
+
+Prompts
+
+```
+['register omnilingual ASR wav2vec2 model configs into a Fairseq2 dependency container', 'create a 300M parameter wav2vec2 ASR config with large_lv60k encoder and 9812 vocab size', 'create a 1B parameter wav2vec2 ASR config with base_10h foundation and masking disabled', 'create a 7B parameter wav2vec2 ASR config with 9812 target vocabulary size', 'create a v2 wav2vec2 ASR config with 10288 target vocabulary size for larger models']
+```
+
+Usage
+
+```
+{'register_wav2vec2_asr_configs': 'register omnilingual ASR wav2vec2 model configs into a Fairseq2 dependency container', 'create_300m_asr_config': 'create a 300M parameter wav2vec2 ASR config with large_lv60k encoder and 9812 vocab size', 'create_1b_asr_config': 'create a 1B parameter wav2vec2 ASR config with base_10h foundation and masking disabled', 'create_7b_asr_config': 'create a 7B parameter wav2vec2 ASR config with 9812 target vocabulary size', 'create_v2_asr_config': 'create a v2 wav2vec2 ASR config with 10288 target vocabulary size for larger models'}
+```
+

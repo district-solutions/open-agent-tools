@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/neuralvolumes
+- repo_uri: https://github.com/facebookresearch/neuralvolumes
+
+## File: facebookresearch_neuralvolumes/models/decoders/voxel1.py
+
+Prompts
+
+```
+['build a ConvTemplate module that decodes 256-dim encodings into 128^3 voxel templates using transposed 3D convolutions', 'build an AffineMixWarp module that computes weighted affine transformations from encodings using quaternion rotations and grid sampling', 'create a Decoder that combines template generation with warp fields to produce 3D voxel representations from encodings', 'test the gettemplate factory function to instantiate ConvTemplate or LinearTemplate by templatetype string argument', 'review the ConvWarp class forward pass that generates 3D warp fields from encodings with optional displacement mode']
+```
+
+Usage
+
+```
+{'build_ConvTemplate_decoder': 'build a ConvTemplate module that decodes 256-dim encodings into 128^3 voxel templates using transposed 3D convolutions', 'build_AffineMixWarp_warp': 'build an AffineMixWarp module that computes weighted affine transformations from encodings using quaternion rotations and grid sampling', 'create_Decoder_voxel_field': 'create a Decoder that combines template generation with warp fields to produce 3D voxel representations from encodings', 'test_gettemplate_factory': 'test the gettemplate factory function to instantiate ConvTemplate or LinearTemplate by templatetype string argument', 'review_ConvWarp_displacement': 'review the ConvWarp class forward pass that generates 3D warp fields from encodings with optional displacement mode'}
+```
+

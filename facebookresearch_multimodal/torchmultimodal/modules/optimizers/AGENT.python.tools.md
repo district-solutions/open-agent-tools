@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/multimodal
+- repo_uri: https://github.com/facebookresearch/multimodal
+
+## File: facebookresearch_multimodal/torchmultimodal/modules/optimizers/anyprecision.py
+
+Prompts
+
+```
+['build a PyTorch training loop using AnyPrecisionAdamW optimizer with configurable momentum and variance dtypes', 'create an AnyPrecisionAdamW optimizer instance with Kahan summation enabled for high precision BFloat16 training', 'run a single optimization step on the AnyPrecisionAdamW optimizer to update model parameters', 'review the AnyPrecisionAdamW step method to understand AdamW weight decay and bias correction logic', 'refactor the AnyPrecisionAdamW optimizer to use custom momentum and variance dtypes for mixed precision training']
+```
+
+Usage
+
+```
+{'build_optimizer_anyprecision_adamw': 'build a PyTorch training loop using AnyPrecisionAdamW optimizer with configurable momentum and variance dtypes', 'create_optimizer_with_kahan_summation': 'create an AnyPrecisionAdamW optimizer instance with Kahan summation enabled for high precision BFloat16 training', 'run_optimizer_step': 'run a single optimization step on the AnyPrecisionAdamW optimizer to update model parameters', 'review_optimizer_step_method': 'review the AnyPrecisionAdamW step method to understand AdamW weight decay and bias correction logic', 'refactor_optimizer_dtypes': 'refactor the AnyPrecisionAdamW optimizer to use custom momentum and variance dtypes for mixed precision training'}
+```
+

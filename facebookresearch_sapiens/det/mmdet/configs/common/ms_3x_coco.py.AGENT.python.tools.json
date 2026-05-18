@@ -1,0 +1,21 @@
+{
+    "note": "This file is a pure Python-style configuration file for MMDetection. It contains no functions, classes, or callable methods — only module-level variable assignments (dictionaries, lists, scalars) that define training/evaluation settings. There is no callable code invokable via CLI.",
+    "config_variables": [
+        "train_pipeline — data augmentation pipeline with RandomResize, RandomFlip, PackDetInputs",
+        "test_pipeline — inference pipeline with Resize, LoadAnnotations, PackDetInputs",
+        "train_dataloader — COCO train2017 dataloader with RepeatDataset (3x), AspectRatioBatchSampler",
+        "val_dataloader / test_dataloader — COCO val2017 dataloader configuration",
+        "val_evaluator / test_evaluator — CocoMetric evaluator for bbox evaluation",
+        "train_cfg — EpochBasedTrainLoop with 12 epochs and val_interval=1",
+        "param_scheduler — LinearLR warmup + MultiStepLR with milestones at epochs 9 and 11",
+        "optim_wrapper — SGD optimizer with lr=0.02, momentum=0.9, weight_decay=0.0001",
+        "auto_scale_lr — automatic LR scaling settings (disabled by default)"
+    ],
+    "example_usages": {
+        "review_train_pipeline": "review the train_pipeline config to understand multiscale data augmentation settings",
+        "review_test_pipeline": "review the test_pipeline config to understand inference preprocessing steps",
+        "review_train_dataloader": "review the train_dataloader config to understand RepeatDataset and batch sampler settings",
+        "review_param_scheduler": "review the param_scheduler config to understand LR warmup and step decay milestones",
+        "review_optim_wrapper": "review the optim_wrapper config to understand SGD optimizer hyperparameters"
+    }
+}

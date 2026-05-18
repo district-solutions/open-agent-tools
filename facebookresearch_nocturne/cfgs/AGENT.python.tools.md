@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/nocturne
+- repo_uri: https://github.com/facebookresearch/nocturne
+
+## File: facebookresearch_nocturne/cfgs/config.py
+
+Prompts
+
+```
+['convert a hydra config scenario key to a true Python dict using OmegaConf', 'construct the default scenario dict by initializing hydra and composing the config', 'set a virtual display for headless machines using pyvirtualdisplay', 'review the Waymo data path constants like TRAIN_DATA_PATH and PROCESSED_TRAIN', 'summarize the config module that sets paths to Waymo data and parsed files']
+```
+
+Usage
+
+```
+{'get_scenario_dict': 'convert a hydra config scenario key to a true Python dict using OmegaConf', 'get_default_scenario_dict': 'construct the default scenario dict by initializing hydra and composing the config', 'set_display_window': 'set a virtual display for headless machines using pyvirtualdisplay', 'review_config_constants': 'review the Waymo data path constants like TRAIN_DATA_PATH and PROCESSED_TRAIN', 'summarize_config_module': 'summarize the config module that sets paths to Waymo data and parsed files'}
+```
+

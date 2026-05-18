@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/ocean
+- repo_uri: https://github.com/facebookresearch/ocean
+
+## File: facebookresearch_ocean/website/build.py
+
+Prompts
+
+```
+['build the Ocean documentation website from markdown files to static HTML', 'fetch build guide markdown files from the Ocean GitHub repository', 'convert markdown text to HTML using the Python markdown library with extensions', 'build a sidebar navigation tree from the docs directory structure and frontmatter', 'serve the built documentation site on a local HTTP server at port 3000']
+```
+
+Usage
+
+```
+{'build_ocean_docs_site': 'build the Ocean documentation website from markdown files to static HTML', 'fetch_remote_build_guides': 'fetch build guide markdown files from the Ocean GitHub repository', 'convert_markdown_to_html': 'convert markdown text to HTML using the Python markdown library with extensions', 'build_sidebar_navigation': 'build a sidebar navigation tree from the docs directory structure and frontmatter', 'serve_docs_locally': 'serve the built documentation site on a local HTTP server at port 3000'}
+```
+

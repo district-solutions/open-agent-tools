@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mmf
+- repo_uri: https://github.com/facebookresearch/mmf
+
+## File: facebookresearch_mmf/mmf/datasets/builders/visual_genome/builder.py
+
+Prompts
+
+```
+['build the Visual Genome dataset by downloading and extracting imdb and features for training', 'create a VisualGenomeBuilder instance that extends VQA2Builder with dataset name and class configuration', 'download and extract the Visual Genome imdb tar file and move the synset vocab file', 'download and extract the Visual Genome features archive to the specified data folder', 'get the default YAML config path for the Visual Genome dataset builder', 'load a VisualGenome sample by index including preprocessed answers and scene graph data', 'load normalized objects with synsets, names, and attributes from the scene graph database', 'load relationships between objects with predicates and subject-object pairs from the scene graph', 'load scene graph regions with normalized coordinates, objects, and relationships for an image', 'build a DetectionVisualGenomeBuilder instance to register the detection_visual_genome dataset with MMF', 'create a config path for the visual genome detection dataset using config_path classmethod', 'test the DetectionVisualGenomeBuilder class initialization with dataset_name and dataset_class parameters', 'review the DetectionVisualGenomeBuilder config_path method to verify it returns the correct YAML path', 'refactor the DetectionVisualGenomeBuilder to support additional dataset configuration options', 'build a masked visual genome dataset using MaskedVisualGenomeBuilder registered in the MMF registry', 'register the MaskedVisualGenomeBuilder class with the MMF registry using the register_builder decorator', 'review the MaskedVisualGenomeBuilder class that extends VisualGenomeBuilder for masked visual genome data', 'summarize the MaskedVisualGenomeBuilder class that sets dataset_name and dataset_class for masked visual genome', 'create a sample from the dataset by calling getitem with an index to retrieve processed features and questions', 'test the _preprocess_answer method to verify it removes punctuation and articles from answer text', 'refactor the add_answer_info method to support custom answer processing pipelines for visual question answering', 'review the _add_masked_question method and how it uses masked_token_processor to encode questions']
+```
+
+Usage
+
+```
+{'build_visual_genome_dataset': 'build the Visual Genome dataset by downloading and extracting imdb and features for training', 'create_visual_genome_builder': 'create a VisualGenomeBuilder instance that extends VQA2Builder with dataset name and class configuration', 'download_and_extract_imdb': 'download and extract the Visual Genome imdb tar file and move the synset vocab file', 'download_and_extract_features': 'download and extract the Visual Genome features archive to the specified data folder', 'get_config_path': 'get the default YAML config path for the Visual Genome dataset builder'}
+```
+
+## File: facebookresearch_mmf/mmf/datasets/builders/visual_genome/dataset.py
+
+Prompts
+
+```
+['build the Visual Genome dataset by downloading and extracting imdb and features for training', 'create a VisualGenomeBuilder instance that extends VQA2Builder with dataset name and class configuration', 'download and extract the Visual Genome imdb tar file and move the synset vocab file', 'download and extract the Visual Genome features archive to the specified data folder', 'get the default YAML config path for the Visual Genome dataset builder', 'load a VisualGenome sample by index including preprocessed answers and scene graph data', 'load normalized objects with synsets, names, and attributes from the scene graph database', 'load relationships between objects with predicates and subject-object pairs from the scene graph', 'load scene graph regions with normalized coordinates, objects, and relationships for an image', 'build a DetectionVisualGenomeBuilder instance to register the detection_visual_genome dataset with MMF', 'create a config path for the visual genome detection dataset using config_path classmethod', 'test the DetectionVisualGenomeBuilder class initialization with dataset_name and dataset_class parameters', 'review the DetectionVisualGenomeBuilder config_path method to verify it returns the correct YAML path', 'refactor the DetectionVisualGenomeBuilder to support additional dataset configuration options', 'build a masked visual genome dataset using MaskedVisualGenomeBuilder registered in the MMF registry', 'register the MaskedVisualGenomeBuilder class with the MMF registry using the register_builder decorator', 'review the MaskedVisualGenomeBuilder class that extends VisualGenomeBuilder for masked visual genome data', 'summarize the MaskedVisualGenomeBuilder class that sets dataset_name and dataset_class for masked visual genome', 'create a sample from the dataset by calling getitem with an index to retrieve processed features and questions', 'test the _preprocess_answer method to verify it removes punctuation and articles from answer text', 'refactor the add_answer_info method to support custom answer processing pipelines for visual question answering', 'review the _add_masked_question method and how it uses masked_token_processor to encode questions']
+```
+
+Usage
+
+```
+{'build_visual_genome_dataset': 'build a VisualGenomeDataset instance with config to load scene graphs, objects, and relationships', 'load_item_visual_genome': 'load a VisualGenome sample by index including preprocessed answers and scene graph data', 'load_objects_visual_genome': 'load normalized objects with synsets, names, and attributes from the scene graph database', 'load_relationships_visual_genome': 'load relationships between objects with predicates and subject-object pairs from the scene graph', 'load_regions_visual_genome': 'load scene graph regions with normalized coordinates, objects, and relationships for an image'}
+```
+
+## File: facebookresearch_mmf/mmf/datasets/builders/visual_genome/detection_builder.py
+
+Prompts
+
+```
+['build the Visual Genome dataset by downloading and extracting imdb and features for training', 'create a VisualGenomeBuilder instance that extends VQA2Builder with dataset name and class configuration', 'download and extract the Visual Genome imdb tar file and move the synset vocab file', 'download and extract the Visual Genome features archive to the specified data folder', 'get the default YAML config path for the Visual Genome dataset builder', 'load a VisualGenome sample by index including preprocessed answers and scene graph data', 'load normalized objects with synsets, names, and attributes from the scene graph database', 'load relationships between objects with predicates and subject-object pairs from the scene graph', 'load scene graph regions with normalized coordinates, objects, and relationships for an image', 'build a DetectionVisualGenomeBuilder instance to register the detection_visual_genome dataset with MMF', 'create a config path for the visual genome detection dataset using config_path classmethod', 'test the DetectionVisualGenomeBuilder class initialization with dataset_name and dataset_class parameters', 'review the DetectionVisualGenomeBuilder config_path method to verify it returns the correct YAML path', 'refactor the DetectionVisualGenomeBuilder to support additional dataset configuration options', 'build a masked visual genome dataset using MaskedVisualGenomeBuilder registered in the MMF registry', 'register the MaskedVisualGenomeBuilder class with the MMF registry using the register_builder decorator', 'review the MaskedVisualGenomeBuilder class that extends VisualGenomeBuilder for masked visual genome data', 'summarize the MaskedVisualGenomeBuilder class that sets dataset_name and dataset_class for masked visual genome', 'create a sample from the dataset by calling getitem with an index to retrieve processed features and questions', 'test the _preprocess_answer method to verify it removes punctuation and articles from answer text', 'refactor the add_answer_info method to support custom answer processing pipelines for visual question answering', 'review the _add_masked_question method and how it uses masked_token_processor to encode questions']
+```
+
+Usage
+
+```
+{'build_detection_visual_genome_builder': 'build a DetectionVisualGenomeBuilder instance to register the detection_visual_genome dataset with MMF', 'create_detection_dataset_config': 'create a config path for the visual genome detection dataset using config_path classmethod', 'test_DetectionVisualGenomeBuilder': 'test the DetectionVisualGenomeBuilder class initialization with dataset_name and dataset_class parameters', 'review_DetectionVisualGenomeBuilder_config_path': 'review the DetectionVisualGenomeBuilder config_path method to verify it returns the correct YAML path', 'refactor_DetectionVisualGenomeBuilder': 'refactor the DetectionVisualGenomeBuilder to support additional dataset configuration options'}
+```
+
+## File: facebookresearch_mmf/mmf/datasets/builders/visual_genome/masked_builder.py
+
+Prompts
+
+```
+['build the Visual Genome dataset by downloading and extracting imdb and features for training', 'create a VisualGenomeBuilder instance that extends VQA2Builder with dataset name and class configuration', 'download and extract the Visual Genome imdb tar file and move the synset vocab file', 'download and extract the Visual Genome features archive to the specified data folder', 'get the default YAML config path for the Visual Genome dataset builder', 'load a VisualGenome sample by index including preprocessed answers and scene graph data', 'load normalized objects with synsets, names, and attributes from the scene graph database', 'load relationships between objects with predicates and subject-object pairs from the scene graph', 'load scene graph regions with normalized coordinates, objects, and relationships for an image', 'build a DetectionVisualGenomeBuilder instance to register the detection_visual_genome dataset with MMF', 'create a config path for the visual genome detection dataset using config_path classmethod', 'test the DetectionVisualGenomeBuilder class initialization with dataset_name and dataset_class parameters', 'review the DetectionVisualGenomeBuilder config_path method to verify it returns the correct YAML path', 'refactor the DetectionVisualGenomeBuilder to support additional dataset configuration options', 'build a masked visual genome dataset using MaskedVisualGenomeBuilder registered in the MMF registry', 'register the MaskedVisualGenomeBuilder class with the MMF registry using the register_builder decorator', 'review the MaskedVisualGenomeBuilder class that extends VisualGenomeBuilder for masked visual genome data', 'summarize the MaskedVisualGenomeBuilder class that sets dataset_name and dataset_class for masked visual genome', 'create a sample from the dataset by calling getitem with an index to retrieve processed features and questions', 'test the _preprocess_answer method to verify it removes punctuation and articles from answer text', 'refactor the add_answer_info method to support custom answer processing pipelines for visual question answering', 'review the _add_masked_question method and how it uses masked_token_processor to encode questions']
+```
+
+Usage
+
+```
+{'build_masked_visual_genome_dataset': 'build a masked visual genome dataset using MaskedVisualGenomeBuilder registered in the MMF registry', 'register_masked_visual_genome_builder': 'register the MaskedVisualGenomeBuilder class with the MMF registry using the register_builder decorator', 'get_config_path': 'get the config path for the masked visual genome dataset which returns masked.yaml', 'review_MaskedVisualGenomeBuilder': 'review the MaskedVisualGenomeBuilder class that extends VisualGenomeBuilder for masked visual genome data', 'summarize_MaskedVisualGenomeBuilder': 'summarize the MaskedVisualGenomeBuilder class that sets dataset_name and dataset_class for masked visual genome'}
+```
+
+## File: facebookresearch_mmf/mmf/datasets/builders/visual_genome/masked_dataset.py
+
+Prompts
+
+```
+['build the Visual Genome dataset by downloading and extracting imdb and features for training', 'create a VisualGenomeBuilder instance that extends VQA2Builder with dataset name and class configuration', 'download and extract the Visual Genome imdb tar file and move the synset vocab file', 'download and extract the Visual Genome features archive to the specified data folder', 'get the default YAML config path for the Visual Genome dataset builder', 'load a VisualGenome sample by index including preprocessed answers and scene graph data', 'load normalized objects with synsets, names, and attributes from the scene graph database', 'load relationships between objects with predicates and subject-object pairs from the scene graph', 'load scene graph regions with normalized coordinates, objects, and relationships for an image', 'build a DetectionVisualGenomeBuilder instance to register the detection_visual_genome dataset with MMF', 'create a config path for the visual genome detection dataset using config_path classmethod', 'test the DetectionVisualGenomeBuilder class initialization with dataset_name and dataset_class parameters', 'review the DetectionVisualGenomeBuilder config_path method to verify it returns the correct YAML path', 'refactor the DetectionVisualGenomeBuilder to support additional dataset configuration options', 'build a masked visual genome dataset using MaskedVisualGenomeBuilder registered in the MMF registry', 'register the MaskedVisualGenomeBuilder class with the MMF registry using the register_builder decorator', 'review the MaskedVisualGenomeBuilder class that extends VisualGenomeBuilder for masked visual genome data', 'summarize the MaskedVisualGenomeBuilder class that sets dataset_name and dataset_class for masked visual genome', 'create a sample from the dataset by calling getitem with an index to retrieve processed features and questions', 'test the _preprocess_answer method to verify it removes punctuation and articles from answer text', 'refactor the add_answer_info method to support custom answer processing pipelines for visual question answering', 'review the _add_masked_question method and how it uses masked_token_processor to encode questions']
+```
+
+Usage
+
+```
+{'build_masked_visual_genome_dataset': 'build a MaskedVisualGenomeDataset instance with config, dataset_type, and imdb_file_index parameters', 'create_dataset_sample': 'create a sample from the dataset by calling getitem with an index to retrieve processed features and questions', 'test_preprocess_answer': 'test the _preprocess_answer method to verify it removes punctuation and articles from answer text', 'refactor_add_answer_info': 'refactor the add_answer_info method to support custom answer processing pipelines for visual question answering', 'review_masked_question_processor': 'review the _add_masked_question method and how it uses masked_token_processor to encode questions'}
+```
+

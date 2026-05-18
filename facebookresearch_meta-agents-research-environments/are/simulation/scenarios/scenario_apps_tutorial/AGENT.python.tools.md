@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/meta-agents-research-environments
+- repo_uri: https://github.com/facebookresearch/meta-agents-research-environments
+
+## File: facebookresearch_meta-agents-research-environments/are/simulation/scenarios/scenario_apps_tutorial/scenario.py
+
+Prompts
+
+```
+['create a new task with title, description, and priority using SimpleTaskApp create_task method', 'retrieve all tasks or filter by completed status using SimpleTaskApp get_tasks method', 'mark an existing task as completed by its task_id using SimpleTaskApp complete_task method', 'update a task title, description, or priority by task_id using SimpleTaskApp update_task method', 'run and validate the ScenarioAppsTutorial scenario in oracle mode using run_and_validate']
+```
+
+Usage
+
+```
+{'create_task': 'create a new task with title, description, and priority using SimpleTaskApp create_task method', 'get_tasks': 'retrieve all tasks or filter by completed status using SimpleTaskApp get_tasks method', 'complete_task': 'mark an existing task as completed by its task_id using SimpleTaskApp complete_task method', 'update_task': 'update a task title, description, or priority by task_id using SimpleTaskApp update_task method', 'run_scenario': 'run and validate the ScenarioAppsTutorial scenario in oracle mode using run_and_validate'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mmbt
+- repo_uri: https://github.com/facebookresearch/mmbt
+
+## File: facebookresearch_mmbt/mmbt/train.py
+
+Prompts
+
+```
+['run the MMBT training script with argparse to train a multimodal model on mmimdb or vsnli datasets', 'build a loss criterion function that returns BCEWithLogitsLoss for multilabel or CrossEntropyLoss for classification tasks', 'create an optimizer that uses BertAdam for BERT-based models or standard Adam for other model types', 'test the model evaluation function to compute macro F1, micro F1, or accuracy metrics on validation data', 'review the model forward pass function that handles different model types including bow, img, bert, concatbow, concatbert, and mmbt']
+```
+
+Usage
+
+```
+{'run_train_mmbt_model': 'run the MMBT training script with argparse to train a multimodal model on mmimdb or vsnli datasets', 'build_get_criterion': 'build a loss criterion function that returns BCEWithLogitsLoss for multilabel or CrossEntropyLoss for classification tasks', 'create_get_optimizer': 'create an optimizer that uses BertAdam for BERT-based models or standard Adam for other model types', 'test_model_eval': 'test the model evaluation function to compute macro F1, micro F1, or accuracy metrics on validation data', 'review_model_forward': 'review the model forward pass function that handles different model types including bow, img, bert, concatbow, concatbert, and mmbt'}
+```
+

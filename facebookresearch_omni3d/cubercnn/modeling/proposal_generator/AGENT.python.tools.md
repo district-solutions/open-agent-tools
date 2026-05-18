@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/omni3d
+- repo_uri: https://github.com/facebookresearch/omni3d
+
+## File: facebookresearch_omni3d/cubercnn/modeling/proposal_generator/rpn.py
+
+Prompts
+
+```
+['build a Region Proposal Network that supports ignore thresholds for ground truth boxes with class < 0', 'create anchor labels by matching anchors against ground truth boxes using pairwise IoU and IoA', 'test the dense box regression loss function that incorporates centerness-based uncertainty weighting', 'refactor the label subsampling logic to use IoU-weighted multinomial sampling for positive and negative anchors', 'review the matched pairwise IoU computation for two equally-sized box sets returning diagonal IoU values']
+```
+
+Usage
+
+```
+{'build_rpn_with_ignore': 'build a Region Proposal Network that supports ignore thresholds for ground truth boxes with class < 0', 'create_label_and_sample_anchors': 'create anchor labels by matching anchors against ground truth boxes using pairwise IoU and IoA', 'test_dense_box_regression_loss_with_uncertainty': 'test the dense box regression loss function that incorporates centerness-based uncertainty weighting', 'refactor_subsample_labels': 'refactor the label subsampling logic to use IoU-weighted multinomial sampling for positive and negative anchors', 'review_matched_pairwise_iou': 'review the matched pairwise IoU computation for two equally-sized box sets returning diagonal IoU values'}
+```
+

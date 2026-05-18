@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mvfst-rl
+- repo_uri: https://github.com/facebookresearch/mvfst-rl
+
+## File: facebookresearch_mvfst-rl/third-party/torchbeast/third_party/grpc/third_party/boringssl/third_party/fiat/make_curve25519_tables.py
+
+Prompts
+
+```
+['run the script to generate curve25519 precomputed tables as a C header file', 'test the point_mul function by multiplying a scalar with the Curve25519 base point', 'test the point_add function by adding two Curve25519 affine points together', 'test the recover_x function to compute an x-coordinate from a given y and sign bit', 'test the modp_inv function to compute the modular inverse of a value in Z_p']
+```
+
+Usage
+
+```
+{'run_make_curve25519_tables': 'run the script to generate curve25519 precomputed tables as a C header file', 'test_point_mul': 'test the point_mul function by multiplying a scalar with the Curve25519 base point', 'test_point_add': 'test the point_add function by adding two Curve25519 affine points together', 'test_recover_x': 'test the recover_x function to compute an x-coordinate from a given y and sign bit', 'test_modp_inv': 'test the modp_inv function to compute the modular inverse of a value in Z_p'}
+```
+

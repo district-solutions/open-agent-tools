@@ -1,0 +1,24 @@
+{
+    "summary": "This is an MMDetection3D configuration file (no callable functions/classes). It inherits from centerpoint_0075voxel_second_secfpn_4x8_cyclic_20e_nus.py and overrides the bounding box head to use DCNSeperateHead with deformable convolutions and sets circle NMS for testing.",
+    "note": "This file contains only configuration dictionaries and variables — no callable functions, classes, or CLI entry points. No example tool statements are applicable.",
+    "config_overrides": {
+        "seperate_head": "DCNSeperateHead with DCN (in_channels=64, out_channels=64, kernel_size=3, padding=1, groups=4, init_bias=-2.19, final_kernel=3)",
+        "test_nms": "circle NMS type for 3D point cloud bounding box post-processing"
+    },
+    "inheritance_chain": [
+        "centerpoint_0075voxel_second_secfpn_dcn_circlenms_4x8_cyclic_20e_nus.py (this file — adds DCN head + circle NMS)",
+        "centerpoint_0075voxel_second_secfpn_4x8_cyclic_20e_nus.py (parent — sets 0.075 voxel size, 108m x 108m point cloud range, data pipelines)",
+        "centerpoint_01voxel_second_secfpn_4x8_cyclic_20e_nus.py (grandparent — sets 102.4m range, DB sampler, train/test pipelines, data loaders)",
+        "../_base_/datasets/nus-3d.py (base dataset config)",
+        "../_base_/models/centerpoint_01voxel_second_secfpn_nus.py (base model architecture)",
+        "../_base_/schedules/cyclic_20e.py (base training schedule)",
+        "../_base_/default_runtime.py (base runtime settings)"
+    ],
+    "use_cases": [
+        "Configure CenterPoint 3D object detection with deformable convolution (DCN) in the separate head for nuScenes dataset",
+        "Use circle NMS instead of standard NMS for 3D bounding box post-processing during inference",
+        "Fine-tune voxel-based 3D detection with finer 0.075m voxel resolution and DCN-enhanced head",
+        "Override the default SECONDFPN head with a DCNSeperateHead variant for improved feature aggregation",
+        "Set up a CenterPoint model configuration for 10-class nuScenes detection (car, truck, bus, pedestrian, etc.)"
+    ]
+}

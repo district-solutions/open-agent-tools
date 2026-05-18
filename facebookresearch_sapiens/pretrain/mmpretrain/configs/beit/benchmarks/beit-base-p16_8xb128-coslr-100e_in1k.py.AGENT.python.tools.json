@@ -1,0 +1,13 @@
+{
+    "_note": "This file is a declarative mmpretrain configuration file with no callable functions, classes, or CLI entry points. It defines dictionary-based settings for training a BEiT Vision Transformer on ImageNet-1K. No example statements are included per the rule: 'Do not include files that do not have code we can call with a simple argparse cli module.'",
+    "config_purpose": "BEiT-base-p16 benchmark configuration for 100-epoch ImageNet-1K training with cosine LR schedule, Mixup/CutMix augmentation, and AdamW optimizer with layer-wise decay",
+    "key_components": {
+        "model": "ImageClassifier with BEiTViT backbone (base arch, 224x224, patch_size=16, relative position bias, no absolute position embedding)",
+        "head": "LinearClsHead with 1000 classes, 768 input channels, LabelSmoothLoss (smoothing=0.1)",
+        "train_pipeline": "LoadImageFromFile -> RandomResizedCrop -> RandomFlip -> RandAugment -> RandomErasing -> PackInputs",
+        "test_pipeline": "LoadImageFromFile -> ResizeEdge (short=256) -> CenterCrop (224) -> PackInputs",
+        "optimizer": "AdamW (lr=4e-3, weight_decay=0.05) with LearningRateDecayOptimWrapperConstructor (layer_decay_rate=0.65, zero decay on LN/bias/pos_embed/gamma)",
+        "scheduler": "LinearLR warmup (epochs 0-20, start_factor=1e-4) then CosineAnnealingLR (epochs 20-100, eta_min=1e-6)",
+        "runtime": "100 epochs, batch_size=128 per device, checkpoint every epoch (keep 2), seed=0"
+    }
+}

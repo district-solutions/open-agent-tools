@@ -1,0 +1,17 @@
+{
+    "summary": "This is a pure configuration file (no callable functions, classes, or methods). It defines training hyperparameters, model architecture settings, data pipelines, and optimizer schedules for training the Sapiens 0.3B pose estimation model on the COCO WholeBody dataset using MMPose/MMCV.",
+    "config_description": "MMPose training config for Sapiens 0.3B (ViT backbone, 24 layers, 1024 embed dim) on COCO WholeBody at 1024x768 resolution with 210 epochs, AdamW optimizer with layer decay, UDPHeatmap codec, and HeatmapHead with 133 keypoints.",
+    "key_settings": {
+        "model": "sapiens_0.3b VisionTransformer backbone with HeatmapHead",
+        "image_size": "1024x768 (width x height)",
+        "num_keypoints": 133,
+        "training_epochs": 210,
+        "batch_size": 64,
+        "optimizer": "AdamW with layer_decay_rate=0.75, lr=5e-4",
+        "scheduler": "LinearLR warmup (500 iters) + MultiStepLR milestones at [170, 200]",
+        "codec": "UDPHeatmap with sigma=6, scale=4",
+        "dataset": "COCO WholeBody (train2017/val2017)",
+        "pretrained_checkpoint": "../pretrain/checkpoints/sapiens_0.3b/sapiens_0.3b_epoch_1600_clean.pth"
+    },
+    "note": "This file contains only configuration variables and dictionary literals. No functions, classes, or callable APIs are defined. It is consumed by the MMPose training framework via mmcv.Config."
+}

@@ -1,0 +1,12 @@
+{
+    "note": "This file is a pure configuration file with no callable functions, classes, or APIs. It defines ImageNet dataset settings for a batch size of 64, including data preprocessing parameters, train/test augmentation pipelines, dataloader configurations, and evaluation metrics.",
+    "dataset_type": "ImageNet classification dataset with 1000 classes",
+    "data_preprocessor": "RGB normalization with mean=[123.675, 116.28, 103.53] and std=[58.395, 57.12, 57.375]",
+    "train_pipeline": "LoadImageFromFile -> RandomResizedCrop(224) -> RandomFlip(0.5) -> PackInputs",
+    "test_pipeline": "LoadImageFromFile -> ResizeEdge(256, short) -> CenterCrop(224) -> PackInputs",
+    "train_dataloader": "batch_size=64, num_workers=5, DefaultSampler(shuffle=True) on ImageNet train split",
+    "val_dataloader": "batch_size=64, num_workers=5, DefaultSampler(shuffle=False) on ImageNet val split",
+    "val_evaluator": "Accuracy evaluator with topk=(1, 5)",
+    "test_dataloader": "Same as val_dataloader",
+    "test_evaluator": "Same as val_evaluator"
+}

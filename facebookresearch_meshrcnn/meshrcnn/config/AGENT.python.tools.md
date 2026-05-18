@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/meshrcnn
+- repo_uri: https://github.com/facebookresearch/meshrcnn
+
+## File: facebookresearch_meshrcnn/meshrcnn/config/config.py
+
+Prompts
+
+```
+['customize a detectron2 cfg node with Mesh R-CNN default keys and values for voxel, mesh, and z prediction heads', 'set up the ROI z prediction head with FastRCNNFCHead pooling resolution and smooth L1 loss parameters', 'configure the ROI voxel head with VoxelRCNNConvUpsampleHead convolution dimensions and depth channel settings', 'set up the ROI mesh head with MeshRCNNGraphConvHead graph convolution stages and chamfer loss weights', 'review the Mesh R-CNN configuration defaults for voxel mesh and z prediction head settings']
+```
+
+Usage
+
+```
+{'get_meshrcnn_cfg_defaults': 'customize a detectron2 cfg node with Mesh R-CNN default keys and values for voxel, mesh, and z prediction heads', 'configure_roi_z_head': 'set up the ROI z prediction head with FastRCNNFCHead pooling resolution and smooth L1 loss parameters', 'configure_roi_voxel_head': 'configure the ROI voxel head with VoxelRCNNConvUpsampleHead convolution dimensions and depth channel settings', 'configure_roi_mesh_head': 'set up the ROI mesh head with MeshRCNNGraphConvHead graph convolution stages and chamfer loss weights', 'review_cfg_defaults': 'review the Mesh R-CNN configuration defaults for voxel mesh and z prediction head settings'}
+```
+

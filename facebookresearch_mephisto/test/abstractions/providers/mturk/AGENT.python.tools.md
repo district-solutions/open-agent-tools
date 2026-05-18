@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mephisto
+- repo_uri: https://github.com/facebookresearch/mephisto
+
+## File: facebookresearch_mephisto/test/abstractions/providers/mturk/test_mturk.py
+
+Prompts
+
+```
+['test the MTurkWorker class to create a worker and find it by MTurk worker ID', 'test the datastore create_qualification_mapping method to store and retrieve qualification mappings', 'run the TestMTurkComponents unit tests for the MTurk crowd provider using pytest', 'review the MTurkWorker datastore methods for creating and retrieving qualification mappings', 'refactor the MTurkWorker.get_from_mturk_worker_id method to improve worker lookup by MTurk ID']
+```
+
+Usage
+
+```
+{'test_mturk_worker_create_and_find': 'test the MTurkWorker class to create a worker and find it by MTurk worker ID', 'test_mturk_qualification_mapping': 'test the datastore create_qualification_mapping method to store and retrieve qualification mappings', 'run_mturk_unit_tests': 'run the TestMTurkComponents unit tests for the MTurk crowd provider using pytest', 'review_mturk_worker_datastore': 'review the MTurkWorker datastore methods for creating and retrieving qualification mappings', 'refactor_mturk_worker_lookup': 'refactor the MTurkWorker.get_from_mturk_worker_id method to improve worker lookup by MTurk ID'}
+```
+

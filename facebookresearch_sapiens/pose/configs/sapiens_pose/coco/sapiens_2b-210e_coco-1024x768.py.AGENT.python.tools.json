@@ -1,0 +1,25 @@
+{
+    "summary": "This file is a declarative MMEngine/MMPose configuration file with no callable functions, classes, or methods. It consists entirely of variable assignments and dictionary literals that define training hyperparameters, model architecture, data pipelines, and evaluation settings for the Sapiens 2B pose estimation model on the COCO dataset.",
+    "note": "No callable APIs exist in this file. It is a configuration file used by the MMPose training framework (python -m torch.distributed.launch or mmengine.runner) — not a standalone module with functions or a CLI.",
+    "config_variables": [
+        "model_name — Sapiens 2B Vision Transformer backbone (embed_dim=1920, num_layers=48)",
+        "pretrained_checkpoint — path to the pre-trained Sapiens 2B checkpoint",
+        "image_size — input resolution [768, 1024] (width x height)",
+        "num_epochs — total training epochs (210)",
+        "optim_wrapper — AdamW optimizer with layer decay (rate=0.85) and gradient clipping",
+        "param_scheduler — LinearLR warmup + MultiStepLR with milestones at epochs 170 and 200",
+        "model — TopdownPoseEstimator with VisionTransformer backbone and HeatmapHead",
+        "train_pipeline — data augmentation pipeline including RandomFlip, CoarseDropout, Albumentation",
+        "val_pipeline — inference pipeline with TopdownAffine transform",
+        "train_dataloader — batch_size=64 on COCO train2017",
+        "val_dataloader — batch_size=32 on COCO val2017 with person detection bbox file",
+        "codec — UDPHeatmap decoder with sigma=6 and 4x downscale"
+    ],
+    "use_cases": [
+        "run the Sapiens 2B pose estimation model training on COCO using this config with mmengine",
+        "review the Sapiens 2B training hyperparameters including learning rate schedule and layer decay",
+        "summarize the Sapiens 2B model architecture settings for the VisionTransformer backbone and HeatmapHead",
+        "test the Sapiens 2B model on COCO val2017 using the val_dataloader and CocoMetric evaluator",
+        "refactor the Sapiens 2B config to change image resolution, batch size, or number of epochs"
+    ]
+}

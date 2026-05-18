@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/meta-agents-research-environments
+- repo_uri: https://github.com/facebookresearch/meta-agents-research-environments
+
+## File: facebookresearch_meta-agents-research-environments/are/simulation/agents/default_agent/termination_methods/are_simulation.py
+
+Prompts
+
+```
+['build a python module to check if an agent should terminate based on tool names and max iterations', 'create a function that updates an agent running state to TERMINATED or PAUSED based on tool name', 'build a TerminationStep that terminates an agent when it calls the final_answer tool', 'create a function that extracts the final answer string from an agent last tool call log', 'build a TerminationStep for GAIA2 scenarios that terminates on send_message_to_user or wait_for_notification']
+```
+
+Usage
+
+```
+{'build_termination_condition_are_simulation': 'build a python module to check if an agent should terminate based on tool names and max iterations', 'create_termination_state_update': 'create a function that updates an agent running state to TERMINATED or PAUSED based on tool name', 'build_termination_step_are_simulation_final_answer': 'build a TerminationStep that terminates an agent when it calls the final_answer tool', 'create_extract_final_answer': 'create a function that extracts the final answer string from an agent last tool call log', 'build_get_gaia2_termination_step': 'build a TerminationStep for GAIA2 scenarios that terminates on send_message_to_user or wait_for_notification'}
+```
+

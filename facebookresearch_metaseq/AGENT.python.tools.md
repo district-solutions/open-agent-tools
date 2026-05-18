@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/metaseq
+- repo_uri: https://github.com/facebookresearch/metaseq
+
+## File: facebookresearch_metaseq/setup.py
+
+Prompts
+
+```
+['build and install the metaseq package with pip install -e . including all C++ and CUDA extensions', 'build the metaseq package skipping megatron fused kernels by passing --global-option --no_megatron to pip', 'build the metaseq package skipping apex CUDA kernels by passing --global-option --no_apex to pip', 'run the metaseq-train CLI entry point to train a large language model using metaseq', 'run the metaseq-validate CLI entry point to validate a trained metaseq model on a dataset']
+```
+
+Usage
+
+```
+{'build_metaseq_package': 'build and install the metaseq package with pip install -e . including all C++ and CUDA extensions', 'build_metaseq_no_megatron': 'build the metaseq package skipping megatron fused kernels by passing --global-option --no_megatron to pip', 'build_metaseq_no_apex': 'build the metaseq package skipping apex CUDA kernels by passing --global-option --no_apex to pip', 'run_metaseq_train': 'run the metaseq-train CLI entry point to train a large language model using metaseq', 'run_metaseq_validate': 'run the metaseq-validate CLI entry point to validate a trained metaseq model on a dataset'}
+```
+

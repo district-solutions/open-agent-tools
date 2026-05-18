@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mvfst-rl
+- repo_uri: https://github.com/facebookresearch/mvfst-rl
+
+## File: facebookresearch_mvfst-rl/third-party/torchbeast/third_party/grpc/third_party/boringssl-with-bazel/src/util/bot/vs_toolchain.py
+
+Prompts
+
+```
+['run the update command to download and configure the Visual Studio toolchain for the current repository', 'set up environment variables for the depot_tools VS toolchain and retrieve runtime DLL directory paths', 'find the depot_tools installation path by searching for gclient.py in the system PATH', 'get the configured Visual Studio version from the GYP_MSVS_VERSION environment variable or use the default 2015', 'get the list of desired SHA1 hashes for the Visual Studio toolchain based on the selected version']
+```
+
+Usage
+
+```
+{'update_vs_toolchain': 'run the update command to download and configure the Visual Studio toolchain for the current repository', 'set_environment_and_get_runtime_dll_dirs': 'set up environment variables for the depot_tools VS toolchain and retrieve runtime DLL directory paths', 'find_depot_tools': 'find the depot_tools installation path by searching for gclient.py in the system PATH', 'get_visual_studio_version': 'get the configured Visual Studio version from the GYP_MSVS_VERSION environment variable or use the default 2015', 'get_desired_vs_toolchain_hashes': 'get the list of desired SHA1 hashes for the Visual Studio toolchain based on the selected version'}
+```
+

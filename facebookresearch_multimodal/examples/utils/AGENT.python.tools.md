@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/multimodal
+- repo_uri: https://github.com/facebookresearch/multimodal
+
+## File: facebookresearch_multimodal/examples/utils/common.py
+
+Prompts
+
+```
+['store model weights from a PyTorch checkpoint file to a new weights file with SHA256 hash naming', 'store model weights from a checkpoint using a specific key like model or model_ema', 'store model weights with strict mode enabled to enforce state dict key matching', 'review the store_model_weights function that extracts and saves PyTorch model weights from checkpoints', 'refactor store_model_weights to support additional checkpoint formats or custom hash naming schemes']
+```
+
+Usage
+
+```
+{'store_model_weights_from_checkpoint': 'store model weights from a PyTorch checkpoint file to a new weights file with SHA256 hash naming', 'store_model_weights_with_key': 'store model weights from a checkpoint using a specific key like model or model_ema', 'store_model_weights_strict_mode': 'store model weights with strict mode enabled to enforce state dict key matching', 'review_store_model_weights': 'review the store_model_weights function that extracts and saves PyTorch model weights from checkpoints', 'refactor_store_model_weights': 'refactor store_model_weights to support additional checkpoint formats or custom hash naming schemes'}
+```
+

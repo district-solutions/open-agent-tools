@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/nocturne
+- repo_uri: https://github.com/facebookresearch/nocturne
+
+## File: facebookresearch_nocturne/examples/rllib_files/run_rllib.py
+
+Prompts
+
+```
+['run the RLlib PPO training loop for the nocturne multi-agent environment with hydra config', 'create an RLlib-compatible MultiAgentEnv wrapper around a nocturne environment using RLlibWrapperEnv', 'register the nocturne environment with Ray Tune using register_env and create_rllib_env', 'review the RLlibWrapperEnv class that wraps a nocturne env to conform to Ray MultiAgentEnv interface', 'refactor the main function to move hardcoded PPO training hyperparameters into the hydra config']
+```
+
+Usage
+
+```
+{'run_rllib_ppo_training': 'run the RLlib PPO training loop for the nocturne multi-agent environment with hydra config', 'create_rllib_env_wrapper': 'create an RLlib-compatible MultiAgentEnv wrapper around a nocturne environment using RLlibWrapperEnv', 'register_nocturne_env': 'register the nocturne environment with Ray Tune using register_env and create_rllib_env', 'review_RLlibWrapperEnv_class': 'review the RLlibWrapperEnv class that wraps a nocturne env to conform to Ray MultiAgentEnv interface', 'refactor_main_training_config': 'refactor the main function to move hardcoded PPO training hyperparameters into the hydra config'}
+```
+

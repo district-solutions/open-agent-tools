@@ -1,0 +1,13 @@
+{
+    "summary": "This file is a MMDetection3D-style configuration file (no callable functions, classes, or methods). It defines hyperparameters and pipeline settings for a NeRF-based 3D object detection model (nerfdet) using a ResNet-50 backbone on the ScanNet dataset with 18 indoor object classes.",
+    "config_description": "Configures a nerfdet model with ResNet-50 backbone, FPN neck, FastIndoorImVoxelNeck 3D neck, and ScanNetImVoxelHeadV2 bounding box head. Uses image + depth + ray inputs for 3D detection on ScanNet with 18 classes. Training uses AdamW optimizer, 12 epochs with step LR decay at epochs 8 and 11, and a RepeatDataset multiplier of 6.",
+    "key_config_sections": [
+        "model: nerfdet architecture with ResNet-50 backbone, FPN, voxel neck, and bounding box head (18 classes, 40x40x16 voxels)",
+        "input_modality: enables image, depth, and ray inputs; disables lidar and neural reconstruction depth",
+        "train_pipeline/test_pipeline: MultiViewPipeline with 50/101 images, 320x240 resolution, random loading, and NEF target views",
+        "data: ScanNetMultiViewDataset with train/val/test splits, RepeatDataset (6x) for training, Depth box type",
+        "training: AdamW (lr=0.0002), 12 total epochs, step LR at [8,11], gradient clipping (max_norm=35), NCCL distributed training"
+    ],
+    "no_callable_code": true,
+    "note": "This is a configuration-only file with no functions, classes, or importable APIs. It is consumed by the MMDetection3D framework at runtime via config loading."
+}

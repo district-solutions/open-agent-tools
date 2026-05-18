@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/motif
+- repo_uri: https://github.com/facebookresearch/motif
+
+## File: facebookresearch_motif/rl_baseline/sample-factory/sample_factory/algorithms/dummy_sampler/sampler.py
+
+Prompts
+
+```
+['run the DummySampler algorithm to sample RL environments with random actions using all CPU cores', 'run the DummySampler add_cli_args method to configure num_workers and sample_env_frames CLI arguments', 'run the DummySampler initialize method to spawn multiprocessing worker processes for environment sampling', 'run the DummySampler sample method to step environments with pre-generated random actions in a worker process', 'run the DummySampler run method to orchestrate worker processes and collect FPS reports from the queue']
+```
+
+Usage
+
+```
+{'run_DummySampler': 'run the DummySampler algorithm to sample RL environments with random actions using all CPU cores', 'run_DummySampler_add_cli_args': 'run the DummySampler add_cli_args method to configure num_workers and sample_env_frames CLI arguments', 'run_DummySampler_initialize': 'run the DummySampler initialize method to spawn multiprocessing worker processes for environment sampling', 'run_DummySampler_sample': 'run the DummySampler sample method to step environments with pre-generated random actions in a worker process', 'run_DummySampler_run': 'run the DummySampler run method to orchestrate worker processes and collect FPS reports from the queue'}
+```
+

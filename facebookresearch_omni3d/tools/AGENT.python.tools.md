@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/omni3d
+- repo_uri: https://github.com/facebookresearch/omni3d
+
+## File: facebookresearch_omni3d/tools/train_net.py
+
+Prompts
+
+```
+['run the training loop for a 3D object detection model on Omni3D datasets with configurable epochs', 'test a trained 3D detection model on Omni3D test datasets and generate evaluation metrics', 'create and configure detection settings from a config file for Cube R-CNN training or evaluation', 'reduce scalar CUDA tensor values from all distributed processes so rank 0 has averaged results', 'build a Cube R-CNN 3D detection model with priors computed from training dataset statistics']
+```
+
+Usage
+
+```
+{'train_3d_object_detection_model': 'run the training loop for a 3D object detection model on Omni3D datasets with configurable epochs', 'evaluate_3d_detection_model': 'test a trained 3D detection model on Omni3D test datasets and generate evaluation metrics', 'setup_detection_configuration': 'create and configure detection settings from a config file for Cube R-CNN training or evaluation', 'allreduce_dict_distributed_tensors': 'reduce scalar CUDA tensor values from all distributed processes so rank 0 has averaged results', 'build_3d_detection_model': 'build a Cube R-CNN 3D detection model with priors computed from training dataset statistics'}
+```
+

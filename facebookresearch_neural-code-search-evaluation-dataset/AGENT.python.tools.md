@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/neural-code-search-evaluation-dataset
+- repo_uri: https://github.com/facebookresearch/neural-code-search-evaluation-dataset
+
+## File: facebookresearch_neural-code-search-evaluation-dataset/download.py
+
+Prompts
+
+```
+['run download.py with --download_link_file and --project_path to download GitHub repos in parallel', 'run parallel_download on a list of items using a custom function across multiple CPU cores', 'run download_project to fetch a GitHub repo zip and extract only Java source files', 'refactor parallel_download to support a custom callback for each completed task in the pool', 'refactor download_project to extract files with extensions other than just Java']
+```
+
+Usage
+
+```
+{'run_download_cli': 'run download.py with --download_link_file and --project_path to download GitHub repos in parallel', 'run_parallel_download': 'run parallel_download on a list of items using a custom function across multiple CPU cores', 'run_download_project': 'run download_project to fetch a GitHub repo zip and extract only Java source files', 'refactor_parallel_download': 'refactor parallel_download to support a custom callback for each completed task in the pool', 'refactor_download_project': 'refactor download_project to extract files with extensions other than just Java'}
+```
+

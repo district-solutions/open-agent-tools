@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/moolib
+- repo_uri: https://github.com/facebookresearch/moolib
+
+## File: facebookresearch_moolib/test/integration/test_a2c.py
+
+Prompts
+
+```
+['test the A2C reinforcement learning example by running single node training for 40000 steps', 'test the A2C training loop by mocking log_to_file and capturing training metrics', 'test that A2C training produces entropy loss values between -1 and 0', 'test that A2C training achieves mean episode return above 100 for at least half of logged items', 'test that A2C training step counts stay within expected offset bounds during rollout']
+```
+
+Usage
+
+```
+{'test_a2c_single_node_training': 'test the A2C reinforcement learning example by running single node training for 40000 steps', 'test_a2c_log_patching': 'test the A2C training loop by mocking log_to_file and capturing training metrics', 'test_a2c_entropy_loss': 'test that A2C training produces entropy loss values between -1 and 0', 'test_a2c_episode_return': 'test that A2C training achieves mean episode return above 100 for at least half of logged items', 'test_a2c_step_tracking': 'test that A2C training step counts stay within expected offset bounds during rollout'}
+```
+

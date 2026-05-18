@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mvit
+- repo_uri: https://github.com/facebookresearch/mvit
+
+## File: facebookresearch_mvit/mvit/config/defaults.py
+
+Prompts
+
+```
+['get a cloned copy of the default MViT configuration CfgNode for training or testing', 'validate and infer config settings by checking batch size divisibility across GPUs and shard constraints', 'configure training options including dataset, batch size, eval period, checkpoint period, and mixed precision', 'configure MViT model architecture options including embedding dimension, number of heads, depth, and pooling strides', 'configure solver and optimizer options including learning rate policy, weight decay, warmup, and gradient clipping']
+```
+
+Usage
+
+```
+{'get_cfg_default': 'get a cloned copy of the default MViT configuration CfgNode for training or testing', 'assert_and_infer_cfg_validate': 'validate and infer config settings by checking batch size divisibility across GPUs and shard constraints', 'configure_training_options': 'configure training options including dataset, batch size, eval period, checkpoint period, and mixed precision', 'configure_mvit_architecture': 'configure MViT model architecture options including embedding dimension, number of heads, depth, and pooling strides', 'configure_solver_optimizer': 'configure solver and optimizer options including learning rate policy, weight decay, warmup, and gradient clipping'}
+```
+

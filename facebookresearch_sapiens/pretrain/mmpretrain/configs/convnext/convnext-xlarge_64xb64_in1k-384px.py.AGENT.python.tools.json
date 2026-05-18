@@ -1,0 +1,23 @@
+{
+  "note": "This file is an MMPreTrain configuration script with no callable functions, classes, or APIs. It imports base configs and overrides hyperparameters for training a ConvNeXt-XLarge model on ImageNet-1K at 384px resolution.",
+  "summary": "Config-only file — variable assignments and framework config overrides. No CLI-invocable code.",
+  "imports": [
+    "mmengine.config.read_base",
+    "mmpretrain.engine.EMAHook"
+  ],
+  "config_overrides": [
+    "train_dataloader.batch_size = 64",
+    "optim_wrapper.optimizer.lr = 4e-3",
+    "optim_wrapper.clip_grad.max_norm = 5.0",
+    "custom_hooks = EMAHook(momentum=4e-5, priority='ABOVE_NORMAL')",
+    "auto_scale_lr.base_batch_size = 4096"
+  ],
+  "use_cases": [
+    "Load this config with MMEngine to train ConvNeXt-XLarge on ImageNet-1K",
+    "Override learning rate and batch size for distributed training on 64 GPUs",
+    "Enable EMA (Exponential Moving Average) hook with momentum 4e-5",
+    "Set gradient clipping with max_norm=5.0 for stable training",
+    "Auto-scale learning rate based on actual batch size relative to 4096"
+  ],
+  "examples": {}
+}

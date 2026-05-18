@@ -1,0 +1,23 @@
+{
+    "note": "This file is a pure MMDetection3D configuration file with no callable functions, classes, or APIs. It inherits from a base config and overrides the test pipeline with flip-TTA (test-time augmentation) for nuScenes 3D object detection.",
+    "config_purpose": "CenterPoint 3D detection test-time augmentation config with horizontal and vertical point cloud flips for nuScenes dataset",
+    "base_config": "./centerpoint_0075voxel_second_secfpn_dcn_4x8_cyclic_20e_nus.py",
+    "key_variables": {
+        "point_cloud_range": "LiDAR point cloud bounding box: [-54, -54, -5.0, 54, 54, 3.0]",
+        "class_names": "10 nuScenes classes: car, truck, construction_vehicle, bus, trailer, barrier, motorcycle, bicycle, pedestrian, traffic_cone",
+        "test_pipeline": "Test pipeline with MultiScaleFlipAug3D enabling pcd_horizontal_flip and pcd_vertical_flip for TTA",
+        "data": "Applies test_pipeline to both val and test splits"
+    },
+    "test_pipeline_stages": [
+        "LoadPointsFromFile: Load 5-dim LIDAR points from disk",
+        "LoadPointsFromMultiSweeps: Concatenate 9 sweeps with padding and close-point removal",
+        "MultiScaleFlipAug3D: Apply horizontal and vertical flip augmentations for test-time augmentation",
+        "GlobalRotScaleTrans: No rotation, scale, or translation (identity transform for test)",
+        "RandomFlip3D: Random 3D flip (sync_2d=False)",
+        "PointsRangeFilter: Filter points within the defined point_cloud_range",
+        "DefaultFormatBundle3D: Format point cloud data without labels",
+        "Collect3D: Collect 'points' key for model input"
+    ],
+    "usage": "Use with MMDetection3D: python tools/test.py configs/centerpoint/centerpoint_0075voxel_second_secfpn_dcn_4x8_cyclic_flip-tta_20e_nus.py <checkpoint_path>",
+    "callable_apis": []
+}

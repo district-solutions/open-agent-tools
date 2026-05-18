@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/multimodal
+- repo_uri: https://github.com/facebookresearch/multimodal
+
+## File: facebookresearch_multimodal/setup.py
+
+Prompts
+
+```
+['build the torchmultimodal package by running setup.py with the default package name', 'build a nightly version of the torchmultimodal package using the --package_name flag', 'clean HTML tags from raw HTML text using the clean_html function', 'read a requirements file and return a list of dependency strings', 'get the current version string from the version.py file']
+```
+
+Usage
+
+```
+{'build_torchmultimodal_package': 'build the torchmultimodal package by running setup.py with the default package name', 'build_nightly_package': 'build a nightly version of the torchmultimodal package using the --package_name flag', 'clean_html_tags': 'clean HTML tags from raw HTML text using the clean_html function', 'read_requirements_file': 'read a requirements file and return a list of dependency strings', 'get_version_string': 'get the current version string from the version.py file'}
+```
+

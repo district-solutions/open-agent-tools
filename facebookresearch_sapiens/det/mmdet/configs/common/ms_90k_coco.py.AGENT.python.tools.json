@@ -1,0 +1,14 @@
+{
+    "note": "This file is a pure Python-style configuration file for MMDetection. It contains no callable functions, classes, or methods — only variable assignments, imports, and dictionary updates that configure training pipelines, dataloaders, optimizers, and schedulers for COCO dataset object detection. No actionable tool examples can be generated.",
+    "config_purpose": "MMDetection 90k iteration training schedule for COCO dataset",
+    "key_components": [
+        "train_pipeline: image loading, annotation loading, multi-scale random resize, random flip, and input packing for training",
+        "test_pipeline: image loading, fixed resize, annotation loading, and input packing for evaluation",
+        "train_dataloader: InfiniteSampler with AspectRatioBatchSampler, batch_size=2, COCO train2017 dataset",
+        "val_dataloader: DefaultSampler, batch_size=1, COCO val2017 dataset",
+        "param_scheduler: LinearLR warmup (1000 iters) followed by MultiStepLR with milestones at 60k and 80k iterations",
+        "optim_wrapper: SGD optimizer with lr=0.02, momentum=0.9, weight_decay=0.0001",
+        "train_cfg: IterBasedTrainLoop for 90000 iterations with validation every 10000 iters",
+        "val_evaluator: CocoMetric for bounding box evaluation on COCO val2017"
+    ]
+}

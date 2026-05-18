@@ -1,0 +1,18 @@
+{
+    "note": "This file is a pure MMSegmentation configuration file containing only variable assignments and dictionary literals. It has no functions, classes, methods, or callable APIs. It is used to configure training of the Sapiens 0.6B depth estimation model on the RenderPeople dataset at 1024x768 resolution.",
+    "description": "Configuration for training a DepthEstimator with a VisionTransformer backbone (sapiens_0.6b, 1280 embed_dim, 32 layers) using a VitDepthHead decode head, AdamW optimizer with layer decay, on the RenderPeople synthetic dataset. Key settings: 200 epochs, batch_size=1, image_size 768x1024, SiLogLoss, PolyLR scheduler with LinearLR warmup, SyncBN normalization, and various data augmentations (RandomResize, RandomDepthCrop, RandomDepthRotate, RandomDepthFlip, PhotoMetricDistortion, RandomBackground).",
+    "key_variables": {
+        "model_name": "sapiens_0.6b",
+        "embed_dim": 1280,
+        "num_layers": 32,
+        "image_size": "(768, 1024) width x height",
+        "num_epochs": 200,
+        "pretrained_checkpoint": "../pretrain/checkpoints/sapiens_0.6b/sapiens_0.6b_epoch_1600_clean.pth",
+        "optimizer": "AdamW with lr=5e-4, layer_decay_rate=0.85",
+        "loss": "SiLogLoss",
+        "dataset": "RenderPeopleDataset (synthetic)",
+        "batch_size": 1
+    },
+    "callable_apis": [],
+    "example_statements": []
+}

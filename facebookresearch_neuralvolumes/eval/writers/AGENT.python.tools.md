@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/neuralvolumes
+- repo_uri: https://github.com/facebookresearch/neuralvolumes
+
+## File: facebookresearch_neuralvolumes/eval/writers/videowriter.py
+
+Prompts
+
+```
+['create a Writer instance with output path, background color, and color correction settings', 'batch write rendered RGB frames with optional alpha, ground truth, and difference images to disk', 'finalize the video by encoding all saved frames into an H.264 MP4 using ffmpeg', 'save a single gamma-corrected image frame as a JPEG file to a temporary directory', 'review the Writer class for multiprocessing image batching and ffmpeg-based video encoding']
+```
+
+Usage
+
+```
+{'create_writer_instance': 'create a Writer instance with output path, background color, and color correction settings', 'batch_write_images': 'batch write rendered RGB frames with optional alpha, ground truth, and difference images to disk', 'finalize_video': 'finalize the video by encoding all saved frames into an H.264 MP4 using ffmpeg', 'writeimage_save_frame': 'save a single gamma-corrected image frame as a JPEG file to a temporary directory', 'review_writer_class': 'review the Writer class for multiprocessing image batching and ffmpeg-based video encoding'}
+```
+

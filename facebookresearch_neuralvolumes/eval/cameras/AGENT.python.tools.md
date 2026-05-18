@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/neuralvolumes
+- repo_uri: https://github.com/facebookresearch/neuralvolumes
+
+## File: facebookresearch_neuralvolumes/eval/cameras/rotate.py
+
+Prompts
+
+```
+['create a Dataset instance with a specified length and period for camera rotation sampling', 'get all available camera names from the Dataset by calling get_allcameras', 'get camera intrinsic parameters including focal length, principal point, and size via get_krt', 'get a camera view dict with campos, camrot, focal, princpt, and pixelcoords for a given index', 'get the total number of camera views in the Dataset by calling len on the instance']
+```
+
+Usage
+
+```
+{'create_Dataset': 'create a Dataset instance with a specified length and period for camera rotation sampling', 'get_allcameras_Dataset': 'get all available camera names from the Dataset by calling get_allcameras', 'get_krt_Dataset': 'get camera intrinsic parameters including focal length, principal point, and size via get_krt', 'getitem_Dataset': 'get a camera view dict with campos, camrot, focal, princpt, and pixelcoords for a given index', 'len_Dataset': 'get the total number of camera views in the Dataset by calling len on the instance'}
+```
+

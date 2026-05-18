@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mvfst-rl
+- repo_uri: https://github.com/facebookresearch/mvfst-rl
+
+## File: facebookresearch_mvfst-rl/third-party/torchbeast/third_party/grpc/examples/python/wait_for_ready/wait_for_ready_example.py
+
+Prompts
+
+```
+['run the gRPC wait-for-ready example to demonstrate RPC behavior with and without the flag', 'create a gRPC server with a Greeter servicer that responds to SayHello requests', 'test the get_free_loopback_tcp_port context manager to allocate a random free TCP port', 'review the process function that sends a SayHello RPC with an optional wait-for-ready flag', 'refactor the create_server function to configure a gRPC server with a Greeter servicer on a given address']
+```
+
+Usage
+
+```
+{'run_wait_for_ready_example': 'run the gRPC wait-for-ready example to demonstrate RPC behavior with and without the flag', 'create_greeter_server': 'create a gRPC server with a Greeter servicer that responds to SayHello requests', 'test_get_free_loopback_tcp_port': 'test the get_free_loopback_tcp_port context manager to allocate a random free TCP port', 'review_process_function': 'review the process function that sends a SayHello RPC with an optional wait-for-ready flag', 'refactor_create_server': 'refactor the create_server function to configure a gRPC server with a Greeter servicer on a given address'}
+```
+

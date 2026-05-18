@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mmf
+- repo_uri: https://github.com/facebookresearch/mmf
+
+## File: facebookresearch_mmf/mmf/models/albef/vit.py
+
+Prompts
+
+```
+['build a VisionTransformer model from an OmegaConf config with configurable depth, heads, and embedding dim', 'create an AlbefVitEncoder registered in MMF to encode images through a pretrained VisionTransformer', 'test the DropBlock2d regularization layer by applying spatial block dropout to a feature map tensor', 'test the DropPath stochastic depth layer by applying per-sample path dropout to a residual connection', 'refactor the interpolate_pos_embed function to bicubic-interpolate position embeddings when checkpoint and model patch sizes differ']
+```
+
+Usage
+
+```
+{'build_vision_transformer': 'build a VisionTransformer model from an OmegaConf config with configurable depth, heads, and embedding dim', 'create_albef_vit_encoder': 'create an AlbefVitEncoder registered in MMF to encode images through a pretrained VisionTransformer', 'test_dropblock2d': 'test the DropBlock2d regularization layer by applying spatial block dropout to a feature map tensor', 'test_droppath': 'test the DropPath stochastic depth layer by applying per-sample path dropout to a residual connection', 'refactor_interpolate_pos_embed': 'refactor the interpolate_pos_embed function to bicubic-interpolate position embeddings when checkpoint and model patch sizes differ'}
+```
+

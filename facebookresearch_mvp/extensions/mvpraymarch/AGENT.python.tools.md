@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mvp
+- repo_uri: https://github.com/facebookresearch/mvp
+
+## File: facebookresearch_mvp/extensions/mvpraymarch/mvpraymarch.py
+
+Prompts
+
+```
+['build a BVH acceleration structure from primitive transform tensors for raymarching', 'run the mvpraymarch function to raymarch through volumetric primitives and return RGBA output', 'create a custom autograd Function for forward and backward raymarching of MVP primitives', 'review the Rodrigues nn.Module that converts rotation vectors to 3x3 rotation matrices', 'test gradient correctness by comparing PyTorch reference against CUDA raymarch implementation']
+```
+
+Usage
+
+```
+{'build_accel_BVH': 'build a BVH acceleration structure from primitive transform tensors for raymarching', 'run_mvpraymarch_entry': 'run the mvpraymarch function to raymarch through volumetric primitives and return RGBA output', 'create_MVPRaymarch_Function': 'create a custom autograd Function for forward and backward raymarching of MVP primitives', 'review_Rodrigues_module': 'review the Rodrigues nn.Module that converts rotation vectors to 3x3 rotation matrices', 'test_gradcheck_CUDA': 'test gradient correctness by comparing PyTorch reference against CUDA raymarch implementation'}
+```
+

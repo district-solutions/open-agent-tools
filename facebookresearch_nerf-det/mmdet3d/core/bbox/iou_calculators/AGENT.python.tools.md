@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/nerf-det
+- repo_uri: https://github.com/facebookresearch/nerf-det
+
+## File: facebookresearch_nerf-det/mmdet3d/core/bbox/iou_calculators/iou3d_calculator.py
+
+Prompts
+
+```
+['build a python module using BboxOverlapsNearest3D to calculate nearest 3D IoU between two sets of 3D bounding boxes in BEV', 'build a python module using BboxOverlaps3D to calculate 3D IoU between two sets of 3D bounding boxes via CUDA', 'build a python module using AxisAlignedBboxOverlaps3D to calculate IoU or GIoU between axis-aligned 3D bounding boxes', 'test the bbox_overlaps_nearest_3d function by computing nearest BEV 2D IoU for two tensors of 3D bboxes', 'test the axis_aligned_bbox_overlaps_3d function by computing IoU or GIoU for axis-aligned 3D bboxes in x1y1z1x2y2z2 format']
+```
+
+Usage
+
+```
+{'build_BboxOverlapsNearest3D': 'build a python module using BboxOverlapsNearest3D to calculate nearest 3D IoU between two sets of 3D bounding boxes in BEV', 'build_BboxOverlaps3D': 'build a python module using BboxOverlaps3D to calculate 3D IoU between two sets of 3D bounding boxes via CUDA', 'build_AxisAlignedBboxOverlaps3D': 'build a python module using AxisAlignedBboxOverlaps3D to calculate IoU or GIoU between axis-aligned 3D bounding boxes', 'test_bbox_overlaps_nearest_3d': 'test the bbox_overlaps_nearest_3d function by computing nearest BEV 2D IoU for two tensors of 3D bboxes', 'test_axis_aligned_bbox_overlaps_3d': 'test the axis_aligned_bbox_overlaps_3d function by computing IoU or GIoU for axis-aligned 3D bboxes in x1y1z1x2y2z2 format'}
+```
+

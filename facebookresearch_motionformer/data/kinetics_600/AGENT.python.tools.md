@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/motionformer
+- repo_uri: https://github.com/facebookresearch/motionformer
+
+## File: facebookresearch_motionformer/data/kinetics_600/preprocess.py
+
+Prompts
+
+```
+['run the python module to preprocess Kinetics-600 dataset and generate a CSV with file paths and class indices', 'run the python module with a custom split directory and mode to preprocess Kinetics-600 data', 'run the python module in test mode to generate a test CSV for Kinetics-600 evaluation', 'review the k600_preproces function that scans dataset directories and maps class names to integer indices', 'refactor the k600_preproces function to support additional dataset formats or output types']
+```
+
+Usage
+
+```
+{'run_k600_preprocess': 'run the python module to preprocess Kinetics-600 dataset and generate a CSV with file paths and class indices', 'run_k600_preprocess_custom_split': 'run the python module with a custom split directory and mode to preprocess Kinetics-600 data', 'run_k600_preprocess_test': 'run the python module in test mode to generate a test CSV for Kinetics-600 evaluation', 'review_k600_preproces': 'review the k600_preproces function that scans dataset directories and maps class names to integer indices', 'refactor_k600_preproces': 'refactor the k600_preproces function to support additional dataset formats or output types'}
+```
+

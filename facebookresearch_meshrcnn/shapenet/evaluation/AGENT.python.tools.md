@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/meshrcnn
+- repo_uri: https://github.com/facebookresearch/meshrcnn
+
+## File: facebookresearch_meshrcnn/shapenet/evaluation/eval.py
+
+Prompts
+
+```
+['run evaluate_test to evaluate a mesh reconstruction model on a ShapeNet test dataset with optional visualization', 'run evaluate_test_p2m to evaluate a mesh model using Pixel2Mesh metrics with 0.57 rescaling factor', 'run evaluate_split to report validation performance during training with configurable prediction limits', 'review evaluate_test to understand how Chamfer-L2, normal consistency, and F1 scores are computed per class', 'refactor evaluate_split to store predicted mesh vertices and faces for a specified number of predictions']
+```
+
+Usage
+
+```
+{'run_evaluate_test': 'run evaluate_test to evaluate a mesh reconstruction model on a ShapeNet test dataset with optional visualization', 'run_evaluate_test_p2m': 'run evaluate_test_p2m to evaluate a mesh model using Pixel2Mesh metrics with 0.57 rescaling factor', 'run_evaluate_split': 'run evaluate_split to report validation performance during training with configurable prediction limits', 'review_evaluate_test': 'review evaluate_test to understand how Chamfer-L2, normal consistency, and F1 scores are computed per class', 'refactor_evaluate_split': 'refactor evaluate_split to store predicted mesh vertices and faces for a specified number of predictions'}
+```
+

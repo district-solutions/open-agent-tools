@@ -1,0 +1,19 @@
+{
+    "note": "This file contains only data definitions (lists and dicts of compiler flags). There are no functions, classes, or callable APIs. It is a configuration source consumed by generate_copts.py, configure_copts.bzl, and AbseilConfigureCopts.cmake.",
+    "summary": "Abseil compiler options configuration — defines platform-specific warning flags, defines, and link options for GCC, LLVM/Clang, Clang-CL, and MSVC compilers, plus hardware AES flags for ARM64, ARM32, and x64.",
+    "variables": {
+        "MSVC_BIG_WARNING_FLAGS": "List of MSVC warning level flags (e.g. /W3)",
+        "LLVM_BIG_WARNING_FLAGS": "List of Clang/LLVM warning enable flags (e.g. -Wall, -Wextra, -Weverything)",
+        "LLVM_DISABLE_WARNINGS_FLAGS": "List of Clang/LLVM warning disable flags for Abseil code",
+        "LLVM_TEST_DISABLE_WARNINGS_FLAGS": "Additional warning disable flags for test code under Clang/LLVM",
+        "MSVC_DEFINES": "List of MSVC preprocessor defines (e.g. NOMINMAX, WIN32_LEAN_AND_MEAN)",
+        "COPT_VARS": "Dict mapping variable names (e.g. ABSL_GCC_FLAGS, ABSL_LLVM_FLAGS, ABSL_MSVC_FLAGS) to lists of compiler/linker flags per platform"
+    },
+    "use_cases": [
+        "Reference ABSL_GCC_FLAGS for GCC compiler warning configuration",
+        "Reference ABSL_LLVM_FLAGS for Clang/LLVM compiler warning configuration",
+        "Reference ABSL_MSVC_FLAGS for MSVC compiler warning and define configuration",
+        "Reference ABSL_RANDOM_HWAES_*_FLAGS for hardware AES instruction flags per architecture",
+        "Modify flag lists then run generate_copts.py to regenerate build system copts"
+    ]
+}

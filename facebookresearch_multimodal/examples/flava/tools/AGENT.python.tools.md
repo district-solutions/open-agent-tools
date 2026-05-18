@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/multimodal
+- repo_uri: https://github.com/facebookresearch/multimodal
+
+## File: facebookresearch_multimodal/examples/flava/tools/convert_weights.py
+
+Prompts
+
+```
+['run the script to convert FLAVA checkpoint weights from old key naming to new naming convention', 'run the script with --add_codebook flag to include pretrained image codebook weights in the converted checkpoint', 'review the convert_weights function that renames model state dict keys using KEY_REPLACEMENTS mapping', 'review the KEY_REPLACEMENTS dictionary that maps old FLAVA checkpoint parameter names to new names', 'run the CLI tool with ckpt_file and save_file arguments to convert and save FLAVA model weights']
+```
+
+Usage
+
+```
+{'run_convert_weights': 'run the script to convert FLAVA checkpoint weights from old key naming to new naming convention', 'run_convert_weights_with_codebook': 'run the script with --add_codebook flag to include pretrained image codebook weights in the converted checkpoint', 'review_convert_weights_function': 'review the convert_weights function that renames model state dict keys using KEY_REPLACEMENTS mapping', 'review_KEY_REPLACEMENTS': 'review the KEY_REPLACEMENTS dictionary that maps old FLAVA checkpoint parameter names to new names', 'run_convert_weights_cli': 'run the CLI tool with ckpt_file and save_file arguments to convert and save FLAVA model weights'}
+```
+

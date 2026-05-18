@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/meta-agents-research-environments
+- repo_uri: https://github.com/facebookresearch/meta-agents-research-environments
+
+## File: facebookresearch_meta-agents-research-environments/are/simulation/tests/scenarios/env_utils_test.py
+
+Prompts
+
+```
+['test expand_env_vars to replace a simple environment variable placeholder in a string', 'test expand_env_vars to use a default value when an environment variable is missing', 'test expand_env_vars to recursively expand environment variables in nested dictionary values', 'test expand_env_vars to restrict expansion to only an allowed list of environment variable names', 'test expand_env_vars to expand variables in a complex nested structure of dicts and lists']
+```
+
+Usage
+
+```
+{'test_expand_env_vars_simple': 'test expand_env_vars to replace a simple environment variable placeholder in a string', 'test_expand_env_vars_default': 'test expand_env_vars to use a default value when an environment variable is missing', 'test_expand_env_vars_dict': 'test expand_env_vars to recursively expand environment variables in nested dictionary values', 'test_expand_env_vars_allowed': 'test expand_env_vars to restrict expansion to only an allowed list of environment variable names', 'test_expand_env_vars_complex': 'test expand_env_vars to expand variables in a complex nested structure of dicts and lists'}
+```
+

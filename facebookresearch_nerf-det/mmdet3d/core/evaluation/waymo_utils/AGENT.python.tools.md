@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/nerf-det
+- repo_uri: https://github.com/facebookresearch/nerf-det
+
+## File: facebookresearch_nerf-det/mmdet3d/core/evaluation/waymo_utils/prediction_kitti_to_waymo.py
+
+Prompts
+
+```
+['create a KITTI2Waymo converter to transform KITTI format predictions into Waymo format bin files', 'parse KITTI prediction results and convert bounding box instances to Waymo Object proto format', 'convert a single Waymo TFRecord file by parsing frames and writing KITTI predictions as bin files', 'transform 3D coordinates using a 4x4 transformation matrix for KITTI to Waymo frame conversion', 'combine multiple Waymo format prediction bin files into a single serialized Objects proto file']
+```
+
+Usage
+
+```
+{'convert_kitti_predictions_to_waymo': 'create a KITTI2Waymo converter to transform KITTI format predictions into Waymo format bin files', 'parse_kitti_objects_to_waymo_proto': 'parse KITTI prediction results and convert bounding box instances to Waymo Object proto format', 'convert_single_tfrecord_to_waymo': 'convert a single Waymo TFRecord file by parsing frames and writing KITTI predictions as bin files', 'transform_coordinates_with_matrix': 'transform 3D coordinates using a 4x4 transformation matrix for KITTI to Waymo frame conversion', 'combine_waymo_prediction_bin_files': 'combine multiple Waymo format prediction bin files into a single serialized Objects proto file'}
+```
+

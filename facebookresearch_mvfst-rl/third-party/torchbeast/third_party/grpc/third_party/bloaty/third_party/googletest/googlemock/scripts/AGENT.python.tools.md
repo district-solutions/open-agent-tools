@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mvfst-rl
+- repo_uri: https://github.com/facebookresearch/mvfst-rl
+
+## File: facebookresearch_mvfst-rl/third-party/torchbeast/third_party/grpc/third_party/bloaty/third_party/googletest/googlemock/scripts/gmock_doctor.py
+
+Prompts
+
+```
+['pipe compiler error output into gmock_doctor.py via stdin to diagnose Google Mock usage problems', 'call Diagnose with a compiler error message string to get a list of plain English diagnoses', 'review the _GenericDiagnoser factory function that creates pattern-matching diagnosers from regex and diagnosis pairs', 'review the _DIAGNOSERS list of 13 specialized diagnoser functions for common Google Mock compiler errors', 'summarize the _FindAllMatches utility function that returns all regex matches in a given string']
+```
+
+Usage
+
+```
+{'run_gmock_doctor': 'pipe compiler error output into gmock_doctor.py via stdin to diagnose Google Mock usage problems', 'diagnose_gmock_errors': 'call Diagnose with a compiler error message string to get a list of plain English diagnoses', 'review_generic_diagnoser': 'review the _GenericDiagnoser factory function that creates pattern-matching diagnosers from regex and diagnosis pairs', 'review_diagnoser_list': 'review the _DIAGNOSERS list of 13 specialized diagnoser functions for common Google Mock compiler errors', 'summarize_find_all_matches': 'summarize the _FindAllMatches utility function that returns all regex matches in a given string'}
+```
+

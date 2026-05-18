@@ -1,0 +1,15 @@
+{
+    "note": "This file is a pure configuration file containing only variable assignments (strings, None, lists of dicts, nested dicts). It defines MMDetection dataset settings for the DeepFashion dataset with no callable functions, classes, or APIs. No example statements are provided per the rule: 'Do not include files that do not have code we can call with a simple argparse cli module.'",
+    "config_variables": [
+        "dataset_type - string: 'DeepFashionDataset'",
+        "data_root - string: 'data/DeepFashion/In-shop/'",
+        "backend_args - None (optional S3/petrel backend config)",
+        "train_pipeline - list of dicts: image loading, annotation loading, resize, random flip, pack inputs",
+        "test_pipeline - list of dicts: image loading, resize, annotation loading, pack inputs with meta keys",
+        "train_dataloader - dict: batch_size=2, RepeatDataset x2, AspectRatioBatchSampler",
+        "val_dataloader - dict: batch_size=1, query set, test_mode=True",
+        "test_dataloader - dict: batch_size=1, gallery set, test_mode=True",
+        "val_evaluator - dict: CocoMetric on query set with bbox and segm metrics",
+        "test_evaluator - dict: CocoMetric on gallery set with bbox and segm metrics"
+    ]
+}

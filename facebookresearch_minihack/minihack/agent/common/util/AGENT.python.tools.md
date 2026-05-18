@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/minihack
+- repo_uri: https://github.com/facebookresearch/minihack
+
+## File: facebookresearch_minihack/minihack/agent/common/util/id_pairs.py
+
+Prompts
+
+```
+['build a numpy lookup table mapping all NetHack glyphs to NLE id and GlyphGroup pairs', 'compute the NLE id for a single NetHack glyph value using id_pairs_func', 'review the GlyphGroup IntEnum that categorizes glyphs into 13 groups like MON, PET, OBJ, CMAP', 'summarize how id_pairs_table pre-computes glyph to NLE id mappings for fast O(1) lookup', 'refactor id_pairs_func to handle additional glyph ranges or optimize offset calculations']
+```
+
+Usage
+
+```
+{'build_glyph_lookup_table': 'build a numpy lookup table mapping all NetHack glyphs to NLE id and GlyphGroup pairs', 'compute_glyph_nle_id': 'compute the NLE id for a single NetHack glyph value using id_pairs_func', 'review_GlyphGroup_enum': 'review the GlyphGroup IntEnum that categorizes glyphs into 13 groups like MON, PET, OBJ, CMAP', 'summarize_id_pairs_table': 'summarize how id_pairs_table pre-computes glyph to NLE id mappings for fast O(1) lookup', 'refactor_id_pairs_func': 'refactor id_pairs_func to handle additional glyph ranges or optimize offset calculations'}
+```
+

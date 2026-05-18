@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/moolib
+- repo_uri: https://github.com/facebookresearch/moolib
+
+## File: facebookresearch_moolib/setup.py
+
+Prompts
+
+```
+['build the moolib package using pip install with CMake-based C++ extension compilation', 'build the moolib package in debug mode using python setup.py build --debug install', 'build the moolib package without CUDA support by setting USE_CUDA environment variable to OFF', 'review the CMakeBuild class that extends build_ext to configure and run CMake for C++ extensions', 'review the main function that configures setuptools.setup with package metadata and the CMakeBuild command class']
+```
+
+Usage
+
+```
+{'build_moolib_package': 'build the moolib package using pip install with CMake-based C++ extension compilation', 'build_moolib_debug': 'build the moolib package in debug mode using python setup.py build --debug install', 'build_moolib_no_cuda': 'build the moolib package without CUDA support by setting USE_CUDA environment variable to OFF', 'review_CMakeBuild_class': 'review the CMakeBuild class that extends build_ext to configure and run CMake for C++ extensions', 'review_main_function': 'review the main function that configures setuptools.setup with package metadata and the CMakeBuild command class'}
+```
+

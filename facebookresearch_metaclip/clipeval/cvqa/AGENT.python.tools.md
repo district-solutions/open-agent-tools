@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/metaclip
+- repo_uri: https://github.com/facebookresearch/metaclip
+
+## File: facebookresearch_metaclip/clipeval/cvqa/eval_cvqa.py
+
+Prompts
+
+```
+['run the main function to evaluate a CLIP model on the CVQA benchmark dataset', 'parse a CVQA result JSON file and extract EN and LOCAL accuracy scores into a results dict', 'run batched image-text similarity computation using encoded embeddings and batched matrix multiplication', 'run per-subset accuracy tracking during CVQA evaluation using a defaultdict for subset-level metrics', 'run L2 normalization on text and image embeddings before computing cosine similarity scores']
+```
+
+Usage
+
+```
+{'run_cvqa_evaluation': 'run the main function to evaluate a CLIP model on the CVQA benchmark dataset', 'parse_cvqa_results': 'parse a CVQA result JSON file and extract EN and LOCAL accuracy scores into a results dict', 'run_image_text_similarity': 'run batched image-text similarity computation using encoded embeddings and batched matrix multiplication', 'run_subset_accuracy': 'run per-subset accuracy tracking during CVQA evaluation using a defaultdict for subset-level metrics', 'run_embedding_normalization': 'run L2 normalization on text and image embeddings before computing cosine similarity scores'}
+```
+

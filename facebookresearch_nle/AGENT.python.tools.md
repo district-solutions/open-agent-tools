@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/nle
+- repo_uri: https://github.com/facebookresearch/nle
+
+## File: facebookresearch_nle/setup.py
+
+Prompts
+
+```
+['build the NLE package using CMake with ninja or Unix Makefiles generator', 'build the NLE C++ extension by running setup.py which invokes cmake configure, build, and install', 'configure the NLE build using env vars like HACKDIR, USE_SEEDING, and NLE_PACKAGE_NAME', 'install NLE console scripts including nle-play, nle-ttyrec, nle-ttyplay, nle-ttyplay2, and nle-read-tty', 'review the CMakeBuild class that extends setuptools build_ext to compile NLE with cmake']
+```
+
+Usage
+
+```
+{'build_nle_package': 'build the NLE package using CMake with ninja or Unix Makefiles generator', 'build_nle_with_cmake': 'build the NLE C++ extension by running setup.py which invokes cmake configure, build, and install', 'configure_nle_build_env': 'configure the NLE build using env vars like HACKDIR, USE_SEEDING, and NLE_PACKAGE_NAME', 'install_nle_console_scripts': 'install NLE console scripts including nle-play, nle-ttyrec, nle-ttyplay, nle-ttyplay2, and nle-read-tty', 'review_CMakeBuild_class': 'review the CMakeBuild class that extends setuptools build_ext to compile NLE with cmake'}
+```
+

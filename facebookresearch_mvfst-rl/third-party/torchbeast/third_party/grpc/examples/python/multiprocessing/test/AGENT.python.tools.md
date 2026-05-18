@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mvfst-rl
+- repo_uri: https://github.com/facebookresearch/mvfst-rl
+
+## File: facebookresearch_mvfst-rl/third-party/torchbeast/third_party/grpc/examples/python/multiprocessing/test/_multiprocessing_example_test.py
+
+Prompts
+
+```
+['test the gRPC multiprocessing example by spawning server and client subprocesses and validating prime results', 'run the is_prime function to check if a given integer is a prime number', 'get the server binding address by parsing server stdout with a regex pattern', 'review the MultiprocessingExampleTest class that validates gRPC client-server multiprocessing communication', 'refactor the is_prime function to use a more efficient primality testing algorithm']
+```
+
+Usage
+
+```
+{'test_multiprocessing_example': 'test the gRPC multiprocessing example by spawning server and client subprocesses and validating prime results', 'run_is_prime': 'run the is_prime function to check if a given integer is a prime number', 'get_server_address': 'get the server binding address by parsing server stdout with a regex pattern', 'review_MultiprocessingExampleTest': 'review the MultiprocessingExampleTest class that validates gRPC client-server multiprocessing communication', 'refactor_is_prime': 'refactor the is_prime function to use a more efficient primality testing algorithm'}
+```
+

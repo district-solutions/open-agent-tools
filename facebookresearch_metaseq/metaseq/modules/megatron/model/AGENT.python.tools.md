@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/metaseq
+- repo_uri: https://github.com/facebookresearch/metaseq
+
+## File: facebookresearch_metaseq/metaseq/modules/megatron/model/fused_softmax.py
+
+Prompts
+
+```
+['build a fused upper triangular masked softmax operation for GPT causal attention with scaling', 'build a fused masked softmax operation with an arbitrary attention mask and scaling factor', 'test the ScaledUpperTriangMaskedSoftmax forward pass by applying scale and upper triangular mask then softmax', 'test the ScaledMaskedSoftmax forward pass by applying a custom mask and scale then softmax', 'review the fused softmax backward pass implementations for gradient computation through scaling and masking']
+```
+
+Usage
+
+```
+{'build_scaled_upper_triang_masked_softmax': 'build a fused upper triangular masked softmax operation for GPT causal attention with scaling', 'build_scaled_masked_softmax': 'build a fused masked softmax operation with an arbitrary attention mask and scaling factor', 'test_ScaledUpperTriangMaskedSoftmax_forward': 'test the ScaledUpperTriangMaskedSoftmax forward pass by applying scale and upper triangular mask then softmax', 'test_ScaledMaskedSoftmax_forward': 'test the ScaledMaskedSoftmax forward pass by applying a custom mask and scale then softmax', 'review_fused_softmax_autograd_backward': 'review the fused softmax backward pass implementations for gradient computation through scaling and masking'}
+```
+

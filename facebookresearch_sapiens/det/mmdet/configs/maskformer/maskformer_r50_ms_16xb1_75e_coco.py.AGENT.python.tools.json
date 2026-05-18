@@ -1,0 +1,24 @@
+{
+    "note": "This file is a declarative configuration file (no callable functions, classes, or CLI entry points). It defines hyperparameters, model architecture, training pipeline, and optimizer settings for MaskFormer via MMEngine's config system. It is loaded by the framework — not executed directly.",
+    "summary": "MaskFormer R50 configuration for COCO panoptic segmentation: ResNet-50 backbone, 6-layer Transformer encoder/decoder, 100 queries, 75-epoch training with AdamW, MultiStepLR scheduler, and multi-scale data augmentation.",
+    "key_components": {
+        "model": "MaskFormer with ResNet-50 backbone, TransformerEncoderPixelDecoder, MaskFormerHead, MaskFormerFusionHead",
+        "classes": "80 thing classes + 53 stuff classes = 133 total COCO classes",
+        "losses": "CrossEntropyLoss (cls), FocalLoss (mask), DiceLoss (mask) with HungarianAssigner matching",
+        "optimizer": "AdamW (lr=1e-4, weight_decay=1e-4) with param-wise config: backbone lr_mult=0.1, query_embed decay_mult=0.0, gradient clipping max_norm=0.01",
+        "training": "75 epochs, MultiStepLR with milestone at epoch 50, batch_size=1 per GPU (base=16 GPUs), multi-scale resize + random crop augmentation"
+    },
+    "imports_used": [
+        "MaskFormer (mmdet.models)",
+        "ResNet (mmdet.models.backbones)",
+        "MaskFormerHead (mmdet.models.dense_heads)",
+        "TransformerEncoderPixelDecoder (mmdet.models.layers)",
+        "MaskFormerFusionHead (mmdet.models.seg_heads)",
+        "HungarianAssigner (mmdet.models.task_modules.assigners)",
+        "DetDataPreprocessor (mmdet.models.data_preprocessors)",
+        "AdamW (torch.optim)",
+        "OptimWrapper (mmengine.optim)",
+        "MultiStepLR (mmengine.optim.scheduler)"
+    ],
+    "example_usages": {}
+}

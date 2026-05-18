@@ -1,0 +1,21 @@
+{
+    "_note": "This file is a declarative MMPose configuration file containing only variable assignments and dictionary literals. It has no functions, classes, or callable APIs. It defines training hyperparameters, model architecture, data pipelines, and evaluation settings for the Sapiens 0.3B human pose estimation model fine-tuned on the Goliath dataset.",
+    "config_purpose": "MMPose training configuration for Sapiens 0.3B pose estimation on Goliath dataset at 1024x768 resolution",
+    "key_settings": {
+        "model": "sapiens_0.3b VisionTransformer backbone with HeatmapHead",
+        "embed_dim": 1024,
+        "num_layers": 24,
+        "num_keypoints": 308,
+        "image_size": "1024x768",
+        "num_epochs": 210,
+        "optimizer": "AdamW with layer decay (rate=0.85), lr=5e-5",
+        "scheduler": "LinearLR warmup (500 iters) + MultiStepLR milestones at [170, 200]",
+        "train_dataset": "GoliathDataset (topdown mode)",
+        "val_datasets": "GoliathEvalDataset + CocoWholeBodyDataset",
+        "codec": "UDPHeatmap with sigma=6, scale=4",
+        "loss": "KeypointOHKMMSELoss (topk=128)",
+        "augmentation": "RandomFlip, RandomHalfBody, RandomBBoxTransform, PhotometricDistortion, Albumentation (Blur, MedianBlur, CoarseDropout)"
+    },
+    "callable_apis": [],
+    "example_usages": []
+}

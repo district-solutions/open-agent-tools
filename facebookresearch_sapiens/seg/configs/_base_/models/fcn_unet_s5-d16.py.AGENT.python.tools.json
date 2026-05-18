@@ -1,0 +1,11 @@
+{
+    "note": "This file is a pure configuration file (dict-based config for MMSegmentation). It defines model settings for an FCN UNet (s5-d16) architecture with no callable functions, classes, or APIs. No example tool invocations are applicable.",
+    "config_description": "Configuration for an EncoderDecoder model using a UNet backbone with 5 stages and 64 base channels, paired with FCN decode and auxiliary heads for 2-class semantic segmentation",
+    "key_settings": {
+        "backbone": "UNet with 5 stages, base_channels=64, SyncBN normalization, ReLU activation, InterpConv upsampling",
+        "decode_head": "FCNHead with 64 input channels from stage 4, 1 conv layer, 0.1 dropout, 2 output classes",
+        "auxiliary_head": "FCNHead with 128 input channels from stage 3, 1 conv layer, 0.1 dropout, 2 output classes, loss_weight=0.4",
+        "data_preprocessor": "SegDataPreProcessor with ImageNet mean/std normalization, BGR to RGB conversion",
+        "test_cfg": "Slide mode inference with 256x256 crop size and 170 pixel stride"
+    }
+}

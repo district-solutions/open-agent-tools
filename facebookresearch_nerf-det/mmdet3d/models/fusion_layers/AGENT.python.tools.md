@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/nerf-det
+- repo_uri: https://github.com/facebookresearch/nerf-det
+
+## File: facebookresearch_nerf-det/mmdet3d/models/fusion_layers/point_fusion.py
+
+Prompts
+
+```
+['build a module to sample image features at 3D point cloud coordinates using lidar2img projection', 'build a PointFusion module to fuse multi-scale image features with point cloud features', 'test the point_sample function by projecting LiDAR points onto image feature maps with augmentation transforms', 'review the PointFusion forward method that fuses image and point features via linear transforms and element-wise addition', 'refactor the obtain_mlvl_feats method to sample multi-level image features for each point across scales']
+```
+
+Usage
+
+```
+{'build_point_sample': 'build a module to sample image features at 3D point cloud coordinates using lidar2img projection', 'build_PointFusion': 'build a PointFusion module to fuse multi-scale image features with point cloud features', 'test_point_sample': 'test the point_sample function by projecting LiDAR points onto image feature maps with augmentation transforms', 'review_PointFusion_forward': 'review the PointFusion forward method that fuses image and point features via linear transforms and element-wise addition', 'refactor_PointFusion_obtain_mlvl_feats': 'refactor the obtain_mlvl_feats method to sample multi-level image features for each point across scales'}
+```
+

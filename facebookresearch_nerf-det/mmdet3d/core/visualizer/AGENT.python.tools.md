@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/nerf-det
+- repo_uri: https://github.com/facebookresearch/nerf-det
+
+## File: facebookresearch_nerf-det/mmdet3d/core/visualizer/show_result.py
+
+Prompts
+
+```
+['export 3D detection results with ground truth and predicted bounding boxes to PLY files for meshlab visualization', 'write a numpy array of 3D points with optional RGB colors to a PLY format file for visualization', 'export oriented 3D bounding boxes with heading angles around Z axis to a PLY mesh file', 'review the show_result function that converts points and bounding boxes into meshlab-readable PLY and OBJ files', 'refactor the _write_oriented_bbox function to support rotation around arbitrary axes instead of only Z axis']
+```
+
+Usage
+
+```
+{'show_result_visualize_3d_detection': 'export 3D detection results with ground truth and predicted bounding boxes to PLY files for meshlab visualization', 'write_ply_export_point_cloud': 'write a numpy array of 3D points with optional RGB colors to a PLY format file for visualization', 'write_oriented_bbox_export_boxes': 'export oriented 3D bounding boxes with heading angles around Z axis to a PLY mesh file', 'review_show_result_meshlab_output': 'review the show_result function that converts points and bounding boxes into meshlab-readable PLY and OBJ files', 'refactor_write_oriented_bbox_rotation': 'refactor the _write_oriented_bbox function to support rotation around arbitrary axes instead of only Z axis'}
+```
+

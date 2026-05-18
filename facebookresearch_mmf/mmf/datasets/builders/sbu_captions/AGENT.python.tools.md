@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mmf
+- repo_uri: https://github.com/facebookresearch/mmf
+
+## File: facebookresearch_mmf/mmf/datasets/builders/sbu_captions/masked_builder.py
+
+Prompts
+
+```
+['build a masked SBU captions dataset using the MaskedSBUBuilder registered in the MMF framework', 'create a MaskedSBUBuilder instance that sets the dataset name to masked_sbu and configures MaskedSBUDataset', 'review the MaskedSBUBuilder config_path method to confirm it returns the masked.yaml config path', 'test that MaskedSBUBuilder is correctly registered under the masked_sbu key in the MMF registry', 'refactor the MaskedSBUBuilder to customize dataset initialization or override inherited MaskedCOCOBuilder methods']
+```
+
+Usage
+
+```
+{'build_masked_sbu_dataset': 'build a masked SBU captions dataset using the MaskedSBUBuilder registered in the MMF framework', 'create_masked_sbu_builder': 'create a MaskedSBUBuilder instance that sets the dataset name to masked_sbu and configures MaskedSBUDataset', 'review_config_path': 'review the MaskedSBUBuilder config_path method to confirm it returns the masked.yaml config path', 'test_masked_sbu_registration': 'test that MaskedSBUBuilder is correctly registered under the masked_sbu key in the MMF registry', 'refactor_masked_sbu_builder': 'refactor the MaskedSBUBuilder to customize dataset initialization or override inherited MaskedCOCOBuilder methods'}
+```
+

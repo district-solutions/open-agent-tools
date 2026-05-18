@@ -1,0 +1,13 @@
+{
+    "summary": "This file is a pure configuration file (no functions, classes, or callable APIs). It defines hyperparameters, data pipelines, and training settings for the NeRF-Det 3D object detection model using MMDetection3D conventions.",
+    "config_description": "NeRF-Det configuration for ScanNet dataset using ResNet-101 backbone with low-resolution images (320x240). Combines neural radiance fields (NeRF) with voxel-based 3D object detection for 18 indoor furniture classes.",
+    "key_components": {
+        "model": "nerfdet model with ResNet-101 backbone, FPN neck, FastIndoorImVoxelNeck 3D neck, and ScanNetImVoxelHeadV2 bbox head",
+        "dataset": "ScanNetMultiViewDataset with 18 class names (cabinet, bed, chair, sofa, table, door, window, bookshelf, picture, counter, desk, curtain, refrigerator, showercurtain, toilet, sink, bathtub, garbagebin)",
+        "train_pipeline": "MultiViewPipeline with 48 images, Resize to 320x240, Normalize, Pad, RandomShiftOrigin augmentation, Collect3D",
+        "test_pipeline": "MultiViewPipeline with 101 images, Resize to 320x240, Normalize, Pad, Collect3D",
+        "training": "AdamW optimizer (lr=0.0002), 12 epochs with step LR at [8,11], gradient clipping (max_norm=35), 6x dataset repeat"
+    },
+    "no_callable_code": true,
+    "note": "This is a configuration-only file with no functions, classes, or callable APIs. It cannot be invoked via a CLI module. It is consumed by the MMDetection3D training framework to instantiate models, datasets, and training loops."
+}

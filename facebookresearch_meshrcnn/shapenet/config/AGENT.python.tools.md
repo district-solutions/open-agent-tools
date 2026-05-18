@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/meshrcnn
+- repo_uri: https://github.com/facebookresearch/meshrcnn
+
+## File: facebookresearch_meshrcnn/shapenet/config/config.py
+
+Prompts
+
+```
+['get the default ShapeNet configuration CfgNode with model, solver, and dataset settings', 'modify the ShapeNet config to change the model backbone from resnet50 to another architecture', 'enable the voxel head in the ShapeNet config by setting VOXEL_ON to True', 'configure the solver settings like batch size, learning rate, and optimizer for ShapeNet training', 'set the mesh head parameters including graph conv dimensions and loss weights for mesh prediction']
+```
+
+Usage
+
+```
+{'get_shapenet_cfg': 'get the default ShapeNet configuration CfgNode with model, solver, and dataset settings', 'modify_backbone': 'modify the ShapeNet config to change the model backbone from resnet50 to another architecture', 'enable_voxel_head': 'enable the voxel head in the ShapeNet config by setting VOXEL_ON to True', 'configure_solver': 'configure the solver settings like batch size, learning rate, and optimizer for ShapeNet training', 'set_mesh_head': 'set the mesh head parameters including graph conv dimensions and loss weights for mesh prediction'}
+```
+

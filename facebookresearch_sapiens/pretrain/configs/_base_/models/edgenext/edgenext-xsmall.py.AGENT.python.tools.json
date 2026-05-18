@@ -1,0 +1,24 @@
+{
+    "summary": "This file is a pure configuration dictionary (no functions, classes, or callable APIs). It defines model settings for an EdgeNeXt-xsmall ImageClassifier backbone with a LinearClsHead for 1000-class classification, used within the Meta Sapiens pretraining framework (MMEngine-style configs).",
+    "config_keys": [
+        "model.type = 'ImageClassifier'",
+        "model.backbone.type = 'EdgeNeXt' with arch='xsmall'",
+        "model.backbone.out_indices = (3,)",
+        "model.backbone.drop_path_rate = 0.1",
+        "model.head.num_classes = 1000"
+    ],
+    "use_cases": [
+        "configure an EdgeNeXt-xsmall backbone for image classification with 1000 classes",
+        "set drop_path_rate to 0.1 for stochastic depth regularization in EdgeNeXt",
+        "define TruncNormal initialization for Conv2d and Linear layers with std=0.02",
+        "configure a LinearClsHead with CrossEntropyLoss for classification tasks",
+        "set gap_before_final_norm=True to apply global average pooling before the final layer norm"
+    ],
+    "examples": {
+        "configure_edgenext_xsmall_backbone": "configure an EdgeNeXt-xsmall backbone with drop_path_rate 0.1 and out_indices (3,)",
+        "set_truncnormal_init": "set TruncNormal initialization with std 0.02 for Conv2d and Linear layers",
+        "configure_linear_cls_head": "configure a LinearClsHead with 1000 classes and CrossEntropyLoss",
+        "set_gap_before_final_norm": "set gap_before_final_norm to True for global average pooling before final norm",
+        "review_model_config": "review the EdgeNeXt-xsmall model config for ImageClassifier backbone and head settings"
+    }
+}

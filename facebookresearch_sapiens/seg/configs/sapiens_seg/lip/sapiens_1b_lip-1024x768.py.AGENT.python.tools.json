@@ -1,0 +1,15 @@
+{
+    "note": "This file is a pure MMSegmentation configuration file containing only variable assignments and dictionary literals. It has no functions, classes, or callable APIs. It defines training hyperparameters, model architecture, optimizer settings, data pipelines, and dataset configurations for fine-tuning the SAPIENS 1B vision transformer on the LIP dataset for 20-class human parsing at 1024x768 resolution.",
+    "config_purpose": "MMSegmentation training config for SAPIENS 1B on LIP dataset (human parsing/segmentation)",
+    "key_settings": {
+        "model": "sapiens_1b (1.5B parameters, 1536 embed_dim, 40 layers)",
+        "backbone": "mmpretrain.VisionTransformer with pretrained checkpoint",
+        "decode_head": "VitHead with 3-stage deconvolution (4x upsampling)",
+        "task": "20-class human parsing (19 body parts + background)",
+        "image_size": "1024x768 (width x height)",
+        "optimizer": "AdamW with layer decay (rate=0.85), lr=5e-4",
+        "scheduler": "Linear warmup (400 iters) + CosineAnnealing over 400 epochs",
+        "dataset": "LIP (Large-scale Instance-level Human Parsing)",
+        "class_weights": "Inverse-frequency weighting (0.1 for background, 0.7-1.5 for body parts)"
+    }
+}

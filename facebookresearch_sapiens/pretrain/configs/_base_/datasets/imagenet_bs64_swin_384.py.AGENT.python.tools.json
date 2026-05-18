@@ -1,0 +1,12 @@
+{
+    "note": "This file is a configuration-only Python file with no callable functions, classes, or methods. It defines ImageNet dataset settings for Swin Transformer pretraining (batch_size=64, resolution=384x384) used by the MMPreTrain/Sapiens framework.",
+    "dataset_type": "ImageNet",
+    "data_preprocessor": "Image normalization with mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True",
+    "train_pipeline": "LoadImageFromFile -> RandomResizedCrop(384, bicubic) -> RandomFlip(0.5, horizontal) -> PackInputs",
+    "test_pipeline": "LoadImageFromFile -> Resize(384, bicubic) -> PackInputs",
+    "train_dataloader": "batch_size=64, num_workers=5, shuffle=True, data_root='data/imagenet', split='train'",
+    "val_dataloader": "batch_size=64, num_workers=5, shuffle=False, data_root='data/imagenet', split='val'",
+    "val_evaluator": "Accuracy evaluator with topk=(1, 5)",
+    "test_dataloader": "Same as val_dataloader",
+    "test_evaluator": "Same as val_evaluator"
+}

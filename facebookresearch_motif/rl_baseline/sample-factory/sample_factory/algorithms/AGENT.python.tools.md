@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/motif
+- repo_uri: https://github.com/facebookresearch/motif
+
+## File: facebookresearch_motif/rl_baseline/sample-factory/sample_factory/algorithms/algorithm.py
+
+Prompts
+
+```
+['add CLI arguments for train_dir reward_dir and device to an argparse parser using AlgorithmBase', 'add CLI arguments for seed learning_rate gamma and reward_scale to an argparse parser using ReinforcementLearningAlgorithm', 'configure encoder_type hidden_size and nonlinearity CLI arguments via ReinforcementLearningAlgorithm add_cli_args', 'configure save_every_sec keep_checkpoints and checkpoint_id CLI arguments via ReinforcementLearningAlgorithm add_cli_args', 'configure reward_scale reward_clip and extrinsic_reward CLI arguments via ReinforcementLearningAlgorithm add_cli_args']
+```
+
+Usage
+
+```
+{'add_cli_args_algorithm_base': 'add CLI arguments for train_dir reward_dir and device to an argparse parser using AlgorithmBase', 'add_cli_args_rl_algorithm': 'add CLI arguments for seed learning_rate gamma and reward_scale to an argparse parser using ReinforcementLearningAlgorithm', 'configure_rl_encoder_args': 'configure encoder_type hidden_size and nonlinearity CLI arguments via ReinforcementLearningAlgorithm add_cli_args', 'configure_rl_checkpoint_args': 'configure save_every_sec keep_checkpoints and checkpoint_id CLI arguments via ReinforcementLearningAlgorithm add_cli_args', 'configure_rl_reward_args': 'configure reward_scale reward_clip and extrinsic_reward CLI arguments via ReinforcementLearningAlgorithm add_cli_args'}
+```
+

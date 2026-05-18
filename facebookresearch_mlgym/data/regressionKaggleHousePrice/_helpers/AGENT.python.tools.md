@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/mlgym
+- repo_uri: https://github.com/facebookresearch/mlgym
+
+## File: facebookresearch_mlgym/data/regressionKaggleHousePrice/_helpers/_generate_split.py
+
+Prompts
+
+```
+['run the split_csv function to split a CSV into train, validation, and test sets', 'create train, validation, and test CSV splits from a single input CSV file', 'build a data split for the Kaggle House Price regression dataset with 80/10/10 proportions', 'refactor the split_csv function to accept a custom random_state for reproducible splits', 'review the split_csv function output shapes for train, validation, test, and test labels']
+```
+
+Usage
+
+```
+{'run_split_csv': 'run the split_csv function to split a CSV into train, validation, and test sets', 'create_train_val_test_split': 'create train, validation, and test CSV splits from a single input CSV file', 'build_house_price_data_split': 'build a data split for the Kaggle House Price regression dataset with 80/10/10 proportions', 'refactor_split_csv_random_state': 'refactor the split_csv function to accept a custom random_state for reproducible splits', 'review_split_csv_output': 'review the split_csv function output shapes for train, validation, test, and test labels'}
+```
+

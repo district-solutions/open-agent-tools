@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/meta-agents-research-environments
+- repo_uri: https://github.com/facebookresearch/meta-agents-research-environments
+
+## File: facebookresearch_meta-agents-research-environments/gaia2-cli/scripts/export_hf_to_json.py
+
+Prompts
+
+```
+['run the script to download the GAIA2 CLI dataset from HuggingFace and export scenarios as JSON files', 'run the export script with specific splits like search and execution using the --splits flag', 'run the export script with --force to overwrite existing JSON files in the destination directory', 'run the export script with a custom destination directory using the --dest argument', 'run the export script with a HuggingFace token using the --token argument for private datasets']
+```
+
+Usage
+
+```
+{'run_export_hf_to_json': 'run the script to download the GAIA2 CLI dataset from HuggingFace and export scenarios as JSON files', 'run_export_with_custom_splits': 'run the export script with specific splits like search and execution using the --splits flag', 'run_export_with_force': 'run the export script with --force to overwrite existing JSON files in the destination directory', 'run_export_with_custom_dest': 'run the export script with a custom destination directory using the --dest argument', 'run_export_with_token': 'run the export script with a HuggingFace token using the --token argument for private datasets'}
+```
+
