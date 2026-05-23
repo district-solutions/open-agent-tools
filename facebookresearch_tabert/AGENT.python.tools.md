@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/tabert
+- repo_uri: https://github.com/facebookresearch/tabert
+
+## File: facebookresearch_tabert/train.py
+
+Prompts
+
+```
+['run Table-BERT training on tabular data using vanilla or vertical attention task mode', 'run vanilla Table-BERT training with pre-trained BERT base model on table data', 'run vertical attention Table-BERT training with column-aware attention on table data', 'parse command line arguments for Table-BERT training including data dir and output dir', 'resume Table-BERT training from a saved model checkpoint file']
+```
+
+Usage
+
+```
+{'run_tablebert_training': 'run Table-BERT training on tabular data using vanilla or vertical attention task mode', 'run_vanilla_tablebert': 'run vanilla Table-BERT training with pre-trained BERT base model on table data', 'run_vertical_attention_tablebert': 'run vertical attention Table-BERT training with column-aware attention on table data', 'parse_train_arg': 'parse command line arguments for Table-BERT training including data dir and output dir', 'resume_tablebert_checkpoint': 'resume Table-BERT training from a saved model checkpoint file'}
+```
+

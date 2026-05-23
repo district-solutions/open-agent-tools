@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/rlmeta
+- repo_uri: https://github.com/facebookresearch/rlmeta
+
+## File: facebookresearch_rlmeta/third_party/pybind11/tests/extra_python_package/test_files.py
+
+Prompts
+
+```
+['test building a pybind11 source distribution and verify the tar.gz contains expected files and correct setup.py', 'test building a pybind11 global source distribution with PYBIND11_GLOBAL_SDIST set and verify contents', 'test building a pybind11 wheel package and verify it contains all expected source and dist-info files', 'test building a pybind11 global wheel with data and headers laid out correctly for system-wide install', 'review the pybind11 packaging test suite to understand expected sdist and wheel file layouts']
+```
+
+Usage
+
+```
+{'test_build_sdist': 'test building a pybind11 source distribution and verify the tar.gz contains expected files and correct setup.py', 'test_build_global_dist': 'test building a pybind11 global source distribution with PYBIND11_GLOBAL_SDIST set and verify contents', 'tests_build_wheel': 'test building a pybind11 wheel package and verify it contains all expected source and dist-info files', 'tests_build_global_wheel': 'test building a pybind11 global wheel with data and headers laid out correctly for system-wide install', 'review_test_files': 'review the pybind11 packaging test suite to understand expected sdist and wheel file layouts'}
+```
+

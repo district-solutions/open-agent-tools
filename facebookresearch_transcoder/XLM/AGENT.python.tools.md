@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/transcoder
+- repo_uri: https://github.com/facebookresearch/transcoder
+
+## File: facebookresearch_transcoder/XLM/train.py
+
+Prompts
+
+```
+['run the XLM multilingual transformer training loop with CLM MLM AE MT and BT steps', 'build an argparse parser with model data batch and training hyperparameters for language transfer experiments', 'run a single encoder training pipeline using SingleTrainer and SingleEvaluator for monolingual tasks', 'run an encoder-decoder training pipeline using EncDecTrainer for machine translation and back-translation tasks', 'run evaluation only mode to compute BLEU perplexity and other metrics without training']
+```
+
+Usage
+
+```
+{'run_multilingual_training': 'run the XLM multilingual transformer training loop with CLM MLM AE MT and BT steps', 'build_argument_parser': 'build an argparse parser with model data batch and training hyperparameters for language transfer experiments', 'run_encoder_only_training': 'run a single encoder training pipeline using SingleTrainer and SingleEvaluator for monolingual tasks', 'run_enc_dec_training': 'run an encoder-decoder training pipeline using EncDecTrainer for machine translation and back-translation tasks', 'run_evaluation_only': 'run evaluation only mode to compute BLEU perplexity and other metrics without training'}
+```
+

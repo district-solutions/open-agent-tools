@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/recipes
+- repo_uri: https://github.com/facebookresearch/recipes
+
+## File: facebookresearch_recipes/torchrecipes/vision/image_generation/conf/module/tests/test_gan_module_conf.py
+
+Prompts
+
+```
+['test the GAN module configuration by composing Hydra config and instantiating a GAN module', 'test the TestGANModuleConf test_init_with_hydra method to verify GAN instantiation with Hydra config', 'compose the gan_train_app Hydra configuration from the torchrecipes vision image generation config module', 'instantiate a GAN module from Hydra config using hydra.utils.instantiate with recursive disabled', 'verify that the instantiated GAN module has generator, discriminator, and criterion attributes']
+```
+
+Usage
+
+```
+{'test_GAN_module_config': 'test the GAN module configuration by composing Hydra config and instantiating a GAN module', 'test_init_with_hydra': 'test the TestGANModuleConf test_init_with_hydra method to verify GAN instantiation with Hydra config', 'compose_gan_train_app_config': 'compose the gan_train_app Hydra configuration from the torchrecipes vision image generation config module', 'instantiate_GAN_module': 'instantiate a GAN module from Hydra config using hydra.utils.instantiate with recursive disabled', 'verify_GAN_components': 'verify that the instantiated GAN module has generator, discriminator, and criterion attributes'}
+```
+

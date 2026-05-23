@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/spiritlm
+- repo_uri: https://github.com/facebookresearch/spiritlm
+
+## File: facebookresearch_spiritlm/spiritlm/speech_tokenizer/spiritlm_tokenizer.py
+
+Prompts
+
+```
+['encode an audio file into SpiritLM speech token string format using hubert pitch and style models', 'decode speech token string or units dictionary back into a wav audio array using hifigan model', 'convert a dictionary of hubert pitch and style units into an interleaved tokenized string', 'parse a tokenized speech string back into a dictionary of hubert pitch and style units', 'load an audio file from path and resample it to the expected sample rate of 16000hz']
+```
+
+Usage
+
+```
+{'encode_audio_to_speech_tokens': 'encode an audio file into SpiritLM speech token string format using hubert pitch and style models', 'decode_tokens_to_wav': 'decode speech token string or units dictionary back into a wav audio array using hifigan model', 'convert_units_to_string': 'convert a dictionary of hubert pitch and style units into an interleaved tokenized string', 'convert_string_to_units': 'parse a tokenized speech string back into a dictionary of hubert pitch and style units', 'load_and_resample_audio': 'load an audio file from path and resample it to the expected sample rate of 16000hz'}
+```
+

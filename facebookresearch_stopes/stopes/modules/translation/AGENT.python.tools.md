@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/stopes
+- repo_uri: https://github.com/facebookresearch/stopes
+
+## File: facebookresearch_stopes/stopes/modules/translation/fairseq_generate.py
+
+Prompts
+
+```
+['run a FairseqGenerateModule to translate a source text file from one language to another using a Fairseq model', 'translate an iterable of sentences using FairseqGenerator.translate with batched inference and caching', 'run batched inference on a list of sentences using FairseqGenerator.inference with optional sentence split and merge', 'configure beam search parameters like beam size, length penalty, temperature, and sampling for Fairseq translation', 'configure a FairseqGeneratorConfig with model path, source and target languages, GPU settings, and batch size']
+```
+
+Usage
+
+```
+{'run_FairseqGenerateModule': 'run a FairseqGenerateModule to translate a source text file from one language to another using a Fairseq model', 'translate_with_FairseqGenerator': 'translate an iterable of sentences using FairseqGenerator.translate with batched inference and caching', 'inference_FairseqGenerator': 'run batched inference on a list of sentences using FairseqGenerator.inference with optional sentence split and merge', 'configure_BeamSearchConfig': 'configure beam search parameters like beam size, length penalty, temperature, and sampling for Fairseq translation', 'configure_FairseqGeneratorConfig': 'configure a FairseqGeneratorConfig with model path, source and target languages, GPU settings, and batch size'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/spdl
+- repo_uri: https://github.com/facebookresearch/spdl
+
+## File: facebookresearch_spdl/src/spdl/dataloader/_pytorch_dataloader.py
+
+Prompts
+
+```
+['create a PyTorchDataLoader from a map-style dataset using get_pytorch_dataloader with batch_size and shuffle options', 'iterate over batches from a PyTorchDataLoader by calling its __iter__ method in a for loop', 'get the number of batches in a PyTorchDataLoader by calling len on the dataloader instance', 'serialize a PyTorch dataset into shared memory using _serialize_dataset for fast worker initialization', 'resolve sampler, fetch function, and collate function using _resolve_sampler given batch_size and shuffle parameters']
+```
+
+Usage
+
+```
+{'create_pytorch_dataloader': 'create a PyTorchDataLoader from a map-style dataset using get_pytorch_dataloader with batch_size and shuffle options', 'iterate_dataloader': 'iterate over batches from a PyTorchDataLoader by calling its __iter__ method in a for loop', 'get_dataloader_length': 'get the number of batches in a PyTorchDataLoader by calling len on the dataloader instance', 'serialize_dataset_to_shmem': 'serialize a PyTorch dataset into shared memory using _serialize_dataset for fast worker initialization', 'resolve_sampler_and_collate': 'resolve sampler, fetch function, and collate function using _resolve_sampler given batch_size and shuffle parameters'}
+```
+

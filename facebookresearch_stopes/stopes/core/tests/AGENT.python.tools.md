@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/stopes
+- repo_uri: https://github.com/facebookresearch/stopes
+
+## File: facebookresearch_stopes/stopes/core/tests/hello_world.py
+
+Prompts
+
+```
+['run a StopesModule that greets a person with a configurable message and optional sleep duration', 'run a StopesModule that greets each person in a list via array-based job iteration', 'create a dataclass config with greet, person, duration, and Slurm resource requirements for a single job', 'create a dataclass config with greet, persons list, and duration for array-based job execution', 'review the HelloWorldModule requirements method that returns Slurm resource allocation settings', 'check if a file has the Meta copyright header and optionally autofix it', 'autofix a missing copyright header in a Python or TypeScript file', 'test all git tracked files in the repo for copyright headers', 'run the script to autofix copyright headers on all source files in the repo', 'check and autofix copyright headers in TypeScript, JavaScript, or CSS files', 'schedule a StopesModule using the Launcher to execute a single task on a local or Slurm cluster', 'schedule an array StopesModule using the Launcher to execute multiple tasks in parallel via job arrays', 'cache StopesModule results using FileCache to avoid re-running identical module configurations', 'configure retry logic on a StopesModule by implementing should_retry to handle transient failures', 'throttle concurrent job submissions across Launchers using ThrottleConfig with a shared semaphore', 'test that get_config_for_cache returns a dict with transient fields replaced by -1', 'test that transient config changes do not alter the cache_key of a dynamic module', 'create a DepartmentConfig dataclass with employee_id and transient department metadata', 'create an EmployeeConfig dataclass with transient duration and nested DepartmentConfig employment', 'create a DynamicEmployeeConfig dataclass with MISSING employment for Hydra-based dynamic resolution', 'test the batch utility function that splits an iterable into fixed-size chunks', 'test the gather_optionals async utility that gathers awaitables while allowing None values', 'test the sort_file utility that sorts file lines by a specified column with dedup support', 'test the FileLock context manager that provides cross-process file locking via fcntl', 'test the AsyncIPCSemaphore class that provides cross-process async semaphore using posix_ipc']
+```
+
+Usage
+
+```
+{'run_HelloWorldModule': 'run a StopesModule that greets a person with a configurable message and optional sleep duration', 'run_HelloWorldArrayModule': 'run a StopesModule that greets each person in a list via array-based job iteration', 'create_HelloWorldConfig': 'create a dataclass config with greet, person, duration, and Slurm resource requirements for a single job', 'create_HelloWorldArrayConfig': 'create a dataclass config with greet, persons list, and duration for array-based job execution', 'review_HelloWorldModule_requirements': 'review the HelloWorldModule requirements method that returns Slurm resource allocation settings'}
+```
+
+## File: facebookresearch_stopes/stopes/core/tests/test_headers.py
+
+Prompts
+
+```
+['run a StopesModule that greets a person with a configurable message and optional sleep duration', 'run a StopesModule that greets each person in a list via array-based job iteration', 'create a dataclass config with greet, person, duration, and Slurm resource requirements for a single job', 'create a dataclass config with greet, persons list, and duration for array-based job execution', 'review the HelloWorldModule requirements method that returns Slurm resource allocation settings', 'check if a file has the Meta copyright header and optionally autofix it', 'autofix a missing copyright header in a Python or TypeScript file', 'test all git tracked files in the repo for copyright headers', 'run the script to autofix copyright headers on all source files in the repo', 'check and autofix copyright headers in TypeScript, JavaScript, or CSS files', 'schedule a StopesModule using the Launcher to execute a single task on a local or Slurm cluster', 'schedule an array StopesModule using the Launcher to execute multiple tasks in parallel via job arrays', 'cache StopesModule results using FileCache to avoid re-running identical module configurations', 'configure retry logic on a StopesModule by implementing should_retry to handle transient failures', 'throttle concurrent job submissions across Launchers using ThrottleConfig with a shared semaphore', 'test that get_config_for_cache returns a dict with transient fields replaced by -1', 'test that transient config changes do not alter the cache_key of a dynamic module', 'create a DepartmentConfig dataclass with employee_id and transient department metadata', 'create an EmployeeConfig dataclass with transient duration and nested DepartmentConfig employment', 'create a DynamicEmployeeConfig dataclass with MISSING employment for Hydra-based dynamic resolution', 'test the batch utility function that splits an iterable into fixed-size chunks', 'test the gather_optionals async utility that gathers awaitables while allowing None values', 'test the sort_file utility that sorts file lines by a specified column with dedup support', 'test the FileLock context manager that provides cross-process file locking via fcntl', 'test the AsyncIPCSemaphore class that provides cross-process async semaphore using posix_ipc']
+```
+
+Usage
+
+```
+{'check_file_copyright': 'check if a file has the Meta copyright header and optionally autofix it', 'check_file_autofix': 'autofix a missing copyright header in a Python or TypeScript file', 'test_all_files_copyright': 'test all git tracked files in the repo for copyright headers', 'run_autofix_headers': 'run the script to autofix copyright headers on all source files in the repo', 'check_file_typescript': 'check and autofix copyright headers in TypeScript, JavaScript, or CSS files'}
+```
+
+## File: facebookresearch_stopes/stopes/core/tests/test_launcher.py
+
+Prompts
+
+```
+['run a StopesModule that greets a person with a configurable message and optional sleep duration', 'run a StopesModule that greets each person in a list via array-based job iteration', 'create a dataclass config with greet, person, duration, and Slurm resource requirements for a single job', 'create a dataclass config with greet, persons list, and duration for array-based job execution', 'review the HelloWorldModule requirements method that returns Slurm resource allocation settings', 'check if a file has the Meta copyright header and optionally autofix it', 'autofix a missing copyright header in a Python or TypeScript file', 'test all git tracked files in the repo for copyright headers', 'run the script to autofix copyright headers on all source files in the repo', 'check and autofix copyright headers in TypeScript, JavaScript, or CSS files', 'schedule a StopesModule using the Launcher to execute a single task on a local or Slurm cluster', 'schedule an array StopesModule using the Launcher to execute multiple tasks in parallel via job arrays', 'cache StopesModule results using FileCache to avoid re-running identical module configurations', 'configure retry logic on a StopesModule by implementing should_retry to handle transient failures', 'throttle concurrent job submissions across Launchers using ThrottleConfig with a shared semaphore', 'test that get_config_for_cache returns a dict with transient fields replaced by -1', 'test that transient config changes do not alter the cache_key of a dynamic module', 'create a DepartmentConfig dataclass with employee_id and transient department metadata', 'create an EmployeeConfig dataclass with transient duration and nested DepartmentConfig employment', 'create a DynamicEmployeeConfig dataclass with MISSING employment for Hydra-based dynamic resolution', 'test the batch utility function that splits an iterable into fixed-size chunks', 'test the gather_optionals async utility that gathers awaitables while allowing None values', 'test the sort_file utility that sorts file lines by a specified column with dedup support', 'test the FileLock context manager that provides cross-process file locking via fcntl', 'test the AsyncIPCSemaphore class that provides cross-process async semaphore using posix_ipc']
+```
+
+Usage
+
+```
+{'schedule_stopesModule_with_launcher': 'schedule a StopesModule using the Launcher to execute a single task on a local or Slurm cluster', 'schedule_array_job_with_launcher': 'schedule an array StopesModule using the Launcher to execute multiple tasks in parallel via job arrays', 'cache_module_results_with_filecache': 'cache StopesModule results using FileCache to avoid re-running identical module configurations', 'configure_retry_logic_for_modules': 'configure retry logic on a StopesModule by implementing should_retry to handle transient failures', 'throttle_concurrent_jobs_with_throttleconfig': 'throttle concurrent job submissions across Launchers using ThrottleConfig with a shared semaphore'}
+```
+
+## File: facebookresearch_stopes/stopes/core/tests/test_modules.py
+
+Prompts
+
+```
+['run a StopesModule that greets a person with a configurable message and optional sleep duration', 'run a StopesModule that greets each person in a list via array-based job iteration', 'create a dataclass config with greet, person, duration, and Slurm resource requirements for a single job', 'create a dataclass config with greet, persons list, and duration for array-based job execution', 'review the HelloWorldModule requirements method that returns Slurm resource allocation settings', 'check if a file has the Meta copyright header and optionally autofix it', 'autofix a missing copyright header in a Python or TypeScript file', 'test all git tracked files in the repo for copyright headers', 'run the script to autofix copyright headers on all source files in the repo', 'check and autofix copyright headers in TypeScript, JavaScript, or CSS files', 'schedule a StopesModule using the Launcher to execute a single task on a local or Slurm cluster', 'schedule an array StopesModule using the Launcher to execute multiple tasks in parallel via job arrays', 'cache StopesModule results using FileCache to avoid re-running identical module configurations', 'configure retry logic on a StopesModule by implementing should_retry to handle transient failures', 'throttle concurrent job submissions across Launchers using ThrottleConfig with a shared semaphore', 'test that get_config_for_cache returns a dict with transient fields replaced by -1', 'test that transient config changes do not alter the cache_key of a dynamic module', 'create a DepartmentConfig dataclass with employee_id and transient department metadata', 'create an EmployeeConfig dataclass with transient duration and nested DepartmentConfig employment', 'create a DynamicEmployeeConfig dataclass with MISSING employment for Hydra-based dynamic resolution', 'test the batch utility function that splits an iterable into fixed-size chunks', 'test the gather_optionals async utility that gathers awaitables while allowing None values', 'test the sort_file utility that sorts file lines by a specified column with dedup support', 'test the FileLock context manager that provides cross-process file locking via fcntl', 'test the AsyncIPCSemaphore class that provides cross-process async semaphore using posix_ipc']
+```
+
+Usage
+
+```
+{'test_config_for_cache': 'test that get_config_for_cache returns a dict with transient fields replaced by -1', 'test_cache_key_dynamic_module': 'test that transient config changes do not alter the cache_key of a dynamic module', 'create_DepartmentConfig': 'create a DepartmentConfig dataclass with employee_id and transient department metadata', 'create_EmployeeConfig': 'create an EmployeeConfig dataclass with transient duration and nested DepartmentConfig employment', 'create_DynamicEmployeeConfig': 'create a DynamicEmployeeConfig dataclass with MISSING employment for Hydra-based dynamic resolution'}
+```
+
+## File: facebookresearch_stopes/stopes/core/tests/test_utils.py
+
+Prompts
+
+```
+['run a StopesModule that greets a person with a configurable message and optional sleep duration', 'run a StopesModule that greets each person in a list via array-based job iteration', 'create a dataclass config with greet, person, duration, and Slurm resource requirements for a single job', 'create a dataclass config with greet, persons list, and duration for array-based job execution', 'review the HelloWorldModule requirements method that returns Slurm resource allocation settings', 'check if a file has the Meta copyright header and optionally autofix it', 'autofix a missing copyright header in a Python or TypeScript file', 'test all git tracked files in the repo for copyright headers', 'run the script to autofix copyright headers on all source files in the repo', 'check and autofix copyright headers in TypeScript, JavaScript, or CSS files', 'schedule a StopesModule using the Launcher to execute a single task on a local or Slurm cluster', 'schedule an array StopesModule using the Launcher to execute multiple tasks in parallel via job arrays', 'cache StopesModule results using FileCache to avoid re-running identical module configurations', 'configure retry logic on a StopesModule by implementing should_retry to handle transient failures', 'throttle concurrent job submissions across Launchers using ThrottleConfig with a shared semaphore', 'test that get_config_for_cache returns a dict with transient fields replaced by -1', 'test that transient config changes do not alter the cache_key of a dynamic module', 'create a DepartmentConfig dataclass with employee_id and transient department metadata', 'create an EmployeeConfig dataclass with transient duration and nested DepartmentConfig employment', 'create a DynamicEmployeeConfig dataclass with MISSING employment for Hydra-based dynamic resolution', 'test the batch utility function that splits an iterable into fixed-size chunks', 'test the gather_optionals async utility that gathers awaitables while allowing None values', 'test the sort_file utility that sorts file lines by a specified column with dedup support', 'test the FileLock context manager that provides cross-process file locking via fcntl', 'test the AsyncIPCSemaphore class that provides cross-process async semaphore using posix_ipc']
+```
+
+Usage
+
+```
+{'test_batch': 'test the batch utility function that splits an iterable into fixed-size chunks', 'test_gather_optionals': 'test the gather_optionals async utility that gathers awaitables while allowing None values', 'test_sort_file': 'test the sort_file utility that sorts file lines by a specified column with dedup support', 'test_file_lock': 'test the FileLock context manager that provides cross-process file locking via fcntl', 'test_async_ipc_semaphore': 'test the AsyncIPCSemaphore class that provides cross-process async semaphore using posix_ipc'}
+```
+

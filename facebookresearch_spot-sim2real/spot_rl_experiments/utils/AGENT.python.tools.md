@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/spot-sim2real
+- repo_uri: https://github.com/facebookresearch/spot-sim2real
+
+## File: facebookresearch_spot-sim2real/spot_rl_experiments/utils/pytorch_to_torchscript.py
+
+Prompts
+
+```
+['convert a Habitat 3 trained PyTorch policy checkpoint into a TorchScript model using a YAML config file', 'run the PolicyConverter act method to get actions from a loaded PyTorch policy given observations', 'run the PolicyConverter act_ts method to get actions from a converted TorchScript model given observations', 'review the FinalTorchscriptModel forward method that traces the policy network and samples actions from the distribution', 'review the CustomNormal class that overrides sample, log_probs, and entropy for TorchScript compatibility']
+```
+
+Usage
+
+```
+{'convert_pytorch_policy_to_torchscript': 'convert a Habitat 3 trained PyTorch policy checkpoint into a TorchScript model using a YAML config file', 'run_PolicyConverter_act': 'run the PolicyConverter act method to get actions from a loaded PyTorch policy given observations', 'run_PolicyConverter_act_ts': 'run the PolicyConverter act_ts method to get actions from a converted TorchScript model given observations', 'review_FinalTorchscriptModel_forward': 'review the FinalTorchscriptModel forward method that traces the policy network and samples actions from the distribution', 'review_CustomNormal_class': 'review the CustomNormal class that overrides sample, log_probs, and entropy for TorchScript compatibility'}
+```
+

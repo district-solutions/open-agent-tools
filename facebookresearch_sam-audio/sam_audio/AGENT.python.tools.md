@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/sam-audio
+- repo_uri: https://github.com/facebookresearch/sam-audio
+
+## File: facebookresearch_sam-audio/sam_audio/processor.py
+
+Prompts
+
+```
+['load and pad a batch of audio files or tensors to a uniform sampling rate', 'create a Batch object with processed audio tensors, sizes, descriptions, and anchor alignment', 'build a SAMAudioProcessor from a pretrained model name or local config path', 'process a list of audio files and descriptions into a Batch with optional anchors and masked videos', 'process text and audio inputs into a BatchFeature for the SAMAudio judge model']
+```
+
+Usage
+
+```
+{'batch_audio': 'load and pad a batch of audio files or tensors to a uniform sampling rate', 'create_Batch': 'create a Batch object with processed audio tensors, sizes, descriptions, and anchor alignment', 'SAMAudioProcessor_from_pretrained': 'build a SAMAudioProcessor from a pretrained model name or local config path', 'process_audio_with_SAMAudioProcessor': 'process a list of audio files and descriptions into a Batch with optional anchors and masked videos', 'process_audio_with_SAMAudioJudgeProcessor': 'process text and audio inputs into a BatchFeature for the SAMAudio judge model'}
+```
+

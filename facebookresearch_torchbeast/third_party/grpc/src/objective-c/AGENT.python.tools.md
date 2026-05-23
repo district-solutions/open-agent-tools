@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/torchbeast
+- repo_uri: https://github.com/facebookresearch/torchbeast
+
+## File: facebookresearch_torchbeast/third_party/grpc/src/objective-c/change-comments.py
+
+Prompts
+
+```
+['run the script to convert double-slash comments to block comment style in source files', 'run the is_comment function to check if a line matches the double-slash comment regex pattern', 'run the format_as_block function to transform a list of comment lines into block comment format', 'run the indentation_of function to extract leading whitespace from a comment line', 'run the content function to extract the text portion from a double-slash comment line']
+```
+
+Usage
+
+```
+{'run_change_comments': 'run the script to convert double-slash comments to block comment style in source files', 'run_is_comment': 'run the is_comment function to check if a line matches the double-slash comment regex pattern', 'run_format_as_block': 'run the format_as_block function to transform a list of comment lines into block comment format', 'run_indentation_of': 'run the indentation_of function to extract leading whitespace from a comment line', 'run_content': 'run the content function to extract the text portion from a double-slash comment line'}
+```
+

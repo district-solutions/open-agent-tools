@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fast3r
+- repo_uri: https://github.com/facebookresearch/fast3r
+
+## File: facebookresearch_fast3r/fast3r/croco/utils/misc.py
+
+Prompts
+
+```
+['create a MetricLogger instance to track training metrics like loss and accuracy over epochs', 'initialize distributed training mode across multiple GPUs using init_distributed_mode with args', 'save model checkpoints with optimizer state and load them to resume training from a specific epoch', 'create parameter groups with weight decay and layer-wise learning rate scaling for ViT models', 'adjust optimizer learning rate using cosine annealing schedule with warmup epochs']
+```
+
+Usage
+
+```
+{'create_metric_logger_for_training': 'create a MetricLogger instance to track training metrics like loss and accuracy over epochs', 'setup_distributed_training': 'initialize distributed training mode across multiple GPUs using init_distributed_mode with args', 'save_and_load_model_checkpoints': 'save model checkpoints with optimizer state and load them to resume training from a specific epoch', 'configure_parameter_groups_with_layer_decay': 'create parameter groups with weight decay and layer-wise learning rate scaling for ViT models', 'adjust_learning_rate_with_cosine_decay': 'adjust optimizer learning rate using cosine annealing schedule with warmup epochs'}
+```
+

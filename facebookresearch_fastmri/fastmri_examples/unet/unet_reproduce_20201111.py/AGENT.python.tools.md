@@ -1,0 +1,47 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fastmri
+- repo_uri: https://github.com/facebookresearch/fastmri
+
+## File: facebookresearch_fastmri/fastmri_examples/unet/unet_reproduce_20201111.py/unet_brain_leaderboard.py
+
+Prompts
+
+```
+['run the U-Net brain MRI reconstruction training pipeline with PyTorch Lightning on 32 GPUs', 'test the trained U-Net brain MRI reconstruction model using the leaderboard configuration', 'build command-line arguments for the U-Net brain leaderboard training with configurable mask types and accelerations', 'create a k-space subsampling mask for MRI data using equispaced or random mask types', 'configure model checkpointing and auto-resume from the latest checkpoint in the checkpoints directory', 'run the U-Net knee multi-coil leaderboard training script with PyTorch Lightning on fastMRI data', 'test the trained U-Net knee multi-coil model on the fastMRI test dataset', 'review how UnetModule integrates with FastMriDataModule for multi-coil knee MRI reconstruction', 'test the U-Net model on the fastMRI knee single-coil dataset using the PyTorch Lightning trainer', 'create a k-space subsampling mask for training and validation using random or equispaced mask types', 'review the cli_main function that orchestrates data module setup, U-Net model creation, and trainer execution']
+```
+
+Usage
+
+```
+{'run_unet_brain_training': 'run the U-Net brain MRI reconstruction training pipeline with PyTorch Lightning on 32 GPUs', 'test_unet_brain_model': 'test the trained U-Net brain MRI reconstruction model using the leaderboard configuration', 'build_args_cli': 'build command-line arguments for the U-Net brain leaderboard training with configurable mask types and accelerations', 'create_kspace_mask': 'create a k-space subsampling mask for MRI data using equispaced or random mask types', 'configure_checkpointing': 'configure model checkpointing and auto-resume from the latest checkpoint in the checkpoints directory'}
+```
+
+## File: facebookresearch_fastmri/fastmri_examples/unet/unet_reproduce_20201111.py/unet_knee_mc_leaderboard.py
+
+Prompts
+
+```
+['run the U-Net brain MRI reconstruction training pipeline with PyTorch Lightning on 32 GPUs', 'test the trained U-Net brain MRI reconstruction model using the leaderboard configuration', 'build command-line arguments for the U-Net brain leaderboard training with configurable mask types and accelerations', 'create a k-space subsampling mask for MRI data using equispaced or random mask types', 'configure model checkpointing and auto-resume from the latest checkpoint in the checkpoints directory', 'run the U-Net knee multi-coil leaderboard training script with PyTorch Lightning on fastMRI data', 'test the trained U-Net knee multi-coil model on the fastMRI test dataset', 'review how UnetModule integrates with FastMriDataModule for multi-coil knee MRI reconstruction', 'test the U-Net model on the fastMRI knee single-coil dataset using the PyTorch Lightning trainer', 'create a k-space subsampling mask for training and validation using random or equispaced mask types', 'review the cli_main function that orchestrates data module setup, U-Net model creation, and trainer execution']
+```
+
+Usage
+
+```
+{'run_unet_knee_training': 'run the U-Net knee multi-coil leaderboard training script with PyTorch Lightning on fastMRI data', 'test_unet_knee_model': 'test the trained U-Net knee multi-coil model on the fastMRI test dataset', 'build_args_cli': 'build command-line arguments for U-Net knee training with configurable mask types and acceleration rates', 'create_kspace_mask': 'create a k-space subsampling mask using random or equispaced mask types with configurable center fractions', 'review_unetmodule_integration': 'review how UnetModule integrates with FastMriDataModule for multi-coil knee MRI reconstruction'}
+```
+
+## File: facebookresearch_fastmri/fastmri_examples/unet/unet_reproduce_20201111.py/unet_knee_sc_leaderboard.py
+
+Prompts
+
+```
+['run the U-Net brain MRI reconstruction training pipeline with PyTorch Lightning on 32 GPUs', 'test the trained U-Net brain MRI reconstruction model using the leaderboard configuration', 'build command-line arguments for the U-Net brain leaderboard training with configurable mask types and accelerations', 'create a k-space subsampling mask for MRI data using equispaced or random mask types', 'configure model checkpointing and auto-resume from the latest checkpoint in the checkpoints directory', 'run the U-Net knee multi-coil leaderboard training script with PyTorch Lightning on fastMRI data', 'test the trained U-Net knee multi-coil model on the fastMRI test dataset', 'review how UnetModule integrates with FastMriDataModule for multi-coil knee MRI reconstruction', 'test the U-Net model on the fastMRI knee single-coil dataset using the PyTorch Lightning trainer', 'create a k-space subsampling mask for training and validation using random or equispaced mask types', 'review the cli_main function that orchestrates data module setup, U-Net model creation, and trainer execution']
+```
+
+Usage
+
+```
+{'run_unet_knee_training': 'run the U-Net knee single-coil leaderboard training script with default DDP configuration on 32 GPUs', 'build_args_cli': 'build the argument parser with data path, mask type, acceleration rates, and PyTorch Lightning trainer defaults', 'test_unet_model': 'test the U-Net model on the fastMRI knee single-coil dataset using the PyTorch Lightning trainer', 'create_k_space_mask': 'create a k-space subsampling mask for training and validation using random or equispaced mask types', 'review_cli_main': 'review the cli_main function that orchestrates data module setup, U-Net model creation, and trainer execution'}
+```
+

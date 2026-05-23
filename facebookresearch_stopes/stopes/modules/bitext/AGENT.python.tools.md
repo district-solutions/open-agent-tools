@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/stopes
+- repo_uri: https://github.com/facebookresearch/stopes
+
+## File: facebookresearch_stopes/stopes/modules/bitext/laser_scorer.py
+
+Prompts
+
+```
+['run the LaserScorerModule to score and clean dirty bitext pairs using LASER embeddings and margin ratio', 'run the main CLI to score bitext files with a given language and LASER model directory', 'create a LaserScorerConfig with input file, model path, SPM path, threshold, and GPU settings', 'compute batched k-nearest neighbors between two embedding arrays using Faiss with optional GPU support', 'compute the normalized cosine similarity margin ratio between two sentence embeddings and their mean similarities']
+```
+
+Usage
+
+```
+{'run_laser_scorer_module': 'run the LaserScorerModule to score and clean dirty bitext pairs using LASER embeddings and margin ratio', 'run_main_cli': 'run the main CLI to score bitext files with a given language and LASER model directory', 'create_laser_scorer_config': 'create a LaserScorerConfig with input file, model path, SPM path, threshold, and GPU settings', 'compute_knn_batched': 'compute batched k-nearest neighbors between two embedding arrays using Faiss with optional GPU support', 'compute_margin_ratio': 'compute the normalized cosine similarity margin ratio between two sentence embeddings and their mean similarities'}
+```
+

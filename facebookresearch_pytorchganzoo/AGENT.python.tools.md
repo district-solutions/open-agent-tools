@@ -8,7 +8,7 @@
 Prompts
 
 ```
-['unpack a CIFAR-10 pickle dataset into individual image files organized by label folders', 'crop all JPEG images in a CelebA dataset directory to 128x128 centered face regions', 'partition a FashionGen HDF5 dataset by department and generate attribute statistics and index files', 'resize a dataset to multiple resolutions like 64, 128, 512, and 1024 for progressive GAN training', 'run the CLI to set up datasets like CelebA, CIFAR-10, or FashionGen with optional fast training mode', 'build a Progressive GAN model with optional pretrained weights from CelebAHQ or other datasets', 'build a StyleGAN model with optional pretrained FlickrHQ weights for 1024x1024 image generation', 'build a DCGAN model with optional pretrained FashionGen cloth weights for image generation', 'test a GAN model by feeding random noise vectors and getting smoothed generator output', 'train a GAN model by calling optimizeParameters with real input data in a loop']
+['unpack a CIFAR-10 pickle dataset into individual image files organized by label folders', 'crop all JPEG images in a CelebA dataset directory to 128x128 centered face regions', 'partition a FashionGen HDF5 dataset by department and generate attribute statistics and index files', 'resize a dataset to multiple resolutions like 64, 128, 512, and 1024 for progressive GAN training', 'run the CLI to set up datasets like CelebA, CIFAR-10, or FashionGen with optional fast training mode', 'build a Progressive GAN model with optional pretrained weights from CelebAHQ or other datasets', 'build a StyleGAN model with optional pretrained FlickrHQ weights for 1024x1024 image generation', 'build a DCGAN model with optional pretrained FashionGen cloth weights for image generation', 'test a GAN model by feeding random noise vectors and getting smoothed generator output', 'train a GAN model by calling optimizeParameters with real input data in a loop', 'run a GAN training job for PGAN, StyleGAN, or DCGAN models with a config file', 'resume GAN training from an existing checkpoint in the output directory', 'run GAN training with all visualizations disabled for headless environments', 'run GAN training using a numpy-based visualizer for SLURM cluster environments', 'review the getTrainer function that dynamically loads PGAN, StyleGAN, or DCGAN trainer modules']
 ```
 
 Usage
@@ -22,12 +22,26 @@ Usage
 Prompts
 
 ```
-['unpack a CIFAR-10 pickle dataset into individual image files organized by label folders', 'crop all JPEG images in a CelebA dataset directory to 128x128 centered face regions', 'partition a FashionGen HDF5 dataset by department and generate attribute statistics and index files', 'resize a dataset to multiple resolutions like 64, 128, 512, and 1024 for progressive GAN training', 'run the CLI to set up datasets like CelebA, CIFAR-10, or FashionGen with optional fast training mode', 'build a Progressive GAN model with optional pretrained weights from CelebAHQ or other datasets', 'build a StyleGAN model with optional pretrained FlickrHQ weights for 1024x1024 image generation', 'build a DCGAN model with optional pretrained FashionGen cloth weights for image generation', 'test a GAN model by feeding random noise vectors and getting smoothed generator output', 'train a GAN model by calling optimizeParameters with real input data in a loop']
+['unpack a CIFAR-10 pickle dataset into individual image files organized by label folders', 'crop all JPEG images in a CelebA dataset directory to 128x128 centered face regions', 'partition a FashionGen HDF5 dataset by department and generate attribute statistics and index files', 'resize a dataset to multiple resolutions like 64, 128, 512, and 1024 for progressive GAN training', 'run the CLI to set up datasets like CelebA, CIFAR-10, or FashionGen with optional fast training mode', 'build a Progressive GAN model with optional pretrained weights from CelebAHQ or other datasets', 'build a StyleGAN model with optional pretrained FlickrHQ weights for 1024x1024 image generation', 'build a DCGAN model with optional pretrained FashionGen cloth weights for image generation', 'test a GAN model by feeding random noise vectors and getting smoothed generator output', 'train a GAN model by calling optimizeParameters with real input data in a loop', 'run a GAN training job for PGAN, StyleGAN, or DCGAN models with a config file', 'resume GAN training from an existing checkpoint in the output directory', 'run GAN training with all visualizations disabled for headless environments', 'run GAN training using a numpy-based visualizer for SLURM cluster environments', 'review the getTrainer function that dynamically loads PGAN, StyleGAN, or DCGAN trainer modules']
 ```
 
 Usage
 
 ```
 {'build_PGAN_model': 'build a Progressive GAN model with optional pretrained weights from CelebAHQ or other datasets', 'build_StyleGAN_model': 'build a StyleGAN model with optional pretrained FlickrHQ weights for 1024x1024 image generation', 'build_DCGAN_model': 'build a DCGAN model with optional pretrained FashionGen cloth weights for image generation', 'test_model_with_noise': 'test a GAN model by feeding random noise vectors and getting smoothed generator output', 'train_model_with_optimizeParameters': 'train a GAN model by calling optimizeParameters with real input data in a loop'}
+```
+
+## File: facebookresearch_pytorchganzoo/train.py
+
+Prompts
+
+```
+['unpack a CIFAR-10 pickle dataset into individual image files organized by label folders', 'crop all JPEG images in a CelebA dataset directory to 128x128 centered face regions', 'partition a FashionGen HDF5 dataset by department and generate attribute statistics and index files', 'resize a dataset to multiple resolutions like 64, 128, 512, and 1024 for progressive GAN training', 'run the CLI to set up datasets like CelebA, CIFAR-10, or FashionGen with optional fast training mode', 'build a Progressive GAN model with optional pretrained weights from CelebAHQ or other datasets', 'build a StyleGAN model with optional pretrained FlickrHQ weights for 1024x1024 image generation', 'build a DCGAN model with optional pretrained FashionGen cloth weights for image generation', 'test a GAN model by feeding random noise vectors and getting smoothed generator output', 'train a GAN model by calling optimizeParameters with real input data in a loop', 'run a GAN training job for PGAN, StyleGAN, or DCGAN models with a config file', 'resume GAN training from an existing checkpoint in the output directory', 'run GAN training with all visualizations disabled for headless environments', 'run GAN training using a numpy-based visualizer for SLURM cluster environments', 'review the getTrainer function that dynamically loads PGAN, StyleGAN, or DCGAN trainer modules']
+```
+
+Usage
+
+```
+{'run_GAN_training': 'run a GAN training job for PGAN, StyleGAN, or DCGAN models with a config file', 'run_training_with_checkpoint': 'resume GAN training from an existing checkpoint in the output directory', 'run_training_no_visualization': 'run GAN training with all visualizations disabled for headless environments', 'run_training_numpy_visualizer': 'run GAN training using a numpy-based visualizer for SLURM cluster environments', 'review_getTrainer': 'review the getTrainer function that dynamically loads PGAN, StyleGAN, or DCGAN trainer modules'}
 ```
 

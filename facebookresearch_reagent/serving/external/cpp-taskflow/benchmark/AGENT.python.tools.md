@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/reagent
+- repo_uri: https://github.com/facebookresearch/reagent
+
+## File: facebookresearch_reagent/serving/external/cpp-taskflow/benchmark/regression.py
+
+Prompts
+
+```
+['run benchmark regression tests comparing tf, tbb, and omp methods across multiple thread counts', 'run a benchmark target with a specific method and thread count, then analyze min max avg statistics', 'plot benchmark results for wavefront or graph_traversal across thread counts and save to result.png', 'analyze a list of Y values and print their min, max, and average statistics', 'run the regression CLI with -b wavefront -t 1 2 4 -m tf tbb omp -r 3']
+```
+
+Usage
+
+```
+{'run_benchmark_regression': 'run benchmark regression tests comparing tf, tbb, and omp methods across multiple thread counts', 'run_benchmark_with_analyze': 'run a benchmark target with a specific method and thread count, then analyze min max avg statistics', 'plot_benchmark_results': 'plot benchmark results for wavefront or graph_traversal across thread counts and save to result.png', 'analyze_statistics': 'analyze a list of Y values and print their min, max, and average statistics', 'run_benchmark_cli': 'run the regression CLI with -b wavefront -t 1 2 4 -m tf tbb omp -r 3'}
+```
+

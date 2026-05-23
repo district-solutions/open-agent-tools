@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/stopes
+- repo_uri: https://github.com/facebookresearch/stopes
+
+## File: facebookresearch_stopes/stopes/speech/examples/notebook.py
+
+Prompts
+
+```
+['plot a waveform and spectrogram from a PyTorch audio tensor using matplotlib', 'play mono or stereo audio from a PyTorch waveform tensor in a Jupyter notebook', 'review the plot_waveform_and_specgram function that visualizes audio waveforms and spectrograms', 'review the play_audio function that plays audio tensors in IPython notebooks', 'refactor the play_audio function to support more than two audio channels']
+```
+
+Usage
+
+```
+{'plot_waveform_and_specgram': 'plot a waveform and spectrogram from a PyTorch audio tensor using matplotlib', 'play_audio': 'play mono or stereo audio from a PyTorch waveform tensor in a Jupyter notebook', 'review_plot_waveform_and_specgram': 'review the plot_waveform_and_specgram function that visualizes audio waveforms and spectrograms', 'review_play_audio': 'review the play_audio function that plays audio tensors in IPython notebooks', 'refactor_play_audio': 'refactor the play_audio function to support more than two audio channels'}
+```
+

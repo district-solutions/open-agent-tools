@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/torchbeast
+- repo_uri: https://github.com/facebookresearch/torchbeast
+
+## File: facebookresearch_torchbeast/third_party/grpc/src/python/grpcio_tests/tests/channelz/_channelz_servicer_test.py
+
+Prompts
+
+```
+['test the gRPC channelz servicer by running ChannelzServicerTest unit tests with unittest', 'test GetTopChannels channelz API by verifying channel count and pagination end flag', 'test GetChannel channelz API to verify calls_started, calls_succeeded, and calls_failed counters', 'test GetSubchannel channelz API to verify subchannel call metrics match parent channel metrics', 'test GetServers and GetServer channelz APIs to verify server call counters and listen sockets']
+```
+
+Usage
+
+```
+{'test_channelz_servicer': 'test the gRPC channelz servicer by running ChannelzServicerTest unit tests with unittest', 'test_get_top_channels': 'test GetTopChannels channelz API by verifying channel count and pagination end flag', 'test_get_channel_stats': 'test GetChannel channelz API to verify calls_started, calls_succeeded, and calls_failed counters', 'test_get_subchannel_stats': 'test GetSubchannel channelz API to verify subchannel call metrics match parent channel metrics', 'test_get_server_stats': 'test GetServers and GetServer channelz APIs to verify server call counters and listen sockets'}
+```
+

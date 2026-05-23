@@ -1,0 +1,61 @@
+# Agent Python Tools
+
+- repo: facebookresearch/torchbeast
+- repo_uri: https://github.com/facebookresearch/torchbeast
+
+## File: facebookresearch_torchbeast/third_party/grpc/src/python/grpcio_tests/tests/_loader.py
+
+Prompts
+
+```
+['create a Loader instance and call loadTestsFromNames with a list of module names to build a test suite with coverage tracking', 'use the Loader walk_packages method to discover and load tests from all modules in a given package path', 'call visit_module on a Loader instance to add tests from a single module matching the _test naming pattern to the suite', 'use iterate_suite_cases to recursively yield all TestCase objects from a nested unittest TestSuite', 'review the Loader class which collects unittest test modules matching the _test regex pattern into a single TestSuite with coverage instrumentation', 'create a CaseResult namedtuple to store test case results with id, name, kind, stdout, stderr, skip_reason, and traceback fields', 'use CaseResult.updated to get a new validated CaseResult with selected fields updated while preserving others', 'create an AugmentedResult instance to track test case results with stdout, stderr, and detailed CaseResult objects beyond standard unittest', 'create a TerminalResult to run tests with colored terminal output and per-test coverage tracking via coverage.py', 'generate a Jenkins-compatible JUnit XML ElementTree from an AugmentedResult for CI test reporting', 'run a test suite using the Runner class with optional dedicated threads for each test case', 'capture stdout or stderr output by using CaptureFile as a context manager around test execution', 'create an AugmentedCase namedtuple wrapping a unittest TestCase with a unique UUID identifier', 'skip specific tests by calling skip_tests on the Runner with a list of test ID substrings', 'review the Runner class signal handlers for SIGINT, SIGBUS, SIGABRT, SIGFPE, SIGILL, and SIGPIPE', 'run the sys_path_to_site_dir_hack function to parse .pth files in the Bazel runtime environment', 'test the sys_path_to_site_dir_hack function to verify it adds sys.path items as site directories', 'review the sys_path_to_site_dir_hack function that monkey patches Bazel namespace package resolution', 'summarize the sys_path_to_site_dir_hack function used to force .pth file parsing in Bazel', 'refactor the sys_path_to_site_dir_hack function to improve how it filters existing sys.path items']
+```
+
+Usage
+
+```
+{'load_tests_from_names': 'create a Loader instance and call loadTestsFromNames with a list of module names to build a test suite with coverage tracking', 'walk_packages': 'use the Loader walk_packages method to discover and load tests from all modules in a given package path', 'visit_module': 'call visit_module on a Loader instance to add tests from a single module matching the _test naming pattern to the suite', 'iterate_suite_cases': 'use iterate_suite_cases to recursively yield all TestCase objects from a nested unittest TestSuite', 'review_Loader_class': 'review the Loader class which collects unittest test modules matching the _test regex pattern into a single TestSuite with coverage instrumentation'}
+```
+
+## File: facebookresearch_torchbeast/third_party/grpc/src/python/grpcio_tests/tests/_result.py
+
+Prompts
+
+```
+['create a Loader instance and call loadTestsFromNames with a list of module names to build a test suite with coverage tracking', 'use the Loader walk_packages method to discover and load tests from all modules in a given package path', 'call visit_module on a Loader instance to add tests from a single module matching the _test naming pattern to the suite', 'use iterate_suite_cases to recursively yield all TestCase objects from a nested unittest TestSuite', 'review the Loader class which collects unittest test modules matching the _test regex pattern into a single TestSuite with coverage instrumentation', 'create a CaseResult namedtuple to store test case results with id, name, kind, stdout, stderr, skip_reason, and traceback fields', 'use CaseResult.updated to get a new validated CaseResult with selected fields updated while preserving others', 'create an AugmentedResult instance to track test case results with stdout, stderr, and detailed CaseResult objects beyond standard unittest', 'create a TerminalResult to run tests with colored terminal output and per-test coverage tracking via coverage.py', 'generate a Jenkins-compatible JUnit XML ElementTree from an AugmentedResult for CI test reporting', 'run a test suite using the Runner class with optional dedicated threads for each test case', 'capture stdout or stderr output by using CaptureFile as a context manager around test execution', 'create an AugmentedCase namedtuple wrapping a unittest TestCase with a unique UUID identifier', 'skip specific tests by calling skip_tests on the Runner with a list of test ID substrings', 'review the Runner class signal handlers for SIGINT, SIGBUS, SIGABRT, SIGFPE, SIGILL, and SIGPIPE', 'run the sys_path_to_site_dir_hack function to parse .pth files in the Bazel runtime environment', 'test the sys_path_to_site_dir_hack function to verify it adds sys.path items as site directories', 'review the sys_path_to_site_dir_hack function that monkey patches Bazel namespace package resolution', 'summarize the sys_path_to_site_dir_hack function used to force .pth file parsing in Bazel', 'refactor the sys_path_to_site_dir_hack function to improve how it filters existing sys.path items']
+```
+
+Usage
+
+```
+{'create_CaseResult': 'create a CaseResult namedtuple to store test case results with id, name, kind, stdout, stderr, skip_reason, and traceback fields', 'use_CaseResult_updated': 'use CaseResult.updated to get a new validated CaseResult with selected fields updated while preserving others', 'create_AugmentedResult': 'create an AugmentedResult instance to track test case results with stdout, stderr, and detailed CaseResult objects beyond standard unittest', 'create_TerminalResult': 'create a TerminalResult to run tests with colored terminal output and per-test coverage tracking via coverage.py', 'generate_jenkins_junit_xml': 'generate a Jenkins-compatible JUnit XML ElementTree from an AugmentedResult for CI test reporting'}
+```
+
+## File: facebookresearch_torchbeast/third_party/grpc/src/python/grpcio_tests/tests/_runner.py
+
+Prompts
+
+```
+['create a Loader instance and call loadTestsFromNames with a list of module names to build a test suite with coverage tracking', 'use the Loader walk_packages method to discover and load tests from all modules in a given package path', 'call visit_module on a Loader instance to add tests from a single module matching the _test naming pattern to the suite', 'use iterate_suite_cases to recursively yield all TestCase objects from a nested unittest TestSuite', 'review the Loader class which collects unittest test modules matching the _test regex pattern into a single TestSuite with coverage instrumentation', 'create a CaseResult namedtuple to store test case results with id, name, kind, stdout, stderr, skip_reason, and traceback fields', 'use CaseResult.updated to get a new validated CaseResult with selected fields updated while preserving others', 'create an AugmentedResult instance to track test case results with stdout, stderr, and detailed CaseResult objects beyond standard unittest', 'create a TerminalResult to run tests with colored terminal output and per-test coverage tracking via coverage.py', 'generate a Jenkins-compatible JUnit XML ElementTree from an AugmentedResult for CI test reporting', 'run a test suite using the Runner class with optional dedicated threads for each test case', 'capture stdout or stderr output by using CaptureFile as a context manager around test execution', 'create an AugmentedCase namedtuple wrapping a unittest TestCase with a unique UUID identifier', 'skip specific tests by calling skip_tests on the Runner with a list of test ID substrings', 'review the Runner class signal handlers for SIGINT, SIGBUS, SIGABRT, SIGFPE, SIGILL, and SIGPIPE', 'run the sys_path_to_site_dir_hack function to parse .pth files in the Bazel runtime environment', 'test the sys_path_to_site_dir_hack function to verify it adds sys.path items as site directories', 'review the sys_path_to_site_dir_hack function that monkey patches Bazel namespace package resolution', 'summarize the sys_path_to_site_dir_hack function used to force .pth file parsing in Bazel', 'refactor the sys_path_to_site_dir_hack function to improve how it filters existing sys.path items']
+```
+
+Usage
+
+```
+{'run_test_suite_with_runner': 'run a test suite using the Runner class with optional dedicated threads for each test case', 'capture_stdout_stderr_with_capturefile': 'capture stdout or stderr output by using CaptureFile as a context manager around test execution', 'create_augmented_case_with_uuid': 'create an AugmentedCase namedtuple wrapping a unittest TestCase with a unique UUID identifier', 'skip_tests_in_runner': 'skip specific tests by calling skip_tests on the Runner with a list of test ID substrings', 'review_runner_signal_handlers': 'review the Runner class signal handlers for SIGINT, SIGBUS, SIGABRT, SIGFPE, SIGILL, and SIGPIPE'}
+```
+
+## File: facebookresearch_torchbeast/third_party/grpc/src/python/grpcio_tests/tests/bazel_namespace_package_hack.py
+
+Prompts
+
+```
+['create a Loader instance and call loadTestsFromNames with a list of module names to build a test suite with coverage tracking', 'use the Loader walk_packages method to discover and load tests from all modules in a given package path', 'call visit_module on a Loader instance to add tests from a single module matching the _test naming pattern to the suite', 'use iterate_suite_cases to recursively yield all TestCase objects from a nested unittest TestSuite', 'review the Loader class which collects unittest test modules matching the _test regex pattern into a single TestSuite with coverage instrumentation', 'create a CaseResult namedtuple to store test case results with id, name, kind, stdout, stderr, skip_reason, and traceback fields', 'use CaseResult.updated to get a new validated CaseResult with selected fields updated while preserving others', 'create an AugmentedResult instance to track test case results with stdout, stderr, and detailed CaseResult objects beyond standard unittest', 'create a TerminalResult to run tests with colored terminal output and per-test coverage tracking via coverage.py', 'generate a Jenkins-compatible JUnit XML ElementTree from an AugmentedResult for CI test reporting', 'run a test suite using the Runner class with optional dedicated threads for each test case', 'capture stdout or stderr output by using CaptureFile as a context manager around test execution', 'create an AugmentedCase namedtuple wrapping a unittest TestCase with a unique UUID identifier', 'skip specific tests by calling skip_tests on the Runner with a list of test ID substrings', 'review the Runner class signal handlers for SIGINT, SIGBUS, SIGABRT, SIGFPE, SIGILL, and SIGPIPE', 'run the sys_path_to_site_dir_hack function to parse .pth files in the Bazel runtime environment', 'test the sys_path_to_site_dir_hack function to verify it adds sys.path items as site directories', 'review the sys_path_to_site_dir_hack function that monkey patches Bazel namespace package resolution', 'summarize the sys_path_to_site_dir_hack function used to force .pth file parsing in Bazel', 'refactor the sys_path_to_site_dir_hack function to improve how it filters existing sys.path items']
+```
+
+Usage
+
+```
+{'run_sys_path_to_site_dir_hack': 'run the sys_path_to_site_dir_hack function to parse .pth files in the Bazel runtime environment', 'test_sys_path_to_site_dir_hack': 'test the sys_path_to_site_dir_hack function to verify it adds sys.path items as site directories', 'review_sys_path_to_site_dir_hack': 'review the sys_path_to_site_dir_hack function that monkey patches Bazel namespace package resolution', 'summarize_sys_path_to_site_dir_hack': 'summarize the sys_path_to_site_dir_hack function used to force .pth file parsing in Bazel', 'refactor_sys_path_to_site_dir_hack': 'refactor the sys_path_to_site_dir_hack function to improve how it filters existing sys.path items'}
+```
+

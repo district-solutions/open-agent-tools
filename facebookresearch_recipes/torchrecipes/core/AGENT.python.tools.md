@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/recipes
+- repo_uri: https://github.com/facebookresearch/recipes
+
+## File: facebookresearch_recipes/torchrecipes/core/base_train_app.py
+
+Prompts
+
+```
+['subclass BaseTrainApp and call train() to fit a PyTorch Lightning module with automatic checkpointing and logging', 'subclass BaseTrainApp and call test() to evaluate a trained Lightning module on a test dataset', 'subclass BaseTrainApp and call predict() to run inference with a trained Lightning module', 'override get_callbacks() in a BaseTrainApp subclass to add custom PyTorch Lightning callbacks to the trainer', 'override get_default_model_checkpoint() in a BaseTrainApp subclass to configure custom checkpoint saving behavior']
+```
+
+Usage
+
+```
+{'train_model_with_BaseTrainApp': 'subclass BaseTrainApp and call train() to fit a PyTorch Lightning module with automatic checkpointing and logging', 'test_model_with_BaseTrainApp': 'subclass BaseTrainApp and call test() to evaluate a trained Lightning module on a test dataset', 'predict_with_BaseTrainApp': 'subclass BaseTrainApp and call predict() to run inference with a trained Lightning module', 'customize_callbacks_in_BaseTrainApp': 'override get_callbacks() in a BaseTrainApp subclass to add custom PyTorch Lightning callbacks to the trainer', 'customize_checkpoint_in_BaseTrainApp': 'override get_default_model_checkpoint() in a BaseTrainApp subclass to configure custom checkpoint saving behavior'}
+```
+

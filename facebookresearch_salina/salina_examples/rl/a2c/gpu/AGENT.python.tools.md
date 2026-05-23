@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/salina
+- repo_uri: https://github.com/facebookresearch/salina
+
+## File: facebookresearch_salina/salina_examples/rl/a2c/gpu/main.py
+
+Prompts
+
+```
+['run the A2C reinforcement learning algorithm on CartPole-v0 using Hydra config and Salina agents', 'create a ProbAgent neural network that outputs action probabilities from environment observations', 'create an ActionAgent that samples stochastic or greedy actions from action probability distributions', 'create a CriticAgent neural network that estimates state values from environment observations', 'run the main entry point that spawns multiprocessing workers and executes A2C training via Hydra']
+```
+
+Usage
+
+```
+{'run_a2c_training': 'run the A2C reinforcement learning algorithm on CartPole-v0 using Hydra config and Salina agents', 'create_ProbAgent': 'create a ProbAgent neural network that outputs action probabilities from environment observations', 'create_ActionAgent': 'create an ActionAgent that samples stochastic or greedy actions from action probability distributions', 'create_CriticAgent': 'create a CriticAgent neural network that estimates state values from environment observations', 'run_main_entry': 'run the main entry point that spawns multiprocessing workers and executes A2C training via Hydra'}
+```
+

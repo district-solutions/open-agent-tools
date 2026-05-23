@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/responsiblenlp
+- repo_uri: https://github.com/facebookresearch/responsiblenlp
+
+## File: facebookresearch_responsiblenlp/robbie/runner.py
+
+Prompts
+
+```
+['run predictions on a dataset using a predictor and score results with a metric', 'create a Runner instance with a dataset, predictor, metric, and result directory path', 'run predictions with a maximum sample count by setting the num_samples parameter', 'review the Runner class that orchestrates prediction generation, scoring, and result logging', 'summarize the run method that generates predictions, scores them, and writes JSON output']
+```
+
+Usage
+
+```
+{'run_predictions_and_score': 'run predictions on a dataset using a predictor and score results with a metric', 'create_runner_instance': 'create a Runner instance with a dataset, predictor, metric, and result directory path', 'limit_prediction_samples': 'run predictions with a maximum sample count by setting the num_samples parameter', 'review_runner_class': 'review the Runner class that orchestrates prediction generation, scoring, and result logging', 'summarize_runner_run_method': 'summarize the run method that generates predictions, scores them, and writes JSON output'}
+```
+

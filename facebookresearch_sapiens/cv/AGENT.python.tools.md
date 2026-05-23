@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/sapiens
+- repo_uri: https://github.com/facebookresearch/sapiens
+
+## File: facebookresearch_sapiens/cv/setup.py
+
+Prompts
+
+```
+['build the sapiens_cv package with pip install using setup.py and optional CUDA extensions', 'parse a requirements.txt file into a list of package dependency strings with or without version specs', 'choose between a primary and secondary package requirement based on whether the primary is already installed', 'get compiled C++ CUDA MLU MPS or NPU extensions for the sapiens_cv package based on available hardware', 'get the package version string by reading and executing the mmcv version.py file']
+```
+
+Usage
+
+```
+{'build_sapiens_cv_package': 'build the sapiens_cv package with pip install using setup.py and optional CUDA extensions', 'parse_requirements_file': 'parse a requirements.txt file into a list of package dependency strings with or without version specs', 'choose_requirement_primary_secondary': 'choose between a primary and secondary package requirement based on whether the primary is already installed', 'get_extensions_cuda_mlu_mps': 'get compiled C++ CUDA MLU MPS or NPU extensions for the sapiens_cv package based on available hardware', 'get_version_from_file': 'get the package version string by reading and executing the mmcv version.py file'}
+```
+

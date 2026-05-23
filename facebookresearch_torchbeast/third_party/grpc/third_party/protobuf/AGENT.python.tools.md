@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/torchbeast
+- repo_uri: https://github.com/facebookresearch/torchbeast
+
+## File: facebookresearch_torchbeast/third_party/grpc/third_party/protobuf/update_compatibility_version.py
+
+Prompts
+
+```
+['run the script to update LAST_RELEASED version in tests.sh to a new version number', 'run RewriteTextFile to apply a line-by-line transformation function to a text file', 'run ReplaceVersion to substitute the LAST_RELEASED value in a line with a new version string', 'review the RewriteTextFile function that reads a file, applies a rewriter function per line, and writes back', 'review the version validation logic that checks MAJOR.MINOR.MICRO format and optional RC version arguments']
+```
+
+Usage
+
+```
+{'run_update_compatibility_version': 'run the script to update LAST_RELEASED version in tests.sh to a new version number', 'run_rewrite_text_file': 'run RewriteTextFile to apply a line-by-line transformation function to a text file', 'run_replace_version': 'run ReplaceVersion to substitute the LAST_RELEASED value in a line with a new version string', 'review_rewrite_text_file': 'review the RewriteTextFile function that reads a file, applies a rewriter function per line, and writes back', 'review_version_validation': 'review the version validation logic that checks MAJOR.MINOR.MICRO format and optional RC version arguments'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/sapiens
+- repo_uri: https://github.com/facebookresearch/sapiens
+
+## File: facebookresearch_sapiens/pose/mmpose/engine/optim_wrappers/layer_decay_optim_wrapper.py
+
+Prompts
+
+```
+['build a LayerDecayOptimWrapperConstructor to apply layer-wise learning rate decay for a ViT model', 'create parameter groups with decay-scaled learning rates for each ViT backbone layer', 'test the get_num_layer_for_vit function to verify layer ID assignment for ViT parameter names', 'review the add_params method to understand how parameters are grouped by layer and weight decay', 'refactor the LayerDecayOptimWrapperConstructor to customize the layer_decay_rate and num_layers configuration']
+```
+
+Usage
+
+```
+{'build_layer_decay_optimizer': 'build a LayerDecayOptimWrapperConstructor to apply layer-wise learning rate decay for a ViT model', 'create_vit_layer_groups': 'create parameter groups with decay-scaled learning rates for each ViT backbone layer', 'test_get_num_layer_for_vit': 'test the get_num_layer_for_vit function to verify layer ID assignment for ViT parameter names', 'review_add_params_method': 'review the add_params method to understand how parameters are grouped by layer and weight decay', 'refactor_layer_decay_rate': 'refactor the LayerDecayOptimWrapperConstructor to customize the layer_decay_rate and num_layers configuration'}
+```
+

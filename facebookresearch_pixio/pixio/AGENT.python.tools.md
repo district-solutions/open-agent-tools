@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/pixio
+- repo_uri: https://github.com/facebookresearch/pixio
+
+## File: facebookresearch_pixio/pixio/pixio.py
+
+Prompts
+
+```
+['build a Pixio ViT-B/16 vision transformer model with 768 embedding dimensions and 12 transformer blocks', 'build a Pixio ViT-L/16 vision transformer model with 1024 embedding dimensions and 24 transformer blocks', 'build a Pixio ViT-H/16 vision transformer model with 1280 embedding dimensions and 32 transformer blocks', 'build a Pixio ViT-1B/16 vision transformer model with 1536 embedding dimensions and 48 transformer blocks', 'run forward pass on a PixioViT model to extract patch and cls tokens from specified transformer blocks']
+```
+
+Usage
+
+```
+{'build_pixio_vitb16_model': 'build a Pixio ViT-B/16 vision transformer model with 768 embedding dimensions and 12 transformer blocks', 'build_pixio_vitl16_model': 'build a Pixio ViT-L/16 vision transformer model with 1024 embedding dimensions and 24 transformer blocks', 'build_pixio_vith16_model': 'build a Pixio ViT-H/16 vision transformer model with 1280 embedding dimensions and 32 transformer blocks', 'build_pixio_vit1b16_model': 'build a Pixio ViT-1B/16 vision transformer model with 1536 embedding dimensions and 48 transformer blocks', 'run_pixio_vit_forward': 'run forward pass on a PixioViT model to extract patch and cls tokens from specified transformer blocks'}
+```
+

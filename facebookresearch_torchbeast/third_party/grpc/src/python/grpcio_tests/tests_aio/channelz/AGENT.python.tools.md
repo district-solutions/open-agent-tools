@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/torchbeast
+- repo_uri: https://github.com/facebookresearch/torchbeast
+
+## File: facebookresearch_torchbeast/third_party/grpc/src/python/grpcio_tests/tests_aio/channelz/channelz_servicer_test.py
+
+Prompts
+
+```
+['test the gRPC Channelz servicer to verify channel, server, subchannel, and socket metadata reporting', 'test channel call statistics by sending successful and failed unary RPCs and verifying calls_started, calls_succeeded, and calls_failed counters', 'test subchannel and socket statistics by verifying streams_started, messages_sent, and messages_received match RPC call counts', 'test streaming RPC calls and verify channelz reports correct streams_started, streams_succeeded, and message counts', 'test that querying non-existent server, channel, subchannel, or socket IDs returns NOT_FOUND status code']
+```
+
+Usage
+
+```
+{'test_channelz_servicer': 'test the gRPC Channelz servicer to verify channel, server, subchannel, and socket metadata reporting', 'test_channel_call_stats': 'test channel call statistics by sending successful and failed unary RPCs and verifying calls_started, calls_succeeded, and calls_failed counters', 'test_subchannel_socket_stats': 'test subchannel and socket statistics by verifying streams_started, messages_sent, and messages_received match RPC call counts', 'test_streaming_rpc_channelz': 'test streaming RPC calls and verify channelz reports correct streams_started, streams_succeeded, and message counts', 'test_invalid_channelz_queries': 'test that querying non-existent server, channel, subchannel, or socket IDs returns NOT_FOUND status code'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/reagent
+- repo_uri: https://github.com/facebookresearch/reagent
+
+## File: facebookresearch_reagent/reagent/ope/datasets/logged_dataset.py
+
+Prompts
+
+```
+['review the BanditsDataset abstract base class and its interface for logged bandit datasets', 'summarize the BanditsDataset ABC and its abstract methods for features, actions, and rewards', 'implement a concrete subclass of BanditsDataset that stores features, actions, and rewards as torch tensors', 'test a BanditsDataset subclass by verifying __len__, __getitem__, and property accessors return correct values', 'refactor the BanditsDataset properties to add lazy loading for features, actions, and rewards tensors']
+```
+
+Usage
+
+```
+{'review_BanditsDataset': 'review the BanditsDataset abstract base class and its interface for logged bandit datasets', 'summarize_BanditsDataset': 'summarize the BanditsDataset ABC and its abstract methods for features, actions, and rewards', 'implement_BanditsDataset': 'implement a concrete subclass of BanditsDataset that stores features, actions, and rewards as torch tensors', 'test_BanditsDataset_subclass': 'test a BanditsDataset subclass by verifying __len__, __getitem__, and property accessors return correct values', 'refactor_BanditsDataset_properties': 'refactor the BanditsDataset properties to add lazy loading for features, actions, and rewards tensors'}
+```
+

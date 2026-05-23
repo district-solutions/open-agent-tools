@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/sapiens
+- repo_uri: https://github.com/facebookresearch/sapiens
+
+## File: facebookresearch_sapiens/engine/mmengine/hub/hub.py
+
+Prompts
+
+```
+['get a Config object from an external package config path using get_config', 'get a Config with pretrained model path by calling get_config with pretrained=True', 'build a model from an external package config path using get_model', 'build a pretrained model by calling get_model with pretrained=True to load checkpoint weights', 'review the get_model function to understand how it builds models from external package configs']
+```
+
+Usage
+
+```
+{'get_config_from_package': 'get a Config object from an external package config path using get_config', 'get_config_with_pretrained': 'get a Config with pretrained model path by calling get_config with pretrained=True', 'get_model_from_package': 'build a model from an external package config path using get_model', 'get_model_with_pretrained': 'build a pretrained model by calling get_model with pretrained=True to load checkpoint weights', 'review_get_model': 'review the get_model function to understand how it builds models from external package configs'}
+```
+

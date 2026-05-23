@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/phyre
+- repo_uri: https://github.com/facebookresearch/phyre
+
+## File: facebookresearch_phyre/third-party/googletest/googlemock/scripts/gmock_doctor.py
+
+Prompts
+
+```
+['pipe compiler error messages into gmock_doctor.py via stdin to get plain English diagnoses', 'call Diagnose with a compiler error message string to get a list of human-readable Google Mock diagnoses', 'review the _GenericDiagnoser function that pattern matches compiler errors against regex rules to yield diagnoses', 'review the thirteen specific diagnoser functions like _NeedToReturnReferenceDiagnoser and _WrongMockMethodMacroDiagnoser', 'summarize the _COMMON_GMOCK_SYMBOLS list containing matchers, actions, cardinalities, and misc Google Mock symbols']
+```
+
+Usage
+
+```
+{'run_gmock_doctor': 'pipe compiler error messages into gmock_doctor.py via stdin to get plain English diagnoses', 'diagnose_gmock_errors': 'call Diagnose with a compiler error message string to get a list of human-readable Google Mock diagnoses', 'review_generic_diagnoser': 'review the _GenericDiagnoser function that pattern matches compiler errors against regex rules to yield diagnoses', 'review_specific_diagnosers': 'review the thirteen specific diagnoser functions like _NeedToReturnReferenceDiagnoser and _WrongMockMethodMacroDiagnoser', 'summarize_common_gmock_symbols': 'summarize the _COMMON_GMOCK_SYMBOLS list containing matchers, actions, cardinalities, and misc Google Mock symbols'}
+```
+

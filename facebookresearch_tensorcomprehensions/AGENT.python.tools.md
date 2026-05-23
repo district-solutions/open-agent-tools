@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/tensorcomprehensions
+- repo_uri: https://github.com/facebookresearch/tensorcomprehensions
+
+## File: facebookresearch_tensorcomprehensions/setup.py
+
+Prompts
+
+```
+['run the setup.py install command to install the tensor_comprehensions package', 'review the setup.py configuration for the tensor_comprehensions package dependencies and version', 'refactor the custom install class in setup.py to add post-install steps', 'summarize the package metadata including name version author and dependencies', 'build the tensor_comprehensions package using TC_BUILD_VERSION and TC_BUILD_NUMBER env vars']
+```
+
+Usage
+
+```
+{'run_setup_install': 'run the setup.py install command to install the tensor_comprehensions package', 'review_setup_config': 'review the setup.py configuration for the tensor_comprehensions package dependencies and version', 'refactor_install_class': 'refactor the custom install class in setup.py to add post-install steps', 'summarize_package_metadata': 'summarize the package metadata including name version author and dependencies', 'build_package_with_env': 'build the tensor_comprehensions package using TC_BUILD_VERSION and TC_BUILD_NUMBER env vars'}
+```
+

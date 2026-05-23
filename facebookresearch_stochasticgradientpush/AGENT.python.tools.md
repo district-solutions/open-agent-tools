@@ -1,0 +1,33 @@
+# Agent Python Tools
+
+- repo: facebookresearch/stochasticgradientpush
+- repo_uri: https://github.com/facebookresearch/stochastic_gradient_push
+
+## File: facebookresearch_stochasticgradientpush/gossip_sgd.py
+
+Prompts
+
+```
+['run distributed ResNet-50 training on ImageNet using gossip SGD or AllReduce with configurable graph topologies', 'train a ResNet-50 model using gossip-based parameter synchronization with push-sum or push-pull strategies', 'validate the trained model on the ImageNet validation set and report top-1 and top-5 accuracy', 'initialize a ResNet-50 model with Gaussian weights and zero-initialized batch norm gamma for residual blocks', 'update the optimizer learning rate with linear warmup for the first 5 epochs and exponential decay at scheduled epochs', 'run distributed gossip SGD training of ResNet-50 on ImageNet with bilateral communication', 'update the learning rate with linear warmup for 5 epochs and exponential decay at epochs 30, 60, 80']
+```
+
+Usage
+
+```
+{'run_distributed_training': 'run distributed ResNet-50 training on ImageNet using gossip SGD or AllReduce with configurable graph topologies', 'train_model_with_gossip': 'train a ResNet-50 model using gossip-based parameter synchronization with push-sum or push-pull strategies', 'validate_model_accuracy': 'validate the trained model on the ImageNet validation set and report top-1 and top-5 accuracy', 'init_resnet50_model': 'initialize a ResNet-50 model with Gaussian weights and zero-initialized batch norm gamma for residual blocks', 'update_learning_rate': 'update the optimizer learning rate with linear warmup for the first 5 epochs and exponential decay at scheduled epochs'}
+```
+
+## File: facebookresearch_stochasticgradientpush/gossip_sgd_adpsgd.py
+
+Prompts
+
+```
+['run distributed ResNet-50 training on ImageNet using gossip SGD or AllReduce with configurable graph topologies', 'train a ResNet-50 model using gossip-based parameter synchronization with push-sum or push-pull strategies', 'validate the trained model on the ImageNet validation set and report top-1 and top-5 accuracy', 'initialize a ResNet-50 model with Gaussian weights and zero-initialized batch norm gamma for residual blocks', 'update the optimizer learning rate with linear warmup for the first 5 epochs and exponential decay at scheduled epochs', 'run distributed gossip SGD training of ResNet-50 on ImageNet with bilateral communication', 'update the learning rate with linear warmup for 5 epochs and exponential decay at epochs 30, 60, 80']
+```
+
+Usage
+
+```
+{'run_gossip_sgd_training': 'run distributed gossip SGD training of ResNet-50 on ImageNet with bilateral communication', 'train_model_with_gossip': 'train a ResNet-50 model using asynchronous distributed parallel stochastic gradient descent with gossip', 'validate_model_accuracy': 'validate the trained model on the ImageNet validation set and report top-1 and top-5 accuracy', 'update_learning_rate_schedule': 'update the learning rate with linear warmup for 5 epochs and exponential decay at epochs 30, 60, 80', 'init_resnet50_model': 'initialize a ResNet-50 model with Gaussian weights and zero-initialized batch norm gamma in residual blocks'}
+```
+

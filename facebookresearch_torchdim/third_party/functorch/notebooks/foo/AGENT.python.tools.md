@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/torchdim
+- repo_uri: https://github.com/facebookresearch/torchdim
+
+## File: facebookresearch_torchdim/third_party/functorch/notebooks/foo/module.py
+
+Prompts
+
+```
+['create an FxModule instance that loads a state dict from foo/state_dict.pt', 'run the FxModule forward pass with primals and tangents tensors to get transformed output', 'test the FxModule forward method by passing torch tensors for primals and tangents', 'review the FxModule forward method to understand the cos sin neg mul ATen operation chain', 'refactor the FxModule to use standard torch functions instead of torch.ops.aten calls']
+```
+
+Usage
+
+```
+{'create_FxModule': 'create an FxModule instance that loads a state dict from foo/state_dict.pt', 'run_FxModule_forward': 'run the FxModule forward pass with primals and tangents tensors to get transformed output', 'test_FxModule': 'test the FxModule forward method by passing torch tensors for primals and tangents', 'review_FxModule_forward': 'review the FxModule forward method to understand the cos sin neg mul ATen operation chain', 'refactor_FxModule': 'refactor the FxModule to use standard torch functions instead of torch.ops.aten calls'}
+```
+

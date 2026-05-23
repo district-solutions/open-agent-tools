@@ -3,12 +3,26 @@
 - repo: facebookresearch/eb/jepa
 - repo_uri: https://github.com/facebookresearch/eb_jepa
 
+## File: facebookresearch_eb_jepa/tests/planning_test.py
+
+Prompts
+
+```
+['test the CEMPlanner class with mock unroll and objective functions to verify planning output', 'test the ReprTargetDistMPCObjective class to calculate distance costs between predicted and target representations', 'test the GCAgent class with mocked model and planner to verify goal setting and action selection', 'test the main_eval function with mocked environment and agent to verify evaluation results', 'test full planning integration with a dummy model to verify end-to-end action selection', 'run all JEPA unroll output format tests for parallel and autoregressive modes', 'create a Video JEPA model with ResNet5 encoder and ResUNet predictor for Moving MNIST', 'create an Action-Conditioned Video JEPA model with ImpalaEncoder and RNNPredictor for two_rooms', 'test the JEPA unroll function parallel mode output format with return_all_steps', 'test the JEPA unroll function autoregressive mode tensor shapes for planning and MPC', 'run pytest to verify VICRegLoss std computation equals HingeStdLoss with centering', 'run pytest to verify VICRegLoss covariance computation equals CovarianceLoss class output', 'run pytest to verify VICRegLoss decomposes into HingeStdLoss plus CovarianceLoss plus MSE', 'run pytest to verify VCLoss output structure and coefficient weighting on 5D tensors', 'run pytest to verify refactored VICRegLoss matches original inline implementation']
+```
+
+Usage
+
+```
+{'test_CEMPlanner': 'test the CEMPlanner class with mock unroll and objective functions to verify planning output', 'test_ReprTargetDistMPCObjective': 'test the ReprTargetDistMPCObjective class to calculate distance costs between predicted and target representations', 'test_GCAgent': 'test the GCAgent class with mocked model and planner to verify goal setting and action selection', 'test_main_eval': 'test the main_eval function with mocked environment and agent to verify evaluation results', 'test_planning_integration': 'test full planning integration with a dummy model to verify end-to-end action selection'}
+```
+
 ## File: facebookresearch_eb_jepa/tests/test_jepa_output_formats.py
 
 Prompts
 
 ```
-['run all JEPA unroll output format tests for parallel and autoregressive modes', 'create a Video JEPA model with ResNet5 encoder and ResUNet predictor for Moving MNIST', 'create an Action-Conditioned Video JEPA model with ImpalaEncoder and RNNPredictor for two_rooms', 'test the JEPA unroll function parallel mode output format with return_all_steps', 'test the JEPA unroll function autoregressive mode tensor shapes for planning and MPC', 'run pytest to verify VICRegLoss std computation equals HingeStdLoss with centering', 'run pytest to verify VICRegLoss covariance computation equals CovarianceLoss class output', 'run pytest to verify VICRegLoss decomposes into HingeStdLoss plus CovarianceLoss plus MSE', 'run pytest to verify VCLoss output structure and coefficient weighting on 5D tensors', 'run pytest to verify refactored VICRegLoss matches original inline implementation']
+['test the CEMPlanner class with mock unroll and objective functions to verify planning output', 'test the ReprTargetDistMPCObjective class to calculate distance costs between predicted and target representations', 'test the GCAgent class with mocked model and planner to verify goal setting and action selection', 'test the main_eval function with mocked environment and agent to verify evaluation results', 'test full planning integration with a dummy model to verify end-to-end action selection', 'run all JEPA unroll output format tests for parallel and autoregressive modes', 'create a Video JEPA model with ResNet5 encoder and ResUNet predictor for Moving MNIST', 'create an Action-Conditioned Video JEPA model with ImpalaEncoder and RNNPredictor for two_rooms', 'test the JEPA unroll function parallel mode output format with return_all_steps', 'test the JEPA unroll function autoregressive mode tensor shapes for planning and MPC', 'run pytest to verify VICRegLoss std computation equals HingeStdLoss with centering', 'run pytest to verify VICRegLoss covariance computation equals CovarianceLoss class output', 'run pytest to verify VICRegLoss decomposes into HingeStdLoss plus CovarianceLoss plus MSE', 'run pytest to verify VCLoss output structure and coefficient weighting on 5D tensors', 'run pytest to verify refactored VICRegLoss matches original inline implementation']
 ```
 
 Usage
@@ -22,7 +36,7 @@ Usage
 Prompts
 
 ```
-['run all JEPA unroll output format tests for parallel and autoregressive modes', 'create a Video JEPA model with ResNet5 encoder and ResUNet predictor for Moving MNIST', 'create an Action-Conditioned Video JEPA model with ImpalaEncoder and RNNPredictor for two_rooms', 'test the JEPA unroll function parallel mode output format with return_all_steps', 'test the JEPA unroll function autoregressive mode tensor shapes for planning and MPC', 'run pytest to verify VICRegLoss std computation equals HingeStdLoss with centering', 'run pytest to verify VICRegLoss covariance computation equals CovarianceLoss class output', 'run pytest to verify VICRegLoss decomposes into HingeStdLoss plus CovarianceLoss plus MSE', 'run pytest to verify VCLoss output structure and coefficient weighting on 5D tensors', 'run pytest to verify refactored VICRegLoss matches original inline implementation']
+['test the CEMPlanner class with mock unroll and objective functions to verify planning output', 'test the ReprTargetDistMPCObjective class to calculate distance costs between predicted and target representations', 'test the GCAgent class with mocked model and planner to verify goal setting and action selection', 'test the main_eval function with mocked environment and agent to verify evaluation results', 'test full planning integration with a dummy model to verify end-to-end action selection', 'run all JEPA unroll output format tests for parallel and autoregressive modes', 'create a Video JEPA model with ResNet5 encoder and ResUNet predictor for Moving MNIST', 'create an Action-Conditioned Video JEPA model with ImpalaEncoder and RNNPredictor for two_rooms', 'test the JEPA unroll function parallel mode output format with return_all_steps', 'test the JEPA unroll function autoregressive mode tensor shapes for planning and MPC', 'run pytest to verify VICRegLoss std computation equals HingeStdLoss with centering', 'run pytest to verify VICRegLoss covariance computation equals CovarianceLoss class output', 'run pytest to verify VICRegLoss decomposes into HingeStdLoss plus CovarianceLoss plus MSE', 'run pytest to verify VCLoss output structure and coefficient weighting on 5D tensors', 'run pytest to verify refactored VICRegLoss matches original inline implementation']
 ```
 
 Usage

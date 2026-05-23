@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/physicslm4
+- repo_uri: https://github.com/facebookresearch/physicslm4
+
+## File: facebookresearch_physicslm4/data-synthetic-pretrain/Mano/mano.py
+
+Prompts
+
+```
+['generate a synthetic arithmetic dataset sample using encode_pure_arithmetic with a seeded random number generator', 'encode a pure arithmetic expression into tokenized text with modular arithmetic operations', 'configure the arithmetic operations by setting ttype to asm for addition subtraction and multiplication', 'set the value_mod parameter to control the modular arithmetic range for generated expressions', 'toggle knowledge_augment to enable or disable dual operator ID encoding in arithmetic samples']
+```
+
+Usage
+
+```
+{'generate_synthetic_arithmetic_dataset': 'generate a synthetic arithmetic dataset sample using encode_pure_arithmetic with a seeded random number generator', 'encode_arithmetic_expression': 'encode a pure arithmetic expression into tokenized text with modular arithmetic operations', 'configure_arithmetic_operations': 'configure the arithmetic operations by setting ttype to asm for addition subtraction and multiplication', 'set_modulus_value': 'set the value_mod parameter to control the modular arithmetic range for generated expressions', 'toggle_knowledge_augmentation': 'toggle knowledge_augment to enable or disable dual operator ID encoding in arithmetic samples'}
+```
+

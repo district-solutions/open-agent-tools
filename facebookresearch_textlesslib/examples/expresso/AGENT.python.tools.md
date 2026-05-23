@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/textlesslib
+- repo_uri: https://github.com/facebookresearch/textlesslib
+
+## File: facebookresearch_textlesslib/examples/expresso/classify_audio.py
+
+Prompts
+
+```
+['run audio classification on a directory of wav files using a pretrained model checkpoint', 'run audio classification on files listed in a TSV manifest with a pretrained model', 'run audio classification and compute accuracy by comparing predictions against a label file', 'load a pretrained audio classification model, feature extractor, and label names from a checkpoint path', 'predict the audio class label and logits for a single audio file or numpy array']
+```
+
+Usage
+
+```
+{'run_classify_audio_cli': 'run audio classification on a directory of wav files using a pretrained model checkpoint', 'run_classify_audio_from_tsv': 'run audio classification on files listed in a TSV manifest with a pretrained model', 'run_classify_audio_with_accuracy': 'run audio classification and compute accuracy by comparing predictions against a label file', 'load_classification_model': 'load a pretrained audio classification model, feature extractor, and label names from a checkpoint path', 'predict_audio': 'predict the audio class label and logits for a single audio file or numpy array'}
+```
+

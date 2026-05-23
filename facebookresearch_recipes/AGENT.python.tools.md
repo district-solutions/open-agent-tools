@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/recipes
+- repo_uri: https://github.com/facebookresearch/recipes
+
+## File: facebookresearch_recipes/setup.py
+
+Prompts
+
+```
+['build a python wheel for the torchrecipes package using setuptools and the setup.py script', 'get the package version from version.py and append the current git commit SHA', 'clean build artifacts by removing files matching patterns in .gitignore before running distutils clean', 'install development dependencies listed in dev-requirements.txt using the extras_require dev option', 'setup the torchrecipes package with metadata, requirements, and custom clean command for PyPI distribution']
+```
+
+Usage
+
+```
+{'build_torchrecipes_wheel': 'build a python wheel for the torchrecipes package using setuptools and the setup.py script', 'get_version_from_git': 'get the package version from version.py and append the current git commit SHA', 'clean_build_artifacts': 'clean build artifacts by removing files matching patterns in .gitignore before running distutils clean', 'install_dev_dependencies': 'install development dependencies listed in dev-requirements.txt using the extras_require dev option', 'setup_pytorch_recipes_package': 'setup the torchrecipes package with metadata, requirements, and custom clean command for PyPI distribution'}
+```
+

@@ -1,0 +1,16 @@
+{
+    "note": "This file is a pure MMDetection configuration file containing only dictionary literals, list literals, and variable assignments. It defines a DDQ-DETR model with a Swin-Large backbone for COCO object detection. There are no functions, classes, or callable APIs — it is not a module that can be invoked via a CLI. No example statements are applicable.",
+    "config_description": "DDQ-DETR 4-scale with Swin-Large backbone, 30-epoch COCO detection training config",
+    "key_components": [
+        "DDQDETR model with 900 queries and dense query selection (dense_topk_ratio=1.5)",
+        "SwinTransformer-Large backbone pretrained on ImageNet-22K",
+        "ChannelMapper neck projecting [384, 768, 1536] channels to 256 across 4 scales",
+        "6-layer DeformableDetrTransformerEncoder and 6-layer DDQTransformerDecoder",
+        "DDQDETRHead with FocalLoss, L1Loss, and GIoULoss for 80 COCO classes",
+        "Data noise (DN) training with label_noise_scale=0.5 and box_noise_scale=1.0",
+        "HungarianAssigner for bipartite matching during training",
+        "Multi-scale training pipeline with RandomChoiceResize and RandomCrop augmentations",
+        "AdamW optimizer (lr=2e-4) with gradient clipping and backbone lr_mult=0.05",
+        "30-epoch schedule with LinearLR warmup and MultiStepLR decay at epochs 20 and 26"
+    ]
+}

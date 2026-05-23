@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/riemannian-fm
+- repo_uri: https://github.com/facebookresearch/riemannian-fm
+
+## File: facebookresearch_riemannian-fm/evaluate.py
+
+Prompts
+
+```
+['run negative log-likelihood evaluation on a trained model checkpoint using the CLI nll command', 'run the visualize command to generate visualizations from a model checkpoint on test data', 'run the visualize command with the --all flag to visualize the entire test dataset', 'load a trained manifold flow matching model and its config from a checkpoint file', 'test a model using PyTorch Lightning trainer to compute test metrics on a test loader']
+```
+
+Usage
+
+```
+{'run_nll_evaluation': 'run negative log-likelihood evaluation on a trained model checkpoint using the CLI nll command', 'run_visualize_command': 'run the visualize command to generate visualizations from a model checkpoint on test data', 'run_visualize_all_data': 'run the visualize command with the --all flag to visualize the entire test dataset', 'load_model_from_checkpoint': 'load a trained manifold flow matching model and its config from a checkpoint file', 'test_model_with_lightning': 'test a model using PyTorch Lightning trainer to compute test metrics on a test loader'}
+```
+

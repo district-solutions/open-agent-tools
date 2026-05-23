@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/recipes
+- repo_uri: https://github.com/facebookresearch/recipes
+
+## File: facebookresearch_recipes/torchrecipes/text/doc_classification/transform/doc_classification_text_transform.py
+
+Prompts
+
+```
+['create a DocClassificationTextTransform instance with vocab and SentencePiece model paths for document classification', 'build a sequential transform pipeline with SentencePiece tokenization, vocab lookup, truncation, and special tokens', 'run a forward pass on a batch dict to tokenize text and produce padded token ID tensors', 'review the DocClassificationTextTransform init to configure vocab path, SPM model, text column, and pad index', 'test the DocClassificationTextTransform forward method with a batch containing text strings and verify token tensor output']
+```
+
+Usage
+
+```
+{'create_DocClassificationTextTransform': 'create a DocClassificationTextTransform instance with vocab and SentencePiece model paths for document classification', 'build_transform_pipeline': 'build a sequential transform pipeline with SentencePiece tokenization, vocab lookup, truncation, and special tokens', 'run_forward_pass': 'run a forward pass on a batch dict to tokenize text and produce padded token ID tensors', 'review_DocClassificationTextTransform_init': 'review the DocClassificationTextTransform init to configure vocab path, SPM model, text column, and pad index', 'test_DocClassificationTextTransform_forward': 'test the DocClassificationTextTransform forward method with a batch containing text strings and verify token tensor output'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/partnr-planner
+- repo_uri: https://github.com/facebookresearch/partnr-planner
+
+## File: facebookresearch_partnr-planner/third_party/transformers-CFG/tests/test_parsing/test_parsing.py
+
+Prompts
+
+```
+['test the parse_name function to extract rule names and bodies from CFG grammar rules', 'test the remove_leading_white_space function to strip leading whitespace and comments from grammar rules', 'test the _parse_rhs_char_ranges function to parse character range expressions like [0-9] into encoding', 'test the _parse_rhs_literal_string function to parse quoted literal strings including escape sequences and unicode', 'test the parse_rhs function to parse complete right-hand sides of CFG grammar rules with alternatives and concatenation']
+```
+
+Usage
+
+```
+{'test_parse_name': 'test the parse_name function to extract rule names and bodies from CFG grammar rules', 'test_remove_leading_white_space': 'test the remove_leading_white_space function to strip leading whitespace and comments from grammar rules', 'test_parse_rhs_char_ranges': 'test the _parse_rhs_char_ranges function to parse character range expressions like [0-9] into encoding', 'test_parse_rhs_literal_string': 'test the _parse_rhs_literal_string function to parse quoted literal strings including escape sequences and unicode', 'test_parse_rhs': 'test the parse_rhs function to parse complete right-hand sides of CFG grammar rules with alternatives and concatenation'}
+```
+

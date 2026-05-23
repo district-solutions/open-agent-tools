@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/stopes
+- repo_uri: https://github.com/facebookresearch/stopes
+
+## File: facebookresearch_stopes/stopes/hub.py
+
+Prompts
+
+```
+['load a YAML config file from local filesystem, git config store, or public config store by name', 'instantiate a SpeechTokenizer to bundle a speech encoder, unit conversion, and vocoder for audio encoding', 'instantiate a forced aligner using Wav2Vec2, UnitY2, or UnitY2F2 from a config file path', 'register an OmegaConf resolver that returns the resolved hub root path string', 'review the load_config function to understand its three-tier fallback order for loading YAML configs']
+```
+
+Usage
+
+```
+{'load_config_yaml': 'load a YAML config file from local filesystem, git config store, or public config store by name', 'create_speech_tokenizer': 'instantiate a SpeechTokenizer to bundle a speech encoder, unit conversion, and vocoder for audio encoding', 'build_forced_aligner': 'instantiate a forced aligner using Wav2Vec2, UnitY2, or UnitY2F2 from a config file path', 'register_hub_root_resolver': 'register an OmegaConf resolver that returns the resolved hub root path string', 'review_load_config_fallback_order': 'review the load_config function to understand its three-tier fallback order for loading YAML configs'}
+```
+

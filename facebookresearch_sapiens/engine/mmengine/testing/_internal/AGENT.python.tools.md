@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/sapiens
+- repo_uri: https://github.com/facebookresearch/sapiens
+
+## File: facebookresearch_sapiens/engine/mmengine/testing/_internal/distributed.py
+
+Prompts
+
+```
+['build a python module that inherits MultiProcessTestCase to run distributed tests across multiple subprocesses', 'spawn N subprocesses using _spawn_processes to execute a distributed test method in parallel', 'run a test method in a subprocess via run_test which handles exceptions and communicates errors to the parent process', 'join all spawned subprocesses with _join_processes and check their return codes for errors or timeouts', 'review the TestSkip NamedTuple and TEST_SKIPS dictionary to understand distributed test skip conditions and exit codes']
+```
+
+Usage
+
+```
+{'build_distributed_test': 'build a python module that inherits MultiProcessTestCase to run distributed tests across multiple subprocesses', 'spawn_processes_distributed_test': 'spawn N subprocesses using _spawn_processes to execute a distributed test method in parallel', 'run_test_in_subprocess': 'run a test method in a subprocess via run_test which handles exceptions and communicates errors to the parent process', 'join_distributed_processes': 'join all spawned subprocesses with _join_processes and check their return codes for errors or timeouts', 'review_TestSkip_namedtuple': 'review the TestSkip NamedTuple and TEST_SKIPS dictionary to understand distributed test skip conditions and exit codes'}
+```
+

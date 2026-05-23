@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/salina
+- repo_uri: https://github.com/facebookresearch/salina
+
+## File: facebookresearch_salina/salina_examples/rl/dqn/double_dqn/dqn.py
+
+Prompts
+
+```
+['run the double DQN training loop with a Q agent, logger, and Hydra config', 'soft update target network parameters using a tau interpolation factor', 'create a ReplayBuffer with a specified size for storing experience tuples', 'compute the double Q-learning temporal difference using RLF.doubleqlearning_temporal_difference', 'instantiate a Q agent and logger from Hydra config and run DQN training']
+```
+
+Usage
+
+```
+{'run_double_dqn_training': 'run the double DQN training loop with a Q agent, logger, and Hydra config', 'soft_update_target_network': 'soft update target network parameters using a tau interpolation factor', 'create_replay_buffer': 'create a ReplayBuffer with a specified size for storing experience tuples', 'compute_double_q_td': 'compute the double Q-learning temporal difference using RLF.doubleqlearning_temporal_difference', 'instantiate_q_agent': 'instantiate a Q agent and logger from Hydra config and run DQN training'}
+```
+

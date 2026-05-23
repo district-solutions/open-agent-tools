@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/pearl
+- repo_uri: https://github.com/facebookresearch/pearl
+
+## File: facebookresearch_pearl/pearl/user_envs/envs/bandit.py
+
+Prompts
+
+```
+['create a MeanVarBanditEnv instance with an optional seed for reproducible bandit environment testing', 'run a step in the MeanVarBanditEnv by passing action 0 or 1 to get reward and observation', 'reset the MeanVarBanditEnv to its initial state and get the starting observation', 'test if safe RL algorithms prefer lower variance returns using the MeanVarBanditEnv', 'get the current observation from the MeanVarBanditEnv as a numpy array with one-hot encoding']
+```
+
+Usage
+
+```
+{'create_MeanVarBanditEnv': 'create a MeanVarBanditEnv instance with an optional seed for reproducible bandit environment testing', 'run_MeanVarBanditEnv_step': 'run a step in the MeanVarBanditEnv by passing action 0 or 1 to get reward and observation', 'reset_MeanVarBanditEnv': 'reset the MeanVarBanditEnv to its initial state and get the starting observation', 'test_MeanVarBanditEnv_variance': 'test if safe RL algorithms prefer lower variance returns using the MeanVarBanditEnv', 'get_MeanVarBanditEnv_observation': 'get the current observation from the MeanVarBanditEnv as a numpy array with one-hot encoding'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/pearl
+- repo_uri: https://github.com/facebookresearch/pearl
+
+## File: facebookresearch_pearl/pearl/replay_buffers/examples/single_transition_replay_buffer.py
+
+Prompts
+
+```
+['create a SingleTransitionReplayBuffer instance to store a single RL transition tuple', 'push a state, action, reward, and next state transition into the replay buffer', 'sample a single transition from the replay buffer with batch size 1', 'move a torch tensor object to the default device using to_default_device_if_tensor', 'review the SingleTransition tuple type definition for state, action, reward, and terminal flags']
+```
+
+Usage
+
+```
+{'create_single_transition_replay_buffer': 'create a SingleTransitionReplayBuffer instance to store a single RL transition tuple', 'push_transition_to_buffer': 'push a state, action, reward, and next state transition into the replay buffer', 'sample_from_buffer': 'sample a single transition from the replay buffer with batch size 1', 'move_tensor_to_default_device': 'move a torch tensor object to the default device using to_default_device_if_tensor', 'review_single_transition_type': 'review the SingleTransition tuple type definition for state, action, reward, and terminal flags'}
+```
+

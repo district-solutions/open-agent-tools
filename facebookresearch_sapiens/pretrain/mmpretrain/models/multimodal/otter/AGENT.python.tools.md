@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/sapiens
+- repo_uri: https://github.com/facebookresearch/sapiens
+
+## File: facebookresearch_sapiens/pretrain/mmpretrain/models/multimodal/otter/otter.py
+
+Prompts
+
+```
+['build an Otter multimodal model with vision encoder, language encoder, and tokenizer configs', 'build an Otter model configured for image captioning task with custom prompt templates', 'build an Otter model configured for visual question answering task with generation config', 'review the Otter class post_process method that decodes outputs and assigns predictions to data samples', 'refactor the Otter class __init__ to support additional special tokens or custom data preprocessors']
+```
+
+Usage
+
+```
+{'build_otter_model': 'build an Otter multimodal model with vision encoder, language encoder, and tokenizer configs', 'build_otter_for_captioning': 'build an Otter model configured for image captioning task with custom prompt templates', 'build_otter_for_vqa': 'build an Otter model configured for visual question answering task with generation config', 'review_Otter_post_process': 'review the Otter class post_process method that decodes outputs and assigns predictions to data samples', 'refactor_Otter_init': 'refactor the Otter class __init__ to support additional special tokens or custom data preprocessors'}
+```
+

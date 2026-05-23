@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/partnr-planner
+- repo_uri: https://github.com/facebookresearch/partnr-planner
+
+## File: facebookresearch_partnr-planner/third_party/habitat-lab/habitat-hitl/habitat_hitl/scripts/test_episode_save_files.py
+
+Prompts
+
+```
+['run the script to validate pickle and JSON episode save files contain matching data', 'run the CLI with --load-filepath-base to compare episode save files from a filepath base', 'test the approx_equal function to compare two values with a configurable epsilon tolerance', 'refactor the approx_equal function to support additional types like dicts or sets', 'review the get_comp_value function that converts NumPy scalars to standard Python scalar types']
+```
+
+Usage
+
+```
+{'test_episode_save_files': 'run the script to validate pickle and JSON episode save files contain matching data', 'run_test_episode_save_files_cli': 'run the CLI with --load-filepath-base to compare episode save files from a filepath base', 'test_approx_equal': 'test the approx_equal function to compare two values with a configurable epsilon tolerance', 'refactor_approx_equal': 'refactor the approx_equal function to support additional types like dicts or sets', 'review_get_comp_value': 'review the get_comp_value function that converts NumPy scalars to standard Python scalar types'}
+```
+

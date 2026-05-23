@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/spot-sim2real
+- repo_uri: https://github.com/facebookresearch/spot-sim2real
+
+## File: facebookresearch_spot-sim2real/spot_rl_experiments/spot_rl/skills/atomic_skills.py
+
+Prompts
+
+```
+['execute the Navigation skill to move the Spot robot to a target waypoint specified as x, y, theta', 'execute the Pick skill to gaze at and pick a named target object using the Spot robot gripper', 'execute the Place skill to move the robot arm and place an object at a target x, y, z position', 'execute the OpenCloseDrawer skill to open or close a drawer using the Spot robot arm and gripper', 'review the Skill base class interface defining reset_skill, execute, split_action, and update_and_check_status methods for all atomic skills']
+```
+
+Usage
+
+```
+{'execute_navigation_skill': 'execute the Navigation skill to move the Spot robot to a target waypoint specified as x, y, theta', 'execute_pick_skill': 'execute the Pick skill to gaze at and pick a named target object using the Spot robot gripper', 'execute_place_skill': 'execute the Place skill to move the robot arm and place an object at a target x, y, z position', 'execute_open_close_drawer_skill': 'execute the OpenCloseDrawer skill to open or close a drawer using the Spot robot arm and gripper', 'review_skill_base_class': 'review the Skill base class interface defining reset_skill, execute, split_action, and update_and_check_status methods for all atomic skills'}
+```
+

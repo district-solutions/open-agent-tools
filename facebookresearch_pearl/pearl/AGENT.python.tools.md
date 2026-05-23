@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/pearl
+- repo_uri: https://github.com/facebookresearch/pearl
+
+## File: facebookresearch_pearl/pearl/pearl_agent.py
+
+Prompts
+
+```
+['create a PearlAgent instance with a policy learner and optional safety module', 'call act on a PearlAgent to select an action from the filtered safe action space', 'call observe on a PearlAgent to record an action result and update the subjective state', 'call learn on a PearlAgent to train the policy learner and safety module from the replay buffer', 'compare two PearlAgent instances to find differences in policy learner, safety module, replay buffer, and history summarization']
+```
+
+Usage
+
+```
+{'create_PearlAgent': 'create a PearlAgent instance with a policy learner and optional safety module', 'act_PearlAgent': 'call act on a PearlAgent to select an action from the filtered safe action space', 'observe_PearlAgent': 'call observe on a PearlAgent to record an action result and update the subjective state', 'learn_PearlAgent': 'call learn on a PearlAgent to train the policy learner and safety module from the replay buffer', 'compare_PearlAgent': 'compare two PearlAgent instances to find differences in policy learner, safety module, replay buffer, and history summarization'}
+```
+

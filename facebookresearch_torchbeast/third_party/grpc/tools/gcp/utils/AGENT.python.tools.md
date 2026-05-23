@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/torchbeast
+- repo_uri: https://github.com/facebookresearch/torchbeast
+
+## File: facebookresearch_torchbeast/third_party/grpc/tools/gcp/utils/big_query_utils.py
+
+Prompts
+
+```
+['create a BigQuery service object by authenticating with Google Cloud application default credentials', 'create a new BigQuery dataset in a specified GCP project using the BigQuery service object', 'create a BigQuery table with a schema of field names, types, and descriptions in a dataset', 'create a date-partitioned BigQuery table with a 30-day partition expiration policy', 'insert a list of row dictionaries into a BigQuery table and report any insert errors']
+```
+
+Usage
+
+```
+{'create_bigquery_service': 'create a BigQuery service object by authenticating with Google Cloud application default credentials', 'create_dataset': 'create a new BigQuery dataset in a specified GCP project using the BigQuery service object', 'create_table': 'create a BigQuery table with a schema of field names, types, and descriptions in a dataset', 'create_partitioned_table': 'create a date-partitioned BigQuery table with a 30-day partition expiration policy', 'insert_rows': 'insert a list of row dictionaries into a BigQuery table and report any insert errors'}
+```
+

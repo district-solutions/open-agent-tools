@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/salina
+- repo_uri: https://github.com/facebookresearch/salina
+
+## File: facebookresearch_salina/salina/agents/rl/rewardtogo.py
+
+Prompts
+
+```
+['create a RewardToGoAgent instance to compute cumulative reward-to-go values from stored episode data', 'run the forward method to compute reward-to-go and timesteps-to-go tensors from workspace data', 'build a RewardToGoAgent with custom input and output tensor key names for reward and done signals', 'review the RewardToGoAgent forward method masking logic that zeros out rewards after episode termination', 'test the RewardToGoAgent forward method to verify correct cumulative reward computation with scaling factor']
+```
+
+Usage
+
+```
+{'create_reward_to_go_agent': 'create a RewardToGoAgent instance to compute cumulative reward-to-go values from stored episode data', 'run_forward_compute_reward_to_go': 'run the forward method to compute reward-to-go and timesteps-to-go tensors from workspace data', 'build_agent_with_custom_keys': 'build a RewardToGoAgent with custom input and output tensor key names for reward and done signals', 'review_reward_masking_logic': 'review the RewardToGoAgent forward method masking logic that zeros out rewards after episode termination', 'test_cumulative_reward_calculation': 'test the RewardToGoAgent forward method to verify correct cumulative reward computation with scaling factor'}
+```
+

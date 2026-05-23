@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/reagent
+- repo_uri: https://github.com/facebookresearch/reagent
+
+## File: facebookresearch_reagent/reagent/test/mab/test_mab.py
+
+Prompts
+
+```
+['run get_arm_indices to map batch arm IDs to their indices in the full arm list', 'run place_values_at_indices to scatter tensor values into a zero-filled tensor at specified indices', 'run reindex_multiple_tensors to reindex batch observation tensors to the full arm ID space', 'run randomized_argmax to randomly select one index among all argmax values in a tensor', 'run compare_bandit_algos to evaluate and compare regret trajectories of multiple bandit algorithms']
+```
+
+Usage
+
+```
+{'run_get_arm_indices': 'run get_arm_indices to map batch arm IDs to their indices in the full arm list', 'run_place_values_at_indices': 'run place_values_at_indices to scatter tensor values into a zero-filled tensor at specified indices', 'run_reindex_multiple_tensors': 'run reindex_multiple_tensors to reindex batch observation tensors to the full arm ID space', 'run_randomized_argmax': 'run randomized_argmax to randomly select one index among all argmax values in a tensor', 'run_compare_bandit_algos': 'run compare_bandit_algos to evaluate and compare regret trajectories of multiple bandit algorithms'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fast3r
+- repo_uri: https://github.com/facebookresearch/fast3r
+
+## File: facebookresearch_fast3r/fast3r/croco/pretrain.py
+
+Prompts
+
+```
+['run the CroCo pre-training script with argparse CLI to train a model on image pairs dataset', 'build an argparse parser with model dataset training and path arguments for CroCo pre-training', 'run a single training epoch with model criterion data loader optimizer and gradient accumulation', 'create a CroCoNet model using eval on the model string argument with MaskedMSE criterion', 'review the main training loop that handles distributed setup checkpointing logging and epoch iteration']
+```
+
+Usage
+
+```
+{'run_pretrain_croco': 'run the CroCo pre-training script with argparse CLI to train a model on image pairs dataset', 'build_args_parser': 'build an argparse parser with model dataset training and path arguments for CroCo pre-training', 'run_train_one_epoch': 'run a single training epoch with model criterion data loader optimizer and gradient accumulation', 'create_croco_model': 'create a CroCoNet model using eval on the model string argument with MaskedMSE criterion', 'review_main_training_loop': 'review the main training loop that handles distributed setup checkpointing logging and epoch iteration'}
+```
+

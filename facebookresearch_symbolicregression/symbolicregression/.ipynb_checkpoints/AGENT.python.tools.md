@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/symbolicregression
+- repo_uri: https://github.com/facebookresearch/symbolicregression
+
+## File: facebookresearch_symbolicregression/symbolicregression/.ipynb_checkpoints/trainer-checkpoint.py
+
+Prompts
+
+```
+['create a Trainer instance with modules, environment, and params to manage symbolic regression model training', 'reload a saved model checkpoint from a .pth file to resume training from a previous state', 'optimize the model by computing gradients, clipping norms, and stepping the optimizer with AMP support', 'save the best model checkpoint based on validation metrics like accuracy or loss scores', 'run an encoder-decoder training step that embeds data, encodes features, decodes predictions, and computes loss']
+```
+
+Usage
+
+```
+{'create_Trainer': 'create a Trainer instance with modules, environment, and params to manage symbolic regression model training', 'reload_checkpoint_Trainer': 'reload a saved model checkpoint from a .pth file to resume training from a previous state', 'optimize_loss': 'optimize the model by computing gradients, clipping norms, and stepping the optimizer with AMP support', 'save_best_model': 'save the best model checkpoint based on validation metrics like accuracy or loss scores', 'enc_dec_step': 'run an encoder-decoder training step that embeds data, encodes features, decodes predictions, and computes loss'}
+```
+

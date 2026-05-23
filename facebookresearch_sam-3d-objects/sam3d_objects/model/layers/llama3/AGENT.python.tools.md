@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/sam-3d-objects
+- repo_uri: https://github.com/facebookresearch/sam-3d-objects
+
+## File: facebookresearch_sam-3d-objects/sam3d_objects/model/layers/llama3/ff.py
+
+Prompts
+
+```
+['create a FeedForward layer with specified input dimension and hidden dimension for Llama3 architecture', 'build a FeedForward layer using a custom ffn_dim_multiplier to scale the hidden dimension', 'test the FeedForward forward pass by passing a tensor through w1, silu, w3, and w2', 'refactor the FeedForward layer to skip the w2 projection by setting skip_w2 to True', 'review the FeedForward layer gated activation pattern using silu(w1(x)) multiplied by w3(x)']
+```
+
+Usage
+
+```
+{'create_feedforward_layer': 'create a FeedForward layer with specified input dimension and hidden dimension for Llama3 architecture', 'build_feedforward_with_multiplier': 'build a FeedForward layer using a custom ffn_dim_multiplier to scale the hidden dimension', 'test_feedforward_forward_pass': 'test the FeedForward forward pass by passing a tensor through w1, silu, w3, and w2', 'refactor_feedforward_skip_w2': 'refactor the FeedForward layer to skip the w2 projection by setting skip_w2 to True', 'review_feedforward_gated_activation': 'review the FeedForward layer gated activation pattern using silu(w1(x)) multiplied by w3(x)'}
+```
+

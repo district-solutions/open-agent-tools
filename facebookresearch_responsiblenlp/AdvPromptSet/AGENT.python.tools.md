@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/responsiblenlp
+- repo_uri: https://github.com/facebookresearch/responsiblenlp
+
+## File: facebookresearch_responsiblenlp/AdvPromptSet/utils.py
+
+Prompts
+
+```
+['create a function to preprocess the Jigsaw Toxic Comment Classification Challenge dataset from a data folder', 'build a function to preprocess the Jigsaw Unintended Bias in Toxicity Classification dataset and split by group labels', 'run a function to combine and preprocess all Jigsaw datasets by removing long rows and augmenting rows', 'create a function to filter a dataframe by removing comments that are too short, too long, or lack letters', 'build a function to split comments into sentences and augment the dataframe with individual sentence rows']
+```
+
+Usage
+
+```
+{'process_jigsaw_1': 'create a function to preprocess the Jigsaw Toxic Comment Classification Challenge dataset from a data folder', 'process_jigsaw_2': 'build a function to preprocess the Jigsaw Unintended Bias in Toxicity Classification dataset and split by group labels', 'process_jigsaw_all': 'run a function to combine and preprocess all Jigsaw datasets by removing long rows and augmenting rows', 'remove_long_rows': 'create a function to filter a dataframe by removing comments that are too short, too long, or lack letters', 'augment_row': 'build a function to split comments into sentences and augment the dataframe with individual sentence rows'}
+```
+

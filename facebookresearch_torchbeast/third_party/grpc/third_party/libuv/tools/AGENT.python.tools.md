@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/torchbeast
+- repo_uri: https://github.com/facebookresearch/torchbeast
+
+## File: facebookresearch_torchbeast/third_party/grpc/third_party/libuv/tools/make_dist_html.py
+
+Prompts
+
+```
+['run the script to generate an HTML page listing libuv release tags with download links', 'create a function that parses a version tag string like v1.44.0 into a list of integers', 'create a function that extracts the major and minor version numbers from a tag string', 'build an HTML table row with links for a given release tag including tarball and gpg', 'generate grouped HTML tables partitioning version groups into columns of four']
+```
+
+Usage
+
+```
+{'run_make_dist_html': 'run the script to generate an HTML page listing libuv release tags with download links', 'create_version_parser': 'create a function that parses a version tag string like v1.44.0 into a list of integers', 'create_major_minor_extractor': 'create a function that extracts the major and minor version numbers from a tag string', 'build_html_row_for_tag': 'build an HTML table row with links for a given release tag including tarball and gpg', 'generate_html_groups': 'generate grouped HTML tables partitioning version groups into columns of four'}
+```
+

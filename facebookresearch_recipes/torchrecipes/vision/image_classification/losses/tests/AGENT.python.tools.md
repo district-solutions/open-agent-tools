@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/recipes
+- repo_uri: https://github.com/facebookresearch/recipes
+
+## File: facebookresearch_recipes/torchrecipes/vision/image_classification/losses/tests/test_soft_target_cross_entropy_loss.py
+
+Prompts
+
+```
+['test SoftTargetCrossEntropyLoss with mean reduction on outputs and soft targets', 'test SoftTargetCrossEntropyLoss with none reduction returning per-sample loss values', 'test SoftTargetCrossEntropyLoss with integer class labels auto converted to one-hot', 'test SoftTargetCrossEntropyLoss with normalize_targets disabled for unnormalized targets', 'test that SoftTargetCrossEntropyLoss can be deep copied and produces identical results']
+```
+
+Usage
+
+```
+{'test_soft_target_cross_entropy_mean': 'test SoftTargetCrossEntropyLoss with mean reduction on outputs and soft targets', 'test_soft_target_cross_entropy_none_reduction': 'test SoftTargetCrossEntropyLoss with none reduction returning per-sample loss values', 'test_soft_target_cross_entropy_integer_label': 'test SoftTargetCrossEntropyLoss with integer class labels auto converted to one-hot', 'test_unnormalized_soft_target_cross_entropy': 'test SoftTargetCrossEntropyLoss with normalize_targets disabled for unnormalized targets', 'test_deep_copy_loss': 'test that SoftTargetCrossEntropyLoss can be deep copied and produces identical results'}
+```
+

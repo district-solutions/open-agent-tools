@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fashionplus
+- repo_uri: https://github.com/facebookresearch/fashionplus
+
+## File: facebookresearch_fashionplus/generation/decode_clothing_features.py
+
+Prompts
+
+```
+['generate a clothing image from a decoded mask and texture features using a pix2pixHD model', 'initialize GAN test options for human parsing with configurable label directories and resize settings', 'run image generation using Lab color space for stable output from decoded clothing masks', 'load average feature values from a pickle file to fill missing parts during image generation', 'save a generated clothing image with or without background removal to the specified output path']
+```
+
+Usage
+
+```
+{'generate_image_from_decoded_mask': 'generate a clothing image from a decoded mask and texture features using a pix2pixHD model', 'initialize_gan_test_options': 'initialize GAN test options for human parsing with configurable label directories and resize settings', 'run_generation_with_lab_color': 'run image generation using Lab color space for stable output from decoded clothing masks', 'load_average_features_for_generation': 'load average feature values from a pickle file to fill missing parts during image generation', 'save_generated_image_with_background': 'save a generated clothing image with or without background removal to the specified output path'}
+```
+

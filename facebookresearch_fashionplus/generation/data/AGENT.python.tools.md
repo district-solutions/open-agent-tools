@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fashionplus
+- repo_uri: https://github.com/facebookresearch/fashionplus
+
+## File: facebookresearch_fashionplus/generation/data/base_dataset.py
+
+Prompts
+
+```
+['use the PadToSquare class to pad a PIL Image to a square shape with configurable fill values', 'use the BaseDataset class as a base for custom PyTorch dataset implementations with name and initialize methods', 'call get_params to compute random crop position and flip parameters for image augmentation', 'call get_transform to build a Compose transform pipeline with resize, crop, flip, and normalization steps', 'call normalize to get a torchvision Normalize transform that centers pixel values around zero', 'create a dataset using CreateDataset with an opt object specifying name and initialization parameters', 'initialize a CustomDatasetDataLoader with an opt object to set up batch size and workers', 'load data by calling load_data on an initialized CustomDatasetDataLoader instance', 'get the effective dataset length from CustomDatasetDataLoader respecting max_dataset_size', 'create a PickleDataset for demo/fashion/humanparsing tasks or AlignedDataset for other tasks', 'create a data loader by calling CreateDataLoader with an opt config object', 'create a data loader for fashion datasets using CreateDataLoader with opt.name set to fashion', 'create a data loader for demo datasets using CreateDataLoader with opt.name set to demo', 'load data by calling the load_data method on a CustomDatasetDataLoader instance', 'get the dataset length by calling len on a CustomDatasetDataLoader instance', 'create an ImageFolder dataset from a directory of images with optional transforms', 'build a list of image file paths by recursively scanning a directory', 'test whether a given filename has a supported image file extension', 'review the default_loader function that opens an image path and converts it to RGB', 'refactor the ImageFolder __getitem__ method to customize how images are loaded and returned', 'initialize a PickleDataset with dataroot, phase, label_dir, and img_dir options for fashion image generation', 'get a dataset item by index returning label maps, instance maps, and real image tensors', 'crop a PIL image to a person bounding box using left, upper, right, lower coordinates', 'remove background from an image by zeroing pixels where the label mask equals zero', 'convert a PIL RGB image to LAB color space using OpenCV for color-aware fashion generation']
+```
+
+Usage
+
+```
+{'use_PadToSquare_class': 'use the PadToSquare class to pad a PIL Image to a square shape with configurable fill values', 'use_BaseDataset_class': 'use the BaseDataset class as a base for custom PyTorch dataset implementations with name and initialize methods', 'call_get_params': 'call get_params to compute random crop position and flip parameters for image augmentation', 'call_get_transform': 'call get_transform to build a Compose transform pipeline with resize, crop, flip, and normalization steps', 'call_normalize': 'call normalize to get a torchvision Normalize transform that centers pixel values around zero'}
+```
+
+## File: facebookresearch_fashionplus/generation/data/custom_dataset_data_loader.py
+
+Prompts
+
+```
+['use the PadToSquare class to pad a PIL Image to a square shape with configurable fill values', 'use the BaseDataset class as a base for custom PyTorch dataset implementations with name and initialize methods', 'call get_params to compute random crop position and flip parameters for image augmentation', 'call get_transform to build a Compose transform pipeline with resize, crop, flip, and normalization steps', 'call normalize to get a torchvision Normalize transform that centers pixel values around zero', 'create a dataset using CreateDataset with an opt object specifying name and initialization parameters', 'initialize a CustomDatasetDataLoader with an opt object to set up batch size and workers', 'load data by calling load_data on an initialized CustomDatasetDataLoader instance', 'get the effective dataset length from CustomDatasetDataLoader respecting max_dataset_size', 'create a PickleDataset for demo/fashion/humanparsing tasks or AlignedDataset for other tasks', 'create a data loader by calling CreateDataLoader with an opt config object', 'create a data loader for fashion datasets using CreateDataLoader with opt.name set to fashion', 'create a data loader for demo datasets using CreateDataLoader with opt.name set to demo', 'load data by calling the load_data method on a CustomDatasetDataLoader instance', 'get the dataset length by calling len on a CustomDatasetDataLoader instance', 'create an ImageFolder dataset from a directory of images with optional transforms', 'build a list of image file paths by recursively scanning a directory', 'test whether a given filename has a supported image file extension', 'review the default_loader function that opens an image path and converts it to RGB', 'refactor the ImageFolder __getitem__ method to customize how images are loaded and returned', 'initialize a PickleDataset with dataroot, phase, label_dir, and img_dir options for fashion image generation', 'get a dataset item by index returning label maps, instance maps, and real image tensors', 'crop a PIL image to a person bounding box using left, upper, right, lower coordinates', 'remove background from an image by zeroing pixels where the label mask equals zero', 'convert a PIL RGB image to LAB color space using OpenCV for color-aware fashion generation']
+```
+
+Usage
+
+```
+{'create_dataset_from_opt': 'create a dataset using CreateDataset with an opt object specifying name and initialization parameters', 'initialize_custom_data_loader': 'initialize a CustomDatasetDataLoader with an opt object to set up batch size and workers', 'load_data_from_loader': 'load data by calling load_data on an initialized CustomDatasetDataLoader instance', 'get_dataset_length': 'get the effective dataset length from CustomDatasetDataLoader respecting max_dataset_size', 'create_pickle_or_aligned_dataset': 'create a PickleDataset for demo/fashion/humanparsing tasks or AlignedDataset for other tasks'}
+```
+
+## File: facebookresearch_fashionplus/generation/data/data_loader.py
+
+Prompts
+
+```
+['use the PadToSquare class to pad a PIL Image to a square shape with configurable fill values', 'use the BaseDataset class as a base for custom PyTorch dataset implementations with name and initialize methods', 'call get_params to compute random crop position and flip parameters for image augmentation', 'call get_transform to build a Compose transform pipeline with resize, crop, flip, and normalization steps', 'call normalize to get a torchvision Normalize transform that centers pixel values around zero', 'create a dataset using CreateDataset with an opt object specifying name and initialization parameters', 'initialize a CustomDatasetDataLoader with an opt object to set up batch size and workers', 'load data by calling load_data on an initialized CustomDatasetDataLoader instance', 'get the effective dataset length from CustomDatasetDataLoader respecting max_dataset_size', 'create a PickleDataset for demo/fashion/humanparsing tasks or AlignedDataset for other tasks', 'create a data loader by calling CreateDataLoader with an opt config object', 'create a data loader for fashion datasets using CreateDataLoader with opt.name set to fashion', 'create a data loader for demo datasets using CreateDataLoader with opt.name set to demo', 'load data by calling the load_data method on a CustomDatasetDataLoader instance', 'get the dataset length by calling len on a CustomDatasetDataLoader instance', 'create an ImageFolder dataset from a directory of images with optional transforms', 'build a list of image file paths by recursively scanning a directory', 'test whether a given filename has a supported image file extension', 'review the default_loader function that opens an image path and converts it to RGB', 'refactor the ImageFolder __getitem__ method to customize how images are loaded and returned', 'initialize a PickleDataset with dataroot, phase, label_dir, and img_dir options for fashion image generation', 'get a dataset item by index returning label maps, instance maps, and real image tensors', 'crop a PIL image to a person bounding box using left, upper, right, lower coordinates', 'remove background from an image by zeroing pixels where the label mask equals zero', 'convert a PIL RGB image to LAB color space using OpenCV for color-aware fashion generation']
+```
+
+Usage
+
+```
+{'create_dataloader': 'create a data loader by calling CreateDataLoader with an opt config object', 'create_dataloader_for_fashion': 'create a data loader for fashion datasets using CreateDataLoader with opt.name set to fashion', 'create_dataloader_for_demo': 'create a data loader for demo datasets using CreateDataLoader with opt.name set to demo', 'load_data_from_dataloader': 'load data by calling the load_data method on a CustomDatasetDataLoader instance', 'get_dataloader_length': 'get the dataset length by calling len on a CustomDatasetDataLoader instance'}
+```
+
+## File: facebookresearch_fashionplus/generation/data/image_folder.py
+
+Prompts
+
+```
+['use the PadToSquare class to pad a PIL Image to a square shape with configurable fill values', 'use the BaseDataset class as a base for custom PyTorch dataset implementations with name and initialize methods', 'call get_params to compute random crop position and flip parameters for image augmentation', 'call get_transform to build a Compose transform pipeline with resize, crop, flip, and normalization steps', 'call normalize to get a torchvision Normalize transform that centers pixel values around zero', 'create a dataset using CreateDataset with an opt object specifying name and initialization parameters', 'initialize a CustomDatasetDataLoader with an opt object to set up batch size and workers', 'load data by calling load_data on an initialized CustomDatasetDataLoader instance', 'get the effective dataset length from CustomDatasetDataLoader respecting max_dataset_size', 'create a PickleDataset for demo/fashion/humanparsing tasks or AlignedDataset for other tasks', 'create a data loader by calling CreateDataLoader with an opt config object', 'create a data loader for fashion datasets using CreateDataLoader with opt.name set to fashion', 'create a data loader for demo datasets using CreateDataLoader with opt.name set to demo', 'load data by calling the load_data method on a CustomDatasetDataLoader instance', 'get the dataset length by calling len on a CustomDatasetDataLoader instance', 'create an ImageFolder dataset from a directory of images with optional transforms', 'build a list of image file paths by recursively scanning a directory', 'test whether a given filename has a supported image file extension', 'review the default_loader function that opens an image path and converts it to RGB', 'refactor the ImageFolder __getitem__ method to customize how images are loaded and returned', 'initialize a PickleDataset with dataroot, phase, label_dir, and img_dir options for fashion image generation', 'get a dataset item by index returning label maps, instance maps, and real image tensors', 'crop a PIL image to a person bounding box using left, upper, right, lower coordinates', 'remove background from an image by zeroing pixels where the label mask equals zero', 'convert a PIL RGB image to LAB color space using OpenCV for color-aware fashion generation']
+```
+
+Usage
+
+```
+{'create_imagefolder_dataset': 'create an ImageFolder dataset from a directory of images with optional transforms', 'build_make_dataset': 'build a list of image file paths by recursively scanning a directory', 'test_is_image_file': 'test whether a given filename has a supported image file extension', 'review_default_loader': 'review the default_loader function that opens an image path and converts it to RGB', 'refactor_imagefolder_getitem': 'refactor the ImageFolder __getitem__ method to customize how images are loaded and returned'}
+```
+
+## File: facebookresearch_fashionplus/generation/data/pickle_dataset.py
+
+Prompts
+
+```
+['use the PadToSquare class to pad a PIL Image to a square shape with configurable fill values', 'use the BaseDataset class as a base for custom PyTorch dataset implementations with name and initialize methods', 'call get_params to compute random crop position and flip parameters for image augmentation', 'call get_transform to build a Compose transform pipeline with resize, crop, flip, and normalization steps', 'call normalize to get a torchvision Normalize transform that centers pixel values around zero', 'create a dataset using CreateDataset with an opt object specifying name and initialization parameters', 'initialize a CustomDatasetDataLoader with an opt object to set up batch size and workers', 'load data by calling load_data on an initialized CustomDatasetDataLoader instance', 'get the effective dataset length from CustomDatasetDataLoader respecting max_dataset_size', 'create a PickleDataset for demo/fashion/humanparsing tasks or AlignedDataset for other tasks', 'create a data loader by calling CreateDataLoader with an opt config object', 'create a data loader for fashion datasets using CreateDataLoader with opt.name set to fashion', 'create a data loader for demo datasets using CreateDataLoader with opt.name set to demo', 'load data by calling the load_data method on a CustomDatasetDataLoader instance', 'get the dataset length by calling len on a CustomDatasetDataLoader instance', 'create an ImageFolder dataset from a directory of images with optional transforms', 'build a list of image file paths by recursively scanning a directory', 'test whether a given filename has a supported image file extension', 'review the default_loader function that opens an image path and converts it to RGB', 'refactor the ImageFolder __getitem__ method to customize how images are loaded and returned', 'initialize a PickleDataset with dataroot, phase, label_dir, and img_dir options for fashion image generation', 'get a dataset item by index returning label maps, instance maps, and real image tensors', 'crop a PIL image to a person bounding box using left, upper, right, lower coordinates', 'remove background from an image by zeroing pixels where the label mask equals zero', 'convert a PIL RGB image to LAB color space using OpenCV for color-aware fashion generation']
+```
+
+Usage
+
+```
+{'initialize_PickleDataset': 'initialize a PickleDataset with dataroot, phase, label_dir, and img_dir options for fashion image generation', 'getitem_PickleDataset': 'get a dataset item by index returning label maps, instance maps, and real image tensors', 'crop_person_method': 'crop a PIL image to a person bounding box using left, upper, right, lower coordinates', 'remove_background_method': 'remove background from an image by zeroing pixels where the label mask equals zero', 'pil_rgb2lab_method': 'convert a PIL RGB image to LAB color space using OpenCV for color-aware fashion generation'}
+```
+

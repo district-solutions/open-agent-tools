@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/replica-dataset
+- repo_uri: https://github.com/facebookresearch/replica-dataset
+
+## File: facebookresearch_replica-dataset/3rdparty/Pangolin/external/pybind11/setup.py
+
+Prompts
+
+```
+['run python setup.py install to install the pybind11 package and headers', 'run python setup.py install_headers to install pybind11 C++ header files preserving subdirectory structure', 'review the InstallHeaders class that extends distutils install_headers to preserve header subdirectory structure', 'review the setuptools setup call that configures the pybind11 package metadata and classifiers', 'summarize the conditional headers list that includes pybind11 C++ headers unless PYBIND11_USE_CMAKE is set']
+```
+
+Usage
+
+```
+{'install_pybind11_package': 'run python setup.py install to install the pybind11 package and headers', 'install_pybind11_headers': 'run python setup.py install_headers to install pybind11 C++ header files preserving subdirectory structure', 'review_InstallHeaders_class': 'review the InstallHeaders class that extends distutils install_headers to preserve header subdirectory structure', 'review_setup_call': 'review the setuptools setup call that configures the pybind11 package metadata and classifiers', 'summarize_headers_list': 'summarize the conditional headers list that includes pybind11 C++ headers unless PYBIND11_USE_CMAKE is set'}
+```
+

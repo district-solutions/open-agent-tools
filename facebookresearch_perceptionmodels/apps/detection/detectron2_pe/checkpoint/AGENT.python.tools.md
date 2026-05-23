@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/perceptionmodels
+- repo_uri: https://github.com/facebookresearch/perception_models
+
+## File: facebookresearch_perceptionmodels/apps/detection/detectron2_pe/checkpoint/detection_checkpoint.py
+
+Prompts
+
+```
+['create a DetectionCheckpointer instance for a model with a save directory and checkpointables', 'load a detection model checkpoint from a file path using DetectionCheckpointer with DDP sync', 'load a pickle checkpoint file in Detectron2 or Caffe2 format using DetectionCheckpointer', 'load a pycls checkpoint file with model_state using DetectionCheckpointer', 'load model weights with name-matching heuristics and Caffe2 conversion using DetectionCheckpointer']
+```
+
+Usage
+
+```
+{'create_DetectionCheckpointer': 'create a DetectionCheckpointer instance for a model with a save directory and checkpointables', 'load_checkpoint_DetectionCheckpointer': 'load a detection model checkpoint from a file path using DetectionCheckpointer with DDP sync', 'load_pkl_file_DetectionCheckpointer': 'load a pickle checkpoint file in Detectron2 or Caffe2 format using DetectionCheckpointer', 'load_pyth_file_DetectionCheckpointer': 'load a pycls checkpoint file with model_state using DetectionCheckpointer', 'load_model_with_heuristics_DetectionCheckpointer': 'load model weights with name-matching heuristics and Caffe2 conversion using DetectionCheckpointer'}
+```
+

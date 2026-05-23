@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/sapiens
+- repo_uri: https://github.com/facebookresearch/sapiens
+
+## File: facebookresearch_sapiens/seg/mmseg/version.py
+
+Prompts
+
+```
+["parse a version string like '1.2.3' into a tuple of integers", "parse a version string with release candidate like '1.0.rc1' into a tuple", 'review the parse_version_info function to understand how it splits version strings', 'summarize the mmseg version module that exports __version__ and version_info', 'test the parse_version_info function with various version string formats including rc versions']
+```
+
+Usage
+
+```
+{'parse_version_info': "parse a version string like '1.2.3' into a tuple of integers", 'parse_version_info_rc': "parse a version string with release candidate like '1.0.rc1' into a tuple", 'review_parse_version_info': 'review the parse_version_info function to understand how it splits version strings', 'summarize_version_module': 'summarize the mmseg version module that exports __version__ and version_info', 'test_parse_version_info': 'test the parse_version_info function with various version string formats including rc versions'}
+```
+

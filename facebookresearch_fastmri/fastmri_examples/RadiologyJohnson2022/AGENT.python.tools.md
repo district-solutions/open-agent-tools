@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fastmri
+- repo_uri: https://github.com/facebookresearch/fastmri
+
+## File: facebookresearch_fastmri/fastmri_examples/RadiologyJohnson2022/RunInference.py
+
+Prompts
+
+```
+['run MRI k-space reconstruction inference on FastMRI knee dataset using a parsed method string with SoftDC and cunet', 'train a multi-coil MRI reconstruction model with configurable acceleration factors, loss functions, and UNet-based architecture', 'evaluate a trained MRI reconstruction model on validation data and compute NMSE, PSNR, and SSIM metrics', 'visualize MRI reconstruction outputs by saving ground truth and reconstructed images as PNG files for comparison', 'export MRI reconstruction predictions and ground truth to DICOM format with configurable noise levels for clinical review']
+```
+
+Usage
+
+```
+{'run_mri_reconstruction_inference': 'run MRI k-space reconstruction inference on FastMRI knee dataset using a parsed method string with SoftDC and cunet', 'train_mri_reconstruction_model': 'train a multi-coil MRI reconstruction model with configurable acceleration factors, loss functions, and UNet-based architecture', 'evaluate_mri_reconstruction_model': 'evaluate a trained MRI reconstruction model on validation data and compute NMSE, PSNR, and SSIM metrics', 'visualize_mri_reconstructions': 'visualize MRI reconstruction outputs by saving ground truth and reconstructed images as PNG files for comparison', 'export_mri_reconstructions_to_dicom': 'export MRI reconstruction predictions and ground truth to DICOM format with configurable noise levels for clinical review'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fashionplus
+- repo_uri: https://github.com/facebookresearch/fashionplus
+
+## File: facebookresearch_fashionplus/separate_vae/decode_masks.py
+
+Prompts
+
+```
+['generate a single decoded segmentation mask from input features using the VAE model', 'generate a batch of decoded segmentation masks from a matrix of input features', 'initialize VAE test options for the humanparsing dataset with shared encoder and decoder', 'review the single_generation_from_update function to understand how it decodes features into segmentation masks', 'refactor the batch_generation_from_update function to handle edge cases in the last batch more cleanly']
+```
+
+Usage
+
+```
+{'generate_single_mask': 'generate a single decoded segmentation mask from input features using the VAE model', 'generate_batch_masks': 'generate a batch of decoded segmentation masks from a matrix of input features', 'initialize_vae_options': 'initialize VAE test options for the humanparsing dataset with shared encoder and decoder', 'review_single_generation_from_update': 'review the single_generation_from_update function to understand how it decodes features into segmentation masks', 'refactor_batch_generation_from_update': 'refactor the batch_generation_from_update function to handle edge cases in the last batch more cleanly'}
+```
+

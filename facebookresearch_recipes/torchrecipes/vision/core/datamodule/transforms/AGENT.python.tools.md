@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/recipes
+- repo_uri: https://github.com/facebookresearch/recipes
+
+## File: facebookresearch_recipes/torchrecipes/vision/core/datamodule/transforms/builder.py
+
+Prompts
+
+```
+['build a Compose transform pipeline from a list of transform config dictionaries using Hydra', 'build a single transform callable from a config dict, recursively handling nested transform sequences', 'build transform callables from a dataset config dict and update it in place', 'review the build_transforms function to understand how it constructs a torchvision Compose pipeline', 'refactor build_single_transform to support additional nested transform config patterns beyond the transform key']
+```
+
+Usage
+
+```
+{'build_transforms': 'build a Compose transform pipeline from a list of transform config dictionaries using Hydra', 'build_single_transform': 'build a single transform callable from a config dict, recursively handling nested transform sequences', 'build_transforms_from_dataset_config': 'build transform callables from a dataset config dict and update it in place', 'review_build_transforms': 'review the build_transforms function to understand how it constructs a torchvision Compose pipeline', 'refactor_build_single_transform': 'refactor build_single_transform to support additional nested transform config patterns beyond the transform key'}
+```
+

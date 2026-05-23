@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/recipes
+- repo_uri: https://github.com/facebookresearch/recipes
+
+## File: facebookresearch_recipes/torchrecipes/rec/tests/test_dlrm_main.py
+
+Prompts
+
+```
+['test the DLRM main training function using PyTorch elastic launch with distributed config', 'run the DLRM trainer with synthetic TSV dataset and custom layer sizes', 'create a synthetic TSV dataset for DLRM model training and testing', 'configure a PyTorch elastic launch with c10d rendezvous backend for distributed training', 'review the MainTest unittest class that validates DLRM training with elastic launch']
+```
+
+Usage
+
+```
+{'test_dlrm_main_function': 'test the DLRM main training function using PyTorch elastic launch with distributed config', 'run_dlrm_trainer': 'run the DLRM trainer with synthetic TSV dataset and custom layer sizes', 'create_dataset_tsv_for_dlrm': 'create a synthetic TSV dataset for DLRM model training and testing', 'configure_elastic_launch': 'configure a PyTorch elastic launch with c10d rendezvous backend for distributed training', 'review_MainTest_class': 'review the MainTest unittest class that validates DLRM training with elastic launch'}
+```
+

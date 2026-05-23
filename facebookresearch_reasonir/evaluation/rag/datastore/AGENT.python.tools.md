@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/reasonir
+- repo_uri: https://github.com/facebookresearch/reasonir
+
+## File: facebookresearch_reasonir/evaluation/rag/datastore/construct_datastore_corpus.py
+
+Prompts
+
+```
+['build a deduplicated datastore corpus from Contriever retrieved results for MMLU retrieval pipeline testing', 'build a datastore corpus from retrieved documents for complex retrieval pipeline testing like CoT and IRCoT', 'build a deduplicated datastore corpus from Contriever API searched results for GPQA retrieval pipeline testing', 'create a function that reads a JSONL file and returns a list of parsed JSON objects', 'create a function that writes a list of dictionaries to a JSONL file with one JSON object per line']
+```
+
+Usage
+
+```
+{'construct_deduplicated_datastore_pool': 'build a deduplicated datastore corpus from Contriever retrieved results for MMLU retrieval pipeline testing', 'construct_datastore_pool': 'build a datastore corpus from retrieved documents for complex retrieval pipeline testing like CoT and IRCoT', 'construct_deduplicated_datastore_pool_from_api_searched_results': 'build a deduplicated datastore corpus from Contriever API searched results for GPQA retrieval pipeline testing', 'load_jsonl': 'create a function that reads a JSONL file and returns a list of parsed JSON objects', 'write_to_jsonl': 'create a function that writes a list of dictionaries to a JSONL file with one JSON object per line'}
+```
+

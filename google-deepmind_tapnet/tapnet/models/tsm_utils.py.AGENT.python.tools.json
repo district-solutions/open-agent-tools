@@ -1,0 +1,7 @@
+{
+    "prepare_inputs": "prepare inputs for TSM by deducing input mode and reshaping from [B,T,H,W,3] or [T*B,H,W,3] format",
+    "prepare_outputs": "prepare TSM outputs by undoing the merging of batch and time dimensions with optional mean reduction",
+    "apply_temporal_shift": "apply temporal shift to video features using TPU, GPU, or deflated mode with configurable channel shift fraction",
+    "temporal_shift_tpu": "perform TPU-optimized temporal shift using padding and slicing to avoid reshape and concatenate operations",
+    "temporal_shift_gpu": "perform GPU temporal shift using JAX lax slice and pad operations on reshaped batch-time tensors"
+}

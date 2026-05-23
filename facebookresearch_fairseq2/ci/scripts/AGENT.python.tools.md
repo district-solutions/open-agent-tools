@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/fairseq2
+- repo_uri: https://github.com/facebookresearch/fairseq2.git
+
+## File: facebookresearch_fairseq2/ci/scripts/update_pep503_index.py
+
+Prompts
+
+```
+['run the script to update PEP 503 package index pages on an S3 bucket', 'create or update the project-level index page with links to all project names', 'create or update a package index page listing all wheel files for a project', 'upload an HTML index file to an S3 bucket with cache control metadata', 'get an S3 bucket resource using boto3 with an optional AWS profile name']
+```
+
+Usage
+
+```
+{'run_update_pep503_index': 'run the script to update PEP 503 package index pages on an S3 bucket', 'create_or_update_project_index': 'create or update the project-level index page with links to all project names', 'create_or_update_package_index': 'create or update a package index page listing all wheel files for a project', 'upload_index': 'upload an HTML index file to an S3 bucket with cache control metadata', 'get_s3_bucket': 'get an S3 bucket resource using boto3 with an optional AWS profile name'}
+```
+

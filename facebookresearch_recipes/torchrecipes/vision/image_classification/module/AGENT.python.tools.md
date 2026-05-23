@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/recipes
+- repo_uri: https://github.com/facebookresearch/recipes
+
+## File: facebookresearch_recipes/torchrecipes/vision/image_classification/module/image_classification.py
+
+Prompts
+
+```
+['build a PyTorch Lightning module for image classification with a custom model, loss, and optimizer', 'create optimizer parameter groups that split normalization params with separate weight decay', 'test the training step of the ImageClassificationModule with a batch of input images and labels', 'refactor the _postprocess_preds method to apply softmax on model predictions before metric computation', 'configure optimizers with an optional learning rate scheduler using the configure_optimizers method']
+```
+
+Usage
+
+```
+{'build_image_classification_module': 'build a PyTorch Lightning module for image classification with a custom model, loss, and optimizer', 'create_optimizer_param_groups': 'create optimizer parameter groups that split normalization params with separate weight decay', 'test_training_step': 'test the training step of the ImageClassificationModule with a batch of input images and labels', 'refactor_postprocess_preds': 'refactor the _postprocess_preds method to apply softmax on model predictions before metric computation', 'configure_optimizers_with_scheduler': 'configure optimizers with an optional learning rate scheduler using the configure_optimizers method'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/sapiens
+- repo_uri: https://github.com/facebookresearch/sapiens
+
+## File: facebookresearch_sapiens/det/mmdet/version.py
+
+Prompts
+
+```
+["parse a version string like '1.3.0' or '2.0.0rc1' into a tuple of integers and release candidate strings", 'review the parse_version_info function to understand how it handles semantic version strings with release candidates', "test the parse_version_info function with version strings like '1.0.0' and '2.0.0rc1' to verify tuple output", 'summarize the version module that defines __version__, short_version, and the parse_version_info utility function', 'refactor the parse_version_info function to support additional pre-release suffixes beyond rc']
+```
+
+Usage
+
+```
+{'parse_version_info': "parse a version string like '1.3.0' or '2.0.0rc1' into a tuple of integers and release candidate strings", 'review_parse_version_info': 'review the parse_version_info function to understand how it handles semantic version strings with release candidates', 'test_parse_version_info': "test the parse_version_info function with version strings like '1.0.0' and '2.0.0rc1' to verify tuple output", 'summarize_version_module': 'summarize the version module that defines __version__, short_version, and the parse_version_info utility function', 'refactor_parse_version_info': 'refactor the parse_version_info function to support additional pre-release suffixes beyond rc'}
+```
+

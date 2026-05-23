@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/pixio
+- repo_uri: https://github.com/facebookresearch/pixio
+
+## File: facebookresearch_pixio/evaluation/semseg/util/misc.py
+
+Prompts
+
+```
+['compute intersection, union, and target area for semantic segmentation output and target arrays with K classes', 'create an AverageMeter instance to track running average and current value of metrics during training', 'update an AverageMeter with a new value and optional sample count to recalculate the running average', 'reset an AverageMeter to clear its history or count and sum for fresh metric tracking', 'lookup the list of semantic segmentation class names for datasets like ade20k, pascal, or loveda']
+```
+
+Usage
+
+```
+{'compute_intersection_and_union': 'compute intersection, union, and target area for semantic segmentation output and target arrays with K classes', 'create_average_meter': 'create an AverageMeter instance to track running average and current value of metrics during training', 'update_average_meter': 'update an AverageMeter with a new value and optional sample count to recalculate the running average', 'reset_average_meter': 'reset an AverageMeter to clear its history or count and sum for fresh metric tracking', 'lookup_segmentation_classes': 'lookup the list of semantic segmentation class names for datasets like ade20k, pascal, or loveda'}
+```
+

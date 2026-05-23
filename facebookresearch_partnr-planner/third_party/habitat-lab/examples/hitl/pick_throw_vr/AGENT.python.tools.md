@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/partnr-planner
+- repo_uri: https://github.com/facebookresearch/partnr-planner
+
+## File: facebookresearch_partnr-planner/third_party/habitat-lab/examples/hitl/pick_throw_vr/pick_throw_vr.py
+
+Prompts
+
+```
+['run the pick throw VR HITL simulation with keyboard or VR headset control', 'create an AppStatePickThrowVr instance to evaluate a Spot robot interacting with a GUI-controlled human', 'review the cast_ray method that casts a ray into the scene and returns hit info', 'refactor the _try_grasp_remote method to change how VR hands detect and grasp nearby objects', 'summarize the sim_update method that handles input, grasping, navigation, and visualization each frame']
+```
+
+Usage
+
+```
+{'run_pick_throw_vr': 'run the pick throw VR HITL simulation with keyboard or VR headset control', 'create_AppStatePickThrowVr': 'create an AppStatePickThrowVr instance to evaluate a Spot robot interacting with a GUI-controlled human', 'review_cast_ray': 'review the cast_ray method that casts a ray into the scene and returns hit info', 'refactor_try_grasp_remote': 'refactor the _try_grasp_remote method to change how VR hands detect and grasp nearby objects', 'summarize_sim_update': 'summarize the sim_update method that handles input, grasping, navigation, and visualization each frame'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/transcoder
+- repo_uri: https://github.com/facebookresearch/transcoder
+
+## File: facebookresearch_transcoder/translate.py
+
+Prompts
+
+```
+['translate C++ source code to Java using a trained model via stdin', 'translate Python source code to Java using the Translator class and a model checkpoint', 'translate source code with beam search by setting beam_size for multiple translation candidates', 'run the translate.py CLI with --src_lang --tgt_lang --model_path and pipe source code via stdin', 'review the Translator class that loads encoder/decoder models and performs cross-language code translation']
+```
+
+Usage
+
+```
+{'translate_code_cpp_to_java': 'translate C++ source code to Java using a trained model via stdin', 'translate_code_python_to_java': 'translate Python source code to Java using the Translator class and a model checkpoint', 'translate_code_with_beam_search': 'translate source code with beam search by setting beam_size for multiple translation candidates', 'run_translator_cli': 'run the translate.py CLI with --src_lang --tgt_lang --model_path and pipe source code via stdin', 'review_Translator_class': 'review the Translator class that loads encoder/decoder models and performs cross-language code translation'}
+```
+

@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/recipes
+- repo_uri: https://github.com/facebookresearch/recipes
+
+## File: facebookresearch_recipes/torchrecipes/audio/source_separation/tests/test_main.py
+
+Prompts
+
+```
+['test the source separation training pipeline using Hydra config and a mocked dataset', 'create a PyTorch Dataset that returns random sample rate, mix waveform, and source waveforms', 'test the TestDataset __getitem__ method to return sample rate, mix, and source tensors', 'test the TestDataset __len__ method to return the total number of samples', 'run the source separation main function with a Hydra composed config and mocked data module']
+```
+
+Usage
+
+```
+{'test_train_model': 'test the source separation training pipeline using Hydra config and a mocked dataset', 'create_TestDataset': 'create a PyTorch Dataset that returns random sample rate, mix waveform, and source waveforms', 'test_TestDataset_getitem': 'test the TestDataset __getitem__ method to return sample rate, mix, and source tensors', 'test_TestDataset_len': 'test the TestDataset __len__ method to return the total number of samples', 'run_main_with_hydra_config': 'run the source separation main function with a Hydra composed config and mocked data module'}
+```
+

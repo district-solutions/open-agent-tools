@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/stopes
+- repo_uri: https://github.com/facebookresearch/stopes
+
+## File: facebookresearch_stopes/stopes/eval/alti/alignment/align.py
+
+Prompts
+
+```
+['compute average alignment error rate, precision and recall for word alignment hypothesis against sure and possible sets', 'parse a single alignment string like 3-2 or 5p4 into a zero-indexed integer tuple pair', 'aggregate a token-level contribution matrix into word-level contributions by merging BPE subtokens into full words', 'aggregate token contributions along a single axis by merging subtokens into words using sum or average reduction', 'review the alignment utilities module for word attribution computation and alignment quality metric functions']
+```
+
+Usage
+
+```
+{'compute_alignment_metrics': 'compute average alignment error rate, precision and recall for word alignment hypothesis against sure and possible sets', 'parse_single_alignment': 'parse a single alignment string like 3-2 or 5p4 into a zero-indexed integer tuple pair', 'contrib_tok2words': 'aggregate a token-level contribution matrix into word-level contributions by merging BPE subtokens into full words', 'contrib_tok2words_partial': 'aggregate token contributions along a single axis by merging subtokens into words using sum or average reduction', 'review_align_module': 'review the alignment utilities module for word attribution computation and alignment quality metric functions'}
+```
+

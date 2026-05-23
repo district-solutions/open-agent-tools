@@ -1,0 +1,75 @@
+# Agent Python Tools
+
+- repo: facebookresearch/rlmeta
+- repo_uri: https://github.com/facebookresearch/rlmeta
+
+## File: facebookresearch_rlmeta/third_party/moolib/third_party/fmt/support/build-docs.py
+
+Prompts
+
+```
+['run the build-docs script to build and deploy fmt documentation to GitHub Pages', 'review the rmtree_if_exists function that safely removes a directory ignoring ENOENT errors', 'review the git clone and push logic that deploys docs to fmtlib.github.io', 'refactor the CI branch check to support deploying docs from non-master branches', 'summarize the build-docs script that builds docs, clones the pages repo, copies output, and pushes', 'parse command-line arguments using a docstring description and return a dictionary of parsed values', 'create a command-line interface parser from a usage docstring with options and arguments', 'build a parser that handles short options, long options, positional arguments, and commands', 'test the docopt module by parsing sample argv against a usage pattern docstring', 'review the pattern matching logic for Either, Required, Optional, and OneOrMore pattern types', 'run manage.py release to update version, build docs, and create a GitHub release for the fmt library', 'run manage.py site to update the fmt documentation website by building docs for all supported versions', 'create a Git class instance to wrap git commands like add, checkout, clone, commit, push, and reset', 'use the Runner class to execute shell commands like cmake and make in a specified working directory', 'use the rewrite context manager to safely read, modify, and write back file contents in place', 'run the script to generate C++ is_printable function from Unicode data', 'run get_codepoints to parse UnicodeData.txt and yield Codepoint namedtuples with value and class', 'run to_ranges to convert a sequence of integers into contiguous ranges of tuples', 'run compress_singletons to encode a list of codepoints into upper byte groups and lower bytes', 'run compress_normal to encode start/count range pairs into variable-length byte entries', 'convert a reStructuredText file to GitHub-flavored Markdown using the convert function', 'run the rst2md script from the command line to convert an RST file to Markdown', 'review the Translator class that walks docutils nodes and outputs Markdown text', 'review the MDWriter class that integrates with docutils to produce Markdown output', 'test the is_github_ref function to detect GitHub issues and pull request links']
+```
+
+Usage
+
+```
+{'run_build_docs': 'run the build-docs script to build and deploy fmt documentation to GitHub Pages', 'review_rmtree_if_exists': 'review the rmtree_if_exists function that safely removes a directory ignoring ENOENT errors', 'review_git_clone_and_push': 'review the git clone and push logic that deploys docs to fmtlib.github.io', 'refactor_ci_branch_check': 'refactor the CI branch check to support deploying docs from non-master branches', 'summarize_build_docs_script': 'summarize the build-docs script that builds docs, clones the pages repo, copies output, and pushes'}
+```
+
+## File: facebookresearch_rlmeta/third_party/moolib/third_party/fmt/support/docopt.py
+
+Prompts
+
+```
+['run the build-docs script to build and deploy fmt documentation to GitHub Pages', 'review the rmtree_if_exists function that safely removes a directory ignoring ENOENT errors', 'review the git clone and push logic that deploys docs to fmtlib.github.io', 'refactor the CI branch check to support deploying docs from non-master branches', 'summarize the build-docs script that builds docs, clones the pages repo, copies output, and pushes', 'parse command-line arguments using a docstring description and return a dictionary of parsed values', 'create a command-line interface parser from a usage docstring with options and arguments', 'build a parser that handles short options, long options, positional arguments, and commands', 'test the docopt module by parsing sample argv against a usage pattern docstring', 'review the pattern matching logic for Either, Required, Optional, and OneOrMore pattern types', 'run manage.py release to update version, build docs, and create a GitHub release for the fmt library', 'run manage.py site to update the fmt documentation website by building docs for all supported versions', 'create a Git class instance to wrap git commands like add, checkout, clone, commit, push, and reset', 'use the Runner class to execute shell commands like cmake and make in a specified working directory', 'use the rewrite context manager to safely read, modify, and write back file contents in place', 'run the script to generate C++ is_printable function from Unicode data', 'run get_codepoints to parse UnicodeData.txt and yield Codepoint namedtuples with value and class', 'run to_ranges to convert a sequence of integers into contiguous ranges of tuples', 'run compress_singletons to encode a list of codepoints into upper byte groups and lower bytes', 'run compress_normal to encode start/count range pairs into variable-length byte entries', 'convert a reStructuredText file to GitHub-flavored Markdown using the convert function', 'run the rst2md script from the command line to convert an RST file to Markdown', 'review the Translator class that walks docutils nodes and outputs Markdown text', 'review the MDWriter class that integrates with docutils to produce Markdown output', 'test the is_github_ref function to detect GitHub issues and pull request links']
+```
+
+Usage
+
+```
+{'parse_cli_with_docopt': 'parse command-line arguments using a docstring description and return a dictionary of parsed values', 'create_docstring_parser': 'create a command-line interface parser from a usage docstring with options and arguments', 'build_argument_parser': 'build a parser that handles short options, long options, positional arguments, and commands', 'test_docopt_parsing': 'test the docopt module by parsing sample argv against a usage pattern docstring', 'review_pattern_matching': 'review the pattern matching logic for Either, Required, Optional, and OneOrMore pattern types'}
+```
+
+## File: facebookresearch_rlmeta/third_party/moolib/third_party/fmt/support/manage.py
+
+Prompts
+
+```
+['run the build-docs script to build and deploy fmt documentation to GitHub Pages', 'review the rmtree_if_exists function that safely removes a directory ignoring ENOENT errors', 'review the git clone and push logic that deploys docs to fmtlib.github.io', 'refactor the CI branch check to support deploying docs from non-master branches', 'summarize the build-docs script that builds docs, clones the pages repo, copies output, and pushes', 'parse command-line arguments using a docstring description and return a dictionary of parsed values', 'create a command-line interface parser from a usage docstring with options and arguments', 'build a parser that handles short options, long options, positional arguments, and commands', 'test the docopt module by parsing sample argv against a usage pattern docstring', 'review the pattern matching logic for Either, Required, Optional, and OneOrMore pattern types', 'run manage.py release to update version, build docs, and create a GitHub release for the fmt library', 'run manage.py site to update the fmt documentation website by building docs for all supported versions', 'create a Git class instance to wrap git commands like add, checkout, clone, commit, push, and reset', 'use the Runner class to execute shell commands like cmake and make in a specified working directory', 'use the rewrite context manager to safely read, modify, and write back file contents in place', 'run the script to generate C++ is_printable function from Unicode data', 'run get_codepoints to parse UnicodeData.txt and yield Codepoint namedtuples with value and class', 'run to_ranges to convert a sequence of integers into contiguous ranges of tuples', 'run compress_singletons to encode a list of codepoints into upper byte groups and lower bytes', 'run compress_normal to encode start/count range pairs into variable-length byte entries', 'convert a reStructuredText file to GitHub-flavored Markdown using the convert function', 'run the rst2md script from the command line to convert an RST file to Markdown', 'review the Translator class that walks docutils nodes and outputs Markdown text', 'review the MDWriter class that integrates with docutils to produce Markdown output', 'test the is_github_ref function to detect GitHub issues and pull request links']
+```
+
+Usage
+
+```
+{'run_manage_release': 'run manage.py release to update version, build docs, and create a GitHub release for the fmt library', 'run_manage_site': 'run manage.py site to update the fmt documentation website by building docs for all supported versions', 'create_Git_class': 'create a Git class instance to wrap git commands like add, checkout, clone, commit, push, and reset', 'use_Runner_class': 'use the Runner class to execute shell commands like cmake and make in a specified working directory', 'use_rewrite_contextmanager': 'use the rewrite context manager to safely read, modify, and write back file contents in place'}
+```
+
+## File: facebookresearch_rlmeta/third_party/moolib/third_party/fmt/support/printable.py
+
+Prompts
+
+```
+['run the build-docs script to build and deploy fmt documentation to GitHub Pages', 'review the rmtree_if_exists function that safely removes a directory ignoring ENOENT errors', 'review the git clone and push logic that deploys docs to fmtlib.github.io', 'refactor the CI branch check to support deploying docs from non-master branches', 'summarize the build-docs script that builds docs, clones the pages repo, copies output, and pushes', 'parse command-line arguments using a docstring description and return a dictionary of parsed values', 'create a command-line interface parser from a usage docstring with options and arguments', 'build a parser that handles short options, long options, positional arguments, and commands', 'test the docopt module by parsing sample argv against a usage pattern docstring', 'review the pattern matching logic for Either, Required, Optional, and OneOrMore pattern types', 'run manage.py release to update version, build docs, and create a GitHub release for the fmt library', 'run manage.py site to update the fmt documentation website by building docs for all supported versions', 'create a Git class instance to wrap git commands like add, checkout, clone, commit, push, and reset', 'use the Runner class to execute shell commands like cmake and make in a specified working directory', 'use the rewrite context manager to safely read, modify, and write back file contents in place', 'run the script to generate C++ is_printable function from Unicode data', 'run get_codepoints to parse UnicodeData.txt and yield Codepoint namedtuples with value and class', 'run to_ranges to convert a sequence of integers into contiguous ranges of tuples', 'run compress_singletons to encode a list of codepoints into upper byte groups and lower bytes', 'run compress_normal to encode start/count range pairs into variable-length byte entries', 'convert a reStructuredText file to GitHub-flavored Markdown using the convert function', 'run the rst2md script from the command line to convert an RST file to Markdown', 'review the Translator class that walks docutils nodes and outputs Markdown text', 'review the MDWriter class that integrates with docutils to produce Markdown output', 'test the is_github_ref function to detect GitHub issues and pull request links']
+```
+
+Usage
+
+```
+{'run_printable_codegen': 'run the script to generate C++ is_printable function from Unicode data', 'run_get_codepoints': 'run get_codepoints to parse UnicodeData.txt and yield Codepoint namedtuples with value and class', 'run_to_ranges': 'run to_ranges to convert a sequence of integers into contiguous ranges of tuples', 'run_compress_singletons': 'run compress_singletons to encode a list of codepoints into upper byte groups and lower bytes', 'run_compress_normal': 'run compress_normal to encode start/count range pairs into variable-length byte entries'}
+```
+
+## File: facebookresearch_rlmeta/third_party/moolib/third_party/fmt/support/rst2md.py
+
+Prompts
+
+```
+['run the build-docs script to build and deploy fmt documentation to GitHub Pages', 'review the rmtree_if_exists function that safely removes a directory ignoring ENOENT errors', 'review the git clone and push logic that deploys docs to fmtlib.github.io', 'refactor the CI branch check to support deploying docs from non-master branches', 'summarize the build-docs script that builds docs, clones the pages repo, copies output, and pushes', 'parse command-line arguments using a docstring description and return a dictionary of parsed values', 'create a command-line interface parser from a usage docstring with options and arguments', 'build a parser that handles short options, long options, positional arguments, and commands', 'test the docopt module by parsing sample argv against a usage pattern docstring', 'review the pattern matching logic for Either, Required, Optional, and OneOrMore pattern types', 'run manage.py release to update version, build docs, and create a GitHub release for the fmt library', 'run manage.py site to update the fmt documentation website by building docs for all supported versions', 'create a Git class instance to wrap git commands like add, checkout, clone, commit, push, and reset', 'use the Runner class to execute shell commands like cmake and make in a specified working directory', 'use the rewrite context manager to safely read, modify, and write back file contents in place', 'run the script to generate C++ is_printable function from Unicode data', 'run get_codepoints to parse UnicodeData.txt and yield Codepoint namedtuples with value and class', 'run to_ranges to convert a sequence of integers into contiguous ranges of tuples', 'run compress_singletons to encode a list of codepoints into upper byte groups and lower bytes', 'run compress_normal to encode start/count range pairs into variable-length byte entries', 'convert a reStructuredText file to GitHub-flavored Markdown using the convert function', 'run the rst2md script from the command line to convert an RST file to Markdown', 'review the Translator class that walks docutils nodes and outputs Markdown text', 'review the MDWriter class that integrates with docutils to produce Markdown output', 'test the is_github_ref function to detect GitHub issues and pull request links']
+```
+
+Usage
+
+```
+{'convert_rst_to_md': 'convert a reStructuredText file to GitHub-flavored Markdown using the convert function', 'run_rst2md_cli': 'run the rst2md script from the command line to convert an RST file to Markdown', 'review_Translator_class': 'review the Translator class that walks docutils nodes and outputs Markdown text', 'review_MDWriter_class': 'review the MDWriter class that integrates with docutils to produce Markdown output', 'test_is_github_ref': 'test the is_github_ref function to detect GitHub issues and pull request links'}
+```
+

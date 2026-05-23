@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/sparsh
+- repo_uri: https://github.com/facebookresearch/sparsh
+
+## File: facebookresearch_sparsh/scripts/slip_labelling.py
+
+Prompts
+
+```
+['run the slip labelling script with --data-dir and --frictional-coeff to label slip events from force sensor data', 'load end-effector pose and force data from a pickle file and interpolate to a uniform nominal frequency', 'extract individual stroke trajectories from a binary in-contact array by finding contiguous contact segments longer than 25 frames', 'label slip vs no-slip frames using a friction cone model with a configurable frictional coefficient and 3-axis force data', 'generate a 2x3 summary plot showing end-effector pose, friction cone labels, and force distributions for the dataset']
+```
+
+Usage
+
+```
+{'run_slip_labelling_cli': 'run the slip labelling script with --data-dir and --frictional-coeff to label slip events from force sensor data', 'load_data_interpolate': 'load end-effector pose and force data from a pickle file and interpolate to a uniform nominal frequency', 'extract_strokes_from_contact': 'extract individual stroke trajectories from a binary in-contact array by finding contiguous contact segments longer than 25 frames', 'label_slip_friction_cone': 'label slip vs no-slip frames using a friction cone model with a configurable frictional coefficient and 3-axis force data', 'plot_data_summary_force_pose': 'generate a 2x3 summary plot showing end-effector pose, friction cone labels, and force distributions for the dataset'}
+```
+

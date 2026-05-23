@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/stopes
+- repo_uri: https://github.com/facebookresearch/stopes
+
+## File: facebookresearch_stopes/stopes/speech/tests/test_speech_tokenizer.py
+
+Prompts
+
+```
+['test that a speech tokenizer config YAML file can be parsed and the tokenizer object is properly built', 'test that calling hub.speech_tokenizer with no config raises an AssertionError about missing _target_', 'review the MockSpeechTokenizer class that extends SpeechTokenizer with encode, extract_features, to_unit, and decode methods', 'test the MockSpeechTokenizer encode and decode methods to verify they return expected torch tensors', 'review the MockConfig dataclass with mock_attr, mock_checkpoint, and max_frames_chunk fields used for tokenizer configuration']
+```
+
+Usage
+
+```
+{'test_load_local_config': 'test that a speech tokenizer config YAML file can be parsed and the tokenizer object is properly built', 'test_load_empty_config': 'test that calling hub.speech_tokenizer with no config raises an AssertionError about missing _target_', 'review_MockSpeechTokenizer': 'review the MockSpeechTokenizer class that extends SpeechTokenizer with encode, extract_features, to_unit, and decode methods', 'test_MockSpeechTokenizer_encode_decode': 'test the MockSpeechTokenizer encode and decode methods to verify they return expected torch tensors', 'review_MockConfig': 'review the MockConfig dataclass with mock_attr, mock_checkpoint, and max_frames_chunk fields used for tokenizer configuration'}
+```
+

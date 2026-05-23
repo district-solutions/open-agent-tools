@@ -1,0 +1,19 @@
+{
+    "note": "This file is a pure MMDetection configuration file with no callable functions, classes, or APIs. It only contains dictionary assignments for training parameters.",
+    "config_type": "MMDetection training configuration",
+    "description": "CornerNet Hourglass104 configuration for COCO object detection with 10 GPUs x 5 batch size, crop511 training, 210 epochs, and multi-scale testing. Inherits from cornernet_hourglass104_8xb6-210e-mstest_coco.py and overrides batch_size to 5 and sets auto_scale_lr base_batch_size to 50.",
+    "key_settings": {
+        "train_dataloader": "batch_size=5 (overridden from base config's 6)",
+        "auto_scale_lr": "base_batch_size=50 (10 GPUs x 5 samples per GPU)",
+        "base_config": "cornernet_hourglass104_8xb6-210e-mstest_coco.py"
+    },
+    "inherited_settings": {
+        "model": "CornerNet with HourglassNet backbone (5 downsample, 2 stacks)",
+        "dataset": "COCO detection (80 classes)",
+        "optimizer": "Adam with lr=0.0005",
+        "max_epochs": 210,
+        "test_cfg": "corner_topk=100, soft_nms with gaussian method"
+    },
+    "callable_apis": [],
+    "example_statements": []
+}

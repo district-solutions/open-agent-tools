@@ -1,0 +1,19 @@
+# Agent Python Tools
+
+- repo: facebookresearch/spot-sim2real
+- repo_uri: https://github.com/facebookresearch/spot-sim2real
+
+## File: facebookresearch_spot-sim2real/ros_tcp/test_ros_communications.py
+
+Prompts
+
+```
+['run the ROS publisher and subscriber to test image communication between topics', 'test the show_image function that normalizes uint16 and float32 arrays for OpenCV display', 'create a ROS Publisher that publishes sensor_msgs/Image data to a specified topic', 'create a ROS Subscriber that listens to a topic and calls a callback function on new messages', 'refactor the start_publishing function to publish images in a continuous loop instead of breaking immediately']
+```
+
+Usage
+
+```
+{'run_ros_publisher_subscriber': 'run the ROS publisher and subscriber to test image communication between topics', 'test_show_image_callback': 'test the show_image function that normalizes uint16 and float32 arrays for OpenCV display', 'create_ros_publisher': 'create a ROS Publisher that publishes sensor_msgs/Image data to a specified topic', 'create_ros_subscriber': 'create a ROS Subscriber that listens to a topic and calls a callback function on new messages', 'refactor_start_publishing': 'refactor the start_publishing function to publish images in a continuous loop instead of breaking immediately'}
+```
+
