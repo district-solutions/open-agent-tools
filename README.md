@@ -131,3 +131,5 @@ The protocol allows you to leverage the small model with:
 3. **File-level:** Individual source code files and their semantic breadcrumbs.
 
 This enables flexible, lightweight function calling without requiring large-scale GPU resources.
+
+authors: Jay Johnson & Kevin Newcomb
